@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, provincial tech grants, AI adoption funding, and cybersecurity support. Funding available: up to $950M+.","shortAnswerQuestion":"What innovation and technology grants are available in 2026?","faq":[{"question":"What is the application deadline for Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $950M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"CDAP","value":"$15k","description":"Digital Plan","color":"text-green-600","iconName":"FileText"},{"label":"Loan","value":"$100k","description":"Interest Free","color":"text-blue-600","iconName":"CreditCard"},{"label":"Wage","value":"$7,300","description":"Youth Hire","color":"text-purple-600","iconName":"User"},{"label":"Tech","value":"Any","description":"Software/Hardware","color":"text-orange-600","iconName":"Laptop"}],"expertTip":{"title":"Get CDAP Certified","type":"success","content":"The <strong>CDAP Digital Adoption Plan</strong> is the gateway key. Once you have this certified plan, you unlock the $100k BDC loan and wage subsidies. Prioritize getting this plan done first."},"seo":{"keywords":["Canada","Technology","Adoption","Grants","2026"]},"comparisonTable":{"title":"Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs Funding Options Overview","programs":[{"program":"Core Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs Grant","amount":"$950M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Canada Technology Adoption Grants 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Programs","href":"/blog/canada-manufacturing-industry-grants-guide","description":"Complete guide to Canada..."},{"title":"Match Your RDA","href":"/blog/saskatchewan-small-business-grants-guide","description":"Complete guide to Saskatchewan small business grants. Access Saskatchewan Small Business Loans, Innovation Saskatchewan ..."},{"title":"Programs","href":"/blog/csbfp-canada-small-business-financing-program","description":"Complete guide to Canada Small Business Financing Program. Learn eligibility, application process, and get up to $1M in ..."}]}
+{
+  "content": "<h2 class=\"text-3xl md:text-4xl font-bold text-gray-900 mb-4\">Deep Dive: The $2,400 Micro-Grant</h2>\n                <p class=\"text-lg text-gray-600 max-w-3xl mx-auto\">\n                  Often ignored because it's \"small\", this grant is actually one of the easiest approvals in the Canadian funding ecosystem. Here is exactly how to maximize it.\n                </p>\n              </div>\n              <div class=\"flex flex-col md:flex-row gap-12 items-start mb-16\">\n                <div class=\"flex-1\">\n                  <div class=\"bg-blue-50 border border-blue-100 rounded-xl p-8 mb-8\">\n                    <h4 class=\"font-bold text-xl text-blue-900 mb-6\">The \"Eligible Cost\" Checklist</h4>\n                    <p class=\"text-gray-700 mb-6 font-medium\">\n                      The rule of thumb is: \"Does it help you sell to a customer online?\" If yes, it's likely eligible. If it's just for office administration, it's not.\n                    </p>\n                    <div class=\"grid sm:grid-cols-2 gap-6\">\n                      <div>\n                        <h5 class=\"font-bold text-gray-900 border-b border-blue-200 pb-2 mb-3\">✅ Approved</h5>\n                        <ul class=\"space-y-3 text-sm\">\n                          <li class=\"flex items-start\"> <strong>Website Building:</strong> Hiring a freelancer to build a Shopify/Wordpress site.</li>\n                          <li class=\"flex items-start\"> <strong>SEO Services:</strong> Audits, keyword research, localized content writing.</li>\n                          <li class=\"flex items-start\"> <strong>Booking Systems:</strong> JaneApp, Calendly, or restaurant reservation software fees.</li>\n                          <li class=\"flex items-start\"> <strong>Ads:</strong> Costs paid directly to Google/Meta for *advertising*.</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-bold text-gray-900 border-b border-red-200 pb-2 mb-3\">❌ Rejected</h5>\n                        <ul class=\"space-y-3 text-sm\">\n                          <li class=\"flex items-start\"> <strong>Hardware:</strong> Laptops, iPhones, Cash Registers.</li>\n                          <li class=\"flex items-start\"> <strong>Salaries:</strong> You cannot pay your own staff with this grant.</li>\n                          <li class=\"flex items-start\"> <strong>Office Software:</strong> Microsoft Office, Slack, or Zoom subscriptions.</li>\n                          <li class=\"flex items-start\"> <strong>Renewals:</strong> Pre-existing subscriptions are often rejected; new ones are accepted.</li>\n                        </ul>\n                      </div>\n                    </div>\n                  </div>\n                  <h3 class=\"font-bold text-xl text-gray-900 mb-4\">Implementation Case Study: \"The Local Bakery\"</h3>\n                  <div class=\"bg-white p-6 rounded-lg border border-gray-200 shadow-lg\">\n                    <p class=\"text-gray-700 mb-4 italic\">\n                      \"Maple Retail\", a small bakery, had a static website but took orders by phone. They wanted to automate.\n                    </p>\n                    <div class=\"space-y-4\">\n                      <div class=\"flex justify-between items-center border-b border-gray-100 pb-2\">\n                        <span class=\"text-gray-600\">Total Project Cost:</span>\n                        <span class=\"font-bold text-gray-900\">$2,600</span>\n                      </div>\n                      <div class=\"pl-4 border-l-2 border-blue-200 space-y-2\">\n                        <p class=\"text-sm text-gray-600\">Freeland Web Dev (Setup Shopify): $1,500</p>\n                        <p class=\"text-sm text-gray-600\">Shopify Subscription (1 Year): $500</p>\n                        <p class=\"text-sm text-gray-600\">Google Ads Credit: $600</p>\n                      </div>\n                      <div class=\"flex justify-between items-center bg-green-50 p-3 rounded\">\n                        <span class=\"font-bold text-green-800\">Grant Reimbursement:</span>\n                        <span class=\"font-bold text-green-800\">$2,400</span>\n                      </div>\n                      <div class=\"flex justify-between items-center bg-gray-50 p-3 rounded\">\n                        <span class=\"font-bold text-gray-800\">Net Cost to Bakery:</span>\n                        <span class=\"font-bold text-gray-800\">$200</span>\n                      </div>\n                    </div>\n                    <p class=\"mt-4 text-sm text-gray-500\">\n                      <strong>Result:</strong> They launched online ordering for $200 out of pocket. This is the power of the micro-grant.\n                    </p>\n                  </div>\n                </div>\n                <div class=\"w-full md:w-1/3\">\n                  <div class=\"sticky top-24\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <div class=\"bg-blue-600 text-white p-4 text-center\">\n                        <h3 class=\"font-bold text-lg\">Application Steps</h3>\n                      </div>\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"space-y-6 relative\">\n                          {/* Step 1 */}\n                          <div class=\"flex gap-4\">\n                            <div class=\"flex flex-col items-center\">\n                              <div class=\"w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm\">1</div>\n                              <div class=\"w-0.5 h-full bg-blue-100 my-1\"></div>\n                            </div>\n                            <div>\n                              <h4 class=\"font-bold text-gray-900 text-sm\">Find Provider</h4>\n                              <p class=\"text-xs text-gray-500\">Google \"CDAP Grow Your Business + [Your Province]\".</p>\n                            </div>\n                          </div>\n                          {/* Step 2 */}\n                          <div class=\"flex gap-4\">\n                            <div class=\"flex flex-col items-center\">\n                              <div class=\"w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm\">2</div>\n                              <div class=\"w-0.5 h-full bg-blue-100 my-1\"></div>\n                            </div>\n                            <div>\n                              <h4 class=\"font-bold text-gray-900 text-sm\">Submit Plan</h4>\n                              <p class=\"text-xs text-gray-500\">Upload a quote from your vendor showing costs &gt; $2,400.</p>\n                            </div>\n                          </div>\n                          {/* Step 3 */}\n                          <div class=\"flex gap-4\">\n                            <div class=\"flex flex-col items-center\">\n                              <div class=\"w-8 h-8 rounded-full bg-blue-100 text-blue-600 flex items-center justify-center font-bold text-sm\">3</div>\n                              <div class=\"w-0.5 h-full bg-blue-100 my-1\"></div>\n                            </div>\n                            <div>\n                              <h4 class=\"font-bold text-gray-900 text-sm\">Approve & Spend</h4>\n                              <p class=\"text-xs text-gray-500\">Wait for the approval email. THEN spend the money.</p>\n                            </div>\n                          </div>\n                          {/* Step 4 */}\n                          <div class=\"flex gap-4\">\n                            <div class=\"flex flex-col items-center\">\n                              <div class=\"w-8 h-8 rounded-full bg-green-100 text-green-600 flex items-center justify-center font-bold text-sm\">4</div>\n                            </div>\n                            <div>\n                              <h4 class=\"font-bold text-gray-900 text-sm\">Reimbursement</h4>\n                              <p class=\"text-xs text-gray-500\">Submit receipt. Get cheque in 30 days.</p>\n                            </div>\n                          </div>\n                        </div>\n                    </div>\n                    <div class=\"mt-6 bg-yellow-50 border border-yellow-200 p-4 rounded-lg\">\n                      <h5 class=\"font-bold text-yellow-800 text-sm mb-2 flex items-center\">\n                         Critical Warning\n                      </h5>\n                      <p class=\"text-xs text-yellow-700\">\n                        Do NOT spend the money before you get the approval email. Retroactive costs are 100% rejected. You must wait for the \"Green Light\".\n                      </p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, provincial tech grants, AI adoption funding, and cybersecurity support. Funding available: up to $950M+.",
+  "shortAnswerQuestion": "What innovation and technology grants are available in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $950M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "CDAP",
+      "value": "$15k",
+      "description": "Digital Plan",
+      "color": "text-green-600",
+      "iconName": "FileText"
+    },
+    {
+      "label": "Loan",
+      "value": "$100k",
+      "description": "Interest Free",
+      "color": "text-blue-600",
+      "iconName": "CreditCard"
+    },
+    {
+      "label": "Wage",
+      "value": "$7,300",
+      "description": "Youth Hire",
+      "color": "text-purple-600",
+      "iconName": "User"
+    },
+    {
+      "label": "Tech",
+      "value": "Any",
+      "description": "Software/Hardware",
+      "color": "text-orange-600",
+      "iconName": "Laptop"
+    }
+  ],
+  "expertTip": {
+    "title": "Get CDAP Certified",
+    "type": "success",
+    "content": "The <strong>CDAP Digital Adoption Plan</strong> is the gateway key. Once you have this certified plan, you unlock the $100k BDC loan and wage subsidies. Prioritize getting this plan done first."
+  },
+  "seo": {
+    "keywords": [
+      "Canada",
+      "Technology",
+      "Adoption",
+      "Grants",
+      "2026"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Canada Technology Adoption Grants  | + Digital Transformation Across 22+ Programs Grant",
+        "amount": "$950M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Canada Technology Adoption Grants 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Programs",
+      "href": "/blog/canada-manufacturing-industry-grants-guide",
+      "description": "Complete guide to Canada..."
+    },
+    {
+      "title": "Match Your RDA",
+      "href": "/blog/saskatchewan-small-business-grants-guide",
+      "description": "Complete guide to Saskatchewan small business grants. Access Saskatchewan Small Business Loans, Innovation Saskatchewan ..."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/csbfp-canada-small-business-financing-program",
+      "description": "Complete guide to Canada Small Business Financing Program. Learn eligibility, application process, and get up to $1M in ..."
+    }
+  ]
+}

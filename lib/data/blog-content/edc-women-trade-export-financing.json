@@ -1,1 +1,127 @@
-{"content":"","shortAnswer":"Yes — Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.","shortAnswerQuestion":"What grants are available for women-owned businesses in 2026?","faq":[{"question":"What is the application deadline for EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters?","answer":"Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Capital","value":"$10M+","description":"Equity Invest","color":"text-green-600","iconName":"DollarSign"},{"label":"Target","value":"Women","description":"Founders","color":"text-pink-600","iconName":"Users"},{"label":"Market","value":"Global","description":"Export Focus","color":"text-blue-600","iconName":"Globe"},{"label":"Type","value":"Equity","description":"Investment","color":"text-purple-600","iconName":"TrendingUp"}],"expertTip":{"title":"Export Focus","type":"tip","content":"This is primarily for EXPORT-focused businesses. You must demonstrate a clear strategy for international sales growth."},"seo":{"keywords":["EDC","Women","in","Trade","Export"]},"comparisonTable":{"title":"EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters Funding Options Overview","programs":[{"program":"Core EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters Grant","amount":"Varies","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Overview","id":"overview"},{"title":"Eligibility Requirements","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"}],"eligibleCheck":true,"inlineCTA":{"title":"Need expert help applying for grants?","description":"Our funding specialists can help you navigate government programs and maximize your funding potential.","buttonText":"Get Funding Assistance","buttonLink":"/contact"},"relatedLinks":[{"title":"Stack Your Benefits","href":"/blog/canada-housing-community-grants-2026","description":"🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..."},{"title":"SBA Grant Application Process: Complete Step-by-Step Guide","href":"/guides/sba-application-process","description":"Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..."},{"title":"Programs","href":"/blog/canada-federal-grants","description":"Complete guide to government grants...."}]}
+{
+  "content": "<h2 id=\"eligibility\" class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">Who is Eligible for EDC Women in Trade?</h2>\n              <div class=\"grid md:grid-cols-2 gap-8\">\n                {/* Business Eligibility */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Business Owner Eligibility</h3>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"space-y-4\">\n                      <div>\n                        <h4 class=\"font-semibold text-green-700 mb-2\">✅ Essential Requirements</h4>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Women-owned or women-led business</li>\n                          <li>• Canadian incorporated company</li>\n                          <li>• Export-ready or actively exporting</li>\n                          <li>• Significant export growth potential</li>\n                          <li>• Strong commercial viability</li>\n                          <li>• Competitive product/service in global markets</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h4 class=\"font-semibold text-blue-700 mb-2\">🎯 Priority Groups</h4>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Diverse women entrepreneurs</li>\n                          <li>• Commercialization-stage businesses</li>\n                          <li>• Growth-stage export companies</li>\n                          <li>• Businesses entering new export markets</li>\n                          <li>• Women-led innovative exporters</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Export Use Cases */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Export Financing Uses</h3>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"space-y-4\">\n                      <div>\n                        <h4 class=\"font-semibold text-blue-700 mb-2\">✅ Eligible Uses</h4>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Export working capital and cash flow</li>\n                          <li>• International market entry and expansion</li>\n                          <li>• Export contract fulfillment</li>\n                          <li>• Foreign buyer credit support</li>\n                          <li>• Supply chain and logistics financing</li>\n                          <li>• Export product development</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h4 class=\"font-semibold text-purple-700 mb-2\">💡 Strategic Priorities</h4>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Commercialization-stage equity needs</li>\n                          <li>• International market diversification</li>\n                          <li>• Export capacity building</li>\n                          <li>• Global competitiveness enhancement</li>\n                          <li>• Trade risk mitigation</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.",
+  "shortAnswerQuestion": "What grants are available for women-owned businesses in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters?",
+      "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Capital",
+      "value": "$10M+",
+      "description": "Equity Invest",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Target",
+      "value": "Women",
+      "description": "Founders",
+      "color": "text-pink-600",
+      "iconName": "Users"
+    },
+    {
+      "label": "Market",
+      "value": "Global",
+      "description": "Export Focus",
+      "color": "text-blue-600",
+      "iconName": "Globe"
+    },
+    {
+      "label": "Type",
+      "value": "Equity",
+      "description": "Investment",
+      "color": "text-purple-600",
+      "iconName": "TrendingUp"
+    }
+  ],
+  "expertTip": {
+    "title": "Export Focus",
+    "type": "tip",
+    "content": "This is primarily for EXPORT-focused businesses. You must demonstrate a clear strategy for international sales growth."
+  },
+  "seo": {
+    "keywords": [
+      "EDC",
+      "Women",
+      "in",
+      "Trade",
+      "Export"
+    ]
+  },
+  "comparisonTable": {
+    "title": "EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core EDC Women in Trade Export Financing  | Equity Capital & Export Support for Women Exporters Grant",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "Stack Your Benefits",
+      "href": "/blog/canada-housing-community-grants-2026",
+      "description": "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..."
+    },
+    {
+      "title": "SBA Grant Application Process: Complete Step-by-Step Guide",
+      "href": "/guides/sba-application-process",
+      "description": "Master the SBA application process with our comprehensive guide. Learn requirements, document preparation, common mistak..."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/canada-federal-grants",
+      "description": "Complete guide to government grants...."
+    }
+  ]
+}

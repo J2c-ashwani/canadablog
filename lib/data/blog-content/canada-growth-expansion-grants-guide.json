@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"To apply for Canada Growth & Expansion Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund, provincial expansion funds, export development grants, and scale-up. Funding available: up to $2.8B+.","shortAnswerQuestion":"How can my business apply for Canada Growth & Expansion Grants 2026 in 2026?","faq":[{"question":"What is the application deadline for Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $2."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Fund","value":"$2.8B","description":"SIF Program","color":"text-blue-600","iconName":"TrendingUp"},{"label":"Scale","value":"$10M+","description":"High Growth","color":"text-green-600","iconName":"BarChart"},{"label":"Export","value":"supported","description":"Global Reach","color":"text-purple-600","iconName":"Globe"},{"label":"Tech","value":"Adoption","description":"Priority","color":"text-orange-600","iconName":"Cpu"}],"expertTip":{"title":"Strategic Innovation Fund (SIF)","type":"success","content":"For large-scale expansion projects over $10 million, the <strong>Strategic Innovation Fund</strong> is your primary target. It offers repayable and non-repayable contributions for major investments."},"seo":{"keywords":["Canada","Growth","&","Expansion","Grants"]},"comparisonTable":{"title":"Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs Funding Options Overview","programs":[{"program":"Core Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs Grant","amount":"$2","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Canada Growth & Expansion Grants 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Topic Fit","href":"/blog/grant-writing-secrets-2026","description":"✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in ..."},{"title":"Digital Marketing Eligibility","href":"/blog/canada-irap-grants-2026","description":"\\ud83c\\udde8\\ud83c\\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\\..."},{"title":"Grants.gov Portal","href":"/blog/usda-sbir-agtech-grants","description":"Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for pre..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-4\">Who holds the Chequebook?</h2>\n                <p class=\"text-lg text-gray-600 max-w-3xl mx-auto\">\n                  Canada delivers expansion funding regionally. You do not apply to \"Ottawa\"; you apply to the agency covering your postal code.\n                </p>\n              </div>\n              <div class=\"overflow-x-auto bg-white rounded-xl shadow-lg border border-gray-200\">\n                <table class=\"min-w-full text-sm text-left\">\n                  <thead class=\"bg-gray-900 text-white font-bold\">\n                    <tr>\n                      <th class=\"p-5\">Region</th>\n                      <th class=\"p-5\">Agency Name</th>\n                      <th class=\"p-5\">Flagship Program</th>\n                      <th class=\"p-5\">Max Funding</th>\n                    </tr>\n                  </thead>\n                  <tbody class=\"divide-y divide-gray-100\">\n                    <tr class=\"hover:bg-gray-50\">\n                      <td class=\"p-5 font-bold text-emerald-900\">Southern Ontario</td>\n                      <td class=\"p-5 text-gray-700\">FedDev Ontario</td>\n                      <td class=\"p-5 text-gray-600\">Business Scale-up & Productivity</td>\n                      <td class=\"p-5 font-bold text-gray-900\">$10 Million</td>\n                    </tr>\n                    <tr class=\"hover:bg-gray-50\">\n                      <td class=\"p-5 font-bold text-emerald-900\">Northern Ontario</td>\n                      <td class=\"p-5 text-gray-700\">FedNor</td>\n                      <td class=\"p-5 text-gray-600\">REGI Scale-up</td>\n                      <td class=\"p-5 font-bold text-gray-900\">$5 Million</td>\n                    </tr>\n                    <tr class=\"hover:bg-gray-50\">\n                      <td class=\"p-5 font-bold text-emerald-900\">Western Canada (AB, SK, MB)</td>\n                      <td class=\"p-5 text-gray-700\">PrairiesCan</td>\n                      <td class=\"p-5 text-gray-600\">Business Scale-up</td>\n                      <td class=\"p-5 font-bold text-gray-900\">$5 Million</td>\n                    </tr>\n                    <tr class=\"hover:bg-gray-50\">\n                      <td class=\"p-5 font-bold text-emerald-900\">British Columbia</td>\n                      <td class=\"p-5 text-gray-700\">PacifiCan</td>\n                      <td class=\"p-5 text-gray-600\">Business Scale-up</td>\n                      <td class=\"p-5 font-bold text-gray-900\">$5 Million</td>\n                    </tr>\n                    <tr class=\"hover:bg-gray-50\">\n                      <td class=\"p-5 font-bold text-emerald-900\">Quebec</td>\n                      <td class=\"p-5 text-gray-700\">CED (DEC)</td>\n                      <td class=\"p-5 text-gray-600\">REGI</td>\n                      <td class=\"p-5 font-bold text-gray-900\">$2 Million</td>\n                    </tr>\n                    <tr class=\"hover:bg-gray-50\">\n                      <td class=\"p-5 font-bold text-emerald-900\">Atlantic Canada</td>\n                      <td class=\"p-5 text-gray-700\">ACOA</td>\n                      <td class=\"p-5 text-gray-600\">Regional Economic Growth</td>\n                      <td class=\"p-5 font-bold text-gray-900\">Based on Project</td>\n                    </tr>\n                  </tbody>\n                </table>\n              </div>\n            </div>\n          \n\n<h2 class=\"text-3xl font-bold text-gray-900\">The \"BSP\" Program Masterclass</h2>\n                  </div>\n                  <Badge class=\"bg-emerald-100 text-emerald-800 mb-6 px-3 py-1\">Best Capital in Canada</Badge>\n                  <p class=\"text-lg text-gray-700 mb-6\">\n                    The <strong>Business Scale-up and Productivity (BSP)</strong> program is the holy grail for established SMEs. It provides upfront cash to buy equipment or expand markets.\n                  </p>\n                  <div class=\"grid md:grid-cols-2 gap-6 mb-8\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">The Terms</h3>\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <ul class=\"text-sm space-y-3\">\n                          <li class=\"flex items-center\"> <strong>0% Interest</strong> (Always)</li>\n                          <li class=\"flex items-center\"> <strong>Unsecured</strong> (Usually no personal guarantee)</li>\n                          <li class=\"flex items-center\"> <strong>Up to 50%</strong> of project costs</li>\n                        </ul>\n                    </div>\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">The Catch</h3>\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <ul class=\"text-sm space-y-3\">\n                          <li class=\"flex items-center\"> <strong>Match Funding:</strong> You must prove you have the other 50%.</li>\n                          <li class=\"flex items-center\"> <strong>High Bar:</strong> Rejection rate is ~60%.</li>\n                          <li class=\"flex items-center\"> <strong>Reporting:</strong> Strict quarterly reporting on jobs created.</li>\n                        </ul>\n                    </div>\n                  </div>\n                  <h3 class=\"font-bold text-gray-900 mb-3\">Case Study: \"MetalFab Inc.\"</h3>\n                  <div class=\"bg-white border border-gray-200 p-6 rounded-lg shadow-sm\">\n                    <p class=\"text-gray-700 mb-4 text-sm\">\n                      MetalFab Inc. had $3M revenue and wanted to buy a $1M automated laser cutter to export to the USA.\n                    </p>\n                    <div class=\"space-y-2 text-sm\">\n                      <div class=\"flex justify-between border-b border-gray-100 pb-1\">\n                        <span>Total Project:</span>\n                        <span class=\"font-bold\">$1,000,000</span>\n                      </div>\n                      <div class=\"flex justify-between border-b border-gray-100 pb-1 text-emerald-700\">\n                        <span>FedDev Ontario (BSP) Contribution (0% Loan):</span>\n                        <span class=\"font-bold\">$350,000</span>\n                      </div>\n                      <div class=\"flex justify-between border-b border-gray-100 pb-1 text-blue-700\">\n                        <span>Bank Finance (Equipment Loan):</span>\n                        <span class=\"font-bold\">$550,000</span>\n                      </div>\n                      <div class=\"flex justify-between border-b border-gray-100 pb-1\">\n                        <span>Company Cash:</span>\n                        <span class=\"font-bold\">$100,000</span>\n                      </div>\n                    </div>\n                    <p class=\"mt-4 text-xs text-gray-500 bg-gray-50 p-2 rounded\">\n                      <strong>Outcome:</strong> By stacking the government 0% loan with a bank loan, they only needed $100k cash to buy a $1M machine.\n                    </p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "To apply for Canada Growth & Expansion Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund, provincial expansion funds, export development grants, and scale-up. Funding available: up to $2.8B+.",
+  "shortAnswerQuestion": "How can my business apply for Canada Growth & Expansion Grants 2026 in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Fund",
+      "value": "$2.8B",
+      "description": "SIF Program",
+      "color": "text-blue-600",
+      "iconName": "TrendingUp"
+    },
+    {
+      "label": "Scale",
+      "value": "$10M+",
+      "description": "High Growth",
+      "color": "text-green-600",
+      "iconName": "BarChart"
+    },
+    {
+      "label": "Export",
+      "value": "supported",
+      "description": "Global Reach",
+      "color": "text-purple-600",
+      "iconName": "Globe"
+    },
+    {
+      "label": "Tech",
+      "value": "Adoption",
+      "description": "Priority",
+      "color": "text-orange-600",
+      "iconName": "Cpu"
+    }
+  ],
+  "expertTip": {
+    "title": "Strategic Innovation Fund (SIF)",
+    "type": "success",
+    "content": "For large-scale expansion projects over $10 million, the <strong>Strategic Innovation Fund</strong> is your primary target. It offers repayable and non-repayable contributions for major investments."
+  },
+  "seo": {
+    "keywords": [
+      "Canada",
+      "Growth",
+      "&",
+      "Expansion",
+      "Grants"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Canada Growth & Expansion Grants  | .8B+ Scale-Up Funding Across 42+ Programs Grant",
+        "amount": "$2",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Canada Growth & Expansion Grants 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Topic Fit",
+      "href": "/blog/grant-writing-secrets-2026",
+      "description": "✍️ Increase your approval odds. Professional grant writers share their top strategies for crafting winning proposals in ..."
+    },
+    {
+      "title": "Digital Marketing Eligibility",
+      "href": "/blog/canada-irap-grants-2026",
+      "description": "\\ud83c\\udde8\\ud83c\\udde6 Canada IRAP Grants 2026: Industrial Research Assistance Program - $400M+ Innovation Powerhouse\\..."
+    },
+    {
+      "title": "Grants.gov Portal",
+      "href": "/blog/usda-sbir-agtech-grants",
+      "description": "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for pre..."
+    }
+  ]
+}

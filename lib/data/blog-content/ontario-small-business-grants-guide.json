@@ -1,1 +1,127 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Ontario small business grants and funding. Access Ontario Small Business Support Grant, Digital Main Street, Jobs & Prosperity Fund, and provincial tax credits. Funding available: up to $2.1B+.","shortAnswerQuestion":"What small business grants are available in 2026?","faq":[{"question":"What is the application deadline for Ontario Small Business Grants  | .1B+ Available for Ontario SMEs in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Ontario Small Business Grants  | .1B+ Available for Ontario SMEs?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $2."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Fund","value":"$2.1B","description":"Available","color":"text-green-600","iconName":"DollarSign"},{"label":"Target","value":"SME","description":"<500 EE","color":"text-blue-600","iconName":"Users"},{"label":"Region","value":"ON","description":"Ontario","color":"text-purple-600","iconName":"Flag"},{"label":"Type","value":"Mixed","description":"Grant/Loan","color":"text-orange-600","iconName":"Layers"}],"expertTip":{"title":"Digital Main Street","type":"tip","content":"If you're a retail or main street business, apply for <strong>Digital Main Street</strong> grants first. They're easier to get and build credibility for larger programs."},"seo":{"keywords":["Ontario","Small","Business","Grants","2026"]},"comparisonTable":{"title":"Ontario Small Business Grants  | .1B+ Available for Ontario SMEs Funding Options Overview","programs":[{"program":"Core Ontario Small Business Grants  | .1B+ Available for Ontario SMEs Grant","amount":"$2","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Overview","id":"overview"},{"title":"Eligibility Requirements","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"}],"eligibleCheck":true,"inlineCTA":{"title":"Need expert help applying for grants?","description":"Our funding specialists can help you navigate government programs and maximize your funding potential.","buttonText":"Get Funding Assistance","buttonLink":"/contact"},"relatedLinks":[{"title":"Stacking Funding","href":"/blog/irap-industrial-research-assistance-program-innovation","description":"Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with..."},{"title":"Lab Partnership","href":"/blog/epa-environmental-justice-2026","description":"The EPA..."},{"title":"Stacking Rules","href":"/blog/quebec-business-grants-2026","description":"🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Explore funds from Investiss..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-4\">What is Starter Company Plus?</h2>\n                <p class=\"text-lg text-gray-600 max-w-3xl mx-auto\">\n                  The best program for launching or expanding a small business in Ontario. It combines money with mandatory mentorship.\n                </p>\n              </div>\n              <div class=\"flex flex-col md:flex-row gap-12 items-start\">\n                <div class=\"flex-1\">\n                  <div class=\"bg-indigo-50 border border-indigo-100 p-8 rounded-2xl mb-8\">\n                    <div class=\"flex items-center justify-between mb-6\">\n                      <h3 class=\"text-2xl font-bold text-indigo-900\">The Deal</h3>\n                      <Badge class=\"bg-indigo-600 text-white text-lg px-4 py-1\">$5,000 Grant</Badge>\n                    </div>\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-gray-900 mb-2\">Who is it for?</h4>\n                        <ul class=\"space-y-2 text-sm text-gray-700\">\n                          <li class=\"flex items-center\"> 18+ Ontario Residents</li>\n                          <li class=\"flex items-center\"> Not in school full-time</li>\n                          <li class=\"flex items-center\"> Launching OR Expanding</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-gray-900 mb-2\">What you commit to:</h4>\n                        <ul class=\"space-y-2 text-sm text-gray-700\">\n                          <li class=\"flex items-center\"> 3-6 months mentorship</li>\n                          <li class=\"flex items-center\"> Write a full Business Plan</li>\n                          <li class=\"flex items-center\"> \"Pitch\" for the money</li>\n                        </ul>\n                      </div>\n                    </div>\n                  </div>\n                  <h3 class=\"font-bold text-gray-900 mb-3\">Comparison: Summer Company</h3>\n                  <div class=\"overflow-x-auto bg-white border border-gray-200 rounded-lg\">\n                    <table class=\"min-w-full text-sm text-left\">\n                      <thead class=\"bg-gray-100\">\n                        <tr>\n                          <th class=\"p-4 font-bold text-gray-900\">Feature</th>\n                          <th class=\"p-4 font-bold text-indigo-700\">Starter Company Plus</th>\n                          <th class=\"p-4 font-bold text-orange-700\">Summer Company</th>\n                        </tr>\n                      </thead>\n                      <tbody class=\"divide-y divide-gray-100\">\n                        <tr>\n                          <td class=\"p-4 font-medium\">Age</td>\n                          <td class=\"p-4\">18+ (Adults)</td>\n                          <td class=\"p-4\">15-29 (Students)</td>\n                        </tr>\n                        <tr>\n                          <td class=\"p-4 font-medium\">Amount</td>\n                          <td class=\"p-4\">$5,000</td>\n                          <td class=\"p-4\">$3,000</td>\n                        </tr>\n                        <tr>\n                          <td class=\"p-4 font-medium\">Requirement</td>\n                          <td class=\"p-4\">Business Plan Training</td>\n                          <td class=\"p-4\">Returning to school in Fall</td>\n                        </tr>\n                      </tbody>\n                    </table>\n                  </div>\n                </div>\n              </div>\n            </div>\n          \n\n<h2 class=\"text-3xl font-bold text-gray-900\">What are the \"Acronym\" Funds (SWODF, EODF, NOHFC)?</h2>\n                  <p class=\"text-gray-600\">Where the BIG money lives ($100k+)</p>\n                </div>\n              </div>\n              <div class=\"bg-white rounded-2xl p-8 shadow-sm border border-gray-200\">\n                <p class=\"text-gray-700 text-lg mb-8\">\n                  Ontario is divided into economic zones. Each zone has a \"Development Fund\" (ODF). These are for <strong>Growth and Expansion</strong> projects that create jobs.\n                </p>\n                <div class=\"grid md:grid-cols-3 gap-6\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\"><div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">SWODF</h3>\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <p class=\"font-bold text-sm mb-2\">Southwestern Ontario</p>\n                      <p class=\"text-xs text-gray-600 mb-4\">(London, Waterloo, Windsor)</p>\n                      <p class=\"text-emerald-700 font-bold text-lg\">15% Grant</p>\n                      <p class=\"text-xs text-gray-500\">On projects &gt;$500k</p>\n                  </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\"><div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">EODF</h3>\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <p class=\"font-bold text-sm mb-2\">Eastern Ontario</p>\n                      <p class=\"text-xs text-gray-600 mb-4\">(Ottawa, Kingston, Peterborough)</p>\n                      <p class=\"text-emerald-700 font-bold text-lg\">15% Grant</p>\n                      <p class=\"text-xs text-gray-500\">On projects &gt;$500k</p>\n                  </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\"><div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NOHFC</h3>\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <p class=\"font-bold text-sm mb-2\">Northern Ontario</p>\n                      <p class=\"text-xs text-gray-600 mb-4\">(Sudbury, Thunder Bay)</p>\n                      <p class=\"text-emerald-700 font-bold text-lg\">Up to 50%</p>\n                      <p class=\"text-xs text-gray-500\">Generous conditional contributions</p>\n                  </div>\n                </div>\n                <div class=\"mt-8 bg-emerald-50 p-6 rounded-lg border border-emerald-100\">\n                  <h4 class=\"font-bold text-emerald-900 mb-2\">The \"15% Rule\"</h4>\n                  <p class=\"text-sm text-gray-700\">\n                    Typically, these funds cover 10-15% of eligible costs for a massive expansion (e.g., building a factory). If you spend $1M, you might get a $150k grant (or forgivable loan).\n                  </p>\n                </div>\n              </div>\n            </div>\n          \n\n<h2 class=\"text-3xl font-bold mb-6\">What is Digital Main Street (ShopHERE)?</h2>\n              <p class=\"text-gray-700 mb-6\">While the famous $2,500 grant comes and goes, the <strong>ShopHERE</strong> program is a constant gem. It builds your e-commerce store for free.</p>\n              <div class=\"bg-blue-50 border border-blue-200 rounded-xl p-6\">\n                <h3 class=\"font-bold text-blue-900 mb-4 flex items-center\"> What you get</h3>\n                <div class=\"grid md:grid-cols-2 gap-6\">\n                  <div>\n                    <p class=\"text-sm font-bold text-gray-900 mb-1\">1. Free Shopify Store</p>\n                    <p class=\"text-xs text-gray-600\">Students build it for you. You just provide the photos and text. This saves you 40+ hours of work.</p>\n                  </div>\n                  <div>\n                    <p class=\"text-sm font-bold text-gray-900 mb-1\">2. 1-on-1 Training</p>\n                    <p class=\"text-xs text-gray-600\">They don't just hand it over; they teach you how to manage inventory and shipping.</p>\n                  </div>\n                </div>\n              </div>\n            </div>\n          \n\n<h2 class=\"text-3xl font-bold mb-4 text-purple-900\">What are Regional Innovation Centres (RICs)?</h2>\n                  <p class=\"text-purple-800 mb-4\">If you are a tech startup, stop looking at \"SBECs\" and start looking at \"RICs\". Ontario funds these hubs to scale tech.</p>\n                  <div class=\"grid md:grid-cols-2 gap-4 text-slate-900\">\n                    <div class=\"bg-white p-4 rounded-lg shadow-sm border border-purple-100\">\n                      <h4 class=\"font-bold mb-2\">MaRS (Toronto)</h4>\n                      <p class=\"text-xs\">The behemoth. Specialized streams for Health, Cleantech, and Fintech. Hard to get into, but massive investor access.</p>\n                    </div>\n                    <div class=\"bg-white p-4 rounded-lg shadow-sm border border-purple-100\">\n                      <h4 class=\"font-bold mb-2\">Communitech (Waterloo)</h4>\n                      <p class=\"text-xs\">For deep tech and SaaS. Known for connecting startups with big corporate buyers.</p>\n                    </div>\n                    <div class=\"bg-white p-4 rounded-lg shadow-sm border border-purple-100\">\n                      <h4 class=\"font-bold mb-2\">Invest Ottawa</h4>\n                      <p class=\"text-xs\">Focus on autonomous vehicles and defense via Area X.O.</p>\n                    </div>\n                    <div class=\"bg-white p-4 rounded-lg shadow-sm border border-purple-100\">\n                      <h4 class=\"font-bold mb-2\">Spark Centre (Durham)</h4>\n                      <p class=\"text-xs\">Great for energy and smart city startups.</p>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Ontario small business grants and funding. Access Ontario Small Business Support Grant, Digital Main Street, Jobs & Prosperity Fund, and provincial tax credits. Funding available: up to $2.1B+.",
+  "shortAnswerQuestion": "What small business grants are available in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Ontario Small Business Grants  | .1B+ Available for Ontario SMEs in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Ontario Small Business Grants  | .1B+ Available for Ontario SMEs?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $2."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Fund",
+      "value": "$2.1B",
+      "description": "Available",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Target",
+      "value": "SME",
+      "description": "<500 EE",
+      "color": "text-blue-600",
+      "iconName": "Users"
+    },
+    {
+      "label": "Region",
+      "value": "ON",
+      "description": "Ontario",
+      "color": "text-purple-600",
+      "iconName": "Flag"
+    },
+    {
+      "label": "Type",
+      "value": "Mixed",
+      "description": "Grant/Loan",
+      "color": "text-orange-600",
+      "iconName": "Layers"
+    }
+  ],
+  "expertTip": {
+    "title": "Digital Main Street",
+    "type": "tip",
+    "content": "If you're a retail or main street business, apply for <strong>Digital Main Street</strong> grants first. They're easier to get and build credibility for larger programs."
+  },
+  "seo": {
+    "keywords": [
+      "Ontario",
+      "Small",
+      "Business",
+      "Grants",
+      "2026"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Ontario Small Business Grants  | .1B+ Available for Ontario SMEs Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Ontario Small Business Grants  | .1B+ Available for Ontario SMEs Grant",
+        "amount": "$2",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "Stacking Funding",
+      "href": "/blog/irap-industrial-research-assistance-program-innovation",
+      "description": "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with..."
+    },
+    {
+      "title": "Lab Partnership",
+      "href": "/blog/epa-environmental-justice-2026",
+      "description": "The EPA..."
+    },
+    {
+      "title": "Stacking Rules",
+      "href": "/blog/quebec-business-grants-2026",
+      "description": "🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Explore funds from Investiss..."
+    }
+  ]
+}

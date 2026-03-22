@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs. Funding available: up to $850M+.","shortAnswerQuestion":"What innovation and technology grants are available in 2026?","faq":[{"question":"What is the application deadline for Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $850M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"AI","value":"$350M","description":"Scale AI","color":"text-blue-600","iconName":"Cpu"},{"label":"CDAP","value":"$15k","description":"Digital Boost","color":"text-green-600","iconName":"Laptop"},{"label":"Loan","value":"$100k","description":"0% Interest","color":"text-purple-600","iconName":"CreditCard"},{"label":"Cyber","value":"Secure","description":"Funding","color":"text-orange-600","iconName":"Shield"}],"expertTip":{"title":"Use CDAP for Strategy","type":"success","content":"The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan."},"seo":{"keywords":["Canada","Digital","&","AI","Innovation"]},"comparisonTable":{"title":"Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Funding Options Overview","programs":[{"program":"Core Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Grant","amount":"$850M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Canada Digital & AI Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Target ","href":"/guides/sba-growth-accelerator-fund-guide","description":"Guide to applying for SBA funding supporting business accelerators and incubators...."},{"title":"Combine Federal & Provincial","href":"/blog/quebec-small-business-grants-guide","description":"Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..."},{"title":"Clean Technology Strategy","href":"/blog/small-business-financing-2026","description":"🇨🇦 The complete guide to Canada..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">What are the Top Grants for AI and Digital Transformation?</h2>\n              <div class=\"space-y-8\">\n                {/* Scale AI */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Scale AI - AI-Powered Supply Chains Supercluster</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $5M+</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>AI Supply Chain</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Collaborative</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Canada's AI Supercluster providing funding for projects applying AI to supply chains, logistics,\n                      manufacturing, and retail operations across industries.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">AI Applications:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Predictive analytics and forecasting</li>\n                          <li>• Computer vision and quality control</li>\n                          <li>• Natural language processing</li>\n                          <li>• Autonomous systems and robotics</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Funding Support:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Up to 50% of eligible project costs</li>\n                          <li>• Consortium partnerships required</li>\n                          <li>• Scale-up and commercialization focus</li>\n                          <li>• Skills development included</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* CDAP */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">CDAP - Canada Digital Adoption Program</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>$15K + $100K Loan</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Digital Tools</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Quick Access</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Support for SMEs adopting digital technologies including AI tools, cloud platforms,\n                      e-commerce systems, and digital marketing solutions.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Digital Solutions:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• AI-powered business tools</li>\n                          <li>• Cloud computing platforms</li>\n                          <li>• E-commerce and digital marketing</li>\n                          <li>• CRM and business automation</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Program Benefits:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• $15K grant for digital adoption plan</li>\n                          <li>• Up to $100K interest-free loan</li>\n                          <li>• Digital advisor support included</li>\n                          <li>• Youth talent hiring support</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* IRAP AI Projects */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">IRAP AI & Machine Learning Projects</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $500K</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>AI R&D</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Non-Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      IRAP funding for SMEs developing AI/ML solutions, algorithms, and intelligent systems\n                      with commercial applications across industries.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">AI Development Focus:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Machine learning algorithms</li>\n                          <li>• Computer vision applications</li>\n                          <li>• Natural language processing</li>\n                          <li>• Predictive analytics systems</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Included:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• 60-80% of eligible R&D costs</li>\n                          <li>• Industrial Technology Advisor</li>\n                          <li>• Technical expertise access</li>\n                          <li>• Commercialization support</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Pan-Canadian AI Strategy */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Pan-Canadian AI Strategy Programs</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>$443M Investment</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>AI Research</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Academic-Industry</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Federal AI strategy supporting AI research institutes (Mila, Vector, Amii), talent development,\n                      and commercialization through industry partnerships.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">AI Institutes:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Mila (Montreal) - Deep learning</li>\n                          <li>• Vector (Toronto) - Machine learning</li>\n                          <li>• Amii (Edmonton) - Reinforcement learning</li>\n                          <li>• Industry partnership programs</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Areas:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• AI research collaborations</li>\n                          <li>• Talent development programs</li>\n                          <li>• Industry application projects</li>\n                          <li>• Technology commercialization</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs. Funding available: up to $850M+.",
+  "shortAnswerQuestion": "What innovation and technology grants are available in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $850M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "AI",
+      "value": "$350M",
+      "description": "Scale AI",
+      "color": "text-blue-600",
+      "iconName": "Cpu"
+    },
+    {
+      "label": "CDAP",
+      "value": "$15k",
+      "description": "Digital Boost",
+      "color": "text-green-600",
+      "iconName": "Laptop"
+    },
+    {
+      "label": "Loan",
+      "value": "$100k",
+      "description": "0% Interest",
+      "color": "text-purple-600",
+      "iconName": "CreditCard"
+    },
+    {
+      "label": "Cyber",
+      "value": "Secure",
+      "description": "Funding",
+      "color": "text-orange-600",
+      "iconName": "Shield"
+    }
+  ],
+  "expertTip": {
+    "title": "Use CDAP for Strategy",
+    "type": "success",
+    "content": "The Canada Digital Adoption Program (CDAP) pays for a consultant to write your digital plan. <strong>Use this plan</strong> to unlock the $100k interest-free BDC loan."
+  },
+  "seo": {
+    "keywords": [
+      "Canada",
+      "Digital",
+      "&",
+      "AI",
+      "Innovation"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Canada Digital & AI Innovation Grants  | + Funding | Scale AI & CDAP Grant",
+        "amount": "$850M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Canada Digital & AI Innovation Grants 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Target ",
+      "href": "/guides/sba-growth-accelerator-fund-guide",
+      "description": "Guide to applying for SBA funding supporting business accelerators and incubators...."
+    },
+    {
+      "title": "Combine Federal & Provincial",
+      "href": "/blog/quebec-small-business-grants-guide",
+      "description": "Complete guide to Quebec small business grants. Access Investissement Qu\\u00e9bec SME Fund, Quebec Startup Fund, R&D Tax..."
+    },
+    {
+      "title": "Clean Technology Strategy",
+      "href": "/blog/small-business-financing-2026",
+      "description": "🇨🇦 The complete guide to Canada..."
+    }
+  ]
+}

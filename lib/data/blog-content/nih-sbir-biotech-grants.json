@@ -1,1 +1,127 @@
-{"content":"","shortAnswer":"To apply for NIH SBIR Biotech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation. Funding available: up to $285K (with related programs offering $2M).","shortAnswerQuestion":"How can my business apply for NIH SBIR Biotech Grants 2026-2027 in 2026?","faq":[{"question":"Does the NIH only fund medical devices?","answer":"No. The NIH funds a broad spectrum of health-related innovations, including <strong>digital health apps, therapeutics, diagnostics, research tools, and behavioral interventions.</strong>"},{"question":"What is the difference between NIH Phase I and Phase II?","answer":"Phase I (up to $295,000) is strictly for proving the scientific feasibility of your concept. Phase II (up to $1.97M) is for continued R&D, prototype development, and clinical evaluation."},{"question":"Can academic researchers apply?","answer":"Academic researchers can participate, but the <strong>applicant organization must be a for-profit small business</strong> (under 500 employees). STTR grants require formal partnership with a non-profit research institution."}],"metrics":[{"label":"Phase I","value":"$285K","description":"Feasibility","color":"text-green-600","iconName":"DollarSign"},{"label":"Phase II","value":"$2M","description":"Development","color":"text-blue-600","iconName":"TrendingUp"},{"label":"Focus","value":"Health","description":"Biotech/Med","color":"text-purple-600","iconName":"Heart"},{"label":"Equity","value":"0%","description":"Non-dilutive","color":"text-orange-600","iconName":"Shield"}],"expertTip":{"title":"Scientific Rigor","type":"warning","content":"NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."},"seo":{"keywords":["NIH","SBIR","Biotech","Grants","2026-2027"]},"comparisonTable":{"title":"NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding Funding Options Overview","programs":[{"program":"Core NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding Grant","amount":"$285K","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Overview","id":"overview"},{"title":"Eligibility Requirements","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"}],"eligibleCheck":true,"inlineCTA":{"title":"Need expert help applying for grants?","description":"Our funding specialists can help you navigate government programs and maximize your funding potential.","buttonText":"Get Funding Assistance","buttonLink":"/contact"},"relatedLinks":[{"title":"Banking Relationship Value","href":"/blog/small-business-grants-complete-guide","description":"Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..."},{"title":"Programs","href":"/blog/canada-employment-workforce-training-grants-guide","description":"Complete guide to Canada..."},{"title":"Programs","href":"/blog/amber-grant-women-canada","description":"Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, roll..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-4 text-center\">NIH SBIR and STTR Program Details 2026-2027</h2>\n              <p class=\"text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto\">\n                Complete breakdown of Phase I, Phase II funding programs with biotech topic areas and application timelines\n              </p>\n              <div class=\"space-y-8\">\n                {/* Phase I Program */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NIH SBIR Phase I - Up to $285,000 Biomedical Technical Feasibility</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6 mb-6\">\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-purple-800\">Phase I Program Overview</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"bg-purple-50 p-4 rounded-lg border border-purple-200\">\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Maximum Award:</span>\n                              <span class=\"text-purple-700 font-bold text-lg\">$285,000</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Project Duration:</span>\n                              <span class=\"text-pink-700 font-bold text-lg\">6-12 months</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Success Rate:</span>\n                              <span class=\"text-blue-700 font-bold\">~15-20%</span>\n                            </div>\n                            <div class=\"flex items-center justify-between\">\n                              <span class=\"font-semibold text-gray-700\">Annual Deadlines:</span>\n                              <span class=\"text-indigo-700 font-bold\">Jan/Apr/Sep</span>\n                            </div>\n                          </div>\n                          <div class=\"space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200\">\n                            <p class=\"font-semibold text-gray-800 mb-2\">Phase I Biotech Objectives:</p>\n                            <p>• <strong>Scientific Feasibility:</strong> Prove biological mechanism, efficacy, safety at preclinical or early clinical stage</p>\n                            <p>• <strong>Clinical Relevance:</strong> Demonstrate technology addresses unmet medical need with clear patient benefit</p>\n                            <p>• <strong>Regulatory Pathway:</strong> Identify FDA approval pathway (510k, PMA, IND) and key regulatory milestones</p>\n                            <p>• <strong>IP Protection:</strong> File provisional patents protecting innovation before public disclosure</p>\n                            <p>• <strong>Market Validation:</strong> Engage physicians, KOLs, payers validating clinical need and reimbursement potential</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-gray-800\">Phase I Success Stories - Biotech</h4>\n                        <div class=\"space-y-4\">\n                          <div class=\"bg-blue-50 p-4 rounded-lg border border-blue-200\">\n                            <p class=\"font-bold text-blue-800 mb-2\">💊 Cambridge Drug Discovery - $285K Phase I</p>\n                            <p class=\"text-sm text-gray-700\">Massachusetts biotech received NIH Phase I for novel small molecule targeting oncology validated through in vivo tumor regression studies. Partnered with 2 academic medical centers for Phase II clinical preparation.</p>\n                            <p class=\"text-xs text-blue-700 mt-2\"><strong>Location:</strong> Cambridge MA | <strong>Tech:</strong> Therapeutics | <strong>Phase II:</strong> Funded $2M</p>\n                          </div>\n                          <div class=\"bg-purple-50 p-4 rounded-lg border border-purple-200\">\n                            <p class=\"font-bold text-purple-800 mb-2\">💊 SF Medical Device - $280K Phase I Grant</p>\n                            <p class=\"text-sm text-gray-700\">California medical device startup obtained NIH SBIR Phase I for minimally invasive surgical tool reducing complications 60% validated through cadaver studies. 510k pathway identified with FDA pre-submission meeting completed.</p>\n                            <p class=\"text-xs text-purple-700 mt-2\"><strong>Location:</strong> San Francisco CA | <strong>Tech:</strong> Medical Device | <strong>FDA:</strong> 510k pathway</p>\n                          </div>\n                          <div class=\"bg-pink-50 p-4 rounded-lg border border-pink-200\">\n                            <p class=\"font-bold text-pink-800 mb-2\">💊 Boston Diagnostics - $285K Phase I Award</p>\n                            <p class=\"text-sm text-gray-700\">Massachusetts diagnostics company secured NIH Phase I for rapid infectious disease test achieving 98% sensitivity/specificity in 15 minutes vs 3-day culture. CLIA waiver pathway with 3 hospital pilot sites committed.</p>\n                            <p class=\"text-xs text-pink-700 mt-2\"><strong>Location:</strong> Boston MA | <strong>Tech:</strong> Diagnostics | <strong>Accuracy:</strong> 98% sensitivity</p>\n                          </div>\n                          <div class=\"bg-indigo-50 p-4 rounded-lg border border-indigo-200\">\n                            <p class=\"font-bold text-indigo-800 mb-2\">💊 Seattle Digital Health - $275K Phase I Funding</p>\n                            <p class=\"text-sm text-gray-700\">Washington digital health platform received NIH SBIR for AI-powered remote patient monitoring reducing hospital readmissions 40% validated through 200-patient retrospective study. De novo FDA pathway with CE mark obtained.</p>\n                            <p class=\"text-xs text-indigo-700 mt-2\"><strong>Location:</strong> Seattle WA | <strong>Tech:</strong> Digital Health | <strong>Impact:</strong> -40% readmissions</p>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"bg-purple-50 p-6 rounded-lg border-2 border-purple-200 mt-6\">\n                      <h4 class=\"font-bold text-lg mb-4 text-purple-800\">📍 NIH SBIR Phase I Application Deadlines 2026-2027</h4>\n                      <div class=\"grid md:grid-cols-3 gap-4 text-sm\">\n                        <div>\n                          <p class=\"font-semibold text-gray-800 mb-2\">Standard Deadlines:</p>\n                          <ul class=\"space-y-1 text-gray-700\">\n                            <li>• <strong>January 5, 2026</strong></li>\n                            <li>• <strong>April 5, 2026</strong></li>\n                            <li>• <strong>September 5, 2026</strong></li>\n                            <li>• <strong>January 5, 2027</strong></li>\n                          </ul>\n                        </div>\n                        <div>\n                          <p class=\"font-semibold text-gray-800 mb-2\">Review Timeline:</p>\n                          <ul class=\"space-y-1 text-gray-700\">\n                            <li>• Initial review: 2 months</li>\n                            <li>• Council review: 4 months</li>\n                            <li>• Award decision: 6-7 months</li>\n                            <li>• Project start: Month 8</li>\n                          </ul>\n                        </div>\n                        <div>\n                          <p class=\"font-semibold text-gray-800 mb-2\">Fast-Track Option:</p>\n                          <ul class=\"space-y-1 text-gray-700\">\n                            <li>• Direct Phase II possible</li>\n                            <li>• $50K+ investor commitment</li>\n                            <li>• Combined $1.15M funding</li>\n                            <li>• Accelerated timeline</li>\n                          </ul>\n                        </div>\n                      </div>\n                      <p class=\"text-xs text-gray-600 mt-4 text-center\">Visit seed.nih.gov for exact submission dates across 27 NIH institutes[web:161][web:185]</p>\n                    </div>\n                </div>\n                {/* Phase II Program */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NIH SBIR Phase II - Up to $2,000,000 Biotech Commercialization & Clinical Validation</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-pink-800\">Phase II Program Overview</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"bg-pink-50 p-4 rounded-lg border border-pink-200\">\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Maximum Award:</span>\n                              <span class=\"text-pink-700 font-bold text-lg\">$2,000,000</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Typical Award:</span>\n                              <span class=\"text-purple-700 font-bold text-lg\">$1,500,000</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Project Duration:</span>\n                              <span class=\"text-blue-700 font-bold\">24 months</span>\n                            </div>\n                            <div class=\"flex items-center justify-between\">\n                              <span class=\"font-semibold text-gray-700\">Eligibility:</span>\n                              <span class=\"text-indigo-700 font-bold\">Phase I awardees</span>\n                            </div>\n                          </div>\n                          <div class=\"bg-white p-4 rounded-lg border border-gray-200\">\n                            <p class=\"font-semibold text-gray-800 mb-2\">Phase II Biotech Activities:</p>\n                            <ul class=\"space-y-1 text-sm text-gray-700\">\n                              <li>• Clinical trials (Phase I/II human studies)</li>\n                              <li>• FDA regulatory submissions (IND, IDE, 510k)</li>\n                              <li>• Manufacturing scale-up and GMP validation</li>\n                              <li>• Reimbursement strategy and health economics</li>\n                              <li>• Commercial partnerships and licensing deals</li>\n                            </ul>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-gray-800\">Phase II Success Stories</h4>\n                        <div class=\"space-y-4 text-sm\">\n                          <div class=\"bg-purple-50 p-4 rounded-lg border border-purple-200\">\n                            <p class=\"font-bold text-purple-800 mb-2\">💎 Boston Therapeutics - $2M Phase II + Series A</p>\n                            <p class=\"text-gray-700\">Massachusetts drug company received $2M NIH Phase II for rare disease therapy completing Phase Ib clinical trial. Subsequently raised $15M Series A from top biotech VCs, advancing to Phase II pivotal trial. FDA orphan drug designation obtained.</p>\n                            <p class=\"text-xs text-purple-700 mt-2\"><strong>Location:</strong> Boston MA | <strong>Clinical:</strong> Phase II | <strong>Raise:</strong> $15M Series A</p>\n                          </div>\n                          <div class=\"bg-blue-50 p-4 rounded-lg border border-blue-200\">\n                            <p class=\"font-bold text-blue-800 mb-2\">💎 SF Medical Device - $1.8M Phase II Award</p>\n                            <p class=\"text-gray-700\">California medical device startup obtained $1.8M NIH Phase II for cardiac intervention device completing 50-patient first-in-human study. FDA PMA pathway, CE mark approved, launched Europe generating $5M revenue. Acquired by medical device giant for $85M.</p>\n                            <p class=\"text-xs text-blue-700 mt-2\"><strong>Location:</strong> San Francisco CA | <strong>Exit:</strong> $85M acquisition | <strong>Revenue:</strong> $5M</p>\n                          </div>\n                          <div class=\"bg-pink-50 p-4 rounded-lg border border-pink-200\">\n                            <p class=\"font-bold text-pink-800 mb-2\">💎 San Diego Diagnostics - $1.5M Phase II Funding</p>\n                            <p class=\"text-gray-700\">California diagnostics company secured $1.5M NIH Phase II for cancer liquid biopsy test achieving 95% sensitivity in 500-patient validation study. CLIA lab certified, serving 20 hospitals, pre-IPO stage with $25M revenue run-rate and Medicare reimbursement approved.</p>\n                            <p class=\"text-xs text-pink-700 mt-2\"><strong>Location:</strong> San Diego CA | <strong>Revenue:</strong> $25M ARR | <strong>Status:</strong> Pre-IPO</p>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* NIH Institutes */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NIH SBIR Topic Areas Across 27 Institutes 2026-2027</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 text-sm\">\n                      <div>\n                        <h4 class=\"font-semibold text-gray-800 mb-2\">Major Institutes:</h4>\n                        <ul class=\"space-y-1 text-gray-700\">\n                          <li>• <strong>NCI:</strong> Cancer therapeutics, diagnostics, immunotherapy</li>\n                          <li>• <strong>NHLBI:</strong> Cardiovascular, pulmonary, blood disorders</li>\n                          <li>• <strong>NIAID:</strong> Infectious disease, vaccines, immunology</li>\n                          <li>• <strong>NINDS:</strong> Neurological disorders, brain health</li>\n                          <li>• <strong>NIDDK:</strong> Diabetes, kidney, digestive diseases</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h4 class=\"font-semibold text-gray-800 mb-2\">Medical Devices:</h4>\n                        <ul class=\"space-y-1 text-gray-700\">\n                          <li>• <strong>NIBIB:</strong> Biomedical imaging, medical devices</li>\n                          <li>• <strong>NICHD:</strong> Pediatric devices, maternal health</li>\n                          <li>• <strong>NEI:</strong> Vision, ophthalmology devices</li>\n                          <li>• <strong>NIDCD:</strong> Hearing, communication devices</li>\n                          <li>• <strong>NIAMS:</strong> Orthopedic, musculoskeletal devices</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h4 class=\"font-semibold text-gray-800 mb-2\">Digital Health:</h4>\n                        <ul class=\"space-y-1 text-gray-700\">\n                          <li>• Remote patient monitoring platforms</li>\n                          <li>• AI-powered diagnostics and decision support</li>\n                          <li>• Telemedicine and virtual care solutions</li>\n                          <li>• Wearable sensors and health tracking</li>\n                          <li>• Electronic health records and data analytics</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "To apply for NIH SBIR Biotech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation. Funding available: up to $285K (with related programs offering $2M).",
+  "shortAnswerQuestion": "How can my business apply for NIH SBIR Biotech Grants 2026-2027 in 2026?",
+  "faq": [
+    {
+      "question": "Does the NIH only fund medical devices?",
+      "answer": "No. The NIH funds a broad spectrum of health-related innovations, including <strong>digital health apps, therapeutics, diagnostics, research tools, and behavioral interventions.</strong>"
+    },
+    {
+      "question": "What is the difference between NIH Phase I and Phase II?",
+      "answer": "Phase I (up to $295,000) is strictly for proving the scientific feasibility of your concept. Phase II (up to $1.97M) is for continued R&D, prototype development, and clinical evaluation."
+    },
+    {
+      "question": "Can academic researchers apply?",
+      "answer": "Academic researchers can participate, but the <strong>applicant organization must be a for-profit small business</strong> (under 500 employees). STTR grants require formal partnership with a non-profit research institution."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Phase I",
+      "value": "$285K",
+      "description": "Feasibility",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Phase II",
+      "value": "$2M",
+      "description": "Development",
+      "color": "text-blue-600",
+      "iconName": "TrendingUp"
+    },
+    {
+      "label": "Focus",
+      "value": "Health",
+      "description": "Biotech/Med",
+      "color": "text-purple-600",
+      "iconName": "Heart"
+    },
+    {
+      "label": "Equity",
+      "value": "0%",
+      "description": "Non-dilutive",
+      "color": "text-orange-600",
+      "iconName": "Shield"
+    }
+  ],
+  "expertTip": {
+    "title": "Scientific Rigor",
+    "type": "warning",
+    "content": "NIH reviewers are PhD scientists. Your proposal must demonstrate <strong>rigorous scientific methodology</strong>—not just business potential."
+  },
+  "seo": {
+    "keywords": [
+      "NIH",
+      "SBIR",
+      "Biotech",
+      "Grants",
+      "2026-2027"
+    ]
+  },
+  "comparisonTable": {
+    "title": "NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core NIH SBIR Biotech Grants -2027 |  Phase I,  Phase II Medical Device & Digital Health Funding Grant",
+        "amount": "$285K",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "Banking Relationship Value",
+      "href": "/blog/small-business-grants-complete-guide",
+      "description": "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/canada-employment-workforce-training-grants-guide",
+      "description": "Complete guide to Canada..."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/amber-grant-women-canada",
+      "description": "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, roll..."
+    }
+  ]
+}

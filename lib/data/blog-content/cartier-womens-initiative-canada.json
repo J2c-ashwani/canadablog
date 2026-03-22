@@ -1,1 +1,125 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Cartier Women","shortAnswerQuestion":"What grants are available for women-owned businesses in 2026?","faq":[{"question":"What is the application deadline for Cartier Women in 2025-2026?","answer":"Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Cartier Women?","answer":"Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Award","value":"$100k","description":"First Place","color":"text-yellow-600","iconName":"Trophy"},{"label":"Runner","value":"$30k","description":"Top 3","color":"text-blue-600","iconName":"Award"},{"label":"Train","value":"Fellow","description":"INSEAD Program","color":"text-purple-600","iconName":"BookOpen"},{"label":"Scope","value":"Global","description":"Network","color":"text-orange-600","iconName":"Globe"}],"expertTip":{"title":"Impact Focus","type":"tip","content":"Cartier looks for <strong>social or environmental impact</strong>. Your application must clearly articulate how your business is solving a major global challenge, not just generating revenue."},"seo":{"keywords":["Cartier","Women"]},"comparisonTable":{"title":"Cartier Women Funding Options Overview","programs":[{"program":"Core Cartier Women Grant","amount":"Varies","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Cartier Women — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"The ITA Relationship is Key","href":"/guides/canada-digital-ai-funding-guide","description":"Funding opportunities for digital transformation and AI development projects...."},{"title":"Visit Your CFDC","href":"/blog/sred-tax-credits-2026","description":"🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada..."},{"title":"Industry Partnerships Boost Success","href":"/guides/apply-doe-clean-energy-grants","description":"How to apply for DOE funding for clean energy and sustainability projects...."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">Cartier Women's Initiative Award Programs</h2>\n              <div class=\"space-y-8\">\n                {/* Regional Awards - North America */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Regional Awards - North America</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-purple-800\">Award Structure</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-purple-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">1st Place:</span>\n                            <span class=\"text-purple-700 font-bold\">$100,000</span>\n                          </div>\n                          <div class=\"flex items-center justify-between bg-purple-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">2nd Place:</span>\n                            <span class=\"text-purple-700 font-bold\">$60,000</span>\n                          </div>\n                          <div class=\"flex items-center justify-between bg-purple-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">3rd Place:</span>\n                            <span class=\"text-purple-700 font-bold\">$30,000</span>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Fellowship Benefits</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Coaching:</strong> Tailored mentoring and executive coaching</p>\n                          <p><strong>Education:</strong> INSEAD business school courses</p>\n                          <p><strong>Visibility:</strong> Global media exposure and recognition</p>\n                          <p><strong>Network:</strong> Global fellows community connections</p>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"mt-6 p-4 bg-purple-50 rounded-lg\">\n                      <h5 class=\"font-semibold mb-2\">📋 North America Region Details:</h5>\n                      <div class=\"grid md:grid-cols-2 gap-4 text-sm\">\n                        <div>\n                          <ul class=\"space-y-1\">\n                            <li>• <strong>Coverage:</strong> Canada, United States, Mexico</li>\n                            <li>• <strong>Duration:</strong> January-December 2027 fellowship</li>\n                            <li>• <strong>In-Person:</strong> 1 week event April/May 2027</li>\n                          </ul>\n                        </div>\n                        <div>\n                          <ul class=\"space-y-1\">\n                            <li>• <strong>Time Commitment:</strong> 1-3 hours/week</li>\n                            <li>• <strong>Impact Reporting:</strong> 3 years post-fellowship</li>\n                            <li>• <strong>Filming:</strong> On-site business documentation</li>\n                          </ul>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Science & Technology Pioneer Award */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Science & Technology Pioneer Award</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-blue-800\">Deep Tech Ventures</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-blue-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Award Amount:</span>\n                            <span class=\"text-blue-700 font-bold\">$100K/$60K/$30K</span>\n                          </div>\n                          <div class=\"text-sm text-gray-700 space-y-1\">\n                            <p>• Deep tech businesses based on pioneering technology</p>\n                            <p>• Complex engineering processes or scientific discoveries</p>\n                            <p>• Not just disruptive business models</p>\n                            <p>• Same fellowship benefits as Regional Awards</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Ideal Candidates</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Technology:</strong> Pioneering new technology development</p>\n                          <p><strong>Scientific:</strong> Based on scientific discoveries</p>\n                          <p><strong>Engineering:</strong> Complex engineering innovations</p>\n                          <p><strong>Impact:</strong> Addresses UN SDGs through deep tech</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Cartier Women",
+  "shortAnswerQuestion": "What grants are available for women-owned businesses in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Cartier Women in 2025-2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2025-2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Cartier Women?",
+      "answer": "Funding amounts range depending on business size and scope. Typically, grants cover a percentage of eligible project costs."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Award",
+      "value": "$100k",
+      "description": "First Place",
+      "color": "text-yellow-600",
+      "iconName": "Trophy"
+    },
+    {
+      "label": "Runner",
+      "value": "$30k",
+      "description": "Top 3",
+      "color": "text-blue-600",
+      "iconName": "Award"
+    },
+    {
+      "label": "Train",
+      "value": "Fellow",
+      "description": "INSEAD Program",
+      "color": "text-purple-600",
+      "iconName": "BookOpen"
+    },
+    {
+      "label": "Scope",
+      "value": "Global",
+      "description": "Network",
+      "color": "text-orange-600",
+      "iconName": "Globe"
+    }
+  ],
+  "expertTip": {
+    "title": "Impact Focus",
+    "type": "tip",
+    "content": "Cartier looks for <strong>social or environmental impact</strong>. Your application must clearly articulate how your business is solving a major global challenge, not just generating revenue."
+  },
+  "seo": {
+    "keywords": [
+      "Cartier",
+      "Women"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Cartier Women Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Cartier Women Grant",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Cartier Women — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "The ITA Relationship is Key",
+      "href": "/guides/canada-digital-ai-funding-guide",
+      "description": "Funding opportunities for digital transformation and AI development projects...."
+    },
+    {
+      "title": "Visit Your CFDC",
+      "href": "/blog/sred-tax-credits-2026",
+      "description": "🇨🇦 The Scientific Research and Experimental Development (SR&ED) program is Canada..."
+    },
+    {
+      "title": "Industry Partnerships Boost Success",
+      "href": "/guides/apply-doe-clean-energy-grants",
+      "description": "How to apply for DOE funding for clean energy and sustainability projects...."
+    }
+  ]
+}

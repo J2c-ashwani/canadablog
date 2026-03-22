@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"To apply for Canada Export Development Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission. Funding available: up to $680M+.","shortAnswerQuestion":"How can my business apply for Canada Export Development Grants 2026 in 2026?","faq":[{"question":"What is the application deadline for Canada Export Development Grants  | + International Market Expansion Across 18+ Programs in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Canada Export Development Grants  | + International Market Expansion Across 18+ Programs?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $680M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Fund","value":"$50k","description":"CanExport","color":"text-blue-600","iconName":"Globe"},{"label":"Cost","value":"50%","description":"Reimbursed","color":"text-green-600","iconName":"DollarSign"},{"label":"Event","value":"Trade","description":"Shows/Travel","color":"text-purple-600","iconName":"Plane"},{"label":"SEO","value":"Paid","description":"Marketing","color":"text-orange-600","iconName":"Search"}],"expertTip":{"title":"Digital Marketing Eligibility","type":"success","content":"CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify."},"seo":{"keywords":["Canada","Export","Development","Grants","2026"]},"comparisonTable":{"title":"Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Funding Options Overview","programs":[{"program":"Core Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Grant","amount":"$680M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Canada Export Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Agriculture Angle","href":"/blog/sba-7a-loans-complete-guide","description":"Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5..."},{"title":"Dual Diversity Priority","href":"/blog/women-entrepreneurship-fund-canada","description":"Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..."},{"title":"Social Equity Priority","href":"/blog/michigan-manufacturing-renaissance-2026","description":"Michigan is investing $500 million to reclaim its manufacturing crown. New grants support Industry 4.0 adoption, EV supp..."}]}
+{
+  "content": "<h2 class=\"text-3xl md:text-4xl font-bold text-gray-900 mb-6\">Flagship Export Grant Programs Analyzed</h2>\n                <p class=\"text-lg text-gray-600 max-w-3xl mx-auto\">\n                  Canada's export funding landscape is vast. We've broken down the \"Big 3\" programs that provide the most substantial funding for SMEs, Creative Industries, and Innovation partners.\n                </p>\n              </div>\n              {/* Program 1: CanExport SMEs */}\n              <div class=\"mb-20\">\n                <div class=\"flex flex-col md:flex-row gap-8 items-start\">\n                  <div class=\"flex-1\">\n                    <div class=\"flex items-center mb-4\">\n                      <h3 class=\"text-3xl font-bold text-gray-900\">1. CanExport SMEs</h3>\n                    </div>\n                    <Badge class=\"bg-emerald-100 text-emerald-800 mb-6 px-3 py-1\">Most Popular</Badge>\n                    <p class=\"text-lg text-gray-700 mb-6\">\n                      The <strong>CanExport SMEs program</strong> is the primary vehicle for Canadian businesses looking to break into new international markets. It effectively de-risks your expansion by covering 50% of the costs associated with business development.\n                    </p>\n                    <div class=\"bg-gray-50 border border-gray-200 rounded-xl p-6 mb-6\">\n                      <h4 class=\"font-bold text-gray-900 mb-4 flex items-center\">\n                        The Hard Numbers\n                      </h4>\n                      <div class=\"grid grid-cols-2 gap-y-4 gap-x-8 text-sm\">\n                        <div>\n                          <p class=\"text-gray-500\">Max Funding</p>\n                          <p class=\"font-bold text-xl text-gray-900\">$50,000 Grant</p>\n                        </div>\n                        <div>\n                          <p class=\"text-gray-500\">Cost Sharing</p>\n                          <p class=\"font-bold text-xl text-gray-900\">50% Gov / 50% You</p>\n                        </div>\n                        <div>\n                          <p class=\"text-gray-500\">Project Budget</p>\n                          <p class=\"font-semibold text-gray-900\">$20,000 - $100,000</p>\n                        </div>\n                        <div>\n                          <p class=\"text-gray-500\">Application Deadline</p>\n                          <p class=\"font-semibold text-red-600\">May 29, 2026</p>\n                        </div>\n                      </div>\n                    </div>\n                    <h4 class=\"font-bold text-gray-900 mb-3\">What It Covers (Eligible Expenses)</h4>\n                    <ul class=\"space-y-3 mb-6\">\n                      {[\n                        \"Travel costs for meetings/trade shows (Economy airfare + $400/day per diem)\",\n                        \"Trade show registration and booth fees\",\n                        \"Marketing material translation and adaptation\",\n                        \"Search Engine Optimization (SEO) for target markets\",\n                        \"Legal advice on IP protection or certification in new markets\"\n                      ].map((item, i) => (\n                        <li key={i} class=\"flex items-start text-gray-700\">\n                          <span>{item}</span>\n                        </li>\n                      ))}\n                    </ul>\n                  </div>\n                  {/* Right Column: CanExport Sidebar */}\n                  <div class=\"w-full md:w-1/3\">\n                    <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                      <div class=\"absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg\">\n                        CRITICAL 2026 INFO\n                      </div>\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Eligibility Checklist</h3>\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"space-y-4\">\n                          <div class=\"flex items-start\">\n                            <div class=\"w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs mr-3 mt-0.5\">1</div>\n                            <p class=\"text-sm text-gray-600\"><strong>Incorporated</strong> federally or provincially (for-profit).</p>\n                          </div>\n                          <div class=\"flex items-start\">\n                            <div class=\"w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs mr-3 mt-0.5\">2</div>\n                            <p class=\"text-sm text-gray-600\"><strong>$300k - $100M revenue</strong> declared in last tax year.</p>\n                          </div>\n                          <div class=\"flex items-start\">\n                            <div class=\"w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs mr-3 mt-0.5\">3</div>\n                            <p class=\"text-sm text-gray-600\"><strong>1 to 500</strong> full-time equivalent employees.</p>\n                          </div>\n                          <div class=\"flex items-start\">\n                            <div class=\"w-6 h-6 rounded-full bg-emerald-100 flex items-center justify-center text-emerald-700 font-bold text-xs mr-3 mt-0.5\">4</div>\n                            <p class=\"text-sm text-gray-600\">Project targets a <strong>NEW market</strong> (or one with &lt; 10% sales).</p>\n                          </div>\n                        </div>\n                        <div class=\"mt-6 pt-4 border-t border-gray-100\">\n                          <p class=\"text-xs text-gray-500 italic pb-2\">\"Is the US considered one market?\"</p>\n                          <p class=\"text-sm font-semibold text-gray-900\">Yes. In 2026, the entire USA is treated as a single market. You cannot apply for \"California\" if you already export heavily to New York.</p>\n                        </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n              {/* Divider */}\n              <div class=\"h-px bg-gray-200 w-full mb-20\"></div>\n              {/* Program 2: Creative Export Canada */}\n              <div class=\"mb-20\">\n                <div class=\"flex flex-col md:flex-row-reverse gap-8 items-start\">\n                  <div class=\"flex-1\">\n                    <div class=\"flex items-center mb-4\">\n                      <h3 class=\"text-3xl font-bold text-gray-900\">2. Creative Export Canada</h3>\n                    </div>\n                    <Badge class=\"bg-purple-100 text-purple-800 mb-6 px-3 py-1\">Best for Media & Design</Badge>\n                    <p class=\"text-lg text-gray-700 mb-6\">\n                      For businesses in film, music, design, publishing, and interactive media, generic export grants often fall short. <strong>Creative Export Canada (CEC)</strong> fills this gap with substantial funding for projects that generate immediate export revenue.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-6 mb-6\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                          <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Export-Ready Stream</h3>\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                          <div class=\"text-3xl font-bold text-purple-700 mb-2\">Up to $2.5M</div>\n                          <p class=\"text-sm text-gray-600 mb-4\">For large-scale projects aiming to generate significant export revenues.</p>\n                          <ul class=\"text-sm space-y-2\">\n                            <li class=\"flex items-center\"> Min Project Cost: $300k</li>\n                            <li class=\"flex items-center\"> Coverage: Up to 75%</li>\n                          </ul>\n                      </div>\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                          <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Export Development Stream</h3>\n                        <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                          <div class=\"text-3xl font-bold text-blue-700 mb-2\">Build Capacity</div>\n                          <p class=\"text-sm text-gray-600 mb-4\">For earlier-stage companies needing to enter their first international market.</p>\n                          <ul class=\"text-sm space-y-2\">\n                            <li class=\"flex items-center\"> For firms &lt; $500M rev</li>\n                            <li class=\"flex items-center\"> Mentorship & Training</li>\n                          </ul>\n                      </div>\n                    </div>\n                    <p class=\"text-sm text-gray-500 italic\">\n                      <strong>Note:</strong> 2025-2026 intake is currently closed. Watch for the Winter 2026 announcement for the next funding round.\n                    </p>\n                  </div>\n                  {/* Left Column: Creative Sidebar */}\n                  <div class=\"w-full md:w-1/3\">\n                    <div class=\"bg-white p-6 rounded-lg border border-gray-200 shadow-md\">\n                      <h4 class=\"font-bold text-gray-900 mb-4\">Eligible Industries</h4>\n                      <div class=\"flex flex-wrap gap-2\">\n                        {[\"Audiovisual\", \"Music\", \"Performing Arts\", \"Publishing\", \"Visual Arts\", \"Design\", \"Interactive Digital Media\"].map(tag => (\n                          <span key={tag} class=\"bg-gray-100 text-gray-700 px-3 py-1 rounded-full text-xs font-medium border border-gray-200\">\n                            {tag}\n                          </span>\n                        ))}\n                      </div>\n                      <div class=\"mt-6\">\n                        <h4 class=\"font-bold text-gray-900 mb-2\">Key Criteria</h4>\n                        <p class=\"text-sm text-gray-600\">Must be Canadian-owned and controlled. Projects must focus on the commercial exploitation of creative content abroad.</p>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n              {/* Program 3: EDC Trade Impact */}\n              <div class=\"mb-12\">\n                <div class=\"bg-blue-900 text-white rounded-2xl p-8 md:p-12\">\n                  <div class=\"flex items-center mb-6\">\n                    <h3 class=\"text-3xl font-bold\">3. EDC Trade Impact Program</h3>\n                  </div>\n                  <div class=\"grid md:grid-cols-2 gap-12\">\n                    <div>\n                      <p class=\"text-blue-100 text-lg mb-6\">\n                        Export Development Canada (EDC) is not a grant agency—it's a financial powerhouse. Their Trade Impact Program provides the <strong>working capital and insurance</strong> that makes large export deals possible.\n                      </p>\n                      <ul class=\"space-y-4\">\n                        <li class=\"flex items-start\">\n                          <div>\n                            <strong class=\"block text-white\">Credit Insurance</strong>\n                            <span class=\"text-blue-200 text-sm\">Validates your foreign customer's credit and insures up to 90% of your invoice if they don't pay.</span>\n                          </div>\n                        </li>\n                        <li class=\"flex items-start\">\n                          <div>\n                            <strong class=\"block text-white\">Export Guarantee Program</strong>\n                            <span class=\"text-blue-200 text-sm\">EDC guarantees your bank loan, encouraging your local bank to lend you more working capital for export orders.</span>\n                          </div>\n                        </li>\n                      </ul>\n                    </div>\n                    <div class=\"bg-white/10 p-6 rounded-xl border border-white/20\">\n                      <h4 class=\"font-bold text-xl mb-4\">The \"Risk Mitigation\" Value</h4>\n                      <p class=\"text-blue-100 mb-4 text-sm\">\n                        Banks often refuse to count foreign receivables as collateral. EDC fixes this. By insuring your foreign invoices, you can often borrow against them, unlocking cash flow to fulfill the order.\n                      </p>\n                      <div class=\"mt-4 pt-4 border-t border-white/20\">\n                        <div class=\"flex justify-between items-center\">\n                          <span class=\"text-sm font-semibold\">Capacity</span>\n                          <span class=\"text-2xl font-bold text-yellow-400\">$5 Billion+</span>\n                        </div>\n                      </div>\n                    </div>\n                  </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "To apply for Canada Export Development Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission. Funding available: up to $680M+.",
+  "shortAnswerQuestion": "How can my business apply for Canada Export Development Grants 2026 in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Canada Export Development Grants  | + International Market Expansion Across 18+ Programs in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Canada Export Development Grants  | + International Market Expansion Across 18+ Programs?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $680M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Fund",
+      "value": "$50k",
+      "description": "CanExport",
+      "color": "text-blue-600",
+      "iconName": "Globe"
+    },
+    {
+      "label": "Cost",
+      "value": "50%",
+      "description": "Reimbursed",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Event",
+      "value": "Trade",
+      "description": "Shows/Travel",
+      "color": "text-purple-600",
+      "iconName": "Plane"
+    },
+    {
+      "label": "SEO",
+      "value": "Paid",
+      "description": "Marketing",
+      "color": "text-orange-600",
+      "iconName": "Search"
+    }
+  ],
+  "expertTip": {
+    "title": "Digital Marketing Eligibility",
+    "type": "success",
+    "content": "CanExport now covers <strong>exclusively digital activities</strong> like SEO and online advertising for foreign markets. You don't even need to travel to qualify."
+  },
+  "seo": {
+    "keywords": [
+      "Canada",
+      "Export",
+      "Development",
+      "Grants",
+      "2026"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Canada Export Development Grants  | + International Market Expansion Across 18+ Programs Grant",
+        "amount": "$680M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Canada Export Development Grants 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Agriculture Angle",
+      "href": "/blog/sba-7a-loans-complete-guide",
+      "description": "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5..."
+    },
+    {
+      "title": "Dual Diversity Priority",
+      "href": "/blog/women-entrepreneurship-fund-canada",
+      "description": "Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for exp..."
+    },
+    {
+      "title": "Social Equity Priority",
+      "href": "/blog/michigan-manufacturing-renaissance-2026",
+      "description": "Michigan is investing $500 million to reclaim its manufacturing crown. New grants support Industry 4.0 adoption, EV supp..."
+    }
+  ]
+}

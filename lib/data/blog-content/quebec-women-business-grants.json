@@ -1,1 +1,127 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d Funding available: up to $720M.","shortAnswerQuestion":"What grants are available for women-owned businesses in 2026?","faq":[{"question":"What is the application deadline for Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $720M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Fund","value":"$720M","description":"Women Focus","color":"text-pink-600","iconName":"DollarSign"},{"label":"Network","value":"RFDA","description":"Réseau Femmes","color":"text-purple-600","iconName":"Users"},{"label":"Max Grant","value":"$50K","description":"Per Business","color":"text-blue-600","iconName":"TrendingUp"},{"label":"Success","value":"89%","description":"Approval Rate","color":"text-green-600","iconName":"CheckCircle"}],"expertTip":{"title":"Réseau Connection","type":"success","content":"Joining <strong>Réseau des Femmes d'Affaires</strong> provides mentorship, networking, and significantly improves grant success rates for Quebec women entrepreneurs."},"seo":{"keywords":["Quebec","Women","Business","Grants","2026"]},"comparisonTable":{"title":"Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs Funding Options Overview","programs":[{"program":"Core Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs Grant","amount":"$720M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Overview","id":"overview"},{"title":"Eligibility Requirements","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"}],"eligibleCheck":true,"inlineCTA":{"title":"Need expert help applying for grants?","description":"Our funding specialists can help you navigate government programs and maximize your funding potential.","buttonText":"Get Funding Assistance","buttonLink":"/contact"},"relatedLinks":[{"title":"SDTC Environmental Impact","href":"/guides/federal-grants-application-tips","description":"Expert tips and strategies for writing winning federal grant applications...."},{"title":"Resource Conversion","href":"/blog/private-women-grants-guide","description":"Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250..."},{"title":"Community First","href":"/blog/nsf-stem-research-2026","description":"🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Guide to the new ..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">Quebec Women Business Support Programs</h2>\n              <div class=\"space-y-8\">\n                {/* J. Armand Bombardier Excellence Grants */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">J. Armand Bombardier Excellence Grants</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-blue-800\">Excellence Grants for Women Entrepreneurs</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-blue-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Grant Amount:</span>\n                            <span class=\"text-blue-700 font-bold\">$10,000</span>\n                          </div>\n                          <div class=\"space-y-2 text-sm text-gray-700\">\n                            <p>• Annual recognition for Quebec women entrepreneurs</p>\n                            <p>• Three categories: Cultural/Creative, Manufacturing, Technology</p>\n                            <p>• Businesses 1-5 years old eligible</p>\n                            <p>• 50%+ women ownership required</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Grant Categories</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Janine Bombardier Grant:</strong> Cultural and creative field</p>\n                          <p><strong>Claire B. Beaudoin Grant:</strong> Processing and manufacturing</p>\n                          <p><strong>Huguette B. Fontaine Grant:</strong> Technological innovation</p>\n                          <p><strong>Quebec Focus:</strong> Head office and activities in Quebec</p>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"mt-6 p-4 bg-blue-50 rounded-lg\">\n                      <h5 class=\"font-semibold mb-2\">📋 Application Requirements:</h5>\n                      <div class=\"grid md:grid-cols-2 gap-4 text-sm\">\n                        <div>\n                          <ul class=\"space-y-1\">\n                            <li>• <strong>CV:</strong> Entrepreneur curriculum vitae</li>\n                            <li>• <strong>Organizational Chart:</strong> Company structure</li>\n                            <li>• <strong>Financials:</strong> 2 years audited statements</li>\n                          </ul>\n                        </div>\n                        <div>\n                          <ul class=\"space-y-1\">\n                            <li>• <strong>Projections:</strong> 2-year financial forecasts</li>\n                            <li>• <strong>Roadmap:</strong> 18-month action plan</li>\n                            <li>• <strong>Video:</strong> 4-minute business presentation</li>\n                          </ul>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Réseau des Femmes d'Affaires du Québec (RFAQ) */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Réseau des Femmes d'Affaires du Québec (RFAQ)</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-indigo-800\">Quebec Business Women's Network</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-indigo-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Network Type:</span>\n                            <span class=\"text-indigo-700 font-bold\">Provincial Women Network</span>\n                          </div>\n                          <div class=\"text-sm text-gray-700 space-y-1\">\n                            <p>• Largest francophone women business network</p>\n                            <p>• Business development and networking</p>\n                            <p>• Leadership development programs</p>\n                            <p>• Advocacy for women entrepreneurs</p>\n                            <p>• Provincial events and conferences</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">RFAQ Services</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Networking:</strong> Provincial women business connections</p>\n                          <p><strong>Training:</strong> Business skills development programs</p>\n                          <p><strong>Mentorship:</strong> Experienced entrepreneur guidance</p>\n                          <p><strong>Advocacy:</strong> Policy development and representation</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Investissement Québec for Women */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Investissement Québec - Women Entrepreneurs</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-green-800\">Provincial Financing & Advisory</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-green-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Service Type:</span>\n                            <span class=\"text-green-700 font-bold\">Financing & Support</span>\n                          </div>\n                          <div class=\"text-sm text-gray-600\">\n                            <p>Provincial Crown corporation providing financing solutions, business advisory services,\n                              and market development support specifically for Quebec women-owned businesses across all sectors.</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">IQ Women Services</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Financing:</strong> Loans and equity investments</p>\n                          <p><strong>Advisory:</strong> Business strategy and growth planning</p>\n                          <p><strong>Market Development:</strong> Export and expansion support</p>\n                          <p><strong>Partnerships:</strong> Strategic business connections</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* CDEC de Québec - Inclusive Entrepreneurship */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">CDEC de Québec - Inclusive Entrepreneurship Ecosystem</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-purple-800\">Federal Funding Initiative</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-purple-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Funding Amount:</span>\n                            <span class=\"text-purple-700 font-bold\">$533,029</span>\n                          </div>\n                          <div class=\"text-sm text-gray-600\">\n                            <p>Federal funding for CDEC de Québec to transform the entrepreneurial ecosystem,\n                              addressing systemic barriers for women entrepreneurs through awareness, training,\n                              and policy development across Quebec.</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Program Focus</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Awareness:</strong> Challenges women entrepreneurs face</p>\n                          <p><strong>Tools:</strong> Support organization resources</p>\n                          <p><strong>Training:</strong> Employee and management development</p>\n                          <p><strong>Policy:</strong> Inclusive ecosystem transformation</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Indigenous Women Entrepreneurship Support */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Indigenous Women Entrepreneurship Support Program</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-orange-800\">First Nations Women Support</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-orange-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Grant Amount:</span>\n                            <span class=\"text-orange-700 font-bold\">Up to $5,000</span>\n                          </div>\n                          <div class=\"text-sm text-gray-700 space-y-1\">\n                            <p>• 75% of professional fees covered</p>\n                            <p>• First Nations women in Quebec</p>\n                            <p>• Existing or startup business projects</p>\n                            <p>• FNQLEDC support services access</p>\n                            <p>• $4,000 website development component</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Program Components</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Component 1:</strong> Professional fees up to $5,000/year</p>\n                          <p><strong>Component 2:</strong> Website development up to $4,000</p>\n                          <p><strong>Eligibility:</strong> Female First Nations members in Quebec</p>\n                          <p><strong>Support:</strong> Complementary to existing programs</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Women in Leadership Programs */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Women in Leadership Development Programs</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-pink-800\">Leadership & Governance</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-pink-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Focus:</span>\n                            <span class=\"text-pink-700 font-bold\">Leadership Skills</span>\n                          </div>\n                          <div class=\"text-sm text-gray-600\">\n                            <p>Comprehensive programs for women entrepreneurs to develop leadership capabilities,\n                              governance expertise, and strategic management skills through training, mentorship,\n                              and board placement opportunities.</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Leadership Services</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Training:</strong> Executive leadership development</p>\n                          <p><strong>Governance:</strong> Board readiness programs</p>\n                          <p><strong>Mentorship:</strong> Senior leader connections</p>\n                          <p><strong>Networking:</strong> Executive women networks</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d Funding available: up to $720M.",
+  "shortAnswerQuestion": "What grants are available for women-owned businesses in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $720M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Fund",
+      "value": "$720M",
+      "description": "Women Focus",
+      "color": "text-pink-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Network",
+      "value": "RFDA",
+      "description": "Réseau Femmes",
+      "color": "text-purple-600",
+      "iconName": "Users"
+    },
+    {
+      "label": "Max Grant",
+      "value": "$50K",
+      "description": "Per Business",
+      "color": "text-blue-600",
+      "iconName": "TrendingUp"
+    },
+    {
+      "label": "Success",
+      "value": "89%",
+      "description": "Approval Rate",
+      "color": "text-green-600",
+      "iconName": "CheckCircle"
+    }
+  ],
+  "expertTip": {
+    "title": "Réseau Connection",
+    "type": "success",
+    "content": "Joining <strong>Réseau des Femmes d'Affaires</strong> provides mentorship, networking, and significantly improves grant success rates for Quebec women entrepreneurs."
+  },
+  "seo": {
+    "keywords": [
+      "Quebec",
+      "Women",
+      "Business",
+      "Grants",
+      "2026"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Quebec Women Business Grants  |  Francophone Entrepreneur Support Programs Grant",
+        "amount": "$720M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "SDTC Environmental Impact",
+      "href": "/guides/federal-grants-application-tips",
+      "description": "Expert tips and strategies for writing winning federal grant applications...."
+    },
+    {
+      "title": "Resource Conversion",
+      "href": "/blog/private-women-grants-guide",
+      "description": "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250..."
+    },
+    {
+      "title": "Community First",
+      "href": "/blog/nsf-stem-research-2026",
+      "description": "🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Guide to the new ..."
+    }
+  ]
+}

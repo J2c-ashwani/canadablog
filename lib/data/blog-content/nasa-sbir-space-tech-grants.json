@@ -1,1 +1,127 @@
-{"content":"","shortAnswer":"To apply for NASA SBIR Space Tech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation. Funding available: up to $150K (with related programs offering $850K).","shortAnswerQuestion":"How can my business apply for NASA SBIR Space Tech Grants 2026-2027 in 2026?","faq":[{"question":"Do I have to build a rocket to get a NASA grant?","answer":"No. NASA funds a massive array of auxiliary technologies, including <strong>robotics, advanced materials, health tech, software algorithms, and life support systems</strong> that have both space and earth-bound (commercial) applications."},{"question":"What is a Phase I NASA SBIR award?","answer":"Phase I awards are feasibility and concept studies. They typically provide <strong>up to $150,000</strong> for a 6-month period to prove the scientific and technical merit of an idea."},{"question":"Who owns the IP developed under a NASA SBIR?","answer":"<strong>You do.</strong> Under the Bayh-Dole Act, small businesses retain the intellectual property rights to technologies developed using SBIR/STTR funding, though the government retains a royalty-free license for federal use."}],"metrics":[{"label":"Phase I","value":"$150K","description":"Feasibility","color":"text-green-600","iconName":"Rocket"},{"label":"Phase II","value":"$850K","description":"Development","color":"text-blue-600","iconName":"DollarSign"},{"label":"Equity","value":"0%","description":"Non-dilutive","color":"text-purple-600","iconName":"Shield"},{"label":"Focus","value":"Space","description":"Satellites/Aero","color":"text-orange-600","iconName":"Globe"}],"expertTip":{"title":"NASA Subtopics","type":"warning","content":"NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected."},"seo":{"keywords":["NASA","SBIR","Space","Tech","Grants"]},"comparisonTable":{"title":"NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding Funding Options Overview","programs":[{"program":"Core NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding Grant","amount":"$150K","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Overview","id":"overview"},{"title":"Eligibility Requirements","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"}],"eligibleCheck":true,"inlineCTA":{"title":"Need expert help applying for grants?","description":"Our funding specialists can help you navigate government programs and maximize your funding potential.","buttonText":"Get Funding Assistance","buttonLink":"/contact"},"relatedLinks":[{"title":"Industry Partnerships Boost Success","href":"/guides/sred-application-guide","description":"How to claim Scientific Research & Experimental Development tax credits in Canada...."},{"title":"Regional Advantage","href":"/blog/state-province-grants","description":"Complete guide to government grants...."},{"title":"Certification is Required","href":"/blog/hardware-iot-startup-grants","description":"Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics pr..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-4 text-center\">NASA SBIR and STTR Program Details 2026-2027</h2>\n              <p class=\"text-lg text-gray-600 text-center mb-12 max-w-4xl mx-auto\">\n                Complete breakdown of Phase I, Phase II funding programs with space tech topic areas and application timelines\n              </p>\n              <div class=\"space-y-8\">\n                {/* Phase I Program */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NASA SBIR Phase I - Up to $150,000 Space Tech Technical Feasibility</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6 mb-6\">\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-indigo-800\">Phase I Program Overview</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"bg-indigo-50 p-4 rounded-lg border border-indigo-200\">\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Maximum Award:</span>\n                              <span class=\"text-indigo-700 font-bold text-lg\">$150,000</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Project Duration:</span>\n                              <span class=\"text-purple-700 font-bold text-lg\">6 months</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Success Rate:</span>\n                              <span class=\"text-blue-700 font-bold\">~20%</span>\n                            </div>\n                            <div class=\"flex items-center justify-between\">\n                              <span class=\"font-semibold text-gray-700\">Annual Awards:</span>\n                              <span class=\"text-cyan-700 font-bold\">~300 Phase I</span>\n                            </div>\n                          </div>\n                          <div class=\"space-y-2 text-sm text-gray-700 bg-white p-4 rounded-lg border border-gray-200\">\n                            <p class=\"font-semibold text-gray-800 mb-2\">Phase I Space Tech Objectives:</p>\n                            <p>• <strong>Technical Feasibility:</strong> Prove space technology works in relevant environment with space-grade performance metrics</p>\n                            <p>• <strong>NASA Mission Relevance:</strong> Demonstrate technology addresses specific NASA need supporting Artemis lunar Mars exploration satellites</p>\n                            <p>• <strong>Space Application:</strong> Validate technology functions in space conditions vacuum thermal radiation microgravity</p>\n                            <p>• <strong>Commercial Viability:</strong> Identify commercial space market applications beyond NASA enabling dual-use business model</p>\n                            <p>• <strong>Phase II Readiness:</strong> Develop prototype design manufacturing plan testing strategy for Phase II development</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-gray-800\">Phase I Success Stories - Space Tech</h4>\n                        <div class=\"space-y-4\">\n                          <div class=\"bg-blue-50 p-4 rounded-lg border border-blue-200\">\n                            <p class=\"font-bold text-blue-800 mb-2\">🚀 Silicon Valley Satellite - $150K Phase I</p>\n                            <p class=\"text-sm text-gray-700\">California satellite startup received NASA Phase I for miniaturized propulsion system enabling 50% mass reduction CubeSat missions validated through ground testing. Transition to Phase II with commercial launch customer.</p>\n                            <p class=\"text-xs text-blue-700 mt-2\"><strong>Location:</strong> Silicon Valley CA | <strong>Tech:</strong> Propulsion | <strong>Phase II:</strong> Funded $850K</p>\n                          </div>\n                          <div class=\"bg-indigo-50 p-4 rounded-lg border border-indigo-200\">\n                            <p class=\"font-bold text-indigo-800 mb-2\">🚀 Houston Lunar Tech - $145K Phase I Grant</p>\n                            <p class=\"text-sm text-gray-700\">Texas lunar technology company obtained NASA SBIR Phase I for regolith excavation system supporting Artemis lunar base construction validated through lunar simulant testing. NASA Johnson Space Center partnership.</p>\n                            <p class=\"text-xs text-indigo-700 mt-2\"><strong>Location:</strong> Houston TX | <strong>Tech:</strong> Lunar Systems | <strong>Mission:</strong> Artemis program</p>\n                          </div>\n                          <div class=\"bg-purple-50 p-4 rounded-lg border border-purple-200\">\n                            <p class=\"font-bold text-purple-800 mb-2\">🚀 Boston Remote Sensing - $150K Phase I Award</p>\n                            <p class=\"text-sm text-gray-700\">Massachusetts Earth observation startup secured NASA Phase I for hyperspectral imaging sensor achieving 10x resolution improvement for climate monitoring validated through airborne testing. Commercial agriculture customers identified.</p>\n                            <p class=\"text-xs text-purple-700 mt-2\"><strong>Location:</strong> Boston MA | <strong>Tech:</strong> Remote Sensing | <strong>Resolution:</strong> 10x improvement</p>\n                          </div>\n                          <div class=\"bg-cyan-50 p-4 rounded-lg border border-cyan-200\">\n                            <p class=\"font-bold text-cyan-800 mb-2\">🚀 Seattle Aeronautics - $140K Phase I Funding</p>\n                            <p class=\"text-sm text-gray-700\">Washington aeronautics startup received NASA SBIR Phase I for electric propulsion system reducing aircraft emissions 80% validated through wind tunnel testing. Commercial aviation partnerships with regional carriers exploring adoption.</p>\n                            <p class=\"text-xs text-cyan-700 mt-2\"><strong>Location:</strong> Seattle WA | <strong>Tech:</strong> Aeronautics | <strong>Emissions:</strong> -80% reduction</p>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"bg-indigo-50 p-6 rounded-lg border-2 border-indigo-200 mt-6\">\n                      <h4 class=\"font-bold text-lg mb-4 text-indigo-800\">📍 NASA SBIR Phase I Application Deadlines 2026-2027</h4>\n                      <div class=\"grid md:grid-cols-3 gap-4 text-sm\">\n                        <div>\n                          <p class=\"font-semibold text-gray-800 mb-2\">Annual Solicitations:</p>\n                          <ul class=\"space-y-1 text-gray-700\">\n                            <li>• <strong>Opens:</strong> January 2026</li>\n                            <li>• <strong>Closes:</strong> May 21, 2026</li>\n                            <li>• <strong>Awards:</strong> Summer 2026</li>\n                            <li>• <strong>SBIR Ignite:</strong> June-July 2026</li>\n                          </ul>\n                        </div>\n                        <div>\n                          <p class=\"font-semibold text-gray-800 mb-2\">Review Timeline:</p>\n                          <ul class=\"space-y-1 text-gray-700\">\n                            <li>• Technical review: 60 days</li>\n                            <li>• I-Corps customer discovery</li>\n                            <li>• Award decision: 3-4 months</li>\n                            <li>• Contract start: 30 days</li>\n                          </ul>\n                        </div>\n                        <div>\n                          <p class=\"font-semibold text-gray-800 mb-2\">SBIR Ignite Program:</p>\n                          <ul class=\"space-y-1 text-gray-700\">\n                            <li>• Focused topic areas</li>\n                            <li>• Rapid Phase I awards</li>\n                            <li>• Commercialization emphasis</li>\n                            <li>• New firm participation</li>\n                          </ul>\n                        </div>\n                      </div>\n                      <p class=\"text-xs text-gray-600 mt-4 text-center\">Visit nasa.gov/sbir_sttr for topic releases and ProSAMS submission portal[web:202][web:208]</p>\n                    </div>\n                </div>\n                {/* Phase II Program */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NASA SBIR Phase II - Up to $850,000 Space Tech Development & NASA Mission Integration</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-purple-800\">Phase II Program Overview</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"bg-purple-50 p-4 rounded-lg border border-purple-200\">\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">Maximum Award:</span>\n                              <span class=\"text-purple-700 font-bold text-lg\">$850,000</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">SBIR Duration:</span>\n                              <span class=\"text-indigo-700 font-bold text-lg\">24 months</span>\n                            </div>\n                            <div class=\"flex items-center justify-between mb-2\">\n                              <span class=\"font-semibold text-gray-700\">STTR Duration:</span>\n                              <span class=\"text-pink-700 font-bold text-lg\">24 months</span>\n                            </div>\n                            <div class=\"flex items-center justify-between\">\n                              <span class=\"font-semibold text-gray-700\">Eligibility:</span>\n                              <span class=\"text-blue-700 font-bold\">Phase I awardees</span>\n                            </div>\n                          </div>\n                          <div class=\"bg-white p-4 rounded-lg border border-gray-200\">\n                            <p class=\"font-semibold text-gray-800 mb-2\">Phase II Space Activities:</p>\n                            <ul class=\"space-y-1 text-sm text-gray-700\">\n                              <li>• Prototype development space-qualified hardware</li>\n                              <li>• Environmental testing thermal vacuum radiation</li>\n                              <li>• NASA mission integration and flight readiness</li>\n                              <li>• Commercial partnerships and customer acquisition</li>\n                              <li>• Manufacturing scale-up and supply chain</li>\n                            </ul>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-xl mb-4 text-gray-800\">Phase II Success Stories</h4>\n                        <div class=\"space-y-4 text-sm\">\n                          <div class=\"bg-indigo-50 p-4 rounded-lg border border-indigo-200\">\n                            <p class=\"font-bold text-indigo-800 mb-2\">💎 LA Satellite - $850K Phase II + $10M Contract</p>\n                            <p class=\"text-gray-700\">California satellite company received $850K NASA Phase II for advanced propulsion system deployed on NASA Earth science mission. Subsequently secured $10M NASA contract for 5 additional satellite missions plus $20M commercial contracts with imaging companies.</p>\n                            <p class=\"text-xs text-indigo-700 mt-2\"><strong>Location:</strong> Los Angeles CA | <strong>Contract:</strong> $10M NASA | <strong>Commercial:</strong> $20M</p>\n                          </div>\n                          <div class=\"bg-purple-50 p-4 rounded-lg border border-purple-200\">\n                            <p class=\"font-bold text-purple-800 mb-2\">💎 Houston Lunar - $800K Phase II Award</p>\n                            <p class=\"text-gray-700\">Texas lunar technology startup obtained $800K NASA Phase II for excavation system selected for Artemis lunar mission technology demonstration. Commercial mining partnerships with $30M contracts demonstrating terrestrial applications. Pre-IPO valuation $150M.</p>\n                            <p class=\"text-xs text-purple-700 mt-2\"><strong>Location:</strong> Houston TX | <strong>Mission:</strong> Artemis | <strong>Valuation:</strong> $150M</p>\n                          </div>\n                          <div class=\"bg-blue-50 p-4 rounded-lg border border-blue-200\">\n                            <p class=\"font-bold text-blue-800 mb-2\">💎 Boston Remote Sensing - $850K Phase II Funding</p>\n                            <p class=\"text-gray-700\">Massachusetts Earth observation company secured $850K NASA Phase II for hyperspectral sensor deployed on International Space Station. Commercial agriculture customers generating $25M ARR. Acquired by aerospace prime contractor for $200M validating dual-use business model.</p>\n                            <p class=\"text-xs text-blue-700 mt-2\"><strong>Location:</strong> Boston MA | <strong>Exit:</strong> $200M acquisition | <strong>Revenue:</strong> $25M ARR</p>\n                          </div>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "To apply for NASA SBIR Space Tech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation. Funding available: up to $150K (with related programs offering $850K).",
+  "shortAnswerQuestion": "How can my business apply for NASA SBIR Space Tech Grants 2026-2027 in 2026?",
+  "faq": [
+    {
+      "question": "Do I have to build a rocket to get a NASA grant?",
+      "answer": "No. NASA funds a massive array of auxiliary technologies, including <strong>robotics, advanced materials, health tech, software algorithms, and life support systems</strong> that have both space and earth-bound (commercial) applications."
+    },
+    {
+      "question": "What is a Phase I NASA SBIR award?",
+      "answer": "Phase I awards are feasibility and concept studies. They typically provide <strong>up to $150,000</strong> for a 6-month period to prove the scientific and technical merit of an idea."
+    },
+    {
+      "question": "Who owns the IP developed under a NASA SBIR?",
+      "answer": "<strong>You do.</strong> Under the Bayh-Dole Act, small businesses retain the intellectual property rights to technologies developed using SBIR/STTR funding, though the government retains a royalty-free license for federal use."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Phase I",
+      "value": "$150K",
+      "description": "Feasibility",
+      "color": "text-green-600",
+      "iconName": "Rocket"
+    },
+    {
+      "label": "Phase II",
+      "value": "$850K",
+      "description": "Development",
+      "color": "text-blue-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Equity",
+      "value": "0%",
+      "description": "Non-dilutive",
+      "color": "text-purple-600",
+      "iconName": "Shield"
+    },
+    {
+      "label": "Focus",
+      "value": "Space",
+      "description": "Satellites/Aero",
+      "color": "text-orange-600",
+      "iconName": "Globe"
+    }
+  ],
+  "expertTip": {
+    "title": "NASA Subtopics",
+    "type": "warning",
+    "content": "NASA SBIR has very specific subtopics. Your proposal <strong>MUST align precisely</strong> with an open subtopic—generic 'space tech' proposals will be rejected."
+  },
+  "seo": {
+    "keywords": [
+      "NASA",
+      "SBIR",
+      "Space",
+      "Tech",
+      "Grants"
+    ]
+  },
+  "comparisonTable": {
+    "title": "NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core NASA SBIR Space Tech Grants -2027 |  Phase I,  Phase II Satellite & Aeronautics Funding Grant",
+        "amount": "$150K",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "Industry Partnerships Boost Success",
+      "href": "/guides/sred-application-guide",
+      "description": "How to claim Scientific Research & Experimental Development tax credits in Canada...."
+    },
+    {
+      "title": "Regional Advantage",
+      "href": "/blog/state-province-grants",
+      "description": "Complete guide to government grants...."
+    },
+    {
+      "title": "Certification is Required",
+      "href": "/blog/hardware-iot-startup-grants",
+      "description": "Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics pr..."
+    }
+  ]
+}

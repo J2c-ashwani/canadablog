@@ -1,1 +1,127 @@
-{"content":"","shortAnswer":"To apply for Stage 3: Demonstration & Pilot Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for. Funding available: up to $15M.","shortAnswerQuestion":"How can my business apply for Stage 3: Demonstration & Pilot Funding Canada 2026 in 2026?","faq":[{"question":"What is the application deadline for Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $15M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Fund","value":"$15M","description":"SDTC Max","color":"text-green-600","iconName":"Zap"},{"label":"Share","value":"33%","description":"Contribution","color":"text-blue-600","iconName":"PieChart"},{"label":"Stage","value":"TRL 7-8","description":"Pilot Phase","color":"text-purple-600","iconName":"Activity"},{"label":"IP","value":"Keep","description":"Ownership","color":"text-orange-600","iconName":"Lock"}],"expertTip":{"title":"Pre-Revenue Eligibility","type":"tip","content":"Demonstration funds like SDTC are specifically for <strong>pre-revenue technologies</strong>. If you are already selling the product commercially, you are too late for this stage."},"seo":{"keywords":["Stage","3:","Demonstration","&","Pilot"]},"comparisonTable":{"title":"Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding Funding Options Overview","programs":[{"program":"Core Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding Grant","amount":"$15M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Overview","id":"overview"},{"title":"Eligibility Requirements","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"}],"eligibleCheck":true,"inlineCTA":{"title":"Need expert help applying for grants?","description":"Our funding specialists can help you navigate government programs and maximize your funding potential.","buttonText":"Get Funding Assistance","buttonLink":"/contact"},"relatedLinks":[{"title":"Programs","href":"/blog/alberta-women-business-grants","description":"Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sect..."},{"title":"Hire Students for Free","href":"/blog/2026-grant-preview-early-bird","description":"\\ud83d\\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\\n    \\n      \\n        \\ud83c\\..."},{"title":"Micro-Grants","href":"/blog/alberta-business-grants-2026","description":"🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">What are the Major Stage 3 Demonstration & Pilot Programs?</h2>\n              <div class=\"space-y-8\">\n                {/* SDTC Demonstration */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">SDTC - Sustainable Development Technology Canada</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $15M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>CleanTech Demo</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Canada's premier cleantech funding program supporting large-scale demonstration and pilot projects\n                      for climate change, clean air, clean water, and clean soil technologies at pre-commercial stages.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Demonstration Focus:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Pre-commercial scale demonstration</li>\n                          <li>• Real-world operating conditions</li>\n                          <li>• Performance validation at scale</li>\n                          <li>• Environmental impact measurement</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Program Features:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Up to 33% project funding (repayable)</li>\n                          <li>• Multi-year project support</li>\n                          <li>• Technical and business advisory</li>\n                          <li>• Strategic partnership facilitation</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Clean Growth Program */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Clean Growth Program - Innovation & Scale-up</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $10M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Industrial Pilots</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Federal program supporting clean technology demonstration and deployment in industrial settings,\n                      focusing on emissions reduction, energy efficiency, and resource productivity.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Project Types:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Industrial demonstration projects</li>\n                          <li>• First-of-kind installations</li>\n                          <li>• Scale-up manufacturing pilots</li>\n                          <li>• Commercial validation projects</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Included:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Up to 50% of eligible costs</li>\n                          <li>• Repayable contribution structure</li>\n                          <li>• Partnership development support</li>\n                          <li>• Market access facilitation</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Sector Pilot Programs */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Sector-Specific Pilot Programs</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>$1M - $5M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Industry Pilots</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Varies</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Industry-specific demonstration and pilot programs across agriculture, manufacturing, energy,\n                      and other sectors supporting technology validation in real-world applications.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Sector Examples:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Agricultural technology pilots</li>\n                          <li>• Manufacturing automation demos</li>\n                          <li>• Energy system demonstrations</li>\n                          <li>• Transportation technology pilots</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Pilot Features:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Real customer/user testing</li>\n                          <li>• Performance data collection</li>\n                          <li>• Business model validation</li>\n                          <li>• Market feedback and iteration</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Strategic Innovation Fund */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Strategic Innovation Fund (SIF) - Demonstration Stream</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>$10M - $50M+</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Large Projects</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Federal program supporting large-scale demonstration projects with significant economic and\n                      innovation impact, particularly in strategic sectors and transformative technologies.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Project Requirements:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Significant economic impact</li>\n                          <li>• Strategic sector alignment</li>\n                          <li>• Large-scale demonstration</li>\n                          <li>• Job creation potential</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Funding Structure:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Repayable contributions</li>\n                          <li>• Multi-year project timelines</li>\n                          <li>• Co-investment requirements</li>\n                          <li>• Performance milestones</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "To apply for Stage 3: Demonstration & Pilot Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for. Funding available: up to $15M.",
+  "shortAnswerQuestion": "How can my business apply for Stage 3: Demonstration & Pilot Funding Canada 2026 in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $15M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Fund",
+      "value": "$15M",
+      "description": "SDTC Max",
+      "color": "text-green-600",
+      "iconName": "Zap"
+    },
+    {
+      "label": "Share",
+      "value": "33%",
+      "description": "Contribution",
+      "color": "text-blue-600",
+      "iconName": "PieChart"
+    },
+    {
+      "label": "Stage",
+      "value": "TRL 7-8",
+      "description": "Pilot Phase",
+      "color": "text-purple-600",
+      "iconName": "Activity"
+    },
+    {
+      "label": "IP",
+      "value": "Keep",
+      "description": "Ownership",
+      "color": "text-orange-600",
+      "iconName": "Lock"
+    }
+  ],
+  "expertTip": {
+    "title": "Pre-Revenue Eligibility",
+    "type": "tip",
+    "content": "Demonstration funds like SDTC are specifically for <strong>pre-revenue technologies</strong>. If you are already selling the product commercially, you are too late for this stage."
+  },
+  "seo": {
+    "keywords": [
+      "Stage",
+      "3:",
+      "Demonstration",
+      "&",
+      "Pilot"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Stage 3: Demonstration & Pilot Funding Canada  | SDTC & Clean Growth | Up to  Project Funding Grant",
+        "amount": "$15M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "Programs",
+      "href": "/blog/alberta-women-business-grants",
+      "description": "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sect..."
+    },
+    {
+      "title": "Hire Students for Free",
+      "href": "/blog/2026-grant-preview-early-bird",
+      "description": "\\ud83d\\ude80 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline\\n    \\n      \\n        \\ud83c\\..."
+    },
+    {
+      "title": "Micro-Grants",
+      "href": "/blog/alberta-business-grants-2026",
+      "description": "🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned..."
+    }
+  ]
+}

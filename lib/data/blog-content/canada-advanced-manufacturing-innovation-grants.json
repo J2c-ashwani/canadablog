@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs. Funding available: up to $3.1B+.","shortAnswerQuestion":"What innovation and technology grants are available in 2026?","faq":[{"question":"What is the application deadline for Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $3."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Total","value":"$3.5B","description":"NGen Funding","color":"text-blue-600","iconName":"Factory"},{"label":"Project","value":"$500k","description":"Avg Grant","color":"text-green-600","iconName":"DollarSign"},{"label":"Tech","value":"AI/Robotics","description":"Priority","color":"text-purple-600","iconName":"Cpu"},{"label":"Scale","value":"Global","description":"Export Focus","color":"text-orange-600","iconName":"Globe"}],"expertTip":{"title":"Focus on NGen","type":"tip","content":"NGen (Next Generation Manufacturing Canada) is the primary funding body. Join their cluster <strong>before applying</strong> to access exclusive member-only funding calls."},"seo":{"keywords":["Canada","Advanced","Manufacturing","Innovation","Grants"]},"comparisonTable":{"title":"Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen Funding Options Overview","programs":[{"program":"Core Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen Grant","amount":"$3","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Canada Advanced Manufacturing Innovation Grants — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Answer the ","href":"/guides/apply-irap-grants","description":"Complete guide to applying for Industrial Research Assistance Program funding in Canada...."},{"title":"Programs","href":"/blog/biotech-life-sciences-grants","description":"Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA..."},{"title":"Layered Funding Strategy","href":"/blog/software-saas-startup-grants","description":"Complete 2026-2027 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1...."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">What are the Top Grants for Advanced Manufacturing?</h2>\n              <div class=\"space-y-8\">\n                {/* NGen - Next Generation Manufacturing Canada */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">NGen - Next Generation Manufacturing Canada</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $10M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Collaborative</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to 3 Years</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Canada's Advanced Manufacturing Supercluster providing funding for collaborative projects that\n                      advance Industry 4.0, smart manufacturing, and manufacturing innovation.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Priority Technologies:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Advanced robotics and automation</li>\n                          <li>• AI and machine learning in manufacturing</li>\n                          <li>• Digital twins and simulation</li>\n                          <li>• Additive manufacturing (3D printing)</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Funding Coverage:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Up to 50% of eligible project costs</li>\n                          <li>• Consortium-based projects required</li>\n                          <li>• Scale-up and commercialization focus</li>\n                          <li>• Skills development support included</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* IRAP Manufacturing Innovation */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">IRAP Manufacturing Innovation</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $500K</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>SMEs</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Non-Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      IRAP funding specifically for manufacturing SMEs developing innovative production technologies,\n                      automation solutions, and advanced manufacturing capabilities.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Manufacturing Focus:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Process automation and optimization</li>\n                          <li>• Production technology development</li>\n                          <li>• Quality control systems</li>\n                          <li>• Supply chain digitization</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Included:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• 60-80% of eligible R&D costs</li>\n                          <li>• Industrial Technology Advisor</li>\n                          <li>• Youth employment support</li>\n                          <li>• Access to research networks</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* CDAP - Canada Digital Adoption Program */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">CDAP - Canada Digital Adoption Program</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $15K + Loan</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Digital Tools</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Quick Access</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Support for manufacturers adopting digital technologies including automation systems,\n                      ERP/MES platforms, IoT sensors, and Industry 4.0 solutions.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Digital Solutions:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Manufacturing execution systems (MES)</li>\n                          <li>• Enterprise resource planning (ERP)</li>\n                          <li>• IoT and sensor networks</li>\n                          <li>• Cloud-based manufacturing platforms</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Program Benefits:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• $15K grant for digital adoption plan</li>\n                          <li>• Up to $100K interest-free loan</li>\n                          <li>• Digital advisor support included</li>\n                          <li>• E-commerce platform development</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Regional Manufacturing Programs */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Regional Manufacturing Development</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Varies by Region</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Expansion Focus</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Scale-up</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Regional Development Agencies (RDAs) provide manufacturing-specific funding for facility\n                      expansion, equipment modernization, and productivity improvements.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">RDA Programs:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• FedDev Ontario - Advanced Manufacturing</li>\n                          <li>• PrairiesCan - Manufacturing Growth</li>\n                          <li>• PacifiCan - BC Manufacturing</li>\n                          <li>• ACOA - Atlantic Manufacturing</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Eligible Activities:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Equipment and machinery acquisition</li>\n                          <li>• Facility expansion and modernization</li>\n                          <li>• Process improvement initiatives</li>\n                          <li>• Workforce training and development</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs. Funding available: up to $3.1B+.",
+  "shortAnswerQuestion": "What innovation and technology grants are available in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $3."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Total",
+      "value": "$3.5B",
+      "description": "NGen Funding",
+      "color": "text-blue-600",
+      "iconName": "Factory"
+    },
+    {
+      "label": "Project",
+      "value": "$500k",
+      "description": "Avg Grant",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Tech",
+      "value": "AI/Robotics",
+      "description": "Priority",
+      "color": "text-purple-600",
+      "iconName": "Cpu"
+    },
+    {
+      "label": "Scale",
+      "value": "Global",
+      "description": "Export Focus",
+      "color": "text-orange-600",
+      "iconName": "Globe"
+    }
+  ],
+  "expertTip": {
+    "title": "Focus on NGen",
+    "type": "tip",
+    "content": "NGen (Next Generation Manufacturing Canada) is the primary funding body. Join their cluster <strong>before applying</strong> to access exclusive member-only funding calls."
+  },
+  "seo": {
+    "keywords": [
+      "Canada",
+      "Advanced",
+      "Manufacturing",
+      "Innovation",
+      "Grants"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Canada Advanced Manufacturing Innovation Grants  | .1B+ Industry 4.0 Funding | NGen Grant",
+        "amount": "$3",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Canada Advanced Manufacturing Innovation Grants — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Answer the ",
+      "href": "/guides/apply-irap-grants",
+      "description": "Complete guide to applying for Industrial Research Assistance Program funding in Canada...."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/biotech-life-sciences-grants",
+      "description": "Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA..."
+    },
+    {
+      "title": "Layered Funding Strategy",
+      "href": "/blog/software-saas-startup-grants",
+      "description": "Complete 2026-2027 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1...."
+    }
+  ]
+}

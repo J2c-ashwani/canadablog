@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding. Funding available: up to $580M (with related programs offering $150K).","shortAnswerQuestion":"What grants are available for women-owned businesses in 2026?","faq":[{"question":"What is the application deadline for Alberta Women Business Grants  |  Energy & Tech Support Programs in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Alberta Women Business Grants  |  Energy & Tech Support Programs?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $580M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"AWE Loans","value":"Up to $150K","description":"Alberta Women Entrepreneurs","color":"text-green-600","iconName":"DollarSign"},{"label":"Training","value":"Free","description":"Women Building Futures","color":"text-blue-600","iconName":"Users"},{"label":"Sector","value":"Energy","description":"Priority sector","color":"text-purple-600","iconName":"Zap"},{"label":"Support","value":"1-on-1","description":"Mentorship included","color":"text-orange-600","iconName":"Handshake"}],"expertTip":{"title":"AWE is More Than Loans","type":"tip","content":"Alberta Women Entrepreneurs offers <strong>free business advisory services</strong> even if you don't take a loan. Use their expertise for business planning, export readiness, and growth strategy."},"seo":{"keywords":["Alberta","Women","Business","Grants","2026"]},"comparisonTable":{"title":"Alberta Women Business Grants  |  Energy & Tech Support Programs Funding Options Overview","programs":[{"program":"Core Alberta Women Business Grants  |  Energy & Tech Support Programs Grant","amount":"$580M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Alberta Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Programs","href":"/blog/canada-clean-technology-environment-grants-guide","description":"Complete guide to Canada..."},{"title":"Don","href":"/guides/apply-sba-loans","description":"Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs...."},{"title":"Programs","href":"/blog/clean-tech-energy-grants","description":"Complete 2026-2027 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental tech..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">Alberta Women Business Support Programs</h2>\n              <div class=\"space-y-8\">\n                {/* Alberta Women Entrepreneurs (AWE) */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Alberta Women Entrepreneurs (AWE)</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-amber-800\">Business Loans & Support</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-amber-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Loan Amount:</span>\n                            <span class=\"text-amber-700 font-bold\">Up to $150,000</span>\n                          </div>\n                          <div class=\"space-y-2 text-sm text-gray-700\">\n                            <p>• Market-ready startups and business expansion</p>\n                            <p>• Competitive rates: Prime +2% to Prime +4%</p>\n                            <p>• Flexible repayment terms up to 5 years</p>\n                            <p>• No early repayment penalties</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">AWE Eligibility</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Ownership:</strong> 50.1%+ women-owned Alberta businesses</p>\n                          <p><strong>Location:</strong> Edmonton, Calgary, St. Albert, Fort Saskatchewan</p>\n                          <p><strong>Business Stage:</strong> Market-ready or expansion</p>\n                          <p><strong>Status:</strong> Canadian citizen or permanent resident</p>\n                        </div>\n                      </div>\n                    </div>\n                    <div class=\"mt-6 p-4 bg-amber-50 rounded-lg\">\n                      <h5 class=\"font-semibold mb-2\">📋 AWE Loan Uses:</h5>\n                      <div class=\"grid md:grid-cols-2 gap-4 text-sm\">\n                        <div>\n                          <ul class=\"space-y-1\">\n                            <li>• <strong>Equipment:</strong> Purchases and upgrades</li>\n                            <li>• <strong>Leasehold:</strong> Property improvements</li>\n                            <li>• <strong>Inventory:</strong> Stock purchases</li>\n                          </ul>\n                        </div>\n                        <div>\n                          <ul class=\"space-y-1\">\n                            <li>• <strong>Marketing:</strong> Advertising and promotion</li>\n                            <li>• <strong>Technology:</strong> Digital upgrades</li>\n                            <li>• <strong>Operating Costs:</strong> Business expenses</li>\n                          </ul>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Women Building Futures */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Women Building Futures</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-orange-800\">Trades Training & Energy Sector</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-orange-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Program Type:</span>\n                            <span class=\"text-orange-700 font-bold\">Trades & Energy</span>\n                          </div>\n                          <div class=\"text-sm text-gray-700 space-y-1\">\n                            <p>• Training women for careers in skilled trades</p>\n                            <p>• Energy sector employment pathways</p>\n                            <p>• Employer connections and job placement</p>\n                            <p>• Certification and apprenticeship support</p>\n                            <p>• Mentorship and career development</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">WBF Training Focus</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Construction:</strong> Building trades and carpentry</p>\n                          <p><strong>Energy:</strong> Oil & gas, renewable energy careers</p>\n                          <p><strong>Manufacturing:</strong> Industrial and production roles</p>\n                          <p><strong>Transportation:</strong> Heavy equipment operation</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Community Futures Network */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Community Futures Network of Alberta</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-green-800\">Rural Women Entrepreneur Support</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-green-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Loan Amount:</span>\n                            <span class=\"text-green-700 font-bold\">$10,000 - $75,000</span>\n                          </div>\n                          <div class=\"text-sm text-gray-600\">\n                            <p>Network of 27 Community Futures locations providing unsecured conditionally\n                              repayable loans for rural Alberta women entrepreneurs with local business\n                              advisory support and skills development.</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Rural Program Benefits</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Access:</strong> 27 rural Alberta locations</p>\n                          <p><strong>Loans:</strong> Unsecured conditionally repayable</p>\n                          <p><strong>Advisory:</strong> Local business advisor support</p>\n                          <p><strong>Training:</strong> Skills development programs</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Alberta Innovates Women Programs */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Alberta Innovates Women in Technology & Innovation</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-blue-800\">Innovation Funding Programs</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-blue-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Focus:</span>\n                            <span class=\"text-blue-700 font-bold\">Tech & Innovation</span>\n                          </div>\n                          <div class=\"text-sm text-gray-700 space-y-1\">\n                            <p>• Women-led tech startups and scale-ups</p>\n                            <p>• Clean energy and environmental innovation</p>\n                            <p>• AI and digital technology ventures</p>\n                            <p>• Agri-food innovation and biotech</p>\n                            <p>• Research commercialization support</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Innovation Support</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Grants:</strong> Technology development funding</p>\n                          <p><strong>Acceleration:</strong> Innovation programs and mentorship</p>\n                          <p><strong>Networks:</strong> Alberta tech ecosystem connections</p>\n                          <p><strong>Commercialization:</strong> Market entry support</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* Energy Sector Women Programs */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Energy Sector Women Support Programs</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-purple-800\">Energy Industry Opportunities</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-purple-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Sector:</span>\n                            <span class=\"text-purple-700 font-bold\">Energy</span>\n                          </div>\n                          <div class=\"text-sm text-gray-600\">\n                            <p>Specialized programs supporting women entrepreneurs in Alberta's energy sector\n                              including oil & gas services, renewable energy, clean tech, and energy transition\n                              ventures with funding, mentorship, and industry connections.</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">Energy Programs</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Oil & Gas:</strong> Service company support</p>\n                          <p><strong>Renewable Energy:</strong> Clean energy ventures</p>\n                          <p><strong>Clean Tech:</strong> Environmental innovation</p>\n                          <p><strong>Energy Transition:</strong> Sector diversification</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n                {/* WELF Alberta Access */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Women Entrepreneurship Loan Fund (WELF) Alberta</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-2 gap-6\">\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-pink-800\">Federal Microloans</h4>\n                        <div class=\"space-y-3\">\n                          <div class=\"flex items-center justify-between bg-pink-50 p-3 rounded-lg\">\n                            <span class=\"font-semibold\">Loan Amount:</span>\n                            <span class=\"text-pink-700 font-bold\">Up to $50,000</span>\n                          </div>\n                          <div class=\"text-sm text-gray-600\">\n                            <p>Access to federal WELF microloans through WEOC network with Alberta Women\n                              Entrepreneurs delivery, providing flexible financing, business advisory, and\n                              training for women entrepreneurs across Alberta.</p>\n                          </div>\n                        </div>\n                      </div>\n                      <div>\n                        <h4 class=\"font-bold text-lg mb-3 text-gray-800\">WELF Benefits</h4>\n                        <div class=\"text-sm text-gray-700 space-y-2\">\n                          <p><strong>Microloans:</strong> Up to $50K for women businesses</p>\n                          <p><strong>Terms:</strong> Flexible repayment up to 5 years</p>\n                          <p><strong>Advisory:</strong> AWE business coaching included</p>\n                          <p><strong>Network:</strong> WEOC national connections</p>\n                        </div>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding. Funding available: up to $580M (with related programs offering $150K).",
+  "shortAnswerQuestion": "What grants are available for women-owned businesses in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Alberta Women Business Grants  |  Energy & Tech Support Programs in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Alberta Women Business Grants  |  Energy & Tech Support Programs?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $580M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "AWE Loans",
+      "value": "Up to $150K",
+      "description": "Alberta Women Entrepreneurs",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Training",
+      "value": "Free",
+      "description": "Women Building Futures",
+      "color": "text-blue-600",
+      "iconName": "Users"
+    },
+    {
+      "label": "Sector",
+      "value": "Energy",
+      "description": "Priority sector",
+      "color": "text-purple-600",
+      "iconName": "Zap"
+    },
+    {
+      "label": "Support",
+      "value": "1-on-1",
+      "description": "Mentorship included",
+      "color": "text-orange-600",
+      "iconName": "Handshake"
+    }
+  ],
+  "expertTip": {
+    "title": "AWE is More Than Loans",
+    "type": "tip",
+    "content": "Alberta Women Entrepreneurs offers <strong>free business advisory services</strong> even if you don't take a loan. Use their expertise for business planning, export readiness, and growth strategy."
+  },
+  "seo": {
+    "keywords": [
+      "Alberta",
+      "Women",
+      "Business",
+      "Grants",
+      "2026"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Alberta Women Business Grants  |  Energy & Tech Support Programs Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Alberta Women Business Grants  |  Energy & Tech Support Programs Grant",
+        "amount": "$580M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Alberta Women Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Programs",
+      "href": "/blog/canada-clean-technology-environment-grants-guide",
+      "description": "Complete guide to Canada..."
+    },
+    {
+      "title": "Don",
+      "href": "/guides/apply-sba-loans",
+      "description": "Learn how to successfully apply for SBA loans including 7(a), 504, and microloan programs...."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/clean-tech-energy-grants",
+      "description": "Complete 2026-2027 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental tech..."
+    }
+  ]
+}

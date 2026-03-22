@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation. Funding available: up to $950M+.","shortAnswerQuestion":"What innovation and technology grants are available in 2026?","faq":[{"question":"What is the application deadline for Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $950M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Total","value":"$950M+","description":"Annual allocation","color":"text-green-600","iconName":"DollarSign"},{"label":"ERA","value":"$100M+","description":"Clean tech fund","color":"text-blue-600","iconName":"Leaf"},{"label":"AI Focus","value":"AI4Society","description":"Research clusters","color":"text-purple-600","iconName":"Cpu"},{"label":"Health","value":"$50M+","description":"Health innovation","color":"text-orange-600","iconName":"Shield"}],"expertTip":{"title":"Stack Programs for Maximum Impact","type":"success","content":"Alberta allows <strong>stacking multiple programs</strong>. Combine Alberta Innovates vouchers with ERA funding and federal SR&ED credits to maximize your non-dilutive capital."},"seo":{"keywords":["Alberta","Innovation","Grants","&","Funding"]},"comparisonTable":{"title":"Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support Funding Options Overview","programs":[{"program":"Core Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support Grant","amount":"$950M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Alberta Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"Go Rural","href":"/blog/veteran-business-funding-canada-2026","description":"Canadian veterans can access up to $89K through Prince..."},{"title":"Programs","href":"/blog/canada-innovation-research-development-grants-guide","description":"Complete guide to Canada..."},{"title":"NASA Subtopics","href":"/blog/new-york-tech-programs","description":"Complete 2026-2027 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free oper..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">What are the Top Innovation Grants in Alberta?</h2>\n              <div class=\"space-y-8\">\n                {/* Alberta Innovates */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Alberta Innovates - Provincial Innovation Agency</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $5M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Applied Research</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Multiple Streams</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Alberta's primary innovation agency providing comprehensive funding, facilities access, and partnership support\n                      for technology development, applied research, and commercialization across all innovation stages.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Core Programs:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Voucher Program (applied research)</li>\n                          <li>• Accelerator initiatives</li>\n                          <li>• Ecosystem development grants</li>\n                          <li>• Infrastructure access programs</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Features:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Technology validation funding</li>\n                          <li>• Access to world-class facilities</li>\n                          <li>• Industry partnership facilitation</li>\n                          <li>• Technical expertise and mentorship</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Emissions Reduction Alberta */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Emissions Reduction Alberta (ERA)</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $25M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>CleanTech Focus</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Non-Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Leading cleantech funding agency supporting technology development and deployment for emissions reduction,\n                      clean energy, carbon capture, hydrogen, and environmental innovation projects.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Technology Focus:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Carbon capture utilization & storage</li>\n                          <li>• Hydrogen production & applications</li>\n                          <li>• Methane emission reduction</li>\n                          <li>• Clean energy generation</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Program Types:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Grand Challenges (large-scale demo)</li>\n                          <li>• Natural Gas Challenge</li>\n                          <li>• Energy Savings for Business</li>\n                          <li>• Technology development projects</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* AI4Society */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">AI4Society - Alberta Machine Intelligence Institute (Amii)</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $500K</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>AI & ML</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Collaborative</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      World-leading AI research institute providing funding, expertise, and partnership opportunities for companies\n                      applying artificial intelligence and machine learning to real-world problems.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">AI Applications:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Reinforcement learning solutions</li>\n                          <li>• Machine learning deployment</li>\n                          <li>• AI for energy & resources</li>\n                          <li>• Healthcare AI applications</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Included:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• AI expertise and consultation</li>\n                          <li>• Research collaboration</li>\n                          <li>• Talent access and training</li>\n                          <li>• Technology commercialization</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Health Innovation */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Alberta Health Services Innovation Fund & Health Innovation</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $2M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Health Tech</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Clinical Focus</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Health innovation funding supporting medical devices, digital health, clinical technologies, and healthcare\n                      solutions improving patient outcomes and healthcare system efficiency.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Innovation Areas:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Digital health & telemedicine</li>\n                          <li>• Medical device innovation</li>\n                          <li>• Clinical decision support systems</li>\n                          <li>• Patient monitoring technology</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Program Features:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Clinical validation support</li>\n                          <li>• Healthcare system access</li>\n                          <li>• Pilot implementation funding</li>\n                          <li>• Commercialization pathways</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation. Funding available: up to $950M+.",
+  "shortAnswerQuestion": "What innovation and technology grants are available in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $950M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Total",
+      "value": "$950M+",
+      "description": "Annual allocation",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "ERA",
+      "value": "$100M+",
+      "description": "Clean tech fund",
+      "color": "text-blue-600",
+      "iconName": "Leaf"
+    },
+    {
+      "label": "AI Focus",
+      "value": "AI4Society",
+      "description": "Research clusters",
+      "color": "text-purple-600",
+      "iconName": "Cpu"
+    },
+    {
+      "label": "Health",
+      "value": "$50M+",
+      "description": "Health innovation",
+      "color": "text-orange-600",
+      "iconName": "Shield"
+    }
+  ],
+  "expertTip": {
+    "title": "Stack Programs for Maximum Impact",
+    "type": "success",
+    "content": "Alberta allows <strong>stacking multiple programs</strong>. Combine Alberta Innovates vouchers with ERA funding and federal SR&ED credits to maximize your non-dilutive capital."
+  },
+  "seo": {
+    "keywords": [
+      "Alberta",
+      "Innovation",
+      "Grants",
+      "&",
+      "Funding"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Alberta Innovation Grants & Funding  | + Energy Transition, AI & CleanTech Support Grant",
+        "amount": "$950M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Alberta Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "Go Rural",
+      "href": "/blog/veteran-business-funding-canada-2026",
+      "description": "Canadian veterans can access up to $89K through Prince..."
+    },
+    {
+      "title": "Programs",
+      "href": "/blog/canada-innovation-research-development-grants-guide",
+      "description": "Complete guide to Canada..."
+    },
+    {
+      "title": "NASA Subtopics",
+      "href": "/blog/new-york-tech-programs",
+      "description": "Complete 2026-2027 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free oper..."
+    }
+  ]
+}

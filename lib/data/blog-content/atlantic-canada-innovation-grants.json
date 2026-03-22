@@ -1,1 +1,128 @@
-{"content":"","shortAnswer":"Yes — Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding. Funding available: up to $650M+.","shortAnswerQuestion":"What innovation and technology grants are available in 2026?","faq":[{"question":"What is the application deadline for Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support in 2026?","answer":"Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."},{"question":"How much funding can I get through Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support?","answer":"Funding amounts range depending on business size and scope. Top awards can reach $650M."},{"question":"Do I have to give up equity for this program?","answer":"No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."}],"metrics":[{"label":"Funding","value":"$500k - $3M","description":"Atlantic Innovation Fund","color":"text-blue-600","iconName":"DollarSign"},{"label":"Credit","value":"15%","description":"Investment Tax Credit","color":"text-green-600","iconName":"PieChart"},{"label":"Focus","value":"Ocean Tech","description":"Blue Economy","color":"text-blue-500","iconName":"Anchor"},{"label":"Partner","value":"ACOA","description":"Regional Agency","color":"text-purple-600","iconName":"Handshake"}],"expertTip":{"title":"Collaborate with Universities","type":"tip","content":"The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability."},"seo":{"keywords":["Atlantic","Canada","Innovation","Grants","&"]},"comparisonTable":{"title":"Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support Funding Options Overview","programs":[{"program":"Core Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support Grant","amount":"$650M","equity":"Non-dilutive","bestFor":"Eligible Applicants","timeline":"Standard Review"},{"program":"Related Provincial Match","amount":"Up to 50%","equity":"0%","bestFor":"Expansion Projects","timeline":"45 Days"},{"program":"Federal Support Program","amount":"Varies","equity":"Non-dilutive","bestFor":"Scaling Businesses","timeline":"90 Days"}]},"jumpLinks":[{"title":"Programs","id":"programs"},{"title":"Eligibility","id":"eligibility"},{"title":"How to Apply","id":"how-to-apply"},{"title":"FAQ","id":"faq"}],"eligibleCheck":true,"inlineCTA":{"description":"Get matched with the right alternative or direct funding for Atlantic Canada Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you."},"relatedLinks":[{"title":"BDC Women Loan Advantages","href":"/guides/apply-small-business-grants","description":"General guide for applying to federal small business grant programs and competitions...."},{"title":"WES Ecosystem Approach","href":"/blog/women-entrepreneurship-strategy-canada-government-grants","description":"Complete guide to Canada..."},{"title":"CA Guarantee vs SBA","href":"/guides/apply-strategic-innovation-fund","description":"How to apply for large-scale innovation funding through Canada\\..."}]}
+{
+  "content": "<h2 class=\"text-3xl font-bold text-gray-900 mb-12 text-center\">What are the Top Innovation Grants in Atlantic Canada?</h2>\n              <div class=\"space-y-8\">\n                {/* Atlantic Innovation Fund */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Atlantic Innovation Fund (AIF)</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $15M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Strategic Projects</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Repayable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Federal program supporting innovation-driven companies and economic development organizations in Atlantic Canada\n                      with repayable contributions for R&D, commercialization, and business scale-up projects.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Project Focus:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Research and development projects</li>\n                          <li>• Technology commercialization</li>\n                          <li>• Business expansion and scale-up</li>\n                          <li>• Regional innovation partnerships</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Program Features:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Up to 30% of project costs (repayable)</li>\n                          <li>• Multi-year project support</li>\n                          <li>• Job creation focus</li>\n                          <li>• Export market development</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* ACOA Business Development */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">ACOA Business Development Programs</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $5M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Business Growth</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Flexible Terms</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Atlantic Canada Opportunities Agency (ACOA) providing comprehensive business development support including\n                      innovation funding, market expansion assistance, and regional economic development initiatives.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">ACOA Programs:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Business Development Program</li>\n                          <li>• Innovation initiatives</li>\n                          <li>• Trade and investment support</li>\n                          <li>• Community economic development</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Features:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Repayable and non-repayable contributions</li>\n                          <li>• Business advisory services</li>\n                          <li>• Export market development</li>\n                          <li>• Network and partnership connections</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Ocean Technology Programs */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Ocean Technology & Maritime Innovation</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>Up to $3M</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Ocean Tech</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Sector-Specific</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Sector-specific funding for ocean technology development including marine renewable energy, ocean observation,\n                      aquaculture technology, and maritime innovation through various federal and provincial programs.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Ocean Tech Areas:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Marine renewable energy (tidal, wave)</li>\n                          <li>• Ocean observation & monitoring</li>\n                          <li>• Aquaculture technology</li>\n                          <li>• Underwater robotics & sensors</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Support Programs:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Ocean Supercluster initiatives</li>\n                          <li>• Marine renewables funding</li>\n                          <li>• Fisheries innovation programs</li>\n                          <li>• COVE (Centre for Ocean Ventures)</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n                {/* Provincial Tax Credits */}\n                <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"flex items-center mb-2\">\n                      <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">Provincial R&D Tax Credits (ACITC 15%)</h3>\n                    </div>\n                  <div class=\"card p-6 border rounded-lg mb-6 shadow-sm\">\n                    <div class=\"grid md:grid-cols-3 gap-4 mb-4\">\n                      <div class=\"flex items-center\">\n                        <span><strong>15% Tax Credit</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>R&D Activities</strong></span>\n                      </div>\n                      <div class=\"flex items-center\">\n                        <span><strong>Refundable</strong></span>\n                      </div>\n                    </div>\n                    <p class=\"text-gray-700 mb-4\">\n                      Atlantic provinces offer R&D tax credits including Nova Scotia's 15% ACITC (Atlantic Canada Innovation Tax Credit),\n                      New Brunswick's R&D tax credit, and Newfoundland's R&D tax credit, stackable with federal SR&ED.\n                    </p>\n                    <div class=\"grid md:grid-cols-2 gap-4\">\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Provincial Credits:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Nova Scotia: 15% ACITC (refundable)</li>\n                          <li>• New Brunswick: 15% R&D credit</li>\n                          <li>• Newfoundland: 15% R&D credit</li>\n                          <li>• PEI: Various innovation incentives</li>\n                        </ul>\n                      </div>\n                      <div>\n                        <h5 class=\"font-semibold mb-2\">Combined Benefits:</h5>\n                        <ul class=\"text-sm text-gray-600 space-y-1\">\n                          <li>• Stacks with federal SR&ED</li>\n                          <li>• Up to 80% total support for SMEs</li>\n                          <li>• Refundable for eligible corporations</li>\n                          <li>• R&D wage and material support</li>\n                        </ul>\n                      </div>\n                    </div>\n                </div>\n              </div>\n            </div>\n          \n\n",
+  "shortAnswer": "Yes — Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding. Funding available: up to $650M+.",
+  "shortAnswerQuestion": "What innovation and technology grants are available in 2026?",
+  "faq": [
+    {
+      "question": "What is the application deadline for Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support in 2026?",
+      "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
+    },
+    {
+      "question": "How much funding can I get through Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support?",
+      "answer": "Funding amounts range depending on business size and scope. Top awards can reach $650M."
+    },
+    {
+      "question": "Do I have to give up equity for this program?",
+      "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Funding",
+      "value": "$500k - $3M",
+      "description": "Atlantic Innovation Fund",
+      "color": "text-blue-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Credit",
+      "value": "15%",
+      "description": "Investment Tax Credit",
+      "color": "text-green-600",
+      "iconName": "PieChart"
+    },
+    {
+      "label": "Focus",
+      "value": "Ocean Tech",
+      "description": "Blue Economy",
+      "color": "text-blue-500",
+      "iconName": "Anchor"
+    },
+    {
+      "label": "Partner",
+      "value": "ACOA",
+      "description": "Regional Agency",
+      "color": "text-purple-600",
+      "iconName": "Handshake"
+    }
+  ],
+  "expertTip": {
+    "title": "Collaborate with Universities",
+    "type": "tip",
+    "content": "The AIF strongly favors projects that involve <strong>collaboration with Atlantic research institutions</strong>. Adding Dalhousie or UNB as a partner significantly increases your success probability."
+  },
+  "seo": {
+    "keywords": [
+      "Atlantic",
+      "Canada",
+      "Innovation",
+      "Grants",
+      "&"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Atlantic Canada Innovation Grants & Funding  | 15% ACITC | + Ocean Tech Support Grant",
+        "amount": "$650M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right alternative or direct funding for Atlantic Canada Innovation Grants & Funding 2026 — our specialists navigate the complex federal and provincial channels for you."
+  },
+  "relatedLinks": [
+    {
+      "title": "BDC Women Loan Advantages",
+      "href": "/guides/apply-small-business-grants",
+      "description": "General guide for applying to federal small business grant programs and competitions...."
+    },
+    {
+      "title": "WES Ecosystem Approach",
+      "href": "/blog/women-entrepreneurship-strategy-canada-government-grants",
+      "description": "Complete guide to Canada..."
+    },
+    {
+      "title": "CA Guarantee vs SBA",
+      "href": "/guides/apply-strategic-innovation-fund",
+      "description": "How to apply for large-scale innovation funding through Canada\\..."
+    }
+  ]
+}
