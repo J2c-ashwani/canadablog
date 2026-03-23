@@ -51,6 +51,7 @@ export function Header() {
                 width={200}
                 height={80}
                 className="h-12 sm:h-20 w-auto object-contain"
+                sizes="(max-width: 640px) 150px, 200px"
                 priority
               />
             </Link>

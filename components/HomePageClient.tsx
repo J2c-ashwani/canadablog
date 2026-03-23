@@ -79,19 +79,19 @@ export default function HomePageClient() {
                     <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8">
                         <div className="text-center">
                             <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">$2.5B+</div>
-                            <div className="text-gray-600 text-sm sm:text-base">Available Funding</div>
+                            <div className="text-gray-600 text-sm sm:text-base">Tracked Funding</div>
                         </div>
                         <div className="text-center">
                             <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary mb-2">1,200+</div>
-                            <div className="text-gray-600 text-sm sm:text-base">Active Grants</div>
+                            <div className="text-gray-600 text-sm sm:text-base">Active Programs</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">50,000+</div>
-                            <div className="text-gray-600 text-sm sm:text-base">Businesses Funded</div>
+                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-primary mb-2">250+</div>
+                            <div className="text-gray-600 text-sm sm:text-base">Grant Categories</div>
                         </div>
                         <div className="text-center">
-                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary mb-2">98%</div>
-                            <div className="text-gray-600 text-sm sm:text-base">Success Rate</div>
+                            <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-secondary mb-2">Daily</div>
+                            <div className="text-gray-600 text-sm sm:text-base">Database Updates</div>
                         </div>
                     </div>
                 </div>
