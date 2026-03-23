@@ -105,8 +105,8 @@ export default async function BlogPage({
       <div className="container mx-auto px-4 py-4">
         <AdSlot
           adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD || ""}
-          adFormat="horizontal"
-          className="mb-6"
+          adFormat="auto"
+          className="mb-6 w-full overflow-hidden"
           style={{ minHeight: '90px' }}
         />
       </div>
@@ -154,8 +154,9 @@ export default async function BlogPage({
                       <div className="col-span-full mt-6 w-full flex justify-center">
                         <AdSlot
                           adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL || ""}
-                          adFormat="horizontal"
-                          style={{ minHeight: '120px', width: '100%' }}
+                          adFormat="auto"
+                          className="w-full overflow-hidden"
+                          style={{ minHeight: '120px' }}
                         />
                       </div>
                     )}
