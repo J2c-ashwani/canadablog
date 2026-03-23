@@ -117,6 +117,21 @@ async function run() {
         process.exit(1);
     }
 
+    try {
+        console.log(`\nFetching local pSEO drip pages to bypass live sitemap cache...`);
+        const { execSync } = require('child_process');
+        const output = execSync('npx tsx scripts/get-pseo-urls.ts', { encoding: 'utf8' });
+        const localPseoUrls = JSON.parse(output.trim());
+        console.log(`Found ${localPseoUrls.length} total published pSEO pages locally.`);
+        // Merge and deduplicate
+        const originalCount = allUrls.length;
+        allUrls = [...new Set([...allUrls, ...localPseoUrls])];
+        console.log(`Added ${allUrls.length - originalCount} un-cached drip pages to the indexing queue.\n`);
+    } catch (e) {
+        console.warn(`⚠️ Could not fetch local pSEO URLs. Error: ${e.message}`);
+    }
+
+
     const history = loadHistory();
     const now = new Date();
     
