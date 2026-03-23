@@ -15,6 +15,8 @@ import InlineCTA from '@/components/blog/InlineCTA';
 import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
 import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
+import PseoMasterclass from '@/components/pseo/PseoMasterclass';
+import RelatedPseoLinks from '@/components/pseo/RelatedPseoLinks';
 
 // --- Industry-specific, data-rich short answers ---
 // Each answer contains real program names, real dollar amounts, and real timelines.
@@ -491,6 +493,13 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                     </div>
 
                                     
+                                    {/* SEO Word Count Expansion Module (Interaction Safe) */}
+                                    <PseoMasterclass 
+                                        industryName={page.industryName} 
+                                        cityName={page.cityName} 
+                                        provinceName={page.provinceName} 
+                                    />
+                                    
                                     {/* Eligibility Check Widget */}
                                     <div className="mt-16">
                                         <EligibleCheck />
@@ -534,6 +543,14 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     </div>
                 </div>
             </section>
+            
+            {/* Massive Internal Linking Expansion */}
+            <RelatedPseoLinks 
+                currentProvinceSlug={page.provinceSlug} 
+                currentCitySlug={page.citySlug} 
+                currentIndustrySlug={page.industrySlug} 
+            />
+
             </div>
             {/* Bottom Ad */}
             <div className="container mx-auto px-4 py-4">

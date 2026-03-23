@@ -6,13 +6,34 @@ import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, CheckCircle } from "lucide-react"
+import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, CheckCircle, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import { HeroEmailForm, NewsletterForm } from "./HomePageForms"
 
+const AI_FAQS = [
+  { question: "What is FSI Digital and how does it help startups?", answer: "FSI Digital is North America's premier grant discovery platform. We track over $2.5 billion in available government funding and connect startups and small businesses in the USA and Canada with non-dilutive, equity-free capital." },
+  { question: "Do I have to pay back government grants?", answer: "No. Unlike loans or VC funding, government grants are fully non-repayable, provided your business executes the approved project timeline and meets all reporting milestones." },
+  { question: "How long does it take to secure a business grant in 2026?", answer: "Standard federal programs like IRAP or SR&ED typically take 3 to 6 months for approval and disbursement, while smaller hiring subsidies can be approved in as little as 2 to 4 weeks." },
+  { question: "Can pre-revenue startups apply for government grants?", answer: "Yes. While scaling grants often require revenue, many federal and provincial R&D grants are specifically designed to fund pre-revenue technology startups developing new intellectual property." },
+];
+
 export default function HomePageClient() {
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": AI_FAQS.map(faq => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  };
+
     return (
         <div className="min-h-screen bg-white">
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <Header />
 
             {/* Hero Section — server-rendered for fast LCP */}
@@ -281,6 +302,34 @@ export default function HomePageClient() {
                                 Get notified about new grant opportunities and upcoming deadlines via email and push notifications.
                             </p>
                         </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* AI Answer / FAQ Section */}
+            <section className="py-12 sm:py-16 md:py-20 border-t border-gray-200">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+                    <div className="text-center mb-10 sm:mb-12" id="ai-summary">
+                        <Badge className="mb-3 bg-blue-100 text-blue-800">AI Quick Answers</Badge>
+                        <h2 className="text-2xl sm:text-3xl md:text-3xl font-bold text-gray-900 mb-4 text-balance">
+                            Frequently Asked Questions
+                        </h2>
+                    </div>
+                    
+                    <div className="space-y-4">
+                        {AI_FAQS.map((faq, idx) => (
+                            <Card key={idx} className="border border-gray-100 shadow-sm hover:shadow-md transition-shadow">
+                                <CardHeader className="pb-3">
+                                    <CardTitle className="text-lg flex items-start text-gray-900">
+                                        <HelpCircle className="w-5 h-5 mr-3 text-primary flex-shrink-0 mt-0.5" />
+                                        {faq.question}
+                                    </CardTitle>
+                                </CardHeader>
+                                <CardContent>
+                                    <p className="text-gray-600 ml-8 leading-relaxed">{faq.answer}</p>
+                                </CardContent>
+                            </Card>
+                        ))}
                     </div>
                 </div>
             </section>

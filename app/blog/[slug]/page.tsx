@@ -255,6 +255,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <LastVerifiedBadge date={post.date} />
               </div>
 
+              {/* AI Answer Summary Box */}
+              <div id="ai-summary" className="bg-emerald-50 border border-emerald-100 rounded-lg p-6 mb-8 mt-2 shadow-sm">
+                <h2 className="text-xl font-bold flex items-center gap-2 mb-3 text-gray-900 border-b border-emerald-200 pb-2">
+                  <Zap className="w-5 h-5 text-yellow-500" />
+                  AI Summary & Key Takeaways
+                </h2>
+                <ul className="space-y-3 text-gray-800">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Overview:</strong> {post.seo?.description || `A comprehensive guide covering the latest updates, funding amounts, and application strategies for ${post.title}.`}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Category Focus:</strong> This essential research brief targets {category?.name || 'government funding'} and explores funding impacts related to {post.seo?.keywords?.[0] || 'business growth'}.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Actionable Intelligence:</strong> Readers will discover verified eligibility requirements, internal program mechanics, and timeline expectations within this concise {post.readTime} read.</span>
+                  </li>
+                </ul>
+              </div>
+
               {fullPost.eligibleCheck && (
                 <EligibleCheck />
               )}

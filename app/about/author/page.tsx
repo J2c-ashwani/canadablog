@@ -17,9 +17,29 @@ export const metadata: Metadata = {
 }
 
 export default function AuthorPage() {
+    const profileSchema = {
+        "@context": "https://schema.org",
+        "@type": "ProfilePage",
+        "dateCreated": "2026-03-01T00:00:00.000Z",
+        "dateModified": new Date().toISOString(),
+        "mainEntity": {
+            "@type": "Person",
+            "@id": "https://www.fsidigital.ca/about/author/#person",
+            "name": "Ashwani K.",
+            "description": "Research-focused writer covering Canadian and U.S. government funding programs for startups and small businesses.",
+            "jobTitle": "Funding Research Writer",
+            "worksFor": {
+                "@id": "https://www.fsidigital.ca/#organization"
+            },
+            "url": "https://www.fsidigital.ca/about/author",
+            "image": "https://www.fsidigital.ca/author-ashwani.jpg"
+        }
+    };
+
     return (
         <>
             <Header />
+            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(profileSchema) }} />
             <div className="min-h-screen bg-gray-50">
                 <section className="bg-white border-b border-gray-200">
                     <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
