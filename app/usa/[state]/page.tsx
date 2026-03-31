@@ -10,8 +10,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable';
 import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
-import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
 import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
+import { CTRTrap } from '@/components/blog/CTRTrap';
 import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
@@ -46,25 +46,10 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const programs = state.heroStats.programCount;
     const successRate = state.heroStats.successRate;
 
-    // Power-word title formula: Curiosity + Number + Outcome promise
-    // Tested patterns that beat generic "$X available" titles at positions 5-10:
-    const titleVariants = [
-        `${state.name} Business Grants 2026: ${programs} Programs That Actually Pay`,
-        `${state.name} Grants 2026: ${funding} Waiting (Most Go Unclaimed)`,
-        `${state.name} Business Grants 2026: ${successRate} Approval Rate — Apply Now`,
-    ];
-    // Pick shortest that fits ≤60 chars
-    let title = titleVariants[0];
-    for (const v of titleVariants) {
-        if (v.length <= 60) { title = v; break; }
-    }
-    if (title.length > 60) title = `${state.name} Business Grants 2026 (${funding}+)`;
+    // FORMAT D (Trust Hook) — State pages get the highest-trust title
+    const title = `${state.name} Government Grants 2026 (Verified List + Official Links)`;
 
-    // Meta description: Answer the searcher's unspoken question immediately
-    // Pattern: [Surprising stat] + [Specific program name + amount] + [CTA]
-    const description = state.metaDescription ||
-        `${state.name} has ${funding} in active grant funding — but most businesses never apply. ` +
-        `See the ${programs} programs ranked by approval rate (${successRate}) and find your match in 2 minutes.`;
+    const description = `Apply directly with official links for ${state.name} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`;
 
     return {
         title,
@@ -167,9 +152,12 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     {/* Hero Section */}
                     <header className="mb-12">
                         <Badge className="mb-4 bg-blue-100 text-blue-800">{state.region} Region</Badge>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                             {state.name} Small Business Grants 2026
                         </h1>
+                        
+                        <CTRTrap />
+
                         {state.shortAnswer && (
                             <ShortAnswerBox content={state.shortAnswer} />
                         )}
@@ -598,13 +586,13 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         </div>
                     </section>
 
-                    {/* Related Guides Section - Internal Linking for SEO Authority */}
+                    {/* Intent-Clustered Internal Links for SEO Authority */}
                     <section id="related-guides" className="mb-12">
                         <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                            Related Grant Guides
+                            Related {state.name} Funding Resources
                         </h2>
                         <p className="text-gray-600 mb-6">
-                            Explore our comprehensive guides on grant applications and funding strategies.
+                            Explore verified grant guides and funding strategies directly relevant to {state.name} businesses.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-4">
@@ -623,9 +611,9 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             ))}
                         </div>
 
-                        {/* Internal Links to Hub Pages */}
+                        {/* Intent-Based Hub Links (Topical Cluster Anchors) */}
                         <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
-                            <h3 className="font-bold text-lg mb-4">Explore More Funding Resources</h3>
+                            <h3 className="font-bold text-lg mb-4">🔗 {state.name} Funding Cluster</h3>
                             <div className="flex flex-wrap gap-4">
                                 <Link href="/usa" className="inline-flex items-center text-green-600 hover:underline">
                                     <MapPin className="w-4 h-4 mr-1" /> All USA State Grants
@@ -643,8 +631,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         </div>
                     </section>
 
-                    {/* Global Grant Guide (Universal Content) */}
-                    <GlobalGrantGuide />
+                    {/* Global Grant Guide Component Removed Check (Anti-AI Spam) */}
 
 
                     {/* CTA Section */}

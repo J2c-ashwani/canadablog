@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -14,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Nova Scotia Business Grants 2026: Top 10 Programs [Free Guide]",
+    title: "Nova Scotia Business Grants (2026) – Applications Open Now + Deadlines",
     description:
-        "Find Nova Scotia business grants and provincial funding programs. Complete guide to Nova Scotia government grants, Invest Nova Scotia funding, and application deadlines.",
+        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "Nova Scotia business grants, Nova Scotia government funding, provincial grants NS, Halifax business grants, Invest Nova Scotia",
     alternates: {
@@ -34,7 +35,8 @@ const nsGrants: Grant[] = [
         eligibility: ["Export-ready NS businesses", "SMEs"],
         deadline: "Rolling",
         applicationLink: "https://investnovascotia.ca/export/export-development-program",
-        description: "Support for travel and export marketing activities.",
+        description:
+        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Nova Scotia",
         category: "Export",
@@ -52,7 +54,8 @@ const nsGrants: Grant[] = [
         eligibility: ["Small businesses", "Social enterprises", "Co-ops"],
         deadline: "Ongoing",
         applicationLink: "https://cuc.cu/business/small-business-loan-guarantee-program/",
-        description: "Financing support through credit unions to help small businesses access capital.",
+        description:
+        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Nova Scotia",
         category: "Small Business",
@@ -70,7 +73,8 @@ const nsGrants: Grant[] = [
         eligibility: ["Employers hiring recent grads", "Nova Scotia businesses"],
         deadline: "Ongoing",
         applicationLink: "https://novascotia.ca/programs/graduate-to-opportunity/",
-        description: "Salary subsidy for hiring recent post-secondary graduates.",
+        description:
+        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Nova Scotia",
         category: "Workforce",
@@ -98,6 +102,10 @@ export default function NovaScotiaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nova Scotia Business Grants 2026</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Nova Scotia businesses in 2026?"

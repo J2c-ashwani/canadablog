@@ -54,6 +54,17 @@ export default function HomePageClient() {
                             <strong>FSI Digital</strong> helps you secure non-dilutive <strong>investment</strong> for your business. Discover thousands of government funding opportunities in USA and Canada. The smartest alternative to <strong>investor</strong> capital.
                         </p>
 
+                        <div className="flex items-center justify-center gap-3 mb-8">
+                            <div className="flex -space-x-2">
+                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=33" alt="Founder" />
+                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=47" alt="Founder" />
+                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=12" alt="Founder" />
+                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=28" alt="Founder" />
+                                <div className="w-8 h-8 rounded-full border-2 border-[#1e3a8a] bg-green-500 flex items-center justify-center text-xs font-bold text-white">+</div>
+                            </div>
+                            <span className="text-sm md:text-base font-semibold text-white drop-shadow-md">Trusted by 1,000+ Founders & CEOs</span>
+                        </div>
+
                         {/* Client component — interactive form */}
                         <HeroEmailForm />
 

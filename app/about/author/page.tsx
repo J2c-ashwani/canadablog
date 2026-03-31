@@ -27,10 +27,13 @@ export default function AuthorPage() {
             "@id": "https://www.fsidigital.ca/about/author/#person",
             "name": "Ashwani K.",
             "description": "Research-focused writer covering Canadian and U.S. government funding programs for startups and small businesses.",
-            "jobTitle": "Funding Research Writer",
+            "jobTitle": "Founder & CEO",
             "worksFor": {
                 "@id": "https://www.fsidigital.ca/#organization"
             },
+            "sameAs": [
+                "https://www.linkedin.com/in/ashwani-kumar-fsi/"
+            ],
             "url": "https://www.fsidigital.ca/about/author",
             "image": "https://www.fsidigital.ca/author-ashwani.jpg"
         }
@@ -55,10 +58,10 @@ export default function AuthorPage() {
                             </div>
 
                             <div className="text-center md:text-left">
-                                <Badge variant="secondary" className="mb-3">Funding Research Writer</Badge>
+                                <Badge variant="secondary" className="mb-3 bg-blue-100 text-blue-800 border-blue-200">Founder, FSI Digital</Badge>
                                 <h1 className="text-3xl font-bold text-gray-900 mb-2">Ashwani K.</h1>
                                 <p className="text-lg text-gray-600 mb-6">
-                                    Research-focused writer covering Canadian and U.S. government funding programs for startups and small businesses.
+                                    Helping founders access non-dilutive funding, government grants, and tax incentives across Canada and the U.S.
                                 </p>
 
                                 <div className="flex flex-wrap justify-center md:justify-start gap-3">
@@ -66,6 +69,12 @@ export default function AuthorPage() {
                                         <Link href="mailto:hello@fsidigital.ca">
                                             <Mail className="w-4 h-4 mr-2" />
                                             Contact
+                                        </Link>
+                                    </Button>
+                                    <Button variant="outline" size="sm" asChild>
+                                        <Link href="https://www.linkedin.com/in/ashwani-kumar-fsi/" target="_blank">
+                                            <svg className="w-4 h-4 mr-2 fill-current text-blue-600" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                                            LinkedIn
                                         </Link>
                                     </Button>
                                 </div>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSI Digital - $2.5B Stat Shock Carousel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #222; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px; }
+@media print {
+  @page { size: 1080px 1350px; margin: 0; }
+  body { background: transparent; padding: 0; margin: 0; display: block; gap: 0; }
+  .slide { page-break-after: always; break-after: page; box-shadow: none !important; margin: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+.slide { width: 1080px; height: 1350px; background: #111; position: relative; display: flex; flex-direction: column; flex-shrink: 0; font-family: 'DM Sans', sans-serif; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); color: #fff; }
+
+/* All slides dark */
+.slide .accent { position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: #E60023; z-index: 2; }
+.slide .logo-bar { padding: 80px 80px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.slide .logo { font-size: 42px; font-weight: 800; color: rgba(255,255,255,.7); letter-spacing: .1em; text-transform: uppercase; }
+.slide .tag { background: rgba(230,0,35,.15); border: 3px solid rgba(230,0,35,.4); border-radius: 10px; padding: 10px 30px; font-size: 36px; color: #E60023; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; }
+
+.stat-slide .body { padding: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.stat-slide .eyebrow { font-size: 44px; font-weight: 700; color: rgba(255,255,255,.5); text-transform: uppercase; letter-spacing: .1em; margin-bottom: 30px; }
+.stat-slide .big-stat { font-family: 'Playfair Display', serif; font-size: 260px; font-weight: 900; color: #E60023; line-height: .9; margin-bottom: 20px; }
+.stat-slide .stat-label { font-size: 64px; font-weight: 700; color: rgba(255,255,255,.9); line-height: 1.3; margin-bottom: 50px; }
+.stat-slide .divider { width: 80px; height: 8px; background: #E60023; border-radius: 4px; margin-bottom: 50px; }
+.stat-slide .desc { font-size: 54px; color: rgba(255,255,255,.7); line-height: 1.5; font-weight: 500; }
+.stat-slide .bottom { padding: 60px 80px; display: flex; align-items: center; justify-content: space-between; border-top: 2px solid rgba(255,255,255,.08); position: relative; z-index: 2; }
+.stat-slide .bottom .btn { background: #E60023; border-radius: 24px; padding: 22px 55px; font-size: 38px; color: #fff; font-weight: 800; text-transform: uppercase; flex-shrink: 0; }
+.stat-slide .bottom .url { font-size: 30px; color: rgba(255,255,255,.3); font-weight: 600; }
+
+/* BG decoration */
+.deco { position: absolute; border-radius: 50%; }
+
+/* CTA */
+.cta-slide { justify-content: center; align-items: center; text-align: center; }
+.cta-slide .bg-overlay { position: absolute; top:0;left:0;right:0;bottom:0; background: radial-gradient(circle at center, rgba(230,0,35,0.15) 0%, transparent 70%); z-index: 1; }
+.cta-slide .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; padding: 80px; }
+.cta-slide .logo-huge { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #fff; }
+.cta-slide h2 { font-size: 90px; font-weight: 800; line-height: 1.15; }
+.cta-slide .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 60px; width: 100%; margin: 40px 0; }
+.cta-slide .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; margin-bottom: 20px; }
+.cta-slide .comment-word { font-size: 90px; font-weight: 900; color: #E60023; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.cta-slide .sub { font-size: 40px; color: #aaa; margin-top: 20px; margin-bottom: 0; }
+.cta-slide .or-text { font-size: 40px; color: #555; font-weight: 700; text-transform: uppercase; }
+.cta-slide .url-text { font-size: 60px; font-weight: 800; }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: $2.5B -->
+<div class="slide stat-slide">
+  <div class="accent"></div>
+  <div class="deco" style="width:800px;height:800px;background:rgba(230,0,35,.04);top:-200px;right:-200px;"></div>
+  <div class="logo-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="tag">USA + Canada</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Right now, today</div>
+    <div class="big-stat">$2.5B+</div>
+    <div class="stat-label">in government grants<br>currently available</div>
+    <div class="divider"></div>
+    <div class="desc">Most small businesses never apply. They assume they don't qualify. They're wrong — and leaving life-changing money on the table.</div>
+  </div>
+  <div class="bottom">
+    <div class="url">fsidigital.ca</div>
+    <div class="btn">Swipe to dig deeper →</div>
+  </div>
+</div>
+
+<!-- SLIDE 2: 96% stat -->
+<div class="slide stat-slide">
+  <div class="accent"></div>
+  <div class="deco" style="width:600px;height:600px;background:rgba(230,0,35,.04);bottom:-100px;left:-100px;"></div>
+  <div class="logo-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="tag">The Reality</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Of all eligible businesses</div>
+    <div class="big-stat">96%</div>
+    <div class="stat-label">never apply for a<br>government grant</div>
+    <div class="divider"></div>
+    <div class="desc">Not because they don't qualify. Because they didn't know it existed. That's the entire problem we solve.</div>
+  </div>
+  <div class="bottom">
+    <div class="url">fsidigital.ca</div>
+    <div class="btn">Save & Next →</div>
+  </div>
+</div>
+
+<!-- SLIDE 3: $1.7M SBIR -->
+<div class="slide stat-slide">
+  <div class="accent"></div>
+  <div class="deco" style="width:700px;height:700px;background:rgba(230,0,35,.04);top:-100px;right:-200px;"></div>
+  <div class="logo-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="tag">SBIR Federal</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Single grant, no equity</div>
+    <div class="big-stat">$1.7M</div>
+    <div class="stat-label">average SBIR Phase II<br>award for R&D startups</div>
+    <div class="divider"></div>
+    <div class="desc">No equity. No repayment. Available to any US-based tech startup under 500 employees. Most founders have never heard of it.</div>
+  </div>
+  <div class="bottom">
+    <div class="url">fsidigital.ca/usa/federal-grants</div>
+    <div class="btn">Save & Next →</div>
+  </div>
+</div>
+
+<!-- SLIDE 4: Pattern Break -->
+<div class="slide stat-slide">
+  <div class="accent"></div>
+  <div class="logo-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="tag">Think About This</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Your competition is</div>
+    <div class="big-stat" style="font-size:220px; line-height:.85;">Already<br>Funded.</div>
+    <div class="divider"></div>
+    <div class="desc">While you're bootstrapping, your competitors are winning non-repayable government grants. The playing field is not level — unless you know where to look.</div>
+  </div>
+  <div class="bottom">
+    <div class="url">fsidigital.ca</div>
+    <div class="btn">Save & Next →</div>
+  </div>
+</div>
+
+<!-- SLIDE 5: $10M Canada SIF -->
+<div class="slide stat-slide">
+  <div class="accent"></div>
+  <div class="deco" style="width:700px;height:700px;background:rgba(230,0,35,.04);bottom:-200px;right:-100px;"></div>
+  <div class="logo-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="tag">🇨🇦 Canada SIF</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Strategic Innovation Fund</div>
+    <div class="big-stat">$10M+</div>
+    <div class="stat-label">single grant for<br>Canadian scale-ups</div>
+    <div class="divider"></div>
+    <div class="desc">The Canadian government's largest single technology and cleantech grant. Most founders think it's only for huge corporations. It's not.</div>
+  </div>
+  <div class="bottom">
+    <div class="url">fsidigital.ca/grants/ontario/toronto/technology</div>
+    <div class="btn">Save & Next →</div>
+  </div>
+</div>
+
+<!-- SLIDE 6: 700 pages stat -->
+<div class="slide stat-slide">
+  <div class="accent"></div>
+  <div class="logo-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="tag">Our Coverage</div>
+  </div>
+  <div class="body">
+    <div class="eyebrow">Tracked & verified</div>
+    <div class="big-stat">700+</div>
+    <div class="stat-label">active grant pages<br>across USA & Canada</div>
+    <div class="divider"></div>
+    <div class="desc">Every page is geo-targeted to your city, industry, and business stage. Find the exact grants your business qualifies for — in under 3 minutes.</div>
+  </div>
+  <div class="bottom">
+    <div class="url">fsidigital.ca</div>
+    <div class="btn">Save & Next →</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="slide cta-slide">
+  <div class="accent"></div>
+  <div class="bg-overlay"></div>
+  <div class="content">
+    <div class="logo-huge">FSI Digital</div>
+    <h2>Find your grant<br>in 3 minutes.</h2>
+    <div class="lead-box">
+      <p>Comment</p>
+      <div class="comment-word">"GRANT"</div>
+      <p class="sub">and I'll send you the full list + eligibility</p>
+    </div>
+    <div class="or-text">or visit</div>
+    <div class="url-text">fsidigital.ca</div>
+  </div>
+</div>
+
+</body>
+</html>

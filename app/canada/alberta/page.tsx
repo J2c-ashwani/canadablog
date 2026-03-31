@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -14,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Alberta Business Grants 2026: 15+ Programs Open Now [Full List]",
+    title: "Alberta Business Grants (2026) – Applications Open Now + Deadlines",
     description:
-        "Find Alberta business grants and provincial funding programs. Complete guide to Alberta government grants, Alberta Innovates funding, and application deadlines.",
+        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "Alberta business grants, Alberta government funding, provincial grants Alberta, Alberta Innovates, startup funding Edmonton Calgary",
 }
@@ -30,7 +31,8 @@ const albertaGrants: Grant[] = [
         eligibility: ["Tech SMEs in Alberta", "Innovation projects"],
         deadline: "Rolling",
         applicationLink: "https://albertainnovates.ca/programs/voucher/",
-        description: "Support for technology development, product testing, and commercialization.",
+        description:
+        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Alberta",
         category: "Technology",
@@ -48,7 +50,8 @@ const albertaGrants: Grant[] = [
         eligibility: ["Non-profits", "Municipalities", "Regional alliances"],
         deadline: "Closed",
         applicationLink: "https://www.alberta.ca/community-and-regional-economic-support-program.aspx",
-        description: "Community and Regional Economic Support for economic development projects.",
+        description:
+        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Alberta",
         category: "Community",
@@ -66,7 +69,8 @@ const albertaGrants: Grant[] = [
         eligibility: ["Export-ready companies", "Alberta businesses"],
         deadline: "First-come, first-served",
         applicationLink: "https://www.alberta.ca/alberta-export-expansion-program.aspx",
-        description: "Support for international market expansion and export activities.",
+        description:
+        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Alberta",
         category: "Export",
@@ -84,7 +88,8 @@ const albertaGrants: Grant[] = [
         eligibility: ["Software startups", "SMEs"],
         deadline: "Rolling",
         applicationLink: "https://albertainnovates.ca/",
-        description: "Funding for software product development and market traction.",
+        description:
+        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Alberta",
         category: "Technology",
@@ -112,6 +117,13 @@ export default function AlbertaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Alberta Business Grants 2026: Programs Open Now</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
+
+                        <CTRTrap />
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Alberta businesses in 2026?"

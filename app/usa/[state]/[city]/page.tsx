@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
-import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
+import { CTRTrap } from '@/components/blog/CTRTrap';
 import { getStateDetailBySlug, getAllStateDetails, getRelatedGuides, StateDetailedGrant } from '@/lib/data/stateDetails';
 import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import {
@@ -58,23 +58,15 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const estimatedPrograms = state.heroStats?.programCount || "50";
     const funding = state.heroStats?.totalFunding || "$1M+";
 
-    const titleVariants = [
-        `${cityData.city} Business Grants 2026: ${estimatedPrograms} Programs That Pay`,
-        `${cityData.city} Grants 2026: ${funding} Waiting (Most Unclaimed)`,
-        `${cityData.city} Business Grants: Access ${estimatedPrograms} Programs`,
-    ];
-
-    let title = titleVariants[0];
-    for (const v of titleVariants) {
-        if (v.length <= 60) { title = v; break; }
-    }
-    if (title.length > 60) {
-        title = `${cityData.city} Business Grants 2026 (${funding}+)`;
-    }
+    // A/B Mix — deterministic split based on city name length
+    const isFormatA = cityData.city.length % 2 === 0;
+    const title = isFormatA
+        ? `${cityData.city} Business Grants 2026 | ${estimatedPrograms} Programs + Apply Now + Deadlines`
+        : `${cityData.city} Grants 2026 ($10K–$250K) | Apply Now + Deadlines`;
 
     return {
         title,
-        description: `Local businesses in ${cityData.city} are missing out on funding. Find highly-targeted grants, ${state.name} state incentives, and federal equity-free programs available in your exact zip code.`,
+        description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
         keywords: [
             `${cityData.city} business grants 2026`,
             `small business grants ${cityData.city} ${state.name}`,
@@ -95,7 +87,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
         robots: { index: true, follow: true },
         openGraph: {
             title,
-            description: `Find funding for your business in ${cityData.city}, ${state.name}. Local grants, state incentives, and zero-equity support.`,
+            description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
             type: 'article',
         },
     };
@@ -166,9 +158,11 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                     {/* Hero Section */}
                     <header className="mb-12">
                         <Badge className="mb-4 bg-green-100 text-green-800">{cityData.city} Funding</Badge>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                             Small Business Grants in {cityData.city}, {state.name}
                         </h1>
+
+                        <CTRTrap />
 
                         {state.shortAnswer && (
                             <ShortAnswerBox content={state.shortAnswer.replace(new RegExp(state.name, 'g'), cityData.city)} />
@@ -328,7 +322,6 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                         </section>
                     )}
 
-                    <GlobalGrantGuide />
                 </article>
             </main>
             <Footer />

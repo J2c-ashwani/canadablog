@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -14,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "BC Business Grants 2026: $200M+ Available [How to Apply]",
+    title: "British Columbia Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
     description:
-        "Find British Columbia business grants and provincial funding programs. Complete guide to BC government grants, Innovate BC funding, and application deadlines.",
+        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "BC business grants, British Columbia government funding, provincial grants BC, Innovate BC, startup funding Vancouver",
 }
@@ -30,7 +31,8 @@ const bcGrants: Grant[] = [
         eligibility: ["BC-based R&D consortia", "Academic partnerships"],
         deadline: "Annual calls",
         applicationLink: "https://www.innovatebc.ca/programs/ignite/",
-        description: "Funding for R&D projects addressing market problems.",
+        description:
+        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "British Columbia",
         category: "Innovation",
@@ -48,7 +50,8 @@ const bcGrants: Grant[] = [
         eligibility: ["Industrial facilities in BC", "Emissions reduction projects"],
         deadline: "Calls for proposals",
         applicationLink: "https://www2.gov.bc.ca/gov/content/environment/climate-change/industry/cleanbc-industry-fund",
-        description: "Funding for cleaner industrial operations and emissions reduction.",
+        description:
+        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "British Columbia",
         category: "Green Energy",
@@ -66,7 +69,8 @@ const bcGrants: Grant[] = [
         eligibility: ["Employers in BC", "Training for employees"],
         deadline: "Rolling",
         applicationLink: "https://www.workbc.ca/Employer-Resources/BC-Employer-Training-Grant.aspx",
-        description: "Cost-sharing support for employee skills training.",
+        description:
+        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "British Columbia",
         category: "Workforce",
@@ -84,7 +88,8 @@ const bcGrants: Grant[] = [
         eligibility: ["Agriculture", "Food/Beverage sector"],
         deadline: "Annual",
         applicationLink: "https://buybc.gov.bc.ca/",
-        description: "Marketing support for BC food products and agricultural businesses.",
+        description:
+        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "British Columbia",
         category: "Agriculture",
@@ -112,6 +117,10 @@ export default function BritishColumbiaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">BC Business Grants 2026: $200M+ Available</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for BC businesses in 2026?"

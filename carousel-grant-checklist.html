@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSI Digital - Grant Application Checklist Carousel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #222; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px; }
+@media print {
+  @page { size: 1080px 1350px; margin: 0; }
+  body { background: transparent; padding: 0; margin: 0; display: block; gap: 0; }
+  .slide { page-break-after: always; break-after: page; box-shadow: none !important; margin: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+.slide { width: 1080px; height: 1350px; background: #fff; position: relative; display: flex; flex-direction: column; flex-shrink: 0; font-family: 'DM Sans', sans-serif; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+/* COVER */
+.cover { background: #1a1a2e; }
+.cover .accent { position: absolute; top: 0; left: 0; width: 20px; height: 100%; background: #E60023; }
+.cover .bg-circle { position: absolute; width: 900px; height: 900px; border-radius: 50%; background: rgba(230,0,35,.05); bottom: -300px; right: -200px; }
+.cover .top-bar { padding: 80px 80px 0 100px; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.cover .logo { font-size: 46px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .1em; text-transform: uppercase; }
+.cover .badge { background: #E60023; border-radius: 12px; padding: 12px 36px; font-size: 36px; color: #fff; font-weight: 800; }
+.cover .mid { padding: 80px 80px 60px 100px; flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.cover .num { font-family: 'Playfair Display', serif; font-size: 500px; font-weight: 900; color: rgba(255,255,255,.04); line-height: .8; position: absolute; right: 0; top: 60px; }
+.cover .tag { font-size: 46px; font-weight: 800; color: #E60023; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 24px; }
+.cover .title { font-family: 'Playfair Display', serif; font-size: 115px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 30px; max-width: 900px; }
+.cover .subtitle { font-size: 50px; color: rgba(255,255,255,.7); line-height: 1.4; font-weight: 500; }
+.cover .bottom { padding: 60px 80px 60px 100px; background: rgba(0,0,0,.3); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+.cover .dots { display: flex; gap: 20px; }
+.cover .dot { width: 70px; height: 20px; border-radius: 10px; background: rgba(255,255,255,.2); }
+.cover .dot.active { background: #E60023; width: 120px; }
+.cover .cta-txt { font-size: 46px; color: rgba(255,255,255,.8); font-weight: 700; }
+
+/* CHECKLIST SLIDES */
+.chk { background: #fff; border: 8px solid #f0f0f0; }
+.chk .slide-header { background: #1a1a2e; padding: 50px 80px; display: flex; align-items: center; gap: 40px; }
+.chk .slide-header .icon-box { width: 130px; height: 130px; border-radius: 30px; background: #E60023; display: flex; align-items: center; justify-content: center; font-size: 70px; flex-shrink: 0; }
+.chk .slide-header .hd { flex: 1; }
+.chk .slide-header .cat { font-size: 36px; font-weight: 800; color: rgba(255,255,255,.6); text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.chk .slide-header .htitle { font-family: 'Playfair Display', serif; font-size: 68px; font-weight: 900; color: #fff; line-height: 1.1; }
+.chk .progress-bar { height: 10px; background: rgba(255,255,255,.1); }
+.chk .progress-fill { height: 100%; background: #E60023; }
+.chk .body { padding: 50px 80px; flex: 1; display: flex; flex-direction: column; gap: 28px; justify-content: center; }
+.chk .item { display: flex; align-items: flex-start; gap: 30px; padding: 30px; border-radius: 20px; border: 3px solid #f0f0f0; }
+.chk .item.highlighted { background: #fff5f6; border-color: #ffd6da; }
+.chk .check { width: 70px; height: 70px; border-radius: 50%; border: 5px solid #E60023; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 36px; color: #E60023; font-weight: 900; }
+.chk .itext { font-size: 46px; color: #1a1a1a; line-height: 1.35; font-weight: 600; }
+.chk .itext span { font-size: 36px; color: #888; font-weight: 500; display: block; margin-top: 6px; }
+.chk .footer { margin-top: auto; padding: 40px 80px; background: #fafafa; border-top: 4px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.chk .url { font-size: 30px; color: #999; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.chk .next-btn { background: #E60023; border-radius: 24px; padding: 22px 55px; font-size: 38px; color: #fff; font-weight: 800; text-transform: uppercase; flex-shrink: 0; }
+
+/* PATTERN BREAK */
+.pattern-break { background: #E60023; display: flex; flex-direction: column; justify-content: center; padding: 120px; }
+.pattern-break h2 { font-family: 'Playfair Display', serif; font-size: 160px; font-weight: 900; color: #fff; margin-bottom: 60px; line-height: 1; }
+.pattern-break p { font-size: 80px; font-weight: 700; color: rgba(255,255,255,.9); line-height: 1.3; }
+.pattern-break .arrow { margin-top: auto; font-size: 60px; color: rgba(255,255,255,.5); font-weight: 800; align-self: flex-end; }
+
+/* CTA */
+.cta-slide { background: #1a1a2e; text-align: center; justify-content: center; align-items: center; padding: 80px; border: none; }
+.cta-slide .accent { position: absolute; top: 0; left: 0; width: 20px; height: 100%; background: #E60023; }
+.cta-slide .bg-overlay { position: absolute; top:0;left:0;right:0;bottom:0; background: radial-gradient(circle at center, rgba(230,0,35,0.12) 0%, transparent 70%); z-index: 1; }
+.cta-slide .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+.cta-slide .logo-huge { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #fff; }
+.cta-slide h2 { font-size: 90px; font-weight: 800; line-height: 1.15; color: #fff; }
+.cta-slide .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 60px; width: 100%; margin: 40px 0; }
+.cta-slide .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; margin-bottom: 20px; }
+.cta-slide .comment-word { font-size: 90px; font-weight: 900; color: #E60023; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.cta-slide .sub { font-size: 40px; color: #aaa; margin-top: 20px; margin-bottom: 0; }
+.cta-slide .or-text { font-size: 40px; color: #666; font-weight: 700; text-transform: uppercase; }
+.cta-slide .url-text { font-size: 60px; font-weight: 800; color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="slide cover">
+  <div class="accent"></div><div class="bg-circle"></div>
+  <div class="top-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="badge">FREE CHECKLIST</div>
+  </div>
+  <div class="mid">
+    <div class="num">12</div>
+    <div class="tag">Before You Apply</div>
+    <div class="title">12 Things to Prepare Before Any Grant Application</div>
+    <div class="subtitle">Miss even one of these and your application gets rejected.<br><span style="color:rgba(255,255,255,.4)">Save this — check it every time.</span></div>
+  </div>
+  <div class="bottom">
+    <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <div class="cta-txt">Swipe to see list →</div>
+  </div>
+</div>
+
+<!-- SLIDE 2: Legal & Business Docs -->
+<div class="slide chk">
+  <div class="slide-header">
+    <div class="icon-box">📋</div>
+    <div class="hd">
+      <div class="cat">Category 1 of 4</div>
+      <div class="htitle">Legal & Business Documents</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:25%"></div></div>
+  <div class="body">
+    <div class="item highlighted">
+      <div class="check">1</div>
+      <div class="itext">Business Registration Certificate<span>Articles of Incorporation or LLC/LLP filing</span></div>
+    </div>
+    <div class="item">
+      <div class="check">2</div>
+      <div class="itext">Federal Tax ID (EIN or BN)<span>Required by almost every grant program</span></div>
+    </div>
+    <div class="item highlighted">
+      <div class="check">3</div>
+      <div class="itext">Proof of Ownership Structure<span>Shareholder register, org chart, or LLC agreement</span></div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides</div><div class="next-btn">Save & Next →</div></div>
+</div>
+
+<!-- SLIDE 3: Financials -->
+<div class="slide chk">
+  <div class="slide-header">
+    <div class="icon-box">💰</div>
+    <div class="hd">
+      <div class="cat">Category 2 of 4</div>
+      <div class="htitle">Financial Records</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:50%"></div></div>
+  <div class="body">
+    <div class="item highlighted">
+      <div class="check">4</div>
+      <div class="itext">2–3 Years of Financial Statements<span>P&L, balance sheet, cash flow — audited if possible</span></div>
+    </div>
+    <div class="item">
+      <div class="check">5</div>
+      <div class="itext">Current Year-to-Date Financials<span>Most programs require current operating data</span></div>
+    </div>
+    <div class="item highlighted">
+      <div class="check">6</div>
+      <div class="itext">Detailed Project Budget<span>Line-item breakdown of how grant funds will be spent</span></div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides</div><div class="next-btn">Save & Next →</div></div>
+</div>
+
+<!-- PATTERN BREAK -->
+<div class="slide pattern-break">
+  <h2>Pro tip:</h2>
+  <p>Reviewers reject incomplete applications instantly. The next 6 items are what most founders forget.</p>
+  <div class="arrow">Keep swiping →</div>
+</div>
+
+<!-- SLIDE 5: Business Plan -->
+<div class="slide chk">
+  <div class="slide-header">
+    <div class="icon-box">🗺️</div>
+    <div class="hd">
+      <div class="cat">Category 3 of 4</div>
+      <div class="htitle">Business Plan & Narrative</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div>
+  <div class="body">
+    <div class="item highlighted">
+      <div class="check">7</div>
+      <div class="itext">Business Plan with Growth Projections<span>3–5 year revenue forecast tied to grant milestones</span></div>
+    </div>
+    <div class="item">
+      <div class="check">8</div>
+      <div class="itext">Project Description (1–2 pages)<span>What you'll do, how, and why it matters</span></div>
+    </div>
+    <div class="item highlighted">
+      <div class="check">9</div>
+      <div class="itext">Team Bios & Relevant Credentials<span>Grant reviewers fund people as much as ideas</span></div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides</div><div class="next-btn">Save & Next →</div></div>
+</div>
+
+<!-- SLIDE 6: Supporting Evidence -->
+<div class="slide chk" style="border-color:#E60023; border-width:12px;">
+  <div class="slide-header" style="background:#111;">
+    <div class="icon-box" style="background:#fff; font-size:70px;">🏆</div>
+    <div class="hd">
+      <div class="cat" style="color:rgba(255,255,255,.5)">Category 4 of 4</div>
+      <div class="htitle">Supporting Evidence</div>
+    </div>
+  </div>
+  <div class="progress-bar" style="background:#333;"><div class="progress-fill" style="width:100%; background:#fff;"></div></div>
+  <div class="body">
+    <div class="item highlighted">
+      <div class="check">10</div>
+      <div class="itext">Letters of Support<span>From customers, partners, or industry bodies</span></div>
+    </div>
+    <div class="item highlighted">
+      <div class="check">11</div>
+      <div class="itext">Market Research or Validation Data<span>Prove there's demand — surveys, LOIs, pilot results</span></div>
+    </div>
+    <div class="item highlighted">
+      <div class="check">12</div>
+      <div class="itext">Previous Grant History (if any)<span>Shows credibility — but never required to have one</span></div>
+    </div>
+  </div>
+  <div class="footer" style="background:#fff5f6; border-top:4px solid #ffd6da;">
+    <div class="url">fsidigital.ca/guides</div>
+    <div class="next-btn" style="background:#1a1a1a">Save This</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="slide cta-slide">
+  <div class="accent"></div><div class="bg-overlay"></div>
+  <div class="content">
+    <div class="logo-huge">FSI Digital</div>
+    <h2>Want this as a printable<br>checklist PDF?</h2>
+    <div class="lead-box">
+      <p>Comment</p>
+      <div class="comment-word">"CHECKLIST"</div>
+      <p class="sub">and I'll send you the free printable version</p>
+    </div>
+    <div class="or-text">or visit</div>
+    <div class="url-text">fsidigital.ca</div>
+  </div>
+</div>
+
+</body>
+</html>

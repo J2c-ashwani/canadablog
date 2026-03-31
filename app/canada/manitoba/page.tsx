@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -14,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Manitoba Business Grants 2026 | Provincial Funding Programs",
+    title: "Manitoba Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
     description:
-        "Find Manitoba business grants and provincial funding programs. Complete guide to Manitoba government grants, eligibility requirements, and application deadlines.",
+        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "Manitoba business grants, Manitoba government funding, provincial grants Manitoba, Winnipeg business grants, startup funding Manitoba",
 }
@@ -30,7 +31,8 @@ const manitobaGrants: Grant[] = [
         eligibility: ["SMEs", "Commercializing new products"],
         deadline: "Quarterly intakes",
         applicationLink: "https://www.gov.mb.ca/iec/invest/igp.html",
-        description: "Funding for innovative product commercialization and growth.",
+        description:
+        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Manitoba",
         category: "Innovation",
@@ -48,7 +50,8 @@ const manitobaGrants: Grant[] = [
         eligibility: ["Major capital investments", "Job creation"],
         deadline: "Open",
         applicationLink: "https://www.gov.mb.ca/iec/invest/mwci.html",
-        description: "Tax Increment Financing for significant capital investment projects.",
+        description:
+        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Manitoba",
         category: "Business Development",
@@ -66,7 +69,8 @@ const manitobaGrants: Grant[] = [
         eligibility: ["Key economic sectors", "Business expansion"],
         deadline: "Various",
         applicationLink: "https://www.gov.mb.ca/",
-        description: "Support for strategic sector growth and expansion.",
+        description:
+        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Manitoba",
         category: "Sector Specific",
@@ -94,6 +98,10 @@ export default function ManitobaGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Manitoba Business Grants 2026</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Manitoba businesses in 2026?"

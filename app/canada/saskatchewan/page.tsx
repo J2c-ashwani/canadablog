@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -14,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Saskatchewan Business Grants 2026 | Provincial Funding Programs",
+    title: "Saskatchewan Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
     description:
-        "Find Saskatchewan business grants and provincial funding programs. Complete guide to Saskatchewan government grants, eligibility requirements, and application deadlines.",
+        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "Saskatchewan business grants, SK government funding, provincial grants Saskatchewan, Regina business grants, startup funding Saskatoon",
 }
@@ -30,7 +31,8 @@ const saskGrants: Grant[] = [
         eligibility: ["Tech startups", "Eligible Investors"],
         deadline: "Ongoing",
         applicationLink: "https://www.saskatchewan.ca/business/investment-and-economic-development/science-and-technology/metrics-and-achievements/saskatchewan-technology-startup-incentive",
-        description: "45% tax credit for investors in eligible early-stage technology startups.",
+        description:
+        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Saskatchewan",
         category: "Technology",
@@ -48,7 +50,8 @@ const saskGrants: Grant[] = [
         eligibility: ["Agri-business", "Manufacturing"],
         deadline: "Open",
         applicationLink: "https://www.saskatchewan.ca/",
-        description: "Funding for efficiency improvements and lean process adoption.",
+        description:
+        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Saskatchewan",
         category: "Manufacturing",
@@ -66,7 +69,8 @@ const saskGrants: Grant[] = [
         eligibility: ["Employers in SK", "Training for employees"],
         deadline: "Rolling",
         applicationLink: "https://www.saskatchewan.ca/business/hire-train-and-manage-employees/apply-for-the-canada-saskatchewan-job-grant",
-        description: "Funding for third-party skills training for employees.",
+        description:
+        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Saskatchewan",
         category: "Workforce",
@@ -94,6 +98,10 @@ export default function SaskatchewanGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Saskatchewan Business Grants 2026</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Saskatchewan businesses in 2026?"

@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -14,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "New Brunswick Business Grants 2026 | Provincial Funding Programs",
+    title: "New Brunswick Business Grants (2026) – Applications Open Now + Deadlines",
     description:
-        "Find New Brunswick business grants and provincial funding programs. Complete guide to New Brunswick government grants, ONB funding, and application deadlines.",
+        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "New Brunswick business grants, NB government funding, provincial grants New Brunswick, Opportunities NB, startup funding Moncton Fredericton",
 }
@@ -30,7 +31,8 @@ const nbGrants: Grant[] = [
         eligibility: ["Strategic sectors", "New Brunswick businesses"],
         deadline: "Ongoing",
         applicationLink: "https://onbcanada.ca/",
-        description: "Support for expansion, modernization, and productivity improvements.",
+        description:
+        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "New Brunswick",
         category: "Business Growth",
@@ -48,7 +50,8 @@ const nbGrants: Grant[] = [
         eligibility: ["Export-ready SMEs", "New Brunswick companies"],
         deadline: "Apply before travel",
         applicationLink: "https://onbcanada.ca/exporting/",
-        description: "Support for international market development and export activities.",
+        description:
+        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "New Brunswick",
         category: "Export",
@@ -66,7 +69,8 @@ const nbGrants: Grant[] = [
         eligibility: ["Employers creating new jobs", "Hiring unemployed"],
         deadline: "Ongoing",
         applicationLink: "https://www2.gnb.ca/content/gnb/en/services/services_renderer.201467.Workforce_Expansion_Program.html",
-        description: "Wage subsidy support for hiring unemployed individuals.",
+        description:
+        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "New Brunswick",
         category: "Workforce",
@@ -94,6 +98,10 @@ export default function NewBrunswickGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New Brunswick Business Grants 2026</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for New Brunswick businesses in 2026?"
