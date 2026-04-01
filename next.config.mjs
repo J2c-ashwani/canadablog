@@ -142,6 +142,9 @@ const nextConfig = {
       { source: '/faq', destination: '/faq-usa', permanent: true },
       { source: '/grants/bc', destination: '/blog/bc-small-business-grants-guide', permanent: true },
       { source: '/usa/north-carolina/raleigh-/-durham', destination: '/usa/north-carolina/raleigh-durham', permanent: true },
+      // GSC "Excluded by noindex" fix — Apr 1, 2026
+      { source: '/blog/regional-development-agencies-funding', destination: '/blog/regional-development-agencies-government-grants', permanent: true },
+
       // GSC "Excluded by noindex" fixes — Mar 23, 2026
       { source: '/usa/agriculture-farming-grants', destination: '/blog/usda-sbir-agtech-grants', permanent: true },
       { source: '/usa/california/sacramento', destination: '/usa/california', permanent: true },

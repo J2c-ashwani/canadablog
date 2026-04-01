@@ -11,6 +11,14 @@ dotenv.config({ path: path.join(__dirname, '../.env.local') });
 const SITEMAP_URL = 'https://www.fsidigital.ca/sitemap.xml'; // Live sitemap
 const CREDENTIALS_PATH = path.join(__dirname, '../google-credentials.json');
 const HISTORY_PATH = path.join(__dirname, 'indexing-history.json');
+const REINDEX_TRACKER_PATH = path.join(__dirname, 'reindex-tracker.json');
+
+// ── QUOTA ALLOCATION ───────────────────────────────────────
+// Google allows 200 requests/day. We split the quota:
+// Today: 40 already used → 160 remaining → 10 new + 150 re-index
+const QUOTA_NEW_DRIP = 10;      // Slots reserved for brand-new pSEO drip pages
+const QUOTA_REINDEX  = 150;     // Slots for re-indexing existing pages (CTR updates)
+// ───────────────────────────────────────────────────────────
 
 // Check if credentials exist
 if (!fs.existsSync(CREDENTIALS_PATH)) {
@@ -30,6 +38,7 @@ const indexing = google.indexing({
 
 /**
  * Loads history of previously submitted URLs
+ * Format: { "url": "2026-03-12T12:00:00Z" }
  */
 function loadHistory() {
     if (fs.existsSync(HISTORY_PATH)) {
@@ -39,14 +48,30 @@ function loadHistory() {
             console.error('Failed to parse history JSON. Starting fresh.');
         }
     }
-    return {}; // Format: { "url": "2026-03-12T12:00:00Z" }
+    return {};
 }
 
 /**
- * Saves history to disk
+ * Loads re-index tracker (URLs that have been re-submitted for CTR updates)
+ * Format: { "url": "2026-04-01T00:00:00Z" }
  */
+function loadReindexTracker() {
+    if (fs.existsSync(REINDEX_TRACKER_PATH)) {
+        try {
+            return JSON.parse(fs.readFileSync(REINDEX_TRACKER_PATH, 'utf8'));
+        } catch (e) {
+            console.error('Failed to parse reindex tracker. Starting fresh.');
+        }
+    }
+    return {};
+}
+
 function saveHistory(history) {
     fs.writeFileSync(HISTORY_PATH, JSON.stringify(history, null, 2));
+}
+
+function saveReindexTracker(tracker) {
+    fs.writeFileSync(REINDEX_TRACKER_PATH, JSON.stringify(tracker, null, 2));
 }
 
 /**
@@ -86,105 +111,164 @@ async function submitUrl(url, type = 'URL_UPDATED') {
         await indexing.urlNotifications.publish({
             requestBody: { url: url, type: type }
         });
-        console.log(`✅ Success: ${url}`);
         return 'SUCCESS';
     } catch (error) {
         if (error.response && error.response.status === 403) {
-            console.error(`❌ Permission Denied for ${url}`);
+            console.error(`   ❌ Permission Denied for ${url}`);
         } else if (error.response && error.response.status === 429) {
-            console.error(`⚠️ RATE LIMIT EXCEEDED. Stopping.`);
+            console.error(`   ⚠️ RATE LIMIT EXCEEDED. Stopping.`);
             return 'RATELIMIT';
         } else {
-            console.error(`❌ Failed: ${url} - ${error.message}`);
+            console.error(`   ❌ Failed: ${url} - ${error.message}`);
         }
         return 'ERROR';
     }
 }
 
 /**
- * Main execution function
+ * Main execution function — Dual Priority Queue
  */
 async function run() {
-    console.log('🚀 Starting Smart Google Indexing API Submitter...\n');
+    console.log('═══════════════════════════════════════════════════════════════');
+    console.log('  🚀 DUAL-PRIORITY Google Indexing API Submitter');
+    console.log('  📌 Priority 1: New pSEO Drip Pages (20 slots)');
+    console.log('  📌 Priority 2: Re-index Existing Pages for CTR (170 slots)');
+    console.log('═══════════════════════════════════════════════════════════════\n');
 
+    // ── Step 1: Gather all known URLs ──────────────────────────
     let allUrls = [];
     try {
-        console.log(`Fetching URLs from live sitemap: ${SITEMAP_URL}`);
+        console.log(`📡 Fetching URLs from live sitemap: ${SITEMAP_URL}`);
         allUrls = await fetchSitemapUrls(SITEMAP_URL);
-        console.log(`Found ${allUrls.length} total URLs in sitemap.`);
+        console.log(`   Found ${allUrls.length} total URLs in sitemap.`);
     } catch (e) {
         console.error(`Failed to fetch sitemap: ${e.message}`);
         process.exit(1);
     }
 
+    // Merge local pSEO drip pages (may not be in live sitemap yet)
+    let localPseoUrls = [];
     try {
-        console.log(`\nFetching local pSEO drip pages to bypass live sitemap cache...`);
+        console.log(`\n📂 Fetching local pSEO drip pages...`);
         const { execSync } = require('child_process');
         const output = execSync('npx tsx scripts/get-pseo-urls.ts', { encoding: 'utf8' });
-        const localPseoUrls = JSON.parse(output.trim());
-        console.log(`Found ${localPseoUrls.length} total published pSEO pages locally.`);
-        // Merge and deduplicate
+        localPseoUrls = JSON.parse(output.trim());
+        console.log(`   Found ${localPseoUrls.length} published pSEO pages locally.`);
         const originalCount = allUrls.length;
         allUrls = [...new Set([...allUrls, ...localPseoUrls])];
-        console.log(`Added ${allUrls.length - originalCount} un-cached drip pages to the indexing queue.\n`);
+        console.log(`   Added ${allUrls.length - originalCount} un-cached drip pages.\n`);
     } catch (e) {
-        console.warn(`⚠️ Could not fetch local pSEO URLs. Error: ${e.message}`);
+        console.warn(`   ⚠️ Could not fetch local pSEO URLs: ${e.message}\n`);
     }
-
 
     const history = loadHistory();
+    const reindexTracker = loadReindexTracker();
     const now = new Date();
-    
-    // Filter out URLs that were successfully submitted in the last 7 days
-    const recentSubmissions = Object.entries(history)
-        .filter(([_, dateStr]) => {
-            const timeDiffMs = now.getTime() - new Date(dateStr).getTime();
-            const daysDiff = timeDiffMs / (1000 * 60 * 60 * 24);
-            return daysDiff < 7;
-        })
-        .map(([url]) => url);
-    
-    console.log(`Found ${recentSubmissions.length} URLs already submitted in the last 7 days.`);
 
-    // Find URLs that need submission
-    let pendingUrls = allUrls.filter(u => !recentSubmissions.includes(u));
-    console.log(`Remaining unindexed/stale URLs to process: ${pendingUrls.length}\n`);
+    // URLs submitted in the last 7 days (don't re-submit these as "new")
+    const recentlySubmitted = new Set(
+        Object.entries(history)
+            .filter(([_, dateStr]) => {
+                const daysDiff = (now.getTime() - new Date(dateStr).getTime()) / (1000 * 60 * 60 * 24);
+                return daysDiff < 7;
+            })
+            .map(([url]) => url)
+    );
 
-    if (pendingUrls.length === 0) {
-        console.log('🎉 All URLs have been submitted recently! Nothing to do.');
-        return;
-    }
+    // ── Step 2: PRIORITY 1 — New Drip Pages ───────────────────
+    console.log('─── PRIORITY 1: New pSEO Drip Pages ─────────────────────────');
+    const newDripPages = allUrls.filter(u => !recentlySubmitted.has(u));
+    console.log(`   ${newDripPages.length} URLs have NOT been submitted in the last 7 days.`);
 
-    // Google limit is 200 per day. We'll do 190 to be safe.
-    const quotaLimit = 190;
-    const batchToSubmit = pendingUrls.slice(0, quotaLimit);
-    
-    console.log(`Submitting batch of ${batchToSubmit.length} URLs... (This takes a moment)`);
+    const dripBatch = newDripPages.slice(0, QUOTA_NEW_DRIP);
+    console.log(`   Submitting ${dripBatch.length} new pages (max ${QUOTA_NEW_DRIP} slots)...\n`);
 
-    let successCount = 0;
-    
-    for (let i = 0; i < batchToSubmit.length; i++) {
-        const url = batchToSubmit[i];
-        console.log(`[${i + 1}/${batchToSubmit.length}] Submitting: ${url}`);
+    let dripSuccess = 0;
+    let hitRateLimit = false;
 
+    for (let i = 0; i < dripBatch.length; i++) {
+        const url = dripBatch[i];
+        console.log(`   [NEW ${i + 1}/${dripBatch.length}] ${url}`);
         const result = await submitUrl(url);
-        
         if (result === 'SUCCESS') {
-            successCount++;
+            dripSuccess++;
             history[url] = now.toISOString();
-            // Save history incrementally so we don't lose it if it crashes
             saveHistory(history);
         } else if (result === 'RATELIMIT') {
-            console.log('\n🛑 Stopped early due to API Rate Limits (Google 200/day quota).');
+            hitRateLimit = true;
             break;
         }
-
-        // Sleep briefly to avoid 429s (2 requests per second max)
         await new Promise(r => setTimeout(r, 600));
     }
 
-    console.log(`\n🎉 Session Complete! Successfully submitted ${successCount} URLs today.`);
-    console.log(`Run this script again tomorrow to submit the next batch!`);
+    console.log(`\n   ✅ New drip pages submitted: ${dripSuccess}/${dripBatch.length}\n`);
+
+    if (hitRateLimit) {
+        console.log('🛑 Rate limit hit during Priority 1. Stopping early.');
+        return;
+    }
+
+    // ── Step 3: PRIORITY 2 — Re-index Existing Pages ──────────
+    console.log('─── PRIORITY 2: Re-index Existing Pages (CTR Updates) ───────');
+
+    // These are pages that HAVE been submitted before (exist in history)
+    // but have NOT been re-indexed yet (not in reindexTracker)
+    const alreadyReindexed = new Set(Object.keys(reindexTracker));
+    const existingPages = allUrls.filter(u =>
+        history[u] &&                    // Previously submitted
+        !alreadyReindexed.has(u)         // Not yet re-indexed for CTR updates
+    );
+
+    console.log(`   ${existingPages.length} existing pages still need re-indexing.`);
+
+    // Prioritize key page types first (state > city > Canada > blog > others)
+    const prioritized = existingPages.sort((a, b) => {
+        const priority = (url) => {
+            if (url.includes('/usa/') && !url.includes('/grants/')) return 1;  // USA state/city
+            if (url.includes('/canada/')) return 2;                             // Canada pages
+            if (url.includes('/blog/')) return 3;                               // Blog posts
+            if (url.includes('/grants/')) return 4;                             // pSEO grants
+            return 5;                                                           // Other pages
+        };
+        return priority(a) - priority(b);
+    });
+
+    const reindexBatch = prioritized.slice(0, QUOTA_REINDEX);
+    console.log(`   Submitting ${reindexBatch.length} pages for re-indexing (max ${QUOTA_REINDEX} slots)...\n`);
+
+    let reindexSuccess = 0;
+
+    for (let i = 0; i < reindexBatch.length; i++) {
+        const url = reindexBatch[i];
+        console.log(`   [REINDEX ${i + 1}/${reindexBatch.length}] ${url}`);
+        const result = await submitUrl(url, 'URL_UPDATED');
+        if (result === 'SUCCESS') {
+            reindexSuccess++;
+            reindexTracker[url] = now.toISOString();
+            // Also update the main history so these don't get picked up by Priority 1
+            history[url] = now.toISOString();
+            saveReindexTracker(reindexTracker);
+            saveHistory(history);
+        } else if (result === 'RATELIMIT') {
+            console.log('\n   🛑 Rate limit hit during Priority 2. Will resume tomorrow.');
+            break;
+        }
+        await new Promise(r => setTimeout(r, 600));
+    }
+
+    // ── Summary ────────────────────────────────────────────────
+    const remainingReindex = existingPages.length - reindexSuccess;
+    const daysToComplete = Math.ceil(remainingReindex / QUOTA_REINDEX);
+
+    console.log('\n═══════════════════════════════════════════════════════════════');
+    console.log('  📊 SESSION SUMMARY');
+    console.log('═══════════════════════════════════════════════════════════════');
+    console.log(`  🆕 New drip pages submitted:     ${dripSuccess}`);
+    console.log(`  🔄 Existing pages re-indexed:    ${reindexSuccess}`);
+    console.log(`  📋 Remaining to re-index:        ${remainingReindex}`);
+    console.log(`  ⏳ Estimated days to finish:     ${daysToComplete}`);
+    console.log('═══════════════════════════════════════════════════════════════\n');
+    console.log('Run this script daily to continue the re-indexing cycle!');
 }
 
 run().catch(console.error);
