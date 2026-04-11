@@ -15,9 +15,9 @@ const REINDEX_TRACKER_PATH = path.join(__dirname, 'reindex-tracker.json');
 
 // ── QUOTA ALLOCATION ───────────────────────────────────────
 // Google allows 200 requests/day. We split the quota:
-// Today: 40 already used → 160 remaining → 10 new + 150 re-index
-const QUOTA_NEW_DRIP = 10;      // Slots reserved for brand-new pSEO drip pages
-const QUOTA_REINDEX  = 150;     // Slots for re-indexing existing pages (CTR updates)
+// Daily allocation: 20 new pSEO + 170 re-index = 190 total (under 200 limit)
+const QUOTA_NEW_DRIP = 20;      // Slots reserved for brand-new pSEO drip pages
+const QUOTA_REINDEX  = 170;     // Slots for re-indexing existing pages (CTR updates)
 // ───────────────────────────────────────────────────────────
 
 // Check if credentials exist

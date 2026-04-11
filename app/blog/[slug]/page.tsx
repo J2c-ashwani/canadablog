@@ -84,9 +84,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return notFound();
   }
 
-  const content = await getBlogPostContent(slug) || '';
+  // Strip any inline <script type="application/ld+json"> blocks from HTML content.
+  // Some legacy .ts data files embed FAQPage schema directly in the HTML, which causes
+  // "Duplicate field FAQPage" errors in Google Search Console since the page component
+  // already generates proper structured data via generateFAQSchema().
+  const stripInlineSchemas = (html: string) =>
+    html.replace(/<script\s+type\s*=\s*["']application\/ld\+json["']\s*>[\s\S]*?<\/script>/gi, '');
+
+  const rawContent = await getBlogPostContent(slug) || '';
+  const content = stripInlineSchemas(rawContent);
   const richData = await getBlogPostRichData(slug);
-  const fullPost = { ...post, ...richData, content };
+  // Also sanitize post.content so the RSC payload doesn't carry duplicate schemas
+  const fullPost = { ...post, ...richData, content: stripInlineSchemas(content) };
 
   // Split content for InlineCTA injection
   let beforeCTA = content;
