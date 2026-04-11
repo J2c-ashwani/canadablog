@@ -152,6 +152,10 @@ const nextConfig = {
       { source: '/usa/ontario', destination: '/canada/ontario', permanent: true },
       { source: '/usa/minority-owned-business-grants', destination: '/blog/federal-grants-women-minorities', permanent: true },
       { source: '/refund-cancellation', destination: '/terms', permanent: true },
+      // GSC 404 fixes
+      { source: '/grants/qc', destination: '/blog/quebec-business-grants-2026', permanent: true },
+      { source: '/usa/maine/lewiston/auburn', destination: '/usa/maine', permanent: true },
+      { source: '/usa/massachusetts/boston-/-cambridge', destination: '/usa/massachusetts', permanent: true },
     ]
   },
   async headers() {
