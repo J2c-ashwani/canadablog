@@ -34,13 +34,14 @@ export async function generateMetadata({
     title = `${title} - Page ${pageNum}`;
   }
 
-  // Canonical: page 1 = /blog, page N = /blog?page=N
-  let canonicalUrl = baseUrl;
-  const params = new URLSearchParams();
-  if (category) params.set('category', category);
-  if (pageNum > 1) params.set('page', pageNum.toString());
-  const queryString = params.toString();
-  if (queryString) canonicalUrl = `${baseUrl}?${queryString}`;
+  // Canonical should ALWAYS point to the base URL without query params.
+  // Filtered/paginated views are just different views of the same page.
+  // This prevents "Duplicate without user-selected canonical" in GSC.
+  const canonicalUrl = baseUrl;
+
+  // Only index the base /blog page. Category filters and pagination
+  // are duplicate views — noindex them but keep follow for link discovery.
+  const hasQueryParams = !!(category || pageNum > 1);
 
   return {
     title,
@@ -64,7 +65,10 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
-    robots: { index: true, follow: true },
+    robots: {
+      index: !hasQueryParams,
+      follow: true,
+    },
   };
 }
 

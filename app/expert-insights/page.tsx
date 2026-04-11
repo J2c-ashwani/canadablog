@@ -36,23 +36,14 @@ export async function generateMetadata({
         title = `${title} - Page ${pageNum}`;
     }
 
-    // Construct Canonical URL
-    // If page=1, strip it. If category exists, keep it.
-    let canonicalUrl = baseUrl;
-    const params = new URLSearchParams();
+    // Canonical should ALWAYS point to the base URL without query params.
+    // Filtered/paginated views are just different views of the same page.
+    // This prevents "Duplicate without user-selected canonical" in GSC.
+    const canonicalUrl = baseUrl;
 
-    if (category) {
-        params.set('category', category);
-    }
-    // We generally don't include page=1 in canonical
-    if (pageNum > 1) {
-        params.set('page', pageNum.toString());
-    }
-
-    const queryString = params.toString();
-    if (queryString) {
-        canonicalUrl = `${baseUrl}?${queryString}`;
-    }
+    // Only index the base /expert-insights page. Category filters and pagination
+    // are duplicate views — noindex them but keep follow for link discovery.
+    const hasQueryParams = !!(category || pageNum > 1);
 
     return {
         title,
@@ -77,7 +68,7 @@ export async function generateMetadata({
             canonical: canonicalUrl,
         },
         robots: {
-            index: true,
+            index: !hasQueryParams,
             follow: true,
         }
     };
