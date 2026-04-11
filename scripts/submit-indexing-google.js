@@ -20,6 +20,15 @@ const QUOTA_NEW_DRIP = 20;      // Slots reserved for brand-new pSEO drip pages
 const QUOTA_REINDEX  = 170;     // Slots for re-indexing existing pages (CTR updates)
 // ───────────────────────────────────────────────────────────
 
+// ── PRIORITY RECRAWL QUEUE ─────────────────────────────────
+// URLs listed here are submitted FIRST (before drip/reindex quotas).
+// Use this for pages with critical fixes (e.g., schema errors, content updates).
+// These bypass the 7-day cooldown. Remove URLs after Google recrawls them.
+const PRIORITY_URLS = [
+    'https://www.fsidigital.ca/blog/healthcare-grants-2026',
+];
+// ───────────────────────────────────────────────────────────
+
 // Check if credentials exist
 if (!fs.existsSync(CREDENTIALS_PATH)) {
     console.error('\n❌ ERROR: Google Credentials File Missing!\n');
@@ -175,7 +184,38 @@ async function run() {
             .map(([url]) => url)
     );
 
-    // ── Step 2: PRIORITY 1 — New Drip Pages ───────────────────
+    // ── Step 2: PRIORITY 0 — Urgent Recrawl Queue ──────────────
+    let prioritySuccess = 0;
+    let hitRateLimit = false;
+
+    if (PRIORITY_URLS.length > 0) {
+        console.log('─── PRIORITY 0: Urgent Recrawl Queue ────────────────────────');
+        console.log(`   ${PRIORITY_URLS.length} URLs queued for immediate recrawl...\n`);
+
+        for (let i = 0; i < PRIORITY_URLS.length; i++) {
+            const url = PRIORITY_URLS[i];
+            console.log(`   [URGENT ${i + 1}/${PRIORITY_URLS.length}] ${url}`);
+            const result = await submitUrl(url, 'URL_UPDATED');
+            if (result === 'SUCCESS') {
+                prioritySuccess++;
+                history[url] = now.toISOString();
+                saveHistory(history);
+            } else if (result === 'RATELIMIT') {
+                hitRateLimit = true;
+                break;
+            }
+            await new Promise(r => setTimeout(r, 600));
+        }
+
+        console.log(`\n   ✅ Urgent recrawl submitted: ${prioritySuccess}/${PRIORITY_URLS.length}\n`);
+
+        if (hitRateLimit) {
+            console.log('🛑 Rate limit hit during Priority 0. Stopping early.');
+            return;
+        }
+    }
+
+    // ── Step 3: PRIORITY 1 — New Drip Pages ───────────────────
     console.log('─── PRIORITY 1: New pSEO Drip Pages ─────────────────────────');
     const newDripPages = allUrls.filter(u => !recentlySubmitted.has(u));
     console.log(`   ${newDripPages.length} URLs have NOT been submitted in the last 7 days.`);
@@ -184,7 +224,6 @@ async function run() {
     console.log(`   Submitting ${dripBatch.length} new pages (max ${QUOTA_NEW_DRIP} slots)...\n`);
 
     let dripSuccess = 0;
-    let hitRateLimit = false;
 
     for (let i = 0; i < dripBatch.length; i++) {
         const url = dripBatch[i];
@@ -263,6 +302,7 @@ async function run() {
     console.log('\n═══════════════════════════════════════════════════════════════');
     console.log('  📊 SESSION SUMMARY');
     console.log('═══════════════════════════════════════════════════════════════');
+    console.log(`  🚨 Urgent recrawl submitted:     ${prioritySuccess}`);
     console.log(`  🆕 New drip pages submitted:     ${dripSuccess}`);
     console.log(`  🔄 Existing pages re-indexed:    ${reindexSuccess}`);
     console.log(`  📋 Remaining to re-index:        ${remainingReindex}`);
