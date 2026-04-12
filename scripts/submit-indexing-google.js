@@ -13,11 +13,13 @@ const CREDENTIALS_PATH = path.join(__dirname, '../google-credentials.json');
 const HISTORY_PATH = path.join(__dirname, 'indexing-history.json');
 const REINDEX_TRACKER_PATH = path.join(__dirname, 'reindex-tracker.json');
 
-// ── QUOTA ALLOCATION ───────────────────────────────────────
-// Google allows 200 requests/day. We split the quota:
-// Daily allocation: 20 new pSEO + 170 re-index = 190 total (under 200 limit)
-const QUOTA_NEW_DRIP = 20;      // Slots reserved for brand-new pSEO drip pages
-const QUOTA_REINDEX  = 170;     // Slots for re-indexing existing pages (CTR updates)
+// ── QUOTA ALLOCATION (DYNAMIC) ─────────────────────────────
+// Google allows 200 requests/day. Total budget = 190 (safety margin).
+// If re-index queue is empty, ALL 190 slots go to new pages.
+const TOTAL_DAILY_QUOTA = 190;
+const BASE_QUOTA_NEW_DRIP = 20;   // Minimum slots for new pSEO drip pages
+const BASE_QUOTA_REINDEX  = 170;  // Slots for re-indexing existing pages
+// Actual quotas are computed dynamically in run() based on queue sizes.
 // ───────────────────────────────────────────────────────────
 
 // ── PRIORITY RECRAWL QUEUE ─────────────────────────────────
@@ -139,9 +141,8 @@ async function submitUrl(url, type = 'URL_UPDATED') {
  */
 async function run() {
     console.log('═══════════════════════════════════════════════════════════════');
-    console.log('  🚀 DUAL-PRIORITY Google Indexing API Submitter');
-    console.log('  📌 Priority 1: New pSEO Drip Pages (20 slots)');
-    console.log('  📌 Priority 2: Re-index Existing Pages for CTR (170 slots)');
+    console.log('  🚀 DYNAMIC Google Indexing API Submitter');
+    console.log(`  📌 Total Daily Budget: ${TOTAL_DAILY_QUOTA} slots (auto-allocated)`);
     console.log('═══════════════════════════════════════════════════════════════\n');
 
     // ── Step 1: Gather all known URLs ──────────────────────────
@@ -215,6 +216,18 @@ async function run() {
         }
     }
 
+    // ── DYNAMIC QUOTA CALCULATION ──────────────────────────────
+    // Check re-index queue size FIRST so we can redistribute unused slots
+    const alreadyReindexed = new Set(Object.keys(reindexTracker));
+    const existingPagesForReindex = allUrls.filter(u =>
+        history[u] && !alreadyReindexed.has(u)
+    );
+    const reindexNeeded = Math.min(existingPagesForReindex.length, BASE_QUOTA_REINDEX);
+    const QUOTA_NEW_DRIP = TOTAL_DAILY_QUOTA - reindexNeeded; // Unused re-index slots → new pages
+    const QUOTA_REINDEX = reindexNeeded;
+
+    console.log(`\n⚙️  Dynamic Quota: ${QUOTA_NEW_DRIP} new pages + ${QUOTA_REINDEX} re-index = ${TOTAL_DAILY_QUOTA} total\n`);
+
     // ── Step 3: PRIORITY 1 — New Drip Pages ───────────────────
     console.log('─── PRIORITY 1: New pSEO Drip Pages ─────────────────────────');
     const newDripPages = allUrls.filter(u => !recentlySubmitted.has(u));
@@ -250,24 +263,16 @@ async function run() {
     // ── Step 3: PRIORITY 2 — Re-index Existing Pages ──────────
     console.log('─── PRIORITY 2: Re-index Existing Pages (CTR Updates) ───────');
 
-    // These are pages that HAVE been submitted before (exist in history)
-    // but have NOT been re-indexed yet (not in reindexTracker)
-    const alreadyReindexed = new Set(Object.keys(reindexTracker));
-    const existingPages = allUrls.filter(u =>
-        history[u] &&                    // Previously submitted
-        !alreadyReindexed.has(u)         // Not yet re-indexed for CTR updates
-    );
-
-    console.log(`   ${existingPages.length} existing pages still need re-indexing.`);
+    console.log(`   ${existingPagesForReindex.length} existing pages still need re-indexing.`);
 
     // Prioritize key page types first (state > city > Canada > blog > others)
-    const prioritized = existingPages.sort((a, b) => {
+    const prioritized = existingPagesForReindex.sort((a, b) => {
         const priority = (url) => {
-            if (url.includes('/usa/') && !url.includes('/grants/')) return 1;  // USA state/city
-            if (url.includes('/canada/')) return 2;                             // Canada pages
-            if (url.includes('/blog/')) return 3;                               // Blog posts
-            if (url.includes('/grants/')) return 4;                             // pSEO grants
-            return 5;                                                           // Other pages
+            if (url.includes('/usa/') && !url.includes('/grants/')) return 1;
+            if (url.includes('/canada/')) return 2;
+            if (url.includes('/blog/')) return 3;
+            if (url.includes('/grants/')) return 4;
+            return 5;
         };
         return priority(a) - priority(b);
     });
@@ -296,8 +301,9 @@ async function run() {
     }
 
     // ── Summary ────────────────────────────────────────────────
-    const remainingReindex = existingPages.length - reindexSuccess;
-    const daysToComplete = Math.ceil(remainingReindex / QUOTA_REINDEX);
+    const remainingNewPages = newDripPages.length - dripSuccess;
+    const remainingReindex = existingPagesForReindex.length - reindexSuccess;
+    const daysToFinishNew = Math.ceil(remainingNewPages / TOTAL_DAILY_QUOTA);
 
     console.log('\n═══════════════════════════════════════════════════════════════');
     console.log('  📊 SESSION SUMMARY');
@@ -305,10 +311,11 @@ async function run() {
     console.log(`  🚨 Urgent recrawl submitted:     ${prioritySuccess}`);
     console.log(`  🆕 New drip pages submitted:     ${dripSuccess}`);
     console.log(`  🔄 Existing pages re-indexed:    ${reindexSuccess}`);
+    console.log(`  📋 Remaining new pages:          ${remainingNewPages}`);
     console.log(`  📋 Remaining to re-index:        ${remainingReindex}`);
-    console.log(`  ⏳ Estimated days to finish:     ${daysToComplete}`);
+    console.log(`  ⏳ Est. days to submit all new:  ${daysToFinishNew}`);
     console.log('═══════════════════════════════════════════════════════════════\n');
-    console.log('Run this script daily to continue the re-indexing cycle!');
+    console.log('Run this script daily to continue submitting!');
 }
 
 run().catch(console.error);
