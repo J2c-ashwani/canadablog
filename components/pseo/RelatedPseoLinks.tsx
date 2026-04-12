@@ -13,7 +13,7 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
   // Get all published pages
   const allPages = getAllPseoPages().filter(p => p.isPublished);
   
-  // Find pages in the same province but different cities/industries
+  // Find pages in the same province but different cities/industries AND prioritize high tiers
   const sameProvincePages = allPages.filter(p => 
     p.provinceSlug === currentProvinceSlug && 
     (p.citySlug !== currentCitySlug || p.industrySlug !== currentIndustrySlug)
@@ -23,8 +23,14 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
   // Use a deterministic scramble based on the current slug length to avoid identical blocks
   const scrambleSeed = currentCitySlug.length + currentIndustrySlug.length;
   
-  // Sort deterministically to avoid hydration errors
+  // Sort deterministically to avoid hydration errors, strongly favoring Tier A -> Tier B -> Tier C
   const sortedPages = [...sameProvincePages].sort((a, b) => {
+    // 1. Sort by Tier
+    const tierWeight = { 'A': 1, 'B': 2, 'C': 3 };
+    if (tierWeight[a.tier] !== tierWeight[b.tier]) {
+        return tierWeight[a.tier] - tierWeight[b.tier];
+    }
+    // 2. Deterministic scramble
     const aSeed = a.citySlug.length * scrambleSeed;
     const bSeed = b.citySlug.length * scrambleSeed;
     return aSeed - bSeed;

@@ -2222,25 +2222,40 @@ export const stateDetails: StateDetailedGrant[] = [
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Illinois serves as the economic engine of the Midwest, offering a robust ecosystem of over $3.5 billion in annual business funding and incentives. With Chicago as a global financial and technology hub, and a vast agricultural and manufacturing base throughout the state, Illinois provides diverse opportunities for businesses of all sizes. The state's strategic location, world-class universities, and extensive transportation infrastructure make it a premier destination for commerce.
+            introduction: `Most founders completely write off Illinois due to headline-grabbing corporate taxes and political gridlock in Chicago. **This is a massive strategic error.** While Illinois is undeniably harsh on bootstrapped consumer companies, the state operates a ruthlessly efficient, $3.5 billion backdoor funding ecosystem designed to monopolize specific physical industries: heavy logistics, advanced manufacturing, and quantum computing. If you are building physical supply chains or deep-tech hardware, Illinois will explicitly subsidize your payroll.`,
 
-The Illinois Department of Commerce and Economic Opportunity (DCEO) administers the state's major business programs, focusing on equity, innovation, and infrastructure. Illinois has recently modernized its incentive toolkit with the Reimagining Energy and Vehicles (REV) Act and the MICRO Act, positioning the state as a leader in the electric vehicle and semiconductor revolutions.`,
+            economicLandscape: `The Illinois Department of Commerce and Economic Opportunity (DCEO) does not care about your B2B SaaS startup. The state is singularly focused on defending its status as the logistics and heavy infrastructure capital of North America. While Chicago acts as a massive financial anchor, the true grant windfalls are deployed in "Rust Belt Recovery" zones (like Peoria and Rockford). Furthermore, with the recent Reimagining Energy and Vehicles (REV) Act, the state is aggressively deploying capital to poach automotive and battery manufacturers directly away from Michigan and Ohio.`,
 
-            economicLandscape: `The Illinois economy is remarkably diverse, with strong sectors in advanced manufacturing, agribusiness, life sciences, transportation/logistics, and financial services. Chicago hosts one of the nation's most vibrant startup ecosystems, supported by incubators like 1871 and mHUB. Meanwhile, cities like Peoria, Rockford, and Champaign-Urbana are driving innovation in heavy machinery, aerospace, and agricultural technology.
-
-Illinois is also a leader in clean energy transition, with the Climate and Equitable Jobs Act (CEJA) setting aggressive decarbonization goals that are creating thousands of new opportunities in the green economy. The state's workforce is highly educated, fed by top-tier institutions like the University of Chicago, Northwestern University, and the University of Illinois system.`,
-
-            keyOpportunities: `**REV Illinois**: Massive tax credits (up to 100% withholding retention) for EV and renewable energy manufacturers.
+            keyOpportunities: `**The Payroll Tax Shield**: *The EDGE Tax Credit* is Illinois's economic bread and butter. It is a targeted tax credit calculated directly against your employees' state income tax withholdings. Meaning: Instead of paying the state, you keep the cash to fund expansion.
             
-**Advantage Illinois**: A loan participation program offering low-interest financing for small businesses.
+**The Hardware Subsidy**: *Advantage Illinois* leverages federal SSBCI funds not as direct grants, but to aggressively buy down the risk and interest rates on massive machinery and equipment loans through participating local banks.
             
-**Edge Tax Credit**: The primary job creation tool, offering credits against state income tax for competitive projects.`,
+**The Green Manufacturing Bribe**: *The REV Act* provides the most aggressive manufacturing subsidy in the Midwest. If you build Electric Vehicle (EV) or battery infrastructure, the state will essentially allow you to retain up to 100% of your employees' income tax withholdings.`,
 
-            futureTrends: `**Quantum Capital**: With the Chicago Quantum Exchange and DARPA investment, IL is the global epicenter of quantum computing.
-            
-**Clean Energy Pivot**: The Climate and Equitable Jobs Act (CEJA) is aggressively phasing out coal and funding solar/wind projects.
-            
-**AgTech Innovation**: Champaign-Urbana is leveraging UIUC's supercomputing power to revolutionize precision agriculture.`
+            futureTrends: [
+                {
+                    trend: 'The Quantum Monopoly',
+                    description: 'With massive DARPA federal funding and the Chicago Quantum Exchange, Illinois is attempting to monopolize the quantum computing supply chain. Hardware startups in this fringe sector are receiving blank checks.'
+                },
+                {
+                    trend: 'The Rust Belt Battery Belt',
+                    description: 'The Climate and Equitable Jobs Act (CEJA) is aggressively phasing out downstate coal power and deploying those regional funds directly to solar, wind, and battery manufacturing startups.'
+                }
+            ],
+
+            whoShouldAvoid: [
+                'Consumer Apps & E-commerce startups looking for non-dilutive marketing capital.',
+                'Local service businesses operating strictly within the Chicago city limits (look to municipal grants instead of state DCEO).',
+                'Founders unwilling or unable to navigate complex prevailing wage and union labor compliance matrices.'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Bypass the City, Go to the State', description: 'Chicago municipal grants are notoriously bureaucratic and hyper-competitive. Bypass the city process entirely and apply directly to the state DCEO for hard-tech or manufacturing grants.' },
+                { step: 2, title: 'Leverage the Union Shield', description: 'Illinois is a heavily unionized state. If your grant application explicitly integrates a Project Labor Agreement (PLA) or a prevailing wage plan, your DCEO approval probability drastically increases.' },
+                { step: 3, title: 'Threaten to Leave', description: 'The EDGE Tax credit is defensive. You must explicitly document that you are actively considering relocating the expansion project outside of Illinois (to Indiana or Wisconsin) to trigger the funding.' }
+            ],
+
+            comparativePositioning: `Compared to Texas and Florida, Illinois imposes rigorous labor optics and high baseline corporate taxes. However, for sheer manufacturing scale and deep-tech (Quantum/Battery) infrastructure, Illinois is deploying faster, heavier, direct-cash capital injections than its Southern competitors.`
         },
 
         topPrograms: [
@@ -2636,39 +2651,40 @@ Illinois is also a leader in clean energy transition, with the Climate and Equit
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Pennsylvania offers one of the most established and diversified economic development ecosystems in the nation, backed by over $2.9 billion in annual funding. Situated between the East Coast commerce corridor and the Midwest industrial heartland, the Commonwealth leverages its unique geography, energy abundance, and research prowess to drive growth.
+            introduction: `Pennsylvania is often misunderstood as a legacy rust-belt state. **This is fundamentally incorrect.** Today, Pennsylvania operates a sprawling $2.9 billion innovation funding engine that aggressively subsidizes two specific verticals: Autonomous Robotics (centered in Pittsburgh) and Life Sciences/Gene Therapy (centered in Philadelphia). If you are building hardware, robotics, or biopharma, Pennsylvania offers one of the only state-backed programs in the country where early-stage startups can literally sell their tax credits for immediate cash.`,
 
-The Department of Community and Economic Development (DCED) serves as the primary gateway to state funding, operating a "one-stop shop" model that integrates business financing, community development, and workforce training. Pennsylvania is particularly renowned for its Ben Franklin Technology Partners network, a pioneering state-backed venture development organization that has served as a model globally. For 2026, the state has prioritized investments in life sciences, robotics, and clean energy transition.
+            economicLandscape: `The Department of Community and Economic Development (DCED) does not operate like a traditional grant agency; they operate like a venture development fund. The state relies heavily on the Ben Franklin Technology Partners network—a state-backed hybrid investment fund that injects seed capital directly into tech startups. Meanwhile, traditional manufacturing and logistics (which capitalize on the state's proximity to 60% of the North American population) are supported through massive low-interest infrastructure loans (PIDA).`,
 
-Beyond direct funding, Pennsylvania provides robust technical assistance through a statewide network of Small Business Development Centers (SBDCs) and Industrial Resource Centers (IRCs). These organizations help businesses navigate the complexities of government contracting, export regulations, and operational efficiency improvements. Whether you are a high-growth tech startup in Pittsburgh or a legacy manufacturer in Erie, there is likely a state program designed to support your expansion.
-
-Pennsylvania's strategic location puts businesses within a day's drive of 60% of the U.S. and Canadian population, making it a prime hub for logistics and distribution. The state's infrastructure includes three major ports (Philadelphia, Pittsburgh, and Erie), six international airports, and one of the densest rail networks in the country. This connectivity is supported by targeted infrastructure grants that help businesses improve site access and logistics capabilities.`,
-
-            economicLandscape: `Pennsylvania's economy is a powerhouse in life sciences, robotics, energy, and advanced manufacturing. Philadelphia has emerged as "Cellicon Valley," a global leader in gene and cell therapy, while Pittsburgh has transformed into a robotics and AI capital. The state also sits atop the Marcellus Shale, making it a leading energy exporter and a hub for plastics and chemical manufacturing.
-
-The Commonwealth's diverse landscape ranges from the corporate density of the Southeast to the industrial heritage of the West and the agricultural strength of the Central regions. Strategic investments in infrastructure, including the port of Philadelphia and major rail networks, support robust logistics and distribution sectors.
-
-In recent years, the state has seen a surge in "meds and eds" investment, capitalizing on its concentration of world-class universities and hospitals. This intellectual capital fuels a steady stream of university spin-outs and patent activity. Furthermore, the state's agricultural sector remains a cornerstone, with significant funding available for food processing, ag-tech innovation, and rural business development.
-
-The state's manufacturing sector is also undergoing a significant renaissance, driven by Industry 4.0 adoption and reshoring trends. The "PA Made" initiative supports this shift with grants for automation technology and workforce upskilling.`,
-
-            keyOpportunities: `**PIDA Loans**: Low-interest financing for land, buildings, and equipment (tied to job creation).
+            keyOpportunities: `**Sellable Tax Credits**: *The Keystone Innovation Zone (KIZ) Program* is Pennsylvania's funding masterpiece. If your startup is located in a designated zone and less than 8 years old, you can claim up to $100,000 in tax credits annually. Because startups don't have tax liabilities, the state explicitly allows you to sell these credits to profitable corporations for ~90 cents on the dollar, injecting non-dilutive raw cash into your runway.
             
-**Ben Franklin Technology Partners**: Hybrid investment capital and mentorship for early-stage tech.
+**State-Backed Venture Capital**: *Ben Franklin Technology Partners* provides up to four tranches of seed funding (often $100K to $500K) to early-stage technology companies, operating precisely like a VC but with a mandate for regional economic impact rather than pure 10x exits.
             
-**KIZ Tax Credits**: Sellable tax credits for startups in designated innovation zones (a lifeline for cash).
+**Heavy Manufacturing Loans**: *PIDA Loans* provide aggressive low-interest financing (up to $2.25M) specifically for acquiring industrial real estate or heavy machinery.`,
 
-**R&D Tax Credits**: Transferable credits that can be sold for cash, encouraging innovation even in pre-profit stages.
+            futureTrends: [
+                {
+                    trend: 'The Hydrogen and Grid Battery Surge',
+                    description: 'With dual federal designations for hydrogen hubs (MACH2 and ARCH2), PA is pouring hundreds of millions of dollars into grid-scale battery manufacturing and clean energy transition grants.'
+                },
+                {
+                    trend: 'Cellicon Valley Expansion',
+                    description: 'Philadelphia is rapidly moving from gene therapy research to full-scale commercial biomanufacturing, heavily subsidized by state lab-space grants.'
+                }
+            ],
 
-**WEDnetPA**: Essential skills training grants to upskill your existing workforce.`,
+            whoShouldAvoid: [
+                'Pure-play software service apps not located inside a designated Keystone Innovation Zone.',
+                'Small service businesses without significant heavy equipment collateral looking for unsecured state loans.',
+                'Founders uninterested in committing to PA for the next 5 years (Ben Franklin capital comes with strict geographic retention clauses).'
+            ],
 
-            futureTrends: `**Clean Hydrogen Hub**: With the MACH2 and ARCH2 hubs, PA is central to the nation's hydrogen energy strategy.
-            
-**Robotics Autonomy**: Pittsburgh's "Robotics Row" is expanding beyond factories into autonomous vehicles and lunar rovers.
-            
-**Life Sciences**: Philadelphia's gene therapy sector is maturing into a full-scale biomanufacturing engine.
+            executionRoadmap: [
+                { step: 1, title: 'Locate Inside a KIZ', description: 'Before signing a lease, ensure your office falls exactly within the boundaries of a Keystone Innovation Zone. Missing the zone by one block will cost you $100,000 a year in sellable tax credits.' },
+                { step: 2, title: 'Engage Ben Franklin Early', description: 'Do not treat Ben Franklin Tech Partners like a grant application. Treat them like a Series A VC pitch. Prepare a full data room and commercialization plan.' },
+                { step: 3, title: 'Broker Your Credits', description: 'Once awarded KIZ or R&D tax credits, engage a specialized PA tax credit broker to instantly sell them to a local financial institution for an immediate cash injection.' }
+            ],
 
-**Advanced Manufacturing**: Continued integration of AI and robotics into legacy manufacturing bases.`
+            comparativePositioning: `While Texas pulls companies using zero income tax, Pennsylvania uses targeted, sellable tax credits and state venture capital to actively fund your runway. It is less hospitable for basic retail, but a literal goldmine for deep-tech hardware and biotech startups willing to leverage the KIZ system.`
         },
 
         topPrograms: [
@@ -3069,25 +3085,40 @@ The state's manufacturing sector is also undergoing a significant renaissance, d
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Ohio has reinvented itself as a diversified innovation economy, offering over $2.1 billion in business incentives annually. While retaining its manufacturing prowess, the "Buckeye State" has become a leader in technology, healthcare, and logistics. The state's unique economic development model, led by the private non-profit corporation JobsOhio, allows for flexible, fast-moving deal structures that traditional state agencies often cannot match.
+            introduction: `Most founders fundamentally misunderstand how Ohio's grant system operates. Unlike every other state in the Midwest, Ohio's economic development engine is not a government agency—it is **JobsOhio**, a private non-profit corporation funded by the state's liquor monopoly. This structural difference is a massive advantage: JobsOhio operates at the speed of the private sector, bypasses traditional government red tape, and structure deals (grants, loans, equity) with an aggression that public agencies legally cannot match.`,
 
-Ohio's business environment is characterized by affordability, with a low cost of doing business and living that attracts talent and investment. The recent Intel semiconductor "megasite" announcement in Central Ohio serves as a testament to the state's resurgence as a manufacturing and technology capital.`,
+            economicLandscape: `Ohio is currently undergoing the largest industrial pivot in its history, completely transforming from the "Rust Belt" to the "Silicon Heartland." The catalyst is Intel's historic $20+ billion semiconductor megasite outside Columbus. The state is utilizing JobsOhio's war chest to violently subsidize any company—logistics, advanced manufacturing, quantum, or materials—that can integrate into the Intel supply chain. Additionally, Ohio is directing hundreds of millions into its three new "Innovation Districts" in Cincinnati, Columbus, and Cleveland to monopolize healthcare and gene therapy research.`,
 
-            economicLandscape: `Ohio's economy is the 7th largest in the nation, with deep strength in advanced manufacturing, automotive, aerospace, and food processing. Columbus, the state capital, is one of the fastest-growing cities in the Midwest, fueled by banking, insurance, and retail headquarters. Cleveland connects the state to global markets via the Great Lakes and has a world-renowned medical sector. Cincinnati anchors a vibrant logistics and consumer goods corridor.
-
-The state is investing heavily in "Innovation Districts" in its three major cities, partnering with universities and hospitals to create densities of talent and research that drive startup formation and corporate innovation.`,
-
-            keyOpportunities: `**JobsOhio Growth Fund**: Flexible, private-sector loans for growth-stage companies (speedy approval).
+            keyOpportunities: `**The Private-Sector Subsidy**: *The JobsOhio Growth Fund* is the flagship tool. Because JobsOhio is a private entity, it can provide flexible, highly customized loans and direct grants to growth-stage companies without the grueling bureaucratic timeline of a state government.
             
-**Ohio TechCred**: Reimbursements of up to $2,000/credential to upskill your workforce (highly accessible).
+**The Micro-Credential Loophole**: *Ohio TechCred* is perhaps the most accessible and underutilized grant in the state. Businesses can receive up to $2,000 per employee to upskill their workforce in tech-focused credentials. It is effectively free payroll relief for training.
             
-**Inclusion Grant**: Up to $50,000 for small businesses in distressed areas or underrepresented ownership.`,
+**The Supplier Halo**: *The JobsOhio Inclusion Grant* specifically targets small and medium businesses in distressed zip codes, or those owned by minorities, women, or veterans, providing up to $50,000 to help them scale and integrate into larger state supply chains.`,
 
-            futureTrends: `**Silicon Heartland**: Intel's $20B investment near Columbus is attracting hundreds of chip suppliers.
-            
-**Advanced Air Mobility**: Ohio is pioneering electric vertical takeoff (eVTOL) aircraft testing and manufacturing.
-            
-**Gene Therapy**: Columbus and Cleveland are emerging as global leaders in gene therapy research and commercialization.`
+            futureTrends: [
+                {
+                    trend: 'The Silicon Heartland Supply Chain',
+                    description: 'Intel is not just building a fab; it requires hundreds of tier 2 and tier 3 suppliers. Ohio is aggressively subsidizing hardware and logistics startups that can service this massive footprint.'
+                },
+                {
+                    trend: 'Gene Therapy Monopolization',
+                    description: 'Columbus and Cleveland are actively competing to become the global capital of gene therapy commercialization, heavily backed by JobsOhio funding.'
+                }
+            ],
+
+            whoShouldAvoid: [
+                'B2B SaaS companies with a fully remote workforce (JobsOhio requires physical, in-state job creation).',
+                'Founders who need 100% upfront grant funding (JobsOhio strongly prefers performance-based, reimbursement structures).',
+                'Micro-retailers outside of designated distressed zip codes.'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Understand the Entity', description: 'You are pitching a private corporation, not a government bureaucrat. Your application to JobsOhio must read like a private equity pitch, heavy on ROI and committed job metrics.' },
+                { step: 2, title: 'Leverage the Intel Halo', description: 'If your manufacturing or tech business can tangibly map its growth to supplying the semiconductor or EV supply chains, lead with that narrative. It will fast-track your deal.' },
+                { step: 3, title: 'Max Out TechCred', description: 'While negotiating large facility grants, immediately enroll your staff in TechCred. It provides instant cash flow relief ($2K per employee) while your larger deals process.' }
+            ],
+
+            comparativePositioning: `Ohio is moving faster than Michigan or Pennsylvania purely because JobsOhio operates outside traditional government bureaucracy. If you are building physical infrastructure or advanced manufacturing, Ohio will structure your financing with the speed and flexibility of a private bank.`
         },
 
         topPrograms: [
@@ -3444,25 +3475,40 @@ The state is investing heavily in "Innovation Districts" in its three major citi
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Georgia has been named the "No. 1 State for Business" for over a decade straight by Site Selection magazine, a testament to its pro-business environment, world-class logistics, and collaborative state government. With over $2.4 billion in annual incentives, Georgia focuses heavily on workforce training, tax stability, and strategic investments in key sectors.
+            introduction: `Georgia has been ranked the "#1 State for Business" for over a decade straight, but most small businesses completely fail to capture its $2.4 billion in annual incentives. Why? Because Georgia does not hand out traditional "seed grants." Instead, the state weaponizes the tax code through an incredibly aggressive Tier system. If you create jobs in a "Tier 1" distressed county, Georgia will essentially let you wipe out 100% of your corporate tax liability and even pocket the surplus against your employees' payroll withholding.`,
 
-The Georgia Department of Economic Development (GDEcD) leads the state's efforts, offering a suite of statutory tax credits and discretionary funds. The state is famous for Georgia Quick Start, broadly considered the nation's best workforce training program, which provides free, customized training to qualified new and expanding companies.`,
+            economicLandscape: `The Georgia Department of Economic Development (GDEcD) plays favorites—and they play them well. The state is pumping billions to monopolize three distinct sectors: Electric Vehicles (attracting the $5B+ Hyundai and Rivian megaplants), Film & Television Production (creating "Y'allywood" via unmatched 30% transferable tax credits), and Cybersecurity/Fintech (protecting "Transaction Alley," which processes 70% of all US card swipes). If your business operates outside these halos, you must rely entirely on the geographic Job Tax Credit tier system.`,
 
-            economicLandscape: `Georgia's economy is anchored by Atlanta, the economic capital of the Southeast and home to a high concentration of Fortune 500 headquarters. The state is a global logistics hub, boasting Hartsfield-Jackson International Airport (world's busiest) and the rapidly growing Port of Savannah.
-
-Beyond logistics, Georgia has become a premier destination for film and television production ("Y'allywood"), thanks to transferable tax credits. The state is also surging in electric vehicle manufacturing (Hyundai, Rivian) and fintech, with "Transaction Alley" processing a huge percentage of U.S. card transactions.`,
-
-            keyOpportunities: `**Job Tax Credit**: Statutory credits up to $4,000 per job/year; can eliminate 100% of income tax in Tier 1 counties.
+            keyOpportunities: `**The Tier System Shield**: *The Job Tax Credit* is Georgia's flagship incentive. Counties are ranked Tier 1 (most distressed) to Tier 4 (least distressed). Create 2 jobs in a Tier 1 county, and receive $4,000 per job per year for 5 years—which can be applied directly to payroll withholdings for raw cash flow.
             
-**Georgia Quick Start**: The #1 ranked workforce training program in the US (provided at no cost).
+**Free Corporate Training**: *Georgia Quick Start* is universally regarded as the best workforce training program in the United States. Rather than giving you cash to train employees, the state will literally build custom mobile training centers and supply instructors to train your new workforce entirely for free.
             
-**Film Tax Credit**: Transferable 30% tax credit that has made GA a global production hub.`,
+**Transferable Entertainment Credits**: *The Film Tax Credit* provides a 30% credit on local production spend. Because most production companies don't have local tax bases, Georgia allows these credits to be sold to wealthy residents and corporations for instant cash.`,
 
-            futureTrends: `**Electric Mobility Capital**: With Hyundai's Metaplant and Rivian, GA is building a complete EV supply chain ecosystem.
-            
-**Fintech Leadership**: "Transaction Alley" processes 70% of all debit/credit/prepaid card transactions in the U.S.
-            
-**Clean Tech**: Massive investments in solar manufacturing (Qcells) are solidifying Georgia as a green energy leader.`
+            futureTrends: [
+                {
+                    trend: 'The Battery Corridor',
+                    description: 'Following the Hyundai and Rivian EV plants, Georgia is aggressively subsidizing any tier 2 or tier 3 manufacturer that supplies battery components or EV logistics infrastructure.'
+                },
+                {
+                    trend: 'Rural Logistics Dominance',
+                    description: 'Driven by the Port of Savannah expansion, the state is heavily subsidizing massive warehousing and distribution centers located in rural Tier 1 and Tier 2 counties.'
+                }
+            ],
+
+            whoShouldAvoid: [
+                'Pre-revenue SaaS startups looking for direct state venture capital (Georgia lacks aggressive state-backed VC compared to PA or TX).',
+                'Retailers and restaurants (unless located in a specific designated Rural Zone or Opportunity Zone).',
+                'Founders inflexible on real estate (putting your warehouse one mile into a Tier 3 county instead of a Tier 1 county can cost millions in lost credits).'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Map the Four Tiers', description: 'Before signing a commercial lease, check the GDEcD County Tier Map. The exact same business model generates $4,000/job in a Tier 1 county, but only $1,250/job in a Tier 3 county.' },
+                { step: 2, title: 'Draft the Quick Start Pitch', description: 'Quick Start is discretionary. You must prove to the state that your job creation creates a significant economic footprint to unlock free, state-funded training facilities.' },
+                { step: 3, title: 'Broker Your Film Credits', description: 'If operating in entertainment, do not hold your tax credits. Immediately engage a specialized Atlanta tax credit broker to sell them to corporations for 85-90 cents on the dollar.' }
+            ],
+
+            comparativePositioning: `While Florida attempts to attract headquarters with zero income tax, Georgia uses surgical Job Tax Credits that punish you for locating in affluent areas but heavily reward you for building in rural or distressed zones. If you run a high-headcount operations like logistics or manufacturing, Georgia's Tier 1 subsidies make your physical expansions nearly free.`
         },
 
         topPrograms: [
@@ -3832,25 +3878,40 @@ Beyond logistics, Georgia has become a premier destination for film and televisi
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `North Carolina consistently ranks as a top state for business, fueled by the world-famous Research Triangle Park (RTP) and a robust manufacturing sector. With over $2.0 billion in annual incentives, the state aggressively recruits high-tech, life sciences, and advanced manufacturing companies. The Economic Development Partnership of North Carolina (EDPNC) works hand-in-hand with the Department of Commerce to deliver a streamlined, customer-focused incentive experience.
+            introduction: `North Carolina is currently executing the most aggressive corporate tax starvation strategy in America—pushing its corporate income tax rate to 0% by 2030. But for businesses that need immediate capital today, the state deploys a ruthlessly competitive, $2 billion performance-based grant strategy. Centered around the Research Triangle Park (RTP) and the booming "Battery Belt" in the Triad, North Carolina's Economic Development Partnership (EDPNC) is systematically out-bidding South Carolina and Georgia for massive manufacturing, biotech, and AgTech expansions.`,
 
-The state's "First in Flight" legacy continues today with strong aerospace and defense industries, while its banking sector in Charlotte rivals New York. North Carolina's low corporate tax rate (dropping to 0% by 2030) is a major long-term draw for businesses planning substantial capital investments.`,
+            economicLandscape: `The state operates fundamentally differently than its northern counterparts. North Carolina avoids upfront, high-risk venture capital injections and instead uses the Job Development Investment Grant (JDIG) to provide massive, post-performance cash rebates. The state is divided into three distinct operational halos: The Research Triangle (where AgTech and BioPharma receive heavy academic integration subsidies via NC State and Duke), Charlotte (the undisputed banking and fintech titan of the South), and the Triad/Rural regions (the target of billions in physical manufacturing and EV battery supply chain investments).`,
 
-            economicLandscape: `The North Carolina economy is a blend of traditional strength and futuristic innovation. The Research Triangle area (Raleigh-Durham-Chapel Hill) is a global hub for biotech, agtech, and software, supported by tier-1 research universities (Duke, UNC, NC State). Charlotte serves as the second-largest banking center in the U.S.
-
-Outside the metros, the state maintains a powerful manufacturing base, producing everything from pharmaceuticals to heavy trucks. The state's 58 community colleges provide highly customized workforce training to support these industries, ensuring a steady pipeline of skilled talent.`,
-
-            keyOpportunities: `**Job Development Investment Grant (JDIG)**: Performance-based cash grants offering up to 75% withholding tax refunds.
+            keyOpportunities: `**The "Threat to Leave" Subsidy**: *The Job Development Investment Grant (JDIG)* is the ultimate leverage tool. It provides a massive cash grant equal to up to 75% of your employees' state income tax withholdings for up to 12 years. *However*, it is statutorily required that you prove the project will not happen in NC without the grant—you must explicitly threaten to build in a competing state.
             
-**One North Carolina Fund**: Discretionary cash grants for deal-closing and infrastructure (requires local match).
+**True Micro-Seed Capital**: *NC IDEA* is one of the only true, non-dilutive, equity-free startup accelerators operating at scale in the Southeast. They provide $50,000 cash grants to highly scalable, early-stage startups purely to get them to the VC funding line.
             
-**NC IDEA**: Rare non-dilutive grants ($50k) for early-stage scalable startups.`,
+**The Closing Fund**: *The One North Carolina Fund* is a discretionary deal-closing fund. The state governor can personally authorize hundreds of thousands in immediate cash to close a facility deal, provided the local municipal government matches the funding.`,
 
-            futureTrends: `**Clean Energy Hub**: With VinFast and Toyota Battery Manufacturing, NC is becoming the "Battery Belt" of the Southeast.
-            
-**AgTech 2.0**: The new Plant Sciences Initiative at NC State is driving global innovation in food security and crop resilience.
-            
-**Supersonic Flight**: Boom Supersonic's selection of Greensboro for its Overture Superfactory revives the state's aerospace legacy.`
+            futureTrends: [
+                {
+                    trend: 'The Battery Belt Anchors',
+                    description: 'With Toyota Battery Manufacturing and VinFast locking in massive megasite deals, the state is heavily incentivizing tier 2 and tier 3 suppliers to localize the EV supply chain.'
+                },
+                {
+                    trend: 'AgTech 2.0',
+                    description: 'The Plant Sciences Initiative at NC State is pulling ag-tech startups from California directly into the Triangle with unmatched academic-commercial partnerships.'
+                }
+            ],
+
+            whoShouldAvoid: [
+                'Service-based startups looking for upfront operational cash (NC strongly prefers performance-based payroll reimbursement).',
+                'Founders who have already signed a lease or announced their NC expansion (Once you commit to NC, you instantly lose eligibility for JDIG).',
+                'Solo founders not planning on hitting 10+ employees quickly.'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Never Sign the Lease First', description: 'The absolute cardinal rule of NC grants (JDIG, OneNC) is that the grant must be the "deciding factor." If you sign a lease or announce your expansion before applying, you are automatically disqualified.' },
+                { step: 2, title: 'Manufacture Out-of-State Competition', description: 'To unlock JDIG, you must formally document that a competing state (usually South Carolina or Virginia) is offering a compelling package that NC must beat.' },
+                { step: 3, title: 'Secure the Local Match', description: 'The Governor’s OneNC Fund requires a local municipal match. You must simultaneously negotiate your deal with the city/county mayor and the state EDPNC.' }
+            ],
+
+            comparativePositioning: `While California heavily taxes corporate revenue to fund public R&D, North Carolina is racing its corporate tax rate to zero while using targeted, "deal-closing" cash (JDIG) purely to poach heavily-staffed manufacturing and biotech facilities from out of state.`
         },
 
         topPrograms: [
@@ -4236,25 +4297,40 @@ Outside the metros, the state maintains a powerful manufacturing base, producing
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Michigan is the undisputed automotive capital of the world, but its economic story today is one of diversification into mobility, advanced manufacturing, and engineering. The Michigan Economic Development Corporation (MEDC) offers a highly sophisticated toolkit of incentives, backed by over $1.8 billion in annual resources, to ensure the state leads the electric vehicle revolution.
+            introduction: `Michigan is currently in an economic state of emergency, fighting a brutal talent and manufacturing war against Southern states like Georgia and North Carolina. To defend its title as the automotive capital of the world against the Sun Belt's rising "Battery Belt," the Michigan Economic Development Corporation (MEDC) has weaponized the Strategic Outreach and Attraction Reserve (SOAR) fund. If your startup operates anywhere in the mobility, EV, engineering, or advanced manufacturing supply chain, Michigan will issue massive, deal-closing cash grants to prevent you from leaving the Midwest.`,
 
-Michigan boasts one of the highest concentrations of engineers in the nation and a relatively low cost of living. The state's "Pure Michigan" brand extends to business, highlighting a quality of life that includes fresh water, four seasons, and vibrant urban centers like Detroit and Grand Rapids.`,
+            economicLandscape: `The days of Detroit relying solely on the "Big Three" (GM, Ford, Stellantis) are over. The true grant windfalls are now flowing to the Tier 2 and Tier 3 suppliers, engineering firms, and autonomous tech startups building the localized EV infrastructure. While Ann Arbor serves as a traditional tech hub (fueled by the University of Michigan), the major state capital allocations are focused on physical hardware and green manufacturing clusters in Grand Rapids and Lansing. The state strongly prefers funding heavy physical assets over pure human capital.`,
 
-            economicLandscape: `While Detroit and the "Big Three" (GM, Ford, Stellantis) anchor the economy, Michigan has a thriving ecosystem of suppliers, R&D centers, and tech firms. Ann Arbor serves as a major tech hub fueled by the University of Michigan. West Michigan (Grand Rapids) is a global leader in medical device manufacturing and furniture/design (Steelcase, Herman Miller).
-
-The state is pivoting aggressively to Industry 4.0, helping legacy manufacturers adopt digital technologies. Michigan also offers unique advantages in freshwater technology and defense systems.`,
-
-            keyOpportunities: `**Michigan Business Development Program**: Flexible cash grants for job creation (highly competitive).
+            keyOpportunities: `**The "Stay in Michigan" Cash Grant**: *The Michigan Business Development Program (MBDP)* is a highly aggressive, flexible cash grant designed to keep competitive projects from leaving the state. It provides direct, non-repayable cash based purely on committed job creation.
             
-**Going PRO Talent Fund**: Awards of up to $2,000 per employee for training (very popular).
+**Discretionary Megafunds**: *The Critical Industry Program (SOAR)* operates somewhat like a blank check. For massive gigafactories or semiconductor operations, the state uses this fund to literally buy down the cost of land acquisition, heavy machinery, and customized infrastructure.
             
-**Critical Industry Program**: Massive "deal-closing" fund for gigafactories and semiconductor plants.`,
+**Instant Payroll Subsidies**: *The Going PRO Talent Fund* is Michigan's most popular daily grant, dropping up to $2,000 per employee in direct cash to reimburse companies for upskilling their existing technical workforce.`,
 
-            futureTrends: `**EV Transition**: The "Electric Route 66" initiative is building a comprehensive charging network to support the auto industry's pivot.
-            
-**Semiconductor Center**: The new Hemlock Semiconductor expansion solidifies MI as a key node in the US chip supply chain.
-            
-**Climate Haven**: Researchers predict Michigan will be a top destination for businesses fleeing climate risks elsewhere, driving long-term investment.`
+            futureTrends: [
+                {
+                    trend: 'The Mobility Monopoly',
+                    description: 'With the "Electric Route 66" initiative and autonomous vehicle testing corridors (like CAVNUE), Michigan is subsidizing infrastructure to keep autonomous vehicular R&D centralized in Detroit.'
+                },
+                {
+                    trend: 'The Water Tech Renaissance',
+                    description: 'Michigan is leveraging its freshwater dominance to birth a new sector, providing heavy R&D grants for freshwater technology and sustainable industrial purification startups.'
+                }
+            ],
+
+            whoShouldAvoid: [
+                'Asset-light software (SaaS) companies without a physical hardware integration (MEDC heavily prioritizes physical manufacturing footprint).',
+                'Retail operations and small service franchises (which are largely overlooked by the state in favor of deep-tech engineering).',
+                'Founders who cannot prove "competing out-of-state offers" (MBDP requires documented proof you are considering leaving MI).'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Document the Sun Belt Threat', description: 'To unlock MBDP cash grants, you must submit written evidence that a competing state (like Tennessee, Georgia, or Texas) is actively recruiting your project. It is a defensive grant.' },
+                { step: 2, title: 'Max out Going PRO Annually', description: 'Even if you don’t qualify for a massive facility grant, the Going PRO fund opens annually. Treat this as an automatic $2K/head payroll reduction strategy for offloading training costs.' },
+                { step: 3, title: 'Align with "Industry 4.0"', description: 'If you are a legacy manufacturer, frame your expansion specifically around adopting IoT, digital twins, or automation. The state earmarks specific grants for "Industry 4.0 adoption."' }
+            ],
+
+            comparativePositioning: `Unlike Texas, which lures companies with zero income tax, Michigan uses a highly aggressive, defensive cash strategy to buy down the cost of physical manufacturing. If you are building physical hardware, Michigan will write you a check specifically so you don't build it in the South.`
         },
 
         topPrograms: [

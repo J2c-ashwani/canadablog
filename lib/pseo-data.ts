@@ -13,6 +13,7 @@ export type PseoPage = {
     industryName: string;
     publishedAt: string;
     isPublished: boolean;
+    tier: 'A' | 'B' | 'C';
 };
 
 // Top 150 US & Canadian Cities mapped to their Provinces/States
@@ -225,6 +226,12 @@ const INDUSTRIES = [
 
 let cachedPages: PseoPage[] | null = null;
 
+// High Value Target Cities - Tier A (Must Index)
+const TIER_A_CITIES = ['Toronto', 'Vancouver', 'Calgary', 'Montreal', 'Ottawa', 'Edmonton', 'Mississauga', 'Los Angeles', 'San Francisco', 'Houston', 'Dallas', 'Austin', 'Miami', 'New York City', 'Chicago'];
+
+// Medium Value Target Cities - Tier B (Index Later)
+const TIER_B_CITIES = ['Winnipeg', 'Quebec City', 'Hamilton', 'Halifax', 'Victoria', 'Saskatoon', 'Regina', 'Brampton', 'Surrey', 'Burnaby', 'Richmond', 'Laval', 'San Diego', 'San Jose', 'San Antonio', 'Fort Worth', 'Tampa', 'Orlando', 'Buffalo', 'Rochester', 'Philadelphia', 'Phoenix', 'Boston', 'Seattle', 'Denver', 'Atlanta', 'Detroit'];
+
 /**
  * Generates the deterministic cross-product of all Cities x Industries.
  * Assigns a specific `publishedAt` date by incrementing by 1 day every `PAGES_PER_DAY` items.
@@ -239,6 +246,14 @@ export function getAllPseoPages(): PseoPage[] {
 
     // We loop through cities and industries to deterministically generate URLs
     for (const city of CITIES) {
+        
+        let cityTier: 'A' | 'B' | 'C' = 'C';
+        if (TIER_A_CITIES.includes(city.city)) {
+            cityTier = 'A';
+        } else if (TIER_B_CITIES.includes(city.city)) {
+            cityTier = 'B';
+        }
+
         for (const industry of INDUSTRIES) {
             // Calculate pub date based on counter
             const itemPubDate = addDays(DRIP_START_DATE, dayOffset);
@@ -252,7 +267,8 @@ export function getAllPseoPages(): PseoPage[] {
                 industrySlug: industry.slug,
                 industryName: industry.name,
                 publishedAt: itemPubDate.toISOString(),
-                isPublished: isPublished
+                isPublished: isPublished,
+                tier: cityTier
             });
 
             counter++;
