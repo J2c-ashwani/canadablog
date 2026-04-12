@@ -3,9 +3,10 @@ import { XCircle } from 'lucide-react';
 
 interface Props {
   industrySlug: string;
+  program2: string;
 }
 
-export default function DisqualifiersList({ industrySlug }: Props) {
+export default function DisqualifiersList({ industrySlug, program2 }: Props) {
   // Deterministic fake rotation based on industry to look dynamic
   const formattedIndustry = industrySlug.charAt(0).toUpperCase() + industrySlug.slice(1);
   const isTech = ['technology', 'software', 'fintech'].includes(industrySlug.toLowerCase());
@@ -17,7 +18,7 @@ export default function DisqualifiersList({ industrySlug }: Props) {
         Critical Disqualifiers for {formattedIndustry}
       </h3>
       <p className="text-red-800 text-sm mb-4">
-        Do not waste 6 weeks applying if your expansion triggers any of these hidden disqualifiers:
+        Do not waste 6 weeks applying for discretionary funds like the <strong>{program2}</strong> if your expansion triggers any of these hidden disqualifiers:
       </p>
       
       <ul className="space-y-3">

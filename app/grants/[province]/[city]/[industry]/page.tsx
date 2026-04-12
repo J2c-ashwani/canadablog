@@ -22,11 +22,16 @@ import AnchorBlock from '@/components/pseo/blocks/AnchorBlock';
 import FundingRealityCheck from '@/components/pseo/blocks/FundingRealityCheck';
 import BestEntryStrategy from '@/components/pseo/blocks/BestEntryStrategy';
 import DisqualifiersList from '@/components/pseo/blocks/DisqualifiersList';
-import { composePseoBlocks, BlockIntent } from '@/lib/pseo-engine/composer';
-import AnchorBlock from '@/components/pseo/blocks/AnchorBlock';
-import FundingRealityCheck from '@/components/pseo/blocks/FundingRealityCheck';
-import BestEntryStrategy from '@/components/pseo/blocks/BestEntryStrategy';
-import DisqualifiersList from '@/components/pseo/blocks/DisqualifiersList';
+import WhoWinsMatrix from '@/components/pseo/blocks/WhoWinsMatrix';
+import FundingDensitySnapshot from '@/components/pseo/blocks/FundingDensitySnapshot';
+import LocalBrokerStrategy from '@/components/pseo/blocks/LocalBrokerStrategy';
+import NearbyAlternatives from '@/components/pseo/blocks/NearbyAlternatives';
+import FundingDecisionTree from '@/components/pseo/blocks/FundingDecisionTree';
+import LocalAdvantageHack from '@/components/pseo/blocks/LocalAdvantageHack';
+import WhoShouldLeave from '@/components/pseo/blocks/WhoShouldLeave';
+import KeyLocalInstitutions from '@/components/pseo/blocks/KeyLocalInstitutions';
+import InsiderInsightQuotes from '@/components/pseo/blocks/InsiderInsightQuotes';
+import MicroFAQ from '@/components/pseo/blocks/MicroFAQ';
 
 // --- Industry-specific, data-rich short answers ---
 // Each answer contains real program names, real dollar amounts, and real timelines.
@@ -362,6 +367,16 @@ export default function PseoLandingPage({ params }: { params: { province: string
                                 case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
                                 case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
                                 case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
+                                case 'WhoWinsMatrix': return <WhoWinsMatrix key={idx} />;
+                                case 'FundingDensitySnapshot': return <FundingDensitySnapshot key={idx} />;
+                                case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
+                                case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
+                                case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
+                                case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
+                                case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
+                                case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
+                                case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
+                                case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
                                 default: return null; 
                             }
                         })}

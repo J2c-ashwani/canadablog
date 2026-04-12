@@ -2,11 +2,11 @@ import React from 'react';
 import { AlertCircle, TrendingDown, Target } from 'lucide-react';
 
 interface Props {
-  topProgram: string;
-  topProgramAmount: string;
+  program1: string;
+  amount1: string;
 }
 
-export default function FundingRealityCheck({ topProgram, topProgramAmount }: Props) {
+export default function FundingRealityCheck({ program1, amount1 }: Props) {
   // Rotate phrasing automatically based on month to keep Google crawler engaged with a freshness hook
   const currentMonth = new Date().getMonth();
   const dynamicsText = currentMonth % 2 === 0 
@@ -21,7 +21,7 @@ export default function FundingRealityCheck({ topProgram, topProgramAmount }: Pr
       </div>
       
       <p className="text-yellow-800 text-sm leading-relaxed mb-6">
-        Let’s cut through the noise: securing state capital is currently intensely competitive. The baseline success rate for unsolicited applications is hovering around <strong>22-28%</strong>. Why? Because most founders submit generic applications for high-profile funds like the <strong>{topProgram}</strong> ({topProgramAmount}) without proving a net-positive regional ROI. Furthermore, {dynamicsText}.
+        Let’s cut through the noise: securing state capital is currently intensely competitive. The baseline success rate for unsolicited applications is hovering around <strong>22-28%</strong>. Why? Because most founders submit generic applications for high-profile funds like the <strong>{program1}</strong> ({amount1}) without proving a net-positive regional ROI. Furthermore, {dynamicsText}.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">

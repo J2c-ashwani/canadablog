@@ -2,10 +2,10 @@ import React from 'react';
 import { Route, CheckCircle2 } from 'lucide-react';
 
 interface Props {
-  topProgram: string;
+  program1: string;
 }
 
-export default function BestEntryStrategy({ topProgram }: Props) {
+export default function BestEntryStrategy({ program1 }: Props) {
   // Freshness Hook Example
   const currentQtr = Math.floor((new Date().getMonth() + 3) / 3);
 
@@ -21,7 +21,7 @@ export default function BestEntryStrategy({ topProgram }: Props) {
         </h3>
         
         <p className="text-gray-700 mb-6 text-sm leading-relaxed">
-          The most common failure pattern we observe is startups applying directly for massive capital facility funds on day one. You need to build a "compliance track record" with the state first. Before submitting an exhaustive application for the <strong>{topProgram}</strong>, execute this 3-step sequence:
+          The most common failure pattern we observe is startups applying directly for massive capital facility funds on day one. You need to build a "compliance track record" with the state first. Before submitting an exhaustive application for the <strong>{program1}</strong>, execute this 3-step sequence:
         </p>
 
         <div className="space-y-4">
@@ -51,7 +51,7 @@ export default function BestEntryStrategy({ topProgram }: Props) {
             </div>
             <div>
               <h4 className="font-semibold text-gray-900 text-sm m-0">3. Engage the State with the "Threat to Leave"</h4>
-              <p className="text-sm text-gray-600 mt-1">Once you have local backing, approach the state for the major <strong>{topProgram}</strong>. Crucially, document that you are actively considering taking your expansion to a neighboring state if the numbers don't align.</p>
+              <p className="text-sm text-gray-600 mt-1">Once you have local backing, approach the state for the major <strong>{program1}</strong>. Crucially, document that you are actively considering taking your expansion to a neighboring state if the numbers don't align.</p>
             </div>
           </div>
         </div>
