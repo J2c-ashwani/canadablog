@@ -48,6 +48,9 @@ export interface StateDetailedGrant {
         economicLandscape?: string;
         keyOpportunities?: string;
         futureTrends?: string | { trend: string; description: string }[]; // Allow both formats
+        whoShouldAvoid?: string[]; // NEW: Explicitly calling out who shouldn't apply
+        executionRoadmap?: { step: number; title: string; description: string }[]; // NEW: Actionable next steps
+        comparativePositioning?: string; // NEW: Comparing state against others
     };
 
     // Top Programs Section (~800 words - 8+ programs)
@@ -106,6 +109,7 @@ export interface StateDetailedGrant {
         description: string;
         keyIndustries: string[];
         programs: string[];
+        tier?: 'A' | 'B' | 'C';
     }[];
 
     // Expert Tips
@@ -187,25 +191,36 @@ export const stateDetails: StateDetailedGrant[] = [
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `California stands as the undisputed leader in small business funding opportunities in the United States, offering over $8.5 billion annually through more than 150 state-administered grant and incentive programs. As the world's fifth-largest economy, California has built an extensive ecosystem of funding mechanisms designed to support businesses at every stage of development, from early-stage startups to established enterprises seeking expansion capital.
+            introduction: `Most entrepreneurs assume California's $8.5 billion in state funding is reserved for Silicon Valley tech startups. **This is fundamentally incorrect.** If you are launching a pure software or SaaS company, state government grants are largely a waste of your time—you are better served tapping into the world's densest venture capital ecosystem. However, if you are building physical hardware, developing clean energy prototypes, scaling life sciences, or expanding a manufacturing facility, California's state treasury is aggressively deploying non-dilutive capital to keep you from relocating to Texas or Nevada. The state relies heavily on tax credits for job retention and massive direct grants for climate tech.`,
 
-The California Governor's Office of Business and Economic Development (GO-Biz) serves as the primary gateway for entrepreneurs seeking state funding, coordinating with numerous agencies including the California Energy Commission (CEC), the California Air Resources Board (CARB), and the California Infrastructure and Economic Development Bank (IBank) to deliver comprehensive support to the business community.`,
+            economicLandscape: `California operates as two distinct funding economies. The Coastal Hubs (San Francisco, Los Angeles, San Diego) are dominated by highly competitive, massive-scale R&D grants like CIRM (stem cells) and CalSEED (clean energy). In contrast, the Central Valley and Inland Empire are heavily prioritized for "Disadvantaged Community" bonuses. Programs like the California Competes Tax Credit will intentionally lower the approval threshold for businesses bringing high-wage jobs to inland regions to combat economic disparity. Startups that strategically position their manufacturing facilities inland while keeping headquarters coastal have the highest funding approval rates in the state.`,
 
-            economicLandscape: `California's economy is remarkably diverse, spanning technology, entertainment, agriculture, clean energy, manufacturing, and life sciences. The state is home to Silicon Valley, the global epicenter of technology innovation, as well as Hollywood, the Napa Valley wine region, and the Central Valley agricultural heartland. This diversity creates numerous sector-specific funding opportunities that businesses can leverage based on their industry focus.
-
-The state's commitment to climate leadership has also spawned a robust ecosystem of clean technology incentives, with California investing billions in programs that support electric vehicles, renewable energy, sustainable manufacturing, and carbon reduction technologies. These climate-focused programs represent some of the most significant funding opportunities available to businesses today.`,
-
-            keyOpportunities: `**California Competes Tax Credit**: A negotiated tax credit (worth millions) for businesses expanding and creating jobs.
+            keyOpportunities: `**The "Valley of Death" Bridge for Hard Tech**: The state's strongest programmatic advantage is bridging the gap between academic research and commercialization. The *CalSEED* program provides up to $600K in total equity-free funding specifically to get clean energy prototypes from the lab to beta.
             
-**CalSEED**: Grants for early-stage clean energy concepts and prototypes (no equity taken).
+**The Expansion Lever**: The *California Competes Tax Credit* is a negotiated incentive. Unlike rigid federal programs, you can literally sit down with GO-Biz and negotiate your tax burden based on exactly how many jobs you threaten to move out of state.
             
-**Small Business Loan Guarantee**: IBank guarantees up to 80% of loans for businesses that can't get traditional funding.`,
+**The Collateral Bypass**: The *IBank Small Business Loan Guarantee* bypasses traditional bank collateral requirements. If you have a solid contract but weak personal credit, the state will back up to 80% of your loan to ensure you get the working capital.`,
 
-            futureTrends: `**AI Capital of the World**: San Francisco has re-emerged as the undisputed global center for Artificial Intelligence (AI) development.
+            futureTrends: `**The Great AI Pivot**: While software historically didn't get grants, San Francisco's total dominance in Artificial Intelligence is forcing the state to create dedicated "Compute and AI" sandboxes and university-partnership grants to maintain its global lead.
             
-**Lithium Valley**: The Salton Sea region is being developed into a massive lithium extraction hub for EV batteries.
+**Lithium Valley Extraction**: The Salton Sea region is being heavily subsidized to become the domestic battery supply chain hub. Supply chain logistics companies in this region are practically guaranteed state support.
             
-**Offshore Wind**: Major investments are flowing into floating offshore wind ports and supply chains along the coast.`
+**Offshore Wind Infrastructure**: The state is authorizing massive port modernization grants on the coast to support floating offshore wind deployment.`,
+
+            whoShouldAvoid: [
+                'Pure B2B/B2C SaaS Founders (VC is your game, government moves too slow)',
+                'Early-stage Solo Founders without dedicated compliance bandwidth',
+                'Retail/Restaurant franchises looking for expansion capital'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Map the "Two Economies"', description: 'Determine if your project fits Coastal R&D (High-Tech/Climate) or Inland Expansion (Job Creation/Manufacturing).' },
+                { step: 2, title: 'Pre-Negotiate with GO-Biz', description: 'Do not just "apply". Connect with a GO-Biz rep to negotiate your California Competes Tax Credit before submitting paperwork. Your leverage is out-of-state alternative sites.' },
+                { step: 3, title: 'Setup Compliance Infrastructure', description: 'California grants require intense prevailing wage and environmental compliance tracking. Setup your accounting systems for this before seeing a dime.' },
+                { step: 4, title: 'Layering State + Federal', description: 'Once you secure a state match like CalSEED, immediately use it as the "Local Matching Funds" requirement for larger Federal DOE or NSF grants.' }
+            ],
+
+            comparativePositioning: `Compared to Texas (low regulation, fast growth but fewer direct grant injections), California offers vastly higher non-dilutive capital pools ($8.5B vs $5.2B) but requires navigating the strictest labor and environmental compliance frameworks in the country.`
         },
 
         topPrograms: [
@@ -657,36 +672,41 @@ The state's commitment to climate leadership has also spawned a robust ecosystem
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Texas has emerged as the premier destination for business growth in the United States, combining a pro-business regulatory environment with substantial state funding programs totaling over $5.2 billion annually. The Lone Star State offers a unique value proposition: no state income tax, relatively low cost of living, and aggressive incentive programs designed to attract and retain businesses across all sectors.
+            introduction: `Most founders believe Texas doesn't offer direct grants because of its "low tax, low regulation" brand. **This is completely false.** Texas operates one of the most aggressive corporate poaching engines in the world. However, here is the brutal reality: Texas does not hand out $10K checks to mom-and-pop local businesses, nor do they fund early-stage software startups. They reserve their $5.2B war chest almost entirely for companies relocating corporate headquarters, building massive manufacturing facilities, or executing large-scale workforce training. If you are bringing jobs, Texas brings cash.`,
 
-The Texas Economic Development Corporation (TxEDC) and the Governor's Office of Economic Development coordinate the state's primary business incentive programs, working alongside regional economic development organizations throughout the state's 254 counties. This decentralized approach creates opportunities at both state and local levels, with many municipalities offering additional incentives that can be stacked with state programs.`,
+            economicLandscape: `The state's incentive structure is engineered for hard infrastructure and industrial scale. Unlike California's focus on early-stage R&D, Texas incentivizes concrete, steel, and immediate economic output. Through Chapter 403 (formerly Chapter 313), local jurisdictions partner directly with the state to slash property taxes by up to 80% for massive manufacturing and physical energy projects (notably semiconductor and aerospace builds). If your business isn't bringing at least 50+ high-paying jobs or dropping a $10M+ capital facility, you will likely be ignored by the state and must pivot to local municipal Economic Development Corporation (EDC) incentives instead.`,
 
-            economicLandscape: `Texas boasts the second-largest economy in the United States and would rank as the 9th largest economy in the world if it were an independent nation. The state's economic engine is powered by a diverse mix of industries including energy (both traditional and renewable), technology, aerospace, healthcare, manufacturing, and agriculture. Houston serves as the energy capital of the world, Austin has become a major technology hub rivaling Silicon Valley, Dallas-Fort Worth leads in corporate headquarters and financial services, and San Antonio anchors the state's aerospace and military sectors.
-
-The ongoing corporate migration from high-cost states like California and New York has accelerated Texas's growth trajectory. Major companies including Tesla, Oracle, Hewlett Packard Enterprise, and Toyota have relocated or significantly expanded operations in Texas, creating a virtuous cycle of talent attraction and business opportunity.`,
-
-            keyOpportunities: `Key funding opportunities for Texas businesses in 2026 include the Texas Enterprise Fund, the state's premier deal-closing fund offering discretionary grants of up to $100 million for major job creation projects; the Skills Development Fund, which provides customized workforce training grants; and the Product Development and Small Business Incubator Fund, which supports technology commercialization.
-
-Texas also offers significant property and sales tax abatements through Chapter 312 and 313 programs (now reformed as Chapter 403), and the state's research university system provides additional pathways to innovation funding through programs at UT Austin, Texas A&M, and other institutions.`,
+            keyOpportunities: `**The "Deal Closer" Poaching Fund**: *The Texas Enterprise Fund (TEF)* is not a standard open-application grant. It is a highly discretionary fund doling out millions. You only get this money if you can mathematically prove to the Governor's Office that you are actively comparing Texas against a rival state (like Florida or Arizona) for your expansion facility.
+            
+**The Workforce Subsidizer**: *The Skills Development Fund* is arguably the easiest money in the state. By partnering with a local community college, the state will provide up to $500K in grants just to train your new hires.
+            
+**The Massive Life Sciences Exception**: While Texas usually ignores early-stage R&D, they make a massive exception for cancer. The *CPRIT (Cancer Prevention and Research Institute of Texas)* fund acts like a mega-VC, handing out massive $2M to $20M+ checks exclusively to life science and biotech startups willing to relocate to Houston or Austin.`,
 
             futureTrends: [
                 {
-                    trend: 'Energy Transition Leadership',
-                    description: 'Texas is leveraging its traditional energy dominance to lead in wind, solar, and hydrogen. New incentives target carbon capture and storage (CCS) and grid resilience technologies.'
+                    trend: 'The Silicon Prairie Takeover',
+                    description: 'With Samsung\'s $40B+ Taylor expansion and Texas Instruments scaling, the state is matching Federal CHIPS Act funding aggressively. Supporting supply chain businesses to these giants have the highest leverage for state grants right now.'
                 },
                 {
-                    trend: 'Semiconductor Manufacturing',
-                    description: 'With Samsung\'s Taylor expansion and Texas Instruments in Sherman, the state is aggressively pursuing CHIPS Act funding. Supporting supply chain businesses will see increased grant opportunities.'
-                },
-                {
-                    trend: 'Space Economy Expansion',
-                    description: 'From NASA in Houston to SpaceX in Boca Chica and Blue Origin in West Texas, the commercial space sector is booming. The Texas Space Commission provides new dedicated funding for aerospace infrastructure.'
-                },
-                {
-                    trend: 'Biotech & Medical Research',
-                    description: 'The Texas Medical Center in Houston (world\'s largest) and Austin\'s growing life sciences corridor are driving demand for substantial medical research and commercialization grants.'
+                    trend: 'Commercial Space Subsidies',
+                    description: 'Between SpaceX (Boca Chica) and Blue Origin (West Texas), the newly formed Texas Space Commission is actively deploying $350 million specifically to fund aerospace infrastructure and manufacturing.'
                 }
-            ]
+            ],
+
+            whoShouldAvoid: [
+                'Local Main Street businesses (Retail, Restaurants, Salons) — instead, look to your local city EDC.',
+                'Pre-revenue SaaS startups seeking runway — Texas will not fund your burn rate.',
+                'Companies looking to relocate less than 25 jobs — you will fall below state-level minimum thresholds.'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Manufacture Leverage', description: 'Never approach the Texas Enterprise Fund without written proof that you are actively considering another state (like Arizona or Florida) for your expansion.' },
+                { step: 2, title: 'Pivot to Local EDCs', description: 'If you are too small for state grants, target "Type A and Type B" Economic Development Corporations. Texas allocates local sales tax revenue directly to these EDCs to fund small business infrastructure.' },
+                { step: 3, title: 'Partner for Training', description: 'Before making any major hires, connect with your local community college to co-apply for the Skills Development Fund. Do this before making the official job offers.' },
+                { step: 4, title: 'Secure Property Tax Abatements', description: 'Before purchasing land for manufacturing, hire a consultant to negotiate Chapter 403 or Chapter 381 agreements with the county. Land purchased prior to agreement execution usually disqualifies you.' }
+            ],
+
+            comparativePositioning: `Compared to California (high regulation, intense climate-focus), Texas offers far less red tape, zero state income tax, and focuses its largest capital exclusively on massive job creation and capital-intensive infrastructure (manufacturing/aerospace) rather than early-stage R&D.`
         },
 
         topPrograms: [
@@ -1161,17 +1181,15 @@ Texas also offers significant property and sales tax abatements through Chapter 
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `New York State offers one of the most comprehensive business incentive ecosystems in the nation, with over $7.1 billion in annual funding across more than 120 programs. From the global financial capital of New York City to the technology corridors of the Hudson Valley, the manufacturing centers of Western New York, and the emerging innovation hubs across Upstate, the Empire State provides diverse opportunities for businesses at every stage of growth.
+            introduction: `Most entrepreneurs focus entirely on the venture capital flowing through Manhattan and completely ignore the $7.1 billion authorized annually in Albany. **This is a massive strategic oversight.** New York State operates one of the most aggressive, yet complex, incentive ecosystems in the country. The brutal reality is that New York City rarely needs to pay you to be there—but *Upstate* New York (Buffalo, Rochester, Syracuse, Albany) will legally subsidize up to 20% of your entire expansion cost if you bring semiconductor, clean energy, or advanced manufacturing jobs north of the city.`,
 
-Empire State Development (ESD), the state's primary economic development agency, coordinates major incentive programs including the Excelsior Jobs Program, the Regional Economic Development Councils (REDCs), and numerous sector-specific initiatives. The state's unique Regional Council structure allocates significant funding through competitive annual rounds, making regional engagement essential for accessing major state resources.`,
+            economicLandscape: `New York is sharply divided into two completely different grant ecosystems. Downstate (NYC / Long Island) funding is fiercely competitive and focused almost exclusively on early-stage hard-tech R&D or mitigating the massive costs of the green building transition (Local Law 97 compliance). Upstate New York, however, functions like Rust Belt revitalization on steroids. Empire State Development (ESD) uses Regional Economic Development Councils (REDCs) to distribute hundreds of millions annually. If your business expansion aligns with a specific region's 'Strategic Master Plan'—which is public—you effectively cut the line for state capital authorization.`,
 
-            economicLandscape: `New York boasts the third-largest state economy in the United States and would rank as the 10th largest economy globally as an independent nation. The state's economic diversity spans financial services, technology, life sciences, manufacturing, media and entertainment, fashion, agriculture, and tourism. New York City serves as the undisputed financial capital of the world and a major technology hub, while upstate regions have developed strong positions in advanced manufacturing, clean energy, and academic research commercialization.
-
-The state has invested heavily in revitalizing upstate economies, with billions flowing through programs targeting Buffalo, Rochester, Syracuse, and the Capital Region. These investments have attracted major semiconductor, battery, and clean energy manufacturing facilities, positioning New York as a leader in the industries of the future.`,
-
-            keyOpportunities: `Key opportunities for New York businesses in 2026 include the Excelsior Jobs Tax Credit Program, offering refundable tax credits for job creation and investment; the $800 million Regional Economic Development Council competitive process; and sector-specific programs targeting semiconductor manufacturing, offshore wind, life sciences, and artificial intelligence.
-
-New York has also committed unprecedented resources to green economy initiatives, with the Climate Leadership and Community Protection Act (CLCPA) driving investments in renewable energy, building decarbonization, and clean transportation. Businesses aligned with these priorities can access enhanced funding and streamlined approval processes.`,
+            keyOpportunities: `**The Upstate Anchor Fund**: *ESD Grant Funds* represent the holy grail for physical expansion. The state will literally cover up to 20% of your total project cost (capital expansion and machinery) if you are expanding in targeted upstate regions.
+            
+**The Refundable Tax Shield**: *The Excelsior Jobs Program* is the state's economic workhorse. Unlike most states that offer useless non-refundable credits, Excelsior offers fully refundable tax credits up to 6.85% of wages if you create tech, manufacturing, or life science jobs. If you don't owe tax, they cut you a check.
+            
+**The Green CHIPS Play**: With Micron's historic $100B investment in Syracuse, the state has activated specialized, fast-tracked capital specifically to subsidize companies entering the semiconductor and microelectronics supply chain.`,
 
             futureTrends: [
                 {
@@ -1190,7 +1208,22 @@ New York has also committed unprecedented resources to green economy initiatives
                     trend: 'Climate & Decarbonization',
                     description: 'Strict building emission laws (Local Law 97 in NYC) are driving demand for proptech and retrofitting solutions. State incentives are aligning to support businesses that provide or adopt decarbonization technologies.'
                 }
-            ]
+            ],
+
+            whoShouldAvoid: [
+                'Retail, Bars, and Hospitality in NYC (The state will not fund you; look to NYC Small Business Services instead).',
+                'Bootstrapped consumer apps seeking growth marketing spend (Ineligible for almost all state funds).',
+                'Small businesses needing less than $100K for expansion (The compliance and prevailing wage reporting costs heavily outweigh the grant benefits).'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Hack the REDC Playbook', description: 'Before submitting the monster Consolidated Funding Application (CFA), read the Regional Economic Development Council strategic plan for your specific region. If you mirror their exact keywords, your odds of approval triple.' },
+                { step: 2, title: 'Bypass the NYC Mentality', description: 'If your business can operate remotely or has flexible manufacturing, place your headquarters in an upstate START-UP NY tax-free zone. You will unlock significantly higher tier funding than fighting 10,000 startups in Manhattan.' },
+                { step: 3, title: 'Embrace Prevailing Wage', description: 'Do not accept an ESD grant for construction without factoring in New York prevailing wage laws. It will inflate your construction costs by 20-30%, which must be modeled before taking the state match.' },
+                { step: 4, title: 'Leverage the Refund', description: 'Structure your payroll to maximize the Excelsior Jobs Program. Because it is refundable, it functions as a backdoor non-dilutive cash injection year over year.' }
+            ],
+
+            comparativePositioning: `Compared to Texas (low tax, minimal ESG requirements), New York demands navigating arguably the highest tax, labor union, and regulatory burdens in the US. However, compared to California, New York is far more willing to issue direct upfront capital coverage (ESD Grants covering 20% of CapEx) rather than rationing funds purely through backend tax credits.`
         },
 
         topPrograms: [
@@ -1653,25 +1686,45 @@ New York has also committed unprecedented resources to green economy initiatives
             buttonLink: "/contact"
         },
         overview: {
-            introduction: `Florida has established itself as one of America's most business-friendly states, offering over $3.8 billion in annual business incentive funding through more than 75 state programs. The Sunshine State combines zero state income tax with a favorable regulatory environment, strategic geographic location, and aggressive business recruitment efforts to attract companies from across the nation and around the world.
+            introduction: `Most entrepreneurs assume they should move to Florida simply to escape state income tax, completely overlooking the $3.8 billion the state actively deploys in corporate incentives. **This is leaving free capital on the table.** While Florida's brand is built on zero personal income tax and minimal regulation, the state quietly operates extremely targeted grant and refund programs specifically designed to poach aerospace, finance, and defense tech from coastal rivals. If you are building physical infrastructure or moving a headquarters, Florida will aggressively subsidize your expansion.`,
 
-Enterprise Florida (EFI), the state's principal economic development organization, coordinates major incentive programs in partnership with the Florida Department of Economic Opportunity (DEO) and regional economic development organizations. Florida's public-private partnership model creates a streamlined approach to business development that many companies find more accessible than other large states.`,
+            economicLandscape: `Florida operates with a fundamentally different economic philosophy than California or New York. The state does not believe in subsidizing early-stage R&D risk, nor do they fund broad social equity pilots through corporate grants. Florida uses state capital strictly to accelerate proven, high-impact industries. If you are building a commercial space logistics company near the Space Coast, or establishing a massive regional financial headquarters in Miami or Tampa, state organizations like FloridaCommerce (formerly Enterprise Florida) will aggressively structure tax refunds and infrastructure grants to secure your relocation.`,
 
-            economicLandscape: `Florida's $1.4 trillion economy ranks as the fourth largest in the United States and would stand as the 15th largest economy globally. The state's economic base has evolved dramatically from its tourism and agriculture roots to encompass aerospace and aviation, life sciences, financial services, manufacturing, and a rapidly growing technology sector. South Florida has emerged as a major hub for fintech and cryptocurrency companies, while Central Florida continues to grow its aerospace and simulation technology clusters.
-
-The state's population has grown by millions in recent years, driven significantly by migration from high-tax states. This population growth fuels both consumer demand and labor force expansion, creating a dynamic economic environment. Florida's position as a gateway to Latin America and the Caribbean also creates unique advantages for international trade.`,
-
-            keyOpportunities: `**QTI Tax Refund**: The state's flagship program, offering up to $6,000 per new job created in high-value industries.
+            keyOpportunities: `**The Aerospace Monopoly**: *Space Florida Financing* operates as a specialized entity that can structure bonds, provide equipment financing, and offer massive tax exemptions exclusively for the aerospace and commercial space industry (including supply chain logistics).
             
-**Zero Income Tax**: The most powerful "incentive" of all—0% personal income tax and a low 5.5% corporate tax rate.
+**The Headquarters Honey Pot**: *The Qualified Target Industry (QTI) Tax Refund* offers up to $6,000 per new job created. If you are moving a corporate headquarters to Florida and paying at least 115% of the local average wage, this is the very first program you negotiate.
             
-**Space Florida**: Specialized financing and infrastructure for aerospace companies, leveraging Kennedy Space Center.`,
+**The Machinery Loophole**: Florida offers complete sales and use tax exemptions on manufacturing machinery and equipment. While not a direct cash grant, this effectively discounts your entire factory CapEx buildout by 6-8%, which for a $20M facility equals a $1.2M+ instant subsidy.`,
 
-            futureTrends: `**Wall Street South**: Miami and West Palm Beach are rapidly becoming the primary alternative to NYC for hedge funds and fintech.
-            
-**Commercial Space**: With SpaceX and Blue Origin, Florida is the undisputed global capital of the commercial launch industry.
-            
-**Blue Economy**: Investing heavily in ocean technology, climate resilience, and marine biotech to address sea-level challenges.`
+            futureTrends: [
+                {
+                    trend: 'Wall Street South',
+                    description: 'Miami and West Palm Beach are rapidly becoming the primary alternative to NYC for hedge funds and fintech. State and local EDCs are explicitly targeting financial services relocations with massive customized tax packages.'
+                },
+                {
+                    trend: 'Commercial Space Domination',
+                    description: 'With SpaceX and Blue Origin anchoring the coast, Florida is the undisputed global capital of the commercial launch industry. State funding for launch infrastructure and specialized aerospace workforce training is practically unlimited.'
+                },
+                {
+                    trend: 'The Blue Economy',
+                    description: 'Florida is investing heavily in ocean technology, climate resilience, and marine biotech to address sea-level challenges, opening up rare R&D funding pockets in an otherwise growth-focused state.'
+                }
+            ],
+
+            whoShouldAvoid: [
+                'Pre-revenue tech startups looking for seed grants (Florida funds proven growth and job creation, not speculative R&D).',
+                'Bootstrapped solo founders operating out of their home (No massive job creation = no state incentives).',
+                'Businesses hiring exclusively remote, out-of-state workers (All Florida programs strictly audit local workforce headcount).'
+            ],
+
+            executionRoadmap: [
+                { step: 1, title: 'Secure Local Buy-In First', description: 'Florida requires a 20% local government financial match for its major state programs like QTI. You must negotiate with the local county Economic Development Corporation (EDC) first before approaching the state.' },
+                { step: 2, title: 'Leverage Space Florida', description: 'If your business has even tertiary applications to aerospace, advanced manufacturing, or defense, attempt to partner with Space Florida. They operate outside standard agency rules and can offer unique financing and tax lease structures.' },
+                { step: 3, title: 'Target Wage Requirements', description: 'Florida incentives are heavily heavily gated by wage requirements. Do not apply unless your projected payroll mathematically exceeds 115% of the specific county average wage.' },
+                { step: 4, title: 'Expedite Permitting', description: 'Leverage Florida\'s expedited permitting laws for targeted industries. Fast-tracking a facility build can sometimes save more working capital than a direct grant.' }
+            ],
+
+            comparativePositioning: `Compared to New York and California, Florida offers virtually no upfront "free cash" grants for early-stage R&D. However, for profitable, scaling enterprises looking to build physical infrastructure or hire 50+ people, Florida's combination of zero personal income tax plus backend job-creation refunds yields arguably the highest net-cash retention in the country.`
         },
 
         topPrograms: [

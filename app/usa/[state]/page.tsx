@@ -99,7 +99,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
             "logo": { "@type": "ImageObject", "url": "https://www.fsidigital.ca/fsi-logo.png" }
         },
         "datePublished": "2026-01-15T00:00:00.000Z",
-        "dateModified": "2026-03-12T00:00:00.000Z",
+        "dateModified": "2026-04-12T00:00:00.000Z",
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.fsidigital.ca/usa/${state.slug}` },
         "image": "https://www.fsidigital.ca/images/blog/canada-grants-theme.png",
     };
@@ -152,8 +152,8 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     {/* Hero Section */}
                     <header className="mb-12">
                         <Badge className="mb-4 bg-blue-100 text-blue-800">{state.region} Region</Badge>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                            {state.name} Small Business Grants 2026
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                            {state.name} Corporate Expansion & Small Business Grants (2026)
                         </h1>
                         
                         <CTRTrap />
@@ -162,7 +162,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             <ShortAnswerBox content={state.shortAnswer} />
                         )}
                         <div className="mt-4 mb-6">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-04-12" />
                         </div>
                         <p className="text-xl text-gray-600 mb-6">
                             Complete guide to {state.heroStats.totalFunding} in {state.name} business funding across {state.heroStats.programCount} programs
@@ -236,7 +236,56 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             <h3 className="text-xl font-semibold mt-6 mb-3">Economic Landscape</h3>
                             <p className="text-gray-700 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.economicLandscape) }} />
                             <h3 className="text-xl font-semibold mt-6 mb-3">Key Opportunities in 2026</h3>
-                            <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.keyOpportunities) }} />
+                            <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.keyOpportunities || '') }} />
+
+                            {state.overview.whoShouldAvoid && (
+                                <div className="mt-8 mb-6 bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                                    <h3 className="text-xl font-bold mb-4 text-red-900 flex items-center">
+                                        <AlertTriangle className="w-5 h-5 mr-2" />
+                                        Reality Check: Who Should NOT Apply
+                                    </h3>
+                                    <ul className="space-y-2">
+                                        {state.overview.whoShouldAvoid.map((rule, i) => (
+                                            <li key={i} className="flex items-start text-red-800">
+                                                <span className="text-red-500 mr-2 font-bold">—</span>
+                                                <span>{rule}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {state.overview.comparativePositioning && (
+                                <div className="mt-8 mb-6 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+                                    <h3 className="text-xl font-bold mb-3 text-slate-800 flex items-center">
+                                        <Globe className="w-5 h-5 mr-2 text-slate-600" />
+                                        Comparative Positioning
+                                    </h3>
+                                    <p className="text-slate-700 italic">"{state.overview.comparativePositioning}"</p>
+                                </div>
+                            )}
+
+                            {state.overview.executionRoadmap && (
+                                <div className="mt-8 mb-6">
+                                    <h3 className="text-xl font-bold mb-6 text-gray-900 flex items-center border-b pb-3">
+                                        <Target className="w-6 h-6 mr-2 text-blue-600" />
+                                        Execution Roadmap: How to Actually Win Funding Here
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {state.overview.executionRoadmap.map((step, i) => (
+                                            <div key={i} className="flex bg-white border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                                                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold mr-4">
+                                                    {step.step}
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
+                                                    <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </section>
 

@@ -84,7 +84,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`,
         },
-        robots: { index: true, follow: true },
+        robots: { index: cityData.tier !== 'C', follow: true },
         openGraph: {
             title,
             description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
@@ -100,6 +100,11 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
 
     const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
     if (!cityData) return notFound();
+
+    // Authority Funnel: Grab up to 3 Tier A or B cities to flow link equity
+    const priorityCities = state.cityGuides
+        .filter(c => (c.tier === 'A' || c.tier === 'B' || !c.tier) && toSlug(c.city) !== cityParam)
+        .slice(0, 3);
 
     // Find local resources that match this city
     const localResources = state.localResources?.filter(r =>
@@ -297,6 +302,26 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                             </Link>
                         </div>
                     </section>
+
+                    {/* Authority Funnel Internal Links */}
+                    {priorityCities.length > 0 && (
+                        <section className="mb-12 bg-blue-50 border border-blue-100 p-6 rounded-xl">
+                            <h2 className="text-xl font-bold mb-4 text-blue-900 flex items-center">
+                                <Locate className="w-5 h-5 mr-2 text-blue-600" />
+                                Explore Other Priority {state.name} Funding Hubs
+                            </h2>
+                            <p className="text-blue-800 mb-4 text-sm">
+                                Businesses operating statewide or in multiple regions should also explore funding opportunities in these primary economic centers:
+                            </p>
+                            <div className="grid md:grid-cols-3 gap-3">
+                                {priorityCities.map((c, i) => (
+                                    <Link key={i} href={`/usa/${state.slug}/${toSlug(c.city)}`} className="block p-3 bg-white rounded shadow-sm hover:shadow border border-white hover:border-blue-300 transition-all text-center">
+                                        <span className="font-semibold text-blue-700">{c.city} Grants</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    )}
 
                     {/* FAQs Section */}
                     {state.faqs && state.faqs.length > 0 && (
