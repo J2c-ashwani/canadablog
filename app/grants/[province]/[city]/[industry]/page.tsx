@@ -17,6 +17,16 @@ import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
 import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
 import PseoMasterclass from '@/components/pseo/PseoMasterclass';
 import RelatedPseoLinks from '@/components/pseo/RelatedPseoLinks';
+import { composePseoBlocks, BlockIntent } from '@/lib/pseo-engine/composer';
+import AnchorBlock from '@/components/pseo/blocks/AnchorBlock';
+import FundingRealityCheck from '@/components/pseo/blocks/FundingRealityCheck';
+import BestEntryStrategy from '@/components/pseo/blocks/BestEntryStrategy';
+import DisqualifiersList from '@/components/pseo/blocks/DisqualifiersList';
+import { composePseoBlocks, BlockIntent } from '@/lib/pseo-engine/composer';
+import AnchorBlock from '@/components/pseo/blocks/AnchorBlock';
+import FundingRealityCheck from '@/components/pseo/blocks/FundingRealityCheck';
+import BestEntryStrategy from '@/components/pseo/blocks/BestEntryStrategy';
+import DisqualifiersList from '@/components/pseo/blocks/DisqualifiersList';
 
 // --- Industry-specific, data-rich short answers ---
 // Each answer contains real program names, real dollar amounts, and real timelines.
@@ -248,6 +258,19 @@ export default function PseoLandingPage({ params }: { params: { province: string
         ? shortAnswerFn(page.cityName, page.provinceName)
         : DEFAULT_SHORT_ANSWER(page.industryName, page.cityName, page.provinceName);
 
+    // --- PHASE 4 COMPOSER LOGIC ---
+    const intents: BlockIntent[] = ['informational', 'transactional', 'comparative'];
+    const assignedIntent = intents[(page.citySlug.length + page.provinceSlug.length + page.industrySlug.length) % 3];
+
+    const blocksData = composePseoBlocks({
+        tier: (page.tier as any) || 'C',
+        industrySlug: page.industrySlug,
+        citySlug: page.citySlug,
+        cityName: page.cityName,
+        stateSlug: page.provinceSlug,
+        intent: assignedIntent
+    });
+
     const shortAnswerQuestion = `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
 
     const breadcrumbSchema = {
@@ -329,6 +352,19 @@ export default function PseoLandingPage({ params }: { params: { province: string
                             content={shortAnswerContent}
                             isH1={true}
                         />
+                    </div>
+                    
+                    {/* PHASE 4: Dynamic Composed Blocks Render Output */}
+                    <div className="mt-12 mb-8">
+                        {blocksData.map((block, idx) => {
+                            switch (block.type) {
+                                case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
+                                case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
+                                case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
+                                case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
+                                default: return null; 
+                            }
+                        })}
                     </div>
                 </div>
             </section>

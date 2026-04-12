@@ -20,6 +20,11 @@ import {
 import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import { composePseoBlocks, BlockIntent } from '@/lib/pseo-engine/composer';
+import AnchorBlock from '@/components/pseo/blocks/AnchorBlock';
+import FundingRealityCheck from '@/components/pseo/blocks/FundingRealityCheck';
+import BestEntryStrategy from '@/components/pseo/blocks/BestEntryStrategy';
+import DisqualifiersList from '@/components/pseo/blocks/DisqualifiersList';
 
 // Helper to create slugs from names
 function toSlug(text: string): string {
@@ -111,6 +116,19 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
         toSlug(r.location).includes(cityParam) || cityParam.includes(toSlug(r.location))
     ) || [];
 
+    // --- PHASE 4 COMPOSER LOGIC ---
+    const intents: BlockIntent[] = ['informational', 'transactional', 'comparative'];
+    const assignedIntent = intents[(cityParam.length + stateParam.length) % 3];
+
+    const blocksData = composePseoBlocks({
+        tier: (cityData.tier as any) || 'C',
+        industrySlug: 'business',
+        citySlug: cityParam,
+        cityName: cityData.city,
+        stateSlug: stateParam,
+        intent: assignedIntent
+    });
+
     const jsonLd = {
         "@context": "https://schema.org",
         "@type": "Article",
@@ -169,14 +187,22 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
 
                         <CTRTrap />
 
-                        {state.shortAnswer && (
-                            <ShortAnswerBox content={state.shortAnswer.replace(new RegExp(state.name, 'g'), cityData.city)} />
-                        )}
                         <div className="mt-4 mb-6">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-12" />
                         </div>
 
-                        <p className="text-xl text-gray-600 mb-6" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(cityData.description) }} />
+                        {/* PHASE 4: Dynamic Composed Blocks Render Output */}
+                        <div className="mt-8 mb-8">
+                            {blocksData.map((block, idx) => {
+                                switch (block.type) {
+                                    case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
+                                    case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
+                                    case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
+                                    case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
+                                    default: return null; 
+                                }
+                            })}
+                        </div>
 
                         <div className="flex flex-wrap gap-4 mt-6 mb-8">
                             <div className="flex items-center text-gray-600">
