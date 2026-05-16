@@ -154,25 +154,13 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
         }
     };
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": (state.faqs || []).map(faq => ({
-            "@type": "Question",
-            "name": faq.question.replace(new RegExp(state.name, 'g'), cityData.city),
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
+
 
     return (
         <div className="min-h-screen bg-white">
             <Header />
             <main className="py-8">
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
                 <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                     {/* Breadcrumb */}

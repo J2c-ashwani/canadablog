@@ -289,32 +289,7 @@ export default function PseoLandingPage({ params }: { params: { province: string
         ]
     };
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": [
-            {
-                "@type": "Question",
-                "name": `How much grant money can a ${page.industryName} business in ${page.cityName} receive?`,
-                "acceptedAnswer": { "@type": "Answer", "text": `Depending on the specific program, funding ranges from $5,000 to $1,000,000+. Small hiring grants provide $5,000 to $15,000 per new employee. Technology adoption grants typically offer $15,000 to $100,000. For large-scale innovation projects in the ${page.industryName} sector, companies in ${page.provinceName} can secure upwards of $500,000 to $1,000,000+.` }
-            },
-            {
-                "@type": "Question",
-                "name": "Do I have to pay back a government grant?",
-                "acceptedAnswer": { "@type": "Answer", "text": "No. True government grants are non-repayable. You do not have to pay the money back, provided you complete the project exactly as described in your approved application. The government also offers 'repayable contributions' (interest-free loans with flexible terms) which are also valuable tools." }
-            },
-            {
-                "@type": "Question",
-                "name": `Can a startup in ${page.cityName} get funding before generating revenue?`,
-                "acceptedAnswer": { "@type": "Answer", "text": `Yes, but options are more limited. Pre-revenue ${page.industryName} startups can access SR&ED tax credits and IRAP funding for R&D. However, most large scaling grants require established commercial revenue (often $500K+) and at least 3–5 full-time employees.` }
-            },
-            {
-                "@type": "Question",
-                "name": "How long does it take to get approved?",
-                "acceptedAnswer": { "@type": "Answer", "text": `The timeline varies by program. Simple wage subsidies in ${page.cityName} can be approved in 2–4 weeks. Complex federal innovation grants can take 3–6 months. We always advise businesses in ${page.provinceName} to apply well in advance of their planned project start dates.` }
-            },
-        ]
-    };
+
 
     return (
         <div className="min-h-screen bg-white">
@@ -326,8 +301,6 @@ export default function PseoLandingPage({ params }: { params: { province: string
             <div className="bg-gray-50/50">
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }} />
             <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
-
             {/* Hero Section */}
             <section className="bg-white border-b border-gray-200 pt-16 pb-12 lg:pt-24 lg:pb-16 px-4">
                 <div className="max-w-4xl mx-auto">
