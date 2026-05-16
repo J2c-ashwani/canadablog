@@ -229,7 +229,7 @@ export async function generateMetadata({ params }: { params: { province: string,
             canonical: `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`,
         },
         robots: {
-            index: page.tier !== 'C',
+            index: true,
             follow: true
         },
         openGraph: {

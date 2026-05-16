@@ -99,7 +99,7 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`,
         },
-        robots: { index: cityData.tier !== 'C', follow: true },
+        robots: { index: true, follow: true },
         openGraph: {
             title,
             description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
