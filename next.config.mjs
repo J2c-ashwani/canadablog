@@ -156,6 +156,18 @@ const nextConfig = {
       { source: '/grants/qc', destination: '/blog/quebec-business-grants-2026', permanent: true },
       { source: '/usa/maine/lewiston/auburn', destination: '/usa/maine', permanent: true },
       { source: '/usa/massachusetts/boston-/-cambridge', destination: '/usa/massachusetts', permanent: true },
+
+      // GSC 404 fixes — May 17, 2026
+      { source: '/grants/fl', destination: '/usa/florida', permanent: true },
+      { source: '/grants/ca', destination: '/usa/california', permanent: true },
+      { source: '/grants/ns', destination: '/blog/atlantic-business-grants-2026', permanent: true },
+      { source: '/grants/pe', destination: '/blog/atlantic-business-grants-2026', permanent: true },
+      { source: '/grants/nb', destination: '/blog/atlantic-business-grants-2026', permanent: true },
+      { source: '/grants/nl', destination: '/blog/atlantic-business-grants-2026', permanent: true },
+      { source: '/grants/sk', destination: '/blog/saskatchewan-business-grants-2026', permanent: true },
+      { source: '/grants/community-grants', destination: '/grant-finder', permanent: true },
+      { source: '/grants/small-business-grants', destination: '/blog/small-business-grants-complete-guide', permanent: true },
+      { source: '/usa/arizona/chandler-/-tempe', destination: '/usa/arizona/chandler-tempe', permanent: true },
     ]
   },
   async headers() {
