@@ -36,3 +36,4 @@ check_orphans.ts
 __pycache__/
 google-credentials.json
 .env*.local
+scripts/sales/lead-buyers.csv
