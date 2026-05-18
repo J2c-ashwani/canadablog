@@ -61,3 +61,4 @@ Allow: /
 
 # =============================================
 Sitemap: https://www.fsidigital.ca/sitemap.xml
+Sitemap: https://www.fsidigital.ca/priority-sitemap.xml

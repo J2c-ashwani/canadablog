@@ -8,6 +8,24 @@ import { guidesDatabase } from '@/lib/data/guides'
 import { getAllStateDetails } from '@/lib/data/stateDetails'
 import { getAllPseoPages } from '@/lib/pseo-data'
 
+const SUPERSEDED_BLOG_SLUGS = new Set([
+  'canada-irap-grants-2025',
+  'indigenous-business-development-2025',
+  'small-business-financing-2025',
+])
+
+function isIndexableRoute(route: string): boolean {
+  if (route.includes('/thank-you')) return false
+  if (route.startsWith('/download/')) return false
+  if (route.startsWith('/api/')) return false
+
+  const blogSlug = route.startsWith('/blog/') ? route.replace('/blog/', '') : null
+  if (blogSlug?.endsWith('-archive')) return false
+  if (blogSlug && SUPERSEDED_BLOG_SLUGS.has(blogSlug)) return false
+
+  return true
+}
+
 // Recursively find all page.tsx files and convert to routes
 function getAllRoutes(dir: string, baseDir: string = 'app'): string[] {
   const routes: string[] = []
@@ -47,6 +65,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 2. Add Dynamic Blog Posts (from data)
   const allPosts = getAllBlogPosts()
   const dynamicBlogRoutes = allPosts
+    .filter(post => !post.slug.endsWith('-archive'))
+    .filter(post => !SUPERSEDED_BLOG_SLUGS.has(post.slug))
     .map(post => `/blog/${post.slug}`)
     .filter(route => !staticRoutes.includes(route))
 
@@ -79,6 +99,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     .filter(page => page.isPublished)
     .map(page => `/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`);
 
+  const blogRouteDates = new Map(
+    allPosts.map(post => [`/blog/${post.slug}`, post.date])
+  )
+  const guideRouteDates = new Map(
+    guidesDatabase.map(guide => {
+      const guideWithDates = guide as typeof guide & { updatedAt?: string; date?: string; publishedAt?: string }
+      return [`/guides/${guide.slug}`, guideWithDates.updatedAt || guideWithDates.date || guideWithDates.publishedAt]
+    })
+  )
+  const pseoRouteDates = new Map(
+    getAllPseoPages()
+      .filter(page => page.isPublished)
+      .map(page => [`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`, page.publishedAt])
+  )
+
   // Combine all routes
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
@@ -87,17 +122,21 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...stateRoutes,
     ...cityRoutes,
     ...pseoRoutes
-  ])).filter(route => !route.includes('/thank-you'))
+  ])).filter(isIndexableRoute)
 
   // Convert to sitemap format
-  const sitemapEntries = allRoutes.map(route => ({
-    url: `${baseUrl}${route}`,
-    lastModified: new Date(),
-    changeFrequency: route.includes('/blog/') || route.includes('/guides/')
-      ? 'weekly' as const
-      : 'monthly' as const,
-    priority: route === '/' ? 1.0 : route.startsWith('/usa/') ? 0.8 : 0.7,
-  }))
+  const sitemapEntries = allRoutes.map(route => {
+    const routeDate = blogRouteDates.get(route) || guideRouteDates.get(route) || pseoRouteDates.get(route)
+
+    return {
+      url: `${baseUrl}${route}`,
+      lastModified: routeDate ? new Date(routeDate) : new Date(),
+      changeFrequency: route.includes('/blog/') || route.includes('/guides/')
+        ? 'weekly' as const
+        : 'monthly' as const,
+      priority: route === '/' ? 1.0 : route.startsWith('/usa/') ? 0.8 : 0.7,
+    }
+  })
 
   // Logging for verification
   const blogCount = allRoutes.filter(r => r.startsWith('/blog/')).length

@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the age limit for Futurpreneur?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Futurpreneur is open to Canadian citizens or permanent residents aged 18 to 39."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Futurpreneur a grant or a loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is primarily a low-interest loan (up to $60,000) combined with mandatory mentorship. It is not a non-repayable grant, though some partnered programs may offer small grant components."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a business plan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. A complete business plan and cash flow projection are required. Futurpreneur provides a 'Business Plan Writer' tool to help."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply if I have bad credit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Futurpreneur is more flexible than banks, but you generally need a clean credit history (no recent bankruptcies or R9s). Your character and business viability matter more than a perfect score."
-      }
-    }
-  ]
-}
-
 export default function YouthEntrepreneurshipFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

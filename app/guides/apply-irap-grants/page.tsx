@@ -30,60 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What qualifies for IRAP funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP funds technical R&D projects that involve uncertainty and risk. The project must aim to develop a new or significantly improved product, process, or service. Routine engineering or maintenance does not qualify."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does IRAP pay?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP typically covers up to 80% of internal technical salary costs and up to 50% of contractor costs for the project duration. Total contribution amounts vary but often range from $50,000 to $500,000+ for larger projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is IRAP funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, standard IRAP contributions are non-repayable grants. They are not loans. However, you must meet the project milestones and reporting requirements to receive the reimbursements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does approval take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process is relatively fast compared to other government programs. Once a full proposal is invited, approval can take 4-8 weeks. The initial engagement with an ITA can add 1-2 months prior to that."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I claim SR&ED and IRAP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but you cannot 'double dip'. You must deduct the IRAP grant amount from your SR&ED eligible expenditures. Essentially, you can't get a tax credit on the portion of salary that the government already paid for."
-      }
-    }
-  ]
-}
-
 export default function IRAPApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

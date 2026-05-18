@@ -56,20 +56,7 @@ export default function ColoradoTechProgramsPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-
-  return (
+    return (
     <>
       <Header />
       {/* Header Ad */}
@@ -763,11 +750,6 @@ export default function ColoradoTechProgramsPage() {
       </div>
       <Footer />
 
-      {/* FAQ Schema for Rich Results */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-    </>
+      </>
   )
 }

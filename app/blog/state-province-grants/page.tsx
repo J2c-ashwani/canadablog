@@ -31,65 +31,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do I have to move my whole company to get state grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not necessarily. Most state grants require you to have a \"nexus\" or physical presence in that state, such as a branch office or R&D lab. You don't always have to move your HQ, but the employees associated with the grant must work in that jurisdiction."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I negotiate tax incentives with states?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely. Unlike federal grants, state incentives are often negotiated deals. Everything is on the table: property tax rates, free land, utility rates, and training cash. The more jobs you create, the more leverage you have."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the \"But-For\" Clause?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Many states require you to sign an affidavit stating that \"But for this incentive, the project would not occur in this state.\" If you announce a move before signing, you lose leverage."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are Canadian or US grants better?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "US Grants (SBIR) offer larger upfront non-dilutive cash for R&D. Canadian Grants (SR&ED, IRAP) focus on tax credits and wage subsidies, offering lower engineering costs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is a Site Selector?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A Site Selector is a professional consultant who helps companies find the best location for new facilities and negotiates incentive packages anonymously on their behalf."
-      }
-    }
-  ]
-}
-
 export default function StateProvinceGrantsPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("state-province-grants");
   const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
       </div>

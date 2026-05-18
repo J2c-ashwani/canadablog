@@ -29,20 +29,8 @@ export default function MicroFAQ({ industrySlug, cityName, program1 }: Props) {
   // Show 2-3 based on diversity
   const visibleFaqs = faqs.slice(0, cityName.length % 2 === 0 ? 3 : 2);
 
-  // FAQ Schema for SEO
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": visibleFaqs.map(faq => ({
-      "@type": "Question",
-      "name": faq.q,
-      "acceptedAnswer": { "@type": "Answer", "text": faq.a }
-    }))
-  };
-
   return (
     <div className="bg-teal-50 border border-teal-200 p-6 rounded-xl mb-8">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       <h3 className="text-lg font-bold text-teal-900 flex items-center gap-2 m-0 mb-4">
         <MessageCircleQuestion className="w-5 h-5 text-teal-600" />
         Quick Answers (People Also Ask)

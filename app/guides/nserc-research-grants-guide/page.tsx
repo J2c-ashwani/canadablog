@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the NSERC Idea to Innovation (I2I) grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "I2I is a grant (up to $350k) designed to accelerate the pre-competitive development of promising technology originating from the university sector to promote its transfer to a new or established Canadian company."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need an industry partner for NSERC Alliance?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. NSERC Alliance grants require a partnership with at least one organization from the private, public, or not-for-profit sector that can apply the research results."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What qualifies as HQP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HQP stands for Highly Qualified Personnel. This includes undergraduate and graduate students, and postdoctoral fellows who are trained through the research project."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the success rate for NSERC grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Success rates vary by program but generally range from 50% to 80% for partnership programs like I2I and Alliance, which is significantly higher than Discovery Grants."
-      }
-    }
-  ]
-}
-
 export default function NSERCResearchGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

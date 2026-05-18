@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the most common reason for grant rejection?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The #1 reason is 'Technical Non-Compliance'—meaning you missed a form, used the wrong font size, or went over the page limit. It is rejected before anyone even reads your idea."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a professional grant writer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For large federal grants ($500k+), it is highly recommended. The complexity of the narrative and budget justification often requires specialist expertise."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the review process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Federal grants typically take 3-6 months from submission to award notification. Peer review panels meet periodically, not abundantly."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is match funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Many federal grants require 'cost-sharing' or 'matching funds' (e.g., 50%). You must prove you have cash or in-kind contributions to cover your share of the project."
-      }
-    }
-  ]
-}
-
 export default function FederalGrantsApplicationTipsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

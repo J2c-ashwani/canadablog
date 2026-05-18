@@ -29,52 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is the Women Entrepreneurship Fund really non-repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but it is currently closed for new direct intake. However, the $100M WES Ecosystem Fund distributes non-repayable services and training through partner organizations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to be 100% women-owned to apply?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, you do not need 100% ownership. To be eligible for WES initiatives, the business must be at least 51% women-owned, managed, and controlled."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What can WEF funding be used for?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Eligible costs typically include international marketing, supply chain integration, business advisory services, and technology upgrades. It generally does not cover operational costs like rent."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the deadline for the Women Entrepreneurship Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The direct $100k grant form ISED has periodic calls for proposals. Currently, you should apply for the Women Entrepreneurship Loan Fund (up to $50k) which is open year-round."
-      }
-    }
-  ]
-}
-
 export default function WomenEntrepreneurshipFundApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

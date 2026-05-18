@@ -29,60 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the IDEaS program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IDEaS (Innovation for Defence Excellence and Security) is a DND program that funds solutions to defence challenges. It offers competitive projects (up to $200k for Phase 1, $1M+ for Phase 2) and Test Drives."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much funding can I get from the CSA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Canadian Space Agency (CSA) funding varies by initiative. Space Technology Development Program (STDP) contribution agreements typically range from $200,000 to $5 million depending on the TRL advancement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to be Controlled Goods certified?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, for most defence and some space projects, you must be registered with the Controlled Goods Program (CGP) to access data and secure contracts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is aerospace funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends. SIF aerospace streams are often repayable loans. CSA STDP contributions are often non-repayable if they support lower TRL research, but may be repayable for near-commercial projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for defence contracts?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. IDEaS is specifically designed to engage non-traditional defence partners, including startups and universities. You do not need to be a prime contractor to win an IDEaS challenge."
-      }
-    }
-  ]
-}
-
 export default function CanadaAerospaceDefenceFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

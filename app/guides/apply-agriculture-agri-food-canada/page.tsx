@@ -29,60 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is eligible for AAFC funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Eligibility varies by program but generally includes for-profit companies, cooperatives, and non-profit organizations operating in the agriculture, agri-food, and agri-based products sectors. Applicants must be legal entities capable of entering into legally binding agreements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between AgriInnovate and AgriScience?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AgriScience focuses on pre-commercial research and development (science-based). AgriInnovate focuses on the commercialization and adoption of innovative technologies that are already developed but need help reaching the market."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is AAFC funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends. AgriInnovate contributions are typically repayable (interest-free loans), while AgriScience contributions are often non-repayable (grants). Review the specific terms of the stream you are applying to."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process can take 4-6 months or longer. It typically involves a pre-screening form, followed by a full application invitation. Due diligence and final approval add to the timeline."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I stack AAFC funding with other grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, stacking is generally permitted up to a certain limit (often 75% or 90% of total project costs). You must disclose all other funding sources in your application."
-      }
-    }
-  ]
-}
-
 export default function AgricultureAgriFoodGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

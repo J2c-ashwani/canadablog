@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  
+  body {
+    width: 1080px;
+    height: 1920px;
+    font-family: 'DM Sans', sans-serif;
+    overflow: hidden;
+    background: #222;
+  }
+
+  .slide {
+    width: 1080px;
+    height: 1920px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ── COVER / INTRO SLIDE ── */
+  .slide-intro { background: #8B0000; justify-content: center; padding: 80px; }
+  .slide-intro .bg-circle1 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: rgba(255,255,255,.06); top: -300px; right: -300px; }
+  .slide-intro .bg-circle2 { position: absolute; width: 680px; height: 680px; border-radius: 50%; background: rgba(255,255,255,.04); bottom: 200px; left: -200px; }
+  
+  .slide-intro .top-bar { display: flex; justify-content: space-between; align-items: center; position: absolute; top: 80px; left: 80px; right: 80px; z-index: 2; }
+  .slide-intro .logo { font-size: 46px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .1em; text-transform: uppercase; }
+  .slide-intro .flag { background: rgba(255,255,255,.2); border-radius: 12px; padding: 12px 36px; font-size: 40px; color: #fff; font-weight: 700; }
+  
+  .slide-intro .mid { z-index: 2; margin-top: auto; margin-bottom: auto; }
+  .slide-intro .tag { font-size: 50px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; background: rgba(0,0,0,0.3); display: inline-block; padding: 10px 30px; border-radius: 12px; }
+  .slide-intro .title { font-family: 'Playfair Display', serif; font-size: 130px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 30px; }
+  .slide-intro .subtitle { font-size: 54px; color: rgba(255,255,255,.95); line-height: 1.4; font-weight: 500; }
+
+  /* ── GRANT / STAT SLIDES ── */
+  .slide-stat { background: #ffffff; border: 12px solid #f0f0f0; padding: 0; }
+  .slide-stat .header { padding: 60px 80px 40px; display: flex; align-items: flex-start; gap: 36px; position: relative; }
+  .slide-stat .num-badge { min-width: 150px; height: 150px; border-radius: 36px; background: #8B0000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 10px 30px rgba(139,0,0,0.2); }
+  .slide-stat .num-badge span { font-size: 75px; font-weight: 900; color: #fff; }
+  .slide-stat .header-text { display: flex; flex-direction: column; gap: 12px; padding-top: 10px; }
+  .slide-stat .series-tag { font-size: 34px; font-weight: 800; color: #8B0000; text-transform: uppercase; letter-spacing: .08em; }
+  .slide-stat .grant-name { font-family: 'Playfair Display', serif; font-size: 72px; font-weight: 900; color: #1a1a1a; line-height: 1.15; }
+  
+  .slide-stat .divider { height: 4px; background: #f5f5f5; margin: 0 80px; }
+  
+  .slide-stat .body { padding: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 40px; }
+  .slide-stat .amt-label { font-size: 34px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 15px; }
+  .slide-stat .amt { font-family: 'Playfair Display', serif; font-size: 130px; font-weight: 900; color: #8B0000; line-height: 1; margin-bottom: 20px;}
+  .slide-stat .desc { font-size: 56px; color: #333; line-height: 1.45; font-weight: 500; }
+  
+  .slide-stat .footer { margin-top: auto; padding: 50px 80px; background: #fafafa; border-top: 4px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .slide-stat .url { font-size: 36px; color: #999; font-weight: 700; letter-spacing: .02em; }
+  .slide-stat .apply-btn { background: #8B0000; border-radius: 20px; padding: 20px 40px; font-size: 36px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; }
+
+  /* ── CTA FINAL SLIDE ── */
+  .slide-cta { background: #1a1a1a; color: #fff; text-align: center; justify-content: center; align-items: center; padding: 80px; }
+  .slide-cta .bg-overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: radial-gradient(circle at center, rgba(139,0,0,0.3) 0%, transparent 70%); z-index: 1; }
+  .slide-cta .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 50px; width: 100%; }
+  .slide-cta .logo-huge { font-family: 'Playfair Display', serif; font-size: 90px; font-weight: 900; color: #fff; }
+  .slide-cta h2 { font-size: 110px; font-weight: 800; line-height: 1.15; color: #fff; }
+  .slide-cta .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 80px; width: 100%; }
+  .slide-cta .comment-word { font-size: 110px; font-weight: 900; color: #ff4444; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; margin: 30px 0; }
+  .slide-cta .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; }
+  .slide-cta .url-text { font-size: 70px; font-weight: 800; color: #fff; letter-spacing: .05em; margin-top:20px; }
+</style>
+</head>
+<body>
+<!-- TEMPLATE USAGE via NodeJS -->
+</body>
+</html>

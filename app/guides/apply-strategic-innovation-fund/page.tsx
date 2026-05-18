@@ -30,68 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the minimum funding amount for SIF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The SIF typically requires a minimum funding request of $10 million, with total project investments of $20 million or more. The program is designed for large-scale, transformative innovation projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the SIF application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The SIF application process typically takes 12-18 months from initial concept to funding approval. This includes 3 months for conceptualization, 3 months for SOI development, 4 months for full application, and 5 months for due diligence."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the SIF funding streams?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SIF has four main streams: Stream 1 for R&D and commercialization (TRL 1-9), Stream 2 for business growth and expansion (TRL 8-9), Stream 3 for investment attraction (TRL 2-9), and Stream 4 for collaborative technology development (TRL 1-7)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What percentage of project costs does SIF cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SIF typically covers up to 50% of eligible project costs through repayable and non-repayable contributions. The exact percentage depends on the project type, stream selected, and demonstrated economic impact."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need co-funding for SIF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, SIF requires significant co-funding, typically 50% or more of the total project cost. This can come from private investment, other government programs, or strategic partnerships. Firm co-funding commitments are required before approval."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for SIF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While SIF is open to startups, the minimum project size ($20M+) and co-funding requirements make it more suitable for established companies or well-funded growth-stage startups. Smaller companies often pursue IRAP first."
-      }
-    }
-  ]
-}
-
 export default function SIFApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

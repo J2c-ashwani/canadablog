@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Women Entrepreneurship Loan Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is a $55 million federal program that provides loans of up to $50,000 to women entrepreneurs. It is delivered through partners like WEOC, NACCA, and Coralus."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply directly to the government?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. You must apply through one of the approved delivery organizations (WEOC, NACCA, Coralus, Evol, etc.) based on your region and profile."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the WELF loan interest-free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends on the delivery partner. Coralus (formerly SheEO) offers 0% interest loans. Others may charge prime-based interest rates."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for WELF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. WELF is specifically designed to support startups and underrepresented women entrepreneurs who may struggle to get financing from traditional banks."
-      }
-    }
-  ]
-}
-
 export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

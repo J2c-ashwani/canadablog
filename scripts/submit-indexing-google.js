@@ -7,6 +7,14 @@ const dotenv = require('dotenv');
 // Load environment variables
 dotenv.config({ path: path.join(__dirname, '../.env.local') });
 
+if (process.env.ALLOW_UNSUPPORTED_INDEXING_API !== 'true') {
+    console.error('\nThis legacy Indexing API submitter is disabled for normal FSI Digital pages.');
+    console.error('Google limits the Indexing API to JobPosting and BroadcastEvent pages with video.');
+    console.error('Use the compliant workflow instead: node scripts/gsc-priority-urls.js');
+    console.error('To run this legacy script anyway, set ALLOW_UNSUPPORTED_INDEXING_API=true.\n');
+    process.exit(1);
+}
+
 // Configuration
 const SITEMAP_URL = 'https://www.fsidigital.ca/sitemap.xml'; // Live sitemap
 const CREDENTIALS_PATH = path.join(__dirname, '../google-credentials.json');
@@ -26,9 +34,7 @@ const BASE_QUOTA_REINDEX  = 170;  // Slots for re-indexing existing pages
 // URLs listed here are submitted FIRST (before drip/reindex quotas).
 // Use this for pages with critical fixes (e.g., schema errors, content updates).
 // These bypass the 7-day cooldown. Remove URLs after Google recrawls them.
-const PRIORITY_URLS = [
-    'https://www.fsidigital.ca/blog/healthcare-grants-2026',
-];
+const PRIORITY_URLS = [];
 // ───────────────────────────────────────────────────────────
 
 // Check if credentials exist

@@ -24,52 +24,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is IRAP funding a loan or a grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP provides non-repayable financial contributions, which function like grants. You do not need to pay the money back if you adhere to the contribution agreement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I apply for IRAP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There is no online application form. You must first contact the NRC to be assigned an Industrial Technology Advisor (ITA). The ITA will assess your business and, if eligible, invite you to submit a proposal."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What expenses does IRAP cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP generally covers up to 80% of internal technical salaries and up to 50% of contractor costs directly related to the R&D project. It does not typically cover overhead or capital equipment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the approval process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process can take anywhere from 1 to 4 months, depending on the complexity of the project and the availability of funds. Small projects often have a faster approval timeline."
-      }
-    }
-  ]
-}
-
 export default function IRAPInnovationApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

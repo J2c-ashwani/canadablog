@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Canada Digital Adoption Program (CDAP)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CDAP provides a $15,000 grant to hire a digital advisor to create a Digital Adoption Plan, followed by an interest-free loan of up to $100,000 to implement new technologies, including AI tools."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does Scale AI funding work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Scale AI reimburses up to 50% of eligible costs for collaborative AI projects focused on supply chains. Projects typically range from $1M to $5M+ and require a consortium of partners."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I get funding for ChatGPT integration?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, if it involves developing a proprietary business application (e.g., customer service automation) as part of a digital transformation plan (CDAP) or technical R&D (IRAP)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is AI software considered an eligible expense?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Licensing fees, subscription costs for AI platforms, and developer salaries are often eligible expenses under programs like CDAP and IRAP."
-      }
-    }
-  ]
-}
-
 export default function CanadaDigitalAIFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

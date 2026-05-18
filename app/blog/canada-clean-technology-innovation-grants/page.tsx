@@ -48,19 +48,6 @@ const faqData = [
   },
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function CanadaCleanTechnologyInnovationGrantsPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("canada-clean-technology-innovation-grants");
@@ -807,11 +794,6 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
       </div>
       <Footer />
 
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-    </>
+      </>
   )
 }

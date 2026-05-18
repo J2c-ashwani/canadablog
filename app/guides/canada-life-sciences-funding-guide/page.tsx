@@ -29,52 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What funding is available for Clinical Trials?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The CIHR Clinical Trials Fund and various broad health research programs support trials. Additionally, the Strategic Innovation Fund (SIF) can fund major biomanufacturing and late-stage clinical development projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does IRAP fund drug development?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, IRAP funds technical R&D projects, including preclinical studies and early-stage development of therapeutics, diagnostics, and medical devices, typically up to $500k."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I claim SR&ED for clinical trials?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Clinical trials are generally considered eligible R&D work for SR&ED tax credits, allowing you to recover up to 35% of eligible expenditures (salaries, materials, subcontracts)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the timeline for Health Canada approval?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It varies by risk class. Class I medical devices are fast (weeks), while Class III/IV devices and new drugs can take 6-12+ months for review after submission."
-      }
-    }
-  ]
-}
-
 export default function CanadaLifeSciencesFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

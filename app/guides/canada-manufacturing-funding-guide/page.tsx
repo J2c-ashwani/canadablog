@@ -29,52 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What qualifies as 'Advanced Manufacturing' for NGen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Projects must involve the development or adoption of cutting-edge technologies like IoT, AI, robotics, or additive manufacturing that significantly improve productivity or create new products."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use IRAP for buying new machinery?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, no. IRAP funds the technical labor to *integrate* or *develop* new systems, but not the capital asset (machine) itself. For equipment, look to regional development agencies (FedDev, PrairiesCan) or CDAP loans."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there funding for green manufacturing retrofit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Programs like the Strategic Innovation Fund - Net Zero Accelerator and various Clean Technology Investment Tax Credits cover costs for reducing carbon footprint in factories."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the minimum project size for NGen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "NGen projects typically range from $500k to $20M. Smaller projects are often redirected to different streams or cluster readiness programs."
-      }
-    }
-  ]
-}
-
 export default function CanadaManufacturingFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

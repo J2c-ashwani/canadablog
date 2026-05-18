@@ -18,22 +18,9 @@ const AI_FAQS = [
 ];
 
 export default function HomePageClient() {
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": AI_FAQS.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  };
 
     return (
         <div className="min-h-screen bg-white">
-            <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
             <Header />
 
             {/* Hero Section — server-rendered for fast LCP */}

@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Inclusive Trade Investments Program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is a $50 million equity investment program designed for women-owned and diverse-owned businesses that are exporting or planning to export. EDC takes an equity stake to help you scale."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can EDC help if I'm not exporting yet?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but your business must be 'export-ready'. This means you have a product or service that is sellable internationally and a clear plan to enter foreign markets within the next 12 months."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Export Credit Insurance?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It protects your business against the risk of non-payment by foreign buyers. If your international customer goes bankrupt or refuses to pay, EDC covers up to 90% of your losses."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a grant for women exporters?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "EDC primarily offers financing and insurance. However, they partner with the Trade Commissioner Service for the 'CanExport' program, which IS a grant covering up to 50% of marketing costs for new markets."
-      }
-    }
-  ]
-}
-
 export default function EDCWomenInTradeApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

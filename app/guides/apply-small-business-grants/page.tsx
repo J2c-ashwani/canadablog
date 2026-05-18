@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Are there grants for starting a business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Rarely. Federal grants are typically for 'non-commercial' activities like research (SBIR) or non-profits. For a standard business (restaurant, retail, consulting), you typically need an SBA loan, not a grant."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is an SBA 7(a) loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is the SBA's primary program for providing financial assistance to small businesses. The SBA guarantees a portion of the loan, which makes it easier for banks to lend to you."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a business plan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Every lender and grant agency will require a detailed business plan that outlines your revenue model, market analysis, and financial projections."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What credit score do I need?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For SBA loans, most lenders look for a personal credit score of 680 or higher, though some microloans may accept lower scores."
-      }
-    }
-  ]
-}
-
 export default function ApplySmallBusinessGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

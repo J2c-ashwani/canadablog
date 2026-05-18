@@ -29,68 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Alberta Innovates and who is eligible?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Alberta Innovates is the provincial agency supporting technology commercialization and innovation. Eligible applicants include Alberta-based tech companies, research partnerships, and businesses developing innovative solutions. They focus on health, energy, ag-tech, and emerging technologies."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Emissions Reduction Alberta (ERA)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ERA is Alberta's largest funder of clean technology, investing carbon levy revenues into projects that reduce greenhouse gas emissions. They fund projects in energy efficiency, methane reduction, carbon capture, and industrial transformation with grants ranging from $500K to $15M+."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the Alberta grant application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Timelines vary by program: Alberta Innovates accelerators take 6-10 weeks; ERA competitive challenges run on set timelines (typically 12-16 weeks); and economic diversification grants typically take 8-12 weeks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I combine Alberta provincial grants with federal funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Alberta businesses frequently stack provincial funding with federal programs like IRAP, SR&ED, and PrairiesCan. This is encouraged and can significantly increase total funding available for your project."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What makes Alberta funding unique compared to other provinces?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Alberta uniquely emphasizes energy sector transformation, clean technology for heavy industry, and economic diversification. ERA's focus on emission reduction is unmatched in Canada, and Alberta Innovates has deep connections to the oil & gas industry for technology adoption."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is PrairiesCan and how does it work with Alberta programs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "PrairiesCan (formerly Western Economic Diversification) is the federal regional development agency. They provide complementary funding for innovation, clean growth, and community development. Alberta businesses often stack PrairiesCan with provincial programs for larger total packages."
-      }
-    }
-  ]
-}
-
 export default function AlbertaBusinessGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

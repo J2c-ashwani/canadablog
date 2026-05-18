@@ -1,0 +1,115 @@
+{
+  "name": "FSI Digital - Weekly Newsletter Engine",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 5"
+            }
+          ]
+        }
+      },
+      "id": "d1a1e1f1-0001-4001-8001-000000000001",
+      "name": "Every Friday at 9:00 AM (EST)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [0, 200]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "http://host.docker.internal:3001/generate-newsletter",
+        "options": {}
+      },
+      "id": "d1a1e1f1-0002-4002-8002-000000000002",
+      "name": "Execute Newsletter Script",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [250, 200]
+    },
+    {
+      "parameters": {
+        "jsCode": "const html = $input.first().json.html;\n\nreturn [{\n  json: {\n    body: {\n      title: \"FSI Digital Weekly Grants Newsletter\",\n      subject: \"This Weeks Top Government Grants for Your Business\",\n      from: \"FSI Digital\",\n      reply_to: \"hello@fsidigital.ca\",\n      content_type: \"html\",\n      groups: [\"e7ylLG\"],\n      content: html\n    }\n  }\n}];"
+      },
+      "id": "d1a1e1f1-0003-4003-8003-000000000003",
+      "name": "Prepare Campaign Payload",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [500, 200]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sender.net/v2/campaigns",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiNTg5NzQ5YTg5ODVlOWM1NjZhM2ExMWQ3ODU4YmMwOGFlMWM1MGMzZDMyNGFjMzllNzg2NTEyOTRlY2JkYTNhODlmZTZmNDYxMWQ1NzAwNmUiLCJpYXQiOjE3NzUxNjA1NDguNDgxMjgyLCJuYmYiOjE3NzUxNjA1NDguNDgxMjg0LCJleHAiOjQ5Mjg3NjQxNDguNDc4NTUyLCJzdWIiOiIxMDYxODA4Iiwic2NvcGVzIjpbXX0.T_5nbeEI802RovwRRzqEz-4YSTI5TcyJGHkU0jcV1U2eUxCR5r8rr_5ec_lAbz7p1N1HTgpBET-6vSPECiiSF8kY5ZpjWxHkU8UcciSeNfqxMp28lOqBc4jZVOdykXk38nHMPc2iMcL_btGVp-ooBWtj7tJ0oucqoqeI5RfvCoVLXcUb7zOfhiRkSvuo-2PXEcCbNlvprNB3NJeZHOnDVOO4lKD6mGCFtNGVArm5AKhuP_VGbbFp-JwATlT4z617do09OyjrVVSxos3pgIGxgQWwfJMYZyE4pr1HxenZgW7JMnm35WtflEQ0MYBo3LjK96rQH0nU70ZNLqYuiHp-ahxoz4wN3NHK6AZYbIArNaM61T7mIwx7mi0jnkhS1PqKjpxSl2FNXWvAxr80YczahoDyAfthAcCBlfBGk_WBcMSNC0w7vsmrxaq0xMAesVUKq2CSQ-IgXL7Y6TBE1EWRd5V6iGqzvIueb8wXyDHH5EC8CS_EliclLk6GxuuXsBs5h137EAMs8ldGBIBomFCHO2nCUo-6pV1_75OY4cid-pnU9fnsy25fjEXazvExNcwA_UWs3o-81B2fQnF2cIq4QRHj868Dv1fIob6sZ_ih3cujZ8ZlDubpnTaZSntxQEw5skbynoMorrgpy0mcCl9aE9e-fHV8OiMsrUGkpvVGku0"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.body) }}",
+        "options": {}
+      },
+      "id": "d1a1e1f1-0004-4004-8004-000000000004",
+      "name": "Sender.net Complete Campaign",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [750, 200]
+    }
+  ],
+  "connections": {
+    "Every Friday at 9:00 AM (EST)": {
+      "main": [
+        [
+          {
+            "node": "Execute Newsletter Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execute Newsletter Script": {
+      "main": [
+        [
+          {
+            "node": "Prepare Campaign Payload",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Prepare Campaign Payload": {
+      "main": [
+        [
+          {
+            "node": "Sender.net Complete Campaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "timezone": "America/Toronto"
+  }
+}

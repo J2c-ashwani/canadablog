@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the 8(a) Program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 8(a) Business Development Program is a 9-year program for firms owned by socially and economically disadvantaged individuals. It allows them to compete for 'sole-source' government contracts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a grant for being a woman-owned business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Technically, no. The federal government does not give 'free money' just for ownership status. However, the WOSB certification allows you to bid on exclusive contracts that non-certified businesses cannot touch."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does certification take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Self-certification (for some programs) is fast. However, formal SBA certification for 8(a) or WOSB typically takes 90-120 days after submission."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the net worth limit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For 8(a) and EDWOSB (Economically Disadvantaged Women-Owned Small Business), your personal net worth must be less than $850,000 (excluding your primary home and business equity)."
-      }
-    }
-  ]
-}
-
 export default function ApplyMinorityGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

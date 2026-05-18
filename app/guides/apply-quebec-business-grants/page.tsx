@@ -29,68 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the main business grant agency in Quebec?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Investissement Québec (IQ) is the primary agency. Unlike other provinces, IQ consolidates loans, equity investments, and grants into a single entry point for businesses. They manage over $3.2 billion in annual provincial investment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to operate in French to get Quebec government funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, yes. With Bill 96 strengthening the Charter of the French Language, official documentation and agreements with the Quebec government usually require French. You can often inquire in English initially, but formal submissions need to be in French."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the ESSOR program a grant or a loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ESSOR is typically a mix of both. It often provides interest-free loans or 'non-repayable contributions' (grants) for specific project phases like feasibility studies (up to $50K) or environmental upgrades. Large capital projects may receive loans up to $15M."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much can Quebec R&D tax credits cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Quebec offers some of the highest R&D rates in North America. The provincial credit alone can reach up to 30% for eligible SMEs. When stacked with federal SR&ED credits, businesses can recover 60-75% of eligible R&D salaries."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the CDAE tax credit in Quebec?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CDAE (Crédit d'impôt pour le développement des affaires électroniques) is a refundable tax credit for e-business activities. It covers up to 24% of eligible salaries for software development, IT services, and digital solutions development in Quebec."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for Investissement Québec funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! The Impulsion PME program specifically targets young innovative companies with high growth potential. It provides loans and equity investments, though it typically requires matching private investment from angel investors or VCs."
-      }
-    }
-  ]
-}
-
 export default function QuebecBusinessGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

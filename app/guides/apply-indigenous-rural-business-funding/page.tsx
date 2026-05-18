@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is eligible for Indigenous business funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typically, you must be of First Nations, Métis, or Inuit heritage and hold at least 51% ownership and control of the business. You will need to provide proof of heritage (Status Card, Métis Card, or Inuit Beneficiary Card)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Aboriginal Entrepreneurship Program (AEP)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The AEP provides equity capital (non-repayable contributions) to Indigenous entrepreneurs. It is usually administered through a network of Aboriginal Financial Institutions (AFIs)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there grants for rural businesses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The Community Futures Program (CFP) specifically targets rural communities, offering loans and some advisory grants. Regional Development Agencies (like FedNor or PrairiesCan) also have rural-specific streams."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply if I live off-reserve?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Most programs, including NACCA and AEP, support Indigenous entrepreneurs regardless of whether they live on-reserve, off-reserve, or in urban centers."
-      }
-    }
-  ]
-}
-
 export default function IndigenousRuralBusinessFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

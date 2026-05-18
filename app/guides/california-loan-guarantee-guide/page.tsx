@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the California Loan Guarantee Program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is a program where the State of California (via IBank) guarantees up to 95% of a business loan, encouraging lenders to fund businesses that might otherwise be rejected due to lack of collateral."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is eligible?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Small businesses located in California with 1-750 employees. You must be a for-profit entity and demonstrate that you cannot obtain full financing elsewhere on reasonable terms."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the maximum loan amount?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The program can guarantee loans up to $20 million, but the guaranteed portion is capped at $2.5 million (or 95% of the loan, whichever is less)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I apply?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You do NOT apply to the state directly. You must apply through a participating lender or a Financial Development Corporation (FDC). They submit the guarantee package on your behalf."
-      }
-    }
-  ]
-}
-
 export default function CaliforniaLoanGuaranteeGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

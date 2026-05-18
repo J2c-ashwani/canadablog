@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is ARPA-E?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ARPA-E (Advanced Research Projects Agency-Energy) funds high-risk, high-reward clean energy technologies that are too early for private investment. Think 'moonshot' projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for DOE grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! The DOE has specific SBIR/STTR programs for small businesses. Additionally, many FOAs (Funding Opportunity Announcements) encourage startup participation, often requiring a cost-share."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is EERE?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "EERE (Office of Energy Efficiency and Renewable Energy) is the largest DOE office for clean tech. It funds solar (SETO), wind (WETO), innovative buildings, and manufacturing efficiency."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to match the funds?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Usually, yes. Most DOE grants require a 'cost share' (typically 20% for R&D projects and up to 50% for demonstration projects). SBIR grants are an exception and strictly do not require cost share."
-      }
-    }
-  ]
-}
-
 export default function DOECleanEnergyGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

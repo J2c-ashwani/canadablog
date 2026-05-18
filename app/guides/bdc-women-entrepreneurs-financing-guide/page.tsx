@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the BDC Women Entrepreneur Online Loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is a loan of up to $100,000 intended for smaller projects. It features a simplified online application, approval within 48 hours, and a repayment period of up to 5 years."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does BDC offer grants for women?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, BDC is a bank, so they primarily offer loans and equity investments, not non-repayable grants. However, their loans often have flexible terms like principal postponement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Thrive Venture Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Thrive Venture Fund is a $500 million investment platform dedicated to women-led technology companies. It provides equity capital for seed, Series A, and Series B rounds."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a business plan for BDC financing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For larger loans, yes. For the smaller $100k online loan, a formal business plan is less critical than having strong personal credit and 24 months of revenue history."
-      }
-    }
-  ]
-}
-
 export default function BDCWomenEntrepreneursApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

@@ -30,60 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many Regional Development Agencies (RDAs) are there?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There are 7 Regional Development Agencies in Canada: ACOA (Atlantic), CED (Quebec), FedDev Ontario (Southern Ontario), FedNor (Northern Ontario), PrairiesCan (Prairies), PacifiCan (BC), and CanNor (North)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is RDA funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends. RDA funding typically comes as interest-free repayable contributions (loans) for commercial projects, and non-repayable contributions (grants) for non-profit or community projects. Terms vary by specific program."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much funding can I get from an RDA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Funding amounts vary by program and agency, but typical commercial projects can receive from $100,000 up to $10 million. Most contributions cover up to 50% of eligible project costs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply to multiple RDAs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, no. You must apply to the RDA responsible for the region where your project will take place and where the economic benefits will be realized. If you have projects in multiple regions, consult with the RDAs first."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the RDA application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process typically takes 3-6 months from initial inquiry to funding approval. This includes consultation, full application submission, due diligence, and final approval."
-      }
-    }
-  ]
-}
-
 export default function RDARegionalGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

@@ -24,52 +24,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the SR&ED approval rate?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The CRA approves over 20,000 SR&ED claims annually. Properly documented claims with clear technical uncertainty have a high success rate, though audits can occur."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to get the SR&ED refund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For refundable claims (CCPCs), the CRA's service standard is to process them within 60 days of receipt. Non-refundable claims may take up to 365 days."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I claim SR&ED if the project failed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! In fact, failure often proves technical uncertainty, which is a key requirement for eligibility. You are claiming for the *effort* to solve the problem, not the success."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far back can I claim SR&ED?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You must file your SR&ED claim within 18 months of the end of the tax year in which you incurred the expenses. If you miss this deadline, the credits are lost forever."
-      }
-    }
-  ]
-}
-
 export default function SREDApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

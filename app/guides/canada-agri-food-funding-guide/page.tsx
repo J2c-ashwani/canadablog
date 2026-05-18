@@ -29,52 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What funding is available for food processors?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Food processors can access the AgriInnovate Program (for new technology adoption), the Strategic Innovation Fund (for large scale expansions), and various regional programs like the Supply Management Processing Investment Fund."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I get funding for automation equipment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Many programs, including the Agricultural Clean Technology Program and regional initiatives, fund the purchase and installation of robotic and automated processing equipment to improve productivity."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Supply Management Processing Investment Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The SMPIF offers non-repayable contributions (grants) to processors of supply-managed commodities (dairy, poultry, eggs) to invest in new equipment and technology."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Agri-Food funding taxable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, government grants are generally taxable income. However, they offset the expenses you incur, neutralizing the immediate tax impact. Repayable contributions (loans) are not taxable income."
-      }
-    }
-  ]
-}
-
 export default function CanadaAgriFoodFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

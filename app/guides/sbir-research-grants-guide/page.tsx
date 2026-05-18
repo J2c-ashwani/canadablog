@@ -33,60 +33,9 @@ export const metadata: Metadata = {
 }
 
 export default function SBIRResearchGrantsGuide() {
-  // FAQ Schema for Rich Snippets
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the difference between SBIR Phase I and Phase II?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Phase I is for 'Proof of Concept' funding ($50K-$250K) covering 6-12 months. Phase II is for 'Prototype Development' ($750K-$1.7M) covering 24 months and is only available to Phase I awardees."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I have to pay back SBIR grants?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. SBIR grants are non-dilutive funding. You do not repay the money, and the government takes 0% equity in your company."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I apply for SBIR if I am a solo founder?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, but the Principal Investigator (PI) must be primarily employed by the small business (51% of their time) at the time of award. You can hire others as contractors."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the success rate for SBIR applications?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The average success rate for Phase I is approximately 15-17%. For Phase II, it rises to about 45-50% since the applicant pool is pre-screened."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take to get SBIR funding?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The process is slow. It typically takes 6-9 months from submission to receiving the first check. Plan your runway accordingly."
-        }
-      }
-    ]
-  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

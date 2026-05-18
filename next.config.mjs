@@ -1,5 +1,33 @@
+import path from 'node:path'
+import { fileURLToPath } from 'node:url'
+
+const projectRoot = path.dirname(fileURLToPath(import.meta.url))
+
+const archiveBlogRedirects = [
+  { source: '/blog/agricultural-innovation-2026-archive', destination: '/blog/agricultural-innovation-2026', permanent: true },
+  { source: '/blog/canexport-grants-2026-archive', destination: '/blog/canexport-grants-2026', permanent: true },
+  { source: '/blog/clean-technology-2026-archive', destination: '/blog/clean-technology-2026', permanent: true },
+  { source: '/blog/digital-transformation-2026-archive', destination: '/blog/digital-transformation-2026', permanent: true },
+  { source: '/blog/minority-business-grants-2026-archive', destination: '/blog/minority-business-grants-2026', permanent: true },
+  { source: '/blog/rural-business-development-2026-archive', destination: '/blog/rural-business-development-2026', permanent: true },
+  { source: '/blog/women-business-grants-2026-archive', destination: '/blog/women-business-grants-2026', permanent: true },
+  { source: '/blog/healthcare-grants-2026-archive', destination: '/blog/healthcare-grants-2026', permanent: true },
+  { source: '/blog/manufacturing-grants-2026-archive', destination: '/blog/manufacturing-grants-2026', permanent: true },
+  { source: '/blog/technology-startup-grants-2026-archive', destination: '/blog/technology-startup-grants-2026', permanent: true },
+  { source: '/blog/new-york-business-grants-2026-archive', destination: '/blog/new-york-business-grants-2026', permanent: true },
+  { source: '/blog/doe-clean-tech-2026-archive', destination: '/blog/doe-clean-tech-2026', permanent: true },
+  { source: '/blog/epa-environmental-justice-2026-archive', destination: '/blog/epa-environmental-justice-2026', permanent: true },
+  { source: '/blog/nsf-stem-research-2026-archive', destination: '/blog/nsf-stem-research-2026', permanent: true },
+  { source: '/blog/usda-rural-grants-2026-archive', destination: '/blog/usda-rural-grants-2026', permanent: true },
+  { source: '/blog/veterans-business-grants-2026-archive', destination: '/blog/veterans-business-grants-2026', permanent: true },
+  { source: '/blog/canada-irap-grants-2025', destination: '/blog/canada-irap-grants-2026', permanent: true },
+  { source: '/blog/indigenous-business-development-2025', destination: '/blog/indigenous-business-development-2026', permanent: true },
+  { source: '/blog/small-business-financing-2025', destination: '/blog/small-business-financing-2026', permanent: true },
+]
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  outputFileTracingRoot: projectRoot,
   outputFileTracingIncludes: {
     '/blog/[slug]': ['./lib/data/blog-content/**/*'],
   },
@@ -38,6 +66,7 @@ const nextConfig = {
         destination: '/grant-finder',
         permanent: true,
       },
+      ...archiveBlogRedirects,
       // Zombie Page Redirects — Fixed Feb 2026 (pointing to correct 2026 slugs)
       { source: '/blog/manitoba-government-business-grants', destination: '/blog/manitoba-business-grants-2026', permanent: true },
       // Alberta Grant Consolidations

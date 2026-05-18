@@ -49,29 +49,12 @@ export default function CanadaFederalGrantsPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
-      </div>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <BreadcrumbSchema items={[
+      </div><BreadcrumbSchema items={[
         { name: "Home", url: "https://www.fsidigital.ca" },
         { name: "Guides", url: "https://www.fsidigital.ca/blog" },
         { name: "Canadian Government Grants", url: "https://www.fsidigital.ca/blog/canada-federal-grants" }

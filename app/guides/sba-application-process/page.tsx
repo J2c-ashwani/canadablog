@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How long does the SBA application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It typically takes 60-90 days from initial application to funding for standard 7(a) loans. SBA Express loans can be faster (30-45 days), while complex 504 loans may take longer."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I apply directly to the SBA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For loans (7(a), 504), NO. You apply through an SBA-approved lender (bank). For disaster loans (EIDL), you apply directly at SBA.gov. For grants (SBIR), you apply via Grants.gov."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the most common reason for rejection?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Incomplete documentation and lack of cash flow to service the debt. The SBA requires proof that your business can afford the loan payments based on historical tax returns."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a fee to apply?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Banks may charge a packaging fee, but the SBA sets limits on these fees. You should never pay an upfront fee to a 'broker' just to apply. Official assistance from SBDCs and SCORE is free."
-      }
-    }
-  ]
-}
-
 export default function SBAApplicationProcessGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

@@ -18,8 +18,8 @@ import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent, getBlogPostRichData } from '@/lib/data/blogPosts';
-import { generateMetadata as generateSEOMetadata, generateArticleSchema, generateOrganizationSchema, generateHowToSchema } from '@/lib/seo';
-import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
+import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
+import { generateBlogPostSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { GrantComparisonTable } from "@/components/blog/GrantComparisonTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
@@ -84,10 +84,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return notFound();
   }
 
-  // Strip any inline <script type="application/ld+json"> blocks from HTML content.
-  // Some legacy .ts data files embed FAQPage schema directly in the HTML, which causes
-  // "Duplicate field FAQPage" errors in Google Search Console since the page component
-  // already generates proper structured data via generateFAQSchema().
+  // Strip any inline <script type="application/ld+json"> blocks from legacy HTML content.
+  // FAQ content remains visible on the page, but we avoid FAQ JSON-LD for grant/blog
+  // content because it creates noisy Search Console validation without rich-result upside.
   const stripInlineSchemas = (html: string) =>
     html.replace(/<script\s+type\s*=\s*["']application\/ld\+json["']\s*>[\s\S]*?<\/script>/gi, '');
 
@@ -114,14 +113,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const category = blogCategories.find((cat) => cat.id === post.category);
   const blogPostSchema = generateBlogPostSchema(fullPost);
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
-  const faqSchema = fullPost.faq ? generateFAQSchema(fullPost.faq) : null;
-
-  // Advanced Schemas for Google Rich Results
-  const articleSchema = generateArticleSchema(fullPost);
-  const orgSchema = generateOrganizationSchema();
-  // We can extract <h2> or <h3> headers as "Steps" if it's a guide-style post
-  const stepMatches = [...content.matchAll(/<h[23][^>]*>(.*?)<\/h[23]>/gi)].map(m => m[1].replace(/<[^>]+>/g, '').trim());
-  const howToSchema = generateHowToSchema(fullPost, stepMatches.slice(0, 5)); // Just take first 5 headers as steps
 
   const renderContentWithAds = (htmlString: string, pCountOffset: number) => {
     if (!htmlString) return { nodes: null, totalParagraphs: pCountOffset };
@@ -175,26 +166,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
-      {howToSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-        />
-      )}
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
@@ -358,7 +329,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              {/* DYNAMIC ENRICHMENT: FAQ Schema UI */}
+              {/* DYNAMIC ENRICHMENT: FAQ UI */}
               {fullPost.faq && (
                 <div className="mt-12 mb-8 not-prose">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>

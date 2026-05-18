@@ -29,60 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What documents do I need for a CSBFP loan application?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You typically need a detailed business plan, 2-3 years of financial statements (or opening balance sheet for startups), cash flow projections (12-24 months), personal financial statements for all guarantors, equipment quotes, and lease agreements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to get a CSBFP loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The entire process usually takes 4-8 weeks. Preparation takes 1-2 weeks, lender review takes 2-3 weeks, and final approval and funding take another 1-2 weeks. Delays often occur due to incomplete documentation."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use CSBFP for working capital?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, as of July 2022, you can use CSBFP for working capital costs (up to $150,000), such as inventory, marketing, and operational expenses, in addition to the standard equipment and real property financing."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I apply to the government or a bank?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You apply directly to a financial institution (bank, credit union, or caisse populaire), NOT the government. The bank makes the lending decision, and the government simply guarantees the loan to reduce the bank's risk."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What if my CSBFP application is rejected?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "If rejected, ask the lender for specific reasons. Common reasons include weak cash flow, poor personal credit, or ineligible assets. You can re-apply with a different lender or improve your application based on the feedback."
-      }
-    }
-  ]
-}
-
 export default function CSBFPApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

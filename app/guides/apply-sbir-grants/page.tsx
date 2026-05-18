@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between SBIR Phase I and Phase II?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Phase I is for 'Feasibility & Proof of Concept' (typically $150k-$275k for 6-12 months). Phase II is for 'Prototype Development' (typically $1M-$1.7M for 2 years) and requires a successful Phase I result."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Note: can I skip Phase I and go straight to Phase II?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, no. Most agencies require you to complete Phase I first. However, the NIH and DoD sometimes offer a 'Direct to Phase II' pilot program for companies that already have strong feasibility data."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a PhD to get an SBIR grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not officially, but the Principal Investigator (PI) needs to have the expertise to lead the research. For NIH/NSF grants, having a PhD on the team is very common and improves credibility."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the money tax-free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. SBIR awards are considered taxable business income. However, they are non-dilutive, meaning you don't give up any equity/ownership in your company."
-      }
-    }
-  ]
-}
-
 export default function ApplySBIRGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

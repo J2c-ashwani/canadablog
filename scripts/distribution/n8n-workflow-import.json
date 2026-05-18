@@ -1,0 +1,314 @@
+{
+  "name": "FSI Digital Content Distribution - Master",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 9 * * 1,3,5"
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-0001-4001-8001-000000000001",
+      "name": "Schedule Trigger (Mon, Wed, Fri 9 AM)",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1,
+      "position": [200, 500]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:3001/generate-video",
+        "method": "GET",
+        "sendHeaders": false,
+        "sendBody": false,
+        "sendQuery": false,
+        "options": {}
+      },
+      "id": "a1b2c3d4-0002-4002-8002-000000000002",
+      "name": "Generate & Fetch Local Video Data",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [460, 500]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.videoDownloadUrl }}",
+        "method": "GET",
+        "sendHeaders": false,
+        "sendBody": false,
+        "sendQuery": false,
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "data"
+            }
+          }
+        }
+      },
+      "id": "a1b2c3d4-0003-4003-8003-000000000003",
+      "name": "Download MP4 Binary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [720, 500]
+    },
+    {
+      "parameters": {
+        "resource": "video",
+        "operation": "upload",
+        "title": "={{ $('Generate & Fetch Local Video Data').item.json.metadata.youtube.title }}",
+        "description": "={{ $('Generate & Fetch Local Video Data').item.json.metadata.youtube.description }}",
+        "tags": "={{ $('Generate & Fetch Local Video Data').item.json.metadata.youtube.tags.join(',') }}",
+        "categoryId": "27",
+        "privacyStatus": "public",
+        "options": {
+          "regionCode": "CA"
+        }
+      },
+      "id": "a1b2c3d4-0004-4004-8004-000000000004",
+      "name": "YouTube Shorts",
+      "type": "n8n-nodes-base.youTube",
+      "typeVersion": 1,
+      "position": [1020, 100],
+      "continueOnFail": true,
+      "credentials": {
+        "youTubeOAuth2Api": {
+          "id": "GUB8Ap5C1jqIIg1J",
+          "name": "YouTube account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "tweet",
+        "operation": "create",
+        "text": "={{ $('Generate & Fetch Local Video Data').item.json.metadata.twitter.text }}"
+      },
+      "id": "a1b2c3d4-0005-4005-8005-000000000005",
+      "name": "X (Twitter)",
+      "type": "n8n-nodes-base.twitter",
+      "typeVersion": 2,
+      "position": [1020, 300],
+      "continueOnFail": true,
+      "credentials": {
+        "twitterOAuth2Api": {
+          "id": "rY2nAsuCFczGzVn9",
+          "name": "X account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "post",
+        "operation": "create",
+        "person": "Ashwani Kumar",
+        "text": "={{ $('Generate & Fetch Local Video Data').item.json.metadata.linkedin.text }}",
+        "mediaCategory": "none"
+      },
+      "id": "a1b2c3d4-0006-4006-8006-000000000006",
+      "name": "LinkedIn Personal",
+      "type": "n8n-nodes-base.linkedIn",
+      "typeVersion": 1,
+      "position": [1020, 500],
+      "continueOnFail": true,
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "kwPb7bYAgpZFULiF",
+          "name": "LinkedIn account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/v2/ugcPosts",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "linkedInOAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Restli-Protocol-Version",
+              "value": "2.0.0"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ author: 'urn:li:organization:113016297', lifecycleState: 'PUBLISHED', specificContent: { 'com.linkedin.ugc.ShareContent': { shareCommentary: { text: $('Generate & Fetch Local Video Data').item.json.metadata.linkedin.text }, shareMediaCategory: 'ARTICLE', media: [{ status: 'READY', originalUrl: $('Generate & Fetch Local Video Data').item.json.url || 'https://www.fsidigital.ca/grant-finder', title: { text: $('Generate & Fetch Local Video Data').item.json.metadata.youtube.title || 'Government Grants Guide' } }] } }, visibility: { 'com.linkedin.ugc.MemberNetworkVisibility': 'PUBLIC' } }) }}",
+        "options": {}
+      },
+      "id": "a1b2c3d4-0007-4007-8007-000000000007",
+      "name": "LinkedIn Company Page",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1020, 700],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v19.0/17841438995224317/media",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "media_type",
+              "value": "REELS"
+            },
+            {
+              "name": "share_to_feed",
+              "value": "true"
+            },
+            {
+              "name": "access_token",
+              "value": "EAANv68yDB20BRI1X0lmy2irqaZBr9tmxT430vLddMIz7ZBzBmqzvejEJy2I8rSupsvXIzm4cpWRrqL5RtZBvbWKhzJS27e4M1JyMP5CcQZCdSy9Y88P1ARL0MzFGqPP0x3UkmRuJb07hZA7h90vbymZA6kj6ruF3EkxqvLfLP9yRtneNZCbXeZBxaopJZCLaU"
+            },
+            {
+              "name": "video_url",
+              "value": "={{ $('Generate & Fetch Local Video Data').item.json.videoDownloadUrl }}"
+            },
+            {
+              "name": "caption",
+              "value": "={{ $('Generate & Fetch Local Video Data').item.json.metadata.instagram.caption }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0008-4008-8008-000000000008",
+      "name": "Instagram - Upload Reel (Step 1: Create Container)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1020, 1000],
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "amount": 60,
+        "unit": "seconds"
+      },
+      "id": "a1b2c3d4-0009-4009-8009-000000000009",
+      "name": "Wait 60s (Instagram Processing)",
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1,
+      "position": [1280, 1000],
+      "webhookId": "instagram-wait",
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://graph.facebook.com/v19.0/17841438995224317/media_publish",
+        "sendQuery": true,
+        "queryParameters": {
+          "parameters": [
+            {
+              "name": "access_token",
+              "value": "EAANv68yDB20BRI1X0lmy2irqaZBr9tmxT430vLddMIz7ZBzBmqzvejEJy2I8rSupsvXIzm4cpWRrqL5RtZBvbWKhzJS27e4M1JyMP5CcQZCdSy9Y88P1ARL0MzFGqPP0x3UkmRuJb07hZA7h90vbymZA6kj6ruF3EkxqvLfLP9yRtneNZCbXeZBxaopJZCLaU"
+            },
+            {
+              "name": "creation_id",
+              "value": "={{ $('Instagram - Upload Reel (Step 1: Create Container)').item.json.id }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "a1b2c3d4-0010-4010-8010-000000000010",
+      "name": "Instagram - Publish Reel (Step 2: Publish)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1540, 1000],
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "Schedule Trigger (Mon, Wed, Fri 9 AM)": {
+      "main": [
+        [
+          {
+            "node": "Generate & Fetch Local Video Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Generate & Fetch Local Video Data": {
+      "main": [
+        [
+          {
+            "node": "Download MP4 Binary",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download MP4 Binary": {
+      "main": [
+        [
+          {
+            "node": "YouTube Shorts",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "X (Twitter)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LinkedIn Personal",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "LinkedIn Company Page",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Instagram - Upload Reel (Step 1: Create Container)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Instagram - Upload Reel (Step 1: Create Container)": {
+      "main": [
+        [
+          {
+            "node": "Wait 60s (Instagram Processing)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait 60s (Instagram Processing)": {
+      "main": [
+        [
+          {
+            "node": "Instagram - Publish Reel (Step 2: Publish)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "timezone": "America/Toronto"
+  }
+}

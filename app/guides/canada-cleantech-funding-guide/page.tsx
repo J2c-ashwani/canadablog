@@ -29,52 +29,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Clean Technology Investment Tax Credit (ITC)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Clean Tech ITC is a refundable tax credit of up to 30% of the capital cost of eligible clean technology property (e.g., solar, wind, storage) acquired and available for use on or after March 28, 2023."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does SDTC funding work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SDTC (Sustainable Development Technology Canada) provides non-repayable contributions (grants) for pre-commercial demonstration projects. They typically fund 33-40% of eligible project costs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I stack ITCs with other grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but the capital cost of the equipment for the ITC calculation must be reduced by the amount of any government assistance (grants) received."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Net Zero Accelerator?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Net Zero Accelerator (NZA) is a stream of the Strategic Innovation Fund (SIF) targeting large-scale decarbonization projects (usually >$10M) for high-emitting sectors."
-      }
-    }
-  ]
-}
-
 export default function CanadaCleanTechFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

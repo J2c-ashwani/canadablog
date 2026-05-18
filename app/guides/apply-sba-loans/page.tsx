@@ -30,52 +30,9 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between SBA 7(a) and 504 loans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 7(a) loan is flexible and can be used for working capital, equipment, or buying a business. The 504 loan is strictly for major fixed assets like real estate or heavy machinery and offers long-term fixed rates."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What credit score is needed for an SBA loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While the SBA doesn't set a hard minimum, most lenders look for a personal credit score of 680 or higher. For SBA 7(a) Small Loans, the SBA pre-screens with a FICO SBSS score of 155+."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to get an SBA loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It varies by lender. SBA Express loans can be approved in days, while standard 7(a) loans typically take 60-90 days from application to funding due to thorough underwriting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is an SBA loan a grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. SBA loans are debt that must be repaid with interest. They are 'guaranteed' by the government, which reduces risk for the bank, but you (the borrower) are fully responsible for repayment."
-      }
-    }
-  ]
-}
-
 export default function ApplySBALoansGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />

@@ -1,0 +1,154 @@
+{
+  "name": "FSI Digital - LinkedIn PDF Carousel Pipeline",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "1",
+      "name": "When clicking \"Execute Workflow\"",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [250, 300]
+    },
+    {
+      "parameters": {
+        "url": "http://host.docker.internal:3001/generate-carousel",
+        "options": {}
+      },
+      "id": "2",
+      "name": "Generate High-Res PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [450, 300]
+    },
+    {
+      "parameters": {
+        "url": "={{ $json.pdfDownloadUrl }}",
+        "responseFormat": "file",
+        "options": {}
+      },
+      "id": "3",
+      "name": "Download PDF Binary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [650, 300]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/v2/assets?action=registerUpload",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "linkedInOAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "{\n  \"registerUploadRequest\": {\n    \"recipes\": [ \"urn:li:digitalmediaRecipe:feedshare-document\" ],\n    \"owner\": \"urn:li:organization:113016297\",\n    \"serviceRelationships\": [ { \"relationshipType\": \"OWNER\", \"identifier\": \"urn:li:userGeneratedContent\" } ]\n  }\n}",
+        "options": {}
+      },
+      "id": "4",
+      "name": "LinkedIn - Register PDF",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [850, 300],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "kwPb7bYAgpZFULiF",
+          "name": "LinkedIn account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $json.value.uploadMechanism['com.linkedin.digitalmedia.uploading.MediaUploadHttpRequest'].uploadUrl }}",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/pdf" },
+            { "name": "Authorization", "value": "Bearer {{$credentials.oauthTokenData.access_token}}" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "binary",
+        "inputDataFieldName": "data",
+        "options": {}
+      },
+      "id": "5",
+      "name": "LinkedIn - Upload PDF Binary",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1050, 300],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "kwPb7bYAgpZFULiF",
+          "name": "LinkedIn account"
+        }
+      },
+      "continueOnFail": true
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.linkedin.com/v2/ugcPosts",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "linkedInOAuth2Api",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            { "name": "Content-Type", "value": "application/json" },
+            { "name": "X-Restli-Protocol-Version", "value": "2.0.0" }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ {\n  \"author\": \"urn:li:organization:113016297\",\n  \"lifecycleState\": \"PUBLISHED\",\n  \"specificContent\": {\n    \"com.linkedin.ugc.ShareContent\": {\n      \"shareCommentary\": {\n        \"text\": \"💰 Ultimate Guide to Free Government Grants for Women Entrepreneurs (2026)\\n\\nMost founders don't know they qualify for these. Save this list:\\n\\nIf you want the downloadable links for all 10 programs, comment 'GRANT' below.\\n\\n#WomenInBiz #StartupGrants #CanadaBusiness #USABusiness #Entrepreneurship\\nhttps://fsidigital.ca\"\n      },\n      \"shareMediaCategory\": \"DOCUMENT\",\n      \"media\": [\n        {\n          \"status\": \"READY\",\n          \"description\": { \"text\": \"Top 10 Women Entrepreneur Grants\" },\n          \"media\": $('LinkedIn - Register PDF').item.json.value.asset,\n          \"title\": { \"text\": \"FSI Digital Business Grants Guide\" }\n        }\n      ]\n    }\n  },\n  \"visibility\": {\n    \"com.linkedin.ugc.MemberNetworkVisibility\": \"PUBLIC\"\n  }\n} }}",
+        "options": {}
+      },
+      "id": "6",
+      "name": "LinkedIn Company Page - Publish Carousel",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.1,
+      "position": [1250, 300],
+      "credentials": {
+        "linkedInOAuth2Api": {
+          "id": "kwPb7bYAgpZFULiF",
+          "name": "LinkedIn account"
+        }
+      },
+      "continueOnFail": true
+    }
+  ],
+  "connections": {
+    "When clicking \"Execute Workflow\"": {
+      "main": [
+        [ { "node": "Generate High-Res PDF", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Generate High-Res PDF": {
+      "main": [
+        [ { "node": "Download PDF Binary", "type": "main", "index": 0 } ]
+      ]
+    },
+    "Download PDF Binary": {
+      "main": [
+        [ { "node": "LinkedIn - Register PDF", "type": "main", "index": 0 } ]
+      ]
+    },
+    "LinkedIn - Register PDF": {
+      "main": [
+        [ { "node": "LinkedIn - Upload PDF Binary", "type": "main", "index": 0 } ]
+      ]
+    },
+    "LinkedIn - Upload PDF Binary": {
+      "main": [
+        [ { "node": "LinkedIn Company Page - Publish Carousel", "type": "main", "index": 0 } ]
+      ]
+    }
+  },
+  "settings": {}
+}
