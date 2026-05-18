@@ -1,13 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-import { getAllBlogPosts } from '@/lib/data/blogPosts'
-import { guidesDatabase } from '@/lib/data/guides'
-
-export const runtime = 'nodejs'
-export const revalidate = 86400
+const fs = require('fs')
+const path = require('path')
 
 const BASE_URL = 'https://www.fsidigital.ca'
-
+const OUTPUT_PATH = path.join(__dirname, '../public/priority-sitemap.xml')
 const SUPERSEDED_BLOG_SLUGS = new Set([
   'canada-irap-grants-2025',
   'indigenous-business-development-2025',
@@ -33,7 +28,7 @@ const CORE_PRIORITY_ROUTES = [
   '/canada/women-business-grants',
 ]
 
-function escapeXml(value: string): string {
+function escapeXml(value) {
   return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -42,7 +37,7 @@ function escapeXml(value: string): string {
     .replace(/'/g, '&apos;')
 }
 
-function wordCount(html: string): number {
+function wordCount(html) {
   return String(html || '')
     .replace(/<script[\s\S]*?<\/script>/gi, ' ')
     .replace(/<style[\s\S]*?<\/style>/gi, ' ')
@@ -52,8 +47,13 @@ function wordCount(html: string): number {
     .filter(Boolean).length
 }
 
-function getStaticGuideRoutes(): string[] {
-  const guidesDir = path.join(process.cwd(), 'app/guides')
+function readJson(filePath, fallback) {
+  if (!fs.existsSync(filePath)) return fallback
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'))
+}
+
+function getStaticGuideRoutes() {
+  const guidesDir = path.join(__dirname, '../app/guides')
   if (!fs.existsSync(guidesDir)) return []
 
   return fs.readdirSync(guidesDir, { withFileTypes: true })
@@ -62,24 +62,31 @@ function getStaticGuideRoutes(): string[] {
     .map((entry) => `/guides/${entry.name}`)
 }
 
-function getPriorityBlogRoutes(): string[] {
+function getDynamicGuideRoutes() {
+  const guideDataPath = path.join(__dirname, '../lib/data/guides.ts')
+  const source = fs.existsSync(guideDataPath) ? fs.readFileSync(guideDataPath, 'utf8') : ''
+  return [...source.matchAll(/slug:\s*["']([^"']+)["']/g)].map((match) => `/guides/${match[1]}`)
+}
+
+function getPriorityBlogRoutes() {
+  const metadata = readJson(path.join(__dirname, '../lib/data/blogMetadata.json'), { metadata: [] })
+  const posts = metadata.metadata || []
+  const blogDir = path.join(__dirname, '../app/blog')
   const staticBlogDirs = new Set(
-    fs.readdirSync(path.join(process.cwd(), 'app/blog'), { withFileTypes: true })
+    fs.readdirSync(blogDir, { withFileTypes: true })
       .filter((entry) => entry.isDirectory())
       .filter((entry) => entry.name !== '[slug]')
-      .filter((entry) => fs.existsSync(path.join(process.cwd(), 'app/blog', entry.name, 'page.tsx')))
+      .filter((entry) => fs.existsSync(path.join(blogDir, entry.name, 'page.tsx')))
       .map((entry) => entry.name)
   )
 
-  return getAllBlogPosts()
+  return posts
     .filter((post) => post.slug && !post.slug.endsWith('-archive'))
     .filter((post) => !SUPERSEDED_BLOG_SLUGS.has(post.slug))
     .map((post) => {
-      const contentPath = path.join(process.cwd(), 'lib/data/blog-content', `${post.slug}.json`)
-      const staticPath = path.join(process.cwd(), 'app/blog', post.slug, 'page.tsx')
-      const contentJson = fs.existsSync(contentPath)
-        ? JSON.parse(fs.readFileSync(contentPath, 'utf8')) as { content?: string }
-        : {}
+      const contentPath = path.join(__dirname, '../lib/data/blog-content', `${post.slug}.json`)
+      const staticPath = path.join(blogDir, post.slug, 'page.tsx')
+      const contentJson = readJson(contentPath, {})
       const source = staticBlogDirs.has(post.slug) && fs.existsSync(staticPath)
         ? fs.readFileSync(staticPath, 'utf8')
         : contentJson.content || ''
@@ -98,49 +105,38 @@ function getPriorityBlogRoutes(): string[] {
     .map((row) => row.route)
 }
 
-function getPriorityRoutes(): string[] {
-  const guideRoutes = [
-    ...getStaticGuideRoutes(),
-    ...guidesDatabase.map((guide) => `/guides/${guide.slug}`),
-  ]
-
-  return Array.from(new Set([
-    ...CORE_PRIORITY_ROUTES,
-    ...getPriorityBlogRoutes(),
-    ...guideRoutes,
-    '/usa/california',
-    '/usa/texas',
-    '/usa/new-york',
-    '/usa/florida',
-    '/canada/ontario',
-    '/canada/alberta',
-    '/canada/british-columbia',
-    '/canada/quebec',
-  ]))
-}
-
-export async function GET() {
-  const now = new Date().toISOString()
-  const urls = getPriorityRoutes()
-
-  const body = [
+function buildXml(routes) {
+  const lastmod = new Date().toISOString()
+  return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-    ...urls.map((route) => [
+    ...routes.map((route) => [
       '  <url>',
       `    <loc>${escapeXml(`${BASE_URL}${route}`)}</loc>`,
-      `    <lastmod>${now}</lastmod>`,
+      `    <lastmod>${lastmod}</lastmod>`,
       '    <changefreq>daily</changefreq>',
       '    <priority>0.9</priority>',
       '  </url>',
     ].join('\n')),
     '</urlset>',
+    '',
   ].join('\n')
-
-  return new Response(body, {
-    headers: {
-      'Content-Type': 'application/xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=0, s-maxage=86400',
-    },
-  })
 }
+
+const routes = Array.from(new Set([
+  ...CORE_PRIORITY_ROUTES,
+  ...getPriorityBlogRoutes(),
+  ...getStaticGuideRoutes(),
+  ...getDynamicGuideRoutes(),
+  '/usa/california',
+  '/usa/texas',
+  '/usa/new-york',
+  '/usa/florida',
+  '/canada/ontario',
+  '/canada/alberta',
+  '/canada/british-columbia',
+  '/canada/quebec',
+]))
+
+fs.writeFileSync(OUTPUT_PATH, buildXml(routes))
+console.log(`Generated ${OUTPUT_PATH} with ${routes.length} URLs`)
