@@ -9,7 +9,7 @@ export default function BookingClient() {
   const [loading, setLoading] = useState(true)
 
   // Replace this placeholder with your actual Calendly path (e.g., "ashwani-jha-g/30min")
-  const CALENDLY_PATH = "ashwanikumar-fsi/1-on-1-funding-consultation"; 
+  const CALENDLY_PATH = "ashwani-fsidigital/1-on-1-funding-consultation"; 
   const calendlyUrl = `https://calendly.com/${CALENDLY_PATH}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=070716&text_color=ffffff&primary_color=38bdf8`;
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export default function BookingClient() {
           <div className="flex items-center justify-center gap-2 text-xs text-[#5a6a9a] max-w-md mx-auto leading-relaxed border-t border-blue-950/50 pt-8">
             <ShieldCheck className="w-4 h-4 text-[#5a6a9a] flex-shrink-0" />
             <span>
-              If you have any issues scheduling or need to reschedule, please contact support at <a href="mailto:ashwani.jha.g@gmail.com" className="text-blue-400 hover:underline">ashwani.jha.g@gmail.com</a>.
+              If you have any issues scheduling or need to reschedule, please contact support at <a href="mailto:ashwani@fsidigital.ca" className="text-blue-400 hover:underline">ashwani@fsidigital.ca</a>.
             </span>
           </div>
 
