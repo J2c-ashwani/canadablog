@@ -209,7 +209,7 @@ export default function ConsultationClient() {
 
               <div>
                 <a
-                  href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani.jha.g@gmail.com&currency_code=CAD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
+                  href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani@fsidigital.ca&currency_code=CAD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
                   className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl shadow-blue-900/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Pay $199 CAD with PayPal / Card
@@ -255,7 +255,7 @@ export default function ConsultationClient() {
 
               <div>
                 <a
-                  href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani.jha.g@gmail.com&currency_code=USD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
+                  href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani@fsidigital.ca&currency_code=USD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
                   className="w-full inline-flex items-center justify-center gap-2 bg-[#1f2256] border border-blue-800/40 hover:bg-[#282b68] text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Pay $199 USD with PayPal / Card
