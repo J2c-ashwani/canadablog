@@ -7,7 +7,7 @@ const post: BlogPost = {
     slug: "minority-business-grants-2026",
     shortAnswerQuestion: "What grants are available for minority-owned businesses in 2026?",
 
-    title: "Minority Business Grants : Clo... 2026 | $4B",
+    title: "Minority Business Grants 2026: $4B+ in Dedicated Funding",
 
     excerpt: "🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification, and private diversity funds.",
     category: "Demographic-Specific",

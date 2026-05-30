@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSI Digital - Women Entrepreneur Grants Carousel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #222; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px; }
+@media print {
+  @page { size: 1080px 1350px; margin: 0; }
+  body { background: transparent; padding: 0; margin: 0; display: block; gap: 0; }
+  .slide { page-break-after: always; break-after: page; box-shadow: none !important; margin: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+.slide { width: 1080px; height: 1350px; background: #fff; position: relative; display: flex; flex-direction: column; flex-shrink: 0; font-family: 'DM Sans', sans-serif; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+/* COVER */
+.cover { background: #9B1B30; }
+.cover .bg-circle1 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: rgba(255,255,255,.06); top: -300px; right: -300px; }
+.cover .bg-circle2 { position: absolute; width: 680px; height: 680px; border-radius: 50%; background: rgba(255,255,255,.04); bottom: 200px; left: -200px; }
+.cover .top-bar { padding: 80px 80px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.cover .logo { font-size: 46px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .1em; text-transform: uppercase; }
+.cover .flag { background: rgba(255,255,255,.2); border-radius: 12px; padding: 12px 36px; font-size: 40px; color: #fff; font-weight: 700; }
+.cover .mid { padding: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.cover .big-num { font-family: 'Playfair Display', serif; font-size: 500px; font-weight: 900; color: rgba(255,255,255,.08); line-height: .8; position: absolute; top: 100px; right: -20px; }
+.cover .tag { font-size: 50px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; background: rgba(0,0,0,0.25); display: inline-block; padding: 10px 30px; border-radius: 12px; align-self: flex-start; }
+.cover .title { font-family: 'Playfair Display', serif; font-size: 120px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 30px; max-width: 950px; }
+.cover .subtitle { font-size: 52px; color: rgba(255,255,255,.95); line-height: 1.4; font-weight: 500; }
+.cover .bottom { padding: 60px 80px; background: rgba(0,0,0,.2); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+.cover .dots { display: flex; gap: 20px; }
+.cover .dot { width: 70px; height: 20px; border-radius: 10px; background: rgba(255,255,255,.3); }
+.cover .dot.active { background: #fff; width: 120px; }
+.cover .cta-txt { font-size: 46px; color: #fff; font-weight: 700; }
+
+/* GRANT SLIDES */
+.gpn { background: #fff; border: 8px solid #f0f0f0; }
+.gpn .header { padding: 50px 80px 40px; display: flex; align-items: flex-start; gap: 36px; position: relative; }
+.gpn .progress-ind { position: absolute; top: 50px; right: 80px; font-size: 50px; font-weight: 900; color: #e0e0e0; font-family: 'Playfair Display', serif; }
+.gpn .num-badge { min-width: 150px; height: 150px; border-radius: 36px; background: #9B1B30; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 10px 30px rgba(155,27,48,0.2); }
+.gpn .num-badge span { font-family: 'Playfair Display', serif; font-size: 75px; font-weight: 900; color: #fff; }
+.gpn .header-text { display: flex; flex-direction: column; gap: 12px; padding-top: 10px; padding-right: 120px; }
+.gpn .series-tag { font-size: 34px; font-weight: 800; color: #9B1B30; text-transform: uppercase; letter-spacing: .08em; }
+.gpn .grant-name { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: 1.15; }
+.gpn .divider { height: 4px; background: #f5f5f5; margin: 0 80px; }
+.gpn .body { padding: 40px 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.gpn .amt-label { font-size: 34px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.gpn .amt { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #9B1B30; line-height: 1; }
+.gpn .desc { font-size: 50px; color: #333; line-height: 1.45; font-weight: 500; }
+.gpn .tags-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.gpn .pill { background: #fff5f6; border: 4px solid #f8c8ce; border-radius: 20px; padding: 16px 36px; font-size: 38px; color: #9B1B30; font-weight: 800; }
+.gpn .pill.dark { background: #f5f5f5; border-color: #e8e8e8; color: #555; }
+.gpn .footer { margin-top: auto; padding: 40px 80px; background: #fafafa; border-top: 4px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.gpn .url { font-size: 30px; color: #999; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gpn .apply-btn { background: #9B1B30; border-radius: 24px; padding: 22px 55px; font-size: 38px; color: #fff; font-weight: 800; text-transform: uppercase; flex-shrink: 0; }
+
+/* PATTERN BREAK */
+.pattern-break { background: #1a0010; display: flex; flex-direction: column; justify-content: center; padding: 120px; }
+.pattern-break h2 { font-family: 'Playfair Display', serif; font-size: 160px; font-weight: 900; color: #9B1B30; margin-bottom: 60px; line-height: 1; }
+.pattern-break p { font-size: 85px; font-weight: 700; color: #fff; line-height: 1.25; }
+.pattern-break .arrow { margin-top: auto; font-size: 60px; color: #666; font-weight: 800; align-self: flex-end; }
+
+/* CTA */
+.cta-slide { background: #1a0010; text-align: center; justify-content: center; align-items: center; padding: 80px; border: none; }
+.cta-slide .bg-overlay { position: absolute; top:0;left:0;right:0;bottom:0; background: radial-gradient(circle at center, rgba(155,27,48,0.2) 0%, transparent 70%); z-index: 1; }
+.cta-slide .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+.cta-slide .logo-huge { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #fff; }
+.cta-slide h2 { font-size: 90px; font-weight: 800; line-height: 1.15; color: #fff; }
+.cta-slide .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 60px; width: 100%; margin: 40px 0; }
+.cta-slide .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; margin-bottom: 20px; }
+.cta-slide .comment-word { font-size: 90px; font-weight: 900; color: #f48; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.cta-slide .sub { font-size: 40px; color: #aaa; margin-top: 20px; margin-bottom: 0; }
+.cta-slide .or-text { font-size: 40px; color: #666; font-weight: 700; text-transform: uppercase; }
+.cta-slide .url-text { font-size: 60px; font-weight: 800; color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="slide cover">
+  <div class="bg-circle1"></div><div class="bg-circle2"></div>
+  <div class="top-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="flag">♀️ Women in Biz</div>
+  </div>
+  <div class="mid">
+    <div class="big-num">10</div>
+    <div class="tag">UP TO $500K FREE</div>
+    <div class="title">No Equity.<br>No Repayment.</div>
+    <div class="subtitle">Top 10 Grants for Women Founders<br>Most Never Apply For (2026)<br><span style="color:rgba(255,255,255,.6)">Save this — you'll need it.</span></div>
+  </div>
+  <div class="bottom">
+    <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <div class="cta-txt">Swipe to see list →</div>
+  </div>
+</div>
+
+<!-- 1: WOSB Federal -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">1/10</div>
+    <div class="num-badge"><span>1</span></div>
+    <div class="header-text">
+      <div class="series-tag">USA Federal</div>
+      <div class="grant-name">Women-Owned Small Business (WOSB) Program</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $500K</div></div>
+    <div class="desc">Federal set-aside contracts and grants exclusively for women-owned businesses. Rolling intake — one of the most underutilized programs in the US.</div>
+    <div class="tags-row"><div class="pill">USA Federal</div><div class="pill dark">Rolling</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/women-entrepreneurs-grants</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 2: WEF Canada -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">2/10</div>
+    <div class="num-badge"><span>2</span></div>
+    <div class="header-text">
+      <div class="series-tag">Canada Federal</div>
+      <div class="grant-name">Women Entrepreneurship Fund (WEF)</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $100K</div></div>
+    <div class="desc">Canadian government funding for women-owned businesses to scale, enter new markets, and create jobs. Grants, not loans — no repayment.</div>
+    <div class="tags-row"><div class="pill">Canada</div><div class="pill">Non-Repayable</div><div class="pill dark">WEF</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides/women-entrepreneurship-fund-guide</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 3: Amber Grant -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">3/10</div>
+    <div class="num-badge"><span>3</span></div>
+    <div class="header-text">
+      <div class="series-tag">Monthly Grant</div>
+      <div class="grant-name">Amber Grant for Women</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">$30K / mo</div></div>
+    <div class="desc">One of the most accessible women's business grants. $10K awarded every month, with a $30K year-end grant. Apply in under 30 minutes.</div>
+    <div class="tags-row"><div class="pill">Monthly</div><div class="pill">Easy Apply</div><div class="pill dark">USA</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/women-entrepreneurs-grants</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 4: IFundWomen -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">4/10</div>
+    <div class="num-badge"><span>4</span></div>
+    <div class="header-text">
+      <div class="series-tag">Community Grant</div>
+      <div class="grant-name">IFundWomen Universal Grant</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $50K</div></div>
+    <div class="desc">Supports women and non-binary founders across all stages and industries. Regular funding rounds open throughout the year. Coaching included.</div>
+    <div class="tags-row"><div class="pill">All Stages</div><div class="pill">Coaching</div><div class="pill dark">USA</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/women-entrepreneurs-grants</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 5: EDC Women -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">5/10</div>
+    <div class="num-badge"><span>5</span></div>
+    <div class="header-text">
+      <div class="series-tag">Export Financing</div>
+      <div class="grant-name">EDC Women in Trade Financing</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $250K</div></div>
+    <div class="desc">Export Development Canada provides women-led business financing for international trade, export growth, and global market expansion.</div>
+    <div class="tags-row"><div class="pill">Export</div><div class="pill">Canada</div><div class="pill dark">EDC</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides/edc-women-trade-export-financing-guide</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- PATTERN BREAK -->
+<div class="slide pattern-break">
+  <h2>Wait...</h2>
+  <p>Women-led businesses are 40% more likely to be approved for these grants — yet most never apply.</p>
+  <div class="arrow">Keep swiping &rarr;</div>
+</div>
+
+<!-- 6: Cartier Initiative -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">6/10</div>
+    <div class="num-badge"><span>6</span></div>
+    <div class="header-text">
+      <div class="series-tag">Global Award</div>
+      <div class="grant-name">Cartier Women's Initiative Award</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $100K</div></div>
+    <div class="desc">Prestigious international award for impact-driven women entrepreneurs. Comes with CHF 100,000 grant + mentorship from global business leaders.</div>
+    <div class="tags-row"><div class="pill">Global</div><div class="pill">Prestige</div><div class="pill dark">Impact</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/women-entrepreneurs-grants</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 7: SBA Grant for Women -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">7/10</div>
+    <div class="num-badge"><span>7</span></div>
+    <div class="header-text">
+      <div class="series-tag">SBA Flagship</div>
+      <div class="grant-name">SBA Women's Business Centers Program</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $150K</div></div>
+    <div class="desc">SBA-funded Women's Business Centers provide grants, free training, mentoring, and government contracts to women-owned small businesses across the US.</div>
+    <div class="tags-row"><div class="pill">USA Federal</div><div class="pill">Training</div><div class="pill dark">SBA</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/small-business-grants</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 8: NWBC -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">8/10</div>
+    <div class="num-badge"><span>8</span></div>
+    <div class="header-text">
+      <div class="series-tag">Tech & STEM</div>
+      <div class="grant-name">SBIR Phase I for Women-Led Tech</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $275K</div></div>
+    <div class="desc">Women-led tech and STEM startups qualify for SBIR Phase I funding. R&D-focused with direct pathway to $1.7M Phase II award.</div>
+    <div class="tags-row"><div class="pill">STEM</div><div class="pill">Tech</div><div class="pill dark">SBIR</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/technology-startup-grants</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 9: WES Canada -->
+<div class="slide gpn">
+  <div class="header">
+    <div class="progress-ind">9/10</div>
+    <div class="num-badge"><span>9</span></div>
+    <div class="header-text">
+      <div class="series-tag">Canada — Scale Up</div>
+      <div class="grant-name">Women Entrepreneurship Loan Fund</div>
+    </div>
+  </div>
+  <div class="divider"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt">Up to $50K</div></div>
+    <div class="desc">BDC-backed loans and grants for women entrepreneurs in Canada. Flexible terms, low interest rates, with dedicated women's advisory programs.</div>
+    <div class="tags-row"><div class="pill">Canada</div><div class="pill">Low Interest</div><div class="pill dark">BDC</div></div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides/women-entrepreneurship-loan-fund-guide</div><div class="apply-btn">Save & Next →</div></div>
+</div>
+
+<!-- 10: Fetch grant -->
+<div class="slide gpn" style="border-color:#9B1B30; border-width:12px;">
+  <div class="header" style="background:#fff5f6">
+    <div class="progress-ind" style="color:#9B1B30">10/10</div>
+    <div class="num-badge" style="background:#1a1a1a"><span>10</span></div>
+    <div class="header-text">
+      <div class="series-tag" style="color:#1a1a1a">The Finale 🎉</div>
+      <div class="grant-name">Halcyon Incubator Fellowship for Women</div>
+    </div>
+  </div>
+  <div class="divider" style="margin:0; background:#9B1B30;"></div>
+  <div class="body">
+    <div><div class="amt-label">Funding Amount</div><div class="amt" style="color:#9B1B30">Up to $75K</div></div>
+    <div class="desc">18-month fellowship for women social entrepreneurs. Includes $75K in funding, workspace, mentorship, and a powerful investor network.</div>
+    <div class="tags-row">
+      <div class="pill" style="border-color:#1a1a1a;color:#1a1a1a">Social Impact</div>
+      <div class="pill" style="border-color:#1a1a1a;color:#1a1a1a">Fellowship</div>
+    </div>
+  </div>
+  <div class="footer" style="background:#fff5f6; border-top:4px solid #f8c8ce;">
+    <div class="url">fsidigital.ca/usa/women-entrepreneurs-grants</div>
+    <div class="apply-btn" style="background:#1a1a1a">Save</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="slide cta-slide">
+  <div class="bg-overlay"></div>
+  <div class="content">
+    <div class="logo-huge">FSI Digital</div>
+    <h2>Want the full list <span style="color:#f48">+</span><br>eligibility rules?</h2>
+    <div class="lead-box">
+      <p>Comment</p>
+      <div class="comment-word">"GRANT"</div>
+      <p class="sub">and I'll send you the full list + eligibility</p>
+    </div>
+    <div class="or-text">or visit</div>
+    <div class="url-text">fsidigital.ca</div>
+  </div>
+</div>
+
+</body>
+</html>

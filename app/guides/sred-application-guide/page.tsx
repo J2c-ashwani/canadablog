@@ -12,63 +12,25 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "SR&ED Tax Credits 2026: Application, Rates & Eligibility",
-  description: "Complete guide to claiming SR&ED tax credits. Learn how to get up to 65% of your R&D costs refunded by the CRA.",
-  keywords: "SR&ED tax credits, SRED application, R&D tax incentives canada, T661 form, scientific research experimental development",
+  title: "SR&ED Tax Credits 2026 – Funding Options & Eligibility",
+  description: "Explore top sr&ed tax credits offering up to 35% ROI in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "SR&ED tax credits, SRED application, R&D tax incentives canada, T661 form, scientific research experimental development, sred application guide application checklist 2026, sred application guide requirements and documents needed, sred application guide approval timeline, sred application guide application tips, SR&ED application step by step guide, SR&ED eligibility checker, SR&ED vs SRED which to apply first, best grants for small business Canada 2026, am I eligible for sred application guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sred-application-guide",
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the SR&ED approval rate?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The CRA approves over 20,000 SR&ED claims annually. Properly documented claims with clear technical uncertainty have a high success rate, though audits can occur."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to get the SR&ED refund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For refundable claims (CCPCs), the CRA's service standard is to process them within 60 days of receipt. Non-refundable claims may take up to 365 days."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I claim SR&ED if the project failed?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! In fact, failure often proves technical uncertainty, which is a key requirement for eligibility. You are claiming for the *effort* to solve the problem, not the success."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How far back can I claim SR&ED?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You must file your SR&ED claim within 18 months of the end of the tax year in which you incurred the expenses. If you miss this deadline, the credits are lost forever."
-      }
-    }
-  ]
-}
-
 export default function SREDApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-700 to-green-900 text-white py-20">

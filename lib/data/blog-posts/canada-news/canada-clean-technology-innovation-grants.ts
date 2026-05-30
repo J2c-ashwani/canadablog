@@ -23,7 +23,7 @@ const post: BlogPost = {
       { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." },
       { title: "Stack with SR&ED", href: "/blog/ontario-small-business-grants-guide", description: "Complete guide to Ontario small business grants and funding. Access Ontario Small Business Support Grant, Digital Main S..." }
     ],
-    content: "",
+    content: "<h2>Canada Clean Technology Innovation Grants 2026</h2><p>Access $1.2B+ in clean technology innovation funding through SDTC, Clean Technology ITCs, and Net Zero Accelerator programs.</p><div class=\"bg-gradient-to-r from-teal-50 to-green-50 p-6 rounded-lg mb-8 border border-teal-200\"><h3 class=\"text-xl font-bold text-teal-800 mb-4\">🌱 Clean Technology Funding Overview</h3><p class=\"text-teal-700\">Canadian clean technology innovators have access to a comprehensive funding ecosystem designed to accelerate the transition to a low-carbon economy.</p></div>",
     seo: {
       keywords: ["Canada", "Clean", "Technology", "Innovation", "Grants"],
     }, shortAnswer: "Yes — Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Technology ITCs, Net Zero Accelerator, and 22+ cleantech programs. Funding available: up to $1.2B+ (with related programs offering $15M).",

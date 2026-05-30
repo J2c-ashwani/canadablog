@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "manufacturing-grants-2026",
     shortAnswerQuestion: "How can my business apply for Manufacturing Grants : Canadas 2026 in 2026?",
 
-    title: "Manufacturing Grants : Canadas... 2026 | $10M",
+    title: "Manufacturing Grants Canada 2026: Industry 4.0 Funding | $10M+",
 
     excerpt: "🇨🇦 Modernize your factory with Canadian government grants. Learn about SIF, regional equipment loans, and the Canada Job Grant for retraining your workforce.",
     category: "Industry-Specific",

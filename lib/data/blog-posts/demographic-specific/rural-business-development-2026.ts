@@ -8,7 +8,7 @@ const post: BlogPost = {
     slug: "rural-business-development-2026",
     shortAnswerQuestion: "How can my business apply for Rural Canada Business Developm 2026 in 2026?",
 
-    title: "Rural Canada Business Developm... 2026 | Funding Guide",
+    title: "Rural Canada Business Development Grants 2026 Guide",
 
     excerpt: "🇨🇦 Specific funding streams for rural Canadian businesses. CFDC loans, rural broadband funds, and agricultural support.",
     category: "Demographic-Specific",

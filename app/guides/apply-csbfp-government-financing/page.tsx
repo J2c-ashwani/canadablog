@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "CSBFP Government Financing Application Guide 2026 | Step-by-Step Federal Loan Guarantee Process",
   description: "Complete step-by-step guide to applying for CSBFP government-guaranteed loans. Get federal financing templates, lender selection strategies, and proven application frameworks for up to $1.15M in financing.",
-  keywords: "CSBFP government financing application guide, how to apply CSBFP loans, federal loan guarantee application Canada, CSBFP compliance application process, government guaranteed business loan application guide, Canada Small Business Financing Program",
+  keywords: "CSBFP government financing application guide, how to apply CSBFP loans, federal loan guarantee application Canada, CSBFP compliance application process, government guaranteed business loan application guide, Canada Small Business Financing Program, csbfp government financing application checklist 2026, csbfp government financing requirements and documents needed, csbfp government financing approval timeline, csbfp government financing application tips, CSBFP application step by step guide, CSBFP eligibility checker, best grants for small business Canada 2026, am I eligible for csbfp government financing",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-csbfp-government-financing",
   },
@@ -27,69 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the maximum amount I can borrow under CSBFP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Under CSBFP, you can borrow up to $1.15 million: $500,000 for real property (land/buildings), $350,000 for equipment, $350,000 for leasehold improvements, and $150,000 for working capital. Related businesses share these limits."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does CSBFP loan approval take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CSBFP loan approval typically takes 4-8 weeks from application to funding. Phase 1 (eligibility review) takes 1-2 weeks, Phase 2 (lender selection) 1-2 weeks, Phase 3 (application/documentation) 2-3 weeks, and Phase 4 (approval/funding) 1-2 weeks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are CSBFP eligibility requirements?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "To qualify for CSBFP: your business must be Canadian and operating for profit, have gross annual revenues of $10 million or less, and use funds for eligible purposes (equipment, real property, leasehold improvements, or working capital). Farming businesses are excluded."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the CSBFP registration fee?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CSBFP charges a 2% registration fee on the loan amount, payable at loan disbursement. This fee can be financed as part of the loan. There's also an annual administration fee of 1.25% on the outstanding balance."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a personal guarantee for CSBFP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Personal guarantees are at the lender's discretion but are typically required. The federal government limits guarantor exposure to 25% of the original loan amount, which is significantly lower than conventional loans requiring 100% personal guarantees."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Which banks offer CSBFP loans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Over 200 ISED-approved lenders offer CSBFP loans, including all major banks (RBC, TD, BMO, Scotiabank, CIBC, National Bank), credit unions, caisses populaires, and some specialized lenders. Not all branches may be familiar with the program."
-      }
-    }
-  ]
-}
-
 export default function CSBFPGovernmentFinancingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">

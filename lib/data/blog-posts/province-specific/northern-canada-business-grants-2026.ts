@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "northern-canada-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for Northern Canada Business Grant 2026 in 2026?",
 
-    title: "Northern Canada Business Grant... 2026 | $30",
+    title: "Northern Canada Business Grants 2026 | $30M+ Territorial Funding",
 
     excerpt: "🇨🇦 Business in the North is unique. Explore grants for Yukon, NWT, and Nunavut from CanNor, territorial governments, and Indigenous organizations.",
     category: "Province-Specific",

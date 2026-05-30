@@ -12,77 +12,31 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Complete IRAP Application Guide 2026 | Step-by-Step R&D Grant Process",
-  description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
-  keywords: "IRAP application guide, how to apply IRAP, NRC IRAP process, R&D grant application, industrial research funding, Canada innovation grants",
+  title: "How to Get IRAP Grants (2026) – Step-by-Step Guide",
+  description: "Explore top irap grants offering up to $10M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "IRAP application guide, how to apply IRAP, NRC IRAP process, R&D grant application, industrial research funding, Canada innovation grants, irap grants application checklist 2026, irap grants requirements and documents needed, irap grants approval timeline, irap grants application tips, IRAP application step by step guide, IRAP eligibility checker, IRAP vs NRC which to apply first, best grants for small business Canada 2026, am I eligible for irap grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-irap-grants",
   },
   openGraph: {
-    title: "Complete IRAP Application Guide 2026 | Step-by-Step R&D Grant Process",
-    description: "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding.",
+    title: "How to Get IRAP Grants (2026) – Step-by-Step Guide",
+    description: "Explore top irap grants offering up to $10M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
     url: "https://www.fsidigital.ca/guides/apply-irap-grants",
     images: ["/og-image.png"],
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What qualifies for IRAP funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP funds technical R&D projects that involve uncertainty and risk. The project must aim to develop a new or significantly improved product, process, or service. Routine engineering or maintenance does not qualify."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much does IRAP pay?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP typically covers up to 80% of internal technical salary costs and up to 50% of contractor costs for the project duration. Total contribution amounts vary but often range from $50,000 to $500,000+ for larger projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is IRAP funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, standard IRAP contributions are non-repayable grants. They are not loans. However, you must meet the project milestones and reporting requirements to receive the reimbursements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does approval take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process is relatively fast compared to other government programs. Once a full proposal is invited, approval can take 4-8 weeks. The initial engagement with an ITA can add 1-2 months prior to that."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I claim SR&ED and IRAP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but you cannot 'double dip'. You must deduct the IRAP grant amount from your SR&ED eligible expenditures. Essentially, you can't get a tax credit on the portion of salary that the government already paid for."
-      }
-    }
-  ]
-}
-
 export default function IRAPApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-emerald-600 to-teal-700 text-white py-20">
@@ -463,6 +417,10 @@ export default function IRAPApplicationGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

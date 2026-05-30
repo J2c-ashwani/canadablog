@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "National Women's Business Council (NWBC) Programs Guide 2026 | Federal Women's Business Advisory",
   description: "Complete guide to NWBC programs and initiatives. Learn how the National Women's Business Council supports women entrepreneurs through policy and advocacy.",
-  keywords: "NWBC, national womens business council, women business policy, federal women entrepreneur support, women business advocacy",
+  keywords: "NWBC, national womens business council, women business policy, federal women entrepreneur support, women business advocacy, how to apply for nwbc programs guide, nwbc programs guide eligibility 2026, step by step nwbc programs guide application guide, best nwbc programs guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for nwbc programs guide, nwbc programs guide deadline 2026",
   openGraph: {
     title: "National Women's Business Council (NWBC) Programs Guide 2026",
     description: "Complete guide to NWBC programs, research initiatives, and policy advocacy for women entrepreneurs.",
@@ -54,26 +56,13 @@ export default function NWBCProgramsGuide() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-cyan-700 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,6 +149,12 @@ export default function NWBCProgramsGuide() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Quick Stats */}
@@ -747,6 +742,10 @@ export default function NWBCProgramsGuide() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

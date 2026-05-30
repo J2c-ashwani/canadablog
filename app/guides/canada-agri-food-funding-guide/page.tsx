@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Agri-Food & AgriTech Grants Canada 2026 | Processing & Innovation Funding",
-  description: "Guide to federal funding for food processing and agritech. Apply for AgriInnovate, AgriProcessing, and food automation grants.",
-  keywords: "agri-food grants Canada, food processing funding, agritech grants, AgriInnovate application, food automation grants, sustainable food production funding",
+  title: "Agri-Food Grants Canada 2026 – Funding up to $2.3B Available",
+  description: "Explore top agri-food grants canada offering up to $2.3B in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "agri-food grants Canada, food processing funding, agritech grants, AgriInnovate application, food automation grants, sustainable food production funding, canada agri food funding guide application checklist 2026, canada agri food funding guide requirements and documents needed, canada agri food funding guide approval timeline, canada agri food funding guide application tips, AgriInnovate application step by step guide, AgriInnovate eligibility checker, best grants for small business Canada 2026, am I eligible for canada agri food funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-agri-food-funding-guide",
   },
@@ -27,53 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What funding is available for food processors?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Food processors can access the AgriInnovate Program (for new technology adoption), the Strategic Innovation Fund (for large scale expansions), and various regional programs like the Supply Management Processing Investment Fund."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I get funding for automation equipment?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Many programs, including the Agricultural Clean Technology Program and regional initiatives, fund the purchase and installation of robotic and automated processing equipment to improve productivity."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Supply Management Processing Investment Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The SMPIF offers non-repayable contributions (grants) to processors of supply-managed commodities (dairy, poultry, eggs) to invest in new equipment and technology."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Agri-Food funding taxable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, government grants are generally taxable income. However, they offset the expenses you incur, neutralizing the immediate tax impact. Repayable contributions (loans) are not taxable income."
-      }
-    }
-  ]
-}
-
 export default function CanadaAgriFoodFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-emerald-800 to-green-900 text-white py-20 relative overflow-hidden">
@@ -392,6 +354,10 @@ export default function CanadaAgriFoodFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

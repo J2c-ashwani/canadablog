@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
   description: "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Technology ITCs, Net Zero Accelerator, and 22+ cleantech programs.",
-  keywords: "Canada clean technology grants, cleantech funding Canada, SDTC grants, sustainable technology funding, renewable energy grants Canada, environmental innovation funding, Net Zero Accelerator, clean tech tax credits Canada",
+  keywords: "Canada clean technology grants, cleantech funding Canada, SDTC grants, sustainable technology funding, renewable energy grants Canada, environmental innovation funding, Net Zero Accelerator, clean tech tax credits Canada, how to apply for SDTC grants 2026, SDTC eligibility requirements, how to apply for canada clean technology innovation grants, canada clean technology innovation grants eligibility 2026, step by step canada clean technology innovation grants application guide, best canada clean technology innovation grants for small business Canada, am I eligible for canada clean technology innovation grants, canada clean technology innovation grants deadline 2026",
   openGraph: {
     title: "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding",
     description: "Access $1.2B+ in clean technology innovation funding. Complete guide to SDTC grants, Clean Technology ITCs, and 22+ programs supporting environmental innovation.",
@@ -46,19 +48,6 @@ const faqData = [
   },
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function CanadaCleanTechnologyInnovationGrantsPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("canada-clean-technology-innovation-grants");
@@ -67,6 +56,10 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
   return (
     <>
       <Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-teal-600 to-green-700 text-white py-16">
@@ -159,6 +152,25 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
           </div>
         </section>
 
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
+
+        {/* Main Content */}
+        {postData?.content && (
+          <section className="py-8">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="max-w-4xl mx-auto">
+                <div
+                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
+                  dangerouslySetInnerHTML={{ __html: postData.content }}
+                />
+              </div>
+            </div>
+          </section>
+        )}
 
         {/* Common Questions Section */}
         <section className="py-12 bg-teal-50 border-b border-teal-100">
@@ -776,13 +788,12 @@ export default function CanadaCleanTechnologyInnovationGrantsPage() {
           </div>
         </div>
       </section>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
+      </div>
       <Footer />
 
-      {/* FAQ Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-    </>
+      </>
   )
 }

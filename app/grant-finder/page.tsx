@@ -8,45 +8,6 @@ import type { Metadata } from "next"
 
 import EEATBadge from '@/components/blog/EEATBadge'
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is the AI Grant Finder free to use?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, our basic grant matching tool is completely free. You can search for grants, view eligibility requirements, and get initial matches without any cost."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How accurate are the grant matches?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our AI analyzes over 50 data points from your business profile against thousands of active grant criteria. While we provide high-probability matches, final eligibility is determined by the funding agency."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do you help with grant writing?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "We provide comprehensive guides, templates, and expert tips to help you write successful applications. For complex federal grants, we recommend partnering with a professional grant writer."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What types of businesses can find grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Our database includes funding for startups, small businesses, non-profits, and large enterprises across all industries, including technology, manufacturing, agriculture, and healthcare."
-      }
-    }
-  ]
-}
-
 export const metadata: Metadata = {
   title: "AI Business Grant Finder | Find Perfect Grants for Your Business",
   description:
@@ -66,10 +27,6 @@ export const metadata: Metadata = {
 export default function GrantFinderPage() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="min-h-screen bg-white">
         <Header />
 

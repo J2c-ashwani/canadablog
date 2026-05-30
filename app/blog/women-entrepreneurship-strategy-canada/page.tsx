@@ -18,11 +18,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
   description: "Complete guide to Canada's Women Entrepreneurship Strategy. Access $6B+ in women business grants, female entrepreneur funding, and women-owned business loans across all Canadian provinces.",
-  keywords: "women entrepreneurship strategy Canada, female business grants Canada, women business loans Canada, women entrepreneur funding, Canadian women-owned business support, female startup grants, women small business funding, WES program Canada, women entrepreneurship loan fund, grants for women entrepreneurs Canada",
+  keywords: "women entrepreneurship strategy Canada, female business grants Canada, women business loans Canada, women entrepreneur funding, Canadian women-owned business support, female startup grants, women small business funding, WES program Canada, women entrepreneurship loan fund, grants for women entrepreneurs Canada, how to apply for WES grants 2026, WES eligibility requirements, how to apply for women entrepreneurship strategy canada, women entrepreneurship strategy canada eligibility 2026, step by step women entrepreneurship strategy canada application guide, best women entrepreneurship strategy canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women entrepreneurship strategy canada, women entrepreneurship strategy canada deadline 2026",
   openGraph: {
     title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants",
     description: "Access $6B+ in Canadian government funding for women entrepreneurs. Complete guide to WES grants, loans, and support programs for female-owned businesses.",
@@ -50,27 +52,13 @@ const faqData = [
   }
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function WESBlogPage() {
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-pink-600 to-rose-700 text-white py-16">
@@ -340,6 +328,12 @@ export default function WESBlogPage() {
           </div>
         </section>
 
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
+
         {/* Regional Women Business Support - Geo-Targeted SEO */}
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -590,7 +584,7 @@ export default function WESBlogPage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/women-minority-business-grants-guide" className="block group">
+                <Link href="/blog/federal-grants-women-minorities" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <Briefcase className="w-8 h-8 text-green-600 mr-4" />
                     <div>
@@ -675,6 +669,10 @@ export default function WESBlogPage() {
               </div>
             </div>
 </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
+      </div>
       <Footer />
     </>
   )

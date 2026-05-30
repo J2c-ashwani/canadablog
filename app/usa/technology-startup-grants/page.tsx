@@ -473,7 +473,7 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• Governor's University Research</li>
                     </ul>
                     <Button className="w-full" variant="outline" asChild>
-                      <Link href="/blog/texas-tech-programs">
+                      <Link href="/blog/texas-business-grants-2026">
                         Explore Texas Programs
                       </Link>
                     </Button>
@@ -673,7 +673,7 @@ export default function USATechnologyStartupGrantsPage() {
                       <li>• NSA research programs</li>
                     </ul>
                     <Button className="w-full" variant="outline" size="sm" asChild>
-                      <Link href="/blog/cybersecurity-startup-grants">
+                      <Link href="/blog/cybersecurity-grants">
                         View Cybersecurity Grants
                       </Link>
                     </Button>

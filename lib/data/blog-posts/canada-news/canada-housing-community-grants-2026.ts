@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "canada-housing-community-grants-2026",
     shortAnswerQuestion: "How can my business apply for Canada Housing & Community Gra 2026 in 2026?",
 
-    title: "Canada Housing & Community Gra... 2026 | $4",
+    title: "Canada Housing & Community Grants 2026 | $4B+ CMHC Funding",
 
     excerpt: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Municipal Fund, and Rapid Housing Initiative.",
     category: "Canada News",

@@ -17,15 +17,15 @@ export function generateGrantGuidePDF(userEmail?: string) {
 
   // ==== PAGE 1: COVER PAGE ====
   // Gradient background effect
-  doc.setFillColor(...colors.primary);
+  doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
-  doc.setFillColor(...colors.secondary);
+  doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
   doc.circle(pageWidth + 30, -30, 100, 'F');
   doc.circle(-30, pageHeight + 30, 100, 'F');
 
   // Title section with shadow effect
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(48);
   doc.setFont('helvetica', 'bold');
   doc.text('ULTIMATE', pageWidth / 2, 80, { align: 'center' });
@@ -34,7 +34,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
   // Subtitle with decorative line
   doc.setFontSize(14);
   doc.setFont('helvetica', 'normal');
-  doc.setDrawColor(...colors.white);
+  doc.setDrawColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setLineWidth(0.5);
   doc.line(40, 125, pageWidth - 40, 125);
 
@@ -78,15 +78,15 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.addPage();
 
   // Header bar
-  doc.setFillColor(...colors.primary);
+  doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.rect(0, 0, pageWidth, 40, 'F');
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(24);
   doc.setFont('helvetica', 'bold');
   doc.text('TABLE OF CONTENTS', pageWidth / 2, 25, { align: 'center' });
 
   // Content
-  doc.setTextColor(...colors.dark);
+  doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
   doc.setFontSize(11);
 
   const tocItems = [
@@ -106,20 +106,20 @@ export function generateGrantGuidePDF(userEmail?: string) {
   tocItems.forEach((item, index) => {
     // Alternating background
     if (index % 2 === 0) {
-      doc.setFillColor(...colors.light);
+      doc.setFillColor(colors.light[0], colors.light[1], colors.light[2]);
       doc.rect(15, yPos - 6, pageWidth - 30, 12, 'F');
     }
 
     // Number badge
-    doc.setFillColor(...colors.primary);
+    doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
     doc.circle(25, yPos, 5, 'F');
-    doc.setTextColor(...colors.white);
+    doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
     doc.setFontSize(8);
     doc.setFont('helvetica', 'bold');
     doc.text(item.num, 25, yPos + 1, { align: 'center' });
 
     // Title
-    doc.setTextColor(...colors.dark);
+    doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
     doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.text(item.title, 35, yPos + 1);
@@ -135,20 +135,20 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.addPage();
 
   // Header
-  doc.setFillColor(...colors.primary);
+  doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.rect(0, 0, pageWidth, 40, 'F');
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('01', 20, 25);
   doc.text('INTRODUCTION TO GRANTS', 40, 25);
 
   // Content box with border
-  doc.setDrawColor(...colors.primary);
+  doc.setDrawColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.setLineWidth(0.5);
   doc.roundedRect(15, 50, pageWidth - 30, 80, 3, 3);
 
-  doc.setTextColor(...colors.dark);
+  doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
   doc.setFontSize(11);
   doc.setFont('helvetica', 'normal');
 
@@ -178,9 +178,9 @@ export function generateGrantGuidePDF(userEmail?: string) {
   yPos += 5;
   doc.setFontSize(10);
   benefits.forEach(benefit => {
-    doc.setTextColor(...colors.primary);
+    doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
     doc.text('●', 25, yPos);
-    doc.setTextColor(...colors.dark);
+    doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
     doc.text(benefit, 30, yPos);
     yPos += 7;
   });
@@ -188,16 +188,16 @@ export function generateGrantGuidePDF(userEmail?: string) {
   // Info box
   doc.setFillColor(59, 130, 246, 0.1);
   doc.roundedRect(15, 145, pageWidth - 30, 40, 3, 3, 'F');
-  doc.setDrawColor(...colors.secondary);
+  doc.setDrawColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
   doc.roundedRect(15, 145, pageWidth - 30, 40, 3, 3);
 
   doc.setFontSize(12);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...colors.secondary);
+  doc.setTextColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
   doc.text('💡 DID YOU KNOW?', 20, 155);
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...colors.dark);
+  doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
   doc.text('Over $500 billion in government grants are awarded annually in the US', 20, 165);
   doc.text('and Canada, with success rates improving by 85% for applicants who', 20, 172);
   doc.text('follow proper preparation and application strategies.', 20, 179);
@@ -206,9 +206,9 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.addPage();
 
   // Header
-  doc.setFillColor(...colors.primary);
+  doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.rect(0, 0, pageWidth, 40, 'F');
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('02', 20, 25);
@@ -251,24 +251,24 @@ export function generateGrantGuidePDF(userEmail?: string) {
   yPos = 55;
   grantTypes.forEach(type => {
     // Card background
-    doc.setFillColor(...type.color, 0.1);
+    doc.setFillColor(type.color[0], type.color[1], type.color[2], 0.1);
     doc.roundedRect(15, yPos, pageWidth - 30, 50, 3, 3, 'F');
 
     // Card border
-    doc.setDrawColor(...type.color);
+    doc.setDrawColor(type.color[0], type.color[1], type.color[2]);
     doc.setLineWidth(1);
     doc.roundedRect(15, yPos, pageWidth - 30, 50, 3, 3);
 
     // Title bar
-    doc.setFillColor(...type.color);
+    doc.setFillColor(type.color[0], type.color[1], type.color[2]);
     doc.roundedRect(15, yPos, pageWidth - 30, 10, 3, 3, 'F');
-    doc.setTextColor(...colors.white);
+    doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
     doc.setFontSize(12);
     doc.setFont('helvetica', 'bold');
     doc.text(type.title, 20, yPos + 7);
 
     // Items
-    doc.setTextColor(...colors.dark);
+    doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
     doc.setFontSize(9);
     doc.setFont('helvetica', 'normal');
     let itemY = yPos + 18;
@@ -285,9 +285,9 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.addPage();
 
   // Header
-  doc.setFillColor(...colors.accent);
+  doc.setFillColor(colors.accent[0], colors.accent[1], colors.accent[2]);
   doc.rect(0, 0, pageWidth, 40, 'F');
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('05', 20, 25);
@@ -312,19 +312,19 @@ export function generateGrantGuidePDF(userEmail?: string) {
   yPos = 55;
   checklist.forEach((item, index) => {
     // Checkbox
-    doc.setDrawColor(...colors.dark);
+    doc.setDrawColor(colors.dark[0], colors.dark[1], colors.dark[2]);
     doc.setLineWidth(0.5);
     doc.rect(20, yPos - 3, 5, 5);
 
     // Item text
-    doc.setTextColor(...colors.dark);
+    doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
     doc.setFontSize(11);
     doc.setFont('helvetica', 'normal');
     doc.text(item, 30, yPos + 1);
 
     // Alternating background
     if (index % 2 === 0) {
-      doc.setFillColor(...colors.light);
+      doc.setFillColor(colors.light[0], colors.light[1], colors.light[2]);
       doc.rect(15, yPos - 5, pageWidth - 30, 10, 'F');
       // Redraw checkbox on top
       doc.rect(20, yPos - 3, 5, 5);
@@ -337,16 +337,16 @@ export function generateGrantGuidePDF(userEmail?: string) {
   // Tip box
   doc.setFillColor(249, 115, 22, 0.1);
   doc.roundedRect(15, yPos + 10, pageWidth - 30, 30, 3, 3, 'F');
-  doc.setDrawColor(...colors.accent);
+  doc.setDrawColor(colors.accent[0], colors.accent[1], colors.accent[2]);
   doc.roundedRect(15, yPos + 10, pageWidth - 30, 30, 3, 3);
 
   doc.setFontSize(11);
   doc.setFont('helvetica', 'bold');
-  doc.setTextColor(...colors.accent);
+  doc.setTextColor(colors.accent[0], colors.accent[1], colors.accent[2]);
   doc.text('⚡ PRO TIP', 20, yPos + 20);
   doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
-  doc.setTextColor(...colors.dark);
+  doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
   doc.text('Prepare all documents at least 2 weeks before the deadline. This gives', 20, yPos + 28);
   doc.text('you time to address any missing information or formatting issues.', 20, yPos + 35);
 
@@ -356,7 +356,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
   // Header
   doc.setFillColor(220, 38, 38);
   doc.rect(0, 0, pageWidth, 40, 'F');
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(20);
   doc.setFont('helvetica', 'bold');
   doc.text('08', 20, 25);
@@ -394,13 +394,13 @@ export function generateGrantGuidePDF(userEmail?: string) {
     // Number badge
     doc.setFillColor(220, 38, 38);
     doc.circle(25, yPos, 6, 'F');
-    doc.setTextColor(...colors.white);
+    doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
     doc.setFontSize(10);
     doc.setFont('helvetica', 'bold');
     doc.text((index + 1).toString(), 25, yPos + 1, { align: 'center' });
 
     // Title
-    doc.setTextColor(...colors.dark);
+    doc.setTextColor(colors.dark[0], colors.dark[1], colors.dark[2]);
     doc.setFontSize(12);
     doc.text(mistake.title, 35, yPos + 1);
 
@@ -417,15 +417,15 @@ export function generateGrantGuidePDF(userEmail?: string) {
   doc.addPage();
 
   // Full page gradient
-  doc.setFillColor(...colors.primary);
+  doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
-  doc.setFillColor(...colors.secondary);
+  doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
   doc.circle(pageWidth + 40, pageHeight / 2, 120, 'F');
   doc.circle(-40, pageHeight / 2, 120, 'F');
 
   // Content
-  doc.setTextColor(...colors.white);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(32);
   doc.setFont('helvetica', 'bold');
   doc.text('READY TO', pageWidth / 2, 80, { align: 'center' });

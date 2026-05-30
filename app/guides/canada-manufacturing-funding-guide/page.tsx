@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Manufacturing Grants Canada 2026 | NGen & Industry 4.0 Funding",
-  description: "Complete guide to advanced manufacturing funding. Apply for NGen supercluster projects, IRAP manufacturing grants, and CDAP digital adoption loans.",
-  keywords: "manufacturing grants Canada, NGen funding, advanced manufacturing, Industry 4.0 grants, robotics funding, automation grants Canada",
+  title: "Manufacturing Grants Canada 2026 – Funding up to $5M Available",
+  description: "Explore top manufacturing grants canada offering up to $5M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "manufacturing grants Canada, NGen funding, advanced manufacturing, Industry 4.0 grants, robotics funding, automation grants Canada, canada manufacturing funding guide application checklist 2026, canada manufacturing funding guide requirements and documents needed, canada manufacturing funding guide approval timeline, canada manufacturing funding guide application tips, NGen application step by step guide, NGen eligibility checker, best grants for small business Canada 2026, am I eligible for canada manufacturing funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-manufacturing-funding-guide",
   },
@@ -27,53 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What qualifies as 'Advanced Manufacturing' for NGen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Projects must involve the development or adoption of cutting-edge technologies like IoT, AI, robotics, or additive manufacturing that significantly improve productivity or create new products."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I use IRAP for buying new machinery?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, no. IRAP funds the technical labor to *integrate* or *develop* new systems, but not the capital asset (machine) itself. For equipment, look to regional development agencies (FedDev, PrairiesCan) or CDAP loans."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there funding for green manufacturing retrofit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Programs like the Strategic Innovation Fund - Net Zero Accelerator and various Clean Technology Investment Tax Credits cover costs for reducing carbon footprint in factories."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the minimum project size for NGen?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "NGen projects typically range from $500k to $20M. Smaller projects are often redirected to different streams or cluster readiness programs."
-      }
-    }
-  ]
-}
-
 export default function CanadaManufacturingFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-slate-800 to-gray-900 text-white py-20 relative overflow-hidden">
@@ -362,6 +324,10 @@ export default function CanadaManufacturingFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

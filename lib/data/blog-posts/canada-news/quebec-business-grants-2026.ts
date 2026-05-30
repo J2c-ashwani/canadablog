@@ -34,7 +34,7 @@ export default `
       <ul class="text-sm text-teal-600 space-y-1">
         <li>• <strong>Funding:</strong> Up to $500,000 per project or 50% of expenses.</li>
         <li>• <strong>Focus:</strong> From planning to pre-commercialization.</li>
-        <li>• <strong>Note:</strong> Can be stacked with <a href="/blog/sred-tax-credits-2025" class="underline hover:text-teal-900">SR&ED Tax Credits</a>.</li>
+        <li>• <strong>Note:</strong> Can be stacked with <a href="/blog/sred-tax-credits-2026" class="underline hover:text-teal-900">SR&ED Tax Credits</a>.</li>
       </ul>
     </div>
     <div class="bg-purple-50 border border-purple-200 p-6 rounded-lg">
@@ -60,7 +60,7 @@ export default `
   <div class="bg-gray-50 border border-gray-200 p-6 rounded-lg mb-8">
     <ol class="list-decimal pl-6 space-y-4 text-gray-700">
       <li><strong>Contact an IQ Agent:</strong> Unlike federal grants which are often portal-based, Quebec funding is relationship-based. Your first step is often to contact Investissement Québec regional office.</li>
-      <li><strong>Prepare Your Business Plan (in French):</strong> Ensure your pitch deck, financial projections, and technical descriptions are available in French. (See <a href="/blog/digital-transformation-2025" class="text-blue-600 hover:underline">Digital Transformation Grants</a> if you need funding to translate your digital presence).</li>
+      <li><strong>Prepare Your Business Plan (in French):</strong> Ensure your pitch deck, financial projections, and technical descriptions are available in French. (See <a href="/blog/canada-digital-ai-innovation-grants" class="text-blue-600 hover:underline">Digital Transformation Grants</a> if you need funding to translate your digital presence).</li>
       <li><strong>Submission:</strong> Submit through the "Mon dossier" portal for specific programs, or directly to your investment officer.</li>
       <li><strong>Due Diligence:</strong> IQ performs rigorous financial analysis. Expect a 3-6 month process for major files.</li>
     </ol>

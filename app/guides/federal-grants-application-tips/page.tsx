@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Federal Grants Application Tips 2026 | Expert Acceptance Strategies",
   description: "Master the federal grant application process. Expert tips on writing narratives, budget justification, SAM.gov registration, and avoiding rejection.",
-  keywords: "federal grant application tips, grants.gov strategies, write winning grant proposal, federal funding guide, SAM.gov registration tips",
+  keywords: "federal grant application tips, grants.gov strategies, write winning grant proposal, federal funding guide, SAM.gov registration tips, federal grants application tips application checklist 2026, federal grants application tips requirements and documents needed, federal grants application tips approval timeline, federal grants application tips application tips, best grants for small business USA 2026, am I eligible for federal grants application tips",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/federal-grants-application-tips",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the most common reason for grant rejection?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The #1 reason is 'Technical Non-Compliance'—meaning you missed a form, used the wrong font size, or went over the page limit. It is rejected before anyone even reads your idea."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a professional grant writer?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For large federal grants ($500k+), it is highly recommended. The complexity of the narrative and budget justification often requires specialist expertise."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the review process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Federal grants typically take 3-6 months from submission to award notification. Peer review panels meet periodically, not abundantly."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is match funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Many federal grants require 'cost-sharing' or 'matching funds' (e.g., 50%). You must prove you have cash or in-kind contributions to cover your share of the project."
-      }
-    }
-  ]
-}
-
 export default function FederalGrantsApplicationTipsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-slate-800 to-gray-900 text-white py-20 relative overflow-hidden">
@@ -384,6 +346,10 @@ export default function FederalGrantsApplicationTipsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-slate-50/50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

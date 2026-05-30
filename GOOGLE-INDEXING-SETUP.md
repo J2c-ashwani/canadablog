@@ -1,56 +1,54 @@
-# Google Indexing API Setup Guide
+# Google Search Console Indexing Workflow
 
-To use the automated `scripts/submit-indexing-google.js` script to instantly push your new pages to Google's index, you need to create a **Google Cloud Service Account** and grant it permission in your **Google Search Console**.
+FSI Digital should use the standard Google Search Console indexing workflow for normal blog, guide, and programmatic grant pages.
 
-Here is the step-by-step guide:
+The old Indexing API submitter is disabled by default because Google limits that API to `JobPosting` and `BroadcastEvent` pages with video. Grant articles and pSEO pages should be discovered through the sitemap, internal links, and URL Inspection recrawl requests.
 
-## Step 1: Create a Google Cloud Project & Enable the API
-1. Go to the [Google Cloud Console](https://console.cloud.google.com/).
-2. Create a new project (e.g., "FSI Digital Indexing").
-3. Go to **APIs & Services > Library**.
-4. Search for the **"Web Search Indexing API"**.
-5. Click **Enable**.
+FAQPage schema has been removed from blog, guide, grant, state, and pSEO pages to reduce Search Console enhancement noise. The visible FAQ sections remain for users.
 
-## Step 2: Create a Service Account
-1. In Google Cloud Console, go to **IAM & Admin > Service Accounts**.
-2. Click **Create Service Account**.
-3. Name it "indexing-bot" and click **Create and Continue**.
-4. Skip the role assignment (it doesn't need one here) and click **Done**.
+The priority sitemap is a static file at `/priority-sitemap.xml`. Refresh it after major SEO/content batches with:
+`node scripts/generate-priority-sitemap.js`
 
-## Step 3: Get your JSON Key
-1. Find your newly created Service Account in the list.
-2. Under the "Actions" column (the three dots), click **Manage Keys**.
-3. Click **Add Key > Create new key**.
-4. Choose **JSON** and click **Create**.
-5. *A file will download to your computer.* 
-6. **Rename this file to exactly `google-credentials.json`**.
-7. Place this file in the root directory of your FSI Digital project (same folder as your `package.json`).
+## After Each SEO Deployment
 
-## Step 4: Grant Permission in Google Search Console
-1. Open the downloaded `google-credentials.json` file on your computer. Find the `"client_email"` property. It will look something like: `indexing-bot@fsi-digital-indexing.iam.gserviceaccount.com`. Copy this email.
-2. Go to your [Google Search Console](https://search.google.com/search-console).
-3. Select your verified domain property (e.g., `https://fsidigital.ca`).
-4. Look at the left sidebar and click **Settings**.
-5. Click on **Users and Permissions**.
-6. Click the three dots next to your name and click **Add User**.
-7. Paste the Service Account email address you copied earlier.
-8. **CRITICAL:** Set the Permission level to **Owner**. (The API requires Owner level access).
-9. Click **Add**.
+1. Deploy the site.
+2. Open Google Search Console for `sc-domain:fsidigital.ca`.
+3. Submit or refresh the sitemap:
+   `https://www.fsidigital.ca/sitemap.xml`
+4. Submit or refresh the priority sitemap:
+   `https://www.fsidigital.ca/priority-sitemap.xml`
+5. Run the local priority helper:
+   `node scripts/gsc-priority-urls.js`
+6. Use URL Inspection on only the top 10 priority URLs and click **Request indexing** after the deployed page returns `200`, has a canonical URL, and has no `noindex`.
+7. In the Pages report, validate fixes for:
+   - Duplicate or invalid FAQ schema
+   - Crawled - currently not indexed
+   - Discovered - currently not indexed
+   - Alternate page with proper canonical
 
----
+## What Should Be Indexed
 
-## Step 5: Run the Script!
+- Canonical blog articles
+- Guide pages with useful standalone content
+- Country, province, state, and city landing pages
+- Published `/grants/{province}/{city}/{industry}` pages that are not thin or duplicate
 
-Once your `google-credentials.json` is safely in your project root, you can run the script anytime you publish new content:
+## What Should Not Be Indexed
 
-```bash
-node scripts/submit-indexing-google.js
-```
+- `/api/*`
+- `/download/*/thank-you`
+- `-archive` blog slugs
+- Superseded 2025 slugs that redirect to 2026 versions
+- Utility pages that exist only to complete a form flow
 
-**Notes:**
-- Google limits this to **200 URLs per day**.
-- The script automatically fetches your live sitemap, extracts the URLs, prioritizes them, and submits up to 190 of them per run.
-- You can also submit specific URLs by passing them as arguments:
-  ```bash
-  node scripts/submit-indexing-google.js https://fsidigital.ca/blog/my-new-post
-  ```
+## AdSense Monitoring
+
+After deployment, compare 14 days of data against the previous 14 days:
+
+- Page RPM by page type
+- Impressions per session
+- Viewability
+- Ad CTR
+- Lead conversion rate from `/grant-finder`, `/contact`, and download forms
+
+The site now sends a GA event named `adsense_page_type_view` with `page_type` and expected ad slot count. Use that to separate blog article, guide, pSEO, and lead magnet traffic before changing ad density.

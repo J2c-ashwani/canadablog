@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Fund 2026 | $100K Business Grants",
-  description: "Complete guide to the Women Entrepreneurship Fund (WEF). Learn how to secure $100K in non-repayable grant funding for your business expansion.",
-  keywords: "Women Entrepreneurship Fund, WEF grant, women business grants canada, women entrepreneurship strategy, non-repayable funding",
+  title: "Women Entrepreneurship Grants 2026 – Funding up to $100K",
+  description: "Explore top women entrepreneurship grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "Women Entrepreneurship Fund, WEF grant, women business grants canada, women entrepreneurship strategy, non-repayable funding, women entrepreneurship fund guide application checklist 2026, women entrepreneurship fund guide requirements and documents needed, women entrepreneurship fund guide approval timeline, women entrepreneurship fund guide application tips, WEF application step by step guide, WEF eligibility checker, best grants for small business Canada 2026, am I eligible for women entrepreneurship fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/women-entrepreneurship-fund-guide",
   },
@@ -27,53 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is the Women Entrepreneurship Fund really non-repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but it is currently closed for new direct intake. However, the $100M WES Ecosystem Fund distributes non-repayable services and training through partner organizations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to be 100% women-owned to apply?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No, you do not need 100% ownership. To be eligible for WES initiatives, the business must be at least 51% women-owned, managed, and controlled."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What can WEF funding be used for?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Eligible costs typically include international marketing, supply chain integration, business advisory services, and technology upgrades. It generally does not cover operational costs like rent."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the deadline for the Women Entrepreneurship Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The direct $100k grant form ISED has periodic calls for proposals. Currently, you should apply for the Women Entrepreneurship Loan Fund (up to $50k) which is open year-round."
-      }
-    }
-  ]
-}
-
 export default function WomenEntrepreneurshipFundApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-800 to-indigo-900 text-white py-20 relative overflow-hidden">

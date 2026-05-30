@@ -20,11 +20,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Business Funding",
   description: "Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 across Canada.",
-  keywords: "youth entrepreneurship Canada, young entrepreneur grants Canada, Canadian youth business foundation, CYBF funding, youth business loans Canada, young entrepreneur startup funding, youth employment strategy, Canadian youth business grants, young business owner funding",
+  keywords: "youth entrepreneurship Canada, young entrepreneur grants Canada, Canadian youth business foundation, CYBF funding, youth business loans Canada, young entrepreneur startup funding, youth employment strategy, Canadian youth business grants, young business owner funding, how to apply for youth entrepreneurship canada funding, youth entrepreneurship canada funding eligibility 2026, step by step youth entrepreneurship canada funding application guide, best youth entrepreneurship canada funding for small business Canada, am I eligible for youth entrepreneurship canada funding, youth entrepreneurship canada funding deadline 2026",
   openGraph: {
     title: "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Funding",
     description: "Access $60K+ in Canadian government funding for young entrepreneurs. Complete guide to CYBF grants, Youth Employment Strategy, and startup funding for youth aged 18-35.",
@@ -52,31 +54,17 @@ const faqData = [
   }
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function YouthEntrepreneurshipBlogPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("youth-entrepreneurship-canada-funding");
   const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-600 to-blue-700 text-white py-16">
@@ -168,6 +156,12 @@ export default function YouthEntrepreneurshipBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Program Statistics - SEO Optimized */}
@@ -743,6 +737,10 @@ export default function YouthEntrepreneurshipBlogPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

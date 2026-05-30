@@ -8,8 +8,9 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
-import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
+import { CTRTrap } from '@/components/blog/CTRTrap';
 import { getStateDetailBySlug, getAllStateDetails, getRelatedGuides, StateDetailedGrant } from '@/lib/data/stateDetails';
+import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import {
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
     Rocket, Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle,
@@ -19,6 +20,21 @@ import {
 import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
+import { composePseoBlocks, BlockIntent } from '@/lib/pseo-engine/composer';
+import AnchorBlock from '@/components/pseo/blocks/AnchorBlock';
+import FundingRealityCheck from '@/components/pseo/blocks/FundingRealityCheck';
+import BestEntryStrategy from '@/components/pseo/blocks/BestEntryStrategy';
+import DisqualifiersList from '@/components/pseo/blocks/DisqualifiersList';
+import WhoWinsMatrix from '@/components/pseo/blocks/WhoWinsMatrix';
+import FundingDensitySnapshot from '@/components/pseo/blocks/FundingDensitySnapshot';
+import LocalBrokerStrategy from '@/components/pseo/blocks/LocalBrokerStrategy';
+import NearbyAlternatives from '@/components/pseo/blocks/NearbyAlternatives';
+import FundingDecisionTree from '@/components/pseo/blocks/FundingDecisionTree';
+import LocalAdvantageHack from '@/components/pseo/blocks/LocalAdvantageHack';
+import WhoShouldLeave from '@/components/pseo/blocks/WhoShouldLeave';
+import KeyLocalInstitutions from '@/components/pseo/blocks/KeyLocalInstitutions';
+import InsiderInsightQuotes from '@/components/pseo/blocks/InsiderInsightQuotes';
+import MicroFAQ from '@/components/pseo/blocks/MicroFAQ';
 
 // Helper to create slugs from names
 function toSlug(text: string): string {
@@ -49,38 +65,44 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ state: string; city: string }> }): Promise<Metadata> {
     const { state: stateParam, city: cityParam } = await params;
     const state = getStateDetailBySlug(stateParam);
-    if (!state || !state.cityGuides) return { title: 'City Not Found' };
+    if (!state || !state.cityGuides) notFound();
 
     const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
-    if (!cityData) return { title: 'City Not Found' };
+    if (!cityData) notFound();
 
     const estimatedPrograms = state.heroStats?.programCount || "50";
     const funding = state.heroStats?.totalFunding || "$1M+";
 
-    const titleVariants = [
-        `${cityData.city} Business Grants 2026: ${estimatedPrograms} Programs That Pay`,
-        `${cityData.city} Grants 2026: ${funding} Waiting (Most Unclaimed)`,
-        `${cityData.city} Business Grants: Access ${estimatedPrograms} Programs`,
-    ];
-
-    let title = titleVariants[0];
-    for (const v of titleVariants) {
-        if (v.length <= 60) { title = v; break; }
-    }
-    if (title.length > 60) {
-        title = `${cityData.city} Business Grants 2026 (${funding}+)`;
-    }
+    // A/B Mix — deterministic split based on city name length
+    const isFormatA = cityData.city.length % 2 === 0;
+    const title = isFormatA
+        ? `${cityData.city} Business Grants 2026 | ${estimatedPrograms} Programs + Apply Now + Deadlines`
+        : `${cityData.city} Grants 2026 ($10K–$250K) | Apply Now + Deadlines`;
 
     return {
         title,
-        description: `Local businesses in ${cityData.city} are missing out on funding. Find highly-targeted grants, ${state.name} state incentives, and federal equity-free programs available in your exact zip code.`,
+        description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
+        keywords: [
+            `${cityData.city} business grants 2026`,
+            `small business grants ${cityData.city} ${state.name}`,
+            `how to apply for grants in ${cityData.city}`,
+            `best grants near ${cityData.city}`,
+            `${cityData.city} government funding`,
+            `local business funding ${cityData.city}`,
+            `${state.name} state grants for ${cityData.city} businesses`,
+            `startup grants ${cityData.city}`,
+            `SBA grants ${cityData.city} ${state.name}`,
+            `women business grants ${cityData.city}`,
+            `${cityData.city} small business funding programs 2026`,
+            `federal grants ${cityData.city} ${state.name}`,
+        ].join(', '),
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}/${cityParam}`,
         },
         robots: { index: true, follow: true },
         openGraph: {
             title,
-            description: `Find funding for your business in ${cityData.city}, ${state.name}. Local grants, state incentives, and zero-equity support.`,
+            description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
             type: 'article',
         },
     };
@@ -94,10 +116,28 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
     const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
     if (!cityData) return notFound();
 
+    // Authority Funnel: Grab up to 3 Tier A or B cities to flow link equity
+    const priorityCities = state.cityGuides
+        .filter(c => (c.tier === 'A' || c.tier === 'B' || !c.tier) && toSlug(c.city) !== cityParam)
+        .slice(0, 3);
+
     // Find local resources that match this city
     const localResources = state.localResources?.filter(r =>
         toSlug(r.location).includes(cityParam) || cityParam.includes(toSlug(r.location))
     ) || [];
+
+    // --- PHASE 4 COMPOSER LOGIC ---
+    const intents: BlockIntent[] = ['informational', 'transactional', 'comparative'];
+    const assignedIntent = intents[(cityParam.length + stateParam.length) % 3];
+
+    const blocksData = composePseoBlocks({
+        tier: (cityData.tier as any) || 'C',
+        industrySlug: 'business',
+        citySlug: cityParam,
+        cityName: cityData.city,
+        stateSlug: stateParam,
+        intent: assignedIntent
+    });
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -114,25 +154,13 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
         }
     };
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": (state.faqs || []).map(faq => ({
-            "@type": "Question",
-            "name": faq.question.replace(new RegExp(state.name, 'g'), cityData.city),
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
+
 
     return (
         <div className="min-h-screen bg-white">
             <Header />
             <main className="py-8">
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
 
                 <article className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
                     {/* Breadcrumb */}
@@ -151,20 +179,38 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                     {/* Hero Section */}
                     <header className="mb-12">
                         <Badge className="mb-4 bg-green-100 text-green-800">{cityData.city} Funding</Badge>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
                             Small Business Grants in {cityData.city}, {state.name}
                         </h1>
 
-                        {state.shortAnswer && (
-                            <ShortAnswerBox content={state.shortAnswer.replace(new RegExp(state.name, 'g'), cityData.city)} />
-                        )}
+                        <CTRTrap />
+
                         <div className="mt-4 mb-6">
                             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-12" />
                         </div>
 
-                        <p className="text-xl text-gray-600 mb-6">
-                            {cityData.description}
-                        </p>
+                        {/* PHASE 4: Dynamic Composed Blocks Render Output */}
+                        <div className="mt-8 mb-8">
+                            {blocksData.map((block, idx) => {
+                                switch (block.type) {
+                                    case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
+                                    case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
+                                    case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
+                                    case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
+                                    case 'WhoWinsMatrix': return <WhoWinsMatrix key={idx} />;
+                                    case 'FundingDensitySnapshot': return <FundingDensitySnapshot key={idx} />;
+                                    case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
+                                    case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
+                                    case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
+                                    case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
+                                    case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
+                                    case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
+                                    case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
+                                    case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
+                                    default: return null; 
+                                }
+                            })}
+                        </div>
 
                         <div className="flex flex-wrap gap-4 mt-6 mb-8">
                             <div className="flex items-center text-gray-600">
@@ -291,6 +337,26 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                         </div>
                     </section>
 
+                    {/* Authority Funnel Internal Links */}
+                    {priorityCities.length > 0 && (
+                        <section className="mb-12 bg-blue-50 border border-blue-100 p-6 rounded-xl">
+                            <h2 className="text-xl font-bold mb-4 text-blue-900 flex items-center">
+                                <Locate className="w-5 h-5 mr-2 text-blue-600" />
+                                Explore Other Priority {state.name} Funding Hubs
+                            </h2>
+                            <p className="text-blue-800 mb-4 text-sm">
+                                Businesses operating statewide or in multiple regions should also explore funding opportunities in these primary economic centers:
+                            </p>
+                            <div className="grid md:grid-cols-3 gap-3">
+                                {priorityCities.map((c, i) => (
+                                    <Link key={i} href={`/usa/${state.slug}/${toSlug(c.city)}`} className="block p-3 bg-white rounded shadow-sm hover:shadow border border-white hover:border-blue-300 transition-all text-center">
+                                        <span className="font-semibold text-blue-700">{c.city} Grants</span>
+                                    </Link>
+                                ))}
+                            </div>
+                        </section>
+                    )}
+
                     {/* FAQs Section */}
                     {state.faqs && state.faqs.length > 0 && (
                         <section className="mb-12">
@@ -315,7 +381,6 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                         </section>
                     )}
 
-                    <GlobalGrantGuide />
                 </article>
             </main>
             <Footer />

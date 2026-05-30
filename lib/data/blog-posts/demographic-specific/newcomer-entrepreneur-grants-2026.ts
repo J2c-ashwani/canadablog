@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "newcomer-entrepreneur-grants-2026",
     shortAnswerQuestion: "How can my business apply for Newcomer Entrepreneur Grants : 2026 in 2026?",
 
-    title: "Newcomer Entrepreneur Grants :... 2026 | $265M",
+    title: "Newcomer Entrepreneur Grants Canada 2026 | $265M+ Available",
 
     excerpt: "🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Access up to $60,000 via Futurpreneur, BDC financing, and settlement agency support.",
     category: "Demographic-Specific",

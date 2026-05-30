@@ -262,6 +262,7 @@ export function generateOrganizationSchema() {
   return {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://www.fsidigital.ca/#organization",
     "name": "FSI Digital",
     "url": "https://www.fsidigital.ca",
     "logo": "https://www.fsidigital.ca/logo.png", // Assuming standard logo path

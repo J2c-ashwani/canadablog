@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "quebec-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for Quebec Business Grants : Innov 2026 in 2026?",
 
-    title: "Quebec Business Grants : Innov... 2026 | $300",
+    title: "Quebec Business Grants 2026: Investissement Québec | $300M+",
 
     excerpt: "🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Explore funds from Investissement Québec, PME MTL, and CED.",
     category: "Province-Specific",

@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
   description: "Complete guide to grants for women in technology and STEM fields. Discover SBIR, NSF, and private grants offering up to $1M for female tech entrepreneurs.",
-  keywords: "women in technology grants, STEM grants women, female tech entrepreneur funding, SBIR women, NSF women grants, women innovation grants",
+  keywords: "women in technology grants, STEM grants women, female tech entrepreneur funding, SBIR women, NSF women grants, women innovation grants, how to apply for NSF grants 2026, NSF eligibility requirements, NSF vs SBIR comparison, how to apply for women tech stem grants guide, women tech stem grants guide eligibility 2026, step by step women tech stem grants guide application guide, best women tech stem grants guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women tech stem grants guide, women tech stem grants guide deadline 2026",
   openGraph: {
     title: "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
     description: "Complete guide to technology and STEM grants specifically for women entrepreneurs and female innovators.",
@@ -54,31 +56,12 @@ export default function WomenTechSTEMGrantsGuide() {
     }
   ]
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+    return (
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-600 to-purple-700 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,6 +148,12 @@ export default function WomenTechSTEMGrantsGuide() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Quick Stats */}
@@ -742,6 +731,10 @@ export default function WomenTechSTEMGrantsGuide() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

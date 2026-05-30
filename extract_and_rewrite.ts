@@ -12,7 +12,7 @@ const targetSlugs = [
   "10-easy-to-win-local-grants-canadian-retail-stores"
 ];
 
-function cleanFluff(text) {
+function cleanFluff(text: string) {
   if (!text) return text;
   // Remove the repetitive AI words that the user complained about
   let cleaned = text
@@ -33,10 +33,10 @@ let extractedCount = 0;
 for (const post of targetPosts) {
   // Clean the content, short answer, excerpt, and FAQ
   post.content = cleanFluff(post.content);
-  post.shortAnswer = cleanFluff(post.shortAnswer);
+  post.shortAnswer = cleanFluff(post.shortAnswer || '');
   post.excerpt = cleanFluff(post.excerpt);
   if (post.seo) {
-    post.seo.metaDescription = cleanFluff(post.seo.metaDescription);
+    post.seo.metaDescription = cleanFluff(post.seo.metaDescription || '');
   }
   if (post.faq) {
     post.faq = post.faq.map(f => ({

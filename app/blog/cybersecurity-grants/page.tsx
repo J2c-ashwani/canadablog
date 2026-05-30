@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Cybersecurity Grants 2026-2027 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
   description: "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity.",
-  keywords: "cybersecurity grants 2026, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding",
+  keywords: "cybersecurity grants 2026, security software funding DOD SBIR, encryption grants DHS, threat detection funding Phase II, zero-trust architecture grants, cloud security funding NSA, penetration testing grants, incident response funding, how to apply for SBIR grants 2026, SBIR eligibility requirements, SBIR vs DOD comparison, how to apply for cybersecurity grants, cybersecurity grants eligibility 2026, step by step cybersecurity grants application guide, best cybersecurity grants for small business Canada, am I eligible for cybersecurity grants, cybersecurity grants deadline 2026",
   openGraph: {
     title: "Cybersecurity Grants 2026 | $1.8M DOD SBIR + DHS Cyber Funding",
     description: "Complete guide to cybersecurity grants from DOD, DHS, NSA, and defense programs.",
@@ -55,27 +57,13 @@ export default function CybersecurityGrantsPage() {
     }
   ]
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  }
-
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Clean Hero Section */}
         <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white py-20 md:py-28">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -196,6 +184,12 @@ export default function CybersecurityGrantsPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Common Questions Section */}
@@ -998,6 +992,10 @@ export default function CybersecurityGrantsPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

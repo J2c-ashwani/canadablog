@@ -192,7 +192,7 @@ const albertaBusinessGrants2026Post: BlogPost = {
     slug: "alberta-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for Alberta Business Grants : Inno 2026 in 2026?",
 
-    title: "Alberta Business Grants : Inno... 2026 | Funding Guide",
+    title: "Alberta Business Grants 2026: Innovation & Energy Transition",
 
     excerpt: albertaBusinessGrants2026.excerpt,
     category: "Province-Specific",

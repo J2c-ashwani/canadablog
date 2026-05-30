@@ -1,0 +1,139 @@
+{
+  "content": "\n  <section id = \"common-questions\" class=\"bg-gradient-to-r from-purple-50 to-pink-50 p-8 rounded-xl mb-10 border border-purple-200\">\n    <h2 class=\"text-2xl font-bold text-purple-900 mb-6\">❓ Common Questions About Manitoba Grants </h2>\n      <div class=\"grid md:grid-cols-2 gap-4\">\n        <a href=\"#young-entrepreneurs\" class=\"p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100\">\n          <h3 class=\"font-semibold text-purple-700\"> Young Entrepreneurs(18 - 29) </h3>\n            <p class=\"text-sm text-gray-600 mt-1\"> Get up to $4,000 for startup costs.</p>\n              </a>\n              <a href = \"#indigenous\" class=\"p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100\">\n                <h3 class=\"font-semibold text-purple-700\"> Indigenous Entrepreneurs </h3>\n                  <p class=\"text-sm text-gray-600 mt-1\"> LRCC offers grants & low - interest loans.</p>\n                    </a>\n                    <a href = \"#tech\" class=\"p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100\">\n                      <h3 class=\"font-semibold text-purple-700\"> Tech Startups </h3>\n                        <p class=\"text-sm text-gray-600 mt-1\"> North Forge offers $10k + value in support.</p>\n                          </a>\n                          <a href = \"#agriculture\" class=\"p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100\">\n                            <h3 class=\"font-semibold text-purple-700\"> Young Farmers </h3>\n                              <p class=\"text-sm text-gray-600 mt-1\"> MASC offers loan guarantees & rebates.</p>\n                                </a>\n                                </div>\n                                </section>\n                                <div class=\"bg-gradient-to-r from-purple-50 to-pink-50 p-6 rounded-lg mb-8 border border-purple-200\">\n                                  <h2 class=\"text-2xl font-bold text-purple-900 mb-4\">🌻 Manitoba: Heart of the Continent </h2>\n                                    <p class=\"mb-4 text-purple-800\"> Manitoba offers a stable, diverse economy with strong support for <strong>manufacturing, agriculture, and Indigenous business </strong>.</p>\n                                      <div class= \"grid md:grid-cols-2 gap-6\">\n                                        <div>\n                                        <h3 class=\"font-bold text-purple-800 mb-2\">🚀 Provincial Programs </h3>\n                                          <ul class=\"text-purple-700 space-y-1 text-sm\">\n                                            <li>• <strong>Innovation Growth Program(IGP): </strong> Grant for valid tech</li>\n                                              <li>• <strong>Manitoba Works Capital Incentive: </strong> Tax rebates</li>\n                                                <li>• <strong>Young Entrepreneurs: </strong> $4,000 grant</li>\n                                                  <li>• <strong>Sector Support: </strong> Strategic industry funding</li>\n                                                    </ul>\n                                                    </div>\n                                                    <div>\n                                                    <h3 class=\"font-bold text-purple-800 mb-2\">🏢 Key Partners </h3>\n                                                      <ul class=\"text-purple-700 space-y-1 text-sm\">\n                                                        <li>• <strong>PrairiesCan: </strong> Federal agency</li>\n                                                          <li>• <strong>North Forge: </strong> Startup incubator</li>\n                                                            <li>• <strong>World Trade Centre Winnipeg: </strong> Export help</li>\n                                                              <li>• <strong>FPEGF: </strong> First Peoples Fund</li>\n                                                                </ul>\n                                                                </div>\n                                                                </div>\n                                                                </div>\n\n                                                                <h2> Tech & Innovation: IGP </h2>\n                                                                  <p> The <strong> Innovation Growth Program(IGP) </strong> is Manitoba's flagship grant for SMEs commercializing new products.</p>\n                                                                    <ul>\n                                                                    <li><strong>Grant: </strong> Up to $100,000 (50/50 cost - share).</li>\n                                                                      <li> <strong>Goal: </strong> Take a working prototype and get it into the market.</li>\n                                                                        </ul>\n\n                                                                        <h2> Startups: Futurepreneur & North Forge </h2>\n                                                                          <p> <strong>North Forge </strong> is the largest fabrication lab and incubator in North America. They offer the \"Founders Program\" which provides mentorship and access to funding.</p>\n                                                                            <p>For youth(18 - 39), <strong>Futurepreneur Canada </strong> (partnering with BDC) offers up to $60,000 in loans + mentorship.</p>\n\n                                                                              <h2>Indigenous Business: FPEGF </h2>\n                                                                                <p> The <strong> First Peoples Economic Growth Fund(FPEGF) </strong> offers some of the best grants in the country for Métis and First Nations entrepreneurs in Manitoba.</p>\n                                                                                  <ul>\n                                                                                  <li><strong>Business Plan Contribution: </strong> Grant to hire a consultant.</li>\n                                                                                    <li><strong>Business Contribution Fund: </strong> Non-repayable grant up to 40% of capital costs.</li>\n                                                                                      </ul>\n\n                                                                                      <h2> Export: World Trade Centre Winnipeg </h2>\n                                                                                        <p> The WTC Winnipeg manages the <strong> Trade Accelerator Program(TAP) </strong>. While not a direct cash grant, graduates often get expedited access to <a href=\"/blog/canexport-grants-2026\" class=\"text-blue-600 hover:text-blue-800 underline decoration-blue-200 decoration-2 underline-offset-2 transition-colors font-medium wikipedia-link\">CanExport</a> funding (up to $50,000).</p>\n\n                                                                                          <h2>Manufacturing: Industry Expansion </h2>\n                                                                                            <p> The <strong> Manitoba Works Capital Incentive </strong> is a tax rebate for companies that invest significantly ($10M+) in new property. For smaller manufacturers, <strong>PrairiesCan</strong> offers interest - free loans for new equipment.</p>\n\n                                                                                              <h2> Success Stories </h2>\n  <div class= \"bg-purple-50 border-l-4 border-purple-500 p-6 my-6\">\n  <h3 class= \"font-bold text-purple-900 mt-0\"> Bold Commerce(Winnipeg, MB) </h3>\n    <p class=\"text-purple-800\"> Funding: IGP & PrairiesCan </p>\n      <p class=\"mt-2 text-sm text-purple-700\"> \"Winnipeg's tech darling Bold Commerce used early provincial support to scale their e-commerce tools. They are now one of the largest employers of developers in the province.\" </p>\n        </div>\n  <!-- Indexing recovery expansion: unique funding guidance, internal links, and lead CTA. -->\n\n  <section class=\"mt-10 rounded-xl border border-emerald-100 bg-emerald-50 p-6\">\n    <h2 class=\"text-2xl font-bold text-gray-900 mb-3\">2026 Funding Snapshot for Manitoba Business Grants 2026: IGP & Growth Programs | $4M+</h2>\n    <p class=\"text-gray-800 leading-relaxed mb-4\">This page is built for founders and small business owners comparing Manitoba Business Grants 2026: IGP & Growth Programs | $4M+ options in 2026. The strongest applications do not begin with a form; they begin with a short funding map that connects the program, the eligible expense, the evidence required, and the business outcome the funder can measure.</p>\n    <p class=\"text-gray-800 leading-relaxed\">For this Province-Specific topic, prioritize programs that match your next funded action: hiring, product development, equipment purchase, export growth, market validation, or working capital. If a program does not match the next 90 to 180 days of work, keep it on your watchlist and apply to a better-fit option first.</p>\n  </section>\n\n  <h2 class=\"text-2xl font-bold text-gray-900 mt-10 mb-4\">Best-Fit Programs to Check First</h2>\n  <div class=\"overflow-x-auto mb-6\">\n    <table class=\"min-w-full border-collapse bg-white text-sm\">\n      <thead>\n        <tr class=\"bg-gray-100 text-left\">\n          <th class=\"border border-gray-200 px-4 py-3\">Program lane</th>\n          <th class=\"border border-gray-200 px-4 py-3\">Typical support</th>\n          <th class=\"border border-gray-200 px-4 py-3\">Best fit</th>\n          <th class=\"border border-gray-200 px-4 py-3\">Timing note</th>\n        </tr>\n      </thead>\n      <tbody>\n      <tr>\n        <td class=\"border border-gray-200 px-4 py-3 font-semibold text-gray-900\">NRC IRAP</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Advisory support and project contributions for R&D or commercialization work</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Companies with technical uncertainty, a defined work plan, and Canadian economic benefit</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Start advisor conversations before the project begins; funding is not designed to reimburse work already completed</td>\n      </tr>\n      <tr>\n        <td class=\"border border-gray-200 px-4 py-3 font-semibold text-gray-900\">SR&ED tax credits</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Refundable or non-refundable tax credits tied to eligible experimental development costs</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Businesses documenting technical hypotheses, testing, failures, and staff time</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Claims are filed with the corporate tax return, so documentation must be captured while work is happening</td>\n      </tr>\n      <tr>\n        <td class=\"border border-gray-200 px-4 py-3 font-semibold text-gray-900\">Regional development agencies</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Repayable and non-repayable support for regional expansion, productivity, hiring, and export readiness</td>\n        <td class=\"border border-gray-200 px-4 py-3\">SMEs that can show local jobs, matching funds, and measurable growth outcomes</td>\n        <td class=\"border border-gray-200 px-4 py-3\">Most intakes are rolling or program-window based; early contact improves fit</td>\n      </tr>\n      </tbody>\n    </table>\n  </div>\n  <p class=\"text-gray-700 leading-relaxed mb-6\">Use this table as a screening layer before investing time in a full application. The right program should match your entity type, location, project stage, expense category, and ability to provide matching funds or documentation.</p>\n\n  <h2 class=\"text-2xl font-bold text-gray-900 mt-10 mb-4\">Eligibility Checklist Before You Apply</h2>\n  <ul class=\"list-disc pl-6 space-y-3 text-gray-700 mb-6\">\n    <li><strong>Business status:</strong> Confirm that your registration, tax filings, ownership records, and address match the program's geographic rules.</li>\n    <li><strong>Project timing:</strong> Many grants do not reimburse expenses that started before approval, so separate planned work from completed work.</li>\n    <li><strong>Use of funds:</strong> Match each budget line to a fundable category such as payroll, contractors, equipment, training, commercialization, or export development.</li>\n    <li><strong>Evidence:</strong> Keep quotes, payroll estimates, project milestones, technical notes, customer proof, and financial statements ready before the deadline.</li>\n    <li><strong>Stacking:</strong> If you combine grants, loans, tax credits, or rebates, track which program is paying for which expense to avoid double counting.</li>\n  </ul>\n\n  <h2 class=\"text-2xl font-bold text-gray-900 mt-10 mb-4\">Application Timeline That Works</h2>\n  <p class=\"text-gray-700 leading-relaxed mb-4\">A practical funding timeline is usually 30 to 60 days for simple local grants, 60 to 120 days for provincial or state programs, and 3 to 9 months for competitive R&D or commercialization funding. Start by writing a one-page project brief: the problem, the work plan, the budget, the team, and the measurable outcome.</p>\n  <p class=\"text-gray-700 leading-relaxed mb-6\">After that, request a short fit check with the program officer or local business advisor. A 15-minute fit conversation can prevent weeks of wasted application work. If you receive a weak signal, ask what would make the project eligible later and move the opportunity to a future intake.</p>\n\n  <h2 class=\"text-2xl font-bold text-gray-900 mt-10 mb-4\">Documents to Prepare</h2>\n  <div class=\"grid md:grid-cols-2 gap-4 mb-6\">\n    <div class=\"bg-white border border-gray-200 rounded-lg p-4\">\n      <h3 class=\"font-bold text-gray-900 mb-2\">Core business file</h3>\n      <p class=\"text-gray-700 text-sm\">Articles of incorporation or registration, ownership table, most recent financial statements, tax numbers, payroll count, and a short company overview.</p>\n    </div>\n    <div class=\"bg-white border border-gray-200 rounded-lg p-4\">\n      <h3 class=\"font-bold text-gray-900 mb-2\">Project file</h3>\n      <p class=\"text-gray-700 text-sm\">Budget, quotes, work plan, milestones, job impact, technical scope, market validation, and a clear explanation of why funding changes the project's speed or scale.</p>\n    </div>\n  </div>\n\n  <h2 class=\"text-2xl font-bold text-gray-900 mt-10 mb-4\">Related Resources</h2>\n  <p class=\"text-gray-700 leading-relaxed mb-3\">Use these internal resources to move from research to action:</p>\n  <ul class=\"list-disc pl-6 space-y-2 text-gray-700 mb-6\"><li><a href=\"/canada\" class=\"text-emerald-700 hover:text-emerald-900 underline\">Canada grants hub</a></li><li><a href=\"/guides/apply-irap-grants\" class=\"text-emerald-700 hover:text-emerald-900 underline\">IRAP application guide</a></li><li><a href=\"/blog/sred-tax-credits-2026\" class=\"text-emerald-700 hover:text-emerald-900 underline\">SR&ED guide</a></li>\n  </ul>\n  <p class=\"text-gray-700 leading-relaxed\">If you are comparing multiple programs, open each guide in a separate tab and score the fit by deadline, amount, match requirement, approval time, and documentation burden.</p>\n\n  <div class=\"mt-10 rounded-xl border border-emerald-200 bg-white p-6 shadow-sm\">\n    <h2 class=\"text-2xl font-bold text-gray-900 mb-3\">Need a Shortlist for Your Business?</h2>\n    <p class=\"text-gray-700 leading-relaxed mb-4\">Use the free grant finder to turn this research into a ranked funding shortlist. You will get a cleaner answer if you include your location, industry, current revenue, planned expenses, and whether the project has already started.</p>\n    <div class=\"flex flex-col sm:flex-row gap-3\">\n      <a href=\"/grant-finder\" class=\"inline-flex items-center justify-center rounded-md bg-emerald-700 px-5 py-3 text-white font-semibold hover:bg-emerald-800\">Find matching grants</a>\n      <a href=\"/contact\" class=\"inline-flex items-center justify-center rounded-md border border-emerald-700 px-5 py-3 text-emerald-800 font-semibold hover:bg-emerald-50\">Ask for review help</a>\n    </div>\n  </div>\n",
+  "shortAnswer": "To apply for Manitoba Business Grants : IGP 2026, start by reviewing the eligibility criteria and preparing a project proposal. Manitoba's Innovation Growth Program gives up to $100K for commercialization. Plus FPEGF for Indigenous businesses and North Forge's startup incubator. Full program list inside. Funding available: up to $4 (with related programs offering $100K).",
+  "shortAnswerQuestion": "How can my business apply for Manitoba Business Grants : IGP 2026 in 2026?",
+  "faq": [
+    {
+      "question": "Is there a grant for opening a restaurant in Winnipeg?",
+      "answer": "Generally no. However, if you are a young entrepreneur (18-29), the <strong>Young Entrepreneurs Grant</strong> ($4,000) can help with startup costs."
+    },
+    {
+      "question": "What is the specific grant for Métis entrepreneurs?",
+      "answer": "The <strong>Louis Riel Capital Corporation (LRCC)</strong> offers grants and loans specifically for Métis citizens in Manitoba."
+    },
+    {
+      "question": "Does North Forge give money?",
+      "answer": "North Forge provides <strong>in-kind</strong> support (equipment access, mentorship) which is worth thousands. They also help you apply for the 'North Forge Angel Network' investment."
+    },
+    {
+      "question": "Can I get funding to buy a farm?",
+      "answer": "<strong>MASC (Manitoba Agricultural Services Corporation)</strong> offers loan guarantees and direct loans for young farmers, but rarely free grants for land purchase."
+    },
+    {
+      "question": "What is the Digital Manitoba Initiative?",
+      "answer": "This program (often delivered with the Chamber of Commerce) helps businesses adopt digital tools. Check if it is currently open as it operates in waves."
+    },
+    {
+      "question": "Are these grants taxable?",
+      "answer": "Yes. Most government grants are considered taxable income."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Total",
+      "value": "$800M",
+      "description": "Provincial Aid",
+      "color": "text-purple-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Tech",
+      "value": "$100k",
+      "description": "IGP Grant",
+      "color": "text-green-600",
+      "iconName": "Zap"
+    },
+    {
+      "label": "Indigenous",
+      "value": "40%",
+      "description": "Capital Grant",
+      "color": "text-orange-600",
+      "iconName": "Users"
+    },
+    {
+      "label": "Region",
+      "value": "MB",
+      "description": "Keystone",
+      "color": "text-blue-600",
+      "iconName": "MapPin"
+    }
+  ],
+  "expertTip": {
+    "title": "Check the Intake",
+    "type": "warning",
+    "content": "Manitoba's <strong>Innovation Growth Program (IGP)</strong> has quarterly intake dates. If you miss the deadline by one day, you have to wait 3 months. Check the calendar!"
+  },
+  "seo": {
+    "keywords": [
+      "Manitoba Business Grants",
+      "Innovation Growth Program",
+      "North Forge",
+      "FPEGF",
+      "Winnipeg Business"
+    ]
+  },
+  "comparisonTable": {
+    "title": "Manitoba Business Grants : IGP, North Forge & More [Guide] Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Manitoba Business Grants : IGP, North Forge & More [Guide] Grant",
+        "amount": "$4",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
+    },
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  },
+  "relatedLinks": [
+    {
+      "title": "Programs",
+      "href": "/blog/canada-hiring-training-grants-guide",
+      "description": "Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creat..."
+    },
+    {
+      "title": "Local Office First",
+      "href": "/blog/ontario-innovation-grants",
+      "description": "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OI..."
+    },
+    {
+      "title": "RE3 Fast Track",
+      "href": "/blog/prairie-provinces-innovation-grants",
+      "description": "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesC..."
+    }
+  ]
+}

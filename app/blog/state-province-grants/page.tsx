@@ -17,6 +17,7 @@ import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "State & Province Business Grants (2026): Local Funding Guide",
@@ -30,65 +31,16 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Do I have to move my whole company to get state grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not necessarily. Most state grants require you to have a \"nexus\" or physical presence in that state, such as a branch office or R&D lab. You don't always have to move your HQ, but the employees associated with the grant must work in that jurisdiction."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I negotiate tax incentives with states?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Absolutely. Unlike federal grants, state incentives are often negotiated deals. Everything is on the table: property tax rates, free land, utility rates, and training cash. The more jobs you create, the more leverage you have."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the \"But-For\" Clause?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Many states require you to sign an affidavit stating that \"But for this incentive, the project would not occur in this state.\" If you announce a move before signing, you lose leverage."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are Canadian or US grants better?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "US Grants (SBIR) offer larger upfront non-dilutive cash for R&D. Canadian Grants (SR&ED, IRAP) focus on tax credits and wage subsidies, offering lower engineering costs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is a Site Selector?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "A Site Selector is a professional consultant who helps companies find the best location for new facilities and negotiates incentive packages anonymously on their behalf."
-      }
-    }
-  ]
-}
-
 export default function StateProvinceGrantsPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("state-province-grants");
   const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50 dark:bg-neutral-900">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-emerald-900 to-teal-900 text-white py-24 relative overflow-hidden">
@@ -231,7 +183,7 @@ export default function StateProvinceGrantsPage() {
                   </div>
                 </div>
 
-                <AdSlot adSlot="1122334455" adFormat="horizontal" className="my-10" />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" className="my-10" />
 
                 {/* New Section V4: Top 10 Investment States Deep Dive */}
                 <div id="top-10-states" className="scroll-mt-32 mt-20">
@@ -533,13 +485,13 @@ export default function StateProvinceGrantsPage() {
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Truck className="mr-2" /> Automotive & EV Battery Belt</h4>
                       <p className="text-sm font-bold text-purple-600 mb-2">Location: Michigan, Ohio, Ontario, Kentucky</p>
                       <p className="text-sm text-gray-600">If you make anything related to EVs (batteries, sensors, metals), this is the only place to be. Grants available for "re-tooling" traditional auto plants.</p>
-                      <Link href="/blog/manufacturing-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View MFG Grants</Link>
+                      <Link href="/blog/manufacturing-grants-2026" className="text-blue-600 text-xs mt-2 block hover:underline">View MFG Grants</Link>
                     </div>
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Anchor className="mr-2" /> The Blue Economy (Ocean)</h4>
                       <p className="text-sm font-bold text-purple-600 mb-2">Location: Halifax (NS), St. John's (NL), Boston (MA)</p>
                       <p className="text-sm text-gray-600">For underwater robotics, sensors, and sustainable fisheries. The "Ocean Supercluster" (Canada) is a massive funder here.</p>
-                      <Link href="/blog/ocean-tech-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View Ocean Grants</Link>
+                      <Link href="/blog/atlantic-canada-innovation-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View Ocean Grants</Link>
                     </div>
                     <div className="bg-slate-50 p-6 rounded-xl border border-slate-200">
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Zap className="mr-2" /> Clean Energy Transition</h4>
@@ -551,7 +503,7 @@ export default function StateProvinceGrantsPage() {
                       <h4 className="font-bold text-xl text-slate-800 mb-2 flex items-center"><Microscope className="mr-2" /> Life Sciences Corridor</h4>
                       <p className="text-sm font-bold text-purple-600 mb-2">Location: Boston, Toronto, Montreal, San Diego</p>
                       <p className="text-sm text-gray-600">Highest concentration of venture capital and lab space. Grants focus on clinical trials and FDA/Health Canada approvals.</p>
-                      <Link href="/blog/health-tech-grants" className="text-blue-600 text-xs mt-2 block hover:underline">View Health Grants</Link>
+                      <Link href="/blog/healthcare-grants-2026" className="text-blue-600 text-xs mt-2 block hover:underline">View Health Grants</Link>
                     </div>
                   </div>
                 </div>
@@ -675,26 +627,26 @@ export default function StateProvinceGrantsPage() {
                   <h3 className="font-bold text-gray-900 mb-4 text-lg">Regional Guides</h3>
                   <ul className="space-y-4">
                     <li>
-                      <Link href="/blog/ontario-business-grants" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/ontario-government-business-grants" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <MapPin className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>Ontario Grants</strong><br /><span className="text-xs text-gray-500 font-normal">FedDev & Provincial funds</span></span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/texas-business-incentives" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/texas-business-grants-2026" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <Sun className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>Texas Incentives</strong><br /><span className="text-xs text-gray-500 font-normal">Enterprise Fund details</span></span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/rural-funding-guide" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/rural-business-development-2026" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <Wheat className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>Rural Business Guide</strong><br /><span className="text-xs text-gray-500 font-normal">USDA & Community Futures</span></span>
                       </Link>
                     </li>
                   </ul>
                 </div>
-                <AdSlot adSlot="5566778899" adFormat="vertical" style={{ minHeight: '600px' }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
               </aside>
 
             </div>
@@ -737,7 +689,7 @@ export default function StateProvinceGrantsPage() {
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Regional Development Agencies</h3>
                   <p className="text-gray-600 text-sm">Canada's 7 RDAs offering up to $10M in federal regional funding</p>
                 </Link>
-                <Link href="/blog/ontario-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
+                <Link href="/blog/ontario-government-business-grants" className="block p-6 bg-white rounded-xl border border-gray-200 hover:border-emerald-500 hover:shadow-lg transition-all group">
                   <h3 className="font-bold text-lg text-gray-900 group-hover:text-emerald-700 mb-2">Ontario Business Grants</h3>
                   <p className="text-gray-600 text-sm">FedDev Ontario and provincial funding programs</p>
                 </Link>

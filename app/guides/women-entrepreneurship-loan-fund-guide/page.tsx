@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Loan Fund (WELF) 2026 | $50K Loans",
   description: "Official guide to the Women Entrepreneurship Loan Fund (WELF). Apply for up to $50,000 in microloans through WEOC, NACCA, and other partners.",
-  keywords: "Women Entrepreneurship Loan Fund, WELF loan, women business loans Canada, WEOC loans, NACCA women funding",
+  keywords: "Women Entrepreneurship Loan Fund, WELF loan, women business loans Canada, WEOC loans, NACCA women funding, women entrepreneurship loan fund guide application checklist 2026, women entrepreneurship loan fund guide requirements and documents needed, women entrepreneurship loan fund guide approval timeline, women entrepreneurship loan fund guide application tips, WELF application step by step guide, WELF eligibility checker, best grants for small business Canada 2026, am I eligible for women entrepreneurship loan fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/women-entrepreneurship-loan-fund-guide",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Women Entrepreneurship Loan Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is a $55 million federal program that provides loans of up to $50,000 to women entrepreneurs. It is delivered through partners like WEOC, NACCA, and Coralus."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply directly to the government?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. You must apply through one of the approved delivery organizations (WEOC, NACCA, Coralus, Evol, etc.) based on your region and profile."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the WELF loan interest-free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends on the delivery partner. Coralus (formerly SheEO) offers 0% interest loans. Others may charge prime-based interest rates."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for WELF?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. WELF is specifically designed to support startups and underrepresented women entrepreneurs who may struggle to get financing from traditional banks."
-      }
-    }
-  ]
-}
-
 export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-pink-600 to-purple-900 text-white py-20 relative overflow-hidden">
@@ -423,6 +385,10 @@ export default function WomenEntrepreneurshipLoanFundApplicationGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

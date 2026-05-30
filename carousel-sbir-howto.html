@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSI Digital - How to Apply for SBIR Carousel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: #222; display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px; }
+@media print {
+  @page { size: 1080px 1350px; margin: 0; }
+  body { background: transparent; padding: 0; margin: 0; display: block; gap: 0; }
+  .slide { page-break-after: always; break-after: page; box-shadow: none !important; margin: 0 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
+}
+.slide { width: 1080px; height: 1350px; background: #fff; position: relative; display: flex; flex-direction: column; flex-shrink: 0; font-family: 'DM Sans', sans-serif; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+
+/* COVER */
+.cover { background: #E60023; }
+.cover .bg-circle1 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: rgba(255,255,255,.06); top: -300px; right: -300px; }
+.cover .bg-circle2 { position: absolute; width: 680px; height: 680px; border-radius: 50%; background: rgba(255,255,255,.04); bottom: 200px; left: -200px; }
+.cover .top-bar { padding: 80px 80px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.cover .logo { font-size: 46px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .1em; text-transform: uppercase; }
+.cover .flag { background: rgba(255,255,255,.2); border-radius: 12px; padding: 12px 36px; font-size: 40px; color: #fff; font-weight: 700; }
+.cover .mid { padding: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.cover .step-badge { font-size: 500px; font-weight: 900; color: rgba(255,255,255,.08); line-height: .8; position: absolute; top: 80px; right: -20px; font-family: 'Playfair Display', serif; }
+.cover .tag { font-size: 46px; font-weight: 800; color: #fff; text-transform: uppercase; margin-bottom: 20px; background: rgba(0,0,0,0.25); display: inline-block; padding: 10px 30px; border-radius: 12px; align-self: flex-start; }
+.cover .title { font-family: 'Playfair Display', serif; font-size: 115px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 30px; }
+.cover .subtitle { font-size: 50px; color: rgba(255,255,255,.9); line-height: 1.4; font-weight: 500; }
+.cover .bottom { padding: 60px 80px; background: rgba(0,0,0,.2); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+.cover .dots { display: flex; gap: 20px; }
+.cover .dot { width: 70px; height: 20px; border-radius: 10px; background: rgba(255,255,255,.3); }
+.cover .dot.active { background: #fff; width: 120px; }
+.cover .cta-txt { font-size: 46px; color: #fff; font-weight: 700; }
+
+/* STEP SLIDES */
+.step-slide { background: #fff; border: 8px solid #f0f0f0; }
+.step-slide .header { padding: 60px 80px 50px; display: flex; align-items: center; gap: 50px; background: #fafafa; border-bottom: 4px solid #f0f0f0; }
+.step-slide .step-num { min-width: 180px; height: 180px; border-radius: 50%; background: #E60023; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 10px 30px rgba(230,0,35,0.2); }
+.step-slide .step-num span { font-family: 'Playfair Display', serif; font-size: 90px; font-weight: 900; color: #fff; }
+.step-slide .header-text { flex: 1; }
+.step-slide .step-label { font-size: 38px; font-weight: 800; color: #E60023; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 12px; }
+.step-slide .step-title { font-family: 'Playfair Display', serif; font-size: 70px; font-weight: 900; color: #1a1a1a; line-height: 1.15; }
+.step-slide .progress-bar { height: 12px; background: #f0f0f0; margin: 0 80px; border-radius: 6px; overflow: hidden; }
+.step-slide .progress-fill { height: 100%; background: #E60023; border-radius: 6px; transition: width .3s; }
+.step-slide .body { padding: 60px 80px; flex: 1; display: flex; flex-direction: column; gap: 40px; }
+.step-slide .main-desc { font-size: 56px; color: #1a1a1a; line-height: 1.45; font-weight: 600; }
+.step-slide .tip-box { background: #fff5f6; border: 4px solid #ffd6da; border-radius: 24px; padding: 40px 50px; display: flex; gap: 30px; align-items: flex-start; }
+.step-slide .tip-icon { font-size: 60px; flex-shrink: 0; }
+.step-slide .tip-text { font-size: 44px; color: #333; line-height: 1.4; font-weight: 500; }
+.step-slide .tip-text strong { color: #E60023; }
+.step-slide .footer { margin-top: auto; padding: 40px 80px; background: #fafafa; border-top: 4px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.step-slide .url { font-size: 30px; color: #999; font-weight: 700; }
+.step-slide .next-btn { background: #E60023; border-radius: 24px; padding: 22px 55px; font-size: 38px; color: #fff; font-weight: 800; text-transform: uppercase; flex-shrink: 0; }
+
+/* PATTERN BREAK */
+.pattern-break { background: #111; display: flex; flex-direction: column; justify-content: center; padding: 120px; }
+.pattern-break h2 { font-family: 'Playfair Display', serif; font-size: 160px; font-weight: 900; color: #E60023; margin-bottom: 60px; line-height: 1; }
+.pattern-break p { font-size: 85px; font-weight: 700; color: #fff; line-height: 1.25; }
+.pattern-break .arrow { margin-top: auto; font-size: 60px; color: #666; font-weight: 800; align-self: flex-end; }
+
+/* CTA */
+.cta-slide { background: #1a1a1a; text-align: center; justify-content: center; align-items: center; padding: 80px; border: none; }
+.cta-slide .bg-overlay { position: absolute; top:0;left:0;right:0;bottom:0; background: radial-gradient(circle at center, rgba(230,0,35,0.15) 0%, transparent 70%); z-index: 1; }
+.cta-slide .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+.cta-slide .logo-huge { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #fff; }
+.cta-slide h2 { font-size: 90px; font-weight: 800; line-height: 1.15; color: #fff; }
+.cta-slide .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 60px; width: 100%; margin: 40px 0; }
+.cta-slide .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; margin-bottom: 20px; }
+.cta-slide .comment-word { font-size: 90px; font-weight: 900; color: #ff3347; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.cta-slide .sub { font-size: 40px; color: #aaa; margin-top: 20px; margin-bottom: 0; }
+.cta-slide .or-text { font-size: 40px; color: #666; font-weight: 700; text-transform: uppercase; }
+.cta-slide .url-text { font-size: 60px; font-weight: 800; color: #fff; }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="slide cover">
+  <div class="bg-circle1"></div><div class="bg-circle2"></div>
+  <div class="top-bar">
+    <div class="logo">FSI Digital</div>
+    <div class="flag">🇺🇸 SBIR Guide</div>
+  </div>
+  <div class="mid">
+    <div class="step-badge">5</div>
+    <div class="tag">FREE STEP-BY-STEP GUIDE</div>
+    <div class="title">How to Win an SBIR Grant<br>in 2026</div>
+    <div class="subtitle">The exact 5-step blueprint most founders<br>never get told about.<br><span style="color:rgba(255,255,255,.6)">Save this — share it with your co-founder.</span></div>
+  </div>
+  <div class="bottom">
+    <div class="dots"><div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+    <div class="cta-txt">Swipe to start →</div>
+  </div>
+</div>
+
+<!-- STEP 1 -->
+<div class="slide step-slide">
+  <div class="header">
+    <div class="step-num"><span>1</span></div>
+    <div class="header-text">
+      <div class="step-label">Step 1 of 5</div>
+      <div class="step-title">Check Eligibility First</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:20%"></div></div>
+  <div class="body">
+    <div class="main-desc">Before writing a single word, confirm your business meets the basic SBIR requirements — or you'll waste weeks on a disqualified application.</div>
+    <div class="tip-box">
+      <div class="tip-icon">✅</div>
+      <div class="tip-text">You need: <strong>US-based for-profit company</strong>, under 500 employees, majority owned by US citizens or permanent residents.</div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/federal-grants</div><div class="next-btn">Next Step →</div></div>
+</div>
+
+<!-- STEP 2 -->
+<div class="slide step-slide">
+  <div class="header">
+    <div class="step-num"><span>2</span></div>
+    <div class="header-text">
+      <div class="step-label">Step 2 of 5</div>
+      <div class="step-title">Pick the Right Agency</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:40%"></div></div>
+  <div class="body">
+    <div class="main-desc">There are 11 federal agencies running SBIR programs. Choosing the wrong one is the #1 mistake founders make. Match your tech to their mission.</div>
+    <div class="tip-box">
+      <div class="tip-icon">🎯</div>
+      <div class="tip-text"><strong>Tech startups → NSF · DOE</strong><br>Health &amp; Biotech → NIH<br>Defence tech → DOD · DARPA<br>AgriTech → USDA</div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/technology-startup-grants</div><div class="next-btn">Next Step →</div></div>
+</div>
+
+<!-- STEP 3 -->
+<div class="slide step-slide">
+  <div class="header">
+    <div class="step-num"><span>3</span></div>
+    <div class="header-text">
+      <div class="step-label">Step 3 of 5</div>
+      <div class="step-title">Write Your Technical Narrative</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div>
+  <div class="body">
+    <div class="main-desc">This is where 80% of applicants fail. Reviewers score on two dimensions: Technical Merit AND Commercial Potential. You need to nail both.</div>
+    <div class="tip-box">
+      <div class="tip-icon">💡</div>
+      <div class="tip-text">Frame every technical paragraph with a <strong>market outcome</strong>. Don't just say what it does — say what problem it solves and how large that market is.</div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/guides/sbir-research-grants-guide</div><div class="next-btn">Next Step →</div></div>
+</div>
+
+<!-- PATTERN BREAK -->
+<div class="slide pattern-break">
+  <h2>Heads up...</h2>
+  <p>The next 2 steps are where funded startups pull<br>ahead of unfunded ones.</p>
+  <div class="arrow">Keep reading &rarr;</div>
+</div>
+
+<!-- STEP 4 -->
+<div class="slide step-slide">
+  <div class="header">
+    <div class="step-num"><span>4</span></div>
+    <div class="header-text">
+      <div class="step-label">Step 4 of 5</div>
+      <div class="step-title">Submit Before the Deadline</div>
+    </div>
+  </div>
+  <div class="progress-bar"><div class="progress-fill" style="width:80%"></div></div>
+  <div class="body">
+    <div class="main-desc">SBIR submission portals close at the exact second of the deadline. Late submissions are rejected with zero exceptions — even by 1 minute.</div>
+    <div class="tip-box">
+      <div class="tip-icon">⏰</div>
+      <div class="tip-text">Submit at least <strong>72 hours early</strong>. Portal outages are common near deadlines. Register on <strong>grants.gov</strong> weeks in advance — takes 3-5 business days.</div>
+    </div>
+  </div>
+  <div class="footer"><div class="url">fsidigital.ca/usa/federal-grants</div><div class="next-btn">Next Step →</div></div>
+</div>
+
+<!-- STEP 5 -->
+<div class="slide step-slide" style="border-color:#E60023; border-width:12px;">
+  <div class="header" style="background:#fff5f6">
+    <div class="step-num" style="background:#1a1a1a"><span>5</span></div>
+    <div class="header-text">
+      <div class="step-label" style="color:#1a1a1a">Step 5 of 5 🏆</div>
+      <div class="step-title">Prepare for Phase II</div>
+    </div>
+  </div>
+  <div class="progress-bar" style="margin:0;"><div class="progress-fill" style="width:100%; background:#1a1a1a;"></div></div>
+  <div class="body">
+    <div class="main-desc">If awarded Phase I ($275K), immediately begin building your Phase II application ($1.7M). The window is shorter than most think — just 6-12 months.</div>
+    <div class="tip-box" style="background:#f5f5f5; border-color:#e0e0e0;">
+      <div class="tip-icon">🚀</div>
+      <div class="tip-text">Phase II requires <strong>proven commercialisation traction</strong>: letters of intent from customers, pilot users, or private co-investment. Start collecting these on Day 1.</div>
+    </div>
+  </div>
+  <div class="footer" style="background:#fff5f6; border-top:4px solid #ffd6da;">
+    <div class="url">fsidigital.ca/guides/sbir-research-grants-guide</div>
+    <div class="next-btn" style="background:#1a1a1a">Save</div>
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="slide cta-slide">
+  <div class="bg-overlay"></div>
+  <div class="content">
+    <div class="logo-huge">FSI Digital</div>
+    <h2>Want the full SBIR<br>guide + template?</h2>
+    <div class="lead-box">
+      <p>Comment</p>
+      <div class="comment-word">"SBIR"</div>
+      <p class="sub">and I'll send you the full guide + application template</p>
+    </div>
+    <div class="or-text">or visit</div>
+    <div class="url-text">fsidigital.ca</div>
+  </div>
+</div>
+
+</body>
+</html>

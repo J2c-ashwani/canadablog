@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "apply-sba-loans",
+    "type": "guide",
+    "path": "app/guides/apply-sba-loans/page.tsx",
+    "newTitle": "How to Get SBA Loans (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top sba loans offering up to $5M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-startup-funding-grants-guide",
+    "type": "blog",
+    "path": "app/blog/canada-startup-funding-grants-guide/page.tsx",
+    "newTitle": "Top Canada Startup Grants (2026) – Get Up to $1.2B",
+    "newDesc": "Explore top canada startup grants offering up to $1.2B in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-irap-grants",
+    "type": "guide",
+    "path": "app/guides/apply-irap-grants/page.tsx",
+    "newTitle": "How to Get IRAP Grants (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top irap grants offering up to $10M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-small-business-grants",
+    "type": "guide",
+    "path": "app/guides/apply-small-business-grants/page.tsx",
+    "newTitle": "Small Business Grants 2026 – Funding up to $250K Available",
+    "newDesc": "Explore top small business grants offering up to $250K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "women-entrepreneurship-fund-guide",
+    "type": "guide",
+    "path": "app/guides/women-entrepreneurship-fund-guide/page.tsx",
+    "newTitle": "Women Entrepreneurship Grants 2026 – Funding up to $100K",
+    "newDesc": "Explore top women entrepreneurship grants offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-federal-grants",
+    "type": "guide",
+    "path": "app/guides/apply-federal-grants/page.tsx",
+    "newTitle": "How to Get Federal Grants (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top federal grants offering up to $500K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-cleantech-funding-guide",
+    "type": "guide",
+    "path": "app/guides/canada-cleantech-funding-guide/page.tsx",
+    "newTitle": "CleanTech Funding Canada 2026 – Funding up to $10M Available",
+    "newDesc": "Explore top cleantech funding canada offering up to $10M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-manufacturing-funding-guide",
+    "type": "guide",
+    "path": "app/guides/canada-manufacturing-funding-guide/page.tsx",
+    "newTitle": "Manufacturing Grants Canada 2026 – Funding up to $5M Available",
+    "newDesc": "Explore top manufacturing grants canada offering up to $5M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-sbir-grants",
+    "type": "guide",
+    "path": "app/guides/apply-sbir-grants/page.tsx",
+    "newTitle": "How to Get SBIR Grants Phase 1 & 2 (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top sbir grants phase 1 & 2 offering up to $1.7M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-ontario-business-grants",
+    "type": "guide",
+    "path": "app/guides/apply-ontario-business-grants/page.tsx",
+    "newTitle": "How to Get Ontario Business Grants (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top ontario business grants offering up to $150K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-agri-food-funding-guide",
+    "type": "guide",
+    "path": "app/guides/canada-agri-food-funding-guide/page.tsx",
+    "newTitle": "Agri-Food Grants Canada 2026 – Funding up to $2.3B Available",
+    "newDesc": "Explore top agri-food grants canada offering up to $2.3B in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-doe-clean-energy-grants",
+    "type": "guide",
+    "path": "app/guides/apply-doe-clean-energy-grants/page.tsx",
+    "newTitle": "How to Get DOE Clean Energy Grants (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top doe clean energy grants offering up to $62B in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "nserc-research-grants-guide",
+    "type": "guide",
+    "path": "app/guides/nserc-research-grants-guide/page.tsx",
+    "newTitle": "NSERC Research Grants 2026 – Funding up to $1M Available",
+    "newDesc": "Explore top nserc research grants offering up to $1M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-digital-ai-funding-guide",
+    "type": "guide",
+    "path": "app/guides/canada-digital-ai-funding-guide/page.tsx",
+    "newTitle": "AI Startup Grants Canada 2026 – Funding up to $850M Available",
+    "newDesc": "Explore top ai startup grants canada offering up to $850M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "sred-application-guide",
+    "type": "guide",
+    "path": "app/guides/sred-application-guide/page.tsx",
+    "newTitle": "SR&ED Tax Credits 2026 – Funding Options & Eligibility",
+    "newDesc": "Explore top sr&ed tax credits offering up to 35% ROI in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-minority-grants",
+    "type": "guide",
+    "path": "app/guides/apply-minority-grants/page.tsx",
+    "newTitle": "How to Get Minority Business Grants (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top minority business grants offering up to $50K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "canada-aerospace-defence-funding-guide",
+    "type": "guide",
+    "path": "app/guides/canada-aerospace-defence-funding-guide/page.tsx",
+    "newTitle": "Aerospace Grants Canada 2026 – Funding up to $450M Available",
+    "newDesc": "Explore top aerospace grants canada offering up to $450M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "bdc-women-entrepreneurs-financing-guide",
+    "type": "guide",
+    "path": "app/guides/bdc-women-entrepreneurs-financing-guide/page.tsx",
+    "newTitle": "BDC Women Entrepreneurs Loans 2026 (2026 Guide)",
+    "newDesc": "Explore top bdc women entrepreneurs loans offering up to $100K in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-quebec-business-grants",
+    "type": "guide",
+    "path": "app/guides/apply-quebec-business-grants/page.tsx",
+    "newTitle": "How to Get Quebec Business Grants (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top quebec business grants offering up to $15M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  },
+  {
+    "slug": "apply-csbfp-loans",
+    "type": "guide",
+    "path": "app/guides/apply-csbfp-loans/page.tsx",
+    "newTitle": "How to Get CSBFP Loans Canada (2026) – Step-by-Step Guide",
+    "newDesc": "Explore top csbfp loans canada offering up to $1.15M in funding. Check your eligibility, learn the exact application steps, and secure approval today."
+  }
+]

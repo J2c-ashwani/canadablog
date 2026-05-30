@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Small Business Grants 2026 | SBA & Federal Funding Guide",
+  title: "Small Business Grants 2026 – Funding up to $250K Available",
   description: "Stop searching for 'free money' scams. Learn the real way to get small business funding through SBA 7(a) loans, microloans, and federal grants.",
-  keywords: "small business grants, SBA 7a loan requirements, apply for business grants, federal small business funding, startup grants",
+  keywords: "small business grants, SBA 7a loan requirements, apply for business grants, federal small business funding, startup grants, small business grants application checklist 2026, small business grants requirements and documents needed, small business grants approval timeline, small business grants application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business Canada 2026, am I eligible for small business grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-small-business-grants",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Are there grants for starting a business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Rarely. Federal grants are typically for 'non-commercial' activities like research (SBIR) or non-profits. For a standard business (restaurant, retail, consulting), you typically need an SBA loan, not a grant."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is an SBA 7(a) loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is the SBA's primary program for providing financial assistance to small businesses. The SBA guarantees a portion of the loan, which makes it easier for banks to lend to you."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a business plan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Every lender and grant agency will require a detailed business plan that outlines your revenue model, market analysis, and financial projections."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What credit score do I need?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For SBA loans, most lenders look for a personal credit score of 680 or higher, though some microloans may accept lower scores."
-      }
-    }
-  ]
-}
-
 export default function ApplySmallBusinessGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-900 to-indigo-900 text-white py-20 relative overflow-hidden">
@@ -376,6 +338,10 @@ export default function ApplySmallBusinessGrantsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

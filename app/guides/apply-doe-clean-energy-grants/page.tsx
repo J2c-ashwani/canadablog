@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "DOE Clean Energy Grants 2026 | $62B Funding Guide",
-  description: "Official guide to Department of Energy (DOE) grants. Funding for solar, wind, and clean tech startups. Learn how to apply for ARPA-E and EERE grants.",
-  keywords: "DOE clean energy grants, solar energy funding, wind energy grants, ARPA-E application, EERE funding opportunities, clean tech startup grants",
+  title: "How to Get DOE Clean Energy Grants (2026) – Step-by-Step Guide",
+  description: "Explore top doe clean energy grants offering up to $62B in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "DOE clean energy grants, solar energy funding, wind energy grants, ARPA-E application, EERE funding opportunities, clean tech startup grants, doe clean energy grants application checklist 2026, doe clean energy grants requirements and documents needed, doe clean energy grants approval timeline, doe clean energy grants application tips, DOE application step by step guide, DOE eligibility checker, best grants for small business USA 2026, am I eligible for doe clean energy grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-doe-clean-energy-grants",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is ARPA-E?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "ARPA-E (Advanced Research Projects Agency-Energy) funds high-risk, high-reward clean energy technologies that are too early for private investment. Think 'moonshot' projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for DOE grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! The DOE has specific SBIR/STTR programs for small businesses. Additionally, many FOAs (Funding Opportunity Announcements) encourage startup participation, often requiring a cost-share."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is EERE?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "EERE (Office of Energy Efficiency and Renewable Energy) is the largest DOE office for clean tech. It funds solar (SETO), wind (WETO), innovative buildings, and manufacturing efficiency."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to match the funds?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Usually, yes. Most DOE grants require a 'cost share' (typically 20% for R&D projects and up to 50% for demonstration projects). SBIR grants are an exception and strictly do not require cost share."
-      }
-    }
-  ]
-}
-
 export default function DOECleanEnergyGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-emerald-600 to-teal-800 text-white py-20 relative overflow-hidden">
@@ -380,6 +342,10 @@ export default function DOECleanEnergyGrantsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSI Digital - Top 10 Grants Carousel (Viral Version)</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+@media print {
+  @page {
+    size: 1080px 1350px; /* Forces exact PDF page dimensions */
+    margin: 0;          /* Removes default headers/footers */
+  }
+  body {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    display: block;
+    gap: 0;
+  }
+  .slide {
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important; /* Force background colors */
+  }
+}
+
+/* 
+  Each slide is precisely 1080x1350 (4:5 ratio).
+  Perfect for LinkedIn PDF carousels & Pinterest multipage pins.
+*/
+.slide {
+  width: 1080px;
+  height: 1350px;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* ── COVER SLIDE (1) ── */
+.cover { background: #E60023; }
+.cover .bg-circle1 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: rgba(255,255,255,.06); top: -300px; right: -300px; }
+.cover .bg-circle2 { position: absolute; width: 680px; height: 680px; border-radius: 50%; background: rgba(255,255,255,.04); bottom: 200px; left: -200px; }
+.cover .top-bar { padding: 80px 80px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.cover .logo { font-size: 46px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .1em; text-transform: uppercase; }
+.cover .flag { background: rgba(255,255,255,.2); border-radius: 12px; padding: 12px 36px; font-size: 40px; color: #fff; font-weight: 700; }
+
+.cover .mid { padding: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.cover .big-num { font-family: 'Playfair Display', serif; font-size: 500px; font-weight: 900; color: rgba(255,255,255,.1); line-height: .8; position: absolute; top: 180px; right: 0px; text-align: right; }
+.cover .tag { font-size: 50px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; background: #1a1a1a; display: inline-block; padding: 10px 30px; border-radius: 12px; align-self: flex-start; box-shadow: 0 10px 20px rgba(0,0,0,0.2); }
+.cover .title { font-family: 'Playfair Display', serif; font-size: 130px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 30px; max-width: 950px; text-shadow: 0 4px 20px rgba(0,0,0,0.15); }
+.cover .subtitle { font-size: 54px; color: rgba(255,255,255,.95); line-height: 1.4; font-weight: 500; margin-bottom: 40px; }
+
+.cover .bottom { padding: 60px 80px; background: rgba(0,0,0,.2); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+.cover .dots { display: flex; gap: 20px; }
+.cover .dot { width: 70px; height: 20px; border-radius: 10px; background: rgba(255,255,255,.3); }
+.cover .dot.active { background: #fff; width: 120px; }
+.cover .cta-txt { font-size: 46px; color: #fff; font-weight: 700; }
+
+/* ── GRANT SLIDES (Data) ── */
+.gpn { background: #ffffff; border: 8px solid #f0f0f0; }
+.gpn .header { padding: 50px 80px 40px; display: flex; align-items: flex-start; gap: 36px; position: relative; }
+/* Progress indicator absolute top-right */
+.gpn .progress-ind { position: absolute; top: 50px; right: 80px; font-size: 50px; font-weight: 900; color: #e0e0e0; font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+.gpn .num-badge { min-width: 150px; height: 150px; border-radius: 36px; background: #E60023; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 10px 30px rgba(230,0,35,0.2); }
+.gpn .num-badge span { font-family: 'Playfair Display', serif; font-size: 75px; font-weight: 900; color: #fff; }
+.gpn .header-text { display: flex; flex-direction: column; gap: 12px; padding-top: 10px; padding-right: 120px; }
+.gpn .series-tag { font-size: 34px; font-weight: 800; color: #E60023; text-transform: uppercase; letter-spacing: .08em; }
+.gpn .grant-name { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: 1.15; }
+
+.gpn .divider { height: 4px; background: #f5f5f5; margin: 0 80px; }
+
+.gpn .body { padding: 40px 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.gpn .amt-block { margin-bottom: 0px; }
+.gpn .amt-label { font-size: 34px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.gpn .amt { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #E60023; line-height: 1; }
+.gpn .desc { font-size: 50px; color: #333; line-height: 1.45; font-weight: 500; }
+
+.gpn .tags-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.gpn .pill { background: #fff5f6; border: 4px solid #ffd6da; border-radius: 20px; padding: 16px 36px; font-size: 38px; color: #C00; font-weight: 800; }
+.gpn .pill.dark { background: #f5f5f5; border-color: #e8e8e8; color: #555; }
+
+.gpn .footer { margin-top: auto; padding: 40px 80px; background: #fafafa; border-top: 4px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.gpn .url { font-size: 30px; color: #999; font-weight: 700; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gpn .apply-btn { background: #E60023; border-radius: 24px; padding: 22px 55px; font-size: 38px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; flex-shrink: 0; box-shadow: 0 10px 20px rgba(230,0,35,0.2); }
+
+/* ── PATTERN BREAK SLIDE ── */
+.pattern-break { background: #111; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 120px; text-align: left; }
+.pattern-break h2 { font-family: 'Playfair Display', serif; font-size: 160px; font-weight: 900; color: #E60023; margin-bottom: 60px; line-height: 1; }
+.pattern-break p { font-size: 85px; font-weight: 700; color: #fff; line-height: 1.25; }
+.pattern-break .arrow { margin-top: auto; font-size: 60px; color: #666; font-weight: 800; align-self: flex-end; }
+
+/* ── CTA FINAL SLIDE ── */
+.cta-slide { background: #1a1a1a; color: #fff; text-align: center; justify-content: center; align-items: center; padding: 80px; border: none; }
+.cta-slide .bg-overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: radial-gradient(circle at center, rgba(230,0,35,0.15) 0%, transparent 70%); z-index: 1; }
+.cta-slide .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+.cta-slide .logo-huge { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #fff; margin-bottom: 20px; }
+.cta-slide h2 { font-size: 90px; font-weight: 800; line-height: 1.15; text-balance: balance; color: #fff; }
+.cta-slide .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 60px; width: 100%; margin: 40px 0; }
+.cta-slide .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; margin-bottom: 20px; }
+.cta-slide .lead-box .comment-word { font-size: 90px; font-weight: 900; color: #E60023; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.cta-slide .or-text { font-size: 40px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin: 10px 0; }
+.cta-slide .url-text { font-size: 60px; font-weight: 800; color: #fff; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+
+  <!-- COVER SLIDE (1) - The Viral Hook -->
+  <div class="slide cover">
+    <div class="bg-circle1"></div><div class="bg-circle2"></div>
+    <div class="top-bar">
+      <div class="logo">FSI Digital</div>
+      <div class="flag">🇺🇸 USA Federal</div>
+    </div>
+    <div class="mid">
+      <div class="tag">$1.7M FREE FUNDING</div>
+      <div class="title">No Equity.<br>No Repayment.</div>
+      <div class="subtitle">Top 10 US Grants Most Founders Miss (2026)<br><span style="color: rgba(255,255,255,0.6);">Save this — you'll need it.</span></div>
+    </div>
+    <div class="bottom">
+      <div class="dots">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="cta-txt">Swipe to see list →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2 (Grant 1) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">1/10</div>
+      <div class="num-badge"><span>1</span></div>
+      <div class="header-text">
+        <div class="series-tag">Federal Giants</div>
+        <div class="grant-name">Small Business Innovation Research (SBIR)</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $1.7M</div>
+      </div>
+      <div class="desc">Federal funding for R&D projects with commercial potential. One of the largest small business grant programs in the US.</div>
+      <div class="tags-row">
+        <div class="pill">R&D</div>
+        <div class="pill">Tech</div>
+        <div class="pill dark">Rolling</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3 (Grant 2) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">2/10</div>
+      <div class="num-badge"><span>2</span></div>
+      <div class="header-text">
+        <div class="series-tag">Academic Partners</div>
+        <div class="grant-name">Small Business Tech Transfer (STTR)</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $1.5M</div>
+      </div>
+      <div class="desc">Like SBIR but requires partnership with a university or research institution. Perfect for deep-tech startups.</div>
+      <div class="tags-row">
+        <div class="pill">Research</div>
+        <div class="pill">University</div>
+        <div class="pill dark">Phase I & II</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4 (Grant 3) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">3/10</div>
+      <div class="num-badge"><span>3</span></div>
+      <div class="header-text">
+        <div class="series-tag">SBA Flagship</div>
+        <div class="grant-name">SBA Small Business Grants Program</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $500K</div>
+      </div>
+      <div class="desc">The SBA administers multiple grant programs for small businesses across industries — from manufacturing to retail to services.</div>
+      <div class="tags-row">
+        <div class="pill">All Industries</div>
+        <div class="pill dark">Open Year-Round</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/small-business-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5 (Grant 4) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">4/10</div>
+      <div class="num-badge"><span>4</span></div>
+      <div class="header-text">
+        <div class="series-tag">Rural Growth</div>
+        <div class="grant-name">USDA Rural Business Dev. Grant</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $500K</div>
+      </div>
+      <div class="desc">For businesses in rural areas. Funds training, technical assistance, and business expansion in communities under 50,000 people.</div>
+      <div class="tags-row">
+        <div class="pill">Rural</div>
+        <div class="pill">Agriculture</div>
+        <div class="pill dark">USDA</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6 (Grant 5) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">5/10</div>
+      <div class="num-badge"><span>5</span></div>
+      <div class="header-text">
+        <div class="series-tag">Economic Driver</div>
+        <div class="grant-name">EDA Economic Dev. Assistance</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">$100K – $3M</div>
+      </div>
+      <div class="desc">Supports job creation and retention in economically distressed communities. Great for businesses creating local employment.</div>
+      <div class="tags-row">
+        <div class="pill">Job Creation</div>
+        <div class="pill dark">Commerce Dept</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7 (PATTERN BREAK) -->
+  <div class="slide pattern-break">
+    <h2>Wait...</h2>
+    <p>Most founders don't even know these massive grants exist.</p>
+    <div class="arrow">Keep swiping &rarr;</div>
+  </div>
+
+  <!-- SLIDE 8 (Grant 6) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">6/10</div>
+      <div class="num-badge"><span>6</span></div>
+      <div class="header-text">
+        <div class="series-tag">Green Energy</div>
+        <div class="grant-name">DOE Energy Efficiency Grants</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $2M</div>
+      </div>
+      <div class="desc">Dept. of Energy funds startups working on clean energy, efficiency tech, and renewable solutions with commercial potential.</div>
+      <div class="tags-row">
+        <div class="pill">Cleantech</div>
+        <div class="pill">Energy</div>
+        <div class="pill dark">DOE</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9 (Grant 7) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">7/10</div>
+      <div class="num-badge"><span>7</span></div>
+      <div class="header-text">
+        <div class="series-tag">Life Sciences</div>
+        <div class="grant-name">NIH Small Business Research</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $1.7M</div>
+      </div>
+      <div class="desc">National Institutes of Health funds health, biotech, medtech, and life sciences startups. One of the highest-value programs.</div>
+      <div class="tags-row">
+        <div class="pill">BioTech</div>
+        <div class="pill">MedTech</div>
+        <div class="pill dark">NIH / Health</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10 (Grant 8) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">8/10</div>
+      <div class="num-badge"><span>8</span></div>
+      <div class="header-text">
+        <div class="series-tag">Deep Tech</div>
+        <div class="grant-name">NSF Innovation & Research Grants</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $2M</div>
+      </div>
+      <div class="desc">National Science Foundation supports startups turning scientific discoveries into commercial products across all STEM sectors.</div>
+      <div class="tags-row">
+        <div class="pill">STEM</div>
+        <div class="pill">Innovation</div>
+        <div class="pill dark">NSF</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/technology-startup-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11 (Grant 9) -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">9/10</div>
+      <div class="num-badge"><span>9</span></div>
+      <div class="header-text">
+        <div class="series-tag">Diversity</div>
+        <div class="grant-name">Minority Business Dev. Agency</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">$10K – $500K</div>
+      </div>
+      <div class="desc">MBDA funds minority-owned businesses with grants, technical assistance, and access to capital programs across the US.</div>
+      <div class="tags-row">
+        <div class="pill">Minority-Owned</div>
+        <div class="pill dark">MBDA</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/usa/federal-grants</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12 (Grant 10) -->
+  <div class="slide gpn" style="border-color:#E60023; border-width: 12px;">
+    <div class="header" style="background:#fff5f6">
+      <div class="progress-ind" style="color:#C00;">10/10</div>
+      <div class="num-badge" style="background:#1a1a1a"><span>10</span></div>
+      <div class="header-text">
+        <div class="series-tag" style="color: #1a1a1a;">The Finale 🎉</div>
+        <div class="grant-name">Women-Owned Small Business Program</div>
+      </div>
+    </div>
+    <div class="divider" style="margin: 0; background:#E60023;"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $500K</div>
+      </div>
+      <div class="desc">Dedicated federal set-aside contracts and grants for women-owned small businesses. One of the most underutilized programs available.</div>
+      <div class="tags-row">
+        <div class="pill" style="border-color:#1a1a1a; color:#1a1a1a">Women-Owned</div>
+        <div class="pill" style="border-color:#1a1a1a; color:#1a1a1a">Federal</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#fff5f6; border-top: 4px solid #ffd6da;">
+      <div class="url">fsidigital.ca/usa/women-entrepreneurs-grants</div>
+      <div class="apply-btn" style="background:#1a1a1a">Save</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13 (CTA - Lead Generator) -->
+  <div class="slide cta-slide">
+    <div class="bg-overlay"></div>
+    <div class="content">
+      <div class="logo-huge">FSI Digital</div>
+      <h2>Want the full list <span style="color: #E60023;">+</span><br>eligibility rules?</h2>
+      
+      <div class="lead-box">
+        <p>Comment</p>
+        <div class="comment-word">"GRANT"</div>
+        <p style="margin-top: 20px; font-size: 40px; margin-bottom: 0;">and I’ll send you the full list + eligibility</p>
+      </div>
+
+      <div class="or-text">or visit</div>
+      <div class="url-text">fsidigital.ca</div>
+    </div>
+  </div>
+
+</body>
+</html>

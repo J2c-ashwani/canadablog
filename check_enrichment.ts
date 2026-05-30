@@ -1,4 +1,4 @@
-import { blogPosts, BlogPost } from './lib/data/blogPosts.ts';
+import { blogPosts, BlogPost } from './lib/data/blogPosts';
 
 const enrichedPosts: BlogPost[] = [];
 const missingEnrichmentPosts: BlogPost[] = [];

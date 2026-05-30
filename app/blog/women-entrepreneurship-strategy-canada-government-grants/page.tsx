@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide | $6B Investment",
   description: "Complete guide to Canada's Women Entrepreneurship Strategy (WES) federal funding programs. Access up to $6B through WES Ecosystem Fund, Women Entrepreneurship Loan Fund, and comprehensive business support programs.",
-  keywords: "Women Entrepreneurship Strategy Canada, WES federal funding, women business grants Canada, WES Ecosystem Fund, Women Entrepreneurship Loan Fund, ISED women entrepreneurs funding",
+  keywords: "Women Entrepreneurship Strategy Canada, WES federal funding, women business grants Canada, WES Ecosystem Fund, Women Entrepreneurship Loan Fund, ISED women entrepreneurs funding, how to apply for WES grants 2026, WES eligibility requirements, how to apply for women entrepreneurship strategy canada government grants, women entrepreneurship strategy canada government grants eligibility 2026, step by step women entrepreneurship strategy canada government grants application guide, best women entrepreneurship strategy canada government grants for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women entrepreneurship strategy canada government grants, women entrepreneurship strategy canada government grants deadline 2026",
   openGraph: {
     title: "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide",
     description: "Comprehensive guide to WES federal funding programs offering up to $6B for women entrepreneurs through ecosystem support, loans, and business development.",
@@ -50,31 +52,17 @@ const faqData = [
   }
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("women-entrepreneurship-strategy-canada-government-grants");
   const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-pink-600 to-pink-800 text-white py-16">
@@ -166,6 +154,12 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Program Statistics */}
@@ -732,7 +726,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                         Find regional support for women entrepreneurs in your specific province.
                       </p>
                       <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
-                        <Link href="/blog/ontario-business-grants-guide">
+                        <Link href="/blog/ontario-small-business-grants-guide">
                           View Ontario Grants
                         </Link>
                       </Button>
@@ -749,7 +743,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                         Looking to launch? Check our complete guide to Canadian startup grants.
                       </p>
                       <Button variant="outline" className="w-full text-pink-700 border-pink-200 hover:bg-pink-50" asChild>
-                        <Link href="/blog/startup-business-grants-canada-guide">
+                        <Link href="/blog/canada-startup-funding-grants-guide">
                           View Startup Guide
                         </Link>
                       </Button>
@@ -808,6 +802,10 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

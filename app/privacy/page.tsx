@@ -7,6 +7,7 @@ import { Shield, Cookie, Eye, Lock, Bell, Users, ExternalLink, Mail } from "luci
 export const metadata: Metadata = {
   title: "Privacy Policy | FSI Digital — How We Protect Your Data",
   description: "Learn how FSI Digital collects, uses, and protects your personal information. Our privacy policy covers cookies, Google AdSense, analytics, and your data rights.",
+  keywords: "FSI Digital privacy policy, data protection, user information security",
   alternates: {
     canonical: "https://www.fsidigital.ca/privacy",
   },

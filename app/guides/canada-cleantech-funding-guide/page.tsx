@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "CleanTech Funding Canada 2026 | SDTC & Net Zero Grants",
-  description: "Complete guide to clean technology funding. Apply for SDTC, Clean Tech ITCs (30%), and Net Zero Accelerator grants.",
-  keywords: "cleantech funding Canada, SDTC application guide, Clean Tech ITC, Net Zero Accelerator, environmental grants, green technology funding",
+  title: "CleanTech Funding Canada 2026 – Funding up to $10M Available",
+  description: "Explore top cleantech funding canada offering up to $10M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "cleantech funding Canada, SDTC application guide, Clean Tech ITC, Net Zero Accelerator, environmental grants, green technology funding, canada cleantech funding guide application checklist 2026, canada cleantech funding guide requirements and documents needed, canada cleantech funding guide approval timeline, canada cleantech funding guide application tips, SDTC application step by step guide, SDTC eligibility checker, best grants for small business Canada 2026, am I eligible for canada cleantech funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-cleantech-funding-guide",
   },
@@ -27,53 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Clean Technology Investment Tax Credit (ITC)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Clean Tech ITC is a refundable tax credit of up to 30% of the capital cost of eligible clean technology property (e.g., solar, wind, storage) acquired and available for use on or after March 28, 2023."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does SDTC funding work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SDTC (Sustainable Development Technology Canada) provides non-repayable contributions (grants) for pre-commercial demonstration projects. They typically fund 33-40% of eligible project costs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I stack ITCs with other grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, but the capital cost of the equipment for the ITC calculation must be reduced by the amount of any government assistance (grants) received."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Net Zero Accelerator?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The Net Zero Accelerator (NZA) is a stream of the Strategic Innovation Fund (SIF) targeting large-scale decarbonization projects (usually >$10M) for high-emitting sectors."
-      }
-    }
-  ]
-}
-
 export default function CanadaCleanTechFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-teal-700 to-emerald-900 text-white py-20 relative overflow-hidden">
@@ -369,6 +331,10 @@ export default function CanadaCleanTechFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

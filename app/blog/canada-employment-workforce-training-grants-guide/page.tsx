@@ -20,11 +20,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Programs Guide",
   description: "Complete guide to Canada's employment and workforce training grants. Access Canada Job Grant, Skills Development programs, and 28+ programs offering $1.9B+ for workforce excellence.",
-  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2026",
+  keywords: "Canada employment grants, workforce training funding, Canada Job Grant, skills development programs, employee training grants Canada 2026, how to apply for canada employment workforce training grants guide, canada employment workforce training grants guide eligibility 2026, step by step canada employment workforce training grants guide application guide, best canada employment workforce training grants guide for small business Canada, am I eligible for canada employment workforce training grants guide, canada employment workforce training grants guide deadline 2026",
   openGraph: {
     title: "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Guide",
     description: "Comprehensive guide to Canada's employment and workforce training funding ecosystem with 28+ programs offering $1.9B+ for skills development and job creation.",
@@ -52,31 +54,17 @@ const faqData = [
   }
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("canada-employment-workforce-training-grants-guide");
   const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-16">
@@ -166,6 +154,12 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Employment Funding Statistics */}
@@ -711,7 +705,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                <Link href="/blog/ontario-small-business-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-red-600 mr-4" />
                     <div>
@@ -758,7 +752,7 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                <Link href="/blog/ontario-small-business-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-red-600 mr-4" />
                     <div>
@@ -816,6 +810,10 @@ export default function CanadaEmploymentWorkforceTrainingGrantsGuidePage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

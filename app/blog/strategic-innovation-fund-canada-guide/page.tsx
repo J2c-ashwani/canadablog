@@ -21,11 +21,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide | Innovation Projects",
   description: "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation projects, R&D commercialization, and industrial expansion from ISED Canada.",
-  keywords: "Strategic Innovation Fund Canada, SIF funding, ISED grants, innovation funding Canada, R&D commercialization grants, industrial expansion funding, technology innovation grants Canada, large scale business funding, transformative project funding",
+  keywords: "Strategic Innovation Fund Canada, SIF funding, ISED grants, innovation funding Canada, R&D commercialization grants, industrial expansion funding, technology innovation grants Canada, large scale business funding, transformative project funding, how to apply for strategic innovation fund canada guide, strategic innovation fund canada guide eligibility 2026, step by step strategic innovation fund canada guide application guide, best strategic innovation fund canada guide for small business Canada, am I eligible for strategic innovation fund canada guide, strategic innovation fund canada guide deadline 2026",
   openGraph: {
     title: "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide",
     description: "Access up to $100M through Canada's Strategic Innovation Fund. Complete guide to SIF eligibility, application process, and transformative innovation funding.",
@@ -62,26 +64,13 @@ export default function StrategicInnovationFundBlogPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-600 to-red-800 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -172,6 +161,12 @@ export default function StrategicInnovationFundBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Common Questions Section */}
@@ -781,6 +776,10 @@ export default function StrategicInnovationFundBlogPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

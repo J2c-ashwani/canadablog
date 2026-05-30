@@ -20,11 +20,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans Guide",
   description: "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offering up to $1M with 85% government backing for equipment and real property.",
-  keywords: "CSBFP government guaranteed loans, Canada Small Business Financing Program, government backed business loans Canada, federal SME loan guarantee, ISED small business financing",
+  keywords: "CSBFP government guaranteed loans, Canada Small Business Financing Program, government backed business loans Canada, federal SME loan guarantee, ISED small business financing, how to apply for CSBFP grants 2026, CSBFP eligibility requirements, how to apply for csbfp canada small business financing program government grants, csbfp canada small business financing program government grants eligibility 2026, step by step csbfp canada small business financing program government grants application guide, best csbfp canada small business financing program government grants for small business Canada, am I eligible for csbfp canada small business financing program government grants, csbfp canada small business financing program government grants deadline 2026",
   openGraph: {
     title: "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans",
     description: "Comprehensive guide to CSBFP federal loan guarantee program with up to $1M in government-backed financing for Canadian small businesses.",
@@ -57,26 +59,12 @@ export default function CSBFPGovernmentGrantsBlogPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(faq => ({
-      "@type": "Question",
-      "name": faq.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": faq.answer
-      }
-    }))
-  }
-
-  return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    return (
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-16">
@@ -168,6 +156,12 @@ export default function CSBFPGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Program Statistics */}
@@ -626,7 +620,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold mb-8 text-gray-900">Related Government Grant Guides</h2>
               <div className="grid md:grid-cols-2 gap-6">
-                <Link href="/blog/ontario-business-grants-guide" className="block group">
+                <Link href="/blog/ontario-small-business-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-red-600 mr-4" />
                     <div>
@@ -635,7 +629,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/bc-business-grants-guide" className="block group">
+                <Link href="/blog/bc-business-grants-2026" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-blue-600 mr-4" />
                     <div>
@@ -644,7 +638,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/alberta-business-grants-guide" className="block group">
+                <Link href="/blog/alberta-business-grants-2026" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <MapPin className="w-8 h-8 text-green-600 mr-4" />
                     <div>
@@ -653,7 +647,7 @@ export default function CSBFPGovernmentGrantsBlogPage() {
                     </div>
                   </div>
                 </Link>
-                <Link href="/blog/startup-grants-canada-guide" className="block group">
+                <Link href="/blog/canada-startup-funding-grants-guide" className="block group">
                   <div className="flex items-center p-4 bg-white rounded-lg shadow-sm group-hover:shadow-md transition-shadow border border-gray-100">
                     <Briefcase className="w-8 h-8 text-purple-600 mr-4" />
                     <div>
@@ -714,6 +708,10 @@ export default function CSBFPGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

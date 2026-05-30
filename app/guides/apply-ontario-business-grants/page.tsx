@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Ontario Business Grants 2026: Complete Application Guide | Starter Company Plus, OCI, Ontario Creates",
-  description: "Complete step-by-step guide to applying for Ontario business grants and provincial funding. Get Ontario application templates, provincial strategies, and proven frameworks for Starter Company Plus, Ontario Creates, and OCI programs.",
-  keywords: "Ontario business grants application guide, Ontario provincial funding application process, Starter Company Plus application, Ontario Creates funding application, how to apply Ontario grants, OCI funding",
+  title: "How to Get Ontario Business Grants (2026) – Step-by-Step Guide",
+  description: "Explore top ontario business grants offering up to $150K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "Ontario business grants application guide, Ontario provincial funding application process, Starter Company Plus application, Ontario Creates funding application, how to apply Ontario grants, OCI funding, ontario business grants application checklist 2026, ontario business grants requirements and documents needed, ontario business grants approval timeline, ontario business grants application tips, best grants for small business Canada 2026, am I eligible for ontario business grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-ontario-business-grants",
   },
@@ -27,69 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Starter Company Plus program in Ontario?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Starter Company Plus provides up to $5,000 in grant funding to new Ontario businesses less than 3 years old. It includes mandatory business training, mentorship, and requires full-time commitment to the business. The program is delivered through regional Small Business Enterprise Centres."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the Ontario grant application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The timeline varies by program: Starter Company Plus takes 4-8 weeks including training; Ontario Creates typically 8-12 weeks; and OCI (Ontario Centre for Innovation) programs can take 10-16 weeks for larger technology projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to be incorporated in Ontario to apply for provincial grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most Ontario programs require Ontario incorporation or registration with significant provincial operations. You must demonstrate economic impact and job creation within Ontario. Federal corporations with Ontario operations may also qualify."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Ontario Creates and who is eligible?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Ontario Creates is the provincial agency supporting cultural and creative industries including film, TV, music, publishing, and interactive digital media. Eligible applicants include production companies, publishers, game studios, and music labels with Ontario operations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I combine Ontario provincial grants with federal funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Many Ontario businesses successfully stack provincial funding with federal programs like IRAP, SR&ED, and FedDev Ontario. This is encouraged and can significantly increase total funding available for your project."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the maximum funding available through Ontario programs?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Funding varies widely: Starter Company Plus offers up to $5,000; Ontario Creates offers project funding from $5,000 to $500,000+; OCI technology programs can provide $50,000 to $5M+ for major innovation projects."
-      }
-    }
-  ]
-}
-
 export default function OntarioBusinessGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-red-600 to-red-800 text-white py-20">

@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -11,11 +12,12 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Quebec Business Grants 2026: 20+ Programs Open [Guide]",
+    title: "Quebec Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
     description:
-        "Find Quebec business grants and provincial funding programs. Complete guide to Quebec government grants (programs de subventions), eligibility requirements, and application deadlines.",
+        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     keywords:
         "Quebec business grants, Quebec government funding, subventions entreprises Quebec, Investissement Quebec, startup funding Quebec",
 }
@@ -29,7 +31,8 @@ const quebecGrants: Grant[] = [
         eligibility: ["Strategic investment projects", "Quebec businesses"],
         deadline: "Rolling basis",
         applicationLink: "https://www.investquebec.com/quebec/en/financial-products/all-our-solutions/ESSOR.html",
-        description: "Support for strategic investment projects driving economic development.",
+        description:
+        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Quebec",
         category: "Business Growth",
@@ -47,7 +50,8 @@ const quebecGrants: Grant[] = [
         eligibility: ["Technological innovation in energy", "Quebec companies"],
         deadline: "Open",
         applicationLink: "https://transitionenergetique.gouv.qc.ca/en/innovation/programme-technoclimat",
-        description: "Funding for technological innovation in energy efficiency and emissions reduction.",
+        description:
+        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Quebec",
         category: "Green Energy",
@@ -65,7 +69,8 @@ const quebecGrants: Grant[] = [
         eligibility: ["SMEs in Quebec", "Productivity projects"],
         deadline: "Various",
         applicationLink: "https://www.economie.gouv.qc.ca/",
-        description: "Program to increase the productivity of Quebec SMEs.",
+        description:
+        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Quebec",
         category: "SME Support",
@@ -83,7 +88,8 @@ const quebecGrants: Grant[] = [
         eligibility: ["Innovative projects", "Companies in Quebec"],
         deadline: "Ongoing",
         applicationLink: "https://www.investquebec.com/",
-        description: "Financing for projects that purchase new technologies or develop innovative products.",
+        description:
+        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
         country: "Canada",
         region: "Quebec",
         category: "Innovation",
@@ -111,6 +117,10 @@ export default function QuebecGrantsPage() {
                             </Badge>
                         </div>
                         <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Quebec Business Grants 2026: Programs Open Now</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Quebec businesses in 2026?"

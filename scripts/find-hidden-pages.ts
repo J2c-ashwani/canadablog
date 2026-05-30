@@ -4,6 +4,7 @@
 import { guidesDatabase } from '../lib/data/guides';
 import { blogPosts } from '../lib/data/blogPosts';
 
+async function main() {
 console.log('\n=====================================================');
 console.log(' ADSENSE HIDDEN PAGE FINDER (NOINDEX AUDIT)');
 console.log('=====================================================\n');
@@ -83,3 +84,6 @@ if (hiddenGuides.length + hiddenBlogPosts.length > 0) {
     fs.writeFileSync('hidden-pages-report.md', hiddenList);
     console.log('📄 Full report saved to: hidden-pages-report.md\n');
 }
+}
+
+main();

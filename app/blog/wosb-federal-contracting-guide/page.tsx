@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
   description: "Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M+ government contracts.",
-  keywords: "WOSB certification, women owned small business, federal contracting, EDWOSB, government contracts women, SBA certification",
+  keywords: "WOSB certification, women owned small business, federal contracting, EDWOSB, government contracts women, SBA certification, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for wosb federal contracting guide, wosb federal contracting guide eligibility 2026, step by step wosb federal contracting guide application guide, best wosb federal contracting guide for small business USA, best grants for women entrepreneurs USA 2026, women owned business funding eligibility, am I eligible for wosb federal contracting guide, wosb federal contracting guide deadline 2026",
   openGraph: {
     title: "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
     description: "Complete guide to WOSB certification and federal contracting opportunities for women-owned businesses.",
@@ -54,26 +56,13 @@ export default function WOSBFederalContractingGuide() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-indigo-700 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -160,6 +149,12 @@ export default function WOSBFederalContractingGuide() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Quick Stats */}
@@ -756,6 +751,10 @@ export default function WOSBFederalContractingGuide() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

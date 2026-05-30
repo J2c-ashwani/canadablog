@@ -10,8 +10,9 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/com
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable';
 import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
-import { GlobalGrantGuide } from '@/components/blog/GlobalGrantGuide';
 import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
+import { CTRTrap } from '@/components/blog/CTRTrap';
+import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
@@ -39,35 +40,36 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
     const { state: stateSlug } = await params;
     const state = getStateDetailBySlug(stateSlug);
-    if (!state) return { title: 'State Not Found' };
+    if (!state) notFound();
 
     const funding = state.heroStats.totalFunding;
     const programs = state.heroStats.programCount;
     const successRate = state.heroStats.successRate;
 
-    // Power-word title formula: Curiosity + Number + Outcome promise
-    // Tested patterns that beat generic "$X available" titles at positions 5-10:
-    const titleVariants = [
-        `${state.name} Business Grants 2026: ${programs} Programs That Actually Pay`,
-        `${state.name} Grants 2026: ${funding} Waiting (Most Go Unclaimed)`,
-        `${state.name} Business Grants 2026: ${successRate} Approval Rate — Apply Now`,
-    ];
-    // Pick shortest that fits ≤60 chars
-    let title = titleVariants[0];
-    for (const v of titleVariants) {
-        if (v.length <= 60) { title = v; break; }
-    }
-    if (title.length > 60) title = `${state.name} Business Grants 2026 (${funding}+)`;
+    // FORMAT D (Trust Hook) — State pages get the highest-trust title
+    const title = `${state.name} Government Grants 2026 (Verified List + Official Links)`;
 
-    // Meta description: Answer the searcher's unspoken question immediately
-    // Pattern: [Surprising stat] + [Specific program name + amount] + [CTA]
-    const description = state.metaDescription ||
-        `${state.name} has ${funding} in active grant funding — but most businesses never apply. ` +
-        `See the ${programs} programs ranked by approval rate (${successRate}) and find your match in 2 minutes.`;
+    const description = `Apply directly with official links for ${state.name} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`;
 
     return {
         title,
         description,
+        keywords: [
+            `${state.name} business grants 2026`,
+            `how to apply for grants in ${state.name}`,
+            `best small business grants ${state.name}`,
+            `${state.name} government funding eligibility`,
+            `${state.name} startup grants`,
+            `federal vs state grants ${state.name}`,
+            `SBA grants ${state.name}`,
+            `SBIR funding ${state.name}`,
+            `${state.name} small business funding programs`,
+            `am I eligible for ${state.name} grants`,
+            `${state.name} grant application deadline 2026`,
+            `non-repayable grants ${state.name}`,
+            `${state.name} women business grants`,
+            `minority business grants ${state.name}`,
+        ].join(', '),
         alternates: {
             canonical: `https://www.fsidigital.ca/usa/${state.slug}`,
         },
@@ -97,7 +99,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
             "logo": { "@type": "ImageObject", "url": "https://www.fsidigital.ca/fsi-logo.png" }
         },
         "datePublished": "2026-01-15T00:00:00.000Z",
-        "dateModified": "2026-03-12T00:00:00.000Z",
+        "dateModified": "2026-04-12T00:00:00.000Z",
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.fsidigital.ca/usa/${state.slug}` },
         "image": "https://www.fsidigital.ca/images/blog/canada-grants-theme.png",
     };
@@ -112,25 +114,11 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
         ]
     };
 
-    const faqSchema = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "mainEntity": state.faqs.map(faq => ({
-            "@type": "Question",
-            "name": faq.question,
-            "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-            }
-        }))
-    };
-
     return (
         <div className="min-h-screen bg-white">
             <Header />
             <main className="py-8">
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-                <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
                 <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
 
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
@@ -150,14 +138,17 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     {/* Hero Section */}
                     <header className="mb-12">
                         <Badge className="mb-4 bg-blue-100 text-blue-800">{state.region} Region</Badge>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
-                            {state.name} Small Business Grants 2026
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+                            {state.name} Corporate Expansion & Small Business Grants (2026)
                         </h1>
+                        
+                        <CTRTrap />
+
                         {state.shortAnswer && (
                             <ShortAnswerBox content={state.shortAnswer} />
                         )}
                         <div className="mt-4 mb-6">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-02-09" />
+                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-04-12" />
                         </div>
                         <p className="text-xl text-gray-600 mb-6">
                             Complete guide to {state.heroStats.totalFunding} in {state.name} business funding across {state.heroStats.programCount} programs
@@ -227,11 +218,60 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             {state.name} Business Funding Overview
                         </h2>
                         <div className="prose prose-lg max-w-none">
-                            <p className="text-gray-700 leading-relaxed mb-4">{state.overview.introduction}</p>
+                            <p className="text-gray-700 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.introduction) }} />
                             <h3 className="text-xl font-semibold mt-6 mb-3">Economic Landscape</h3>
-                            <p className="text-gray-700 leading-relaxed mb-4">{state.overview.economicLandscape}</p>
+                            <p className="text-gray-700 leading-relaxed mb-4" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.economicLandscape) }} />
                             <h3 className="text-xl font-semibold mt-6 mb-3">Key Opportunities in 2026</h3>
-                            <p className="text-gray-700 leading-relaxed">{state.overview.keyOpportunities}</p>
+                            <p className="text-gray-700 leading-relaxed" dangerouslySetInnerHTML={{ __html: injectWikipediaLinks(state.overview.keyOpportunities || '') }} />
+
+                            {state.overview.whoShouldAvoid && (
+                                <div className="mt-8 mb-6 bg-red-50 border-l-4 border-red-500 p-6 rounded-r-lg">
+                                    <h3 className="text-xl font-bold mb-4 text-red-900 flex items-center">
+                                        <AlertTriangle className="w-5 h-5 mr-2" />
+                                        Reality Check: Who Should NOT Apply
+                                    </h3>
+                                    <ul className="space-y-2">
+                                        {state.overview.whoShouldAvoid.map((rule, i) => (
+                                            <li key={i} className="flex items-start text-red-800">
+                                                <span className="text-red-500 mr-2 font-bold">—</span>
+                                                <span>{rule}</span>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+                            )}
+
+                            {state.overview.comparativePositioning && (
+                                <div className="mt-8 mb-6 p-6 bg-slate-50 border border-slate-200 rounded-xl">
+                                    <h3 className="text-xl font-bold mb-3 text-slate-800 flex items-center">
+                                        <Globe className="w-5 h-5 mr-2 text-slate-600" />
+                                        Comparative Positioning
+                                    </h3>
+                                    <p className="text-slate-700 italic">"{state.overview.comparativePositioning}"</p>
+                                </div>
+                            )}
+
+                            {state.overview.executionRoadmap && (
+                                <div className="mt-8 mb-6">
+                                    <h3 className="text-xl font-bold mb-6 text-gray-900 flex items-center border-b pb-3">
+                                        <Target className="w-6 h-6 mr-2 text-blue-600" />
+                                        Execution Roadmap: How to Actually Win Funding Here
+                                    </h3>
+                                    <div className="space-y-4">
+                                        {state.overview.executionRoadmap.map((step, i) => (
+                                            <div key={i} className="flex bg-white border rounded-lg p-4 shadow-sm hover:shadow-md transition-shadow">
+                                                <div className="flex-shrink-0 flex items-center justify-center w-10 h-10 rounded-full bg-blue-100 text-blue-700 font-bold mr-4">
+                                                    {step.step}
+                                                </div>
+                                                <div>
+                                                    <h4 className="font-bold text-gray-900 mb-1">{step.title}</h4>
+                                                    <p className="text-sm text-gray-600 leading-relaxed">{step.description}</p>
+                                                </div>
+                                            </div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </section>
 
@@ -581,13 +621,13 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         </div>
                     </section>
 
-                    {/* Related Guides Section - Internal Linking for SEO Authority */}
+                    {/* Intent-Clustered Internal Links for SEO Authority */}
                     <section id="related-guides" className="mb-12">
                         <h2 className="text-3xl font-bold mb-6 text-gray-900">
-                            Related Grant Guides
+                            Related {state.name} Funding Resources
                         </h2>
                         <p className="text-gray-600 mb-6">
-                            Explore our comprehensive guides on grant applications and funding strategies.
+                            Explore verified grant guides and funding strategies directly relevant to {state.name} businesses.
                         </p>
 
                         <div className="grid md:grid-cols-2 gap-4">
@@ -606,9 +646,9 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             ))}
                         </div>
 
-                        {/* Internal Links to Hub Pages */}
+                        {/* Intent-Based Hub Links (Topical Cluster Anchors) */}
                         <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
-                            <h3 className="font-bold text-lg mb-4">Explore More Funding Resources</h3>
+                            <h3 className="font-bold text-lg mb-4">🔗 {state.name} Funding Cluster</h3>
                             <div className="flex flex-wrap gap-4">
                                 <Link href="/usa" className="inline-flex items-center text-green-600 hover:underline">
                                     <MapPin className="w-4 h-4 mr-1" /> All USA State Grants
@@ -626,8 +666,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         </div>
                     </section>
 
-                    {/* Global Grant Guide (Universal Content) */}
-                    <GlobalGrantGuide />
+                    {/* Global Grant Guide Component Removed Check (Anti-AI Spam) */}
 
 
                     {/* CTA Section */}
@@ -693,7 +732,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                                     </div>
                                     <ul className="divide-y divide-gray-100">
                                         <li>
-                                            <Link href="/blog/top-10-no-equity-grants-black-female-entrepreneurs-2026" className="block p-4 hover:bg-gray-50 transition-colors group">
+                                            <Link href="/blog/top-10-no-equity-grants-black-female-entrepreneurs" className="block p-4 hover:bg-gray-50 transition-colors group">
                                                 <h4 className="text-gray-900 font-semibold group-hover:text-blue-600 text-sm leading-tight mb-2">
                                                     Top 10 No-Equity Grants for Black Female Entrepreneurs in 2026
                                                 </h4>

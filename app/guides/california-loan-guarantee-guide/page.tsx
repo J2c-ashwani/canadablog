@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "California Small Business Loan Guarantee 2026 | IBank Guide",
   description: "Official guide to the California Small Business Loan Guarantee Program (SSBCI). How to get state-backed loans up to $2.5 million if you lack collateral.",
-  keywords: "California small business loan guarantee, IBank loan guarantee, California SSBCI, state backed business loans, FDC loan guarantee",
+  keywords: "California small business loan guarantee, IBank loan guarantee, California SSBCI, state backed business loans, FDC loan guarantee, california loan guarantee guide application checklist 2026, california loan guarantee guide requirements and documents needed, california loan guarantee guide approval timeline, california loan guarantee guide application tips, best grants for small business USA 2026, am I eligible for california loan guarantee guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/california-loan-guarantee-guide",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the California Loan Guarantee Program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is a program where the State of California (via IBank) guarantees up to 95% of a business loan, encouraging lenders to fund businesses that might otherwise be rejected due to lack of collateral."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Who is eligible?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Small businesses located in California with 1-750 employees. You must be a for-profit entity and demonstrate that you cannot obtain full financing elsewhere on reasonable terms."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the maximum loan amount?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The program can guarantee loans up to $20 million, but the guaranteed portion is capped at $2.5 million (or 95% of the loan, whichever is less)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I apply?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You do NOT apply to the state directly. You must apply through a participating lender or a Financial Development Corporation (FDC). They submit the guarantee package on your behalf."
-      }
-    }
-  ]
-}
-
 export default function CaliforniaLoanGuaranteeGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-amber-500 to-orange-600 text-white py-20 relative overflow-hidden">
@@ -351,6 +313,10 @@ export default function CaliforniaLoanGuaranteeGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

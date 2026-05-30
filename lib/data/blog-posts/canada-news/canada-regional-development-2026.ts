@@ -8,7 +8,7 @@ const post: BlogPost = {
     slug: "canada-regional-development-2026",
     shortAnswerQuestion: "How can my business apply for Canadas Regional Development A 2026 in 2026?",
 
-    title: "Canadas Regional Development A... 2026 | Funding Guide",
+    title: "Canada's Regional Development Agencies 2026 | Funding Guide",
 
     excerpt: "🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Learn which agency covers your region and what they fund.",
     category: "Canada News",

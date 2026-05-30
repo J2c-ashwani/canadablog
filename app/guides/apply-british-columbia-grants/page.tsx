@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "BC Business Grants 2026: Complete Application Guide | Innovate BC, CleanBC, Creative BC",
   description: "Complete step-by-step guide to applying for British Columbia business grants and provincial funding. Get BC application templates, provincial strategies, and frameworks for Innovate BC, CleanBC, and Creative BC programs.",
-  keywords: "British Columbia business grants, BC provincial funding, Innovate BC application, CleanBC funding, Creative BC grants, how to apply BC government grants",
+  keywords: "British Columbia business grants, BC provincial funding, Innovate BC application, CleanBC funding, Creative BC grants, how to apply BC government grants, british columbia grants application checklist 2026, british columbia grants requirements and documents needed, british columbia grants approval timeline, british columbia grants application tips, best grants for small business Canada 2026, am I eligible for british columbia grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-british-columbia-grants",
   },
@@ -27,69 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is Innovate BC and who is eligible?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Innovate BC is the provincial agency supporting technology commercialization. Eligible applicants include BC-based tech companies at various stages, from early-stage to scale-ups. Programs cover accelerators, market entry, and collaborative R&D initiatives."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does CleanBC funding work for businesses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CleanBC offers various incentives for businesses adopting clean technologies or reducing emissions. This includes rebates for electric vehicles, building retrofits, and industrial emission reduction projects. Funding varies by project type and emission reduction potential."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the BC grant application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The timeline varies: Innovate BC accelerator programs take 8-12 weeks; CleanBC rebates can be processed in 4-8 weeks; and larger Creative BC or Manufacturing Jobs Fund applications typically take 10-16 weeks."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the BC Manufacturing Jobs Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The BC Manufacturing Jobs Fund supports capital investments in manufacturing facilities, equipment modernization, and productivity improvements. It provides grants covering up to 25% of eligible project costs, with maximum funding of $5 million per project."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I combine BC provincial grants with federal funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! BC businesses frequently stack provincial funding with federal programs like IRAP, SR&ED, and PacifiCan (the federal regional development agency for BC). This is encouraged and can significantly increase total funding."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Creative BC and what sectors does it support?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Creative BC supports film, TV, music, publishing, and interactive digital media. They administer tax credits and provide development funding for production companies, game developers, and other creative industry businesses operating in British Columbia."
-      }
-    }
-  ]
-}
-
 export default function BritishColumbiaBusinessGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-blue-800 text-white py-20">

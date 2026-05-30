@@ -7,6 +7,7 @@ import { Scale, AlertTriangle, BookOpen, FileText, Globe, ShieldCheck, Mail } fr
 export const metadata: Metadata = {
   title: "Terms of Service | FSI Digital — Usage Terms & Conditions",
   description: "Terms of Service for FSI Digital. Read the terms and conditions governing your use of our government grant information platform, including disclaimers and limitations of liability.",
+  keywords: "FSI Digital terms of service, usage terms, website terms and conditions",
   alternates: {
     canonical: "https://www.fsidigital.ca/terms",
   },

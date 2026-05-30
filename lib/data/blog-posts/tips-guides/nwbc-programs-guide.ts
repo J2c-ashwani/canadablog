@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "nwbc-programs-guide",
     shortAnswerQuestion: "How can my business apply for National Women 2025-2026 in 2026?",
 
-    title: "National Women... 2025-2026 | Funding Guide",
+    title: "National Women's Business Council Programs 2025-2026 Guide",
 
     excerpt: "Complete guide to NWBC programs and initiatives. Learn how the National Women",
     category: "Tips & Guides",

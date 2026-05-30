@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Biotech & Life Sciences Grants Canada 2026 | Clinical Trials Funding",
   description: "Complete guide to life sciences funding. Apply for IRAP biotech grants, Clinical Trials Fund, and medical device commercialization support.",
-  keywords: "life sciences grants Canada, biotech funding, clinical trials grants, medical device funding, health tech grants, biomanufacturing funding",
+  keywords: "life sciences grants Canada, biotech funding, clinical trials grants, medical device funding, health tech grants, biomanufacturing funding, canada life sciences funding guide application checklist 2026, canada life sciences funding guide requirements and documents needed, canada life sciences funding guide approval timeline, canada life sciences funding guide application tips, best grants for small business Canada 2026, am I eligible for canada life sciences funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-life-sciences-funding-guide",
   },
@@ -27,53 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What funding is available for Clinical Trials?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The CIHR Clinical Trials Fund and various broad health research programs support trials. Additionally, the Strategic Innovation Fund (SIF) can fund major biomanufacturing and late-stage clinical development projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does IRAP fund drug development?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, IRAP funds technical R&D projects, including preclinical studies and early-stage development of therapeutics, diagnostics, and medical devices, typically up to $500k."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I claim SR&ED for clinical trials?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Clinical trials are generally considered eligible R&D work for SR&ED tax credits, allowing you to recover up to 35% of eligible expenditures (salaries, materials, subcontracts)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the timeline for Health Canada approval?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It varies by risk class. Class I medical devices are fast (weeks), while Class III/IV devices and new drugs can take 6-12+ months for review after submission."
-      }
-    }
-  ]
-}
-
 export default function CanadaLifeSciencesFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-cyan-800 to-blue-900 text-white py-20 relative overflow-hidden">
@@ -364,6 +326,10 @@ export default function CanadaLifeSciencesFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

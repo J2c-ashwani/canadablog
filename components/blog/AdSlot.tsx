@@ -3,7 +3,7 @@
 import { useEffect, useRef } from 'react';
 
 interface AdSlotProps {
-  adSlot: string;
+  adSlot?: string;
   adFormat?: 'auto' | 'rectangle' | 'horizontal' | 'vertical';
   style?: React.CSSProperties;
   className?: string;
@@ -12,15 +12,66 @@ interface AdSlotProps {
 export default function AdSlot({
   adSlot,
   adFormat = 'auto',
-  style = { display: 'block' },
+  style = {},
   className = ''
 }: AdSlotProps) {
   const adPushed = useRef(false);
+  const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || "ca-pub-1200907614877581";
+  
+  // Use provided adSlot or fall back to environment variables based on format
+  let finalAdSlot = adSlot || (
+    adFormat === 'horizontal' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL :
+    adFormat === 'vertical' ? process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR :
+    adFormat === 'rectangle' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE :
+    process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD
+  );
+
+  // SANITIZATION: Users frequently save "ca-pub-1234567890-098765432" in their .env
+  // AdSense explicitly requires data-ad-slot to be ONLY the numeric suffix "098765432"
+  if (finalAdSlot && finalAdSlot.includes('-')) {
+    finalAdSlot = finalAdSlot.split('-').pop() || finalAdSlot;
+  }
+
+  // Check if this is a placeholder ad slot (contains placeholder patterns)
+  const isPlaceholder = !finalAdSlot ||
+                       finalAdSlot?.includes('XXXXXXXXXX') || 
+                       finalAdSlot?.includes('YYYYYYYYYY') || 
+                       finalAdSlot?.includes('ZZZZZZZZZZ') ||
+                       finalAdSlot?.includes('AAAAAAAAAA') ||
+                       finalAdSlot?.includes('BBBBBBBBBB') ||
+                       finalAdSlot?.includes('CCCCCCCCCC');
+
+  // If no valid ad slot in production, render nothing
+  if (isPlaceholder && process.env.NODE_ENV === 'production') return null;
+
+  // Render a visible placeholder box for development, or if missing in dev
+  if (isPlaceholder || process.env.NODE_ENV === 'development') {
+    const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
+    return (
+      <div 
+        className={`bg-stone-100 flex items-center justify-center text-stone-400 text-sm border border-stone-200 border-dashed rounded-md ${className}`}
+        style={{ width: '100%', minHeight: minHeightVal, ...style }}
+        suppressHydrationWarning
+      >
+        <span suppressHydrationWarning>Ad Space ({adFormat})</span>
+      </div>
+    );
+  }
+
+  // Enforce a minimum height to prevent layout shift during loading
+  const minHeightVal = style.minHeight || (adFormat === 'horizontal' ? '90px' : adFormat === 'vertical' ? '600px' : '250px');
+  
+  const containerStyle = {
+    ...style,
+    minHeight: minHeightVal,
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: '100%',
+  };
 
   useEffect(() => {
-    // Prevent double execution in Strict Mode or if ID is missing
-    if (adPushed.current || !process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID) return;
-
+    if (adPushed.current || !publisherId || !finalAdSlot || isPlaceholder) return;
     try {
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
@@ -28,20 +79,20 @@ export default function AdSlot({
     } catch (err) {
       console.log('AdSense error:', err);
     }
-  }, []);
-
-  if (!process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID) {
-    return null;
-  }
+  }, [publisherId, finalAdSlot, isPlaceholder]);
 
   return (
-    <ins
-      className={`adsbygoogle ${className}`}
-      style={style}
-      data-ad-client={process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID}
-      data-ad-slot={adSlot}
-      data-ad-format={adFormat}
-      data-full-width-responsive="true"
-    />
+    <div 
+      className={`bg-gray-50 dark:bg-neutral-900 border border-dashed border-gray-200 dark:border-neutral-800 rounded overflow-hidden ${className}`}
+      style={containerStyle}
+    >
+      <ins
+        className="adsbygoogle w-full h-full block"
+        data-ad-client={publisherId}
+        data-ad-slot={finalAdSlot}
+        data-ad-format={adFormat}
+        data-full-width-responsive="true"
+      />
+    </div>
   );
 }

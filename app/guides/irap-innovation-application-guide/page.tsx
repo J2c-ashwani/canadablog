@@ -12,63 +12,25 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "IRAP Funding Guide 2026: Application, Eligibility & ITA Contact",
   description: "Complete guide to the Industrial Research Assistance Program (IRAP). How to get up to $500K in non-repayable R&D funding and connect with an ITA.",
-  keywords: "IRAP grants, Industrial Research Assistance Program, NRC IRAP, R&D funding canada, technology grants, ITA contact",
+  keywords: "IRAP grants, Industrial Research Assistance Program, NRC IRAP, R&D funding canada, technology grants, ITA contact, irap innovation application guide application checklist 2026, irap innovation application guide requirements and documents needed, irap innovation application guide approval timeline, irap innovation application guide application tips, IRAP application step by step guide, IRAP eligibility checker, IRAP vs NRC which to apply first, best grants for small business Canada 2026, am I eligible for irap innovation application guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/irap-innovation-application-guide",
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is IRAP funding a loan or a grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP provides non-repayable financial contributions, which function like grants. You do not need to pay the money back if you adhere to the contribution agreement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I apply for IRAP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There is no online application form. You must first contact the NRC to be assigned an Industrial Technology Advisor (ITA). The ITA will assess your business and, if eligible, invite you to submit a proposal."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What expenses does IRAP cover?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IRAP generally covers up to 80% of internal technical salaries and up to 50% of contractor costs directly related to the R&D project. It does not typically cover overhead or capital equipment."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the approval process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process can take anywhere from 1 to 4 months, depending on the complexity of the project and the availability of funds. Small projects often have a faster approval timeline."
-      }
-    }
-  ]
-}
-
 export default function IRAPInnovationApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-700 to-indigo-900 text-white py-20">

@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "NSERC Research Grants 2026 | I2I & Alliance Application Guide",
-  description: "Complete guide to NSERC Idea to Innovation (I2I) and Alliance grants. Learn how to secure up to $1M+ in research funding for university-industry partnerships.",
-  keywords: "NSERC I2I application, Alliance grants Canada, university research funding, NSERC proposal guide, HQP training plan",
+  title: "NSERC Research Grants 2026 – Funding up to $1M Available",
+  description: "Explore top nserc research grants offering up to $1M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "NSERC I2I application, Alliance grants Canada, university research funding, NSERC proposal guide, HQP training plan, nserc research grants guide application checklist 2026, nserc research grants guide requirements and documents needed, nserc research grants guide approval timeline, nserc research grants guide application tips, NSERC application step by step guide, NSERC eligibility checker, best grants for small business Canada 2026, am I eligible for nserc research grants guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/nserc-research-grants-guide",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the NSERC Idea to Innovation (I2I) grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "I2I is a grant (up to $350k) designed to accelerate the pre-competitive development of promising technology originating from the university sector to promote its transfer to a new or established Canadian company."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need an industry partner for NSERC Alliance?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. NSERC Alliance grants require a partnership with at least one organization from the private, public, or not-for-profit sector that can apply the research results."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What qualifies as HQP?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "HQP stands for Highly Qualified Personnel. This includes undergraduate and graduate students, and postdoctoral fellows who are trained through the research project."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the success rate for NSERC grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Success rates vary by program but generally range from 50% to 80% for partnership programs like I2I and Alliance, which is significantly higher than Discovery Grants."
-      }
-    }
-  ]
-}
-
 export default function NSERCResearchGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-900 to-violet-800 text-white py-20 relative overflow-hidden">
@@ -413,6 +375,10 @@ export default function NSERCResearchGrantsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-indigo-50/30">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

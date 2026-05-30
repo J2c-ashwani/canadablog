@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "atlantic-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for Atlantic Business Grants : Oce 2026 in 2026?",
 
-    title: "Atlantic Business Grants : Oce... 2026 | $2",
+    title: "Atlantic Business Grants 2026: ACOA & Ocean Supercluster | $2B+",
 
     excerpt: "🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA's diverse funding programs, discover grants for Nova Scotia, NB, PEI, and Newfoundland.",
     category: "Province-Specific",

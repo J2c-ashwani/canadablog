@@ -34,18 +34,19 @@ export async function generateMetadata({
     title = `${title} - Page ${pageNum}`;
   }
 
-  // Canonical: page 1 = /blog, page N = /blog?page=N
-  let canonicalUrl = baseUrl;
-  const params = new URLSearchParams();
-  if (category) params.set('category', category);
-  if (pageNum > 1) params.set('page', pageNum.toString());
-  const queryString = params.toString();
-  if (queryString) canonicalUrl = `${baseUrl}?${queryString}`;
+  // Canonical should ALWAYS point to the base URL without query params.
+  // Filtered/paginated views are just different views of the same page.
+  // This prevents "Duplicate without user-selected canonical" in GSC.
+  const canonicalUrl = baseUrl;
+
+  // Only index the base /blog page. Category filters and pagination
+  // are duplicate views — noindex them but keep follow for link discovery.
+  const hasQueryParams = !!(category || pageNum > 1);
 
   return {
     title,
     description,
-    keywords: "grant funding blog, government grants news, funding opportunities, grant alerts, business funding tips, entrepreneur grants",
+    keywords: "grant funding blog, government grants news, funding opportunities 2026, how to apply for government grants, best small business grants Canada USA, IRAP CDAP SBIR grant guides, startup funding alerts, non-repayable grants for entrepreneurs, grant application tips step by step, am I eligible for government grants",
     openGraph: {
       title,
       description,
@@ -64,7 +65,10 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalUrl,
     },
-    robots: { index: true, follow: true },
+    robots: {
+      index: !hasQueryParams,
+      follow: true,
+    },
   };
 }
 
@@ -73,11 +77,12 @@ export default async function BlogPage({
 }: {
   searchParams: Promise<{ category?: string; page?: string }>
 }) {
-  const resolvedParams = await searchParams;
-  const allPosts = getGrantNewsPosts();
-  const selectedCategory = resolvedParams.category;
-  const currentPage = parseInt(resolvedParams.page || '1');
-  const postsPerPage = 9;
+  try {
+    const resolvedParams = await searchParams;
+    const allPosts = getGrantNewsPosts();
+    const selectedCategory = resolvedParams?.category;
+    const currentPage = parseInt(resolvedParams?.page || '1');
+    const postsPerPage = 9;
 
   // Filter posts by category if selected
   const filteredPosts = selectedCategory
@@ -103,9 +108,9 @@ export default async function BlogPage({
       {/* Header Ad */}
       <div className="container mx-auto px-4 py-4">
         <AdSlot
-          adSlot="1234567890"
-          adFormat="horizontal"
-          className="mb-6"
+          adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD || ""}
+          adFormat="auto"
+          className="mb-6 w-full overflow-hidden"
           style={{ minHeight: '90px' }}
         />
       </div>
@@ -148,13 +153,14 @@ export default async function BlogPage({
                   <div key={`${post.id || post.slug}-${index}`}>
                     <BlogCard post={post} />
 
-                    {/* In-content Ad after every 3rd post */}
+                    {/* In-content horizontal banner ad after every 3rd post */}
                     {(index + 1) % 3 === 0 && (
-                      <div className="mt-6">
+                      <div className="col-span-full mt-6 w-full flex justify-center">
                         <AdSlot
-                          adSlot="2345678901"
-                          adFormat="rectangle"
-                          style={{ minHeight: '250px' }}
+                          adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL || ""}
+                          adFormat="auto"
+                          className="w-full overflow-hidden"
+                          style={{ minHeight: '120px' }}
                         />
                       </div>
                     )}
@@ -197,7 +203,7 @@ export default async function BlogPage({
 
               {/* Sidebar Ad */}
               <AdSlot
-                adSlot="3456789012"
+                adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD || ""}
                 adFormat="vertical"
                 style={{ minHeight: '600px' }}
               />
@@ -211,4 +217,13 @@ export default async function BlogPage({
       <Footer />
     </div>
   );
+  } catch (err: any) {
+    return (
+      <div style={{ padding: '2rem', background: '#fee', color: '#900', fontFamily: 'monospace' }}>
+        <h1>Vercel Live 500 Error Caught!</h1>
+        <p><b>Message:</b> {err?.message}</p>
+        <pre>{err?.stack}</pre>
+      </div>
+    );
+  }
 }

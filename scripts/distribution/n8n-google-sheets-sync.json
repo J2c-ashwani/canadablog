@@ -1,0 +1,81 @@
+{
+  "name": "FSI Digital - Secure Google Sheets Lead Sync",
+  "nodes": [
+    {
+      "parameters": {
+        "pollTimes": {
+          "item": [
+            {
+              "mode": "everyMinute",
+              "value": 15
+            }
+          ]
+        },
+        "documentId": {
+          "__rl": true,
+          "value": "1GAt0DTPzPAQXI9j4JwtlFLhLw4fTzf2XmMHttytu9To",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "options": {}
+      },
+      "id": "google-sheets-trigger",
+      "name": "New Lead Added (Google Sheets)",
+      "type": "n8n-nodes-base.googleSheetsTrigger",
+      "typeVersion": 1,
+      "position": [0, 0]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.sender.net/v2/subscribers",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Authorization",
+              "value": "Bearer {{$credentials.senderNetApiKey}}"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            },
+            {
+              "name": "Accept",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"email\": \"{{$json.Email || $json.email}}\",\n  \"groups\": [\n    \"e7ylLG\"\n  ]\n}"
+      },
+      "id": "sender-add-subscriber",
+      "name": "Securely Add to Sender.net",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [250, 0]
+    }
+  ],
+  "connections": {
+    "New Lead Added (Google Sheets)": {
+      "main": [
+        [
+          {
+            "node": "Securely Add to Sender.net",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "timezone": "America/Toronto"
+  }
+}

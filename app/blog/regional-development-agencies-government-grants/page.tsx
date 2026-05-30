@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide | 7 Regional Programs",
   description: "Complete guide to Canada's Regional Development Agencies (RDA) federal funding programs. Access $125K-$10M through ACOA, FedDev Ontario, PacifiCan, PrairiesCan, CED, FedNor, and CanNor regional programs.",
-  keywords: "Regional Development Agencies Canada, RDA federal funding, ACOA grants, FedDev Ontario funding, PacifiCan programs, PrairiesCan funding, CED Quebec funding, regional development funding Canada",
+  keywords: "Regional Development Agencies Canada, RDA federal funding, ACOA grants, FedDev Ontario funding, PacifiCan programs, PrairiesCan funding, CED Quebec funding, regional development funding Canada, how to apply for ACOA grants 2026, ACOA eligibility requirements, how to apply for regional development agencies government grants, regional development agencies government grants eligibility 2026, step by step regional development agencies government grants application guide, best regional development agencies government grants for small business Canada, am I eligible for regional development agencies government grants, regional development agencies government grants deadline 2026",
   openGraph: {
     title: "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide",
     description: "Comprehensive guide to Canada's 7 Regional Development Agencies offering targeted federal funding from $125K to $10M for regional economic development.",
@@ -55,26 +57,13 @@ export default function RDAGovernmentGrantsBlogPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -165,6 +154,12 @@ export default function RDAGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Program Statistics */}
@@ -880,6 +875,10 @@ export default function RDAGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

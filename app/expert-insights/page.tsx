@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -35,28 +36,19 @@ export async function generateMetadata({
         title = `${title} - Page ${pageNum}`;
     }
 
-    // Construct Canonical URL
-    // If page=1, strip it. If category exists, keep it.
-    let canonicalUrl = baseUrl;
-    const params = new URLSearchParams();
+    // Canonical should ALWAYS point to the base URL without query params.
+    // Filtered/paginated views are just different views of the same page.
+    // This prevents "Duplicate without user-selected canonical" in GSC.
+    const canonicalUrl = baseUrl;
 
-    if (category) {
-        params.set('category', category);
-    }
-    // We generally don't include page=1 in canonical
-    if (pageNum > 1) {
-        params.set('page', pageNum.toString());
-    }
-
-    const queryString = params.toString();
-    if (queryString) {
-        canonicalUrl = `${baseUrl}?${queryString}`;
-    }
+    // Only index the base /expert-insights page. Category filters and pagination
+    // are duplicate views — noindex them but keep follow for link discovery.
+    const hasQueryParams = !!(category || pageNum > 1);
 
     return {
         title,
         description,
-        keywords: "grant analysis, expert grant tips, business funding strategies, grant writing advice, government funding insights",
+        keywords: "how to apply for government grants in 2026, expert advice for non-dilutive business funding, actionable grant writing strategies for startups, step-by-step government funding guides, expert insights on securing state and federal loans",
         openGraph: {
             title,
             description,
@@ -76,7 +68,7 @@ export async function generateMetadata({
             canonical: canonicalUrl,
         },
         robots: {
-            index: true,
+            index: !hasQueryParams,
             follow: true,
         }
     };
@@ -117,7 +109,7 @@ export default async function ExpertInsightsPage({
             {/* Header Ad */}
             <div className="container mx-auto px-4 py-4">
                 <AdSlot
-                    adSlot="1234567890"
+                    adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD || ""}
                     adFormat="horizontal"
                     className="mb-6"
                     style={{ minHeight: '90px' }}
@@ -159,20 +151,20 @@ export default async function ExpertInsightsPage({
                         {paginatedPosts.length > 0 ? (
                             <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6 mb-8">
                                 {paginatedPosts.map((post, index) => (
-                                    <div key={post.id}>
+                                    <Fragment key={post.id}>
                                         <BlogCard post={post} />
 
                                         {/* In-content Ad after every 3rd post */}
                                         {(index + 1) % 3 === 0 && (
-                                            <div className="mt-6">
+                                            <div className="col-span-full my-6 w-full flex justify-center">
                                                 <AdSlot
-                                                    adSlot="2345678901"
-                                                    adFormat="rectangle"
-                                                    style={{ minHeight: '250px' }}
+                                                    adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL || ""}
+                                                    adFormat="horizontal"
+                                                    style={{ minHeight: '120px', width: '100%' }}
                                                 />
                                             </div>
                                         )}
-                                    </div>
+                                    </Fragment>
                                 ))}
                             </div>
                         ) : (
@@ -211,7 +203,7 @@ export default async function ExpertInsightsPage({
 
                             {/* Sidebar Ad */}
                             <AdSlot
-                                adSlot="3456789012"
+                                adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD || ""}
                                 adFormat="vertical"
                                 style={{ minHeight: '600px' }}
                             />

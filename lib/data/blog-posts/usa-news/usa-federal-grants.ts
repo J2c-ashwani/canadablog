@@ -6,7 +6,7 @@ const post: BlogPost = {
     slug: "usa-federal-grants",
     shortAnswerQuestion: "How can my business apply for Usa Federal Grants 2025-2026 in 2026?",
 
-    title: "Usa Federal Grants... 2025-2026 | Funding Guide",
+    title: "USA Federal Grants 2025-2026: Complete Funding Guide",
 
     excerpt: "Complete guide to government grants.",
     category: "USA News",

@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Minority & Women Business Grants 2026 | Certification Guide",
-  description: "Get certified for set-aside federal contracts. Comprehensive guide to 8(a), WOSB, and SDVOSB certifications and minority business grants.",
-  keywords: "minority business grants, women owned business grants, 8a certification requirements, WOSB certification, SDVOSB grants, minority contracting",
+  title: "How to Get Minority Business Grants (2026) – Step-by-Step Guide",
+  description: "Explore top minority business grants offering up to $50K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "minority business grants, women owned business grants, 8a certification requirements, WOSB certification, SDVOSB grants, minority contracting, minority grants application checklist 2026, minority grants requirements and documents needed, minority grants approval timeline, minority grants application tips, best grants for small business USA 2026, am I eligible for minority grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-minority-grants",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the 8(a) Program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 8(a) Business Development Program is a 9-year program for firms owned by socially and economically disadvantaged individuals. It allows them to compete for 'sole-source' government contracts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a grant for being a woman-owned business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Technically, no. The federal government does not give 'free money' just for ownership status. However, the WOSB certification allows you to bid on exclusive contracts that non-certified businesses cannot touch."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does certification take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Self-certification (for some programs) is fast. However, formal SBA certification for 8(a) or WOSB typically takes 90-120 days after submission."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the net worth limit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For 8(a) and EDWOSB (Economically Disadvantaged Women-Owned Small Business), your personal net worth must be less than $850,000 (excluding your primary home and business equity)."
-      }
-    }
-  ]
-}
-
 export default function ApplyMinorityGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-900 to-purple-800 text-white py-20 relative overflow-hidden">
@@ -372,6 +334,10 @@ export default function ApplyMinorityGrantsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

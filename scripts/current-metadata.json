@@ -1,0 +1,1010 @@
+[
+  {
+    "type": "guide",
+    "slug": "apply-agriculture-agri-food-canada",
+    "path": "app/guides/apply-agriculture-agri-food-canada/page.tsx",
+    "currentTitle": "Agriculture & Agri-Food Canada Application Guide 2026 | Federal Funding",
+    "currentDescription": "Step-by-step guide to applying for AAFC federal funding. Get application templates, AgriInnovate strategies, and compliance checklists."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-alberta-business-grants",
+    "path": "app/guides/apply-alberta-business-grants/page.tsx",
+    "currentTitle": "Alberta Business Grants 2026: Complete Application Guide | Alberta Innovates, ERA, PrairiesCan",
+    "currentDescription": "Complete step-by-step guide to applying for Alberta business grants and provincial funding. Get Alberta application templates, energy innovation strategies, and frameworks for Alberta Innovates, ERA, and economic diversification programs."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-british-columbia-grants",
+    "path": "app/guides/apply-british-columbia-grants/page.tsx",
+    "currentTitle": "BC Business Grants 2026: Complete Application Guide | Innovate BC, CleanBC, Creative BC",
+    "currentDescription": "Complete step-by-step guide to applying for British Columbia business grants and provincial funding. Get BC application templates, provincial strategies, and frameworks for Innovate BC, CleanBC, and Creative BC programs."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-csbfp-government-financing",
+    "path": "app/guides/apply-csbfp-government-financing/page.tsx",
+    "currentTitle": "CSBFP Government Financing Application Guide 2026 | Step-by-Step Federal Loan Guarantee Process",
+    "currentDescription": "Complete step-by-step guide to applying for CSBFP government-guaranteed loans. Get federal financing templates, lender selection strategies, and proven application frameworks for up to $1.15M in financing."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-csbfp-loans",
+    "path": "app/guides/apply-csbfp-loans/page.tsx",
+    "currentTitle": "Complete CSBFP Application Guide 2026 | Step-by-Step Process",
+    "currentDescription": "Step-by-step guide to applying for Canada Small Business Financing Program loans. Get templates, checklists, and expert strategies for CSBFP success."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-doe-clean-energy-grants",
+    "path": "app/guides/apply-doe-clean-energy-grants/page.tsx",
+    "currentTitle": "DOE Clean Energy Grants 2026 | $62B Funding Guide",
+    "currentDescription": "Official guide to Department of Energy (DOE) grants. Funding for solar, wind, and clean tech startups. Learn how to apply for ARPA-E and EERE grants."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-federal-grants",
+    "path": "app/guides/apply-federal-grants/page.tsx",
+    "currentTitle": "How to Apply for Federal Grants 2026 | Complete Application Guide | Grants.gov, SAM.gov, SBIR",
+    "currentDescription": "Step-by-step guide to applying for federal grants. Learn eligibility requirements, application process, winning strategies, and access billions in government funding through Grants.gov, SBIR, and more."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-indigenous-rural-business-funding",
+    "path": "app/guides/apply-indigenous-rural-business-funding/page.tsx",
+    "currentTitle": "Indigenous & Rural Business Funding Guide 2026 | Grants & Loans",
+    "currentDescription": "Complete guide to Aboriginal Entrepreneurship Program (AEP), NACCA loans, and rural business grants. Get templates and strategies for approval."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-irap-government-grants",
+    "path": "app/guides/apply-irap-government-grants/page.tsx",
+    "currentTitle": "IRAP Government Grants Application Guide 2026 | Federal R&D Funding",
+    "currentDescription": "Complete guide to applying for IRAP government grants. Learn federal compliance requirements, Treasury Board reporting standards, and how to secure federal R&D funding."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-irap-grants",
+    "path": "app/guides/apply-irap-grants/page.tsx",
+    "currentTitle": "Complete IRAP Application Guide 2026 | Step-by-Step R&D Grant Process",
+    "currentDescription": "Step-by-step guide to applying for NRC IRAP grants. Get templates, R&D project frameworks, and expert tips for successful innovation funding."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-minority-grants",
+    "path": "app/guides/apply-minority-grants/page.tsx",
+    "currentTitle": "Minority & Women Business Grants 2026 | Certification Guide",
+    "currentDescription": "Get certified for set-aside federal contracts. Comprehensive guide to 8(a), WOSB, and SDVOSB certifications and minority business grants."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-ontario-business-grants",
+    "path": "app/guides/apply-ontario-business-grants/page.tsx",
+    "currentTitle": "Ontario Business Grants 2026: Complete Application Guide | Starter Company Plus, OCI, Ontario Creates",
+    "currentDescription": "Complete step-by-step guide to applying for Ontario business grants and provincial funding. Get Ontario application templates, provincial strategies, and proven frameworks for Starter Company Plus, Ontario Creates, and OCI programs."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-quebec-business-grants",
+    "path": "app/guides/apply-quebec-business-grants/page.tsx",
+    "currentTitle": "Quebec Business Grants 2026: Complete Application Guide | Investissement Québec, ESSOR, R&D Credits",
+    "currentDescription": "Complete 2025 guide to Quebec provincial funding. Step-by-step process for Investissement Québec loans, ESSOR grants up to $15M, and 30% R&D tax credits. Bilingual support available."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-regional-development-agencies",
+    "path": "app/guides/apply-regional-development-agencies/page.tsx",
+    "currentTitle": "Regional Development Agencies Application Guide 2026 | Step-by-Step RDA Funding",
+    "currentDescription": "Complete step-by-step guide to applying for Regional Development Agency (RDA) funding. Get templates, regional strategies, and proven application frameworks for ACOA, FedDev, Ced, and more."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-sba-loans",
+    "path": "app/guides/apply-sba-loans/page.tsx",
+    "currentTitle": "SBA Loan Requirements 2026 | 7(a), 504 & Microloans",
+    "currentDescription": "Official guide to applying for SBA loans. Compare 7(a), CDC/504, and Microloan requirements. Learn how to get approved for up to $5M."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-sbir-grants",
+    "path": "app/guides/apply-sbir-grants/page.tsx",
+    "currentTitle": "SBIR Phase I & II Requirements 2026 | $1.7M R&D Funding",
+    "currentDescription": "Complete guide to Small Business Innovation Research (SBIR) grants. Learn how to write a winning proposal for Phase I ($250k) and Phase II ($1.7M) funding."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-small-business-grants",
+    "path": "app/guides/apply-small-business-grants/page.tsx",
+    "currentTitle": "Small Business Grants 2026 | SBA & Federal Funding Guide",
+    "currentDescription": "Stop searching for "
+  },
+  {
+    "type": "guide",
+    "slug": "apply-strategic-innovation-fund",
+    "path": "app/guides/apply-strategic-innovation-fund/page.tsx",
+    "currentTitle": "Strategic Innovation Fund Application Guide 2026 | Step-by-Step SIF Funding Process",
+    "currentDescription": "Complete step-by-step guide to applying for Strategic Innovation Fund (SIF) funding. Get SIF application templates, innovation project strategies, and proven application frameworks for $10M+ projects."
+  },
+  {
+    "type": "guide",
+    "slug": "apply-women-entrepreneurship-strategy",
+    "path": "app/guides/apply-women-entrepreneurship-strategy/page.tsx",
+    "currentTitle": "Women Entrepreneurship Strategy 2026 | $100K Grants & Loans",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "guide",
+    "slug": "apply-youth-entrepreneurship-funding",
+    "path": "app/guides/apply-youth-entrepreneurship-funding/page.tsx",
+    "currentTitle": "Youth Entrepreneurship Funding Guide 2026 | Futurpreneur & Grants",
+    "currentDescription": "Complete guide to Futurpreneur Canada loans, youth business grants, and startup funding for ages 18-39. Get application templates and mentor matching tips."
+  },
+  {
+    "type": "guide",
+    "slug": "bdc-women-entrepreneurs-financing-guide",
+    "path": "app/guides/bdc-women-entrepreneurs-financing-guide/page.tsx",
+    "currentTitle": "BDC Woman Entrepreneur Financing 2026 | $100K Online Loan",
+    "currentDescription": "Complete guide to BDC"
+  },
+  {
+    "type": "guide",
+    "slug": "california-loan-guarantee-guide",
+    "path": "app/guides/california-loan-guarantee-guide/page.tsx",
+    "currentTitle": "California Small Business Loan Guarantee 2026 | IBank Guide",
+    "currentDescription": "Official guide to the California Small Business Loan Guarantee Program (SSBCI). How to get state-backed loans up to $2.5 million if you lack collateral."
+  },
+  {
+    "type": "guide",
+    "slug": "canada-aerospace-defence-funding-guide",
+    "path": "app/guides/canada-aerospace-defence-funding-guide/page.tsx",
+    "currentTitle": "Aerospace & Defence Grants Canada 2026 | CSA & IDEaS Projects",
+    "currentDescription": "Complete guide to aerospace and defence funding in Canada. Apply for CSA space technology grants, IDEaS defence innovation, and SIF aerospace streams."
+  },
+  {
+    "type": "guide",
+    "slug": "canada-agri-food-funding-guide",
+    "path": "app/guides/canada-agri-food-funding-guide/page.tsx",
+    "currentTitle": "Agri-Food & AgriTech Grants Canada 2026 | Processing & Innovation Funding",
+    "currentDescription": "Guide to federal funding for food processing and agritech. Apply for AgriInnovate, AgriProcessing, and food automation grants."
+  },
+  {
+    "type": "guide",
+    "slug": "canada-cleantech-funding-guide",
+    "path": "app/guides/canada-cleantech-funding-guide/page.tsx",
+    "currentTitle": "CleanTech Funding Canada 2026 | SDTC & Net Zero Grants",
+    "currentDescription": "Complete guide to clean technology funding. Apply for SDTC, Clean Tech ITCs (30%), and Net Zero Accelerator grants."
+  },
+  {
+    "type": "guide",
+    "slug": "canada-digital-ai-funding-guide",
+    "path": "app/guides/canada-digital-ai-funding-guide/page.tsx",
+    "currentTitle": "AI Funding Canada 2026 | Scale AI & CDAP Grants",
+    "currentDescription": "Complete guide to AI and digital adoption funding. Apply for Scale AI supercluster projects, CDAP digital transformation grants, and IRAP machine learning funding."
+  },
+  {
+    "type": "guide",
+    "slug": "canada-life-sciences-funding-guide",
+    "path": "app/guides/canada-life-sciences-funding-guide/page.tsx",
+    "currentTitle": "Biotech & Life Sciences Grants Canada 2026 | Clinical Trials Funding",
+    "currentDescription": "Complete guide to life sciences funding. Apply for IRAP biotech grants, Clinical Trials Fund, and medical device commercialization support."
+  },
+  {
+    "type": "guide",
+    "slug": "canada-manufacturing-funding-guide",
+    "path": "app/guides/canada-manufacturing-funding-guide/page.tsx",
+    "currentTitle": "Manufacturing Grants Canada 2026 | NGen & Industry 4.0 Funding",
+    "currentDescription": "Complete guide to advanced manufacturing funding. Apply for NGen supercluster projects, IRAP manufacturing grants, and CDAP digital adoption loans."
+  },
+  {
+    "type": "guide",
+    "slug": "edc-women-trade-export-financing-guide",
+    "path": "app/guides/edc-women-trade-export-financing-guide/page.tsx",
+    "currentTitle": "EDC Women in Trade 2026 | $50M Export Funding",
+    "currentDescription": "Complete guide to EDC"
+  },
+  {
+    "type": "guide",
+    "slug": "federal-grants-application-tips",
+    "path": "app/guides/federal-grants-application-tips/page.tsx",
+    "currentTitle": "Federal Grants Application Tips 2026 | Expert Acceptance Strategies",
+    "currentDescription": "Master the federal grant application process. Expert tips on writing narratives, budget justification, SAM.gov registration, and avoiding rejection."
+  },
+  {
+    "type": "guide",
+    "slug": "irap-innovation-application-guide",
+    "path": "app/guides/irap-innovation-application-guide/page.tsx",
+    "currentTitle": "IRAP Funding Guide 2026: Application, Eligibility & ITA Contact",
+    "currentDescription": "Complete guide to the Industrial Research Assistance Program (IRAP). How to get up to $500K in non-repayable R&D funding and connect with an ITA."
+  },
+  {
+    "type": "guide",
+    "slug": "nserc-research-grants-guide",
+    "path": "app/guides/nserc-research-grants-guide/page.tsx",
+    "currentTitle": "NSERC Research Grants 2026 | I2I & Alliance Application Guide",
+    "currentDescription": "Complete guide to NSERC Idea to Innovation (I2I) and Alliance grants. Learn how to secure up to $1M+ in research funding for university-industry partnerships."
+  },
+  {
+    "type": "guide",
+    "slug": "sba-application-process",
+    "path": "app/guides/sba-application-process/page.tsx",
+    "currentTitle": "SBA Application Process 2026 | Step-by-Step Approval Guide",
+    "currentDescription": "Master the SBA application process. From EIN registration to "
+  },
+  {
+    "type": "guide",
+    "slug": "sba-growth-accelerator-fund-guide",
+    "path": "app/guides/sba-growth-accelerator-fund-guide/page.tsx",
+    "currentTitle": "SBA Growth Accelerator Fund 2026 | $200K Prizes",
+    "currentDescription": "Guide to the SBA Growth Accelerator Fund Competition (GAFC). Funding for incubators, accelerators, and ecosystem builders supporting STEM/R&D startups."
+  },
+  {
+    "type": "guide",
+    "slug": "sbir-research-grants-guide",
+    "path": "app/guides/sbir-research-grants-guide/page.tsx",
+    "currentTitle": "SBIR Research Grants 2026: Application Guide & Requirements",
+    "currentDescription": "Complete guide to applying for SBIR Phase I & II grants. Learn eligibility, deadlines, and how to secure up to $1.7M in federal R&D funding without equity loss."
+  },
+  {
+    "type": "guide",
+    "slug": "sred-application-guide",
+    "path": "app/guides/sred-application-guide/page.tsx",
+    "currentTitle": "SR&ED Tax Credits 2026: Application, Rates & Eligibility",
+    "currentDescription": "Complete guide to claiming SR&ED tax credits. Learn how to get up to 65% of your R&D costs refunded by the CRA."
+  },
+  {
+    "type": "guide",
+    "slug": "women-entrepreneurship-fund-guide",
+    "path": "app/guides/women-entrepreneurship-fund-guide/page.tsx",
+    "currentTitle": "Women Entrepreneurship Fund 2026 | $100K Business Grants",
+    "currentDescription": "Complete guide to the Women Entrepreneurship Fund (WEF). Learn how to secure $100K in non-repayable grant funding for your business expansion."
+  },
+  {
+    "type": "guide",
+    "slug": "women-entrepreneurship-loan-fund-guide",
+    "path": "app/guides/women-entrepreneurship-loan-fund-guide/page.tsx",
+    "currentTitle": "Women Entrepreneurship Loan Fund (WELF) 2026 | $50K Loans",
+    "currentDescription": "Official guide to the Women Entrepreneurship Loan Fund (WELF). Apply for up to $50,000 in microloans through WEOC, NACCA, and other partners."
+  },
+  {
+    "type": "blog",
+    "slug": "agriculture-agri-food-canada-government-grants",
+    "path": "app/blog/agriculture-agri-food-canada-government-grants/page.tsx",
+    "currentTitle": "Agriculture Canada Grants 2026 | AAFC Federal Funding Guide",
+    "currentDescription": "Complete guide to the $3.5B Sustainable Canadian Agricultural Partnership. Access AgriInnovate, AgriScience, AgriCompetitiveness, and Clean Technology funding for farms, processors, and agri-tech companies."
+  },
+  {
+    "type": "blog",
+    "slug": "ai-machine-learning-grants",
+    "path": "app/blog/ai-machine-learning-grants/page.tsx",
+    "currentTitle": "AI & Machine Learning Grants 2026-2027 | $305K NSF SBIR, $100M AI Research Institutes, DOD AI Applications Non-Dilutive Funding",
+    "currentDescription": "Complete 2026-2027 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications supporting computer vision, NLP, ML platforms, generative AI, and predictive analytics with zero equity funding."
+  },
+  {
+    "type": "blog",
+    "slug": "alberta-innovation-grants",
+    "path": "app/blog/alberta-innovation-grants/page.tsx",
+    "currentTitle": "Alberta Innovation Grants & Funding 2026 | $950M+ Energy Transition, AI & CleanTech Support",
+    "currentDescription": "Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation programs."
+  },
+  {
+    "type": "blog",
+    "slug": "alberta-small-business-grants-guide",
+    "path": "app/blog/alberta-small-business-grants-guide/page.tsx",
+    "currentTitle": "Alberta Small Business Grants 2026 | $980M+ Complete Funding Guide",
+    "currentDescription": "Complete guide to Alberta small business grants and funding programs. Access Alberta Innovates, Technology Innovation Fund, Rural Economic Development, and Energy Diversification grants. Expert tips for successful applications."
+  },
+  {
+    "type": "blog",
+    "slug": "alberta-women-business-grants",
+    "path": "app/blog/alberta-women-business-grants/page.tsx",
+    "currentTitle": "Alberta Women Business Grants 2026 | $580M Energy & Tech Support Programs",
+    "currentDescription": "Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding."
+  },
+  {
+    "type": "blog",
+    "slug": "amber-grant-women-canada",
+    "path": "app/blog/amber-grant-women-canada/page.tsx",
+    "currentTitle": "Amber Grant for Women Canada 2026 | Monthly $10K Grants + $25K Annual Award",
+    "currentDescription": "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, rolling deadlines, and support for Canadian women entrepreneurs."
+  },
+  {
+    "type": "blog",
+    "slug": "atlantic-canada-innovation-grants",
+    "path": "app/blog/atlantic-canada-innovation-grants/page.tsx",
+    "currentTitle": "Atlantic Canada Innovation Grants & Funding 2026 | 15% ACITC | $650M+ Ocean Tech Support",
+    "currentDescription": "Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding."
+  },
+  {
+    "type": "blog",
+    "slug": "atlantic-small-business-grants-guide",
+    "path": "app/blog/atlantic-small-business-grants-guide/page.tsx",
+    "currentTitle": "Atlantic Canada Small Business Grants 2026 | $850M+ Complete Funding Guide",
+    "currentDescription": "Complete guide to Atlantic Canada business grants. Access ACOA funding, Nova Scotia Small Business Fund, New Brunswick Innovation, PEI Development Fund, Newfoundland Business Growth programs, and 50+ funding opportunities. Expert tips for successful applications."
+  },
+  {
+    "type": "blog",
+    "slug": "bc-small-business-grants-guide",
+    "path": "app/blog/bc-small-business-grants-guide/page.tsx",
+    "currentTitle": "BC Small Business Grants 2026 | Rebates & Innovate BC Funding",
+    "currentDescription": "Complete 2026 guide to British Columbia business grants. Get funding from Innovate BC, Northern Development Initiative Trust, and CleanBC energy rebates."
+  },
+  {
+    "type": "blog",
+    "slug": "bc-women-business-grants",
+    "path": "app/blog/bc-women-business-grants/page.tsx",
+    "currentTitle": "BC Women Business Grants 2026 | WeBC Loans & Funding Guide",
+    "currentDescription": "Complete 2026 guide to funding for women entrepreneurs in British Columbia. Get loans up to $150k from WeBC, access Indigenous women"
+  },
+  {
+    "type": "blog",
+    "slug": "bdc-women-entrepreneurs-financing",
+    "path": "app/blog/bdc-women-entrepreneurs-financing/page.tsx",
+    "currentTitle": "BDC Women Entrepreneurs Financing 2026 | Flexible Loans & Advisory for Women-Led Business Growth",
+    "currentDescription": "Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada."
+  },
+  {
+    "type": "blog",
+    "slug": "biotech-life-sciences-grants",
+    "path": "app/blog/biotech-life-sciences-grants/page.tsx",
+    "currentTitle": "Biotech & Life Sciences Grants Canada 2026 | Funding Guide",
+    "currentDescription": "Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "bmo-celebrating-women-grant",
+    "path": "app/blog/bmo-celebrating-women-grant/page.tsx",
+    "currentTitle": "BMO Celebrating Women Grant 2026 | $10K Grants + Business Advisory for Women Entrepreneurs",
+    "currentDescription": "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2026 for Canadian and U.S. women business owners."
+  },
+  {
+    "type": "blog",
+    "slug": "british-columbia-innovation-grants",
+    "path": "app/blog/british-columbia-innovation-grants/page.tsx",
+    "currentTitle": "British Columbia Innovation Grants & Tax Credits 2026 | 10% BCITC | $1.8B+ CleanTech Funding",
+    "currentDescription": "Complete guide to BC innovation grants and tax credits. Access $1.8B+ through 10% BC Innovation Tax Credit (BCITC), Innovate BC, New Ventures BC, and cleantech, film, ocean technology programs."
+  },
+  {
+    "type": "blog",
+    "slug": "california-tech-programs",
+    "path": "app/blog/california-tech-programs/page.tsx",
+    "currentTitle": "California Tech Startup Grants 2026-2027 | $50K CalSEED, $50K SBIR Match, Tax Credits & Silicon Valley Funding Programs",
+    "currentDescription": "Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz innovation programs, Accelerate CA Hubs for Silicon Valley, Bay Area, Los Angeles, San Diego tech startups."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-advanced-manufacturing-innovation-grants",
+    "path": "app/blog/canada-advanced-manufacturing-innovation-grants/page.tsx",
+    "currentTitle": "Canada Advanced Manufacturing Innovation Grants 2026 | $3.1B+ Industry 4.0 Funding | NGen",
+    "currentDescription": "Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-aerospace-defence-innovation-grants",
+    "path": "app/blog/canada-aerospace-defence-innovation-grants/page.tsx",
+    "currentTitle": "Canada Aerospace & Defence Innovation Grants 2026 | Complete Funding Guide",
+    "currentDescription": "Complete guide to Canadian aerospace and defence innovation funding. Access ISED, DND, and regional programs for aerospace R&D, defence technology, and space innovation."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-agri-food-technology-innovation-grants",
+    "path": "app/blog/canada-agri-food-technology-innovation-grants/page.tsx",
+    "currentTitle": "Canada Agri-Food Technology Innovation Grants 2026 | $500M+ AgriScience, AgriInnovate, SCAP Funding Guide",
+    "currentDescription": "Complete 2026 guide to Canadian agri-food technology grants. Access $500M+ annual funding through AgriScience ($340M), AgriInnovate (up to $10M per project), and provincial CAP programs for precision agriculture, sustainable farming, and food processing innovation."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-agriculture-agrifood-grants-guide",
+    "path": "app/blog/canada-agriculture-agrifood-grants-guide/page.tsx",
+    "currentTitle": "Canada Agriculture & Agri-Food Grants 2026 | $2.3B+ Agricultural Innovation Funding Programs Guide",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "canada-clean-technology-environment-grants-guide",
+    "path": "app/blog/canada-clean-technology-environment-grants-guide/page.tsx",
+    "currentTitle": "Canada Clean Technology & Environment Grants 2026 | $1.2B+ Sustainability Funding Programs Guide",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "canada-clean-technology-innovation-grants",
+    "path": "app/blog/canada-clean-technology-innovation-grants/page.tsx",
+    "currentTitle": "Canada Clean Technology Innovation Grants 2026 | $1.2B+ CleanTech Funding | SDTC & Net Zero",
+    "currentDescription": "Complete guide to Canadian clean technology innovation grants. Access $1.2B+ funding through SDTC (up to $15M), Clean Technology ITCs, Net Zero Accelerator, and 22+ cleantech programs."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-digital-ai-innovation-grants",
+    "path": "app/blog/canada-digital-ai-innovation-grants/page.tsx",
+    "currentTitle": "Canada Digital & AI Innovation Grants 2026 | $850M+ Funding | Scale AI & CDAP",
+    "currentDescription": "Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-employment-workforce-training-grants-guide",
+    "path": "app/blog/canada-employment-workforce-training-grants-guide/page.tsx",
+    "currentTitle": "Canada Employment & Workforce Training Grants 2026 | $1.9B+ Skills Development Funding Programs Guide",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "canada-export-development-grants-guide",
+    "path": "app/blog/canada-export-development-grants-guide/page.tsx",
+    "currentTitle": "Canada Export Development Grants 2026 | CanExport SMEs $50K & EDC Funding Guide",
+    "currentDescription": "Complete 2026 guide to Canada export grants. New CanExport SMEs rules (Deadline May 29), EDC Trade Impact $5B capacity, and Creative Export Canada $2.5M funding."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-federal-grants",
+    "path": "app/blog/canada-federal-grants/page.tsx",
+    "currentTitle": "Canadian Government Grants (2026): The Complete Federal Funding Guide",
+    "currentDescription": "Most businesses apply to the wrong agency and get rejected. This playbook shows you exactly which of the 3 federal agencies to target and the stacking limits that trip up 80% of applicants."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-growth-expansion-grants-guide",
+    "path": "app/blog/canada-growth-expansion-grants-guide/page.tsx",
+    "currentTitle": "Canada Business Expansion Grants 2026 | 0% Interest Loans & Funding",
+    "currentDescription": "Complete 2026 guide to business scaling funding. Learn about the Business Scale-up and Productivity (BSP) program (0% interest loans), Regional Development Agencies, and the Canada Growth Fund."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-hiring-training-grants-guide",
+    "path": "app/blog/canada-hiring-training-grants-guide/page.tsx",
+    "currentTitle": "Canada Hiring & Training Grants 2026 | SWPP & Canada Job Grant Guide",
+    "currentDescription": "Complete 2026 guide to Canadian hiring grants. Get up to $7,000 per student hire (SWPP), $10,000 for employee training (CJG), and youth employment subsidies."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-industry-specific-grants-guide",
+    "path": "app/blog/canada-industry-specific-grants-guide/page.tsx",
+    "currentTitle": "Canada Industry Specific Grants 2026 | $1.5B+ Sector-Focused Programs Across 25+ Industries",
+    "currentDescription": "Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry funding."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-innovation-research-development-grants-guide",
+    "path": "app/blog/canada-innovation-research-development-grants-guide/page.tsx",
+    "currentTitle": "Canada R&D Grants 2026 | SR&ED & IRAP Funding Guide",
+    "currentDescription": "Complete 2026 guide to Canadian R&D funding. Major SR&ED update (limit doubled to $6M), NRC IRAP grants, and how to stack funding to cover 80% of dev & research costs."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-life-sciences-innovation-grants",
+    "path": "app/blog/canada-life-sciences-innovation-grants/page.tsx",
+    "currentTitle": "Canada Life Sciences Grants 2026 | $720M+ Biotech & Medical Device Funding | Clinical Trials Support",
+    "currentDescription": "Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding programs."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-manufacturing-industry-grants-guide",
+    "path": "app/blog/canada-manufacturing-industry-grants-guide/page.tsx",
+    "currentTitle": "Canada Manufacturing & Industry Grants 2026 | $3.1B+ Advanced Manufacturing Funding Programs Guide",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "canada-regional-economic-development-grants-guide",
+    "path": "app/blog/canada-regional-economic-development-grants-guide/page.tsx",
+    "currentTitle": "Canada Regional Economic Development Grants 2026 | $2.8B+ Community Growth Funding Programs Guide",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "canada-startup-funding-grants-guide",
+    "path": "app/blog/canada-startup-funding-grants-guide/page.tsx",
+    "currentTitle": "Canada Startup Funding 2026 Guide | Grants, Loans & Futurpreneur",
+    "currentDescription": "Complete 2026 guide to Canadian startup funding. Futurpreneur loans (up to $75k), Innovative Solutions Canada grants ($150k+), and hiring subsidies for new businesses."
+  },
+  {
+    "type": "blog",
+    "slug": "canada-technology-adoption-grants-guide",
+    "path": "app/blog/canada-technology-adoption-grants-guide/page.tsx",
+    "currentTitle": "Canada Digital Adoption Program (CDAP) 2026 Guide | $2400 Grants & Alternatives",
+    "currentDescription": "Complete 2026 guide to Canadian technology grants. Status of CDAP "
+  },
+  {
+    "type": "blog",
+    "slug": "cartier-womens-initiative-canada",
+    "path": "app/blog/cartier-womens-initiative-canada/page.tsx",
+    "currentTitle": "Cartier Women",
+    "currentDescription": "Complete guide to Cartier Women"
+  },
+  {
+    "type": "blog",
+    "slug": "clean-tech-energy-grants",
+    "path": "app/blog/clean-tech-energy-grants/page.tsx",
+    "currentTitle": "Clean Tech & Energy Grants Canada 2026 | 30% Tax Credits & Funding",
+    "currentDescription": "Complete 2026 guide to Canadian Clean Tech funding. Learn about the 30% Clean Tech Investment Tax Credit (ITC), SDTC grants, and NRCan energy efficiency programs."
+  },
+  {
+    "type": "blog",
+    "slug": "colorado-tech-programs",
+    "path": "app/blog/colorado-tech-programs/page.tsx",
+    "currentTitle": "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
+    "currentDescription": "Colorado"
+  },
+  {
+    "type": "blog",
+    "slug": "commercialization-scale-up-funding-canada",
+    "path": "app/blog/commercialization-scale-up-funding-canada/page.tsx",
+    "currentTitle": "Commercialization Grants Canada 2026 | ISC & Scale-Up Funding",
+    "currentDescription": "Complete 2026 guide to commercialization funding. Get the government to buy your prototype (ISC Testing Stream), fund your patent strategy (IP Assist), and scale globally."
+  },
+  {
+    "type": "blog",
+    "slug": "csbfp-canada-small-business-financing-program",
+    "path": "app/blog/csbfp-canada-small-business-financing-program/page.tsx",
+    "currentTitle": "Canada Small Business Financing Program (CSBFP) 2026 | Up to $1M Government-Guaranteed Loans",
+    "currentDescription": "Complete guide to Canada Small Business Financing Program (CSBFP). Learn eligibility, loan categories, interest rates, application process, and get up to $1M in government-guaranteed financing."
+  },
+  {
+    "type": "blog",
+    "slug": "csbfp-canada-small-business-financing-program-government-grants",
+    "path": "app/blog/csbfp-canada-small-business-financing-program-government-grants/page.tsx",
+    "currentTitle": "CSBFP Canada Small Business Financing Program 2026 | Government Guaranteed Loans Guide",
+    "currentDescription": "Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offering up to $1M with 85% government backing for equipment and real property."
+  },
+  {
+    "type": "blog",
+    "slug": "cybersecurity-grants",
+    "path": "app/blog/cybersecurity-grants/page.tsx",
+    "currentTitle": "Cybersecurity Grants 2026-2027 | $1.8M DOD SBIR, DHS Cyber Funding, NSA Research Programs Non-Dilutive",
+    "currentDescription": "Complete 2026-2027 guide to cybersecurity grants. DOD SBIR Phase I $200K-$400K, Phase II $1.8M, DHS cybersecurity funding, NSA research programs supporting security software, encryption, threat detection, zero-trust, cloud security with zero equity."
+  },
+  {
+    "type": "blog",
+    "slug": "demonstration-pilot-funding-canada",
+    "path": "app/blog/demonstration-pilot-funding-canada/page.tsx",
+    "currentTitle": "Stage 3: Demonstration & Pilot Funding Canada 2026 | SDTC & Clean Growth | Up to $15M Project Funding",
+    "currentDescription": "Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for pre-commercial scale-up."
+  },
+  {
+    "type": "blog",
+    "slug": "development-proof-concept-funding-canada",
+    "path": "app/blog/development-proof-concept-funding-canada/page.tsx",
+    "currentTitle": "Stage 2: Development & Proof-of-Concept Funding Canada 2026 | IRAP & SR&ED | Up to $5M Technology Development",
+    "currentDescription": "Complete guide to Canadian development and proof-of-concept funding. Access up to $5M through IRAP Technology Development, SR&ED Tax Credits, NSERC CRD, and applied research programs for TRL 4-6 projects."
+  },
+  {
+    "type": "blog",
+    "slug": "dod-sbir-defense-tech-grants",
+    "path": "app/blog/dod-sbir-defense-tech-grants/page.tsx",
+    "currentTitle": "DOD SBIR Defense Tech Grants 2026-2027 | $256K Phase I, $1.7M Phase II Cybersecurity & Aerospace Funding",
+    "currentDescription": "Complete 2026-2027 guide to Department of Defense SBIR/STTR grants for defense tech startups. Phase I up to $256K, Phase II up to $1.7M for cybersecurity, aerospace, UAV, advanced materials innovation."
+  },
+  {
+    "type": "blog",
+    "slug": "doe-sbir-clean-energy-grants",
+    "path": "app/blog/doe-sbir-clean-energy-grants/page.tsx",
+    "currentTitle": "DOE SBIR Clean Energy Grants 2026-2027 | $200K Phase I, $1.85M Phase II Renewable Energy Funding",
+    "currentDescription": "Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation."
+  },
+  {
+    "type": "blog",
+    "slug": "edc-women-trade-export-financing",
+    "path": "app/blog/edc-women-trade-export-financing/page.tsx",
+    "currentTitle": "EDC Women in Trade Export Financing 2026 | Equity Capital & Export Support for Women Exporters",
+    "currentDescription": "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses."
+  },
+  {
+    "type": "blog",
+    "slug": "federal-grants-women-minorities",
+    "path": "app/blog/federal-grants-women-minorities/page.tsx",
+    "currentTitle": "Federal Grants for Women, Minorities & Veterans 2026 | Complete Certification Guide",
+    "currentDescription": "Comprehensive guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. WOSB, 8(a), HUBZone, VOSB programs explained."
+  },
+  {
+    "type": "blog",
+    "slug": "hardware-iot-startup-grants",
+    "path": "app/blog/hardware-iot-startup-grants/page.tsx",
+    "currentTitle": "Hardware & IoT Startup Grants 2026-2027 | $305K NSF SBIR, $1.25M Phase II, DOD Electronics Non-Dilutive Funding",
+    "currentDescription": "Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors, robotics, semiconductors, edge computing with zero equity."
+  },
+  {
+    "type": "blog",
+    "slug": "ideation-research-funding-canada",
+    "path": "app/blog/ideation-research-funding-canada/page.tsx",
+    "currentTitle": "Stage 1: Ideation & Research Funding Canada 2026 | NSERC Discovery Grants | Up to $1M Early-Stage R&D",
+    "currentDescription": "Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Discovery Grants, university research programs, and basic R&D support for concept development."
+  },
+  {
+    "type": "blog",
+    "slug": "indigenous-rural-business-funding-canada",
+    "path": "app/blog/indigenous-rural-business-funding-canada/page.tsx",
+    "currentTitle": "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal Business Grants & Rural Development",
+    "currentDescription": "Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal Entrepreneurship Program funding, NACCA loans, rural development grants, and regional business support across all Canadian provinces."
+  },
+  {
+    "type": "blog",
+    "slug": "indigenous-women-business-grants-canada",
+    "path": "app/blog/indigenous-women-business-grants-canada/page.tsx",
+    "currentTitle": "Indigenous Women Business Grants Canada 2026-2027 | NACCA Funding $50K, First Nations Support, Cultural Enterprise Grants Toronto Vancouver Winnipeg",
+    "currentDescription": "Complete 2026-2027 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF funding $50K loans, First Nations Métis Inuit women entrepreneurs support. Indigenous Financial Institutions financing Toronto Vancouver Winnipeg Calgary Ottawa Saskatoon Regina Thunder Bay"
+  },
+  {
+    "type": "blog",
+    "slug": "industry-specific-business-grants-guide",
+    "path": "app/blog/industry-specific-business-grants-guide/page.tsx",
+    "currentTitle": "Industry-Specific Business Grants Guide 2026 | Sector-Focused Funding Programs",
+    "currentDescription": "Complete guide to industry-specific business grants. Find targeted funding for manufacturing, healthcare, technology, agriculture, clean energy, and specialized sectors."
+  },
+  {
+    "type": "blog",
+    "slug": "irap-industrial-research-assistance-program",
+    "path": "app/blog/irap-industrial-research-assistance-program/page.tsx",
+    "currentTitle": "IRAP Industrial Research Assistance Program 2026 | Up to $1M Non-Repayable R&D Grants",
+    "currentDescription": "IRAP funds up to $1M for R&D — but 70% of first-time applicants get rejected. Here"
+  },
+  {
+    "type": "blog",
+    "slug": "irap-industrial-research-assistance-program-government-grants",
+    "path": "app/blog/irap-industrial-research-assistance-program-government-grants/page.tsx",
+    "currentTitle": "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding Guide",
+    "currentDescription": "Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and strategic integration with other government innovation programs."
+  },
+  {
+    "type": "blog",
+    "slug": "irap-industrial-research-assistance-program-innovation",
+    "path": "app/blog/irap-industrial-research-assistance-program-innovation/page.tsx",
+    "currentTitle": "IRAP Industrial Research Assistance Program 2026 | Up to $500K Innovation Funding for SMEs",
+    "currentDescription": "Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs."
+  },
+  {
+    "type": "blog",
+    "slug": "manitoba-small-business-grants-guide",
+    "path": "app/blog/manitoba-small-business-grants-guide/page.tsx",
+    "currentTitle": "Manitoba Small Business Grants 2026 | $380M+ Complete Funding Guide",
+    "currentDescription": "Complete guide to Manitoba small business grants. Access Manitoba Business Development, Innovation Growth Program, Small Business Venture Capital, Rural Development Corporation, and 25+ funding programs. Expert tips for successful applications."
+  },
+  {
+    "type": "blog",
+    "slug": "massachusetts-tech-programs",
+    "path": "app/blog/massachusetts-tech-programs/page.tsx",
+    "currentTitle": "Massachusetts Tech Startup Grants 2026-2027 | $500K SBIR START, $350K MassCEC InnovateMass, Life Sciences Center Biotech Funding Programs",
+    "currentDescription": "Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. SBIR START tiered grants up to $500K from MassVentures, MassCEC InnovateMass clean energy grants $350K, Massachusetts Life Sciences Center MLSC comprehensive biotech funding for Boston Cambridge Worcester innovation ecosystem."
+  },
+  {
+    "type": "blog",
+    "slug": "nasa-sbir-space-tech-grants",
+    "path": "app/blog/nasa-sbir-space-tech-grants/page.tsx",
+    "currentTitle": "NASA SBIR Space Tech Grants 2026-2027 | $150K Phase I, $850K Phase II Satellite & Aeronautics Funding",
+    "currentDescription": "Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation."
+  },
+  {
+    "type": "blog",
+    "slug": "new-york-tech-programs",
+    "path": "app/blog/new-york-tech-programs/page.tsx",
+    "currentTitle": "New York Tech Grants 2026: 10-Year Tax-Free (START-UP NY) + $250K Seed Fund",
+    "currentDescription": "Complete 2026 NY tech grant guide. START-UP NY = 10 years tax-free on university campuses. Pre-Seed Fund up to $250K. NYSERDA clean energy. FuzeHub $65K."
+  },
+  {
+    "type": "blog",
+    "slug": "nih-sbir-biotech-grants",
+    "path": "app/blog/nih-sbir-biotech-grants/page.tsx",
+    "currentTitle": "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
+    "currentDescription": "NIH awards $1.2B/year in SBIR/STTR grants. Phase I: $285K, Phase II: $2M. Get the exact submission windows and review criteria for biotech startups."
+  },
+  {
+    "type": "blog",
+    "slug": "nserc-research-grants-canada",
+    "path": "app/blog/nserc-research-grants-canada/page.tsx",
+    "currentTitle": "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding Guide",
+    "currentDescription": "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding."
+  },
+  {
+    "type": "blog",
+    "slug": "nsf-sbir-grants-technology-startups",
+    "path": "app/blog/nsf-sbir-grants-technology-startups/page.tsx",
+    "currentTitle": "NSF SBIR Grants 2026-2027 | $275K Phase I, $2M Phase II Technology Startup Funding - Complete Application Guide",
+    "currentDescription": "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines."
+  },
+  {
+    "type": "blog",
+    "slug": "nwbc-programs-guide",
+    "path": "app/blog/nwbc-programs-guide/page.tsx",
+    "currentTitle": "National Women",
+    "currentDescription": "Complete guide to NWBC programs and initiatives. Learn how the National Women"
+  },
+  {
+    "type": "blog",
+    "slug": "ontario-innovation-grants",
+    "path": "app/blog/ontario-innovation-grants/page.tsx",
+    "currentTitle": "Ontario Innovation Grants & Tax Credits 2026 | OITC 10% Tax Credit | $3.2B+ R&D Funding",
+    "currentDescription": "Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OITC), Jobs and Prosperity Fund, OCE programs, and advanced manufacturing support."
+  },
+  {
+    "type": "blog",
+    "slug": "ontario-small-business-grants-guide",
+    "path": "app/blog/ontario-small-business-grants-guide/page.tsx",
+    "currentTitle": "Ontario Small Business Grants 2026 | $5k Starter Company & Funding",
+    "currentDescription": "Complete 2026 guide to Ontario government grants. Apply for Starter Company Plus ($5,000), Summer Company ($3,000), and regional funds (SWODF/EODF) for business growth."
+  },
+  {
+    "type": "blog",
+    "slug": "ontario-women-business-grants",
+    "path": "app/blog/ontario-women-business-grants/page.tsx",
+    "currentTitle": "Ontario Women Business Grants 2026 | $50k Loans & Funding",
+    "currentDescription": "Complete 2026 guide to funding for women entrepreneurs in Ontario. Learn about PARO Peer Circles, the Women Entrepreneurship Loan Fund (WELF), and private grants from Visa and Amex."
+  },
+  {
+    "type": "blog",
+    "slug": "prairie-provinces-innovation-grants",
+    "path": "app/blog/prairie-provinces-innovation-grants/page.tsx",
+    "currentTitle": "Prairie Provinces Innovation Grants 2026 | $580M+ AgriFood, Mining & Renewable Energy Funding",
+    "currentDescription": "Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs."
+  },
+  {
+    "type": "blog",
+    "slug": "private-women-grants-guide",
+    "path": "app/blog/private-women-grants-guide/page.tsx",
+    "currentTitle": "Private Women Grants Guide 2026 | Foundation Grants for Female Entrepreneurs",
+    "currentDescription": "Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses."
+  },
+  {
+    "type": "blog",
+    "slug": "quebec-innovation-grants",
+    "path": "app/blog/quebec-innovation-grants/page.tsx",
+    "currentTitle": "Quebec Innovation Grants & Tax Credits 2026 | 30% CRIC R&D Tax Credit | $2.5B+ Funding",
+    "currentDescription": "Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Investissement Québec, PRIMA Quebec, and aerospace, gaming, biotech programs."
+  },
+  {
+    "type": "blog",
+    "slug": "quebec-small-business-grants-guide",
+    "path": "app/blog/quebec-small-business-grants-guide/page.tsx",
+    "currentTitle": "Quebec Small Business Grants 2026 | $1.8B+ Complete Funding Guide",
+    "currentDescription": "Quebec offers R&D tax credits up to 37.5% — the highest in North America. Plus Investissement Québec SME Fund and 15+ more programs you should know."
+  },
+  {
+    "type": "blog",
+    "slug": "quebec-women-business-grants",
+    "path": "app/blog/quebec-women-business-grants/page.tsx",
+    "currentTitle": "Quebec Women Business Grants 2026 | $720M Francophone Entrepreneur Support Programs",
+    "currentDescription": "Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d"
+  },
+  {
+    "type": "blog",
+    "slug": "rbc-women-entrepreneur-awards",
+    "path": "app/blog/rbc-women-entrepreneur-awards/page.tsx",
+    "currentTitle": "RBC Canadian Women Entrepreneur Awards 2026: Complete Guide to $100K+ in Grants & Recognition",
+    "currentDescription": "Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline: March 21, 2026."
+  },
+  {
+    "type": "blog",
+    "slug": "regional-development-agencies-government-grants",
+    "path": "app/blog/regional-development-agencies-government-grants/page.tsx",
+    "currentTitle": "Regional Development Agencies Canada 2026 | RDA Federal Funding Guide | 7 Regional Programs",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "saskatchewan-small-business-grants-guide",
+    "path": "app/blog/saskatchewan-small-business-grants-guide/page.tsx",
+    "currentTitle": "Saskatchewan Small Business Grants 2026 | $425M+ Complete Funding Guide",
+    "currentDescription": "Complete guide to Saskatchewan small business grants. Access Innovation Saskatchewan, Agriculture Value-Added Fund, Export Development, Mining Innovation programs, and 30+ funding opportunities. Expert tips for successful applications."
+  },
+  {
+    "type": "blog",
+    "slug": "sba-7a-loans-complete-guide",
+    "path": "app/blog/sba-7a-loans-complete-guide/page.tsx",
+    "currentTitle": "SBA 7(a) Loans Complete Guide 2026 | Up to $5M Small Business Financing",
+    "currentDescription": "Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5M in government-backed financing for your small business."
+  },
+  {
+    "type": "blog",
+    "slug": "sba-disaster-relief-loans-guide",
+    "path": "app/blog/sba-disaster-relief-loans-guide/page.tsx",
+    "currentTitle": "SBA Disaster Relief Loans Guide 2026 | Emergency Business Funding Up to $2M",
+    "currentDescription": "Complete guide to SBA disaster relief loans. Learn about physical damage loans, economic injury loans (EIDL), and how to get up to $2M in emergency business funding."
+  },
+  {
+    "type": "blog",
+    "slug": "sba-loans-grants-guide",
+    "path": "app/blog/sba-loans-grants-guide/page.tsx",
+    "currentTitle": "SBA Microloan Program 2026: Requirements, Max Amount & How to Apply",
+    "currentDescription": "SBA Microloan: up to $50K through nonprofit intermediaries. Plus 7(a) loans ($5M), 504 loans, and disaster loans. Credit score requirements, terms, and the 4 mistakes that get you denied."
+  },
+  {
+    "type": "blog",
+    "slug": "sba-microloans-complete-guide",
+    "path": "app/blog/sba-microloans-complete-guide/page.tsx",
+    "currentTitle": "SBA Microloans 2026: Get Up to $50K + Free Mentoring | Complete Guide",
+    "currentDescription": "Complete guide to SBA microloans. Get up to $50K with faster approval (2-4 weeks), 8-13% rates, and FREE business mentoring. Step-by-step application process."
+  },
+  {
+    "type": "blog",
+    "slug": "sbir-small-business-guide",
+    "path": "app/blog/sbir-small-business-guide/page.tsx",
+    "currentTitle": "SBIR Small Business Innovation Research 2026 | Complete Federal R&D Grant Guide",
+    "currentDescription": "SBIR awards $4B/year to small businesses — but you need the right strategy. Phase I ($275K) and Phase II ($1.7M) breakdown with agency-specific tips."
+  },
+  {
+    "type": "blog",
+    "slug": "sbir-sttr-complete-guide",
+    "path": "app/blog/sbir-sttr-complete-guide/page.tsx",
+    "currentTitle": "SBIR & STTR Grants Complete Guide 2026 | Up to $1.7M Federal R&D Funding",
+    "currentDescription": "Complete guide to SBIR and STTR grants. Learn eligibility, application process, Phase I/II funding, and strategies to win up to $1.7M in non-dilutive federal R&D grants."
+  },
+  {
+    "type": "blog",
+    "slug": "scotiabank-women-initiative",
+    "path": "app/blog/scotiabank-women-initiative/page.tsx",
+    "currentTitle": "Scotiabank Women Initiative 2026 | $3B Capital, Free Advisory & Business Education",
+    "currentDescription": "Complete guide to Scotiabank Women Initiative for women entrepreneurs. Access $3 billion in capital commitment, free specialized advisory services, business education from partner institutions like Rotman and Ivey, plus networking with 10,000+ women business owners."
+  },
+  {
+    "type": "blog",
+    "slug": "small-business-grants-complete-guide",
+    "path": "app/blog/small-business-grants-complete-guide/page.tsx",
+    "currentTitle": "Small Business Grants Complete Guide 2026 | Federal, State & SBA Funding",
+    "currentDescription": "Comprehensive guide to small business grants in 2026. Learn about SBA loans, SBIR/STTR, federal grants, state programs, and proven strategies. Access up to $5M+."
+  },
+  {
+    "type": "blog",
+    "slug": "software-saas-startup-grants",
+    "path": "app/blog/software-saas-startup-grants/page.tsx",
+    "currentTitle": "SaaS & Software Startup Grants Canada 2026 | Non-Dilutive Funding",
+    "currentDescription": "Complete 2026 guide to Canadian software grants. Learn how to qualify for IRAP (vs standard CRUD apps), get BDC recurring revenue loans, and use hiring subsidies."
+  },
+  {
+    "type": "blog",
+    "slug": "sred-scientific-research-experimental-development",
+    "path": "app/blog/sred-scientific-research-experimental-development/page.tsx",
+    "currentTitle": "SR&ED Tax Credits Canada 2026 | Scientific Research & Experimental Development Guide - 65% Refundable",
+    "currentDescription": "Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit."
+  },
+  {
+    "type": "blog",
+    "slug": "state-local-business-grants-guide",
+    "path": "app/blog/state-local-business-grants-guide/page.tsx",
+    "currentTitle": "State & Local Business Grants Guide 2026 | Regional Economic Development Funding",
+    "currentDescription": "Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regional funding up to $500K."
+  },
+  {
+    "type": "blog",
+    "slug": "state-province-grants",
+    "path": "app/blog/state-province-grants/page.tsx",
+    "currentTitle": "State & Province Business Grants (2026): Local Funding Guide",
+    "currentDescription": "Federal grants are competitive. Local grants are winnable. We rank the Top 10 States and Provinces for business incentives, tax credits, and relocation funds."
+  },
+  {
+    "type": "blog",
+    "slug": "state-women-business-programs-guide",
+    "path": "app/blog/state-women-business-programs-guide/page.tsx",
+    "currentTitle": "State Women Business Programs Guide 2026 | Local Government Grants for Female Entrepreneurs",
+    "currentDescription": "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all 50 states for women entrepreneurs."
+  },
+  {
+    "type": "blog",
+    "slug": "strategic-innovation-fund-canada-guide",
+    "path": "app/blog/strategic-innovation-fund-canada-guide/page.tsx",
+    "currentTitle": "Strategic Innovation Fund Canada 2026 | $100M+ SIF Funding Guide | Innovation Projects",
+    "currentDescription": "Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation projects, R&D commercialization, and industrial expansion from ISED Canada."
+  },
+  {
+    "type": "blog",
+    "slug": "territories-small-business-grants-guide",
+    "path": "app/blog/territories-small-business-grants-guide/page.tsx",
+    "currentTitle": "Territories Small Business Grants 2026 | $125M+ NT, YT, Nunavut Complete Guide",
+    "currentDescription": "Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Economic Development, and Indigenous Business Programs. Northern specialists."
+  },
+  {
+    "type": "blog",
+    "slug": "usa-federal-grants",
+    "path": "app/blog/usa-federal-grants/page.tsx",
+    "currentTitle": "US Federal Grants 2026: SBIR, SBA & Grants.gov Playbook",
+    "currentDescription": "Comprehensive guide to USA federal business grants including SBIR, STTR, SBA programs, minority grants, women-owned business grants, and state-specific funding opportunities."
+  },
+  {
+    "type": "blog",
+    "slug": "usda-sbir-agtech-grants",
+    "path": "app/blog/usda-sbir-agtech-grants/page.tsx",
+    "currentTitle": "USDA SBIR AgTech Grants 2026-2027 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
+    "currentDescription": "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation."
+  },
+  {
+    "type": "blog",
+    "slug": "washington-tech-programs",
+    "path": "app/blog/washington-tech-programs/page.tsx",
+    "currentTitle": "Washington Tech Startup Grants 2026-2027 | $1M WRF Technology Commercialization, $540K Innovation Modernization Program, Clean Energy Fund",
+    "currentDescription": "Complete 2026-2027 guide to Washington state technology startup grants. WRF Technology Commercialization phased funding up to $1M direct costs, Innovation and Modernization Program grants $38.5K-$540K, Washington Clean Energy Fund renewable technology, Innovation Partnership Zones tax incentives, SBIR Phase 0 support for Seattle Bellevue Redmond tech corridor University of Washington WSU ecosystem."
+  },
+  {
+    "type": "blog",
+    "slug": "wbdc-equity-match-grant-women",
+    "path": "app/blog/wbdc-equity-match-grant-women/page.tsx",
+    "currentTitle": "WBDC Equity Match Grant 2027 | $2,500-$10,000 for Women Business Growth Projects",
+    "currentDescription": "Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement."
+  },
+  {
+    "type": "blog",
+    "slug": "women-business-centers-guide",
+    "path": "app/blog/women-business-centers-guide/page.tsx",
+    "currentTitle": "Women",
+    "currentDescription": "Complete guide to SBA Women"
+  },
+  {
+    "type": "blog",
+    "slug": "women-clean-technology-grants-canada",
+    "path": "app/blog/women-clean-technology-grants-canada/page.tsx",
+    "currentTitle": "Women Clean Technology Grants Canada 2026-2027 | Clean Energy Funding $10M, Sustainability Innovation Support Toronto Vancouver Montreal",
+    "currentDescription": "Complete 2026-2027 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy programs, provincial sustainability grants Toronto Vancouver Montreal Calgary. Renewable energy, circular economy, environmental technology women-owned businesses Canada."
+  },
+  {
+    "type": "blog",
+    "slug": "women-entrepreneurship-fund-canada",
+    "path": "app/blog/women-entrepreneurship-fund-canada/page.tsx",
+    "currentTitle": "Women Entrepreneurship Fund (WEF) 2026 | Status & Alternatives",
+    "currentDescription": "The Women Entrepreneurship Fund is closed — but $6B+ in alternatives exist. The $50K WELF loan and Ecosystem Fund are taking applications now."
+  },
+  {
+    "type": "blog",
+    "slug": "women-entrepreneurship-loan-fund-canada",
+    "path": "app/blog/women-entrepreneurship-loan-fund-canada/page.tsx",
+    "currentTitle": "Women Entrepreneurship Loan Fund (WELF) 2026 | $50k Funding Guide",
+    "currentDescription": "Complete 2026 guide to the Women Entrepreneurship Loan Fund. Get up to $50,000 in loans via delivery partners like Coralus, PARO, and NACCA."
+  },
+  {
+    "type": "blog",
+    "slug": "women-entrepreneurship-strategy-canada",
+    "path": "app/blog/women-entrepreneurship-strategy-canada/page.tsx",
+    "currentTitle": "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "women-entrepreneurship-strategy-canada-government-grants",
+    "path": "app/blog/women-entrepreneurship-strategy-canada-government-grants/page.tsx",
+    "currentTitle": "Women Entrepreneurship Strategy Canada 2026 | WES Federal Funding Guide | $6B Investment",
+    "currentDescription": "Complete guide to Canada"
+  },
+  {
+    "type": "blog",
+    "slug": "women-export-trade-grants-canada",
+    "path": "app/blog/women-export-trade-grants-canada/page.tsx",
+    "currentTitle": "Women Export Trade Grants Canada 2026-2027 | CanExport Funding $75K, International Expansion Support Toronto Vancouver Montreal",
+    "currentDescription": "Complete 2026-2027 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trade Commissioner Service support, international market development Toronto Vancouver Montreal Calgary Ottawa. Export market research, trade missions, global expansion women-owned businesses Canada."
+  },
+  {
+    "type": "blog",
+    "slug": "women-manufacturing-grants-canada",
+    "path": "app/blog/women-manufacturing-grants-canada/page.tsx",
+    "currentTitle": "Women Manufacturing Grants Canada 2026-2027 | $10M Equipment Funding Ontario Toronto Vancouver Calgary Montreal | Advanced Manufacturing Business Loans Women Entrepreneurs",
+    "currentDescription": "Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Equipment funding $10K-$10M, productivity improvement grants, automation financing, advanced manufacturing support Toronto, Vancouver, Calgary, Montreal, Ottawa. NRC IRAP, CDEM, provincial equipment loans, Industry 4.0 smart factory funding for Canadian women manufacturers."
+  },
+  {
+    "type": "blog",
+    "slug": "women-social-enterprise-grants-canada",
+    "path": "app/blog/women-social-enterprise-grants-canada/page.tsx",
+    "currentTitle": "Women Social Enterprise Grants Canada 2026-2027 | Social Impact Funding Toronto Vancouver Montreal Calgary | Community Development Purpose-Driven Business Support Women Entrepreneurs",
+    "currentDescription": "Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Social impact funding $10K-$1M, community development programs, purpose-driven business support Toronto, Vancouver, Montreal, Calgary, Ottawa. Investment Readiness Program, social finance, non-profit grants, impact investment for Canadian women social entrepreneurs."
+  },
+  {
+    "type": "blog",
+    "slug": "women-tech-stem-grants-guide",
+    "path": "app/blog/women-tech-stem-grants-guide/page.tsx",
+    "currentTitle": "Women in Technology & STEM Grants Guide 2026 | Female Tech Entrepreneur Funding",
+    "currentDescription": "Complete guide to grants for women in technology and STEM fields. Discover SBIR, NSF, and private grants offering up to $1M for female tech entrepreneurs."
+  },
+  {
+    "type": "blog",
+    "slug": "women-technology-grants-canada",
+    "path": "app/blog/women-technology-grants-canada/page.tsx",
+    "currentTitle": "Women in Technology Grants Canada 2026 | AI, Software & Digital Innovation Funding",
+    "currentDescription": "Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs."
+  },
+  {
+    "type": "blog",
+    "slug": "wosb-federal-contracting-guide",
+    "path": "app/blog/wosb-federal-contracting-guide/page.tsx",
+    "currentTitle": "WOSB Federal Contracting Guide 2026 | Women-Owned Small Business Certification",
+    "currentDescription": "Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M+ government contracts."
+  },
+  {
+    "type": "blog",
+    "slug": "youth-entrepreneurship-canada-funding",
+    "path": "app/blog/youth-entrepreneurship-canada-funding/page.tsx",
+    "currentTitle": "Youth Entrepreneurship Canada 2026 | $60K+ Young Entrepreneur Grants & Business Funding",
+    "currentDescription": "Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 across Canada."
+  }
+]

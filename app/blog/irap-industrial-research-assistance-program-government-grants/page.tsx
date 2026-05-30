@@ -20,11 +20,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding Guide",
   description: "Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and strategic integration with other government innovation programs.",
-  keywords: "IRAP government grants, Industrial Research Assistance Program Canada, federal R&D funding, government innovation grants, NRC IRAP compliance, Canadian government R&D support",
+  keywords: "IRAP government grants, Industrial Research Assistance Program Canada, federal R&D funding, government innovation grants, NRC IRAP compliance, Canadian government R&D support, how to apply for IRAP grants 2026, IRAP eligibility requirements, IRAP vs NRC comparison, how to apply for irap industrial research assistance program government grants, irap industrial research assistance program government grants eligibility 2026, step by step irap industrial research assistance program government grants application guide, best irap industrial research assistance program government grants for small business Canada, am I eligible for irap industrial research assistance program government grants, irap industrial research assistance program government grants deadline 2026",
   openGraph: {
     title: "IRAP Industrial Research Assistance Program Canada 2026 | Government R&D Funding",
     description: "Comprehensive guide to IRAP federal R&D funding with compliance requirements and government program integration strategies.",
@@ -61,26 +63,13 @@ export default function IRAPGovernmentGrantsBlogPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -171,6 +160,12 @@ export default function IRAPGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Program Statistics */}
@@ -683,7 +678,7 @@ export default function IRAPGovernmentGrantsBlogPage() {
                       Discover specialized funding programs for Canadian technology startups.
                     </p>
                     <Button variant="outline" className="w-full text-green-700 border-green-200 hover:bg-green-50" asChild>
-                      <Link href="/blog/canadian-government-grants-tech-startups">
+                      <Link href="/blog/technology-startup-grants-2026">
                         View Tech Funding
                       </Link>
                     </Button>
@@ -758,6 +753,10 @@ export default function IRAPGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

@@ -9,45 +9,6 @@ import type { Metadata } from "next"
 
 import EEATBadge from '@/components/blog/EEATBadge'
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How many business grants are actively available in Canada and the USA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "There are over 800 active government grant programs and business funding opportunities currently listed and tracked across both Canada and the USA. This database is updated continuously."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there grants specifically for small businesses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, a large portion of available government funding is specifically reserved for small and medium-sized enterprises (SMEs). This includes specialized loan funds, tax credits, and direct grant contributions."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to pay back a government grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Most true 'grants' are non-repayable, provided you meet the performance and reporting requirements. However, many government 'funding' programs are actually interest-free loans or repayable contributions. Our database clarifies the funding type for each program."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I start applying for a grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The first step is finding a grant that matches your exact industry, location, and project type (e.g., hiring, exporting, R&D). Use our Grant Finder tool to filter the database, then read our comprehensive guides for application strategies."
-      }
-    }
-  ]
-}
-
 export const metadata: Metadata = {
   title: "All Government Grants Database | USA & Canada Business Funding",
   description:
@@ -69,10 +30,6 @@ export default function AllGrantsPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <div className="min-h-screen bg-white">
         <Header />
 

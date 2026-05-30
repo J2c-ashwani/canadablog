@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "How to Apply for Federal Grants 2026 | Complete Application Guide | Grants.gov, SAM.gov, SBIR",
-  description: "Step-by-step guide to applying for federal grants. Learn eligibility requirements, application process, winning strategies, and access billions in government funding through Grants.gov, SBIR, and more.",
-  keywords: "federal grants application, how to apply federal grants, government grants, grants.gov application, federal funding guide, SBIR grants, SAM registration",
+  title: "How to Get Federal Grants (2026) – Step-by-Step Guide",
+  description: "Explore top federal grants offering up to $500K in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "federal grants application, how to apply federal grants, government grants, grants.gov application, federal funding guide, SBIR grants, SAM registration, federal grants application checklist 2026, federal grants requirements and documents needed, federal grants approval timeline, federal grants application tips, SBIR application step by step guide, SBIR eligibility checker, best grants for small business USA 2026, am I eligible for federal grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-federal-grants",
   },
@@ -28,69 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between grants and loans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Grants are free money that doesn't need to be repaid. Loans must be paid back with interest. Federal grants are awarded based on merit, eligibility, and alignment with program objectives. Loans are based on creditworthiness and ability to repay."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does SAM.gov registration take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SAM.gov registration typically takes 7-10 business days for processing. However, it can take up to 3-4 weeks if there are issues with your information. You must renew your SAM registration annually to remain eligible for federal grants."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is Grants.gov and how do I use it?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Grants.gov is the central portal for finding and applying to federal grant opportunities. You can search for grants by keyword, agency, or eligibility. After finding an opportunity, you download the application package, complete it, and submit through the portal."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are SBIR and STTR grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "SBIR (Small Business Innovation Research) and STTR (Small Business Technology Transfer) are federal programs that provide R&D funding to small businesses. SBIR has three phases with funding up to $1.7M+. STTR requires partnership with a research institution."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the success rate for federal grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Success rates vary by program and agency, typically ranging from 5% to 30%. SBIR Phase I has around 15-20% success rates. Competitive research grants from NIH/NSF can be 10-25%. Strong proposals with expert guidance significantly improve chances."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can for-profit businesses apply for federal grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes! Many federal grants are available to for-profit businesses, especially through SBIR/STTR, SBA programs, and industry-specific grants from agencies like DOE, USDA, and DoD. However, some grants are limited to nonprofits or government entities."
-      }
-    }
-  ]
-}
-
 export default function ApplyFederalGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20">

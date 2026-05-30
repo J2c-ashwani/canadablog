@@ -4,6 +4,8 @@ import { Inter, JetBrains_Mono } from "next/font/google"
 import Script from "next/script"
 import "./globals.css"
 import { ClientOverlays } from "@/components/ClientOverlays"
+import GlobalWikipediaLinker from "@/components/seo/GlobalWikipediaLinker"
+import { AdSensePageTracker } from "@/components/AdSensePageTracker"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -86,9 +88,11 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         <Script
+          id="adsense-loader"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1200907614877581"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
+          crossOrigin="anonymous"
         />
         {/* Google Analytics GA4 */}
         <Script
@@ -109,6 +113,8 @@ export default function RootLayout({
       <body className="font-sans" suppressHydrationWarning>
         {children}
         <ClientOverlays />
+        <GlobalWikipediaLinker />
+        <AdSensePageTracker />
 
         <script
           type="application/ld+json"

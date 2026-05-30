@@ -20,11 +20,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "State Women Business Programs Guide 2026 | Local Government Grants for Female Entrepreneurs",
   description: "Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all 50 states for women entrepreneurs.",
-  keywords: "state women business programs, local women entrepreneur grants, state business grants women, women business development programs, female entrepreneur support",
+  keywords: "state women business programs, local women entrepreneur grants, state business grants women, women business development programs, female entrepreneur support, how to apply for state women business programs guide, state women business programs guide eligibility 2026, step by step state women business programs guide application guide, best state women business programs guide for small business USA, best grants for women entrepreneurs USA 2026, women owned business funding eligibility, am I eligible for state women business programs guide, state women business programs guide deadline 2026",
   openGraph: {
     title: "State Women Business Programs Guide 2026 | Local Government Grants",
     description: "Complete guide to state and local government programs supporting women entrepreneurs across all 50 states.",
@@ -65,6 +67,10 @@ export default function StateWomenBusinessProgramsGuide() {
 
     <>
       <Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-orange-600 to-red-700 text-white py-16">
@@ -152,6 +158,12 @@ export default function StateWomenBusinessProgramsGuide() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Quick Stats */}
@@ -689,6 +701,10 @@ export default function StateWomenBusinessProgramsGuide() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>

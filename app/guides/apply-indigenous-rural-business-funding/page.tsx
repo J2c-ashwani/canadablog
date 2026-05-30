@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Indigenous & Rural Business Funding Guide 2026 | Grants & Loans",
   description: "Complete guide to Aboriginal Entrepreneurship Program (AEP), NACCA loans, and rural business grants. Get templates and strategies for approval.",
-  keywords: "Indigenous business grants, Aboriginal Entrepreneurship Program, NACCA loans, rural business funding Canada, First Nations business loans, Metis entrepreneur funding",
+  keywords: "Indigenous business grants, Aboriginal Entrepreneurship Program, NACCA loans, rural business funding Canada, First Nations business loans, Metis entrepreneur funding, indigenous rural business funding application checklist 2026, indigenous rural business funding requirements and documents needed, indigenous rural business funding approval timeline, indigenous rural business funding application tips, best grants for small business Canada 2026, am I eligible for indigenous rural business funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-indigenous-rural-business-funding",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is eligible for Indigenous business funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Typically, you must be of First Nations, Métis, or Inuit heritage and hold at least 51% ownership and control of the business. You will need to provide proof of heritage (Status Card, Métis Card, or Inuit Beneficiary Card)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Aboriginal Entrepreneurship Program (AEP)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The AEP provides equity capital (non-repayable contributions) to Indigenous entrepreneurs. It is usually administered through a network of Aboriginal Financial Institutions (AFIs)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Are there grants for rural businesses?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The Community Futures Program (CFP) specifically targets rural communities, offering loans and some advisory grants. Regional Development Agencies (like FedNor or PrairiesCan) also have rural-specific streams."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply if I live off-reserve?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Most programs, including NACCA and AEP, support Indigenous entrepreneurs regardless of whether they live on-reserve, off-reserve, or in urban centers."
-      }
-    }
-  ]
-}
-
 export default function IndigenousRuralBusinessFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-orange-700 to-amber-800 text-white py-20 relative overflow-hidden">
@@ -373,6 +335,10 @@ export default function IndigenousRuralBusinessFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

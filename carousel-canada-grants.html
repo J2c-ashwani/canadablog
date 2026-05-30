@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>FSI Digital - Top 10 Canada Grants Carousel</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@400;500;700;800;900&display=swap');
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: #222;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+}
+
+@media print {
+  @page {
+    size: 1080px 1350px;
+    margin: 0;
+  }
+  body {
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    display: block;
+    gap: 0;
+  }
+  .slide {
+    page-break-after: always;
+    break-after: page;
+    box-shadow: none !important;
+    margin: 0 !important;
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+}
+
+.slide {
+  width: 1080px;
+  height: 1350px;
+  background: #ffffff;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  font-family: 'DM Sans', sans-serif;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+/* ── COVER SLIDE ── */
+.cover { background: #8B0000; }
+.cover .bg-circle1 { position: absolute; width: 1100px; height: 1100px; border-radius: 50%; background: rgba(255,255,255,.06); top: -300px; right: -300px; }
+.cover .bg-circle2 { position: absolute; width: 680px; height: 680px; border-radius: 50%; background: rgba(255,255,255,.04); bottom: 200px; left: -200px; }
+.cover .maple { position: absolute; bottom: 160px; right: 60px; font-size: 400px; opacity: 0.06; line-height: 1; z-index: 1; }
+.cover .top-bar { padding: 80px 80px 0; display: flex; justify-content: space-between; align-items: center; position: relative; z-index: 2; }
+.cover .logo { font-size: 46px; font-weight: 800; color: rgba(255,255,255,.9); letter-spacing: .1em; text-transform: uppercase; }
+.cover .flag { background: rgba(255,255,255,.2); border-radius: 12px; padding: 12px 36px; font-size: 40px; color: #fff; font-weight: 700; }
+.cover .mid { padding: 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; position: relative; z-index: 2; }
+.cover .tag { font-size: 50px; font-weight: 800; color: #fff; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 20px; background: rgba(0,0,0,0.3); display: inline-block; padding: 10px 30px; border-radius: 12px; align-self: flex-start; }
+.cover .title { font-family: 'Playfair Display', serif; font-size: 130px; font-weight: 900; color: #fff; line-height: 1.05; margin-bottom: 30px; max-width: 950px; }
+.cover .subtitle { font-size: 54px; color: rgba(255,255,255,.95); line-height: 1.4; font-weight: 500; }
+.cover .bottom { padding: 60px 80px; background: rgba(0,0,0,.2); display: flex; align-items: center; justify-content: space-between; position: relative; z-index: 2; }
+.cover .dots { display: flex; gap: 20px; }
+.cover .dot { width: 70px; height: 20px; border-radius: 10px; background: rgba(255,255,255,.3); }
+.cover .dot.active { background: #fff; width: 120px; }
+.cover .cta-txt { font-size: 46px; color: #fff; font-weight: 700; }
+
+/* ── GRANT SLIDES ── */
+.gpn { background: #ffffff; border: 8px solid #f0f0f0; }
+.gpn .header { padding: 50px 80px 40px; display: flex; align-items: flex-start; gap: 36px; position: relative; }
+.gpn .progress-ind { position: absolute; top: 50px; right: 80px; font-size: 50px; font-weight: 900; color: #e0e0e0; font-family: 'Playfair Display', serif; letter-spacing: -0.02em; }
+.gpn .num-badge { min-width: 150px; height: 150px; border-radius: 36px; background: #8B0000; display: flex; align-items: center; justify-content: center; flex-shrink: 0; box-shadow: 0 10px 30px rgba(139,0,0,0.2); }
+.gpn .num-badge span { font-family: 'Playfair Display', serif; font-size: 75px; font-weight: 900; color: #fff; }
+.gpn .header-text { display: flex; flex-direction: column; gap: 12px; padding-top: 10px; padding-right: 120px; }
+.gpn .series-tag { font-size: 34px; font-weight: 800; color: #8B0000; text-transform: uppercase; letter-spacing: .08em; }
+.gpn .grant-name { font-family: 'Playfair Display', serif; font-size: 64px; font-weight: 900; color: #1a1a1a; line-height: 1.15; }
+.gpn .divider { height: 4px; background: #f5f5f5; margin: 0 80px; }
+.gpn .body { padding: 40px 80px; flex: 1; display: flex; flex-direction: column; justify-content: center; gap: 30px; }
+.gpn .amt-block { margin-bottom: 0px; }
+.gpn .amt-label { font-size: 34px; font-weight: 800; color: #888; text-transform: uppercase; letter-spacing: .08em; margin-bottom: 10px; }
+.gpn .amt { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #8B0000; line-height: 1; }
+.gpn .desc { font-size: 50px; color: #333; line-height: 1.45; font-weight: 500; }
+.gpn .tags-row { display: flex; gap: 20px; flex-wrap: wrap; margin-top: 10px; }
+.gpn .pill { background: #fff5f5; border: 4px solid #ffcdd2; border-radius: 20px; padding: 16px 36px; font-size: 38px; color: #8B0000; font-weight: 800; }
+.gpn .pill.dark { background: #f5f5f5; border-color: #e8e8e8; color: #555; }
+.gpn .footer { margin-top: auto; padding: 40px 80px; background: #fafafa; border-top: 4px solid #f0f0f0; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+.gpn .url { font-size: 30px; color: #999; font-weight: 700; letter-spacing: .02em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.gpn .apply-btn { background: #8B0000; border-radius: 24px; padding: 22px 55px; font-size: 38px; color: #fff; font-weight: 800; text-transform: uppercase; letter-spacing: .05em; flex-shrink: 0; box-shadow: 0 10px 20px rgba(139,0,0,0.2); }
+
+/* ── PATTERN BREAK SLIDE ── */
+.pattern-break { background: #111; color: #fff; display: flex; flex-direction: column; justify-content: center; padding: 120px; }
+.pattern-break h2 { font-family: 'Playfair Display', serif; font-size: 160px; font-weight: 900; color: #8B0000; margin-bottom: 60px; line-height: 1; }
+.pattern-break p { font-size: 85px; font-weight: 700; color: #fff; line-height: 1.25; }
+.pattern-break .arrow { margin-top: auto; font-size: 60px; color: #666; font-weight: 800; align-self: flex-end; }
+
+/* ── CTA FINAL SLIDE ── */
+.cta-slide { background: #1a0000; color: #fff; text-align: center; justify-content: center; align-items: center; padding: 80px; border: none; }
+.cta-slide .bg-overlay { position: absolute; top:0; left:0; right:0; bottom:0; background: radial-gradient(circle at center, rgba(139,0,0,0.2) 0%, transparent 70%); z-index: 1; }
+.cta-slide .content { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; gap: 40px; width: 100%; }
+.cta-slide .logo-huge { font-family: 'Playfair Display', serif; font-size: 100px; font-weight: 900; color: #fff; }
+.cta-slide h2 { font-size: 90px; font-weight: 800; line-height: 1.15; color: #fff; }
+.cta-slide .lead-box { background: rgba(255,255,255,0.05); border: 4px solid rgba(255,255,255,0.1); border-radius: 40px; padding: 60px; width: 100%; margin: 40px 0; }
+.cta-slide .lead-box p { font-size: 50px; color: #ccc; font-weight: 600; margin-bottom: 20px; }
+.cta-slide .comment-word { font-size: 90px; font-weight: 900; color: #ff4444; letter-spacing: .05em; text-transform: uppercase; font-family: 'Playfair Display', serif; }
+.cta-slide .lead-box .sub { font-size: 40px; color: #aaa; margin-top: 20px; margin-bottom: 0; }
+.cta-slide .or-text { font-size: 40px; color: #666; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; margin: 10px 0; }
+.cta-slide .url-text { font-size: 60px; font-weight: 800; color: #fff; letter-spacing: .05em; }
+</style>
+</head>
+<body>
+
+  <!-- SLIDE 1: COVER -->
+  <div class="slide cover">
+    <div class="bg-circle1"></div><div class="bg-circle2"></div>
+    <div class="maple">🍁</div>
+    <div class="top-bar">
+      <div class="logo">FSI Digital</div>
+      <div class="flag">🇨🇦 Canada</div>
+    </div>
+    <div class="mid">
+      <div class="tag">$10M+ FREE FUNDING</div>
+      <div class="title">No Equity.<br>No Repayment.</div>
+      <div class="subtitle">Top 10 Canada Grants Most Founders Miss (2026)<br><span style="color: rgba(255,255,255,0.6);">Save this — you'll need it.</span></div>
+    </div>
+    <div class="bottom">
+      <div class="dots">
+        <div class="dot active"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+      </div>
+      <div class="cta-txt">Swipe to see list →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 2: Grant 1 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">1/10</div>
+      <div class="num-badge"><span>1</span></div>
+      <div class="header-text">
+        <div class="series-tag">Innovation Giant</div>
+        <div class="grant-name">SR&ED Tax Credit Program</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to 35%</div>
+      </div>
+      <div class="desc">Canada's largest R&D incentive. Refundable tax credits on qualifying R&D expenditures for SMEs — up to 35% back on every dollar spent.</div>
+      <div class="tags-row">
+        <div class="pill">R&D</div>
+        <div class="pill">Refundable</div>
+        <div class="pill dark">All Industries</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/guides/sred-application-guide</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 3: Grant 2 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">2/10</div>
+      <div class="num-badge"><span>2</span></div>
+      <div class="header-text">
+        <div class="series-tag">Industrial Growth</div>
+        <div class="grant-name">Strategic Innovation Fund (SIF)</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">$10M+</div>
+      </div>
+      <div class="desc">Federal support for large-scale R&D, clean technology, and industrial transformation projects. One of the biggest grants in Canada.</div>
+      <div class="tags-row">
+        <div class="pill">Cleantech</div>
+        <div class="pill">Industrial</div>
+        <div class="pill dark">ISED</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/grants/ontario/toronto/technology</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 4: Grant 3 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">3/10</div>
+      <div class="num-badge"><span>3</span></div>
+      <div class="header-text">
+        <div class="series-tag">Tech Startups</div>
+        <div class="grant-name">IRAP — Industrial Research Assistance Program</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $500K</div>
+      </div>
+      <div class="desc">NRC's IRAP funds Canadian SMEs developing innovative tech. Get non-repayable funding + expert advisors at no cost to accelerate your product.</div>
+      <div class="tags-row">
+        <div class="pill">Tech</div>
+        <div class="pill">Non-Repayable</div>
+        <div class="pill dark">NRC / IRAP</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/guides/irap-innovation-application-guide</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 5: Grant 4 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">4/10</div>
+      <div class="num-badge"><span>4</span></div>
+      <div class="header-text">
+        <div class="series-tag">Digital Adoption</div>
+        <div class="grant-name">CDAP — Canada Digital Adoption Program</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $15K</div>
+      </div>
+      <div class="desc">Free digital advisor + up to $15K grant for small businesses to go digital. Covers e-commerce, cybersecurity, automation, and cloud tools.</div>
+      <div class="tags-row">
+        <div class="pill">Digital</div>
+        <div class="pill">E-Commerce</div>
+        <div class="pill dark">CDAP</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/grants/ontario/toronto/retail</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 6: Grant 5 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">5/10</div>
+      <div class="num-badge"><span>5</span></div>
+      <div class="header-text">
+        <div class="series-tag">Export Growth</div>
+        <div class="grant-name">CanExport SMEs Program</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $100K</div>
+      </div>
+      <div class="desc">Helps Canadian SMEs develop new export markets. Covers up to 50% of eligible costs for international trade missions, market research, and certification.</div>
+      <div class="tags-row">
+        <div class="pill">Export</div>
+        <div class="pill">International</div>
+        <div class="pill dark">CanExport</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/grants/ontario/toronto/manufacturing</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 7: PATTERN BREAK -->
+  <div class="slide pattern-break">
+    <h2>Wait...</h2>
+    <p>Most Canadian founders leave millions in free government money on the table every year.</p>
+    <div class="arrow">Keep swiping &rarr;</div>
+  </div>
+
+  <!-- SLIDE 8: Grant 6 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">6/10</div>
+      <div class="num-badge"><span>6</span></div>
+      <div class="header-text">
+        <div class="series-tag">Atlantic Canada</div>
+        <div class="grant-name">ACOA Business Dev. Program</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $500K</div>
+      </div>
+      <div class="desc">Atlantic Canada Opportunities Agency funds businesses in NB, NS, PEI, and NL. Covers innovation, growth, and market development projects.</div>
+      <div class="tags-row">
+        <div class="pill">Atlantic Canada</div>
+        <div class="pill dark">ACOA</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/grants/nova-scotia/halifax/technology</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 9: Grant 7 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">7/10</div>
+      <div class="num-badge"><span>7</span></div>
+      <div class="header-text">
+        <div class="series-tag">Women Founders</div>
+        <div class="grant-name">Women Entrepreneurship Fund (WEF)</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $100K</div>
+      </div>
+      <div class="desc">Federal funding exclusively for women-owned businesses to scale, expand into new markets, and create jobs across Canada.</div>
+      <div class="tags-row">
+        <div class="pill">Women-Led</div>
+        <div class="pill">Scale-Up</div>
+        <div class="pill dark">WEF</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/guides/women-entrepreneurship-fund-guide</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 10: Grant 8 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">8/10</div>
+      <div class="num-badge"><span>8</span></div>
+      <div class="header-text">
+        <div class="series-tag">Green Economy</div>
+        <div class="grant-name">Net Zero Accelerator Initiative</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $3M</div>
+      </div>
+      <div class="desc">Government of Canada funds large industrial businesses to reduce carbon emissions and transition to cleaner production processes.</div>
+      <div class="tags-row">
+        <div class="pill">Net Zero</div>
+        <div class="pill">Cleantech</div>
+        <div class="pill dark">ISED</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/grants/alberta/calgary/energy</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 11: Grant 9 -->
+  <div class="slide gpn">
+    <div class="header">
+      <div class="progress-ind">9/10</div>
+      <div class="num-badge"><span>9</span></div>
+      <div class="header-text">
+        <div class="series-tag">Small Business Loans</div>
+        <div class="grant-name">Canada Small Business Financing Program (CSBFP)</div>
+      </div>
+    </div>
+    <div class="divider"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt">Up to $1M</div>
+      </div>
+      <div class="desc">Government-backed loans for small businesses to purchase equipment, real estate, or leasehold improvements. Easy approval via any Canadian bank.</div>
+      <div class="tags-row">
+        <div class="pill">Loan</div>
+        <div class="pill">Gov-Backed</div>
+        <div class="pill dark">CSBFP</div>
+      </div>
+    </div>
+    <div class="footer">
+      <div class="url">fsidigital.ca/grants/ontario/toronto/retail</div>
+      <div class="apply-btn">Save & Next →</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 12: Grant 10 -->
+  <div class="slide gpn" style="border-color:#8B0000; border-width: 12px;">
+    <div class="header" style="background:#fff5f5">
+      <div class="progress-ind" style="color:#8B0000;">10/10</div>
+      <div class="num-badge" style="background:#1a1a1a"><span>10</span></div>
+      <div class="header-text">
+        <div class="series-tag" style="color:#1a1a1a;">The Finale 🎉</div>
+        <div class="grant-name">NSERC Alliance Grants</div>
+      </div>
+    </div>
+    <div class="divider" style="margin: 0; background:#8B0000;"></div>
+    <div class="body">
+      <div class="amt-block">
+        <div class="amt-label">Funding Amount</div>
+        <div class="amt" style="color:#8B0000;">Up to $3M</div>
+      </div>
+      <div class="desc">NSERC funds Canadian startups partnering with universities on R&D. Co-funded by private sector and government — huge leverage for tech companies.</div>
+      <div class="tags-row">
+        <div class="pill" style="border-color:#1a1a1a; color:#1a1a1a">University</div>
+        <div class="pill" style="border-color:#1a1a1a; color:#1a1a1a">R&D</div>
+        <div class="pill dark">NSERC</div>
+      </div>
+    </div>
+    <div class="footer" style="background:#fff5f5; border-top: 4px solid #ffcdd2;">
+      <div class="url">fsidigital.ca/guides/nserc-research-grants-guide</div>
+      <div class="apply-btn" style="background:#1a1a1a">Save</div>
+    </div>
+  </div>
+
+  <!-- SLIDE 13: CTA -->
+  <div class="slide cta-slide">
+    <div class="bg-overlay"></div>
+    <div class="content">
+      <div class="logo-huge">FSI Digital</div>
+      <h2>Want the full list <span style="color:#ff4444;">+</span><br>eligibility rules?</h2>
+      <div class="lead-box">
+        <p>Comment</p>
+        <div class="comment-word">"GRANT"</div>
+        <p class="sub">and I'll send you the full list + eligibility</p>
+      </div>
+      <div class="or-text">or visit</div>
+      <div class="url-text">fsidigital.ca</div>
+    </div>
+  </div>
+
+</body>
+</html>

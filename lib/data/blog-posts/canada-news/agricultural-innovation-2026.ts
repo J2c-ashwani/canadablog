@@ -42,7 +42,7 @@ const post: BlogPost = {
       </a>
       <a href="#stacking" class="p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition border border-gray-100">
         <h3 class="font-semibold text-green-700">Can I stack with other funds?</h3>
-        <p class="text-sm text-gray-600 mt-1">Yes, up to 100% (but AgriInnovate max 50%).</p>
+        <p class="text-sm text-gray-600 mt-1">Yes, up to 100%, but AgriInnovate max 50%.</p>
       </a>
     </div>
   </section>
@@ -755,16 +755,16 @@ const post: BlogPost = {
     
     <div class="grid md:grid-cols-3 gap-6 mb-8 text-sm">
       <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🎯 Commercial Readiness Assessment</h3>
-        <p>Evaluate your technology's readiness for AgriInnovate and identify gaps before application</p>
+        <h3 class="font-bold mb-2 text-green-800">🎯 Commercial Readiness Assessment</h3>
+        <p class="text-green-700">Evaluate your technology's readiness for AgriInnovate and identify gaps before application</p>
       </div>
       <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">🤝 Industry Partnership Facilitation</h3>
-        <p>Connect with agricultural producers, commodity groups, and research institutions across Canada</p>
+        <h3 class="font-bold mb-2 text-green-800">🤝 Industry Partnership Facilitation</h3>
+        <p class="text-green-700">Connect with agricultural producers, commodity groups, and research institutions across Canada</p>
       </div>
       <div class="bg-white bg-opacity-20 p-4 rounded-lg">
-        <h3 class="font-bold mb-2">📊 Agricultural Impact Quantification</h3>
-        <p>Develop the metrics and business case that AgriInnovate reviewers fund</p>
+        <h3 class="font-bold mb-2 text-green-800">📊 Agricultural Impact Quantification</h3>
+        <p class="text-green-700">Develop the metrics and business case that AgriInnovate reviewers fund</p>
       </div>
     </div>
 
@@ -860,7 +860,7 @@ const post: BlogPost = {
         answer: "Yes, you must be a for-profit legal entity (corporation, co-operative, or partnership) to apply. Sole proprietorships are typically not eligible."
       }
     ],
-    shortAnswer: "Yes — 🌾 Canada's $180M Agricultural Innovation Revolution: Complete AgriInnovate Guide 🏆 Top Agricultural Innovation Provinces ... Funding available: up to $180M.",
+    shortAnswer: "In 2026, the primary opportunity is the $180M AgriInnovate Program. It offers up to $5M per project (50% cost-sharing for corporations) or up to $10M (60% cost-sharing for non-profits) to fund commercialization and adoption of innovative agricultural technologies.",
     eligibleCheck: true,
     inlineCTA: {
       title: "Need expert help applying for grants?",

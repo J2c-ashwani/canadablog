@@ -10,7 +10,7 @@ export const metadata: Metadata = {
   title: "Newsletter - Weekly Grant Updates | FSI Digital",
   description:
     "Get weekly government grant updates, funding opportunities, and expert tips delivered to your inbox. Plus free Ultimate Grant Guide PDF.",
-  keywords: "grant newsletter, funding updates, government grants newsletter, startup funding news",
+  keywords: "grant newsletter, funding updates, government grants newsletter, startup funding news, grant newsletter Canada USA, weekly funding updates, government grants newsletter 2026, startup funding news alerts, how to stay updated on grants",
 }
 
 export default function NewsletterPage() {

@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "SBIR Phase I & II Requirements 2026 | $1.7M R&D Funding",
-  description: "Complete guide to Small Business Innovation Research (SBIR) grants. Learn how to write a winning proposal for Phase I ($250k) and Phase II ($1.7M) funding.",
-  keywords: "SBIR grant requirements, SBIR Phase I vs Phase II, federal R&D grants, NSF SBIR, NIH SBIR, DoD small business grants",
+  title: "How to Get SBIR Grants Phase 1 & 2 (2026) – Step-by-Step Guide",
+  description: "Explore top sbir grants phase 1 & 2 offering up to $1.7M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "SBIR grant requirements, SBIR Phase I vs Phase II, federal R&D grants, NSF SBIR, NIH SBIR, DoD small business grants, sbir grants application checklist 2026, sbir grants requirements and documents needed, sbir grants approval timeline, sbir grants application tips, NSF application step by step guide, NSF eligibility checker, NSF vs SBIR which to apply first, best grants for small business USA 2026, am I eligible for sbir grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-sbir-grants",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between SBIR Phase I and Phase II?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Phase I is for 'Feasibility & Proof of Concept' (typically $150k-$275k for 6-12 months). Phase II is for 'Prototype Development' (typically $1M-$1.7M for 2 years) and requires a successful Phase I result."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Note: can I skip Phase I and go straight to Phase II?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Generally, no. Most agencies require you to complete Phase I first. However, the NIH and DoD sometimes offer a 'Direct to Phase II' pilot program for companies that already have strong feasibility data."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a PhD to get an SBIR grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Not officially, but the Principal Investigator (PI) needs to have the expertise to lead the research. For NIH/NSF grants, having a PhD on the team is very common and improves credibility."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the money tax-free?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. SBIR awards are considered taxable business income. However, they are non-dilutive, meaning you don't give up any equity/ownership in your company."
-      }
-    }
-  ]
-}
-
 export default function ApplySBIRGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-800 to-purple-900 text-white py-20 relative overflow-hidden">
@@ -415,6 +377,10 @@ export default function ApplySBIRGrantsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

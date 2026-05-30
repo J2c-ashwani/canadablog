@@ -8,7 +8,7 @@ const post: BlogPost = {
     slug: "innovation-superclusters-2026",
     shortAnswerQuestion: "What innovation and technology grants are available in 2026?",
 
-    title: "Global Innovation Clusters:  C... 2026 | $100",
+    title: "Global Innovation Clusters: Canada's $100M+ Supercluster 2026",
 
     excerpt: "🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Digital, Protein, Ocean, AI, and Manufacturing.",
     category: "Canada News",

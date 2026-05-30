@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "SBA Growth Accelerator Fund 2026 | $200K Prizes",
   description: "Guide to the SBA Growth Accelerator Fund Competition (GAFC). Funding for incubators, accelerators, and ecosystem builders supporting STEM/R&D startups.",
-  keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support",
+  keywords: "SBA growth accelerator fund, GAFC 2025, incubator grants, accelerator funding, ecosystem builder grants, STEM startup support, sba growth accelerator fund guide application checklist 2026, sba growth accelerator fund guide requirements and documents needed, sba growth accelerator fund guide approval timeline, sba growth accelerator fund guide application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba growth accelerator fund guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-growth-accelerator-fund-guide",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is eligible for the Growth Accelerator Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Accelerators, incubators, co-working spaces, and non-profits that support STEM/R&D entrepreneurs. You must focus on underserved communities or specific tech themes."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is this a grant for my startup?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. This funding is for the ORGANIZATIONS (accelerators) that help startups, not the startups themselves. If you are a startup, look for SBIR grants instead."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much funding is available?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Prizes typically range from $50,000 to $200,000 depending on the stage (Stage 1 vs Stage 2) and the specific theme of the competition year."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What can the funds be used for?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Operating costs, program recruitment, mentor compensation, and prize money for your cohort. Funds cannot be used for direct investing in startups (equity purchases)."
-      }
-    }
-  ]
-}
-
 export default function SBAGrowthAcceleratorFundGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-teal-700 to-emerald-900 text-white py-20 relative overflow-hidden">
@@ -372,6 +334,10 @@ export default function SBAGrowthAcceleratorFundGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

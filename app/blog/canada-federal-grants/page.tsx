@@ -15,6 +15,7 @@ import EEATBadge from '@/components/blog/EEATBadge'
 import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
@@ -48,26 +49,12 @@ export default function CanadaFederalGrantsPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <BreadcrumbSchema items={[
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><BreadcrumbSchema items={[
         { name: "Home", url: "https://www.fsidigital.ca" },
         { name: "Guides", url: "https://www.fsidigital.ca/blog" },
         { name: "Canadian Government Grants", url: "https://www.fsidigital.ca/blog/canada-federal-grants" }
@@ -203,7 +190,7 @@ export default function CanadaFederalGrantsPage() {
                   </div>
                 </div>
 
-                <AdSlot adSlot="9876543210" adFormat="horizontal" className="my-10" />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" className="my-10" />
 
                 {/* Section 1: The Big Three Agencies */}
                 <div id="big-three" className="scroll-mt-32">
@@ -469,7 +456,7 @@ export default function CanadaFederalGrantsPage() {
                 </div>
 
                 <div className="my-12">
-                  <AdSlot adSlot="1122334455" adFormat="rectangle" style={{ minHeight: '300px' }} />
+                  <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '300px' }} />
                 </div>
 
                 {/* Section 3: The Application Playbook */}
@@ -742,26 +729,26 @@ export default function CanadaFederalGrantsPage() {
                   <h3 className="font-bold text-gray-900 mb-4 text-lg">Trending Federal Programs</h3>
                   <ul className="space-y-4">
                     <li>
-                      <Link href="/blog/canexport-guide" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/canada-export-development-grants-guide" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <Globe className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>CanExport SMEs</strong><br /><span className="text-xs text-gray-500 font-normal">Up to $50k for marketing</span></span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/cdap-guide" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/sred-tax-credits-vs-cdap-canadian-founders" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <Zap className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>CDAP (Digital Adoption)</strong><br /><span className="text-xs text-gray-500 font-normal">$2,400 micro-grants</span></span>
                       </Link>
                     </li>
                     <li>
-                      <Link href="/blog/sred-guide" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
+                      <Link href="/blog/sred-scientific-research-experimental-development" className="text-blue-600 hover:text-blue-800 hover:underline flex items-start group">
                         <PieChart className="w-5 h-5 mr-3 shrink-0 mt-0.5 group-hover:scale-110 transition" />
                         <span><strong>SR&ED Tax Credits</strong><br /><span className="text-xs text-gray-500 font-normal">Refundable R&D wages</span></span>
                       </Link>
                     </li>
                   </ul>
                 </div>
-                <AdSlot adSlot="5544332211" adFormat="vertical" style={{ minHeight: '600px' }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
               </aside>
 
             </div>

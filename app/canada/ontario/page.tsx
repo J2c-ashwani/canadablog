@@ -1,5 +1,6 @@
 import { Header } from "@/components/Header"
 import EEATBadge from "@/components/blog/EEATBadge"
+import { CTRTrap } from "@/components/blog/CTRTrap";
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import InlineCTA from "@/components/blog/InlineCTA"
@@ -11,11 +12,12 @@ import { Badge } from "@/components/ui/badge"
 import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-  title: "Ontario Business Grants 2026 | Provincial Funding Programs",
+  title: "Ontario Business Grants (2026) – Applications Open Now + Deadlines",
   description:
-    "Find Ontario business grants and provincial funding programs. Complete guide to Ontario government grants, eligibility requirements, and application deadlines.",
+        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
   keywords:
     "Ontario business grants, Ontario government funding, provincial grants Ontario, small business funding Ontario",
   alternates: {
@@ -32,7 +34,8 @@ const ontarioGrants: Grant[] = [
     eligibility: ["Ontario businesses", "Organizations", "Manufacturers"],
     deadline: "Rolling basis",
     applicationLink: "https://www.ontario.ca/page/ontario-together-fund",
-    description: "Support for businesses adapting to economic challenges and strengthening supply chains.",
+    description:
+        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     country: "Canada",
     region: "Ontario",
     category: "Business Growth",
@@ -50,7 +53,8 @@ const ontarioGrants: Grant[] = [
     eligibility: ["R&D performing corporations", "CCPCs", "Ontario residents"],
     deadline: "Annual",
     applicationLink: "https://www.ontario.ca/page/ontario-innovation-tax-credit",
-    description: "10% refundable tax credit for scientific research and experimental development.",
+    description:
+        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     country: "Canada",
     region: "Ontario",
     category: "R&D",
@@ -68,7 +72,8 @@ const ontarioGrants: Grant[] = [
     eligibility: ["High-growth potential companies", "Tech startups"],
     deadline: "Quarterly",
     applicationLink: "https://www.ontario.ca/page/ontario-scale-vouchers-program",
-    description: "Vouchers for accessing high-impact business advisory services.",
+    description:
+        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     country: "Canada",
     region: "Ontario",
     category: "Startups",
@@ -86,7 +91,8 @@ const ontarioGrants: Grant[] = [
     eligibility: ["Technology companies", "Startups", "Researchers"],
     deadline: "Multiple rounds",
     applicationLink: "https://www.oce-ontario.org/",
-    description: "Funding for technology commercialization and industry-academic collaboration.",
+    description:
+        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
     country: "Canada",
     region: "Ontario",
     category: "Technology",
@@ -114,6 +120,10 @@ export default function OntarioGrantsPage() {
               </Badge>
             </div>
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ontario Business Grants 2026</h1>
+                        <div className="mt-6">
+                            <CTRTrap />
+                        </div>
+
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox
                 question="What government grants are available for Ontario businesses in 2026?"
@@ -200,11 +210,7 @@ export default function OntarioGrantsPage() {
                   <CardTitle>Ontario Business Grant Opportunities</CardTitle>
                 </CardHeader>
                 <CardContent className="prose max-w-none">
-                  <p>
-                    Ontario provides extensive business grant programs to support innovation, growth, and economic
-                    development across the province. With over $400 million in annual funding, Ontario maintains its
-                    position as Canada's economic engine.
-                  </p>
+                  <AutoLink text="Ontario provides extensive business grant programs to support innovation, growth, and economic development across the province. With over $400 million in annual funding, Ontario maintains its position as Canada's economic engine." className="leading-relaxed" />
 
                   <h3>Key Ontario Grant Programs</h3>
                   <ul>
@@ -222,11 +228,7 @@ export default function OntarioGrantsPage() {
                     </li>
                   </ul>
 
-                  <h3>Eligibility Requirements</h3>
-                  <p>
-                    Ontario business grants typically require companies to be incorporated in Ontario, demonstrate
-                    growth potential, and contribute to the province's economic objectives:
-                  </p>
+                  <AutoLink text="Ontario business grants typically require companies to be incorporated in Ontario, demonstrate growth potential, and contribute to the province's economic objectives:" className="leading-relaxed" />
                   <ul>
                     <li>Ontario business registration and operations</li>
                     <li>Demonstration of innovation or growth potential</li>

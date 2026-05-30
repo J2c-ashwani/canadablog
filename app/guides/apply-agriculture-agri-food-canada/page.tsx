@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Agriculture & Agri-Food Canada Application Guide 2026 | Federal Funding",
   description: "Step-by-step guide to applying for AAFC federal funding. Get application templates, AgriInnovate strategies, and compliance checklists.",
-  keywords: "Agriculture Agri-Food Canada application, AAFC funding guide, AgriInnovate application, AgriScience program, farm grants Canada, agricultural funding process",
+  keywords: "Agriculture Agri-Food Canada application, AAFC funding guide, AgriInnovate application, AgriScience program, farm grants Canada, agricultural funding process, agriculture agri food canada application checklist 2026, agriculture agri food canada requirements and documents needed, agriculture agri food canada approval timeline, agriculture agri food canada application tips, AgriInnovate application step by step guide, AgriInnovate eligibility checker, best grants for small business Canada 2026, am I eligible for agriculture agri food canada",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-agriculture-agri-food-canada",
   },
@@ -27,61 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Who is eligible for AAFC funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Eligibility varies by program but generally includes for-profit companies, cooperatives, and non-profit organizations operating in the agriculture, agri-food, and agri-based products sectors. Applicants must be legal entities capable of entering into legally binding agreements."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the difference between AgriInnovate and AgriScience?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "AgriScience focuses on pre-commercial research and development (science-based). AgriInnovate focuses on the commercialization and adoption of innovative technologies that are already developed but need help reaching the market."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is AAFC funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends. AgriInnovate contributions are typically repayable (interest-free loans), while AgriScience contributions are often non-repayable (grants). Review the specific terms of the stream you are applying to."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does the application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The process can take 4-6 months or longer. It typically involves a pre-screening form, followed by a full application invitation. Due diligence and final approval add to the timeline."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I stack AAFC funding with other grants?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, stacking is generally permitted up to a certain limit (often 75% or 90% of total project costs). You must disclose all other funding sources in your application."
-      }
-    }
-  ]
-}
-
 export default function AgricultureAgriFoodGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-700 to-emerald-900 text-white py-20">
@@ -104,7 +58,7 @@ export default function AgricultureAgriFoodGuide() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="bg-green-700/30 border-white/30 text-white hover:bg-white/20" asChild>
-                  <Link href="/blog/agriculture-agri-food-canada-government-grants">
+                  <Link href="/blog/canada-agri-food-technology-innovation-grants">
                     Back to Overview
                   </Link>
                 </Button>
@@ -438,6 +392,10 @@ export default function AgricultureAgriFoodGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

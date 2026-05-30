@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Youth Entrepreneurship Funding Guide 2026 | Futurpreneur & Grants",
   description: "Complete guide to Futurpreneur Canada loans, youth business grants, and startup funding for ages 18-39. Get application templates and mentor matching tips.",
-  keywords: "Futurpreneur Canada, youth business grants, young entrepreneur loans, CYBF application, under 40 business funding, student business grants Ontario",
+  keywords: "Futurpreneur Canada, youth business grants, young entrepreneur loans, CYBF application, under 40 business funding, student business grants Ontario, youth entrepreneurship funding application checklist 2026, youth entrepreneurship funding requirements and documents needed, youth entrepreneurship funding approval timeline, youth entrepreneurship funding application tips, Futurpreneur application step by step guide, Futurpreneur eligibility checker, best grants for small business Canada 2026, am I eligible for youth entrepreneurship funding",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-youth-entrepreneurship-funding",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the age limit for Futurpreneur?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Futurpreneur is open to Canadian citizens or permanent residents aged 18 to 39."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is Futurpreneur a grant or a loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It is primarily a low-interest loan (up to $60,000) combined with mandatory mentorship. It is not a non-repayable grant, though some partnered programs may offer small grant components."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need a business plan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. A complete business plan and cash flow projection are required. Futurpreneur provides a 'Business Plan Writer' tool to help."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I apply if I have bad credit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Futurpreneur is more flexible than banks, but you generally need a clean credit history (no recent bankruptcies or R9s). Your character and business viability matter more than a perfect score."
-      }
-    }
-  ]
-}
-
 export default function YouthEntrepreneurshipFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-600 to-indigo-700 text-white py-20 relative overflow-hidden">
@@ -372,6 +334,10 @@ export default function YouthEntrepreneurshipFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

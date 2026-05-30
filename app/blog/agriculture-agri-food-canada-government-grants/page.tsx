@@ -18,11 +18,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Agriculture Canada Grants 2026 | AAFC Federal Funding Guide",
   description: "Complete guide to the $3.5B Sustainable Canadian Agricultural Partnership. Access AgriInnovate, AgriScience, AgriCompetitiveness, and Clean Technology funding for farms, processors, and agri-tech companies.",
-  keywords: "Agriculture Agri-Food Canada grants, AAFC federal funding, AgriInnovate, Sustainable CAP funding, farm grants Canada, agri-food grants",
+  keywords: "Agriculture Agri-Food Canada grants, AAFC federal funding, AgriInnovate, Sustainable CAP funding, farm grants Canada, agri-food grants, how to apply for AgriInnovate grants 2026, AgriInnovate eligibility requirements, how to apply for agriculture agri food canada government grants, agriculture agri food canada government grants eligibility 2026, step by step agriculture agri food canada government grants application guide, best agriculture agri food canada government grants for small business Canada, am I eligible for agriculture agri food canada government grants, agriculture agri food canada government grants deadline 2026",
 }
 
 export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
@@ -61,26 +63,13 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-green-600 to-green-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
@@ -164,6 +153,12 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
         <section className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -578,6 +573,10 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
 </div>
         </section>
       </div >
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
+      </div>
       <Footer />
     </>
   )

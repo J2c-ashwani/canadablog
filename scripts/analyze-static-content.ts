@@ -12,8 +12,8 @@ function countWords(str: string): number {
     // Remove braces and common code characters
     str = str.replace(/[{}]/g, ' ');
     // Normalize whitespace
-    str = str.trim().split(/\s+/).length;
-    return str;
+    const wordCount = str.trim().split(/\s+/).length;
+    return wordCount;
 }
 
 function analyzeStaticPages(dir: string, type: 'Blog' | 'Guide') {

@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "IRAP Government Grants Application Guide 2026 | Federal R&D Funding",
   description: "Complete guide to applying for IRAP government grants. Learn federal compliance requirements, Treasury Board reporting standards, and how to secure federal R&D funding.",
-  keywords: "IRAP government grants, federal R&D funding Canada, government grant application guide, NRC IRAP compliance, federal innovation grants",
+  keywords: "IRAP government grants, federal R&D funding Canada, government grant application guide, NRC IRAP compliance, federal innovation grants, irap government grants application checklist 2026, irap government grants requirements and documents needed, irap government grants approval timeline, irap government grants application tips, IRAP application step by step guide, IRAP eligibility checker, IRAP vs NRC which to apply first, best grants for small business Canada 2026, am I eligible for irap government grants",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-irap-government-grants",
   },
@@ -28,61 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "Is IRAP a federal government grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, IRAP (Industrial Research Assistance Program) is a federal grant program administered by the National Research Council of Canada (NRC). It uses federal tax dollars to support innovation in Canadian SMEs."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What are the federal compliance requirements?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Recipients must adhere to the Financial Administration Act, maintain auditable records for at least 6 years, and may be subject to federal audits. You must also comply with the Federal Contractors Program if applicable."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does the government decide who gets funding?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Decisions are based on three pillars: Technical Merit (feasible innovation), Business Potential (economic benefit to Canada), and Management Capability (ability to deliver). Regional priorities also play a role."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the money taxable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Government grants are considered taxable income. However, the expenses you pay with the grant are deductible, neutralizing the tax impact in the year incurred. You must also account for it in your SR&ED calculations."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the Treasury Board limit?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While IRAP has its own budgets, usually capped around $10M for large projects (rare), most standard Contribution Agreements are under $500,000 to avoid complex Treasury Board submissions."
-      }
-    }
-  ]
-}
-
 export default function IRAPGovernmentGrantsGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-green-700 to-emerald-900 text-white py-20">
@@ -382,6 +336,10 @@ export default function IRAPGovernmentGrantsGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-gray-50">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

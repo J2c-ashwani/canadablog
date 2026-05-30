@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "SBA Loan Requirements 2026 | 7(a), 504 & Microloans",
-  description: "Official guide to applying for SBA loans. Compare 7(a), CDC/504, and Microloan requirements. Learn how to get approved for up to $5M.",
-  keywords: "SBA loan requirements, SBA 7a loan application, SBA 504 loan guide, federal small business loans, SBA lender match",
+  title: "How to Get SBA Loans (2026) – Step-by-Step Guide",
+  description: "Explore top sba loans offering up to $5M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "SBA loan requirements, SBA 7a loan application, SBA 504 loan guide, federal small business loans, SBA lender match, sba loans application checklist 2026, sba loans requirements and documents needed, sba loans approval timeline, sba loans application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba loans",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-sba-loans",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the difference between SBA 7(a) and 504 loans?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "The 7(a) loan is flexible and can be used for working capital, equipment, or buying a business. The 504 loan is strictly for major fixed assets like real estate or heavy machinery and offers long-term fixed rates."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What credit score is needed for an SBA loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "While the SBA doesn't set a hard minimum, most lenders look for a personal credit score of 680 or higher. For SBA 7(a) Small Loans, the SBA pre-screens with a FICO SBSS score of 155+."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How long does it take to get an SBA loan?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It varies by lender. SBA Express loans can be approved in days, while standard 7(a) loans typically take 60-90 days from application to funding due to thorough underwriting."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is an SBA loan a grant?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. SBA loans are debt that must be repaid with interest. They are 'guaranteed' by the government, which reduces risk for the bank, but you (the borrower) are fully responsible for repayment."
-      }
-    }
-  ]
-}
-
 export default function ApplySBALoansGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-700 to-indigo-900 text-white py-20 relative overflow-hidden">
@@ -385,6 +347,10 @@ export default function ApplySBALoansGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

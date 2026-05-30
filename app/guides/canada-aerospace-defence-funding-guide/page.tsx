@@ -11,11 +11,13 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import StickyTOC from '@/components/blog/StickyTOC'
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "Aerospace & Defence Grants Canada 2026 | CSA & IDEaS Projects",
-  description: "Complete guide to aerospace and defence funding in Canada. Apply for CSA space technology grants, IDEaS defence innovation, and SIF aerospace streams.",
-  keywords: "aerospace grants Canada, CSA funding application, IDEaS program guide, defence innovation grants, space technology funding, SIF aerospace",
+  title: "Aerospace Grants Canada 2026 – Funding up to $450M Available",
+  description: "Explore top aerospace grants canada offering up to $450M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "aerospace grants Canada, CSA funding application, IDEaS program guide, defence innovation grants, space technology funding, SIF aerospace, canada aerospace defence funding guide application checklist 2026, canada aerospace defence funding guide requirements and documents needed, canada aerospace defence funding guide approval timeline, canada aerospace defence funding guide application tips, best grants for small business Canada 2026, am I eligible for canada aerospace defence funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-aerospace-defence-funding-guide",
   },
@@ -27,61 +29,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the IDEaS program?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "IDEaS (Innovation for Defence Excellence and Security) is a DND program that funds solutions to defence challenges. It offers competitive projects (up to $200k for Phase 1, $1M+ for Phase 2) and Test Drives."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How much funding can I get from the CSA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Canadian Space Agency (CSA) funding varies by initiative. Space Technology Development Program (STDP) contribution agreements typically range from $200,000 to $5 million depending on the TRL advancement."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I need to be Controlled Goods certified?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, for most defence and some space projects, you must be registered with the Controlled Goods Program (CGP) to access data and secure contracts."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is aerospace funding repayable?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It depends. SIF aerospace streams are often repayable loans. CSA STDP contributions are often non-repayable if they support lower TRL research, but may be repayable for near-commercial projects."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can startups apply for defence contracts?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. IDEaS is specifically designed to engage non-traditional defence partners, including startups and universities. You do not need to be a prime contractor to win an IDEaS challenge."
-      }
-    }
-  ]
-}
-
 export default function CanadaAerospaceDefenceFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-slate-900 via-blue-900 to-indigo-900 text-white py-20 relative overflow-hidden">
@@ -498,6 +452,10 @@ export default function CanadaAerospaceDefenceFundingGuide() {
           </div>
         </section>
 
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         {/* CTA */}
         <section className="py-20 bg-gradient-to-r from-slate-900 to-blue-900 text-white text-center">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">

@@ -14,11 +14,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Women's Business Centers WBC 2026 | SBA Program Complete Guide",
   description: "Complete guide to SBA Women's Business Centers providing free training, counseling, and resources for women entrepreneurs across America.",
-  keywords: "Women Business Centers, WBC program, SBA women entrepreneurs, women business training",
+  keywords: "Women Business Centers, WBC program, SBA women entrepreneurs, women business training, how to apply for SBA grants 2026, SBA eligibility requirements, how to apply for women business centers guide, women business centers guide eligibility 2026, step by step women business centers guide application guide, best women business centers guide for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women business centers guide, women business centers guide deadline 2026",
 }
 
 export default function WomensBusinessCentersGuidePage() {
@@ -49,26 +51,13 @@ export default function WomensBusinessCentersGuidePage() {
     }
   ];
 
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": faqData.map(item => ({
-      "@type": "Question",
-      "name": item.question,
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": item.answer
-      }
-    }))
-  };
-  return (
+    return (
     <>
       <Header />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <div className="min-h-screen bg-gray-50">
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div><div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-purple-600 to-purple-800 text-white py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto text-center">
@@ -139,6 +128,12 @@ export default function WomensBusinessCentersGuidePage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         <section className="py-16 bg-white">
@@ -623,6 +618,10 @@ export default function WomensBusinessCentersGuidePage() {
           </div>
         </section>
       </div >
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
+      </div>
       <Footer />
     </>
   )

@@ -9,6 +9,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
     title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
     description: 'Use our free interactive grant calculator to instantly estimate how much government funding, grants, and loans your Canadian business qualifies for.',
+    keywords: 'Canada grant eligibility calculator, estimate my funding, am I eligible for IRAP CDAP SR&ED, business grant calculator 2026, how much funding can I get, free grant eligibility checker Canada',
     openGraph: {
         title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
         description: 'Use our free interactive grant calculator to instantly estimate how much government funding, grants, and loans your Canadian business qualifies for.',

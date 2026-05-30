@@ -17,9 +17,9 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
-import { getBlogPostBySlug, getAllBlogPosts, blogCategories } from '@/lib/data/blogPosts';
-import { generateMetadata as generateSEOMetadata, generateArticleSchema, generateOrganizationSchema, generateHowToSchema } from '@/lib/seo';
-import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
+import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent, getBlogPostRichData } from '@/lib/data/blogPosts';
+import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
+import { generateBlogPostSchema, generateBreadcrumbSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { GrantComparisonTable } from "@/components/blog/GrantComparisonTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
@@ -57,11 +57,12 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = getBlogPostBySlug(slug);
-  if (!post) return { title: 'Post Not Found' };
+  if (!post) notFound();
 
   // Site-Wide Enrichment Logic:
   // Dynamically INDEX posts only if they have been enriched with High Value content stats/tips.
-  const isEnriched = !!(post.metrics || post.expertTip);
+  const richData = await getBlogPostRichData(slug);
+  const isEnriched = !!(richData.metrics || richData.expertTip);
 
   return {
     ...generateSEOMetadata({ ...post, content: '' }),
@@ -83,13 +84,22 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     return notFound();
   }
 
-  const content = post.content || '';
-  const fullPost = post;
+  // Strip any inline <script type="application/ld+json"> blocks from legacy HTML content.
+  // FAQ content remains visible on the page, but we avoid FAQ JSON-LD for grant/blog
+  // content because it creates noisy Search Console validation without rich-result upside.
+  const stripInlineSchemas = (html: string) =>
+    html.replace(/<script\s+type\s*=\s*["']application\/ld\+json["']\s*>[\s\S]*?<\/script>/gi, '');
+
+  const rawContent = await getBlogPostContent(slug) || '';
+  const content = stripInlineSchemas(rawContent);
+  const richData = await getBlogPostRichData(slug);
+  // Also sanitize post.content so the RSC payload doesn't carry duplicate schemas
+  const fullPost = { ...post, ...richData, content: stripInlineSchemas(content) };
 
   // Split content for InlineCTA injection
   let beforeCTA = content;
   let afterCTA = "";
-  if (post.inlineCTA) {
+  if (fullPost.inlineCTA) {
     const h2Matches = [...content.matchAll(/<h2/gi)];
     if (h2Matches.length >= 2) {
       const splitIndex = h2Matches[Math.min(2, h2Matches.length - 1)].index;
@@ -103,14 +113,48 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const category = blogCategories.find((cat) => cat.id === post.category);
   const blogPostSchema = generateBlogPostSchema(fullPost);
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
-  const faqSchema = fullPost.faq ? generateFAQSchema(fullPost.faq) : null;
 
-  // Advanced Schemas for Google Rich Results
-  const articleSchema = generateArticleSchema(fullPost);
-  const orgSchema = generateOrganizationSchema();
-  // We can extract <h2> or <h3> headers as "Steps" if it's a guide-style post
-  const stepMatches = [...content.matchAll(/<h[23][^>]*>(.*?)<\/h[23]>/gi)].map(m => m[1].replace(/<[^>]+>/g, '').trim());
-  const howToSchema = generateHowToSchema(fullPost, stepMatches.slice(0, 5)); // Just take first 5 headers as steps
+  const renderContentWithAds = (htmlString: string, pCountOffset: number) => {
+    if (!htmlString) return { nodes: null, totalParagraphs: pCountOffset };
+    
+    // Split by </p> to count paragraphs
+    const blocks = htmlString.split('</p>');
+    const result = [];
+    
+    let currentChunk = "";
+    let pCount = pCountOffset;
+    
+    blocks.forEach((block, idx) => {
+      const isLast = idx === blocks.length - 1;
+      const htmlPart = isLast ? block : block + '</p>';
+      currentChunk += htmlPart;
+      
+      if (!isLast) pCount++;
+      
+  // Inject Ad after paragraph 2
+      if (pCount === 2 && !isLast) {
+        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} suppressHydrationWarning />);
+        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p2"><AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_2!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} /></div>);
+        currentChunk = "";
+      }
+      
+      // Inject Ad after paragraph 7 for longer content
+      if (pCount === 7 && !isLast) {
+        result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key={`chunk-${idx}`} suppressHydrationWarning />);
+        result.push(<div className="my-10 not-prose flex justify-center w-full" key="ad-p7"><AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_7!} adFormat="rectangle" style={{ minHeight: '250px', width: '100%' }} /></div>);
+        currentChunk = "";
+      }
+    });
+    
+    if (currentChunk) {
+      result.push(<div dangerouslySetInnerHTML={{ __html: currentChunk }} key="chunk-final" suppressHydrationWarning />);
+    }
+    
+    return { nodes: result, totalParagraphs: pCount };
+  };
+
+  const beforeContentData = renderContentWithAds(beforeCTA, 0);
+  const afterContentData = renderContentWithAds(afterCTA, beforeContentData.totalParagraphs);
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">
@@ -122,29 +166,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
-      {faqSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-        />
-      )}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
-      />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(orgSchema) }}
-      />
-      {howToSchema && (
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(howToSchema) }}
-        />
-      )}
       <Header />
       <div className="container mx-auto px-4 py-4">
-        <AdSlot adSlot="1234567890" adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
       </div>
 
       <main className="py-12">
@@ -175,11 +199,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </h1>
                 )}
 
-                {post.shortAnswer && (
+                {fullPost.shortAnswer && (
                   <div className="text-left w-full mx-auto max-w-4xl">
                     <ShortAnswerBox
-                      question={post.shortAnswerQuestion}
-                      content={post.shortAnswer}
+                      question={fullPost.shortAnswerQuestion}
+                      content={fullPost.shortAnswer}
                       isH1={post.type === 'grant-news'}
                     />
                   </div>
@@ -211,12 +235,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <LastVerifiedBadge date={post.date} />
               </div>
 
-              {post.eligibleCheck && (
+              {/* AI Answer Summary Box */}
+              <div id="ai-summary" className="bg-emerald-50 border border-emerald-100 rounded-lg p-6 mb-8 mt-2 shadow-sm">
+                <h2 className="text-xl font-bold flex items-center gap-2 mb-3 text-gray-900 border-b border-emerald-200 pb-2">
+                  <Zap className="w-5 h-5 text-yellow-500" />
+                  AI Summary & Key Takeaways
+                </h2>
+                <ul className="space-y-3 text-gray-800">
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Overview:</strong> {post.seo?.description || `A comprehensive guide covering the latest updates, funding amounts, and application strategies for ${post.title}.`}</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Category Focus:</strong> This essential research brief targets {category?.name || 'government funding'} and explores funding impacts related to {post.seo?.keywords?.[0] || 'business growth'}.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
+                    <span><strong>Actionable Intelligence:</strong> Readers will discover verified eligibility requirements, internal program mechanics, and timeline expectations within this concise {post.readTime} read.</span>
+                  </li>
+                </ul>
+              </div>
+
+              {fullPost.eligibleCheck && (
                 <EligibleCheck />
               )}
 
-              {post.jumpLinks && (
-                <StickyTOC links={post.jumpLinks} />
+              {fullPost.jumpLinks && (
+                <StickyTOC links={fullPost.jumpLinks} />
               )}
 
               <div className="aspect-video bg-gray-100 rounded-lg overflow-hidden mb-12">
@@ -229,11 +275,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               {/* DYNAMIC ENRICHMENT: Success Metrics Table */}
-              {post.metrics && (
+              {fullPost.metrics && (
                 <div className="mb-10 not-prose">
                   <GrantSuccessTable
                     title="Quick Funding Facts"
-                    metrics={post.metrics.map(m => {
+                    metrics={fullPost.metrics.map(m => {
                       const IconComponent = (m.iconName && iconMap[m.iconName]) ? iconMap[m.iconName] : Target;
                       return {
                         ...m,
@@ -245,52 +291,50 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* DYNAMIC ENRICHMENT: Comparison Table */}
-              {post.comparisonTable && (
+              {fullPost.comparisonTable && (
                 <div className="mb-10 not-prose">
                   <GrantComparisonTable
-                    title={post.comparisonTable.title}
-                    description={post.comparisonTable.description}
-                    programs={post.comparisonTable.programs}
+                    title={fullPost.comparisonTable.title}
+                    description={fullPost.comparisonTable.description}
+                    programs={fullPost.comparisonTable.programs}
                   />
                 </div>
               )}
 
               {/* DYNAMIC ENRICHMENT: Expert Tip */}
-              {post.expertTip && (
+              {fullPost.expertTip && (
                 <div className="mb-10 not-prose">
                   <ExpertTipBox
-                    type={post.expertTip.type}
-                    title={post.expertTip.title}
+                    type={fullPost.expertTip.type}
+                    title={fullPost.expertTip.title}
                   >
-                    <div dangerouslySetInnerHTML={{ __html: post.expertTip.content }} />
+                    <div dangerouslySetInnerHTML={{ __html: fullPost.expertTip.content }} />
                   </ExpertTipBox>
                 </div>
               )}
 
-              <div
-                className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
-                dangerouslySetInnerHTML={{ __html: beforeCTA }}
-              />
+              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
+                {beforeContentData.nodes}
+              </div>
 
-              {post.inlineCTA && (
+              {fullPost.inlineCTA && (
                 <div className="not-prose my-8">
-                  <InlineCTA {...post.inlineCTA} />
+                  <InlineCTA {...fullPost.inlineCTA} />
                 </div>
               )}
 
               {afterCTA && (
-                <div
-                  className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700"
-                  dangerouslySetInnerHTML={{ __html: afterCTA }}
-                />
+                <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
+                  {afterContentData.nodes}
+                </div>
               )}
 
-              {/* DYNAMIC ENRICHMENT: FAQ Schema UI */}
-              {post.faq && (
+              {/* DYNAMIC ENRICHMENT: FAQ UI */}
+              {fullPost.faq && (
                 <div className="mt-12 mb-8 not-prose">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>
                   <Accordion type="single" collapsible className="w-full">
-                    {post.faq.map((item, index) => (
+                    {fullPost.faq.map((item, index) => (
                       <AccordionItem key={index} value={`item-${index}`}>
                         <AccordionTrigger className="text-left font-semibold text-gray-900 dark:text-white">
                           {item.question}
@@ -305,14 +349,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* ENGAGEMENT DEPTH: Related Funding Resources */}
-              {post.relatedLinks && post.relatedLinks.length > 0 && (
+              {fullPost.relatedLinks && fullPost.relatedLinks.length > 0 && (
                 <div className="mt-12 not-prose">
-                  <RelatedPageLinks links={post.relatedLinks} />
+                  <RelatedPageLinks links={fullPost.relatedLinks} />
                 </div>
               )}
 
               <div className="my-12">
-                <AdSlot adSlot="2345678901" adFormat="rectangle" style={{ minHeight: 250 }} />
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
               </div>
 
               <div className="mt-12 pt-8 border-t border-gray-200 dark:border-neutral-800">
@@ -345,7 +389,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <aside className="sticky top-8 lg:col-span-1 space-y-6">
               <GrantGuideCTA />
               <CategorySidebar type={post.type} />
-              <AdSlot adSlot="3456789012" adFormat="vertical" style={{ minHeight: 600 }} />
+              <div className="hidden lg:block">
+                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: 600 }} />
+              </div>
               <NewsletterBox />
             </aside>
           </div>

@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "SBA Application Process 2026 | Step-by-Step Approval Guide",
   description: "Master the SBA application process. From EIN registration to 'Lender Match' and final approval. Download the 2025 document checklist.",
-  keywords: "SBA application process, SBA 7a application steps, lenders match, SBA grant application, small business funding guide",
+  keywords: "SBA application process, SBA 7a application steps, lenders match, SBA grant application, small business funding guide, sba application process application checklist 2026, sba application process requirements and documents needed, sba application process approval timeline, sba application process application tips, SBA application step by step guide, SBA eligibility checker, best grants for small business USA 2026, am I eligible for sba application process",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/sba-application-process",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "How long does the SBA application process take?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It typically takes 60-90 days from initial application to funding for standard 7(a) loans. SBA Express loans can be faster (30-45 days), while complex 504 loans may take longer."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Do I apply directly to the SBA?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "For loans (7(a), 504), NO. You apply through an SBA-approved lender (bank). For disaster loans (EIDL), you apply directly at SBA.gov. For grants (SBIR), you apply via Grants.gov."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "What is the most common reason for rejection?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Incomplete documentation and lack of cash flow to service the debt. The SBA requires proof that your business can afford the loan payments based on historical tax returns."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is there a fee to apply?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Banks may charge a packaging fee, but the SBA sets limits on these fees. You should never pay an upfront fee to a 'broker' just to apply. Official assistance from SBDCs and SCORE is free."
-      }
-    }
-  ]
-}
-
 export default function SBAApplicationProcessGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-slate-800 to-gray-900 text-white py-20 relative overflow-hidden">
@@ -351,6 +313,10 @@ export default function SBAApplicationProcessGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

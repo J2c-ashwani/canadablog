@@ -15,11 +15,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "SBIR Research Grants 2026: Application Guide & Requirements",
   description: "Complete guide to applying for SBIR Phase I & II grants. Learn eligibility, deadlines, and how to secure up to $1.7M in federal R&D funding without equity loss.",
-  keywords: "SBIR grants, Phase I application, Phase II funding, R&D tax credits, small business innovation research, federal startup grants",
+  keywords: "SBIR grants, Phase I application, Phase II funding, R&D tax credits, small business innovation research, federal startup grants, sbir research grants guide application checklist 2026, sbir research grants guide requirements and documents needed, sbir research grants guide approval timeline, sbir research grants guide application tips, SBIR application step by step guide, SBIR eligibility checker, best grants for small business USA 2026, am I eligible for sbir research grants guide",
   openGraph: {
     title: "SBIR Grants 2026: The Complete Application Guide",
     description: "Secure $1.7M+ in non-dilutive R&D funding. Step-by-step guide for Phase I & II applications.",
@@ -31,61 +33,13 @@ export const metadata: Metadata = {
 }
 
 export default function SBIRResearchGrantsGuide() {
-  // FAQ Schema for Rich Snippets
-  const faqSchema = {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      {
-        "@type": "Question",
-        "name": "What is the difference between SBIR Phase I and Phase II?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Phase I is for 'Proof of Concept' funding ($50K-$250K) covering 6-12 months. Phase II is for 'Prototype Development' ($750K-$1.7M) covering 24 months and is only available to Phase I awardees."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Do I have to pay back SBIR grants?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. SBIR grants are non-dilutive funding. You do not repay the money, and the government takes 0% equity in your company."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Can I apply for SBIR if I am a solo founder?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Yes, but the Principal Investigator (PI) must be primarily employed by the small business (51% of their time) at the time of award. You can hire others as contractors."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "What is the success rate for SBIR applications?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The average success rate for Phase I is approximately 15-17%. For Phase II, it rises to about 45-50% since the applicant pool is pre-screened."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "How long does it take to get SBIR funding?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "The process is slow. It typically takes 6-9 months from submission to receiving the first check. Plan your runway accordingly."
-        }
-      }
-    ]
-  };
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-blue-900 via-blue-800 to-indigo-900 text-white py-20 relative overflow-hidden">

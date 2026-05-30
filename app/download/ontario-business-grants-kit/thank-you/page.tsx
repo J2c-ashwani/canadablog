@@ -83,7 +83,7 @@ export default function OntarioBusinessGrantsThankYouPage() {
                 <p className="text-gray-600 mb-4">Continue exploring Ontario provincial business funding opportunities:</p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button variant="outline" asChild>
-                    <Link href="/blog/ontario-business-grants">
+                    <Link href="/blog/ontario-government-business-grants">
                       Read Complete Ontario Grants Guide
                     </Link>
                   </Button>

@@ -12,11 +12,13 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
-  title: "AI Funding Canada 2026 | Scale AI & CDAP Grants",
-  description: "Complete guide to AI and digital adoption funding. Apply for Scale AI supercluster projects, CDAP digital transformation grants, and IRAP machine learning funding.",
-  keywords: "AI funding Canada, Scale AI grants, CDAP application, machine learning grants, artificial intelligence funding, digital adoption grants",
+  title: "AI Startup Grants Canada 2026 – Funding up to $850M Available",
+  description: "Explore top ai startup grants canada offering up to $850M in funding. Check your eligibility, learn the exact application steps, and secure approval today.",
+  keywords: "AI funding Canada, Scale AI grants, CDAP application, machine learning grants, artificial intelligence funding, digital adoption grants, canada digital ai funding guide application checklist 2026, canada digital ai funding guide requirements and documents needed, canada digital ai funding guide approval timeline, canada digital ai funding guide application tips, CDAP application step by step guide, CDAP eligibility checker, best grants for small business Canada 2026, am I eligible for canada digital ai funding guide",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/canada-digital-ai-funding-guide",
   },
@@ -28,53 +30,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Canada Digital Adoption Program (CDAP)?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "CDAP provides a $15,000 grant to hire a digital advisor to create a Digital Adoption Plan, followed by an interest-free loan of up to $100,000 to implement new technologies, including AI tools."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How does Scale AI funding work?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Scale AI reimburses up to 50% of eligible costs for collaborative AI projects focused on supply chains. Projects typically range from $1M to $5M+ and require a consortium of partners."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Can I get funding for ChatGPT integration?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes, if it involves developing a proprietary business application (e.g., customer service automation) as part of a digital transformation plan (CDAP) or technical R&D (IRAP)."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is AI software considered an eligible expense?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. Licensing fees, subscription costs for AI platforms, and developer salaries are often eligible expenses under programs like CDAP and IRAP."
-      }
-    }
-  ]
-}
-
 export default function CanadaDigitalAIFundingGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-indigo-800 to-purple-900 text-white py-20 relative overflow-hidden">
@@ -353,6 +315,10 @@ export default function CanadaDigitalAIFundingGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

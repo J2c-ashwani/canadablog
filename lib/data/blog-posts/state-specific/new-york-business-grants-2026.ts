@@ -8,7 +8,7 @@ const post: BlogPost = {
     slug: "new-york-business-grants-2026",
     shortAnswerQuestion: "How can my business apply for New York Business Grants : Sta 2026 in 2026?",
 
-    title: "New York Business Grants : Sta... 2026 | Funding Guide",
+    title: "New York Business Grants 2026: Startup & Growth Programs",
 
     excerpt: "🗽 Comprehensive guide to business grants in New York State. Covering NYC small business funds, upstate revitalization, and tech incentives.",
     category: "State-Specific",

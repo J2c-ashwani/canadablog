@@ -12,6 +12,8 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import AutoLink from '@/components/seo/AutoLink';
+import AdSlot from '@/components/blog/AdSlot';
 
 export const metadata: Metadata = {
   title: "Women Entrepreneurship Strategy 2026 | $100K Grants & Loans",
@@ -30,53 +32,13 @@ export const metadata: Metadata = {
   },
 }
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": [
-    {
-      "@type": "Question",
-      "name": "What is the Women Entrepreneurship Loan Fund?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "It provides microloans of up to $50,000 to women entrepreneurs who may not qualify for traditional bank financing, distributed through partners like WEOC and NACCA."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "How do I prove my business is women-owned?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "You typically need to provide corporate documents showing that the business is at least 51% owned, managed, and controlled by one or more women."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Is the WES Ecosystem Fund a grant for my business?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "No. The Ecosystem Fund supports non-profit organizations that provide mentorship and training to women. It does not give cash directly to individual businesses."
-      }
-    },
-    {
-      "@type": "Question",
-      "name": "Does BDC have a specific fund for women?",
-      "acceptedAnswer": {
-        "@type": "Answer",
-        "text": "Yes. The BDC Capital Women in Technology Venture Fund invests in women-led tech companies, and they also offer a $100k online loan specifically for women entrepreneurs."
-      }
-    }
-  ]
-}
-
 export default function WESApplicationGuide() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
       <Header />
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-rose-600 to-pink-700 text-white py-20 relative overflow-hidden">
@@ -362,6 +324,10 @@ export default function WESApplicationGuide() {
         </section>
 
         {/* FAQ Section */}
+        
+        <div className="container mx-auto px-4 py-8">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: 250 }} />
+        </div>
         <section id="faq" className="py-16 bg-white">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl mx-auto text-left">

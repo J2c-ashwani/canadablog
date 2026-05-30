@@ -9,6 +9,7 @@ import { Users, CheckCircle, ArrowRight, Building, Lightbulb, FileText, AlertCir
 import Link from "next/link"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
+import AutoLink from "@/components/seo/AutoLink"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
@@ -423,7 +424,7 @@ export default function IndigenousEntrepreneurGrantsPage() {
                                         <Link href="/canada/women-business-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Canada Women Business Grants</Link>
                                         <Link href="/canada/small-business-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Canada Small Business Grants</Link>
                                         <Link href="/canada/government-grants" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> Federal Canadian Grants</Link>
-                                        <Link href="/blog/irap-nrc-canada-guide" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> IRAP Complete Guide</Link>
+                                        <Link href="/blog/irap-industrial-research-assistance-program" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> IRAP Complete Guide</Link>
                                         <Link href="/grant-finder" className="flex items-center gap-1.5 text-primary hover:underline"><ArrowRight className="h-3.5 w-3.5" /> AI Grant Finder Tool</Link>
                                     </div>
                                 </CardContent>

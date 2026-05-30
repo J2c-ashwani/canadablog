@@ -1,4 +1,5 @@
-{
+export default [
+  {
     id: 2035,
         slug: "hud-community-grants-2025",
             title: "HUD Community Grants 2025: $3.3B Available",
@@ -10,7 +11,7 @@
                                     readTime: "8 min read",
                                         image: "/images/blog/usa-housing.jpg",
                                             featured: false,
-                                                content: \`
+                                                content: `
       <div class="bg-blue-50 border-l-4 border-blue-500 p-6 rounded-r-lg shadow-md my-6">
         <h3 class="text-xl font-bold text-blue-900 mb-2">🏘️ HUD Funding Alert 2025</h3>
         <p class="text-blue-800">
@@ -67,7 +68,7 @@
           <li><strong>Submit a proposal:</strong> When the local NOFA (Notice of Funding Availability) is released, submit your project proposal.</li>
         </ol>
       </div>
-    \`,
+    `,
     seo: {
       keywords: ["HUD Grants 2025", "CDBG Funding", "Community Development Grants", "Housing Grants USA", "Urban Development Funding"]
     },
@@ -108,7 +109,7 @@
     readTime: "10 min read",
     image: "/images/blog/veteran-business.jpg",
     featured: false,
-    content: \`
+    content: `
       <div class="bg-indigo-50 border-l-4 border-indigo-500 p-6 rounded-r-lg shadow-md my-6">
         <h3 class="text-xl font-bold text-indigo-900 mb-2">🎖️ Support for Veteran Entrepreneurs</h3>
         <p class="text-indigo-800">
@@ -162,7 +163,7 @@
           </p>
         </div>
       </div>
-    \`,
+    `,
     seo: {
       keywords: ["Veteran Business Grants", "small business grants for veterans", "SDVOSB funding", "Boots to Business", "Warrior Rising grants"]
     },
@@ -203,7 +204,7 @@
     readTime: "9 min read",
     image: "/images/blog/women-entrepreneurs.jpg",
     featured: false,
-    content: \`
+    content: `
       <div class="bg-pink-50 border-l-4 border-pink-500 p-6 rounded-r-lg shadow-md my-6">
         <h3 class="text-xl font-bold text-pink-900 mb-2">👩‍💼 Empowering Women Founders</h3>
         <p class="text-pink-800">
@@ -262,7 +263,7 @@
           The federal government has a goal to award <strong>5%</strong> of all prime contracting dollars to women-owned small businesses (WOSB).
         </p>
       </div>
-    \`,
+    `,
     seo: {
       keywords: ["Grants for women", "Amber Grant application", "Cartier Women's Initiative", "WOSB certification", "small business grants for women 2025"]
     },
@@ -303,7 +304,7 @@
     readTime: "11 min read",
     image: "/images/blog/minority-business.jpg",
     featured: false,
-    content: \`
+    content: `
       <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-r-lg shadow-md my-6">
         <h3 class="text-xl font-bold text-orange-900 mb-2">🌍 Diversity is Strength</h3>
         <p class="text-orange-800">
@@ -354,7 +355,7 @@
         <li><strong>NMSDC:</strong> National Minority Supplier Development Council (Corporate contracts).</li>
         <li><strong>8(a) Program:</strong> SBA's business development program for disadvantaged firms (Federal contracts).</li>
       </ul>
-    \`,
+    `,
     seo: {
       keywords: ["Minority business grants", "MBE certification", "Black owned business grants", "Latino business funding", "MBDA grants"]
     },
@@ -395,9 +396,9 @@
     readTime: "12 min read",
     image: "/images/blog/biden-grants.jpg",
     featured: true,
-    content: \`
-${(await import('./blog-posts/usa-news/biden-2-5b-grants-2025')).default}
-    \`,
+    content: `
+${(await import('./lib/data/blog-posts/usa-news/biden-2-5b-grants-2025')).default}
+    `,
     seo: {
       keywords: ["Biden small business grants", "federal grants 2025", "minority business funding", "SBA grants 2025", "government small business loans"]
     },
@@ -438,9 +439,9 @@ ${(await import('./blog-posts/usa-news/biden-2-5b-grants-2025')).default}
     readTime: "15 min read",
     image: "/images/blog/clean-energy.jpg",
     featured: false,
-    content: \`
-${(await import('./blog-posts/usa-news/doe-clean-tech-2025')).default}
-    \`,
+    content: `
+${(await import('./lib/data/blog-posts/usa-news/doe-clean-tech-2025')).default}
+    `,
     seo: {
       keywords: ["DOE grants", "clean tech funding", "solar business grants", "battery startup funding", "green energy grants usa"]
     },
@@ -481,9 +482,9 @@ ${(await import('./blog-posts/usa-news/doe-clean-tech-2025')).default}
     readTime: "10 min read",
     image: "/images/blog/environmental-justice.jpg",
     featured: false,
-    content: \`
-${(await import('./blog-posts/usa-news/epa-environmental-justice-2025')).default}
-    \`,
+    content: `
+${(await import('./lib/data/blog-posts/usa-news/epa-environmental-justice-2025')).default}
+    `,
     seo: {
       keywords: ["EPA grants", "environmental justice funding", "community change grants", "non-profit environmental grants", "climate justice funding"]
     },
@@ -524,9 +525,9 @@ ${(await import('./blog-posts/usa-news/epa-environmental-justice-2025')).default
     readTime: "14 min read",
     image: "/images/blog/science-tech.jpg",
     featured: false,
-    content: \`
-${(await import('./blog-posts/usa-news/nsf-stem-research-2025')).default}
-    \`,
+    content: `
+${(await import('./lib/data/blog-posts/usa-news/nsf-stem-research-2025')).default}
+    `,
     seo: {
       keywords: ["NSF grants", "SBIR funding", "STEM startup grants", "tech research grants", "seed funding for startups"]
     },
@@ -555,3 +556,4 @@ ${(await import('./blog-posts/usa-news/nsf-stem-research-2025')).default}
       }
     ]
   }
+];

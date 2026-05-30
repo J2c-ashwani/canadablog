@@ -20,11 +20,13 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import InlineCTA from '@/components/blog/InlineCTA'
+import AdSlot from '@/components/blog/AdSlot';
+import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
   title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal Business Grants & Rural Development",
   description: "Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal Entrepreneurship Program funding, NACCA loans, rural development grants, and regional business support across all Canadian provinces.",
-  keywords: "Indigenous business grants Canada, Aboriginal business funding, NACCA business loans, rural business grants Canada, First Nations business funding, Métis entrepreneur grants, Inuit business support, rural development funding Canada, regional business grants, Indigenous entrepreneur program Canada",
+  keywords: "Indigenous business grants Canada, Aboriginal business funding, NACCA business loans, rural business grants Canada, First Nations business funding, Métis entrepreneur grants, Inuit business support, rural development funding Canada, regional business grants, Indigenous entrepreneur program Canada, how to apply for indigenous rural business funding canada, indigenous rural business funding canada eligibility 2026, step by step indigenous rural business funding canada application guide, best indigenous rural business funding canada for small business Canada, am I eligible for indigenous rural business funding canada, indigenous rural business funding canada deadline 2026",
   openGraph: {
     title: "Indigenous & Rural Business Funding Canada 2026 | $500K+ Aboriginal & Rural Business Grants",
     description: "Access $500K+ in Canadian funding for Indigenous and rural businesses. Complete guide to Aboriginal business grants, NACCA loans, and rural development programs.",
@@ -52,31 +54,17 @@ const faqData = [
   }
 ]
 
-const faqSchema = {
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  "mainEntity": faqData.map(faq => ({
-    "@type": "Question",
-    "name": faq.question,
-    "acceptedAnswer": {
-      "@type": "Answer",
-      "text": faq.answer
-    }
-  }))
-}
-
 export default function IndigenousRuralBusinessFundingBlogPage() {
   // EEAT Data from blogPosts.ts
   const postData = getBlogPostBySlug("indigenous-rural-business-funding-canada");
   const iconMap: Record<string, any> = { DollarSign, Target, TrendingUp, Users, Award, Shield, CheckCircle, Zap, MapPin, Rocket, FileText, Percent: Target, Flag: Target, Gift: Target };
 
   return (
-    <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
-      />
-      <Header />
+    <><Header />
+      {/* Header Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
+      </div>
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-amber-600 to-orange-700 text-white py-16">
@@ -168,6 +156,12 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
             </div>
           </div>
         </section>
+
+        {/* In-Content Horizontal Ad */}
+        <div className="container mx-auto px-4 py-4">
+          <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
+        </div>
+
 
 
         {/* Common Questions Section */}
@@ -773,7 +767,7 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
                 </Link>
               </div>
               <div className="mt-6 grid md:grid-cols-2 gap-6">
-                <Link href="/blog/ontario-business-grants-2025" className="block p-4 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
+                <Link href="/blog/ontario-government-business-grants" className="block p-4 bg-gray-50 rounded-lg shadow hover:shadow-md transition">
                   <h3 className="font-semibold text-gray-900">Ontario Business Grants →</h3>
                   <p className="text-sm text-gray-600">Provincial programs including First Nations economic development</p>
                 </Link>
@@ -833,6 +827,10 @@ export default function IndigenousRuralBusinessFundingBlogPage() {
             </div>
           </div>
         </section>
+      </div>
+      {/* Bottom Ad */}
+      <div className="container mx-auto px-4 py-4">
+        <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE!} adFormat="rectangle" style={{ minHeight: '250px' }} />
       </div>
       <Footer />
     </>
