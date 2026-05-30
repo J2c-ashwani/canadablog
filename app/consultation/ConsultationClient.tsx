@@ -165,90 +165,51 @@ export default function ConsultationClient() {
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none" />
           
           <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Choose Your Payment Option</h2>
+            <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Secure Your Strategy Session</h2>
             <p className="text-[#8f9ac2] max-w-xl mx-auto">
-              Select your currency below. Secure checkout via PayPal or credit card (processed by PayPal Standard). After checkout, you will automatically redirect to our live Calendly dashboard to pick your slot.
+              Secure checkout via PayPal or credit card (processed by PayPal Standard). After checkout, you will automatically redirect to our live Calendly dashboard to pick your slot.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            
-            {/* Card A: CAD (Recommended) */}
+          <div className="max-w-lg mx-auto">
+            {/* Centered Premium USD Card */}
             <div className="relative rounded-3xl bg-[#0d0e2c] border-2 border-blue-500/80 p-8 flex flex-col justify-between shadow-2xl hover:scale-[1.02] transition-transform duration-300">
               <div className="absolute -top-4 left-6 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-black uppercase tracking-widest">
-                🇨🇦 Recommended for Canadian Leads
+                ⭐️ Custom Strategy Package
               </div>
               
               <div>
-                <h3 className="text-2xl font-black text-white mb-2">Canadian Businesses</h3>
+                <h3 className="text-2xl font-black text-white mb-2">1-on-1 Funding Strategy Session</h3>
                 <p className="text-[#8f9ac2] text-sm mb-6">
-                  Perfect for businesses matching with Federal & Provincial programs (SRED, IRAP, provincial grants).
+                  Get your pre-call custom desk research, personalized Funding Roadmap, and private 30-minute consultation slot.
                 </p>
                 
                 <div className="flex items-baseline gap-2 mb-8">
                   <span className="text-5xl font-black text-white tracking-tight">$199</span>
-                  <span className="text-lg font-bold text-blue-400">CAD</span>
+                  <span className="text-lg font-bold text-blue-400">USD</span>
                   <span className="text-sm text-[#5a6a9a] ml-1">/ one-time setup fee</span>
                 </div>
 
-                <div className="space-y-4 mb-8">
+                <div className="space-y-4 mb-8 text-left">
                   <div className="flex items-center gap-2.5 text-sm text-gray-200">
                     <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Secure local Canadian payment option</span>
-                  </div>
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>No foreign currency exchange markups</span>
+                    <span>2 Hours of Custom Pre-Call Desk Research</span>
                   </div>
                   <div className="flex items-center gap-2.5 text-sm text-gray-200">
                     <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Redirects instantly to Calendly success page</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <a
-                  href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani@fsidigital.ca&currency_code=CAD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl shadow-blue-900/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  Pay $199 CAD with PayPal / Card
-                  <ArrowRight className="w-4.5 h-4.5" />
-                </a>
-                <div className="flex items-center justify-center gap-1.5 mt-3 text-xs text-[#5a6a9a]">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#5a6a9a]" />
-                  <span>Secure 256-bit encrypted checkout</span>
-                </div>
-              </div>
-            </div>
-
-            {/* Card B: USD (International / US) */}
-            <div className="relative rounded-3xl bg-[#0d0e2c]/60 border border-blue-950 p-8 flex flex-col justify-between shadow-2xl hover:scale-[1.02] transition-transform duration-300">
-              
-              <div>
-                <h3 className="text-2xl font-black text-white mb-2">US & Cross-Border Startups</h3>
-                <p className="text-[#8f9ac2] text-sm mb-6">
-                  Perfect for startups seeking US federal, state grants, tax credits, or venture-backed alternative funding options.
-                </p>
-                
-                <div className="flex items-baseline gap-2 mb-8">
-                  <span className="text-5xl font-black text-white tracking-tight">$199</span>
-                  <span className="text-lg font-bold text-indigo-400">USD</span>
-                  <span className="text-sm text-[#5a6a9a] ml-1">/ one-time setup fee</span>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-indigo-400 flex-shrink-0" />
-                    <span>Ideal for US and international credit cards</span>
+                    <span>Bespoke B2B Funding Roadmap PDF</span>
                   </div>
                   <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-indigo-400 flex-shrink-0" />
-                    <span>Matches US federal & state grants database</span>
+                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
+                    <span>Top 3 High-Probability Grant/Loan Matches</span>
                   </div>
                   <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-indigo-400 flex-shrink-0" />
-                    <span>Redirects instantly to Calendly success page</span>
+                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
+                    <span>Private 30-Minute Google Meet Strategy Call</span>
+                  </div>
+                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
+                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
+                    <span>Redirects instantly to Calendly scheduling dashboard</span>
                   </div>
                 </div>
               </div>
@@ -256,7 +217,7 @@ export default function ConsultationClient() {
               <div>
                 <a
                   href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani@fsidigital.ca&currency_code=USD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-[#1f2256] border border-blue-800/40 hover:bg-[#282b68] text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl shadow-blue-900/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
                 >
                   Pay $199 USD with PayPal / Card
                   <ArrowRight className="w-4.5 h-4.5" />
@@ -267,7 +228,6 @@ export default function ConsultationClient() {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Refund Guarantee Badge */}
