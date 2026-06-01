@@ -96,12 +96,22 @@ export default function ConsultationClient() {
           </div>
           
           <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
-            Secure Up To <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">Non-Dilutive Funding</span> For Your Business
+            Secure Up To <span className="text-blue-400">$100,000+</span> in <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">Non-Dilutive Funding</span> For Your Business
           </h1>
           
-          <p className="text-lg sm:text-xl text-[#8f9ac2] max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#8f9ac2] max-w-3xl mx-auto leading-relaxed mb-8">
             Stop guessing grant frameworks and tax guidelines. Get a bespoke, pre-researched <strong className="text-white font-semibold">B2B Funding Roadmap</strong> and a private 30-minute deep dive strategy session.
           </p>
+
+          <div className="flex justify-center">
+            <a
+              href="#pricing"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-base rounded-2xl shadow-xl shadow-blue-900/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
+            >
+              🚀 Secure Your Strategy Session Now
+              <ArrowRight className="w-5 h-5" />
+            </a>
+          </div>
         </div>
 
         {/* Value Proposition Grid */}
