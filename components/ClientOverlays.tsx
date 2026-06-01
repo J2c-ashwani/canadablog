@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
+import { usePathname } from "next/navigation"
 
 // Lazy-load these components so they don't block the main thread at page load
 const CookieConsent = dynamic(
@@ -15,6 +16,7 @@ const LeadMagnetPopup = dynamic(
 
 export function ClientOverlays() {
     const [isClient, setIsClient] = useState(false)
+    const pathname = usePathname()
 
     useEffect(() => {
         setIsClient(true)
@@ -24,10 +26,13 @@ export function ClientOverlays() {
         return null
     }
 
+    // Suppress lead magnet popups on transaction-focused pages (consultation & booking)
+    const shouldSuppressPopup = pathname === "/consultation" || pathname === "/booking"
+
     return (
         <>
             <CookieConsent />
-            <LeadMagnetPopup />
+            {!shouldSuppressPopup && <LeadMagnetPopup />}
         </>
     )
 }
