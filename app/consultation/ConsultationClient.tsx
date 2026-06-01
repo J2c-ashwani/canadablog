@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { 
@@ -18,6 +18,66 @@ import {
 } from 'lucide-react'
 
 export default function ConsultationClient() {
+  const [sdkReady, setSdkReady] = useState(false);
+  const [paymentError, setPaymentError] = useState<string | null>(null);
+
+  useEffect(() => {
+    if ((window as any).paypal) {
+      setSdkReady(true);
+      return;
+    }
+
+    const script = document.createElement("script");
+    script.src = "https://www.paypal.com/sdk/js?client-id=ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq&currency=USD";
+    script.type = "text/javascript";
+    script.async = true;
+    script.onload = () => {
+      setSdkReady(true);
+    };
+    script.onerror = () => {
+      console.error("PayPal SDK failed to load.");
+      setPaymentError("Could not load PayPal Payment SDK. Please refresh the page.");
+    };
+    document.head.appendChild(script);
+  }, []);
+
+  useEffect(() => {
+    if (!sdkReady || !(window as any).paypal) return;
+
+    const container = document.getElementById("paypal-button-container");
+    if (container) {
+      container.innerHTML = "";
+    }
+
+    (window as any).paypal.Buttons({
+      style: {
+        layout: 'vertical',
+        color:  'gold',
+        shape:  'rect',
+        label:  'pay'
+      },
+      createOrder: (data: any, actions: any) => {
+        return actions.order.create({
+          purchase_units: [{
+            amount: {
+              value: '199.00',
+              currency_code: 'USD'
+            },
+            description: '1-on-1 B2B Funding Strategy Consultation'
+          }]
+        });
+      },
+      onApprove: async (data: any, actions: any) => {
+        const details = await actions.order.capture();
+        console.log("Payment approved:", details);
+        window.location.href = 'https://fsidigital.ca/booking';
+      },
+      onError: (err: any) => {
+        console.error("PayPal Smart Button Error:", err);
+        setPaymentError("Payment failed. Please check your card/account details and try again.");
+      }
+    }).render('#paypal-button-container');
+  }, [sdkReady]);
   return (
     <>
       <Header />
@@ -215,13 +275,21 @@ export default function ConsultationClient() {
               </div>
 
               <div>
-                <a
-                  href="https://www.paypal.com/cgi-bin/webscr?cmd=_xclick&business=ashwani@fsidigital.ca&currency_code=USD&amount=199.00&item_name=1-on-1%20B2B%20Funding%20Strategy%20Consultation&return=https://fsidigital.ca/booking"
-                  className="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-blue-600 to-sky-500 hover:from-blue-700 hover:to-sky-600 text-white font-extrabold text-base py-4 px-6 rounded-2xl shadow-xl shadow-blue-900/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  Pay $199 USD with PayPal / Card
-                  <ArrowRight className="w-4.5 h-4.5" />
-                </a>
+                {paymentError && (
+                  <div className="mb-4 p-3 bg-red-950/50 border border-red-500/30 rounded-xl text-red-400 text-xs font-semibold text-center">
+                    {paymentError}
+                  </div>
+                )}
+                
+                {!sdkReady && (
+                  <div className="w-full py-4 flex flex-col items-center justify-center gap-2 border border-blue-900/20 rounded-2xl bg-blue-950/10">
+                    <div className="w-6 h-6 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                    <span className="text-[#8f9ac2] text-xs font-bold animate-pulse">Initializing Secure Checkout SDK...</span>
+                  </div>
+                )}
+
+                <div id="paypal-button-container" className="w-full relative z-10 min-h-[150px]"></div>
+                
                 <div className="flex items-center justify-center gap-1.5 mt-3 text-xs text-[#5a6a9a]">
                   <ShieldCheck className="w-3.5 h-3.5 text-[#5a6a9a]" />
                   <span>Secure 256-bit encrypted checkout</span>
