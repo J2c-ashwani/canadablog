@@ -8,6 +8,8 @@ import GlobalWikipediaLinker from "@/components/seo/GlobalWikipediaLinker"
 import { AdSensePageTracker } from "@/components/AdSensePageTracker"
 import { AdSenseLoader } from "@/components/AdSenseLoader"
 
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-DZ55NMNLYM"
+
 const inter = Inter({
   subsets: ["latin"],
   variable: "--font-inter",
@@ -86,21 +88,24 @@ export default function RootLayout({
         {/* Preconnect to critical third-party origins for CWV */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" crossOrigin="anonymous" />
+        <link rel="preconnect" href="https://googleads.g.doubleclick.net" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="alternate" type="application/rss+xml" title="FSI Digital grant funding updates" href="/feed.xml" />
         <AdSenseLoader />
         {/* Google Analytics GA4 */}
         <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-DZ55NMNLYM"
-          strategy="lazyOnload"
+          src={`https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`}
+          strategy="afterInteractive"
         />
-        <Script id="google-analytics" strategy="lazyOnload">
+        <Script id="google-analytics" strategy="afterInteractive">
           {`
             window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
 
-            gtag('config', 'G-DZ55NMNLYM');
+            gtag('config', '${GA_MEASUREMENT_ID}', { send_page_view: false });
           `}
         </Script>
 

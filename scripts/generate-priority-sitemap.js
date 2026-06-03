@@ -49,10 +49,18 @@ const GSC_QUICK_WIN_ROUTES = [
   '/blog/colorado-tech-programs',
   '/blog/healthcare-grants-2026',
   '/blog/women-entrepreneurship-strategy-canada',
+  '/blog/veteran-business-funding-canada-2026',
+  '/blog/ai-machine-learning-grants',
+  '/blog/canada-aerospace-defence-innovation-grants',
   '/guides/irap-innovation-application-guide',
   '/guides/apply-strategic-innovation-fund',
   '/guides/california-loan-guarantee-guide',
   '/guides/apply-irap-grants',
+  '/grants/on/toronto/restaurants-hospitality',
+  '/grants/bc/vancouver/women-entrepreneurs',
+  '/grants/ca/san-francisco/women-entrepreneurs',
+  '/grants/on/ottawa/women-entrepreneurs',
+  '/grants/ns/halifax/women-entrepreneurs',
 ]
 
 function escapeXml(value) {

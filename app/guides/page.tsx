@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Grant Application Guides | How to Apply for Government Grants",
     description: "Step-by-step guides for applying to government grants.",
-    url: "https://grantfinder.pro/guides",
+    url: "https://www.fsidigital.ca/guides",
   },
 }
 

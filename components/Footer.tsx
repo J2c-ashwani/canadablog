@@ -87,16 +87,16 @@ export function Footer() {
 
             {/* Popular Guides (SEO Internal Links) */}
             <div className="space-y-2 mt-4">
-              <h4 className="font-semibold text-sm text-gray-300">Popular Guides</h4>
+              <h4 className="font-semibold text-sm text-gray-300">High-Intent Guides</h4>
               <div className="flex flex-col space-y-1">
-                <Link href="/blog/canada-startup-funding-grants-guide" className="text-gray-400 hover:text-white text-sm">
-                  Canada Startup Grants
+                <Link href="/blog/quebec-small-business-grants-guide" className="text-gray-400 hover:text-white text-sm">
+                  Quebec Small Business Grants
                 </Link>
-                <Link href="/blog/sba-microloans-complete-guide" className="text-gray-400 hover:text-white text-sm">
-                  SBA Microloans Guide
+                <Link href="/blog/nih-sbir-biotech-grants" className="text-gray-400 hover:text-white text-sm">
+                  NIH SBIR Biotech Grants
                 </Link>
-                <Link href="/blog/quebec-government-business-grants" className="text-gray-400 hover:text-white text-sm">
-                  Quebec Business Grants
+                <Link href="/blog/veteran-business-funding-canada-2026" className="text-gray-400 hover:text-white text-sm">
+                  Veteran Business Grants Canada
                 </Link>
               </div>
             </div>
@@ -243,7 +243,7 @@ export function Footer() {
             <p className="text-gray-400 text-sm">© 2026 FSI Digital. All rights reserved.</p>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
               <p className="text-gray-400 text-sm">
-                Last updated: February 2026
+                Last reviewed: June 2026
               </p>
               <div className="flex items-center space-x-4">
                 <Link href="/privacy" className="text-gray-400 hover:text-white text-xs">

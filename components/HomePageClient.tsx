@@ -9,6 +9,7 @@ import { Badge } from "@/components/ui/badge"
 import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, CheckCircle, HelpCircle } from "lucide-react"
 import Link from "next/link"
 import { HeroEmailForm, NewsletterForm } from "./HomePageForms"
+import { HighIntentFundingLinks } from "@/components/seo/HighIntentFundingLinks"
 
 const AI_FAQS = [
   { question: "What is FSI Digital and how does it help startups?", answer: "FSI Digital is North America's premier grant discovery platform. We track over $2.5 billion in available government funding and connect startups and small businesses in the USA and Canada with non-dilutive, equity-free capital." },
@@ -115,6 +116,12 @@ export default function HomePageClient() {
                     </div>
                 </div>
             </section>
+
+            <HighIntentFundingLinks
+                title="Most-Searched Funding Guides"
+                description="Start with the grant topics that currently show the strongest search and revenue opportunity across USA and Canada."
+                limit={8}
+            />
 
             {/* Featured Grants */}
             <section className="py-12 sm:py-16 md:py-20">

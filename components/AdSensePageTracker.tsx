@@ -2,12 +2,16 @@
 
 import { useEffect } from 'react'
 import { usePathname } from 'next/navigation'
+import { classifyRevenuePath } from '@/lib/seo/revenueOpportunities'
 
 declare global {
   interface Window {
     gtag?: (...args: any[]) => void
+    dataLayer?: any[]
   }
 }
+
+const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-DZ55NMNLYM'
 
 function classifyPage(pathname: string) {
   if (pathname === '/') return 'home'
@@ -42,12 +46,30 @@ export function AdSensePageTracker() {
 
   useEffect(() => {
     const pageType = classifyPage(pathname)
+    const revenue = classifyRevenuePath(pathname)
+    const pageLocation = `${window.location.origin}${pathname}`
+
+    window.dataLayer = window.dataLayer || []
+    window.gtag = window.gtag || function gtagFallback() {
+      window.dataLayer?.push(arguments)
+    }
+
+    window.gtag('config', GA_MEASUREMENT_ID, {
+      page_path: pathname,
+      page_location: pageLocation,
+      page_title: document.title,
+    })
 
     window.gtag?.('event', 'adsense_page_type_view', {
       page_path: pathname,
       page_type: pageType,
-      expected_ad_slots: expectedAdSlots(pageType),
-      send_to: 'G-DZ55NMNLYM',
+      market: revenue.market,
+      content_format: revenue.contentFormat,
+      revenue_tier: revenue.revenueTier,
+      expected_ad_slots: revenue.expectedAdSlots || expectedAdSlots(pageType),
+      is_known_revenue_page: revenue.isKnownRevenuePage ? 'yes' : 'no',
+      non_interaction: true,
+      send_to: GA_MEASUREMENT_ID,
     })
   }, [pathname])
 

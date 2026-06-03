@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Canada Innovation Grants 2026: $4.2B+ R&D Funding [Apply]",
     description: "Complete guide to Canadian innovation funding with federal and provincial programs offering $4.2B+ for research, development, and commercialization.",
-    url: "https://grantfinder.pro/canada/innovation-grants",
+    url: "https://www.fsidigital.ca/canada/innovation-grants",
     images: ["/og-image.png"],
   },
 }

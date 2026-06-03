@@ -16,7 +16,10 @@ export default function AdSlot({
   className = ''
 }: AdSlotProps) {
   const adPushed = useRef(false);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const viewableTracked = useRef(false);
   const publisherId = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || "ca-pub-1200907614877581";
+  const measurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-DZ55NMNLYM";
   
   // Use provided adSlot or fall back to environment variables based on format
   let finalAdSlot = adSlot || (
@@ -76,15 +79,47 @@ export default function AdSlot({
       // @ts-ignore
       (window.adsbygoogle = window.adsbygoogle || []).push({});
       adPushed.current = true;
+      window.gtag?.('event', 'adsense_slot_requested', {
+        ad_slot: finalAdSlot,
+        ad_format: adFormat,
+        page_path: window.location.pathname,
+        non_interaction: true,
+        send_to: measurementId,
+      });
     } catch (err) {
       console.log('AdSense error:', err);
     }
-  }, [publisherId, finalAdSlot, isPlaceholder]);
+  }, [publisherId, finalAdSlot, isPlaceholder, adFormat, measurementId]);
+
+  useEffect(() => {
+    if (isPlaceholder || !containerRef.current || viewableTracked.current) return;
+
+    const observer = new IntersectionObserver((entries) => {
+      const entry = entries[0];
+      if (!entry?.isIntersecting || entry.intersectionRatio < 0.5 || viewableTracked.current) return;
+
+      viewableTracked.current = true;
+      window.gtag?.('event', 'adsense_slot_viewable', {
+        ad_slot: finalAdSlot,
+        ad_format: adFormat,
+        page_path: window.location.pathname,
+        non_interaction: true,
+        send_to: measurementId,
+      });
+      observer.disconnect();
+    }, { threshold: [0.5] });
+
+    observer.observe(containerRef.current);
+    return () => observer.disconnect();
+  }, [adFormat, finalAdSlot, isPlaceholder, measurementId]);
 
   return (
     <div 
-      className={`bg-gray-50 dark:bg-neutral-900 border border-dashed border-gray-200 dark:border-neutral-800 rounded overflow-hidden ${className}`}
+      ref={containerRef}
+      className={`bg-white dark:bg-neutral-950 rounded overflow-hidden ${className}`}
       style={containerStyle}
+      data-ad-format={adFormat}
+      data-ad-slot={finalAdSlot}
     >
       <ins
         className="adsbygoogle w-full h-full block"

@@ -9,6 +9,7 @@ import AdSlot from '@/components/blog/AdSlot';
 import { getGrantNewsPosts } from '@/lib/data/blogPosts';
 import { generateBlogPageMetadata } from '@/lib/seo';
 import { generateBlogSchema } from '@/lib/schema';
+import { HighIntentFundingLinks } from '@/components/seo/HighIntentFundingLinks';
 
 export async function generateMetadata({
   searchParams,
@@ -128,6 +129,13 @@ export default async function BlogPage({
 
         {/* Featured Stories */}
         <FeaturedStories type="grant-news" />
+
+        <HighIntentFundingLinks
+          title="Funding Topics With Strong Search Demand"
+          description="Use these guides to compare high-intent grant searches, current funding programs, and local eligibility paths."
+          limit={8}
+          className="mb-10"
+        />
 
         <div className="grid lg:grid-cols-4 gap-8">
           {/* Main Content */}

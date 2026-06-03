@@ -3,7 +3,10 @@ const path = require('path')
 
 const BASE_URL = 'https://www.fsidigital.ca'
 const SOURCE_PATH = path.join(__dirname, '../lib/pseo-data.ts')
+const PUBLIC_DIR = path.join(__dirname, '../public')
 const OUTPUT_PATH = path.join(__dirname, '../public/indexing-recovery-sitemap.xml')
+const CHUNK_PREFIX = 'indexing-recovery-sitemap'
+const CHUNK_SIZE = 500
 const DRIP_START_DATE = new Date('2026-03-05T00:00:00Z')
 const PAGES_PER_DAY = 20
 const SUPERSEDED_BLOG_SLUGS = new Set([
@@ -240,9 +243,7 @@ function buildRecoveryRoutes() {
   return Array.from(routes).sort()
 }
 
-function buildXml(routes) {
-  const lastmod = new Date().toISOString()
-
+function buildUrlsetXml(routes, lastmod) {
   return [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
@@ -259,6 +260,39 @@ function buildXml(routes) {
   ].join('\n')
 }
 
+function buildSitemapIndexXml(chunkFiles, lastmod) {
+  return [
+    '<?xml version="1.0" encoding="UTF-8"?>',
+    '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+    ...chunkFiles.map((fileName) => [
+      '  <sitemap>',
+      `    <loc>${escapeXml(`${BASE_URL}/${fileName}`)}</loc>`,
+      `    <lastmod>${lastmod}</lastmod>`,
+      '  </sitemap>',
+    ].join('\n')),
+    '</sitemapindex>',
+    '',
+  ].join('\n')
+}
+
 const routes = buildRecoveryRoutes()
-fs.writeFileSync(OUTPUT_PATH, buildXml(routes))
-console.log(`Generated ${OUTPUT_PATH} with ${routes.length} URLs`)
+const lastmod = new Date().toISOString()
+const staleChunkPattern = new RegExp(`^${CHUNK_PREFIX}-\\d+\\.xml$`)
+
+for (const fileName of fs.readdirSync(PUBLIC_DIR)) {
+  if (staleChunkPattern.test(fileName)) {
+    fs.unlinkSync(path.join(PUBLIC_DIR, fileName))
+  }
+}
+
+const chunkFiles = []
+for (let index = 0; index < routes.length; index += CHUNK_SIZE) {
+  const chunkNumber = Math.floor(index / CHUNK_SIZE) + 1
+  const chunkRoutes = routes.slice(index, index + CHUNK_SIZE)
+  const fileName = `${CHUNK_PREFIX}-${chunkNumber}.xml`
+  fs.writeFileSync(path.join(PUBLIC_DIR, fileName), buildUrlsetXml(chunkRoutes, lastmod))
+  chunkFiles.push(fileName)
+}
+
+fs.writeFileSync(OUTPUT_PATH, buildSitemapIndexXml(chunkFiles, lastmod))
+console.log(`Generated ${OUTPUT_PATH} as a sitemap index with ${chunkFiles.length} child sitemaps and ${routes.length} URLs`)

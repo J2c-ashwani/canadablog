@@ -1,9 +1,18 @@
 import { BlogPost } from './data/blogPosts';
 
+const SITE_URL = 'https://www.fsidigital.ca';
+
+function toAbsoluteUrl(url: string | undefined, fallback: string) {
+  const value = url || fallback;
+  if (value.startsWith('http://') || value.startsWith('https://')) return value;
+  return `${SITE_URL}${value.startsWith('/') ? value : `/${value}`}`;
+}
+
 export function generateBlogPostSchema(post: BlogPost) {
   // Strip HTML for accurate word count
   const plainText = post.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const wordCount = plainText.split(' ').filter(w => w.length > 0).length;
+  const imageUrl = toAbsoluteUrl(post.seo?.ogImage || post.image, '/og-image.png');
 
   const schema: any = {
     "@context": "https://schema.org",
@@ -12,7 +21,7 @@ export function generateBlogPostSchema(post: BlogPost) {
     "description": post.shortAnswer || post.excerpt,
     "image": {
       "@type": "ImageObject",
-      "url": `https://www.fsidigital.ca/images/blog/${post.image}`,
+      "url": imageUrl,
       "width": 1200,
       "height": 630
     },
@@ -26,7 +35,7 @@ export function generateBlogPostSchema(post: BlogPost) {
       "name": "FSI Digital",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.fsidigital.ca/images/logo.png",
+        "url": "https://www.fsidigital.ca/logo.png",
         "width": 200,
         "height": 50
       }
@@ -93,7 +102,7 @@ export function generateBlogSchema() {
       "name": "FSI Digital",
       "logo": {
         "@type": "ImageObject",
-        "url": "https://www.fsidigital.ca/images/logo.png"
+        "url": "https://www.fsidigital.ca/logo.png"
       }
     },
     "inLanguage": "en-US"

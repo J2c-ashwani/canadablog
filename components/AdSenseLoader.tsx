@@ -8,6 +8,8 @@ const EXCLUDED_ROUTES = [
   '/booking'
 ]
 
+const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-1200907614877581'
+
 export function AdSenseLoader() {
   const pathname = usePathname()
 
@@ -24,7 +26,7 @@ export function AdSenseLoader() {
     <Script
       id="adsense-loader"
       async
-      src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1200907614877581"
+      src={`https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=${ADSENSE_PUBLISHER_ID}`}
       strategy="afterInteractive"
       crossOrigin="anonymous"
     />
