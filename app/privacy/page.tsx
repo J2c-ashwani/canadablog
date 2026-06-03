@@ -81,6 +81,7 @@ export default function PrivacyPolicy() {
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Business Information:</strong> Company name, industry, and location when requesting grant consultation services.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Communication Data:</strong> Messages, feedback, and inquiries you send through our contact forms.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Consent Records:</strong> Partner-contact consent, consent version, source page, timestamp, and related form details when you choose to submit a funding inquiry.</span></li>
+                <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Partner Payment Records:</strong> Package selected, PayPal order/capture references, buyer contact details, company website, target market, and fulfillment notes. PayPal processes payment credentials; we do not store full card, bank, or PayPal account credentials.</span></li>
               </ul>
 
               <h3 className="text-lg font-semibold text-gray-800 mt-5 mb-2">Information Collected Automatically</h3>
@@ -215,6 +216,9 @@ export default function PrivacyPolicy() {
               </p>
               <p className="text-gray-600 leading-relaxed">
                 We may also use third-party service providers for email delivery, hosting, and other operational purposes. These providers may have access to your personal information only to perform these tasks on our behalf and are obligated not to disclose or use it for any other purpose.
+              </p>
+              <p className="text-gray-600 leading-relaxed mt-3">
+                Partner pilot payments are processed by PayPal. PayPal may collect and process payment information according to its own privacy policy and payment terms.
               </p>
             </section>
 

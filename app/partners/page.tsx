@@ -11,6 +11,8 @@ import {
   Building2,
   CheckCircle2,
   Clock3,
+  CreditCard,
+  Eye,
   FileSpreadsheet,
   Handshake,
   Mail,
@@ -18,6 +20,7 @@ import {
   Target,
   Users,
 } from 'lucide-react';
+import { PARTNER_PACKAGES } from '@/lib/partners/packages';
 
 export const metadata: Metadata = {
   title: 'Funding Partner Program | FSI Digital',
@@ -58,6 +61,41 @@ const proofItems = [
   'Trailing 7-day and 30-day lead volume from the internal dashboard',
   'Source mix by grant finder, calculator, contact forms, downloads, and newsletter',
   'Tier breakdown so partners can price raw, qualified, and exclusive leads separately',
+];
+
+const redactedLeadDemo = [
+  {
+    tier: 'A',
+    market: 'British Columbia, Canada',
+    industry: 'Manufacturing',
+    need: 'Hiring, equipment, and expansion funding',
+    range: '$100k-$500k',
+    buyer: 'Equipment finance or grant consultant',
+  },
+  {
+    tier: 'A',
+    market: 'Ontario, Canada',
+    industry: 'Technology',
+    need: 'R&D and innovation funding',
+    range: '$100k-$500k',
+    buyer: 'Grant/SR&ED/IRAP consultant',
+  },
+  {
+    tier: 'B',
+    market: 'British Columbia, Canada',
+    industry: 'Retail / Wellness',
+    need: 'Growth capital and working capital',
+    range: '$25k-$100k',
+    buyer: 'Business lender or financing broker',
+  },
+  {
+    tier: 'B',
+    market: 'California, USA',
+    industry: 'Clean Energy',
+    need: 'Equipment and expansion funding',
+    range: '$500k-$1m',
+    buyer: 'Clean-tech funding advisor',
+  },
 ];
 
 function Metric({ label, value, icon: Icon }: { label: string; value: string; icon: ElementType }) {
@@ -169,6 +207,112 @@ export default function FundingPartnerProgramPage() {
                 </div>
               ))}
             </div>
+          </div>
+        </section>
+
+        <section className="border-t border-gray-200 bg-gray-50 py-16">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
+              <div>
+                <p className="text-sm font-bold uppercase tracking-wide text-emerald-700">Redacted demo</p>
+                <h2 className="mt-3 text-3xl font-bold text-gray-950 sm:text-4xl">
+                  Buyers can review sample lead quality before private delivery.
+                </h2>
+                <p className="mt-3 max-w-3xl text-gray-700">
+                  Personal details are hidden publicly. Approved partners receive private lead data only after payment,
+                  consent review, and fulfillment approval.
+                </p>
+              </div>
+              <div className="inline-flex items-center gap-2 rounded-full bg-white px-4 py-2 text-sm font-semibold text-gray-700 shadow-sm">
+                <Eye className="h-4 w-4 text-emerald-700" />
+                No personal details shown
+              </div>
+            </div>
+
+            <div className="overflow-hidden rounded-lg border border-gray-200 bg-white shadow-sm">
+              <div className="overflow-x-auto">
+                <table className="min-w-full divide-y divide-gray-200 text-sm">
+                  <thead className="bg-gray-100 text-left text-xs font-semibold uppercase tracking-wide text-gray-600">
+                    <tr>
+                      <th className="px-4 py-3">Tier</th>
+                      <th className="px-4 py-3">Market</th>
+                      <th className="px-4 py-3">Industry</th>
+                      <th className="px-4 py-3">Funding Need</th>
+                      <th className="px-4 py-3">Range</th>
+                      <th className="px-4 py-3">Likely Buyer</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-100">
+                    {redactedLeadDemo.map((lead) => (
+                      <tr key={`${lead.market}-${lead.industry}`} className="align-top">
+                        <td className="px-4 py-3">
+                          <span className={`rounded-full px-2.5 py-1 text-xs font-bold ${
+                            lead.tier === 'A' ? 'bg-emerald-100 text-emerald-800' : 'bg-blue-100 text-blue-800'
+                          }`}>
+                            {lead.tier}
+                          </span>
+                        </td>
+                        <td className="px-4 py-3 font-semibold text-gray-900">{lead.market}</td>
+                        <td className="px-4 py-3 text-gray-700">{lead.industry}</td>
+                        <td className="min-w-56 px-4 py-3 text-gray-700">{lead.need}</td>
+                        <td className="whitespace-nowrap px-4 py-3 font-semibold text-gray-900">{lead.range}</td>
+                        <td className="min-w-56 px-4 py-3 text-gray-700">{lead.buyer}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mb-8 max-w-3xl">
+            <p className="text-sm font-bold uppercase tracking-wide text-emerald-700">PayPal pilot packages</p>
+            <h2 className="mt-3 text-3xl font-bold text-gray-950 sm:text-4xl">Let approved partners start with a paid pilot.</h2>
+            <p className="mt-3 text-gray-700">
+              These packages use PayPal checkout. Payment records are logged internally, and lead delivery remains
+              controlled so private business data is not exposed to unapproved buyers.
+            </p>
+          </div>
+          <div className="grid gap-5 lg:grid-cols-3">
+            {PARTNER_PACKAGES.map((partnerPackage) => (
+              <div
+                key={partnerPackage.id}
+                className={`rounded-lg border bg-white p-6 shadow-sm ${
+                  partnerPackage.popular ? 'border-emerald-400 ring-2 ring-emerald-100' : 'border-gray-200'
+                }`}
+              >
+                {partnerPackage.popular && (
+                  <div className="mb-4 inline-flex rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold uppercase tracking-wide text-emerald-800">
+                    Recommended
+                  </div>
+                )}
+                <h3 className="text-xl font-bold text-gray-950">{partnerPackage.name}</h3>
+                <p className="mt-2 text-gray-600">{partnerPackage.description}</p>
+                <div className="mt-5">
+                  <span className="text-4xl font-bold text-gray-950">${partnerPackage.priceUsd.toLocaleString('en-US')}</span>
+                  <span className="ml-2 text-sm font-semibold text-gray-500">USD</span>
+                </div>
+                <div className="mt-2 text-sm font-semibold text-emerald-700">{partnerPackage.leadCount} · {partnerPackage.leadType}</div>
+                <div className="mt-5 space-y-3">
+                  {partnerPackage.features.map((feature) => (
+                    <div key={feature} className="flex gap-3 text-sm text-gray-700">
+                      <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-600" />
+                      <span>{feature}</span>
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-6 rounded-md bg-gray-50 p-3 text-xs text-gray-600">{partnerPackage.delivery}</div>
+                <Link
+                  href={`/partners/checkout?package=${partnerPackage.id}`}
+                  className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-gray-950 px-4 py-3 font-semibold text-white transition hover:bg-gray-800"
+                >
+                  <CreditCard className="h-4 w-4" />
+                  Pay with PayPal
+                </Link>
+              </div>
+            ))}
           </div>
         </section>
 

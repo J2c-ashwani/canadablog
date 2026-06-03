@@ -34,7 +34,7 @@ export default function TermsOfService() {
               Please read these terms carefully before using FSI Digital. By accessing or using our website, you agree to be bound by these terms.
             </p>
             <p className="text-gray-400 text-sm mt-4">
-              Effective Date: January 1, 2026 &nbsp;·&nbsp; Last Updated: March 9, 2026
+              Effective Date: January 1, 2026 &nbsp;·&nbsp; Last Updated: June 4, 2026
             </p>
           </div>
         </div>
@@ -56,11 +56,12 @@ export default function TermsOfService() {
               <li><a href="#intellectual-property" className="text-slate-700 hover:text-slate-900 hover:underline">8. Intellectual Property</a></li>
               <li><a href="#third-party-links" className="text-slate-700 hover:text-slate-900 hover:underline">9. Third-Party Links</a></li>
               <li><a href="#advertising" className="text-slate-700 hover:text-slate-900 hover:underline">10. Advertising</a></li>
-              <li><a href="#limitation" className="text-slate-700 hover:text-slate-900 hover:underline">11. Limitation of Liability</a></li>
-              <li><a href="#indemnification" className="text-slate-700 hover:text-slate-900 hover:underline">12. Indemnification</a></li>
-              <li><a href="#governing-law" className="text-slate-700 hover:text-slate-900 hover:underline">13. Governing Law</a></li>
-              <li><a href="#changes-terms" className="text-slate-700 hover:text-slate-900 hover:underline">14. Changes to Terms</a></li>
-              <li><a href="#contact-terms" className="text-slate-700 hover:text-slate-900 hover:underline">15. Contact Information</a></li>
+              <li><a href="#partner-payments" className="text-slate-700 hover:text-slate-900 hover:underline">11. Partner Payments</a></li>
+              <li><a href="#limitation" className="text-slate-700 hover:text-slate-900 hover:underline">12. Limitation of Liability</a></li>
+              <li><a href="#indemnification" className="text-slate-700 hover:text-slate-900 hover:underline">13. Indemnification</a></li>
+              <li><a href="#governing-law" className="text-slate-700 hover:text-slate-900 hover:underline">14. Governing Law</a></li>
+              <li><a href="#changes-terms" className="text-slate-700 hover:text-slate-900 hover:underline">15. Changes to Terms</a></li>
+              <li><a href="#contact-terms" className="text-slate-700 hover:text-slate-900 hover:underline">16. Contact Information</a></li>
             </ol>
           </div>
 
@@ -221,9 +222,25 @@ export default function TermsOfService() {
 
             <hr className="border-gray-200" />
 
-            {/* 11. Limitation of Liability */}
+            {/* 11. Partner Payments */}
+            <section id="partner-payments">
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Partner Payments and Lead Access</h2>
+              <p className="text-gray-600 leading-relaxed mb-3">
+                FSI Digital may offer paid partner pilot packages for selected funding advisors, lenders, consultants, or related business service providers. Partner package payments are processed by PayPal, and FSI Digital does not store full card, bank, or PayPal account credentials.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-3">
+                Payment does not create an unrestricted right to download, resell, scrape, or redistribute lead data. Lead access may require partner approval, compliance review, available inventory, lead consent verification, and written fulfillment confirmation from FSI Digital.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                If FSI Digital cannot approve or fulfill a paid partner pilot, we may offer a refund, replacement, credit, or revised delivery schedule. Partners must use any provided lead data only for the agreed funding-related purpose and must comply with applicable privacy, anti-spam, and consumer protection laws.
+              </p>
+            </section>
+
+            <hr className="border-gray-200" />
+
+            {/* 12. Limitation of Liability */}
             <section id="limitation">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">11. Limitation of Liability</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Limitation of Liability</h2>
               <div className="bg-red-50 border border-red-200 rounded-xl p-6">
                 <p className="text-red-800 text-sm leading-relaxed">
                   To the maximum extent permitted by applicable law, FSI Digital and its owners, operators, affiliates, and contributors shall <strong>not</strong> be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, business opportunities, or goodwill, arising from your use of or inability to use this website, reliance on information provided, or any action taken based on the content of this website — even if we have been advised of the possibility of such damages.
@@ -233,9 +250,9 @@ export default function TermsOfService() {
 
             <hr className="border-gray-200" />
 
-            {/* 12. Indemnification */}
+            {/* 13. Indemnification */}
             <section id="indemnification">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">12. Indemnification</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Indemnification</h2>
               <p className="text-gray-600 leading-relaxed">
                 You agree to indemnify, defend, and hold harmless FSI Digital and its officers, directors, employees, agents, and affiliates from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable attorney&apos;s fees) arising from your use of the website, violation of these Terms, or infringement of any intellectual property or other rights of any person or entity.
               </p>
@@ -243,9 +260,9 @@ export default function TermsOfService() {
 
             <hr className="border-gray-200" />
 
-            {/* 13. Governing Law */}
+            {/* 14. Governing Law */}
             <section id="governing-law">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">13. Governing Law</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">14. Governing Law</h2>
               <p className="text-gray-600 leading-relaxed">
                 These Terms of Service shall be governed by and construed in accordance with the laws of Canada, without regard to its conflict of law provisions. Any disputes arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in Canada.
               </p>
@@ -253,9 +270,9 @@ export default function TermsOfService() {
 
             <hr className="border-gray-200" />
 
-            {/* 14. Changes */}
+            {/* 15. Changes */}
             <section id="changes-terms">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">14. Changes to These Terms</h2>
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">15. Changes to These Terms</h2>
               <p className="text-gray-600 leading-relaxed">
                 We reserve the right to modify these Terms of Service at any time. Changes will be effective immediately upon posting on this website. The &quot;Last Updated&quot; date at the top of this page indicates when the most recent revisions were made. Your continued use of the website after any changes constitutes your acceptance of the modified terms. We encourage you to review these Terms periodically.
               </p>
@@ -263,13 +280,13 @@ export default function TermsOfService() {
 
             <hr className="border-gray-200" />
 
-            {/* 15. Contact */}
+            {/* 16. Contact */}
             <section id="contact-terms">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
                   <Mail className="w-5 h-5 text-emerald-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">15. Contact Information</h2>
+                <h2 className="text-2xl font-bold text-gray-900">16. Contact Information</h2>
               </div>
               <p className="text-gray-600 leading-relaxed mb-4">
                 If you have any questions or concerns about these Terms of Service, please contact us:

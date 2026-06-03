@@ -148,6 +148,66 @@ export async function getLeadsFromSheet(limit = 500) {
     .slice(0, limit)
 }
 
+export type PartnerPaymentData = {
+  timestamp: string
+  orderId: string
+  captureId: string
+  status: string
+  packageId: string
+  packageName: string
+  amount: string
+  currency: string
+  buyerName: string
+  buyerEmail: string
+  company: string
+  website: string
+  targetMarket: string
+  notes: string
+  payerEmail: string
+  payerName: string
+  rawSummary: string
+}
+
+export async function appendPartnerPaymentToSheet(data: PartnerPaymentData) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "Partner Payments!A:Q",
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [[
+          data.timestamp,
+          data.orderId,
+          data.captureId,
+          data.status,
+          data.packageId,
+          data.packageName,
+          data.amount,
+          data.currency,
+          data.buyerName,
+          data.buyerEmail,
+          data.company,
+          data.website,
+          data.targetMarket,
+          data.notes,
+          data.payerEmail,
+          data.payerName,
+          data.rawSummary,
+        ]],
+      },
+    })
+
+    console.log(`✅ Partner payment logged: ${data.orderId}`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Error saving partner payment to Google Sheets:", error)
+    return { success: false, error }
+  }
+}
+
 // Quick function for simple email capture (newsletter, etc.)
 export async function captureEmailLead(email: string, source: string, name?: string) {
   return appendLeadToSheet({
