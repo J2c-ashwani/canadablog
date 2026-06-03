@@ -1,0 +1,37 @@
+import { NextResponse, type NextRequest } from 'next/server';
+import { ADMIN_SESSION_COOKIE, createAdminSessionToken, isValidAdminKey } from '@/lib/admin/auth';
+
+export const runtime = 'nodejs';
+
+export async function POST(request: NextRequest) {
+  try {
+    const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
+
+    if (!adminSecret) {
+      return NextResponse.json({ error: 'Admin key is not configured in Vercel.' }, { status: 500 });
+    }
+
+    const body = await request.json();
+    const key = String(body.key || '');
+
+    if (!isValidAdminKey(key, adminSecret)) {
+      return NextResponse.json({ error: 'Incorrect admin key.' }, { status: 401 });
+    }
+
+    const response = NextResponse.json({ success: true });
+    response.cookies.set({
+      name: ADMIN_SESSION_COOKIE,
+      value: createAdminSessionToken(adminSecret),
+      httpOnly: true,
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: 'lax',
+      path: '/',
+      maxAge: 60 * 60 * 12,
+    });
+
+    return response;
+  } catch (error) {
+    console.error('Admin login error:', error);
+    return NextResponse.json({ error: 'Unable to login.' }, { status: 500 });
+  }
+}

@@ -1,8 +1,12 @@
 import type { Metadata } from 'next';
+import { cookies } from 'next/headers';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { getLeadsFromSheet, type SheetLead } from '@/lib/google-sheets';
-import { BarChart3, Building2, CheckCircle, KeyRound, Lock, Mail, Phone, TrendingUp, Users } from 'lucide-react';
+import { ADMIN_SESSION_COOKIE, isValidAdminKey, isValidAdminSession } from '@/lib/admin/auth';
+import { AdminLoginForm } from './AdminLoginForm';
+import { AdminLogoutButton } from './AdminLogoutButton';
+import { BarChart3, Building2, CheckCircle, KeyRound, Lock, Mail, Phone, Users } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
@@ -70,14 +74,18 @@ function LockedState({ hasSecret }: { hasSecret: boolean }) {
           <h1 className="text-3xl font-bold text-gray-950">Lead Dashboard Locked</h1>
           <p className="mt-3 text-gray-700">
             {hasSecret
-              ? 'Add your admin key to the URL to view the protected lead intelligence dashboard.'
+              ? 'Enter your admin dashboard key to view the protected lead intelligence dashboard.'
               : 'Set LEAD_DASHBOARD_SECRET in Vercel before using this dashboard.'}
           </p>
-          <div className="mt-6 rounded-md bg-gray-50 p-4 font-mono text-sm text-gray-700">
-            /admin/leads?key=YOUR_SECRET
-          </div>
+          {hasSecret ? (
+            <AdminLoginForm />
+          ) : (
+            <div className="mt-6 rounded-md bg-gray-50 p-4 font-mono text-sm text-gray-700">
+              LEAD_DASHBOARD_SECRET=your-private-dashboard-key
+            </div>
+          )}
           <p className="mt-4 text-sm text-gray-500">
-            This page is noindex and does not show lead data unless the key matches the environment secret.
+            This page is noindex and does not show lead data unless the key matches your environment secret.
           </p>
         </div>
       </main>
@@ -93,8 +101,12 @@ export default async function LeadDashboardPage({
 }) {
   const resolvedParams = await searchParams;
   const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
+  const cookieStore = await cookies();
+  const sessionCookie = cookieStore.get(ADMIN_SESSION_COOKIE)?.value;
+  const hasUrlAccess = !!adminSecret && isValidAdminKey(resolvedParams.key, adminSecret);
+  const hasCookieAccess = !!adminSecret && isValidAdminSession(sessionCookie, adminSecret);
 
-  if (!adminSecret || resolvedParams.key !== adminSecret) {
+  if (!adminSecret || (!hasUrlAccess && !hasCookieAccess)) {
     return <LockedState hasSecret={!!adminSecret} />;
   }
 
@@ -135,6 +147,7 @@ export default async function LeadDashboardPage({
           <div className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600 shadow-sm">
             Latest {formatNumber(leads.length)} leads loaded from Google Sheets
           </div>
+          <AdminLogoutButton />
         </div>
 
         {error ? (
