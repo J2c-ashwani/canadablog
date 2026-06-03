@@ -49,6 +49,16 @@ function includesAny(value: string | undefined, terms: string[]) {
   return terms.some((term) => normalized.includes(term));
 }
 
+function noteValue(notes: string, label: string) {
+  const escapedLabel = label.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  const match = notes.match(new RegExp(`^${escapedLabel}:\\s*(.+)$`, 'im'));
+  return match?.[1]?.trim();
+}
+
+function firstMeaningfulValue(...values: Array<string | undefined>) {
+  return values.find(hasValue);
+}
+
 function normalizeAmount(value?: string) {
   const normalized = String(value || '').toLowerCase();
   if (normalized.includes('over-1m') || normalized.includes('1,000,000') || normalized.includes('1m')) return 'over-1m';
@@ -56,6 +66,13 @@ function normalizeAmount(value?: string) {
   if (normalized.includes('100k') || normalized.includes('100,000')) return '100k-500k';
   if (normalized.includes('25k') || normalized.includes('25,000')) return '25k-100k';
   if (normalized.includes('under')) return 'under-25k';
+
+  const numericValue = Number(normalized.replace(/[^0-9.]/g, ''));
+  if (numericValue >= 1000000) return 'over-1m';
+  if (numericValue >= 500000) return '500k-1m';
+  if (numericValue >= 100000) return '100k-500k';
+  if (numericValue >= 25000) return '25k-100k';
+
   return normalized;
 }
 
@@ -63,8 +80,17 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   const missingFields: string[] = [];
   const source = data.source || '';
   const notes = data.additionalNotes || '';
-  const combined = `${source} ${notes} ${data.businessDescription || ''}`;
-  const amount = normalizeAmount(data.fundingAmount || notes);
+  const isGrantCalculator = includesAny(source, ['grant calculator']);
+  const effectiveCountry = firstMeaningfulValue(data.country, isGrantCalculator ? 'Canada' : undefined);
+  const effectiveState = firstMeaningfulValue(data.state, noteValue(notes, 'Province'));
+  const effectiveIndustry = firstMeaningfulValue(data.industry, noteValue(notes, 'Industry'));
+  const effectiveBusinessStage = firstMeaningfulValue(data.businessStage, noteValue(notes, 'Revenue'));
+  const effectiveFundingAmount = firstMeaningfulValue(data.fundingAmount, noteValue(notes, 'Estimated Funding Capability'));
+  const effectiveFundingPurpose = firstMeaningfulValue(data.fundingPurpose, noteValue(notes, 'Goal'));
+  const effectiveCompany = firstMeaningfulValue(data.companyName, noteValue(notes, 'Company'));
+  const effectiveDescription = firstMeaningfulValue(data.businessDescription, notes);
+  const combined = `${source} ${notes} ${effectiveDescription || ''}`;
+  const amount = normalizeAmount(effectiveFundingAmount || notes);
   let score = 0;
 
   if (hasValue(data.email)) score += 10;
@@ -73,33 +99,34 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   if (hasValue(data.phone)) score += 20;
   else missingFields.push('phone');
 
-  if (hasValue(data.companyName) || hasValue(data.name)) score += 12;
+  if (hasValue(effectiveCompany) || hasValue(data.name)) score += 12;
   else missingFields.push('company/name');
 
-  if (hasValue(data.country)) score += 6;
+  if (hasValue(effectiveCountry)) score += 6;
   else missingFields.push('country');
 
-  if (hasValue(data.state)) score += 7;
+  if (hasValue(effectiveState)) score += 7;
   else missingFields.push('state/province');
 
-  if (hasValue(data.industry)) score += 8;
+  if (hasValue(effectiveIndustry)) score += 8;
   else missingFields.push('industry');
 
-  if (hasValue(data.businessStage)) score += 8;
-  if (includesAny(data.businessStage || notes, ['100k', '500k', '1m', 'growth', 'established', 'over'])) score += 8;
-  if (includesAny(data.businessStage || notes, ['pre-revenue', 'idea'])) score -= 5;
+  if (hasValue(effectiveBusinessStage)) score += 8;
+  if (includesAny(effectiveBusinessStage || notes, ['100k', '500k', '1m', 'growth', 'established', 'over'])) score += 8;
+  if (includesAny(effectiveBusinessStage || notes, ['pre-revenue', 'idea'])) score -= 5;
 
   if (amount === '25k-100k') score += 8;
   if (amount === '100k-500k') score += 12;
   if (amount === '500k-1m' || amount === 'over-1m') score += 15;
 
-  if (hasValue(data.fundingPurpose)) score += 7;
-  if (includesAny(data.fundingPurpose || notes, ['research', 'equipment', 'expansion', 'hiring', 'training'])) score += 8;
-  if (includesAny(data.fundingPurpose || notes, ['working-capital', 'marketing'])) score += 2;
+  if (hasValue(effectiveFundingPurpose)) score += 7;
+  if (includesAny(effectiveFundingPurpose || notes, ['research', 'equipment', 'expansion', 'hiring', 'training'])) score += 8;
+  if (includesAny(effectiveFundingPurpose || notes, ['working-capital', 'marketing'])) score += 2;
 
-  if (hasValue(data.businessDescription)) score += data.businessDescription!.trim().length >= 40 ? 10 : 4;
+  if (hasValue(effectiveDescription)) score += effectiveDescription!.trim().length >= 40 ? 10 : 4;
 
-  if (includesAny(source, ['ai grant finder', 'grant calculator'])) score += 12;
+  if (includesAny(source, ['ai grant finder'])) score += 12;
+  if (isGrantCalculator) score += 18;
   if (includesAny(source, ['newsletter'])) score -= 35;
   if (includesAny(source, ['pdf download'])) score -= 8;
 

@@ -120,11 +120,11 @@ function parseSheetLead(row: string[]): SheetLead {
 
   return {
     ...base,
-    score: Number(row[13]) || intelligence.score,
-    tier: row[14] || intelligence.tier,
-    estimatedValue: row[15] || intelligence.estimatedValue,
-    buyerSegment: row[16] || intelligence.buyerSegment,
-    routing: row[17] || intelligence.routing,
+    score: intelligence.score,
+    tier: intelligence.tier,
+    estimatedValue: intelligence.estimatedValue,
+    buyerSegment: intelligence.buyerSegment,
+    routing: intelligence.routing,
     consentStatus: row[18] || intelligence.consentStatus,
     consentToPartnerContact: base.consentToPartnerContact || intelligence.consentStatus === "partner-consent",
     qualificationNotes: row[25] || intelligence.qualificationNotes,
