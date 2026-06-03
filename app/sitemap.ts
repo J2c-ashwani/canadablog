@@ -20,8 +20,8 @@ const SUPERSEDED_BLOG_SLUGS = new Set([
 
 function isIndexableRoute(route: string): boolean {
   if (route.includes('/thank-you')) return false
-  if (route.startsWith('/download/')) return false
   if (route.startsWith('/api/')) return false
+  if (route === '/search') return false
 
   const blogSlug = route.startsWith('/blog/') ? route.replace('/blog/', '') : null
   if (blogSlug?.endsWith('-archive')) return false

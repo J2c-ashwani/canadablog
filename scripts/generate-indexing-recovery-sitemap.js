@@ -6,6 +6,18 @@ const SOURCE_PATH = path.join(__dirname, '../lib/pseo-data.ts')
 const OUTPUT_PATH = path.join(__dirname, '../public/indexing-recovery-sitemap.xml')
 const DRIP_START_DATE = new Date('2026-03-05T00:00:00Z')
 const PAGES_PER_DAY = 20
+const SUPERSEDED_BLOG_SLUGS = new Set([
+  'canada-irap-grants-2025',
+  'indigenous-business-development-2025',
+  'small-business-financing-2025',
+])
+
+const ALWAYS_INCLUDE_ROUTES = [
+  '/contact',
+  '/get-started',
+  '/grant-finder',
+  '/services',
+]
 
 function escapeXml(value) {
   return value
@@ -39,12 +51,170 @@ function parsePseoSource() {
   return { cities, industries }
 }
 
+function readJson(filePath, fallback) {
+  if (!fs.existsSync(filePath)) return fallback
+  return JSON.parse(fs.readFileSync(filePath, 'utf8'))
+}
+
+function toSlug(value) {
+  return String(value)
+    .toLowerCase()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-')
+}
+
+function getRedirectSources() {
+  const configPath = path.join(__dirname, '../next.config.mjs')
+  if (!fs.existsSync(configPath)) return new Set()
+
+  const source = fs.readFileSync(configPath, 'utf8')
+  return new Set([...source.matchAll(/\{\s*source:\s*'([^']+)',\s*destination:\s*'[^']+',\s*permanent:\s*true,?\s*\}/g)]
+    .map((match) => match[1]))
+}
+
+function isRecoveryRoute(route, redirectSources) {
+  if (!route || !route.startsWith('/')) return false
+  if (route.includes('?')) return false
+  if (route.includes('/thank-you')) return false
+  if (route.startsWith('/api/')) return false
+  if (route === '/search') return false
+  if (route === '/sitemap.xml') return false
+  if (route === '/favicon.ico') return false
+  if (route === '/site.webmanifest') return false
+  if (redirectSources.has(route)) return false
+
+  const blogSlug = route.startsWith('/blog/') ? route.replace('/blog/', '') : null
+  if (blogSlug?.endsWith('-archive')) return false
+  if (blogSlug && SUPERSEDED_BLOG_SLUGS.has(blogSlug)) return false
+
+  return true
+}
+
+function getStaticRoutes(redirectSources) {
+  const appDir = path.join(__dirname, '../app')
+  const routes = []
+
+  function walk(dir) {
+    if (!fs.existsSync(dir)) return
+
+    for (const entry of fs.readdirSync(dir, { withFileTypes: true })) {
+      const fullPath = path.join(dir, entry.name)
+
+      if (entry.isDirectory()) {
+        if (!entry.name.startsWith('[') && !entry.name.startsWith('.') && entry.name !== 'api') {
+          walk(fullPath)
+        }
+        continue
+      }
+
+      if (entry.name !== 'page.tsx' && entry.name !== 'page.ts') continue
+
+      const route = fullPath
+        .replace(appDir, '')
+        .replace(/\/page\.tsx?$/, '')
+        .replace(/\\/g, '/') || '/'
+
+      if (isRecoveryRoute(route, redirectSources)) {
+        routes.push(route)
+      }
+    }
+  }
+
+  walk(appDir)
+  return routes
+}
+
+function getBlogRoutes(redirectSources) {
+  const metadata = readJson(path.join(__dirname, '../lib/data/blogMetadata.json'), { metadata: [] })
+  const metadataRoutes = (metadata.metadata || [])
+    .filter((post) => post.slug)
+    .map((post) => `/blog/${post.slug}`)
+
+  const contentDir = path.join(__dirname, '../lib/data/blog-content')
+  const contentRoutes = fs.existsSync(contentDir)
+    ? fs.readdirSync(contentDir)
+      .filter((file) => file.endsWith('.json'))
+      .map((file) => `/blog/${file.replace(/\.json$/, '')}`)
+    : []
+
+  return [...metadataRoutes, ...contentRoutes]
+    .filter((route) => isRecoveryRoute(route, redirectSources))
+}
+
+function getGuideRoutes(redirectSources) {
+  const guideDataPath = path.join(__dirname, '../lib/data/guides.ts')
+  const source = fs.existsSync(guideDataPath) ? fs.readFileSync(guideDataPath, 'utf8') : ''
+  const dynamicRoutes = [...source.matchAll(/slug:\s*["']([^"']+)["']/g)]
+    .map((match) => `/guides/${match[1]}`)
+
+  const guidesDir = path.join(__dirname, '../app/guides')
+  const staticRoutes = fs.existsSync(guidesDir)
+    ? fs.readdirSync(guidesDir, { withFileTypes: true })
+      .filter((entry) => entry.isDirectory() && entry.name !== '[slug]')
+      .filter((entry) => fs.existsSync(path.join(guidesDir, entry.name, 'page.tsx')))
+      .map((entry) => `/guides/${entry.name}`)
+    : []
+
+  return [...dynamicRoutes, ...staticRoutes]
+    .filter((route) => isRecoveryRoute(route, redirectSources))
+}
+
+function getUsStateAndCityRoutes(redirectSources) {
+  const stateDetailsPath = path.join(__dirname, '../lib/data/stateDetails.ts')
+  if (!fs.existsSync(stateDetailsPath)) return []
+
+  const routes = new Set()
+  const lines = fs.readFileSync(stateDetailsPath, 'utf8').split(/\r?\n/)
+  let currentStateSlug = null
+  let insideCityGuides = false
+
+  for (const line of lines) {
+    const stateSlugMatch = line.match(/^\s{8}slug:\s*'([^']+)'/)
+    if (stateSlugMatch && !insideCityGuides) {
+      currentStateSlug = stateSlugMatch[1]
+      const route = `/usa/${currentStateSlug}`
+      if (isRecoveryRoute(route, redirectSources)) routes.add(route)
+      continue
+    }
+
+    if (currentStateSlug && line.match(/^\s{8}cityGuides:\s*\[/)) {
+      insideCityGuides = true
+      continue
+    }
+
+    if (insideCityGuides) {
+      const cityMatch = line.match(/^\s{16}city:\s*'((?:\\'|[^'])+)'/)
+      if (cityMatch) {
+        const route = `/usa/${currentStateSlug}/${toSlug(cityMatch[1].replace(/\\'/g, "'"))}`
+        if (isRecoveryRoute(route, redirectSources)) routes.add(route)
+      }
+
+      if (line.match(/^\s{8}\],?\s*$/)) {
+        insideCityGuides = false
+      }
+    }
+  }
+
+  return Array.from(routes)
+}
+
 function buildRecoveryRoutes() {
   const { cities, industries } = parsePseoSource()
+  const redirectSources = getRedirectSources()
   const routes = new Set()
   const now = new Date()
   let counter = 0
   let dayOffset = 0
+
+  for (const route of ALWAYS_INCLUDE_ROUTES) {
+    if (isRecoveryRoute(route, redirectSources)) routes.add(route)
+  }
+
+  for (const route of getStaticRoutes(redirectSources)) routes.add(route)
+  for (const route of getBlogRoutes(redirectSources)) routes.add(route)
+  for (const route of getGuideRoutes(redirectSources)) routes.add(route)
+  for (const route of getUsStateAndCityRoutes(redirectSources)) routes.add(route)
 
   for (const city of cities) {
     for (const industry of industries) {
@@ -52,9 +222,12 @@ function buildRecoveryRoutes() {
       publishedAt.setUTCDate(DRIP_START_DATE.getUTCDate() + dayOffset)
 
       if (publishedAt <= now) {
-        routes.add(`/grants/${city.provinceSlug}`)
-        routes.add(`/grants/${city.provinceSlug}/${city.citySlug}`)
-        routes.add(`/grants/${city.provinceSlug}/${city.citySlug}/${industry.slug}`)
+        const provinceRoute = `/grants/${city.provinceSlug}`
+        const cityRoute = `/grants/${city.provinceSlug}/${city.citySlug}`
+        const leafRoute = `/grants/${city.provinceSlug}/${city.citySlug}/${industry.slug}`
+        if (isRecoveryRoute(provinceRoute, redirectSources)) routes.add(provinceRoute)
+        if (isRecoveryRoute(cityRoute, redirectSources)) routes.add(cityRoute)
+        if (isRecoveryRoute(leafRoute, redirectSources)) routes.add(leafRoute)
       }
 
       counter += 1

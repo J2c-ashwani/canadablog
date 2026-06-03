@@ -4199,7 +4199,7 @@ export const stateDetails: StateDetailedGrant[] = [
                 programs: ['Raleigh Innovation Fund', 'American Underground']
             },
             {
-                city: 'Ashville',
+                city: 'Asheville',
                 description: 'Creative mountain hub. Known for climate tech, arts, and outdoor industry.',
                 keyIndustries: ['Climate', 'Tourism', 'Manufacturing'],
                 programs: ['Venture Asheville', 'Micro-Grants']
@@ -21070,4 +21070,3 @@ export function getRelatedGuides(state: StateDetailedGrant): string[] {
 
     return Array.from(relevantGuides).slice(0, 5);
 }
-

@@ -9,7 +9,7 @@ FAQPage schema has been removed from blog, guide, grant, state, and pSEO pages t
 The priority sitemap is a static file at `/priority-sitemap.xml`. Refresh it after major SEO/content batches with:
 `node scripts/generate-priority-sitemap.js`
 
-The recovery sitemap is a static file at `/indexing-recovery-sitemap.xml`. It is for the released programmatic grant pages that previously appeared in GSC as noindexed, crawled-not-indexed, or discovered-not-indexed. Refresh it after major pSEO releases with:
+The recovery sitemap is a static file at `/indexing-recovery-sitemap.xml`. It is for released programmatic grant pages plus other valid canonical pages that appear in GSC as noindexed, crawled-not-indexed, or discovered-not-indexed. It intentionally excludes query/filter URLs, thank-you pages, archive slugs, API routes, search pages, and assets. Refresh it after major SEO releases with:
 `node scripts/generate-indexing-recovery-sitemap.js`
 
 ## After Each SEO Deployment

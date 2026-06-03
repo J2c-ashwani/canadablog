@@ -66,6 +66,26 @@ const nextConfig = {
         destination: '/grant-finder',
         permanent: true,
       },
+      {
+        source: '/free-grant-consultation',
+        destination: '/contact',
+        permanent: true,
+      },
+      {
+        source: '/veteran-business-consultation',
+        destination: '/contact?service=veteran-business-consultation',
+        permanent: true,
+      },
+      {
+        source: '/usa/missouri/st.-louis',
+        destination: '/usa/missouri/st-louis',
+        permanent: true,
+      },
+      {
+        source: '/usa/north-carolina/ashville',
+        destination: '/usa/north-carolina/asheville',
+        permanent: true,
+      },
       ...archiveBlogRedirects,
       // Zombie Page Redirects — Fixed Feb 2026 (pointing to correct 2026 slugs)
       { source: '/blog/manitoba-government-business-grants', destination: '/blog/manitoba-business-grants-2026', permanent: true },
