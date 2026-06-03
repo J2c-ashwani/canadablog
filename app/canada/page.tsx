@@ -11,14 +11,14 @@ import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
-  title: "Government Grants Canada 2026: 300+ Programs, $10B+ Available",
+  title: "Canada Business Grants 2026: Federal & Provincial Funding",
   description:
-    "Browse 300+ government grants in Canada for small businesses and startups. Federal & provincial programs with $800M+ available. Free eligibility checker.",
+    "Find Canada business grants, SR&ED, IRAP, CDAP, wage subsidies, and provincial funding. Compare eligibility, deadlines, and application steps.",
   keywords:
     "government grants canada, canada business grants, government funding canada, federal grants Canada, provincial grants, startup funding Canada, small business funding canada",
   openGraph: {
-    title: "Government Grants Canada 2026: 300+ Programs, $10B+ Available",
-    description: "Browse 300+ government grants in Canada for small businesses and startups.",
+    title: "Canada Business Grants 2026: Federal & Provincial Funding",
+    description: "Browse Canadian government grants for small businesses and startups.",
     url: "https://www.fsidigital.ca/canada",
   },
 }
@@ -53,11 +53,15 @@ export default function CanadaGrantsPage() {
               />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
-                Browse Federal Grants
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
+                <Link href="/grant-finder">
+                  Find Matching Grants
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                View Provincial Programs
+              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20" asChild>
+                <Link href="#provincial-programs">
+                  View Provincial Programs
+                </Link>
               </Button>
             </div>
           </div>
@@ -197,7 +201,7 @@ export default function CanadaGrantsPage() {
       </section>
 
       {/* Provincial Programs */}
-      <section className="py-20 bg-gray-50">
+      <section id="provincial-programs" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Provincial Grant Programs</h2>

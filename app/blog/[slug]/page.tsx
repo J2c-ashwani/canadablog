@@ -27,6 +27,63 @@ import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
+type RelatedFundingLink = {
+  href: string;
+  title: string;
+  description: string;
+};
+
+type Market = 'canada' | 'usa' | 'neutral';
+
+const CANADA_RELATED_SIGNALS = [
+  'canada', 'canadian', 'ontario', 'quebec', 'alberta', 'british columbia',
+  'bc ', 'manitoba', 'saskatchewan', 'atlantic', 'nova scotia', 'new brunswick',
+  'irap', 'sr&ed', 'sred', 'cdap', 'bdc', 'nserc', 'canexport', 'provincial'
+];
+
+const USA_RELATED_SIGNALS = [
+  'usa', 'united states', 'america', 'american', 'sba', 'sbir', 'sttr', 'nih',
+  'nsf', 'usda', 'dod', 'doe', 'state grants', 'california', 'texas', 'new york',
+  'florida', 'colorado', 'kentucky', 'minnesota', 'washington'
+];
+
+function classifyMarket(value: string): Market {
+  const text = value.toLowerCase();
+  const canadaHits = CANADA_RELATED_SIGNALS.filter(signal => text.includes(signal)).length;
+  const usaHits = USA_RELATED_SIGNALS.filter(signal => text.includes(signal)).length;
+
+  if (canadaHits > usaHits) return 'canada';
+  if (usaHits > canadaHits) return 'usa';
+  return 'neutral';
+}
+
+function isWeakRelatedTitle(title: string) {
+  const normalized = title.trim().toLowerCase();
+  return normalized.length < 6 || ['programs', 'target', 'don'].includes(normalized);
+}
+
+function sanitizeRelatedLinks(links: RelatedFundingLink[] | undefined, post: { title: string; excerpt: string; category: string; slug: string }) {
+  if (!links?.length) return [];
+
+  const pageMarket = classifyMarket(`${post.category} ${post.title} ${post.excerpt} ${post.slug}`);
+  const seen = new Set<string>();
+
+  return links
+    .filter(link => link.href && link.title && link.description)
+    .filter(link => !isWeakRelatedTitle(link.title))
+    .filter(link => {
+      if (seen.has(link.href)) return false;
+      seen.add(link.href);
+      return true;
+    })
+    .filter(link => {
+      if (pageMarket === 'neutral') return true;
+      const linkMarket = classifyMarket(`${link.href} ${link.title} ${link.description}`);
+      return linkMarket === 'neutral' || linkMarket === pageMarket;
+    })
+    .slice(0, 4);
+}
+
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
   DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, Globe, RefreshCw, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, Cpu, FileText, Search, List, Layers, Map, BarChart, Unlock, FastForward,
@@ -113,6 +170,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const category = blogCategories.find((cat) => cat.id === post.category);
   const blogPostSchema = generateBlogPostSchema(fullPost);
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
+  const relatedFundingLinks = sanitizeRelatedLinks(fullPost.relatedLinks, fullPost);
 
   const renderContentWithAds = (htmlString: string, pCountOffset: number) => {
     if (!htmlString) return { nodes: null, totalParagraphs: pCountOffset };
@@ -244,7 +302,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <ul className="space-y-3 text-gray-800">
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
-                    <span><strong>Overview:</strong> {post.seo?.description || `A comprehensive guide covering the latest updates, funding amounts, and application strategies for ${post.title}.`}</span>
+                    <span><strong>Overview:</strong> {post.seo?.metaDescription || `A comprehensive guide covering the latest updates, funding amounts, and application strategies for ${post.title}.`}</span>
                   </li>
                   <li className="flex items-start gap-2">
                     <CheckCircle className="w-5 h-5 text-emerald-600 flex-shrink-0" />
@@ -349,9 +407,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* ENGAGEMENT DEPTH: Related Funding Resources */}
-              {fullPost.relatedLinks && fullPost.relatedLinks.length > 0 && (
+              {relatedFundingLinks.length > 0 && (
                 <div className="mt-12 not-prose">
-                  <RelatedPageLinks links={fullPost.relatedLinks} />
+                  <RelatedPageLinks links={relatedFundingLinks} />
                 </div>
               )}
 

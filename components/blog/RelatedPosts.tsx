@@ -8,6 +8,30 @@ interface RelatedPostsProps {
   maxPosts?: number;
 }
 
+type Market = 'canada' | 'usa' | 'neutral';
+
+const CANADA_SIGNALS = [
+  'canada', 'canadian', 'ontario', 'quebec', 'alberta', 'british columbia',
+  'manitoba', 'saskatchewan', 'atlantic', 'irap', 'sr&ed', 'sred', 'cdap',
+  'bdc', 'nserc', 'canexport', 'provincial'
+];
+
+const USA_SIGNALS = [
+  'usa', 'united states', 'america', 'american', 'sba', 'sbir', 'sttr', 'nih',
+  'nsf', 'usda', 'dod', 'doe', 'california', 'texas', 'new york', 'florida',
+  'colorado', 'kentucky', 'state grants'
+];
+
+function classifyMarket(post: BlogPost): Market {
+  const text = `${post.category} ${post.title} ${post.excerpt} ${post.slug} ${(post.seo?.keywords ?? []).join(' ')}`.toLowerCase();
+  const canadaHits = CANADA_SIGNALS.filter(signal => text.includes(signal)).length;
+  const usaHits = USA_SIGNALS.filter(signal => text.includes(signal)).length;
+
+  if (canadaHits > usaHits) return 'canada';
+  if (usaHits > canadaHits) return 'usa';
+  return 'neutral';
+}
+
 /**
  * Score a candidate post's relevance to the current post.
  * +3 for same category, +1 per shared SEO keyword (case-insensitive).
@@ -30,7 +54,13 @@ function relevanceScore(current: BlogPost, candidate: BlogPost): number {
 }
 
 export default function RelatedPosts({ currentPost, maxPosts = 3 }: RelatedPostsProps) {
-  const allPosts = getAllBlogPosts().filter(p => p.id !== currentPost.id);
+  const currentMarket = classifyMarket(currentPost);
+  const allPosts = getAllBlogPosts()
+    .filter(p => p.id !== currentPost.id)
+    .filter(p => {
+      const market = classifyMarket(p);
+      return currentMarket === 'neutral' || market === 'neutral' || market === currentMarket;
+    });
 
   // Score and sort by relevance, then by date as tiebreaker
   const scored = allPosts

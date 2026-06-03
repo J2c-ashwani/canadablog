@@ -11,12 +11,12 @@ import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
-  title: "Small Business Grants Canada 2026: $8B+ Available [Eligibility]",
-  description: "Comprehensive guide to Canadian small business grants. Access federal and provincial funding programs with up to $1M available for Canadian SMEs.",
+  title: "Small Business Grants Canada 2026: IRAP, SR&ED, CSBFP",
+  description: "Compare funding for small business in Canada: IRAP, SR&ED, CSBFP, BDC financing, wage subsidies, and provincial SME grants.",
   keywords: "Canadian small business grants, Canada SME funding, small business grants Canada, federal business grants, provincial SME support",
   openGraph: {
-    title: "Small Business Grants Canada 2026: $8B+ Available [Eligibility]",
-    description: "Complete guide to small business grants in Canada with federal and provincial programs offering up to $1M in funding.",
+    title: "Small Business Grants Canada 2026: IRAP, SR&ED, CSBFP",
+    description: "Complete guide to small business grants and funding in Canada.",
     url: "https://www.fsidigital.ca/canada/small-business-grants",
     images: ["/og-image.png"],
   },
@@ -43,11 +43,15 @@ export default function CanadianSmallBusinessGrants() {
                 From startup grants to growth funding - find the perfect grant for your Canadian small business.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4">
-                  Find My Grants Now
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold text-lg px-8 py-4" asChild>
+                  <Link href="/grant-finder">
+                    Find My Grants Now
+                  </Link>
                 </Button>
-                <Button size="lg" variant="outline" className="bg-blue-700/30 border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4">
-                  Browse by Province
+                <Button size="lg" variant="outline" className="bg-blue-700/30 border-white/30 text-white hover:bg-white/10 text-lg px-8 py-4" asChild>
+                  <Link href="/canada">
+                    Browse by Province
+                  </Link>
                 </Button>
               </div>
             </div>

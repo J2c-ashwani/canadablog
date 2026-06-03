@@ -11,11 +11,11 @@ import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
-  title: "USA Tech Startup Grants 2026: $2.5M+ SBIR/STTR Funding | Complete Guide",
-  description: "How to get federal tech grants in 2026. SBIR/STTR up to $2.5M, NSF, DOE, state programs. 45% approval rate with proper application. Step-by-step guide.",
+  title: "SBIR/STTR Grants 2026: $2.5M for Tech Startups",
+  description: "Compare NSF, NIH, DOE, DOD, and state tech startup grants. See SBIR/STTR award amounts, eligibility, deadlines, and application steps.",
   keywords: "USA technology startup grants, SBIR STTR funding, tech startup grants America, Silicon Valley startup funding, federal innovation grants, NSF SBIR grants, tech entrepreneur funding USA",
   openGraph: {
-    title: "USA Tech Startup Grants 2026: $2.5M+ SBIR/STTR Funding",
+    title: "SBIR/STTR Grants 2026: $2.5M for Tech Startups",
     description: "Complete SBIR/STTR guide for American tech startups with federal and state innovation grants.",
     url: "https://www.fsidigital.ca/usa/technology-startup-grants",
     images: ["/og-image.png"],

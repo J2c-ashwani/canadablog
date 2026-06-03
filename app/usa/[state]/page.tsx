@@ -45,11 +45,13 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const funding = state.heroStats.totalFunding;
     const programs = state.heroStats.programCount;
     const successRate = state.heroStats.successRate;
+    const topProgram = state.topPrograms?.[0]?.name;
 
-    // FORMAT D (Trust Hook) — State pages get the highest-trust title
-    const title = `${state.name} Government Grants 2026 (Verified List + Official Links)`;
+    const title = topProgram && topProgram.length <= 34
+        ? `${state.name} Business Grants 2026: ${topProgram}`
+        : `${state.name} Business Grants 2026: ${funding} Available`;
 
-    const description = `Apply directly with official links for ${state.name} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`;
+    const description = `Find ${state.name} business grants, ${topProgram ? `${topProgram}, ` : ''}tax credits, SBA/SBIR support, and state incentives. Compare ${programs} programs and eligibility.`;
 
     return {
         title,
@@ -101,7 +103,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
         "datePublished": "2026-01-15T00:00:00.000Z",
         "dateModified": "2026-04-12T00:00:00.000Z",
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.fsidigital.ca/usa/${state.slug}` },
-        "image": "https://www.fsidigital.ca/images/blog/canada-grants-theme.png",
+        "image": "https://www.fsidigital.ca/images/blog/usa-grants-theme.png",
     };
 
     const breadcrumbSchema = {

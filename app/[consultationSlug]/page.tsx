@@ -46,8 +46,8 @@ export function generateStaticParams() {
   }));
 }
 
-export async function generateMetadata({ params }: { params: { consultationSlug: string } }) {
-  const { consultationSlug } = params;
+export async function generateMetadata({ params }: { params: Promise<{ consultationSlug: string }> }) {
+  const { consultationSlug } = await params;
   if (!VALID_CONSULTATIONS.has(consultationSlug)) return notFound();
 
   // Create highly optimized metadata based on slug
@@ -65,8 +65,8 @@ export async function generateMetadata({ params }: { params: { consultationSlug:
   };
 }
 
-export default function ConsultationPage({ params }: { params: { consultationSlug: string } }) {
-  const { consultationSlug } = params;
+export default async function ConsultationPage({ params }: { params: Promise<{ consultationSlug: string }> }) {
+  const { consultationSlug } = await params;
 
   if (!VALID_CONSULTATIONS.has(consultationSlug)) {
     notFound();

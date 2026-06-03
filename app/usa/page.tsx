@@ -14,14 +14,14 @@ import EligibleCheck from "@/components/blog/EligibleCheck"
 
 
 export const metadata: Metadata = {
-  title: "USA Government Grants 2026: Federal & State Funding [50 States]",
+  title: "USA Business Grants 2026: Federal, State & SBIR Funding",
   description:
-    "Find USA government grants for small businesses and startups. Explore federal funding, state programs, SBIR/STTR grants, and opportunities for women and minorities.",
+    "Find U.S. business grants by state and program type. Compare SBIR/STTR, SBA support, tax credits, workforce grants, and local incentives.",
   keywords:
     "USA government grants, federal business grants, state business grants, small business funding, SBIR grants, startup grants USA",
   openGraph: {
-    title: "USA Government Grants 2026: Federal & State Funding [50 States]",
-    description: "Find USA government grants for small businesses and startups. Explore federal funding and state programs.",
+    title: "USA Business Grants 2026: Federal, State & SBIR Funding",
+    description: "Find U.S. business grants for small businesses and startups. Explore federal funding and state programs.",
     url: "https://www.fsidigital.ca/usa",
   },
 }
@@ -56,11 +56,15 @@ export default function USAGrantsPage() {
               />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold">
-                Browse Federal Grants
+              <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
+                <Link href="/grant-finder">
+                  Find Matching Grants
+                </Link>
               </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20">
-                View State Programs
+              <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20" asChild>
+                <Link href="#state-programs">
+                  View State Programs
+                </Link>
               </Button>
             </div>
           </div>
@@ -425,7 +429,7 @@ export default function USAGrantsPage() {
       </section>
 
       {/* All 50 States Section - Internal Linking for SEO */}
-      <section className="py-20 bg-gray-50">
+      <section id="state-programs" className="py-20 bg-gray-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <Badge className="mb-4 bg-green-100 text-green-800">Complete Coverage</Badge>

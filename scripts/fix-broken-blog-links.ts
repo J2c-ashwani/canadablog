@@ -46,7 +46,7 @@ function walkDir(dir: string, extensions: string[]) {
 const root = path.join(__dirname, '..');
 const appDir = path.join(root, 'app');
 const files = walkDir(appDir, ['.ts', '.tsx', '.js', '.jsx']);
-const linkRegex = /href=["']\/blog\/(?<slug>[a-z0-9-]+)["']/gi;
+const linkRegex = /href=["']\/blog\/([a-z0-9-]+)["']/gi;
 
 const hits: Record<string, Set<string>> = {};
 
@@ -54,7 +54,7 @@ for (const file of files) {
   const text = fs.readFileSync(file, 'utf8');
   let match;
   while ((match = linkRegex.exec(text)) !== null) {
-    const slug = match.groups?.slug;
+    const slug = match[1];
     if (!slug) continue;
     hits[slug] = hits[slug] ?? new Set();
     hits[slug].add(file);

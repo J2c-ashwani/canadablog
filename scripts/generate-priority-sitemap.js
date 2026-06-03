@@ -28,6 +28,33 @@ const CORE_PRIORITY_ROUTES = [
   '/canada/women-business-grants',
 ]
 
+const GSC_QUICK_WIN_ROUTES = [
+  '/usa/new-york',
+  '/usa/california',
+  '/usa/technology-startup-grants',
+  '/usa/kentucky',
+  '/usa/minnesota',
+  '/usa/washington',
+  '/usa/missouri',
+  '/canada',
+  '/canada/small-business-grants',
+  '/canada/indigenous-entrepreneur-grants',
+  '/canada/innovation-grants',
+  '/canada/women-business-grants',
+  '/blog/quebec-small-business-grants-guide',
+  '/blog/nih-sbir-biotech-grants',
+  '/blog/nsf-sbir-grants-technology-startups',
+  '/blog/usda-sbir-agtech-grants',
+  '/blog/canada-technology-adoption-grants-guide',
+  '/blog/colorado-tech-programs',
+  '/blog/healthcare-grants-2026',
+  '/blog/women-entrepreneurship-strategy-canada',
+  '/guides/irap-innovation-application-guide',
+  '/guides/apply-strategic-innovation-fund',
+  '/guides/california-loan-guarantee-guide',
+  '/guides/apply-irap-grants',
+]
+
 function escapeXml(value) {
   return value
     .replace(/&/g, '&amp;')
@@ -125,6 +152,7 @@ function buildXml(routes) {
 
 const routes = Array.from(new Set([
   ...CORE_PRIORITY_ROUTES,
+  ...GSC_QUICK_WIN_ROUTES,
   ...getPriorityBlogRoutes(),
   ...getStaticGuideRoutes(),
   ...getDynamicGuideRoutes(),
