@@ -6,7 +6,11 @@ import { getAllStates } from '@/lib/data/states'
 import { getAllBlogPosts } from '@/lib/data/blogPosts'
 import { guidesDatabase } from '@/lib/data/guides'
 import { getAllStateDetails } from '@/lib/data/stateDetails'
-import { getAllPseoPages } from '@/lib/pseo-data'
+import {
+  getPublishedPseoPages,
+  getPseoCitySummaries,
+  getPseoProvinceSummaries,
+} from '@/lib/pseo-data'
 
 const SUPERSEDED_BLOG_SLUGS = new Set([
   'canada-irap-grants-2025',
@@ -95,8 +99,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   })
 
   // 6. Add Daily Drip Programmatic SEO Pages
-  const pseoRoutes = getAllPseoPages()
-    .filter(page => page.isPublished)
+  const publishedPseoPages = getPublishedPseoPages()
+  const pseoProvinceRoutes = getPseoProvinceSummaries()
+    .map(province => `/grants/${province.provinceSlug}`)
+  const pseoCityHubRoutes = getPseoProvinceSummaries()
+    .flatMap(province => getPseoCitySummaries(province.provinceSlug)
+      .map(city => `/grants/${city.provinceSlug}/${city.citySlug}`))
+  const pseoRoutes = publishedPseoPages
     .map(page => `/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`);
 
   const blogRouteDates = new Map(
@@ -109,8 +118,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     })
   )
   const pseoRouteDates = new Map(
-    getAllPseoPages()
-      .filter(page => page.isPublished)
+    publishedPseoPages
       .map(page => [`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`, page.publishedAt])
   )
 
@@ -121,6 +129,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...dynamicGuideRoutes,
     ...stateRoutes,
     ...cityRoutes,
+    ...pseoProvinceRoutes,
+    ...pseoCityHubRoutes,
     ...pseoRoutes
   ])).filter(isIndexableRoute)
 
@@ -144,9 +154,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const canadaCount = allRoutes.filter(r => r.startsWith('/canada/')).length
   const usaStateCount = allRoutes.filter(r => r.startsWith('/usa/') && r.split('/').length === 3).length
   const usaCityCount = allRoutes.filter(r => r.startsWith('/usa/') && r.split('/').length === 4).length
-  const pseoCityIndustryCount = allRoutes.filter(r => r.startsWith('/grants/')).length
+  const pseoHubCount = allRoutes.filter(r => r.startsWith('/grants/') && r.split('/').length < 5).length
+  const pseoCityIndustryCount = allRoutes.filter(r => r.startsWith('/grants/') && r.split('/').length === 5).length
   const downloadCount = allRoutes.filter(r => r.startsWith('/download/')).length
-  const otherCount = allRoutes.length - blogCount - guideCount - canadaCount - usaStateCount - usaCityCount - pseoCityIndustryCount - downloadCount
+  const otherCount = allRoutes.length - blogCount - guideCount - canadaCount - usaStateCount - usaCityCount - pseoHubCount - pseoCityIndustryCount - downloadCount
 
   console.log(`\n✅ Sitemap generated with ${allRoutes.length} URLs`)
   console.log(`   📝 ${blogCount} Blog Posts`)
@@ -154,6 +165,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   console.log(`   🍁 ${canadaCount} Canada Pages`)
   console.log(`   🇺🇸 ${usaStateCount} USA State Pages`)
   console.log(`   🏙️ ${usaCityCount} USA City Pages`)
+  console.log(`   🧭 ${pseoHubCount} Programmatic Province/City Hub Pages`)
   console.log(`   🤖 ${pseoCityIndustryCount} Programmatic City+Industry Pages (Active Drip)`)
   console.log(`   📥 ${downloadCount} Download Pages`)
   console.log(`   🏠 ${otherCount} Other Pages\n`)

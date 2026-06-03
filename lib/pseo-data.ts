@@ -293,3 +293,131 @@ export function getPseoPage(provinceSlug: string, citySlug: string, industrySlug
         p.industrySlug === industrySlug
     ) || null;
 }
+
+export type PseoProvinceSummary = {
+    provinceSlug: string;
+    provinceName: string;
+    pageCount: number;
+    cityCount: number;
+    industryCount: number;
+};
+
+export type PseoCitySummary = {
+    provinceSlug: string;
+    provinceName: string;
+    citySlug: string;
+    cityName: string;
+    pageCount: number;
+    industryCount: number;
+    tier: 'A' | 'B' | 'C';
+};
+
+function uniquePseoPages(pages: PseoPage[]): PseoPage[] {
+    const seen = new Set<string>();
+
+    return pages.filter((page) => {
+        const key = `${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+    });
+}
+
+export function getPublishedPseoPages(): PseoPage[] {
+    return uniquePseoPages(getAllPseoPages().filter((page) => page.isPublished));
+}
+
+export function getPseoProvincePages(provinceSlug: string): PseoPage[] {
+    return getPublishedPseoPages().filter((page) => page.provinceSlug === provinceSlug);
+}
+
+export function getPseoCityPages(provinceSlug: string, citySlug: string): PseoPage[] {
+    return getPublishedPseoPages().filter(
+        (page) => page.provinceSlug === provinceSlug && page.citySlug === citySlug
+    );
+}
+
+export function getPseoProvinceSummaries(): PseoProvinceSummary[] {
+    const provinceMap = new Map<string, {
+        provinceName: string;
+        cities: Set<string>;
+        industries: Set<string>;
+        pages: number;
+    }>();
+
+    for (const page of getPublishedPseoPages()) {
+        const current = provinceMap.get(page.provinceSlug) || {
+            provinceName: page.provinceName,
+            cities: new Set<string>(),
+            industries: new Set<string>(),
+            pages: 0,
+        };
+
+        current.cities.add(page.citySlug);
+        current.industries.add(page.industrySlug);
+        current.pages += 1;
+        provinceMap.set(page.provinceSlug, current);
+    }
+
+    return Array.from(provinceMap.entries())
+        .map(([provinceSlug, province]) => ({
+            provinceSlug,
+            provinceName: province.provinceName,
+            pageCount: province.pages,
+            cityCount: province.cities.size,
+            industryCount: province.industries.size,
+        }))
+        .sort((a, b) => a.provinceName.localeCompare(b.provinceName));
+}
+
+export function getPseoProvinceSummary(provinceSlug: string): PseoProvinceSummary | null {
+    return getPseoProvinceSummaries().find((province) => province.provinceSlug === provinceSlug) || null;
+}
+
+export function getPseoCitySummaries(provinceSlug: string): PseoCitySummary[] {
+    const cityMap = new Map<string, {
+        provinceName: string;
+        cityName: string;
+        industries: Set<string>;
+        pages: number;
+        tier: 'A' | 'B' | 'C';
+    }>();
+
+    for (const page of getPseoProvincePages(provinceSlug)) {
+        const current = cityMap.get(page.citySlug) || {
+            provinceName: page.provinceName,
+            cityName: page.cityName,
+            industries: new Set<string>(),
+            pages: 0,
+            tier: page.tier,
+        };
+
+        current.industries.add(page.industrySlug);
+        current.pages += 1;
+        cityMap.set(page.citySlug, current);
+    }
+
+    const tierWeight = { A: 1, B: 2, C: 3 };
+
+    return Array.from(cityMap.entries())
+        .map(([citySlug, city]) => ({
+            provinceSlug,
+            provinceName: city.provinceName,
+            citySlug,
+            cityName: city.cityName,
+            pageCount: city.pages,
+            industryCount: city.industries.size,
+            tier: city.tier,
+        }))
+        .sort((a, b) => {
+            if (tierWeight[a.tier] !== tierWeight[b.tier]) {
+                return tierWeight[a.tier] - tierWeight[b.tier];
+            }
+
+            return a.cityName.localeCompare(b.cityName);
+        });
+}
+
+export function getPseoCitySummary(provinceSlug: string, citySlug: string): PseoCitySummary | null {
+    return getPseoCitySummaries(provinceSlug).find((city) => city.citySlug === citySlug) || null;
+}

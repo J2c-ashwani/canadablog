@@ -6,7 +6,7 @@ import { generatePseoSchema } from '@/lib/seo';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Shield, BookOpen, CheckCircle, Clock, ChevronRight } from 'lucide-react';
+import { Shield, BookOpen, CheckCircle, Clock, ChevronRight, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
@@ -167,8 +167,9 @@ export async function generateStaticParams() {
 }
 
 // Generate highly targeted metadata with long-tail SEO/AEO/GEO keywords
-export async function generateMetadata({ params }: { params: { province: string, city: string, industry: string } }): Promise<Metadata> {
-    const page = getPseoPage(params.province, params.city, params.industry);
+export async function generateMetadata({ params }: { params: Promise<{ province: string, city: string, industry: string }> }): Promise<Metadata> {
+    const resolvedParams = await params;
+    const page = getPseoPage(resolvedParams.province, resolvedParams.city, resolvedParams.industry);
 
     if (!page) {
         return { title: 'Grants Not Found' };
@@ -241,8 +242,9 @@ export async function generateMetadata({ params }: { params: { province: string,
     };
 }
 
-export default function PseoLandingPage({ params }: { params: { province: string, city: string, industry: string } }) {
-    const page = getPseoPage(params.province, params.city, params.industry);
+export default async function PseoLandingPage({ params }: { params: Promise<{ province: string, city: string, industry: string }> }) {
+    const resolvedParams = await params;
+    const page = getPseoPage(resolvedParams.province, resolvedParams.city, resolvedParams.industry);
 
     // Hard 404 gatekeeper if the route is invalid or the drip date is in the future
     if (!page || !page.isPublished) {
@@ -283,9 +285,10 @@ export default function PseoLandingPage({ params }: { params: { province: string
         "@type": "BreadcrumbList",
         "itemListElement": [
             { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fsidigital.ca" },
-            { "@type": "ListItem", "position": 2, "name": "Canadian Grants", "item": "https://www.fsidigital.ca/canada/government-grants" },
+            { "@type": "ListItem", "position": 2, "name": "Grant Database", "item": "https://www.fsidigital.ca/grants" },
             { "@type": "ListItem", "position": 3, "name": `${page.provinceName} Grants`, "item": `https://www.fsidigital.ca/grants/${page.provinceSlug}` },
-            { "@type": "ListItem", "position": 4, "name": `${page.industryName} Grants in ${page.cityName}`, "item": `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}` },
+            { "@type": "ListItem", "position": 4, "name": `${page.cityName} Grants`, "item": `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}` },
+            { "@type": "ListItem", "position": 5, "name": `${page.industryName} Grants in ${page.cityName}`, "item": `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}` },
         ]
     };
 
@@ -308,7 +311,11 @@ export default function PseoLandingPage({ params }: { params: { province: string
                     <nav className="mb-6 flex items-center text-sm text-gray-500 gap-1 flex-wrap">
                         <Link href="/" className="hover:text-green-600">Home</Link>
                         <ChevronRight className="w-3 h-3" />
-                        <Link href="/canada/government-grants" className="hover:text-green-600">Canadian Grants</Link>
+                        <Link href="/grants" className="hover:text-green-600">Grant Database</Link>
+                        <ChevronRight className="w-3 h-3" />
+                        <Link href={`/grants/${page.provinceSlug}`} className="hover:text-green-600">{page.provinceName}</Link>
+                        <ChevronRight className="w-3 h-3" />
+                        <Link href={`/grants/${page.provinceSlug}/${page.citySlug}`} className="hover:text-green-600">{page.cityName}</Link>
                         <ChevronRight className="w-3 h-3" />
                         <span className="text-gray-900 font-medium">{page.industryName} Grants in {page.cityName}</span>
                     </nav>
@@ -557,8 +564,12 @@ export default function PseoLandingPage({ params }: { params: { province: string
                 <div className="max-w-4xl mx-auto text-center">
                     <h3 className="text-2xl font-bold mb-6">More Resources for {page.provinceName} Businesses</h3>
                     <div className="flex flex-wrap justify-center gap-4">
-                        <Link href={`/canada/government-grants`} className="text-primary hover:underline font-medium flex items-center">
-                            <BookOpen className="w-4 h-4 mr-2" /> Canada Federal Grants
+                        <Link href={`/grants/${page.provinceSlug}`} className="text-primary hover:underline font-medium flex items-center">
+                            <BookOpen className="w-4 h-4 mr-2" /> {page.provinceName} Grant Hub
+                        </Link>
+                        <span className="hidden sm:inline text-gray-300">|</span>
+                        <Link href={`/grants/${page.provinceSlug}/${page.citySlug}`} className="text-primary hover:underline font-medium flex items-center">
+                            <MapPin className="w-4 h-4 mr-2" /> {page.cityName} Grant Hub
                         </Link>
                         <span className="hidden sm:inline text-gray-300">|</span>
                         <Link href="/grant-finder" className="text-primary hover:underline font-medium flex items-center">

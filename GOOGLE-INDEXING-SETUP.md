@@ -9,6 +9,9 @@ FAQPage schema has been removed from blog, guide, grant, state, and pSEO pages t
 The priority sitemap is a static file at `/priority-sitemap.xml`. Refresh it after major SEO/content batches with:
 `node scripts/generate-priority-sitemap.js`
 
+The recovery sitemap is a static file at `/indexing-recovery-sitemap.xml`. It is for the released programmatic grant pages that previously appeared in GSC as noindexed, crawled-not-indexed, or discovered-not-indexed. Refresh it after major pSEO releases with:
+`node scripts/generate-indexing-recovery-sitemap.js`
+
 ## After Each SEO Deployment
 
 1. Deploy the site.
@@ -17,10 +20,12 @@ The priority sitemap is a static file at `/priority-sitemap.xml`. Refresh it aft
    `https://www.fsidigital.ca/sitemap.xml`
 4. Submit or refresh the priority sitemap:
    `https://www.fsidigital.ca/priority-sitemap.xml`
-5. Run the local priority helper:
+5. Submit or refresh the pSEO recovery sitemap:
+   `https://www.fsidigital.ca/indexing-recovery-sitemap.xml`
+6. Run the local priority helper:
    `node scripts/gsc-priority-urls.js`
-6. Use URL Inspection on only the top 10 priority URLs and click **Request indexing** after the deployed page returns `200`, has a canonical URL, and has no `noindex`.
-7. In the Pages report, validate fixes for:
+7. Use URL Inspection on only the top 10 priority URLs and click **Request indexing** after the deployed page returns `200`, has a canonical URL, and has no `noindex`.
+8. In the Pages report, validate fixes for:
    - Duplicate or invalid FAQ schema
    - Crawled - currently not indexed
    - Discovered - currently not indexed
@@ -31,6 +36,7 @@ The priority sitemap is a static file at `/priority-sitemap.xml`. Refresh it aft
 - Canonical blog articles
 - Guide pages with useful standalone content
 - Country, province, state, and city landing pages
+- `/grants/{province}` and `/grants/{province}/{city}` pSEO hub pages
 - Published `/grants/{province}/{city}/{industry}` pages that are not thin or duplicate
 
 ## What Should Not Be Indexed

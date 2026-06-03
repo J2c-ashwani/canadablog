@@ -163,13 +163,11 @@ const nextConfig = {
 
       // GSC 404 fixes — Mar 19, 2026
       { source: '/illinois-business-grants-consultation', destination: '/blog/illinois-business-development-2026', permanent: true },
-      { source: '/grants/on', destination: '/blog/ontario-government-business-grants', permanent: true },
       { source: '/environmental-justice-consultation', destination: '/blog/epa-environmental-justice-2026', permanent: true },
       { source: '/michigan-manufacturing-consultation', destination: '/blog/michigan-manufacturing-renaissance-2026', permanent: true },
       { source: '/new-york-business-grants-consultation', destination: '/blog/new-york-business-grants-2026', permanent: true },
       { source: '/grant-application-review', destination: '/contact', permanent: true },
       { source: '/faq', destination: '/faq-usa', permanent: true },
-      { source: '/grants/bc', destination: '/blog/bc-small-business-grants-guide', permanent: true },
       { source: '/usa/north-carolina/raleigh-/-durham', destination: '/usa/north-carolina/raleigh-durham', permanent: true },
       // GSC "Excluded by noindex" fix — Apr 1, 2026
       { source: '/blog/regional-development-agencies-funding', destination: '/blog/regional-development-agencies-government-grants', permanent: true },
@@ -182,18 +180,10 @@ const nextConfig = {
       { source: '/usa/minority-owned-business-grants', destination: '/blog/federal-grants-women-minorities', permanent: true },
       { source: '/refund-cancellation', destination: '/terms', permanent: true },
       // GSC 404 fixes
-      { source: '/grants/qc', destination: '/blog/quebec-business-grants-2026', permanent: true },
       { source: '/usa/maine/lewiston/auburn', destination: '/usa/maine', permanent: true },
       { source: '/usa/massachusetts/boston-/-cambridge', destination: '/usa/massachusetts', permanent: true },
 
       // GSC 404 fixes — May 17, 2026
-      { source: '/grants/fl', destination: '/usa/florida', permanent: true },
-      { source: '/grants/ca', destination: '/usa/california', permanent: true },
-      { source: '/grants/ns', destination: '/blog/atlantic-business-grants-2026', permanent: true },
-      { source: '/grants/pe', destination: '/blog/atlantic-business-grants-2026', permanent: true },
-      { source: '/grants/nb', destination: '/blog/atlantic-business-grants-2026', permanent: true },
-      { source: '/grants/nl', destination: '/blog/atlantic-business-grants-2026', permanent: true },
-      { source: '/grants/sk', destination: '/blog/saskatchewan-business-grants-2026', permanent: true },
       { source: '/grants/community-grants', destination: '/grant-finder', permanent: true },
       { source: '/grants/small-business-grants', destination: '/blog/small-business-grants-complete-guide', permanent: true },
       { source: '/usa/arizona/chandler-/-tempe', destination: '/usa/arizona/chandler-tempe', permanent: true },
