@@ -20,6 +20,26 @@ export default function BookingClient() {
 
   return (
     <>
+      <style dangerouslySetInnerHTML={{__html: `
+        /* Force hide all Google AdSense auto-ads and placeholders on this page */
+        .adsbygoogle,
+        .google-auto-placed,
+        ins.adsbygoogle,
+        iframe[name^="google_ads_iframe"],
+        iframe[id^="google_ads_iframe"],
+        div[id^="google_ads_iframe"],
+        google-rabs-container,
+        .google-auto-placed {
+          display: none !important;
+          visibility: hidden !important;
+          opacity: 0 !important;
+          height: 0 !important;
+          width: 0 !important;
+          max-height: 0 !important;
+          max-width: 0 !important;
+          pointer-events: none !important;
+        }
+      `}} />
       <Header />
       <div className="min-h-screen bg-[#070716] text-[#c8cfe8] font-sans antialiased overflow-x-hidden">
         

@@ -6,6 +6,7 @@ import "./globals.css"
 import { ClientOverlays } from "@/components/ClientOverlays"
 import GlobalWikipediaLinker from "@/components/seo/GlobalWikipediaLinker"
 import { AdSensePageTracker } from "@/components/AdSensePageTracker"
+import { AdSenseLoader } from "@/components/AdSenseLoader"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -87,13 +88,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
         <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
-        <Script
-          id="adsense-loader"
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1200907614877581"
-          strategy="afterInteractive"
-          crossOrigin="anonymous"
-        />
+        <AdSenseLoader />
         {/* Google Analytics GA4 */}
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-DZ55NMNLYM"
