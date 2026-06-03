@@ -21,6 +21,7 @@ const SUPERSEDED_BLOG_SLUGS = new Set([
 function isIndexableRoute(route: string): boolean {
   if (route.includes('/thank-you')) return false
   if (route.startsWith('/api/')) return false
+  if (route.startsWith('/admin/')) return false
   if (route === '/search') return false
 
   const blogSlug = route.startsWith('/blog/') ? route.replace('/blog/', '') : null

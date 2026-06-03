@@ -8,6 +8,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group"
 import { Loader2, Calculator, ArrowRight, ArrowLeft, CheckCircle, Mail, DollarSign, Search } from "lucide-react"
+import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 
 type CalculatorData = {
     province: string;
@@ -39,6 +40,7 @@ export function GrantCalculator() {
     const [grantCount, setGrantCount] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [consentToPartnerContact, setConsentToPartnerContact] = useState(false);
 
     // Calculate generic estimate based on inputs
     const calculateEstimate = () => {
@@ -110,6 +112,16 @@ Company: ${data.company || "Not provided"}`;
                     phone: data.phone,
                     category: "Grant Calculator",
                     message: messageInfo,
+                    companyName: data.company,
+                    country: "Canada",
+                    state: data.province,
+                    industry: data.industry,
+                    businessStage: data.revenue,
+                    fundingAmount: `$${estimate.toLocaleString()}`,
+                    fundingPurpose: data.goal,
+                    businessDescription: messageInfo,
+                    consentToPartnerContact,
+                    pagePath: window.location.pathname,
                 }),
             });
 
@@ -366,6 +378,18 @@ Company: ${data.company || "Not provided"}`;
                                     required
                                 />
                             </div>
+                            <label className="flex gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4 text-left text-sm text-gray-700">
+                                <input
+                                    type="checkbox"
+                                    className="mt-1 h-4 w-4 rounded border-gray-300"
+                                    checked={consentToPartnerContact}
+                                    onChange={(event) => setConsentToPartnerContact(event.target.checked)}
+                                    required
+                                />
+                                <span>
+                                    {LEAD_CONSENT_TEXT} You can unsubscribe or request deletion at any time.
+                                </span>
+                            </label>
                             <Button
                                 type="submit"
                                 size="lg"
@@ -398,6 +422,7 @@ Company: ${data.company || "Not provided"}`;
                         <Button variant="outline" size="lg" onClick={() => {
                             setStep(1);
                             setIsSuccess(false);
+                            setConsentToPartnerContact(false);
                             setData(INITIAL_DATA);
                         }}>
                             Start Over

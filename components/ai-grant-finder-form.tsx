@@ -14,9 +14,11 @@ import { Loader2, Search, Sparkles, ExternalLink, Target, CheckCircle } from "lu
 import type { GrantFinderRequest, GrantFinderResponse } from "@/lib/ai-grant-matcher"
 import { formatFundingRange } from "@/lib/grants-data"
 import Link from "next/link"
+import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 
 export function AIGrantFinderForm() {
   const [formData, setFormData] = useState<Partial<GrantFinderRequest>>({})
+  const [consentToPartnerContact, setConsentToPartnerContact] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [results, setResults] = useState<GrantFinderResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
@@ -32,7 +34,11 @@ export function AIGrantFinderForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          consentToPartnerContact,
+          pagePath: window.location.pathname,
+        }),
       })
 
       if (!response.ok) {
@@ -199,6 +205,7 @@ export function AIGrantFinderForm() {
             onClick={() => {
               setResults(null)
               setFormData({})
+              setConsentToPartnerContact(false)
             }}
           >
             Start New Search
@@ -398,6 +405,19 @@ export function AIGrantFinderForm() {
               />
             </div>
           </div>
+
+          <label className="flex gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4 text-left text-sm text-gray-700">
+            <input
+              type="checkbox"
+              className="mt-1 h-4 w-4 rounded border-gray-300"
+              checked={consentToPartnerContact}
+              onChange={(event) => setConsentToPartnerContact(event.target.checked)}
+              required
+            />
+            <span>
+              {LEAD_CONSENT_TEXT} You can unsubscribe or request deletion at any time.
+            </span>
+          </label>
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-4">

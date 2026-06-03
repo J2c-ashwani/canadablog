@@ -34,7 +34,7 @@ export default function PrivacyPolicy() {
               We are committed to protecting your privacy and being transparent about how we handle your information.
             </p>
             <p className="text-emerald-200/80 text-sm mt-4">
-              Effective Date: January 1, 2026 &nbsp;·&nbsp; Last Updated: March 9, 2026
+              Effective Date: January 1, 2026 &nbsp;·&nbsp; Last Updated: June 4, 2026
             </p>
           </div>
         </div>
@@ -80,6 +80,7 @@ export default function PrivacyPolicy() {
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Contact Information:</strong> Name, email address, phone number when subscribing to our newsletter or contacting us.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Business Information:</strong> Company name, industry, and location when requesting grant consultation services.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Communication Data:</strong> Messages, feedback, and inquiries you send through our contact forms.</span></li>
+                <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span><strong>Consent Records:</strong> Partner-contact consent, consent version, source page, timestamp, and related form details when you choose to submit a funding inquiry.</span></li>
               </ul>
 
               <h3 className="text-lg font-semibold text-gray-800 mt-5 mb-2">Information Collected Automatically</h3>
@@ -108,6 +109,7 @@ export default function PrivacyPolicy() {
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To provide, maintain, and improve our grant information services and educational content.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To send you grant opportunity alerts, funding deadlines, and educational newsletters (only if you opt in).</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To respond to your inquiries, feedback, and support requests.</span></li>
+                <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To qualify funding inquiries and, only when you give explicit consent, connect you with selected funding partners who may help with grants, loans, tax credits, or business financing.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To analyze website traffic, user behavior, and content performance to improve our services.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To display relevant advertisements through Google AdSense (see Section 4).</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To detect, prevent, and address technical issues, fraud, or security concerns.</span></li>
@@ -222,7 +224,10 @@ export default function PrivacyPolicy() {
             <section id="data-sharing">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Data Sharing &amp; Disclosure</h2>
               <p className="text-gray-600 leading-relaxed mb-3">
-                We do <strong>not</strong> sell, trade, or rent your personal identification information to others. We may share generic aggregated demographic information not linked to any personal identification information with our business partners, trusted affiliates, and advertisers for the purposes outlined above.
+                We do <strong>not</strong> sell, trade, rent, or share your personal identification information for partner outreach unless you have explicitly checked a partner-contact consent box. If you provide that consent, we may share relevant funding inquiry details with selected funding partners so they can contact you about grants, loans, tax credits, or business funding options.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-3">
+                We may share generic aggregated demographic information not linked to any personal identification information with our business partners, trusted affiliates, and advertisers for the purposes outlined above.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 We may disclose your information if required to do so by law or in response to valid requests by public authorities (e.g., a court or government agency).

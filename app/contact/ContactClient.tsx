@@ -4,6 +4,7 @@ import React, { useState } from "react"
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
 import { Loader2, CheckCircle } from "lucide-react"
+import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 
 export default function ContactClient() {
     const [formData, setFormData] = useState({
@@ -12,6 +13,7 @@ export default function ContactClient() {
         phone: "",
         category: "General Question",
         message: "",
+        consentToPartnerContact: false,
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
@@ -28,12 +30,15 @@ export default function ContactClient() {
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(formData),
+                body: JSON.stringify({
+                    ...formData,
+                    pagePath: window.location.pathname,
+                }),
             })
 
             if (response.ok) {
                 setSubmitStatus("success")
-                setFormData({ name: "", email: "", phone: "", category: "General Question", message: "" })
+                setFormData({ name: "", email: "", phone: "", category: "General Question", message: "", consentToPartnerContact: false })
             } else {
                 setSubmitStatus("error")
             }
@@ -149,6 +154,7 @@ export default function ContactClient() {
                                     >
                                         <option>General Question</option>
                                         <option>Program Information Request</option>
+                                        <option>Funding Partner / Lead Buyer</option>
                                         <option>Website Feedback</option>
                                         <option>Content Suggestion</option>
                                         <option>Technical Issue</option>
@@ -166,6 +172,17 @@ export default function ContactClient() {
                                         placeholder="Tell us more about your question or how we can help..."
                                     />
                                 </div>
+                                <label className="flex gap-3 rounded-lg border border-gray-200 bg-gray-50 p-4 text-sm text-gray-700">
+                                    <input
+                                        type="checkbox"
+                                        className="mt-1 h-4 w-4 rounded border-gray-300"
+                                        checked={formData.consentToPartnerContact}
+                                        onChange={(e) => setFormData({ ...formData, consentToPartnerContact: e.target.checked })}
+                                    />
+                                    <span>
+                                        <strong>Optional:</strong> {LEAD_CONSENT_TEXT} You can unsubscribe or request deletion at any time.
+                                    </span>
+                                </label>
                                 <button
                                     type="submit"
                                     disabled={isSubmitting}

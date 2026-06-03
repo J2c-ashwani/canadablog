@@ -21,6 +21,10 @@ export async function POST(request: NextRequest) {
       industry,
       phone,
       additionalNotes: `Downloaded: ${guideName}`,
+      consentToPartnerContact: !!body.consentToPartnerContact,
+      pagePath: body.pagePath || request.headers.get("referer") || "N/A",
+      ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
+      userAgent: request.headers.get("user-agent") || "N/A",
     }).catch((error) => console.error("Failed to save download lead:", error))
 
     return NextResponse.json({

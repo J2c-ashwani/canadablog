@@ -4,7 +4,10 @@ import { appendLeadToSheet } from "@/lib/google-sheets"
 
 export async function POST(request: NextRequest) {
   try {
-    const body: GrantFinderRequest = await request.json()
+    const body = await request.json() as GrantFinderRequest & {
+      consentToPartnerContact?: boolean
+      pagePath?: string
+    }
 
     // Validate required fields
     if (!body.country || !body.industry || !body.businessStage || !body.email) {
@@ -26,6 +29,10 @@ export async function POST(request: NextRequest) {
       fundingAmount: body.fundingAmount || "",
       fundingPurpose: body.fundingPurpose || "",
       businessDescription: body.businessDescription || "",
+      consentToPartnerContact: !!body.consentToPartnerContact,
+      pagePath: body.pagePath || request.headers.get("referer") || "N/A",
+      ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
+      userAgent: request.headers.get("user-agent") || "N/A",
     }).catch((error) => {
       console.error("❌ Failed to save lead to Google Sheets:", error)
     })
