@@ -20943,6 +20943,15 @@ export function getStateDetailBySlug(slug: string): StateDetailedGrant | undefin
     return stateDetails.find(state => state.slug === slug);
 }
 
+export function getStateDetailBySlugOrAbbreviation(slugOrAbbreviation: string): StateDetailedGrant | undefined {
+    const normalized = slugOrAbbreviation.toLowerCase();
+
+    return stateDetails.find(state =>
+        state.slug === normalized ||
+        state.abbreviation.toLowerCase() === normalized
+    );
+}
+
 export function getAllStateDetails(): StateDetailedGrant[] {
     return stateDetails;
 }

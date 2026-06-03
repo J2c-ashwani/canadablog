@@ -5,9 +5,23 @@ interface Props {
   industryName: string;
   cityName: string;
   provinceName: string;
+  regionType?: 'state' | 'province';
+  countryName?: 'United States' | 'Canada';
 }
 
-export default function PseoMasterclass({ industryName, cityName, provinceName }: Props) {
+export default function PseoMasterclass({
+  industryName,
+  cityName,
+  provinceName,
+  regionType = 'province',
+  countryName = 'Canada'
+}: Props) {
+  const regionalAgencyLabel = regionType === 'state' ? 'state agencies' : 'provincial bodies';
+  const registryLabel = regionType === 'state'
+    ? `${provinceName} secretary of state or business registry`
+    : `${provinceName} corporate registry`;
+  const regionAdjective = regionType === 'state' ? 'state' : 'provincial';
+
   return (
     <div className="bg-white border text-gray-700 border-gray-200 rounded-xl p-8 lg:p-12 shadow-sm mt-16 prose prose-lg max-w-none">
       <h2 className="text-3xl font-extrabold text-gray-900 mb-6 flex items-center gap-3 border-b pb-4">
@@ -21,10 +35,10 @@ export default function PseoMasterclass({ industryName, cityName, provinceName }
 
       <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Phase 1: The Pre-Application Vulnerability Audit</h3>
       <p>
-        The most common fatal mistake {industryName} operators make in {cityName} is applying reactively. Government grants are not emergency lifelines; they are deliberate economic levers designed to de-risk ambitious projects. Before you ever hit "submit" on an application, both federal agencies and {provinceName} provincial bodies expect your corporate foundation to be immaculate.
+        The most common fatal mistake {industryName} operators make in {cityName} is applying reactively. Government grants are not emergency lifelines; they are deliberate economic levers designed to de-risk ambitious projects. Before you ever hit "submit" on an application, both federal agencies and {regionalAgencyLabel} expect your corporate foundation to be immaculate.
       </p>
       <p>
-        First, ensure your incorporation documents, cap table, and provincial registries in {provinceName} are entirely up to date. Grant reviewers will immediately cross-reference your business name against the {provinceName} corporate registry. If there is a discrepancy between your operating name and your legal structural name, or if your annual returns are delayed, your application for {industryName} funding will be automatically disqualified at the triage stage.
+        First, ensure your incorporation documents, cap table, and registration records in {provinceName} are entirely up to date. Grant reviewers will immediately cross-reference your business name against the {registryLabel}. If there is a discrepancy between your operating name and your legal structural name, or if required filings are delayed, your application for {industryName} funding can be disqualified at the triage stage.
       </p>
       <p>
         Second, your financial runway must be independently verifiable. Programs do not fund 100% of any project. The standard reimbursement rate for {industryName} initiatives hovers between 50% and 75%. This means your {cityName} operation must possess the liquidity to cashflow the project upfront. You must present recent bank statements, term sheets, or line-of-credit proofs demonstrating you have the unencumbered capital to match the government's contribution.
@@ -34,15 +48,15 @@ export default function PseoMasterclass({ industryName, cityName, provinceName }
         <Target className="w-6 h-6 text-green-600" /> Phase 2: Strategic Narrative Alignment
       </h3>
       <p>
-        Agencies do not fund "{industryName} businesses" arbitrarily. They fund projects that directly solve a public policy mandate. If an agency in {provinceName} has a mandate to reduce carbon emissions, create highly skilled jobs for youth, or digitize legacy industries, your application must aggressively frame your project around those specific outcomes.
+        Agencies do not fund "{industryName} businesses" arbitrarily. They fund projects that directly solve a public policy mandate. If an agency in {provinceName} has a mandate to reduce carbon emissions, create highly skilled jobs, support rural regions, or digitize legacy industries, your application must frame your project around those specific outcomes.
       </p>
       <p>
-        As you write your project narrative, avoid technical jargon that isolated engineers or specialists use. Bureaucrats are generalists. Furthermore, explicitly tie your {cityName} project deliverables to local economic impact. How many jobs will this create in {cityName}? Will it increase export revenues for {provinceName}? Will it upskill your current workforce in a way that makes the {industryName} sector globally competitive? Quantify these claims. Instead of saying "We will hire more people," state "We will create 4 net-new engineering roles in {cityName} at a median salary of $85,000, retaining local STEM talent within {provinceName}."
+        As you write your project narrative, avoid technical jargon that isolated engineers or specialists use. Reviewers are generalists. Furthermore, explicitly tie your {cityName} project deliverables to local economic impact. How many jobs will this create in {cityName}? Will it increase export revenues for {provinceName} or {countryName}? Will it upskill your current workforce in a way that makes the {industryName} sector more competitive? Quantify these claims. Instead of saying "We will hire more people," state "We will create 4 net-new roles in {cityName} at a median salary of $85,000, retaining local talent within {provinceName}."
       </p>
 
       <h3 className="text-2xl font-bold text-gray-900 mt-10 mb-4">Phase 3: Navigating the Triage and Review Hierarchy</h3>
       <p>
-        Once you submit your {industryName} grant application, it enters a black box. Understanding this trajectory is critical for managing your cashflow in {cityName}. Most federal and {provinceName} provincial programs operate on a two-stage review process: Intake/Triage and Deep Merit Review.
+        Once you submit your {industryName} grant application, it enters a black box. Understanding this trajectory is critical for managing your cashflow in {cityName}. Most federal and {provinceName} {regionAdjective} programs operate on a two-stage review process: Intake/Triage and Deep Merit Review.
       </p>
       <ul className="list-disc pl-6 space-y-3 mb-6">
         <li><strong>Triage (Weeks 1-3):</strong> An entry-level analyst performs a binary compliance check. Did you include financial statements? Are you incorporated in {provinceName}? Does your {industryName} code match the eligibility criteria? If you fail here, you receive a rapid rejection.</li>
@@ -67,7 +81,7 @@ export default function PseoMasterclass({ industryName, cityName, provinceName }
         To ensure you actually receive the capital, your {industryName} business must establish a dedicated cost-accounting ledger for the project. Every timesheet for engineers working on the project, every subcontractor invoice, and every equipment receipt must be meticulously tracked. When you submit your quarterly claim to the agency in {provinceName}, it will be scrutinized by an auditor. 
       </p>
       <p>
-        If your reporting is flawless, funds are typically released within 30 to 45 days of the claim submission. By treating post-award compliance as a core operational discipline, leading {industryName} ventures in {cityName} successfully leverage one grant to build credibility for the next, systematically stacking multiple federal and {provinceName} subsidies over a multi-year growth horizon.
+        If your reporting is flawless, funds are typically released within 30 to 45 days of the claim submission. By treating post-award compliance as a core operational discipline, leading {industryName} ventures in {cityName} successfully leverage one grant to build credibility for the next, systematically stacking multiple federal and {provinceName} incentives over a multi-year growth horizon.
       </p>
     </div>
   );

@@ -1,4 +1,4 @@
-import { getStateDetailBySlug } from '../data/stateDetails';
+import { getStateDetailBySlugOrAbbreviation } from '../data/stateDetails';
 
 export type BlockIntent = 'informational' | 'transactional' | 'comparative';
 export type PseoTier = 'A' | 'B' | 'C';
@@ -38,19 +38,24 @@ export interface ComposeRequest {
   intent: BlockIntent;
 }
 
+const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
+
 /**
  * Deterministically generates an array of 4-6 blocks based on Tier, Industry, and Intent.
- * Also injects "Named Entities" (Program Proof Layer) directly from the state's top programs.
+ * Also injects "Named Entities" (Program Proof Layer) directly from the region's top programs.
  */
 export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
   const blocks: PseoBlock[] = [];
-  const stateData = getStateDetailBySlug(req.stateSlug);
+  const stateData = getStateDetailBySlugOrAbbreviation(req.stateSlug);
+  const regionType = CANADIAN_REGION_SLUGS.has(req.stateSlug) ? 'province' : 'state';
   
   // Entity Proof Layer (Pull Top 2 Programs to inject hyper-local proof - HARD REQUIREMENT)
-  const program1 = stateData?.topPrograms?.[0]?.name || 'State Growth Fund';
+  const program1 = stateData?.topPrograms?.[0]?.name ||
+    (regionType === 'province' ? 'Provincial Business Growth Fund' : 'State Growth Fund');
   const amount1 = stateData?.topPrograms?.[0]?.fundingAmount || '$50,000+ grants';
-  const program2 = stateData?.topPrograms?.[1]?.name || 'Regional Job Creation Grant';
-  const amount2 = stateData?.topPrograms?.[1]?.fundingAmount || 'Variable tax credits';
+  const program2 = stateData?.topPrograms?.[1]?.name ||
+    (regionType === 'province' ? 'Regional Job Creation Grant' : 'Regional Job Creation Incentive');
+  const amount2 = stateData?.topPrograms?.[1]?.fundingAmount || 'Variable grants and tax credits';
 
   // Internal Linking Anchor Text Variation Logic
   const anchorVariations = [
@@ -68,7 +73,8 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
       cityName: req.cityName,
       industrySlug: req.industrySlug,
       program1, amount1, program2, amount2,
-      tier: req.tier
+      tier: req.tier,
+      regionType
     }
   });
 
@@ -109,7 +115,7 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
   
   // 4. Micro-FAQ Block (Captures long-tail, boosts indexation)
   if (!blocks.find(b => b.type === 'MicroFAQ')) {
-      blocks.push({ type: 'MicroFAQ', props: { industrySlug: req.industrySlug, cityName: req.cityName, program1 } });
+      blocks.push({ type: 'MicroFAQ', props: { industrySlug: req.industrySlug, cityName: req.cityName, program1, regionType } });
   }
 
   // 5. Who Should Leave (Trust Builder)

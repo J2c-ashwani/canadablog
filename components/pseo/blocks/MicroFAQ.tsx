@@ -5,24 +5,28 @@ interface Props {
   industrySlug: string;
   cityName: string;
   program1: string;
+  regionType?: 'state' | 'province';
 }
 
-export default function MicroFAQ({ industrySlug, cityName, program1 }: Props) {
+export default function MicroFAQ({ industrySlug, cityName, program1, regionType = 'state' }: Props) {
   const formattedIndustry = industrySlug.charAt(0).toUpperCase() + industrySlug.slice(1);
+  const employmentRecord = regionType === 'province' ? 'employees' : 'W-2 employees';
+  const regionProgramLabel = regionType === 'province' ? 'provincial flagship programs' : 'state flagship programs';
+  const creditExamples = regionType === 'province' ? 'wage subsidies and R&D tax credits' : 'R&D credits and WOTC';
 
   // Generate hyper-specific long-tail questions
   const faqs = [
     {
       q: `Can a ${formattedIndustry.toLowerCase()} startup get grants in ${cityName} with no employees?`,
-      a: `Technically possible, but extremely limited. Most state discretionary grants require a minimum of 3-5 W-2 employees. However, automated tax credit programs (R&D credits, WOTC) have no employee minimum and can be claimed on your annual filing.`
+      a: `Technically possible, but extremely limited. Most discretionary grants require a minimum operating history and a credible hiring plan, and some require 3-5 ${employmentRecord}. However, ${creditExamples} may be available through separate eligibility rules.`
     },
     {
       q: `What is the minimum revenue to qualify for the ${program1}?`,
-      a: `Most state flagship programs like the ${program1} don't publish a hard revenue floor, but in practice, companies below $250K annual revenue are rarely approved for discretionary awards. The unstated filter is job creation commitments — you need to credibly promise 5-10+ new hires within 24 months.`
+      a: `Most ${regionProgramLabel} like the ${program1} don't publish a hard revenue floor, but in practice, very early companies are rarely approved for discretionary awards. The unstated filter is job creation, matching capital, and a project that can be verified within the program timeline.`
     },
     {
       q: `How long does it actually take to receive grant money in ${cityName}?`,
-      a: `Expect 90-180 days from application submission to first disbursement for most state programs. Critical catch: most grants reimburse expenses — meaning you spend first, then get paid back. Budget accordingly and do not rely on grant money for immediate operational cash flow.`
+      a: `Expect 90-180 days from application submission to first disbursement for many discretionary programs. Critical catch: most grants reimburse approved expenses, meaning you spend after approval and then get paid back. Budget accordingly and do not rely on grant money for immediate operational cash flow.`
     }
   ];
 
