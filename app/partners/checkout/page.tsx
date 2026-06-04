@@ -8,6 +8,11 @@ import { ArrowLeft, CheckCircle2, ShieldCheck } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
 
+const PAYPAL_CLIENT_ID =
+  process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID ||
+  process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ||
+  'ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq';
+
 export const metadata: Metadata = {
   title: 'Partner PayPal Checkout | FSI Digital',
   description: 'Pay for an FSI Digital funding lead partner pilot using PayPal.',
@@ -21,8 +26,7 @@ export default async function PartnerCheckoutPage({
 }) {
   const resolvedParams = await searchParams;
   const selectedPackage = getPartnerPackage(resolvedParams.package) || PARTNER_PACKAGES[0];
-  const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
-  const currency = process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || 'USD';
+  const currency = 'USD';
 
   return (
     <>
@@ -60,35 +64,7 @@ export default async function PartnerCheckoutPage({
               </div>
             </aside>
 
-            {paypalClientId ? (
-              <PayPalPartnerCheckout selectedPackage={selectedPackage} clientId={paypalClientId} currency={currency} />
-            ) : (
-              <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 text-amber-950 shadow-sm">
-                <h2 className="text-2xl font-bold">Partner Checkout Is Temporarily Unavailable</h2>
-                <p className="mt-2 leading-7">
-                  Online PayPal checkout is being activated. You can still request this partner pilot and receive a
-                  manual PayPal invoice after buyer fit and lead availability are reviewed.
-                </p>
-                <div className="mt-5 rounded-md bg-white/70 p-4 text-sm text-amber-900">
-                  No payment has been taken on this page. Private lead details remain protected until payment, approval,
-                  and consent review are complete.
-                </div>
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Link
-                    href="/contact"
-                    className="inline-flex items-center justify-center rounded-md bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-gray-800"
-                  >
-                    Request PayPal Invoice
-                  </Link>
-                  <Link
-                    href="/partners#pricing"
-                    className="inline-flex items-center justify-center rounded-md border border-amber-300 bg-white px-5 py-3 font-semibold text-amber-950 transition hover:bg-amber-100"
-                  >
-                    Back to Pricing
-                  </Link>
-                </div>
-              </div>
-            )}
+            <PayPalPartnerCheckout selectedPackage={selectedPackage} clientId={PAYPAL_CLIENT_ID} currency={currency} />
           </div>
         </div>
       </main>

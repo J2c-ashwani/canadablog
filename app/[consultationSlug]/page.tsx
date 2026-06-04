@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
-import { ArrowLeft, CheckCircle2, ShieldCheck, Mail, Calendar } from 'lucide-react';
+import { ConsultationRequestForm } from '@/components/ConsultationRequestForm';
+import { ArrowLeft, CheckCircle2, ShieldCheck, Calendar } from 'lucide-react';
 
 const VALID_CONSULTATIONS = new Set([
   "agriinnovate-consultation",
@@ -143,50 +144,7 @@ export default async function ConsultationPage({ params }: { params: Promise<{ c
 
               {/* Right Column: Lead Form Replacement (can wire to existing contact endpoint) */}
               <div className="md:col-span-3">
-                <form className="space-y-5" action="/api/contact" method="POST">
-                  
-                  <input type="hidden" name="source" value={consultationSlug} />
-                  <input type="hidden" name="type" value="consultation_request" />
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    <div>
-                      <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">First Name</label>
-                      <input type="text" id="firstName" name="firstName" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-50 focus:bg-white" />
-                    </div>
-                    <div>
-                      <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
-                      <input type="text" id="lastName" name="lastName" required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-50 focus:bg-white" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">Work Email</label>
-                    <div className="relative">
-                      <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                        <Mail className="h-5 w-5 text-gray-400" />
-                      </div>
-                      <input type="email" id="email" name="email" required className="w-full pl-10 px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-50 focus:bg-white" placeholder="you@company.com" />
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">Company Name</label>
-                    <input type="text" id="company" name="company" className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-50 focus:bg-white" />
-                  </div>
-
-                  <div>
-                    <label htmlFor="details" className="block text-sm font-medium text-gray-700 mb-1">Briefly describe your project or needs</label>
-                    <textarea id="details" name="details" rows={3} required className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all bg-gray-50 focus:bg-white resize-none"></textarea>
-                  </div>
-
-                  <button type="submit" className="w-full py-4 px-6 rounded-xl text-white font-bold text-lg transition-all transform hover:-translate-y-0.5 shadow-lg hover:shadow-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700">
-                    Request Strategy Session
-                  </button>
-                  
-                  <p className="text-center text-xs text-gray-500 mt-4">
-                    By submitting this form, you agree to our <Link href="/terms" className="text-blue-600 hover:underline">Terms</Link> and <Link href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link>.
-                  </p>
-                </form>
+                <ConsultationRequestForm consultationSlug={consultationSlug} cleanTitle={cleanTitle} />
               </div>
 
             </div>

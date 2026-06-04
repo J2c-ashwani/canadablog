@@ -20,6 +20,9 @@ import {
 export default function ConsultationClient() {
   const [sdkReady, setSdkReady] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const paypalClientId = process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID
+    || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
+    || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq";
 
   useEffect(() => {
     if ((window as any).paypal) {
@@ -28,7 +31,7 @@ export default function ConsultationClient() {
     }
 
     const script = document.createElement("script");
-    script.src = "https://www.paypal.com/sdk/js?client-id=ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq&currency=USD";
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD`;
     script.type = "text/javascript";
     script.async = true;
     script.onload = () => {
@@ -36,10 +39,10 @@ export default function ConsultationClient() {
     };
     script.onerror = () => {
       console.error("PayPal SDK failed to load.");
-      setPaymentError("Could not load PayPal Payment SDK. Please refresh the page.");
+      setPaymentError("Could not load secure checkout. Please refresh the page.");
     };
     document.head.appendChild(script);
-  }, []);
+  }, [paypalClientId]);
 
   useEffect(() => {
     if (!sdkReady || !(window as any).paypal) return;
@@ -70,7 +73,7 @@ export default function ConsultationClient() {
       onApprove: async (data: any, actions: any) => {
         const details = await actions.order.capture();
         console.log("Payment approved:", details);
-        window.location.href = 'https://fsidigital.ca/booking';
+        window.location.href = '/booking';
       },
       onError: (err: any) => {
         console.error("PayPal Smart Button Error:", err);
@@ -314,7 +317,7 @@ export default function ConsultationClient() {
                 {!sdkReady && (
                   <div className="w-full py-4 flex flex-col items-center justify-center gap-2 border border-blue-900/20 rounded-2xl bg-blue-950/10">
                     <div className="w-6 h-6 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-[#8f9ac2] text-xs font-bold animate-pulse">Initializing Secure Checkout SDK...</span>
+                    <span className="text-[#8f9ac2] text-xs font-bold animate-pulse">Initializing secure checkout...</span>
                   </div>
                 )}
 

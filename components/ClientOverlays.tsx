@@ -13,6 +13,10 @@ const LeadMagnetPopup = dynamic(
     () => import("@/components/lead-magnet-popup").then(m => ({ default: m.LeadMagnetPopup })),
     { ssr: false }
 )
+const LeadConversionUpsellWatcher = dynamic(
+    () => import("@/components/LeadConversionUpsellWatcher").then(m => ({ default: m.LeadConversionUpsellWatcher })),
+    { ssr: false }
+)
 
 export function ClientOverlays() {
     const [isClient, setIsClient] = useState(false)
@@ -32,6 +36,7 @@ export function ClientOverlays() {
     return (
         <>
             <CookieConsent />
+            <LeadConversionUpsellWatcher />
             {!shouldSuppressPopup && <LeadMagnetPopup />}
         </>
     )

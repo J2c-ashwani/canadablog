@@ -67,7 +67,7 @@ export function PayPalPartnerCheckout({
         layout: 'vertical',
         color: 'gold',
         shape: 'rect',
-        label: 'paypal',
+        label: 'pay',
       },
       onClick: (_data: unknown, actions: { reject: () => void; resolve: () => void }) => {
         const currentBuyer = buyerInfoRef.current;
@@ -86,47 +86,45 @@ export function PayPalPartnerCheckout({
         setError('');
         return actions.resolve();
       },
-      createOrder: async () => {
+      createOrder: (_data: unknown, actions: any) => {
         setIsProcessing(true);
         setError('');
+        const amount = selectedPackage.priceUsd.toFixed(2);
 
-        const response = await fetch('/api/paypal/create-order', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            packageId: selectedPackage.id,
-            ...buyerInfoRef.current,
-          }),
+        return actions.order.create({
+          purchase_units: [
+            {
+              reference_id: selectedPackage.id,
+              custom_id: selectedPackage.id,
+              amount: {
+                value: amount,
+                currency_code: currency,
+              },
+              description: `${selectedPackage.name} - FSI Digital`,
+            },
+          ],
         });
-
-        const data = await response.json();
-
-        if (!response.ok || !data.id) {
-          setIsProcessing(false);
-          throw new Error(data.error || 'Unable to create PayPal order.');
-        }
-
-        return data.id;
       },
-      onApprove: async (data: { orderID?: string }) => {
-        const response = await fetch('/api/paypal/capture-order', {
+      onApprove: async (data: { orderID?: string }, actions: any) => {
+        const capture = await actions.order.capture();
+        const orderId = capture?.id || data.orderID || '';
+
+        await fetch('/api/paypal/record-partner-payment', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({
-            orderId: data.orderID,
+            orderId,
             packageId: selectedPackage.id,
+            capture,
             ...buyerInfoRef.current,
           }),
+        }).catch((error) => {
+          console.error('Failed to record partner payment:', error);
         });
 
-        const capture = await response.json();
         setIsProcessing(false);
 
-        if (!response.ok || !capture.success) {
-          throw new Error(capture.error || 'Payment was approved but capture failed.');
-        }
-
-        router.push(`/partners/success?package=${selectedPackage.id}&order=${encodeURIComponent(capture.orderId || data.orderID || '')}`);
+        router.push(`/partners/success?package=${selectedPackage.id}&order=${encodeURIComponent(orderId)}`);
       },
       onCancel: () => {
         setIsProcessing(false);
