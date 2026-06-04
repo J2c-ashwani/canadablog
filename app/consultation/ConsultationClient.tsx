@@ -66,7 +66,7 @@ export default function ConsultationClient() {
               value: '199.00',
               currency_code: 'USD'
             },
-            description: '1-on-1 B2B Funding Strategy Consultation'
+            description: '1-on-1 Business Funding Strategy Consultation'
           }]
         });
       },
@@ -123,7 +123,7 @@ export default function ConsultationClient() {
           </h1>
           
           <p className="text-lg sm:text-xl text-[#8f9ac2] max-w-3xl mx-auto leading-relaxed mb-8">
-            Stop guessing grant frameworks and tax guidelines. Get a bespoke, pre-researched <strong className="text-white font-semibold">B2B Funding Roadmap</strong> and a private 30-minute deep dive strategy session.
+            Stop guessing grant frameworks and tax guidelines. Get a bespoke, pre-researched <strong className="text-white font-semibold">Business Funding Roadmap</strong> and a private 30-minute deep dive strategy session.
           </p>
 
           <div className="flex justify-center">
@@ -156,7 +156,7 @@ export default function ConsultationClient() {
             <div className="w-12 h-12 bg-indigo-950/60 rounded-xl flex items-center justify-center border border-indigo-900/40 mb-6 group-hover:scale-105 transition-transform">
               <FileCheck2 className="w-6 h-6 text-indigo-400" />
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">Custom B2B Funding Roadmap</h3>
+            <h3 className="text-xl font-bold text-white mb-3">Custom Business Funding Roadmap</h3>
             <p className="text-[#8f9ac2] text-sm leading-relaxed">
               Receive a proprietary roadmap mapping your exact matches against federal, provincial/state grants, and tax credits.
             </p>
@@ -290,7 +290,7 @@ export default function ConsultationClient() {
                   </div>
                   <div className="flex items-center gap-2.5 text-sm text-gray-200">
                     <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Bespoke B2B Funding Roadmap PDF</span>
+                    <span>Bespoke Business Funding Roadmap PDF</span>
                   </div>
                   <div className="flex items-center gap-2.5 text-sm text-gray-200">
                     <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />

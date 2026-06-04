@@ -91,7 +91,7 @@ export function StrategySessionUpsell({
                 value: CONSULTATION_PRICE,
                 currency_code: 'USD',
               },
-              description: '1-on-1 B2B Funding Strategy Consultation',
+              description: '1-on-1 Business Funding Strategy Consultation',
             },
           ],
         });
@@ -190,27 +190,27 @@ export function StrategySessionUpsell({
               </div>
               <h2 className="text-2xl font-bold text-gray-950">Book Your Funding Strategy Session</h2>
               <p className="mt-2 leading-7 text-gray-700">
-                Your lead has been saved. If you want expert help now, reserve a private 30-minute strategy session for
-                <strong> $199 USD</strong>. After PayPal checkout, you will choose your time on Calendly.
+                Your request has been received. Secure the paid strategy review that turns your business profile into a
+                clear funding action plan. For <strong>$199 USD</strong>, your session includes:
               </p>
             </div>
 
             <div className="my-5 grid gap-3 rounded-md bg-gray-50 p-4 text-sm text-gray-700 sm:grid-cols-2">
               <div className="flex gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-700" />
-                Top grant/loan matches
+                2 hours of custom pre-call research on your industry, region, entity, and funding fit
               </div>
               <div className="flex gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-700" />
-                Eligibility risk review
+                Personalized Business Funding Roadmap covering grants, loans, and tax-credit options
               </div>
               <div className="flex gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-700" />
-                Funding roadmap
+                Top 3 high-probability matches with eligibility risks, deadlines, and next actions
               </div>
               <div className="flex gap-2">
                 <CheckCircle2 className="mt-0.5 h-4 w-4 flex-none text-emerald-700" />
-                Calendly scheduling
+                Private 30-minute Google Meet; choose your Calendly slot after PayPal checkout
               </div>
             </div>
 
