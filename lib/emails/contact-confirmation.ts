@@ -43,10 +43,14 @@ function buildHtml({
 
       <p>Thank you for reaching out to FSI Digital. We have received your message and a member of our team will review it.</p>
 
-      <div style="background:#f8fafc;border:1px solid #e2e8f0;border-radius:8px;padding:16px 20px;margin:20px 0">
-        <p style="margin:0 0 6px;font-size:13px;color:#64748b;font-weight:600;text-transform:uppercase;letter-spacing:0.5px">Your request</p>
-        <p style="margin:0 0 4px;font-size:15px;color:#111827"><strong>Category:</strong> ${escapeHtml(category)}</p>
-        <p style="margin:0;font-size:14px;color:#475569">"${messageSnippet}"</p>
+      <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px 20px; margin: 20px 0;">
+        <p style="margin: 0 0 8px 0; font-size: 11px; color: #047857; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Your Request</p>
+        <p style="margin: 0 0 8px 0; font-size: 15px; color: #064e3b;">
+          <strong>Category:</strong> ${escapeHtml(category)}
+        </p>
+        <div style="font-size: 14px; color: #047857; font-style: italic; background-color: #ffffff; border-left: 3px solid #10b981; padding: 8px 12px; margin: 8px 0 0 0; border-radius: 4px; line-height: 1.5;">
+          "${messageSnippet}"
+        </div>
       </div>
 
       <p><strong>What happens next:</strong></p>
