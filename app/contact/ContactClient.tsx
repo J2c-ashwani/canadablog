@@ -154,7 +154,7 @@ export default function ContactClient() {
                                     >
                                         <option>General Question</option>
                                         <option>Program Information Request</option>
-                                        <option>Funding Partner / Lead Buyer</option>
+                                        <option>Strategy Session Question</option>
                                         <option>Website Feedback</option>
                                         <option>Content Suggestion</option>
                                         <option>Technical Issue</option>

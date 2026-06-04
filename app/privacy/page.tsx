@@ -110,7 +110,7 @@ export default function PrivacyPolicy() {
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To provide, maintain, and improve our grant information services and educational content.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To send you grant opportunity alerts, funding deadlines, and educational newsletters (only if you opt in).</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To respond to your inquiries, feedback, and support requests.</span></li>
-                <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To qualify funding inquiries and, only when you give explicit consent, connect you with selected funding partners who may help with grants, loans, tax credits, or business financing.</span></li>
+                <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To qualify funding inquiries and, only when you give explicit consent, connect you with vetted funding specialists who may help with grants, loans, tax credits, or business financing.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To analyze website traffic, user behavior, and content performance to improve our services.</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To display relevant advertisements through Google AdSense (see Section 4).</span></li>
                 <li className="flex items-start gap-2"><span className="text-emerald-600 mt-1">•</span><span>To detect, prevent, and address technical issues, fraud, or security concerns.</span></li>
@@ -228,7 +228,7 @@ export default function PrivacyPolicy() {
             <section id="data-sharing">
               <h2 className="text-2xl font-bold text-gray-900 mb-4">7. Data Sharing &amp; Disclosure</h2>
               <p className="text-gray-600 leading-relaxed mb-3">
-                We do <strong>not</strong> sell, trade, rent, or share your personal identification information for partner outreach unless you have explicitly checked a partner-contact consent box. If you provide that consent, we may share relevant funding inquiry details with selected funding partners so they can contact you about grants, loans, tax credits, or business funding options.
+                We do <strong>not</strong> sell, trade, rent, or share your personal identification information for funding-specialist outreach unless you have explicitly checked the consent box. If you provide that consent, we may share relevant funding inquiry details with vetted funding specialists so they can contact you about grants, loans, tax credits, or business funding options.
               </p>
               <p className="text-gray-600 leading-relaxed mb-3">
                 We may share generic aggregated demographic information not linked to any personal identification information with our business partners, trusted affiliates, and advertisers for the purposes outlined above.

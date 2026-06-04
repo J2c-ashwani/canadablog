@@ -1,7 +1,7 @@
-export const LEAD_CONSENT_VERSION = 'partner-contact-v1-2026-06-04';
+export const LEAD_CONSENT_VERSION = 'funding-specialist-contact-v2-2026-06-04';
 
 export const LEAD_CONSENT_TEXT =
-  'I agree that FSI Digital and selected funding partners may contact me about grants, loans, tax credits, and business funding options.';
+  'I agree that FSI Digital and vetted funding specialists may contact me about grants, loans, tax credits, and business funding options.';
 
 export type LeadTier = 'A' | 'B' | 'C' | 'D';
 
