@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { appendLeadToSheet } from "@/lib/google-sheets"
 import { sendContactConfirmation } from "@/lib/emails/contact-confirmation"
+import { validateEmail } from "@/lib/email-validator"
 
 export async function POST(request: NextRequest) {
   try {
@@ -28,8 +29,9 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Name, email, and message are required" }, { status: 400 })
     }
 
-    if (!email.includes("@")) {
-      return NextResponse.json({ error: "Valid email is required" }, { status: 400 })
+    const emailCheck = validateEmail(email)
+    if (!emailCheck.isValid) {
+      return NextResponse.json({ error: emailCheck.error }, { status: 400 })
     }
 
     // Save lead to Google Sheets with source tracking

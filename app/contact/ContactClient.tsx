@@ -118,6 +118,7 @@ export default function ContactClient() {
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
+    const [errorMessage, setErrorMessage] = useState<string | null>(null)
     const [newsletterEmail, setNewsletterEmail] = useState("")
     const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "success" | "error">("idle")
     const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false)
@@ -137,6 +138,7 @@ export default function ContactClient() {
         e.preventDefault()
         setIsSubmitting(true)
         setSubmitStatus("idle")
+        setErrorMessage(null)
 
         try {
             const response = await fetch("/api/contact", {
@@ -152,10 +154,13 @@ export default function ContactClient() {
                 setSubmitStatus("success")
                 resetForm()
             } else {
+                const data = await response.json().catch(() => ({}))
+                setErrorMessage(data.error || "We could not send your request. Please try again.")
                 setSubmitStatus("error")
             }
         } catch (error) {
             console.error("Contact form error:", error)
+            setErrorMessage("We could not send your request. Please check your internet connection and try again.")
             setSubmitStatus("error")
         } finally {
             setIsSubmitting(false)
@@ -286,7 +291,7 @@ export default function ContactClient() {
 
                         {submitStatus === "error" && (
                             <div className="mb-6 rounded-xl border border-red-200 bg-red-50 p-4">
-                                <p className="font-semibold text-red-800">We could not send your request. Please try again.</p>
+                                <p className="font-semibold text-red-800">{errorMessage || "We could not send your request. Please try again."}</p>
                             </div>
                         )}
 
