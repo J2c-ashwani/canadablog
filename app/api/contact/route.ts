@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { appendLeadToSheet } from "@/lib/google-sheets"
+import { sendContactConfirmation } from "@/lib/emails/contact-confirmation"
 
 export async function POST(request: NextRequest) {
   try {
@@ -57,8 +58,15 @@ export async function POST(request: NextRequest) {
 
     console.log(`📧 Contact form submission from: ${name} (${email})`)
 
-    // TODO: Send email notification to you
-    // TODO: Send confirmation email to user
+    // Send confirmation receipt email to the user (fire-and-forget)
+    sendContactConfirmation({
+      to: email,
+      name: name || '',
+      category: category || 'General',
+      messageSnippet: message || '',
+    }).catch((error) => {
+      console.error('❌ Failed to send contact confirmation email:', error)
+    })
 
     return NextResponse.json(
       {
