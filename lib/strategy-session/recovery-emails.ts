@@ -28,7 +28,7 @@ function baseHtml({ firstName, body, cta, replyToEmail }: { firstName: string; b
       <p>Hi ${firstName},</p>
       ${body}
       <p><a href="${cta}" style="display:inline-block;background:#111827;color:#ffffff;padding:12px 18px;border-radius:6px;text-decoration:none;font-weight:bold">Book Strategy Session - $199</a></p>
-      <p>Best,<br/>Ashwani<br/>FSI Digital<br/><a href="mailto:${replyToEmail}" style="color:#2563eb">${replyToEmail}</a></p>
+      <p>Best regards,<br/>Ashwani<br/>FSI Digital<br/><a href="mailto:${replyToEmail}" style="color:#2563eb">${replyToEmail}</a></p>
       <p style="font-size:12px;color:#6b7280">If this is not useful, reply "unsubscribe" and we will stop sending follow-ups.</p>
     </div>
   `;
@@ -67,7 +67,7 @@ The $199 Strategy Session is designed to turn your submitted details into a prac
 You can secure your session here:
 ${consultationUrl}
 
-Best,
+Best regards,
 Ashwani
 FSI Digital
 ${replyToEmail}
@@ -101,7 +101,7 @@ If our research shows your business is not a fit for any active funding options,
 If you want us to complete that review, you can book here:
 ${consultationUrl}
 
-Best,
+Best regards,
 Ashwani
 FSI Digital
 ${replyToEmail}
@@ -135,7 +135,7 @@ If now is not the right time, no problem. You can reply with any question, or re
 Booking link:
 ${consultationUrl}
 
-Best,
+Best regards,
 Ashwani
 FSI Digital
 ${replyToEmail}
@@ -171,7 +171,7 @@ The session includes 2 hours of pre-call desk research, a personalized Business 
 
 If our pre-call research shows your business is not a fit for any active grant, loan, or tax-credit options, we refund the $199 session fee immediately. We do not guarantee funding approval.
 
-Best,
+Best regards,
 Ashwani
 FSI Digital
 ${replyToEmail}

@@ -59,7 +59,7 @@ function buildHtml({
         <li>If you need to add any details, simply reply to this email.</li>
       </ul>
 
-      <p>Best,<br/>Ashwani<br/>FSI Digital<br/><a href="mailto:${replyToEmail}" style="color:#2563eb">${replyToEmail}</a></p>
+      <p>Best regards,<br/>Ashwani<br/>FSI Digital<br/><a href="mailto:${replyToEmail}" style="color:#2563eb">${replyToEmail}</a></p>
     </div>
   `;
 }
@@ -87,7 +87,7 @@ What happens next:
 - Our team typically responds within 24–48 hours.
 - If you need to add any details, simply reply to this email.
 
-Best,
+Best regards,
 Ashwani
 FSI Digital
 ${replyToEmail}`;
