@@ -4,8 +4,10 @@ import { usePathname } from 'next/navigation'
 import Script from 'next/script'
 
 const EXCLUDED_ROUTES = [
+  '/contact',
   '/consultation',
-  '/booking'
+  '/booking',
+  '/partners'
 ]
 
 const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-1200907614877581'

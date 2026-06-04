@@ -10,6 +10,28 @@ const CONSULTATION_PAYPAL_CLIENT_ID =
   process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ||
   'ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq';
 
+const CHECKOUT_AD_SUPPRESSION_CSS = `
+  .adsbygoogle,
+  .google-auto-placed,
+  .adsbygoogle-noablate,
+  ins.adsbygoogle,
+  iframe[name^="google_ads_iframe"],
+  iframe[id^="google_ads_iframe"],
+  iframe[src*="googleads"],
+  div[id^="google_ads_iframe"],
+  google-rabs-container,
+  #google_vignette {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    height: 0 !important;
+    width: 0 !important;
+    max-height: 0 !important;
+    max-width: 0 !important;
+    pointer-events: none !important;
+  }
+`;
+
 type StrategySessionUpsellProps = {
   source?: string;
   compact?: boolean;
@@ -169,6 +191,7 @@ export function StrategySessionUpsell({
   return (
     <>
       <Script src={paypalSdkUrl} strategy="afterInteractive" onLoad={() => setScriptReady(true)} />
+      {isModalOpen && <style dangerouslySetInnerHTML={{ __html: CHECKOUT_AD_SUPPRESSION_CSS }} />}
 
       {!modalOnly && (
         <div className={`rounded-lg border border-emerald-200 bg-emerald-50 p-5 text-left shadow-sm ${compact ? '' : 'sm:p-6'}`}>
