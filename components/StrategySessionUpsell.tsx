@@ -1,7 +1,7 @@
 'use client';
 
 import Script from 'next/script';
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { ArrowRight, CalendarCheck, CheckCircle2, Loader2, ShieldCheck, X } from 'lucide-react';
 
 const CONSULTATION_PRICE = '199.00';
@@ -20,6 +20,14 @@ type StrategySessionUpsellProps = {
   onDismiss?: () => void;
 };
 
+function createRecoveryId() {
+  if (typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function') {
+    return crypto.randomUUID();
+  }
+
+  return `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+}
+
 export function StrategySessionUpsell({
   source = 'lead-form',
   compact = false,
@@ -34,32 +42,52 @@ export function StrategySessionUpsell({
   const [paymentError, setPaymentError] = useState('');
   const paypalContainerRef = useRef<HTMLDivElement>(null);
   const buttonsRenderedRef = useRef(false);
-  const followUpSentRef = useRef(false);
+  const recoveryIdRef = useRef('');
+  const shownRecordedRef = useRef(false);
+  const abandonmentRecordedRef = useRef(false);
 
-  const consultationHref = `/consultation?source=${encodeURIComponent(source)}`;
+  if (!recoveryIdRef.current) {
+    recoveryIdRef.current = createRecoveryId();
+  }
+
+  const recoveryId = recoveryIdRef.current;
+  const consultationHref = `/consultation?source=${encodeURIComponent(source)}&rid=${encodeURIComponent(recoveryId)}`;
   const paypalSdkUrl = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(CONSULTATION_PAYPAL_CLIENT_ID)}&currency=USD&intent=capture&components=buttons`;
 
-  const sendFollowUp = async (reason: string) => {
-    if (!leadEmail || followUpSentRef.current) return;
-    followUpSentRef.current = true;
+  const recordRecoveryEvent = useCallback(async (
+    event: 'shown' | 'abandoned' | 'paid',
+    details: { reason?: string; paypalOrderId?: string; rawSummary?: string } = {},
+  ) => {
+    if (!leadEmail && event !== 'paid') return;
 
-    await fetch('/api/strategy-session/follow-up', {
+    await fetch('/api/strategy-session/recovery', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        event,
+        recoveryId,
         email: leadEmail,
         name: leadName,
         source,
-        reason,
+        reason: details.reason,
+        pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+        paypalOrderId: details.paypalOrderId,
+        rawSummary: details.rawSummary,
       }),
     }).catch((error) => {
-      console.error('Strategy session follow-up failed:', error);
+      console.error('Strategy session recovery tracking failed:', error);
     });
-  };
+  }, [leadEmail, leadName, recoveryId, source]);
+
+  const recordAbandonment = useCallback((reason: string) => {
+    if (abandonmentRecordedRef.current) return;
+    abandonmentRecordedRef.current = true;
+    void recordRecoveryEvent('abandoned', { reason });
+  }, [recordRecoveryEvent]);
 
   const closeModal = () => {
     setIsModalOpen(false);
-    sendFollowUp('modal_closed');
+    recordAbandonment('modal_closed');
     onDismiss?.();
   };
 
@@ -68,6 +96,15 @@ export function StrategySessionUpsell({
       setScriptReady(true);
     }
   }, []);
+
+  useEffect(() => {
+    if (!isModalOpen || !leadEmail || shownRecordedRef.current) {
+      return;
+    }
+
+    shownRecordedRef.current = true;
+    void recordRecoveryEvent('shown', { reason: 'payment_popup_shown' });
+  }, [isModalOpen, leadEmail, recordRecoveryEvent]);
 
   useEffect(() => {
     if (!isModalOpen || !scriptReady || buttonsRenderedRef.current || !paypalContainerRef.current || !(window as any).paypal) {
@@ -97,16 +134,26 @@ export function StrategySessionUpsell({
         });
       },
       onApprove: async (_data: unknown, actions: any) => {
-        await actions.order.capture();
-        window.location.href = `/booking?source=${encodeURIComponent(source)}`;
+        const details = await actions.order.capture();
+        const paypalOrderId = String(details?.id || '');
+        await recordRecoveryEvent('paid', {
+          paypalOrderId,
+          rawSummary: JSON.stringify({
+            paypalOrderId,
+            status: details?.status || '',
+            payerEmail: details?.payer?.email_address || '',
+          }),
+        });
+        window.location.href = `/booking?source=${encodeURIComponent(source)}&rid=${encodeURIComponent(recoveryId)}`;
       },
       onCancel: () => {
         setPaymentError('Payment was cancelled. You can restart checkout whenever you are ready.');
-        sendFollowUp('paypal_cancelled');
+        recordAbandonment('paypal_cancelled');
       },
       onError: (error: unknown) => {
         console.error('Strategy session PayPal error:', error);
         setPaymentError('Payment could not be completed. Please try again or use the full checkout page.');
+        recordAbandonment('paypal_error');
       },
     });
 
@@ -117,7 +164,7 @@ export function StrategySessionUpsell({
       buttons.close?.();
       buttonsRenderedRef.current = false;
     };
-  }, [isModalOpen, scriptReady, source]);
+  }, [isModalOpen, scriptReady, source, recoveryId, recordAbandonment, recordRecoveryEvent]);
 
   return (
     <>

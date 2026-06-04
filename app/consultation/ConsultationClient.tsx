@@ -24,6 +24,49 @@ export default function ConsultationClient() {
     || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
     || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq";
 
+  const markRecoveryPaid = async (details: any) => {
+    if (typeof window === 'undefined') return;
+
+    const params = new URLSearchParams(window.location.search);
+    const recoveryId = params.get('rid') || params.get('recoveryId');
+    if (!recoveryId) return;
+
+    const paypalOrderId = String(details?.id || '');
+    await fetch('/api/strategy-session/recovery', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'paid',
+        recoveryId,
+        source: params.get('source') || 'consultation-page',
+        pagePath: window.location.pathname,
+        paypalOrderId,
+        rawSummary: JSON.stringify({
+          paypalOrderId,
+          status: details?.status || '',
+          payerEmail: details?.payer?.email_address || '',
+        }),
+      }),
+    }).catch((error) => {
+      console.error('Strategy session paid recovery update failed:', error);
+    });
+  };
+
+  const getBookingUrl = () => {
+    if (typeof window === 'undefined') return '/booking';
+
+    const params = new URLSearchParams(window.location.search);
+    const bookingParams = new URLSearchParams();
+    const source = params.get('source');
+    const recoveryId = params.get('rid') || params.get('recoveryId');
+
+    if (source) bookingParams.set('source', source);
+    if (recoveryId) bookingParams.set('rid', recoveryId);
+
+    const query = bookingParams.toString();
+    return query ? `/booking?${query}` : '/booking';
+  };
+
   useEffect(() => {
     if ((window as any).paypal) {
       setSdkReady(true);
@@ -72,8 +115,8 @@ export default function ConsultationClient() {
       },
       onApprove: async (data: any, actions: any) => {
         const details = await actions.order.capture();
-        console.log("Payment approved:", details);
-        window.location.href = '/booking';
+        await markRecoveryPaid(details);
+        window.location.href = getBookingUrl();
       },
       onError: (err: any) => {
         console.error("PayPal Smart Button Error:", err);
