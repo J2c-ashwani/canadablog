@@ -52,7 +52,7 @@ function getPayPalCredentials() {
   const clientSecret = process.env.PAYPAL_CLIENT_SECRET;
 
   if (!clientId || !clientSecret) {
-    throw new Error('Missing PayPal credentials. Set PAYPAL_CLIENT_ID, NEXT_PUBLIC_PAYPAL_CLIENT_ID, and PAYPAL_CLIENT_SECRET.');
+    throw new Error('PayPal checkout is not available right now.');
   }
 
   return { clientId, clientSecret };

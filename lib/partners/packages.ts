@@ -16,14 +16,15 @@ export const PARTNER_PACKAGES: PartnerPackage[] = [
   {
     id: 'shared-pilot',
     name: 'Shared Lead Pilot',
-    priceUsd: 299,
+    priceUsd: 500,
     leadCount: '10 leads',
     leadType: 'Shared qualified leads',
-    description: 'A starter pilot for funding advisors who want to test FSI Digital lead quality before a monthly plan.',
+    description: 'A paid pilot for funding advisors who want to test FSI Digital lead quality before a monthly plan.',
     delivery: 'Manual delivery after partner approval and lead availability confirmation.',
     features: [
       'Redacted sample review before private lead delivery',
       'Tier, score, industry, market, and funding goal included',
+      '$50 per shared qualified lead in the starter pilot',
       'Best for consultants testing multiple funding categories',
     ],
   },

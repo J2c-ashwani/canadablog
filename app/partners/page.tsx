@@ -121,39 +121,58 @@ export default function FundingPartnerProgramPage() {
             alt="FSI Digital funding partner program"
             fill
             priority
-            className="object-cover opacity-35"
+            className="object-cover opacity-25"
             sizes="100vw"
           />
-          <div className="absolute inset-0 bg-gray-950/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-gray-950 via-gray-950/90 to-gray-950/55" />
           <div className="container relative mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-3xl">
+            <div className="max-w-4xl">
               <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-semibold text-emerald-100 backdrop-blur-sm">
                 <Handshake className="h-4 w-4" />
-                Consent-based funding lead partnerships
+                Qualified funding leads for approved partners
               </div>
               <h1 className="text-4xl font-bold leading-tight sm:text-5xl lg:text-6xl">
-                Funding Partner Program
+                Buy Qualified Business Funding Leads
               </h1>
-              <p className="mt-6 max-w-2xl text-lg leading-8 text-gray-100">
-                FSI Digital connects Canadian and US businesses researching grants, loans, tax credits, and growth
-                capital with selected funding partners who can help them take the next step.
+              <p className="mt-6 max-w-3xl text-lg leading-8 text-gray-100">
+                FSI Digital captures Canadian and US businesses actively looking for grants, loans, tax credits, and
+                growth capital. Partners can review redacted lead quality, choose a PayPal pilot package, and receive
+                approved lead delivery after consent and fit review.
               </p>
+              <div className="mt-6 grid max-w-3xl gap-3 text-sm font-semibold text-gray-100 sm:grid-cols-3">
+                <div className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-sm">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                  Lead score and tier
+                </div>
+                <div className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-sm">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                  Funding intent data
+                </div>
+                <div className="flex items-center gap-2 rounded-md border border-white/15 bg-white/10 px-3 py-2 backdrop-blur-sm">
+                  <CheckCircle2 className="h-4 w-4 text-emerald-300" />
+                  Consent-based routing
+                </div>
+              </div>
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link
-                  href="/contact"
+                  href="#pricing"
                   className="inline-flex items-center justify-center gap-2 rounded-md bg-emerald-500 px-5 py-3 font-semibold text-gray-950 transition hover:bg-emerald-400"
                 >
-                  Become a Partner
+                  View Pricing
                   <ArrowRight className="h-4 w-4" />
                 </Link>
                 <Link
-                  href="/grant-finder"
+                  href="#lead-demo"
                   className="inline-flex items-center justify-center gap-2 rounded-md border border-white/25 bg-white/10 px-5 py-3 font-semibold text-white transition hover:bg-white/15"
                 >
-                  View Lead Funnel
-                  <Target className="h-4 w-4" />
+                  See Redacted Demo
+                  <Eye className="h-4 w-4" />
                 </Link>
               </div>
+              <p className="mt-4 max-w-2xl text-sm text-gray-300">
+                Private lead details are not publicly downloadable. Delivery happens after payment, approval, and
+                consent review.
+              </p>
             </div>
           </div>
         </section>
@@ -210,7 +229,7 @@ export default function FundingPartnerProgramPage() {
           </div>
         </section>
 
-        <section className="border-t border-gray-200 bg-gray-50 py-16">
+        <section id="lead-demo" className="scroll-mt-24 border-t border-gray-200 bg-gray-50 py-16">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="mb-8 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
               <div>
@@ -266,7 +285,7 @@ export default function FundingPartnerProgramPage() {
           </div>
         </section>
 
-        <section className="container mx-auto px-4 py-16 sm:px-6 lg:px-8">
+        <section id="pricing" className="container mx-auto scroll-mt-24 px-4 py-16 sm:px-6 lg:px-8">
           <div className="mb-8 max-w-3xl">
             <p className="text-sm font-bold uppercase tracking-wide text-emerald-700">PayPal pilot packages</p>
             <h2 className="mt-3 text-3xl font-bold text-gray-950 sm:text-4xl">Let approved partners start with a paid pilot.</h2>

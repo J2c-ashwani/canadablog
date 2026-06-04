@@ -44,7 +44,7 @@ export default async function PartnerCheckoutPage({
               <div className="mt-6 rounded-lg bg-gray-950 p-5 text-white">
                 <div className="text-sm font-semibold text-emerald-200">{selectedPackage.leadType}</div>
                 <div className="mt-2 text-4xl font-bold">${selectedPackage.priceUsd.toLocaleString('en-US')}</div>
-                <div className="mt-1 text-sm text-gray-300">{selectedPackage.leadCount} · paid via PayPal · {currency}</div>
+                <div className="mt-1 text-sm text-gray-300">{selectedPackage.leadCount} · partner pilot · {currency}</div>
               </div>
               <div className="mt-6 space-y-3">
                 {selectedPackage.features.map((feature) => (
@@ -63,12 +63,30 @@ export default async function PartnerCheckoutPage({
             {paypalClientId ? (
               <PayPalPartnerCheckout selectedPackage={selectedPackage} clientId={paypalClientId} currency={currency} />
             ) : (
-              <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 text-amber-900">
-                <h2 className="text-2xl font-bold">PayPal is not configured yet</h2>
-                <p className="mt-2">
-                  Set NEXT_PUBLIC_PAYPAL_CLIENT_ID, PAYPAL_CLIENT_ID, PAYPAL_CLIENT_SECRET, and PAYPAL_ENV in Vercel to
-                  enable partner payments.
+              <div className="rounded-lg border border-amber-200 bg-amber-50 p-6 text-amber-950 shadow-sm">
+                <h2 className="text-2xl font-bold">Partner Checkout Is Temporarily Unavailable</h2>
+                <p className="mt-2 leading-7">
+                  Online PayPal checkout is being activated. You can still request this partner pilot and receive a
+                  manual PayPal invoice after buyer fit and lead availability are reviewed.
                 </p>
+                <div className="mt-5 rounded-md bg-white/70 p-4 text-sm text-amber-900">
+                  No payment has been taken on this page. Private lead details remain protected until payment, approval,
+                  and consent review are complete.
+                </div>
+                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
+                  <Link
+                    href="/contact"
+                    className="inline-flex items-center justify-center rounded-md bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-gray-800"
+                  >
+                    Request PayPal Invoice
+                  </Link>
+                  <Link
+                    href="/partners#pricing"
+                    className="inline-flex items-center justify-center rounded-md border border-amber-300 bg-white px-5 py-3 font-semibold text-amber-950 transition hover:bg-amber-100"
+                  >
+                    Back to Pricing
+                  </Link>
+                </div>
               </div>
             )}
           </div>
