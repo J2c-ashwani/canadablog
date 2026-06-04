@@ -24,7 +24,7 @@ export function AdminLoginForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        setError(data.error || 'Incorrect admin key.');
+        setError(data.error || 'Incorrect access code.');
         return;
       }
 
@@ -32,7 +32,7 @@ export function AdminLoginForm() {
       router.refresh();
     } catch (err) {
       console.error('Admin login failed:', err);
-      setError('Unable to login. Please try again.');
+      setError('Unable to unlock the dashboard. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
@@ -41,13 +41,13 @@ export function AdminLoginForm() {
   return (
     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
       <label className="block">
-        <span className="mb-2 block text-sm font-semibold text-gray-700">Admin dashboard key</span>
+        <span className="mb-2 block text-sm font-semibold text-gray-700">Private access code</span>
         <input
           type="password"
           value={key}
           onChange={(event) => setKey(event.target.value)}
           className="w-full rounded-md border border-gray-300 px-4 py-3 text-base focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
-          placeholder="Enter your LEAD_DASHBOARD_SECRET"
+          placeholder="Enter your access code"
           autoComplete="current-password"
           required
         />

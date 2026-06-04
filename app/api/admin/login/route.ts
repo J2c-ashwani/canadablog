@@ -8,14 +8,14 @@ export async function POST(request: NextRequest) {
     const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
 
     if (!adminSecret) {
-      return NextResponse.json({ error: 'Admin key is not configured in Vercel.' }, { status: 500 });
+      return NextResponse.json({ error: 'Private dashboard access is not ready yet.' }, { status: 500 });
     }
 
     const body = await request.json();
     const key = String(body.key || '');
 
     if (!isValidAdminKey(key, adminSecret)) {
-      return NextResponse.json({ error: 'Incorrect admin key.' }, { status: 401 });
+      return NextResponse.json({ error: 'Incorrect access code.' }, { status: 401 });
     }
 
     const response = NextResponse.json({ success: true });

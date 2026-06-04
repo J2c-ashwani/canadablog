@@ -74,18 +74,18 @@ function LockedState({ hasSecret }: { hasSecret: boolean }) {
           <h1 className="text-3xl font-bold text-gray-950">Lead Dashboard Locked</h1>
           <p className="mt-3 text-gray-700">
             {hasSecret
-              ? 'Enter your admin dashboard key to view the protected lead intelligence dashboard.'
-              : 'Set LEAD_DASHBOARD_SECRET in Vercel before using this dashboard.'}
+              ? 'Enter your private access code to view the lead intelligence dashboard.'
+              : 'Private dashboard access is not ready yet.'}
           </p>
           {hasSecret ? (
             <AdminLoginForm />
           ) : (
-            <div className="mt-6 rounded-md bg-gray-50 p-4 font-mono text-sm text-gray-700">
-              LEAD_DASHBOARD_SECRET=your-private-dashboard-key
+            <div className="mt-6 rounded-md bg-gray-50 p-4 text-sm font-semibold text-gray-700">
+              Ask the site owner to enable private dashboard access.
             </div>
           )}
           <p className="mt-4 text-sm text-gray-500">
-            This page is noindex and does not show lead data unless the key matches your environment secret.
+            This page is private and does not show lead data unless the access code is correct.
           </p>
         </div>
       </main>
