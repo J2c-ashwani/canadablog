@@ -36,12 +36,17 @@ function buildHtml({
   replyToEmail: string;
 }) {
   return `
-    <div style="font-family:Arial,sans-serif;line-height:1.7;color:#111827;max-width:620px">
+    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:#334155;max-width:580px;margin:0 auto;padding:24px;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;">
       <div style="display:none;max-height:0;overflow:hidden;color:transparent">We received your funding question — here's a copy for your records.</div>
 
-      <p>Hi ${firstName},</p>
+      <!-- Brand Header -->
+      <div style="padding-bottom:16px;border-bottom:1px solid #f1f5f9;margin-bottom:24px;">
+        <span style="font-size:18px;font-weight:700;color:#0f172a;letter-spacing:-0.02em;">FSI <span style="color:#10b981;">Digital</span></span>
+      </div>
 
-      <p>Thank you for reaching out to FSI Digital. We have received your message and a member of our team will review it.</p>
+      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">Hi ${firstName},</p>
+
+      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">Thank you for reaching out to FSI Digital. We have received your message and a member of our team will review it.</p>
 
       <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px 20px; margin: 20px 0;">
         <p style="margin: 0 0 8px 0; font-size: 11px; color: #047857; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Your Request</p>
@@ -53,13 +58,31 @@ function buildHtml({
         </div>
       </div>
 
-      <p><strong>What happens next:</strong></p>
-      <ul style="padding-left:20px;color:#334155">
-        <li>Our team typically responds within <strong>24–48 hours</strong>.</li>
-        <li>If you need to add any details, simply reply to this email.</li>
-      </ul>
+      <p style="margin:20px 0 8px 0;font-weight:700;color:#0f172a;font-size:15px;">What happens next:</p>
+      <table style="width:100%;border-collapse:collapse;margin:0 0 20px 0;" cellpadding="0" cellspacing="0">
+        <tr>
+          <td style="vertical-align:top;width:20px;padding-bottom:8px;font-size:14px;color:#10b981;font-weight:bold;">•</td>
+          <td style="vertical-align:top;font-size:14px;color:#475569;padding-bottom:8px;line-height:1.5;">
+            Our team typically responds within <strong>24–48 hours</strong>.
+          </td>
+        </tr>
+        <tr>
+          <td style="vertical-align:top;width:20px;font-size:14px;color:#10b981;font-weight:bold;">•</td>
+          <td style="vertical-align:top;font-size:14px;color:#475569;line-height:1.5;">
+            If you need to add any details, simply reply to this email.
+          </td>
+        </tr>
+      </table>
 
-      <p>Best regards,<br/>Ashwani<br/>FSI Digital<br/><a href="mailto:${replyToEmail}" style="color:#2563eb">${replyToEmail}</a></p>
+      <!-- Footer Signature -->
+      <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
+        <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
+          Best regards,<br/>
+          <strong>Ashwani</strong><br/>
+          <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
+          <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
+        </p>
+      </div>
     </div>
   `;
 }
