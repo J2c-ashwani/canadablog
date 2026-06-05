@@ -123,6 +123,25 @@ export default function sitemap(): MetadataRoute.Sitemap {
       .map(page => [`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`, page.publishedAt])
   )
 
+  const partnerRoutes = [
+    '/partners/business-loan-leads',
+    '/partners/government-grant-leads',
+    '/partners/startup-funding-leads',
+    '/partners/tax-credit-leads',
+    '/partners/sred-leads',
+    '/partners/canada-funding-leads',
+    '/partners/usa-funding-leads',
+    '/partners/merchant-cash-advance-leads',
+    '/partners/equipment-financing-leads',
+    '/partners/working-capital-leads',
+    '/partners/commercial-real-estate-leads',
+    '/partners/sbir-grant-leads',
+    '/partners/usda-grant-leads',
+    '/partners/clean-energy-grant-leads',
+    '/partners/women-owned-business-leads',
+    '/partners/nonprofit-grant-leads',
+  ]
+
   // Combine all routes
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
@@ -132,7 +151,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...cityRoutes,
     ...pseoProvinceRoutes,
     ...pseoCityHubRoutes,
-    ...pseoRoutes
+    ...pseoRoutes,
+    ...partnerRoutes,
   ])).filter(isIndexableRoute)
 
   // Convert to sitemap format

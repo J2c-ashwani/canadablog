@@ -36,7 +36,17 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
 
     const cleanPhone = (data.phone || "").replace(/[^0-9]/g, "")
     const firstName = (data.name || "").split(" ")[0] || "there"
-    const waMessage = `Hi ${firstName}, Ashwani here from FSI Digital. I reviewed your business funding inquiry. Based on your profile, we can prepare a custom Funding Roadmap matching you to active Canadian grants & loans.\n\nYou can lock in your 2-hour research audit and secure your Strategy Session slot here: https://www.fsidigital.ca/consultation?source=whatsapp\n\nIf our research shows you don't qualify for any active programs, we refund the $199 immediately (100% risk-free). Let me know if you have any questions!`
+    
+    // Dynamically adjust country adjective for B2B relevance
+    const countryLower = (data.country || "").toLowerCase()
+    let countryPhrase = "active grants & loans"
+    if (countryLower.includes("united states") || countryLower.includes("us")) {
+      countryPhrase = "active US grants & loans"
+    } else if (countryLower.includes("canada")) {
+      countryPhrase = "active Canadian grants & loans"
+    }
+
+    const waMessage = `Hi ${firstName}, Ashwani here from FSI Digital. I reviewed your business funding inquiry. Based on your profile, we can prepare a custom Funding Roadmap matching you to ${countryPhrase}.\n\nYou can lock in your 2-hour research audit and secure your Strategy Session slot here: https://www.fsidigital.ca/consultation?source=whatsapp\n\nIf our research shows you don't qualify for any active programs, we refund the $199 immediately (100% risk-free). Let me know if you have any questions!`
     const waLink = cleanPhone 
       ? `=HYPERLINK("https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMessage)}", "WhatsApp Chat")` 
       : "N/A"
@@ -225,3 +235,145 @@ export async function captureEmailLead(email: string, source: string, name?: str
     name,
   })
 }
+
+export type PartnerInquirySheetData = {
+  timestamp: string
+  name: string
+  email: string
+  phone: string
+  companyName: string
+  website: string
+  leadType: string
+  geography: string
+  existingVolume: string
+  budget: string
+  purchaseModel: string
+  decisionMakerRole: string
+  preferences: string
+  ipAddress?: string
+  userAgent?: string
+}
+
+const PARTNER_INQUIRY_HEADERS = [
+  "Timestamp",
+  "Name",
+  "Email",
+  "Phone",
+  "Company Name",
+  "Website",
+  "Lead Type",
+  "Geography",
+  "Existing Volume",
+  "Monthly Budget",
+  "Purchase Model",
+  "Decision Maker Role",
+  "ICP Preferences",
+  "Lead Buyer Score",
+  "Status",
+  "Assigned Manager",
+  "Last Follow-up Date",
+  "Notes",
+  "Receipt Sent",
+  "Approval Sent",
+  "IP Address",
+  "User Agent"
+]
+
+async function ensurePartnerInquirySheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "Partner Inquiries"
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  })
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE)
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: SHEET_TITLE,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:V1`,
+  })
+
+  const header = headerResponse.data.values?.[0] || []
+  if (header.join("|") !== PARTNER_INQUIRY_HEADERS.join("|")) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:V1`,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [PARTNER_INQUIRY_HEADERS],
+      },
+    })
+  }
+}
+
+export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData, score: number) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) {
+      throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+    }
+
+    await ensurePartnerInquirySheet(sheets, spreadsheetId)
+
+    const values = [
+      [
+        data.timestamp,
+        data.name || "N/A",
+        data.email,
+        data.phone || "N/A",
+        data.companyName || "N/A",
+        data.website || "N/A",
+        data.leadType || "N/A",
+        data.geography || "N/A",
+        data.existingVolume || "N/A",
+        data.budget || "N/A",
+        data.purchaseModel || "N/A",
+        data.decisionMakerRole || "N/A",
+        data.preferences || "N/A",
+        score,
+        "New", // CRM Status default
+        "Unassigned", // CRM Assigned Manager default
+        "N/A", // CRM Last Follow-up default
+        "N/A", // CRM Notes default
+        "Yes", // Receipt Sent
+        "No", // Approval Sent
+        data.ipAddress || "N/A",
+        data.userAgent || "N/A"
+      ]
+    ]
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "Partner Inquiries!A:V",
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values,
+      },
+    })
+
+    console.log(`✅ Partner inquiry logged: ${data.email} with score: ${score}`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Error saving partner inquiry to Google Sheets:", error)
+    return { success: false, error }
+  }
+}
+

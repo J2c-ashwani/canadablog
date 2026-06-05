@@ -3,6 +3,10 @@
     {
       "path": "/api/strategy-session/recovery/send-due",
       "schedule": "0 9 * * *"
+    },
+    {
+      "path": "/api/partners/cron/approve-due",
+      "schedule": "0 * * * *"
     }
   ]
 }
