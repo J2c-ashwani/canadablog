@@ -3,13 +3,36 @@ import { appendLeadToSheet } from "@/lib/google-sheets"
 import { sendContactConfirmation } from "@/lib/emails/contact-confirmation"
 import { validateEmail } from "@/lib/email-validator"
 
+function formatPhoneNumber(phone: string, country?: string): string {
+  if (!phone) return "N/A"
+
+  const cleanPhone = phone.replace(/[^0-9]/g, "")
+  if (cleanPhone.length === 0) return "N/A"
+
+  const countryLower = (country || "").toLowerCase()
+  let defaultPrefix = "1"
+  if (countryLower.includes("india")) defaultPrefix = "91"
+  if (countryLower.includes("united kingdom") || countryLower.includes("uk")) defaultPrefix = "44"
+  if (countryLower.includes("australia")) defaultPrefix = "61"
+
+  if (cleanPhone.length === 10) {
+    return `+${defaultPrefix}${cleanPhone}`
+  }
+
+  if (cleanPhone.startsWith(defaultPrefix)) {
+    return `+${cleanPhone}`
+  }
+
+  return phone.startsWith("+") ? phone : `+${cleanPhone}`
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
     const {
       name,
       email,
-      phone,
+      phone: rawPhone,
       category,
       message,
       companyName,
@@ -23,6 +46,8 @@ export async function POST(request: NextRequest) {
       consentToPartnerContact,
       pagePath,
     } = body
+
+    const phone = formatPhoneNumber(rawPhone, country)
 
     // Validate required fields
     if (!email || !name || !message) {
