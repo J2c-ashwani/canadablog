@@ -68,7 +68,7 @@ function getEmailContent(stage: StrategyRecoveryEmailStage, firstName: string, c
         replyToEmail,
         body: `
           <p style="margin:0 0 16px 0;">The biggest mistake I see business owners make with government funding is simple: <strong>waiting too long to apply</strong>.</p>
-          <p style="margin:0 0 16px 0;">Many of the best grants and interest-free loan programs in Canada have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in non-dilutive capital.</p>
+          <p style="margin:0 0 16px 0;">Many of the best grants and interest-free loan programs have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in non-dilutive capital.</p>
           <p style="margin:0 0 20px 0;">Your business details are already in my queue. During your <strong>$199 Strategy Session</strong>, we will perform a deep dive to map out your funding windows so you never miss a deadline.</p>
           
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
@@ -106,7 +106,7 @@ function getEmailContent(stage: StrategyRecoveryEmailStage, firstName: string, c
  
 The biggest mistake I see business owners make with government funding is simple: waiting too long to apply.
  
-Many of the best grants and interest-free loan programs in Canada have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in free capital.
+Many of the best grants and interest-free loan programs have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in free capital.
  
 Your business details are already in my queue. During your $199 Strategy Session, we will perform a deep dive to map out your funding windows so you never miss a deadline.
  
@@ -241,9 +241,9 @@ If this is not useful, reply "unsubscribe" and we will stop sending follow-ups.`
       cta: consultationUrl,
       replyToEmail,
       body: `
-        <p style="margin:0 0 16px 0;">Applying for government grants and business funding in Canada is notoriously frustrating. Between dense eligibility rules, hidden deadlines, and dozens of portals, most founders give up before they even start.</p>
+        <p style="margin:0 0 16px 0;">Applying for government grants and business funding is notoriously frustrating. Between dense eligibility rules, hidden deadlines, and dozens of portals, most founders give up before they even start.</p>
         <p style="margin:0 0 20px 0;">That is why you filled out our form—because you want a clear, straight-to-the-point path to secure capital without wasting dozens of hours.</p>
-        <p style="margin:0 0 20px 0;">When you book a <strong>Strategy Session</strong>, my team and I spend 2 hours doing the heavy lifting for you before we even meet, matching your business profile against active federal, provincial, and private programs.</p>
+        <p style="margin:0 0 20px 0;">When you book a <strong>Strategy Session</strong>, my team and I spend 2 hours doing the heavy lifting for you before we even meet, matching your business profile against active federal, regional, and private programs.</p>
 
         <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
           <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">On our call, I will hand you a Funding Roadmap showing:</p>
