@@ -61,39 +61,35 @@ function baseHtml({ firstName, body, cta, replyToEmail }: { firstName: string; b
 function getEmailContent(stage: StrategyRecoveryEmailStage, firstName: string, consultationUrl: string, replyToEmail: string) {
   if (stage === 'value_24h') {
     return {
-      subject: 'Your funding roadmap is still available',
+      subject: 'The cost of waiting on government funding',
       html: baseHtml({
         firstName,
         cta: consultationUrl,
         replyToEmail,
         body: `
-          <p style="margin:0 0 16px 0;">Your funding profile is still in our queue, waiting for a formal review.</p>
-          <p style="margin:0 0 20px 0;">The <strong>$199 Strategy Session</strong> is designed to turn your submitted details into a concrete, step-by-step funding plan:</p>
+          <p style="margin:0 0 16px 0;">The biggest mistake I see business owners make with government funding is simple: <strong>waiting too long to apply</strong>.</p>
+          <p style="margin:0 0 16px 0;">Many of the best grants and interest-free loan programs in Canada have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in non-dilutive capital.</p>
+          <p style="margin:0 0 20px 0;">Your business details are already in my queue. During your <strong>$199 Strategy Session</strong>, we will perform a deep dive to map out your funding windows so you never miss a deadline.</p>
           
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
+            <p style="margin:0 0 12px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">Our Action Plan Together:</p>
             <table style="width:100%;border-collapse:collapse;margin:0;" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="vertical-align:top;width:24px;padding-bottom:12px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
                 <td style="vertical-align:top;padding-bottom:12px;font-size:14px;color:#475569;line-height:1.5;">
-                  <strong>2 Hours Pre-Call Desk Research:</strong> Handled by our analysts on your business, industry, and region.
+                  <strong>Complete Program Audit:</strong> We analyze federal, provincial, and private grants to tell you exactly what you qualify for.
                 </td>
               </tr>
               <tr>
                 <td style="vertical-align:top;width:24px;padding-bottom:12px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
                 <td style="vertical-align:top;padding-bottom:12px;font-size:14px;color:#475569;line-height:1.5;">
-                  <strong>Personalized Funding Roadmap:</strong> Covers grants, government loans, and tax credits you qualify for.
-                </td>
-              </tr>
-              <tr>
-                <td style="vertical-align:top;width:24px;padding-bottom:12px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
-                <td style="vertical-align:top;padding-bottom:12px;font-size:14px;color:#475569;line-height:1.5;">
-                  <strong>Top Program Matches:</strong> Ranked by eligibility fit and next action items.
+                  <strong>Application Strategy:</strong> We share formatting tips and requirements to help you pass the government review stage.
                 </td>
               </tr>
               <tr>
                 <td style="vertical-align:top;width:24px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
                 <td style="vertical-align:top;font-size:14px;color:#475569;line-height:1.5;">
-                  <strong>Private Google Meet Call:</strong> A focused 30-minute session to discuss results and plan application stages.
+                  <strong>Capital Stacking:</strong> How to mix grants, loans, and tax credits to maximize your total payout.
                 </td>
               </tr>
             </table>
@@ -103,18 +99,23 @@ function getEmailContent(stage: StrategyRecoveryEmailStage, firstName: string, c
             <strong>Zero-Risk Guarantee:</strong> If our research shows you have zero viable funding options, your fee is refunded in full, instantly.
           </div>
 
-          <p style="margin:20px 0 0 0;">You can reserve your session and start your research here:</p>
+          <p style="margin:20px 0 0 0;">You can reserve your session and lock in your research audit here:</p>
         `,
       }),
       text: `Hi ${firstName},
  
-Your funding profile is still waiting for review.
+The biggest mistake I see business owners make with government funding is simple: waiting too long to apply.
  
-The $199 Strategy Session is designed to turn your submitted details into a practical funding action plan:
-- 2 hours of pre-call desk research on your business, industry, and region.
-- A personalized Business Funding Roadmap across grants, loans, and tax credits.
-- Your top eligible program matches ranked by fit and next action.
-- A private Google Meet call to decide what to pursue first.
+Many of the best grants and interest-free loan programs in Canada have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in free capital.
+ 
+Your business details are already in my queue. During your $199 Strategy Session, we will perform a deep dive to map out your funding windows so you never miss a deadline.
+ 
+Here is what we will build:
+- Complete Program Audit: We tell you exactly what grants and programs you qualify for.
+- Application Strategy: Secrets to passing the government review stage.
+- Capital Stacking: Mixing grants, loans, and tax credits to maximize your total payout.
+ 
+Zero-Risk Guarantee: If our research shows you have zero viable funding options, your fee is refunded in full, instantly.
  
 You can secure your session here:
 ${consultationUrl}
@@ -130,37 +131,39 @@ If this is not useful, reply "unsubscribe" and we will stop sending follow-ups.`
  
   if (stage === 'objection_3d') {
     return {
-      subject: 'What if your business does not qualify?',
+      subject: 'Is a $199 strategy session worth it?',
       html: baseHtml({
         firstName,
         cta: consultationUrl,
         replyToEmail,
         body: `
-          <p style="margin:0 0 16px 0;">A very common question business owners ask before booking is: <em>"What if my business doesn't qualify for anything?"</em></p>
-          <p style="margin:0 0 20px 0;">That's exactly why we do the <strong>2 hours of pre-call desk research</strong> first. Before we jump on a call, our team reviews your industry, region, entity type, and funding goals against all active programs.</p>
+          <p style="margin:0 0 16px 0;">I completely understand if you are hesitant to spend $199 on a strategy session. In the government grants space, there is a lot of noise and false promises.</p>
+          <p style="margin:0 0 20px 0;">That is exactly why I put a <strong>100% money-back guarantee</strong> on this session. I want this to be completely risk-free for you.</p>
 
           <div style="background-color:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:20px;margin:24px 0;">
-            <p style="margin:0 0 8px 0;font-size:15px;font-weight:700;color:#064e3b;">Our Refund Guarantee Policy</p>
+            <p style="margin:0 0 8px 0;font-size:15px;font-weight:700;color:#064e3b;">Our Qualification Guarantee</p>
             <p style="margin:0;font-size:14px;color:#047857;line-height:1.6;">
-              If our pre-call research reveals your business is not a fit for any active government grant, loan, or tax-credit options, <strong>we refund your $199 session fee immediately</strong>.
+              My team and I spend 2 hours researching your business profile <strong>before</strong> our call. If we find that there are zero active programs you qualify for, I will refund your $199 fee immediately. You will receive an automated refund receipt before we even meet.
             </p>
             <p style="margin:10px 0 0 0;font-size:13px;color:#059669;font-style:italic;">
-              This keeps the process completely risk-free for you. We only host calls where we can add real value.
+              This means you only pay if we find real funding opportunities for your business. If we find nothing, it costs you $0.
             </p>
           </div>
 
-          <p style="margin:20px 0 0 0;">If you would like us to begin your qualifying review, you can secure your slot here:</p>
+          <p style="margin:20px 0 0 0;">If you want us to start your research audit, you can secure your session here:</p>
         `,
       }),
       text: `Hi ${firstName},
  
-A common question before booking is: "What if my business does not qualify?"
+I completely understand if you are hesitant to spend $199 on a strategy session. In the government grants space, there is a lot of noise and false promises.
  
-That is exactly why we do the pre-call research first. Before your private call, we review your industry, region, entity type, and funding goals against active grant, loan, and tax-credit options.
+That is exactly why I put a 100% money-back guarantee on this session.
  
-If our research shows your business is not a fit for any active funding options, we refund the $199 session fee immediately. No pressure and no funding approval guarantee.
+My team and I spend 2 hours researching your business profile before our call. If we find that there are zero active programs you qualify for, I will refund your $199 fee immediately. You will receive an automated refund receipt before we even meet.
  
-If you want us to complete that review, you can book here:
+This means you only pay if we find real funding opportunities for your business. If we find nothing, it costs you $0.
+ 
+You can book your session here:
 ${consultationUrl}
  
 Best regards,
@@ -180,46 +183,47 @@ If this is not useful, reply "unsubscribe" and we will stop sending follow-ups.`
         cta: consultationUrl,
         replyToEmail,
         body: `
-          <p style="margin:0 0 16px 0;">I don't want to keep filling your inbox if securing funding isn't a priority for your business right now.</p>
-          <p style="margin:0 0 16px 0;">If you still want a custom funding roadmap, you can secure your Strategy Session and we will prepare the 2 hours of custom research before our call.</p>
+          <p style="margin:0 0 16px 0;">I haven't heard back from you, so I assume finding government funding isn't a priority for your business right now.</p>
+          <p style="margin:0 0 16px 0;">I will go ahead and close your funding review file tomorrow so my team can focus on active applicants in our queue.</p>
+          <p style="margin:0 0 20px 0;">If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to book a slot:</p>
 
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:20px 0;font-size:14px;color:#475569;line-height:1.6;">
-            <strong style="color:#0f172a;display:block;margin-bottom:8px;">What would you like to do?</strong>
+            <strong style="color:#0f172a;display:block;margin-bottom:8px;">Your Options:</strong>
             <table style="width:100%;border-collapse:collapse;margin:0;" cellpadding="0" cellspacing="0">
               <tr>
                 <td style="vertical-align:top;width:18px;color:#2563eb;font-weight:bold;">•</td>
                 <td style="vertical-align:top;font-size:14px;color:#334155;padding-bottom:8px;">
-                  <a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Click here to book your session ($199)</a>
+                  <a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Strategy Session here ($199)</a>
                 </td>
               </tr>
               <tr>
                 <td style="vertical-align:top;width:18px;color:#475569;font-weight:bold;">•</td>
                 <td style="vertical-align:top;font-size:14px;color:#475569;padding-bottom:8px;">
-                  Reply to this email with any quick questions you have.
+                  Reply directly to this email with any quick questions.
                 </td>
               </tr>
               <tr>
                 <td style="vertical-align:top;width:18px;color:#475569;font-weight:bold;">•</td>
                 <td style="vertical-align:top;font-size:14px;color:#475569;">
-                  Reply "unsubscribe" if you would like me to close your file.
+                  Reply "unsubscribe" to close your file immediately.
                 </td>
               </tr>
             </table>
           </div>
 
-          <p style="margin:20px 0 0 0;">No pressure either way.</p>
+          <p style="margin:20px 0 0 0;">Otherwise, I wish you the best of luck in scaling your business this year.</p>
         `,
       }),
       text: `Hi ${firstName},
  
-I did not want to keep following up if this is not a priority right now.
+I haven't heard back from you, so I assume finding government funding isn't a priority for your business right now.
  
-If you still want a private funding roadmap, you can book the Strategy Session and we will prepare the research before your call.
+I will go ahead and close your funding review file tomorrow so my team can focus on active applicants in our queue.
  
-If now is not the right time, no problem. You can reply with any question, or reply "unsubscribe" and we will close the follow-up.
- 
-Booking link:
+If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to book:
 ${consultationUrl}
+ 
+Otherwise, I wish you the best of luck in scaling your business this year.
  
 Best regards,
 Ashwani
@@ -237,49 +241,42 @@ If this is not useful, reply "unsubscribe" and we will stop sending follow-ups.`
       cta: consultationUrl,
       replyToEmail,
       body: `
-        <p style="margin:0 0 16px 0;">I noticed that you submitted your business details for a funding review on FSI Digital, but didn't finish scheduling your private session.</p>
-        <p style="margin:0 0 20px 0;">Did the checkout page give you any issues, or do you have any quick questions about your business's eligibility first?</p>
+        <p style="margin:0 0 16px 0;">Applying for government grants and business funding in Canada is notoriously frustrating. Between dense eligibility rules, hidden deadlines, and dozens of portals, most founders give up before they even start.</p>
+        <p style="margin:0 0 20px 0;">That is why you filled out our form—because you want a clear, straight-to-the-point path to secure capital without wasting dozens of hours.</p>
+        <p style="margin:0 0 20px 0;">When you book a <strong>Strategy Session</strong>, my team and I spend 2 hours doing the heavy lifting for you before we even meet, matching your business profile against active federal, provincial, and private programs.</p>
 
         <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
-          <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">Your Strategy Session Includes:</p>
+          <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">On our call, I will hand you a Funding Roadmap showing:</p>
           <table style="width:100%;border-collapse:collapse;margin:0;" cellpadding="0" cellspacing="0">
             <tr>
               <td style="vertical-align:top;width:24px;padding-bottom:10px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
               <td style="vertical-align:top;padding-bottom:10px;font-size:14px;color:#475569;line-height:1.5;">
-                <strong>2 Hours Pre-Call Research:</strong> We analyze your business against all active grants, loans, and tax credits before we talk.
+                <strong>Priority Matches:</strong> Which grant and loan programs you should apply for first.
               </td>
             </tr>
             <tr>
               <td style="vertical-align:top;width:24px;padding-bottom:10px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
               <td style="vertical-align:top;padding-bottom:10px;font-size:14px;color:#475569;line-height:1.5;">
-                <strong>Custom Funding Roadmap:</strong> A personalized document outlining your best matches and application deadlines.
+                <strong>Funding Estimates:</strong> How much capital you can realistically expect to win.
               </td>
             </tr>
             <tr>
               <td style="vertical-align:top;width:24px;font-size:14px;color:#10b981;font-weight:bold;">✓</td>
               <td style="vertical-align:top;font-size:14px;color:#475569;line-height:1.5;">
-                <strong>Private Consultation:</strong> A 30-minute Google Meet call to answer your questions and plan next steps.
+                <strong>Secret Requirements:</strong> Deadlines and application criteria to maximize your approval odds.
               </td>
             </tr>
           </table>
         </div>
 
         <div style="background-color:#ecfdf5;border:1px dashed #34d399;border-radius:8px;padding:14px 16px;margin:20px 0;font-size:13.5px;color:#064e3b;line-height:1.5;">
-          <strong>Zero-Risk Guarantee:</strong> If our pre-call research shows your business is not a fit for any active funding options, we refund the $199 session fee immediately.
+          <strong>Our Guarantee:</strong> If our pre-call research shows your business is not a fit for any active funding options, we refund the $199 session fee immediately.
         </div>
 
-        <p style="margin:20px 0 0 0;">If you are ready to secure your roadmap, you can book your slot here:</p>
+        <p style="margin:20px 0 0 0;">Let's get your funding roadmap sorted. Select a time that works for you here:</p>
       `,
     }),
     text: `Hi ${firstName},
-
-I saw that you submitted your business funding details on FSI Digital, but did not finish booking your private strategy session.
-
-Did the checkout page give you any trouble, or did you have a quick question about eligibility before booking?
-
-If you are ready, you can secure your 30-minute Funding Strategy Session here:
-${consultationUrl}
-
 The session includes 2 hours of pre-call desk research, a personalized Business Funding Roadmap, your top eligible program matches, and a private Google Meet call to plan next steps.
 
 If our pre-call research shows your business is not a fit for any active grant, loan, or tax-credit options, we refund the $199 session fee immediately. We do not guarantee funding approval.
