@@ -15,6 +15,20 @@ import {
 } from "lucide-react"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 
+const COUNTRY_CODES = [
+    { code: "+1", label: "Canada/US (+1)", flag: "🇨🇦" },
+    { code: "+91", label: "India (+91)", flag: "🇮🇳" },
+    { code: "+44", label: "United Kingdom (+44)", flag: "🇬🇧" },
+    { code: "+61", label: "Australia (+61)", flag: "🇦🇺" },
+    { code: "+64", label: "New Zealand (+64)", flag: "🇳🇿" },
+    { code: "+234", label: "Nigeria (+234)", flag: "🇳🇬" },
+    { code: "+63", label: "Philippines (+63)", flag: "🇵🇭" },
+    { code: "+92", label: "Pakistan (+92)", flag: "🇵🇰" },
+    { code: "+880", label: "Bangladesh (+880)", flag: "🇧🇩" },
+    { code: "+971", label: "United Arab Emirates (+971)", flag: "🇦🇪" },
+    { code: "+65", label: "Singapore (+65)", flag: "🇸🇬" },
+]
+
 const CONTACT_CATEGORY_DEFAULT = "Funding Eligibility Question"
 
 const CONTACT_CATEGORIES = [
@@ -119,6 +133,7 @@ export default function ContactClient() {
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
     const [errorMessage, setErrorMessage] = useState<string | null>(null)
+    const [countryCode, setCountryCode] = useState("+1")
     const [newsletterEmail, setNewsletterEmail] = useState("")
     const [newsletterStatus, setNewsletterStatus] = useState<"idle" | "success" | "error">("idle")
     const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false)
@@ -141,11 +156,20 @@ export default function ContactClient() {
         setErrorMessage(null)
 
         try {
+            const rawPhone = formData.phone.replace(/[^0-9]/g, "")
+            let formattedPhone = rawPhone
+            if (rawPhone.startsWith(countryCode.replace("+", ""))) {
+                formattedPhone = `+${rawPhone}`
+            } else {
+                formattedPhone = `${countryCode}${rawPhone}`
+            }
+
             const response = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                     ...formData,
+                    phone: formattedPhone,
                     pagePath: window.location.pathname,
                 }),
             })
@@ -324,14 +348,27 @@ export default function ContactClient() {
                             <div className="grid gap-5 sm:grid-cols-2">
                                 <div>
                                     <label className="mb-2 block text-sm font-semibold text-slate-700">Phone Number *</label>
-                                    <input
-                                        type="tel"
-                                        required
-                                        placeholder="+1 (555) 000-0000"
-                                        value={formData.phone}
-                                        onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                                        className="contact-input-focus w-full rounded-lg border border-slate-200 bg-slate-50/50 px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400"
-                                    />
+                                    <div className="flex gap-2">
+                                        <select
+                                            value={countryCode}
+                                            onChange={(e) => setCountryCode(e.target.value)}
+                                            className="contact-input-focus rounded-lg border border-slate-200 bg-slate-50/50 px-3 py-3 text-base text-slate-900 outline-none transition w-[110px] flex-none cursor-pointer"
+                                        >
+                                            {COUNTRY_CODES.map((c) => (
+                                                <option key={c.label} value={c.code}>
+                                                    {c.flag} {c.code}
+                                                </option>
+                                            ))}
+                                        </select>
+                                        <input
+                                            type="tel"
+                                            required
+                                            placeholder="(555) 000-0000"
+                                            value={formData.phone}
+                                            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                                            className="contact-input-focus w-full rounded-lg border border-slate-200 bg-slate-50/50 px-4 py-3 text-base text-slate-900 outline-none transition placeholder:text-slate-400"
+                                        />
+                                    </div>
                                 </div>
                                 <div>
                                     <label className="mb-2 block text-sm font-semibold text-slate-700">Request Type *</label>

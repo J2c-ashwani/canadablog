@@ -34,6 +34,13 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       consentText,
     })
 
+    const cleanPhone = (data.phone || "").replace(/[^0-9]/g, "")
+    const firstName = (data.name || "").split(" ")[0] || "there"
+    const waMessage = `Hi ${firstName}, Ashwani here from FSI Digital. I reviewed your funding inquiry regarding business funding and wanted to follow up. Are you free for a quick chat today?`
+    const waLink = cleanPhone 
+      ? `=HYPERLINK("https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMessage)}", "WhatsApp Chat")` 
+      : "N/A"
+
     const values = [
       [
         data.timestamp,
@@ -62,13 +69,14 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.ipAddress || "N/A",
         data.userAgent || "N/A",
         intelligence.qualificationNotes,
+        waLink,
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:Z",
-      valueInputOption: "RAW",
+      range: "Leads!A:AA",
+      valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
       },
