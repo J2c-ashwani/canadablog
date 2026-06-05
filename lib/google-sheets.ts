@@ -36,7 +36,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
 
     const cleanPhone = (data.phone || "").replace(/[^0-9]/g, "")
     const firstName = (data.name || "").split(" ")[0] || "there"
-    const waMessage = `Hi ${firstName}, Ashwani here from FSI Digital. I reviewed your funding inquiry regarding business funding and wanted to follow up. Are you free for a quick chat today?`
+    const waMessage = `Hi ${firstName}, Ashwani here from FSI Digital. I reviewed your business funding inquiry. Based on your profile, we can prepare a custom Funding Roadmap matching you to active Canadian grants & loans.\n\nYou can lock in your 2-hour research audit and secure your Strategy Session slot here: https://www.fsidigital.ca/consultation?source=whatsapp\n\nIf our research shows you don't qualify for any active programs, we refund the $199 immediately (100% risk-free). Let me know if you have any questions!`
     const waLink = cleanPhone 
       ? `=HYPERLINK("https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMessage)}", "WhatsApp Chat")` 
       : "N/A"
