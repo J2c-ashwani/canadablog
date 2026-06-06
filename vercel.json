@@ -6,7 +6,7 @@
     },
     {
       "path": "/api/partners/cron/approve-due",
-      "schedule": "0 * * * *"
+      "schedule": "30 9 * * *"
     }
   ]
 }
