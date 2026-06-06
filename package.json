@@ -9,7 +9,8 @@
     "start": "next start",
     "seo:revenue-report": "node scripts/revenue-recovery-report.js",
     "seo:priority-sitemap": "node scripts/generate-priority-sitemap.js",
-    "seo:recovery-sitemap": "node scripts/generate-indexing-recovery-sitemap.js"
+    "seo:recovery-sitemap": "node scripts/generate-indexing-recovery-sitemap.js",
+    "seo:partners-sitemap": "node scripts/generate-partners-sitemap.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
