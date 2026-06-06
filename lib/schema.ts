@@ -1,4 +1,5 @@
 import { BlogPost } from './data/blogPosts';
+import type { OfficialSource } from './editorial/priorityResearch';
 
 const SITE_URL = 'https://www.fsidigital.ca';
 
@@ -8,7 +9,14 @@ function toAbsoluteUrl(url: string | undefined, fallback: string) {
   return `${SITE_URL}${value.startsWith('/') ? value : `/${value}`}`;
 }
 
-export function generateBlogPostSchema(post: BlogPost) {
+interface EditorialSchemaDetails {
+  dateModified: string;
+  reviewedBy: string;
+  reviewerRole: string;
+  sources: OfficialSource[];
+}
+
+export function generateBlogPostSchema(post: BlogPost, editorial?: EditorialSchemaDetails) {
   // Strip HTML for accurate word count
   const plainText = post.content.replace(/<[^>]*>/g, ' ').replace(/\s+/g, ' ').trim();
   const wordCount = plainText.split(' ').filter(w => w.length > 0).length;
@@ -41,7 +49,7 @@ export function generateBlogPostSchema(post: BlogPost) {
       }
     },
     "datePublished": post.date,
-    "dateModified": post.date,
+    "dateModified": editorial?.dateModified || post.date,
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://www.fsidigital.ca/blog/${post.slug}`
@@ -51,6 +59,16 @@ export function generateBlogPostSchema(post: BlogPost) {
     "wordCount": wordCount || undefined,
     "timeRequired": post.readTime
   };
+
+  if (editorial) {
+    schema.reviewedBy = {
+      "@type": "Person",
+      "name": editorial.reviewedBy,
+      "jobTitle": editorial.reviewerRole,
+      "url": "https://www.fsidigital.ca/about"
+    };
+    schema.citation = editorial.sources.map(source => source.url);
+  }
 
   // Speakable schema: helps Google Assistant / AI Overviews quote our short answer
   if (post.shortAnswer) {

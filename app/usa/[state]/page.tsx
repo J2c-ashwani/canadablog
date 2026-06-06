@@ -17,6 +17,8 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import InlineCTA from '@/components/blog/InlineCTA';
+import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch';
+import { PriorityResearchLandingPage } from '@/components/editorial/PriorityResearchLandingPage';
 import {
 
     ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
@@ -41,10 +43,10 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const { state: stateSlug } = await params;
     const state = getStateDetailBySlug(stateSlug);
     if (!state) notFound();
+    const researchProfile = getPriorityResearchProfile(`/usa/${state.slug}`);
 
     const funding = state.heroStats.totalFunding;
     const programs = state.heroStats.programCount;
-    const successRate = state.heroStats.successRate;
     const topProgram = state.topPrograms?.[0]?.name;
 
     const title = topProgram && topProgram.length <= 34
@@ -54,8 +56,8 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const description = `Find ${state.name} business grants, ${topProgram ? `${topProgram}, ` : ''}tax credits, SBA/SBIR support, and state incentives. Compare ${programs} programs and eligibility.`;
 
     return {
-        title,
-        description,
+        title: researchProfile?.seoTitle || title,
+        description: researchProfile?.seoDescription || description,
         keywords: [
             `${state.name} business grants 2026`,
             `how to apply for grants in ${state.name}`,
@@ -77,8 +79,8 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
         },
         robots: { index: true, follow: true },
         openGraph: {
-            title: `${state.name} Business Grants 2026 — ${funding} in Active Funding`,
-            description,
+            title: researchProfile?.seoTitle || `${state.name} Business Grants 2026 — ${funding} in Active Funding`,
+            description: researchProfile?.seoDescription || description,
             type: 'article',
         },
     };
@@ -88,6 +90,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
     const { state: stateSlug } = await params;
     const state = getStateDetailBySlug(stateSlug);
     if (!state) return notFound();
+    const researchProfile = getPriorityResearchProfile(`/usa/${state.slug}`);
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -101,7 +104,16 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
             "logo": { "@type": "ImageObject", "url": "https://www.fsidigital.ca/fsi-logo.png" }
         },
         "datePublished": "2026-01-15T00:00:00.000Z",
-        "dateModified": "2026-04-12T00:00:00.000Z",
+        "dateModified": `${researchProfile?.lastVerified || '2026-04-12'}T00:00:00.000Z`,
+        ...(researchProfile ? {
+            "reviewedBy": {
+                "@type": "Person",
+                "name": researchProfile.reviewedBy,
+                "jobTitle": researchProfile.reviewerRole,
+                "url": "https://www.fsidigital.ca/about"
+            },
+            "citation": researchProfile.officialSources.map(source => source.url),
+        } : {}),
         "mainEntityOfPage": { "@type": "WebPage", "@id": `https://www.fsidigital.ca/usa/${state.slug}` },
         "image": "https://www.fsidigital.ca/images/blog/usa-grants-theme.png",
     };
@@ -115,6 +127,16 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
             { "@type": "ListItem", "position": 3, "name": `${state.name} Grants 2026`, "item": `https://www.fsidigital.ca/usa/${state.slug}` },
         ]
     };
+
+    if (researchProfile) {
+        return (
+            <PriorityResearchLandingPage
+                profile={researchProfile}
+                eyebrow={`${state.name} business funding research`}
+                title={`${state.name} Business Grants, Incentives & Funding Programs`}
+            />
+        );
+    }
 
     return (
         <div className="min-h-screen bg-white">
@@ -150,7 +172,11 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             <ShortAnswerBox content={state.shortAnswer} />
                         )}
                         <div className="mt-4 mb-6">
-                            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-04-12" />
+                            <EEATBadge
+                                authorName="Ashwani K."
+                                authorImage="/author-ashwani.jpg"
+                                date="2026-04-12"
+                            />
                         </div>
                         <p className="text-xl text-gray-600 mb-6">
                             Complete guide to {state.heroStats.totalFunding} in {state.name} business funding across {state.heroStats.programCount} programs
@@ -158,22 +184,10 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
 
                         {/* Hero Stats Grid */}
                         <div className="grid grid-cols-2 md:grid-cols-4 gap-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl p-6">
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-green-600">{state.heroStats.totalFunding}</div>
-                                <div className="text-sm text-gray-600">Total Funding</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-blue-600">{state.heroStats.programCount}</div>
-                                <div className="text-sm text-gray-600">Programs</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-purple-600">{state.heroStats.successRate}</div>
-                                <div className="text-sm text-gray-600">Success Rate</div>
-                            </div>
-                            <div className="text-center">
-                                <div className="text-3xl font-bold text-orange-600">{state.heroStats.avgProcessingTime}</div>
-                                <div className="text-sm text-gray-600">Processing Time</div>
-                            </div>
+                            <div className="text-center"><div className="text-3xl font-bold text-green-600">{state.heroStats.totalFunding}</div><div className="text-sm text-gray-600">Total Funding</div></div>
+                            <div className="text-center"><div className="text-3xl font-bold text-blue-600">{state.heroStats.programCount}</div><div className="text-sm text-gray-600">Programs</div></div>
+                            <div className="text-center"><div className="text-3xl font-bold text-purple-600">{state.heroStats.successRate}</div><div className="text-sm text-gray-600">Success Rate</div></div>
+                            <div className="text-center"><div className="text-3xl font-bold text-orange-600">{state.heroStats.avgProcessingTime}</div><div className="text-sm text-gray-600">Processing Time</div></div>
                         </div>
 
                         {/* DWELL TIME: Comparison Table */}

@@ -1,13 +1,13 @@
 import React from 'react';
-import Image from 'next/image';
 
 interface EEATBadgeProps {
     authorName: string;
     authorImage: string;
     date: string;
+    reviewerRole?: string;
 }
 
-export default function EEATBadge({ authorName, authorImage, date }: EEATBadgeProps) {
+export default function EEATBadge({ authorName, authorImage, date, reviewerRole = 'FSI Digital Funding Research' }: EEATBadgeProps) {
     // Format the date
     const formattedDate = new Date(date).toLocaleDateString('en-US', {
         year: 'numeric',
@@ -28,7 +28,7 @@ export default function EEATBadge({ authorName, authorImage, date }: EEATBadgePr
             <div className="flex flex-col">
                 <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                        Expert Review: {authorName}
+                        Research review: {authorName}
                     </span>
                     <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                         <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -38,7 +38,7 @@ export default function EEATBadge({ authorName, authorImage, date }: EEATBadgePr
                     </span>
                 </div>
                 <span className="text-xs text-gray-500 dark:text-gray-400 mt-0.5">
-                    Updated: {formattedDate} • Based on official government guidelines
+                    {reviewerRole} • Reviewed {formattedDate}
                 </span>
             </div>
         </div>

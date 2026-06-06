@@ -26,6 +26,10 @@ import { RelatedPageLinks } from '@/components/RelatedPageLinks';
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
+import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
+import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
+import { EditorialResearchContent } from '@/components/editorial/EditorialResearchContent';
+import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch';
 
 type RelatedFundingLink = {
   href: string;
@@ -116,13 +120,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const post = getBlogPostBySlug(slug);
   if (!post) notFound();
 
-  // Site-Wide Enrichment Logic:
-  // Dynamically INDEX posts only if they have been enriched with High Value content stats/tips.
-  const richData = await getBlogPostRichData(slug);
-  const isEnriched = !!(richData.metrics || richData.expertTip);
+  const researchProfile = getPriorityResearchProfile(`/blog/${slug}`);
+  const baseMetadata = generateSEOMetadata({ ...post, content: '' });
 
   return {
-    ...generateSEOMetadata({ ...post, content: '' }),
+    ...baseMetadata,
+    title: researchProfile?.seoTitle || baseMetadata.title,
+    description: researchProfile?.seoDescription || baseMetadata.description,
+    openGraph: researchProfile ? {
+      ...baseMetadata.openGraph,
+      title: researchProfile.seoTitle,
+      description: researchProfile.seoDescription,
+    } : baseMetadata.openGraph,
     robots: {
       index: true,
       follow: true,
@@ -150,13 +159,24 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const rawContent = await getBlogPostContent(slug) || '';
   const content = stripInlineSchemas(rawContent);
   const richData = await getBlogPostRichData(slug);
+  const researchProfile = getPriorityResearchProfile(`/blog/${slug}`);
   // Also sanitize post.content so the RSC payload doesn't carry duplicate schemas
-  const fullPost = { ...post, ...richData, content: stripInlineSchemas(content) };
+  const fullPost = {
+    ...post,
+    ...richData,
+    ...(researchProfile ? {
+      title: researchProfile.seoTitle,
+      excerpt: researchProfile.seoDescription,
+      shortAnswerQuestion: researchProfile.shortAnswerQuestion,
+      shortAnswer: researchProfile.shortAnswer,
+    } : {}),
+    content: stripInlineSchemas(content),
+  };
 
   // Split content for InlineCTA injection
   let beforeCTA = content;
   let afterCTA = "";
-  if (fullPost.inlineCTA) {
+  if (fullPost.inlineCTA || researchProfile) {
     const h2Matches = [...content.matchAll(/<h2/gi)];
     if (h2Matches.length >= 2) {
       const splitIndex = h2Matches[Math.min(2, h2Matches.length - 1)].index;
@@ -168,7 +188,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   }
 
   const category = blogCategories.find((cat) => cat.id === post.category);
-  const blogPostSchema = generateBlogPostSchema(fullPost);
+  const blogPostSchema = generateBlogPostSchema(fullPost, researchProfile ? {
+    dateModified: researchProfile.lastVerified,
+    reviewedBy: researchProfile.reviewedBy,
+    reviewerRole: researchProfile.reviewerRole,
+    sources: researchProfile.officialSources,
+  } : undefined);
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
   const relatedFundingLinks = sanitizeRelatedLinks(fullPost.relatedLinks, fullPost);
 
@@ -243,21 +268,29 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               {/* Q&A ANSWER ENGINE HERO */}
-              <div className="bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-800 rounded-2xl p-8 md:p-12 mb-8 text-center">
+              <div className={researchProfile
+                ? 'rounded-lg bg-slate-950 p-8 text-left text-white md:p-12 mb-8'
+                : 'bg-gradient-to-br from-emerald-900 via-emerald-800 to-teal-800 rounded-2xl p-8 md:p-12 mb-8 text-center'}>
                 <div className="mb-4">
-                  <span className="inline-flex items-center gap-1.5 bg-white/20 backdrop-blur-sm text-white text-sm font-medium px-4 py-1.5 rounded-full">
-                    🔥 {category?.name ?? 'Grant'} Answer Engine
+                  <span className="inline-flex items-center gap-1.5 rounded-md border border-white/20 bg-white/10 px-4 py-1.5 text-sm font-medium text-white">
+                    {researchProfile ? 'FSI Digital Funding Research' : `${category?.name ?? 'Grant'} Answer Engine`}
                   </span>
                 </div>
 
-                {/* Hide standard H1 for grant-news, as the ShortAnswerBox will provide the SEO H1 */}
-                {post.type !== 'grant-news' && (
+                {researchProfile ? (
+                  <>
+                  <h1 className="mb-5 text-3xl font-bold leading-tight text-white md:text-5xl">
+                    {researchProfile.seoTitle}
+                  </h1>
+                  <p className="max-w-3xl text-lg leading-8 text-slate-200">{researchProfile.seoDescription}</p>
+                  </>
+                ) : post.type !== 'grant-news' && (
                   <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-8 leading-tight">
                     {post.title}
                   </h1>
                 )}
 
-                {fullPost.shortAnswer && (
+                {fullPost.shortAnswer && !researchProfile && (
                   <div className="text-left w-full mx-auto max-w-4xl">
                     <ShortAnswerBox
                       question={fullPost.shortAnswerQuestion}
@@ -267,8 +300,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </div>
                 )}
 
-                <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={post.date} />
+                <EEATBadge
+                  authorName={researchProfile?.reviewedBy || 'Ashwani K.'}
+                  authorImage="/author-ashwani.jpg"
+                  date={researchProfile?.lastVerified || post.date}
+                  reviewerRole={researchProfile?.reviewerRole}
+                />
               </div>
+
+              {researchProfile && (
+                <ShortAnswerBox
+                  question={researchProfile.shortAnswerQuestion}
+                  content={researchProfile.shortAnswer}
+                />
+              )}
 
               {/* Metadata Bar (below hero) */}
               <div className="flex flex-wrap items-center gap-6 mb-6 text-sm text-gray-500 dark:text-gray-400">
@@ -290,10 +335,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <Clock className="w-4 h-4 mr-2" />
                   <span>{post.readTime}</span>
                 </div>
-                <LastVerifiedBadge date={post.date} />
+                <LastVerifiedBadge date={researchProfile?.lastVerified || post.date} />
               </div>
 
-              {/* AI Answer Summary Box */}
+              {researchProfile ? (
+                <ResearchBriefPanel profile={researchProfile} />
+              ) : (
               <div id="ai-summary" className="bg-emerald-50 border border-emerald-100 rounded-lg p-6 mb-8 mt-2 shadow-sm">
                 <h2 className="text-xl font-bold flex items-center gap-2 mb-3 text-gray-900 border-b border-emerald-200 pb-2">
                   <Zap className="w-5 h-5 text-yellow-500" />
@@ -314,12 +361,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   </li>
                 </ul>
               </div>
+              )}
 
               {fullPost.eligibleCheck && (
                 <EligibleCheck />
               )}
 
-              {fullPost.jumpLinks && (
+              {fullPost.jumpLinks && !researchProfile && (
                 <StickyTOC links={fullPost.jumpLinks} />
               )}
 
@@ -333,7 +381,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
 
               {/* DYNAMIC ENRICHMENT: Success Metrics Table */}
-              {fullPost.metrics && (
+              {fullPost.metrics && !researchProfile && (
                 <div className="mb-10 not-prose">
                   <GrantSuccessTable
                     title="Quick Funding Facts"
@@ -349,7 +397,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* DYNAMIC ENRICHMENT: Comparison Table */}
-              {fullPost.comparisonTable && (
+              {fullPost.comparisonTable && !researchProfile && (
                 <div className="mb-10 not-prose">
                   <GrantComparisonTable
                     title={fullPost.comparisonTable.title}
@@ -360,7 +408,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* DYNAMIC ENRICHMENT: Expert Tip */}
-              {fullPost.expertTip && (
+              {fullPost.expertTip && !researchProfile && (
                 <div className="mb-10 not-prose">
                   <ExpertTipBox
                     type={fullPost.expertTip.type}
@@ -371,24 +419,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
-                {beforeContentData.nodes}
-              </div>
-
-              {fullPost.inlineCTA && (
-                <div className="not-prose my-8">
-                  <InlineCTA {...fullPost.inlineCTA} />
+              {researchProfile ? (
+                <EditorialResearchContent route={researchProfile.route} />
+              ) : (
+                <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
+                  {beforeContentData.nodes}
                 </div>
               )}
 
-              {afterCTA && (
+              {(fullPost.inlineCTA || researchProfile) && (
+                <div className="not-prose my-8">
+                  {researchProfile ? (
+                    <IntentStrategyCTA cta={researchProfile.cta} />
+                  ) : (
+                    fullPost.inlineCTA && <InlineCTA {...fullPost.inlineCTA} />
+                  )}
+                </div>
+              )}
+
+              {afterCTA && !researchProfile && (
                 <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
                   {afterContentData.nodes}
                 </div>
               )}
 
               {/* DYNAMIC ENRICHMENT: FAQ UI */}
-              {fullPost.faq && (
+              {fullPost.faq && !researchProfile && (
                 <div className="mt-12 mb-8 not-prose">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>
                   <Accordion type="single" collapsible className="w-full">
