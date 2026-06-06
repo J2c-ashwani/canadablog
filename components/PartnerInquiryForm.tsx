@@ -227,7 +227,7 @@ export function PartnerInquiryForm({ initialLeadType, initialGeography }: Partne
               <select
                 value={countryCode}
                 onChange={(e) => setCountryCode(e.target.value)}
-                className="w-[110px] rounded-lg border border-slate-200 bg-slate-50/50 px-2.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-emerald-500 focus:bg-white cursor-pointer"
+                className="w-[110px] flex-none rounded-lg border border-slate-200 bg-slate-50/50 px-2.5 py-2.5 text-sm text-slate-900 outline-none transition focus:border-emerald-500 focus:bg-white cursor-pointer"
               >
                 {COUNTRY_CODES.map((c) => (
                   <option key={c.label} value={c.code}>

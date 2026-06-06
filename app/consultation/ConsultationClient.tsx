@@ -1,45 +1,78 @@
 'use client';
 
-import { useState, useEffect } from 'react'
-import { Header } from "@/components/Header"
-import { Footer } from "@/components/Footer"
-import { 
-  CheckCircle, 
-  Calendar, 
-  ShieldCheck, 
-  Clock, 
-  Award, 
-  Sparkles, 
+import { useState, useEffect, useCallback } from 'react';
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import {
+  CheckCircle,
+  ShieldCheck,
+  Clock,
+  Award,
+  Sparkles,
   ArrowRight,
   TrendingUp,
-  ChevronRight,
-  FileCheck2,
-  Users
-} from 'lucide-react'
+  Users,
+  ChevronDown,
+  Zap,
+  Star,
+  Lock,
+  BarChart3,
+  FileText,
+  Phone,
+  Search,
+  BadgeCheck,
+  CircleDollarSign,
+  Timer,
+  Building2,
+  Database,
+} from 'lucide-react';
+
+/* ─────────────────────────────────────────────
+   Consultation Page – Premium Redesign
+   Light advisory aesthetic · 2-tier cards · Collapsible FAQ
+   ───────────────────────────────────────────── */
 
 export default function ConsultationClient() {
   const [sdkReady, setSdkReady] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
+  const [selectedTier, setSelectedTier] = useState<'audit' | 'vip'>('audit');
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
+  const [params, setParams] = useState<{ email: string; name: string; rid: string; source: string; scheduled: boolean }>({
+    email: '',
+    name: '',
+    rid: '',
+    source: 'consultation-page',
+    scheduled: false
+  });
+
   const paypalClientId = process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID
     || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
     || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq";
 
-  const markRecoveryPaid = async (details: any) => {
-    if (typeof window === 'undefined') return;
+  /* ── URL Params ── */
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    setParams({
+      email: searchParams.get('email') || '',
+      name: searchParams.get('name') || '',
+      rid: searchParams.get('rid') || searchParams.get('recoveryId') || '',
+      source: searchParams.get('source') || 'consultation-page',
+      scheduled: searchParams.get('scheduled') === 'true'
+    });
+  }, []);
 
-    const params = new URLSearchParams(window.location.search);
-    const recoveryId = params.get('rid') || params.get('recoveryId');
-    if (!recoveryId) return;
-
+  /* ── Recovery Tracking ── */
+  const markRecoveryPaid = useCallback(async (details: any) => {
+    if (!params.rid) return;
     const paypalOrderId = String(details?.id || '');
     await fetch('/api/strategy-session/recovery', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         event: 'paid',
-        recoveryId,
-        source: params.get('source') || 'consultation-page',
-        pagePath: window.location.pathname,
+        recoveryId: params.rid,
+        source: params.source,
+        pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
         paypalOrderId,
         rawSummary: JSON.stringify({
           paypalOrderId,
@@ -50,36 +83,36 @@ export default function ConsultationClient() {
     }).catch((error) => {
       console.error('Strategy session paid recovery update failed:', error);
     });
-  };
+  }, [params.rid, params.source]);
 
-  const getBookingUrl = () => {
-    if (typeof window === 'undefined') return '/booking';
+  const markRecoveryAbandoned = useCallback(async (reason: string) => {
+    if (!params.rid) return;
+    await fetch('/api/strategy-session/recovery', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        event: 'abandoned',
+        recoveryId: params.rid,
+        source: params.source,
+        reason,
+        pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+      }),
+    }).catch((error) => {
+      console.error('Strategy session abandoned recovery update failed:', error);
+    });
+  }, [params.rid, params.source]);
 
-    const params = new URLSearchParams(window.location.search);
-    const bookingParams = new URLSearchParams();
-    const source = params.get('source');
-    const recoveryId = params.get('rid') || params.get('recoveryId');
-
-    if (source) bookingParams.set('source', source);
-    if (recoveryId) bookingParams.set('rid', recoveryId);
-
-    const query = bookingParams.toString();
-    return query ? `/booking?${query}` : '/booking';
-  };
-
+  /* ── PayPal SDK Load ── */
   useEffect(() => {
     if ((window as any).paypal) {
       setSdkReady(true);
       return;
     }
-
     const script = document.createElement("script");
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`;
     script.type = "text/javascript";
     script.async = true;
-    script.onload = () => {
-      setSdkReady(true);
-    };
+    script.onload = () => setSdkReady(true);
     script.onerror = () => {
       console.error("PayPal SDK failed to load.");
       setPaymentError("Could not load secure checkout. Please refresh the page.");
@@ -87,307 +120,576 @@ export default function ConsultationClient() {
     document.head.appendChild(script);
   }, [paypalClientId]);
 
+  /* ── PayPal Buttons ── */
   useEffect(() => {
     if (!sdkReady || !(window as any).paypal) return;
 
     const container = document.getElementById("paypal-button-container");
-    if (container) {
-      container.innerHTML = "";
-    }
+    if (container) container.innerHTML = "";
+
+    const price = selectedTier === 'audit' ? '199.00' : '499.00';
+    const description = selectedTier === 'audit'
+      ? 'Funding Eligibility Audit & Roadmap'
+      : 'VIP Funding Blueprint & Strategy Session';
 
     (window as any).paypal.Buttons({
       style: {
         layout: 'vertical',
-        color:  'gold',
-        shape:  'rect',
-        label:  'pay'
+        color: 'gold',
+        shape: 'rect',
+        label: 'pay',
+        height: 48
       },
-      createOrder: (data: any, actions: any) => {
+      createOrder: (_data: any, actions: any) => {
+        setPaymentError(null);
         return actions.order.create({
           purchase_units: [{
-            amount: {
-              value: '199.00',
-              currency_code: 'USD'
-            },
-            description: '1-on-1 Business Funding Strategy Consultation'
+            amount: { value: price, currency_code: 'USD' },
+            description
           }]
         });
       },
-      onApprove: async (data: any, actions: any) => {
-        const details = await actions.order.capture();
-        await markRecoveryPaid(details);
-        window.location.href = getBookingUrl();
+      onApprove: async (_data: any, actions: any) => {
+        try {
+          const details = await actions.order.capture();
+          await markRecoveryPaid(details);
+          window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}`;
+        } catch (err) {
+          console.error("Payment capture error:", err);
+          setPaymentError("Payment was processed, but we encountered an issue locking your slot. Please contact support.");
+        }
+      },
+      onCancel: () => {
+        setPaymentError("Payment was cancelled. You can complete checkout whenever you are ready.");
+        void markRecoveryAbandoned(`paypal_cancelled_${selectedTier}`);
       },
       onError: (err: any) => {
         console.error("PayPal Smart Button Error:", err);
         setPaymentError("Payment failed. Please check your card/account details and try again.");
+        void markRecoveryAbandoned(`paypal_error_${selectedTier}`);
       }
     }).render('#paypal-button-container');
-  }, [sdkReady]);
+  }, [sdkReady, selectedTier, params, markRecoveryPaid, markRecoveryAbandoned]);
+
+  /* ── Funding Potential Score™ ── */
+  const getFundingPotential = () => {
+    const emailStr = (params.email || '').toLowerCase().trim();
+    const sourceStr = (params.source || '').toLowerCase().trim();
+    const isCorporate = emailStr && !/(gmail|yahoo|hotmail|outlook|live|icloud|aol|mail|msn)\./.test(emailStr);
+
+    let industryFit = 'High Match';
+    let readiness = 78;
+    let range = '$50,000 – $250,000';
+    let potentialMinVal = 50000;
+
+    if (isCorporate) { readiness = 84; range = '$100,000 – $500,000'; potentialMinVal = 100000; }
+
+    if (sourceStr.includes('agriculture') || sourceStr.includes('agri')) {
+      industryFit = 'Specialized Match'; range = '$75,000 – $350,000'; readiness = 81; potentialMinVal = 75000;
+    } else if (sourceStr.includes('technology') || sourceStr.includes('tech') || sourceStr.includes('digital') || sourceStr.includes('ai') || sourceStr.includes('cleantech')) {
+      industryFit = 'High-Tech Match'; range = '$150,000 – $600,000'; readiness = 86; potentialMinVal = 150000;
+    } else if (sourceStr.includes('manufacturing') || sourceStr.includes('industrial')) {
+      industryFit = 'Industrial Match'; range = '$120,000 – $450,000'; readiness = 83; potentialMinVal = 120000;
+    }
+
+    return { industryFit, readiness, range, potentialMinVal };
+  };
+
+  const calc = getFundingPotential();
+  const currentDeposit = selectedTier === 'audit' ? 199 : 499;
+  const roiMultiplier = Math.round(calc.potentialMinVal / currentDeposit);
+
+  /* ── FAQ Data ── */
+  const faqs = [
+    {
+      q: 'Why is this a paid audit instead of a free consultation?',
+      a: 'Most "free consulting" calls online are high-pressure sales pitches. We charge a research deposit because our team provides real work — a senior funding analyst spends up to 4 hours manually auditing your business profile against 800+ active government grants, tax credits, and loans before we meet. You receive a customized, downloadable Funding Roadmap PDF to keep, whether or not you choose to work with us further.'
+    },
+    {
+      q: 'What is the difference between the Audit and VIP Blueprint?',
+      a: 'The standard Audit ($199) includes a 30-minute call, 2 hours of analyst research, and your top 3 program matches as a PDF Roadmap. The VIP Blueprint ($499) provides a 60-minute deep dive with a senior partner, 4 hours of research, and a comprehensive priority stack timeline mapping out exact stacking strategies for larger or multiple concurrent projects.'
+    },
+    {
+      q: 'Is the research deposit refundable?',
+      a: 'Yes, 100%. If our analysts complete the manual audit and discover your business falls into an ineligible category and qualifies for $0 in active government grants, loans, or subsidies, we proactively cancel the call and refund your entire deposit immediately. Zero risk.'
+    },
+    {
+      q: 'What happens after I complete my audit?',
+      a: 'We deliver your custom Funding Roadmap PDF during the 1-on-1 strategy call. If the audit identifies strong opportunities and you choose to hire us for full application preparation and filing, we credit 100% of your deposit directly toward the service agreement — reducing your invoice dollar for dollar.'
+    }
+  ];
+
+  /* ── Scroll to Checkout ── */
+  const scrollToCheckout = () => {
+    document.getElementById('checkout-section')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
   return (
     <>
       <style dangerouslySetInnerHTML={{__html: `
-        /* Force hide all Google AdSense auto-ads and placeholders on this page */
-        .adsbygoogle,
-        .google-auto-placed,
-        ins.adsbygoogle,
-        iframe[name^="google_ads_iframe"],
-        iframe[id^="google_ads_iframe"],
-        div[id^="google_ads_iframe"],
-        google-rabs-container,
-        .google-auto-placed {
-          display: none !important;
-          visibility: hidden !important;
-          opacity: 0 !important;
-          height: 0 !important;
-          width: 0 !important;
-          max-height: 0 !important;
-          max-width: 0 !important;
-          pointer-events: none !important;
+        /* Force hide all Google AdSense auto-ads on this page */
+        .adsbygoogle, .google-auto-placed, ins.adsbygoogle,
+        iframe[name^="google_ads_iframe"], iframe[id^="google_ads_iframe"],
+        div[id^="google_ads_iframe"], google-rabs-container {
+          display: none !important; visibility: hidden !important;
+          height: 0 !important; width: 0 !important; pointer-events: none !important;
         }
+        @keyframes shimmer {
+          0% { background-position: -200% 0; }
+          100% { background-position: 200% 0; }
+        }
+        .shimmer-border {
+          background: linear-gradient(90deg, transparent 0%, rgba(99,102,241,0.15) 50%, transparent 100%);
+          background-size: 200% 100%;
+          animation: shimmer 3s ease-in-out infinite;
+        }
+        @keyframes fadeInUp {
+          from { opacity: 0; transform: translateY(16px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .animate-fade-in { animation: fadeInUp 0.5s ease-out both; }
+        .animate-fade-in-d1 { animation: fadeInUp 0.5s ease-out 0.1s both; }
+        .animate-fade-in-d2 { animation: fadeInUp 0.5s ease-out 0.2s both; }
+        .animate-fade-in-d3 { animation: fadeInUp 0.5s ease-out 0.3s both; }
       `}} />
+
       <Header />
-      <div className="min-h-screen bg-[#070716] text-[#c8cfe8] font-sans antialiased overflow-x-hidden selection:bg-blue-500 selection:text-white">
-        
-        {/* Decorative Grid Background */}
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#1f293710_1px,transparent_1px),linear-gradient(to_bottom,#1f293710_1px,transparent_1px)] bg-[size:4rem_4rem] pointer-events-none" />
-        
-        {/* Hero Section */}
-        <div className="relative pt-24 pb-16 px-6 max-w-7xl mx-auto text-center">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-blue-900/10 rounded-full blur-[120px] pointer-events-none" />
-          
-          <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-950/60 border border-blue-800/40 text-blue-400 text-xs font-semibold uppercase tracking-wider mb-6 backdrop-blur-md animate-pulse">
-            <Sparkles className="w-3.5 h-3.5 text-blue-400" />
-            Limited Slots Available Next Week
-          </div>
-          
-          <h1 className="text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
-            Secure Up To <span className="text-blue-400">$100,000+</span> in <span className="bg-gradient-to-r from-blue-400 via-sky-400 to-indigo-400 bg-clip-text text-transparent">Non-Dilutive Funding</span> For Your Business
-          </h1>
-          
-          <p className="text-lg sm:text-xl text-[#8f9ac2] max-w-3xl mx-auto leading-relaxed mb-8">
-            Stop guessing grant frameworks and tax guidelines. Get a bespoke, pre-researched <strong className="text-white font-semibold">Business Funding Roadmap</strong> and a private 30-minute deep dive strategy session.
-          </p>
 
-          <div className="flex justify-center">
-            <a
-              href="#pricing"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-extrabold text-base rounded-2xl shadow-xl shadow-blue-900/30 transition-all duration-200 hover:-translate-y-0.5 active:translate-y-0"
-            >
-              🚀 Secure Your Strategy Session Now
-              <ArrowRight className="w-5 h-5" />
-            </a>
-          </div>
-        </div>
+      <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-50 text-slate-700 font-sans antialiased overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
-        {/* Value Proposition Grid */}
-        <div className="max-w-6xl mx-auto px-6 mb-24 grid md:grid-cols-3 gap-8 relative">
-          
-          {/* Item 1 */}
-          <div className="relative group bg-[#0d0e2c]/50 rounded-2xl p-8 border border-blue-950 hover:border-blue-800/50 transition-all duration-300 backdrop-blur-sm shadow-xl">
-            <div className="w-12 h-12 bg-blue-950 rounded-xl flex items-center justify-center border border-blue-900/50 mb-6 group-hover:scale-105 transition-transform">
-              <Award className="w-6 h-6 text-blue-400" />
+        {/* ═══════════ HERO ═══════════ */}
+        <section className="relative pt-28 sm:pt-32 pb-12 px-5 sm:px-6">
+          {/* Soft radial glow */}
+          <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-gradient-to-b from-indigo-100/50 to-transparent rounded-full blur-[100px] pointer-events-none" />
+
+          <div className="relative max-w-4xl mx-auto text-center">
+            {/* Progress Steps */}
+            <div className="flex items-center justify-center gap-2 sm:gap-3 mb-8 text-xs sm:text-sm font-semibold animate-fade-in">
+              <span className="flex items-center gap-1.5 text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full">
+                <CheckCircle className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Profile Submitted</span>
+                <span className="sm:hidden">Profile ✓</span>
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
+              <span className="flex items-center gap-1.5 text-indigo-700 bg-indigo-50 border-2 border-indigo-300 px-3 py-1.5 rounded-full shadow-sm">
+                <CircleDollarSign className="w-3.5 h-3.5" />
+                Select Package
+              </span>
+              <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
+              <span className="flex items-center gap-1.5 text-slate-400 bg-slate-50 border border-slate-200 px-3 py-1.5 rounded-full">
+                <Phone className="w-3.5 h-3.5" />
+                <span className="hidden sm:inline">Book Your Call</span>
+                <span className="sm:hidden">Book Call</span>
+              </span>
             </div>
-            <h3 className="text-xl font-bold text-white mb-3">2 Hours Pre-Call Research</h3>
-            <p className="text-[#8f9ac2] text-sm leading-relaxed">
-              We don't take blind calls. Our analysts spend 2 hours researching your industry, region, and entity structure before we dial in.
+
+            <h1 className="text-3xl sm:text-5xl lg:text-[3.25rem] font-black text-slate-950 tracking-tight leading-[1.15] mb-4 animate-fade-in-d1">
+              Your Funding Eligibility<br className="hidden sm:block" /> Audit is Ready
+            </h1>
+
+            <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6 animate-fade-in-d2">
+              Select your audit package below. A senior funding analyst will manually research your business against <strong className="text-slate-700">800+ active government programs</strong> and deliver a custom Funding Roadmap before your call.
             </p>
-          </div>
 
-          {/* Item 2 */}
-          <div className="relative group bg-[#0d0e2c]/50 rounded-2xl p-8 border border-blue-950 hover:border-blue-800/50 transition-all duration-300 backdrop-blur-sm shadow-xl">
-            <div className="w-12 h-12 bg-indigo-950/60 rounded-xl flex items-center justify-center border border-indigo-900/40 mb-6 group-hover:scale-105 transition-transform">
-              <FileCheck2 className="w-6 h-6 text-indigo-400" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Custom Business Funding Roadmap</h3>
-            <p className="text-[#8f9ac2] text-sm leading-relaxed">
-              Receive a proprietary roadmap mapping your exact matches against federal, provincial/state grants, and tax credits.
-            </p>
-          </div>
-
-          {/* Item 3 */}
-          <div className="relative group bg-[#0d0e2c]/50 rounded-2xl p-8 border border-blue-950 hover:border-blue-800/50 transition-all duration-300 backdrop-blur-sm shadow-xl">
-            <div className="w-12 h-12 bg-sky-950/60 rounded-xl flex items-center justify-center border border-sky-900/40 mb-6 group-hover:scale-105 transition-transform">
-              <Calendar className="w-6 h-6 text-sky-400" />
-            </div>
-            <h3 className="text-xl font-bold text-white mb-3">Private 1-on-1 Consultation</h3>
-            <p className="text-[#8f9ac2] text-sm leading-relaxed">
-              A 30-minute private Google Meet to coordinate application strategy, compliance requirements, and document-formatting tactics.
-            </p>
-          </div>
-        </div>
-
-        {/* Detailed Core Deliverables */}
-        <div className="max-w-6xl mx-auto px-6 py-8 mb-24 border-y border-blue-950/40">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            
-            {/* Left Column: Core List */}
-            <div>
-              <h2 className="text-3xl font-extrabold text-white mb-6">
-                What You Receive During the Strategy Deep-Dive
-              </h2>
-              <p className="text-[#8f9ac2] mb-8 leading-relaxed">
-                Standard online applications fail 90% of the time due to misalignment or documentation formatting issues. Our structured strategy covers all gaps:
-              </p>
-              
-              <ul className="space-y-4">
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5.5 h-5.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-white">Top 3 High-Probability Matches:</strong> The exact top 3 grant, loan, or tax incentive programs you stand the highest chance of winning.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5.5 h-5.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-white">Precision Eligibility Analysis:</strong> Cross-checked against region, head-count, technology scope, and past project categories.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5.5 h-5.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-white">Documentation Blueprint:</strong> Complete layout of writing patterns, financial sheets, and partner validations required for your target programs.
-                  </div>
-                </li>
-                <li className="flex items-start gap-3">
-                  <CheckCircle className="w-5.5 h-5.5 text-blue-400 flex-shrink-0 mt-0.5" />
-                  <div>
-                    <strong className="text-white">AI Models Trial:</strong> Interactive showcase of custom data analysis AI models utilized by our parent organization.
-                  </div>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right Column: Statistics / Trust Callout */}
-            <div className="bg-gradient-to-b from-[#0d0e2c] to-[#08091a] rounded-3xl p-8 border border-blue-950 relative overflow-hidden shadow-2xl">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/5 rounded-full blur-2xl pointer-events-none" />
-              
-              <div className="flex items-center gap-3 mb-6">
-                <TrendingUp className="w-6 h-6 text-indigo-400" />
-                <h4 className="font-extrabold text-white text-lg">Why Work With FSI Digital?</h4>
-              </div>
-
-              <div className="space-y-6">
-                <div className="flex justify-between items-center py-3 border-b border-blue-950/60">
-                  <span className="text-[#8f9ac2] text-sm">Pre-Call Desk Research Time</span>
-                  <span className="text-white font-extrabold">2 Full Hours</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-blue-950/60">
-                  <span className="text-[#8f9ac2] text-sm">Programs Tracked in Database</span>
-                  <span className="text-white font-extrabold">2,000+ US & Canadian Options</span>
-                </div>
-                <div className="flex justify-between items-center py-3 border-b border-blue-950/60">
-                  <span className="text-[#8f9ac2] text-sm">Google Meet Call Duration</span>
-                  <span className="text-white font-extrabold">30 Private Minutes</span>
-                </div>
-                <div className="flex justify-between items-center py-3">
-                  <span className="text-[#8f9ac2] text-sm">Strategic Deliverables Bundle</span>
-                  <span className="text-blue-400 font-extrabold">PDF Roadmap Included</span>
-                </div>
-              </div>
-
-              <div className="mt-8 bg-blue-950/40 rounded-xl p-4 border border-blue-900/30 text-center">
-                <p className="text-xs text-[#8f9ac2] leading-normal italic">
-                  "Each session is individually pre-researched by our consulting team. Slots are strictly allocated based on payment timestamp."
-                </p>
-              </div>
-            </div>
-
-          </div>
-        </div>
-
-        {/* Pricing & Checkout Section */}
-        <div id="pricing" className="max-w-6xl mx-auto px-6 mb-32 relative scroll-mt-24">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-900/10 rounded-full blur-[100px] pointer-events-none" />
-          
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-5xl font-black text-white mb-4">Secure Your Strategy Session</h2>
-            <p className="text-[#8f9ac2] max-w-xl mx-auto">
-              Secure checkout via PayPal or credit card (processed by PayPal Standard). After checkout, you will automatically redirect to our live Calendly dashboard to pick your slot.
-            </p>
-          </div>
-
-          <div className="max-w-lg mx-auto">
-            {/* Centered Premium USD Card */}
-            <div className="relative rounded-3xl bg-[#0d0e2c] border-2 border-blue-500/80 p-8 flex flex-col justify-between shadow-2xl hover:scale-[1.02] transition-transform duration-300">
-              <div className="absolute -top-4 left-6 px-3 py-1 rounded-full bg-blue-600 text-white text-xs font-black uppercase tracking-widest">
-                ⭐️ Custom Strategy Package
-              </div>
-              
-              <div>
-                <h3 className="text-2xl font-black text-white mb-2">1-on-1 Funding Strategy Session</h3>
-                <p className="text-[#8f9ac2] text-sm mb-6">
-                  Get your pre-call custom desk research, personalized Funding Roadmap, and private 30-minute consultation slot.
-                </p>
-                
-                <div className="flex items-baseline gap-2 mb-8">
-                  <span className="text-5xl font-black text-white tracking-tight">$199</span>
-                  <span className="text-lg font-bold text-blue-400">USD</span>
-                  <span className="text-sm text-[#5a6a9a] ml-1">/ one-time setup fee</span>
-                </div>
-
-                <div className="space-y-4 mb-8 text-left">
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>2 Hours of Custom Pre-Call Desk Research</span>
-                  </div>
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Bespoke Business Funding Roadmap PDF</span>
-                  </div>
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Top 3 High-Probability Grant/Loan Matches</span>
-                  </div>
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Private 30-Minute Google Meet Strategy Call</span>
-                  </div>
-                  <div className="flex items-center gap-2.5 text-sm text-gray-200">
-                    <CheckCircle className="w-4.5 h-4.5 text-blue-400 flex-shrink-0" />
-                    <span>Redirects instantly to Calendly scheduling dashboard</span>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                {paymentError && (
-                  <div className="mb-4 p-3 bg-red-950/50 border border-red-500/30 rounded-xl text-red-400 text-xs font-semibold text-center">
-                    {paymentError}
-                  </div>
-                )}
-                
-                {!sdkReady && (
-                  <div className="w-full py-4 flex flex-col items-center justify-center gap-2 border border-blue-900/20 rounded-2xl bg-blue-950/10">
-                    <div className="w-6 h-6 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
-                    <span className="text-[#8f9ac2] text-xs font-bold animate-pulse">Initializing secure checkout...</span>
-                  </div>
-                )}
-
-                <div id="paypal-button-container" className="w-full relative z-10 min-h-[150px]"></div>
-                
-                <div className="flex items-center justify-center gap-1.5 mt-3 text-xs text-[#5a6a9a]">
-                  <ShieldCheck className="w-3.5 h-3.5 text-[#5a6a9a]" />
-                  <span>Secure 256-bit encrypted checkout</span>
-                </div>
-              </div>
+            {/* Trust Strip */}
+            <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-400 font-medium animate-fade-in-d3">
+              <span className="flex items-center gap-1.5">
+                <Lock className="w-3.5 h-3.5" /> 256-bit Encrypted
+              </span>
+              <span className="flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5" /> PayPal Secure
+              </span>
+              <span className="flex items-center gap-1.5">
+                <BadgeCheck className="w-3.5 h-3.5" /> 100% Refund Guarantee
+              </span>
             </div>
           </div>
+        </section>
 
-          {/* Refund Guarantee Badge */}
-          <div className="max-w-xl mx-auto mt-16 bg-blue-950/20 border border-blue-900/30 rounded-2xl p-6 flex items-start gap-4 shadow-lg backdrop-blur-md">
-            <Award className="w-8 h-8 text-blue-400 flex-shrink-0 mt-0.5" />
-            <div>
-              <h5 className="font-extrabold text-white text-base mb-1">Our Upfront Value Commitment</h5>
-              <p className="text-xs text-[#8f9ac2] leading-relaxed">
-                If, after conducting our 2 hours of custom research, we discover your business is in an ineligible category and does not qualify for any government or private financing options, we will proactively cancel the session and issue a **full 100% refund** immediately. No questions asked.
+        {/* ═══════════ PRICING CARDS ═══════════ */}
+        <section className="relative px-5 sm:px-6 pb-10" id="pricing">
+          <div className="max-w-4xl mx-auto">
+            <div className="grid sm:grid-cols-2 gap-5 sm:gap-6">
+
+              {/* ── Audit Card ($199) ── */}
+              <div
+                onClick={() => { setSelectedTier('audit'); scrollToCheckout(); }}
+                className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-7 cursor-pointer transition-all duration-300 group ${
+                  selectedTier === 'audit'
+                    ? 'bg-white border-2 border-indigo-500 shadow-xl shadow-indigo-100/50 scale-[1.02]'
+                    : 'bg-white border-2 border-slate-200 hover:border-indigo-300 hover:shadow-lg'
+                }`}
+              >
+                {/* Popular Badge */}
+                <div className="absolute -top-3 left-5 px-3 py-1 rounded-full bg-indigo-600 text-white text-[10px] font-black uppercase tracking-widest shadow-md">
+                  Most Popular
+                </div>
+
+                {/* Selection Indicator */}
+                <div className={`absolute top-5 right-5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                  selectedTier === 'audit' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300'
+                }`}>
+                  {selectedTier === 'audit' && <CheckCircle className="w-4 h-4 text-white" />}
+                </div>
+
+                <div className="mt-2">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-indigo-50 flex items-center justify-center">
+                      <Search className="w-4.5 h-4.5 text-indigo-600" />
+                    </div>
+                    <h3 className="text-lg font-black text-slate-950">Funding Audit</h3>
+                  </div>
+
+                  <div className="flex items-baseline gap-1.5 mb-5">
+                    <span className="text-4xl font-black text-slate-950 tracking-tight">$199</span>
+                    <span className="text-sm font-bold text-indigo-600">USD</span>
+                    <span className="text-xs text-slate-400 ml-1">/ deposit</span>
+                  </div>
+
+                  <div className="space-y-3 text-sm text-slate-600">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">2 Hours</strong> of custom pre-call desk research</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">Top 3 Matches</strong> grant/loan/tax credit roadmap PDF</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">30-Min Strategy Call</strong> private Google Meet session</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">Eligibility analysis</strong> with precision scoring criteria</span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setSelectedTier('audit'); scrollToCheckout(); }}
+                    className={`w-full mt-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
+                      selectedTier === 'audit'
+                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 hover:bg-indigo-700'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    {selectedTier === 'audit' ? '✓ Selected — Scroll to Checkout' : 'Select Audit'}
+                  </button>
+                </div>
+              </div>
+
+              {/* ── VIP Blueprint Card ($499) ── */}
+              <div
+                onClick={() => { setSelectedTier('vip'); scrollToCheckout(); }}
+                className={`relative rounded-2xl sm:rounded-3xl p-6 sm:p-7 cursor-pointer transition-all duration-300 group ${
+                  selectedTier === 'vip'
+                    ? 'bg-white border-2 border-indigo-500 shadow-xl shadow-indigo-100/50 scale-[1.02]'
+                    : 'bg-white border-2 border-slate-200 hover:border-indigo-300 hover:shadow-lg'
+                }`}
+              >
+                {/* Best Value Badge */}
+                <div className="absolute -top-3 left-5 px-3 py-1 rounded-full bg-gradient-to-r from-amber-500 to-orange-500 text-white text-[10px] font-black uppercase tracking-widest shadow-md flex items-center gap-1">
+                  <Star className="w-3 h-3" /> Best Value
+                </div>
+
+                {/* Selection Indicator */}
+                <div className={`absolute top-5 right-5 w-6 h-6 rounded-full border-2 flex items-center justify-center transition-all ${
+                  selectedTier === 'vip' ? 'border-indigo-500 bg-indigo-500' : 'border-slate-300'
+                }`}>
+                  {selectedTier === 'vip' && <CheckCircle className="w-4 h-4 text-white" />}
+                </div>
+
+                <div className="mt-2">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-9 h-9 rounded-xl bg-amber-50 flex items-center justify-center">
+                      <Zap className="w-4.5 h-4.5 text-amber-600" />
+                    </div>
+                    <h3 className="text-lg font-black text-slate-950">VIP Blueprint</h3>
+                  </div>
+
+                  <div className="flex items-baseline gap-1.5 mb-5">
+                    <span className="text-4xl font-black text-slate-950 tracking-tight">$499</span>
+                    <span className="text-sm font-bold text-indigo-600">USD</span>
+                    <span className="text-xs text-slate-400 ml-1">/ deposit</span>
+                  </div>
+
+                  <div className="space-y-3 text-sm text-slate-600">
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">4 Hours</strong> of senior-level deep dive research</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">All Eligible Programs</strong> full database query + stack timeline</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">60-Min Senior Partner Call</strong> direct advisory session</span>
+                    </div>
+                    <div className="flex items-start gap-2.5">
+                      <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
+                      <span><strong className="text-slate-800">Written priority stack</strong> with exact stacking strategies</span>
+                    </div>
+                  </div>
+
+                  <button
+                    onClick={(e) => { e.stopPropagation(); setSelectedTier('vip'); scrollToCheckout(); }}
+                    className={`w-full mt-6 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
+                      selectedTier === 'vip'
+                        ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-200 hover:bg-indigo-700'
+                        : 'bg-slate-100 text-slate-700 hover:bg-slate-200'
+                    }`}
+                  >
+                    {selectedTier === 'vip' ? '✓ Selected — Scroll to Checkout' : 'Select VIP Blueprint'}
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Deposit Credit Callout */}
+            <div className="mt-5 text-center">
+              <p className="inline-flex items-center gap-2 text-xs sm:text-sm text-indigo-700 bg-indigo-50 border border-indigo-100 rounded-full px-4 py-2 font-semibold">
+                <Award className="w-4 h-4 flex-shrink-0" />
+                100% of your deposit is credited toward full-service filing if you partner with us
               </p>
             </div>
           </div>
-        </div>
+        </section>
+
+        {/* ═══════════ CONTENT GRID: Score + Checkout ═══════════ */}
+        <section className="px-5 sm:px-6 pb-16">
+          <div className="max-w-5xl mx-auto grid lg:grid-cols-12 gap-8 items-start">
+
+            {/* Left Column: Score + Social Proof + Guarantee (7 cols) */}
+            <div className="lg:col-span-7 space-y-6">
+
+              {/* Funding Potential Score™ */}
+              <div className="bg-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-40 h-40 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+
+                <div className="flex items-center justify-between mb-4">
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4.5 h-4.5 text-indigo-400" />
+                    <h4 className="text-sm font-black tracking-tight">Funding Potential Score™</h4>
+                  </div>
+                  <span className="text-[10px] uppercase font-bold text-indigo-400 tracking-wider bg-indigo-950/80 px-2.5 py-1 rounded-full border border-indigo-800/30">
+                    Initial Scan
+                  </span>
+                </div>
+
+                <div className="grid grid-cols-3 gap-3 bg-slate-900/60 border border-slate-800/60 rounded-xl p-3 text-xs">
+                  <div className="text-center">
+                    <div className="text-slate-500 font-semibold mb-1">Readiness</div>
+                    <div className="text-xl font-black text-white">{calc.readiness}<span className="text-indigo-400 text-sm">/100</span></div>
+                  </div>
+                  <div className="text-center border-x border-slate-800/40">
+                    <div className="text-slate-500 font-semibold mb-1">Industry</div>
+                    <div className="font-bold text-emerald-400 text-xs">{calc.industryFit}</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-slate-500 font-semibold mb-1">Est. Pool</div>
+                    <div className="font-bold text-white text-xs">{calc.range.split(' – ')[0]}+</div>
+                  </div>
+                </div>
+
+                <p className="text-[10px] text-slate-500 leading-normal mt-3 text-center">
+                  Complete your audit below to unlock the full manual assessment and customized Funding Roadmap.
+                </p>
+              </div>
+
+              {/* Social Proof Stats */}
+              <div className="grid grid-cols-3 gap-3 sm:gap-4">
+                <div className="bg-white border border-slate-200 rounded-2xl p-4 text-center shadow-sm">
+                  <Database className="w-5 h-5 text-indigo-500 mx-auto mb-2" />
+                  <div className="text-xl sm:text-2xl font-black text-slate-950">2,000+</div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Programs Tracked</div>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-2xl p-4 text-center shadow-sm">
+                  <BarChart3 className="w-5 h-5 text-emerald-500 mx-auto mb-2" />
+                  <div className="text-xl sm:text-2xl font-black text-slate-950">$12M+</div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Funding Identified</div>
+                </div>
+                <div className="bg-white border border-slate-200 rounded-2xl p-4 text-center shadow-sm">
+                  <Building2 className="w-5 h-5 text-amber-500 mx-auto mb-2" />
+                  <div className="text-xl sm:text-2xl font-black text-slate-950">150+</div>
+                  <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Audits Delivered</div>
+                </div>
+              </div>
+
+              {/* Client Outcomes (Compact) */}
+              <div className="bg-white border border-slate-200/80 rounded-2xl p-5 sm:p-6 shadow-sm">
+                <h4 className="text-sm font-black text-slate-950 flex items-center gap-2 mb-4">
+                  <Users className="w-4.5 h-4.5 text-indigo-600" />
+                  Recent Audit Outcomes (Anonymized)
+                </h4>
+                <div className="space-y-3">
+                  <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div>
+                      <div className="text-xs font-bold text-slate-900">Advanced Manufacturing Firm — Ontario</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">Stacked FedDev funding with regional hiring subsidies</div>
+                    </div>
+                    <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
+                      $120K
+                    </span>
+                  </div>
+                  <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
+                    <div>
+                      <div className="text-xs font-bold text-slate-900">Clean Technology SaaS Startup — Alberta</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">Structured R&D projects for SR&ED and IRAP qualification</div>
+                    </div>
+                    <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
+                      $65K
+                    </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Zero-Risk Guarantee */}
+              <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-5 flex items-start gap-3">
+                <ShieldCheck className="w-7 h-7 text-emerald-600 flex-shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-extrabold text-emerald-950 text-sm mb-1">100% Zero-Risk Money-Back Guarantee</h4>
+                  <p className="text-xs text-emerald-800 leading-relaxed">
+                    If our analysts complete the manual audit and discover your business qualifies for <strong>$0</strong> in active government grants, loans, or tax incentives, we cancel the call and refund your entire deposit immediately. You keep the preliminary notes. Zero financial risk.
+                  </p>
+                </div>
+              </div>
+
+            </div>
+
+            {/* Right Column: Checkout Card (5 cols) — Sticky */}
+            <div className="lg:col-span-5 lg:sticky lg:top-24" id="checkout-section">
+              <div className="bg-white border-2 border-indigo-500/70 rounded-2xl sm:rounded-3xl p-6 shadow-xl shadow-indigo-100/30 relative overflow-hidden">
+
+                {/* Shimmer top border */}
+                <div className="absolute top-0 left-0 right-0 h-1 shimmer-border" />
+
+                <div className="flex items-center gap-2 mb-1.5">
+                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === 'audit' ? 'bg-indigo-50' : 'bg-amber-50'}`}>
+                    {selectedTier === 'audit' ? <Search className="w-4 h-4 text-indigo-600" /> : <Zap className="w-4 h-4 text-amber-600" />}
+                  </div>
+                  <div>
+                    <h3 className="text-base font-black text-slate-950 leading-tight">
+                      {selectedTier === 'audit' ? 'Funding Audit' : 'VIP Blueprint'}
+                    </h3>
+                    <p className="text-[10px] text-slate-400 font-medium">Refundable research deposit</p>
+                  </div>
+                </div>
+
+                {/* Price */}
+                <div className="flex items-baseline gap-1.5 mt-4 mb-4 pb-4 border-b border-slate-100">
+                  <span className="text-4xl font-black text-slate-950 tracking-tight">
+                    {selectedTier === 'audit' ? '$199' : '$499'}
+                  </span>
+                  <span className="text-sm font-bold text-indigo-600">USD</span>
+                </div>
+
+                {/* Summary Checklist */}
+                <div className="space-y-2.5 mb-5 text-xs text-slate-600">
+                  <div className="flex items-center gap-2">
+                    <Timer className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                    <span>{selectedTier === 'audit' ? '2 hours custom research' : '4 hours senior research'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <FileText className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                    <span>{selectedTier === 'audit' ? 'Top 3 matches Roadmap PDF' : 'Full program stack timeline'}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Phone className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                    <span>{selectedTier === 'audit' ? '30-min strategy call' : '60-min senior partner call'}</span>
+                  </div>
+                </div>
+
+                {/* ROI Calculator */}
+                <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-slate-200/80 rounded-xl p-3.5 mb-5 text-xs">
+                  <div className="flex justify-between items-center py-1 border-b border-slate-200/50">
+                    <span className="text-slate-500 font-semibold">Est. Funding Pool</span>
+                    <span className="font-extrabold text-slate-900">{calc.range.split(' – ')[0]}</span>
+                  </div>
+                  <div className="flex justify-between items-center py-1 border-b border-slate-200/50">
+                    <span className="text-slate-500 font-semibold">Research Deposit</span>
+                    <span className="font-extrabold text-slate-900">${currentDeposit}</span>
+                  </div>
+                  <div className="flex justify-between items-center pt-1.5">
+                    <span className="text-slate-500 font-bold">Potential ROI</span>
+                    <span className="font-black text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-md">
+                      {roiMultiplier}x Return
+                    </span>
+                  </div>
+                </div>
+
+                {/* Deposit Credit */}
+                <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-[11px] text-indigo-800 mb-5 leading-normal text-center font-medium">
+                  🎁 Your ${currentDeposit} deposit is <strong>100% credited</strong> toward full-service application preparation if you partner with us.
+                </div>
+
+                {/* PayPal Checkout */}
+                <div>
+                  {paymentError && (
+                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-semibold text-center leading-normal">
+                      {paymentError}
+                    </div>
+                  )}
+
+                  {!sdkReady && (
+                    <div className="w-full py-5 flex flex-col items-center justify-center gap-2 border border-slate-200 rounded-2xl bg-slate-50 mb-3">
+                      <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+                      <span className="text-slate-400 text-xs font-semibold animate-pulse">Loading secure checkout...</span>
+                    </div>
+                  )}
+
+                  <div id="paypal-button-container" className="w-full relative z-10 min-h-[140px]" />
+
+                  <div className="flex items-center justify-center gap-3 mt-3 text-[10px] text-slate-400 font-medium">
+                    <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> Encrypted</span>
+                    <span className="text-slate-200">|</span>
+                    <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> PayPal Protected</span>
+                    <span className="text-slate-200">|</span>
+                    <span className="flex items-center gap-1"><BadgeCheck className="w-3 h-3" /> Refundable</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Fine Print */}
+              <p className="text-center text-[10px] text-slate-400 mt-3 leading-normal px-2">
+                By completing checkout, you authorize our analysts to begin compiling research data for your business profile. Processed securely via PayPal.
+              </p>
+            </div>
+
+          </div>
+        </section>
+
+        {/* ═══════════ FAQ ACCORDION ═══════════ */}
+        <section className="px-5 sm:px-6 pb-20">
+          <div className="max-w-3xl mx-auto">
+            <h3 className="text-2xl font-black text-slate-950 mb-6 text-center">Frequently Asked Questions</h3>
+            <div className="space-y-3">
+              {faqs.map((faq, i) => (
+                <div
+                  key={i}
+                  className="bg-white border border-slate-200/80 rounded-2xl shadow-sm overflow-hidden transition-all duration-200"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                    className="w-full flex items-center justify-between p-5 text-left hover:bg-slate-50/50 transition-colors"
+                  >
+                    <span className="text-sm font-bold text-slate-900 pr-4">{faq.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform duration-200 ${openFaq === i ? 'rotate-180' : ''}`} />
+                  </button>
+                  <div className={`transition-all duration-300 ease-in-out ${openFaq === i ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'} overflow-hidden`}>
+                    <p className="px-5 pb-5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-3">
+                      {faq.a}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
 
       </div>
       <Footer />
     </>
-  )
+  );
 }

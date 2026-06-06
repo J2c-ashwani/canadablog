@@ -98,8 +98,14 @@ export function Footer() {
                 <Link href="/blog/nih-sbir-biotech-grants" className="text-gray-400 hover:text-white text-sm">
                   NIH SBIR Biotech Grants
                 </Link>
-                <Link href="/blog/veteran-business-funding-canada-2026" className="text-gray-400 hover:text-white text-sm">
-                  Veteran Business Grants Canada
+                <Link href="/blog/nasa-sbir-space-tech-grants" className="text-gray-400 hover:text-white text-sm">
+                  NASA SBIR Space Tech
+                </Link>
+                <Link href="/blog/dod-sbir-defense-tech-grants" className="text-gray-400 hover:text-white text-sm">
+                  DoD SBIR Defense Tech
+                </Link>
+                <Link href="/blog/sba-microloans-complete-guide" className="text-gray-400 hover:text-white text-sm">
+                  SBA Microloans Guide
                 </Link>
               </div>
             </div>
@@ -139,6 +145,11 @@ export function Footer() {
                   New York Grants
                 </Link>
               </li>
+              <li>
+                <Link href="/usa/ohio" className="text-gray-400 hover:text-white text-sm">
+                  Ohio Grants & Incentives
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -174,6 +185,16 @@ export function Footer() {
               <li>
                 <Link href="/canada/green-energy-grants" className="text-gray-400 hover:text-white text-sm">
                   Green Energy
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/canada-startup-funding-grants-guide" className="text-gray-400 hover:text-white text-sm">
+                  Canada Startup Funding
+                </Link>
+              </li>
+              <li>
+                <Link href="/blog/canada-irap-grants-2026" className="text-gray-400 hover:text-white text-sm">
+                  Canada IRAP Grants
                 </Link>
               </li>
             </ul>

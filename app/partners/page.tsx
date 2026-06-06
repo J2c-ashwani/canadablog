@@ -432,7 +432,7 @@ export default function FundingPartnerProgramPage() {
           <div className="container mx-auto px-4 text-center sm:px-6 lg:px-8">
             <h3 className="text-lg font-bold text-slate-900 mb-2">100% Consent-Based & Regulatory Compliant</h3>
             <p className="text-sm text-slate-600 max-w-3xl mx-auto leading-relaxed">
-              FSI Digital operates in strict compliance with **TCPA (Telephone Consumer Protection Act)**, **CASL (Canada Anti-Spam Legislation)**, **GDPR**, and **CCPA** guidelines. Every lead profile carries time-stamped checkboxes certifying express written consent, IP tracking verification, and authorization logs.
+              FSI Digital operates in strict compliance with <strong>TCPA (Telephone Consumer Protection Act)</strong>, <strong>CASL (Canada Anti-Spam Legislation)</strong>, <strong>GDPR</strong>, and <strong>CCPA</strong> guidelines. Every lead profile carries time-stamped checkboxes certifying express written consent, IP tracking verification, and authorization logs.
             </p>
           </div>
         </section>

@@ -89,7 +89,7 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   const effectiveFundingPurpose = firstMeaningfulValue(data.fundingPurpose, noteValue(notes, 'Goal'));
   const effectiveCompany = firstMeaningfulValue(data.companyName, noteValue(notes, 'Company'));
   const effectiveDescription = firstMeaningfulValue(data.businessDescription, notes);
-  const combined = `${source} ${notes} ${effectiveDescription || ''}`;
+  const combined = `${source} ${notes} ${effectiveDescription || ''} ${effectiveIndustry || ''} ${effectiveFundingPurpose || ''}`;
   const amount = normalizeAmount(effectiveFundingAmount || notes);
   let score = 0;
 
