@@ -68,10 +68,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Valid email is required.' }, { status: 400 });
     }
 
-    if (event !== 'paid' && !email) {
-      return NextResponse.json({ error: 'Email is required for recovery tracking.' }, { status: 400 });
-    }
-
     const result = await upsertStrategyRecoveryEvent({
       event,
       recoveryId,

@@ -13,8 +13,7 @@ export default function BookingClient() {
   const [name, setName] = useState('');
   const [rid, setRid] = useState('');
   const [source, setSource] = useState('');
-  const [mounted, setMounted] = useState(false);
-  const [calendlyUrl, setCalendlyUrl] = useState('');
+  const [hasMounted, setHasMounted] = useState(false);
 
   const CALENDLY_PATH = "ashwani-fsidigital/1-on-1-funding-consultation";
 
@@ -44,17 +43,7 @@ export default function BookingClient() {
       setRid(finalRid);
     }
 
-    // Build the final Calendly URL exactly once on mount to prevent iframe reload loops
-    const host = window.location.host;
-    let url = `https://calendly.com/${CALENDLY_PATH}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=4f46e5&embed_domain=${encodeURIComponent(host)}&embed_type=Inline`;
-    if (parsedEmail) {
-      url += `&email=${encodeURIComponent(parsedEmail)}&prefill[email]=${encodeURIComponent(parsedEmail)}`;
-    }
-    if (parsedName) {
-      url += `&name=${encodeURIComponent(parsedName)}&prefill[name]=${encodeURIComponent(parsedName)}`;
-    }
-    setCalendlyUrl(url);
-    setMounted(true);
+    setHasMounted(true);
 
     // Track Purchase if we redirected here successfully after checkout
     if (success) {
@@ -92,6 +81,19 @@ export default function BookingClient() {
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
+
+  // Dynamically build the Calendly URL on render
+  let calendlyUrl = `https://calendly.com/${CALENDLY_PATH}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=4f46e5`;
+  if (hasMounted) {
+    const domain = window.location.hostname; // Exclude port to prevent Calendly embed errors
+    calendlyUrl += `&embed_domain=${encodeURIComponent(domain)}&embed_type=Inline`;
+    if (email) {
+      calendlyUrl += `&email=${encodeURIComponent(email)}&prefill[email]=${encodeURIComponent(email)}`;
+    }
+    if (name) {
+      calendlyUrl += `&name=${encodeURIComponent(name)}&prefill[name]=${encodeURIComponent(name)}`;
+    }
+  }
 
   // Listen to Calendly postMessage event
   useEffect(() => {
@@ -285,17 +287,13 @@ export default function BookingClient() {
                   </div>
                 )}
 
-                {mounted && calendlyUrl ? (
-                  <iframe 
-                    src={calendlyUrl}
-                    width="100%" 
-                    height="700px" 
-                    frameBorder="0"
-                    className="rounded-2xl bg-white"
-                  />
-                ) : (
-                  <div className="w-full h-[700px] bg-white rounded-2xl" />
-                )}
+                <iframe 
+                  src={calendlyUrl}
+                  width="100%" 
+                  height="700px" 
+                  frameBorder="0"
+                  className="rounded-2xl bg-white"
+                />
               </div>
 
               <div className="flex gap-2 text-xs text-slate-500 max-w-lg mx-auto leading-relaxed border-t border-slate-200/60 pt-6 justify-center">
