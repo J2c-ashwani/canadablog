@@ -45,6 +45,10 @@ export async function POST(request: NextRequest) {
       businessDescription,
       consentToPartnerContact,
       pagePath,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      gaClientId,
     } = body
 
     const phone = formatPhoneNumber(rawPhone, country)
@@ -79,9 +83,15 @@ export async function POST(request: NextRequest) {
       pagePath: pagePath || request.headers.get("referer") || "N/A",
       ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
       userAgent: request.headers.get("user-agent") || "N/A",
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      gaClientId,
+      offlineStatus: "Lead",
     }).catch((error) => {
       console.error("❌ Failed to save contact lead to Google Sheets:", error)
     })
+
 
     console.log(`📧 Contact form submission from: ${name} (${email})`)
 

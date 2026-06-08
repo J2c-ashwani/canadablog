@@ -6,7 +6,9 @@ import { getLeadsFromSheet, type SheetLead } from '@/lib/google-sheets';
 import { ADMIN_SESSION_COOKIE, isValidAdminKey, isValidAdminSession } from '@/lib/admin/auth';
 import { AdminLoginForm } from './AdminLoginForm';
 import { AdminLogoutButton } from './AdminLogoutButton';
+import { AdminLeadActions } from './AdminLeadActions';
 import { BarChart3, Building2, CheckCircle, KeyRound, Lock, Mail, Phone, Users } from 'lucide-react';
+
 
 export const dynamic = 'force-dynamic';
 
@@ -237,6 +239,7 @@ export default async function LeadDashboardPage({
                       <th className="px-4 py-3">Market</th>
                       <th className="px-4 py-3">Segment</th>
                       <th className="px-4 py-3">Routing</th>
+                      <th className="px-4 py-3">Status / Actions</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100">
@@ -262,6 +265,16 @@ export default async function LeadDashboardPage({
                         <td className="px-4 py-3 text-gray-700">{lead.country} / {lead.state}</td>
                         <td className="min-w-52 px-4 py-3 text-gray-700">{lead.buyerSegment}<div className="mt-1 text-xs text-gray-500">{lead.estimatedValue}</div></td>
                         <td className="min-w-72 px-4 py-3 text-gray-700">{lead.routing}</td>
+                        <td className="min-w-[200px] px-4 py-3">
+                          <AdminLeadActions
+                            rowIndex={lead.rowIndex}
+                            email={lead.email}
+                            currentStatus={lead.offlineStatus || 'Lead'}
+                            gaClientId={lead.gaClientId}
+                            actualSignedValue={lead.actualSignedValue}
+                          />
+                        </td>
+
                       </tr>
                     ))}
                   </tbody>

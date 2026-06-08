@@ -16,7 +16,12 @@ export interface PartnerInquiryData {
   preferences: string
   ipAddress?: string
   userAgent?: string
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  gaClientId?: string
 }
+
 
 /**
  * Calculates a lead score (0-100) to prioritize high-value buyers

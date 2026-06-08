@@ -6,6 +6,7 @@ type StrategyRecoveryEmailInput = {
   source?: string;
   stage: StrategyRecoveryEmailStage;
   recoveryId?: string;
+  bookedAt?: number;
 };
 
 function escapeHtml(value: string) {
@@ -70,18 +71,19 @@ function baseHtml({
   `;
 }
 
+// Re-map contents for the 3-step sequence
 function getEmailContent(stage: StrategyRecoveryEmailStage, firstName: string, consultationUrl: string, replyToEmail: string) {
   if (stage === 'value_24h') {
     return {
-      subject: 'The cost of waiting on government funding',
+      subject: 'Complete your research deposit to activate your audit...',
       html: baseHtml({
         firstName,
         cta: consultationUrl,
         replyToEmail,
         btnText: 'Secure Audit & Roadmap',
         body: `
-          <p style="margin:0 0 16px 0;">The biggest mistake I see business owners make with government funding is simple: <strong>waiting too long to apply</strong>.</p>
-          <p style="margin:0 0 16px 0;">Many of the best grants and interest-free loan programs have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in non-dilutive capital.</p>
+          <p style="margin:0 0 16px 0;">This is a quick reminder that your selected government funding audit time slot is <strong>still provisionally held for you</strong>.</p>
+          <p style="margin:0 0 16px 0;">Many of the best grants and interest-free loan programs operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in non-dilutive capital.</p>
           <p style="margin:0 0 20px 0;">Your business details are already in my queue. During your <strong>Funding Eligibility Audit & Roadmap</strong>, we will perform a deep dive to map out your funding windows so you never miss a deadline.</p>
           
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
@@ -121,9 +123,9 @@ function getEmailContent(stage: StrategyRecoveryEmailStage, firstName: string, c
       }),
       text: `Hi ${firstName},
  
-The biggest mistake I see business owners make with government funding is simple: waiting too long to apply.
+This is a quick reminder that your selected government funding audit time slot is still provisionally held for you.
  
-Many of the best grants and interest-free loan programs have limited annual budgets and operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in free capital.
+Many of the best grants and interest-free loan programs operate on a first-come, first-served basis. If you don't apply when the program opens, you miss out on tens of thousands of dollars in free capital.
  
 Your business details are already in my queue. During your Funding Eligibility Audit & Roadmap, we will perform a deep dive to map out your funding windows so you never miss a deadline.
  
@@ -131,7 +133,7 @@ Here is what we will build:
 - Complete Program Audit: We tell you exactly what grants and programs you qualify for.
 - Application Strategy: Secrets to passing the government review stage.
 - Capital Stacking: Mixing grants, loans, and tax credits to maximize your total payout.
-
+ 
 Your research deposit is 100% credited toward full-service application preparation and submission support if you choose to partner with us.
  
 Zero-Risk Guarantee: If our research shows you have zero viable funding options, your deposit is refunded in full, instantly.
@@ -148,14 +150,14 @@ ${replyToEmail}`,
  
   if (stage === 'objection_3d') {
     return {
-      subject: 'Is a funding audit deposit worth it?',
+      subject: 'Final reminder: Your audit slot is about to be released...',
       html: baseHtml({
         firstName,
         cta: consultationUrl,
         replyToEmail,
         btnText: 'Secure Audit & Roadmap',
         body: `
-          <p style="margin:0 0 16px 0;">I completely understand if you are hesitant to place a research deposit on a funding audit. In the government grants space, there is a lot of noise and false promises.</p>
+          <p style="margin:0 0 16px 0;">This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.</p>
           <p style="margin:0 0 20px 0;">That is exactly why I put a <strong>100% money-back guarantee</strong> on this audit. I want this to be completely risk-free for you.</p>
 
           <div style="background-color:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:20px;margin:24px 0;">
@@ -168,12 +170,12 @@ ${replyToEmail}`,
             </p>
           </div>
 
-          <p style="margin:20px 0 0 0;">If you want us to start your research audit, you can secure your slot here:</p>
+          <p style="margin:20px 0 0 0;">If you want to keep your scheduled slot, you can complete checkout here before your reservation expires:</p>
         `,
       }),
       text: `Hi ${firstName},
  
-I completely understand if you are hesitant to place a research deposit on a funding audit. In the government grants space, there is a lot of noise and false promises.
+This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.
  
 That is exactly why I put a 100% money-back guarantee on this audit.
  
@@ -250,16 +252,15 @@ ${replyToEmail}`,
   }
  
   return {
-    subject: 'Quick question about your funding inquiry',
+    subject: 'Your audit slot is waiting...',
     html: baseHtml({
       firstName,
       cta: consultationUrl,
       replyToEmail,
       btnText: 'Secure Audit & Roadmap',
       body: `
-        <p style="margin:0 0 16px 0;">Applying for government grants and business funding is notoriously frustrating. Between dense eligibility rules, hidden deadlines, and dozens of portals, most founders give up before they even start.</p>
-        <p style="margin:0 0 20px 0;">That is why you filled out our form—because you want a clear, straight-to-the-point path to secure capital without wasting dozens of hours.</p>
-        <p style="margin:0 0 20px 0;">When you secure a **Funding Eligibility Audit & Roadmap**, my team and I spend 2 hours doing the heavy lifting for you before we even meet, matching your business profile against active federal, regional, and private programs.</p>
+        <p style="margin:0 0 16px 0;">This is a quick notification to confirm that we have temporarily reserved your selected Google Meet time slot for your Funding Eligibility Audit.</p>
+        <p style="margin:0 0 20px 0;">To complete your booking and allow our analysts to begin their custom pre-call desk research, please submit your research deposit within the next 24 hours.</p>
 
         <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
           <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">On our call, I will hand you a Funding Roadmap showing:</p>
@@ -293,16 +294,18 @@ ${replyToEmail}`,
           <strong>Our Guarantee:</strong> If our pre-call research shows your business is not a fit for any active funding options, we refund your deposit immediately.
         </div>
 
-        <p style="margin:20px 0 0 0;">Let's get your funding roadmap sorted. Select a time and secure your audit slot here:</p>
+        <p style="margin:20px 0 0 0;">Let's get your funding roadmap sorted. Complete your checkout here before your reservation expires:</p>
       `,
     }),
     text: `Hi ${firstName},
+Your audit time slot is temporarily reserved. Complete your research deposit within 24 hours to secure your session.
+ 
 The audit includes 2 hours of pre-call desk research, a personalized Business Funding Roadmap, your top eligible program matches, and a private Google Meet call to plan next steps.
-
+ 
 Your research deposit is 100% credited toward full-service application preparation and submission support if you choose to partner with us.
-
-If our pre-call research shows your business is not a fit for any active grant, loan, or tax-credit options, we refund your deposit immediately. We do not guarantee funding approval.
-
+ 
+If our pre-call research shows your business is not a fit for any active grant, loan, or tax-credit options, we refund your deposit immediately.
+ 
 Best regards,
 Ashwani
 FSI Digital
@@ -316,6 +319,7 @@ export async function sendStrategyRecoveryEmail({
   source = 'strategy-session-recovery',
   stage,
   recoveryId,
+  bookedAt,
 }: StrategyRecoveryEmailInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
@@ -330,6 +334,10 @@ export async function sendStrategyRecoveryEmail({
   if (recoveryId) {
     consultationParams.set('rid', recoveryId);
   }
+  if (bookedAt) {
+    consultationParams.set('booked_at', String(bookedAt));
+  }
+  consultationParams.set('scheduled', 'true');
   const consultationUrl = `https://www.fsidigital.ca/consultation?${consultationParams.toString()}`;
   const firstName = getFirstName(name);
   const content = getEmailContent(stage, firstName, consultationUrl, replyToEmail);

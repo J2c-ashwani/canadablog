@@ -3,6 +3,8 @@
 import { useState, useEffect, useCallback } from 'react';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
+
 import {
   CheckCircle,
   ShieldCheck,
@@ -32,18 +34,39 @@ import {
    Light advisory aesthetic · 2-tier cards · Collapsible FAQ
    ───────────────────────────────────────────── */
 
+function getGaClientId() {
+  if (typeof document === 'undefined') return '';
+  const match = document.cookie.match(/_ga=GA1\.\d+\.(\d+\.\d+)/);
+  return match && match[1] ? match[1] : '';
+}
+
 export default function ConsultationClient() {
   const [sdkReady, setSdkReady] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
   const [selectedTier, setSelectedTier] = useState<'audit' | 'vip'>('audit');
   const [openFaq, setOpenFaq] = useState<number | null>(null);
-  const [params, setParams] = useState<{ email: string; name: string; rid: string; source: string; scheduled: boolean }>({
+  const [params, setParams] = useState<{
+    email: string;
+    name: string;
+    rid: string;
+    source: string;
+    scheduled: boolean;
+    eventUri: string;
+    inviteeUri: string;
+    bookedAt: number;
+  }>({
     email: '',
     name: '',
     rid: '',
     source: 'consultation-page',
-    scheduled: false
+    scheduled: false,
+    eventUri: '',
+    inviteeUri: '',
+    bookedAt: 0
   });
+
+  const [timeLeft, setTimeLeft] = useState<number | null>(null);
+  const isExpired = params.scheduled && params.bookedAt > 0 && timeLeft !== null && timeLeft <= 0;
 
   const paypalClientId = process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID
     || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
@@ -57,9 +80,102 @@ export default function ConsultationClient() {
       name: searchParams.get('name') || '',
       rid: searchParams.get('rid') || searchParams.get('recoveryId') || '',
       source: searchParams.get('source') || 'consultation-page',
-      scheduled: searchParams.get('scheduled') === 'true'
+      scheduled: searchParams.get('scheduled') === 'true',
+      eventUri: searchParams.get('event_uri') || '',
+      inviteeUri: searchParams.get('invitee_uri') || '',
+      bookedAt: Number(searchParams.get('booked_at')) || 0
     });
   }, []);
+
+  /* ── GA4 Fallback Booking Complete Tracking ── */
+  useEffect(() => {
+    if (params.scheduled && params.rid) {
+      const storageKey = `booking_complete_tracked_${params.rid}`;
+      if (!window.sessionStorage.getItem(storageKey)) {
+        trackGAEvent('booking_complete', {
+          recovery_id: params.rid,
+          source: params.source,
+          utm_source: window.sessionStorage.getItem('fsi:utm_source') || 'N/A',
+          utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
+          utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
+        });
+        window.sessionStorage.setItem(storageKey, 'true');
+      }
+    }
+  }, [params.scheduled, params.rid, params.source]);
+
+  /* ── Immediate Land Registration ── */
+  useEffect(() => {
+    if (params.scheduled && params.rid && (params.email || params.inviteeUri)) {
+      const storageKey = `checkout_landed_registered_${params.rid}`;
+      if (!window.sessionStorage.getItem(storageKey)) {
+        fetch('/api/strategy-session/recovery', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            event: 'abandoned',
+            recoveryId: params.rid,
+            email: params.email,
+            name: params.name,
+            source: params.source,
+            reason: 'checkout_scheduled_landed',
+            pagePath: window.location.pathname,
+            calendlyEventUri: params.eventUri,
+            calendlyInviteeUri: params.inviteeUri,
+            gaClientId: getGaClientId(),
+          }),
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            window.sessionStorage.setItem(storageKey, 'true');
+            if (data?.email || data?.name) {
+              setParams((prev) => ({
+                ...prev,
+                email: data.email || prev.email,
+                name: data.name || prev.name,
+              }));
+            }
+          })
+          .catch((error) => {
+            console.error('Failed to log checkout landing recovery event:', error);
+          });
+      }
+    }
+  }, [params.scheduled, params.rid, params.email, params.name, params.source, params.eventUri, params.inviteeUri]);
+
+  /* ── Countdown Timer ── */
+  useEffect(() => {
+    if (!params.scheduled || params.bookedAt <= 0) return;
+
+    const interval = setInterval(() => {
+      const remaining = (params.bookedAt + 24 * 60 * 60 * 1000) - Date.now();
+      setTimeLeft(remaining > 0 ? remaining : 0);
+    }, 1000);
+
+    const initialRemaining = (params.bookedAt + 24 * 60 * 60 * 1000) - Date.now();
+    setTimeLeft(initialRemaining > 0 ? initialRemaining : 0);
+
+    return () => clearInterval(interval);
+  }, [params.scheduled, params.bookedAt]);
+
+  const formatCountdown = (ms: number) => {
+    if (ms <= 0) return '00:00:00';
+    const totalSecs = Math.floor(ms / 1000);
+    const hours = Math.floor(totalSecs / 3600);
+    const minutes = Math.floor((totalSecs % 3600) / 60);
+    const seconds = totalSecs % 60;
+    return [
+      hours.toString().padStart(2, '0'),
+      minutes.toString().padStart(2, '0'),
+      seconds.toString().padStart(2, '0')
+    ].join(':');
+  };
+
+  const getExpirationTimeFormatted = () => {
+    if (params.bookedAt <= 0) return '';
+    const date = new Date(params.bookedAt + 24 * 60 * 60 * 1000);
+    return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' ' + date.toLocaleDateString([], { month: 'short', day: 'numeric' });
+  };
 
   /* ── Recovery Tracking ── */
   const markRecoveryPaid = useCallback(async (details: any) => {
@@ -79,11 +195,14 @@ export default function ConsultationClient() {
           status: details?.status || '',
           payerEmail: details?.payer?.email_address || '',
         }),
+        calendlyEventUri: params.eventUri,
+        calendlyInviteeUri: params.inviteeUri,
+        gaClientId: getGaClientId(),
       }),
     }).catch((error) => {
       console.error('Strategy session paid recovery update failed:', error);
     });
-  }, [params.rid, params.source]);
+  }, [params.rid, params.source, params.eventUri, params.inviteeUri]);
 
   const markRecoveryAbandoned = useCallback(async (reason: string) => {
     if (!params.rid) return;
@@ -96,11 +215,14 @@ export default function ConsultationClient() {
         source: params.source,
         reason,
         pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+        calendlyEventUri: params.eventUri,
+        calendlyInviteeUri: params.inviteeUri,
+        gaClientId: getGaClientId(),
       }),
     }).catch((error) => {
       console.error('Strategy session abandoned recovery update failed:', error);
     });
-  }, [params.rid, params.source]);
+  }, [params.rid, params.source, params.eventUri, params.inviteeUri]);
 
   /* ── PayPal SDK Load ── */
   useEffect(() => {
@@ -153,12 +275,14 @@ export default function ConsultationClient() {
         try {
           const details = await actions.order.capture();
           await markRecoveryPaid(details);
-          window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}`;
+          const orderId = details?.id || '';
+          window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}&tier=${selectedTier}&price=${price}&order=${encodeURIComponent(orderId)}`;
         } catch (err) {
           console.error("Payment capture error:", err);
           setPaymentError("Payment was processed, but we encountered an issue locking your slot. Please contact support.");
         }
       },
+
       onCancel: () => {
         setPaymentError("Payment was cancelled. You can complete checkout whenever you are ready.");
         void markRecoveryAbandoned(`paypal_cancelled_${selectedTier}`);
@@ -251,6 +375,13 @@ export default function ConsultationClient() {
         .animate-fade-in-d1 { animation: fadeInUp 0.5s ease-out 0.1s both; }
         .animate-fade-in-d2 { animation: fadeInUp 0.5s ease-out 0.2s both; }
         .animate-fade-in-d3 { animation: fadeInUp 0.5s ease-out 0.3s both; }
+        @keyframes spinSlow {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+          animation: spinSlow 12s linear infinite;
+        }
       `}} />
 
       <Header />
@@ -565,90 +696,126 @@ export default function ConsultationClient() {
                 {/* Shimmer top border */}
                 <div className="absolute top-0 left-0 right-0 h-1 shimmer-border" />
 
-                <div className="flex items-center gap-2 mb-1.5">
-                  <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === 'audit' ? 'bg-indigo-50' : 'bg-amber-50'}`}>
-                    {selectedTier === 'audit' ? <Search className="w-4 h-4 text-indigo-600" /> : <Zap className="w-4 h-4 text-amber-600" />}
-                  </div>
-                  <div>
-                    <h3 className="text-base font-black text-slate-950 leading-tight">
-                      {selectedTier === 'audit' ? 'Funding Audit' : 'VIP Blueprint'}
-                    </h3>
-                    <p className="text-[10px] text-slate-400 font-medium">Refundable research deposit</p>
-                  </div>
-                </div>
-
-                {/* Price */}
-                <div className="flex items-baseline gap-1.5 mt-4 mb-4 pb-4 border-b border-slate-100">
-                  <span className="text-4xl font-black text-slate-950 tracking-tight">
-                    {selectedTier === 'audit' ? '$199' : '$499'}
-                  </span>
-                  <span className="text-sm font-bold text-indigo-600">USD</span>
-                </div>
-
-                {/* Summary Checklist */}
-                <div className="space-y-2.5 mb-5 text-xs text-slate-600">
-                  <div className="flex items-center gap-2">
-                    <Timer className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                    <span>{selectedTier === 'audit' ? '2 hours custom research' : '4 hours senior research'}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <FileText className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                    <span>{selectedTier === 'audit' ? 'Top 3 matches Roadmap PDF' : 'Full program stack timeline'}</span>
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <Phone className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                    <span>{selectedTier === 'audit' ? '30-min strategy call' : '60-min senior partner call'}</span>
-                  </div>
-                </div>
-
-                {/* ROI Calculator */}
-                <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-slate-200/80 rounded-xl p-3.5 mb-5 text-xs">
-                  <div className="flex justify-between items-center py-1 border-b border-slate-200/50">
-                    <span className="text-slate-500 font-semibold">Est. Funding Pool</span>
-                    <span className="font-extrabold text-slate-900">{calc.range.split(' – ')[0]}</span>
-                  </div>
-                  <div className="flex justify-between items-center py-1 border-b border-slate-200/50">
-                    <span className="text-slate-500 font-semibold">Research Deposit</span>
-                    <span className="font-extrabold text-slate-900">${currentDeposit}</span>
-                  </div>
-                  <div className="flex justify-between items-center pt-1.5">
-                    <span className="text-slate-500 font-bold">Potential ROI</span>
-                    <span className="font-black text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-md">
-                      {roiMultiplier}x Return
-                    </span>
-                  </div>
-                </div>
-
-                {/* Deposit Credit */}
-                <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-[11px] text-indigo-800 mb-5 leading-normal text-center font-medium">
-                  🎁 Your ${currentDeposit} deposit is <strong>100% credited</strong> toward full-service application preparation if you partner with us.
-                </div>
-
-                {/* PayPal Checkout */}
-                <div>
-                  {paymentError && (
-                    <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-semibold text-center leading-normal">
-                      {paymentError}
+                {isExpired ? (
+                  /* EXPIRED STATE */
+                  <div className="text-center py-6 animate-fade-in">
+                    <div className="w-12 h-12 bg-amber-50 rounded-2xl border border-amber-100 flex items-center justify-center mx-auto mb-4">
+                      <Clock className="w-6 h-6 text-amber-600 animate-pulse" />
                     </div>
-                  )}
-
-                  {!sdkReady && (
-                    <div className="w-full py-5 flex flex-col items-center justify-center gap-2 border border-slate-200 rounded-2xl bg-slate-50 mb-3">
-                      <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin" />
-                      <span className="text-slate-400 text-xs font-semibold animate-pulse">Loading secure checkout...</span>
-                    </div>
-                  )}
-
-                  <div id="paypal-button-container" className="w-full relative z-10 min-h-[140px]" />
-
-                  <div className="flex items-center justify-center gap-3 mt-3 text-[10px] text-slate-400 font-medium">
-                    <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> Encrypted</span>
-                    <span className="text-slate-200">|</span>
-                    <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> PayPal Protected</span>
-                    <span className="text-slate-200">|</span>
-                    <span className="flex items-center gap-1"><BadgeCheck className="w-3 h-3" /> Refundable</span>
+                    <h3 className="text-lg font-black text-slate-950 mb-2">Slot Reservation Expired</h3>
+                    <p className="text-xs text-slate-500 leading-relaxed mb-6">
+                      To ensure fair access for all applicants, audit slots are temporarily reserved for a maximum of 24 hours. Your selected slot has been released back into the public calendar.
+                    </p>
+                    <a
+                      href={`/booking?email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}`}
+                      className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 font-bold text-sm text-white hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 duration-150 shadow-md shadow-indigo-100"
+                    >
+                      Choose a New Time Slot
+                      <ArrowRight className="w-4.5 h-4.5" />
+                    </a>
                   </div>
-                </div>
+                ) : (
+                  /* ACTIVE CHECKOUT STATE */
+                  <>
+                    {params.scheduled && timeLeft !== null && (
+                      <div className="mb-4 bg-amber-50/70 border border-amber-200/60 rounded-xl p-3 text-xs flex items-center justify-between animate-fade-in">
+                        <div className="flex items-center gap-1.5 text-amber-900 font-semibold">
+                          <Timer className="w-3.5 h-3.5 text-amber-600 animate-spin-slow" />
+                          <span>Slot Reserved Until:</span>
+                        </div>
+                        <div className="text-right">
+                          <div className="font-extrabold text-amber-950 font-mono">{formatCountdown(timeLeft)}</div>
+                          <div className="text-[9px] text-amber-600 font-semibold">{getExpirationTimeFormatted()}</div>
+                        </div>
+                      </div>
+                    )}
+
+                    <div className="flex items-center gap-2 mb-1.5">
+                      <div className={`w-8 h-8 rounded-lg flex items-center justify-center ${selectedTier === 'audit' ? 'bg-indigo-50' : 'bg-amber-50'}`}>
+                        {selectedTier === 'audit' ? <Search className="w-4 h-4 text-indigo-600" /> : <Zap className="w-4 h-4 text-amber-600" />}
+                      </div>
+                      <div>
+                        <h3 className="text-base font-black text-slate-950 leading-tight">
+                          {selectedTier === 'audit' ? 'Funding Audit' : 'VIP Blueprint'}
+                        </h3>
+                        <p className="text-[10px] text-slate-400 font-medium">Refundable research deposit</p>
+                      </div>
+                    </div>
+
+                    {/* Price */}
+                    <div className="flex items-baseline gap-1.5 mt-4 mb-4 pb-4 border-b border-slate-100">
+                      <span className="text-4xl font-black text-slate-950 tracking-tight">
+                        {selectedTier === 'audit' ? '$199' : '$499'}
+                      </span>
+                      <span className="text-sm font-bold text-indigo-600">USD</span>
+                    </div>
+
+                    {/* Summary Checklist */}
+                    <div className="space-y-2.5 mb-5 text-xs text-slate-600">
+                      <div className="flex items-center gap-2">
+                        <Timer className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                        <span>{selectedTier === 'audit' ? '2 hours custom research' : '4 hours senior research'}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <FileText className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                        <span>{selectedTier === 'audit' ? 'Top 3 matches Roadmap PDF' : 'Full program stack timeline'}</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <Phone className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
+                        <span>{selectedTier === 'audit' ? '30-min strategy call' : '60-min senior partner call'}</span>
+                      </div>
+                    </div>
+
+                    {/* ROI Calculator */}
+                    <div className="bg-gradient-to-br from-slate-50 to-indigo-50/30 border border-slate-200/80 rounded-xl p-3.5 mb-5 text-xs">
+                      <div className="flex justify-between items-center py-1 border-b border-slate-200/50">
+                        <span className="text-slate-500 font-semibold">Est. Funding Pool</span>
+                        <span className="font-extrabold text-slate-900">{calc.range.split(' – ')[0]}</span>
+                      </div>
+                      <div className="flex justify-between items-center py-1 border-b border-slate-200/50">
+                        <span className="text-slate-500 font-semibold">Research Deposit</span>
+                        <span className="font-extrabold text-slate-900">${currentDeposit}</span>
+                      </div>
+                      <div className="flex justify-between items-center pt-1.5">
+                        <span className="text-slate-500 font-bold">Potential ROI</span>
+                        <span className="font-black text-indigo-700 bg-indigo-100 px-2 py-0.5 rounded-md">
+                          {roiMultiplier}x Return
+                        </span>
+                      </div>
+                    </div>
+
+                    {/* Deposit Credit */}
+                    <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-[11px] text-indigo-800 mb-5 leading-normal text-center font-medium">
+                      🎁 Your ${currentDeposit} deposit is <strong>100% credited</strong> toward full-service application preparation if you partner with us.
+                    </div>
+
+                    {/* PayPal Checkout */}
+                    <div>
+                      {paymentError && (
+                        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-semibold text-center leading-normal">
+                          {paymentError}
+                        </div>
+                      )}
+
+                      {!sdkReady && (
+                        <div className="w-full py-5 flex flex-col items-center justify-center gap-2 border border-slate-200 rounded-2xl bg-slate-50 mb-3">
+                          <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin" />
+                          <span className="text-slate-400 text-xs font-semibold animate-pulse">Loading secure checkout...</span>
+                        </div>
+                      )}
+
+                      <div id="paypal-button-container" className="w-full relative z-10 min-h-[140px]" />
+
+                      <div className="flex items-center justify-center gap-3 mt-3 text-[10px] text-slate-400 font-medium">
+                        <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> Encrypted</span>
+                        <span className="text-slate-200">|</span>
+                        <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> PayPal Protected</span>
+                        <span className="text-slate-200">|</span>
+                        <span className="flex items-center gap-1"><BadgeCheck className="w-3 h-3" /> Refundable</span>
+                      </div>
+                    </div>
+                  </>
+                )}
               </div>
 
               {/* Fine Print */}

@@ -7,6 +7,10 @@ export async function POST(request: NextRequest) {
     const body = await request.json() as GrantFinderRequest & {
       consentToPartnerContact?: boolean
       pagePath?: string
+      utmSource?: string
+      utmMedium?: string
+      utmCampaign?: string
+      gaClientId?: string
     }
 
     // Validate required fields
@@ -33,9 +37,15 @@ export async function POST(request: NextRequest) {
       pagePath: body.pagePath || request.headers.get("referer") || "N/A",
       ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
       userAgent: request.headers.get("user-agent") || "N/A",
+      utmSource: body.utmSource,
+      utmMedium: body.utmMedium,
+      utmCampaign: body.utmCampaign,
+      gaClientId: body.gaClientId,
+      offlineStatus: "Lead",
     }).catch((error) => {
       console.error("❌ Failed to save lead to Google Sheets:", error)
     })
+
 
     // Process the grant finder request
     const results = await processGrantFinderRequest(body)

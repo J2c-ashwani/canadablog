@@ -4,7 +4,7 @@ import { appendLeadToSheet } from "@/lib/google-sheets"
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, name, company, guideName, industry, country, phone } = body
+    const { email, name, company, guideName, industry, country, phone, utmSource, utmMedium, utmCampaign, gaClientId } = body
 
     if (!email) {
       return NextResponse.json({ error: "Email is required" }, { status: 400 })
@@ -25,7 +25,13 @@ export async function POST(request: NextRequest) {
       pagePath: body.pagePath || request.headers.get("referer") || "N/A",
       ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
       userAgent: request.headers.get("user-agent") || "N/A",
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      gaClientId,
+      offlineStatus: "Lead",
     }).catch((error) => console.error("Failed to save download lead:", error))
+
 
     return NextResponse.json({
       success: true,

@@ -80,17 +80,24 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.userAgent || "N/A",
         intelligence.qualificationNotes,
         waLink,
+        data.utmSource || "N/A",
+        data.utmMedium || "N/A",
+        data.utmCampaign || "N/A",
+        data.gaClientId || "N/A",
+        data.offlineStatus || "Lead",
+        data.actualSignedValue || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:AA",
+      range: "Leads!A:AG",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
       },
     })
+
 
     console.log(`✅ Lead saved from source: ${data.source}`)
     return { success: true }
@@ -109,7 +116,11 @@ export type SheetLead = LeadCaptureData & {
   consentStatus: string
   consentToPartnerContact: boolean
   qualificationNotes: string
+  rowIndex: number
+  actualSignedValue?: string
 }
+
+
 
 function parseSheetLead(row: string[]): SheetLead {
   const base: LeadCaptureData = {
@@ -132,7 +143,14 @@ function parseSheetLead(row: string[]): SheetLead {
     pagePath: row[22] || "",
     ipAddress: row[23] || "",
     userAgent: row[24] || "",
+    utmSource: row[27] || "N/A",
+    utmMedium: row[28] || "N/A",
+    utmCampaign: row[29] || "N/A",
+    gaClientId: row[30] || "N/A",
+    offlineStatus: row[31] || "Lead",
+    actualSignedValue: row[32] || "N/A",
   }
+
 
   const intelligence = calculateLeadIntelligence(base)
 
@@ -146,8 +164,12 @@ function parseSheetLead(row: string[]): SheetLead {
     consentStatus: row[18] || intelligence.consentStatus,
     consentToPartnerContact: base.consentToPartnerContact || intelligence.consentStatus === "partner-consent",
     qualificationNotes: row[25] || intelligence.qualificationNotes,
+    rowIndex: 0,
+    actualSignedValue: base.actualSignedValue,
   }
 }
+
+
 
 export async function getLeadsFromSheet(limit = 500) {
   const sheets = await getGoogleSheetsClient()
@@ -155,16 +177,25 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:Z",
+    range: "Leads!A:AG",
   })
+
 
   const rows = response.data.values || []
   return rows
-    .filter((row) => row[0] && row[2] && row[2] !== "Email")
-    .map((row) => parseSheetLead(row as string[]))
+    .map((row, index) => ({ row, rowIndex: index + 1 }))
+    .filter(({ row }) => row[0] && row[2] && row[2] !== "Email")
+    .map(({ row, rowIndex }) => {
+      const parsed = parseSheetLead(row as string[]);
+      return {
+        ...parsed,
+        rowIndex,
+      };
+    })
     .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
     .slice(0, limit)
 }
+
 
 export type PartnerPaymentData = {
   timestamp: string
@@ -227,12 +258,24 @@ export async function appendPartnerPaymentToSheet(data: PartnerPaymentData) {
 }
 
 // Quick function for simple email capture (newsletter, etc.)
-export async function captureEmailLead(email: string, source: string, name?: string) {
+export async function captureEmailLead(
+  email: string,
+  source: string,
+  name?: string,
+  utmSource?: string,
+  utmMedium?: string,
+  utmCampaign?: string,
+  gaClientId?: string
+) {
   return appendLeadToSheet({
     source,
     timestamp: new Date().toISOString(),
     email,
     name,
+    utmSource,
+    utmMedium,
+    utmCampaign,
+    gaClientId,
   })
 }
 
@@ -252,7 +295,12 @@ export type PartnerInquirySheetData = {
   preferences: string
   ipAddress?: string
   userAgent?: string
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  gaClientId?: string
 }
+
 
 const PARTNER_INQUIRY_HEADERS = [
   "Timestamp",
@@ -276,8 +324,13 @@ const PARTNER_INQUIRY_HEADERS = [
   "Receipt Sent",
   "Approval Sent",
   "IP Address",
-  "User Agent"
+  "User Agent",
+  "UTM Source",
+  "UTM Medium",
+  "UTM Campaign",
+  "GA Client ID"
 ]
+
 
 async function ensurePartnerInquirySheet(sheets: any, spreadsheetId: string) {
   const SHEET_TITLE = "Partner Inquiries"
@@ -307,20 +360,21 @@ async function ensurePartnerInquirySheet(sheets: any, spreadsheetId: string) {
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:V1`,
+    range: `${SHEET_TITLE}!A1:Z1`,
   })
 
   const header = headerResponse.data.values?.[0] || []
   if (header.join("|") !== PARTNER_INQUIRY_HEADERS.join("|")) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:V1`,
+      range: `${SHEET_TITLE}!A1:Z1`,
       valueInputOption: "RAW",
       requestBody: {
         values: [PARTNER_INQUIRY_HEADERS],
       },
     })
   }
+
 }
 
 export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData, score: number) {
@@ -356,18 +410,23 @@ export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData,
         "Yes", // Receipt Sent
         "No", // Approval Sent
         data.ipAddress || "N/A",
-        data.userAgent || "N/A"
+        data.userAgent || "N/A",
+        data.utmSource || "N/A",
+        data.utmMedium || "N/A",
+        data.utmCampaign || "N/A",
+        data.gaClientId || "N/A"
       ]
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Partner Inquiries!A:V",
+      range: "Partner Inquiries!A:Z",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
       },
     })
+
 
     console.log(`✅ Partner inquiry logged: ${data.email} with score: ${score}`)
     return { success: true }

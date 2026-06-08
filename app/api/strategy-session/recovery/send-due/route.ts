@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 import {
   getStrategyRecoveryRecords,
   markStrategyRecoveryEmailSent,
+  upsertStrategyRecoveryEvent,
   type StrategyRecoveryEmailStage,
   type StrategyRecoveryRecord,
 } from '@/lib/strategy-session/recovery-store';
@@ -10,8 +11,6 @@ import { sendStrategyRecoveryEmail } from '@/lib/strategy-session/recovery-email
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-const HOUR = 60 * 60 * 1000;
-const DAY = 24 * HOUR;
 const MAX_SENDS_PER_RUN = 50;
 
 function isAuthorized(request: NextRequest) {
@@ -45,47 +44,124 @@ function toTime(value: string) {
   return Number.isFinite(time) ? time : 0;
 }
 
-function minutesToMilliseconds(value: string | undefined, fallback: number) {
-  const parsed = Number(value);
-  return Number.isFinite(parsed) && parsed > 0 ? parsed * 60 * 1000 : fallback * 60 * 1000;
+function extractCalendlyUuid(uri: string) {
+  if (!uri) return '';
+  if (uri.startsWith('http')) {
+    const parts = uri.split('/');
+    return parts[parts.length - 1];
+  }
+  return uri;
 }
 
-function getDueStage(record: StrategyRecoveryRecord, now: number): StrategyRecoveryEmailStage | null {
-  if (record.status === 'paid' || record.status === 'unsubscribed') {
-    return null;
+async function cancelCalendlyEvent(eventUri: string): Promise<{ success: boolean; error?: string }> {
+  const apiKey = process.env.CALENDLY_API_TOKEN;
+  if (!apiKey) {
+    return { success: false, error: 'CALENDLY_API_TOKEN is not configured.' };
   }
 
-  if (!isValidEmail(record.email)) {
-    return null;
+  const uuid = extractCalendlyUuid(eventUri);
+  if (!uuid) {
+    return { success: false, error: `Invalid Calendly event URI: ${eventUri}` };
+  }
+
+  try {
+    const response = await fetch(`https://api.calendly.com/scheduled_events/${uuid}/cancellation`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        reason: 'Research deposit payment not completed within the 24-hour reservation window.'
+      })
+    });
+
+    if (!response.ok) {
+      const text = await response.text();
+      return { success: false, error: `Calendly API error: ${response.status} - ${text}` };
+    }
+
+    return { success: true };
+  } catch (err: any) {
+    return { success: false, error: err.message || 'Unknown network error.' };
+  }
+}
+
+async function trackGA4AutoCancelled(email: string, gaClientId: string) {
+  const gaApiSecret = process.env.GA_API_SECRET;
+  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-DZ55NMNLYM';
+
+  if (!gaClientId || gaClientId === 'N/A' || !gaApiSecret) {
+    console.warn('[GA4 Auto-Cancelled] Skipped: Client ID or API Secret missing.', { gaClientId, hasSecret: !!gaApiSecret });
+    return;
+  }
+
+  try {
+    const response = await fetch(`https://www.google-analytics.com/mp/collect?api_secret=${gaApiSecret}&measurement_id=${gaMeasurementId}`, {
+      method: 'POST',
+      body: JSON.stringify({
+        client_id: gaClientId,
+        events: [{
+          name: 'booking_auto_cancelled',
+          params: {
+            engagement_time_msec: '100',
+            email_lookup_hint: email,
+          }
+        }]
+      })
+    });
+    console.log(`[GA4 Auto-Cancelled] Event sent. Status: ${response.status}`);
+  } catch (err) {
+    console.error('❌ Failed to dispatch GA4 auto-cancelled event:', err);
+  }
+}
+
+function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'email' | 'cancel' | null; stage?: StrategyRecoveryEmailStage } {
+  if (record.status === 'paid' || record.status === 'unsubscribed') {
+    return { action: null };
   }
 
   const createdAt = toTime(record.createdAt);
-  const initialSentAt = toTime(record.initialEmailSentAt);
-  const followUp24hSentAt = toTime(record.followUp24hSentAt);
-  const objection3dSentAt = toTime(record.objection3dSentAt);
-  const initialDelay = minutesToMilliseconds(process.env.STRATEGY_RECOVERY_INITIAL_DELAY_MINUTES, 60);
-
-  if (!record.initialEmailSentAt && createdAt && now - createdAt >= initialDelay) {
-    return 'initial';
+  if (!createdAt) {
+    return { action: null };
   }
 
-  if (record.initialEmailSentAt && !record.followUp24hSentAt && initialSentAt && now - initialSentAt >= DAY) {
-    return 'value_24h';
+  const elapsed = now - createdAt;
+
+  // 1. Cancellation - 24 hours
+  if (elapsed >= 24 * 60 * 60 * 1000) {
+    const isCancelled = record.reason.includes('calendly_cancelled');
+    if (!isCancelled && record.calendlyEventUri) {
+      return { action: 'cancel' };
+    }
+    return { action: null };
   }
 
-  if (record.followUp24hSentAt && !record.objection3dSentAt && initialSentAt && now - initialSentAt >= 3 * DAY) {
-    return 'objection_3d';
+  // 2. Email #3 (objection_3d) - 6 hours
+  if (elapsed >= 6 * 60 * 60 * 1000) {
+    if (record.followUp24hSentAt && !record.objection3dSentAt) {
+      return { action: 'email', stage: 'objection_3d' };
+    }
+    return { action: null };
   }
 
-  if (record.objection3dSentAt && !record.final7dSentAt && initialSentAt && now - initialSentAt >= 7 * DAY) {
-    return 'final_7d';
+  // 3. Email #2 (value_24h) - 1 hour
+  if (elapsed >= 1 * 60 * 60 * 1000) {
+    if (record.initialEmailSentAt && !record.followUp24hSentAt) {
+      return { action: 'email', stage: 'value_24h' };
+    }
+    return { action: null };
   }
 
-  if (followUp24hSentAt && objection3dSentAt) {
-    return null;
+  // 4. Email #1 (initial) - 15 minutes
+  if (elapsed >= 15 * 60 * 1000) {
+    if (!record.initialEmailSentAt) {
+      return { action: 'email', stage: 'initial' };
+    }
+    return { action: null };
   }
 
-  return null;
+  return { action: null };
 }
 
 async function sendDueRecoveryEmails(request: NextRequest) {
@@ -116,6 +192,8 @@ async function sendDueRecoveryEmails(request: NextRequest) {
 
   const sent: Array<{ recoveryId: string; email: string; stage: StrategyRecoveryEmailStage }> = [];
   const failed: Array<{ recoveryId: string; email: string; stage: StrategyRecoveryEmailStage; error: string }> = [];
+  const cancelled: Array<{ recoveryId: string; email: string; eventUri: string }> = [];
+  const cancellationFailed: Array<{ recoveryId: string; email: string; eventUri: string; error: string }> = [];
   let dueCount = 0;
 
   for (const record of records) {
@@ -124,44 +202,92 @@ async function sendDueRecoveryEmails(request: NextRequest) {
       continue;
     }
 
-    const stage = getDueStage(record, now);
-    if (!stage) continue;
+    const { action, stage } = getDueAction(record, now);
+    if (!action) continue;
 
-    dueCount += 1;
-    if (sent.length >= MAX_SENDS_PER_RUN) {
-      continue;
-    }
+    if (action === 'email' && stage) {
+      dueCount += 1;
+      if (sent.length >= MAX_SENDS_PER_RUN) {
+        continue;
+      }
 
-    const response = await sendStrategyRecoveryEmail({
-      to: record.email,
-      name: record.name,
-      source: record.source || 'strategy-session-recovery',
-      stage,
-      recoveryId: record.recoveryId,
-    });
-
-    if (response.success) {
-      await markStrategyRecoveryEmailSent(record, stage);
-      sent.push({ recoveryId: record.recoveryId, email: record.email, stage });
-    } else {
-      failed.push({
-        recoveryId: record.recoveryId,
-        email: record.email,
+      const response = await sendStrategyRecoveryEmail({
+        to: record.email,
+        name: record.name,
+        source: record.source || 'strategy-session-recovery',
         stage,
-        error: response.error || (response.skipped ? 'Resend API key is not configured.' : 'Unknown send error.'),
+        recoveryId: record.recoveryId,
+        bookedAt: toTime(record.createdAt),
       });
+
+      if (response.success) {
+        await markStrategyRecoveryEmailSent(record, stage);
+        sent.push({ recoveryId: record.recoveryId, email: record.email, stage });
+      } else {
+        failed.push({
+          recoveryId: record.recoveryId,
+          email: record.email,
+          stage,
+          error: response.error || (response.skipped ? 'Resend API key is not configured.' : 'Unknown send error.'),
+        });
+      }
+    } else if (action === 'cancel') {
+      const eventUri = record.calendlyEventUri;
+      console.log(`[Auto-Cancellation] Canceling Calendly event for recovery ID ${record.recoveryId}: ${eventUri}`);
+
+      const cancelResponse = await cancelCalendlyEvent(eventUri);
+      if (cancelResponse.success) {
+        const updatedReason = record.reason
+          ? `${record.reason}, calendly_cancelled_24h`
+          : 'calendly_cancelled_24h';
+
+        await upsertStrategyRecoveryEvent({
+          recoveryId: record.recoveryId,
+          event: 'abandoned',
+          reason: updatedReason,
+        });
+
+        if (record.gaClientId && record.gaClientId !== 'N/A') {
+          await trackGA4AutoCancelled(record.email, record.gaClientId);
+        }
+
+        cancelled.push({ recoveryId: record.recoveryId, email: record.email, eventUri });
+      } else {
+        console.error(`[Auto-Cancellation] Failed to cancel event for recovery ID ${record.recoveryId}: ${cancelResponse.error}`);
+        const isPermanentError = cancelResponse.error?.includes('404') || cancelResponse.error?.includes('410');
+        if (isPermanentError) {
+          const updatedReason = record.reason
+            ? `${record.reason}, calendly_cancelled_failed_permanent`
+            : 'calendly_cancelled_failed_permanent';
+          await upsertStrategyRecoveryEvent({
+            recoveryId: record.recoveryId,
+            event: 'abandoned',
+            reason: updatedReason,
+          });
+        }
+
+        cancellationFailed.push({
+          recoveryId: record.recoveryId,
+          email: record.email,
+          eventUri,
+          error: cancelResponse.error || 'Unknown error'
+        });
+      }
     }
   }
 
   return NextResponse.json({
-    success: failed.length === 0,
+    success: failed.length === 0 && cancellationFailed.length === 0,
     checked: records.length,
     due: dueCount,
     sent: sent.length,
     failed: failed.length,
-    capped: dueCount > MAX_SENDS_PER_RUN,
+    cancelled: cancelled.length,
+    cancellationFailed: cancellationFailed.length,
     sentRecords: sent,
     failedRecords: failed,
+    cancelledRecords: cancelled,
+    cancellationFailedRecords: cancellationFailed
   });
 }
 
@@ -170,7 +296,7 @@ export async function GET(request: NextRequest) {
     return await sendDueRecoveryEmails(request);
   } catch (error) {
     console.error('Strategy session due recovery email error:', error);
-    return NextResponse.json({ error: 'Unable to send due recovery emails.' }, { status: 500 });
+    return NextResponse.json({ error: 'Unable to process due recovery emails/cancellations.' }, { status: 500 });
   }
 }
 

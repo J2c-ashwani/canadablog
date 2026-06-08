@@ -24,6 +24,9 @@ export type StrategyRecoveryRecord = {
   pagePath: string;
   userAgent: string;
   rawSummary: string;
+  calendlyEventUri: string;
+  calendlyInviteeUri: string;
+  gaClientId: string;
 };
 
 type RecoveryEventInput = {
@@ -37,6 +40,9 @@ type RecoveryEventInput = {
   userAgent?: string;
   paypalOrderId?: string;
   rawSummary?: string;
+  calendlyEventUri?: string;
+  calendlyInviteeUri?: string;
+  gaClientId?: string;
 };
 
 const SHEET_TITLE = 'Strategy Session Recovery';
@@ -59,6 +65,9 @@ const HEADERS = [
   'Page Path',
   'User Agent',
   'Raw Summary',
+  'Calendly Event URI',
+  'Calendly Invitee URI',
+  'GA Client ID',
 ];
 
 function sheetRange(range: string) {
@@ -89,6 +98,9 @@ function recordToRow(record: Omit<StrategyRecoveryRecord, 'rowNumber'>) {
     record.pagePath,
     record.userAgent,
     record.rawSummary,
+    record.calendlyEventUri,
+    record.calendlyInviteeUri,
+    record.gaClientId,
   ];
 }
 
@@ -113,6 +125,9 @@ function rowToRecord(row: string[], index: number): StrategyRecoveryRecord {
     pagePath: row[15] || '',
     userAgent: row[16] || '',
     rawSummary: row[17] || '',
+    calendlyEventUri: row[18] || '',
+    calendlyInviteeUri: row[19] || '',
+    gaClientId: row[20] || '',
   };
 }
 
@@ -146,14 +161,14 @@ async function ensureRecoverySheet() {
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: sheetRange('A1:R1'),
+    range: sheetRange('A1:U1'),
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: sheetRange('A1:R1'),
+      range: sheetRange('A1:U1'),
       valueInputOption: 'RAW',
       requestBody: {
         values: [HEADERS],
@@ -168,7 +183,7 @@ export async function getStrategyRecoveryRecords() {
   const { sheets, spreadsheetId } = await ensureRecoverySheet();
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: sheetRange('A:R'),
+    range: sheetRange('A:U'),
   });
 
   const rows = response.data.values || [];
@@ -208,6 +223,9 @@ export async function upsertStrategyRecoveryEvent(input: RecoveryEventInput) {
     pagePath: '',
     userAgent: '',
     rawSummary: '',
+    calendlyEventUri: '',
+    calendlyInviteeUri: '',
+    gaClientId: '',
   };
 
   const next: Omit<StrategyRecoveryRecord, 'rowNumber'> = {
@@ -220,6 +238,9 @@ export async function upsertStrategyRecoveryEvent(input: RecoveryEventInput) {
     pagePath: input.pagePath || base.pagePath,
     userAgent: input.userAgent || base.userAgent,
     rawSummary: input.rawSummary || base.rawSummary,
+    calendlyEventUri: input.calendlyEventUri || base.calendlyEventUri,
+    calendlyInviteeUri: input.calendlyInviteeUri || base.calendlyInviteeUri,
+    gaClientId: input.gaClientId || base.gaClientId,
   };
 
   if (input.event === 'abandoned' && base.status !== 'paid') {
@@ -235,7 +256,7 @@ export async function upsertStrategyRecoveryEvent(input: RecoveryEventInput) {
   if (existing) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: sheetRange(`A${existing.rowNumber}:R${existing.rowNumber}`),
+      range: sheetRange(`A${existing.rowNumber}:U${existing.rowNumber}`),
       valueInputOption: 'RAW',
       requestBody: {
         values: [recordToRow(next)],
@@ -247,7 +268,7 @@ export async function upsertStrategyRecoveryEvent(input: RecoveryEventInput) {
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: sheetRange('A:R'),
+    range: sheetRange('A:U'),
     valueInputOption: 'RAW',
     requestBody: {
       values: [recordToRow(next)],
@@ -272,7 +293,7 @@ export async function markStrategyRecoveryEmailSent(record: StrategyRecoveryReco
 
   await sheets.spreadsheets.values.update({
     spreadsheetId,
-    range: sheetRange(`A${record.rowNumber}:R${record.rowNumber}`),
+    range: sheetRange(`A${record.rowNumber}:U${record.rowNumber}`),
     valueInputOption: 'RAW',
     requestBody: {
       values: [recordToRow(next)],

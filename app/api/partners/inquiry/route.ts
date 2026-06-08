@@ -20,7 +20,12 @@ export async function POST(request: NextRequest) {
       decisionMakerRole,
       preferences,
       website_hp, // Honeypot field
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      gaClientId,
     } = body
+
 
     // 1. Spam Honeypot validation
     if (website_hp && website_hp.trim().length > 0) {
@@ -73,7 +78,12 @@ export async function POST(request: NextRequest) {
       preferences: preferences ? preferences.trim() : "N/A",
       ipAddress,
       userAgent,
+      utmSource,
+      utmMedium,
+      utmCampaign,
+      gaClientId,
     })
+
 
     if (!result.success) {
       return NextResponse.json(

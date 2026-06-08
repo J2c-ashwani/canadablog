@@ -26,7 +26,14 @@ export type LeadCaptureData = {
   pagePath?: string;
   ipAddress?: string;
   userAgent?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
+  gaClientId?: string;
+  offlineStatus?: string;
+  actualSignedValue?: string;
 };
+
 
 export type LeadIntelligence = {
   score: number;

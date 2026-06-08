@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle } from 'lucide-react';
+import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 
 export default function BookingClient() {
   const [loading, setLoading] = useState(true);
@@ -12,17 +13,80 @@ export default function BookingClient() {
   const [name, setName] = useState('');
   const [rid, setRid] = useState('');
   const [source, setSource] = useState('');
+  const [mounted, setMounted] = useState(false);
+  const [calendlyUrl, setCalendlyUrl] = useState('');
 
   const CALENDLY_PATH = "ashwani-fsidigital/1-on-1-funding-consultation";
 
   useEffect(() => {
+    if (typeof window === 'undefined') return;
+
     // Parse query params safely on client
     const searchParams = new URLSearchParams(window.location.search);
-    setIsSuccess(searchParams.get('success') === 'true');
-    setEmail(searchParams.get('email') || '');
-    setName(searchParams.get('name') || '');
-    setRid(searchParams.get('rid') || '');
-    setSource(searchParams.get('source') || '');
+    const success = searchParams.get('success') === 'true';
+    setIsSuccess(success);
+    const parsedEmail = searchParams.get('email') || '';
+    const parsedName = searchParams.get('name') || '';
+    const parsedRid = searchParams.get('rid') || '';
+    const parsedSource = searchParams.get('source') || '';
+    setEmail(parsedEmail);
+    setName(parsedName);
+    setSource(parsedSource);
+
+    let finalRid = parsedRid;
+    if (finalRid) {
+      setRid(finalRid);
+    } else {
+      // Auto-generate recovery ID if it's missing, to ensure we can track in the sheet
+      finalRid = typeof crypto !== 'undefined' && typeof crypto.randomUUID === 'function'
+        ? crypto.randomUUID()
+        : `${Date.now()}-${Math.random().toString(16).slice(2)}`;
+      setRid(finalRid);
+    }
+
+    // Build the final Calendly URL exactly once on mount to prevent iframe reload loops
+    const host = window.location.host;
+    let url = `https://calendly.com/${CALENDLY_PATH}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=4f46e5&embed_domain=${encodeURIComponent(host)}&embed_type=Inline`;
+    if (parsedEmail) {
+      url += `&email=${encodeURIComponent(parsedEmail)}&prefill[email]=${encodeURIComponent(parsedEmail)}`;
+    }
+    if (parsedName) {
+      url += `&name=${encodeURIComponent(parsedName)}&prefill[name]=${encodeURIComponent(parsedName)}`;
+    }
+    setCalendlyUrl(url);
+    setMounted(true);
+
+    // Track Purchase if we redirected here successfully after checkout
+    if (success) {
+      const orderId = searchParams.get('order') || '';
+      const tier = searchParams.get('tier') || '';
+      const priceStr = searchParams.get('price') || '';
+      const price = Number(priceStr) || 199.00;
+
+      if (orderId) {
+        const storageKey = `purchase_tracked_${orderId}`;
+        if (!window.sessionStorage.getItem(storageKey)) {
+          trackGAEvent('purchase', {
+            transaction_id: orderId,
+            value: price,
+            currency: 'USD',
+            items: [
+              {
+                item_id: tier || 'audit',
+                item_name: tier === 'vip' ? 'VIP Funding Blueprint & Strategy Session' : 'Funding Eligibility Audit & Roadmap',
+                price: price,
+                quantity: 1,
+              }
+            ],
+            // Stitch UTM parameters if available in sessionStorage
+            utm_source: window.sessionStorage.getItem('fsi:utm_source') || 'N/A',
+            utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
+            utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
+          });
+          window.sessionStorage.setItem(storageKey, 'true');
+        }
+      }
+    }
 
     // Simulate loading state for Calendly iframe
     const timer = setTimeout(() => setLoading(false), 800);
@@ -34,14 +98,48 @@ export default function BookingClient() {
     if (isSuccess) return;
 
     const handleMessage = (e: MessageEvent) => {
-      if (e.data && e.data.event && e.data.event.startsWith('calendly.')) {
-        if (e.data.event === 'calendly.event_scheduled') {
-          const payload = e.data.payload || {};
+      console.log('[Calendly SDK] Raw postMessage received:', { origin: e.origin, data: e.data });
+      
+      let data = e.data;
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data);
+          console.log('[Calendly SDK] Parsed stringified JSON message:', data);
+        } catch {
+          // Ignore non-JSON string messages (e.g. webpack dev server)
+        }
+      }
+
+      if (data && data.event && data.event.startsWith('calendly.')) {
+        console.log('[Calendly SDK] Calendly event detected:', data.event, data.payload);
+        
+        if (data.event === 'calendly.event_scheduled') {
+          const payload = data.payload || {};
           const inviteeEmail = payload.invitee?.email || email;
           const inviteeName = payload.invitee?.name || name;
+          const eventUri = payload.event?.uri || '';
+          const inviteeUri = payload.invitee?.uri || '';
+          const bookedAt = Date.now();
+
+          console.log('[Calendly SDK] Redirecting to checkout with:', {
+            inviteeEmail,
+            inviteeName,
+            eventUri,
+            inviteeUri,
+            bookedAt
+          });
+
+          // Track booking_complete immediately
+          trackGAEvent('booking_complete', {
+            recovery_id: rid,
+            source: source,
+            utm_source: window.sessionStorage.getItem('fsi:utm_source') || 'N/A',
+            utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
+            utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
+          });
 
           // Redirect to checkout with slot details
-          const checkoutUrl = `/consultation?email=${encodeURIComponent(inviteeEmail)}&name=${encodeURIComponent(inviteeName)}&rid=${encodeURIComponent(rid)}&source=${encodeURIComponent(source)}&scheduled=true`;
+          const checkoutUrl = `/consultation?email=${encodeURIComponent(inviteeEmail)}&name=${encodeURIComponent(inviteeName)}&rid=${encodeURIComponent(rid)}&source=${encodeURIComponent(source)}&scheduled=true&event_uri=${encodeURIComponent(eventUri)}&invitee_uri=${encodeURIComponent(inviteeUri)}&booked_at=${bookedAt}`;
           window.location.href = checkoutUrl;
         }
       }
@@ -51,14 +149,8 @@ export default function BookingClient() {
     return () => window.removeEventListener('message', handleMessage);
   }, [isSuccess, email, name, rid, source]);
 
-  // Construct Calendly URL with light-theme variables and prefills
-  let calendlyUrl = `https://calendly.com/${CALENDLY_PATH}?hide_landing_page_details=1&hide_gdpr_banner=1&background_color=ffffff&text_color=0f172a&primary_color=4f46e5`;
-  if (email) {
-    calendlyUrl += `&email=${encodeURIComponent(email)}&prefill[email]=${encodeURIComponent(email)}`;
-  }
-  if (name) {
-    calendlyUrl += `&name=${encodeURIComponent(name)}&prefill[name]=${encodeURIComponent(name)}`;
-  }
+
+  // Stable Calendly URL loaded once on mount
 
   return (
     <>
@@ -157,7 +249,7 @@ export default function BookingClient() {
               </h1>
               
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8">
-                Select a date and time for your Google Meet audit below. Your slot will be **provisionally held for 10 minutes** while you complete your pre-call research deposit.
+                Select a date and time for your Google Meet audit below. Your slot will be provisionally held for <span className="line-through text-slate-400 mr-1.5">10 minutes</span> 24 hours while you complete your pre-call research deposit.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-10 text-left">
@@ -193,13 +285,17 @@ export default function BookingClient() {
                   </div>
                 )}
 
-                <iframe 
-                  src={calendlyUrl}
-                  width="100%" 
-                  height="700px" 
-                  frameBorder="0"
-                  className="rounded-2xl bg-white"
-                />
+                {mounted && calendlyUrl ? (
+                  <iframe 
+                    src={calendlyUrl}
+                    width="100%" 
+                    height="700px" 
+                    frameBorder="0"
+                    className="rounded-2xl bg-white"
+                  />
+                ) : (
+                  <div className="w-full h-[700px] bg-white rounded-2xl" />
+                )}
               </div>
 
               <div className="flex gap-2 text-xs text-slate-500 max-w-lg mx-auto leading-relaxed border-t border-slate-200/60 pt-6 justify-center">

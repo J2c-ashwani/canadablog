@@ -4,6 +4,7 @@ import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { CheckCircle2, Mail, ShieldCheck } from 'lucide-react';
 import { getPartnerPackage } from '@/lib/partners/packages';
+import { PartnerPurchaseTracker } from '@/components/partners/PartnerPurchaseTracker';
 
 export const metadata: Metadata = {
   title: 'Partner Payment Received | FSI Digital',
@@ -20,7 +21,16 @@ export default async function PartnerPaymentSuccessPage({
 
   return (
     <>
+      {selectedPackage && resolvedParams.order && (
+        <PartnerPurchaseTracker
+          packageId={selectedPackage.id}
+          packageName={selectedPackage.name}
+          price={selectedPackage.priceUsd}
+          orderId={resolvedParams.order}
+        />
+      )}
       <Header />
+
       <main className="min-h-screen bg-gray-50 py-16">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="mx-auto max-w-2xl rounded-lg border border-gray-200 bg-white p-8 text-center shadow-sm">
