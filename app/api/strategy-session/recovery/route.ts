@@ -28,7 +28,7 @@ export async function POST(request: NextRequest) {
 
     // Resolve email/name from Calendly if missing but invitee URI is available
     if (!email && calendlyInviteeUri) {
-      const apiKey = process.env.CALENDLY_API_TOKEN;
+      const apiKey = process.env.CALENDLY_API_TOKEN || process.env.CALENDY_API_TOKEN;
       if (apiKey) {
         try {
           console.log(`[Recovery API] Fetching invitee details from Calendly: ${calendlyInviteeUri}`);

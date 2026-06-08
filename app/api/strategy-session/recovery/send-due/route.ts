@@ -54,7 +54,7 @@ function extractCalendlyUuid(uri: string) {
 }
 
 async function cancelCalendlyEvent(eventUri: string): Promise<{ success: boolean; error?: string }> {
-  const apiKey = process.env.CALENDLY_API_TOKEN;
+  const apiKey = process.env.CALENDLY_API_TOKEN || process.env.CALENDY_API_TOKEN;
   if (!apiKey) {
     return { success: false, error: 'CALENDLY_API_TOKEN is not configured.' };
   }
