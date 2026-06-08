@@ -137,24 +137,16 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
     return { action: null };
   }
 
-  // 2. Email #3 (objection_3d) - 6 hours
-  if (elapsed >= 6 * 60 * 60 * 1000) {
-    if (record.followUp24hSentAt && !record.objection3dSentAt) {
-      return { action: 'email', stage: 'objection_3d' };
-    }
-    return { action: null };
-  }
-
-  // 3. Email #2 (value_24h) - 1 hour
-  if (elapsed >= 1 * 60 * 60 * 1000) {
+  // 2. Email #2 (value_24h) - 4 hours
+  if (elapsed >= 4 * 60 * 60 * 1000) {
     if (record.initialEmailSentAt && !record.followUp24hSentAt) {
       return { action: 'email', stage: 'value_24h' };
     }
     return { action: null };
   }
 
-  // 4. Email #1 (initial) - 15 minutes
-  if (elapsed >= 15 * 60 * 1000) {
+  // 3. Email #1 (initial) - 30 minutes
+  if (elapsed >= 30 * 60 * 1000) {
     if (!record.initialEmailSentAt) {
       return { action: 'email', stage: 'initial' };
     }
