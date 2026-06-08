@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getGoogleSheetsClient } from "@/lib/google-sheets"
+import { getGoogleSheetsClient, ensurePartnerInquirySheet } from "@/lib/google-sheets"
 import { sendPartnerApprovalEmailAndAlert } from "@/lib/emails/partner-inquiry"
 
 export const runtime = "nodejs"
@@ -39,6 +39,9 @@ export async function GET(request: NextRequest) {
     if (!spreadsheetId) {
       return NextResponse.json({ error: "GOOGLE_SHEET_ID is missing" }, { status: 500 })
     }
+
+    // Ensure the sheet tab exists before querying it
+    await ensurePartnerInquirySheet(sheets, spreadsheetId)
 
     // Fetch B2B partner inquiries
     const response = await sheets.spreadsheets.values.get({

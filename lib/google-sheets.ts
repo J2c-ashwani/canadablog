@@ -332,7 +332,7 @@ const PARTNER_INQUIRY_HEADERS = [
 ]
 
 
-async function ensurePartnerInquirySheet(sheets: any, spreadsheetId: string) {
+export async function ensurePartnerInquirySheet(sheets: any, spreadsheetId: string) {
   const SHEET_TITLE = "Partner Inquiries"
   const spreadsheet = await sheets.spreadsheets.get({
     spreadsheetId,
