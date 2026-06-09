@@ -40,6 +40,26 @@ export async function POST(request: NextRequest) {
       if (!subscriber.firstReportViewedAt || subscriber.firstReportViewedAt === "N/A" || subscriber.firstReportViewedAt === "") {
         updates.firstReportViewedAt = now
       }
+    } else if (event === "portfolio_viewed" || event === "dashboard_viewed") {
+      updates.lastPortfolioViewAt = now
+      updates.lastDashboardViewAt = now
+      if (source && source.toLowerCase().includes("alert")) {
+        updates.lastAlertClickAt = now
+        updates.lastAlertClickedAt = now
+      }
+    } else if (event === "login") {
+      updates.lastLoginAt = now
+      updates.lastPortfolioViewAt = now
+      updates.lastDashboardViewAt = now
+      if (source && source.toLowerCase().includes("alert")) {
+        updates.lastAlertClickAt = now
+        updates.lastAlertClickedAt = now
+      }
+    } else if (event === "alert_click") {
+      updates.lastAlertClickAt = now
+      updates.lastAlertClickedAt = now
+      updates.lastPortfolioViewAt = now
+      updates.lastDashboardViewAt = now
     } else {
       return NextResponse.json({ error: `Unsupported event type: ${event}` }, { status: 400 })
     }

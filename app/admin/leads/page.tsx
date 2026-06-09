@@ -319,6 +319,137 @@ export default async function LeadDashboardPage({
   const modeledAdSpend = estimatedVisitors * modeledCpc;
   const avgCac = totalPayingCustomers > 0 ? (modeledAdSpend / totalPayingCustomers) : 45.00;
 
+  // 10. Revenue Per Lead (RPL)
+  const rpl = leads.length > 0 ? (totalRealizedRevenue / leads.length) : 0;
+
+  // 11. Subscription Churn Rate
+  const cancelledSubscribersCount = leads.filter(l => l.subscriptionCancelledAt && l.subscriptionCancelledAt !== 'N/A' && l.subscriptionCancelledAt !== '').length;
+  const activeSubscribersCount = activeSubscribers.length;
+  const churnRate = activeSubscribersCount > 0 ? (cancelledSubscribersCount / activeSubscribersCount) * 100 : 0;
+
+  // 12. Time To First Revenue (TTFR)
+  let totalDaysToRevenue = 0;
+  let revenueGeneratingLeadsCount = 0;
+
+  for (const lead of leads) {
+    if (!lead.timestamp) continue;
+    const createdDate = new Date(lead.timestamp);
+    if (Number.isNaN(createdDate.getTime())) continue;
+
+    // Determine first purchase timestamp (earliest of assessment or trial)
+    let firstPurchaseDate: Date | null = null;
+    if (lead.assessmentPurchasedAt && lead.assessmentPurchasedAt !== 'N/A' && lead.assessmentPurchasedAt !== '') {
+      const pDate = new Date(lead.assessmentPurchasedAt);
+      if (!Number.isNaN(pDate.getTime())) {
+        firstPurchaseDate = pDate;
+      }
+    }
+    
+    if (lead.trialStartedAt && lead.trialStartedAt !== 'N/A' && lead.trialStartedAt !== '') {
+      const tDate = new Date(lead.trialStartedAt);
+      if (!Number.isNaN(tDate.getTime())) {
+        if (!firstPurchaseDate || tDate < firstPurchaseDate) {
+          firstPurchaseDate = tDate;
+        }
+      }
+    }
+
+    if (firstPurchaseDate) {
+      const diffTime = Math.max(0, firstPurchaseDate.getTime() - createdDate.getTime());
+      const diffDays = diffTime / (1000 * 60 * 60 * 24);
+      totalDaysToRevenue += diffDays;
+      revenueGeneratingLeadsCount += 1;
+    }
+  }
+
+  const averageDaysToFirstRevenue = revenueGeneratingLeadsCount > 0 
+    ? (totalDaysToRevenue / revenueGeneratingLeadsCount) 
+    : 0;
+
+  // 13. Cohort Funnel Mapping
+  const cohortsMap = new Map<string, {
+    cohortName: string;
+    totalLeads: number;
+    paidMembers: number;
+    assessmentsPurchased: number;
+    audits: number;
+    vips: number;
+  }>();
+
+  for (const lead of leads) {
+    if (!lead.timestamp) continue;
+    const date = new Date(lead.timestamp);
+    if (Number.isNaN(date.getTime())) continue;
+
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const cohortKey = `${year}-${month}`;
+
+    const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const cohortName = `${monthNames[date.getMonth()]} ${year}`;
+
+    if (!cohortsMap.has(cohortKey)) {
+      cohortsMap.set(cohortKey, {
+        cohortName,
+        totalLeads: 0,
+        paidMembers: 0,
+        assessmentsPurchased: 0,
+        audits: 0,
+        vips: 0,
+      });
+    }
+
+    const cohort = cohortsMap.get(cohortKey)!;
+    cohort.totalLeads += 1;
+
+    if (lead.subscriptionStatus === 'active') {
+      cohort.paidMembers += 1;
+    }
+
+    if (lead.reportPurchased) {
+      cohort.assessmentsPurchased += 1;
+    }
+
+    const hasAudit = lead.offlineStatus === "Audit Attended" || 
+      String(lead.offlineStatus || '').toLowerCase().includes("audit");
+    if (hasAudit) {
+      cohort.audits += 1;
+    }
+
+    const hasVip = lead.offlineStatus === "Filing Client Signed" || 
+      String(lead.offlineStatus || '').toLowerCase().includes("vip");
+    if (hasVip) {
+      cohort.vips += 1;
+    }
+  }
+
+  const sortedCohorts = Array.from(cohortsMap.entries())
+    .sort((a, b) => b[0].localeCompare(a[0]))
+    .map(([key, data]) => data);
+
+  // Helper function for step percentages in UI
+  const getPercent = (numerator: number, denominator: number): string => {
+    if (denominator <= 0) return '0.0%';
+    return `${((numerator / denominator) * 100).toFixed(1)}%`;
+  };
+
+  // 14. Cancellation Reason Aggregation
+  const cancellationReasonsMap = new Map<string, number>();
+  let totalCancelled = 0;
+
+  for (const lead of leads) {
+    const isCancelled = lead.subscriptionCancelledAt && lead.subscriptionCancelledAt !== 'N/A' && lead.subscriptionCancelledAt !== '';
+    if (isCancelled) {
+      totalCancelled += 1;
+      const reason = String(lead.cancellationReason || 'Not specified').trim();
+      const displayReason = reason === 'N/A' || reason === '' ? 'Not specified' : reason;
+      cancellationReasonsMap.set(displayReason, (cancellationReasonsMap.get(displayReason) || 0) + 1);
+    }
+  }
+
+  const sortedCancellationReasons = Array.from(cancellationReasonsMap.entries())
+    .sort((a, b) => b[1] - a[1]);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -436,6 +567,22 @@ export default async function LeadDashboardPage({
                   trend="Target <$50"
                   trendType={avgCac < 50 ? "positive" : "negative"}
                 />
+                <RevenueCard
+                  label="Revenue Per Lead (RPL)"
+                  value={`$${rpl.toFixed(2)}`}
+                  detail="Total realized revenue divided by total leads"
+                  icon={TrendingUp}
+                  trend={`Across ${formatNumber(leads.length)} leads`}
+                  trendType="positive"
+                />
+                <RevenueCard
+                  label="Subscription Churn Rate"
+                  value={`${churnRate.toFixed(1)}%`}
+                  detail={`Cancelled members (${cancelledSubscribersCount}) vs Active members (${activeSubscribersCount})`}
+                  icon={RefreshCw}
+                  trend={churnRate > 15 ? "High Churn" : "Healthy"}
+                  trendType={churnRate > 15 ? "negative" : "positive"}
+                />
               </div>
             </div>
 
@@ -453,6 +600,46 @@ export default async function LeadDashboardPage({
               const completionToTrialRate = completions > 0 ? ((trials / completions) * 100).toFixed(1) : '0.0';
               const completionToPaidRate = completions > 0 ? ((paidMembers / completions) * 100).toFixed(1) : '0.0';
               const completionToBookingRate = completions > 0 ? ((bookings / completions) * 100).toFixed(1) : '0.0';
+
+              // 1. Lead ➔ Assessment Purchase % (leads with reportPurchased === true)
+              const step1_assessmentPurchasesCount = leads.filter(l => l.reportPurchased).length;
+              const step1_leadToAssessmentRate = totalLeads > 0 ? ((step1_assessmentPurchasesCount / totalLeads) * 100).toFixed(1) : '0.0';
+
+              // 2. Assessment Purchase ➔ Trial % (paying customers who entered trial)
+              const step2_trialLeads = leads.filter(l =>
+                (l.trialStartedAt && l.trialStartedAt !== 'N/A' && l.trialStartedAt !== '') ||
+                l.subscriptionStatus === 'trial' ||
+                l.subscriptionStatus === 'active'
+              );
+              const step2_trialCount = step2_trialLeads.length;
+
+              const step2_assessmentAndTrialCount = leads.filter(l =>
+                l.reportPurchased &&
+                ((l.trialStartedAt && l.trialStartedAt !== 'N/A' && l.trialStartedAt !== '') ||
+                 l.subscriptionStatus === 'trial' ||
+                 l.subscriptionStatus === 'active')
+              ).length;
+
+              const step2_assessmentToTrialRate = step1_assessmentPurchasesCount > 0
+                ? ((step2_assessmentAndTrialCount / step1_assessmentPurchasesCount) * 100).toFixed(1)
+                : '0.0';
+
+              // 3. Trial ➔ Paid Membership % (trial accounts that converted to active)
+              const step3_activePaidCount = paidMembers;
+              const step3_trialToPaidRate = step2_trialCount > 0
+                ? ((step3_activePaidCount / step2_trialCount) * 100).toFixed(1)
+                : '0.0';
+
+              // 4. Paid Membership ➔ Audit Booking % (active members who booked/attended an audit)
+              const step4_activePaidMembers = leads.filter(l => l.subscriptionStatus === 'active');
+              const step4_activeMembersWithAuditCount = step4_activePaidMembers.filter(l =>
+                l.offlineStatus === "Audit Attended" ||
+                String(l.offlineStatus || '').toLowerCase().includes("audit")
+              ).length;
+
+              const step4_paidToAuditRate = step3_activePaidCount > 0
+                ? ((step4_activeMembersWithAuditCount / step3_activePaidCount) * 100).toFixed(1)
+                : '0.0';
 
               return (
                 <div className="space-y-6">
@@ -523,6 +710,95 @@ export default async function LeadDashboardPage({
                             {completionToBookingRate}%
                           </span>
                           <span className="text-[8px] font-semibold text-gray-500 uppercase">Conv Rate (&gt;0.5%)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step-by-Step Revenue Funnel */}
+                  <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                    <div className="mb-6 flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
+                      <div>
+                        <h2 className="text-lg font-bold text-gray-950 flex items-center gap-2">
+                          <Target className="h-5 w-5 text-emerald-600 animate-pulse" />
+                          Step-by-Step Conversion Funnel (Revenue Leakage Tracking)
+                        </h2>
+                        <p className="mt-1 text-sm text-gray-500">
+                          Tracks cohort drop-off and conversion rates across key milestone stages of our core revenue loop.
+                        </p>
+                      </div>
+                    </div>
+
+                    <div className="grid gap-6 md:grid-cols-4">
+                      {/* Step 1: Lead ➔ Assessment */}
+                      <div className="relative flex flex-col justify-between rounded-xl border border-gray-100 bg-gray-50 p-5 hover:shadow-md transition-all duration-300">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-black text-emerald-700 uppercase tracking-wider">Step 1: Buy Assessment</span>
+                            <span className="text-xs font-semibold text-gray-400">Milestone</span>
+                          </div>
+                          <div className="mt-3 text-2xl font-extrabold text-gray-950 tracking-tight">{step1_leadToAssessmentRate}%</div>
+                          <div className="mt-2 text-xs text-gray-500">
+                            Percentage of all leads who purchased the Funding Assessment.
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-semibold">
+                          <span className="text-gray-500">Leads: {formatNumber(totalLeads)}</span>
+                          <span className="text-emerald-700">Purchases: {formatNumber(step1_assessmentPurchasesCount)}</span>
+                        </div>
+                      </div>
+
+                      {/* Step 2: Assessment ➔ Trial */}
+                      <div className="relative flex flex-col justify-between rounded-xl border border-gray-100 bg-gray-50 p-5 hover:shadow-md transition-all duration-300">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-black text-indigo-700 uppercase tracking-wider">Step 2: Trial Start</span>
+                            <span className="text-xs font-semibold text-gray-400">Activation</span>
+                          </div>
+                          <div className="mt-3 text-2xl font-extrabold text-gray-950 tracking-tight">{step2_assessmentToTrialRate}%</div>
+                          <div className="mt-2 text-xs text-gray-500">
+                            Percentage of assessment buyers who activated their trial.
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-semibold">
+                          <span className="text-gray-500">Buyers: {formatNumber(step1_assessmentPurchasesCount)}</span>
+                          <span className="text-indigo-700">Trials: {formatNumber(step2_assessmentAndTrialCount)}</span>
+                        </div>
+                      </div>
+
+                      {/* Step 3: Trial ➔ Paid */}
+                      <div className="relative flex flex-col justify-between rounded-xl border border-gray-100 bg-gray-50 p-5 hover:shadow-md transition-all duration-300">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-black text-purple-700 uppercase tracking-wider">Step 3: Convert to Paid</span>
+                            <span className="text-xs font-semibold text-gray-400">Retention</span>
+                          </div>
+                          <div className="mt-3 text-2xl font-extrabold text-gray-950 tracking-tight">{step3_trialToPaidRate}%</div>
+                          <div className="mt-2 text-xs text-gray-500">
+                            Percentage of trials that converted to active paid memberships.
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-semibold">
+                          <span className="text-gray-500">Total Trials: {formatNumber(step2_trialCount)}</span>
+                          <span className="text-purple-700">Paid: {formatNumber(step3_activePaidCount)}</span>
+                        </div>
+                      </div>
+
+                      {/* Step 4: Paid ➔ Audit Booking */}
+                      <div className="relative flex flex-col justify-between rounded-xl border border-gray-100 bg-gray-50 p-5 hover:shadow-md transition-all duration-300">
+                        <div>
+                          <div className="flex items-center justify-between">
+                            <span className="text-[10px] font-black text-pink-700 uppercase tracking-wider">Step 4: Book Audit</span>
+                            <span className="text-xs font-semibold text-gray-400">Expansion</span>
+                          </div>
+                          <div className="mt-3 text-2xl font-extrabold text-gray-950 tracking-tight">{step4_paidToAuditRate}%</div>
+                          <div className="mt-2 text-xs text-gray-500">
+                            Percentage of active paid members who booked or attended a research audit.
+                          </div>
+                        </div>
+                        <div className="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between text-xs font-semibold">
+                          <span className="text-gray-500">Active Paid: {formatNumber(step3_activePaidCount)}</span>
+                          <span className="text-pink-700">Audits: {formatNumber(step4_activeMembersWithAuditCount)}</span>
                         </div>
                       </div>
                     </div>
@@ -635,6 +911,122 @@ export default async function LeadDashboardPage({
                 </div>
               );
             })()}
+
+            {/* Cohort Performance & Churn Analysis */}
+            <div className="mt-8 grid gap-6 lg:grid-cols-3">
+              {/* Cohort Funnel Analytics Table */}
+              <div className="lg:col-span-2 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                <div className="mb-4 flex items-center justify-between">
+                  <div>
+                    <h2 className="text-lg font-bold text-gray-950 flex items-center gap-2">
+                      <BarChart3 className="h-5 w-5 text-indigo-600" />
+                      Cohort Funnel Analytics
+                    </h2>
+                    <p className="mt-1 text-xs text-gray-500">
+                      Performance comparison of monthly lead cohorts tracked step-by-step through the high-ticket funnel.
+                    </p>
+                  </div>
+                </div>
+
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200 text-xs text-gray-900">
+                    <thead className="bg-gray-50 text-left font-semibold uppercase tracking-wider text-gray-500">
+                      <tr>
+                        <th className="px-3 py-2">Cohort</th>
+                        <th className="px-3 py-2 text-right">Leads</th>
+                        <th className="px-3 py-2 text-right">Paid Members</th>
+                        <th className="px-3 py-2 text-right">Assessments</th>
+                        <th className="px-3 py-2 text-right">Audits</th>
+                        <th className="px-3 py-2 text-right">VIP Wins</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100">
+                      {sortedCohorts.map((cohort) => (
+                        <tr key={cohort.cohortName} className="hover:bg-gray-50 transition-colors">
+                          <td className="whitespace-nowrap px-3 py-3 font-semibold">{cohort.cohortName}</td>
+                          <td className="px-3 py-3 text-right font-medium">{formatNumber(cohort.totalLeads)}</td>
+                          <td className="px-3 py-3 text-right">
+                            <div className="font-medium">{formatNumber(cohort.paidMembers)}</div>
+                            <div className="text-[10px] text-emerald-600 font-semibold">{getPercent(cohort.paidMembers, cohort.totalLeads)}</div>
+                          </td>
+                          <td className="px-3 py-3 text-right">
+                            <div className="font-medium">{formatNumber(cohort.assessmentsPurchased)}</div>
+                            <div className="text-[10px] text-indigo-600 font-semibold">{getPercent(cohort.assessmentsPurchased, cohort.paidMembers)}</div>
+                          </td>
+                          <td className="px-3 py-3 text-right">
+                            <div className="font-medium">{formatNumber(cohort.audits)}</div>
+                            <div className="text-[10px] text-purple-600 font-semibold">{getPercent(cohort.audits, cohort.assessmentsPurchased)}</div>
+                          </td>
+                          <td className="px-3 py-3 text-right">
+                            <div className="font-medium">{formatNumber(cohort.vips)}</div>
+                            <div className="text-[10px] text-pink-600 font-semibold">{getPercent(cohort.vips, cohort.audits)}</div>
+                          </td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Churn & Cancellation Analysis Column */}
+              <div className="space-y-6">
+                {/* Time To First Revenue Card */}
+                <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm hover:shadow-md transition-all duration-300">
+                  <div className="mb-4 flex items-center justify-between">
+                    <div className="rounded-md bg-emerald-50 p-2 text-emerald-700">
+                      <Target className="h-5 w-5" />
+                    </div>
+                    <span className="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-100 animate-pulse">
+                      KPI
+                    </span>
+                  </div>
+                  <div className="text-3xl font-extrabold text-gray-950 tracking-tight">
+                    {averageDaysToFirstRevenue > 0 ? `${averageDaysToFirstRevenue.toFixed(1)} Days` : 'N/A'}
+                  </div>
+                  <div className="mt-1 text-sm font-semibold text-gray-700">Time To First Revenue (TTFR)</div>
+                  <div className="mt-2 text-xs text-gray-500">
+                    Average days elapsed from lead creation to first transaction (assessment or trial).
+                  </div>
+                </div>
+
+                {/* Cancellation Reason Analysis Card */}
+                <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                  <h2 className="mb-2 text-lg font-bold text-gray-950 flex items-center gap-2">
+                    <RefreshCw className="h-5 w-5 text-indigo-600" />
+                    Cancellation Reason Analysis
+                  </h2>
+                  <p className="mb-4 text-xs text-gray-500">
+                    Primary reasons identified for subscriber churn (Total cancelled: {totalCancelled}).
+                  </p>
+
+                  {sortedCancellationReasons.length > 0 ? (
+                    <div className="space-y-4">
+                      {sortedCancellationReasons.map(([reason, count]) => {
+                        const percentage = totalCancelled > 0 ? (count / totalCancelled) * 100 : 0;
+                        return (
+                          <div key={reason} className="space-y-1">
+                            <div className="flex items-center justify-between text-xs font-semibold">
+                              <span className="text-gray-700 truncate max-w-[180px]">{reason}</span>
+                              <span className="text-gray-950">{count} ({percentage.toFixed(0)}%)</span>
+                            </div>
+                            <div className="w-full bg-gray-100 rounded-full h-1.5 overflow-hidden">
+                              <div 
+                                className="bg-indigo-600 h-1.5 rounded-full" 
+                                style={{ width: `${percentage}%` }}
+                              />
+                            </div>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <div className="py-8 text-center text-xs font-medium text-gray-400">
+                      No subscription cancellation data recorded yet.
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
 
             <div className="mt-6 grid gap-4 lg:grid-cols-3">
               <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">

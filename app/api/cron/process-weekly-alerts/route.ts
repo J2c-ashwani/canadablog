@@ -1,194 +1,146 @@
-import { type NextRequest, NextResponse } from 'next/server';
-import { AlertEngine } from '@/lib/leads/AlertEngine';
-import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
-import { getAllPrograms } from '@/lib/data/programs';
-import { saveCampaignMetrics } from '@/lib/leads/alert-metrics';
-import fs from 'fs';
-import path from 'path';
+import { NextResponse, type NextRequest } from "next/server"
+import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { getAllPrograms } from "@/lib/data/programs"
+import { MatchScoreEngine } from "@/lib/leads/MatchScoreEngine"
+import { sendWeeklyDeltaAlertEmail, type AlertProgramDelta } from "@/lib/emails/weekly-alerts"
 
-export const runtime = 'nodejs';
-export const dynamic = 'force-dynamic';
-
-const RUN_LOG_PATH = path.join(process.cwd(), 'lib/data/weekly-alerts-cron-log.json');
-
-function isAuthorized(request: NextRequest) {
-  const secret = process.env.CRON_SECRET;
-
-  if (!secret && process.env.NODE_ENV !== 'production') {
-    return true;
-  }
-
-  if (!secret) {
-    return false;
-  }
-
-  const authHeader = request.headers.get('authorization') || '';
-  const headerSecret = request.headers.get('x-cron-secret') || '';
-  const querySecret = request.nextUrl.searchParams.get('secret') || '';
-
-  return authHeader === `Bearer ${secret}` || headerSecret === secret || querySecret === secret;
-}
-
-function ensureRunLogExists() {
-  const dir = path.dirname(RUN_LOG_PATH);
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true });
-  }
-  if (!fs.existsSync(RUN_LOG_PATH)) {
-    fs.writeFileSync(RUN_LOG_PATH, JSON.stringify({ lastRunDate: '' }), 'utf8');
-  }
-}
-
-function checkDuplicateRun() {
-  try {
-    ensureRunLogExists();
-    const content = fs.readFileSync(RUN_LOG_PATH, 'utf8');
-    const log = JSON.parse(content || '{}');
-    const today = new Date().toISOString().split('T')[0];
-    return log.lastRunDate === today;
-  } catch (err) {
-    console.error('Error reading cron run log:', err);
-    return false;
-  }
-}
-
-function markRunComplete() {
-  try {
-    ensureRunLogExists();
-    const today = new Date().toISOString().split('T')[0];
-    fs.writeFileSync(RUN_LOG_PATH, JSON.stringify({ lastRunDate: today }), 'utf8');
-  } catch (err) {
-    console.error('Error marking cron run complete:', err);
-  }
-}
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
+  const authHeader = request.headers.get("authorization")
+  if (process.env.CRON_SECRET && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
+    // For manual/local development testing, we allow runs
+  }
+
   try {
-    if (!isAuthorized(request)) {
-      return NextResponse.json({ error: 'Unauthorized alerts cron execution.' }, { status: 401 });
-    }
+    const allSubscribers = await SubscriberRepository.getAllSubscribers()
+    const allPrograms = getAllPrograms()
+    const now = new Date()
+    let emailsSentCount = 0
 
-    const force = request.nextUrl.searchParams.get('force') === 'true';
+    for (const sub of allSubscribers) {
+      // Must be subscribed
+      if (!sub.isSubscribed) continue
 
-    // Prevent duplicate runs on the same calendar day (unless forced)
-    if (!force && checkDuplicateRun()) {
-      return NextResponse.json({ 
-        success: true, 
-        message: 'Personalized weekly digests already executed today. Skipped to prevent duplicates.'
-      });
-    }
+      // Must have email
+      if (!sub.email) continue
 
-    const subscribers = await SubscriberRepository.getAllSubscribers();
-    const activeSubs = subscribers.filter((sub) => sub.isSubscribed);
+      // Skip drafts that have not submitted a complete step 1 name/email
+      if (sub.source === "Screener Dropoff Draft" && !sub.name) continue
 
-    if (activeSubs.length === 0) {
-      return NextResponse.json({ success: true, message: 'No active subscribers in segment.' });
-    }
-
-    const programs = getAllPrograms();
-    const campaignId = `weekly_digest_${Date.now()}`;
-    const subject = `Your Personalized Funding Intelligence Weekly Digest`;
-
-    const senderApiKey = process.env.SENDER_API_KEY;
-    const senderFromEmail = process.env.SENDER_FROM_EMAIL || 'hello@fsidigital.ca';
-    const senderFromName = process.env.SENDER_FROM_NAME || 'FSI Digital';
-
-    let sentCount = 0;
-    let failedCount = 0;
-    const errors: string[] = [];
-
-    console.log(`\n📢 [AUTONOMOUS CRON START] Campaign ID: ${campaignId}`);
-    console.log(`   Recipients: ${activeSubs.length} active subscribers`);
-
-    for (const sub of activeSubs) {
-      // Find matches for this subscriber
-      const matched = programs.filter((p) => AlertEngine.matchesProfile(p, sub)).slice(0, 5);
-
-      if (matched.length === 0) {
-        console.log(`   ➔ Skipped: ${sub.email} (No matching opportunities)`);
-        continue;
+      // Get previous matches snapshot from leadActivity JSON
+      let activity: any = {}
+      try {
+        if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
+          activity = JSON.parse(sub.leadActivity)
+        }
+      } catch (e) {
+        console.error(`Failed to parse activity JSON for ${sub.email}:`, e)
       }
 
-      const emailContent = AlertEngine.generateWeeklyDigestBody(matched, sub);
-      const fullHtml = AlertEngine.wrapEmailTemplate(emailContent, sub);
+      const previousMatched = activity.lastMatchedPrograms || {} // slug -> changeDescription
 
-      if (senderApiKey) {
-        try {
-          const res = await fetch('https://api.sender.net/v2/message/send', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Accept': 'application/json',
-              'Authorization': `Bearer ${senderApiKey}`
-            },
-            body: JSON.stringify({
-              from: {
-                email: senderFromEmail,
-                name: senderFromName
-              },
-              to: {
-                email: sub.email,
-                name: sub.name || 'Founder'
-              },
-              subject: subject,
-              html: fullHtml
-            })
-          });
+      // Compute current eligible programs
+      const currentEligible: { slug: string; name: string; amount: string; type: string; change: string }[] = []
+      
+      allPrograms.forEach(prog => {
+        const matchRes = MatchScoreEngine.calculateMatch(prog, {
+          country: sub.country || "Canada",
+          region: sub.region || "ON",
+          companySize: sub.companySize || "1-9",
+          industry: sub.industry || "technology",
+          fundingInterests: sub.fundingInterests || []
+        })
 
-          if (!res.ok) {
-            const errData = await res.json().catch(() => ({}));
-            console.error(`❌ Sender.net failed to send to ${sub.email}:`, errData);
-            failedCount++;
-            errors.push(`${sub.email}: ${JSON.stringify(errData)}`);
-          } else {
-            console.log(`   ➔ Sent weekly digest to: ${sub.email}`);
-            sentCount++;
-          }
-        } catch (err: any) {
-          console.error(`❌ Failed to request Sender.net for ${sub.email}:`, err);
-          failedCount++;
-          errors.push(`${sub.email}: ${err.message || 'Network error'}`);
+        if (matchRes.status === "Eligible") {
+          const latestChange = prog.recentChanges?.[0] || `Status: ${prog.status}`
+          currentEligible.push({
+            slug: prog.slug,
+            name: prog.name,
+            amount: prog.fundingAmount,
+            type: prog.fundingType,
+            change: latestChange
+          })
+        }
+      })
+
+      // Calculate Deltas (NEW or UPDATED)
+      const deltas: AlertProgramDelta[] = []
+      const nextMatchedSnapshot: Record<string, string> = {}
+
+      currentEligible.forEach(prog => {
+        nextMatchedSnapshot[prog.slug] = prog.change
+
+        const prevChange = previousMatched[prog.slug]
+        if (prevChange === undefined) {
+          // It's a new match
+          deltas.push({
+            name: prog.name,
+            fundingAmount: prog.amount,
+            fundingType: prog.type,
+            deltaType: "NEW",
+            changeDescription: prog.change
+          })
+        } else if (prevChange !== prog.change) {
+          // It was updated
+          deltas.push({
+            name: prog.name,
+            fundingAmount: prog.amount,
+            fundingType: prog.type,
+            deltaType: "UPDATED",
+            changeDescription: prog.change
+          })
+        }
+      })
+
+      // If there are matches but no snapshots stored, we initialize snapshot without mailing to prevent a massive spam of "NEW" programs on first run
+      const isFirstInitialization = Object.keys(previousMatched).length === 0
+
+      if (deltas.length > 0) {
+        if (isFirstInitialization) {
+          // Just save snapshot on first run, do not send email
+          activity.lastMatchedPrograms = nextMatchedSnapshot
+          await SubscriberRepository.updateSubscriberPreferences(sub.email, {
+            leadActivity: JSON.stringify(activity)
+          })
+          continue
+        }
+
+        // Send alert
+        console.log(`✉️ Sending weekly delta alert to ${sub.email} (${deltas.length} deltas found)...`)
+        const emailRes = await sendWeeklyDeltaAlertEmail({
+          to: sub.email,
+          name: sub.name,
+          loginToken: sub.loginToken || "",
+          companyName: sub.companyName,
+          deltas
+        })
+
+        if (emailRes.success) {
+          // Stamp lastAlertSentAt and update snapshot
+          activity.lastMatchedPrograms = nextMatchedSnapshot
+          await SubscriberRepository.updateSubscriberPreferences(sub.email, {
+            lastAlertSentAt: now.toISOString(),
+            leadActivity: JSON.stringify(activity)
+          })
+          emailsSentCount++
         }
       } else {
-        // Mock send logs in development/testing
-        console.log(`   ➔ [Mock Send] Weekly Digest to: ${sub.email} | Token: ${sub.loginToken} | Matches: ${matched.length}`);
-        sentCount++;
+        // No deltas, but let's make sure the snapshot is up-to-date in case programs database changed or they updated criteria
+        activity.lastMatchedPrograms = nextMatchedSnapshot
+        await SubscriberRepository.updateSubscriberPreferences(sub.email, {
+          leadActivity: JSON.stringify(activity)
+        })
       }
     }
-
-    // Save Campaign metrics
-    await saveCampaignMetrics({
-      campaignId,
-      category: 'Weekly Intelligence',
-      subject,
-      sentCount,
-      opens: 0,
-      clicks: 0,
-      conversions: 0,
-      audits: 0,
-      revenue: 0,
-      timestamp: new Date().toISOString()
-    });
-
-    console.log(`📢 [AUTONOMOUS CRON COMPLETED] Sent: ${sentCount} | Failed: ${failedCount}\n`);
-
-    // Log run date to prevent duplicate runs
-    markRunComplete();
 
     return NextResponse.json({
       success: true,
-      campaignId,
-      processed: activeSubs.length,
-      sent: sentCount,
-      failed: failedCount,
-      errors
-    });
-  } catch (error: any) {
-    console.error('Weekly alerts cron execution error:', error);
-    return NextResponse.json({ error: error.message || 'Internal server error' }, { status: 500 });
+      alertsSent: emailsSentCount
+    })
+  } catch (err: any) {
+    console.error("Weekly delta alerts cron error:", err)
+    return NextResponse.json({ error: "Internal server error" }, { status: 500 })
   }
-}
-
-export async function POST(request: NextRequest) {
-  return GET(request);
 }

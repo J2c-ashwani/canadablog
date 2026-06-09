@@ -108,12 +108,22 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.lastAttributionSource || "N/A",
         data.firstReportViewedAt || "N/A",
         data.assessmentPurchasedAt || "N/A",
+        data.lastAlertSentAt || "N/A",
+        data.lastAlertOpenedAt || "N/A",
+        data.lastAlertClickedAt || "N/A",
+        data.lastLoginAt || "N/A",
+        data.lastDashboardViewAt || "N/A",
+        data.lastPortfolioViewAt || "N/A",
+        data.lastAlertClickAt || "N/A",
+        data.leadTier || "N/A",
+        data.subscriptionCancelledAt || "N/A",
+        data.cancellationReason || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:BC",
+      range: "Leads!A:BM",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -192,6 +202,16 @@ function parseSheetLead(row: string[]): SheetLead {
     lastAttributionSource: row[52] || "N/A",
     firstReportViewedAt: row[53] || "N/A",
     assessmentPurchasedAt: row[54] || "N/A",
+    lastAlertSentAt: row[55] || "N/A",
+    lastAlertOpenedAt: row[56] || "N/A",
+    lastAlertClickedAt: row[57] || "N/A",
+    lastLoginAt: row[58] || "N/A",
+    lastDashboardViewAt: row[59] || "N/A",
+    lastPortfolioViewAt: row[60] || "N/A",
+    lastAlertClickAt: row[61] || "N/A",
+    leadTier: row[62] || "N/A",
+    subscriptionCancelledAt: row[63] || "N/A",
+    cancellationReason: row[64] || "N/A",
   }
 
 
@@ -220,7 +240,7 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:BC",
+    range: "Leads!A:BM",
   })
 
 
@@ -247,7 +267,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     // Fetch all rows to locate index
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:BC",
+      range: "Leads!A:BM",
     })
     
     const rows = response.data.values || []
@@ -262,12 +282,72 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     const sheetRowNumber = rowIndex + 1
     const targetRow = rows[rowIndex]
     
-    // Ensure array length covers BC (index 54)
-    while (targetRow.length < 55) {
+    // Ensure array length covers BM (index 64)
+    while (targetRow.length < 65) {
       targetRow.push("N/A")
     }
     
     // Update fields
+    if (updates.source !== undefined) {
+      targetRow[1] = updates.source
+    }
+    if (updates.name !== undefined) {
+      targetRow[3] = updates.name
+    }
+    if (updates.country !== undefined) {
+      targetRow[4] = updates.country
+    }
+    if (updates.state !== undefined) {
+      targetRow[5] = updates.state
+    }
+    if (updates.industry !== undefined) {
+      targetRow[6] = updates.industry
+    }
+    if (updates.businessStage !== undefined) {
+      targetRow[7] = updates.businessStage
+    }
+    if (updates.fundingAmount !== undefined) {
+      targetRow[8] = updates.fundingAmount
+    }
+    if (updates.fundingPurpose !== undefined) {
+      targetRow[9] = updates.fundingPurpose
+    }
+    if (updates.businessDescription !== undefined) {
+      targetRow[10] = updates.businessDescription
+    }
+    if (updates.phone !== undefined) {
+      targetRow[11] = updates.phone
+    }
+    if (updates.additionalNotes !== undefined) {
+      targetRow[12] = updates.additionalNotes
+    }
+    if (updates.consentToPartnerContact !== undefined) {
+      targetRow[19] = updates.consentToPartnerContact ? "Yes" : "No"
+    }
+    if (updates.pagePath !== undefined) {
+      targetRow[22] = updates.pagePath
+    }
+    if (updates.ipAddress !== undefined) {
+      targetRow[23] = updates.ipAddress
+    }
+    if (updates.userAgent !== undefined) {
+      targetRow[24] = updates.userAgent
+    }
+    if (updates.utmSource !== undefined) {
+      targetRow[27] = updates.utmSource
+    }
+    if (updates.utmMedium !== undefined) {
+      targetRow[28] = updates.utmMedium
+    }
+    if (updates.utmCampaign !== undefined) {
+      targetRow[29] = updates.utmCampaign
+    }
+    if (updates.gaClientId !== undefined) {
+      targetRow[30] = updates.gaClientId
+    }
+    if (updates.offlineStatus !== undefined) {
+      targetRow[31] = updates.offlineStatus
+    }
     if (updates.isSubscribed !== undefined) {
       targetRow[33] = updates.isSubscribed ? "Yes" : "No"
     }
@@ -334,11 +414,41 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     if (updates.assessmentPurchasedAt !== undefined) {
       targetRow[54] = updates.assessmentPurchasedAt
     }
+    if (updates.lastAlertSentAt !== undefined) {
+      targetRow[55] = updates.lastAlertSentAt
+    }
+    if (updates.lastAlertOpenedAt !== undefined) {
+      targetRow[56] = updates.lastAlertOpenedAt
+    }
+    if (updates.lastAlertClickedAt !== undefined) {
+      targetRow[57] = updates.lastAlertClickedAt
+    }
+    if (updates.lastLoginAt !== undefined) {
+      targetRow[58] = updates.lastLoginAt
+    }
+    if (updates.lastDashboardViewAt !== undefined) {
+      targetRow[59] = updates.lastDashboardViewAt
+    }
+    if (updates.lastPortfolioViewAt !== undefined) {
+      targetRow[60] = updates.lastPortfolioViewAt
+    }
+    if (updates.lastAlertClickAt !== undefined) {
+      targetRow[61] = updates.lastAlertClickAt
+    }
+    if (updates.leadTier !== undefined) {
+      targetRow[62] = updates.leadTier
+    }
+    if (updates.subscriptionCancelledAt !== undefined) {
+      targetRow[63] = updates.subscriptionCancelledAt
+    }
+    if (updates.cancellationReason !== undefined) {
+      targetRow[64] = updates.cancellationReason
+    }
     
     // Update the row
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `Leads!A${sheetRowNumber}:BC${sheetRowNumber}`,
+      range: `Leads!A${sheetRowNumber}:BM${sheetRowNumber}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [targetRow],
@@ -719,6 +829,130 @@ export async function appendMatchEvaluationToSheet(data: MatchEvaluationLog) {
     return { success: true }
   } catch (error) {
     console.error("❌ Error saving match evaluation to Google Sheets:", error)
+    return { success: false, error }
+  }
+}
+
+export interface AlertJob {
+  rowIndex: number;
+  timestamp: string;
+  programSlug: string;
+  severity: "minor" | "major" | "critical";
+  status: string;
+  processedCount: number;
+}
+
+export async function queueAlertJob(programSlug: string, severity: "minor" | "major" | "critical") {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing")
+
+    const meta = await sheets.spreadsheets.get({ spreadsheetId })
+    const sheetExists = meta.data.sheets?.some(s => s.properties?.title === "AlertJobsQueue")
+
+    if (!sheetExists) {
+      await sheets.spreadsheets.batchUpdate({
+        spreadsheetId,
+        requestBody: {
+          requests: [
+            {
+              addSheet: {
+                properties: {
+                  title: "AlertJobsQueue"
+                }
+              }
+            }
+          ]
+        }
+      })
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: "AlertJobsQueue!A1:E1",
+        valueInputOption: "USER_ENTERED",
+        requestBody: {
+          values: [["Timestamp", "Program Slug", "Severity", "Status", "Processed Count"]]
+        }
+      })
+    }
+
+    const values = [[
+      new Date().toISOString(),
+      programSlug,
+      severity,
+      "pending",
+      "0"
+    ]]
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "AlertJobsQueue!A:E",
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values
+      }
+    })
+    console.log(`✅ Queued alert job for program ${programSlug} with severity ${severity}`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Failed to queue alert job:", error)
+    return { success: false, error }
+  }
+}
+
+export async function getPendingAlertJobs(): Promise<AlertJob[]> {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing")
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "AlertJobsQueue!A:E"
+    })
+
+    const rows = response.data.values || []
+    const pendingJobs: AlertJob[] = []
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i]
+      if (row[3] === "pending") {
+        pendingJobs.push({
+          rowIndex: i,
+          timestamp: row[0] || "",
+          programSlug: row[1] || "",
+          severity: (row[2] || "major") as any,
+          status: row[3] || "",
+          processedCount: Number(row[4] || 0)
+        })
+      }
+    }
+
+    return pendingJobs
+  } catch (error) {
+    console.error("❌ Failed to fetch pending alert jobs:", error)
+    return []
+  }
+}
+
+export async function updateAlertJobStatus(rowIndex: number, status: string, processedCount: number) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing")
+    const sheetRowNumber = rowIndex + 1
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `AlertJobsQueue!D${sheetRowNumber}:E${sheetRowNumber}`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [[status, String(processedCount)]]
+      }
+    })
+    return { success: true }
+  } catch (error) {
+    console.error(`❌ Failed to update alert job status at row ${rowIndex}:`, error)
     return { success: false, error }
   }
 }

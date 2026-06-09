@@ -36,6 +36,10 @@ export default function PortfolioClient() {
   // Wizard / Profile States
   const [hasProfile, setHasProfile] = useState(false)
   const [wizardStep, setWizardStep] = useState(1)
+  const [step1Error, setStep1Error] = useState("")
+  const [isSavingStep1, setIsSavingStep1] = useState(false)
+  const [step3Error, setStep3Error] = useState("")
+  const [isSavingStep3, setIsSavingStep3] = useState(false)
   
   const [profile, setProfile] = useState({
     country: "Canada",
@@ -111,6 +115,15 @@ export default function PortfolioClient() {
             sessionStorage.setItem("fsi_subscription_status", sub.subscriptionStatus || "inactive")
             sessionStorage.setItem("fsi_report_purchased", sub.reportPurchased ? "true" : "false")
             sessionStorage.setItem("fsi_report_transaction_id", sub.reportTransactionId || "")
+            fetch("/api/subscriber/track-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: loadedProfile.email,
+                event: "login",
+                source: searchParams.get("source") || searchParams.get("ref") || "token_url"
+              })
+            }).catch(e => console.error(e))
           }
         })
         .catch(err => console.error("Auto-login error:", err))
@@ -123,7 +136,7 @@ export default function PortfolioClient() {
       sessionStorage.setItem("fsi_attribution_source", sourceParam)
     }
 
-    const cached = sessionStorage.getItem("fsi_funding_profile")
+    const cached = localStorage.getItem("fsi_funding_profile") || sessionStorage.getItem("fsi_funding_profile")
     if (cached) {
       try {
         const parsed = JSON.parse(cached)
@@ -131,6 +144,15 @@ export default function PortfolioClient() {
         setHasProfile(true)
         if (parsed.email) {
           setIsUnlocked(true)
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: parsed.email,
+              event: "portfolio_viewed",
+              source: searchParams.get("source") || searchParams.get("ref") || "cached_profile"
+            })
+          }).catch(e => console.error(e))
         }
         const cachedSub = sessionStorage.getItem("fsi_subscription_status") || "inactive"
         setSubscriptionStatus(cachedSub)
@@ -444,17 +466,76 @@ export default function PortfolioClient() {
     setProfile(prev => ({ ...prev, [field]: val }))
   }
 
-  // Handle Wizard Onboarding submission
-  const handleWizardSubmit = (e: React.FormEvent) => {
+  // Handle Wizard Step 1 Submission (Draft Lead creation)
+  const handleStep1Submit = async (e: React.FormEvent) => {
     e.preventDefault()
-    sessionStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
-    setHasProfile(true)
-    trackGAEvent("portfolio_completed", {
-      region: profile.region,
-      country: profile.country,
-      industry: profile.industry,
-      company_size: profile.companySize
-    })
+    setStep1Error("")
+    if (!profile.name.trim()) {
+      setStep1Error("Contact Name is required.")
+      return
+    }
+    if (!profile.email.trim() || !profile.email.includes("@")) {
+      setStep1Error("A valid Business Email is required.")
+      return
+    }
+    setIsSavingStep1(true)
+    try {
+      const res = await fetch("/api/subscriber/save-screener-draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: profile.email,
+          name: profile.name,
+          step: 1,
+          data: profile
+        })
+      })
+      if (!res.ok) {
+        throw new Error("Failed to save draft.")
+      }
+      localStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
+      setWizardStep(2)
+    } catch (err: any) {
+      console.error(err)
+      setStep1Error("Failed to save draft. Please try again.")
+    } finally {
+      setIsSavingStep1(false)
+    }
+  }
+
+  // Handle Wizard Step 3 Submission (Draft Lead update & results unlock)
+  const handleStep3Submit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setStep3Error("")
+    setIsSavingStep3(true)
+    try {
+      const res = await fetch("/api/subscriber/save-screener-draft", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: profile.email,
+          name: profile.name,
+          step: 3,
+          data: profile
+        })
+      })
+      if (!res.ok) {
+        throw new Error("Failed to update draft.")
+      }
+      localStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
+      setHasProfile(true)
+      trackGAEvent("portfolio_completed", {
+        region: profile.region,
+        country: profile.country,
+        industry: profile.industry,
+        company_size: profile.companySize
+      })
+    } catch (err: any) {
+      console.error(err)
+      setStep3Error("Failed to save progress. Please try again.")
+    } finally {
+      setIsSavingStep3(false)
+    }
   }
 
   // Handle Lead Unlock form submission
@@ -507,6 +588,7 @@ export default function PortfolioClient() {
         website: profile.website
       }
       sessionStorage.setItem("fsi_funding_profile", JSON.stringify(updatedProfile))
+      localStorage.removeItem("fsi_funding_profile")
       
       trackGAEvent("lead_capture", {
         region: profile.region,
@@ -594,213 +676,287 @@ export default function PortfolioClient() {
               ))}
             </div>
 
-            <form onSubmit={handleWizardSubmit} className="space-y-6">
-              {/* STEP 1: Firmographics */}
-              {wizardStep === 1 && (
-                <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
-                  <div className="space-y-2">
-                    <Label className="text-sm font-bold text-slate-800">Business Location</Label>
-                    <div className="grid grid-cols-2 gap-4">
-                      <button
-                        type="button"
-                        onClick={() => {
-                          updateProfileField("country", "Canada")
-                          updateProfileField("region", "ON")
-                        }}
-                        className={`p-4 rounded-xl border text-left transition-all ${
-                          profile.country === "Canada" 
-                            ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
-                            : "border-slate-200 bg-white hover:bg-slate-50"
-                        }`}
-                      >
-                        <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider">Canada</span>
-                        <span className="block text-sm font-black text-slate-900 mt-0.5">🍁 Canadian Entity</span>
-                      </button>
-                      
-                      <button
-                        type="button"
-                        onClick={() => {
-                          updateProfileField("country", "USA")
-                          updateProfileField("region", "CA")
-                        }}
-                        className={`p-4 rounded-xl border text-left transition-all ${
-                          profile.country === "USA" 
-                            ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
-                            : "border-slate-200 bg-white hover:bg-slate-50"
-                        }`}
-                      >
-                        <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider">United States</span>
-                        <span className="block text-sm font-black text-slate-900 mt-0.5">🇺🇸 US Business</span>
-                      </button>
-                    </div>
+            {/* STEP 1: Contact Information */}
+            {wizardStep === 1 && (
+              <form onSubmit={handleStep1Submit} className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                {step1Error && (
+                  <div className="p-3 bg-red-50 border border-red-100 text-red-700 text-xs font-semibold rounded-lg text-left">
+                    {step1Error}
+                  </div>
+                )}
+                
+                <div className="space-y-4 text-left">
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-name" className="text-xs font-bold text-slate-800">Contact Name</Label>
+                    <Input
+                      id="contact-name"
+                      type="text"
+                      required
+                      placeholder="John Doe"
+                      value={profile.name}
+                      onChange={(e) => updateProfileField("name", e.target.value)}
+                      className="bg-white border-slate-200 h-12 text-sm text-slate-900 rounded-xl focus:ring-blue-600"
+                    />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label htmlFor="region" className="text-sm font-bold text-slate-800">Province or State</Label>
-                    <select
-                      id="region"
-                      value={profile.region}
-                      onChange={(e) => updateProfileField("region", e.target.value)}
-                      className="w-full h-12 px-3 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-600"
-                    >
-                      {profile.country === "Canada" ? (
-                        <>
-                          <option value="ON">Ontario (ON)</option>
-                          <option value="BC">British Columbia (BC)</option>
-                          <option value="QC">Quebec (QC)</option>
-                          <option value="AB">Alberta (AB)</option>
-                          <option value="NS">Nova Scotia (NS)</option>
-                        </>
-                      ) : (
-                        <>
-                          <option value="CA">California (CA)</option>
-                          <option value="TX">Texas (TX)</option>
-                          <option value="NY">New York (NY)</option>
-                          <option value="FL">Florida (FL)</option>
-                        </>
-                      )}
-                    </select>
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-email" className="text-xs font-bold text-slate-800">Business Email</Label>
+                    <Input
+                      id="contact-email"
+                      type="email"
+                      required
+                      placeholder="john@company.com"
+                      value={profile.email}
+                      onChange={(e) => updateProfileField("email", e.target.value)}
+                      className="bg-white border-slate-200 h-12 text-sm text-slate-900 rounded-xl focus:ring-blue-600"
+                    />
                   </div>
 
-                  <div className="space-y-2">
-                    <Label className="text-sm font-bold text-slate-800">Company size (FTEs)</Label>
-                    <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
-                      {["1-9", "10-49", "50-99", "100-499", "500+"].map(size => (
-                        <button
-                          key={size}
-                          type="button"
-                          onClick={() => updateProfileField("companySize", size)}
-                          className={`p-3 rounded-lg border text-center text-xs font-bold transition-all ${
-                            profile.companySize === size 
-                              ? "border-blue-600 bg-blue-50/50 text-blue-700 font-extrabold" 
-                              : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
-                          }`}
-                        >
-                          {size} FTEs
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="pt-4">
-                    <Button
-                      type="button"
-                      onClick={() => setWizardStep(2)}
-                      className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl"
-                    >
-                      Continue to Sector <ArrowRight className="w-4 h-4" />
-                    </Button>
+                  <div className="pt-2">
+                    <label className="flex gap-2.5 items-start text-[11px] text-slate-500 cursor-pointer">
+                      <input
+                        type="checkbox"
+                        required
+                        defaultChecked
+                        className="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                      />
+                      <span>
+                        I consent to receive weekly delta matching alerts and priority funding reminders from FSI Digital. I can unsubscribe at any time.
+                      </span>
+                    </label>
                   </div>
                 </div>
-              )}
 
-              {/* STEP 2: Industry */}
-              {wizardStep === 2 && (
-                <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
-                  <div className="space-y-3">
-                    <Label className="text-sm font-bold text-slate-800">Primary Business Sector</Label>
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                      {[
-                        { id: "technology", label: "Technology / Software", desc: "Software, R&D, Tech consulting" },
-                        { id: "manufacturing", label: "Manufacturing", desc: "Factories, physical products, scale" },
-                        { id: "cleantech", label: "Clean Energy / Cleantech", desc: "Solar, wind, recycling, green tech" },
-                        { id: "healthcare", label: "Healthcare / Life Sciences", desc: "Medical tech, labs, clinical" },
-                        { id: "retail", label: "Retail / E-commerce", desc: "Online stores, consumer goods" },
-                        { id: "services", label: "Professional Services", desc: "Legal, accounting, marketing agency" },
-                        { id: "other", label: "Other Business", desc: "Tourism, general operations" }
-                      ].map(ind => (
-                        <button
-                          key={ind.id}
-                          type="button"
-                          onClick={() => updateProfileField("industry", ind.id)}
-                          className={`p-4 rounded-xl border text-left transition-all ${
-                            profile.industry === ind.id 
-                              ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
-                              : "border-slate-200 bg-white hover:bg-slate-50"
-                          }`}
-                        >
-                          <span className="block text-xs font-black text-slate-900">{ind.label}</span>
-                          <span className="block text-[10px] text-slate-500 mt-0.5">{ind.desc}</span>
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 pt-4">
-                    <Button
-                      type="button"
-                      onClick={() => setWizardStep(1)}
-                      variant="outline"
-                      className="flex-1 border-slate-200 text-slate-700 font-bold py-6 text-sm rounded-xl"
-                    >
-                      Back
-                    </Button>
-                    <Button
-                      type="button"
-                      onClick={() => setWizardStep(3)}
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl"
-                    >
-                      Strategic Activities <ArrowRight className="w-4 h-4" />
-                    </Button>
-                  </div>
+                <div className="pt-4">
+                  <Button
+                    type="submit"
+                    disabled={isSavingStep1}
+                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl"
+                  >
+                    {isSavingStep1 ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Saving Draft...
+                      </>
+                    ) : (
+                      <>
+                        Continue to Demographics <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </Button>
                 </div>
-              )}
+              </form>
+            )}
 
-              {/* STEP 3: Strategic Activities */}
-              {wizardStep === 3 && (
-                <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
-                  <div className="space-y-4">
-                    <Label className="text-sm font-bold text-slate-800">Check all that apply to your business:</Label>
+            {/* STEP 2: Demographics */}
+            {wizardStep === 2 && (
+              <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-300">
+                <div className="space-y-2 text-left">
+                  <Label className="text-sm font-bold text-slate-800">Business Location</Label>
+                  <div className="grid grid-cols-2 gap-4">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        updateProfileField("country", "Canada")
+                        updateProfileField("region", "ON")
+                      }}
+                      className={`p-4 rounded-xl border text-left transition-all ${
+                        profile.country === "Canada" 
+                          ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                          : "border-slate-200 bg-white hover:bg-slate-50"
+                      }`}
+                    >
+                      <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider">Canada</span>
+                      <span className="block text-sm font-black text-slate-900 mt-0.5">🍁 Canadian Entity</span>
+                    </button>
                     
-                    <div className="space-y-3">
-                      {[
-                        { id: "isIncorporated", label: "Our business is incorporated", desc: "Eligible for federal tax credits and regional scale-up programs" },
-                        { id: "hasRd", label: "We conduct technology, software, or product R&D", desc: "Primary trigger for SR&ED and IRAP programs" },
-                        { id: "hasHiring", label: "We are actively hiring or planning to hire staff/contractors", desc: "Qualifies for hiring subsidies and local employment grants" },
-                        { id: "hasExporting", label: "We sell or plan to sell products internationally", desc: "Qualifies for CanExport and international market development funds" }
-                      ].map(item => (
-                        <label
-                          key={item.id}
-                          className={`flex items-start gap-4 p-4 rounded-xl border cursor-pointer transition-all ${
-                            (profile as any)[item.id]
-                              ? "border-blue-600 bg-blue-50/50 ring-1 ring-blue-100"
-                              : "border-slate-200 bg-white hover:bg-slate-50"
-                          }`}
-                        >
-                          <input
-                            type="checkbox"
-                            className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                            checked={!!(profile as any)[item.id]}
-                            onChange={(e) => updateProfileField(item.id, e.target.checked)}
-                          />
-                          <div>
-                            <span className="block text-xs font-black text-slate-900">{item.label}</span>
-                            <span className="block text-[10px] text-slate-500 mt-0.5">{item.desc}</span>
-                          </div>
-                        </label>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="flex gap-4 pt-4">
-                    <Button
+                    <button
                       type="button"
-                      onClick={() => setWizardStep(2)}
-                      variant="outline"
-                      className="flex-1 border-slate-200 text-slate-700 font-bold py-6 text-sm rounded-xl"
+                      onClick={() => {
+                        updateProfileField("country", "USA")
+                        updateProfileField("region", "CA")
+                      }}
+                      className={`p-4 rounded-xl border text-left transition-all ${
+                        profile.country === "USA" 
+                          ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                          : "border-slate-200 bg-white hover:bg-slate-50"
+                      }`}
                     >
-                      Back
-                    </Button>
-                    <Button
-                      type="submit"
-                      className="flex-1 bg-gradient-to-r from-blue-700 to-indigo-800 hover:from-blue-800 hover:to-indigo-950 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl shadow-lg shadow-blue-700/15"
-                    >
-                      Evaluate Funding Portfolio <ArrowRight className="w-4 h-4" />
-                    </Button>
+                      <span className="block text-xs font-bold text-slate-500 uppercase tracking-wider">United States</span>
+                      <span className="block text-sm font-black text-slate-900 mt-0.5">🇺🇸 US Business</span>
+                    </button>
                   </div>
                 </div>
-              )}
-            </form>
+
+                <div className="space-y-2 text-left">
+                  <Label htmlFor="region" className="text-sm font-bold text-slate-800">Province or State</Label>
+                  <select
+                    id="region"
+                    value={profile.region}
+                    onChange={(e) => updateProfileField("region", e.target.value)}
+                    className="w-full h-12 px-3 bg-white border border-slate-200 rounded-xl text-sm text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-blue-600"
+                  >
+                    {profile.country === "Canada" ? (
+                      <>
+                        <option value="ON">Ontario (ON)</option>
+                        <option value="BC">British Columbia (BC)</option>
+                        <option value="QC">Quebec (QC)</option>
+                        <option value="AB">Alberta (AB)</option>
+                        <option value="NS">Nova Scotia (NS)</option>
+                      </>
+                    ) : (
+                      <>
+                        <option value="CA">California (CA)</option>
+                        <option value="TX">Texas (TX)</option>
+                        <option value="NY">New York (NY)</option>
+                        <option value="FL">Florida (FL)</option>
+                      </>
+                    )}
+                  </select>
+                </div>
+
+                <div className="space-y-2 text-left">
+                  <Label className="text-sm font-bold text-slate-800">Company size (FTEs)</Label>
+                  <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                    {["1-9", "10-49", "50-99", "100-499", "500+"].map(size => (
+                      <button
+                        key={size}
+                        type="button"
+                        onClick={() => updateProfileField("companySize", size)}
+                        className={`p-3 rounded-lg border text-center text-xs font-bold transition-all ${
+                          profile.companySize === size 
+                            ? "border-blue-600 bg-blue-50/50 text-blue-700 font-extrabold" 
+                            : "border-slate-200 bg-white hover:bg-slate-50 text-slate-700"
+                        }`}
+                      >
+                        {size} FTEs
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <Button
+                    type="button"
+                    onClick={() => setWizardStep(1)}
+                    variant="outline"
+                    className="flex-1 border-slate-200 text-slate-700 font-bold py-6 text-sm rounded-xl"
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    type="button"
+                    onClick={() => {
+                      localStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
+                      setWizardStep(3)
+                    }}
+                    className="flex-1 bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl"
+                  >
+                    Continue to Profile <ArrowRight className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            )}
+
+            {/* STEP 3: Sector & Activities combined */}
+            {wizardStep === 3 && (
+              <form onSubmit={handleStep3Submit} className="space-y-6 text-left animate-in fade-in slide-in-from-bottom-4 duration-300">
+                {step3Error && (
+                  <div className="p-3 bg-red-50 border border-red-100 text-red-700 text-xs font-semibold rounded-lg">
+                    {step3Error}
+                  </div>
+                )}
+
+                <div className="space-y-3">
+                  <Label className="text-sm font-bold text-slate-800">Primary Business Sector</Label>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {[
+                      { id: "technology", label: "Technology / Software", desc: "Software, R&D, Tech consulting" },
+                      { id: "manufacturing", label: "Manufacturing", desc: "Factories, physical products, scale" },
+                      { id: "cleantech", label: "Clean Energy / Cleantech", desc: "Solar, wind, recycling, green tech" },
+                      { id: "healthcare", label: "Healthcare / Life Sciences", desc: "Medical tech, labs, clinical" },
+                      { id: "retail", label: "Retail / E-commerce", desc: "Online stores, consumer goods" },
+                      { id: "services", label: "Professional Services", desc: "Legal, accounting, marketing agency" },
+                      { id: "other", label: "Other Business", desc: "Tourism, general operations" }
+                    ].map(ind => (
+                      <button
+                        key={ind.id}
+                        type="button"
+                        onClick={() => updateProfileField("industry", ind.id)}
+                        className={`p-4 rounded-xl border text-left transition-all ${
+                          profile.industry === ind.id 
+                            ? "border-blue-600 bg-blue-50/50 ring-2 ring-blue-100" 
+                            : "border-slate-200 bg-white hover:bg-slate-50"
+                        }`}
+                      >
+                        <span className="block text-xs font-black text-slate-900">{ind.label}</span>
+                        <span className="block text-[10px] text-slate-500 mt-0.5">{ind.desc}</span>
+                      </button>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="space-y-4 pt-2">
+                  <Label className="text-sm font-bold text-slate-800">Check all that apply to your business:</Label>
+                  
+                  <div className="space-y-3">
+                    {[
+                      { id: "isIncorporated", label: "Our business is incorporated", desc: "Eligible for federal tax credits and regional scale-up programs" },
+                      { id: "hasRd", label: "We conduct technology, software, or product R&D", desc: "Primary trigger for SR&ED and IRAP programs" },
+                      { id: "hasHiring", label: "We are actively hiring or planning to hire staff/contractors", desc: "Qualifies for hiring subsidies and local employment grants" },
+                      { id: "hasExporting", label: "We sell or plan to sell products internationally", desc: "Qualifies for CanExport and international market development funds" }
+                    ].map(item => (
+                      <label
+                        key={item.id}
+                        className={`flex items-start gap-4 p-4 rounded-xl border cursor-pointer transition-all ${
+                          (profile as any)[item.id]
+                            ? "border-blue-600 bg-blue-50/50 ring-1 ring-blue-100"
+                            : "border-slate-200 bg-white hover:bg-slate-50"
+                        }`}
+                      >
+                        <input
+                          type="checkbox"
+                          className="mt-1 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
+                          checked={!!(profile as any)[item.id]}
+                          onChange={(e) => updateProfileField(item.id, e.target.checked)}
+                        />
+                        <div>
+                          <span className="block text-xs font-black text-slate-900">{item.label}</span>
+                          <span className="block text-[10px] text-slate-500 mt-0.5">{item.desc}</span>
+                        </div>
+                      </label>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex gap-4 pt-4">
+                  <Button
+                    type="button"
+                    onClick={() => setWizardStep(2)}
+                    variant="outline"
+                    className="flex-1 border-slate-200 text-slate-700 font-bold py-6 text-sm rounded-xl"
+                  >
+                    Back
+                  </Button>
+                  <Button
+                    type="submit"
+                    disabled={isSavingStep3}
+                    className="flex-1 bg-gradient-to-r from-blue-700 to-indigo-800 hover:from-blue-800 hover:to-indigo-950 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl shadow-lg shadow-blue-700/15"
+                  >
+                    {isSavingStep3 ? (
+                      <>
+                        <Loader2 className="w-4 h-4 animate-spin" />
+                        Evaluating...
+                      </>
+                    ) : (
+                      <>
+                        Evaluate Funding Portfolio <ArrowRight className="w-4 h-4" />
+                      </>
+                    )}
+                  </Button>
+                </div>
+              </form>
+            )}
           </CardContent>
         </Card>
       </div>

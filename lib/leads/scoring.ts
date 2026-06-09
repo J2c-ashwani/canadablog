@@ -54,6 +54,16 @@ export type LeadCaptureData = {
   lastAttributionSource?: string;
   firstReportViewedAt?: string;
   assessmentPurchasedAt?: string;
+  lastAlertSentAt?: string;
+  lastAlertOpenedAt?: string;
+  lastAlertClickedAt?: string;
+  lastLoginAt?: string;
+  lastDashboardViewAt?: string;
+  lastPortfolioViewAt?: string;
+  lastAlertClickAt?: string;
+  leadTier?: string;
+  subscriptionCancelledAt?: string;
+  cancellationReason?: string;
 };
 
 

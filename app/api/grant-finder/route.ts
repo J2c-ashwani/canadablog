@@ -1,7 +1,45 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { processGrantFinderRequest, type GrantFinderRequest } from "@/lib/ai-grant-matcher"
 import { appendLeadToSheet } from "@/lib/google-sheets"
+import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { getAllPrograms } from "@/lib/data/programs"
+import { MatchScoreEngine } from "@/lib/leads/MatchScoreEngine"
+import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
 import crypto from "crypto"
+
+function getLeadTier(body: any): "Tier A" | "Tier B" | "Tier C" {
+  const country = body.country || "Canada"
+  const region = body.state || "ON"
+  const companySize = body.companySize || "1-9"
+  const industry = body.industry || "technology"
+
+  const allPrograms = getAllPrograms()
+  const eligibleSlugs: string[] = []
+
+  allPrograms.forEach(prog => {
+    const matchRes = MatchScoreEngine.calculateMatch(prog, {
+      country: country as any,
+      region: region,
+      companySize: companySize as any,
+      industry: industry,
+      fundingInterests: []
+    })
+    if (matchRes.status === "Eligible") {
+      eligibleSlugs.push(prog.slug)
+    }
+  })
+
+  const defaultCheckedSlugs = eligibleSlugs.slice(0, 5)
+  const range = PortfolioScoreEngine.calculateStackingRange(defaultCheckedSlugs, allPrograms)
+  
+  if (range.max >= 250000) {
+    return "Tier A"
+  } else if (range.max >= 100000) {
+    return "Tier B"
+  } else {
+    return "Tier C"
+  }
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -33,41 +71,68 @@ export async function POST(request: NextRequest) {
     const unsubscribeToken = crypto.randomBytes(16).toString("hex")
     const loginToken = crypto.randomBytes(16).toString("hex")
 
-    // Save lead to Google Sheets with source tracking
-    appendLeadToSheet({
-      source: leadSource, // 🎯 SOURCE TRACKING
-      timestamp,
-      email: body.email,
-      name: body.name || "",
-      companyName: body.companyName || "",
-      website: body.website || "",
-      country: body.country,
-      phone: body.phone || "N/A",
-      state: body.state || "",
-      industry: body.industry,
-      businessStage: body.businessStage,
-      fundingAmount: body.fundingAmount || "",
-      fundingPurpose: body.fundingPurpose || "",
-      businessDescription: body.businessDescription || "",
-      consentToPartnerContact: !!body.consentToPartnerContact,
-      pagePath: body.pagePath || request.headers.get("referer") || "N/A",
-      ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
-      userAgent: request.headers.get("user-agent") || "N/A",
-      utmSource: body.utmSource,
-      utmMedium: body.utmMedium,
-      utmCampaign: body.utmCampaign,
-      gaClientId: body.gaClientId,
-      offlineStatus: "Lead",
-      companySize: body.companySize,
-      fundingInterests: body.fundingInterests,
-      readinessScore: body.readinessScore,
-      readinessBand: body.readinessBand,
-      unsubscribeToken,
-      loginToken,
-      subscriptionStatus: "inactive",
-      subscriptionId: "N/A",
-      trialStartedAt: "N/A",
-    }).catch((error) => {
+    const existing = await SubscriberRepository.getSubscriberByEmail(body.email)
+    let finalLoginToken = loginToken
+    let finalUnsubscribeToken = unsubscribeToken
+    if (existing) {
+      if (existing.loginToken) finalLoginToken = existing.loginToken
+      if (existing.unsubscribeToken) finalUnsubscribeToken = existing.unsubscribeToken
+    }
+
+    const tier = getLeadTier(body)
+
+    const saveLead = async () => {
+      const leadData = {
+        source: leadSource,
+        name: body.name || "",
+        companyName: body.companyName || "",
+        website: body.website || "",
+        country: body.country,
+        phone: body.phone || "N/A",
+        state: body.state || "",
+        industry: body.industry,
+        businessStage: body.businessStage,
+        fundingAmount: body.fundingAmount || "",
+        fundingPurpose: body.fundingPurpose || "",
+        businessDescription: body.businessDescription || "",
+        consentToPartnerContact: !!body.consentToPartnerContact,
+        pagePath: body.pagePath || request.headers.get("referer") || "N/A",
+        ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
+        userAgent: request.headers.get("user-agent") || "N/A",
+        utmSource: body.utmSource || "N/A",
+        utmMedium: body.utmMedium || "N/A",
+        utmCampaign: body.utmCampaign || "N/A",
+        gaClientId: body.gaClientId || "N/A",
+        offlineStatus: "Lead",
+        companySize: body.companySize,
+        fundingInterests: body.fundingInterests,
+        readinessScore: body.readinessScore,
+        readinessBand: body.readinessBand,
+        leadTier: tier
+      }
+
+      if (existing) {
+        await SubscriberRepository.updateSubscriberPreferences(body.email, {
+          ...leadData,
+          companySize: leadData.companySize as any,
+          fundingInterests: leadData.fundingInterests as any,
+          region: leadData.state
+        })
+      } else {
+        await appendLeadToSheet({
+          ...leadData,
+          email: body.email,
+          timestamp,
+          unsubscribeToken: finalUnsubscribeToken,
+          loginToken: finalLoginToken,
+          subscriptionStatus: "inactive",
+          subscriptionId: "N/A",
+          trialStartedAt: "N/A",
+        })
+      }
+    }
+
+    saveLead().catch((error) => {
       console.error("❌ Failed to save lead to Google Sheets:", error)
     })
 
@@ -97,7 +162,7 @@ export async function POST(request: NextRequest) {
             <p><strong>Next Steps:</strong></p>
             <p>You can access your personalized funding shortlist and review detail checklists on our portal. To discuss program stacking options and coordinate application timing, access your dashboard:</p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.fsidigital.ca/portfolio?token=${loginToken}&ref=welcome_email" 
+              <a href="https://www.fsidigital.ca/portfolio?token=${finalLoginToken}&ref=welcome_email" 
                  style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
                  Access Your Funding Dashboard &rarr;
               </a>
@@ -116,7 +181,7 @@ export async function POST(request: NextRequest) {
             <p>Thank you for using the FSI Digital AI Grant Finder. Your custom search matches have been generated.</p>
             <p>You can access your personalized funding shortlist and review detail checklists on our portal. To discuss program stacking options and coordinate application timing, access your dashboard:</p>
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://www.fsidigital.ca/portfolio?token=${loginToken}&ref=welcome_grant_finder" 
+              <a href="https://www.fsidigital.ca/portfolio?token=${finalLoginToken}&ref=welcome_grant_finder" 
                  style="background-color: #1e40af; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block;">
                  Access Your Funding Dashboard &rarr;
               </a>
@@ -154,8 +219,8 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       ...results,
-      unsubscribeToken,
-      loginToken,
+      unsubscribeToken: finalUnsubscribeToken,
+      loginToken: finalLoginToken,
     })
   } catch (error) {
     console.error("Grant finder error:", error)

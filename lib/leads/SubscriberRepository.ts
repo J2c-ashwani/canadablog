@@ -35,6 +35,31 @@ export interface SubscriberProfile {
   lastAttributionSource?: string
   firstReportViewedAt?: string
   assessmentPurchasedAt?: string
+  lastAlertSentAt?: string
+  lastAlertOpenedAt?: string
+  lastAlertClickedAt?: string
+  lastLoginAt?: string
+  lastDashboardViewAt?: string
+  lastPortfolioViewAt?: string
+  lastAlertClickAt?: string
+  leadTier?: string
+  subscriptionCancelledAt?: string
+  cancellationReason?: string
+  source?: string
+  phone?: string
+  businessStage?: string
+  fundingAmount?: string
+  fundingPurpose?: string
+  businessDescription?: string
+  consentToPartnerContact?: boolean
+  pagePath?: string
+  ipAddress?: string
+  userAgent?: string
+  utmSource?: string
+  utmMedium?: string
+  utmCampaign?: string
+  gaClientId?: string
+  offlineStatus?: string
 }
 
 export interface ISubscriberRepository {
@@ -80,6 +105,31 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       lastAttributionSource: lead.lastAttributionSource || "",
       firstReportViewedAt: lead.firstReportViewedAt || "",
       assessmentPurchasedAt: lead.assessmentPurchasedAt || "",
+      lastAlertSentAt: lead.lastAlertSentAt || "",
+      lastAlertOpenedAt: lead.lastAlertOpenedAt || "",
+      lastAlertClickedAt: lead.lastAlertClickedAt || "",
+      lastLoginAt: lead.lastLoginAt || "",
+      lastDashboardViewAt: lead.lastDashboardViewAt || "",
+      lastPortfolioViewAt: lead.lastPortfolioViewAt || "",
+      lastAlertClickAt: lead.lastAlertClickAt || "",
+      leadTier: lead.leadTier || "",
+      subscriptionCancelledAt: lead.subscriptionCancelledAt || "",
+      cancellationReason: lead.cancellationReason || "",
+      source: lead.source || "",
+      phone: lead.phone || "",
+      businessStage: lead.businessStage || "",
+      fundingAmount: lead.fundingAmount || "",
+      fundingPurpose: lead.fundingPurpose || "",
+      businessDescription: lead.businessDescription || "",
+      consentToPartnerContact: lead.consentToPartnerContact === "Yes" || lead.consentToPartnerContact === true,
+      pagePath: lead.pagePath || "",
+      ipAddress: lead.ipAddress || "",
+      userAgent: lead.userAgent || "",
+      utmSource: lead.utmSource || "",
+      utmMedium: lead.utmMedium || "",
+      utmCampaign: lead.utmCampaign || "",
+      gaClientId: lead.gaClientId || "",
+      offlineStatus: lead.offlineStatus || "",
     }
   }
 
@@ -128,6 +178,16 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         lastAttributionSource: "N/A",
         firstReportViewedAt: "N/A",
         assessmentPurchasedAt: "N/A",
+        lastAlertSentAt: "N/A",
+        lastAlertOpenedAt: "N/A",
+        lastAlertClickedAt: "N/A",
+        lastLoginAt: "N/A",
+        lastDashboardViewAt: "N/A",
+        lastPortfolioViewAt: "N/A",
+        lastAlertClickAt: "N/A",
+        leadTier: "N/A",
+        subscriptionCancelledAt: "N/A",
+        cancellationReason: "N/A",
         engagementScore: 100,
         lastOpenedAt: "N/A",
         lastClickedAt: "N/A",
@@ -209,6 +269,31 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       if (updates.lastAttributionSource !== undefined) data.lastAttributionSource = updates.lastAttributionSource
       if (updates.firstReportViewedAt !== undefined) data.firstReportViewedAt = updates.firstReportViewedAt
       if (updates.assessmentPurchasedAt !== undefined) data.assessmentPurchasedAt = updates.assessmentPurchasedAt
+      if (updates.lastAlertSentAt !== undefined) data.lastAlertSentAt = updates.lastAlertSentAt
+      if (updates.lastAlertOpenedAt !== undefined) data.lastAlertOpenedAt = updates.lastAlertOpenedAt
+      if (updates.lastAlertClickedAt !== undefined) data.lastAlertClickedAt = updates.lastAlertClickedAt
+      if (updates.lastLoginAt !== undefined) data.lastLoginAt = updates.lastLoginAt
+      if (updates.lastDashboardViewAt !== undefined) data.lastDashboardViewAt = updates.lastDashboardViewAt
+      if (updates.lastPortfolioViewAt !== undefined) data.lastPortfolioViewAt = updates.lastPortfolioViewAt
+      if (updates.lastAlertClickAt !== undefined) data.lastAlertClickAt = updates.lastAlertClickAt
+      if (updates.leadTier !== undefined) data.leadTier = updates.leadTier
+      if (updates.subscriptionCancelledAt !== undefined) data.subscriptionCancelledAt = updates.subscriptionCancelledAt
+      if (updates.cancellationReason !== undefined) data.cancellationReason = updates.cancellationReason
+      if (updates.source !== undefined) data.source = updates.source
+      if (updates.phone !== undefined) data.phone = updates.phone
+      if (updates.businessStage !== undefined) data.businessStage = updates.businessStage
+      if (updates.fundingAmount !== undefined) data.fundingAmount = updates.fundingAmount
+      if (updates.fundingPurpose !== undefined) data.fundingPurpose = updates.fundingPurpose
+      if (updates.businessDescription !== undefined) data.businessDescription = updates.businessDescription
+      if (updates.consentToPartnerContact !== undefined) data.consentToPartnerContact = updates.consentToPartnerContact
+      if (updates.pagePath !== undefined) data.pagePath = updates.pagePath
+      if (updates.ipAddress !== undefined) data.ipAddress = updates.ipAddress
+      if (updates.userAgent !== undefined) data.userAgent = updates.userAgent
+      if (updates.utmSource !== undefined) data.utmSource = updates.utmSource
+      if (updates.utmMedium !== undefined) data.utmMedium = updates.utmMedium
+      if (updates.utmCampaign !== undefined) data.utmCampaign = updates.utmCampaign
+      if (updates.gaClientId !== undefined) data.gaClientId = updates.gaClientId
+      if (updates.offlineStatus !== undefined) data.offlineStatus = updates.offlineStatus
 
       const res = await updateLeadInSheet(email, data)
       return { success: res.success, error: res.error }
