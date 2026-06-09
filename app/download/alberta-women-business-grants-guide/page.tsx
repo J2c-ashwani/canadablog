@@ -63,6 +63,9 @@ export default function AlbertaWomenGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Alberta Women Business Grants Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Alberta women business grants toolkit covering $580M in provincial support including Alberta Women Entrepreneurs (AWE) loans ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/alberta-women-business-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50">
         <section className="py-16">

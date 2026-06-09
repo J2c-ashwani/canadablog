@@ -70,6 +70,9 @@ export default function OntarioBusinessGrantsDownloadPage() {
 
   return (
     <>
+      <title>Ontario Business Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive Ontario provincial business grants application templates, program compliance strategies, and regional development gu..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/ontario-business-grants-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

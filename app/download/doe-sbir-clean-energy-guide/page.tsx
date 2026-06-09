@@ -64,6 +64,9 @@ export default function DOESBIRCleanEnergyDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free DOE SBIR Clean Energy Grants Application Guide & Proposal Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive DOE SBIR/STTR clean energy grants toolkit covering Phase I ($200,000) and Phase II ($1,850,000) application strategies, techn..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/doe-sbir-clean-energy-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-50">
         <section className="py-16">

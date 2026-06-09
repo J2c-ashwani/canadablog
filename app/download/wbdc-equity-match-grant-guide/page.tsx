@@ -62,6 +62,9 @@ export default function WBDCGrantDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free WBDC Equity Match Grant Application Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive WBDC Equity Match Grant toolkit with 1:1 match requirement calculator, quarterly deadline tracker, growth project planning te..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/wbdc-equity-match-grant-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
         <section className="py-16">

@@ -63,6 +63,9 @@ export default function BCWomenGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free BC Women Business Grants Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive BC women business grants toolkit covering $650M in provincial innovation support including WeBC loans up to $150,000, Innovat..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/bc-women-business-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-teal-50">
         <section className="py-16">

@@ -67,6 +67,9 @@ export default function SIFDownloadPage() {
 
   return (
     <>
+      <title>Strategic Innovation Fund Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive SIF application templates, checklists, and expert guidance used by successful applicants to secure $180M+ in Strateg..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/sif-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

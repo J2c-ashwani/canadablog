@@ -241,6 +241,36 @@ export default function BookingClient() {
           ) : (
             /* STATE A: SLOT SCHEDULING VIEW (DEFAULT) */
             <>
+              {/* Process Tracker */}
+              <div className="max-w-3xl mx-auto mb-8 bg-white border border-slate-200/60 rounded-2xl p-4 shadow-sm">
+                <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-semibold text-slate-500">
+                  <div className="flex items-center gap-2 text-indigo-600 bg-indigo-50 border border-indigo-200 px-3 py-1.5 rounded-full">
+                    <span className="w-5 h-5 rounded-full bg-indigo-600 text-white flex items-center justify-center text-[10px] font-bold">1</span>
+                    <span>Intake Review</span>
+                  </div>
+                  <span className="hidden sm:block text-slate-300">➔</span>
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px] font-bold">2</span>
+                    <span>Eligibility Matching</span>
+                  </div>
+                  <span className="hidden sm:block text-slate-300">➔</span>
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px] font-bold">3</span>
+                    <span>Analyst Assignment</span>
+                  </div>
+                  <span className="hidden sm:block text-slate-300">➔</span>
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px] font-bold">4</span>
+                    <span>Deposit Confirmation</span>
+                  </div>
+                  <span className="hidden sm:block text-slate-300">➔</span>
+                  <div className="flex items-center gap-2">
+                    <span className="w-5 h-5 rounded-full bg-slate-200 text-slate-600 flex items-center justify-center text-[10px] font-bold">5</span>
+                    <span>Funding Audit</span>
+                  </div>
+                </div>
+              </div>
+
               <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 text-xs font-semibold uppercase tracking-wider mb-6">
                 <Calendar className="w-3.5 h-3.5" />
                 Step 1: Choose Your Audit Time Slot
@@ -251,7 +281,7 @@ export default function BookingClient() {
               </h1>
               
               <p className="text-base sm:text-lg text-slate-600 max-w-2xl mx-auto leading-relaxed mb-8">
-                Select a date and time for your Google Meet audit below. Your slot will be provisionally held for <span className="line-through text-slate-400 mr-1.5">10 minutes</span> 24 hours while you complete your pre-call research deposit.
+                Select a date and time for your Google Meet audit below. Your slot will be provisionally held for 24 hours while you complete your pre-call research deposit.
               </p>
 
               <div className="grid grid-cols-2 md:grid-cols-3 gap-4 max-w-2xl mx-auto mb-10 text-left">
@@ -299,7 +329,7 @@ export default function BookingClient() {
               <div className="flex gap-2 text-xs text-slate-500 max-w-lg mx-auto leading-relaxed border-t border-slate-200/60 pt-6 justify-center">
                 <AlertCircle className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
                 <span className="text-left">
-                  Note: Each audit requires approximately 2 hours of dedicated analyst research. We limit intake weekly to maintain research quality.
+                  Note: Each audit requires approximately 2 hours of dedicated analyst research. All business information is handled confidentially and used solely for funding eligibility analysis.
                 </span>
               </div>
             </>

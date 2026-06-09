@@ -53,50 +53,53 @@ function buildReceiptHtml({
   replyToEmail: string
 }) {
   return `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:#334155;max-width:580px;margin:0 auto;padding:24px;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;">
-      <!-- Brand Header -->
-      <div style="padding-bottom:16px;border-bottom:1px solid #f1f5f9;margin-bottom:24px;">
-        <span style="font-size:18px;font-weight:700;color:#0f172a;letter-spacing:-0.02em;">FSI <span style="color:#10b981;">Digital</span></span>
-      </div>
+    <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+      <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">
+        <!-- Brand Header -->
+        <div style="padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 24px; display: table; width: 100%;">
+          <span style="font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; display: table-cell;">FSI <span style="color: #059669;">Digital</span></span>
+          <span style="font-size: 12px; font-weight: 600; color: #64748b; background-color: #f1f5f9; padding: 4px 8px; border-radius: 4px; display: table-cell; text-align: right; width: 100px;">Advisory Desk</span>
+        </div>
 
-      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">Hi ${firstName},</p>
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
 
-      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">
-        Thank you for submitting your lead buyer application to FSI Digital for <strong>${companyName}</strong>. 
-      </p>
-
-      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">
-        Here is a copy of your requested target parameters:
-      </p>
-
-      <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin: 20px 0;">
-        <p style="margin: 0 0 8px 0; font-size: 14px; color: #334155;">
-          <strong>Target Lead Type:</strong> ${escapeHtml(leadType)}
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;line-height:1.6;">
+          Thank you for submitting your lead buyer application to FSI Digital for <strong>${companyName}</strong>. 
         </p>
-        <p style="margin: 0 0 8px 0; font-size: 14px; color: #334155;">
-          <strong>Geography Interest:</strong> ${escapeHtml(geography)}
-        </p>
-        <p style="margin: 0; font-size: 14px; color: #334155;">
-          <strong>Monthly Lead Budget:</strong> ${escapeHtml(budget)}
-        </p>
-      </div>
 
-      <p style="margin:0 0 16px 0;font-weight:700;color:#0f172a;font-size:15px;">What happens next:</p>
-      <p style="margin:0 0 16px 0;font-size:14px;color:#475569;line-height:1.6;">
-        Our compliance and operations team is currently reviewing your company website, profile, and ICP description to ensure we have active lead inventory matching your exact specifications.
-      </p>
-      <p style="margin:0 0 20px 0;font-size:14px;color:#475569;line-height:1.6;">
-        This review typically takes **1 to 2 hours**. As soon as approval is completed, we will email you back with checkout instructions to lock in your starter pilot batch.
-      </p>
-
-      <!-- Footer Signature -->
-      <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
-        <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
-          Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
-          <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
-          <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">
+          Here is a copy of your requested target parameters:
         </p>
+
+        <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 16px 20px; margin: 20px 0;">
+          <p style="margin: 0 0 8px 0; font-size: 14px; color: #334155;">
+            <strong>Target Lead Type:</strong> ${escapeHtml(leadType)}
+          </p>
+          <p style="margin: 0 0 8px 0; font-size: 14px; color: #334155;">
+            <strong>Geography Interest:</strong> ${escapeHtml(geography)}
+          </p>
+          <p style="margin: 0; font-size: 14px; color: #334155;">
+            <strong>Monthly Lead Budget:</strong> ${escapeHtml(budget)}
+          </p>
+        </div>
+
+        <p style="margin:0 0 16px 0;font-weight:700;color:#0f172a;font-size:15px;">What happens next:</p>
+        <p style="margin:0 0 16px 0;font-size:14px;color:#475569;line-height:1.6;">
+          Our compliance and operations team is currently reviewing your company website, profile, and ICP description to ensure we have active lead inventory matching your exact specifications.
+        </p>
+        <p style="margin:0 0 20px 0;font-size:14px;color:#475569;line-height:1.6;">
+          This review typically takes <strong>1 to 2 hours</strong>. As soon as approval is completed, we will email you back with checkout instructions to lock in your starter pilot batch.
+        </p>
+
+        <!-- Footer Signature -->
+        <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
+          <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
+            Best regards,<br/>
+            <strong>Michael Thompson</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Senior Funding Analyst, FSI Digital</span><br/>
+            <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
+          </p>
+        </div>
       </div>
     </div>
   `
@@ -117,54 +120,57 @@ function buildApprovalHtml({
   replyToEmail: string
 }) {
   return `
-    <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;line-height:1.7;color:#334155;max-width:580px;margin:0 auto;padding:24px;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;">
-      <!-- Brand Header -->
-      <div style="padding-bottom:16px;border-bottom:1px solid #f1f5f9;margin-bottom:24px;">
-        <span style="font-size:18px;font-weight:700;color:#0f172a;letter-spacing:-0.02em;">FSI <span style="color:#10b981;">Digital</span></span>
-      </div>
+    <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+      <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">
+        <!-- Brand Header -->
+        <div style="padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 24px; display: table; width: 100%;">
+          <span style="font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; display: table-cell;">FSI <span style="color: #059669;">Digital</span></span>
+          <span style="font-size: 12px; font-weight: 600; color: #64748b; background-color: #f1f5f9; padding: 4px 8px; border-radius: 4px; display: table-cell; text-align: right; width: 100px;">Advisory Desk</span>
+        </div>
 
-      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">Hi ${firstName},</p>
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
 
-      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">
-        Good news — our operations team has completed their review, and your B2B account for <strong>${companyName}</strong> has been **approved**.
-      </p>
-
-      <p style="margin:0 0 16px 0;font-size:15px;color:#334155;">
-        We have verified active lead inventory matching your target requirements (<strong>${leadType}</strong> in <strong>${geography}</strong>).
-      </p>
-
-      <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px 20px; margin: 20px 0; text-align: center;">
-        <p style="margin: 0 0 10px 0; font-size: 14px; color: #166534; font-weight: 600;">
-          Launch Your Starter Pilot Batch
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;line-height:1.6;">
+          Good news — our operations team has completed their review, and your B2B account for <strong>${companyName}</strong> has been approved.
         </p>
-        <p style="margin: 0 0 16px 0; font-size: 13px; color: #15803d; line-height: 1.5;">
-          You can purchase a starter batch securely via PayPal to begin routing leads to your desk immediately. No contract or setup call required.
+
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;line-height:1.6;">
+          We have verified active lead inventory matching your target requirements (<strong>${leadType}</strong> in <strong>${geography}</strong>).
         </p>
-        <a href="https://www.fsidigital.ca/partners#pricing" 
-           style="display: inline-block; background-color: #10b981; color: #022c22; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; transition: background-color 0.2s ease;">
-          Select Pilot Package & Checkout
-        </a>
-      </div>
 
-      <p style="margin:0 0 16px 0;font-size:14px;color:#334155;font-weight:600;">Starter Pilot Options:</p>
-      <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;color:#475569;line-height:1.6;">
-        <li style="margin-bottom:8px;"><strong>Shared Lead Pilot ($500):</strong> 10 qualified funding leads routed to your email inbox.</li>
-        <li style="margin-bottom:8px;"><strong>Exclusive Lead Pilot ($750):</strong> 10 priority leads distributed exclusively to your firm.</li>
-        <li style="margin-bottom:12px;"><strong>Booked Call Pilot ($1,500):</strong> 5 warm consultation calls scheduled directly on your calendar.</li>
-      </ul>
+        <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px 20px; margin: 20px 0; text-align: center;">
+          <p style="margin: 0 0 10px 0; font-size: 14px; color: #166534; font-weight: 600;">
+            Launch Your Starter Pilot Batch
+          </p>
+          <p style="margin: 0 0 16px 0; font-size: 13px; color: #15803d; line-height: 1.5;">
+            You can purchase a starter batch securely via PayPal to begin routing leads to your desk immediately. No contract or setup call required.
+          </p>
+          <a href="https://www.fsidigital.ca/partners#pricing" 
+             style="display: inline-block; background-color: #059669; color: #ffffff; font-weight: 700; text-decoration: none; padding: 12px 24px; border-radius: 6px; font-size: 14px; transition: background-color 0.2s ease;">
+            Select Pilot Package & Checkout
+          </a>
+        </div>
 
-      <p style="margin:20px 0 16px 0;font-size:14px;color:#475569;line-height:1.5;">
-        Once payment is verified, routing parameters are activated automatically. If you have custom API routing configurations or prefer a brief phone onboarding session, you can schedule a call here: <a href="https://www.fsidigital.ca/consultation?source=partner-approved" style="color:#2563eb;text-decoration:none;">Briefing Booking Page</a>.
-      </p>
+        <p style="margin:0 0 16px 0;font-size:14px;color:#334155;font-weight:600;">Starter Pilot Options:</p>
+        <ul style="margin:0 0 20px 0;padding-left:20px;font-size:14px;color:#475569;line-height:1.6;">
+          <li style="margin-bottom:8px;"><strong>Shared Lead Pilot ($500):</strong> 10 qualified funding leads routed to your email inbox.</li>
+          <li style="margin-bottom:8px;"><strong>Exclusive Lead Pilot ($750):</strong> 10 priority leads distributed exclusively to your firm.</li>
+          <li style="margin-bottom:12px;"><strong>Booked Call Pilot ($1,500):</strong> 5 warm consultation calls scheduled directly on your calendar.</li>
+        </ul>
 
-      <!-- Footer Signature -->
-      <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
-        <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
-          Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
-          <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
-          <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
+        <p style="margin:20px 0 16px 0;font-size:14px;color:#475569;line-height:1.6;">
+          Once payment is verified, routing parameters are activated automatically. If you have custom API routing configurations or prefer a brief phone onboarding session, you can schedule a call here: <a href="https://www.fsidigital.ca/consultation?source=partner-approved" style="color:#2563eb;text-decoration:none;">Briefing Booking Page</a>.
         </p>
+
+        <!-- Footer Signature -->
+        <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
+          <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
+            Best regards,<br/>
+            <strong>Michael Thompson</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Senior Funding Analyst, FSI Digital</span><br/>
+            <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
+          </p>
+        </div>
       </div>
     </div>
   `
@@ -269,7 +275,7 @@ export async function sendPartnerReceiptEmail(data: PartnerReceiptInput) {
         reply_to: replyToEmail,
         subject: `Application received: B2B lead partnership review for ${data.companyName}`,
         html,
-        text: `Hi ${firstName},\n\nWe received your partner application for ${data.companyName}. Our compliance team is currently reviewing your profile to verify active lead inventory for ${data.leadType}. We will respond with approval within 1-2 hours.\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`,
+        text: `Hi ${firstName},\n\nWe received your partner application for ${data.companyName}. Our compliance team is currently reviewing your profile to verify active lead inventory for ${data.leadType}. We will respond with approval within 1-2 hours.\n\nBest regards,\nMichael Thompson\nSenior Funding Analyst\nFSI Digital`,
         tags: [{ name: "type", value: "partner-receipt" }],
       }),
     })
@@ -324,7 +330,7 @@ export async function sendPartnerApprovalEmailAndAlert(data: PartnerApprovalInpu
         reply_to: replyToEmail,
         subject: `Approved: Purchase your starter business funding lead pilot`,
         html: approvalHtml,
-        text: `Hi ${firstName},\n\nGood news - your lead buyer profile for ${data.companyName} has been approved. You can purchase a starter lead pilot batch directly via PayPal here: https://www.fsidigital.ca/partners#pricing.\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`,
+        text: `Hi ${firstName},\n\nGood news - your lead buyer profile for ${data.companyName} has been approved. You can purchase a starter lead pilot batch directly via PayPal here: https://www.fsidigital.ca/partners#pricing.\n\nBest regards,\nMichael Thompson\nSenior Funding Analyst\nFSI Digital`,
         tags: [{ name: "type", value: "partner-approved" }],
       }),
     })

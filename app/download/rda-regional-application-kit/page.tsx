@@ -70,6 +70,9 @@ export default function RDARegionalDownloadPage() {
 
   return (
     <>
+      <title>RDA Regional Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive RDA regional application templates, federal compliance strategies, and region-specific guides used by successful app..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/rda-regional-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

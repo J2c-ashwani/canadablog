@@ -64,6 +64,9 @@ export default function WomenExportTradeGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Export & Trade Grants International Expansion Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive women export grants toolkit covering CanExport SME program (up to $75K per market), Export Development Canada (EDC) trade fin..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-export-trade-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
         <section className="py-16">

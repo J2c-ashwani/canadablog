@@ -69,6 +69,9 @@ export default function CanadaLifeSciencesFundingDownloadPage() {
 
   return (
     <>
+      <title>Canada Life Sciences Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive biotechnology funding guide with IRAP biotech templates, clinical trials checklists, medical device regulatory tools..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/canada-life-sciences-funding-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

@@ -62,6 +62,9 @@ export default function WELFDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Entrepreneurship Loan Fund Application Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive WELF application toolkit with delivery partner comparison, business plan templates, and proven strategies to secure up to $50..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-entrepreneurship-loan-fund-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-pink-50 to-purple-50">
         <section className="py-16">

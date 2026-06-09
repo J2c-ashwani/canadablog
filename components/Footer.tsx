@@ -49,7 +49,7 @@ export function Footer() {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Company Info */}
           <div className="space-y-4">
             <div className="flex items-center space-x-2">
@@ -200,6 +200,70 @@ export function Footer() {
             </ul>
           </div>
 
+          {/* Business Funding Resources (New Column) */}
+          <div className="space-y-4">
+            <h3 className="font-semibold text-lg">Funding Resources</h3>
+            <ul className="space-y-2">
+              <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Top Programs</li>
+              <li>
+                <Link href="/programs/irap-grant" className="text-gray-400 hover:text-white text-sm">
+                  IRAP Grant Guide
+                </Link>
+              </li>
+              <li>
+                <Link href="/programs/sred-tax-credit" className="text-gray-400 hover:text-white text-sm">
+                  SR&ED Tax Credit
+                </Link>
+              </li>
+              <li>
+                <Link href="/programs/canexport" className="text-gray-400 hover:text-white text-sm">
+                  CanExport SMEs
+                </Link>
+              </li>
+              
+              <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Industries</li>
+              <li>
+                <Link href="/grants/industry/saas-companies" className="text-gray-400 hover:text-white text-sm">
+                  SaaS Companies
+                </Link>
+              </li>
+              <li>
+                <Link href="/grants/industry/manufacturers" className="text-gray-400 hover:text-white text-sm">
+                  Manufacturers
+                </Link>
+              </li>
+              <li>
+                <Link href="/grants/industry/agriculture" className="text-gray-400 hover:text-white text-sm">
+                  Agri-Food Sector
+                </Link>
+              </li>
+
+              <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Locations</li>
+              <li>
+                <Link href="/grants/location/ontario" className="text-gray-400 hover:text-white text-sm">
+                  Ontario Grants
+                </Link>
+              </li>
+              <li>
+                <Link href="/grants/location/british-columbia" className="text-gray-400 hover:text-white text-sm">
+                  British Columbia
+                </Link>
+              </li>
+              <li>
+                <Link href="/grants/location/california" className="text-gray-400 hover:text-white text-sm">
+                  California
+                </Link>
+              </li>
+
+              <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Case Studies</li>
+              <li>
+                <Link href="/case-studies" className="text-gray-400 hover:text-white text-sm">
+                  Funding Scenarios
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Legal Pages */}
           <div className="space-y-4">
             <h3 className="font-semibold text-lg">Legal & Editorial</h3>
@@ -263,8 +327,16 @@ export function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-12 pt-8">
+          <div className="text-gray-500 text-xs mb-6 max-w-4xl leading-relaxed">
+            Disclaimer: FSI Digital is an independent private consultancy. We are not affiliated with, endorsed by, or associated with the Government of Canada, the Government of the United States, or any official federal, provincial, or state funding agency.
+          </div>
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm">© 2026 FSI Digital. All rights reserved.</p>
+            <div className="mb-4 md:mb-0">
+              <p className="text-gray-400 text-sm">© 2026 FSI Digital. All rights reserved.</p>
+              <p className="text-gray-500 text-xs mt-1">
+                🔒 Secure payments via PayPal | SSL encrypted website | Privacy-first data handling
+              </p>
+            </div>
             <div className="flex flex-col md:flex-row items-center space-y-2 md:space-y-0 md:space-x-4 mt-2 md:mt-0">
               <p className="text-gray-400 text-sm">
                 Last reviewed: June 2026

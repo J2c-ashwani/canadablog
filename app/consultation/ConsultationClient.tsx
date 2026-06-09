@@ -335,7 +335,7 @@ export default function ConsultationClient() {
     },
     {
       q: 'Is the research deposit refundable?',
-      a: 'Yes, 100%. If our analysts complete the manual audit and discover your business falls into an ineligible category and qualifies for $0 in active government grants, loans, or subsidies, we proactively cancel the call and refund your entire deposit immediately. Zero risk.'
+      a: 'Yes, 100%. If our analysts determine that your business is not eligible for any active funding opportunities, your research deposit is refunded in full.'
     },
     {
       q: 'What happens after I complete my audit?',
@@ -425,13 +425,13 @@ export default function ConsultationClient() {
             {/* Trust Strip */}
             <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 text-xs text-slate-400 font-medium animate-fade-in-d3">
               <span className="flex items-center gap-1.5">
-                <Lock className="w-3.5 h-3.5" /> 256-bit Encrypted
+                <Lock className="w-3.5 h-3.5" /> SSL Encrypted Website
               </span>
               <span className="flex items-center gap-1.5">
-                <ShieldCheck className="w-3.5 h-3.5" /> PayPal Secure
+                <ShieldCheck className="w-3.5 h-3.5" /> Secure Payments via PayPal
               </span>
               <span className="flex items-center gap-1.5">
-                <BadgeCheck className="w-3.5 h-3.5" /> 100% Refund Guarantee
+                <BadgeCheck className="w-3.5 h-3.5" /> Privacy-First Data Handling
               </span>
             </div>
           </div>
@@ -657,20 +657,20 @@ export default function ConsultationClient() {
                 <div className="space-y-3">
                   <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
                     <div>
-                      <div className="text-xs font-bold text-slate-900">Advanced Manufacturing Firm — Ontario</div>
-                      <div className="text-[10px] text-slate-500 mt-0.5">Stacked FedDev funding with regional hiring subsidies</div>
+                      <div className="text-xs font-bold text-slate-900">Ontario Manufacturer</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">Hiring Subsidy + IRAP Review</div>
                     </div>
-                    <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
-                      $120K
+                    <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
+                      Potential Match: $120,000
                     </span>
                   </div>
                   <div className="flex items-center justify-between p-3 bg-slate-50 rounded-xl border border-slate-100">
                     <div>
-                      <div className="text-xs font-bold text-slate-900">Clean Technology SaaS Startup — Alberta</div>
-                      <div className="text-[10px] text-slate-500 mt-0.5">Structured R&D projects for SR&ED and IRAP qualification</div>
+                      <div className="text-xs font-bold text-slate-900">Alberta Clean-Tech SaaS</div>
+                      <div className="text-[10px] text-slate-500 mt-0.5">SR&ED + Innovation Grant Review</div>
                     </div>
-                    <span className="text-xs font-black text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
-                      $65K
+                    <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
+                      Potential Match: $65,000
                     </span>
                   </div>
                 </div>
@@ -680,9 +680,9 @@ export default function ConsultationClient() {
               <div className="bg-emerald-50/70 border border-emerald-200 rounded-2xl p-5 flex items-start gap-3">
                 <ShieldCheck className="w-7 h-7 text-emerald-600 flex-shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-extrabold text-emerald-950 text-sm mb-1">100% Zero-Risk Money-Back Guarantee</h4>
-                  <p className="text-xs text-emerald-800 leading-relaxed">
-                    If our analysts complete the manual audit and discover your business qualifies for <strong>$0</strong> in active government grants, loans, or tax incentives, we cancel the call and refund your entire deposit immediately. You keep the preliminary notes. Zero financial risk.
+                  <h4 className="font-extrabold text-emerald-950 text-sm mb-1">100% Money-Back Eligibility Guarantee</h4>
+                  <p className="text-xs text-emerald-800 leading-relaxed font-medium">
+                    If our analysts determine that your business is not eligible for any active funding opportunities, your research deposit is refunded in full.
                   </p>
                 </div>
               </div>
@@ -807,11 +807,11 @@ export default function ConsultationClient() {
                       <div id="paypal-button-container" className="w-full relative z-10 min-h-[140px]" />
 
                       <div className="flex items-center justify-center gap-3 mt-3 text-[10px] text-slate-400 font-medium">
-                        <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> Encrypted</span>
+                        <span className="flex items-center gap-1"><Lock className="w-3 h-3" /> SSL Encrypted</span>
                         <span className="text-slate-200">|</span>
-                        <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> PayPal Protected</span>
+                        <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3" /> PayPal Secure</span>
                         <span className="text-slate-200">|</span>
-                        <span className="flex items-center gap-1"><BadgeCheck className="w-3 h-3" /> Refundable</span>
+                        <span className="flex items-center gap-1"><BadgeCheck className="w-3 h-3" /> 100% Refundable</span>
                       </div>
                     </div>
                   </>

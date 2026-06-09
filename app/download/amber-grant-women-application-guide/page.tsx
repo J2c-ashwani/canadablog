@@ -63,6 +63,9 @@ export default function AmberGrantDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Amber Grant Application Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Amber Grant application toolkit with monthly deadline tracker, essay templates, category selection guide, and proven strategi..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/amber-grant-women-application-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-amber-50 to-orange-50">
         <section className="py-16">

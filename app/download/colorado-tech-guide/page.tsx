@@ -64,6 +64,9 @@ export default function ColoradoTechGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Colorado Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Colorado technology startup grants toolkit covering Advanced Industries Accelerator Program Early-Stage Capital and Retention..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/colorado-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
         <section className="py-16">

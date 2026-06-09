@@ -62,6 +62,9 @@ export default function CleanTechEnergyGrantsGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your CompleteClean Energy Grants Guide | FSI Digital</title>
+      <meta name="description" content="Free application templates, strategies, and frameworks for DOE SBIR grants up to $1.6M, EPA environmental programs, and state clean energy funding." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/clean-tech-energy-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 via-emerald-50 to-teal-50">
         <section className="py-12 md:py-20">

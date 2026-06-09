@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 export default function YouthEntrepreneurshipKitDownload() {
   return (
     <>
+      <title>Get Your Free Youth Entrepreneurship Kit | FSI Digital</title>
+      <meta name="description" content="Complete CYBF application templates, young entrepreneur funding strategies, and youth business development guides used by our experts to achieve a 78% a..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/youth-entrepreneurship-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

@@ -68,6 +68,9 @@ export default function IRAPGovernmentDownloadPage() {
 
   return (
     <>
+      <title>IRAP Government Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive IRAP government application templates, federal compliance checklists, and expert guidance used by successful applica..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/irap-government-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

@@ -72,6 +72,9 @@ export default function AlbertaBusinessGrantsDownloadPage() {
 
   return (
     <>
+      <title>Alberta Business Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive Alberta provincial business grants application templates, energy innovation strategies, and clean technology develop..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/alberta-business-grants-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

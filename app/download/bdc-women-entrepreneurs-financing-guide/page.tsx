@@ -63,6 +63,9 @@ export default function BDCDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free BDC Women Entrepreneurs Financing Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive BDC financing application toolkit with program comparison, flexible loan strategies, advisor engagement guide, and proven str..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/bdc-women-entrepreneurs-financing-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
         <section className="py-16">

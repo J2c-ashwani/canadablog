@@ -65,6 +65,9 @@ export default function MassachusettsTechGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Massachusetts Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Massachusetts technology startup grants toolkit covering SBIR START tiered grants ($100K Round 1, $200K Round 2, $500K Round ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/massachusetts-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-blue-50">
         <section className="py-16">

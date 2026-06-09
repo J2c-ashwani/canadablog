@@ -70,6 +70,9 @@ export default function AgricultureAgriFoodDownloadPage() {
 
   return (
     <>
+      <title>AAFC Agricultural Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive Agriculture & Agri-Food Canada application templates, federal compliance strategies, and sector-specific guides used..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/agriculture-agri-food-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

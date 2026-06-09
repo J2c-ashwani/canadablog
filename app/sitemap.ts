@@ -11,6 +11,9 @@ import {
   getPseoCitySummaries,
   getPseoProvinceSummaries,
 } from '@/lib/pseo-data'
+import { getAllPrograms } from '@/lib/data/programs'
+import { getAllCaseStudies } from '@/lib/data/case-studies'
+
 
 const SUPERSEDED_BLOG_SLUGS = new Set([
   'canada-irap-grants-2025',
@@ -142,6 +145,27 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/partners/nonprofit-grant-leads',
   ]
 
+  // 7. Add Program pages
+  const programRoutes = getAllPrograms().map(p => `/programs/${p.slug}`)
+
+  // 8. Add Industry pages
+  const cohortIndustries = [
+    'saas-companies', 'ai-startups', 'manufacturers', 'agriculture',
+    'healthcare-medtech', 'clean-tech', 'restaurants-hospitality',
+    'retail', 'non-profits', 'construction'
+  ]
+  const industryRoutes = cohortIndustries.map(slug => `/grants/industry/${slug}`)
+
+  // 9. Add Location pages
+  const cohortLocations = [
+    'ontario', 'british-columbia', 'alberta', 'quebec',
+    'california', 'texas', 'new-york', 'florida', 'illinois', 'ohio'
+  ]
+  const locationRoutes = cohortLocations.map(slug => `/grants/location/${slug}`)
+
+  // 10. Add Case Study pages
+  const caseStudyDetailRoutes = getAllCaseStudies().map(study => `/case-studies/${study.slug}`)
+
   // Combine all routes
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
@@ -153,6 +177,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...pseoCityHubRoutes,
     ...pseoRoutes,
     ...partnerRoutes,
+    ...programRoutes,
+    ...industryRoutes,
+    ...locationRoutes,
+    ...caseStudyDetailRoutes,
   ])).filter(isIndexableRoute)
 
   // Convert to sitemap format

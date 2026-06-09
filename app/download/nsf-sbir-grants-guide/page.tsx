@@ -64,6 +64,9 @@ export default function NSFSBIRGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free NSF SBIR Grants Application Guide & Proposal Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive NSF SBIR/STTR grants toolkit covering Phase I ($275,000) and Phase II ($2,000,000) application strategies, technical proposal..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/nsf-sbir-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
         <section className="py-16">

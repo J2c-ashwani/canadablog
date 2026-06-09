@@ -184,7 +184,7 @@ export function StrategySessionUpsell({
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-indigo-600 font-bold" />
-                  <span>**100% Risk-Free Guarantee:** Full refund instantly if we find you qualify for **$0** in active funding. You pay nothing for the research.</span>
+                  <span>**100% Eligibility Guarantee:** Refunded in full if our analysts determine that your business is not eligible for any active funding opportunities.</span>
                 </li>
               </ul>
             </div>

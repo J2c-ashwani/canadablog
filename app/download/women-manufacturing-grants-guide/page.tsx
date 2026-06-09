@@ -63,6 +63,9 @@ export default function WomenManufacturingGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Manufacturing Equipment Grants Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive women manufacturing grants toolkit covering equipment financing, automation funding, productivity improvement loans with NRC ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-manufacturing-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-gray-50">
         <section className="py-16">

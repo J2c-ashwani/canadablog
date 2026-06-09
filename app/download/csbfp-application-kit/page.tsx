@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 export default function CSBFPApplicationKitDownload() {
   return (
     <>
+      <title>Get Your Free CSBFP Application Kit | FSI Digital</title>
+      <meta name="description" content="Complete application templates, checklists, and step-by-step guides used by our experts to achieve a 95% CSBFP approval rate." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/csbfp-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

@@ -62,6 +62,9 @@ export default function BiotechLifeSciencesGrantsGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your CompleteBiotech Grants Guide | FSI Digital</title>
+      <meta name="description" content="Free application templates, strategies, and frameworks for NIH SBIR grants up to $2M, FDA Orphan Drug programs, and state life sciences funding." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/biotech-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-teal-50 via-cyan-50 to-blue-50">
         <section className="py-12 md:py-20">

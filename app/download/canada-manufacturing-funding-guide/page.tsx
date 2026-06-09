@@ -69,6 +69,9 @@ export default function CanadaManufacturingFundingDownloadPage() {
 
   return (
     <>
+      <title>Canada Advanced Manufacturing Funding Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive manufacturing funding guide with NGen application templates, IRAP project tools, CDAP digital adoption resources, an..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/canada-manufacturing-funding-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

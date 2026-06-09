@@ -64,6 +64,9 @@ export default function WomenCleanTechnologyGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Clean Technology Grants & Environmental Innovation Funding Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive women clean technology grants toolkit covering Sustainable Development Technology Canada (SDTC) funding up to $10M, Natural R..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-clean-technology-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-50">
         <section className="py-16">

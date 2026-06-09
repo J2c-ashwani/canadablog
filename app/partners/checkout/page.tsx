@@ -62,6 +62,23 @@ export default async function PartnerCheckoutPage({
                 This is a controlled partner pilot. FSI Digital does not publish raw lead downloads publicly. Delivery
                 happens after buyer fit, consent, and available inventory are confirmed.
               </div>
+              <div className="mt-6 rounded-lg border border-slate-200 bg-slate-50 p-5 text-xs text-slate-700 space-y-3 shadow-sm">
+                <h3 className="font-extrabold text-slate-900 uppercase tracking-wider text-[10px]">Lead Sourcing SLA & Guarantee Policy</h3>
+                <div className="space-y-2.5">
+                  <div className="flex gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>100% Express Consent:</strong> Every lead profile contains verified, time-stamped checkboxes certifying written consent under TCPA and CASL compliance guidelines.</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>Real-Time Delivery Sourcing:</strong> Leads are distributed immediately when a business owner completes a query, matching active funding intent.</span>
+                  </div>
+                  <div className="flex gap-2">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600 flex-shrink-0 mt-0.5" />
+                    <span><strong>Lead Replacement Guarantee:</strong> Verified fake contact numbers, disconnected lines, or invalid emails can be submitted for full replacement credit within 3 business days.</span>
+                  </div>
+                </div>
+              </div>
             </aside>
 
             <PayPalPartnerCheckout selectedPackage={selectedPackage} clientId={PAYPAL_CLIENT_ID} currency={currency} />

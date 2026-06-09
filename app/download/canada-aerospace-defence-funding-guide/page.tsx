@@ -69,6 +69,9 @@ export default function CanadaAerospaceDefenceFundingDownloadPage() {
 
   return (
     <>
+      <title>Canada Aerospace Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive aerospace funding guide with Canadian Space Agency templates, IDEaS defence innovation tools, aviation grant strateg..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/canada-aerospace-defence-funding-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

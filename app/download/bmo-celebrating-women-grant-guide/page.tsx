@@ -62,6 +62,9 @@ export default function BMOGrantDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free BMO Celebrating Women Grant Application Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive BMO Celebrating Women Grant application toolkit with women advancement demonstration framework, business growth planning temp..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/bmo-celebrating-women-grant-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-cyan-50">
         <section className="py-16">

@@ -68,6 +68,9 @@ export default function NSERCResearchGrantsDownloadPage() {
 
   return (
     <>
+      <title>NSERC Research Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive NSERC research application templates, I2I grant guides, and university-industry partnership strategies used by succe..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/nserc-research-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

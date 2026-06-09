@@ -63,6 +63,9 @@ export default function WomenSocialEnterpriseGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Social Enterprise Grants & Impact Funding Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive women social enterprise grants toolkit covering social impact funding, community development programs, Investment Readiness P..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-social-enterprise-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
         <section className="py-16">

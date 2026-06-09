@@ -62,6 +62,9 @@ export default function HardwareIoTGrantsGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your CompleteHardware & IoT Grants Guide | FSI Digital</title>
+      <meta name="description" content="Free application templates, strategies, and frameworks for NSF SBIR grants up to $1.25M, DOD electronics programs, and advanced manufacturing funding." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/hardware-iot-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-orange-50 via-amber-50 to-yellow-50">
         <section className="py-12 md:py-20">

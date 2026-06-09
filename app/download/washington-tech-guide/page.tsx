@@ -64,6 +64,9 @@ export default function WashingtonTechGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Washington Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Washington technology startup grants toolkit covering WRF Technology Commercialization Grants comprehensive phased funding pr..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/washington-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-teal-50">
         <section className="py-16">

@@ -25,6 +25,8 @@ type BuyerInfo = {
   targetMarket: string;
   notes: string;
   acceptedTerms: boolean;
+  buyerTitle: string;
+  taxId: string;
 };
 
 const initialBuyerInfo: BuyerInfo = {
@@ -35,6 +37,8 @@ const initialBuyerInfo: BuyerInfo = {
   targetMarket: '',
   notes: '',
   acceptedTerms: false,
+  buyerTitle: '',
+  taxId: '',
 };
 
 export function PayPalPartnerCheckout({
@@ -76,10 +80,12 @@ export function PayPalPartnerCheckout({
           !currentBuyer.buyerEmail ||
           !currentBuyer.company ||
           !currentBuyer.targetMarket ||
+          !currentBuyer.buyerTitle ||
+          !currentBuyer.taxId ||
           !currentBuyer.acceptedTerms;
 
         if (missingRequired) {
-          setError('Please complete buyer name, email, company, target market, and agreement before paying.');
+          setError('Please complete buyer name, email, company, title, Tax ID, target market, and agreement before paying.');
           return actions.reject();
         }
 
@@ -108,6 +114,7 @@ export function PayPalPartnerCheckout({
       onApprove: async (data: { orderID?: string }, actions: any) => {
         const capture = await actions.order.capture();
         const orderId = capture?.id || data.orderID || '';
+        const combinedNotes = `[Title: ${buyerInfoRef.current.buyerTitle || 'N/A'}] [Tax ID: ${buyerInfoRef.current.taxId || 'N/A'}] ${buyerInfoRef.current.notes || ''}`.trim();
 
         await fetch('/api/paypal/record-partner-payment', {
           method: 'POST',
@@ -116,10 +123,15 @@ export function PayPalPartnerCheckout({
             orderId,
             packageId: selectedPackage.id,
             capture,
-            ...buyerInfoRef.current,
+            buyerName: buyerInfoRef.current.buyerName,
+            buyerEmail: buyerInfoRef.current.buyerEmail,
+            company: buyerInfoRef.current.company,
+            website: buyerInfoRef.current.website,
+            targetMarket: buyerInfoRef.current.targetMarket,
+            notes: combinedNotes,
           }),
         }).catch((error) => {
-          console.error('Failed to record partner payment:', error);
+          console.error('Failed to log partner payment:', error);
         });
 
         setIsProcessing(false);
@@ -170,6 +182,7 @@ export function PayPalPartnerCheckout({
             onChange={(event) => setBuyerInfo({ ...buyerInfo, buyerName: event.target.value })}
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             placeholder="Your full name"
+            required
           />
         </label>
         <label className="space-y-2">
@@ -180,6 +193,7 @@ export function PayPalPartnerCheckout({
             onChange={(event) => setBuyerInfo({ ...buyerInfo, buyerEmail: event.target.value })}
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             placeholder="buyer@company.com"
+            required
           />
         </label>
         <label className="space-y-2">
@@ -189,6 +203,7 @@ export function PayPalPartnerCheckout({
             onChange={(event) => setBuyerInfo({ ...buyerInfo, company: event.target.value })}
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             placeholder="Funding company name"
+            required
           />
         </label>
         <label className="space-y-2">
@@ -198,6 +213,26 @@ export function PayPalPartnerCheckout({
             onChange={(event) => setBuyerInfo({ ...buyerInfo, website: event.target.value })}
             className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
             placeholder="https://example.com"
+          />
+        </label>
+        <label className="space-y-2">
+          <span className="text-sm font-semibold text-gray-700">Purchaser Title *</span>
+          <input
+            value={buyerInfo.buyerTitle}
+            onChange={(event) => setBuyerInfo({ ...buyerInfo, buyerTitle: event.target.value })}
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+            placeholder="e.g. Managing Partner, Director of Growth"
+            required
+          />
+        </label>
+        <label className="space-y-2">
+          <span className="text-sm font-semibold text-gray-700">Business Registration / Tax ID *</span>
+          <input
+            value={buyerInfo.taxId}
+            onChange={(event) => setBuyerInfo({ ...buyerInfo, taxId: event.target.value })}
+            className="w-full rounded-md border border-gray-300 px-3 py-2 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-100"
+            placeholder="e.g. 123456789RT0001 or EIN"
+            required
           />
         </label>
       </div>

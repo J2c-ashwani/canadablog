@@ -62,6 +62,9 @@ export default function WEFDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Entrepreneurship Fund Application Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive WEF grant application toolkit with funding category breakdown, business expansion templates, and proven strategies to secure ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-entrepreneurship-fund-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-indigo-50">
         <section className="py-16">

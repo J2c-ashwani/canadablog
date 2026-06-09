@@ -64,6 +64,9 @@ export default function NIHSBIRBiotechDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free NIH SBIR Biotech Grants Application Guide & Proposal Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive NIH SBIR/STTR biotech grants toolkit covering Phase I ($285,000) and Phase II ($2,000,000) application strategies, technical ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/nih-sbir-biotech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-purple-50 to-pink-50">
         <section className="py-16">

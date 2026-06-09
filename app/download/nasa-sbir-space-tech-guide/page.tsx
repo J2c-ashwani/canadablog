@@ -64,6 +64,9 @@ export default function NASASBIRSpaceTechDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free NASA SBIR Space Tech Grants Application Guide & Proposal Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive NASA SBIR/STTR space tech grants toolkit covering Phase I ($150,000) and Phase II ($850,000) application strategies, technica..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/nasa-sbir-space-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
         <section className="py-16">

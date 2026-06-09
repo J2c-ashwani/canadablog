@@ -62,6 +62,9 @@ export default function CybersecurityGrantsGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your CompleteCybersecurity Grants Guide | FSI Digital</title>
+      <meta name="description" content="Free application templates, strategies, and frameworks for DOD SBIR grants up to $1.8M, DHS cybersecurity programs, and NSA research partnerships." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/cybersecurity-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
         <section className="py-12 md:py-20">

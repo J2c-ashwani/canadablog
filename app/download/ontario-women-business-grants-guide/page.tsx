@@ -62,6 +62,9 @@ export default function OntarioWomenGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Ontario Women Business Grants Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Ontario women business grants toolkit with program navigator covering $800M+ in provincial support including Women Entreprene..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/ontario-women-business-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
         <section className="py-16">

@@ -72,6 +72,9 @@ export default function QuebecBusinessGrantsDownloadPage() {
 
   return (
     <>
+      <title>Quebec Business Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive Quebec provincial business grants application templates, R&D tax credit optimization strategies, and aide aux entrep..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/quebec-business-grants-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

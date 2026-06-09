@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 export default function IRAPApplicationKitDownload() {
   return (
     <>
+      <title>Get Your Free IRAP Application Kit | FSI Digital</title>
+      <meta name="description" content="Complete R&D grant templates, technical frameworks, and project guides used by our experts to achieve an 89% IRAP approval rate for Canadian tech compan..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/irap-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

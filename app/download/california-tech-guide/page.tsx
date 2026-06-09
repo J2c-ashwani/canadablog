@@ -65,6 +65,9 @@ export default function CaliforniaTechGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free California Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive California technology startup grants toolkit covering CalSEED clean energy grants ($50,000 non-dilutive), SBIR State Match Pr..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/california-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
         <section className="py-16">

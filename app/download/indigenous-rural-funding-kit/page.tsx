@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 export default function IndigenousRuralFundingKitDownload() {
   return (
     <>
+      <title>Get Your Free Indigenous & Rural Business Funding Kit | FSI Digital</title>
+      <meta name="description" content="Complete Aboriginal business funding templates, culturally appropriate business planning frameworks, and rural development strategies used by our expert..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/indigenous-rural-funding-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

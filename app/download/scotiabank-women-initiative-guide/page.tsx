@@ -62,6 +62,9 @@ export default function ScotiabankWomenDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Scotiabank Women Initiative Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Scotiabank Women Initiative toolkit with capital funding access strategies, mentorship program navigation guide, educational ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/scotiabank-women-initiative-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-red-50 to-orange-50">
         <section className="py-16">

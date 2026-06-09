@@ -68,6 +68,9 @@ export default function IRAPInnovationDownloadPage() {
 
   return (
     <>
+      <title>IRAP Innovation Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive IRAP innovation application templates, ITA engagement strategies, and expert guidance used by successful SMEs to sec..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/irap-innovation-application-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

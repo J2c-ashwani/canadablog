@@ -32,25 +32,20 @@ export default function HomePageClient() {
                             <span className="block sm:inline">🎯 Updated</span>
                             <span className="block sm:inline sm:ml-1">- New Grant Opportunities Available</span>
                         </Badge>
-                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-balance leading-tight">
-                            Find Government Grants for Your{" "}
-                            <span className="bg-gradient-to-r from-yellow-300 to-orange-300 bg-clip-text text-transparent">
-                                Startup or Business
-                            </span>
+                        <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 text-balance leading-tight text-white">
+                            Government Grants, Tax Credits & Funding Programs for Growing Businesses
                         </h1>
                         <p className="text-lg sm:text-xl md:text-2xl mb-6 sm:mb-8 text-blue-100 leading-relaxed text-pretty px-4 sm:px-0">
-                            <strong>FSI Digital</strong> helps you secure non-dilutive <strong>investment</strong> for your business. Discover thousands of government funding opportunities in USA and Canada. The smartest alternative to <strong>investor</strong> capital.
+                            Identify, qualify and secure government funding with expert analyst support.
                         </p>
 
-                        <div className="flex items-center justify-center gap-3 mb-8">
-                            <div className="flex -space-x-2">
-                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=33" alt="Founder" />
-                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=47" alt="Founder" />
-                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=12" alt="Founder" />
-                                <img className="w-8 h-8 rounded-full border-2 border-[#1e3a8a]" src="https://i.pravatar.cc/100?img=28" alt="Founder" />
-                                <div className="w-8 h-8 rounded-full border-2 border-[#1e3a8a] bg-green-500 flex items-center justify-center text-xs font-bold text-white">+</div>
-                            </div>
-                            <span className="text-sm md:text-base font-semibold text-white drop-shadow-md">Trusted by 1,000+ Founders & CEOs</span>
+                        <div className="flex flex-wrap items-center justify-center gap-2 mb-8 text-xs sm:text-sm font-semibold text-blue-100 drop-shadow-sm">
+                            <span className="bg-white/10 px-3 py-1 rounded-full border border-white/20">Programs Covered:</span>
+                            <span className="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-500/30">SR&ED</span>
+                            <span className="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-500/30">IRAP</span>
+                            <span className="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-500/30">FedDev Ontario</span>
+                            <span className="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-500/30">CanExport</span>
+                            <span className="bg-emerald-500/20 text-emerald-300 px-2.5 py-1 rounded-md border border-emerald-500/30">NIH SBIR</span>
                         </div>
 
                         {/* Client component — interactive form */}

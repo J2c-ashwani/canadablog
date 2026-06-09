@@ -68,6 +68,9 @@ export default function SBAChecklistDownloadPage() {
 
   return (
     <>
+      <title>SBA Application Checklist & Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive SBA application templates, document checklists, and step-by-step guides used by successful applicants to secure $50M..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/sba-application-checklist" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

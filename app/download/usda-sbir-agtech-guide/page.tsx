@@ -64,6 +64,9 @@ export default function USDASBIRAgTechDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free USDA SBIR AgTech Grants Application Guide & Proposal Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive USDA SBIR/STTR AgTech grants toolkit covering Phase I ($125,000) and Phase II ($575,000) application strategies, technical pr..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/usda-sbir-agtech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-green-50 to-emerald-50">
         <section className="py-16">

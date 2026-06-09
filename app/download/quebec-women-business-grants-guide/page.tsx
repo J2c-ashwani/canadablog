@@ -62,6 +62,9 @@ export default function QuebecWomenGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Quebec Women Business Grants Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Quebec women business grants toolkit with bilingual resources covering $720M in provincial support including RFAQ network acc..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/quebec-women-business-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
         <section className="py-16">

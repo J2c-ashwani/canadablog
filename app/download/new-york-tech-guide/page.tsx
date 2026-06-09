@@ -64,6 +64,9 @@ export default function NewYorkTechGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free New York Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive New York technology startup grants toolkit covering START-UP NY program 10-year tax-free operation on or near eligible univer..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/new-york-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
         <section className="py-16">

@@ -64,6 +64,9 @@ export default function IndigenousWomenBusinessGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Indigenous Women Business Grants & NACCA Funding Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive Indigenous women business funding toolkit covering NACCA Aboriginal Entrepreneurship Program (up to $100K), Women Entrepreneu..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/indigenous-women-business-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-orange-50 to-red-50">
         <section className="py-16">

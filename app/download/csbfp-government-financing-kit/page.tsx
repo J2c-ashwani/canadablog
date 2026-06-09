@@ -69,6 +69,9 @@ export default function CSBFPGovernmentDownloadPage() {
 
   return (
     <>
+      <title>CSBFP Government Financing Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive CSBFP government financing templates, federal compliance checklists, and lender selection guides used by successful ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/csbfp-government-financing-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

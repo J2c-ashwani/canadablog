@@ -72,6 +72,9 @@ export default function BritishColumbiaGrantsDownloadPage() {
 
   return (
     <>
+      <title>BC Business Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive British Columbia provincial business grants application templates, innovation compliance strategies, and CleanBC sus..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/british-columbia-grants-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

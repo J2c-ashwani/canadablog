@@ -63,6 +63,9 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free AI & Machine Learning Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive AI and machine learning technology startup grants toolkit covering NSF AI Research Institutes $100 million funding establishi..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/ai-ml-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-violet-50 to-fuchsia-50">
         <section className="py-16">

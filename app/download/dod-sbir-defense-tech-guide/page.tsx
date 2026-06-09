@@ -64,6 +64,9 @@ export default function DODSBIRDefenseTechDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free DOD SBIR Defense Tech Grants Application Guide & Proposal Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive DOD SBIR/STTR defense tech grants toolkit covering Phase I ($256,000) and Phase II ($1,700,000) application strategies, techn..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/dod-sbir-defense-tech-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
         <section className="py-16">

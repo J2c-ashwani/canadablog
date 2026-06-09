@@ -62,6 +62,9 @@ export default function WomenTechGrantsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Women Technology Grants Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive women technology grants toolkit covering software development, AI/ML, digital innovation funding with NRC IRAP application st..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-technology-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-purple-50">
         <section className="py-16">

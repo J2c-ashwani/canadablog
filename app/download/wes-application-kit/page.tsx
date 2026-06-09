@@ -17,6 +17,9 @@ export const metadata: Metadata = {
 export default function WESApplicationKitDownload() {
   return (
     <>
+      <title>Get Your Free Women Entrepreneurship Strategy Kit | FSI Digital</title>
+      <meta name="description" content="Complete female business funding templates, WES application frameworks, and women entrepreneur strategies used by our experts to achieve an 84% approval..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/wes-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

@@ -62,6 +62,9 @@ export default function RBCAwardsDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free RBC Women Entrepreneur Awards Nomination Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive RBC Canadian Women Entrepreneur Awards nomination toolkit with category selection decision matrix, eligibility verification c..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/rbc-women-entrepreneur-awards-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50">
         <section className="py-16">

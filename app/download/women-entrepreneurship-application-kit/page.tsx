@@ -71,6 +71,9 @@ export default function WomenEntrepreneurshipDownloadPage() {
 
   return (
     <>
+      <title>WES Women Entrepreneurship Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive Women Entrepreneurship Strategy application templates, federal gender equality compliance strategies, and ecosystem ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/women-entrepreneurship-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

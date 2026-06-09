@@ -67,6 +67,9 @@ export default function SREDDownloadPage() {
 
   return (
     <>
+      <title>SR&ED Tax Credit Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive SR&ED application templates, Form T661 guides, and expert strategies used by successful R&D companies to secure $45M..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/sred-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

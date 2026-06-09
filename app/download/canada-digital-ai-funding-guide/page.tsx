@@ -69,6 +69,9 @@ export default function CanadaDigitalAIFundingDownloadPage() {
 
   return (
     <>
+      <title>Canada AI Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive artificial intelligence funding guide with Scale AI application templates, CDAP digital adoption resources, machine ..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/canada-digital-ai-funding-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

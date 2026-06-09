@@ -63,6 +63,9 @@ export default function SoftwareSaaSGrantsGuideDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free Software & SaaS Startup Grants Application Guide & Complete Funding Templates | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive software and SaaS technology startup grants toolkit covering NSF SBIR Phase I grants up to $305,000 increased from $275,000 e..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/software-saas-grants-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-indigo-50 to-purple-50">
         <section className="py-16">

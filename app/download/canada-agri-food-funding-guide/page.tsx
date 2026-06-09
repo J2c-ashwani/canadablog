@@ -69,6 +69,9 @@ export default function CanadaAgriFoodFundingDownloadPage() {
 
   return (
     <>
+      <title>Canada Agriculture Grants Application Toolkit | FSI Digital</title>
+      <meta name="description" content="Get instant access to comprehensive agriculture funding guide with AgriInnovate templates, CAP funding tools, precision agriculture strategies, and farm..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/canada-agri-food-funding-guide" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         <section className="bg-gradient-to-br from-green-700 to-emerald-800 text-white py-16">

@@ -62,6 +62,9 @@ export default function EDCDownloadPage() {
 
   return (
     <>
+      <title>Get Your Free EDC Women in Trade Export Financing Guide | FSI Digital</title>
+      <meta name="description" content="Download our comprehensive EDC Women in Trade export financing toolkit with equity capital investment insights, international market entry templates, an..." />
+      <link rel="canonical" href="https://www.fsidigital.ca/download/edc-women-trade-export-financing-guide" />
       <Header />
       <div className="min-h-screen bg-gradient-to-br from-teal-50 to-green-50">
         <section className="py-16">
