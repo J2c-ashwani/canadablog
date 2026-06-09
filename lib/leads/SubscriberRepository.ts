@@ -30,6 +30,7 @@ export interface SubscriberProfile {
   reportTransactionId?: string
   readinessScore?: number
   readinessBand?: string
+  lastEmailFollowup?: string
 }
 
 export interface ISubscriberRepository {
@@ -70,6 +71,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       companyName: lead.companyName || "",
       reportPurchased: !!lead.reportPurchased,
       reportTransactionId: lead.reportTransactionId || "",
+      lastEmailFollowup: lead.lastEmailFollowup || "",
     }
   }
 
@@ -113,6 +115,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         companyName: profile.companyName || "N/A",
         reportPurchased: false,
         reportTransactionId: "N/A",
+        lastEmailFollowup: "N/A",
         engagementScore: 100,
         lastOpenedAt: "N/A",
         lastClickedAt: "N/A",
@@ -189,6 +192,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       if (updates.companyName !== undefined) data.companyName = updates.companyName
       if (updates.reportPurchased !== undefined) data.reportPurchased = updates.reportPurchased
       if (updates.reportTransactionId !== undefined) data.reportTransactionId = updates.reportTransactionId
+      if (updates.lastEmailFollowup !== undefined) data.lastEmailFollowup = updates.lastEmailFollowup
 
       const res = await updateLeadInSheet(email, data)
       return { success: res.success, error: res.error }

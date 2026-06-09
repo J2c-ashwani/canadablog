@@ -103,12 +103,13 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.companyName || "N/A",
         data.reportPurchased ? "Yes" : "No",
         data.reportTransactionId || "N/A",
+        data.lastEmailFollowup || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:AX",
+      range: "Leads!A:AY",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -182,6 +183,7 @@ function parseSheetLead(row: string[]): SheetLead {
     companyName: row[47] || "N/A",
     reportPurchased: String(row[48] || "").toLowerCase() === "yes",
     reportTransactionId: row[49] || "N/A",
+    lastEmailFollowup: row[50] || "N/A",
   }
 
 
@@ -210,7 +212,7 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:AX",
+    range: "Leads!A:AY",
   })
 
 
@@ -237,7 +239,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     // Fetch all rows to locate index
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:AX",
+      range: "Leads!A:AY",
     })
     
     const rows = response.data.values || []
@@ -309,11 +311,14 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     if (updates.reportTransactionId !== undefined) {
       targetRow[49] = updates.reportTransactionId
     }
+    if (updates.lastEmailFollowup !== undefined) {
+      targetRow[50] = updates.lastEmailFollowup
+    }
     
     // Update the row
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `Leads!A${sheetRowNumber}:AX${sheetRowNumber}`,
+      range: `Leads!A${sheetRowNumber}:AY${sheetRowNumber}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [targetRow],
@@ -415,6 +420,21 @@ export async function captureEmailLead(
     industry,
     country,
   })
+}
+
+export async function getPartnerPaymentsFromSheet() {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "Partner Payments!A:Q",
+    })
+    return response.data.values || []
+  } catch (error) {
+    console.error("❌ Error reading partner payments:", error)
+    return []
+  }
 }
 
 export type PartnerInquirySheetData = {

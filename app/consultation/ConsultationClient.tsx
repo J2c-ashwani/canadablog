@@ -209,6 +209,8 @@ export default function ConsultationClient() {
           paypalOrderId,
           status: details?.status || '',
           payerEmail: details?.payer?.email_address || '',
+          tier: selectedTier,
+          amount: selectedTier === 'audit' ? 199.00 : 499.00
         }),
         calendlyEventUri: params.eventUri,
         calendlyInviteeUri: params.inviteeUri,
@@ -217,7 +219,7 @@ export default function ConsultationClient() {
     }).catch((error) => {
       console.error('Strategy session paid recovery update failed:', error);
     });
-  }, [params.rid, params.source, params.eventUri, params.inviteeUri]);
+  }, [params.rid, params.source, params.eventUri, params.inviteeUri, selectedTier]);
 
   const markRecoveryAbandoned = useCallback(async (reason: string) => {
     if (!params.rid) return;

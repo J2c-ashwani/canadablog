@@ -18,12 +18,12 @@ async function updateHeaders() {
 
     const row = response.data.values?.[0] || [];
 
-    // Ensure array is padded up to index 49 (Column AX)
-    while (row.length < 50) {
+    // Ensure array is padded up to index 50 (Column AY)
+    while (row.length < 51) {
       row.push('');
     }
 
-    // Set/Update headers for Columns AQ to AX (indices 42 to 49)
+    // Set/Update headers for Columns AQ to AY (indices 42 to 50)
     row[42] = 'Login Token';
     row[43] = 'Subscription Status';
     row[44] = 'Subscription ID';
@@ -32,6 +32,7 @@ async function updateHeaders() {
     row[47] = 'Company Name';
     row[48] = 'Report Purchased';
     row[49] = 'Report Transaction ID';
+    row[50] = 'Last Email Followup';
 
     await sheets.spreadsheets.values.update({
       spreadsheetId,

@@ -72,6 +72,21 @@ export default function BookingClient() {
             utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
             utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
           });
+
+          if (tier === 'vip') {
+            trackGAEvent('vip_booking', {
+              transaction_id: orderId,
+              value: price,
+              currency: 'USD'
+            });
+          } else {
+            trackGAEvent('audit_booking', {
+              transaction_id: orderId,
+              value: price,
+              currency: 'USD'
+            });
+          }
+
           window.sessionStorage.setItem(storageKey, 'true');
         }
       }

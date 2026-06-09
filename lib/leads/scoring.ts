@@ -49,6 +49,7 @@ export type LeadCaptureData = {
   website?: string;
   reportPurchased?: boolean;
   reportTransactionId?: string;
+  lastEmailFollowup?: string;
 };
 
 

@@ -37,6 +37,14 @@ export function PartnerPurchaseTracker({
       utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
     });
 
+    trackGAEvent('partner_lead_purchase', {
+      transaction_id: orderId,
+      package_id: packageId,
+      package_name: packageName,
+      value: price,
+      currency: 'USD'
+    });
+
     window.sessionStorage.setItem(storageKey, 'true');
   }, [packageId, packageName, price, orderId]);
 

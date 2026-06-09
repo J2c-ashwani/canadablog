@@ -27,6 +27,7 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
+import { trackGAEvent } from "@/components/LeadConversionUpsellWatcher"
 
 export default function PortfolioClient() {
   const router = useRouter()
@@ -220,6 +221,11 @@ export default function PortfolioClient() {
                 setSubscriptionStatus("active")
                 setSubscriptionId(orderId)
                 sessionStorage.setItem("fsi_subscription_status", "active")
+                trackGAEvent("subscription_purchase", {
+                  transaction_id: orderId,
+                  value: 29.00,
+                  currency: "USD"
+                })
               } else {
                 setPaymentError(resData.error || "Failed to record payment.")
               }
@@ -284,6 +290,11 @@ export default function PortfolioClient() {
                 setReportTransactionId(orderId)
                 sessionStorage.setItem("fsi_report_purchased", "true")
                 sessionStorage.setItem("fsi_report_transaction_id", orderId)
+                trackGAEvent("report_purchase", {
+                  transaction_id: orderId,
+                  value: currentPrice,
+                  currency: "USD"
+                })
                 
                 // Redirect to report view page
                 const token = resData.loginToken || ""
@@ -322,6 +333,9 @@ export default function PortfolioClient() {
         setSubscriptionStatus("trial")
         setTrialStartedAt(resData.trialStartedAt)
         sessionStorage.setItem("fsi_subscription_status", "trial")
+        trackGAEvent("trial_started", {
+          subscription_status: "trial"
+        })
       } else {
         setPaymentError(resData.error || "Failed to start trial.")
       }
@@ -417,6 +431,12 @@ export default function PortfolioClient() {
     e.preventDefault()
     sessionStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
     setHasProfile(true)
+    trackGAEvent("portfolio_completed", {
+      region: profile.region,
+      country: profile.country,
+      industry: profile.industry,
+      company_size: profile.companySize
+    })
   }
 
   // Handle Lead Unlock form submission
@@ -469,6 +489,13 @@ export default function PortfolioClient() {
         website: profile.website
       }
       sessionStorage.setItem("fsi_funding_profile", JSON.stringify(updatedProfile))
+      
+      trackGAEvent("lead_capture", {
+        region: profile.region,
+        country: profile.country,
+        industry: profile.industry,
+        company_size: profile.companySize
+      })
       
       if (resData.loginToken) {
         sessionStorage.setItem("fsi_subscription_status", "inactive")
