@@ -38,6 +38,7 @@ export default function ReportClient() {
   const [reportPurchased, setReportPurchased] = useState(false)
   const [readinessScore, setReadinessScore] = useState(70)
   const [readinessBand, setReadinessBand] = useState("Good Candidate")
+  const [showExitIntent, setShowExitIntent] = useState(false)
 
   const allPrograms = useMemo(() => getAllPrograms(), [])
 
@@ -82,6 +83,17 @@ export default function ReportClient() {
             reportTransactionId: sub.reportTransactionId || "",
             fundingInterests: sub.fundingInterests || []
           })
+          
+          // Track report viewed
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: sub.email,
+              event: "report_viewed",
+              source: sessionStorage.getItem("fsi_attribution_source") || undefined
+            })
+          }).catch(err => console.error("Failed to track report viewed:", err))
         } else {
           setError(data.error || "Failed to authenticate report access.")
           setTimeout(() => router.push("/portfolio"), 3000)
@@ -93,6 +105,25 @@ export default function ReportClient() {
       })
       .finally(() => setIsLoading(false))
   }, [token, router])
+
+  useEffect(() => {
+    if (isLoading || error || !profile) return
+
+    const handleMouseLeave = (e: MouseEvent) => {
+      if (e.clientY < 10) {
+        const shown = sessionStorage.getItem("fsi_exit_intent_shown") === "true"
+        if (!shown) {
+          setShowExitIntent(true)
+          sessionStorage.setItem("fsi_exit_intent_shown", "true")
+        }
+      }
+    }
+
+    document.addEventListener("mouseleave", handleMouseLeave)
+    return () => {
+      document.removeEventListener("mouseleave", handleMouseLeave)
+    }
+  }, [isLoading, error, profile])
 
   // 2. Run Match engine on profile
   const { eligibleMatches, stackingRange } = useMemo(() => {
@@ -206,24 +237,29 @@ export default function ReportClient() {
       `}</style>
 
       {/* Control Top Bar (No-Print) */}
-      <div className="no-print flex items-center justify-between bg-white border border-slate-200 p-4 rounded-2xl shadow-xs">
-        <button
-          onClick={() => router.push(`/portfolio?token=${token}`)}
-          className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
-        >
-          <ArrowLeft className="w-4 h-4" />
-          Dashboard
-        </button>
-
-        <div className="flex gap-3">
-          <Button
-            onClick={handlePrint}
-            className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center gap-1.5 shadow-xs"
+      <div className="no-print space-y-2">
+        <div className="flex items-center justify-between bg-white border border-slate-200 p-4 rounded-2xl shadow-xs">
+          <button
+            onClick={() => router.push(`/portfolio?token=${token}`)}
+            className="flex items-center gap-1.5 text-xs font-bold text-slate-600 hover:text-slate-900 transition-colors"
           >
-            <Printer className="w-4 h-4" />
-            Print / Save PDF
-          </Button>
+            <ArrowLeft className="w-4 h-4" />
+            Dashboard
+          </button>
+
+          <div className="flex gap-3">
+            <Button
+              onClick={handlePrint}
+              className="bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs py-2 px-4 rounded-xl flex items-center gap-1.5 shadow-xs"
+            >
+              <Printer className="w-4 h-4" />
+              Print / Save PDF
+            </Button>
+          </div>
         </div>
+        <p className="text-[10px] text-slate-500 text-right px-2">
+          💡 <strong>Tip:</strong> In your print settings, change Destination to <strong>"Save as PDF"</strong> to save your report offline.
+        </p>
       </div>
 
       {/* Main Printable Document */}
@@ -483,6 +519,47 @@ export default function ReportClient() {
         </div>
 
       </div>
+
+      {/* Exit Intent Modal (No-Print) */}
+      {showExitIntent && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 backdrop-blur-xs p-4 animate-fade-in no-print">
+          <div className="bg-white border border-slate-200 rounded-3xl p-6 sm:p-8 max-w-md w-full shadow-2xl relative space-y-6">
+            <button
+              onClick={() => setShowExitIntent(false)}
+              className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 font-extrabold text-sm"
+            >
+              ✕
+            </button>
+            <div className="space-y-3 text-center">
+              <div className="w-12 h-12 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mx-auto text-indigo-600">
+                <Sparkles className="w-6 h-6 animate-pulse" />
+              </div>
+              <h3 className="text-xl font-black text-slate-950">Need Help Interpreting Your Assessment?</h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Schedule a 15-minute Funding Strategy Call with our lead analyst to verify matched eligibility criteria, confirm deadlines, and map out your filing waves.
+              </p>
+            </div>
+            <div className="flex flex-col gap-2">
+              <button
+                onClick={() => {
+                  setShowExitIntent(false)
+                  router.push(`/booking?token=${token}&ref=exit_intent`)
+                }}
+                className="w-full inline-flex items-center justify-center gap-2 bg-indigo-600 hover:bg-indigo-500 text-white font-black text-xs py-3.5 px-6 rounded-xl transition-all animate-pulse"
+              >
+                Book Strategy Call
+              </button>
+              <button
+                onClick={() => setShowExitIntent(false)}
+                className="w-full text-slate-500 hover:text-slate-700 font-bold text-xs py-2 text-center"
+              >
+                No thanks, I'll review on my own
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
+
     </div>
   )
 }

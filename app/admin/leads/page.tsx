@@ -536,6 +536,19 @@ export default async function LeadDashboardPage({
                     const assessmentPurchases = leads.filter(l => l.reportPurchased).length;
                     const purchaseRate = totalLeads > 0 ? ((assessmentPurchases / totalLeads) * 100).toFixed(1) : '0.0';
                     
+                    const checkoutStartsCount = leads.filter(l => {
+                      try {
+                        if (!l.leadActivity || l.leadActivity === "N/A" || l.leadActivity === "{}") return false;
+                        const activity = JSON.parse(l.leadActivity);
+                        return !!activity.checkoutStartedAt;
+                      } catch (e) {
+                        return false;
+                      }
+                    }).length;
+                    const assessmentConversionRate = checkoutStartsCount > 0
+                      ? ((assessmentPurchases / checkoutStartsCount) * 100).toFixed(1)
+                      : '0.0';
+
                     const auditUpsells = leads.filter(l => l.reportPurchased && (l.offlineStatus === "Audit Attended" || String(l.offlineStatus || '').toLowerCase().includes("audit"))).length;
                     const auditUpsellRate = assessmentPurchases > 0 ? ((auditUpsells / assessmentPurchases) * 100).toFixed(1) : '0.0';
                     
@@ -548,7 +561,7 @@ export default async function LeadDashboardPage({
                           <CheckCircle className="h-5 w-5 text-emerald-600" />
                           Phase 3.9 Assessment & Upsell KPI Metrics
                         </h2>
-                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                        <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-7">
                           {/* 1. Assessment Views */}
                           <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Assessment Views</span>
@@ -568,19 +581,31 @@ export default async function LeadDashboardPage({
                             </div>
                           </div>
 
-                          {/* 3. Assessment Purchases */}
+                          {/* 3. Checkout Starts */}
                           <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
-                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Purchases (Conv)</span>
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Checkout Starts</span>
+                            <div className="text-xl font-black text-gray-950">{formatNumber(checkoutStartsCount)}</div>
+                            <span className="text-[10px] text-gray-500 block mt-2">Checkout Clicked</span>
+                          </div>
+
+                          {/* 4. Assessment Purchases */}
+                          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Purchases</span>
                             <div className="text-xl font-black text-gray-950">{formatNumber(assessmentPurchases)}</div>
+                            <span className="text-[10px] text-gray-500 block mt-2">{purchaseRate}% of Leads</span>
+                          </div>
+
+                          {/* 5. Assessment Conversion Rate */}
+                          <div className="rounded-xl border border-indigo-100 bg-indigo-50/50 p-4 text-center">
+                            <span className="text-[10px] font-black text-indigo-700 uppercase tracking-wider block mb-1">Assessment Conv</span>
+                            <div className="text-xl font-black text-slate-900">{assessmentConversionRate}%</div>
                             <div className="mt-2 flex flex-col items-center justify-center">
-                              <span className={`text-xs font-bold ${Number(purchaseRate) >= 2 ? 'text-emerald-600' : 'text-amber-600'}`}>
-                                {purchaseRate}%
-                              </span>
-                              <span className="text-[8px] font-semibold text-gray-500 uppercase">Target &gt;2%</span>
+                              <span className="text-[10px] font-bold text-slate-500">Purchases / Starts</span>
+                              <span className="text-[8px] font-semibold text-indigo-600 uppercase">Funnel Yield</span>
                             </div>
                           </div>
 
-                          {/* 4. Audit Upsell Rate */}
+                          {/* 6. Audit Upsell Rate */}
                           <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Audit Upsell Rate</span>
                             <div className="text-xl font-black text-gray-950">{auditUpsellRate}%</div>
@@ -592,7 +617,7 @@ export default async function LeadDashboardPage({
                             </div>
                           </div>
 
-                          {/* 5. VIP Upsell Rate */}
+                          {/* 7. VIP Upsell Rate */}
                           <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
                             <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">VIP Upsell Rate</span>
                             <div className="text-xl font-black text-gray-950">{vipRateFinal}%</div>

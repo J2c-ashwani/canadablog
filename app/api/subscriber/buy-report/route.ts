@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic"
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, transactionId } = body
+    const { email, transactionId, source } = body
 
     if (!email || !transactionId) {
       return NextResponse.json({ error: "Email and transactionId are required." }, { status: 400 })
@@ -37,9 +37,14 @@ export async function POST(request: NextRequest) {
     const stackingRange = PortfolioScoreEngine.calculateStackingRange(programSlugs, allPrograms)
 
     // Update subscriber status in sheets
-    const updates = {
+    const updates: any = {
       reportPurchased: true,
       reportTransactionId: transactionId,
+      assessmentPurchasedAt: new Date().toISOString(),
+    }
+
+    if (source) {
+      updates.lastAttributionSource = source
     }
 
     const dbRes = await SubscriberRepository.updateSubscriberPreferences(email, updates)

@@ -31,6 +31,10 @@ export interface SubscriberProfile {
   readinessScore?: number
   readinessBand?: string
   lastEmailFollowup?: string
+  leadActivity?: string
+  lastAttributionSource?: string
+  firstReportViewedAt?: string
+  assessmentPurchasedAt?: string
 }
 
 export interface ISubscriberRepository {
@@ -72,6 +76,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       reportPurchased: !!lead.reportPurchased,
       reportTransactionId: lead.reportTransactionId || "",
       lastEmailFollowup: lead.lastEmailFollowup || "",
+      leadActivity: lead.leadActivity || "{}",
+      lastAttributionSource: lead.lastAttributionSource || "",
+      firstReportViewedAt: lead.firstReportViewedAt || "",
+      assessmentPurchasedAt: lead.assessmentPurchasedAt || "",
     }
   }
 
@@ -116,6 +124,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         reportPurchased: false,
         reportTransactionId: "N/A",
         lastEmailFollowup: "N/A",
+        leadActivity: "{}",
+        lastAttributionSource: "N/A",
+        firstReportViewedAt: "N/A",
+        assessmentPurchasedAt: "N/A",
         engagementScore: 100,
         lastOpenedAt: "N/A",
         lastClickedAt: "N/A",
@@ -193,6 +205,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       if (updates.reportPurchased !== undefined) data.reportPurchased = updates.reportPurchased
       if (updates.reportTransactionId !== undefined) data.reportTransactionId = updates.reportTransactionId
       if (updates.lastEmailFollowup !== undefined) data.lastEmailFollowup = updates.lastEmailFollowup
+      if (updates.leadActivity !== undefined) data.leadActivity = updates.leadActivity
+      if (updates.lastAttributionSource !== undefined) data.lastAttributionSource = updates.lastAttributionSource
+      if (updates.firstReportViewedAt !== undefined) data.firstReportViewedAt = updates.firstReportViewedAt
+      if (updates.assessmentPurchasedAt !== undefined) data.assessmentPurchasedAt = updates.assessmentPurchasedAt
 
       const res = await updateLeadInSheet(email, data)
       return { success: res.success, error: res.error }

@@ -50,6 +50,10 @@ export type LeadCaptureData = {
   reportPurchased?: boolean;
   reportTransactionId?: string;
   lastEmailFollowup?: string;
+  leadActivity?: string;
+  lastAttributionSource?: string;
+  firstReportViewedAt?: string;
+  assessmentPurchasedAt?: string;
 };
 
 

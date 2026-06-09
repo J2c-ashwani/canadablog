@@ -6,11 +6,16 @@ import { Footer } from "@/components/Footer";
 import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle } from 'lucide-react';
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 
-export default function BookingClient() {
+interface BookingClientProps {
+  prefilledEmail?: string
+  prefilledName?: string
+}
+
+export default function BookingClient({ prefilledEmail = '', prefilledName = '' }: BookingClientProps) {
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
+  const [email, setEmail] = useState(prefilledEmail);
+  const [name, setName] = useState(prefilledName);
   const [rid, setRid] = useState('');
   const [source, setSource] = useState('');
   const [hasMounted, setHasMounted] = useState(false);
@@ -24,8 +29,8 @@ export default function BookingClient() {
     const searchParams = new URLSearchParams(window.location.search);
     const success = searchParams.get('success') === 'true';
     setIsSuccess(success);
-    const parsedEmail = searchParams.get('email') || '';
-    const parsedName = searchParams.get('name') || '';
+    const parsedEmail = prefilledEmail || searchParams.get('email') || '';
+    const parsedName = prefilledName || searchParams.get('name') || '';
     const parsedRid = searchParams.get('rid') || '';
     const parsedSource = searchParams.get('source') || '';
     setEmail(parsedEmail);

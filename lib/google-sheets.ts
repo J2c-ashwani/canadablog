@@ -104,12 +104,16 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.reportPurchased ? "Yes" : "No",
         data.reportTransactionId || "N/A",
         data.lastEmailFollowup || "N/A",
+        data.leadActivity || "{}",
+        data.lastAttributionSource || "N/A",
+        data.firstReportViewedAt || "N/A",
+        data.assessmentPurchasedAt || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:AY",
+      range: "Leads!A:BC",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -184,6 +188,10 @@ function parseSheetLead(row: string[]): SheetLead {
     reportPurchased: String(row[48] || "").toLowerCase() === "yes",
     reportTransactionId: row[49] || "N/A",
     lastEmailFollowup: row[50] || "N/A",
+    leadActivity: row[51] || "{}",
+    lastAttributionSource: row[52] || "N/A",
+    firstReportViewedAt: row[53] || "N/A",
+    assessmentPurchasedAt: row[54] || "N/A",
   }
 
 
@@ -212,7 +220,7 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:AY",
+    range: "Leads!A:BC",
   })
 
 
@@ -239,7 +247,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     // Fetch all rows to locate index
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:AY",
+      range: "Leads!A:BC",
     })
     
     const rows = response.data.values || []
@@ -254,8 +262,8 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     const sheetRowNumber = rowIndex + 1
     const targetRow = rows[rowIndex]
     
-    // Ensure array length covers AT (index 45)
-    while (targetRow.length < 46) {
+    // Ensure array length covers BC (index 54)
+    while (targetRow.length < 55) {
       targetRow.push("N/A")
     }
     
@@ -314,11 +322,23 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     if (updates.lastEmailFollowup !== undefined) {
       targetRow[50] = updates.lastEmailFollowup
     }
+    if (updates.leadActivity !== undefined) {
+      targetRow[51] = updates.leadActivity
+    }
+    if (updates.lastAttributionSource !== undefined) {
+      targetRow[52] = updates.lastAttributionSource
+    }
+    if (updates.firstReportViewedAt !== undefined) {
+      targetRow[53] = updates.firstReportViewedAt
+    }
+    if (updates.assessmentPurchasedAt !== undefined) {
+      targetRow[54] = updates.assessmentPurchasedAt
+    }
     
     // Update the row
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `Leads!A${sheetRowNumber}:AY${sheetRowNumber}`,
+      range: `Leads!A${sheetRowNumber}:BC${sheetRowNumber}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [targetRow],

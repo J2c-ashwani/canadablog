@@ -18,12 +18,12 @@ async function updateHeaders() {
 
     const row = response.data.values?.[0] || [];
 
-    // Ensure array is padded up to index 50 (Column AY)
-    while (row.length < 51) {
+    // Ensure array is padded up to index 54 (Column BC)
+    while (row.length < 55) {
       row.push('');
     }
 
-    // Set/Update headers for Columns AQ to AY (indices 42 to 50)
+    // Set/Update headers for Columns AQ to BC (indices 42 to 54)
     row[42] = 'Login Token';
     row[43] = 'Subscription Status';
     row[44] = 'Subscription ID';
@@ -33,10 +33,14 @@ async function updateHeaders() {
     row[48] = 'Report Purchased';
     row[49] = 'Report Transaction ID';
     row[50] = 'Last Email Followup';
+    row[51] = 'Lead Activity';
+    row[52] = 'Last Attribution Source';
+    row[53] = 'First Report Viewed At';
+    row[54] = 'Assessment Purchased At';
 
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: 'Leads!1:1',
+      range: 'Leads!A1:BC1',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],

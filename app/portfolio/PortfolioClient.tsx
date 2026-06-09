@@ -118,6 +118,11 @@ export default function PortfolioClient() {
       return
     }
 
+    const sourceParam = searchParams.get("source")
+    if (sourceParam) {
+      sessionStorage.setItem("fsi_attribution_source", sourceParam)
+    }
+
     const cached = sessionStorage.getItem("fsi_funding_profile")
     if (cached) {
       try {
@@ -261,6 +266,18 @@ export default function PortfolioClient() {
           shape: 'rect',
           label: 'checkout'
         },
+        onClick: () => {
+          const attributionSource = sessionStorage.getItem("fsi_attribution_source") || "";
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: profile.email,
+              event: "checkout_started",
+              source: attributionSource
+            })
+          }).catch(err => console.error("Failed to track checkout start:", err))
+        },
         createOrder: (data: any, actions: any) => {
           return actions.order.create({
             purchase_units: [{
@@ -281,7 +298,8 @@ export default function PortfolioClient() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   email: profile.email,
-                  transactionId: orderId
+                  transactionId: orderId,
+                  source: sessionStorage.getItem("fsi_attribution_source") || undefined
                 })
               })
               const resData = await res.json()
@@ -296,9 +314,9 @@ export default function PortfolioClient() {
                   currency: "USD"
                 })
                 
-                // Redirect to report view page
+                // Redirect to thank-you page instead of directly to report
                 const token = resData.loginToken || ""
-                router.push(`/portfolio/report?token=${token}`)
+                router.push(`/portfolio/thank-you?token=${token}`)
               } else {
                 setPaymentError(resData.error || "Failed to record payment.")
               }
