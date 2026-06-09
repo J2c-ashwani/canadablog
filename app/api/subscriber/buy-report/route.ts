@@ -1,0 +1,72 @@
+import { NextResponse, type NextRequest } from "next/server"
+import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { sendReportPurchaseEmail } from "@/lib/emails/report-purchase"
+import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
+import { getAllPrograms } from "@/lib/data/programs"
+
+export const runtime = "nodejs"
+export const dynamic = "force-dynamic"
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json()
+    const { email, transactionId } = body
+
+    if (!email || !transactionId) {
+      return NextResponse.json({ error: "Email and transactionId are required." }, { status: 400 })
+    }
+
+    // Check if subscriber exists
+    const subscriber = await SubscriberRepository.getSubscriberByEmail(email)
+    if (!subscriber) {
+      return NextResponse.json({ error: "Subscriber not found. Please complete the assessment screener first." }, { status: 404 })
+    }
+
+    // Calculate details for email
+    const allPrograms = getAllPrograms()
+    const readiness = PortfolioScoreEngine.calculateReadiness({
+      isIncorporated: true, // fallback to typical B2B profile if properties missing
+      hasRd: true,
+      hasHiring: true,
+      hasExporting: true,
+      companySize: subscriber.companySize || "1-9"
+    })
+    
+    const interests = subscriber.fundingInterests || []
+    const programSlugs = allPrograms.map(p => p.slug)
+    const stackingRange = PortfolioScoreEngine.calculateStackingRange(programSlugs, allPrograms)
+
+    // Update subscriber status in sheets
+    const updates = {
+      reportPurchased: true,
+      reportTransactionId: transactionId,
+    }
+
+    const dbRes = await SubscriberRepository.updateSubscriberPreferences(email, updates)
+    if (!dbRes.success) {
+      return NextResponse.json({ error: dbRes.error || "Failed to update subscriber record in Google Sheets." }, { status: 500 })
+    }
+
+    // Trigger purchase confirmation email
+    sendReportPurchaseEmail({
+      to: subscriber.email,
+      name: subscriber.name || "Founder",
+      loginToken: subscriber.loginToken || "",
+      companyName: subscriber.companyName || "Your Company",
+      readinessScore: readiness.score,
+      estimatedFunding: stackingRange.formatted
+    }).catch((err) => {
+      console.error("❌ Failed to dispatch report purchase confirmation email:", err)
+    })
+
+    return NextResponse.json({
+      success: true,
+      loginToken: subscriber.loginToken,
+      reportPurchased: true,
+      reportTransactionId: transactionId
+    })
+  } catch (err: any) {
+    console.error("Report buy API route error:", err)
+    return NextResponse.json({ error: "Internal server error." }, { status: 500 })
+  }
+}

@@ -17,6 +17,10 @@ const LeadConversionUpsellWatcher = dynamic(
     () => import("@/components/LeadConversionUpsellWatcher").then(m => ({ default: m.LeadConversionUpsellWatcher })),
     { ssr: false }
 )
+const ExitIntentCapture = dynamic(
+    () => import("@/components/seo/ExitIntentCapture").then(m => ({ default: m.ExitIntentCapture })),
+    { ssr: false }
+)
 
 export function ClientOverlays() {
     const [isClient, setIsClient] = useState(false)
@@ -37,7 +41,12 @@ export function ClientOverlays() {
         <>
             <CookieConsent />
             <LeadConversionUpsellWatcher />
-            {!shouldSuppressPopup && <LeadMagnetPopup />}
+            {!shouldSuppressPopup && (
+                <>
+                    <LeadMagnetPopup />
+                    <ExitIntentCapture />
+                </>
+            )}
         </>
     )
 }

@@ -124,6 +124,17 @@ export function LeadConversionUpsellWatcher() {
           window.sessionStorage.setItem(`fsi:${param}`, val);
         }
       });
+
+      const utmSource = searchParams.get('utm_source');
+      const utmCampaign = searchParams.get('utm_campaign');
+      if (utmSource === 'funding_alerts' && utmCampaign) {
+        const clickKey = `fsi:click-logged:${utmCampaign}`;
+        if (!window.sessionStorage.getItem(clickKey)) {
+          window.sessionStorage.setItem(clickKey, 'true');
+          window.fetch(`/api/admin/alerts/metrics?campaignId=${encodeURIComponent(utmCampaign)}&event=click`)
+            .catch(err => console.error('Failed to log alert click:', err));
+        }
+      }
     }
   }, [pathname]);
 
@@ -196,6 +207,18 @@ export function LeadConversionUpsellWatcher() {
           lead_source: leadSource,
           method: 'form',
         });
+
+        // Log Alerts CDP metrics if referred from funding alert campaigns
+        const sessionSource = window.sessionStorage.getItem('fsi:utm_source') || '';
+        const sessionCampaign = window.sessionStorage.getItem('fsi:utm_campaign') || '';
+        if (sessionSource === 'funding_alerts' && sessionCampaign) {
+          let eventType = 'conversion';
+          if (requestPathname.includes('/strategy-session/recovery')) {
+            eventType = 'audit';
+          }
+          window.fetch(`/api/admin/alerts/metrics?campaignId=${encodeURIComponent(sessionCampaign)}&event=${eventType}`)
+            .catch(err => console.error(`Failed to log alert event ${eventType}:`, err));
+        }
 
         // Continue with upsell modal popup only for consumer/standard leads
         if (shouldTriggerUpsell(requestPathname)) {

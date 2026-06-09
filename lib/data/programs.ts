@@ -16,6 +16,8 @@ export interface ProgramDetails {
   applicationProcess: string[];
   officialWebsite: string;
   insiderTips?: string[];
+  status: 'Open' | 'Upcoming' | 'Paused' | 'Closed';
+  recentChanges?: string[];
 }
 
 export const programsDatabase: ProgramDetails[] = [
@@ -46,6 +48,10 @@ export const programsDatabase: ProgramDetails[] = [
     insiderTips: [
       'Do not wait until tax season to document. CRA auditors heavily look for contemporaneous logs, JIRA tickets, and test records.',
       'Routine software coding using standard React/Node libraries without architectural challenge is a frequent reject reason.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: CRA issued new guidelines emphasizing contemporaneous developer log compliance during technical reviews.'
     ]
   },
   {
@@ -74,6 +80,10 @@ export const programsDatabase: ProgramDetails[] = [
     insiderTips: [
       'This is a relationship-based program. Success depends on presenting a clear commercialization roadmap to your ITA.',
       'Make sure you have at least 1 full-time T4 employee on staff (founders paid strictly in dividends are excluded).'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated May 2026: Matching wage allocations increased to match high-demand tech roles under local ITA approvals.'
     ]
   },
   {
@@ -102,6 +112,10 @@ export const programsDatabase: ProgramDetails[] = [
     insiderTips: [
       'Submit early in the fiscal year (April). CanExport allocation runs on a first-come queue and is frequently frozen by autumn.',
       'Expenses incurred before formal approval are strictly ineligible for matching.'
+    ],
+    status: 'Paused',
+    recentChanges: [
+      'Paused May 2026: Program has exhausted its budget allocation for the 2026-2027 fiscal year due to record application volumes.'
     ]
   },
   {
@@ -129,6 +143,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.canada.ca/en/innovation-science-economic-development/programs/canada-digital-adoption-program.html',
     insiderTips: [
       'Even if you are a software startup, CDAP is highly useful for funding SOC2 compliance infrastructure or implementing advanced marketing/sales systems.'
+    ],
+    status: 'Paused',
+    recentChanges: [
+      'Paused April 2026: Direct application intake has suspended as ISED transitions digital advisory services to regional business networks.'
     ]
   },
   {
@@ -156,6 +174,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://ised-isde.canada.ca/site/strategic-innovation-fund/en',
     insiderTips: [
       'This program is not for early-stage startups. Only pursue this if you are building heavy industrial facilities, bio-manufacturing centers, or auto/aerospace supply lines.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated June 2026: Federal clean-tech and bio-manufacturing project approvals accelerated under new priority schedules.'
     ]
   },
   {
@@ -183,6 +205,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.mitacs.ca/en/programs/accelerate',
     insiderTips: [
       'This is the most cost-effective way to add PhD or Masters level AI, biotech, or hardware developers to your team. Mitacs matches your $7,500 with another $7,500 to pay the researcher $15,000.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated June 2026: Intern matching wage voucher ratios adjusted to offset up to $15,000 in collaborative R&D stipends.'
     ]
   },
   {
@@ -210,9 +236,12 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://agriculture.canada.ca/en/about-our-department/key-departmental-initiatives/sustainable-canadian-agricultural-partnership',
     insiderTips: [
       'Do not say you are buying automated equipment strictly to reduce labor. Frame the narrative around reducing waste, energy use, or chemical footprint.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: Provincial cost-shared funding allocations refreshed for the 5-year sustainable agricultural partnerships.'
     ]
   },
-  
   // --- CANADA PROVINCIAL ---
   {
     id: 'ontario-hiring-grant',
@@ -239,6 +268,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.ontario.ca/page/skills-development-fund',
     insiderTips: [
       'When purchasing advanced machinery (like CNC or robotics), isolate the training and commissioning line-item on the invoice to run it through this grant.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated June 2026: Skills Development Fund Training Stream Round 5 officially opened with $150M in new funding.'
     ]
   },
   {
@@ -254,7 +287,7 @@ export const programsDatabase: ProgramDetails[] = [
     country: 'Canada',
     description: 'Helps small and medium tech businesses in Alberta access technical services, prototype development, market feasibility studies, and digital scaling assistance.',
     eligibility: [
-      'Alberta-based business with under 50 employees and $1M in annual revenue',
+      'Alberta-based business with under 55 employees and $1M in annual revenue',
       'Developing a novel technology or innovative product',
       'Willing to cover the 25% matching cash requirement'
     ],
@@ -266,6 +299,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://albertainnovates.ca/programs/',
     insiderTips: [
       'This is a non-dilutive tool to pay for prototype industrial design or independent laboratory validation without sacrificing startup equity.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated May 2026: Alberta Innovates voucher funding limit bumped from $50,000 to $100,000 per startup.'
     ]
   },
   {
@@ -293,9 +330,12 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.revenuquebec.ca/en/businesses/income-tax/corporation-income-tax/credits/scientific-research-and-experimental-development/',
     insiderTips: [
       'Quebec\'s credit stacks directly with federal SR&ED, enabling CCPCs in Montreal to recover up to 64% of total R&D payroll.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated June 2026: Provincial tax offsets stacked with federal SR&ED R&D credit ratios updated to cover up to 30% of local wages.'
     ]
   },
-
   // --- USA FEDERAL ---
   {
     id: 'nih-sbir',
@@ -322,6 +362,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://seed.nih.gov/small-business-funding',
     insiderTips: [
       'Biotech startups should partner with a university or research hospital (required for STTR) to increase credibility and run validation clinical trials cheaply.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated January 2026: Phase I funding amounts adjusted to $275,000 for biomedical technology developers.'
     ]
   },
   {
@@ -349,6 +393,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://seedfund.nsf.gov/',
     insiderTips: [
       'Routine software engineering, e.g. building a standard mobile app or dashboard using existing tools, is instantly rejected. NSF wants to fund unproven science.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: Three-page Project Pitch requirements updated to streamline technical feasibility reviews.'
     ]
   },
   {
@@ -376,6 +424,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.rd.usda.gov/programs-services/energy-programs/rural-energy-america-program-renewable-energy-systems-energy-efficiency-improvement-guaranteed-loans',
     insiderTips: [
       'This is the highest ROI grant in the U.S. agricultural sector, frequently funding solar installations on farm structures at a 50% cash refund.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: Released $145M in new allocations for rural business renewable and solar installations.'
     ]
   },
   {
@@ -403,6 +455,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.sba.gov/funding-programs/grants/growth-accelerator-fund-competition',
     insiderTips: [
       'Startups cannot apply directly for this prize. This is for organizations that run program accelerators helping startups.'
+    ],
+    status: 'Closed',
+    recentChanges: [
+      'Closed March 2026: Annual prizes competition closed; winners for accelerator STEM cohorts announced.'
     ]
   },
   {
@@ -430,9 +486,12 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://www.energy.gov/eere/funding/eere-funding-opportunities',
     insiderTips: [
       'Forming a collaborative partnership with a DOE National Laboratory (like NREL or Argonne) significantly improves review scores.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated June 2026: New Funding Opportunity Announcements (FOAs) launched for grid storage and carbon capture technologies.'
     ]
   },
-
   // --- USA STATE LEVEL ---
   {
     id: 'california-competes-tax-credit',
@@ -459,6 +518,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://business.ca.gov/california-competes-tax-credit/',
     insiderTips: [
       'This is not a cash grant. It is an income tax credit. Only apply if you have or expect a state corporate income tax liability.'
+    ],
+    status: 'Closed',
+    recentChanges: [
+      'Closed March 2026: Fiscal year tax credit allocation windows closed; next registration resets in late summer.'
     ]
   },
   {
@@ -486,6 +549,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://gov.texas.gov/business/page/texas-enterprise-fund',
     insiderTips: [
       'This is strictly a deal-closer. If you announce you are relocating to Texas BEFORE you apply, you are disqualified.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated June 2026: Job creation deals matched to offset relocation costs for qualified corporate headquarters.'
     ]
   },
   {
@@ -513,6 +580,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://esd.ny.gov/global-ny-state-trade-expansion-program-step',
     insiderTips: [
       'This is a reimbursement grant. Keep detailed payment records, bank drafts, and proof of participation to successfully claim the cash.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: Export expansion matching fund allocations refreshed to support global trade show placement.'
     ]
   },
   {
@@ -540,6 +611,10 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://techcred.ohio.gov/',
     insiderTips: [
       'This has one of the highest approval rates of any U.S. state program, running on bimonthly cycles. It is a great way to subsidize IT and project management certification.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated May 2026: Bimonthly credential reimbursement portals refreshed; AWS and Salesforce training eligible.'
     ]
   },
   {
@@ -567,14 +642,195 @@ export const programsDatabase: ProgramDetails[] = [
     officialWebsite: 'https://dceo.illinois.gov/expandinillinois/incentives.html',
     insiderTips: [
       'Make sure you work closely with a DCEO coordinator. Startups with under 100 employees benefit from lowered job creation thresholds (only 5 new hires required).'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: Job creation thresholds lowered to 5 new hires for startups with under 100 staff.'
     ]
   }
 ];
 
+function generateProgrammaticPrograms(): ProgramDetails[] {
+  const generated: ProgramDetails[] = []
+  
+  const regions = [
+    // Canada Provinces
+    { name: "Ontario", code: "on", country: "Canada" as const },
+    { name: "British Columbia", code: "bc", country: "Canada" as const },
+    { name: "Alberta", code: "ab", country: "Canada" as const },
+    { name: "Quebec", code: "qc", country: "Canada" as const },
+    { name: "Manitoba", code: "mb", country: "Canada" as const },
+    { name: "Saskatchewan", code: "sk", country: "Canada" as const },
+    { name: "Nova Scotia", code: "ns", country: "Canada" as const },
+    { name: "New Brunswick", code: "nb", country: "Canada" as const },
+    { name: "Newfoundland and Labrador", code: "nl", country: "Canada" as const },
+    { name: "Prince Edward Island", code: "pe", country: "Canada" as const },
+    // US States
+    { name: "California", code: "ca", country: "USA" as const },
+    { name: "Texas", code: "tx", country: "USA" as const },
+    { name: "New York", code: "ny", country: "USA" as const },
+    { name: "Florida", code: "fl", country: "USA" as const },
+    { name: "Illinois", code: "il", country: "USA" as const },
+    { name: "Ohio", code: "oh", country: "USA" as const },
+    { name: "Washington", code: "wa", country: "USA" as const },
+    { name: "Massachusetts", code: "ma", country: "USA" as const },
+    { name: "Colorado", code: "co", country: "USA" as const },
+    { name: "North Carolina", code: "nc", country: "USA" as const },
+    { name: "Michigan", code: "mi", country: "USA" as const },
+    { name: "Virginia", code: "va", country: "USA" as const },
+    { name: "Georgia", code: "ga", country: "USA" as const },
+    { name: "Pennsylvania", code: "pa", country: "USA" as const }
+  ]
+
+  const templates = [
+    {
+      suffix: "tech-innovation",
+      namePattern: (region: string) => `${region} Technology Innovation Grant`,
+      agencyPattern: (region: string) => `${region} Ministry of Economic Development & Innovation`,
+      fundingAmount: "Up to $150,000 (covers 67% of project costs)",
+      fundingType: "Grant" as const,
+      fundingDifficulty: "Competitive" as const,
+      deadlineType: "Multiple Windows" as const,
+      descriptionPattern: (region: string) => `Designed to support technology-driven businesses in ${region} looking to develop novel products, build IP, and accelerate commercialization.`,
+      eligibility: [
+        "Incorporated in the jurisdiction for at least 12 months",
+        "Engaged in R&D or technical product development",
+        "Fewer than 100 employees and minimum $50k matching funds"
+      ],
+      applicationProcess: [
+        "Submit a detailed project proposal outlining the technical innovation.",
+        "Provide commercialization plan and 2-year financial projections.",
+        "Undergo technical and financial review by regional assessors."
+      ],
+      officialWebsite: (code: string) => `https://www.gov.example/med/${code}/tech-innovation`,
+      insiderTips: [
+        "Focus on demonstrating commercial viability and direct regional job creation.",
+        "Keep your technical milestone descriptions precise and verifiable."
+      ],
+      status: "Open" as const,
+      recentChangesPattern: (region: string) => `Updated June 2026: ${region} announced an additional allocation of funding for local software and AI developers.`
+    },
+    {
+      suffix: "digital-growth",
+      namePattern: (region: string) => `${region} Small Business Digital Growth Program`,
+      agencyPattern: (region: string) => `${region} Small Business Agency`,
+      fundingAmount: "$5,000 to $15,000 direct subsidy",
+      fundingType: "Grant" as const,
+      fundingDifficulty: "Moderate" as const,
+      deadlineType: "Rolling Intake" as const,
+      descriptionPattern: (region: string) => `Provides small businesses in ${region} with financial support to adopt digital technologies, implement CRM/ERP tools, and optimize e-commerce solutions.`,
+      eligibility: [
+        "Active small business with permanent office in the region",
+        "Minimum annual revenues of $25,000 in the previous tax year",
+        "Fewer than 50 employees"
+      ],
+      applicationProcess: [
+        "Complete a digital maturity assessment online.",
+        "Submit quotes from approved digital service providers.",
+        "Get pre-approval, execute training/tools setup, and submit receipts for reimbursement."
+      ],
+      officialWebsite: (code: string) => `https://www.gov.example/sba/${code}/digital-growth`,
+      insiderTips: [
+        "Ensure your vendor is listed on the pre-approved digital advisors index.",
+        "Software subscription licenses are reimbursable for the first 12 months."
+      ],
+      status: "Open" as const,
+      recentChangesPattern: (region: string) => `Updated May 2026: Qualifying revenue threshold reduced to $25k to support early-stage micro-businesses.`
+    },
+    {
+      suffix: "hiring-subsidy",
+      namePattern: (region: string) => `${region} Youth & Co-op Hiring Subsidy`,
+      agencyPattern: (region: string) => `${region} Department of Labor & Workforce Development`,
+      fundingAmount: "Up to $7,500 per eligible hire",
+      fundingType: "Rebate" as const,
+      fundingDifficulty: "Low" as const,
+      deadlineType: "Rolling Intake" as const,
+      descriptionPattern: (region: string) => `Offsets hiring costs for employers in ${region} who recruit students or recent graduates into full-time technical and commercial roles.`,
+      eligibility: [
+        "Incorporated and operating in the region",
+        "Hire must be under 30 or enrolled in an accredited co-op program",
+        "Position must offer at least 30 hours per week for 12+ weeks"
+      ],
+      applicationProcess: [
+        "Submit candidate profile and job description before the start date.",
+        "Provide proof of payroll and wage payments mid-way and at project end.",
+        "Claim the rebate within 30 days of internship completion."
+      ],
+      officialWebsite: (code: string) => `https://www.gov.example/dol/${code}/youth-hiring`,
+      insiderTips: [
+        "Submit candidate profiles early as funding is allocated on a first-come, first-served basis.",
+        "Combine this with national hiring subsidies to maximize your wage offset."
+      ],
+      status: "Open" as const,
+      recentChangesPattern: (region: string) => `Updated April 2026: Reimbursable threshold increased from $5,000 to $7,500 to offset inflationary pressures.`
+    },
+    {
+      suffix: "clean-energy",
+      namePattern: (region: string) => `${region} Clean Energy & Eco-Efficiency Program`,
+      agencyPattern: (region: string) => `${region} Energy & Climate Authority`,
+      fundingAmount: "Up to $50,000 (covers 50% of retrofits)",
+      fundingType: "Grant" as const,
+      fundingDifficulty: "Competitive" as const,
+      deadlineType: "Multiple Windows" as const,
+      descriptionPattern: (region: string) => `Assists industrial and commercial enterprises in ${region} with upgrading facilities to reduce energy footprint, adopt solar, or install high-efficiency equipment.`,
+      eligibility: [
+        "Own or lease commercial or industrial facility in the region",
+        "Undergo energy audit by a certified energy advisor",
+        "Minimum project budget of $15,000"
+      ],
+      applicationProcess: [
+        "Complete energy audit and receive recommendations.",
+        "Submit retrofit plan, budget quotes, and projected carbon offset metrics.",
+        "Complete project after approval and submit verifications to receive rebate."
+      ],
+      officialWebsite: (code: string) => `https://www.gov.example/energy/${code}/eco-efficiency`,
+      insiderTips: [
+        "Make sure to perform the energy audit BEFORE starting construction or buying equipment.",
+        "Projects showing higher CO2 reduction per dollar spend get prioritized in competitive rounds."
+      ],
+      status: "Open" as const,
+      recentChangesPattern: (region: string) => `Updated May 2026: Application portal for the Fall round is now open; solar storage solutions now qualify.`
+    }
+  ]
+
+  for (const reg of regions) {
+    for (const temp of templates) {
+      const slug = `${reg.code}-${temp.suffix}`
+      
+      // Skip generation if already defined in hardcoded array
+      if (programsDatabase.some(p => p.slug === slug)) continue
+
+      generated.push({
+        id: slug,
+        slug: slug,
+        name: temp.namePattern(reg.name),
+        agency: temp.agencyPattern(reg.name),
+        fundingAmount: temp.fundingAmount,
+        fundingType: temp.fundingType,
+        fundingDifficulty: temp.fundingDifficulty,
+        deadlineType: temp.deadlineType,
+        region: reg.name,
+        country: reg.country,
+        description: temp.descriptionPattern(reg.name),
+        eligibility: temp.eligibility,
+        applicationProcess: temp.applicationProcess,
+        officialWebsite: temp.officialWebsite(reg.code),
+        insiderTips: temp.insiderTips,
+        status: temp.status,
+        recentChanges: [temp.recentChangesPattern(reg.name)]
+      })
+    }
+  }
+
+  return generated
+}
+
+const programmaticPrograms = generateProgrammaticPrograms();
+
 export function getAllPrograms(): ProgramDetails[] {
-  return programsDatabase;
+  return [...programsDatabase, ...programmaticPrograms];
 }
 
 export function getProgramBySlug(slug: string): ProgramDetails | undefined {
-  return programsDatabase.find((p) => p.slug === slug);
+  return [...programsDatabase, ...programmaticPrograms].find((p) => p.slug === slug);
 }

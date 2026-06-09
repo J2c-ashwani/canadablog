@@ -86,12 +86,29 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.gaClientId || "N/A",
         data.offlineStatus || "Lead",
         data.actualSignedValue || "N/A",
+        data.isSubscribed !== false ? "Yes" : "No",
+        data.unsubscribeToken || "",
+        data.engagementScore !== undefined ? String(data.engagementScore) : "100",
+        data.lastOpenedAt || "N/A",
+        data.lastClickedAt || "N/A",
+        data.companySize || "N/A",
+        data.fundingInterests ? data.fundingInterests.join(",") : "N/A",
+        data.readinessScore !== undefined ? String(data.readinessScore) : "N/A",
+        data.readinessBand || "N/A",
+        data.loginToken || "",
+        data.subscriptionStatus || "inactive",
+        data.subscriptionId || "N/A",
+        data.trialStartedAt || "N/A",
+        data.website || "N/A",
+        data.companyName || "N/A",
+        data.reportPurchased ? "Yes" : "No",
+        data.reportTransactionId || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:AG",
+      range: "Leads!A:AX",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -146,9 +163,25 @@ function parseSheetLead(row: string[]): SheetLead {
     utmSource: row[27] || "N/A",
     utmMedium: row[28] || "N/A",
     utmCampaign: row[29] || "N/A",
-    gaClientId: row[30] || "N/A",
     offlineStatus: row[31] || "Lead",
     actualSignedValue: row[32] || "N/A",
+    isSubscribed: row[33] ? String(row[33]).toLowerCase() !== "no" : true,
+    unsubscribeToken: row[34] || "",
+    engagementScore: row[35] ? Number(row[35]) : 100,
+    lastOpenedAt: row[36] || "",
+    lastClickedAt: row[37] || "",
+    companySize: row[38] || "",
+    fundingInterests: row[39] && row[39] !== "N/A" ? row[39].split(",") : [],
+    readinessScore: row[40] && row[40] !== "N/A" ? Number(row[40]) : undefined,
+    readinessBand: row[41] || "N/A",
+    loginToken: row[42] || "",
+    subscriptionStatus: row[43] || "inactive",
+    subscriptionId: row[44] || "N/A",
+    trialStartedAt: row[45] || "N/A",
+    website: row[46] || "N/A",
+    companyName: row[47] || "N/A",
+    reportPurchased: String(row[48] || "").toLowerCase() === "yes",
+    reportTransactionId: row[49] || "N/A",
   }
 
 
@@ -177,7 +210,7 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:AG",
+    range: "Leads!A:AX",
   })
 
 
@@ -194,6 +227,105 @@ export async function getLeadsFromSheet(limit = 500) {
     })
     .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
     .slice(0, limit)
+}
+
+export async function updateLeadInSheet(email: string, updates: Partial<LeadCaptureData>) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    
+    // Fetch all rows to locate index
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "Leads!A:AX",
+    })
+    
+    const rows = response.data.values || []
+    const emailColIndex = 2 // Leads!C is Column 3 (0-indexed 2)
+    
+    const rowIndex = rows.findIndex((row) => row[emailColIndex] === email)
+    if (rowIndex === -1) {
+      console.warn(`⚠️ Lead with email ${email} not found in sheet.`)
+      return { success: false, error: "Not found" }
+    }
+    
+    const sheetRowNumber = rowIndex + 1
+    const targetRow = rows[rowIndex]
+    
+    // Ensure array length covers AT (index 45)
+    while (targetRow.length < 46) {
+      targetRow.push("N/A")
+    }
+    
+    // Update fields
+    if (updates.isSubscribed !== undefined) {
+      targetRow[33] = updates.isSubscribed ? "Yes" : "No"
+    }
+    if (updates.unsubscribeToken !== undefined) {
+      targetRow[34] = updates.unsubscribeToken
+    }
+    if (updates.engagementScore !== undefined) {
+      targetRow[35] = String(updates.engagementScore)
+    }
+    if (updates.lastOpenedAt !== undefined) {
+      targetRow[36] = updates.lastOpenedAt
+    }
+    if (updates.lastClickedAt !== undefined) {
+      targetRow[37] = updates.lastClickedAt
+    }
+    if (updates.companySize !== undefined) {
+      targetRow[38] = updates.companySize
+    }
+    if (updates.fundingInterests !== undefined) {
+      targetRow[39] = updates.fundingInterests.join(",")
+    }
+    if (updates.readinessScore !== undefined) {
+      targetRow[40] = String(updates.readinessScore)
+    }
+    if (updates.readinessBand !== undefined) {
+      targetRow[41] = updates.readinessBand
+    }
+    if (updates.loginToken !== undefined) {
+      targetRow[42] = updates.loginToken
+    }
+    if (updates.subscriptionStatus !== undefined) {
+      targetRow[43] = updates.subscriptionStatus
+    }
+    if (updates.subscriptionId !== undefined) {
+      targetRow[44] = updates.subscriptionId
+    }
+    if (updates.trialStartedAt !== undefined) {
+      targetRow[45] = updates.trialStartedAt
+    }
+    if (updates.website !== undefined) {
+      targetRow[46] = updates.website
+    }
+    if (updates.companyName !== undefined) {
+      targetRow[47] = updates.companyName
+    }
+    if (updates.reportPurchased !== undefined) {
+      targetRow[48] = updates.reportPurchased ? "Yes" : "No"
+    }
+    if (updates.reportTransactionId !== undefined) {
+      targetRow[49] = updates.reportTransactionId
+    }
+    
+    // Update the row
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `Leads!A${sheetRowNumber}:AX${sheetRowNumber}`,
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values: [targetRow],
+      },
+    })
+    
+    console.log(`✅ Lead ${email} updated at row ${sheetRowNumber}`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Error updating lead in Google Sheets:", error)
+    return { success: false, error }
+  }
 }
 
 
@@ -265,7 +397,10 @@ export async function captureEmailLead(
   utmSource?: string,
   utmMedium?: string,
   utmCampaign?: string,
-  gaClientId?: string
+  gaClientId?: string,
+  state?: string,
+  industry?: string,
+  country?: string
 ) {
   return appendLeadToSheet({
     source,
@@ -276,6 +411,9 @@ export async function captureEmailLead(
     utmMedium,
     utmCampaign,
     gaClientId,
+    state,
+    industry,
+    country,
   })
 }
 
@@ -432,6 +570,115 @@ export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData,
     return { success: true }
   } catch (error) {
     console.error("❌ Error saving partner inquiry to Google Sheets:", error)
+    return { success: false, error }
+  }
+}
+
+export interface MatchEvaluationLog {
+  timestamp: string
+  email: string
+  region: string
+  industry: string
+  companySize: string
+  programSlug: string
+  fitBand: string
+  confidence: string
+  difficulty: string
+}
+
+const MATCH_LOG_HEADERS = [
+  "Timestamp",
+  "Email",
+  "Region",
+  "Industry",
+  "Company Size",
+  "Program Slug",
+  "Fit Band",
+  "Confidence",
+  "Difficulty"
+]
+
+export async function ensureMatchLogsSheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "Match Logs"
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  })
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE)
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: SHEET_TITLE,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:I1`,
+  })
+
+  const header = headerResponse.data.values?.[0] || []
+  if (header.join("|") !== MATCH_LOG_HEADERS.join("|")) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:I1`,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [MATCH_LOG_HEADERS],
+      },
+    })
+  }
+}
+
+export async function appendMatchEvaluationToSheet(data: MatchEvaluationLog) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) {
+      throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+    }
+
+    await ensureMatchLogsSheet(sheets, spreadsheetId)
+
+    const values = [
+      [
+        data.timestamp,
+        data.email,
+        data.region,
+        data.industry,
+        data.companySize,
+        data.programSlug,
+        data.fitBand,
+        data.confidence,
+        data.difficulty
+      ]
+    ]
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "Match Logs!A:I",
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values,
+      },
+    })
+
+    console.log(`✅ Match evaluation logged for: ${data.email} | Program: ${data.programSlug} | Fit: ${data.fitBand}`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Error saving match evaluation to Google Sheets:", error)
     return { success: false, error }
   }
 }

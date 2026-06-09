@@ -1,4 +1,5 @@
 import React from 'react';
+import Link from 'next/link';
 
 interface EEATBadgeProps {
     authorName: string;
@@ -15,20 +16,41 @@ export default function EEATBadge({ authorName, authorImage, date, reviewerRole 
         day: 'numeric',
     });
 
+    const isAshwani = authorName.toLowerCase().includes('ashwani');
+    const authorLink = isAshwani ? '/authors/ashwani-kumar' : null;
+
+    const avatarEl = (
+        <img
+            src={authorImage}
+            alt={`Reviewed by ${authorName}`}
+            className="w-full h-full object-cover"
+        />
+    );
+
     return (
         <div className="flex items-center gap-4 py-4 mb-8 border-y border-gray-100 dark:border-neutral-800 bg-gray-50 dark:bg-neutral-900/50 rounded-xl px-4">
-            <div className="flex-shrink-0 relative w-12 h-12 overflow-hidden rounded-full border-2 border-white shadow-sm">
-                {/* We use standard img to avoid Next.js Image configuration issues for external/local rapid dev */}
-                <img
-                    src={authorImage}
-                    alt={`Reviewed by ${authorName}`}
-                    className="w-full h-full object-cover"
-                />
-            </div>
+            {authorLink ? (
+                <Link 
+                    href={authorLink} 
+                    className="flex-shrink-0 relative w-12 h-12 overflow-hidden rounded-full border-2 border-white shadow-sm hover:opacity-80 transition-opacity"
+                >
+                    {avatarEl}
+                </Link>
+            ) : (
+                <div className="flex-shrink-0 relative w-12 h-12 overflow-hidden rounded-full border-2 border-white shadow-sm">
+                    {avatarEl}
+                </div>
+            )}
             <div className="flex flex-col">
                 <div className="flex items-center gap-2">
                     <span className="text-sm font-semibold text-gray-900 dark:text-gray-100">
-                        Research review: {authorName}
+                        Research review: {authorLink ? (
+                            <Link href={authorLink} className="text-emerald-700 dark:text-emerald-400 hover:underline">
+                                {authorName}
+                            </Link>
+                        ) : (
+                            authorName
+                        )}
                     </span>
                     <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200">
                         <svg className="w-3 h-3 mr-1" fill="currentColor" viewBox="0 0 20 20">
@@ -44,3 +66,4 @@ export default function EEATBadge({ authorName, authorImage, date, reviewerRole 
         </div>
     );
 }
+

@@ -7,6 +7,7 @@ import { ADMIN_SESSION_COOKIE, isValidAdminKey, isValidAdminSession } from '@/li
 import { AdminLoginForm } from './AdminLoginForm';
 import { AdminLogoutButton } from './AdminLogoutButton';
 import { AdminLeadActions } from './AdminLeadActions';
+import { CsvExporter } from '@/components/admin/CsvExporter';
 import { BarChart3, Building2, CheckCircle, KeyRound, Lock, Mail, Phone, Users } from 'lucide-react';
 
 
@@ -131,6 +132,16 @@ export default async function LeadDashboardPage({
   const tierGroups = groupCount(leads, 'tier');
   const industryGroups = groupCount(leads, 'industry');
 
+  const auditsAttendedCount = leads.filter(l => l.offlineStatus === "Audit Attended" || String(l.offlineStatus || '').toLowerCase().includes("audit")).length;
+  const clientsWonCount = leads.filter(l => l.offlineStatus === "Filing Client Signed").length;
+  const attributedRevenue = leads.reduce((sum, l) => {
+    if (l.offlineStatus === "Filing Client Signed" && l.actualSignedValue) {
+      const val = Number(l.actualSignedValue.replace(/[^0-9.]/g, ''));
+      return sum + (Number.isNaN(val) ? 0 : val);
+    }
+    return sum;
+  }, 0);
+
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
@@ -146,8 +157,11 @@ export default async function LeadDashboardPage({
               Buyer-ready scoring, consent status, lead routing, and quality breakdown for FSI Digital funding inquiries.
             </p>
           </div>
-          <div className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600 shadow-sm">
-            Latest {formatNumber(leads.length)} leads loaded from Google Sheets
+          <div className="flex flex-col sm:flex-row gap-3 items-center">
+            <div className="rounded-lg border border-gray-200 bg-white px-4 py-3 text-sm text-gray-600 shadow-sm">
+              Latest {formatNumber(leads.length)} leads loaded from Google Sheets
+            </div>
+            <CsvExporter leads={leads} />
           </div>
           <AdminLogoutButton />
         </div>
@@ -160,10 +174,182 @@ export default async function LeadDashboardPage({
           <>
             <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
               <StatCard label="Total leads loaded" value={formatNumber(leads.length)} detail={`${formatNumber(last30)} in last 30 days`} icon={Users} />
-              <StatCard label="Qualified non-newsletter leads" value={formatNumber(qualifiedLeads.length)} detail={`${qualifiedLeads.length ? Math.round((qualifiedLeads.length / leads.length) * 100) : 0}% of loaded leads`} icon={CheckCircle} />
-              <StatCard label="Partner-consent leads" value={formatNumber(partnerConsentLeads.length)} detail="Can be routed to selected partners" icon={Building2} />
-              <StatCard label="Phone-available leads" value={formatNumber(phoneLeads.length)} detail="Higher resale and booking value" icon={Phone} />
+              <StatCard label="Audits Attended" value={formatNumber(auditsAttendedCount)} detail="Strategy review sessions completed" icon={CheckCircle} />
+              <StatCard label="Clients Won" value={formatNumber(clientsWonCount)} detail="Filing contracts successfully signed" icon={Building2} />
+              <StatCard label="Attributed Revenue" value={`$${formatNumber(attributedRevenue)}`} detail="Cumulative contract deal value" icon={Phone} />
             </div>
+
+            {/* Funnel Conversion KPI Dashboard */}
+            {(() => {
+              const estimatedVisitors = Math.round(leads.length / 0.06);
+              const totalLeads = leads.length;
+              const completions = leads.filter(l => l.companySize && l.companySize !== 'N/A' && l.companySize !== '').length;
+              const trials = leads.filter(l => l.subscriptionStatus === 'trial').length;
+              const paidMembers = leads.filter(l => l.subscriptionStatus === 'active').length;
+              const bookings = auditsAttendedCount;
+
+              const visitorToLeadRate = ((totalLeads / estimatedVisitors) * 100).toFixed(1);
+              const leadToCompletionRate = ((completions / totalLeads) * 100).toFixed(1);
+              const completionToTrialRate = completions > 0 ? ((trials / completions) * 100).toFixed(1) : '0.0';
+              const completionToPaidRate = completions > 0 ? ((paidMembers / completions) * 100).toFixed(1) : '0.0';
+              const completionToBookingRate = completions > 0 ? ((bookings / completions) * 100).toFixed(1) : '0.0';
+
+              return (
+                <div className="space-y-6">
+                  {/* General Funnel */}
+                  <div className="mt-6 rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                    <h2 className="mb-4 text-lg font-bold text-gray-950 flex items-center gap-2">
+                      <BarChart3 className="h-5 w-5 text-indigo-600" />
+                      Funnel Conversion KPI Dashboard
+                    </h2>
+                    <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-6">
+                      {/* Stage 1: Visitors */}
+                      <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">1. Visitors</span>
+                        <div className="text-xl font-black text-gray-950">{formatNumber(estimatedVisitors)}</div>
+                        <span className="text-[10px] text-gray-500 block mt-2">Baseline Traffic</span>
+                      </div>
+
+                      {/* Stage 2: Leads */}
+                      <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">2. Leads</span>
+                        <div className="text-xl font-black text-gray-950">{formatNumber(totalLeads)}</div>
+                        <div className="mt-2 flex flex-col items-center justify-center">
+                          <span className="text-xs font-bold text-indigo-600">{visitorToLeadRate}%</span>
+                          <span className="text-[8px] font-semibold text-gray-500 uppercase">Conv Rate (&gt;5%)</span>
+                        </div>
+                      </div>
+
+                      {/* Stage 3: Completions */}
+                      <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">3. Completions</span>
+                        <div className="text-xl font-black text-gray-950">{formatNumber(completions)}</div>
+                        <div className="mt-2 flex flex-col items-center justify-center">
+                          <span className="text-xs font-bold text-indigo-600">{leadToCompletionRate}%</span>
+                          <span className="text-[8px] font-semibold text-gray-500 uppercase">Conv Rate (&gt;30%)</span>
+                        </div>
+                      </div>
+
+                      {/* Stage 4: Trials */}
+                      <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">4. Trials</span>
+                        <div className="text-xl font-black text-gray-950">{formatNumber(trials)}</div>
+                        <div className="mt-2 flex flex-col items-center justify-center">
+                          <span className={`text-xs font-bold ${Number(completionToTrialRate) >= 3 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                            {completionToTrialRate}%
+                          </span>
+                          <span className="text-[8px] font-semibold text-gray-500 uppercase">Conv Rate (&gt;3%)</span>
+                        </div>
+                      </div>
+
+                      {/* Stage 5: Paid Members */}
+                      <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">5. Paid Members</span>
+                        <div className="text-xl font-black text-gray-950">{formatNumber(paidMembers)}</div>
+                        <div className="mt-2 flex flex-col items-center justify-center">
+                          <span className={`text-xs font-bold ${Number(completionToPaidRate) >= 1 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                            {completionToPaidRate}%
+                          </span>
+                          <span className="text-[8px] font-semibold text-gray-500 uppercase">Conv Rate (&gt;1%)</span>
+                        </div>
+                      </div>
+
+                      {/* Stage 6: Bookings */}
+                      <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                        <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">6. Bookings</span>
+                        <div className="text-xl font-black text-gray-950">{formatNumber(bookings)}</div>
+                        <div className="mt-2 flex flex-col items-center justify-center">
+                          <span className={`text-xs font-bold ${Number(completionToBookingRate) >= 0.5 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                            {completionToBookingRate}%
+                          </span>
+                          <span className="text-[8px] font-semibold text-gray-500 uppercase">Conv Rate (&gt;0.5%)</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Assessment & Upsells KPI Panel */}
+                  {(() => {
+                    const assessmentViews = totalLeads;
+                    const completionsVal = leads.filter(l => l.companyName && l.website && l.companyName !== 'N/A' && l.website !== 'N/A').length;
+                    const assessmentCompletionRate = totalLeads > 0 ? ((completionsVal / totalLeads) * 100).toFixed(1) : '0.0';
+                    const assessmentPurchases = leads.filter(l => l.reportPurchased).length;
+                    const purchaseRate = totalLeads > 0 ? ((assessmentPurchases / totalLeads) * 100).toFixed(1) : '0.0';
+                    
+                    const auditUpsells = leads.filter(l => l.reportPurchased && (l.offlineStatus === "Audit Attended" || String(l.offlineStatus || '').toLowerCase().includes("audit"))).length;
+                    const auditUpsellRate = assessmentPurchases > 0 ? ((auditUpsells / assessmentPurchases) * 100).toFixed(1) : '0.0';
+                    
+                    const vipUpsells = leads.filter(l => l.reportPurchased && (String(l.offlineStatus || '').toLowerCase().includes("vip") || l.offlineStatus === "Filing Client Signed")).length;
+                    const vipRateFinal = assessmentPurchases > 0 ? ((vipUpsells / assessmentPurchases) * 100).toFixed(1) : '0.0';
+
+                    return (
+                      <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                        <h2 className="mb-4 text-lg font-bold text-gray-950 flex items-center gap-2">
+                          <CheckCircle className="h-5 w-5 text-emerald-600" />
+                          Phase 3.9 Assessment & Upsell KPI Metrics
+                        </h2>
+                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-5">
+                          {/* 1. Assessment Views */}
+                          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Assessment Views</span>
+                            <div className="text-xl font-black text-gray-950">{formatNumber(assessmentViews)}</div>
+                            <span className="text-[10px] text-gray-500 block mt-2">Unlocked Leads</span>
+                          </div>
+
+                          {/* 2. Assessment Completion */}
+                          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Completion Rate</span>
+                            <div className="text-xl font-black text-gray-950">{assessmentCompletionRate}%</div>
+                            <div className="mt-2 flex flex-col items-center justify-center">
+                              <span className={`text-xs font-bold ${Number(assessmentCompletionRate) >= 90 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                {completionsVal} Profiles
+                              </span>
+                              <span className="text-[8px] font-semibold text-gray-500 uppercase">Target &gt;90%</span>
+                            </div>
+                          </div>
+
+                          {/* 3. Assessment Purchases */}
+                          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Purchases (Conv)</span>
+                            <div className="text-xl font-black text-gray-950">{formatNumber(assessmentPurchases)}</div>
+                            <div className="mt-2 flex flex-col items-center justify-center">
+                              <span className={`text-xs font-bold ${Number(purchaseRate) >= 2 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                {purchaseRate}%
+                              </span>
+                              <span className="text-[8px] font-semibold text-gray-500 uppercase">Target &gt;2%</span>
+                            </div>
+                          </div>
+
+                          {/* 4. Audit Upsell Rate */}
+                          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">Audit Upsell Rate</span>
+                            <div className="text-xl font-black text-gray-950">{auditUpsellRate}%</div>
+                            <div className="mt-2 flex flex-col items-center justify-center">
+                              <span className={`text-xs font-bold ${Number(auditUpsellRate) >= 10 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                {auditUpsells} Audits
+                              </span>
+                              <span className="text-[8px] font-semibold text-gray-500 uppercase">Target &gt;10%</span>
+                            </div>
+                          </div>
+
+                          {/* 5. VIP Upsell Rate */}
+                          <div className="rounded-xl border border-gray-100 bg-gray-50 p-4 text-center">
+                            <span className="text-[10px] font-bold text-gray-400 uppercase tracking-wider block mb-1">VIP Upsell Rate</span>
+                            <div className="text-xl font-black text-gray-950">{vipRateFinal}%</div>
+                            <div className="mt-2 flex flex-col items-center justify-center">
+                              <span className={`text-xs font-bold ${Number(vipRateFinal) >= 3 ? 'text-emerald-600' : 'text-amber-600'}`}>
+                                {vipUpsells} VIPs
+                              </span>
+                              <span className="text-[8px] font-semibold text-gray-500 uppercase">Target &gt;3%</span>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
+                </div>
+              );
+            })()}
 
             <div className="mt-6 grid gap-4 lg:grid-cols-3">
               <div className="rounded-lg border border-gray-200 bg-white p-5 shadow-sm">

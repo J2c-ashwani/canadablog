@@ -32,6 +32,23 @@ export type LeadCaptureData = {
   gaClientId?: string;
   offlineStatus?: string;
   actualSignedValue?: string;
+  // CDP & Alert Preferences Options
+  isSubscribed?: boolean;
+  unsubscribeToken?: string;
+  engagementScore?: number;
+  lastOpenedAt?: string;
+  lastClickedAt?: string;
+  companySize?: string;
+  fundingInterests?: string[];
+  readinessScore?: number;
+  readinessBand?: string;
+  loginToken?: string;
+  subscriptionStatus?: string;
+  subscriptionId?: string;
+  trialStartedAt?: string;
+  website?: string;
+  reportPurchased?: boolean;
+  reportTransactionId?: string;
 };
 
 

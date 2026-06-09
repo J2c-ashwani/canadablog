@@ -54,6 +54,11 @@ export default function ConsultationClient() {
     eventUri: string;
     inviteeUri: string;
     bookedAt: number;
+    score: number;
+    range: string;
+    region: string;
+    size: string;
+    industry: string;
   }>({
     email: '',
     name: '',
@@ -62,7 +67,12 @@ export default function ConsultationClient() {
     scheduled: false,
     eventUri: '',
     inviteeUri: '',
-    bookedAt: 0
+    bookedAt: 0,
+    score: 0,
+    range: '',
+    region: '',
+    size: '',
+    industry: ''
   });
 
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
@@ -83,7 +93,12 @@ export default function ConsultationClient() {
       scheduled: searchParams.get('scheduled') === 'true',
       eventUri: searchParams.get('event_uri') || '',
       inviteeUri: searchParams.get('invitee_uri') || '',
-      bookedAt: Number(searchParams.get('booked_at')) || 0
+      bookedAt: Number(searchParams.get('booked_at')) || 0,
+      score: Number(searchParams.get('score')) || 0,
+      range: searchParams.get('range') || '',
+      region: searchParams.get('region') || '',
+      size: searchParams.get('size') || '',
+      industry: searchParams.get('industry') || ''
     });
   }, []);
 
@@ -301,22 +316,41 @@ export default function ConsultationClient() {
     const sourceStr = (params.source || '').toLowerCase().trim();
     const isCorporate = emailStr && !/(gmail|yahoo|hotmail|outlook|live|icloud|aol|mail|msn)\./.test(emailStr);
 
+    let readiness = params.score || (isCorporate ? 84 : 78);
+    let range = params.range || (isCorporate ? '$100,000 – $500,000' : '$50,000 – $250,000');
+    let region = params.region || '';
+    let industry = params.industry || '';
+
     let industryFit = 'High Match';
-    let readiness = 78;
-    let range = '$50,000 – $250,000';
-    let potentialMinVal = 50000;
-
-    if (isCorporate) { readiness = 84; range = '$100,000 – $500,000'; potentialMinVal = 100000; }
-
-    if (sourceStr.includes('agriculture') || sourceStr.includes('agri')) {
-      industryFit = 'Specialized Match'; range = '$75,000 – $350,000'; readiness = 81; potentialMinVal = 75000;
-    } else if (sourceStr.includes('technology') || sourceStr.includes('tech') || sourceStr.includes('digital') || sourceStr.includes('ai') || sourceStr.includes('cleantech')) {
-      industryFit = 'High-Tech Match'; range = '$150,000 – $600,000'; readiness = 86; potentialMinVal = 150000;
-    } else if (sourceStr.includes('manufacturing') || sourceStr.includes('industrial')) {
-      industryFit = 'Industrial Match'; range = '$120,000 – $450,000'; readiness = 83; potentialMinVal = 120000;
+    
+    // Determine industry name to check
+    const industryKey = (industry || sourceStr).toLowerCase();
+    if (industryKey.includes('agriculture') || industryKey.includes('agri')) {
+      industryFit = 'Specialized Match';
+      if (!params.range) range = '$75,000 – $350,000';
+    } else if (industryKey.includes('technology') || industryKey.includes('tech') || industryKey.includes('digital') || industryKey.includes('ai') || industryKey.includes('cleantech') || industryKey.includes('software')) {
+      industryFit = 'High-Tech Match';
+      if (!params.range) range = '$150,000 – $600,000';
+    } else if (industryKey.includes('manufacturing') || industryKey.includes('industrial')) {
+      industryFit = 'Industrial Match';
+      if (!params.range) range = '$120,000 – $450,000';
+    } else if (industryKey.includes('healthcare') || industryKey.includes('medical') || industryKey.includes('life sciences')) {
+      industryFit = 'Healthcare Match';
+      if (!params.range) range = '$200,000 – $800,000';
     }
 
-    return { industryFit, readiness, range, potentialMinVal };
+    // Determine min value
+    const cleanRange = range.replace(/[^0-9\–\-]/g, '');
+    const parts = cleanRange.split(/[\–\-]/);
+    let potentialMinVal = 50000;
+    if (parts[0]) {
+      const parsed = parseInt(parts[0], 10);
+      if (!isNaN(parsed)) {
+        potentialMinVal = parsed < 1000 ? parsed * 1000 : parsed;
+      }
+    }
+
+    return { industryFit, readiness, range, potentialMinVal, region };
   };
 
   const calc = getFundingPotential();
@@ -594,6 +628,45 @@ export default function ConsultationClient() {
 
             {/* Left Column: Score + Social Proof + Guarantee (7 cols) */}
             <div className="lg:col-span-7 space-y-6">
+
+              {/* customized status urgency banner */}
+              {calc.readiness > 0 && (
+                <div className={`p-4 rounded-xl border flex items-start gap-3 animate-fade-in ${
+                  calc.readiness >= 80
+                    ? 'bg-emerald-50 border-emerald-200 text-emerald-900'
+                    : calc.readiness >= 70
+                      ? 'bg-blue-50 border-blue-200 text-blue-900'
+                      : calc.readiness >= 50
+                        ? 'bg-amber-50 border-amber-200 text-amber-900'
+                        : 'bg-slate-50 border-slate-200 text-slate-900'
+                }`}>
+                  {calc.readiness >= 80 ? (
+                    <Sparkles className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  ) : (
+                    <ShieldCheck className="w-5 h-5 text-indigo-600 shrink-0 mt-0.5" />
+                  )}
+                  <div>
+                    <span className="font-extrabold text-xs block uppercase tracking-wider mb-0.5">
+                      {calc.readiness >= 80
+                        ? 'Excellent Candidate Status'
+                        : calc.readiness >= 70
+                          ? 'Strong Candidate Status'
+                          : calc.readiness >= 50
+                            ? 'Moderate Candidate Status'
+                            : 'Limited Candidate Status'}
+                    </span>
+                    <p className="text-[11px] font-medium leading-relaxed">
+                      {calc.readiness >= 80
+                        ? 'Direct priority routing active. Your profile meets or exceeds pre-qualification standards for prime funding programs.'
+                        : calc.readiness >= 70
+                          ? 'Standard alignment checks complete. Your profile demonstrates solid alignment with several capital programs.'
+                          : calc.readiness >= 50
+                            ? 'Manual verification required. Additional firmographic parameters must be reviewed to confirm active program fits.'
+                            : 'Basic requirements met. Standard advisory review recommended to explore niche or provincial support routes.'}
+                    </p>
+                  </div>
+                </div>
+              )}
 
               {/* Funding Potential Score™ */}
               <div className="bg-slate-950 text-white rounded-2xl sm:rounded-3xl p-5 sm:p-6 shadow-xl relative overflow-hidden">

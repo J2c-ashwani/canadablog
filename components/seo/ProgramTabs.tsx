@@ -3,8 +3,9 @@
 import React, { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
-import { Info, CheckCircle2, Layers, AlertTriangle, ExternalLink, Award, Calendar, HelpCircle } from 'lucide-react';
+import { Info, CheckCircle2, Layers, AlertTriangle, ExternalLink, Award, Calendar, HelpCircle, ArrowRight } from 'lucide-react';
 import { ProgramDetails } from '@/lib/data/programs';
+import Link from 'next/link';
 
 interface ProgramTabsProps {
   program: ProgramDetails;
@@ -216,7 +217,7 @@ export function ProgramTabs({ program }: ProgramTabsProps) {
             {program.insiderTips && program.insiderTips.length > 0 && (
               <div className="bg-emerald-50/50 border border-emerald-100 rounded-xl p-5 dark:bg-emerald-950/10 dark:border-emerald-900/30">
                 <h4 className="text-base font-bold text-emerald-800 dark:text-emerald-400 mb-2.5">💡 Expert Insider Tips</h4>
-                <ul className="space-y-2.5">
+                <ul className="space-y-2.5 mb-4">
                   {program.insiderTips.map((tip, idx) => (
                     <li key={idx} className="text-sm text-slate-700 dark:text-neutral-300 flex items-start gap-2">
                       <span className="text-emerald-600 font-bold shrink-0 mt-0.5">•</span>
@@ -224,6 +225,22 @@ export function ProgramTabs({ program }: ProgramTabsProps) {
                     </li>
                   ))}
                 </ul>
+                {(program.slug === 'sred-tax-credit' || program.slug === 'quebec-innovation-tax-credit') && (
+                  <div className="border-t border-emerald-200/50 pt-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <p className="text-xs text-emerald-800 font-semibold">Estimate your potential T4 salary refunds in real-time:</p>
+                    <Link href="/tools" className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-950">
+                      Try SR&ED Calculator <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                )}
+                {(program.slug === 'mitacs-accelerate' || program.slug === 'ontario-hiring-grant' || program.slug === 'ohio-tech-cred') && (
+                  <div className="border-t border-emerald-200/50 pt-3 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                    <p className="text-xs text-emerald-800 font-semibold">Calculate matching wage subsidies for co-op placements:</p>
+                    <Link href="/tools" className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-950">
+                      Try Hiring Calculator <ArrowRight className="w-3.5 h-3.5" />
+                    </Link>
+                  </div>
+                )}
               </div>
             )}
           </div>
