@@ -9,7 +9,7 @@ export default function GlobalWikipediaLinker() {
 
   useEffect(() => {
     // Only run on content pages
-    if (!pathname?.startsWith('/blog') && !pathname?.startsWith('/guides') && !pathname?.startsWith('/usa')) return;
+    if (!pathname?.startsWith('/blog') && !pathname?.startsWith('/guides') && !pathname?.startsWith('/usa') && !pathname?.startsWith('/grants') && !pathname?.startsWith('/programs')) return;
 
     // Wait for React to finish hydrating the page to prevent hydration mismatch errors
     const timer = setTimeout(() => {
