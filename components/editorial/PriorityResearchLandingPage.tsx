@@ -8,6 +8,8 @@ import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
 import { EditorialResearchContent } from '@/components/editorial/EditorialResearchContent';
 import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
 import type { PriorityResearchProfile } from '@/lib/editorial/priorityResearch';
+import { generateFAQSchema } from '@/lib/schema';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
 interface PriorityResearchLandingPageProps {
   profile: PriorityResearchProfile;
@@ -29,9 +31,14 @@ export function PriorityResearchLandingPage({ profile, eyebrow, title }: Priorit
     citation: profile.officialSources.map(source => source.url),
   };
 
+  const faqSchema = profile.faq ? generateFAQSchema(profile.faq) : null;
+
   return (
     <div className="min-h-screen bg-white">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
+      {faqSchema && (
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
+      )}
       <Header />
       <main>
         <section className="border-b border-slate-200 bg-slate-950 py-14 text-white sm:py-20">
@@ -63,6 +70,26 @@ export function PriorityResearchLandingPage({ profile, eyebrow, title }: Priorit
           <article className="mx-auto max-w-5xl">
             <EditorialResearchContent route={profile.route} />
             <IntentStrategyCTA cta={profile.cta} />
+
+            {/* Visual FAQ Accordion here */}
+            {profile.faq && (
+              <div className="my-12">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h3>
+                <Accordion type="single" collapsible className="w-full">
+                  {profile.faq.map((item, index) => (
+                    <AccordionItem key={index} value={`item-${index}`}>
+                      <AccordionTrigger className="text-left font-semibold text-gray-900 hover:text-emerald-700 transition-colors">
+                        {item.question}
+                      </AccordionTrigger>
+                      <AccordionContent className="text-gray-600 leading-relaxed">
+                        <div dangerouslySetInnerHTML={{ __html: item.answer }} />
+                      </AccordionContent>
+                    </AccordionItem>
+                  ))}
+                </Accordion>
+              </div>
+            )}
+
             <div className="mt-8 flex items-start gap-3 rounded-md border border-slate-200 bg-slate-50 p-4 text-sm leading-6 text-slate-600">
               <CalendarCheck2 className="mt-0.5 h-5 w-5 shrink-0 text-slate-700" />
               <p>Program terms, budgets, and intake windows can change. Confirm the current rules at the cited official source before making a financial or application decision.</p>

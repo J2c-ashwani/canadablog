@@ -19,7 +19,7 @@ import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent, getBlogPostRichData } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
-import { generateBlogPostSchema, generateBreadcrumbSchema } from '@/lib/schema';
+import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
 import { GrantSuccessTable } from "@/components/blog/GrantSuccessTable";
 import { GrantComparisonTable } from "@/components/blog/GrantComparisonTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
@@ -169,6 +169,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       excerpt: researchProfile.seoDescription,
       shortAnswerQuestion: researchProfile.shortAnswerQuestion,
       shortAnswer: researchProfile.shortAnswer,
+      faq: researchProfile.faq,
     } : {}),
     content: stripInlineSchemas(content),
   };
@@ -195,6 +196,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     sources: researchProfile.officialSources,
   } : undefined);
   const breadcrumbSchema = generateBreadcrumbSchema(fullPost);
+  const faqSchema = fullPost.faq ? generateFAQSchema(fullPost.faq) : null;
   const relatedFundingLinks = sanitizeRelatedLinks(fullPost.relatedLinks, fullPost);
 
   const renderContentWithAds = (htmlString: string, pCountOffset: number) => {
@@ -249,6 +251,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }}
       />
+      {faqSchema && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+        />
+      )}
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
@@ -444,7 +452,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* DYNAMIC ENRICHMENT: FAQ UI */}
-              {fullPost.faq && !researchProfile && (
+              {fullPost.faq && (
                 <div className="mt-12 mb-8 not-prose">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>
                   <Accordion type="single" collapsible className="w-full">

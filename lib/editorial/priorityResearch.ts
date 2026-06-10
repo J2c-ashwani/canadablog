@@ -32,6 +32,7 @@ export interface PriorityResearchProfile {
     href: string;
     supportingPoints: string[];
   };
+  faq?: { question: string; answer: string }[];
 }
 
 const REVIEWED_BY = 'Ashwani K.';
@@ -75,17 +76,31 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'New York funding strategy',
-      title: 'Map the right incentive stack before you apply',
-      description: 'A focused review can separate realistic New York programs from financing routes that do not fit your project, timeline, or eligible costs.',
-      buttonText: 'Request an Eligibility & Expansion Review',
-      href: '/contact?service=new-york-funding-review',
+      title: 'Find and Stack New York Business Grants',
+      description: 'Find out which state-backed grants, loans, and tax credits your business qualifies for in under 60 seconds.',
+      buttonText: 'Start Free Eligibility Assessment',
+      href: '/portfolio?focus=new-york',
       supportingPoints: ['Project-to-program fit', 'Eligible-cost review', 'Priority application sequence'],
     },
+    faq: [
+      {
+        question: "What is Empire State Development (ESD)?",
+        answer: "Empire State Development is New York's chief economic development agency, administering state-backed business funding, loans, and tax credits."
+      },
+      {
+        question: "Who qualifies for New York business grants?",
+        answer: "Qualifications vary, but typically require a registered New York business entity, local physical presence, and alignment with target industries like tech, manufacturing, or agriculture."
+      },
+      {
+        question: "What is the Global NY STEP program?",
+        answer: "The State Trade Expansion Program (STEP) helps New York small businesses enter or expand in international markets with export grants of up to $10,000."
+      }
+    ]
   },
   '/usa/california': {
     route: '/usa/california',
-    seoTitle: 'California Business Grants & Incentives: 2026 Research Guide',
-    seoDescription: 'Research California small-business support, tax incentives, technical assistance, and innovation funding using official GO-Biz and CalOSBA sources.',
+    seoTitle: 'California Government Grants & Funding for Businesses (2026)',
+    seoDescription: 'Access active California state and federal grants, SBA loans, and tax credits. Use our free tool to check your business eligibility in 60 seconds.',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
     lastVerified: LAST_VERIFIED,
@@ -117,18 +132,32 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'California funding strategy',
-      title: 'Build a defensible California incentive shortlist',
-      description: 'We help you organize the most relevant state and federal routes around the project you actually plan to execute.',
-      buttonText: 'Request an Eligibility & Expansion Review',
-      href: '/contact?service=california-funding-review',
-      supportingPoints: ['Incentive-fit review', 'Official-source validation', 'Application sequencing'],
+      eyebrow: 'Check Your Eligibility in 60 Seconds',
+      title: 'Businesses similar to yours may qualify for funding',
+      description: 'Evaluate active California state and federal government grants, tax credits, and capital programs matching your business profile.',
+      buttonText: 'Start Free Assessment',
+      href: '/portfolio?focus=california',
+      supportingPoints: ['Grants & Tax Credits', 'Hiring & Wage Incentives', 'Capital Programs'],
     },
+    faq: [
+      {
+        question: "What is California Go-Biz?",
+        answer: "The Governor's Office of Business and Economic Development (GO-Biz) is California's leader for job growth, tax incentives, and business resources."
+      },
+      {
+        question: "How much funding can a California business get?",
+        answer: "Funding ranges from $2,000 for training grants under TechCred to $5,000,000+ for high-impact tax credits like the California Competes Tax Credit."
+      },
+      {
+        question: "Are California business grants non-repayable?",
+        answer: "Yes, state-backed grants are typically non-repayable, while state-backed loans must be repaid according to program terms."
+      }
+    ]
   },
   '/blog/quebec-small-business-grants-guide': {
     route: '/blog/quebec-small-business-grants-guide',
-    seoTitle: 'Quebec Small Business Funding: Grants, Loans & Tax Credits',
-    seoDescription: 'Compare Quebec business funding routes, including CED programs, provincial tax credits, and financing. Reviewed against official government sources.',
+    seoTitle: 'Quebec Small Business Grants Guide (2026 Intakes & News)',
+    seoDescription: 'Looking for small business grants in Quebec? Discover active provincial programs, eligibility criteria, and step-by-step application tips to secure funding.',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
     lastVerified: LAST_VERIFIED,
@@ -160,13 +189,27 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'Quebec funding strategy',
-      title: 'Build a funding stack around your next project',
-      description: 'We assess the project, eligible costs, and timing before ranking the most credible Quebec and federal routes.',
-      buttonText: 'Request a Quebec Funding Review',
-      href: '/contact?service=quebec-funding-review',
-      supportingPoints: ['Grant and financing fit', 'Tax-credit considerations', 'Repayable vs. non-repayable review'],
+      eyebrow: 'Check Your Eligibility in 60 Seconds',
+      title: 'Businesses similar to yours may qualify for funding',
+      description: 'Evaluate active Quebec and federal government grants, tax credits, and regional financing matching your business profile.',
+      buttonText: 'Start Free Assessment',
+      href: '/portfolio?focus=quebec',
+      supportingPoints: ['Grants & Tax Credits', 'Hiring & Wage Incentives', 'Export & Regional Funding'],
     },
+    faq: [
+      {
+        question: "What is the main government funding agency in Quebec?",
+        answer: "Canada Economic Development for Quebec Regions (CED) administers federal funding, while Investissement Québec manages provincial loans and incentives."
+      },
+      {
+        question: "Are Quebec business tax credits stackable?",
+        answer: "Yes, Quebec businesses can stack provincial tax measures (like scientific research credits) with federal programs like SR&ED."
+      },
+      {
+        question: "Do Quebec business grants require match funding?",
+        answer: "Most Quebec grants cover 50% to 75% of eligible project costs, meaning the business must fund the remaining portion."
+      }
+    ]
   },
   '/blog/nih-sbir-biotech-grants': {
     route: '/blog/nih-sbir-biotech-grants',
@@ -203,13 +246,31 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'NIH technical funding review',
-      title: 'Validate institute fit before building the application',
-      description: 'A technical funding review helps identify the right NIH route, evidence gaps, and readiness risks before your team commits to a full proposal.',
-      buttonText: 'Request a Technical Funding Review',
-      href: '/contact?service=nih-technical-funding-review',
-      supportingPoints: ['Institute and notice fit', 'R&D readiness review', 'Commercialization evidence gaps'],
+      eyebrow: 'Check Your Eligibility in 60 Seconds',
+      title: 'Businesses similar to yours may qualify for funding',
+      description: 'Evaluate active NIH SBIR/STTR notices, matching institutes, and R&D eligibility requirements matching your business profile.',
+      buttonText: 'Start Free Assessment',
+      href: '/portfolio?focus=nih-sbir',
+      supportingPoints: ['Grants & STTR Partnerships', 'R&D Tax Credits', 'Hiring Incentives'],
     },
+    faq: [
+      {
+        question: "What is NIH SBIR?",
+        answer: "The NIH Small Business Innovation Research (SBIR) program is a highly competitive, federal grant program that encourages domestic small businesses to engage in health-related Research and Development (R&D) with the potential for commercialization."
+      },
+      {
+        question: "Who qualifies for NIH SBIR?",
+        answer: "To qualify, the applicant must be a for-profit U.S. small business (fewer than 500 employees), with work performed entirely in the United States, and the primary investigator must be primarily employed by the small business at the time of award."
+      },
+      {
+        question: "How much funding can NIH SBIR provide?",
+        answer: "Typically, NIH SBIR Phase I awards range up to $300,000 for feasibility studies (6-12 months), while Phase II awards for full R&D and prototyping can reach up to $2,000,000+ (2 years), depending on the specific NIH institute and topic waiver eligibility."
+      },
+      {
+        question: "What is the NIH SBIR deadline?",
+        answer: "NIH SBIR/STTR applications are accepted under standard parent announcements three times per year: January 5, April 5, and September 5. Targeted notices may have separate specific deadlines."
+      }
+    ]
   },
   '/blog/nsf-sbir-grants-technology-startups': {
     route: '/blog/nsf-sbir-grants-technology-startups',
@@ -246,13 +307,27 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'NSF project-pitch review',
-      title: 'Pressure-test the technical case before submitting',
-      description: 'We assess whether the project story clearly demonstrates technical risk, differentiation, market pull, and a credible commercialization path.',
-      buttonText: 'Request an NSF Readiness Review',
-      href: '/contact?service=nsf-readiness-review',
-      supportingPoints: ['Project Pitch fit', 'Technical-risk narrative', 'Market-pull evidence'],
+      eyebrow: 'Check Your Eligibility in 60 Seconds',
+      title: 'Businesses similar to yours may qualify for funding',
+      description: 'Evaluate NSF SBIR/STTR project-pitch readiness and R&D eligibility requirements matching your business profile.',
+      buttonText: 'Start Free Assessment',
+      href: '/portfolio?focus=nsf-sbir',
+      supportingPoints: ['Grants & Project Pitch Fit', 'Hiring Incentives', 'Export Funding'],
     },
+    faq: [
+      {
+        question: "What is NSF SBIR?",
+        answer: "The National Science Foundation (NSF) Small Business Innovation Research program, also known as America's Seed Fund, provides non-dilutive funding to startups and small businesses to develop high-risk, high-impact scientific and technological innovations."
+      },
+      {
+        question: "Can startups apply?",
+        answer: "Yes, the program is specifically designed for startups. However, all applicants must first submit a 3-page Project Pitch. Only if the NSF invites your pitch can you submit a full Phase I proposal."
+      },
+      {
+        question: "What are the funding limits?",
+        answer: "NSF SBIR Phase I awards provide up to $275,000 for 6-12 months of early-stage R&D. Invited Phase I awardees are eligible to apply for Phase II funding of up to $1,000,000 for prototype development, with potential matching grants up to an additional $500,000."
+      }
+    ]
   },
   '/usa/technology-startup-grants': {
     route: '/usa/technology-startup-grants',
@@ -289,13 +364,27 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'Federal R&D funding strategy',
-      title: 'Choose the right agency before writing the proposal',
-      description: 'A technical funding review can narrow the field to the agencies and solicitations that genuinely match your technology and commercialization plan.',
-      buttonText: 'Request a Technical Funding Review',
-      href: '/contact?service=technology-funding-review',
-      supportingPoints: ['Agency mission fit', 'Solicitation shortlist', 'Readiness and evidence gaps'],
+      eyebrow: 'Check Your Eligibility in 60 Seconds',
+      title: 'Businesses similar to yours may qualify for funding',
+      description: 'Evaluate active federal SBIR/STTR agency topics and tech startup incentives matching your profile.',
+      buttonText: 'Start Free Assessment',
+      href: '/portfolio?focus=tech-startup',
+      supportingPoints: ['Grants & Tax Credits', 'Hiring Incentives', 'Export Funding'],
     },
+    faq: [
+      {
+        question: "Which federal agencies participate in SBIR?",
+        answer: "There are 11 participating federal agencies, including the Department of Defense (DoD), Department of Health and Human Services (NIH), National Science Foundation (NSF), Department of Energy (DOE), and NASA."
+      },
+      {
+        question: "What is the difference between SBIR and STTR?",
+        answer: "SBIR requires the primary investigator to be primarily employed by the small business and permits outsourcing up to 33% in Phase I. STTR requires the small business to formally partner with a non-profit research institution, which must perform at least 30% of the work, and employment rules are more flexible."
+      },
+      {
+        question: "Do startups need to be incorporated to apply?",
+        answer: "While you don't need to be incorporated to submit a Project Pitch (for NSF), you must be a registered, for-profit U.S. small business entity at the time of the full proposal submission and award."
+      }
+    ]
   },
   '/usa/ohio': {
     route: '/usa/ohio',
