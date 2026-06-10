@@ -10,7 +10,7 @@ export const dynamic = "force-dynamic"
 export async function GET(request: NextRequest) {
   const authHeader = request.headers.get("authorization")
   if (process.env.CRON_SECRET && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    // For manual/local development testing, we allow runs
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
   try {

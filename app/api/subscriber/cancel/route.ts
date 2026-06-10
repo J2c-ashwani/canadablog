@@ -3,7 +3,7 @@ import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 
 export const runtime = 'nodejs';
 
-export const CANCELLATION_REASONS = [
+const CANCELLATION_REASONS = [
   "Too expensive",
   "Didn't find enough opportunities",
   "Only needed one report",
@@ -12,7 +12,7 @@ export const CANCELLATION_REASONS = [
   "Other"
 ] as const;
 
-export type CancellationReasonType = typeof CANCELLATION_REASONS[number];
+type CancellationReasonType = typeof CANCELLATION_REASONS[number];
 
 export async function POST(request: NextRequest) {
   try {

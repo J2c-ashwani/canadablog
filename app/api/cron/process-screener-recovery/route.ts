@@ -6,11 +6,9 @@ export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
-  // Simple bearer token auth or admin check can be implemented, but for standard Vercel crons we check header
   const authHeader = request.headers.get("authorization")
   if (process.env.CRON_SECRET && authHeader !== `Bearer ${process.env.CRON_SECRET}`) {
-    // For testing/development we allow triggering manually without secret if requested
-    // return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 })
   }
 
   try {
