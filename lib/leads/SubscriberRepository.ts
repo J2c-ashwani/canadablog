@@ -87,7 +87,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       companySize: (lead.companySize || "1-9") as any,
       fundingInterests: interestsRaw as any[],
       isSubscribed: lead.isSubscribed !== false,
-      unsubscribeToken: lead.unsubscribeToken || this.generateToken(),
+      unsubscribeToken: lead.unsubscribeToken || (lead.email ? crypto.createHash("sha256").update(lead.email.toLowerCase().trim() + "fsi-salt-2026").digest("hex").slice(0, 32) : this.generateToken()),
       engagementScore: lead.engagementScore !== undefined ? Number(lead.engagementScore) : 100,
       lastOpenedAt: lead.lastOpenedAt || undefined,
       lastClickedAt: lead.lastClickedAt || undefined,
@@ -306,7 +306,14 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   async unsubscribe(token: string): Promise<{ success: boolean; error?: any }> {
     try {
       const allLeads = await getLeadsFromSheet(1000)
-      const found = allLeads.find((l: any) => l.unsubscribeToken === token)
+      const found = allLeads.find((l: any) => {
+        if (l.unsubscribeToken === token) return true
+        if (!l.unsubscribeToken && l.email) {
+          const deterministic = crypto.createHash("sha256").update(l.email.toLowerCase().trim() + "fsi-salt-2026").digest("hex").slice(0, 32)
+          return deterministic === token
+        }
+        return false
+      })
       if (!found) {
         console.warn(`Unsubscribe token not found: ${token}`)
         return { success: false, error: "Token not found" }
@@ -324,9 +331,9 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   async getAllSubscribers(): Promise<SubscriberProfile[]> {
     try {
       const allLeads = await getLeadsFromSheet(1000)
-      // Only map leads that have unsubscribeToken or are labeled as alert subscribers
+      // Return all leads that have a valid email and are active subscribers (isSubscribed !== false)
       return allLeads
-        .filter((l) => l.email && (l.unsubscribeToken || l.source?.includes("Alerts")))
+        .filter((l) => l.email && l.isSubscribed !== false)
         .map((l) => this.mapLeadToSubscriber(l))
     } catch (err) {
       console.error("Error in repository getAllSubscribers:", err)
