@@ -12,19 +12,21 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
-import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
+import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch'
+
+const researchProfile = getPriorityResearchProfile('/guides/apply-strategic-innovation-fund')!;
 
 export const metadata: Metadata = {
-  title: "Strategic Innovation Fund Application Guide 2026 | Step-by-Step SIF Funding Process",
-  description: "Complete step-by-step guide to applying for Strategic Innovation Fund (SIF) funding. Get SIF application templates, innovation project strategies, and proven application frameworks for $10M+ projects.",
+  title: researchProfile.seoTitle,
+  description: researchProfile.seoDescription,
   keywords: "strategic innovation fund application guide, how to apply SIF funding, innovation project grant application Canada, SIF grant application process, transformative project funding, ISED funding, innovation supercluster, strategic innovation fund application checklist 2026, strategic innovation fund requirements and documents needed, strategic innovation fund approval timeline, strategic innovation fund application tips, best grants for small business Canada 2026, am I eligible for strategic innovation fund",
   alternates: {
     canonical: "https://www.fsidigital.ca/guides/apply-strategic-innovation-fund",
   },
   openGraph: {
-    title: "Strategic Innovation Fund Application Guide 2026 | SIF Funding Process",
-    description: "Step-by-step guide with templates and strategies for successful Strategic Innovation Fund applications for Canadian innovation projects.",
+    title: researchProfile.seoTitle,
+    description: researchProfile.seoDescription,
     url: "https://www.fsidigital.ca/guides/apply-strategic-innovation-fund",
     images: ["/og-image.png"],
   },

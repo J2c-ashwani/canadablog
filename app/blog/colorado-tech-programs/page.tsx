@@ -18,15 +18,17 @@ import { ExpertTipBox } from '@/components/blog/ExpertTipBox'
 import EligibleCheck from '@/components/blog/EligibleCheck'
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AdSlot from '@/components/blog/AdSlot';
-import AutoLink from '@/components/seo/AutoLink';
+import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch'
+
+const researchProfile = getPriorityResearchProfile('/blog/colorado-tech-programs')!;
 
 export const metadata: Metadata = {
-  title: "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
-  description: "Colorado's Advanced Industries program gives startups up to $250K in early-stage capital. Plus the 35% Investment Tax Credit and SBIR state matching.",
+  title: researchProfile.seoTitle,
+  description: researchProfile.seoDescription,
   keywords: "Colorado tech startup grants 2026, Advanced Industries Accelerator grants Colorado, Early-Stage Capital grants $250K, Colorado SBIR matching, Denver tech corridor funding, Boulder startup grants, Colorado Springs innovation programs, Clean Energy Fund Colorado, Investment Tax Credit 35%, Colorado advanced industries seven sectors, how to apply for SBIR grants 2026, SBIR eligibility requirements, how to apply for colorado tech programs, colorado tech programs eligibility 2026, step by step colorado tech programs application guide, best colorado tech programs for small business USA, am I eligible for colorado tech programs, colorado tech programs deadline 2026",
   openGraph: {
-    title: "Colorado Tech Grants 2026 | $250K Early-Stage, 35% Tax Credit, SBIR Match",
-    description: "Complete guide to Colorado tech startup grants, Advanced Industries programs, and innovation funding.",
+    title: researchProfile.seoTitle,
+    description: researchProfile.seoDescription,
     url: "https://www.fsidigital.ca/blog/colorado-tech-programs",
     images: ["/og-image.png"],
   },

@@ -449,6 +449,108 @@ const content: Record<string, EditorialSection[]> = {
       bullets: ['Compare microloan limits with total capital requirements', 'Evaluate SBA 7(a) loans for larger real estate or debt needs', 'Factor in the value of the intermediary\'s mentoring support'],
     },
   ],
+  '/blog/usda-sbir-agtech-grants': [
+    {
+      heading: 'USDA AgTech funding matches community outcomes',
+      summary: 'The USDA SBIR and STTR programs target agricultural innovation, precision farming, food safety, aquaculture, and forestry. Unlike other federal R&D programs, the USDA places heavy emphasis on projects that yield positive outcomes for agricultural producers and rural communities. AgTech founders must clearly link their technical objectives to these outcomes.',
+      bullets: ['Link technical innovation to farm-level benefits', 'Focus on precision farming, food safety, or forestry', 'Review annual NIFA solicitation guidelines'],
+    },
+    {
+      heading: 'Understanding the annual solicitation cycle',
+      summary: 'The USDA releases its SBIR/STTR solicitation once a year, typically in mid-summer, with a deadline in early autumn (September/October). Startups must prepare their SAM.gov registration and Grants.gov access well in advance. Writing a competitive 15-page Phase I research proposal requires a minimum of 40 to 60 hours of focused effort.',
+      bullets: ['Complete SAM.gov registration 30 days early', 'Align proposal with NIFA scientific topics', 'Structure the 15-page work plan conservatively'],
+    },
+    {
+      heading: 'Phase I feasibility vs. Phase II scale-up',
+      summary: 'Phase I provides up to $125,000 to prove the scientific or technical feasibility of the innovation over 8 months. Winning a Phase I contract is the only way to qualify for Phase II funding (up to $450,000 over 24 months), which supports prototype construction and early testing. The program is fully non-dilutive, allowing founders to retain complete intellectual property rights.',
+      bullets: ['Phase I: up to $125,000 for feasibility', 'Phase II: up to $450,000 for prototype', '100% non-dilutive capital with IP protection'],
+    },
+  ],
+  '/blog/doe-sbir-clean-energy-grants': [
+    {
+      heading: 'DOE clean tech funding is topic-driven',
+      summary: 'The Department of Energy (DOE) SBIR/STTR program funds advanced research in solar, wind, geothermal, bioenergy, energy storage, and grid modernization. DOE does not accept unsolicited energy topics. You must match your technology to a specific subtopic released in the annual solicitation and submit a Letter of Intent (LOI) to qualify for review.',
+      bullets: ['Strictly match active DOE subtopics', 'Submit the mandatory Letter of Intent first', 'Access up to $1.85M across Phase I and II'],
+    },
+    {
+      heading: 'Letter of Intent and proposal deadlines',
+      summary: 'The DOE solicitation operates on two distinct annual releases. A Letter of Intent (LOI) is a mandatory precursor that must be submitted via the PAMS system. If your LOI is accepted, you have approximately 6 weeks to submit the full proposal via Grants.gov. Rushing the technical narrative or budget calculations will result in immediate disqualification.',
+      bullets: ['Submit Letter of Intent in PAMS portal', 'Complete Grants.gov submission before deadline', 'Confirm technical milestones with DOE program managers'],
+    },
+    {
+      heading: 'R&D funding limits and commercial transition',
+      summary: 'DOE Phase I awards provide up to $200,000 for 6-12 months of feasibility testing. Phase II awards provide up to $1,650,000 for 2 years of prototyping. The DOE also provides up to $50,000 in TABA funding to hire commercialization advisors or patent attorneys, extending the technical runway.',
+      bullets: ['Phase I: up to $200K for feasibility', 'Phase II: up to $1.65M for prototyping', 'Utilize up to $50,000 in TABA commercial support'],
+    },
+  ],
+  '/blog/healthcare-grants-2026': [
+    {
+      heading: 'Canadian health tech funding requires clear regulatory mapping',
+      summary: 'Healthcare, biotech, and medtech innovators in Canada must navigate a complex stack of federal, provincial, and tax incentives. Because health products require regulatory approval, funding bodies like CIHR and NRC IRAP look for a clear clinical validation path. Projects must prove how they will meet Health Canada requirements alongside their technical milestones.',
+      bullets: ['Map clinical and regulatory pathways early', 'Leverage IRAP for core technical salary subsidies', 'Coordinate provincial and federal health grants'],
+    },
+    {
+      heading: 'Scientific Research & Experimental Development (SR&ED) stack',
+      summary: 'The SR&ED tax credit is the single largest source of R&D capital for Canadian biotech and health startups, recovering up to 54% of eligible internal technical salaries and 32% of contractor costs. Health companies should design a funding stack that combines IRAP salary subsidies (up to $500K) with SR&ED tax credits, being careful to deduct IRAP contributions to avoid double-dipping.',
+      bullets: ['Recover up to 54% of scientific payroll via SR&ED', 'Stack IRAP reimbursements and tax credits cleanly', 'Document experimental aims and technical records daily'],
+    },
+    {
+      heading: 'Capital requirements for healthcare commercialization',
+      summary: 'Developing medical devices or biotech requires significant capital and long timelines. Health startups must demonstrate sufficient matching funds to carry the project cash flow between monthly grant reimbursements. Rushing to market without validated clinical evidence or matching capital will stall the regulatory approval process.',
+      bullets: ['Model project cash flow for reimbursement cycles', 'Secure clinical design partners and letters of support', 'Keep a 20% to 40% matching fund reserve'],
+    },
+  ],
+  '/blog/quebec-business-grants-2026': [
+    {
+      heading: 'Quebec economic incentives target productivity and scaling',
+      summary: 'Quebec business grants are heavily oriented around regional economic impact, technological adoption, and export development. The primary provincial program is ESSOR, administered by Investissement Québec, which supports manufacturing, digital transformation, and green tech scaling. The state acts with private-sector speed, requiring sound business plans.',
+      bullets: ['Leverage the ESSOR program for growth capital', 'Target Investissement Québec loans and tax credits', 'Verify regional economic impact and job targets'],
+    },
+    {
+      heading: 'ESSOR program streams and matching rules',
+      summary: 'The ESSOR program offers financial assistance under multiple streams: Stream 1 for feasibility studies, Stream 2 for digital transformation, and Stream 3 for business expansion. Funding typically covers up to 50% of eligible expenses and is structured as a mix of interest-free loans and non-repayable grants, requiring matching capital.',
+      bullets: ['ESSOR covers up to 50% of eligible project costs', 'Combines repayable and non-repayable structures', 'Requires detailed quote verification and milestones'],
+    },
+    {
+      heading: 'Provincial and federal stacking guidelines',
+      summary: 'Quebec businesses can stack provincial ESSOR incentives with federal regional development programs (via CED) and tax credits (like SR&ED and e-business tax measures). A disciplined funding plan ensures that total government assistance does not exceed 75% of eligible project costs, keeping the business in compliance.',
+      bullets: ['Check provincial stacking limits (max 75%)', 'Stack CED regional financing with ESSOR grants', 'Verify e-business and R&D tax credit eligibility'],
+    },
+  ],
+  '/blog/atlantic-small-business-grants-guide': [
+    {
+      heading: 'Atlantic Canada relies on ACOA regional development',
+      summary: 'Businesses in Nova Scotia, New Brunswick, Prince Edward Island, and Newfoundland and Labrador should look to the Atlantic Canada Opportunities Agency (ACOA) as their primary economic partner. ACOA provides interest-free repayable and non-repayable contributions for business expansion, productivity improvements, tourism, and export growth.',
+      bullets: ['Utilize ACOA interest-free repayable contributions', 'Target regional expansion and export markets', 'Confirm eligibility requirements before signing leases'],
+    },
+    {
+      heading: 'Provincial wage subsidies and workforce incentives',
+      summary: 'Alongside federal ACOA support, each Atlantic province offers hiring grants and wage subsidies (like Nova Scotia Business Inc. or Opportunities NB payroll rebates). These programs can cover 20-50% of incoming employee salaries, helping startups build local capacity while keeping operating costs manageable.',
+      bullets: ['Leverage provincial hiring subsidies for local talent', 'Stack payroll rebates with regional development grants', 'Verify employee residency and contract rules'],
+    },
+    {
+      heading: 'Financing commercialization in Atlantic regions',
+      summary: 'Startups must demonstrate that their project will improve the economic baseline of Atlantic Canada. A credible business case focuses on job creation, local sourcing, and export revenue generation. The business must have sufficient matching capital to fund its share of the expansion and cover upfront project costs.',
+      bullets: ['Focus proposals on local economic development', 'Maintain matching reserves for regional grants', 'Confirm intake status at Opportunities NB or NSBI'],
+    },
+  ],
+  '/usa/kentucky': [
+    {
+      heading: 'Kentucky supports innovation through matching grants',
+      summary: 'Kentucky cabinet for economic development administers one of the country\'s most active SBIR/STTR state matching programs. The state offers up to $100,000 in matching funds for federal Phase I winners and up to $150,000 for Phase II winners. This state match is completely non-dilutive, helping tech startups extend their runway without giving up equity.',
+      bullets: ['Secure Kentucky state matches for federal SBIR awards', 'Apply for up to $100K Phase I and $150K Phase II match', 'Establish a Kentucky corporate presence early'],
+    },
+    {
+      heading: 'Kentucky Small Business Tax Credit (KSBTC)',
+      summary: 'Kentucky companies that create at least one new full-time job and invest a minimum of $5,000 in qualifying business equipment can claim the Kentucky Small Business Tax Credit. The credit ranges from $3,500 to $25,000 per year, helping growing firms offset state income tax liability.',
+      bullets: ['Claim KSBTC for job creation and equipment spend', 'Credit ranges from $3,500 to $25,000 annually', 'Register business in Kentucky and verify payroll'],
+    },
+    {
+      heading: 'Workforce development and local upskilling support',
+      summary: 'Kentucky offers state-backed workforce training incentives to reimburse employers for upskilling current or new employees. Combined with low-interest SBA loans and local enterprise zone incentives, Kentucky provides a robust, low-risk ecosystem for technology, manufacturing, and service firms.',
+      bullets: ['Access training grant reimbursements for upskilling', 'Evaluate local enterprise zone tax abatement', 'Prepare clean financial records for state audit'],
+    },
+  ],
 };
 
 export function getPriorityResearchContent(route: string) {

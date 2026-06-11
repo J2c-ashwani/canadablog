@@ -19,15 +19,17 @@ import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import AdSlot from '@/components/blog/AdSlot';
-import AutoLink from '@/components/seo/AutoLink';
+import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch'
+
+const researchProfile = getPriorityResearchProfile('/blog/women-entrepreneurship-strategy-canada')!;
 
 export const metadata: Metadata = {
-  title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
-  description: "Complete guide to Canada's Women Entrepreneurship Strategy. Access $6B+ in women business grants, female entrepreneur funding, and women-owned business loans across all Canadian provinces.",
+  title: researchProfile.seoTitle,
+  description: researchProfile.seoDescription,
   keywords: "women entrepreneurship strategy Canada, female business grants Canada, women business loans Canada, women entrepreneur funding, Canadian women-owned business support, female startup grants, women small business funding, WES program Canada, women entrepreneurship loan fund, grants for women entrepreneurs Canada, how to apply for WES grants 2026, WES eligibility requirements, how to apply for women entrepreneurship strategy canada, women entrepreneurship strategy canada eligibility 2026, step by step women entrepreneurship strategy canada application guide, best women entrepreneurship strategy canada for small business Canada, best grants for women entrepreneurs Canada 2026, women owned business funding eligibility, am I eligible for women entrepreneurship strategy canada, women entrepreneurship strategy canada deadline 2026",
   openGraph: {
-    title: "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants",
-    description: "Access $6B+ in Canadian government funding for women entrepreneurs. Complete guide to WES grants, loans, and support programs for female-owned businesses.",
+    title: researchProfile.seoTitle,
+    description: researchProfile.seoDescription,
     url: "https://www.fsidigital.ca/blog/women-entrepreneurship-strategy-canada",
     images: ["/og-image.png"],
   },
