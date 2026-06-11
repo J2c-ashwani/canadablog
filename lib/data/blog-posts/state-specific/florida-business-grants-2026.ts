@@ -26,7 +26,12 @@ const post: BlogPost = {
     ],
     content: floridaGrants2025,
     seo: {
-      keywords: ["Florida Grants", "Enterprise Florida", "Export Grants", "Small Business", "Tourism Funding"]
+      keywords: [],
+      metaTitle: "Florida Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Florida Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "To apply for Florida Business Grants 2026: $850M Growth Funding, start by reviewing the eligibility criteria and preparing a project proposal. Florida's business-friendly environment includes $850 million in targeted grants for export growth, high-tech industry, and tourism development. Learn how to access Enterprise Florida funds. Funding available: up to $850M (with related programs offering $850).",
     metrics: [
       { label: 'Growth Fund', value: '$850M', description: 'State Incentives', color: 'text-orange-600', iconName: 'TrendingUp' },

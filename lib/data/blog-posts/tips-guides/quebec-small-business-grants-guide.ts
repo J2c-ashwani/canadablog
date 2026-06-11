@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Quebec", "Small", "Business", "Grants", "2026"],
+      keywords: [],
+      metaTitle: "Quebec Small Business Grants 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Quebec Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Complete guide to Quebec small business grants. Access Investissement Québec SME Fund, Quebec Startup Fund, R&D Tax Credits up to 37.5%, and francophone business support. Funding available: up to $1.8B+.",
     metrics: [
       { label: 'Total', value: '$1.8B', description: 'SME Funding', color: 'text-green-600', iconName: 'DollarSign' },

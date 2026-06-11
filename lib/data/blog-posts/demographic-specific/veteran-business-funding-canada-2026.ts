@@ -198,7 +198,15 @@ const veteranBusinessFundingCanada2026Post: BlogPost = {
                       "timeline": "90 Days"
                   }
               ]
-          }
+          },
+    seo: {
+        keywords: [],
+        metaTitle: "Veteran Business Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Veteran Business Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+    }
 };
 
 export default veteranBusinessFundingCanada2026Post;

@@ -39,7 +39,12 @@ const post: BlogPost = {
       <p>With CDAP evolving, look for programs that support <em>advanced</em> technology like AI and automation, rather than just website building.</p>
     `,
     seo: {
-      keywords: ["2026 Grants", "Canada Business Funding", "Forecast"]
+      keywords: [],
+      metaTitle: "Canadian Small Business Grant Forecast 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Canadian Small Business Grant Forecast in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Canadian businesses looking to grow internationally in 2026 have strong options. CanExport provides up to $50,000 (75% cost-share) for marketing in new export markets, while EDC's Trade Finance programs support larger export deals. The key qualifier is demonstrating a clear target market and revenue potential outside Canada.",
     metrics: [
       { label: 'Trend', value: 'Green', description: 'Sustainability', color: 'text-green-600', iconName: 'TrendingUp' },

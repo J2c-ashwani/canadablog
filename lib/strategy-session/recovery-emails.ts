@@ -324,7 +324,7 @@ ${replyToEmail}`,
       recapHtml: recpHtml,
       body: `
         <p style="margin:0 0 16px 0;">This is a confirmation that your selected Google Meet time slot for your Funding Eligibility Audit has been provisionally reserved.</p>
-        <p style="margin:0 0 20px 0;">To activate your reservation and allow our analysts to allocate time to compile your custom pre-call research report, please complete your research deposit within the next 24 hours.</p>
+        <p style="margin:0 0 20px 0;">To activate your reservation and allow our analysts to allocate time to compile your custom pre-call research report, please complete your research deposit within the next 60 minutes.</p>
 
         <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
           <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">On our call, your analyst will deliver a Funding Roadmap showing:</p>
@@ -362,7 +362,7 @@ ${replyToEmail}`,
       `,
     }),
     text: `Hi ${firstName},
-Your audit time slot is temporarily reserved. Complete your research deposit within 24 hours to secure your session.
+Your audit time slot is temporarily reserved. Complete your research deposit within 60 minutes to secure your session.
  
 The audit includes 2 hours of pre-call desk research, a personalized Business Funding Roadmap, your top eligible program matches, and a private Google Meet call to plan next steps.
  

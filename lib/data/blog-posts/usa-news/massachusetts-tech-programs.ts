@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Massachusetts", "Tech", "Startup", "Grants", "2026-2027"],
+      keywords: [],
+      metaTitle: "Massachusetts Tech Startup Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Massachusetts Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "To apply for Massachusetts Tech Startup Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to Massachusetts technology startup grants and incentives. SBIR START tiered grants up to $500K from MassVentures, MassCEC InnovateMass clean energy grants $350K,. Funding available: up to $500K (with related programs offering $350K).",
     metrics: [
       { label: 'START', value: '$500K', description: 'MassVentures', color: 'text-green-600', iconName: 'DollarSign' },

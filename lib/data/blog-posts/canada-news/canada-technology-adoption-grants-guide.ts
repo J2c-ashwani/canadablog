@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Technology", "Adoption", "Grants", "2026"],
+      keywords: [],
+      metaTitle: "Canada Technology Adoption Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Technology Adoption Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Complete guide to Canadian technology adoption grants. Access all 22+ digital transformation programs including CDAP, provincial tech grants, AI adoption funding, and cybersecurity support. Funding available: up to $950M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

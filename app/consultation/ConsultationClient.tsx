@@ -163,24 +163,22 @@ export default function ConsultationClient() {
     if (!params.scheduled || params.bookedAt <= 0) return;
 
     const interval = setInterval(() => {
-      const remaining = (params.bookedAt + 24 * 60 * 60 * 1000) - Date.now();
+      const remaining = (params.bookedAt + 60 * 60 * 1000) - Date.now();
       setTimeLeft(remaining > 0 ? remaining : 0);
     }, 1000);
 
-    const initialRemaining = (params.bookedAt + 24 * 60 * 60 * 1000) - Date.now();
+    const initialRemaining = (params.bookedAt + 60 * 60 * 1000) - Date.now();
     setTimeLeft(initialRemaining > 0 ? initialRemaining : 0);
 
     return () => clearInterval(interval);
   }, [params.scheduled, params.bookedAt]);
 
   const formatCountdown = (ms: number) => {
-    if (ms <= 0) return '00:00:00';
+    if (ms <= 0) return '00:00';
     const totalSecs = Math.floor(ms / 1000);
-    const hours = Math.floor(totalSecs / 3600);
-    const minutes = Math.floor((totalSecs % 3600) / 60);
+    const minutes = Math.floor(totalSecs / 60);
     const seconds = totalSecs % 60;
     return [
-      hours.toString().padStart(2, '0'),
       minutes.toString().padStart(2, '0'),
       seconds.toString().padStart(2, '0')
     ].join(':');
@@ -188,7 +186,7 @@ export default function ConsultationClient() {
 
   const getExpirationTimeFormatted = () => {
     if (params.bookedAt <= 0) return '';
-    const date = new Date(params.bookedAt + 24 * 60 * 60 * 1000);
+    const date = new Date(params.bookedAt + 60 * 60 * 1000);
     return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }) + ' ' + date.toLocaleDateString([], { month: 'short', day: 'numeric' });
   };
 
@@ -779,7 +777,7 @@ export default function ConsultationClient() {
                     </div>
                     <h3 className="text-lg font-black text-slate-950 mb-2">Slot Reservation Expired</h3>
                     <p className="text-xs text-slate-500 leading-relaxed mb-6">
-                      To ensure fair access for all applicants, audit slots are temporarily reserved for a maximum of 24 hours. Your selected slot has been released back into the public calendar.
+                      To ensure fair access for all applicants, audit slots are temporarily reserved for a maximum of 60 minutes. Your selected slot has been released back into the public calendar.
                     </p>
                     <a
                       href={`/booking?email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}`}

@@ -159,7 +159,12 @@ const post: BlogPost = {
           </script>
             `,
     seo: {
-      keywords: ["Manitoba Business Grants", "Innovation Growth Program", "North Forge", "FPEGF", "Winnipeg Business"]
+      keywords: [],
+      metaTitle: "Manitoba Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Manitoba Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "To apply for Manitoba Business Grants : IGP 2026, start by reviewing the eligibility criteria and preparing a project proposal. Manitoba's Innovation Growth Program gives up to $100K for commercialization. Plus FPEGF for Indigenous businesses and North Forge's startup incubator. Full program list inside. Funding available: up to $4 (with related programs offering $100K).",
     metrics: [
       { label: 'Total', value: '$800M', description: 'Provincial Aid', color: 'text-purple-600', iconName: 'DollarSign' },

@@ -26,7 +26,12 @@ const post: BlogPost = {
 ${bidenPost}
     `,
     seo: {
-      keywords: ["Biden small business grants", "federal grants 2026", "minority business funding", "SBA grants 2026", "government small business loans"]
+      keywords: [],
+      metaTitle: "Biden's $2.5B Small Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Biden's $2.5B Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "To apply for Biden's $2.5B Small Business Grants: 2026 Guide, start by reviewing the eligibility criteria and preparing a project proposal. 🇺🇸 Everything you need to know about the new $2.5 billion federal grant initiative for minority, women, and veteran entrepreneurs. Funding available: up to $2.5B (with related programs offering $2.5).",
     metrics: [
       { label: 'Total', value: '$2.5B', description: 'Program Size', color: 'text-green-600', iconName: 'DollarSign' },

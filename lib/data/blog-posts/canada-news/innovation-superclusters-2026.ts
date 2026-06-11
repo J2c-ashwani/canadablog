@@ -44,7 +44,12 @@ ${superclustersPost}
       </div>
 `,
     seo: {
-      keywords: ["Global Innovation Clusters", "Canada Superclusters", "Digital Cluster", "Protein Industries Canada", "NGen manufacturing grants"]
+      keywords: [],
+      metaTitle: "Global Innovation Clusters 2026: Complete Guide — Apply No",
+        metaDescription: "Learn how to qualify and apply for Global Innovation Clusters in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — 🇨🇦 Canada's Superclusters (now Global Innovation Clusters) are co-investing millions in collaborative tech projects. Digital, Protein, Ocean, AI, and Manufacturing. Funding available: up to $100.",
     metrics: [
       { label: 'Project', value: '$2M+', description: 'Min Size', color: 'text-cyan-600', iconName: 'DollarSign' },

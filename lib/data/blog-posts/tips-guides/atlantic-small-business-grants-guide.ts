@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Atlantic", "Canada", "Small", "Business", "Grants"],
+      keywords: [],
+      metaTitle: "Atlantic Canada Small Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Atlantic Canada Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Complete guide to Atlantic Canada business grants. Access ACOA funding, Nova Scotia Small Business Fund, New Brunswick Innovation, PEI Development Fund, and Newfoundland Business Growth programs. Funding available: up to $850M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

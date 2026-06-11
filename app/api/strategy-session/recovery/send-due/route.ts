@@ -72,7 +72,7 @@ async function cancelCalendlyEvent(eventUri: string): Promise<{ success: boolean
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        reason: 'Research deposit payment not completed within the 24-hour reservation window.'
+        reason: 'Research deposit payment not completed within the 60-minute reservation window.'
       })
     });
 
@@ -128,8 +128,8 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
 
   const elapsed = now - createdAt;
 
-  // 1. Cancellation - 24 hours
-  if (elapsed >= 24 * 60 * 60 * 1000) {
+  // 1. Cancellation - 60 minutes
+  if (elapsed >= 60 * 60 * 1000) {
     const isCancelled = record.reason.includes('calendly_cancelled');
     if (!isCancelled && record.calendlyEventUri) {
       return { action: 'cancel' };
@@ -230,8 +230,8 @@ async function sendDueRecoveryEmails(request: NextRequest) {
       const cancelResponse = await cancelCalendlyEvent(eventUri);
       if (cancelResponse.success) {
         const updatedReason = record.reason
-          ? `${record.reason}, calendly_cancelled_24h`
-          : 'calendly_cancelled_24h';
+          ? `${record.reason}, calendly_cancelled_60m`
+          : 'calendly_cancelled_60m';
 
         await upsertStrategyRecoveryEvent({
           recoveryId: record.recoveryId,

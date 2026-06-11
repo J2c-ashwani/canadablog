@@ -23,7 +23,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["NSF", "SBIR", "Grants", "2026-2027", "|"],
+      keywords: [],
+      metaTitle: "NSF SBIR Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for NSF SBIR Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application. Funding available: up to $2M (with related programs offering $275K).",
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },

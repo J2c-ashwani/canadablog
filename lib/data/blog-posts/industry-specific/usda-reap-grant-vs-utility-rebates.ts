@@ -24,7 +24,10 @@ export const post: BlogPost = {
       "reap vs rebates",
       "rural energy funding",
       "commercial solar grants"
-    ]
+    ],
+    "intent": "grant",
+    "seoVersion": 1,
+    "seoUpdatedAt": "2026-06-11"
   },
   "metrics": [
     {

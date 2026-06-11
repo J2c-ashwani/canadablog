@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Strategy", "Canada", "2026"]
+      keywords: [],
+      metaTitle: "Women Entrepreneurship Strategy Canada 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Women Entrepreneurship Strategy Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     },
     metrics: [
       { label: 'Total', value: '$6B', description: 'Federal Fund', color: 'text-green-600', iconName: 'DollarSign' },

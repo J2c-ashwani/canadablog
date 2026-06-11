@@ -412,7 +412,6 @@ export function AIGrantFinderForm() {
               className="mt-1 h-4 w-4 rounded border-gray-300"
               checked={consentToPartnerContact}
               onChange={(event) => setConsentToPartnerContact(event.target.checked)}
-              required
             />
             <span>
               {LEAD_CONSENT_TEXT} You can unsubscribe or request deletion at any time.

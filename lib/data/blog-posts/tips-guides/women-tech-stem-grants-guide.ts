@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "in", "Technology", "&", "STEM"]
+      keywords: [],
+      metaTitle: "Women in Technology & STEM Grants Guide 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Women in Technology & STEM Grants Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Complete guide to grants for women in technology and STEM fields. Discover SBIR, NSF, and private grants offering up to $1M for female tech entrepreneurs. Funding available: up to $1M.",
     metrics: [
       { label: 'SBIR', value: '$1M', description: 'Tech Grants', color: 'text-green-600', iconName: 'DollarSign' },

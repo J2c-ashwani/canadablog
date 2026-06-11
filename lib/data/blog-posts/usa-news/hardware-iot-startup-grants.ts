@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Hardware", "&", "IoT", "Startup", "Grants"],
+      keywords: [],
+      metaTitle: "Hardware & IoT Startup Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Hardware & IoT Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to hardware and IoT startup grants. NSF SBIR Phase I $305K, Phase II $1.25M, DOD electronics programs, advanced manufacturing funding supporting connected devices, sensors,. Funding available: up to $305K (with related programs offering $1.25M).",
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },

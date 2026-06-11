@@ -25,7 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["USDA", "SBIR", "Ag Tech", "Grants", "2026-2027"],
+      keywords: [],
+      metaTitle: "USDA SBIR AgTech Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for USDA SBIR AgTech Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
     }, shortAnswer: "To apply for USDA SBIR AgTech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation. Funding available: up to $125K (with related programs offering $575K).",
     metrics: [
       { label: 'Phase I', value: '$125K', description: 'USDA Award', color: 'text-green-600', iconName: 'DollarSign' },

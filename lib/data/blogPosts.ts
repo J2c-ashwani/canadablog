@@ -24,6 +24,9 @@ export interface BlogPost {
     metaTitle?: string;
     metaDescription?: string;
     ogImage?: string;
+    intent?: "grant" | "tax_credit" | "loan" | "women" | "startup" | "manufacturing" | "enterprise" | "r_and_d" | "export" | "hiring" | "innovation";
+    seoVersion?: number;
+    seoUpdatedAt?: string;
   };
   metrics?: {
     label: string

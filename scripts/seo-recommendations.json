@@ -1,0 +1,202 @@
+[
+  {
+    "slug": "nih-sbir-biotech-grants",
+    "path": "/blog/nih-sbir-biotech-grants",
+    "tsFileRelative": "./blog-posts/usa-news/nih-sbir-biotech-grants.ts",
+    "suggestedTitle": "NIH SBIR Biotech Grants 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for NIH SBIR Biotech Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "nsf-sbir-grants-technology-startups",
+    "path": "/blog/nsf-sbir-grants-technology-startups",
+    "tsFileRelative": "./blog-posts/usa-news/nsf-sbir-grants-technology-startups.ts",
+    "suggestedTitle": "NSF SBIR Grants 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for NSF SBIR Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "startup"
+  },
+  {
+    "slug": "quebec-small-business-grants-guide",
+    "path": "/blog/quebec-small-business-grants-guide",
+    "tsFileRelative": "./blog-posts/tips-guides/quebec-small-business-grants-guide.ts",
+    "suggestedTitle": "Quebec Small Business Grants 2026: Complete Guide — Apply ",
+    "suggestedDesc": "Learn how to qualify and apply for Quebec Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "usda-sbir-agtech-grants",
+    "path": "/blog/usda-sbir-agtech-grants",
+    "tsFileRelative": "./blog-posts/usa-news/usda-sbir-agtech-grants.ts",
+    "suggestedTitle": "USDA SBIR AgTech Grants 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for USDA SBIR AgTech Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "colorado-tech-programs",
+    "path": "/blog/colorado-tech-programs",
+    "tsFileRelative": "./blog-posts/usa-news/colorado-tech-programs.ts",
+    "suggestedTitle": "Colorado Tech Startup Grants 2026: Complete Guide — Apply ",
+    "suggestedDesc": "Learn how to qualify and apply for Colorado Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "startup"
+  },
+  {
+    "slug": "healthcare-grants-2026",
+    "path": "/blog/healthcare-grants-2026",
+    "tsFileRelative": "./blog-posts/industry-specific/healthcare-grants-2026.ts",
+    "suggestedTitle": "Healthcare Grants Canada 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for Healthcare Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "doe-sbir-clean-energy-grants",
+    "path": "/blog/doe-sbir-clean-energy-grants",
+    "tsFileRelative": "./blog-posts/usa-news/doe-sbir-clean-energy-grants.ts",
+    "suggestedTitle": "DOE SBIR Clean Energy Grants 2026: Complete Guide — Apply ",
+    "suggestedDesc": "Learn how to qualify and apply for DOE SBIR Clean Energy Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "quebec-business-grants-2026",
+    "path": "/blog/quebec-business-grants-2026",
+    "tsFileRelative": "./blog-posts/province-specific/quebec-business-grants-2026.ts",
+    "suggestedTitle": "Quebec Business Grants 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for Quebec Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "women-entrepreneurship-strategy-canada",
+    "path": "/blog/women-entrepreneurship-strategy-canada",
+    "tsFileRelative": "./blog-posts/canada-news/women-entrepreneurship-strategy-canada.ts",
+    "suggestedTitle": "Women Entrepreneurship Strategy Canada 2026 Guide — Apply ",
+    "suggestedDesc": "Learn how to qualify and apply for Women Entrepreneurship Strategy Canada in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "loan"
+  },
+  {
+    "slug": "usda-reap-grant-vs-utility-rebates",
+    "path": "/blog/usda-reap-grant-vs-utility-rebates",
+    "tsFileRelative": "./blog-posts/industry-specific/usda-reap-grant-vs-utility-rebates.ts",
+    "suggestedTitle": "USDA REAP Grant vs. Local Utility Rebates: Get Up to $1M",
+    "suggestedDesc": "Learn how to qualify and apply for USDA REAP Grant vs. Local Utility Rebates in 2026. Access up to $1M in non-dilutive funding. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "canada-technology-adoption-grants-guide",
+    "path": "/blog/canada-technology-adoption-grants-guide",
+    "tsFileRelative": "./blog-posts/canada-news/canada-technology-adoption-grants-guide.ts",
+    "suggestedTitle": "Canada Technology Adoption Grants 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Canada Technology Adoption Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "atlantic-small-business-grants-guide",
+    "path": "/blog/atlantic-small-business-grants-guide",
+    "tsFileRelative": "./blog-posts/tips-guides/atlantic-small-business-grants-guide.ts",
+    "suggestedTitle": "Atlantic Canada Small Business Grants 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Atlantic Canada Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "csbfp-canada-small-business-financing-program",
+    "path": "/blog/csbfp-canada-small-business-financing-program",
+    "tsFileRelative": "./blog-posts/canada-news/csbfp-canada-small-business-financing-program.ts",
+    "suggestedTitle": "Canada Small Business Financing Program 2026 Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Canada Small Business Financing Program in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "loan"
+  },
+  {
+    "slug": "2026-grant-forecast",
+    "path": "/blog/2026-grant-forecast",
+    "tsFileRelative": "./blog-posts/funding-alerts/2026-grant-forecast.ts",
+    "suggestedTitle": "Canadian Small Business Grant Forecast 2026 Guide — Apply ",
+    "suggestedDesc": "Learn how to qualify and apply for Canadian Small Business Grant Forecast in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "hardware-iot-startup-grants",
+    "path": "/blog/hardware-iot-startup-grants",
+    "tsFileRelative": "./blog-posts/usa-news/hardware-iot-startup-grants.ts",
+    "suggestedTitle": "Hardware & IoT Startup Grants 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Hardware & IoT Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "startup"
+  },
+  {
+    "slug": "women-tech-stem-grants-guide",
+    "path": "/blog/women-tech-stem-grants-guide",
+    "tsFileRelative": "./blog-posts/tips-guides/women-tech-stem-grants-guide.ts",
+    "suggestedTitle": "Women in Technology & STEM Grants Guide 2026 Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Women in Technology & STEM Grants Guide in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "women"
+  },
+  {
+    "slug": "biden-2-5b-grants-2026",
+    "path": "/blog/biden-2-5b-grants-2026",
+    "tsFileRelative": "./blog-posts/usa-news/biden-2-5b-grants-2026.ts",
+    "suggestedTitle": "Biden's $2.5B Small Business Grants 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Biden's $2.5B Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "innovation-superclusters-2026",
+    "path": "/blog/innovation-superclusters-2026",
+    "tsFileRelative": "./blog-posts/canada-news/innovation-superclusters-2026.ts",
+    "suggestedTitle": "Global Innovation Clusters 2026: Complete Guide — Apply No",
+    "suggestedDesc": "Learn how to qualify and apply for Global Innovation Clusters in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "innovation"
+  },
+  {
+    "slug": "veteran-business-funding-canada-2026",
+    "path": "/blog/veteran-business-funding-canada-2026",
+    "tsFileRelative": "./blog-posts/demographic-specific/veteran-business-funding-canada-2026.ts",
+    "suggestedTitle": "Veteran Business Grants Canada 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Veteran Business Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "7-startup-accelerators-california-free-money",
+    "path": "/blog/7-startup-accelerators-california-free-money",
+    "tsFileRelative": "./blog-posts/grants/7-startup-accelerators-california-free-money.ts",
+    "suggestedTitle": "7 Startup Accelerators in California That Give Free Mon...",
+    "suggestedDesc": "Guide to 7 Startup Accelerators in California That Give Free Money in in 2026. Learn eligibility rules, requirements, and application steps. See if...",
+    "suggestedIntent": "startup"
+  },
+  {
+    "slug": "sba-sbir-grants-2026",
+    "path": "/blog/sba-sbir-grants-2026",
+    "tsFileRelative": "./blog-posts/usa-news/sba-sbir-grants-2026.ts",
+    "suggestedTitle": "SBA SBIR/STTR 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Our comprehensive 2026 guide to SBA SBIR/STTR. Discover eligibility requirements, funding limits, and professional application steps to win. See if...",
+    "suggestedIntent": "startup"
+  },
+  {
+    "slug": "pennsylvania-innovation-2026",
+    "path": "/blog/pennsylvania-innovation-2026",
+    "tsFileRelative": "./blog-posts/state-specific/pennsylvania-innovation-2026.ts",
+    "suggestedTitle": "Pennsylvania Innovation Grants 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Pennsylvania Innovation Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "manufacturing"
+  },
+  {
+    "slug": "manitoba-business-grants-2026",
+    "path": "/blog/manitoba-business-grants-2026",
+    "tsFileRelative": "./blog-posts/province-specific/manitoba-business-grants-2026.ts",
+    "suggestedTitle": "Manitoba Business Grants 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for Manitoba Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  },
+  {
+    "slug": "massachusetts-tech-programs",
+    "path": "/blog/massachusetts-tech-programs",
+    "tsFileRelative": "./blog-posts/usa-news/massachusetts-tech-programs.ts",
+    "suggestedTitle": "Massachusetts Tech Startup Grants 2026: Complete Guide",
+    "suggestedDesc": "Learn how to qualify and apply for Massachusetts Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "startup"
+  },
+  {
+    "slug": "florida-business-grants-2026",
+    "path": "/blog/florida-business-grants-2026",
+    "tsFileRelative": "./blog-posts/state-specific/florida-business-grants-2026.ts",
+    "suggestedTitle": "Florida Business Grants 2026: Complete Guide — Apply Now",
+    "suggestedDesc": "Learn how to qualify and apply for Florida Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "suggestedIntent": "grant"
+  }
+]

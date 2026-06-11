@@ -721,7 +721,6 @@ export default function PortfolioClient() {
                     <label className="flex gap-2.5 items-start text-[11px] text-slate-500 cursor-pointer">
                       <input
                         type="checkbox"
-                        required
                         defaultChecked
                         className="mt-0.5 h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                       />
@@ -1523,30 +1522,6 @@ export default function PortfolioClient() {
 
             <form onSubmit={handleUnlockSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-xl mx-auto">
               <div className="space-y-1.5">
-                <Label htmlFor="lead-name" className="text-[10px] font-bold text-slate-500 uppercase">First Name</Label>
-                <Input
-                  id="lead-name"
-                  type="text"
-                  required
-                  placeholder="John"
-                  value={profile.name}
-                  onChange={(e) => updateProfileField("name", e.target.value)}
-                  className="bg-white border-slate-200 h-11 text-xs text-slate-900 rounded-lg focus:ring-blue-600"
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="lead-email" className="text-[10px] font-bold text-slate-500 uppercase">Business Email</Label>
-                <Input
-                  id="lead-email"
-                  type="email"
-                  required
-                  placeholder="john@company.com"
-                  value={profile.email}
-                  onChange={(e) => updateProfileField("email", e.target.value)}
-                  className="bg-white border-slate-200 h-11 text-xs text-slate-900 rounded-lg focus:ring-blue-600"
-                />
-              </div>
-              <div className="space-y-1.5">
                 <Label htmlFor="lead-phone" className="text-[10px] font-bold text-slate-500 uppercase">Phone Number</Label>
                 <Input
                   id="lead-phone"
@@ -1563,7 +1538,6 @@ export default function PortfolioClient() {
                 <Input
                   id="lead-companyName"
                   type="text"
-                  required
                   placeholder="Acme Corp"
                   value={profile.companyName || ""}
                   onChange={(e) => updateProfileField("companyName", e.target.value)}
@@ -1575,7 +1549,6 @@ export default function PortfolioClient() {
                 <Input
                   id="lead-website"
                   type="url"
-                  required
                   placeholder="https://company.com"
                   value={profile.website || ""}
                   onChange={(e) => updateProfileField("website", e.target.value)}
@@ -1589,7 +1562,6 @@ export default function PortfolioClient() {
                     type="checkbox"
                     checked={consentToPartnerContact}
                     onChange={(e) => setConsentToPartnerContact(e.target.checked)}
-                    required
                     className="mt-0.5 h-3.5 w-3.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
                   />
                   <span>

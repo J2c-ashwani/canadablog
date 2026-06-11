@@ -23,7 +23,10 @@ export const post: BlogPost = {
       "how to get free accelerator money without giving up equity in Silicon Valley",
       "top non-dilutive startup programs in California 2026",
       "California grants for early stage tech founders"
-    ]
+    ],
+    "intent": "startup",
+    "seoVersion": 1,
+    "seoUpdatedAt": "2026-06-11"
   },
   "metrics": [
     {

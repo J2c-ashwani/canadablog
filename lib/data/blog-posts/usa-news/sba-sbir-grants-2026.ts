@@ -207,7 +207,12 @@ const sbaSbirGrants2026Post: BlogPost = {
 ${sbaSbirPost}
     `,
     seo: {
-      keywords: ["SBIR grants 2026", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"]
+      keywords: ["SBIR grants 2026", "STTR funding", "America's Seed Fund", "R&D grants USA", "tech startup funding"],
+      metaTitle: "SBA SBIR/STTR 2026: Complete Guide — Apply Now",
+      metaDescription: "Our comprehensive 2026 guide to SBA SBIR/STTR. Discover eligibility requirements, funding limits, and professional application steps to win.",
+      intent: "startup",
+      seoVersion: 1,
+      seoUpdatedAt: "2025-06-11"
     }, shortAnswer: "To apply for SBA SBIR/STTR : Americas Seed 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇺🇸 Detailed guide to the Small Business Innovation Research (SBIR) program. How to access over $4 billion in non-dilutive R&D funding in 2026. Funding available: up to $4.",
     metrics: [
       { label: 'Total', value: '$4B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Database' },
