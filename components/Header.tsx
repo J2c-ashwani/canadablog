@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
 import { useRouter } from "next/navigation"
@@ -22,6 +22,28 @@ export function Header() {
   const [usaDropdownOpen, setUsaDropdownOpen] = useState(false)
   const [canadaDropdownOpen, setCanadaDropdownOpen] = useState(false)
   const router = useRouter()
+
+  // Capture the original entry landing page inside sessionStorage for revenue attribution
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      if (!sessionStorage.getItem("fsi_entry_url")) {
+        const cleanPath = window.location.pathname;
+        // Filter out utility and funnel pages to ensure we log a true content referrer
+        if (
+          cleanPath !== "/" &&
+          !cleanPath.startsWith("/portfolio") &&
+          !cleanPath.startsWith("/booking") &&
+          !cleanPath.startsWith("/consultation") &&
+          !cleanPath.startsWith("/search") &&
+          !cleanPath.startsWith("/subscribe") &&
+          !cleanPath.startsWith("/admin")
+        ) {
+          sessionStorage.setItem("fsi_entry_url", cleanPath);
+          sessionStorage.setItem("fsi_first_touch_at", new Date().toISOString());
+        }
+      }
+    }
+  }, []);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault()

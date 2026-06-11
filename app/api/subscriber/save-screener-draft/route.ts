@@ -50,7 +50,7 @@ function calculateLeadTier(profile: {
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
-    const { email, name, step, data } = body
+    const { email, name, step, pagePath, firstTouchAt, data } = body
 
     if (!email) {
       return NextResponse.json({ error: "Email is required." }, { status: 400 })
@@ -62,12 +62,25 @@ export async function POST(request: NextRequest) {
       if (existing) {
         const updates: any = {}
         if (name) updates.name = name
+        if (pagePath) updates.pagePath = pagePath
         if (data) {
           if (data.country) updates.country = data.country
           if (data.region) updates.region = data.region
           if (data.companySize) updates.companySize = data.companySize
           if (data.industry) updates.industry = data.industry
         }
+
+        // Backup attribution to leadActivity JSON
+        let activity: any = {}
+        try {
+          if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
+            activity = JSON.parse(existing.leadActivity)
+          }
+        } catch (e) {}
+        if (!activity.firstTouchPage) activity.firstTouchPage = pagePath || "/portfolio"
+        if (!activity.firstTouchAt) activity.firstTouchAt = firstTouchAt || new Date().toISOString()
+        updates.leadActivity = JSON.stringify(activity)
+
         await SubscriberRepository.updateSubscriberPreferences(email, updates)
         return NextResponse.json({ success: true, isNew: false })
       } else {
@@ -91,9 +104,16 @@ export async function POST(request: NextRequest) {
         if (res.success) {
           // Calculate initial tier and update source to show draft state
           const tier = calculateLeadTier({ country, region, companySize, industry })
+          const leadActivityObj = {
+            firstTouchPage: pagePath || "/portfolio",
+            firstTouchAt: firstTouchAt || new Date().toISOString()
+          }
+
           await SubscriberRepository.updateSubscriberPreferences(email, {
             source: "Screener Dropoff Draft",
-            leadTier: tier
+            leadTier: tier,
+            pagePath: pagePath || "/portfolio",
+            leadActivity: JSON.stringify(leadActivityObj)
           })
           return NextResponse.json({ success: true, isNew: true })
         } else {
@@ -106,6 +126,7 @@ export async function POST(request: NextRequest) {
       }
       
       const updates: any = {}
+      if (pagePath) updates.pagePath = pagePath
       if (data) {
         if (data.country) updates.country = data.country
         if (data.region) updates.region = data.region
@@ -124,6 +145,17 @@ export async function POST(request: NextRequest) {
         })
         updates.leadTier = tier
       }
+
+      // Backup attribution to leadActivity JSON
+      let activity: any = {}
+      try {
+        if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
+          activity = JSON.parse(existing.leadActivity)
+        }
+      } catch (e) {}
+      if (!activity.firstTouchPage) activity.firstTouchPage = pagePath || "/portfolio"
+      if (!activity.firstTouchAt) activity.firstTouchAt = firstTouchAt || new Date().toISOString()
+      updates.leadActivity = JSON.stringify(activity)
       
       await SubscriberRepository.updateSubscriberPreferences(email, updates)
       return NextResponse.json({ success: true })

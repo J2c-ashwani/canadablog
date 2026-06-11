@@ -46,6 +46,7 @@ export async function POST(request: NextRequest) {
     const body = await request.json() as GrantFinderRequest & {
       consentToPartnerContact?: boolean
       pagePath?: string
+      firstTouchAt?: string
       utmSource?: string
       utmMedium?: string
       utmCampaign?: string
@@ -82,7 +83,7 @@ export async function POST(request: NextRequest) {
     const tier = getLeadTier(body)
 
     const saveLead = async () => {
-      const leadData = {
+      const leadData: any = {
         source: leadSource,
         name: body.name || "",
         companyName: body.companyName || "",
@@ -110,6 +111,25 @@ export async function POST(request: NextRequest) {
         readinessBand: body.readinessBand,
         leadTier: tier
       }
+
+      // Load, parse, and update leadActivity JSON with firstTouch details
+      let activity: any = {}
+      if (existing) {
+        try {
+          if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
+            activity = JSON.parse(existing.leadActivity)
+          }
+        } catch (e) {
+          console.error("Failed to parse leadActivity JSON:", e)
+        }
+      }
+      if (!activity.firstTouchPage) {
+        activity.firstTouchPage = body.pagePath || "/portfolio"
+      }
+      if (!activity.firstTouchAt) {
+        activity.firstTouchAt = body.firstTouchAt || timestamp
+      }
+      leadData.leadActivity = JSON.stringify(activity)
 
       if (existing) {
         await SubscriberRepository.updateSubscriberPreferences(body.email, {

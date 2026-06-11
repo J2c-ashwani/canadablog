@@ -487,6 +487,8 @@ export default function PortfolioClient() {
           email: profile.email,
           name: profile.name,
           step: 1,
+          pagePath: sessionStorage.getItem("fsi_entry_url") || "/portfolio",
+          firstTouchAt: sessionStorage.getItem("fsi_first_touch_at") || new Date().toISOString(),
           data: profile
         })
       })
@@ -516,6 +518,8 @@ export default function PortfolioClient() {
           email: profile.email,
           name: profile.name,
           step: 3,
+          pagePath: sessionStorage.getItem("fsi_entry_url") || "/portfolio",
+          firstTouchAt: sessionStorage.getItem("fsi_first_touch_at") || new Date().toISOString(),
           data: profile
         })
       })
@@ -565,7 +569,8 @@ export default function PortfolioClient() {
           readinessBand: readiness.band,
           companySize: profile.companySize,
           fundingInterests: checkedSlugs,
-          pagePath: "/portfolio",
+          pagePath: sessionStorage.getItem("fsi_entry_url") || "/portfolio",
+          firstTouchAt: sessionStorage.getItem("fsi_first_touch_at") || new Date().toISOString(),
           companyName: profile.companyName,
           website: profile.website
         })

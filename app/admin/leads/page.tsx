@@ -427,6 +427,158 @@ export default async function LeadDashboardPage({
     .sort((a, b) => b[0].localeCompare(a[0]))
     .map(([key, data]) => data);
 
+  // 13b. Revenue Attribution per Entry Page Path (First-Touch)
+  const pageAttributionMap = new Map<string, {
+    pagePath: string;
+    leadsCount: number;
+    assessmentPurchases: number;
+    assessmentRev: number;
+    activeSubscribers: number;
+    subscriberRev: number;
+    auditsCount: number;
+    auditsRev: number;
+    totalRev: number;
+    rpl: number;
+  }>();
+
+  for (const lead of leads) {
+    // Standardize pagePath (ignore focus queries, clean url)
+    let cleanPath = String(lead.pagePath || '/portfolio').split('?')[0].trim();
+    if (!cleanPath || cleanPath === 'N/A' || cleanPath === '' || cleanPath === '/portfolio/report') {
+      cleanPath = '/portfolio';
+    }
+
+    if (!pageAttributionMap.has(cleanPath)) {
+      pageAttributionMap.set(cleanPath, {
+        pagePath: cleanPath,
+        leadsCount: 0,
+        assessmentPurchases: 0,
+        assessmentRev: 0,
+        activeSubscribers: 0,
+        subscriberRev: 0,
+        auditsCount: 0,
+        auditsRev: 0,
+        totalRev: 0,
+        rpl: 0
+      });
+    }
+
+    const stats = pageAttributionMap.get(cleanPath)!;
+    stats.leadsCount += 1;
+
+    // 1. Assessment purchases from this pagePath
+    if (lead.reportPurchased) {
+      stats.assessmentPurchases += 1;
+      const isMember = lead.subscriptionStatus === 'active' || lead.subscriptionStatus === 'trial';
+      stats.assessmentRev += isMember ? 99 : 199;
+    }
+
+    // 2. Active subscriber revenue from this pagePath
+    if (lead.subscriptionStatus === 'active') {
+      stats.activeSubscribers += 1;
+      const start = lead.trialStartedAt && lead.trialStartedAt !== 'N/A' ? new Date(lead.trialStartedAt) : new Date(lead.timestamp);
+      const elapsedDays = (Date.now() - start.getTime()) / (24 * 60 * 60 * 1000);
+      const billingCycles = Math.max(1, Math.floor(Math.max(0, elapsedDays - 7) / 30) + 1);
+      stats.subscriberRev += billingCycles * 29;
+    }
+  }
+
+  // 3. Audits and VIPs from this pagePath (link recoveryRecords back to subscriber by email)
+  recoveryRecords.forEach(rec => {
+    if (rec.status !== 'paid' || !rec.email) return;
+    const emailLower = rec.email.toLowerCase().trim();
+    const matchingLead = leads.find(l => l.email && l.email.toLowerCase().trim() === emailLower);
+    
+    let cleanPath = '/portfolio';
+    if (matchingLead) {
+      cleanPath = String(matchingLead.pagePath || '/portfolio').split('?')[0].trim();
+      if (!cleanPath || cleanPath === 'N/A' || cleanPath === '' || cleanPath === '/portfolio/report') {
+        cleanPath = '/portfolio';
+      }
+    }
+
+    if (!pageAttributionMap.has(cleanPath)) {
+      pageAttributionMap.set(cleanPath, {
+        pagePath: cleanPath,
+        leadsCount: 0,
+        assessmentPurchases: 0,
+        assessmentRev: 0,
+        activeSubscribers: 0,
+        subscriberRev: 0,
+        auditsCount: 0,
+        auditsRev: 0,
+        totalRev: 0,
+        rpl: 0
+      });
+    }
+
+    const stats = pageAttributionMap.get(cleanPath)!;
+    stats.auditsCount += 1;
+    
+    let amount = 0;
+    try {
+      const summary = JSON.parse(rec.rawSummary);
+      if (summary.amount) amount = Number(summary.amount);
+      else if (summary.tier === 'vip') amount = 499;
+      else if (summary.tier === 'audit') amount = 199;
+    } catch (e) {}
+    
+    if (amount === 0) {
+      const reasonStr = String(rec.reason || '').toLowerCase();
+      const summaryStr = String(rec.rawSummary || '').toLowerCase();
+      const isVip = reasonStr.includes('vip') || summaryStr.includes('vip');
+      amount = isVip ? 499 : 199;
+    }
+    
+    stats.auditsRev += amount;
+  });
+
+  // 3b. Partner Payments from this pagePath (link partnerPayments back to subscriber by email)
+  partnerPaymentsRows.slice(1).forEach(row => {
+    const buyerEmail = row[9] || row[14];
+    if (!buyerEmail) return;
+    const emailLower = buyerEmail.toLowerCase().trim();
+    const matchingLead = leads.find(l => l.email && l.email.toLowerCase().trim() === emailLower);
+    
+    let cleanPath = '/portfolio';
+    if (matchingLead) {
+      cleanPath = String(matchingLead.pagePath || '/portfolio').split('?')[0].trim();
+      if (!cleanPath || cleanPath === 'N/A' || cleanPath === '' || cleanPath === '/portfolio/report') {
+        cleanPath = '/portfolio';
+      }
+    }
+
+    if (!pageAttributionMap.has(cleanPath)) {
+      pageAttributionMap.set(cleanPath, {
+        pagePath: cleanPath,
+        leadsCount: 0,
+        assessmentPurchases: 0,
+        assessmentRev: 0,
+        activeSubscribers: 0,
+        subscriberRev: 0,
+        auditsCount: 0,
+        auditsRev: 0,
+        totalRev: 0,
+        rpl: 0
+      });
+    }
+
+    const stats = pageAttributionMap.get(cleanPath)!;
+    const amtStr = row[6] || '0';
+    const val = Number(amtStr.replace(/[^0-9.]/g, ''));
+    const amount = Number.isNaN(val) ? 0 : val;
+    stats.auditsRev += amount;
+  });
+
+  // 4. Calculate total revenue and RPL per pagePath
+  pageAttributionMap.forEach(stats => {
+    stats.totalRev = stats.assessmentRev + stats.subscriberRev + stats.auditsRev;
+    stats.rpl = stats.leadsCount > 0 ? stats.totalRev / stats.leadsCount : 0;
+  });
+
+  const attributionList = Array.from(pageAttributionMap.values())
+    .sort((a, b) => b.totalRev - a.totalRev);
+
   // Helper function for step percentages in UI
   const getPercent = (numerator: number, denominator: number): string => {
     if (denominator <= 0) return '0.0%';
@@ -908,6 +1060,72 @@ export default async function LeadDashboardPage({
                       </div>
                     );
                   })()}
+
+                  {/* Revenue Attribution Engine (First-Touch) */}
+                  <div className="rounded-lg border border-gray-200 bg-white p-6 shadow-sm">
+                    <div className="mb-4">
+                      <h2 className="text-lg font-bold text-gray-950 flex items-center gap-2">
+                        <Coins className="h-5 w-5 text-amber-500" />
+                        Revenue Attribution Engine (First-Touch)
+                      </h2>
+                      <p className="mt-1 text-sm text-gray-500">
+                        Tracks and attributes actual sales (Assessments, Membership subscriptions, Audits, and Partner referrers) back to the first-touch content path.
+                      </p>
+                    </div>
+
+                    <div className="overflow-x-auto rounded-lg border border-gray-100">
+                      <table className="min-w-full divide-y divide-gray-200 text-xs text-gray-900">
+                        <thead className="bg-gray-50 text-left font-semibold uppercase tracking-wider text-gray-500">
+                          <tr>
+                            <th className="px-4 py-3">Landing Page Path</th>
+                            <th className="px-4 py-3 text-right">Leads</th>
+                            <th className="px-4 py-3 text-right">Assessment Rev</th>
+                            <th className="px-4 py-3 text-right">Membership Rev</th>
+                            <th className="px-4 py-3 text-right">Audit & Partner Rev</th>
+                            <th className="px-4 py-3 text-right">Total Revenue</th>
+                            <th className="px-4 py-3 text-right">Revenue Per Lead (RPL)</th>
+                          </tr>
+                        </thead>
+                        <tbody className="divide-y divide-gray-100 bg-white">
+                          {attributionList.map((row) => (
+                            <tr key={row.pagePath} className="hover:bg-gray-50 transition-colors">
+                              <td className="whitespace-nowrap px-4 py-3 font-semibold text-gray-700 max-w-xs truncate" title={row.pagePath}>
+                                {row.pagePath}
+                              </td>
+                              <td className="px-4 py-3 text-right font-medium text-gray-950">
+                                {formatNumber(row.leadsCount)}
+                              </td>
+                              <td className="px-4 py-3 text-right text-gray-700">
+                                <div className="font-semibold text-gray-950">${formatNumber(row.assessmentRev)}</div>
+                                <div className="text-[10px] text-gray-400">{row.assessmentPurchases} sales</div>
+                              </td>
+                              <td className="px-4 py-3 text-right text-gray-700">
+                                <div className="font-semibold text-emerald-600">${formatNumber(row.subscriberRev)}</div>
+                                <div className="text-[10px] text-emerald-500">{row.activeSubscribers} active</div>
+                              </td>
+                              <td className="px-4 py-3 text-right text-gray-700">
+                                <div className="font-semibold text-indigo-600">${formatNumber(row.auditsRev)}</div>
+                                <div className="text-[10px] text-indigo-500">{row.auditsCount} orders</div>
+                              </td>
+                              <td className="px-4 py-3 text-right">
+                                <div className="font-bold text-gray-950">${formatNumber(row.totalRev)}</div>
+                              </td>
+                              <td className="px-4 py-3 text-right">
+                                <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[11px] font-bold ${
+                                  row.rpl >= 100 ? 'bg-emerald-100 text-emerald-800' :
+                                  row.rpl >= 50 ? 'bg-indigo-100 text-indigo-800' :
+                                  row.rpl > 0 ? 'bg-gray-100 text-gray-800' :
+                                  'bg-red-50 text-red-600/70'
+                                }`}>
+                                  ${row.rpl.toFixed(2)}
+                                </span>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
               );
             })()}
