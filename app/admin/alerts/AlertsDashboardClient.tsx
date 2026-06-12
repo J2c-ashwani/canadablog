@@ -51,12 +51,128 @@ export default function AlertsDashboardClient() {
   const [isSending, setIsSending] = useState(false)
   const [sendSuccess, setSendSuccess] = useState("")
 
+  // Newsletter Tab States
+  const [activeTab, setActiveTab] = useState<"alerts" | "newsletter">("alerts")
+  const [newsletterType, setNewsletterType] = useState<"new_funding" | "match_update" | "missing_funding">("new_funding")
+  const [newsletterProgramSlug, setNewsletterProgramSlug] = useState("")
+  const [newProgramsCount, setNewProgramsCount] = useState(3)
+  const [newProgramsListText, setNewProgramsListText] = useState("Scale-Up Support Program; Technology Growth Fund; Provincial Job Grant")
+  const [missingFundingAmount, setMissingFundingAmount] = useState("$120,000")
+
+  const [newsletterConfig, setNewsletterConfig] = useState<any | null>(null)
+  const [newsletterStats, setNewsletterStats] = useState({ totalTargets: 0, sentCount: 0, pendingCount: 0 })
+  const [newsletterPreview, setNewsletterPreview] = useState("")
+  const [isLoadingNewsletter, setIsLoadingNewsletter] = useState(false)
+  const [isLaunchingNewsletter, setIsLaunchingNewsletter] = useState(false)
+  const [newsletterError, setNewsletterError] = useState("")
+  const [newsletterSuccess, setNewsletterSuccess] = useState("")
+
   useEffect(() => {
     fetchStats()
     if (programs.length > 0) {
       setSelectedProgramSlug(programs[0].slug)
+      setNewsletterProgramSlug(programs[0].slug)
     }
   }, [programs])
+
+  useEffect(() => {
+    if (activeTab === "newsletter") {
+      fetchNewsletterStatus()
+    }
+  }, [activeTab])
+
+  // Real-time preview update as configuration fields change (debounced/triggered as they change state)
+  useEffect(() => {
+    if (activeTab === "newsletter" && newsletterConfig?.status !== "running") {
+      const timer = setTimeout(() => {
+        generatePreviewHTML()
+      }, 500)
+      return () => clearTimeout(timer)
+    }
+  }, [activeTab, newsletterType, newsletterProgramSlug, newProgramsCount, newProgramsListText, missingFundingAmount, newsletterConfig?.status])
+
+  const fetchNewsletterStatus = async () => {
+    setIsLoadingNewsletter(true)
+    setNewsletterError("")
+    try {
+      const response = await fetch("/api/admin/alerts/newsletter")
+      const data = await response.json()
+      if (response.ok && data.success) {
+        setNewsletterConfig(data.config)
+        setNewsletterStats(data.stats)
+        setNewsletterPreview(data.previewHtml)
+      } else {
+        setNewsletterError(data.error || "Failed to load newsletter status.")
+      }
+    } catch (err) {
+      console.error(err)
+      setNewsletterError("Failed to fetch campaign status.")
+    } finally {
+      setIsLoadingNewsletter(false)
+    }
+  }
+
+  const generatePreviewHTML = async () => {
+    const list = newProgramsListText.split(";").map(x => x.trim()).filter(Boolean)
+    try {
+      // Fetch live preview of how the configured newsletter compiles
+      const response = await fetch("/api/admin/alerts/newsletter/preview", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          campaignType: newsletterType,
+          programSlug: newsletterProgramSlug,
+          newProgramsCount,
+          newProgramsList: list,
+          missingFundingAmount
+        })
+      })
+      const data = await response.json()
+      if (response.ok && data.success) {
+        setNewsletterPreview(data.previewHtml)
+      }
+    } catch (err) {
+      // Silent error for preview
+    }
+  }
+
+  const handleLaunchNewsletterCampaign = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsLaunchingNewsletter(true)
+    setNewsletterError("")
+    setNewsletterSuccess("")
+
+    const list = newProgramsListText.split(";").map(x => x.trim()).filter(Boolean)
+
+    try {
+      const response = await fetch("/api/admin/alerts/newsletter", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          campaignType: newsletterType,
+          programSlug: newsletterType === "new_funding" ? newsletterProgramSlug : undefined,
+          newProgramsCount: newsletterType === "match_update" ? newProgramsCount : undefined,
+          newProgramsList: newsletterType === "match_update" ? list : undefined,
+          missingFundingAmount: newsletterType === "missing_funding" ? missingFundingAmount : undefined,
+        }),
+      })
+
+      const data = await response.json()
+      if (response.ok && data.success) {
+        setNewsletterSuccess(data.message)
+        await fetchNewsletterStatus()
+      } else {
+        setNewsletterError(data.error || "Failed to launch campaign.")
+      }
+    } catch (err) {
+      console.error(err)
+      setNewsletterError("An unexpected error occurred.")
+    } finally {
+      setIsLaunchingNewsletter(false)
+    }
+  }
 
   const fetchStats = async () => {
     setIsLoadingStats(true)
@@ -225,192 +341,472 @@ export default function AlertsDashboardClient() {
             </Card>
           </div>
 
-          {/* Draft room layout */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            {/* Left Col: Generator */}
-            <div className="lg:col-span-5 space-y-6">
-              <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl h-full">
-                <CardHeader className="p-6 pb-2">
-                  <CardTitle className="text-lg font-bold flex items-center gap-2">
-                    <Sparkles className="h-5 w-5 text-yellow-400" />
-                    Alerts Draft Room
-                  </CardTitle>
-                  <CardDescription className="text-slate-400 text-xs">
-                    Compose campaigns, select segments, and prepare previews.
-                  </CardDescription>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <form onSubmit={handleGenerateDraft} className="space-y-4">
-                    {/* Category Selection */}
-                    <div className="space-y-1.5">
-                      <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Campaign Category</label>
-                      <select
-                        value={selectedCategory}
-                        onChange={(e) => setSelectedCategory(e.target.value)}
-                        className="w-full h-10 px-3 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500"
-                      >
-                        <option value="New Opportunity">New Opportunity Alert (High Priority)</option>
-                        <option value="Program Change">Program Change Notification (Medium Priority)</option>
-                        <option value="Weekly Intelligence">Weekly Intelligence Digest (Low Priority)</option>
-                        <option value="Emergency">Emergency Intake Warning (Critical Priority)</option>
-                      </select>
-                    </div>
+          {/* Tab Switcher */}
+          <div className="flex border-b border-slate-800 gap-2">
+            <button
+              onClick={() => setActiveTab("alerts")}
+              className={`pb-3 text-sm font-bold border-b-2 px-4 transition-colors ${
+                activeTab === "alerts"
+                  ? "border-blue-500 text-white"
+                  : "border-transparent text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Alerts Control Room
+            </button>
+            <button
+              onClick={() => setActiveTab("newsletter")}
+              className={`pb-3 text-sm font-bold border-b-2 px-4 transition-colors ${
+                activeTab === "newsletter"
+                  ? "border-blue-500 text-white"
+                  : "border-transparent text-slate-400 hover:text-slate-200"
+              }`}
+            >
+              Newsletter Campaigns
+            </button>
+          </div>
 
-                    {/* Program Selector */}
-                    {selectedCategory !== "Weekly Intelligence" && (
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Target Program Stream</label>
-                        <select
-                          value={selectedProgramSlug}
-                          onChange={(e) => setSelectedProgramSlug(e.target.value)}
-                          className="w-full h-10 px-3 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500 select-scrollbar"
-                        >
-                          {programs.map(prog => (
-                            <option key={prog.slug} value={prog.slug}>
-                              {prog.region === "Federal" ? "🍁 [Fed]" : `🇺🇸 [${prog.region}]`} {prog.name.slice(0, 50)}...
-                            </option>
-                          ))}
-                        </select>
-                      </div>
-                    )}
-
-                    {/* Change Log Text Area */}
-                    {selectedCategory === "Program Change" && (
-                      <div className="space-y-1.5">
-                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Modified Updates Details</label>
-                        <Textarea
-                          placeholder="e.g. Funding cap increased from $50,000 to $100,000 for local digital marketing software adopters."
-                          value={changeText}
-                          onChange={(e) => setChangeText(e.target.value)}
-                          required
-                          className="bg-slate-900 border-slate-800 text-white placeholder-slate-500 text-xs h-24"
-                        />
-                      </div>
-                    )}
-
-                    <Button
-                      type="submit"
-                      disabled={isGenerating || (selectedCategory === "Program Change" && !changeText)}
-                      className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 mt-4 shadow-lg shadow-blue-500/10"
-                    >
-                      {isGenerating ? (
-                        <>
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                          Compiling Segment Draft...
-                        </>
-                      ) : (
-                        <>
-                          <FileText className="h-4 w-4" />
-                          Compile Campaign Draft
-                        </>
-                      )}
-                    </Button>
-                  </form>
-                </CardContent>
-              </Card>
-            </div>
-
-            {/* Right Col: Active Draft Queue */}
-            <div className="lg:col-span-7 space-y-6">
-              <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl h-full flex flex-col justify-between">
-                <div>
+          {activeTab === "alerts" ? (
+            /* Alerts Tab Layout */
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Left Col: Generator */}
+              <div className="lg:col-span-5 space-y-6">
+                <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl h-full">
                   <CardHeader className="p-6 pb-2">
                     <CardTitle className="text-lg font-bold flex items-center gap-2">
-                      <Eye className="h-5 w-5 text-blue-400" />
-                      Active Draft Preview
+                      <Sparkles className="h-5 w-5 text-yellow-400" />
+                      Alerts Draft Room
                     </CardTitle>
                     <CardDescription className="text-slate-400 text-xs">
-                      Inspect generated templates and verify segment matching criteria.
+                      Compose campaigns, select segments, and prepare previews.
                     </CardDescription>
                   </CardHeader>
-
-                  <CardContent className="p-6 space-y-4">
-                    {sendSuccess && (
-                      <div className="p-4 bg-emerald-500/10 border border-emerald-500/25 rounded-xl text-emerald-400 text-xs font-semibold text-center flex items-center justify-center gap-2 animate-pulse">
-                        <CheckCircle2 className="h-5 w-5 shrink-0" />
-                        <span>{sendSuccess}</span>
+                  <CardContent className="p-6">
+                    <form onSubmit={handleGenerateDraft} className="space-y-4">
+                      {/* Category Selection */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Campaign Category</label>
+                        <select
+                          value={selectedCategory}
+                          onChange={(e) => setSelectedCategory(e.target.value)}
+                          className="w-full h-10 px-3 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500"
+                        >
+                          <option value="New Opportunity">New Opportunity Alert (High Priority)</option>
+                          <option value="Program Change">Program Change Notification (Medium Priority)</option>
+                          <option value="Weekly Intelligence">Weekly Intelligence Digest (Low Priority)</option>
+                          <option value="Emergency">Emergency Intake Warning (Critical Priority)</option>
+                        </select>
                       </div>
-                    )}
 
-                    {draftError && (
-                      <div className="p-4 bg-amber-500/10 border border-amber-500/25 rounded-xl text-amber-400 text-xs font-semibold text-center flex items-center justify-center gap-2">
-                        <AlertTriangle className="h-5 w-5 shrink-0" />
-                        <span>{draftError}</span>
-                      </div>
-                    )}
-
-                    {activeDraft ? (
-                      <div className="space-y-4">
-                        <div className="grid grid-cols-2 gap-4 border border-slate-800 bg-slate-900/30 rounded-xl p-4 text-xs">
-                          <div>
-                            <span className="text-slate-500 font-semibold block">Subject:</span>
-                            <span className="text-white font-bold">{activeDraft.subject}</span>
-                          </div>
-                          <div>
-                            <span className="text-slate-500 font-semibold block">Category:</span>
-                            <span className="text-white font-bold">{activeDraft.category}</span>
-                          </div>
-                          <div>
-                            <span className="text-slate-500 font-semibold block">Segment Match:</span>
-                            <Badge className="bg-blue-600 hover:bg-blue-600 text-[10px] font-bold py-0.5 px-2.5">
-                              {activeDraft.targetSegment}
-                            </Badge>
-                          </div>
-                          <div>
-                            <span className="text-slate-500 font-semibold block">Recipients Count:</span>
-                            <span className="text-emerald-400 font-black">{activeDraft.recipientsCount} active profiles</span>
-                          </div>
+                      {/* Program Selector */}
+                      {selectedCategory !== "Weekly Intelligence" && (
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Target Program Stream</label>
+                          <select
+                            value={selectedProgramSlug}
+                            onChange={(e) => setSelectedProgramSlug(e.target.value)}
+                            className="w-full h-10 px-3 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-blue-500 select-scrollbar"
+                          >
+                            {programs.map(prog => (
+                              <option key={prog.slug} value={prog.slug}>
+                                {prog.region === "Federal" ? "🍁 [Fed]" : `🇺🇸 [${prog.region}]`} {prog.name.slice(0, 50)}...
+                              </option>
+                            ))}
+                          </select>
                         </div>
+                      )}
 
-                        {/* Iframe for safe HTML rendering */}
-                        <div className="border border-slate-800 rounded-xl overflow-hidden bg-white h-72">
-                          <iframe
-                            srcDoc={activeDraft.body}
-                            className="w-full h-full border-none"
-                            title="Campaign Preview"
+                      {/* Change Log Text Area */}
+                      {selectedCategory === "Program Change" && (
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Modified Updates Details</label>
+                          <Textarea
+                            placeholder="e.g. Funding cap increased from $50,000 to $100,000 for local digital marketing software adopters."
+                            value={changeText}
+                            onChange={(e) => setChangeText(e.target.value)}
+                            required
+                            className="bg-slate-900 border-slate-800 text-white placeholder-slate-500 text-xs h-24"
                           />
                         </div>
-                      </div>
-                    ) : (
-                      <div className="text-center py-20 text-slate-500 space-y-2">
-                        <Mail className="h-10 w-10 text-slate-700 mx-auto" />
-                        <p className="text-xs">No active draft in queue. Select a category and compile a campaign draft above.</p>
-                      </div>
-                    )}
-                  </CardContent>
-                </div>
+                      )}
 
-                {activeDraft && (
-                  <CardContent className="p-6 pt-0 border-t border-slate-900 flex gap-4">
-                    <Button
-                      onClick={handleBroadcastAlert}
-                      disabled={isSending}
-                      className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10"
-                    >
-                      {isSending ? (
-                        <>
-                          <Loader2 className="h-4 w-4 animate-spin" />
-                          Broadcasting Alert...
-                        </>
+                      <Button
+                        type="submit"
+                        disabled={isGenerating || (selectedCategory === "Program Change" && !changeText)}
+                        className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 mt-4 shadow-lg shadow-blue-500/10"
+                      >
+                        {isGenerating ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Compiling Segment Draft...
+                          </>
+                        ) : (
+                          <>
+                            <FileText className="h-4 w-4" />
+                            Compile Campaign Draft
+                          </>
+                        )}
+                      </Button>
+                    </form>
+                  </CardContent>
+                </Card>
+              </div>
+
+              {/* Right Col: Active Draft Queue */}
+              <div className="lg:col-span-7 space-y-6">
+                <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl h-full flex flex-col justify-between">
+                  <div>
+                    <CardHeader className="p-6 pb-2">
+                      <CardTitle className="text-lg font-bold flex items-center gap-2">
+                        <Eye className="h-5 w-5 text-blue-400" />
+                        Active Draft Preview
+                      </CardTitle>
+                      <CardDescription className="text-slate-400 text-xs">
+                        Inspect generated templates and verify segment matching criteria.
+                      </CardDescription>
+                    </CardHeader>
+
+                    <CardContent className="p-6 space-y-4">
+                      {sendSuccess && (
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/25 rounded-xl text-emerald-400 text-xs font-semibold text-center flex items-center justify-center gap-2 animate-pulse">
+                          <CheckCircle2 className="h-5 w-5 shrink-0" />
+                          <span>{sendSuccess}</span>
+                        </div>
+                      )}
+
+                      {draftError && (
+                        <div className="p-4 bg-amber-500/10 border border-amber-500/25 rounded-xl text-amber-400 text-xs font-semibold text-center flex items-center justify-center gap-2">
+                          <AlertTriangle className="h-5 w-5 shrink-0" />
+                          <span>{draftError}</span>
+                        </div>
+                      )}
+
+                      {activeDraft ? (
+                        <div className="space-y-4">
+                          <div className="grid grid-cols-2 gap-4 border border-slate-800 bg-slate-900/30 rounded-xl p-4 text-xs">
+                            <div>
+                              <span className="text-slate-500 font-semibold block">Subject:</span>
+                              <span className="text-white font-bold">{activeDraft.subject}</span>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 font-semibold block">Category:</span>
+                              <span className="text-white font-bold">{activeDraft.category}</span>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 font-semibold block">Segment Match:</span>
+                              <Badge className="bg-blue-600 hover:bg-blue-600 text-[10px] font-bold py-0.5 px-2.5">
+                                {activeDraft.targetSegment}
+                              </Badge>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 font-semibold block">Recipients Count:</span>
+                              <span className="text-emerald-400 font-black">{activeDraft.recipientsCount} active profiles</span>
+                            </div>
+                          </div>
+
+                          {/* Iframe for safe HTML rendering */}
+                          <div className="border border-slate-800 rounded-xl overflow-hidden bg-white h-72">
+                            <iframe
+                              srcDoc={activeDraft.body}
+                              className="w-full h-full border-none"
+                              title="Campaign Preview"
+                            />
+                          </div>
+                        </div>
                       ) : (
+                        <div className="text-center py-20 text-slate-500 space-y-2">
+                          <Mail className="h-10 w-10 text-slate-700 mx-auto" />
+                          <p className="text-xs">No active draft in queue. Select a category and compile a campaign draft above.</p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </div>
+
+                  {activeDraft && (
+                    <CardContent className="p-6 pt-0 border-t border-slate-900 flex gap-4">
+                      <Button
+                        onClick={handleBroadcastAlert}
+                        disabled={isSending}
+                        className="flex-1 bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10"
+                      >
+                        {isSending ? (
+                          <>
+                            <Loader2 className="h-4 w-4 animate-spin" />
+                            Broadcasting Alert...
+                          </>
+                        ) : (
+                          <>
+                            <Send className="h-4 w-4" />
+                            Approve & Broadcast Campaign
+                          </>
+                        )}
+                      </Button>
+                      <Button
+                        onClick={() => setActiveDraft(null)}
+                        variant="outline"
+                        className="border-slate-800 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 px-5"
+                      >
+                        <Trash2 className="h-4 w-4" />
+                      </Button>
+                    </CardContent>
+                  )}
+                </Card>
+              </div>
+            </div>
+          ) : (
+            /* Newsletter Tab Layout */
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Left Col: Campaign Builder Form */}
+              <div className="lg:col-span-5 space-y-6">
+                <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl h-full">
+                  <CardHeader className="p-6 pb-2">
+                    <CardTitle className="text-lg font-bold flex items-center gap-2">
+                      <Mail className="h-5 w-5 text-emerald-400" />
+                      Newsletter Campaigns
+                    </CardTitle>
+                    <CardDescription className="text-slate-400 text-xs">
+                      Select high-conversion copy models and launch email broadcasts.
+                    </CardDescription>
+                  </CardHeader>
+                  <CardContent className="p-6">
+                    <form onSubmit={handleLaunchNewsletterCampaign} className="space-y-4">
+                      {/* Campaign Type Dropdown */}
+                      <div className="space-y-1.5">
+                        <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Campaign Copy Model</label>
+                        <select
+                          value={newsletterType}
+                          onChange={(e) => setNewsletterType(e.target.value as any)}
+                          disabled={newsletterConfig?.status === "running"}
+                          className="w-full h-10 px-3 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 disabled:opacity-50"
+                        >
+                          <option value="new_funding">Type 1: New Funding Alert (Ontario AI, etc.)</option>
+                          <option value="match_update">Type 2: Funding Match Update (New Programs Added)</option>
+                          <option value="missing_funding">Type 3: Missing Funding Alert (Reactivation)</option>
+                        </select>
+                      </div>
+
+                      {/* Config 1: Program Selector (New Funding Alert) */}
+                      {newsletterType === "new_funding" && (
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Select Program Focus</label>
+                          <select
+                            value={newsletterProgramSlug}
+                            onChange={(e) => setNewsletterProgramSlug(e.target.value)}
+                            disabled={newsletterConfig?.status === "running"}
+                            className="w-full h-10 px-3 bg-slate-900 border border-slate-800 rounded-lg text-sm text-white focus:outline-hidden focus:ring-2 focus:ring-emerald-500 select-scrollbar disabled:opacity-50"
+                          >
+                            {programs.map(prog => (
+                              <option key={prog.slug} value={prog.slug}>
+                                {prog.region === "Federal" ? "🍁 [Fed]" : `🇺🇸 [${prog.region}]`} {prog.name.slice(0, 50)}...
+                              </option>
+                            ))}
+                          </select>
+                        </div>
+                      )}
+
+                      {/* Config 2: Programs Count & List (Match Update) */}
+                      {newsletterType === "match_update" && (
                         <>
-                          <Send className="h-4 w-4" />
-                          Approve & Broadcast Campaign
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Added Programs Count</label>
+                            <Input
+                              type="number"
+                              min="1"
+                              value={newProgramsCount}
+                              onChange={(e) => setNewProgramsCount(Number(e.target.value))}
+                              disabled={newsletterConfig?.status === "running"}
+                              className="bg-slate-900 border-slate-800 text-white placeholder-slate-500 text-xs disabled:opacity-50"
+                            />
+                          </div>
+                          <div className="space-y-1.5">
+                            <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Added Program Names (Semicolon Separated)</label>
+                            <Textarea
+                              placeholder="Scale-Up Support Program; Technology Growth Fund; Provincial Job Grant"
+                              value={newProgramsListText}
+                              onChange={(e) => setNewProgramsListText(e.target.value)}
+                              disabled={newsletterConfig?.status === "running"}
+                              className="bg-slate-900 border-slate-800 text-white placeholder-slate-500 text-xs h-20 disabled:opacity-50"
+                            />
+                          </div>
                         </>
                       )}
-                    </Button>
-                    <Button
-                      onClick={() => setActiveDraft(null)}
-                      variant="outline"
-                      className="border-slate-800 text-slate-400 hover:text-white bg-slate-900 hover:bg-slate-800 px-5"
-                    >
-                      <Trash2 className="h-4 w-4" />
-                    </Button>
+
+                      {/* Config 3: Missing Funding Amount (Missing Alert) */}
+                      {newsletterType === "missing_funding" && (
+                        <div className="space-y-1.5">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Estimated Missing Amount</label>
+                          <Input
+                            type="text"
+                            placeholder="e.g. $120,000"
+                            value={missingFundingAmount}
+                            onChange={(e) => setMissingFundingAmount(e.target.value)}
+                            disabled={newsletterConfig?.status === "running"}
+                            className="bg-slate-900 border-slate-800 text-white placeholder-slate-500 text-xs disabled:opacity-50"
+                          />
+                        </div>
+                      )}
+
+                      <div className="pt-2">
+                        {newsletterConfig?.status === "running" ? (
+                          <div className="p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-lg text-emerald-400 text-xs text-center font-semibold">
+                            ⚠️ A Campaign is currently in progress. Changes are locked.
+                          </div>
+                        ) : (
+                          <Button
+                            type="submit"
+                            disabled={isLaunchingNewsletter}
+                            className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-500/10"
+                          >
+                            {isLaunchingNewsletter ? (
+                              <>
+                                <Loader2 className="h-4 w-4 animate-spin" />
+                                Initializing Queue...
+                              </>
+                            ) : (
+                              <>
+                                <Send className="h-4 w-4" />
+                                Launch Newsletter Campaign
+                              </>
+                            )}
+                          </Button>
+                        )}
+                      </div>
+                    </form>
                   </CardContent>
-                )}
-              </Card>
+                </Card>
+              </div>
+
+              {/* Right Col: Active Campaign Monitor & Live Preview */}
+              <div className="lg:col-span-7 space-y-6">
+                <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl h-full flex flex-col justify-between">
+                  <div>
+                    <CardHeader className="p-6 pb-2 flex flex-row justify-between items-start">
+                      <div>
+                        <CardTitle className="text-lg font-bold flex items-center gap-2">
+                          <Eye className="h-5 w-5 text-emerald-400" />
+                          Live Template Preview
+                        </CardTitle>
+                        <CardDescription className="text-slate-400 text-xs">
+                          Real-time preview of how this campaign looks for targets.
+                        </CardDescription>
+                      </div>
+                      
+                      {newsletterConfig?.status === "running" && (
+                        <Button
+                          onClick={fetchNewsletterStatus}
+                          variant="outline"
+                          disabled={isLoadingNewsletter}
+                          className="border-slate-800 hover:bg-slate-900 text-slate-300 text-xs font-bold py-1 px-3"
+                        >
+                          {isLoadingNewsletter ? (
+                            <Loader2 className="h-3 w-3 animate-spin mr-1" />
+                          ) : (
+                            <Users className="h-3 w-3 mr-1" />
+                          )}
+                          Refresh Progress
+                        </Button>
+                      )}
+                    </CardHeader>
+
+                    <CardContent className="p-6 space-y-4">
+                      {/* Launch success message */}
+                      {newsletterSuccess && (
+                        <div className="p-4 bg-emerald-500/10 border border-emerald-500/25 rounded-xl text-emerald-400 text-xs font-semibold text-center flex items-center justify-center gap-2 animate-pulse">
+                          <CheckCircle2 className="h-5 w-5 shrink-0" />
+                          <span>{newsletterSuccess}</span>
+                        </div>
+                      )}
+
+                      {/* Campaign errors */}
+                      {newsletterError && (
+                        <div className="p-4 bg-amber-500/10 border border-amber-500/25 rounded-xl text-amber-400 text-xs font-semibold text-center flex items-center justify-center gap-2">
+                          <AlertTriangle className="h-5 w-5 shrink-0" />
+                          <span>{newsletterError}</span>
+                        </div>
+                      )}
+
+                      {/* Active Campaign Stats Tracker */}
+                      {newsletterConfig && (
+                        <div className="border border-slate-800 bg-slate-900/30 rounded-xl p-4 text-xs space-y-3">
+                          <div className="flex justify-between items-center">
+                            <div>
+                              <span className="text-slate-500 font-semibold block text-[10px] uppercase">Active Campaign ID</span>
+                              <span className="text-white font-mono text-[11px] font-bold">{newsletterConfig.campaignId}</span>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 font-semibold block text-[10px] uppercase text-right">Status</span>
+                              {newsletterConfig.status === "running" ? (
+                                <Badge className="bg-emerald-600 hover:bg-emerald-600 animate-pulse text-[10px] font-bold py-0.5 px-2">
+                                  Sending Broadcast
+                                </Badge>
+                              ) : newsletterConfig.status === "completed" ? (
+                                <Badge className="bg-slate-700 hover:bg-slate-700 text-[10px] font-bold py-0.5 px-2">
+                                  Completed
+                                </Badge>
+                              ) : (
+                                <Badge className="bg-slate-800 hover:bg-slate-800 text-[10px] font-bold py-0.5 px-2">
+                                  Idle / Ready
+                                </Badge>
+                              )}
+                            </div>
+                          </div>
+
+                          <div className="grid grid-cols-3 gap-2 pt-2 border-t border-slate-900">
+                            <div>
+                              <span className="text-slate-500 block text-[9px] uppercase font-bold">Audience Targets</span>
+                              <span className="text-white font-extrabold text-sm">{newsletterStats.totalTargets} leads</span>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 block text-[9px] uppercase font-bold text-center">Dispatched</span>
+                              <span className="text-emerald-400 font-black text-sm block text-center">{newsletterStats.sentCount}</span>
+                            </div>
+                            <div>
+                              <span className="text-slate-500 block text-[9px] uppercase font-bold text-right">Pending Queue</span>
+                              <span className="text-blue-400 font-extrabold text-sm block text-right">{newsletterStats.pendingCount}</span>
+                            </div>
+                          </div>
+
+                          {/* Progress Bar */}
+                          {newsletterStats.totalTargets > 0 && (
+                            <div className="space-y-1 pt-1">
+                              <div className="flex justify-between text-[10px] text-slate-400 font-semibold">
+                                <span>Progress</span>
+                                <span>{Math.round((newsletterStats.sentCount / newsletterStats.totalTargets) * 100)}%</span>
+                              </div>
+                              <div className="w-full h-2 bg-slate-900 rounded-full overflow-hidden border border-slate-800">
+                                <div 
+                                  className="h-full bg-emerald-500 rounded-full transition-all duration-500" 
+                                  style={{ width: `${(newsletterStats.sentCount / newsletterStats.totalTargets) * 100}%` }}
+                                />
+                              </div>
+                            </div>
+                          )}
+                        </div>
+                      )}
+
+                      {/* Preview HTML Render Frame */}
+                      {newsletterPreview ? (
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Email Template Preview</label>
+                          <div className="border border-slate-800 rounded-xl overflow-hidden bg-white h-72">
+                            <iframe
+                              srcDoc={newsletterPreview}
+                              className="w-full h-full border-none"
+                              title="Newsletter Preview"
+                            />
+                          </div>
+                        </div>
+                      ) : (
+                        <div className="text-center py-20 text-slate-500">
+                          <Loader2 className="h-6 w-6 animate-spin text-slate-700 mx-auto mb-2" />
+                          <p className="text-xs">Generating layout preview...</p>
+                        </div>
+                      )}
+                    </CardContent>
+                  </div>
+                </Card>
+              </div>
             </div>
-          </div>
+          )}
 
           {/* CDP Campaign Registry */}
           <Card className="border border-slate-800 bg-slate-950 text-white rounded-2xl shadow-xl overflow-hidden">

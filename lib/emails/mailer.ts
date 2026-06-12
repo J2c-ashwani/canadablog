@@ -17,7 +17,8 @@ export async function sendEmail({
   html,
   text,
   tagType,
-  companyName
+  companyName,
+  from
 }: {
   to: string;
   subject: string;
@@ -25,9 +26,10 @@ export async function sendEmail({
   text: string;
   tagType: string;
   companyName?: string;
+  from?: string;
 }) {
   const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
+  const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
   const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   if (!apiKey) {
