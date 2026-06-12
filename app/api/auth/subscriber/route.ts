@@ -1,10 +1,15 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { applyRateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
+  // Rate Limiting (10 requests/hour)
+  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000);
+  if (limitRes.isLimited) return limitRes.response;
+
   try {
     const { searchParams } = new URL(request.url);
     const token = searchParams.get('token');

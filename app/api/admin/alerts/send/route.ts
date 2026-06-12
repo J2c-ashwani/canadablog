@@ -4,8 +4,30 @@ import { SubscriberRepository, type SubscriberProfile } from "@/lib/leads/Subscr
 import { getAllPrograms } from "@/lib/data/programs"
 import { saveCampaignMetrics } from "@/lib/leads/alert-metrics"
 import { queueAlertJob } from "@/lib/google-sheets"
+import { cookies } from "next/headers"
+import { ADMIN_SESSION_COOKIE, isValidAdminSession } from "@/lib/admin/auth"
+import { applyRateLimit } from "@/lib/rate-limit"
+
+export const runtime = "nodejs"
 
 export async function POST(request: NextRequest) {
+  // 1. Rate Limiting (20 requests/minute)
+  const limitRes = applyRateLimit(request, 20, 60 * 1000)
+  if (limitRes.isLimited) return limitRes.response
+
+  // 2. Auth Check
+  const adminSecret = process.env.LEAD_DASHBOARD_SECRET
+  if (!adminSecret) {
+    return NextResponse.json({ error: "Private dashboard access is not ready yet." }, { status: 500 })
+  }
+
+  const cookieStore = await cookies()
+  const sessionCookie = cookieStore.get(ADMIN_SESSION_COOKIE)?.value
+
+  if (!isValidAdminSession(sessionCookie, adminSecret)) {
+    return NextResponse.json({ error: "Unauthorized session." }, { status: 401 })
+  }
+
   try {
     const body = await request.json()
     const { id, category, priority, subject, programSlug, changeText, changeSeverity } = body

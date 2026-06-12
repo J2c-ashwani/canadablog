@@ -6,6 +6,8 @@ import { getAllPrograms } from "@/lib/data/programs"
 import { MatchScoreEngine } from "@/lib/leads/MatchScoreEngine"
 import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
 import crypto from "crypto"
+import { validateEmail } from "@/lib/email-validator"
+import { applyRateLimit } from "@/lib/rate-limit"
 
 function getLeadTier(body: any): "Tier A" | "Tier B" | "Tier C" {
   const country = body.country || "Canada"
@@ -42,6 +44,10 @@ function getLeadTier(body: any): "Tier A" | "Tier B" | "Tier C" {
 }
 
 export async function POST(request: NextRequest) {
+  // 1. Rate Limiting (10 requests/hour)
+  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000)
+  if (limitRes.isLimited) return limitRes.response
+
   try {
     const body = await request.json() as GrantFinderRequest & {
       consentToPartnerContact?: boolean
@@ -59,11 +65,30 @@ export async function POST(request: NextRequest) {
       companyName?: string
       website?: string
       source?: string
+      confirmEmail?: string // Honeypot field
+    }
+
+    // 2. Honeypot check for bots
+    if (body.confirmEmail) {
+      console.warn("🤖 [Spam Bot Trapped] Grant Finder submission honeypot triggered from IP rate limit context.");
+      // Return fake success to fool the bot
+      return NextResponse.json({
+        success: true,
+        message: "Your request was processed successfully.",
+        recommendations: ["Next Steps: Review matching grant programs below."],
+        nextSteps: ["Ensure business registration details match program requirements."]
+      })
     }
 
     // Validate required fields
     if (!body.country || !body.industry || !body.businessStage || !body.email) {
       return NextResponse.json({ error: "Missing required fields" }, { status: 400 })
+    }
+
+    // 3. Email domain and syntax validation
+    const emailCheck = validateEmail(body.email)
+    if (!emailCheck.isValid) {
+      return NextResponse.json({ error: emailCheck.error }, { status: 400 })
     }
 
     const leadSource = body.source || "AI Grant Finder"

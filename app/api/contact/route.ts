@@ -3,6 +3,8 @@ import { appendLeadToSheet } from "@/lib/google-sheets"
 import { sendContactConfirmation } from "@/lib/emails/contact-confirmation"
 import { validateEmail } from "@/lib/email-validator"
 
+import { applyRateLimit } from "@/lib/rate-limit"
+
 function formatPhoneNumber(phone: string, country?: string): string {
   if (!phone) return "N/A"
 
@@ -27,8 +29,22 @@ function formatPhoneNumber(phone: string, country?: string): string {
 }
 
 export async function POST(request: NextRequest) {
+  // 1. Rate Limiting (5 requests/hour)
+  const limitRes = applyRateLimit(request, 5, 60 * 60 * 1000)
+  if (limitRes.isLimited) return limitRes.response
+
   try {
     const body = await request.json()
+    
+    // 2. Honeypot check for bots
+    if (body.confirmEmail) {
+      console.warn("🤖 [Spam Bot Trapped] Contact form submission honeypot triggered.");
+      return NextResponse.json({
+        success: true,
+        message: "Thank you for contacting us! We'll respond within 24 hours."
+      })
+    }
+
     const {
       name,
       email,

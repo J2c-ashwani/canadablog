@@ -1,9 +1,14 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { ADMIN_SESSION_COOKIE, createAdminSessionToken, isValidAdminKey } from '@/lib/admin/auth';
+import { applyRateLimit } from '@/lib/rate-limit';
 
 export const runtime = 'nodejs';
 
 export async function POST(request: NextRequest) {
+  // 1. Rate Limiting (20 requests/minute)
+  const limitRes = applyRateLimit(request, 20, 60 * 1000);
+  if (limitRes.isLimited) return limitRes.response;
+
   try {
     const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
 

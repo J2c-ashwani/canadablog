@@ -129,6 +129,7 @@ export default function ContactClient() {
         category: CONTACT_CATEGORY_DEFAULT,
         message: "",
         consentToPartnerContact: false,
+        confirmEmail: "", // Honeypot field
     })
     const [isSubmitting, setIsSubmitting] = useState(false)
     const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle")
@@ -146,6 +147,7 @@ export default function ContactClient() {
             category: CONTACT_CATEGORY_DEFAULT,
             message: "",
             consentToPartnerContact: false,
+            confirmEmail: "",
         })
     }
 
@@ -320,6 +322,18 @@ export default function ContactClient() {
                         )}
 
                         <form onSubmit={handleSubmit} className="space-y-5">
+                            {/* Honeypot field (hidden from real users to catch spam bots) */}
+                            <div style={{ display: "none" }} aria-hidden="true">
+                                <input
+                                    type="text"
+                                    name="confirmEmail"
+                                    value={formData.confirmEmail}
+                                    onChange={(e) => setFormData({ ...formData, confirmEmail: e.target.value })}
+                                    tabIndex={-1}
+                                    autoComplete="off"
+                                />
+                            </div>
+
                             <div className="grid gap-5 sm:grid-cols-2">
                                 <div>
                                     <label className="mb-2 block text-sm font-semibold text-slate-700">Name *</label>

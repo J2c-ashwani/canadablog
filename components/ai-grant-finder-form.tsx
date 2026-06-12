@@ -228,6 +228,18 @@ export function AIGrantFinderForm() {
       </CardHeader>
       <CardContent className="p-8">
         <form onSubmit={handleSubmit} className="space-y-8">
+          {/* Honeypot field (hidden from real users to catch spam bots) */}
+          <div style={{ display: "none" }} aria-hidden="true">
+            <input
+              type="text"
+              name="confirmEmail"
+              value={(formData as any).confirmEmail || ""}
+              onChange={(e) => updateFormData("confirmEmail" as any, e.target.value)}
+              tabIndex={-1}
+              autoComplete="off"
+            />
+          </div>
+
           {/* Business Location */}
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">

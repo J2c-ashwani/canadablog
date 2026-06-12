@@ -4,28 +4,14 @@ import { sendFollowupEmail } from "@/lib/emails/report-followups"
 import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
 import { getAllPrograms } from "@/lib/data/programs"
 
+import { isValidCronRequest } from "@/lib/admin/auth"
+
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
-function isAuthorized(request: NextRequest) {
-  const secret = process.env.CRON_SECRET
-  if (!secret && process.env.NODE_ENV !== "production") {
-    return true
-  }
-  if (!secret) {
-    return false
-  }
-
-  const authHeader = request.headers.get("authorization") || ""
-  const headerSecret = request.headers.get("x-cron-secret") || ""
-  const querySecret = request.nextUrl.searchParams.get("secret") || ""
-
-  return authHeader === `Bearer ${secret}` || headerSecret === secret || querySecret === secret
-}
-
 export async function GET(request: NextRequest) {
   try {
-    if (!isAuthorized(request)) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized followup cron execution." }, { status: 401 })
     }
 
