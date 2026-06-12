@@ -94,6 +94,13 @@ function getStoredLead() {
 
 export function trackGAEvent(eventName: string, params: Record<string, any> = {}) {
   if (typeof window === 'undefined') return;
+  
+  // Suppress local dev analytics hits to prevent sandbox data pollution
+  if (window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')) {
+    console.log(`[GA4 Sandbox Bypass] Suppressed event "${eventName}" on localhost:`, params);
+    return;
+  }
+  
   try {
     window.dataLayer = window.dataLayer || [];
     window.gtag = window.gtag || function gtagFallback() {
