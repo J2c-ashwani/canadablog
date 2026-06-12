@@ -77,6 +77,19 @@ export default function PortfolioClient() {
 
   const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq"
 
+  // Clarity Results & Paywall views tracking
+  useEffect(() => {
+    if (isUnlocked) {
+      if (typeof window !== "undefined" && (window as any).clarity) {
+        const clarityFn = (window as any).clarity;
+        clarityFn("event", "results_dashboard_viewed");
+        if (!reportPurchased && subscriptionStatus !== "active") {
+          clarityFn("event", "assessment_paywall_viewed");
+        }
+      }
+    }
+  }, [isUnlocked, reportPurchased, subscriptionStatus]);
+
   // Load from URL token or session storage on mount
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
@@ -290,6 +303,9 @@ export default function PortfolioClient() {
           label: 'checkout'
         },
         onClick: () => {
+          if (typeof window !== "undefined" && (window as any).clarity) {
+            (window as any).clarity("event", "paypal_checkout_clicked")
+          }
           const attributionSource = sessionStorage.getItem("fsi_attribution_source") || "";
           fetch("/api/subscriber/track-activity", {
             method: "POST",
@@ -327,6 +343,9 @@ export default function PortfolioClient() {
               })
               const resData = await res.json()
               if (resData.success) {
+                if (typeof window !== "undefined" && (window as any).clarity) {
+                  (window as any).clarity("event", "assessment_purchased")
+                }
                 setReportPurchased(true)
                 setReportTransactionId(orderId)
                 sessionStorage.setItem("fsi_report_purchased", "true")
@@ -653,6 +672,10 @@ export default function PortfolioClient() {
       if (!res.ok) {
         throw new Error("Failed to save draft.")
       }
+      const resData = await res.json()
+      if (typeof window !== "undefined" && (window as any).clarity) {
+        (window as any).clarity("event", "assessment_step1_complete")
+      }
       localStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
       setWizardStep(2)
     } catch (err: any) {
@@ -684,6 +707,19 @@ export default function PortfolioClient() {
       if (!res.ok) {
         throw new Error("Failed to update draft.")
       }
+      const resData = await res.json()
+      const returnedTier = resData.leadTier || "Tier C"
+      const tierShort = returnedTier.replace("Tier ", "").trim()
+
+      if (typeof window !== "undefined" && (window as any).clarity) {
+        const clarityFn = (window as any).clarity;
+        clarityFn("event", "assessment_completed")
+        clarityFn("set", "leadTier", tierShort)
+        clarityFn("set", "industry", profile.industry)
+        clarityFn("set", "province", profile.region)
+        clarityFn("set", "score", String(readiness))
+      }
+
       localStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
       setHasProfile(true)
       setIsUnlocked(true)
@@ -848,7 +884,12 @@ export default function PortfolioClient() {
 
               <Button
                 type="button"
-                onClick={() => setShowWelcome(false)}
+                onClick={() => {
+                  setShowWelcome(false)
+                  if (typeof window !== "undefined" && (window as any).clarity) {
+                    (window as any).clarity("event", "assessment_started")
+                  }
+                }}
                 className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl shadow-lg shadow-blue-600/15"
               >
                 Start Free Assessment <ArrowRight className="w-4 h-4" />

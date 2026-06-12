@@ -102,6 +102,12 @@ export default function ConsultationClient() {
     });
   }, []);
 
+  useEffect(() => {
+    if (typeof window !== 'undefined' && (window as any).clarity) {
+      (window as any).clarity("event", "strategy_session_page_view");
+    }
+  }, []);
+
   /* ── GA4 Fallback Booking Complete Tracking ── */
   useEffect(() => {
     if (params.scheduled && params.rid) {
@@ -289,6 +295,9 @@ export default function ConsultationClient() {
       onApprove: async (_data: any, actions: any) => {
         try {
           const details = await actions.order.capture();
+          if (typeof window !== 'undefined' && (window as any).clarity) {
+            (window as any).clarity("event", "strategy_session_paid");
+          }
           await markRecoveryPaid(details);
           const orderId = details?.id || '';
           window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}&tier=${selectedTier}&price=${price}&order=${encodeURIComponent(orderId)}`;

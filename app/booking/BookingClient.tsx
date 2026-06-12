@@ -52,6 +52,9 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
 
     // Track Purchase if we redirected here successfully after checkout
     if (success) {
+      if (typeof window !== 'undefined' && (window as any).clarity) {
+        (window as any).clarity("event", "strategy_session_paid");
+      }
       const orderId = searchParams.get('order') || '';
       const tier = searchParams.get('tier') || '';
       const priceStr = searchParams.get('price') || '';
@@ -97,6 +100,12 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
       }
     }
 
+    if (!success) {
+      if (typeof window !== 'undefined' && (window as any).clarity) {
+        (window as any).clarity("event", "strategy_session_page_view");
+      }
+    }
+
     // Simulate loading state for Calendly iframe
     const timer = setTimeout(() => setLoading(false), 800);
     return () => clearTimeout(timer);
@@ -136,6 +145,9 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
         console.log('[Calendly SDK] Calendly event detected:', data.event, data.payload);
         
         if (data.event === 'calendly.event_scheduled') {
+          if (typeof window !== 'undefined' && (window as any).clarity) {
+            (window as any).clarity("event", "strategy_session_booked");
+          }
           const payload = data.payload || {};
           const inviteeEmail = payload.invitee?.email || email;
           const inviteeName = payload.invitee?.name || name;

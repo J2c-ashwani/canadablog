@@ -83,7 +83,7 @@ export async function POST(request: NextRequest) {
         updates.leadActivity = JSON.stringify(activity)
 
         await SubscriberRepository.updateSubscriberPreferences(email, updates)
-        return NextResponse.json({ success: true, isNew: false })
+        return NextResponse.json({ success: true, isNew: false, leadTier: existing.leadTier || "Tier C" })
       } else {
         const country = (data?.country === "USA" || data?.country === "US") ? "USA" : "Canada"
         const region = data?.region || "ON"
@@ -117,7 +117,7 @@ export async function POST(request: NextRequest) {
             pagePath: pagePath || "/portfolio",
             leadActivity: JSON.stringify(leadActivityObj)
           })
-          return NextResponse.json({ success: true, isNew: true })
+          return NextResponse.json({ success: true, isNew: true, leadTier: tier })
         } else {
           return NextResponse.json({ error: res.error || "Failed to create draft." }, { status: 500 })
         }
@@ -161,7 +161,7 @@ export async function POST(request: NextRequest) {
       updates.leadActivity = JSON.stringify(activity)
       
       await SubscriberRepository.updateSubscriberPreferences(email, updates)
-      return NextResponse.json({ success: true })
+      return NextResponse.json({ success: true, leadTier: updates.leadTier || existing.leadTier || "Tier C" })
     }
 
     return NextResponse.json({ error: "Invalid step." }, { status: 400 })
