@@ -34,7 +34,7 @@ const CONTACT_CATEGORY_DEFAULT = "Funding Eligibility Question"
 const CONTACT_CATEGORIES = [
     "Funding Eligibility Question",
     "Grant Calculator Result",
-    "Strategy Session Question",
+    "Funding Audit Question",
     "Program Deadline Question",
     "Application Roadmap Question",
     "Partnership or Media Inquiry",
@@ -243,7 +243,7 @@ export default function ContactClient() {
                         <p className="contact-animate-in contact-animate-delay-1 mx-auto mt-5 max-w-xl text-lg leading-8 text-slate-600">
                             Tell us about your business and funding goal. We&apos;ll point you to
                             the strongest programs — and after you submit, you can unlock a
-                            private strategy session with a researched roadmap built for you.
+                            private Funding Eligibility Audit with a researched roadmap built for you.
                         </p>
                     </div>
                 </section>
@@ -284,7 +284,7 @@ export default function ContactClient() {
                     </div>
                     <div className="mx-auto max-w-4xl px-6 pb-6 text-center">
                         <p className="text-xs text-slate-400">
-                            The strategy session ($199) is available <span className="font-medium text-slate-500">after</span> you submit your message — no commitment upfront.
+                            The Funding Eligibility Audit ($199) is available <span className="font-medium text-slate-500">after</span> you submit your message — no commitment upfront.
                         </p>
                     </div>
                 </section>
@@ -309,7 +309,7 @@ export default function ContactClient() {
                                 <div>
                                     <p className="font-semibold text-emerald-900">Message received — check the next step.</p>
                                     <p className="mt-1 text-sm leading-6 text-emerald-800">
-                                        A secure checkout window will appear now so you can reserve your private strategy session if you&apos;d like a researched roadmap.
+                                        A secure checkout window will appear now so you can reserve your private Funding Eligibility Audit if you&apos;d like a researched roadmap.
                                     </p>
                                 </div>
                             </div>
@@ -448,7 +448,7 @@ export default function ContactClient() {
                             <Sparkles className="h-3.5 w-3.5" />
                             <span>
                                 After submitting, you&apos;ll have the option to book a
-                                <span className="font-semibold text-emerald-700"> $199 Strategy Session</span> — includes 2 hrs research + a private call
+                                <span className="font-semibold text-emerald-700"> $199 Funding Eligibility Audit</span> — includes 2 hrs research + a private call
                             </span>
                         </div>
                     </div>
@@ -477,7 +477,7 @@ export default function ContactClient() {
                                     <div>
                                         <p className="font-semibold text-slate-900">Deadline approaching?</p>
                                         <p className="text-sm text-slate-500">
-                                            Submit the form above — the strategy session after checkout gets you a
+                                            Submit the form above — the Funding Eligibility Audit after checkout gets you a
                                             researched answer before your window closes.
                                         </p>
                                     </div>
