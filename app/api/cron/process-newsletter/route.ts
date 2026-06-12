@@ -73,13 +73,14 @@ export async function GET(request: NextRequest) {
     const BATCH_SIZE = 50
     const batch = pendingLeads.slice(0, BATCH_SIZE)
     let successCount = 0
+    const errors: { email: string; error?: string }[] = []
 
     console.log(`🚀 Starting newsletter batch: sending ${batch.length} emails for campaign ${config.campaignId}...`)
 
     const sendPromises = batch.map(async (sub) => {
-      const emailSuccess = await NewsletterEngine.sendNewsletterToLead(config, sub)
+      const result = await NewsletterEngine.sendNewsletterToLead(config, sub)
       
-      if (emailSuccess) {
+      if (result.success) {
         let activity: any = {}
         try {
           if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
@@ -98,6 +99,8 @@ export async function GET(request: NextRequest) {
         })
 
         successCount++
+      } else {
+        errors.push({ email: sub.email || "unknown", error: result.error })
       }
     })
 
@@ -123,7 +126,8 @@ export async function GET(request: NextRequest) {
       successSends: successCount,
       totalCampaignSends: updatedSentCount,
       remainingTargets: Math.max(0, pendingLeads.length - batch.length),
-      campaignStatus: config.status
+      campaignStatus: config.status,
+      errors: errors.length > 0 ? errors : undefined
     })
 
   } catch (err: any) {

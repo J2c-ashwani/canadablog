@@ -196,13 +196,13 @@ export class NewsletterEngine {
   static async sendNewsletterToLead(
     config: NewsletterCampaignConfig,
     sub: SubscriberProfile
-  ): Promise<boolean> {
-    if (!sub.email) return false
+  ): Promise<{ success: boolean; error?: string }> {
+    if (!sub.email) return { success: false, error: "Missing email address" }
 
     try {
       if (config.campaignType === "new_funding") {
         const prog = getAllPrograms().find(p => p.slug === config.programSlug)
-        if (!prog) return false
+        if (!prog) return { success: false, error: `Program slug not found: ${config.programSlug}` }
 
         const res = await sendNewFundingAlertEmail({
           to: sub.email,
@@ -214,7 +214,7 @@ export class NewsletterEngine {
           region: sub.region || "ON",
           industry: sub.industry || "technology"
         })
-        return res.success
+        return { success: res.success, error: res.error }
       }
 
       if (config.campaignType === "match_update") {
@@ -228,7 +228,7 @@ export class NewsletterEngine {
             ? config.newProgramsList
             : ["Scale-Up Support Program", "Technology Growth Fund", "Provincial Job Grant"]
         })
-        return res.success
+        return { success: res.success, error: res.error }
       }
 
       if (config.campaignType === "missing_funding") {
@@ -239,13 +239,14 @@ export class NewsletterEngine {
           companyName: sub.companyName,
           missingFundingAmount: config.missingFundingAmount || "$120,000"
         })
-        return res.success
+        return { success: res.success, error: res.error }
       }
     } catch (err) {
       console.error(`Error sending newsletter to ${sub.email}:`, err)
+      return { success: false, error: String(err) }
     }
 
-    return false;
+    return { success: false, error: "Unknown campaign type" }
   }
 
   static async autoInitializeWeeklyCampaign(weekId: string): Promise<NewsletterCampaignConfig> {
