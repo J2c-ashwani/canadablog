@@ -304,7 +304,7 @@ export default function PortfolioClient() {
         createOrder: (data: any, actions: any) => {
           return actions.order.create({
             purchase_units: [{
-              description: `Executive Funding Opportunity Assessment - ${profile.companyName || "Your Company"}`,
+              description: `Executive Funding Assessment - ${profile.companyName || "Your Company"}`,
               amount: {
                 currency_code: "USD",
                 value: String(currentPrice)
@@ -527,6 +527,50 @@ export default function PortfolioClient() {
     }
 
     return { contributors, deductions }
+  }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting, profile.companySize])
+
+  // Composable "What This Means For Your Business" dynamic compositor
+  const whatThisMeans = useMemo(() => {
+    const sentences: string[] = []
+
+    // Sentence 1: Entity & baseline alignment
+    if (profile.isIncorporated && profile.hasRd) {
+      sentences.push("Your company qualifies for multiple high-yield innovation funding programs.")
+    } else if (profile.isIncorporated) {
+      sentences.push("Your incorporated entity status meets the primary baseline for Canadian funding programs.")
+    } else {
+      sentences.push("Your current unincorporated status limits entry to major project grants, but regional startup incentives remain open.")
+    }
+
+    // Sentence 2: Specific matched streams
+    const programFits: string[] = []
+    if (profile.hasRd) programFits.push("SR&ED tax-credit recovery")
+    if (profile.isIncorporated && profile.hasRd) programFits.push("IRAP project wage grants")
+    if (profile.hasExporting) programFits.push("CanExport international marketing grants")
+    if (profile.hasHiring) programFits.push("workforce expansion wage subsidies")
+
+    if (programFits.length > 0) {
+      if (programFits.length === 1) {
+        sentences.push(`The primary program fit is likely ${programFits[0]}.`)
+      } else {
+        const last = programFits.pop()
+        sentences.push(`Primary program fits include ${programFits.join(", ")} and ${last}.`)
+      }
+    }
+
+    // Sentence 3: Key action points / bottlenecks
+    const bottlenecks: string[] = []
+    if (!profile.isIncorporated) bottlenecks.push("CCPC entity registration")
+    if (!profile.hasRd) bottlenecks.push("technical R&D project structuring")
+    if (profile.companySize === "1-9") bottlenecks.push("co-investment financial verification")
+
+    if (bottlenecks.length > 0) {
+      sentences.push(`However, key requirements like ${bottlenecks.join(" and ")} must be structured correctly to pass review.`)
+    } else {
+      sentences.push("To proceed, documentation readiness and application sequencing should be structured to maximize operational stack yields.")
+    }
+
+    return sentences.join(" ")
   }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting, profile.companySize])
 
   // Calculate Remaining Trial Days
@@ -1152,8 +1196,43 @@ export default function PortfolioClient() {
       )}
       {/* 1. TOP SUMMARY BLOCK */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
-        {/* Score & Benchmark Block */}
-        <Card className="md:col-span-7 border-slate-200 bg-white shadow-xs rounded-2xl flex flex-col justify-between overflow-hidden">
+        {/* Estimated Funding Potential Block (First) */}
+        <Card className="md:col-span-6 border-emerald-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white shadow-md rounded-2xl flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+          <CardHeader className="p-6 pb-2 relative z-10 text-left">
+            <span className="text-emerald-400 text-[10px] font-black uppercase tracking-wider block">Estimated Funding Potential</span>
+            <CardTitle className="text-3xl sm:text-4xl font-black mt-1 text-white">
+              {stackingRange.formatted}
+            </CardTitle>
+            <CardDescription className="text-slate-300 text-xs">
+              Combined potential range from eligible programs checked below.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="p-6 pt-2 relative z-10 flex flex-col justify-between h-full text-left">
+            <p className="text-[10.5px] text-slate-400 leading-relaxed font-semibold">
+              Maximize your capital yield. Stacking regional grants, tax credits, and training incentives maximizes operational budgets without equity dilution.
+            </p>
+            
+            <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
+              <span className="text-[10px] text-slate-400">Programs Stacked: {checkedSlugs.length}</span>
+              <button
+                onClick={() => {
+                  sessionStorage.removeItem("fsi_funding_profile")
+                  setHasProfile(false)
+                  setIsUnlocked(false)
+                  setWizardStep(1)
+                  setShowWelcome(true)
+                }}
+                className="text-[10px] text-blue-400 hover:text-blue-300 font-extrabold underline bg-transparent"
+              >
+                Reset Screener
+              </button>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Score & Benchmark Block (Second) */}
+        <Card className="md:col-span-6 border-slate-200 bg-white shadow-xs rounded-2xl flex flex-col justify-between overflow-hidden">
           <div className="bg-gradient-to-r from-blue-700 to-indigo-900 p-6 text-white flex justify-between items-start gap-4">
             <div>
               <span className="text-[10px] font-black uppercase tracking-wider text-blue-300 block">Assessment Complete</span>
@@ -1218,42 +1297,18 @@ export default function PortfolioClient() {
             </div>
           </CardContent>
         </Card>
-
-        {/* Opportunity Range Block */}
-        <Card className="md:col-span-5 border-emerald-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white shadow-md rounded-2xl flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
-          <CardHeader className="p-6 pb-2 relative z-10">
-            <span className="text-emerald-400 text-[10px] font-black uppercase tracking-wider block">Estimated Funding Stack</span>
-            <CardTitle className="text-2xl font-black mt-1 text-white">
-              {stackingRange.formatted}
-            </CardTitle>
-            <CardDescription className="text-slate-300 text-xs">
-              Combined potential range from eligible programs checked below.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="p-6 pt-2 relative z-10 flex flex-col justify-between h-full">
-            <p className="text-[10px] text-slate-400 leading-relaxed font-medium">
-              Maximize your capital yield. Stacking regional grants, tax credits, and training incentives maximizes operational budgets without equity dilution.
-            </p>
-            
-            <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
-              <span className="text-[10px] text-slate-400">Programs Stacked: {checkedSlugs.length}</span>
-              <button
-                onClick={() => {
-                  sessionStorage.removeItem("fsi_funding_profile")
-                  setHasProfile(false)
-                  setIsUnlocked(false)
-                  setWizardStep(1)
-                  setShowWelcome(true)
-                }}
-                className="text-[10px] text-blue-400 hover:text-blue-300 font-extrabold underline bg-transparent"
-              >
-                Reset Screener
-              </button>
-            </div>
-          </CardContent>
-        </Card>
       </div>
+
+      {/* WHAT THIS MEANS FOR YOUR BUSINESS */}
+      <Card className="border border-blue-200 bg-blue-50/20 shadow-xs rounded-2xl p-6 text-left">
+        <div className="flex items-center gap-2 mb-2">
+          <Info className="w-5 h-5 text-blue-700" />
+          <h4 className="font-extrabold text-slate-900 text-sm tracking-tight">What This Means For Your Business</h4>
+        </div>
+        <p className="text-xs text-slate-700 leading-relaxed font-semibold">
+          {whatThisMeans}
+        </p>
+      </Card>
 
       {/* OPPORTUNITY FLAGS SECTION */}
       {opportunityFlags.length > 0 && (
@@ -1324,7 +1379,7 @@ export default function PortfolioClient() {
               <div className="text-left space-y-3 max-w-xl mx-auto bg-slate-900/60 p-5 border border-slate-800/80 rounded-2xl">
                 <span className="text-[10px] font-black text-indigo-400 uppercase tracking-wider block">Detailed Analysis Locked</span>
                 <p className="text-slate-300 text-xs font-semibold">
-                  Unlock the full Executive Funding Opportunity Assessment report to access:
+                  Unlock the full Executive Funding Assessment report to access:
                 </p>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[11px] text-slate-300 font-medium">
                   <li className="flex items-center gap-2">
@@ -1379,13 +1434,30 @@ export default function PortfolioClient() {
                 <div className="absolute top-0 right-4 -translate-y-1/2 bg-indigo-600 text-white font-black text-[9px] px-2.5 py-0.5 rounded-full uppercase tracking-wider">
                   Popular
                 </div>
-                <div className="space-y-2">
+                <div className="space-y-2 text-left">
                   <span className="text-[10px] font-black text-indigo-400 uppercase tracking-wider block">Best Value</span>
-                  <h4 className="font-extrabold text-sm text-slate-100">Funding Opportunity Assessment</h4>
+                  <h4 className="font-extrabold text-sm text-slate-100">Executive Funding Assessment</h4>
                   <p className="text-[10px] text-slate-300 leading-relaxed">
                     Secure your digital + printable PDF assessment with stacking guidelines, typical yields, and pre-qualification checklist.
                   </p>
                 </div>
+
+                {/* Social Proof Above Checkout */}
+                <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-xl text-[10px] space-y-2 text-left">
+                  <p className="text-slate-300 font-bold leading-normal">
+                    Thousands of Canadian funding programs exist. Most businesses apply to the wrong ones first. The Executive Funding Assessment identifies which opportunities deserve priority.
+                  </p>
+                  <div className="flex flex-wrap gap-x-2 gap-y-1 text-[9px] text-slate-400 font-extrabold">
+                    <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> IRAP</span>
+                    <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> SR&ED</span>
+                    <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> CanExport</span>
+                    <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> Provincial Grants</span>
+                  </div>
+                  <div className="pt-1 border-t border-slate-800/80 text-[9px] text-slate-400 font-extrabold">
+                    Average identified range: <span className="text-white">$145,000+</span>
+                  </div>
+                </div>
+
                 <div className="pt-2">
                   <span className="line-through text-slate-500 text-xs block">Normally $499</span>
                   <span className="text-3xl font-black text-white">${publicPrice}</span>
@@ -1471,7 +1543,7 @@ export default function PortfolioClient() {
               <CheckCircle2 className="w-5 h-5 text-emerald-400 animate-pulse" />
             </div>
             <div className="text-left">
-              <span className="font-bold text-slate-900 text-sm block">Executive Funding Opportunity Assessment Unlocked</span>
+              <span className="font-bold text-slate-900 text-sm block">Executive Funding Assessment Unlocked</span>
               <p className="text-[10px] text-slate-500">Your transaction ID is {reportTransactionId}. PDF generation and download options are fully active.</p>
             </div>
           </div>
@@ -1750,6 +1822,31 @@ export default function PortfolioClient() {
           ))}
         </div>
       </div>
+
+      {/* INCLUDED IN EXECUTIVE ASSESSMENT CURIOSITY GAP CARD */}
+      {isUnlocked && !reportPurchased && subscriptionStatus !== "active" && (
+        <Card className="border border-slate-200 bg-white shadow-xs rounded-2xl p-6 text-left max-w-xl mx-auto space-y-4">
+          <h4 className="font-extrabold text-slate-900 text-sm tracking-tight border-b border-slate-100 pb-2 flex items-center gap-2">
+            <Lock className="w-4 h-4 text-indigo-600" />
+            Included In Executive Funding Assessment
+          </h4>
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            {[
+              "Detailed Eligibility Analysis",
+              "Funding Stacking Strategy",
+              "Application Roadmap",
+              "Required Documentation Checklist",
+              "Program Priority Ranking",
+              "Why We Excluded 17 Other Programs"
+            ].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2 p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs text-slate-600 font-semibold select-none">
+                <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
+                <span className="truncate">{item}</span>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
 
       {/* EMAIL CAPTURE LOCK WALL CARD - Bypassed and replaced by upfront Step 1 phone collection */}
 
