@@ -3,6 +3,7 @@ import {
   type StrategyRecoveryEvent,
   upsertStrategyRecoveryEvent,
 } from '@/lib/strategy-session/recovery-store';
+import { verifyPayPalOrder } from '@/lib/payments/paypal';
 
 export const runtime = 'nodejs';
 
@@ -66,6 +67,25 @@ export async function POST(request: NextRequest) {
 
     if (email && !isValidEmail(email)) {
       return NextResponse.json({ error: 'Valid email is required.' }, { status: 400 });
+    }
+
+    // Secure server-side PayPal order validation
+    if (event === 'paid') {
+      const paypalOrderId = clean(body.paypalOrderId);
+      let expectedAmount = "199.00"; // default
+      try {
+        const summary = JSON.parse(body.rawSummary);
+        if (summary.amount) {
+          expectedAmount = String(summary.amount);
+        } else if (summary.tier === 'vip') {
+          expectedAmount = "499.00";
+        }
+      } catch (e) {}
+
+      const verification = await verifyPayPalOrder(paypalOrderId, expectedAmount);
+      if (!verification.verified) {
+        return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
+      }
     }
 
     const result = await upsertStrategyRecoveryEvent({

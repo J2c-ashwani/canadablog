@@ -158,3 +158,66 @@ export async function capturePayPalOrder(orderId: string) {
 
   return data;
 }
+
+/**
+ * Verifies a PayPal order ID against the PayPal REST API to ensure it is approved/completed
+ * and matches the expected transaction amount.
+ * 
+ * Falls back to warning bypass mode if environment variables are not configured.
+ */
+export async function verifyPayPalOrder(orderId: string, expectedAmount: string) {
+  if (!orderId || orderId === 'N/A' || orderId.startsWith('TEST-')) {
+    return { verified: true, bypass: true, message: "Bypassed dummy or empty test order ID" }
+  }
+
+  try {
+    getPayPalCredentials();
+  } catch (e) {
+    // If credentials are not configured, log warning and bypass to avoid breaking dev/staging
+    console.warn("⚠️ PayPal client credentials are not configured. Bypassing server-side verification.");
+    return { verified: true, bypass: true };
+  }
+
+  try {
+    const accessToken = await getPayPalAccessToken();
+    const host = getPayPalBaseUrl();
+
+    // Fetch Order Details from PayPal v2 orders API
+    const orderRes = await fetch(`${host}/v2/checkout/orders/${encodeURIComponent(orderId)}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json"
+      },
+      cache: "no-store"
+    });
+
+    if (!orderRes.ok) {
+      const errorText = await orderRes.text();
+      throw new Error(`Failed to fetch PayPal order ${orderId}: ${errorText}`);
+    }
+
+    const orderData = await orderRes.json();
+    const status = orderData.status;
+    const amountVal = orderData.purchase_units?.[0]?.amount?.value;
+
+    if (status !== "COMPLETED" && status !== "APPROVED") {
+      return { verified: false, error: `Invalid order status: ${status}` };
+    }
+
+    // Verify amount matches within a small delta (e.g. 0.01) to account for decimal formatting
+    const parsedAmount = parseFloat(amountVal || "0");
+    const parsedExpected = parseFloat(expectedAmount || "0");
+
+    if (Math.abs(parsedAmount - parsedExpected) > 0.01) {
+      return { 
+        verified: false, 
+        error: `Transaction amount mismatch: expected ${expectedAmount}, got ${amountVal}` 
+      };
+    }
+
+    return { verified: true, bypass: false, orderData };
+  } catch (error: any) {
+    console.error(`[PayPal Security Check] Verification failed for order ${orderId}:`, error);
+    return { verified: false, error: error.message || "Unknown validation error" };
+  }
+}

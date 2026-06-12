@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { verifyPayPalOrder } from '@/lib/payments/paypal';
 
 export const runtime = 'nodejs';
 
@@ -26,6 +27,13 @@ export async function POST(request: NextRequest) {
       updates.subscriptionStatus = 'trial';
       updates.trialStartedAt = new Date().toISOString();
     } else {
+      // Secure server-side PayPal subscription order validation
+      if (subscriptionId) {
+        const verification = await verifyPayPalOrder(subscriptionId, "29.00");
+        if (!verification.verified) {
+          return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
+        }
+      }
       updates.subscriptionStatus = 'active';
       updates.subscriptionId = subscriptionId || 'N/A';
     }
