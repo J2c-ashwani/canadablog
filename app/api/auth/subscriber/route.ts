@@ -42,6 +42,9 @@ export async function GET(request: NextRequest) {
         readinessScore: found.readinessScore || 70,
         readinessBand: found.readinessBand || 'Good Candidate',
         fundingInterests: found.fundingInterests || [],
+        phone: found.phone || '',
+        businessStage: found.businessStage || '',
+        fundingPurpose: found.fundingPurpose || '',
       }
     });
   } catch (err: any) {

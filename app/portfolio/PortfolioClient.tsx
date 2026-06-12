@@ -573,6 +573,38 @@ export default function PortfolioClient() {
     return sentences.join(" ")
   }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting, profile.companySize])
 
+  // Dynamic Primary Risk selector for the Executive Summary banner
+  const primaryRisk = useMemo(() => {
+    if (!profile.isIncorporated) {
+      return "Business is not incorporated as a Canadian CCPC."
+    }
+    if (!profile.hasRd) {
+      return "Missing documented R&D process."
+    }
+    if (!profile.hasHiring) {
+      return "No active hiring plans for workforce scaling."
+    }
+    if (!profile.hasExporting) {
+      return "No international expansion or export plans."
+    }
+    return "Documentation readiness and application sequencing validation."
+  }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting])
+
+  // Cleaner function to format program names for layout space constraints
+  const getShortProgramName = (fullName: string) => {
+    const match = fullName.match(/\(([^)]+)\)/);
+    if (match && match[1]) {
+      return match[1];
+    }
+    if (fullName.includes("CanExport")) return "CanExport";
+    if (fullName.includes("Sustainable Canadian Agricultural")) return "Sustainable Cap (Agri)";
+    if (fullName.includes("Alberta Innovates")) return "Alberta Innovates";
+    if (fullName.includes("Quebec R&D")) return "Quebec R&D Tax Credit";
+    if (fullName.includes("Mitacs")) return "Mitacs";
+    return fullName.replace(" Program", "").replace(" Grant", "").replace(" Tax Credit", "").replace(" SMEs", "");
+  };
+
+
   // Calculate Remaining Trial Days
   const trialRemainingDays = useMemo(() => {
     if (subscriptionStatus !== 'trial' || !trialStartedAt) return 0
@@ -1195,49 +1227,89 @@ export default function PortfolioClient() {
         </div>
       )}
       {/* EXECUTIVE SUMMARY BRIEFING BANNER */}
-      <Card className="border border-indigo-200/80 bg-gradient-to-r from-indigo-50/60 to-blue-50/40 shadow-xs rounded-2xl p-6 text-left animate-in fade-in duration-300">
-        <div className="flex items-center gap-2 mb-3.5">
-          <Sparkles className="w-5 h-5 text-indigo-700 animate-pulse" />
-          <h3 className="font-extrabold text-slate-900 text-sm tracking-tight uppercase">Executive Summary</h3>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
-          
-          <div className="md:col-span-8 space-y-2">
-            <p className="text-xs text-slate-800 leading-relaxed font-bold">
-              Based on your answers, your business appears to have <span className="text-indigo-700">{readiness.score >= 70 ? "strong" : "active"} alignment</span> with innovation and growth funding.
-            </p>
-            <div className="text-[11px] text-slate-600 font-semibold space-y-1">
-              <span className="font-extrabold text-slate-800 uppercase tracking-wider text-[9px] block">Primary Opportunity Gap:</span>
-              <p className="flex items-start gap-1">
-                <span className="text-amber-600 font-bold shrink-0">⚠</span>
-                <span>
-                  {opportunityFlags.length > 0 
-                    ? `${opportunityFlags[0].title}: ${opportunityFlags[0].text}`
-                    : "Documentation readiness and application sequencing require formal verification."}
+      <Card className="border-2 border-indigo-600 bg-slate-950 text-white shadow-xl rounded-3xl overflow-hidden p-8 text-left animate-in fade-in duration-300 relative">
+        <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+        
+        <div className="relative z-10 space-y-6">
+          <div className="flex items-center justify-between border-b border-slate-800 pb-4">
+            <div className="flex items-center gap-2.5">
+              <div className="w-7 h-7 rounded-lg bg-indigo-600/20 flex items-center justify-center border border-indigo-500/30">
+                <Sparkles className="w-4 h-4 text-indigo-400 animate-pulse" />
+              </div>
+              <h3 className="font-extrabold text-white text-sm tracking-tight uppercase">Executive Summary</h3>
+            </div>
+            <Badge className="bg-indigo-500/20 text-indigo-300 hover:bg-indigo-500/20 border border-indigo-500/30 font-black tracking-widest text-[9px] uppercase px-2.5 py-1">
+              Analysis Complete
+            </Badge>
+          </div>
+
+          <p className="text-xs sm:text-sm text-slate-200 leading-relaxed font-bold">
+            Based on your answers, your business appears to have{" "}
+            <span className="text-indigo-400 underline decoration-indigo-400/30 decoration-2 underline-offset-4">
+              {readiness.score >= 70 ? "strong" : "active"} alignment
+            </span>{" "}
+            with innovation and growth funding.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 pt-2">
+            
+            {/* Column 1: Estimated Funding Opportunity */}
+            <div className="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex flex-col justify-between space-y-2">
+              <div>
+                <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block">
+                  Estimated Funding Opportunity
                 </span>
+                <span className="text-2xl font-black text-indigo-400 block mt-1">
+                  {stackingRange.formatted}
+                </span>
+              </div>
+              <p className="text-[9px] text-slate-500 leading-relaxed">
+                Combined potential range from qualified intakes.
               </p>
             </div>
-          </div>
 
-          <div className="md:col-span-4 p-4 bg-white/95 border border-indigo-100 rounded-xl space-y-2.5 shadow-2xs">
-            <div>
-              <span className="text-[8px] font-black uppercase text-slate-400 block tracking-wider">Estimated Opportunity</span>
-              <span className="text-lg font-black text-indigo-900">{stackingRange.formatted}</span>
+            {/* Column 2: Highest Priority Programs */}
+            <div className="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex flex-col justify-between space-y-2">
+              <div>
+                <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block mb-1.5">
+                  Highest Priority Programs
+                </span>
+                <ol className="text-xs font-bold text-slate-200 space-y-1">
+                  {topMatches.slice(0, 3).map((item, idx) => (
+                    <li key={idx} className="flex items-center gap-1.5 truncate">
+                      <span className="text-indigo-400 font-extrabold">{idx + 1}.</span>
+                      <span>{getShortProgramName(item.program.name)}</span>
+                    </li>
+                  ))}
+                  {topMatches.length === 0 && (
+                    <li className="text-[10px] text-slate-500 italic">No qualified matches.</li>
+                  )}
+                </ol>
+              </div>
+              <p className="text-[9px] text-slate-500 leading-relaxed">
+                Top recommended intake streams.
+              </p>
             </div>
-            <div>
-              <span className="text-[8px] font-black uppercase text-slate-400 block tracking-wider">Priority Pipeline</span>
-              <ol className="text-[10px] font-bold text-slate-700 space-y-0.5">
-                {topMatches.slice(0, 3).map((item, idx) => (
-                  <li key={idx} className="truncate">
-                    {idx + 1}. {item.program.name.replace(" Tax Credit", "").replace(" Grant", "")}
-                  </li>
-                ))}
-              </ol>
-            </div>
-          </div>
 
+            {/* Column 3: Primary Risk Factor */}
+            <div className="p-4 bg-slate-900/60 border border-slate-800 rounded-2xl flex flex-col justify-between space-y-2">
+              <div>
+                <span className="text-[9px] font-black uppercase tracking-wider text-slate-400 block">
+                  Primary Risk
+                </span>
+                <span className="text-xs font-bold text-amber-400 block mt-1.5 leading-normal">
+                  ⚠ {primaryRisk}
+                </span>
+              </div>
+              <p className="text-[9px] text-slate-500 leading-relaxed">
+                Action required to verify program compliance.
+              </p>
+            </div>
+
+          </div>
         </div>
       </Card>
+
 
       {/* 1. TOP SUMMARY BLOCK */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
@@ -1253,23 +1325,67 @@ export default function PortfolioClient() {
               Combined potential range from eligible programs checked below.
             </CardDescription>
 
-            {/* Credibility verification breakdown */}
-            <div className="mt-4 pt-3 border-t border-slate-800/40 text-[9px] text-slate-400 space-y-1.5 text-left">
-              <span className="font-extrabold uppercase tracking-wider block text-slate-500">Calculated using:</span>
-              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 font-semibold text-slate-300">
-                <span>✓ Company size: {profile.companySize} FTEs</span>
-                <span>✓ Province: {profile.region}</span>
-                <span>✓ Industry: {profile.industry}</span>
-                <span>✓ Hiring plans: {profile.hasHiring ? "Yes" : "No"}</span>
-                <span>✓ R&D activities: {profile.hasRd ? "Yes" : "No"}</span>
-                <span>✓ Export goals: {profile.hasExporting ? "Yes" : "No"}</span>
+            {/* How We Calculated This (Credibility block) */}
+            <div className="mt-5 pt-4 border-t border-slate-800/60 text-left space-y-2">
+              <span className="font-extrabold uppercase tracking-wider text-[10px] text-emerald-400 block">
+                How We Calculated This
+              </span>
+              <p className="text-[10px] text-slate-400 leading-normal">
+                Your estimated funding opportunity is dynamically computed using your core business parameters:
+              </p>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-2 font-semibold text-slate-300 text-[10px] pt-1">
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 font-extrabold">✓</span> Company size ({profile.companySize} FTEs)
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 font-extrabold">✓</span> Province ({profile.region})
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 font-extrabold">✓</span> Industry ({profile.industry})
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 font-extrabold">✓</span> Hiring plans ({profile.hasHiring ? "Yes" : "No"})
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 font-extrabold">✓</span> R&D activities ({profile.hasRd ? "Yes" : "No"})
+                </span>
+                <span className="flex items-center gap-1.5">
+                  <span className="text-emerald-500 font-extrabold">✓</span> Export goals ({profile.hasExporting ? "Yes" : "No"})
+                </span>
               </div>
             </div>
+
           </CardHeader>
-          <CardContent className="p-6 pt-2 relative z-10 flex flex-col justify-between h-full text-left">
+          <CardContent className="p-6 pt-2 relative z-10 flex flex-col justify-between h-full text-left space-y-4">
             <p className="text-[10.5px] text-slate-400 leading-relaxed font-semibold">
               Maximize your capital yield. Stacking regional grants, tax credits, and training incentives maximizes operational budgets without equity dilution.
             </p>
+
+            {/* Potential Breakdown */}
+            <div className="pt-3.5 border-t border-slate-800/60 space-y-2.5">
+              <span className="font-extrabold uppercase tracking-wider text-[10px] text-indigo-400 block">
+                Potential Breakdown
+              </span>
+              <div className="space-y-2 pt-0.5">
+                {topMatches.slice(0, 3).map((item, idx) => {
+                  const range = PortfolioScoreEngine.getOpportunityRange(item.program.slug, item.program.fundingAmount);
+                  const formatVal = (v: number) => `$${(v / 1000).toFixed(0)}k`;
+                  return (
+                    <div key={idx} className="flex justify-between items-center text-[10.5px] font-bold text-slate-200">
+                      <span className="text-slate-300">{getShortProgramName(item.program.name)}</span>
+                      <span className="text-emerald-400">{formatVal(range.min)} - {formatVal(range.max)}+</span>
+                    </div>
+                  );
+                })}
+                {profile.hasHiring && (
+                  <div className="flex justify-between items-center text-[10.5px] font-bold text-slate-200">
+                    <span className="text-slate-300">Wage & Hiring Grants</span>
+                    <span className="text-emerald-400">$15k - $30k</span>
+                  </div>
+                )}
+              </div>
+            </div>
+
             
             <div className="mt-4 pt-4 border-t border-slate-800/80 flex items-center justify-between gap-4">
               <span className="text-[10px] text-slate-400">Programs Stacked: {checkedSlugs.length}</span>
@@ -1433,6 +1549,22 @@ export default function PortfolioClient() {
                 </div>
               </div>
 
+              {/* Potential Opportunity Gap Banner */}
+              <div className="p-5 bg-amber-500/10 border-2 border-dashed border-amber-500/30 rounded-2xl text-left space-y-2 max-w-xl mx-auto">
+                <div className="flex items-center gap-2">
+                  <span className="text-amber-500 text-xs font-extrabold">⚠</span>
+                  <span className="text-[9px] font-black text-amber-400 uppercase tracking-widest block">
+                    Potential Opportunity Gap
+                  </span>
+                </div>
+                <h4 className="text-xs font-black text-white">
+                  Money You May Be Leaving On The Table
+                </h4>
+                <p className="text-[11px] text-slate-300 leading-relaxed font-semibold">
+                  You appear aligned with <span className="text-amber-400 font-extrabold">{eligibleMatches.length} funding programs</span>. Only 3 are currently visible on this basic dashboard. The remaining programs and stack strategies are currently locked.
+                </p>
+              </div>
+
               {/* Unlock Value Prop list */}
               <div className="text-left space-y-3 max-w-xl mx-auto bg-slate-900/60 p-5 border border-slate-800/80 rounded-2xl">
                 <span className="text-[10px] font-black text-indigo-400 uppercase tracking-wider block">Detailed Analysis Locked</span>
@@ -1500,21 +1632,44 @@ export default function PortfolioClient() {
                   </p>
                 </div>
 
-                {/* Social Proof Above Checkout */}
-                <div className="p-3 bg-slate-900/80 border border-slate-800 rounded-xl text-[10px] space-y-2 text-left">
-                  <p className="text-slate-300 font-bold leading-normal">
-                    Thousands of Canadian funding programs exist. Most businesses apply to the wrong ones first. The Executive Funding Assessment identifies which opportunities deserve priority.
+                {/* ROI Value Equation Framing */}
+                <div className="p-3.5 bg-slate-900/95 border border-slate-800 rounded-xl text-[10.5px] space-y-2.5 text-left">
+                  <span className="text-[9px] font-black text-indigo-400 uppercase tracking-wider block">Value Equation</span>
+                  <div className="space-y-1.5 font-bold text-slate-200">
+                    <div className="flex justify-between items-center text-[10px]">
+                      <span className="text-slate-400">Potential Opportunity Identified:</span>
+                      <span className="text-white font-extrabold">{stackingRange.formatted}</span>
+                    </div>
+                    <div className="flex justify-between items-center border-t border-slate-800/40 pt-1.5 text-[10px]">
+                      <span className="text-slate-400">Assessment Investment:</span>
+                      <span className="text-white font-extrabold">${publicPrice}</span>
+                    </div>
+                    <div className="flex justify-between items-center border-t border-slate-800/40 pt-1.5 text-[10.5px] text-emerald-400 font-black">
+                      <span>Potential return multiple:</span>
+                      <span>
+                        {(() => {
+                          const minVal = stackingRange.min || 180000;
+                          const yieldMultiplier = Math.floor(minVal / publicPrice);
+                          return `${yieldMultiplier}x+`;
+                        })()}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Social Proof Checklist */}
+                <div className="p-3 bg-slate-900/60 border border-slate-850 rounded-xl text-[10px] space-y-2 text-left">
+                  <p className="text-slate-400 font-bold leading-normal text-[9.5px]">
+                    Identifies priority stack pipelines for:
                   </p>
-                  <div className="flex flex-wrap gap-x-2 gap-y-1 text-[9px] text-slate-400 font-extrabold">
+                  <div className="flex flex-wrap gap-x-2 gap-y-1 text-[9px] text-slate-300 font-extrabold pt-0.5">
                     <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> IRAP</span>
                     <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> SR&ED</span>
                     <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> CanExport</span>
                     <span className="flex items-center gap-0.5"><span className="text-emerald-500">✓</span> Provincial Grants</span>
                   </div>
-                  <div className="pt-1 border-t border-slate-800/80 text-[9px] text-slate-400 font-extrabold">
-                    Average identified range: <span className="text-white">$145,000+</span>
-                  </div>
                 </div>
+
 
                 <div className="pt-2">
                   <span className="line-through text-slate-500 text-xs block">Normally $499</span>
@@ -1895,7 +2050,7 @@ export default function PortfolioClient() {
               "Application Roadmap",
               "Required Documentation Checklist",
               "Program Priority Ranking",
-              "Why We Excluded 17 Other Programs"
+              `Why We Excluded ${allPrograms.length - eligibleMatches.length} Other Programs`
             ].map((item, idx) => (
               <div key={idx} className="flex items-center gap-2 p-2.5 bg-slate-50 border border-slate-100 rounded-xl text-xs text-slate-600 font-semibold select-none">
                 <Lock className="w-3.5 h-3.5 text-slate-400 shrink-0" />
