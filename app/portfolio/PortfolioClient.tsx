@@ -488,6 +488,47 @@ export default function PortfolioClient() {
     return flags.slice(0, 3)
   }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting, profile.companySize])
 
+  // Funding Match Score Explanation Engine
+  const scoreFactors = useMemo(() => {
+    const contributors: { name: string; value: number }[] = []
+    const deductions: { name: string; value: number }[] = []
+
+    if (profile.isIncorporated) {
+      contributors.push({ name: "Incorporated Canadian CCPC", value: 25 })
+    } else {
+      deductions.push({ name: "Missing Incorporation Status", value: -25 })
+    }
+
+    if (profile.hasRd) {
+      contributors.push({ name: "Active Technology R&D Operations", value: 25 })
+    } else {
+      deductions.push({ name: "No Active Technical R&D Operations", value: -25 })
+    }
+
+    if (profile.hasHiring) {
+      contributors.push({ name: "Planned Workforce Expansion", value: 15 })
+    } else {
+      deductions.push({ name: "No Active Hiring Projections", value: -15 })
+    }
+
+    if (profile.hasExporting) {
+      contributors.push({ name: "Active International Export Plans", value: 15 })
+    } else {
+      deductions.push({ name: "No Export Projections", value: -15 })
+    }
+
+    const size = profile.companySize || "1-9"
+    if (size === "1-9" || size === "10-49") {
+      contributors.push({ name: `SME Scale Cohort (${size} FTEs)`, value: 20 })
+    } else if (size === "50-99" || size === "100-499") {
+      contributors.push({ name: `Mid-Sized Cohort (${size} FTEs)`, value: 15 })
+    } else {
+      contributors.push({ name: `Enterprise Cohort (${size} FTEs)`, value: 10 })
+    }
+
+    return { contributors, deductions }
+  }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting, profile.companySize])
+
   // Calculate Remaining Trial Days
   const trialRemainingDays = useMemo(() => {
     if (subscriptionStatus !== 'trial' || !trialStartedAt) return 0
@@ -1116,46 +1157,64 @@ export default function PortfolioClient() {
           <div className="bg-gradient-to-r from-blue-700 to-indigo-900 p-6 text-white flex justify-between items-start gap-4">
             <div>
               <span className="text-[10px] font-black uppercase tracking-wider text-blue-300 block">Assessment Complete</span>
-              <h2 className="text-xl font-extrabold tracking-tight mt-1">Funding Readiness Profile</h2>
+              <h2 className="text-xl font-extrabold tracking-tight mt-1">Funding Match Profile</h2>
             </div>
             <Badge className="bg-white/20 text-white hover:bg-white/20 font-bold py-0.5 px-2">
               🏆 Verified
             </Badge>
           </div>
-          <CardContent className="p-6 flex flex-col sm:flex-row items-center gap-6">
-            {/* Visual Ring */}
-            <div className="relative flex items-center justify-center shrink-0">
-              <svg className="w-28 h-28 transform -rotate-90">
-                <circle cx="56" cy="56" r="48" stroke="#f1f5f9" strokeWidth="8" fill="transparent" />
-                <circle 
-                  cx="56" 
-                  cy="56" 
-                  r="48" 
-                  stroke="#10b981" 
-                  strokeWidth="8" 
-                  fill="transparent" 
-                  strokeDasharray={301.6} 
-                  strokeDashoffset={301.6 - (readiness.score / 100) * 301.6} 
-                  strokeLinecap="round"
-                />
-              </svg>
-              <div className="absolute flex flex-col items-center">
-                <span className="text-2xl font-black text-slate-900">{readiness.score}</span>
-                <span className="text-[9px] font-bold text-slate-400 uppercase">Score</span>
-              </div>
-            </div>
-
-            {/* Benchmark details */}
-            <div className="space-y-2 text-center sm:text-left">
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-[10px] font-extrabold px-3 py-1 uppercase tracking-wider">
+          
+          <CardContent className="p-6 space-y-6">
+            {/* DOMINATING SCORE SECTION */}
+            <div className="text-center py-4 border-b border-slate-100 space-y-1">
+              <span className="text-5xl sm:text-6xl font-black text-slate-900 block tracking-tight leading-none">
+                {readiness.score}
+              </span>
+              <span className="text-[10px] font-black uppercase text-slate-400 tracking-widest block">
+                Funding Match Score
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-100 text-emerald-800 text-[10px] font-black px-3.5 py-1 uppercase tracking-wider mt-2 shadow-2xs">
                 {readiness.band}
               </span>
-              <p className="text-slate-800 text-xs leading-relaxed font-bold">
-                {readiness.benchmark}
-              </p>
-              <p className="text-slate-500 text-[10px]">
-                Calculated based on incorporation, technical R&D, export projections, and team scaling.
-              </p>
+            </div>
+
+            {/* SCORE EXPLANATION ENGINE */}
+            <div className="space-y-4 text-left">
+              <h4 className="text-[10px] font-black text-slate-400 uppercase tracking-widest">Why is my score {readiness.score}?</h4>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                {/* Contributors */}
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black text-emerald-600 uppercase tracking-wider block">Positive Drivers</span>
+                  <div className="space-y-1.5">
+                    {scoreFactors.contributors.map((factor, idx) => (
+                      <div key={idx} className="flex items-center gap-1.5 p-2 bg-emerald-50/40 border border-emerald-100/50 rounded-lg text-[10px] text-emerald-800 font-semibold leading-normal">
+                        <span className="font-extrabold text-emerald-600">+{factor.value}</span>
+                        <span>{factor.name}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+
+                {/* Deductions */}
+                <div className="space-y-2">
+                  <span className="text-[9px] font-black text-slate-500 uppercase tracking-wider block">Areas to Improve</span>
+                  <div className="space-y-1.5">
+                    {scoreFactors.deductions.length === 0 ? (
+                      <div className="p-2 bg-slate-50 rounded-lg text-[10px] text-slate-400 italic">
+                        No active deductions. Maximum score potential reached.
+                      </div>
+                    ) : (
+                      scoreFactors.deductions.map((factor, idx) => (
+                        <div key={idx} className="flex items-center gap-1.5 p-2 bg-slate-50 border border-slate-100 rounded-lg text-[10px] text-slate-600 font-semibold leading-normal">
+                          <span className="font-extrabold text-slate-400">{factor.value}</span>
+                          <span>{factor.name}</span>
+                        </div>
+                      ))
+                    )}
+                  </div>
+                </div>
+              </div>
             </div>
           </CardContent>
         </Card>
