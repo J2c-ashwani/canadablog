@@ -4,6 +4,7 @@ import { useState, useEffect, useCallback } from 'react';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
+import { safeSessionStorage } from '@/lib/storage';
 
 import {
   CheckCircle,
@@ -112,15 +113,15 @@ export default function ConsultationClient() {
   useEffect(() => {
     if (params.scheduled && params.rid) {
       const storageKey = `booking_complete_tracked_${params.rid}`;
-      if (!window.sessionStorage.getItem(storageKey)) {
+      if (!safeSessionStorage.getItem(storageKey)) {
         trackGAEvent('booking_complete', {
           recovery_id: params.rid,
           source: params.source,
-          utm_source: window.sessionStorage.getItem('fsi:utm_source') || 'N/A',
-          utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
-          utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
+          utm_source: safeSessionStorage.getItem('fsi:utm_source') || 'N/A',
+          utm_medium: safeSessionStorage.getItem('fsi:utm_medium') || 'N/A',
+          utm_campaign: safeSessionStorage.getItem('fsi:utm_campaign') || 'N/A',
         });
-        window.sessionStorage.setItem(storageKey, 'true');
+        safeSessionStorage.setItem(storageKey, 'true');
       }
     }
   }, [params.scheduled, params.rid, params.source]);
@@ -129,7 +130,7 @@ export default function ConsultationClient() {
   useEffect(() => {
     if (params.scheduled && params.rid && (params.email || params.inviteeUri)) {
       const storageKey = `checkout_landed_registered_${params.rid}`;
-      if (!window.sessionStorage.getItem(storageKey)) {
+      if (!safeSessionStorage.getItem(storageKey)) {
         fetch('/api/strategy-session/recovery', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
@@ -148,7 +149,7 @@ export default function ConsultationClient() {
         })
           .then((res) => res.json())
           .then((data) => {
-            window.sessionStorage.setItem(storageKey, 'true');
+            safeSessionStorage.setItem(storageKey, 'true');
             if (data?.email || data?.name) {
               setParams((prev) => ({
                 ...prev,
@@ -275,48 +276,59 @@ export default function ConsultationClient() {
       ? 'Funding Eligibility Audit & Roadmap'
       : 'VIP Funding Blueprint & Eligibility Audit';
 
-    (window as any).paypal.Buttons({
-      style: {
-        layout: 'vertical',
-        color: 'gold',
-        shape: 'rect',
-        label: 'pay',
-        height: 48
-      },
-      createOrder: (_data: any, actions: any) => {
-        setPaymentError(null);
-        return actions.order.create({
-          purchase_units: [{
-            amount: { value: price, currency_code: 'USD' },
-            description
-          }]
-        });
-      },
-      onApprove: async (_data: any, actions: any) => {
-        try {
-          const details = await actions.order.capture();
-          if (typeof window !== 'undefined' && (window as any).clarity) {
-            (window as any).clarity("event", "strategy_session_paid");
-          }
-          await markRecoveryPaid(details);
-          const orderId = details?.id || '';
-          window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}&tier=${selectedTier}&price=${price}&order=${encodeURIComponent(orderId)}`;
-        } catch (err) {
-          console.error("Payment capture error:", err);
-          setPaymentError("Payment was processed, but we encountered an issue locking your slot. Please contact support.");
-        }
-      },
+    if (typeof (window as any).paypal.Buttons !== 'function') {
+      console.error("PayPal SDK is loaded but Buttons function is not available.");
+      setPaymentError("Could not load secure checkout. Please refresh the page or contact support.");
+      return;
+    }
 
-      onCancel: () => {
-        setPaymentError("Payment was cancelled. You can complete checkout whenever you are ready.");
-        void markRecoveryAbandoned(`paypal_cancelled_${selectedTier}`);
-      },
-      onError: (err: any) => {
-        console.error("PayPal Smart Button Error:", err);
-        setPaymentError("Payment failed. Please check your card/account details and try again.");
-        void markRecoveryAbandoned(`paypal_error_${selectedTier}`);
-      }
-    }).render('#paypal-button-container');
+    try {
+      (window as any).paypal.Buttons({
+        style: {
+          layout: 'vertical',
+          color: 'gold',
+          shape: 'rect',
+          label: 'pay',
+          height: 48
+        },
+        createOrder: (_data: any, actions: any) => {
+          setPaymentError(null);
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: price, currency_code: 'USD' },
+              description
+            }]
+          });
+        },
+        onApprove: async (_data: any, actions: any) => {
+          try {
+            const details = await actions.order.capture();
+            if (typeof window !== 'undefined' && (window as any).clarity) {
+              (window as any).clarity("event", "strategy_session_paid");
+            }
+            await markRecoveryPaid(details);
+            const orderId = details?.id || '';
+            window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}&tier=${selectedTier}&price=${price}&order=${encodeURIComponent(orderId)}`;
+          } catch (err) {
+            console.error("Payment capture error:", err);
+            setPaymentError("Payment was processed, but we encountered an issue locking your slot. Please contact support.");
+          }
+        },
+
+        onCancel: () => {
+          setPaymentError("Payment was cancelled. You can complete checkout whenever you are ready.");
+          void markRecoveryAbandoned(`paypal_cancelled_${selectedTier}`);
+        },
+        onError: (err: any) => {
+          console.error("PayPal Smart Button Error:", err);
+          setPaymentError("Payment failed. Please check your card/account details and try again.");
+          void markRecoveryAbandoned(`paypal_error_${selectedTier}`);
+        }
+      }).render('#paypal-button-container');
+    } catch (err) {
+      console.error("Failed to render PayPal buttons:", err);
+      setPaymentError("Could not load secure checkout. Please refresh the page.");
+    }
   }, [sdkReady, selectedTier, params, markRecoveryPaid, markRecoveryAbandoned]);
 
   /* ── Funding Potential Score™ ── */

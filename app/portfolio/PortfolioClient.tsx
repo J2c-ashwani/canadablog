@@ -3,6 +3,10 @@
 import React, { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
 import { useRouter } from "next/navigation"
+import { safeSessionStorage, safeLocalStorage } from "@/lib/storage"
+
+const sessionStorage = safeSessionStorage
+const localStorage = safeLocalStorage
 import { 
   Sparkles, 
   ArrowRight, 
@@ -79,6 +83,40 @@ export default function PortfolioClient() {
   const [hasSpecialDiscount, setHasSpecialDiscount] = useState(false)
   const [timeLeft, setTimeLeft] = useState("48:00:00")
   const [overridePublicPrice, setOverridePublicPrice] = useState<number | null>(null)
+  const [reactivationPrice, setReactivationPrice] = useState<number | null>(null)
+  const [pricingGroup, setPricingGroup] = useState<string | null>(null)
+  const [expiryDateText, setExpiryDateText] = useState("")
+
+  // A/B test setup for assessment pricing (20% Version B)
+  const [abGroup, setAbGroup] = useState<"A" | "B">("A")
+  useEffect(() => {
+    let group = sessionStorage.getItem("fsi_report_ab_group") as "A" | "B" | null
+    if (!group) {
+      group = Math.random() < 0.2 ? "B" : "A"
+      sessionStorage.setItem("fsi_report_ab_group", group)
+    }
+    setAbGroup(group)
+  }, [])
+
+  const getMemberPrice = (pubPrice: number) => {
+    return pubPrice >= 50 ? pubPrice - 30 : Math.max(19, pubPrice - 20);
+  }
+
+  const basePublicPrice = overridePublicPrice !== null ? overridePublicPrice : (abGroup === "B" ? 299 : 199)
+  const baseMemberPrice = getMemberPrice(basePublicPrice)
+
+  const publicPrice = hasSpecialDiscount
+    ? (overridePublicPrice !== null
+        ? overridePublicPrice
+        : (reactivationPrice !== null ? reactivationPrice : 49))
+    : basePublicPrice
+
+  const memberPrice = hasSpecialDiscount
+    ? getMemberPrice(publicPrice)
+    : baseMemberPrice
+
+  const isMember = subscriptionStatus === "active" || subscriptionStatus === "trial"
+  const currentPrice = isMember ? memberPrice : publicPrice
 
   // Countdown Timer Update Effect
   useEffect(() => {
@@ -102,6 +140,23 @@ export default function PortfolioClient() {
 
       const pad = (num: number) => String(num).padStart(2, "0")
       setTimeLeft(`${pad(hours)}:${pad(minutes)}:${pad(seconds)}`)
+
+      // Calculate human-friendly date string
+      const expiryDate = new Date(expiry)
+      const options: Intl.DateTimeFormatOptions = { month: "long", day: "numeric" }
+      const dateStr = expiryDate.toLocaleDateString("en-US", options)
+      
+      const today = new Date()
+      const tomorrow = new Date()
+      tomorrow.setDate(today.getDate() + 1)
+      
+      if (expiryDate.toDateString() === today.toDateString()) {
+        setExpiryDateText("today at 11:59 PM")
+      } else if (expiryDate.toDateString() === tomorrow.toDateString()) {
+        setExpiryDateText("tomorrow at 11:59 PM")
+      } else {
+        setExpiryDateText(`on ${dateStr} at 11:59 PM`)
+      }
     }
 
     updateTimer()
@@ -160,6 +215,22 @@ export default function PortfolioClient() {
             else if (id === "results-risk-analysis") eventName = "viewed_risk_analysis";
             else if (id === "results-excluded-programs") eventName = "viewed_excluded_programs";
             else if (id === "upgrade-section") eventName = "viewed_pricing_cards";
+            else if (id === "report-purchase-section") {
+              eventName = "viewed_checkout_section";
+              // Send tracking event to backend for funnel telemetry!
+              if (profile && profile.email) {
+                fetch("/api/subscriber/track-activity", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    email: profile.email,
+                    event: "checkout_viewed",
+                    source: sessionStorage.getItem("fsi_attribution_source") || "direct",
+                    priceShown: currentPrice
+                  })
+                }).catch(e => console.error("Failed to track checkout view:", e))
+              }
+            }
 
             if (eventName && !firedEvents.has(eventName)) {
               firedEvents.add(eventName);
@@ -178,7 +249,8 @@ export default function PortfolioClient() {
         "results-match-score",
         "results-risk-analysis",
         "results-excluded-programs",
-        "upgrade-section"
+        "upgrade-section",
+        "report-purchase-section"
       ];
 
       elementIds.forEach(id => {
@@ -191,7 +263,7 @@ export default function PortfolioClient() {
       timers.forEach(clearTimeout);
       if (observer) observer.disconnect();
     };
-  }, [isUnlocked]);
+  }, [isUnlocked, profile?.email, currentPrice]);
 
   // Load from URL token or session storage on mount
   useEffect(() => {
@@ -211,14 +283,35 @@ export default function PortfolioClient() {
           if (data.success && data.subscriber) {
             const sub = data.subscriber
             
+            if (sub.reactivationPrice) {
+              setReactivationPrice(sub.reactivationPrice)
+            }
+            if (sub.pricingGroup) {
+              setPricingGroup(sub.pricingGroup)
+            }
+
             // Extract server-side campaign sent time to enforce secure expiration
             if (sub.leadActivity) {
               try {
                 const act = JSON.parse(sub.leadActivity)
-                if (act.lastNewsletterSentAt) {
-                  const sentTime = new Date(act.lastNewsletterSentAt).getTime()
-                  const expiryTime = sentTime + 48 * 60 * 60 * 1000 // 48h limit
+                const assignedPrice = sub.reactivationPrice || act.reactivationPrice
+                if (assignedPrice === 199) {
+                  setHasSpecialDiscount(false)
+                  localStorage.removeItem("fsi_discount_expiry")
+                } else if (act.lastNewsletterSentAt) {
+                  const sentDate = new Date(act.lastNewsletterSentAt)
+                  // Expiration is 48 hours later, rounded to 11:59:59 PM of that day
+                  const expiryDate = new Date(sentDate.getTime() + 48 * 60 * 60 * 1000)
+                  expiryDate.setHours(23, 59, 59, 999)
+                  const expiryTime = expiryDate.getTime()
                   localStorage.setItem("fsi_discount_expiry", String(expiryTime))
+                  
+                  if (Date.now() <= expiryTime) {
+                    setHasSpecialDiscount(true)
+                  } else {
+                    setHasSpecialDiscount(false)
+                    localStorage.removeItem("fsi_discount_expiry")
+                  }
                 }
               } catch (e) {
                 // ignore
@@ -274,7 +367,14 @@ export default function PortfolioClient() {
     if (sourceParam === "newsletter_campaign" || sourceParam === "reactivation" || discountParam === "reactivate50") {
       let expiryStr = localStorage.getItem("fsi_discount_expiry")
       
-      if (expiryStr) {
+      if (priceParam && !isNaN(priceParam)) {
+        if (priceParam === 199) {
+          setHasSpecialDiscount(false)
+          localStorage.removeItem("fsi_discount_expiry")
+        } else {
+          setHasSpecialDiscount(true)
+        }
+      } else if (expiryStr) {
         const expiryTime = Number(expiryStr)
         if (Date.now() <= expiryTime) {
           setHasSpecialDiscount(true)
@@ -344,24 +444,7 @@ export default function PortfolioClient() {
     document.head.appendChild(script)
   }, [paypalClientId, subscriptionStatus, reportPurchased])
 
-  // A/B test setup for assessment pricing (20% Version B)
-  const [abGroup, setAbGroup] = useState<"A" | "B">("A")
-  useEffect(() => {
-    let group = sessionStorage.getItem("fsi_report_ab_group") as "A" | "B" | null
-    if (!group) {
-      group = Math.random() < 0.2 ? "B" : "A"
-      sessionStorage.setItem("fsi_report_ab_group", group)
-    }
-    setAbGroup(group)
-  }, [])
 
-  const basePublicPrice = overridePublicPrice !== null ? overridePublicPrice : (abGroup === "B" ? 299 : 199)
-  const baseMemberPrice = overridePublicPrice !== null ? (overridePublicPrice >= 50 ? overridePublicPrice - 30 : Math.max(19, overridePublicPrice - 20)) : (abGroup === "B" ? 149 : 99)
-
-  const publicPrice = hasSpecialDiscount ? (overridePublicPrice !== null ? overridePublicPrice : 49) : basePublicPrice
-  const memberPrice = hasSpecialDiscount ? (overridePublicPrice !== null ? (overridePublicPrice >= 50 ? overridePublicPrice - 30 : Math.max(19, overridePublicPrice - 20)) : 29) : baseMemberPrice
-  const isMember = subscriptionStatus === "active" || subscriptionStatus === "trial"
-  const currentPrice = isMember ? memberPrice : publicPrice
 
   /* ── Render PayPal Buttons for Founding Member Subscription ── */
   useEffect(() => {
@@ -1416,34 +1499,38 @@ export default function PortfolioClient() {
         </div>
       )}
 
-      {hasSpecialDiscount && !reportPurchased && (
-        <div className="p-6 bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 text-white rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 animate-in slide-in-from-top duration-500 relative overflow-hidden">
-          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
-          <div className="space-y-2 text-center md:text-left relative z-10">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 text-white text-[10px] font-black px-3 py-1 uppercase tracking-wider">
-              ⚡ Exclusive Reactivation Offer
-            </span>
-            <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
-              Get Your Unlocked Executive Funding Report for $49 (75% Off)
-            </h3>
-            <p className="text-white/90 text-xs max-w-xl leading-relaxed font-semibold">
-              Because you are an early FSI Digital lead, unlock your full PDF report, prioritized roadmap, and documentation checklist for just $49 (usually $199).
-            </p>
-          </div>
-          <div className="flex flex-col items-center gap-2 shrink-0 relative z-10 w-full md:w-auto">
-            <div className="bg-black/20 backdrop-blur-xs px-4 py-2.5 rounded-xl border border-white/10 text-center w-full md:w-40">
-              <span className="text-[9px] font-black uppercase tracking-wider text-white/70 block">Offer Expires In</span>
-              <span className="text-sm font-mono font-black">{timeLeft}</span>
+      {hasSpecialDiscount && !reportPurchased && (() => {
+        const discountPercentage = Math.round(((199 - publicPrice) / 199) * 100);
+        return (
+          <div className="p-6 bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 text-white rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 animate-in slide-in-from-top duration-500 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+            <div className="space-y-2 text-center md:text-left relative z-10">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 text-white text-[10px] font-black px-3 py-1 uppercase tracking-wider">
+                ⚡ Exclusive Reactivation Offer
+              </span>
+              <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
+                Get Your Unlocked Executive Funding Report for ${publicPrice} ({discountPercentage}% Off)
+              </h3>
+              <p className="text-white/90 text-xs max-w-xl leading-relaxed font-semibold">
+                Because you are an early FSI Digital lead, unlock your full PDF report, prioritized roadmap, and documentation checklist for just ${publicPrice} (usually $199).
+              </p>
             </div>
-            <button
-              onClick={() => document.getElementById("report-purchase-section")?.scrollIntoView({ behavior: "smooth" })}
-              className="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs px-5 py-3 rounded-xl shadow-md transition-colors"
-            >
-              Claim 75% Discount &rarr;
-            </button>
+            <div className="flex flex-col items-center gap-2 shrink-0 relative z-10 w-full md:w-auto">
+              <div className="bg-black/20 backdrop-blur-xs px-4 py-2.5 rounded-xl border border-white/10 text-center w-full md:w-44">
+                <span className="text-[9px] font-black uppercase tracking-wider text-white/70 block">Offer Expires</span>
+                <span className="text-xs font-bold text-white block">{expiryDateText || "in 48 hours"}</span>
+                <span className="text-[10px] font-mono font-black mt-1 block">({timeLeft} remaining)</span>
+              </div>
+              <button
+                onClick={() => document.getElementById("report-purchase-section")?.scrollIntoView({ behavior: "smooth" })}
+                className="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs px-5 py-3 rounded-xl shadow-md transition-colors"
+              >
+                Claim {discountPercentage}% Discount &rarr;
+              </button>
+            </div>
           </div>
-        </div>
-      )}
+        );
+      })()}
       {/* EXECUTIVE SUMMARY BRIEFING BANNER */}
       <Card id="results-executive-summary" className="border-2 border-indigo-600 bg-slate-950 text-white shadow-xl rounded-3xl overflow-hidden p-8 text-left animate-in fade-in duration-300 relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />

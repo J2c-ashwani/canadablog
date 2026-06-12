@@ -4,6 +4,7 @@ import {
   upsertStrategyRecoveryEvent,
 } from '@/lib/strategy-session/recovery-store';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
+import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 
 export const runtime = 'nodejs';
 
@@ -27,12 +28,14 @@ export async function POST(request: NextRequest) {
     const calendlyEventUri = clean(body.calendlyEventUri);
     const calendlyInviteeUri = clean(body.calendlyInviteeUri);
 
-    // Resolve email/name from Calendly if missing but invitee URI is available
-    if (!email && calendlyInviteeUri) {
+    let attendeeCount = 1;
+
+    // Resolve details from Calendly if invitee URI is available
+    if (calendlyInviteeUri) {
       const apiKey = process.env.CALENDLY_API_TOKEN || process.env.CALENDY_API_TOKEN;
       if (apiKey) {
         try {
-          console.log(`[Recovery API] Fetching invitee details from Calendly: ${calendlyInviteeUri}`);
+          console.log(`[Recovery API] Fetching details from Calendly: ${calendlyInviteeUri}`);
           const response = await fetch(calendlyInviteeUri, {
             headers: {
               'Authorization': `Bearer ${apiKey}`,
@@ -42,9 +45,13 @@ export async function POST(request: NextRequest) {
           if (response.ok) {
             const data = await response.json();
             if (data?.resource) {
-              email = clean(data.resource.email).toLowerCase();
-              name = clean(data.resource.name || `${data.resource.first_name || ''} ${data.resource.last_name || ''}`);
-              console.log(`[Recovery API] Successfully retrieved invitee:`, { email, name });
+              if (!email) email = clean(data.resource.email).toLowerCase();
+              if (!name) name = clean(data.resource.name || `${data.resource.first_name || ''} ${data.resource.last_name || ''}`);
+              
+              // Count attendees: 1 main invitee + guests array
+              const guestsCount = Array.isArray(data.resource.guests) ? data.resource.guests.length : 0;
+              attendeeCount = 1 + guestsCount;
+              console.log(`[Recovery API] Resolved Calendly details:`, { email, name, attendeeCount });
             }
           } else {
             console.error(`[Recovery API] Failed to fetch invitee from Calendly. Status: ${response.status}`);
@@ -53,7 +60,7 @@ export async function POST(request: NextRequest) {
           console.error(`[Recovery API] Error fetching invitee from Calendly:`, err);
         }
       } else {
-        console.warn(`[Recovery API] CALENDLY_API_TOKEN is not configured, cannot resolve missing email from invitee URI.`);
+        console.warn(`[Recovery API] CALENDLY_API_TOKEN is not configured, cannot query invitee metadata.`);
       }
     }
 
@@ -103,6 +110,40 @@ export async function POST(request: NextRequest) {
       calendlyInviteeUri,
       gaClientId: clean(body.gaClientId),
     });
+
+    // Sync booking & payment status back to the main subscriber sheet's leadActivity JSON
+    if (email && isValidEmail(email)) {
+      try {
+        const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
+        if (subscriber) {
+          let activity: any = {};
+          try {
+            if (subscriber.leadActivity && subscriber.leadActivity !== "N/A" && subscriber.leadActivity !== "{}") {
+              activity = JSON.parse(subscriber.leadActivity);
+            }
+          } catch (e) {
+            console.error("Failed to parse leadActivity JSON:", e);
+          }
+
+          // Update MD telemetry fields
+          activity.bookedAudit = true;
+          activity.attendeeCount = attendeeCount;
+          activity.depositPaid = (event === 'paid' || result.record.status === 'paid');
+          activity.auditBookedAt = activity.auditBookedAt || new Date().toISOString();
+
+          if (event === 'paid' || result.record.status === 'paid') {
+            activity.depositPaidAt = activity.depositPaidAt || new Date().toISOString();
+          }
+
+          await SubscriberRepository.updateSubscriberPreferences(email, {
+            leadActivity: JSON.stringify(activity)
+          });
+          console.log(`[Recovery API] Synced telemetry attributes back to leadActivity:`, activity);
+        }
+      } catch (err) {
+        console.error("[Recovery API] Failed to sync telemetry to subscriber sheet:", err);
+      }
+    }
 
     return NextResponse.json({
       success: true,

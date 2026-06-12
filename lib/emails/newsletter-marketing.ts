@@ -1,4 +1,5 @@
 import { sendEmail, getFirstName } from "./mailer";
+import { getReactivationPriceForEmail } from "../leads/pricing-test";
 
 export interface NewFundingAlertData {
   to: string;
@@ -31,6 +32,7 @@ export interface MissingFundingAlertData {
 const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
 
 function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string) {
+  const pricing = getReactivationPriceForEmail(loginToken); // fallback if token used
   const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=newsletter_campaign`;
   const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${loginToken}`;
   const year = new Date().getFullYear();
@@ -77,7 +79,8 @@ function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstNa
  */
 export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
   const firstName = getFirstName(data.name);
-  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=new_funding_alert`;
+  const pricing = getReactivationPriceForEmail(data.to);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=new_funding_alert&price=${pricing.price}`;
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
@@ -128,7 +131,8 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
  */
 export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) {
   const firstName = getFirstName(data.name);
-  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=match_update_alert`;
+  const pricing = getReactivationPriceForEmail(data.to);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=match_update_alert&price=${pricing.price}`;
 
   const programsListHtml = data.newProgramsList.map(name => `
     <li style="margin-bottom: 6px; font-weight: 500;">
@@ -179,7 +183,8 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
  */
 export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData) {
   const firstName = getFirstName(data.name);
-  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=missing_funding_alert`;
+  const pricing = getReactivationPriceForEmail(data.to);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=missing_funding_alert&price=${pricing.price}`;
 
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
@@ -216,6 +221,150 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
     text,
     tagType: "newsletter-missing-funding",
+    companyName: data.companyName,
+    from: BRAND_SENDER
+  });
+}
+
+/**
+ * Reactivation Nurture Day 2: Reminder Email
+ */
+export async function sendReactivationReminderEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+  const firstName = getFirstName(data.name);
+  const pricing = getReactivationPriceForEmail(data.to);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_reminder&price=${pricing.price}`;
+  
+  const contentHtml = `
+    <p style="margin: 0 0 16px 0;">
+      This is a quick reminder that your exclusive reactivation pricing for the FSI Digital Executive Funding Report expires soon.
+    </p>
+    <p style="margin: 16px 0;">
+      Access your personalized dashboard to lock in your <strong>$${pricing.price} report</strong> (normally $199) and secure your documentation checklist before your profile file is closed.
+    </p>
+    <div style="text-align: center; margin: 28px 0;">
+      <a href="${targetUrl}" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+        Claim Your Discounted Report &rarr;
+      </a>
+    </div>
+  `;
+
+  const subject = `⏰ Reminder: Your $${pricing.price} funding report offer is expiring`;
+  return sendEmail({
+    to: data.to,
+    subject,
+    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    text: `Hi ${firstName},\n\nThis is a reminder that your exclusive reactivation offer for the Funding Assessment Report expires soon. Lock in your $${pricing.price} report (usually $199) here:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    tagType: "reactivation-reminder",
+    companyName: data.companyName,
+    from: BRAND_SENDER
+  });
+}
+
+/**
+ * Reactivation Nurture Day 5: Case Study Email
+ */
+export async function sendReactivationCaseStudyEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+  const firstName = getFirstName(data.name);
+  const pricing = getReactivationPriceForEmail(data.to);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_casestudy&price=${pricing.price}`;
+  
+  const contentHtml = `
+    <p style="margin: 0 0 16px 0;">
+      We often get asked: <em>"Can a small tech firm really stack multiple government grant programs?"</em>
+    </p>
+    <p style="margin: 16px 0;">
+      The answer is yes. Recently, one of our platform members, <strong>Apex Tech Solutions</strong>, successfully secured <strong>$85,000 in combined funding</strong> by stacking provincial hiring subsidies with federal R&D tax credits (SR&ED).
+    </p>
+    <p style="margin: 16px 0;">
+      In your dashboard, our stacking engine has already mapped out a similar priority intake calendar for ${data.companyName || "your business"}. Unlock your full roadmap and checklist for just $${pricing.price} (usually $199).
+    </p>
+    <div style="text-align: center; margin: 28px 0;">
+      <a href="${targetUrl}" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+        View Stacking Strategy &rarr;
+      </a>
+    </div>
+  `;
+
+  const subject = `💼 Case Study: How Apex Tech secured $85,000 in stacked funding`;
+  return sendEmail({
+    to: data.to,
+    subject,
+    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    text: `Hi ${firstName},\n\nApex Tech Solutions stacked hiring subsidies and SR&ED tax credits to secure $85,000. View your stacked roadmap and checklist for $${pricing.price} (usually $199):\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    tagType: "reactivation-casestudy",
+    companyName: data.companyName,
+    from: BRAND_SENDER
+  });
+}
+
+/**
+ * Reactivation Nurture Day 8: Last Chance Email
+ */
+export async function sendReactivationLastChanceEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+  const firstName = getFirstName(data.name);
+  const pricing = getReactivationPriceForEmail(data.to);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_lastchance&price=${pricing.price}`;
+  
+  const contentHtml = `
+    <p style="margin: 0 0 16px 0;">
+      This is your final warning before your pre-qualification checklist and customized funding roadmap are locked and archived.
+    </p>
+    <p style="margin: 16px 0;">
+      Access your portal now to claim your discounted report for just $${pricing.price} (usually $199). Once this window closes, the price reverts to standard rates.
+    </p>
+    <div style="text-align: center; margin: 28px 0;">
+      <a href="${targetUrl}" style="background-color: #e11d48; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(225,29,72,0.2);">
+        Claim Your Discount Now &rarr;
+      </a>
+    </div>
+  `;
+
+  const subject = `⚠️ Final Notice: Your $${pricing.price} funding report expires soon`;
+  return sendEmail({
+    to: data.to,
+    subject,
+    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom funding roadmap for $${pricing.price} (usually $199) before it is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    tagType: "reactivation-lastchance",
+    companyName: data.companyName,
+    from: BRAND_SENDER
+  });
+}
+
+/**
+ * Reactivation Nurture Day 14: Final Close Email
+ */
+export async function sendReactivationFinalCloseEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+  const firstName = getFirstName(data.name);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_finalclose`;
+  
+  const contentHtml = `
+    <p style="margin: 0 0 16px 0;">
+      I assume funding is not an immediate priority for ${data.companyName || "your business"} at this time.
+    </p>
+    <p style="margin: 16px 0;">
+      We are closing your high-priority setup window today. To keep our analyst support focused, we are moving your profile to our low-frequency update list.
+    </p>
+    <p style="margin: 16px 0;">
+      Going forward, you will only receive our high-level quarterly funding announcements and new major grant releases, rather than active reminders.
+    </p>
+    <p style="margin: 16px 0;">
+      If you'd like to check your matching results or keep your high-priority profile active before we close the file, you can access your dashboard below:
+    </p>
+    <div style="text-align: center; margin: 28px 0;">
+      <a href="${targetUrl}" style="background-color: #475569; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(71,85,105,0.2);">
+        Keep My Profile Active &rarr;
+      </a>
+    </div>
+  `;
+
+  const subject = `🔒 Transitioning your pending funding profile file`;
+  return sendEmail({
+    to: data.to,
+    subject,
+    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    text: `Hi ${firstName},\n\nWe are closing your high-priority setup window today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    tagType: "reactivation-finalclose",
     companyName: data.companyName,
     from: BRAND_SENDER
   });

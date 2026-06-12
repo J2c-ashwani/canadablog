@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle } from 'lucide-react';
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
+import { safeSessionStorage } from '@/lib/storage';
 
 interface BookingClientProps {
   prefilledEmail?: string
@@ -62,7 +63,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
 
       if (orderId) {
         const storageKey = `purchase_tracked_${orderId}`;
-        if (!window.sessionStorage.getItem(storageKey)) {
+        if (!safeSessionStorage.getItem(storageKey)) {
           trackGAEvent('purchase', {
             transaction_id: orderId,
             value: price,
@@ -76,9 +77,9 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
               }
             ],
             // Stitch UTM parameters if available in sessionStorage
-            utm_source: window.sessionStorage.getItem('fsi:utm_source') || 'N/A',
-            utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
-            utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
+            utm_source: safeSessionStorage.getItem('fsi:utm_source') || 'N/A',
+            utm_medium: safeSessionStorage.getItem('fsi:utm_medium') || 'N/A',
+            utm_campaign: safeSessionStorage.getItem('fsi:utm_campaign') || 'N/A',
           });
 
           if (tier === 'vip') {
@@ -95,7 +96,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
             });
           }
 
-          window.sessionStorage.setItem(storageKey, 'true');
+          safeSessionStorage.setItem(storageKey, 'true');
         }
       }
     }
@@ -167,9 +168,9 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
           trackGAEvent('booking_complete', {
             recovery_id: rid,
             source: source,
-            utm_source: window.sessionStorage.getItem('fsi:utm_source') || 'N/A',
-            utm_medium: window.sessionStorage.getItem('fsi:utm_medium') || 'N/A',
-            utm_campaign: window.sessionStorage.getItem('fsi:utm_campaign') || 'N/A',
+            utm_source: safeSessionStorage.getItem('fsi:utm_source') || 'N/A',
+            utm_medium: safeSessionStorage.getItem('fsi:utm_medium') || 'N/A',
+            utm_campaign: safeSessionStorage.getItem('fsi:utm_campaign') || 'N/A',
           });
 
           // Redirect to checkout with slot details

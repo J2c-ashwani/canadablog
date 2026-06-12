@@ -128,21 +128,19 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
 
   const elapsed = now - createdAt;
 
-  // 1. Cancellation - 60 minutes
+  // 1. Email #2 (value_24h) - 4 hours
+  if (elapsed >= 4 * 60 * 60 * 1000) {
+    if (record.initialEmailSentAt && !record.followUp24hSentAt) {
+      return { action: 'email', stage: 'value_24h' };
+    }
+  }
+
+  // 2. Cancellation - 60 minutes
   if (elapsed >= 60 * 60 * 1000) {
     const isCancelled = record.reason.includes('calendly_cancelled');
     if (!isCancelled && record.calendlyEventUri) {
       return { action: 'cancel' };
     }
-    return { action: null };
-  }
-
-  // 2. Email #2 (value_24h) - 4 hours
-  if (elapsed >= 4 * 60 * 60 * 1000) {
-    if (record.initialEmailSentAt && !record.followUp24hSentAt) {
-      return { action: 'email', stage: 'value_24h' };
-    }
-    return { action: null };
   }
 
   // 3. Email #1 (initial) - 30 minutes
@@ -150,7 +148,6 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
     if (!record.initialEmailSentAt) {
       return { action: 'email', stage: 'initial' };
     }
-    return { action: null };
   }
 
   return { action: null };

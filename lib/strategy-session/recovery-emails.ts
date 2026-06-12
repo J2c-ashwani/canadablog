@@ -388,7 +388,7 @@ export async function sendStrategyRecoveryEmail({
 }: StrategyRecoveryEmailInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
 
   if (!apiKey) {
     console.warn('Strategy session recovery email skipped because RESEND_API_KEY is not set.');

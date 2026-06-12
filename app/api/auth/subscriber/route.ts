@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { applyRateLimit } from '@/lib/rate-limit';
+import { getReactivationPriceForEmail } from '@/lib/leads/pricing-test';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -24,6 +25,33 @@ export async function GET(request: NextRequest) {
 
     if (!found) {
       return NextResponse.json({ error: 'Invalid or expired login token.' }, { status: 404 });
+    }
+
+    // Resolve or assign pricing group and price
+    let activity: any = {};
+    try {
+      if (found.leadActivity && found.leadActivity !== 'N/A' && found.leadActivity !== '{}') {
+        activity = JSON.parse(found.leadActivity);
+      }
+    } catch (e) {
+      console.error('Failed to parse activity JSON in auth subscriber API:', e);
+    }
+
+    let reactivationPrice = activity.reactivationPrice;
+    let pricingGroup = activity.pricingGroup;
+
+    if (!reactivationPrice || !pricingGroup) {
+      const pricing = getReactivationPriceForEmail(found.email);
+      reactivationPrice = pricing.price;
+      pricingGroup = pricing.group;
+
+      activity.reactivationPrice = reactivationPrice;
+      activity.pricingGroup = pricingGroup;
+
+      // Persist the pricing assignment in Google Sheets
+      await SubscriberRepository.updateSubscriberPreferences(found.email, {
+        leadActivity: JSON.stringify(activity)
+      });
     }
 
     return NextResponse.json({
@@ -50,6 +78,9 @@ export async function GET(request: NextRequest) {
         phone: found.phone || '',
         businessStage: found.businessStage || '',
         fundingPurpose: found.fundingPurpose || '',
+        leadActivity: JSON.stringify(activity),
+        reactivationPrice,
+        pricingGroup
       }
     });
   } catch (err: any) {

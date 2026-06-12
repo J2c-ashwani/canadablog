@@ -35,6 +35,14 @@ export async function POST(request: NextRequest) {
 
     if (event === "checkout_started") {
       activity.checkoutStartedAt = now
+      if (body.priceShown) {
+        activity.priceShown = body.priceShown
+      }
+    } else if (event === "checkout_viewed") {
+      activity.checkoutViewedAt = now
+      if (body.priceShown) {
+        activity.priceShown = body.priceShown
+      }
     } else if (event === "report_viewed") {
       activity.reportViewedAt = now
       if (!subscriber.firstReportViewedAt || subscriber.firstReportViewedAt === "N/A" || subscriber.firstReportViewedAt === "") {

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { StrategySessionUpsell } from '@/components/StrategySessionUpsell';
+import { safeSessionStorage } from '@/lib/storage';
 
 type PendingLead = {
   id: string;
@@ -80,7 +81,7 @@ function shouldTrackLead(pathname: string) {
 }
 
 function getStoredLead() {
-  const stored = window.sessionStorage.getItem(STORAGE_KEY);
+  const stored = safeSessionStorage.getItem(STORAGE_KEY);
   if (!stored) return null;
 
   try {
@@ -88,7 +89,7 @@ function getStoredLead() {
   } catch {
     return null;
   } finally {
-    window.sessionStorage.removeItem(STORAGE_KEY);
+    safeSessionStorage.removeItem(STORAGE_KEY);
   }
 }
 
@@ -129,7 +130,7 @@ export function LeadConversionUpsellWatcher() {
       utms.forEach(param => {
         const val = searchParams.get(param);
         if (val) {
-          window.sessionStorage.setItem(`fsi:${param}`, val);
+          safeSessionStorage.setItem(`fsi:${param}`, val);
         }
       });
 
@@ -137,8 +138,8 @@ export function LeadConversionUpsellWatcher() {
       const utmCampaign = searchParams.get('utm_campaign');
       if (utmSource === 'funding_alerts' && utmCampaign) {
         const clickKey = `fsi:click-logged:${utmCampaign}`;
-        if (!window.sessionStorage.getItem(clickKey)) {
-          window.sessionStorage.setItem(clickKey, 'true');
+        if (!safeSessionStorage.getItem(clickKey)) {
+          safeSessionStorage.setItem(clickKey, 'true');
           window.fetch(`/api/admin/alerts/metrics?campaignId=${encodeURIComponent(utmCampaign)}&event=click`)
             .catch(err => console.error('Failed to log alert click:', err));
         }
@@ -165,9 +166,9 @@ export function LeadConversionUpsellWatcher() {
         try {
           const payload = parseBody(init.body);
           
-          const utmSource = window.sessionStorage.getItem('fsi:utm_source') || '';
-          const utmMedium = window.sessionStorage.getItem('fsi:utm_medium') || '';
-          const utmCampaign = window.sessionStorage.getItem('fsi:utm_campaign') || '';
+          const utmSource = safeSessionStorage.getItem('fsi:utm_source') || '';
+          const utmMedium = safeSessionStorage.getItem('fsi:utm_medium') || '';
+          const utmCampaign = safeSessionStorage.getItem('fsi:utm_campaign') || '';
           
           let gaClientId = '';
           try {
@@ -217,8 +218,8 @@ export function LeadConversionUpsellWatcher() {
         });
 
         // Log Alerts CDP metrics if referred from funding alert campaigns
-        const sessionSource = window.sessionStorage.getItem('fsi:utm_source') || '';
-        const sessionCampaign = window.sessionStorage.getItem('fsi:utm_campaign') || '';
+        const sessionSource = safeSessionStorage.getItem('fsi:utm_source') || '';
+        const sessionCampaign = safeSessionStorage.getItem('fsi:utm_campaign') || '';
         if (sessionSource === 'funding_alerts' && sessionCampaign) {
           let eventType = 'conversion';
           if (requestPathname.includes('/strategy-session/recovery')) {
@@ -237,13 +238,13 @@ export function LeadConversionUpsellWatcher() {
             name: getLeadName(payload),
           };
 
-          window.sessionStorage.setItem(STORAGE_KEY, JSON.stringify(lead));
+          safeSessionStorage.setItem(STORAGE_KEY, JSON.stringify(lead));
           window.dispatchEvent(new CustomEvent<PendingLead>(LEAD_UPSELL_EVENT, { detail: lead }));
 
           window.setTimeout(() => {
-            const stored = window.sessionStorage.getItem(STORAGE_KEY);
+            const stored = safeSessionStorage.getItem(STORAGE_KEY);
             if (stored?.includes(lead.id)) {
-              window.sessionStorage.removeItem(STORAGE_KEY);
+              safeSessionStorage.removeItem(STORAGE_KEY);
             }
           }, 4000);
         }
