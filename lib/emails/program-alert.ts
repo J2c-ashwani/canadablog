@@ -33,7 +33,7 @@ export async function sendInstantProgramAlertEmail({
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
-          A **${severity.toUpperCase()}** update has occurred in a program matching ${companyName ? `<strong>${companyName}</strong>` : 'your business'}.
+          A <strong>${severity.toUpperCase()}</strong> update has occurred in a program matching ${companyName ? `<strong>${companyName}</strong>` : 'your business'}.
         </p>
 
         <div style="margin:24px 0;padding:20px;background-color:#fffbeb;border:1px solid #fef3c7;border-left:4px solid #d97706;border-radius:8px;text-align:left;">

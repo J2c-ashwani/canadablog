@@ -23,7 +23,7 @@ export async function sendScreenerRecoveryEmail({
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
-          You started building your **Funding Readiness Assessment** for ${companyName ? `<strong>${companyName}</strong>` : 'your business'} yesterday but did not finish.
+          You started building your <strong>Funding Readiness Assessment</strong> for ${companyName ? `<strong>${companyName}</strong>` : 'your business'} yesterday but did not finish.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
           Our system has matched your profile to active non-dilutive programs (grants, tax credits, and wage subsidies), but we need you to complete the strategic profile to unlock your full stacking roadmap.

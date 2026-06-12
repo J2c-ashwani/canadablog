@@ -138,7 +138,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
 
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      We have expanded our funding match engine database, adding **${data.newProgramsCount} new programs** matching businesses like yours.
+      We have expanded our funding match engine database, adding <strong>${data.newProgramsCount} new programs</strong> matching businesses like yours.
     </p>
 
     <p style="margin: 16px 0;">
@@ -183,7 +183,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
 
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      According to our preliminary diagnostics, your business could qualify for up to **${data.missingFundingAmount}** in provincial and federal funding.
+      According to our preliminary diagnostics, your business could qualify for up to <strong>${data.missingFundingAmount}</strong> in provincial and federal funding.
     </p>
 
     <div style="margin: 24px 0; padding: 20px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; text-align: left;">

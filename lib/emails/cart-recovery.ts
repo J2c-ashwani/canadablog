@@ -243,7 +243,7 @@ export async function sendReportNotOpenedEmail({
           Thank you again for purchasing your assessment report.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
-          We noticed you haven't opened your **Executive Funding Assessment** report yet. It is fully compiled and ready to view, print, or save as a PDF inside your private portal:
+          We noticed you haven't opened your <strong>Executive Funding Assessment</strong> report yet. It is fully compiled and ready to view, print, or save as a PDF inside your private portal:
         </p>
         <div style="text-align:center;margin:28px 0;">
           <a href="${reportUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">

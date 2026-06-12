@@ -23,7 +23,7 @@ export async function sendInactivityRecoveryEmail({
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
-          It has been 14 days since you last logged in to check your **Funding Readiness Dashboard**.
+          It has been 14 days since you last logged in to check your <strong>Funding Readiness Dashboard</strong>.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
           New intake periods are opening and program rules are updated constantly. We highly recommend accessing your portfolio to verify if any matched opportunities require immediate application prep.

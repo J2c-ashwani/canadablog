@@ -29,7 +29,7 @@ export function buildDay2Html({ firstName, companyName, estimatedFunding, loginT
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;">
-          Yesterday, your Funding Opportunity Assessment identified **${escapeHtml(estimatedFunding)}** in potential grants, tax credits, and subsidies for **${escapeHtml(companyName)}**.
+          Yesterday, your Funding Opportunity Assessment identified <strong>${escapeHtml(estimatedFunding)}</strong> in potential grants, tax credits, and subsidies for <strong>${escapeHtml(companyName)}</strong>.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;">
           Since these assessments model general applicant criteria, the next step is verification. We can assign a Senior Funding Analyst to run a manual audit of your entity structure and tech scope to lock in your filing calendar.
@@ -58,7 +58,7 @@ export function buildDay5Html({ firstName, companyName, loginToken }: { firstNam
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;">
-          It's been a few days since we compiled the Executive Funding Assessment for **${escapeHtml(companyName)}**.
+          It's been a few days since we compiled the Executive Funding Assessment for <strong>${escapeHtml(companyName)}</strong>.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;">
           Many founders have questions about:
@@ -89,7 +89,7 @@ export function buildDay10Html({ firstName, companyName, loginToken }: { firstNa
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;">
-          We wanted to send a quick heads-up: several of the program intakes identified in your assessment for **${escapeHtml(companyName)}** have active review periods this quarter.
+          We wanted to send a quick heads-up: several of the program intakes identified in your assessment for <strong>${escapeHtml(companyName)}</strong> have active review periods this quarter.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;">
           To ensure your application files are submitted before caps are reached, we recommend booking a slot to verify your filing deadlines.
