@@ -78,6 +78,7 @@ export default function PortfolioClient() {
   // Reactivation Offer state
   const [hasSpecialDiscount, setHasSpecialDiscount] = useState(false)
   const [timeLeft, setTimeLeft] = useState("48:00:00")
+  const [overridePublicPrice, setOverridePublicPrice] = useState<number | null>(null)
 
   // Countdown Timer Update Effect
   useEffect(() => {
@@ -196,6 +197,11 @@ export default function PortfolioClient() {
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
     const urlToken = searchParams.get("token")
+    const priceParam = Number(searchParams.get("price"))
+
+    if (priceParam && !isNaN(priceParam) && priceParam >= 10 && priceParam <= 499) {
+      setOverridePublicPrice(priceParam)
+    }
 
     if (urlToken) {
       setIsAuthenticating(true)
@@ -204,6 +210,21 @@ export default function PortfolioClient() {
         .then(data => {
           if (data.success && data.subscriber) {
             const sub = data.subscriber
+            
+            // Extract server-side campaign sent time to enforce secure expiration
+            if (sub.leadActivity) {
+              try {
+                const act = JSON.parse(sub.leadActivity)
+                if (act.lastNewsletterSentAt) {
+                  const sentTime = new Date(act.lastNewsletterSentAt).getTime()
+                  const expiryTime = sentTime + 48 * 60 * 60 * 1000 // 48h limit
+                  localStorage.setItem("fsi_discount_expiry", String(expiryTime))
+                }
+              } catch (e) {
+                // ignore
+              }
+            }
+
             const loadedProfile = {
               country: sub.country || "Canada",
               region: sub.region || "ON",
@@ -251,10 +272,20 @@ export default function PortfolioClient() {
     const sourceParam = searchParams.get("source") || sessionStorage.getItem("fsi_attribution_source")
     const discountParam = searchParams.get("discount")
     if (sourceParam === "newsletter_campaign" || sourceParam === "reactivation" || discountParam === "reactivate50") {
-      setHasSpecialDiscount(true)
-      let expiry = localStorage.getItem("fsi_discount_expiry")
-      if (!expiry) {
-        expiry = String(Date.now() + 48 * 60 * 60 * 1000)
+      let expiryStr = localStorage.getItem("fsi_discount_expiry")
+      
+      if (expiryStr) {
+        const expiryTime = Number(expiryStr)
+        if (Date.now() <= expiryTime) {
+          setHasSpecialDiscount(true)
+        } else {
+          setHasSpecialDiscount(false)
+          localStorage.removeItem("fsi_discount_expiry")
+        }
+      } else {
+        // Fallback local window if no server-side timestamp was cached yet
+        setHasSpecialDiscount(true)
+        const expiry = String(Date.now() + 48 * 60 * 60 * 1000)
         localStorage.setItem("fsi_discount_expiry", expiry)
       }
     }
@@ -324,8 +355,11 @@ export default function PortfolioClient() {
     setAbGroup(group)
   }, [])
 
-  const publicPrice = hasSpecialDiscount ? 49 : (abGroup === "B" ? 299 : 199)
-  const memberPrice = hasSpecialDiscount ? 29 : (abGroup === "B" ? 149 : 99)
+  const basePublicPrice = overridePublicPrice !== null ? overridePublicPrice : (abGroup === "B" ? 299 : 199)
+  const baseMemberPrice = overridePublicPrice !== null ? (overridePublicPrice >= 50 ? overridePublicPrice - 30 : Math.max(19, overridePublicPrice - 20)) : (abGroup === "B" ? 149 : 99)
+
+  const publicPrice = hasSpecialDiscount ? (overridePublicPrice !== null ? overridePublicPrice : 49) : basePublicPrice
+  const memberPrice = hasSpecialDiscount ? (overridePublicPrice !== null ? (overridePublicPrice >= 50 ? overridePublicPrice - 30 : Math.max(19, overridePublicPrice - 20)) : 29) : baseMemberPrice
   const isMember = subscriptionStatus === "active" || subscriptionStatus === "trial"
   const currentPrice = isMember ? memberPrice : publicPrice
 
