@@ -57,7 +57,7 @@ export default function CaseStudiesIndexPage() {
             <div className="text-sm text-amber-800 space-y-1">
               <p className="font-bold">Important Trust & Compliance Notice</p>
               <p className="leading-relaxed">
-                The case studies displayed below are **illustrative funding analyses** representing typical program stacks, eligibility structures, and typical matching thresholds. They do not represent specific past client outcomes. Every business profile is unique, and all funding approvals are subject to official government program validation.
+                The case studies displayed below are <strong>illustrative funding analyses</strong> representing typical program stacks, eligibility structures, and typical matching thresholds. They do not represent specific past client outcomes. Every business profile is unique, and all funding approvals are subject to official government program validation.
               </p>
             </div>
           </div>

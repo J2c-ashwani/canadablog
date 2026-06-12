@@ -79,7 +79,7 @@ function UnsubscribeContent() {
                   </div>
                   <h3 className="text-lg font-bold text-white">Unsubscribed Successfully</h3>
                   <p className="text-xs text-slate-400 leading-relaxed max-w-xs mx-auto">
-                    Your email address has been removed from our active **Funding Intelligence Alerts** distribution list. You will no longer receive weekly digests or deadline updates.
+                    Your email address has been removed from our active <strong>Funding Intelligence Alerts</strong> distribution list. You will no longer receive weekly digests or deadline updates.
                   </p>
                   <div className="pt-4 border-t border-slate-900/60 flex flex-col gap-2">
                     <Link href="/database">

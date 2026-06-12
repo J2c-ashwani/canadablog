@@ -68,7 +68,7 @@ export function EligibilityBenchmarkWidget({ benchmark }: { benchmark: ProgramBe
           <div>
             <h6 className="font-extrabold text-indigo-950 text-sm">How Does Your Business Compare?</h6>
             <p className="text-[11px] text-indigo-700 leading-relaxed mt-0.5">
-              {benchmark.complianceNote} Estimate your **Funding Match Score** (e.g. 82/100) based on your team, location, and development activities.
+              {benchmark.complianceNote} Estimate your <strong>Funding Match Score</strong> (e.g. 82/100) based on your team, location, and development activities.
             </p>
           </div>
         </div>

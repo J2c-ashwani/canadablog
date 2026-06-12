@@ -154,7 +154,7 @@ export function StrategySessionUpsell({
               </div>
               <h2 className="text-2xl font-black text-slate-950 tracking-tight">✅ Inquiry Received & Under Review</h2>
               <p className="mt-2 text-sm leading-relaxed text-slate-600">
-                Your company profile and funding criteria have been successfully saved. Our research team will review your eligibility within **2 business days** and notify you by email.
+                Your company profile and funding criteria have been successfully saved. Our research team will review your eligibility within <strong>2 business days</strong> and notify you by email.
               </p>
             </div>
 
@@ -166,25 +166,25 @@ export function StrategySessionUpsell({
               </div>
               <h3 className="text-lg font-bold text-slate-950">Upgrade to a Researched Funding Eligibility Audit & Roadmap</h3>
               <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Skip the 2-day queue. Book a 1-on-1 Funding Eligibility Audit. We conduct **2 hours of manual pre-call research** against 800+ active programs to prepare a customized Roadmap PDF for your business.
+                Skip the 2-day queue. Book a 1-on-1 Funding Eligibility Audit. We conduct <strong>2 hours of manual pre-call research</strong> against 800+ active programs to prepare a customized Roadmap PDF for your business.
               </p>
 
               <ul className="mt-3.5 space-y-2.5 text-xs text-slate-700">
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-indigo-600 font-bold" />
-                  <span>**2 Hours Custom Research:** Analyst review of entity structure & sector databases.</span>
+                  <span><strong>2 Hours Custom Research:</strong> Analyst review of entity structure & sector databases.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-indigo-600 font-bold" />
-                  <span>**Choose Time Slot First:** Select a convenient Calendly slot first (no upfront charge).</span>
+                  <span><strong>Choose Time Slot First:</strong> Select a convenient Calendly slot first (no upfront charge).</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-indigo-600 font-bold" />
-                  <span>**100% Partner Credit:** Your research deposit is fully credited toward our full-service application preparation and submission support if we work together.</span>
+                  <span><strong>100% Partner Credit:</strong> Your research deposit is fully credited toward our full-service application preparation and submission support if we work together.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <CheckCircle2 className="mt-0.5 h-3.5 w-3.5 flex-none text-indigo-600 font-bold" />
-                  <span>**100% Eligibility Guarantee:** Refunded in full if our analysts determine that your business is not eligible for any active funding opportunities.</span>
+                  <span><strong>100% Eligibility Guarantee:</strong> Refunded in full if our analysts determine that your business is not eligible for any active funding opportunities.</span>
                 </li>
               </ul>
             </div>

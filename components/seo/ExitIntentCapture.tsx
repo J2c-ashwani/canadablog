@@ -127,7 +127,7 @@ export function ExitIntentCapture() {
               </span>.
             </DialogDescription>
             <div className="border border-slate-800 bg-slate-900/50 rounded-lg p-4 mb-6 text-sm text-slate-400">
-              ⚡ We've sent you the **Ultimate Grant Guide & Templates** to your inbox.
+              ⚡ We've sent you the <strong>Ultimate Grant Guide & Templates</strong> to your inbox.
             </div>
             <Button
               onClick={() => {
