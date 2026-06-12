@@ -75,6 +75,39 @@ export default function PortfolioClient() {
   const [paymentError, setPaymentError] = useState<string | null>(null)
   const [isActivatingTrial, setIsActivatingTrial] = useState(false)
 
+  // Reactivation Offer state
+  const [hasSpecialDiscount, setHasSpecialDiscount] = useState(false)
+  const [timeLeft, setTimeLeft] = useState("48:00:00")
+
+  // Countdown Timer Update Effect
+  useEffect(() => {
+    if (!hasSpecialDiscount) return
+
+    const updateTimer = () => {
+      const expiryStr = localStorage.getItem("fsi_discount_expiry")
+      if (!expiryStr) return
+
+      const expiry = Number(expiryStr)
+      const diff = expiry - Date.now()
+
+      if (diff <= 0) {
+        setTimeLeft("00:00:00")
+        return
+      }
+
+      const hours = Math.floor(diff / (1000 * 60 * 60))
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
+
+      const pad = (num: number) => String(num).padStart(2, "0")
+      setTimeLeft(`${pad(hours)}:${pad(minutes)}:${pad(seconds)}`)
+    }
+
+    updateTimer()
+    const interval = setInterval(updateTimer, 1000)
+    return () => clearInterval(interval)
+  }, [hasSpecialDiscount])
+
   const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq"
 
   // Clarity Results & Paywall views tracking
@@ -214,9 +247,21 @@ export default function PortfolioClient() {
       return
     }
 
-    const sourceParam = searchParams.get("source")
-    if (sourceParam) {
-      sessionStorage.setItem("fsi_attribution_source", sourceParam)
+    // Check for special reactivation discount
+    const sourceParam = searchParams.get("source") || sessionStorage.getItem("fsi_attribution_source")
+    const discountParam = searchParams.get("discount")
+    if (sourceParam === "newsletter_campaign" || sourceParam === "reactivation" || discountParam === "reactivate50") {
+      setHasSpecialDiscount(true)
+      let expiry = localStorage.getItem("fsi_discount_expiry")
+      if (!expiry) {
+        expiry = String(Date.now() + 48 * 60 * 60 * 1000)
+        localStorage.setItem("fsi_discount_expiry", expiry)
+      }
+    }
+
+    const newSource = searchParams.get("source")
+    if (newSource) {
+      sessionStorage.setItem("fsi_attribution_source", newSource)
     }
 
     const cached = localStorage.getItem("fsi_funding_profile") || sessionStorage.getItem("fsi_funding_profile")
@@ -279,8 +324,8 @@ export default function PortfolioClient() {
     setAbGroup(group)
   }, [])
 
-  const publicPrice = abGroup === "B" ? 299 : 199
-  const memberPrice = abGroup === "B" ? 149 : 99
+  const publicPrice = hasSpecialDiscount ? 49 : (abGroup === "B" ? 299 : 199)
+  const memberPrice = hasSpecialDiscount ? 29 : (abGroup === "B" ? 149 : 99)
   const isMember = subscriptionStatus === "active" || subscriptionStatus === "trial"
   const currentPrice = isMember ? memberPrice : publicPrice
 
@@ -1336,6 +1381,35 @@ export default function PortfolioClient() {
           </div>
         </div>
       )}
+
+      {hasSpecialDiscount && !reportPurchased && (
+        <div className="p-6 bg-gradient-to-r from-red-600 via-rose-600 to-amber-600 text-white rounded-3xl shadow-xl flex flex-col md:flex-row items-center justify-between gap-6 animate-in slide-in-from-top duration-500 relative overflow-hidden">
+          <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
+          <div className="space-y-2 text-center md:text-left relative z-10">
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-white/20 text-white text-[10px] font-black px-3 py-1 uppercase tracking-wider">
+              ⚡ Exclusive Reactivation Offer
+            </span>
+            <h3 className="text-lg sm:text-xl font-extrabold tracking-tight text-white">
+              Get Your Unlocked Executive Funding Report for $49 (75% Off)
+            </h3>
+            <p className="text-white/90 text-xs max-w-xl leading-relaxed font-semibold">
+              Because you are an early FSI Digital lead, unlock your full PDF report, prioritized roadmap, and documentation checklist for just $49 (usually $199).
+            </p>
+          </div>
+          <div className="flex flex-col items-center gap-2 shrink-0 relative z-10 w-full md:w-auto">
+            <div className="bg-black/20 backdrop-blur-xs px-4 py-2.5 rounded-xl border border-white/10 text-center w-full md:w-40">
+              <span className="text-[9px] font-black uppercase tracking-wider text-white/70 block">Offer Expires In</span>
+              <span className="text-sm font-mono font-black">{timeLeft}</span>
+            </div>
+            <button
+              onClick={() => document.getElementById("report-purchase-section")?.scrollIntoView({ behavior: "smooth" })}
+              className="w-full bg-white hover:bg-slate-100 text-slate-900 font-extrabold text-xs px-5 py-3 rounded-xl shadow-md transition-colors"
+            >
+              Claim 75% Discount &rarr;
+            </button>
+          </div>
+        </div>
+      )}
       {/* EXECUTIVE SUMMARY BRIEFING BANNER */}
       <Card id="results-executive-summary" className="border-2 border-indigo-600 bg-slate-950 text-white shadow-xl rounded-3xl overflow-hidden p-8 text-left animate-in fade-in duration-300 relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -1618,7 +1692,7 @@ export default function PortfolioClient() {
 
       {/* Report Purchase Section */}
       {isUnlocked && !reportPurchased && (
-        <Card className="border-2 border-indigo-600 bg-slate-950 text-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in duration-300">
+        <Card id="report-purchase-section" className="border-2 border-indigo-600 bg-slate-950 text-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in duration-300">
           <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 p-6 border-b border-slate-800">
             <div className="max-w-3xl mx-auto space-y-6">
               
