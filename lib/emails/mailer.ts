@@ -28,6 +28,58 @@ export async function sendEmail({
   companyName?: string;
   from?: string;
 }) {
+  const senderApiKey = process.env.SENDER_API_KEY;
+
+  if (senderApiKey) {
+    const defaultEmail = process.env.SENDER_FROM_EMAIL || 'partners@fsidigital.ca';
+    const defaultName = process.env.SENDER_FROM_NAME || 'FSI Digital';
+
+    const parseAddress = (addr?: string, defaultAddrEmail = defaultEmail, defaultAddrName = defaultName) => {
+      if (!addr) return { email: defaultAddrEmail, name: defaultAddrName };
+      const match = addr.match(/^(?:"?([^"]*)"?\s)?<?([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})>?$/);
+      if (match) {
+        return {
+          name: match[1]?.trim() || defaultAddrName,
+          email: match[2]?.trim() || defaultAddrEmail
+        };
+      }
+      return { email: addr, name: defaultAddrName };
+    };
+
+    const fromParsed = parseAddress(from);
+    const toParsed = parseAddress(to, to, 'Founder');
+
+    try {
+      const response = await fetch('https://api.sender.net/v2/message/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+          'Authorization': `Bearer ${senderApiKey}`,
+        },
+        body: JSON.stringify({
+          from: { email: fromParsed.email, name: fromParsed.name },
+          to: { email: toParsed.email, name: toParsed.name },
+          subject,
+          html,
+          text,
+        }),
+      });
+
+      if (!response.ok) {
+        const errorText = await response.text();
+        console.error(`Sender.net email failed [${tagType}]:`, errorText);
+        return { success: false, error: errorText };
+      }
+
+      console.log(`✉️ Email successfully sent to ${toParsed.email} via Sender.net [${tagType}]`);
+      return { success: true };
+    } catch (error) {
+      console.error(`Sender.net email exception [${tagType}]:`, error);
+      return { success: false, error: String(error) };
+    }
+  }
+
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
   const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
