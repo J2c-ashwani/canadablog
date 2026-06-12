@@ -95,9 +95,10 @@ function getStoredLead() {
 export function trackGAEvent(eventName: string, params: Record<string, any> = {}) {
   if (typeof window === 'undefined') return;
   
-  // Suppress local dev analytics hits to prevent sandbox data pollution
-  if (window.location.hostname.includes('localhost') || window.location.hostname.includes('127.0.0.1')) {
-    console.log(`[GA4 Sandbox Bypass] Suppressed event "${eventName}" on localhost:`, params);
+  // Restrict Google Analytics tracking to production domains only
+  const isProduction = window.location.hostname === 'www.fsidigital.ca' || window.location.hostname === 'fsidigital.ca';
+  if (!isProduction) {
+    console.log(`[GA4 Bypass] Suppressed event "${eventName}" on environment: ${window.location.hostname}`, params);
     return;
   }
   
