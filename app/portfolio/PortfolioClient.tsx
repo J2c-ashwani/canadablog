@@ -36,6 +36,7 @@ export default function PortfolioClient() {
   // Wizard / Profile States
   const [hasProfile, setHasProfile] = useState(false)
   const [wizardStep, setWizardStep] = useState(1)
+  const [showWelcome, setShowWelcome] = useState(true)
   const [step1Error, setStep1Error] = useState("")
   const [isSavingStep1, setIsSavingStep1] = useState(false)
   const [step3Error, setStep3Error] = useState("")
@@ -451,6 +452,42 @@ export default function PortfolioClient() {
     return PortfolioScoreEngine.calculateStackingRange(checkedSlugs, allPrograms)
   }, [checkedSlugs, allPrograms])
 
+  // Opportunity Flags for risks section (opportunity-oriented)
+  const opportunityFlags = useMemo(() => {
+    const flags: { title: string; text: string }[] = []
+    if (!profile.isIncorporated) {
+      flags.push({
+        title: "Entity Structure Recommendation",
+        text: "Incorporating as a Canadian CCPC is a foundational requirement to qualify for primary programs like IRAP and SR&ED."
+      })
+    }
+    if (!profile.hasRd) {
+      flags.push({
+        title: "Scientific Research Alignment",
+        text: "Active technical R&D operations are essential for claiming SR&ED tax credits and securing IRAP project grants."
+      })
+    }
+    if (!profile.hasHiring) {
+      flags.push({
+        title: "Growth Program Limitation",
+        text: "Several wage subsidy and workforce development programs prioritize companies planning to hire."
+      })
+    }
+    if (!profile.hasExporting) {
+      flags.push({
+        title: "Potential Opportunity Gap",
+        text: "Export-focused programs such as CanExport may require planned international expansion activities."
+      })
+    }
+    if (profile.companySize === "1-9") {
+      flags.push({
+        title: "Co-Investment Readiness",
+        text: "Early-stage firms with smaller teams (under 10 FTEs) may face more rigorous financial checks to confirm co-funding capability."
+      })
+    }
+    return flags.slice(0, 3)
+  }, [profile.isIncorporated, profile.hasRd, profile.hasHiring, profile.hasExporting, profile.companySize])
+
   // Calculate Remaining Trial Days
   const trialRemainingDays = useMemo(() => {
     if (subscriptionStatus !== 'trial' || !trialStartedAt) return 0
@@ -476,6 +513,10 @@ export default function PortfolioClient() {
     }
     if (!profile.email.trim() || !profile.email.includes("@")) {
       setStep1Error("A valid Business Email is required.")
+      return
+    }
+    if (!profile.phone.trim()) {
+      setStep1Error("Phone Number is required.")
       return
     }
     setIsSavingStep1(true)
@@ -528,6 +569,7 @@ export default function PortfolioClient() {
       }
       localStorage.setItem("fsi_funding_profile", JSON.stringify(profile))
       setHasProfile(true)
+      setIsUnlocked(true)
       trackGAEvent("portfolio_completed", {
         region: profile.region,
         country: profile.country,
@@ -643,6 +685,63 @@ export default function PortfolioClient() {
 
   // RENDER WIZARD FLOW (IF NO PROFILE DETECTED)
   if (!hasProfile) {
+    if (showWelcome) {
+      return (
+        <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 max-w-xl">
+          <Card className="shadow-2xl border-slate-200 bg-white rounded-3xl overflow-hidden animate-in fade-in duration-300">
+            <CardHeader className="bg-gradient-to-r from-blue-700 to-indigo-900 text-white p-8 text-center relative">
+              <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
+              <Badge className="mb-3 bg-white/20 hover:bg-white/20 text-white border-white/20 py-1 px-3">
+                <Sparkles className="w-3.5 h-3.5 mr-1.5 text-yellow-300" />
+                Intelligence Engine v2.2
+              </Badge>
+              <CardTitle className="text-3xl font-extrabold tracking-tight">Funding Match Assessment</CardTitle>
+              <CardDescription className="text-blue-100 text-xs sm:text-sm mt-2 flex items-center justify-center gap-1.5 font-bold">
+                <Clock className="w-4 h-4 text-emerald-300 animate-pulse" />
+                ⏱ Takes about 60 seconds
+              </CardDescription>
+            </CardHeader>
+            
+            <CardContent className="p-8 space-y-6 text-left">
+              <div className="space-y-3">
+                <h4 className="font-extrabold text-slate-800 text-sm tracking-wider uppercase">Get:</h4>
+                <ul className="space-y-2.5">
+                  <li className="flex items-center gap-3 text-slate-700 text-sm font-semibold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-200 text-emerald-600 font-bold">✓</span>
+                    <span>Funding Match Score</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700 text-sm font-semibold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-200 text-emerald-600 font-bold">✓</span>
+                    <span>Estimated Funding Range</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700 text-sm font-semibold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-200 text-emerald-600 font-bold">✓</span>
+                    <span>Top Matching Programs</span>
+                  </li>
+                  <li className="flex items-center gap-3 text-slate-700 text-sm font-semibold">
+                    <span className="w-5 h-5 rounded-full bg-emerald-50 flex items-center justify-center shrink-0 border border-emerald-200 text-emerald-600 font-bold">✓</span>
+                    <span>Eligibility Risk Analysis</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div className="p-4 bg-slate-50 border border-slate-100 rounded-2xl text-xs text-slate-600 font-medium leading-relaxed">
+                Used by Canadian founders seeking grants, tax credits and innovation funding.
+              </div>
+
+              <Button
+                type="button"
+                onClick={() => setShowWelcome(false)}
+                className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl shadow-lg shadow-blue-600/15"
+              >
+                Start Free Assessment <ArrowRight className="w-4 h-4" />
+              </Button>
+            </CardContent>
+          </Card>
+        </div>
+      )
+    }
+
     return (
       <div className="container mx-auto px-4 py-16 sm:px-6 lg:px-8 max-w-2xl">
         <Card className="shadow-2xl border-slate-200 bg-white rounded-3xl overflow-hidden">
@@ -713,6 +812,19 @@ export default function PortfolioClient() {
                       placeholder="john@company.com"
                       value={profile.email}
                       onChange={(e) => updateProfileField("email", e.target.value)}
+                      className="bg-white border-slate-200 h-12 text-sm text-slate-900 rounded-xl focus:ring-blue-600"
+                    />
+                  </div>
+
+                  <div className="space-y-1.5">
+                    <Label htmlFor="contact-phone" className="text-xs font-bold text-slate-800">Phone Number</Label>
+                    <Input
+                      id="contact-phone"
+                      type="tel"
+                      required
+                      placeholder="+1 (555) 000-0000"
+                      value={profile.phone}
+                      onChange={(e) => updateProfileField("phone", e.target.value)}
                       className="bg-white border-slate-200 h-12 text-sm text-slate-900 rounded-xl focus:ring-blue-600"
                     />
                   </div>
@@ -1073,6 +1185,7 @@ export default function PortfolioClient() {
                   setHasProfile(false)
                   setIsUnlocked(false)
                   setWizardStep(1)
+                  setShowWelcome(true)
                 }}
                 className="text-[10px] text-blue-400 hover:text-blue-300 font-extrabold underline bg-transparent"
               >
@@ -1083,17 +1196,97 @@ export default function PortfolioClient() {
         </Card>
       </div>
 
+      {/* OPPORTUNITY FLAGS SECTION */}
+      {opportunityFlags.length > 0 && (
+        <Card className="border border-amber-200/60 bg-amber-50/10 shadow-xs rounded-2xl p-5 text-left">
+          <div className="flex items-center gap-2 mb-3.5">
+            <AlertTriangle className="w-5 h-5 text-amber-500" />
+            <h4 className="font-extrabold text-slate-900 text-sm tracking-tight">Eligibility Risk Analysis & Strategic Insights</h4>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            {opportunityFlags.map((flag, idx) => (
+              <div key={idx} className="bg-white/80 p-4 border border-amber-100/60 rounded-xl space-y-1.5 shadow-xs">
+                <span className="text-[10px] font-black text-amber-600 uppercase tracking-wider block">
+                  ⚠ {flag.title}
+                </span>
+                <p className="text-[11px] font-semibold text-slate-700 leading-normal">
+                  {flag.text}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+
       {/* Report Purchase Section */}
       {isUnlocked && !reportPurchased && (
         <Card className="border-2 border-indigo-600 bg-slate-950 text-white shadow-2xl rounded-3xl overflow-hidden animate-in fade-in duration-300">
-          <div className="bg-gradient-to-r from-indigo-800 via-purple-900 to-slate-900 p-6 text-center">
-            <Badge className="bg-emerald-500 text-slate-950 font-black mb-2 animate-pulse">
-              🔥 Executive Access Available
-            </Badge>
-            <h3 className="text-xl sm:text-2xl font-black">Generate Your Executive Funding Opportunity Assessment</h3>
-            <p className="text-slate-300 text-xs sm:text-sm mt-1 max-w-2xl mx-auto">
-              Get an official, printable document detailing your qualified programs, stacking strategy, and filing timelines.
-            </p>
+          <div className="bg-gradient-to-r from-indigo-950 via-slate-900 to-indigo-950 p-6 border-b border-slate-800">
+            <div className="max-w-3xl mx-auto space-y-6">
+              
+              {/* Assessment Progress */}
+              <div className="space-y-3">
+                <div className="flex justify-between items-center text-xs">
+                  <span className="font-extrabold uppercase tracking-wider text-slate-400">Assessment Status</span>
+                  <span className="font-black text-emerald-400">33% Compiled (Free Tier)</span>
+                </div>
+                
+                {/* Horizontal Progress Track */}
+                <div className="grid grid-cols-3 gap-2 text-[10px] font-bold text-center">
+                  <div className="p-2.5 rounded-xl border border-emerald-900/60 bg-emerald-950/20 text-emerald-400 flex items-center justify-center gap-1.5 shadow-inner">
+                    <span className="text-emerald-500 font-extrabold">✓</span> Free Assessment
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-900/40 text-slate-400 flex items-center justify-center gap-1.5">
+                    <Lock className="w-3 h-3 text-slate-500" /> Detailed Analysis
+                  </div>
+                  <div className="p-2.5 rounded-xl border border-slate-800 bg-slate-900/40 text-slate-400 flex items-center justify-center gap-1.5">
+                    <Lock className="w-3 h-3 text-slate-500" /> Funding Strategy
+                  </div>
+                </div>
+              </div>
+
+              {/* Value Meter Metrics */}
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 py-4 border-y border-slate-800/80">
+                <div className="text-center sm:text-left space-y-1">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">Funding Match Score</span>
+                  <span className="text-2xl font-black text-white">{readiness.score}/100</span>
+                </div>
+                <div className="text-center sm:text-left space-y-1 border-t sm:border-t-0 sm:border-x border-slate-800/80 pt-3 sm:pt-0 sm:px-4">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">Estimated Funding Stack</span>
+                  <span className="text-2xl font-black text-emerald-400">{stackingRange.formatted}</span>
+                </div>
+                <div className="text-center sm:text-left space-y-1 border-t sm:border-t-0 pt-3 sm:pt-0 sm:pl-4">
+                  <span className="text-[10px] font-black uppercase tracking-wider text-slate-500 block">Identified Programs</span>
+                  <span className="text-2xl font-black text-indigo-400">{eligibleMatches.length} Matched</span>
+                </div>
+              </div>
+
+              {/* Unlock Value Prop list */}
+              <div className="text-left space-y-3 max-w-xl mx-auto bg-slate-900/60 p-5 border border-slate-800/80 rounded-2xl">
+                <span className="text-[10px] font-black text-indigo-400 uppercase tracking-wider block">Detailed Analysis Locked</span>
+                <p className="text-slate-300 text-xs font-semibold">
+                  Unlock the full Executive Funding Opportunity Assessment report to access:
+                </p>
+                <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-[11px] text-slate-300 font-medium">
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-extrabold">✓</span> Full Eligibility Review
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-extrabold">✓</span> Application Checklist
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-extrabold">✓</span> Filing Timeline
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-indigo-400 font-extrabold">✓</span> Funding Stacking Strategy
+                  </li>
+                  <li className="flex items-center gap-2 sm:col-span-2">
+                    <span className="text-indigo-400 font-extrabold">✓</span> Priority Recommendations
+                  </li>
+                </ul>
+              </div>
+
+            </div>
           </div>
           
           <CardContent className="p-6 sm:p-8 space-y-8">
@@ -1499,100 +1692,7 @@ export default function PortfolioClient() {
         </div>
       </div>
 
-      {/* 4. EMAIL CAPTURE LOCK WALL CARD */}
-      {!isUnlocked && (
-        <Card className="border border-blue-200 bg-blue-50/50 shadow-xl rounded-2xl p-6 sm:p-8 animate-in fade-in duration-300">
-          <div className="max-w-2xl mx-auto space-y-6 text-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-full flex items-center justify-center mx-auto text-white shadow-md">
-              <Lock className="w-5 h-5" />
-            </div>
-            
-            <div className="space-y-2">
-              <h3 className="text-xl font-extrabold text-slate-900">Unlock Full Detailed Assessment & Verification</h3>
-              <p className="text-slate-600 text-xs leading-relaxed max-w-xl mx-auto">
-                Secure access to your detailed pre-qualification checklist, confidence indexes, additional matches, and enable priority reviews with our team.
-              </p>
-            </div>
-
-            {leadError && (
-              <div className="p-3 bg-red-50 border border-red-100 text-red-700 text-xs font-semibold rounded-lg">
-                {leadError}
-              </div>
-            )}
-
-            <form onSubmit={handleUnlockSubmit} className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left max-w-xl mx-auto">
-              <div className="space-y-1.5">
-                <Label htmlFor="lead-phone" className="text-[10px] font-bold text-slate-500 uppercase">Phone Number</Label>
-                <Input
-                  id="lead-phone"
-                  type="tel"
-                  required
-                  placeholder="+1 (555) 000-0000"
-                  value={profile.phone}
-                  onChange={(e) => updateProfileField("phone", e.target.value)}
-                  className="bg-white border-slate-200 h-11 text-xs text-slate-900 rounded-lg focus:ring-blue-600"
-                />
-              </div>
-              <div className="space-y-1.5">
-                <Label htmlFor="lead-companyName" className="text-[10px] font-bold text-slate-500 uppercase">Company Name</Label>
-                <Input
-                  id="lead-companyName"
-                  type="text"
-                  placeholder="Acme Corp"
-                  value={profile.companyName || ""}
-                  onChange={(e) => updateProfileField("companyName", e.target.value)}
-                  className="bg-white border-slate-200 h-11 text-xs text-slate-900 rounded-lg focus:ring-blue-600"
-                />
-              </div>
-              <div className="sm:col-span-2 space-y-1.5">
-                <Label htmlFor="lead-website" className="text-[10px] font-bold text-slate-500 uppercase">Company Website</Label>
-                <Input
-                  id="lead-website"
-                  type="url"
-                  placeholder="https://company.com"
-                  value={profile.website || ""}
-                  onChange={(e) => updateProfileField("website", e.target.value)}
-                  className="bg-white border-slate-200 h-11 text-xs text-slate-900 rounded-lg focus:ring-blue-600"
-                />
-              </div>
-
-              <div className="sm:col-span-2">
-                <label className="flex gap-2 items-start text-[10px] text-slate-500 cursor-pointer mt-1">
-                  <input
-                    type="checkbox"
-                    checked={consentToPartnerContact}
-                    onChange={(e) => setConsentToPartnerContact(e.target.checked)}
-                    className="mt-0.5 h-3.5 w-3.5 rounded border-slate-300 text-blue-600 focus:ring-blue-500"
-                  />
-                  <span>
-                    {LEAD_CONSENT_TEXT}
-                  </span>
-                </label>
-              </div>
-
-              <div className="sm:col-span-2 pt-2">
-                <Button
-                  type="submit"
-                  disabled={isSubmittingLead}
-                  className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-6 text-sm flex items-center justify-center gap-2 rounded-xl shadow-lg shadow-blue-600/10"
-                >
-                  {isSubmittingLead ? (
-                    <>
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                      Unlocking Report...
-                    </>
-                  ) : (
-                    <>
-                      <Sparkles className="w-4 h-4 text-yellow-300" />
-                      Unlock Portfolio Details
-                    </>
-                  )}
-                </Button>
-              </div>
-            </form>
-          </div>
-        </Card>
-      )}
+      {/* EMAIL CAPTURE LOCK WALL CARD - Bypassed and replaced by upfront Step 1 phone collection */}
 
       {/* 4.5 FOUNDING MEMBER UPGRADE CARD */}
       {isUnlocked && subscriptionStatus !== "active" && (

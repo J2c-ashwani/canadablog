@@ -68,6 +68,7 @@ export async function POST(request: NextRequest) {
           if (data.region) updates.region = data.region
           if (data.companySize) updates.companySize = data.companySize
           if (data.industry) updates.industry = data.industry
+          if (data.phone) updates.phone = data.phone
         }
 
         // Backup attribution to leadActivity JSON
@@ -98,7 +99,8 @@ export async function POST(request: NextRequest) {
           companySize,
           fundingInterests: data?.fundingInterests || [],
           website: data?.website || "",
-          companyName: data?.companyName || ""
+          companyName: data?.companyName || "",
+          phone: data?.phone || ""
         })
 
         if (res.success) {
@@ -135,6 +137,7 @@ export async function POST(request: NextRequest) {
         if (data.fundingInterests) updates.fundingInterests = data.fundingInterests
         if (data.website) updates.website = data.website
         if (data.companyName) updates.companyName = data.companyName
+        if (data.phone) updates.phone = data.phone
 
         // Re-calculate tier on step 3 completion
         const tier = calculateLeadTier({
