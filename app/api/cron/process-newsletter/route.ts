@@ -6,6 +6,14 @@ import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
+function getYearWeekString() {
+  const now = new Date();
+  const oneJan = new Date(now.getFullYear(), 0, 1);
+  const numberOfDays = Math.floor((now.getTime() - oneJan.getTime()) / (24 * 60 * 60 * 1000));
+  const weekNumber = Math.ceil((now.getDay() + 1 + numberOfDays) / 7);
+  return `${now.getFullYear()}_W${weekNumber}`;
+}
+
 export async function GET(request: NextRequest) {
   if (!isValidCronRequest(request)) {
     return NextResponse.json({ error: "Unauthorized newsletter cron execution." }, { status: 401 })
@@ -13,7 +21,16 @@ export async function GET(request: NextRequest) {
 
   try {
     // 1. Fetch current campaign configuration
-    const config = await NewsletterEngine.getCampaignConfig()
+    const weekId = getYearWeekString()
+    let config = await NewsletterEngine.getCampaignConfig()
+
+    // Autopilot weekly check: If the stored campaign is from a previous week, 
+    // or if no campaign is currently running, initialize a new weekly campaign automatically!
+    const targetCampaignId = `autopilot_campaign_${weekId}`
+    if (config.campaignId !== targetCampaignId && (config.status !== "running" || config.campaignId.startsWith("autopilot_campaign_"))) {
+      console.log(`🤖 [Newsletter Autopilot] Initializing weekly newsletter campaign for week ${weekId}...`)
+      config = await NewsletterEngine.autoInitializeWeeklyCampaign(weekId)
+    }
 
     if (config.status !== "running") {
       return NextResponse.json({

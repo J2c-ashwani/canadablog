@@ -245,6 +245,28 @@ export class NewsletterEngine {
       console.error(`Error sending newsletter to ${sub.email}:`, err)
     }
 
-    return false
+    return false;
+  }
+
+  static async autoInitializeWeeklyCampaign(weekId: string): Promise<NewsletterCampaignConfig> {
+    const programs = getAllPrograms();
+    
+    // Choose 3 active matching programs to showcase (excluding archives/expired)
+    const activePrograms = programs.filter(p => p.status === "Open").slice(0, 3);
+    const newProgramsList = activePrograms.map(p => p.name);
+    
+    const config: NewsletterCampaignConfig = {
+      campaignId: `autopilot_campaign_${weekId}`,
+      campaignType: "match_update",
+      newProgramsCount: activePrograms.length > 0 ? activePrograms.length : 3,
+      newProgramsList: newProgramsList.length > 0 ? newProgramsList : ["Scale-Up Support Program", "Technology Growth Fund", "Provincial Job Grant"],
+      missingFundingAmount: "$120,000",
+      status: "running",
+      startedAt: new Date().toISOString(),
+      sentCount: 0
+    };
+    
+    await this.saveCampaignConfig(config);
+    return config;
   }
 }
