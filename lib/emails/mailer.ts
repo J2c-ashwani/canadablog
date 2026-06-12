@@ -12,6 +12,7 @@ export function getFirstName(name?: string) {
 }
 
 export async function sendEmail({
+  // Trigger redeploy to load newly approved Vercel env variables
   to,
   subject,
   html,
