@@ -1856,7 +1856,9 @@ export default function PortfolioClient() {
 
 
                 <div className="pt-2">
-                  <span className="line-through text-slate-500 text-xs block">Normally $499</span>
+                  <span className="line-through text-slate-500 text-xs block">
+                    {hasSpecialDiscount ? "Normally $199" : "Normally $499"}
+                  </span>
                   <span className="text-3xl font-black text-white">${publicPrice}</span>
                   <span className="text-[10px] text-indigo-300 block mt-0.5">one-time payment</span>
                 </div>
@@ -1885,7 +1887,9 @@ export default function PortfolioClient() {
                   </p>
                 </div>
                 <div className="pt-2">
-                  <span className="line-through text-slate-500 text-xs block">Normally $199</span>
+                  <span className="line-through text-slate-500 text-xs block">
+                    {hasSpecialDiscount ? "Normally $99" : "Normally $199"}
+                  </span>
                   <span className="text-2xl font-black text-emerald-400">${memberPrice}</span>
                   <span className="text-[10px] text-slate-400 block mt-0.5">one-time payment</span>
                 </div>
