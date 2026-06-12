@@ -107,8 +107,8 @@ export async function GET(request: NextRequest) {
     const updatedSentCount = config.sentCount + successCount
     config.sentCount = updatedSentCount
     
-    // Check if we just completed all remaining targets
-    if (pendingLeads.length <= batch.length) {
+    // Check if we just completed all remaining targets (all pending leads were successfully sent)
+    if (pendingLeads.length - successCount === 0) {
       config.status = "completed"
     }
 
