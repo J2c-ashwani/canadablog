@@ -1194,6 +1194,51 @@ export default function PortfolioClient() {
           </div>
         </div>
       )}
+      {/* EXECUTIVE SUMMARY BRIEFING BANNER */}
+      <Card className="border border-indigo-200/80 bg-gradient-to-r from-indigo-50/60 to-blue-50/40 shadow-xs rounded-2xl p-6 text-left animate-in fade-in duration-300">
+        <div className="flex items-center gap-2 mb-3.5">
+          <Sparkles className="w-5 h-5 text-indigo-700 animate-pulse" />
+          <h3 className="font-extrabold text-slate-900 text-sm tracking-tight uppercase">Executive Summary</h3>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
+          
+          <div className="md:col-span-8 space-y-2">
+            <p className="text-xs text-slate-800 leading-relaxed font-bold">
+              Based on your answers, your business appears to have <span className="text-indigo-700">{readiness.score >= 70 ? "strong" : "active"} alignment</span> with innovation and growth funding.
+            </p>
+            <div className="text-[11px] text-slate-600 font-semibold space-y-1">
+              <span className="font-extrabold text-slate-800 uppercase tracking-wider text-[9px] block">Primary Opportunity Gap:</span>
+              <p className="flex items-start gap-1">
+                <span className="text-amber-600 font-bold shrink-0">⚠</span>
+                <span>
+                  {opportunityFlags.length > 0 
+                    ? `${opportunityFlags[0].title}: ${opportunityFlags[0].text}`
+                    : "Documentation readiness and application sequencing require formal verification."}
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <div className="md:col-span-4 p-4 bg-white/95 border border-indigo-100 rounded-xl space-y-2.5 shadow-2xs">
+            <div>
+              <span className="text-[8px] font-black uppercase text-slate-400 block tracking-wider">Estimated Opportunity</span>
+              <span className="text-lg font-black text-indigo-900">{stackingRange.formatted}</span>
+            </div>
+            <div>
+              <span className="text-[8px] font-black uppercase text-slate-400 block tracking-wider">Priority Pipeline</span>
+              <ol className="text-[10px] font-bold text-slate-700 space-y-0.5">
+                {topMatches.slice(0, 3).map((item, idx) => (
+                  <li key={idx} className="truncate">
+                    {idx + 1}. {item.program.name.replace(" Tax Credit", "").replace(" Grant", "")}
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+
+        </div>
+      </Card>
+
       {/* 1. TOP SUMMARY BLOCK */}
       <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
         {/* Estimated Funding Potential Block (First) */}
@@ -1207,6 +1252,19 @@ export default function PortfolioClient() {
             <CardDescription className="text-slate-300 text-xs">
               Combined potential range from eligible programs checked below.
             </CardDescription>
+
+            {/* Credibility verification breakdown */}
+            <div className="mt-4 pt-3 border-t border-slate-800/40 text-[9px] text-slate-400 space-y-1.5 text-left">
+              <span className="font-extrabold uppercase tracking-wider block text-slate-500">Calculated using:</span>
+              <div className="grid grid-cols-2 gap-x-4 gap-y-1.5 font-semibold text-slate-300">
+                <span>✓ Company size: {profile.companySize} FTEs</span>
+                <span>✓ Province: {profile.region}</span>
+                <span>✓ Industry: {profile.industry}</span>
+                <span>✓ Hiring plans: {profile.hasHiring ? "Yes" : "No"}</span>
+                <span>✓ R&D activities: {profile.hasRd ? "Yes" : "No"}</span>
+                <span>✓ Export goals: {profile.hasExporting ? "Yes" : "No"}</span>
+              </div>
+            </div>
           </CardHeader>
           <CardContent className="p-6 pt-2 relative z-10 flex flex-col justify-between h-full text-left">
             <p className="text-[10.5px] text-slate-400 leading-relaxed font-semibold">
