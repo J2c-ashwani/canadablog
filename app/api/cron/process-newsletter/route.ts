@@ -127,7 +127,11 @@ export async function GET(request: NextRequest) {
       totalCampaignSends: updatedSentCount,
       remainingTargets: Math.max(0, pendingLeads.length - batch.length),
       campaignStatus: config.status,
-      errors: errors.length > 0 ? errors : undefined
+      errors: errors.length > 0 ? errors : undefined,
+      senderKeyDiagnostics: {
+        length: process.env.SENDER_API_KEY ? process.env.SENDER_API_KEY.length : 0,
+        snippet: process.env.SENDER_API_KEY ? `${process.env.SENDER_API_KEY.slice(0, 6)}...${process.env.SENDER_API_KEY.slice(-6)}` : 'none'
+      }
     })
 
   } catch (err: any) {
