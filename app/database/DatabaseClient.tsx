@@ -394,7 +394,7 @@ export default function DatabaseClient() {
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
                 <Link href="/consultation" className="w-full sm:w-auto">
                   <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-6 rounded-xl transition-all shadow-lg shadow-blue-600/20">
-                    Book Strategy Session & Audit
+                    Book Funding Eligibility Audit
                   </Button>
                 </Link>
                 <Link href="/grant-finder" className="w-full sm:w-auto">

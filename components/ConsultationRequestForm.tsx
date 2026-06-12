@@ -76,7 +76,7 @@ Requested session: ${cleanTitle}`;
       {submitStatus === 'success' && (
         <div className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm font-semibold text-green-800">
           <CheckCircle2 className="mr-2 inline h-4 w-4" />
-          Request received. You can book the paid strategy session from the secure popup.
+          Request received. You can book the paid funding eligibility audit from the secure popup.
         </div>
       )}
 
@@ -163,7 +163,7 @@ Requested session: ${cleanTitle}`;
             Saving Request...
           </>
         ) : (
-          'Request Strategy Session'
+          'Request Funding Eligibility Audit'
         )}
       </button>
 

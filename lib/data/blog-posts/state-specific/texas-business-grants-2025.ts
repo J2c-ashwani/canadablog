@@ -533,7 +533,7 @@ export default `
 
     <div class="space-y-4">
       <a href="/texas-business-grants-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-red-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🤠 Get Your FREE Texas Grant Strategy Session ($897 Value)
+        🤠 Get Your FREE Texas Grant Eligibility Audit ($897 Value)
       </a>
       <p class="text-sm opacity-90 text-gray-700">⏰ Limited: Only 25 Texas business consultations available this month</p>
       <p class="text-xs opacity-75 text-gray-600">87% of our Texas clients secure state funding within 12 months • Average grant: $2.3M</p>

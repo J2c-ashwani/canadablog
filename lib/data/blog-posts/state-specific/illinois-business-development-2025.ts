@@ -435,7 +435,7 @@ export default `
     
     <div class="space-y-4">
       <a href="/illinois-business-grants-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🏛️ Get Your FREE Illinois Grant Strategy Session ($797 Value)
+        🏛️ Get Your FREE Illinois Grant Eligibility Audit ($797 Value)
       </a>
       <p class="text-sm opacity-90">⏰ Limited: Only 20 Prairie State consultations available</p>
     </div>

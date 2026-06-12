@@ -409,7 +409,7 @@ export default `
 
     <div class="space-y-4">
       <a href="/new-york-business-grants-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🗽 Get Your FREE New York Grant Strategy Session ($897 Value)
+        🗽 Get Your FREE New York Grant Eligibility Audit ($897 Value)
       </a>
       <p class="text-sm opacity-90 text-white">⏰ Limited: Only 25 Empire State business consultations available</p>
       <p class="text-xs opacity-75 text-white">89% of our NY clients secure state funding within 15 months • Average grant: $2.1M</p>

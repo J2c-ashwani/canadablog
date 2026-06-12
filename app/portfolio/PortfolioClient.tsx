@@ -90,6 +90,75 @@ export default function PortfolioClient() {
     }
   }, [isUnlocked, reportPurchased, subscriptionStatus]);
 
+  // Clarity Engagement & Duration Tracking
+  useEffect(() => {
+    if (!isUnlocked) return;
+
+    // 1. Duration Milestones on Results Page
+    const milestones = [
+      { delay: 10000, name: "results_duration_10s" },
+      { delay: 30000, name: "results_duration_30s" },
+      { delay: 65000, name: "results_duration_65s" },
+      { delay: 120000, name: "results_duration_120s" },
+      { delay: 240000, name: "results_duration_240s" }
+    ];
+
+    const timers = milestones.map(m => 
+      setTimeout(() => {
+        if (typeof window !== "undefined" && (window as any).clarity) {
+          (window as any).clarity("event", m.name);
+        }
+      }, m.delay)
+    );
+
+    // 2. Section Visibility tracking via IntersectionObserver
+    let observer: IntersectionObserver | null = null;
+    if (typeof window !== "undefined" && typeof IntersectionObserver !== "undefined") {
+      const firedEvents = new Set<string>();
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            let eventName = "";
+            if (id === "results-executive-summary") eventName = "viewed_executive_summary";
+            else if (id === "results-match-score") eventName = "viewed_match_score";
+            else if (id === "results-risk-analysis") eventName = "viewed_risk_analysis";
+            else if (id === "results-excluded-programs") eventName = "viewed_excluded_programs";
+            else if (id === "upgrade-section") eventName = "viewed_pricing_cards";
+
+            if (eventName && !firedEvents.has(eventName)) {
+              firedEvents.add(eventName);
+              if ((window as any).clarity) {
+                (window as any).clarity("event", eventName);
+              }
+            }
+          }
+        });
+      }, {
+        threshold: 0.15
+      });
+
+      const elementIds = [
+        "results-executive-summary",
+        "results-match-score",
+        "results-risk-analysis",
+        "results-excluded-programs",
+        "upgrade-section"
+      ];
+
+      elementIds.forEach(id => {
+        const el = document.getElementById(id);
+        if (el && observer) observer.observe(el);
+      });
+    }
+
+    return () => {
+      timers.forEach(clearTimeout);
+      if (observer) observer.disconnect();
+    };
+  }, [isUnlocked]);
+
   // Load from URL token or session storage on mount
   useEffect(() => {
     const searchParams = new URLSearchParams(window.location.search)
@@ -1268,7 +1337,7 @@ export default function PortfolioClient() {
         </div>
       )}
       {/* EXECUTIVE SUMMARY BRIEFING BANNER */}
-      <Card className="border-2 border-indigo-600 bg-slate-950 text-white shadow-xl rounded-3xl overflow-hidden p-8 text-left animate-in fade-in duration-300 relative">
+      <Card id="results-executive-summary" className="border-2 border-indigo-600 bg-slate-950 text-white shadow-xl rounded-3xl overflow-hidden p-8 text-left animate-in fade-in duration-300 relative">
         <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
         
         <div className="relative z-10 space-y-6">
@@ -1353,7 +1422,7 @@ export default function PortfolioClient() {
 
 
       {/* 1. TOP SUMMARY BLOCK */}
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
+      <div id="results-match-score" className="grid grid-cols-1 md:grid-cols-12 gap-6 items-stretch">
         {/* Estimated Funding Potential Block (First) */}
         <Card className="md:col-span-6 border-emerald-200 bg-gradient-to-br from-slate-950 via-slate-900 to-slate-950 text-white shadow-md rounded-2xl flex flex-col justify-between relative overflow-hidden">
           <div className="absolute top-0 right-0 w-48 h-48 bg-emerald-500/10 rounded-full blur-2xl pointer-events-none" />
@@ -1527,7 +1596,7 @@ export default function PortfolioClient() {
 
       {/* OPPORTUNITY FLAGS SECTION */}
       {opportunityFlags.length > 0 && (
-        <Card className="border border-amber-200/60 bg-amber-50/10 shadow-xs rounded-2xl p-5 text-left">
+        <Card id="results-risk-analysis" className="border border-amber-200/60 bg-amber-50/10 shadow-xs rounded-2xl p-5 text-left">
           <div className="flex items-center gap-2 mb-3.5">
             <AlertTriangle className="w-5 h-5 text-amber-500" />
             <h4 className="font-extrabold text-slate-900 text-sm tracking-tight">Eligibility Risk Analysis & Strategic Insights</h4>
@@ -1642,7 +1711,7 @@ export default function PortfolioClient() {
               <div className="p-6 bg-slate-900/60 border border-slate-800 rounded-2xl flex flex-col justify-between space-y-4">
                 <div className="space-y-2">
                   <span className="text-[10px] font-black text-slate-400 uppercase tracking-wider block">VIP Option</span>
-                  <h4 className="font-extrabold text-sm text-slate-200">VIP Strategy Session & Blueprint</h4>
+                  <h4 className="font-extrabold text-sm text-slate-200">VIP Funding Blueprint & Eligibility Audit</h4>
                   <p className="text-[10px] text-slate-400 leading-relaxed">
                     1-on-1 audit briefing with a Senior Funding Analyst to verify your filing roadmap. Includes full refund.
                   </p>
@@ -2053,7 +2122,7 @@ export default function PortfolioClient() {
       </div>
 
       {/* 3. WHY YOU DIDN'T MATCH (Authority Layer) */}
-      <div className="space-y-4">
+      <div id="results-excluded-programs" className="space-y-4">
         <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
           <ShieldAlert className="w-4.5 h-4.5 text-slate-400" />
           <h4 className="text-sm font-extrabold text-slate-800">Transparency Checklist (Not Eligible)</h4>

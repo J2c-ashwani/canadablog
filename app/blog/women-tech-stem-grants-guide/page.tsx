@@ -663,13 +663,13 @@ export default function WomenTechSTEMGrantsGuide() {
 
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-indigo-600 to-purple-700 rounded-lg p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-4">Get Your FREE Women's Tech Grant Strategy Session</h3>
+                <h3 className="text-2xl font-bold mb-4">Get Your FREE Women's Tech Grant Eligibility Audit</h3>
                 <p className="text-indigo-100 mb-6 text-lg">
                   Book a complimentary consultation with our STEM grant experts. Get personalized guidance on SBIR applications,
                   NSF programs, and private tech funding opportunities for women innovators.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">
-                  <h4 className="font-semibold text-white mb-2">Your FREE Strategy Session Includes:</h4>
+                  <h4 className="font-semibold text-white mb-2">Your FREE Eligibility Audit Includes:</h4>
                   <div className="grid md:grid-cols-2 gap-2 text-sm text-indigo-100">
                     <div>✅ SBIR/STTR program matching</div>
                     <div>✅ Technical proposal development</div>
@@ -681,7 +681,7 @@ export default function WomenTechSTEMGrantsGuide() {
                 </div>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                   <Link href="/contact?service=women-tech-stem-consultation">
-                    Book FREE Tech Grant Strategy Session
+                    Book FREE Tech Grant Eligibility Audit
                   </Link>
                 </Button>
                 <p className="text-indigo-200 text-xs mt-3">

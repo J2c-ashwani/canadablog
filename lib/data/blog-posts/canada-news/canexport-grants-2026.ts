@@ -463,7 +463,7 @@ const post: BlogPost = {
 
     <div class="space-y-4">
       <a href="/contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-green-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        \ud83c\udde8\ud83c\udde6 Get Your FREE CanExport Strategy Session ($697 CAD Value)
+        \ud83c\udde8\ud83c\udde6 Get Your FREE CanExport Eligibility Audit ($697 CAD Value)
       </a>
       <p class="text-sm opacity-90">\u23f0 Limited: Only 20 export strategy consultations available</p>
       <p class="text-xs opacity-75">82% of our CanExport clients secure funding \u2022 Average project value: $85,000 CAD</p>

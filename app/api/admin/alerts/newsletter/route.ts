@@ -68,33 +68,34 @@ export async function GET(request: NextRequest) {
 
     // Generate HTML preview for a sample lead
     const sampleSub = targetLeads[0] || {
-      email: "founder@example.com",
-      name: "John Doe",
+      email: "info@fsidigital.ca",
+      name: "Alex",
       loginToken: "sample_token_123",
-      companyName: "Acme Enterprises",
+      companyName: "Apex Enterprises",
       region: "ON",
       industry: "technology"
     }
 
     let previewHtml = ""
     try {
-      // Mock the mailer sendEmail to return the compiled HTML string rather than sending it
-      const origSendEmail = require("@/lib/emails/mailer").sendEmail
-      const mailerModule = require("@/lib/emails/mailer")
-      
+      const g = global as any
+      g.mockSendEmailActive = true
       let capturedHtml = ""
-      mailerModule.sendEmail = async (params: any) => {
+      g.mockSendEmailCallback = (params: any) => {
         capturedHtml = params.html
-        return { success: true }
       }
 
       await NewsletterEngine.sendNewsletterToLead(config, sampleSub as any)
       previewHtml = capturedHtml
       
-      // Restore original
-      mailerModule.sendEmail = origSendEmail
+      // Clean up
+      g.mockSendEmailActive = false
+      g.mockSendEmailCallback = undefined
     } catch (err) {
       previewHtml = `<div style="padding:20px;color:red;">Failed to compile preview template: ${err}</div>`
+      const g = global as any
+      g.mockSendEmailActive = false
+      g.mockSendEmailCallback = undefined
     }
 
     return NextResponse.json({

@@ -684,13 +684,13 @@ export default function WOSBFederalContractingGuide() {
 
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-purple-600 to-indigo-700 rounded-lg p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-4">Get Your FREE WOSB Certification Strategy Session</h3>
+                <h3 className="text-2xl font-bold mb-4">Get Your FREE WOSB Certification Eligibility Audit</h3>
                 <p className="text-purple-100 mb-6 text-lg">
                   Book a complimentary consultation with our WOSB experts. Get personalized guidance on certification,
                   contract opportunities, and federal contracting success strategies.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">
-                  <h4 className="font-semibold text-white mb-2">In Your FREE Strategy Session:</h4>
+                  <h4 className="font-semibold text-white mb-2">In Your FREE Eligibility Audit:</h4>
                   <div className="grid md:grid-cols-2 gap-2 text-sm text-purple-100">
                     <div>✅ WOSB vs EDWOSB assessment</div>
                     <div>✅ Certification readiness review</div>
@@ -702,7 +702,7 @@ export default function WOSBFederalContractingGuide() {
                 </div>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                   <Link href="/contact?service=wosb-certification-consultation">
-                    Book FREE Strategy Session Now
+                    Book FREE Eligibility Audit Now
                   </Link>
                 </Button>
                 <p className="text-purple-200 text-xs mt-3">

@@ -37,7 +37,7 @@ export function buildDay2Html({ firstName, companyName, estimatedFunding, loginT
         <div style="text-align: center; margin: 30px 0;">
           <a href="${bookingUrl}" 
              style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px;">
-             Book Verification Audit & Strategy Session &rarr;
+             Book Verification Audit & Roadmap &rarr;
           </a>
         </div>
         <p style="font-size:13px;color:#64748b;line-height:1.5;margin-top:20px;">

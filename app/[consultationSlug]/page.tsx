@@ -61,8 +61,8 @@ export async function generateMetadata({ params }: { params: Promise<{ consultat
 
   return {
     title: `Book Your ${cleanTitle} | Expert Setup & Review`,
-    description: `Schedule a dedicated strategy session for ${cleanTitle.toLowerCase()}. Get expert guidance on applications, eligibility, and funding strategy.`,
-    keywords: `${cleanTitle.toLowerCase()} strategy session, book grant consultation, expert grant review, funding application help, business grant eligibility check, ${cleanTitle.toLowerCase()} experts`,
+    description: `Schedule a dedicated funding eligibility audit for ${cleanTitle.toLowerCase()}. Get expert guidance on applications, eligibility, and funding strategy.`,
+    keywords: `${cleanTitle.toLowerCase()} funding eligibility audit, book grant consultation, expert grant review, funding application help, business grant eligibility check, ${cleanTitle.toLowerCase()} experts`,
   };
 }
 
@@ -100,7 +100,7 @@ export default async function ConsultationPage({ params }: { params: Promise<{ c
                   <Calendar className="w-8 h-8 text-blue-100" />
                 </div>
                 <h1 className="text-3xl sm:text-4xl font-extrabold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-white to-blue-100 pb-2">
-                  {cleanTitle} Strategy Session
+                  {cleanTitle} Funding Eligibility Audit
                 </h1>
                 <p className="text-blue-100 text-lg max-w-2xl mx-auto font-medium">
                   Connect with our grant experts to maximize your approval odds, navigate compliance, and secure your funding faster.

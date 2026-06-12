@@ -273,7 +273,7 @@ export default function ConsultationClient() {
     const price = selectedTier === 'audit' ? '199.00' : '499.00';
     const description = selectedTier === 'audit'
       ? 'Funding Eligibility Audit & Roadmap'
-      : 'VIP Funding Blueprint & Strategy Session';
+      : 'VIP Funding Blueprint & Eligibility Audit';
 
     (window as any).paypal.Buttons({
       style: {

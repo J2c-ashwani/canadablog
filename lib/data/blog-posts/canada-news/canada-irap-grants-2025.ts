@@ -373,7 +373,7 @@ const post: BlogPost = {
 
     <div class="space-y-4">
       <a href="/canada-irap-consultation" class="inline-block bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-red-300">
-        🇨🇦 Get Your FREE IRAP Strategy Session ($597 CAD Value)
+        🇨🇦 Get Your FREE IRAP Eligibility Audit ($597 CAD Value)
       </a>
       <p class="text-sm opacity-90 text-red-700">⏰ Limited: Only 30 IRAP strategy consultations available this quarter</p>
       <p class="text-xs opacity-75 text-red-700">65% of our IRAP clients secure funding • Average award: $385,000 CAD</p>

@@ -672,13 +672,13 @@ export default function StateWomenBusinessProgramsGuide() {
 
               {/* Lead-Generating CTA Section */}
               <div className="bg-gradient-to-r from-orange-600 to-red-700 rounded-lg p-8 text-white text-center">
-                <h3 className="text-2xl font-bold mb-4">Get Your FREE State & Local Programs Strategy Session</h3>
+                <h3 className="text-2xl font-bold mb-4">Get Your FREE State & Local Programs Eligibility Audit</h3>
                 <p className="text-orange-100 mb-6 text-lg">
                   Book a complimentary consultation with our state program experts. Get personalized guidance on finding and
                   accessing state and local women business programs in your area.
                 </p>
                 <div className="bg-white/10 rounded-lg p-4 mb-6">
-                  <h4 className="font-semibold text-white mb-2">Your FREE Strategy Session Includes:</h4>
+                  <h4 className="font-semibold text-white mb-2">Your FREE Eligibility Audit Includes:</h4>
                   <div className="grid md:grid-cols-2 gap-2 text-sm text-orange-100">
                     <div>✅ State program identification & mapping</div>
                     <div>✅ WBE/DBE certification guidance</div>
@@ -690,7 +690,7 @@ export default function StateWomenBusinessProgramsGuide() {
                 </div>
                 <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
                   <Link href="/contact?service=state-local-programs-consultation">
-                    Book FREE State Programs Strategy Session
+                    Book FREE State Programs Eligibility Audit
                   </Link>
                 </Button>
                 <p className="text-orange-200 text-xs mt-3">

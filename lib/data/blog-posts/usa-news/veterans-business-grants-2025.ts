@@ -832,9 +832,9 @@ export default `
 
     <div class="space-y-4">
       <a href="/veteran-business-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-red-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🎖️ Get Your FREE Veteran Business Strategy Session ($697 Value)
+        🎖️ Get Your FREE Veteran Business Eligibility Audit ($697 Value)
       </a>
-      <p class="text-sm opacity-90">⏰ Limited: Only 25 veteran strategy sessions available this month</p>
+      <p class="text-sm opacity-90">⏰ Limited: Only 25 veteran eligibility audits available this month</p>
       <p class="text-xs opacity-75">94% of our veteran clients secure funding within 6 months of consultation</p>
     </div>
   </div>

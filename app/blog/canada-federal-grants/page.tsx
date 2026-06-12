@@ -716,7 +716,7 @@ export default function CanadaFederalGrantsPage() {
 
                     <div className="pt-2">
                       <Button className="w-full bg-red-700 hover:bg-red-800 text-lg py-6 shadow-md" asChild>
-                        <Link href="/contact">Book Strategy Session</Link>
+                        <Link href="/contact">Book Funding Eligibility Audit</Link>
                       </Button>
                     </div>
                   </CardContent>

@@ -808,7 +808,7 @@ export default function ReportClient() {
                   <span className="text-emerald-400 text-[10px] font-black uppercase tracking-wider block">Verification Required</span>
                 </div>
                 <h3 className="text-lg sm:text-xl font-black text-white">
-                  Schedule Your Funding Audit & Strategy Session
+                  Schedule Your Funding Eligibility Audit
                 </h3>
                 <p className="text-slate-300 text-xs max-w-xl leading-relaxed">
                   Have a Senior Funding Analyst verify your matched programs, check eligibility restrictions, and compile your final filing plan. 100% money-back guarantee.

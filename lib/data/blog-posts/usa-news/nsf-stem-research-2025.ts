@@ -629,9 +629,9 @@ export default `
 
     <div class="space-y-4">
       <a href="/nsf-sbir-masterclass" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-purple-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🔬 Get Your FREE NSF SBIR Strategy Session ($697 Value)
+        🔬 Get Your FREE NSF SBIR Eligibility Audit ($697 Value)
       </a>
-      <p class="text-sm opacity-90">⏰ Limited: Only 15 STEM strategy sessions available this month</p>
+      <p class="text-sm opacity-90">⏰ Limited: Only 15 STEM eligibility audits available this month</p>
       <p class="text-xs opacity-75">89% of our NSF clients receive invitations to submit full proposals, 67% win funding</p>
     </div>
   </div>

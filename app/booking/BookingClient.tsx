@@ -70,7 +70,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
             items: [
               {
                 item_id: tier || 'audit',
-                item_name: tier === 'vip' ? 'VIP Funding Blueprint & Strategy Session' : 'Funding Eligibility Audit & Roadmap',
+                item_name: tier === 'vip' ? 'VIP Funding Blueprint & Eligibility Audit' : 'Funding Eligibility Audit & Roadmap',
                 price: price,
                 quantity: 1,
               }

@@ -467,7 +467,7 @@ export default `
 
     <div class="space-y-4">
       <a href="/canada-supercluster-consultation" class="inline-block bg-white text-red-600 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 hover:bg-gray-100">
-        🍁 Get Your FREE Canada Strategy Session ($697 CAD Value)
+        🍁 Get Your FREE Canada Eligibility Audit ($697 CAD Value)
       </a>
       <p class="text-sm opacity-90">⏰ Limited: Only 30 sessions available for Canadian companies this month</p>
       <p class="text-xs opacity-75">92% of our Canadian clients receive Supercluster funding within 12 months</p>

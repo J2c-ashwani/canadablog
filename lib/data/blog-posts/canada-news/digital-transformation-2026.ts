@@ -671,7 +671,7 @@ const post: BlogPost = {
 
     <div class="space-y-4">
       <a href="/contact" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        \ud83d\udcbb Get Your FREE CDAP Strategy Session ($597 CAD Value)
+        \ud83d\udcbb Get Your FREE CDAP Eligibility Audit ($597 CAD Value)
       </a>
       <p class="text-sm opacity-90">\u23f0 Limited: Only 30 digital transformation consultations available</p>
       <p class="text-xs opacity-75">96% of our CDAP clients receive full funding approval within 60 days</p>

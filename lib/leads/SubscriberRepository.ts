@@ -92,7 +92,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       lastOpenedAt: lead.lastOpenedAt || undefined,
       lastClickedAt: lead.lastClickedAt || undefined,
       timestamp: lead.timestamp,
-      loginToken: lead.loginToken || "",
+      loginToken: lead.loginToken || (lead.email ? crypto.createHash("sha256").update(lead.email.toLowerCase().trim() + "fsi-login-token-2026").digest("hex").slice(0, 32) : this.generateToken()),
       subscriptionStatus: lead.subscriptionStatus || "inactive",
       subscriptionId: lead.subscriptionId || "",
       trialStartedAt: lead.trialStartedAt || "",

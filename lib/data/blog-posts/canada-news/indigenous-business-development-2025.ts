@@ -530,7 +530,7 @@ const post: BlogPost = {
 
     <div class="space-y-4">
       <a href="/indigenous-business-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-red-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🪶 Get Your FREE Indigenous Business Strategy Session ($697 CAD Value)
+        🪶 Get Your FREE Indigenous Business Eligibility Audit ($697 CAD Value)
       </a>
       <p class="text-sm opacity-90">⏰ Limited: Only 25 Indigenous business consultations available</p>
       <p class="text-xs opacity-75">94% of our Indigenous clients receive funding within 12 months of consultation</p>

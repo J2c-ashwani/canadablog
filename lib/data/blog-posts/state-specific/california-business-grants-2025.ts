@@ -571,7 +571,7 @@ export default `
 
     <div class="space-y-4">
       <a href="/california-business-grants-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-blue-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🌟 Get Your FREE California Grant Strategy Session ($997 Value)
+        🌟 Get Your FREE California Grant Eligibility Audit ($997 Value)
       </a>
       <p class="text-sm opacity-90 text-white">⏰ Limited: Only 30 Golden State business consultations available</p>
       <p class="text-xs opacity-75 text-white">92% of our California clients secure funding within 9 months • Average grant: $1.8M</p>

@@ -29,6 +29,18 @@ export async function sendEmail({
   companyName?: string;
   from?: string;
 }) {
+  // Check for global mock (used to compile previews in Next.js ESM context)
+  if (typeof global !== "undefined" && (global as any).mockSendEmailActive) {
+    if ((global as any).mockSendEmailCallback) {
+      try {
+        (global as any).mockSendEmailCallback({ to, subject, html, text, tagType, companyName, from });
+      } catch (e) {
+        console.error("Error in mockSendEmailCallback:", e);
+      }
+    }
+    return { success: true };
+  }
+
   const senderApiKey = process.env.SENDER_API_KEY;
 
   if (senderApiKey) {

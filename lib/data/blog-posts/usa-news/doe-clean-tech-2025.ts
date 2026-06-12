@@ -398,7 +398,7 @@ export default `
 
     <div class="space-y-4">
       <a href="/doe-clean-energy-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-green-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        ⚡ Get Your FREE DOE Strategy Session ($797 Value)
+        ⚡ Get Your FREE DOE Eligibility Audit ($797 Value)
       </a>
       <p class="text-sm opacity-90">⏰ Limited: Only 20 clean energy consultations available</p>
       <p class="text-xs opacity-75">87% of our DOE clients receive funding within 12 months</p>

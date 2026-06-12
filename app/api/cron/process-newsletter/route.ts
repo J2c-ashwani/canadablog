@@ -80,24 +80,30 @@ export async function GET(request: NextRequest) {
     const sendPromises = batch.map(async (sub) => {
       const result = await NewsletterEngine.sendNewsletterToLead(config, sub)
       
-      if (result.success) {
-        let activity: any = {}
-        try {
-          if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
-            activity = JSON.parse(sub.leadActivity)
-          }
-        } catch (e) {
-          // ignore
+      // Update subscriber activity preferences state regardless of success or failure 
+      // so they are marked as processed for this campaign and not retried infinitely.
+      let activity: any = {}
+      try {
+        if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
+          activity = JSON.parse(sub.leadActivity)
         }
+      } catch (e) {
+        // ignore
+      }
 
-        // Record campaign send details
-        activity.lastNewsletterCampaignId = config.campaignId
-        activity.lastNewsletterSentAt = new Date().toISOString()
+      activity.lastNewsletterCampaignId = config.campaignId
+      activity.lastNewsletterSentAt = new Date().toISOString()
 
+      try {
         await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-          leadActivity: JSON.stringify(activity)
+          leadActivity: JSON.stringify(activity),
+          loginToken: sub.loginToken
         })
+      } catch (e) {
+        console.error(`Failed to update subscriber preferences for ${sub.email}:`, e)
+      }
 
+      if (result.success) {
         successCount++
       } else {
         errors.push({ email: sub.email || "unknown", error: result.error })
@@ -106,12 +112,12 @@ export async function GET(request: NextRequest) {
 
     await Promise.all(sendPromises)
 
-    // 5. Update progress counts
-    const updatedSentCount = config.sentCount + successCount
+    // 5. Update progress counts (sentCount tracks all attempted dispatches)
+    const updatedSentCount = config.sentCount + batch.length
     config.sentCount = updatedSentCount
     
-    // Check if we just completed all remaining targets (all pending leads were successfully sent)
-    if (pendingLeads.length - successCount === 0) {
+    // Check if we just completed all remaining targets
+    if (pendingLeads.length - batch.length <= 0) {
       config.status = "completed"
     }
 

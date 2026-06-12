@@ -718,7 +718,7 @@ export default `
 
     <div class="space-y-4">
       <a href="/agriinnovate-consultation" class="inline-block bg-yellow-400 hover:bg-yellow-500 text-green-800 font-bold py-4 px-8 rounded-lg text-lg transition-colors transform hover:scale-105 border-2 border-yellow-300">
-        🌾 Get Your FREE AgriInnovate Strategy Session ($797 CAD Value)
+        🌾 Get Your FREE AgriInnovate Eligibility Audit ($797 CAD Value)
       </a>
       <p class="text-sm opacity-90">⏰ Limited: Only 20 agricultural innovation consultations available</p>
       <p class="text-xs opacity-75">91% of our AgriInnovate clients receive Project Summary invitations, 87% win full funding</p>
