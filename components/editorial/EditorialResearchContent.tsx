@@ -1,5 +1,7 @@
 import { CheckCircle2 } from 'lucide-react';
 import { getPriorityResearchContent } from '@/lib/editorial/priorityResearchContent';
+import { PROGRAM_BENCHMARKS, resolveBenchmarkBySlug } from '@/lib/editorial/eligibilityBenchmarks';
+import { EligibilityBenchmarkWidget } from '@/components/seo/EligibilityBenchmarkWidget';
 
 interface EditorialResearchContentProps {
   route: string;
@@ -36,22 +38,29 @@ export function EditorialResearchContent({ route }: EditorialResearchContentProp
           </section>
 
           {/* Inline Exit CTA after Research note 2 (index === 1) */}
-          {index === 1 && (
-            <div className="my-10 rounded-xl border border-emerald-100 bg-emerald-50/50 p-6 sm:p-8 text-center not-prose">
-              <h3 className="text-xl font-bold text-slate-950 mb-2">
-                Wondering whether your business qualifies?
-              </h3>
-              <p className="text-slate-600 mb-6 max-w-lg mx-auto text-sm sm:text-base">
-                Get a personalized government funding assessment in under 60 seconds.
-              </p>
-              <a
-                href={`/portfolio?focus=${getScreenerFocus(route)}`}
-                className="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-6 py-3 text-sm font-bold text-white hover:bg-emerald-500 shadow-sm transition-colors"
-              >
-                Check Eligibility
-              </a>
-            </div>
-          )}
+          {index === 1 && (() => {
+            const benchmark = resolveBenchmarkBySlug(route);
+            if (benchmark) {
+              return <EligibilityBenchmarkWidget benchmark={benchmark} />;
+            }
+
+            return (
+              <div className="my-10 rounded-xl border border-indigo-100 bg-indigo-50/50 p-6 sm:p-8 text-center not-prose">
+                <h3 className="text-xl font-bold text-slate-950 mb-2">
+                  Many applicants discover eligibility issues only after beginning the application process.
+                </h3>
+                <p className="text-slate-600 mb-6 max-w-lg mx-auto text-sm sm:text-base">
+                  Verify if your business meets the critical technical and commercial evaluation standards before submitting your application.
+                </p>
+                <a
+                  href={`/portfolio?focus=${getScreenerFocus(route)}`}
+                  className="inline-flex items-center justify-center rounded-lg bg-indigo-600 px-6 py-3 text-sm font-bold text-white hover:bg-indigo-500 shadow-sm transition-colors animate-pulse"
+                >
+                  See My Funding Match Score
+                </a>
+              </div>
+            );
+          })()}
         </div>
       ))}
     </div>

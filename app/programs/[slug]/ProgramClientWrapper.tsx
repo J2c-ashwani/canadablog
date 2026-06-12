@@ -17,6 +17,8 @@ import { DynamicInternalLinkEngine } from "@/components/seo/DynamicInternalLinkE
 import { MatchScoreCard } from "@/components/seo/MatchScoreCard"
 import { StackingPortfolio } from "@/components/seo/StackingPortfolio"
 import { InlineMatchEvaluator } from "@/components/seo/InlineMatchEvaluator"
+import { resolveBenchmarkBySlug } from "@/lib/editorial/eligibilityBenchmarks"
+import { EligibilityBenchmarkWidget } from "@/components/seo/EligibilityBenchmarkWidget"
 
 interface ProgramClientWrapperProps {
   program: ProgramDetails
@@ -221,6 +223,29 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
                   </p>
                 </CardContent>
               </Card>
+
+              {/* Eligibility Benchmark Widget (Phase 1 rollout) */}
+              {(() => {
+                const TOP_10_PROGRAMS = new Set([
+                  'irap-grant',
+                  'sred-tax-credit',
+                  'canexport',
+                  'cdap',
+                  'nih-sbir',
+                  'nsf-sbir',
+                  'usda-reap',
+                  'doe-clean-energy',
+                  'california-competes-tax-credit',
+                  'texas-enterprise-fund'
+                ]);
+                if (TOP_10_PROGRAMS.has(program.slug)) {
+                  const benchmark = resolveBenchmarkBySlug(program.slug);
+                  if (benchmark) {
+                    return <EligibilityBenchmarkWidget benchmark={benchmark} />;
+                  }
+                }
+                return null;
+              })()}
 
               {/* Dynamic Score Card Presentation */}
               {profile && matchResult && hasAccess && (
