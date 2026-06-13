@@ -143,11 +143,11 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
 
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      We have expanded our funding match engine database, adding <strong>${data.newProgramsCount} new programs</strong> matching businesses like yours.
+      Since your last funding review, we have identified <strong>${data.newProgramsCount} additional funding programs</strong> that may be relevant to businesses like yours.
     </p>
 
     <p style="margin: 16px 0;">
-      Here are a few of the newly added matching programs:
+      Some of the newly added opportunities include:
     </p>
 
     <ul style="list-style-type: none; padding-left: 0; margin: 16px 0; font-size: 14px;">
@@ -155,18 +155,18 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     </ul>
 
     <p style="margin: 16px 0;">
-      Your matched eligibility score has been updated in real-time based on these additions. Log in to view your refreshed stack and see how much your funding ceiling has increased.
+      We've refreshed your funding profile to reflect these additions. Log in to view your updated matches and see whether any of these opportunities could increase your potential funding options.
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
-        Check Your Updated Score &rarr;
+        View My Updated Matches &rarr;
       </a>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nWe added ${data.newProgramsCount} new programs to our assessment engine matching businesses like yours.\n\nMatching programs include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nCheck your updated score:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
-  const subject = `Funding Match Update: We added ${data.newProgramsCount} new programs`;
+  const text = `Hi ${firstName},\n\nSince your last funding review, we have identified ${data.newProgramsCount} additional funding programs that may be relevant to your business.\n\nSome of the newly added opportunities include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nWe've refreshed your funding profile to reflect these additions. Log in to view your updated matches here:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const subject = `We identified ${data.newProgramsCount} new funding programs for your business`;
 
   return sendEmail({
     to: data.to,
@@ -238,7 +238,7 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      This is a quick reminder that your exclusive reactivation pricing for the FSI Digital Executive Funding Report expires soon.
+      This is a quick reminder that your exclusive reactivation pricing for the FSI Digital Funding Eligibility Report expires soon.
     </p>
     <p style="margin: 16px 0;">
       Access your personalized dashboard to lock in your <strong>$${pricing.price} report</strong> (normally $199) and secure your documentation checklist before your profile file is closed.
@@ -255,7 +255,7 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is a reminder that your exclusive reactivation offer for the Funding Assessment Report expires soon. Lock in your $${pricing.price} report (usually $199) here:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nThis is a reminder that your exclusive reactivation offer for the Funding Eligibility Report expires soon. Lock in your $${pricing.price} report (usually $199) here:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-reminder",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -279,7 +279,7 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
       The answer is yes. Recently, one of our platform members, <strong>Apex Tech Solutions</strong>, successfully secured <strong>$85,000 in combined funding</strong> by stacking provincial hiring subsidies with federal R&D tax credits (SR&ED).
     </p>
     <p style="margin: 16px 0;">
-      In your dashboard, our stacking engine has already mapped out a similar priority intake calendar for ${data.companyName || "your business"}. Unlock your full roadmap and checklist for just $${pricing.price} (usually $199).
+      In your dashboard, we have mapped out a priority intake schedule for ${data.companyName || "your business"} based on Apex's success strategy. Unlock your full Funding Eligibility Report and checklist for just $${pricing.price} (usually $199).
     </p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
@@ -293,7 +293,7 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nApex Tech Solutions stacked hiring subsidies and SR&ED tax credits to secure $85,000. View your stacked roadmap and checklist for $${pricing.price} (usually $199):\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nApex Tech Solutions stacked hiring subsidies and SR&ED tax credits to secure $85,000. View your custom Funding Eligibility Report and checklist for $${pricing.price} (usually $199):\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-casestudy",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -311,7 +311,7 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      This is your final warning before your pre-qualification checklist and customized funding roadmap are locked and archived.
+      This is your final opportunity to claim your pre-qualification checklist and custom Funding Eligibility Report before your file is locked and archived.
     </p>
     <p style="margin: 16px 0;">
       Access your portal now to claim your discounted report for just $${pricing.price} (usually $199). Once this window closes, the price reverts to standard rates.
@@ -328,7 +328,7 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom funding roadmap for $${pricing.price} (usually $199) before it is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom Funding Eligibility Report for $${pricing.price} (usually $199) before it is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-lastchance",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -345,16 +345,16 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      I assume funding is not an immediate priority for ${data.companyName || "your business"} at this time.
+      We haven't heard back regarding your updated funding matches for ${data.companyName || "your business"}.
     </p>
     <p style="margin: 16px 0;">
-      We are closing your high-priority setup window today. To keep our analyst support focused, we are moving your profile to our low-frequency update list.
+      We are closing your active review file today. To keep our analyst support focused on active applicants, we are moving your profile to our low-frequency update list.
     </p>
     <p style="margin: 16px 0;">
       Going forward, you will only receive our high-level quarterly funding announcements and new major grant releases, rather than active reminders.
     </p>
     <p style="margin: 16px 0;">
-      If you'd like to check your matching results or keep your high-priority profile active before we close the file, you can access your dashboard below:
+      If you'd like to check your matching results or keep your active review file open before we close the file, you can access your dashboard below:
     </p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #475569; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(71,85,105,0.2);">
@@ -368,7 +368,7 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nWe are closing your high-priority setup window today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nWe are closing your active review file today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-finalclose",
     companyName: data.companyName,
     from: BRAND_SENDER,
