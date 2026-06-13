@@ -35,7 +35,7 @@ export function buildDay2Html({ firstName, companyName, estimatedFunding, loginT
           Since these assessments model general applicant criteria, the next step is verification. We can assign a Senior Funding Analyst to run a manual audit of your entity structure and tech scope to lock in your filing calendar.
         </p>
         <div style="text-align: center; margin: 30px 0;">
-          <a href="${bookingUrl}" 
+          <a href="${bookingUrl}" target="_blank" rel="noopener noreferrer" 
              style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px;">
              Book Verification Audit & Roadmap &rarr;
           </a>
@@ -69,7 +69,7 @@ export function buildDay5Html({ firstName, companyName, loginToken }: { firstNam
           <li><strong>Deadlines:</strong> How to avoid missing CRA/IRS submission windows.</li>
         </ul>
         <div style="text-align: center; margin: 30px 0;">
-          <a href="${bookingUrl}" 
+          <a href="${bookingUrl}" target="_blank" rel="noopener noreferrer" 
              style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px;">
              Schedule a Quick 15-Min Briefing &rarr;
           </a>
@@ -95,7 +95,7 @@ export function buildDay10Html({ firstName, companyName, loginToken }: { firstNa
           To ensure your application files are submitted before caps are reached, we recommend booking a slot to verify your filing deadlines.
         </p>
         <div style="text-align: center; margin: 30px 0;">
-          <a href="${bookingUrl}" 
+          <a href="${bookingUrl}" target="_blank" rel="noopener noreferrer" 
              style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px;">
              Schedule Deadline Verification &rarr;
           </a>
@@ -108,7 +108,7 @@ export function buildDay10Html({ firstName, companyName, loginToken }: { firstNa
 export async function sendFollowupEmail(stage: 'day2' | 'day5' | 'day10', { to, name, companyName, loginToken, estimatedFunding }: FollowupInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
 
   if (!apiKey) {
     console.warn(`Followup email (${stage}) skipped — RESEND_API_KEY is not set.`);

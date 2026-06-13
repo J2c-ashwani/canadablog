@@ -265,8 +265,8 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
                 <ShieldCheck className="w-4 h-4 text-slate-400" />
                 <span>
                   Need to reschedule? Email support at{' '}
-                  <a href="mailto:ashwani@fsidigital.ca" className="text-indigo-600 font-semibold hover:underline">
-                    ashwani@fsidigital.ca
+                  <a href="mailto:advisors@fsidigital.ca" className="text-indigo-600 font-semibold hover:underline">
+                    advisors@fsidigital.ca
                   </a>
                 </span>
               </div>

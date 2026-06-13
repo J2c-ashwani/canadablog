@@ -106,7 +106,7 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
         See If You Qualify &rarr;
       </a>
     </div>
@@ -158,7 +158,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
         Check Your Updated Score &rarr;
       </a>
     </div>
@@ -206,7 +206,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #2563eb; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #2563eb; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.2);">
         Complete Your Assessment &rarr;
       </a>
     </div>
@@ -242,7 +242,7 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
       Access your personalized dashboard to lock in your <strong>$${pricing.price} report</strong> (normally $199) and secure your documentation checklist before your profile file is closed.
     </p>
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
         Claim Your Discounted Report &rarr;
       </a>
     </div>
@@ -279,7 +279,7 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
       In your dashboard, our stacking engine has already mapped out a similar priority intake calendar for ${data.companyName || "your business"}. Unlock your full roadmap and checklist for just $${pricing.price} (usually $199).
     </p>
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
         View Stacking Strategy &rarr;
       </a>
     </div>
@@ -313,7 +313,7 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
       Access your portal now to claim your discounted report for just $${pricing.price} (usually $199). Once this window closes, the price reverts to standard rates.
     </p>
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #e11d48; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(225,29,72,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #e11d48; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(225,29,72,0.2);">
         Claim Your Discount Now &rarr;
       </a>
     </div>
@@ -352,7 +352,7 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
       If you'd like to check your matching results or keep your high-priority profile active before we close the file, you can access your dashboard below:
     </p>
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" style="background-color: #475569; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(71,85,105,0.2);">
+      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #475569; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(71,85,105,0.2);">
         Keep My Profile Active &rarr;
       </a>
     </div>

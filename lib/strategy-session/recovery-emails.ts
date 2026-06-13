@@ -102,7 +102,7 @@ function baseHtml({
 
         <!-- Call to Action Button -->
         <div style="margin:28px 0;text-align:left;">
-          <a href="${cta}" style="display:inline-block;background-color:#059669;color:#ffffff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;box-shadow:0 4px 6px -1px rgba(5,150,105,0.15);">${btnText}</a>
+          <a href="${cta}" target="_blank" rel="noopener noreferrer" style="display:inline-block;background-color:#059669;color:#ffffff;padding:14px 28px;border-radius:8px;text-decoration:none;font-weight:bold;font-size:15px;text-align:center;box-shadow:0 4px 6px -1px rgba(5,150,105,0.15);">${btnText}</a>
         </div>
 
         <!-- Footer Signature -->
@@ -296,8 +296,8 @@ ${replyToEmail}`,
       : `<p style="margin:0 0 20px 0;">If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to activate your file:</p>`;
 
     const listCtaHtml = bookedAt
-      ? `<a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit slot here</a>`
-      : `<a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit and Roadmap here</a>`;
+      ? `<a href="${consultationUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit slot here</a>`
+      : `<a href="${consultationUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit and Roadmap here</a>`;
 
     const textBody = bookedAt
       ? `If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to book:`

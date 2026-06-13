@@ -64,7 +64,7 @@ function buildHtml({
         </p>
 
         <div style="text-align: center; margin: 24px 0;">
-          <a href="${dashboardUrl}" 
+          <a href="${dashboardUrl}" target="_blank" rel="noopener noreferrer" 
              style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.2);">
              View Executive Assessment Report &rarr;
           </a>
@@ -98,7 +98,7 @@ function buildHtml({
             Best regards,<br/>
             <strong>Ashwani Kumar</strong><br/>
             <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
-            <a href="mailto:ashwani@fsidigital.ca" style="color:#2563eb;text-decoration:none;font-size:13px;">ashwani@fsidigital.ca</a>
+            <a href="mailto:advisors@fsidigital.ca" style="color:#2563eb;text-decoration:none;font-size:13px;">advisors@fsidigital.ca</a>
           </p>
         </div>
       </div>
@@ -141,7 +141,7 @@ Next Steps:
 Best regards,
 Ashwani Kumar
 Founder, FSI Digital
-ashwani@fsidigital.ca`;
+advisors@fsidigital.ca`;
 }
 
 export async function sendReportPurchaseEmail({
@@ -154,7 +154,7 @@ export async function sendReportPurchaseEmail({
 }: ReportPurchaseInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
 
   if (!apiKey) {
     console.warn('Report purchase email skipped — RESEND_API_KEY is not set.');

@@ -28,7 +28,7 @@ async function sendEmail({
 }) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
 
   if (!apiKey) {
     console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
@@ -102,7 +102,7 @@ export async function sendCartRecoveryEmail1({
           <strong>100% Risk-Free Guarantee:</strong> If our system identifies fewer than 2 active funding opportunities for your business, we will refund your $199 immediately.
         </p>
         <div style="text-align:center;margin:28px 0;">
-          <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
+          <a href="${checkoutUrl}" target="_blank" rel="noopener noreferrer" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
             Complete Your Assessment Checkout &rarr;
           </a>
         </div>
@@ -150,7 +150,7 @@ export async function sendCartRecoveryEmail2({
           The report takes under 10 minutes to deliver after checkout. Don't let active government intakes and grant application deadlines pass you by.
         </p>
         <div style="text-align:center;margin:28px 0;">
-          <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
+          <a href="${checkoutUrl}" target="_blank" rel="noopener noreferrer" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
             Unlock My Assessment Report &rarr;
           </a>
         </div>
@@ -198,7 +198,7 @@ export async function sendCartRecoveryEmail3({
           If you are still actively looking for non-dilutive capital (grants, tax credits, and subsidies) to fund hiring, exporting, or product development, you can generate your assessment below:
         </p>
         <div style="text-align:center;margin:28px 0;">
-          <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
+          <a href="${checkoutUrl}" target="_blank" rel="noopener noreferrer" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
             Access My Custom Roadmap &rarr;
           </a>
         </div>
@@ -246,7 +246,7 @@ export async function sendReportNotOpenedEmail({
           We noticed you haven't opened your <strong>Executive Funding Assessment</strong> report yet. It is fully compiled and ready to view, print, or save as a PDF inside your private portal:
         </p>
         <div style="text-align:center;margin:28px 0;">
-          <a href="${reportUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
+          <a href="${reportUrl}" target="_blank" rel="noopener noreferrer" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
             View My Assessment Report &rarr;
           </a>
         </div>

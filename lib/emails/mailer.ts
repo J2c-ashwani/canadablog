@@ -95,7 +95,7 @@ export async function sendEmail({
 
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
 
   if (!apiKey) {
     console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
