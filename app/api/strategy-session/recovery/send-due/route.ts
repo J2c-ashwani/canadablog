@@ -127,26 +127,45 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
   }
 
   const elapsed = now - createdAt;
+  const hasBooking = !!record.calendlyEventUri;
 
-  // 1. Email #2 (value_24h) - 4 hours
-  if (elapsed >= 4 * 60 * 60 * 1000) {
-    if (record.initialEmailSentAt && !record.followUp24hSentAt) {
-      return { action: 'email', stage: 'value_24h' };
+  if (hasBooking) {
+    // 1. Cancellation - 60 minutes
+    if (elapsed >= 60 * 60 * 1000) {
+      const isCancelled = record.reason.includes('calendly_cancelled');
+      // Ensure we sent both recovery emails before cancelling, and at least 15m has passed since last email (40m)
+      if (!isCancelled && record.initialEmailSentAt && record.followUp24hSentAt) {
+        return { action: 'cancel' };
+      }
     }
-  }
 
-  // 2. Cancellation - 60 minutes
-  if (elapsed >= 60 * 60 * 1000) {
-    const isCancelled = record.reason.includes('calendly_cancelled');
-    if (!isCancelled && record.calendlyEventUri) {
-      return { action: 'cancel' };
+    // 2. Email #2 (value_24h) - 40 minutes (25m after Email 1, and 20m before cancellation)
+    if (elapsed >= 40 * 60 * 1000) {
+      if (record.initialEmailSentAt && !record.followUp24hSentAt) {
+        return { action: 'email', stage: 'value_24h' };
+      }
     }
-  }
 
-  // 3. Email #1 (initial) - 30 minutes
-  if (elapsed >= 30 * 60 * 1000) {
-    if (!record.initialEmailSentAt) {
-      return { action: 'email', stage: 'initial' };
+    // 3. Email #1 (initial) - 15 minutes
+    if (elapsed >= 15 * 60 * 1000) {
+      if (!record.initialEmailSentAt) {
+        return { action: 'email', stage: 'initial' };
+      }
+    }
+  } else {
+    // Timeline for Non-Booked Leads (Standard/Relaxed)
+    // 1. Email #2 (value_24h) - 4 hours
+    if (elapsed >= 4 * 60 * 60 * 1000) {
+      if (record.initialEmailSentAt && !record.followUp24hSentAt) {
+        return { action: 'email', stage: 'value_24h' };
+      }
+    }
+
+    // 2. Email #1 (initial) - 30 minutes
+    if (elapsed >= 30 * 60 * 1000) {
+      if (!record.initialEmailSentAt) {
+        return { action: 'email', stage: 'initial' };
+      }
     }
   }
 

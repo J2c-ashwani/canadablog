@@ -59,7 +59,7 @@ function buildRecapHtml(recoveryId?: string, bookedAt?: number) {
         </tr>
         <tr>
           <td style="font-size: 13px; color: #475569; padding: 4px 0; font-weight: 600;">Assigned Specialist:</td>
-          <td style="font-size: 13px; color: #0f172a; padding: 4px 0; text-align: right; font-weight: bold;">Michael Thompson (Senior Analyst)</td>
+          <td style="font-size: 13px; color: #0f172a; padding: 4px 0; text-align: right; font-weight: bold;">Ashwani Kumar (Founder)</td>
         </tr>
       </table>
     </div>
@@ -109,8 +109,8 @@ function baseHtml({
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
           <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
             Best regards,<br/>
-            <strong>Michael Thompson</strong><br/>
-            <span style="color:#64748b;font-size:13px;">Senior Funding Analyst, FSI Digital</span><br/>
+            <strong>Ashwani Kumar</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
             <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
           </p>
           <p style="margin:24px 0 0 0;font-size:12px;color:#94a3b8;line-height:1.4;">
@@ -218,9 +218,8 @@ ${textCta}
 ${consultationUrl}
  
 Best regards,
-Michael Thompson
-Senior Funding Analyst
-FSI Digital
+Ashwani Kumar
+Founder, FSI Digital
 ${replyToEmail}`,
     };
   }
@@ -283,9 +282,8 @@ ${textCta}
 ${consultationUrl}
  
 Best regards,
-Michael Thompson
-Senior Funding Analyst
-FSI Digital
+Ashwani Kumar
+Founder, FSI Digital
 ${replyToEmail}`,
     };
   }
@@ -355,9 +353,8 @@ ${consultationUrl}
 Otherwise, I wish you the best of luck in scaling your business this year.
  
 Best regards,
-Michael Thompson
-Senior Funding Analyst
-FSI Digital
+Ashwani Kumar
+Founder, FSI Digital
 ${replyToEmail}`,
     };
   }
@@ -436,9 +433,8 @@ Your research deposit is 100% credited toward full-service application preparati
 Eligibility Guarantee: If our analysts determine that your business is not eligible for any active funding opportunities, your research deposit is refunded in full.
  
 Best regards,
-Michael Thompson
-Senior Funding Analyst
-FSI Digital
+Ashwani Kumar
+Founder, FSI Digital
 ${replyToEmail}`,
   };
 }
