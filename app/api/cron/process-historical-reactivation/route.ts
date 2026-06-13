@@ -11,12 +11,26 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const limit = 70;
-    console.log(`🤖 [Reactivation Cron] Starting daily historical reactivation batch (limit: ${limit})...`)
+    let limit = 5; // Safe default for Vercel Hobby (10s) and cron-job.org (30s) timeouts
+    try {
+      const parsedUrl = new URL(request.url)
+      const limitParam = parsedUrl.searchParams.get("limit")
+      if (limitParam) {
+        const parsedLimit = parseInt(limitParam, 10)
+        if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= 70) {
+          limit = parsedLimit
+        }
+      }
+    } catch (e) {
+      // Fallback to default limit
+    }
+
+    console.log(`🤖 [Reactivation Cron] Starting historical reactivation batch (limit: ${limit})...`)
     const result = await HistoricalReactivationEngine.processDailyBatch(limit)
     
     return NextResponse.json({
       success: true,
+      limit,
       result
     })
   } catch (err: any) {
