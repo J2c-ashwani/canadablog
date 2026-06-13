@@ -112,9 +112,10 @@ export async function POST(request: NextRequest) {
     });
 
     // Sync booking & payment status back to the main subscriber sheet's leadActivity JSON
+    let subscriber: any = null;
     if (email && isValidEmail(email)) {
       try {
-        const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
+        subscriber = await SubscriberRepository.getSubscriberByEmail(email);
         if (subscriber) {
           let activity: any = {};
           try {
@@ -151,6 +152,17 @@ export async function POST(request: NextRequest) {
       paid: result.record.status === 'paid',
       email: result.record.email,
       name: result.record.name,
+      // Lead details for personalized report preview
+      industry: subscriber?.industry || '',
+      country: subscriber?.country || '',
+      region: subscriber?.region || '',
+      companySize: subscriber?.companySize || '',
+      companyName: subscriber?.companyName || '',
+      businessStage: subscriber?.businessStage || '',
+      businessDescription: subscriber?.businessDescription || '',
+      fundingAmount: subscriber?.fundingAmount || '',
+      readinessScore: subscriber?.readinessScore || 0,
+      leadActivity: subscriber?.leadActivity || '{}',
     });
   } catch (error) {
     console.error('Strategy session recovery tracking error:', error);

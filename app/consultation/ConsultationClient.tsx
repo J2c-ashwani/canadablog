@@ -5,6 +5,7 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 import { safeSessionStorage } from '@/lib/storage';
+import { getPreviewConfidenceLevel, getPreviewOpportunities } from '@/lib/leads/preview-engine';
 
 import {
   CheckCircle,
@@ -60,6 +61,10 @@ export default function ConsultationClient() {
     region: string;
     size: string;
     industry: string;
+    companyName: string;
+    businessStage: string;
+    businessDescription: string;
+    fundingAmount: string;
   }>({
     email: '',
     name: '',
@@ -73,7 +78,11 @@ export default function ConsultationClient() {
     range: '',
     region: '',
     size: '',
-    industry: ''
+    industry: '',
+    companyName: '',
+    businessStage: '',
+    businessDescription: '',
+    fundingAmount: ''
   });
 
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
@@ -99,7 +108,11 @@ export default function ConsultationClient() {
       range: searchParams.get('range') || '',
       region: searchParams.get('region') || '',
       size: searchParams.get('size') || '',
-      industry: searchParams.get('industry') || ''
+      industry: searchParams.get('industry') || '',
+      companyName: searchParams.get('company') || searchParams.get('companyName') || '',
+      businessStage: searchParams.get('stage') || searchParams.get('businessStage') || '',
+      businessDescription: searchParams.get('desc') || searchParams.get('description') || searchParams.get('businessDescription') || '',
+      fundingAmount: searchParams.get('fundingAmount') || searchParams.get('range') || ''
     });
   }, []);
 
@@ -150,11 +163,20 @@ export default function ConsultationClient() {
           .then((res) => res.json())
           .then((data) => {
             safeSessionStorage.setItem(storageKey, 'true');
-            if (data?.email || data?.name) {
+            if (data) {
               setParams((prev) => ({
                 ...prev,
                 email: data.email || prev.email,
                 name: data.name || prev.name,
+                industry: data.industry || prev.industry,
+                region: data.region || data.country || prev.region,
+                size: data.companySize || prev.size,
+                range: data.fundingAmount || prev.range,
+                score: data.readinessScore || prev.score,
+                companyName: data.companyName || prev.companyName,
+                businessStage: data.businessStage || prev.businessStage,
+                businessDescription: data.businessDescription || prev.businessDescription,
+                fundingAmount: data.fundingAmount || prev.fundingAmount
               }));
             }
           })
@@ -397,6 +419,10 @@ export default function ConsultationClient() {
       a: 'We deliver your custom Funding Eligibility Report during the 1-on-1 strategy call. If the audit identifies strong opportunities and you choose to hire us for full application preparation and filing, we credit 100% of your deposit directly toward the service agreement — reducing your invoice dollar for dollar.'
     }
   ];
+
+  /* ── Report Preview Engine ── */
+  const confidenceLevel = getPreviewConfidenceLevel(params);
+  const opportunities = getPreviewOpportunities(params, confidenceLevel);
 
   /* ── Scroll to Checkout ── */
   const scrollToCheckout = () => {
@@ -779,44 +805,104 @@ export default function ConsultationClient() {
                   <FileText className="w-4.5 h-4.5 text-indigo-600" />
                   Your Funding Eligibility Report (Preview)
                 </h4>
-                <p className="text-xs text-slate-500 mb-4 leading-relaxed">
-                  Before your strategy consultation, you will receive a downloadable custom report mapped to your business parameters. Here is a preview of the structured format:
-                </p>
-                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <span className="text-[10px] font-black uppercase bg-emerald-50 text-emerald-800 border border-emerald-100 px-2 py-0.5 rounded">
-                      Opportunity #1
-                    </span>
-                    <span className="text-[11px] font-bold text-emerald-700">
-                      Likelihood: High
-                    </span>
+
+                {confidenceLevel === 0 && (
+                  <div className="bg-slate-50 border border-slate-100 rounded-xl p-4 text-center">
+                    <p className="text-xs text-slate-600 font-semibold leading-relaxed">
+                      Complete your business profile to receive customized funding recommendations and eligibility analysis.
+                    </p>
                   </div>
-                  <div className="mb-3 font-medium">
-                    <div className="text-xs text-slate-500">Program Name</div>
-                    <div className="text-sm font-black text-slate-950">SR&ED Tax Credit (R&D Incentive)</div>
+                )}
+
+                {confidenceLevel === 1 && (
+                  <>
+                    <p className="text-xs text-slate-500 mb-4 leading-relaxed">
+                      This is an example of the type of analysis included in a Funding Eligibility Report.
+                    </p>
+                    <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-[10px] font-black uppercase bg-slate-200 text-slate-800 border border-slate-300 px-2 py-0.5 rounded">
+                          Example Opportunity
+                        </span>
+                        <span className="text-[11px] font-bold text-slate-500">
+                          Eligibility Review Required
+                        </span>
+                      </div>
+                      <div className="mb-3 font-medium">
+                        <div className="text-xs text-slate-500">Scope of Work</div>
+                        <div className="text-sm font-black text-slate-950">Grant & Funding Program Review</div>
+                      </div>
+                      <div className="border-t border-slate-200/60 pt-3">
+                        <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Potential Areas Reviewed</div>
+                        <ul className="grid grid-cols-1 sm:grid-cols-2 gap-1.5 text-xs text-slate-600 font-semibold">
+                          <li className="flex items-center gap-1.5">
+                            <span className="text-emerald-500">✓</span> Government Grants
+                          </li>
+                          <li className="flex items-center gap-1.5">
+                            <span className="text-emerald-500">✓</span> Tax Credits
+                          </li>
+                          <li className="flex items-center gap-1.5">
+                            <span className="text-emerald-500">✓</span> Hiring Incentives
+                          </li>
+                          <li className="flex items-center gap-1.5">
+                            <span className="text-emerald-500">✓</span> Regional Funding
+                          </li>
+                          <li className="flex items-center gap-1.5">
+                            <span className="text-emerald-500">✓</span> Innovation Funding
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <p className="text-[10px] text-slate-400 mt-3 italic leading-normal text-center">
+                      Notice: Your actual Funding Eligibility Report will be customized based on your business profile, industry, location, and project details.
+                    </p>
+                  </>
+                )}
+
+                {confidenceLevel >= 2 && opportunities.map((opp, idx) => (
+                  <div key={idx} className={`bg-slate-50 border border-slate-100 rounded-xl p-4 ${idx > 0 ? 'mt-4' : ''}`}>
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-[10px] font-black uppercase bg-emerald-50 text-emerald-800 border border-emerald-100 px-2 py-0.5 rounded">
+                        Opportunity #{idx + 1}
+                      </span>
+                      {opp.likelihood && (
+                        <span className="text-[11px] font-bold text-emerald-700">
+                          Likelihood: {opp.likelihood}
+                        </span>
+                      )}
+                      {!opp.likelihood && (
+                        <span className="text-[11px] font-bold text-amber-700 bg-amber-50 px-2 py-0.5 rounded border border-amber-100">
+                          Requires Review
+                        </span>
+                      )}
+                    </div>
+                    <div className="mb-3 font-medium">
+                      <div className="text-xs text-slate-500">Program Name</div>
+                      <div className="text-sm font-black text-slate-950">{opp.programName}</div>
+                    </div>
+                    {opp.estimatedBenefit && (
+                      <div className="mb-3 font-medium">
+                        <div className="text-xs text-slate-500">Estimated Benefit</div>
+                        <div className="text-lg font-black text-emerald-600">{opp.estimatedBenefit}</div>
+                      </div>
+                    )}
+                    <div className="mb-3 font-medium">
+                      <div className="text-xs text-slate-500">Relevance Justification</div>
+                      <div className="text-xs text-slate-700 font-semibold mt-0.5 leading-relaxed">{opp.reason}</div>
+                    </div>
+                    <div className="border-t border-slate-200/60 pt-3">
+                      <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Required Actions</div>
+                      <ul className="space-y-1.5 text-xs text-slate-600 font-semibold">
+                        {opp.requiredActions.map((action, aIdx) => (
+                          <li key={aIdx} className="flex items-start gap-1.5">
+                            <span className="text-indigo-500 mt-0.5">•</span>
+                            {action}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                  <div className="mb-3 font-medium">
-                    <div className="text-xs text-slate-500">Estimated Benefit</div>
-                    <div className="text-lg font-black text-emerald-600">$42,000</div>
-                  </div>
-                  <div className="border-t border-slate-200/60 pt-3">
-                    <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Required Actions</div>
-                    <ul className="space-y-1.5 text-xs text-slate-600 font-semibold">
-                      <li className="flex items-start gap-1.5">
-                        <span className="text-indigo-500 mt-0.5">•</span>
-                        Compile technical project summary documentation
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <span className="text-indigo-500 mt-0.5">•</span>
-                        Reconcile eligible payroll and subcontractor expenses
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <span className="text-indigo-500 mt-0.5">•</span>
-                        Prepare and file R&D tax schedule with tax returns
-                      </li>
-                    </ul>
-                  </div>
-                </div>
+                ))}
               </div>
 
               {/* Zero-Risk Guarantee */}

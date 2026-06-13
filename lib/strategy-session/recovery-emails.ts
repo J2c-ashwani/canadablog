@@ -1,4 +1,6 @@
 import type { StrategyRecoveryEmailStage } from '@/lib/strategy-session/recovery-store';
+import { getPreviewConfidenceLevel, getPreviewOpportunities, type PreviewLeadData } from '@/lib/leads/preview-engine';
+import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 
 type StrategyRecoveryEmailInput = {
   to: string;
@@ -122,59 +124,163 @@ function buildValueBoxText() {
 You're not paying for a call. You're paying for a custom Funding Eligibility Report and funding assessment prepared for your business.`;
 }
 
-function buildReportPreviewHtml() {
+function buildReportPreviewHtml(lead?: PreviewLeadData) {
+  const level = lead ? getPreviewConfidenceLevel(lead) : 1;
+  const opportunities = lead ? getPreviewOpportunities(lead, level) : [];
+
+  let contentHtml = '';
+
+  if (level === 0) {
+    contentHtml = `
+      <div style="background-color: #f8fafc; border: 1px solid #e2e8f0; border-radius: 6px; padding: 16px; text-align: center;">
+        <p style="margin: 0; font-size: 13px; color: #475569; font-weight: 600; line-height: 1.5;">
+          Complete your business profile to receive customized funding recommendations and eligibility analysis.
+        </p>
+      </div>
+    `;
+  } else if (level === 1) {
+    contentHtml = `
+      <p style="margin: 0 0 12px 0; font-size: 12px; color: #64748b; line-height: 1.4;">
+        This is an example of the type of analysis included in a Funding Eligibility Report.
+      </p>
+      <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px;">
+        <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;" cellpadding="0" cellspacing="0">
+          <tr>
+            <td>
+              <span style="font-size: 10px; font-weight: 700; color: #475569; background-color: #f1f5f9; padding: 3px 6px; border-radius: 4px; text-transform: uppercase;">Example Opportunity</span>
+            </td>
+            <td style="text-align: right;">
+              <span style="font-size: 11px; font-weight: 600; color: #475569;">Eligibility Review Required</span>
+            </td>
+          </tr>
+        </table>
+        <p style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a;">Grant & Funding Program Review</p>
+        <div style="border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+          <p style="margin: 0 0 6px 0; font-size: 10px; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 0.03em;">Potential Areas Reviewed:</p>
+          <table style="width: 100%; border-collapse: collapse;" cellpadding="0" cellspacing="0">
+            <tr>
+              <td style="vertical-align: top; width: 14px; font-size: 12px; color: #059669; padding-bottom: 4px;">✓</td>
+              <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">Government Grants</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; width: 14px; font-size: 12px; color: #059669; padding-bottom: 4px;">✓</td>
+              <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">Tax Credits</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; width: 14px; font-size: 12px; color: #059669; padding-bottom: 4px;">✓</td>
+              <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">Hiring Incentives</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; width: 14px; font-size: 12px; color: #059669; padding-bottom: 4px;">✓</td>
+              <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">Regional Funding</td>
+            </tr>
+            <tr>
+              <td style="vertical-align: top; width: 14px; font-size: 12px; color: #059669;">✓</td>
+              <td style="vertical-align: top; font-size: 12px; color: #475569;">Innovation Funding</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <p style="margin: 12px 0 0 0; font-size: 10px; color: #94a3b8; font-style: italic; text-align: center; line-height: 1.4;">
+        Notice: Your actual Funding Eligibility Report will be customized based on your business profile, industry, location, and project details.
+      </p>
+    `;
+  } else {
+    contentHtml = opportunities.map((opp, idx) => {
+      const oppIdx = idx + 1;
+      const likelihoodText = opp.likelihood ? `Likelihood: ${opp.likelihood}` : 'Requires Review';
+      const likelihoodColor = opp.likelihood ? '#059669' : '#b45309';
+      const likelihoodBg = opp.likelihood ? '#ecfdf5' : '#fffbeb';
+      const likelihoodBorder = opp.likelihood ? '#d1fae5' : '#fef3c7';
+
+      return `
+        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px; ${idx > 0 ? 'margin-top: 14px;' : ''}">
+          <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;" cellpadding="0" cellspacing="0">
+            <tr>
+              <td>
+                <span style="font-size: 10px; font-weight: 700; color: #059669; background-color: #ecfdf5; padding: 3px 6px; border-radius: 4px; text-transform: uppercase;">Opportunity #${oppIdx}</span>
+              </td>
+              <td style="text-align: right;">
+                <span style="font-size: 11px; font-weight: 600; color: ${likelihoodColor}; background-color: ${likelihoodBg}; border: 1px solid ${likelihoodBorder}; padding: 2px 6px; border-radius: 4px;">${likelihoodText}</span>
+              </td>
+            </tr>
+          </table>
+          <p style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a;">${escapeHtml(opp.programName)}</p>
+          ${opp.estimatedBenefit ? `<p style="margin: 0 0 12px 0; font-size: 16px; font-weight: 800; color: #059669;">Est. Benefit: ${escapeHtml(opp.estimatedBenefit)}</p>` : ''}
+          <div style="margin: 8px 0;">
+            <p style="margin: 0 0 2px 0; font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase; letter-spacing: 0.03em;">Relevance Justification:</p>
+            <p style="margin: 0; font-size: 12px; color: #475569; line-height: 1.4; font-weight: 500;">${escapeHtml(opp.reason)}</p>
+          </div>
+          <div style="border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
+            <p style="margin: 0 0 6px 0; font-size: 10px; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 0.03em;">Required Actions:</p>
+            <table style="width: 100%; border-collapse: collapse;" cellpadding="0" cellspacing="0">
+              ${opp.requiredActions.map(action => `
+                <tr>
+                  <td style="vertical-align: top; width: 14px; font-size: 12px; color: #64748b; padding-bottom: 4px;">•</td>
+                  <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">${escapeHtml(action)}</td>
+                </tr>
+              `).join('')}
+            </table>
+          </div>
+        </div>
+      `;
+    }).join('');
+  }
+
   return `
     <div style="border: 1px solid #e2e8f0; border-radius: 8px; overflow: hidden; margin: 24px 0; background-color: #ffffff; text-align: left;">
       <div style="background-color: #0f172a; color: #ffffff; padding: 12px 16px; font-size: 11px; font-weight: bold; letter-spacing: 0.05em; text-transform: uppercase;">
         Funding Eligibility Report Preview
       </div>
       <div style="padding: 16px; background-color: #f8fafc;">
-        <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px;">
-          <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;" cellpadding="0" cellspacing="0">
-            <tr>
-              <td>
-                <span style="font-size: 10px; font-weight: 700; color: #059669; background-color: #ecfdf5; padding: 3px 6px; border-radius: 4px; text-transform: uppercase;">Opportunity #1</span>
-              </td>
-              <td style="text-align: right;">
-                <span style="font-size: 11px; font-weight: 600; color: #059669;">Likelihood: High</span>
-              </td>
-            </tr>
-          </table>
-          <p style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a;">SR&ED Tax Credit</p>
-          <p style="margin: 0 0 12px 0; font-size: 16px; font-weight: 800; color: #059669;">Est. Benefit: $42,000</p>
-          <div style="border-top: 1px solid #f1f5f9; padding-top: 10px; margin-top: 10px;">
-            <p style="margin: 0 0 6px 0; font-size: 10px; font-weight: bold; color: #64748b; text-transform: uppercase; letter-spacing: 0.03em;">Required Actions:</p>
-            <table style="width: 100%; border-collapse: collapse;" cellpadding="0" cellspacing="0">
-              <tr>
-                <td style="vertical-align: top; width: 14px; font-size: 12px; color: #64748b; padding-bottom: 4px;">•</td>
-                <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">Technical project summary setup</td>
-              </tr>
-              <tr>
-                <td style="vertical-align: top; width: 14px; font-size: 12px; color: #64748b; padding-bottom: 4px;">•</td>
-                <td style="vertical-align: top; font-size: 12px; color: #475569; padding-bottom: 4px;">Payroll & subcontractor expense tracking</td>
-              </tr>
-              <tr>
-                <td style="vertical-align: top; width: 14px; font-size: 12px; color: #64748b;">•</td>
-                <td style="vertical-align: top; font-size: 12px; color: #475569;">Technical claim preparation</td>
-              </tr>
-            </table>
-          </div>
-        </div>
+        ${contentHtml}
       </div>
     </div>
   `;
 }
 
-function buildReportPreviewText() {
+function buildReportPreviewText(lead?: PreviewLeadData) {
+  const level = lead ? getPreviewConfidenceLevel(lead) : 1;
+  const opportunities = lead ? getPreviewOpportunities(lead, level) : [];
+
+  if (level === 0) {
+    return `Funding Eligibility Report Preview
+--------------------------------------
+Complete your business profile to receive customized funding recommendations and eligibility analysis.`;
+  }
+
+  if (level === 1) {
+    return `Funding Eligibility Report Preview (Example)
+--------------------------------------
+This is an example of the type of analysis included in a Funding Eligibility Report.
+
+Example Opportunity: Grant & Funding Program Review
+Eligibility Review Required
+Potential Areas Reviewed:
+- Government Grants
+- Tax Credits
+- Hiring Incentives
+- Regional Funding
+- Innovation Funding
+
+Notice: Your actual Funding Eligibility Report will be customized based on your business profile, industry, location, and project details.`;
+  }
+
+  const oppsText = opportunities.map((opp, idx) => {
+    const oppIdx = idx + 1;
+    const likelihoodText = opp.likelihood ? `Likelihood: ${opp.likelihood}` : 'Requires Review';
+    const benefitText = opp.estimatedBenefit ? `\nEstimated Benefit: ${opp.estimatedBenefit}` : '';
+    const actionsText = opp.requiredActions.map(action => `- ${action}`).join('\n');
+    return `Opportunity #${oppIdx}: ${opp.programName}${benefitText}
+${likelihoodText}
+Relevance Justification: ${opp.reason}
+Required Actions:
+${actionsText}`;
+  }).join('\n\n--------------------------------------\n\n');
+
   return `Funding Eligibility Report Preview
 --------------------------------------
-Opportunity #1: SR&ED Tax Credit
-Estimated Benefit: $42,000
-Likelihood: High
-Required Actions:
-- Technical project summary setup
-- Payroll & subcontractor expense tracking
-- Technical claim preparation`;
+${oppsText}`;
 }
 
 function baseHtml({ 
@@ -255,7 +361,8 @@ export function getEmailContent(
   consultationUrl: string, 
   replyToEmail: string,
   recoveryId?: string,
-  bookedAt?: number
+  bookedAt?: number,
+  subscriber?: PreviewLeadData
 ) {
   const recpHtml = buildRecapHtml(recoveryId, bookedAt);
 
@@ -292,7 +399,7 @@ To begin your custom funding eligibility review, we require completion of the re
         body: `
           ${bodyHtml}
           
-          ${buildReportPreviewHtml()}
+          ${buildReportPreviewHtml(subscriber)}
 
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
             <p style="margin:0 0 12px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">Pre-Call Funding Review Criteria:</p>
@@ -325,7 +432,7 @@ To begin your custom funding eligibility review, we require completion of the re
  
 ${textBody}
  
-${buildReportPreviewText()}
+${buildReportPreviewText(subscriber)}
 
 Pre-Call Funding Review Criteria:
 - Tax Incentive Eligibility: Custom funding eligibility review of entity age, payroll records, and R&D activities for SR&ED program compatibility.
@@ -405,7 +512,7 @@ ${replyToEmail}`,
         recapHtml: recpHtml,
         body: `
           ${bodyHtml}
-          ${buildReportPreviewHtml()}
+          ${buildReportPreviewHtml(subscriber)}
           ${ctaTextHtml}
         `,
       }),
@@ -424,7 +531,7 @@ Yes, you can apply directly. We are hired by founders who want to avoid filing e
 3. What does the $199 deposit cover?
 It pays for a custom funding eligibility review of your profile, research matches, and compiling your custom Funding Eligibility Report. It is fully refunded if no matches are found, and 100% credited if you partner with us.
 
-${buildReportPreviewText()}
+${buildReportPreviewText(subscriber)}
 
 ${buildValueBoxText()}
   
@@ -538,7 +645,7 @@ ${replyToEmail}`,
       body: `
         ${bodyHtml}
 
-        ${buildReportPreviewHtml()}
+        ${buildReportPreviewHtml(subscriber)}
 
         <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
           <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">Your Funding Eligibility Report will show:</p>
@@ -570,7 +677,7 @@ ${replyToEmail}`,
     text: `Hi ${firstName},
 ${textSubject}
  
-${buildReportPreviewText()}
+${buildReportPreviewText(subscriber)}
 
 The audit includes a custom funding eligibility review, a personalized Funding Eligibility Report, your top eligible program matches, and a private strategy consultation to plan next steps.
  
@@ -610,7 +717,16 @@ export async function sendStrategyRecoveryEmail({
   consultationParams.set('scheduled', 'true');
   const consultationUrl = `https://www.fsidigital.ca/consultation?${consultationParams.toString()}`;
   const firstName = getFirstName(name);
-  const content = getEmailContent(stage, firstName, consultationUrl, replyToEmail, recoveryId, bookedAt);
+
+  let subscriber: any = undefined;
+  try {
+    subscriber = await SubscriberRepository.getSubscriberByEmail(to);
+  } catch (err) {
+    console.error('Failed to retrieve subscriber profile for email recovery:', err);
+  }
+  const leadData = subscriber || { email: to, name: name };
+
+  const content = getEmailContent(stage, firstName, consultationUrl, replyToEmail, recoveryId, bookedAt, leadData);
 
   const response = await fetch('https://api.resend.com/emails', {
     method: 'POST',
