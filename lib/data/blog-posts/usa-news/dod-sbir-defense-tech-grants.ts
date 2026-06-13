@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["DOD", "SBIR", "Defense", "Tech", "Grants"],
+      metaTitle: "DOD SBIR 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to DOD SBIR. Discover eligibility requirements, funding limits, and professional application steps to win. See if you ...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for DOD SBIR 2026: Win $1.7M in Defense Grants (No Equity, No Repayment), start by reviewing the eligibility criteria and preparing a project proposal. How to win DOD SBIR grants in 2026: Most defense tech companies leave $1.7M on the table by skipping Phase I. We show you the exact solicitation-matching process that doubles approval rates. Funding available: up to $1.7M.",
     metrics: [
       { label: 'Phase I', value: '$256K', description: 'Entry Grant', color: 'text-green-600', iconName: 'DollarSign' },

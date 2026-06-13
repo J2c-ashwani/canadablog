@@ -88,12 +88,11 @@ const post: BlogPost = {
       </div>
     `,
     seo: {
-      keywords: [],
       metaTitle: "Colorado Tech Startup Grants 2026: Complete Guide — Apply ",
         metaDescription: "Learn how to qualify and apply for Colorado Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
         intent: "startup",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for Colorado Tech Startup Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital grants up to $250K, Proof of Concept $150K, 35% Investment Tax Credit, SBIR State. Funding available: up to $500K (with related programs offering $250K).",
     metrics: [
       { label: 'Fund', value: '$500K', description: 'Accelerator', color: 'text-green-600', iconName: 'Rocket' },

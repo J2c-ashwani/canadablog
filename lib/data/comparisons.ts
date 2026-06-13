@@ -142,6 +142,90 @@ export const comparisonsDatabase: ProgramComparison[] = [
         <li>Combine these export travel subsidies with local training grants (such as Ohio TechCred or Ontario Skills Development Fund) to cover the costs of training your sales representatives on localized foreign CRM modules.</li>
       </ul>
     `
+  },
+  {
+    slug: 'sba-vs-reap',
+    title: 'SBA 7(a) Loans vs. USDA REAP: Comparing Federal Small Business Funding',
+    description: 'Compare the SBA 7(a) commercial loan guarantee program against the USDA’s Rural Energy for America Program (REAP) grant. Learn about funding amounts, terms, and eligibility.',
+    prog1Id: 'sba-7a-loans',
+    prog2Id: 'usda-reap',
+    points: [
+      {
+        dimension: 'Funding Type',
+        prog1Value: 'Loan Guarantee (repayable through bank)',
+        prog2Value: 'Non-repayable Grant (reimburses up to 50%)'
+      },
+      {
+        dimension: 'Maximum Amount',
+        prog1Value: 'Up to $5,000,000',
+        prog2Value: 'Up to $1,000,000 (grants) / $25,000,000 (guaranteed loans)'
+      },
+      {
+        dimension: 'Primary Focus',
+        prog1Value: 'General working capital, real estate, equipment acquisition',
+        prog2Value: 'Renewable energy solar/wind systems, eco-efficiency retrofits'
+      },
+      {
+        dimension: 'Eligible Location',
+        prog1Value: 'Anywhere in the United States',
+        prog2Value: 'Rural areas with populations under 50,000 or agricultural producers'
+      },
+      {
+        dimension: 'Timeline',
+        prog1Value: '30-90 days to close through commercial bank lender',
+        prog2Value: 'Multiple windows annually (typically March 31 & September 30)'
+      }
+    ],
+    stackingRecommendation: `
+      <p><strong>Yes, they can be stacked!</strong> This is an excellent funding strategy for rural developers and agricultural businesses in the U.S.</p>
+      <p>The stacking workflow is as follows:</p>
+      <ol class="list-decimal pl-6 space-y-2 text-sm text-slate-600">
+        <li><strong>Step 1:</strong> Apply for the USDA REAP grant to subsidize up to 50% of your clean energy or solar panel installation project.</li>
+        <li><strong>Step 2:</strong> Apply for an SBA 7(a) loan to cover the remaining 50% out-of-pocket project costs as matching capital.</li>
+        <li><strong>Step 3:</strong> Once approved, the SBA loan guarantees the bank loan, and the USDA REAP grant reimburses your capital layout upon commissioning, drastically reducing your total out-of-pocket cost.</li>
+      </ol>
+    `
+  },
+  {
+    slug: 'sdf-vs-cdap',
+    title: 'Ontario SDF vs. CDAP: Workforce Training vs. Digital Transformation Funding',
+    description: 'Compare the Ontario Skills Development Fund (SDF) training wage subsidies against the federal Canada Digital Adoption Program (CDAP) digital adoption planning incentives.',
+    prog1Id: 'ontario-hiring-grant',
+    prog2Id: 'cdap',
+    points: [
+      {
+        dimension: 'Funding Type',
+        prog1Value: 'Non-repayable training grant',
+        prog2Value: 'Hybrid: advisory grant + interest-free BDC loan'
+      },
+      {
+        dimension: 'Maximum Amount',
+        prog1Value: 'Up to $150,000+ per cohort',
+        prog2Value: '$15,000 advisory fee + up to $100,000 interest-free BDC loan'
+      },
+      {
+        dimension: 'Primary Purpose',
+        prog1Value: 'Training/retraining employees for high-demand technical roles',
+        prog2Value: 'Creating a digital strategy and adopting CRM/ERP/cybersecurity tools'
+      },
+      {
+        dimension: 'Eligible Region',
+        prog1Value: 'Ontario province only',
+        prog2Value: 'Federal Canada (all provinces)'
+      },
+      {
+        dimension: 'Difficulty',
+        prog1Value: 'Moderate (competitive application windows)',
+        prog2Value: 'Low (compliance and documentation verification)'
+      }
+    ],
+    stackingRecommendation: `
+      <p><strong>Stacking Ontario SDF and CDAP is highly recommended for scaling Ontario businesses:</strong></p>
+      <ul class="list-disc pl-6 space-y-2 text-sm text-slate-600">
+        <li>Use the CDAP Boost Your Business Technology stream to hire a digital advisor, secure a $15,000 strategy grant, and adopt advanced software systems (like a new enterprise ERP or CRM).</li>
+        <li>Once your digital tools are selected, apply for Ontario SDF to cover 100% of the training costs required for your staff to master the new systems.</li>
+      </ul>
+    `
   }
 ];
 

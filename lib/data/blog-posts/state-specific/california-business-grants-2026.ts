@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: californiaGrants2025,
     seo: {
-      keywords: ["California Grants", "Dream Fund", "Small Business", "Startup Funding", "CalOSBA"]
+      metaTitle: "California Small Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for California Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for California Small Business Grants 2026: $1.5B Funding Guide, start by reviewing the eligibility criteria and preparing a project proposal. California leads the nation in state-level business support. Access $1.5 billion through the Dream Fund, California Competes Tax Credit, and regional innovation hubs. Funding available: up to $1.5B (with related programs offering $1.5).",
     metrics: [
       { label: 'State Fund', value: '$1.5B', description: 'Annual Budget', color: 'text-blue-600', iconName: 'Sun' },

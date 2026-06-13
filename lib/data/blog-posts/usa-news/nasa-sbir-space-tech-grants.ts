@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["NASA", "SBIR", "Space", "Tech", "Grants"],
+      metaTitle: "NASA SBIR Space Tech Grants 2026: Complete Guide — Apply N",
+        metaDescription: "Learn how to qualify and apply for NASA SBIR Space Tech Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for NASA SBIR Space Tech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NASA SBIR/STTR grants for space tech startups. Phase I up to $150K, Phase II up to $850K for satellites, remote sensing, propulsion, aeronautics innovation. Funding available: up to $150K (with related programs offering $850K).",
     metrics: [
       { label: 'Phase I', value: '$150K', description: 'Feasibility', color: 'text-green-600', iconName: 'Rocket' },

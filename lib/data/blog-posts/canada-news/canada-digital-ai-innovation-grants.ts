@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Digital", "&", "AI", "Innovation"],
+      metaTitle: "Canada Digital & AI Innovation Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Digital & AI Innovation Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "Yes — Complete guide to Canadian digital and AI innovation grants. Access $850M+ funding through Scale AI, CDAP, AI research initiatives, and 25+ digital transformation programs. Funding available: up to $850M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -26,12 +26,11 @@ const post: BlogPost = {
     ],
     content: pennsylvaniaGrants2025,
     seo: {
-      keywords: [],
       metaTitle: "Pennsylvania Innovation Grants 2026: Complete Guide",
         metaDescription: "Learn how to qualify and apply for Pennsylvania Innovation Grants in 2026. Access active government grants & loans. See if you qualify.",
         intent: "manufacturing",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "Yes — Pennsylvania's Ben Franklin Technology Partners and PIDA offer $670 million in funding. Learn how to access capital for industrial innovation, life sciences, and tech startups. Funding available: up to $670M (with related programs offering $670).",
     metrics: [
       { label: 'Innovation', value: '$670M', description: 'State Fund', color: 'text-blue-600', iconName: 'Zap' },

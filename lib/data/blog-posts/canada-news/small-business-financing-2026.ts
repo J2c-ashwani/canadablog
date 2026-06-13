@@ -187,7 +187,11 @@ const post: BlogPost = {
   </script>
     `,
     seo: {
-      keywords: ["Small Business Financing 2026", "CSBFP Canada", "Government Business Loans", "Canada Small Business Grants", "Startup Funding Canada"]
+      metaTitle: "Small Business Financing 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Small Business Financing in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "Yes — 🇨🇦 The complete guide to Canada's expanded Small Business Financing Program (CSBFP). Learn about the $250M funding injection, new eligibility rules for 2026, and how to secure up to $1.15M for your. Funding available: up to $250M (with related programs offering $1.15M).",
     metrics: [
       { label: 'Pool', value: '$250M', description: '2026 Allocation', color: 'text-green-600', iconName: 'DollarSign' },

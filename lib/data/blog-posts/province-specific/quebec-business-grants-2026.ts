@@ -145,12 +145,11 @@ const post: BlogPost = {
   </script>
     `,
     seo: {
-      keywords: [],
       metaTitle: "Quebec Business Grants 2026: Complete Guide — Apply Now",
         metaDescription: "Learn how to qualify and apply for Quebec Business Grants in 2026. Access active government grants & loans. See if you qualify.",
         intent: "grant",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for Quebec Business Grants : Innov 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Québec offers some of the most generous R&D and manufacturing grants in North America. Explore funds from Investissement Québec, PME MTL, and CED. Funding available: up to $300.",
     metrics: [
       { label: 'Total', value: '$4B+', description: 'Provincial Aid', color: 'text-indigo-600', iconName: 'DollarSign' },

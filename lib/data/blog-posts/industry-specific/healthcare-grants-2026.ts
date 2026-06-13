@@ -229,12 +229,11 @@ const post: BlogPost = {
                                                                                                                                                 </script>
                                                                                                                                                   `,
     seo: {
-      keywords: [],
       metaTitle: "Healthcare Grants Canada 2026: Complete Guide — Apply Now",
         metaDescription: "Learn how to qualify and apply for Healthcare Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
         intent: "grant",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for Healthcare Grants Canada 2026: $14B Available [Who Qualifies], start by reviewing the eligibility criteria and preparing a project proposal. 90% of health startups apply to the wrong program and get rejected. CIHR is for academics — if you're a business, you need IRAP, ISC, or your provincial health authority. Here's how. Funding available: up to $14B.",
     metrics: [
       { label: 'Total', value: '$14B', description: 'Available Funds', color: 'text-blue-600', iconName: 'DollarSign' },

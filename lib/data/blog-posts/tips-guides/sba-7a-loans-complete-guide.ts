@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SBA", "7(a)", "Loans", "Complete", "Guide"],
+      metaTitle: "SBA 7 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to SBA 7. Discover eligibility requirements, funding limits, and professional application steps to win. See if you qua...",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for SBA 7(a) Loans Complete Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SBA 7(a) loans. Learn eligibility requirements, application process, terms, and how to secure up to $5M in SBA funding for your business. Funding available: up to $5M.",
     metrics: [
       { label: 'Max', value: '$5M', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },

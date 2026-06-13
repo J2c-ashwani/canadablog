@@ -17,6 +17,7 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
+import { FundingEstimator } from '@/components/seo/FundingEstimator';
 import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent, getBlogPostRichData } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
 import { generateBlogPostSchema, generateBreadcrumbSchema, generateFAQSchema } from '@/lib/schema';
@@ -59,6 +60,18 @@ function classifyMarket(value: string): Market {
   if (canadaHits > usaHits) return 'canada';
   if (usaHits > canadaHits) return 'usa';
   return 'neutral';
+}
+
+function mapIntentToIndustry(intent?: string): string {
+  if (!intent) return 'technology';
+  const i = intent.toLowerCase();
+  if (i.includes('r_and_d') || i.includes('innovation') || i.includes('startup')) return 'technology';
+  if (i.includes('manufacturing')) return 'manufacturing';
+  if (i.includes('agriculture')) return 'agriculture';
+  if (i.includes('healthcare') || i.includes('biotech')) return 'healthcare';
+  if (i.includes('clean') || i.includes('energy')) return 'clean-energy';
+  if (i.includes('retail') || i.includes('women')) return 'retail';
+  return 'technology';
 }
 
 function isWeakRelatedTitle(title: string) {
@@ -188,9 +201,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     }
   }
 
+  const displayUpdateDate = fullPost.seo?.seoUpdatedAt || researchProfile?.lastVerified || post.date;
   const category = blogCategories.find((cat) => cat.id === post.category);
   const blogPostSchema = generateBlogPostSchema(fullPost, researchProfile ? {
-    dateModified: researchProfile.lastVerified,
+    dateModified: displayUpdateDate,
     reviewedBy: researchProfile.reviewedBy,
     reviewerRole: researchProfile.reviewerRole,
     sources: researchProfile.officialSources,
@@ -311,7 +325,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <EEATBadge
                   authorName={researchProfile?.reviewedBy || 'Ashwani K.'}
                   authorImage="/author-ashwani.jpg"
-                  date={researchProfile?.lastVerified || post.date}
+                  date={displayUpdateDate}
                   reviewerRole={researchProfile?.reviewerRole}
                 />
               </div>
@@ -343,7 +357,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   <Clock className="w-4 h-4 mr-2" />
                   <span>{post.readTime}</span>
                 </div>
-                <LastVerifiedBadge date={researchProfile?.lastVerified || post.date} />
+                <LastVerifiedBadge date={displayUpdateDate} />
               </div>
 
               {researchProfile ? (
@@ -509,6 +523,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </article>
 
             <aside className="sticky top-8 lg:col-span-1 space-y-6">
+              <FundingEstimator 
+                defaultRegion={classifyMarket(`${post.category} ${post.title} ${post.excerpt} ${post.slug}`) === 'usa' ? 'ca' : 'on'}
+                defaultIndustry={mapIntentToIndustry(fullPost.seo?.intent)}
+              />
               <GrantGuideCTA />
               <CategorySidebar type={post.type} />
               <div className="hidden lg:block">

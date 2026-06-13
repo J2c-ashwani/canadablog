@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Agri-Food", "Technology", "Grants", "2026"],
+      metaTitle: "Canada Agri-Food Technology Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Agri-Food Technology Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "Yes — Complete guide to Canadian agri-food technology innovation grants. Access $2.3B+ funding through AgriInnovate, precision agriculture programs, food processing technology, and 32+ agritech grants. Funding available: up to $2.3B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -338,6 +338,38 @@ export const programsDatabase: ProgramDetails[] = [
   },
   // --- USA FEDERAL ---
   {
+    id: 'sba-7a-loans',
+    slug: 'sba-7a-loans',
+    name: 'SBA 7(a) Loan Program',
+    agency: 'U.S. Small Business Administration (SBA)',
+    fundingAmount: 'Up to $5 Million',
+    fundingType: 'Loan Support',
+    fundingDifficulty: 'Moderate',
+    deadlineType: 'Rolling Intake',
+    region: 'Federal',
+    country: 'USA',
+    description: 'The SBA’s primary program for providing financial assistance to small businesses. The SBA guarantees a portion of loans made by approved commercial lenders to reduce lender risk.',
+    eligibility: [
+      'Operate for profit inside the United States',
+      'Meet SBA small business size standards',
+      'Demonstrate a need for credit and ability to repay the loan'
+    ],
+    applicationProcess: [
+      'Find an SBA-approved commercial lender or bank.',
+      'Prepare a detailed business plan, financial statements, and collateral records.',
+      'Submit the loan application package through the lender.'
+    ],
+    officialWebsite: 'https://www.sba.gov/funding-programs/loans/7a-loans',
+    insiderTips: [
+      'This is a loan guarantee program, not a direct grant. The SBA does not lend money; you must apply through a local commercial bank.',
+      'Interest rates are negotiated but capped at maximum SBA margins over the prime rate.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated April 2026: SBA streamlined fee structures for loans under $150,000 to assist micro-borrowers.'
+    ]
+  },
+  {
     id: 'nih-sbir',
     slug: 'nih-sbir',
     name: 'NIH SBIR/STTR Biotech Grants',

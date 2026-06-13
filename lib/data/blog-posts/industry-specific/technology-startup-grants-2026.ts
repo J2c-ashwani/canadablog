@@ -131,7 +131,11 @@ const post: BlogPost = {
                                                                                                                                                                                                                                                                                                                                                                                                   <p> Startups move fast; grants move slow.Here is how to bridge the gap.</p>
                                                                                                                                                                                                                                                                                                                                                                                                     `,
     seo: {
-      keywords: ["Tech Startup Grants Canada", "NRC IRAP Funding", "SRED Tax Credits", "Software Innovation Grants", "Canadian AI Funding"]
+      metaTitle: "Tech Startup Grants Canada 2026: Complete Guide — Apply No",
+        metaDescription: "Learn how to qualify and apply for Tech Startup Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "Yes — Keep 100% equity: IRAP covers 80% of R&D salaries, SR&ED gives 45% tax credits, and the Digital Adoption Program funds your tech stack. $4B+ available — here's how to stack them. Funding available: up to $4B+.",
     metrics: [
       { label: 'IRAP', value: '$500M', description: 'Annual Contribution', color: 'text-purple-600', iconName: 'Zap' },

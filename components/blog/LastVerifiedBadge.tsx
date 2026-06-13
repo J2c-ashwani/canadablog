@@ -5,7 +5,7 @@ interface LastVerifiedBadgeProps {
 }
 
 export default function LastVerifiedBadge({ date }: LastVerifiedBadgeProps) {
-    const dateString = new Date(`${date}T00:00:00Z`).toLocaleDateString('en-US', {
+    const dateString = new Date(date.includes('T') ? date : `${date}T00:00:00Z`).toLocaleDateString('en-US', {
         day: 'numeric',
         month: 'long',
         year: 'numeric',

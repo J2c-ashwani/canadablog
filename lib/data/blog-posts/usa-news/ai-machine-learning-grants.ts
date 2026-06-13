@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["AI", "&", "Machine", "Learning", "Grants"],
+      metaTitle: "AI & Machine Learning Grants 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for AI & Machine Learning Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for AI & Machine Learning Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to AI and machine learning grants. NSF SBIR Phase I $305K, Phase II $1.25M, National AI Research Institutes $100M investment, NAIRR $35M operations center, DOD AI applications. Funding available: up to $305K (with related programs offering $100M).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

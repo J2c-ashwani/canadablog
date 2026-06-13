@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: texasGrants2025,
     seo: {
-      keywords: ["Texas Grants", "Enterprise Fund", "Deal Closing", "Business Incentives", "Governor's Office"]
+      metaTitle: "Texas Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Texas Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "enterprise",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for Texas Business Grants 2026: $1.2B Enterprise Fund, start by reviewing the eligibility criteria and preparing a project proposal. Everything is bigger in Texas, including the $1.2 billion Texas Enterprise Fund. Discover deal-closing grants, product development funds, and opportunities in the Lone Star State. Funding available: up to $1.2B (with related programs offering $1.2).",
     metrics: [
       { label: 'TEF Fund', value: '$1.2B', description: 'Deal Closing', color: 'text-red-600', iconName: 'Star' },

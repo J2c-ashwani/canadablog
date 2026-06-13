@@ -25,12 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: [],
       metaTitle: "Canada Small Business Financing Program 2026 Guide",
         metaDescription: "Learn how to qualify and apply for Canada Small Business Financing Program in 2026. Access active government grants & loans. See if you qualify.",
         intent: "loan",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "Yes — Complete guide to Canada Small Business Financing Program. Learn eligibility, application process, and get up to $1M in government-guaranteed loans for your SME. Funding available: up to $1M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

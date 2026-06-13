@@ -25,12 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: [],
       metaTitle: "DOE SBIR Clean Energy Grants 2026: Complete Guide — Apply ",
         metaDescription: "Learn how to qualify and apply for DOE SBIR Clean Energy Grants in 2026. Access active government grants & loans. See if you qualify.",
         intent: "grant",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for DOE SBIR Clean Energy Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to DOE SBIR/STTR grants for clean energy startups. Phase I up to $200K, Phase II up to $1.85M for renewable energy, energy storage, carbon capture, climate tech innovation. Funding available: up to $200K (with related programs offering $1.85M).",
     metrics: [
       { label: 'Phase I', value: '$200K', description: 'Concept', color: 'text-green-600', iconName: 'DollarSign' },

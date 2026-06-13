@@ -49,7 +49,7 @@ export function generateBlogPostSchema(post: BlogPost, editorial?: EditorialSche
       }
     },
     "datePublished": post.date,
-    "dateModified": editorial?.dateModified || post.date,
+    "dateModified": editorial?.dateModified || post.seo?.seoUpdatedAt || post.date,
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": `https://www.fsidigital.ca/blog/${post.slug}`

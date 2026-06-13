@@ -484,7 +484,11 @@ const post: BlogPost = {
   </script>
     `,
     seo: {
-      keywords: ["Canada", "Irap", "Grants", "2026"]
+      metaTitle: "Canada Irap Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Canada Irap Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     },
     metrics: [
       { label: 'Grant', value: '$50-500k', description: 'R&D Funding', color: 'text-green-600', iconName: 'DollarSign' },

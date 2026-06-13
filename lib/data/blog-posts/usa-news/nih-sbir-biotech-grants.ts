@@ -25,12 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: [],
       metaTitle: "NIH SBIR Biotech Grants 2026: Complete Guide — Apply Now",
         metaDescription: "Learn how to qualify and apply for NIH SBIR Biotech Grants in 2026. Access active government grants & loans. See if you qualify.",
         intent: "grant",
         seoVersion: 1,
-        seoUpdatedAt: "2026-06-11T17:27:10.749Z"
+        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
     }, shortAnswer: "To apply for NIH SBIR Biotech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation. Funding available: up to $285K (with related programs offering $2M).",
     metrics: [
       { label: 'Phase I', value: '$285K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
