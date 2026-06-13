@@ -96,9 +96,9 @@ function buildHtml({
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
           <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
             Best regards,<br/>
-            <strong>Ashwani Kumar</strong><br/>
+            <strong>Ashwani K</strong><br/>
             <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
-            <a href="mailto:advisors@fsidigital.ca" style="color:#2563eb;text-decoration:none;font-size:13px;">advisors@fsidigital.ca</a>
+            <a href="mailto:ashwani@fsidigital.ca" style="color:#2563eb;text-decoration:none;font-size:13px;">ashwani@fsidigital.ca</a>
           </p>
         </div>
       </div>
@@ -139,9 +139,9 @@ Next Steps:
 3. Book Verification Audit: Schedule a 1-on-1 audit briefing with a Senior Funding Analyst to verify your filing deadlines.
 
 Best regards,
-Ashwani Kumar
+Ashwani K
 Founder, FSI Digital
-advisors@fsidigital.ca`;
+ashwani@fsidigital.ca`;
 }
 
 export async function sendReportPurchaseEmail({
@@ -154,7 +154,7 @@ export async function sendReportPurchaseEmail({
 }: ReportPurchaseInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   if (!apiKey) {
     console.warn('Report purchase email skipped — RESEND_API_KEY is not set.');

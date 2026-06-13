@@ -19,6 +19,7 @@ export interface FundingMatchUpdateData {
   companyName?: string;
   newProgramsCount: number;
   newProgramsList: string[];
+  forceResend?: boolean;
 }
 
 export interface MissingFundingAlertData {
@@ -60,7 +61,7 @@ function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstNa
         <!-- Footer -->
         <div style="padding-top:24px;border-top:1px solid #f1f5f9;margin-top:32px;font-size:13px;color:#475569;text-align:left;line-height:1.5;">
           Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
+          <strong>Ashwani K</strong><br/>
           <span style="color:#64748b;font-size:12px;">Founder, FSI Digital</span>
           
           <div style="margin-top:24px;padding-top:16px;border-top:1px dashed #e2e8f0;font-size:11px;color:#94a3b8;text-align:center;">
@@ -112,7 +113,7 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nA high-value grant matching your business profile has been updated:\n\n* Opportunity: ${data.programName}\n* Value: Up to ${data.maxFundingAmount}\n* Criteria: ${data.industry} companies in ${data.region}\n\nSee if you qualify:\n${targetUrl}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nA high-value grant matching your business profile has been updated:\n\n* Opportunity: ${data.programName}\n* Value: Up to ${data.maxFundingAmount}\n* Criteria: ${data.industry} companies in ${data.region}\n\nSee if you qualify:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
   const subject = `${data.region} Funding Alert: ${data.maxFundingAmount} Available`;
 
   return sendEmail({
@@ -164,7 +165,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nWe added ${data.newProgramsCount} new programs to our assessment engine matching businesses like yours.\n\nMatching programs include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nCheck your updated score:\n${targetUrl}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nWe added ${data.newProgramsCount} new programs to our assessment engine matching businesses like yours.\n\nMatching programs include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nCheck your updated score:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
   const subject = `Funding Match Update: We added ${data.newProgramsCount} new programs`;
 
   return sendEmail({
@@ -174,7 +175,8 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     text,
     tagType: "newsletter-match-update",
     companyName: data.companyName,
-    from: BRAND_SENDER
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
   });
 }
 
@@ -212,7 +214,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nYou may be missing out on up to ${data.missingFundingAmount} in business funding. Complete your assessment to view all matches and download checklists:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou may be missing out on up to ${data.missingFundingAmount} in business funding. Complete your assessment to view all matches and download checklists:\n\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
   const subject = `Attention: You may be missing ${data.missingFundingAmount} in business funding`;
 
   return sendEmail({
@@ -229,7 +231,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
 /**
  * Reactivation Nurture Day 2: Reminder Email
  */
-export async function sendReactivationReminderEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+export async function sendReactivationReminderEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
   const firstName = getFirstName(data.name);
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_reminder&price=${pricing.price}`;
@@ -253,17 +255,18 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is a reminder that your exclusive reactivation offer for the Funding Assessment Report expires soon. Lock in your $${pricing.price} report (usually $199) here:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    text: `Hi ${firstName},\n\nThis is a reminder that your exclusive reactivation offer for the Funding Assessment Report expires soon. Lock in your $${pricing.price} report (usually $199) here:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-reminder",
     companyName: data.companyName,
-    from: BRAND_SENDER
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
   });
 }
 
 /**
  * Reactivation Nurture Day 5: Case Study Email
  */
-export async function sendReactivationCaseStudyEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+export async function sendReactivationCaseStudyEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
   const firstName = getFirstName(data.name);
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_casestudy&price=${pricing.price}`;
@@ -290,17 +293,18 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nApex Tech Solutions stacked hiring subsidies and SR&ED tax credits to secure $85,000. View your stacked roadmap and checklist for $${pricing.price} (usually $199):\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    text: `Hi ${firstName},\n\nApex Tech Solutions stacked hiring subsidies and SR&ED tax credits to secure $85,000. View your stacked roadmap and checklist for $${pricing.price} (usually $199):\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-casestudy",
     companyName: data.companyName,
-    from: BRAND_SENDER
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
   });
 }
 
 /**
  * Reactivation Nurture Day 8: Last Chance Email
  */
-export async function sendReactivationLastChanceEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+export async function sendReactivationLastChanceEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
   const firstName = getFirstName(data.name);
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_lastchance&price=${pricing.price}`;
@@ -324,17 +328,18 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom funding roadmap for $${pricing.price} (usually $199) before it is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom funding roadmap for $${pricing.price} (usually $199) before it is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-lastchance",
     companyName: data.companyName,
-    from: BRAND_SENDER
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
   });
 }
 
 /**
  * Reactivation Nurture Day 14: Final Close Email
  */
-export async function sendReactivationFinalCloseEmail(data: { to: string; name?: string; loginToken: string; companyName?: string }) {
+export async function sendReactivationFinalCloseEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
   const firstName = getFirstName(data.name);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_finalclose`;
   
@@ -363,9 +368,10 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nWe are closing your high-priority setup window today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani Kumar`,
+    text: `Hi ${firstName},\n\nWe are closing your high-priority setup window today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-finalclose",
     companyName: data.companyName,
-    from: BRAND_SENDER
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
   });
 }

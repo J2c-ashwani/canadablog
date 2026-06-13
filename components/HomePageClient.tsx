@@ -51,6 +51,10 @@ export default function HomePageClient() {
                         {/* Client component — interactive form */}
                         <HeroEmailForm />
 
+                        <p className="text-xs text-blue-100/70 mt-3 mb-8 max-w-xl mx-auto leading-relaxed">
+                          FSI Digital is an independent private advisory firm. We are not affiliated with the Government of Canada or any government funding agency.
+                        </p>
+
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-2xl mx-auto px-4 sm:px-0">
                             <Button
                                 size="lg"

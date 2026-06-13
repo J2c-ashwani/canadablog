@@ -95,8 +95,8 @@ function buildReceiptHtml({
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
           <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
             Best regards,<br/>
-            <strong>Michael Thompson</strong><br/>
-            <span style="color:#64748b;font-size:13px;">Senior Funding Analyst, FSI Digital</span><br/>
+            <strong>Ashwani K</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
             <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
           </p>
         </div>
@@ -166,8 +166,8 @@ function buildApprovalHtml({
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
           <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
             Best regards,<br/>
-            <strong>Michael Thompson</strong><br/>
-            <span style="color:#64748b;font-size:13px;">Senior Funding Analyst, FSI Digital</span><br/>
+            <strong>Ashwani K</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
             <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
           </p>
         </div>
@@ -245,7 +245,7 @@ function buildInternalAlertHtml(data: PartnerApprovalInput) {
 export async function sendPartnerReceiptEmail(data: PartnerReceiptInput) {
   const apiKey = process.env.RESEND_API_KEY
   const fromEmail = process.env.RESEND_FROM_EMAIL || "FSI Digital <hello@fsidigital.ca>"
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || "advisors@fsidigital.ca"
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || "ashwani@fsidigital.ca"
 
   if (!apiKey) {
     console.warn("Partner receipt email skipped — RESEND_API_KEY is not set.")
@@ -275,7 +275,7 @@ export async function sendPartnerReceiptEmail(data: PartnerReceiptInput) {
         reply_to: replyToEmail,
         subject: `Application received: B2B lead partnership review for ${data.companyName}`,
         html,
-        text: `Hi ${firstName},\n\nWe received your partner application for ${data.companyName}. Our compliance team is currently reviewing your profile to verify active lead inventory for ${data.leadType}. We will respond with approval within 1-2 hours.\n\nBest regards,\nMichael Thompson\nSenior Funding Analyst\nFSI Digital`,
+        text: `Hi ${firstName},\n\nWe received your partner application for ${data.companyName}. Our compliance team is currently reviewing your profile to verify active lead inventory for ${data.leadType}. We will respond with approval within 1-2 hours.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`,
         tags: [{ name: "type", value: "partner-receipt" }],
       }),
     })
@@ -298,7 +298,7 @@ export async function sendPartnerReceiptEmail(data: PartnerReceiptInput) {
 export async function sendPartnerApprovalEmailAndAlert(data: PartnerApprovalInput) {
   const apiKey = process.env.RESEND_API_KEY
   const fromEmail = process.env.RESEND_FROM_EMAIL || "FSI Digital <hello@fsidigital.ca>"
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || "advisors@fsidigital.ca"
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || "ashwani@fsidigital.ca"
 
   if (!apiKey) {
     console.warn("Partner approval email skipped — RESEND_API_KEY is not set.")
@@ -330,7 +330,7 @@ export async function sendPartnerApprovalEmailAndAlert(data: PartnerApprovalInpu
         reply_to: replyToEmail,
         subject: `Approved: Purchase your starter business funding lead pilot`,
         html: approvalHtml,
-        text: `Hi ${firstName},\n\nGood news - your lead buyer profile for ${data.companyName} has been approved. You can purchase a starter lead pilot batch directly via PayPal here: https://www.fsidigital.ca/partners#pricing.\n\nBest regards,\nMichael Thompson\nSenior Funding Analyst\nFSI Digital`,
+        text: `Hi ${firstName},\n\nGood news - your lead buyer profile for ${data.companyName} has been approved. You can purchase a starter lead pilot batch directly via PayPal here: https://www.fsidigital.ca/partners#pricing.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`,
         tags: [{ name: "type", value: "partner-approved" }],
       }),
     })

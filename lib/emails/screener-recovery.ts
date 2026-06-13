@@ -35,14 +35,14 @@ export async function sendScreenerRecoveryEmail({
         </div>
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;font-size:14px;color:#475569;">
           Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
+          <strong>Ashwani K</strong><br/>
           <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span>
         </div>
       </div>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nYou started building your Funding Readiness Assessment for ${companyName || 'your business'} yesterday but did not finish.\n\nResume here to unlock matching programs:\n${url}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started building your Funding Readiness Assessment for ${companyName || 'your business'} yesterday but did not finish.\n\nResume here to unlock matching programs:\n${url}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'screener-recovery', companyName });
 }

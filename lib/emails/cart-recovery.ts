@@ -28,7 +28,7 @@ async function sendEmail({
 }) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   if (!apiKey) {
     console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
@@ -108,14 +108,14 @@ export async function sendCartRecoveryEmail1({
         </div>
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;font-size:14px;color:#475569;">
           Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
+          <strong>Ashwani K</strong><br/>
           <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span>
         </div>
       </div>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nI noticed you started checking out for your Funding Opportunity Assessment for ${companyName || 'your company'} but didn't finish.\n\nTo finalize your analysis and compile your custom roadmap, please complete your checkout:\n${checkoutUrl}\n\n100% Risk-Free Guarantee: If our system identifies fewer than 2 active funding opportunities, we will refund your $199 immediately.\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nI noticed you started checking out for your Funding Opportunity Assessment for ${companyName || 'your company'} but didn't finish.\n\nTo finalize your analysis and compile your custom roadmap, please complete your checkout:\n${checkoutUrl}\n\n100% Risk-Free Guarantee: If our system identifies fewer than 2 active funding opportunities, we will refund your $199 immediately.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'cart-recovery-1', companyName });
 }
@@ -156,14 +156,14 @@ export async function sendCartRecoveryEmail2({
         </div>
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;font-size:14px;color:#475569;">
           Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
+          <strong>Ashwani K</strong><br/>
           <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span>
         </div>
       </div>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nYour matched funding opportunities for ${companyName || 'your company'} are currently locked.\n\nThe report takes under 10 minutes to deliver after checkout. Don't let active government intakes pass you by.\n\nUnlock here:\n${checkoutUrl}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYour matched funding opportunities for ${companyName || 'your company'} are currently locked.\n\nThe report takes under 10 minutes to deliver after checkout. Don't let active government intakes pass you by.\n\nUnlock here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'cart-recovery-2', companyName });
 }
@@ -204,14 +204,14 @@ export async function sendCartRecoveryEmail3({
         </div>
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;font-size:14px;color:#475569;">
           Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
+          <strong>Ashwani K</strong><br/>
           <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span>
         </div>
       </div>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nI am closing out pending reports this week. I wanted to check if you still wanted to unlock the matched programs for ${companyName || 'your business'}.\n\nIf you are looking for non-dilutive capital to fund growth, you can generate your assessment here:\n${checkoutUrl}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nI am closing out pending reports this week. I wanted to check if you still wanted to unlock the matched programs for ${companyName || 'your business'}.\n\nIf you are looking for non-dilutive capital to fund growth, you can generate your assessment here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'cart-recovery-3', companyName });
 }
@@ -252,14 +252,14 @@ export async function sendReportNotOpenedEmail({
         </div>
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;font-size:14px;color:#475569;">
           Best regards,<br/>
-          <strong>Ashwani Kumar</strong><br/>
+          <strong>Ashwani K</strong><br/>
           <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span>
         </div>
       </div>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nThank you again for purchasing your assessment report.\n\nWe noticed you haven't opened your report yet. It is ready to view, print, or download in your portal:\n${reportUrl}\n\nBest regards,\nAshwani Kumar\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nThank you again for purchasing your assessment report.\n\nWe noticed you haven't opened your report yet. It is ready to view, print, or download in your portal:\n${reportUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'report-not-viewed-recovery', companyName });
 }

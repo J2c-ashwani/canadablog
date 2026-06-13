@@ -80,8 +80,8 @@ function buildHtml({
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
           <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
             Best regards,<br/>
-            <strong>Michael Thompson</strong><br/>
-            <span style="color:#64748b;font-size:13px;">Senior Funding Analyst, FSI Digital</span><br/>
+            <strong>Ashwani K</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span><br/>
             <a href="mailto:${replyToEmail}" style="color:#2563eb;text-decoration:none;font-size:13px;">${replyToEmail}</a>
           </p>
         </div>
@@ -114,9 +114,8 @@ What happens next:
 - If you need to add any details, simply reply to this email.
 
 Best regards,
-Michael Thompson
-Senior Funding Analyst
-FSI Digital
+Ashwani K
+Founder, FSI Digital
 ${replyToEmail}`;
 }
 
@@ -128,7 +127,7 @@ export async function sendContactConfirmation({
 }: ContactConfirmationInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   if (!apiKey) {
     console.warn('Contact confirmation email skipped — RESEND_API_KEY is not set.');

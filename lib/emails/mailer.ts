@@ -11,8 +11,7 @@ export function getFirstName(name?: string) {
   return name ? escapeHtml(name.split(' ')[0]) : 'Founder';
 }
 
-export async function sendEmail({
-  // Trigger redeploy to load newly approved Vercel env variables
+async function sendViaResend({
   to,
   subject,
   html,
@@ -28,7 +27,70 @@ export async function sendEmail({
   tagType: string;
   companyName?: string;
   from?: string;
-}) {
+}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
+  const apiKey = process.env.RESEND_API_KEY;
+  const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+
+  if (!apiKey) {
+    console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
+    return { success: false, skipped: true };
+  }
+
+  try {
+    const response = await fetch('https://api.resend.com/emails', {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        from: fromEmail,
+        to: [to],
+        reply_to: replyToEmail,
+        subject,
+        html,
+        text,
+        tags: [
+          { name: 'type', value: tagType },
+          { name: 'company', value: (companyName || 'Unknown').replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 50) },
+        ],
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error(`Resend email failed [${tagType}]:`, errorText);
+      return { success: false, error: errorText };
+    }
+
+    console.log(`✉️ Email successfully sent to ${to} via Resend fallback [${tagType}]`);
+    return { success: true };
+  } catch (error) {
+    console.error(`Resend email exception [${tagType}]:`, error);
+    return { success: false, error: String(error) };
+  }
+}
+
+export async function sendEmail({
+  to,
+  subject,
+  html,
+  text,
+  tagType,
+  companyName,
+  from,
+  forceResend = false
+}: {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  tagType: string;
+  companyName?: string;
+  from?: string;
+  forceResend?: boolean;
+}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
   // Check for global mock (used to compile previews in Next.js ESM context)
   if (typeof global !== "undefined" && (global as any).mockSendEmailActive) {
     if ((global as any).mockSendEmailCallback) {
@@ -39,6 +101,10 @@ export async function sendEmail({
       }
     }
     return { success: true };
+  }
+
+  if (forceResend) {
+    return sendViaResend({ to, subject, html, text, tagType, companyName, from });
   }
 
   const senderApiKey = process.env.SENDER_API_KEY;
@@ -81,57 +147,17 @@ export async function sendEmail({
 
       if (!response.ok) {
         const errorText = await response.text();
-        console.error(`Sender.net email failed [${tagType}]:`, errorText);
-        return { success: false, error: errorText };
+        console.warn(`Sender.net email failed [${tagType}]: ${errorText}. Falling back to Resend...`);
+        return sendViaResend({ to, subject, html, text, tagType, companyName, from });
       }
 
       console.log(`✉️ Email successfully sent to ${toParsed.email} via Sender.net [${tagType}]`);
       return { success: true };
     } catch (error) {
-      console.error(`Sender.net email exception [${tagType}]:`, error);
-      return { success: false, error: String(error) };
+      console.warn(`Sender.net email exception [${tagType}]: ${error}. Falling back to Resend...`);
+      return sendViaResend({ to, subject, html, text, tagType, companyName, from });
     }
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
-
-  if (!apiKey) {
-    console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
-    return { success: false, skipped: true };
-  }
-
-  try {
-    const response = await fetch('https://api.resend.com/emails', {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        from: fromEmail,
-        to: [to],
-        reply_to: replyToEmail,
-        subject,
-        html,
-        text,
-        tags: [
-          { name: 'type', value: tagType },
-          { name: 'company', value: (companyName || 'Unknown').replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 50) },
-        ],
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error(`Resend email failed [${tagType}]:`, errorText);
-      return { success: false, error: errorText };
-    }
-
-    return { success: true };
-  } catch (error) {
-    console.error(`Resend email exception [${tagType}]:`, error);
-    return { success: false, error: String(error) };
-  }
+  return sendViaResend({ to, subject, html, text, tagType, companyName, from });
 }

@@ -273,8 +273,8 @@ export default function ConsultationClient() {
 
     const price = selectedTier === 'audit' ? '199.00' : '499.00';
     const description = selectedTier === 'audit'
-      ? 'Funding Eligibility Audit & Roadmap'
-      : 'VIP Funding Blueprint & Eligibility Audit';
+      ? 'Funding Eligibility Audit & Report'
+      : 'VIP Funding Eligibility Report & Audit';
 
     if (typeof (window as any).paypal.Buttons !== 'function') {
       console.error("PayPal SDK is loaded but Buttons function is not available.");
@@ -382,11 +382,11 @@ export default function ConsultationClient() {
   const faqs = [
     {
       q: 'Why is this a paid audit instead of a free consultation?',
-      a: 'Most "free consulting" calls online are high-pressure sales pitches. We charge a research deposit because our team provides real work — a senior funding analyst spends up to 4 hours manually auditing your business profile against 800+ active government grants, tax credits, and loans before we meet. You receive a customized, downloadable Funding Roadmap PDF to keep, whether or not you choose to work with us further.'
+      a: 'Most "free consulting" calls online are high-pressure sales pitches. We charge a research deposit because our team provides real work — we conduct a custom funding eligibility review of your business profile against 800+ active government grants, tax credits, and loans before we meet. You receive a customized, downloadable Funding Eligibility Report to keep, whether or not you choose to work with us further.'
     },
     {
       q: 'What is the difference between the Audit and VIP Blueprint?',
-      a: 'The standard Audit ($199) includes a 30-minute call, 2 hours of analyst research, and your top 3 program matches as a PDF Roadmap. The VIP Blueprint ($499) provides a 60-minute deep dive with a senior partner, 4 hours of research, and a comprehensive priority stack timeline mapping out exact stacking strategies for larger or multiple concurrent projects.'
+      a: 'The standard Audit ($199) includes a 30-minute call, custom funding eligibility review, and your top 3 program matches as a PDF Funding Eligibility Report. The VIP Blueprint ($499) provides a 60-minute deep dive with a senior partner, custom funding opportunity assessment, and a comprehensive priority stack timeline mapping out exact stacking strategies for larger or multiple concurrent projects.'
     },
     {
       q: 'Is the research deposit refundable?',
@@ -394,7 +394,7 @@ export default function ConsultationClient() {
     },
     {
       q: 'What happens after I complete my audit?',
-      a: 'We deliver your custom Funding Roadmap PDF during the 1-on-1 strategy call. If the audit identifies strong opportunities and you choose to hire us for full application preparation and filing, we credit 100% of your deposit directly toward the service agreement — reducing your invoice dollar for dollar.'
+      a: 'We deliver your custom Funding Eligibility Report during the 1-on-1 strategy call. If the audit identifies strong opportunities and you choose to hire us for full application preparation and filing, we credit 100% of your deposit directly toward the service agreement — reducing your invoice dollar for dollar.'
     }
   ];
 
@@ -474,7 +474,7 @@ export default function ConsultationClient() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6 animate-fade-in-d2">
-              Select your audit package below. A senior funding analyst will manually research your business against <strong className="text-slate-700">800+ active government programs</strong> and deliver a custom Funding Roadmap before your call.
+              Select your audit package below. FSI Digital will conduct a custom funding eligibility review against <strong className="text-slate-700">800+ active programs</strong> and deliver a custom Funding Eligibility Report before your call.
             </p>
 
             {/* Trust Strip */}
@@ -719,7 +719,7 @@ export default function ConsultationClient() {
                 </div>
 
                 <p className="text-[10px] text-slate-500 leading-normal mt-3 text-center">
-                  Complete your audit below to unlock the full manual assessment and customized Funding Roadmap.
+                  Complete your audit below to unlock the custom funding eligibility review and customized Funding Eligibility Report.
                 </p>
               </div>
 
@@ -766,6 +766,55 @@ export default function ConsultationClient() {
                     <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded-lg border border-emerald-100 whitespace-nowrap ml-3">
                       Potential Match: $65,000
                     </span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Report Preview Mockup */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-5 sm:p-6 shadow-sm overflow-hidden relative text-left">
+                <div className="absolute top-0 right-0 bg-slate-900 text-white text-[9px] font-black uppercase tracking-wider px-3 py-1 rounded-bl-xl">
+                  Sample Deliverable
+                </div>
+                <h4 className="text-sm font-black text-slate-950 flex items-center gap-2 mb-4">
+                  <FileText className="w-4.5 h-4.5 text-indigo-600" />
+                  Your Funding Eligibility Report (Preview)
+                </h4>
+                <p className="text-xs text-slate-500 mb-4 leading-relaxed">
+                  Before your strategy consultation, you will receive a downloadable custom report mapped to your business parameters. Here is a preview of the structured format:
+                </p>
+                <div className="bg-slate-50 border border-slate-100 rounded-xl p-4">
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-[10px] font-black uppercase bg-emerald-50 text-emerald-800 border border-emerald-100 px-2 py-0.5 rounded">
+                      Opportunity #1
+                    </span>
+                    <span className="text-[11px] font-bold text-emerald-700">
+                      Likelihood: High
+                    </span>
+                  </div>
+                  <div className="mb-3 font-medium">
+                    <div className="text-xs text-slate-500">Program Name</div>
+                    <div className="text-sm font-black text-slate-950">SR&ED Tax Credit (R&D Incentive)</div>
+                  </div>
+                  <div className="mb-3 font-medium">
+                    <div className="text-xs text-slate-500">Estimated Benefit</div>
+                    <div className="text-lg font-black text-emerald-600">$42,000</div>
+                  </div>
+                  <div className="border-t border-slate-200/60 pt-3">
+                    <div className="text-[10px] font-black uppercase text-slate-400 tracking-wider mb-2">Required Actions</div>
+                    <ul className="space-y-1.5 text-xs text-slate-600 font-semibold">
+                      <li className="flex items-start gap-1.5">
+                        <span className="text-indigo-500 mt-0.5">•</span>
+                        Compile technical project summary documentation
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <span className="text-indigo-500 mt-0.5">•</span>
+                        Reconcile eligible payroll and subcontractor expenses
+                      </li>
+                      <li className="flex items-start gap-1.5">
+                        <span className="text-indigo-500 mt-0.5">•</span>
+                        Prepare and file R&D tax schedule with tax returns
+                      </li>
+                    </ul>
                   </div>
                 </div>
               </div>
@@ -848,11 +897,11 @@ export default function ConsultationClient() {
                     <div className="space-y-2.5 mb-5 text-xs text-slate-600">
                       <div className="flex items-center gap-2">
                         <Timer className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                        <span>{selectedTier === 'audit' ? '2 hours custom research' : '4 hours senior research'}</span>
+                        <span>{selectedTier === 'audit' ? 'Custom funding eligibility review' : 'Comprehensive funding stacking review'}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <FileText className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
-                        <span>{selectedTier === 'audit' ? 'Top 3 matches Roadmap PDF' : 'Full program stack timeline'}</span>
+                        <span>{selectedTier === 'audit' ? 'Top 3 matches Funding Eligibility Report' : 'Full program stack timeline'}</span>
                       </div>
                       <div className="flex items-center gap-2">
                         <Phone className="w-3.5 h-3.5 text-indigo-500 flex-shrink-0" />
@@ -882,6 +931,11 @@ export default function ConsultationClient() {
                     <div className="bg-indigo-50 border border-indigo-100 rounded-xl p-3 text-[11px] text-indigo-800 mb-5 leading-normal text-center font-medium">
                       🎁 Your ${currentDeposit} deposit is <strong>100% credited</strong> toward full-service application preparation if you partner with us.
                     </div>
+
+                    {/* Positioning Statement */}
+                    <p className="text-[11px] font-bold text-slate-800 mb-4 text-center leading-normal px-2">
+                      You&apos;re not paying for a call. You&apos;re paying for a custom Funding Eligibility Report and funding assessment prepared for your business.
+                    </p>
 
                     {/* PayPal Checkout */}
                     <div>
@@ -913,8 +967,16 @@ export default function ConsultationClient() {
               </div>
 
               {/* Fine Print */}
-              <p className="text-center text-[10px] text-slate-400 mt-3 leading-normal px-2">
-                By completing checkout, you authorize our analysts to begin compiling research data for your business profile. Processed securely via PayPal.
+              <div className="mt-4 border-t border-slate-100 pt-3 px-2 text-center">
+                <p className="text-[10px] text-slate-500 font-semibold leading-normal mb-1">
+                  Independent Advisory Notice
+                </p>
+                <p className="text-[10px] text-slate-400 leading-normal mb-3">
+                  FSI Digital is an independent private advisory firm. We are not affiliated with the Government of Canada or any government funding agency.
+                </p>
+              </div>
+              <p className="text-center text-[10px] text-slate-400 mt-1 leading-normal px-2">
+                By completing checkout, you authorize FSI Digital to begin compiling your Funding Eligibility Report. Processed securely via PayPal.
               </p>
             </div>
 

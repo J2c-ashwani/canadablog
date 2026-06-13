@@ -108,7 +108,7 @@ export function buildDay10Html({ firstName, companyName, loginToken }: { firstNa
 export async function sendFollowupEmail(stage: 'day2' | 'day5' | 'day10', { to, name, companyName, loginToken, estimatedFunding }: FollowupInput) {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
-  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'advisors@fsidigital.ca';
+  const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   if (!apiKey) {
     console.warn(`Followup email (${stage}) skipped — RESEND_API_KEY is not set.`);
