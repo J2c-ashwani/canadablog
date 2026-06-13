@@ -23,7 +23,7 @@ function getFirstName(name?: string) {
 }
 
 function buildRecapHtml(recoveryId?: string, bookedAt?: number) {
-  if (!recoveryId && !bookedAt) return '';
+  if (!bookedAt) return '';
 
   const refId = recoveryId ? `FSI-AUD-${recoveryId.split('-')[0].toUpperCase()}` : 'N/A';
   
@@ -134,8 +134,29 @@ function getEmailContent(
   const recpHtml = buildRecapHtml(recoveryId, bookedAt);
 
   if (stage === 'value_24h') {
+    const subject = 'Pending Audit: Activating pre-call R&D and tax credit research...';
+    const bodyHtml = bookedAt
+      ? `<p style="margin:0 0 16px 0;">This is a final reminder that your provisionally scheduled Funding Eligibility Audit time slot is still held under our active review queue.</p>
+         <p style="margin:0 0 20px 0;">To begin manual pre-call analysis, our research team requires completion of the refundable research deposit. This secures analyst time to review your entity parameters against active directories.</p>`
+      : `<p style="margin:0 0 16px 0;">This is a final reminder that your pending Funding Eligibility Audit and Roadmap is still held under our active review queue.</p>
+         <p style="margin:0 0 20px 0;">To begin manual analysis, our research team requires completion of the refundable research deposit. This secures analyst time to review your entity parameters against active directories.</p>`;
+
+    const ctaTextHtml = bookedAt
+      ? `<p style="margin:20px 0 0 0;">You can reserve your slot and lock in your research audit here:</p>`
+      : `<p style="margin:20px 0 0 0;">You can activate your review file and lock in your research audit here:</p>`;
+
+    const textBody = bookedAt
+      ? `This is a final reminder that your provisionally scheduled Funding Eligibility Audit time slot is still held under our active review queue.
+
+To begin manual pre-call analysis, our research team requires completion of the refundable research deposit. This secures analyst time to review your entity parameters against active directories.`
+      : `This is a final reminder that your pending Funding Eligibility Audit is still held under our active review queue.
+
+To begin manual analysis, our research team requires completion of the refundable research deposit. This secures analyst time to review your entity parameters against active directories.`;
+
+    const textCta = bookedAt ? 'You can secure your session here:' : 'You can secure your audit here:';
+
     return {
-      subject: 'Pending Audit: Activating pre-call R&D and tax credit research...',
+      subject,
       html: baseHtml({
         firstName,
         cta: consultationUrl,
@@ -143,8 +164,7 @@ function getEmailContent(
         btnText: 'Secure Audit & Roadmap',
         recapHtml: recpHtml,
         body: `
-          <p style="margin:0 0 16px 0;">This is a final reminder that your provisionally scheduled Funding Eligibility Audit time slot is still held under our active review queue.</p>
-          <p style="margin:0 0 20px 0;">To begin manual pre-call analysis, our research team requires completion of the refundable research deposit. This secures analyst time to review your entity parameters against active directories.</p>
+          ${bodyHtml}
           
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
             <p style="margin:0 0 12px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">Pre-Call Analyst Research Criteria:</p>
@@ -178,14 +198,12 @@ function getEmailContent(
             <strong>Eligibility Guarantee:</strong> If our analysts determine that your business is not eligible for any active funding opportunities, your research deposit is refunded in full.
           </div>
 
-          <p style="margin:20px 0 0 0;">You can reserve your slot and lock in your research audit here:</p>
+          ${ctaTextHtml}
         `,
       }),
       text: `Hi ${firstName},
  
-This is a final reminder that your provisionally scheduled Funding Eligibility Audit time slot is still held under our active review queue.
- 
-To begin manual pre-call analysis, our research team requires completion of the refundable research deposit. This secures analyst time to review your entity parameters against active directories.
+${textBody}
  
 Pre-Call Analyst Research Criteria:
 - Tax Incentive Eligibility: Manual audit of entity age, payroll records, and R&D activities for SR&ED program compatibility.
@@ -196,7 +214,7 @@ Your research deposit is 100% credited toward full-service application preparati
  
 Eligibility Guarantee: If our analysts determine that your business is not eligible for any active funding opportunities, your research deposit is refunded in full.
  
-You can secure your session here:
+${textCta}
 ${consultationUrl}
  
 Best regards,
@@ -208,8 +226,26 @@ ${replyToEmail}`,
   }
 
   if (stage === 'objection_3d') {
+    const subject = bookedAt 
+      ? 'Final reminder: Your audit slot is about to be released...'
+      : 'Final reminder: Your funding audit is about to be closed...';
+      
+    const bodyHtml = bookedAt
+      ? `<p style="margin:0 0 16px 0;">This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.</p>`
+      : `<p style="margin:0 0 16px 0;">This is the final reminder that your pending Funding Eligibility Audit and Roadmap is about to expire and your file will be closed.</p>`;
+
+    const ctaTextHtml = bookedAt
+      ? `<p style="margin:20px 0 0 0;">If you want to keep your scheduled slot, you can complete checkout here before your reservation expires:</p>`
+      : `<p style="margin:20px 0 0 0;">If you want to activate your audit, you can complete checkout here before your file expires:</p>`;
+
+    const textBody = bookedAt
+      ? `This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.`
+      : `This is the final reminder that your pending Funding Eligibility Audit is about to expire and your file will be closed.`;
+
+    const textCta = bookedAt ? 'You can book your session here:' : 'You can secure your audit here:';
+
     return {
-      subject: 'Final reminder: Your audit slot is about to be released...',
+      subject,
       html: baseHtml({
         firstName,
         cta: consultationUrl,
@@ -217,7 +253,7 @@ ${replyToEmail}`,
         btnText: 'Secure Audit & Roadmap',
         recapHtml: recpHtml,
         body: `
-          <p style="margin:0 0 16px 0;">This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.</p>
+          ${bodyHtml}
           <p style="margin:0 0 20px 0;">We want this process to be completely risk-free for you. That is why we back our manual audits with an eligibility refund guarantee.</p>
 
           <div style="background-color:#ecfdf5;border:1px solid #a7f3d0;border-radius:10px;padding:20px;margin:24px 0;">
@@ -230,12 +266,12 @@ ${replyToEmail}`,
             </p>
           </div>
 
-          <p style="margin:20px 0 0 0;">If you want to keep your scheduled slot, you can complete checkout here before your reservation expires:</p>
+          ${ctaTextHtml}
         `,
       }),
       text: `Hi ${firstName},
  
-This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.
+${textBody}
  
 We want this process to be completely risk-free for you. That is why we back our manual audits with an eligibility refund guarantee.
  
@@ -243,7 +279,7 @@ If our analysts determine that your business is not eligible for any active fund
  
 This means you only pay if we find real funding opportunities for your business. If we find nothing, it costs you $0. If we do find opportunities, your deposit is 100% credited toward our full-service preparation and submission support if we partner together.
  
-You can book your session here:
+${textCta}
 ${consultationUrl}
  
 Best regards,
@@ -255,6 +291,18 @@ ${replyToEmail}`,
   }
 
   if (stage === 'final_7d') {
+    const ctaTextHtml = bookedAt
+      ? `<p style="margin:0 0 20px 0;">If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to lock in your slot:</p>`
+      : `<p style="margin:0 0 20px 0;">If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to activate your file:</p>`;
+
+    const listCtaHtml = bookedAt
+      ? `<a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit slot here</a>`
+      : `<a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit and Roadmap here</a>`;
+
+    const textBody = bookedAt
+      ? `If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to book:`
+      : `If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to secure your audit:`;
+
     return {
       subject: 'Should I close your funding review file?',
       html: baseHtml({
@@ -266,7 +314,7 @@ ${replyToEmail}`,
         body: `
           <p style="margin:0 0 16px 0;">I haven't heard back from you, so I assume finding government funding isn't a priority for your business right now.</p>
           <p style="margin:0 0 16px 0;">I will go ahead and close your funding review file tomorrow so our team can focus on active applicants in our queue.</p>
-          <p style="margin:0 0 20px 0;">If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to lock in your slot:</p>
+          ${ctaTextHtml}
 
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:20px 0;font-size:14px;color:#475569;line-height:1.6;">
             <strong style="color:#0f172a;display:block;margin-bottom:8px;">Your Options:</strong>
@@ -274,7 +322,7 @@ ${replyToEmail}`,
               <tr>
                 <td style="vertical-align:top;width:18px;color:#2563eb;font-weight:bold;">•</td>
                 <td style="vertical-align:top;font-size:14px;color:#334155;padding-bottom:8px;">
-                  <a href="${consultationUrl}" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit slot here</a>
+                  ${listCtaHtml}
                 </td>
               </tr>
               <tr>
@@ -301,7 +349,7 @@ I haven't heard back from you, so I assume finding government funding isn't a pr
  
 I will go ahead and close your funding review file tomorrow so our team can focus on active applicants in our queue.
  
-If you still want us to complete your 2-hour research audit and build your custom roadmap, this is your final opportunity to book:
+${textBody}
 ${consultationUrl}
  
 Otherwise, I wish you the best of luck in scaling your business this year.
@@ -314,8 +362,26 @@ ${replyToEmail}`,
     };
   }
 
+  const subject = bookedAt
+    ? 'Provisional Reservation: Confirming your Funding Eligibility Audit'
+    : 'Pending: Confirming your Funding Eligibility Audit';
+
+  const bodyHtml = bookedAt
+    ? `<p style="margin:0 0 16px 0;">This is a confirmation that your selected Google Meet time slot for your Funding Eligibility Audit has been provisionally reserved.</p>
+       <p style="margin:0 0 20px 0;">To activate your reservation and allow our analysts to allocate time to compile your custom pre-call research report, please complete your research deposit within the next 60 minutes.</p>`
+    : `<p style="margin:0 0 16px 0;">This is a confirmation that your Funding Eligibility Audit and custom Roadmap profile has been successfully generated and is currently pending activation.</p>
+       <p style="margin:0 0 20px 0;">To activate your profile and allow our analysts to allocate time to compile your custom research report, please complete your research deposit within the next 60 minutes.</p>`;
+
+  const ctaTextHtml = bookedAt
+    ? `<p style="margin:20px 0 0 0;">Let's get your funding roadmap sorted. Complete your checkout here before your reservation expires:</p>`
+    : `<p style="margin:20px 0 0 0;">Let's get your funding roadmap sorted. Complete your checkout here to activate your audit and roadmap:</p>`;
+
+  const textSubject = bookedAt
+    ? `Your audit time slot is temporarily reserved. Complete your research deposit within 60 minutes to secure your session.`
+    : `Your Funding Eligibility Audit and custom Roadmap is pending. Complete your research deposit within 60 minutes to activate your audit and roadmap.`;
+
   return {
-    subject: 'Provisional Reservation: Confirming your Funding Eligibility Audit',
+    subject,
     html: baseHtml({
       firstName,
       cta: consultationUrl,
@@ -323,8 +389,7 @@ ${replyToEmail}`,
       btnText: 'Secure Audit & Roadmap',
       recapHtml: recpHtml,
       body: `
-        <p style="margin:0 0 16px 0;">This is a confirmation that your selected Google Meet time slot for your Funding Eligibility Audit has been provisionally reserved.</p>
-        <p style="margin:0 0 20px 0;">To activate your reservation and allow our analysts to allocate time to compile your custom pre-call research report, please complete your research deposit within the next 60 minutes.</p>
+        ${bodyHtml}
 
         <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:24px 0;">
           <p style="margin:0 0 14px 0;font-size:13px;font-weight:700;color:#0f172a;text-transform:uppercase;letter-spacing:0.05em;">On our call, your analyst will deliver a Funding Roadmap showing:</p>
@@ -358,11 +423,11 @@ ${replyToEmail}`,
           <strong>Eligibility Guarantee:</strong> If our analysts determine that your business is not eligible for any active funding opportunities, your research deposit is refunded in full.
         </div>
 
-        <p style="margin:20px 0 0 0;">Let's get your funding roadmap sorted. Complete your checkout here before your reservation expires:</p>
+        ${ctaTextHtml}
       `,
     }),
     text: `Hi ${firstName},
-Your audit time slot is temporarily reserved. Complete your research deposit within 60 minutes to secure your session.
+${textSubject}
  
 The audit includes 2 hours of pre-call desk research, a personalized Business Funding Roadmap, your top eligible program matches, and a private Google Meet call to plan next steps.
  

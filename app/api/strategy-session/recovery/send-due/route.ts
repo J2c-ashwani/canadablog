@@ -206,7 +206,7 @@ async function sendDueRecoveryEmails(request: NextRequest) {
         source: record.source || 'strategy-session-recovery',
         stage,
         recoveryId: record.recoveryId,
-        bookedAt: toTime(record.createdAt),
+        bookedAt: record.calendlyEventUri ? toTime(record.createdAt) : undefined,
       });
 
       if (response.success) {
