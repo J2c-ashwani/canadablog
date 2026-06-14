@@ -20,7 +20,7 @@ export interface BlogPost {
   content: string;
   type: BlogPostType;
   seo?: {
-    keywords: string[];
+    keywords?: string[];
     metaTitle?: string;
     metaDescription?: string;
     ogImage?: string;
