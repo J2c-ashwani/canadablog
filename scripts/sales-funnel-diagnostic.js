@@ -22,18 +22,26 @@ async function runDiagnostics() {
     }
 
     console.log('📡 Fetching leads from Google Sheet database...');
-    const response = await sheets.spreadsheets.values.get({
+    const leadsResponse = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: 'Leads!A2:BM',
     });
 
-    const rows = response.data.values || [];
-    if (rows.length === 0) {
-      console.log('⚠️ No lead records found in the sheet.');
-      return;
-    }
+    const rows = leadsResponse.data.values || [];
+    console.log(`📊 Total raw leads rows retrieved: ${rows.length}`);
 
-    console.log(`📊 Total raw rows retrieved: ${rows.length}\n`);
+    // Fetch Product Purchases
+    let purchaseRows = [];
+    try {
+      const purchasesResponse = await sheets.spreadsheets.values.get({
+        spreadsheetId,
+        range: 'Product Purchases!A2:J',
+      });
+      purchaseRows = purchasesResponse.data.values || [];
+      console.log(`💳 Total purchase records retrieved: ${purchaseRows.length}\n`);
+    } catch (purchaseErr) {
+      console.log('⚠️ Could not fetch Product Purchases sheet (may not have any purchases recorded yet).\n');
+    }
 
     let totalLeads = 0;
     let tierA = 0;
@@ -43,33 +51,47 @@ async function runDiagnostics() {
     let activeSubscriptions = 0;
     let trialSubscriptions = 0;
     let unsubscribedCount = 0;
+    let calculatorCompletions = 0;
+    let auditPurchasedCount = 0;
 
     const hotProspects = [];
 
     rows.forEach((row, idx) => {
-      const rowIndex = idx + 2; // Rows in sheets are 1-indexed and we skipped header A1
+      const rowIndex = idx + 2;
       const timestamp = row[0] || 'N/A';
+      const source = row[1] || '';
       const email = row[2] || '';
       const name = row[3] || 'N/A';
       const phone = row[11] || '';
-      const tierVal = row[14] || row[62] || 'Tier C'; // Index 14 or 62
+      const tierVal = row[14] || row[62] || 'Tier C';
       const reportPurchasedVal = row[48] || 'No';
       const subStatusVal = row[43] || 'inactive';
       const isSubscribedVal = row[33] || 'Yes';
       const waLink = row[26] || '';
+      const assessmentPurchasedAt = row[54] || 'N/A';
 
-      if (!email) return; // Skip empty rows
+      if (!email) return;
 
       totalLeads++;
+
+      // Calculator completions
+      if (source.includes('Calculator') || source.includes('Contact Form - Grant Calculator')) {
+        calculatorCompletions++;
+      }
 
       // Tiers
       if (tierVal === 'A' || tierVal.includes('Tier A')) tierA++;
       else if (tierVal === 'B' || tierVal.includes('Tier B')) tierB++;
       else tierC++;
 
-      // Audits
+      // Report purchases count in Leads
       if (reportPurchasedVal === 'Yes' || reportPurchasedVal === 'true' || reportPurchasedVal === true) {
         reportPurchasedCount++;
+      }
+
+      // Audit purchases count in Leads
+      if (assessmentPurchasedAt && assessmentPurchasedAt !== 'N/A' && assessmentPurchasedAt !== '') {
+        auditPurchasedCount++;
       }
 
       // Subscriptions
@@ -79,7 +101,6 @@ async function runDiagnostics() {
       // Subscribed
       if (isSubscribedVal === 'No') unsubscribedCount++;
 
-      // Identify Hot Prospects (Tier A or B, has phone number, has not purchased report/audit yet)
       const hasPurchased = (reportPurchasedVal === 'Yes' || reportPurchasedVal === 'true');
       const isOutreachTarget = !hasPurchased && subStatusVal !== 'active';
 
@@ -96,17 +117,42 @@ async function runDiagnostics() {
       }
     });
 
+    // Calculate Purchase metrics from Product Purchases sheet
+    let completedPurchasesCount = 0;
+    let totalReportRevenue = 0.0;
+    purchaseRows.forEach((pRow) => {
+      const amount = parseFloat(pRow[4] || '0.00');
+      const status = pRow[9] || 'completed';
+      if (status === 'completed') {
+        completedPurchasesCount++;
+        totalReportRevenue += amount;
+      }
+    });
+
+    // Conversion Calculations
+    const reportPurchaseRate = calculatorCompletions > 0 
+      ? ((completedPurchasesCount / calculatorCompletions) * 100).toFixed(2) 
+      : '0.00';
+    const auditPurchaseRate = completedPurchasesCount > 0 
+      ? ((auditPurchasedCount / completedPurchasesCount) * 100).toFixed(2) 
+      : '0.00';
+
     console.log('=========================================');
-    console.log('📈 FSI DIGITAL SALES FUNNEL SUMMARY');
+    console.log('📈 FSI DIGITAL CORE FUNNEL METRICS');
     console.log('=========================================');
-    console.log(`Total Leads:             ${totalLeads}`);
-    console.log(`Tier A (High Value):     ${tierA}`);
-    console.log(`Tier B (Medium Value):   ${tierB}`);
-    console.log(`Tier C (Low Value):      ${tierC}`);
-    console.log(`Audits/Reports Paid:     ${reportPurchasedCount}`);
-    console.log(`Active Paid Members:     ${activeSubscriptions}`);
-    console.log(`Active Trial Members:    ${trialSubscriptions}`);
-    console.log(`Unsubscribed Leads:      ${unsubscribedCount}`);
+    console.log(`1. Calculator Completions (Visitors):   ${calculatorCompletions}`);
+    console.log(`2. Report Purchase Rate (CVR):          ${reportPurchaseRate}% (${completedPurchasesCount} purchases)`);
+    console.log(`3. Total Report Revenue:                $${totalReportRevenue.toFixed(2)} USD`);
+    console.log(`4. Audit Bookings (Sales):               ${auditPurchasedCount}`);
+    console.log(`5. Audit Purchase Rate (Upsell CVR):    ${auditPurchaseRate}%`);
+    console.log('=========================================');
+    console.log(`Total Leads Database Size:              ${totalLeads}`);
+    console.log(`Tier A (High Value Leads):              ${tierA}`);
+    console.log(`Tier B (Medium Value Leads):            ${tierB}`);
+    console.log(`Tier C (Low Value Leads):               ${tierC}`);
+    console.log(`Active Paid Newsletter Members:         ${activeSubscriptions}`);
+    console.log(`Active Trial Newsletter Members:        ${trialSubscriptions}`);
+    console.log(`Unsubscribed Leads:                     ${unsubscribedCount}`);
     console.log('=========================================\n');
 
     console.log(`🔥 TOP ${Math.min(hotProspects.length, 10)} HOT PROSPECTS FOR IMMEDIATE SALES OUTREACH:`);
@@ -120,7 +166,6 @@ async function runDiagnostics() {
       console.log(`   Lead Tier:      ${p.tier}`);
       console.log(`   Phone Number:   ${p.phone || 'No Phone'}`);
       if (p.phone && p.waLink) {
-        // Extract plain URL from formula if formatted as =HYPERLINK("url", "label")
         let url = p.waLink;
         if (p.waLink.startsWith('=')) {
           const match = p.waLink.match(/"([^"]+)"/);
