@@ -5,11 +5,12 @@ import { getProduct } from '@/lib/products/catalog';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { productId, email, name, paypalOrderId, profileData } = body;
+    const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId } = body;
 
     // ── Validate required fields ──
     if (!productId || !email || !name || !paypalOrderId || !profileData) {
@@ -28,10 +29,15 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // ── Calculate total expected price with addons ──
+    let expectedPrice = product.priceUsd;
+    if (addons?.toolkit) expectedPrice += 29;
+    if (addons?.approvalLibrary) expectedPrice += 9;
+
     // ── Verify PayPal order ──
     const verification = await verifyPayPalOrder(
       paypalOrderId,
-      product.priceUsd.toFixed(2)
+      expectedPrice.toFixed(2)
     );
 
     if (!verification.verified) {
@@ -45,7 +51,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ── Record purchase in Google Sheets ──
+    // ── Record main purchase in Google Sheets ──
     const purchase = await recordPurchase({
       email,
       name,
@@ -53,20 +59,129 @@ export async function POST(request: NextRequest) {
       amount: product.priceUsd.toFixed(2),
       paypalOrderId,
       profileData,
+      attribution,
     });
+
+    // ── Record Toolkit addon if purchased ──
+    if (addons?.toolkit) {
+      try {
+        await recordPurchase({
+          email,
+          name,
+          productId: 'funding-toolkit',
+          amount: '29.00',
+          paypalOrderId,
+          profileData,
+          attribution,
+        });
+      } catch (err) {
+        console.error('⚠️ Failed to record Toolkit addon purchase:', err);
+      }
+    }
+
+    // ── Record Approval Library addon if purchased ──
+    if (addons?.approvalLibrary) {
+      try {
+        await recordPurchase({
+          email,
+          name,
+          productId: 'funding-approval-library',
+          amount: '9.00',
+          paypalOrderId,
+          profileData,
+          attribution,
+        });
+      } catch (err) {
+        console.error('⚠️ Failed to record Approval Library addon purchase:', err);
+      }
+    }
+
+    // ── Record telemetry event for main purchase ──
+    try {
+      await recordTelemetryEvent({
+        eventName: 'purchase_product',
+        sessionId: sessionId || 'sess_anonymous',
+        pagePath: attribution?.landingPage || '',
+        referrer: attribution?.referrer || 'direct',
+        productId,
+        revenue: product.priceUsd.toFixed(2),
+      });
+    } catch (tErr) {
+      console.error('⚠️ Failed to log main purchase telemetry event:', tErr);
+    }
+
+    // ── Record telemetry event for Toolkit addon if purchased ──
+    if (addons?.toolkit) {
+      try {
+        await recordTelemetryEvent({
+          eventName: 'purchase_product',
+          sessionId: sessionId || 'sess_anonymous',
+          pagePath: attribution?.landingPage || '',
+          referrer: attribution?.referrer || 'direct',
+          productId: 'funding-toolkit',
+          revenue: '29.00',
+        });
+      } catch (tErr) {
+        console.error('⚠️ Failed to log Toolkit purchase telemetry event:', tErr);
+      }
+    }
+
+    // ── Record telemetry event for Approval Library addon if purchased ──
+    if (addons?.approvalLibrary) {
+      try {
+        await recordTelemetryEvent({
+          eventName: 'purchase_product',
+          sessionId: sessionId || 'sess_anonymous',
+          pagePath: attribution?.landingPage || '',
+          referrer: attribution?.referrer || 'direct',
+          productId: 'funding-approval-library',
+          revenue: '9.00',
+        });
+      } catch (tErr) {
+        console.error('⚠️ Failed to log Approval Library purchase telemetry event:', tErr);
+      }
+    }
 
     // ── Sync purchase status back to CRM Leads sheet ──
     try {
       const existing = await SubscriberRepository.getSubscriberByEmail(email);
       const updates: any = {
-        reportPurchased: true,
-        reportTransactionId: paypalOrderId,
         region: profileData.province || 'ON',
         industry: profileData.industry || 'other',
         businessStage: profileData.revenue || 'pre-revenue',
         fundingPurpose: profileData.goal || 'expansion',
-        engagementScore: 120,
       };
+
+      if (productId === 'funding-match-report') {
+        updates.reportPurchased = true;
+        updates.reportTransactionId = paypalOrderId;
+        updates.engagementScore = 120;
+      } else if (productId === 'funding-roadmap') {
+        updates.strategyReportPurchased = true;
+        updates.strategyReportTransactionId = paypalOrderId;
+        updates.engagementScore = 150;
+      } else if (productId === 'funding-bundle') {
+        updates.reportPurchased = true;
+        updates.reportTransactionId = paypalOrderId;
+        updates.strategyReportPurchased = true;
+        updates.strategyReportTransactionId = paypalOrderId;
+        updates.engagementScore = 150;
+      }
+
+      // Parse existing leadActivity or create new
+      let activity: any = {};
+      if (existing && existing.leadActivity && existing.leadActivity !== 'N/A' && existing.leadActivity !== '{}') {
+        try {
+          activity = JSON.parse(existing.leadActivity);
+        } catch (e) {
+          console.error("Failed to parse existing leadActivity JSON:", e);
+        }
+      }
+      activity.paymentCompletedAt = new Date().toISOString();
+      activity.purchasedProductId = productId;
+      if (addons?.toolkit) activity.purchasedToolkit = true;
+      if (addons?.approvalLibrary) activity.purchasedApprovalLibrary = true;
+      updates.leadActivity = JSON.stringify(activity);
 
       if (existing) {
         await SubscriberRepository.updateSubscriberPreferences(email, updates);
@@ -82,6 +197,7 @@ export async function POST(request: NextRequest) {
           fundingInterests: ['Grants'],
           website: '',
           companyName: '',
+          leadActivity: JSON.stringify(activity),
         });
         await SubscriberRepository.updateSubscriberPreferences(email, updates);
         console.log(`✅ Main CRM lead created and marked as buyer for: ${email}`);
@@ -96,8 +212,8 @@ export async function POST(request: NextRequest) {
       email,
       accessToken: purchase.accessToken,
       paypalOrderId,
-      productName: product.name,
-      amount: product.priceUsd.toFixed(2),
+      productName: product.name + (addons?.toolkit ? ' + Toolkit' : '') + (addons?.approvalLibrary ? ' + Approval Library' : ''),
+      amount: expectedPrice.toFixed(2),
     });
 
     await sendEmail({
@@ -109,7 +225,7 @@ export async function POST(request: NextRequest) {
     });
 
     console.log(
-      `✅ Product purchase completed: ${product.name} for ${email} (order: ${paypalOrderId})`
+      `✅ Product purchase completed: ${product.name} with addons for ${email} (order: ${paypalOrderId})`
     );
 
     // ── Return success ──

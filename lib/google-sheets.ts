@@ -118,12 +118,14 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.leadTier || "N/A",
         data.subscriptionCancelledAt || "N/A",
         data.cancellationReason || "N/A",
+        data.strategyReportPurchased ? "Yes" : "No",
+        data.strategyReportTransactionId || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:BM",
+      range: "Leads!A:BO",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -212,6 +214,8 @@ function parseSheetLead(row: string[]): SheetLead {
     leadTier: row[62] || "N/A",
     subscriptionCancelledAt: row[63] || "N/A",
     cancellationReason: row[64] || "N/A",
+    strategyReportPurchased: String(row[65] || "").toLowerCase() === "yes",
+    strategyReportTransactionId: row[66] || "N/A",
   }
 
 
@@ -240,7 +244,7 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:BM",
+    range: "Leads!A:BO",
   })
 
 
@@ -267,7 +271,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     // Fetch all rows to locate index
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:BM",
+      range: "Leads!A:BO",
     })
     
     const rows = response.data.values || []
@@ -282,8 +286,8 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     const sheetRowNumber = rowIndex + 1
     const targetRow = rows[rowIndex]
     
-    // Ensure array length covers BM (index 64)
-    while (targetRow.length < 65) {
+    // Ensure array length covers BO (index 66)
+    while (targetRow.length < 67) {
       targetRow.push("N/A")
     }
     
@@ -444,11 +448,17 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     if (updates.cancellationReason !== undefined) {
       targetRow[64] = updates.cancellationReason
     }
+    if (updates.strategyReportPurchased !== undefined) {
+      targetRow[65] = updates.strategyReportPurchased ? "Yes" : "No"
+    }
+    if (updates.strategyReportTransactionId !== undefined) {
+      targetRow[66] = updates.strategyReportTransactionId
+    }
     
     // Update the row
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `Leads!A${sheetRowNumber}:BM${sheetRowNumber}`,
+      range: `Leads!A${sheetRowNumber}:BO${sheetRowNumber}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [targetRow],
@@ -953,6 +963,97 @@ export async function updateAlertJobStatus(rowIndex: number, status: string, pro
     return { success: true }
   } catch (error) {
     console.error(`❌ Failed to update alert job status at row ${rowIndex}:`, error)
+    return { success: false, error }
+  }
+}
+
+export interface AlertLeadData {
+  timestamp: string
+  email: string
+  province: string
+  industry: string
+  source: string
+}
+
+const ALERTS_LEADS_HEADERS = ["Timestamp", "Email", "Province", "Industry", "Source"]
+
+export async function ensureAlertsLeadsSheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "Alerts Leads"
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  })
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE)
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: SHEET_TITLE,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:E1`,
+  })
+
+  const header = headerResponse.data.values?.[0] || []
+  if (header.join("|") !== ALERTS_LEADS_HEADERS.join("|")) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:E1`,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [ALERTS_LEADS_HEADERS],
+      },
+    })
+  }
+}
+
+export async function appendAlertLeadToSheet(data: Omit<AlertLeadData, 'timestamp'>) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) {
+      throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+    }
+
+    await ensureAlertsLeadsSheet(sheets, spreadsheetId)
+
+    const values = [
+      [
+        new Date().toISOString(),
+        data.email,
+        data.province,
+        data.industry,
+        data.source
+      ]
+    ]
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "Alerts Leads!A:E",
+      valueInputOption: "USER_ENTERED",
+      requestBody: {
+        values,
+      },
+    })
+
+    console.log(`✅ Alert lead saved: ${data.email} (${data.industry}/${data.province})`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Error saving alert lead to Google Sheets:", error)
     return { success: false, error }
   }
 }

@@ -38,16 +38,43 @@ export async function POST(request: NextRequest) {
       if (body.priceShown) {
         activity.priceShown = body.priceShown
       }
-    } else if (event === "checkout_viewed") {
-      activity.checkoutViewedAt = now
+    } else if (event === "checkout_viewed" || event === "paywall_viewed") {
+      activity.paywallViewedAt = now
       if (body.priceShown) {
         activity.priceShown = body.priceShown
       }
+    } else if (event === "calculator_completed") {
+      activity.calculatorCompletedAt = now
+    } else if (event === "package_selected") {
+      activity.packageSelected = body.packageSelected
+      activity.packageSelectedAt = now
+    } else if (event === "payment_approved") {
+      activity.paymentApprovedAt = now
+      if (body.paypalOrderId) {
+        activity.paypalOrderId = body.paypalOrderId
+      }
+    } else if (event === "payment_completed") {
+      activity.paymentCompletedAt = now
+    } else if (event === "submit_survey") {
+      if (!activity.surveys) {
+        activity.surveys = []
+      }
+      activity.surveys.push({
+        type: body.surveyType,
+        response: body.surveyResponse,
+        submittedAt: now
+      })
     } else if (event === "report_viewed") {
       activity.reportViewedAt = now
       if (!subscriber.firstReportViewedAt || subscriber.firstReportViewedAt === "N/A" || subscriber.firstReportViewedAt === "") {
         updates.firstReportViewedAt = now
       }
+    } else if (event === "action_plan_viewed") {
+      activity.actionPlanViewedAt = now
+    } else if (event === "pdf_downloaded") {
+      activity.pdfDownloadedAt = now
+    } else if (event === "audit_cta_clicked") {
+      activity.auditCtaClickedAt = now
     } else if (event === "portfolio_viewed" || event === "dashboard_viewed") {
       updates.lastPortfolioViewAt = now
       updates.lastDashboardViewAt = now

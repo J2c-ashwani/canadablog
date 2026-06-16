@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage, type PseoPage } from '@/lib/pseo-data';
 import { getStateDetailBySlugOrAbbreviation, type StateDetailedGrant } from '@/lib/data/stateDetails';
+import { getAllPrograms } from '@/lib/data/programs';
 import { generatePseoSchema } from '@/lib/seo';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
 import { Header } from '@/components/Header';
@@ -33,6 +34,7 @@ import WhoShouldLeave from '@/components/pseo/blocks/WhoShouldLeave';
 import KeyLocalInstitutions from '@/components/pseo/blocks/KeyLocalInstitutions';
 import InsiderInsightQuotes from '@/components/pseo/blocks/InsiderInsightQuotes';
 import MicroFAQ from '@/components/pseo/blocks/MicroFAQ';
+import LocalResourceHub from '@/components/pseo/LocalResourceHub';
 
 const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
 
@@ -592,6 +594,42 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
         intent: assignedIntent
     });
 
+    // Compute actual program matches count from database
+    const allPrograms = getAllPrograms();
+    const actualMatches = allPrograms.filter(p => {
+        if (p.country !== (isCanada ? 'Canada' : 'USA')) return false;
+        if (p.region === 'Federal') return true;
+        
+        const regLower = p.region.toLowerCase().trim();
+        const slugLower = page.provinceSlug.toLowerCase().trim();
+        
+        if (regLower === slugLower) return true;
+        if (slugLower === 'on' && regLower.includes('ontario')) return true;
+        if (slugLower === 'bc' && regLower.includes('british columbia')) return true;
+        if (slugLower === 'ab' && regLower.includes('alberta')) return true;
+        if (slugLower === 'qc' && regLower.includes('quebec')) return true;
+        if (slugLower === 'ns' && regLower.includes('nova scotia')) return true;
+        if (slugLower === 'nb' && regLower.includes('new brunswick')) return true;
+        if (slugLower === 'nl' && regLower.includes('newfoundland')) return true;
+        if (slugLower === 'pe' && regLower.includes('prince edward island')) return true;
+        if (slugLower === 'mb' && regLower.includes('manitoba')) return true;
+        if (slugLower === 'sk' && regLower.includes('saskatchewan')) return true;
+        
+        if (slugLower === 'ca' && regLower.includes('california')) return true;
+        if (slugLower === 'tx' && regLower.includes('texas')) return true;
+        if (slugLower === 'ny' && regLower.includes('new york')) return true;
+        if (slugLower === 'fl' && regLower.includes('florida')) return true;
+        if (slugLower === 'il' && regLower.includes('illinois')) return true;
+        if (slugLower === 'oh' && regLower.includes('ohio')) return true;
+        if (slugLower === 'co' && regLower.includes('colorado')) return true;
+        if (slugLower === 'ma' && regLower.includes('massachusetts')) return true;
+        if (slugLower === 'nc' && regLower.includes('north carolina')) return true;
+        if (slugLower === 'wa' && regLower.includes('washington')) return true;
+        
+        return false;
+    });
+    const activeProgramsCount = actualMatches.length;
+
     const shortAnswerQuestion = `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
 
     const breadcrumbSchema = {
@@ -639,6 +677,35 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                         <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date={new Date(page.publishedAt).toISOString().split('T')[0]} />
                     </div>
 
+                    {/* Above-the-fold Calculator CTA Card */}
+                    <div className="bg-gradient-to-br from-indigo-950 via-slate-900 to-indigo-900 text-white rounded-2xl p-6 md:p-8 text-left mb-8 relative overflow-hidden border border-indigo-950/40 shadow-xl mt-6">
+                        <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                            <div className="space-y-2 max-w-xl">
+                                <span className="inline-flex items-center gap-1.5 bg-indigo-500/20 border border-indigo-500/30 text-indigo-300 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full">
+                                    Interactive Eligibility Engine
+                                </span>
+                                <h2 className="text-xl md:text-2xl font-extrabold text-white leading-tight">
+                                    There are {activeProgramsCount} active funding programs for {page.industryName} in {page.provinceName}.
+                                </h2>
+                                <p className="text-sm text-slate-300 leading-relaxed">
+                                    Calculate your funding readiness score and see exactly which federal and provincial programs your business qualifies for. Takes 60 seconds.
+                                </p>
+                            </div>
+                            <div className="shrink-0 flex flex-col items-center justify-center w-full md:w-auto">
+                                <a
+                                    href="#calculator"
+                                    className="bg-emerald-500 hover:bg-emerald-600 active:bg-emerald-700 text-white font-extrabold text-sm rounded-xl px-6 py-3.5 transition-all shadow-lg shadow-emerald-500/10 text-center block w-full whitespace-nowrap hover:scale-[1.02] active:scale-[0.98] duration-200"
+                                >
+                                    Start Free Assessment &rarr;
+                                </a>
+                                <span className="text-[10px] text-slate-400 mt-2 flex items-center gap-1">
+                                    <Clock className="w-3 h-3 text-slate-400" /> No fee · 100% confidential
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">
                         <Shield className="w-4 h-4" />
                         Verified Local Programs — {page.provinceName}
@@ -652,6 +719,17 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                             isH1={true}
                         />
                     </div>
+
+                    {/* Local Resource Hub — Authentic Local Data and Support Channels */}
+                    <LocalResourceHub
+                        cityName={page.cityName}
+                        provinceName={page.provinceName}
+                        provinceSlug={page.provinceSlug}
+                        industryName={page.industryName}
+                        industrySlug={page.industrySlug}
+                        isCanada={isCanada}
+                        activeProgramsCount={activeProgramsCount}
+                    />
                     
                     {/* PHASE 4: Dynamic Composed Blocks Render Output */}
                     <div className="mt-12 mb-8">

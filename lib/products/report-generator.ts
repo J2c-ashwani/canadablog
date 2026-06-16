@@ -333,3 +333,163 @@ export function generateFundingMatchReport(input: ReportInput): FundingMatchRepo
     programs: capped,
   };
 }
+
+// ── Funding Action Plan (Stage 2) Types & Generator ──
+
+export interface PriorityRankingItem {
+  id: string;
+  name: string;
+  agency: string;
+  rank: number;
+  matchReason: string;
+  fundingAmount: string;
+  difficulty: string;
+}
+
+export interface StrategyTimelineItem {
+  programId: string;
+  programName: string;
+  agency: string;
+  targetMonth: string; // 'Month 1' | 'Month 2' | 'Month 3' | 'Month 4'
+  actionRequired: string;
+}
+
+export interface ProgramRiskWarning {
+  programId: string;
+  programName: string;
+  riskLevel: 'Low' | 'Moderate' | 'High';
+  riskDescription: string;
+}
+
+export interface FundingActionPlanData {
+  priorityRanking: PriorityRankingItem[];
+  timeline: StrategyTimelineItem[];
+  sequence: string[];
+  docChecklist: string[];
+  riskWarnings: ProgramRiskWarning[];
+  actionPlan: {
+    thisWeek: string[];
+    thisMonth: string[];
+    beforeApplying: string[];
+  };
+}
+
+export function generateFundingActionPlan(report: FundingMatchReport): FundingActionPlanData {
+  const topPrograms = report.programs.slice(0, 3);
+  
+  // 1. Priority Ranking
+  const priorityRanking: PriorityRankingItem[] = topPrograms.map((p, idx) => ({
+    id: p.id,
+    name: p.name,
+    agency: p.agency,
+    rank: idx + 1,
+    matchReason: p.matchReason,
+    fundingAmount: p.estimatedRange || p.fundingAmount,
+    difficulty: p.difficulty,
+  }));
+
+  // 2. Timeline Mapping (Months 1-4)
+  const timeline: StrategyTimelineItem[] = report.programs.map((p, idx) => {
+    let targetMonth = 'Month 4';
+    let actionRequired = 'Monitor program status and verify eligibility credentials.';
+    
+    if (idx === 0) {
+      targetMonth = 'Month 1';
+      actionRequired = 'Complete project draft scope and compile initial payroll/expense logs for immediate filing.';
+    } else if (idx === 1) {
+      targetMonth = 'Month 2';
+      actionRequired = 'Draft project timeline and coordinate with your accounting team for matching funds authorization.';
+    } else if (idx === 2) {
+      targetMonth = 'Month 3';
+      actionRequired = 'Compile corporate tax records and finalize your partner/vendor quotes.';
+    } else if (idx < 5) {
+      targetMonth = 'Month 4';
+      actionRequired = 'Submit letters of intent to secure allocation inside the current quarterly intake.';
+    }
+
+    return {
+      programId: p.id,
+      programName: p.name,
+      agency: p.agency,
+      targetMonth,
+      actionRequired,
+    };
+  });
+
+  // 3. Application Sequence Staking
+  const sequence: string[] = [
+    'Stage 1: Submit training & hiring grant applications first to lower your ongoing payroll liability before starting the projects.',
+    'Stage 2: Align and claim R&D tax credits simultaneously (e.g., SR&ED) to recover up to 60-70% of technical development expenses.',
+    'Stage 3: Apply for large-scale business expansion grants or regional loans once hiring and initial project milestones are locked in.',
+  ];
+
+  // 4. Dynamic Document Checklist
+  const uniqueDocs = new Set<string>();
+  report.programs.forEach(p => {
+    (p.requiredDocuments || []).forEach(doc => {
+      if (doc && doc !== 'N/A') uniqueDocs.add(doc);
+    });
+  });
+
+  // Fallback defaults if no documents match
+  if (uniqueDocs.size < 3) {
+    uniqueDocs.add('Articles of Incorporation (Federal or Provincial)');
+    uniqueDocs.add('Corporate Tax Returns (T2) for the last 2 fiscal years');
+    uniqueDocs.add('Detailed project budget breakdown (Labor, Materials, Subcontractors)');
+    uniqueDocs.add('Current employee payroll log (T4 summaries)');
+  }
+  const docChecklist = Array.from(uniqueDocs);
+
+  // 5. Risk Warnings
+  const riskWarnings: ProgramRiskWarning[] = report.programs.map(p => {
+    let riskLevel: 'Low' | 'Moderate' | 'High' = 'Moderate';
+    let riskDescription = 'Intake pool exhaustion: Government budgets are subject to quarterly caps. Submit early to secure allocation.';
+
+    if (p.difficulty === 'High') {
+      riskLevel = 'High';
+      riskDescription = 'Rigorous audit compliance: Requires detailed time-tracking logs and project-specific accounting.';
+    } else if (p.difficulty === 'Low') {
+      riskLevel = 'Low';
+      riskDescription = 'Standard administrative checklist: Low risk of audit, but requires timely registration filings.';
+    }
+
+    return {
+      programId: p.id,
+      programName: p.name,
+      riskLevel,
+      riskDescription,
+    };
+  });
+
+  // 6. Action Plan Task Lists
+  const thisWeek = [
+    'Assign a project coordinator to lead the application document collection.',
+    'Draft a 1-page summary detailing your project objectives and key milestones.',
+    'Retrieve copies of incorporation certificates and locate historical tax returns.',
+  ];
+
+  const thisMonth = [
+    'Setup a project-specific cost-tracking spreadsheet for payroll and contractors.',
+    'Verify that upcoming hiring needs align with targeted wage subsidy profiles.',
+    'Schedule a pre-screening call to verify core eligibility limits.',
+  ];
+
+  const beforeApplying = [
+    'Run a manual pre-audit eligibility review on corporate structures.',
+    'Ensure project start dates do not precede the program registration dates.',
+    'Confirm that matching funds/deposits are verified and accessible.',
+  ];
+
+  return {
+    priorityRanking,
+    timeline,
+    sequence,
+    docChecklist,
+    riskWarnings,
+    actionPlan: {
+      thisWeek,
+      thisMonth,
+      beforeApplying,
+    },
+  };
+}

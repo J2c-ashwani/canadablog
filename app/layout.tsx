@@ -7,6 +7,7 @@ import { ClientOverlays } from "@/components/ClientOverlays"
 import GlobalWikipediaLinker from "@/components/seo/GlobalWikipediaLinker"
 import { AdSensePageTracker } from "@/components/AdSensePageTracker"
 import { AdSenseLoader } from "@/components/AdSenseLoader"
+import { FunnelTelemetryTracker } from "@/components/FunnelTelemetryTracker"
 
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || "G-DZ55NMNLYM"
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID
@@ -130,6 +131,7 @@ export default function RootLayout({
         <ClientOverlays />
         <GlobalWikipediaLinker />
         <AdSensePageTracker />
+        <FunnelTelemetryTracker />
 
         <script
           type="application/ld+json"

@@ -12,6 +12,11 @@ export interface PurchaseRecord {
   profileData: string; // JSON string of { province, industry, revenue, goal }
   createdAt: string;
   status: string;
+  landingPage?: string;
+  referrer?: string;
+  utmSource?: string;
+  utmMedium?: string;
+  utmCampaign?: string;
 }
 
 const SHEET_TITLE = 'Product Purchases';
@@ -27,6 +32,11 @@ const PURCHASE_HEADERS = [
   'Profile Data',
   'Created At',
   'Status',
+  'Landing Page',
+  'Referrer',
+  'UTM Source',
+  'UTM Medium',
+  'UTM Campaign',
 ];
 
 async function ensurePurchaseSheet(
@@ -61,14 +71,14 @@ async function ensurePurchaseSheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:J1`,
+    range: `${SHEET_TITLE}!A1:O1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== PURCHASE_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:J1`,
+      range: `${SHEET_TITLE}!A1:O1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [PURCHASE_HEADERS],
@@ -83,7 +93,14 @@ export async function recordPurchase(data: {
   productId: string;
   amount: string;
   paypalOrderId: string;
-  profileData: { province: string; industry: string; revenue: string; goal: string };
+  profileData: { province: string; industry: string; revenue: string; goal: string; company?: string; phone?: string };
+  attribution?: {
+    landingPage?: string;
+    referrer?: string;
+    utmSource?: string;
+    utmMedium?: string;
+    utmCampaign?: string;
+  };
 }): Promise<PurchaseRecord> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -111,11 +128,16 @@ export async function recordPurchase(data: {
     profileDataJson,
     createdAt,
     status,
+    data.attribution?.landingPage || '',
+    data.attribution?.referrer || '',
+    data.attribution?.utmSource || '',
+    data.attribution?.utmMedium || '',
+    data.attribution?.utmCampaign || '',
   ];
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A:J`,
+    range: `${SHEET_TITLE}!A:O`,
     valueInputOption: 'RAW',
     requestBody: {
       values: [row],
@@ -135,7 +157,41 @@ export async function recordPurchase(data: {
     profileData: profileDataJson,
     createdAt,
     status,
+    landingPage: data.attribution?.landingPage || '',
+    referrer: data.attribution?.referrer || '',
+    utmSource: data.attribution?.utmSource || '',
+    utmMedium: data.attribution?.utmMedium || '',
+    utmCampaign: data.attribution?.utmCampaign || '',
   };
+}
+
+export async function getAllPurchases(): Promise<PurchaseRecord[]> {
+  const sheets = await getGoogleSheetsClient();
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+
+  if (!spreadsheetId) {
+    throw new Error('GOOGLE_SHEET_ID environment variable is missing');
+  }
+
+  try {
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A:O`,
+    });
+
+    const rows = response.data.values || [];
+    const results: PurchaseRecord[] = [];
+
+    // Skip header row (index 0)
+    for (let i = 1; i < rows.length; i++) {
+      results.push(parseRow(rows[i]));
+    }
+
+    return results;
+  } catch (error) {
+    console.error('❌ Error reading all purchases:', error);
+    return [];
+  }
 }
 
 export async function getPurchaseByToken(token: string): Promise<PurchaseRecord | null> {
@@ -149,7 +205,7 @@ export async function getPurchaseByToken(token: string): Promise<PurchaseRecord 
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:J`,
+      range: `${SHEET_TITLE}!A:O`,
     });
 
     const rows = response.data.values || [];
@@ -180,7 +236,7 @@ export async function getPurchasesByEmail(email: string): Promise<PurchaseRecord
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:J`,
+      range: `${SHEET_TITLE}!A:O`,
     });
 
     const rows = response.data.values || [];
@@ -213,5 +269,10 @@ function parseRow(row: string[]): PurchaseRecord {
     profileData: row[7] || '{}',
     createdAt: row[8] || '',
     status: row[9] || '',
+    landingPage: row[10] || '',
+    referrer: row[11] || '',
+    utmSource: row[12] || '',
+    utmMedium: row[13] || '',
+    utmCampaign: row[14] || '',
   };
 }

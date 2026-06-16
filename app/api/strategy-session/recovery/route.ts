@@ -5,6 +5,7 @@ import {
 } from '@/lib/strategy-session/recovery-store';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 
 export const runtime = 'nodejs';
 
@@ -92,6 +93,22 @@ export async function POST(request: NextRequest) {
       const verification = await verifyPayPalOrder(paypalOrderId, expectedAmount);
       if (!verification.verified) {
         return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
+      }
+
+      // Log purchase_product telemetry event
+      try {
+        const sessId = clean(body.sessionId, 'sess_anonymous');
+        const prodId = expectedAmount === "499.00" ? "strategy-vip" : "strategy-audit";
+        await recordTelemetryEvent({
+          eventName: 'purchase_product',
+          sessionId: sessId,
+          pagePath: clean(body.pagePath),
+          referrer: 'direct',
+          productId: prodId,
+          revenue: expectedAmount
+        });
+      } catch (tErr) {
+        console.error('Failed to log strategy recovery telemetry:', tErr);
       }
     }
 

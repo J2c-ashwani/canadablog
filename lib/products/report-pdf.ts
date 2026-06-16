@@ -4,7 +4,7 @@ import { FundingMatchReport, ReportProgram } from './report-generator';
 /**
  * Generates a branded PDF of the Funding Match Report and triggers download or returns the document.
  */
-export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerName: string): jsPDF {
+export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerName: string, strategyData?: any): jsPDF {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -344,6 +344,308 @@ export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerN
     yPos = cardStart + totalRequiredHeight + 8; // set next card position
   });
 
+  // ── APPEND FUNDING ACTION PLAN PAGES (IF UNLOCKED) ──
+  if (strategyData) {
+    // PAGE A: Priority Rankings & Sequence
+    doc.addPage();
+    pageNum++;
+    drawPageDecorations(doc, pageNum, '');
+    let actY = 25;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text('Funding Action Plan: Priorities & Sequence', margin, actY);
+    actY += 8;
+
+    // Funding Potential Summary Box
+    doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+    doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
+    doc.setLineWidth(0.3);
+    doc.roundedRect(margin, actY, contentWidth, 20, 2, 2, 'FD');
+
+    const colW = contentWidth / 5;
+
+    // Potential Programs
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(100, 116, 139); // slate-500
+    doc.text('POTENTIAL PROGS', margin + colW * 0 + 4, actY + 6);
+    doc.setFontSize(10);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text(String(report.programs?.length || 0), margin + colW * 0 + 4, actY + 13);
+
+    // Priority Programs
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('PRIORITY PROGS', margin + colW * 1 + 4, actY + 6);
+    doc.setFontSize(10);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text('3', margin + colW * 1 + 4, actY + 13);
+
+    // Est. Funding Range
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('EST. RANGE', margin + colW * 2 + 4, actY + 6);
+    doc.setFontSize(8.5);
+    doc.setTextColor(colors.strongMatch[0], colors.strongMatch[1], colors.strongMatch[2]);
+    const rangeText = `$${(report.summary?.estimatedTotalMin || 0).toLocaleString()} – $${(report.summary?.estimatedTotalMax || 0).toLocaleString()}`;
+    doc.text(rangeText, margin + colW * 2 + 4, actY + 13);
+
+    // Est. Prep Time
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('EST. PREP TIME', margin + colW * 3 + 4, actY + 6);
+    doc.setFontSize(9);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    const topProgs = report.programs?.slice(0, 3) || [];
+    const highCount = topProgs.filter((p: any) => p.difficulty === 'High').length;
+    const lowCount = topProgs.filter((p: any) => p.difficulty === 'Low').length;
+    const prepTime = highCount >= 2 ? '4-8 Weeks' : lowCount >= 2 ? '2-4 Weeks' : '3-6 Weeks';
+    doc.text(prepTime, margin + colW * 3 + 4, actY + 13);
+
+    // Complexity
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(6.5);
+    doc.setTextColor(100, 116, 139);
+    doc.text('COMPLEXITY', margin + colW * 4 + 4, actY + 6);
+    doc.setFontSize(9);
+    const complexityText = highCount >= 2 ? 'High' : lowCount >= 2 ? 'Low' : 'Medium';
+    doc.text(complexityText, margin + colW * 4 + 4, actY + 13);
+
+    // Draw vertical separators between columns
+    doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
+    doc.setLineWidth(0.2);
+    for (let i = 1; i < 5; i++) {
+      doc.line(margin + colW * i, actY + 3, margin + colW * i, actY + 17);
+    }
+
+    actY += 26;
+
+    // Priority Rankings
+    doc.setFontSize(12);
+    doc.text('Priority Program Rankings', margin, actY);
+    actY += 6;
+
+    const rankings = strategyData.priorityRanking || [];
+    rankings.slice(0, 3).forEach((item: any) => {
+      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+      doc.roundedRect(margin, actY, contentWidth, 24, 2, 2, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9.5);
+      doc.setTextColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+      doc.text(`Priority #${item.rank} — ${item.name}`, margin + 4, actY + 5.5);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+      doc.text(`Agency: ${item.agency} | Estimated Funding: ${item.fundingAmount} | Difficulty: ${item.difficulty}`, margin + 4, actY + 10.5);
+
+      const wrappedReason = doc.splitTextToSize(item.matchReason || '', contentWidth - 8);
+      doc.text(wrappedReason, margin + 4, actY + 15.5);
+
+      actY += 28;
+    });
+
+    actY += 4;
+    // Application Sequence
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.text('Recommended Application Sequence', margin, actY);
+    actY += 6;
+
+    const seq = strategyData.sequence || [];
+    seq.forEach((step: string, idx: number) => {
+      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+      doc.roundedRect(margin, actY, contentWidth, 14, 2, 2, 'F');
+
+      // Draw stage circle/badge
+      doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+      doc.circle(margin + 6, actY + 7, 3.5, 'F');
+      doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9);
+      doc.text(String(idx + 1), margin + 6, actY + 7.5, { align: 'center' });
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8.5);
+      doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+      const wrappedStep = doc.splitTextToSize(step, contentWidth - 18);
+      doc.text(wrappedStep, margin + 14, actY + 6.5);
+
+      actY += 18;
+    });
+
+    // PAGE B: Timeline Roadmap (Months 1-4)
+    doc.addPage();
+    pageNum++;
+    drawPageDecorations(doc, pageNum, '');
+    let timeY = 25;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text('Funding Action Plan: Month 1-4 Timeline', margin, timeY);
+    timeY += 8;
+
+    doc.setFontSize(10);
+    doc.setFont('helvetica', 'normal');
+    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+    doc.text('Milestone timeline to space out filings, compile records, and secure matching cash reserves.', margin, timeY);
+    timeY += 10;
+
+    const timelineItems = strategyData.timeline || [];
+    const months = ['Month 1', 'Month 2', 'Month 3', 'Month 4'];
+    
+    months.forEach((m) => {
+      const itemsForMonth = timelineItems.filter((item: any) => item.targetMonth === m);
+      
+      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+      doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
+      doc.setLineWidth(0.3);
+      doc.roundedRect(margin, timeY, contentWidth, 38, 2, 2, 'FD');
+
+      // Month Title Tab
+      doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+      doc.roundedRect(margin, timeY, 35, 8, 2, 2, 'F');
+      doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(9.5);
+      doc.text(m, margin + 17.5, timeY + 5.5, { align: 'center' });
+
+      let contentY = timeY + 14;
+      if (itemsForMonth.length > 0) {
+        itemsForMonth.slice(0, 2).forEach((item: any) => {
+          doc.setFont('helvetica', 'bold');
+          doc.setFontSize(9);
+          doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+          doc.text(`Program: ${item.programName}`, margin + 6, contentY);
+
+          doc.setFont('helvetica', 'normal');
+          doc.setFontSize(8.5);
+          doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+          const actionText = doc.splitTextToSize(`Action Required: ${item.actionRequired}`, contentWidth - 12);
+          doc.text(actionText, margin + 6, contentY + 4.5);
+
+          contentY += 14;
+        });
+      } else {
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(9);
+        doc.setTextColor(148, 163, 184);
+        doc.text('No active applications scheduled. Monitor upcoming cycles.', margin + 6, contentY);
+      }
+
+      timeY += 45;
+    });
+
+    // PAGE C: Required Documents & Risk Warnings
+    doc.addPage();
+    pageNum++;
+    drawPageDecorations(doc, pageNum, '');
+    let docY = 25;
+
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(16);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text('Funding Action Plan: Documents & Risks', margin, docY);
+    docY += 8;
+
+    // Documents Checklist
+    doc.setFontSize(12);
+    doc.text('Required Documents Checklist', margin, docY);
+    docY += 6;
+
+    const checklistDocs = strategyData.docChecklist || [];
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8.5);
+    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+
+    checklistDocs.slice(0, 8).forEach((docText: string) => {
+      // Draw a square checkbox
+      doc.setDrawColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+      doc.setLineWidth(0.3);
+      doc.rect(margin + 2, docY, 3.5, 3.5);
+
+      const wrappedDoc = doc.splitTextToSize(docText, contentWidth - 10);
+      doc.text(wrappedDoc, margin + 8, docY + 3);
+      docY += 6;
+    });
+
+    docY += 4;
+
+    // Risk Warnings
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.text('Program Risk Warnings & Compliance', margin, docY);
+    docY += 6;
+
+    const risks = strategyData.riskWarnings || [];
+    risks.slice(0, 3).forEach((item: any) => {
+      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+      doc.roundedRect(margin, docY, contentWidth, 16, 2, 2, 'F');
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      const riskColor = item.riskLevel === 'High' ? [239, 68, 68] : item.riskLevel === 'Moderate' ? [245, 158, 11] : [16, 185, 129];
+      doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
+      doc.roundedRect(margin + 4, docY + 4, 20, 8, 1, 1, 'F');
+      doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+      doc.setFontSize(7.5);
+      doc.text(`${item.riskLevel} Risk`, margin + 14, docY + 9.5, { align: 'center' });
+
+      doc.setFont('helvetica', 'bold');
+      doc.setFontSize(8.5);
+      doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+      doc.text(item.programName, margin + 28, docY + 6.5);
+
+      doc.setFont('helvetica', 'normal');
+      doc.setFontSize(8);
+      doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+      const wrappedDesc = doc.splitTextToSize(item.riskDescription || '', contentWidth - 34);
+      doc.text(wrappedDesc, margin + 28, docY + 11.5);
+
+      docY += 20;
+    });
+
+    docY += 4;
+
+    // Action Checklist
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(12);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text('Immediate Action Items', margin, docY);
+    docY += 6;
+
+    // Group items
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text('This Week:', margin + 2, docY);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    const thisWeekTasks = strategyData.actionPlan?.thisWeek || [];
+    thisWeekTasks.slice(0, 2).forEach((t: string) => {
+      doc.text(`[ ] ${t}`, margin + 25, docY);
+      docY += 4.5;
+    });
+    
+    docY += 1.5;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(9);
+    doc.text('This Month:', margin + 2, docY);
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    const thisMonthTasks = strategyData.actionPlan?.thisMonth || [];
+    thisMonthTasks.slice(0, 2).forEach((t: string) => {
+      doc.text(`[ ] ${t}`, margin + 25, docY);
+      docY += 4.5;
+    });
+  }
+
   // ═══════════════════════════════════════════════════
   // FINAL PAGE: RECOMMENDATIONS & UPSELL
   // ═══════════════════════════════════════════════════
@@ -439,13 +741,21 @@ export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerN
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9.5);
-  doc.text('FSI ELIGIBILITY AUDIT ($199 VALUE) — GET YOUR $19 CREDITED BACK', margin + 14, finalY + 44);
+  doc.text(
+    strategyData 
+      ? 'FSI ELIGIBILITY AUDIT ($199 VALUE) — GET YOUR $49 CREDITED BACK' 
+      : 'FSI ELIGIBILITY AUDIT ($199 VALUE) — GET YOUR $19 CREDITED BACK', 
+    margin + 14, 
+    finalY + 44
+  );
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(224, 231, 255);
   const auditOfferLines = doc.splitTextToSize(
-    'Book a 1-on-1 strategy audit with our senior advisors. We will verify your eligibility against all matched programs, prioritize applications, and outline a custom timeline. Your $19 report fee will be credited back on booking.',
+    strategyData
+      ? 'Book a 1-on-1 strategy audit with our senior advisors. We will verify your eligibility against all matched programs, prioritize applications, and outline a custom timeline. Your $49 Action Plan fee will be credited back on booking (Pay only $150).'
+      : 'Book a 1-on-1 strategy audit with our senior advisors. We will verify your eligibility against all matched programs, prioritize applications, and outline a custom timeline. Your $19 report fee will be credited back on booking.',
     contentWidth - 28
   );
   doc.text(auditOfferLines, margin + 14, finalY + 49.5);

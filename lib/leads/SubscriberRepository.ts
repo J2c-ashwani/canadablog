@@ -25,9 +25,10 @@ export interface SubscriberProfile {
   subscriptionId?: string
   trialStartedAt?: string
   website?: string
-  companyName?: string
   reportPurchased?: boolean
   reportTransactionId?: string
+  strategyReportPurchased?: boolean
+  strategyReportTransactionId?: string
   readinessScore?: number
   readinessBand?: string
   lastEmailFollowup?: string
@@ -47,6 +48,7 @@ export interface SubscriberProfile {
   cancellationReason?: string
   source?: string
   phone?: string
+  companyName?: string
   businessStage?: string
   fundingAmount?: string
   fundingPurpose?: string
@@ -100,6 +102,8 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       companyName: lead.companyName || "",
       reportPurchased: !!lead.reportPurchased,
       reportTransactionId: lead.reportTransactionId || "",
+      strategyReportPurchased: !!lead.strategyReportPurchased,
+      strategyReportTransactionId: lead.strategyReportTransactionId || "",
       lastEmailFollowup: lead.lastEmailFollowup || "",
       leadActivity: lead.leadActivity || "{}",
       lastAttributionSource: lead.lastAttributionSource || "",
@@ -173,8 +177,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         companyName: profile.companyName || "N/A",
         reportPurchased: false,
         reportTransactionId: "N/A",
+        strategyReportPurchased: false,
+        strategyReportTransactionId: "N/A",
         lastEmailFollowup: "N/A",
-        leadActivity: "{}",
+        leadActivity: profile.leadActivity || "{}",
         lastAttributionSource: "N/A",
         firstReportViewedAt: "N/A",
         assessmentPurchasedAt: "N/A",
@@ -264,6 +270,8 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       if (updates.companyName !== undefined) data.companyName = updates.companyName
       if (updates.reportPurchased !== undefined) data.reportPurchased = updates.reportPurchased
       if (updates.reportTransactionId !== undefined) data.reportTransactionId = updates.reportTransactionId
+      if (updates.strategyReportPurchased !== undefined) data.strategyReportPurchased = updates.strategyReportPurchased
+      if (updates.strategyReportTransactionId !== undefined) data.strategyReportTransactionId = updates.strategyReportTransactionId
       if (updates.lastEmailFollowup !== undefined) data.lastEmailFollowup = updates.lastEmailFollowup
       if (updates.leadActivity !== undefined) data.leadActivity = updates.leadActivity
       if (updates.lastAttributionSource !== undefined) data.lastAttributionSource = updates.lastAttributionSource

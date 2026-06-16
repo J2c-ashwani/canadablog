@@ -264,7 +264,7 @@ export default function ContactClient() {
                             },
                             {
                                 icon: <Sparkles className="h-5 w-5 text-emerald-700" />,
-                                title: "Custom Funding Roadmap",
+                                title: "Custom Funding Action Plan",
                                 desc: "Grants, loans, and tax credits matched to your business.",
                             },
                         ].map((item) => (

@@ -65,6 +65,7 @@ export default function ConsultationClient() {
     businessStage: string;
     businessDescription: string;
     fundingAmount: string;
+    discount: number;
   }>({
     email: '',
     name: '',
@@ -82,7 +83,8 @@ export default function ConsultationClient() {
     companyName: '',
     businessStage: '',
     businessDescription: '',
-    fundingAmount: ''
+    fundingAmount: '',
+    discount: 0
   });
 
   const [timeLeft, setTimeLeft] = useState<number | null>(null);
@@ -112,7 +114,8 @@ export default function ConsultationClient() {
       companyName: searchParams.get('company') || searchParams.get('companyName') || '',
       businessStage: searchParams.get('stage') || searchParams.get('businessStage') || '',
       businessDescription: searchParams.get('desc') || searchParams.get('description') || searchParams.get('businessDescription') || '',
-      fundingAmount: searchParams.get('fundingAmount') || searchParams.get('range') || ''
+      fundingAmount: searchParams.get('fundingAmount') || searchParams.get('range') || '',
+      discount: Number(searchParams.get('discount')) || 0
     });
   }, []);
 
@@ -231,13 +234,14 @@ export default function ConsultationClient() {
         recoveryId: params.rid,
         source: params.source,
         pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+        sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
         paypalOrderId,
         rawSummary: JSON.stringify({
           paypalOrderId,
           status: details?.status || '',
           payerEmail: details?.payer?.email_address || '',
           tier: selectedTier,
-          amount: selectedTier === 'audit' ? 199.00 : 499.00
+          amount: selectedTier === 'audit' ? (199.00 - params.discount) : 499.00
         }),
         calendlyEventUri: params.eventUri,
         calendlyInviteeUri: params.inviteeUri,
@@ -293,9 +297,11 @@ export default function ConsultationClient() {
     const container = document.getElementById("paypal-button-container");
     if (container) container.innerHTML = "";
 
-    const price = selectedTier === 'audit' ? '199.00' : '499.00';
+    const discount = selectedTier === 'audit' ? params.discount : 0;
+    const basePrice = selectedTier === 'audit' ? 199.00 : 499.00;
+    const price = (basePrice - discount).toFixed(2);
     const description = selectedTier === 'audit'
-      ? 'Funding Eligibility Audit & Report'
+      ? `Funding Eligibility Audit & Report (Discounted: $${discount} Coupon Applied)`
       : 'VIP Funding Eligibility Report & Audit';
 
     if (typeof (window as any).paypal.Buttons !== 'function') {
@@ -552,10 +558,23 @@ export default function ConsultationClient() {
                     <h3 className="text-lg font-black text-slate-950">Funding Audit</h3>
                   </div>
 
-                  <div className="flex items-baseline gap-1.5 mb-5">
-                    <span className="text-4xl font-black text-slate-950 tracking-tight">$199</span>
-                    <span className="text-sm font-bold text-indigo-600">USD</span>
-                    <span className="text-xs text-slate-400 ml-1">/ deposit</span>
+                  <div className="flex items-baseline gap-1.5 mb-5 flex-wrap">
+                    {params.discount > 0 ? (
+                      <>
+                        <span className="text-4xl font-black text-slate-950 tracking-tight">${199 - params.discount}</span>
+                        <span className="text-sm font-bold text-indigo-600">USD</span>
+                        <span className="text-xs text-slate-400 ml-1">/ deposit</span>
+                        <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold ml-1">
+                          ${params.discount} Coupon Applied
+                        </span>
+                      </>
+                    ) : (
+                      <>
+                        <span className="text-4xl font-black text-slate-950 tracking-tight">$199</span>
+                        <span className="text-sm font-bold text-indigo-600">USD</span>
+                        <span className="text-xs text-slate-400 ml-1">/ deposit</span>
+                      </>
+                    )}
                   </div>
 
                   <div className="space-y-3 text-sm text-slate-600">
@@ -565,7 +584,7 @@ export default function ConsultationClient() {
                     </div>
                     <div className="flex items-start gap-2.5">
                       <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
-                      <span><strong className="text-slate-800">Top 3 Matches</strong> grant/loan/tax credit roadmap PDF</span>
+                      <span><strong className="text-slate-800">Top 3 Matches</strong> grant/loan/tax credit action plan PDF</span>
                     </div>
                     <div className="flex items-start gap-2.5">
                       <CheckCircle className="w-4 h-4 text-emerald-500 flex-shrink-0 mt-0.5" />
@@ -972,11 +991,25 @@ export default function ConsultationClient() {
                     </div>
 
                     {/* Price */}
-                    <div className="flex items-baseline gap-1.5 mt-4 mb-4 pb-4 border-b border-slate-100">
-                      <span className="text-4xl font-black text-slate-950 tracking-tight">
-                        {selectedTier === 'audit' ? '$199' : '$499'}
-                      </span>
-                      <span className="text-sm font-bold text-indigo-600">USD</span>
+                    <div className="flex items-baseline gap-1.5 mt-4 mb-4 pb-4 border-b border-slate-100 flex-wrap">
+                      {selectedTier === 'audit' && params.discount > 0 ? (
+                        <>
+                          <span className="text-4xl font-black text-slate-950 tracking-tight">
+                            ${199 - params.discount}
+                          </span>
+                          <span className="text-sm font-bold text-indigo-600">USD</span>
+                          <span className="text-[10px] text-emerald-700 bg-emerald-50 border border-emerald-200 px-2 py-0.5 rounded font-bold ml-1">
+                            ${params.discount} Off Applied
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-4xl font-black text-slate-950 tracking-tight">
+                            {selectedTier === 'audit' ? '$199' : '$499'}
+                          </span>
+                          <span className="text-sm font-bold text-indigo-600">USD</span>
+                        </>
+                      )}
                     </div>
 
                     {/* Summary Checklist */}

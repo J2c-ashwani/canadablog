@@ -386,7 +386,7 @@ export default function DatabaseClient() {
                 <Sparkles className="w-6 h-6 animate-pulse text-yellow-400" />
               </div>
               <h2 className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight">
-                Unlock Your Custom Funding Roadmap
+                Unlock Your Custom Funding Action Plan
               </h2>
               <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
                 Take our 5-minute pre-qualification eligibility audit. Our vetted intelligence team will cross-reference your business profile with all federal and regional grants to build your custom timeline.

@@ -74,7 +74,8 @@ export async function GET(request: NextRequest) {
             to: sub.email,
             name: sub.name,
             loginToken: sub.loginToken || "",
-            companyName: sub.companyName
+            companyName: sub.companyName,
+            priceShown: activity.priceShown
           })
           if (res.success || res.skipped) {
             activity.cartRecoveryEmail1SentAt = new Date().toISOString()
@@ -89,7 +90,8 @@ export async function GET(request: NextRequest) {
             to: sub.email,
             name: sub.name,
             loginToken: sub.loginToken || "",
-            companyName: sub.companyName
+            companyName: sub.companyName,
+            priceShown: activity.priceShown
           })
           if (res.success || res.skipped) {
             activity.cartRecoveryEmail2SentAt = new Date().toISOString()
@@ -104,7 +106,8 @@ export async function GET(request: NextRequest) {
             to: sub.email,
             name: sub.name,
             loginToken: sub.loginToken || "",
-            companyName: sub.companyName
+            companyName: sub.companyName,
+            priceShown: activity.priceShown
           })
           if (res.success || res.skipped) {
             activity.cartRecoveryEmail3SentAt = new Date().toISOString()

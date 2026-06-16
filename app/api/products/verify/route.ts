@@ -38,6 +38,32 @@ export async function GET(req: NextRequest) {
       profileData = {};
     }
 
+    // ── Check if Funding Action Plan, Toolkit, or Approval Library is unlocked ──
+    let hasStrategyUnlocked = false;
+    let hasToolkitUnlocked = false;
+    let hasApprovalLibraryUnlocked = false;
+    
+    try {
+      const { getPurchasesByEmail } = await import('@/lib/products/purchase-store');
+      const emailPurchases = await getPurchasesByEmail(purchase.email);
+      
+      hasStrategyUnlocked = emailPurchases.some(
+        (p: any) => p.productId === 'funding-roadmap' || p.productId === 'funding-bundle'
+      );
+      hasToolkitUnlocked = emailPurchases.some(
+        (p: any) => p.productId === 'funding-toolkit'
+      );
+      hasApprovalLibraryUnlocked = emailPurchases.some(
+        (p: any) => p.productId === 'funding-approval-library'
+      );
+    } catch (err) {
+      console.error('Failed to query purchases by email:', err);
+      // Fallback fallback check using current purchase record
+      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-roadmap') {
+        hasStrategyUnlocked = true;
+      }
+    }
+
     // Generate the full report from the profile data
     const report = generateFundingMatchReport({
       province: profileData.province || '',
@@ -46,9 +72,19 @@ export async function GET(req: NextRequest) {
       goal: profileData.goal || '',
     });
 
+    let strategyData: any = null;
+    if (hasStrategyUnlocked) {
+      const { generateFundingActionPlan } = await import('@/lib/products/report-generator');
+      strategyData = generateFundingActionPlan(report);
+    }
+
     return NextResponse.json({
       success: true,
       report,
+      hasStrategyUnlocked,
+      strategyData,
+      hasToolkitUnlocked,
+      hasApprovalLibraryUnlocked,
       purchase: {
         name: purchase.name,
         email: purchase.email,

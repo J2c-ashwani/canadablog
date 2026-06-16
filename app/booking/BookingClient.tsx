@@ -71,7 +71,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
             items: [
               {
                 item_id: tier || 'audit',
-                item_name: tier === 'vip' ? 'VIP Funding Blueprint & Eligibility Audit' : 'Funding Eligibility Audit & Roadmap',
+                item_name: tier === 'vip' ? 'VIP Funding Blueprint & Eligibility Audit' : 'Funding Eligibility Audit & Action Plan',
                 price: price,
                 quantity: 1,
               }
@@ -244,7 +244,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
                 </div>
                 <div className="flex justify-between items-center py-2.5 border-b border-slate-200/60 text-xs">
                   <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Deliverable</span>
-                  <span className="font-bold text-indigo-600">Roadmap PDF Included</span>
+                  <span className="font-bold text-indigo-600">Action Plan PDF Included</span>
                 </div>
                 {email && (
                   <div className="flex justify-between items-center py-2.5 text-xs">

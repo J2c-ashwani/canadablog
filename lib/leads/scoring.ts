@@ -64,6 +64,8 @@ export type LeadCaptureData = {
   leadTier?: string;
   subscriptionCancelledAt?: string;
   cancellationReason?: string;
+  strategyReportPurchased?: boolean;
+  strategyReportTransactionId?: string;
 };
 
 
