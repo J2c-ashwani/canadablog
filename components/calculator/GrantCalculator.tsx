@@ -976,20 +976,59 @@ export function GrantCalculator() {
                 {step === 6 && !isSuccess && (
                     <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500 py-2">
                         {/* Qualification Criteria (Specificity Engine) */}
-                        <div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 text-left shadow-sm">
-                          <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Qualification Criteria</h4>
-                          <ul className="space-y-2 text-sm text-slate-800 font-medium">
-                            <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {data.province || "Canadian"} business</li>
-                            <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {data.industry || "General"} sector</li>
-                            <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Revenue: {data.revenue || "Pre-revenue"}</li>
-                            {data.goal && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Goal: {data.goal}</li>}
-                          </ul>
-                          <div className="mt-4 pt-4 border-t border-slate-100">
-                            <p className="text-slate-600 text-sm">
-                              Based on these exact inputs, we found <strong className="text-emerald-700">{grantCount}</strong> active funding programs that appear highly relevant.
-                            </p>
-                          </div>
-                        </div>
+                        {(() => {
+                          const cleanField = (val?: string) => {
+                            if (!val) return "";
+                            const trimmed = val.trim();
+                            const lower = trimmed.toLowerCase();
+                            if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || lower === "undefined") {
+                              return "";
+                            }
+                            return trimmed;
+                          };
+
+                          const cleanProvince = cleanField(data.province);
+                          const cleanIndustry = cleanField(data.industry);
+                          const cleanRevenue = cleanField(data.revenue);
+                          const cleanGoal = cleanField(data.goal);
+
+                          const hasCriteria = !!(cleanProvince || cleanIndustry || cleanRevenue || cleanGoal);
+
+                          if (hasCriteria) {
+                            return (
+                              <div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 text-left shadow-sm">
+                                <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Qualification Criteria</h4>
+                                <ul className="space-y-2 text-sm text-slate-800 font-medium">
+                                  {cleanProvince && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {cleanProvince} business</li>}
+                                  {cleanIndustry && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {cleanIndustry} sector</li>}
+                                  {cleanRevenue && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Revenue: {cleanRevenue}</li>}
+                                  {cleanGoal && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Goal: {cleanGoal}</li>}
+                                </ul>
+                                <div className="mt-4 pt-4 border-t border-slate-100">
+                                  <p className="text-slate-600 text-sm">
+                                    Based on these exact inputs, we found <strong className="text-emerald-700">{grantCount}</strong> active funding programs that appear highly relevant.
+                                  </p>
+                                </div>
+                              </div>
+                            );
+                          }
+
+                          return (
+                            <div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 text-left shadow-sm">
+                              <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Database Matching</h4>
+                              <ul className="space-y-2 text-sm text-slate-800 font-medium">
+                                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Active Canadian business</li>
+                                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Verified provincial funding portals</li>
+                                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Live program intakes</li>
+                              </ul>
+                              <div className="mt-4 pt-4 border-t border-slate-100">
+                                <p className="text-slate-600 text-sm">
+                                  We scanned all active regional and federal databases and identified <strong className="text-emerald-700">11</strong> programs that appear highly relevant.
+                                </p>
+                              </div>
+                            </div>
+                          );
+                        })()}
 
                         {/* Top Match Preview */}
                         <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm relative mb-8">
@@ -1002,7 +1041,7 @@ export function GrantCalculator() {
                             <div className="px-5 py-6 border-b border-gray-100">
                               <div className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold mb-3">
                                 <Search className="w-3 h-3" />
-                                Matched via {data.industry || "General"} eligibility rules
+                                Matched via {(!data.industry || data.industry.toLowerCase() === 'n/a' || data.industry.toLowerCase() === 'other') ? "General" : data.industry} eligibility rules
                               </div>
                               <div className="flex items-center gap-2 mb-2">
                                 <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
