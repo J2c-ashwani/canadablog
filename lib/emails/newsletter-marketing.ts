@@ -35,13 +35,14 @@ export interface MissingFundingAlertData {
 
 const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
 
-function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string) {
+function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string, preheader?: string) {
   const pricing = getReactivationPriceForEmail(loginToken); // fallback if token used
   const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=newsletter_campaign`;
   const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${loginToken}`;
   const year = new Date().getFullYear();
 
   return `
+    ${preheader ? `<span style="display:none !important;visibility:hidden;mso-hide:all;font-size:1px;color:#ffffff;line-height:1px;max-height:0px;max-width:0px;opacity:0;overflow:hidden;">${preheader}</span>` : ''}
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;margin:0;">
       <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
         
@@ -190,30 +191,119 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
   const firstName = getFirstName(data.name);
   const link = `https://www.fsidigital.ca/calculator?token=${data.loginToken || ""}`;
 
-  const locationText = data.region || "Canada";
-  const industryText = data.industry || "General / Growth";
-  const revenueText = data.businessStage || "Growth Stage";
+  // Helper to clean fields and ignore placeholders, Other, and N/A
+  const cleanField = (val?: string) => {
+    if (!val) return "";
+    const trimmed = val.trim();
+    const lower = trimmed.toLowerCase();
+    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth") {
+      return "";
+    }
+    return trimmed;
+  };
 
-  const contentHtml = `
-    <p style="margin: 0 0 16px 0;">
-      Over the past few days we've been reviewing previously completed funding assessments.
-    </p>
+  const cleanIndustry = cleanField(data.industry);
+  const cleanRegion = cleanField(data.region);
+  const cleanStage = cleanField(data.businessStage);
 
-    <p style="margin: 16px 0;">
-      Based on the information you previously submitted, our system identified government funding opportunities that may be relevant to your business.
-    </p>
+  // Classification logic
+  const isFullProfile = !!(cleanIndustry && cleanRegion && cleanStage);
+  const isPartialProfile = !isFullProfile && !!(cleanIndustry || cleanRegion || cleanStage);
+  const isNewsletterOnly = !isFullProfile && !isPartialProfile;
 
-    <p style="margin: 16px 0;">Some of these opportunities appear to align with:</p>
-    <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6;">
-      <li style="margin-bottom: 8px;">✓ Your industry (<strong>${industryText}</strong>)</li>
-      <li style="margin-bottom: 8px;">✓ Your location (<strong>${locationText}</strong>)</li>
-      <li style="margin-bottom: 8px;">✓ Your revenue profile (<strong>${revenueText}</strong>)</li>
-    </ul>
+  let subject = "";
+  let contentHtml = "";
+  let text = "";
 
-    <p style="margin: 16px 0;">
-      We've decided to make these matched funding details available to a small group of previously assessed businesses for a special price of just <strong>$19</strong>.
-    </p>
+  if (isFullProfile) {
+    subject = "We reviewed your funding profile";
+    contentHtml = `
+      <p style="margin: 0 0 16px 0;">
+        Over the past few days we've been reviewing previously completed funding assessments.
+      </p>
 
+      <p style="margin: 16px 0;">
+        Based on the information you previously submitted, our system identified government funding opportunities that appear relevant to your business profile:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6;">
+        <li style="margin-bottom: 8px;">✓ Industry: <strong>${cleanIndustry}</strong></li>
+        <li style="margin-bottom: 8px;">✓ Location: <strong>${cleanRegion}</strong></li>
+        <li style="margin-bottom: 8px;">✓ Business Stage: <strong>${cleanStage}</strong></li>
+      </ul>
+
+      <p style="margin: 16px 0;">
+        We've decided to make these matched funding details available to a small group of previously assessed businesses for a special price of just <strong>$19</strong>.
+      </p>
+    `;
+    text = `Hi ${firstName},\n\nOver the past few days we've been reviewing previously completed funding assessments. Based on the information you previously submitted, our system identified government funding opportunities that appear relevant to your business profile:\n\n✓ Industry: ${cleanIndustry}\n✓ Location: ${cleanRegion}\n✓ Business Stage: ${cleanStage}\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+  } else if (isPartialProfile) {
+    subject = "We reviewed your funding profile";
+    
+    let htmlBullets = "";
+    let textBullets = "";
+    if (cleanIndustry) {
+      htmlBullets += `<li style="margin-bottom: 8px;">✓ Industry: <strong>${cleanIndustry}</strong></li>`;
+      textBullets += `\n✓ Industry: ${cleanIndustry}`;
+    }
+    if (cleanRegion) {
+      htmlBullets += `<li style="margin-bottom: 8px;">✓ Location: <strong>${cleanRegion}</strong></li>`;
+      textBullets += `\n✓ Location: ${cleanRegion}`;
+    }
+    if (cleanStage) {
+      htmlBullets += `<li style="margin-bottom: 8px;">✓ Business Stage: <strong>${cleanStage}</strong></li>`;
+      textBullets += `\n✓ Business Stage: ${cleanStage}`;
+    }
+
+    contentHtml = `
+      <p style="margin: 0 0 16px 0;">
+        Over the past few days we've been reviewing previously completed funding assessments.
+      </p>
+
+      <p style="margin: 16px 0;">
+        Based on the information you previously submitted, our system identified government funding opportunities that may be relevant to:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6;">
+        ${htmlBullets}
+      </ul>
+
+      <p style="margin: 16px 0;">
+        We've decided to make these matched funding details available to a small group of previously assessed businesses for a special price of just <strong>$19</strong>.
+      </p>
+    `;
+    text = `Hi ${firstName},\n\nOver the past few days we've been reviewing previously completed funding assessments. Based on the information you previously submitted, our system identified government funding opportunities that may be relevant to:${textBullets}\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+  } else {
+    subject = "New funding opportunities have been identified";
+    contentHtml = `
+      <p style="margin: 0 0 16px 0;">
+        Over the past few days we've been reviewing government funding announcements.
+      </p>
+
+      <p style="margin: 16px 0;">
+        We recently expanded our funding database and identified several government funding opportunities that may be relevant to Canadian businesses.
+      </p>
+
+      <p style="margin: 16px 0;">
+        We've decided to make these matched funding details available for a special price of just <strong>$19</strong>.
+      </p>
+    `;
+    text = `Hi ${firstName},\n\nOver the past few days we've been reviewing government funding announcements. We recently expanded our funding database and identified several government funding opportunities that may be relevant to Canadian businesses.\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+  }
+
+  // Determine footer based on type
+  const footerText = isNewsletterOnly
+    ? "This access is intended only for our newsletter subscribers."
+    : "This access is intended only for businesses that have already completed an eligibility assessment.";
+
+  const preheaderText = isNewsletterOnly
+    ? "New government funding opportunities have been identified for Canadian businesses."
+    : "We reviewed your funding profile and found matching government funding programs.";
+
+  // Append button and footer to html
+  const finalContentHtml = `
+    ${contentHtml}
+    
     <p style="margin: 16px 0;">You can unlock your matched opportunities here:</p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${link}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
@@ -222,17 +312,14 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     </div>
 
     <p style="margin: 16px 0; font-size: 13px; color: #64748b;">
-      This access is intended only for businesses that have already completed an eligibility assessment.
+      ${footerText}
     </p>
   `;
-
-  const text = `Hi ${firstName},\n\nOver the past few days we've been reviewing previously completed funding assessments. Based on the information you previously submitted, we identified government funding opportunities that may be relevant to your business.\n\nSome of these opportunities align with:\n✓ Your industry (${industryText})\n✓ Your location (${locationText})\n✓ Your revenue profile (${revenueText})\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
-  const subject = "We reviewed your funding profile";
 
   return sendEmail({
     to: data.to,
     subject,
-    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    html: wrapNewsletterTemplate(finalContentHtml, data.loginToken, firstName, preheaderText),
     text,
     tagType: "newsletter-missing-funding",
     companyName: data.companyName,
