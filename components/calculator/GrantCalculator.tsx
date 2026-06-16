@@ -944,158 +944,31 @@ export function GrantCalculator() {
 
                 {/* Step 5: Analyzing */}
                 {step === 5 && (
-                    <div className="py-12 space-y-6 text-center animate-in fade-in duration-500">
-                        <div className="flex justify-center mb-6">
-                            <div className="relative">
-                                <div className="w-24 h-24 border-4 border-green-200 rounded-full animate-spin border-t-green-600"></div>
-                                <Search className="w-10 h-10 text-green-600 absolute top-1/2 left-1/2 -to-translate-x-1/2 -translate-y-1/2 transform -translate-x-1/2" />
+                    <div className="space-y-6 animate-in fade-in zoom-in duration-500 py-8">
+                        <div className="space-y-4 text-left max-w-sm mx-auto font-medium text-slate-700">
+                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking {data.province || "provincial"} programs
+                            </div>
+                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-500" style={{ animationFillMode: 'backwards' }}>
+                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking {data.industry || "industry"} eligibility
+                            </div>
+                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1000" style={{ animationFillMode: 'backwards' }}>
+                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Verifying revenue thresholds
+                            </div>
+                            {data.purpose && (
+                                <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1500" style={{ animationFillMode: 'backwards' }}>
+                                    <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.purpose} programs
+                                </div>
+                            )}
+                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-[2000ms]" style={{ animationFillMode: 'backwards' }}>
+                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking active intakes
+                            </div>
+                            <div className="mt-8 text-center animate-in fade-in zoom-in duration-500 delay-[2500ms]" style={{ animationFillMode: 'backwards' }}>
+                                <h3 className="text-2xl sm:text-3xl font-bold text-emerald-700">{grantCount} matches found</h3>
                             </div>
                         </div>
-                        <h3 className="text-2xl font-bold">Analyzing Your Profile...</h3>
-                        <p className="text-gray-500 text-lg">Matching against 4,000+ active Canadian grants and loans.</p>
                     </div>
                 )}
-
-                {/* ═══════════════════════════════════════════════════
-                    STEP 6: TEASER RESULTS + EMAIL CAPTURE
-                    This is the revenue conversion point.
-                   ═══════════════════════════════════════════════════ */}
-                {step === 6 && !isSuccess && (
-                    <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500 py-2">
-                        {/* Results Header */}
-                        <div className="text-center">
-                          <div className="inline-flex items-center justify-center w-16 h-16 bg-green-100 rounded-full mb-3">
-                            <DollarSign className="w-8 h-8 text-green-600" />
-                          </div>
-                          <h3 className="text-2xl sm:text-3xl font-bold text-gray-900">Matches Found!</h3>
-                        </div>
-
-                        {/* Summary Stats */}
-                        <div className="bg-gradient-to-br from-emerald-50 to-green-50 p-5 rounded-xl border border-emerald-200">
-                            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-8">
-                              <div className="text-center">
-                                <p className="text-3xl font-bold text-emerald-700">{grantCount}</p>
-                                <p className="text-sm text-emerald-600 font-medium">Matched Programs</p>
-                              </div>
-                              <div className="hidden sm:block w-px h-10 bg-emerald-200" />
-                              <div className="text-center">
-                                <p className="text-3xl font-bold text-emerald-700">{Math.floor(grantCount / 3) + 1}</p>
-                                <p className="text-sm text-emerald-600 font-medium">High-Relevance</p>
-                              </div>
-                              <div className="hidden sm:block w-px h-10 bg-emerald-200" />
-                              <div className="text-center">
-                                <p className="text-xl sm:text-2xl font-bold text-emerald-700">${estimate.toLocaleString()} - ${estimateMax.toLocaleString()}</p>
-                                <p className="text-sm text-emerald-600 font-medium">Potential Funding Range</p>
-                              </div>
-                            </div>
-                        </div>
-
-                        {/* Real Report Preview (DOM-Based) */}
-                        <div className="mt-8 border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm relative">
-                            {/* Header */}
-                            <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-5 py-4 flex items-center justify-between">
-                              <div className="flex items-center gap-2.5">
-                                <FileText className="w-5 h-5 text-emerald-400" />
-                                <span className="font-semibold text-white text-sm">Funding Match Report Preview</span>
-                              </div>
-                              <span className="text-xs text-slate-400 bg-slate-700/60 px-2.5 py-1 rounded-full">Page 1</span>
-                            </div>
-
-                            {/* Top Match - Clear */}
-                            <div className="px-5 py-6 border-b border-gray-100">
-                              <div className="flex items-center gap-2 mb-2">
-                                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-                                <span className="text-sm font-bold text-emerald-700 uppercase tracking-wide">Top Match Opportunity</span>
-                              </div>
-                              <h4 className="text-xl font-bold text-slate-900 mb-1">{getRealTopMatch().name}</h4>
-                              <p className="text-sm text-slate-600 mb-4">{getRealTopMatch().desc}</p>
-                              <div className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-3 py-1.5 rounded-md font-semibold text-sm">
-                                <DollarSign className="w-4 h-4" />
-                                Potential: {getRealTopMatch().maxFunding}
-                              </div>
-                            </div>
-
-                            {/* Eligibility - Partially Blurred */}
-                            <div className="px-5 py-6 border-b border-gray-100 relative">
-                              <h5 className="font-bold text-slate-800 mb-3">Eligibility Requirements</h5>
-                              <ul className="space-y-2 text-sm text-slate-600 list-disc list-inside filter blur-[1px]">
-                                <li>Must be an incorporated business in Canada.</li>
-                                <li>Must have 1 to 499 employees.</li>
-                                <li>Must be generating revenue (min $500k typically).</li>
-                              </ul>
-                              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/80 pointer-events-none" />
-                            </div>
-
-                            {/* Application Strategy - Fully Blurred */}
-                            <div className="px-5 py-6 relative">
-                              <h5 className="font-bold text-slate-800 mb-3">Application Strategy & Links</h5>
-                              <div className="space-y-3 filter blur-[4px]">
-                                <div className="h-4 w-3/4 bg-slate-200 rounded" />
-                                <div className="h-4 w-full bg-slate-200 rounded" />
-                                <div className="h-4 w-5/6 bg-slate-200 rounded" />
-                                <div className="h-10 w-40 bg-emerald-100 rounded mt-4" />
-                              </div>
-                              
-                              {/* Lock Overlay */}
-                              <div className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[2px]">
-                                <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-5 py-2.5 shadow-md">
-                                  <Lock className="w-4 h-4 text-slate-600" />
-                                  <span className="text-sm font-bold text-slate-800">Locked Section</span>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
-
-                        {/* What You Could Be Missing (Loss Aversion) */}
-                        <div className="bg-amber-50 border border-amber-200 rounded-xl p-5 mt-6">
-                          <h4 className="font-bold text-amber-900 flex items-center gap-2 mb-2">
-                            <Zap className="w-5 h-5 text-amber-600" />
-                            What You Could Be Missing
-                          </h4>
-                          <p className="text-sm text-amber-800 mb-3">
-                            You matched <strong>{grantCount}</strong> active funding programs. Without the full report, you won't see:
-                          </p>
-                          <ul className="space-y-1.5 text-sm text-amber-700/90 ml-1">
-                            <li className="flex items-start gap-2"><span className="text-amber-500">•</span> Which 3 programs are highest priority</li>
-                            <li className="flex items-start gap-2"><span className="text-amber-500">•</span> Which programs can be combined for maximum funding</li>
-                            <li className="flex items-start gap-2"><span className="text-amber-500">•</span> Which applications are currently accepting intake</li>
-                            <li className="flex items-start gap-2"><span className="text-amber-500">•</span> Which programs fit your company size and revenue stage</li>
-                          </ul>
-                        </div>
-
-                        {/* Email Capture + CTA — or Welcome Back for restored sessions */}
-                         <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-emerald-200 rounded-2xl p-5 sm:p-6 mt-6">
-
-                           <div className="mb-6 bg-white border border-slate-200 rounded-xl p-4 shadow-sm">
-                             <h4 className="font-bold text-slate-800 mb-3 text-center">Unlock Full Report to Access:</h4>
-                             <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm text-slate-700">
-                               <div className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-500" /> Exact program names</div>
-                               <div className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-500" /> Funding amounts</div>
-                               <div className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-500" /> Eligibility requirements</div>
-                               <div className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-500" /> Priority ranking</div>
-                               <div className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-500" /> Application links</div>
-                               <div className="flex items-center gap-1.5"><CheckCircle className="w-4 h-4 text-emerald-500" /> Action roadmap</div>
-                             </div>
-                           </div>
-
-                           {data.email ? (
-                             <div className="space-y-4">
-                               <div className="flex items-start gap-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3">
-                                 <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                                 <div>
-                                   <p className="text-sm font-semibold text-emerald-800">Session restored for {data.name || data.email}</p>
-                                   <p className="text-xs text-emerald-700 mt-0.5">Your business profile is loaded — your matched programs are ready to unlock.</p>
-                                 </div>
-                               </div>
-
-                               <Button
-                                 size="lg"
-                                 className="w-full h-14 text-lg bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-lg shadow-emerald-200"
-                                 onClick={() => {
-                                   fetch("/api/subscriber/track-activity", {
-                                     method: "POST",
-                                     headers: { "Content-Type": "application/json" },
-                                     body: JSON.stringify({ email: data.email, event: "paywall_viewed", priceShown: "19|79" })
                                    }).catch(e => console.error("Telemetry error:", e));
                                    setStep(7);
                                  }}
