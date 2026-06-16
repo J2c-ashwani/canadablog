@@ -28,6 +28,9 @@ export interface MissingFundingAlertData {
   loginToken: string;
   companyName?: string;
   missingFundingAmount: string;
+  region?: string;
+  industry?: string;
+  businessStage?: string;
 }
 
 const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
@@ -185,37 +188,46 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
  */
 export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData) {
   const firstName = getFirstName(data.name);
-  const pricing = getReactivationPriceForEmail(data.to);
-  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=missing_funding_alert&price=${pricing.price}`;
+  const link = `https://www.fsidigital.ca/calculator?token=${data.loginToken || ""}`;
+
+  const locationText = data.region || "Canada";
+  const industryText = data.industry || "General / Growth";
+  const revenueText = data.businessStage || "Growth Stage";
 
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      According to our preliminary diagnostics, your business could qualify for up to <strong>${data.missingFundingAmount}</strong> in provincial and federal funding.
+      Over the past few days we've been reviewing previously completed funding assessments.
     </p>
-
-    <div style="margin: 24px 0; padding: 20px; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; text-align: left;">
-      <span style="font-size: 10px; font-weight: 800; text-transform: uppercase; background-color: #3b82f6; color: white; padding: 2px 6px; border-radius: 4px; display: inline-block; margin-bottom: 8px;">
-        Unclaimed Estimated Funding
-      </span>
-      <h3 style="font-size: 24px; font-weight: 800; color: #1e3a8a; margin: 4px 0 8px 0;">${data.missingFundingAmount}+</h3>
-      <p style="font-size: 13px; color: #1e40af; margin: 0; line-height: 1.4;">
-        Estimated matching yields based on your industry segment, company size, and region.
-      </p>
-    </div>
 
     <p style="margin: 16px 0;">
-      You haven't completed your full eligibility screener yet. Finish the remaining questions in your portal to lock in your recommendations, access matching checklists, and begin claiming these grants before the current cycle deadlines.
+      Based on the information you previously submitted, our system identified government funding opportunities that may be relevant to your business.
     </p>
 
+    <p style="margin: 16px 0;">Some of these opportunities appear to align with:</p>
+    <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6;">
+      <li style="margin-bottom: 8px;">✓ Your industry (<strong>${industryText}</strong>)</li>
+      <li style="margin-bottom: 8px;">✓ Your location (<strong>${locationText}</strong>)</li>
+      <li style="margin-bottom: 8px;">✓ Your revenue profile (<strong>${revenueText}</strong>)</li>
+    </ul>
+
+    <p style="margin: 16px 0;">
+      We've decided to make these matched funding details available to a small group of previously assessed businesses for a special price of just <strong>$19</strong>.
+    </p>
+
+    <p style="margin: 16px 0;">You can unlock your matched opportunities here:</p>
     <div style="text-align: center; margin: 28px 0;">
-      <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #2563eb; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(37,99,235,0.2);">
-        Complete Your Assessment &rarr;
+      <a href="${link}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
+        Unlock Matched Opportunities &rarr;
       </a>
     </div>
+
+    <p style="margin: 16px 0; font-size: 13px; color: #64748b;">
+      This access is intended only for businesses that have already completed an eligibility assessment.
+    </p>
   `;
 
-  const text = `Hi ${firstName},\n\nYou may be missing out on up to ${data.missingFundingAmount} in business funding. Complete your assessment to view all matches and download checklists:\n\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
-  const subject = `Attention: You may be missing ${data.missingFundingAmount} in business funding`;
+  const text = `Hi ${firstName},\n\nOver the past few days we've been reviewing previously completed funding assessments. Based on the information you previously submitted, we identified government funding opportunities that may be relevant to your business.\n\nSome of these opportunities align with:\n✓ Your industry (${industryText})\n✓ Your location (${locationText})\n✓ Your revenue profile (${revenueText})\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+  const subject = "We reviewed your funding profile";
 
   return sendEmail({
     to: data.to,

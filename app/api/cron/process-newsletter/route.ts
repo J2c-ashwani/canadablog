@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server"
 import { isValidCronRequest } from "@/lib/admin/auth"
 import { NewsletterEngine } from "@/lib/leads/NewsletterEngine"
 import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { getGoogleSheetsClient } from "@/lib/google-sheets"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -69,7 +70,62 @@ export async function GET(request: NextRequest) {
       })
     }
 
-    // 4. Batch process the next 50 targets
+    // Helper to update AZ column for ALL matching rows of the email address
+    const updateAllRowsForEmail = async (email: string, campaignId: string) => {
+      try {
+        const sheets = await getGoogleSheetsClient()
+        const spreadsheetId = process.env.GOOGLE_SHEET_ID
+        if (!spreadsheetId) return
+
+        const response = await sheets.spreadsheets.values.get({
+          spreadsheetId,
+          range: 'Leads!A:BO',
+        })
+
+        const rows = response.data.values || []
+        const emailIndex = 2 // Column C
+        const leadActivityIndex = 51 // Column AZ
+
+        for (let i = 1; i < rows.length; i++) {
+          const row = rows[i]
+          const rowEmail = (row[emailIndex] || '').toLowerCase().trim()
+          if (rowEmail === email.toLowerCase().trim()) {
+            const currentActivity = row[leadActivityIndex] || '{}'
+            let activity: any = {}
+            try {
+              if (currentActivity && currentActivity !== 'N/A') {
+                activity = JSON.parse(currentActivity)
+              }
+            } catch (e) {}
+
+            activity.lastNewsletterCampaignId = campaignId
+            activity.lastNewsletterSentAt = new Date().toISOString()
+            
+            // Also keep reactivation campaign tags synced
+            activity.reactivationStage = "completed"
+            activity.experimentTag = "historical_reactivation_batch_001"
+            activity.reactivationSentAt = new Date().toISOString()
+
+            const range = `Leads!AZ${i + 1}`
+            await sheets.spreadsheets.values.update({
+              spreadsheetId,
+              range,
+              valueInputOption: 'USER_ENTERED',
+              requestBody: {
+                values: [[JSON.stringify(activity)]],
+              },
+            })
+            
+            // Cooldown delay
+            await new Promise(resolve => setTimeout(resolve, 800))
+          }
+        }
+      } catch (err) {
+        console.error(`Failed to update all rows for ${email}:`, err)
+      }
+    }
+
+    // 4. Batch process the next 50 targets sequentially to prevent Sheets API rate limits
     const BATCH_SIZE = 50
     const batch = pendingLeads.slice(0, BATCH_SIZE)
     let successCount = 0
@@ -77,40 +133,24 @@ export async function GET(request: NextRequest) {
 
     console.log(`🚀 Starting newsletter batch: sending ${batch.length} emails for campaign ${config.campaignId}...`)
 
-    const sendPromises = batch.map(async (sub) => {
+    for (const sub of batch) {
       const result = await NewsletterEngine.sendNewsletterToLead(config, sub)
-      
-      // Update subscriber activity preferences state regardless of success or failure 
-      // so they are marked as processed for this campaign and not retried infinitely.
-      let activity: any = {}
-      try {
-        if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
-          activity = JSON.parse(sub.leadActivity)
-        }
-      } catch (e) {
-        // ignore
-      }
-
-      activity.lastNewsletterCampaignId = config.campaignId
-      activity.lastNewsletterSentAt = new Date().toISOString()
-
-      try {
-        await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-          leadActivity: JSON.stringify(activity),
-          loginToken: sub.loginToken
-        })
-      } catch (e) {
-        console.error(`Failed to update subscriber preferences for ${sub.email}:`, e)
-      }
 
       if (result.success) {
         successCount++
+        console.log(`✉️ Email successfully sent to ${sub.email}. Updating all sheet rows...`)
+        await updateAllRowsForEmail(sub.email, config.campaignId)
       } else {
         errors.push({ email: sub.email || "unknown", error: result.error })
+        console.error(`❌ Failed to send email to ${sub.email}:`, result.error)
+        
+        // Still update rows to mark them as tried so we don't loop indefinitely
+        await updateAllRowsForEmail(sub.email, config.campaignId)
       }
-    })
 
-    await Promise.all(sendPromises)
+      // 1 second delay between sends
+      await new Promise(resolve => setTimeout(resolve, 1000))
+    }
 
     // 5. Update progress counts (sentCount tracks all attempted dispatches)
     const updatedSentCount = config.sentCount + batch.length

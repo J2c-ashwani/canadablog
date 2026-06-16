@@ -186,8 +186,41 @@ export class NewsletterEngine {
     }
 
     if (config.campaignType === "missing_funding") {
-      // Incomplete dropoffs or completed-but-unpaid report leads
-      return activeSubs.filter(sub => !sub.reportPurchased)
+      // Historical Reactivation Campaign targeting all leads up to June 15, 2026 inclusive
+      const CUTOFF_DATE = new Date('2026-06-16T00:00:00.000Z');
+
+      // Sort chronologically ascending (oldest first, so row 2 starts first)
+      const sortedSubs = [...allSubs].sort((a, b) => {
+        const timeA = a.timestamp ? new Date(a.timestamp).getTime() : 0;
+        const timeB = b.timestamp ? new Date(b.timestamp).getTime() : 0;
+        return timeA - timeB;
+      });
+
+      const uniqueLeads: SubscriberProfile[] = [];
+      const seenEmails = new Set<string>();
+
+      for (const sub of sortedSubs) {
+        const email = (sub.email || '').toLowerCase().trim();
+        if (!email) continue;
+
+        // Skip if unsubscribed
+        if (!sub.isSubscribed) continue;
+
+        // Skip if already purchased
+        if (sub.reportPurchased) continue;
+
+        // Date check: must be up to June 15, 2026 inclusive
+        if (!sub.timestamp) continue;
+        const signupDate = new Date(sub.timestamp);
+        if (isNaN(signupDate.getTime()) || signupDate >= CUTOFF_DATE) continue;
+
+        // Deduplicate
+        if (seenEmails.has(email)) continue;
+        seenEmails.add(email);
+        uniqueLeads.push(sub);
+      }
+
+      return uniqueLeads;
     }
 
     return []
@@ -237,7 +270,10 @@ export class NewsletterEngine {
           name: sub.name,
           loginToken: sub.loginToken || "",
           companyName: sub.companyName,
-          missingFundingAmount: config.missingFundingAmount || "$120,000"
+          missingFundingAmount: config.missingFundingAmount || "$120,000",
+          region: sub.region || "",
+          industry: sub.industry || "",
+          businessStage: sub.businessStage || ""
         })
         return { success: res.success, error: res.error }
       }

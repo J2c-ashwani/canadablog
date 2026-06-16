@@ -71,7 +71,7 @@ export function GrantCalculator() {
     const [reportData, setReportData] = useState<any>(null);
     const [isLoadingReport, setIsLoadingReport] = useState(false);
     const [isDownloading, setIsDownloading] = useState(false);
-    const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle'>('funding-bundle');
+    const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-bundle');
     const [addonToolkit, setAddonToolkit] = useState(false);
     const [addonApprovalLibrary, setAddonApprovalLibrary] = useState(false);
     const [hasToolkitUnlocked, setHasToolkitUnlocked] = useState(false);
@@ -382,7 +382,7 @@ export function GrantCalculator() {
 
     // --- PayPal SDK Load ---
     useEffect(() => {
-      if (step < 7) return; // Only load when needed
+      if (step < 6) return; // Only load when needed
       if ((window as any).paypal) { setSdkReady(true); return; }
 
       const script = document.createElement("script");
@@ -399,7 +399,7 @@ export function GrantCalculator() {
 
     // --- PayPal Buttons Render ---
     useEffect(() => {
-      if (!sdkReady || !(window as any).paypal || step !== 7) return;
+      if (!sdkReady || !(window as any).paypal || step !== 6) return;
 
       const container = document.getElementById("calc-paypal-button");
       if (container) container.innerHTML = "";
@@ -409,8 +409,8 @@ export function GrantCalculator() {
         return;
       }
 
-      let price = selectedProductId === 'funding-bundle' ? 79 : 19;
-      let itemsList = selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle' : 'Funding Match Report';
+      let price = selectedProductId === 'funding-bundle' ? 79 : selectedProductId === 'funding-roadmap' ? 49 : 19;
+      let itemsList = selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle' : selectedProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
       if (addonToolkit) {
         price += 29;
         itemsList += ' + Toolkit';
@@ -955,9 +955,9 @@ export function GrantCalculator() {
                             <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1000" style={{ animationFillMode: 'backwards' }}>
                                 <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Verifying revenue thresholds
                             </div>
-                            {data.purpose && (
+                            {data.goal && (
                                 <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1500" style={{ animationFillMode: 'backwards' }}>
-                                    <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.purpose} programs
+                                    <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.goal} programs
                                 </div>
                             )}
                             <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-[2000ms]" style={{ animationFillMode: 'backwards' }}>
@@ -982,7 +982,7 @@ export function GrantCalculator() {
                             <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {data.province || "Canadian"} business</li>
                             <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {data.industry || "General"} sector</li>
                             <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Revenue: {data.revenue || "Pre-revenue"}</li>
-                            {data.purpose && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Goal: {data.purpose}</li>}
+                            {data.goal && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Goal: {data.goal}</li>}
                           </ul>
                           <div className="mt-4 pt-4 border-t border-slate-100">
                             <p className="text-slate-600 text-sm">
@@ -1149,76 +1149,7 @@ export function GrantCalculator() {
                                     </div>
                                 )}
                                 {sdkReady && (
-                                    <PayPalButtons
-                                        style={{ layout: "vertical", shape: "rect", color: "blue" }}
-                                        onClick={(data_param, actions) => {
-                                            if (!data.email || !data.email.includes('@')) {
-                                                const el = document.getElementById('calc-email-for-report');
-                                                const err = document.getElementById('email-error');
-                                                if (el) el.classList.add('ring-2', 'ring-red-500');
-                                                if (err) err.classList.remove('hidden');
-                                                el?.focus();
-                                                return actions.reject();
-                                            }
-                                            // Set a default name since we removed it
-                                            if (!data.name) {
-                                                updateData("name", "Founder");
-                                            }
-                                            return actions.resolve();
-                                        }}
-                                        createOrder={async () => {
-                                            if (data.email) {
-                                              saveCalculatorLead(data.email, data.name || "Founder", false);
-                                            }
-                                            const expectedPrice = selectedProductId === 'funding-bundle' ? 79 : selectedProductId === 'funding-roadmap' ? 49 : 19;
-                                            const res = await fetch("/api/payments/create-order", {
-                                                method: "POST",
-                                                headers: { "Content-Type": "application/json" },
-                                                body: JSON.stringify({ amount: expectedPrice }),
-                                            });
-                                            const orderData = await res.json();
-                                            if (orderData.id) return orderData.id;
-                                            throw new Error(orderData.error || "Failed to create order");
-                                        }}
-                                        onApprove={async (paypalData, actions) => {
-                                            try {
-                                                setPaymentError(null);
-                                                const verifyRes = await fetch("/api/products/purchase", {
-                                                    method: "POST",
-                                                    headers: { "Content-Type": "application/json" },
-                                                    body: JSON.stringify({
-                                                        productId: selectedProductId,
-                                                        email: data.email,
-                                                        name: data.name || "Founder",
-                                                        paypalOrderId: paypalData.orderID,
-                                                        profileData: data,
-                                                        addons: {
-                                                            toolkit: selectedProductId === 'funding-bundle',
-                                                            approvalLibrary: selectedProductId === 'funding-bundle'
-                                                        },
-                                                        sessionId: localStorage.getItem("fsi_session_id")
-                                                    }),
-                                                });
-                                                
-                                                const result = await verifyRes.json();
-                                                if (verifyRes.ok) {
-                                                    setReportData(result.reportData);
-                                                    setHasStrategyUnlocked(selectedProductId !== 'funding-match-report');
-                                                    setHasToolkitUnlocked(selectedProductId === 'funding-bundle');
-                                                    setHasApprovalLibraryUnlocked(selectedProductId === 'funding-bundle');
-                                                    setIsPurchased(true);
-                                                    setStep(8);
-                                                } else {
-                                                    setPaymentError(result.error || "Payment verification failed.");
-                                                }
-                                            } catch (e) {
-                                                setPaymentError("An error occurred during checkout. Please try again.");
-                                            }
-                                        }}
-                                        onError={(err) => {
-                                            console.error("PayPal UI Error:", err);
-                                        }}
-                                    />
+                                    <div id="calc-paypal-button" className="w-full"></div>
                                 )}
                             </div>
                             {paymentError && (
@@ -1237,14 +1168,14 @@ export function GrantCalculator() {
                             <h4 className="font-bold text-slate-900 mb-3 text-lg">What happens after approval?</h4>
                             <p className="text-sm text-slate-700 mb-4">Businesses typically use these programs to:</p>
                             <ul className="space-y-3 text-sm text-slate-700 font-medium ml-1">
-                            {data.purpose === 'hiring' ? (
+                            {data.goal === 'hiring' ? (
                                 <>
                                   <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Hire technical talent</li>
                                   <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Expand sales teams</li>
                                   <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Add project capacity</li>
                                   <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Accelerate growth</li>
                                 </>
-                            ) : data.purpose === 'equipment' ? (
+                            ) : data.goal === 'expansion' ? (
                                 <>
                                   <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Purchase new machinery</li>
                                   <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Upgrade production lines</li>

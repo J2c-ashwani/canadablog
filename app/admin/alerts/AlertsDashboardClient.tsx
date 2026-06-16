@@ -67,29 +67,61 @@ export default function AlertsDashboardClient() {
   const [newsletterError, setNewsletterError] = useState("")
   const [newsletterSuccess, setNewsletterSuccess] = useState("")
 
+  const [authChecking, setAuthChecking] = useState(true)
+
   useEffect(() => {
+    async function checkAndEstablishSession() {
+      const searchParams = new URLSearchParams(window.location.search);
+      const urlKey = searchParams.get('key');
+      
+      if (urlKey) {
+        try {
+          console.log("Found key in URL, establishing session cookie...");
+          const res = await fetch('/api/admin/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ key: urlKey }),
+          });
+          if (res.ok) {
+            console.log("Session cookie established successfully!");
+          } else {
+            console.error("Failed to establish session cookie with URL key.");
+          }
+        } catch (err) {
+          console.error("Error establishing session cookie:", err);
+        }
+      }
+      setAuthChecking(false);
+    }
+    checkAndEstablishSession();
+  }, []);
+
+  useEffect(() => {
+    if (authChecking) return;
     fetchStats()
     if (programs.length > 0) {
       setSelectedProgramSlug(programs[0].slug)
       setNewsletterProgramSlug(programs[0].slug)
     }
-  }, [programs])
+  }, [programs, authChecking])
 
   useEffect(() => {
+    if (authChecking) return;
     if (activeTab === "newsletter") {
       fetchNewsletterStatus()
     }
-  }, [activeTab])
+  }, [activeTab, authChecking])
 
   // Real-time preview update as configuration fields change (debounced/triggered as they change state)
   useEffect(() => {
+    if (authChecking) return;
     if (activeTab === "newsletter" && newsletterConfig?.status !== "running") {
       const timer = setTimeout(() => {
         generatePreviewHTML()
       }, 500)
       return () => clearTimeout(timer)
     }
-  }, [activeTab, newsletterType, newsletterProgramSlug, newProgramsCount, newProgramsListText, missingFundingAmount, newsletterConfig?.status])
+  }, [activeTab, newsletterType, newsletterProgramSlug, newProgramsCount, newProgramsListText, missingFundingAmount, newsletterConfig?.status, authChecking])
 
   const fetchNewsletterStatus = async () => {
     setIsLoadingNewsletter(true)

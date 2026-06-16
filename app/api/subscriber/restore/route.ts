@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { getLeadsFromSheet } from '@/lib/google-sheets';
 import { getPurchasesByEmail } from '@/lib/products/purchase-store';
@@ -16,12 +17,27 @@ export async function GET(req: NextRequest) {
     // Read leads from sheets database
     const leads = await getLeadsFromSheet(2000);
 
-    // Securely find the lead by token
-    const lead = leads.find(
-      (l) =>
+    // Securely find the lead by token (including deterministic fallbacks for older leads)
+    const lead = leads.find((l) => {
+      if (!l.email) return false;
+      const deterministicLoginToken = crypto
+        .createHash('sha256')
+        .update(l.email.toLowerCase().trim() + 'fsi-login-token-2026')
+        .digest('hex')
+        .slice(0, 32);
+      const deterministicUnsubscribeToken = crypto
+        .createHash('sha256')
+        .update(l.email.toLowerCase().trim() + 'fsi-salt-2026')
+        .digest('hex')
+        .slice(0, 32);
+
+      return (
         (l.loginToken && l.loginToken === token) ||
-        (l.unsubscribeToken && l.unsubscribeToken === token)
-    );
+        deterministicLoginToken === token ||
+        (l.unsubscribeToken && l.unsubscribeToken === token) ||
+        deterministicUnsubscribeToken === token
+      );
+    });
 
     if (!lead) {
       return NextResponse.json({ error: 'Invalid or expired token' }, { status: 404 });
