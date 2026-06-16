@@ -8,7 +8,11 @@ const EXCLUDED_ROUTES = [
   '/contact',
   '/consultation',
   '/booking',
-  '/partners'
+  '/partners',
+  '/calculator',
+  '/products',
+  '/portfolio',
+  '/checkout'
 ]
 
 const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-1200907614877581'

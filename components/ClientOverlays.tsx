@@ -34,8 +34,19 @@ export function ClientOverlays() {
         return null
     }
 
-    // Suppress lead magnet popups on transaction-focused pages (consultation & booking)
-    const shouldSuppressPopup = pathname === "/consultation" || pathname === "/booking"
+    const EXCLUDED_TRANSACTIONAL_ROUTES = [
+        "/consultation",
+        "/booking",
+        "/calculator",
+        "/products",
+        "/portfolio",
+        "/checkout"
+    ]
+
+    // Suppress lead magnet popups on transaction-focused pages
+    const shouldSuppressPopup = EXCLUDED_TRANSACTIONAL_ROUTES.some(route => 
+        pathname === route || pathname.startsWith(route + "/")
+    )
 
     return (
         <>
