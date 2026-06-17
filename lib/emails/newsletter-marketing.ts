@@ -31,6 +31,7 @@ export interface MissingFundingAlertData {
   region?: string;
   industry?: string;
   businessStage?: string;
+  forceResend?: boolean;
 }
 
 const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
@@ -374,7 +375,8 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     text,
     tagType: "newsletter-missing-funding",
     companyName: data.companyName,
-    from: BRAND_SENDER
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
   });
 }
 

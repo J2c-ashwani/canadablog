@@ -1,7 +1,9 @@
 import { config } from 'dotenv';
 config({ path: '.env.local' });
 import { getGoogleSheetsClient } from '../lib/google-sheets';
-import { sendEmail, getFirstName } from '../lib/emails/mailer';
+import { getFirstName } from '../lib/emails/mailer';
+import { sendMissingFundingAlertEmail } from '../lib/emails/newsletter-marketing';
+import crypto from 'crypto';
 
 async function run() {
   const dryRun = !process.argv.includes('--execute');
@@ -31,7 +33,11 @@ async function run() {
 
     const emailIndex = 2; // Column C
     const nameIndex = 3;  // Column D
+    const regionIndex = 5; // Column F
+    const industryIndex = 6; // Column G
+    const businessStageIndex = 7; // Column H
     const isSubscribedIndex = 33; // Column AH
+    const loginTokenIndex = 42; // Column AQ
     const companyNameIndex = 47; // Column AV
     const reportPurchasedIndex = 48; // Column AW
     const leadActivityIndex = 51; // Column AZ
@@ -46,9 +52,11 @@ async function run() {
 
       const leadActivity = row[leadActivityIndex] || '{}';
       try {
-        const act = JSON.parse(leadActivity);
-        if (act.reactivationStage || act.experimentTag === "historical_reactivation_batch_001") {
-          alreadyProcessedEmails.add(email);
+        if (leadActivity && leadActivity !== 'N/A') {
+          const act = JSON.parse(leadActivity);
+          if (act.reactivationStage || act.experimentTag === "historical_reactivation_batch_001") {
+            alreadyProcessedEmails.add(email);
+          }
         }
       } catch (e) {
         // ignore JSON parsing errors
@@ -61,6 +69,10 @@ async function run() {
     const candidates: {
       email: string;
       name: string;
+      region: string;
+      industry: string;
+      businessStage: string;
+      loginToken: string;
       companyName: string;
       rowNumbers: number[];
       signupDate: string;
@@ -100,11 +112,21 @@ async function run() {
       const reportPurchasedStr = row[reportPurchasedIndex] || '';
       if (reportPurchasedStr.toLowerCase() === 'yes') continue;
 
+      // Determine or generate login token
+      let token = row[loginTokenIndex] || '';
+      if (!token || token === 'N/A') {
+        token = crypto.createHash("sha256").update(email + "fsi-login-token-2026").digest("hex").slice(0, 32);
+      }
+
       // Valid candidate!
       seenEmailsInThisRun.add(email);
       candidates.push({
         email,
         name: row[nameIndex] || '',
+        region: row[regionIndex] || '',
+        industry: row[industryIndex] || '',
+        businessStage: row[businessStageIndex] || '',
+        loginToken: token,
         companyName: row[companyNameIndex] || '',
         rowNumbers: [i + 1],
         signupDate: timestamp,
@@ -121,53 +143,22 @@ async function run() {
 
     for (const candidate of batch) {
       const firstName = getFirstName(candidate.name);
-      const link = `https://www.fsidigital.ca/calculator?email=${encodeURIComponent(candidate.email)}`;
-
-      const html = `
-          <div style="font-family: sans-serif; font-size: 15px; color: #334155; line-height: 1.6; max-width: 600px; margin: 0 auto; padding: 20px;">
-            <p>Hi ${firstName},</p>
-
-            <p>Over the past few days we've been reviewing previously completed funding assessments.</p>
-
-            <p>Based on the information you provided, your business appears to qualify for multiple government funding opportunities that may be relevant to your industry, location, and growth plans.</p>
-
-            <p>We've decided to make our Funding Match Report available to a small group of previously assessed businesses for a special introductory price of just <strong>$19</strong>.</p>
-
-            <p>Inside the report you'll receive:</p>
-            <ul style="list-style-type: none; padding-left: 0;">
-              <li style="margin-bottom: 8px;">✓ Funding programs matched to your business</li>
-              <li style="margin-bottom: 8px;">✓ Estimated funding amounts</li>
-              <li style="margin-bottom: 8px;">✓ Eligibility requirements</li>
-              <li style="margin-bottom: 8px;">✓ Priority opportunities worth reviewing first</li>
-              <li style="margin-bottom: 8px;">✓ Direct application resources</li>
-              <li style="margin-bottom: 8px;">✓ Recommended next steps</li>
-            </ul>
-
-            <p>Your report is available here:</p>
-            <p><a href="${link}" style="display: inline-block; padding: 12px 24px; background-color: #059669; color: white; text-decoration: none; border-radius: 6px; font-weight: bold;">Unlock Match Report &rarr;</a></p>
-            <p><a href="${link}">${link}</a></p>
-
-            <p>This offer is intended for businesses that have already completed an eligibility assessment and may be removed without notice.</p>
-
-            <p>Regards,<br>
-            <strong>FSI Digital</strong><br>
-            <span style="color: #64748b;">Funding Research & Strategy Team</span></p>
-          </div>
-      `;
 
       if (dryRun) {
-        console.log(`[DRY RUN] Would email: ${candidate.email} (Name: ${firstName}, Company: ${candidate.companyName || 'N/A'}, Signup: ${candidate.signupDate}). Associated sheet rows: ${candidate.rowNumbers.join(', ')}`);
+        console.log(`[DRY RUN] Would email: ${candidate.email} (Name: ${firstName}, Company: ${candidate.companyName || 'N/A'}, Region: ${candidate.region || 'N/A'}, Industry: ${candidate.industry || 'N/A'}, Stage: ${candidate.businessStage || 'N/A'}, Signup: ${candidate.signupDate}). Associated sheet rows: ${candidate.rowNumbers.join(', ')}`);
         successCount++;
       } else {
         try {
           console.log(`Sending email to ${candidate.email}...`);
-          const res = await sendEmail({
+          const res = await sendMissingFundingAlertEmail({
             to: candidate.email,
-            subject: "Priority Access: Your Funding Match Report",
-            html: html,
-            text: "",
-            tagType: "historical-reactivation-june15",
+            name: candidate.name,
+            loginToken: candidate.loginToken,
             companyName: candidate.companyName,
+            missingFundingAmount: "$19",
+            region: candidate.region,
+            industry: candidate.industry,
+            businessStage: candidate.businessStage,
           });
 
           if (res.success) {

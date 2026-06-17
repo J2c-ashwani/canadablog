@@ -129,6 +129,11 @@ export function GrantCalculator() {
             utmCampaign: params.get('utm_campaign') || ''
         });
 
+        const emailParam = params.get('email');
+        if (emailParam) {
+            setData(prev => ({ ...prev, email: emailParam }));
+        }
+
         const token = params.get('token');
         if (!token) return;
 
@@ -1269,7 +1274,7 @@ export function GrantCalculator() {
                     </div>
                 )}
 
-\n                {/* ═══════════════════════════════════════════════════
+                {/* ═══════════════════════════════════════════════════
                     STEP 8: INSTANT REPORT DELIVERY
                    ═══════════════════════════════════════════════════ */}
                 {step === 8 && isPurchased && (
