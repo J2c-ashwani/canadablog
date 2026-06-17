@@ -219,24 +219,44 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     subject = "We reviewed your funding profile";
     contentHtml = `
       <p style="margin: 0 0 16px 0;">
-        Over the past few days we've been reviewing previously completed funding assessments.
+        We recently reviewed the information you previously submitted through FSI Digital.
       </p>
 
       <p style="margin: 16px 0;">
-        Based on the information you previously submitted, our system identified government funding opportunities that appear relevant to your business profile:
+        Based on that profile, our system identified government funding opportunities that may be relevant to your business.
       </p>
 
-      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6;">
+      <p style="margin: 16px 0; font-weight: 600;">
+        Potential matches appear to align with:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6; list-style-type: none;">
         <li style="margin-bottom: 8px;">✓ Industry: <strong>${cleanIndustry}</strong></li>
         <li style="margin-bottom: 8px;">✓ Location: <strong>${cleanRegion}</strong></li>
         <li style="margin-bottom: 8px;">✓ Business Stage: <strong>${cleanStage}</strong></li>
       </ul>
 
       <p style="margin: 16px 0;">
-        We've decided to make these matched funding details available to a small group of previously assessed businesses for a special price of just <strong>$19</strong>.
+        Most business owners never discover these opportunities because they are scattered across multiple federal and provincial programs, each with different eligibility requirements, funding amounts, and intake periods.
+      </p>
+
+      <p style="margin: 16px 0;">
+        We've prepared a personalized funding summary showing:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6; list-style-type: none;">
+        <li style="margin-bottom: 6px;">• Relevant funding opportunities</li>
+        <li style="margin-bottom: 6px;">• Estimated funding amounts</li>
+        <li style="margin-bottom: 6px;">• Eligibility requirements</li>
+        <li style="margin-bottom: 6px;">• Priority opportunities to review first</li>
+        <li style="margin-bottom: 6px;">• Recommended next steps</li>
+      </ul>
+
+      <p style="margin: 16px 0;">
+        As a previously assessed business, you can unlock your matched opportunities for a one-time fee of <strong>$19</strong>.
       </p>
     `;
-    text = `Hi ${firstName},\n\nOver the past few days we've been reviewing previously completed funding assessments. Based on the information you previously submitted, our system identified government funding opportunities that appear relevant to your business profile:\n\n✓ Industry: ${cleanIndustry}\n✓ Location: ${cleanRegion}\n✓ Business Stage: ${cleanStage}\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+    text = `Hi ${firstName},\n\nWe recently reviewed the information you previously submitted through FSI Digital.\n\nBased on that profile, our system identified government funding opportunities that may be relevant to your business.\n\nPotential matches appear to align with:\n✓ Industry: ${cleanIndustry}\n✓ Location: ${cleanRegion}\n✓ Business Stage: ${cleanStage}\n\nMost business owners never discover these opportunities because they are scattered across multiple federal and provincial programs, each with different eligibility requirements, funding amounts, and intake periods.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a previously assessed business, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
   } else if (isPartialProfile) {
     subject = "We reviewed your funding profile";
     
@@ -257,44 +277,76 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
 
     contentHtml = `
       <p style="margin: 0 0 16px 0;">
-        Over the past few days we've been reviewing previously completed funding assessments.
+        We recently reviewed the information you previously submitted through FSI Digital.
       </p>
 
       <p style="margin: 16px 0;">
-        Based on the information you previously submitted, our system identified government funding opportunities that may be relevant to:
+        Based on that profile, our system identified government funding opportunities that may be relevant to your business.
       </p>
 
-      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6;">
+      <p style="margin: 16px 0; font-weight: 600;">
+        Potential matches appear to align with:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6; list-style-type: none;">
         ${htmlBullets}
       </ul>
 
       <p style="margin: 16px 0;">
-        We've decided to make these matched funding details available to a small group of previously assessed businesses for a special price of just <strong>$19</strong>.
+        Most business owners never discover these opportunities because they are scattered across multiple federal and provincial programs, each with different eligibility requirements, funding amounts, and intake periods.
+      </p>
+
+      <p style="margin: 16px 0;">
+        We've prepared a personalized funding summary showing:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6; list-style-type: none;">
+        <li style="margin-bottom: 6px;">• Relevant funding opportunities</li>
+        <li style="margin-bottom: 6px;">• Estimated funding amounts</li>
+        <li style="margin-bottom: 6px;">• Eligibility requirements</li>
+        <li style="margin-bottom: 6px;">• Priority opportunities to review first</li>
+        <li style="margin-bottom: 6px;">• Recommended next steps</li>
+      </ul>
+
+      <p style="margin: 16px 0;">
+        As a previously assessed business, you can unlock your matched opportunities for a one-time fee of <strong>$19</strong>.
       </p>
     `;
-    text = `Hi ${firstName},\n\nOver the past few days we've been reviewing previously completed funding assessments. Based on the information you previously submitted, our system identified government funding opportunities that may be relevant to:${textBullets}\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+    text = `Hi ${firstName},\n\nWe recently reviewed the information you previously submitted through FSI Digital.\n\nBased on that profile, our system identified government funding opportunities that may be relevant to your business.\n\nPotential matches appear to align with:${textBullets}\n\nMost business owners never discover these opportunities because they are scattered across multiple federal and provincial programs, each with different eligibility requirements, funding amounts, and intake periods.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a previously assessed business, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
   } else {
-    subject = "New funding opportunities have been identified";
+    subject = "New government funding opportunities identified";
     contentHtml = `
       <p style="margin: 0 0 16px 0;">
-        Over the past few days we've been reviewing government funding announcements.
+        We recently expanded our funding database and identified several government funding opportunities that may be relevant to growing businesses.
       </p>
 
       <p style="margin: 16px 0;">
-        We recently expanded our funding database and identified several government funding opportunities that may be relevant to Canadian businesses.
+        Most business owners never discover these opportunities because they are scattered across multiple federal and provincial programs, each with different eligibility requirements, funding amounts, and intake periods.
       </p>
 
       <p style="margin: 16px 0;">
-        We've decided to make these matched funding details available for a special price of just <strong>$19</strong>.
+        We've prepared a personalized funding summary showing:
+      </p>
+
+      <ul style="padding-left: 20px; margin: 16px 0; line-height: 1.6; list-style-type: none;">
+        <li style="margin-bottom: 6px;">• Relevant funding opportunities</li>
+        <li style="margin-bottom: 6px;">• Estimated funding amounts</li>
+        <li style="margin-bottom: 6px;">• Eligibility requirements</li>
+        <li style="margin-bottom: 6px;">• Priority opportunities to review first</li>
+        <li style="margin-bottom: 6px;">• Recommended next steps</li>
+      </ul>
+
+      <p style="margin: 16px 0;">
+        As a subscriber, you can unlock your matched opportunities for a one-time fee of <strong>$19</strong>.
       </p>
     `;
-    text = `Hi ${firstName},\n\nOver the past few days we've been reviewing government funding announcements. We recently expanded our funding database and identified several government funding opportunities that may be relevant to Canadian businesses.\n\nWe've decided to make these matched funding details available for a special price of just $19.\n\nUnlock your matched opportunities here:\n${link}\n\nBest regards,\nFSI Digital Funding Research & Strategy Team`;
+    text = `Hi ${firstName},\n\nWe recently expanded our funding database and identified several government funding opportunities that may be relevant to growing businesses.\n\nMost business owners never discover these opportunities because they are scattered across multiple federal and provincial programs, each with different eligibility requirements, funding amounts, and intake periods.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a subscriber, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
   }
 
   // Determine footer based on type
   const footerText = isNewsletterOnly
     ? "This access is intended only for our newsletter subscribers."
-    : "This access is intended only for businesses that have already completed an eligibility assessment.";
+    : "This access is available only to businesses that have already completed an eligibility assessment.";
 
   const preheaderText = isNewsletterOnly
     ? "New government funding opportunities have been identified for Canadian businesses."
@@ -304,10 +356,9 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
   const finalContentHtml = `
     ${contentHtml}
     
-    <p style="margin: 16px 0;">You can unlock your matched opportunities here:</p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${link}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
-        Unlock Matched Opportunities &rarr;
+        Unlock Your Matched Opportunities &rarr;
       </a>
     </div>
 
