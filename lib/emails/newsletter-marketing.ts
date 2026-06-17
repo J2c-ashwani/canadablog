@@ -238,7 +238,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
       </ul>
 
       <p style="margin: 16px 0;">
-        During our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from thousands to potentially much larger amounts depending on eligibility.
+        During our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from several thousand dollars to significantly larger programs depending on eligibility.
       </p>
 
       <p style="margin: 16px 0;">
@@ -257,7 +257,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
         As a previously assessed business, you can unlock your matched opportunities for a one-time fee of <strong>$19</strong>.
       </p>
     `;
-    text = `Hi ${firstName},\n\nWe recently reviewed the information you previously submitted through FSI Digital.\n\nBased on that profile, we identified government funding opportunities that appear relevant to your business.\n\nThese opportunities align with:\n✓ Industry: ${cleanIndustry}\n✓ Location: ${cleanRegion}\n✓ Business Stage: ${cleanStage}\n\nDuring our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from thousands to potentially much larger amounts depending on eligibility.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a previously assessed business, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
+    text = `Hi ${firstName},\n\nWe recently reviewed the information you previously submitted through FSI Digital.\n\nBased on that profile, we identified government funding opportunities that appear relevant to your business.\n\nThese opportunities align with:\n✓ Industry: ${cleanIndustry}\n✓ Location: ${cleanRegion}\n✓ Business Stage: ${cleanStage}\n\nDuring our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from several thousand dollars to significantly larger programs depending on eligibility.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a previously assessed business, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
   } else if (isPartialProfile) {
     subject = "We reviewed your funding profile";
     
@@ -294,7 +294,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
       </ul>
 
       <p style="margin: 16px 0;">
-        During our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from thousands to potentially much larger amounts depending on eligibility.
+        During our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from several thousand dollars to significantly larger programs depending on eligibility.
       </p>
 
       <p style="margin: 16px 0;">
@@ -313,7 +313,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
         As a previously assessed business, you can unlock your matched opportunities for a one-time fee of <strong>$19</strong>.
       </p>
     `;
-    text = `Hi ${firstName},\n\nWe recently reviewed the information you previously submitted through FSI Digital.\n\nBased on that profile, we identified government funding opportunities that appear relevant to your business.\n\nThese opportunities align with:${textBullets}\n\nDuring our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from thousands to potentially much larger amounts depending on eligibility.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a previously assessed business, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
+    text = `Hi ${firstName},\n\nWe recently reviewed the information you previously submitted through FSI Digital.\n\nBased on that profile, we identified government funding opportunities that appear relevant to your business.\n\nThese opportunities align with:${textBullets}\n\nDuring our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from several thousand dollars to significantly larger programs depending on eligibility.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a previously assessed business, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
   } else {
     subject = "New government funding opportunities identified";
     contentHtml = `
@@ -322,7 +322,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
       </p>
 
       <p style="margin: 16px 0;">
-        During our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from thousands to potentially much larger amounts depending on eligibility.
+        During our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from several thousand dollars to significantly larger programs depending on eligibility.
       </p>
 
       <p style="margin: 16px 0;">
@@ -341,7 +341,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
         As a subscriber, you can unlock your matched opportunities for a one-time fee of <strong>$19</strong>.
       </p>
     `;
-    text = `Hi ${firstName},\n\nWe recently expanded our funding database and identified several government funding opportunities that may be relevant to growing businesses.\n\nDuring our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from thousands to potentially much larger amounts depending on eligibility.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a subscriber, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
+    text = `Hi ${firstName},\n\nWe recently expanded our funding database and identified several government funding opportunities that may be relevant to growing businesses.\n\nDuring our review, we identified multiple funding opportunities that may be worth investigating further, including programs with funding amounts ranging from several thousand dollars to significantly larger programs depending on eligibility.\n\nWe've prepared a personalized funding summary showing:\n• Relevant funding opportunities\n• Estimated funding amounts\n• Eligibility requirements\n• Priority opportunities to review first\n• Recommended next steps\n\nAs a subscriber, you can unlock your matched opportunities for a one-time fee of $19.\n\nUnlock your matched opportunities here:\n${link}\n\nRegards,\nAshwani Kumar\nFounder, FSI Digital`;
   }
 
   // Determine footer based on type
