@@ -90,6 +90,7 @@ export function GrantCalculator() {
         utmCampaign: ''
     });
     const [isRestoring, setIsRestoring] = useState(false);
+    const [isRestoredSession, setIsRestoredSession] = useState(false);
     const [restorationError, setRestorationError] = useState<string | null>(null);
 
     const calculateEstimateRestored = (profile: CalculatorData) => {
@@ -161,7 +162,21 @@ export function GrantCalculator() {
                     };
                     setData(restoredProfile);
                     calculateEstimateRestored(restoredProfile);
+                    setIsRestoredSession(true);
                     setStep(6); // Show teaser results first — value before ask
+
+                    // Track paywall_viewed event in subscriber history
+                    if (restoredProfile.email) {
+                      fetch("/api/subscriber/track-activity", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({
+                          email: restoredProfile.email,
+                          event: "paywall_viewed",
+                          priceShown: "19|79"
+                        })
+                      }).catch(e => console.error("Telemetry paywall_viewed error:", e));
+                    }
                 }
             } catch (err) {
                 console.error('Session restoration failed:', err);
@@ -811,6 +826,74 @@ export function GrantCalculator() {
       }
     }, [step, !!reportData, hasStrategyUnlocked]);
 
+    // Telemetry: Track package selection changes on Step 6
+    useEffect(() => {
+      if (step === 6) {
+        trackEvent('calc_package_selected', { package_id: selectedProductId });
+        if (data.email) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: data.email,
+              event: "package_selected",
+              packageSelected: selectedProductId
+            })
+          }).catch(e => console.error("Telemetry error logging package selection:", e));
+        }
+      }
+    }, [selectedProductId, step, data.email]);
+
+    // Telemetry: Track when PayPal checkout button enters viewport
+    useEffect(() => {
+      if (step !== 6 || !sdkReady) return;
+      const el = document.getElementById("calc-paypal-button");
+      if (!el) return;
+
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            trackEvent('calc_paypal_visible');
+            observer.disconnect();
+          }
+        });
+      }, { threshold: 0.1 });
+
+      observer.observe(el);
+      return () => observer.disconnect();
+    }, [step, sdkReady]);
+
+    // Telemetry: Track time on Step 6
+    useEffect(() => {
+      if (step !== 6) return;
+      
+      const logTime = (seconds: number) => {
+        trackEvent(`calc_step6_duration_${seconds}s`);
+        if (data.email) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: data.email,
+              event: "submit_survey",
+              surveyType: "step6_duration",
+              surveyResponse: `${seconds} seconds`
+            })
+          }).catch(() => {});
+        }
+      };
+
+      const timer10 = setTimeout(() => logTime(10), 10000);
+      const timer30 = setTimeout(() => logTime(30), 30000);
+      const timer60 = setTimeout(() => logTime(60), 60000);
+
+      return () => {
+        clearTimeout(timer10);
+        clearTimeout(timer30);
+        clearTimeout(timer60);
+      };
+    }, [step, data.email]);
+
     if (isRestoring) {
         return (
             <Card className="shadow-xl border-green-100 max-w-2xl mx-auto">
@@ -980,6 +1063,18 @@ export function GrantCalculator() {
                    ═══════════════════════════════════════════════════ */}
                 {step === 6 && !isSuccess && (
                     <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500 py-2">
+                        {/* Welcome Back Banner */}
+                        {isRestoredSession && (
+                          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-left shadow-xs flex items-start gap-3">
+                            <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                            <div>
+                              <h4 className="font-bold text-emerald-800 text-sm">Welcome Back</h4>
+                              <p className="text-emerald-700 text-xs mt-1">
+                                We reviewed the information previously submitted to FSI Digital and identified funding opportunities that may be relevant to your business.
+                              </p>
+                            </div>
+                          </div>
+                        )}
                         {/* Qualification Criteria (Specificity Engine) */}
                         {(() => {
                           const cleanField = (val?: string) => {
@@ -1040,7 +1135,7 @@ export function GrantCalculator() {
                             <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-5 py-4 flex items-center justify-between">
                               <div className="flex items-center gap-2.5">
                                 <FileText className="w-5 h-5 text-emerald-400" />
-                                <span className="font-semibold text-white text-sm">Funding Match Preview</span>
+                                <span className="font-semibold text-white text-sm">Identified Funding Opportunities</span>
                               </div>
                             </div>
                             <div className="px-5 py-6 border-b border-gray-100">
@@ -1076,7 +1171,7 @@ export function GrantCalculator() {
 
                         {/* 3-Tier Pricing Architecture */}
                         <div className="space-y-4 mb-8">
-                            <h3 className="text-2xl font-bold text-slate-900 text-center mb-6">Choose Your Funding Plan</h3>
+                            <h3 className="text-2xl font-bold text-slate-900 text-center mb-6">Unlock Funding Opportunities Identified For Your Business</h3>
                             
                             {/* Tier 1: $79 Complete Bundle (Highlighted) */}
                             <div
@@ -1164,7 +1259,7 @@ export function GrantCalculator() {
 
                         {/* Email Capture & Payment */}
                         <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-2xl p-6 mb-8 shadow-sm">
-                            <h4 className="font-bold text-slate-900 text-lg mb-4 text-center">Where should we send your access link?</h4>
+                            <h4 className="font-bold text-slate-900 text-lg mb-4 text-center">Where should we send your identified opportunities?</h4>
                             <div className="space-y-4 mb-6">
                                 <div>
                                     <Input 
@@ -1180,6 +1275,9 @@ export function GrantCalculator() {
                                             const err = document.getElementById('email-error');
                                             if (err) err.classList.add('hidden');
                                         }} 
+                                        onFocus={() => {
+                                            trackEvent('calc_email_focused');
+                                        }}
                                         required 
                                     />
                                     <p className="text-xs text-red-500 mt-1 hidden" id="email-error">Please enter a valid email to proceed.</p>
