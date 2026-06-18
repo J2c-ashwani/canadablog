@@ -217,6 +217,18 @@ export class NewsletterEngine {
         // Deduplicate
         if (seenEmails.has(email)) continue;
         seenEmails.add(email);
+
+        // Skip if already processed in reactivation campaign (by CLI script or previous run)
+        let activity: any = {};
+        try {
+          if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
+            activity = JSON.parse(sub.leadActivity);
+          }
+        } catch (e) {}
+        if (activity.reactivationStage === "completed" || activity.experimentTag === "historical_reactivation_batch_001") {
+          continue;
+        }
+
         uniqueLeads.push(sub);
       }
 
