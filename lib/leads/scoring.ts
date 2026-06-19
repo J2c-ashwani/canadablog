@@ -74,6 +74,7 @@ export type LeadCaptureData = {
   emailVerified?: string;
   auditCandidate?: string;
   referralSource?: string;
+  potentialFundingRange?: string;
 };
 
 

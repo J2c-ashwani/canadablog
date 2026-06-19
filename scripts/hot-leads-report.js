@@ -53,7 +53,7 @@ async function runHotLeadsReport() {
       const name = row[3] || 'N/A';
       const province = row[5] || 'N/A';
       const industry = row[6] || 'N/A';
-      const revenue = row[7] || 'N/A';
+      const revenue = row[72] || 'N/A';
       const score = Number(row[13]) || 0;
       const tier = row[14] || 'D';
       const phone = row[11] || 'N/A';
@@ -85,28 +85,37 @@ async function runHotLeadsReport() {
       const calculatorCompletedAt = activity.calculatorCompletedAt || '';
 
       const isCalculatorUser = source.includes('Calculator') || source.includes('Contact Form - Grant Calculator') || calculatorCompletedAt;
+      const isContactFormLead = source.includes('Contact Form');
 
-      // Filter: Did calculator, but didn't buy. Prioritize those who reached checkout step / package selection.
-      if (isCalculatorUser) {
+      // Include calculator drop-offs OR High-value Tier A General Contact form leads
+      if (isCalculatorUser || (isContactFormLead && tier === 'A')) {
         let signalStrength = 'Low';
         let actionTriggered = 'None';
 
-        if (checkoutStartedAt || paypalVisible) {
-          signalStrength = '🔥 HOT (Checkout Abandoned)';
-          actionTriggered = 'Reached Payment Screen';
-        } else if (packageSelected) {
-          signalStrength = '⚡ WARM (Selected Package)';
-          actionTriggered = `Selected $${packageSelected} Package`;
+        if (isCalculatorUser) {
+          if (checkoutStartedAt || paypalVisible) {
+            signalStrength = '🔥 HOT (Checkout Abandoned)';
+            actionTriggered = 'Reached Payment Screen';
+          } else if (packageSelected) {
+            signalStrength = '⚡ WARM (Selected Package)';
+            actionTriggered = `Selected $${packageSelected} Package`;
+          } else {
+            signalStrength = 'NURTURE (Calculator Completed)';
+            actionTriggered = 'Estimated Eligibility';
+          }
         } else {
-          signalStrength = 'NURTURE (Calculator Completed)';
-          actionTriggered = 'Estimated Eligibility';
+          signalStrength = '🔥 HOT (Tier A Contact Form)';
+          actionTriggered = 'Submitted Contact Inquiry';
         }
 
         const paywallViewed = activity.paywallViewedAt ? '✓' : '✗';
         const packageSel = activity.packageSelected ? `✓ ($${activity.packageSelected})` : '✗';
         const paypalVis = activity.paypalVisible ? '✓' : '✗';
         const checkoutStart = activity.checkoutStartedAt ? '✓' : '✗';
-        const funnelChecklist = `PW: ${paywallViewed} | Pkg: ${packageSel} | PP: ${paypalVis} | Out: ${checkoutStart} | Paid: ✗`;
+        
+        const funnelChecklist = isCalculatorUser
+          ? `PW: ${paywallViewed} | Pkg: ${packageSel} | PP: ${paypalVis} | Out: ${checkoutStart} | Paid: ✗`
+          : `Tier A General B2B Lead | Revenue: ${revenue} | Source: ${source}`;
 
         hotLeads.push({
           rowNumber: idx + 2, // 1-indexed header offset

@@ -56,10 +56,11 @@ async function updateHeaders() {
     row[71] = 'Audit Candidate';
     row[72] = 'Annual Revenue';
     row[73] = 'Referral Source';
+    row[74] = 'Potential Funding Range';
 
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: 'Leads!A1:BV1',
+      range: 'Leads!A1:BW1',
       valueInputOption: 'USER_ENTERED',
       requestBody: {
         values: [row],

@@ -127,12 +127,13 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.auditCandidate || "No",
         data.annualRevenue || "N/A",
         data.referralSource || "N/A",
+        data.potentialFundingRange || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:BV",
+      range: "Leads!A:BW",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,

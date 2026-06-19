@@ -100,6 +100,17 @@ export async function POST(request: NextRequest) {
       referralSource: referralSource || "N/A",
     };
 
+    const getEstimatedOpportunityRange = (amount: string) => {
+      if (amount === "Under $25K") return "$5,000 – $25,000";
+      if (amount === "$25K–$100K") return "$25,000 – $100,000";
+      if (amount === "$100K–$250K") return "$100,000 – $250,000";
+      if (amount === "$250K–$500K") return "$250,000 – $500,000";
+      if (amount === "$500K–$1M") return "$500,000 – $1,000,000";
+      if (amount === "Over $1M") return "$1,000,000 – $5,000,000+";
+      return "TBD (Profile review pending)";
+    };
+    const potentialFundingRange = getEstimatedOpportunityRange(fundingAmount);
+
     // Calculate lead score & intelligence parameters
     const intelligence = calculateLeadIntelligence(leadData);
     const score = intelligence.score;
@@ -112,6 +123,7 @@ export async function POST(request: NextRequest) {
     // Save lead to Google Sheets database immediately
     await appendLeadToSheet({
       ...leadData,
+      potentialFundingRange,
       additionalNotes,
       leadTier: tier,
       auditCandidate: isAuditCandidate ? "Yes" : "No",
