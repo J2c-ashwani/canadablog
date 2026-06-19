@@ -527,12 +527,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 defaultRegion={classifyMarket(`${post.category} ${post.title} ${post.excerpt} ${post.slug}`) === 'usa' ? 'ca' : 'on'}
                 defaultIndustry={mapIntentToIndustry(fullPost.seo?.intent)}
               />
-              <GrantGuideCTA />
               <CategorySidebar type={post.type} />
               <div className="hidden lg:block">
                 <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: 600 }} />
               </div>
-              <NewsletterBox />
             </aside>
           </div>
         </div >

@@ -956,6 +956,7 @@ export default function ConsultationClient() {
                     </p>
                     <a
                       href={`/booking?email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}`}
+                      data-google-vignette="false"
                       className="inline-flex w-full items-center justify-center gap-2 rounded-xl bg-indigo-600 px-4 py-3 font-bold text-sm text-white hover:bg-indigo-700 hover:-translate-y-0.5 active:translate-y-0 duration-150 shadow-md shadow-indigo-100"
                     >
                       Choose a New Time Slot

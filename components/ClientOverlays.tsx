@@ -40,7 +40,8 @@ export function ClientOverlays() {
         "/calculator",
         "/products",
         "/portfolio",
-        "/checkout"
+        "/checkout",
+        "/contact"
     ]
 
     // Suppress lead magnet popups on transaction-focused pages

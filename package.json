@@ -11,7 +11,8 @@
     "seo:priority-sitemap": "node scripts/generate-priority-sitemap.js",
     "seo:recovery-sitemap": "node scripts/generate-indexing-recovery-sitemap.js",
     "seo:partners-sitemap": "node scripts/generate-partners-sitemap.js",
-    "funnel:analytics": "node scripts/sales-funnel-diagnostic.js"
+    "funnel:analytics": "node scripts/sales-funnel-diagnostic.js",
+    "funnel:hot-leads": "node scripts/hot-leads-report.js"
   },
   "dependencies": {
     "@google/generative-ai": "^0.24.1",

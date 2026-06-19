@@ -6,6 +6,7 @@ import { Mail, Bell, CheckCircle } from 'lucide-react';
 
 export default function NewsletterBox() {
   const [email, setEmail] = useState('');
+  const [submittedEmail, setSubmittedEmail] = useState('');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -25,6 +26,7 @@ export default function NewsletterBox() {
       });
 
       if (response.ok) {
+        setSubmittedEmail(email);
         setIsSubscribed(true);
         setEmail('');
       } else {
@@ -40,14 +42,24 @@ export default function NewsletterBox() {
 
   if (isSubscribed) {
     return (
-      <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg p-6 text-center">
-        <CheckCircle className="w-12 h-12 text-green-500 mx-auto mb-4" />
-        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">
+      <div className="bg-gradient-to-r from-green-50 to-blue-50 dark:from-green-900/20 dark:to-blue-900/20 rounded-lg p-6 text-center space-y-4">
+        <CheckCircle className="w-12 h-12 text-green-500 mx-auto" />
+        <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
           🎉 Successfully Subscribed!
         </h3>
-        <p className="text-gray-600 dark:text-gray-400">
-          You'll receive the latest grant alerts and funding opportunities directly in your inbox.
+        <p className="text-gray-600 dark:text-gray-400 text-sm">
+          You'll receive the latest grant alerts directly in your inbox.
         </p>
+        <div className="pt-2">
+          <Button
+            asChild
+            className="w-full bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white font-bold"
+          >
+            <a href={`/calculator?email=${encodeURIComponent(submittedEmail)}&utm_source=newsletter_box_success`}>
+              Check Grant Eligibility (30s)
+            </a>
+          </Button>
+        </div>
       </div>
     );
   }

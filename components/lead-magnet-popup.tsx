@@ -87,16 +87,26 @@ export function LeadMagnetPopup() {
             <DialogDescription className="text-green-700 mb-6">
               We've sent you the Ultimate Grant Guide and you'll receive weekly funding opportunities.
             </DialogDescription>
-            <Button
-              onClick={() => {
-                window.open("/pdf/ultimate-grant-guide.pdf", "_blank")
-                setIsOpen(false)
-              }}
-              className="bg-green-600 hover:bg-green-700"
-            >
-              <Download className="mr-2 h-4 w-4" />
-              Download Guide Now
-            </Button>
+            <div className="flex flex-col gap-3 max-w-xs mx-auto">
+              <Button
+                onClick={() => {
+                  window.open("/pdf/ultimate-grant-guide.pdf", "_blank")
+                  setIsOpen(false)
+                }}
+                className="bg-green-600 hover:bg-green-700 w-full"
+              >
+                <Download className="mr-2 h-4 w-4" />
+                Download Guide Now
+              </Button>
+              <Button
+                asChild
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold w-full"
+              >
+                <a href={`/calculator?email=${encodeURIComponent(email)}&utm_source=lead_magnet_popup_success`}>
+                  Check Grant Eligibility (30s)
+                </a>
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>

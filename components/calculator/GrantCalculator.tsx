@@ -131,9 +131,26 @@ export function GrantCalculator() {
         });
 
         const emailParam = params.get('email');
-        if (emailParam) {
-            setData(prev => ({ ...prev, email: emailParam }));
-        }
+        const nameParam = params.get('name');
+        const phoneParam = params.get('phone');
+        const companyParam = params.get('company');
+        const provinceParam = params.get('province');
+        const industryParam = params.get('industry');
+        const revenueParam = params.get('revenue');
+        const goalParam = params.get('goal');
+
+        setData(prev => {
+            const updated = { ...prev };
+            if (emailParam) updated.email = emailParam;
+            if (nameParam) updated.name = nameParam;
+            if (phoneParam) updated.phone = phoneParam;
+            if (companyParam) updated.company = companyParam;
+            if (provinceParam) updated.province = provinceParam.toLowerCase();
+            if (industryParam) updated.industry = industryParam;
+            if (revenueParam) updated.revenue = revenueParam;
+            if (goalParam) updated.goal = goalParam;
+            return updated;
+        });
 
         const token = params.get('token');
         if (!token) return;
@@ -953,8 +970,34 @@ export function GrantCalculator() {
 
             <CardContent className="pt-6 sm:p-8">
 
-                {/* Step 1: Location */}
+                {/* Step 1: What are you looking for today? */}
                 {step === 1 && (
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        <h3 className="text-xl font-semibold text-center mb-6">What are you looking for today?</h3>
+                        <RadioGroup value={data.goal} onValueChange={(val) => updateData("goal", val)} className="gap-3">
+                            {[
+                              { value: 'expansion', label: 'Looking for grants for my business', desc: 'Find active funding streams for operations' },
+                              { value: 'hiring', label: 'Hiring & Training funding', desc: 'Wage subsidies and employee skill development grants' },
+                              { value: 'expansion_equipment', label: 'Equipment & Facility Expansion', desc: 'Capital funding for equipment, facilities, or hardware' },
+                              { value: 'research', label: 'R&D or Tax credits (e.g. SR&ED / IRAP)', desc: 'Developing new products, software, or advanced technology' },
+                              { value: 'just researching', label: 'Just researching / learning', desc: 'Looking for general information, not ready to apply yet' },
+                            ].map(opt => (
+                              <Label key={opt.value} className={`flex items-center justify-between p-4 border rounded-xl cursor-pointer hover:bg-gray-50 transition-colors ${data.goal === opt.value ? 'border-green-500 bg-green-50 text-green-700 ring-1 ring-green-500' : ''}`}>
+                                <div className="flex items-center gap-3">
+                                    <RadioGroupItem value={opt.value} />
+                                    <div className="flex flex-col text-left">
+                                        <span className="font-semibold text-base">{opt.label}</span>
+                                        <span className="text-xs text-slate-500">{opt.desc}</span>
+                                    </div>
+                                </div>
+                              </Label>
+                            ))}
+                        </RadioGroup>
+                    </div>
+                )}
+
+                {/* Step 2: Location */}
+                {step === 2 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <h3 className="text-xl font-semibold text-center mb-6">Where is your business located?</h3>
                         <div className="space-y-3">
@@ -982,8 +1025,8 @@ export function GrantCalculator() {
                     </div>
                 )}
 
-                {/* Step 2: Industry */}
-                {step === 2 && (
+                {/* Step 3: Industry */}
+                {step === 3 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <h3 className="text-xl font-semibold text-center mb-6">What is your primary industry?</h3>
                         <div className="space-y-3">
@@ -1007,8 +1050,8 @@ export function GrantCalculator() {
                     </div>
                 )}
 
-                {/* Step 3: Revenue */}
-                {step === 3 && (
+                {/* Step 4: Revenue */}
+                {step === 4 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <h3 className="text-xl font-semibold text-center mb-6">What is your current annual revenue?</h3>
                         <RadioGroup value={data.revenue} onValueChange={(val) => updateData("revenue", val)} className="gap-4">
@@ -1030,27 +1073,6 @@ export function GrantCalculator() {
                     </div>
                 )}
 
-                {/* Step 4: Goal */}
-                {step === 4 && (
-                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                        <h3 className="text-xl font-semibold text-center mb-6">What is your primary funding goal?</h3>
-                        <RadioGroup value={data.goal} onValueChange={(val) => updateData("goal", val)} className="grid sm:grid-cols-2 gap-4">
-                            {[
-                              { value: 'hiring', label: 'Hiring & Training', desc: 'Wage subsidies and skills grants' },
-                              { value: 'research', label: 'R&D / Innovation', desc: 'Developing new tech or software' },
-                              { value: 'expansion', label: 'Business Expansion', desc: 'New equipment or facilities' },
-                              { value: 'export', label: 'Exporting', desc: 'Entering international markets' },
-                            ].map(opt => (
-                              <Label key={opt.value} className={`flex flex-col items-center justify-center p-6 border rounded-xl cursor-pointer hover:bg-gray-50 text-center gap-2 transition-colors ${data.goal === opt.value ? 'border-green-500 bg-green-50 text-green-700 ring-1 ring-green-500' : ''}`}>
-                                <RadioGroupItem value={opt.value} className="sr-only" />
-                                <span className="font-semibold text-lg">{opt.label}</span>
-                                <span className="text-sm font-normal opacity-70">{opt.desc}</span>
-                              </Label>
-                            ))}
-                        </RadioGroup>
-                    </div>
-                )}
-
                 {/* Step 5: Analyzing */}
                 {step === 5 && (
                     <div className="space-y-6 animate-in fade-in zoom-in duration-500 py-8">
@@ -1066,7 +1088,7 @@ export function GrantCalculator() {
                             </div>
                             {data.goal && (
                                 <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1500" style={{ animationFillMode: 'backwards' }}>
-                                    <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.goal} programs
+                                    <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.goal === 'just researching' ? 'general' : data.goal} programs
                                 </div>
                             )}
                             <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-[2000ms]" style={{ animationFillMode: 'backwards' }}>
@@ -2165,6 +2187,7 @@ export function GrantCalculator() {
                                 <p className="text-sm text-blue-700 font-medium mb-2">Bookmark your report for permanent access:</p>
                                 <a
                                   href={`/products/report?token=${accessToken}`}
+                                  data-google-vignette="false"
                                   className="text-sm text-blue-600 underline underline-offset-2 hover:text-blue-800 break-all"
                                 >
                                   fsidigital.ca/products/report?token={accessToken.slice(0, 8)}...
@@ -2206,6 +2229,7 @@ export function GrantCalculator() {
                               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                                 <a
                                   href={`/consultation?source=report-upsell&email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.name)}&industry=${encodeURIComponent(data.industry)}&region=${encodeURIComponent(data.province)}&discount=${discount}`}
+                                  data-google-vignette="false"
                                   className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-indigo-200"
                                   onClick={() => {
                                     trackEvent('audit_upsell_clicked', { source: 'funding_match_report' });
@@ -2332,10 +2356,10 @@ export function GrantCalculator() {
                         onClick={handleNext}
                         className="w-32 bg-green-600 hover:bg-green-700 text-white"
                         disabled={
-                            (step === 1 && !data.province) ||
-                            (step === 2 && !data.industry) ||
-                            (step === 3 && !data.revenue) ||
-                            (step === 4 && !data.goal)
+                            (step === 1 && !data.goal) ||
+                            (step === 2 && !data.province) ||
+                            (step === 3 && !data.industry) ||
+                            (step === 4 && !data.revenue)
                         }
                     >
                         {step === 4 ? 'Calculate' : 'Next'} <ArrowRight className="w-4 h-4 ml-2" />

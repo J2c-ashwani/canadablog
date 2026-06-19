@@ -164,6 +164,11 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   if (includesAny(effectiveFundingPurpose || notes, ['research', 'equipment', 'expansion', 'hiring', 'training'])) score += 8;
   if (includesAny(effectiveFundingPurpose || notes, ['working-capital', 'marketing'])) score += 2;
 
+  // Deduct points for low-intent informational seekers
+  if (includesAny(effectiveFundingPurpose || notes, ['just researching', 'learning', 'education only'])) {
+    score -= 30;
+  }
+
   if (hasValue(effectiveDescription)) score += effectiveDescription!.trim().length >= 40 ? 10 : 4;
 
   if (includesAny(source, ['ai grant finder'])) score += 12;

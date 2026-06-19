@@ -189,7 +189,7 @@ export function Header() {
                 )}
               </div>
 
-              <Link href="/calculator" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/calculator" data-google-vignette="false" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 Grant Calculator
               </Link>
 
@@ -217,7 +217,7 @@ export function Header() {
                 About
               </Link>
 
-              <Link href="/contact" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/contact" data-google-vignette="false" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 Contact
               </Link>
             </nav>
@@ -365,6 +365,7 @@ export function Header() {
 
                 <Link
                   href="/calculator"
+                  data-google-vignette="false"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -421,6 +422,7 @@ export function Header() {
 
                 <Link
                   href="/contact"
+                  data-google-vignette="false"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
                   onClick={() => setIsMenuOpen(false)}
                 >
@@ -440,7 +442,7 @@ export function Header() {
                     Search Grants
                   </Button>
                   <Button className="w-full bg-gradient-to-r from-primary to-secondary h-12" asChild>
-                    <Link href="/contact">Get Free Guide</Link>
+                    <Link href="/contact" data-google-vignette="false">Get Free Guide</Link>
                   </Button>
                 </div>
               </nav>

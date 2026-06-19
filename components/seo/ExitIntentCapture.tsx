@@ -129,15 +129,26 @@ export function ExitIntentCapture() {
             <div className="border border-slate-800 bg-slate-900/50 rounded-lg p-4 mb-6 text-sm text-slate-400">
               ⚡ We've sent you the <strong>Ultimate Grant Guide & Templates</strong> to your inbox.
             </div>
-            <Button
-              onClick={() => {
-                window.open("/pdf/ultimate-grant-guide.pdf", "_blank")
-                setIsOpen(false)
-              }}
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20"
-            >
-              Get Free Guide & Templates
-            </Button>
+            <div className="flex flex-col gap-3">
+              <Button
+                onClick={() => {
+                  window.open("/pdf/ultimate-grant-guide.pdf", "_blank")
+                  setIsOpen(false)
+                }}
+                className="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all"
+              >
+                Get Free Guide & Templates
+              </Button>
+              <Button
+                onClick={() => {
+                  setIsOpen(false)
+                  window.location.href = `/calculator?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&industry=${encodeURIComponent(industry)}&province=${encodeURIComponent(location)}&utm_source=exit_intent_success`
+                }}
+                className="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20"
+              >
+                Check Grant Eligibility (30s)
+              </Button>
+            </div>
           </div>
         </DialogContent>
       </Dialog>

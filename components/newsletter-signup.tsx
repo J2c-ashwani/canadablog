@@ -78,15 +78,25 @@ export function NewsletterSignup({
             <CheckCircle className="mx-auto h-12 w-12 text-green-600 mb-4" />
             <h3 className="text-lg font-semibold text-green-800 mb-2">Welcome to FSI Digital!</h3>
             <p className="text-green-700 mb-4">Check your email for your free PDF guide and weekly grant updates.</p>
-            {showPdfOffer && (
+            <div className="flex flex-col sm:flex-row gap-3 justify-center mt-4">
+              {showPdfOffer && (
+                <Button
+                  onClick={handleDownloadPDF}
+                  className="bg-green-600 hover:bg-green-700"
+                >
+                  <Download className="mr-2 h-4 w-4" />
+                  Download Your Free Guide
+                </Button>
+              )}
               <Button
-                onClick={handleDownloadPDF}
-                className="bg-green-600 hover:bg-green-700"
+                asChild
+                className="bg-blue-600 hover:bg-blue-700 text-white font-bold"
               >
-                <Download className="mr-2 h-4 w-4" />
-                Download Your Free Guide
+                <a href={`/calculator?email=${encodeURIComponent(email)}&utm_source=newsletter_signup_success`}>
+                  Check Grant Eligibility (30s)
+                </a>
               </Button>
-            )}
+            </div>
           </div>
         </CardContent>
       </Card>

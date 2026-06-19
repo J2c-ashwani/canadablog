@@ -122,6 +122,7 @@ export function StrategySessionUpsell({
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
             <a
               href={bookingHref}
+              data-google-vignette="false"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-gray-950 px-5 py-3 font-semibold text-white transition hover:bg-gray-800"
             >
               Book Funding Eligibility Audit
@@ -193,6 +194,7 @@ export function StrategySessionUpsell({
             <div className="mt-6 flex flex-col gap-3">
               <a
                 href={bookingHref}
+                data-google-vignette="false"
                 onClick={() => {
                   abandonmentRecordedRef.current = true; // prevent abandonment log
                   void recordRecoveryEvent('shown', { reason: 'clicked_upgrade_button' });

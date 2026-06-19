@@ -46,18 +46,28 @@ export default function GrantGuideCTA() {
                 </div>
                 <h3 className="text-xl font-bold text-green-800 dark:text-green-300 mb-2">Success!</h3>
                 <p className="text-green-700 dark:text-green-400 mb-4">Your guide is downloading...</p>
-                <Button
-                    variant="outline"
-                    className="w-full border-green-200 hover:bg-green-100 dark:border-green-800 dark:hover:bg-green-900"
-                    onClick={() => {
-                        const link = document.createElement('a');
-                        link.href = '/lead-magnets/ultimate-grant-guide-2026.pdf';
-                        link.download = 'Ultimate-Canada-Grant-Guide-2026.pdf';
-                        link.click();
-                    }}
-                >
-                    Download Again
-                </Button>
+                <div className="flex flex-col gap-3">
+                    <Button
+                        variant="outline"
+                        className="w-full border-green-200 hover:bg-green-100 dark:border-green-800 dark:hover:bg-green-900"
+                        onClick={() => {
+                            const link = document.createElement('a');
+                            link.href = '/lead-magnets/ultimate-grant-guide-2026.pdf';
+                            link.download = 'Ultimate-Canada-Grant-Guide-2026.pdf';
+                            link.click();
+                        }}
+                    >
+                        Download Again
+                    </Button>
+                    <Button
+                        asChild
+                        className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold"
+                    >
+                        <a href={`/calculator?email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&utm_source=grant_guide_cta_success`}>
+                            Check Grant Eligibility (30s)
+                        </a>
+                    </Button>
+                </div>
             </div>
         );
     }

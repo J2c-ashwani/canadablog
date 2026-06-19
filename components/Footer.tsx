@@ -73,7 +73,7 @@ export function Footer() {
                 <Link href="/blog" className="text-gray-400 hover:text-white text-sm">
                   Expert Insights
                 </Link>
-                <Link href="/contact" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/contact" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Contact
                 </Link>
                 <Link href="/guides" className="text-gray-400 hover:text-white text-sm">
@@ -82,7 +82,7 @@ export function Footer() {
                 <Link href="/resources" className="text-gray-400 hover:text-white text-sm">
                   Business Tools
                 </Link>
-                <Link href="/partners" className="text-gray-400 hover:text-white text-sm">
+                <Link href="/partners" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Funding Partners
                 </Link>
               </div>
@@ -348,10 +348,10 @@ export function Footer() {
                 <Link href="/terms" className="text-gray-400 hover:text-white text-xs">
                   Terms
                 </Link>
-                <Link href="/contact" className="text-gray-400 hover:text-white text-xs">
+                <Link href="/contact" data-google-vignette="false" className="text-gray-400 hover:text-white text-xs">
                   Contact
                 </Link>
-                <Link href="/partners" className="text-gray-400 hover:text-white text-xs">
+                <Link href="/partners" data-google-vignette="false" className="text-gray-400 hover:text-white text-xs">
                   Partners
                 </Link>
                 <a href="https://www.linkedin.com/company/fsidigital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Follow FSI Digital on LinkedIn">
