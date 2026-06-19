@@ -390,24 +390,30 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      This is a quick reminder that your exclusive reactivation pricing for the FSI Digital Funding Eligibility Report expires soon.
+      We often get asked: <strong>"How does FSI Digital help businesses access government funding?"</strong>
     </p>
     <p style="margin: 16px 0;">
-      Access your personalized dashboard to lock in your <strong>$${pricing.price} report</strong> (normally $199) and secure your documentation checklist before your profile file is closed.
+      It is a fair question. Government funding is provided directly by federal, provincial, and regional agencies. FSI Digital does not distribute these funds.
+    </p>
+    <p style="margin: 16px 0;">
+      Instead, FSI Digital identifies matching programs for your profile, compiles eligibility rules, highlights priority deadlines, and provides step-by-step guidance. You or your accountant use these tools and winning templates to submit directly to the government program portals.
+    </p>
+    <p style="margin: 16px 0;">
+      Review your matched opportunities and unlock your custom Funding Match Report in your dashboard:
     </p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
-        Claim Your Discounted Report &rarr;
+        View My Matches &rarr;
       </a>
     </div>
   `;
 
-  const subject = `⏰ Reminder: Your $${pricing.price} funding report offer is expiring`;
+  const subject = `How FSI Digital matches your business to government funding`;
   return sendEmail({
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is a reminder that your exclusive reactivation offer for the Funding Eligibility Report expires soon. Lock in your $${pricing.price} report (usually $199) here:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nUnlock your Funding Match Report in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-reminder",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -425,27 +431,30 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      We often get asked: <em>"Can a small tech firm really stack multiple government grant programs?"</em>
+      Government funding is designed to offset specific growth activities. Most programs fall under four main categories:
     </p>
+    <ul style="padding-left: 20px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
+      <li style="margin-bottom: 8px;"><strong>Hiring & Training:</strong> Wage subsidies covering up to 50-70% of candidate salaries.</li>
+      <li style="margin-bottom: 8px;"><strong>R&D / Innovation:</strong> Tax credits and grants for developer salaries and collaborative R&D.</li>
+      <li style="margin-bottom: 8px;"><strong>Business Expansion:</strong> Funding for purchasing equipment, machinery, or upgrading facilities.</li>
+      <li style="margin-bottom: 8px;"><strong>Exporting:</strong> Travel and market development grants to support international expansion.</li>
+    </ul>
     <p style="margin: 16px 0;">
-      The answer is yes. Recently, one of our platform members, <strong>Apex Tech Solutions</strong>, successfully secured <strong>$85,000 in combined funding</strong> by stacking provincial hiring subsidies with federal R&D tax credits (SR&ED).
-    </p>
-    <p style="margin: 16px 0;">
-      In your dashboard, we have mapped out a priority intake schedule for ${data.companyName || "your business"} based on Apex's success strategy. Unlock your full Funding Eligibility Report and checklist for just $${pricing.price} (usually $199).
+      A custom Funding Eligibility Report maps these active categories to your business stage and prioritizes opportunities by closing dates so you can focus on high-probability intakes first.
     </p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
-        View Stacking Strategy &rarr;
+        View Funding Priority Roadmap &rarr;
       </a>
     </div>
   `;
 
-  const subject = `💼 Case Study: How Apex Tech secured $85,000 in stacked funding`;
+  const subject = `Hiring, equipment, and expansion: What government funding covers`;
   return sendEmail({
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nApex Tech Solutions stacked hiring subsidies and SR&ED tax credits to secure $85,000. View your custom Funding Eligibility Report and checklist for $${pricing.price} (usually $199):\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. A custom Funding Eligibility Report maps these to your specific profile and prioritizes closing dates.\n\nView your priority roadmap in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-casestudy",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -463,24 +472,24 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      This is your final opportunity to claim your pre-qualification checklist and custom Funding Eligibility Report before your file is locked and archived.
+      This is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report before your active review file is locked and archived.
     </p>
     <p style="margin: 16px 0;">
-      Access your portal now to claim your discounted report for just $${pricing.price} (usually $199). Once this window closes, the price reverts to standard rates.
+      Unlock your report starting at just $19 to secure your step-by-step application templates and priority timelines before they are removed from your active queue.
     </p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #e11d48; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(225,29,72,0.2);">
-        Claim Your Discount Now &rarr;
+        Claim Your Report Access &rarr;
       </a>
     </div>
   `;
 
-  const subject = `⚠️ Final Notice: Your $${pricing.price} funding report expires soon`;
+  const subject = `⚠️ Final Notice: Your funding report access expires soon`;
   return sendEmail({
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom Funding Eligibility Report for $${pricing.price} (usually $199) before it is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom Funding Eligibility Report starting at $19 before your active review file is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-lastchance",
     companyName: data.companyName,
     from: BRAND_SENDER,
