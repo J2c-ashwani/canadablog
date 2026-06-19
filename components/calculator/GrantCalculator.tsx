@@ -854,6 +854,16 @@ export function GrantCalculator() {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             trackEvent('calc_paypal_visible');
+            if (data.email) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: data.email,
+                  event: "paypal_visible"
+                })
+              }).catch(e => console.error("Telemetry error logging paypal_visible:", e));
+            }
             observer.disconnect();
           }
         });
@@ -1312,6 +1322,32 @@ export function GrantCalculator() {
                                 </p>
                                 <p className="text-xs text-indigo-700 font-bold mt-1">
                                     No PayPal account required.
+                                </p>
+                            </div>
+
+                            {/* What Happens Next Block */}
+                            <div className="mb-6 bg-slate-50 rounded-xl p-4 border border-slate-200 text-left">
+                                <h5 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">What Happens Next?</h5>
+                                <ol className="space-y-1.5 text-xs text-slate-600 font-medium">
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-indigo-600 font-bold">1.</span>
+                                        <span>Complete secure checkout</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-indigo-600 font-bold">2.</span>
+                                        <span>Unlock your funding matches instantly</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-indigo-600 font-bold">3.</span>
+                                        <span>Review priority opportunities</span>
+                                    </li>
+                                    <li className="flex items-start gap-2">
+                                        <span className="text-indigo-600 font-bold">4.</span>
+                                        <span>Download your funding report</span>
+                                    </li>
+                                </ol>
+                                <p className="text-[10px] text-slate-500 mt-2.5 italic">
+                                    Average access time: less than 60 seconds
                                 </p>
                             </div>
 

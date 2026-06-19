@@ -48,6 +48,9 @@ export async function POST(request: NextRequest) {
     } else if (event === "package_selected") {
       activity.packageSelected = body.packageSelected
       activity.packageSelectedAt = now
+    } else if (event === "paypal_visible") {
+      activity.paypalVisible = true
+      activity.paypalVisibleAt = now
     } else if (event === "payment_approved") {
       activity.paymentApprovedAt = now
       if (body.paypalOrderId) {
