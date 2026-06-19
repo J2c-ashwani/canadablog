@@ -1143,7 +1143,7 @@ export function GrantCalculator() {
                               </ul>
                               <div className="mt-4 pt-4 border-t border-slate-100">
                                 <p className="text-slate-700 text-sm leading-relaxed">
-                                  We identified <strong className="text-emerald-700 font-bold">{grantCount}</strong> funding opportunities that may be relevant to your business.
+                                  We identified <strong className="text-emerald-700 font-bold">{grantCount}</strong> funding opportunities that may be relevant to your business, including programs related to hiring, expansion, equipment purchases, training, and growth initiatives.
                                 </p>
                               </div>
                             </div>
