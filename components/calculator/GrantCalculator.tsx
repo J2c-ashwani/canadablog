@@ -1063,67 +1063,87 @@ export function GrantCalculator() {
                    ═══════════════════════════════════════════════════ */}
                 {step === 6 && !isSuccess && (
                     <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500 py-2">
-                        {/* Welcome Back Banner */}
+                        {/* Welcome Back / Review Completed Banner */}
                         {isRestoredSession && (
-                          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-left shadow-xs flex items-start gap-3">
-                            <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-left shadow-xs flex items-start gap-3.5">
+                            <CheckCircle className="w-5.5 h-5.5 text-emerald-600 shrink-0 mt-0.5" />
                             <div>
-                              <h4 className="font-bold text-emerald-800 text-sm">Welcome Back</h4>
-                              <p className="text-emerald-700 text-xs mt-1">
-                                We reviewed the information previously submitted to FSI Digital and identified funding opportunities that may be relevant to your business.
+                              <h4 className="font-bold text-emerald-950 text-sm sm:text-base">
+                                {data.company
+                                  ? `Review Completed for ${data.company} in ${PROVINCE_NAMES[data.province.toLowerCase().trim()] || data.province || 'Canada'}`
+                                  : "Funding Opportunity Review Completed"}
+                              </h4>
+                              <p className="text-emerald-800 text-xs sm:text-sm mt-1 leading-relaxed">
+                                {data.company
+                                  ? "Based on the information previously submitted, we identified funding opportunities that may be relevant to your business."
+                                  : "We identified funding programs that may be relevant based on your location and business profile."}
                               </p>
                             </div>
                           </div>
                         )}
-                        {/* Qualification Criteria (Specificity Engine) */}
+
+                        {/* Why You Received This Funding Alert Block */}
                         {(() => {
-                          const cleanField = (val?: string) => {
-                            if (!val) return "";
+                          const cleanField = (val: string, fallback: string) => {
+                            if (!val) return fallback;
                             const trimmed = val.trim();
                             const lower = trimmed.toLowerCase();
-                            if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || lower === "undefined") {
-                              return "";
+                            if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
+                              return fallback;
                             }
                             return trimmed;
                           };
 
-                          const cleanProvince = cleanField(data.province);
-                          const cleanIndustry = cleanField(data.industry);
-                          const cleanRevenue = cleanField(data.revenue);
-                          const cleanGoal = cleanField(data.goal);
+                          const rawProv = cleanField(data.province, "Canada");
+                          const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
 
-                          const hasCriteria = !!(cleanProvince || cleanIndustry || cleanRevenue || cleanGoal);
+                          const rawInd = cleanField(data.industry, "General Business");
+                          const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
 
-                          if (hasCriteria) {
-                            return (
-                              <div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 text-left shadow-sm">
-                                <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Qualification Criteria</h4>
-                                <ul className="space-y-2 text-sm text-slate-800 font-medium">
-                                  {cleanProvince && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {cleanProvince} business</li>}
-                                  {cleanIndustry && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> {cleanIndustry} sector</li>}
-                                  {cleanRevenue && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Revenue: {cleanRevenue}</li>}
-                                  {cleanGoal && <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Goal: {cleanGoal}</li>}
-                                </ul>
-                                <div className="mt-4 pt-4 border-t border-slate-100">
-                                  <p className="text-slate-600 text-sm">
-                                    Based on these exact inputs, we found <strong className="text-emerald-700">{grantCount}</strong> active funding programs that appear highly relevant.
-                                  </p>
-                                </div>
-                              </div>
-                            );
-                          }
+                          const REVENUE_MAP: Record<string, string> = {
+                            'pre-revenue': 'Pre-revenue / Startup',
+                            'under-100k': 'Under $105,000',
+                            '100k-500k': '$100,000 - $500,000',
+                            '500k-1m': '$500,000 - $1M',
+                            'over-1m': 'Over $1M'
+                          };
+                          const rawRev = cleanField(data.revenue, "Active Business");
+                          const revenueLabel = REVENUE_MAP[rawRev.toLowerCase()] || rawRev;
+
+                          const GOAL_MAP: Record<string, string> = {
+                            'hiring': 'Hiring & Training',
+                            'research': 'R&D / Innovation',
+                            'expansion': 'Business Expansion',
+                            'export': 'Exporting'
+                          };
+                          const rawGoal = cleanField(data.goal, "Business Growth");
+                          const goalLabel = GOAL_MAP[rawGoal.toLowerCase()] || rawGoal;
 
                           return (
                             <div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 text-left shadow-sm">
-                              <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3">Database Matching</h4>
-                              <ul className="space-y-2 text-sm text-slate-800 font-medium">
-                                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Active Canadian business</li>
-                                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Verified provincial funding portals</li>
-                                <li className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-emerald-500" /> Live program intakes</li>
+                              <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3.5">Why You Received This Alert</h4>
+                              <p className="text-xs text-slate-500 mb-3">Based on information previously submitted to FSI Digital:</p>
+                              <ul className="space-y-2.5 text-sm text-slate-800 font-medium">
+                                <li className="flex items-center gap-2.5">
+                                  <span className="text-emerald-600 font-bold">✓</span>
+                                  <span className="text-slate-500 font-normal">Location:</span> {provinceName}
+                                </li>
+                                <li className="flex items-center gap-2.5">
+                                  <span className="text-emerald-600 font-bold">✓</span>
+                                  <span className="text-slate-500 font-normal">Industry:</span> {industryName}
+                                </li>
+                                <li className="flex items-center gap-2.5">
+                                  <span className="text-emerald-600 font-bold">✓</span>
+                                  <span className="text-slate-500 font-normal">Business Stage:</span> {revenueLabel}
+                                </li>
+                                <li className="flex items-center gap-2.5">
+                                  <span className="text-emerald-600 font-bold">✓</span>
+                                  <span className="text-slate-500 font-normal">Funding Goal:</span> {goalLabel}
+                                </li>
                               </ul>
                               <div className="mt-4 pt-4 border-t border-slate-100">
-                                <p className="text-slate-600 text-sm">
-                                  We scanned all active regional and federal databases and identified <strong className="text-emerald-700">11</strong> programs that appear highly relevant.
+                                <p className="text-slate-700 text-sm leading-relaxed">
+                                  We identified <strong className="text-emerald-700 font-bold">{grantCount}</strong> funding opportunities that may be relevant to your business.
                                 </p>
                               </div>
                             </div>
@@ -1284,6 +1304,17 @@ export function GrantCalculator() {
                                 </div>
                             </div>
                             
+                            {/* Secure Checkout Notice */}
+                            <div className="mb-4 text-center border-b border-slate-105 pb-4">
+                                <h5 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-1">Secure Checkout</h5>
+                                <p className="text-xs text-slate-600">
+                                    Pay securely with Visa, Mastercard, American Express, Debit Card, or PayPal.
+                                </p>
+                                <p className="text-xs text-indigo-700 font-bold mt-1">
+                                    No PayPal account required.
+                                </p>
+                            </div>
+
                             <div className="min-h-[150px]">
                                 {!sdkReady && (
                                     <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
@@ -1359,6 +1390,10 @@ export function GrantCalculator() {
                             <h5 className="font-bold text-slate-900 text-lg mb-4">Common Questions</h5>
                             
                             <div className="space-y-4">
+                                <div>
+                                    <p className="text-sm font-bold text-slate-800">How does FSI Digital help businesses access funding?</p>
+                                    <p className="text-sm text-slate-600 mt-1">Government funding is provided by federal, provincial, and regional agencies. FSI Digital identifies programs that appear relevant to your business, organizes eligibility requirements, highlights priority opportunities, and provides guidance to help you evaluate and pursue them.</p>
+                                </div>
                                 <div>
                                     <p className="text-sm font-bold text-slate-800">What happens if I leave without my matches?</p>
                                     <p className="text-sm text-slate-600 mt-1">Your matches still exist. But you'll still face hours of manual Google research, comparing conflicting eligibility requirements, and uncertainty about which programs can be stacked.</p>
