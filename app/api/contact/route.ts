@@ -65,7 +65,19 @@ export async function POST(request: NextRequest) {
 
     // Perform phone validation
     const phoneValResult = validatePhone(rawPhone, country);
-    const phone = phoneValResult.isValid ? phoneValResult.formatted : rawPhone;
+
+    // Hard reject: number is structurally invalid (wrong length, bad NANP area/exchange code)
+    if (!phoneValResult.isValid) {
+      return NextResponse.json({
+        error: `The phone number provided appears to be invalid (${phoneValResult.carrier}). Please enter a valid business phone number.`
+      }, { status: 400 });
+    }
+
+    const phone = phoneValResult.formatted;
+    // Flag VOIP/toll-free in notes — do not hard-reject as many B2B companies use VoIP
+    const phoneTypeFlag = phoneValResult.isVoipOrTollFree
+      ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
+      : '';
 
     // Compile lead details for scoring
     const leadData = {
@@ -117,7 +129,7 @@ export async function POST(request: NextRequest) {
     const tier = intelligence.tier;
     const isAuditCandidate = tier === "A";
 
-    const phoneValidationNotes = `Phone Format: ${phoneValResult.isValid ? "Valid" : "Invalid"}, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}`;
+    const phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
     const additionalNotes = `Request Type: ${requestType || "General"}\nMessage: ${businessDescription}\n${phoneValidationNotes}`;
 
     // Save lead to Google Sheets database immediately

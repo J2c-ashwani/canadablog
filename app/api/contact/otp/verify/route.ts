@@ -1,11 +1,16 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { decrypt, encrypt } from "@/lib/crypto-helper";
 import { updateLeadInSheet } from "@/lib/google-sheets";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
+  // Rate limiting: 20 verification attempts per hour per IP
+  const limitRes = applyRateLimit(request, 20, 60 * 60 * 1000);
+  if (limitRes.isLimited) return limitRes.response;
+
   try {
     const { email, code, token } = await request.json();
 
