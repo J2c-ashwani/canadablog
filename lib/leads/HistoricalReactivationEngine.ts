@@ -15,8 +15,8 @@ export interface ReactivationCandidate {
 }
 
 export class HistoricalReactivationEngine {
-  // June 6, 2026 is the cutoff date before which all leads are considered historical
-  static CUTOFF_DATE = new Date("2026-06-06T00:00:00.000Z");
+  // June 16, 2026 is the cutoff date before which all leads are considered historical
+  static CUTOFF_DATE = new Date("2026-06-16T00:00:00.000Z");
 
   static async processDailyBatch(limit = 70, dryRun = false): Promise<{
     processed: number;
@@ -177,6 +177,10 @@ export class HistoricalReactivationEngine {
               name: lead.name,
               loginToken: lead.loginToken || "",
               companyName: lead.companyName,
+              region: lead.region,
+              industry: lead.industry,
+              businessStage: lead.businessStage,
+              fundingInterests: lead.fundingInterests,
               forceResend: true
             });
             success = res.success;
@@ -187,6 +191,10 @@ export class HistoricalReactivationEngine {
               name: lead.name,
               loginToken: lead.loginToken || "",
               companyName: lead.companyName,
+              region: lead.region,
+              industry: lead.industry,
+              businessStage: lead.businessStage,
+              fundingInterests: lead.fundingInterests,
               forceResend: true
             });
             success = res.success;
@@ -197,6 +205,10 @@ export class HistoricalReactivationEngine {
               name: lead.name,
               loginToken: lead.loginToken || "",
               companyName: lead.companyName,
+              region: lead.region,
+              industry: lead.industry,
+              businessStage: lead.businessStage,
+              fundingInterests: lead.fundingInterests,
               forceResend: true
             });
             success = res.success;
@@ -207,6 +219,10 @@ export class HistoricalReactivationEngine {
               name: lead.name,
               loginToken: lead.loginToken || "",
               companyName: lead.companyName,
+              region: lead.region,
+              industry: lead.industry,
+              businessStage: lead.businessStage,
+              fundingInterests: lead.fundingInterests,
               forceResend: true
             });
             success = res.success;
@@ -217,6 +233,10 @@ export class HistoricalReactivationEngine {
               name: lead.name,
               loginToken: lead.loginToken || "",
               companyName: lead.companyName,
+              region: lead.region,
+              industry: lead.industry,
+              businessStage: lead.businessStage,
+              fundingInterests: lead.fundingInterests,
               forceResend: true
             });
             success = res.success;

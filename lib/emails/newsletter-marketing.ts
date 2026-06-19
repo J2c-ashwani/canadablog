@@ -385,11 +385,102 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
 /**
  * Reactivation Nurture Day 2: Reminder Email
  */
-export async function sendReactivationReminderEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
+export interface ReactivationEmailData {
+  to: string;
+  name?: string;
+  loginToken: string;
+  companyName?: string;
+  region?: string;
+  industry?: string;
+  businessStage?: string;
+  fundingInterests?: string[];
+  forceResend?: boolean;
+}
+
+export function getLeadSegmentation(data: ReactivationEmailData) {
+  const cleanField = (val?: string) => {
+    if (!val) return "";
+    const trimmed = val.trim();
+    const lower = trimmed.toLowerCase();
+    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth") {
+      return "";
+    }
+    return trimmed;
+  };
+
+  const cleanIndustry = cleanField(data.industry);
+  const cleanRegion = cleanField(data.region);
+  const cleanStage = cleanField(data.businessStage);
+  const companyName = cleanField(data.companyName);
+
+  const hasCompany = !!companyName;
+  const hasIndustry = !!cleanIndustry;
+  const hasRegion = !!cleanRegion;
+  const hasStage = !!cleanStage;
+
+  const leadClass = (hasCompany && hasIndustry && hasRegion)
+    ? 'A'
+    : (hasIndustry || hasRegion)
+      ? 'B'
+      : 'C';
+
+  return {
+    leadClass,
+    companyName,
+    industry: cleanIndustry,
+    region: cleanRegion,
+    businessStage: cleanStage,
+    hasCompany,
+    hasIndustry,
+    hasRegion,
+    hasStage
+  };
+}
+
+/**
+ * Reactivation Nurture Day 2: Reminder / Objection Handling
+ */
+export async function sendReactivationReminderEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_reminder&price=${pricing.price}`;
   
+  const { leadClass, companyName, industry, region } = getLeadSegmentation(data);
+
+  let subject = "How FSI Digital matches businesses to government funding";
+  let middleTextHtml = "";
+  let textCopy = "";
+
+  if (leadClass === 'A') {
+    subject = `How FSI Digital matches ${companyName} to government funding`;
+    middleTextHtml = `
+      <p style="margin: 16px 0;">
+        Instead, we identify matching programs for your profile, compile eligibility rules, highlight priority deadlines, and provide step-by-step guidance. Based on the information previously submitted for <strong>${companyName}</strong>, we identified government funding opportunities that appear relevant to <strong>${industry}</strong> companies in <strong>${region}</strong>.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nBased on the profile submitted for ${companyName}, we identified opportunities relevant to ${industry} companies in ${region}.\n\nUnlock your Funding Match Report in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  } else if (leadClass === 'B') {
+    subject = `How FSI Digital matches your business to government funding`;
+    const profileMatch = region && industry 
+      ? `${industry} businesses in ${region}` 
+      : (region || industry);
+    middleTextHtml = `
+      <p style="margin: 16px 0;">
+        Instead, we identify matching programs for your profile, compile eligibility rules, highlight priority deadlines, and provide step-by-step guidance. Based on the information we have on file, we identified funding opportunities relevant to businesses operating in <strong>${profileMatch}</strong>.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nBased on the details on file, we identified opportunities relevant to businesses in ${profileMatch}.\n\nUnlock your Funding Match Report in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  } else {
+    // Class C (Newsletter)
+    subject = `How FSI Digital matches businesses to government funding`;
+    middleTextHtml = `
+      <p style="margin: 16px 0;">
+        Instead, we identify matching programs, compile eligibility rules, highlight priority deadlines, and provide step-by-step guidance. We recently expanded our funding database and identified new government programs that may be relevant to Canadian businesses.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nWe recently expanded our database and found new programs relevant to Canadian businesses.\n\nView opportunities in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  }
+
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
       We often get asked: <strong>"How does FSI Digital help businesses access government funding?"</strong>
@@ -397,14 +488,12 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
     <p style="margin: 16px 0;">
       It is a fair question. Government funding is provided directly by federal, provincial, and regional agencies. FSI Digital does not distribute these funds.
     </p>
+    ${middleTextHtml}
     <p style="margin: 16px 0;">
-      Instead, FSI Digital identifies matching programs for your profile, compiles eligibility rules, highlights priority deadlines, and provides step-by-step guidance. You or your accountant use these tools and winning templates to submit directly to the government program portals.
-    </p>
-    <p style="margin: 16px 0;">
-      When you unlock your custom Funding Match Report, here is exactly what unlocks in your portal:
+      When you unlock the Funding Match Report, here is exactly what unlocks in your portal:
     </p>
     <ul style="padding-left: 20px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
-      <li style="margin-bottom: 6px;"><strong>Priority Match Ranking:</strong> See which programs are highly relevant to your business profile first.</li>
+      <li style="margin-bottom: 6px;"><strong>Priority Match Ranking:</strong> See which programs are highly relevant first.</li>
       <li style="margin-bottom: 6px;"><strong>Eligibility Breakdown:</strong> Clear, organized qualification criteria for each program.</li>
       <li style="margin-bottom: 6px;"><strong>Intake Deadlines:</strong> Track closing windows and opening cycles so you don't miss key dates.</li>
       <li style="margin-bottom: 6px;"><strong>Funding Estimates:</strong> View realistic grant match ranges and wage subsidy limits.</li>
@@ -420,12 +509,11 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
     </div>
   `;
 
-  const subject = `How FSI Digital matches your business to government funding`;
   return sendEmail({
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nUnlock your Funding Match Report in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: textCopy,
     tagType: "reactivation-reminder",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -434,17 +522,49 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
 }
 
 /**
- * Reactivation Nurture Day 5: Case Study Email
+ * Reactivation Nurture Day 5: Educational categories
  */
-export async function sendReactivationCaseStudyEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
+export async function sendReactivationCaseStudyEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_casestudy&price=${pricing.price}`;
   
+  const { leadClass, companyName, industry, region } = getLeadSegmentation(data);
+
+  let subject = "Hiring, equipment, and expansion: What government funding covers";
+  let introHtml = "";
+  let textCopy = "";
+
+  if (leadClass === 'A') {
+    subject = `Funding programs for ${industry} businesses in ${region}`;
+    introHtml = `
+      <p style="margin: 0 0 16px 0;">
+        Government funding is designed to offset specific growth activities. Based on the profile we reviewed for <strong>${companyName}</strong> (operating in <strong>${industry}</strong> in <strong>${region}</strong>), here is how active programs map to your goals:
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. Based on the profile reviewed for ${companyName} in ${region}, we mapped these active categories to your goals.\n\nView your priority roadmap in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  } else if (leadClass === 'B') {
+    const profileMatch = region && industry 
+      ? `${industry} businesses in ${region}` 
+      : (region || industry);
+    introHtml = `
+      <p style="margin: 0 0 16px 0;">
+        Government funding is designed to offset specific growth activities. Based on the profile on file for your business in <strong>${profileMatch}</strong>, here is how active programs map to standard growth categories:
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. Based on your details in ${profileMatch}, we mapped these active categories to your goals.\n\nView your priority roadmap in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  } else {
+    // Class C (Newsletter)
+    introHtml = `
+      <p style="margin: 0 0 16px 0;">
+        Government funding is designed to offset specific growth activities. Most programs fall under four main categories:
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. Most programs fall under these four categories.\n\nView available opportunities in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  }
+
   const contentHtml = `
-    <p style="margin: 0 0 16px 0;">
-      Government funding is designed to offset specific growth activities. Most programs fall under four main categories:
-    </p>
+    ${introHtml}
     <ul style="padding-left: 20px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
       <li style="margin-bottom: 8px;"><strong>Hiring & Training:</strong> Wage subsidies covering up to 50-70% of candidate salaries.</li>
       <li style="margin-bottom: 8px;"><strong>R&D / Innovation:</strong> Tax credits and grants for developer salaries and collaborative R&D.</li>
@@ -452,7 +572,10 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
       <li style="margin-bottom: 8px;"><strong>Exporting:</strong> Travel and market development grants to support international expansion.</li>
     </ul>
     <p style="margin: 16px 0;">
-      A custom Funding Eligibility Report maps these active categories to your business stage and prioritizes opportunities by closing dates so you can focus on high-probability intakes first.
+      ${leadClass === 'C' 
+        ? "Accessing these matches provides priority program rankings and highlights active intake windows before deadlines close."
+        : "A custom Funding Eligibility Report maps these active categories to your business stage and prioritizes opportunities by closing dates so you can focus on high-probability intakes first."
+      }
     </p>
     <p style="margin: 16px 0;">
       Your custom report instantly unlocks:
@@ -470,12 +593,11 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
     </div>
   `;
 
-  const subject = `Some of your matched opportunities may support hiring and growth`;
   return sendEmail({
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. A custom Funding Eligibility Report maps these to your specific profile and prioritizes closing dates.\n\nView your priority roadmap in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: textCopy,
     tagType: "reactivation-casestudy",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -484,20 +606,60 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
 }
 
 /**
- * Reactivation Nurture Day 8: Last Chance Email
+ * Reactivation Nurture Day 8: Last Chance / Urgency
  */
-export async function sendReactivationLastChanceEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
+export async function sendReactivationLastChanceEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_lastchance&price=${pricing.price}`;
   
-  const contentHtml = `
-    <p style="margin: 0 0 16px 0;">
-      This is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report before your active review file is locked and archived.
-    </p>
-    <p style="margin: 16px 0;">
-      Unlock your report starting at just $19 to secure your step-by-step application templates and priority timelines before they are removed from your active queue.
-    </p>
+  const { leadClass, companyName, region, industry } = getLeadSegmentation(data);
+
+  let subject = "Final Reminder: Funding opportunities are available for review";
+  let contentHtml = "";
+  let textCopy = "";
+
+  if (leadClass === 'A') {
+    subject = `Final Reminder: Your funding review for ${companyName} is still available`;
+    contentHtml = `
+      <p style="margin: 0 0 16px 0;">
+        This is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report for <strong>${companyName}</strong> before your active review file is locked and archived.
+      </p>
+      <p style="margin: 16px 0;">
+        Unlock your report starting at just $19 to secure your step-by-step application templates and priority timelines before they are removed from your active queue.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nThis is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report for ${companyName} before your active review file is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  } else if (leadClass === 'B') {
+    subject = "Final Reminder: Your matched opportunities are ready for review";
+    const profileMatch = region && industry 
+      ? `${industry} business in ${region}` 
+      : (region || industry);
+    contentHtml = `
+      <p style="margin: 0 0 16px 0;">
+        This is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report for your business in <strong>${profileMatch}</strong> before your active review file is locked and archived.
+      </p>
+      <p style="margin: 16px 0;">
+        Unlock your report starting at just $19 to secure your step-by-step application templates and priority timelines before they are removed from your active queue.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nThis is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report for your business in ${profileMatch} before your active review file is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  } else {
+    // Class C (Newsletter)
+    subject = "Final Reminder: Funding opportunities are available for review";
+    contentHtml = `
+      <p style="margin: 0 0 16px 0;">
+        This is your final notice to access the pre-qualification checklist and custom Funding Eligibility Report before your active review file is locked and archived.
+      </p>
+      <p style="margin: 16px 0;">
+        Unlock report access starting at just $19 to secure the step-by-step application templates and priority timelines before they are removed from your active queue.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nThis is your final notice to access your pre-qualification checklist and custom Funding Eligibility Report before your file is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+  }
+
+  const finalHtml = `
+    ${contentHtml}
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #e11d48; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(225,29,72,0.2);">
         Claim Your Report Access &rarr;
@@ -505,12 +667,11 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
     </div>
   `;
 
-  const subject = `Final Reminder: Your matched opportunities are ready for review`;
   return sendEmail({
     to: data.to,
     subject,
-    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nThis is your final opportunity to claim your custom Funding Eligibility Report starting at $19 before your active review file is archived:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    html: wrapNewsletterTemplate(finalHtml, data.loginToken, firstName),
+    text: textCopy,
     tagType: "reactivation-lastchance",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -519,16 +680,48 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
 }
 
 /**
- * Reactivation Nurture Day 14: Final Close Email
+ * Reactivation Nurture Day 14: Final Close / Breakup
  */
-export async function sendReactivationFinalCloseEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
+export async function sendReactivationFinalCloseEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_finalclose`;
   
+  const { leadClass, companyName, region, industry } = getLeadSegmentation(data);
+
+  let introHtml = "";
+  let textCopy = "";
+  let subject = "🔒 Transitioning your pending funding profile file";
+
+  if (leadClass === 'A') {
+    introHtml = `
+      <p style="margin: 0 0 16px 0;">
+        We haven't heard back regarding your updated funding matches for <strong>${companyName}</strong>.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nWe haven't heard back regarding your updated funding matches for ${companyName}.\n\nWe are closing your active review file today. To keep our analyst support focused on active applicants, we are moving your profile to our low-frequency update list.\n\n${targetUrl}`;
+  } else if (leadClass === 'B') {
+    const profileMatch = region && industry 
+      ? `${industry} business in ${region}` 
+      : (region || industry);
+    introHtml = `
+      <p style="margin: 0 0 16px 0;">
+        We haven't heard back regarding your updated funding matches for your business in <strong>${profileMatch}</strong>.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nWe haven't heard back regarding your updated funding matches for your business in ${profileMatch}.\n\nWe are closing your active review file today. To keep our analyst support focused on active applicants, we are moving your profile to our low-frequency update list.\n\n${targetUrl}`;
+  } else {
+    // Class C (Newsletter)
+    subject = "🔒 Transitioning your pending alert file";
+    introHtml = `
+      <p style="margin: 0 0 16px 0;">
+        We haven't heard back regarding the recent funding matches.
+      </p>
+    `;
+    textCopy = `Hi ${firstName},\n\nWe haven't heard back regarding the recent funding matches.\n\nWe are closing your active review file today. To keep our analyst support focused, we are moving your profile to our low-frequency update list.\n\n${targetUrl}`;
+  }
+
   const contentHtml = `
-    <p style="margin: 0 0 16px 0;">
-      We haven't heard back regarding your updated funding matches for ${data.companyName || "your business"}.
-    </p>
+    ${introHtml}
     <p style="margin: 16px 0;">
       We are closing your active review file today. To keep our analyst support focused on active applicants, we are moving your profile to our low-frequency update list.
     </p>
@@ -545,12 +738,11 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
     </div>
   `;
 
-  const subject = `🔒 Transitioning your pending funding profile file`;
   return sendEmail({
     to: data.to,
     subject,
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
-    text: `Hi ${firstName},\n\nWe are closing your active review file today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
+    text: textCopy,
     tagType: "reactivation-finalclose",
     companyName: data.companyName,
     from: BRAND_SENDER,
@@ -561,30 +753,63 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
 /**
  * Reactivation Nurture Day 11: Dedicated Founder Email (Plain Text Style)
  */
-export async function sendReactivationFounderEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
+export async function sendReactivationFounderEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_founder`;
   const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${data.loginToken}`;
 
-  const subject = `Re: your funding review`;
+  const { leadClass, companyName, region, industry } = getLeadSegmentation(data);
+
+  let subject = "Re: your funding review";
+  let bodyHtml = "";
+  let text = "";
+
+  if (leadClass === 'A') {
+    subject = "Re: your funding review";
+    bodyHtml = `
+      <p>Hi ${firstName},</p>
+      <p>I wanted to reach out personally to see if you had any questions about the funding opportunities we matched for <strong>${companyName}</strong>.</p>
+      <p>While reviewing <strong>${industry}</strong> opportunities in <strong>${region}</strong>, I noticed several programs that may be relevant to <strong>${companyName}</strong>. I wanted to send one final note before we close the file.</p>
+      <p>To be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.</p>
+      <p>What we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.</p>
+      <p>If you'd like to check your matches or lock in your custom report, you can access your dashboard here:</p>
+      <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
+      <p>Let me know if you have any questions.</p>
+    `;
+    text = `Hi ${firstName},\n\nI wanted to reach out personally to see if you had any questions about the funding opportunities we matched for ${companyName}.\n\nWhile reviewing ${industry} opportunities in ${region}, I noticed several programs that may be relevant to ${companyName}. I wanted to send one final note before we close the file.\n\nTo be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.\n\nWhat we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.\n\nIf you'd like to check your matches or lock in your custom report, you can access your dashboard here:\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  } else if (leadClass === 'B') {
+    subject = "Re: your funding review";
+    const profileMatch = region && industry 
+      ? `${industry} opportunities in ${region}` 
+      : (region || industry);
+    bodyHtml = `
+      <p>Hi ${firstName},</p>
+      <p>I wanted to reach out personally to see if you had any questions about the funding opportunities we matched for your business in <strong>${profileMatch}</strong>.</p>
+      <p>While reviewing opportunities in <strong>${profileMatch}</strong>, I noticed several programs that may be worth investigating. I wanted to send a final note before we close the file.</p>
+      <p>To be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.</p>
+      <p>What we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.</p>
+      <p>If you'd like to check your matches or lock in your custom report, you can access your dashboard here:</p>
+      <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
+      <p>Let me know if you have any questions.</p>
+    `;
+    text = `Hi ${firstName},\n\nI wanted to reach out personally to see if you had any questions about the funding opportunities we matched for your business in ${profileMatch}.\n\nWhile reviewing opportunities in ${profileMatch}, I noticed several programs that may be worth investigating. I wanted to send a final note before we close the file.\n\nTo be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.\n\nWhat we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.\n\nIf you'd like to check your matches or lock in your custom report, you can access your dashboard here:\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  } else {
+    // Class C (Newsletter)
+    subject = "quick question";
+    bodyHtml = `
+      <p>Hi ${firstName},</p>
+      <p>We never heard back after sending the funding review notice.</p>
+      <p>If government funding is something you're exploring this year, you can still review the opportunities we identified.</p>
+      <p>As we recently expanded our funding database, we found several new programs for Canadian businesses. You can check the dashboard to see if any of these programs are relevant:</p>
+      <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
+      <p>Let me know if you have any questions.</p>
+    `;
+    text = `Hi ${firstName},\n\nWe never heard back after sending the funding review notice.\n\nIf government funding is something you're exploring this year, you can still review the new opportunities we identified.\n\nAs we recently expanded our funding database, we found several new programs for Canadian businesses. You can check the dashboard to see if any of these programs are relevant:\n${targetUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  }
 
   const html = `
     <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; color: #334155; line-height: 1.6; max-width: 580px; margin: 0 auto; padding: 20px 0; text-align: left;">
-      <p>Hi ${firstName},</p>
-      
-      <p>I wanted to reach out personally to see if you had any questions about the funding opportunities we matched for ${data.companyName || "your business"}.</p>
-      
-      <p>A common question we get from founders is: <em>"How does FSI Digital secure this funding?"</em></p>
-      
-      <p>To be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.</p>
-      
-      <p>What we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.</p>
-      
-      <p>If you'd like to check your matches or lock in your custom report, you can access your dashboard here:</p>
-      <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
-      
-      <p>Let me know if you have any questions.</p>
-      
+      ${bodyHtml}
       <p style="margin-bottom: 0;">
         Best,<br/>
         <strong>Ashwani K</strong><br/>
@@ -598,8 +823,6 @@ export async function sendReactivationFounderEmail(data: { to: string; name?: st
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nI wanted to reach out personally to see if you had any questions about the funding opportunities we matched for ${data.companyName || "your business"}.\n\nA common question we get from founders is: "How does FSI Digital secure this funding?"\n\nTo be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.\n\nWhat we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.\n\nIf you'd like to check your matches or lock in your custom report, you can access your dashboard here:\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
-
   return sendEmail({
     to: data.to,
     subject,
@@ -611,3 +834,4 @@ export async function sendReactivationFounderEmail(data: { to: string; name?: st
     forceResend: data.forceResend
   });
 }
+
