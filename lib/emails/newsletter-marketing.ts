@@ -399,7 +399,17 @@ export async function sendReactivationReminderEmail(data: { to: string; name?: s
       Instead, FSI Digital identifies matching programs for your profile, compiles eligibility rules, highlights priority deadlines, and provides step-by-step guidance. You or your accountant use these tools and winning templates to submit directly to the government program portals.
     </p>
     <p style="margin: 16px 0;">
-      Review your matched opportunities and unlock your custom Funding Match Report in your dashboard:
+      When you unlock your custom Funding Match Report, here is exactly what unlocks in your portal:
+    </p>
+    <ul style="padding-left: 20px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
+      <li style="margin-bottom: 6px;"><strong>Priority Match Ranking:</strong> See which programs are highly relevant to your business profile first.</li>
+      <li style="margin-bottom: 6px;"><strong>Eligibility Breakdown:</strong> Clear, organized qualification criteria for each program.</li>
+      <li style="margin-bottom: 6px;"><strong>Intake Deadlines:</strong> Track closing windows and opening cycles so you don't miss key dates.</li>
+      <li style="margin-bottom: 6px;"><strong>Funding Estimates:</strong> View realistic grant match ranges and wage subsidy limits.</li>
+      <li style="margin-bottom: 6px;"><strong>Step-by-Step Next Actions:</strong> Get the exact documentation requirements and submission checklists.</li>
+    </ul>
+    <p style="margin: 16px 0;">
+      Review your matched opportunities and access your roadmap in your dashboard:
     </p>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
@@ -442,6 +452,15 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
     <p style="margin: 16px 0;">
       A custom Funding Eligibility Report maps these active categories to your business stage and prioritizes opportunities by closing dates so you can focus on high-probability intakes first.
     </p>
+    <p style="margin: 16px 0;">
+      Your custom report instantly unlocks:
+    </p>
+    <ul style="padding-left: 20px; margin: 16px 0; font-size: 14px; line-height: 1.6;">
+      <li style="margin-bottom: 6px;">Priority program ranking and eligibility rules</li>
+      <li style="margin-bottom: 6px;">Active intake windows and closing deadlines</li>
+      <li style="margin-bottom: 6px;">Estimated funding amounts for each match</li>
+      <li style="margin-bottom: 6px;">Step-by-step next actions and checklist sheets</li>
+    </ul>
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
         View Funding Priority Roadmap &rarr;
