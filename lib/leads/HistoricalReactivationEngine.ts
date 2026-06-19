@@ -4,12 +4,13 @@ import {
   sendReactivationReminderEmail,
   sendReactivationCaseStudyEmail,
   sendReactivationLastChanceEmail,
+  sendReactivationFounderEmail,
   sendReactivationFinalCloseEmail
 } from "../emails/newsletter-marketing"
 
 export interface ReactivationCandidate {
   lead: SubscriberProfile;
-  nextStage: "day0" | "day2" | "day5" | "day8" | "day14";
+  nextStage: "day0" | "day2" | "day5" | "day8" | "day11" | "day14";
   currentStage: string | null;
 }
 
@@ -24,6 +25,7 @@ export class HistoricalReactivationEngine {
       day2: number;
       day5: number;
       day8: number;
+      day11: number;
       day14: number;
     };
     completedCount: number;
@@ -91,7 +93,9 @@ export class HistoricalReactivationEngine {
           candidates.push({ lead: sub, nextStage: "day5", currentStage });
         } else if (currentStage === "day5" && elapsedDays >= 3) {
           candidates.push({ lead: sub, nextStage: "day8", currentStage });
-        } else if (currentStage === "day8" && elapsedDays >= 6) {
+        } else if (currentStage === "day8" && elapsedDays >= 3) {
+          candidates.push({ lead: sub, nextStage: "day11", currentStage });
+        } else if (currentStage === "day11" && elapsedDays >= 3) {
           candidates.push({ lead: sub, nextStage: "day14", currentStage });
         } else if (currentStage === "day14" && elapsedDays >= 1) {
           // No email is sent to transition from day14 to completed.
@@ -136,6 +140,7 @@ export class HistoricalReactivationEngine {
     let day2Count = 0;
     let day5Count = 0;
     let day8Count = 0;
+    let day11Count = 0;
     let day14Count = 0;
     const errors: { email: string; stage: string; error: any }[] = [];
     
@@ -196,6 +201,16 @@ export class HistoricalReactivationEngine {
             });
             success = res.success;
             errorMsg = res.error;
+          } else if (nextStage === "day11") {
+            const res = await sendReactivationFounderEmail({
+              to: email,
+              name: lead.name,
+              loginToken: lead.loginToken || "",
+              companyName: lead.companyName,
+              forceResend: true
+            });
+            success = res.success;
+            errorMsg = res.error;
           } else if (nextStage === "day14") {
             const res = await sendReactivationFinalCloseEmail({
               to: email,
@@ -233,6 +248,7 @@ export class HistoricalReactivationEngine {
           else if (nextStage === "day2") day2Count++;
           else if (nextStage === "day5") day5Count++;
           else if (nextStage === "day8") day8Count++;
+          else if (nextStage === "day11") day11Count++;
           else if (nextStage === "day14") day14Count++;
           
         } else {
@@ -257,6 +273,7 @@ export class HistoricalReactivationEngine {
         day2: day2Count,
         day5: day5Count,
         day8: day8Count,
+        day11: day11Count,
         day14: day14Count
       },
       completedCount,
@@ -269,7 +286,8 @@ export class HistoricalReactivationEngine {
     if (stage === "day0") return "day2";
     if (stage === "day2") return "day5";
     if (stage === "day5") return "day8";
-    if (stage === "day8") return "day14";
+    if (stage === "day8") return "day11";
+    if (stage === "day11") return "day14";
     return "completed";
   }
 }

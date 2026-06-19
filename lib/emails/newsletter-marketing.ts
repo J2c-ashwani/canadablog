@@ -171,7 +171,9 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
   `;
 
   const text = `Hi ${firstName},\n\nSince your last funding review, we have identified ${data.newProgramsCount} additional funding programs that may be relevant to your business.\n\nSome of the newly added opportunities include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nWe've refreshed your funding profile to reflect these additions. Log in to view your updated matches here:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
-  const subject = `We identified ${data.newProgramsCount} new funding programs for your business`;
+  const subject = data.companyName
+    ? `New funding opportunities identified for ${data.companyName}`
+    : `We reviewed your funding profile`;
 
   return sendEmail({
     to: data.to,
@@ -468,7 +470,7 @@ export async function sendReactivationCaseStudyEmail(data: { to: string; name?: 
     </div>
   `;
 
-  const subject = `Hiring, equipment, and expansion: What government funding covers`;
+  const subject = `Some of your matched opportunities may support hiring and growth`;
   return sendEmail({
     to: data.to,
     subject,
@@ -503,7 +505,7 @@ export async function sendReactivationLastChanceEmail(data: { to: string; name?:
     </div>
   `;
 
-  const subject = `⚠️ Final Notice: Your funding report access expires soon`;
+  const subject = `Final Reminder: Your matched opportunities are ready for review`;
   return sendEmail({
     to: data.to,
     subject,
@@ -550,6 +552,60 @@ export async function sendReactivationFinalCloseEmail(data: { to: string; name?:
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
     text: `Hi ${firstName},\n\nWe are closing your active review file today and transitioning your profile to our low-frequency update list (quarterly announcements only). If you wish to review your matches one last time and keep your profile active, visit your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`,
     tagType: "reactivation-finalclose",
+    companyName: data.companyName,
+    from: BRAND_SENDER,
+    forceResend: data.forceResend
+  });
+}
+
+/**
+ * Reactivation Nurture Day 11: Dedicated Founder Email (Plain Text Style)
+ */
+export async function sendReactivationFounderEmail(data: { to: string; name?: string; loginToken: string; companyName?: string; forceResend?: boolean }) {
+  const firstName = getFirstName(data.name);
+  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_founder`;
+  const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${data.loginToken}`;
+
+  const subject = `Re: your funding review`;
+
+  const html = `
+    <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 15px; color: #334155; line-height: 1.6; max-width: 580px; margin: 0 auto; padding: 20px 0; text-align: left;">
+      <p>Hi ${firstName},</p>
+      
+      <p>I wanted to reach out personally to see if you had any questions about the funding opportunities we matched for ${data.companyName || "your business"}.</p>
+      
+      <p>A common question we get from founders is: <em>"How does FSI Digital secure this funding?"</em></p>
+      
+      <p>To be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.</p>
+      
+      <p>What we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.</p>
+      
+      <p>If you'd like to check your matches or lock in your custom report, you can access your dashboard here:</p>
+      <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
+      
+      <p>Let me know if you have any questions.</p>
+      
+      <p style="margin-bottom: 0;">
+        Best,<br/>
+        <strong>Ashwani K</strong><br/>
+        Founder, FSI Digital
+      </p>
+
+      <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 11px; color: #94a3b8; text-align: center;">
+        This is a personal follow-up regarding your FSI Digital review.<br>
+        <a href="${unsubscribeUrl}" style="color: #94a3b8; text-decoration: underline;">Unsubscribe from alerts</a>
+      </div>
+    </div>
+  `;
+
+  const text = `Hi ${firstName},\n\nI wanted to reach out personally to see if you had any questions about the funding opportunities we matched for ${data.companyName || "your business"}.\n\nA common question we get from founders is: "How does FSI Digital secure this funding?"\n\nTo be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.\n\nWhat we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.\n\nIf you'd like to check your matches or lock in your custom report, you can access your dashboard here:\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+
+  return sendEmail({
+    to: data.to,
+    subject,
+    html,
+    text,
+    tagType: "reactivation-founder",
     companyName: data.companyName,
     from: BRAND_SENDER,
     forceResend: data.forceResend
