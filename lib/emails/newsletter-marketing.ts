@@ -777,7 +777,7 @@ export async function sendReactivationFounderEmail(data: ReactivationEmailData) 
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_founder`;
   const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${data.loginToken}`;
 
-  const { leadClass, companyName, region, industry } = getLeadSegmentation(data);
+  const { leadClass, companyName, industry, region, provinceName } = getLeadSegmentation(data);
 
   let subject = "Re: your funding review";
   let bodyHtml = "";
@@ -787,31 +787,28 @@ export async function sendReactivationFounderEmail(data: ReactivationEmailData) 
     subject = "Re: your funding review";
     bodyHtml = `
       <p>Hi ${firstName},</p>
-      <p>I wanted to reach out personally to see if you had any questions about the funding opportunities we matched for <strong>${companyName}</strong>.</p>
-      <p>While reviewing <strong>${industry}</strong> opportunities in <strong>${region}</strong>, I noticed several programs that may be relevant to <strong>${companyName}</strong>. I wanted to send one final note before we close the file.</p>
-      <p>To be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.</p>
-      <p>What we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.</p>
-      <p>If you'd like to check your matches or lock in your custom report, you can access your dashboard here:</p>
+      <p>I was reviewing funding opportunities relevant to <strong>${provinceName} ${industry.toLowerCase()}</strong> companies and noticed your file was still open.</p>
+      <p>Before we archive it, I wanted to send one final note because a few programs appear relevant to <strong>${companyName}</strong>'s profile.</p>
+      <p>If government funding is still something you're evaluating this year, your funding summary is available below:</p>
       <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
       <p>Let me know if you have any questions.</p>
     `;
-    text = `Hi ${firstName},\n\nI wanted to reach out personally to see if you had any questions about the funding opportunities we matched for ${companyName}.\n\nWhile reviewing ${industry} opportunities in ${region}, I noticed several programs that may be relevant to ${companyName}. I wanted to send one final note before we close the file.\n\nTo be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.\n\nWhat we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.\n\nIf you'd like to check your matches or lock in your custom report, you can access your dashboard here:\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+    text = `Hi ${firstName},\n\nI was reviewing funding opportunities relevant to ${provinceName} ${industry.toLowerCase()} companies and noticed your file was still open.\n\nBefore we archive it, I wanted to send one final note because a few programs appear relevant to ${companyName}'s profile.\n\nIf government funding is still something you're evaluating this year, your funding summary is available below:\n\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
   } else if (leadClass === 'B') {
     subject = "Re: your funding review";
-    const profileMatch = region && industry 
-      ? `${industry} opportunities in ${region}` 
-      : (region || industry);
+    const displayIndustry = industry ? industry.toLowerCase() : "";
+    const profileMatch = provinceName && displayIndustry 
+      ? `${provinceName} ${displayIndustry}` 
+      : (provinceName || displayIndustry);
     bodyHtml = `
       <p>Hi ${firstName},</p>
-      <p>I wanted to reach out personally to see if you had any questions about the funding opportunities we matched for your business in <strong>${profileMatch}</strong>.</p>
-      <p>While reviewing opportunities in <strong>${profileMatch}</strong>, I noticed several programs that may be worth investigating. I wanted to send a final note before we close the file.</p>
-      <p>To be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.</p>
-      <p>What we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.</p>
-      <p>If you'd like to check your matches or lock in your custom report, you can access your dashboard here:</p>
+      <p>I was reviewing funding opportunities relevant to <strong>${profileMatch}</strong> companies and noticed your file was still open.</p>
+      <p>Before we archive it, I wanted to send one final note because a few programs appear relevant to your business profile.</p>
+      <p>If government funding is still something you're evaluating this year, your funding summary is available below:</p>
       <p><a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="color: #4f46e5; text-decoration: underline; font-weight: 600;">${targetUrl}</a></p>
       <p>Let me know if you have any questions.</p>
     `;
-    text = `Hi ${firstName},\n\nI wanted to reach out personally to see if you had any questions about the funding opportunities we matched for your business in ${profileMatch}.\n\nWhile reviewing opportunities in ${profileMatch}, I noticed several programs that may be worth investigating. I wanted to send a final note before we close the file.\n\nTo be clear: FSI Digital doesn't directly distribute government funding. The funding itself comes from federal, provincial, and regional government programs.\n\nWhat we do is identify opportunities that are relevant to your business profile, organize the eligibility criteria, and map out a step-by-step roadmap with approved application templates. This helps your team or accountant submit directly to the government portals and avoids wasting weeks on manual research.\n\nIf you'd like to check your matches or lock in your custom report, you can access your dashboard here:\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+    text = `Hi ${firstName},\n\nI was reviewing funding opportunities relevant to ${profileMatch} companies and noticed your file was still open.\n\nBefore we archive it, I wanted to send one final note because a few programs appear relevant to your business profile.\n\nIf government funding is still something you're evaluating this year, your funding summary is available below:\n\n${targetUrl}\n\nLet me know if you have any questions.\n\nBest,\nAshwani K\nFounder, FSI Digital`;
   } else {
     // Class C (Newsletter)
     subject = "quick question";
