@@ -140,6 +140,7 @@ export function GrantCalculator() {
         const industryParam = params.get('industry');
         const revenueParam = params.get('revenue');
         const goalParam = params.get('goal');
+        const stepParam = params.get('step');
 
         let hasEmail = false;
         setData(prev => {
@@ -159,6 +160,21 @@ export function GrantCalculator() {
         });
         if (hasEmail) {
             setLeadSaved(true);
+        }
+
+        if (stepParam === '6') {
+            const restoredProfile = {
+                province: provinceParam || '',
+                industry: industryParam || '',
+                revenue: revenueParam || '',
+                goal: goalParam || '',
+                email: emailParam || '',
+                name: nameParam || '',
+                phone: phoneParam || '',
+                company: companyParam || '',
+            };
+            calculateEstimateRestored(restoredProfile);
+            setStep(6);
         }
 
         const token = params.get('token');

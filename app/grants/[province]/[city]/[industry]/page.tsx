@@ -4,11 +4,13 @@ import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage, type PseoPage } from '@/lib/pseo-data';
 import { getStateDetailBySlugOrAbbreviation, type StateDetailedGrant } from '@/lib/data/stateDetails';
 import { getAllPrograms } from '@/lib/data/programs';
+import { industryDatabase } from '@/lib/data/industry-pages';
+import { comparisonsDatabase } from '@/lib/data/comparisons';
 import { generatePseoSchema } from '@/lib/seo';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Shield, BookOpen, CheckCircle, Clock, ChevronRight, MapPin } from 'lucide-react';
+import { Shield, BookOpen, CheckCircle, Clock, ChevronRight, MapPin, ArrowRight, Layers } from 'lucide-react';
 import Link from 'next/link';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
@@ -96,7 +98,51 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
         `The Women Entrepreneurship Strategy (WES) Ecosystem Fund provides up to $60,000 in project grants, ` +
         `while the BDC Women in Technology Venture Fund offers up to $3M in equity investment for tech founders. ` +
         `The FCC Women's Pathways program provides interest-free loans up to $150,000 for agriculture-adjacent businesses. ` +
-        `${province} also offers its own provincial women entrepreneurship grants — most decisions made within 45–60 days of application.`,
+        `The ${province} also offers its own provincial women entrepreneurship grants — most decisions made within 45–60 days of application.`,
+    'restaurants-hospitality': (city, province) =>
+        `Restaurants, cafes, and hospitality businesses in ${city} can access $5,000 to $75,000+ in government grants and hiring subsidies. ` +
+        `Key programs include the Canada Digital Adoption Program (CDAP) Grow Your Business Online stream ($2,400 microgrant for online ordering systems), ` +
+        `provincial hiring vouchers (offsetting up to 50% of seasonal wages), and energy-efficiency retrofitting grants (covering up to $15,000 for kitchen upgrades). ` +
+        `${province}-based dining and tourism operators receive priority review for youth hiring subsidies during seasonal peaks.`,
+    retail: (city, province) =>
+        `Retailers and e-commerce brands in ${city} can secure $5,000 to $100,000+ in non-dilutive capital. ` +
+        `Top routes include the CDAP Digital Adoption Grant ($15,000 for ERP or POS integration), ` +
+        `CanExport SMEs (covering up to $50,000 in foreign ad spend, translations, and trademark filings for global expansion), ` +
+        `and local storefront enhancement grants. Retailers in ${province} can stack federal digital grants with provincial retail job training credits.`,
+    'non-profits': (city, province) =>
+        `Non-profit organizations and social enterprises in ${city} have access to $10,000 to $500,000+ in structural funding. ` +
+        `Primary avenues include the Community Services Recovery Fund, Canada Summer Jobs (subsidizing up to 100% of minimum wage for youth staff), ` +
+        `and Mitacs Community Innovation programs which fund 50% of research stipends for graduate interns. ` +
+        `Most ${province} non-profit funding applications require a detailed community-impact statement and Audited Financial Statements from the previous year.`,
+    veterans: (city, province) =>
+        `Veteran-owned businesses in ${city} can access $10,000 to $250,000+ in cost-shared funding and dedicated loans. ` +
+        `Key routes include the VAC Veteran Entrepreneurship Program, regional developmental agency grants, ` +
+        `and cost-shared training subsidies covering up to 83% of employee certification courses. ` +
+        `Firms in ${province} receive accelerated processing for provincial small business grants if registered as a certified Diverse Supplier.`,
+    'minority-owned': (city, province) =>
+        `Minority and BIPOC-owned businesses in ${city} qualify for $5,000 to $100,000+ in dedicated government grants and micro-financing. ` +
+        `Primary programs include the Black Entrepreneurship Program (BEP) ecosystem grants, the Indigenous Business Canada procurement pathway, ` +
+        `and diverse supplier matching grants. ${province}-based diverse founders can stack these with regional micro-finance capital for startup launch costs.`,
+    'arts-entertainment': (city, province) =>
+        `Arts, entertainment, and media organizations in ${city} can access $15,000 to $250,050+ in cultural and creative grants. ` +
+        `Key streams include the Canada Cultural Spaces Fund, the Canada Media Fund (CMF) for digital media developers, ` +
+        `and provincial interactive digital media tax credits (covering up to 40% of local labor costs). ` +
+        `Most ${province} arts councils operate biannual intake cycles with decisions delivered in 12–16 weeks.`,
+    education: (city, province) =>
+        `Education providers and EdTech startups in ${city} can access $20,000 to $350,000+ in educational development grants. ` +
+        `Primary paths include Mitacs Accelerate (co-funding 50% of research intern stipends), ` +
+        `provincial curriculum development vouchers, and CDAP digital grants ($15,000 for server/LMS infrastructure). ` +
+        `EdTech developers in ${province} regularly stack R&D tax credits with youth employment wage subsidies.`,
+    logistics: (city, province) =>
+        `Supply chain, logistics, and transportation firms in ${city} qualify for $20,000 to $500,000+ in government subsidies. ` +
+        `Top opportunities include green commercial vehicle rebates (up to $50,000 per electric truck), ` +
+        `provincial transport worker safety training grants, and CDAP technology grants for warehouse ERP migrations. ` +
+        `Logistics operations in ${province} can also claim year-end R&D tax credits for developing proprietary routing or inventory automation algorithms.`,
+    construction: (city, province) =>
+        `Local trades, contractors, and construction businesses in ${city} can secure $10,000 to $250,000+ in workforce grants. ` +
+        `Key programs include the Canada Job Grant (covering up to 83% of training costs for heavy equipment or safety certifications), ` +
+        `provincial apprentice hiring tax credits (up to $10,000 per apprentice per year), and clean building retrofitting programs. ` +
+        `In ${province}, trades receive priority approvals for provincial skills development fund allocations.`,
 };
 
 const US_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, state: string, stateDetail?: StateDetailedGrant) => string> = {
@@ -135,6 +181,60 @@ const US_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, state: string, st
         return `Women-owned businesses in ${city} should compare SBA-backed lending, Women's Business Center support, supplier-diversity programs, local microgrants, and ${state} incentives. ` +
             `${first} and ${second} can be useful if the project creates jobs, expands facilities, or supports a priority industry. ` +
             `For very early-stage companies, private foundation grants and local business competitions may be faster than state discretionary awards.`;
+    },
+    'restaurants-hospitality': (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Restaurants and hospitality businesses in ${city} can target a combination of local tourism development funds, SBA microloans, and ${state} small-business support. ` +
+            `Look into local energy-efficiency rebates for commercial kitchens, SBA 7(a) loan structures for property expansion, and state-level training programs like ${first} or ${second} to offset staff retraining costs. ` +
+            `Successful applications clearly detail community job impact, tourism potential, and financial viability.`;
+    },
+    retail: (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Retail and e-commerce companies in ${city} should focus on state export promotion programs, commercial district revitalization grants, and job training credits. ` +
+            `Retailers can utilize SBA-backed working capital, STEP grants for foreign e-commerce market localization, and regional development programs like ${first} or ${second}. ` +
+            `Strong applications show brick-and-mortar storefront investments or international customer acquisition plans.`;
+    },
+    'non-profits': (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Non-profit organizations and social enterprises in ${city} can access federal agency grants, private foundation partnerships, and state community development funds. ` +
+            `Primary avenues include SBA Growth Accelerator awards, federal AmeriCorps staffing grants, and state programs like ${first} or ${second} targeting public health, education, or workforce access. ` +
+            `Non-profits must show detailed logic models, measurable community metrics, and strong board oversight.`;
+    },
+    veterans: (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Veteran-owned businesses in ${city} qualify for dedicated federal contracting set-asides, SBA Veterans Advantage financing, and state-specific business support. ` +
+            `Review the Vets First Verification Program, SDVOSB procurement advantages, and state developmental grants like ${first} or ${second}. ` +
+            `Procurement applications require official certification through the Small Business Administration (SBA).`;
+    },
+    'minority-owned': (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Minority and BIPOC-owned businesses in ${city} can secure funding through SBA 8(a) certification, Community Development Financial Institutions (CDFIs), and corporate diversity grants. ` +
+            `Pursue MBE supplier diversity verification, SBDC technical assistance programs, and state-level diverse business grants like ${first} or ${second}. ` +
+            `SBA 8(a) applications require demonstrating social and economic disadvantage along with business operational history.`;
+    },
+    'arts-entertainment': (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Arts, entertainment, and media organizations in ${city} can target the National Endowment for the Arts (NEA) grants, regional creative economy funds, and state film/interactive tax credits. ` +
+            `Compare local cultural facility grants, state arts commission funding, and regional development programs like ${first} or ${second}. ` +
+            `Reviewers look for creative merit, community enrichment metrics, and robust budget planning.`;
+    },
+    education: (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Education providers and EdTech startups in ${city} can pursue ED-SBIR (Department of Education SBIR) awards, state training allocations, and school district pilot programs. ` +
+            `ED-SBIR Phase I provides up to $250K for innovative educational technology development, while programs like ${first} or ${second} support local training centers. ` +
+            `EdTech applications require academic research validations, pilot school commitments, and student privacy compliance.`;
+    },
+    logistics: (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Supply chain, logistics, and transportation companies in ${city} can access clean vehicle incentives, commercial diesel reduction grants (DERA), and state workforce funds. ` +
+            `Target commercial electric fleet rebates, DOT infrastructure grants, and state programs like ${first} or ${second} supporting local shipping terminals. ` +
+            `Successful proposals focus on green transition milestones, supply chain efficiency, and local commercial job growth.`;
+    },
+    construction: (city, state, stateDetail) => {
+        const { first, second } = getTopProgramNames(stateDetail);
+        return `Trades, contracting firms, and construction businesses in ${city} should focus on registered apprenticeship subsidies, green building tax credits, and local public procurement paths. ` +
+            `Target state workforce development funds, commercial building energy efficiency tax incentives (Section 179D), and regional incentives like ${first} or ${second}. ` +
+            `Apprenticeship grants require certified training curriculum, safety compliance, and journeyman ratios.`;
     },
 };
 
@@ -548,6 +648,47 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
     };
 }
 
+const INDUSTRY_SLUG_TO_DB_KEY: Record<string, string> = {
+    'technology': 'saas-companies',
+    'saas-companies': 'saas-companies',
+    'ai-startups': 'ai-startups',
+    'agriculture': 'agriculture',
+    'manufacturing': 'manufacturers',
+    'healthcare': 'healthcare-medtech',
+    'clean-energy': 'clean-tech',
+    'restaurants-hospitality': 'restaurants-hospitality',
+    'retail': 'retail',
+    'non-profits': 'non-profits',
+    'arts-entertainment': 'media-entertainment',
+    'education': 'education-training',
+    'logistics': 'transportation-logistics',
+    'construction': 'construction',
+    'women-entrepreneurs': 'saas-companies', // default fallback
+    'veterans': 'saas-companies', // default fallback
+    'minority-owned': 'saas-companies', // default fallback
+};
+
+function getProgramIdsForIndustry(industrySlug: string, isCanada: boolean): string[] {
+    const dbKey = INDUSTRY_SLUG_TO_DB_KEY[industrySlug];
+    const profile = dbKey ? industryDatabase[dbKey] : null;
+    if (profile && profile.programIds && profile.programIds.length > 0) {
+        return profile.programIds;
+    }
+    
+    // Fallback lists
+    if (isCanada) {
+        if (industrySlug === 'women-entrepreneurs' || industrySlug === 'minority-owned' || industrySlug === 'veterans') {
+            return ['cdap', 'irap-grant', 'canexport', 'ontario-hiring-grant'];
+        }
+        return ['cdap', 'irap-grant', 'sred-tax-credit'];
+    } else {
+        if (industrySlug === 'women-entrepreneurs' || industrySlug === 'minority-owned' || industrySlug === 'veterans') {
+            return ['sba-7a-loans', 'sba-growth-accelerator', 'nsf-sbir'];
+        }
+        return ['sba-7a-loans', 'nsf-sbir', 'usda-reap'];
+    }
+}
+
 export default async function PseoLandingPage({ params }: { params: Promise<{ province: string, city: string, industry: string }> }) {
     const resolvedParams = await params;
     const page = getPseoPage(resolvedParams.province, resolvedParams.city, resolvedParams.industry);
@@ -628,7 +769,17 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
         
         return false;
     });
-    const activeProgramsCount = actualMatches.length;
+
+    const industryProgIds = getProgramIdsForIndustry(page.industrySlug, isCanada);
+    const matchedPrograms = actualMatches.filter(p => industryProgIds.includes(p.id));
+    
+    // Query comparisons from comparisonsDatabase that involve any of those matched programs
+    const matchedProgramIds = matchedPrograms.map(p => p.id);
+    const matchedComparisons = comparisonsDatabase.filter(c => {
+        return matchedProgramIds.includes(c.prog1Id) || matchedProgramIds.includes(c.prog2Id);
+    });
+
+    const activeProgramsCount = matchedPrograms.length > 0 ? matchedPrograms.length : actualMatches.length;
 
     const shortAnswerQuestion = `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
 
@@ -963,6 +1114,87 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                 </div>
             </section>
+
+            {/* Matched Programs & Stacking Comparisons Mesh Section */}
+            {matchedPrograms.length > 0 && (
+                <section className="bg-slate-50 border-t border-b border-gray-200 py-12 px-4">
+                    <div className="max-w-7xl mx-auto">
+                        <div className="text-center max-w-3xl mx-auto mb-10">
+                            <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 mb-3">
+                                Matched Programs & Stacking Comparisons for {page.cityName} {page.industryName}
+                            </h3>
+                            <p className="text-slate-600 text-sm sm:text-base">
+                                Explore detailed guides and side-by-side comparisons of the top government funding options available to {page.industryName.toLowerCase()} in {page.cityName}, {page.provinceName}.
+                            </p>
+                        </div>
+
+                        <div className="grid md:grid-cols-2 gap-8">
+                            {/* Matched Programs Card/List */}
+                            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm space-y-6">
+                                <h4 className="text-lg font-bold text-slate-900 flex items-center gap-2 border-b pb-3">
+                                    <BookOpen className="w-5 h-5 text-emerald-600" />
+                                    Top Funding Program Guides
+                                </h4>
+                                <div className="space-y-4">
+                                    {matchedPrograms.slice(0, 4).map((prog) => (
+                                        <div key={prog.id} className="group relative p-4 rounded-xl border border-gray-100 bg-slate-50/50 hover:bg-slate-50 hover:border-emerald-300 transition-all">
+                                            <div className="flex justify-between items-start mb-1">
+                                                <h5 className="font-extrabold text-slate-900 text-sm group-hover:text-emerald-700 transition-colors">
+                                                    {prog.name}
+                                                </h5>
+                                                <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 bg-white border px-2 py-0.5 rounded-full shrink-0 ml-2">
+                                                    {prog.fundingType}
+                                                </span>
+                                            </div>
+                                            <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-3">
+                                                {prog.description}
+                                            </p>
+                                            <Link 
+                                                href={`/programs/${prog.slug}`}
+                                                className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-800"
+                                            >
+                                                Read Program Guide <ArrowRight className="w-3.5 h-3.5" />
+                                            </Link>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+
+                            {/* Stacking Comparisons Card/List */}
+                            <div className="bg-white rounded-2xl p-6 sm:p-8 border border-gray-200 shadow-sm space-y-6">
+                                <h4 className="text-lg font-bold text-slate-900 flex items-center gap-2 border-b pb-3">
+                                    <Layers className="w-5 h-5 text-emerald-600" />
+                                    Side-by-Side Stacking Comparisons
+                                </h4>
+                                {matchedComparisons.length > 0 ? (
+                                    <div className="space-y-4">
+                                        {matchedComparisons.slice(0, 4).map((comp) => (
+                                            <div key={comp.slug} className="group relative p-4 rounded-xl border border-gray-100 bg-slate-50/50 hover:bg-slate-50 hover:border-emerald-300 transition-all">
+                                                <h5 className="font-extrabold text-slate-900 text-sm group-hover:text-emerald-700 transition-colors mb-1">
+                                                    {comp.title.split(':')[0] || comp.title}
+                                                </h5>
+                                                <p className="text-xs text-slate-500 line-clamp-2 leading-relaxed mb-3">
+                                                    {comp.description}
+                                                </p>
+                                                <Link 
+                                                    href={`/compare/${comp.slug}`}
+                                                    className="inline-flex items-center gap-1 text-xs font-bold text-emerald-700 hover:text-emerald-800"
+                                                >
+                                                    Read Stacking Guide <ArrowRight className="w-3.5 h-3.5" />
+                                                </Link>
+                                            </div>
+                                        ))}
+                                    </div>
+                                ) : (
+                                    <div className="text-slate-500 text-sm italic py-8 text-center bg-slate-50 rounded-xl border border-dashed">
+                                        No side-by-side comparison guides currently published for this sector stack. Check back soon.
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            )}
 
             {/* Internal Linking / SEO Silo */}
             <section className="bg-white py-12 px-4 border-t border-gray-200">

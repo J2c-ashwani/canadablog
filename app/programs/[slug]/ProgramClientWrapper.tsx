@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
-import { ArrowRight, Shield, Award, FileText, ChevronRight, CalendarClock, Calculator, Layers, Briefcase } from "lucide-react"
+import { ArrowRight, Shield, Award, FileText, ChevronRight, CalendarClock, Calculator, Layers, Briefcase, MapPin } from "lucide-react"
 import type { ProgramDetails } from "@/lib/data/programs"
 import { MatchScoreEngine, type MatchResult } from "@/lib/leads/MatchScoreEngine"
 import type { SubscriberProfile } from "@/lib/leads/SubscriberRepository"
@@ -21,6 +21,24 @@ import { resolveBenchmarkBySlug } from "@/lib/editorial/eligibilityBenchmarks"
 import { EligibilityBenchmarkWidget } from "@/components/seo/EligibilityBenchmarkWidget"
 import { comparisonsDatabase } from "@/lib/data/comparisons"
 import { industryDatabase } from "@/lib/data/industry-pages"
+
+const DB_KEY_TO_INDUSTRY_SLUG: Record<string, string> = {
+  'saas-companies': 'technology',
+  'ai-startups': 'technology',
+  'manufacturers': 'manufacturing',
+  'agriculture': 'agriculture',
+  'healthcare-medtech': 'healthcare',
+  'clean-tech': 'clean-energy',
+  'restaurants-hospitality': 'restaurants-hospitality',
+  'retail': 'retail',
+  'retail-ecommerce': 'retail',
+  'non-profits': 'non-profits',
+  'media-entertainment': 'arts-entertainment',
+  'education-training': 'education',
+  'transportation-logistics': 'logistics',
+  'construction': 'construction',
+  'hospitality-tourism': 'restaurants-hospitality',
+};
 
 interface ProgramClientWrapperProps {
   program: ProgramDetails
@@ -51,6 +69,65 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
       .filter(([slug, ind]) => ind.programIds.includes(program.id))
       .map(([slug, ind]) => ({ slug, name: ind.name }));
   }, [program.id]);
+
+  const localHubs = useMemo(() => {
+    const dbKeys = matchingIndustries.map(ind => ind.slug);
+    const pSeoSlugs = dbKeys.map(key => DB_KEY_TO_INDUSTRY_SLUG[key]).filter(Boolean);
+    const uniqueSlugs = Array.from(new Set(pSeoSlugs));
+    if (uniqueSlugs.length === 0) {
+      uniqueSlugs.push('technology'); // fallback
+    }
+    
+    const hubs: { href: string; label: string }[] = [];
+    const targetSlugs = uniqueSlugs.slice(0, 2);
+    
+    if (program.country === 'Canada') {
+      const topCities = [
+        { name: 'Toronto', slug: 'toronto', prov: 'on' },
+        { name: 'Vancouver', slug: 'vancouver', prov: 'bc' },
+        { name: 'Calgary', slug: 'calgary', prov: 'ab' },
+        { name: 'Montreal', slug: 'montreal', prov: 'qc' },
+        { name: 'Ottawa', slug: 'ottawa', prov: 'on' },
+      ];
+      for (const city of topCities) {
+        for (const indSlug of targetSlugs) {
+          const indName = indSlug === 'technology' ? 'Technology' : 
+                          indSlug === 'manufacturing' ? 'Manufacturing' : 
+                          indSlug === 'agriculture' ? 'Agriculture' : 
+                          indSlug === 'healthcare' ? 'Healthcare' : 
+                          indSlug === 'clean-energy' ? 'Clean Energy' : 
+                          indSlug.charAt(0).toUpperCase() + indSlug.slice(1).replace('-', ' ');
+          hubs.push({
+            href: `/grants/${city.prov}/${city.slug}/${indSlug}`,
+            label: `${city.name} ${indName} Funding Options`,
+          });
+        }
+      }
+    } else {
+      const topCities = [
+        { name: 'Los Angeles', slug: 'los-angeles', prov: 'ca' },
+        { name: 'San Francisco', slug: 'san-francisco', prov: 'ca' },
+        { name: 'Austin', slug: 'austin', prov: 'tx' },
+        { name: 'New York', slug: 'new-york-city', prov: 'ny' },
+        { name: 'Chicago', slug: 'chicago', prov: 'il' },
+      ];
+      for (const city of topCities) {
+        for (const indSlug of targetSlugs) {
+          const indName = indSlug === 'technology' ? 'Technology' : 
+                          indSlug === 'manufacturing' ? 'Manufacturing' : 
+                          indSlug === 'agriculture' ? 'Agriculture' : 
+                          indSlug === 'healthcare' ? 'Healthcare' : 
+                          indSlug === 'clean-energy' ? 'Clean Energy' : 
+                          indSlug.charAt(0).toUpperCase() + indSlug.slice(1).replace('-', ' ');
+          hubs.push({
+            href: `/grants/${city.prov}/${city.slug}/${indSlug}`,
+            label: `${city.name} ${indName} Funding Guides`,
+          });
+        }
+      }
+    }
+    return hubs.slice(0, 5); // top 5
+  }, [matchingIndustries, program.country, program.id]);
 
   useEffect(() => {
     async function initProfile() {
@@ -548,6 +625,29 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
                             className="inline-flex items-center gap-1 text-xs text-indigo-650 hover:text-indigo-800 font-semibold hover:underline"
                           >
                             {comp.title.split(":")[0] || comp.title} <ArrowRight className="h-3 w-3" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                )}
+
+                {/* Local Business Guides */}
+                {localHubs.length > 0 && (
+                  <Card className="border border-slate-200 bg-white rounded-2xl shadow-sm overflow-hidden p-5 space-y-3">
+                    <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-emerald-600" />
+                      Local Business Guides
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed font-medium">Browse municipal and regional funding availability:</p>
+                    <ul className="space-y-2">
+                      {localHubs.map((hub, idx) => (
+                        <li key={idx}>
+                          <Link 
+                            href={hub.href}
+                            className="inline-flex items-center gap-1 text-xs text-indigo-650 hover:text-indigo-800 font-semibold hover:underline"
+                          >
+                            {hub.label} <ArrowRight className="h-3 w-3" />
                           </Link>
                         </li>
                       ))}

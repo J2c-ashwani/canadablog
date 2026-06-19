@@ -4,7 +4,7 @@ import { Footer } from "@/components/Footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Scale, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight, Briefcase, Layers } from "lucide-react"
+import { Scale, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight, Briefcase, Layers, MapPin } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getComparisonBySlug, getAllComparisons } from "@/lib/data/comparisons"
@@ -74,6 +74,32 @@ export default async function ComparisonPage({ params }: ComparePageProps) {
   const otherPrograms = programsDatabase
     .filter(p => p.id !== program1.id && p.id !== program2.id && (p.region === program1.region || p.region === program2.region))
     .slice(0, 3);
+
+  const DB_KEY_TO_INDUSTRY_SLUG: Record<string, string> = {
+    'saas-companies': 'technology', 'ai-startups': 'technology', 'manufacturers': 'manufacturing',
+    'agriculture': 'agriculture', 'healthcare-medtech': 'healthcare', 'clean-tech': 'clean-energy',
+    'restaurants-hospitality': 'restaurants-hospitality', 'retail': 'retail',
+    'non-profits': 'non-profits', 'media-entertainment': 'arts-entertainment',
+    'education-training': 'education', 'transportation-logistics': 'logistics', 'construction': 'construction',
+  };
+
+  const isCanadian = program1.country === 'Canada' || program2.country === 'Canada';
+  const industryDbKeys = relatedIndustries.map(ind => ind.slug);
+  const industrySlugs = Array.from(new Set(industryDbKeys.map(k => DB_KEY_TO_INDUSTRY_SLUG[k]).filter(Boolean)));
+  const targetSlugs = industrySlugs.length > 0 ? industrySlugs.slice(0, 2) : ['technology'];
+
+  const hubCities = isCanadian
+    ? [{ name: 'Toronto', slug: 'toronto', prov: 'on' }, { name: 'Vancouver', slug: 'vancouver', prov: 'bc' }, { name: 'Calgary', slug: 'calgary', prov: 'ab' }, { name: 'Montreal', slug: 'montreal', prov: 'qc' }]
+    : [{ name: 'New York', slug: 'new-york-city', prov: 'ny' }, { name: 'Austin', slug: 'austin', prov: 'tx' }, { name: 'San Francisco', slug: 'san-francisco', prov: 'ca' }, { name: 'Chicago', slug: 'chicago', prov: 'il' }];
+
+  const localHubs: { href: string; label: string }[] = [];
+  for (const city of hubCities) {
+    for (const indSlug of targetSlugs) {
+      const indName = indSlug === 'technology' ? 'Technology' : indSlug === 'manufacturing' ? 'Manufacturing' : indSlug === 'agriculture' ? 'Agriculture' : indSlug === 'healthcare' ? 'Healthcare' : indSlug === 'clean-energy' ? 'Clean Energy' : indSlug.charAt(0).toUpperCase() + indSlug.slice(1).replace(/-/g, ' ');
+      localHubs.push({ href: `/grants/${city.prov}/${city.slug}/${indSlug}`, label: `${city.name} ${indName} Funding` });
+    }
+  }
+  const topLocalHubs = localHubs.slice(0, 4);
 
   return (
     <div className="min-h-screen bg-slate-50/30">
@@ -311,6 +337,26 @@ export default async function ComparisonPage({ params }: ComparePageProps) {
                     ))}
                   </ul>
                 </Card>
+
+                {/* Local Hub Links */}
+                {topLocalHubs.length > 0 && (
+                  <Card className="mt-4 border border-slate-200 bg-white rounded-2xl p-5 space-y-3">
+                    <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                      <MapPin className="h-4 w-4 text-emerald-600" />
+                      Local Funding Hubs
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">Browse city-level funding guides in this sector:</p>
+                    <ul className="space-y-2.5 text-xs">
+                      {topLocalHubs.map((hub, idx) => (
+                        <li key={idx}>
+                          <Link href={hub.href} className="font-bold text-slate-900 hover:text-emerald-700 block">
+                            {hub.label} &rarr;
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                )}
 
                 {/* Secure Trust Indicators */}
                 <div className="mt-4 p-4 border border-slate-200 rounded-xl bg-white flex items-start gap-3 shadow-xs">

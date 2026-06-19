@@ -120,12 +120,19 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.cancellationReason || "N/A",
         data.strategyReportPurchased ? "Yes" : "No",
         data.strategyReportTransactionId || "N/A",
+        data.city || "N/A",
+        data.timeline || "N/A",
+        data.requestType || "N/A",
+        data.emailVerified || "No",
+        data.auditCandidate || "No",
+        data.annualRevenue || "N/A",
+        data.referralSource || "N/A",
       ],
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:BO",
+      range: "Leads!A:BV",
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
@@ -216,6 +223,13 @@ function parseSheetLead(row: string[]): SheetLead {
     cancellationReason: row[64] || "N/A",
     strategyReportPurchased: String(row[65] || "").toLowerCase() === "yes",
     strategyReportTransactionId: row[66] || "N/A",
+    city: row[67] || "N/A",
+    timeline: row[68] || "N/A",
+    requestType: row[69] || "N/A",
+    emailVerified: row[70] || "No",
+    auditCandidate: row[71] || "No",
+    annualRevenue: row[72] || "N/A",
+    referralSource: row[73] || "N/A",
   }
 
 
@@ -271,7 +285,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     // Fetch all rows to locate index
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:BO",
+      range: "Leads!A:BU",
     })
     
     const rows = response.data.values || []
@@ -286,8 +300,8 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     const sheetRowNumber = rowIndex + 1
     const targetRow = rows[rowIndex]
     
-    // Ensure array length covers BO (index 66)
-    while (targetRow.length < 67) {
+    // Ensure array length covers BV (index 73)
+    while (targetRow.length < 74) {
       targetRow.push("N/A")
     }
     
@@ -454,11 +468,32 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     if (updates.strategyReportTransactionId !== undefined) {
       targetRow[66] = updates.strategyReportTransactionId
     }
+    if (updates.city !== undefined) {
+      targetRow[67] = updates.city
+    }
+    if (updates.timeline !== undefined) {
+      targetRow[68] = updates.timeline
+    }
+    if (updates.requestType !== undefined) {
+      targetRow[69] = updates.requestType
+    }
+    if (updates.emailVerified !== undefined) {
+      targetRow[70] = updates.emailVerified
+    }
+    if (updates.auditCandidate !== undefined) {
+      targetRow[71] = updates.auditCandidate
+    }
+    if (updates.annualRevenue !== undefined) {
+      targetRow[72] = updates.annualRevenue
+    }
+    if (updates.referralSource !== undefined) {
+      targetRow[73] = updates.referralSource
+    }
     
     // Update the row
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `Leads!A${sheetRowNumber}:BO${sheetRowNumber}`,
+      range: `Leads!A${sheetRowNumber}:BV${sheetRowNumber}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values: [targetRow],

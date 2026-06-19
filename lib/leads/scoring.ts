@@ -66,6 +66,14 @@ export type LeadCaptureData = {
   cancellationReason?: string;
   strategyReportPurchased?: boolean;
   strategyReportTransactionId?: string;
+  city?: string;
+  employees?: string;
+  annualRevenue?: string;
+  timeline?: string;
+  requestType?: string;
+  emailVerified?: string;
+  auditCandidate?: string;
+  referralSource?: string;
 };
 
 
@@ -121,71 +129,126 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   const missingFields: string[] = [];
   const source = data.source || '';
   const notes = data.additionalNotes || '';
-  const isGrantCalculator = includesAny(source, ['grant calculator']);
-  const effectiveCountry = firstMeaningfulValue(data.country, isGrantCalculator ? 'Canada' : undefined);
-  const effectiveState = firstMeaningfulValue(data.state, noteValue(notes, 'Province'));
-  const effectiveIndustry = firstMeaningfulValue(data.industry, noteValue(notes, 'Industry'));
-  const effectiveBusinessStage = firstMeaningfulValue(data.businessStage, noteValue(notes, 'Revenue'));
-  const effectiveFundingAmount = firstMeaningfulValue(data.fundingAmount, noteValue(notes, 'Estimated Funding Capability'));
-  const effectiveFundingPurpose = firstMeaningfulValue(data.fundingPurpose, noteValue(notes, 'Goal'));
-  const effectiveCompany = firstMeaningfulValue(data.companyName, noteValue(notes, 'Company'));
-  const effectiveDescription = firstMeaningfulValue(data.businessDescription, notes);
-  const combined = `${source} ${notes} ${effectiveDescription || ''} ${effectiveIndustry || ''} ${effectiveFundingPurpose || ''}`;
-  const amount = normalizeAmount(effectiveFundingAmount || notes);
+  
+  const email = data.email || '';
+  const phone = data.phone || '';
+  const name = data.name || '';
+  const company = data.companyName || data.website || '';
+  const industry = data.industry || '';
+  const stage = data.businessStage || '';
+  const employees = data.employees || data.companySize || '';
+  const revenue = data.annualRevenue || '';
+  const amountStr = data.fundingAmount || '';
+  const purpose = data.fundingPurpose || '';
+  const timeline = data.timeline || '';
+  const isVerified = data.emailVerified === 'Yes' || data.emailVerified === 'true' || (data as any).emailVerified === true;
+  
+  const combined = `${source} ${notes} ${data.businessDescription || ''} ${industry} ${purpose} ${timeline}`.toLowerCase();
+  
   let score = 0;
 
-  if (hasValue(data.email)) score += 10;
+  // Base Profile Completeness
+  if (hasValue(email)) score += 10;
   else missingFields.push('email');
 
-  if (hasValue(data.phone)) score += 20;
+  if (hasValue(phone)) score += 10;
   else missingFields.push('phone');
 
-  if (hasValue(effectiveCompany) || hasValue(data.name)) score += 12;
+  if (hasValue(name) || hasValue(company)) score += 10;
   else missingFields.push('company/name');
 
-  if (hasValue(effectiveCountry)) score += 6;
-  else missingFields.push('country');
+  // B2B Scoring Rules
+  // 1. Industry
+  const indLower = industry.toLowerCase();
+  if (indLower.includes('artificial intelligence') || indLower.includes('ai')) {
+    score += 15;
+  } else if (indLower.includes('technology') || indLower.includes('clean tech') || indLower.includes('cleantech')) {
+    score += 10;
+  } else if (indLower.includes('manufacturing')) {
+    score += 10;
+  }
 
-  if (hasValue(effectiveState)) score += 7;
-  else missingFields.push('state/province');
+  // 2. Revenue / Business Stage
+  const stageLower = stage.toLowerCase();
+  const revLower = revenue.toLowerCase();
+  const hasHighRevenue = revLower.includes('$500k') || 
+                         revLower.includes('$1m') || 
+                         revLower.includes('$5m') ||
+                         stageLower.includes('established') || 
+                         stageLower.includes('enterprise') ||
+                         stageLower.includes('100k–$1m') || 
+                         stageLower.includes('$1m–$10m') || 
+                         stageLower.includes('$10m+');
+                         
+  if (hasHighRevenue) {
+    score += 10;
+  }
 
-  if (hasValue(effectiveIndustry)) score += 8;
-  else missingFields.push('industry');
+  // 3. Employees
+  const empLower = employees.toLowerCase();
+  const hasEmployees = empLower.includes('6–20') || 
+                       empLower.includes('21–100') || 
+                       empLower.includes('100+') ||
+                       empLower.includes('1-5') || 
+                       parseInt(empLower.replace(/[^0-9]/g, '')) > 5;
+  if (hasEmployees) {
+    score += 10;
+  }
 
-  if (hasValue(effectiveBusinessStage)) score += 8;
-  if (includesAny(effectiveBusinessStage || notes, ['100k', '500k', '1m', 'growth', 'established', 'over'])) score += 8;
-  if (includesAny(effectiveBusinessStage || notes, ['pre-revenue', 'idea'])) score -= 5;
+  // 4. Funding Need
+  const amtLower = amountStr.toLowerCase();
+  const hasHugeNeed = amtLower.includes('$500k') || 
+                      amtLower.includes('over $1m') || 
+                      amtLower.includes('over-1m') ||
+                      amtLower.includes('1m');
+  const hasMediumNeed = amtLower.includes('$100k') || 
+                        amtLower.includes('$250k');
+                        
+  if (hasHugeNeed) {
+    score += 25;
+  } else if (hasMediumNeed) {
+    score += 15;
+  } else if (amtLower.includes('$25k') || amtLower.includes('under')) {
+    score += 5;
+  }
 
-  if (amount === '25k-100k') score += 8;
-  if (amount === '100k-500k') score += 12;
-  if (amount === '500k-1m' || amount === 'over-1m') score += 15;
+  // 5. Timeline
+  const timeLower = timeline.toLowerCase();
+  if (timeLower.includes('immediately') || timeLower.includes('30 days')) {
+    score += 10;
+  }
 
-  if (hasValue(effectiveFundingPurpose)) score += 7;
-  if (includesAny(effectiveFundingPurpose || notes, ['research', 'equipment', 'expansion', 'hiring', 'training'])) score += 8;
-  if (includesAny(effectiveFundingPurpose || notes, ['working-capital', 'marketing'])) score += 2;
+  // 6. Email Verified
+  if (isVerified) {
+    score += 5;
+  }
 
-  // Deduct points for low-intent informational seekers
-  if (includesAny(effectiveFundingPurpose || notes, ['just researching', 'learning', 'education only'])) {
+  // 7. Intent deductions
+  const hasEducationalIntent = timeLower.includes('exploring') || 
+                               combined.includes('just researching') || 
+                               combined.includes('learning') || 
+                               combined.includes('education only') ||
+                               stageLower.includes('idea') ||
+                               purpose.toLowerCase().includes('other') && combined.includes('student');
+  if (hasEducationalIntent) {
     score -= 30;
   }
 
-  if (hasValue(effectiveDescription)) score += effectiveDescription!.trim().length >= 40 ? 10 : 4;
-
+  // Source weightings
   if (includesAny(source, ['ai grant finder'])) score += 12;
-  if (isGrantCalculator) score += 18;
+  if (includesAny(source, ['grant calculator'])) score += 18;
   if (includesAny(source, ['newsletter'])) score -= 35;
   if (includesAny(source, ['pdf download'])) score -= 8;
 
-  if (data.consentToPartnerContact) score += 8;
-
   score = Math.max(0, Math.min(100, score));
 
-  const tier: LeadTier = score >= 75 ? 'A' : score >= 55 ? 'B' : score >= 35 ? 'C' : 'D';
+  // Tiers (A: 85+, B: 50-84, C: <50)
+  const tier: LeadTier = score >= 85 ? 'A' : score >= 50 ? 'B' : 'C';
+
   const estimatedValue =
-    tier === 'A' ? '$50-$125 exclusive lead' :
-    tier === 'B' ? '$25-$60 qualified lead' :
-    tier === 'C' ? '$5-$20 nurture lead' :
-    '$0-$5 newsletter/raw lead';
+    tier === 'A' ? '$50-$125 exclusive B2B lead' :
+    tier === 'B' ? '$25-$60 qualified B2B lead' :
+    '$0-$20 nurture/newsletter lead';
 
   const buyerSegment =
     includesAny(combined, ['technology', 'software', 'research', 'r&d', 'innovation']) ? 'Grant/SR&ED/IRAP consultant' :
@@ -196,12 +259,9 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
     'General grant consultant';
 
   const routing =
-    tier === 'A' && data.consentToPartnerContact ? 'Send to exclusive partner within 5 minutes' :
-    tier === 'A' ? 'Internal follow-up first; request partner consent before resale' :
-    tier === 'B' && data.consentToPartnerContact ? 'Offer to partner pool or nurture sequence' :
-    tier === 'B' ? 'Internal nurture; request missing fields' :
-    tier === 'C' ? 'Email nurture and retargeting audience' :
-    'Newsletter only';
+    tier === 'A' ? 'Readiness Score -> Consultation Strategy Audit checkout' :
+    tier === 'B' ? 'Readiness Score -> Calculator results package selection' :
+    'Newsletter Nurture';
 
   const consentStatus = data.consentToPartnerContact
     ? 'partner-consent'

@@ -1,100 +1,93 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { appendLeadToSheet } from "@/lib/google-sheets"
-import { sendContactConfirmation } from "@/lib/emails/contact-confirmation"
-import { validateEmail } from "@/lib/email-validator"
+import { type NextRequest, NextResponse } from "next/server";
+import { appendLeadToSheet } from "@/lib/google-sheets";
+import { sendContactConfirmation } from "@/lib/emails/contact-confirmation";
+import { validateEmail } from "@/lib/email-validator";
+import { validatePhone } from "@/lib/phone-validator";
+import { calculateLeadIntelligence } from "@/lib/leads/scoring";
+import { applyRateLimit } from "@/lib/rate-limit";
 
-import { applyRateLimit } from "@/lib/rate-limit"
-
-function formatPhoneNumber(phone: string, country?: string): string {
-  if (!phone) return "N/A"
-
-  const cleanPhone = phone.replace(/[^0-9]/g, "")
-  if (cleanPhone.length === 0) return "N/A"
-
-  const countryLower = (country || "").toLowerCase()
-  let defaultPrefix = "1"
-  if (countryLower.includes("india")) defaultPrefix = "91"
-  if (countryLower.includes("united kingdom") || countryLower.includes("uk")) defaultPrefix = "44"
-  if (countryLower.includes("australia")) defaultPrefix = "61"
-
-  if (cleanPhone.length === 10) {
-    return `+${defaultPrefix}${cleanPhone}`
-  }
-
-  if (cleanPhone.startsWith(defaultPrefix)) {
-    return `+${cleanPhone}`
-  }
-
-  return phone.startsWith("+") ? phone : `+${cleanPhone}`
-}
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
-  // 1. Rate Limiting (5 requests/hour)
-  const limitRes = applyRateLimit(request, 5, 60 * 60 * 1000)
-  if (limitRes.isLimited) return limitRes.response
+  // Rate Limiting (10 requests/hour per IP to accommodate B2B funnel submissions)
+  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000);
+  if (limitRes.isLimited) return limitRes.response;
 
   try {
-    const body = await request.json()
+    const body = await request.json();
     
-    // 2. Honeypot check for bots
+    // Honeypot check for bots
     if (body.confirmEmail) {
       console.warn("🤖 [Spam Bot Trapped] Contact form submission honeypot triggered.");
       return NextResponse.json({
         success: true,
         message: "Thank you for contacting us! We'll respond within 24 hours."
-      })
+      });
     }
 
     const {
       name,
       email,
       phone: rawPhone,
-      category,
-      message,
       companyName,
       country,
       state,
+      city,
       industry,
       businessStage,
+      employees,
+      annualRevenue,
       fundingAmount,
       fundingPurpose,
+      timeline,
       businessDescription,
+      requestType,
       consentToPartnerContact,
       pagePath,
       utmSource,
       utmMedium,
       utmCampaign,
       gaClientId,
-    } = body
-
-    const phone = formatPhoneNumber(rawPhone, country)
+      referralSource,
+    } = body;
 
     // Validate required fields
-    if (!email || !name || !message) {
-      return NextResponse.json({ error: "Name, email, and message are required" }, { status: 400 })
+    if (!email || !name || !companyName || !rawPhone || !industry || !businessStage || !fundingAmount || !fundingPurpose || !businessDescription) {
+      return NextResponse.json({ error: "Missing required qualification fields" }, { status: 400 });
     }
 
-    const emailCheck = validateEmail(email)
+    // Validate email pattern
+    const emailCheck = validateEmail(email);
     if (!emailCheck.isValid) {
-      return NextResponse.json({ error: emailCheck.error }, { status: 400 })
+      return NextResponse.json({ error: emailCheck.error }, { status: 400 });
     }
 
-    // Save lead to Google Sheets with source tracking
-    await appendLeadToSheet({
-      source: `Contact Form - ${category || "General"}`,
+    // Perform phone validation
+    const phoneValResult = validatePhone(rawPhone, country);
+    const phone = phoneValResult.isValid ? phoneValResult.formatted : rawPhone;
+
+    // Compile lead details for scoring
+    const leadData = {
+      source: `Contact Form - ${requestType || "General"}`,
       timestamp: new Date().toISOString(),
       email,
       name,
       companyName,
-      country,
-      state,
+      country: country || "N/A",
+      state: state || "N/A",
+      city: city || "N/A",
       industry,
       businessStage,
+      employees: employees || "N/A",
+      annualRevenue: annualRevenue || "N/A",
       fundingAmount,
-      fundingPurpose,
+      fundingPurpose: Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : fundingPurpose,
+      timeline: timeline || "N/A",
       businessDescription,
+      requestType: requestType || "General",
       phone,
-      additionalNotes: `Category: ${category || "General"}\nMessage: ${message}`,
+      emailVerified: "No", // Marked unverified initially until OTP validation succeeds
       consentToPartnerContact: !!consentToPartnerContact,
       pagePath: pagePath || request.headers.get("referer") || "N/A",
       ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
@@ -104,32 +97,50 @@ export async function POST(request: NextRequest) {
       utmCampaign,
       gaClientId,
       offlineStatus: "Lead",
+      referralSource: referralSource || "N/A",
+    };
+
+    // Calculate lead score & intelligence parameters
+    const intelligence = calculateLeadIntelligence(leadData);
+    const score = intelligence.score;
+    const tier = intelligence.tier;
+    const isAuditCandidate = tier === "A";
+
+    const phoneValidationNotes = `Phone Format: ${phoneValResult.isValid ? "Valid" : "Invalid"}, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}`;
+    const additionalNotes = `Request Type: ${requestType || "General"}\nMessage: ${businessDescription}\n${phoneValidationNotes}`;
+
+    // Save lead to Google Sheets database immediately
+    await appendLeadToSheet({
+      ...leadData,
+      additionalNotes,
+      leadTier: tier,
+      auditCandidate: isAuditCandidate ? "Yes" : "No",
     }).catch((error) => {
-      console.error("❌ Failed to save contact lead to Google Sheets:", error)
-    })
+      console.error("❌ Failed to save B2B contact lead to Google Sheets:", error);
+    });
 
-
-    console.log(`📧 Contact form submission from: ${name} (${email})`)
+    console.log(`📧 B2B Lead Captured: ${name} (${email}) - Score: ${score}/100 - Tier: ${tier}`);
 
     // Send confirmation receipt email to the user (fire-and-forget)
     sendContactConfirmation({
       to: email,
       name: name || '',
-      category: category || 'General',
-      messageSnippet: message || '',
+      category: requestType || 'General',
+      messageSnippet: businessDescription || '',
     }).catch((error) => {
-      console.error('❌ Failed to send contact confirmation email:', error)
-    })
+      console.error('❌ Failed to send contact confirmation email:', error);
+    });
 
-    return NextResponse.json(
-      {
-        success: true,
-        message: "Thank you for contacting us! We'll respond within 24 hours.",
-      },
-      { status: 200 },
-    )
+    return NextResponse.json({
+      success: true,
+      score,
+      tier,
+      isAuditCandidate,
+      message: "Lead successfully captured. Awaiting OTP email verification."
+    }, { status: 200 });
+
   } catch (error) {
-    console.error("Contact form error:", error)
-    return NextResponse.json({ error: "Failed to submit message" }, { status: 500 })
+    console.error("[B2B Contact Route] Error:", error);
+    return NextResponse.json({ error: "Failed to process B2B contact inquiry" }, { status: 500 });
   }
 }
