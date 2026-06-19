@@ -17,7 +17,7 @@ export type PseoPage = {
 };
 
 // Top 150 US & Canadian Cities mapped to their Provinces/States
-const CITIES = [
+export const CITIES = [
     // --- CANADA ---
     // Ontario
     { city: "Toronto", citySlug: "toronto", prov: "Ontario", provSlug: "on" },
@@ -204,7 +204,7 @@ const CITIES = [
 ];
 
 // Target High-Value Industries (Expanded from 6 to 15)
-const INDUSTRIES = [
+export const INDUSTRIES = [
     // Original 6
     { name: "Technology Startups", slug: "technology" },
     { name: "Agriculture and Farming", slug: "agriculture" },

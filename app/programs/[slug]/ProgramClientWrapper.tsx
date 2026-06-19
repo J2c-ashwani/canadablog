@@ -21,6 +21,8 @@ import { resolveBenchmarkBySlug } from "@/lib/editorial/eligibilityBenchmarks"
 import { EligibilityBenchmarkWidget } from "@/components/seo/EligibilityBenchmarkWidget"
 import { comparisonsDatabase } from "@/lib/data/comparisons"
 import { industryDatabase } from "@/lib/data/industry-pages"
+import { CITIES, INDUSTRIES } from "@/lib/pseo-data"
+
 
 const DB_KEY_TO_INDUSTRY_SLUG: Record<string, string> = {
   'saas-companies': 'technology',
@@ -71,63 +73,98 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
   }, [program.id]);
 
   const localHubs = useMemo(() => {
+    // 1. Resolve matching industries
     const dbKeys = matchingIndustries.map(ind => ind.slug);
     const pSeoSlugs = dbKeys.map(key => DB_KEY_TO_INDUSTRY_SLUG[key]).filter(Boolean);
     const uniqueSlugs = Array.from(new Set(pSeoSlugs));
     if (uniqueSlugs.length === 0) {
       uniqueSlugs.push('technology'); // fallback
     }
+
+    // 2. Separate cities by country
+    const CANADIAN_PROVINCE_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
+    const isCanada = program.country === 'Canada';
+    const countryCities = CITIES.filter(c => {
+      const isCityCanada = CANADIAN_PROVINCE_SLUGS.has(c.provSlug.toLowerCase());
+      return isCanada ? isCityCanada : !isCityCanada;
+    });
+
+    // 3. Prioritize program region if regional
+    let prioritizedCities = [...countryCities];
     
-    const hubs: { href: string; label: string }[] = [];
-    const targetSlugs = uniqueSlugs.slice(0, 2);
-    
-    if (program.country === 'Canada') {
-      const topCities = [
-        { name: 'Toronto', slug: 'toronto', prov: 'on' },
-        { name: 'Vancouver', slug: 'vancouver', prov: 'bc' },
-        { name: 'Calgary', slug: 'calgary', prov: 'ab' },
-        { name: 'Montreal', slug: 'montreal', prov: 'qc' },
-        { name: 'Ottawa', slug: 'ottawa', prov: 'on' },
-      ];
-      for (const city of topCities) {
-        for (const indSlug of targetSlugs) {
-          const indName = indSlug === 'technology' ? 'Technology' : 
-                          indSlug === 'manufacturing' ? 'Manufacturing' : 
-                          indSlug === 'agriculture' ? 'Agriculture' : 
-                          indSlug === 'healthcare' ? 'Healthcare' : 
-                          indSlug === 'clean-energy' ? 'Clean Energy' : 
-                          indSlug.charAt(0).toUpperCase() + indSlug.slice(1).replace('-', ' ');
-          hubs.push({
-            href: `/grants/${city.prov}/${city.slug}/${indSlug}`,
-            label: `${city.name} ${indName} Funding Options`,
-          });
-        }
+    // Deterministic shuffle helper based on program ID
+    const shuffleList = <T,>(arr: T[], seed: string): T[] => {
+      const res = [...arr];
+      let hash = 0;
+      for (let i = 0; i < seed.length; i++) {
+        hash = seed.charCodeAt(i) + ((hash << 5) - hash);
       }
+      for (let i = res.length - 1; i > 0; i--) {
+        const j = Math.abs((hash + i) * 9301 + 49297) % (i + 1);
+        const temp = res[i];
+        res[i] = res[j];
+        res[j] = temp;
+      }
+      return res;
+    };
+
+    if (program.region && program.region !== 'Federal') {
+      const regionMatch = program.region.toLowerCase();
+      const inRegion = countryCities.filter(c => c.prov.toLowerCase() === regionMatch);
+      const outRegion = countryCities.filter(c => c.prov.toLowerCase() !== regionMatch);
+      
+      prioritizedCities = [...shuffleList(inRegion, program.id), ...shuffleList(outRegion, program.id)];
     } else {
-      const topCities = [
-        { name: 'Los Angeles', slug: 'los-angeles', prov: 'ca' },
-        { name: 'San Francisco', slug: 'san-francisco', prov: 'ca' },
-        { name: 'Austin', slug: 'austin', prov: 'tx' },
-        { name: 'New York', slug: 'new-york-city', prov: 'ny' },
-        { name: 'Chicago', slug: 'chicago', prov: 'il' },
-      ];
-      for (const city of topCities) {
-        for (const indSlug of targetSlugs) {
-          const indName = indSlug === 'technology' ? 'Technology' : 
-                          indSlug === 'manufacturing' ? 'Manufacturing' : 
-                          indSlug === 'agriculture' ? 'Agriculture' : 
-                          indSlug === 'healthcare' ? 'Healthcare' : 
-                          indSlug === 'clean-energy' ? 'Clean Energy' : 
-                          indSlug.charAt(0).toUpperCase() + indSlug.slice(1).replace('-', ' ');
-          hubs.push({
-            href: `/grants/${city.prov}/${city.slug}/${indSlug}`,
-            label: `${city.name} ${indName} Funding Guides`,
-          });
-        }
-      }
+      prioritizedCities = shuffleList(countryCities, program.id);
     }
-    return hubs.slice(0, 5); // top 5
-  }, [matchingIndustries, program.country, program.id]);
+
+    // 4. Build links
+    const hubs: { href: string; label: string }[] = [];
+    const targetSlugs = uniqueSlugs.slice(0, 2); // restrict to top 2 industries max per page to keep it clean
+
+    // Helper to get anchor text
+    const getAnchorText = (progName: string, type: string, cityName: string, industrySlug: string) => {
+      let shortProgram = progName;
+      if (progName.includes('(')) {
+        const matches = progName.match(/\(([^)]+)\)/);
+        if (matches && matches[1]) {
+          shortProgram = matches[1];
+        }
+      } else if (progName.length > 20) {
+        shortProgram = progName.split(' ')[0]; // use first word
+      }
+
+      // Look up pretty industry name
+      const indObj = INDUSTRIES.find(i => i.slug === industrySlug);
+      const industryName = indObj ? indObj.name : 'Business';
+
+      let indRef = industryName;
+      if (industryName === 'Technology Startups') indRef = 'Tech Companies';
+      else if (industryName === 'Agriculture and Farming') indRef = 'Agribusinesses';
+      else if (industryName === 'Clean Tech and Energy') indRef = 'Clean Energy Firms';
+      else if (industryName === 'Women-Owned Businesses') indRef = 'Women-Owned Businesses';
+      else if (industryName === 'Restaurants and Hospitality') indRef = 'Restaurants & Hospitality';
+      else if (industryName === 'Retail and Main Street') indRef = 'Retailers';
+      else if (industryName === 'Non-profits and Social Enterprises') indRef = 'Non-profits';
+      else if (industryName === 'Minority and BIPOC Founders') indRef = 'BIPOC Founders';
+      else if (industryName === 'Supply Chain and Logistics') indRef = 'Logistics Companies';
+      else if (industryName === 'Local Trades and Construction') indRef = 'Builders';
+
+      return `${shortProgram} ${type}s for ${cityName} ${indRef}`;
+    };
+
+    for (const city of prioritizedCities) {
+      for (const indSlug of targetSlugs) {
+        hubs.push({
+          href: `/grants/${city.provSlug}/${city.citySlug}/${indSlug}`,
+          label: getAnchorText(program.name, program.fundingType, city.city, indSlug),
+        });
+      }
+      if (hubs.length >= 5) break;
+    }
+
+    return hubs.slice(0, 5);
+  }, [matchingIndustries, program.country, program.id, program.name, program.fundingType, program.region]);
 
   useEffect(() => {
     async function initProfile() {
