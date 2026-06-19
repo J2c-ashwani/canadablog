@@ -382,9 +382,25 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
   });
 }
 
-/**
- * Reactivation Nurture Day 2: Reminder Email
- */
+function getProvinceName(code: string): string {
+  const mapping: Record<string, string> = {
+    "ON": "Ontario",
+    "AB": "Alberta",
+    "BC": "British Columbia",
+    "QC": "Quebec",
+    "NS": "Nova Scotia",
+    "NB": "New Brunswick",
+    "MB": "Manitoba",
+    "SK": "Saskatchewan",
+    "PE": "Prince Edward Island",
+    "NL": "Newfoundland and Labrador",
+    "YT": "Yukon",
+    "NT": "Northwest Territories",
+    "NU": "Nunavut"
+  };
+  return mapping[code.toUpperCase().trim()] || code;
+}
+
 export interface ReactivationEmailData {
   to: string;
   name?: string;
@@ -410,6 +426,7 @@ export function getLeadSegmentation(data: ReactivationEmailData) {
 
   const cleanIndustry = cleanField(data.industry);
   const cleanRegion = cleanField(data.region);
+  const provinceName = getProvinceName(cleanRegion);
   const cleanStage = cleanField(data.businessStage);
   const companyName = cleanField(data.companyName);
 
@@ -429,6 +446,7 @@ export function getLeadSegmentation(data: ReactivationEmailData) {
     companyName,
     industry: cleanIndustry,
     region: cleanRegion,
+    provinceName,
     businessStage: cleanStage,
     hasCompany,
     hasIndustry,
@@ -447,12 +465,12 @@ export async function sendReactivationReminderEmail(data: ReactivationEmailData)
   
   const { leadClass, companyName, industry, region } = getLeadSegmentation(data);
 
-  let subject = "How FSI Digital matches businesses to government funding";
+  let subject = "How businesses actually access government funding";
   let middleTextHtml = "";
   let textCopy = "";
 
   if (leadClass === 'A') {
-    subject = `How FSI Digital matches ${companyName} to government funding`;
+    subject = `How ${companyName} actually accesses government funding`;
     middleTextHtml = `
       <p style="margin: 16px 0;">
         Instead, we identify matching programs for your profile, compile eligibility rules, highlight priority deadlines, and provide step-by-step guidance. Based on the information previously submitted for <strong>${companyName}</strong>, we identified government funding opportunities that appear relevant to <strong>${industry}</strong> companies in <strong>${region}</strong>.
@@ -460,7 +478,7 @@ export async function sendReactivationReminderEmail(data: ReactivationEmailData)
     `;
     textCopy = `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nBased on the profile submitted for ${companyName}, we identified opportunities relevant to ${industry} companies in ${region}.\n\nUnlock your Funding Match Report in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
   } else if (leadClass === 'B') {
-    subject = `How FSI Digital matches your business to government funding`;
+    subject = `How businesses actually access government funding`;
     const profileMatch = region && industry 
       ? `${industry} businesses in ${region}` 
       : (region || industry);
@@ -472,7 +490,7 @@ export async function sendReactivationReminderEmail(data: ReactivationEmailData)
     textCopy = `Hi ${firstName},\n\nGovernment funding is provided directly by agencies. FSI Digital does not distribute funds, but identifies matching programs, organizes eligibility rules, and provides approved guides/templates so you can submit successfully.\n\nBased on the details on file, we identified opportunities relevant to businesses in ${profileMatch}.\n\nUnlock your Funding Match Report in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
   } else {
     // Class C (Newsletter)
-    subject = `How FSI Digital matches businesses to government funding`;
+    subject = `How businesses actually access government funding`;
     middleTextHtml = `
       <p style="margin: 16px 0;">
         Instead, we identify matching programs, compile eligibility rules, highlight priority deadlines, and provide step-by-step guidance. We recently expanded our funding database and identified new government programs that may be relevant to Canadian businesses.
@@ -529,24 +547,25 @@ export async function sendReactivationCaseStudyEmail(data: ReactivationEmailData
   const pricing = getReactivationPriceForEmail(data.to);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_casestudy&price=${pricing.price}`;
   
-  const { leadClass, companyName, industry, region } = getLeadSegmentation(data);
+  const { leadClass, companyName, industry, region, provinceName } = getLeadSegmentation(data);
 
   let subject = "Hiring, equipment, and expansion: What government funding covers";
   let introHtml = "";
   let textCopy = "";
 
   if (leadClass === 'A') {
-    subject = `Funding programs for ${industry} businesses in ${region}`;
+    const displayIndustry = industry.toLowerCase();
+    subject = `Government programs currently available to ${provinceName} ${displayIndustry} businesses`;
     introHtml = `
       <p style="margin: 0 0 16px 0;">
-        Government funding is designed to offset specific growth activities. Based on the profile we reviewed for <strong>${companyName}</strong> (operating in <strong>${industry}</strong> in <strong>${region}</strong>), here is how active programs map to your goals:
+        Government funding is designed to offset specific growth activities. Based on the profile we reviewed for <strong>${companyName}</strong> (operating in <strong>${industry}</strong> in <strong>${provinceName}</strong>), here is how active programs map to your goals:
       </p>
     `;
-    textCopy = `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. Based on the profile reviewed for ${companyName} in ${region}, we mapped these active categories to your goals.\n\nView your priority roadmap in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
+    textCopy = `Hi ${firstName},\n\nGovernment funding typically covers hiring/training, R&D/innovation, business expansion, and exporting. Based on the profile reviewed for ${companyName} in ${provinceName}, we mapped these active categories to your goals.\n\nView your priority roadmap in your dashboard:\n\n${targetUrl}\n\nBest regards,\nAshwani K`;
   } else if (leadClass === 'B') {
-    const profileMatch = region && industry 
-      ? `${industry} businesses in ${region}` 
-      : (region || industry);
+    const profileMatch = provinceName && industry 
+      ? `${industry} businesses in ${provinceName}` 
+      : (provinceName || industry);
     introHtml = `
       <p style="margin: 0 0 16px 0;">
         Government funding is designed to offset specific growth activities. Based on the profile on file for your business in <strong>${profileMatch}</strong>, here is how active programs map to standard growth categories:
