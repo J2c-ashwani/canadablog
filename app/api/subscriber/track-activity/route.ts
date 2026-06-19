@@ -47,6 +47,9 @@ export async function POST(request: NextRequest) {
       activity.calculatorCompletedAt = now
     } else if (event === "package_selected") {
       activity.packageSelected = body.packageSelected
+      if (body.packageSelectedPrice) {
+        activity.packageSelectedPrice = body.packageSelectedPrice
+      }
       activity.packageSelectedAt = now
     } else if (event === "paypal_visible") {
       activity.paypalVisible = true

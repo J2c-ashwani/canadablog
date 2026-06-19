@@ -829,7 +829,17 @@ export function GrantCalculator() {
     // Telemetry: Track package selection changes on Step 6
     useEffect(() => {
       if (step === 6) {
+        const priceMap: Record<string, number> = {
+          'funding-bundle': 79,
+          'funding-roadmap': 49,
+          'funding-match-report': 19
+        };
+        const price = priceMap[selectedProductId] || 79;
+        const specificEventName = `package_selected_${price}`;
+
+        trackEvent(specificEventName, { package_id: selectedProductId, price });
         trackEvent('calc_package_selected', { package_id: selectedProductId });
+
         if (data.email) {
           fetch("/api/subscriber/track-activity", {
             method: "POST",
@@ -837,7 +847,8 @@ export function GrantCalculator() {
             body: JSON.stringify({
               email: data.email,
               event: "package_selected",
-              packageSelected: selectedProductId
+              packageSelected: selectedProductId,
+              packageSelectedPrice: price
             })
           }).catch(e => console.error("Telemetry error logging package selection:", e));
         }
