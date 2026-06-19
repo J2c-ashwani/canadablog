@@ -5,7 +5,8 @@ import {
   sendReactivationCaseStudyEmail,
   sendReactivationLastChanceEmail,
   sendReactivationFounderEmail,
-  sendReactivationFinalCloseEmail
+  sendReactivationFinalCloseEmail,
+  getLeadSegmentation
 } from "../emails/newsletter-marketing"
 
 export interface ReactivationCandidate {
@@ -277,6 +278,19 @@ export class HistoricalReactivationEngine {
             // ignore
           }
           
+          // Resolve and store the lead segmentation class inside the lead activity JSON
+          const seg = getLeadSegmentation({
+            to: email,
+            name: lead.name,
+            loginToken: lead.loginToken || "",
+            companyName: lead.companyName,
+            region: lead.region,
+            industry: lead.industry,
+            businessStage: lead.businessStage,
+            fundingInterests: lead.fundingInterests
+          });
+          
+          activity.leadClass = seg.leadClass;
           activity.reactivationStage = nextStage;
           activity.reactivationSentAt = new Date().toISOString();
           
