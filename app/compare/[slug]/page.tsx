@@ -4,11 +4,12 @@ import { Footer } from "@/components/Footer"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Scale, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight } from "lucide-react"
+import { Scale, ArrowRight, ShieldCheck, CheckCircle2, ChevronRight, Briefcase, Layers } from "lucide-react"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { getComparisonBySlug, getAllComparisons } from "@/lib/data/comparisons"
-import { getProgramBySlug } from "@/lib/data/programs"
+import { getProgramBySlug, programsDatabase } from "@/lib/data/programs"
+import { industryDatabase } from "@/lib/data/industry-pages"
 import { FundingEstimator } from "@/components/seo/FundingEstimator"
 import EEATBadge from "@/components/blog/EEATBadge"
 
@@ -65,6 +66,14 @@ export default async function ComparisonPage({ params }: ComparePageProps) {
   if (!program1 || !program2) {
     notFound()
   }
+
+  const relatedIndustries = Object.entries(industryDatabase)
+    .filter(([slug, ind]) => ind.programIds.includes(program1.id) || ind.programIds.includes(program2.id))
+    .map(([slug, ind]) => ({ slug, name: ind.name }));
+
+  const otherPrograms = programsDatabase
+    .filter(p => p.id !== program1.id && p.id !== program2.id && (p.region === program1.region || p.region === program2.region))
+    .slice(0, 3);
 
   return (
     <div className="min-h-screen bg-slate-50/30">
@@ -196,6 +205,58 @@ export default async function ComparisonPage({ params }: ComparePageProps) {
                 </CardContent>
               </Card>
 
+              {/* Related Industries */}
+              {relatedIndustries.length > 0 && (
+                <Card className="border border-slate-200 bg-white rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                  <h3 className="text-lg font-extrabold text-slate-905 flex items-center gap-2">
+                    <Layers className="h-5 w-5 text-emerald-600" />
+                    Explore Stacking Options By Industry
+                  </h3>
+                  <p className="text-sm text-slate-600 leading-relaxed">
+                    Public funding eligibility varies significantly by sector. Select your industry to view custom program matches and stacking playbooks:
+                  </p>
+                  <div className="flex flex-wrap gap-2 pt-2">
+                    {relatedIndustries.slice(0, 8).map(ind => (
+                      <Link key={ind.slug} href={`/grants/industry/${ind.slug}`}>
+                        <span className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs font-bold bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all cursor-pointer">
+                          {ind.name} &rarr;
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </Card>
+              )}
+
+              {/* Related Programs (Comparison -> Program) */}
+              <Card className="border border-slate-200 bg-white rounded-2xl p-6 sm:p-8 shadow-sm space-y-4">
+                <h3 className="text-lg font-extrabold text-slate-900 flex items-center gap-2">
+                  <Briefcase className="h-5 w-5 text-emerald-600" />
+                  Related Programs
+                </h3>
+                <p className="text-sm text-slate-600 leading-relaxed">
+                  Detailed guides on programs related to this comparison:
+                </p>
+                <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                  {[program1, program2, ...otherPrograms.slice(0, 2)].map(prog => (
+                    <Link key={prog.id} href={`/programs/${prog.slug}`} className="group block">
+                      <div className="p-4 rounded-xl border border-slate-150 bg-slate-50/50 hover:bg-slate-50 hover:border-emerald-300 hover:shadow-xs transition-all h-full flex flex-col justify-between">
+                        <div>
+                          <h4 className="font-bold text-slate-900 text-sm group-hover:text-emerald-700 transition-colors">
+                            {prog.id === 'sred-tax-credit' ? 'SR&ED Tax Credit' : prog.id === 'irap-grant' ? 'IRAP Grant' : prog.id === 'cdap' ? 'CDAP Grant' : prog.id === 'canexport' ? 'CanExport SME' : prog.name}
+                          </h4>
+                          <p className="text-xs text-slate-500 line-clamp-2 mt-1 leading-relaxed">
+                            {prog.description}
+                          </p>
+                        </div>
+                        <span className="text-[10px] font-bold text-emerald-700 inline-flex items-center gap-1 mt-3">
+                          Read Guide <ArrowRight className="h-3.5 w-3.5" />
+                        </span>
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </Card>
+
               {/* CTA Panel */}
               <Card className="border border-emerald-200 bg-white rounded-2xl p-6 sm:p-8 shadow-sm">
                 <div className="md:flex md:items-center md:justify-between gap-6">
@@ -223,6 +284,33 @@ export default async function ComparisonPage({ params }: ComparePageProps) {
               {/* Sticky Estimator Form */}
               <div className="sticky top-28">
                 <FundingEstimator defaultIndustry="technology" defaultRegion={program1.region === 'Federal' ? 'on' : program1.region.toLowerCase()} />
+
+                {/* Related Programs Card */}
+                <Card className="mt-4 border border-slate-200 bg-white rounded-2xl p-5 space-y-3">
+                  <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Briefcase className="h-4 w-4 text-emerald-600" />
+                    Related Programs
+                  </h4>
+                  <ul className="space-y-2.5 text-xs">
+                    <li>
+                      <Link href={`/programs/${program1.slug}`} className="font-bold text-slate-900 hover:text-emerald-700 block">
+                        {program1.name} &rarr;
+                      </Link>
+                    </li>
+                    <li>
+                      <Link href={`/programs/${program2.slug}`} className="font-bold text-slate-900 hover:text-emerald-700 block">
+                        {program2.name} &rarr;
+                      </Link>
+                    </li>
+                    {otherPrograms.map(p => (
+                      <li key={p.id} className="border-t border-slate-100 pt-2">
+                        <Link href={`/programs/${p.slug}`} className="text-slate-650 hover:text-emerald-700 block font-medium">
+                          {p.name} &rarr;
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                </Card>
 
                 {/* Secure Trust Indicators */}
                 <div className="mt-4 p-4 border border-slate-200 rounded-xl bg-white flex items-start gap-3 shadow-xs">

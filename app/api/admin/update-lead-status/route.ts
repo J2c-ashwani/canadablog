@@ -2,6 +2,8 @@ import { cookies } from 'next/headers';
 import { NextResponse, type NextRequest } from 'next/server';
 import { ADMIN_SESSION_COOKIE, isValidAdminSession } from '@/lib/admin/auth';
 import { getGoogleSheetsClient } from '@/lib/google-sheets';
+import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { sendPostCallSummaryEmail } from '@/lib/emails/post-call-emails';
 
 export const runtime = 'nodejs';
 
@@ -60,6 +62,38 @@ export async function POST(request: NextRequest) {
     }
 
     console.log(`✅ Updated status of lead ${email} at row ${rowIndex} to: ${status} (${actualSignedValue || 'no value'})`);
+
+    // If status is updated to 'Audit Attended', trigger post-call summary email and save timestamp
+    if (status === 'Audit Attended') {
+      try {
+        const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
+        if (subscriber) {
+          let activity: Record<string, any> = {};
+          if (subscriber.leadActivity && subscriber.leadActivity !== 'N/A' && subscriber.leadActivity !== '{}') {
+            try {
+              activity = JSON.parse(subscriber.leadActivity);
+            } catch (e) {
+              console.error('[Update Lead Status] Failed to parse leadActivity:', e);
+            }
+          }
+          
+          activity.auditAttendedAt = new Date().toISOString();
+          
+          await SubscriberRepository.updateSubscriberPreferences(email, {
+            leadActivity: JSON.stringify(activity),
+          });
+          
+          const emailRes = await sendPostCallSummaryEmail({
+            to: email,
+            name: subscriber.name || 'Founder',
+            companyName: subscriber.companyName || 'Your Company'
+          });
+          console.log(`[Update Lead Status] Post-call email sent to ${email}. Skipped: ${emailRes.skipped}`);
+        }
+      } catch (err) {
+        console.error('[Update Lead Status] Failed to trigger post-call email:', err);
+      }
+    }
 
     // 4. Dispatch Server-to-Server GA4 Measurement Protocol Event
     const gaApiSecret = process.env.GA_API_SECRET;

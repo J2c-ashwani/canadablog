@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect, useMemo } from "react"
 import Link from "next/link"
-import { ArrowRight, Shield, Award, FileText, ChevronRight } from "lucide-react"
+import { ArrowRight, Shield, Award, FileText, ChevronRight, CalendarClock, Calculator, Layers, Briefcase } from "lucide-react"
 import type { ProgramDetails } from "@/lib/data/programs"
 import { MatchScoreEngine, type MatchResult } from "@/lib/leads/MatchScoreEngine"
 import type { SubscriberProfile } from "@/lib/leads/SubscriberRepository"
@@ -19,6 +19,8 @@ import { StackingPortfolio } from "@/components/seo/StackingPortfolio"
 import { InlineMatchEvaluator } from "@/components/seo/InlineMatchEvaluator"
 import { resolveBenchmarkBySlug } from "@/lib/editorial/eligibilityBenchmarks"
 import { EligibilityBenchmarkWidget } from "@/components/seo/EligibilityBenchmarkWidget"
+import { comparisonsDatabase } from "@/lib/data/comparisons"
+import { industryDatabase } from "@/lib/data/industry-pages"
 
 interface ProgramClientWrapperProps {
   program: ProgramDetails
@@ -37,6 +39,18 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
   const [matchResult, setMatchResult] = useState<MatchResult | null>(null)
   const [hasAccess, setHasAccess] = useState(false)
   const [loading, setLoading] = useState(true)
+
+  const relevantComparisons = useMemo(() => {
+    return comparisonsDatabase.filter(
+      comp => comp.prog1Id === program.id || comp.prog2Id === program.id
+    );
+  }, [program.id]);
+
+  const matchingIndustries = useMemo(() => {
+    return Object.entries(industryDatabase)
+      .filter(([slug, ind]) => ind.programIds.includes(program.id))
+      .map(([slug, ind]) => ({ slug, name: ind.name }));
+  }, [program.id]);
 
   useEffect(() => {
     async function initProfile() {
@@ -280,6 +294,26 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
                 <ProgramTabs program={program} />
               </Card>
 
+              {/* Related Industry Guides */}
+              {matchingIndustries.length > 0 && (
+                <Card className="border border-slate-200 bg-white rounded-2xl p-6 shadow-sm">
+                  <h4 className="font-extrabold text-slate-900 text-sm mb-3 flex items-center gap-2">
+                    <Briefcase className="h-4 w-4 text-emerald-600" />
+                    Target Industries
+                  </h4>
+                  <p className="text-xs text-slate-500 mb-3 font-medium">View custom eligibility criteria and stacking rules for your industry:</p>
+                  <div className="flex flex-wrap gap-2">
+                    {matchingIndustries.map(ind => (
+                      <Link key={ind.slug} href={`/grants/industry/${ind.slug}`}>
+                        <span className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-50 border border-slate-200 text-slate-700 hover:bg-slate-100 hover:border-slate-300 transition-all cursor-pointer">
+                          {ind.name} Grants <ArrowRight className="h-3 w-3" />
+                        </span>
+                      </Link>
+                    ))}
+                  </div>
+                </Card>
+              )}
+
               {/* Related Resources & Guides (Content Clusters) */}
               <div className="space-y-4">
                 <h3 className="text-xl font-bold text-slate-900 flex items-center gap-2">
@@ -498,6 +532,29 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
                   )
                 )}
 
+                {/* Relevant Comparisons */}
+                {relevantComparisons.length > 0 && (
+                  <Card className="border border-slate-200 bg-white rounded-2xl shadow-sm overflow-hidden p-5 space-y-3">
+                    <h4 className="font-bold text-slate-900 text-sm flex items-center gap-2">
+                      <Layers className="h-4 w-4 text-emerald-600" />
+                      Comparison Guides
+                    </h4>
+                    <p className="text-xs text-slate-500 leading-relaxed">Compare {program.name} against other active programs:</p>
+                    <ul className="space-y-2">
+                      {relevantComparisons.map(comp => (
+                        <li key={comp.slug}>
+                          <Link 
+                            href={`/compare/${comp.slug}`}
+                            className="inline-flex items-center gap-1 text-xs text-indigo-650 hover:text-indigo-800 font-semibold hover:underline"
+                          >
+                            {comp.title.split(":")[0] || comp.title} <ArrowRight className="h-3 w-3" />
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  </Card>
+                )}
+
                 {/* Secure Trust Indicators */}
                 <div className="p-4 border border-slate-200 rounded-xl bg-white flex items-start gap-3 shadow-xs">
                   <Shield className="h-5 w-5 text-emerald-600 shrink-0 mt-0.5" />
@@ -510,6 +567,44 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
 
             </div>
 
+          </div>
+
+          {/* ═══════ CONSULTING BRIDGE STRIP ═══════
+               Shows on all program pages — full width, below the main content grid.
+               Primary: calculator (Tier 1, no friction)
+               Secondary: /audit (Tier 2, price revealed on landing page)
+          */}
+          <div className="mt-10 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-6 sm:p-8 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
+            <div className="relative z-10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-5">
+              <div className="space-y-1.5">
+                <p className="text-[10px] font-bold uppercase tracking-widest text-indigo-400">
+                  Not sure if {program.name} fits your business?
+                </p>
+                <h2 className="text-lg sm:text-xl font-black text-white leading-tight">
+                  Get matched to your top 3 programs in 3 minutes
+                </h2>
+                <p className="text-sm text-slate-400 max-w-lg">
+                  Our free eligibility calculator screens {program.name} and 800+ other active programs against your business profile — then shows you exactly where you rank.
+                </p>
+              </div>
+              <div className="flex flex-col sm:flex-row gap-3 shrink-0">
+                <Link
+                  href="/calculator"
+                  className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold px-5 py-2.5 rounded-xl text-sm transition-colors shadow-lg shadow-emerald-500/20"
+                >
+                  <Calculator className="h-4 w-4" />
+                  Check Eligibility
+                </Link>
+                <Link
+                  href={`/audit?source=program-page&program=${encodeURIComponent(program.slug)}`}
+                  className="inline-flex items-center gap-2 bg-white/10 hover:bg-white/15 border border-white/20 text-white font-semibold px-5 py-2.5 rounded-xl text-sm transition-colors"
+                >
+                  <CalendarClock className="h-4 w-4" />
+                  Talk To A Funding Strategist
+                </Link>
+              </div>
+            </div>
           </div>
 
         </div>

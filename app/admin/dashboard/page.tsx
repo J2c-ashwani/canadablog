@@ -639,7 +639,63 @@ export default async function RevenueDashboardPage({
           </div>
         </div>
 
+        {/* ════════════════ TIER 2: CONSULTING ENGINE ════════════════ */}
+        {(() => {
+          const auditPurchases = purchases.filter(
+            (p) => p.productId === 'consultation' || (parseFloat(p.amount) || 0) >= 199
+          );
+          const auditRevenue = auditPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+          const callsBooked = telemetry.filter(
+            (e) => e.eventName === 'strategy_session_booked' || e.eventName === 'strategy_session_paid'
+          ).length;
+
+          const reportToAuditUpgrades = auditPurchases.filter(
+            (p) => (p.utmSource || '').toLowerCase().includes('report-upsell') ||
+                   (p.utmCampaign || '').toLowerCase().includes('report-upsell')
+          ).length;
+
+          const tier1Purchases = purchases.filter((p) => parseFloat(p.amount) < 199).length;
+          const reportToAuditRate = tier1Purchases > 0
+            ? ((reportToAuditUpgrades / tier1Purchases) * 100).toFixed(1)
+            : '0.0';
+
+          const auditPageViews = new Set(
+            telemetry.filter((e) => (e.pagePath || '').includes('/audit')).map((e) => e.sessionId)
+          ).size;
+
+          return (
+            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
+              <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                <div className="flex items-center gap-2">
+                  <TrendingUp className="w-5 h-5 text-indigo-600" />
+                  <h2 className="font-extrabold text-slate-900 text-base">Tier 2 — Consulting Engine</h2>
+                </div>
+                <span className="text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded uppercase tracking-wider">All Time</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6">
+                {[
+                  { label: 'Audit Page Views', value: auditPageViews, sub: 'Unique sessions on /audit', cls: 'bg-indigo-50 border-indigo-100 text-indigo-800' },
+                  { label: 'Audit Purchases', value: auditPurchases.length, sub: `$${auditRevenue.toFixed(0)} total`, cls: 'bg-emerald-50 border-emerald-100 text-emerald-800' },
+                  { label: 'Calls Booked', value: callsBooked, sub: 'strategy_session_booked', cls: 'bg-blue-50 border-blue-100 text-blue-800' },
+                  { label: 'Report → Audit Rate', value: `${reportToAuditRate}%`, sub: `${reportToAuditUpgrades} of ${tier1Purchases} buyers upgraded`, cls: 'bg-amber-50 border-amber-100 text-amber-800' },
+                ].map(kpi => (
+                  <div key={kpi.label} className={`rounded-xl border p-4 ${kpi.cls}`}>
+                    <p className="text-[10px] font-bold uppercase tracking-wider opacity-60 mb-1">{kpi.label}</p>
+                    <p className="text-2xl font-black">{kpi.value}</p>
+                    <p className="text-[10px] mt-1 opacity-50 leading-tight">{kpi.sub}</p>
+                  </div>
+                ))}
+              </div>
+              {auditPurchases.length === 0 && (
+                <p className="px-6 pb-5 text-xs text-slate-400">No audit purchases yet — section will populate after the first $199 payment.</p>
+              )}
+            </div>
+          );
+        })()}
+
         {/* ════════════════ REVENUE LEAKAGE AUDIT ════════════════ */}
+
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
           <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">

@@ -70,6 +70,21 @@ export function Footer() {
             <div className="space-y-2">
               <h4 className="font-semibold text-sm text-gray-300">Resources</h4>
               <div className="flex flex-col space-y-1">
+                <Link href="/sample-report" className="text-indigo-400 hover:text-indigo-300 font-semibold text-sm">
+                  Sample Report
+                </Link>
+                <Link href="/testimonials" className="text-gray-400 hover:text-white text-sm">
+                  Success Stories
+                </Link>
+                <Link href="/customer-success" className="text-gray-400 hover:text-white text-sm">
+                  Customer Case Studies
+                </Link>
+                <Link href="/about-founder" className="text-gray-400 hover:text-white text-sm">
+                  About the Founder
+                </Link>
+                <Link href="/program-updates" className="text-gray-400 hover:text-white text-sm">
+                  Program Updates Log
+                </Link>
                 <Link href="/blog" className="text-gray-400 hover:text-white text-sm">
                   Expert Insights
                 </Link>

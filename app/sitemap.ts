@@ -13,6 +13,7 @@ import {
 } from '@/lib/pseo-data'
 import { getAllPrograms } from '@/lib/data/programs'
 import { getAllCaseStudies } from '@/lib/data/case-studies'
+import { industryDatabase } from '@/lib/data/industry-pages'
 
 
 const SUPERSEDED_BLOG_SLUGS = new Set([
@@ -149,11 +150,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const programRoutes = getAllPrograms().map(p => `/programs/${p.slug}`)
 
   // 8. Add Industry pages
-  const cohortIndustries = [
-    'saas-companies', 'ai-startups', 'manufacturers', 'agriculture',
-    'healthcare-medtech', 'clean-tech', 'restaurants-hospitality',
-    'retail', 'non-profits', 'construction'
-  ]
+  const cohortIndustries = Object.keys(industryDatabase)
   const industryRoutes = cohortIndustries.map(slug => `/grants/industry/${slug}`)
 
   // 9. Add Location pages

@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect, useCallback } from "react"
+import React, { useState, useEffect, useCallback, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle, CardFooter } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -62,6 +62,8 @@ export function GrantCalculator() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [consentToPartnerContact, setConsentToPartnerContact] = useState(false);
+    const [leadSaved, setLeadSaved] = useState(false);
+    const [isPaypalButtonVisible, setIsPaypalButtonVisible] = useState(false);
 
     // --- Revenue Ladder State ---
     const [sdkReady, setSdkReady] = useState(false);
@@ -139,9 +141,13 @@ export function GrantCalculator() {
         const revenueParam = params.get('revenue');
         const goalParam = params.get('goal');
 
+        let hasEmail = false;
         setData(prev => {
             const updated = { ...prev };
-            if (emailParam) updated.email = emailParam;
+            if (emailParam) {
+                updated.email = emailParam;
+                hasEmail = true;
+            }
             if (nameParam) updated.name = nameParam;
             if (phoneParam) updated.phone = phoneParam;
             if (companyParam) updated.company = companyParam;
@@ -151,6 +157,9 @@ export function GrantCalculator() {
             if (goalParam) updated.goal = goalParam;
             return updated;
         });
+        if (hasEmail) {
+            setLeadSaved(true);
+        }
 
         const token = params.get('token');
         if (!token) return;
@@ -181,6 +190,7 @@ export function GrantCalculator() {
                     calculateEstimateRestored(restoredProfile);
                     setIsRestoredSession(true);
                     setStep(6); // Show teaser results first — value before ask
+                    setLeadSaved(true);
 
                     // Track paywall_viewed event in subscriber history
                     if (restoredProfile.email) {
@@ -205,6 +215,22 @@ export function GrantCalculator() {
 
         restoreSession();
     }, []);
+
+    // Auto-save lead draft when email becomes valid on Step 6
+    const lastSavedEmail = useRef("");
+    useEffect(() => {
+        if (step !== 6 || leadSaved) return;
+        const email = data.email?.trim();
+        if (email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            if (email !== lastSavedEmail.current) {
+                lastSavedEmail.current = email;
+                const timer = setTimeout(() => {
+                    saveCalculatorLead(email, data.name || "Founder", false);
+                }, 1000); // 1s debounce
+                return () => clearTimeout(timer);
+            }
+        }
+    }, [data.email, step, leadSaved]);
 
     const [alertsEmail, setAlertsEmail] = useState('');
     const [isAlertsSubscribed, setIsAlertsSubscribed] = useState(false);
@@ -327,7 +353,7 @@ export function GrantCalculator() {
         try {
             const messageInfo = `Calculator Lead (${isFreeFallback ? 'Free Summary' : 'Checkout Initiated'})\nProvince: ${data.province}\nIndustry: ${data.industry}\nRevenue: ${data.revenue}\nGoal: ${data.goal}\nEstimated Funding Range: $${estimate.toLocaleString()} - $${estimateMax.toLocaleString()}\nMatched Grants Count: ${grantCount}\nCompany: ${data.company || "Not provided"}`;
 
-            await fetch("/api/contact", {
+            const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
@@ -364,6 +390,17 @@ export function GrantCalculator() {
                 })
             }).catch(e => console.error("Telemetry error:", e));
 
+            // Fire paywall_viewed telemetry (fresh view)
+            fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: email,
+                    event: "paywall_viewed",
+                    priceShown: "19|79"
+                })
+            }).catch(e => console.error("Telemetry paywall_viewed error:", e));
+
             // Fire calculator_complete telemetry to Funnel Events
             try {
                 const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
@@ -378,6 +415,10 @@ export function GrantCalculator() {
                     })
                 }).catch(err => console.error('Failed to log telemetry calculator_complete:', err));
             } catch (tErr) {}
+
+            if (res.ok) {
+                setLeadSaved(true);
+            }
 
         } catch (error) {
             console.error("Failed to save lead:", error);
@@ -857,7 +898,7 @@ export function GrantCalculator() {
         trackEvent(specificEventName, { package_id: selectedProductId, price });
         trackEvent('calc_package_selected', { package_id: selectedProductId });
 
-        if (data.email) {
+        if (data.email && leadSaved) {
           fetch("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -870,7 +911,15 @@ export function GrantCalculator() {
           }).catch(e => console.error("Telemetry error logging package selection:", e));
         }
       }
-    }, [selectedProductId, step, data.email]);
+    }, [selectedProductId, step, data.email, leadSaved]);
+
+    const paypalVisibleLogged = useRef(false);
+
+    useEffect(() => {
+      if (step !== 6) {
+        paypalVisibleLogged.current = false;
+      }
+    }, [step]);
 
     // Telemetry: Track when PayPal checkout button enters viewport
     useEffect(() => {
@@ -880,26 +929,28 @@ export function GrantCalculator() {
 
       const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            trackEvent('calc_paypal_visible');
-            if (data.email) {
-              fetch("/api/subscriber/track-activity", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email: data.email,
-                  event: "paypal_visible"
-                })
-              }).catch(e => console.error("Telemetry error logging paypal_visible:", e));
-            }
-            observer.disconnect();
-          }
+          setIsPaypalButtonVisible(entry.isIntersecting);
         });
       }, { threshold: 0.1 });
 
       observer.observe(el);
       return () => observer.disconnect();
     }, [step, sdkReady]);
+
+    useEffect(() => {
+      if (step === 6 && isPaypalButtonVisible && data.email && leadSaved && !paypalVisibleLogged.current) {
+        paypalVisibleLogged.current = true;
+        trackEvent('calc_paypal_visible');
+        fetch("/api/subscriber/track-activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: data.email,
+            event: "paypal_visible"
+          })
+        }).catch(e => console.error("Telemetry error logging paypal_visible:", e));
+      }
+    }, [step, isPaypalButtonVisible, data.email, leadSaved]);
 
     // Telemetry: Track time on Step 6
     useEffect(() => {
@@ -1232,9 +1283,24 @@ export function GrantCalculator() {
                             </div>
                         </div>
 
+                        {/* Trust Signals — above pricing */}
+                        <div className="mb-6 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                          <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-600 font-medium">
+                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Research sourced from federal, provincial &amp; regional government databases</span>
+                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Programs updated weekly — deadlines &amp; amounts verified</span>
+                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Instant PDF access delivered to your inbox</span>
+                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> 7-day refund policy — no questions asked</span>
+                          </div>
+                          <div className="flex gap-3 shrink-0 text-xs font-semibold text-indigo-600">
+                            <a href="/sample-report" target="_blank" rel="noopener" className="hover:underline whitespace-nowrap">Preview sample →</a>
+                            <a href="/testimonials" target="_blank" rel="noopener" className="hover:underline whitespace-nowrap">Read reviews →</a>
+                          </div>
+                        </div>
+
                         {/* 3-Tier Pricing Architecture */}
                         <div className="space-y-4 mb-8">
                             <h3 className="text-2xl font-bold text-slate-900 text-center mb-6">Unlock Funding Opportunities Identified For Your Business</h3>
+
                             
                             {/* Tier 1: $79 Complete Bundle (Highlighted) */}
                             <div
@@ -1458,18 +1524,26 @@ export function GrantCalculator() {
                         <div className="border-t border-slate-200 pt-6 mt-6 space-y-4">
                             <h5 className="font-bold text-slate-900 text-lg mb-4">Common Questions</h5>
                             
-                            <div className="space-y-4">
+                            <div className="space-y-5">
                                 <div>
-                                    <p className="text-sm font-bold text-slate-800">How does FSI Digital help businesses access funding?</p>
-                                    <p className="text-sm text-slate-600 mt-1">Government funding is provided by federal, provincial, and regional agencies. FSI Digital identifies programs that appear relevant to your business, organizes eligibility requirements, highlights priority opportunities, and provides guidance to help you evaluate and pursue them.</p>
+                                    <p className="text-sm font-bold text-slate-800">Is this government funding guaranteed?</p>
+                                    <p className="text-sm text-slate-600 mt-1">No. All government funding decisions are made solely by the respective administering agencies. FSI Digital is a research, matching, and strategy service. We identify eligible programs and help you build an action plan, but we do not guarantee funding approval.</p>
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-slate-800">What happens if I leave without my matches?</p>
-                                    <p className="text-sm text-slate-600 mt-1">Your matches still exist. But you'll still face hours of manual Google research, comparing conflicting eligibility requirements, and uncertainty about which programs can be stacked.</p>
+                                    <p className="text-sm font-bold text-slate-800">How often are programs updated?</p>
+                                    <p className="text-sm text-slate-600 mt-1">Our database is updated weekly. Deadlines, criteria, and funding amounts are verified directly against official government program pages and guidelines to ensure you have the latest information.</p>
                                 </div>
                                 <div>
-                                    <p className="text-sm font-bold text-slate-800">Is there a guarantee?</p>
-                                    <p className="text-sm text-slate-600 mt-1">Yes, 30 days. If the report doesn't help you identify relevant funding, email us and we'll refund your purchase immediately.</p>
+                                    <p className="text-sm font-bold text-slate-800">Do I need a PayPal account to purchase?</p>
+                                    <p className="text-sm text-slate-600 mt-1">No. PayPal acts as our secure payment processor, but you can check out as a guest using any major credit card (Visa, Mastercard, American Express, or Discover) without creating an account.</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-bold text-slate-800">What happens after purchase?</p>
+                                    <p className="text-sm text-slate-600 mt-1">You will receive instant PDF delivery to your email inbox, and immediate access to your interactive online dashboard where you can view your custom matches, prioritize tasks, and stack programs.</p>
+                                </div>
+                                <div>
+                                    <p className="text-sm font-bold text-slate-800">Can I get a refund?</p>
+                                    <p className="text-sm text-slate-600 mt-1">Yes. We stand by our service. If you are not satisfied with your custom report, we offer a 7-day, no-questions-asked refund policy. Simply contact us and we will refund your purchase in full.</p>
                                 </div>
                             </div>
                         </div>
@@ -2205,7 +2279,7 @@ export function GrantCalculator() {
                           </div>
                         )}
 
-                        {/* ═══════ UPSELL TO $199 AUDIT ═══════ */}
+                        {/* ═══════ UPSELL TO $199 AUDIT (Level 4 — Pay First) ═══════ */}
                         {(() => {
                           const discount = hasStrategyUnlocked 
                             ? (selectedProductId === 'funding-bundle' ? 79 : 49) 
@@ -2214,21 +2288,24 @@ export function GrantCalculator() {
                           return (
                             <div className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-5 sm:p-6 text-center relative overflow-hidden">
                               <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-bl uppercase tracking-wider">
-                                ${discount} Credit Active
+                                ${discount} Credit Applied
                               </div>
                               <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-3">
                                 <TrendingUp className="w-6 h-6 text-indigo-600" />
                               </div>
-                              <h4 className="text-lg font-bold text-slate-800 mb-1">Need Help Applying?</h4>
-                              <p className="text-sm text-slate-500 mb-4 max-w-md mx-auto">
-                                Our funding advisors can help you prepare applications, maximize eligibility, and navigate the process.
-                                <strong className="block mt-2.5 text-emerald-700 font-semibold bg-emerald-50 border border-emerald-100 rounded-lg p-2.5">
-                                  Your ${discount} fee is credited back on booking — verification audit is only ${netPrice}
-                                </strong>
+                              <h4 className="text-lg font-bold text-slate-800 mb-1">Level 4 — Funding Strategy Audit</h4>
+                              <p className="text-sm text-slate-500 mb-1 max-w-md mx-auto">
+                                Want an FSI advisor to review your eligibility, identify your top 3 programs, and build a custom application roadmap?
                               </p>
+                              <p className="text-xs text-slate-400 mb-4 max-w-sm mx-auto">
+                                Pay now, then immediately book your 30-min strategy call. No waiting room. No sales pitch. Custom report delivered before the call.
+                              </p>
+                              <strong className="block mb-4 text-emerald-700 font-semibold bg-emerald-50 border border-emerald-100 rounded-lg p-2.5 max-w-xs mx-auto text-sm">
+                                Your ${discount} report credit is applied — pay only ${netPrice}
+                              </strong>
                               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                                 <a
-                                  href={`/consultation?source=report-upsell&email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.name)}&industry=${encodeURIComponent(data.industry)}&region=${encodeURIComponent(data.province)}&discount=${discount}`}
+                                  href={`/audit?source=report-upsell&email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.name)}&industry=${encodeURIComponent(data.industry)}&region=${encodeURIComponent(data.province)}&discount=${discount}`}
                                   data-google-vignette="false"
                                   className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-indigo-200"
                                   onClick={() => {
@@ -2243,14 +2320,14 @@ export function GrantCalculator() {
                                     }).catch(e => console.error("Telemetry error:", e));
                                   }}
                                 >
-                                  Book a $199 Funding Audit (${netPrice} net) <ArrowRight className="w-4 h-4" />
+                                  Upgrade to Funding Audit — ${netPrice} <ArrowRight className="w-4 h-4" />
                                 </a>
                                 <span className="bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold px-3 py-1.5 rounded-full text-[11px] flex items-center gap-1 shadow-sm shrink-0">
                                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                  ${discount} Coupon Applied (Pay ${netPrice})
+                                  ${discount} Report Credit Applied
                                 </span>
                               </div>
-                              <p className="text-xs text-slate-400 mt-2">100% deposit refund if no programs match</p>
+                              <p className="text-xs text-slate-400 mt-2">Pay first → Book your call instantly → 100% refund if no programs match</p>
                             </div>
                           );
                         })()}
@@ -2321,7 +2398,7 @@ export function GrantCalculator() {
                         <Button
                           size="lg"
                           className="bg-emerald-600 hover:bg-emerald-700 text-white"
-                          onClick={() => { setIsSuccess(false); setStep(7); }}
+                          onClick={() => { setIsSuccess(false); setStep(6); }}
                         >
                           <FileText className="w-5 h-5 mr-2" />
                           Unlock Full Report — $19

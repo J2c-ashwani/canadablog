@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle } from 'lucide-react';
+import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle, ArrowRight, FileText, Phone, TrendingUp } from 'lucide-react';
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 import { safeSessionStorage } from '@/lib/storage';
 
@@ -19,6 +19,15 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
   const [name, setName] = useState(prefilledName);
   const [rid, setRid] = useState('');
   const [source, setSource] = useState('');
+  const [orderId, setOrderId] = useState('');
+
+  // Pre-call questionnaire state
+  const [qGoal, setQGoal] = useState('');
+  const [qAge, setQAge] = useState('');
+  const [qExperience, setQExperience] = useState('');
+  const [qSubmitted, setQSubmitted] = useState(false);
+  const [qSubmitting, setQSubmitting] = useState(false);
+  const [qError, setQError] = useState('');
   const [hasMounted, setHasMounted] = useState(false);
 
   const CALENDLY_PATH = "ashwani-fsidigital/1-on-1-funding-consultation";
@@ -34,9 +43,11 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
     const parsedName = prefilledName || searchParams.get('name') || '';
     const parsedRid = searchParams.get('rid') || '';
     const parsedSource = searchParams.get('source') || '';
+    const parsedOrderId = searchParams.get('order') || '';
     setEmail(parsedEmail);
     setName(parsedName);
     setSource(parsedSource);
+    setOrderId(parsedOrderId);
 
     let finalRid = parsedRid;
     if (finalRid) {
@@ -218,58 +229,226 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
         <div className="relative max-w-4xl mx-auto px-6 text-center">
           
           {isSuccess ? (
-            /* STATE B: PAYMENT & BOOKING CONFIRMED SUCCESS VIEW */
-            <div className="max-w-xl mx-auto bg-white border border-slate-200/80 rounded-3xl p-8 shadow-xl text-center">
-              <div className="w-16 h-16 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center justify-center mx-auto mb-6 shadow-sm">
-                <CheckCircle className="w-9 h-9 text-emerald-600 animate-pulse" />
+            /* STATE B: PAYMENT & BOOKING CONFIRMED — UPGRADED SUCCESS SCREEN */
+            <div className="max-w-2xl mx-auto space-y-6">
+
+              {/* ── Confirmation Receipt ── */}
+              <div className="bg-white border border-slate-200/80 rounded-3xl p-7 shadow-xl text-center">
+                <div className="w-14 h-14 bg-emerald-50 rounded-2xl border border-emerald-100 flex items-center justify-center mx-auto mb-5 shadow-sm">
+                  <CheckCircle className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h1 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-1.5">
+                  Payment Confirmed. Call Booked.
+                </h1>
+                <p className="text-sm text-slate-500 mb-5">
+                  Your Funding Strategy Audit is locked in. Our analyst will prepare your custom Funding Eligibility Report before the call.
+                </p>
+                <div className="bg-slate-50 rounded-2xl p-4 border border-slate-200/50 text-left space-y-2.5 mb-5">
+                  <div className="flex justify-between items-center py-2 border-b border-slate-100 text-xs">
+                    <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Audit Status</span>
+                    <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">Secured & Confirmed</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-slate-100 text-xs">
+                    <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Pre-Call Analysis</span>
+                    <span className="font-bold text-slate-900">Custom Funding Eligibility Report (In Progress)</span>
+                  </div>
+                  <div className="flex justify-between items-center py-2 border-b border-slate-100 text-xs">
+                    <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Call Format</span>
+                    <span className="font-bold text-indigo-600">30-min Google Meet · 1-on-1</span>
+                  </div>
+                  {email && (
+                    <div className="flex justify-between items-center py-2 text-xs">
+                      <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Calendar Invite</span>
+                      <span className="font-extrabold text-slate-900 truncate max-w-[180px]">{email}</span>
+                    </div>
+                  )}
+                </div>
+                <div className="bg-indigo-50/60 border border-indigo-100 rounded-xl p-3.5 flex gap-3 text-left text-xs text-indigo-900 leading-relaxed">
+                  <Mail className="w-4 h-4 text-indigo-600 flex-shrink-0 mt-0.5" />
+                  <span><strong>Check your inbox.</strong> We sent your Calendly confirmation with the Google Meet link. Your analyst begins research immediately.</span>
+                </div>
               </div>
 
-              <h1 className="text-3xl font-black text-slate-950 tracking-tight mb-2">
-                Eligibility Audit Confirmed!
-              </h1>
-              
-              <p className="text-sm text-slate-600 leading-relaxed mb-6">
-                Thank you! Your research deposit is complete and your 30-minute private Google Meet consultation has been officially scheduled.
-              </p>
+              {/* ── Pre-Call Questionnaire ── */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <div className="flex items-center gap-2 mb-1">
+                  <FileText className="w-5 h-5 text-indigo-600" />
+                  <h2 className="text-base font-bold text-slate-900">3-Minute Pre-Call Questionnaire</h2>
+                </div>
+                <p className="text-xs text-slate-500 mb-5">
+                  Help your analyst prepare a sharper report. Takes 60 seconds — answers go directly to your advisor before the call.
+                </p>
 
-              {/* Receipt / Process Details card */}
-              <div className="bg-slate-50/80 rounded-2xl p-5 border border-slate-200/50 text-left mb-6 space-y-3">
-                <div className="flex justify-between items-center py-2.5 border-b border-slate-200/60 text-xs">
-                  <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Audit Status</span>
-                  <span className="font-extrabold text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">Secured & Confirmed</span>
-                </div>
-                <div className="flex justify-between items-center py-2.5 border-b border-slate-200/60 text-xs">
-                  <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Pre-Call Analysis</span>
-                  <span className="font-bold text-slate-900">2 Hours Custom Audit (In Progress)</span>
-                </div>
-                <div className="flex justify-between items-center py-2.5 border-b border-slate-200/60 text-xs">
-                  <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Deliverable</span>
-                  <span className="font-bold text-indigo-600">Action Plan PDF Included</span>
-                </div>
-                {email && (
-                  <div className="flex justify-between items-center py-2.5 text-xs">
-                    <span className="text-slate-500 font-semibold uppercase tracking-wider text-[10px]">Calendar Invite Sent To</span>
-                    <span className="font-extrabold text-slate-900 truncate max-w-[180px]">{email}</span>
+                {qSubmitted ? (
+                  <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 flex items-center gap-3 text-sm text-emerald-800">
+                    <CheckCircle className="w-5 h-5 text-emerald-600 shrink-0" />
+                    <span><strong>Got it!</strong> Your advisor will review these before your call.</span>
                   </div>
+                ) : (
+                  <form
+                    onSubmit={async (e) => {
+                      e.preventDefault();
+                      if (!qGoal || !qAge || !qExperience) {
+                        setQError('Please answer all three questions.');
+                        return;
+                      }
+                      setQSubmitting(true);
+                      setQError('');
+                      try {
+                        await fetch('/api/audit/questionnaire', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({
+                            email,
+                            orderId,
+                            auditGoal: qGoal,
+                            businessAge: qAge,
+                            fundingExperience: qExperience,
+                          }),
+                        });
+                        setQSubmitted(true);
+                      } catch {
+                        setQError('Could not save answers. Please email them to ashwani@fsidigital.ca');
+                      } finally {
+                        setQSubmitting(false);
+                      }
+                    }}
+                    className="space-y-4"
+                  >
+                    {/* Q1 */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-2">
+                        1. What is your primary funding goal?
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        {[
+                          { val: 'sred', label: 'SR&ED / R&D' },
+                          { val: 'hiring', label: 'Hiring Grants' },
+                          { val: 'digital', label: 'Digital / Tech' },
+                          { val: 'export', label: 'Export / Growth' },
+                        ].map(opt => (
+                          <button
+                            key={opt.val}
+                            type="button"
+                            onClick={() => setQGoal(opt.val)}
+                            className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-colors ${
+                              qGoal === opt.val
+                                ? 'bg-indigo-600 text-white border-indigo-600'
+                                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Q2 */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-2">
+                        2. How long has your business been operating?
+                      </label>
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                        {[
+                          { val: 'under-1', label: 'Under 1 year' },
+                          { val: '1-3', label: '1–3 years' },
+                          { val: '3-7', label: '3–7 years' },
+                          { val: '7-plus', label: '7+ years' },
+                        ].map(opt => (
+                          <button
+                            key={opt.val}
+                            type="button"
+                            onClick={() => setQAge(opt.val)}
+                            className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-colors ${
+                              qAge === opt.val
+                                ? 'bg-indigo-600 text-white border-indigo-600'
+                                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Q3 */}
+                    <div>
+                      <label className="block text-xs font-bold text-slate-700 mb-2">
+                        3. Have you applied for government funding before?
+                      </label>
+                      <div className="grid grid-cols-3 gap-2">
+                        {[
+                          { val: 'never', label: 'Never' },
+                          { val: 'yes-unsuccessful', label: 'Yes — no success' },
+                          { val: 'yes-received', label: 'Yes — received funds' },
+                        ].map(opt => (
+                          <button
+                            key={opt.val}
+                            type="button"
+                            onClick={() => setQExperience(opt.val)}
+                            className={`py-2 px-3 text-xs font-semibold rounded-lg border transition-colors ${
+                              qExperience === opt.val
+                                ? 'bg-indigo-600 text-white border-indigo-600'
+                                : 'bg-white text-slate-700 border-slate-200 hover:border-indigo-300'
+                            }`}
+                          >
+                            {opt.label}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+
+                    {qError && <p className="text-xs text-red-600">{qError}</p>}
+
+                    <button
+                      type="submit"
+                      disabled={qSubmitting || !qGoal || !qAge || !qExperience}
+                      className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-slate-200 disabled:text-slate-400 text-white font-bold py-2.5 rounded-xl text-sm transition-colors flex items-center justify-center gap-2"
+                    >
+                      {qSubmitting ? 'Saving...' : 'Submit Answers →'}
+                    </button>
+                  </form>
                 )}
               </div>
 
-              <div className="bg-indigo-50/50 border border-indigo-100 rounded-xl p-4 flex gap-3 text-left text-xs text-indigo-950 leading-relaxed mb-6">
-                <Mail className="w-5 h-5 text-indigo-600 flex-shrink-0 mt-0.5" />
-                <div>
-                  <strong>What's next?</strong> We sent a calendar invitation containing the Google Meet link directly to your inbox. Our analyst is already compiling your eligibility datasets.
-                </div>
+              {/* ── What Happens Next ── */}
+              <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm">
+                <h2 className="text-base font-bold text-slate-900 mb-4 flex items-center gap-2">
+                  <Clock className="w-5 h-5 text-indigo-600" />
+                  What Happens Between Now and Your Call
+                </h2>
+                <ol className="space-y-3">
+                  {[
+                    { step: '1', label: 'Analyst Research (Right Now)', desc: 'Your advisor begins a 2-hour custom eligibility review of 800+ programs against your business profile.' },
+                    { step: '2', label: 'Report Delivered (24h Before Call)', desc: 'A custom Funding Eligibility Report PDF is sent to your inbox before the call so you can review it in advance.' },
+                    { step: '3', label: '30-Min Strategy Call', desc: 'Walk through your top 3 matched programs, application sequence, and funding stacking strategy with your advisor.' },
+                    { step: '4', label: 'Post-Call Summary', desc: 'A written roadmap of your recommended programs, timelines, and next steps — delivered within 24h of the call.' },
+                  ].map(item => (
+                    <li key={item.step} className="flex gap-3 text-sm">
+                      <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 font-extrabold text-xs flex items-center justify-center shrink-0 mt-0.5">{item.step}</span>
+                      <div>
+                        <p className="font-bold text-slate-800">{item.label}</p>
+                        <p className="text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                      </div>
+                    </li>
+                  ))}
+                </ol>
               </div>
 
-              <div className="flex items-center justify-center gap-2 text-xs text-slate-500 border-t border-slate-100 pt-6">
-                <ShieldCheck className="w-4 h-4 text-slate-400" />
+              {/* ── Level 5 Soft Mention ── */}
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-start gap-3 text-xs text-slate-600">
+                <TrendingUp className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
                 <span>
-                  Need to reschedule? Email support at{' '}
-                  <a href="mailto:ashwani@fsidigital.ca" className="text-indigo-600 font-semibold hover:underline">
-                    ashwani@fsidigital.ca
-                  </a>
+                  <strong className="text-slate-800">If the audit finds strong opportunities:</strong> your $199 research deposit is credited 100% toward any full application and filing engagement. You'll hear more about this on the call.
                 </span>
               </div>
+
+              {/* ── Reschedule ── */}
+              <div className="flex items-center justify-center gap-2 text-xs text-slate-400 pb-2">
+                <ShieldCheck className="w-4 h-4" />
+                <span>Need to reschedule? Email <a href="mailto:ashwani@fsidigital.ca" className="text-indigo-600 font-semibold hover:underline">ashwani@fsidigital.ca</a></span>
+              </div>
+
             </div>
           ) : (
             /* STATE A: SLOT SCHEDULING VIEW (DEFAULT) */
