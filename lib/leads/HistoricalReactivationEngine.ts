@@ -31,7 +31,30 @@ export class HistoricalReactivationEngine {
     completedCount: number;
     errors: { email: string; stage: string; error: any }[];
     dryRun: boolean;
+    skippedReason?: string;
   }> {
+    // EST Weekday and Business Hours (9 AM - 5 PM) Check
+    const etString = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
+    const etDate = new Date(etString);
+    const dayOfWeek = etDate.getDay(); // 0 = Sunday, 6 = Saturday
+    const hours = etDate.getHours();
+
+    const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
+    const isOutsideBusinessHours = hours < 9 || hours >= 17;
+
+    if ((isWeekend || isOutsideBusinessHours) && !dryRun) {
+      const reason = `Skipping campaign dispatch: Outside North American B2B business hours (EST Time: ${etDate.toLocaleTimeString()}, Day: ${etDate.toLocaleDateString('en-US', { weekday: 'long' })}).`;
+      console.log(`⏳ ${reason}`);
+      return {
+        processed: 0,
+        sent: { day0: 0, day2: 0, day5: 0, day8: 0, day11: 0, day14: 0 },
+        completedCount: 0,
+        errors: [],
+        dryRun,
+        skippedReason: reason
+      };
+    }
+
     const allSubs = await SubscriberRepository.getAllSubscribers();
     const now = new Date();
     
