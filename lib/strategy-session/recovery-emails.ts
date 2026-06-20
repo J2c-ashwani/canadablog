@@ -193,6 +193,23 @@ function buildReportPreviewHtml(lead?: PreviewLeadData) {
       const likelihoodBg = opp.likelihood ? '#ecfdf5' : '#fffbeb';
       const likelihoodBorder = opp.likelihood ? '#d1fae5' : '#fef3c7';
 
+      // Map to a B2B category dynamically based on the program name
+      const name = opp.programName;
+      let categoryName = "Business Development & Expansion Grants";
+      if (name.includes("SR&ED") || name.includes("R&D") || name.includes("Innovation")) {
+        categoryName = "R&D & Product Innovation Tax Credits";
+      } else if (name.includes("CDAP") || name.includes("Digital Adoption") || name.includes("Technology")) {
+        categoryName = "Technology Adoption & Digital Transformation";
+      } else if (name.includes("Equipment") || name.includes("Manufacturing")) {
+        categoryName = "Equipment Acquisition & Modernization Grants";
+      } else if (name.includes("Agri")) {
+        categoryName = "Agricultural Innovation & Equipment";
+      } else if (name.includes("Tourism") || name.includes("Regional")) {
+        categoryName = "Regional Growth & Tourism Development";
+      } else if (name.includes("Hiring") || name.includes("Wage") || name.includes("Training")) {
+        categoryName = "Hiring Incentives & Wage Subsidies";
+      }
+
       return `
         <div style="background-color: #ffffff; border: 1px solid #e2e8f0; border-radius: 6px; padding: 14px; ${idx > 0 ? 'margin-top: 14px;' : ''}">
           <table style="width: 100%; border-collapse: collapse; margin-bottom: 8px;" cellpadding="0" cellspacing="0">
@@ -205,7 +222,8 @@ function buildReportPreviewHtml(lead?: PreviewLeadData) {
               </td>
             </tr>
           </table>
-          <p style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a;">${escapeHtml(opp.programName)}</p>
+          <p style="margin: 0 0 4px 0; font-size: 14px; font-weight: bold; color: #0f172a;">Category: ${escapeHtml(categoryName)}</p>
+          <p style="margin: 0 0 12px 0; font-size: 12px; color: #b45309; font-weight: bold; font-family: monospace;">Program Name: [Program Name Hidden - Secure Deposit to Unlock]</p>
           ${opp.estimatedBenefit ? `<p style="margin: 0 0 12px 0; font-size: 16px; font-weight: 800; color: #059669;">Est. Benefit: ${escapeHtml(opp.estimatedBenefit)}</p>` : ''}
           <div style="margin: 8px 0;">
             <p style="margin: 0 0 2px 0; font-size: 11px; color: #64748b; font-weight: bold; text-transform: uppercase; letter-spacing: 0.03em;">Relevance Justification:</p>
@@ -271,7 +289,26 @@ Notice: Your actual Funding Eligibility Report will be customized based on your 
     const likelihoodText = opp.likelihood ? `Likelihood: ${opp.likelihood}` : 'Requires Review';
     const benefitText = opp.estimatedBenefit ? `\nEstimated Benefit: ${opp.estimatedBenefit}` : '';
     const actionsText = opp.requiredActions.map(action => `- ${action}`).join('\n');
-    return `Opportunity #${oppIdx}: ${opp.programName}${benefitText}
+
+    const name = opp.programName;
+    let categoryName = "Business Development & Expansion Grants";
+    if (name.includes("SR&ED") || name.includes("R&D") || name.includes("Innovation")) {
+      categoryName = "R&D & Product Innovation Tax Credits";
+    } else if (name.includes("CDAP") || name.includes("Digital Adoption") || name.includes("Technology")) {
+      categoryName = "Technology Adoption & Digital Transformation";
+    } else if (name.includes("Equipment") || name.includes("Manufacturing")) {
+      categoryName = "Equipment Acquisition & Modernization Grants";
+    } else if (name.includes("Agri")) {
+      categoryName = "Agricultural Innovation & Equipment";
+    } else if (name.includes("Tourism") || name.includes("Regional")) {
+      categoryName = "Regional Growth & Tourism Development";
+    } else if (name.includes("Hiring") || name.includes("Wage") || name.includes("Training")) {
+      categoryName = "Hiring Incentives & Wage Subsidies";
+    }
+
+    return `Opportunity #${oppIdx}
+Category: ${categoryName}
+Program Name: [Program Name Hidden - Secure Deposit to Unlock]${benefitText}
 ${likelihoodText}
 Relevance Justification: ${opp.reason}
 Required Actions:

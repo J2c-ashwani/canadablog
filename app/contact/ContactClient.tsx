@@ -714,38 +714,57 @@ export default function ContactClient() {
                 <div className="absolute top-0 right-0 bg-indigo-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl uppercase">Recommended Next Step</div>
                 
                 {assessmentResult.tier === 'A' && (
-                  <div className="space-y-4">
+                  <div className="space-y-6">
                     <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm uppercase tracking-wider">
-                      <FileCheck2 className="w-5 h-5 text-indigo-600" />
-                      Recommended Next Step: Funding Strategy Audit
+                      <Flame className="w-5 h-5 text-amber-500 fill-amber-500 animate-pulse" />
+                      Priority Matching Opportunities
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900">Unlock Your Researched Funding Roadmap</h3>
-                    <p className="text-xs text-indigo-900/85 bg-indigo-100/40 p-3 rounded-lg border border-indigo-100/60 font-semibold leading-relaxed">
-                      You scored {assessmentResult.score}/100 and appear highly eligible for several major funding categories.
+
+                    <h3 className="text-xl font-bold text-slate-900">Personalized Outcome Preview</h3>
+                    <p className="text-xs text-slate-500 leading-relaxed">
+                      We identified high-probability opportunity categories matching your business profile. Specific program names and application strategies are currently locked.
                     </p>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Based on your profile, your business matches several high-value programs. We recommend scheduling a 1-on-1 Strategy Session. Our team will complete 2 hours of manual pre-call research against 800+ active programs to prepare a customized Roadmap PDF for your business.
-                    </p>
-                    <ul className="text-xs text-slate-700 space-y-1.5 font-medium">
-                      <li className="flex items-start gap-1.5">
-                        <CheckCircle className="w-3.5 h-3.5 text-indigo-600 mt-0.5 shrink-0" />
-                        <span><strong>Custom Pre-Call Research:</strong> Deep dive of federal and provincial/state opportunities.</span>
-                      </li>
-                      <li className="flex items-start gap-1.5">
-                        <CheckCircle className="w-3.5 h-3.5 text-indigo-600 mt-0.5 shrink-0" />
-                        <span><strong>100% Risk-Free Refund:</strong> Fully refunded if we find no programs you qualify for.</span>
-                      </li>
-                    </ul>
-                    <Button 
-                      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-xl font-black shadow-md shadow-indigo-150"
-                      onClick={() => {
-                        trackEvent('audit_recommended');
-                        router.push(`/audit?email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.name)}&industry=${encodeURIComponent(formData.industry)}&region=${encodeURIComponent(formData.state)}&source=contact_form`);
-                      }}
-                    >
-                      Learn About Strategy Audit
-                      <ArrowRight className="w-4 h-4 ml-2" />
-                    </Button>
+
+                    {/* Lock Overlay Container */}
+                    <div className="relative border border-slate-200 rounded-2xl p-4 bg-slate-50/50 space-y-3">
+                      {/* Blurred Cards */}
+                      <div className="space-y-3 filter blur-[1.5px] opacity-80 pointer-events-none select-none">
+                        <div className="border border-slate-200 rounded-xl p-3 bg-white">
+                          <span className="text-[9px] font-bold text-indigo-600 uppercase">Primary Opportunity Category</span>
+                          <h4 className="font-bold text-slate-800 text-sm mt-0.5">{getPrimaryOpportunity(formData.fundingPurpose, formData.industry)}</h4>
+                          <span className="text-xs font-bold text-emerald-600 block mt-1">Est. Benefit: {getEstimatedOpportunityRange(formData.fundingAmount)}</span>
+                          <span className="text-[10px] text-slate-450 block mt-1">Program Details: [Program Name Hidden]</span>
+                        </div>
+                        <div className="border border-slate-200 rounded-xl p-3 bg-white">
+                          <span className="text-[9px] font-bold text-indigo-600 uppercase">Secondary Opportunity Category</span>
+                          <h4 className="font-bold text-slate-800 text-sm mt-0.5">{getSecondaryOpportunity(formData.fundingPurpose, formData.industry)}</h4>
+                          <span className="text-xs font-bold text-emerald-600 block mt-1">Est. Benefit: Up to $50,000</span>
+                          <span className="text-[10px] text-slate-450 block mt-1">Program Details: [Program Name Hidden]</span>
+                        </div>
+                      </div>
+
+                      {/* Glassmorphic Lock Banner Overlay */}
+                      <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center bg-white/75 backdrop-blur-[3.5px] rounded-2xl border-2 border-indigo-200 shadow-md">
+                        <div className="w-9 h-9 rounded-full bg-indigo-50 flex items-center justify-center border border-indigo-150 mb-2">
+                          <Lock className="w-4 h-4 text-indigo-600" />
+                        </div>
+                        <h4 className="text-xs sm:text-sm font-black text-slate-900 mb-1">Funding Program Details Locked</h4>
+                        <p className="text-[10px] sm:text-xs text-slate-500 max-w-sm leading-relaxed mb-3">
+                          Schedule a Funding Strategy Session to unlock program names, eligibility criteria, and your stacking roadmap.
+                        </p>
+                        
+                        <Button 
+                          className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow-md flex items-center animate-in fade-in duration-300"
+                          onClick={() => {
+                            trackEvent('audit_recommended_preview');
+                            router.push(`/audit?email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.name)}&industry=${encodeURIComponent(formData.industry)}&region=${encodeURIComponent(formData.state)}&source=personalized_preview`);
+                          }}
+                        >
+                          Unlock My Full Funding Analysis
+                          <ArrowRight className="w-4 h-4 ml-2" />
+                        </Button>
+                      </div>
+                    </div>
                   </div>
                 )}
 

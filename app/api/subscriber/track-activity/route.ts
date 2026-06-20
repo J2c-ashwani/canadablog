@@ -81,6 +81,21 @@ export async function POST(request: NextRequest) {
       activity.pdfDownloadedAt = now
     } else if (event === "audit_cta_clicked") {
       activity.auditCtaClickedAt = now
+    } else if (event === "preview_viewed") {
+      activity.previewViewed = true
+      activity.previewViewedAt = now
+    } else if (event === "preview_scroll_50") {
+      activity.previewScroll50 = true
+      activity.previewScroll50At = now
+    } else if (event === "preview_scroll_100") {
+      activity.previewScroll100 = true
+      activity.previewScroll100At = now
+    } else if (event === "preview_time_30s") {
+      activity.previewTime30s = true
+      activity.previewTime30sAt = now
+    } else if (event === "preview_cta_clicked") {
+      activity.previewCtaClicked = true
+      activity.previewCtaClickedAt = now
     } else if (event === "portfolio_viewed" || event === "dashboard_viewed") {
       updates.lastPortfolioViewAt = now
       updates.lastDashboardViewAt = now

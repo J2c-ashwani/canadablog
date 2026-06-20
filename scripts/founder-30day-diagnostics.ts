@@ -55,6 +55,10 @@ async function runFounderReport() {
     let auditBooked30d = 0;
     let filingClients30d = 0;
 
+    let previewViewed30d = 0;
+    let previewCheckoutStarted30d = 0;
+    let previewPurchased30d = 0;
+
     // All-time counters
     let totalLeadsAll = 0;
     let tierALeadsAll = 0;
@@ -70,6 +74,10 @@ async function runFounderReport() {
     let auditPurchasedAll = 0;
     let auditBookedAll = 0;
     let filingClientsAll = 0;
+
+    let previewViewedAll = 0;
+    let previewCheckoutStartedAll = 0;
+    let previewPurchasedAll = 0;
 
     // Lists
     const tierAEmails30d: any[] = [];
@@ -124,6 +132,21 @@ async function runFounderReport() {
         offlineStatus.toLowerCase().includes('client') ||
         offlineStatus.toLowerCase().includes('won');
 
+      const hasViewedPreview = 
+        activity.previewViewed === true ||
+        activity.previewViewedAt;
+
+      const hasStartedCheckout = 
+        activity.checkoutStartedAt || 
+        activity.previewCtaClicked === true ||
+        activity.previewCtaClickedAt;
+
+      const hasCompletedPayment = 
+        activity.paymentApprovedAt ||
+        activity.paymentCompletedAt ||
+        lead.reportPurchased === true ||
+        lead.strategyReportPurchased === true;
+
       // --- All Time ---
       totalLeadsAll++;
       if (isTierA) {
@@ -156,6 +179,10 @@ async function runFounderReport() {
         filingClientsAll++;
         filingAll.push(email);
       }
+
+      if (hasViewedPreview) previewViewedAll++;
+      if (hasStartedCheckout) previewCheckoutStartedAll++;
+      if (hasCompletedPayment) previewPurchasedAll++;
 
       // --- Last 30 Days ---
       if (isWithin30d) {
@@ -190,6 +217,10 @@ async function runFounderReport() {
           filingClients30d++;
           filing30d.push(email);
         }
+
+        if (hasViewedPreview) previewViewed30d++;
+        if (hasStartedCheckout) previewCheckoutStarted30d++;
+        if (hasCompletedPayment) previewPurchased30d++;
       }
     });
 
@@ -230,6 +261,11 @@ async function runFounderReport() {
     console.log(`Purchased the Audit                 | ${String(auditPurchased30d).padStart(12)} | ${String(auditPurchasedAll).padStart(14)}`);
     console.log(`Booked via Calendly                 | ${String(auditBooked30d).padStart(12)} | ${String(auditBookedAll).padStart(14)}`);
     console.log(`Became Filing Clients               | ${String(filingClients30d).padStart(12)} | ${String(filingClientsAll).padStart(14)}`);
+    console.log('----------------------------------------------------------------------------------------');
+    console.log('Personalized Outcome Preview Funnel (Revenue Sprint):');
+    console.log(`  - Viewed Preview                  | ${String(previewViewed30d).padStart(12)} | ${String(previewViewedAll).padStart(14)}`);
+    console.log(`  - Started Checkout (CTA Click)    | ${String(previewCheckoutStarted30d).padStart(12)} | ${String(previewCheckoutStartedAll).padStart(14)}`);
+    console.log(`  - Completed Payment               | ${String(previewPurchased30d).padStart(12)} | ${String(previewPurchasedAll).padStart(14)}`);
     console.log('========================================================================================');
     
     // Output Top 10 Scoring Leads to inspect why they are/aren't Tier A

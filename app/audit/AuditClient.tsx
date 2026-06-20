@@ -90,6 +90,52 @@ const WHAT_IS_COVERED = [
   }
 ];
 
+const PROVINCE_NAMES: Record<string, string> = {
+  on: 'Ontario', bc: 'British Columbia', ab: 'Alberta', qc: 'Quebec',
+  ns: 'Nova Scotia', mb: 'Manitoba', sk: 'Saskatchewan', nb: 'New Brunswick',
+  nl: 'Newfoundland & Labrador', pe: 'Prince Edward Island',
+  territories: 'Territories', national: 'Federal/Nationwide',
+};
+
+const INDUSTRY_NAMES: Record<string, string> = {
+  technology: 'Technology & Software', manufacturing: 'Manufacturing',
+  agriculture: 'Agriculture & Agri-Food', healthcare: 'Healthcare & Life Sciences',
+  energy: 'Clean Tech & Energy', retail: 'Retail & E-commerce',
+  services: 'Professional Services', other: 'General Business',
+};
+
+const cleanField = (val: string, fallback: string) => {
+  if (!val) return fallback;
+  const trimmed = val.trim();
+  const lower = trimmed.toLowerCase();
+  if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
+    return fallback;
+  }
+  return trimmed;
+};
+
+const getProvinceName = (region: string) => {
+  const val = cleanField(region, "Canada");
+  return PROVINCE_NAMES[val.toLowerCase()] || val;
+};
+
+const getIndustryName = (industry: string) => {
+  const val = cleanField(industry, "General Business");
+  return INDUSTRY_NAMES[val.toLowerCase()] || val;
+};
+
+const getAuditEstimateRange = (industry: string, region: string) => {
+  const ind = (industry || '').toLowerCase();
+  const reg = (region || '').toLowerCase();
+  if (ind.includes('tech') || ind.includes('clean') || ind.includes('manufacturing') || ind.includes('energy')) {
+    return '$150,000 - $350,000+';
+  }
+  if (reg.includes('ab') || reg.includes('alberta') || reg.includes('on') || reg.includes('ontario') || reg.includes('bc') || reg.includes('british')) {
+    return '$100,000 - $250,000+';
+  }
+  return '$75,000 - $200,000+';
+};
+
 export default function AuditClient() {
   const [sdkReady, setSdkReady] = useState(false);
   const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -97,6 +143,7 @@ export default function AuditClient() {
   const [params, setParams] = useState({
     email: '',
     name: '',
+    company: '',
     industry: '',
     region: '',
     discount: 0,
@@ -114,6 +161,7 @@ export default function AuditClient() {
     setParams({
       email: sp.get('email') || '',
       name: sp.get('name') || '',
+      company: sp.get('company') || sp.get('companyName') || sp.get('name') || '',
       industry: sp.get('industry') || '',
       region: sp.get('region') || '',
       discount: Number(sp.get('discount')) || 0,
@@ -202,35 +250,37 @@ export default function AuditClient() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-tight mb-4">
-              Pay. Book Instantly.<br className="hidden sm:block" />
-              <span className="text-indigo-600">Get Your Funding Roadmap.</span>
+              {params.source === 'personalized_preview' ? (
+                <>
+                  Unlock Your Full<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Funding Analysis.</span>
+                </>
+              ) : (
+                <>
+                  Pay. Book Instantly.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Get Your Funding Roadmap.</span>
+                </>
+              )}
             </h1>
 
             <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6">
               An FSI advisor reviews your eligibility against <strong className="text-slate-700">800+ active programs</strong> and delivers a custom Funding Eligibility Report before your 30-min strategy call. No sales pitch. No waiting room.
             </p>
 
-            {/* Process Steps */}
-            <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-8 text-xs sm:text-sm font-semibold">
-              <span className="flex items-center gap-1.5 bg-indigo-600 text-white border border-indigo-700 px-3 py-1.5 rounded-full shadow">
-                <CircleDollarSign className="w-3.5 h-3.5" />
-                Pay $199
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
-              <span className="flex items-center gap-1.5 text-slate-600 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full">
-                <CalendarClock className="w-3.5 h-3.5" />
-                Book Call Instantly
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
-              <span className="flex items-center gap-1.5 text-slate-600 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full">
-                <FileText className="w-3.5 h-3.5" />
-                Get Custom Report
-              </span>
-              <ArrowRight className="w-3.5 h-3.5 text-slate-300" />
-              <span className="flex items-center gap-1.5 text-slate-600 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full">
-                <Phone className="w-3.5 h-3.5" />
-                30-Min Strategy Call
-              </span>
+            {/* 4-Step B2B Process Timeline */}
+            <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-4 mb-10 mt-6 text-left">
+              {[
+                { step: "1. Deep Eligibility Review", desc: "Our analysts perform 2 hours of pre-call research against 800+ government programs." },
+                { step: "2. Custom Report Prepared", desc: "We draft your private Funding Eligibility Report detailing matches, ranges, and pitfalls." },
+                { step: "3. 1-on-1 Strategy Call", desc: "A 30-minute private consultation to walk through matches and stack programs." },
+                { step: "4. Step-by-Step Action Plan", desc: "You receive a prioritized roadmap with deadlines and filing instructions." }
+              ].map((item, idx) => (
+                <div key={idx} className="bg-slate-50 border border-slate-200 rounded-xl p-4 shadow-3xs relative overflow-hidden">
+                  <span className="absolute -right-2 -bottom-4 text-slate-200/50 text-5xl font-black select-none">{idx + 1}</span>
+                  <h5 className="font-bold text-slate-800 text-xs sm:text-sm mb-1">{item.step}</h5>
+                  <p className="text-[10px] sm:text-xs text-slate-500 leading-relaxed">{item.desc}</p>
+                </div>
+              ))}
             </div>
 
             {/* Trust Strip */}
@@ -345,8 +395,39 @@ export default function AuditClient() {
             <div className="lg:col-span-2">
               <div className="sticky top-24 space-y-4">
 
+                {/* Analyst Capacity Urgency Block */}
+                <div className="bg-amber-50/70 border border-amber-200 rounded-2xl p-4 text-left shadow-3xs flex items-start gap-3">
+                  <Clock className="w-5 h-5 text-amber-700 shrink-0 mt-0.5" />
+                  <div>
+                    <h4 className="font-bold text-amber-950 text-xs uppercase tracking-wider">
+                      Analyst Capacity Available This Week
+                    </h4>
+                    <p className="text-amber-800 text-[11px] mt-1 leading-relaxed font-semibold">
+                      🟢 Accepting New Audit Clients &bull; Limited Analyst Capacity remaining. Slots allocated on a first-deposit basis.
+                    </p>
+                  </div>
+                </div>
+
                 {/* Pricing Card */}
                 <div className="bg-white rounded-2xl border-2 border-indigo-200 shadow-xl shadow-indigo-100/40 p-6" id="audit-checkout">
+                  {/* Personalized Metadata Header */}
+                  {(params.name || params.industry || params.region) && (
+                    <div className="bg-slate-900 text-white rounded-xl p-3.5 text-left shadow-2xs mb-5 border border-slate-800 flex flex-col gap-1">
+                      <div className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Personalized Audit Queue</div>
+                      <div className="text-xs font-semibold">
+                        <span className="text-slate-400">Prepared for:</span> <span className="text-emerald-400">{params.name || "Qualified Lead"}</span>
+                      </div>
+                      <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-300 pt-1.5 border-t border-slate-800 mt-1">
+                        <div>
+                          <span className="text-slate-400 font-normal">Industry:</span> {params.industry || "General Business"}
+                        </div>
+                        <div>
+                          <span className="text-slate-400 font-normal">Region:</span> {params.region || "Canada"}
+                        </div>
+                      </div>
+                    </div>
+                  )}
+
                   {/* Price Header */}
                   <div className="text-center mb-5">
                     {isDiscounted ? (
@@ -369,16 +450,17 @@ export default function AuditClient() {
                     )}
                   </div>
 
-                  {/* What you get summary */}
-                  <div className="space-y-2 mb-5">
+                  {/* "Your Analysis Includes" Checklist Summary */}
+                  <div className="space-y-2.5 mb-5 border-t border-slate-100 pt-4">
+                    <h5 className="text-[10px] font-bold uppercase tracking-wider text-slate-400 mb-2">Your Analysis Includes:</h5>
                     {[
-                      'Custom eligibility review against 800+ programs',
-                      'Funding Eligibility Report PDF (yours to keep)',
-                      '30-minute 1-on-1 strategy call',
-                      'Post-call application roadmap summary',
-                      '100% refund if no programs match',
+                      'Deterministic Funding Match Rating',
+                      'Specific Program Eligibility Profiles',
+                      'Deadline & Capital Allocations',
+                      'Custom Document Preparation Checklists',
+                      'High-Risk Program Warning Flags',
                     ].map((item) => (
-                      <div key={item} className="flex items-start gap-2 text-xs text-slate-600">
+                      <div key={item} className="flex items-start gap-2 text-xs text-slate-650">
                         <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                         {item}
                       </div>
@@ -391,6 +473,49 @@ export default function AuditClient() {
                       {paymentError}
                     </div>
                   )}
+
+                  {(() => {
+                    const companyName = cleanField(params.company, "Your Business");
+                    const industryName = getIndustryName(params.industry);
+                    const regionName = getProvinceName(params.region);
+                    const opportunityRange = getAuditEstimateRange(params.industry, params.region);
+
+                    return (
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4 text-left shadow-2xs font-sans">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs border-b border-slate-200 pb-3 mb-3">
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Prepared for:</span>
+                            <span className="font-bold text-slate-800 text-sm">{companyName}</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Industry:</span>
+                            <span className="font-semibold text-slate-700 text-sm">{industryName}</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Region:</span>
+                            <span className="font-semibold text-slate-700 text-sm">{regionName}</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Estimated Opportunity Range:</span>
+                            <span className="font-bold text-emerald-600 text-sm">{opportunityRange}</span>
+                          </div>
+                        </div>
+                        <div className="flex items-center justify-between text-xs pt-0.5">
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Generated:</span>
+                            <span className="font-medium text-slate-600">Today</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider text-right">Analysis Status:</span>
+                            <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5 uppercase tracking-wide">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              Ready To Unlock
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    );
+                  })()}
 
                   <div id="audit-paypal-button" className="min-h-[56px]">
                     {!sdkReady && (

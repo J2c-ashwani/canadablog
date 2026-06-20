@@ -65,6 +65,71 @@ export function GrantCalculator() {
     const [leadSaved, setLeadSaved] = useState(false);
     const [isPaypalButtonVisible, setIsPaypalButtonVisible] = useState(false);
 
+    const renderB2BMetadataBlock = (customRange?: string) => {
+        const cleanField = (val: string, fallback: string) => {
+            if (!val) return fallback;
+            const trimmed = val.trim();
+            const lower = trimmed.toLowerCase();
+            if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
+                return fallback;
+            }
+            return trimmed;
+        };
+
+        const rawProv = cleanField(data.province, "Canada");
+        const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
+
+        const rawInd = cleanField(data.industry, "General Business");
+        const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
+
+        const companyName = cleanField(data.company, "Your Business");
+
+        let opportunityRange = customRange;
+        if (!opportunityRange) {
+            if (estimate && estimateMax) {
+                opportunityRange = `$${estimate.toLocaleString()} - $${estimateMax.toLocaleString()}+`;
+            } else {
+                opportunityRange = "$100,000 - $250,000+";
+            }
+        }
+
+        return (
+            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4 text-left shadow-2xs font-sans w-full max-w-md mx-auto">
+                <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs border-b border-slate-200 pb-3 mb-3">
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Prepared for:</span>
+                        <span className="font-bold text-slate-800 text-sm">{companyName}</span>
+                    </div>
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Industry:</span>
+                        <span className="font-semibold text-slate-700 text-sm">{industryName}</span>
+                    </div>
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Region:</span>
+                        <span className="font-semibold text-slate-700 text-sm">{provinceName}</span>
+                    </div>
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Estimated Opportunity Range:</span>
+                        <span className="font-bold text-emerald-600 text-sm">{opportunityRange}</span>
+                    </div>
+                </div>
+                <div className="flex items-center justify-between text-xs pt-0.5">
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Generated:</span>
+                        <span className="font-medium text-slate-600">Today</span>
+                    </div>
+                    <div>
+                        <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider text-right">Analysis Status:</span>
+                        <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5 uppercase tracking-wide">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                            Ready To Unlock
+                        </span>
+                    </div>
+                </div>
+            </div>
+        );
+    };
+
     // --- Revenue Ladder State ---
     const [sdkReady, setSdkReady] = useState(false);
     const [paymentError, setPaymentError] = useState<string | null>(null);
@@ -519,6 +584,20 @@ export function GrantCalculator() {
       try {
         (window as any).paypal.Buttons({
           style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+          onClick: () => {
+            trackEvent('preview_cta_clicked');
+            if (data.email) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: data.email,
+                  event: "preview_cta_clicked",
+                  packageSelected: selectedProductId
+                })
+              }).catch(() => {});
+            }
+          },
           createOrder: (_data: any, actions: any) => {
             setPaymentError(null);
             // GA4 event: checkout started
@@ -655,6 +734,20 @@ export function GrantCalculator() {
       try {
         (window as any).paypal.Buttons({
           style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'checkout', height: 45 },
+          onClick: () => {
+            trackEvent('preview_cta_clicked');
+            if (data.email) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: data.email,
+                  event: "preview_cta_clicked",
+                  packageSelected: "funding-roadmap"
+                })
+              }).catch(() => {});
+            }
+          },
           createOrder: (_data: any, actions: any) => {
             setPaymentError(null);
             if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -776,6 +869,78 @@ export function GrantCalculator() {
     const updateData = (field: keyof CalculatorData, value: string) => {
         setData(prev => ({ ...prev, [field]: value }));
     }
+
+    const getDeterministicCategories = (profile: CalculatorData) => {
+      const ind = profile.industry?.toLowerCase() || '';
+      const goal = profile.goal?.toLowerCase() || '';
+      const rev = profile.revenue?.toLowerCase() || '';
+      const isSmall = rev === 'pre-revenue' || rev === 'under-100k' || rev === '100k-500k';
+
+      if (goal === 'hiring' || goal === 'training') {
+        return [
+          { category: "Wage Subsidies for New Grads & Youth", range: isSmall ? "$10,000 - $25,000" : "$25,000 - $60,000", justification: "Subsidizes payroll for onboarding new employees or students." },
+          { category: "Specialized Technical Training Programs", range: isSmall ? "$5,000 - $15,000" : "$15,000 - $45,000", justification: "Offsets cost of upskilling current staff in digital tools/processes." },
+          { category: "Key Operations & Executive Hiring", range: isSmall ? "$20,000 - $50,500" : "$50,000 - $120,000", justification: "Supports hiring senior or technical managers for regional growth." }
+        ];
+      }
+      if (ind === 'technology' || goal === 'research') {
+        return [
+          { category: "R&D Tax Credits (Scientific Research & Dev)", range: isSmall ? "$25,000 - $95,000" : "$95,000 - $350,000", justification: "Provides tax recovery on salaries and overheads spent on technical challenges." },
+          { category: "Technology Commercialization Assistance", range: isSmall ? "$15,000 - $50,000" : "$50,000 - $150,000", justification: "Funds development and testing of innovative software or hardware." },
+          { category: "Digital Transformation & Software Adoption", range: "$2,400 - $15,000", justification: "Offsets cost of implementing productivity software, CRM, or cloud tools." }
+        ];
+      }
+      if (ind === 'manufacturing' || goal === 'expansion_equipment') {
+        return [
+          { category: "Facility Modernization & Equipment Grants", range: isSmall ? "$30,000 - $120,000" : "$120,000 - $500,000", justification: "Co-funds purchasing manufacturing equipment or modernizing production lines." },
+          { category: "Operational Productivity & Automation", range: isSmall ? "$15,000 - $60,000" : "$60,000 - $180,000", justification: "Supports purchasing automation hardware or implementing ERP software." },
+          { category: "Clean Tech & Sustainability Incentives", range: isSmall ? "$10,000 - $45,000" : "$45,000 - $150,000", justification: "Grants or interest-free loans to reduce carbon footprint and energy use." }
+        ];
+      }
+      return [
+        { category: "Digital Operations & E-commerce Enablement", range: "$2,400 - $15,000", justification: "Supports setting up e-commerce, digital marketing, or cyber security." },
+        { category: "Job Creation & Youth Wage Subsidies", range: isSmall ? "$10,000 - $30,000" : "$30,000 - $75,000", justification: "Offsets wage costs of hiring full-time, part-time, or student workers." },
+        { category: "Market Expansion & Export Grants", range: isSmall ? "$15,000 - $50,000" : "$50,000 - $100,000", justification: "Grants to participate in trade shows, target new regions, or export goods." }
+      ];
+    };
+
+    const getPackageDeliverables = (productId: string) => {
+      if (productId === 'funding-bundle') {
+        return {
+          title: "Complete Funding Bundle",
+          price: "$79",
+          deliverables: [
+            { label: "Named Programs", desc: "Full access to actual program names, application links, and official guides." },
+            { label: "Eligibility Assessment", desc: "Detailed analysis of your eligibility chances based on your stage and goal." },
+            { label: "Funding Prioritization", desc: "Ranked list showing which grants to apply for first to maximize success." },
+            { label: "Application Strategy", desc: "Step-by-step guidance on writing pitches and compiling budgets." },
+            { label: "Next Steps Roadmap", desc: "A structured 4-month application timeline for your business." }
+          ]
+        };
+      } else if (productId === 'funding-roadmap') {
+        return {
+          title: "Funding Action Plan",
+          price: "$49",
+          deliverables: [
+            { label: "Opportunity Summary", desc: "Summary of matching funding opportunities." },
+            { label: "Funding Categories", desc: "Specific types of grants, loans, and tax credits your business fits." },
+            { label: "Estimated Funding Range", desc: "Detailed ranges of potential capital for each matched category." },
+            { label: "Priority Timeline", desc: "Months 1-4 schedule mapping for application deadlines." }
+          ]
+        };
+      } else {
+        return {
+          title: "Basic Match Report",
+          price: "$19",
+          deliverables: [
+            { label: "Opportunity Summary", desc: "Summary of matching funding opportunities." },
+            { label: "Funding Categories", desc: "Specific types of grants, loans, and tax credits your business fits." },
+            { label: "Estimated Funding Range", desc: "Detailed ranges of potential capital for each matched category." },
+            { label: "Basic Recommendations", desc: "General tips on preparing your business documentation for applications." }
+          ]
+        };
+      }
+    };
 
     // --- Teaser Top Match ---
     const getRealTopMatch = () => {
@@ -968,36 +1133,89 @@ export function GrantCalculator() {
       }
     }, [step, isPaypalButtonVisible, data.email, leadSaved]);
 
-    // Telemetry: Track time on Step 6
+    // Telemetry: Step 6 preview tracking
+    const scroll50Logged = useRef(false);
+    const scroll100Logged = useRef(false);
+    const previewViewedLogged = useRef(false);
+
     useEffect(() => {
       if (step !== 6) return;
-      
-      const logTime = (seconds: number) => {
-        trackEvent(`calc_step6_duration_${seconds}s`);
+
+      // Track preview_viewed on load
+      if (!previewViewedLogged.current) {
+        previewViewedLogged.current = true;
+        trackEvent('preview_viewed', { package_id: selectedProductId });
         if (data.email) {
           fetch("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
               email: data.email,
-              event: "submit_survey",
-              surveyType: "step6_duration",
-              surveyResponse: `${seconds} seconds`
+              event: "preview_viewed",
+              packageSelected: selectedProductId
             })
           }).catch(() => {});
         }
+      }
+
+      // Track 30s dwell timer
+      const timer30 = setTimeout(() => {
+        trackEvent('preview_time_30s');
+        if (data.email) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: data.email,
+              event: "preview_time_30s"
+            })
+          }).catch(() => {});
+        }
+      }, 30000);
+
+      // Scroll listener
+      const handleScroll = () => {
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        if (docHeight <= 0) return;
+        const scrollPercent = (window.scrollY / docHeight) * 100;
+
+        if (scrollPercent >= 50 && !scroll50Logged.current) {
+          scroll50Logged.current = true;
+          trackEvent('preview_scroll_50');
+          if (data.email) {
+            fetch("/api/subscriber/track-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: data.email,
+                event: "preview_scroll_50"
+              })
+            }).catch(() => {});
+          }
+        }
+
+        if (scrollPercent >= 95 && !scroll100Logged.current) {
+          scroll100Logged.current = true;
+          trackEvent('preview_scroll_100');
+          if (data.email) {
+            fetch("/api/subscriber/track-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: data.email,
+                event: "preview_scroll_100"
+              })
+            }).catch(() => {});
+          }
+        }
       };
 
-      const timer10 = setTimeout(() => logTime(10), 10000);
-      const timer30 = setTimeout(() => logTime(30), 30000);
-      const timer60 = setTimeout(() => logTime(60), 60000);
-
+      window.addEventListener('scroll', handleScroll);
       return () => {
-        clearTimeout(timer10);
         clearTimeout(timer30);
-        clearTimeout(timer60);
+        window.removeEventListener('scroll', handleScroll);
       };
-    }, [step, data.email]);
+    }, [step, selectedProductId, data.email]);
 
     if (isRestoring) {
         return (
@@ -1173,130 +1391,103 @@ export function GrantCalculator() {
                    ═══════════════════════════════════════════════════ */}
                 {step === 6 && !isSuccess && (
                     <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500 py-2">
-                        {/* Welcome Back / Review Completed Banner */}
-                        {isRestoredSession && (
-                          <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-left shadow-xs flex items-start gap-3.5">
-                            <CheckCircle className="w-5.5 h-5.5 text-emerald-600 shrink-0 mt-0.5" />
-                            <div>
-                              <h4 className="font-bold text-emerald-950 text-sm sm:text-base">
-                                {data.company
-                                  ? `Review Completed for ${data.company} in ${PROVINCE_NAMES[data.province.toLowerCase().trim()] || data.province || 'Canada'}`
-                                  : "Funding Opportunity Review Completed"}
-                              </h4>
-                              <p className="text-emerald-800 text-xs sm:text-sm mt-1 leading-relaxed">
-                                {data.company
-                                  ? "Based on the information previously submitted, we identified funding opportunities that may be relevant to your business."
-                                  : "We identified funding programs that may be relevant based on your location and business profile."}
-                              </p>
-                            </div>
+                        {/* Trust-First Copy Notice Banner */}
+                        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-left shadow-xs flex items-start gap-3.5">
+                          <CheckCircle className="w-5.5 h-5.5 text-emerald-600 shrink-0 mt-0.5 animate-pulse" />
+                          <div>
+                            <h4 className="font-bold text-emerald-950 text-sm sm:text-base">
+                              {data.company
+                                ? `Opportunity Identification for ${data.company}`
+                                : "Opportunities Identified"}
+                            </h4>
+                            <p className="text-emerald-800 text-xs sm:text-sm mt-1 leading-relaxed">
+                              Based on the information you provided, we identified funding categories that may be relevant to your business.
+                            </p>
                           </div>
-                        )}
+                        </div>
 
-                        {/* Why You Received This Funding Alert Block */}
-                        {(() => {
-                          const cleanField = (val: string, fallback: string) => {
-                            if (!val) return fallback;
-                            const trimmed = val.trim();
-                            const lower = trimmed.toLowerCase();
-                            if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
-                              return fallback;
-                            }
-                            return trimmed;
-                          };
-
-                          const rawProv = cleanField(data.province, "Canada");
-                          const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
-
-                          const rawInd = cleanField(data.industry, "General Business");
-                          const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
-
-                          const REVENUE_MAP: Record<string, string> = {
-                            'pre-revenue': 'Pre-revenue / Startup',
-                            'under-100k': 'Under $105,000',
-                            '100k-500k': '$100,000 - $500,000',
-                            '500k-1m': '$500,000 - $1M',
-                            'over-1m': 'Over $1M'
-                          };
-                          const rawRev = cleanField(data.revenue, "Active Business");
-                          const revenueLabel = REVENUE_MAP[rawRev.toLowerCase()] || rawRev;
-
-                          const GOAL_MAP: Record<string, string> = {
-                            'hiring': 'Hiring & Training',
-                            'research': 'R&D / Innovation',
-                            'expansion': 'Business Expansion',
-                            'export': 'Exporting'
-                          };
-                          const rawGoal = cleanField(data.goal, "Business Growth");
-                          const goalLabel = GOAL_MAP[rawGoal.toLowerCase()] || rawGoal;
-
-                          return (
-                            <div className="bg-white border border-slate-200 rounded-xl p-5 mb-6 text-left shadow-sm">
-                              <h4 className="text-sm font-bold text-slate-500 uppercase tracking-wider mb-3.5">Why You Received This Alert</h4>
-                              <p className="text-xs text-slate-500 mb-3">Based on information previously submitted to FSI Digital:</p>
-                              <ul className="space-y-2.5 text-sm text-slate-800 font-medium">
-                                <li className="flex items-center gap-2.5">
-                                  <span className="text-emerald-600 font-bold">✓</span>
-                                  <span className="text-slate-500 font-normal">Location:</span> {provinceName}
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                  <span className="text-emerald-600 font-bold">✓</span>
-                                  <span className="text-slate-500 font-normal">Industry:</span> {industryName}
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                  <span className="text-emerald-600 font-bold">✓</span>
-                                  <span className="text-slate-500 font-normal">Business Stage:</span> {revenueLabel}
-                                </li>
-                                <li className="flex items-center gap-2.5">
-                                  <span className="text-emerald-600 font-bold">✓</span>
-                                  <span className="text-slate-500 font-normal">Funding Goal:</span> {goalLabel}
-                                </li>
-                              </ul>
-                              <div className="mt-4 pt-4 border-t border-slate-100">
-                                <p className="text-slate-700 text-sm leading-relaxed">
-                                  We identified <strong className="text-emerald-700 font-bold">{grantCount}</strong> funding opportunities that may be relevant to your business, including programs related to hiring, expansion, equipment purchases, training, and growth initiatives.
-                                </p>
-                              </div>
-                            </div>
-                          );
-                        })()}
-
-                        {/* Top Match Preview */}
-                        <div className="border border-gray-200 rounded-2xl overflow-hidden bg-white shadow-sm relative mb-8">
+                        {/* Opportunity Preview Stack */}
+                        <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm relative mb-6">
                             <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-5 py-4 flex items-center justify-between">
                               <div className="flex items-center gap-2.5">
                                 <FileText className="w-5 h-5 text-emerald-400" />
-                                <span className="font-semibold text-white text-sm">Identified Funding Opportunities</span>
+                                <span className="font-semibold text-white text-sm">Matched Opportunity Categories</span>
                               </div>
                             </div>
-                            <div className="px-5 py-6 border-b border-gray-100">
-                              <div className="inline-flex items-center gap-1.5 bg-slate-100 text-slate-600 px-2 py-1 rounded text-xs font-semibold mb-3">
-                                <Search className="w-3 h-3" />
-                                Matched via {(!data.industry || data.industry.toLowerCase() === 'n/a' || data.industry.toLowerCase() === 'other') ? "General" : data.industry} eligibility rules
-                              </div>
-                              <div className="flex items-center gap-2 mb-2">
-                                <Star className="w-5 h-5 text-amber-400 fill-amber-400" />
-                                <span className="text-sm font-bold text-emerald-700 uppercase tracking-wide">Top Match Opportunity</span>
-                              </div>
-                              <h4 className="text-xl font-bold text-slate-900 mb-1">{getRealTopMatch().name}</h4>
-                              <p className="text-sm text-slate-600 mb-4">{getRealTopMatch().desc}</p>
-                              <div className="inline-flex items-center gap-1.5 bg-green-50 text-green-700 px-3 py-1.5 rounded-md font-semibold text-sm">
-                                <DollarSign className="w-4 h-4" />
-                                Potential: {getRealTopMatch().maxFunding}
-                              </div>
-                            </div>
-                            <div className="px-5 py-6 relative">
-                              <h5 className="font-bold text-slate-800 mb-3">Application Strategy & Links</h5>
-                              <div className="space-y-3 filter blur-[4px]">
-                                <div className="h-4 w-3/4 bg-slate-200 rounded" />
-                                <div className="h-4 w-full bg-slate-200 rounded" />
-                              </div>
-                              <div className="absolute inset-0 flex items-center justify-center bg-white/40 backdrop-blur-[2px]">
-                                <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-full px-5 py-2.5 shadow-md">
-                                  <Lock className="w-4 h-4 text-slate-600" />
-                                  <span className="text-sm font-bold text-slate-800">Locked Section</span>
+                            <div className="px-5 py-5 space-y-4">
+                              <p className="text-xs text-slate-500">
+                                Matched via regional and industry-specific criteria. Purchase package to reveal program names, full application details, and submission guidelines.
+                              </p>
+                              {getDeterministicCategories(data).map((opp, idx) => (
+                                <div key={idx} className="border border-slate-150 rounded-xl p-4 bg-slate-50/40 flex flex-col gap-2">
+                                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                                    <div>
+                                      <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Opportunity #{idx + 1}</span>
+                                      <h5 className="font-bold text-slate-800 text-sm mt-0.5">{opp.category}</h5>
+                                    </div>
+                                    <div className="text-left sm:text-right shrink-0 mt-1 sm:mt-0">
+                                      <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded block sm:inline">Est. Potential</span>
+                                      <span className="font-black text-slate-900 block text-xs sm:text-sm mt-0.5">{opp.range}</span>
+                                    </div>
+                                  </div>
+                                  <p className="text-xs text-slate-500 leading-relaxed italic">
+                                    Justification: {opp.justification}
+                                  </p>
+                                  <div className="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 mt-1">
+                                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
+                                      <Lock className="w-3.5 h-3.5 text-slate-400" />
+                                      <span>Program Name: <span className="font-mono text-slate-400">[Program Name Hidden]</span></span>
+                                    </div>
+                                    <span className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Locked</span>
+                                  </div>
                                 </div>
-                              </div>
+                              ))}
                             </div>
+                        </div>
+
+                        {/* "Your Analysis Includes" Checklist Card */}
+                        <div className="border border-indigo-150 rounded-2xl bg-indigo-50/10 p-5 shadow-2xs mb-6 text-left">
+                          <h5 className="font-bold text-indigo-950 text-sm mb-3.5 flex items-center gap-2">
+                            <ShieldCheck className="w-4.5 h-4.5 text-indigo-600" />
+                            Your Custom Funding Analysis Includes:
+                          </h5>
+                          <ul className="space-y-3.5 text-xs sm:text-sm text-slate-800 font-medium">
+                            <li className="flex items-start gap-2.5">
+                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                              <div>
+                                <strong>Deterministic Funding Match Rating:</strong>
+                                <p className="text-xs text-slate-500 mt-0.5">Custom readiness assessment calculated from your business inputs.</p>
+                              </div>
+                            </li>
+                            <li className="flex items-start gap-2.5">
+                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                              <div>
+                                <strong>Specific Program Eligibility Profiles:</strong>
+                                <p className="text-xs text-slate-500 mt-0.5">Full criteria checklists for each matched grant and tax incentive.</p>
+                              </div>
+                            </li>
+                            <li className="flex items-start gap-2.5">
+                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                              <div>
+                                <strong>Deadline & Capital Allocations:</strong>
+                                <p className="text-xs text-slate-500 mt-0.5">Active funding windows, remaining program budgets, and lock-in dates.</p>
+                              </div>
+                            </li>
+                            <li className="flex items-start gap-2.5">
+                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                              <div>
+                                <strong>Custom Document Preparation Checklists:</strong>
+                                <p className="text-xs text-slate-500 mt-0.5">Details on which financial and technical records you need to secure.</p>
+                              </div>
+                            </li>
+                            <li className="flex items-start gap-2.5">
+                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                              <div>
+                                <strong>High-Risk Program Warning Flags:</strong>
+                                <p className="text-xs text-slate-500 mt-0.5">Key pitfalls to avoid to prevent rejection or post-audit clawbacks.</p>
+                              </div>
+                            </li>
+                          </ul>
                         </div>
 
                         {/* Trust Signals — above pricing */}
@@ -1402,8 +1593,70 @@ export function GrantCalculator() {
                             </div>
                         </div>
 
+                        {/* Package Specific Deliverables Card */}
+                        {(() => {
+                          const info = getPackageDeliverables(selectedProductId);
+                          return (
+                            <div className="border-2 border-indigo-600 rounded-xl bg-indigo-50/10 p-5 mb-8 text-left shadow-2xs">
+                              <div className="flex items-center justify-between mb-3 border-b border-indigo-150 pb-2">
+                                <span className="text-xs font-bold text-indigo-950 uppercase tracking-wider">Unlocks for Selected Tier:</span>
+                                <span className="font-extrabold text-indigo-700">{info.title} ({info.price})</span>
+                              </div>
+                              <p className="text-xs text-slate-500 mb-3 font-medium">This package unlocks the following deliverables on your dashboard:</p>
+                              <ul className="space-y-2 text-xs text-slate-700 font-medium">
+                                {info.deliverables.map((d, i) => (
+                                  <li key={i} className="flex items-start gap-2">
+                                    <span className="text-indigo-600 font-bold shrink-0">✓</span>
+                                    <div>
+                                      <strong>{d.label}:</strong> {d.desc}
+                                    </div>
+                                  </li>
+                                ))}
+                              </ul>
+                            </div>
+                          );
+                        })()}
+
                         {/* Email Capture & Payment */}
                         <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-2xl p-6 mb-8 shadow-sm">
+                            {/* Personalized Metadata Header */}
+                            {(() => {
+                              const cleanField = (val: string, fallback: string) => {
+                                if (!val) return fallback;
+                                const trimmed = val.trim();
+                                const lower = trimmed.toLowerCase();
+                                if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
+                                  return fallback;
+                                }
+                                return trimmed;
+                              };
+
+                              const rawProv = cleanField(data.province, "Canada");
+                              const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
+
+                              const rawInd = cleanField(data.industry, "General Business");
+                              const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
+
+                              const companyName = cleanField(data.company, "Your Business");
+
+                              return (
+                                <div className="bg-slate-800 text-white rounded-xl p-4 text-left shadow-2xs border border-slate-700 flex flex-col gap-1.5 mb-6">
+                                  <div className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Personalized Outcome Preview</div>
+                                  <div className="text-sm font-semibold">
+                                    <span className="text-slate-400">Prepared specifically for:</span> <span className="text-emerald-400">{companyName}</span>
+                                  </div>
+                                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-300 pt-1.5 border-t border-slate-700 mt-1">
+                                    <div>
+                                      <span className="text-slate-400">Industry:</span> {industryName}
+                                    </div>
+                                    <div>
+                                      <span className="text-slate-400">Region:</span> {provinceName}
+                                    </div>
+                                  </div>
+                                </div>
+                              );
+                            })()}
+
                             <h4 className="font-bold text-slate-900 text-lg mb-4 text-center">Where should we send your identified opportunities?</h4>
                             <div className="space-y-4 mb-6">
                                 <div>
@@ -1465,6 +1718,29 @@ export function GrantCalculator() {
                                     Average access time: less than 60 seconds
                                 </p>
                             </div>
+
+                            {/* CTA Social Proof & Checkout Summary */}
+                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5 text-left">
+                              <p className="text-xs text-slate-650 italic font-semibold mb-3">
+                                &ldquo;Businesses similar to yours use these reports to identify grant, loan, and tax credit opportunities.&rdquo;
+                              </p>
+                              <div className="grid grid-cols-2 gap-3 pt-2.5 border-t border-slate-200 text-xs">
+                                <div>
+                                  <span className="text-slate-500 block uppercase tracking-wider text-[9px] font-bold">Est. Funding Potential:</span>
+                                  <span className="font-extrabold text-slate-800 text-sm">
+                                    {estimate ? `$${estimate.toLocaleString()}` : "$25,000"} - {estimateMax ? `$${estimateMax.toLocaleString()}` : "$95,000"}
+                                  </span>
+                                </div>
+                                <div>
+                                  <span className="text-slate-500 block uppercase tracking-wider text-[9px] font-bold">Identified Categories:</span>
+                                  <span className="font-extrabold text-slate-800 text-sm">
+                                    3 Key Categories Matched
+                                  </span>
+                                </div>
+                              </div>
+                            </div>
+
+                            {renderB2BMetadataBlock()}
 
                             <div className="min-h-[150px]">
                                 {!sdkReady && (
@@ -1641,6 +1917,8 @@ export function GrantCalculator() {
                               {paymentError}
                             </div>
                           )}
+
+                          {renderB2BMetadataBlock()}
 
                           <div id="calc-upgrade-paypal-button" className="min-h-[50px]"></div>
                         </div>
@@ -2120,6 +2398,8 @@ export function GrantCalculator() {
                                       {paymentError && (
                                         <p className="text-[11px] text-red-600 font-semibold bg-red-50 p-2 rounded border border-red-155">{paymentError}</p>
                                       )}
+                                      
+                                      {renderB2BMetadataBlock()}
                                       
                                       <div id="calc-dashboard-upgrade-paypal-button" className="min-h-[50px] w-full max-w-xs mx-auto"></div>
                                       
