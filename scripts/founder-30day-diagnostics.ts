@@ -79,6 +79,29 @@ async function runFounderReport() {
     let previewCheckoutStartedAll = 0;
     let previewPurchasedAll = 0;
 
+    // Product-specific counters
+    let p19_viewed_30d = 0, p19_selected_30d = 0, p19_checkout_30d = 0, p19_purchased_30d = 0;
+    let p19_viewed_all = 0, p19_selected_all = 0, p19_checkout_all = 0, p19_purchased_all = 0;
+
+    let p49_viewed_30d = 0, p49_selected_30d = 0, p49_checkout_30d = 0, p49_purchased_30d = 0;
+    let p49_viewed_all = 0, p49_selected_all = 0, p49_checkout_all = 0, p49_purchased_all = 0;
+
+    let p79_viewed_30d = 0, p79_selected_30d = 0, p79_checkout_30d = 0, p79_purchased_30d = 0;
+    let p79_viewed_all = 0, p79_selected_all = 0, p79_checkout_all = 0, p79_purchased_all = 0;
+
+    let p199_viewed_30d = 0, p199_selected_30d = 0, p199_checkout_30d = 0, p199_purchased_30d = 0;
+    let p199_viewed_all = 0, p199_selected_all = 0, p199_checkout_all = 0, p199_purchased_all = 0;
+
+    const p19BuyersAll = new Set<string>();
+    const p49BuyersAll = new Set<string>();
+    const p79BuyersAll = new Set<string>();
+    const p199BuyersAll = new Set<string>();
+
+    const p19Buyers30d = new Set<string>();
+    const p49Buyers30d = new Set<string>();
+    const p79Buyers30d = new Set<string>();
+    const p199Buyers30d = new Set<string>();
+
     // Lists
     const tierAEmails30d: any[] = [];
     const tierAEmailsAll: any[] = [];
@@ -184,6 +207,75 @@ async function runFounderReport() {
       if (hasStartedCheckout) previewCheckoutStartedAll++;
       if (hasCompletedPayment) previewPurchasedAll++;
 
+      // Product-specific funnel metrics
+      const selectedPkg = activity.packageSelected || 'funding-bundle'; // Default is bundle
+      const isP19 = selectedPkg === 'funding-match-report';
+      const isP49 = selectedPkg === 'funding-roadmap';
+      const isP79 = selectedPkg === 'funding-bundle';
+
+      const hasStartedCheckoutReport = 
+        hasStartedCheckout ||
+        activity.paypalVisible === true ||
+        activity.paypalVisibleAt;
+
+      // Reports ($19, $49, $79)
+      if (hasViewedPreview) {
+        if (isP19) { p19_viewed_all++; if (isWithin30d) p19_viewed_30d++; }
+        if (isP49) { p49_viewed_all++; if (isWithin30d) p49_viewed_30d++; }
+        if (isP79) { p79_viewed_all++; if (isWithin30d) p79_viewed_30d++; }
+      }
+
+      if (activity.packageSelected) {
+        if (isP19) { p19_selected_all++; if (isWithin30d) p19_selected_30d++; }
+        if (isP49) { p49_selected_all++; if (isWithin30d) p49_selected_30d++; }
+        if (isP79) { p79_selected_all++; if (isWithin30d) p79_selected_30d++; }
+      } else if (hasViewedPreview) {
+        // Default to bundle if viewed preview but no selection event
+        p79_selected_all++;
+        if (isWithin30d) p79_selected_30d++;
+      }
+
+      if (hasStartedCheckoutReport) {
+        if (isP19) { p19_checkout_all++; if (isWithin30d) p19_checkout_30d++; }
+        if (isP49) { p49_checkout_all++; if (isWithin30d) p49_checkout_30d++; }
+        if (isP79) { p79_checkout_all++; if (isWithin30d) p79_checkout_30d++; }
+      }
+
+      if (hasCompletedPayment) {
+        if (isP19) {
+          p19BuyersAll.add(email);
+          if (isWithin30d) p19Buyers30d.add(email);
+        }
+        if (isP49) {
+          p49BuyersAll.add(email);
+          if (isWithin30d) p49Buyers30d.add(email);
+        }
+        if (isP79) {
+          p79BuyersAll.add(email);
+          if (isWithin30d) p79Buyers30d.add(email);
+        }
+      }
+
+      // Audit ($199)
+      if (viewedAuditPage) {
+        p199_viewed_all++;
+        p199_selected_all++;
+        if (isWithin30d) {
+          p199_viewed_30d++;
+          p199_selected_30d++;
+        }
+
+        if (activity.paypalVisible === true || activity.paypalVisibleAt || hasStartedCheckout) {
+          p199_checkout_all++;
+          if (isWithin30d) p199_checkout_30d++;
+        }
+      }
+
+      if (hasPurchasedAudit) {
+        p199BuyersAll.add(email);
+        if (isWithin30d) p199Buyers30d.add(email);
+      }
+
       // --- Last 30 Days ---
       if (isWithin30d) {
         totalLeads30d++;
@@ -236,17 +328,49 @@ async function runFounderReport() {
       const purchaseDate = new Date(createdAtStr);
       const isWithin30d = !isNaN(purchaseDate.getTime()) && purchaseDate >= startOf30DaysAgo;
 
-      if (productId === 'strategy-audit' || productId === 'strategy-vip' || productId === 'funding-roadmap') {
-        if (!buyersAll.includes(email)) {
-          buyersAll.push(email);
-          auditPurchasedAll++;
-        }
-        if (isWithin30d && !buyers30d.includes(email)) {
-          buyers30d.push(email);
-          auditPurchased30d++;
-        }
+      if (productId === 'funding-match-report') {
+        p19BuyersAll.add(email);
+        if (isWithin30d) p19Buyers30d.add(email);
+      } else if (productId === 'funding-roadmap') {
+        p49BuyersAll.add(email);
+        if (isWithin30d) p49Buyers30d.add(email);
+      } else if (productId === 'funding-bundle') {
+        p79BuyersAll.add(email);
+        if (isWithin30d) p79Buyers30d.add(email);
+      } else if (productId === 'strategy-audit' || productId === 'strategy-vip') {
+        p199BuyersAll.add(email);
+        if (isWithin30d) p199Buyers30d.add(email);
       }
     });
+
+    // Sync metrics from sets
+    p19_purchased_all = p19BuyersAll.size;
+    p19_purchased_30d = p19Buyers30d.size;
+
+    p49_purchased_all = p49BuyersAll.size;
+    p49_purchased_30d = p49Buyers30d.size;
+
+    p79_purchased_all = p79BuyersAll.size;
+    p79_purchased_30d = p79Buyers30d.size;
+
+    p199_purchased_all = p199BuyersAll.size;
+    p199_purchased_30d = p199Buyers30d.size;
+
+    auditPurchasedAll = p199_purchased_all;
+    auditPurchased30d = p199_purchased_30d;
+
+    // Sync arrays
+    p199BuyersAll.forEach(email => {
+      if (!buyersAll.includes(email)) buyersAll.push(email);
+    });
+    p199Buyers30d.forEach(email => {
+      if (!buyers30d.includes(email)) buyers30d.push(email);
+    });
+
+    const formatPercent = (numerator: number, denominator: number) => {
+      if (!denominator) return '0.0%';
+      return `${((numerator / denominator) * 100).toFixed(1)}%`;
+    };
 
     console.log('========================================================================================');
     console.log('📊 FOUNDER REVENUE FUNNEL DIAGNOSTICS');
@@ -266,6 +390,51 @@ async function runFounderReport() {
     console.log(`  - Viewed Preview                  | ${String(previewViewed30d).padStart(12)} | ${String(previewViewedAll).padStart(14)}`);
     console.log(`  - Started Checkout (CTA Click)    | ${String(previewCheckoutStarted30d).padStart(12)} | ${String(previewCheckoutStartedAll).padStart(14)}`);
     console.log(`  - Completed Payment               | ${String(previewPurchased30d).padStart(12)} | ${String(previewPurchasedAll).padStart(14)}`);
+    console.log('========================================================================================');
+
+    console.log('========================================================================================');
+    console.log('📊 PRODUCT-SPECIFIC CONVERSION FUNNEL REPORT');
+    console.log('========================================================================================');
+    
+    // P19 Table
+    console.log('💵 $19 Basic Match Report Funnel');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log('Funnel Step                         | Last 30 Days |  All-Time | Step Conv. | Overall Conv.');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log(`1. Preview Viewed                   | ${String(p19_viewed_30d).padStart(12)} | ${String(p19_viewed_all).padStart(9)} |      -     |      -`);
+    console.log(`2. Package Selected                 | ${String(p19_selected_30d).padStart(12)} | ${String(p19_selected_all).padStart(9)} |   ${formatPercent(p19_selected_30d, p19_viewed_30d).padStart(8)} |   ${formatPercent(p19_selected_30d, p19_viewed_30d).padStart(8)}`);
+    console.log(`3. Checkout Started                 | ${String(p19_checkout_30d).padStart(12)} | ${String(p19_checkout_all).padStart(9)} |   ${formatPercent(p19_checkout_30d, p19_selected_30d).padStart(8)} |   ${formatPercent(p19_checkout_30d, p19_viewed_30d).padStart(8)}`);
+    console.log(`4. Payment Completed                | ${String(p19_purchased_30d).padStart(12)} | ${String(p19_purchased_all).padStart(9)} |   ${formatPercent(p19_purchased_30d, p19_checkout_30d).padStart(8)} |   ${formatPercent(p19_purchased_30d, p19_viewed_30d).padStart(8)}`);
+
+    // P49 Table
+    console.log('\n💵 $49 Action Plan Report Funnel');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log('Funnel Step                         | Last 30 Days |  All-Time | Step Conv. | Overall Conv.');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log(`1. Preview Viewed                   | ${String(p49_viewed_30d).padStart(12)} | ${String(p49_viewed_all).padStart(9)} |      -     |      -`);
+    console.log(`2. Package Selected                 | ${String(p49_selected_30d).padStart(12)} | ${String(p49_selected_all).padStart(9)} |   ${formatPercent(p49_selected_30d, p49_viewed_30d).padStart(8)} |   ${formatPercent(p49_selected_30d, p49_viewed_30d).padStart(8)}`);
+    console.log(`3. Checkout Started                 | ${String(p49_checkout_30d).padStart(12)} | ${String(p49_checkout_all).padStart(9)} |   ${formatPercent(p49_checkout_30d, p49_selected_30d).padStart(8)} |   ${formatPercent(p49_checkout_30d, p49_viewed_30d).padStart(8)}`);
+    console.log(`4. Payment Completed                | ${String(p49_purchased_30d).padStart(12)} | ${String(p49_purchased_all).padStart(9)} |   ${formatPercent(p49_purchased_30d, p49_checkout_30d).padStart(8)} |   ${formatPercent(p49_purchased_30d, p49_viewed_30d).padStart(8)}`);
+
+    // P79 Table
+    console.log('\n💵 $79 Complete Bundle Report Funnel');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log('Funnel Step                         | Last 30 Days |  All-Time | Step Conv. | Overall Conv.');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log(`1. Preview Viewed                   | ${String(p79_viewed_30d).padStart(12)} | ${String(p79_viewed_all).padStart(9)} |      -     |      -`);
+    console.log(`2. Package Selected                 | ${String(p79_selected_30d).padStart(12)} | ${String(p79_selected_all).padStart(9)} |   ${formatPercent(p79_selected_30d, p79_viewed_30d).padStart(8)} |   ${formatPercent(p79_selected_30d, p79_viewed_30d).padStart(8)}`);
+    console.log(`3. Checkout Started                 | ${String(p79_checkout_30d).padStart(12)} | ${String(p79_checkout_all).padStart(9)} |   ${formatPercent(p79_checkout_30d, p79_selected_30d).padStart(8)} |   ${formatPercent(p79_checkout_30d, p79_viewed_30d).padStart(8)}`);
+    console.log(`4. Payment Completed                | ${String(p79_purchased_30d).padStart(12)} | ${String(p79_purchased_all).padStart(9)} |   ${formatPercent(p79_purchased_30d, p79_checkout_30d).padStart(8)} |   ${formatPercent(p79_purchased_30d, p79_viewed_30d).padStart(8)}`);
+
+    // P199 Table
+    console.log('\n💵 $199 Strategy Audit Funnel');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log('Funnel Step                         | Last 30 Days |  All-Time | Step Conv. | Overall Conv.');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log(`1. Preview Viewed                   | ${String(p199_viewed_30d).padStart(12)} | ${String(p199_viewed_all).padStart(9)} |      -     |      -`);
+    console.log(`2. Package Selected (Default)       | ${String(p199_selected_30d).padStart(12)} | ${String(p199_selected_all).padStart(9)} |   ${formatPercent(p199_selected_30d, p199_viewed_30d).padStart(8)} |   ${formatPercent(p199_selected_30d, p199_viewed_30d).padStart(8)}`);
+    console.log(`3. Checkout Started                 | ${String(p199_checkout_30d).padStart(12)} | ${String(p199_checkout_all).padStart(9)} |   ${formatPercent(p199_checkout_30d, p199_selected_30d).padStart(8)} |   ${formatPercent(p199_checkout_30d, p199_viewed_30d).padStart(8)}`);
+    console.log(`4. Payment Completed                | ${String(p199_purchased_30d).padStart(12)} | ${String(p199_purchased_all).padStart(9)} |   ${formatPercent(p199_purchased_30d, p199_checkout_30d).padStart(8)} |   ${formatPercent(p199_purchased_30d, p199_viewed_30d).padStart(8)}`);
     console.log('========================================================================================');
     
     // Output Top 10 Scoring Leads to inspect why they are/aren't Tier A
