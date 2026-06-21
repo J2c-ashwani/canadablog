@@ -196,13 +196,30 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string)
       throw new Error(`Failed to fetch PayPal order ${orderId}: ${errorText}`);
     }
 
-    const orderData = await orderRes.json();
-    const status = orderData.status;
-    const amountVal = orderData.purchase_units?.[0]?.amount?.value;
+    let orderData = await orderRes.json();
+    let status = orderData.status;
 
-    if (status !== "COMPLETED" && status !== "APPROVED") {
+    // If order is APPROVED, capture it server-side to secure merchant funds and prevent client-side bypass
+    if (status === "APPROVED") {
+      console.log(`[PayPal Security Check] Order ${orderId} is APPROVED. Capturing server-side...`);
+      try {
+        const captureData = await capturePayPalOrder(orderId);
+        orderData = captureData;
+        status = captureData.status || "COMPLETED";
+        console.log(`[PayPal Security Check] Order ${orderId} captured successfully. New status: ${status}`);
+      } catch (captureError: any) {
+        console.error(`[PayPal Security Check] Failed to capture APPROVED order ${orderId} server-side:`, captureError);
+        return { verified: false, error: `Failed to capture order: ${captureError.message}` };
+      }
+    }
+
+    if (status !== "COMPLETED") {
       return { verified: false, error: `Invalid order status: ${status}` };
     }
+
+    // Amount could be in purchase_units directly or nested in payments.captures for capture responses
+    const amountVal = orderData.purchase_units?.[0]?.amount?.value || 
+                      orderData.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.value;
 
     // Verify amount matches within a small delta (e.g. 0.01) to account for decimal formatting
     const parsedAmount = parseFloat(amountVal || "0");

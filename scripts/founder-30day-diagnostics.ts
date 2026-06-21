@@ -372,6 +372,62 @@ async function runFounderReport() {
       return `${((numerator / denominator) * 100).toFixed(1)}%`;
     };
 
+    // Calculate booking conversion rate
+    let bookedAuditsCount30d = 0;
+    let bookedAuditsCountAll = 0;
+
+    leads.forEach((lead) => {
+      const email = lead.email?.toLowerCase().trim();
+      if (!email) return;
+
+      let activity: any = {};
+      if (lead.leadActivity && lead.leadActivity !== 'N/A' && lead.leadActivity !== '{}') {
+        try {
+          activity = JSON.parse(lead.leadActivity);
+        } catch (e) {}
+      }
+
+      const hasPurchasedAudit = p199BuyersAll.has(email);
+      const hasBooked = activity.bookedAudit === true || activity.auditBookedAt || lead.offlineStatus === 'Booked Audit' || lead.offlineStatus === 'Audit Completed';
+
+      if (hasPurchasedAudit && hasBooked) {
+        bookedAuditsCountAll++;
+        
+        const purchaseDateStr = Array.from(purchaseRows).find(p => p[1]?.toLowerCase().trim() === email)?.[8] || lead.timestamp;
+        const purchaseDate = new Date(purchaseDateStr);
+        const isWithin30d = !isNaN(purchaseDate.getTime()) && purchaseDate >= startOf30DaysAgo;
+        if (isWithin30d) {
+          bookedAuditsCount30d++;
+        }
+      }
+    });
+
+    // Calculate UTM Revenue
+    const revenueBySourceAll: Record<string, number> = {};
+    const revenueBySource30d: Record<string, number> = {};
+
+    purchaseRows.forEach((pRow) => {
+      const email = pRow[1] || '';
+      const amountVal = parseFloat(pRow[4] || '0');
+      const createdAtStr = pRow[8] || '';
+      const status = pRow[9] || 'completed';
+      let utmSource = pRow[12] || 'Direct';
+
+      if (status !== 'completed' || !email) return;
+
+      if (!utmSource || utmSource.trim() === '' || utmSource === 'N/A' || utmSource.toLowerCase() === 'null') {
+        utmSource = 'Direct';
+      }
+
+      const purchaseDate = new Date(createdAtStr);
+      const isWithin30d = !isNaN(purchaseDate.getTime()) && purchaseDate >= startOf30DaysAgo;
+
+      revenueBySourceAll[utmSource] = (revenueBySourceAll[utmSource] || 0) + amountVal;
+      if (isWithin30d) {
+        revenueBySource30d[utmSource] = (revenueBySource30d[utmSource] || 0) + amountVal;
+      }
+    });
+
     console.log('========================================================================================');
     console.log('📊 FOUNDER REVENUE FUNNEL DIAGNOSTICS');
     console.log('========================================================================================');
@@ -390,6 +446,30 @@ async function runFounderReport() {
     console.log(`  - Viewed Preview                  | ${String(previewViewed30d).padStart(12)} | ${String(previewViewedAll).padStart(14)}`);
     console.log(`  - Started Checkout (CTA Click)    | ${String(previewCheckoutStarted30d).padStart(12)} | ${String(previewCheckoutStartedAll).padStart(14)}`);
     console.log(`  - Completed Payment               | ${String(previewPurchased30d).padStart(12)} | ${String(previewPurchasedAll).padStart(14)}`);
+    console.log('========================================================================================');
+
+    console.log('\n========================================================================================');
+    console.log('📊 B2B AUDIT BOOKING CONVERSION METRICS');
+    console.log('========================================================================================');
+    console.log('Metric                              | Last 30 Days |       All-Time');
+    console.log('----------------------------------------------------------------------------------------');
+    console.log(`Audit Purchases                     | ${String(auditPurchased30d).padStart(12)} | ${String(auditPurchasedAll).padStart(14)}`);
+    console.log(`Audit Bookings                      | ${String(bookedAuditsCount30d).padStart(12)} | ${String(bookedAuditsCountAll).padStart(14)}`);
+    console.log(`Booking Conversion Rate             | ${formatPercent(bookedAuditsCount30d, auditPurchased30d).padStart(12)} | ${formatPercent(bookedAuditsCountAll, auditPurchasedAll).padStart(14)}`);
+    console.log('========================================================================================');
+
+    console.log('\n========================================================================================');
+    console.log('📊 REVENUE BY SOURCE DIAGNOSTICS');
+    console.log('========================================================================================');
+    console.log('UTM Source                          | Last 30 Days |       All-Time');
+    console.log('----------------------------------------------------------------------------------------');
+    const allSources = Array.from(new Set([...Object.keys(revenueBySourceAll), ...Object.keys(revenueBySource30d)]));
+    allSources.sort((a, b) => (revenueBySourceAll[b] || 0) - (revenueBySourceAll[a] || 0));
+    allSources.forEach((src) => {
+      const rev30d = (revenueBySource30d[src] || 0).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      const revAll = (revenueBySourceAll[src] || 0).toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+      console.log(`${src.padEnd(35)} | ${rev30d.padStart(12)} | ${revAll.padStart(14)}`);
+    });
     console.log('========================================================================================');
 
     console.log('========================================================================================');

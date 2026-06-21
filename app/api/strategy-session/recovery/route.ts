@@ -153,9 +153,36 @@ export async function POST(request: NextRequest) {
             activity.depositPaidAt = activity.depositPaidAt || new Date().toISOString();
           }
 
-          await SubscriberRepository.updateSubscriberPreferences(email, {
+          const updates: any = {
             leadActivity: JSON.stringify(activity)
-          });
+          };
+
+          const STAGE_HIERARCHY = [
+            'Lead',
+            'Calculator Lead',
+            'Report Buyer',
+            'Audit Buyer',
+            'Booked Audit',
+            'Audit Attended',
+            'Audit Completed',
+            'Filing Prospect',
+            'Filing Client Signed',
+            'Filing Client',
+            'Won'
+          ];
+          const shouldUpdateStage = (current: string | undefined, target: string) => {
+            if (!current) return true;
+            const currentIdx = STAGE_HIERARCHY.indexOf(current.trim());
+            const targetIdx = STAGE_HIERARCHY.indexOf(target.trim());
+            if (currentIdx === -1) return true;
+            return targetIdx > currentIdx;
+          };
+
+          if (shouldUpdateStage(subscriber.offlineStatus, 'Booked Audit')) {
+            updates.offlineStatus = 'Booked Audit';
+          }
+
+          await SubscriberRepository.updateSubscriberPreferences(email, updates);
           console.log(`[Recovery API] Synced telemetry attributes back to leadActivity:`, activity);
         }
       } catch (err) {

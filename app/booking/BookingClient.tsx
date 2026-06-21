@@ -140,7 +140,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
   useEffect(() => {
     if (isSuccess) return;
 
-    const handleMessage = (e: MessageEvent) => {
+    const handleMessage = async (e: MessageEvent) => {
       console.log('[Calendly SDK] Raw postMessage received:', { origin: e.origin, data: e.data });
       
       let data = e.data;
@@ -167,13 +167,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
           const inviteeUri = payload.invitee?.uri || '';
           const bookedAt = Date.now();
 
-          console.log('[Calendly SDK] Redirecting to checkout with:', {
-            inviteeEmail,
-            inviteeName,
-            eventUri,
-            inviteeUri,
-            bookedAt
-          });
+          console.log('[Calendly SDK] Event scheduled. Syncing to recovery ledger...');
 
           // Track booking_complete immediately
           trackGAEvent('booking_complete', {
@@ -184,16 +178,42 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
             utm_campaign: safeSessionStorage.getItem('fsi:utm_campaign') || 'N/A',
           });
 
+          // Sync slot booking back to sheets database using the recovery API
+          try {
+            await fetch('/api/strategy-session/recovery', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                event: 'paid', // Mark as paid/secured booking
+                recoveryId: rid || orderId || inviteeEmail,
+                email: inviteeEmail,
+                name: inviteeName,
+                calendlyEventUri: eventUri,
+                calendlyInviteeUri: inviteeUri,
+                paypalOrderId: orderId || 'N/A',
+                rawSummary: JSON.stringify({
+                  amount: '199.00',
+                  tier: 'audit',
+                  orderId: orderId,
+                }),
+                source: source || 'audit-booking',
+              }),
+            });
+            console.log('[Calendly SDK] Successfully synced booking back to server.');
+          } catch (syncErr) {
+            console.error('[Calendly SDK] Failed to sync booking back to server:', syncErr);
+          }
+
           // Redirect to checkout with slot details
-          const checkoutUrl = `/consultation?email=${encodeURIComponent(inviteeEmail)}&name=${encodeURIComponent(inviteeName)}&rid=${encodeURIComponent(rid)}&source=${encodeURIComponent(source)}&scheduled=true&event_uri=${encodeURIComponent(eventUri)}&invitee_uri=${encodeURIComponent(inviteeUri)}&booked_at=${bookedAt}`;
-          window.location.href = checkoutUrl;
+          const successUrl = `/booking?success=true&email=${encodeURIComponent(inviteeEmail)}&name=${encodeURIComponent(inviteeName)}&order=${encodeURIComponent(orderId)}&rid=${encodeURIComponent(rid)}&source=${encodeURIComponent(source)}&scheduled=true&event_uri=${encodeURIComponent(eventUri)}&invitee_uri=${encodeURIComponent(inviteeUri)}&booked_at=${bookedAt}`;
+          window.location.href = successUrl;
         }
       }
     };
 
     window.addEventListener('message', handleMessage);
     return () => window.removeEventListener('message', handleMessage);
-  }, [isSuccess, email, name, rid, source]);
+  }, [isSuccess, email, name, rid, source, orderId]);
 
 
   // Stable Calendly URL loaded once on mount

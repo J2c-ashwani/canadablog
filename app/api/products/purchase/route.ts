@@ -7,6 +7,30 @@ import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 
+const STAGE_HIERARCHY = [
+  'Lead',
+  'Calculator Lead',
+  'Report Buyer',
+  'Audit Buyer',
+  'Booked Audit',
+  'Audit Attended',
+  'Audit Completed',
+  'Filing Prospect',
+  'Filing Client Signed',
+  'Filing Client',
+  'Won'
+];
+
+function shouldUpdateStage(currentStage: string | undefined, newStage: string): boolean {
+  if (!currentStage) return true;
+  const normalizedCurrent = currentStage.trim();
+  const normalizedNew = newStage.trim();
+  const currentIndex = STAGE_HIERARCHY.indexOf(normalizedCurrent);
+  const newIndex = STAGE_HIERARCHY.indexOf(normalizedNew);
+  if (currentIndex === -1) return true;
+  return newIndex > currentIndex;
+}
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
@@ -99,7 +123,7 @@ export async function POST(request: NextRequest) {
     // ── Record telemetry event for main purchase ──
     try {
       await recordTelemetryEvent({
-        eventName: 'purchase_product',
+        eventName: productId === 'strategy-audit' ? 'strategy_audit_purchased' : 'purchase_product',
         sessionId: sessionId || 'sess_anonymous',
         pagePath: attribution?.landingPage || '',
         referrer: attribution?.referrer || 'direct',
@@ -152,20 +176,42 @@ export async function POST(request: NextRequest) {
         fundingPurpose: profileData.goal || 'expansion',
       };
 
+      // Set UTM parameters on subscriber updates
+      if (attribution?.utmSource) updates.utmSource = attribution.utmSource;
+      if (attribution?.utmMedium) updates.utmMedium = attribution.utmMedium;
+      if (attribution?.utmCampaign) updates.utmCampaign = attribution.utmCampaign;
+      if (attribution?.gaClientId) updates.gaClientId = attribution.gaClientId;
+
       if (productId === 'funding-match-report') {
         updates.reportPurchased = true;
         updates.reportTransactionId = paypalOrderId;
         updates.engagementScore = 120;
+        if (shouldUpdateStage(existing?.offlineStatus, 'Report Buyer')) {
+          updates.offlineStatus = 'Report Buyer';
+        }
       } else if (productId === 'funding-roadmap') {
         updates.strategyReportPurchased = true;
         updates.strategyReportTransactionId = paypalOrderId;
         updates.engagementScore = 150;
+        if (shouldUpdateStage(existing?.offlineStatus, 'Report Buyer')) {
+          updates.offlineStatus = 'Report Buyer';
+        }
       } else if (productId === 'funding-bundle') {
         updates.reportPurchased = true;
         updates.reportTransactionId = paypalOrderId;
         updates.strategyReportPurchased = true;
         updates.strategyReportTransactionId = paypalOrderId;
         updates.engagementScore = 150;
+        if (shouldUpdateStage(existing?.offlineStatus, 'Report Buyer')) {
+          updates.offlineStatus = 'Report Buyer';
+        }
+      } else if (productId === 'strategy-audit') {
+        updates.strategyReportPurchased = true;
+        updates.strategyReportTransactionId = paypalOrderId;
+        updates.engagementScore = 200;
+        if (shouldUpdateStage(existing?.offlineStatus, 'Audit Buyer')) {
+          updates.offlineStatus = 'Audit Buyer';
+        }
       }
 
       // Parse existing leadActivity or create new
@@ -179,6 +225,13 @@ export async function POST(request: NextRequest) {
       }
       activity.paymentCompletedAt = new Date().toISOString();
       activity.purchasedProductId = productId;
+      
+      if (productId === 'strategy-audit') {
+        activity.auditPurchasedAt = activity.paymentCompletedAt;
+        activity.depositPaid = true;
+        activity.depositPaidAt = activity.paymentCompletedAt;
+      }
+
       if (addons?.toolkit) activity.purchasedToolkit = true;
       if (addons?.approvalLibrary) activity.purchasedApprovalLibrary = true;
       updates.leadActivity = JSON.stringify(activity);
@@ -229,7 +282,9 @@ export async function POST(request: NextRequest) {
     );
 
     // ── Return success ──
-    const deliveryUrl = `/products/report?token=${purchase.accessToken}`;
+    const deliveryUrl = productId === 'strategy-audit'
+      ? `/booking?email=${encodeURIComponent(email)}&order=${encodeURIComponent(paypalOrderId)}`
+      : `/products/report?token=${purchase.accessToken}`;
 
     return NextResponse.json({
       success: true,

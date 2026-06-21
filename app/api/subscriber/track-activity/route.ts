@@ -116,6 +116,36 @@ export async function POST(request: NextRequest) {
       updates.lastAlertClickedAt = now
       updates.lastPortfolioViewAt = now
       updates.lastDashboardViewAt = now
+    } else if (event === "strategy_audit_purchased") {
+      activity.strategyAuditPurchasedAt = now
+      activity.auditPurchasedAt = now
+      activity.depositPaid = true
+      activity.depositPaidAt = now
+      updates.strategyReportPurchased = true
+      
+      const STAGE_HIERARCHY = [
+        'Lead',
+        'Calculator Lead',
+        'Report Buyer',
+        'Audit Buyer',
+        'Booked Audit',
+        'Audit Attended',
+        'Audit Completed',
+        'Filing Prospect',
+        'Filing Client Signed',
+        'Filing Client',
+        'Won'
+      ];
+      const shouldUpdateStage = (current: string | undefined, target: string) => {
+        if (!current) return true;
+        const currentIdx = STAGE_HIERARCHY.indexOf(current.trim());
+        const targetIdx = STAGE_HIERARCHY.indexOf(target.trim());
+        if (currentIdx === -1) return true;
+        return targetIdx > currentIdx;
+      };
+      if (shouldUpdateStage(subscriber.offlineStatus, 'Audit Buyer')) {
+        updates.offlineStatus = 'Audit Buyer';
+      }
     } else {
       return NextResponse.json({ error: `Unsupported event type: ${event}` }, { status: 400 })
     }

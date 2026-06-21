@@ -1,4 +1,4 @@
-export type ProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library';
+export type ProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library' | 'strategy-audit';
 
 export interface Product {
   id: ProductId;
@@ -116,6 +116,27 @@ export const PRODUCTS: Record<ProductId, Product> = {
     deliverables: [
       'Instant digital dashboard access',
       'Downloadable PDF guide with examples',
+    ],
+  },
+  'strategy-audit': {
+    id: 'strategy-audit',
+    name: 'Funding Strategy Audit',
+    slug: 'strategy-audit',
+    priceUsd: 199,
+    tagline: '1-on-1 Strategy Consultation & custom Eligibility Audit',
+    description:
+      'Get a custom pre-call eligibility review against 800+ programs, a downloadable report, and a 30-minute 1-on-1 strategy call with a senior advisor.',
+    features: [
+      'Pre-call custom eligibility review',
+      'Top 3 high-probability matches',
+      '30-minute 1-on-1 strategy call',
+      'Application roadmap & stack timeline',
+      '100% refund guarantee if not eligible',
+    ],
+    deliverables: [
+      'Custom Funding Eligibility Report PDF',
+      '1-on-1 Strategy Consultation call slot',
+      'Calendly booking access link',
     ],
   },
 };
