@@ -25,7 +25,10 @@ function verifyProductionSecrets() {
   const missing: string[] = [];
 
   REQUIRED_SECRETS.forEach((secret) => {
-    const val = process.env[secret];
+    let val = process.env[secret];
+    if (secret === 'PAYPAL_CLIENT_ID' && (!val || val.trim() === '')) {
+      val = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
+    }
     if (!val || val.trim() === '' || val.includes('fallback') || val.includes('LEGACY_SALT_PLACEHOLDER')) {
       missing.push(secret);
     }
