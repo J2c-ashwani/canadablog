@@ -25,12 +25,21 @@ export async function GET(request: NextRequest) {
     let recovery3Count = 0;
     let skippedCount = 0;
 
+    const BATCH_LIMIT = 5;
+    const MAX_RECOVERY_AGE_MS = 10 * 24 * 60 * 60 * 1000; // 10 days
+
     for (const sub of subscribers) {
       if (!sub.email || !sub.email.includes("@")) {
         skippedCount++;
         continue;
       }
       if (!sub.isSubscribed) {
+        skippedCount++;
+        continue;
+      }
+
+      // Check batch limit to prevent timeout
+      if ((recovery1Count + recovery2Count + recovery3Count) >= BATCH_LIMIT) {
         skippedCount++;
         continue;
       }
@@ -71,6 +80,13 @@ export async function GET(request: NextRequest) {
       }
 
       const elapsedMs = now - compTimeMs;
+
+      // Skip very old leads to prevent spamming historical data and avoid timeouts
+      if (elapsedMs > MAX_RECOVERY_AGE_MS) {
+        skippedCount++;
+        continue;
+      }
+
       let emailSent = false;
 
       // Email #1 (24 hours = 86,400,000 ms)
