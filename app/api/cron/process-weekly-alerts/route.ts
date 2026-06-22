@@ -29,6 +29,8 @@ export async function GET(request: NextRequest) {
     const allPrograms = getAllPrograms()
     const now = new Date()
     let emailsSentCount = 0
+    let writesCount = 0
+    const BATCH_LIMIT = 5
 
     for (const sub of allSubscribers) {
       // Must be subscribed
@@ -39,6 +41,9 @@ export async function GET(request: NextRequest) {
 
       // Skip drafts that have not submitted a complete step 1 name/email
       if (sub.source === "Screener Dropoff Draft" && !sub.name) continue
+
+      // Check batch limit for writes to prevent timeout
+      if (writesCount >= BATCH_LIMIT) break
 
       // Get previous matches snapshot from leadActivity JSON
       let activity: any = {}
@@ -115,7 +120,17 @@ export async function GET(request: NextRequest) {
           await SubscriberRepository.updateSubscriberPreferences(sub.email, {
             leadActivity: JSON.stringify(activity)
           })
+          writesCount++
           continue
+        }
+
+        // Cooldown check: only send a weekly alert email once every 6 days
+        if (sub.lastAlertSentAt) {
+          const lastSent = new Date(sub.lastAlertSentAt).getTime()
+          if (!isNaN(lastSent)) {
+            const daysSince = (now.getTime() - lastSent) / (1000 * 60 * 60 * 24)
+            if (daysSince < 6) continue
+          }
         }
 
         // Send alert
@@ -136,6 +151,7 @@ export async function GET(request: NextRequest) {
             leadActivity: JSON.stringify(activity)
           })
           emailsSentCount++
+          writesCount++
         }
       } else {
         // No deltas. Only write if the snapshot has actually changed (e.g. programs removed from eligibility)
@@ -145,6 +161,7 @@ export async function GET(request: NextRequest) {
           await SubscriberRepository.updateSubscriberPreferences(sub.email, {
             leadActivity: JSON.stringify(activity)
           })
+          writesCount++
         }
       }
     }
