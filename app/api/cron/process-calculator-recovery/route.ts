@@ -73,17 +73,18 @@ export async function GET(request: NextRequest) {
       const elapsedMs = now - compTimeMs;
       let emailSent = false;
 
-      // Generate report summary data dynamically for Email 1 and 2
-      const report = generateFundingMatchReport({
-        province: sub.region || 'on',
-        industry: sub.industry || 'technology',
-        revenue: sub.businessStage || 'pre-revenue',
-        goal: sub.fundingPurpose || 'hiring'
-      });
-
       // Email #1 (24 hours = 86,400,000 ms)
       if (elapsedMs >= 24 * 60 * 60 * 1000 && !activity.calcRecoveryEmail1SentAt) {
         console.log(`⏱️ Triggering Calculator Recovery #1 for: ${sub.email}`);
+        
+        // Generate report summary data dynamically for Email 1
+        const report = generateFundingMatchReport({
+          province: sub.region || 'on',
+          industry: sub.industry || 'technology',
+          revenue: sub.businessStage || 'pre-revenue',
+          goal: sub.fundingPurpose || 'hiring'
+        });
+
         const res = await sendCalculatorRecoveryEmail1({
           to: sub.email,
           name: sub.name,
