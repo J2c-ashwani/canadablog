@@ -15,7 +15,6 @@ export function DownloadForm() {
     email: '',
     phone: "",
     companyName: '',
-    contactNumber: '',
     consent: false
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -46,7 +45,7 @@ export function DownloadForm() {
           guideName: "Women's Entrepreneurship Strategy (WES) Kit",
           industry: "Women-Owned Business",
           country: "Canada",
-          additionalNotes: `Contact Number: ${formData.contactNumber}`,
+          additionalNotes: "",
         }),
       })
 
@@ -121,21 +120,7 @@ export function DownloadForm() {
             />
           </div>
 
-          <div>
-            <Label htmlFor="contactNumber" className="text-sm font-medium">
-              Contact Number *
-            </Label>
-            <Input
-              id="contactNumber"
-              name="contactNumber"
-              type="tel"
-              required
-              value={formData.contactNumber}
-              onChange={handleInputChange}
-              placeholder="+1 (555) 123-4567"
-              className="mt-1"
-            />
-          </div>
+
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-3">

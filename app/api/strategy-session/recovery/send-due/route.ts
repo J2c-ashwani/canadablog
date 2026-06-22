@@ -7,30 +7,17 @@ import {
   type StrategyRecoveryRecord,
 } from '@/lib/strategy-session/recovery-store';
 import { sendStrategyRecoveryEmail } from '@/lib/strategy-session/recovery-emails';
+import { isValidCronRequest } from '@/lib/admin/auth';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 const MAX_SENDS_PER_RUN = 50;
 
-function isAuthorized(request: NextRequest) {
-  const secret = process.env.CRON_SECRET;
 
-  if (!secret && process.env.NODE_ENV !== 'production') {
-    return true;
-  }
-
-  if (!secret) {
-    return false;
-  }
-
-  const authHeader = request.headers.get('authorization') || '';
-  const headerSecret = request.headers.get('x-cron-secret') || '';
-  const querySecret = request.nextUrl.searchParams.get('secret') || '';
-
-  return authHeader === `Bearer ${secret}` || headerSecret === secret || querySecret === secret;
-}
-
+// Uses isValidCronRequest from @/lib/admin/auth — same pattern as all cron routes.
+// Register on cron-job.org (NOT Vercel cron). Recommended: every 30 minutes.
+// URL: https://www.fsidigital.ca/api/strategy-session/recovery/send-due?secret=CRON_SECRET
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 }
@@ -44,79 +31,16 @@ function toTime(value: string) {
   return Number.isFinite(time) ? time : 0;
 }
 
-function extractCalendlyUuid(uri: string) {
-  if (!uri) return '';
-  if (uri.startsWith('http')) {
-    const parts = uri.split('/');
-    return parts[parts.length - 1];
-  }
-  return uri;
-}
+// ── FLOW NOTE ────────────────────────────────────────────────────────────────
+// The checkout flow is: Pay $199 first → then /booking page unlocks Calendly.
+// A Calendly booking (calendlyEventUri) therefore always implies payment is done.
+// We NEVER provisionally hold a Calendly slot before payment, so there is no
+// need to auto-cancel a booking or use an aggressive 15/40min recovery timeline.
+// All unpaid leads follow the relaxed timeline below.
+// ─────────────────────────────────────────────────────────────────────────────
 
-async function cancelCalendlyEvent(eventUri: string): Promise<{ success: boolean; error?: string }> {
-  const apiKey = process.env.CALENDLY_API_TOKEN || process.env.CALENDY_API_TOKEN;
-  if (!apiKey) {
-    return { success: false, error: 'CALENDLY_API_TOKEN is not configured.' };
-  }
-
-  const uuid = extractCalendlyUuid(eventUri);
-  if (!uuid) {
-    return { success: false, error: `Invalid Calendly event URI: ${eventUri}` };
-  }
-
-  try {
-    const response = await fetch(`https://api.calendly.com/scheduled_events/${uuid}/cancellation`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${apiKey}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        reason: 'Research deposit payment not completed within the 60-minute reservation window.'
-      })
-    });
-
-    if (!response.ok) {
-      const text = await response.text();
-      return { success: false, error: `Calendly API error: ${response.status} - ${text}` };
-    }
-
-    return { success: true };
-  } catch (err: any) {
-    return { success: false, error: err.message || 'Unknown network error.' };
-  }
-}
-
-async function trackGA4AutoCancelled(email: string, gaClientId: string) {
-  const gaApiSecret = process.env.GA_API_SECRET;
-  const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-DZ55NMNLYM';
-
-  if (!gaClientId || gaClientId === 'N/A' || !gaApiSecret) {
-    console.warn('[GA4 Auto-Cancelled] Skipped: Client ID or API Secret missing.', { gaClientId, hasSecret: !!gaApiSecret });
-    return;
-  }
-
-  try {
-    const response = await fetch(`https://www.google-analytics.com/mp/collect?api_secret=${gaApiSecret}&measurement_id=${gaMeasurementId}`, {
-      method: 'POST',
-      body: JSON.stringify({
-        client_id: gaClientId,
-        events: [{
-          name: 'booking_auto_cancelled',
-          params: {
-            engagement_time_msec: '100',
-            email_lookup_hint: email,
-          }
-        }]
-      })
-    });
-    console.log(`[GA4 Auto-Cancelled] Event sent. Status: ${response.status}`);
-  } catch (err) {
-    console.error('❌ Failed to dispatch GA4 auto-cancelled event:', err);
-  }
-}
-
-function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'email' | 'cancel' | null; stage?: StrategyRecoveryEmailStage } {
+function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'email' | null; stage?: StrategyRecoveryEmailStage } {
+  // Skip paid or opted-out leads
   if (record.status === 'paid' || record.status === 'unsubscribed') {
     return { action: null };
   }
@@ -127,45 +51,18 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
   }
 
   const elapsed = now - createdAt;
-  const hasBooking = !!record.calendlyEventUri;
 
-  if (hasBooking) {
-    // 1. Cancellation - 60 minutes
-    if (elapsed >= 60 * 60 * 1000) {
-      const isCancelled = record.reason.includes('calendly_cancelled');
-      // Ensure we sent both recovery emails before cancelling, and at least 15m has passed since last email (40m)
-      if (!isCancelled && record.initialEmailSentAt && record.followUp24hSentAt) {
-        return { action: 'cancel' };
-      }
+  // Email #2 (value_24h) — 4 hours after shown event
+  if (elapsed >= 4 * 60 * 60 * 1000) {
+    if (record.initialEmailSentAt && !record.followUp24hSentAt) {
+      return { action: 'email', stage: 'value_24h' };
     }
+  }
 
-    // 2. Email #2 (value_24h) - 40 minutes (25m after Email 1, and 20m before cancellation)
-    if (elapsed >= 40 * 60 * 1000) {
-      if (record.initialEmailSentAt && !record.followUp24hSentAt) {
-        return { action: 'email', stage: 'value_24h' };
-      }
-    }
-
-    // 3. Email #1 (initial) - 15 minutes
-    if (elapsed >= 15 * 60 * 1000) {
-      if (!record.initialEmailSentAt) {
-        return { action: 'email', stage: 'initial' };
-      }
-    }
-  } else {
-    // Timeline for Non-Booked Leads (Standard/Relaxed)
-    // 1. Email #2 (value_24h) - 4 hours
-    if (elapsed >= 4 * 60 * 60 * 1000) {
-      if (record.initialEmailSentAt && !record.followUp24hSentAt) {
-        return { action: 'email', stage: 'value_24h' };
-      }
-    }
-
-    // 2. Email #1 (initial) - 30 minutes
-    if (elapsed >= 30 * 60 * 1000) {
-      if (!record.initialEmailSentAt) {
-        return { action: 'email', stage: 'initial' };
-      }
+  // Email #1 (initial) — 30 minutes after shown event
+  if (elapsed >= 30 * 60 * 1000) {
+    if (!record.initialEmailSentAt) {
+      return { action: 'email', stage: 'initial' };
     }
   }
 
@@ -173,7 +70,7 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
 }
 
 async function sendDueRecoveryEmails(request: NextRequest) {
-  if (!isAuthorized(request)) {
+  if (!isValidCronRequest(request)) {
     return NextResponse.json({ error: 'Unauthorized recovery email run.' }, { status: 401 });
   }
 
@@ -200,8 +97,6 @@ async function sendDueRecoveryEmails(request: NextRequest) {
 
   const sent: Array<{ recoveryId: string; email: string; stage: StrategyRecoveryEmailStage }> = [];
   const failed: Array<{ recoveryId: string; email: string; stage: StrategyRecoveryEmailStage; error: string }> = [];
-  const cancelled: Array<{ recoveryId: string; email: string; eventUri: string }> = [];
-  const cancellationFailed: Array<{ recoveryId: string; email: string; eventUri: string; error: string }> = [];
   let dueCount = 0;
 
   for (const record of records) {
@@ -225,7 +120,8 @@ async function sendDueRecoveryEmails(request: NextRequest) {
         source: record.source || 'strategy-session-recovery',
         stage,
         recoveryId: record.recoveryId,
-        bookedAt: record.calendlyEventUri ? toTime(record.createdAt) : undefined,
+        // bookedAt is intentionally omitted: under the new Pay-First flow, Calendly is
+        // only booked AFTER payment, so an unpaid recovery record never has a booking.
       });
 
       if (response.success) {
@@ -239,63 +135,17 @@ async function sendDueRecoveryEmails(request: NextRequest) {
           error: response.error || (response.skipped ? 'Resend API key is not configured.' : 'Unknown send error.'),
         });
       }
-    } else if (action === 'cancel') {
-      const eventUri = record.calendlyEventUri;
-      console.log(`[Auto-Cancellation] Canceling Calendly event for recovery ID ${record.recoveryId}: ${eventUri}`);
-
-      const cancelResponse = await cancelCalendlyEvent(eventUri);
-      if (cancelResponse.success) {
-        const updatedReason = record.reason
-          ? `${record.reason}, calendly_cancelled_60m`
-          : 'calendly_cancelled_60m';
-
-        await upsertStrategyRecoveryEvent({
-          recoveryId: record.recoveryId,
-          event: 'abandoned',
-          reason: updatedReason,
-        });
-
-        if (record.gaClientId && record.gaClientId !== 'N/A') {
-          await trackGA4AutoCancelled(record.email, record.gaClientId);
-        }
-
-        cancelled.push({ recoveryId: record.recoveryId, email: record.email, eventUri });
-      } else {
-        console.error(`[Auto-Cancellation] Failed to cancel event for recovery ID ${record.recoveryId}: ${cancelResponse.error}`);
-        const isPermanentError = cancelResponse.error?.includes('404') || cancelResponse.error?.includes('410');
-        if (isPermanentError) {
-          const updatedReason = record.reason
-            ? `${record.reason}, calendly_cancelled_failed_permanent`
-            : 'calendly_cancelled_failed_permanent';
-          await upsertStrategyRecoveryEvent({
-            recoveryId: record.recoveryId,
-            event: 'abandoned',
-            reason: updatedReason,
-          });
-        }
-
-        cancellationFailed.push({
-          recoveryId: record.recoveryId,
-          email: record.email,
-          eventUri,
-          error: cancelResponse.error || 'Unknown error'
-        });
-      }
     }
   }
 
   return NextResponse.json({
-    success: failed.length === 0 && cancellationFailed.length === 0,
+    success: failed.length === 0,
     checked: records.length,
     due: dueCount,
     sent: sent.length,
     failed: failed.length,
-    cancelled: cancelled.length,
-    cancellationFailed: cancellationFailed.length,
     sentRecords: sent,
     failedRecords: failed,
-    cancelledRecords: cancelled,
-    cancellationFailedRecords: cancellationFailed
   });
 }
 

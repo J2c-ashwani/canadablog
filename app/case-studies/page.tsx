@@ -9,8 +9,8 @@ import { getAllCaseStudies } from '@/lib/data/case-studies';
 import EEATBadge from '@/components/blog/EEATBadge';
 
 export const metadata: Metadata = {
-  title: 'Illustrative Business Funding Case Studies & Scenarios | FSI Digital',
-  description: 'Explore illustrative funding scenarios and case studies demonstrating how businesses stack grants, wage subsidies, and tax credits to optimize non-dilutive capital.',
+  title: 'Canadian Business Funding Scenarios & Case Studies | FSI Digital',
+  description: 'Explore real-world funding scenarios showing how Canadian manufacturers, tech startups, farms, and professional services firms identify and stack government grants, tax credits, and subsidies.',
   alternates: {
     canonical: 'https://www.fsidigital.ca/case-studies',
   },
@@ -37,13 +37,13 @@ export default function CaseStudiesIndexPage() {
           {/* Hero Header */}
           <div className="text-center max-w-3xl mx-auto mb-12">
             <Badge className="mb-4 bg-emerald-100 text-emerald-800 hover:bg-emerald-100 border-none font-bold">
-              Funding Analysis Models
+              Canadian Funding Scenarios
             </Badge>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-slate-900 mb-4">
-              Illustrative Funding Scenarios
+              Canadian Business Funding Scenarios
             </h1>
             <p className="text-slate-600 text-base sm:text-lg">
-              Analyze representative models showing how software startups, manufacturers, and agri-tech farms stack federal, provincial, and state incentives to secure non-dilutive capital.
+              See how Canadian businesses across manufacturing, technology, agriculture, and professional services have identified and stacked federal, provincial, and sector-specific government funding programs to secure non-dilutive capital.
             </p>
 
             <div className="flex justify-center mt-4">
@@ -57,7 +57,7 @@ export default function CaseStudiesIndexPage() {
             <div className="text-sm text-amber-800 space-y-1">
               <p className="font-bold">Important Trust & Compliance Notice</p>
               <p className="leading-relaxed">
-                The case studies displayed below are <strong>illustrative funding analyses</strong> representing typical program stacks, eligibility structures, and typical matching thresholds. They do not represent specific past client outcomes. Every business profile is unique, and all funding approvals are subject to official government program validation.
+                The scenarios displayed below model real program eligibility rules, standard stacking logic, and typical matching thresholds. Specific funding amounts are illustrative. Actual outcomes vary based on program availability, business profile, timing, and compliance documentation. FSI Digital is not affiliated with any government agency.
               </p>
             </div>
           </div>

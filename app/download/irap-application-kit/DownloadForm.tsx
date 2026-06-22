@@ -15,7 +15,6 @@ export function DownloadForm() {
     email: "",
     phone: "",
     companyName: "",
-    contactNumber: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
@@ -37,7 +36,7 @@ export function DownloadForm() {
           guideName: "IRAP Application Kit",
           industry: "Technology/R&D",
           country: "Canada",
-          additionalNotes: `Phone: ${formData.contactNumber || "N/A"}`,
+          additionalNotes: "",
         }),
       })
 
@@ -116,18 +115,7 @@ export function DownloadForm() {
             />
           </div>
 
-          <div>
-            <Label htmlFor="contactNumber">Contact Number *</Label>
-            <Input
-              id="contactNumber"
-              type="tel"
-              required
-              value={formData.contactNumber}
-              onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-              placeholder="+1 (555) 123-4567"
-              className="mt-1"
-            />
-          </div>
+
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-3">

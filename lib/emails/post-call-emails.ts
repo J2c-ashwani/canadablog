@@ -107,3 +107,83 @@ export async function sendFilingOffer7dEmail({ to, name, companyName }: { to: st
     companyName
   });
 }
+
+// ── POST-PAYMENT BOOKING REMINDER ──────────────────────────────────────────
+// Fires when a customer paid $199 but never clicked through to book Calendly.
+// Under the new Pay-First flow, payment unlocks /booking where Calendly lives.
+// This email fires ~2 hours after payment if no Calendly booking is recorded.
+// ─────────────────────────────────────────────────────────────────────────────
+export function buildBookingReminderHtml({ firstName, bookingUrl }: { firstName: string; bookingUrl: string }) {
+  return `
+    <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+      <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">
+        <div style="padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 24px; display: table; width: 100%;">
+          <span style="font-size: 18px; font-weight: 800; color: #0f172a; display: table-cell;">FSI <span style="color: #059669;">Digital</span></span>
+          <span style="float: right; background-color: #d1fae5; color: #065f46; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 9999px;">Payment Received ✓</span>
+        </div>
+        <p style="font-size:15px;color:#334155;font-weight:600;">Hi ${firstName},</p>
+        <p style="font-size:15px;color:#334155;line-height:1.6;">
+          Your $199 research deposit was successfully received — thank you!
+        </p>
+        <p style="font-size:15px;color:#334155;line-height:1.6;">
+          The next step is to <strong>book your 30-minute strategy consultation</strong>. Our team will use this time to walk through your custom Funding Eligibility Report together, answer your questions, and map out your application sequence.
+        </p>
+        <div style="background-color: #f0fdf4; border: 1px dashed #4ade80; border-radius: 8px; padding: 16px; margin: 20px 0;">
+          <p style="margin: 0; font-size: 14px; color: #166534; font-weight: 600;">
+            📅 Your calendar booking link is ready — pick any available slot:
+          </p>
+        </div>
+        <div style="text-align: center; margin: 30px 0;">
+          <a href="${bookingUrl}" target="_blank" rel="noopener noreferrer" 
+             style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5, 150, 105, 0.25);">
+             Book My Strategy Session →
+          </a>
+        </div>
+        <p style="font-size:13px;color:#64748b;line-height:1.5;margin-top:20px; text-align: center;">
+          <em>If you have any questions before the call, reply directly to this email — we respond within 1 business day.</em>
+        </p>
+        <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;">
+          <p style="margin:0;font-size:14px;color:#475569;line-height:1.5;">
+            Best regards,<br/>
+            <strong>Ashwani K</strong><br/>
+            <span style="color:#64748b;font-size:13px;">Founder, FSI Digital</span>
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+export async function sendBookingReminderEmail({
+  to,
+  name,
+  loginToken,
+  recoveryId
+}: {
+  to: string;
+  name: string;
+  loginToken?: string;
+  recoveryId?: string;
+}) {
+  const firstName = getFirstName(name);
+  const subject = `Don't forget: Book your strategy session`;
+  
+  // Build the booking URL with prefill parameters
+  const bookingParams = new URLSearchParams({ success: 'true' });
+  if (loginToken) bookingParams.set('token', loginToken);
+  if (recoveryId) bookingParams.set('rid', recoveryId);
+  bookingParams.set('source', 'booking_reminder_email');
+  const bookingUrl = `https://www.fsidigital.ca/booking?${bookingParams.toString()}`;
+  
+  const html = buildBookingReminderHtml({ firstName, bookingUrl });
+  const text = `Hi ${firstName},\n\nYour $199 research deposit was received. The next step is to book your 30-minute strategy consultation.\n\nBook your session here:\n${bookingUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  
+  return sendEmail({
+    to,
+    subject,
+    html,
+    text,
+    tagType: 'audit_booking_reminder',
+  });
+}
+

@@ -17,7 +17,6 @@ export function DownloadForm() {
     businessName: "",
     businessType: "",
     location: "",
-    contactNumber: "",
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
@@ -39,7 +38,7 @@ export function DownloadForm() {
           guideName: "Indigenous Rural Funding Kit",
           industry: formData.businessType || "Indigenous/Rural Business",
           country: "Canada",
-          additionalNotes: `Location: ${formData.location || "N/A"}, Phone: ${formData.contactNumber || "N/A"}`,
+          additionalNotes: `Location: ${formData.location || "N/A"}`,
         }),
       })
 
@@ -152,18 +151,7 @@ export function DownloadForm() {
             />
           </div>
 
-          <div>
-            <Label htmlFor="contactNumber">Phone Number *</Label>
-            <Input
-              id="contactNumber"
-              type="tel"
-              required
-              value={formData.contactNumber}
-              onChange={(e) => setFormData({ ...formData, contactNumber: e.target.value })}
-              placeholder="+1 (555) 123-4567"
-              className="mt-1"
-            />
-          </div>
+
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-3">

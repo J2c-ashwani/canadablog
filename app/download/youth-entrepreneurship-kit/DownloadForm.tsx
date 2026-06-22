@@ -16,7 +16,6 @@ export function DownloadForm() {
     phone: "",
     companyName: '',
     age: '',
-    contactNumber: '',
     consent: false
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -48,7 +47,7 @@ export function DownloadForm() {
           guideName: "Youth Entrepreneurship Funding Kit (CYBF)",
           industry: "Youth Entrepreneurship",
           country: "Canada",
-          additionalNotes: `Age Range: ${formData.age || "N/A"}, Contact: ${formData.contactNumber}`,
+          additionalNotes: `Age Range: ${formData.age || "N/A"}`,
         }),
       })
 
@@ -142,21 +141,7 @@ export function DownloadForm() {
             </select>
           </div>
 
-          <div>
-            <Label htmlFor="contactNumber" className="text-sm font-medium">
-              Phone Number *
-            </Label>
-            <Input
-              id="contactNumber"
-              name="contactNumber"
-              type="tel"
-              required
-              value={formData.contactNumber}
-              onChange={handleInputChange}
-              placeholder="+1 (555) 123-4567"
-              className="mt-1"
-            />
-          </div>
+
 
           {error && (
             <div className="bg-red-50 border border-red-200 rounded-lg p-3">

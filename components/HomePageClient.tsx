@@ -10,6 +10,9 @@ import { Search, Download, TrendingUp, Users, DollarSign, Calendar, ArrowRight, 
 import Link from "next/link"
 import { HeroEmailForm, NewsletterForm } from "./HomePageForms"
 import { HighIntentFundingLinks } from "@/components/seo/HighIntentFundingLinks"
+import { CaseStudiesSection } from "@/components/CaseStudiesSection"
+import { FounderCard } from "@/components/FounderCard"
+import { DiyComparisonTable } from "@/components/DiyComparisonTable"
 
 const AI_FAQS = [
   { question: "What is FSI Digital and how does it help startups?", answer: "FSI Digital is North America's premier grant discovery platform. We track over $2.5 billion in available government funding and connect startups and small businesses in the USA and Canada with non-dilutive, equity-free capital." },
@@ -233,6 +236,8 @@ export default function HomePageClient() {
                 </div>
             </section>
 
+            <CaseStudiesSection limit={2} />
+
             {/* Features Section */}
             <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
                 <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -309,6 +314,11 @@ export default function HomePageClient() {
                     </div>
                 </div>
             </section>
+
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl py-6 space-y-8">
+                <FounderCard />
+                <DiyComparisonTable />
+            </div>
 
             {/* AI Answer / FAQ Section */}
             <section className="py-12 sm:py-16 md:py-20 border-t border-gray-200">

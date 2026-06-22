@@ -9,6 +9,16 @@ import { isValidCronRequest } from "@/lib/admin/auth"
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
 
+function areSnapshotsEqual(snap1: Record<string, string>, snap2: Record<string, string>): boolean {
+  const keys1 = Object.keys(snap1)
+  const keys2 = Object.keys(snap2)
+  if (keys1.length !== keys2.length) return false
+  for (const key of keys1) {
+    if (snap1[key] !== snap2[key]) return false
+  }
+  return true
+}
+
 export async function GET(request: NextRequest) {
   if (!isValidCronRequest(request)) {
     return NextResponse.json({ error: "Unauthorized weekly alerts cron execution." }, { status: 401 })
@@ -128,11 +138,14 @@ export async function GET(request: NextRequest) {
           emailsSentCount++
         }
       } else {
-        // No deltas, but let's make sure the snapshot is up-to-date in case programs database changed or they updated criteria
-        activity.lastMatchedPrograms = nextMatchedSnapshot
-        await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-          leadActivity: JSON.stringify(activity)
-        })
+        // No deltas. Only write if the snapshot has actually changed (e.g. programs removed from eligibility)
+        const isSnapshotEqual = areSnapshotsEqual(previousMatched, nextMatchedSnapshot)
+        if (!isSnapshotEqual) {
+          activity.lastMatchedPrograms = nextMatchedSnapshot
+          await SubscriberRepository.updateSubscriberPreferences(sub.email, {
+            leadActivity: JSON.stringify(activity)
+          })
+        }
       }
     }
 

@@ -53,52 +53,123 @@ export default function MethodologyPage() {
 
               <hr className="border-slate-100" />
 
-              {/* Matching Engine Algorithm */}
-              <div className="space-y-6">
+              {/* 1. Opportunity Discovery Framework */}
+              <div className="space-y-4">
                 <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
-                  <Layers className="w-6 h-6 text-emerald-600 shrink-0" /> The Matching Engine Algorithm
+                  <Compass className="w-6 h-6 text-emerald-600 shrink-0" /> Opportunity Discovery Framework
                 </h2>
-                <div className="prose text-slate-600 leading-relaxed max-w-none text-base space-y-4">
+                <div className="prose text-slate-655 leading-relaxed max-w-none text-base space-y-4">
                   <p>
-                    Our matching algorithm computes eligibility by comparing a company's profile against the criteria of each cataloged funding program. We process six primary dimensions:
+                    Identifying viable public funding is not just about running web searches. FSI Digital utilizes a hybrid discovery framework that combines:
                   </p>
                   <ul className="list-disc pl-6 space-y-2">
-                    <li><strong>Geographic Match:</strong> Focuses on corporate registration and operating province/state.</li>
-                    <li><strong>Sector Match:</strong> Evaluates target vertical (e.g., Software, Biotech, Advanced Manufacturing, Agriculture).</li>
-                    <li><strong>Growth Stage & Employees:</strong> Analyzes headcounts (FTEs) and corporate age, as many grants target SMEs with specific size ranges (e.g., under 50 FTEs).</li>
-                    <li><strong>Financial Baseline:</strong> Checks annual revenues and cash-matching capability to satisfy co-investment requirements.</li>
-                    <li><strong>Expense Types:</strong> Identifies if planned spending aligns with program funding rules (e.g., R&D salaries, hiring, equipment acquisition, export marketing).</li>
+                    <li><strong>Automated Data Scrapers:</strong> We run daily crawlers across 120+ federal, provincial, and territorial directories (e.g., NRC, BDC, FedDev, provincial finance portals) to flag new program launches, changes in criteria, or window closures.</li>
+                    <li><strong>Manual Analyst Curation:</strong> Scraped data is reviewed by our research analysts to verify details such as active budget allocations, intake caps, and actual application instructions before being committed to our database.</li>
+                    <li><strong>Primary Source Linkage:</strong> We strictly link every program in our database to its official administrative guidelines, preventing the propagation of outdated third-party descriptions.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <hr className="border-slate-100" />
+
+              {/* 2. The Matching Engine & Scoring Metrics */}
+              <div className="space-y-6">
+                <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                  <Layers className="w-6 h-6 text-emerald-600 shrink-0" /> Matching Engine &amp; Scoring Metrics
+                </h2>
+                <div className="prose text-slate-655 leading-relaxed max-w-none text-base space-y-4">
+                  <p>
+                    Our matching engine maps a company's profile across six core dimensions to compute eligibility:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li><strong>Geographic Match:</strong> Regional alignment (province, territory, or national scope).</li>
+                    <li><strong>Sector Match:</strong> Alignment with industry vertical exclusions/priorities (e.g., Software, Clean-tech, Food manufacturing).</li>
+                    <li><strong>Growth Stage & Employees:</strong> Verification against headcount (FTE) caps or corporate age requirements (e.g. CDAP requires at least 1 employee, IRAP targets under 500).</li>
+                    <li><strong>Financial Baseline:</strong> Checks annual revenues and matching capital capability, ensuring you possess the working capital to fund the 20-50% matching requirements.</li>
+                    <li><strong>Expense Alignment:</strong> Evaluates if your planned spends match the program's eligible expenses (e.g. technical wages, export travel, software seats, factory equipment).</li>
                   </ul>
                   
                   <div className="p-6 bg-slate-50 rounded-2xl border border-slate-100 space-y-3 mt-4">
-                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">How Match Strength is Categorized</h3>
+                    <h3 className="text-sm font-bold text-slate-900 uppercase tracking-wider">Scoring Strength Categorization</h3>
                     <div className="grid gap-4 sm:grid-cols-3 pt-2">
                       <div className="bg-white p-4 rounded-xl border border-emerald-100 shadow-sm">
                         <span className="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-emerald-50 text-emerald-700 mb-2">
-                          Excellent Match (80%+)
+                          High Fit (80%+)
                         </span>
                         <p className="text-xs text-slate-600 leading-relaxed">
-                          Company fits all criteria. High alignment on expense types and zero disqualifying factors. Recommended for immediate application.
+                          Company fits all criteria. Clear expense alignment, no disqualifying elements, and active funding allocations.
                         </p>
                       </div>
                       <div className="bg-white p-4 rounded-xl border border-blue-100 shadow-sm">
                         <span className="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-blue-50 text-blue-700 mb-2">
-                          Strong Match (60%–79%)
+                          Strong Fit (60%–79%)
                         </span>
                         <p className="text-xs text-slate-600 leading-relaxed">
-                          Company meets core criteria, but minor alignment gaps exist (e.g., tight timelines, limited regional allocations, or partial expense matching).
+                          Meets core criteria, but has minor compliance barriers or requires specific partner certifications.
                         </p>
                       </div>
                       <div className="bg-white p-4 rounded-xl border border-amber-100 shadow-sm">
                         <span className="inline-block px-2 py-0.5 rounded text-xs font-semibold bg-amber-50 text-amber-700 mb-2">
-                          Moderate Match (40%–59%)
+                          Moderate Fit (40%–59%)
                         </span>
                         <p className="text-xs text-slate-600 leading-relaxed">
-                          Eligible, but program has historically low approval rates, extreme competition, or high compliance overhead that may dilute overall ROI.
+                          Eligible, but program is highly competitive or has complex co-investment rules that impact overall yield.
                         </p>
                       </div>
                     </div>
                   </div>
+                </div>
+              </div>
+
+              <hr className="border-slate-100" />
+
+              {/* 3. Exclusion Criteria */}
+              <div className="space-y-4">
+                <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                  <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0" /> Database Exclusion Criteria
+                </h2>
+                <div className="prose text-slate-655 leading-relaxed max-w-none text-base space-y-4">
+                  <p>
+                    To keep matching results highly actionable, FSI Digital filters out low-value or obsolete funding options. Programs are excluded from database matching if they meet any of the following:
+                  </p>
+                  <ul className="list-disc pl-6 space-y-2">
+                    <li><strong>Legacy or Sunset Programs:</strong> Programs with closed intakes and no legislative budget allocation for the current fiscal year are excluded (e.g., sunset COVID-era relief grants).</li>
+                    <li><strong>Prohibitive Compliance Overhead:</strong> Programs where the compliance cost (e.g., audit fees, reporting requirements) exceeds 30% of the maximum grant value.</li>
+                    <li><strong>High Rejection/Default Rates:</strong> Programs with a history of arbitrary approvals, high default rates, or extreme audit clawback histories.</li>
+                    <li><strong>Unviable Stacking Restrictions:</strong> Programs that forbid stacking with major federal programs and offer less than 15% of the value of those programs.</li>
+                  </ul>
+                </div>
+              </div>
+
+              <hr className="border-slate-100" />
+
+              {/* 4. Stacking Sequence Priority Logic */}
+              <div className="space-y-4">
+                <h2 className="text-2xl font-bold text-slate-900 flex items-center gap-2">
+                  <Layers className="w-6 h-6 text-indigo-600 shrink-0" /> Stacking Sequence Priority Logic
+                </h2>
+                <div className="prose text-slate-655 leading-relaxed max-w-none text-base space-y-4">
+                  <p>
+                    Maximizing public funding requires an optimized stacking strategy. You cannot simply apply to every program simultaneously. FSI Digital applies a prioritization sequence to prevent "double dipping" rejections and maximize cash flow:
+                  </p>
+                  <ol className="list-decimal pl-6 space-y-2.5">
+                    <li>
+                      <strong>Priority 1: Wage Grants &amp; Subsidies (e.g., IRAP, CSJ, Co-op Vouchers)</strong>
+                      <p className="text-xs text-slate-500 mt-0.5">Wage subsidies must be secured before work begins. They provide front-loaded cash flow to offset developers' or interns' salaries (covering up to 50-80% of wages).</p>
+                    </li>
+                    <li>
+                      <strong>Priority 2: Retroactive Tax Credits (e.g., SR&ED)</strong>
+                      <p className="text-xs text-slate-500 mt-0.5">At the end of your fiscal year, you claim tax credits on the remaining out-of-pocket development expenses. The matching engine automatically calculates the government &ldquo;grind&rdquo; (deducting Priority 1 subsidies from the R&D pool) so you claim only eligible net expenses, keeping claims fully compliant.</p>
+                    </li>
+                    <li>
+                      <strong>Priority 3: Market Expansion &amp; Export Grants (e.g., CanExport)</strong>
+                      <p className="text-xs text-slate-500 mt-0.5">Once product development is subsidized, we apply marketing/export grants to co-fund foreign market entry (covering 50% of travel, translations, and advertising costs).</p>
+                    </li>
+                    <li>
+                      <strong>Priority 4: Government-Backed Debt &amp; Loans (e.g., CSBFP, BDC)</strong>
+                      <p className="text-xs text-slate-500 mt-0.5">Low-interest or guaranteed debt is structured last to finance capital purchases (equipment, property, facility expansions) that are not covered by Priority 1 or 2 grants.</p>
+                    </li>
+                  </ol>
                 </div>
               </div>
 

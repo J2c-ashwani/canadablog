@@ -398,43 +398,27 @@ export function getEmailContent(
   consultationUrl: string, 
   replyToEmail: string,
   recoveryId?: string,
-  bookedAt?: number,
+  bookedAt?: number, // kept for signature compatibility but not used in Pay-First flow
   subscriber?: PreviewLeadData
 ) {
-  const recpHtml = buildRecapHtml(recoveryId, bookedAt);
+  // ── FLOW NOTE ──────────────────────────────────────────────────────────────
+  // Under the Pay-First flow, recovery emails are ONLY sent to visitors who
+  // reached the payment page (/consultation or /audit) but did NOT complete
+  // the $199 deposit. Calendly is only shown AFTER payment on /booking.
+  // There are no "provisional slot" scenarios to reference in email copy.
+  // ───────────────────────────────────────────────────────────────────────────
 
   if (stage === 'value_24h') {
-    const subject = 'Pending Audit: Activating pre-call funding eligibility review...';
-    const bodyHtml = bookedAt
-      ? `<p style="margin:0 0 16px 0;">This is a final reminder that your provisionally scheduled Funding Eligibility Audit time slot is still held under our active review queue.</p>
-         <p style="margin:0 0 20px 0;">To begin your custom funding eligibility review, we require completion of the refundable research deposit. This allows us to compile your personalized Funding Eligibility Report before our call.</p>`
-      : `<p style="margin:0 0 16px 0;">This is a final reminder that your pending Funding Eligibility Audit and Report is still held under our active review queue.</p>
-         <p style="margin:0 0 20px 0;">To begin your custom funding eligibility review, we require completion of the refundable research deposit. This allows us to compile your personalized Funding Eligibility Report before our call.</p>`;
-
-    const ctaTextHtml = bookedAt
-      ? `<p style="margin:20px 0 0 0;">You can reserve your slot and secure your eligibility review here:</p>`
-      : `<p style="margin:20px 0 0 0;">You can activate your review file and secure your eligibility review here:</p>`;
-
-    const textBody = bookedAt
-      ? `This is a final reminder that your provisionally scheduled Funding Eligibility Audit time slot is still held under our active review queue.
-
-To begin your custom funding eligibility review, we require completion of the refundable research deposit. This allows us to compile your personalized Funding Eligibility Report before our call.`
-      : `This is a final reminder that your pending Funding Eligibility Audit and Report is still held under our active review queue.
-
-To begin your custom funding eligibility review, we require completion of the refundable research deposit. This allows us to compile your personalized Funding Eligibility Report before our call.`;
-
-    const textCta = bookedAt ? 'You can secure your session here:' : 'You can secure your audit here:';
-
     return {
-      subject,
+      subject: 'Final reminder: Your funding eligibility review is still pending...',
       html: baseHtml({
         firstName,
         cta: consultationUrl,
         replyToEmail,
         btnText: 'Secure Audit & Report',
-        recapHtml: recpHtml,
         body: `
-          ${bodyHtml}
+          <p style="margin:0 0 16px 0;">This is a final reminder that your Funding Eligibility Audit and custom Report are still pending activation in our system.</p>
+          <p style="margin:0 0 20px 0;">To begin your custom funding eligibility review, we require completion of the refundable $199 research deposit. This allows us to compile your personalized Funding Eligibility Report before the call.</p>
           
           ${buildReportPreviewHtml(subscriber)}
 
@@ -462,12 +446,14 @@ To begin your custom funding eligibility review, we require completion of the re
             </table>
           </div>
 
-          ${ctaTextHtml}
+          <p style="margin:20px 0 0 0;">You can activate your funding review and secure your eligibility report here:</p>
         `,
       }),
       text: `Hi ${firstName},
  
-${textBody}
+This is a final reminder that your Funding Eligibility Audit and Report are still pending activation.
+ 
+To begin your custom funding eligibility review, we require completion of the refundable $199 research deposit.
  
 ${buildReportPreviewText(subscriber)}
 
@@ -478,7 +464,7 @@ Pre-Call Funding Review Criteria:
  
 ${buildValueBoxText()}
  
-${textCta}
+Activate your review here:
 ${consultationUrl}
  
 Best regards,
@@ -489,90 +475,57 @@ ${replyToEmail}`,
   }
 
   if (stage === 'objection_3d') {
-    const subject = bookedAt 
-      ? 'Final reminder: Your audit slot is about to be released...'
-      : 'Final reminder: Your funding audit is about to be closed...';
-      
-    const bodyHtml = bookedAt
-      ? `<p style="margin:0 0 16px 0;">This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.</p>
-         <p style="margin:0 0 16px 0;">Before we close your pending file, I wanted to share answers to the three most frequent questions we receive from founders:</p>
-         
-         <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
-           <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">Are you a government agency?</p>
-           <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">No. FSI Digital is an independent private consultancy. We are not affiliated with the Government of Canada or any government department. We work on behalf of the business owner to find and stack programs.</p>
-         </div>
-
-         <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
-           <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">Can I apply by myself?</p>
-           <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Yes, you can apply directly. We are hired by founders who want to avoid filing errors, delegate administrative hours, and ensure they stack programs correctly to get the highest cash yield.</p>
-         </div>
-
-         <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
-           <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">What does the $199 deposit cover?</p>
-           <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">It pays for a custom funding eligibility review of your profile, research matches, and compiling your custom Funding Eligibility Report. It is fully refunded if no matches are found, and 100% credited if you partner with us.</p>
-         </div>`
-      : `<p style="margin:0 0 16px 0;">This is the final reminder that your pending Funding Eligibility Audit and Report is about to expire and your file will be closed.</p>
-         <p style="margin:0 0 16px 0;">Before we close your pending file, I wanted to share answers to the three most frequent questions we receive from founders:</p>
-         
-         <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
-           <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">Are you a government agency?</p>
-           <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">No. FSI Digital is an independent private consultancy. We are not affiliated with the Government of Canada or any government department. We work on behalf of the business owner to find and stack programs.</p>
-         </div>
-
-         <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
-           <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">Can I apply by myself?</p>
-           <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Yes, you can apply directly. We are hired by founders who want to avoid filing errors, delegate administrative hours, and ensure they stack programs correctly to get the highest cash yield.</p>
-         </div>
-
-         <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
-           <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">What does the $199 deposit cover?</p>
-           <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">It pays for a custom funding eligibility review of your profile, research matches, and compiling your custom Funding Eligibility Report. It is fully refunded if no matches are found, and 100% credited if you partner with us.</p>
-         </div>`;
-
-    const ctaTextHtml = bookedAt
-      ? `<p style="margin:20px 0 0 0;">If you want to keep your scheduled slot, you can complete checkout here before your reservation expires:</p>`
-      : `<p style="margin:20px 0 0 0;">If you want to activate your audit, you can complete checkout here before your file expires:</p>`;
-
-    const textBody = bookedAt
-      ? `This is the final reminder that your provisionally scheduled Funding Eligibility Audit time slot is about to expire and be released back to the public calendar.`
-      : `This is the final reminder that your pending Funding Eligibility Audit is about to expire and your file will be closed.`;
-
-    const textCta = bookedAt ? 'You can book your session here:' : 'You can secure your audit here:';
-
     return {
-      subject,
+      subject: 'Common questions before booking your Funding Eligibility Audit',
       html: baseHtml({
         firstName,
         cta: consultationUrl,
         replyToEmail,
         btnText: 'Secure Audit & Report',
-        recapHtml: recpHtml,
         body: `
-          ${bodyHtml}
+          <p style="margin:0 0 16px 0;">Your pending Funding Eligibility Audit and Report is still open in our system.</p>
+          <p style="margin:0 0 16px 0;">Before we close your pending file, I wanted to share answers to the three most frequent questions we receive from founders:</p>
+          
+          <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
+            <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">Are you a government agency?</p>
+            <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">No. FSI Digital is an independent private consultancy. We are not affiliated with the Government of Canada or any government department. We work on behalf of the business owner to find and stack programs.</p>
+          </div>
+
+          <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
+            <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">Can I apply by myself?</p>
+            <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">Yes, you can apply directly. We are hired by founders who want to avoid filing errors, delegate administrative hours, and ensure they stack programs correctly to get the highest cash yield.</p>
+          </div>
+
+          <div style="margin:20px 0;border-left:3px solid #059669;padding-left:16px;text-align:left;">
+            <p style="margin:0 0 4px 0;font-size:14px;font-weight:700;color:#0f172a;">What does the $199 deposit cover?</p>
+            <p style="margin:0;font-size:13px;color:#475569;line-height:1.5;">It pays for a custom funding eligibility review of your profile, research matches, and your personalized Funding Eligibility Report. It is fully refunded if no matches are found, and 100% credited if you partner with us.</p>
+          </div>
+
           ${buildReportPreviewHtml(subscriber)}
-          ${ctaTextHtml}
+
+          <p style="margin:20px 0 0 0;">If you want to activate your audit, you can complete checkout here before your file expires:</p>
         `,
       }),
       text: `Hi ${firstName},
-  
-${textBody}
+ 
+Your pending Funding Eligibility Audit is still open in our system.
 
-Before we close your pending file, I wanted to share answers to the three most frequent questions we receive from founders:
+Before we close your pending file, here are answers to common questions:
 
 1. Are you a government agency?
-No. FSI Digital is an independent private consultancy. We are not affiliated with the Government of Canada or any government department. We work on behalf of the business owner to find and stack programs.
+No. FSI Digital is an independent private consultancy. We are not affiliated with the Government of Canada or any government department.
 
 2. Can I apply by myself?
-Yes, you can apply directly. We are hired by founders who want to avoid filing errors, delegate administrative hours, and ensure they stack programs correctly to get the highest cash yield.
+Yes. We are hired by founders who want to avoid filing errors, delegate administrative hours, and ensure they stack programs correctly.
 
 3. What does the $199 deposit cover?
-It pays for a custom funding eligibility review of your profile, research matches, and compiling your custom Funding Eligibility Report. It is fully refunded if no matches are found, and 100% credited if you partner with us.
+A custom funding eligibility review, research matches, and your personalized Funding Eligibility Report. Fully refunded if no matches, 100% credited toward filing services.
 
 ${buildReportPreviewText(subscriber)}
 
 ${buildValueBoxText()}
   
-${textCta}
+Secure your audit here:
 ${consultationUrl}
   
 Best regards,
@@ -583,18 +536,6 @@ ${replyToEmail}`,
   }
 
   if (stage === 'final_7d') {
-    const ctaTextHtml = bookedAt
-      ? `<p style="margin:0 0 20px 0;">If you still want us to complete your custom funding eligibility review and build your Funding Eligibility Report, this is your final opportunity to lock in your slot:</p>`
-      : `<p style="margin:0 0 20px 0;">If you still want us to complete your custom funding eligibility review and build your Funding Eligibility Report, this is your final opportunity to activate your file:</p>`;
-
-    const listCtaHtml = bookedAt
-      ? `<a href="${consultationUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit slot here</a>`
-      : `<a href="${consultationUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit and Report here</a>`;
-
-    const textBody = bookedAt
-      ? `If you still want us to complete your custom funding eligibility review and build your Funding Eligibility Report, this is your final opportunity to book:`
-      : `If you still want us to complete your custom funding eligibility review and build your Funding Eligibility Report, this is your final opportunity to secure your audit:`;
-
     return {
       subject: 'Should I close your funding review file?',
       html: baseHtml({
@@ -602,11 +543,10 @@ ${replyToEmail}`,
         cta: consultationUrl,
         replyToEmail,
         btnText: 'Secure Audit & Report',
-        recapHtml: recpHtml,
         body: `
           <p style="margin:0 0 16px 0;">We haven't heard back regarding your funding review request.</p>
           <p style="margin:0 0 16px 0;">I will go ahead and close your funding review file tomorrow so our team can focus on active applicants in our queue.</p>
-          ${ctaTextHtml}
+          <p style="margin:0 0 20px 0;">If you still want us to complete your custom funding eligibility review and build your Funding Eligibility Report, this is your final opportunity to activate your file:</p>
 
           <div style="background-color:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:18px;margin:20px 0;font-size:14px;color:#475569;line-height:1.6;">
             <strong style="color:#0f172a;display:block;margin-bottom:8px;">Your Options:</strong>
@@ -614,7 +554,7 @@ ${replyToEmail}`,
               <tr>
                 <td style="vertical-align:top;width:18px;color:#2563eb;font-weight:bold;">•</td>
                 <td style="vertical-align:top;font-size:14px;color:#334155;padding-bottom:8px;">
-                  ${listCtaHtml}
+                  <a href="${consultationUrl}" target="_blank" rel="noopener noreferrer" style="color:#2563eb;text-decoration:none;font-weight:600;">Secure your Audit and Report here</a>
                 </td>
               </tr>
               <tr>
@@ -641,7 +581,7 @@ We haven't heard back regarding your funding review request.
  
 I will go ahead and close your funding review file tomorrow so our team can focus on active applicants in our queue.
  
-${textBody}
+If you still want us to activate your audit, this is your final opportunity:
 ${consultationUrl}
  
 Otherwise, I wish you the best of luck in scaling your business this year.
@@ -653,34 +593,17 @@ ${replyToEmail}`,
     };
   }
 
-  const subject = bookedAt
-    ? 'Provisional Reservation: Confirming your Funding Eligibility Audit'
-    : 'Pending: Confirming your Funding Eligibility Audit';
-
-  const bodyHtml = bookedAt
-    ? `<p style="margin:0 0 16px 0;">This is a confirmation that your selected Google Meet time slot for your Funding Eligibility Audit has been provisionally reserved.</p>
-       <p style="margin:0 0 20px 0;">To activate your reservation and compile your custom Funding Eligibility Report, please complete your research deposit within the next 60 minutes.</p>`
-    : `<p style="margin:0 0 16px 0;">This is a confirmation that your Funding Eligibility Audit and custom Funding Eligibility Report has been successfully generated and is currently pending activation.</p>
-       <p style="margin:0 0 20px 0;">To activate your profile and compile your custom Funding Eligibility Report, please complete your research deposit within the next 60 minutes.</p>`;
-
-  const ctaTextHtml = bookedAt
-    ? `<p style="margin:20px 0 0 0;">Complete your checkout here before your reservation expires to secure your session and report:</p>`
-    : `<p style="margin:20px 0 0 0;">Complete your checkout here to activate your audit and compile your report:</p>`;
-
-  const textSubject = bookedAt
-    ? `Your audit time slot is temporarily reserved. Complete your research deposit within 60 minutes to secure your session.`
-    : `Your Funding Eligibility Audit and custom Funding Eligibility Report is pending. Complete your research deposit within 60 minutes to activate your audit and report.`;
-
+  // Default stage: 'initial' — sent 30 minutes after payment page was shown
   return {
-    subject,
+    subject: 'Pending: Confirming your Funding Eligibility Audit',
     html: baseHtml({
       firstName,
       cta: consultationUrl,
       replyToEmail,
       btnText: 'Secure Audit & Report',
-      recapHtml: recpHtml,
       body: `
-        ${bodyHtml}
+        <p style="margin:0 0 16px 0;">This is a confirmation that your Funding Eligibility Audit and custom Funding Eligibility Report have been generated and are currently pending activation.</p>
+        <p style="margin:0 0 20px 0;">To activate your profile and begin compiling your personalized report, please complete your $199 refundable research deposit within the next 60 minutes.</p>
 
         ${buildReportPreviewHtml(subscriber)}
 
@@ -708,11 +631,11 @@ ${replyToEmail}`,
           </table>
         </div>
 
-        ${ctaTextHtml}
+        <p style="margin:20px 0 0 0;">Complete your checkout here to activate your audit and compile your report:</p>
       `,
     }),
     text: `Hi ${firstName},
-${textSubject}
+Your Funding Eligibility Audit and custom Funding Eligibility Report are pending activation. Complete your refundable $199 research deposit within 60 minutes to activate your audit and compile your report.
  
 ${buildReportPreviewText(subscriber)}
 

@@ -14,6 +14,8 @@ import {
 } from "lucide-react"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 import { SampleReportPreview } from "@/components/products/SampleReportPreview"
+import { caseStudiesDatabase } from "@/lib/data/case-studies"
+import { DiyComparisonTable } from "@/components/DiyComparisonTable"
 
 type CalculatorData = {
     province: string;
@@ -897,6 +899,102 @@ export function GrantCalculator() {
         setData(prev => ({ ...prev, [field]: value }));
     }
 
+    const getMatchedPrograms = (profile: CalculatorData) => {
+      const ind = profile.industry?.toLowerCase() || '';
+      const goal = profile.goal?.toLowerCase() || '';
+      const rev = profile.revenue?.toLowerCase() || '';
+      const isSmall = rev === 'pre-revenue' || rev === 'under-100k' || rev === '100k-500k';
+      const prov = profile.province?.toLowerCase() || 'on';
+      const provLabel = PROVINCE_NAMES[prov] || 'Ontario';
+
+      if (goal === 'hiring' || goal === 'training') {
+        return [
+          {
+            name: "Canada Summer Jobs (CSJ)",
+            range: isSmall ? "$10,000 - $25,000" : "$25,000 - $60,000",
+            justification: "Provides wage subsidies to hire young Canadians (15-30) for full-time summer work.",
+            category: "Wage Subsidies for New Grads & Youth"
+          },
+          {
+            name: `Canada-${provLabel} Job Grant`,
+            range: isSmall ? "$5,000 - $15,000" : "$15,000 - $45,005",
+            justification: `Direct funding to offset costs of training employees in specialized technical skills in ${provLabel}.`,
+            category: "Specialized Technical Training Programs"
+          },
+          {
+            name: "IRAP Youth Employment Program (YEP)",
+            range: isSmall ? "$20,000 - $50,500" : "$50,000 - $120,000",
+            justification: "Wage subsidies for hiring post-secondary graduates for technical or innovation projects.",
+            category: "Key Operations & Executive Hiring"
+          }
+        ];
+      }
+      if (ind === 'technology' || goal === 'research') {
+        return [
+          {
+            name: "Scientific Research & Experimental Development (SR&ED)",
+            range: isSmall ? "$25,000 - $95,000" : "$95,005 - $350,000",
+            justification: "Provides up to a 35% refundable tax credit on qualifying R&D salaries, materials, and contractors.",
+            category: "R&D Tax Credits (Scientific Research & Dev)"
+          },
+          {
+            name: "Industrial Research Assistance Program (IRAP)",
+            range: isSmall ? "$15,000 - $50,000" : "$50,050 - $150,000",
+            justification: "Offers non-repayable grants to support the development and commercialization of new products.",
+            category: "Technology Commercialization Assistance"
+          },
+          {
+            name: "Canada Digital Adoption Program (CDAP)",
+            range: "$2,400 - $15,000",
+            justification: "Provides micro-grants to adopt e-commerce or hire advisors to write digital transformation plans.",
+            category: "Digital Transformation & Software Adoption"
+          }
+        ];
+      }
+      if (ind === 'manufacturing' || goal === 'expansion_equipment') {
+        return [
+          {
+            name: "Strategic Innovation Fund (SIF)",
+            range: isSmall ? "$30,050 - $120,000" : "$120,000 - $500,000",
+            justification: "Supports large-scale investments in manufacturing facility upgrades, clean-tech, and commercialization.",
+            category: "Facility Modernization & Equipment Grants"
+          },
+          {
+            name: "CME SMART Green Program",
+            range: isSmall ? "$15,000 - $60,000" : "$60,000 - $180,000",
+            justification: "Offsets the cost of equipment upgrades that improve manufacturing productivity and efficiency.",
+            category: "Operational Productivity & Automation"
+          },
+          {
+            name: "Sustainable Canadian Agricultural Partnership (CAP)",
+            range: isSmall ? "$10,000 - $45,000" : "$45,000 - $150,000",
+            justification: "Provincial-federal funding to implement clean technologies, reduce waste, and improve resource efficiency.",
+            category: "Clean Tech & Sustainability Incentives"
+          }
+        ];
+      }
+      return [
+        {
+          name: "Canada Digital Adoption Program (CDAP)",
+          range: "$2,400 - $15,000",
+          justification: "Offsets costs of adopting e-commerce tools or upgrading software infrastructure.",
+          category: "Digital Operations & E-commerce Enablement"
+        },
+        {
+          name: "Canada Summer Jobs (CSJ) Program",
+          range: isSmall ? "$10,000 - $30,000" : "$30,000 - $75,000",
+          justification: "Funding to offset wages for hiring new employees or student workers to grow local operations.",
+          category: "Job Creation & Youth Wage Subsidies"
+        },
+        {
+          name: "CanExport SMEs Program",
+          range: isSmall ? "$15,000 - $50,000" : "$50,000 - $100,000",
+          justification: "Co-funds up to 50% of costs to expand into foreign markets (travel, translations, IP protection).",
+          category: "Market Expansion & Export Grants"
+        }
+      ];
+    };
+
     const getDeterministicCategories = (profile: CalculatorData) => {
       const ind = profile.industry?.toLowerCase() || '';
       const goal = profile.goal?.toLowerCase() || '';
@@ -1257,7 +1355,7 @@ export function GrantCalculator() {
     }
 
     return (
-        <Card className="shadow-xl border-green-100 max-w-2xl mx-auto">
+        <Card className={`shadow-xl border-green-100 mx-auto transition-all duration-300 ${step === 6 && !isSuccess ? 'max-w-6xl' : 'max-w-2xl'}`}>
             {/* Exclude header on analysis, payment, and report steps */}
             {step < 5 && (
                 <CardHeader className="text-center pb-2">
@@ -1429,456 +1527,473 @@ export function GrantCalculator() {
                 )}
 
                 {/* ═══════════════════════════════════════════════════
-                    STEP 6: MERGED RESULTS & CHECKOUT
+                    STEP 6: REPORT CHECKOUT / PAYWALL
                    ═══════════════════════════════════════════════════ */}
                 {step === 6 && !isSuccess && (
-                    <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500 py-2">
-                        {/* Trust-First Copy Notice Banner */}
-                        <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-left shadow-xs flex items-start gap-3.5">
-                          <CheckCircle className="w-5.5 h-5.5 text-emerald-600 shrink-0 mt-0.5 animate-pulse" />
-                          <div>
-                            <h4 className="font-bold text-emerald-950 text-sm sm:text-base">
-                              {data.company
-                                ? `Opportunity Identification for ${data.company}`
-                                : "Opportunities Identified"}
-                            </h4>
-                            <p className="text-emerald-800 text-xs sm:text-sm mt-1 leading-relaxed">
-                              Based on the information you provided, we identified funding categories that may be relevant to your business.
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Opportunity Preview Stack */}
-                        <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm relative mb-6">
-                            <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-5 py-4 flex items-center justify-between">
-                              <div className="flex items-center gap-2.5">
-                                <FileText className="w-5 h-5 text-emerald-400" />
-                                <span className="font-semibold text-white text-sm">Matched Opportunity Categories</span>
+                    <div className="grid md:grid-cols-12 gap-8 animate-in fade-in zoom-in-95 duration-500 py-2">
+                        {/* LEFT COLUMN: Checkout & Preview (col-span-7) */}
+                        <div className="md:col-span-7 space-y-6">
+                            {/* Trust-First Copy Notice Banner */}
+                            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-5 text-left shadow-xs flex items-start gap-3.5">
+                              <CheckCircle className="w-5.5 h-5.5 text-emerald-600 shrink-0 mt-0.5 animate-pulse" />
+                              <div>
+                                <h4 className="font-extrabold text-emerald-955 text-sm sm:text-base">
+                                  {data.company
+                                    ? `Opportunity Identification for ${data.company}`
+                                    : "Opportunities Identified"}
+                                </h4>
+                                <p className="text-emerald-800 text-xs sm:text-sm mt-1 leading-relaxed">
+                                  Based on the information you provided, we identified matching programs that fit your regional and industry profile.
+                                </p>
+                                <div className="mt-3 bg-white/90 border border-emerald-250 rounded-lg px-3 py-2.5 text-xs text-emerald-900 font-semibold flex items-center gap-2">
+                                  <span className="bg-emerald-600 text-white rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase shrink-0">Report Credit Offer</span>
+                                  <span>Purchase your report today. Upgrade to a 1-on-1 Strategy Audit within 7 days, and your report fee is 100% credited.</span>
+                                </div>
                               </div>
                             </div>
-                            <div className="px-5 py-5 space-y-4">
-                              <p className="text-xs text-slate-500">
-                                Matched via regional and industry-specific criteria. Purchase package to reveal program names, full application details, and submission guidelines.
-                              </p>
-                              {getDeterministicCategories(data).map((opp, idx) => (
-                                <div key={idx} className="border border-slate-150 rounded-xl p-4 bg-slate-50/40 flex flex-col gap-2">
-                                  <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
-                                    <div>
-                                      <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Opportunity #{idx + 1}</span>
-                                      <h5 className="font-bold text-slate-800 text-sm mt-0.5">{opp.category}</h5>
-                                    </div>
-                                    <div className="text-left sm:text-right shrink-0 mt-1 sm:mt-0">
-                                      <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded block sm:inline">Est. Potential</span>
-                                      <span className="font-black text-slate-900 block text-xs sm:text-sm mt-0.5">{opp.range}</span>
-                                    </div>
+
+                            {/* Interactive Blurred Report Preview */}
+                            <div className="border border-slate-200 rounded-2xl overflow-hidden bg-white shadow-sm relative">
+                                <div className="bg-gradient-to-r from-slate-800 to-slate-900 px-5 py-4 flex items-center justify-between">
+                                  <div className="flex items-center gap-2.5">
+                                    <FileText className="w-5 h-5 text-emerald-400" />
+                                    <span className="font-semibold text-white text-sm">Matched Programs Preview</span>
                                   </div>
-                                  <p className="text-xs text-slate-500 leading-relaxed italic">
-                                    Justification: {opp.justification}
+                                  <span className="text-[10px] bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded font-bold uppercase">Live Match</span>
+                                </div>
+                                <div className="px-5 py-5 space-y-4">
+                                  <p className="text-xs text-slate-500">
+                                    Matched via regional and industry-specific criteria. Purchase any package to reveal full submission guidelines, eligibility checklists, and timeline templates.
                                   </p>
-                                  <div className="pt-2 border-t border-slate-100 flex flex-wrap items-center justify-between gap-2 mt-1">
-                                    <div className="flex items-center gap-1.5 text-xs text-slate-500 font-semibold">
-                                      <Lock className="w-3.5 h-3.5 text-slate-400" />
-                                      <span>Program Name: <span className="font-mono text-slate-400">[Program Name Hidden]</span></span>
+                                  {getMatchedPrograms(data).map((opp, idx) => (
+                                    <div key={idx} className="border border-slate-150 rounded-xl p-4 bg-slate-50/40 flex flex-col gap-2 relative">
+                                      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2">
+                                        <div>
+                                          <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 font-mono">Match #{idx + 1}</span>
+                                          <h5 className="font-extrabold text-slate-800 text-sm mt-0.5">{opp.name}</h5>
+                                        </div>
+                                        <div className="text-left sm:text-right shrink-0 mt-1 sm:mt-0">
+                                          <span className="text-[9px] font-bold uppercase tracking-wider text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded block sm:inline">Est. Funding Range</span>
+                                          <span className="font-black text-slate-900 block text-xs sm:text-sm mt-0.5">{opp.range}</span>
+                                        </div>
+                                      </div>
+                                      <p className="text-xs text-slate-600 leading-relaxed italic">
+                                        Justification: {opp.justification}
+                                      </p>
+                                      
+                                      {/* Match details - blurred for paywall */}
+                                      <div className="mt-3 pt-3 border-t border-slate-100 grid grid-cols-2 gap-3 text-xs">
+                                        <div>
+                                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Match Fit Score</span>
+                                          <div className="flex items-center gap-1.5 font-bold text-slate-700 select-none">
+                                            <Lock className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
+                                            <span className="filter blur-[3.5px] select-none pointer-events-none">94% High Fit</span>
+                                          </div>
+                                        </div>
+                                        <div>
+                                          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Submission Complexity</span>
+                                          <div className="flex items-center gap-1.5 font-bold text-slate-750 select-none">
+                                            <span className="filter blur-[3.5px] select-none pointer-events-none">Moderate</span>
+                                          </div>
+                                        </div>
+                                      </div>
+
+                                      {/* Blurred Roadmap & Eligibility Teaser */}
+                                      <div className="mt-3 p-3 bg-slate-100/40 rounded-lg relative overflow-hidden border border-slate-100 select-none">
+                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-50/95 via-slate-50/60 to-slate-50/95 flex items-center justify-center z-10">
+                                          <div className="flex items-center gap-1 bg-white/95 border border-indigo-150 px-2.5 py-1 rounded-full shadow-xs text-[10px] font-extrabold text-indigo-700">
+                                            <Lock className="w-3 h-3 text-indigo-500" />
+                                            <span>Unlock eligibility logic, documents list &amp; timeline roadmap</span>
+                                          </div>
+                                        </div>
+                                        <div className="filter blur-[3.5px] space-y-1.5 opacity-40 text-[11px] select-none pointer-events-none">
+                                          <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-500 font-bold">✓</span>
+                                            <span>Verify company registration status in province</span>
+                                          </div>
+                                          <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-500 font-bold">✓</span>
+                                            <span>Submit technical description within 18 months</span>
+                                          </div>
+                                          <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-500 font-bold">✓</span>
+                                            <span>Step 1: Contact regional technology advisor</span>
+                                          </div>
+                                        </div>
+                                      </div>
                                     </div>
-                                    <span className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider">Locked</span>
+                                  ))}
+                                </div>
+                            </div>
+
+                            {/* "Your Analysis Includes" Checklist Card */}
+                            <div className="border border-indigo-150 rounded-2xl bg-indigo-50/10 p-5 shadow-2xs text-left">
+                              <h5 className="font-bold text-indigo-950 text-sm mb-3.5 flex items-center gap-2">
+                                <ShieldCheck className="w-4.5 h-4.5 text-indigo-600" />
+                                Your Custom Funding Analysis Includes:
+                              </h5>
+                              <ul className="space-y-3.5 text-xs sm:text-sm text-slate-800 font-medium">
+                                <li className="flex items-start gap-2.5">
+                                  <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                                  <div>
+                                    <strong>Deterministic Funding Match Rating:</strong>
+                                    <p className="text-xs text-slate-500 mt-0.5">Custom readiness assessment calculated from your business inputs.</p>
                                   </div>
-                                </div>
-                              ))}
-                            </div>
-                        </div>
-
-                        {/* "Your Analysis Includes" Checklist Card */}
-                        <div className="border border-indigo-150 rounded-2xl bg-indigo-50/10 p-5 shadow-2xs mb-6 text-left">
-                          <h5 className="font-bold text-indigo-950 text-sm mb-3.5 flex items-center gap-2">
-                            <ShieldCheck className="w-4.5 h-4.5 text-indigo-600" />
-                            Your Custom Funding Analysis Includes:
-                          </h5>
-                          <ul className="space-y-3.5 text-xs sm:text-sm text-slate-800 font-medium">
-                            <li className="flex items-start gap-2.5">
-                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                              <div>
-                                <strong>Deterministic Funding Match Rating:</strong>
-                                <p className="text-xs text-slate-500 mt-0.5">Custom readiness assessment calculated from your business inputs.</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start gap-2.5">
-                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                              <div>
-                                <strong>Specific Program Eligibility Profiles:</strong>
-                                <p className="text-xs text-slate-500 mt-0.5">Full criteria checklists for each matched grant and tax incentive.</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start gap-2.5">
-                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                              <div>
-                                <strong>Deadline & Capital Allocations:</strong>
-                                <p className="text-xs text-slate-500 mt-0.5">Active funding windows, remaining program budgets, and lock-in dates.</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start gap-2.5">
-                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                              <div>
-                                <strong>Custom Document Preparation Checklists:</strong>
-                                <p className="text-xs text-slate-500 mt-0.5">Details on which financial and technical records you need to secure.</p>
-                              </div>
-                            </li>
-                            <li className="flex items-start gap-2.5">
-                              <span className="text-emerald-600 font-bold mt-0.5">✓</span>
-                              <div>
-                                <strong>High-Risk Program Warning Flags:</strong>
-                                <p className="text-xs text-slate-500 mt-0.5">Key pitfalls to avoid to prevent rejection or post-audit clawbacks.</p>
-                              </div>
-                            </li>
-                          </ul>
-                        </div>
-
-                        {/* Trust Signals — above pricing */}
-                        <div className="mb-6 rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
-                          <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-600 font-medium">
-                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Research sourced from federal, provincial &amp; regional government databases</span>
-                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Programs updated weekly — deadlines &amp; amounts verified</span>
-                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Instant PDF access delivered to your inbox</span>
-                            <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> 7-day refund policy — no questions asked</span>
-                          </div>
-                          <div className="flex gap-3 shrink-0 text-xs font-semibold text-indigo-600">
-                            <a href="/sample-report" target="_blank" rel="noopener" className="hover:underline whitespace-nowrap">Preview sample →</a>
-                            <a href="/testimonials" target="_blank" rel="noopener" className="hover:underline whitespace-nowrap">Read reviews →</a>
-                          </div>
-                        </div>
-
-                        {/* 3-Tier Pricing Architecture */}
-                        <div className="space-y-4 mb-8">
-                            <h3 className="text-2xl font-bold text-slate-900 text-center mb-6">Unlock Funding Opportunities Identified For Your Business</h3>
-
-                            
-                            {/* Tier 1: $79 Complete Bundle (Highlighted) */}
-                            <div
-                                onClick={() => setSelectedProductId('funding-bundle')}
-                                className={`cursor-pointer border-2 rounded-xl p-5 relative overflow-hidden transition-all ${
-                                selectedProductId === 'funding-bundle'
-                                    ? 'border-indigo-600 bg-indigo-50/10 shadow-md ring-1 ring-indigo-600'
-                                    : 'border-slate-200 bg-white hover:border-slate-300'
-                                }`}
-                            >
-                                <div className="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-                                    Most Popular & Best Value
-                                </div>
-                                {selectedProductId === 'funding-bundle' && (
-                                <div className="absolute top-6 right-5 text-indigo-600">
-                                    <CheckCircle className="w-5 h-5" />
-                                </div>
-                                )}
-                                <h4 className="font-bold text-slate-900 text-lg">Complete Funding Bundle</h4>
-                                <p className="text-sm text-slate-500 mt-1">Get the report + prioritized step-by-step Action Plan + Toolkit.</p>
-                                <div className="mt-4 flex items-baseline gap-1">
-                                    <span className="text-3xl font-extrabold text-slate-900">$79</span>
-                                    <span className="text-sm text-slate-400 font-normal">one-time</span>
-                                </div>
-                                <ul className="mt-5 space-y-2.5 text-sm text-slate-700">
-                                    <li className="flex items-start gap-2 font-semibold text-indigo-900"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Everything in the Action Plan & Report</li>
-                                    <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Funding Application Toolkit (Templates)</li>
-                                    <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Funding Approval Library (Winning Examples)</li>
-                                </ul>
-                            </div>
-
-                            {/* Tier 2: $49 Action Plan */}
-                            <div
-                                onClick={() => setSelectedProductId('funding-roadmap')}
-                                className={`cursor-pointer border-2 rounded-xl p-5 relative transition-all ${
-                                selectedProductId === 'funding-roadmap'
-                                    ? 'border-emerald-500 bg-emerald-50/10 shadow-md ring-1 ring-emerald-500'
-                                    : 'border-slate-200 bg-white hover:border-slate-300'
-                                }`}
-                            >
-                                {selectedProductId === 'funding-roadmap' && (
-                                <div className="absolute top-6 right-5 text-emerald-500">
-                                    <CheckCircle className="w-5 h-5" />
-                                </div>
-                                )}
-                                <h4 className="font-bold text-slate-900 text-lg">Funding Action Plan</h4>
-                                <p className="text-sm text-slate-500 mt-1">Get a step-by-step roadmap for your matched programs.</p>
-                                <div className="mt-4 flex items-baseline gap-1">
-                                    <span className="text-3xl font-extrabold text-slate-900">$49</span>
-                                    <span className="text-sm text-slate-400 font-normal">one-time</span>
-                                </div>
-                                <ul className="mt-5 space-y-2.5 text-sm text-slate-700">
-                                    <li className="flex items-start gap-2 font-semibold text-emerald-800"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Everything in the Match Report</li>
-                                    <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Priority program ranking</li>
-                                    <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Month 1-4 timeline schedule</li>
-                                    <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Program risk warning indicators</li>
-                                </ul>
-                            </div>
-
-                            {/* Tier 3: $19 Match Report */}
-                            <div
-                                onClick={() => setSelectedProductId('funding-match-report')}
-                                className={`cursor-pointer border border-slate-200 rounded-xl p-5 relative transition-all ${
-                                selectedProductId === 'funding-match-report'
-                                    ? 'border-slate-400 bg-slate-50 shadow-sm ring-1 ring-slate-400'
-                                    : 'bg-white hover:border-slate-300'
-                                }`}
-                            >
-                                {selectedProductId === 'funding-match-report' && (
-                                <div className="absolute top-6 right-5 text-slate-500">
-                                    <CheckCircle className="w-5 h-5" />
-                                </div>
-                                )}
-                                <h4 className="font-bold text-slate-800 text-base">Basic Match Report</h4>
-                                <div className="mt-2 flex items-baseline gap-1">
-                                    <span className="text-2xl font-bold text-slate-900">$19</span>
-                                </div>
-                                <ul className="mt-4 space-y-2 text-sm text-slate-600">
-                                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Programs you qualify for</li>
-                                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Estimated funding ranges</li>
-                                    <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Required documents overview</li>
-                                </ul>
-                            </div>
-                        </div>
-
-                        {/* Package Specific Deliverables Card */}
-                        {(() => {
-                          const info = getPackageDeliverables(selectedProductId);
-                          return (
-                            <div className="border-2 border-indigo-600 rounded-xl bg-indigo-50/10 p-5 mb-8 text-left shadow-2xs">
-                              <div className="flex items-center justify-between mb-3 border-b border-indigo-150 pb-2">
-                                <span className="text-xs font-bold text-indigo-950 uppercase tracking-wider">Unlocks for Selected Tier:</span>
-                                <span className="font-extrabold text-indigo-700">{info.title} ({info.price})</span>
-                              </div>
-                              <p className="text-xs text-slate-500 mb-3 font-medium">This package unlocks the following deliverables on your dashboard:</p>
-                              <ul className="space-y-2 text-xs text-slate-700 font-medium">
-                                {info.deliverables.map((d, i) => (
-                                  <li key={i} className="flex items-start gap-2">
-                                    <span className="text-indigo-600 font-bold shrink-0">✓</span>
-                                    <div>
-                                      <strong>{d.label}:</strong> {d.desc}
-                                    </div>
-                                  </li>
-                                ))}
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                  <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                                  <div>
+                                    <strong>Specific Program Eligibility Profiles:</strong>
+                                    <p className="text-xs text-slate-500 mt-0.5">Full criteria checklists for each matched grant and tax incentive.</p>
+                                  </div>
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                  <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                                  <div>
+                                    <strong>Deadline & Capital Allocations:</strong>
+                                    <p className="text-xs text-slate-500 mt-0.5">Active funding windows, remaining program budgets, and lock-in dates.</p>
+                                  </div>
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                  <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                                  <div>
+                                    <strong>Custom Document Preparation Checklists:</strong>
+                                    <p className="text-xs text-slate-500 mt-0.5">Details on which financial and technical records you need to secure.</p>
+                                  </div>
+                                </li>
+                                <li className="flex items-start gap-2.5">
+                                  <span className="text-emerald-600 font-bold mt-0.5">✓</span>
+                                  <div>
+                                    <strong>High-Risk Program Warning Flags:</strong>
+                                    <p className="text-xs text-slate-500 mt-0.5">Key pitfalls to avoid to prevent rejection or post-audit clawbacks.</p>
+                                  </div>
+                                </li>
                               </ul>
                             </div>
-                          );
-                        })()}
 
-                        {/* Email Capture & Payment */}
-                        <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-2xl p-6 mb-8 shadow-sm">
-                            {/* Personalized Metadata Header */}
+                            {/* Trust Signals */}
+                            <div className="rounded-xl border border-slate-200 bg-slate-50/60 px-4 py-3 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+                              <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-slate-655 font-medium">
+                                <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Sourced from verified B2B databases</span>
+                                <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Weekly program updates &amp; amount checks</span>
+                                <span className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Instant PDF access delivered to your inbox</span>
+                              </div>
+                              <div className="flex gap-3 shrink-0 text-xs font-semibold text-indigo-605">
+                                <a href="/sample-report" target="_blank" rel="noopener" className="hover:underline whitespace-nowrap">Preview sample →</a>
+                              </div>
+                            </div>
+
+                            {/* 3-Tier Pricing Architecture */}
+                            <div className="space-y-4">
+                                <h3 className="text-xl font-bold text-slate-900 text-center mb-4">Select Your Analysis Tier</h3>
+                                
+                                {/* Tier 1: $79 Complete Bundle (Highlighted) */}
+                                <div
+                                    onClick={() => setSelectedProductId('funding-bundle')}
+                                    className={`cursor-pointer border-2 rounded-xl p-5 relative overflow-hidden transition-all ${
+                                    selectedProductId === 'funding-bundle'
+                                        ? 'border-indigo-600 bg-indigo-50/10 shadow-md ring-1 ring-indigo-600'
+                                        : 'border-slate-200 bg-white hover:border-slate-300'
+                                    }`}
+                                >
+                                    <div className="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                                        Most Popular & Best Value
+                                    </div>
+                                    {selectedProductId === 'funding-bundle' && (
+                                    <div className="absolute top-6 right-5 text-indigo-600">
+                                        <CheckCircle className="w-5 h-5" />
+                                    </div>
+                                    )}
+                                    <h4 className="font-bold text-slate-900 text-base">Complete Funding Bundle</h4>
+                                    <p className="text-xs text-slate-505 mt-1">Get the report + prioritized step-by-step Action Plan + Toolkit.</p>
+                                    <div className="mt-4 flex items-baseline gap-1">
+                                        <span className="text-2xl font-extrabold text-slate-900">$79</span>
+                                        <span className="text-xs text-slate-400 font-normal">one-time</span>
+                                    </div>
+                                    <ul className="mt-4 space-y-2 text-xs text-slate-700">
+                                        <li className="flex items-start gap-2 font-semibold text-indigo-900"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Everything in the Action Plan & Report</li>
+                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Funding Application Toolkit (Templates)</li>
+                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Funding Approval Library (Winning Examples)</li>
+                                    </ul>
+                                </div>
+
+                                {/* Tier 2: $49 Action Plan */}
+                                <div
+                                    onClick={() => setSelectedProductId('funding-roadmap')}
+                                    className={`cursor-pointer border-2 rounded-xl p-5 relative transition-all ${
+                                    selectedProductId === 'funding-roadmap'
+                                        ? 'border-emerald-500 bg-emerald-50/10 shadow-md ring-1 ring-emerald-500'
+                                        : 'border-slate-200 bg-white hover:border-slate-300'
+                                    }`}
+                                >
+                                    {selectedProductId === 'funding-roadmap' && (
+                                    <div className="absolute top-6 right-5 text-emerald-500">
+                                        <CheckCircle className="w-5 h-5" />
+                                    </div>
+                                    )}
+                                    <h4 className="font-bold text-slate-900 text-base">Funding Action Plan</h4>
+                                    <p className="text-xs text-slate-500 mt-1">Get a step-by-step roadmap for your matched programs.</p>
+                                    <div className="mt-4 flex items-baseline gap-1">
+                                        <span className="text-2xl font-extrabold text-slate-900">$49</span>
+                                        <span className="text-xs text-slate-400 font-normal">one-time</span>
+                                    </div>
+                                    <ul className="mt-4 space-y-2 text-xs text-slate-700">
+                                        <li className="flex items-start gap-2 font-semibold text-emerald-800"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Everything in the Match Report</li>
+                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Priority program ranking &amp; timeline schedule</li>
+                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Program risk warning indicators</li>
+                                    </ul>
+                                </div>
+
+                                {/* Tier 3: $19 Match Report */}
+                                <div
+                                    onClick={() => setSelectedProductId('funding-match-report')}
+                                    className={`cursor-pointer border border-slate-200 rounded-xl p-5 relative transition-all ${
+                                    selectedProductId === 'funding-match-report'
+                                        ? 'border-slate-400 bg-slate-50 shadow-sm ring-1 ring-slate-400'
+                                        : 'bg-white hover:border-slate-300'
+                                    }`}
+                                >
+                                    {selectedProductId === 'funding-match-report' && (
+                                    <div className="absolute top-6 right-5 text-slate-550">
+                                        <CheckCircle className="w-5 h-5" />
+                                    </div>
+                                    )}
+                                    <h4 className="font-bold text-slate-800 text-sm">Basic Match Report</h4>
+                                    <div className="mt-2 flex items-baseline gap-1">
+                                        <span className="text-xl font-bold text-slate-900">$19</span>
+                                    </div>
+                                    <ul className="mt-4 space-y-2 text-xs text-slate-650">
+                                        <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Programs you qualify for</li>
+                                        <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Estimated funding ranges</li>
+                                        <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Required documents overview</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            {/* Package Specific Deliverables Card */}
                             {(() => {
-                              const cleanField = (val: string, fallback: string) => {
-                                if (!val) return fallback;
-                                const trimmed = val.trim();
-                                const lower = trimmed.toLowerCase();
-                                if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
-                                  return fallback;
-                                }
-                                return trimmed;
-                              };
-
-                              const rawProv = cleanField(data.province, "Canada");
-                              const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
-
-                              const rawInd = cleanField(data.industry, "General Business");
-                              const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
-
-                              const companyName = cleanField(data.company, "Your Business");
-
+                              const info = getPackageDeliverables(selectedProductId);
                               return (
-                                <div className="bg-slate-800 text-white rounded-xl p-4 text-left shadow-2xs border border-slate-700 flex flex-col gap-1.5 mb-6">
-                                  <div className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Personalized Outcome Preview</div>
-                                  <div className="text-sm font-semibold">
-                                    <span className="text-slate-400">Prepared specifically for:</span> <span className="text-emerald-400">{companyName}</span>
+                                <div className="border-2 border-indigo-600 rounded-xl bg-indigo-50/10 p-5 text-left shadow-2xs">
+                                  <div className="flex items-center justify-between mb-3 border-b border-indigo-150 pb-2">
+                                    <span className="text-xs font-bold text-indigo-950 uppercase tracking-wider">Unlocks for Selected Tier:</span>
+                                    <span className="font-extrabold text-indigo-700 text-xs sm:text-sm">{info.title} ({info.price})</span>
                                   </div>
-                                  <div className="grid grid-cols-2 gap-2 text-xs text-slate-300 pt-1.5 border-t border-slate-700 mt-1">
-                                    <div>
-                                      <span className="text-slate-400">Industry:</span> {industryName}
-                                    </div>
-                                    <div>
-                                      <span className="text-slate-400">Region:</span> {provinceName}
-                                    </div>
-                                  </div>
+                                  <p className="text-xs text-slate-500 mb-3 font-medium">This package unlocks the following deliverables on your dashboard:</p>
+                                  <ul className="space-y-2 text-xs text-slate-707 font-medium">
+                                    {info.deliverables.map((d, i) => (
+                                      <li key={i} className="flex items-start gap-2">
+                                        <span className="text-indigo-600 font-bold shrink-0">✓</span>
+                                        <div>
+                                          <strong>{d.label}:</strong> {d.desc}
+                                        </div>
+                                      </li>
+                                    ))}
+                                  </ul>
                                 </div>
                               );
                             })()}
 
-                            <h4 className="font-bold text-slate-900 text-lg mb-4 text-center">Where should we send your identified opportunities?</h4>
-                            <div className="space-y-4 mb-6">
-                                <div>
-                                    <Input 
-                                        id="calc-email-for-report" 
-                                        type="email" 
-                                        placeholder="jane@yourbusiness.com" 
-                                        className="h-12 bg-white text-lg" 
-                                        value={data.email} 
-                                        onChange={(e) => {
-                                            updateData("email", e.target.value);
-                                            const el = document.getElementById('calc-email-for-report');
-                                            if (el) el.classList.remove('ring-2', 'ring-red-500');
-                                            const err = document.getElementById('email-error');
-                                            if (err) err.classList.add('hidden');
-                                        }} 
-                                        onFocus={() => {
-                                            trackEvent('calc_email_focused');
-                                        }}
-                                        required 
-                                    />
-                                    <p className="text-xs text-red-500 mt-1 hidden" id="email-error">Please enter a valid email to proceed.</p>
+                            {/* Email Capture & Payment */}
+                            <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm">
+                                {/* Personalized Metadata Header */}
+                                {(() => {
+                                  const cleanField = (val: string, fallback: string) => {
+                                    if (!val) return fallback;
+                                    const trimmed = val.trim();
+                                    const lower = trimmed.toLowerCase();
+                                    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "undefined" || lower === "null") {
+                                      return fallback;
+                                    }
+                                    return trimmed;
+                                  };
+
+                                  const rawProv = cleanField(data.province, "Canada");
+                                  const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
+
+                                  const rawInd = cleanField(data.industry, "General Business");
+                                  const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
+
+                                  const companyName = cleanField(data.company, "Your Business");
+
+                                  return (
+                                    <div className="bg-slate-800 text-white rounded-xl p-4 text-left shadow-2xs border border-slate-700 flex flex-col gap-1.5 mb-6">
+                                      <div className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Personalized Outcome Preview</div>
+                                      <div className="text-sm font-semibold">
+                                        <span className="text-slate-400">Prepared specifically for:</span> <span className="text-emerald-400">{companyName}</span>
+                                      </div>
+                                      <div className="grid grid-cols-2 gap-2 text-xs text-slate-300 pt-1.5 border-t border-slate-700 mt-1">
+                                        <div>
+                                          <span className="text-slate-400">Industry:</span> {industryName}
+                                        </div>
+                                        <div>
+                                          <span className="text-slate-400">Region:</span> {provinceName}
+                                        </div>
+                                      </div>
+                                    </div>
+                                  );
+                                })()}
+
+                                <h4 className="font-bold text-slate-900 text-base mb-4 text-center">Where should we send your custom analysis?</h4>
+                                <div className="space-y-4 mb-6">
+                                    <div>
+                                        <Input 
+                                            id="calc-email-for-report" 
+                                            type="email" 
+                                            placeholder="jane@yourbusiness.com" 
+                                            className="h-12 bg-white text-base" 
+                                            value={data.email} 
+                                            onChange={(e) => {
+                                                updateData("email", e.target.value);
+                                                const el = document.getElementById('calc-email-for-report');
+                                                if (el) el.classList.remove('ring-2', 'ring-red-500');
+                                                const err = document.getElementById('email-error');
+                                                if (err) err.classList.add('hidden');
+                                            }} 
+                                            onFocus={() => {
+                                                trackEvent('calc_email_focused');
+                                            }}
+                                            required 
+                                        />
+                                        <p className="text-xs text-red-500 mt-1 hidden" id="email-error">Please enter a valid email to proceed.</p>
+                                    </div>
+                                </div>
+                                
+                                {/* Secure Checkout Notice */}
+                                <div className="mb-4 text-center border-b border-slate-100 pb-4">
+                                    <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">Secure Checkout</h5>
+                                    <p className="text-xs text-slate-650">
+                                        Pay securely with Credit/Debit Card or PayPal.
+                                    </p>
+                                    <p className="text-xs text-indigo-700 font-bold mt-1">
+                                        No PayPal account required.
+                                    </p>
+                                </div>
+
+                                {/* What Happens Next Block */}
+                                <div className="mb-6 bg-slate-50 rounded-xl p-4 border border-slate-200 text-left">
+                                    <h5 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">What Happens Next?</h5>
+                                    <ol className="space-y-1.5 text-xs text-slate-600 font-medium">
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-indigo-600 font-bold">1.</span>
+                                            <span>Complete secure checkout</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-indigo-600 font-bold">2.</span>
+                                            <span>Unlock your matching programs instantly</span>
+                                        </li>
+                                        <li className="flex items-start gap-2">
+                                            <span className="text-indigo-600 font-bold">3.</span>
+                                            <span>Review detailed strategy timeline on your dashboard</span>
+                                        </li>
+                                    </ol>
+                                    <p className="text-[10px] text-slate-505 mt-2.5 italic">
+                                        Average access time: less than 60 seconds
+                                    </p>
+                                </div>
+
+                                {/* CTA Social Proof & Checkout Summary */}
+                                <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5 text-left">
+                                  <p className="text-xs text-slate-600 italic font-semibold mb-3">
+                                    &ldquo;Businesses similar to yours use these reports to identify grant, loan, and tax credit opportunities.&rdquo;
+                                  </p>
+                                  <div className="grid grid-cols-2 gap-3 pt-2.5 border-t border-slate-200 text-xs">
+                                    <div>
+                                      <span className="text-slate-500 block uppercase tracking-wider text-[9px] font-bold">Est. Funding Potential:</span>
+                                      <span className="font-extrabold text-slate-800 text-sm">
+                                        {estimate ? `$${estimate.toLocaleString()}` : "$25,000"} - {estimateMax ? `$${estimateMax.toLocaleString()}` : "$95,000"}
+                                      </span>
+                                    </div>
+                                    <div>
+                                      <span className="text-slate-500 block uppercase tracking-wider text-[9px] font-bold">Identified Categories:</span>
+                                      <span className="font-extrabold text-slate-800 text-sm">
+                                        3 Key Programs Matched
+                                      </span>
+                                    </div>
+                                  </div>
+                                </div>
+
+                                {renderB2BMetadataBlock()}
+
+                                <div className="min-h-[150px]">
+                                    {!sdkReady && (
+                                        <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
+                                        <Loader2 className="w-4 h-4 animate-spin" /> Loading secure checkout...
+                                        </div>
+                                    )}
+                                    {sdkReady && (
+                                        <div id="calc-paypal-button" className="w-full"></div>
+                                    )}
+                                </div>
+                                {paymentError && (
+                                    <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mt-4">
+                                    {paymentError}
+                                    </div>
+                                )}
+                                <div className="mt-4 flex items-center justify-center gap-5 text-xs text-slate-500">
+                                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-500" /> 30-Day Guarantee</span>
+                                    <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-500" /> Instant Access</span>
                                 </div>
                             </div>
-                            
-                            {/* Secure Checkout Notice */}
-                            <div className="mb-4 text-center border-b border-slate-105 pb-4">
-                                <h5 className="text-sm font-bold text-slate-800 uppercase tracking-wider mb-1">Secure Checkout</h5>
-                                <p className="text-xs text-slate-600">
-                                    Pay securely with Visa, Mastercard, American Express, Debit Card, or PayPal.
-                                </p>
-                                <p className="text-xs text-indigo-700 font-bold mt-1">
-                                    No PayPal account required.
-                                </p>
-                            </div>
+                        </div>
 
-                            {/* What Happens Next Block */}
-                            <div className="mb-6 bg-slate-50 rounded-xl p-4 border border-slate-200 text-left">
-                                <h5 className="text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">What Happens Next?</h5>
-                                <ol className="space-y-1.5 text-xs text-slate-600 font-medium">
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-indigo-600 font-bold">1.</span>
-                                        <span>Complete secure checkout</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-indigo-600 font-bold">2.</span>
-                                        <span>Unlock your funding matches instantly</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-indigo-600 font-bold">3.</span>
-                                        <span>Review priority opportunities</span>
-                                    </li>
-                                    <li className="flex items-start gap-2">
-                                        <span className="text-indigo-600 font-bold">4.</span>
-                                        <span>Download your funding report</span>
-                                    </li>
-                                </ol>
-                                <p className="text-[10px] text-slate-500 mt-2.5 italic">
-                                    Average access time: less than 60 seconds
-                                </p>
-                            </div>
-
-                            {/* CTA Social Proof & Checkout Summary */}
-                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-5 text-left">
-                              <p className="text-xs text-slate-650 italic font-semibold mb-3">
-                                &ldquo;Businesses similar to yours use these reports to identify grant, loan, and tax credit opportunities.&rdquo;
+                        {/* RIGHT COLUMN: Trust, Proof & Context (col-span-5) */}
+                        <div className="md:col-span-5 space-y-6 border-t md:border-t-0 md:border-l border-slate-200 pt-6 md:pt-0 md:pl-6">
+                            {/* Founder Authority Block */}
+                            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left shadow-2xs">
+                              <div className="flex items-center gap-3.5 mb-3 pb-3 border-b border-slate-200">
+                                <div className="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center text-emerald-600 font-extrabold text-lg shadow-2xs">
+                                  AK
+                                </div>
+                                <div>
+                                  <h4 className="font-extrabold text-sm text-slate-900 leading-tight">Ashwani Kumar</h4>
+                                  <p className="text-[10px] text-slate-505 font-medium">Founder, FSI Digital</p>
+                                </div>
+                              </div>
+                              <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider text-emerald-700 mb-1.5 flex items-center gap-1.5">
+                                <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" /> Why FSI Digital Exists
+                              </h4>
+                              <p className="text-slate-600 text-xs leading-relaxed mb-2">
+                                Finding government funding shouldn&apos;t mean wasting hundreds of hours parsing confusing listings or paying 20% success fees to expensive agencies.
                               </p>
-                              <div className="grid grid-cols-2 gap-3 pt-2.5 border-t border-slate-200 text-xs">
-                                <div>
-                                  <span className="text-slate-500 block uppercase tracking-wider text-[9px] font-bold">Est. Funding Potential:</span>
-                                  <span className="font-extrabold text-slate-800 text-sm">
-                                    {estimate ? `$${estimate.toLocaleString()}` : "$25,000"} - {estimateMax ? `$${estimateMax.toLocaleString()}` : "$95,000"}
-                                  </span>
-                                </div>
-                                <div>
-                                  <span className="text-slate-500 block uppercase tracking-wider text-[9px] font-bold">Identified Categories:</span>
-                                  <span className="font-extrabold text-slate-800 text-sm">
-                                    3 Key Categories Matched
-                                  </span>
-                                </div>
+                              <p className="text-slate-600 text-xs leading-relaxed">
+                                We package consultant-grade research into affordable, self-serve eligibility reports. Every assessment is <strong>built using FSI Digital&apos;s funding research framework and analyst review process</strong>, giving you stacking strategies without high advisory markups.
+                              </p>
+                              <div className="mt-3 flex items-center gap-4">
+                                <a href="/methodology" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-700 hover:underline">Our Methodology →</a>
                               </div>
                             </div>
 
-                            {renderB2BMetadataBlock()}
+                            {/* DIY vs FSI Digital Comparison */}
+                            <div className="space-y-2">
+                              <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider text-slate-500">How We Save You Time</h4>
+                              <DiyComparisonTable />
+                            </div>
 
-                            <div className="min-h-[150px]">
-                                {!sdkReady && (
-                                    <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
-                                    <Loader2 className="w-4 h-4 animate-spin" /> Loading secure checkout...
+                            {/* Representative Case Studies */}
+                            <div className="space-y-4 pt-2">
+                              <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider text-slate-500">Representative Client Scenarios</h4>
+                              <div className="space-y-3">
+                                {caseStudiesDatabase.filter(cs => cs.country === 'Canada').slice(0, 3).map((study) => (
+                                  <div key={study.id} className="border border-slate-200 bg-white rounded-xl p-4 shadow-2xs text-left text-xs space-y-2">
+                                    <div className="flex justify-between items-center pb-1.5 border-b border-slate-100">
+                                      <span className="font-bold text-slate-400 uppercase tracking-wider text-[8px]">{study.industry} | {study.region}</span>
+                                      <span className="font-extrabold text-emerald-750 bg-emerald-50 px-1.5 py-0.5 rounded text-[9px]">{study.totalFundingMatch} Matched</span>
                                     </div>
-                                )}
-                                {sdkReady && (
-                                    <div id="calc-paypal-button" className="w-full"></div>
-                                )}
-                            </div>
-                            {paymentError && (
-                                <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mt-4">
-                                {paymentError}
-                                </div>
-                            )}
-                            <div className="mt-4 flex items-center justify-center gap-5 text-xs text-slate-500">
-                                <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-500" /> 30-Day Guarantee</span>
-                                <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-500" /> Instant Access</span>
-                            </div>
-                        </div>
-
-                        {/* Outcome Vision */}
-                        <div className="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-6">
-                            <h4 className="font-bold text-slate-900 mb-3 text-lg">What happens after approval?</h4>
-                            <p className="text-sm text-slate-700 mb-4">Businesses typically use these programs to:</p>
-                            <ul className="space-y-3 text-sm text-slate-700 font-medium ml-1">
-                            {data.goal === 'hiring' ? (
-                                <>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Hire technical talent</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Expand sales teams</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Add project capacity</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Accelerate growth</li>
-                                </>
-                            ) : data.goal === 'expansion' ? (
-                                <>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Purchase new machinery</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Upgrade production lines</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Improve efficiency</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Reduce capital expenditure</li>
-                                </>
-                            ) : (
-                                <>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Hire staff and scale teams</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Purchase equipment and modernize</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Expand into new geographic markets</li>
-                                  <li className="flex items-center gap-2.5"><CheckCircle className="w-5 h-5 text-emerald-500"/> Reduce growth capital costs</li>
-                                </>
-                            )}
-                            </ul>
-                        </div>
-
-                        {/* Cost of Delay */}
-                        <div className="bg-rose-50 border border-rose-200 rounded-xl p-6 mb-6">
-                            <h4 className="font-bold text-rose-900 flex items-center gap-2 mb-3 text-lg">
-                                <Clock className="w-5 h-5 text-rose-600" />
-                                The Cost of Delay
-                            </h4>
-                            <p className="text-sm text-rose-800 leading-relaxed mb-3">
-                                Every month you delay is another month before you know:
-                            </p>
-                            <ul className="space-y-2 text-sm text-rose-800 font-medium ml-1 mb-5">
-                                <li className="flex items-start gap-2"><span className="text-rose-500">•</span> Which programs fit your business</li>
-                                <li className="flex items-start gap-2"><span className="text-rose-500">•</span> Which programs are currently active</li>
-                                <li className="flex items-start gap-2"><span className="text-rose-500">•</span> Which opportunities should be prioritized first</li>
-                            </ul>
-                            <p className="text-sm text-rose-900 leading-relaxed font-semibold">
-                                Most businesses never miss funding because they are ineligible. They miss funding because they discover the opportunity too late.
-                            </p>
-                        </div>
-
-                        {/* Mini FAQ */}
-                        <div className="border-t border-slate-200 pt-6 mt-6 space-y-4">
-                            <h5 className="font-bold text-slate-900 text-lg mb-4">Common Questions</h5>
-                            
-                            <div className="space-y-5">
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800">Is this government funding guaranteed?</p>
-                                    <p className="text-sm text-slate-600 mt-1">No. All government funding decisions are made solely by the respective administering agencies. FSI Digital is a research, matching, and strategy service. We identify eligible programs and help you build an action plan, but we do not guarantee funding approval.</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800">How often are programs updated?</p>
-                                    <p className="text-sm text-slate-600 mt-1">Our database is updated weekly. Deadlines, criteria, and funding amounts are verified directly against official government program pages and guidelines to ensure you have the latest information.</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800">Do I need a PayPal account to purchase?</p>
-                                    <p className="text-sm text-slate-600 mt-1">No. PayPal acts as our secure payment processor, but you can check out as a guest using any major credit card (Visa, Mastercard, American Express, or Discover) without creating an account.</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800">What happens after purchase?</p>
-                                    <p className="text-sm text-slate-600 mt-1">You will receive instant PDF delivery to your email inbox, and immediate access to your interactive online dashboard where you can view your custom matches, prioritize tasks, and stack programs.</p>
-                                </div>
-                                <div>
-                                    <p className="text-sm font-bold text-slate-800">Can I get a refund?</p>
-                                    <p className="text-sm text-slate-600 mt-1">Yes. We stand by our service. If you are not satisfied with your custom report, we offer a 7-day, no-questions-asked refund policy. Simply contact us and we will refund your purchase in full.</p>
-                                </div>
+                                    <div className="space-y-1.5 text-slate-600">
+                                      <p className="font-bold text-slate-800 text-[11px] leading-tight">{study.subtitle}</p>
+                                      <p className="leading-relaxed"><strong className="text-slate-700">Programs:</strong> {study.programsStacked.join(' + ')}</p>
+                                      <p className="leading-relaxed"><strong className="text-slate-700">Challenge:</strong> {study.challenge}</p>
+                                      <p className="leading-relaxed"><strong className="text-slate-700">Outcome:</strong> {study.solution}</p>
+                                    </div>
+                                  </div>
+                                ))}
+                              </div>
+                              <div className="text-center">
+                                <a href="/case-studies" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-slate-500 hover:text-slate-800 hover:underline">
+                                  Browse All Representative Case Studies →
+                                </a>
+                              </div>
                             </div>
                         </div>
                     </div>

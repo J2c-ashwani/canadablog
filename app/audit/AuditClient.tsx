@@ -4,6 +4,9 @@ import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { CaseStudiesSection } from '@/components/CaseStudiesSection';
+import { FounderCard } from '@/components/FounderCard';
+import { DiyComparisonTable } from '@/components/DiyComparisonTable';
 import {
   CheckCircle, ArrowRight, Shield, Lock, Clock, Star, TrendingUp,
   FileText, Phone, BadgeCheck, ChevronDown, Zap, DollarSign,
@@ -377,6 +380,10 @@ export default function AuditClient() {
                 </div>
               </div>
 
+              <div className="my-6">
+                <CaseStudiesSection limit={2} />
+              </div>
+
               {/* Revenue Ladder Context */}
               <div className="bg-slate-900 text-white rounded-2xl p-6 sm:p-8 relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
@@ -445,6 +452,11 @@ export default function AuditClient() {
                     )}
                   </div>
                 ))}
+              </div>
+
+              <div className="mt-8 space-y-6">
+                <FounderCard />
+                <DiyComparisonTable />
               </div>
 
             </div>
@@ -596,6 +608,11 @@ export default function AuditClient() {
                       </button>
                     </div>
                   )}
+
+                  {/* Report Credit toward Audit Banner */}
+                  <div className="bg-emerald-50/50 border border-emerald-200 rounded-xl p-3.5 text-xs text-emerald-800 mb-4">
+                    💡 <strong>Risk-Free Start</strong>: Buy a Funding Report today. Upgrade to an audit within 7 days, and your report purchase is 100% credited toward your audit.
+                  </div>
 
                   <div id="audit-paypal-button" className="min-h-[56px]">
                     {!sdkReady && (

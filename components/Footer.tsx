@@ -103,6 +103,9 @@ export function Footer() {
                 <Link href="/partners" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Funding Partners
                 </Link>
+                <Link href="/methodology" className="text-gray-400 hover:text-white text-sm">
+                  Research Methodology
+                </Link>
               </div>
             </div>
 

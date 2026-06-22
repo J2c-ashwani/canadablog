@@ -1,6 +1,6 @@
 # FSI Digital — Internal Link Audit Report
 
-**Run at**: 2026-06-22T05:41:56.508Z  
+**Run at**: 2026-06-22T07:42:42.047Z  
 **Base URL**: https://www.fsidigital.ca  
 
 ---

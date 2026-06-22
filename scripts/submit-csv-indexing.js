@@ -66,6 +66,66 @@ async function run() {
 
     console.log(`Found ${allUrls.length} URLs in CSV.`);
 
+    // High-priority new pages built after the June 16th CSV export
+    const newPages = [
+        // Core pages
+        "https://www.fsidigital.ca/quarterly-report",
+        "https://www.fsidigital.ca/methodology",
+        "https://www.fsidigital.ca/about-founder",
+        "https://www.fsidigital.ca/case-studies",
+        "https://www.fsidigital.ca/testimonials",
+        "https://www.fsidigital.ca/customer-success",
+
+        // 21 commercial topic pages
+        "https://www.fsidigital.ca/topics/sred-tax-credit-eligibility",
+        "https://www.fsidigital.ca/topics/irap-funding-eligibility",
+        "https://www.fsidigital.ca/topics/ontario-small-business-grants",
+        "https://www.fsidigital.ca/topics/startup-grants-canada",
+        "https://www.fsidigital.ca/topics/government-loans-small-business-canada",
+        "https://www.fsidigital.ca/topics/how-to-apply-government-grants-canada",
+        "https://www.fsidigital.ca/topics/federal-grants-small-business-canada",
+        "https://www.fsidigital.ca/topics/canada-digital-adoption-program-grant",
+        "https://www.fsidigital.ca/topics/women-entrepreneur-grants-canada",
+        "https://www.fsidigital.ca/topics/hiring-wage-subsidies-canada",
+        "https://www.fsidigital.ca/topics/export-grants-canada",
+        "https://www.fsidigital.ca/topics/clean-tech-grants-canada",
+        "https://www.fsidigital.ca/topics/bdc-small-business-loans",
+        "https://www.fsidigital.ca/topics/csbfp-loans-canada",
+        "https://www.fsidigital.ca/topics/futurpreneur-startup-funding",
+        "https://www.fsidigital.ca/topics/minority-business-grants-canada",
+        "https://www.fsidigital.ca/topics/canada-summer-jobs-wage-subsidy",
+        "https://www.fsidigital.ca/topics/alberta-innovates-grant",
+        "https://www.fsidigital.ca/topics/bc-tech-grant",
+        "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada",
+        "https://www.fsidigital.ca/topics/quebec-small-business-grants",
+
+        // 16 Partner landing pages
+        "https://www.fsidigital.ca/partners/business-loan-leads",
+        "https://www.fsidigital.ca/partners/government-grant-leads",
+        "https://www.fsidigital.ca/partners/startup-funding-leads",
+        "https://www.fsidigital.ca/partners/tax-credit-leads",
+        "https://www.fsidigital.ca/partners/sred-leads",
+        "https://www.fsidigital.ca/partners/canada-funding-leads",
+        "https://www.fsidigital.ca/partners/usa-funding-leads",
+        "https://www.fsidigital.ca/partners/merchant-cash-advance-leads",
+        "https://www.fsidigital.ca/partners/equipment-financing-leads",
+        "https://www.fsidigital.ca/partners/working-capital-leads",
+        "https://www.fsidigital.ca/partners/commercial-real-estate-leads",
+        "https://www.fsidigital.ca/partners/sbir-grant-leads",
+        "https://www.fsidigital.ca/partners/usda-grant-leads",
+        "https://www.fsidigital.ca/partners/clean-energy-grant-leads",
+        "https://www.fsidigital.ca/partners/women-owned-business-leads",
+        "https://www.fsidigital.ca/partners/nonprofit-grant-leads"
+    ];
+
+    newPages.forEach(url => {
+        if (!allUrls.includes(url)) {
+            allUrls.unshift(url); // Inject at the front so they are submitted first
+        }
+    });
+
+    console.log(`Updated queue with newly built pages. Total URLs to evaluate: ${allUrls.length}`);
+
     let history = await loadHistory();
     const urlsToSubmit = allUrls.filter(url => {
         // Skip if submitted within the last 7 days
