@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title: "Download CSBFP Application Kit | Free Templates & Checklists",
   description: "Get your free CSBFP application kit with templates, checklists, and step-by-step guides. Increase your approval chances by 73%.",
   keywords: "CSBFP application kit, Canada Small Business Financing templates, free business loan templates, CSBFP checklist",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/download/csbfp-application-kit",
+  },
 }
 
 export default function CSBFPApplicationKitDownload() {
   return (
     <>
-      <title>Get Your Free CSBFP Application Kit | FSI Digital</title>
-      <meta name="description" content="Complete application templates, checklists, and step-by-step guides used by our experts to achieve a 95% CSBFP approval rate." />
-      <link rel="canonical" href="https://www.fsidigital.ca/download/csbfp-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

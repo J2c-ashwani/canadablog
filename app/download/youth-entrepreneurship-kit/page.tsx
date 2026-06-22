@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title: "Download Youth Entrepreneurship Kit | Free CYBF & Young Entrepreneur Grant Templates Canada",
   description: "Get your free youth entrepreneurship kit with CYBF application templates, young entrepreneur funding guides, and step-by-step strategies. Increase your approval chances by 78%.",
   keywords: "youth entrepreneurship kit, CYBF application templates, young entrepreneur grant templates Canada, free youth business funding kit, Futurpreneur application guide, Canadian youth business templates",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/download/youth-entrepreneurship-kit",
+  },
 }
 
 export default function YouthEntrepreneurshipKitDownload() {
   return (
     <>
-      <title>Get Your Free Youth Entrepreneurship Kit | FSI Digital</title>
-      <meta name="description" content="Complete CYBF application templates, young entrepreneur funding strategies, and youth business development guides used by our experts to achieve a 78% a..." />
-      <link rel="canonical" href="https://www.fsidigital.ca/download/youth-entrepreneurship-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

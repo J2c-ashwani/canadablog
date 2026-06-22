@@ -45,7 +45,7 @@ function getLeadTier(body: any): "Tier A" | "Tier B" | "Tier C" {
 
 export async function POST(request: NextRequest) {
   // 1. Rate Limiting (10 requests/hour)
-  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000)
+  const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000)
   if (limitRes.isLimited) return limitRes.response
 
   try {
@@ -94,15 +94,19 @@ export async function POST(request: NextRequest) {
     const leadSource = body.source || "AI Grant Finder"
     const timestamp = new Date().toISOString()
 
-    const unsubscribeToken = crypto.randomBytes(16).toString("hex")
-    const loginToken = crypto.randomBytes(16).toString("hex")
+    const unsubscribeToken = 'v2_' + crypto.randomBytes(16).toString("hex")
+    const loginToken = 'v2_' + crypto.randomBytes(16).toString("hex")
 
     const existing = await SubscriberRepository.getSubscriberByEmail(body.email)
     let finalLoginToken = loginToken
     let finalUnsubscribeToken = unsubscribeToken
     if (existing) {
-      if (existing.loginToken) finalLoginToken = existing.loginToken
-      if (existing.unsubscribeToken) finalUnsubscribeToken = existing.unsubscribeToken
+      if (existing.loginToken && existing.loginToken.startsWith('v2_')) {
+        finalLoginToken = existing.loginToken
+      }
+      if (existing.unsubscribeToken && existing.unsubscribeToken.startsWith('v2_')) {
+        finalUnsubscribeToken = existing.unsubscribeToken
+      }
     }
 
     const tier = getLeadTier(body)

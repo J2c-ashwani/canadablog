@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { Redis } from '@upstash/redis';
 
 interface RateLimitRecord {
   count: number;
@@ -21,17 +22,58 @@ if (typeof global !== 'undefined') {
   }
 }
 
+// Initialize Upstash Redis if URL and token are configured in the environment
+let redis: Redis | null = null;
+if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+  redis = new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+  });
+}
+
 /**
  * Checks rate limiting for a given IP key.
  */
-export function rateLimit(ip: string, limit: number, windowMs: number): { success: boolean; remaining: number; reset: number } {
+export async function rateLimit(
+  ip: string,
+  limit: number,
+  windowMs: number
+): Promise<{ success: boolean; remaining: number; reset: number }> {
+  const key = `ratelimit:${ip}`;
+
+  // If Redis is configured, use it for distributed, persistent rate limiting
+  if (redis) {
+    try {
+      const count = await redis.incr(key);
+      let ttl = Math.ceil(windowMs / 1000);
+      
+      if (count === 1) {
+        await redis.expire(key, ttl);
+      } else {
+        ttl = await redis.ttl(key);
+      }
+      
+      const remaining = Math.max(0, limit - count);
+      const reset = Date.now() + (ttl > 0 ? ttl * 1000 : windowMs);
+      
+      return {
+        success: count <= limit,
+        remaining,
+        reset,
+      };
+    } catch (err) {
+      console.error('⚠️ Upstash Redis rate limiting failed, falling back to in-memory store:', err);
+      // Fall through to in-memory rate limiter below
+    }
+  }
+
+  // Fallback to In-Memory Limiter (ideal for local development/staging)
   const now = Date.now();
-  const key = `${ip}`;
-  const record = rateLimitStore.get(key);
+  const record = rateLimitStore.get(ip);
 
   if (!record) {
     const newRecord = { count: 1, resetTime: now + windowMs };
-    rateLimitStore.set(key, newRecord);
+    rateLimitStore.set(ip, newRecord);
     return { success: true, remaining: limit - 1, reset: newRecord.resetTime };
   }
 
@@ -52,9 +94,9 @@ export function rateLimit(ip: string, limit: number, windowMs: number): { succes
 /**
  * Helper to apply rate limiting in Next.js API Routes.
  */
-export function applyRateLimit(request: Request, limit: number, windowMs: number) {
+export async function applyRateLimit(request: Request, limit: number, windowMs: number) {
   const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "127.0.0.1";
-  const result = rateLimit(ip, limit, windowMs);
+  const result = await rateLimit(ip, limit, windowMs);
   
   if (!result.success) {
     return {

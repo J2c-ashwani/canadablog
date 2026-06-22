@@ -1,0 +1,406 @@
+import { Header } from "@/components/Header"
+import { Footer } from "@/components/Footer"
+import Link from "next/link"
+import type { Metadata } from "next"
+import { CheckCircle, ArrowRight, Calculator, Sparkles, Download, AlertCircle, Clock, DollarSign, Users, FileText } from "lucide-react"
+
+export const metadata: Metadata = {
+  title: "Manufacturing Grants Canada Guide 2026 | FSI Digital",
+  description: "Explore government grants for manufacturing in Canada. Learn about EODF, SWOF, SIF, and capital expenditure funding offsets.",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada",
+  },
+  robots: { index: true, follow: true },
+}
+
+export default function ManufacturingGrantsPage() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada#webpage",
+        "url": "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada",
+        "name": "Manufacturing Grants Canada Guide 2026",
+        "description": "Explore government grants for manufacturing in Canada. EODF, SWOF, SIF, and capital expenditure funding offsets.",
+        "breadcrumb": {
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fsidigital.ca" },
+            { "@type": "ListItem", "position": 2, "name": "Topics", "item": "https://www.fsidigital.ca/topics" },
+            { "@type": "ListItem", "position": 3, "name": "Manufacturing Grants", "item": "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada" }
+          ]
+        }
+      },
+      {
+        "@type": "HowTo",
+        "@id": "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada#howto",
+        "name": "How to Apply for Manufacturing Grants in Canada",
+        "description": "Step-by-step process to prepare and submit an application for Canadian manufacturing grants.",
+        "step": [
+          {
+            "@type": "HowToStep",
+            "position": 1,
+            "name": "Prepare Capital Investment Plan",
+            "text": "Draft a comprehensive capital investment roadmap detailing machinery purchases, facility upgrades, and estimated costs."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 2,
+            "name": "Assess Economic & Job Impact",
+            "text": "Calculate the number of full-time equivalent (FTE) jobs your project will create or retain in Canada."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 3,
+            "name": "Secure Co-Funding Matching Balance",
+            "text": "Prove that your business possesses the matching capital (often 50% to 85% of total project costs) through bank logs or financing commitments."
+          },
+          {
+            "@type": "HowToStep",
+            "position": 4,
+            "name": "Submit Proposal to Ministry",
+            "text": "Submit your detailed application to the provincial ministry or federal delivery agency (e.g. SIF portal) and await review."
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.fsidigital.ca/topics/government-grants-for-manufacturing-canada#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What grants are available for Canadian manufacturers?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Manufacturers can access several programs, including the federal Strategic Innovation Fund (SIF), regional development programs (like EODF and SWOF in Ontario), NRC IRAP for technical innovations, and the SR&ED tax credit."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the Strategic Innovation Fund (SIF)?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "SIF is a large-scale federal program providing repayable and non-repayable contributions to support industrial innovation, facility scaling, and green technology adoption. It typically targets projects with budgets over $10 million."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do manufacturing grants require matching funds?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, almost all manufacturing programs operate on a co-funding basis. Programs typically cover 15% to 50% of eligible project costs, meaning you must provide the remaining balance."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I get funding for purchasing advanced machinery?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, regional development funds and programs like the Ontario Together Fund have supported advanced manufacturing equipment and facility automation upgrades."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the average timeline for manufacturing grant approvals?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Because manufacturing projects involve large capital outlays and complex job metrics, approval timelines typically range from 3 to 6 months."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I stack manufacturing grants with tax credits?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. You can stack provincial development grants with the federal SR&ED program, but you must deduct the direct grants from your eligible SR&ED expenditures."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do I have to guarantee job creation to receive a grant?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Many manufacturing expansion programs require committing to specific job creation or retention targets, which are audited annually during the repayment or monitoring phase."
+            }
+          }
+        ]
+      }
+    ]
+  }
+
+  return (
+    <div className="min-h-screen bg-slate-50 text-slate-900 font-sans">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <Header />
+
+      {/* Hero Section */}
+      <section className="bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 text-white py-16 sm:py-24 relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_30%,rgba(100,116,139,0.1),transparent)]" />
+        <div className="container mx-auto px-4 max-w-6xl relative z-10">
+          <div className="max-w-3xl">
+            <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-bold bg-slate-500/10 border border-slate-400/20 text-slate-300 mb-6 uppercase tracking-wider">
+              Industrial Expansion & Capital Funding
+            </span>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-white mb-6 leading-tight">
+              Government Grants for Manufacturing in Canada
+            </h1>
+            <p className="text-lg sm:text-xl text-slate-300 mb-8 leading-relaxed">
+              Scale your plant and automate operations. Discover provincial expansion funds, advanced machinery offsets, and federal innovation grants designed to accelerate Canadian industrial output.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="#manufacturing-grants"
+                className="bg-slate-700 hover:bg-slate-600 text-white font-bold px-6 py-3 rounded-xl transition-all shadow-md inline-flex items-center gap-2 hover:scale-[1.02]"
+              >
+                Explore Industrial Grants <ArrowRight className="w-4 h-4" />
+              </Link>
+              <Link
+                href="/calculator"
+                className="bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700/60 font-semibold px-6 py-3 rounded-xl transition-all inline-flex items-center gap-2"
+              >
+                <Calculator className="w-4 h-4 text-slate-400" /> Estimate Your Claim
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Stats Grid */}
+      <section className="py-12 bg-white border-y border-slate-200">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="border-l-4 border-slate-600 pl-4 py-2">
+              <span className="block text-3xl font-extrabold text-slate-900">Up to 15%–50%</span>
+              <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider block mt-1">Capital Expenditure Offset</span>
+            </div>
+            <div className="border-l-4 border-slate-600 pl-4 py-2">
+              <span className="block text-3xl font-extrabold text-slate-900">$25K–$1M</span>
+              <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider block mt-1">EODF/SWOF Grant Limits</span>
+            </div>
+            <div className="border-l-4 border-slate-600 pl-4 py-2">
+              <span className="block text-3xl font-extrabold text-slate-900">SIF Program</span>
+              <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider block mt-1">Large Scale Scale-Up</span>
+            </div>
+            <div className="border-l-4 border-slate-600 pl-4 py-2">
+              <span className="block text-3xl font-extrabold text-slate-900">Job Growth</span>
+              <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider block mt-1">Key Approval Criteria</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Content */}
+      <main className="py-16">
+        <div className="container mx-auto px-4 max-w-6xl">
+          <div className="grid lg:grid-cols-12 gap-12">
+            
+            {/* Detailed Content */}
+            <article className="lg:col-span-8 space-y-12">
+              
+              <section className="prose prose-slate max-w-none">
+                <p className="text-lg leading-relaxed text-slate-700">
+                  Manufacturing is the engine of the Canadian economy. To support local production, increase productivity, and compete globally, Canadian governments offer generous **capital expansion grants, advanced equipment offsets, and workforce training subsidies**. 
+                </p>
+                <p className="text-lg leading-relaxed text-slate-700 mt-4">
+                  These programs focus on key industrial objectives: accelerating facility automation, integrating advanced technologies (such as robotics and IoT systems), reducing greenhouse gas emissions, and creating long-term, high-paying jobs in Canada.
+                </p>
+              </section>
+
+              {/* Core Programs */}
+              <section id="manufacturing-grants" className="space-y-6">
+                <h2 className="text-3xl font-extrabold text-slate-950 tracking-tight">Active Manufacturing Programs</h2>
+                
+                <div className="space-y-6">
+                  {/* SIF */}
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow space-y-3">
+                    <div className="flex justify-between items-start gap-4">
+                      <h3 className="font-bold text-slate-950 text-lg">Strategic Innovation Fund (SIF)</h3>
+                      <span className="px-2.5 py-1 rounded bg-slate-50 text-slate-700 text-xs font-bold shrink-0">Scale Projects</span>
+                    </div>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                      A massive federal program supporting large-scale industrial projects. It co-funds up to 50% of eligible costs to support facility construction, clean technology adoption, and industrial scale-up. It typically targets projects with budgets over $10 million.
+                    </p>
+                  </div>
+
+                  {/* EODF / SWOF */}
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6 hover:shadow-md transition-shadow space-y-3">
+                    <div className="flex justify-between items-start gap-4">
+                      <h3 className="font-bold text-slate-950 text-lg">Eastern & Southwestern Ontario Development Funds</h3>
+                      <span className="px-2.5 py-1 rounded bg-slate-50 text-slate-700 text-xs font-bold shrink-0">$25K–$1M</span>
+                    </div>
+                    <p className="text-slate-600 text-xs sm:text-sm leading-relaxed">
+                      These regional funds support manufacturing growth and automation in Ontario. They offer up to a 15% co-funding offset for equipment purchase and facility expansion, provided projects create jobs and invest minimum capital sums.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Step-by-Step Guide */}
+              <section className="space-y-6">
+                <h2 className="text-2xl font-bold text-slate-950 tracking-tight">How to Apply for Manufacturing Grants</h2>
+                <div className="relative border-l-2 border-slate-200 pl-6 ml-3 space-y-8">
+                  <div className="relative">
+                    <div className="absolute -left-[31px] top-0.5 w-4.5 h-4.5 rounded-full bg-slate-600 border-4 border-white shadow-sm"></div>
+                    <h3 className="font-bold text-slate-950 text-base sm:text-lg">1. Outline Capital Expenditures</h3>
+                    <p className="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed">
+                      Draft a comprehensive investment blueprint detailing machinery purchases, facility expansions, software integrations, and engineering labor costs.
+                    </p>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute -left-[31px] top-0.5 w-4.5 h-4.5 rounded-full bg-slate-600 border-4 border-white shadow-sm"></div>
+                    <h3 className="font-bold text-slate-950 text-base sm:text-lg">2. Project Employment and GDP Growth</h3>
+                    <p className="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed">
+                      Calculate the job creation and retention metrics resulting from your investment. Government reviewers prioritize projects that generate direct employment benefits in local communities.
+                    </p>
+                  </div>
+
+                  <div className="relative">
+                    <div className="absolute -left-[31px] top-0.5 w-4.5 h-4.5 rounded-full bg-slate-600 border-4 border-white shadow-sm"></div>
+                    <h3 className="font-bold text-slate-950 text-base sm:text-lg">3. Submit Detailed Application</h3>
+                    <p className="text-slate-600 text-xs sm:text-sm mt-1 leading-relaxed">
+                      Compile your business forecasts, financial audits, and project plans, and submit them through the provincial ministry or federal SIF portal.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* FAQs */}
+              <section className="space-y-6">
+                <h2 className="text-2xl font-bold text-slate-950 tracking-tight">Frequently Asked Questions</h2>
+                <div className="space-y-4">
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">What grants are available for Canadian manufacturers?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Manufacturers can access several programs, including the federal Strategic Innovation Fund (SIF), regional development programs (like EODF and SWOF in Ontario), NRC IRAP for technical innovations, and the SR&ED tax credit.
+                    </p>
+                  </div>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">What is the Strategic Innovation Fund (SIF)?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      SIF is a large-scale federal program providing repayable and non-repayable contributions to support industrial innovation, facility scaling, and green technology adoption. It typically targets projects with budgets over $10 million.
+                    </p>
+                  </div>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">Do manufacturing grants require matching funds?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Yes, almost all manufacturing programs operate on a co-funding basis. Programs typically cover 15% to 50% of eligible project costs, meaning you must provide the remaining balance.
+                    </p>
+                  </div>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">Can I get funding for purchasing advanced machinery?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Yes, regional development funds and programs like the Ontario Together Fund have supported advanced manufacturing equipment and facility automation upgrades.
+                    </p>
+                  </div>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">What is the average timeline for manufacturing grant approvals?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Because manufacturing projects involve large capital outlays and complex job metrics, approval timelines typically range from 3 to 6 months.
+                    </p>
+                  </div>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">Can I stack manufacturing grants with tax credits?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Yes. You can stack provincial development grants with the federal SR&ED program, but you must deduct the direct grants from your eligible SR&ED expenditures.
+                    </p>
+                  </div>
+                  <div className="bg-white border border-slate-200 rounded-2xl p-6">
+                    <h3 className="font-bold text-slate-950 mb-2">Do I have to guarantee job creation to receive a grant?</h3>
+                    <p className="text-slate-600 text-sm leading-relaxed">
+                      Many manufacturing expansion programs require committing to specific job creation or retention targets, which are audited annually during the repayment or monitoring phase.
+                    </p>
+                  </div>
+                </div>
+              </section>
+
+              {/* Related Programs & Topics (Mesh) */}
+              <div className="border-t border-slate-200 pt-8 mt-12 space-y-6">
+                <div>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Programs</span>
+                  <div className="flex flex-wrap gap-2.5">
+                    <Link href="/programs/sred-tax-credit" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">SR&ED Tax Credit</Link>
+                    <Link href="/programs/irap-grant" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">IRAP Wage Subsidy</Link>
+                  </div>
+                </div>
+                <div>
+                  <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Topics</span>
+                  <div className="grid sm:grid-cols-2 gap-4">
+                    <Link href="/topics/ontario-small-business-grants" className="group p-4 bg-white border border-slate-200 rounded-xl hover:border-slate-350 transition-colors">
+                      <h4 className="font-bold text-slate-900 group-hover:text-red-700 text-sm inline-flex items-center gap-1">Ontario Small Business Grants <ArrowRight className="w-3 h-3" /></h4>
+                      <p className="text-slate-500 text-xs mt-1">Review active, matching provincial funding programs specifically for Ontario.</p>
+                    </Link>
+                    <Link href="/topics/government-loans-small-business-canada" className="group p-4 bg-white border border-slate-200 rounded-xl hover:border-slate-350 transition-colors">
+                      <h4 className="font-bold text-slate-900 group-hover:text-amber-700 text-sm inline-flex items-center gap-1">Government Loans Guide <ArrowRight className="w-3 h-3" /></h4>
+                      <p className="text-slate-500 text-xs mt-1">Review CSBFP and BDC repayable loan options to bridge matching project balances.</p>
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+            </article>
+
+            {/* Right Column - Premium Sticky CTAs */}
+            <aside className="lg:col-span-4 space-y-6">
+              <div className="lg:sticky lg:top-8 space-y-6">
+                
+                {/* CTA 1: Calculator */}
+                <div className="bg-gradient-to-br from-slate-900 to-slate-950 text-white rounded-3xl p-6 border border-slate-800 shadow-md">
+                  <Calculator className="w-8 h-8 text-slate-400 mb-4" />
+                  <h3 className="text-lg font-bold text-white mb-2">Estimate Your Plant Return</h3>
+                  <p className="text-slate-200 text-xs leading-relaxed mb-6">
+                    Our free, interactive Canadian R&D calculator outputs real-time estimates of federal wage subsidies and provincial manufacturing tax credits.
+                  </p>
+                  <Link
+                    href="/calculator"
+                    className="w-full bg-slate-700 hover:bg-slate-600 text-white text-center font-bold py-3 rounded-xl transition-all block text-sm"
+                  >
+                    Launch Funding Calculator
+                  </Link>
+                </div>
+
+                {/* CTA 2: AI Finder */}
+                <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
+                  <Sparkles className="w-8 h-8 text-slate-600 mb-4" />
+                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 800+ Grants</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-6">
+                    Connect with our proprietary AI Funding Finder. Match your business coordinates to active regional, provincial, and national grant programs in seconds.
+                  </p>
+                  <Link
+                    href="/grant-finder"
+                    className="w-full bg-slate-950 hover:bg-slate-900 text-white text-center font-bold py-3 rounded-xl transition-all block text-sm"
+                  >
+                    Find Additional Grants
+                  </Link>
+                </div>
+
+                {/* CTA 3: PDF Download */}
+                <div className="bg-slate-50 rounded-3xl p-6 border border-slate-200/60 text-center">
+                  <Download className="w-8 h-8 text-slate-600 mx-auto mb-4" />
+                  <h3 className="text-lg font-bold text-slate-950 mb-1">Download SIF Claims Kit</h3>
+                  <p className="text-slate-500 text-xs leading-relaxed mb-6">
+                    Complete package including application worksheets, program guidelines, and capital expenditure templates.
+                  </p>
+                  <Link
+                    href="/download/sif-application-kit"
+                    className="w-full bg-white hover:bg-slate-100 text-slate-800 border border-slate-300 text-center font-bold py-3 rounded-xl transition-all block text-sm"
+                  >
+                    Download Claims Kit (PDF)
+                  </Link>
+                </div>
+
+              </div>
+            </aside>
+
+          </div>
+        </div>
+      </main>
+
+      <Footer />
+    </div>
+  )
+}

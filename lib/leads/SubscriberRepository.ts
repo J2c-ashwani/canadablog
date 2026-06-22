@@ -75,11 +75,23 @@ export interface ISubscriberRepository {
 
 export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   private generateToken(): string {
-    return crypto.randomBytes(16).toString("hex")
+    return "v2_" + crypto.randomBytes(16).toString("hex")
   }
 
   private mapLeadToSubscriber(lead: any): SubscriberProfile {
     const interestsRaw = lead.fundingInterests || []
+    
+    const tokenSalt = process.env.SESSION_TOKEN_SALT || 'fsi-login-token-2026';
+    const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT || 'fsi-salt-2026';
+
+    const getFallbackUnsubscribeToken = (email: string) => {
+      return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + unsubscribeSalt).digest("hex").slice(0, 32);
+    };
+
+    const getFallbackLoginToken = (email: string) => {
+      return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + tokenSalt).digest("hex").slice(0, 32);
+    };
+
     return {
       email: lead.email,
       name: lead.name || "",
@@ -89,12 +101,12 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       companySize: (lead.companySize || "1-9") as any,
       fundingInterests: interestsRaw as any[],
       isSubscribed: lead.isSubscribed !== false,
-      unsubscribeToken: lead.unsubscribeToken || (lead.email ? crypto.createHash("sha256").update(lead.email.toLowerCase().trim() + "fsi-salt-2026").digest("hex").slice(0, 32) : this.generateToken()),
+      unsubscribeToken: lead.unsubscribeToken || (lead.email ? getFallbackUnsubscribeToken(lead.email) : this.generateToken()),
       engagementScore: lead.engagementScore !== undefined ? Number(lead.engagementScore) : 100,
       lastOpenedAt: lead.lastOpenedAt || undefined,
       lastClickedAt: lead.lastClickedAt || undefined,
       timestamp: lead.timestamp,
-      loginToken: lead.loginToken || (lead.email ? crypto.createHash("sha256").update(lead.email.toLowerCase().trim() + "fsi-login-token-2026").digest("hex").slice(0, 32) : this.generateToken()),
+      loginToken: lead.loginToken || (lead.email ? getFallbackLoginToken(lead.email) : this.generateToken()),
       subscriptionStatus: lead.subscriptionStatus || "inactive",
       subscriptionId: lead.subscriptionId || "",
       trialStartedAt: lead.trialStartedAt || "",
@@ -312,12 +324,17 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   }
 
   async unsubscribe(token: string): Promise<{ success: boolean; error?: any }> {
+    if (!token || !token.startsWith('v2_')) {
+      return { success: false, error: "Legacy or invalid unsubscribe token" }
+    }
+
     try {
+      const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT || 'fsi-salt-2026';
       const allLeads = await getLeadsFromSheet(1000)
       const found = allLeads.find((l: any) => {
         if (l.unsubscribeToken === token) return true
         if (!l.unsubscribeToken && l.email) {
-          const deterministic = crypto.createHash("sha256").update(l.email.toLowerCase().trim() + "fsi-salt-2026").digest("hex").slice(0, 32)
+          const deterministic = 'v2_' + crypto.createHash("sha256").update(l.email.toLowerCase().trim() + unsubscribeSalt).digest("hex").slice(0, 32)
           return deterministic === token
         }
         return false

@@ -14,20 +14,35 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Missing token parameter' }, { status: 400 });
     }
 
+    if (!token.startsWith('v2_')) {
+      return NextResponse.json({ error: 'Legacy token version is deprecated. Please request a new link.' }, { status: 400 });
+    }
+
     // Read leads from sheets database
     const leads = await getLeadsFromSheet(2000);
+
+    const tokenSalt = process.env.SESSION_TOKEN_SALT;
+    const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT;
+    const isProduction = process.env.NODE_ENV === 'production';
+
+    if (isProduction && (!tokenSalt || !unsubscribeSalt)) {
+      throw new Error('❌ Critical: SESSION_TOKEN_SALT or SESSION_UNSUBSCRIBE_SALT environment variable is missing in production!');
+    }
+
+    const defaultTokenSalt = tokenSalt || 'fsi-login-token-2026';
+    const defaultUnsubscribeSalt = unsubscribeSalt || 'fsi-salt-2026';
 
     // Securely find the lead by token (including deterministic fallbacks for older leads)
     const lead = leads.find((l) => {
       if (!l.email) return false;
-      const deterministicLoginToken = crypto
+      const deterministicLoginToken = 'v2_' + crypto
         .createHash('sha256')
-        .update(l.email.toLowerCase().trim() + 'fsi-login-token-2026')
+        .update(l.email.toLowerCase().trim() + defaultTokenSalt)
         .digest('hex')
         .slice(0, 32);
-      const deterministicUnsubscribeToken = crypto
+      const deterministicUnsubscribeToken = 'v2_' + crypto
         .createHash('sha256')
-        .update(l.email.toLowerCase().trim() + 'fsi-salt-2026')
+        .update(l.email.toLowerCase().trim() + defaultUnsubscribeSalt)
         .digest('hex')
         .slice(0, 32);
 

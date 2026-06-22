@@ -80,7 +80,10 @@ export type LeadCaptureData = {
 
 export type LeadIntelligence = {
   score: number;
+  qualificationScore: number;
+  intentScore: number;
   tier: LeadTier;
+  leadType: string;
   estimatedValue: string;
   buyerSegment: string;
   routing: string;
@@ -145,31 +148,72 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   const isVerified = data.emailVerified === 'Yes' || data.emailVerified === 'true' || (data as any).emailVerified === true;
   
   const combined = `${source} ${notes} ${data.businessDescription || ''} ${industry} ${purpose} ${timeline}`.toLowerCase();
+
+  // 1. Determine Lead Type
+  let leadType = 'Other';
+  const srcLower = source.toLowerCase();
   
-  let score = 0;
-
-  // Base Profile Completeness
-  if (hasValue(email)) score += 10;
-  else missingFields.push('email');
-
-  if (hasValue(phone)) score += 10;
-  else missingFields.push('phone');
-
-  if (hasValue(name) || hasValue(company)) score += 10;
-  else missingFields.push('company/name');
-
-  // B2B Scoring Rules
-  // 1. Industry
-  const indLower = industry.toLowerCase();
-  if (indLower.includes('artificial intelligence') || indLower.includes('ai')) {
-    score += 15;
-  } else if (indLower.includes('technology') || indLower.includes('clean tech') || indLower.includes('cleantech')) {
-    score += 10;
-  } else if (indLower.includes('manufacturing')) {
-    score += 10;
+  if (srcLower.includes('newsletter')) {
+    leadType = 'Newsletter';
+  } else if (srcLower.includes('pdf download') || srcLower.includes('lead magnet') || srcLower.includes('alerts registration') || srcLower.includes('guide')) {
+    leadType = 'Lead Magnet';
+  } else if (srcLower.includes('calculator') || srcLower.includes('grant calculator')) {
+    leadType = 'Calculator';
+  } else if (srcLower.includes('ai grant finder') || srcLower.includes('ai finder')) {
+    leadType = 'AI Finder';
+  } else if (srcLower.includes('contact form')) {
+    leadType = 'Contact Form';
+  } else if (srcLower.includes('audit') || srcLower.includes('strategy session') || srcLower.includes('purchase') || srcLower.includes('checkout')) {
+    leadType = 'Audit Prospect';
   }
 
-  // 2. Revenue / Business Stage
+  // 2. Newsletter Bypass (Tier D - Unqualified nurture, not scored)
+  if (leadType === 'Newsletter') {
+    return {
+      score: 0,
+      qualificationScore: 0,
+      intentScore: 0,
+      tier: 'D',
+      leadType,
+      estimatedValue: '$0-$20 nurture/newsletter lead',
+      buyerSegment: 'General grant consultant',
+      routing: 'Newsletter Nurture',
+      consentStatus: data.consentToPartnerContact ? 'partner-consent' : hasValue(data.consentVersion) ? 'internal-only' : 'unknown',
+      missingFields: [],
+      qualificationNotes: 'Unqualified newsletter subscriber. Routed to nurture campaign.',
+    };
+  }
+  
+  // 3. Calculate Business Qualification Score (0-100)
+  let qualificationScore = 0;
+
+  // Base Profile Completeness
+  if (hasValue(email)) qualificationScore += 10;
+  else missingFields.push('email');
+
+  // Phone is structurally absent in 'AI Grant Finder' (skip phone completeness deductions/penalties for it)
+  const isPhoneOptional = leadType === 'AI Finder';
+  if (hasValue(phone) || isPhoneOptional) {
+    qualificationScore += 10;
+  } else {
+    missingFields.push('phone');
+  }
+
+  if (hasValue(name) || hasValue(company)) qualificationScore += 10;
+  else missingFields.push('company/name');
+
+  // B2B Qualification Rules
+  // A. Industry
+  const indLower = industry.toLowerCase();
+  if (indLower.includes('artificial intelligence') || indLower.includes('ai')) {
+    qualificationScore += 15;
+  } else if (indLower.includes('technology') || indLower.includes('clean tech') || indLower.includes('cleantech')) {
+    qualificationScore += 10;
+  } else if (indLower.includes('manufacturing')) {
+    qualificationScore += 10;
+  }
+
+  // B. Revenue / Business Stage
   const stageLower = stage.toLowerCase();
   const revLower = revenue.toLowerCase();
   const hasHighRevenue = revLower.includes('$500k') || 
@@ -182,10 +226,10 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
                          stageLower.includes('$10m+');
                          
   if (hasHighRevenue) {
-    score += 10;
+    qualificationScore += 10;
   }
 
-  // 3. Employees
+  // C. Employees
   const empLower = employees.toLowerCase();
   const hasEmployees = empLower.includes('6–20') || 
                        empLower.includes('21–100') || 
@@ -193,10 +237,10 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
                        empLower.includes('1-5') || 
                        parseInt(empLower.replace(/[^0-9]/g, '')) > 5;
   if (hasEmployees) {
-    score += 10;
+    qualificationScore += 10;
   }
 
-  // 4. Funding Need
+  // D. Funding Need
   const amtLower = amountStr.toLowerCase();
   const hasHugeNeed = amtLower.includes('$500k') || 
                       amtLower.includes('over $1m') || 
@@ -206,45 +250,84 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
                         amtLower.includes('$250k');
                         
   if (hasHugeNeed) {
-    score += 25;
+    qualificationScore += 25;
   } else if (hasMediumNeed) {
-    score += 15;
+    qualificationScore += 15;
   } else if (amtLower.includes('$25k') || amtLower.includes('under')) {
-    score += 5;
+    qualificationScore += 5;
   }
 
-  // 5. Timeline
+  // E. Timeline
   const timeLower = timeline.toLowerCase();
   if (timeLower.includes('immediately') || timeLower.includes('30 days')) {
-    score += 10;
+    qualificationScore += 10;
   }
 
-  // 6. Email Verified
+  // F. Email Verified
   if (isVerified) {
-    score += 5;
+    qualificationScore += 5;
   }
 
-  // 7. Intent deductions
+  // G. Intent deductions
   const hasEducationalIntent = timeLower.includes('exploring') || 
                                combined.includes('just researching') || 
                                combined.includes('learning') || 
                                combined.includes('education only') ||
                                stageLower.includes('idea') ||
-                               purpose.toLowerCase().includes('other') && combined.includes('student');
+                               (purpose.toLowerCase().includes('other') && combined.includes('student'));
   if (hasEducationalIntent) {
-    score -= 30;
+    qualificationScore -= 30;
   }
 
+  qualificationScore = Math.max(0, Math.min(100, qualificationScore));
+
+  // 4. Calculate Intent Score (0-100)
+  let intentScore = 0;
+
   // Source weightings
-  if (includesAny(source, ['ai grant finder'])) score += 12;
-  if (includesAny(source, ['grant calculator'])) score += 18;
-  if (includesAny(source, ['newsletter'])) score -= 35;
-  if (includesAny(source, ['pdf download'])) score -= 8;
+  if (leadType === 'AI Finder') intentScore += 12;
+  if (leadType === 'Calculator') intentScore += 18;
+  if (leadType === 'Contact Form') intentScore += 15;
+  if (leadType === 'Lead Magnet') intentScore -= 8;
 
-  score = Math.max(0, Math.min(100, score));
+  // Safe-parse lead activity JSON
+  let activity: any = {};
+  try {
+    if (data.leadActivity && data.leadActivity !== 'N/A' && data.leadActivity !== '{}') {
+      activity = JSON.parse(data.leadActivity);
+    }
+  } catch (e) {
+    // Ignore JSON parse errors
+  }
 
-  // Tiers (A: 85+, B: 50-84, C: <50)
-  const tier: LeadTier = score >= 85 ? 'A' : score >= 50 ? 'B' : 'C';
+  // Behavioral Intent Milestones
+  // Calculator Funnel Progress
+  if (activity.calculatorCompletedAt) intentScore += 10; // Reached Step 6
+  if (activity.paywallViewedAt) intentScore += 10; // Viewed Pricing
+  if (activity.checkoutStartedAt) intentScore += 15; // Started Checkout
+
+  // Audit Funnel Progress
+  if (activity.auditCtaClickedAt) intentScore += 10; // Visited Audit Page
+  if (activity.previewViewed === true) intentScore += 10; // Viewed Personalized Preview
+  if (activity.previewCtaClicked === true) intentScore += 15; // Clicked Unlock Analysis
+  if (activity.checkoutStartedAt && (includesAny(source, ['audit', 'strategy']) || activity.auditCtaClickedAt)) {
+    intentScore += 20; // Started PayPal checkout
+  }
+
+  intentScore = Math.max(0, Math.min(100, intentScore));
+
+  // Combined score (capped at 100)
+  const score = Math.max(0, Math.min(100, qualificationScore + intentScore));
+
+  // Multi-dimensional Tiers (A: Qual >= 60 && Intent >= 20, B: Qual >= 40 && Intent >= 10, C: Fallback, D: Newsletter)
+  const qualThreshold = parseInt(process.env.TIER_A_THRESHOLD || '60', 10);
+  
+  let tier: LeadTier = 'C';
+  if (qualificationScore >= qualThreshold && intentScore >= 20) {
+    tier = 'A';
+  } else if (qualificationScore >= 40 && intentScore >= 10) {
+    tier = 'B';
+  }
 
   const estimatedValue =
     tier === 'A' ? '$50-$125 exclusive B2B lead' :
@@ -270,7 +353,10 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
 
   return {
     score,
+    qualificationScore,
+    intentScore,
     tier,
+    leadType,
     estimatedValue,
     buyerSegment,
     routing,

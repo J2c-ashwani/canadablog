@@ -65,6 +65,33 @@ export function GrantCalculator() {
     const [leadSaved, setLeadSaved] = useState(false);
     const [isPaypalButtonVisible, setIsPaypalButtonVisible] = useState(false);
 
+    // Reactive live estimate calculation based on current steps filled
+    const getLiveEstimate = () => {
+        let base = 50000;
+        let max = 150000;
+
+        // Revenue adjustments
+        if (data.revenue === "100k-500k") { base += 50000; max += 100000; }
+        else if (data.revenue === "500k-1m") { base += 150000; max += 200000; }
+        else if (data.revenue === "over-1m") { base += 350000; max += 400000; }
+
+        // Industry adjustments
+        if (data.industry === "technology" || data.industry === "agriculture" || data.industry === "manufacturing" || data.industry === "energy") {
+            base = Math.round(base * 1.5);
+            max = Math.round(max * 1.5);
+        }
+
+        // Goal adjustments
+        if (data.goal === "research" || data.goal === "expansion" || data.goal === "expansion_equipment") {
+            base = Math.round(base * 1.25);
+            max = Math.round(max * 1.25);
+        }
+
+        return { base, max };
+    };
+
+    const liveEst = getLiveEstimate();
+
     const renderB2BMetadataBlock = (customRange?: string) => {
         const cleanField = (val: string, fallback: string) => {
             if (!val) return fallback;
@@ -1254,6 +1281,21 @@ export function GrantCalculator() {
             )}
 
             <CardContent className="pt-6 sm:p-8">
+                {/* Real-time funding estimate widget (Step 2 to 4) */}
+                {step >= 2 && step <= 4 && (
+                    <div className="mb-6 bg-gradient-to-r from-emerald-50 to-teal-50/50 border border-emerald-200/60 rounded-2xl p-4 text-center shadow-2xs transition-all duration-500 animate-in fade-in duration-300">
+                        <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-emerald-800 uppercase tracking-wider mb-1">
+                            <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                            Live Funding Estimate
+                        </div>
+                        <div className="text-2xl sm:text-3xl font-black text-emerald-955 tracking-tight">
+                            ${liveEst.base.toLocaleString()} - ${liveEst.max.toLocaleString()}+
+                        </div>
+                        <div className="text-[10px] text-emerald-700/80 font-medium mt-1">
+                            Updates dynamically as you fill out details
+                        </div>
+                    </div>
+                )}
 
                 {/* Step 1: What are you looking for today? */}
                 {step === 1 && (

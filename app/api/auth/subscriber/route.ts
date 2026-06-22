@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   // Rate Limiting (10 requests/hour)
-  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000);
+  const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000);
   if (limitRes.isLimited) return limitRes.response;
 
   try {
@@ -17,6 +17,10 @@ export async function GET(request: NextRequest) {
 
     if (!token) {
       return NextResponse.json({ error: 'Token is required.' }, { status: 400 });
+    }
+
+    if (!token.startsWith('v2_')) {
+      return NextResponse.json({ error: 'Legacy token version is deprecated. Please request a new link.' }, { status: 400 });
     }
 
     const all = await SubscriberRepository.getAllSubscribers();

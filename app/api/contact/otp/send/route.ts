@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   // Rate limiting: 10 requests per hour per IP for OTP sending
-  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000);
+  const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000);
   if (limitRes.isLimited) return limitRes.response;
 
   try {

@@ -108,6 +108,52 @@ export default function TopicsPage() {
             </p>
           </div>
 
+          {/* Featured Commercial Topics */}
+          <div className="mb-14">
+            <div className="flex items-center gap-2 mb-5">
+              <h2 className="text-base font-extrabold text-slate-900 uppercase tracking-wider">Most-Searched Topics</h2>
+              <span className="text-[11px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded-full">High Intent</span>
+            </div>
+            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
+              {[
+                { slug: "sred-tax-credit-eligibility", label: "SR&ED Tax Credit Eligibility", desc: "Up to 35% refundable credit on R&D", color: "hover:border-blue-300", dot: "bg-blue-500" },
+                { slug: "irap-funding-eligibility", label: "IRAP Funding Eligibility", desc: "$50K–$500K+ for Canadian SMEs", color: "hover:border-emerald-300", dot: "bg-emerald-500" },
+                { slug: "ontario-small-business-grants", label: "Ontario Small Business Grants", desc: "Provincial & federal grants for Ontario", color: "hover:border-red-300", dot: "bg-red-500" },
+                { slug: "startup-grants-canada", label: "Startup Grants Canada", desc: "Non-dilutive funding for early-stage companies", color: "hover:border-violet-300", dot: "bg-violet-500" },
+                { slug: "government-loans-small-business-canada", label: "Government Loans for Small Business", desc: "CSBFP, BDC, EDC & more", color: "hover:border-amber-300", dot: "bg-amber-500" },
+                { slug: "how-to-apply-government-grants-canada", label: "How to Apply for Government Grants", desc: "Step-by-step proposal and application guides", color: "hover:border-slate-300", dot: "bg-slate-500" },
+                { slug: "federal-grants-small-business-canada", label: "Federal Small Business Grants", desc: "National non-dilutive programs for SMEs", color: "hover:border-rose-300", dot: "bg-rose-500" },
+                { slug: "canada-digital-adoption-program-grant", label: "Canada Digital Adoption Program", desc: "Up to $15K grants + 0% interest BDC loans", color: "hover:border-indigo-300", dot: "bg-indigo-500" },
+                { slug: "women-entrepreneur-grants-canada", label: "Women Entrepreneur Grants", desc: "WES matching funding and dedicated supports", color: "hover:border-pink-300", dot: "bg-pink-500" },
+                { slug: "hiring-wage-subsidies-canada", label: "Hiring & Wage Subsidies", desc: "Offset student, intern, and tech developer wages", color: "hover:border-amber-300", dot: "bg-amber-600" },
+                { slug: "government-grants-for-manufacturing-canada", label: "Manufacturing Grants Canada", desc: "SIF, SWOF, and plant automation offsets", color: "hover:border-slate-300", dot: "bg-slate-600" },
+                { slug: "bc-tech-grant", label: "BC Tech Grants", desc: "Innovate BC, Ignite, and provincial tech funding", color: "hover:border-teal-300", dot: "bg-teal-500" },
+                { slug: "alberta-innovates-grant", label: "Alberta Innovates Grants", desc: "Provincial vouchers, R&D credits, and startup capital", color: "hover:border-indigo-300", dot: "bg-indigo-650" },
+                { slug: "quebec-small-business-grants", label: "Quebec Small Business Grants", desc: "Provincial capital offsets and hiring incentives", color: "hover:border-blue-400", dot: "bg-blue-600" },
+                { slug: "export-grants-canada", label: "Export Grants Canada", desc: "CanExport SMEs & EDC trade financing", color: "hover:border-purple-300", dot: "bg-purple-500" },
+                { slug: "clean-tech-grants-canada", label: "Clean Tech Grants Canada", desc: "ACT program, decarbonization, and green funds", color: "hover:border-emerald-400", dot: "bg-emerald-600" },
+                { slug: "bdc-small-business-loans", label: "BDC Small Business Loans", desc: "Direct development capital and loans up to $100K", color: "hover:border-slate-400", dot: "bg-slate-700" },
+                { slug: "csbfp-loans-canada", label: "CSBFP Loans Canada", desc: "Government-backed bank financing up to $1.15M", color: "hover:border-amber-400", dot: "bg-amber-500" },
+                { slug: "futurpreneur-startup-funding", label: "Futurpreneur Startup Loans", desc: "Unsecured financing up to $60K for founders under 40", color: "hover:border-violet-400", dot: "bg-violet-600" },
+                { slug: "minority-business-grants-canada", label: "Minority & Diverse Grants", desc: "Black, Indigenous, newcomer, and inclusive funding", color: "hover:border-slate-400", dot: "bg-slate-500" },
+                { slug: "canada-summer-jobs-wage-subsidy", label: "Canada Summer Jobs Subsidy", desc: "Federal minimum wage offsets for hiring students & youth", color: "hover:border-amber-450", dot: "bg-amber-600" },
+              ].map((t) => (
+                <Link
+                  key={t.slug}
+                  href={`/topics/${t.slug}`}
+                  className={`group flex items-center gap-3 p-4 bg-white border border-gray-200 rounded-xl transition-all ${t.color} hover:shadow-sm`}
+                >
+                  <span className={`w-2 h-2 rounded-full shrink-0 ${t.dot} group-hover:scale-110 transition-transform`} />
+                  <div className="flex-1 min-w-0">
+                    <div className="text-sm font-semibold text-slate-800 group-hover:text-slate-950 leading-snug">{t.label}</div>
+                    <div className="text-xs text-slate-400 mt-0.5">{t.desc}</div>
+                  </div>
+                  <ArrowRight className="w-3.5 h-3.5 text-gray-300 group-hover:text-gray-600 shrink-0 transition-colors" />
+                </Link>
+              ))}
+            </div>
+          </div>
+
           {/* Topics Grid */}
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {categories.map((category, idx) => {

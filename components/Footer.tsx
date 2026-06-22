@@ -5,6 +5,7 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState, FormEvent } from 'react';
+import { RelatedTopics } from "@/components/RelatedTopics";
 
 export function Footer() {
   const [email, setEmail] = useState('');
@@ -47,7 +48,9 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-gray-900 text-white">
+    <>
+      <RelatedTopics />
+      <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-8">
           {/* Company Info */}
@@ -380,5 +383,6 @@ export function Footer() {
         </div>
       </div>
     </footer>
+    </>
   )
 }

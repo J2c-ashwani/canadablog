@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title: "Download IRAP Application Kit | Free R&D Grant Templates & Guides",
   description: "Get your free IRAP application kit with technical templates, project frameworks, and step-by-step R&D grant guides. Increase your approval chances by 89%.",
   keywords: "IRAP application kit, Canada R&D grant templates, free tech grant templates, IRAP project framework, NRC funding guide",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/download/irap-application-kit",
+  },
 }
 
 export default function IRAPApplicationKitDownload() {
   return (
     <>
-      <title>Get Your Free IRAP Application Kit | FSI Digital</title>
-      <meta name="description" content="Complete R&D grant templates, technical frameworks, and project guides used by our experts to achieve an 89% IRAP approval rate for Canadian tech compan..." />
-      <link rel="canonical" href="https://www.fsidigital.ca/download/irap-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

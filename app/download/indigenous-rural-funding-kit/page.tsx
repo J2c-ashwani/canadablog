@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title: "Download Indigenous & Rural Business Funding Kit | Free Aboriginal & Remote Business Grant Templates Canada",
   description: "Get your free Indigenous and rural business funding kit with Aboriginal Entrepreneurship Program templates, NACCA application guides, and culturally appropriate business strategies. Increase approval chances by 82%.",
   keywords: "Indigenous business funding kit, Aboriginal business grant templates Canada, NACCA application templates, rural business funding guide, free Indigenous business templates, First Nations business funding kit",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/download/indigenous-rural-funding-kit",
+  },
 }
 
 export default function IndigenousRuralFundingKitDownload() {
   return (
     <>
-      <title>Get Your Free Indigenous & Rural Business Funding Kit | FSI Digital</title>
-      <meta name="description" content="Complete Aboriginal business funding templates, culturally appropriate business planning frameworks, and rural development strategies used by our expert..." />
-      <link rel="canonical" href="https://www.fsidigital.ca/download/indigenous-rural-funding-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

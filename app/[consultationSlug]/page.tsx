@@ -63,6 +63,9 @@ export async function generateMetadata({ params }: { params: Promise<{ consultat
     title: `Book Your ${cleanTitle} | Expert Setup & Review`,
     description: `Schedule a dedicated funding eligibility audit for ${cleanTitle.toLowerCase()}. Get expert guidance on applications, eligibility, and funding strategy.`,
     keywords: `${cleanTitle.toLowerCase()} funding eligibility audit, book grant consultation, expert grant review, funding application help, business grant eligibility check, ${cleanTitle.toLowerCase()} experts`,
+    alternates: {
+      canonical: `https://www.fsidigital.ca/${consultationSlug}`,
+    },
   };
 }
 

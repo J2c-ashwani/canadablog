@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   // Rate Limiting (10 requests/hour per IP to accommodate B2B funnel submissions)
-  const limitRes = applyRateLimit(request, 10, 60 * 60 * 1000);
+  const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000);
   if (limitRes.isLimited) return limitRes.response;
 
   try {

@@ -8,7 +8,7 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   // Rate limiting: 20 verification attempts per hour per IP
-  const limitRes = applyRateLimit(request, 20, 60 * 60 * 1000);
+  const limitRes = await applyRateLimit(request, 20, 60 * 60 * 1000);
   if (limitRes.isLimited) return limitRes.response;
 
   try {

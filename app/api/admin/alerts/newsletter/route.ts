@@ -15,7 +15,7 @@ export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
   // 1. Rate Limiting (20 requests/minute)
-  const limitRes = applyRateLimit(request, 20, 60 * 1000)
+  const limitRes = await applyRateLimit(request, 20, 60 * 1000)
   if (limitRes.isLimited) return limitRes.response
 
   // 2. Auth Check
@@ -117,7 +117,7 @@ export async function GET(request: NextRequest) {
 
 export async function POST(request: NextRequest) {
   // 1. Rate Limiting (20 requests/minute)
-  const limitRes = applyRateLimit(request, 20, 60 * 1000)
+  const limitRes = await applyRateLimit(request, 20, 60 * 1000)
   if (limitRes.isLimited) return limitRes.response
 
   // 2. Auth Check

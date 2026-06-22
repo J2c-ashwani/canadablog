@@ -166,13 +166,19 @@ export async function capturePayPalOrder(orderId: string) {
  * Falls back to warning bypass mode if environment variables are not configured.
  */
 export async function verifyPayPalOrder(orderId: string, expectedAmount: string) {
-  if (!orderId || orderId === 'N/A' || orderId.startsWith('TEST-')) {
-    return { verified: true, bypass: true, message: "Bypassed dummy or empty test order ID" }
+  const isProduction = process.env.NODE_ENV === 'production' || process.env.PAYPAL_ENV === 'live';
+
+  if (!isProduction && (!orderId || orderId === 'N/A' || orderId.startsWith('TEST-'))) {
+    return { verified: true, bypass: true, message: "Bypassed dummy or empty test order ID in non-production" };
   }
 
   try {
     getPayPalCredentials();
   } catch (e) {
+    if (isProduction) {
+      console.error("❌ Critical: PayPal client credentials are missing in production!");
+      return { verified: false, error: "PayPal credentials not configured on server" };
+    }
     // If credentials are not configured, log warning and bypass to avoid breaking dev/staging
     console.warn("⚠️ PayPal client credentials are not configured. Bypassing server-side verification.");
     return { verified: true, bypass: true };

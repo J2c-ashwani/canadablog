@@ -4,7 +4,7 @@ import { GrantComparisonTable } from "@/components/grant-comparison-table"
 import { grantsDatabase } from "@/lib/grants-data"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
-import { DollarSign, Building, MapPin } from "lucide-react"
+import { DollarSign, Building, MapPin, BookOpen, Download, Calculator, Sparkles, ArrowRight } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
 import { getPseoProvinceSummaries } from "@/lib/pseo-data"
@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     "Browse our comprehensive database of 800+ government grants for businesses in USA and Canada. Compare funding amounts, deadlines, and eligibility requirements.",
   keywords:
     "government grants database, business grants comparison, USA Canada grants, grant search, funding opportunities",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/grants",
+  },
   openGraph: {
     title: "All Government Grants Database | USA & Canada Business Funding",
     description: "Browse our comprehensive database of 800+ government grants for businesses.",
@@ -131,6 +134,47 @@ export default function AllGrantsPage() {
         <section className="py-20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <GrantComparisonTable grants={grantsDatabase} title="All Government Grants" showFilters={true} />
+          </div>
+        </section>
+
+        {/* Internal Hub Links */}
+        <section className="py-14 bg-slate-50 border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-5xl mx-auto">
+              <h2 className="text-2xl font-extrabold text-slate-900 mb-8 text-center">Your Next Steps After Finding a Grant</h2>
+              <div className="grid sm:grid-cols-3 gap-6">
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-sm transition-shadow">
+                  <div className="w-12 h-12 bg-indigo-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <BookOpen className="w-6 h-6 text-indigo-600" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">Read Application Guides</h3>
+                  <p className="text-sm text-slate-500 mb-4">Step-by-step how-to guides for IRAP, SR&amp;ED, CSBFP, SBA, SBIR, and 30+ more programs.</p>
+                  <Link href="/guides" className="inline-flex items-center gap-1.5 text-indigo-600 font-bold text-sm hover:text-indigo-800">
+                    Browse Guides <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-sm transition-shadow">
+                  <div className="w-12 h-12 bg-emerald-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Download className="w-6 h-6 text-emerald-600" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">Download Free Kits</h3>
+                  <p className="text-sm text-slate-500 mb-4">Free application kits, checklists, and templates for 60+ government funding programs.</p>
+                  <Link href="/download" className="inline-flex items-center gap-1.5 text-emerald-600 font-bold text-sm hover:text-emerald-800">
+                    Get Free Templates <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+                <div className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:shadow-sm transition-shadow">
+                  <div className="w-12 h-12 bg-purple-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+                    <Sparkles className="w-6 h-6 text-purple-600" />
+                  </div>
+                  <h3 className="font-bold text-slate-900 mb-2">Get AI-Matched Grants</h3>
+                  <p className="text-sm text-slate-500 mb-4">Let our AI Grant Finder scan 800+ programs and surface only the ones that match your exact profile.</p>
+                  <Link href="/grant-finder" className="inline-flex items-center gap-1.5 text-purple-600 font-bold text-sm hover:text-purple-800">
+                    Try AI Finder <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 

@@ -106,114 +106,297 @@ export default async function RevenueDashboardPage({
   }
 
   // --- Calculate Metrics ---
+  const TELEMETRY_LAUNCH_DATE_STR = '2026-06-20';
+  const TELEMETRY_LAUNCH_DATE = new Date('2026-06-20T00:00:00.000Z');
+
+  const parseDateSafe = (d?: string | null) => {
+    if (!d) return new Date(0);
+    const parsed = new Date(d);
+    return isNaN(parsed.getTime()) ? new Date(0) : parsed;
+  };
+
   const now = Date.now();
-  const oneDay = 24 * 60 * 60 * 1000;
+  const ONE_DAY = 24 * 60 * 60 * 1000;
 
-  const filterToday = (dateStr: string) => {
+  const isToday = (dateStr: string) => {
     if (!dateStr) return false;
-    return new Date(dateStr).getTime() >= (now - oneDay);
+    return parseDateSafe(dateStr).getTime() >= (now - ONE_DAY);
   };
-  const filter7d = (dateStr: string) => {
+  const is7d = (dateStr: string) => {
     if (!dateStr) return false;
-    return new Date(dateStr).getTime() >= (now - 7 * oneDay);
+    return parseDateSafe(dateStr).getTime() >= (now - 7 * ONE_DAY);
   };
-  const filter30d = (dateStr: string) => {
+  const is30d = (dateStr: string) => {
     if (!dateStr) return false;
-    return new Date(dateStr).getTime() >= (now - 30 * oneDay);
+    return parseDateSafe(dateStr).getTime() >= (now - 30 * ONE_DAY);
   };
-  const filterAllTime = () => true;
+  const isAllTimePost = (dateStr: string) => {
+    if (!dateStr) return false;
+    return parseDateSafe(dateStr).getTime() >= TELEMETRY_LAUNCH_DATE.getTime();
+  };
 
-  // Calculators helper
-  const getFunnelMetrics = (filterFn: (d: string) => boolean) => {
-    const periodTelemetry = telemetry.filter((e) => filterFn(e.timestamp));
-    const visitors = new Set(periodTelemetry.map((e) => e.sessionId)).size;
-    const starts = periodTelemetry.filter((e) => e.eventName === 'calculator_start').length;
-    const completions = periodTelemetry.filter(
-      (e) => e.eventName === 'calculator_complete' || e.eventName === 'calculator_completed'
-    ).length;
-    const periodLeads = leads.filter((s) => filterFn(s.timestamp)).length;
-    const checkouts = periodTelemetry.filter((e) => e.eventName === 'checkout_started').length;
+  // Splitting telemetry, leads, purchases
+  const postTelemetry = telemetry.filter((e) => parseDateSafe(e.timestamp).getTime() >= TELEMETRY_LAUNCH_DATE.getTime());
+  const preTelemetry = telemetry.filter((e) => parseDateSafe(e.timestamp).getTime() < TELEMETRY_LAUNCH_DATE.getTime());
 
-    const periodPurchases = purchases.filter((p) => filterFn(p.createdAt));
-    const purchaseCount = periodPurchases.length;
-    const revenue = periodPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+  const postLeads = leads.filter((l) => parseDateSafe(l.timestamp).getTime() >= TELEMETRY_LAUNCH_DATE.getTime());
+  const preLeads = leads.filter((l) => parseDateSafe(l.timestamp).getTime() < TELEMETRY_LAUNCH_DATE.getTime());
 
-    const rpv = visitors > 0 ? revenue / visitors : 0;
-    const rpc = completions > 0 ? revenue / completions : 0;
-    const rpcs = checkouts > 0 ? revenue / checkouts : 0;
+  const postPurchases = purchases.filter((p) => parseDateSafe(p.createdAt || p.timestamp).getTime() >= TELEMETRY_LAUNCH_DATE.getTime());
+  const prePurchases = purchases.filter((p) => parseDateSafe(p.createdAt || p.timestamp).getTime() < TELEMETRY_LAUNCH_DATE.getTime());
 
+  // Post-Telemetry top KPIs
+  const postLeadsCount = postLeads.length;
+  const postPurchasesCount = postPurchases.length;
+  const postTotalRevenue = postPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+  
+  const postBookingsCount = postLeads.filter(l => {
+    try {
+      const act = JSON.parse(l.leadActivity || '{}');
+      return act.bookedAudit === true || !!act.auditBookedAt || l.offlineStatus === 'Booked Audit' || l.offlineStatus === 'Audit Completed';
+    } catch(e) { return false; }
+  }).length;
+
+  const postReportsPurchases = postPurchases.filter(p => p.productId !== 'consultation' && (parseFloat(p.amount) || 0) < 199);
+  const postReportsRevenue = postReportsPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+  const postAuditPurchases = postPurchases.filter(p => p.productId === 'consultation' || (parseFloat(p.amount) || 0) >= 199);
+  const postAuditRevenue = postAuditPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+  const postUniqueVisitors = new Set(postTelemetry.map(e => e.sessionId)).size;
+
+  // RPV & RPL & other stats
+  const postRpv = postUniqueVisitors > 0 ? postTotalRevenue / postUniqueVisitors : 0;
+  const postRpl = postLeadsCount > 0 ? postTotalRevenue / postLeadsCount : 0;
+
+  const postCalcStarts = postTelemetry.filter(e => e.eventName === 'calculator_start').length;
+  const revPerCalcUser = postCalcStarts > 0 ? postReportsRevenue / postCalcStarts : 0;
+
+  const postAuditViews = new Set(postTelemetry.filter(e => e.pagePath?.includes('/audit')).map(e => e.sessionId)).size;
+  const revPerAuditVisitor = postAuditViews > 0 ? postAuditRevenue / postAuditViews : 0;
+
+  // Drop-off helper
+  const calculateDropOff = (val1: number, val2: number) => {
+    if (val1 <= 0) return 0;
+    return ((val1 - val2) / val1) * 100;
+  };
+
+  // Funnel calculations
+  const getCalculatorFunnelStats = (filterFn: (d: string) => boolean) => {
+    const events = postTelemetry.filter(e => filterFn(e.timestamp));
+    const filteredLeads = postLeads.filter(l => filterFn(l.timestamp));
+    const filteredPurchases = postPurchases.filter(p => filterFn(p.createdAt || p.timestamp));
+
+    const starts = events.filter(e => e.eventName === 'calculator_start').length;
+    const completed = events.filter(e => e.eventName === 'calculator_complete' || e.eventName === 'calculator_completed').length ||
+                      filteredLeads.filter(l => {
+                        try {
+                          const act = JSON.parse(l.leadActivity || '{}');
+                          return !!act.calculatorCompletedAt;
+                        } catch(e) { return false; }
+                      }).length;
+
+    const pricing = events.filter(e => e.eventName === 'paywall_viewed' || e.eventName === 'report_paywall_viewed').length ||
+                    filteredLeads.filter(l => {
+                      try {
+                        const act = JSON.parse(l.leadActivity || '{}');
+                        return !!act.paywallViewedAt;
+                      } catch(e) { return false; }
+                    }).length;
+
+    const checkouts = events.filter(e => e.eventName === 'checkout_started').length ||
+                      filteredLeads.filter(l => {
+                        try {
+                          const act = JSON.parse(l.leadActivity || '{}');
+                          return !!act.checkoutStartedAt;
+                        } catch(e) { return false; }
+                      }).length;
+
+    const purchasesCount = filteredPurchases.filter(p => {
+      const isReport = p.productId === 'funding-match-report' || p.productId === 'funding-roadmap' || p.productId === 'funding-bundle';
+      const isPrice = (parseFloat(p.amount) || 0) < 199 && (parseFloat(p.amount) || 0) > 0;
+      return isReport || isPrice;
+    }).length || filteredLeads.filter(l => l.reportPurchased === true).length;
+
+    return { starts, completed, pricing, checkouts, purchases: purchasesCount };
+  };
+
+  const getAiFinderFunnelStats = (filterFn: (d: string) => boolean) => {
+    const events = postTelemetry.filter(e => filterFn(e.timestamp));
+    const filteredLeads = postLeads.filter(l => filterFn(l.timestamp));
+    const filteredPurchases = postPurchases.filter(p => filterFn(p.createdAt || p.timestamp));
+
+    const starts = events.filter(e => e.pagePath?.includes('/grant-finder') && e.eventName === 'session_start').length;
+    const generated = filteredLeads.filter(l => {
+      const src = String(l.source || '').toLowerCase();
+      return src.includes('ai finder') || src.includes('ai grant finder');
+    }).length;
+
+    const preview = events.filter(e => e.eventName === 'preview_viewed').length ||
+                    filteredLeads.filter(l => {
+                      try {
+                        const act = JSON.parse(l.leadActivity || '{}');
+                        return act.previewViewed === true || !!act.previewViewedAt;
+                      } catch(e) { return false; }
+                    }).length;
+
+    const unlock = events.filter(e => e.eventName === 'preview_cta_clicked').length ||
+                   filteredLeads.filter(l => {
+                     try {
+                       const act = JSON.parse(l.leadActivity || '{}');
+                       return act.previewCtaClicked === true || !!act.previewCtaClickedAt;
+                     } catch(e) { return false; }
+                   }).length;
+
+    const checkouts = events.filter(e => e.eventName === 'checkout_started' && e.pagePath?.includes('/products')).length ||
+                      filteredLeads.filter(l => {
+                        const src = String(l.source || '').toLowerCase();
+                        if (!src.includes('ai finder') && !src.includes('ai grant finder')) return false;
+                        try {
+                          const act = JSON.parse(l.leadActivity || '{}');
+                          return !!act.checkoutStartedAt;
+                        } catch(e) { return false; }
+                      }).length;
+
+    const purchasesCount = filteredPurchases.filter(p => {
+      const src = String(p.utmSource || p.utmCampaign || '').toLowerCase();
+      const isReport = p.productId === 'funding-match-report' || p.productId === 'funding-roadmap' || p.productId === 'funding-bundle';
+      return isReport && (src.includes('ai finder') || src.includes('ai-finder'));
+    }).length || filteredLeads.filter(l => {
+      const src = String(l.source || '').toLowerCase();
+      return (src.includes('ai finder') || src.includes('ai grant finder')) && l.reportPurchased === true;
+    }).length;
+
+    return { starts, generated, preview, unlock, checkouts, purchases: purchasesCount };
+  };
+
+  const getAuditFunnelStats = (filterFn: (d: string) => boolean) => {
+    const events = postTelemetry.filter(e => filterFn(e.timestamp));
+    const filteredLeads = postLeads.filter(l => filterFn(l.timestamp));
+    const filteredPurchases = postPurchases.filter(p => filterFn(p.createdAt || p.timestamp));
+
+    const starts = events.filter(e => e.pagePath?.includes('/audit') && e.eventName === 'session_start').length;
+
+    const preview = filteredLeads.filter(l => {
+      const src = String(l.source || '').toLowerCase();
+      const hasAuditIntent = src.includes('audit') || src.includes('strategy');
+      try {
+        const act = JSON.parse(l.leadActivity || '{}');
+        return (act.previewViewed === true || !!act.previewViewedAt) && (hasAuditIntent || !!act.auditCtaClickedAt);
+      } catch(e) { return false; }
+    }).length;
+
+    const unlock = filteredLeads.filter(l => {
+      const src = String(l.source || '').toLowerCase();
+      const hasAuditIntent = src.includes('audit') || src.includes('strategy');
+      try {
+        const act = JSON.parse(l.leadActivity || '{}');
+        return (act.previewCtaClicked === true || !!act.previewCtaClickedAt) && (hasAuditIntent || !!act.auditCtaClickedAt);
+      } catch(e) { return false; }
+    }).length;
+
+    const checkouts = events.filter(e => e.eventName === 'checkout_started' && (e.pagePath?.includes('/audit') || e.productId === 'consultation')).length ||
+                      filteredLeads.filter(l => {
+                        const src = String(l.source || '').toLowerCase();
+                        const hasAuditIntent = src.includes('audit') || src.includes('strategy');
+                        try {
+                          const act = JSON.parse(l.leadActivity || '{}');
+                          return !!act.checkoutStartedAt && (hasAuditIntent || !!act.auditCtaClickedAt);
+                        } catch(e) { return false; }
+                      }).length;
+
+    const purchased = filteredPurchases.filter(p => {
+      const isAudit = p.productId === 'consultation' || (parseFloat(p.amount) || 0) >= 199;
+      return isAudit;
+    }).length || filteredLeads.filter(l => l.strategyReportPurchased === true).length;
+
+    const booked = filteredLeads.filter(l => {
+      try {
+        const act = JSON.parse(l.leadActivity || '{}');
+        return act.bookedAudit === true || !!act.auditBookedAt || l.offlineStatus === 'Booked Audit' || l.offlineStatus === 'Audit Completed';
+      } catch(e) { return false; }
+    }).length;
+
+    const completed = filteredLeads.filter(l => l.offlineStatus === 'Audit Completed').length;
+
+    return { starts, preview, unlock, checkouts, purchased, booked, completed };
+  };
+
+  const compileFunnelStats = (getStatsFn: (filterFn: (d: string) => boolean) => any) => {
     return {
-      visitors,
-      starts,
-      completions,
-      leads: periodLeads,
-      checkouts,
-      purchases: purchaseCount,
-      revenue,
-      rpv,
-      rpc,
-      rpcs,
+      today: getStatsFn(isToday),
+      last7d: getStatsFn(is7d),
+      last30d: getStatsFn(is30d),
+      allTime: getStatsFn(isAllTimePost),
     };
   };
 
-  const todayMetrics = getFunnelMetrics(filterToday);
-  const metrics7d = getFunnelMetrics(filter7d);
-  const metrics30d = getFunnelMetrics(filter30d);
-  const allTimeMetrics = getFunnelMetrics(filterAllTime);
+  const calculatorFunnelStats = compileFunnelStats(getCalculatorFunnelStats);
+  const aiFinderFunnelStats = compileFunnelStats(getAiFinderFunnelStats);
+  const auditFunnelStats = compileFunnelStats(getAuditFunnelStats);
 
-  // Funnel conversion & leakage rates helper
-  const calculateFunnelRates = (metrics: typeof allTimeMetrics) => {
-    const visitorToStart = metrics.visitors > 0 ? (metrics.starts / metrics.visitors) * 100 : 0;
-    const startToComplete = metrics.starts > 0 ? (metrics.completions / metrics.starts) * 100 : 0;
-    const completeToCheckout = metrics.completions > 0 ? (metrics.checkouts / metrics.completions) * 100 : 0;
-    const checkoutToPurchase = metrics.checkouts > 0 ? (metrics.purchases / metrics.checkouts) * 100 : 0;
-
-    return {
-      visitorToStart,
-      startToComplete,
-      completeToCheckout,
-      checkoutToPurchase,
-      visitorToStartLeak: Math.max(0, 100 - visitorToStart),
-      startToCompleteLeak: Math.max(0, 100 - startToComplete),
-      completeToCheckoutLeak: Math.max(0, 100 - completeToCheckout),
-      checkoutToPurchaseLeak: Math.max(0, 100 - checkoutToPurchase)
-    };
+  // Leak calculations
+  const calcLeaks = (starts: number, completed: number, pricing: number, checkouts: number, purchases: number) => {
+    const drops = [
+      { transition: 'Start → Step 6', drop: calculateDropOff(starts, completed) },
+      { transition: 'Step 6 → Pricing View', drop: calculateDropOff(completed, pricing) },
+      { transition: 'Pricing View → Checkout Start', drop: calculateDropOff(pricing, checkouts) },
+      { transition: 'Checkout Start → Purchase', drop: calculateDropOff(checkouts, purchases) }
+    ];
+    return drops.reduce((max, d) => d.drop > max.drop ? d : max, { transition: 'None', drop: 0 });
   };
 
-  const todayRates = calculateFunnelRates(todayMetrics);
-  const rates7d = calculateFunnelRates(metrics7d);
-  const rates30d = calculateFunnelRates(metrics30d);
-  const allTimeRates = calculateFunnelRates(allTimeMetrics);
-
-  // Recovery attribution buckets (All Time)
-  const getRecoverySequenceRevenue = (sequence: 'calculator_recovery' | 'cart_recovery' | 'alert_nurture' | 'reactivation') => {
-    return purchases
-      .filter((p) => getAttributionCategory(p.utmCampaign, p.utmSource, p.utmMedium) === sequence)
-      .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+  const aiFinderLeaks = (starts: number, generated: number, preview: number, unlock: number, checkouts: number, purchases: number) => {
+    const drops = [
+      { transition: 'Start → Results Generated', drop: calculateDropOff(starts, generated) },
+      { transition: 'Results Generated → Preview Viewed', drop: calculateDropOff(generated, preview) },
+      { transition: 'Preview Viewed → Unlock Clicked', drop: calculateDropOff(preview, unlock) },
+      { transition: 'Unlock Clicked → Checkout Started', drop: calculateDropOff(unlock, checkouts) },
+      { transition: 'Checkout Started → Purchase', drop: calculateDropOff(checkouts, purchases) }
+    ];
+    return drops.reduce((max, d) => d.drop > max.drop ? d : max, { transition: 'None', drop: 0 });
   };
 
-  const calcRecoveryRev = getRecoverySequenceRevenue('calculator_recovery');
-  const cartRecoveryRev = getRecoverySequenceRevenue('cart_recovery');
-  const alertNurtureRev = getRecoverySequenceRevenue('alert_nurture');
-  const reactivationRev = getRecoverySequenceRevenue('reactivation');
+  const auditLeaks = (starts: number, preview: number, unlock: number, checkouts: number, purchased: number, booked: number, completed: number) => {
+    const drops = [
+      { transition: 'Audit Page → Preview Viewed', drop: calculateDropOff(starts, preview) },
+      { transition: 'Preview Viewed → Unlock Clicked', drop: calculateDropOff(preview, unlock) },
+      { transition: 'Unlock Clicked → Checkout Started', drop: calculateDropOff(unlock, checkouts) },
+      { transition: 'Checkout Started → Purchased', drop: calculateDropOff(checkouts, purchased) },
+      { transition: 'Purchased → Booked', drop: calculateDropOff(purchased, booked) },
+      { transition: 'Booked → Audit Completed', drop: calculateDropOff(booked, completed) }
+    ];
+    return drops.reduce((max, d) => d.drop > max.drop ? d : max, { transition: 'None', drop: 0 });
+  };
 
-  // Time to purchase
-  let totalTimeDiff = 0;
-  let buyerCount = 0;
-  for (const p of purchases) {
-    const sub = leads.find((s) => s.email.toLowerCase() === p.email.toLowerCase());
-    if (sub && sub.timestamp) {
-      const leadTime = new Date(sub.timestamp).getTime();
-      const pTime = new Date(p.createdAt).getTime();
-      if (pTime >= leadTime) {
-        totalTimeDiff += pTime - leadTime;
-        buyerCount++;
-      }
-    }
-  }
-  const avgPurchaseDelay = buyerCount > 0 ? totalTimeDiff / buyerCount / (24 * 60 * 60 * 1000) : 0;
+  const calcLeaksAllTime = calcLeaks(
+    calculatorFunnelStats.allTime.starts,
+    calculatorFunnelStats.allTime.completed,
+    calculatorFunnelStats.allTime.pricing,
+    calculatorFunnelStats.allTime.checkouts,
+    calculatorFunnelStats.allTime.purchases
+  );
 
-  // Product mapping
+  const aiFinderLeaksAllTime = aiFinderLeaks(
+    aiFinderFunnelStats.allTime.starts,
+    aiFinderFunnelStats.allTime.generated,
+    aiFinderFunnelStats.allTime.preview,
+    aiFinderFunnelStats.allTime.unlock,
+    aiFinderFunnelStats.allTime.checkouts,
+    aiFinderFunnelStats.allTime.purchases
+  );
+
+  const auditLeaksAllTime = auditLeaks(
+    auditFunnelStats.allTime.starts,
+    auditFunnelStats.allTime.preview,
+    auditFunnelStats.allTime.unlock,
+    auditFunnelStats.allTime.checkouts,
+    auditFunnelStats.allTime.purchased,
+    auditFunnelStats.allTime.booked,
+    auditFunnelStats.allTime.completed
+  );
+
+  // Group by Product (Post-Telemetry)
   const PRODUCT_NAMES: Record<string, string> = {
     'funding-match-report': 'Funding Match Report ($19)',
     'funding-roadmap': 'Funding Action Plan ($49)',
@@ -223,9 +406,8 @@ export default async function RevenueDashboardPage({
     'consultation': 'Strategy Session Audit ($199)',
   };
 
-  // Group by Product
   const productStatsMap = new Map<string, { count: number; revenue: number }>();
-  for (const p of purchases) {
+  for (const p of postPurchases) {
     const prodId = p.productId || 'unknown';
     if (!productStatsMap.has(prodId)) {
       productStatsMap.set(prodId, { count: 0, revenue: 0 });
@@ -242,38 +424,27 @@ export default async function RevenueDashboardPage({
     }))
     .sort((a, b) => b.revenue - a.revenue);
 
-  // Group by Landing Page
+  // Group by Landing Page (Post-Telemetry)
   const pageStatsMap = new Map<string, { visitors: Set<string>; leads: number; purchases: number; revenue: number }>();
-  
-  // Track visitors
-  for (const e of telemetry) {
+  for (const e of postTelemetry) {
     if (e.pagePath) {
-      if (!pageStatsMap.has(e.pagePath)) {
-        pageStatsMap.set(e.pagePath, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
-      }
+      if (!pageStatsMap.has(e.pagePath)) pageStatsMap.set(e.pagePath, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
       pageStatsMap.get(e.pagePath)!.visitors.add(e.sessionId);
     }
   }
-  // Track leads
-  for (const l of leads) {
+  for (const l of postLeads) {
     if (l.pagePath) {
-      if (!pageStatsMap.has(l.pagePath)) {
-        pageStatsMap.set(l.pagePath, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
-      }
+      if (!pageStatsMap.has(l.pagePath)) pageStatsMap.set(l.pagePath, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
       pageStatsMap.get(l.pagePath)!.leads += 1;
     }
   }
-  // Track purchases
-  for (const p of purchases) {
+  for (const p of postPurchases) {
     const page = p.landingPage || '/calculator';
-    if (!pageStatsMap.has(page)) {
-      pageStatsMap.set(page, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
-    }
+    if (!pageStatsMap.has(page)) pageStatsMap.set(page, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
     const stat = pageStatsMap.get(page)!;
     stat.purchases += 1;
     stat.revenue += parseFloat(p.amount) || 0;
   }
-
   const pageStats = Array.from(pageStatsMap.entries())
     .map(([page, data]) => ({
       page,
@@ -286,7 +457,7 @@ export default async function RevenueDashboardPage({
     .sort((a, b) => b.revenue - a.revenue || b.visitors - a.visitors)
     .slice(0, 15);
 
-  // --- Traffic Source Scoreboard Aggregation ---
+  // Traffic channel scoreboard (Post-Telemetry)
   function getTrafficChannel(utmSource: string = '', utmMedium: string = '', referrer: string = ''): 'Google Organic' | 'Email' | 'Direct' | 'Referral / Other' {
     const src = (utmSource || '').toLowerCase();
     const med = (utmMedium || '').toLowerCase();
@@ -314,17 +485,15 @@ export default async function RevenueDashboardPage({
     'Referral / Other': { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 },
   };
 
-  for (const e of telemetry) {
+  for (const e of postTelemetry) {
     const ch = getTrafficChannel(e.utmSource, e.utmMedium, e.referrer);
     channelStats[ch].visitors.add(e.sessionId);
   }
-
-  for (const l of leads) {
+  for (const l of postLeads) {
     const ch = getTrafficChannel(l.utmSource, l.utmMedium, '');
     channelStats[ch].leads += 1;
   }
-
-  for (const p of purchases) {
+  for (const p of postPurchases) {
     const ch = getTrafficChannel(p.utmSource, p.utmMedium, p.referrer);
     channelStats[ch].purchases += 1;
     channelStats[ch].revenue += parseFloat(p.amount) || 0;
@@ -343,39 +512,55 @@ export default async function RevenueDashboardPage({
       rpv: rpvVal,
     };
   });
+  const getUtmStats = (param: 'utmSource' | 'utmMedium' | 'utmCampaign') => {
+    const map = new Map<string, { visitors: Set<string>; leads: number; purchases: number; revenue: number }>();
 
-  // Group by Cohort (Capture Date)
-  const cohortMap = new Map<string, { leads: string[]; purchasesSum: number; buyers: Set<string> }>();
-  for (const sub of leads) {
-    if (!sub.timestamp) continue;
-    const dateStr = new Date(sub.timestamp).toISOString().slice(0, 10);
-    if (!cohortMap.has(dateStr)) {
-      cohortMap.set(dateStr, { leads: [], purchasesSum: 0, buyers: new Set() });
+    for (const e of postTelemetry) {
+      const val = String(e[param] || 'Direct/None').trim() || 'Direct/None';
+      if (!map.has(val)) map.set(val, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
+      map.get(val)!.visitors.add(e.sessionId);
     }
-    cohortMap.get(dateStr)!.leads.push(sub.email.toLowerCase());
-  }
-  for (const p of purchases) {
-    const email = p.email.toLowerCase();
-    const sub = leads.find((s) => s.email.toLowerCase() === email);
-    if (sub && sub.timestamp) {
-      const dateStr = new Date(sub.timestamp).toISOString().slice(0, 10);
-      const cohort = cohortMap.get(dateStr);
-      if (cohort) {
-        cohort.purchasesSum += parseFloat(p.amount) || 0;
-        cohort.buyers.add(email);
-      }
+
+    for (const l of postLeads) {
+      const val = String(l[param] || 'Direct/None').trim() || 'Direct/None';
+      if (!map.has(val)) map.set(val, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
+      map.get(val)!.leads += 1;
     }
-  }
-  const cohorts = Array.from(cohortMap.entries())
-    .map(([date, data]) => ({
-      date,
-      leadsCount: data.leads.length,
-      buyersCount: data.buyers.size,
-      revenue: data.purchasesSum,
-      conversionRate: data.leads.length > 0 ? (data.buyers.size / data.leads.length) * 100 : 0,
-    }))
-    .sort((a, b) => b.date.localeCompare(a.date))
-    .slice(0, 15);
+
+    for (const p of postPurchases) {
+      const val = String(p[param] || 'Direct/None').trim() || 'Direct/None';
+      if (!map.has(val)) map.set(val, { visitors: new Set(), leads: 0, purchases: 0, revenue: 0 });
+      const stat = map.get(val)!;
+      stat.purchases += 1;
+      stat.revenue += parseFloat(p.amount) || 0;
+    }
+
+    return Array.from(map.entries())
+      .map(([name, data]) => ({
+        name,
+        visitors: data.visitors.size,
+        leads: data.leads,
+        purchases: data.purchases,
+        revenue: data.revenue,
+      }))
+      .sort((a, b) => b.revenue - a.revenue || b.visitors - a.visitors)
+      .slice(0, 10);
+  };
+
+  const utmSourceStats = getUtmStats('utmSource');
+  const utmMediumStats = getUtmStats('utmMedium');
+  const utmCampaignStats = getUtmStats('utmCampaign');
+
+  // Pre-Telemetry Historical metrics
+  const preTotalRevenue = prePurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+  const preLeadsCount = preLeads.length;
+  const prePurchasesCount = prePurchases.length;
+  const preBookingsCount = preLeads.filter(l => {
+    try {
+      const act = JSON.parse(l.leadActivity || '{}');
+      return act.bookedAudit === true || !!act.auditBookedAt || l.offlineStatus === 'Booked Audit' || l.offlineStatus === 'Audit Completed';
+    } catch(e) { return false; }
+  }).length;
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-between">
@@ -407,403 +592,303 @@ export default async function RevenueDashboardPage({
           </div>
         )}
 
-        {/* ════════════════ KPI CARDS SECTION ════════════════ */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
-          {/* Revenue */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-xs">
-            <div className="flex items-center justify-between mb-4">
-              <div className="rounded-lg bg-indigo-50 p-2 text-indigo-700">
-                <DollarSign className="h-6 w-6" />
-              </div>
-              <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-500 uppercase tracking-wider">Revenue</span>
+        {/* ════════════════ TELEMETRY SYSTEM STATUS ════════════════ */}
+        <div className="mb-8 rounded-xl border border-indigo-100 bg-indigo-50/50 p-6">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div>
+              <h2 className="text-lg font-bold text-indigo-950 flex items-center gap-2">
+                <Clock className="w-5 h-5 text-indigo-600 animate-pulse" />
+                Telemetry System Status
+              </h2>
+              <p className="text-sm text-indigo-800 mt-1 font-semibold">
+                Telemetry Active Since: <span className="font-black text-indigo-950">{TELEMETRY_LAUNCH_DATE_STR}</span>
+              </p>
             </div>
-            <div className="space-y-3">
-              <div>
-                <p className="text-3xl font-black text-gray-950 tracking-tight">${allTimeMetrics.revenue.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}</p>
-                <p className="text-[11px] text-gray-400 font-semibold mt-0.5">All-Time Revenue</p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 w-full lg:w-auto">
+              <div className="bg-white border border-indigo-100 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Post-Telemetry Leads</p>
+                <p className="text-2xl font-black text-slate-800 mt-0.5">{postLeadsCount}</p>
               </div>
-              <div className="grid grid-cols-3 gap-2 border-t border-gray-100 pt-3 text-center sm:text-left">
-                <div>
-                  <p className="font-extrabold text-gray-900">${todayMetrics.revenue.toLocaleString()}</p>
-                  <p className="text-[10px] text-gray-400 font-medium uppercase mt-0.5">Today</p>
-                </div>
-                <div>
-                  <p className="font-extrabold text-gray-900">${metrics7d.revenue.toLocaleString()}</p>
-                  <p className="text-[10px] text-gray-400 font-medium uppercase mt-0.5">7 Days</p>
-                </div>
-                <div>
-                  <p className="font-extrabold text-gray-900">${metrics30d.revenue.toLocaleString()}</p>
-                  <p className="text-[10px] text-gray-400 font-medium uppercase mt-0.5">30 Days</p>
-                </div>
+              <div className="bg-white border border-indigo-100 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Post-Telemetry Revenue</p>
+                <p className="text-2xl font-black text-emerald-700 mt-0.5">${postTotalRevenue.toLocaleString()}</p>
               </div>
-            </div>
-          </div>
-
-          {/* Economics */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-xs">
-            <div className="flex items-center justify-between mb-4">
-              <div className="rounded-lg bg-emerald-50 p-2 text-emerald-700">
-                <TrendingUp className="h-6 w-6" />
+              <div className="bg-white border border-indigo-100 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Post-Telemetry Sales</p>
+                <p className="text-2xl font-black text-slate-800 mt-0.5">{postPurchasesCount}</p>
               </div>
-              <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-500 uppercase tracking-wider">Economics</span>
-            </div>
-            <div className="space-y-3.5">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-2xl font-black text-gray-900">${allTimeMetrics.rpv.toFixed(2)}</p>
-                  <p className="text-[11px] text-gray-400 font-semibold">RPV (Rev/Visitor)</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-emerald-700">${allTimeMetrics.rpc.toFixed(2)}</p>
-                  <p className="text-[11px] text-gray-400 font-semibold">RPC (Rev/Completion)</p>
-                </div>
-              </div>
-              <div className="border-t border-gray-100 pt-3.5 flex items-center justify-between">
-                <span className="text-xs text-gray-400 font-semibold flex items-center gap-1">
-                  <Clock className="w-3.5 h-3.5" /> Avg Time to First Purchase
-                </span>
-                <span className="font-extrabold text-gray-800 text-sm">{avgPurchaseDelay.toFixed(1)} Days</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Checkout & Paywall Conversion */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-xs">
-            <div className="flex items-center justify-between mb-4">
-              <div className="rounded-lg bg-indigo-50 p-2 text-indigo-700">
-                <Sparkles className="h-6 w-6" />
-              </div>
-              <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-500 uppercase tracking-wider">Conversion CTR</span>
-            </div>
-            <div className="space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <div>
-                  <p className="text-2xl font-black text-gray-900">
-                    {allTimeMetrics.completions > 0 ? ((allTimeMetrics.checkouts / allTimeMetrics.completions) * 100).toFixed(1) : '0.0'}%
-                  </p>
-                  <p className="text-[10px] text-gray-400 font-semibold mt-0.5">Paywall CTR (All-Time)</p>
-                </div>
-                <div>
-                  <p className="text-2xl font-black text-emerald-700">
-                    {allTimeMetrics.checkouts > 0 ? ((allTimeMetrics.purchases / allTimeMetrics.checkouts) * 100).toFixed(1) : '0.0'}%
-                  </p>
-                  <p className="text-[10px] text-gray-400 font-semibold mt-0.5">Checkout CV (All-Time)</p>
-                </div>
-              </div>
-              <div className="grid grid-cols-3 gap-2 border-t border-gray-100 pt-3 text-center sm:text-left text-[11px]">
-                <div>
-                  <p className="font-bold text-gray-900">
-                    {todayMetrics.checkouts > 0 ? ((todayMetrics.purchases / todayMetrics.checkouts) * 100).toFixed(0) : '0'}%
-                  </p>
-                  <p className="text-[10px] text-gray-400 font-medium uppercase mt-0.5">Today CV</p>
-                </div>
-                <div>
-                  <p className="font-bold text-gray-900">
-                    {metrics7d.checkouts > 0 ? ((metrics7d.purchases / metrics7d.checkouts) * 100).toFixed(0) : '0'}%
-                  </p>
-                  <p className="text-[10px] text-gray-400 font-medium uppercase mt-0.5">7D CV</p>
-                </div>
-                <div>
-                  <p className="font-bold text-gray-900">
-                    {metrics30d.checkouts > 0 ? ((metrics30d.purchases / metrics30d.checkouts) * 100).toFixed(0) : '0'}%
-                  </p>
-                  <p className="text-[10px] text-gray-400 font-medium uppercase mt-0.5">30D CV</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          {/* Recovery Revenue */}
-          <div className="rounded-xl border border-gray-200 bg-white p-6 shadow-xs">
-            <div className="flex items-center justify-between mb-4">
-              <div className="rounded-lg bg-amber-50 p-2 text-amber-700">
-                <Award className="h-6 w-6" />
-              </div>
-              <span className="text-[10px] font-bold bg-slate-100 px-2 py-0.5 rounded text-slate-500 uppercase tracking-wider">Recovery Revenue</span>
-            </div>
-            <div className="space-y-2 text-xs">
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500 font-medium">Calculator Recovery:</span>
-                <span className="font-bold text-slate-800">${calcRecoveryRev.toLocaleString()}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500 font-medium">Cart Recovery:</span>
-                <span className="font-bold text-slate-800">${cartRecoveryRev.toLocaleString()}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500 font-medium">Alert Nurture:</span>
-                <span className="font-bold text-slate-800">${alertNurtureRev.toLocaleString()}</span>
-              </div>
-              <div className="flex items-center justify-between">
-                <span className="text-gray-500 font-medium">Reactivation:</span>
-                <span className="font-bold text-slate-800">${reactivationRev.toLocaleString()}</span>
-              </div>
-              <div className="flex items-center justify-between border-t border-gray-100 pt-2 font-bold text-indigo-700">
-                <span>Total Recovered:</span>
-                <span>${(calcRecoveryRev + cartRecoveryRev + alertNurtureRev + reactivationRev).toLocaleString()}</span>
+              <div className="bg-white border border-indigo-100 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Post-Telemetry Bookings</p>
+                <p className="text-2xl font-black text-slate-800 mt-0.5">{postBookingsCount}</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* ════════════════ FUNNEL SCOREBOARD ════════════════ */}
+        {/* ════════════════ FOUNDER REVENUE METRICS ════════════════ */}
+        <div className="mb-8">
+          <h2 className="text-xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
+            <DollarSign className="w-5 h-5 text-indigo-600" />
+            Founder Revenue Metrics (Post-Telemetry)
+          </h2>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
+            {[
+              { label: 'Reports Revenue', value: `$${postReportsRevenue.toLocaleString()}`, sub: `${postReportsPurchases.length} sales (<$199)` },
+              { label: 'Audit Revenue', value: `$${postAuditRevenue.toLocaleString()}`, sub: `${postAuditPurchases.length} sales (≥$199)` },
+              { label: 'Total Revenue', value: `$${postTotalRevenue.toLocaleString()}`, sub: `${postPurchasesCount} total sales` },
+              { label: 'Rev/Visitor (RPV)', value: `$${postRpv.toFixed(2)}`, sub: `${postUniqueVisitors} sessions` },
+              { label: 'Rev/Lead (RPL)', value: `$${postRpl.toFixed(2)}`, sub: `${postLeadsCount} leads` },
+              { label: 'Rev/Calc User', value: `$${revPerCalcUser.toFixed(2)}`, sub: `${postCalcStarts} starts` },
+              { label: 'Rev/Audit Visitor', value: `$${revPerAuditVisitor.toFixed(2)}`, sub: `${postAuditViews} views` },
+            ].map((metric) => (
+              <div key={metric.label} className="bg-white rounded-xl border border-gray-200 p-4 shadow-xs">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-tight">{metric.label}</p>
+                <p className="text-xl font-black text-slate-950 mt-1.5">{metric.value}</p>
+                <p className="text-[9px] text-gray-400 font-semibold mt-0.5 leading-tight">{metric.sub}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* ════════════════ ECONOMICS & NORTH STAR METRICS ════════════════ */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          {/* Calculator Economics Card */}
+          <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 shadow-xs flex items-center justify-between">
+            <div className="space-y-1">
+              <span className="text-[10px] text-blue-700 font-extrabold uppercase tracking-wider bg-blue-100/50 px-2.5 py-1 rounded">Calculator Economics</span>
+              <h3 className="text-xl font-black text-slate-900 mt-2">Revenue Per Calculator User (RPU)</h3>
+              <p className="text-xs text-slate-500">Calculator Reports Revenue / Calculator Starts</p>
+            </div>
+            <div className="text-right">
+              <span className="text-3xl font-black text-blue-700">${revPerCalcUser.toFixed(2)}</span>
+              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">{postCalcStarts} Starts | ${postReportsRevenue.toLocaleString()} Rev</p>
+            </div>
+          </div>
+
+          {/* Audit North Star Card */}
+          <div className="bg-gradient-to-br from-emerald-50 to-indigo-50 border border-emerald-200 rounded-xl p-5 shadow-xs flex items-center justify-between">
+            <div className="space-y-1">
+              <span className="text-[10px] text-emerald-700 font-extrabold uppercase tracking-wider bg-emerald-100/50 px-2.5 py-1 rounded">Audit Funnel North Star</span>
+              <h3 className="text-xl font-black text-slate-900 mt-2">Audit Revenue Per Visitor</h3>
+              <p className="text-xs text-slate-500">Audit Revenue / Audit Page Unique Views</p>
+            </div>
+            <div className="text-right">
+              <span className="text-3xl font-black text-emerald-700">${revPerAuditVisitor.toFixed(2)}</span>
+              <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">{postAuditViews} Views | ${postAuditRevenue.toLocaleString()} Rev</p>
+            </div>
+          </div>
+        </div>
+
+        {/* ════════════════ CALCULATOR FUNNEL ════════════════ */}
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
-          <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
-            <BarChart3 className="w-5 h-5 text-indigo-600" />
-            <h2 className="font-extrabold text-slate-900 text-base">Funnel Scoreboard</h2>
+          <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <Calculator className="w-5 h-5 text-indigo-600" />
+              <h2 className="font-extrabold text-slate-900 text-base">Calculator Funnel (Post-Telemetry Only)</h2>
+            </div>
+            <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
+              calcLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
+            }`}>
+              Biggest Leak: {calcLeaksAllTime.drop > 0 ? `${calcLeaksAllTime.transition} (${calcLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm whitespace-nowrap">
               <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
                 <tr>
-                  <th className="px-6 py-3.5">Metric</th>
-                  <th className="px-6 py-3.5 text-center">Today</th>
+                  <th className="px-6 py-3.5">Funnel Step</th>
+                  <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
                   <th className="px-6 py-3.5 text-center">Last 7 Days</th>
                   <th className="px-6 py-3.5 text-center">Last 30 Days</th>
-                  <th className="px-6 py-3.5 text-center">All-Time</th>
+                  <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
                 <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">Visitors (Sessions)</td>
-                  <td className="px-6 py-4 text-center">{todayMetrics.visitors}</td>
-                  <td className="px-6 py-4 text-center">{metrics7d.visitors}</td>
-                  <td className="px-6 py-4 text-center">{metrics30d.visitors}</td>
-                  <td className="px-6 py-4 text-center">{allTimeMetrics.visitors}</td>
+                  <td className="px-6 py-4 font-bold text-slate-800">1. Calculator Start</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.starts}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.starts}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.starts}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.starts}</td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">Calculator Starts</td>
-                  <td className="px-6 py-4 text-center">{todayMetrics.starts}</td>
-                  <td className="px-6 py-4 text-center">{metrics7d.starts}</td>
-                  <td className="px-6 py-4 text-center">{metrics30d.starts}</td>
-                  <td className="px-6 py-4 text-center">{allTimeMetrics.starts}</td>
+                  <td className="px-6 py-4 font-bold text-slate-800">2. Step 6 (Completions)</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.completed}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.completed}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.completed}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.completed}</td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">Calculator Completions</td>
-                  <td className="px-6 py-4 text-center">{todayMetrics.completions}</td>
-                  <td className="px-6 py-4 text-center">{metrics7d.completions}</td>
-                  <td className="px-6 py-4 text-center">{metrics30d.completions}</td>
-                  <td className="px-6 py-4 text-center">{allTimeMetrics.completions}</td>
+                  <td className="px-6 py-4 font-bold text-slate-800">3. Pricing View</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.pricing}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.pricing}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.pricing}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.pricing}</td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">Captured Leads</td>
-                  <td className="px-6 py-4 text-center">{todayMetrics.leads}</td>
-                  <td className="px-6 py-4 text-center">{metrics7d.leads}</td>
-                  <td className="px-6 py-4 text-center">{metrics30d.leads}</td>
-                  <td className="px-6 py-4 text-center">{allTimeMetrics.leads}</td>
+                  <td className="px-6 py-4 font-bold text-slate-800">4. Checkout Start</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.checkouts}</td>
                 </tr>
                 <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">Checkout Started</td>
-                  <td className="px-6 py-4 text-center">{todayMetrics.checkouts}</td>
-                  <td className="px-6 py-4 text-center">{metrics7d.checkouts}</td>
-                  <td className="px-6 py-4 text-center">{metrics30d.checkouts}</td>
-                  <td className="px-6 py-4 text-center">{allTimeMetrics.checkouts}</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">Purchases</td>
-                  <td className="px-6 py-4 text-center">{todayMetrics.purchases}</td>
-                  <td className="px-6 py-4 text-center">{metrics7d.purchases}</td>
-                  <td className="px-6 py-4 text-center">{metrics30d.purchases}</td>
-                  <td className="px-6 py-4 text-center">{allTimeMetrics.purchases}</td>
-                </tr>
-                <tr className="bg-indigo-50/20 text-indigo-900">
-                  <td className="px-6 py-4 font-black">Revenue</td>
-                  <td className="px-6 py-4 text-center font-bold">${todayMetrics.revenue.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics7d.revenue.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics30d.revenue.toLocaleString()}</td>
-                  <td className="px-6 py-4 text-center font-bold">${allTimeMetrics.revenue.toLocaleString()}</td>
-                </tr>
-                <tr>
-                  <td className="px-6 py-4 font-bold text-slate-800">RPV (Revenue/Visitor)</td>
-                  <td className="px-6 py-4 text-center font-bold">${todayMetrics.rpv.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics7d.rpv.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics30d.rpv.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${allTimeMetrics.rpv.toFixed(2)}</td>
-                </tr>
-                <tr className="bg-emerald-50/20 text-emerald-900">
-                  <td className="px-6 py-4 font-black">RPC (Revenue/Completion)</td>
-                  <td className="px-6 py-4 text-center font-bold">${todayMetrics.rpc.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics7d.rpc.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics30d.rpc.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${allTimeMetrics.rpc.toFixed(2)}</td>
-                </tr>
-                <tr className="bg-purple-50/20 text-purple-900">
-                  <td className="px-6 py-4 font-black">RPCS (Revenue/Checkout Start)</td>
-                  <td className="px-6 py-4 text-center font-bold">${todayMetrics.rpcs.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics7d.rpcs.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${metrics30d.rpcs.toFixed(2)}</td>
-                  <td className="px-6 py-4 text-center font-bold">${allTimeMetrics.rpcs.toFixed(2)}</td>
+                  <td className="px-6 py-4 font-bold text-slate-800">5. Purchase</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.purchases}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.purchases}</td>
+                  <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.purchases}</td>
+                  <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{calculatorFunnelStats.allTime.purchases}</td>
                 </tr>
               </tbody>
             </table>
           </div>
         </div>
 
-        {/* ════════════════ TIER 2: CONSULTING ENGINE ════════════════ */}
-        {(() => {
-          const auditPurchases = purchases.filter(
-            (p) => p.productId === 'consultation' || (parseFloat(p.amount) || 0) >= 199
-          );
-          const auditRevenue = auditPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
-
-          const callsBooked = telemetry.filter(
-            (e) => e.eventName === 'strategy_session_booked' || e.eventName === 'strategy_session_paid'
-          ).length;
-
-          const reportToAuditUpgrades = auditPurchases.filter(
-            (p) => (p.utmSource || '').toLowerCase().includes('report-upsell') ||
-                   (p.utmCampaign || '').toLowerCase().includes('report-upsell')
-          ).length;
-
-          const tier1Purchases = purchases.filter((p) => parseFloat(p.amount) < 199).length;
-          const reportToAuditRate = tier1Purchases > 0
-            ? ((reportToAuditUpgrades / tier1Purchases) * 100).toFixed(1)
-            : '0.0';
-
-          const auditPageViews = new Set(
-            telemetry.filter((e) => (e.pagePath || '').includes('/audit')).map((e) => e.sessionId)
-          ).size;
-
-          return (
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
-              <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-indigo-600" />
-                  <h2 className="font-extrabold text-slate-900 text-base">Tier 2 — Consulting Engine</h2>
-                </div>
-                <span className="text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded uppercase tracking-wider">All Time</span>
-              </div>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 p-6">
-                {[
-                  { label: 'Audit Page Views', value: auditPageViews, sub: 'Unique sessions on /audit', cls: 'bg-indigo-50 border-indigo-100 text-indigo-800' },
-                  { label: 'Audit Purchases', value: auditPurchases.length, sub: `$${auditRevenue.toFixed(0)} total`, cls: 'bg-emerald-50 border-emerald-100 text-emerald-800' },
-                  { label: 'Calls Booked', value: callsBooked, sub: 'strategy_session_booked', cls: 'bg-blue-50 border-blue-100 text-blue-800' },
-                  { label: 'Report → Audit Rate', value: `${reportToAuditRate}%`, sub: `${reportToAuditUpgrades} of ${tier1Purchases} buyers upgraded`, cls: 'bg-amber-50 border-amber-100 text-amber-800' },
-                ].map(kpi => (
-                  <div key={kpi.label} className={`rounded-xl border p-4 ${kpi.cls}`}>
-                    <p className="text-[10px] font-bold uppercase tracking-wider opacity-60 mb-1">{kpi.label}</p>
-                    <p className="text-2xl font-black">{kpi.value}</p>
-                    <p className="text-[10px] mt-1 opacity-50 leading-tight">{kpi.sub}</p>
-                  </div>
-                ))}
-              </div>
-              {auditPurchases.length === 0 && (
-                <p className="px-6 pb-5 text-xs text-slate-400">No audit purchases yet — section will populate after the first $199 payment.</p>
-              )}
-            </div>
-          );
-        })()}
-
-        {/* ════════════════ REVENUE LEAKAGE AUDIT ════════════════ */}
-
+        {/* ════════════════ AI FINDER FUNNEL ════════════════ */}
         <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
-          <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+          <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-5 h-5 text-red-600" />
-              <h2 className="font-extrabold text-slate-900 text-base">Revenue Leakage Audit (Funnel Drop-offs)</h2>
+              <Sparkles className="w-5 h-5 text-indigo-600" />
+              <h2 className="font-extrabold text-slate-900 text-base">AI Finder Funnel (Post-Telemetry Only)</h2>
             </div>
-            <span className="text-[10px] font-bold bg-amber-50 text-amber-700 border border-amber-200 px-2 py-0.5 rounded uppercase tracking-wider">
-              Drop-off Rates
-            </span>
+            <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
+              aiFinderLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
+            }`}>
+              Biggest Leak: {aiFinderLeaksAllTime.drop > 0 ? `${aiFinderLeaksAllTime.transition} (${aiFinderLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
+            </div>
           </div>
           <div className="overflow-x-auto">
             <table className="w-full text-left text-sm whitespace-nowrap">
               <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
                 <tr>
-                  <th className="px-6 py-3.5">Funnel Transition</th>
-                  <th className="px-6 py-3.5 text-center">Today</th>
+                  <th className="px-6 py-3.5">Funnel Step</th>
+                  <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
                   <th className="px-6 py-3.5 text-center">Last 7 Days</th>
                   <th className="px-6 py-3.5 text-center">Last 30 Days</th>
-                  <th className="px-6 py-3.5 text-center">All-Time</th>
+                  <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
-                {/* Visitor -> Start */}
-                <tr className="bg-slate-50/20">
-                  <td className="px-6 py-3.5 font-bold text-slate-800">
-                    <div>Visitor → Start</div>
-                    <span className="text-[10px] text-gray-400 font-normal">Conversion Rate (Starts / Visitors)</span>
-                  </td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{todayRates.visitorToStart.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{rates7d.visitorToStart.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{rates30d.visitorToStart.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{allTimeRates.visitorToStart.toFixed(1)}%</td>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">1. Finder Start</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.starts}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.starts}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.starts}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.starts}</td>
                 </tr>
-                <tr className="bg-red-50/30 text-red-700 border-b border-gray-100">
-                  <td className="px-6 py-2.5 text-xs font-semibold pl-10 flex items-center gap-1.5">
-                    <span className="inline-block w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                    Visitor → Start Leakage (Drop-off)
-                  </td>
-                  <td className="px-6 py-2.5 text-center font-bold">{todayRates.visitorToStartLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates7d.visitorToStartLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates30d.visitorToStartLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{allTimeRates.visitorToStartLeak.toFixed(1)}%</td>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">2. Results Generated</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.generated}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.generated}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.generated}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.generated}</td>
                 </tr>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">3. Preview Viewed</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.preview}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.preview}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.preview}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.preview}</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">4. Unlock Clicked</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.unlock}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.unlock}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.unlock}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.unlock}</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">5. Checkout Started</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.checkouts}</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">6. Purchase</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.purchases}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.purchases}</td>
+                  <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.purchases}</td>
+                  <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{aiFinderFunnelStats.allTime.purchases}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
 
-                {/* Start -> Completion */}
-                <tr className="bg-slate-50/20">
-                  <td className="px-6 py-3.5 font-bold text-slate-800">
-                    <div>Start → Completion</div>
-                    <span className="text-[10px] text-gray-400 font-normal">Completion Rate (Completions / Starts)</span>
-                  </td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{todayRates.startToComplete.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{rates7d.startToComplete.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{rates30d.startToComplete.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{allTimeRates.startToComplete.toFixed(1)}%</td>
+        {/* ════════════════ AUDIT FUNNEL ════════════════ */}
+        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
+          <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div className="flex items-center gap-2">
+              <TrendingUp className="w-5 h-5 text-indigo-600" />
+              <h2 className="font-extrabold text-slate-900 text-base">Audit Funnel (Post-Telemetry Only)</h2>
+            </div>
+            <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
+              auditLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
+            }`}>
+              Biggest Leak: {auditLeaksAllTime.drop > 0 ? `${auditLeaksAllTime.transition} (${auditLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
+            </div>
+          </div>
+          <div className="overflow-x-auto">
+            <table className="w-full text-left text-sm whitespace-nowrap">
+              <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                <tr>
+                  <th className="px-6 py-3.5">Funnel Step</th>
+                  <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
+                  <th className="px-6 py-3.5 text-center">Last 7 Days</th>
+                  <th className="px-6 py-3.5 text-center">Last 30 Days</th>
+                  <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
                 </tr>
-                <tr className="bg-red-50/30 text-red-700 border-b border-gray-100">
-                  <td className="px-6 py-2.5 text-xs font-semibold pl-10 flex items-center gap-1.5">
-                    <span className="inline-block w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                    Start → Completion Leakage (Drop-off)
-                  </td>
-                  <td className="px-6 py-2.5 text-center font-bold">{todayRates.startToCompleteLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates7d.startToCompleteLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates30d.startToCompleteLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{allTimeRates.startToCompleteLeak.toFixed(1)}%</td>
+              </thead>
+              <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">1. Audit Page View</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.starts}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.starts}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.starts}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.starts}</td>
                 </tr>
-
-                {/* Completion -> Checkout */}
-                <tr className="bg-slate-50/20">
-                  <td className="px-6 py-3.5 font-bold text-slate-800">
-                    <div>Completion → Checkout</div>
-                    <span className="text-[10px] text-gray-400 font-normal">Checkout Clickthrough (Checkouts / Completions)</span>
-                  </td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{todayRates.completeToCheckout.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{rates7d.completeToCheckout.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{rates30d.completeToCheckout.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-slate-900 font-extrabold">{allTimeRates.completeToCheckout.toFixed(1)}%</td>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">2. Preview Viewed</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.preview}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.preview}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.preview}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.preview}</td>
                 </tr>
-                <tr className="bg-red-50/30 text-red-700 border-b border-gray-100">
-                  <td className="px-6 py-2.5 text-xs font-semibold pl-10 flex items-center gap-1.5">
-                    <span className="inline-block w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                    Completion → Checkout Leakage (Drop-off)
-                  </td>
-                  <td className="px-6 py-2.5 text-center font-bold">{todayRates.completeToCheckoutLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates7d.completeToCheckoutLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates30d.completeToCheckoutLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{allTimeRates.completeToCheckoutLeak.toFixed(1)}%</td>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">3. Unlock Clicked</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.unlock}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.unlock}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.unlock}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.unlock}</td>
                 </tr>
-
-                {/* Checkout -> Purchase */}
-                <tr className="bg-emerald-50/10">
-                  <td className="px-6 py-3.5 font-bold text-slate-800">
-                    <div>Checkout → Purchase</div>
-                    <span className="text-[10px] text-gray-400 font-normal">Checkout Conversion (Purchases / Checkouts)</span>
-                  </td>
-                  <td className="px-6 py-3.5 text-center text-emerald-700 font-black">{todayRates.checkoutToPurchase.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-emerald-700 font-black">{rates7d.checkoutToPurchase.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-emerald-700 font-black">{rates30d.checkoutToPurchase.toFixed(1)}%</td>
-                  <td className="px-6 py-3.5 text-center text-emerald-700 font-black">{allTimeRates.checkoutToPurchase.toFixed(1)}%</td>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">4. PayPal Start</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.checkouts}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.checkouts}</td>
                 </tr>
-                <tr className="bg-red-50/30 text-red-700">
-                  <td className="px-6 py-2.5 text-xs font-semibold pl-10 flex items-center gap-1.5">
-                    <span className="inline-block w-1.5 h-1.5 bg-red-400 rounded-full"></span>
-                    Checkout → Purchase Leakage (Drop-off)
-                  </td>
-                  <td className="px-6 py-2.5 text-center font-bold">{todayRates.checkoutToPurchaseLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates7d.checkoutToPurchaseLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{rates30d.checkoutToPurchaseLeak.toFixed(1)}%</td>
-                  <td className="px-6 py-2.5 text-center font-bold">{allTimeRates.checkoutToPurchaseLeak.toFixed(1)}%</td>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">5. Purchased Audit</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.purchased}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.purchased}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.purchased}</td>
+                  <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.purchased}</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">6. Booking Completed</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.booked}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.booked}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.booked}</td>
+                  <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.booked}</td>
+                </tr>
+                <tr>
+                  <td className="px-6 py-4 font-bold text-slate-800">7. Audit Completed</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.today.completed}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.completed}</td>
+                  <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.completed}</td>
+                  <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.completed}</td>
                 </tr>
               </tbody>
             </table>
@@ -816,7 +901,7 @@ export default async function RevenueDashboardPage({
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
             <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
               <Layers className="w-5 h-5 text-indigo-600" />
-              <h2 className="font-extrabold text-slate-900 text-base">Revenue by Landing Page</h2>
+              <h2 className="font-extrabold text-slate-900 text-base">Revenue by Landing Page (Post-Telemetry)</h2>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs whitespace-nowrap">
@@ -841,7 +926,7 @@ export default async function RevenueDashboardPage({
                   ))}
                   {pageStats.length === 0 && (
                     <tr>
-                      <td colSpan={5} className="px-6 py-8 text-center text-gray-400 font-semibold">No landing page traffic or sales recorded.</td>
+                      <td colSpan={5} className="px-6 py-8 text-center text-gray-400 font-semibold">No landing page traffic or sales recorded post-telemetry.</td>
                     </tr>
                   )}
                 </tbody>
@@ -853,7 +938,7 @@ export default async function RevenueDashboardPage({
           <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
             <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
               <Tag className="w-5 h-5 text-indigo-600" />
-              <h2 className="font-extrabold text-slate-900 text-base">Revenue by Product</h2>
+              <h2 className="font-extrabold text-slate-900 text-base">Revenue by Product (Post-Telemetry)</h2>
             </div>
             <div className="overflow-x-auto">
               <table className="w-full text-left text-xs whitespace-nowrap">
@@ -874,7 +959,7 @@ export default async function RevenueDashboardPage({
                   ))}
                   {productStats.length === 0 && (
                     <tr>
-                      <td colSpan={3} className="px-6 py-8 text-center text-gray-400 font-semibold">No product sales recorded yet.</td>
+                      <td colSpan={3} className="px-6 py-8 text-center text-gray-400 font-semibold">No product sales recorded post-telemetry.</td>
                     </tr>
                   )}
                 </tbody>
@@ -888,7 +973,7 @@ export default async function RevenueDashboardPage({
           <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
             <div className="flex items-center gap-2">
               <Users className="w-5 h-5 text-indigo-600" />
-              <h2 className="font-extrabold text-slate-900 text-base">Traffic Source Scoreboard</h2>
+              <h2 className="font-extrabold text-slate-900 text-base">Traffic Source Scoreboard (Post-Telemetry)</h2>
             </div>
             <span className="text-[10px] font-bold bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded uppercase tracking-wider">
               Acquisition & Channel Quality
@@ -922,48 +1007,145 @@ export default async function RevenueDashboardPage({
           </div>
         </div>
 
-        {/* Cohort Grid */}
-        <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs mb-8">
-          <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
-            <Users className="w-5 h-5 text-indigo-600" />
-            <h2 className="font-extrabold text-slate-900 text-base">Revenue by Lead Capture Cohort (Last 15 Days)</h2>
-          </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-left text-xs whitespace-nowrap">
-              <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
-                <tr>
-                  <th className="px-6 py-3">Capture Date</th>
-                  <th className="px-6 py-3 text-center">Leads Captured</th>
-                  <th className="px-6 py-3 text-center">Unique Buyers</th>
-                  <th className="px-6 py-3 text-center">Conversion Rate</th>
-                  <th className="px-6 py-3 text-right">Revenue</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
-                {cohorts.map((cohort, idx) => (
-                  <tr key={idx} className="hover:bg-slate-50/50">
-                    <td className="px-6 py-3 font-bold text-slate-800">{cohort.date}</td>
-                    <td className="px-6 py-3 text-center">{cohort.leadsCount}</td>
-                    <td className="px-6 py-3 text-center">{cohort.buyersCount}</td>
-                    <td className="px-6 py-3 text-center">
-                      <span className={`px-2 py-0.5 rounded-full font-bold text-[10px] ${
-                        cohort.conversionRate >= 10 ? 'bg-emerald-50 text-emerald-700 border border-emerald-100' :
-                        cohort.conversionRate >= 5 ? 'bg-blue-50 text-blue-700 border border-blue-100' :
-                        'bg-gray-50 text-gray-700 border border-gray-100'
-                      }`}>
-                        {cohort.conversionRate.toFixed(1)}%
-                      </span>
-                    </td>
-                    <td className="px-6 py-3 text-right font-black text-slate-950">${cohort.revenue.toLocaleString()}</td>
-                  </tr>
-                ))}
-                {cohorts.length === 0 && (
+        {/* ════════════════ UTM REVENUE ATTRIBUTION ════════════════ */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-8">
+          {/* UTM Source */}
+          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+            <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+              <h2 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Source</h2>
+              <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Source</span>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs whitespace-nowrap">
+                <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
                   <tr>
-                    <td colSpan={5} className="px-6 py-8 text-center text-gray-400 font-semibold">No lead cohorts recorded yet.</td>
+                    <th className="px-4 py-2.5">Source Value</th>
+                    <th className="px-4 py-2.5 text-center">Leads</th>
+                    <th className="px-4 py-2.5 text-center">Sales</th>
+                    <th className="px-4 py-2.5 text-right">Revenue</th>
                   </tr>
-                )}
-              </tbody>
-            </table>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                  {utmSourceStats.map((stat, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50/50">
+                      <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                      <td className="px-4 py-3 text-center">{stat.leads}</td>
+                      <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                      <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                  {utmSourceStats.length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="px-4 py-6 text-center text-gray-400 font-semibold">No UTM source sales recorded.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* UTM Medium */}
+          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+            <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+              <h2 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Medium</h2>
+              <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Medium</span>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs whitespace-nowrap">
+                <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                  <tr>
+                    <th className="px-4 py-2.5">Medium Value</th>
+                    <th className="px-4 py-2.5 text-center">Leads</th>
+                    <th className="px-4 py-2.5 text-center">Sales</th>
+                    <th className="px-4 py-2.5 text-right">Revenue</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                  {utmMediumStats.map((stat, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50/50">
+                      <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                      <td className="px-4 py-3 text-center">{stat.leads}</td>
+                      <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                      <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                  {utmMediumStats.length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="px-4 py-6 text-center text-gray-400 font-semibold">No UTM medium sales recorded.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          {/* UTM Campaign */}
+          <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+            <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+              <h2 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Campaign</h2>
+              <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Campaign</span>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-left text-xs whitespace-nowrap">
+                <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                  <tr>
+                    <th className="px-4 py-2.5">Campaign Value</th>
+                    <th className="px-4 py-2.5 text-center">Leads</th>
+                    <th className="px-4 py-2.5 text-center">Sales</th>
+                    <th className="px-4 py-2.5 text-right">Revenue</th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                  {utmCampaignStats.map((stat, idx) => (
+                    <tr key={idx} className="hover:bg-slate-50/50">
+                      <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                      <td className="px-4 py-3 text-center">{stat.leads}</td>
+                      <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                      <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                    </tr>
+                  ))}
+                  {utmCampaignStats.length === 0 && (
+                    <tr>
+                      <td colSpan={4} className="px-4 py-6 text-center text-gray-400 font-semibold">No UTM campaign sales recorded.</td>
+                    </tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        {/* ════════════════ HISTORICAL ARCHIVE SECTION ════════════════ */}
+        <div className="my-12 border-t border-dashed border-gray-300 pt-8">
+          <div className="flex items-center gap-2 mb-6">
+            <Lock className="w-5 h-5 text-gray-400" />
+            <h2 className="text-xl font-extrabold text-gray-600">Historical CRM Archive (Pre-Telemetry Data)</h2>
+          </div>
+          <div className="rounded-xl border border-gray-200 bg-gray-50/50 p-6 mb-8">
+            <p className="text-sm text-gray-600 leading-relaxed max-w-4xl mb-6">
+              The following section contains metrics for leads captured before the telemetry system launch on <strong>{TELEMETRY_LAUNCH_DATE_STR}</strong>. 
+              Behavioral events (e.g. calculator completions, checkout starts, page scrolls) were not tracked for these historical records. 
+              Use this section strictly for auditing past cohorts.
+            </p>
+            
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Historical Leads</p>
+                <p className="text-2xl font-black text-gray-700 mt-0.5">{preLeadsCount}</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Historical Revenue</p>
+                <p className="text-2xl font-black text-gray-700 mt-0.5">${preTotalRevenue.toLocaleString()}</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Historical Sales</p>
+                <p className="text-2xl font-black text-gray-700 mt-0.5">{prePurchasesCount}</p>
+              </div>
+              <div className="bg-white border border-gray-200 rounded-lg p-3">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider">Historical Bookings</p>
+                <p className="text-2xl font-black text-gray-700 mt-0.5">{preBookingsCount}</p>
+              </div>
+            </div>
           </div>
         </div>
       </main>

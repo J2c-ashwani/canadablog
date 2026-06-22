@@ -12,14 +12,14 @@ export const metadata: Metadata = {
   title: "Download Women Entrepreneurship Strategy Kit | Free Female Business Grant Templates Canada",
   description: "Get your free WES application kit with female business grant templates, women entrepreneur funding guides, and step-by-step WES funding strategies. Increase your approval chances by 84%.",
   keywords: "WES application kit, women entrepreneurship strategy templates, female business grant templates Canada, women entrepreneur funding guide, free women business funding kit, WES grant application templates",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/download/wes-application-kit",
+  },
 }
 
 export default function WESApplicationKitDownload() {
   return (
     <>
-      <title>Get Your Free Women Entrepreneurship Strategy Kit | FSI Digital</title>
-      <meta name="description" content="Complete female business funding templates, WES application frameworks, and women entrepreneur strategies used by our experts to achieve an 84% approval..." />
-      <link rel="canonical" href="https://www.fsidigital.ca/download/wes-application-kit" />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
