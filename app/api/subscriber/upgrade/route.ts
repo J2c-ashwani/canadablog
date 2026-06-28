@@ -28,14 +28,15 @@ export async function POST(request: NextRequest) {
       updates.trialStartedAt = new Date().toISOString();
     } else {
       // Secure server-side PayPal subscription order validation
-      if (subscriptionId) {
-        const verification = await verifyPayPalOrder(subscriptionId, "29.00");
-        if (!verification.verified) {
-          return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
-        }
+      if (!subscriptionId) {
+        return NextResponse.json({ error: 'Subscription ID is required for active status upgrade.' }, { status: 400 });
+      }
+      const verification = await verifyPayPalOrder(subscriptionId, "29.00");
+      if (!verification.verified) {
+        return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
       }
       updates.subscriptionStatus = 'active';
-      updates.subscriptionId = subscriptionId || 'N/A';
+      updates.subscriptionId = subscriptionId;
     }
 
     const res = await SubscriberRepository.updateSubscriberPreferences(email, updates);

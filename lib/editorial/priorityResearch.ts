@@ -984,6 +984,406 @@ const profiles: Record<string, PriorityResearchProfile> = {
       supportingPoints: ['ESSOR eligibility check', 'Provincial tax credit stack', 'Regional funding match'],
     },
   },
+  '/blog/ontario-small-business-grants-guide': {
+  "route": "/blog/ontario-small-business-grants-guide",
+  "seoTitle": "Ontario Small Business Grants & Funding (2026 Intakes)",
+  "seoDescription": "Discover active Ontario small business grants, tax credits, and wage subsidies. Research TechCred, regional growth funds, and Starter Company Plus.",
+  "expectedIntent": "high",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Multiple active programs",
+  "statusSummary": "Rolling Intake & Active Provincial Subsidies",
+  "decisionSummary": "Ontario offers a robust stack of provincial incentives. Avoid chasing sunset COVID-era programs; focus on TechCred for upskilling, SDF for labor training, and OITC/ORDTC for R&D.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for Ontario?",
+  "shortAnswer": "A DIY approach is free, but many applications are rejected due to misaligned project scopes or applying to sunset programs. Guided planning helps align your project with active budgets, prepare financial files, and stack provincial and federal programs without double-dipping.",
+  "verificationNotes": [
+    "Exclusion Check: Unincorporated sole proprietorships and businesses outside Ontario are ineligible.",
+    "Lifecycle Timeline: TechCred approval takes 4-6 weeks; capital expansion projects (EODF/SWODF) require 12-16 weeks.",
+    "Typical preparation: Collect docs (2-5 days), Application prep (1-3 weeks), Decision timeline (8-16 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "Ontario Ministry of Economic Development",
+      "url": "https://www.ontario.ca/page/ministry-economic-development-job-creation-trade",
+      "description": "Official portal for provincial business incentives. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "Ontario Funding Strategy",
+    "title": "Build Your Ontario Non-Dilutive Funding Stack",
+    "description": "Model your provincial grant eligibility and stackable tax credits in seconds.",
+    "buttonText": "Evaluate Ontario Eligibility",
+    "href": "/calculator",
+    "supportingPoints": [
+      "TechCred upskilling match",
+      "Regional grant criteria",
+      "Filing lifecycle projection"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for Ontario provincial funding?",
+      "answer": "Unincorporated sole proprietorships, lifestyle businesses with no payroll or R&D spending, and companies based outside of Ontario do not qualify for the majority of these programs."
+    },
+    {
+      "question": "Can Ontario grants be stacked with federal R&D credits?",
+      "answer": "Yes. You can stack provincial hiring grants with federal programs like SR&ED or IRAP, provided you account for the cost-sharing rules correctly."
+    }
+  ]
+},
+  '/blog/irap-industrial-research-assistance-program': {
+  "route": "/blog/irap-industrial-research-assistance-program",
+  "seoTitle": "NRC IRAP Funding Guide 2026: Get Up to $500K Tech Grants",
+  "seoDescription": "Learn how to qualify for NRC IRAP salary subsidies. Discover eligibility, ITA relationship steps, and how to stack with SR&ED.",
+  "expectedIntent": "high",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Open or rolling",
+  "statusSummary": "Active ITA Intake & Rolling Proposal Submissions",
+  "decisionSummary": "IRAP is a relationship-based R&D grant administered by the National Research Council. You must pitch a high-risk technical project directly to an assigned ITA to receive proposal invites.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for IRAP?",
+  "shortAnswer": "Because IRAP is relationship-driven, a poor first impression with your ITA can end your application. Guided planning structures your project brief to clearly highlight technical risk and commercial scalability.",
+  "verificationNotes": [
+    "Exclusion: Companies with no technical payroll, no technological risk, or over 500 employees should not apply.",
+    "Lifecycle Timeline: ITA matching takes 2-4 weeks; full proposal review and approval takes 4-8 weeks.",
+    "Typical preparation: Collect docs (2-5 days), Application prep (1-3 weeks), Decision timeline (4-8 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "NRC Industrial Research Assistance Program",
+      "url": "https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program",
+      "description": "Official government portal for IRAP advisors and projects. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "IRAP Pitch Strategy",
+    "title": "Assess Your IRAP Project Readiness",
+    "description": "Structure your technical research plan and prepare your project brief for ITA review.",
+    "buttonText": "Evaluate IRAP Eligibility",
+    "href": "/calculator",
+    "supportingPoints": [
+      "ITA pitch deck checklist",
+      "Eligible salary cost review",
+      "SR&ED compatibility"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for IRAP?",
+      "answer": "SMEs conducting routine software engineering (e.g., standard web development), companies without Canadian-incorporated entities, or those lacking capital to match the co-funding requirements."
+    }
+  ]
+},
+  '/blog/sred-tax-credits-2026': {
+  "route": "/blog/sred-tax-credits-2026",
+  "seoTitle": "SR&ED Tax Credits Canada 2026: Maximize Your R&D Refund",
+  "seoDescription": "Maximize your SR&ED tax credit recovery. Learn eligibility criteria, refundable tax rates up to 35% for CCPCs, and filing deadlines.",
+  "expectedIntent": "high",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Open or rolling",
+  "statusSummary": "Active Filing Intake & Retrospective Claims",
+  "decisionSummary": "SR&ED is Canada's largest R&D tax incentive, returning up to 35% refundable credits on qualifying salaries, materials, and contracts.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for SR&ED?",
+  "shortAnswer": "Filing for SR&ED involves rigorous technical descriptions and cost audits. Inadequate documentation or incorrect claim structures can trigger CRA audits. Guided planning ensures compliance and maximizes claim size.",
+  "verificationNotes": [
+    "Exclusion: Unincorporated sole proprietorships or companies with no technological uncertainty cannot claim.",
+    "Lifecycle Timeline: Claims filed with tax returns take 8-12 weeks; retrospective claims take 12-24 weeks.",
+    "Typical preparation: Collect logs (2-5 days), Application prep (1-3 weeks), Decision timeline (8-12 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "CRA SR&ED Tax Incentive Program",
+      "url": "https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html",
+      "description": "Official guidelines for SR&ED claims. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "SR&ED Strategy",
+    "title": "Calculate Your Expected R&D Refund",
+    "description": "Find out how much of your technical salaries, contractor fees, and materials you can recover retrospectively.",
+    "buttonText": "Run SR&ED Refund Calculator",
+    "href": "/calculator",
+    "supportingPoints": [
+      "Salaries & contract rates",
+      "CCPC status check",
+      "Filing deadline warnings"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for SR&ED?",
+      "answer": "Companies that do not conduct scientific research or experimental development (e.g. routine engineering), and businesses that lack contemporaneous documentation of technical trials."
+    }
+  ]
+},
+  '/blog/csbfp-canada-small-business-financing-program-government-grants': {
+  "route": "/blog/csbfp-canada-small-business-financing-program-government-grants",
+  "seoTitle": "CSBFP Canada Small Business Financing Program 2026: Loans Guide",
+  "seoDescription": "Complete guide to CSBFP loans. Get up to $1.15M in government-backed financing for equipment, leaseholds, and working capital.",
+  "expectedIntent": "high",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Open or rolling",
+  "statusSummary": "Active Bank Intake & Government Guarantees",
+  "decisionSummary": "The CSBFP provides government-backed bank loans up to $1.15M ($150K for working capital). Banks administer the loans under federal guarantee.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for CSBFP?",
+  "shortAnswer": "While banks issue CSBFP loans, they evaluate applicants strictly on commercial viability and government compliance. Guided planning builds a lender-ready business case to guarantee approval.",
+  "verificationNotes": [
+    "Exclusion: Farming businesses and non-commercial entities do not qualify under CSBFP guidelines.",
+    "Lifecycle Timeline: Bank underwriting and registration takes 4-8 weeks.",
+    "Typical preparation: Collect docs (2-5 days), Application prep (1-3 weeks), Decision timeline (4-8 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "ISED Canada Small Business Financing Program",
+      "url": "https://ised-isde.canada.ca/site/canada-small-business-financing-program/en",
+      "description": "Official program overview. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "CSBFP Loan Strategy",
+    "title": "Check Your CSBFP Capital Eligibility",
+    "description": "Find out if you qualify for government-backed financing to fund equipment, leaseholds, or software.",
+    "buttonText": "Start Free Assessment",
+    "href": "/calculator",
+    "supportingPoints": [
+      "Asset type eligibility check",
+      "Maximum loan limits",
+      "Interest rate primer"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for CSBFP?",
+      "answer": "Agricultural businesses (which have separate USDA/FCC routes), non-profit organizations, and companies seeking to refinance existing commercial debt."
+    }
+  ]
+},
+  '/blog/women-entrepreneurship-loan-fund-canada': {
+  "route": "/blog/women-entrepreneurship-loan-fund-canada",
+  "seoTitle": "Women Entrepreneurship Loan Fund (WELF) Canada 2026: Get Up to $50K",
+  "seoDescription": "Apply for the WELF microloan program. Learn about the 51% majority women-ownership rule, low-interest microfinancing, and stacking with startup grants.",
+  "expectedIntent": "high",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Open or rolling",
+  "statusSummary": "Active Microloan Intake & Partner Networks",
+  "decisionSummary": "WELF microloans provide up to $50,000 in low-interest financing with no personal collateral requirements for Canadian startups and SMEs majority-owned (51%+) by women.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for WELF?",
+  "shortAnswer": "Intermediary delivery organizations handle WELF loan intakes. Guided planning helps align your business plan and cash flow projections with the intermediaries evaluation criteria to ensure quick approval.",
+  "verificationNotes": [
+    "Exclusion: Businesses not majority-owned (51%+) and actively managed by women do not qualify.",
+    "Lifecycle Timeline: Intermediary screening and disbursement takes 4-8 weeks.",
+    "Typical preparation: Collect docs (2-5 days), Application prep (1-3 weeks), Decision timeline (4-8 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "ISED Women Entrepreneurship Strategy",
+      "url": "https://ised-isde.canada.ca/site/women-entrepreneurship-strategy/en",
+      "description": "Official WES guidelines. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "WELF microloan",
+    "title": "Find Stackable Women Business Grants",
+    "description": "See if your women-owned business qualifies for microloans, mentoring, and stackable non-repayable grants.",
+    "buttonText": "Check Eligibility Now",
+    "href": "/calculator",
+    "supportingPoints": [
+      "WES ownership verification",
+      "Microloan partner match",
+      "Upskilling grant compatibility"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for WELF?",
+      "answer": "Companies that lack a registered Canadian corporation, businesses with under 51% female ownership, or organizations unable to provide basic business plans."
+    }
+  ]
+},
+  '/blog/canada-agriculture-agrifood-grants-guide': {
+  "route": "/blog/canada-agriculture-agrifood-grants-guide",
+  "seoTitle": "Canada Agriculture & Agri-Food Grants 2026: $2.3B+ Guide",
+  "seoDescription": "Apply for AAFC programs and AgriInnovate cost-shares. Build sustainable crop systems, access clean tech funding, and claim carbon offsets.",
+  "expectedIntent": "medium",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Multiple active programs",
+  "statusSummary": "Open AgriInnovate & Sustainable CAP Intakes",
+  "decisionSummary": "Canadian agricultural operations can access federal AgriInnovate grants, cost-share programs under the Sustainable CAP, and agricultural clean technology funds.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for Agriculture?",
+  "shortAnswer": "Agricultural grants have strict sustainability rules and environmental baseline requirements. Guided planning structures your project proposals to meet these compliance thresholds.",
+  "verificationNotes": [
+    "Exclusion: Hobby farms, non-registered operations, and projects with no sustainable transition are ineligible.",
+    "Lifecycle Timeline: AgriInnovate expressions of interest take 6-10 weeks; CAP grants take 4-8 weeks.",
+    "Typical preparation: Collect logs (2-5 days), Application prep (1-3 weeks), Decision timeline (8-16 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "Agriculture and Agri-Food Canada (AAFC) Programs",
+      "url": "https://agriculture.canada.ca/en/programs",
+      "description": "Official directory of AAFC grants and cost-shares. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "Agri Innovation Strategy",
+    "title": "Analyze Your Agri-Funding Eligibility",
+    "description": "See if your farming operation qualifies for AgriInnovate, CAP cost-shares, or clean tech funding.",
+    "buttonText": "Evaluate Agriculture Grants",
+    "href": "/calculator",
+    "supportingPoints": [
+      "AgriInnovate project sizing",
+      "Sustainable CAP cost shares",
+      "Clean tech adoption grants"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for agricultural grants?",
+      "answer": "Unregistered hobby farms, projects that increase environmental emissions, and operations without matching capital."
+    }
+  ]
+},
+  '/blog/canada-regional-economic-development-grants-guide': {
+  "route": "/blog/canada-regional-economic-development-grants-guide",
+  "seoTitle": "Canada Regional Development Grants 2026: $2.8B Community Funding",
+  "seoDescription": "Complete guide to RDA funding streams (FedDev, PacifiCan, PrairiesCan, ACOA). Find interest-free interest repayable contributions.",
+  "expectedIntent": "medium",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Multiple active programs",
+  "statusSummary": "Rolling RDA Business Scale-up Intakes",
+  "decisionSummary": "Regional Development Agencies (RDAs) provide interest-free repayable contributions for business scale-up, automation, and clean tech adoption.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for RDAs?",
+  "shortAnswer": "RDA applications require massive project dossiers, detailed financial models, and regional job creation evidence. Guided planning compiles these materials to guarantee interest-free capital approval.",
+  "verificationNotes": [
+    "Exclusion: Pre-revenue startups or businesses with no regional job creation plan are ineligible.",
+    "Lifecycle Timeline: RDA full proposal review and funding decisions take 12-20 weeks.",
+    "Typical preparation: Collect metrics (2-5 days), Application prep (2-3 weeks), Decision timeline (12-20 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "Regional Development Agencies of Canada",
+      "url": "https://www.canada.ca/en/secretariat-regional-development-agencies.html",
+      "description": "Official directory. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "RDA Scaling Strategy",
+    "title": "Check Your Regional Scale-up Eligibility",
+    "description": "See if your community expansion, automation, or clean tech project qualifies for interest-free loans.",
+    "buttonText": "Evaluate Regional Grants",
+    "href": "/calculator",
+    "supportingPoints": [
+      "FedDev/CED/PacifiCan alignment",
+      "Interest-free repayable terms",
+      "Job creation threshold match"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for RDA funding?",
+      "answer": "Pre-revenue startups (under 3 years operating), retail businesses with no regional expansion, and businesses without audited financial histories."
+    }
+  ]
+},
+  '/blog/saskatchewan-small-business-grants-guide': {
+  "route": "/blog/saskatchewan-small-business-grants-guide",
+  "seoTitle": "Saskatchewan Small Business Grants 2026: $425M+ Growth Funding",
+  "seoDescription": "Access Saskatchewan small business grants, tax incentives, and capital programs. Learn about ProductTech, wage subsidies, and regional support.",
+  "expectedIntent": "medium",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Multiple active programs",
+  "statusSummary": "Active Saskatchewan Tech & Growth Incentives",
+  "decisionSummary": "Saskatchewan offers targeted support through the Saskatchewan Technology Startup Incentive (STSI), local upskilling grants, and capital cost-shares.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for Saskatchewan?",
+  "shortAnswer": "Navigating provincial tax incentives (like STSI) requires strict investor accreditation and project scoping. Guided planning manages the application cycle for tax offsets and employee training subsidies.",
+  "verificationNotes": [
+    "Exclusion: Unincorporated businesses or those located outside Saskatchewan do not qualify.",
+    "Lifecycle Timeline: STSI certifications take 2-4 weeks; Job Grants take 3-6 weeks.",
+    "Typical preparation: Collect docs (2-5 days), Application prep (1-2 weeks), Decision timeline (4-8 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "Saskatchewan Ministry of Trade and Export Development",
+      "url": "https://www.saskatchewan.ca/government/government-structure/ministries/trade-and-export-development",
+      "description": "Official portal. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "Saskatchewan Funding Strategy",
+    "title": "Analyze Saskatchewan Startup Incentives",
+    "description": "See if your tech startup qualifies for the 45% angel tax credit or employee wage subsidies.",
+    "buttonText": "Evaluate Saskatchewan Grants",
+    "href": "/calculator",
+    "supportingPoints": [
+      "STSI angel tax credit alignment",
+      "Canada-Saskatchewan Job Grant match",
+      "Capital cost share programs"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for Saskatchewan business grants?",
+      "answer": "Sole proprietors with no employees, organizations based in other provinces, and companies conducting routine operations with no growth projections."
+    }
+  ]
+},
+  '/blog/irap-industrial-research-assistance-program-government-grants': {
+  "route": "/blog/irap-industrial-research-assistance-program-government-grants",
+  "seoTitle": "IRAP Industrial Research Assistance Program Canada 2026 Guide",
+  "seoDescription": "Learn how to qualify for NRC IRAP funding. Access salary subsidies, build ITA relationships, and stack with provincial R&D tax credits.",
+  "expectedIntent": "high",
+  "reviewedBy": "Funding Analyst",
+  "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+  "lastVerified": "2026-06-28",
+  "programStatus": "Open or rolling",
+  "statusSummary": "Active ITA Intake & Rolling Proposal Submissions",
+  "decisionSummary": "IRAP is Canada's premier technology development grant, reimbursing up to 80% of technical salaries for high-risk research projects.",
+  "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for IRAP?",
+  "shortAnswer": "Because IRAP is relationship-driven, a poor first impression with your ITA can end your application. Guided planning structures your project brief to clearly highlight technical risk and commercial scalability.",
+  "verificationNotes": [
+    "Exclusion: Companies with no technical payroll, no technological risk, or over 500 employees should not apply.",
+    "Lifecycle Timeline: ITA matching takes 2-4 weeks; full proposal review and approval takes 4-8 weeks.",
+    "Typical preparation: Collect docs (2-5 days), Application prep (1-3 weeks), Decision timeline (4-8 weeks)."
+  ],
+  "officialSources": [
+    {
+      "name": "NRC Industrial Research Assistance Program",
+      "url": "https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program",
+      "description": "Official government portal for IRAP advisors and projects. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+    }
+  ],
+  "cta": {
+    "eyebrow": "IRAP Pitch Strategy",
+    "title": "Assess Your IRAP Project Readiness",
+    "description": "Structure your technical research plan and prepare your project brief for ITA review.",
+    "buttonText": "Evaluate IRAP Eligibility",
+    "href": "/calculator",
+    "supportingPoints": [
+      "ITA pitch deck checklist",
+      "Eligible salary cost review",
+      "SR&ED compatibility"
+    ]
+  },
+  "faq": [
+    {
+      "question": "Who should NOT apply for IRAP?",
+      "answer": "SMEs conducting routine software engineering (e.g., standard web development), companies without Canadian-incorporated entities, or those lacking capital to match the co-funding requirements."
+    }
+  ]
+},
 };
 
 export function getPriorityResearchProfile(route: string) {

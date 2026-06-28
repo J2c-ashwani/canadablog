@@ -551,6 +551,123 @@ const content: Record<string, EditorialSection[]> = {
       bullets: ['Access training grant reimbursements for upskilling', 'Evaluate local enterprise zone tax abatement', 'Prepare clean financial records for state audit'],
     },
   ],
+  '/blog/ontario-small-business-grants-guide': [
+  {
+    "heading": "Ontario funding is a portfolio of grants and cost-shares",
+    "summary": "Ontario small businesses have access to several provincial funding streams. However, you must align your project (upskilling, automation, hiring, or R&D) with the correct ministry. A company seeking facility expansion capital should target the regional development funds (SWODF/EODF), while a company upskilling its workers must apply to TechCred. Never waste weeks on expired legacy portals.",
+    "bullets": [
+      "Determine your project type before reviewing province programs",
+      "Verify if the intake is rolling or opportunity-specific",
+      "Stack provincial funding alongside federal programs like SR&ED"
+    ]
+  },
+  {
+    "heading": "Core programs every Ontario company should check",
+    "summary": "For upskilling, TechCred provides up to $2,000 per employee for credentialed courses (bimonthly intakes). For scaling manufacturers, the Southwestern and Eastern Ontario Development Funds offer non-repayable grants up to $500K for capital projects. Early-stage entrepreneurs should check Starter Company Plus for $5,000 seed matching.",
+    "bullets": [
+      "Apply for TechCred training reimbursements bimonthly",
+      "Review regional development cost-shares for facility capital",
+      "Connect with local Enterprise Centres for Starter Company Plus"
+    ]
+  }
+],
+  '/blog/irap-industrial-research-assistance-program': [
+  {
+    "heading": "NRC IRAP is a relationship, not a portal submission",
+    "summary": "Unlike standard grants that have structured application portals, the Industrial Research Assistance Program (IRAP) operates entirely through direct human engagement. You must be assigned an Industrial Technology Advisor (ITA) who reviews your technology, technical risks, and business roadmap. Only if the ITA invites you can you submit a funding proposal.",
+    "bullets": [
+      "Call NRC to request an assigned local ITA",
+      "Do not commit project costs before receiving ITA approval",
+      "Prepare a structured technical project brief before pitching your advisor"
+    ]
+  },
+  {
+    "heading": "Eligible activities and salary reimbursements",
+    "summary": "IRAP primarily reimburses 50% to 80% of internal technical salaries (developers, engineers, scientists) working on resolved technical uncertainty. It does not fund commercial marketing, sales, or routine web development. Claims are submitted monthly and paid retrospectively against verified timesheets.",
+    "bullets": [
+      "Verify that your hires have Canadian citizenship or PR status",
+      "Document the technological risk and uncertainty being resolved",
+      "Deduct IRAP subsidies from tax credit calculations (SR&ED)"
+    ]
+  }
+],
+  '/blog/sred-tax-credits-2026': [
+  {
+    "heading": "Scientific Research & Experimental Development parameters",
+    "summary": "The SR&ED program is a retrospective tax credit, returning up to 35% refundable credits for Canadian Controlled Private Corporations (CCPCs) on R&D costs. Qualifying expenses include technical salaries, subcontracts, materials, and overhead. Retrospective claims are permitted up to 18 months from your fiscal year-end.",
+    "bullets": [
+      "Determine if your activity constitutes systematic investigation",
+      "Log hours and test results contemporaneously to defend claims",
+      "Identify eligible contracts and separate local vs foreign spending"
+    ]
+  }
+],
+  '/blog/csbfp-canada-small-business-financing-program-government-grants': [
+  {
+    "heading": "Government-backed bank financing under the CSBFP",
+    "summary": "The CSBFP facilitates capital access for small businesses. Financial institutions approve and administer loans up to $1.15 million, backed by an 85% federal guarantee. Intangible assets and software development costs can now be financed up to $150,000 under the program's expanded guidelines.",
+    "bullets": [
+      "Apply directly at any major bank or credit union",
+      "Verify interest caps (restricted to Prime + 3%)",
+      "Use loans for equipment, leaseholds, or software development"
+    ]
+  }
+],
+  '/blog/women-entrepreneurship-loan-fund-canada': [
+  {
+    "heading": "WELF microloans provide flexible capital",
+    "summary": "The Women Entrepreneurship Loan Fund offers microloans up to $50,000 to support women-owned businesses. Lenders underwrite WELF loans with highly favorable terms and no corporate collateral requirements, making this program accessible to pre-revenue startups and service businesses.",
+    "bullets": [
+      "Verify majority ownership (51%+) and active management by women",
+      "Prepare a business plan detailing use of microloan funds",
+      "Apply through designated regional partner intermediaries"
+    ]
+  }
+],
+  '/blog/canada-agriculture-agrifood-grants-guide': [
+  {
+    "heading": "AgriInnovate and provincial cost-share streams",
+    "summary": "Canada supports agricultural innovation through repayable AgriInnovate contributions (covering up to 50% of projects up to $10M) and local CAP cost-shares. Funding targets clean tech adoption, automation, and commercialization of new food products.",
+    "bullets": [
+      "Filter programs by farm location and project size",
+      "Ensure clean tech purchases align with agricultural directives",
+      "Model matching capital to support the cost-share portion"
+    ]
+  }
+],
+  '/blog/canada-regional-economic-development-grants-guide': [
+  {
+    "heading": "RDA funding covers growth and scaling projects",
+    "summary": "Canada's Regional Development Agencies (FedDev, CED, PacifiCan, ACOA) offer the Business Scale-up and Productivity (BSP) stream. Approved businesses receive interest-free repayable funding to automate manufacturing, adopt advanced software, and expand international markets.",
+    "bullets": [
+      "Find your regional agency based on business location",
+      "Verify minimum revenue and operating history requirements",
+      "Align project plans with regional economic development priorities"
+    ]
+  }
+],
+  '/blog/saskatchewan-small-business-grants-guide': [
+  {
+    "heading": "Saskatchewan tech startup incentives and upskilling cost-shares",
+    "summary": "Saskatchewan supports early-stage innovation through the STSI (a 45% non-refundable tax credit for angel investors backing tech firms) and the Canada-Saskatchewan Job Grant (providing up to $10,000 per employee for third-party training).",
+    "bullets": [
+      "Accredit your technology startup for STSI certification",
+      "Apply for Job Grant training approvals before payment occurs",
+      "Explore capital cost-shares for manufacturing upgrades"
+    ]
+  }
+],
+  '/blog/irap-industrial-research-assistance-program-government-grants': [
+  {
+    "heading": "Qualifying for NRC IRAP salary subsidies",
+    "summary": "NRC IRAP supports technology development by subsidizing internal technical salaries. The assigned Industrial Technology Advisor (ITA) evaluates technical risk, commercial capability, and the project plan before recommending co-funding levels.",
+    "bullets": [
+      "Connect with a local ITA before starting development",
+      "Define a high-risk technical uncertainty to be resolved",
+      "Track payroll and technical timesheets for monthly claims"
+    ]
+  }
+],
 };
 
 export function getPriorityResearchContent(route: string) {

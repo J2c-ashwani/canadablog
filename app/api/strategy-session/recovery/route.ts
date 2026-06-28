@@ -144,12 +144,16 @@ export async function POST(request: NextRequest) {
           }
 
           // Update MD telemetry fields
-          activity.bookedAudit = true;
-          activity.attendeeCount = attendeeCount;
-          activity.depositPaid = (event === 'paid' || result.record.status === 'paid');
-          activity.auditBookedAt = activity.auditBookedAt || new Date().toISOString();
+          const hasCalendlyBooking = !!calendlyEventUri || !!calendlyInviteeUri;
+          if (hasCalendlyBooking) {
+            activity.bookedAudit = true;
+            activity.attendeeCount = attendeeCount;
+            activity.auditBookedAt = activity.auditBookedAt || new Date().toISOString();
+          }
 
-          if (event === 'paid' || result.record.status === 'paid') {
+          activity.depositPaid = (event === 'paid' || result.record.status === 'paid');
+
+          if (activity.depositPaid) {
             activity.depositPaidAt = activity.depositPaidAt || new Date().toISOString();
           }
 
@@ -178,7 +182,7 @@ export async function POST(request: NextRequest) {
             return targetIdx > currentIdx;
           };
 
-          if (shouldUpdateStage(subscriber.offlineStatus, 'Booked Audit')) {
+          if (activity.depositPaid && shouldUpdateStage(subscriber.offlineStatus, 'Booked Audit')) {
             updates.offlineStatus = 'Booked Audit';
           }
 
