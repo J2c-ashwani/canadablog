@@ -1,0 +1,39 @@
+{
+  "id": 9001,
+  "slug": "irap-vs-sred-difference-canada",
+  "title": "IRAP vs SR&ED: The Complete Guide to Stacking Canada's Top R&D Incentives",
+  "excerpt": "Confused about NRC IRAP vs CRA SR&ED? Learn the differences in eligibility, funding models, claiming timelines, and how to successfully stack both programs to cover up to 75% of your costs.",
+  "category": "Tips & Guides",
+  "categoryColor": "bg-purple-100 text-purple-800",
+  "author": "Ashwani K.",
+  "date": "2026-06-27",
+  "readTime": "12 min read",
+  "image": "/images/blog/tech-innovation-theme.png",
+  "featured": true,
+  "type": "expert-insight",
+  "seo": {
+    "keywords": [
+      "irap vs sred",
+      "sred tax credit",
+      "nrc irap grant",
+      "canada rd funding",
+      "stacking grants canada"
+    ],
+    "metaTitle": "IRAP vs SR&ED: How to Stack Canada's Top R&D Grants",
+    "metaDescription": "Read the definitive comparison of NRC IRAP and CRA SR&ED. Understand differences in eligibility, funding mechanisms, and stacking rules.",
+    "intent": "r_and_d"
+  },
+  "shortAnswer": "Yes, you can stack NRC IRAP and CRA SR&ED. However, under CRA double-dipping rules, any IRAP funding received for a project reduces the pool of qualifying expenditures you can claim under SR&ED for that same project. Stacking them correctly allows you to offset up to 75-80% of your R&D development payroll.",
+  "shortAnswerQuestion": "Can I combine IRAP and SR&ED for the same project in Canada?",
+  "content": "<h2>Introduction: Canada's R&D Powerhouse Duo</h2>\n<p>For Canadian technology companies, startups, and advanced manufacturers, the National Research Council's <strong>Industrial Research Assistance Program (IRAP)</strong> and the Canada Revenue Agency's <strong>Scientific Research and Experimental Development (SR&ED)</strong> tax incentive are the two most lucrative sources of non-dilutive capital.</p>\n<p>However, founders and finance teams frequently confuse the two programs or fear that claiming one disqualifies them from the other. This guide breaks down the core differences between IRAP and SR&ED and outlines a step-by-step strategy to stack them legally to cover up to 75% of your engineering salaries.</p>\n\n<div class=\"my-6 bg-slate-50 border border-slate-200 rounded-xl p-4\">\n  <h4 class=\"font-bold text-slate-800 text-sm mb-2\">Key Takeaway</h4>\n  <p class=\"text-xs text-slate-600 leading-relaxed\">\n    <strong>IRAP</strong> is a discretionary, front-ended grant paid out during project milestones. <strong>SR&ED</strong> is an entitlement-based tax credit claimed retroactively at fiscal year-end. They are not mutually exclusive—they are complementary tools.\n  </p>\n</div>\n\n<h2>Core Differences: IRAP vs. SR&ED</h2>\n<table class=\"min-w-full border-collapse border border-slate-200 my-4 text-xs sm:text-sm\">\n  <thead>\n    <tr class=\"bg-slate-100\">\n      <th class=\"border border-slate-200 p-2 text-left font-bold\">Feature</th>\n      <th class=\"border border-slate-200 p-2 text-left font-bold\">NRC IRAP</th>\n      <th class=\"border border-slate-200 p-2 text-left font-bold\">CRA SR&ED</th>\n    </tr>\n  </thead>\n  <tbody>\n    <tr>\n      <td class=\"border border-slate-200 p-2 font-semibold\">Program Type</td>\n      <td class=\"border border-slate-200 p-2\">Discretionary Grant (Competitive)</td>\n      <td class=\"border border-slate-200 p-2\">Legislated Tax Entitlement (Guaranteed if criteria met)</td>\n    </tr>\n    <tr>\n      <td class=\"border border-slate-200 p-2 font-semibold\">Payment Timeline</td>\n      <td class=\"border border-slate-200 p-2\">Upfront / Monthly reimbursement as work is performed</td>\n      <td class=\"border border-slate-200 p-2\">Retroactive claim filed with annual corporate tax return</td>\n    </tr>\n    <tr>\n      <td class=\"border border-slate-200 p-2 font-semibold\">Funding Source</td>\n      <td class=\"border border-slate-200 p-2\">National Research Council (NRC)</td>\n      <td class=\"border border-slate-200 p-2\">Canada Revenue Agency (CRA)</td>\n    </tr>\n    <tr>\n      <td class=\"border border-slate-200 p-2 font-semibold\">Maximum Subsidy</td>\n      <td class=\"border border-slate-200 p-2\">Typically 50% to 80% of internal R&D salaries</td>\n      <td class=\"border border-slate-200 p-2\">Up to 35% refundable federal credit + provincial add-ons</td>\n    </tr>\n    <tr>\n      <td class=\"border border-slate-200 p-2 font-semibold\">Eligible Expenses</td>\n      <td class=\"border border-slate-200 p-2\">Mainly internal technical salaries & contractors</td>\n      <td class=\"border border-slate-200 p-2\">Salaries, materials, subcontracted R&D, and overhead</td>\n    </tr>\n  </tbody>\n</table>\n\n<h2>How Stacking Rules Work (Anti-Double-Dipping)</h2>\n<p>The Canada Revenue Agency prohibits \"double-dipping.\" In practice, this means you cannot get reimbursed twice for the same dollar of R&D expenditure. When you receive government assistance (like an IRAP grant) for a specific R&D project, you must declare that assistance on your <strong>CRA Form T661 (SR&ED Claim)</strong>.</p>\n<p>The IRAP grant amount is deducted from your total SR&ED-qualified expenditures. However, because SR&ED covers overheads and non-subsidized portions, you can still claim tax credits on the remaining portion of your payroll.</p>\n\n<h3>Example of Stacking Math:</h3>\n<ul>\n  <li><strong>Total Engineer R&D Payroll:</strong> $100,000</li>\n  <li><strong>IRAP Grant Received (80% of payroll):</strong> $80,000</li>\n  <li><strong>Remaining Non-Subsidized Payroll:</strong> $20,000</li>\n  <li><strong>SR&ED Proxy Overhead Allocation (55% proxy):</strong> $55,000</li>\n  <li><strong>Adjusted SR&ED Expenditures Pool:</strong> $75,000 (Overhead proxy of $55,000 + remaining payroll of $20,000)</li>\n  <li><strong>Final Refund (35% Refundable SR&ED):</strong> Approximately $26,250</li>\n  <li><strong>Total Funding Combined:</strong> $106,250 ($80,000 IRAP + $26,250 SR&ED)—meaning your R&D project was co-funded by 100%+ due to the proxy overhead calculations!</li>\n</ul>\n\n<h2>Step-by-Step Blueprint to Stack Successfully</h2>\n<ol>\n  <li><strong>Build a Relationship with an NRC ITA:</strong> IRAP is discretionary. You must establish a rapport with a regional Industrial Technology Advisor (ITA) before applying.</li>\n  <li><strong>Separate Project Scopes:</strong> Work with your accountants to track time logs by specific R&D milestones. Align IRAP tracking with project phases.</li>\n  <li><strong>Document Contemporaneous Records:</strong> CRA demands technical proof of uncertainty and systematic investigation. Keep git logs, design mockups, and testing data.</li>\n  <li><strong>File Retroactive SR&ED Claims:</strong> Once your fiscal year ends, file your T661. Deduct any IRAP grants received for those specific projects, and claim the remaining expenditures plus the proxy overhead.</li>\n</ol>",
+  "faq": [
+    {
+      "question": "Does getting IRAP disqualify me from claiming SR&ED?",
+      "answer": "No. You can claim both. However, the IRAP grant is considered 'government assistance' and will reduce your eligible SR&ED expenditures for the same project. You still get to claim credits on the non-subsidized portion and the overhead proxy."
+    },
+    {
+      "question": "Which program should I apply to first?",
+      "answer": "Apply for IRAP first because it must be approved before you incur the project costs. SR&ED is retroactive, so you claim it after your fiscal year ends."
+    }
+  ]
+}

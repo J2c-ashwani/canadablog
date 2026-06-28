@@ -1859,16 +1859,30 @@ export function GrantCalculator() {
                                     </div>
                                 </div>
                                 
-                                {/* Secure Checkout Notice */}
-                                <div className="mb-4 text-center border-b border-slate-100 pb-4">
-                                    <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider mb-1">Secure Checkout</h5>
-                                    <p className="text-xs text-slate-650">
-                                        Pay securely with Credit/Debit Card or PayPal.
-                                    </p>
-                                    <p className="text-xs text-indigo-700 font-bold mt-1">
-                                        No PayPal account required.
-                                    </p>
-                                </div>
+                                <div className="mb-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left space-y-3">
+                                     <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+                                         <Lock className="w-4 h-4 text-emerald-600 shrink-0" />
+                                         <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Secure SSL Checkout</h5>
+                                     </div>
+                                     <div className="space-y-2 text-xs text-slate-600 font-medium">
+                                         <div className="flex items-start gap-2">
+                                             <span className="text-emerald-500 font-bold">✓</span>
+                                             <span><strong>SSL Encryption</strong>: 256-bit encrypted checkout secures your transaction. Your payment details are never stored or seen.</span>
+                                         </div>
+                                         <div className="flex items-start gap-2">
+                                             <span className="text-emerald-500 font-bold">✓</span>
+                                             <span><strong>30-Day Guarantee</strong>: 100% risk-free money-back refund if we cannot identify any active funding matches or if you are not satisfied with accuracy.</span>
+                                         </div>
+                                         <div className="flex items-start gap-2">
+                                             <span className="text-emerald-500 font-bold">✓</span>
+                                             <span><strong>7-Day Audit Credit</strong>: Get 100% of your report fee credited back to your account if you upgrade to a 1-on-1 strategy audit session within 7 days.</span>
+                                         </div>
+                                         <div className="flex items-start gap-2">
+                                             <span className="text-emerald-500 font-bold">✓</span>
+                                             <span><strong>Instant Access</strong>: Digital delivery immediately rendered on your dashboard and emailed in PDF format within 60 seconds.</span>
+                                         </div>
+                                     </div>
+                                 </div>
 
                                 {/* What Happens Next Block */}
                                 <div className="mb-6 bg-slate-50 rounded-xl p-4 border border-slate-200 text-left">

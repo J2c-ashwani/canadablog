@@ -165,17 +165,48 @@ export default function AuditClient() {
     const sp = new URLSearchParams(window.location.search);
     const emailVal = sp.get('email') || '';
     const nameVal = sp.get('name') || '';
+    const regionVal = sp.get('region') || '';
+    const industryVal = sp.get('industry') || '';
+    const companyVal = sp.get('company') || sp.get('companyName') || sp.get('name') || '';
+    const sourceVal = sp.get('source') || 'audit-page';
+
     setParams({
       email: emailVal,
       name: nameVal,
-      company: sp.get('company') || sp.get('companyName') || sp.get('name') || '',
-      industry: sp.get('industry') || '',
-      region: sp.get('region') || '',
+      company: companyVal,
+      industry: industryVal,
+      region: regionVal,
       discount: Number(sp.get('discount')) || 0,
-      source: sp.get('source') || 'audit-page',
+      source: sourceVal,
     });
+
     if (emailVal && nameVal) {
       setDetailsConfirmed(true);
+
+      // Auto-capture pre-filled lead details on page load to catch drop-offs
+      const captureDraft = async () => {
+        try {
+          await fetch('/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              email: emailVal.trim(),
+              name: nameVal.trim(),
+              location: regionVal || 'ON',
+              industry: industryVal || 'other',
+              country: 'Canada',
+              source: 'Audit Checkout Lead Draft (Pre-filled)',
+              utmSource: sp.get('utm_source') || 'direct',
+              utmMedium: sp.get('utm_medium') || 'N/A',
+              utmCampaign: sp.get('utm_campaign') || 'N/A',
+              gaClientId: getGaClientId(),
+            }),
+          });
+        } catch (e) {
+          console.error('Failed to auto-save pre-filled lead draft:', e);
+        }
+      };
+      captureDraft();
     }
   }, []);
 
@@ -590,7 +621,7 @@ export default function AuditClient() {
                       </div>
                       <button
                         type="button"
-                        onClick={() => {
+                        onClick={async () => {
                           if (!params.email || !params.email.includes('@')) {
                             setPaymentError('Please enter a valid company email.');
                             return;
@@ -601,6 +632,29 @@ export default function AuditClient() {
                           }
                           setPaymentError(null);
                           setDetailsConfirmed(true);
+
+                          // Capture lead draft immediately to prevent funnel drop-off loss
+                          try {
+                            const sp = new URLSearchParams(window.location.search);
+                            await fetch('/api/subscribe', {
+                              method: 'POST',
+                              headers: { 'Content-Type': 'application/json' },
+                              body: JSON.stringify({
+                                email: params.email.trim(),
+                                name: params.name.trim(),
+                                location: params.region || 'ON',
+                                industry: params.industry || 'other',
+                                country: 'Canada',
+                                source: 'Audit Checkout Lead Draft',
+                                utmSource: sp.get('utm_source') || 'direct',
+                                utmMedium: sp.get('utm_medium') || 'N/A',
+                                utmCampaign: sp.get('utm_campaign') || 'N/A',
+                                gaClientId: getGaClientId(),
+                              }),
+                            });
+                          } catch (e) {
+                            console.error('Failed to save lead draft:', e);
+                          }
                         }}
                         className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg text-xs transition-colors flex items-center justify-center gap-1"
                       >

@@ -1,0 +1,39 @@
+{
+  "id": 9002,
+  "slug": "how-to-stack-government-grants-canada",
+  "title": "How to Stack Multiple Government Grants in Canada: Rules, Limits, and Strategies",
+  "excerpt": "Can you combine federal and provincial funding? Discover the strict rules of government grant stacking, overlap limitations, and how to maximize your non-dilutive capital safely.",
+  "category": "Tips & Guides",
+  "categoryColor": "bg-purple-100 text-purple-800",
+  "author": "Ashwani K.",
+  "date": "2026-06-27",
+  "readTime": "10 min read",
+  "image": "/images/blog/canada-grants-theme.png",
+  "featured": true,
+  "type": "expert-insight",
+  "seo": {
+    "keywords": [
+      "stacking government grants",
+      "grant stacking rules canada",
+      "canadian business grants guide",
+      "non-dilutive capital stacking",
+      "provincial federal grants combined"
+    ],
+    "metaTitle": "Government Grant Stacking Rules & Strategies | Canada 2026",
+    "metaDescription": "Learn how to stack federal and provincial government business grants in Canada. Master stacking limits, double-dipping exclusions, and co-funding requirements.",
+    "intent": "grant"
+  },
+  "shortAnswer": "Yes, Canadian businesses can stack grants from different levels of government (e.g. municipal, provincial, federal). However, most programs enforce a 'stacking limit'—typically capping total government funding at 75% to 100% of the total eligible project cost. Additionally, you cannot claim the exact same dollar of expense from two different grant sources (no double-dipping).",
+  "shortAnswerQuestion": "Are you allowed to stack federal and provincial grants in Canada?",
+  "content": "<h2>Understanding the Grant Stacking Landscape</h2>\n<p>Government grant stacking is the practice of combining multiple federal, provincial, and municipal funding programs to co-finance a single business project. Done correctly, stacking can reduce your net out-of-pocket project costs to less than 20%.</p>\n<p>However, funding bodies have strict coordination mechanisms to prevent over-funding. This guide outlines the core rules of grant stacking, anti-accumulation caps, and a tactical playbook to stack programs legally without triggering audit failures.</p>\n\n<h2>Rule #1: Stacking Limits (Maximum Assistance Level)</h2>\n<p>Almost all government programs define a maximum limit on total government assistance, known as the <strong>Stacking Limit</strong>. This limit is the maximum percentage of your total project costs that can be funded by government sources (grants, loans, tax credits, and subsidies combined).</p>\n<ul>\n  <li><strong>Standard Commercial Projects:</strong> Typically capped at a 75% stacking limit. You must contribute at least 25% from private sources (equity, revenue, or bank loans).</li>\n  <li><strong>Non-Profits or Clean-Tech Initiatives:</strong> Stacking limits can sometimes reach 100%, meaning the entire project is funded by various grants.</li>\n  <li><strong>R&D and Student Hiring:</strong> Stacking limits are highly flexible but usually restrict total subsidies to 80% of salary costs.</li>\n</ul>\n\n<h2>Rule #2: The Anti-Double-Dipping Principle</h2>\n<p>The most important rule in grant administration is that <strong>you cannot claim the same individual expense line twice</strong>. For instance, if you hire a student engineer and their salary is 80% co-funded by a federal wage subsidy (like Canada Summer Jobs), you cannot use a provincial grant to cover that same 80%. You can, however, use a provincial grant to fund the remaining 20% of their salary, or use the provincial grant to fund materials and equipment needed for their work.</p>\n\n<div class=\"my-6 bg-slate-50 border border-slate-200 rounded-xl p-4\">\n  <h4 class=\"font-bold text-slate-800 text-sm mb-2\">Expert Pro-Tip</h4>\n  <p class=\"text-xs text-slate-600 leading-relaxed\">\n    Always designate specific expense streams to specific grants. For a software project, assign developer salaries to a wage subsidy, cloud hosting to a digital transformation grant, and marketing costs to an export grant.\n  </div>\n</div>\n\n<h2>High-Yield Grant Stacking Combinations</h2>\n<p>Here are three verified stacking sequences commonly used by high-growth Canadian companies:</p>\n\n<h3>1. The Digitization Stack (CDAP + BDC)</h3>\n<p>Combine the <strong>Canada Digital Adoption Program (CDAP)</strong> with <strong>BDC Financing</strong>:\n<ul>\n  <li>Apply for CDAP Boost Your Business Technology to get a $15,000 grant (90% cost-share) to design a digital roadmap.</li>\n  <li>Use that approved roadmap to unlock a 0% interest loan up to $100,000 from BDC to buy the software/hardware.</li>\n  <li>Access a $7,300 wage subsidy to hire a student to implement the tools.</li>\n</ul>\n\n<h3>2. The Talent & Innovation Stack (Mitacs + SR&ED)</h3>\n<p>Stack student internships with tax recovery:\n<ul>\n  <li>Leverage <strong>Mitacs Accelerate</strong> to co-fund 50% of a graduate intern's stipend to conduct research.</li>\n  <li>At year-end, submit the remaining 50% of the researcher's salary plus the overhead proxy under <strong>SR&ED</strong> to recover up to 35% of your private spend.</li>\n</ul>\n\n<h3>3. The Global Expansion Stack (CanExport + EDC)</h3>\n<p>Stack export grants with credit protection:\n<ul>\n  <li>Use <strong>CanExport SMEs</strong> to cover 50% of travel, trade show, and marketing costs to enter new international markets (up to $50,000).</li>\n  <li>Stack it with <strong>EDC (Export Development Canada)</strong> receivables insurance to protect your foreign sales against non-payment.</li>\n</ul>",
+  "faq": [
+    {
+      "question": "What happens if I exceed the stacking limit?",
+      "answer": "If you exceed a program's stacking limit, the program administrators will claw back the excess funds or reduce their contribution accordingly. You must disclose all other funding sources during the application stage."
+    },
+    {
+      "question": "Do government loans count toward the stacking limit?",
+      "answer": "Yes, government-backed loans (like CSBFP or BDC loans) and repayable contributions count toward the total 'government assistance' cap, though they are weighted differently than non-repayable grants."
+    }
+  ]
+}

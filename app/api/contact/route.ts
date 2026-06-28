@@ -43,6 +43,7 @@ export async function POST(request: NextRequest) {
       timeline,
       businessDescription,
       requestType,
+      category,
       consentToPartnerContact,
       pagePath,
       utmSource,
@@ -52,8 +53,12 @@ export async function POST(request: NextRequest) {
       referralSource,
     } = body;
 
-    // Validate required fields
-    if (!email || !name || !companyName || !rawPhone || !industry || !businessStage || !fundingAmount || !fundingPurpose || !businessDescription) {
+    const isCalculator = category === "Grant Calculator" || requestType === "Grant Calculator" || requestType === "Calculator" || body.category === "Grant Calculator";
+    const finalName = name || (isCalculator ? "Founder" : "");
+    const finalCompanyName = companyName || (isCalculator ? "Not provided" : "");
+
+    // Validate required fields (phone and company are optional for calculator leads)
+    if (!email || !finalName || !finalCompanyName || (!isCalculator && !rawPhone) || !industry || !businessStage || !fundingAmount || !fundingPurpose || !businessDescription) {
       return NextResponse.json({ error: "Missing required qualification fields" }, { status: 400 });
     }
 
@@ -63,29 +68,36 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: emailCheck.error }, { status: 400 });
     }
 
-    // Perform phone validation
-    const phoneValResult = validatePhone(rawPhone, country);
+    let phone = "Not provided";
+    let phoneValidationNotes = "Phone not provided";
 
-    // Hard reject: number is structurally invalid (wrong length, bad NANP area/exchange code)
-    if (!phoneValResult.isValid) {
-      return NextResponse.json({
-        error: `The phone number provided appears to be invalid (${phoneValResult.carrier}). Please enter a valid business phone number.`
-      }, { status: 400 });
+    if (rawPhone && rawPhone.trim() !== "") {
+      // Perform phone validation
+      const phoneValResult = validatePhone(rawPhone, country);
+
+      // Hard reject: number is structurally invalid (wrong length, bad NANP area/exchange code)
+      if (!phoneValResult.isValid) {
+        return NextResponse.json({
+          error: `The phone number provided appears to be invalid (${phoneValResult.carrier}). Please enter a valid business phone number.`
+        }, { status: 400 });
+      }
+
+      phone = phoneValResult.formatted;
+      const phoneTypeFlag = phoneValResult.isVoipOrTollFree
+        ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
+        : '';
+      phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
+    } else if (!isCalculator) {
+      return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
-
-    const phone = phoneValResult.formatted;
-    // Flag VOIP/toll-free in notes — do not hard-reject as many B2B companies use VoIP
-    const phoneTypeFlag = phoneValResult.isVoipOrTollFree
-      ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
-      : '';
 
     // Compile lead details for scoring
     const leadData = {
       source: `Contact Form - ${requestType || "General"}`,
       timestamp: new Date().toISOString(),
       email,
-      name,
-      companyName,
+      name: finalName,
+      companyName: finalCompanyName,
       country: country || "N/A",
       state: state || "N/A",
       city: city || "N/A",
@@ -129,7 +141,6 @@ export async function POST(request: NextRequest) {
     const tier = intelligence.tier;
     const isAuditCandidate = tier === "A";
 
-    const phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
     const additionalNotes = `Request Type: ${requestType || "General"}\nMessage: ${businessDescription}\n${phoneValidationNotes}`;
 
     // Save lead to Google Sheets database immediately
