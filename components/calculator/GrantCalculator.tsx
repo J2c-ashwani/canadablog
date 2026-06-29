@@ -2253,13 +2253,23 @@ export function GrantCalculator() {
                                              </ul>
                                          </div>
                                          <div className="mt-4">
-                                             <span className={`w-full py-2 px-3 text-center text-xs font-bold rounded-lg block border ${
-                                               selectedProductId === 'funding-match-report' 
-                                                 ? 'bg-slate-800 text-white border-slate-800' 
-                                                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
-                                             }`}>
-                                               {selectedProductId === 'funding-match-report' ? 'Selected' : 'Select Basic'}
-                                             </span>
+                                             <span 
+                                                className={`w-full py-2.5 px-3 text-center text-xs font-bold rounded-lg block border cursor-pointer transition-all ${
+                                                selectedProductId === 'funding-match-report' 
+                                                  ? 'bg-slate-800 text-white border-slate-800 shadow-md' 
+                                                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                                              }`}
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                  setSelectedProductId('funding-match-report');
+                                                  setTimeout(() => {
+                                                    document.getElementById('calc-email-for-report')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                                    document.getElementById('calc-email-for-report')?.focus();
+                                                  }, 300);
+                                                }}
+                                              >
+                                                {selectedProductId === 'funding-match-report' ? 'Continue to Secure Checkout →' : 'Select Basic'}
+                                              </span>
                                          </div>
                                      </div>
 
@@ -2295,13 +2305,23 @@ export function GrantCalculator() {
                                              </ul>
                                          </div>
                                          <div className="mt-4">
-                                             <span className={`w-full py-2 px-3 text-center text-xs font-bold rounded-lg block border ${
-                                               selectedProductId === 'funding-bundle' 
-                                                 ? 'bg-indigo-650 text-white border-indigo-650 shadow-xs animate-pulse-slow' 
-                                                 : 'bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50'
-                                             }`}>
-                                               {selectedProductId === 'funding-bundle' ? 'Selected' : 'Select Complete'}
-                                             </span>
+                                              <span 
+                                                className={`w-full py-2.5 px-3 text-center text-xs font-bold rounded-lg block border cursor-pointer transition-all ${
+                                                selectedProductId === 'funding-bundle' 
+                                                  ? 'bg-indigo-600 text-white border-indigo-600 shadow-lg ring-2 ring-indigo-400 ring-offset-1' 
+                                                  : 'bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50'
+                                              }`}
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                  setSelectedProductId('funding-bundle');
+                                                  setTimeout(() => {
+                                                    document.getElementById('calc-email-for-report')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                                    document.getElementById('calc-email-for-report')?.focus();
+                                                  }, 300);
+                                                }}
+                                              >
+                                                {selectedProductId === 'funding-bundle' ? 'Continue to Secure Checkout →' : 'Select Complete Bundle'}
+                                              </span>
                                          </div>
                                      </div>
 
@@ -2334,13 +2354,23 @@ export function GrantCalculator() {
                                              </ul>
                                          </div>
                                          <div className="mt-4">
-                                             <span className={`w-full py-2 px-3 text-center text-xs font-bold rounded-lg block border ${
-                                               selectedProductId === 'funding-roadmap' 
-                                                 ? 'bg-emerald-600 text-white border-emerald-600' 
-                                                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
-                                             }`}>
-                                               {selectedProductId === 'funding-roadmap' ? 'Selected' : 'Select Plan'}
-                                             </span>
+                                              <span 
+                                                className={`w-full py-2.5 px-3 text-center text-xs font-bold rounded-lg block border cursor-pointer transition-all ${
+                                                selectedProductId === 'funding-roadmap' 
+                                                  ? 'bg-emerald-600 text-white border-emerald-600 shadow-md' 
+                                                  : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                                              }`}
+                                                onClick={(e) => {
+                                                  e.stopPropagation();
+                                                  setSelectedProductId('funding-roadmap');
+                                                  setTimeout(() => {
+                                                    document.getElementById('calc-email-for-report')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                                                    document.getElementById('calc-email-for-report')?.focus();
+                                                  }, 300);
+                                                }}
+                                              >
+                                                {selectedProductId === 'funding-roadmap' ? 'Continue to Secure Checkout →' : 'Select Action Plan'}
+                                              </span>
                                          </div>
                                      </div>
                                  </div>

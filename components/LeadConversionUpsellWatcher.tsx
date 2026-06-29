@@ -120,7 +120,7 @@ export function trackGAEvent(eventName: string, params: Record<string, any> = {}
 export function LeadConversionUpsellWatcher() {
   const pathname = usePathname();
   const [pendingLead, setPendingLead] = useState<PendingLead | null>(null);
-  const shouldSuppress = pathname === '/consultation' || pathname === '/booking' || pathname.startsWith('/partners');
+  const shouldSuppress = pathname === '/consultation' || pathname === '/booking' || pathname === '/calculator' || pathname.startsWith('/partners');
 
   // Capture UTM parameters from URL and store in sessionStorage
   useEffect(() => {
