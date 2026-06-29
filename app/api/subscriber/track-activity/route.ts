@@ -43,6 +43,30 @@ export async function POST(request: NextRequest) {
       if (body.priceShown) {
         activity.priceShown = body.priceShown
       }
+    } else if (event === "paypal_container_rendered") {
+      activity.paypalContainerRendered = true
+      activity.paypalContainerRenderedAt = now
+    } else if (event === "paypal_buttons_rendered") {
+      activity.paypalButtonsRendered = true
+      activity.paypalButtonsRenderedAt = now
+    } else if (event === "paypal_button_clicked") {
+      activity.paypalButtonClicked = true
+      activity.paypalButtonClickedAt = now
+    } else if (event === "create_order_started") {
+      activity.createOrderStarted = true
+      activity.createOrderStartedAt = now
+    } else if (event === "create_order_success") {
+      activity.createOrderSuccess = true
+      activity.createOrderSuccessAt = now
+    } else if (event === "paypal_popup_opened") {
+      activity.paypalPopupOpened = true
+      activity.paypalPopupOpenedAt = now
+    } else if (event === "payment_capture_success") {
+      activity.paymentCaptureSuccess = true
+      activity.paymentCaptureSuccessAt = now
+    } else if (event === "redirect_booking") {
+      activity.redirectBooking = true
+      activity.redirectBookingAt = now
     } else if (event === "calculator_completed") {
       activity.calculatorCompletedAt = now
     } else if (event === "package_selected") {

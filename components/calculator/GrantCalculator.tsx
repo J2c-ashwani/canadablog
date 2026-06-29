@@ -189,6 +189,37 @@ export function GrantCalculator() {
     const [isRestoredSession, setIsRestoredSession] = useState(false);
     const [restorationError, setRestorationError] = useState<string | null>(null);
 
+    // --- Telemetry & Rendering Refs ---
+    const dataRef = useRef(data);
+    useEffect(() => {
+        dataRef.current = data;
+    }, [data]);
+
+    const trackingDataRef = useRef(trackingData);
+    useEffect(() => {
+        trackingDataRef.current = trackingData;
+    }, [trackingData]);
+
+    const selectedProductIdRef = useRef(selectedProductId);
+    useEffect(() => {
+        selectedProductIdRef.current = selectedProductId;
+    }, [selectedProductId]);
+
+    const addonToolkitRef = useRef(addonToolkit);
+    useEffect(() => {
+        addonToolkitRef.current = addonToolkit;
+    }, [addonToolkit]);
+
+    const addonApprovalLibraryRef = useRef(addonApprovalLibrary);
+    useEffect(() => {
+        addonApprovalLibraryRef.current = addonApprovalLibrary;
+    }, [addonApprovalLibrary]);
+
+    const buttonsRenderedRef = useRef(false);
+
+    // Track email validity to control PayPal mounting lifecycle
+    const isEmailValid = !!(data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()));
+
     const calculateEstimateRestored = (profile: CalculatorData) => {
         let base = 50000;
         let max = 150000;
@@ -587,64 +618,133 @@ export function GrantCalculator() {
 
     // --- PayPal Buttons Render ---
     useEffect(() => {
+      if (!isEmailValid) {
+        buttonsRenderedRef.current = false;
+        return;
+      }
+
       if (!sdkReady || !(window as any).paypal || step !== 6) return;
+      
+      // Prevent duplicate rendering in StrictMode or rapid render ticks
+      if (buttonsRenderedRef.current) return;
+      buttonsRenderedRef.current = true;
 
       const container = document.getElementById("calc-paypal-button");
       if (container) container.innerHTML = "";
 
       if (typeof (window as any).paypal.Buttons !== 'function') {
         setPaymentError("Could not load secure checkout. Please refresh.");
+        buttonsRenderedRef.current = false;
         return;
       }
 
-      let price = selectedProductId === 'funding-bundle' ? 79 : selectedProductId === 'funding-roadmap' ? 49 : 19;
-      let itemsList = selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle' : selectedProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
-      if (addonToolkit) {
-        price += 29;
-        itemsList += ' + Toolkit';
+      const emailVal = dataRef.current.email;
+      
+      // Telemetry: paypal_container_rendered
+      if (emailVal) {
+        fetch("/api/subscriber/track-activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: emailVal,
+            event: "paypal_container_rendered"
+          })
+        }).catch(() => {});
       }
-      if (addonApprovalLibrary) {
-        price += 9;
-        itemsList += ' + Approval Library';
-      }
-
-      const desc = `${itemsList} - FSI Digital`;
 
       try {
         (window as any).paypal.Buttons({
           style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
           onClick: () => {
             trackEvent('preview_cta_clicked');
-            if (data.email) {
+            const currentEmail = dataRef.current.email;
+            
+            // Telemetry: paypal_button_clicked
+            if (currentEmail) {
               fetch("/api/subscriber/track-activity", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
-                  email: data.email,
-                  event: "preview_cta_clicked",
-                  packageSelected: selectedProductId
+                  email: currentEmail,
+                  event: "paypal_button_clicked"
+                })
+              }).catch(() => {});
+            }
+
+            // Telemetry: paypal_popup_opened
+            if (currentEmail) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: currentEmail,
+                  event: "paypal_popup_opened"
                 })
               }).catch(() => {});
             }
           },
           createOrder: (_data: any, actions: any) => {
             setPaymentError(null);
+            const currentEmail = dataRef.current.email;
+
+            // Telemetry: create_order_started
+            if (currentEmail) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: currentEmail,
+                  event: "create_order_started"
+                })
+              }).catch(() => {});
+            }
+
+            // Compute values dynamically from refs
+            const currentProductId = selectedProductIdRef.current;
+            const currentAddonToolkit = addonToolkitRef.current;
+            const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
+
+            let price = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            let itemsList = currentProductId === 'funding-bundle' ? 'Complete Funding Bundle' : currentProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
+            if (currentAddonToolkit) {
+              price += 29;
+              itemsList += ' + Toolkit';
+            }
+            if (currentAddonApprovalLibrary) {
+              price += 9;
+              itemsList += ' + Approval Library';
+            }
+            const desc = `${itemsList} - FSI Digital`;
+
             // GA4 event: checkout started
             if (typeof window !== 'undefined' && (window as any).gtag) {
               (window as any).gtag('event', 'begin_checkout', {
                 value: price, currency: 'USD', items: [{ item_name: desc, price: price }]
               });
             }
-            // Fire checkout_started telemetry
-            fetch("/api/subscriber/track-activity", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify({
-                email: data.email,
-                event: "checkout_started",
-                priceShown: price.toString()
-              })
-            }).catch(e => console.error("Telemetry error:", e));
+
+            // Telemetry: checkout_started & create_order_success
+            if (currentEmail) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: currentEmail,
+                  event: "checkout_started",
+                  priceShown: price.toString()
+                })
+              }).catch(() => {});
+
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: currentEmail,
+                  event: "create_order_success"
+                })
+              }).catch(() => {});
+            }
+
             return actions.order.create({
               purchase_units: [{
                 amount: { value: price.toFixed(2), currency_code: 'USD' },
@@ -653,17 +753,38 @@ export function GrantCalculator() {
             });
           },
           onApprove: async (_data: any, actions: any) => {
+            const currentEmail = dataRef.current.email;
+            const currentName = dataRef.current.name;
+            const currentProductId = selectedProductIdRef.current;
+            const currentAddonToolkit = addonToolkitRef.current;
+            const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
+
+            let price = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            let itemsList = currentProductId === 'funding-bundle' ? 'Complete Funding Bundle' : currentProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
+            if (currentAddonToolkit) {
+              price += 29;
+              itemsList += ' + Toolkit';
+            }
+            if (currentAddonApprovalLibrary) {
+              price += 9;
+              itemsList += ' + Approval Library';
+            }
+            const desc = `${itemsList} - FSI Digital`;
+
             try {
-              // Fire payment_approved telemetry
-              fetch("/api/subscriber/track-activity", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email: data.email,
-                  event: "payment_approved",
-                  paypalOrderId: _data?.orderID || ''
-                })
-              }).catch(e => console.error("Telemetry error:", e));
+              // Telemetry: payment_approved
+              if (currentEmail) {
+                fetch("/api/subscriber/track-activity", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    email: currentEmail,
+                    event: "payment_approved",
+                    paypalOrderId: _data?.orderID || ''
+                  })
+                }).catch(e => console.error("Telemetry error:", e));
+              }
+
               const details = await actions.order.capture();
               const orderId = details?.id || '';
 
@@ -676,33 +797,45 @@ export function GrantCalculator() {
                 });
               }
 
+              // Telemetry: payment_capture_success
+              if (currentEmail) {
+                fetch("/api/subscriber/track-activity", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    email: currentEmail,
+                    event: "payment_capture_success"
+                  })
+                }).catch(() => {});
+              }
+
               // Record purchase via API
               const res = await fetch('/api/products/purchase', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                  productId: selectedProductId,
-                  email: data.email,
-                  name: data.name,
+                  productId: currentProductId,
+                  email: currentEmail,
+                  name: currentName,
                   paypalOrderId: orderId,
                   addons: {
-                    toolkit: addonToolkit,
-                    approvalLibrary: addonApprovalLibrary
+                    toolkit: currentAddonToolkit,
+                    approvalLibrary: currentAddonApprovalLibrary
                   },
                   profileData: {
-                    province: data.province,
-                    industry: data.industry,
-                    revenue: data.revenue,
-                    goal: data.goal,
-                    company: data.company,
-                    phone: data.phone,
+                    province: dataRef.current.province,
+                    industry: dataRef.current.industry,
+                    revenue: dataRef.current.revenue,
+                    goal: dataRef.current.goal,
+                    company: dataRef.current.company,
+                    phone: dataRef.current.phone,
                   },
                   attribution: {
-                    landingPage: trackingData.landingPage,
-                    referrer: trackingData.referrer,
-                    utmSource: trackingData.utmSource,
-                    utmMedium: trackingData.utmMedium,
-                    utmCampaign: trackingData.utmCampaign,
+                    landingPage: trackingDataRef.current.landingPage,
+                    referrer: trackingDataRef.current.referrer,
+                    utmSource: trackingDataRef.current.utmSource,
+                    utmMedium: trackingDataRef.current.utmMedium,
+                    utmCampaign: trackingDataRef.current.utmCampaign,
                   },
                   sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
                 })
@@ -713,10 +846,23 @@ export function GrantCalculator() {
               if (result.success) {
                 setAccessToken(result.accessToken);
                 setIsPurchased(true);
-                if (selectedProductId === 'funding-match-report') {
+                if (currentProductId === 'funding-match-report') {
                   setShowUpsellScreen(true);
                 }
                 setStep(8);
+
+                // Telemetry: redirect_booking
+                if (currentEmail) {
+                  fetch("/api/subscriber/track-activity", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({
+                      email: currentEmail,
+                      event: "redirect_booking"
+                    })
+                  }).catch(() => {});
+                }
+
                 // Load the full report
                 loadReport(result.accessToken);
               } else {
@@ -729,6 +875,22 @@ export function GrantCalculator() {
           },
           onApproveCancel: () => {},
           onCancel: () => {
+            const currentProductId = selectedProductIdRef.current;
+            const currentAddonToolkit = addonToolkitRef.current;
+            const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
+
+            let price = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            let itemsList = currentProductId === 'funding-bundle' ? 'Complete Funding Bundle' : currentProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
+            if (currentAddonToolkit) {
+              price += 29;
+              itemsList += ' + Toolkit';
+            }
+            if (currentAddonApprovalLibrary) {
+              price += 9;
+              itemsList += ' + Approval Library';
+            }
+            const desc = `${itemsList} - FSI Digital`;
+
             setPaymentError("Payment cancelled. You can try again when ready.");
             // GA4 event
             if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -739,12 +901,25 @@ export function GrantCalculator() {
             console.error("PayPal error:", err);
             setPaymentError("Payment failed. Please try again or use a different payment method.");
           }
-        }).render('#calc-paypal-button');
+        }).render('#calc-paypal-button').then(() => {
+          // Telemetry: paypal_buttons_rendered
+          if (emailVal) {
+            fetch("/api/subscriber/track-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: emailVal,
+                event: "paypal_buttons_rendered"
+              })
+            }).catch(() => {});
+          }
+        });
       } catch (err) {
         console.error("Failed to render PayPal buttons:", err);
         setPaymentError("Could not load checkout. Please refresh.");
+        buttonsRenderedRef.current = false;
       }
-    }, [sdkReady, step, selectedProductId, addonToolkit, addonApprovalLibrary, data.email, data.name, data.province, data.industry, data.revenue, data.goal, data.company, data.phone]);
+    }, [sdkReady, step, isEmailValid]);
 
     // --- PayPal SDK Upgrade Button Render ---
     useEffect(() => {
@@ -1930,12 +2105,15 @@ export function GrantCalculator() {
                                 {renderB2BMetadataBlock()}
 
                                 <div className="min-h-[150px]">
-                                    {!sdkReady && (
+                                    {!sdkReady ? (
                                         <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
                                         <Loader2 className="w-4 h-4 animate-spin" /> Loading secure checkout...
                                         </div>
-                                    )}
-                                    {sdkReady && (
+                                    ) : !isEmailValid ? (
+                                        <div className="text-center p-6 bg-slate-50 border border-slate-200 border-dashed rounded-xl text-xs font-semibold text-slate-500 animate-pulse">
+                                          Please enter a valid business email address above to enable secure checkout.
+                                        </div>
+                                    ) : (
                                         <div id="calc-paypal-button" className="w-full"></div>
                                     )}
                                 </div>
