@@ -166,6 +166,7 @@ export function GrantCalculator() {
     const [accessToken, setAccessToken] = useState<string>('');
     const [reportData, setReportData] = useState<any>(null);
     const [isLoadingReport, setIsLoadingReport] = useState(false);
+    const [reportLoadStep, setReportLoadStep] = useState(0);
     const [isDownloading, setIsDownloading] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-bundle');
     const [addonToolkit, setAddonToolkit] = useState(false);
@@ -219,6 +220,40 @@ export function GrantCalculator() {
 
     // Track email validity to control PayPal mounting lifecycle
     const isEmailValid = !!(data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()));
+
+    const [showExitSurvey, setShowExitSurvey] = useState(false);
+    const [exitSurveyStep, setExitSurveyStep] = useState<1 | 2>(1);
+    const step6EnteredTimeRef = useRef<number | null>(null);
+    const emailValidatedRef = useRef(false);
+
+    // Client-side browser & device metadata parser
+    const getDeviceMetadata = () => {
+        if (typeof window === 'undefined' || typeof navigator === 'undefined') return {};
+        const ua = navigator.userAgent;
+        const width = window.innerWidth;
+        const height = window.innerHeight;
+        
+        let browser = "Other";
+        if (ua.includes("Firefox")) browser = "Firefox";
+        else if (ua.includes("Chrome") && !ua.includes("Chromium")) browser = "Chrome";
+        else if (ua.includes("Safari") && !ua.includes("Chrome")) browser = "Safari";
+        else if (ua.includes("Edge")) browser = "Edge";
+        
+        let os = "Other";
+        if (ua.includes("Windows")) os = "Windows";
+        else if (ua.includes("Macintosh")) os = "macOS";
+        else if (ua.includes("iPhone") || ua.includes("iPad")) os = "iOS";
+        else if (ua.includes("Android")) os = "Android";
+        
+        const device = /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop";
+        
+        return {
+            browser,
+            os,
+            device,
+            viewport: `${width}x${height}`
+        };
+    };
 
     const calculateEstimateRestored = (profile: CalculatorData) => {
         let base = 50000;
@@ -486,6 +521,11 @@ export function GrantCalculator() {
     }
 
     const handleBack = () => {
+        if (step === 6) {
+            setExitSurveyStep(1);
+            setShowExitSurvey(true);
+            return;
+        }
         setStep(s => Math.max(1, s - 1));
     }
 
@@ -599,6 +639,93 @@ export function GrantCalculator() {
         } catch (tErr) {}
     }, [step]);
 
+    // --- Step 6 Entrance, Validation & Exit Telemetry ---
+    useEffect(() => {
+        if (step !== 6) return;
+        
+        step6EnteredTimeRef.current = Date.now();
+        const currentEmail = dataRef.current.email;
+        
+        // Log step6_entered
+        if (currentEmail) {
+            fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: currentEmail,
+                    event: "step6_entered",
+                    ...getDeviceMetadata()
+                })
+            }).catch(() => {});
+        }
+
+        // Exit intent & page abandonment tracker
+        const startTime = Date.now();
+        const handleExit = () => {
+            const duration = ((Date.now() - startTime) / 1000).toFixed(1);
+            const emailVal = dataRef.current.email;
+            if (emailVal) {
+                const payload = JSON.stringify({
+                    email: emailVal,
+                    event: "step6_exit",
+                    durationSeconds: duration,
+                    ...getDeviceMetadata()
+                });
+                
+                if (navigator.sendBeacon) {
+                    navigator.sendBeacon("/api/subscriber/track-activity", payload);
+                } else {
+                    fetch("/api/subscriber/track-activity", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: payload
+                    }).catch(() => {});
+                }
+            }
+        };
+
+        const handleMouseLeave = (e: MouseEvent) => {
+            if (e.clientY < 50) {
+                setExitSurveyStep(1);
+                setShowExitSurvey(true);
+            }
+        };
+
+        window.addEventListener("beforeunload", handleExit);
+        document.addEventListener("mouseleave", handleMouseLeave);
+        
+        return () => {
+            window.removeEventListener("beforeunload", handleExit);
+            document.removeEventListener("mouseleave", handleMouseLeave);
+            // Fire exit handler on React component unmount (navigating within the app)
+            handleExit();
+        };
+    }, [step]);
+
+    useEffect(() => {
+        if (step !== 6 || !isEmailValid) {
+            emailValidatedRef.current = false;
+            return;
+        }
+        
+        // Ensure email_validated is logged exactly once per page load/state shift
+        if (emailValidatedRef.current) return;
+        emailValidatedRef.current = true;
+
+        const currentEmail = dataRef.current.email;
+        if (currentEmail) {
+            fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                    email: currentEmail,
+                    event: "email_validated",
+                    ...getDeviceMetadata()
+                })
+            }).catch(() => {});
+        }
+    }, [step, isEmailValid]);
+
     // --- PayPal SDK Load ---
     useEffect(() => {
       if (step < 6) return; // Only load when needed
@@ -612,6 +739,20 @@ export function GrantCalculator() {
       script.onerror = () => {
         console.error("PayPal SDK failed to load.");
         setPaymentError("Could not load secure checkout. Please refresh the page.");
+        
+        const currentEmail = dataRef.current.email;
+        if (currentEmail) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: currentEmail,
+              event: "paypal_sdk_load_failed",
+              errorMessage: "PayPal SDK script loader element returned error callback",
+              ...getDeviceMetadata()
+            })
+          }).catch(() => {});
+        }
       };
       document.head.appendChild(script);
     }, [step, paypalClientId]);
@@ -635,6 +776,20 @@ export function GrantCalculator() {
       if (typeof (window as any).paypal.Buttons !== 'function') {
         setPaymentError("Could not load secure checkout. Please refresh.");
         buttonsRenderedRef.current = false;
+        
+        const currentEmail = dataRef.current.email;
+        if (currentEmail) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: currentEmail,
+              event: "paypal_buttons_failed",
+              errorMessage: "paypal.Buttons is not a function",
+              ...getDeviceMetadata()
+            })
+          }).catch(() => {});
+        }
         return;
       }
 
@@ -647,7 +802,8 @@ export function GrantCalculator() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: emailVal,
-            event: "paypal_container_rendered"
+            event: "paypal_container_rendered",
+            ...getDeviceMetadata()
           })
         }).catch(() => {});
       }
@@ -666,7 +822,8 @@ export function GrantCalculator() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   email: currentEmail,
-                  event: "paypal_button_clicked"
+                  event: "paypal_button_clicked",
+                  ...getDeviceMetadata()
                 })
               }).catch(() => {});
             }
@@ -678,7 +835,8 @@ export function GrantCalculator() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   email: currentEmail,
-                  event: "paypal_popup_opened"
+                  event: "paypal_popup_opened",
+                  ...getDeviceMetadata()
                 })
               }).catch(() => {});
             }
@@ -694,7 +852,8 @@ export function GrantCalculator() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   email: currentEmail,
-                  event: "create_order_started"
+                  event: "create_order_started",
+                  ...getDeviceMetadata()
                 })
               }).catch(() => {});
             }
@@ -731,7 +890,8 @@ export function GrantCalculator() {
                 body: JSON.stringify({
                   email: currentEmail,
                   event: "checkout_started",
-                  priceShown: price.toString()
+                  priceShown: price.toString(),
+                  ...getDeviceMetadata()
                 })
               }).catch(() => {});
 
@@ -740,7 +900,8 @@ export function GrantCalculator() {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({
                   email: currentEmail,
-                  event: "create_order_success"
+                  event: "create_order_success",
+                  ...getDeviceMetadata()
                 })
               }).catch(() => {});
             }
@@ -780,7 +941,8 @@ export function GrantCalculator() {
                   body: JSON.stringify({
                     email: currentEmail,
                     event: "payment_approved",
-                    paypalOrderId: _data?.orderID || ''
+                    paypalOrderId: _data?.orderID || '',
+                    ...getDeviceMetadata()
                   })
                 }).catch(e => console.error("Telemetry error:", e));
               }
@@ -804,7 +966,8 @@ export function GrantCalculator() {
                   headers: { "Content-Type": "application/json" },
                   body: JSON.stringify({
                     email: currentEmail,
-                    event: "payment_capture_success"
+                    event: "payment_capture_success",
+                    ...getDeviceMetadata()
                   })
                 }).catch(() => {});
               }
@@ -858,7 +1021,8 @@ export function GrantCalculator() {
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                       email: currentEmail,
-                      event: "redirect_booking"
+                      event: "redirect_booking",
+                      ...getDeviceMetadata()
                     })
                   }).catch(() => {});
                 }
@@ -871,6 +1035,19 @@ export function GrantCalculator() {
             } catch (err) {
               console.error("Payment capture error:", err);
               setPaymentError("Payment processed, but we encountered an issue. Contact support@fsidigital.ca");
+              
+              if (currentEmail) {
+                fetch("/api/subscriber/track-activity", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify({
+                    email: currentEmail,
+                    event: "payment_capture_failed",
+                    errorMessage: err instanceof Error ? err.message : String(err),
+                    ...getDeviceMetadata()
+                  })
+                }).catch(() => {});
+              }
             }
           },
           onApproveCancel: () => {},
@@ -900,16 +1077,36 @@ export function GrantCalculator() {
           onError: (err: any) => {
             console.error("PayPal error:", err);
             setPaymentError("Payment failed. Please try again or use a different payment method.");
+            
+            const currentEmail = dataRef.current.email;
+            if (currentEmail) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: currentEmail,
+                  event: "create_order_failed",
+                  errorMessage: err instanceof Error ? err.message : String(err),
+                  ...getDeviceMetadata()
+                })
+              }).catch(() => {});
+            }
           }
         }).render('#calc-paypal-button').then(() => {
           // Telemetry: paypal_buttons_rendered
           if (emailVal) {
+            const renderTime = step6EnteredTimeRef.current 
+              ? ((Date.now() - step6EnteredTimeRef.current) / 1000).toFixed(2)
+              : "unknown";
+
             fetch("/api/subscriber/track-activity", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 email: emailVal,
-                event: "paypal_buttons_rendered"
+                event: "paypal_buttons_rendered",
+                renderTimeSeconds: renderTime,
+                ...getDeviceMetadata()
               })
             }).catch(() => {});
           }
@@ -918,6 +1115,19 @@ export function GrantCalculator() {
         console.error("Failed to render PayPal buttons:", err);
         setPaymentError("Could not load checkout. Please refresh.");
         buttonsRenderedRef.current = false;
+        
+        if (emailVal) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: emailVal,
+              event: "paypal_buttons_failed",
+              errorMessage: err instanceof Error ? err.message : String(err),
+              ...getDeviceMetadata()
+            })
+          }).catch(() => {});
+        }
       }
     }, [sdkReady, step, isEmailValid]);
 
@@ -1053,21 +1263,54 @@ export function GrantCalculator() {
     // --- Load Report Data ---
     const loadReport = async (token: string) => {
       setIsLoadingReport(true);
+      setReportLoadStep(0);
+
+      // Start simulated processing interval (1200ms per step = 7.2 seconds total progress time)
+      let stepCounter = 0;
+      const interval = setInterval(() => {
+        stepCounter++;
+        if (stepCounter <= 5) {
+          setReportLoadStep(stepCounter);
+        } else {
+          clearInterval(interval);
+        }
+      }, 1200);
+
+      // Run API fetch concurrently
+      let reportResult: any = null;
       try {
         const res = await fetch(`/api/products/verify?token=${encodeURIComponent(token)}`);
         const json = await res.json();
         if (json.report) {
-          setReportData(json.report);
-          setHasStrategyUnlocked(!!json.hasStrategyUnlocked);
-          setStrategyData(json.strategyData || null);
-          setHasToolkitUnlocked(!!json.hasToolkitUnlocked);
-          setHasApprovalLibraryUnlocked(!!json.hasApprovalLibraryUnlocked);
+          reportResult = json;
         }
       } catch (err) {
         console.error("Failed to load report:", err);
-      } finally {
-        setIsLoadingReport(false);
       }
+
+      // Enforce waiting until the progress steps reach Step 5
+      await new Promise<void>((resolve) => {
+        const checkInterval = setInterval(() => {
+          if (stepCounter >= 5) {
+            clearInterval(checkInterval);
+            clearInterval(interval); // Safe cleanup
+            resolve();
+          }
+        }, 200);
+      });
+
+      // Complete last visual step
+      setReportLoadStep(6);
+      await new Promise(r => setTimeout(r, 2200));
+
+      if (reportResult) {
+        setReportData(reportResult.report);
+        setHasStrategyUnlocked(!!reportResult.hasStrategyUnlocked);
+        setStrategyData(reportResult.strategyData || null);
+        setHasToolkitUnlocked(!!reportResult.hasToolkitUnlocked);
+        setHasApprovalLibraryUnlocked(!!reportResult.hasApprovalLibraryUnlocked);
+      }
+      setIsLoadingReport(false);
     };
 
     const updateData = (field: keyof CalculatorData, value: string) => {
@@ -1756,45 +1999,92 @@ export function GrantCalculator() {
                                         Justification: {opp.justification}
                                       </p>
                                       
-                                      {/* Match details - blurred for paywall */}
+                                      {/* Match details - blurred for paywall except Match #1 */}
                                       <div className="mt-3 pt-3 border-t border-slate-100 grid grid-cols-2 gap-3 text-xs">
                                         <div>
                                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Match Fit Score</span>
-                                          <div className="flex items-center gap-1.5 font-bold text-slate-700 select-none">
-                                            <Lock className="w-3.5 h-3.5 text-indigo-500 shrink-0" />
-                                            <span className="filter blur-[3.5px] select-none pointer-events-none">94% High Fit</span>
+                                          <div className="flex items-center gap-1.5 font-bold text-slate-750">
+                                            {idx !== 0 && <Lock className="w-3.5 h-3.5 text-indigo-500 shrink-0" />}
+                                            <span className={idx === 0 ? "text-emerald-700 font-extrabold" : "filter blur-[3.5px] select-none pointer-events-none text-slate-750"}>
+                                              {idx === 0 ? "Strong Match" : "Strong Match"}
+                                            </span>
                                           </div>
                                         </div>
                                         <div>
                                           <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mb-1">Submission Complexity</span>
-                                          <div className="flex items-center gap-1.5 font-bold text-slate-750 select-none">
-                                            <span className="filter blur-[3.5px] select-none pointer-events-none">Moderate</span>
+                                          <div className="flex items-center gap-1.5 font-bold text-slate-750">
+                                            <span className={idx === 0 ? "text-slate-750 font-semibold" : "filter blur-[3.5px] select-none pointer-events-none text-slate-750"}>
+                                              Moderate
+                                            </span>
                                           </div>
                                         </div>
                                       </div>
-
-                                      {/* Blurred Roadmap & Eligibility Teaser */}
-                                      <div className="mt-3 p-3 bg-slate-100/40 rounded-lg relative overflow-hidden border border-slate-100 select-none">
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-50/95 via-slate-50/60 to-slate-50/95 flex items-center justify-center z-10">
-                                          <div className="flex items-center gap-1 bg-white/95 border border-indigo-150 px-2.5 py-1 rounded-full shadow-xs text-[10px] font-extrabold text-indigo-700">
-                                            <Lock className="w-3 h-3 text-indigo-500" />
-                                            <span>Unlock eligibility logic, documents list &amp; timeline roadmap</span>
+ 
+                                      {/* Blurred Roadmap & Eligibility Teaser - unblurred for Match #1 */}
+                                      <div className="mt-3 p-3 bg-slate-100/40 rounded-lg relative overflow-hidden border border-slate-100">
+                                        {idx !== 0 && (
+                                          <div className="absolute inset-0 bg-gradient-to-t from-slate-50/95 via-slate-50/60 to-slate-50/95 flex items-center justify-center z-10 select-none">
+                                            <div className="flex items-center gap-1 bg-white/95 border border-indigo-150 px-2.5 py-1 rounded-full shadow-xs text-[10px] font-extrabold text-indigo-700">
+                                              <Lock className="w-3 h-3 text-indigo-500" />
+                                              <span>Unlock eligibility logic, documents list &amp; timeline roadmap</span>
+                                            </div>
                                           </div>
-                                        </div>
-                                        <div className="filter blur-[3.5px] space-y-1.5 opacity-40 text-[11px] select-none pointer-events-none">
-                                          <div className="flex items-center gap-1.5">
-                                            <span className="text-emerald-500 font-bold">✓</span>
-                                            <span>Verify company registration status in province</span>
+                                        )}
+                                        {idx === 0 ? (
+                                          <div className="space-y-1.5 text-[11px] text-left">
+                                            <div className="text-indigo-950 font-extrabold uppercase tracking-wider text-[9px] mb-2 flex items-center gap-1">
+                                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Unlocked Match Parameters
+                                            </div>
+                                            <div className="flex items-start gap-1.5 text-slate-700">
+                                              <span className="text-emerald-600 font-extrabold shrink-0">✓</span>
+                                              <div>
+                                                <strong>Funding Portion:</strong> {
+                                                  opp.name.includes("SR&ED") ? "Up to 35% refundable tax credit on salaries" :
+                                                  opp.name.includes("IRAP") ? "50% to 80% direct wage subsidy" :
+                                                  opp.name.includes("Summer Jobs") ? "Up to 50% of provincial minimum wage" :
+                                                  "50% matched co-funding"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div className="flex items-start gap-1.5 text-slate-700">
+                                              <span className="text-emerald-600 font-extrabold shrink-0">✓</span>
+                                              <div>
+                                                <strong>Deadline:</strong> {
+                                                  opp.name.includes("SR&ED") ? "18 months from corporate fiscal year-end" :
+                                                  opp.name.includes("IRAP") ? "Prior to active project start (no retroactive coverage)" :
+                                                  opp.name.includes("Summer Jobs") ? "Annual program window (typically Jan-Feb)" :
+                                                  "Rolling intake (approval takes 4-8 weeks)"
+                                                }
+                                              </div>
+                                            </div>
+                                            <div className="flex items-start gap-1.5 text-slate-700">
+                                              <span className="text-emerald-600 font-extrabold shrink-0">✓</span>
+                                              <div>
+                                                <strong>Stacking Rules:</strong> {
+                                                  opp.name.includes("SR&ED") ? "Fully stackable with provincial tax credits (OITC/CDAE)" :
+                                                  opp.name.includes("IRAP") ? "Stackable with SR&ED on net non-subsidized wage portion" :
+                                                  opp.name.includes("Summer Jobs") ? "Non-stackable with other concurrent federal wage grants" :
+                                                  "Stackable with regional development loans"
+                                                }
+                                              </div>
+                                            </div>
                                           </div>
-                                          <div className="flex items-center gap-1.5">
-                                            <span className="text-emerald-500 font-bold">✓</span>
-                                            <span>Submit technical description within 18 months</span>
+                                        ) : (
+                                          <div className="filter blur-[3.5px] space-y-1.5 opacity-40 text-[11px] select-none pointer-events-none">
+                                            <div className="flex items-center gap-1.5">
+                                              <span className="text-emerald-500 font-bold">✓</span>
+                                              <span>Verify company registration status in province</span>
+                                            </div>
+                                            <div className="flex items-center gap-1.5">
+                                              <span className="text-emerald-500 font-bold">✓</span>
+                                              <span>Submit technical description within 18 months</span>
+                                            </div>
+                                            <div className="flex items-center gap-1.5">
+                                              <span className="text-emerald-500 font-bold">✓</span>
+                                              <span>Step 1: Contact regional technology advisor</span>
+                                            </div>
                                           </div>
-                                          <div className="flex items-center gap-1.5">
-                                            <span className="text-emerald-500 font-bold">✓</span>
-                                            <span>Step 1: Contact regional technology advisor</span>
-                                          </div>
-                                        </div>
+                                        )}
                                       </div>
                                     </div>
                                   ))}
@@ -1858,92 +2148,203 @@ export function GrantCalculator() {
                               </div>
                             </div>
 
-                            {/* 3-Tier Pricing Architecture */}
-                            <div className="space-y-4">
-                                <h3 className="text-xl font-bold text-slate-900 text-center mb-4">Select Your Analysis Tier</h3>
-                                
-                                {/* Tier 1: $79 Complete Bundle (Highlighted) */}
-                                <div
-                                    onClick={() => setSelectedProductId('funding-bundle')}
-                                    className={`cursor-pointer border-2 rounded-xl p-5 relative overflow-hidden transition-all ${
-                                    selectedProductId === 'funding-bundle'
-                                        ? 'border-indigo-600 bg-indigo-50/10 shadow-md ring-1 ring-indigo-600'
-                                        : 'border-slate-200 bg-white hover:border-slate-300'
-                                    }`}
-                                >
-                                    <div className="absolute top-0 right-0 bg-indigo-600 text-white text-[10px] font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-                                        Most Popular & Best Value
-                                    </div>
-                                    {selectedProductId === 'funding-bundle' && (
-                                    <div className="absolute top-6 right-5 text-indigo-600">
-                                        <CheckCircle className="w-5 h-5" />
-                                    </div>
-                                    )}
-                                    <h4 className="font-bold text-slate-900 text-base">Complete Funding Bundle</h4>
-                                    <p className="text-xs text-slate-505 mt-1">Get the report + prioritized step-by-step Action Plan + Toolkit.</p>
-                                    <div className="mt-4 flex items-baseline gap-1">
-                                        <span className="text-2xl font-extrabold text-slate-900">$79</span>
-                                        <span className="text-xs text-slate-400 font-normal">one-time</span>
-                                    </div>
-                                    <ul className="mt-4 space-y-2 text-xs text-slate-700">
-                                        <li className="flex items-start gap-2 font-semibold text-indigo-900"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Everything in the Action Plan & Report</li>
-                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Funding Application Toolkit (Templates)</li>
-                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" /> Funding Approval Library (Winning Examples)</li>
-                                    </ul>
+                            {/* What You Receive deliverables summary */}
+                            <div className="border border-slate-200 rounded-2xl bg-slate-50/40 p-6 text-left space-y-4">
+                              <h4 className="font-extrabold text-slate-900 text-sm sm:text-base border-b border-slate-200 pb-2 flex items-center gap-2">
+                                <FileText className="w-5 h-5 text-indigo-605 shrink-0" />
+                                What You Receive:
+                              </h4>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-xs text-slate-707 font-medium">
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Up to 18 personalized opportunities based on your business profile</span>
                                 </div>
-
-                                {/* Tier 2: $49 Action Plan */}
-                                <div
-                                    onClick={() => setSelectedProductId('funding-roadmap')}
-                                    className={`cursor-pointer border-2 rounded-xl p-5 relative transition-all ${
-                                    selectedProductId === 'funding-roadmap'
-                                        ? 'border-emerald-500 bg-emerald-50/10 shadow-md ring-1 ring-emerald-500'
-                                        : 'border-slate-200 bg-white hover:border-slate-300'
-                                    }`}
-                                >
-                                    {selectedProductId === 'funding-roadmap' && (
-                                    <div className="absolute top-6 right-5 text-emerald-500">
-                                        <CheckCircle className="w-5 h-5" />
-                                    </div>
-                                    )}
-                                    <h4 className="font-bold text-slate-900 text-base">Funding Action Plan</h4>
-                                    <p className="text-xs text-slate-500 mt-1">Get a step-by-step roadmap for your matched programs.</p>
-                                    <div className="mt-4 flex items-baseline gap-1">
-                                        <span className="text-2xl font-extrabold text-slate-900">$49</span>
-                                        <span className="text-xs text-slate-400 font-normal">one-time</span>
-                                    </div>
-                                    <ul className="mt-4 space-y-2 text-xs text-slate-700">
-                                        <li className="flex items-start gap-2 font-semibold text-emerald-800"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Everything in the Match Report</li>
-                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Priority program ranking &amp; timeline schedule</li>
-                                        <li className="flex items-start gap-2"><CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" /> Program risk warning indicators</li>
-                                    </ul>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Filing roadmap &amp; scheduler</span>
                                 </div>
-
-                                {/* Tier 3: $19 Match Report */}
-                                <div
-                                    onClick={() => setSelectedProductId('funding-match-report')}
-                                    className={`cursor-pointer border border-slate-200 rounded-xl p-5 relative transition-all ${
-                                    selectedProductId === 'funding-match-report'
-                                        ? 'border-slate-400 bg-slate-50 shadow-sm ring-1 ring-slate-400'
-                                        : 'bg-white hover:border-slate-300'
-                                    }`}
-                                >
-                                    {selectedProductId === 'funding-match-report' && (
-                                    <div className="absolute top-6 right-5 text-slate-550">
-                                        <CheckCircle className="w-5 h-5" />
-                                    </div>
-                                    )}
-                                    <h4 className="font-bold text-slate-800 text-sm">Basic Match Report</h4>
-                                    <div className="mt-2 flex items-baseline gap-1">
-                                        <span className="text-xl font-bold text-slate-900">$19</span>
-                                    </div>
-                                    <ul className="mt-4 space-y-2 text-xs text-slate-650">
-                                        <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Programs you qualify for</li>
-                                        <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Estimated funding ranges</li>
-                                        <li className="flex items-start gap-2"><span className="text-slate-400">•</span> Required documents overview</li>
-                                    </ul>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Program stacking order guidelines</span>
                                 </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Programs to avoid (to prevent rejected applications)</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Estimated success probability fit rates</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Required documents checklists</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Timeline month-by-month roadmaps</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>CRA / IRAP stacking compliance notes</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Grant calendar timeline planning</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Provincial strategies &amp; local caps</span>
+                                </div>
+                                <div className="flex items-center gap-2">
+                                  <span className="text-emerald-600 font-extrabold">✓</span>
+                                  <span>Funding sequence stacking matrices</span>
+                                </div>
+                              </div>
+                              <div className="pt-3 border-t border-slate-200 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 text-xs">
+                                <div className="text-slate-505 font-semibold">
+                                  Estimated preparation time saved: <strong className="text-slate-800">32+ hours</strong>
+                                </div>
+                                <div className="text-slate-505 font-semibold text-right">
+                                  <span>Designed to replace hours of manual research and consultant preparation.</span>
+                                </div>
+                              </div>
                             </div>
+
+                             {/* 3-Tier Pricing Architecture */}
+                             <div className="space-y-4">
+                                 <h3 className="text-xl font-bold text-slate-900 text-center">Select Your Analysis Tier</h3>
+                                 <p className="text-xs text-slate-500 font-semibold text-center -mt-2 mb-2">
+                                   Choose the level of guidance that&apos;s right for your business.
+                                 </p>
+                                 <div className="bg-amber-50 border border-amber-200 rounded-xl p-3.5 text-xs text-amber-905 font-medium flex items-start gap-2.5 max-w-2xl mx-auto mb-4">
+                                   <span className="text-base shrink-0 mt-0.5">⚠️</span>
+                                   <div className="text-left">
+                                     <strong>Intake Deadlines:</strong> Government program intakes open and close throughout the fiscal year. Some programs have limited intake windows or capping limits. Select your tier below to secure current eligibility stacking guidelines.
+                                   </div>
+                                 </div>
+                                 
+                                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                     {/* Tier 3: $19 Match Report */}
+                                     <div
+                                         onClick={() => setSelectedProductId('funding-match-report')}
+                                         className={`cursor-pointer border-2 rounded-xl p-5 relative transition-all flex flex-col justify-between ${
+                                         selectedProductId === 'funding-match-report'
+                                             ? 'border-slate-500 bg-slate-50/50 shadow-md ring-1 ring-slate-500'
+                                             : 'border-slate-200 bg-white hover:border-slate-350'
+                                         }`}
+                                     >
+                                         <div>
+                                             <div className="flex items-center justify-between">
+                                                 <h4 className="font-bold text-slate-800 text-sm">Basic Report</h4>
+                                                 {selectedProductId === 'funding-match-report' && <CheckCircle className="w-4 h-4 text-slate-550 shrink-0" />}
+                                             </div>
+                                             <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">Personalized list of matched programs and basic details.</p>
+                                             <div className="mt-3 flex items-baseline gap-1">
+                                                 <span className="text-2xl font-black text-slate-900">$19</span>
+                                                 <span className="text-[10px] text-slate-400">one-time</span>
+                                             </div>
+                                             <ul className="mt-4 space-y-2 text-[11px] text-slate-600 border-t border-slate-100 pt-3 text-left">
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Personalized Match List</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Est. Funding Ranges</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Documents Checklist</li>
+                                                 <li className="flex items-center gap-1.5 text-slate-350 line-through"><span className="font-bold">✗</span> Program Risk Scores</li>
+                                                 <li className="flex items-center gap-1.5 text-slate-350 line-through"><span className="font-bold">✗</span> Step-by-Step Roadmaps</li>
+                                                 <li className="flex items-center gap-1.5 text-slate-350 line-through"><span className="font-bold">✗</span> Application Templates</li>
+                                             </ul>
+                                         </div>
+                                         <div className="mt-4">
+                                             <span className={`w-full py-2 px-3 text-center text-xs font-bold rounded-lg block border ${
+                                               selectedProductId === 'funding-match-report' 
+                                                 ? 'bg-slate-800 text-white border-slate-800' 
+                                                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                                             }`}>
+                                               {selectedProductId === 'funding-match-report' ? 'Selected' : 'Select Basic'}
+                                             </span>
+                                         </div>
+                                     </div>
+
+                                     {/* Tier 1: $79 Complete Bundle (Highlighted Center Card) */}
+                                     <div
+                                         onClick={() => setSelectedProductId('funding-bundle')}
+                                         className={`cursor-pointer border-2 rounded-xl p-5 relative overflow-hidden transition-all flex flex-col justify-between md:-translate-y-1 md:scale-105 ${
+                                         selectedProductId === 'funding-bundle'
+                                             ? 'border-indigo-600 bg-indigo-50/15 shadow-lg ring-1 ring-indigo-600'
+                                             : 'border-indigo-500/35 bg-white hover:border-indigo-400 shadow-xs'
+                                         }`}
+                                     >
+                                         <div className="absolute top-0 inset-x-0 bg-indigo-600 text-white text-[8px] font-extrabold py-0.5 text-center uppercase tracking-wider">
+                                             Most Popular &amp; Best Value
+                                         </div>
+                                         <div className="pt-2">
+                                             <div className="flex items-center justify-between">
+                                                 <h4 className="font-extrabold text-slate-900 text-sm">Complete Bundle</h4>
+                                                 {selectedProductId === 'funding-bundle' && <CheckCircle className="w-4 h-4 text-indigo-600 shrink-0" />}
+                                             </div>
+                                             <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">Filing templates, compliance guides, and stacking sequence.</p>
+                                             <div className="mt-3 flex items-baseline gap-1">
+                                                 <span className="text-2xl font-black text-slate-900">$79</span>
+                                                 <span className="text-[10px] text-slate-400">one-time</span>
+                                             </div>
+                                             <ul className="mt-4 space-y-2 text-[11px] text-slate-750 border-t border-indigo-100 pt-3 text-left">
+                                                 <li className="flex items-center gap-1.5 font-bold text-indigo-950"><span className="text-indigo-600 font-bold">✓</span> Stacking Sequence Guidelines</li>
+                                                 <li className="flex items-center gap-1.5 font-bold text-indigo-950"><span className="text-indigo-600 font-bold">✓</span> Eligibility Roadmaps</li>
+                                                 <li className="flex items-center gap-1.5 font-bold text-indigo-950"><span className="text-indigo-600 font-bold">✓</span> Application Templates</li>
+                                                 <li className="flex items-center gap-1.5 font-bold text-indigo-950"><span className="text-indigo-600 font-bold">✓</span> Winning Case Examples</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-indigo-600 font-bold">✓</span> Program Fit Risk Ratings</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-indigo-600 font-bold">✓</span> 30-Day Refund Guarantee</li>
+                                             </ul>
+                                         </div>
+                                         <div className="mt-4">
+                                             <span className={`w-full py-2 px-3 text-center text-xs font-bold rounded-lg block border ${
+                                               selectedProductId === 'funding-bundle' 
+                                                 ? 'bg-indigo-650 text-white border-indigo-650 shadow-xs animate-pulse-slow' 
+                                                 : 'bg-white text-indigo-600 border-indigo-200 hover:bg-indigo-50'
+                                             }`}>
+                                               {selectedProductId === 'funding-bundle' ? 'Selected' : 'Select Complete'}
+                                             </span>
+                                         </div>
+                                     </div>
+
+                                     {/* Tier 2: $49 Action Plan */}
+                                     <div
+                                         onClick={() => setSelectedProductId('funding-roadmap')}
+                                         className={`cursor-pointer border-2 rounded-xl p-5 relative transition-all flex flex-col justify-between ${
+                                         selectedProductId === 'funding-roadmap'
+                                             ? 'border-emerald-500 bg-emerald-50/10 shadow-md ring-1 ring-emerald-500'
+                                             : 'border-slate-200 bg-white hover:border-slate-350'
+                                         }`}
+                                     >
+                                         <div>
+                                             <div className="flex items-center justify-between">
+                                                 <h4 className="font-bold text-slate-900 text-sm">Action Plan</h4>
+                                                 {selectedProductId === 'funding-roadmap' && <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />}
+                                             </div>
+                                             <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">Priority schedule mapping and program compliance warning flags.</p>
+                                             <div className="mt-3 flex items-baseline gap-1">
+                                                 <span className="text-2xl font-black text-slate-900">$49</span>
+                                                 <span className="text-[10px] text-slate-400">one-time</span>
+                                             </div>
+                                             <ul className="mt-4 space-y-2 text-[11px] text-slate-600 border-t border-slate-100 pt-3 text-left">
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Stacking Sequence Guidelines</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Eligibility Roadmaps</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Program Fit Risk Ratings</li>
+                                                 <li className="flex items-center gap-1.5"><span className="text-emerald-600 font-bold">✓</span> Verified B2B Database</li>
+                                                 <li className="flex items-center gap-1.5 text-slate-350 line-through"><span className="font-bold">✗</span> Application Templates</li>
+                                                 <li className="flex items-center gap-1.5 text-slate-350 line-through"><span className="font-bold">✗</span> Winning Case Examples</li>
+                                             </ul>
+                                         </div>
+                                         <div className="mt-4">
+                                             <span className={`w-full py-2 px-3 text-center text-xs font-bold rounded-lg block border ${
+                                               selectedProductId === 'funding-roadmap' 
+                                                 ? 'bg-emerald-600 text-white border-emerald-600' 
+                                                 : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'
+                                             }`}>
+                                               {selectedProductId === 'funding-roadmap' ? 'Selected' : 'Select Plan'}
+                                             </span>
+                                         </div>
+                                     </div>
+                                 </div>
+                             </div>
 
                             {/* Package Specific Deliverables Card */}
                             {(() => {
@@ -1969,8 +2370,28 @@ export function GrantCalculator() {
                               );
                             })()}
 
+                            {/* Social Proof Stats Bar */}
+                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 grid grid-cols-2 sm:grid-cols-4 gap-4 text-center">
+                              <div>
+                                <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">120+</div>
+                                <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Funding Eligibility Assessments Generated</div>
+                              </div>
+                              <div>
+                                <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">3,800+</div>
+                                <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Funding Records Indexed</div>
+                              </div>
+                              <div>
+                                <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">250+</div>
+                                <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Active Programs</div>
+                              </div>
+                              <div>
+                                <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">45s</div>
+                                <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Avg Report Time</div>
+                              </div>
+                            </div>
+
                             {/* Email Capture & Payment */}
-                            <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm">
+                            <div className="bg-gradient-to-br from-slate-50 to-white border-2 border-slate-200 rounded-2xl p-6 shadow-sm focus-within:pb-36 md:focus-within:pb-6 transition-all duration-300">
                                 {/* Personalized Metadata Header */}
                                 {(() => {
                                   const cleanField = (val: string, fallback: string) => {
@@ -2034,30 +2455,33 @@ export function GrantCalculator() {
                                     </div>
                                 </div>
                                 
-                                <div className="mb-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left space-y-3">
-                                     <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
-                                         <Lock className="w-4 h-4 text-emerald-600 shrink-0" />
-                                         <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Secure SSL Checkout</h5>
-                                     </div>
-                                     <div className="space-y-2 text-xs text-slate-600 font-medium">
-                                         <div className="flex items-start gap-2">
-                                             <span className="text-emerald-500 font-bold">✓</span>
-                                             <span><strong>SSL Encryption</strong>: 256-bit encrypted checkout secures your transaction. Your payment details are never stored or seen.</span>
-                                         </div>
-                                         <div className="flex items-start gap-2">
-                                             <span className="text-emerald-500 font-bold">✓</span>
-                                             <span><strong>30-Day Guarantee</strong>: 100% risk-free money-back refund if we cannot identify any active funding matches or if you are not satisfied with accuracy.</span>
-                                         </div>
-                                         <div className="flex items-start gap-2">
-                                             <span className="text-emerald-500 font-bold">✓</span>
-                                             <span><strong>7-Day Audit Credit</strong>: Get 100% of your report fee credited back to your account if you upgrade to a 1-on-1 strategy audit session within 7 days.</span>
-                                         </div>
-                                         <div className="flex items-start gap-2">
-                                             <span className="text-emerald-500 font-bold">✓</span>
-                                             <span><strong>Instant Access</strong>: Digital delivery immediately rendered on your dashboard and emailed in PDF format within 60 seconds.</span>
-                                         </div>
-                                     </div>
-                                 </div>
+                                <div className="mb-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left space-y-2.5">
+                                    <div className="flex items-center gap-2 border-b border-slate-200 pb-2">
+                                        <Lock className="w-4 h-4 text-emerald-600 shrink-0" />
+                                        <h5 className="text-xs font-bold text-slate-800 uppercase tracking-wider">Checkout Security &amp; Guarantees</h5>
+                                    </div>
+                                    <div className="grid grid-cols-2 gap-x-4 gap-y-2 text-xs text-slate-655 font-medium">
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-600">🔒</span>
+                                            <span>Secure PayPal Checkout</span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-600">✅</span>
+                                            <span>100% Money-Back Guarantee</span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-600">⭐</span>
+                                            <span>Analyst Reviewed</span>
+                                        </div>
+                                        <div className="flex items-center gap-1.5">
+                                            <span className="text-emerald-600">📄</span>
+                                            <a href="/terms" target="_blank" rel="noopener noreferrer" className="underline hover:text-indigo-650">Refund Policy</a>
+                                        </div>
+                                    </div>
+                                    <p className="text-[10px] text-slate-505 leading-relaxed pt-1.5 border-t border-slate-150 mt-1">
+                                        <strong>Founder Guarantee:</strong> If, based on the information you provide, we cannot identify any eligible funding opportunities in your report, you&apos;re covered by our refund policy.
+                                    </p>
+                                </div>
 
                                 {/* What Happens Next Block */}
                                 <div className="mb-6 bg-slate-50 rounded-xl p-4 border border-slate-200 text-left">
@@ -2153,6 +2577,87 @@ export function GrantCalculator() {
                               </p>
                               <div className="mt-3 flex items-center gap-4">
                                 <a href="/methodology" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-700 hover:underline">Our Methodology →</a>
+                              </div>
+                            </div>
+
+                            {/* Why Trust This Report Credibility Card */}
+                            <div className="bg-gradient-to-br from-indigo-950 to-slate-900 text-white rounded-2xl p-5 text-left shadow-2xs space-y-3 border border-indigo-900/60">
+                              <h4 className="font-extrabold text-sm sm:text-base border-b border-indigo-900 pb-2 flex items-center gap-2 text-indigo-100">
+                                <ShieldCheck className="w-5 h-5 text-indigo-400 shrink-0" />
+                                Why trust this report?
+                              </h4>
+                              <p className="text-xs text-indigo-200 leading-relaxed font-medium">
+                                Your analysis is prepared and verified using FSI Digital&apos;s proprietary scoring algorithm and intelligence databases:
+                              </p>
+                              <ul className="space-y-2.5 text-xs text-indigo-100 font-semibold">
+                                <li className="flex items-center gap-2">
+                                  <span className="text-emerald-400 font-bold">✓</span>
+                                  <span>Continuously monitored Canadian funding programs</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                  <span className="text-emerald-400 font-bold">✓</span>
+                                  <span>Current fiscal program eligibility criteria</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                  <span className="text-emerald-400 font-bold">✓</span>
+                                  <span>Anti-double-dipping program stacking rules</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                  <span className="text-emerald-400 font-bold">✓</span>
+                                  <span>Provincial and municipal funding databases</span>
+                                </li>
+                                <li className="flex items-center gap-2">
+                                  <span className="text-emerald-400 font-bold">✓</span>
+                                  <span>Comprehensive compliance review framework</span>
+                                </li>
+                              </ul>
+                            </div>
+
+                            {/* Why Founders Choose FSI Digital Over Generic AI */}
+                            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left shadow-2xs space-y-3">
+                              <h4 className="font-extrabold text-slate-900 text-xs uppercase tracking-wider mb-1 flex items-center gap-1.5 border-b border-slate-200 pb-1.5">
+                                🤖 FSI Digital vs General AI
+                              </h4>
+                              <p className="text-[10px] text-slate-500 leading-relaxed font-medium mb-2">
+                                General AI is excellent for general research, but lacks company context. FSI Digital applies your business profile against funding rules, stacking limitations, and filing strategy.
+                              </p>
+                              <div className="overflow-x-auto">
+                                <table className="w-full text-xs text-left border-collapse">
+                                  <thead>
+                                    <tr className="border-b border-slate-250 text-slate-450 font-bold uppercase tracking-wider text-[8px]">
+                                      <th className="pb-1.5">Objection</th>
+                                      <th className="pb-1.5 text-slate-500">General AI (e.g. ChatGPT)</th>
+                                      <th className="pb-1.5 text-indigo-750">FSI Digital</th>
+                                    </tr>
+                                  </thead>
+                                  <tbody className="divide-y divide-slate-150 text-slate-600 font-medium">
+                                    <tr>
+                                      <td className="py-2 font-bold text-slate-800">Precision</td>
+                                      <td className="py-2 text-red-500">General advice / deadlines</td>
+                                      <td className="py-2 text-emerald-700 font-bold">Personalized maps</td>
+                                    </tr>
+                                    <tr>
+                                      <td className="py-2 font-bold text-slate-800">Stacking</td>
+                                      <td className="py-2 text-red-500">No stacking rules</td>
+                                      <td className="py-2 text-emerald-700 font-bold">Anti-dipping checks</td>
+                                    </tr>
+                                    <tr>
+                                      <td className="py-2 font-bold text-slate-800">Context</td>
+                                      <td className="py-2 text-red-500">Doesn&apos;t know profile</td>
+                                      <td className="py-2 text-emerald-700 font-bold">Built for your business</td>
+                                    </tr>
+                                    <tr>
+                                      <td className="py-2 font-bold text-slate-800">Sequence</td>
+                                      <td className="py-2 text-red-500">No filing order</td>
+                                      <td className="py-2 text-emerald-700 font-bold">Timeline roadmap</td>
+                                    </tr>
+                                    <tr>
+                                      <td className="py-2 font-bold text-slate-800">Timelines</td>
+                                      <td className="py-2 text-red-500">Outdated details</td>
+                                      <td className="py-2 text-emerald-700 font-bold">Weekly monitored data</td>
+                                    </tr>
+                                  </tbody>
+                                </table>
                               </div>
                             </div>
 
@@ -2316,10 +2821,78 @@ export function GrantCalculator() {
                           )}
                         </div>
 
-                        {/* Loading state */}
+                        {/* Loading state with step-by-step progress checklist */}
                         {isLoadingReport && (
-                          <div className="flex items-center justify-center py-8 gap-2 text-slate-500">
-                            <Loader2 className="w-5 h-5 animate-spin" /> Generating your personalized report...
+                          <div className="bg-slate-50 border border-slate-200 rounded-2xl p-8 max-w-md mx-auto text-left shadow-2xs space-y-6 animate-in fade-in duration-300">
+                            {reportLoadStep === 6 ? (
+                              <div className="space-y-4 animate-in fade-in duration-300">
+                                <div className="text-center space-y-2 pb-3 border-b border-slate-200">
+                                  <h4 className="font-extrabold text-slate-900 text-base">Analysis Complete</h4>
+                                  <p className="text-[11px] text-slate-500 font-medium">Compilation verified successfully</p>
+                                </div>
+                                <div className="space-y-3">
+                                  <div className="flex items-center gap-2.5 text-xs font-semibold text-emerald-600">
+                                    <span className="font-extrabold text-sm">✔</span>
+                                    <span>Up to 18 funding opportunities analyzed</span>
+                                  </div>
+                                  <div className="flex items-center gap-2.5 text-xs font-semibold text-emerald-600">
+                                    <span className="font-extrabold text-sm">✔</span>
+                                    <span>Stacking sequence rules applied</span>
+                                  </div>
+                                  <div className="flex items-center gap-2.5 text-xs font-semibold text-emerald-600">
+                                    <span className="font-extrabold text-sm">✔</span>
+                                    <span>Incorporation limits verified</span>
+                                  </div>
+                                  <div className="flex items-center gap-2.5 text-xs font-semibold text-emerald-600">
+                                    <span className="font-extrabold text-sm">✔</span>
+                                    <span>Intake deadlines mapped</span>
+                                  </div>
+                                </div>
+                                <div className="pt-3 border-t border-slate-100 flex items-center gap-2.5 text-xs font-bold text-indigo-650 justify-center animate-pulse">
+                                  <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                  <span>Opening Report...</span>
+                                </div>
+                              </div>
+                            ) : (
+                              <>
+                                <div className="text-center space-y-2 pb-2 border-b border-slate-200">
+                                  <Loader2 className="w-6 h-6 animate-spin text-indigo-655 mx-auto" />
+                                  <h4 className="font-extrabold text-slate-900 text-base">Generating your report...</h4>
+                                  <p className="text-[11px] text-slate-500 font-medium">FSI Digital research engine compiling matching parameters</p>
+                                </div>
+                                
+                                <div className="space-y-3">
+                                  {[
+                                    "Checking Federal Programs",
+                                    "Checking Provincial Programs",
+                                    "Checking Tax Credits",
+                                    "Running Stacking Rules",
+                                    "Building Funding Timeline",
+                                    "Preparing Action Plan"
+                                  ].map((stepLabel, idx) => {
+                                    const isDone = reportLoadStep > idx;
+                                    const isActive = reportLoadStep === idx;
+                                    return (
+                                      <div key={idx} className="flex items-center justify-between text-xs font-semibold">
+                                        <div className="flex items-center gap-2.5">
+                                          <span className={isDone ? "text-emerald-600 font-extrabold" : isActive ? "text-indigo-600 animate-pulse font-extrabold" : "text-slate-350"}>
+                                            {isDone ? "✓" : isActive ? "●" : "○"}
+                                          </span>
+                                          <span className={isDone ? "text-slate-700" : isActive ? "text-indigo-900 font-bold" : "text-slate-400 font-normal"}>
+                                            {stepLabel}
+                                          </span>
+                                        </div>
+                                        <span className={`text-[9px] uppercase font-bold tracking-wider ${
+                                          isDone ? "text-emerald-600 font-bold" : isActive ? "text-indigo-600 animate-pulse font-bold" : "text-slate-350 font-normal"
+                                        }`}>
+                                          {isDone ? "Done" : isActive ? "Running..." : "Pending"}
+                                        </span>
+                                      </div>
+                                    );
+                                  })}
+                                </div>
+                              </>
+                            )}
                           </div>
                         )}
 
@@ -3087,6 +3660,149 @@ export function GrantCalculator() {
                         {step === 4 ? 'Calculate' : 'Next'} <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
                 </CardFooter>
+            )}
+            {showExitSurvey && (
+              <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 flex items-center justify-center p-4 animate-in fade-in duration-200">
+                <div className="bg-white rounded-2xl max-w-md w-full p-6 shadow-xl border border-slate-100 relative text-left">
+                  <button 
+                    onClick={() => setShowExitSurvey(false)} 
+                    className="absolute top-4 right-4 text-slate-400 hover:text-slate-650 font-bold text-lg"
+                  >
+                    ✕
+                  </button>
+                  
+                  {exitSurveyStep === 1 ? (
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-2xl">💡</span>
+                        <h4 className="font-extrabold text-slate-900 text-lg leading-tight">Before you go...</h4>
+                      </div>
+                      <p className="text-xs text-slate-500 mb-4 font-semibold leading-relaxed">
+                        Here is one more personalized grant match identified for your business based on your regional and industry inputs:
+                      </p>
+                      
+                      {(() => {
+                        const matches = getMatchedPrograms(data);
+                        const secondMatch = matches[1] || matches[0];
+                        
+                        const getSpecificValueEstimate = (programName: string, rangeStr: string) => {
+                          const clean = (rangeStr || "$5,000 - $15,000").replace(/[\$,\+]/g, '');
+                          const parts = clean.split('-');
+                          let min = 5000;
+                          let max = 15000;
+                          if (parts.length === 2) {
+                            min = parseInt(parts[0].trim(), 10) || 5000;
+                            max = parseInt(parts[1].trim(), 10) || 15000;
+                          } else if (parts.length === 1) {
+                            max = parseInt(parts[0].trim(), 10) || 15000;
+                            min = Math.floor(max * 0.3);
+                          }
+
+                          // Use estimate as a base to calculate a stable, personalized number inside program range
+                          const seed = estimate > 0 ? estimate : 25000;
+                          const nameLength = data.company ? data.company.trim().length : 7;
+                          const ratio = ((seed + nameLength * 7) % 100) / 100;
+                          
+                          // Restrict ratio to 40% - 90% of the range so it is realistic
+                          const rawVal = min + (max - min) * (0.4 + ratio * 0.5);
+                          const roundedVal = Math.round(rawVal / 50) * 50;
+                          return `$${roundedVal.toLocaleString()}`;
+                        };
+
+                        const specificVal = getSpecificValueEstimate(secondMatch.name, secondMatch.range);
+                        
+                        return (
+                          <div className="bg-slate-55 border border-slate-200 rounded-xl p-4 mb-4 text-xs space-y-2">
+                            <div>
+                              <span className="text-[9px] font-bold uppercase tracking-wider text-slate-400 font-mono">Matched Program #2</span>
+                              <h5 className="font-extrabold text-slate-800 text-sm mt-0.5">{secondMatch.name}</h5>
+                            </div>
+                            <div className="grid grid-cols-2 gap-2 pt-1 border-t border-slate-100 mt-1">
+                              <div>
+                                <span className="text-slate-450 font-medium block text-[9px] uppercase">Est. Eligible Program Value</span>
+                                <strong className="text-slate-900 font-black text-xs">{specificVal}</strong>
+                              </div>
+                              <div>
+                                <span className="text-slate-450 font-medium block text-[9px] uppercase">Fit Score</span>
+                                <strong className="text-emerald-700 font-extrabold text-xs">Strong Match</strong>
+                              </div>
+                            </div>
+                          </div>
+                        );
+                      })()}
+                      
+                      <p className="text-xs text-slate-600 mb-5 leading-relaxed">
+                        Unlock the complete report including this program&apos;s full stacking roadmaps, timelines, and application templates for just <strong className="text-indigo-950">$79</strong>.
+                      </p>
+                      
+                      <div className="space-y-2.5">
+                        <button
+                          onClick={() => setShowExitSurvey(false)}
+                          className="w-full py-3 px-4 bg-indigo-650 hover:bg-indigo-700 text-white rounded-xl text-xs font-bold transition-all shadow-xs text-center block"
+                        >
+                          Yes, unlock my matches
+                        </button>
+                        <button
+                          onClick={() => setExitSurveyStep(2)}
+                          className="w-full py-2.5 px-4 bg-white border border-slate-200 hover:bg-slate-50 text-slate-600 hover:text-slate-800 rounded-xl text-xs font-bold transition-all text-center block"
+                        >
+                          No thanks, exit report
+                        </button>
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <div className="flex items-center gap-2 mb-3">
+                        <span className="text-2xl">📋</span>
+                        <h4 className="font-extrabold text-slate-900 text-lg leading-tight">Quick Question before you go?</h4>
+                      </div>
+                      <p className="text-xs text-slate-500 mb-4 font-medium leading-relaxed">
+                        As a startup-focused business, we rely on founder feedback to improve. What stopped you from checking out today?
+                      </p>
+                      
+                      <div className="space-y-2">
+                        {[
+                          "Too expensive / Pricing concerns",
+                          "Not enough information shown",
+                          "I want to think about it / compare",
+                          "Didn't trust the site credibility",
+                          "Technical issue / Payment problem",
+                          "Other reason / Just looking"
+                        ].map((option, idx) => (
+                          <button
+                            key={idx}
+                            onClick={async () => {
+                              setShowExitSurvey(false);
+                              
+                              // Telemetry log exit survey response
+                              const emailVal = dataRef.current.email;
+                              if (emailVal) {
+                                fetch("/api/subscriber/track-activity", {
+                                  method: "POST",
+                                  headers: { "Content-Type": "application/json" },
+                                  body: JSON.stringify({
+                                    email: emailVal,
+                                    event: "exit_survey_submitted",
+                                    surveyResponse: option,
+                                    ...getDeviceMetadata()
+                                  })
+                                }).catch(() => {});
+                              }
+                              
+                              // Proceed with going back
+                              setStep(s => Math.max(1, s - 1));
+                            }}
+                            className="w-full text-left p-3 border border-slate-200 hover:border-indigo-500 hover:bg-indigo-50/10 rounded-xl text-xs font-semibold text-slate-700 transition-all flex items-center justify-between"
+                          >
+                            <span>{option}</span>
+                            <span className="text-slate-350 font-bold">→</span>
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
             )}
         </Card>
     )

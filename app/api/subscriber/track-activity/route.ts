@@ -33,6 +33,16 @@ export async function POST(request: NextRequest) {
     const now = new Date().toISOString()
     const updates: any = {}
 
+    // Map advanced telemetry parameters into activity JSON
+    if (body.browser) activity.browser = body.browser
+    if (body.os) activity.os = body.os
+    if (body.device) activity.device = body.device
+    if (body.viewport) activity.viewport = body.viewport
+    if (body.durationSeconds) activity.durationSeconds = body.durationSeconds
+    if (body.renderTimeSeconds) activity.renderTimeSeconds = body.renderTimeSeconds
+    if (body.errorMessage) activity.lastErrorMessage = body.errorMessage
+    if (body.surveyResponse) activity.lastSurveyResponse = body.surveyResponse
+
     if (event === "checkout_started") {
       activity.checkoutStartedAt = now
       if (body.priceShown) {
@@ -43,6 +53,30 @@ export async function POST(request: NextRequest) {
       if (body.priceShown) {
         activity.priceShown = body.priceShown
       }
+    } else if (event === "step6_entered") {
+      activity.step6Entered = true
+      activity.step6EnteredAt = now
+    } else if (event === "email_validated") {
+      activity.emailValidated = true
+      activity.emailValidatedAt = now
+    } else if (event === "step6_exit") {
+      activity.step6Exit = true
+      activity.step6ExitAt = now
+    } else if (event === "exit_survey_submitted") {
+      activity.exitSurveySubmitted = true
+      activity.exitSurveySubmittedAt = now
+    } else if (event === "paypal_sdk_load_failed") {
+      activity.paypalSdkLoadFailed = true
+      activity.paypalSdkLoadFailedAt = now
+    } else if (event === "paypal_buttons_failed") {
+      activity.paypalButtonsFailed = true
+      activity.paypalButtonsFailedAt = now
+    } else if (event === "create_order_failed") {
+      activity.createOrderFailed = true
+      activity.createOrderFailedAt = now
+    } else if (event === "payment_capture_failed") {
+      activity.paymentCaptureFailed = true
+      activity.paymentCaptureFailedAt = now
     } else if (event === "paypal_container_rendered") {
       activity.paypalContainerRendered = true
       activity.paypalContainerRenderedAt = now
