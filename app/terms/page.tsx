@@ -61,7 +61,8 @@ export default function TermsOfService() {
               <li><a href="#indemnification" className="text-slate-700 hover:text-slate-900 hover:underline">13. Indemnification</a></li>
               <li><a href="#governing-law" className="text-slate-700 hover:text-slate-900 hover:underline">14. Governing Law</a></li>
               <li><a href="#changes-terms" className="text-slate-700 hover:text-slate-900 hover:underline">15. Changes to Terms</a></li>
-              <li><a href="#contact-terms" className="text-slate-700 hover:text-slate-900 hover:underline">16. Contact Information</a></li>
+              <li><a href="#refund-policy" className="text-slate-700 hover:text-slate-900 hover:underline">16. Refund & Satisfaction Guarantee Policy</a></li>
+              <li><a href="#contact-terms" className="text-slate-700 hover:text-slate-900 hover:underline">17. Contact Information</a></li>
             </ol>
           </div>
 
@@ -280,13 +281,34 @@ export default function TermsOfService() {
 
             <hr className="border-gray-200" />
 
-            {/* 16. Contact */}
+            {/* 16. Refund Policy */}
+            <section id="refund-policy">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
+                  <ShieldCheck className="w-5 h-5 text-emerald-600" />
+                </div>
+                <h2 className="text-2xl font-bold text-gray-900">16. Refund &amp; Satisfaction Guarantee Policy</h2>
+              </div>
+              <p className="text-gray-600 leading-relaxed mb-3">
+                At FSI Digital, we want you to feel confident in the value of our digital analysis reports. We back our digital reports (Basic Report, Action Plan, and Complete Bundle) with a **30-Day Refund &amp; Satisfaction Guarantee**.
+              </p>
+              <p className="text-gray-600 leading-relaxed mb-3">
+                If you are not satisfied with your report, or if you find that the matching eligibility parameters modeled did not accurately align with your business profile variables (and you wish to request a refund), please contact us within **30 calendar days** of your purchase at <a href="mailto:support@fsidigital.ca" className="text-emerald-600 hover:text-emerald-800 underline">support@fsidigital.ca</a>.
+              </p>
+              <p className="text-gray-600 leading-relaxed">
+                Refunds are processed to the original payment method (PayPal/card) within 5–10 business days of approval. Upon refund issuance, access to the digital report and any accompanying dynamic materials (onboarding tools, templates, and libraries) will be revoked.
+              </p>
+            </section>
+
+            <hr className="border-gray-200" />
+
+            {/* 17. Contact */}
             <section id="contact-terms">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-10 h-10 rounded-lg bg-emerald-100 flex items-center justify-center">
                   <Mail className="w-5 h-5 text-emerald-600" />
                 </div>
-                <h2 className="text-2xl font-bold text-gray-900">16. Contact Information</h2>
+                <h2 className="text-2xl font-bold text-gray-900">17. Contact Information</h2>
               </div>
               <p className="text-gray-600 leading-relaxed mb-4">
                 If you have any questions or concerns about these Terms of Service, please contact us:
