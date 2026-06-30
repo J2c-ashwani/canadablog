@@ -169,7 +169,7 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
           </span>
         </CardTitle>
         <CardDescription className="text-indigo-150 text-xs mt-1.5 leading-relaxed">
-          Avoid starting from a blank page. We provide the structured check-sheets and worksheets built using current program guidance to help reduce preparation time.
+          Start with ready-to-use worksheets, templates, and checklists instead of building everything yourself. We provide the structured check-sheets and worksheets built using current program guidance to help reduce preparation time.
         </CardDescription>
       </CardHeader>
       

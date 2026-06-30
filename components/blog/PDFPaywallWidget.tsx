@@ -211,14 +211,14 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
         <h3 className="text-lg font-black flex flex-col gap-1 items-start">
           <span className="flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
-            Prepare Your Application Faster
+            Submit Your Application with Confidence
           </span>
           <span className="text-emerald-200 text-xs font-semibold uppercase tracking-wider block">
             Application Companion Kit &amp; Implementation Pack
           </span>
         </h3>
         <p className="text-emerald-100 text-xs mt-1.5 leading-relaxed">
-          Avoid starting from a blank page. Skip the trial-and-error with structured checklists, worksheets, and templates designed to help reduce preparation time.
+          Start with ready-to-use worksheets, templates, and checklists instead of building everything yourself. Skip the trial-and-error with structured materials built using current program guidance to help reduce preparation time.
         </p>
       </div>
 

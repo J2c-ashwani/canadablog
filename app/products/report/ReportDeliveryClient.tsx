@@ -824,7 +824,7 @@ function ReportContent() {
                   <Lock className="w-6 h-6 animate-pulse" />
                 </div>
                 <h3 className="text-base font-black text-slate-800 flex flex-col gap-0.5 items-center">
-                  <span>Your Step-by-Step Filing Plan</span>
+                  <span>Know Exactly What to Do Next</span>
                   <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">
                     Funding Action Plan Upgrade
                   </span>

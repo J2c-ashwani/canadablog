@@ -531,14 +531,14 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
                   <div className="flex flex-col gap-1 items-start text-left mb-3">
                     <div className="flex gap-2 items-center text-xs font-black text-purple-950 uppercase tracking-wide">
                       <Lock className="w-4 h-4 text-purple-700 shrink-0" />
-                      Know Which Programs Are Worth Applying To
+                      Find the Programs Worth Your Time
                     </div>
-                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block font-semibold">
                       Funding Match Report ($19.00)
                     </span>
                   </div>
-                  <p className="text-xs text-slate-650 leading-relaxed mb-3">
-                    We identify which programs are worth your time before you spend hours applying.
+                  <p className="text-xs text-slate-655 leading-relaxed mb-3">
+                    Avoid spending weeks applying for programs that aren't a good fit. We identify which opportunities match your profile before you spend hours researching.
                   </p>
                   <ul className="space-y-1.5 text-xs text-slate-700 font-medium">
                     <li className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-purple-600" /> Know which programs to prioritize first</li>
