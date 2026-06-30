@@ -6,12 +6,13 @@ import {
   sendAlertActionPlanEmail,
   sendAlertSuccessEmail,
   sendAlertAuditEmail,
-  sendAlertAuditFollowupEmail
+  sendAlertAuditFollowupEmail,
+  sendAlertReferralEmail
 } from "../emails/alert-nurture";
 
 export interface AlertNurtureCandidate {
   lead: SubscriberProfile;
-  nextStage: "welcome" | "opp" | "report" | "plan" | "success" | "audit" | "audit_followup";
+  nextStage: "welcome" | "opp" | "report" | "plan" | "success" | "audit" | "audit_followup" | "referral";
   currentStage: string;
 }
 
@@ -26,6 +27,7 @@ export class AlertNurtureEngine {
       success: number;
       audit: number;
       audit_followup: number;
+      referral: number;
     };
     completedCount: number;
     errors: { email: string; stage: string; error: any }[];
@@ -114,7 +116,9 @@ export class AlertNurtureEngine {
         candidates.push({ lead: sub, nextStage: "audit", currentStage });
       } else if (currentStage === "audit" && elapsedDays >= 15) {
         candidates.push({ lead: sub, nextStage: "audit_followup", currentStage });
-      } else if (currentStage === "audit_followup" && elapsedDays >= 1) {
+      } else if (currentStage === "audit_followup" && elapsedDays >= 7) {
+        candidates.push({ lead: sub, nextStage: "referral", currentStage });
+      } else if (currentStage === "referral" && elapsedDays >= 1) {
         activity.alertNurtureStage = "completed";
         activity.alertNurtureSentAt = now.toISOString();
         try {
@@ -153,6 +157,7 @@ export class AlertNurtureEngine {
     let successCount = 0;
     let auditCount = 0;
     let auditFollowupCount = 0;
+    let referralCount = 0;
     const errors: { email: string; stage: string; error: any }[] = [];
     
     console.log(`🚀 [Alert Nurture Batch] Processing ${batch.length} candidate subscribers...`);
@@ -246,6 +251,16 @@ export class AlertNurtureEngine {
             });
             success = res.success;
             errorMsg = res.error;
+          } else if (nextStage === "referral") {
+            const res = await sendAlertReferralEmail({
+              to: email,
+              name: lead.name,
+              loginToken: lead.loginToken || "",
+              province,
+              industry
+            });
+            success = res.success;
+            errorMsg = res.error;
           }
         }
         
@@ -276,6 +291,7 @@ export class AlertNurtureEngine {
           else if (nextStage === "success") successCount++;
           else if (nextStage === "audit") auditCount++;
           else if (nextStage === "audit_followup") auditFollowupCount++;
+          else if (nextStage === "referral") referralCount++;
           
         } else {
           errors.push({ email, stage: nextStage, error: errorMsg || "Unknown error" });
@@ -300,7 +316,8 @@ export class AlertNurtureEngine {
         plan: planCount,
         success: successCount,
         audit: auditCount,
-        audit_followup: auditFollowupCount
+        audit_followup: auditFollowupCount,
+        referral: referralCount
       },
       completedCount,
       errors,
@@ -315,6 +332,7 @@ export class AlertNurtureEngine {
     if (stage === "plan") return "success";
     if (stage === "success") return "audit";
     if (stage === "audit") return "audit_followup";
+    if (stage === "audit_followup") return "referral";
     return "completed";
   }
 }

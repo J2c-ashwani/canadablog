@@ -366,3 +366,49 @@ export async function sendAlertAuditFollowupEmail({
 
   return sendEmail({ to, subject, html, text, tagType: 'alert-nurture-audit-followup' });
 }
+
+/**
+ * Day 52: Retention, Case Studies & Referrals Loop
+ */
+export async function sendAlertReferralEmail({
+  to,
+  name,
+  loginToken,
+  province,
+  industry
+}: {
+  to: string;
+  name?: string;
+  loginToken: string;
+  province: string;
+  industry: string;
+}) {
+  const firstName = getFirstName(name);
+  const referralUrl = `https://www.fsidigital.ca/refer?token=${loginToken}&source=alert_nurture_referral`;
+  const subject = `Can we feature your business? ($100 Referral Reward)`;
+
+  const html = wrapAlertNurtureTemplate(`
+    <p style="margin: 0 0 16px 0;">
+      I hope your recent applications and funding filings are progressing smoothly.
+    </p>
+    <p style="margin: 0 0 16px 0;">
+      At FSI Digital, we build our platform around real outcomes. If our match reports or advisory audits helped you identify or secure government funding, we would love to feature your success story in an upcoming case study (we can anonymize details to protect your privacy if preferred).
+    </p>
+    <p style="margin: 0 0 16px 0;">
+      As a thank-you, when you share your feedback, you can participate in our <strong>Founder Referral Program</strong>. 
+    </p>
+    <p style="margin: 0 0 20px 0;">
+      Introduce us to any founder in your network who is currently looking for non-dilutive capital. When they book a Strategic Audit, we will send you a <strong>$100 Amazon Gift Card</strong>, and give them a 20% discount on their session.
+    </p>
+    <div style="text-align:center;margin:24px 0;">
+      <a href="${referralUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
+        Share Feedback &amp; Refer Founders &rarr;
+      </a>
+    </div>
+  `, loginToken, firstName);
+
+  const text = `Hi ${firstName},\n\nWe would love to feature your success story in a case study. Plus, refer a founder to FSI Digital: when they book their Strategic Audit, we will send you a $100 Amazon Gift Card, and give them a 20% discount:\n${referralUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+
+  return sendEmail({ to, subject, html, text, tagType: 'alert-nurture-referral' });
+}
+
