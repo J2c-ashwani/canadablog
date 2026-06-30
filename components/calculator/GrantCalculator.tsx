@@ -2235,10 +2235,13 @@ export function GrantCalculator() {
                                      >
                                          <div>
                                              <div className="flex items-center justify-between">
-                                                 <h4 className="font-bold text-slate-800 text-sm">Basic Report</h4>
+                                                  <h4 className="font-bold text-slate-800 text-sm flex flex-col gap-0.5 items-start text-left">
+                                                    <span>Know Which Programs to Apply To</span>
+                                                    <span className="text-[9px] text-slate-400 font-bold uppercase tracking-wider block">Funding Match Report</span>
+                                                  </h4>
                                                  {selectedProductId === 'funding-match-report' && <CheckCircle className="w-4 h-4 text-slate-550 shrink-0" />}
                                              </div>
-                                             <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">Personalized list of matched programs and basic details.</p>
+                                             <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed text-left">We identify which programs are worth your time before you spend hours applying.</p>
                                              <div className="mt-3 flex items-baseline gap-1">
                                                  <span className="text-2xl font-black text-slate-900">$19</span>
                                                  <span className="text-[10px] text-slate-400">one-time</span>
@@ -2287,10 +2290,13 @@ export function GrantCalculator() {
                                          </div>
                                          <div className="pt-2">
                                              <div className="flex items-center justify-between">
-                                                 <h4 className="font-extrabold text-slate-900 text-sm">Complete Bundle</h4>
+                                                  <h4 className="font-extrabold text-slate-900 text-sm flex flex-col gap-0.5 items-start text-left">
+                                                    <span>Go From Research to Application</span>
+                                                    <span className="text-[9px] text-indigo-650 font-bold uppercase tracking-wider block">Complete Stacking Bundle</span>
+                                                  </h4>
                                                  {selectedProductId === 'funding-bundle' && <CheckCircle className="w-4 h-4 text-indigo-600 shrink-0" />}
                                              </div>
-                                             <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">Filing templates, compliance guides, and stacking sequence.</p>
+                                             <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed text-left font-medium">Everything required to map, plan, and prepare your applications correctly.</p>
                                              <div className="mt-3 flex items-baseline gap-1">
                                                  <span className="text-2xl font-black text-slate-900">$79</span>
                                                  <span className="text-[10px] text-slate-400">one-time</span>
@@ -2336,10 +2342,13 @@ export function GrantCalculator() {
                                      >
                                          <div>
                                              <div className="flex items-center justify-between">
-                                                 <h4 className="font-bold text-slate-900 text-sm">Action Plan</h4>
+                                                  <h4 className="font-bold text-slate-900 text-sm flex flex-col gap-0.5 items-start text-left">
+                                                    <span>Your Step-by-Step Filing Plan</span>
+                                                    <span className="text-[9px] text-emerald-600 font-bold uppercase tracking-wider block">Funding Action Plan</span>
+                                                  </h4>
                                                  {selectedProductId === 'funding-roadmap' && <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />}
                                              </div>
-                                             <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">Priority schedule mapping and program compliance warning flags.</p>
+                                             <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed text-left">We tell you exactly what to do first, second, and third to stack funding.</p>
                                              <div className="mt-3 flex items-baseline gap-1">
                                                  <span className="text-2xl font-black text-slate-900">$49</span>
                                                  <span className="text-[10px] text-slate-400">one-time</span>

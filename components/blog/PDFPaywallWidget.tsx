@@ -208,12 +208,17 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
         <div className="absolute top-3 right-4 bg-emerald-500 text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
           Implementation Pack
         </div>
-        <h3 className="text-lg font-extrabold flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
-          Get the Official {guideName} Companion Kit
+        <h3 className="text-lg font-black flex flex-col gap-1 items-start">
+          <span className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
+            Prepare Your Application Faster
+          </span>
+          <span className="text-emerald-200 text-xs font-semibold uppercase tracking-wider block">
+            Application Companion Kit &amp; Implementation Pack
+          </span>
         </h3>
         <p className="text-emerald-100 text-xs mt-1.5 leading-relaxed">
-          Skip the trial-and-error. Complete your filing successfully with pre-filled checklists, budget worksheets, and templates designed for this program.
+          Avoid starting from a blank page. Skip the trial-and-error with structured checklists, worksheets, and templates designed to help reduce preparation time.
         </p>
       </div>
 
@@ -242,15 +247,15 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
               <ul className="space-y-2 text-xs text-slate-650 font-medium">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Application Checklists</strong>: 100% compliant requirements criteria lists.</span>
+                  <span><strong>Application Checklists</strong>: Structured checklists built using current program guidance.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Excel Budget Worksheets</strong>: Pre-built templates to track qualifying staff/expense costs.</span>
+                  <span><strong>Excel Budget Worksheets</strong>: Worksheets to map qualifying staff salaries and expense costs.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span><strong>Submission Playbook</strong>: Offline step-by-step documentation guides.</span>
+                  <span><strong>Submission Playbook</strong>: Step-by-step guidance designed to help reduce preparation time.</span>
                 </li>
               </ul>
             </div>

@@ -159,12 +159,17 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
         <div className="absolute top-3 right-4 bg-indigo-500 text-white text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
           Special Subscriber Offer
         </div>
-        <CardTitle className="text-xl font-extrabold flex items-center gap-2">
-          <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
-          Upgrade to the Complete Application Prep Kit & Implementation Pack
+        <CardTitle className="text-xl font-black flex flex-col gap-1 items-start">
+          <span className="flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
+            Everything You Need Before You Submit
+          </span>
+          <span className="text-indigo-200 text-xs font-semibold uppercase tracking-wider block">
+            Complete Application Prep Kit & Implementation Pack
+          </span>
         </CardTitle>
-        <CardDescription className="text-indigo-200 text-xs mt-1.5 leading-relaxed">
-          Your free application kit has been queued for email delivery. Upgrade now to get the complete templates, check-sheets, and worksheets package.
+        <CardDescription className="text-indigo-150 text-xs mt-1.5 leading-relaxed">
+          Avoid starting from a blank page. We provide the structured check-sheets and worksheets built using current program guidance to help reduce preparation time.
         </CardDescription>
       </CardHeader>
       
@@ -201,11 +206,11 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <span><strong>Application Filing Checklist</strong>: 100% compliant documentation templates to prevent submission rejection.</span>
+                  <span><strong>Application Filing Checklist</strong>: Structured checklists built using current program guidance to help avoid missing critical documentation.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <span><strong>Saved Prep Time</strong>: Step-by-step submission checklists so you get everything done in one place.</span>
+                  <span><strong>Designed to Help Reduce Prep Time</strong>: Step-by-step submission workflows mapping out required deliverables.</span>
                 </li>
               </ul>
             </div>

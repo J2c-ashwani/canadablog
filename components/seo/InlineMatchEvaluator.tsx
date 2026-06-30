@@ -526,12 +526,20 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
               </form>
             ) : (
               <div className="space-y-4 pt-2">
-                {/* Product Description Block */}
+                {/* Product Description */}
                 <div className="border border-purple-100 bg-purple-500/5 rounded-xl p-4">
-                  <div className="flex gap-2 items-start text-[10px] text-purple-950 font-bold uppercase tracking-wider mb-2">
-                    <Lock className="w-4 h-4 text-purple-700 shrink-0 mt-0.5" />
-                    <span>Personalized Funding Strategy</span>
+                  <div className="flex flex-col gap-1 items-start text-left mb-3">
+                    <div className="flex gap-2 items-center text-xs font-black text-purple-950 uppercase tracking-wide">
+                      <Lock className="w-4 h-4 text-purple-700 shrink-0" />
+                      Know Which Programs Are Worth Applying To
+                    </div>
+                    <span className="text-[10px] text-slate-500 font-bold uppercase tracking-wider block">
+                      Funding Match Report ($19.00)
+                    </span>
                   </div>
+                  <p className="text-xs text-slate-650 leading-relaxed mb-3">
+                    We identify which programs are worth your time before you spend hours applying.
+                  </p>
                   <ul className="space-y-1.5 text-xs text-slate-700 font-medium">
                     <li className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-purple-600" /> Know which programs to prioritize first</li>
                     <li className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-purple-600" /> Avoid applications unlikely to succeed</li>

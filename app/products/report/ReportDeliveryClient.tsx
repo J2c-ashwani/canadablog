@@ -823,9 +823,14 @@ function ReportContent() {
                 <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-50 rounded-full text-indigo-600">
                   <Lock className="w-6 h-6 animate-pulse" />
                 </div>
-                <h3 className="text-base font-bold text-slate-800">Unlock Your Funding Action Plan</h3>
+                <h3 className="text-base font-black text-slate-800 flex flex-col gap-0.5 items-center">
+                  <span>Your Step-by-Step Filing Plan</span>
+                  <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider block">
+                    Funding Action Plan Upgrade
+                  </span>
+                </h3>
                 <p className="text-xs text-slate-500 leading-relaxed">
-                  Your Funding Match Report identifies matches, but securing funds requires a structured execution strategy. Upgrade to the Action Plan to prioritize applications, stack timelines, map document checklists, and review program risks.
+                  We tell you exactly what to do first, second, and third. Unlock the step-by-step application timelines, sequencing guidance, required check-sheets, and risk factors.
                 </p>
                 {purchaseInfo?.productId === 'funding-match-report' ? (
                   <div className="space-y-1">
