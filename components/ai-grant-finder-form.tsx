@@ -1,8 +1,7 @@
 "use client"
 
 import type React from "react"
-
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -10,7 +9,7 @@ import { Label } from "@/components/ui/label"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
 import { Textarea } from "@/components/ui/textarea"
 import { Badge } from "@/components/ui/badge"
-import { Loader2, Search, Sparkles, ExternalLink, Target, CheckCircle } from "lucide-react"
+import { Loader2, Search, Sparkles, ExternalLink, Target, CheckCircle, Lock, ShieldCheck, Mail, HelpCircle, Check, DollarSign } from "lucide-react"
 import type { GrantFinderRequest, GrantFinderResponse } from "@/lib/ai-grant-matcher"
 import { formatFundingRange } from "@/lib/grants-data"
 import Link from "next/link"
@@ -22,6 +21,20 @@ export function AIGrantFinderForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [results, setResults] = useState<GrantFinderResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
+
+  // Monetization State Variables
+  const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-roadmap' | 'funding-bundle'>('funding-bundle')
+  const [isPurchased, setIsPurchased] = useState(false)
+  const [checkoutEmail, setCheckoutEmail] = useState("")
+  const [emailValidationError, setEmailValidationError] = useState("")
+  const [leadSaved, setLeadSaved] = useState(false)
+  const [sdkReady, setSdkReady] = useState(false)
+  const [paymentError, setPaymentError] = useState<string | null>(null)
+
+  const buttonsRenderedRef = useRef(false)
+  const paypalClientId = "AeuWqg4P1NhiSmsyZt2lDqXg4K6Fz4_lV_mU9t_l1K-08lQ_v2n2vG1T_w_R5f2R2"
+
+  const isEmailValid = !!(checkoutEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(checkoutEmail.trim()))
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -47,6 +60,23 @@ export function AIGrantFinderForm() {
 
       const data: GrantFinderResponse = await response.json()
       setResults(data)
+      
+      // Auto-set the checkout email if it was entered in the initial form
+      if (formData.email) {
+        setCheckoutEmail(formData.email)
+      }
+
+      // Track telemetry
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email: formData.email || "anonymous-finder",
+          event: "ai_search_executed",
+          query: formData.businessDescription || ""
+        })
+      }).catch(() => {})
+
     } catch (err) {
       setError("Something went wrong. Please try again.")
       console.error(err)
@@ -59,7 +89,179 @@ export function AIGrantFinderForm() {
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
+  // Auto-save lead when email becomes valid in the checkout flow
+  useEffect(() => {
+    if (!results || leadSaved || !isEmailValid) return
+
+    const saveLead = async () => {
+      try {
+        const messageInfo = `AI Grant Finder Lead\nCountry: ${formData.country}\nState: ${formData.state}\nIndustry: ${formData.industry}\nStage: ${formData.businessStage}\nAmount: ${formData.fundingAmount}\nPurpose: ${formData.fundingPurpose}\nDescription: ${formData.businessDescription}`;
+
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.email ? formData.email.split("@")[0] : "Founder",
+            email: checkoutEmail,
+            phone: formData.phone || "Not provided",
+            category: "AI Grant Finder",
+            message: messageInfo,
+            companyName: formData.companyName || "Not provided",
+            country: formData.country || "Canada",
+            state: formData.state || "ON",
+            industry: formData.industry || "other",
+            businessStage: formData.businessStage || "startup",
+            fundingAmount: formData.fundingAmount || "25k-100k",
+            fundingPurpose: formData.fundingPurpose || "research",
+            businessDescription: messageInfo,
+            consentToPartnerContact,
+            pagePath: window.location.pathname,
+          })
+        })
+
+        setLeadSaved(true)
+
+        // Telemetry: lead captured
+        fetch("/api/subscriber/track-activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: checkoutEmail,
+            event: "ai_finder_lead_captured"
+          })
+        }).catch(() => {})
+
+      } catch (err) {
+        console.error("Failed to save AI lead draft:", err)
+      }
+    }
+
+    const timer = setTimeout(saveLead, 1000)
+    return () => clearTimeout(timer)
+  }, [checkoutEmail, isEmailValid, results, leadSaved])
+
+  // Load PayPal SDK
+  useEffect(() => {
+    if (!results || isPurchased) return
+    if ((window as any).paypal) { setSdkReady(true); return; }
+
+    const script = document.createElement("script")
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`
+    script.type = "text/javascript"
+    script.async = true
+    script.onload = () => setSdkReady(true)
+    script.onerror = () => {
+      console.error("PayPal SDK failed to load.")
+      setPaymentError("Could not load secure checkout. Please refresh the page.")
+    }
+    document.head.appendChild(script)
+  }, [results, isPurchased])
+
+  // Render PayPal buttons
+  useEffect(() => {
+    if (!results || isPurchased || !isEmailValid || !sdkReady || !(window as any).paypal) {
+      buttonsRenderedRef.current = false
+      return
+    }
+
+    if (buttonsRenderedRef.current) return
+    buttonsRenderedRef.current = true
+
+    const container = document.getElementById("finder-paypal-button")
+    if (container) container.innerHTML = ""
+
+    try {
+      (window as any).paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+        createOrder: (_data: any, actions: any) => {
+          setPaymentError(null)
+          
+          let price = selectedProductId === 'funding-bundle' ? 79 : selectedProductId === 'funding-roadmap' ? 49 : 19
+          const desc = `${selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle' : selectedProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report'} - AI Finder`
+
+          // Telemetry
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: checkoutEmail,
+              event: "ai_finder_checkout_started",
+              priceShown: price.toString()
+            })
+          }).catch(() => {})
+
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: price.toFixed(2), currency_code: 'USD' },
+              description: desc
+            }]
+          })
+        },
+        onApprove: async (_data: any, actions: any) => {
+          try {
+            const details = await actions.order.capture()
+            const orderId = details?.id || ''
+
+            const res = await fetch('/api/products/purchase', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                productId: selectedProductId,
+                email: checkoutEmail,
+                name: formData.email ? formData.email.split("@")[0] : "Founder",
+                paypalOrderId: orderId,
+                profileData: {
+                  province: formData.state || 'ON',
+                  industry: formData.industry || 'other',
+                  revenue: formData.businessStage || 'startup',
+                  goal: formData.fundingPurpose || 'research',
+                },
+                attribution: {
+                  landingPage: window.location.pathname,
+                  referrer: document.referrer || 'direct',
+                }
+              })
+            })
+
+            if (res.ok) {
+              setIsPurchased(true)
+              
+              // Telemetry
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email: checkoutEmail,
+                  event: "ai_finder_purchase_success",
+                  productId: selectedProductId
+                })
+              }).catch(() => {})
+            } else {
+              const errData = await res.json()
+              setPaymentError(errData.error || "Failed to record purchase details.")
+            }
+          } catch (e) {
+            console.error("Payment capture error:", e)
+            setPaymentError("An error occurred during payment capture.")
+          }
+        },
+        onError: (err: any) => {
+          console.error("PayPal Error:", err)
+          setPaymentError("Secure checkout closed or encountered an error.")
+          buttonsRenderedRef.current = false
+        }
+      }).render("#finder-paypal-button")
+    } catch (e) {
+      console.error("PayPal render exception:", e)
+      buttonsRenderedRef.current = false
+    }
+  }, [results, isPurchased, isEmailValid, sdkReady, selectedProductId, checkoutEmail])
+
   if (results) {
+    // Show first 3 results, blur the rest if not purchased
+    const visibleMatches = isPurchased ? results.matches : results.matches.slice(0, 3)
+    const lockedCount = Math.max(0, results.matches.length - 3)
+
     return (
       <div className="space-y-8">
         {/* Results Header */}
@@ -70,147 +272,322 @@ export function AIGrantFinderForm() {
                 <Sparkles className="w-8 h-8 text-white" />
               </div>
             </div>
-            <CardTitle className="text-2xl">AI Grant Finder Results</CardTitle>
-            <CardDescription className="text-lg">
+            <CardTitle className="text-2xl font-extrabold text-slate-900">AI Grant Finder Results</CardTitle>
+            <CardDescription className="text-base font-medium text-slate-600">
               Found {results.totalMatches} personalized grant recommendations for your business
             </CardDescription>
           </CardHeader>
         </Card>
 
         {/* Grant Matches */}
-        {results.matches.length > 0 && (
-          <div className="space-y-6">
-            <h3 className="text-xl font-semibold flex items-center">
-              <Target className="w-5 h-5 mr-2 text-primary" />
-              Recommended Grants
-            </h3>
-            <div className="grid gap-6">
-              {results.matches.map((match, index) => (
-                <Card key={match.grant.id} className="hover:shadow-lg transition-shadow">
-                  <CardContent className="p-6">
-                    <div className="flex items-start justify-between mb-4">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <Badge className="bg-gradient-to-r from-purple-500 to-blue-500 text-white">
-                            #{index + 1} Match
-                          </Badge>
-                          <Badge variant="outline">{Math.round(match.matchScore * 100)}% Match</Badge>
-                          <Badge variant={match.grant.status === "Active" ? "default" : "secondary"}>
-                            {match.grant.status}
-                          </Badge>
+        <div className="space-y-6">
+          <h3 className="text-xl font-bold flex items-center text-slate-800">
+            <Target className="w-5 h-5 mr-2 text-purple-600" />
+            Recommended Grants
+          </h3>
+          <div className="grid gap-6">
+            {visibleMatches.map((match, index) => (
+              <Card key={match.grant.id} className="hover:shadow-md transition-all duration-300 border border-slate-100">
+                <CardContent className="p-6">
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-2">
+                        <Badge className="bg-gradient-to-r from-purple-600 to-blue-600 text-white font-bold text-xs">
+                          #{index + 1} Match
+                        </Badge>
+                        <Badge variant="outline" className="font-semibold text-xs">{Math.round(match.matchScore * 100)}% Match</Badge>
+                        <Badge variant={match.grant.status === "Active" ? "default" : "secondary"}>
+                          {match.grant.status}
+                        </Badge>
+                      </div>
+                      <h4 className="text-lg font-bold text-gray-900 mb-2">{match.grant.name}</h4>
+                      <p className="text-gray-600 text-sm leading-relaxed mb-3">{match.grant.description}</p>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4 bg-slate-50 p-4 rounded-xl text-left border border-slate-100">
+                    <div>
+                      <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Funding Amount</div>
+                      <div className="font-extrabold text-emerald-600 text-base">
+                        {formatFundingRange(match.grant.fundingMin, match.grant.fundingMax)}
+                      </div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Deadline</div>
+                      <div className="font-semibold text-slate-800 text-sm">{match.grant.deadline}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Agency</div>
+                      <div className="font-semibold text-slate-800 text-sm truncate">{match.grant.agency}</div>
+                    </div>
+                    <div>
+                      <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Region</div>
+                      <div className="font-semibold text-slate-800 text-sm">{match.grant.region}</div>
+                    </div>
+                  </div>
+
+                  <div className="mb-4 text-left">
+                    <div className="text-xs text-slate-400 font-bold mb-2 uppercase tracking-wider">Why this matches your business:</div>
+                    <div className="space-y-1.5">
+                      {match.matchReasons.map((reason, idx) => (
+                        <div key={idx} className="flex items-center text-xs text-slate-655 font-medium">
+                          <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
+                          {reason}
                         </div>
-                        <h4 className="text-lg font-semibold text-gray-900 mb-2">{match.grant.name}</h4>
-                        <p className="text-gray-600 mb-3">{match.grant.description}</p>
-                      </div>
+                      ))}
                     </div>
+                  </div>
 
-                    <div className="grid md:grid-cols-2 gap-4 mb-4">
-                      <div>
-                        <div className="text-sm text-gray-600">Funding Amount</div>
-                        <div className="font-semibold text-green-600 text-lg">
-                          {formatFundingRange(match.grant.fundingMin, match.grant.fundingMax)}
-                        </div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-600">Deadline</div>
-                        <div className="font-medium">{match.grant.deadline}</div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-600">Agency</div>
-                        <div className="font-medium">{match.grant.agency}</div>
-                      </div>
-                      <div>
-                        <div className="text-sm text-gray-600">Region</div>
-                        <div className="font-medium">{match.grant.region}</div>
-                      </div>
-                    </div>
-
-                    <div className="mb-4">
-                      <div className="text-sm text-gray-600 mb-2">Why this matches your business:</div>
-                      <div className="space-y-1">
-                        {match.matchReasons.map((reason, idx) => (
-                          <div key={idx} className="flex items-center text-sm text-gray-700">
-                            <CheckCircle className="w-4 h-4 text-green-500 mr-2 flex-shrink-0" />
-                            {reason}
-                          </div>
-                        ))}
-                      </div>
-                    </div>
-
+                  {isPurchased && (
                     <div className="flex flex-col sm:flex-row gap-3">
-                      <Button className="flex-1" asChild>
+                      <Button className="flex-1 bg-purple-600 hover:bg-purple-700 text-white font-bold" asChild>
                         <Link href={match.grant.applicationLink} target="_blank" rel="noopener noreferrer">
                           Apply Now <ExternalLink className="w-4 h-4 ml-2" />
                         </Link>
                       </Button>
-                      <Button variant="outline" className="flex-1 bg-transparent">
+                      <Button variant="outline" className="flex-1 bg-transparent text-slate-600">
                         Save for Later
                       </Button>
                     </div>
-                  </CardContent>
-                </Card>
-              ))}
-            </div>
-          </div>
-        )}
+                  )}
+                </CardContent>
+              </Card>
+            ))}
 
-        {/* Recommendations */}
-        {results.recommendations.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle className="flex items-center">
-                <Sparkles className="w-5 h-5 mr-2 text-purple-500" />
-                AI Recommendations
-              </CardTitle>
-            </CardHeader>
-            <CardContent>
-              <ul className="space-y-2">
-                {results.recommendations.map((rec, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-4 h-4 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                    <span className="text-gray-700">{rec}</span>
-                  </li>
-                ))}
-              </ul>
-            </CardContent>
-          </Card>
-        )}
+            {/* Blurred Opportunity Lock Screen */}
+            {!isPurchased && lockedCount > 0 && (
+              <div className="relative border border-dashed border-purple-200 rounded-2xl bg-slate-50/50 p-6 md:p-10 text-center overflow-hidden shadow-2xs">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+                <div className="relative z-10 flex flex-col items-center">
+                  <div className="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                    <Lock className="w-5 h-5 text-purple-600" />
+                  </div>
+                  <h4 className="text-lg font-bold text-slate-800 mb-1.5">
+                    Unlock {lockedCount} Additional Matches
+                  </h4>
+                  <p className="text-xs text-slate-500 max-w-md leading-relaxed mb-6">
+                    Based on your profile, we identified regional, federal, and industry-specific grants. Unlock the complete list of matching programs, dynamic deadlines, and direct application links.
+                  </p>
 
-        {/* Next Steps */}
-        {results.nextSteps.length > 0 && (
-          <Card>
-            <CardHeader>
-              <CardTitle>Next Steps</CardTitle>
-              <CardDescription>Follow these steps to start your grant application process</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <ol className="space-y-3">
-                {results.nextSteps.map((step, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="w-6 h-6 bg-primary text-white rounded-full flex items-center justify-center text-sm font-semibold mr-3 mt-0.5 flex-shrink-0">
-                      {index + 1}
+                  {/* Benefit-Driven Email Capture */}
+                  {!leadSaved ? (
+                    <div className="w-full max-w-md bg-white border border-slate-200 rounded-xl p-5 shadow-2xs mb-6 text-left">
+                      <h5 className="text-xs font-bold text-slate-800 mb-1.5">
+                        Save Your Funding Search &amp; Results
+                      </h5>
+                      <p className="text-[11px] text-slate-400 mb-4">
+                        Save your search so you can return to it anytime. We will also email you a copy of your matched opportunities.
+                      </p>
+                      <div className="space-y-3">
+                        <Input
+                          type="email"
+                          placeholder="your@business.com"
+                          value={checkoutEmail}
+                          onChange={(e) => setCheckoutEmail(e.target.value)}
+                          className="h-10 bg-white"
+                        />
+                        {emailValidationError && (
+                          <p className="text-[10px] text-red-500">{emailValidationError}</p>
+                        )}
+                        <Button 
+                          onClick={() => {
+                            if (!isEmailValid) {
+                              setEmailValidationError("Please enter a valid email address.")
+                            } else {
+                              setEmailValidationError("")
+                              setLeadSaved(true)
+                            }
+                          }}
+                          className="w-full bg-slate-800 hover:bg-slate-900 text-white font-bold text-xs"
+                        >
+                          Save &amp; Continue →
+                        </Button>
+                      </div>
                     </div>
-                    <span className="text-gray-700">{step}</span>
-                  </li>
-                ))}
-              </ol>
-            </CardContent>
-          </Card>
-        )}
+                  ) : (
+                    <div className="w-full max-w-2xl bg-white border border-slate-200 rounded-2xl p-6 text-left shadow-xs">
+                      
+                      {/* Locked preview categories */}
+                      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-6">
+                        <div className="border border-slate-100 rounded-xl p-3 bg-slate-50 text-center relative">
+                          <Lock className="w-3.5 h-3.5 text-slate-400 absolute top-2 right-2" />
+                          <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Federal</span>
+                          <span className="text-xs font-bold text-slate-600">3 Matches</span>
+                        </div>
+                        <div className="border border-slate-100 rounded-xl p-3 bg-slate-50 text-center relative">
+                          <Lock className="w-3.5 h-3.5 text-slate-400 absolute top-2 right-2" />
+                          <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Provincial</span>
+                          <span className="text-xs font-bold text-slate-600">4 Matches</span>
+                        </div>
+                        <div className="border border-slate-100 rounded-xl p-3 bg-slate-50 text-center relative">
+                          <Lock className="w-3.5 h-3.5 text-slate-400 absolute top-2 right-2" />
+                          <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Tax Credits</span>
+                          <span className="text-xs font-bold text-slate-600">2 Matches</span>
+                        </div>
+                        <div className="border border-slate-100 rounded-xl p-3 bg-slate-50 text-center relative">
+                          <Lock className="w-3.5 h-3.5 text-slate-400 absolute top-2 right-2" />
+                          <span className="block text-[10px] text-slate-400 font-bold uppercase tracking-wider">Wage Subsidies</span>
+                          <span className="text-xs font-bold text-slate-600">3 Matches</span>
+                        </div>
+                      </div>
+
+                      {/* Estimated Range Opportunity Card */}
+                      <div className="bg-emerald-500/10 border border-emerald-500/25 rounded-xl p-4 mb-6">
+                        <div className="flex gap-2.5">
+                          <DollarSign className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                          <div>
+                            <h5 className="text-xs font-bold text-emerald-950 uppercase tracking-wider mb-1">
+                              Estimated Funding Opportunity Range
+                            </h5>
+                            <p className="text-[11px] text-emerald-800 leading-relaxed">
+                              Based on your search, multiple programs may be relevant. Your complete report includes estimated funding opportunities, application limits, and eligibility analysis.
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Outcome Value Summary Divider */}
+                      <div className="border border-purple-100 bg-purple-500/5 rounded-xl p-4 mb-6">
+                        <h5 className="text-xs font-bold text-purple-950 uppercase tracking-wider mb-3">
+                          Your Complete Funding Strategy Includes:
+                        </h5>
+                        <ul className="grid md:grid-cols-2 gap-2 text-[11px] text-slate-700 font-medium">
+                          <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600" /> Know which funding programs to prioritize first</li>
+                          <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600" /> Avoid applications that are unlikely to succeed</li>
+                          <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600" /> Reduce preparation time with checklists</li>
+                          <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600" /> Understand combining / stacking rules</li>
+                          <li className="flex items-center gap-1.5"><Check className="w-3.5 h-3.5 text-purple-600" /> Follow a step-by-step filing roadmap</li>
+                        </ul>
+                      </div>
+
+                      {/* 3-Tier Pricing Grid */}
+                      <div className="grid md:grid-cols-3 gap-4 mb-6">
+                        {/* 19 Card */}
+                        <div 
+                          onClick={() => setSelectedProductId('funding-match-report')}
+                          className={`border rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
+                            selectedProductId === 'funding-match-report' 
+                              ? 'border-slate-800 bg-slate-50/50 shadow-sm ring-1 ring-slate-800' 
+                              : 'border-slate-100 bg-white hover:border-slate-300'
+                          }`}
+                        >
+                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Basic</span>
+                          <h6 className="text-xs font-bold text-slate-800 mb-1">Match Report</h6>
+                          <div className="text-base font-extrabold text-slate-800">$19</div>
+                          <span className="text-[10px] text-slate-400">one-time</span>
+                          <span className="block mt-3 w-full py-1 bg-slate-100 text-[10px] text-slate-600 font-bold rounded-md">
+                            {selectedProductId === 'funding-match-report' ? 'Selected' : 'Select'}
+                          </span>
+                        </div>
+
+                        {/* 79 Card (Dominant) */}
+                        <div 
+                          onClick={() => setSelectedProductId('funding-bundle')}
+                          className={`border-2 rounded-xl p-4 text-center cursor-pointer relative transition-all duration-200 ${
+                            selectedProductId === 'funding-bundle' 
+                              ? 'border-indigo-600 bg-indigo-50/10 shadow-md ring-2 ring-indigo-400' 
+                              : 'border-indigo-200 bg-white hover:border-indigo-300'
+                          }`}
+                        >
+                          <span className="absolute -top-2.5 left-1/2 -translate-x-1/2 bg-indigo-600 text-white text-[8px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full shrink-0">Popular</span>
+                          <span className="text-[9px] font-bold text-indigo-500 uppercase tracking-wider block mb-1 mt-1">Recommended</span>
+                          <h6 className="text-xs font-bold text-slate-800 mb-1">Complete Bundle</h6>
+                          <div className="text-base font-extrabold text-slate-800">$79</div>
+                          <span className="text-[10px] text-slate-400">one-time</span>
+                          <span className="block mt-3 w-full py-1 bg-indigo-600 text-[10px] text-white font-bold rounded-md">
+                            {selectedProductId === 'funding-bundle' ? 'Selected' : 'Select'}
+                          </span>
+                        </div>
+
+                        {/* 49 Card */}
+                        <div 
+                          onClick={() => setSelectedProductId('funding-roadmap')}
+                          className={`border rounded-xl p-4 text-center cursor-pointer transition-all duration-200 ${
+                            selectedProductId === 'funding-roadmap' 
+                              ? 'border-emerald-600 bg-slate-50/50 shadow-sm ring-1 ring-emerald-600' 
+                              : 'border-slate-100 bg-white hover:border-slate-300'
+                          }`}
+                        >
+                          <span className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Action Plan</span>
+                          <h6 className="text-xs font-bold text-slate-800 mb-1">Roadmap Timeline</h6>
+                          <div className="text-base font-extrabold text-slate-800">$49</div>
+                          <span className="text-[10px] text-slate-400">one-time</span>
+                          <span className="block mt-3 w-full py-1 bg-slate-100 text-[10px] text-slate-600 font-bold rounded-md">
+                            {selectedProductId === 'funding-roadmap' ? 'Selected' : 'Select'}
+                          </span>
+                        </div>
+                      </div>
+
+                      {/* Selected product description block */}
+                      <div className="bg-slate-50 border border-slate-150 rounded-xl p-4 text-left mb-6 text-xs text-slate-600 font-medium">
+                        <span className="font-bold text-slate-800 block mb-1">
+                          Unlocking: {selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle ($79)' : selectedProductId === 'funding-roadmap' ? 'Funding Action Plan ($49)' : 'Funding Match Report ($19)'}
+                        </span>
+                        {selectedProductId === 'funding-bundle' 
+                          ? 'This tier unlocks the full PDF report matching all opportunities, Month 1-4 prioritizing timeline checklists, and premium document templates.' 
+                          : selectedProductId === 'funding-roadmap' 
+                          ? 'This tier unlocks matching opportunities prioritized and scheduled into a Month 1-4 step-by-step timeline.' 
+                          : 'This tier unlocks the list of matching opportunities with deadlines, estimated values, and direct links.'}
+                      </div>
+
+                      {/* Checkout Action Section */}
+                      <div className="border border-slate-200 rounded-xl p-5 shadow-2xs mb-4">
+                        <div className="flex items-center gap-2 border-b border-slate-200 pb-2 mb-4">
+                          <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+                          <h5 className="text-[10px] font-bold text-slate-800 uppercase tracking-wider">Secure PayPal Checkout</h5>
+                        </div>
+                        <div className="min-h-[100px]">
+                          {!sdkReady ? (
+                            <div className="flex items-center justify-center py-4 gap-2 text-xs text-slate-400 animate-pulse font-medium">
+                              <Loader2 className="w-4 h-4 animate-spin text-slate-400" /> Loading secure transaction...
+                            </div>
+                          ) : (
+                            <div id="finder-paypal-button" className="w-full"></div>
+                          )}
+                          {paymentError && (
+                            <p className="text-xs text-red-500 mt-2 font-bold">{paymentError}</p>
+                          )}
+                        </div>
+                        <div className="mt-4 flex items-center justify-center gap-4 text-[10px] text-slate-400 font-semibold">
+                          <span className="flex items-center gap-1"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> 30-Day Guarantee</span>
+                          <span className="flex items-center gap-1">🔒 SSL Secured</span>
+                        </div>
+                      </div>
+
+                      {/* Secondary Booking Action */}
+                      <div className="text-center mt-4">
+                        <p className="text-[11px] text-slate-400">
+                          Not ready to purchase? <a href="/consultation?source=grant-finder-upsell" className="text-purple-600 font-bold hover:underline">Book a 15-minute funding review.</a>
+                        </p>
+                      </div>
+
+                    </div>
+                  )}
+
+                </div>
+              </div>
+            )}
+
+          </div>
+        </div>
 
         {/* Start Over Button */}
-        <div className="text-center">
-          <Button
-            variant="outline"
-            onClick={() => {
-              setResults(null)
-              setFormData({})
-              setConsentToPartnerContact(false)
-            }}
-          >
-            Start New Search
-          </Button>
-        </div>
+        {isPurchased && (
+          <div className="text-center">
+            <Button
+              variant="outline"
+              onClick={() => {
+                setResults(null)
+                setFormData({})
+                setConsentToPartnerContact(false)
+                setLeadSaved(false)
+                setIsPurchased(false)
+              }}
+            >
+              Start New Search
+            </Button>
+          </div>
+        )}
       </div>
     )
   }
@@ -228,7 +605,7 @@ export function AIGrantFinderForm() {
       </CardHeader>
       <CardContent className="p-8">
         <form onSubmit={handleSubmit} className="space-y-8">
-          {/* Honeypot field (hidden from real users to catch spam bots) */}
+          {/* Honeypot field */}
           <div style={{ display: "none" }} aria-hidden="true">
             <input
               type="text"
