@@ -7,6 +7,7 @@ import {
   ArrowRight, AlertCircle, BarChart3, Lock
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import Link from "next/link"
 import type { FundingMatchReport, ReportProgram } from "@/lib/products/report-generator"
 
 function ReportContent() {
@@ -189,13 +190,16 @@ function ReportContent() {
     }
 
     try {
+      const isMatchReportBuyer = purchaseInfo?.productId === 'funding-match-report';
+      const upgradePrice = isMatchReportBuyer ? 30 : 49;
+
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
         createOrder: (_data: any, actions: any) => {
           setPaymentError(null);
           if (typeof window !== 'undefined' && (window as any).gtag) {
             (window as any).gtag('event', 'begin_checkout', {
-              value: 49, currency: 'USD', items: [{ item_name: 'Funding Action Plan Upgrade', price: 49 }]
+              value: upgradePrice, currency: 'USD', items: [{ item_name: 'Funding Action Plan Upgrade', price: upgradePrice }]
             });
           }
           // Fire checkout_started telemetry
@@ -205,12 +209,12 @@ function ReportContent() {
             body: JSON.stringify({
               email: purchaseInfo?.email || "",
               event: "checkout_started",
-              priceShown: "49"
+              priceShown: upgradePrice.toString()
             })
           }).catch(e => console.error("Telemetry error:", e));
           return actions.order.create({
             purchase_units: [{
-              amount: { value: '49.00', currency_code: 'USD' },
+              amount: { value: upgradePrice.toFixed(2), currency_code: 'USD' },
               description: 'Funding Action Plan Upgrade - FSI Digital'
             }]
           });
@@ -336,6 +340,30 @@ function ReportContent() {
               </>
             )}
           </Button>
+        </div>
+      </div>
+
+      {/* Done-For-You Strategic Consultation review CTA */}
+      <div className="bg-gradient-to-r from-emerald-500 to-indigo-650 p-0.5 rounded-xl shadow-xs my-4 animate-in fade-in duration-300">
+        <div className="bg-white rounded-[10px] p-5 md:p-6 text-left space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="space-y-1">
+              <span className="bg-indigo-50 text-indigo-700 text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
+                Done-For-You Assistance
+              </span>
+              <h3 className="text-base font-extrabold text-slate-900 mt-2 leading-tight">
+                Want Our Funding Specialists to Handle Your Filings?
+              </h3>
+              <p className="text-xs text-slate-500 mt-1 max-w-xl leading-relaxed">
+                Take the stress out of compliance. Book a complimentary 15-minute consultation review to evaluate full-service application filing and secure max funding without manual writing.
+              </p>
+            </div>
+            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shrink-0 self-start sm:self-center" asChild>
+              <Link href="/consultation?source=report-dfy-hook">
+                Book Consultation Call
+              </Link>
+            </Button>
+          </div>
         </div>
       </div>
 
@@ -799,7 +827,14 @@ function ReportContent() {
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Your Funding Match Report identifies matches, but securing funds requires a structured execution strategy. Upgrade to the Action Plan to prioritize applications, stack timelines, map document checklists, and review program risks.
                 </p>
-                <div className="text-2xl font-extrabold text-slate-800">$49.00 <span className="text-xs text-slate-400 font-normal">USD one-time</span></div>
+                {purchaseInfo?.productId === 'funding-match-report' ? (
+                  <div className="space-y-1">
+                    <div className="text-xs font-bold text-indigo-600 uppercase tracking-wide">Subscriber Discount Applied</div>
+                    <div className="text-2xl font-extrabold text-slate-800">$30.00 <span className="text-xs text-slate-400 font-normal">USD one-time (Upgrade)</span></div>
+                  </div>
+                ) : (
+                  <div className="text-2xl font-extrabold text-slate-800">$49.00 <span className="text-xs text-slate-400 font-normal">USD one-time</span></div>
+                )}
                 
                 {paymentError && (
                   <p className="text-xs text-red-600 font-semibold bg-red-50 p-2 rounded border border-red-150">{paymentError}</p>
