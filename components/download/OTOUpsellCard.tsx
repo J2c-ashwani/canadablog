@@ -161,10 +161,10 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
         </div>
         <CardTitle className="text-xl font-extrabold flex items-center gap-2">
           <Sparkles className="w-5 h-5 text-yellow-400 shrink-0" />
-          Upgrade to the Complete Funding Toolkit
+          Upgrade to the Complete Application Prep Kit & Implementation Pack
         </CardTitle>
         <CardDescription className="text-indigo-200 text-xs mt-1.5 leading-relaxed">
-          Your free application kit has been queued for email delivery. Upgrade now to get the complete templates and tools package.
+          Your free application kit has been queued for email delivery. Upgrade now to get the complete templates, check-sheets, and worksheets package.
         </CardDescription>
       </CardHeader>
       
@@ -188,24 +188,24 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
             {/* Left side: Outcomes list */}
             <div className="space-y-4">
               <h4 className="text-sm font-bold text-slate-850">
-                What You Get: Grant Application Companion Kit
+                What is included in the pack:
               </h4>
               <ul className="space-y-2.5 text-xs text-slate-650 font-medium">
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <span><strong>Excel Budget Templates</strong>: Pre-built sheets to track eligible expenditures.</span>
+                  <span><strong>Excel Budget Worksheets</strong>: Pre-built templates to map qualifying staff salaries and expense costs.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <span><strong>Cash-Flow Forecast Model</strong>: Dynamic models to project funding impact.</span>
+                  <span><strong>Cash-Flow Projection Model</strong>: Dynamic projection models to forecast how funding alters cash flow.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <span><strong>Filing Sequence Calendar</strong>: Priortize submission deadlines across Months 1-4.</span>
+                  <span><strong>Application Filing Checklist</strong>: 100% compliant documentation templates to prevent submission rejection.</span>
                 </li>
                 <li className="flex items-start gap-2">
                   <Check className="w-4 h-4 text-indigo-600 shrink-0 mt-0.5" />
-                  <span><strong>Submission Checklists</strong>: 100% compliant documentation templates to avoid rejection.</span>
+                  <span><strong>Saved Prep Time</strong>: Step-by-step submission checklists so you get everything done in one place.</span>
                 </li>
               </ul>
             </div>

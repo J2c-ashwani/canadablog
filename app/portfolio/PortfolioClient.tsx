@@ -2366,7 +2366,7 @@ export default function PortfolioClient() {
       {/* EMAIL CAPTURE LOCK WALL CARD - Bypassed and replaced by upfront Step 1 phone collection */}
 
       {/* 4.5 FOUNDING MEMBER UPGRADE CARD */}
-      {isUnlocked && subscriptionStatus !== "active" && (
+      {isUnlocked && reportPurchased && subscriptionStatus !== "active" && (
         <Card id="upgrade-section" className="border-2 border-indigo-600 bg-white shadow-xl rounded-3xl overflow-hidden relative">
           <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none" />
           <div className="bg-gradient-to-r from-indigo-700 to-blue-800 p-6 text-white text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">

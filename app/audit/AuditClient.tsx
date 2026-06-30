@@ -338,25 +338,25 @@ export default function AuditClient() {
             {/* Revenue Ladder Badge */}
             <div className="inline-flex items-center gap-2 bg-indigo-50 border border-indigo-200 text-indigo-700 text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full mb-6">
               <Sparkles className="w-3.5 h-3.5" />
-              Level 4 — Funding Strategy Audit
+              Level 4 — Funding Strategy Review Session
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-tight mb-4">
               {params.source === 'personalized_preview' ? (
                 <>
-                  Unlock Your Full<br className="hidden sm:block" />
-                  <span className="text-indigo-600">Funding Analysis.</span>
+                  Unlock Your Live<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Funding Strategy Review.</span>
                 </>
               ) : (
                 <>
-                  Pay. Book Instantly.<br className="hidden sm:block" />
-                  <span className="text-indigo-600">Get Your Funding Roadmap.</span>
+                  Pre-verify Your Matches.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Strategy Session.</span>
                 </>
               )}
             </h1>
 
             <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6">
-              An FSI advisor reviews your eligibility against <strong className="text-slate-700">800+ active programs</strong> and delivers a custom Funding Eligibility Report before your 30-min strategy call. No sales pitch. No waiting room.
+              Get 100% certainty on your government roadmap. An FSI advisor reviews your eligibility against <strong className="text-slate-700">800+ active programs</strong> and delivers a custom Funding Eligibility Report. 100% money-back guarantee if you don&apos;t qualify for at least 2 programs.
             </p>
 
             {/* 4-Step B2B Process Timeline */}
@@ -396,7 +396,7 @@ export default function AuditClient() {
               <div className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-8">
                 <h2 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
                   <Award className="h-5 w-5 text-indigo-600" />
-                  What&apos;s Included in Your $199 Audit
+                  What&apos;s Included in Your Strategy Session
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {WHAT_IS_COVERED.map((item) => (
@@ -428,7 +428,7 @@ export default function AuditClient() {
                       { level: 'Level 1', label: 'Funding Match Report', price: '$19', current: false },
                       { level: 'Level 2', label: 'Funding Action Plan', price: '$49', current: false },
                       { level: 'Level 3', label: 'Complete Funding Bundle', price: '$79', current: false },
-                      { level: 'Level 4', label: 'Funding Strategy Audit', price: '$199', current: true },
+                      { level: 'Level 4', label: 'Funding Strategy Review Session', price: '$199', current: true },
                       { level: 'Level 5', label: 'Application & Filing Service', price: '$2,500+', current: false },
                       { level: 'Level 6', label: 'Success Fee Model', price: '1%', current: false },
                     ].map((item) => (
@@ -450,7 +450,7 @@ export default function AuditClient() {
                     ))}
                   </div>
                   <p className="text-xs text-slate-400 mt-4">
-                    Your $199 audit fee is credited 100% toward any Level 5 filing service agreement.
+                    Your $199 strategy session fee is credited 100% toward any Level 5 filing service agreement.
                   </p>
                 </div>
               </div>
