@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CanadaDigitalAIFundingDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function CanadaDigitalAIFundingDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert AI Funding Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our artificial intelligence funding specialists have secured $85M+ with 79% success rate across Scale AI, CDAP, 
-                  IRAP AI projects, and machine learning research programs. Get professional guidance for your deep learning and computer vision applications.
-                </p>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contact?service=ai-expert-help&source=download-thank-you">
-                    Schedule Free AI Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="AI Funding Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring artificial intelligence funding:</p>

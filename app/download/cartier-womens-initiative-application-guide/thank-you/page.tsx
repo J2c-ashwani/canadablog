@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Globe, Target, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CartierInitiativeDownloadThankYouPage() {
   return (
@@ -65,20 +66,7 @@ export default function CartierInitiativeDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-purple-800 mb-4">Ready for Expert Cartier Women's Initiative Application Support?</h3>
-                <p className="text-purple-700 mb-4">
-                  Our impact entrepreneurship specialists understand what Cartier evaluators look for in winning 
-                  applications. Get professional UN SDG alignment guidance, impact articulation support, and 
-                  application optimization to maximize your chances of winning up to $100,000 plus the 12-month 
-                  INSEAD fellowship with global fellows network access.
-                </p>
-                <Button size="lg" className="bg-purple-800 hover:bg-purple-900" asChild>
-                  <Link href="/contact?service=cartier-womens-initiative-application-help&source=download-thank-you">
-                    Schedule Free Impact Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Cartier Women's Initiative Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring impact entrepreneur opportunities:</p>

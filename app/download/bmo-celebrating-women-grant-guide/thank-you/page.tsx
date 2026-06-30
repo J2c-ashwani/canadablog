@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Heart, Target, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function BMOGrantDownloadThankYouPage() {
   return (
@@ -65,20 +66,7 @@ export default function BMOGrantDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert BMO Grant Application Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our grant specialists understand what BMO and Deloitte evaluators look for in winning applications. 
-                  Get professional women advancement demonstration guidance, business growth planning support, and 
-                  application optimization to maximize your chances of being selected as one of the fifteen $10,000 
-                  grant recipients with BMO business advisor access and exclusive resources.
-                </p>
-                <Button size="lg" className="bg-blue-800 hover:bg-blue-900" asChild>
-                  <Link href="/contact?service=bmo-celebrating-women-grant-help&source=download-thank-you">
-                    Schedule Free Application Review Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="BMO Celebrating Women Grant Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women entrepreneur grant opportunities:</p>

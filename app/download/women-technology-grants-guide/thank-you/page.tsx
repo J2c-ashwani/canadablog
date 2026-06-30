@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Code, Lightbulb, Users, Target } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WomenTechGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function WomenTechGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert Technology Funding Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our technology funding specialists understand Canadian innovation programs and can help you navigate 
-                  NRC IRAP applications, provincial tech grants, SR&ED optimization, AI/ML funding, and women tech 
-                  accelerator access. Get personalized guidance to maximize your technology innovation funding success.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=women-technology-grants-help&source=download-thank-you">
-                    Schedule Free Tech Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Women Technology Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women technology funding opportunities:</p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CanadaAerospaceDefenceFundingDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function CanadaAerospaceDefenceFundingDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert Aerospace Funding Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our aerospace funding specialists have secured $65M+ with 74% success rate across Canadian Space Agency, 
-                  IDEaS defence innovation, IRAP aviation, and regional aerospace programs. Get professional guidance for your space technology and defence applications.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=aerospace-expert-help&source=download-thank-you">
-                    Schedule Free Aerospace Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Aerospace Funding Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring aerospace funding:</p>

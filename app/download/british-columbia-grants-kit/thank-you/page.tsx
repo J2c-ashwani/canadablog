@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Mountain, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function BritishColumbiaGrantsDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function BritishColumbiaGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert BC Innovation Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our BC innovation funding specialists have secured $8M+ in provincial funding with an 85% success rate.
-                  Get professional guidance for your BC provincial application and innovation ecosystem development.
-                </p>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contact?service=bc-business-expert-help&source=download-thank-you">
-                    Schedule Free BC Innovation Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="BC Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring BC provincial business support:</p>

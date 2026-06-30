@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function NSERCResearchGrantsDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function NSERCResearchGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-indigo-50 border border-indigo-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-indigo-800 mb-4">Ready for Expert NSERC Research Support?</h3>
-                <p className="text-indigo-700 mb-4">
-                  Our NSERC research specialists have secured $25M+ in funding with 92% success rate and extensive university-industry partnership connections.
-                  Get professional guidance for your Natural Sciences & Engineering research applications.
-                </p>
-                <Button size="lg" className="bg-indigo-600 hover:bg-indigo-700" asChild>
-                  <Link href="/contact?service=nserc-expert-help&source=download-thank-you">
-                    Schedule Free NSERC Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="NSERC Research Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian research funding:</p>

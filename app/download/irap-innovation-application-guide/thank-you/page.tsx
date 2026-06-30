@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function IRAPInnovationDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function IRAPInnovationDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert IRAP Innovation Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our IRAP specialists have secured $45M+ in funding with 89% success rate and extensive ITA network connections. 
-                  Get professional guidance for your Industrial Research Assistance Program application.
-                </p>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contact?service=irap-innovation-expert-help&source=download-thank-you">
-                    Schedule Free IRAP Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="IRAP Innovation Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian R&D funding:</p>

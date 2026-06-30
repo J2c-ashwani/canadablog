@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Award, Target, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function AmberGrantDownloadThankYouPage() {
   return (
@@ -64,19 +65,7 @@ export default function AmberGrantDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-amber-50 border border-amber-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-amber-800 mb-4">Ready for Expert Amber Grant Application Support?</h3>
-                <p className="text-amber-700 mb-4">
-                  Our grant specialists have helped women entrepreneurs craft winning Amber Grant applications. 
-                  Get professional essay review, category selection guidance, and submission timing optimization 
-                  to maximize your chances of winning one of the three monthly $10,000 grants.
-                </p>
-                <Button size="lg" className="bg-amber-600 hover:bg-amber-700" asChild>
-                  <Link href="/contact?service=amber-grant-application-help&source=download-thank-you">
-                    Schedule Free Essay Review Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Amber Grant Application Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring monthly grant opportunities:</p>

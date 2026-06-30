@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function SIFDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function SIFDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-red-800 mb-4">Ready for Expert SIF Application Support?</h3>
-                <p className="text-red-700 mb-4">
-                  Our SIF specialists have secured $180M+ in approvals with a 78% success rate. 
-                  Get professional guidance for your Strategic Innovation Fund application.
-                </p>
-                <Button size="lg" className="bg-red-600 hover:bg-red-700" asChild>
-                  <Link href="/contact?service=strategic-innovation-fund-expert-help&source=download-thank-you">
-                    Schedule Free SIF Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="SIF Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian government funding:</p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Building, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function IndigenousWomenBusinessGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function IndigenousWomenBusinessGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-orange-800 mb-4">Ready for Expert Indigenous Business Funding Support?</h3>
-                <p className="text-orange-700 mb-4">
-                  Our Indigenous business funding specialists understand NACCA network, Aboriginal Entrepreneurship Program 
-                  requirements, and cultural business development. Get personalized guidance to maximize your Indigenous 
-                  business funding success with culturally appropriate support.
-                </p>
-                <Button size="lg" className="bg-orange-700 hover:bg-orange-800" asChild>
-                  <Link href="/contact?service=indigenous-women-business-grants-help&source=download-thank-you">
-                    Schedule Free Indigenous Business Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Indigenous Women Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Indigenous women business funding opportunities:</p>

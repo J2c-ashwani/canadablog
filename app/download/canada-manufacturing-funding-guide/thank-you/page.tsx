@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CanadaManufacturingFundingDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function CanadaManufacturingFundingDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-gray-100 border border-gray-300 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-gray-800 mb-4">Ready for Expert Manufacturing Funding Support?</h3>
-                <p className="text-gray-700 mb-4">
-                  Our manufacturing funding specialists have secured $120M+ with 82% success rate across NGen, IRAP, CDAP, 
-                  and regional manufacturing programs. Get professional guidance for your automation and Industry 4.0 applications.
-                </p>
-                <Button size="lg" className="bg-gray-800 hover:bg-gray-900" asChild>
-                  <Link href="/contact?service=manufacturing-expert-help&source=download-thank-you">
-                    Schedule Free Manufacturing Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Manufacturing Funding Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring manufacturing funding:</p>

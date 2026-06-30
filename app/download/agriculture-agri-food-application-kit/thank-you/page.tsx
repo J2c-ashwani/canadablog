@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Leaf, Building } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function AgricultureAgriFoodDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function AgricultureAgriFoodDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert AAFC Agricultural Support?</h3>
-                <p className="text-green-700 mb-4">
-                  Our agricultural funding specialists have secured $18M+ in AAFC funding with a 91% success rate. 
-                  Get professional guidance for your Agriculture & Agri-Food Canada application and sector strategy.
-                </p>
-                <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
-                  <Link href="/contact?service=agriculture-agri-food-expert-help&source=download-thank-you">
-                    Schedule Free AAFC Agricultural Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="AAFC Agricultural Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian federal agricultural programs:</p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Award, Target, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function RBCAwardsDownloadThankYouPage() {
   return (
@@ -65,20 +66,7 @@ export default function RBCAwardsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert RBC Awards Nomination Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our awards specialists understand what RBC and Women of Influence+ judging panels look for in 
-                  winning nominations. Get professional category selection guidance, impact articulation support, 
-                  and nomination optimization to maximize your chances of being selected as a finalist for the 
-                  November 14, 2025 gala at The Ritz-Carlton Toronto.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=rbc-women-entrepreneur-awards-help&source=download-thank-you">
-                    Schedule Free Nomination Review Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="RBC Awards Nomination Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women entrepreneur recognition opportunities:</p>

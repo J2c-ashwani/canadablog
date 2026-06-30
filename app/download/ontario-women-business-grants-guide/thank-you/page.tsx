@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, MapPin, Target, Users, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function OntarioGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function OntarioGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert Ontario Funding Navigation?</h3>
-                <p className="text-green-700 mb-4">
-                  Our Ontario funding specialists understand the provincial landscape and can help you navigate 
-                  WES ecosystem organizations, SBEC applications, Summer Company eligibility, and regional programs. 
-                  Get personalized guidance to maximize your access to Ontario's $800M+ in women entrepreneur support.
-                </p>
-                <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
-                  <Link href="/contact?service=ontario-women-business-grants-help&source=download-thank-you">
-                    Schedule Free Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Ontario Women Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Ontario women entrepreneur support:</p>

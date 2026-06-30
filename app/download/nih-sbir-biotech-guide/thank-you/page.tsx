@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Heart, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function NIHSBIRBiotechDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function NIHSBIRBiotechDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-purple-800 mb-4">Ready for Expert NIH SBIR Proposal Support?</h3>
-                <p className="text-purple-700 mb-4">
-                  Our NIH SBIR specialists understand clinical significance requirements, FDA regulatory pathways, and 
-                  biomedical commercialization. Get personalized guidance to maximize your Phase I and Phase II approval 
-                  success with 80% funding rate.
-                </p>
-                <Button size="lg" className="bg-purple-700 hover:bg-purple-800" asChild>
-                  <Link href="/contact?service=nih-sbir-proposal-help&source=download-thank-you">
-                    Schedule Free NIH SBIR Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="NIH SBIR Biotech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring NIH SBIR biotech funding opportunities:</p>

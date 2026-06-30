@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function NewYorkTechGuideDownloadThankYouPage() {
   return (
@@ -66,19 +67,7 @@ export default function NewYorkTechGuideDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert New York Grant Application Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our New York grant specialists understand START-UP NY university partnership requirements, Pre-Seed Seed Matching 
-                  Fund co-investor coordination, NYSERDA clean energy programs, and NYC Manhattan Brooklyn Queens ecosystem. Get 
-                  personalized guidance to maximize your New York funding success.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=newyork-grants-help&source=download-thank-you">
-                    Schedule Free New York Grant Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="New York Tech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring New York technology startup funding opportunities:</p>

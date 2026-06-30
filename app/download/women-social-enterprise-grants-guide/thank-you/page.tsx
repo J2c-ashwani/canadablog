@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Heart, MapPin, Users, Target } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WomenSocialEnterpriseGrantsDownloadThankYouPage() {
   return (
@@ -65,20 +66,7 @@ export default function WomenSocialEnterpriseGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-purple-800 mb-4">Ready for Expert Social Enterprise Funding Support?</h3>
-                <p className="text-purple-700 mb-4">
-                  Our social enterprise funding specialists understand Canadian social innovation ecosystem and can help 
-                  you navigate Investment Readiness Program applications, Social Finance Fund opportunities, provincial 
-                  social economy programs, and community development grants. Get personalized guidance to maximize your 
-                  social impact funding success.
-                </p>
-                <Button size="lg" className="bg-purple-700 hover:bg-purple-800" asChild>
-                  <Link href="/contact?service=women-social-enterprise-grants-help&source=download-thank-you">
-                    Schedule Free Social Enterprise Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Women Social Enterprise Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women social enterprise funding opportunities:</p>

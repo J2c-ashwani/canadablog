@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, Calculator, Target, Users, DollarSign } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WBDCGrantDownloadThankYouPage() {
   return (
@@ -64,20 +65,7 @@ export default function WBDCGrantDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-purple-800 mb-4">Ready for Expert WBDC Equity Match Grant Application Support?</h3>
-                <p className="text-purple-700 mb-4">
-                  Our Connecticut grant specialists understand WBDC's unique 1:1 match requirements and can help 
-                  you optimize your growth project strategy, calculate the ideal grant amount, plan your matching 
-                  investment, and time your application for the best quarterly deadline. Maximize your chances of 
-                  securing $2,500-$10,000 in matching funds for your women-owned business growth project.
-                </p>
-                <Button size="lg" className="bg-purple-700 hover:bg-purple-800" asChild>
-                  <Link href="/contact?service=wbdc-equity-match-grant-help&source=download-thank-you">
-                    Schedule Free Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="WBDC Equity Match Grant Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring quarterly grant opportunities:</p>

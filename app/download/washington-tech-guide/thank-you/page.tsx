@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WashingtonTechGuideDownloadThankYouPage() {
   return (
@@ -67,19 +68,7 @@ export default function WashingtonTechGuideDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert Washington Grant Application Support?</h3>
-                <p className="text-green-700 mb-4">
-                  Our Washington grant specialists understand WRF Technology Commercialization phased requirements, Innovation 
-                  Modernization Program criteria, Clean Energy Fund programs, and Seattle Bellevue Redmond tech ecosystem. Get 
-                  personalized guidance to maximize your Washington funding success.
-                </p>
-                <Button size="lg" className="bg-green-700 hover:bg-green-800" asChild>
-                  <Link href="/contact?service=washington-grants-help&source=download-thank-you">
-                    Schedule Free Washington Grant Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Washington Tech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Washington technology startup funding opportunities:</p>

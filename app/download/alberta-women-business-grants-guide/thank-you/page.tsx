@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Zap, Target, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function AlbertaGrantsDownloadThankYouPage() {
   return (
@@ -65,20 +66,7 @@ export default function AlbertaGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-red-800 mb-4">Ready for Expert Alberta Funding Navigation?</h3>
-                <p className="text-red-700 mb-4">
-                  Our Alberta funding specialists understand the provincial business ecosystem and can help you navigate 
-                  AWE loan applications, Women Building Futures skilled trades programs, energy sector initiatives, and 
-                  Alberta Innovates tech funding. Get personalized guidance to maximize Alberta's $580M in women 
-                  entrepreneur support.
-                </p>
-                <Button size="lg" className="bg-red-600 hover:bg-red-700" asChild>
-                  <Link href="/contact?service=alberta-women-business-grants-help&source=download-thank-you">
-                    Schedule Free Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Alberta Women Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Alberta women entrepreneur support:</p>

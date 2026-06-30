@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Building, Users, Target } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function BDCDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function BDCDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert BDC Financing Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our women entrepreneur financing specialists have helped secure $15M+ in BDC flexible financing with a 93% success rate. 
-                  Get professional guidance for advisor connections, application development, and securing patient capital for growth.
-                </p>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contact?service=bdc-women-entrepreneur-financing-help&source=download-thank-you">
-                    Schedule Free BDC Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="BDC Financing Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women entrepreneur financing opportunities:</p>

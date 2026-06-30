@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, MapPin, Building } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function RDARegionalDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function RDARegionalDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-purple-50 border border-purple-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-purple-800 mb-4">Ready for Expert RDA Regional Support?</h3>
-                <p className="text-purple-700 mb-4">
-                  Our regional development specialists have secured $45M+ in RDA funding across all 7 agencies with an 88% success rate. 
-                  Get professional guidance for your RDA application and regional strategy.
-                </p>
-                <Button size="lg" className="bg-purple-600 hover:bg-purple-700" asChild>
-                  <Link href="/contact?service=rda-regional-expert-help&source=download-thank-you">
-                    Schedule Free RDA Regional Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="RDA Regional Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian regional development:</p>

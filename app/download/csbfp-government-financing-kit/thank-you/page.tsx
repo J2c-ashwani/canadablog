@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Shield, Building } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CSBFPGovernmentDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function CSBFPGovernmentDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert CSBFP Government Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our federal financing specialists have secured $25M+ in CSBFP government-guaranteed loans with a 92% success rate. 
-                  Get professional guidance for your CSBFP application and lender selection.
-                </p>
-                <Button size="lg" className="bg-blue-600 hover:bg-blue-700" asChild>
-                  <Link href="/contact?service=csbfp-government-expert-help&source=download-thank-you">
-                    Schedule Free CSBFP Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="CSBFP Government Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian federal financing:</p>

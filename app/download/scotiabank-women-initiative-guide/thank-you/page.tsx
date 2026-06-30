@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, DollarSign, Users, Lightbulb } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function ScotiabankWomenDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function ScotiabankWomenDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-red-800 mb-4">Ready for Expert Scotiabank Women Initiative Navigation Support?</h3>
-                <p className="text-red-700 mb-4">
-                  Our banking specialists understand Scotiabank's comprehensive suite of women entrepreneur support 
-                  programs. Get professional guidance for capital funding access, mentorship program enrollment, 
-                  educational resource utilization, and maximizing all available benefits for your women-led business growth.
-                </p>
-                <Button size="lg" className="bg-red-700 hover:bg-red-800" asChild>
-                  <Link href="/contact?service=scotiabank-women-initiative-help&source=download-thank-you">
-                    Schedule Free Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Scotiabank Women Initiative Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women entrepreneur banking and support:</p>

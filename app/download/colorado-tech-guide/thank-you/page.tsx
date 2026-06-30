@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function ColoradoTechGuideDownloadThankYouPage() {
   return (
@@ -67,20 +68,7 @@ export default function ColoradoTechGuideDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert Colorado Grant Application Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our Colorado grant specialists understand Advanced Industries Accelerator Early-Stage Capital requirements, 
-                  Proof of Concept grant processes, Investment Tax Credit 35% rural Enterprise Zones, seven advanced industries 
-                  alignment, and Denver Boulder Colorado Springs tech ecosystems. Get personalized guidance to maximize your 
-                  Colorado funding success.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=colorado-grants-help&source=download-thank-you">
-                    Schedule Free Colorado Grant Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Colorado Tech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Colorado technology startup funding opportunities:</p>

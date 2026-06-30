@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Rocket, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function NSFSBIRGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function NSFSBIRGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert NSF SBIR Proposal Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our SBIR specialists understand NSF review process, technical merit requirements, and commercialization 
-                  evaluation. Get personalized guidance to maximize your Phase I and Phase II approval success with 
-                  85% funding rate.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=nsf-sbir-proposal-help&source=download-thank-you">
-                    Schedule Free NSF SBIR Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="NSF SBIR Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring NSF SBIR funding opportunities:</p>

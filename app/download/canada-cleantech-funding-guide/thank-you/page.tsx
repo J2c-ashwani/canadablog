@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CanadaCleanTechFundingDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function CanadaCleanTechFundingDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-teal-50 border border-teal-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-teal-800 mb-4">Ready for Expert CleanTech Funding Support?</h3>
-                <p className="text-teal-700 mb-4">
-                  Our cleantech funding specialists have secured $75M+ with 85% success rate across SDTC, Clean Tech ITCs, 
-                  and Net Zero programs. Get professional guidance for your environmental innovation applications.
-                </p>
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700" asChild>
-                  <Link href="/contact?service=cleantech-expert-help&source=download-thank-you">
-                    Schedule Free CleanTech Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="CleanTech Funding Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring clean technology funding:</p>

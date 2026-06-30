@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Zap, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function AlbertaBusinessGrantsDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function AlbertaBusinessGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-orange-50 border border-orange-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-orange-800 mb-4">Ready for Expert Alberta Energy Innovation Support?</h3>
-                <p className="text-orange-700 mb-4">
-                  Our Alberta energy innovation funding specialists have secured $11M+ in provincial funding with an 84% success rate.
-                  Get professional guidance for your Alberta provincial application and clean technology development.
-                </p>
-                <Button size="lg" className="bg-orange-600 hover:bg-orange-700" asChild>
-                  <Link href="/contact?service=alberta-business-expert-help&source=download-thank-you">
-                    Schedule Free Alberta Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Alberta Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Alberta provincial business support:</p>

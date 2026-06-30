@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Globe, Target, Rocket } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function EDCDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function EDCDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-teal-50 border border-teal-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-teal-800 mb-4">Ready for Expert EDC Export Financing Support?</h3>
-                <p className="text-teal-700 mb-4">
-                  Our women exporter financing specialists have helped secure $22M+ in EDC export financing with an 87% success rate. 
-                  Get professional guidance for export readiness, market entry strategy, and EDC Women in Trade application optimization.
-                </p>
-                <Button size="lg" className="bg-teal-600 hover:bg-teal-700" asChild>
-                  <Link href="/contact?service=edc-women-trade-export-financing-help&source=download-thank-you">
-                    Schedule Free EDC Export Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="EDC Export Financing Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women entrepreneur export financing opportunities:</p>

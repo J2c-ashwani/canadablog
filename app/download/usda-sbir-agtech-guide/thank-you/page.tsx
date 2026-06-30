@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function USDASBIRAgTechDownloadThankYouPage() {
   return (
@@ -65,18 +66,7 @@ export default function USDASBIRAgTechDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert USDA SBIR Proposal Support?</h3>
-                <p className="text-green-700 mb-4">
-                  Our USDA SBIR specialists understand farmer needs, on-farm testing requirements, and agricultural distribution 
-                  channels. Get personalized guidance to maximize your Phase I and Phase II approval success with 75% funding rate.
-                </p>
-                <Button size="lg" className="bg-green-700 hover:bg-green-800" asChild>
-                  <Link href="/contact?service=usda-sbir-proposal-help&source=download-thank-you">
-                    Schedule Free USDA SBIR Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="USDA SBIR AgTech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring USDA SBIR AgTech funding opportunities:</p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function SREDDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function SREDDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert SR&ED Application Support?</h3>
-                <p className="text-green-700 mb-4">
-                  Our SR&ED specialists have secured $45M+ in tax credits with a 96% success rate. 
-                  Get professional guidance for your Scientific Research & Experimental Development claim.
-                </p>
-                <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
-                  <Link href="/contact?service=sred-expert-help&source=download-thank-you">
-                    Schedule Free SR&ED Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="SR&ED Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian R&D funding:</p>

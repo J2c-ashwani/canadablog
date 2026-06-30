@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Heart, Users, Target } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WELFDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function WELFDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-pink-50 border border-pink-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-pink-800 mb-4">Ready for Expert WELF Application Support?</h3>
-                <p className="text-pink-700 mb-4">
-                  Our women entrepreneur funding specialists have helped secure $8M+ in WELF financing with an 89% success rate. 
-                  Get professional guidance for partner selection, business plan development, and application optimization.
-                </p>
-                <Button size="lg" className="bg-pink-600 hover:bg-pink-700" asChild>
-                  <Link href="/contact?service=welf-women-entrepreneur-expert-help&source=download-thank-you">
-                    Schedule Free WELF Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="WELF Application Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women entrepreneur funding opportunities:</p>

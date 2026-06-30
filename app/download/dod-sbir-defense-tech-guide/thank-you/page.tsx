@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Shield, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function DODSBIRDefenseTechDownloadThankYouPage() {
   return (
@@ -66,19 +67,7 @@ export default function DODSBIRDefenseTechDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-slate-800 mb-4">Ready for Expert DOD SBIR Proposal Support?</h3>
-                <p className="text-slate-700 mb-4">
-                  Our DOD SBIR specialists understand military requirements, transition pathways, and Program of Record 
-                  identification. Get personalized guidance to maximize your Phase I and Phase II approval success with 
-                  80% funding rate.
-                </p>
-                <Button size="lg" className="bg-slate-700 hover:bg-slate-800" asChild>
-                  <Link href="/contact?service=dod-sbir-proposal-help&source=download-thank-you">
-                    Schedule Free DOD SBIR Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="DOD SBIR Defense Tech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring DOD SBIR defense tech funding opportunities:</p>

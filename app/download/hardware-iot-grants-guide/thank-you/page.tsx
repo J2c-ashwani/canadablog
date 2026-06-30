@@ -6,6 +6,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Sparkles, Calendar, Users, FileText, ArrowRight, Mail, Clock, Wifi, Cpu, Cog } from "lucide-react"
 import Link from "next/link"
 import type { Metadata } from "next"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export const metadata: Metadata = {
   title: "Success! Your Hardware Grants Guide is Ready | GrantFinder Pro",
@@ -66,34 +67,7 @@ export default function HardwareIoTGrantsGuideDownloadThankYouPage() {
               </div>
 
               {/* Primary CTA - Most Important Action */}
-              <Card className="border-2 border-orange-500 bg-gradient-to-br from-orange-600 to-amber-700 text-white shadow-2xl mb-12">
-                <CardContent className="pt-8 pb-8 text-center">
-                  <div className="flex justify-center mb-4">
-                    <div className="w-16 h-16 bg-white rounded-full flex items-center justify-center">
-                      <Users className="w-8 h-8 text-orange-600" />
-                    </div>
-                  </div>
-                  <h2 className="text-2xl md:text-3xl font-bold mb-3">
-                    Want Expert Help With Your Hardware Application?
-                  </h2>
-                  <p className="text-orange-100 text-lg mb-6 max-w-2xl mx-auto">
-                    Our NSF SBIR IoT specialists have helped hardware startups win millions in grants. Get a free 30-minute strategy call to review your project.
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-4">
-                    <Button 
-                      size="lg" 
-                      className="bg-white text-orange-700 hover:bg-orange-50 font-bold text-lg px-8 py-6 shadow-lg"
-                      asChild
-                    >
-                      <Link href="/contact?service=hardware-grants-help&source=download-thank-you">
-                        <Calendar className="w-5 h-5 mr-2" />
-                        Schedule Free Strategy Call
-                      </Link>
-                    </Button>
-                  </div>
-                  <p className="text-sm text-orange-100">✓ No sales pitch • ✓ 30 minutes free • ✓ Actionable insights</p>
-                </CardContent>
-              </Card>
+              <OTOUpsellCard guideName="Hardware Iot Grants Guide" />
 
               {/* Next Steps Cards - Clear Priority */}
               <div className="mb-12">

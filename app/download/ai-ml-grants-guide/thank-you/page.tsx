@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function AIMachineLearningGrantsGuideDownloadThankYouPage() {
   return (
@@ -67,20 +68,7 @@ export default function AIMachineLearningGrantsGuideDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-violet-50 border border-violet-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-violet-800 mb-4">Ready for Expert AI Grant Application Support?</h3>
-                <p className="text-violet-700 mb-4">
-                  Our AI/ML grant specialists understand NSF AI Research Institutes requirements, SBIR Phase I Phase II Fast-Track 
-                  processes, DOD AI applications, NIST AI standards, responsible AI frameworks, and AI model validation commercial 
-                  demonstration. Get personalized guidance to maximize your AI grant success with proven track record winning 
-                  applications supporting transformative AI innovations.
-                </p>
-                <Button size="lg" className="bg-violet-700 hover:bg-violet-800" asChild>
-                  <Link href="/contact?service=ai-grants-help&source=download-thank-you">
-                    Schedule Free AI Grant Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="AI & Machine Learning Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring AI and machine learning startup funding opportunities:</p>

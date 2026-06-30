@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Heart, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WomenEntrepreneurshipDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function WomenEntrepreneurshipDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-pink-50 border border-pink-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-pink-800 mb-4">Ready for Expert WES Women Entrepreneurship Support?</h3>
-                <p className="text-pink-700 mb-4">
-                  Our women entrepreneurship specialists have secured $8M+ in WES funding with an 89% success rate. 
-                  Get professional guidance for your Women Entrepreneurship Strategy application and ecosystem development.
-                </p>
-                <Button size="lg" className="bg-pink-600 hover:bg-pink-700" asChild>
-                  <Link href="/contact?service=women-entrepreneurship-expert-help&source=download-thank-you">
-                    Schedule Free WES Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="WES Women Entrepreneurship Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Canadian women entrepreneurship programs:</p>

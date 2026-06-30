@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Globe, Award } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function QuebecBusinessGrantsDownloadThankYouPage() {
   return (
@@ -64,18 +65,7 @@ export default function QuebecBusinessGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert Quebec Innovation Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our Quebec innovation funding specialists have secured $14M+ in provincial funding with an 88% success rate. 
-                  Get professional guidance for your Quebec provincial application and R&D tax credit optimization.
-                </p>
-                <Button size="lg" className="bg-blue-800 hover:bg-blue-900" asChild>
-                  <Link href="/contact?service=quebec-business-expert-help&source=download-thank-you">
-                    Schedule Free Quebec Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Quebec Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Quebec provincial business support:</p>

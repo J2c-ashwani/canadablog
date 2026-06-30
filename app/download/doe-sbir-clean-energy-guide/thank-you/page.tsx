@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Download, Calendar, MessageSquare, FileText, Zap, Target, Rocket } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function DOESBIRDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function DOESBIRDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert DOE SBIR Proposal Support?</h3>
-                <p className="text-green-700 mb-4">
-                  Our DOE SBIR specialists understand energy mission priorities, commercialization pathways, and utility 
-                  partnerships. Get personalized guidance to maximize your Phase I and Phase II approval success with 
-                  73% funding rate for clean energy technologies.
-                </p>
-                <Button size="lg" className="bg-green-600 hover:bg-green-700" asChild>
-                  <Link href="/contact?service=doe-sbir-proposal-help&source=download-thank-you">
-                    Schedule Free DOE SBIR Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="DOE SBIR Clean Energy Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring DOE SBIR clean energy funding opportunities:</p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Globe, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WomenExportTradeGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function WomenExportTradeGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert Export Funding Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our export funding specialists understand CanExport requirements, Trade Commissioner Service, and 
-                  international market entry strategies. Get personalized guidance to maximize your export grant success 
-                  and accelerate your global expansion.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=women-export-trade-grants-help&source=download-thank-you">
-                    Schedule Free Export Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Women Export Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women export funding opportunities:</p>

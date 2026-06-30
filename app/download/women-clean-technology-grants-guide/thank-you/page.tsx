@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WomenCleanTechnologyGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function WomenCleanTechnologyGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-green-50 border border-green-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-green-800 mb-4">Ready for Expert Clean Tech Funding Support?</h3>
-                <p className="text-green-700 mb-4">
-                  Our clean technology funding specialists understand SDTC requirements, environmental impact assessment, 
-                  and technology commercialization. Get personalized guidance to maximize your cleantech grant success 
-                  and accelerate your environmental innovation.
-                </p>
-                <Button size="lg" className="bg-green-700 hover:bg-green-800" asChild>
-                  <Link href="/contact?service=women-clean-technology-grants-help&source=download-thank-you">
-                    Schedule Free Clean Tech Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Women Clean Technology Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women clean technology funding opportunities:</p>

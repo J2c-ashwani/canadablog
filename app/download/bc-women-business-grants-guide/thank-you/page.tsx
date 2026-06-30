@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Zap, Target, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function BCGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function BCGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-emerald-50 border border-emerald-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-emerald-800 mb-4">Ready for Expert BC Funding Navigation?</h3>
-                <p className="text-emerald-700 mb-4">
-                  Our BC funding specialists understand the provincial innovation ecosystem and can help you navigate 
-                  WeBC loan applications, Innovate BC tech programs, Indigenous women funding, and regional resources. 
-                  Get personalized guidance to maximize BC's $650M in women entrepreneur innovation support.
-                </p>
-                <Button size="lg" className="bg-emerald-600 hover:bg-emerald-700" asChild>
-                  <Link href="/contact?service=bc-women-business-grants-help&source=download-thank-you">
-                    Schedule Free Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="BC Women Business Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring BC women entrepreneur innovation support:</p>

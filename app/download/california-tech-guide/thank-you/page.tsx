@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function CaliforniaTechGuideDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function CaliforniaTechGuideDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-blue-50 border border-blue-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-blue-800 mb-4">Ready for Expert California Grant Application Support?</h3>
-                <p className="text-blue-700 mb-4">
-                  Our California grant specialists understand CalSEED cleantech requirements, SBIR State Match federal coordination, 
-                  California Competes Tax Credit competitive factors, and Silicon Valley Bay Area ecosystem. Get personalized guidance 
-                  to maximize your California funding success with 70% approval rate.
-                </p>
-                <Button size="lg" className="bg-blue-700 hover:bg-blue-800" asChild>
-                  <Link href="/contact?service=california-grants-help&source=download-thank-you">
-                    Schedule Free California Grant Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="California Tech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring California technology startup funding opportunities:</p>

@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Settings, MapPin, Users, DollarSign } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function WomenManufacturingGrantsDownloadThankYouPage() {
   return (
@@ -65,19 +66,7 @@ export default function WomenManufacturingGrantsDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-slate-50 border border-slate-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-slate-800 mb-4">Ready for Expert Manufacturing Equipment Funding Support?</h3>
-                <p className="text-slate-700 mb-4">
-                  Our manufacturing funding specialists understand Canadian federal and provincial programs and can help 
-                  you navigate NRC IRAP applications, BDC/provincial equipment loans, SR&ED optimization, and regional 
-                  economic development grants. Get personalized guidance to maximize your manufacturing equipment funding success.
-                </p>
-                <Button size="lg" className="bg-slate-700 hover:bg-slate-800" asChild>
-                  <Link href="/contact?service=women-manufacturing-grants-help&source=download-thank-you">
-                    Schedule Free Manufacturing Funding Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Women Manufacturing Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring women manufacturing funding opportunities:</p>

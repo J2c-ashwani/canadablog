@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Sparkles, MapPin, Users } from "lucide-react"
 import Link from "next/link"
+import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
 
 export default function MassachusettsTechGuideDownloadThankYouPage() {
   return (
@@ -66,19 +67,7 @@ export default function MassachusettsTechGuideDownloadThankYouPage() {
                 </Card>
               </div>
 
-              <div className="bg-red-50 border border-red-200 p-6 rounded-lg mb-8">
-                <h3 className="font-bold text-red-800 mb-4">Ready for Expert Massachusetts Grant Application Support?</h3>
-                <p className="text-red-700 mb-4">
-                  Our Massachusetts grant specialists understand SBIR START tiered requirements, MassCEC InnovateMass clean energy 
-                  deployment, MLSC biotech programs, and Boston Cambridge Kendall Square ecosystem. Get personalized guidance to 
-                  maximize your Massachusetts funding success with 70% approval rate.
-                </p>
-                <Button size="lg" className="bg-red-700 hover:bg-red-800" asChild>
-                  <Link href="/contact?service=massachusetts-grants-help&source=download-thank-you">
-                    Schedule Free Massachusetts Grant Strategy Call
-                  </Link>
-                </Button>
-              </div>
+              <OTOUpsellCard guideName="Massachusetts Tech Grants Toolkit" />
 
               <div className="text-center">
                 <p className="text-gray-600 mb-4">Continue exploring Massachusetts technology startup funding opportunities:</p>
