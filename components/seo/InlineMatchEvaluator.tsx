@@ -1,10 +1,14 @@
-import React, { useState } from "react"
-import { Sparkles, ArrowRight, ShieldCheck, Mail, Lock } from "lucide-react"
+"use client"
+
+import React, { useState, useEffect, useRef } from "react"
+import { Sparkles, ArrowRight, ShieldCheck, Mail, Lock, CheckCircle, Loader2, DollarSign } from "lucide-react"
 import { MatchScoreEngine, type MatchResult } from "@/lib/leads/MatchScoreEngine"
 import type { SubscriberProfile } from "@/lib/leads/SubscriberRepository"
 import type { ProgramDetails } from "@/lib/data/programs"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
+import { Label } from "@/components/ui/label"
+import { Input } from "@/components/ui/input"
 
 interface InlineMatchEvaluatorProps {
   program: ProgramDetails
@@ -30,6 +34,16 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
   // Teaser Result
   const [teaserResult, setTeaserResult] = useState<MatchResult | null>(null)
 
+  // Monetization States
+  const [leadSaved, setLeadSaved] = useState(false)
+  const [sdkReady, setSdkReady] = useState(false)
+  const [paymentError, setPaymentError] = useState<string | null>(null)
+
+  const buttonsRenderedRef = useRef(false)
+  const paypalClientId = "AeuWqg4P1NhiSmsyZt2lDqXg4K6Fz4_lV_mU9t_l1K-08lQ_v2n2vG1T_w_R5f2R2"
+
+  const isEmailValid = !!(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
+
   const handleInterestToggle = (interest: string) => {
     setInterests(prev => 
       prev.includes(interest) ? prev.filter(i => i !== interest) : [...prev, interest]
@@ -37,7 +51,6 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
   }
 
   const handleCalculateTeaser = () => {
-    // Generate the match result
     const tempProfile: Partial<SubscriberProfile> = {
       country,
       region,
@@ -50,7 +63,7 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
     setStep(5) // Move to unlock step
   }
 
-  const handleUnlockFullAnalysis = async (e: React.FormEvent) => {
+  const handleSaveLeadDraft = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email || !companyName) {
       setError("Please fill in both company name and work email.")
@@ -59,20 +72,9 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
     setError("")
     setSubmitting(true)
 
-    const finalProfile: Partial<SubscriberProfile> = {
-      email,
-      name: `${companyName} Founder`,
-      country,
-      region,
-      industry,
-      companySize,
-      fundingInterests: interests as any[],
-      isSubscribed: true
-    }
-
     try {
       // 1. Submit lead to database
-      const subscribeRes = await fetch("/api/subscribe", {
+      await fetch("/api/subscribe", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -87,7 +89,7 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
       })
 
       // 2. Log evaluation parameters to Match Logs Sheet
-      const logRes = await fetch("/api/match/log", {
+      await fetch("/api/match/log", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -102,14 +104,19 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
         })
       })
 
-      if (teaserResult) {
-        // Store profile in sessionStorage for persistence
-        if (typeof window !== "undefined") {
-          window.sessionStorage.setItem("fsi_cdp_profile", JSON.stringify(finalProfile))
-          window.sessionStorage.setItem(`fsi_match_${program.slug}`, JSON.stringify(teaserResult))
-        }
-        onUnlock(finalProfile, teaserResult)
-      }
+      setLeadSaved(true)
+
+      // Telemetry: lead captured
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          event: "program_page_lead_captured",
+          programSlug: program.slug
+        })
+      }).catch(() => {})
+
     } catch (err) {
       console.error("Failed to unlock and save lead:", err)
       setError("Failed to register. Please check your connection and try again.")
@@ -117,6 +124,137 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
       setSubmitting(false)
     }
   }
+
+  // Load PayPal SDK when lead is saved
+  useEffect(() => {
+    if (step !== 5 || !leadSaved) return
+    if ((window as any).paypal) { setSdkReady(true); return; }
+
+    const script = document.createElement("script")
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`
+    script.type = "text/javascript"
+    script.async = true
+    script.onload = () => setSdkReady(true)
+    script.onerror = () => {
+      console.error("PayPal SDK failed to load.")
+      setPaymentError("Could not load secure checkout. Please refresh the page.")
+    }
+    document.head.appendChild(script)
+  }, [step, leadSaved])
+
+  // Render PayPal button
+  useEffect(() => {
+    if (step !== 5 || !leadSaved || !isEmailValid || !sdkReady || !(window as any).paypal) {
+      buttonsRenderedRef.current = false
+      return
+    }
+
+    if (buttonsRenderedRef.current) return
+    buttonsRenderedRef.current = true
+
+    const container = document.getElementById("program-paypal-button")
+    if (container) container.innerHTML = ""
+
+    try {
+      (window as any).paypal.Buttons({
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+        createOrder: (_data: any, actions: any) => {
+          setPaymentError(null)
+
+          // Telemetry
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email,
+              event: "program_checkout_started",
+              programSlug: program.slug
+            })
+          }).catch(() => {})
+
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: "19.00", currency_code: 'USD' },
+              description: `Funding Match Report - ${program.name}`
+            }]
+          })
+        },
+        onApprove: async (_data: any, actions: any) => {
+          try {
+            const details = await actions.order.capture()
+            const orderId = details?.id || ''
+
+            const res = await fetch('/api/products/purchase', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                productId: 'funding-match-report',
+                email: email,
+                name: `${companyName} Founder`,
+                paypalOrderId: orderId,
+                profileData: {
+                  province: region,
+                  industry: industry,
+                  revenue: companySize,
+                  goal: program.fundingPurpose || 'research',
+                },
+                attribution: {
+                  landingPage: window.location.pathname,
+                  referrer: document.referrer || 'direct',
+                }
+              })
+            })
+
+            if (res.ok) {
+              const finalProfile: Partial<SubscriberProfile> = {
+                email,
+                name: `${companyName} Founder`,
+                country,
+                region,
+                industry,
+                companySize,
+                fundingInterests: interests as any[],
+                isSubscribed: true,
+                reportPurchased: true
+              }
+
+              if (typeof window !== "undefined") {
+                window.sessionStorage.setItem("fsi_cdp_profile", JSON.stringify(finalProfile))
+                window.sessionStorage.setItem(`fsi_match_${program.slug}`, JSON.stringify(teaserResult))
+              }
+
+              // Telemetry
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({
+                  email,
+                  event: "program_purchase_success",
+                  programSlug: program.slug
+                })
+              }).catch(() => {})
+
+              onUnlock(finalProfile, teaserResult!)
+            } else {
+              const errData = await res.json()
+              setPaymentError(errData.error || "Failed to record purchase.")
+            }
+          } catch (e) {
+            console.error("Payment capture error:", e)
+            setPaymentError("An error occurred during payment capture.")
+          }
+        },
+        onError: (err: any) => {
+          console.error("PayPal Program Error:", err)
+          setPaymentError("Secure checkout closed or encountered an error.")
+          buttonsRenderedRef.current = false
+        }
+      }).render("#program-paypal-button")
+    } catch (e) {
+      console.error("PayPal Program render exception:", e)
+      buttonsRenderedRef.current = false
+    }
+  }, [step, leadSaved, isEmailValid, sdkReady, teaserResult])
 
   return (
     <Card className="border border-slate-200 bg-white rounded-2xl shadow-sm overflow-hidden">
@@ -308,83 +446,128 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
         )}
 
         {step === 5 && teaserResult && (
-          <div className="space-y-4 animate-fade-in">
-            <span className="text-[10px] font-bold text-emerald-600 uppercase tracking-wider block font-black">Pre-Screen Result Compiled!</span>
+          <div className="space-y-4 animate-fade-in text-left">
+            <span className="text-[10px] font-bold text-emerald-650 uppercase tracking-wider block font-black">Pre-Screen Result Compiled!</span>
             
             {/* Fit Band Preview Teaser */}
-            <div className="border border-emerald-100 bg-emerald-50/50 rounded-xl p-4 text-center space-y-2 shadow-xs">
-              <div className="text-xs text-slate-500 font-bold uppercase tracking-wider">Calculated Match Strength</div>
+            <div className="border border-emerald-100 bg-emerald-50/50 rounded-xl p-4 text-center space-y-1.5 shadow-xs">
+              <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Calculated Match Strength</div>
               
               {teaserResult.status === "Eligible" ? (
                 <>
-                  <div className="text-2xl font-black text-slate-900 tracking-tight">
+                  <div className="text-xl font-black text-slate-900 tracking-tight">
                     {teaserResult.fitBand} Match
                   </div>
-                  <div className="text-xs font-semibold text-slate-600">
+                  <div className="text-xs font-bold text-slate-600">
                     {teaserResult.potentialOpportunity}
                   </div>
-                  <div className="text-[10px] text-emerald-700 font-bold mt-1 bg-emerald-100/60 inline-block px-3 py-1 rounded-full border border-emerald-200">
+                  <div className="text-[9px] text-emerald-800 font-bold mt-1 bg-emerald-150 inline-block px-2.5 py-0.5 rounded-full border border-emerald-200">
                     ✓ 3 Additional Stacking Matches Found
                   </div>
                 </>
               ) : (
-                <div className="text-xl font-extrabold text-rose-700">
+                <div className="text-lg font-extrabold text-rose-700">
                   Not Eligible
                 </div>
               )}
             </div>
 
-            {/* Email Unlock Form */}
-            <form onSubmit={handleUnlockFullAnalysis} className="space-y-3 pt-2">
-              <div className="p-3 border border-slate-200 rounded-xl bg-slate-50 flex gap-2 items-start text-[11px] text-slate-500 font-semibold mb-3">
-                <Lock className="h-4 w-4 shrink-0 text-slate-400 mt-0.5" />
-                <p>To unlock the full pre-qualification scorecard, E-E-A-T explanations, difficulty levels, and stacking opportunities stack, enter your company name and email.</p>
-              </div>
-
-              {error && (
-                <div className="p-3 bg-rose-50 border border-rose-100 rounded-lg text-rose-700 text-xs font-semibold text-center">
-                  {error}
+            {/* Email Save Form (Pre-Checkout Gate) */}
+            {!leadSaved ? (
+              <form onSubmit={handleSaveLeadDraft} className="space-y-3 pt-2">
+                <div className="p-3 border border-slate-100 rounded-xl bg-slate-50 flex gap-2 items-start text-[10px] text-slate-500 font-semibold mb-3">
+                  <Mail className="h-4 w-4 shrink-0 text-slate-400 mt-0.5" />
+                  <p>Save your personalized funding search so you can return anytime. We will also email you your results.</p>
                 </div>
-              )}
 
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Company Name</label>
-                <input
-                  type="text"
-                  placeholder="e.g. Acme Software Ltd."
-                  value={companyName}
-                  onChange={(e) => setCompanyName(e.target.value)}
-                  required
-                  className="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 font-semibold"
-                />
-              </div>
-
-              <div className="space-y-1">
-                <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Work Email</label>
-                <input
-                  type="email"
-                  placeholder="e.g. founder@company.com"
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  className="w-full h-10 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 font-semibold"
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={submitting}
-                className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 mt-4 shadow-sm"
-              >
-                {submitting ? (
-                  "Unlocking Analysis..."
-                ) : (
-                  <>
-                    Unlock Full Report <ShieldCheck className="h-4 w-4" />
-                  </>
+                {error && (
+                  <div className="p-2.5 bg-rose-50 border border-rose-100 rounded-lg text-rose-700 text-xs font-semibold text-center">
+                    {error}
+                  </div>
                 )}
-              </Button>
-            </form>
+
+                <div className="space-y-1">
+                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Company Name</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. Acme Software Ltd."
+                    value={companyName}
+                    onChange={(e) => setCompanyName(e.target.value)}
+                    required
+                    className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 font-semibold"
+                  />
+                </div>
+
+                <div className="space-y-1">
+                  <label className="text-[9px] font-bold text-slate-400 uppercase tracking-wider block">Work Email</label>
+                  <input
+                    type="email"
+                    placeholder="e.g. founder@company.com"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full h-9 px-3 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-900 focus:outline-hidden focus:ring-2 focus:ring-emerald-500 font-semibold"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={submitting}
+                  className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-5 text-xs flex items-center justify-center gap-2 mt-4 shadow-sm"
+                >
+                  {submitting ? (
+                    "Saving Profile..."
+                  ) : (
+                    <>
+                      Save &amp; Continue <ArrowRight className="h-4 w-4" />
+                    </>
+                  )}
+                </Button>
+              </form>
+            ) : (
+              <div className="space-y-4 pt-2">
+                {/* Product Description Block */}
+                <div className="border border-purple-100 bg-purple-500/5 rounded-xl p-4">
+                  <div className="flex gap-2 items-start text-[10px] text-purple-950 font-bold uppercase tracking-wider mb-2">
+                    <Lock className="w-4 h-4 text-purple-700 shrink-0 mt-0.5" />
+                    <span>Personalized Funding Strategy</span>
+                  </div>
+                  <ul className="space-y-1.5 text-xs text-slate-700 font-medium">
+                    <li className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-purple-600" /> Know which programs to prioritize first</li>
+                    <li className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-purple-600" /> Avoid applications unlikely to succeed</li>
+                    <li className="flex items-center gap-1.5"><CheckCircle className="w-3.5 h-3.5 text-purple-600" /> Stacking map (which programs combine)</li>
+                  </ul>
+                </div>
+
+                {/* Secure Checkout Button */}
+                <div className="border border-slate-200 rounded-xl p-4 bg-slate-50">
+                  <div className="flex items-baseline gap-1 mb-3 justify-center">
+                    <span className="text-xl font-black text-slate-900">$19</span>
+                    <span className="text-[10px] text-slate-400 font-bold uppercase tracking-wider">Unlock Report</span>
+                  </div>
+
+                  <div className="min-h-[100px]">
+                    {!sdkReady ? (
+                      <div className="flex items-center justify-center py-4 gap-2 text-xs text-slate-400 animate-pulse font-medium">
+                        <Loader2 className="w-4 h-4 animate-spin text-slate-400" /> Loading secure transaction...
+                      </div>
+                    ) : (
+                      <div id="program-paypal-button" className="w-full"></div>
+                    )}
+                    {paymentError && (
+                      <p className="text-xs text-red-500 mt-2 font-bold">{paymentError}</p>
+                    )}
+                  </div>
+                </div>
+
+                {/* Secondary Booking Action */}
+                <div className="text-center mt-2">
+                  <p className="text-[10px] text-slate-400">
+                    Not ready to purchase? <a href="/consultation?source=program-page-wizard" className="text-purple-650 font-bold hover:underline">Book a 15-minute funding review.</a>
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
         )}
       </CardContent>

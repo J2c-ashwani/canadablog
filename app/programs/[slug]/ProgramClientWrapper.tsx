@@ -220,8 +220,8 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
         const result = MatchScoreEngine.calculateMatch(program, activeProfile)
         setProfile(activeProfile)
         setMatchResult(result)
-        // If we have their email address, they have full access.
-        if (activeProfile.email) {
+        // Require reportPurchased or strategyReportPurchased for full scorecard access
+        if (activeProfile.reportPurchased || activeProfile.strategyReportPurchased) {
           setHasAccess(true)
         }
       }
