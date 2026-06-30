@@ -434,7 +434,7 @@ export default function PortfolioClient() {
       return
     }
     const script = document.createElement("script")
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&vault=true&intent=subscription&components=buttons`
     script.type = "text/javascript"
     script.async = true
     script.onload = () => setSdkReady(true)
@@ -464,54 +464,47 @@ export default function PortfolioClient() {
           shape: 'rect',
           label: 'pay'
         },
-        createOrder: (data: any, actions: any) => {
-          return actions.order.create({
-            purchase_units: [{
-              description: "Founding Member Subscription - FSI Digital",
-              amount: {
-                currency_code: "USD",
-                value: "29.00"
-              }
-            }]
-          })
+        createSubscription: (data: any, actions: any) => {
+          const planId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || "P-4NW64491Y0450531PM2WUT7Y";
+          return actions.subscription.create({
+            plan_id: planId
+          });
         },
         onApprove: async (data: any, actions: any) => {
-          return actions.order.capture().then(async (details: any) => {
-            const orderId = details.id
-            try {
-              const res = await fetch("/api/subscriber/upgrade", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email: profile.email,
-                  action: "active",
-                  subscriptionId: orderId
-                })
+          const subId = data.subscriptionID;
+          try {
+            const res = await fetch("/api/subscriber/upgrade", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: profile.email,
+                action: "active",
+                subscriptionId: subId
               })
-              const resData = await res.json()
-              if (resData.success) {
-                setSubscriptionStatus("active")
-                setSubscriptionId(orderId)
-                sessionStorage.setItem("fsi_subscription_status", "active")
-                trackGAEvent("subscription_purchase", {
-                  transaction_id: orderId,
-                  value: 29.00,
-                  currency: "USD"
-                })
-              } else {
-                setPaymentError(resData.error || "Failed to record payment.")
-              }
-            } catch (err: any) {
-              console.error("Upgrade error:", err)
-              setPaymentError(err.message || "Failed to upgrade subscription.")
+            });
+            const resData = await res.json();
+            if (resData.success) {
+              setSubscriptionStatus("active");
+              setSubscriptionId(subId);
+              sessionStorage.setItem("fsi_subscription_status", "active");
+              trackGAEvent("subscription_purchase", {
+                transaction_id: subId,
+                value: 29.00,
+                currency: "USD"
+              });
+            } else {
+              setPaymentError(resData.error || "Failed to record payment.");
             }
-          })
+          } catch (err: any) {
+            console.error("Upgrade error:", err);
+            setPaymentError(err.message || "Failed to upgrade subscription.");
+          }
         },
         onError: (err: any) => {
-          console.error("PayPal error:", err)
-          setPaymentError("An error occurred with PayPal. Please try again.")
+          console.error("PayPal error:", err);
+          setPaymentError("An error occurred with PayPal. Please try again.");
         }
-      }).render("#paypal-button-container")
+      }).render("#paypal-button-container");
     }
   }, [sdkReady, subscriptionStatus, isUnlocked, profile.email])
 

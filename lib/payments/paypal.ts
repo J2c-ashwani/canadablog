@@ -244,3 +244,54 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string)
     return { verified: false, error: error.message || "Unknown validation error" };
   }
 }
+
+export async function verifyPayPalSubscription(subscriptionId: string) {
+  const isProduction = process.env.NODE_ENV === 'production' || process.env.PAYPAL_ENV === 'live';
+
+  if (!isProduction && (!subscriptionId || subscriptionId === 'N/A' || subscriptionId.startsWith('TEST-'))) {
+    return { verified: true, bypass: true, message: "Bypassed dummy test subscription in non-production" };
+  }
+
+  try {
+    getPayPalCredentials();
+  } catch (e) {
+    if (isProduction) {
+      console.error("Critical: PayPal credentials missing!");
+      return { verified: false, error: "PayPal credentials not configured on server" };
+    }
+    return { verified: true, bypass: true };
+  }
+
+  try {
+    const accessToken = await getPayPalAccessToken();
+    const host = getPayPalBaseUrl();
+
+    // Fetch subscription details from v1 billing billing/subscriptions endpoint
+    const res = await fetch(`${host}/v1/billing/subscriptions/${encodeURIComponent(subscriptionId)}`, {
+      headers: {
+        Authorization: `Bearer ${accessToken}`,
+        "Content-Type": "application/json"
+      },
+      cache: "no-store"
+    });
+
+    if (!res.ok) {
+      const errorText = await res.text();
+      throw new Error(`Failed to fetch PayPal subscription ${subscriptionId}: ${errorText}`);
+    }
+
+    const subData = await res.json();
+    const status = subData.status;
+
+    // A subscription is valid if status is ACTIVE or APPROVED or SUSPENDED
+    const isValid = ["ACTIVE", "APPROVED"].includes(status);
+    if (!isValid) {
+      return { verified: false, error: `Invalid subscription status: ${status}` };
+    }
+
+    return { verified: true, bypass: false, subscriptionData: subData };
+  } catch (error: any) {
+    console.error(`Verification failed for subscription ${subscriptionId}:`, error);
+    return { verified: false, error: error.message || "Unknown subscription validation error" };
+  }
+}

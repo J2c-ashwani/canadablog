@@ -1,6 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
-import { verifyPayPalOrder } from '@/lib/payments/paypal';
+import { verifyPayPalSubscription } from '@/lib/payments/paypal';
 
 export const runtime = 'nodejs';
 
@@ -31,9 +31,9 @@ export async function POST(request: NextRequest) {
       if (!subscriptionId) {
         return NextResponse.json({ error: 'Subscription ID is required for active status upgrade.' }, { status: 400 });
       }
-      const verification = await verifyPayPalOrder(subscriptionId, "29.00");
+      const verification = await verifyPayPalSubscription(subscriptionId);
       if (!verification.verified) {
-        return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
+        return NextResponse.json({ error: `Subscription verification failed: ${verification.error}` }, { status: 400 });
       }
       updates.subscriptionStatus = 'active';
       updates.subscriptionId = subscriptionId;
