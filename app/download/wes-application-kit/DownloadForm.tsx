@@ -53,7 +53,7 @@ export function DownloadForm() {
 
       if (response.ok) {
         // Redirect to success page or show success state
-        router.push("/download/wes-funding-kit/thank-you")
+        router.push("/download/wes-application-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

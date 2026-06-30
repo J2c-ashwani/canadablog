@@ -54,7 +54,7 @@ export function DownloadForm() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/youth-entrepreneurship-funding-kit/thank-you")
+        router.push("/download/youth-entrepreneurship-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }
