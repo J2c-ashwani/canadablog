@@ -27,16 +27,47 @@ Rather than gating pages arbitrarily, products map directly to the customer's ac
 ```
 Discover (Free Lead Magnet / Free Guide)
     ↓
+Understand (Pre-qualification)
+    ↓
 Evaluate (Match Wizard Pre-Prescreen / Teaser)
     ↓
 Plan (Match Report $19 / Action Plan $49)
     ↓
 Execute (Application Companion Kits $9 / Complete Bundle $79)
     ↓
-Optimize (Done-For-You Filing / Strategic Funding Audit)
+Implement (Done-For-You Filing / Strategic Funding Audit)
     ↓
-Maintain (Annual Funding Membership Retainer)
+Optimize (Annual Funding Membership Retainer)
+    ↓
+Retain (Ongoing Funding Tracking)
+    ↓
+Refer (Community & Referral Loop)
 ```
+
+---
+
+## Customer Intent Map
+
+| Customer Intent | Customer Question | Product |
+|---|---|---|
+| **Research** | "What funding exists?" | Free Guides / Downloads |
+| **Eligibility** | "Do I qualify?" | Match Wizard |
+| **Strategy** | "What should I apply for first?" | $19 Match Report |
+| **Execution** | "How do I actually apply?" | $49 / $79 Packages |
+| **Implementation** | "Can someone do this for me?" | Audit / Filing Service |
+| **Ongoing Funding** | "What should I apply for next?" | Annual Membership |
+
+---
+
+## Revenue Priority
+
+| Phase | Priority | Revenue Confidence |
+|---|---|---|
+| **Download OTO** | ⭐⭐⭐⭐⭐ | Very High |
+| **Program Pages** | ⭐⭐⭐⭐ | High |
+| **Guides** | ⭐⭐⭐ | Medium |
+| **Upgrade Engine** | ⭐⭐⭐⭐⭐ | Very High |
+| **Membership** | ⭐⭐ | Long-term |
 
 ---
 
@@ -65,6 +96,10 @@ Customers should think:
 > *"I already received something valuable. The toolkit will save me even more time."*
 *(Not: "They're trying to sell me immediately.")*
 
+### Success KPIs
+- **Primary KPI**: Download → Toolkit Purchase %
+- **Secondary KPI**: Email → Purchase %
+
 ---
 
 ## Phase 2: Program Page Match Teaser
@@ -90,6 +125,9 @@ Customers should think:
 > *"I already know I qualify. Now I need the strategy."*
 *(Not: "They're hiding everything.")*
 
+### Success KPIs
+- **Primary KPI**: Match Wizard → $19 Purchase %
+
 ---
 
 ## Phase 3: Guide Application Companion Kits
@@ -111,6 +149,9 @@ Customers should think:
 > *"This implementation pack will help me actually complete my application."*
 *(Not: "They're charging for a PDF.")*
 
+### Success KPIs
+- **Primary KPI**: Guide Reader → Companion Kit %
+
 ---
 
 ## Phase 4: Post-Purchase Revenue Engine & Upgrades
@@ -120,23 +161,50 @@ Maximize Average Order Value (AOV) by providing seamless path upgrades.
 - **Order Bump**: Immediately after purchasing a `$19` Match Report, prompt the user: *"Upgrade to the Funding Action Plan. Pay only the difference: $30."*
 - **Done-For-You Hook**: On the purchase thank-you page, display the primary CTA: *"Need help implementing these applications? Book a 15-minute consultation review to discuss full-service filing."*
 
+### Success KPIs
+- **Primary KPI**: Average Order Value (AOV)
+
 ---
 
-## Phase 5: Customer Retention & Referrals
+## Phase 5: Customer Retention, Referrals & Case Studies
 Multiply LTV by driving post-purchase outcomes, case study assets, and retainers.
 
-### Lifecycle Flow
+### Referral Engine Flow
 ```
-Purchase
+Receive Funding (Successful Outcome)
     ↓
-Successful Outcome (Filing complete)
+Share Success Story (Case Study)
     ↓
-Referral Request & Case Study Consent
+Referral Reward Offered
     ↓
-Annual Membership Upsell (Year-round monitoring)
+New Customer Acquired
     ↓
-Renewal / Repeat Purchases (Next fiscal period filing)
+Repeat Loop
 ```
+
+### Success KPIs
+- **Primary KPI**: Repeat Purchase Rate
+
+---
+
+## Revenue Protection Rules
+
+Never launch a monetization feature if it reduces customer trust:
+- Never hide all value.
+- Never use fake urgency.
+- Never make the free version feel unusable.
+- Never interrupt an active checkout.
+- Never introduce additional steps between payment intent and checkout.
+
+---
+
+## Experiment Rules
+
+- Launch one monetization experiment at a time.
+- Collect at least seven days of data before judging results.
+- Change only one major variable per experiment.
+- Compare against the previous baseline.
+- Roll back immediately if commercial metrics deteriorate.
 
 ---
 
@@ -177,10 +245,22 @@ Immediately disable or redesign the experiment if:
 
 ## Definition of "Done"
 
-A sprint phase is considered officially closed and complete only when:
-- The funnel is stable in production.
-- The first organic sale is recorded.
-- Seven consecutive days of successful operation are achieved.
-- No P0 or P1 production issues remain in telemetry.
-- Commercial KPIs meet predefined targets.
-- Customer feedback indicates the offer adds value rather than friction.
+A phase is complete only when:
+- The feature is technically stable.
+- At least one organic customer purchases through the new flow.
+- The funnel remains stable for seven consecutive days.
+- Commercial KPIs improve versus the previous baseline.
+- No increase in refund rate or customer support burden is observed.
+- Customer feedback confirms the paid offer adds meaningful value.
+
+---
+
+## Founder Rule
+
+Every feature request must answer three questions before development begins:
+
+1. Does it increase revenue?
+2. Does it increase customer trust?
+3. Does it simplify the buying decision?
+
+If the answer to two or more is **No**, it returns to the backlog.
