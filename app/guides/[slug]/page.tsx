@@ -19,6 +19,8 @@ import InlineCTA from '@/components/blog/InlineCTA';
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 
+import { PDFPaywallWidget } from "@/components/blog/PDFPaywallWidget";
+
 // Icon mapping for dynamic rendering from data
 const iconMap: Record<string, any> = {
   DollarSign, Target, PieChart, TrendingUp, Users, Award, Shield, CheckCircle, Leaf, Zap, Mountain, RefreshCw, Clock, Globe, MapPin, Gift, CreditCard, Smile, Anchor, Handshake, ThumbsUp, Rocket, User, Cpu, FileText, BookOpen, AlertTriangle, Factory, Building, Lightbulb, Flag, Home, Settings, Search, List, Layers, Map, BarChart, Unlock, FastForward, Heart, Calendar, Grid, Percent, AlertCircle
@@ -267,21 +269,8 @@ export default async function GuidePage({ params }: { params: Promise<{ slug: st
           );
         })}
 
-        {/* Lead Magnet CTA */}
-        <section className="bg-gradient-to-r from-green-600 to-green-800 rounded-lg p-8 text-white text-center mb-8">
-          <Download className="w-16 h-16 mx-auto mb-4 text-green-100" />
-          <h3 className="text-2xl font-bold mb-4">Get Your Free Grant Application Guide</h3>
-          <p className="text-green-100 mb-6 text-lg">
-            Download our comprehensive grant application guide with templates, strategies,
-            and Top 50 USA & Canada Startup Grants 2026.
-          </p>
-          <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-            <Link href="/contact?service=grant-expert-help">
-              <Download className="w-5 h-5 mr-2" />
-              Request Application Guide
-            </Link>
-          </Button>
-        </section>
+        {/* Paid Companion Kit OTO */}
+        <PDFPaywallWidget guideName={guide.title} guideSlug={guide.slug} />
 
         {/* Back and related guides */}
         <footer className="mt-12">
