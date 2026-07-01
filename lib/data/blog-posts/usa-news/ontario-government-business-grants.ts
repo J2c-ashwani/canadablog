@@ -160,7 +160,11 @@ const post: BlogPost = {
 
 </div>`,
     seo: {
-      keywords: ["Ontario", "Government", "Business", "Grants", "2026"],
+      metaTitle: "Ontario Government Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Ontario Government Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Ontario Government Business Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Ontario government business grants and provincial funding programs. Access Ontario Creates, OCED programs, Starter Company Plus, and innovation funding for businesses in Ontario.",
     metrics: [
       { label: 'Pool', value: '$2.5B', description: 'Provincial', color: 'text-green-600', iconName: 'Maple' },

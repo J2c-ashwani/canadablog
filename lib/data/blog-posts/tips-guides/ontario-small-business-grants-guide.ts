@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Ontario", "Small", "Business", "Grants", "2026"],
+      metaTitle: "Ontario Small Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Ontario Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Ontario small business grants and funding. Access Ontario Small Business Support Grant, Digital Main Street, Jobs & Prosperity Fund, and provincial tax credits. Funding available: up to $2.1B+.",
     metrics: [
       { label: 'Fund', value: '$2.1B', description: 'Available', color: 'text-green-600', iconName: 'DollarSign' },

@@ -152,7 +152,11 @@ const post: BlogPost = {
                                                                                                                                                                                                                                                                                                                         </details>
                                                                                                                                                                                                                                                                                                                         </div>`,
     seo: {
-      keywords: ["Black Entrepreneurship Loan Fund", "FACE Coalition", "BELF Canada", "Black Business Grants"]
+      metaTitle: "Black Entrepreneurship Loan Fund 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Black Entrepreneurship Loan Fund in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Black Entrepreneurship Loan Fund 2026: $250K Funding Guide, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Complete guide to the Black Entrepreneurship Loan Fund. Access up to $250,000 in funding through FACE Coalition and BDC. Learn about eligibility, application steps, and support for Black-owned. Funding available: up to $250K (with related programs offering $250,000).",
     metrics: [
       { label: 'Max Loan', value: '$250K', description: 'via BDC', color: 'text-green-600', iconName: 'DollarSign' },

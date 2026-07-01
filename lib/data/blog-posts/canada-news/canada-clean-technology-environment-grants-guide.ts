@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Clean", "Technology", "&", "Environment"],
+      metaTitle: "Canada Clean Technology & Environment Grants 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Clean Technology & Environment Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canada Funding available: up to $1.2B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

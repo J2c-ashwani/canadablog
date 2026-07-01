@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: applyUsaPost,
     seo: {
-      keywords: ["USA Grants", "Grant Application", "SAM.gov", "Small Business Funding"]
+      metaTitle: "Your Grant Success Blueprint 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Your Grant Success Blueprint in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Your 2026 Grant Success Blueprint, start by reviewing the eligibility criteria and preparing a project proposal. Navigating the US government grant system can feel overwhelming, but with the right strategy, you can join the 37,000+ businesses that secured federal funding. This guide covers SAM.gov, research, and.",
     metrics: [
       { label: 'Success', value: '43%', description: 'National Average', color: 'text-blue-600', iconName: 'TrendingUp' },

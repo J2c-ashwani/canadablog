@@ -68,7 +68,7 @@ export default function AuthorClient() {
                     <a href="https://www.linkedin.com/in/ashwanikumar" target="_blank" rel="noopener noreferrer" className="hover:text-emerald-400 transition-colors">
                       <Linkedin className="w-5 h-5" />
                     </a>
-                    <a href="mailto:support@fsidigital.ca" className="hover:text-emerald-400 transition-colors">
+                    <a href="mailto:hello@fsidigital.ca" className="hover:text-emerald-400 transition-colors">
                       <Mail className="w-5 h-5" />
                     </a>
                   </div>

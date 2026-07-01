@@ -44,7 +44,11 @@ ${ruralBizPost}
       </div>
 `,
     seo: {
-      keywords: ["Rural business grants Canada", "Community Futures loans", "rural broadband funding", "Northern Ontario grants"]
+      metaTitle: "Rural Canada Business Development Grants Guide 2026 Guide",
+        metaDescription: "Guide to Rural Canada Business Development Grants Guide in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify t...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Rural Canada Business Developm 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Specific funding streams for rural Canadian businesses. CFDC loans, rural broadband funds, and agricultural support.",
     metrics: [
       { label: 'Max Loan', value: '$150k', description: 'Flexible Term', color: 'text-green-600', iconName: 'DollarSign' },

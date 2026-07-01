@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["BDC", "Women", "Entrepreneurs", "Financing", "2026"],
+      metaTitle: "BDC Women Entrepreneurs Financing 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for BDC Women Entrepreneurs Financing in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to BDC Women Entrepreneurs financing with flexible loan terms, strategic advisory services, and growth support from Business Development Bank of Canada.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

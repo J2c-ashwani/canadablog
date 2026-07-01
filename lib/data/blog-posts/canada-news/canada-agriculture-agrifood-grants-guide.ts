@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Agriculture", "&", "Agri-Food", "Grants"],
+      metaTitle: "Canada Agriculture & Agri-Food Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Agriculture & Agri-Food Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canada Funding available: up to $2.3B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Stage", "4:", "Commercialization", "&", "Scale-Up"],
+      metaTitle: "Stage 4 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to Stage 4. Discover eligibility requirements, funding limits, and professional application steps to win. See if you q...",
+        intent: "enterprise",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Stage 4: Commercialization & Scale-Up Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian commercialization and scale-up funding. Access up to $100M through Strategic Innovation Fund, Export Development Canada, BDC Scale-up ventures, and TRL 9 market entry. Funding available: up to $100M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

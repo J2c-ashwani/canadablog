@@ -24,7 +24,11 @@ const post: BlogPost = {
     ],
     content: usdaRural2025,
     seo: {
-      keywords: ["USDA Grants", "Rural Development", "Ag Innovation", "Rural Business", "Value-Added"]
+      metaTitle: "USDA's $300M Rural Revolution 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for USDA's $300M Rural Revolution in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for USDA's $300M Rural Revolution: Business & Innovation Grants, start by reviewing the eligibility criteria and preparing a project proposal. The USDA is investing $300 million in rural agricultural innovation targeted at 46 million rural Americans. Discover funding for value-added production, renewable energy, and broadband. Funding available: up to $300M (with related programs offering $300).",
     metrics: [
       { label: 'Innovation', value: '$300M', description: 'Total Fund', color: 'text-green-600', iconName: 'Globe' },

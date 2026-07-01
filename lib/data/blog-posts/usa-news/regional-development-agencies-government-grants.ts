@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Regional", "Development", "Agencies", "Canada", "2026"],
+      metaTitle: "Regional Development Agencies Canada 2026: Get Up to $2.3B",
+        metaDescription: "Learn how to qualify and apply for Regional Development Agencies Canada in 2026. Access up to $2.3B in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Regional Development Agencies Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canada",
     metrics: [
       { label: 'Agencies', value: '7', description: 'Regional RDAs', color: 'text-green-600', iconName: 'Building' },

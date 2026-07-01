@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["WBDC", "Equity", "Match", "Grant", "2027"],
+      metaTitle: "WBDC Equity Match Grant 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for WBDC Equity Match Grant in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to WBDC Equity Match Grant with quarterly deadlines, $2,500-$10,000 funding for Connecticut women-owned businesses with matching investment requirement. Funding available: up to $2,500 (with related programs offering $10,000).",
     metrics: [
       { label: 'Range', value: '$2.5-10K', description: 'Grant Amount', color: 'text-green-600', iconName: 'DollarSign' },

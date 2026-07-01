@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: ruralBusiness2025,
     seo: {
-      keywords: ["Rural Grants", "USDA Business", "Small Town Funding", "Agri-Business", "Main Street"]
+      metaTitle: "Rural Business Development Grants 2026: Get Up to $1.2B",
+        metaDescription: "Learn how to qualify and apply for Rural Business Development Grants in 2026. Access up to $1.2B in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Rural Business Development Grants 2025: $1.2B Funding Guide, start by reviewing the eligibility criteria and preparing a project proposal. Rural America is experiencing a renaissance with $1.2 billion in targeted grants. Discover USDA programs, value-added producer grants, and technology funding designed to revitalize small town. Funding available: up to $1.2B (with related programs offering $1.2).",
     metrics: [
       { label: 'Fund Pool', value: '$1.2B', description: 'Total Annual', color: 'text-green-600', iconName: 'DollarSign' },

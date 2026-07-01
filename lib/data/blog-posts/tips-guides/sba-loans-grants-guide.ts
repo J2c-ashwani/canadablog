@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SBA", "Loans", "&", "Grants", "Complete"],
+      metaTitle: "SBA Loans & Grants Complete Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for SBA Loans & Grants Complete Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for SBA Loans & Grants Complete Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SBA loans and grants. Learn about 7(a) loans, microloans, CDC/504 loans, and SBA grant programs. Get up to $5M in funding. Funding available: up to $5M.",
     metrics: [
       { label: '7(a)', value: '$5M', description: 'General loans', color: 'text-green-600', iconName: 'DollarSign' },

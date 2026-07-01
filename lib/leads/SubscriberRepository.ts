@@ -222,9 +222,40 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   async getSubscriberByEmail(email: string): Promise<SubscriberProfile | null> {
     try {
       const allLeads = await getLeadsFromSheet(1000)
-      const found = allLeads.find((l) => l.email.toLowerCase() === email.toLowerCase())
-      if (!found) return null
-      return this.mapLeadToSubscriber(found)
+      const matches = allLeads.filter((l) => l.email && l.email.toLowerCase().trim() === email.toLowerCase().trim())
+      if (matches.length === 0) return null
+      
+      // Merge all matches (oldest to newest, so newest overwrites oldest)
+      let mergedSub = this.mapLeadToSubscriber(matches[matches.length - 1]); // oldest
+      
+      for (let i = matches.length - 2; i >= 0; i--) {
+        const newerSub = this.mapLeadToSubscriber(matches[i]);
+        
+        let mergedActivity: any = {};
+        try { mergedActivity = JSON.parse(mergedSub.leadActivity || "{}"); } catch(e){}
+        let newerActivity: any = {};
+        try { newerActivity = JSON.parse(newerSub.leadActivity || "{}"); } catch(e){}
+        
+        const nextActivity = {
+          ...mergedActivity,
+          ...newerActivity
+        };
+        
+        mergedSub = {
+          ...mergedSub,
+          ...newerSub,
+          leadActivity: JSON.stringify(nextActivity)
+        };
+        
+        if (newerSub.reportPurchased || mergedSub.reportPurchased) {
+          mergedSub.reportPurchased = true;
+        }
+        if (newerSub.strategyReportPurchased || mergedSub.strategyReportPurchased) {
+          mergedSub.strategyReportPurchased = true;
+        }
+      }
+      
+      return mergedSub;
     } catch (err) {
       console.error("Error in repository getSubscriberByEmail:", err)
       return null
@@ -356,10 +387,57 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   async getAllSubscribers(): Promise<SubscriberProfile[]> {
     try {
       const allLeads = await getLeadsFromSheet(1000)
-      // Return all leads that have a valid email and are active subscribers (isSubscribed !== false)
-      return allLeads
-        .filter((l) => l.email && l.isSubscribed !== false)
-        .map((l) => this.mapLeadToSubscriber(l))
+      
+      // De-duplicate and merge rows by email (case-insensitive)
+      const mergedMap = new Map<string, SubscriberProfile>();
+      
+      // Iterate in reverse (oldest first) so that newer entries naturally override older ones
+      for (let i = allLeads.length - 1; i >= 0; i--) {
+        const lead = allLeads[i];
+        if (!lead.email) continue;
+        const emailKey = lead.email.toLowerCase().trim();
+        const sub = this.mapLeadToSubscriber(lead);
+        
+        if (!mergedMap.has(emailKey)) {
+          mergedMap.set(emailKey, sub);
+        } else {
+          // Merge existing newer profile with this older duplicate row's details
+          const existing = mergedMap.get(emailKey)!;
+          
+          let existingActivity: any = {};
+          let olderActivity: any = {};
+          try {
+            existingActivity = JSON.parse(existing.leadActivity || "{}");
+          } catch(e) {}
+          try {
+            olderActivity = JSON.parse(sub.leadActivity || "{}");
+          } catch(e) {}
+          
+          const mergedActivity = {
+            ...existingActivity, // newer profile data
+            ...olderActivity // older profile data (fallback)
+          };
+          
+          // Actually we want newer to overwrite older:
+          const finalActivity = {
+            ...olderActivity,
+            ...existingActivity
+          };
+          
+          existing.leadActivity = JSON.stringify(finalActivity);
+          if (sub.reportPurchased) existing.reportPurchased = true;
+          if (sub.strategyReportPurchased) existing.strategyReportPurchased = true;
+          
+          if (!existing.name && sub.name) existing.name = sub.name;
+          if (!existing.phone && sub.phone) existing.phone = sub.phone;
+          if (!existing.companyName && sub.companyName) existing.companyName = sub.companyName;
+          if (!existing.region && sub.region) existing.region = sub.region;
+          if (!existing.industry && sub.industry) existing.industry = sub.industry;
+        }
+      }
+      
+      // Return only active subscribers (isSubscribed !== false)
+      return Array.from(mergedMap.values()).filter(sub => sub.isSubscribed);
     } catch (err) {
       console.error("Error in repository getAllSubscribers:", err)
       return []

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Life", "Sciences", "Grants", "2026"],
+      metaTitle: "Canada Life Sciences Grants 2026: Complete Guide — Apply N",
+        metaDescription: "Learn how to qualify and apply for Canada Life Sciences Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canadian life sciences innovation grants. Access $720M+ funding through biomanufacturing programs, medical device pathways, clinical trials support, and 18+ biotechnology funding. Funding available: up to $720M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

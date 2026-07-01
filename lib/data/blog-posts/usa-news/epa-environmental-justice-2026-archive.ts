@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: epaJustice2025,
     seo: {
-      keywords: ["EPA Grants", "Environmental Justice", "Community Grants", "Pollution", "Public Health"]
+      metaTitle: "EPA Environmental Justice Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for EPA Environmental Justice Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for EPA Environmental Justice Grants 2025: $100M Community Fund, start by reviewing the eligibility criteria and preparing a project proposal. The EPA's Environmental Justice program offers $100 million to community organizations. Fund projects that address pollution and public health in underserved communities. Funding available: up to $100M (with related programs offering $100).",
     metrics: [
       { label: 'EJ Fund', value: '$100M', description: 'Community Grants', color: 'text-green-600', iconName: 'Globe' },

@@ -211,7 +211,11 @@ const albertaBusinessGrants2026Post: BlogPost = {
     content: albertaBusinessGrants2026.content,
     type: 'expert-insight',
     seo: {
-      keywords: ["Alberta business grants", "Alberta Innovates vouchers", "PrairiesCan funding", "small business grants Alberta 2026", "Edmonton startup funding", "Calgary business grants"]
+      metaTitle: "Alberta Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Alberta Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Alberta Business Grants provides valuable funding in non-repayable grants specifically tailored for Alberta businesses. To qualify, your business must demonstrate clear objectives in growth and expansion and meet regional eligibility requirements. Applying with a comprehensive project plan and leveraging available advisory services can significantly increase your approval odds, turning capital into sustainable growth.",
     metrics: [
       { label: 'Vouchers', value: '$100k', description: 'Tech De-Risking', color: 'text-blue-600', iconName: 'Cpu' },

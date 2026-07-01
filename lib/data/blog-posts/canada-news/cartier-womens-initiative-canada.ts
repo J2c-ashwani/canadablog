@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Cartier", "Women"],
+      metaTitle: "Cartier Women 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to Cartier Women. Discover eligibility requirements, funding limits, and professional application steps to win. See if...",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Cartier Women",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

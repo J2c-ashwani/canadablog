@@ -771,7 +771,7 @@ export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerN
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(100, 116, 139);
-  doc.text('Or contact our support team directly at support@fsidigital.ca', pageWidth / 2, finalY + 6, { align: 'center' });
+  doc.text('Or contact our support team directly at hello@fsidigital.ca', pageWidth / 2, finalY + 6, { align: 'center' });
 
   return doc;
 }

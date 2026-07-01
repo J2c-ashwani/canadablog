@@ -639,7 +639,11 @@ const post: BlogPost = {
   </script>
     `,
     seo: {
-      keywords: ["Indigenous", "Business", "Development", "2026"]
+      metaTitle: "Indigenous Business Development 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Indigenous Business Development in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     },
     metrics: [
       { label: 'Fund', value: '$120M', description: 'Total Pool', color: 'text-green-600', iconName: 'DollarSign' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["EDC", "Women", "in", "Trade", "Export"],
+      metaTitle: "EDC Women in Trade Export Financing 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for EDC Women in Trade Export Financing in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "export",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support from Export Development Canada for women-owned businesses.",
     metrics: [
       { label: 'Capital', value: '$10M+', description: 'Equity Invest', color: 'text-green-600', iconName: 'DollarSign' },

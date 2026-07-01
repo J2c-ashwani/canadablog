@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Clean", "Technology", "Grants", "Canada"],
+      metaTitle: "Women Clean Technology Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women Clean Technology Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to clean tech grants for women entrepreneurs. SDTC funding up to $10M, NRCan clean energy programs, provincial sustainability grants Toronto Vancouver Montreal Calgary.. Funding available: up to $10M.",
     metrics: [
       { label: 'SDTC', value: '$10M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },

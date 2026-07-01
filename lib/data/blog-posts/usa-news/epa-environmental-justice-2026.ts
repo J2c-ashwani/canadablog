@@ -28,7 +28,11 @@ const post: BlogPost = {
 ${epaPost}
     `,
     seo: {
-      keywords: ["EPA grants", "environmental justice funding", "community change grants", "non-profit environmental grants", "climate justice funding"]
+      metaTitle: "EPA $100M Environmental Justice Grants 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for EPA $100M Environmental Justice Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for EPA $100M Environmental Justice Grants, start by reviewing the eligibility criteria and preparing a project proposal. 🇺🇸 Funding for communities and non-profits fighting pollution and climate change in underserved areas. Application guide and success tips. Funding available: up to $100M.",
     metrics: [
       { label: 'Pool', value: '$100M', description: 'Total Funding', color: 'text-teal-600', iconName: 'Globe' },

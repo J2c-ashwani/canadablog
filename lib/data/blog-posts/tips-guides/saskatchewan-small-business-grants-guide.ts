@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Saskatchewan", "Small", "Business", "Grants", "2026"],
+      metaTitle: "Saskatchewan Small Business Grants 2026: Get Up to $425M",
+        metaDescription: "Learn how to qualify and apply for Saskatchewan Small Business Grants in 2026. Access up to $425M in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Saskatchewan small business grants. Access Saskatchewan Small Business Loans, Innovation Saskatchewan Programs, Agriculture Value-Added Fund, and Export Development programs. Funding available: up to $425M+.",
     metrics: [
       { label: 'Total', value: '$425M', description: 'SME Programs', color: 'text-green-600', iconName: 'DollarSign' },

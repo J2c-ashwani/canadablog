@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Software", "&", "SaaS", "Startup", "Grants"],
+      metaTitle: "Software & SaaS Startup Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Software & SaaS Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to software and SaaS startup grants. NSF SBIR Phase I $305,000, Phase II $1.25M, Fast-Track $1.555M non-dilutive funding for enterprise software, cloud platforms, developer. Funding available: up to $305K (with related programs offering $1.25M).",
     metrics: [
       { label: 'NSF', value: '$305K', description: 'Phase I', color: 'text-green-600', iconName: 'DollarSign' },

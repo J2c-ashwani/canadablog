@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: minorityBusiness2025,
     seo: {
-      keywords: ["Minority Grants", "MBE Certification", "SBA 8(a)", "NMSDC", "Supplier Diversity"]
+      metaTitle: "Minority Business Enterprise Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Minority Business Enterprise Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "enterprise",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Minority-owned businesses are driving economic growth with $1.9 trillion in revenue. Access $1.9 billion in targeted grants, SBA 8(a) contracts, and NMSDC opportunities. Funding available: up to $1.9B (with related programs offering $1.9).",
     metrics: [
       { label: 'Targeted', value: '$1.9B', description: 'Grant Funding', color: 'text-purple-600', iconName: 'Users' },

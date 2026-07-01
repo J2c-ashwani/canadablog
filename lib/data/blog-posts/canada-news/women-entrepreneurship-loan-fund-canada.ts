@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Loan", "Fund", "(WELF)"],
+      metaTitle: "Women Entrepreneurship Loan Fund 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women Entrepreneurship Loan Fund in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to WELF microloans from Innovation, Science & Economic Development Canada. Get up to $50,000 in financing specifically for women-owned businesses, startups, and underrepresented. Funding available: up to $50K (with related programs offering $50,000).",
     metrics: [
       { label: 'Max', value: '$50K', description: 'Microloan', color: 'text-green-600', iconName: 'DollarSign' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Amber", "Grant", "for", "Women", "Canada"],
+      metaTitle: "Amber Grant for Women Canada 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Amber Grant for Women Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, rolling deadlines, and support for Canadian women entrepreneurs. Funding available: up to $10K (with related programs offering $25K).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

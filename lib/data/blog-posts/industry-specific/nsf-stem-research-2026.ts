@@ -28,7 +28,11 @@ const post: BlogPost = {
 ${nsfPost}
     `,
     seo: {
-      keywords: ["NSF grants", "SBIR funding", "STEM startup grants", "tech research grants", "seed funding for startups"]
+      metaTitle: "NSF SBIR/STTR 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to NSF SBIR/STTR. Discover eligibility requirements, funding limits, and professional application steps to win. See if...",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for NSF SBIR/STTR: $200M for STEM Startups, start by reviewing the eligibility criteria and preparing a project proposal. 🇺🇸 The National Science Foundation offers non-dilutive funding for high-tech startups. Guide to the new 'Project Pitch' system. Funding available: up to $200M.",
     metrics: [
       { label: 'Phase I', value: '$305k', description: 'Seed Funding', color: 'text-purple-600', iconName: 'Beaker' },

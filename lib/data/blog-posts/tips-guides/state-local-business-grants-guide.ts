@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["State", "&", "Local", "Business", "Grants"],
+      metaTitle: "State & Local Business Grants Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for State & Local Business Grants Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for State & Local Business Grants Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to state and local business grants. Find economic development incentives, job creation programs, and regional funding up to $500K. Funding available: up to $500K.",
     metrics: [
       { label: 'Pool', value: '$500K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },

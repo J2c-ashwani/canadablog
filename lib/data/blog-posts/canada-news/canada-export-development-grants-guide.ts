@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Export", "Development", "Grants", "2026"],
+      metaTitle: "Canada Export Development Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Export Development Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "export",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Export Development Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian export development grants. Access all 18+ international market expansion programs including CanExport SMEs, EDC Trade Impact, provincial export programs, and trade mission. Funding available: up to $680M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

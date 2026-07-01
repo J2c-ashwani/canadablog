@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Federal", "Grants", "for", "Women,", "Minorities"],
+      metaTitle: "Federal Grants for Women, Minorities & Veterans 2026 Guide",
+        metaDescription: "Guide to Federal Grants for Women, Minorities & Veterans in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify ...",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to federal grants for women-owned, minority-owned, and veteran-owned businesses. Find WOSB, 8(a), HUBZone, VOSB, and specialized funding programs.",
     metrics: [
       { label: 'WOSB', value: '5%', description: 'Set-aside goal', color: 'text-pink-600', iconName: 'Users' },

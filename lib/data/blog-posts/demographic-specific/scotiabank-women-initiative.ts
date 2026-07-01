@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Scotiabank", "Women", "Initiative", "2026", "|"],
+      metaTitle: "Scotiabank Women Initiative 2026: Complete Guide — Apply N",
+        metaDescription: "Learn how to qualify and apply for Scotiabank Women Initiative in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Scotiabank Women Initiative with capital funding access, mentorship programs, business education, and comprehensive support for Canadian women-led businesses.",
     metrics: [
       { label: 'Bank', value: 'Scotia', description: 'Major Lender', color: 'text-red-600', iconName: 'Building' },

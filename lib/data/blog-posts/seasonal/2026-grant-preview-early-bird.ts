@@ -324,7 +324,11 @@ const _2026GrantPreviewEarlyBirdPost: BlogPost = {
 
 
     seo: {
-      keywords: ["2026", "Grant", "Preview", "Early", "Bird"]
+      metaTitle: "Grant Preview 2026: Get Up to $4.8B — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Grant Preview in 2026. Access up to $4.8B in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Grant Preview Early Bird 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🚀 2026 Grant Preview: Early Bird Opportunities - $4.8B Future Funding Pipeline 🏆 Top 2026 Early Bird Programs •... Funding available: up to $4.8B.",
     metrics: [
       { label: 'Total', value: '$4.8B', description: 'New funding', color: 'text-green-600', iconName: 'DollarSign' },

@@ -44,7 +44,11 @@ ${regionalDevPost}
       </div>
 `,
     seo: {
-      keywords: ["RDAs Canada", "FedDev Ontario", "PacifiCan", "PrairiesCan", "ACOA grants", "regional development funding"]
+      metaTitle: "Canada's Regional Development Agencies 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Canada's Regional Development Agencies in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canadas Regional Development A 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 The 7 Regional Development Agencies (RDAs) are a primary source of business funding. Learn which agency covers your region and what they fund.",
     metrics: [
       { label: 'Budget', value: '$100M+', description: 'Total Funding', color: 'text-blue-600', iconName: 'DollarSign' },

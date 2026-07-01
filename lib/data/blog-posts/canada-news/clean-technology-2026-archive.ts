@@ -24,7 +24,11 @@ const post: BlogPost = {
     ],
     content: cleanTechPost,
     seo: {
-      keywords: ["Clean Technology", "Canada Grants", "Green Funding", "Net Zero"]
+      metaTitle: "Canada's $400M Clean Technology Leadership 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Canada's $400M Clean Technology Leadership in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Environment and Climate Change Canada has launched the most comprehensive clean technology funding program in history, investing $400 million to position Canada as a global clean technology. Funding available: up to $400M (with related programs offering $400).",
     metrics: [
       { label: 'Funding', value: '$400M', description: 'Total Investment', color: 'text-green-600', iconName: 'DollarSign' },

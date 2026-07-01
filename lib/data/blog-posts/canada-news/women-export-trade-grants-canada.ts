@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Export", "Trade", "Grants", "Canada"]
+      metaTitle: "Women Export Trade Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women Export Trade Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "export",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to export grants for women entrepreneurs. CanExport SME funding up to $75K, EDC financing, Trade Commissioner Service support, international market development Toronto. Funding available: up to $75K.",
     metrics: [
       { label: 'CanExport', value: '$75K', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },

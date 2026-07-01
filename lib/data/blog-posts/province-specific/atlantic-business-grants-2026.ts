@@ -351,7 +351,11 @@ const post: BlogPost = {
       </div>
 `,
     seo: {
-      keywords: ["Atlantic Business Grants", "ACOA Funding", "Invest Nova Scotia", "Innovation PEI", "CBDC Loans"]
+      metaTitle: "Atlantic Business Grants 2026: Get Up to $400M — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Atlantic Business Grants in 2026. Access up to $400M in non-dilutive funding. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Atlantic Business Grants : Oce 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 The East Coast is booming. From the Ocean Supercluster to ACOA's diverse funding programs, discover grants for Nova Scotia, NB, PEI, and Newfoundland. Funding available: up to $2.",
     metrics: [
       { label: 'Total', value: '$400M', description: 'ACOA Fund', color: 'text-blue-600', iconName: 'DollarSign' },

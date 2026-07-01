@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Washington", "Tech", "Startup", "Grants", "2026-2027"],
+      metaTitle: "Washington Tech Startup Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Washington Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Washington Tech Startup Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to Washington state technology startup grants. WRF Technology Commercialization phased funding up to $1M direct costs, Innovation and Modernization Program grants. Funding available: up to $1M (with related programs offering $540K).",
     metrics: [
       { label: 'WRF', value: '$1M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },

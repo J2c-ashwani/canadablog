@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: veteransBusiness2025,
     seo: {
-      keywords: ["Veteran Grants", "VOSB", "SDVOSB", "Military Business", "SBA Veteran"]
+      metaTitle: "Veterans Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Veterans Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — The federal government has committed $75 million to veteran entrepreneurship. From SBA 7(a) fee waivers to the VetBiz program, learn how to access capital and federal contracting advantages. Funding available: up to $75M (with related programs offering $75).",
     metrics: [
       { label: 'Dedicated', value: '$75M', description: 'Grant Funding', color: 'text-red-600', iconName: 'Flag' },

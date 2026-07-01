@@ -155,7 +155,11 @@ However, some large SIF contributions may have repayment terms based on revenue 
     </details>
     </div>`,
     seo: {
-      keywords: ["Innovation Canada", "SR&ED", "NRC IRAP", "CDAP Grant", "R&D Funding Canada"]
+      metaTitle: "Innovation Canada Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Innovation Canada Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — 🇨🇦 This is the big league. From SR&ED tax credits to IRAP grants, learn how to fund your R&D and scale your technology in Canada. Funding available: up to $2.",
     metrics: [
       { label: 'Credit', value: '35%', description: 'SR&ED Refund', color: 'text-blue-600', iconName: 'PieChart' },

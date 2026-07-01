@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: michiganGrants2025,
     seo: {
-      keywords: ["Michigan Grants", "Manufacturing", "Industry 4.0", "EV Transition", "MEDC"]
+      metaTitle: "Michigan Manufacturing Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Michigan Manufacturing Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Michigan Manufacturing Grants 2026: $500M Industry 4.0, start by reviewing the eligibility criteria and preparing a project proposal. Michigan is investing $500 million to reclaim its manufacturing crown. New grants support Industry 4.0 adoption, EV supply chain transition, and advanced manufacturing technologies. Funding available: up to $500M (with related programs offering $500).",
     metrics: [
       { label: 'Mfg Fund', value: '$500M', description: 'Industry Support', color: 'text-blue-600', iconName: 'Tool' },

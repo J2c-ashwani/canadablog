@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Manufacturing", "Grants", "Canada", "2026-2027"]
+      metaTitle: "Women Manufacturing Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women Manufacturing Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to manufacturing grants for women-owned businesses in Ontario, Quebec, BC, Alberta. Equipment funding $10K-$10M, productivity improvement grants, automation financing,. Funding available: up to $10M (with related programs offering $10K).",
     metrics: [
       { label: 'Equipment', value: '$10M', description: 'Max Funding', color: 'text-green-600', iconName: 'DollarSign' },

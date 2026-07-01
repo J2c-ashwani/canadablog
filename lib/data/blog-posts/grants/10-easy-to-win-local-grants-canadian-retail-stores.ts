@@ -77,7 +77,14 @@ export const post: BlogPost = {
       "href": "/usa/ontario",
       "description": "Comprehensive guide to Ontario's massive provincial grants."
     }
-  ]
+  ],
+    seo: {
+        metaTitle: "10 Easy-to-Win Local Grants for Canadian Retail Stores ...",
+        metaDescription: "Guide to 10 Easy-to-Win Local Grants for Canadian Retail Stores in in 2026. Learn eligibility rules, requirements, and application steps. See if yo...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
+    }
 };
 
 export default post;

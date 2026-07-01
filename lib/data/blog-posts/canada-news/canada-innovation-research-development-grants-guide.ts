@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Innovation", "&", "R&D", "Grants"],
+      metaTitle: "Canada Innovation & R&D Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Innovation & R&D Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canada Funding available: up to $4.2B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["NSERC", "Research", "Grants", "Canada", "2026"],
+      metaTitle: "NSERC Research Grants Canada 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for NSERC Research Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for NSERC Research Grants Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding. Funding available: up to $350K.",
     metrics: [
       { label: 'I2I', value: '$350K', description: 'Tech Transfer', color: 'text-green-600', iconName: 'DollarSign' },

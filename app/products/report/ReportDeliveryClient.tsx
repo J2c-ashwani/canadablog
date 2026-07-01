@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation"
 import { useEffect, useState, Suspense } from "react"
 import {
   CheckCircle, Loader2, Star, FileText, TrendingUp,
-  ArrowRight, AlertCircle, BarChart3, Lock
+  ArrowRight, AlertCircle, BarChart3, Lock, Sparkles
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
@@ -66,12 +66,11 @@ function ReportContent() {
   };
 
   const handleDownloadPDF = async () => {
-    if (!report) return;
+    if (!report || !token) return;
     setIsDownloading(true);
     try {
-      const { generateFundingMatchReportPDF } = await import('@/lib/products/report-pdf');
-      const doc = generateFundingMatchReportPDF(report, purchaseInfo?.name || 'Founder', strategyData);
-      doc.save(`Funding-Match-Report-${report.profile.province}-${report.profile.industry}.pdf`);
+      // Direct browser-native download using our server-side API endpoint
+      window.location.href = `/api/products/download-pdf?token=${encodeURIComponent(token)}`;
       
       if (typeof window !== 'undefined' && (window as any).gtag) {
         (window as any).gtag('event', 'report_pdf_downloaded', { token });
@@ -86,7 +85,7 @@ function ReportContent() {
         })
       }).catch(e => console.error("Telemetry error:", e));
     } catch (err) {
-      console.error("Failed to generate PDF:", err);
+      console.error("Failed to trigger PDF download redirect:", err);
     } finally {
       setIsDownloading(false);
     }
@@ -105,7 +104,7 @@ function ReportContent() {
         const json = await res.json();
 
         if (!res.ok || json.error) {
-          setError(json.error || "Unable to verify your purchase. Please contact support@fsidigital.ca");
+          setError(json.error || "Unable to verify your purchase. Please contact hello@fsidigital.ca");
           return;
         }
 
@@ -144,7 +143,7 @@ function ReportContent() {
         }
       } catch (err) {
         console.error("Failed to load report:", err);
-        setError("Unable to load your report. Please try again or contact support@fsidigital.ca");
+        setError("Unable to load your report. Please try again or contact hello@fsidigital.ca");
       } finally {
         setLoading(false);
       }
@@ -261,7 +260,7 @@ function ReportContent() {
             }
           } catch (err) {
             console.error("Payment capture error:", err);
-            setPaymentError("Payment was successful, but we failed to unlock the action plan. Please contact support@fsidigital.ca.");
+            setPaymentError("Payment was successful, but we failed to unlock the action plan. Please contact hello@fsidigital.ca.");
           }
         },
         onError: (err: any) => {
@@ -298,7 +297,7 @@ function ReportContent() {
             Get a new report
           </a>
           <span className="text-slate-300">·</span>
-          <a href="mailto:support@fsidigital.ca" className="text-sm text-slate-500 hover:text-slate-700 underline underline-offset-2">
+          <a href="mailto:hello@fsidigital.ca" className="text-sm text-slate-500 hover:text-slate-700 underline underline-offset-2">
             Contact support
           </a>
         </div>
@@ -307,6 +306,130 @@ function ReportContent() {
   }
 
   if (!report) return null;
+
+  const isStandaloneBuyer = !report.profile.province && !report.profile.industry && !report.profile.revenue && !report.profile.goal;
+
+  if (isStandaloneBuyer) {
+    return (
+      <div className="max-w-2xl mx-auto px-4 py-8 space-y-6">
+        {/* Standalone Product Delivery Header */}
+        <div className="text-center">
+          <div className="inline-flex items-center justify-center w-14 h-14 bg-indigo-100 rounded-full mb-3 text-indigo-650">
+            <CheckCircle className="w-7 h-7" />
+          </div>
+          <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900">Your Product Download Center</h1>
+          {purchaseInfo && (
+            <p className="text-sm text-slate-500 mt-1">
+              Prepared for {purchaseInfo.name} · {new Date(report.generatedAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+          )}
+        </div>
+
+        {/* Unlocked Toolkit Add-on */}
+        {hasToolkitUnlocked && (
+          <div className="bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 rounded-xl p-5 text-left mb-4 animate-in fade-in duration-300">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                Unlocked
+              </span>
+              <h4 className="text-sm font-bold text-slate-800">
+                Your Funding Application Toolkit
+              </h4>
+            </div>
+            <p className="text-xs text-slate-600 mb-4">
+              Save over 40 hours of writing time. Download your premium application files and calculators below:
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              {[
+                { name: "1. Grant Budget Template (.xlsx)", url: "/templates/FSI-Grant-Budget-Builder.xlsx" },
+                { name: "2. Cash Flow Forecast Model (.xlsx)", url: "/templates/FSI-Cash-Flow-Forecast.xlsx" },
+                { name: "3. Hiring & Wage Subsidy Plan (.docx)", url: "/templates/FSI-Hiring-Plan-Template.docx" },
+                { name: "4. Project Proposal Outline (.docx)", url: "/templates/FSI-Project-Proposal-Framework.docx" },
+                { name: "5. Pre-Submission Checklist (.pdf)", url: "/templates/FSI-Readiness-Preflight-Checklist.pdf" },
+                { name: "6. Application Progress Tracker (.xlsx)", url: "/templates/FSI-Application-Tracking-Sheet.xlsx" }
+              ].map((file, idx) => (
+                <a
+                  key={idx}
+                  href={file.url}
+                  download
+                  className="flex items-center justify-between p-2.5 bg-white border border-slate-150 rounded-lg hover:border-emerald-300 hover:bg-emerald-50/10 transition-colors text-xs font-semibold text-slate-700"
+                >
+                  <span>{file.name}</span>
+                  <span className="text-emerald-600 text-[10px] uppercase font-bold flex items-center gap-0.5">
+                    Download &darr;
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Unlocked Approval Library Add-on */}
+        {hasApprovalLibraryUnlocked && (
+          <div className="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 text-left mb-4 animate-in fade-in duration-300">
+            <div className="flex items-center gap-2 mb-3">
+              <span className="bg-blue-100 text-blue-800 text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded">
+                Unlocked
+              </span>
+              <h4 className="text-sm font-bold text-slate-800">
+                Funding Approval Library
+              </h4>
+            </div>
+            <p className="text-xs text-slate-650 mb-3">
+              Analyze successful grant templates and projects that successfully won non-repayable government funding:
+            </p>
+            <div className="space-y-2.5">
+              <div className="bg-white border border-slate-150 rounded-lg p-3">
+                <span className="text-[10px] uppercase font-bold text-indigo-600 tracking-wider">Example A: Technology & R&D Projects</span>
+                <h5 className="text-xs font-bold text-slate-800 mt-0.5">SR&ED tax credit project narrative & eligible activity description</h5>
+                <p className="text-[11px] text-slate-500 mt-1 leading-relaxed italic bg-slate-50 p-2 rounded border border-slate-100">
+                  &ldquo;Developed a proprietary machine learning routing layer optimized for edge latency... Unresolved technological uncertainty existed around asynchronous prediction aggregation under 25ms. We conducted systematic experimental trials...&rdquo;
+                </p>
+              </div>
+              <div className="bg-white border border-slate-150 rounded-lg p-3">
+                <span className="text-[10px] uppercase font-bold text-indigo-600 tracking-wider">Example B: Hiring & Job Creation Grants</span>
+                <h5 className="text-xs font-bold text-slate-800 mt-0.5">Winning hiring training plan justification structure</h5>
+                <p className="text-[11px] text-slate-500 mt-1 leading-relaxed italic bg-slate-50 p-2 rounded border border-slate-100">
+                  &ldquo;The candidate will undergo a structured 12-week skills training curriculum focusing on advanced automation protocols. Upon completion, this role will transition to full-time management of our localized pipeline...&rdquo;
+                </p>
+              </div>
+              <a
+                href="/templates/FSI-Funding-Approval-Guide.pdf"
+                download
+                className="inline-flex items-center gap-1 text-xs font-bold text-indigo-650 hover:text-indigo-850 mt-1"
+              >
+                Download Complete Case Library Guide (PDF) &rarr;
+              </a>
+            </div>
+          </div>
+        )}
+
+        {/* Free Calculator Promo Card */}
+        <div className="border-2 border-indigo-100 bg-indigo-50/15 rounded-xl p-5 text-left space-y-3">
+          <h4 className="text-sm font-bold text-slate-900 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-indigo-600" /> Want a Custom Stacking Grant Report?
+          </h4>
+          <p className="text-xs text-slate-650 leading-relaxed font-semibold">
+            Run our free 60-second calculator to map out your federal and provincial grant opportunities, estimated funding ranges, and stacking strategy. It will automatically link your results to this dashboard!
+          </p>
+          <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs" asChild>
+            <Link href="/calculator">
+              Run Free Stacking Calculator &rarr;
+            </Link>
+          </Button>
+        </div>
+
+        {/* Footer */}
+        <div className="text-center text-xs text-slate-400 pt-4 pb-8 space-y-1">
+          <p>This product is for informational purposes and does not guarantee funding eligibility.</p>
+          <p className="pt-2">
+            <a href="/" className="text-emerald-600 hover:text-emerald-700 underline underline-offset-2">FSI Digital</a> ·{' '}
+            <a href="mailto:hello@fsidigital.ca" className="text-slate-500 hover:text-slate-700 underline underline-offset-2">Contact Support</a>
+          </p>
+        </div>
+      </div>
+    );
+  }
 
   // --- Report Display ---
   return (
@@ -1051,13 +1174,38 @@ function ReportContent() {
         <p className="text-xs text-slate-400 mt-3">100% deposit refund if no programs match</p>
       </div>
 
+      {/* ═══════ MEMBERSHIP UPSELL BANNER ═══════ */}
+      <div className="mt-8 border border-slate-200 bg-slate-50 text-slate-800 rounded-2xl p-6 sm:p-8 text-left relative overflow-hidden shadow-xs">
+        <div className="absolute top-0 right-0 bg-indigo-600 text-white text-[8px] font-bold px-3 py-1 uppercase tracking-wider rounded-bl-lg">
+          Founding Member Opportunity
+        </div>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div className="space-y-2 max-w-xl">
+            <h3 className="text-base font-bold text-slate-900 flex items-center gap-2">
+              <Sparkles className="w-5 h-5 text-indigo-650 shrink-0" /> Never Miss a Matching Grant Intake
+            </h3>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
+              Intakes open and close quickly. For <strong>$29/month</strong>, we monitor your business profile against 800+ active programs and alert you via SMS &amp; email when windows open. Includes priority analyst Q&amp;A support.
+            </p>
+          </div>
+          <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+            <Link
+              href="/membership"
+              className="inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-600 to-emerald-700 hover:from-emerald-700 hover:to-emerald-800 text-white font-extrabold text-xs px-6 py-3 rounded-xl transition-all shadow-md shadow-emerald-250 text-center"
+            >
+              Activate Monitoring ($29/mo) <ArrowRight className="w-4 h-4" />
+            </Link>
+          </div>
+        </div>
+      </div>
+
       {/* Footer */}
       <div className="text-center text-xs text-slate-400 pt-4 pb-8 space-y-1">
         <p>This report is for informational purposes and does not guarantee funding eligibility.</p>
         <p>Program details and amounts are subject to change based on government program updates.</p>
         <p className="pt-2">
           <a href="/" className="text-emerald-600 hover:text-emerald-700 underline underline-offset-2">FSI Digital</a> ·{' '}
-          <a href="mailto:support@fsidigital.ca" className="text-slate-500 hover:text-slate-700 underline underline-offset-2">Contact Support</a>
+          <a href="mailto:hello@fsidigital.ca" className="text-slate-500 hover:text-slate-700 underline underline-offset-2">Contact Support</a>
         </p>
       </div>
     </div>

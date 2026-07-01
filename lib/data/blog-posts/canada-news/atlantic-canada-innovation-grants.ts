@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Atlantic", "Canada", "Innovation", "Grants", "&"],
+      metaTitle: "Atlantic Canada Innovation Grants & Funding 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Atlantic Canada Innovation Grants & Funding in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Atlantic Canada innovation grants. Access $650M+ through Atlantic Innovation Fund, ACOA programs, 15% ACITC tax credit, and ocean technology, renewable energy, aerospace funding. Funding available: up to $650M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

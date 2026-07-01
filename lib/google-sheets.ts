@@ -292,216 +292,224 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     const rows = response.data.values || []
     const emailColIndex = 2 // Leads!C is Column 3 (0-indexed 2)
     
-    const rowIndex = rows.findIndex((row) => row[emailColIndex] === email)
-    if (rowIndex === -1) {
+    const normalizedEmail = email.toLowerCase().trim()
+    const rowIndices: number[] = []
+    
+    rows.forEach((row, index) => {
+      if (row[emailColIndex] && row[emailColIndex].toLowerCase().trim() === normalizedEmail) {
+        rowIndices.push(index)
+      }
+    })
+    
+    if (rowIndices.length === 0) {
       console.warn(`⚠️ Lead with email ${email} not found in sheet.`)
       return { success: false, error: "Not found" }
     }
     
-    const sheetRowNumber = rowIndex + 1
-    const targetRow = rows[rowIndex]
-    
-    // Ensure array length covers BV (index 73)
-    while (targetRow.length < 74) {
-      targetRow.push("N/A")
+    for (const rowIndex of rowIndices) {
+      const sheetRowNumber = rowIndex + 1
+      const targetRow = [...rows[rowIndex]]
+      
+      // Ensure array length covers BV (index 73)
+      while (targetRow.length < 74) {
+        targetRow.push("N/A")
+      }
+      
+      // Update fields
+      if (updates.source !== undefined) {
+        targetRow[1] = updates.source
+      }
+      if (updates.name !== undefined) {
+        targetRow[3] = updates.name
+      }
+      if (updates.country !== undefined) {
+        targetRow[4] = updates.country
+      }
+      if (updates.state !== undefined) {
+        targetRow[5] = updates.state
+      }
+      if (updates.industry !== undefined) {
+        targetRow[6] = updates.industry
+      }
+      if (updates.businessStage !== undefined) {
+        targetRow[7] = updates.businessStage
+      }
+      if (updates.fundingAmount !== undefined) {
+        targetRow[8] = updates.fundingAmount
+      }
+      if (updates.fundingPurpose !== undefined) {
+        targetRow[9] = updates.fundingPurpose
+      }
+      if (updates.businessDescription !== undefined) {
+        targetRow[10] = updates.businessDescription
+      }
+      if (updates.phone !== undefined) {
+        targetRow[11] = updates.phone
+      }
+      if (updates.additionalNotes !== undefined) {
+        targetRow[12] = updates.additionalNotes
+      }
+      if (updates.consentToPartnerContact !== undefined) {
+        targetRow[19] = updates.consentToPartnerContact ? "Yes" : "No"
+      }
+      if (updates.pagePath !== undefined) {
+        targetRow[22] = updates.pagePath
+      }
+      if (updates.ipAddress !== undefined) {
+        targetRow[23] = updates.ipAddress
+      }
+      if (updates.userAgent !== undefined) {
+        targetRow[24] = updates.userAgent
+      }
+      if (updates.utmSource !== undefined) {
+        targetRow[27] = updates.utmSource
+      }
+      if (updates.utmMedium !== undefined) {
+        targetRow[28] = updates.utmMedium
+      }
+      if (updates.utmCampaign !== undefined) {
+        targetRow[29] = updates.utmCampaign
+      }
+      if (updates.gaClientId !== undefined) {
+        targetRow[30] = updates.gaClientId
+      }
+      if (updates.offlineStatus !== undefined) {
+        targetRow[31] = updates.offlineStatus
+      }
+      if (updates.isSubscribed !== undefined) {
+        targetRow[33] = updates.isSubscribed ? "Yes" : "No"
+      }
+      if (updates.unsubscribeToken !== undefined) {
+        targetRow[34] = updates.unsubscribeToken
+      }
+      if (updates.engagementScore !== undefined) {
+        targetRow[35] = String(updates.engagementScore)
+      }
+      if (updates.lastOpenedAt !== undefined) {
+        targetRow[36] = updates.lastOpenedAt
+      }
+      if (updates.lastClickedAt !== undefined) {
+        targetRow[37] = updates.lastClickedAt
+      }
+      if (updates.companySize !== undefined) {
+        targetRow[38] = updates.companySize
+      }
+      if (updates.fundingInterests !== undefined) {
+        targetRow[39] = updates.fundingInterests.join(",")
+      }
+      if (updates.readinessScore !== undefined) {
+        targetRow[40] = String(updates.readinessScore)
+      }
+      if (updates.readinessBand !== undefined) {
+        targetRow[41] = updates.readinessBand
+      }
+      if (updates.loginToken !== undefined) {
+        targetRow[42] = updates.loginToken
+      }
+      if (updates.subscriptionStatus !== undefined) {
+        targetRow[43] = updates.subscriptionStatus
+      }
+      if (updates.subscriptionId !== undefined) {
+        targetRow[44] = updates.subscriptionId
+      }
+      if (updates.trialStartedAt !== undefined) {
+        targetRow[45] = updates.trialStartedAt
+      }
+      if (updates.website !== undefined) {
+        targetRow[46] = updates.website
+      }
+      if (updates.companyName !== undefined) {
+        targetRow[47] = updates.companyName
+      }
+      if (updates.reportPurchased !== undefined) {
+        targetRow[48] = updates.reportPurchased ? "Yes" : "No"
+      }
+      if (updates.reportTransactionId !== undefined) {
+        targetRow[49] = updates.reportTransactionId
+      }
+      if (updates.lastEmailFollowup !== undefined) {
+        targetRow[50] = updates.lastEmailFollowup
+      }
+      if (updates.leadActivity !== undefined) {
+        targetRow[51] = updates.leadActivity
+      }
+      if (updates.lastAttributionSource !== undefined) {
+        targetRow[52] = updates.lastAttributionSource
+      }
+      if (updates.firstReportViewedAt !== undefined) {
+        targetRow[53] = updates.firstReportViewedAt
+      }
+      if (updates.assessmentPurchasedAt !== undefined) {
+        targetRow[54] = updates.assessmentPurchasedAt
+      }
+      if (updates.lastAlertSentAt !== undefined) {
+        targetRow[55] = updates.lastAlertSentAt
+      }
+      if (updates.lastAlertOpenedAt !== undefined) {
+        targetRow[56] = updates.lastAlertOpenedAt
+      }
+      if (updates.lastAlertClickedAt !== undefined) {
+        targetRow[57] = updates.lastAlertClickedAt
+      }
+      if (updates.lastLoginAt !== undefined) {
+        targetRow[58] = updates.lastLoginAt
+      }
+      if (updates.lastDashboardViewAt !== undefined) {
+        targetRow[59] = updates.lastDashboardViewAt
+      }
+      if (updates.lastPortfolioViewAt !== undefined) {
+        targetRow[60] = updates.lastPortfolioViewAt
+      }
+      if (updates.lastAlertClickAt !== undefined) {
+        targetRow[61] = updates.lastAlertClickAt
+      }
+      if (updates.leadTier !== undefined) {
+        targetRow[62] = updates.leadTier
+      }
+      if (updates.subscriptionCancelledAt !== undefined) {
+        targetRow[63] = updates.subscriptionCancelledAt
+      }
+      if (updates.cancellationReason !== undefined) {
+        targetRow[64] = updates.cancellationReason
+      }
+      if (updates.strategyReportPurchased !== undefined) {
+        targetRow[65] = updates.strategyReportPurchased ? "Yes" : "No"
+      }
+      if (updates.strategyReportTransactionId !== undefined) {
+        targetRow[66] = updates.strategyReportTransactionId
+      }
+      if (updates.city !== undefined) {
+        targetRow[67] = updates.city
+      }
+      if (updates.timeline !== undefined) {
+        targetRow[68] = updates.timeline
+      }
+      if (updates.requestType !== undefined) {
+        targetRow[69] = updates.requestType
+      }
+      if (updates.emailVerified !== undefined) {
+        targetRow[70] = updates.emailVerified
+      }
+      if (updates.auditCandidate !== undefined) {
+        targetRow[71] = updates.auditCandidate
+      }
+      if (updates.annualRevenue !== undefined) {
+        targetRow[72] = updates.annualRevenue
+      }
+      if (updates.referralSource !== undefined) {
+        targetRow[73] = updates.referralSource
+      }
+
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `Leads!A${sheetRowNumber}:BV${sheetRowNumber}`,
+        valueInputOption: "USER_ENTERED",
+        requestBody: {
+          values: [targetRow],
+        },
+      })
+      console.log(`✅ Lead ${email} updated at row ${sheetRowNumber}`)
     }
-    
-    // Update fields
-    if (updates.source !== undefined) {
-      targetRow[1] = updates.source
-    }
-    if (updates.name !== undefined) {
-      targetRow[3] = updates.name
-    }
-    if (updates.country !== undefined) {
-      targetRow[4] = updates.country
-    }
-    if (updates.state !== undefined) {
-      targetRow[5] = updates.state
-    }
-    if (updates.industry !== undefined) {
-      targetRow[6] = updates.industry
-    }
-    if (updates.businessStage !== undefined) {
-      targetRow[7] = updates.businessStage
-    }
-    if (updates.fundingAmount !== undefined) {
-      targetRow[8] = updates.fundingAmount
-    }
-    if (updates.fundingPurpose !== undefined) {
-      targetRow[9] = updates.fundingPurpose
-    }
-    if (updates.businessDescription !== undefined) {
-      targetRow[10] = updates.businessDescription
-    }
-    if (updates.phone !== undefined) {
-      targetRow[11] = updates.phone
-    }
-    if (updates.additionalNotes !== undefined) {
-      targetRow[12] = updates.additionalNotes
-    }
-    if (updates.consentToPartnerContact !== undefined) {
-      targetRow[19] = updates.consentToPartnerContact ? "Yes" : "No"
-    }
-    if (updates.pagePath !== undefined) {
-      targetRow[22] = updates.pagePath
-    }
-    if (updates.ipAddress !== undefined) {
-      targetRow[23] = updates.ipAddress
-    }
-    if (updates.userAgent !== undefined) {
-      targetRow[24] = updates.userAgent
-    }
-    if (updates.utmSource !== undefined) {
-      targetRow[27] = updates.utmSource
-    }
-    if (updates.utmMedium !== undefined) {
-      targetRow[28] = updates.utmMedium
-    }
-    if (updates.utmCampaign !== undefined) {
-      targetRow[29] = updates.utmCampaign
-    }
-    if (updates.gaClientId !== undefined) {
-      targetRow[30] = updates.gaClientId
-    }
-    if (updates.offlineStatus !== undefined) {
-      targetRow[31] = updates.offlineStatus
-    }
-    if (updates.isSubscribed !== undefined) {
-      targetRow[33] = updates.isSubscribed ? "Yes" : "No"
-    }
-    if (updates.unsubscribeToken !== undefined) {
-      targetRow[34] = updates.unsubscribeToken
-    }
-    if (updates.engagementScore !== undefined) {
-      targetRow[35] = String(updates.engagementScore)
-    }
-    if (updates.lastOpenedAt !== undefined) {
-      targetRow[36] = updates.lastOpenedAt
-    }
-    if (updates.lastClickedAt !== undefined) {
-      targetRow[37] = updates.lastClickedAt
-    }
-    if (updates.companySize !== undefined) {
-      targetRow[38] = updates.companySize
-    }
-    if (updates.fundingInterests !== undefined) {
-      targetRow[39] = updates.fundingInterests.join(",")
-    }
-    if (updates.readinessScore !== undefined) {
-      targetRow[40] = String(updates.readinessScore)
-    }
-    if (updates.readinessBand !== undefined) {
-      targetRow[41] = updates.readinessBand
-    }
-    if (updates.loginToken !== undefined) {
-      targetRow[42] = updates.loginToken
-    }
-    if (updates.subscriptionStatus !== undefined) {
-      targetRow[43] = updates.subscriptionStatus
-    }
-    if (updates.subscriptionId !== undefined) {
-      targetRow[44] = updates.subscriptionId
-    }
-    if (updates.trialStartedAt !== undefined) {
-      targetRow[45] = updates.trialStartedAt
-    }
-    if (updates.website !== undefined) {
-      targetRow[46] = updates.website
-    }
-    if (updates.companyName !== undefined) {
-      targetRow[47] = updates.companyName
-    }
-    if (updates.reportPurchased !== undefined) {
-      targetRow[48] = updates.reportPurchased ? "Yes" : "No"
-    }
-    if (updates.reportTransactionId !== undefined) {
-      targetRow[49] = updates.reportTransactionId
-    }
-    if (updates.lastEmailFollowup !== undefined) {
-      targetRow[50] = updates.lastEmailFollowup
-    }
-    if (updates.leadActivity !== undefined) {
-      targetRow[51] = updates.leadActivity
-    }
-    if (updates.lastAttributionSource !== undefined) {
-      targetRow[52] = updates.lastAttributionSource
-    }
-    if (updates.firstReportViewedAt !== undefined) {
-      targetRow[53] = updates.firstReportViewedAt
-    }
-    if (updates.assessmentPurchasedAt !== undefined) {
-      targetRow[54] = updates.assessmentPurchasedAt
-    }
-    if (updates.lastAlertSentAt !== undefined) {
-      targetRow[55] = updates.lastAlertSentAt
-    }
-    if (updates.lastAlertOpenedAt !== undefined) {
-      targetRow[56] = updates.lastAlertOpenedAt
-    }
-    if (updates.lastAlertClickedAt !== undefined) {
-      targetRow[57] = updates.lastAlertClickedAt
-    }
-    if (updates.lastLoginAt !== undefined) {
-      targetRow[58] = updates.lastLoginAt
-    }
-    if (updates.lastDashboardViewAt !== undefined) {
-      targetRow[59] = updates.lastDashboardViewAt
-    }
-    if (updates.lastPortfolioViewAt !== undefined) {
-      targetRow[60] = updates.lastPortfolioViewAt
-    }
-    if (updates.lastAlertClickAt !== undefined) {
-      targetRow[61] = updates.lastAlertClickAt
-    }
-    if (updates.leadTier !== undefined) {
-      targetRow[62] = updates.leadTier
-    }
-    if (updates.subscriptionCancelledAt !== undefined) {
-      targetRow[63] = updates.subscriptionCancelledAt
-    }
-    if (updates.cancellationReason !== undefined) {
-      targetRow[64] = updates.cancellationReason
-    }
-    if (updates.strategyReportPurchased !== undefined) {
-      targetRow[65] = updates.strategyReportPurchased ? "Yes" : "No"
-    }
-    if (updates.strategyReportTransactionId !== undefined) {
-      targetRow[66] = updates.strategyReportTransactionId
-    }
-    if (updates.city !== undefined) {
-      targetRow[67] = updates.city
-    }
-    if (updates.timeline !== undefined) {
-      targetRow[68] = updates.timeline
-    }
-    if (updates.requestType !== undefined) {
-      targetRow[69] = updates.requestType
-    }
-    if (updates.emailVerified !== undefined) {
-      targetRow[70] = updates.emailVerified
-    }
-    if (updates.auditCandidate !== undefined) {
-      targetRow[71] = updates.auditCandidate
-    }
-    if (updates.annualRevenue !== undefined) {
-      targetRow[72] = updates.annualRevenue
-    }
-    if (updates.referralSource !== undefined) {
-      targetRow[73] = updates.referralSource
-    }
-    
-    // Update the row
-    await sheets.spreadsheets.values.update({
-      spreadsheetId,
-      range: `Leads!A${sheetRowNumber}:BV${sheetRowNumber}`,
-      valueInputOption: "USER_ENTERED",
-      requestBody: {
-        values: [targetRow],
-      },
-    })
-    
-    console.log(`✅ Lead ${email} updated at row ${sheetRowNumber}`)
     return { success: true }
   } catch (error) {
     console.error("❌ Error updating lead in Google Sheets:", error)

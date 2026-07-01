@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: healthcareGrants2025,
     seo: {
-      keywords: ["Healthcare Grants", "Medical Funding", "Digital Health", "Rural Health", "HRSA"]
+      metaTitle: "Healthcare Business Grants 2026: Get Up to $4.5B — Apply N",
+        metaDescription: "Learn how to qualify and apply for Healthcare Business Grants in 2026. Access up to $4.5B in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Healthcare Business Grants 2025: $4.5B Funding Guide, start by reviewing the eligibility criteria and preparing a project proposal. The healthcare sector is seeing unprecedented grant funding for digital health, rural access, and medical innovation. Access $4.5 billion in HRSA, NIH, and private foundation grants. Funding available: up to $4.5B (with related programs offering $4.5).",
     metrics: [
       { label: 'Total Fund', value: '$4.5B', description: 'Healthcare Grants', color: 'text-blue-600', iconName: 'Activity' },

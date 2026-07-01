@@ -293,7 +293,7 @@ export default function TermsOfService() {
                 At FSI Digital, we want you to feel confident in the value of our digital analysis reports. We back our digital reports (Basic Report, Action Plan, and Complete Bundle) with a **30-Day Refund &amp; Satisfaction Guarantee**.
               </p>
               <p className="text-gray-600 leading-relaxed mb-3">
-                If you are not satisfied with your report, or if you find that the matching eligibility parameters modeled did not accurately align with your business profile variables (and you wish to request a refund), please contact us within **30 calendar days** of your purchase at <a href="mailto:support@fsidigital.ca" className="text-emerald-600 hover:text-emerald-800 underline">support@fsidigital.ca</a>.
+                 If you are not satisfied with your report, or if you find that the matching eligibility parameters modeled did not accurately align with your business profile variables (and you wish to request a refund), please contact us within **30 calendar days** of your purchase at <a href="mailto:hello@fsidigital.ca" className="text-emerald-600 hover:text-emerald-800 underline">hello@fsidigital.ca</a>.
               </p>
               <p className="text-gray-600 leading-relaxed">
                 Refunds are processed to the original payment method (PayPal/card) within 5–10 business days of approval. Upon refund issuance, access to the digital report and any accompanying dynamic materials (onboarding tools, templates, and libraries) will be revoked.

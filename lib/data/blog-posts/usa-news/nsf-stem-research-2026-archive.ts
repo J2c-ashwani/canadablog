@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: nsfStem2025,
     seo: {
-      keywords: ["NSF Grants", "STEM Research", "SBIR", "Deep Tech", "Scientific Funding"]
+      metaTitle: "NSF STEM Research Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for NSF STEM Research Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for NSF STEM Research Grants 2025: $200M SBIR/STTR Guide, start by reviewing the eligibility criteria and preparing a project proposal. The NSF seeds the future with $200 million in STEM research grants. The SBIR/STTR program funds high-risk, high-impact technologies with commercial potential. Funding available: up to $200M (with related programs offering $200).",
     metrics: [
       { label: 'Seed Fund', value: '$200M', description: 'America\'s Seed Fund', color: 'text-blue-600', iconName: 'Cpu' },

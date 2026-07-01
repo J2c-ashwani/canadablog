@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Indigenous", "&", "Rural", "Business", "Funding"],
+      metaTitle: "Indigenous & Rural Business Funding Canada 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Indigenous & Rural Business Funding Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Indigenous & Rural Business Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Indigenous business grants and rural business funding in Canada. Access Aboriginal Entrepreneurship Program funding, NACCA loans, rural development grants, and regional business. Funding available: up to $500K+.",
     metrics: [
       { label: 'Grant', value: '$500K', description: 'Max Amount', color: 'text-green-600', iconName: 'DollarSign' },

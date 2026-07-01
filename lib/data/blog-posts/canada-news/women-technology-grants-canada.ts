@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "in", "Technology", "Grants", "Canada"]
+      metaTitle: "Women in Technology Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women in Technology Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canadian women technology grants with NRC IRAP, Innovate BC, Alberta Innovates, AI funding, software development support, and digital innovation programs.",
     metrics: [
       { label: 'NRC', value: 'IRAP', description: 'R&D Funding', color: 'text-green-600', iconName: 'DollarSign' },

@@ -125,7 +125,11 @@ const post: BlogPost = {
                                                                                                                                                                                                                                                             </details>
                                                                                                                                                                                                                                                             </div>`,
     seo: {
-      keywords: ["Northern Canada Grants", "CanNor Funding", "Yukon Business", "NWT SEED Grant", "Nunavut Business"]
+      metaTitle: "Northern Canada Business Grants 2026: Get Up to $300M",
+        metaDescription: "Learn how to qualify and apply for Northern Canada Business Grants in 2026. Access up to $300M in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Northern Canada Business Grant 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Business in the North is unique. Explore grants for Yukon, NWT, and Nunavut from CanNor, territorial governments, and Indigenous organizations. Funding available: up to $30.",
     metrics: [
       { label: 'Total', value: '$300M', description: 'Northern Aid', color: 'text-cyan-600', iconName: 'DollarSign' },

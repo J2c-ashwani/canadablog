@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: technologyStartup2025,
     seo: {
-      keywords: ["Tech Grants", "SBIR", "STTR", "Startup Funding", "Non-Dilutive"]
+      metaTitle: "Technology Startup Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Technology Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Silicon Valley isn't the only path to funding. The SBIR program offers $3.4 billion in non-dilutive grants for tech startups. Phase I awards up to $250k. Funding available: up to $3.4B (with related programs offering $3.4).",
     metrics: [
       { label: 'SBIR Fund', value: '$3.4B', description: 'Annual Budget', color: 'text-purple-600', iconName: 'Cpu' },

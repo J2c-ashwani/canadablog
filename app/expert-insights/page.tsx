@@ -7,7 +7,8 @@ import BlogCard from '@/components/blog/BlogCard';
 import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
 import AdSlot from '@/components/blog/AdSlot';
-import { getExpertInsightPosts } from '@/lib/data/blogPosts';
+import { redirect } from 'next/navigation';
+import { getExpertInsightPosts, normalizeCategory } from '@/lib/data/blogPosts';
 import { generateBlogSchema } from '@/lib/schema';
 
 export async function generateMetadata({
@@ -26,23 +27,25 @@ export async function generateMetadata({
     let title = "Expert Insights & Government Grant Analysis | FSI Digital";
     let description = "Deep dive analysis, expert strategies, and comprehensive guides for securing government funding and business grants.";
 
-    if (category) {
-        const readableCategory = category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-        title = `${readableCategory} Grants Analysis & Insights | FSI Digital`;
-        description = `Read expert insights and analysis on ${readableCategory} government grants and funding opportunities.`;
+    const normalizedCategory = category ? normalizeCategory(category) : undefined;
+
+    if (category && !normalizedCategory) {
+        return {
+            title: "Not Found",
+            robots: { index: false, follow: false }
+        };
+    }
+
+    if (normalizedCategory) {
+        title = `${normalizedCategory} Grants Analysis & Insights | FSI Digital`;
+        description = `Read expert insights and analysis on ${normalizedCategory} government grants and funding opportunities.`;
     }
 
     if (pageNum > 1) {
         title = `${title} - Page ${pageNum}`;
     }
 
-    // Canonical should ALWAYS point to the base URL without query params.
-    // Filtered/paginated views are just different views of the same page.
-    // This prevents "Duplicate without user-selected canonical" in GSC.
     const canonicalUrl = baseUrl;
-
-    // Only index the base /expert-insights page. Category filters and pagination
-    // are duplicate views — noindex them but keep follow for link discovery.
     const hasQueryParams = !!(category || pageNum > 1);
 
     return {
@@ -85,10 +88,20 @@ export default async function ExpertInsightsPage({
     const currentPage = parseInt(resolvedParams.page || '1');
     const postsPerPage = 9;
 
+    let categoryName: string | undefined = undefined;
+    if (selectedCategory) {
+      const normalized = normalizeCategory(selectedCategory);
+      if (!normalized) {
+        // Prevent soft 404s by redirecting invalid category queries to clean index page
+        redirect('/expert-insights');
+      }
+      categoryName = normalized;
+    }
+
     // Filter posts by category if selected
-    const filteredPosts = selectedCategory
-        ? allPosts.filter(post => post.category === selectedCategory)
-        : allPosts;
+    const filteredPosts = categoryName
+      ? allPosts.filter(post => post.category === categoryName)
+      : allPosts;
 
     // Pagination
     const totalPages = Math.ceil(filteredPosts.length / postsPerPage);

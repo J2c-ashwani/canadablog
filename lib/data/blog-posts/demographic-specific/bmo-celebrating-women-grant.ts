@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["BMO", "Celebrating", "Women", "Grant", "2026"],
+      metaTitle: "BMO Celebrating Women Grant 2026: Complete Guide — Apply N",
+        metaDescription: "Learn how to qualify and apply for BMO Celebrating Women Grant in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2026 for Canadian and U.S. women business. Funding available: up to $10K (with related programs offering $10,000).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

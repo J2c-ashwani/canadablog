@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Youth", "Entrepreneurship", "Canada", "2026", "|"]
+      metaTitle: "Youth Entrepreneurship Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Youth Entrepreneurship Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Youth Entrepreneurship Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian youth entrepreneur funding programs. Access CYBF grants up to $60K, Youth Employment Strategy funding, and young business startup loans for entrepreneurs aged 18-35 across. Funding available: up to $60K+ (with related programs offering $60K).",
     metrics: [
       { label: 'CYBF', value: '$60K', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },

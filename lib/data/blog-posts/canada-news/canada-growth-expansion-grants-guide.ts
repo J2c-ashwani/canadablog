@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Growth", "&", "Expansion", "Grants"],
+      metaTitle: "Canada Growth & Expansion Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Growth & Expansion Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "enterprise",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Growth & Expansion Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian business expansion grants. Access all 42+ growth programs including Strategic Innovation Fund, provincial expansion funds, export development grants, and scale-up. Funding available: up to $2.8B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

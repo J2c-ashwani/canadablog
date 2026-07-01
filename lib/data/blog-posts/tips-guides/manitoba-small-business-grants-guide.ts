@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Manitoba", "Small", "Business", "Grants", "2026"],
+      metaTitle: "Manitoba Small Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Manitoba Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Manitoba small business grants. Access Manitoba Business Development, Innovation Growth Program, Small Business Venture Capital, and Rural Development Corporation funding. Funding available: up to $380M+.",
     metrics: [
       { label: 'Pool', value: '$380M', description: 'Total Funds', color: 'text-green-600', iconName: 'Database' },

@@ -405,6 +405,7 @@ export default async function RevenueDashboardPage({
     'funding-toolkit': 'Funding Application Toolkit ($29)',
     'funding-approval-library': 'Funding Approval Library ($9)',
     'consultation': 'Strategy Session Audit ($199)',
+    'funding-membership': 'Founding Member Subscription ($29/mo)',
   };
 
   const productStatsMap = new Map<string, { count: number; revenue: number }>();

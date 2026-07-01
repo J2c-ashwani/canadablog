@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Regional", "Economic", "Development", "Grants"],
+      metaTitle: "Canada Regional Economic Development Grants 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Regional Economic Development Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Regional Economic Development Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canada Funding available: up to $2.8B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

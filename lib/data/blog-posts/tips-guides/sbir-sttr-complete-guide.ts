@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SBIR", "&", "STTR", "Grants", "Complete"],
+      metaTitle: "SBIR & STTR Grants Complete Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for SBIR & STTR Grants Complete Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for SBIR & STTR Grants Complete Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SBIR and STTR grants. Learn eligibility requirements, application process, funding phases, and tips to win up to $1.7M in federal R&D funding. Funding available: up to $1.7M.",
     metrics: [
       { label: 'SBIR', value: '$1.7M', description: 'Max award', color: 'text-green-600', iconName: 'DollarSign' },

@@ -161,7 +161,11 @@ const post: BlogPost = {
 
 </div>`,
     seo: {
-      keywords: ["Alberta", "Government", "Business", "Grants", "2026"],
+      metaTitle: "Alberta Government Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Alberta Government Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Alberta Government Business Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Alberta government business grants and provincial funding programs. Access Alberta Innovates, ERA programs, diversification initiatives, and energy sector funding for Alberta.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

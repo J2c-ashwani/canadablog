@@ -129,7 +129,11 @@ const post: BlogPost = {
                                                                                                                                                                                                                                                             </details>
                                                                                                                                                                                                                                                             </div>`,
     seo: {
-      keywords: ["BC Business Grants", "Small Business BC", "Innovate BC", "Export Navigator", "PacifiCan"]
+      metaTitle: "BC Business Grants 2026: Get Up to $2B+ — Apply Now",
+        metaDescription: "Learn how to qualify and apply for BC Business Grants in 2026. Access up to $2B+ in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for BC Business Grants : Innovatio 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 British Columbia's top funding programs explained. From Innovate BC's tech grants to Small Business BC's expert support, find the capital to grow your West Coast business. Funding available: up to $240.",
     metrics: [
       { label: 'Total', value: '$2B+', description: 'Provincial Aid', color: 'text-teal-600', iconName: 'DollarSign' },

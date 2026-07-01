@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Advanced", "Manufacturing", "Innovation", "Grants"],
+      metaTitle: "Canada Advanced Manufacturing Innovation Grants: Get Up...",
+        metaDescription: "Guide to Canada Advanced Manufacturing Innovation Grants in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify ...",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canadian advanced manufacturing innovation grants. Access $3.1B+ funding through NGen, automation programs, Industry 4.0 initiatives, and 38+ smart manufacturing programs. Funding available: up to $3.1B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

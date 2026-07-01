@@ -1,4 +1,4 @@
-export type ProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library' | 'strategy-audit';
+export type ProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library' | 'strategy-audit' | 'funding-membership';
 
 export interface Product {
   id: ProductId;
@@ -137,6 +137,27 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'Custom Funding Eligibility Report PDF',
       '1-on-1 Strategy Consultation call slot',
       'Calendly booking access link',
+    ],
+  },
+  'funding-membership': {
+    id: 'funding-membership',
+    name: 'Founding Member Subscription',
+    slug: 'membership',
+    priceUsd: 29,
+    tagline: 'Get custom stacking monitoring, real-time alerts & analyst Q&A',
+    description:
+      'Intake windows open and close in days. We monitor 800+ active Canadian programs against your B2B profile and alert you instantly before deadlines pass.',
+    features: [
+      'Real-time SMS & email intake alerts',
+      'Priority analyst support (12hr response)',
+      'Unlimited Match Report re-runs',
+      'Full access to Grant Template Library ($29 value)',
+      '10% discount on 1-on-1 Strategy Audits',
+    ],
+    deliverables: [
+      'SMS & email notifications when matching grants open',
+      'Email Q&A desk with FSI Digital analysts',
+      'Dashboard tools to update business profile and re-run reports',
     ],
   },
 };

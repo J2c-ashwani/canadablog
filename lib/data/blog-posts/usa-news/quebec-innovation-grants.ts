@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Quebec", "Innovation", "Grants", "&", "Tax"],
+      metaTitle: "Quebec Innovation Grants & Tax Credits 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Quebec Innovation Grants & Tax Credits in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Quebec innovation grants and tax credits. Access $2.5B+ through 30% Quebec R&D Tax Credit (CRIC), Investissement Québec, PRIMA Quebec, and aerospace, gaming, biotech programs. Funding available: up to $2.5B+.",
     metrics: [
       { label: 'Fund', value: '$2.5B', description: 'Provincial Pool', color: 'text-green-600', iconName: 'DollarSign' },

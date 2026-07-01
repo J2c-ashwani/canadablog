@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Quebec", "Women", "Business", "Grants", "2026"],
+      metaTitle: "Quebec Women Business Grants 2026: Get Up to $50K — Apply ",
+        metaDescription: "Learn how to qualify and apply for Quebec Women Business Grants in 2026. Access up to $50K in non-dilutive funding. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Quebec women entrepreneurship support with Réseau des Femmes d Funding available: up to $720M.",
     metrics: [
       { label: 'Fund', value: '$720M', description: 'Women Focus', color: 'text-pink-600', iconName: 'DollarSign' },

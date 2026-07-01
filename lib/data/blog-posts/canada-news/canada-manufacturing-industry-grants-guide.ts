@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Manufacturing", "&", "Industry", "Grants"],
+      metaTitle: "Canada Manufacturing & Industry Grants 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Canada Manufacturing & Industry Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Manufacturing & Industry Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canada Funding available: up to $3.1B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

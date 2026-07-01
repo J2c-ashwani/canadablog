@@ -24,7 +24,11 @@ const post: BlogPost = {
     ],
     content: agriInnovation2025,
     seo: {
-      keywords: ["AgriInnovate", "AgTech", "Farming Grants", "Sustainable Ag", "Food Processing"]
+      metaTitle: "Canada's $180M Agricultural Innovation Revolution: Get ...",
+        metaDescription: "Guide to Canada's $180M Agricultural Innovation Revolution in 2026. Learn eligibility rules, requirements, and application steps. See if you qualif...",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Agriculture and Agri-Food Canada has launched a $180 million innovation fund. Learn how to access up to $5M for commercialization, demonstration, and adoption of ag-tech. Funding available: up to $180M (with related programs offering $180).",
     metrics: [
       { label: 'Fund Pool', value: '$180M', description: 'Innovation', color: 'text-green-600', iconName: 'Sprout' },

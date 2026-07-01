@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Strategy", "Canada", "2026"]
+      metaTitle: "Women Entrepreneurship Strategy Canada 2026: Get Up to $6B",
+        metaDescription: "Learn how to qualify and apply for Women Entrepreneurship Strategy Canada in 2026. Access up to $6B in non-dilutive funding. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canada Funding available: up to $6B.",
     metrics: [
       { label: 'Total', value: '$6B', description: 'Investment', color: 'text-green-600', iconName: 'DollarSign' },

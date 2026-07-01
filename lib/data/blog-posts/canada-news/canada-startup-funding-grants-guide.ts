@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Startup", "Funding", "Grants", "2026"],
+      metaTitle: "Canada Startup Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Canada Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Most Canadian startups only know about Futurpreneur. But there are 35+ programs worth $1.2B — from SR&ED tax credits (45% back) to seed grants. See which ones you qualify for. Funding available: up to $1.2B+ (with related programs offering $1.2B).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

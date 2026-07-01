@@ -833,7 +833,11 @@ const post: BlogPost = {
 
     `,
     seo: {
-      keywords: ["AgriInnovate 2026", "Agriculture Grants Canada", "Ag-Tech Funding", "Sustainable Farming Grants", "Food Processing Innovation", "Canadian Agricultural Partnership", "Precision Agriculture Funding"]
+      metaTitle: "Agricultural Innovation 2026: Get Up to $180M — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Agricultural Innovation in 2026. Access up to $180M in non-dilutive funding. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     },
     metrics: [
       { label: 'Total', value: '$180M', description: 'Program Fund', color: 'text-green-600', iconName: 'DollarSign' },

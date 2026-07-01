@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["State", "Women", "Business", "Programs", "Guide"],
+      metaTitle: "State Women Business Programs Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for State Women Business Programs Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to state and local women business programs. Discover grants, tax incentives, and support programs in all 50 states for women entrepreneurs.",
     metrics: [
       { label: 'States', value: '50', description: 'All States', color: 'text-pink-600', iconName: 'MapPin' },

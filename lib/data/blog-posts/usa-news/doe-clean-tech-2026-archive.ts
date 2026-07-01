@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: doeCleanTech2025,
     seo: {
-      keywords: ["DOE Grants", "Clean Energy", "Climate Tech", "ARPA-E", "Solar Funding"]
+      metaTitle: "DOE Clean Energy Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for DOE Clean Energy Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for DOE Clean Energy Grants 2025: $800M Innovation Fund, start by reviewing the eligibility criteria and preparing a project proposal. The Department of Energy is deploying $800 million for clean tech innovation. From ARPA-E to solar and battery storage grants, find out how to fund your climate solution. Funding available: up to $800M (with related programs offering $800).",
     metrics: [
       { label: 'DOE Fund', value: '$800M', description: 'Innovation', color: 'text-green-600', iconName: 'Sun' },

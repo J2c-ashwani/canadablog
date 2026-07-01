@@ -122,7 +122,11 @@ const post: BlogPost = {
                                                                                                                                 </details>
                                                                                                                                 </div>`,
     seo: {
-      keywords: ["Saskatchewan Business Grants", "Innovation Saskatchewan", "SAIF Grant", "WESK", "Regina Business"]
+      metaTitle: "Saskatchewan Business Grants 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Saskatchewan Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Saskatchewan Business Grants : 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Saskatchewan is more than just wheat. Discover funding from Innovation Saskatchewan, the Graduate Retention Program, and the new SaskAdvantage grants. Funding available: up to $400.",
     metrics: [
       { label: 'Innovation', value: '$400k', description: 'SAIF Grant', color: 'text-green-600', iconName: 'Zap' },

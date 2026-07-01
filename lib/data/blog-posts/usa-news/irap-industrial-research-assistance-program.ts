@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Industrial", "Research", "Assistance", "Program", "(IRAP)"],
+      metaTitle: "Industrial Research Assistance Program 2026 Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for Industrial Research Assistance Program in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Industrial Research Assistance Program (IRAP) 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to IRAP funding for Canadian tech SMEs. Learn eligibility, application process, and get up to $1M in non-repayable R&D grants. Funding available: up to $1M.",
     metrics: [
       { label: 'Funding', value: '$10M', description: 'Max Contribution', color: 'text-green-600', iconName: 'DollarSign' },

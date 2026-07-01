@@ -407,7 +407,14 @@ const post: BlogPost = {
   author: "FSI Digital Team",
   category: "Canada Grants News",
   tags: ["Canada", "Grants 2025", "Funding"],
-  type: "grant-news"
+  type: "grant-news",
+    seo: {
+        metaTitle: "Canada IRAP Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Canada IRAP Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
+    }
 };
 
 export default post;

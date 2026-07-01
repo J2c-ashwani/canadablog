@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Private", "Women", "Grants", "Guide", "2026"],
+      metaTitle: "Private Women Grants Guide 2026: Get Up to 50+ — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Private Women Grants Guide in 2026. Access up to 50+ in non-dilutive funding. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to private foundation grants for women entrepreneurs. Discover 50+ foundations offering grants up to $250K for women-owned businesses. Funding available: up to $250K.",
     metrics: [
       { label: 'Amber', value: '$10K', description: 'Monthly grant', color: 'text-green-600', iconName: 'DollarSign' },

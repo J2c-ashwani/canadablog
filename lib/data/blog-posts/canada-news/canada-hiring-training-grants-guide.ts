@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Hiring", "&", "Training", "Grants"],
+      metaTitle: "Canada Hiring & Training Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Hiring & Training Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "hiring",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Hiring & Training Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian hiring and training grants. Access all 28+ workforce development programs including job creation incentives, skills training, wage subsidies, and employee development. Funding available: up to $1.9B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

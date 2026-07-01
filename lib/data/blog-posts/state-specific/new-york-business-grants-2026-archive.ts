@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: newYorkGrants2025,
     seo: {
-      keywords: ["New York Grants", "NYS CFA", "Excelsior Jobs", "REDC", "Empire State Dev"]
+      metaTitle: "New York Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for New York Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for New York Business Grants : Emp 2025, start by reviewing the eligibility criteria and preparing a project proposal. New York State offers $1.8 billion in funding through its Regional Economic Development Councils. Explore the Consolidated Funding Application (CFA), Excelsior Jobs tax credits, and SSBCI. Funding available: up to $1.8.",
     metrics: [
       { label: 'REDC Fund', value: '$1.8B', description: 'Regional Aid', color: 'text-blue-600', iconName: 'Map' },

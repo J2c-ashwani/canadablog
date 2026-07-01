@@ -28,7 +28,11 @@ const post: BlogPost = {
 ${nyGrantsPost}
     `,
     seo: {
-      keywords: ["New York business grants", "NYC small business funding", "NYS grants 2026", "startup grants New York"]
+      metaTitle: "New York Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for New York Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for New York Business Grants : Sta 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🗽 Comprehensive guide to business grants in New York State. Covering NYC small business funds, upstate revitalization, and tech incentives.",
     metrics: [
       { label: 'State', value: '$800M', description: 'Econ Dev Fund', color: 'text-blue-600', iconName: 'Briefcase' },

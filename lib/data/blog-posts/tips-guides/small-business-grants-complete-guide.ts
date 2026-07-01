@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Small", "Business", "Grants", "Complete", "Guide"],
+      metaTitle: "Small Business Grants Complete Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Small Business Grants Complete Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to secure funding up to $5M for your business. Funding available: up to $5M.",
     metrics: [
       { label: 'SBA', value: '$5M', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },

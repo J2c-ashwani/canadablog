@@ -741,7 +741,11 @@ const post: BlogPost = {
   </script>
     `,
     seo: {
-      keywords: ["Digital", "Transformation", "2026"]
+      metaTitle: "Digital Transformation 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Digital Transformation in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     },
     metrics: [
       { label: 'Grant', value: '$15,000', description: 'Adoption Plan', color: 'text-blue-600', iconName: 'FileText' },

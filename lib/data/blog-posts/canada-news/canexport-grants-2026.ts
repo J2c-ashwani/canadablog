@@ -532,7 +532,11 @@ const post: BlogPost = {
   </script>
     `,
     seo: {
-      keywords: ["Canexport", "Grants", "2026"]
+      metaTitle: "Canexport Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Canexport Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "export",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     },
     metrics: [
       { label: 'Grant', value: '$50k', description: 'Max Funding', color: 'text-green-600', iconName: 'DollarSign' },

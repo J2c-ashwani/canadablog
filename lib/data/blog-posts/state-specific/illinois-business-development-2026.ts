@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: illinoisGrants2025,
     seo: {
-      keywords: ["Illinois Grants", "DCEO", "Advantage Illinois", "Small Business", "Manufacturing"]
+      metaTitle: "Illinois Business Development Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Illinois Business Development Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Illinois Business Development Grants 2026: $650M Guide, start by reviewing the eligibility criteria and preparing a project proposal. Illinois DCEO offers over $650 million in business development grants. From Advantage Illinois low-interest loans to EDGE tax credits, discover opportunities for Prairie State businesses. Funding available: up to $650M (with related programs offering $650).",
     metrics: [
       { label: 'DCEO Fund', value: '$650M', description: 'State Grants', color: 'text-blue-600', iconName: 'Landmark' },

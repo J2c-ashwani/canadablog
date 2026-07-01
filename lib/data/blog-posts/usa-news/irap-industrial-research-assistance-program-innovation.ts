@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+      metaTitle: "IRAP Industrial Research Assistance Program 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for IRAP Industrial Research Assistance Program in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to IRAP innovation funding from National Research Council Canada. Get 60-80% R&D funding up to $500K with dedicated Industrial Technology Advisors for SMEs. Funding available: up to $500K.",
     metrics: [
       { label: 'Fund', value: '$500K', description: 'Max Project', color: 'text-green-600', iconName: 'DollarSign' },

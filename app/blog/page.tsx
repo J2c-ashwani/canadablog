@@ -6,7 +6,8 @@ import BlogCard from '@/components/blog/BlogCard';
 import CategorySidebar from '@/components/blog/CategorySidebar';
 import NewsletterBox from '@/components/blog/NewsletterBox';
 import AdSlot from '@/components/blog/AdSlot';
-import { getGrantNewsPosts } from '@/lib/data/blogPosts';
+import { redirect } from 'next/navigation';
+import { getGrantNewsPosts, normalizeCategory } from '@/lib/data/blogPosts';
 import { generateBlogPageMetadata } from '@/lib/seo';
 import { generateBlogSchema } from '@/lib/schema';
 import { HighIntentFundingLinks } from '@/components/seo/HighIntentFundingLinks';
@@ -25,23 +26,25 @@ export async function generateMetadata({
   let title = "Grant News, Alerts & Guides | FSI Digital Blog";
   let description = "Stay updated with the latest grant opportunities, funding alerts, and expert application guides for USA and Canada grants.";
 
-  if (category) {
-    const readableCategory = category.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
-    title = `${readableCategory} Grants | FSI Digital Blog`;
-    description = `Browse ${readableCategory} grant opportunities, funding alerts, and guides.`;
+  const normalizedCategory = category ? normalizeCategory(category) : undefined;
+
+  if (category && !normalizedCategory) {
+    return {
+      title: "Not Found",
+      robots: { index: false, follow: false }
+    };
+  }
+
+  if (normalizedCategory) {
+    title = `${normalizedCategory} Grants | FSI Digital Blog`;
+    description = `Browse ${normalizedCategory} grant opportunities, funding alerts, and guides.`;
   }
 
   if (pageNum > 1) {
     title = `${title} - Page ${pageNum}`;
   }
 
-  // Canonical should ALWAYS point to the base URL without query params.
-  // Filtered/paginated views are just different views of the same page.
-  // This prevents "Duplicate without user-selected canonical" in GSC.
   const canonicalUrl = baseUrl;
-
-  // Only index the base /blog page. Category filters and pagination
-  // are duplicate views — noindex them but keep follow for link discovery.
   const hasQueryParams = !!(category || pageNum > 1);
 
   return {
@@ -85,17 +88,27 @@ export default async function BlogPage({
     const currentPage = parseInt(resolvedParams?.page || '1');
     const postsPerPage = 9;
 
-  // Filter posts by category if selected
-  const filteredPosts = selectedCategory
-    ? allPosts.filter(post => post.category === selectedCategory)
-    : allPosts;
+    let categoryName: string | undefined = undefined;
+    if (selectedCategory) {
+      const normalized = normalizeCategory(selectedCategory);
+      if (!normalized) {
+        // Prevent soft 404s by redirecting invalid category queries to clean index page
+        redirect('/blog');
+      }
+      categoryName = normalized;
+    }
 
-  // Pagination
-  const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-  const startIndex = (currentPage - 1) * postsPerPage;
-  const paginatedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage);
+    // Filter posts by category if selected
+    const filteredPosts = categoryName
+      ? allPosts.filter(post => post.category === categoryName)
+      : allPosts;
 
-  const blogSchema = generateBlogSchema();
+    // Pagination
+    const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+    const startIndex = (currentPage - 1) * postsPerPage;
+    const paginatedPosts = filteredPosts.slice(startIndex, startIndex + postsPerPage);
+
+    const blogSchema = generateBlogSchema();
 
   return (
     <div className="min-h-screen bg-white dark:bg-black">

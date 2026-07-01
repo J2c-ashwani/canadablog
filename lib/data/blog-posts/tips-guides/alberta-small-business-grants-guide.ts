@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Alberta", "Small", "Business", "Grants", "2026"],
+      metaTitle: "Alberta Small Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Alberta Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Alberta small business grants. Access Alberta Small Business Grant, Technology Innovation Fund, Rural Economic Development, and Energy Diversification programs. Funding available: up to $980M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

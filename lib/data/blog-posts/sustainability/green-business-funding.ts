@@ -343,7 +343,11 @@ const post: BlogPost = {
       </div>
 `,
     seo: {
-      keywords: ["Green Business Grants", "Sustainability Funding", "EV Incentives", "Retrofit Grants"]
+      metaTitle: "Green Business Funding 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Green Business Funding in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Green Business Funding : Susta 2026, start by reviewing the eligibility criteria and preparing a project proposal. Detailed guide to Canada's green business grants for SMEs. Covers retrofits, EV fleets, and zero-waste manufacturing incentives available in 2026. Funding available: up to $1.",
     metrics: [
       { label: 'Retrofit', value: '$3M', description: 'GICB Max', color: 'text-green-600', iconName: 'Home' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Strategic", "Innovation", "Fund", "Canada", "2026"],
+      metaTitle: "Strategic Innovation Fund Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Strategic Innovation Fund Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Strategic Innovation Fund (SIF) funding in Canada. Access up to $100M for transformative innovation projects, R&D commercialization, and industrial expansion from ISED Canada. Funding available: up to $100M+ (with related programs offering $100M).",
     metrics: [
       { label: 'Max', value: '$100M+', description: 'Per Project', color: 'text-green-600', iconName: 'DollarSign' },

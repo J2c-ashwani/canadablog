@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Territories", "Small", "Business", "Grants", "2026"],
+      metaTitle: "Territories Small Business Grants 2026: Get Up to $125M+",
+        metaDescription: "Learn how to qualify and apply for Territories Small Business Grants in 2026. Access up to $125M+ in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Territories business grants. Access NWT Business Development, Yukon Small Business Support, Nunavut Economic Development, and Indigenous Business Programs. Funding available: up to $125M+.",
     metrics: [
       { label: 'Total', value: '$125M+', description: 'Combined Fund', color: 'text-green-600', iconName: 'DollarSign' },

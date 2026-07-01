@@ -209,7 +209,7 @@ export default function RootLayout({
                   "contactPoint": {
                     "@type": "ContactPoint",
                     "contactType": "customer support",
-                    "email": "support@fsidigital.ca"
+                    "email": "hello@fsidigital.ca"
                   },
                   "areaServed": ["US", "CA", "MX"]
                 },

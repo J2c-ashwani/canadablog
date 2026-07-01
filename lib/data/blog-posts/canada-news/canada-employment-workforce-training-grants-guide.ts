@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Employment", "&", "Workforce", "Training"],
+      metaTitle: "Canada Employment & Workforce Training Grants 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Employment & Workforce Training Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "hiring",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Employment & Workforce Training Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canada Funding available: up to $1.9B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

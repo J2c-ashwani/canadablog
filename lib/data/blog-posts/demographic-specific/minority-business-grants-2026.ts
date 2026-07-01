@@ -194,7 +194,11 @@ However, a single corporate contract can yield 100x that investment.
                                 </details>
                                 </div>`,
     seo: {
-      keywords: ["Minority business grants", "MBE certification", "Black owned business grants", "Latino business funding", "MBDA grants"]
+      metaTitle: "Minority Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Minority Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — 🇺🇸 Funding sources dedicated to Black, Latino, Asian, and Indigenous entrepreneurs. MBDA Centers, NMSDC certification, and private diversity funds. Funding available: up to $4B.",
     metrics: [
       { label: 'FedEx', value: '$30k', description: 'Grant Contest', color: 'text-purple-600', iconName: 'Truck' },

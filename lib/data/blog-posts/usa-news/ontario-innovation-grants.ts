@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Ontario", "Innovation", "Grants", "&", "Tax"],
+      metaTitle: "Ontario Innovation Grants & Tax Credits 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Ontario Innovation Grants & Tax Credits in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Ontario innovation grants and tax credits. Access $3.2B+ through Ontario Innovation Tax Credit (10% OITC), Jobs and Prosperity Fund, OCE programs, and advanced manufacturing support. Funding available: up to $3.2B+.",
     metrics: [
       { label: 'Credit', value: '10%', description: 'OITC Rate', color: 'text-green-600', iconName: 'Percent' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Indigenous", "Women", "Business", "Grants", "Canada"],
+      metaTitle: "Indigenous Women Business Grants Canada 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Indigenous Women Business Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to Indigenous women business grants in Canada. NACCA Aboriginal Entrepreneurship Program, IWEF funding $50K loans, First Nations Métis Inuit women entrepreneurs support.. Funding available: up to $50K.",
     metrics: [
       { label: 'Micro', value: '$50K', description: 'Max Loan', color: 'text-green-600', iconName: 'DollarSign' },

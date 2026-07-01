@@ -182,7 +182,11 @@ const post: BlogPost = {
     </details>
     </div>`,
     seo: {
-      keywords: ["Veteran Business Grants", "small business grants for veterans", "SDVOSB funding", "Boots to Business", "Warrior Rising grants"]
+      metaTitle: "Veterans Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Veterans Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — 🇺🇸 Complete guide to grants and resources for veteran-owned small businesses (VOSB) and service-disabled veteran-owned small businesses (SDVOSB). Funding available: up to $15.",
     metrics: [
       { label: 'Warrior', value: '$15k', description: 'Rising Grant', color: 'text-green-600', iconName: 'Star' },

@@ -21,6 +21,7 @@ export function buildPurchaseEmail(data: {
 }): { subject: string; html: string; text: string } {
   const firstName = getFirstName(data.name);
   const reportUrl = `https://www.fsidigital.ca/products/report?token=${data.accessToken}&ref=purchase_email`;
+  const downloadUrl = `https://www.fsidigital.ca/api/products/download-pdf?token=${data.accessToken}`;
   const auditUrl = 'https://www.fsidigital.ca/consultation?source=report_purchase_email';
 
   const subject = 'Your Funding Match Report is Ready';
@@ -44,17 +45,21 @@ export function buildPurchaseEmail(data: {
             Thank you for purchasing your <strong>${escapeHtml(data.productName)}</strong>. Your personalized report is ready and waiting for you.
           </p>
 
-          <!-- CTA Button -->
+          <!-- CTA Buttons -->
           <div style="text-align:center;margin:28px 0;">
             <a href="${reportUrl}" target="_blank" rel="noopener noreferrer"
-               style="background-color:#059669;color:white;padding:14px 32px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-               View Your Report &rarr;
+               style="background-color:#059669;color:white;padding:14px 24px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);margin-right:8px;margin-bottom:10px;">
+               Interactive Dashboard &rarr;
+            </a>
+            <a href="${downloadUrl}" target="_blank" rel="noopener noreferrer"
+               style="background-color:#4f46e5;color:white;padding:14px 24px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(79,70,229,0.2);margin-bottom:10px;">
+               Download PDF Report 📥
             </a>
           </div>
 
           <p style="margin:0 0 20px 0;font-size:13px;color:#64748b;text-align:center;line-height:1.5;">
-            You can access your report anytime using the link above.<br/>
-            Bookmark it for future reference.
+            You can access your report anytime using the links above.<br/>
+            Bookmark them for future reference.
           </p>
 
           <!-- Receipt Section -->

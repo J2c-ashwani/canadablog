@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["CSBFP", "Canada", "Small", "Business", "Financing"],
+      metaTitle: "CSBFP Canada Small Business Financing Program 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for CSBFP Canada Small Business Financing Program in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to CSBFP government-guaranteed loans for Canadian small businesses. Federal loan guarantee program offering up to $1M with 85% government backing for equipment and real property. Funding available: up to $1M.",
     metrics: [
       { label: 'Guarantee', value: '85%', description: 'Gov Backing', color: 'text-green-600', iconName: 'Shield' },

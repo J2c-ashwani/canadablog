@@ -562,7 +562,14 @@ const post: BlogPost = {
   author: "FSI Digital Team",
   category: "Canada Grants News",
   tags: ["Canada", "Grants 2025", "Funding"],
-  type: "grant-news"
+  type: "grant-news",
+    seo: {
+        metaTitle: "🪶 Canada's $120M Indigenous Business Revolution 2026 G...",
+        metaDescription: "Guide to 🪶 Canada's $120M Indigenous Business Revolution in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
+    }
 };
 
 export default post;

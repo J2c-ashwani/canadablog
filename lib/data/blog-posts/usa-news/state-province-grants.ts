@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["State", "Province", "Grants"],
+      metaTitle: "State Province Grants... 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for State Province Grants... in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for State Province Grants 2025-2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to government grants.",
     metrics: [
       { label: 'States', value: '50', description: 'All Covered', color: 'text-green-600', iconName: 'MapPin' },

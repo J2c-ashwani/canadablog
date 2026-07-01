@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: manufacturingGrants2025,
     seo: {
-      keywords: ["Manufacturing Grants", "Smart Factory", "MEP", "Reshoring", "Industry 4.0"]
+      metaTitle: "Manufacturing Grants 2026: Get Up to $2.3B — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Manufacturing Grants in 2026. Access up to $2.3B in non-dilutive funding. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Manufacturing Grants 2025: $2.3B Industrial Renaissance, start by reviewing the eligibility criteria and preparing a project proposal. American manufacturing is booming with $2.3 billion in grants for automation, reshoring, and workforce development. Learn about MEP centers, smart manufacturing incentives, and federal support. Funding available: up to $2.3B (with related programs offering $2.3).",
     metrics: [
       { label: 'Total Fund', value: '$2.3B', description: 'Fed & State', color: 'text-blue-600', iconName: 'Settings' },

@@ -236,7 +236,11 @@ Write: "This grant will fund a high-capacity oven, allowing me to increase produ
                 </div>
                 </div>`,
     seo: {
-      keywords: ["Grants for women", "Amber Grant application", "Cartier Women's Initiative", "WOSB certification", "small business grants for women 2026"]
+      metaTitle: "Women's Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Women's Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — 🇺🇸 A curated list of grants for women entrepreneurs in 2026. Featuring the Amber Grant, Cartier Women's Initiative, and SBA Women's Centers. Funding available: up to $10M+.",
     metrics: [
       { label: 'Amber', value: '$10k', description: 'Monthly Grant', color: 'text-pink-600', iconName: 'Star' },

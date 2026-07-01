@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["British", "Columbia", "Innovation", "Grants", "&"],
+      metaTitle: "British Columbia Innovation Grants & Tax Credits 2026 G...",
+        metaDescription: "Guide to British Columbia Innovation Grants & Tax Credits in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify...",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to BC innovation grants and tax credits. Access $1.8B+ through 10% BC Innovation Tax Credit (BCITC), Innovate BC, New Ventures BC, and cleantech, film, ocean technology programs. Funding available: up to $1.8B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SBA", "Disaster", "Relief", "Loans", "Guide"],
+      metaTitle: "SBA Disaster Relief Loans Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for SBA Disaster Relief Loans Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for SBA Disaster Relief Loans Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SBA disaster relief loans. Learn about physical damage loans, economic injury loans, and how to get up to $2M in emergency business funding. Funding available: up to $2M.",
     metrics: [
       { label: 'Physical', value: '$2M', description: 'Damage loan', color: 'text-green-600', iconName: 'DollarSign' },

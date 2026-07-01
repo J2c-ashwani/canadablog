@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Entrepreneurship", "Fund", "Canada", "2026"],
+      metaTitle: "Women Entrepreneurship Fund Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women Entrepreneurship Fund Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Women Entrepreneurship Fund (WEF) non-repayable grants for women-owned businesses. Get funding for expansion, innovation, equipment, marketing, and R&D from ISED Canada.",
     metrics: [
       { label: 'Type', value: 'Non-Repay', description: 'Grant', color: 'text-green-600', iconName: 'DollarSign' },

@@ -267,7 +267,7 @@ export function getAllPseoPages(): PseoPage[] {
                 industrySlug: industry.slug,
                 industryName: industry.name,
                 publishedAt: itemPubDate.toISOString(),
-                isPublished: isPublished,
+                isPublished: true, // Campaign fully launched - enable all indexing
                 tier: cityTier
             });
 

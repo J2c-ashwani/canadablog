@@ -168,6 +168,7 @@ export function GrantCalculator() {
     const [isLoadingReport, setIsLoadingReport] = useState(false);
     const [reportLoadStep, setReportLoadStep] = useState(0);
     const [isDownloading, setIsDownloading] = useState(false);
+    const [isStripeLoading, setIsStripeLoading] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-bundle');
     const [addonToolkit, setAddonToolkit] = useState(false);
     const [addonApprovalLibrary, setAddonApprovalLibrary] = useState(false);
@@ -726,6 +727,66 @@ export function GrantCalculator() {
         }
     }, [step, isEmailValid]);
 
+    const handleStripeCheckout = async () => {
+      if (!isEmailValid || isStripeLoading) return;
+      setIsStripeLoading(true);
+      setPaymentError(null);
+      try {
+        const currentEmail = dataRef.current.email;
+        if (currentEmail) {
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              email: currentEmail,
+              event: "stripe_checkout_clicked",
+              ...getDeviceMetadata()
+            })
+          }).catch(() => {});
+        }
+
+        const res = await fetch('/api/stripe/create-checkout-session', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            productId: selectedProductId,
+            email: data.email,
+            name: data.name,
+            profileData: {
+              province: data.province,
+              industry: data.industry,
+              revenue: data.revenue,
+              goal: data.goal,
+              company: data.company,
+              phone: data.phone,
+            },
+            addons: {
+              toolkit: addonToolkit,
+              approvalLibrary: addonApprovalLibrary
+            },
+            attribution: {
+              landingPage: typeof window !== 'undefined' ? window.location.pathname : '',
+              referrer: typeof document !== 'undefined' ? document.referrer : '',
+              utmSource: data.utmSource || '',
+              utmMedium: data.utmMedium || '',
+              utmCampaign: data.utmCampaign || '',
+            }
+          })
+        });
+        const sessionData = await res.json();
+        if (sessionData.checkoutUrl) {
+          window.location.href = sessionData.checkoutUrl;
+        } else {
+          throw new Error(sessionData.error || 'Failed to start Stripe checkout');
+        }
+      } catch (err: any) {
+        console.error('Stripe error:', err);
+        setPaymentError(err.message || 'Card payment initiation failed. Please try again or use PayPal.');
+      } finally {
+        setIsStripeLoading(false);
+      }
+    };
+
     // --- PayPal SDK Load ---
     useEffect(() => {
       if (step < 6) return; // Only load when needed
@@ -1030,11 +1091,11 @@ export function GrantCalculator() {
                 // Load the full report
                 loadReport(result.accessToken);
               } else {
-                setPaymentError("Payment received but report generation failed. Contact support@fsidigital.ca");
+                setPaymentError("Payment received but report generation failed. Contact hello@fsidigital.ca");
               }
             } catch (err) {
               console.error("Payment capture error:", err);
-              setPaymentError("Payment processed, but we encountered an issue. Contact support@fsidigital.ca");
+              setPaymentError("Payment processed, but we encountered an issue. Contact hello@fsidigital.ca");
               
               if (currentEmail) {
                 fetch("/api/subscriber/track-activity", {
@@ -1243,11 +1304,11 @@ export function GrantCalculator() {
                 await loadReport(accessToken || result.accessToken);
                 setShowUpsellScreen(false);
               } else {
-                setPaymentError("Payment received but upgrade mapping failed. Contact support@fsidigital.ca");
+                setPaymentError("Payment received but upgrade mapping failed. Contact hello@fsidigital.ca");
               }
             } catch (err) {
               console.error("Upgrade capture error:", err);
-              setPaymentError("Payment processed, but we encountered an issue. Contact support@fsidigital.ca");
+              setPaymentError("Payment processed, but we encountered an issue. Contact hello@fsidigital.ca");
             }
           },
           onError: (err: any) => {
@@ -2565,9 +2626,122 @@ export function GrantCalculator() {
                                   </div>
                                 </div>
 
+                                {/* B2B Upgrades / Addons / Bumps Section */}
+                                 <div className="space-y-3.5 mb-6 text-left border-t border-slate-150 pt-5">
+                                     <h5 className="text-[10px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Enhance Your Analysis (Optional Upgrades)</h5>
+
+                                     {/* Upgrade 1: Action Plan Order Bump (Only shown if selectedProductId === 'funding-match-report') */}
+                                     {selectedProductId === 'funding-match-report' && (
+                                       <div 
+                                         onClick={() => {
+                                           setSelectedProductId('funding-bundle');
+                                           if (typeof window !== 'undefined' && (window as any).gtag) {
+                                             (window as any).gtag('event', 'addon_action_plan_bump_clicked');
+                                           }
+                                         }}
+                                         className="cursor-pointer border-2 border-emerald-500 bg-emerald-50/20 rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-emerald-50/40 relative overflow-hidden"
+                                       >
+                                         <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[8px] font-bold px-2 py-0.5 uppercase tracking-wider rounded-bl-lg">
+                                           Best Value Upgrade
+                                         </div>
+                                         <div className="pt-1">
+                                           <input 
+                                             type="checkbox" 
+                                             checked={false} 
+                                             onChange={() => {}} 
+                                             className="w-4 h-4 rounded text-emerald-605 focus:ring-emerald-500 border-slate-300"
+                                           />
+                                         </div>
+                                         <div>
+                                           <h6 className="font-extrabold text-slate-900 text-xs sm:text-sm">Add Step-by-Step Funding Action Plan (+$49 value)</h6>
+                                           <p className="text-[11px] text-slate-505 leading-relaxed mt-1">
+                                             Upgrades your basic report to the <strong>Complete Stacking Bundle</strong>. Tells you exactly what to do first, second, and third to stack matching programs successfully.
+                                           </p>
+                                           <div className="mt-2 text-xs font-bold text-slate-800">
+                                             Upgrade for only <span className="text-emerald-700 font-extrabold">$79 total</span> (Save $10 on the bundle price!)
+                                           </div>
+                                         </div>
+                                       </div>
+                                     )}
+
+                                     {/* Upgrade 1 Alternate (If they chose bundle, allow them to downgrade or see the locked-in check state) */}
+                                     {selectedProductId === 'funding-bundle' && (
+                                       <div 
+                                         onClick={() => {
+                                           setSelectedProductId('funding-match-report');
+                                         }}
+                                         className="cursor-pointer border border-indigo-200 bg-indigo-50/10 rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-indigo-50/20"
+                                       >
+                                         <div className="pt-1">
+                                           <input 
+                                             type="checkbox" 
+                                             checked={true} 
+                                             readOnly 
+                                             className="w-4 h-4 rounded text-indigo-605 focus:ring-indigo-500 border-slate-300"
+                                           />
+                                         </div>
+                                         <div>
+                                           <h6 className="font-extrabold text-indigo-950 text-xs sm:text-sm">Locked In: Complete Stacking Bundle ($79)</h6>
+                                           <p className="text-[11px] text-slate-505 leading-relaxed mt-1">
+                                             Includes both the <strong>Funding Match Report</strong> and the <strong>Filing Action Plan</strong>. Uncheck to downgrade back to basic $19 report.
+                                           </p>
+                                         </div>
+                                       </div>
+                                     )}
+
+                                     {/* Upgrade 2: Toolkit Addon ($29) */}
+                                     <div 
+                                       onClick={() => setAddonToolkit(!addonToolkit)}
+                                       className={`cursor-pointer border rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-slate-50/80 ${
+                                         addonToolkit ? 'border-indigo-500 bg-indigo-50/5 shadow-2xs' : 'border-slate-200 bg-white'
+                                       }`}
+                                     >
+                                       <div className="pt-1">
+                                         <input 
+                                           type="checkbox" 
+                                           checked={addonToolkit} 
+                                           onChange={() => {}} 
+                                           className="w-4 h-4 rounded text-indigo-605 focus:ring-indigo-505 border-slate-300"
+                                         />
+                                       </div>
+                                       <div>
+                                         <h6 className="font-extrabold text-slate-800 text-xs sm:text-sm flex items-center gap-1.5">
+                                           <span>Add Funding Application Toolkit (+$29)</span>
+                                           <span className="bg-indigo-100 text-indigo-805 text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase">Popular</span>
+                                         </h6>
+                                         <p className="text-[11px] text-slate-505 leading-relaxed mt-1">
+                                           Instant download access to 6 premium templates, models, and tracking sheets including: Grant Budget Sheet, Cash Flow Forecast, Proposal Outline.
+                                         </p>
+                                       </div>
+                                     </div>
+
+                                     {/* Upgrade 3: Approval Library Addon ($9) */}
+                                     <div 
+                                       onClick={() => setAddonApprovalLibrary(!addonApprovalLibrary)}
+                                       className={`cursor-pointer border rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-slate-50/80 ${
+                                         addonApprovalLibrary ? 'border-indigo-500 bg-indigo-50/5 shadow-2xs' : 'border-slate-200 bg-white'
+                                       }`}
+                                     >
+                                       <div className="pt-1">
+                                         <input 
+                                           type="checkbox" 
+                                           checked={addonApprovalLibrary} 
+                                           onChange={() => {}} 
+                                           className="w-4 h-4 rounded text-indigo-605 focus:ring-indigo-505 border-slate-300"
+                                         />
+                                       </div>
+                                       <div>
+                                         <h6 className="font-extrabold text-slate-800 text-xs sm:text-sm">Add Funding Approval Library (+$9)</h6>
+                                         <p className="text-[11px] text-slate-505 leading-relaxed mt-1">
+                                           Review real successful R&D (SR&ED/IRAP) narratives, project descriptions, and approved budgets to clone winning strategies.
+                                         </p>
+                                       </div>
+                                     </div>
+                                 </div>
+
                                 {renderB2BMetadataBlock()}
 
-                                <div className="min-h-[150px]">
+                                <div className="min-h-[150px] space-y-3.5 pt-3">
                                     {!sdkReady ? (
                                         <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
                                         <Loader2 className="w-4 h-4 animate-spin" /> Loading secure checkout...
@@ -2577,7 +2751,37 @@ export function GrantCalculator() {
                                           Please enter a valid business email address above to enable secure checkout.
                                         </div>
                                     ) : (
-                                        <div id="calc-paypal-button" className="w-full"></div>
+                                        <>
+                                           {/* Stripe Card Payment */}
+                                           {process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY && (
+                                             <>
+                                               <Button 
+                                                 disabled={isStripeLoading}
+                                                 onClick={handleStripeCheckout}
+                                                 className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all"
+                                               >
+                                                 {isStripeLoading ? (
+                                                   <>
+                                                     <Loader2 className="w-4 h-4 animate-spin" /> Starting secure checkout...
+                                                   </>
+                                                 ) : (
+                                                   <>
+                                                     💳 Pay with Credit Card / Apple Pay
+                                                   </>
+                                                 )}
+                                               </Button>
+
+                                               <div className="relative flex py-1.5 items-center">
+                                                 <div className="flex-grow border-t border-slate-200"></div>
+                                                 <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or</span>
+                                                 <div className="flex-grow border-t border-slate-200"></div>
+                                               </div>
+                                             </>
+                                           )}
+
+                                           {/* PayPal Container */}
+                                           <div id="calc-paypal-button" className="w-full"></div>
+                                         </>
                                     )}
                                 </div>
                                 {paymentError && (

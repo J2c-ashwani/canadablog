@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Aerospace", "&", "Defence", "Grants"],
+      metaTitle: "Canada Aerospace & Defence Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Aerospace & Defence Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Canadian aerospace and defence innovation grants. Access $450M+ funding through Canadian Space Agency programs, defence innovation initiatives, and 12+ aviation technology grants. Funding available: up to $450M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

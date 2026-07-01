@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Alberta", "Women", "Business", "Grants", "2026"],
+      metaTitle: "Alberta Women Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Alberta Women Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Alberta women entrepreneurship support with AWE loans up to $150K, Women Building Futures, energy sector programs, and tech innovation funding. Funding available: up to $580M (with related programs offering $150K).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

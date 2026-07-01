@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["BC", "Women", "Business", "Grants", "2026"],
+      metaTitle: "BC Women Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for BC Women Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to BC women entrepreneurship support with Women Funding available: up to $650M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

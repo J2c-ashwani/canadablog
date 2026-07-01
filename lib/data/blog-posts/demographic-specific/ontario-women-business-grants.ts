@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Ontario", "Women", "Business", "Grants", "2026"],
+      metaTitle: "Ontario Women Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Ontario Women Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Ontario women entrepreneurship support with FedDev Ontario RE3 grants up to $5,000, PARO microfinancing, Women Funding available: up to $850M (with related programs offering $5,000,).",
     metrics: [
       { label: 'Pool', value: '$850M', description: 'Women Focus', color: 'text-green-600', iconName: 'DollarSign' },

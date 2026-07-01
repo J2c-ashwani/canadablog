@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Alberta", "Innovation", "Grants", "&", "Funding"],
+      metaTitle: "Alberta Innovation Grants & Funding 2026: Get Up to $950M+",
+        metaDescription: "Learn how to qualify and apply for Alberta Innovation Grants & Funding in 2026. Access up to $950M+ in non-dilutive funding. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Alberta innovation grants and funding programs. Access $950M+ through Alberta Innovates, Emissions Reduction Alberta, AI4Society, and energy transition, AI, health innovation. Funding available: up to $950M+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SBA", "Microloans", "Complete", "Guide", "2026"],
+      metaTitle: "SBA Microloans Complete Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for SBA Microloans Complete Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "loan",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for SBA Microloans Complete Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SBA microloans. Learn eligibility, application process, and how to secure up to $50K in small business funding with business mentoring included. Funding available: up to $50K.",
     metrics: [
       { label: 'Max', value: '$50K', description: 'Loan limit', color: 'text-green-600', iconName: 'DollarSign' },

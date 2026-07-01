@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["California", "Tech", "Startup", "Grants", "2026-2027"],
+      metaTitle: "California Tech Startup Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for California Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for California Tech Startup Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to California technology startup grants and incentives. CalSEED clean energy grants $50,000, SBIR State Match $50,000, California Competes Tax Credit up to 25%, GO-Biz. Funding available: up to $50K (with related programs offering $50,000,).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

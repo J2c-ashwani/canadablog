@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["WOSB", "Federal", "Contracting", "Guide", "2026"]
+      metaTitle: "WOSB Federal Contracting Guide 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for WOSB Federal Contracting Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for WOSB Federal Contracting Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to WOSB and EDWOSB certification for federal contracting. Learn how women-owned businesses can access $2M+ government contracts. Funding available: up to $2M+.",
     metrics: [
       { label: 'Setaside', value: '5%', description: 'Federal Goal', color: 'text-green-600', iconName: 'Percent' },

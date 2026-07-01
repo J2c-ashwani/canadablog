@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Clean", "Tech", "&", "Energy", "Grants"],
+      metaTitle: "Clean Tech & Energy Grants 2026: Complete Guide — Apply No",
+        metaDescription: "Learn how to qualify and apply for Clean Tech & Energy Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Clean Tech & Energy Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to clean tech and energy grants. DOE SBIR Phase I $200K, Phase II $1.6M, EPA environmental technology, state energy programs supporting renewable energy, battery tech, climate. Funding available: up to $200K (with related programs offering $1.6M).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

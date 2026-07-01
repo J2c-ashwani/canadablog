@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Stage", "1:", "Ideation", "&", "Research"],
+      metaTitle: "Stage 1 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to Stage 1. Discover eligibility requirements, funding limits, and professional application steps to win. See if you q...",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Stage 1: Ideation & Research Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian ideation and research funding for early-stage innovation. Access up to $1M through NSERC Discovery Grants, university research programs, and basic R&D support for concept. Funding available: up to $1M.",
     metrics: [
       { label: 'Funding', value: '$1M', description: 'Max Grant', color: 'text-green-600', iconName: 'DollarSign' },

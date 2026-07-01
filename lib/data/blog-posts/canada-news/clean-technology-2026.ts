@@ -293,7 +293,11 @@ const post: BlogPost = {
 }
   </script>`,
     seo: {
-      keywords: ["Clean Technology Grants", "Canada Net Zero Accelerator", "SDTC Funding", "Green Business Grants", "Carbon Capture Funding"]
+      metaTitle: "Clean Technology 2026: Get Up to $9.1B — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Clean Technology in 2026. Access up to $9.1B in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — 🇨🇦 The definitive guide to Canada's Clean Technology funding landscape for 2026. Discover the Net Zero Accelerator, SDTC grants, and provincial green incentives worth over $9 billion. Funding available: up to $9.1B (with related programs offering $9).",
     metrics: [
       { label: 'Total', value: '$9.1B', description: 'Available Funding', color: 'text-green-600', iconName: 'Globe' },

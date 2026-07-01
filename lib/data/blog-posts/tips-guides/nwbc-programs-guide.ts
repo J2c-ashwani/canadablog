@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["National", "Women"],
+      metaTitle: "National Women's Business Council Programs Guide 2026 G...",
+        metaDescription: "Guide to National Women's Business Council Programs Guide in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify...",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for National Women 2025-2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to NWBC programs and initiatives. Learn how the National Women",
     metrics: [
       { label: 'Role', value: 'Advisory', description: 'Federal council', color: 'text-pink-600', iconName: 'Users' },

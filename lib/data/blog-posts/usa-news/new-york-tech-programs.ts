@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["New", "York", "Tech", "Startup", "Grants"],
+      metaTitle: "New York Tech Startup Grants 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for New York Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for New York Tech Startup Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free operation university campuses, Pre-Seed Seed Matching Fund $50K-$250K, NYSERDA. Funding available: up to $250K (with related programs offering $50K).",
     metrics: [
       { label: 'Tax-Free', value: '10 Years', description: 'START-UP NY', color: 'text-green-600', iconName: 'DollarSign' },

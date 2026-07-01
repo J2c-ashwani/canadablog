@@ -106,7 +106,11 @@ const post: BlogPost = {
                                                                                                                                                                                                                                                         <p> Heavy industry rules are different from tech.Here is what you need to know.</p>
                                                                                                                                                                                                                                                           `,
     seo: {
-      keywords: ["Manufacturing Grants Canada", "SIF Funding", "FedDev Ontario", "Equipment Loans Canada", "Canada Job Grant"]
+      metaTitle: "Manufacturing Grants Canada 2026: Get Up to $5.5B — Apply ",
+        metaDescription: "Learn how to qualify and apply for Manufacturing Grants Canada in 2026. Access up to $5.5B in non-dilutive funding. See if you qualify.",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Manufacturing Grants : Canadas 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Modernize your factory with Canadian government grants. Learn about SIF, regional equipment loans, and the Canada Job Grant for retraining your workforce. Funding available: up to $10M.",
     metrics: [
       { label: 'Total', value: '$5.5B', description: 'Industry Fund', color: 'text-orange-600', iconName: 'Factory' },

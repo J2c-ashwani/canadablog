@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["BC", "Small", "Business", "Grants", "2026"],
+      metaTitle: "BC Small Business Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for BC Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to BC small business grants. Access Small Business Recovery Grant, BC Small Business Venture Capital, CleanBC Industry Fund, and Indigenous business investment programs. Funding available: up to $1.3B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

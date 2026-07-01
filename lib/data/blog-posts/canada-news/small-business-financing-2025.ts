@@ -52,7 +52,14 @@ const post: BlogPost = {
   author: "FSI Digital Team",
   category: "Canada Grants News",
   tags: ["Canada", "Grants 2025", "Funding"],
-  type: "grant-news"
+  type: "grant-news",
+    seo: {
+        metaTitle: "Canada's $250M Small Business Financing Expansion 2026 ...",
+        metaDescription: "Guide to Canada's $250M Small Business Financing Expansion in 2026. Learn eligibility rules, requirements, and application steps. See if you qualif...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
+    }
 };
 
 export default post;

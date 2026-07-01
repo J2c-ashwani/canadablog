@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Stage", "3:", "Demonstration", "&", "Pilot"],
+      metaTitle: "Stage 3 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to Stage 3. Discover eligibility requirements, funding limits, and professional application steps to win. See if you q...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Stage 3: Demonstration & Pilot Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian demonstration and pilot project funding. Access up to $15M through SDTC Demonstration, Clean Growth Program, sector pilots, and TRL 7-8 validation projects for. Funding available: up to $15M.",
     metrics: [
       { label: 'Fund', value: '$15M', description: 'SDTC Max', color: 'text-green-600', iconName: 'Zap' },

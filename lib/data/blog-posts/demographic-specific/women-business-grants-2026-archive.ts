@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: womenBusiness2025,
     seo: {
-      keywords: ["Women Grants", "WOSB Certification", "Amber Grant", "Female Founders", "SBA Women"]
+      metaTitle: "Women-Owned Business Grants 2026: Get Up to $2.1B — Apply ",
+        metaDescription: "Learn how to qualify and apply for Women-Owned Business Grants in 2026. Access up to $2.1B in non-dilutive funding. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Women entrepreneurs now own 42% of US businesses. Access $2.1 billion in targeted grants, SBA Women's Business Centers, and the Amber Grant. Funding available: up to $2.1B (with related programs offering $2.1).",
     metrics: [
       { label: 'Total Fund', value: '$2.1B', description: 'Women Grants', color: 'text-pink-600', iconName: 'Heart' },

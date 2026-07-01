@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["RBC", "Canadian", "Women", "Entrepreneur", "Awards"],
+      metaTitle: "RBC Canadian Women Entrepreneur Awards: Get Up to $100K+",
+        metaDescription: "Learn how to qualify and apply for RBC Canadian Women Entrepreneur Awards in 2026. Access up to $100K+ in non-dilutive funding. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Comprehensive guide to RBC Canadian Women Entrepreneur Awards 2026. Learn eligibility, application process, 8 award categories, past winners, and similar grants for women in USA & Canada. Deadline:. Funding available: up to $100K+.",
     metrics: [
       { label: 'Total', value: '$100K+', description: 'Recognition', color: 'text-green-600', iconName: 'Award' },

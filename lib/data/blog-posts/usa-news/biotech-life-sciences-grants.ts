@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Biotech", "&", "Life", "Sciences", "Grants"],
+      metaTitle: "Biotech & Life Sciences Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Biotech & Life Sciences Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Biotech & Life Sciences Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to biotech and life sciences grants. NIH SBIR Phase I $306K, Phase II $2M, $1.2B Seed Fund, FDA Orphan Drug designation grants, state life sciences centers supporting. Funding available: up to $306K (with related programs offering $2M).",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Industry-Specific", "Business", "Grants", "Guide", "2026"],
+      metaTitle: "Industry-Specific Business Grants Guide 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for Industry-Specific Business Grants Guide in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Industry-Specific Business Grants Guide 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to industry-specific business grants. Find targeted funding for manufacturing, healthcare, technology, agriculture, and specialized business sectors.",
     metrics: [
       { label: 'Sectors', value: '12+', description: 'Industry categories', color: 'text-blue-600', iconName: 'Layers' },

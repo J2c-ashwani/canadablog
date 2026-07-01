@@ -50,7 +50,11 @@ const post: BlogPost = {
     ],
 
     seo: {
-      keywords: ["Quebec Business Grants", "Investissement Quebec", "CDAE R&D", "CED Quebec", "Francisation"]
+      metaTitle: "Quebec Government Business Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Quebec Government Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     },
     metrics: [
       { label: 'IQ Fund', value: '$2.5B', description: 'Available Capital', color: 'text-blue-600', iconName: 'Target' },

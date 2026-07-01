@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: canExportGrants2025,
     seo: {
-      keywords: ["CanExport", "Export Grants", "Global Markets", "International Trade", "TCS"]
+      metaTitle: "CanExport Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for CanExport Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "export",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for CanExport Grants 2025: International Market Expansion, start by reviewing the eligibility criteria and preparing a project proposal. Canada's CanExport programs provide comprehensive support for international expansion, with over $75 million available annually. Learn how to access up to $50K for marketing and $600K for R&D. Funding available: up to $75 (with related programs offering $50K).",
     metrics: [
       { label: 'Funding', value: '$75M+', description: 'Annual Budget', color: 'text-green-600', iconName: 'Globe' },

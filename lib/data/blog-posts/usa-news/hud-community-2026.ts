@@ -26,7 +26,11 @@ const post: BlogPost = {
     ],
     content: hudCommunity2025,
     seo: {
-      keywords: ["HUD Grants", "CDBG", "Community Development", "Housing", "Infrastructure"]
+      metaTitle: "HUD Community Development Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for HUD Community Development Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for HUD Community Development Grants 2026: $150M CDBG Guide, start by reviewing the eligibility criteria and preparing a project proposal. HUD's CDBG program provides $150 million for community development. Learn how local governments and nonprofits can access funds for housing, infrastructure, and economic development. Funding available: up to $150M (with related programs offering $150).",
     metrics: [
       { label: 'CDBG', value: '$150M', description: 'Block Grants', color: 'text-orange-600', iconName: 'Home' },

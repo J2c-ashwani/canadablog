@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SR&ED", "Tax", "Credits", "Canada", "2026"],
+      metaTitle: "SR&ED Tax Credits Canada 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for SR&ED Tax Credits Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for SR&ED Tax Credits Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to SR&ED tax credits in Canada. Enhanced 2026 rates with 35% federal refundable + provincial credits up to 65% total. $4.5M expenditure limit. Funding available: up to $4.5M.",
     metrics: [
       { label: 'Rate', value: '65%', description: 'Max Refund', color: 'text-green-600', iconName: 'Percent' },

@@ -150,7 +150,11 @@ const post: BlogPost = {
     </details>
     </div>`,
     seo: {
-      keywords: ["Newcomer Business Grants", "Immigrant Entrepreneur Loans", "Futurpreneur Newcomer", "Start Business Canada"]
+      metaTitle: "Newcomer Entrepreneur Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Newcomer Entrepreneur Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Newcomer Entrepreneur Grants : 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇨🇦 Complete guide for immigrants and newcomers starting a business in Canada. Access up to $60,000 via Futurpreneur, BDC financing, and settlement agency support. Funding available: up to $265M (with related programs offering $60,000).",
     metrics: [
       { label: 'Max Loan', value: '$60,000', description: 'Futurpreneur', color: 'text-green-600', iconName: 'DollarSign' },

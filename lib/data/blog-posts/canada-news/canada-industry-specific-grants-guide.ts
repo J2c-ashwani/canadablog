@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Industry", "Specific", "Grants", "2026"],
+      metaTitle: "Canada Industry Specific Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Canada Industry Specific Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Industry Specific Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian industry specific grants. Access all 25+ sector-focused programs for manufacturing, agriculture, services, technology, healthcare, construction, and specialized industry. Funding available: up to $1.5B+.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

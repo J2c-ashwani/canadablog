@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Stage", "2:", "Development", "&", "Proof-of-Concept"],
+      metaTitle: "Stage 2 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to Stage 2. Discover eligibility requirements, funding limits, and professional application steps to win. See if you q...",
+        intent: "r_and_d",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Stage 2: Development & Proof-of-Concept Funding Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to Canadian development and proof-of-concept funding. Access up to $5M through IRAP Technology Development, SR&ED Tax Credits, NSERC CRD, and applied research programs for TRL 4-6. Funding available: up to $5M.",
     metrics: [
       { label: 'Funding', value: '$5M', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },

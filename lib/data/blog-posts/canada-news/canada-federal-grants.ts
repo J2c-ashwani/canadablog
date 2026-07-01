@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Canada", "Federal", "Grants"],
+      metaTitle: "Canada Federal Grants 2026: Get Up to $10B+ — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Canada Federal Grants in 2026. Access up to $10B+ in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada Federal Grants 2025-2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to government grants.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

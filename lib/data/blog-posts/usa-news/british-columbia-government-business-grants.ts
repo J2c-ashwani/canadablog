@@ -161,7 +161,11 @@ const post: BlogPost = {
 
 </div>`,
     seo: {
-      keywords: ["British", "Columbia", "Government", "Business", "Grants"],
+      metaTitle: "British Columbia Government Business Grants 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for British Columbia Government Business Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for British Columbia Government Business Grants 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to British Columbia government business grants and provincial funding programs. Access Innovate BC, CleanBC, Creative BC, and PacifiCan regional funding for BC businesses.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

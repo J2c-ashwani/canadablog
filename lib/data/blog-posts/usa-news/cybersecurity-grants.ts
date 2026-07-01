@@ -90,7 +90,14 @@ const post: BlogPost = {
                       "timeline": "90 Days"
                   }
               ]
-          }
+          },
+    seo: {
+        metaTitle: "Cybersecurity Grants 2026: Get Up to $1.8M — Apply Now",
+        metaDescription: "Learn how to qualify and apply for Cybersecurity Grants in 2026. Access up to $1.8M in non-dilutive funding. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
+    }
 };
 
 export default post;

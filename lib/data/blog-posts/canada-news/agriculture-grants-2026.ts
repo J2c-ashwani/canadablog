@@ -37,7 +37,11 @@ const post: BlogPost = {
       content: "AgriInnovate does NOT fund basic research. You must have a <strong>working prototype</strong> and identified customers to be eligible."
     },
     seo: {
-      keywords: ["Agriculture", "&", "Agri-Food", "Canada", "Grants"],
+      metaTitle: "Agriculture & Agri-Food Canada Grants: Get Up to $180M",
+        metaDescription: "Learn how to qualify and apply for Agriculture & Agri-Food Canada Grants in 2026. Access up to $180M in non-dilutive funding. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Agriculture and Agri-Food Canada federal funding programs. Access up to $5M through AgriInnovate, AgriScience, AgriCompetitiveness, and Sustainable CAP programs. Funding available: up to $5M.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },

@@ -80,7 +80,14 @@ export const post: BlogPost = {
       "href": "/usa/technology-startup-grants",
       "description": "A deep dive into federal tech grants."
     }
-  ]
+  ],
+    seo: {
+        metaTitle: "7 Startup Accelerators in California That Give Free Mon...",
+        metaDescription: "Guide to 7 Startup Accelerators in California That Give Free Money in in 2026. Learn eligibility rules, requirements, and application steps. See if...",
+        intent: "startup",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
+    }
 };
 
 export default post;

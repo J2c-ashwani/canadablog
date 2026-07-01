@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Usa", "Federal", "Grants"],
+      metaTitle: "USA Federal Grants 2026: Complete Guide — Apply Now",
+        metaDescription: "Learn how to qualify and apply for USA Federal Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Usa Federal Grants 2025-2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to government grants.",
     metrics: [
       { label: 'Pool', value: '$100B+', description: 'Annual Budget', color: 'text-green-600', iconName: 'DollarSign' },

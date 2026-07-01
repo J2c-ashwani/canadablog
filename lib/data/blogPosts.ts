@@ -168,4 +168,45 @@ export function getBlogPostsByCategory(category: string) {
   return blogPosts.filter((post) => post && post.category === category);
 }
 
+const CATEGORY_SLUG_MAP: Record<string, string> = {
+  'usa-news': 'USA News',
+  'usa news': 'USA News',
+  'canada-news': 'Canada News',
+  'canada news': 'Canada News',
+  'tips-guides': 'Tips & Guides',
+  'tips & guides': 'Tips & Guides',
+  'tips': 'Tips & Guides',
+  'tips ': 'Tips & Guides',
+  'tips+': 'Tips & Guides',
+  'funding-alerts': 'Funding Alerts',
+  'funding alerts': 'Funding Alerts',
+  'state-specific': 'State-Specific',
+  'state specific': 'State-Specific',
+  'industry-specific': 'Industry-Specific',
+  'industry specific': 'Industry-Specific'
+};
+
+export const VALID_CATEGORIES = new Set([
+  "USA News",
+  "Canada News",
+  "Tips & Guides",
+  "Funding Alerts",
+  "State-Specific",
+  "Industry-Specific"
+]);
+
+export function normalizeCategory(categoryQuery: string | undefined): string | undefined {
+  if (!categoryQuery) return undefined;
+  const decoded = decodeURIComponent(categoryQuery);
+  const clean = decoded.toLowerCase().trim().replace(/\+/g, ' ');
+  if (CATEGORY_SLUG_MAP[clean]) {
+    return CATEGORY_SLUG_MAP[clean];
+  }
+  const cleanDashes = clean.replace(/-/g, ' ');
+  if (CATEGORY_SLUG_MAP[cleanDashes]) {
+    return CATEGORY_SLUG_MAP[cleanDashes];
+  }
+  return undefined;
+}
+
 export default blogPosts;

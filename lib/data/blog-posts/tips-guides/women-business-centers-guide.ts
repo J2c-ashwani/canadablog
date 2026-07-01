@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women"],
+      metaTitle: "Women 2026: Complete Guide — Apply Now",
+        metaDescription: "Our comprehensive 2026 guide to Women. Discover eligibility requirements, funding limits, and professional application steps to win. See if you qua...",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Women",
     metrics: [
       { label: 'Centers', value: '100+', description: 'US Locations', color: 'text-purple-600', iconName: 'Building' },

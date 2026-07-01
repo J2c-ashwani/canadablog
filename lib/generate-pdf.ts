@@ -458,7 +458,7 @@ export function generateGrantGuidePDF(userEmail?: string) {
 
   doc.setFontSize(10);
   doc.setFont('helvetica', 'normal');
-  doc.text('support@fsidigital.ca', pageWidth / 2, 260, { align: 'center' });
+  doc.text('hello@fsidigital.ca', pageWidth / 2, 260, { align: 'center' });
 
   return doc;
 }

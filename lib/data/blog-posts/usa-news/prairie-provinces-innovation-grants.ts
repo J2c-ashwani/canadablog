@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Prairie", "Provinces", "Innovation", "Grants", "2026"],
+      metaTitle: "Prairie Provinces Innovation Grants 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Prairie Provinces Innovation Grants in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to Prairie innovation grants. Access $580M+ through Saskatchewan Innovation, Manitoba Research, PrairiesCan funding, and agri-food, mining technology, renewable energy programs. Funding available: up to $580M+.",
     metrics: [
       { label: 'Fund', value: '$580M', description: 'Regional', color: 'text-green-600', iconName: 'DollarSign' },

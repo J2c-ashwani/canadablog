@@ -24,7 +24,11 @@ const post: BlogPost = {
     ],
     content: digitalTransformation2025,
     seo: {
-      keywords: ["CDAP", "Digital Adoption", "Tech Grants", "E-commerce", "Digital Transformation"]
+      metaTitle: "Canada's $90M Digital Transformation Revolution: Get Up...",
+        metaDescription: "Guide to Canada's $90M Digital Transformation Revolution in 2026. Learn eligibility rules, requirements, and application steps. See if you qualify ...",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for Canada's $90M Digital Transformation Revolution: CDAP Guide, start by reviewing the eligibility criteria and preparing a project proposal. The Canada Digital Adoption Program (CDAP) offers $90 million to boost SME technology. Get up to $15,000 for planning and $100,000 interest-free loans for implementation. Funding available: up to $90M (with related programs offering $90).",
     metrics: [
       { label: 'Total Fund', value: '$90M', description: 'CDAP Budget', color: 'text-blue-600', iconName: 'Server' },

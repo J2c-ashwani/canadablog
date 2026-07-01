@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["Women", "Social", "Enterprise", "Grants", "Canada"]
+      metaTitle: "Women Social Enterprise Grants Canada 2026: Complete Guide",
+        metaDescription: "Learn how to qualify and apply for Women Social Enterprise Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "women",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete 2026-2027 guide to social enterprise grants for women-led impact businesses in Ontario, Quebec, BC, Alberta. Social impact funding $10K-$1M, community development programs, purpose-driven. Funding available: up to $10K (with related programs offering $1M).",
     metrics: [
       { label: 'Max', value: '$1M', description: 'Impact Fund', color: 'text-green-600', iconName: 'DollarSign' },

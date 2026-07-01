@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["SBIR", "Small", "Business", "Innovation", "Research"],
+      metaTitle: "SBIR Small Business Innovation Research 2026 Guide",
+        metaDescription: "Learn how to qualify and apply for SBIR Small Business Innovation Research in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "innovation",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "Yes — Complete guide to SBIR grants for small businesses. Learn Phase I & II funding, eligibility requirements, and how to win up to $1.7M in federal R&D grants. Funding available: up to $1.7M.",
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },

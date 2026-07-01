@@ -25,7 +25,11 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      keywords: ["IRAP", "Industrial", "Research", "Assistance", "Program"],
+      metaTitle: "IRAP Industrial Research Assistance Program Canada 2026...",
+        metaDescription: "Guide to IRAP Industrial Research Assistance Program Canada in 2026. Learn eligibility rules, requirements, and application steps. See if you quali...",
+        intent: "manufacturing",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for IRAP Industrial Research Assistance Program Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to IRAP government funding for Canadian R&D projects. Federal compliance, reporting requirements, and strategic integration with other government innovation programs.",
     metrics: [
       { label: 'Phase', value: 'R&D', description: 'Technology', color: 'text-green-600', iconName: 'Cpu' },

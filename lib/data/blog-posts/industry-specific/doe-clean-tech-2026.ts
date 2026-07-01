@@ -28,7 +28,11 @@ const post: BlogPost = {
 ${doePost}
     `,
     seo: {
-      keywords: ["DOE grants", "clean tech funding", "solar business grants", "battery startup funding", "green energy grants usa"]
+      metaTitle: "DOE $800M Clean Tech Funding 2026: Complete Guide — Apply ",
+        metaDescription: "Learn how to qualify and apply for DOE $800M Clean Tech Funding in 2026. Access active government grants & loans. See if you qualify.",
+        intent: "grant",
+        seoVersion: 1,
+        seoUpdatedAt: "2026-06-30"
     }, shortAnswer: "To apply for DOE $800M Clean Tech Funding 2026, start by reviewing the eligibility criteria and preparing a project proposal. 🇺🇸 The Department of Energy is investing heavily in solar, battery, and green technology. Here's how to access the $800M fund. Funding available: up to $800M.",
     metrics: [
       { label: 'Fund', value: '$800M', description: 'Total Pool', color: 'text-green-600', iconName: 'Sun' },
