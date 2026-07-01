@@ -39,7 +39,7 @@ export default function ApprovalLibraryPage() {
                 <Users className="w-4 h-4 text-indigo-400 shrink-0" />
                 <div className="text-[10px] text-slate-400 font-bold uppercase tracking-wider leading-tight">
                   Edited By<br/>
-                  <span className="text-slate-205 text-[11px] font-black lowercase">ashwani kumar</span>
+                  <span className="text-slate-205 text-[11px] font-black lowercase">ashwani k</span>
                 </div>
               </div>
               <div className="flex items-center gap-2">

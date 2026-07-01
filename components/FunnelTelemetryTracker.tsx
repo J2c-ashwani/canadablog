@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { calculateTrafficQuality } from '@/lib/telemetry/traffic-quality';
 
 function getOrSetSessionId(): string {
   if (typeof window === 'undefined') return '';
@@ -16,12 +17,24 @@ export function FunnelTelemetryTracker() {
   useEffect(() => {
     if (typeof window === 'undefined') return;
 
+    // Capture First Touch Attribution if not already stored in localStorage
+    if (!localStorage.getItem('fsi_first_touch_url')) {
+      localStorage.setItem('fsi_first_touch_url', window.location.pathname);
+      localStorage.setItem('fsi_first_touch_referrer', document.referrer || 'direct');
+      
+      const firstParams = new URLSearchParams(window.location.search);
+      localStorage.setItem('fsi_first_touch_utm_source', firstParams.get('utm_source') || firstParams.get('utmSource') || '');
+      localStorage.setItem('fsi_first_touch_utm_medium', firstParams.get('utm_medium') || firstParams.get('utmMedium') || '');
+      localStorage.setItem('fsi_first_touch_utm_campaign', firstParams.get('utm_campaign') || firstParams.get('utmCampaign') || '');
+    }
+
     // Check if session has already been logged in this browser session tab
     if (sessionStorage.getItem('fsi_session_logged') === 'true') return;
 
     const sessionId = getOrSetSessionId();
     const pagePath = window.location.pathname;
     const referrer = document.referrer || 'direct';
+    const quality = calculateTrafficQuality();
 
     // Parse UTMs
     const params = new URLSearchParams(window.location.search);
@@ -70,6 +83,10 @@ export function FunnelTelemetryTracker() {
         utmSource,
         utmMedium,
         utmCampaign,
+        trafficQualityScore: quality.score,
+        trafficQualityClassification: quality.classification,
+        timezone: quality.timezone,
+        language: quality.language,
       }),
     })
       .then((res) => {
@@ -99,6 +116,10 @@ export function FunnelTelemetryTracker() {
           utmSource,
           utmMedium,
           utmCampaign,
+          trafficQualityScore: quality.score,
+          trafficQualityClassification: quality.classification,
+          timezone: quality.timezone,
+          language: quality.language,
         }),
       }).catch((err) => console.error('Failed to log telemetry emailClicked:', err));
     }

@@ -284,12 +284,6 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   // 4. Calculate Intent Score (0-100)
   let intentScore = 0;
 
-  // Source weightings
-  if (leadType === 'AI Finder') intentScore += 12;
-  if (leadType === 'Calculator') intentScore += 18;
-  if (leadType === 'Contact Form') intentScore += 15;
-  if (leadType === 'Lead Magnet') intentScore -= 8;
-
   // Safe-parse lead activity JSON
   let activity: any = {};
   try {
@@ -300,18 +294,29 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
     // Ignore JSON parse errors
   }
 
-  // Behavioral Intent Milestones
-  // Calculator Funnel Progress
-  if (activity.calculatorCompletedAt) intentScore += 10; // Reached Step 6
-  if (activity.paywallViewedAt) intentScore += 10; // Viewed Pricing
-  if (activity.checkoutStartedAt) intentScore += 15; // Started Checkout
-
-  // Audit Funnel Progress
-  if (activity.auditCtaClickedAt) intentScore += 10; // Visited Audit Page
-  if (activity.previewViewed === true) intentScore += 10; // Viewed Personalized Preview
-  if (activity.previewCtaClicked === true) intentScore += 15; // Clicked Unlock Analysis
-  if (activity.checkoutStartedAt && (includesAny(source, ['audit', 'strategy']) || activity.auditCtaClickedAt)) {
-    intentScore += 20; // Started PayPal checkout
+  // Visited Calculator: +10
+  if (activity.visitedCalculator || activity.calculatorStartedAt || leadType === 'Calculator' || leadType === 'AI Finder') {
+    intentScore += 10;
+  }
+  // Completed Calculator: +20
+  if (activity.completedCalculator || activity.calculatorCompletedAt) {
+    intentScore += 20;
+  }
+  // Selected $79 (Complete Bundle): +25
+  if (activity.selected79 || activity.productSelected === 'funding-bundle' || data.productId === 'funding-bundle') {
+    intentScore += 25;
+  }
+  // Opened PayPal (Checkout Started): +30
+  if (activity.openedPaypal || activity.checkoutStartedAt) {
+    intentScore += 30;
+  }
+  // Downloaded Toolkit: +15
+  if (activity.downloadedToolkit || activity.toolkitDownloaded || data.productId === 'funding-toolkit') {
+    intentScore += 15;
+  }
+  // Booked Call: +50
+  if (activity.bookedCall || activity.callBooked || data.offlineStatus === 'Booked Audit') {
+    intentScore += 50;
   }
 
   intentScore = Math.max(0, Math.min(100, intentScore));

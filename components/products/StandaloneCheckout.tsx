@@ -22,25 +22,86 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
   // Order bump state
   const [bumpChecked, setBumpChecked] = useState(false);
 
-  // UTM channel attribution state
-  const [trackingData, setTrackingData] = useState({
+  // Client-side browser & device metadata parser
+  const getDeviceMetadata = () => {
+    if (typeof window === 'undefined' || typeof navigator === 'undefined') return {};
+    const ua = navigator.userAgent;
+    const width = window.innerWidth;
+    const height = window.innerHeight;
+    
+    let browser = "Other";
+    if (ua.includes("Firefox")) browser = "Firefox";
+    else if (ua.includes("Chrome") && !ua.includes("Chromium")) browser = "Chrome";
+    else if (ua.includes("Safari") && !ua.includes("Chrome")) browser = "Safari";
+    else if (ua.includes("Edge")) browser = "Edge";
+    
+    let os = "Other";
+    if (ua.includes("Windows")) os = "Windows";
+    else if (ua.includes("Macintosh")) os = "macOS";
+    else if (ua.includes("iPhone") || ua.includes("iPad")) os = "iOS";
+    else if (ua.includes("Android")) os = "Android";
+    
+    const device = /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop";
+    const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+    
+    // Guess country based on timezone
+    let country = "Unknown";
+    if (timezone.startsWith("America/")) {
+      if (timezone.includes("Toronto") || timezone.includes("Vancouver") || timezone.includes("Edmonton") || timezone.includes("Winnipeg") || timezone.includes("Halifax")) {
+        country = "CA";
+      } else {
+        country = "US";
+      }
+    } else if (timezone === "Asia/Singapore") {
+      country = "SG";
+    }
+    
+    return {
+      browser,
+      os,
+      device,
+      viewport: `${width}x${height}`,
+      country
+    };
+  };
+
+  // Multi-Touch channel attribution state
+  const [attributionData, setAttributionData] = useState({
     landingPage: '',
     referrer: '',
     utmSource: '',
     utmMedium: '',
-    utmCampaign: ''
+    utmCampaign: '',
+    lastTouchPage: '',
+    lastTouchReferrer: '',
+    device: '',
+    browser: '',
+    country: ''
   });
 
-  // Extract UTMs on mount
+  // Extract multi-touch parameters on mount
   useEffect(() => {
     if (typeof window === 'undefined') return;
-    const params = new URLSearchParams(window.location.search);
-    setTrackingData({
-      landingPage: window.location.pathname,
-      referrer: document.referrer || '',
-      utmSource: params.get('utm_source') || params.get('utmSource') || '',
-      utmMedium: params.get('utm_medium') || params.get('utmMedium') || '',
-      utmCampaign: params.get('utm_campaign') || params.get('utmCampaign') || ''
+
+    const firstTouchUrl = localStorage.getItem('fsi_first_touch_url') || window.location.pathname;
+    const firstTouchReferrer = localStorage.getItem('fsi_first_touch_referrer') || document.referrer || 'direct';
+    const firstTouchUtmSource = localStorage.getItem('fsi_first_touch_utm_source') || '';
+    const firstTouchUtmMedium = localStorage.getItem('fsi_first_touch_utm_medium') || '';
+    const firstTouchUtmCampaign = localStorage.getItem('fsi_first_touch_utm_campaign') || '';
+
+    const deviceMeta = getDeviceMetadata();
+
+    setAttributionData({
+      landingPage: firstTouchUrl,
+      referrer: firstTouchReferrer,
+      utmSource: firstTouchUtmSource,
+      utmMedium: firstTouchUtmMedium,
+      utmCampaign: firstTouchUtmCampaign,
+      lastTouchPage: window.location.pathname,
+      lastTouchReferrer: document.referrer || 'direct',
+      device: deviceMeta.device || 'Desktop',
+      browser: deviceMeta.browser || 'Other',
+      country: deviceMeta.country || 'Unknown'
     });
   }, []);
 
@@ -172,11 +233,16 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
                 },
                 sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
                 attribution: {
-                  landingPage: trackingData.landingPage,
-                  referrer: trackingData.referrer,
-                  utmSource: trackingData.utmSource,
-                  utmMedium: trackingData.utmMedium,
-                  utmCampaign: trackingData.utmCampaign
+                  landingPage: attributionData.landingPage,
+                  referrer: attributionData.referrer,
+                  utmSource: attributionData.utmSource,
+                  utmMedium: attributionData.utmMedium,
+                  utmCampaign: attributionData.utmCampaign,
+                  lastTouchPage: attributionData.lastTouchPage,
+                  lastTouchReferrer: attributionData.lastTouchReferrer,
+                  device: attributionData.device,
+                  browser: attributionData.browser,
+                  country: attributionData.country
                 }
               })
             });
@@ -203,50 +269,92 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     } catch (err) {
       console.error("PayPal render error:", err);
     }
-  }, [sdkReady, isEmailValid, name, email, finalProductId, finalPrice, finalProductName, addons, trackingData]);
+  }, [sdkReady, isEmailValid, name, email, finalProductId, finalPrice, finalProductName, addons, attributionData]);
 
   return (
-    <div className="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-left relative overflow-hidden backdrop-blur-md shadow-xl shadow-slate-950/20">
+    <div className="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-left relative overflow-hidden backdrop-blur-md shadow-xl shadow-slate-950/20 font-sans">
       <div className="absolute top-0 right-0 bg-indigo-650 text-white text-[9px] font-bold px-3.5 py-1 uppercase tracking-wider rounded-bl-lg">
         Secure Checkout
       </div>
 
       <div className="space-y-5">
-        <div>
-          <h3 className="font-bold text-xs uppercase tracking-wider text-indigo-400">Secure Download Link Setup</h3>
-          <p className="text-[11px] text-slate-400 mt-1 leading-normal">
-            Enter your email and name. We will send your temporary product activation link and receipt to this inbox.
+        {/* Step 1: Outcome-focused product description (what you'll get) */}
+        <div className="border-b border-slate-700/40 pb-4">
+          <div className="inline-flex items-center gap-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded">
+            <Sparkles className="w-2.5 h-2.5" /> Items Included
+          </div>
+          <h3 className="font-bold text-base text-slate-100 mt-2">{finalProductName}</h3>
+          <p className="text-[11px] text-slate-400 mt-1.5 leading-relaxed">
+            {productId === 'funding-toolkit' && 'Full digital package of 6 pre-formatted Excel grant budgets, cash flow models, hiring wage subsidy planners, and pre-submission audit checklists.'}
+            {productId === 'funding-approval-library' && 'Curated directory of successfully funded project proposal narratives, CRA SR&ED technical descriptions, and regional ITA checklist criteria.'}
+            {productId === 'funding-roadmap' && 'Step-by-step strategic funding timeline matching your business profile to active Canadian/US grants and tax credits.'}
           </p>
         </div>
 
-        {/* Inputs */}
-        <div className="space-y-3.5 border-b border-slate-700/40 pb-4">
+        {/* Step 2: Trust indicators (why trust us) */}
+        <div className="flex items-start gap-3 border-b border-slate-700/40 pb-4">
+          <div className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
+            <ShieldCheck className="w-4 h-4 text-emerald-450" />
+          </div>
           <div>
-            <label className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">
-              Full Name
-            </label>
-            <input
-              type="text"
-              disabled={isProcessing || checkoutStarted}
-              placeholder="e.g. Sarah Jenkins"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              className="w-full h-11 bg-slate-900 border border-slate-700 rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
-            />
+            <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">Expert Reviewed & Accredited</h4>
+            <p className="text-[10.5px] text-slate-450 mt-0.5 leading-relaxed">
+              Compiled by FSI Digital Specialists. Peer-reviewed & edited by <span className="font-bold text-slate-200">Ashwani K</span>.
+            </p>
+          </div>
+        </div>
+
+        {/* Step 3: Satisfaction Guarantee */}
+        <div className="flex items-start gap-3 border-b border-slate-700/40 pb-4">
+          <div className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
+            <CheckCircle className="w-4 h-4 text-emerald-450" />
+          </div>
+          <div>
+            <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">30-Day Satisfaction Guarantee</h4>
+            <p className="text-[10.5px] text-slate-450 mt-0.5 leading-relaxed">
+              We stand behind our materials. If the template set does not fit your business scenario, email hello@fsidigital.ca for a full refund.
+            </p>
+          </div>
+        </div>
+
+        {/* Step 4: Secure Checkout Setup (PayPal/Stripe) and optional order bumps */}
+        <div className="space-y-4 pt-1">
+          <div>
+            <h4 className="font-bold text-xs uppercase tracking-wider text-indigo-400">Secure Delivery Setup</h4>
+            <p className="text-[11px] text-slate-400 mt-1 leading-normal">
+              Enter your name and email to activate checkout buttons.
+            </p>
           </div>
 
-          <div>
-            <label className="block text-[10px] uppercase font-bold text-slate-400 tracking-wider mb-1.5">
-              Business Email Address
-            </label>
-            <input
-              type="email"
-              disabled={isProcessing || checkoutStarted}
-              placeholder="e.g. sarah@company.ca"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              className="w-full h-11 bg-slate-900 border border-slate-700 rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
-            />
+          {/* Inputs */}
+          <div className="space-y-3">
+            <div>
+              <label className="block text-[10px] uppercase font-bold text-slate-450 tracking-wider mb-1.5">
+                Full Name
+              </label>
+              <input
+                type="text"
+                disabled={isProcessing || checkoutStarted}
+                placeholder="e.g. Sarah Jenkins"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
+                className="w-full h-11 bg-slate-900 border border-slate-700 rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
+              />
+            </div>
+
+            <div>
+              <label className="block text-[10px] uppercase font-bold text-slate-450 tracking-wider mb-1.5">
+                Business Email Address
+              </label>
+              <input
+                type="email"
+                disabled={isProcessing || checkoutStarted}
+                placeholder="e.g. sarah@company.ca"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                className="w-full h-11 bg-slate-900 border border-slate-700 rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
+              />
+            </div>
           </div>
         </div>
 
@@ -352,7 +460,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
               <Loader2 className="w-4 h-4 animate-spin text-indigo-400" /> Loading secure gateway...
             </div>
           ) : !isEmailValid ? (
-            <div className="text-center p-5 bg-slate-900/40 border border-slate-800 border-dashed rounded-xl text-[11px] font-semibold text-slate-500">
+            <div className="text-center p-5 bg-slate-900/40 border border-slate-800 border-dashed rounded-xl text-[11px] font-semibold text-slate-500 animate-pulse">
               Please enter your name and valid email above to activate checkout.
             </div>
           ) : (

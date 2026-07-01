@@ -17,6 +17,10 @@ export async function POST(request: NextRequest) {
       utmCampaign,
       productId,
       revenue,
+      trafficQualityScore,
+      trafficQualityClassification,
+      timezone,
+      language,
     } = body;
 
     if (!eventName || !sessionId) {
@@ -36,6 +40,10 @@ export async function POST(request: NextRequest) {
       utmCampaign,
       productId,
       revenue: revenue ? String(revenue) : undefined,
+      trafficQualityScore,
+      trafficQualityClassification,
+      timezone,
+      language,
     });
 
     return NextResponse.json({ success: true });

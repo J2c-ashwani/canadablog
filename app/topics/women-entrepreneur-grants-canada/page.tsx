@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { CheckCircle, ArrowRight, Calculator, Sparkles, Download, AlertCircle, Clock, DollarSign, Users, FileText } from "lucide-react"
+import { InlineGrantChecker } from "@/components/blog/InlineGrantChecker"
 
 export const metadata: Metadata = {
   title: "Women Entrepreneur Grants Canada Guide 2026 | FSI Digital",
@@ -177,6 +178,8 @@ export default function WomenGrantsPage() {
                   WES works in tandem with specialized lending partners and nonprofit business networks across the country. Whether you need a micro-loan to buy inventory, a growth grant to export, or venture capital to scale a software platform, there are dedicated funding programs designed specifically to support female entrepreneurs.
                 </p>
               </section>
+
+              <InlineGrantChecker />
 
               {/* Core Programs */}
               <section id="women-directory" className="space-y-6">

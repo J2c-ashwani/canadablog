@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { CheckCircle, ArrowRight, Calculator, Sparkles, Download, AlertCircle, Clock, DollarSign, Users, FileText } from "lucide-react"
+import { InlineGrantChecker } from "@/components/blog/InlineGrantChecker"
 
 export const metadata: Metadata = {
   title: "Ontario Small Business Grants Directory 2026 | FSI Digital",
@@ -209,6 +210,8 @@ export default function OntarioGrantsEligibilityPage() {
                   However, navigating the Ontario funding landscape can be challenging. Because programs are split across municipal Enterprise Centres, provincial ministries, and federal development agencies, many business owners apply to the wrong programs or miss crucial application windows. This guide outlines the major provincial programs, local starter grants, tax incentives, and federal programs available to Ontario businesses.
                 </p>
               </section>
+
+              <InlineGrantChecker />
 
               {/* Provincial Programs Section */}
               <section id="provincial-programs" className="space-y-6">

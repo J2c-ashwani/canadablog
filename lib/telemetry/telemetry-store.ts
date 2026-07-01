@@ -11,6 +11,10 @@ export interface TelemetryEvent {
   utmCampaign: string;
   productId: string;
   revenue: string;
+  trafficQualityScore?: string;
+  trafficQualityClassification?: string;
+  timezone?: string;
+  language?: string;
 }
 
 const SHEET_TITLE = 'Funnel Events';
@@ -26,6 +30,10 @@ const TELEMETRY_HEADERS = [
   'UTM Campaign',
   'Product ID',
   'Revenue',
+  'Traffic Quality Score',
+  'Traffic Quality Classification',
+  'Timezone',
+  'Language',
 ];
 
 async function ensureTelemetrySheet(
@@ -60,14 +68,14 @@ async function ensureTelemetrySheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:J1`,
+    range: `${SHEET_TITLE}!A1:N1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== TELEMETRY_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:J1`,
+      range: `${SHEET_TITLE}!A1:N1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [TELEMETRY_HEADERS],
@@ -86,6 +94,10 @@ export async function recordTelemetryEvent(data: {
   utmCampaign?: string;
   productId?: string;
   revenue?: string;
+  trafficQualityScore?: string | number;
+  trafficQualityClassification?: string;
+  timezone?: string;
+  language?: string;
 }): Promise<void> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -108,18 +120,22 @@ export async function recordTelemetryEvent(data: {
     data.utmCampaign || '',
     data.productId || '',
     data.revenue || '',
+    data.trafficQualityScore !== undefined ? String(data.trafficQualityScore) : '',
+    data.trafficQualityClassification || '',
+    data.timezone || '',
+    data.language || '',
   ];
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A:J`,
+    range: `${SHEET_TITLE}!A:N`,
     valueInputOption: 'RAW',
     requestBody: {
       values: [row],
     },
   });
 
-  console.log(`📊 Telemetry logged: ${data.eventName} (session: ${data.sessionId})`);
+  console.log(`📊 Telemetry logged: ${data.eventName} (session: ${data.sessionId}, quality: ${data.trafficQualityClassification})`);
 }
 
 export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
@@ -133,7 +149,7 @@ export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:J`,
+      range: `${SHEET_TITLE}!A:N`,
     });
 
     const rows = response.data.values || [];
@@ -153,6 +169,10 @@ export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
         utmCampaign: row[7] || '',
         productId: row[8] || '',
         revenue: row[9] || '',
+        trafficQualityScore: row[10] || '',
+        trafficQualityClassification: row[11] || '',
+        timezone: row[12] || '',
+        language: row[13] || '',
       });
     }
 

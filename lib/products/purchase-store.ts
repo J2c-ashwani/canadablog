@@ -46,6 +46,11 @@ export interface PurchaseRecord {
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;
+  lastTouchPage?: string;
+  lastTouchReferrer?: string;
+  device?: string;
+  browser?: string;
+  country?: string;
 }
 
 const SHEET_TITLE = 'Product Purchases';
@@ -66,6 +71,11 @@ const PURCHASE_HEADERS = [
   'UTM Source',
   'UTM Medium',
   'UTM Campaign',
+  'Last Touch Page',
+  'Last Touch Referrer',
+  'Device',
+  'Browser',
+  'Country',
 ];
 
 async function ensurePurchaseSheet(
@@ -100,14 +110,14 @@ async function ensurePurchaseSheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:O1`,
+    range: `${SHEET_TITLE}!A1:T1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== PURCHASE_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:O1`,
+      range: `${SHEET_TITLE}!A1:T1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [PURCHASE_HEADERS],
@@ -129,6 +139,11 @@ export async function recordPurchase(data: {
     utmSource?: string;
     utmMedium?: string;
     utmCampaign?: string;
+    lastTouchPage?: string;
+    lastTouchReferrer?: string;
+    device?: string;
+    browser?: string;
+    country?: string;
   };
 }): Promise<PurchaseRecord> {
   const sheets = await getGoogleSheetsClient();
@@ -162,6 +177,11 @@ export async function recordPurchase(data: {
     data.attribution?.utmSource || '',
     data.attribution?.utmMedium || '',
     data.attribution?.utmCampaign || '',
+    data.attribution?.lastTouchPage || '',
+    data.attribution?.lastTouchReferrer || '',
+    data.attribution?.device || '',
+    data.attribution?.browser || '',
+    data.attribution?.country || '',
   ];
 
   let success = false;
@@ -172,7 +192,7 @@ export async function recordPurchase(data: {
     try {
       await sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: `${SHEET_TITLE}!A:O`,
+        range: `${SHEET_TITLE}!A:T`,
         valueInputOption: 'RAW',
         requestBody: {
           values: [row],
@@ -210,6 +230,11 @@ export async function recordPurchase(data: {
       utmSource: data.attribution?.utmSource || '',
       utmMedium: data.attribution?.utmMedium || '',
       utmCampaign: data.attribution?.utmCampaign || '',
+      lastTouchPage: data.attribution?.lastTouchPage || '',
+      lastTouchReferrer: data.attribution?.lastTouchReferrer || '',
+      device: data.attribution?.device || '',
+      browser: data.attribution?.browser || '',
+      country: data.attribution?.country || '',
       error: 'Google Sheets sync failed after 3 attempts'
     };
 
@@ -270,6 +295,11 @@ export async function recordPurchase(data: {
     utmSource: data.attribution?.utmSource || '',
     utmMedium: data.attribution?.utmMedium || '',
     utmCampaign: data.attribution?.utmCampaign || '',
+    lastTouchPage: data.attribution?.lastTouchPage || '',
+    lastTouchReferrer: data.attribution?.lastTouchReferrer || '',
+    device: data.attribution?.device || '',
+    browser: data.attribution?.browser || '',
+    country: data.attribution?.country || '',
   };
 }
 
@@ -284,7 +314,7 @@ export async function getAllPurchases(): Promise<PurchaseRecord[]> {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:O`,
+      range: `${SHEET_TITLE}!A:T`,
     });
 
     const rows = response.data.values || [];
@@ -313,7 +343,7 @@ export async function getPurchaseByToken(token: string): Promise<PurchaseRecord 
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:O`,
+      range: `${SHEET_TITLE}!A:T`,
     });
 
     const rows = response.data.values || [];
@@ -344,7 +374,7 @@ export async function getPurchasesByEmail(email: string): Promise<PurchaseRecord
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:O`,
+      range: `${SHEET_TITLE}!A:T`,
     });
 
     const rows = response.data.values || [];
@@ -382,5 +412,10 @@ function parseRow(row: string[]): PurchaseRecord {
     utmSource: row[12] || '',
     utmMedium: row[13] || '',
     utmCampaign: row[14] || '',
+    lastTouchPage: row[15] || '',
+    lastTouchReferrer: row[16] || '',
+    device: row[17] || '',
+    browser: row[18] || '',
+    country: row[19] || '',
   };
 }

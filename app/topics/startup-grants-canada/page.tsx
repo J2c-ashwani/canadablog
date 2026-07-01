@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer"
 import Link from "next/link"
 import type { Metadata } from "next"
 import { CheckCircle, ArrowRight, Calculator, Sparkles, Download, AlertCircle, Clock, DollarSign, Users, FileText } from "lucide-react"
+import { InlineGrantChecker } from "@/components/blog/InlineGrantChecker"
 
 export const metadata: Metadata = {
   title: "Startup Grants Canada Guide 2026 | FSI Digital",
@@ -209,6 +210,8 @@ export default function StartupGrantsEligibilityPage() {
                   Canada is recognized globally as an innovation funding hub, primarily due to programs like the Industrial Research Assistance Program (IRAP) and the Scientific Research and Experimental Development (SR&ED) tax incentive. When structured correctly, these programs form an integrated funding pipeline that offsets up to 75% of your product development payroll costs.
                 </p>
               </section>
+
+              <InlineGrantChecker />
 
               {/* Startup Funding Stack */}
               <section id="startup-funding-stack" className="bg-white rounded-3xl p-8 border border-slate-200/80 shadow-sm space-y-6">

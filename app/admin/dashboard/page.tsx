@@ -10,7 +10,8 @@ import { AdminLoginForm } from '../leads/AdminLoginForm';
 import { AdminLogoutButton } from '../leads/AdminLogoutButton';
 import {
   Lock, KeyRound, DollarSign, Users, Calculator, ArrowRight,
-  TrendingUp, BarChart3, Clock, Layers, Award, Tag, Sparkles
+  TrendingUp, BarChart3, Clock, Layers, Award, Tag, Sparkles,
+  Globe, Building2, Smartphone, Compass
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -514,6 +515,71 @@ export default async function RevenueDashboardPage({
       rpv: rpvVal,
     };
   });
+
+  // --- Firmographic, Geographic & Technographic Revenue Attribution ---
+  const industryStatsMap = new Map<string, { count: number; revenue: number }>();
+  const provinceStatsMap = new Map<string, { count: number; revenue: number }>();
+  const countryStatsMap = new Map<string, { count: number; revenue: number }>();
+  const deviceStatsMap = new Map<string, { count: number; revenue: number }>();
+
+  for (const p of postPurchases) {
+    let industry = 'Unknown';
+    let province = 'Unknown';
+    let country = p.country || 'Unknown';
+    
+    try {
+      const prof = JSON.parse(p.profileData || '{}');
+      if (prof.industry) industry = prof.industry;
+      if (prof.state) province = prof.state;
+      else if (prof.province) province = prof.province;
+      if (prof.country && (!country || country === 'Unknown')) country = prof.country;
+    } catch (e) {}
+
+    // Clean industry label
+    industry = industry.trim();
+    if (!industry || industry === 'N/A') industry = 'Unknown / Other';
+    if (!industryStatsMap.has(industry)) industryStatsMap.set(industry, { count: 0, revenue: 0 });
+    industryStatsMap.get(industry)!.count += 1;
+    industryStatsMap.get(industry)!.revenue += parseFloat(p.amount) || 0;
+
+    // Clean province/state label
+    province = province.trim();
+    if (!province || province === 'N/A') province = 'Unknown / Regional';
+    if (!provinceStatsMap.has(province)) provinceStatsMap.set(province, { count: 0, revenue: 0 });
+    provinceStatsMap.get(province)!.count += 1;
+    provinceStatsMap.get(province)!.revenue += parseFloat(p.amount) || 0;
+
+    // Clean country label
+    country = country.trim();
+    if (!country || country === 'N/A') country = 'Unknown';
+    if (!countryStatsMap.has(country)) countryStatsMap.set(country, { count: 0, revenue: 0 });
+    countryStatsMap.get(country)!.count += 1;
+    countryStatsMap.get(country)!.revenue += parseFloat(p.amount) || 0;
+
+    // Clean device label
+    let dev = (p.device || 'Desktop').trim();
+    if (!dev || dev === 'N/A') dev = 'Desktop';
+    if (!deviceStatsMap.has(dev)) deviceStatsMap.set(dev, { count: 0, revenue: 0 });
+    deviceStatsMap.get(dev)!.count += 1;
+    deviceStatsMap.get(dev)!.revenue += parseFloat(p.amount) || 0;
+  }
+
+  const industryStats = Array.from(industryStatsMap.entries())
+    .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
+    .sort((a, b) => b.revenue - a.revenue);
+
+  const provinceStats = Array.from(provinceStatsMap.entries())
+    .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
+    .sort((a, b) => b.revenue - a.revenue);
+
+  const countryStats = Array.from(countryStatsMap.entries())
+    .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
+    .sort((a, b) => b.revenue - a.revenue);
+
+  const deviceStats = Array.from(deviceStatsMap.entries())
+    .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
+    .sort((a, b) => b.revenue - a.revenue);
+
   const getUtmStats = (param: 'utmSource' | 'utmMedium' | 'utmCampaign') => {
     const map = new Map<string, { visitors: Set<string>; leads: number; purchases: number; revenue: number }>();
 
@@ -633,6 +699,9 @@ export default async function RevenueDashboardPage({
 
   const uniqueCustomerEmails = new Set(postPurchases.map(p => (p.email || p.customerEmail || '').toLowerCase().trim()).filter(Boolean));
   const realizedLtv = uniqueCustomerEmails.size > 0 ? postTotalRevenue / uniqueCustomerEmails.size : 0;
+
+  const estimatedCac = 15.00;
+  const estimatedRoas = estimatedCac > 0 ? realizedLtv / estimatedCac : 0;
 
   // Pipeline Calculations & Confidence Weighting
   const activeReportCheckoutsCount = postLeads.filter(l => {
@@ -820,6 +889,16 @@ export default async function RevenueDashboardPage({
               }`}
             >
               👑 Revenue Command Center
+            </a>
+            <a
+              href={`/admin/dashboard?tab=attribution${keyParamAmp}`}
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+                resolvedTab === 'attribution'
+                  ? 'border-indigo-600 text-indigo-650'
+                  : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
+              }`}
+            >
+              🎯 Revenue Attribution Dashboard
             </a>
             <a
               href={`/admin/dashboard?tab=telemetry${keyParamAmp}`}
@@ -1117,6 +1196,318 @@ export default async function RevenueDashboardPage({
               )}
             </div>
           </div>
+        ) : resolvedTab === 'attribution' ? (
+          /* 🎯🎯🎯 FOUNDER REVENUE ATTRIBUTION VIEW 🎯🎯🎯 */
+          <div className="space-y-8">
+            {/* Top Row: Strategic Revenue Attribution Overview */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+              <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-800 space-y-2">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">Total Attribution Revenue</p>
+                <p className="text-3xl font-black text-emerald-450 mt-1">${postTotalRevenue.toLocaleString()}</p>
+                <p className="text-[9px] text-gray-400 font-semibold leading-tight">{postPurchasesCount} orders mapped</p>
+              </div>
+              <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-800 space-y-2">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">Top Revenue Landing Asset</p>
+                <p className="text-xl font-black text-slate-100 mt-1 truncate">{pageStats[0]?.page || 'None'}</p>
+                <p className="text-[9px] text-gray-400 font-semibold leading-tight">${(pageStats[0]?.revenue || 0).toLocaleString()} generated</p>
+              </div>
+              <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-800 space-y-2">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">Top Traffic Source</p>
+                <p className="text-xl font-black text-slate-100 mt-1 truncate">{utmSourceStats[0]?.name || 'Direct/None'}</p>
+                <p className="text-[9px] text-gray-400 font-semibold leading-tight">${(utmSourceStats[0]?.revenue || 0).toLocaleString()} generated</p>
+              </div>
+              <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-800 space-y-2">
+                <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-none">Top Customer Industry</p>
+                <p className="text-xl font-black text-slate-100 mt-1 truncate">{industryStats[0]?.name || 'Unknown'}</p>
+                <p className="text-[9px] text-gray-400 font-semibold leading-tight">${(industryStats[0]?.revenue || 0).toLocaleString()} generated</p>
+              </div>
+            </div>
+
+            {/* 1. Assets, Products, and Traffic Attribution */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Revenue by Landing Page */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Landing Page (Assets)</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-6 py-3">Landing Asset Path</th>
+                        <th className="px-6 py-3 text-center">Visitors</th>
+                        <th className="px-6 py-3 text-center">Sales</th>
+                        <th className="px-6 py-3 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {pageStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-6 py-3 font-semibold text-slate-800 break-all max-w-[150px] truncate">{stat.page}</td>
+                          <td className="px-6 py-3 text-center">{stat.visitors}</td>
+                          <td className="px-6 py-3 text-center">{stat.purchases}</td>
+                          <td className="px-6 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Revenue by Product splits */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Tag className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue splits by Product Offering</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-6 py-3">Product Name</th>
+                        <th className="px-6 py-3 text-center">Sales</th>
+                        <th className="px-6 py-3 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {productStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-6 py-3 font-semibold text-slate-800">{stat.name}</td>
+                          <td className="px-6 py-3 text-center">{stat.count}</td>
+                          <td className="px-6 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Traffic Channel Attributions */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Users className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Traffic Channel</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-6 py-3.5">Traffic Channel</th>
+                        <th className="px-6 py-3.5 text-center">Visitors</th>
+                        <th className="px-6 py-3.5 text-center">Sales</th>
+                        <th className="px-6 py-3.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {channelData.map((channel, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-6 py-3.5 font-bold text-slate-800">{channel.name}</td>
+                          <td className="px-6 py-3.5 text-center">{channel.visitors}</td>
+                          <td className="px-6 py-3.5 text-center">{channel.purchases}</td>
+                          <td className="px-6 py-3.5 text-right font-black text-slate-950">${channel.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* 2. Firmographic & Geographic Attribution */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Industry Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Building2 className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Industry</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Industry Sector</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {industryStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[150px]">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.count}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                      {industryStats.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="px-4 py-6 text-center text-gray-400">No industry profiles matching purchases.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Province / Region Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Province/State</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Province/State</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {provinceStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[150px]">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.count}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                      {provinceStats.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="px-4 py-6 text-center text-gray-400">No regional data recorded.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Country Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Globe className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Country</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Country</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {countryStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[150px]">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.count}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                      {countryStats.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="px-4 py-6 text-center text-gray-400">No country data recorded.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+
+            {/* 3. Detailed UTM Campaigns & Technographic Attribution */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* UTM Source Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Source</h3>
+                  <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Source</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Source Value</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {utmSourceStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* UTM Campaign Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Campaign</h3>
+                  <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Campaign</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Campaign Value</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {utmCampaignStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Technographics (Devices) Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Smartphone className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Device</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Device Type</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {deviceStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 capitalize">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.count}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                      {deviceStats.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="px-4 py-6 text-center text-gray-400">No device attribution recorded.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
         ) : (
           /* 📊📊📊 ORIGINAL TELEMETRY & TECHNICAL FUNNEL VIEW 📊📊📊 */
           <div className="space-y-8">
@@ -1153,301 +1544,121 @@ export default async function RevenueDashboardPage({
               </div>
             </div>
 
-            {/* Founder Revenue Metrics */}
+            {/* Segmented Founder Metrics Command Center */}
             <div>
               <h2 className="text-xl font-extrabold text-slate-900 mb-4 flex items-center gap-2">
-                <DollarSign className="w-5 h-5 text-indigo-600" />
-                Founder Revenue Metrics (Post-Telemetry)
+                <Layers className="w-5 h-5 text-indigo-650" />
+                Segmented Operations Control
               </h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-7 gap-4">
-                {[
-                  { label: 'Reports Revenue', value: `$${postReportsRevenue.toLocaleString()}`, sub: `${postReportsPurchases.length} sales (<$199)` },
-                  { label: 'Audit Revenue', value: `$${postAuditRevenue.toLocaleString()}`, sub: `${postAuditPurchases.length} sales (≥$199)` },
-                  { label: 'Total Revenue', value: `$${postTotalRevenue.toLocaleString()}`, sub: `${postPurchasesCount} total sales` },
-                  { label: 'Rev/Visitor (RPV)', value: `$${postRpv.toFixed(2)}`, sub: `${postUniqueVisitors} sessions` },
-                  { label: 'Rev/Lead (RPL)', value: `$${postRpl.toFixed(2)}`, sub: `${postLeadsCount} leads` },
-                  { label: 'Rev/Calc User', value: `$${revPerCalcUser.toFixed(2)}`, sub: `${postCalcStarts} starts` },
-                  { label: 'Rev/Audit Visitor', value: `$${revPerAuditVisitor.toFixed(2)}`, sub: `${postAuditViews} views` },
-                ].map((metric) => (
-                  <div key={metric.label} className="bg-white rounded-xl border border-gray-200 p-4 shadow-xs">
-                    <p className="text-[10px] text-gray-400 font-bold uppercase tracking-wider leading-tight">{metric.label}</p>
-                    <p className="text-xl font-black text-slate-950 mt-1.5">{metric.value}</p>
-                    <p className="text-[9px] text-gray-400 font-semibold mt-0.5 leading-tight">{metric.sub}</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {/* Acquisition Column Summary */}
+                <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-850 space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <h3 className="font-black text-xs uppercase tracking-wider text-indigo-400">📈 Funnel Acquisition</h3>
+                    <span className="text-[9px] bg-indigo-500/20 text-indigo-300 font-bold px-2 py-0.5 rounded-full uppercase">Traffic & UTMs</span>
                   </div>
-                ))}
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Unique Visitors:</span>
+                      <span className="font-black text-base text-slate-100">{postUniqueVisitors.toLocaleString()}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Leads Captured:</span>
+                      <span className="font-black text-base text-slate-100">{postLeadsCount}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Visitor-to-Lead CR:</span>
+                      <span className="font-black text-base text-indigo-400">
+                        {postUniqueVisitors > 0 ? ((postLeadsCount / postUniqueVisitors) * 100).toFixed(2) : '0.00'}%
+                      </span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Commerce Column Summary */}
+                <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-850 space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <h3 className="font-black text-xs uppercase tracking-wider text-emerald-400">🛍️ Commerce Operations</h3>
+                    <span className="text-[9px] bg-emerald-500/20 text-emerald-300 font-bold px-2 py-0.5 rounded-full uppercase">Sales & Take Rates</span>
+                  </div>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Report Sales:</span>
+                      <span className="font-black text-base text-slate-100">{postPurchasesCount}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Lead-to-Sale Conversion:</span>
+                      <span className="font-black text-base text-emerald-400">
+                        {postLeadsCount > 0 ? ((postPurchasesCount / postLeadsCount) * 100).toFixed(2) : '0.00'}%
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Booked Strategy Audits:</span>
+                      <span className="font-black text-base text-slate-100">{postBookingsCount}</span>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Economics Column Summary */}
+                <div className="bg-slate-900 text-white rounded-2xl p-6 shadow-md border border-slate-850 space-y-4">
+                  <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+                    <h3 className="font-black text-xs uppercase tracking-wider text-amber-400">💸 Economics & LTV</h3>
+                    <span className="text-[9px] bg-amber-500/20 text-amber-300 font-bold px-2 py-0.5 rounded-full uppercase">Value & CAC</span>
+                  </div>
+                  <div className="space-y-3 text-sm">
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Realized LTV:</span>
+                      <span className="font-black text-base text-amber-400">${realizedLtv.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Avg. Order Value (AOV):</span>
+                      <span className="font-black text-base text-slate-100">${calculatedAov.toFixed(2)}</span>
+                    </div>
+                    <div className="flex justify-between items-baseline">
+                      <span className="text-xs text-slate-400">Estimated CAC / ROAS:</span>
+                      <span className="font-black text-base text-slate-100">
+                        ${estimatedCac.toFixed(2)} / <span className="text-emerald-400">{estimatedRoas.toFixed(1)}x</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
 
-            {/* Economics & North Star Metrics */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-              <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 shadow-xs flex items-center justify-between">
-                <div className="space-y-1">
-                  <span className="text-[10px] text-blue-700 font-extrabold uppercase tracking-wider bg-blue-100/50 px-2.5 py-1 rounded">Calculator Economics</span>
-                  <h3 className="text-xl font-black text-slate-900 mt-2">Revenue Per Calculator User (RPU)</h3>
-                  <p className="text-xs text-slate-500">Calculator Reports Revenue / Calculator Starts</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-3xl font-black text-blue-700">${revPerCalcUser.toFixed(2)}</span>
-                  <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">{postCalcStarts} Starts | ${postReportsRevenue.toLocaleString()} Rev</p>
-                </div>
-              </div>
+            {/* ════════════════════ 1. ACQUISITION SECTION ════════════════════ */}
+            <div className="border-t border-gray-200 pt-6 space-y-6">
+              <h2 className="text-lg font-black text-indigo-950 uppercase tracking-wider flex items-center gap-2">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-xs">1</span>
+                Acquisition Channel Analytics
+              </h2>
 
-              <div className="bg-gradient-to-br from-emerald-50 to-indigo-50 border border-emerald-200 rounded-xl p-5 shadow-xs flex items-center justify-between">
-                <div className="space-y-1">
-                  <span className="text-[10px] text-emerald-700 font-extrabold uppercase tracking-wider bg-emerald-100/50 px-2.5 py-1 rounded">Audit Funnel North Star</span>
-                  <h3 className="text-xl font-black text-slate-900 mt-2">Audit Revenue Per Visitor</h3>
-                  <p className="text-xs text-slate-500">Audit Revenue / Audit Page Unique Views</p>
-                </div>
-                <div className="text-right">
-                  <span className="text-3xl font-black text-emerald-700">${revPerAuditVisitor.toFixed(2)}</span>
-                  <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">{postAuditViews} Views | ${postAuditRevenue.toLocaleString()} Rev</p>
-                </div>
-              </div>
-            </div>
-
-            {/* Calculator Funnel Table */}
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-              <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <Calculator className="w-5 h-5 text-indigo-600" />
-                  <h2 className="font-extrabold text-slate-900 text-base">Calculator Funnel (Post-Telemetry Only)</h2>
-                </div>
-                <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                  calcLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
-                }`}>
-                  Biggest Leak: {calcLeaksAllTime.drop > 0 ? `${calcLeaksAllTime.transition} (${calcLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
-                </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                    <tr>
-                      <th className="px-6 py-3.5">Funnel Step</th>
-                      <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
-                      <th className="px-6 py-3.5 text-center">Last 7 Days</th>
-                      <th className="px-6 py-3.5 text-center">Last 30 Days</th>
-                      <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">1. Calculator Start</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.starts}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.starts}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.starts}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.starts}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">2. Step 6 (Completions)</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.completed}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.completed}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.completed}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.completed}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">3. Pricing View</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.pricing}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.pricing}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.pricing}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.pricing}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">4. Checkout Start</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.checkouts}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">5. Purchase</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.purchases}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.purchases}</td>
-                      <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.purchases}</td>
-                      <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{calculatorFunnelStats.allTime.purchases}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* AI Finder Funnel Table */}
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-              <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-5 h-5 text-indigo-600" />
-                  <h2 className="font-extrabold text-slate-900 text-base">AI Finder Funnel (Post-Telemetry Only)</h2>
-                </div>
-                <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                  aiFinderLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
-                }`}>
-                  Biggest Leak: {aiFinderLeaksAllTime.drop > 0 ? `${aiFinderLeaksAllTime.transition} (${aiFinderLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
-                </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                    <tr>
-                      <th className="px-6 py-3.5">Funnel Step</th>
-                      <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
-                      <th className="px-6 py-3.5 text-center">Last 7 Days</th>
-                      <th className="px-6 py-3.5 text-center">Last 30 Days</th>
-                      <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">1. Finder Start</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.starts}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.starts}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.starts}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.starts}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">2. Results Generated</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.generated}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.generated}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.generated}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.generated}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">3. Preview Viewed</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.preview}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.preview}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.preview}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.preview}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">4. Unlock Clicked</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.unlock}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.unlock}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.unlock}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.unlock}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">5. Checkout Started</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.allTime.checkouts}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">6. Purchase</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.today.purchases}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last7d.purchases}</td>
-                      <td className="px-6 py-4 text-center">{aiFinderFunnelStats.last30d.purchases}</td>
-                      <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{aiFinderFunnelStats.allTime.purchases}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Audit Funnel Table */}
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-              <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-                <div className="flex items-center gap-2">
-                  <TrendingUp className="w-5 h-5 text-indigo-600" />
-                  <h2 className="font-extrabold text-slate-900 text-base">Audit Funnel (Post-Telemetry Only)</h2>
-                </div>
-                <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
-                  auditLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
-                }`}>
-                  Biggest Leak: {auditLeaksAllTime.drop > 0 ? `${auditLeaksAllTime.transition} (${auditLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
-                </div>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-sm whitespace-nowrap">
-                  <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
-                    <tr>
-                      <th className="px-6 py-3.5">Funnel Step</th>
-                      <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
-                      <th className="px-6 py-3.5 text-center">Last 7 Days</th>
-                      <th className="px-6 py-3.5 text-center">Last 30 Days</th>
-                      <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">1. Audit Page View</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.starts}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.starts}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.starts}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.starts}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">2. Preview Viewed</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.preview}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.preview}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.preview}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.preview}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">3. Unlock Clicked</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.unlock}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.unlock}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.unlock}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.unlock}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">4. PayPal Start</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.checkouts}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.allTime.checkouts}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">5. Purchased Audit</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.purchased}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.purchased}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.purchased}</td>
-                      <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.purchased}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">6. Booking Completed</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.booked}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.booked}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.booked}</td>
-                      <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.booked}</td>
-                    </tr>
-                    <tr>
-                      <td className="px-6 py-4 font-bold text-slate-800">7. Audit Completed</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.today.completed}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last7d.completed}</td>
-                      <td className="px-6 py-4 text-center">{auditFunnelStats.last30d.completed}</td>
-                      <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.completed}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-
-            {/* Breakdown Tables */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {/* Revenue by Landing Page */}
+              {/* Traffic Source Scoreboard */}
               <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
                 <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
-                  <Layers className="w-5 h-5 text-indigo-600" />
-                  <h2 className="font-extrabold text-slate-900 text-base">Revenue by Landing Page (Post-Telemetry)</h2>
+                  <Users className="w-5 h-5 text-indigo-600" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Traffic Channel Performance</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs whitespace-nowrap">
                     <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
                       <tr>
-                        <th className="px-6 py-3">Landing Page</th>
-                        <th className="px-6 py-3 text-center">Visitors</th>
-                        <th className="px-6 py-3 text-center">Leads</th>
-                        <th className="px-6 py-3 text-center">Sales</th>
-                        <th className="px-6 py-3 text-right">Revenue</th>
+                        <th className="px-6 py-3.5">Traffic Source</th>
+                        <th className="px-6 py-3.5 text-center">Visitors (Sessions)</th>
+                        <th className="px-6 py-3.5 text-center">Leads Captured</th>
+                        <th className="px-6 py-3.5 text-center">Purchases (Sales)</th>
+                        <th className="px-6 py-3.5 text-center">RPV (Rev/Visitor)</th>
+                        <th className="px-6 py-3.5 text-right">Revenue</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
-                      {pageStats.map((stat, idx) => (
+                      {channelData.map((channel, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/50">
-                          <td className="px-6 py-3 font-semibold text-slate-800 break-all max-w-[200px] truncate">{stat.page}</td>
-                          <td className="px-6 py-3 text-center">{stat.visitors}</td>
-                          <td className="px-6 py-3 text-center">{stat.leads}</td>
-                          <td className="px-6 py-3 text-center">{stat.purchases}</td>
-                          <td className="px-6 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                          <td className="px-6 py-3.5 font-bold text-slate-800">{channel.name}</td>
+                          <td className="px-6 py-3.5 text-center">{channel.visitors}</td>
+                          <td className="px-6 py-3.5 text-center">{channel.leads}</td>
+                          <td className="px-6 py-3.5 text-center">{channel.purchases}</td>
+                          <td className="px-6 py-3.5 text-center font-bold text-slate-800">${channel.rpv.toFixed(2)}</td>
+                          <td className="px-6 py-3.5 text-right font-black text-slate-950">${channel.revenue.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>
@@ -1455,11 +1666,289 @@ export default async function RevenueDashboardPage({
                 </div>
               </div>
 
+              {/* UTM Attribution Lists */}
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                    <h3 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Source</h3>
+                    <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Source</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs whitespace-nowrap">
+                      <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                        <tr>
+                          <th className="px-4 py-2.5">Source Value</th>
+                          <th className="px-4 py-2.5 text-center">Leads</th>
+                          <th className="px-4 py-2.5 text-center">Sales</th>
+                          <th className="px-4 py-2.5 text-right">Revenue</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                        {utmSourceStats.map((stat, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50/50">
+                            <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                            <td className="px-4 py-3 text-center">{stat.leads}</td>
+                            <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                            <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                    <h3 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Medium</h3>
+                    <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Medium</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs whitespace-nowrap">
+                      <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                        <tr>
+                          <th className="px-4 py-2.5">Medium Value</th>
+                          <th className="px-4 py-2.5 text-center">Leads</th>
+                          <th className="px-4 py-2.5 text-center">Sales</th>
+                          <th className="px-4 py-2.5 text-right">Revenue</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                        {utmMediumStats.map((stat, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50/50">
+                            <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                            <td className="px-4 py-3 text-center">{stat.leads}</td>
+                            <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                            <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
+                    <h3 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Campaign</h3>
+                    <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Campaign</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs whitespace-nowrap">
+                      <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                        <tr>
+                          <th className="px-4 py-2.5">Campaign Value</th>
+                          <th className="px-4 py-2.5 text-center">Leads</th>
+                          <th className="px-4 py-2.5 text-center">Sales</th>
+                          <th className="px-4 py-2.5 text-right">Revenue</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                        {utmCampaignStats.map((stat, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50/50">
+                            <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
+                            <td className="px-4 py-3 text-center">{stat.leads}</td>
+                            <td className="px-4 py-3 text-center">{stat.purchases}</td>
+                            <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* ════════════════════ 2. COMMERCE SECTION ════════════════════ */}
+            <div className="border-t border-gray-200 pt-6 space-y-6">
+              <h2 className="text-lg font-black text-emerald-950 uppercase tracking-wider flex items-center gap-2">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 text-xs">2</span>
+                Commerce Operations & Conversions
+              </h2>
+
+              {/* Calculator Funnel */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                  <div className="flex items-center gap-2">
+                    <Calculator className="w-5 h-5 text-indigo-650" />
+                    <h3 className="font-extrabold text-slate-900 text-base">Calculator Conversion Funnel</h3>
+                  </div>
+                  <div className={`text-xs font-bold px-3 py-1 rounded-full border ${
+                    calcLeaksAllTime.drop > 0 ? 'text-red-700 bg-red-50 border-red-100' : 'text-slate-700 bg-slate-50 border-slate-100'
+                  }`}>
+                    Biggest Leak: {calcLeaksAllTime.drop > 0 ? `${calcLeaksAllTime.transition} (${calcLeaksAllTime.drop.toFixed(1)}% drop)` : 'None'}
+                  </div>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-sm whitespace-nowrap">
+                    <thead className="bg-gray-50/70 border-b border-gray-200 text-xs font-bold text-gray-500 uppercase tracking-wider">
+                      <tr>
+                        <th className="px-6 py-3.5">Funnel Step</th>
+                        <th className="px-6 py-3.5 text-center">Last 24 Hours (Today)</th>
+                        <th className="px-6 py-3.5 text-center">Last 7 Days</th>
+                        <th className="px-6 py-3.5 text-center">Last 30 Days</th>
+                        <th className="px-6 py-3.5 text-center">All-Time (Post-Telemetry)</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
+                      <tr>
+                        <td className="px-6 py-4 font-bold text-slate-800">1. Calculator Start</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.starts}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.starts}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.starts}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.starts}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-bold text-slate-800">2. Step 6 (Completions)</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.completed}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.completed}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.completed}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.completed}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-bold text-slate-800">3. Pricing View</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.pricing}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.pricing}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.pricing}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.pricing}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-bold text-slate-800">4. Checkout Start</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.checkouts}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.checkouts}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.checkouts}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.allTime.checkouts}</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-bold text-slate-800">5. Purchase</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.today.purchases}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last7d.purchases}</td>
+                        <td className="px-6 py-4 text-center">{calculatorFunnelStats.last30d.purchases}</td>
+                        <td className="px-6 py-4 text-center text-emerald-700 font-extrabold">{calculatorFunnelStats.allTime.purchases}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* AI Finder Funnel */}
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <Sparkles className="w-5 h-5 text-indigo-650" />
+                      <h3 className="font-extrabold text-slate-900 text-base">AI Finder Funnel</h3>
+                    </div>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs whitespace-nowrap">
+                      <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                        <tr>
+                          <th className="px-6 py-3">Step</th>
+                          <th className="px-6 py-3 text-center">Today</th>
+                          <th className="px-6 py-3 text-center">7 Days</th>
+                          <th className="px-6 py-3 text-center">30 Days</th>
+                          <th className="px-6 py-3 text-center">All-Time</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                        <tr>
+                          <td className="px-6 py-3.5 font-bold text-slate-800">1. Finder Start</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.today.starts}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last7d.starts}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last30d.starts}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.allTime.starts}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3.5 font-bold text-slate-800">2. Paywall View</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.today.pricing}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last7d.pricing}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last30d.pricing}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.allTime.pricing}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3.5 font-bold text-slate-800">3. Checkout Start</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.today.checkouts}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last7d.checkouts}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last30d.checkouts}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.allTime.checkouts}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3.5 font-bold text-slate-800">4. Purchase</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.today.purchases}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last7d.purchases}</td>
+                          <td className="px-6 py-3.5 text-center">{aiFinderFunnelStats.last30d.purchases}</td>
+                          <td className="px-6 py-3.5 text-center text-emerald-700 font-extrabold">{aiFinderFunnelStats.allTime.purchases}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+                {/* Audit Funnel */}
+                <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <Clock className="w-5 h-5 text-indigo-650" />
+                      <h3 className="font-extrabold text-slate-900 text-base">Strategy Audit Funnel</h3>
+                    </div>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-left text-xs whitespace-nowrap">
+                      <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                        <tr>
+                          <th className="px-6 py-3">Step</th>
+                          <th className="px-6 py-3 text-center">Today</th>
+                          <th className="px-6 py-3 text-center">7 Days</th>
+                          <th className="px-6 py-3 text-center">30 Days</th>
+                          <th className="px-6 py-3 text-center">All-Time</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                        <tr>
+                          <td className="px-6 py-3 font-bold text-slate-800">1. Audit Page View</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.today.views}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last7d.views}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last30d.views}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.allTime.views}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3 font-bold text-slate-800">2. Preview Generated</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.today.preview}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last7d.preview}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last30d.preview}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.allTime.preview}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3 font-bold text-slate-800">3. Checkout Start</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.today.checkouts}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last7d.checkouts}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last30d.checkouts}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.allTime.checkouts}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3 font-bold text-slate-800">4. Purchase Approved</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.today.purchased}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last7d.purchased}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last30d.purchased}</td>
+                          <td className="px-6 py-3 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.purchased}</td>
+                        </tr>
+                        <tr>
+                          <td className="px-6 py-3 font-bold text-slate-800">5. Booking Completed</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.today.booked}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last7d.booked}</td>
+                          <td className="px-6 py-3 text-center">{auditFunnelStats.last30d.booked}</td>
+                          <td className="px-6 py-3 text-center text-emerald-700 font-extrabold">{auditFunnelStats.allTime.booked}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+
               {/* Revenue by Product */}
               <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
                 <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
-                  <Tag className="w-5 h-5 text-indigo-600" />
-                  <h2 className="font-extrabold text-slate-900 text-base">Revenue by Product (Post-Telemetry)</h2>
+                  <Tag className="w-5 h-5 text-indigo-650" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue splits by Product Offering</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs whitespace-nowrap">
@@ -1484,122 +1973,65 @@ export default async function RevenueDashboardPage({
               </div>
             </div>
 
-            {/* Traffic Source Scoreboard */}
-            <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-              <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
-                <Users className="w-5 h-5 text-indigo-600" />
-                <h2 className="font-extrabold text-slate-900 text-base">Traffic Source Scoreboard (Post-Telemetry)</h2>
-              </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-left text-xs whitespace-nowrap">
-                  <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
-                    <tr>
-                      <th className="px-6 py-3.5">Traffic Source</th>
-                      <th className="px-6 py-3.5 text-center">Visitors (Sessions)</th>
-                      <th className="px-6 py-3.5 text-center">Leads Captured</th>
-                      <th className="px-6 py-3.5 text-center">Purchases (Sales)</th>
-                      <th className="px-6 py-3.5 text-center">RPV (Rev/Visitor)</th>
-                      <th className="px-6 py-3.5 text-right">Revenue</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
-                    {channelData.map((channel, idx) => (
-                      <tr key={idx} className="hover:bg-slate-50/50">
-                        <td className="px-6 py-3.5 font-bold text-slate-800">{channel.name}</td>
-                        <td className="px-6 py-3.5 text-center">{channel.visitors}</td>
-                        <td className="px-6 py-3.5 text-center">{channel.leads}</td>
-                        <td className="px-6 py-3.5 text-center">{channel.purchases}</td>
-                        <td className="px-6 py-3.5 text-center font-bold text-slate-800">${channel.rpv.toFixed(2)}</td>
-                        <td className="px-6 py-3.5 text-right font-black text-slate-950">${channel.revenue.toLocaleString()}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
+            {/* ════════════════════ 3. ECONOMICS SECTION ════════════════════ */}
+            <div className="border-t border-gray-200 pt-6 space-y-6">
+              <h2 className="text-lg font-black text-amber-950 uppercase tracking-wider flex items-center gap-2">
+                <span className="flex items-center justify-center w-6 h-6 rounded-full bg-amber-100 text-amber-700 text-xs">3</span>
+                Economics & Revenue Performance
+              </h2>
 
-            {/* UTM Attribution */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Economics Cards */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-5 shadow-xs flex items-center justify-between">
+                  <div className="space-y-1">
+                    <span className="text-[10px] text-blue-700 font-extrabold uppercase tracking-wider bg-blue-100/50 px-2.5 py-1 rounded">Calculator Economics</span>
+                    <h3 className="text-base font-black text-slate-900 mt-2">Revenue Per Calculator User (RPU)</h3>
+                    <p className="text-xs text-slate-500">Calculator Reports Revenue / Calculator Starts</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-2xl font-black text-blue-750">${revPerCalcUser.toFixed(2)}</span>
+                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">{postCalcStarts} Starts | ${postReportsRevenue.toLocaleString()} Rev</p>
+                  </div>
+                </div>
+
+                <div className="bg-gradient-to-br from-emerald-50 to-indigo-50 border border-emerald-200 rounded-xl p-5 shadow-xs flex items-center justify-between">
+                  <div className="space-y-1">
+                    <span className="text-[10px] text-emerald-700 font-extrabold uppercase tracking-wider bg-emerald-100/50 px-2.5 py-1 rounded">Audit Funnel North Star</span>
+                    <h3 className="text-base font-black text-slate-900 mt-2">Audit Revenue Per Visitor</h3>
+                    <p className="text-xs text-slate-500">Audit Revenue / Audit Page Unique Views</p>
+                  </div>
+                  <div className="text-right">
+                    <span className="text-2xl font-black text-emerald-755">${revPerAuditVisitor.toFixed(2)}</span>
+                    <p className="text-[10px] text-gray-500 font-bold uppercase tracking-wider mt-1">{postAuditViews} Views | ${postAuditRevenue.toLocaleString()} Rev</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Revenue by Landing Page */}
               <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-                <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
-                  <h2 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Source</h2>
-                  <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Source</span>
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Layers className="w-5 h-5 text-indigo-650" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Landing Page (Post-Telemetry)</h3>
                 </div>
                 <div className="overflow-x-auto">
                   <table className="w-full text-left text-xs whitespace-nowrap">
                     <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
                       <tr>
-                        <th className="px-4 py-2.5">Source Value</th>
-                        <th className="px-4 py-2.5 text-center">Leads</th>
-                        <th className="px-4 py-2.5 text-center">Sales</th>
-                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                        <th className="px-6 py-3">Landing Page</th>
+                        <th className="px-6 py-3 text-center">Visitors</th>
+                        <th className="px-6 py-3 text-center">Leads</th>
+                        <th className="px-6 py-3 text-center">Sales</th>
+                        <th className="px-6 py-3 text-right">Revenue</th>
                       </tr>
                     </thead>
                     <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
-                      {utmSourceStats.map((stat, idx) => (
+                      {pageStats.map((stat, idx) => (
                         <tr key={idx} className="hover:bg-slate-50/50">
-                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
-                          <td className="px-4 py-3 text-center">{stat.leads}</td>
-                          <td className="px-4 py-3 text-center">{stat.purchases}</td>
-                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-                <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
-                  <h2 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Medium</h2>
-                  <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Medium</span>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs whitespace-nowrap">
-                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
-                      <tr>
-                        <th className="px-4 py-2.5">Medium Value</th>
-                        <th className="px-4 py-2.5 text-center">Leads</th>
-                        <th className="px-4 py-2.5 text-center">Sales</th>
-                        <th className="px-4 py-2.5 text-right">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
-                      {utmMediumStats.map((stat, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50/50">
-                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
-                          <td className="px-4 py-3 text-center">{stat.leads}</td>
-                          <td className="px-4 py-3 text-center">{stat.purchases}</td>
-                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-
-              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
-                <div className="border-b border-gray-100 px-6 py-4 flex items-center justify-between">
-                  <h2 className="font-extrabold text-slate-900 text-sm">Revenue by UTM Campaign</h2>
-                  <span className="text-[9px] font-bold bg-slate-100 px-1.5 py-0.5 rounded text-slate-500 uppercase">Campaign</span>
-                </div>
-                <div className="overflow-x-auto">
-                  <table className="w-full text-left text-xs whitespace-nowrap">
-                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
-                      <tr>
-                        <th className="px-4 py-2.5">Campaign Value</th>
-                        <th className="px-4 py-2.5 text-center">Leads</th>
-                        <th className="px-4 py-2.5 text-center">Sales</th>
-                        <th className="px-4 py-2.5 text-right">Revenue</th>
-                      </tr>
-                    </thead>
-                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
-                      {utmCampaignStats.map((stat, idx) => (
-                        <tr key={idx} className="hover:bg-slate-50/50">
-                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[120px]">{stat.name}</td>
-                          <td className="px-4 py-3 text-center">{stat.leads}</td>
-                          <td className="px-4 py-3 text-center">{stat.purchases}</td>
-                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                          <td className="px-6 py-3 font-semibold text-slate-800 break-all max-w-[200px] truncate">{stat.page}</td>
+                          <td className="px-6 py-3 text-center">{stat.visitors}</td>
+                          <td className="px-6 py-3 text-center">{stat.leads}</td>
+                          <td className="px-6 py-3 text-center">{stat.purchases}</td>
+                          <td className="px-6 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
                         </tr>
                       ))}
                     </tbody>

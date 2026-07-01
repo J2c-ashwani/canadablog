@@ -185,7 +185,12 @@ export function GrantCalculator() {
         referrer: '',
         utmSource: '',
         utmMedium: '',
-        utmCampaign: ''
+        utmCampaign: '',
+        lastTouchPage: '',
+        lastTouchReferrer: '',
+        device: '',
+        browser: '',
+        country: ''
     });
     const [isRestoring, setIsRestoring] = useState(false);
     const [isRestoredSession, setIsRestoredSession] = useState(false);
@@ -219,6 +224,27 @@ export function GrantCalculator() {
 
     const buttonsRenderedRef = useRef(false);
 
+    // Parse pre-populated widget parameters from URL on client mount
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const params = new URLSearchParams(window.location.search);
+        const urlProvince = params.get('province');
+        const urlGoal = params.get('goal');
+
+        if (urlProvince || urlGoal) {
+            setData(prev => ({
+                ...prev,
+                province: urlProvince || prev.province,
+                goal: urlGoal || prev.goal
+            }));
+            if (urlProvince && urlGoal) {
+                setStep(3); // Both filled: go straight to Step 3 (Industry)
+            } else if (urlGoal) {
+                setStep(2); // Goal filled: go to Step 2 (Location)
+            }
+        }
+    }, []);
+
     // Track email validity to control PayPal mounting lifecycle
     const isEmailValid = !!(data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()));
 
@@ -247,12 +273,26 @@ export function GrantCalculator() {
         else if (ua.includes("Android")) os = "Android";
         
         const device = /Mobi|Android|iPhone|iPad/i.test(ua) ? "Mobile" : "Desktop";
+        const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        
+        // Guess country based on timezone
+        let country = "Unknown";
+        if (timezone.startsWith("America/")) {
+            if (timezone.includes("Toronto") || timezone.includes("Vancouver") || timezone.includes("Edmonton") || timezone.includes("Winnipeg") || timezone.includes("Halifax")) {
+                country = "CA";
+            } else {
+                country = "US";
+            }
+        } else if (timezone === "Asia/Singapore") {
+            country = "SG";
+        }
         
         return {
             browser,
             os,
             device,
-            viewport: `${width}x${height}`
+            viewport: `${width}x${height}`,
+            country
         };
     };
 
@@ -285,12 +325,26 @@ export function GrantCalculator() {
     useEffect(() => {
         if (typeof window === 'undefined') return;
         const params = new URLSearchParams(window.location.search);
+        
+        const firstTouchUrl = localStorage.getItem('fsi_first_touch_url') || window.location.pathname;
+        const firstTouchReferrer = localStorage.getItem('fsi_first_touch_referrer') || document.referrer || 'direct';
+        const firstTouchUtmSource = localStorage.getItem('fsi_first_touch_utm_source') || params.get('utm_source') || '';
+        const firstTouchUtmMedium = localStorage.getItem('fsi_first_touch_utm_medium') || params.get('utm_medium') || '';
+        const firstTouchUtmCampaign = localStorage.getItem('fsi_first_touch_utm_campaign') || params.get('utm_campaign') || '';
+
+        const deviceMeta = getDeviceMetadata();
+
         setTrackingData({
-            landingPage: window.location.pathname,
-            referrer: document.referrer || '',
-            utmSource: params.get('utm_source') || '',
-            utmMedium: params.get('utm_medium') || '',
-            utmCampaign: params.get('utm_campaign') || ''
+            landingPage: firstTouchUrl,
+            referrer: firstTouchReferrer,
+            utmSource: firstTouchUtmSource,
+            utmMedium: firstTouchUtmMedium,
+            utmCampaign: firstTouchUtmCampaign,
+            lastTouchPage: window.location.pathname,
+            lastTouchReferrer: document.referrer || 'direct',
+            device: deviceMeta.device || 'Desktop',
+            browser: deviceMeta.browser || 'Other',
+            country: deviceMeta.country || 'Unknown'
         });
 
         const emailParam = params.get('email');
@@ -1060,6 +1114,11 @@ export function GrantCalculator() {
                     utmSource: trackingDataRef.current.utmSource,
                     utmMedium: trackingDataRef.current.utmMedium,
                     utmCampaign: trackingDataRef.current.utmCampaign,
+                    lastTouchPage: trackingDataRef.current.lastTouchPage,
+                    lastTouchReferrer: trackingDataRef.current.lastTouchReferrer,
+                    device: trackingDataRef.current.device,
+                    browser: trackingDataRef.current.browser,
+                    country: trackingDataRef.current.country,
                   },
                   sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
                 })
@@ -1293,6 +1352,11 @@ export function GrantCalculator() {
                     utmSource: trackingData.utmSource,
                     utmMedium: trackingData.utmMedium,
                     utmCampaign: trackingData.utmCampaign,
+                    lastTouchPage: trackingData.lastTouchPage,
+                    lastTouchReferrer: trackingData.lastTouchReferrer,
+                    device: trackingData.device,
+                    browser: trackingData.browser,
+                    country: trackingData.country,
                   },
                   sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
                 })
