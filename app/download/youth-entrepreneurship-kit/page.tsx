@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Get your free youth entrepreneurship kit with CYBF application templates, young entrepreneur funding guides, and step-by-step strategies. Increase your approval chances by 78%.",
   keywords: "youth entrepreneurship kit, CYBF application templates, young entrepreneur grant templates Canada, free youth business funding kit, Futurpreneur application guide, Canadian youth business templates",
   alternates: {
-    canonical: "https://www.fsidigital.ca/download/youth-entrepreneurship-kit",
+    canonical: "https://www.fsidigital.ca/blog/youth-entrepreneurship-canada-funding",
   },
 }
 

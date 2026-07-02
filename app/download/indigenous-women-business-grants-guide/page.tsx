@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Get Your Free Indigenous Women Business Grants & NACCA Funding Guide | FSI Digital",
   description: "Download our comprehensive Indigenous women business funding toolkit covering NACCA Aboriginal Entrepreneurship Program (up to $100K), Women Entrepreneu...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/download/indigenous-women-business-grants-guide",
+    canonical: "https://www.fsidigital.ca/blog/indigenous-women-business-grants-canada",
   },
 }
 

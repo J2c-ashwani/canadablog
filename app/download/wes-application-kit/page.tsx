@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Get your free WES application kit with female business grant templates, women entrepreneur funding guides, and step-by-step WES funding strategies. Increase your approval chances by 84%.",
   keywords: "WES application kit, women entrepreneurship strategy templates, female business grant templates Canada, women entrepreneur funding guide, free women business funding kit, WES grant application templates",
   alternates: {
-    canonical: "https://www.fsidigital.ca/download/wes-application-kit",
+    canonical: "https://www.fsidigital.ca/blog/women-entrepreneurship-strategy-canada",
   },
 }
 

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Get Your Free Women Clean Technology Grants & Environmental Innovation Funding Guide | FSI Digital",
   description: "Download our comprehensive women clean technology grants toolkit covering Sustainable Development Technology Canada (SDTC) funding up to $10M, Natural R...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/download/women-clean-technology-grants-guide",
+    canonical: "https://www.fsidigital.ca/blog/women-clean-technology-grants-canada",
   },
 }
 

@@ -163,6 +163,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
   // 10. Add Case Study pages
   const caseStudyDetailRoutes = getAllCaseStudies().map(study => `/case-studies/${study.slug}`)
 
+  // 11. Add Versus Comparison Pages
+  const versusRoutes = [
+    '/blog/versus/sred-vs-irap',
+    '/blog/versus/cdap-vs-sred',
+    '/blog/versus/sba-7a-vs-state-grants'
+  ]
+
   // Combine all routes
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
@@ -178,6 +185,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...industryRoutes,
     ...locationRoutes,
     ...caseStudyDetailRoutes,
+    ...versusRoutes,
   ])).filter(isIndexableRoute)
 
   // Convert to sitemap format

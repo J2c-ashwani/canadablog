@@ -11,12 +11,14 @@ import { GrantSuccessTable } from '@/components/blog/GrantSuccessTable';
 import { GrantComparisonTable } from '@/components/blog/GrantComparisonTable';
 import { ExpertTipBox } from '@/components/blog/ExpertTipBox';
 import { getStateDetailBySlug, getAllStateDetails, getQueryBasedSections, getQueryExpanders, getRelatedGuides } from '@/lib/data/stateDetails';
+import { getPublishedPseoPages } from '@/lib/pseo-data';
 import { CTRTrap } from '@/components/blog/CTRTrap';
 import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import InlineCTA from '@/components/blog/InlineCTA';
+import { InlineGrantChecker } from '@/components/blog/InlineGrantChecker';
 import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch';
 import { PriorityResearchLandingPage } from '@/components/editorial/PriorityResearchLandingPage';
 import {
@@ -91,6 +93,10 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
     const state = getStateDetailBySlug(stateSlug);
     if (!state) return notFound();
     const researchProfile = getPriorityResearchProfile(`/usa/${state.slug}`);
+    
+    const localPseo = getPublishedPseoPages()
+        .filter(p => p.provinceSlug === state.abbreviation.toLowerCase())
+        .slice(0, 9);
 
     const jsonLd = {
         "@context": "https://schema.org",
@@ -352,14 +358,20 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     </section>
 
                     {/* Inline CTA */}
-                    {state.inlineCTA && (
+                    {(state.inlineCTA || ['oregon', 'new-york', 'california', 'texas', 'florida'].includes(state.slug)) && (
                         <div className="mb-12">
-                            <InlineCTA
-                                title={state.inlineCTA.title}
-                                description={state.inlineCTA.description}
-                                buttonText={state.inlineCTA.buttonText}
-                                buttonLink={state.inlineCTA.buttonLink}
-                            />
+                            {['oregon', 'new-york', 'california', 'texas', 'florida'].includes(state.slug) ? (
+                                <InlineGrantChecker />
+                            ) : (
+                                state.inlineCTA && (
+                                    <InlineCTA
+                                        title={state.inlineCTA.title}
+                                        description={state.inlineCTA.description}
+                                        buttonText={state.inlineCTA.buttonText}
+                                        buttonLink={state.inlineCTA.buttonLink}
+                                    />
+                                )
+                            )}
                         </div>
                     )}
 
@@ -665,20 +677,39 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                         {/* Intent-Based Hub Links (Topical Cluster Anchors) */}
                         <div className="mt-8 p-6 bg-gradient-to-r from-green-50 to-blue-50 rounded-xl">
                             <h3 className="font-bold text-lg mb-4">🔗 {state.name} Funding Cluster</h3>
-                            <div className="flex flex-wrap gap-4">
-                                <Link href="/usa" className="inline-flex items-center text-green-600 hover:underline">
+                            <div className="flex flex-wrap gap-4 mb-6">
+                                <Link href="/usa" className="inline-flex items-center text-green-600 hover:underline text-sm font-semibold">
                                     <MapPin className="w-4 h-4 mr-1" /> All USA State Grants
                                 </Link>
-                                <Link href="/blog/usa-federal-grants" className="inline-flex items-center text-green-600 hover:underline">
+                                <Link href="/blog/usa-federal-grants" className="inline-flex items-center text-green-600 hover:underline text-sm font-semibold">
                                     <Building className="w-4 h-4 mr-1" /> Federal Grants Guide
                                 </Link>
-                                <Link href="/blog/state-province-grants" className="inline-flex items-center text-green-600 hover:underline">
+                                <Link href="/blog/state-province-grants" className="inline-flex items-center text-green-600 hover:underline text-sm font-semibold">
                                     <Globe className="w-4 h-4 mr-1" /> State vs Province Comparison
                                 </Link>
-                                <Link href="/guides" className="inline-flex items-center text-green-600 hover:underline">
+                                <Link href="/guides" className="inline-flex items-center text-green-600 hover:underline text-sm font-semibold">
                                     <BookOpen className="w-4 h-4 mr-1" /> All Guides
                                 </Link>
                             </div>
+
+                            {localPseo.length > 0 && (
+                                <div className="mt-4 pt-4 border-t border-slate-200/60">
+                                    <h4 className="font-bold text-sm text-slate-800 mb-3 flex items-center gap-1">
+                                        <MapPin className="w-4 h-4 text-green-600" /> Municipal & Local Industry Grant Guides:
+                                    </h4>
+                                    <div className="grid grid-cols-2 gap-3 sm:grid-cols-3">
+                                        {localPseo.map((page, pIdx) => (
+                                            <Link 
+                                                key={pIdx} 
+                                                href={`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`} 
+                                                className="text-xs text-green-700 hover:text-green-800 hover:underline flex items-center gap-1 truncate"
+                                            >
+                                                • {page.cityName} {page.industryName.replace(' and ', ' & ')}
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
                     </section>
 

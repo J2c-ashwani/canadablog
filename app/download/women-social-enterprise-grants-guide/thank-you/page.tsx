@@ -1,10 +1,17 @@
 import { Header } from "@/components/Header"
+import type { Metadata } from "next"
 import { Footer } from "@/components/Footer"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { CheckCircle, Heart, MapPin, Users, Target } from "lucide-react"
 import Link from "next/link"
 import { OTOUpsellCard } from "@/components/download/OTOUpsellCard"
+
+export const metadata: Metadata = {
+  title: "Thank You - Download Confirmation | FSI Digital",
+  description: "Your download request has been successfully processed. Check your email for instant access to your guide and templates.",
+  robots: { index: false, follow: false }
+}
 
 export default function WomenSocialEnterpriseGrantsDownloadThankYouPage() {
   return (

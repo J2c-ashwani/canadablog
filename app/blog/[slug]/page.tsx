@@ -31,6 +31,7 @@ import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
 import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
 import { EditorialResearchContent } from '@/components/editorial/EditorialResearchContent';
 import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch';
+import { InlineGrantChecker } from '@/components/blog/InlineGrantChecker';
 
 type RelatedFundingLink = {
   href: string;
@@ -449,9 +450,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              {(fullPost.inlineCTA || researchProfile) && (
+              {(fullPost.inlineCTA || researchProfile || ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug)) && (
                 <div className="not-prose my-8">
-                  {researchProfile ? (
+                  {['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug) ? (
+                    <InlineGrantChecker />
+                  ) : researchProfile ? (
                     <IntentStrategyCTA cta={researchProfile.cta} />
                   ) : (
                     fullPost.inlineCTA && <InlineCTA {...fullPost.inlineCTA} />

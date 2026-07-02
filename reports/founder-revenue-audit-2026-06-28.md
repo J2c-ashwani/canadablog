@@ -1,6 +1,6 @@
 # Founder Revenue & Search Intent Audit
 
-Generated: 7/1/2026 | Source: `fsidigital.ca-Performance-on-Search-2026-06-28`
+Generated: 7/2/2026 | Source: `fsidigital.ca-Performance-on-Search-2026-06-28`
 
 This audit evaluates FSI Digital's organic pages based on conversion viability and expected business value. Rather than focusing on raw vanity traffic, it programmatically categorizes page search intent and models customer lifetime value (LTV).
 

@@ -519,12 +519,14 @@ export default async function RevenueDashboardPage({
   // --- Firmographic, Geographic & Technographic Revenue Attribution ---
   const industryStatsMap = new Map<string, { count: number; revenue: number }>();
   const provinceStatsMap = new Map<string, { count: number; revenue: number }>();
+  const cityStatsMap = new Map<string, { count: number; revenue: number }>();
   const countryStatsMap = new Map<string, { count: number; revenue: number }>();
   const deviceStatsMap = new Map<string, { count: number; revenue: number }>();
 
   for (const p of postPurchases) {
     let industry = 'Unknown';
     let province = 'Unknown';
+    let city = 'Unknown';
     let country = p.country || 'Unknown';
     
     try {
@@ -532,6 +534,7 @@ export default async function RevenueDashboardPage({
       if (prof.industry) industry = prof.industry;
       if (prof.state) province = prof.state;
       else if (prof.province) province = prof.province;
+      if (prof.city) city = prof.city;
       if (prof.country && (!country || country === 'Unknown')) country = prof.country;
     } catch (e) {}
 
@@ -548,6 +551,13 @@ export default async function RevenueDashboardPage({
     if (!provinceStatsMap.has(province)) provinceStatsMap.set(province, { count: 0, revenue: 0 });
     provinceStatsMap.get(province)!.count += 1;
     provinceStatsMap.get(province)!.revenue += parseFloat(p.amount) || 0;
+
+    // Clean city label
+    city = city.trim();
+    if (!city || city === 'N/A') city = 'Unknown / Regional';
+    if (!cityStatsMap.has(city)) cityStatsMap.set(city, { count: 0, revenue: 0 });
+    cityStatsMap.get(city)!.count += 1;
+    cityStatsMap.get(city)!.revenue += parseFloat(p.amount) || 0;
 
     // Clean country label
     country = country.trim();
@@ -569,6 +579,10 @@ export default async function RevenueDashboardPage({
     .sort((a, b) => b.revenue - a.revenue);
 
   const provinceStats = Array.from(provinceStatsMap.entries())
+    .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
+    .sort((a, b) => b.revenue - a.revenue);
+
+  const cityStats = Array.from(cityStatsMap.entries())
     .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
     .sort((a, b) => b.revenue - a.revenue);
 
@@ -1313,9 +1327,8 @@ export default async function RevenueDashboardPage({
                 </div>
               </div>
             </div>
-
             {/* 2. Firmographic & Geographic Attribution */}
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
               {/* Industry Breakdown */}
               <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
                 <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
@@ -1375,6 +1388,39 @@ export default async function RevenueDashboardPage({
                       {provinceStats.length === 0 && (
                         <tr>
                           <td colSpan={3} className="px-4 py-6 text-center text-gray-400">No regional data recorded.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* City Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <MapPin className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by City</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">City</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {cityStats.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800 truncate max-w-[150px]">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.count}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                      {cityStats.length === 0 && (
+                        <tr>
+                          <td colSpan={3} className="px-4 py-6 text-center text-gray-400">No city data recorded.</td>
                         </tr>
                       )}
                     </tbody>
