@@ -47,6 +47,11 @@ export function FundingMatchReportLanding() {
               <span className="flex items-center gap-1.5"><Shield className="w-4 h-4 text-emerald-400" /> One-Time Purchase</span>
               <span className="flex items-center gap-1.5"><Clock className="w-4 h-4 text-emerald-400" /> No Subscription</span>
             </div>
+            {/* Upgrade Credit Guarantee */}
+            <div className="mt-6 inline-flex items-center gap-2 bg-emerald-900/30 border border-emerald-600/30 text-emerald-300 text-xs font-medium rounded-full px-5 py-2">
+              <span className="text-base">↑</span>
+              <span><strong>Upgrade with confidence.</strong> Every dollar spent is credited toward higher-tier products. You&apos;ll never pay twice.</span>
+            </div>
           </div>
         </div>
       </section>

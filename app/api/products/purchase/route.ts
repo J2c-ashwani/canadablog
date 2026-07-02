@@ -53,8 +53,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // ── Check past purchases to calculate upgrade credit ──
+    const purchases = await getPurchasesByEmail(email);
+    let totalCredit = 0;
+    for (const p of purchases) {
+      const amountVal = parseFloat(p.amount) || 0;
+      if (amountVal > 0) {
+        totalCredit += amountVal;
+      }
+    }
+
     // ── Calculate total expected price with addons ──
-    let expectedPrice = product.priceUsd;
+    let netProductPrice = product.priceUsd - totalCredit;
+    if (netProductPrice < 0.50) {
+      netProductPrice = 0.50; // Minimum floor matching Stripe/PayPal processing
+    }
+
+    let expectedPrice = netProductPrice;
     if (addons?.toolkit) expectedPrice += 29;
     if (addons?.approvalLibrary) expectedPrice += 9;
 

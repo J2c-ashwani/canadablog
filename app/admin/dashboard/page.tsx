@@ -11,7 +11,7 @@ import { AdminLogoutButton } from '../leads/AdminLogoutButton';
 import {
   Lock, KeyRound, DollarSign, Users, Calculator, ArrowRight,
   TrendingUp, BarChart3, Clock, Layers, Award, Tag, Sparkles,
-  Globe, Building2, Smartphone, Compass
+  Globe, Building2, Smartphone, Compass, Activity
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -594,6 +594,53 @@ export default async function RevenueDashboardPage({
     .map(([name, data]) => ({ name, count: data.count, revenue: data.revenue }))
     .sort((a, b) => b.revenue - a.revenue);
 
+  // --- Revenue by Search Intent Splits ---
+  const intentStats = {
+    comparison: { name: 'Comparison ("vs")', sales: 0, revenue: 0 },
+    eligibility: { name: 'Eligibility / How-to', sales: 0, revenue: 0 },
+    industry: { name: 'Industry Guides', sales: 0, revenue: 0 },
+    city: { name: 'City / Local Pages', sales: 0, revenue: 0 },
+    download: { name: 'Download Kits', sales: 0, revenue: 0 },
+    other: { name: 'Other Intent', sales: 0, revenue: 0 },
+  };
+
+  for (const p of postPurchases) {
+    const page = String(p.landingPage || '/calculator').toLowerCase();
+    const amount = parseFloat(p.amount) || 0;
+
+    if (page.includes('/versus/') || page.includes('/vs/')) {
+      intentStats.comparison.sales += 1;
+      intentStats.comparison.revenue += amount;
+    } else if (page.includes('eligibility') || page.includes('how-to-apply') || page.includes('/apply')) {
+      intentStats.eligibility.sales += 1;
+      intentStats.eligibility.revenue += amount;
+    } else if (page.includes('/download/')) {
+      intentStats.download.sales += 1;
+      intentStats.download.revenue += amount;
+    } else if (page.includes('/usa/') || page.includes('/canada/') || page.includes('/city/') || page.includes('/provincial/')) {
+      intentStats.city.sales += 1;
+      intentStats.city.revenue += amount;
+    } else if (
+      page.includes('agriculture') || 
+      page.includes('manufacturing') || 
+      page.includes('women') || 
+      page.includes('startup') || 
+      page.includes('technology') ||
+      page.includes('biotech') ||
+      page.includes('cleantech') ||
+      page.includes('export') ||
+      page.includes('indigenous')
+    ) {
+      intentStats.industry.sales += 1;
+      intentStats.industry.revenue += amount;
+    } else {
+      intentStats.other.sales += 1;
+      intentStats.other.revenue += amount;
+    }
+  }
+
+  const intentStatsList = Object.values(intentStats).sort((a, b) => b.revenue - a.revenue);
+
   const getUtmStats = (param: 'utmSource' | 'utmMedium' | 'utmCampaign') => {
     const map = new Map<string, { visitors: Set<string>; leads: number; purchases: number; revenue: number }>();
 
@@ -773,6 +820,137 @@ export default async function RevenueDashboardPage({
   const julyRevenueNeeded = Math.max(0, julyRevenueGoal - revenueThisMonth);
   const requiredDailyPace = julyRevenueNeeded / julyDaysRemaining;
 
+  // --- CEO Metrics Week over Week (WoW) ---
+  const sevenDaysAgo = now - 7 * ONE_DAY;
+  const fourteenDaysAgo = now - 14 * ONE_DAY;
+
+  const purchasesThisWeek = postPurchases.filter(p => {
+    const time = parseDateSafe(p.createdAt || p.timestamp).getTime();
+    return time >= sevenDaysAgo;
+  });
+  const revenueThisWeek = purchasesThisWeek.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+  const purchasesLastWeek = postPurchases.filter(p => {
+    const time = parseDateSafe(p.createdAt || p.timestamp).getTime();
+    return time >= fourteenDaysAgo && time < sevenDaysAgo;
+  });
+  const revenueLastWeek = purchasesLastWeek.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+  const wowChange = revenueLastWeek > 0 ? ((revenueThisWeek - revenueLastWeek) / revenueLastWeek) * 100 : 100;
+  const wowChangeText = revenueLastWeek > 0 
+    ? `${wowChange >= 0 ? '+' : ''}${wowChange.toFixed(1)}%`
+    : 'New Baseline';
+
+  // --- MRR Calculation ---
+  const last30DaysTime = now - (30 * ONE_DAY);
+  const activeMemberships = new Set(
+    purchases
+      .filter(p => p.productId === 'funding-membership' && parseDateSafe(p.createdAt || p.timestamp).getTime() >= last30DaysTime)
+      .map(p => (p.email || '').toLowerCase().trim())
+      .filter(Boolean)
+  );
+  const mrr = activeMemberships.size * 29;
+
+  // --- Business Health Score Metrics ---
+  const getHealthStatus = (metric: string) => {
+    switch (metric) {
+      case 'Revenue':
+        if (revenueThisMonth >= 300) return { status: '🟢 Healthy', desc: 'MTD targets on track' };
+        if (revenueThisMonth > 0) return { status: '🟡 Warning', desc: 'MTD target under pace' };
+        return { status: '🔴 Critical', desc: 'Zero revenue recorded MTD' };
+      case 'SEO':
+        if (organicVisitorsThisMonth > 50) return { status: '🟢 Healthy', desc: `${organicVisitorsThisMonth} MTD organic visits` };
+        if (organicVisitorsThisMonth > 0) return { status: '🟡 Warning', desc: 'Low organic traffic' };
+        return { status: '🔴 Critical', desc: 'Zero organic traffic detected' };
+      case 'Checkout':
+        if (checkoutCvr >= 0.08) return { status: '🟢 Healthy', desc: `${(checkoutCvr * 105).toFixed(1)}% Conversion Rate` };
+        if (checkoutCvr > 0) return { status: '🟡 Warning', desc: 'Low checkout conversion' };
+        return { status: '🔴 Critical', desc: 'Zero checkout conversions' };
+      case 'Attribution':
+        const last7DaysTelemetry = postTelemetry.filter(e => parseDateSafe(e.timestamp).getTime() >= (now - 7 * ONE_DAY));
+        if (last7DaysTelemetry.length > 10) return { status: '🟢 Healthy', desc: 'Telemetry events streaming' };
+        return { status: '🔴 Critical', desc: 'No telemetry events in 7 days' };
+      case 'Email Delivery':
+        if (process.env.RESEND_API_KEY && process.env.RESEND_API_KEY !== 'mock_key') return { status: '🟢 Healthy', desc: 'Resend API connection active' };
+        return { status: '🔴 Critical', desc: 'Resend API Key missing' };
+      case 'Lead Capture':
+        if (leads.length > 0) return { status: '🟢 Healthy', desc: 'Google Sheets sync active' };
+        return { status: '🔴 Critical', desc: 'Google Sheets connection inactive' };
+      case 'Payment Processing':
+        if (process.env.PAYPAL_CLIENT_ID && process.env.PAYPAL_CLIENT_SECRET) return { status: '🟢 Healthy', desc: 'PayPal credentials live' };
+        return { status: '🟡 Warning', desc: 'PayPal Sandbox or mock keys active' };
+      case 'Report Delivery':
+        if (purchases.length > 0) return { status: '🟢 Healthy', desc: 'Purchase delivery logs active' };
+        return { status: '🔴 Critical', desc: 'No report delivery logs found' };
+      default:
+        return { status: '🟢 Healthy', desc: 'All systems green' };
+    }
+  };
+
+  // --- Product Performance Dashboard Matrix ---
+  const productCatalogTiers = [
+    { id: 'funding-approval-library', name: '$9 Library', price: 9 },
+    { id: 'funding-match-report', name: '$19 Report', price: 19 },
+    { id: 'funding-toolkit', name: '$29 Toolkit', price: 29 },
+    { id: 'funding-roadmap', name: '$49 Action Plan', price: 49 },
+    { id: 'funding-bundle', name: '$79 Bundle', price: 79 },
+    { id: 'consultation', name: '$199 Audit', price: 199 },
+  ];
+
+  const getProductViews = (productId: string) => {
+    return postTelemetry.filter(e => {
+      const path = String(e.pagePath || '').toLowerCase();
+      if (e.productId === productId) return true;
+      if (productId === 'funding-approval-library') return path.includes('/products/approval-library');
+      if (productId === 'funding-match-report') return path.includes('/products/funding-match-report') || path.includes('/products/report');
+      if (productId === 'funding-toolkit') return path.includes('/products/toolkit');
+      if (productId === 'funding-roadmap') return path.includes('/products/action-plan') || path.includes('/products/roadmap');
+      if (productId === 'funding-bundle') return path.includes('/products/bundle');
+      if (productId === 'consultation') return path.includes('/audit') || path.includes('/consultation');
+      return false;
+    }).length;
+  };
+
+  const getProductCheckoutStarts = (productId: string) => {
+    return postTelemetry.filter(e => {
+      return e.eventName === 'checkout_started' && 
+             (e.productId === productId ||
+              (productId === 'funding-match-report' && String(e.pagePath).includes('match-report')) ||
+              (productId === 'funding-roadmap' && String(e.pagePath).includes('roadmap')) ||
+              (productId === 'funding-bundle' && String(e.pagePath).includes('bundle')) ||
+              (productId === 'consultation' && String(e.pagePath).includes('audit')));
+    }).length;
+  };
+
+  const getProductPurchasesAndRevenue = (productId: string) => {
+    const prodPurchases = postPurchases.filter(p => p.productId === productId);
+    const count = prodPurchases.length;
+    const rev = prodPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+    return { count, rev };
+  };
+
+  const getProductRefundRate = (productId: string) => {
+    const prodPurchases = postPurchases.filter(p => p.productId === productId);
+    if (prodPurchases.length === 0) return 0;
+    const refundedCount = prodPurchases.filter(p => String(p.status).toLowerCase().includes('refund')).length;
+    return (refundedCount / prodPurchases.length) * 100;
+  };
+
+  const productPerformanceData = productCatalogTiers.map(prod => {
+    const views = getProductViews(prod.id);
+    const checkouts = getProductCheckoutStarts(prod.id);
+    const { count, rev } = getProductPurchasesAndRevenue(prod.id);
+    const refundRate = getProductRefundRate(prod.id);
+    return {
+      name: prod.name,
+      views,
+      checkouts,
+      purchases: count,
+      revenue: rev,
+      refundRate
+    };
+  });
+
   // Days Since Last Sale calculation
   let daysSinceLastSale = 'No sales recorded';
   let lastPurchaseDesc = 'Never';
@@ -930,27 +1108,99 @@ export default async function RevenueDashboardPage({
         {resolvedTab === 'executive' ? (
           /* 👑👑👑 FOUNDER REVENUE COMMAND CENTER VIEW 👑👑👑 */
           <div className="space-y-8">
-            {/* Top Row: Daily Business Stats */}
+            {/* CEO Scorecard Section */}
             <div>
               <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
-                <Clock className="w-5 h-5 text-indigo-600" />
-                Daily Operations Tracker
+                <Sparkles className="w-5 h-5 text-indigo-650 animate-pulse" />
+                CEO Scorecard (At-A-Glance Command)
               </h2>
               <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
                 {[
-                  { label: "Organic Visitors Today", value: visitorsToday, sub: "Unique active sessions today" },
-                  { label: "Calculator Starts Today", value: calcStartsToday, sub: "Calculator conversions today" },
-                  { label: "Report Purchases Today", value: reportPurchasesToday, sub: "Checkouts (<$199) today" },
-                  { label: "Audit Purchases Today", value: auditPurchasesToday, sub: "Checkouts (≥$199) today" },
-                  { label: "Revenue Today", value: `$${revenueToday.toLocaleString()}`, sub: `${purchasesToday.length} total payments` },
-                  { label: "Revenue This Month (MTD)", value: `$${revenueThisMonth.toLocaleString()}`, sub: `${purchasesThisMonth.length} MTD payments` },
+                  { label: "Today's Revenue", value: `$${revenueToday.toLocaleString()}`, sub: `${purchasesToday.length} payments today`, color: "border-slate-200" },
+                  { label: "MRR", value: `$${mrr.toLocaleString()}`, sub: `${activeMemberships.size} active subs ($29/mo)`, color: "border-slate-200" },
+                  { label: "Revenue Per Visitor", value: `$${postRpv.toFixed(2)}`, sub: `Across ${postUniqueVisitors.toLocaleString()} sessions`, color: "border-slate-200" },
+                  { label: "Checkout Conversion", value: `${postUniqueVisitors > 0 ? ((postPurchasesCount / postUniqueVisitors) * 100).toFixed(2) : '0.00'}%`, sub: `${postPurchasesCount} orders / ${postUniqueVisitors} sessions`, color: "border-slate-200" },
+                  { label: "Top Revenue Asset", value: pageStats[0]?.page ? (pageStats[0].page === '/' ? 'Home (/)': pageStats[0].page) : 'N/A', sub: `$${(pageStats[0]?.revenue || 0).toLocaleString()} generated`, color: "border-slate-200" },
+                  { label: "Revenue WoW", value: `$${revenueThisWeek.toLocaleString()} / $${revenueLastWeek.toLocaleString()}`, sub: `WoW Change: ${wowChangeText}`, color: "border-indigo-200 bg-indigo-50/10" },
                 ].map((stat) => (
-                  <div key={stat.label} className="bg-white rounded-xl border border-gray-200 p-5 shadow-xs">
+                  <div key={stat.label} className={`bg-white rounded-xl border p-5 shadow-xs flex flex-col justify-between ${stat.color}`}>
                     <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider leading-none">{stat.label}</p>
-                    <p className="text-3xl font-black text-slate-950 mt-3 tracking-tight">{stat.value}</p>
+                    <p className="text-xl font-black text-slate-955 mt-3 tracking-tight truncate" title={stat.value.toString()}>{stat.value}</p>
                     <p className="text-[9px] text-gray-400 font-semibold mt-1 leading-tight">{stat.sub}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* Business Health Score & Product Performance Grid */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Monday Morning Business Health Score */}
+              <div className="lg:col-span-5 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs flex flex-col justify-between">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Activity className="w-4.5 h-4.5 text-indigo-650" />
+                    Monday Morning Business Health Score
+                  </h3>
+                </div>
+                <div className="p-5 space-y-3 flex-1 justify-center flex flex-col">
+                  {[
+                    'Revenue', 'SEO', 'Checkout', 'Attribution',
+                    'Email Delivery', 'Lead Capture', 'Payment Processing', 'Report Delivery'
+                  ].map(metric => {
+                    const health = getHealthStatus(metric);
+                    return (
+                      <div key={metric} className="flex items-center justify-between text-xs pb-2 border-b border-slate-100 last:border-0 last:pb-0">
+                        <span className="font-semibold text-slate-700">{metric}</span>
+                        <div className="flex items-center gap-2">
+                          <span className="font-bold text-slate-900">{health.status}</span>
+                          <span className="text-[10px] text-slate-400 font-medium">({health.desc})</span>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              {/* Product Performance Dashboard Matrix */}
+              <div className="lg:col-span-7 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Tag className="w-4.5 h-4.5 text-indigo-655" />
+                    Product Performance Matrix
+                  </h3>
+                  <span className="text-[9px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded font-bold uppercase">Live Stats</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50/70 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Product Tier</th>
+                        <th className="px-4 py-2.5 text-center">Views</th>
+                        <th className="px-4 py-2.5 text-center">Checkout Starts</th>
+                        <th className="px-4 py-2.5 text-center">Purchases</th>
+                        <th className="px-4 py-2.5 text-center">AOV</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                        <th className="px-4 py-2.5 text-right">Refund %</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
+                      {productPerformanceData.map((row, idx) => {
+                        const aov = row.purchases > 0 ? row.revenue / row.purchases : 0;
+                        return (
+                          <tr key={idx} className="hover:bg-slate-50/30">
+                            <td className="px-4 py-2.5 font-semibold text-slate-800">{row.name}</td>
+                            <td className="px-4 py-2.5 text-center">{row.views}</td>
+                            <td className="px-4 py-2.5 text-center">{row.checkouts}</td>
+                            <td className="px-4 py-2.5 text-center">{row.purchases}</td>
+                            <td className="px-4 py-2.5 text-center text-slate-500">${aov.toFixed(2)}</td>
+                            <td className="px-4 py-2.5 text-right font-bold text-slate-950">${row.revenue.toLocaleString()}</td>
+                            <td className="px-4 py-2.5 text-right text-slate-400 font-semibold">{row.refundRate.toFixed(1)}%</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
@@ -1177,12 +1427,14 @@ export default async function RevenueDashboardPage({
                       <th className="px-6 py-3.5 text-center">Calculator Starts</th>
                       <th className="px-6 py-3.5 text-center">Purchases</th>
                       <th className="px-6 py-3.5 text-center">Visitor-to-Purchase CVR</th>
+                      <th className="px-6 py-3.5 text-center">RPV</th>
                       <th className="px-6 py-3.5 text-right">Revenue</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
                     {pageStats.map((stat, idx) => {
                       const cvr = stat.visitors > 0 ? (stat.purchases / stat.visitors) * 100 : 0;
+                      const rpv = stat.visitors > 0 ? stat.revenue / stat.visitors : 0;
                       return (
                         <tr key={idx} className="hover:bg-slate-50/50">
                           <td className="px-6 py-4 font-bold text-slate-800 break-all max-w-[250px] truncate">{stat.page}</td>
@@ -1190,13 +1442,14 @@ export default async function RevenueDashboardPage({
                           <td className="px-6 py-4 text-center">{stat.leads}</td>
                           <td className="px-6 py-4 text-center">{stat.purchases}</td>
                           <td className="px-6 py-4 text-center font-bold text-indigo-650">{cvr.toFixed(1)}%</td>
+                          <td className="px-6 py-4 text-center font-bold text-emerald-650">${rpv.toFixed(2)}</td>
                           <td className="px-6 py-4 text-right font-black text-slate-950">${stat.revenue.toLocaleString()}</td>
                         </tr>
                       );
                     })}
                     {pageStats.length === 0 && (
                       <tr>
-                        <td colSpan={6} className="px-6 py-8 text-center text-gray-400 font-semibold">No page traffic or revenue recorded post-telemetry.</td>
+                        <td colSpan={7} className="px-6 py-8 text-center text-gray-400 font-semibold">No page traffic or revenue recorded post-telemetry.</td>
                       </tr>
                     )}
                   </tbody>
@@ -1327,8 +1580,36 @@ export default async function RevenueDashboardPage({
                 </div>
               </div>
             </div>
-            {/* 2. Firmographic & Geographic Attribution */}
-            <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+            {/* 2. Firmographic, Geographic & Intent Attribution */}
+            <div className="grid grid-cols-1 lg:grid-cols-5 gap-6">
+              {/* Search Intent Breakdown */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
+                <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">
+                  <Compass className="w-5 h-5 text-indigo-655" />
+                  <h3 className="font-extrabold text-slate-900 text-base">Revenue by Search Intent</h3>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Search Intent</th>
+                        <th className="px-4 py-2.5 text-center">Sales</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 text-slate-700 font-medium">
+                      {intentStatsList.map((stat, idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="px-4 py-3 font-semibold text-slate-800">{stat.name}</td>
+                          <td className="px-4 py-3 text-center">{stat.sales}</td>
+                          <td className="px-4 py-3 text-right font-bold text-slate-950">${stat.revenue.toLocaleString()}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
               {/* Industry Breakdown */}
               <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs">
                 <div className="border-b border-gray-100 px-6 py-4 flex items-center gap-2">

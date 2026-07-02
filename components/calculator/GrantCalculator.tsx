@@ -66,6 +66,43 @@ export function GrantCalculator() {
     const [consentToPartnerContact, setConsentToPartnerContact] = useState(false);
     const [leadSaved, setLeadSaved] = useState(false);
     const [isPaypalButtonVisible, setIsPaypalButtonVisible] = useState(false);
+    const [upgradeCredit, setUpgradeCredit] = useState(0);
+    const [checkingCredit, setCheckingCredit] = useState(false);
+
+    const upgradeCreditRef = useRef(upgradeCredit);
+    useEffect(() => {
+        upgradeCreditRef.current = upgradeCredit;
+    }, [upgradeCredit]);
+
+    // Query server for eligible prior upgrade credit when email is valid on Step 6
+    useEffect(() => {
+        if (step !== 6 || !isEmailValid) {
+            setUpgradeCredit(0);
+            return;
+        }
+
+        let isMounted = true;
+        setCheckingCredit(true);
+        fetch(`/api/checkout/check-credit?email=${encodeURIComponent(data.email.trim())}`)
+            .then(res => res.json())
+            .then(resData => {
+                if (isMounted) {
+                    setUpgradeCredit(resData.totalCredit || 0);
+                }
+            })
+            .catch(err => {
+                console.error("❌ Failed to check customer upgrade credit:", err);
+            })
+            .finally(() => {
+                if (isMounted) {
+                    setCheckingCredit(false);
+                }
+            });
+
+        return () => {
+            isMounted = false;
+        };
+    }, [step, isEmailValid, data.email]);
 
     // Reactive live estimate calculation based on current steps filled
     const getLiveEstimate = () => {
@@ -978,7 +1015,10 @@ export function GrantCalculator() {
             const currentAddonToolkit = addonToolkitRef.current;
             const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
 
-            let price = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            let basePrice = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            const currentCredit = upgradeCreditRef.current || 0;
+            let price = Math.max(0.50, basePrice - currentCredit);
+
             let itemsList = currentProductId === 'funding-bundle' ? 'Complete Funding Bundle' : currentProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
             if (currentAddonToolkit) {
               price += 29;
@@ -1035,7 +1075,10 @@ export function GrantCalculator() {
             const currentAddonToolkit = addonToolkitRef.current;
             const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
 
-            let price = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            let basePrice = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
+            const currentCredit = upgradeCreditRef.current || 0;
+            let price = Math.max(0.50, basePrice - currentCredit);
+
             let itemsList = currentProductId === 'funding-bundle' ? 'Complete Funding Bundle' : currentProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
             if (currentAddonToolkit) {
               price += 29;
@@ -1284,9 +1327,12 @@ export function GrantCalculator() {
           },
           createOrder: (_data: any, actions: any) => {
             setPaymentError(null);
+            const currentCredit = upgradeCreditRef.current || 0;
+            const price = Math.max(0.50, 49 - currentCredit);
+
             if (typeof window !== 'undefined' && (window as any).gtag) {
               (window as any).gtag('event', 'begin_checkout', {
-                value: 49, currency: 'USD', items: [{ item_name: 'Funding Action Plan Upgrade', price: 49 }]
+                value: price, currency: 'USD', items: [{ item_name: 'Funding Action Plan Upgrade', price: price }]
               });
             }
             // Fire checkout_started telemetry
@@ -1296,12 +1342,12 @@ export function GrantCalculator() {
               body: JSON.stringify({
                 email: data.email,
                 event: "checkout_started",
-                priceShown: "49"
+                priceShown: price.toString()
               })
             }).catch(e => console.error("Telemetry error:", e));
             return actions.order.create({
               purchase_units: [{
-                amount: { value: '49.00', currency_code: 'USD' },
+                amount: { value: price.toFixed(2), currency_code: 'USD' },
                 description: 'Funding Action Plan Upgrade - FSI Digital'
               }]
             });
@@ -1321,11 +1367,14 @@ export function GrantCalculator() {
               const details = await actions.order.capture();
               const orderId = details?.id || '';
 
+              const currentCredit = upgradeCreditRef.current || 0;
+              const price = Math.max(0.50, 49 - currentCredit);
+
               if (typeof window !== 'undefined' && (window as any).gtag) {
                 (window as any).gtag('event', 'purchase', {
                   transaction_id: orderId,
-                  value: 49, currency: 'USD',
-                  items: [{ item_name: 'Funding Action Plan Upgrade', price: 49 }]
+                  value: price, currency: 'USD',
+                  items: [{ item_name: 'Funding Action Plan Upgrade', price: price }]
                 });
               }
 
@@ -2092,6 +2141,10 @@ export function GrantCalculator() {
                                   <span className="bg-emerald-600 text-white rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase shrink-0">Report Credit Offer</span>
                                   <span>Purchase your report today. Upgrade to a 1-on-1 Strategy Audit within 7 days, and your report fee is 100% credited.</span>
                                 </div>
+                                <div className="mt-2 bg-indigo-50 border border-indigo-200 rounded-lg px-3 py-2.5 text-xs text-indigo-900 font-semibold flex items-center gap-2">
+                                  <span className="bg-indigo-650 text-white rounded px-1.5 py-0.5 text-[10px] font-extrabold uppercase shrink-0">Upgrade Guarantee</span>
+                                  <span>Upgrade with confidence. Every dollar you spend today is credited toward higher-tier products. You&apos;ll never pay twice.</span>
+                                </div>
                               </div>
                             </div>
 
@@ -2348,6 +2401,24 @@ export function GrantCalculator() {
                                    </div>
                                  </div>
                                  
+                                 {upgradeCredit > 0 && (
+                                     <div className="bg-gradient-to-r from-indigo-50 to-emerald-50 border-2 border-emerald-300 rounded-xl p-4 text-xs font-semibold text-slate-800 flex items-start gap-3 max-w-2xl mx-auto mb-5 animate-in fade-in duration-300">
+                                         <ShieldCheck className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                                         <div className="text-left">
+                                             <strong className="text-emerald-850 block">Prorated Upgrade Credit Active:</strong>
+                                             Every purchase you make is credited toward higher-tier products. <span className="text-emerald-700 font-extrabold">You never pay twice.</span> We detected prior purchases under your email and applied a <span className="text-emerald-700 font-extrabold">${upgradeCredit.toFixed(2)} USD</span> credit to your transaction.
+                                         </div>
+                                     </div>
+                                  )}
+
+                                  {/* Upgrade Credit Brand Promise — Always Visible */}
+                                  {upgradeCredit === 0 && (
+                                    <div className="flex items-center justify-center gap-2 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-2.5 text-[11px] text-emerald-800 font-medium max-w-2xl mx-auto mb-4">
+                                      <span className="text-emerald-600 font-black text-base shrink-0">↑</span>
+                                      <span><strong>Upgrade with confidence.</strong> Every dollar you spend today is credited toward higher-tier products. <strong>You&apos;ll never pay twice.</strong></span>
+                                    </div>
+                                  )}
+
                                  <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                                      {/* Tier 3: $19 Match Report */}
                                      <div
@@ -2368,7 +2439,14 @@ export function GrantCalculator() {
                                              </div>
                                              <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed text-left">We identify which programs are worth your time before you spend hours applying.</p>
                                              <div className="mt-3 flex items-baseline gap-1">
-                                                 <span className="text-2xl font-black text-slate-900">$19</span>
+                                                 {upgradeCredit > 0 ? (
+                                                     <>
+                                                         <span className="text-2xl font-black text-slate-900">${Math.max(0.50, 19 - upgradeCredit).toFixed(2)}</span>
+                                                         <span className="text-xs text-slate-400 line-through font-medium">$19</span>
+                                                     </>
+                                                 ) : (
+                                                     <span className="text-2xl font-black text-slate-900">$19</span>
+                                                 )}
                                                  <span className="text-[10px] text-slate-400">one-time</span>
                                              </div>
                                              <ul className="mt-4 space-y-2 text-[11px] text-slate-600 border-t border-slate-100 pt-3 text-left">
@@ -2423,7 +2501,14 @@ export function GrantCalculator() {
                                              </div>
                                              <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed text-left font-medium">Everything required to map, plan, and prepare your applications correctly.</p>
                                              <div className="mt-3 flex items-baseline gap-1">
-                                                 <span className="text-2xl font-black text-slate-900">$79</span>
+                                                 {upgradeCredit > 0 ? (
+                                                     <>
+                                                         <span className="text-2xl font-black text-slate-900">${Math.max(0.50, 79 - upgradeCredit).toFixed(2)}</span>
+                                                         <span className="text-xs text-slate-450 line-through font-medium">$79</span>
+                                                     </>
+                                                 ) : (
+                                                     <span className="text-2xl font-black text-slate-900">$79</span>
+                                                 )}
                                                  <span className="text-[10px] text-slate-400">one-time</span>
                                              </div>
                                              <ul className="mt-4 space-y-2 text-[11px] text-slate-750 border-t border-indigo-100 pt-3 text-left">
@@ -2475,7 +2560,14 @@ export function GrantCalculator() {
                                              </div>
                                              <p className="text-[11px] text-slate-500 mt-1.5 leading-relaxed text-left">We tell you exactly what to do first, second, and third to stack funding.</p>
                                              <div className="mt-3 flex items-baseline gap-1">
-                                                 <span className="text-2xl font-black text-slate-900">$49</span>
+                                                 {upgradeCredit > 0 ? (
+                                                     <>
+                                                         <span className="text-2xl font-black text-slate-900">${Math.max(0.50, 49 - upgradeCredit).toFixed(2)}</span>
+                                                         <span className="text-xs text-slate-400 line-through font-medium">$49</span>
+                                                     </>
+                                                 ) : (
+                                                     <span className="text-2xl font-black text-slate-900">$49</span>
+                                                 )}
                                                  <span className="text-[10px] text-slate-400">one-time</span>
                                              </div>
                                              <ul className="mt-4 space-y-2 text-[11px] text-slate-600 border-t border-slate-100 pt-3 text-left">

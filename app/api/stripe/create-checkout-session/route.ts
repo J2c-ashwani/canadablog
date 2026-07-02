@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/payments/stripe';
 import { getProduct } from '@/lib/products/catalog';
+import { getPurchasesByEmail } from '@/lib/products/purchase-store';
 
 export async function POST(request: NextRequest) {
   try {
@@ -22,17 +23,34 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // ── Check past purchases to calculate upgrade credit ──
+    const purchases = await getPurchasesByEmail(email);
+    let totalCredit = 0;
+    for (const p of purchases) {
+      const amountVal = parseFloat(p.amount) || 0;
+      if (amountVal > 0) {
+        totalCredit += amountVal;
+      }
+    }
+
     // ── Calculate total price ──
-    let expectedPrice = product.priceUsd;
+    let netProductPrice = product.priceUsd - totalCredit;
+    if (netProductPrice < 0.50) {
+      netProductPrice = 0.50; // Stripe minimum charge is $0.50 USD
+    }
+
+    let expectedPrice = netProductPrice;
     const lineItems: any[] = [
       {
         price_data: {
           currency: 'usd',
           product_data: {
-            name: product.name,
-            description: product.tagline,
+            name: totalCredit > 0 ? `${product.name} (Prorated Upgrade)` : product.name,
+            description: totalCredit > 0 
+              ? `${product.tagline} (Applied prior purchase credit: $${totalCredit.toFixed(2)})`
+              : product.tagline,
           },
-          unit_amount: Math.round(product.priceUsd * 100), // in cents
+          unit_amount: Math.round(netProductPrice * 100), // in cents
         },
         quantity: 1,
       },

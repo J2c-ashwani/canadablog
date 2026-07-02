@@ -317,6 +317,19 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           </div>
         </div>
 
+        {/* Upgrade Credit Guarantee — Brand Promise */}
+        <div className="flex items-start gap-3 border-b border-slate-700/40 pb-4 bg-emerald-900/10 border border-emerald-700/20 rounded-xl px-4 pt-4">
+          <div className="w-8 h-8 rounded-full bg-emerald-900/30 border border-emerald-700/30 flex items-center justify-center shrink-0 mt-0.5">
+            <span className="text-emerald-400 text-base">↑</span>
+          </div>
+          <div>
+            <h4 className="text-[10px] font-bold text-emerald-300 uppercase tracking-wider">Upgrade Credit Guarantee</h4>
+            <p className="text-[10.5px] text-emerald-200/70 mt-0.5 leading-relaxed">
+              Upgrade with confidence. <span className="font-bold text-emerald-300">Every dollar you spend today is credited toward higher-tier products.</span> You&apos;ll never pay twice.
+            </p>
+          </div>
+        </div>
+
         {/* Step 4: Secure Checkout Setup (PayPal/Stripe) and optional order bumps */}
         <div className="space-y-4 pt-1">
           <div>

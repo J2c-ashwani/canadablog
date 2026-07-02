@@ -530,6 +530,14 @@ export function AIGrantFinderForm() {
                           : 'This tier unlocks the list of matching opportunities with deadlines, estimated values, and direct links.'}
                       </div>
 
+                      {/* Upgrade Credit Guarantee — Brand Promise */}
+                      <div className="flex items-center gap-3 bg-emerald-50 border border-emerald-200 rounded-xl px-4 py-3 mb-4">
+                        <span className="text-emerald-600 text-lg shrink-0">↑</span>
+                        <p className="text-[11px] text-emerald-800 font-medium leading-snug">
+                          <span className="font-extrabold text-emerald-700">Upgrade with confidence.</span> Every dollar you spend today is credited toward higher-tier products. <span className="font-extrabold text-emerald-700">You&apos;ll never pay twice.</span>
+                        </p>
+                      </div>
+
                       {/* Checkout Action Section */}
                       <div className="border border-slate-200 rounded-xl p-5 shadow-2xs mb-4">
                         <div className="flex items-center gap-2 border-b border-slate-200 pb-2 mb-4">

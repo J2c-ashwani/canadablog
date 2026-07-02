@@ -50,6 +50,13 @@ export default function ActionPlanPage() {
                 </div>
               </div>
             </div>
+            {/* Upgrade Credit Guarantee */}
+            <div className="flex items-center gap-3 bg-emerald-900/20 border border-emerald-700/30 rounded-xl px-4 py-3 max-w-lg">
+              <span className="text-emerald-400 text-xl shrink-0">↑</span>
+              <p className="text-[11px] text-emerald-200/80 leading-snug font-medium">
+                <span className="font-extrabold text-emerald-300">Upgrade with confidence.</span> Every dollar you spend today is credited toward higher-tier products. <span className="font-extrabold text-emerald-300">You&apos;ll never pay twice.</span>
+              </p>
+            </div>
 
             {/* Checklist of what's inside */}
             <div className="space-y-3 pt-2">
