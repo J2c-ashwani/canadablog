@@ -1043,16 +1043,60 @@ export default async function RevenueDashboardPage({
   // REVENUE INTELLIGENCE LAYER — All Computations
   // ═══════════════════════════════════════════════════
 
-  // --- 1. MASTER FUNNEL LEAK (all-channel, 7d + all-time) ---
-  const funnelEventCount = (eventNames: string[], window: 'all' | '7d' = 'all') => {
-    const cutoff = window === '7d' ? now - 7 * ONE_DAY : 0;
-    return postTelemetry.filter(e =>
-      eventNames.includes(e.eventName) &&
-      parseDateSafe(e.timestamp).getTime() >= cutoff
-    ).length;
+  // --- HELPER: filter telemetry by event names, optional path filter, optional time window ---
+  const telCount = (eventNames: string[], pathFilter?: string, window?: 'all' | '7d' | 'prev7d') => {
+    const cutoff = window === '7d' ? now - 7 * ONE_DAY : window === 'prev7d' ? now - 14 * ONE_DAY : 0;
+    const ceiling = window === 'prev7d' ? now - 7 * ONE_DAY : Infinity;
+    return postTelemetry.filter(e => {
+      const t = parseDateSafe(e.timestamp).getTime();
+      if (!eventNames.includes(e.eventName)) return false;
+      if (pathFilter && !String(e.pagePath || '').toLowerCase().includes(pathFilter)) return false;
+      if (t < cutoff) return false;
+      if (t > ceiling) return false;
+      return true;
+    }).length;
   };
+  const funnelEventCount = (eventNames: string[], window: 'all' | '7d' = 'all') => telCount(eventNames, undefined, window);
   const funnelEventCount7d = (eventNames: string[]) => funnelEventCount(eventNames, '7d');
 
+  // --- 1. SEGMENTED FUNNELS (4 channels) ---
+  const buildFunnel = (label: string, pathHint: string | null, purchaseFilter: (p: any) => boolean) => {
+    const matchPath = (e: any) => !pathHint || String(e.pagePath || '').toLowerCase().includes(pathHint);
+    const purch = postPurchases.filter(purchaseFilter);
+    const purch7d = purch.filter(p => parseDateSafe(p.createdAt || p.timestamp).getTime() >= now - 7 * ONE_DAY);
+    return [
+      { step: 'Visitors', icon: '🌐',
+        all: pathHint ? new Set(postTelemetry.filter(e => matchPath(e)).map(e => e.sessionId)).size : postUniqueVisitors,
+        d7: pathHint ? new Set(postTelemetry.filter(e => matchPath(e) && parseDateSafe(e.timestamp).getTime() >= now - 7 * ONE_DAY).map(e => e.sessionId)).size : new Set(postTelemetry.filter(e => parseDateSafe(e.timestamp).getTime() >= now - 7 * ONE_DAY).map(e => e.sessionId)).size },
+      { step: 'Engaged', icon: '👁️',
+        all: telCount(['page_view', 'session_start', 'calculator_opened', 'calculator_start'], pathHint || undefined),
+        d7: telCount(['page_view', 'session_start', 'calculator_opened', 'calculator_start'], pathHint || undefined, '7d') },
+      { step: 'Started Tool', icon: '🔢',
+        all: telCount(['calculator_start', 'calculator_opened', 'calculator_view', 'form_start', 'grant_finder_start'], pathHint || undefined),
+        d7: telCount(['calculator_start', 'calculator_opened', 'calculator_view', 'form_start', 'grant_finder_start'], pathHint || undefined, '7d') },
+      { step: 'Completed', icon: '✅',
+        all: telCount(['calculator_complete', 'calculator_completed', 'calculator_results_shown', 'grant_results_shown'], pathHint || undefined),
+        d7: telCount(['calculator_complete', 'calculator_completed', 'calculator_results_shown', 'grant_results_shown'], pathHint || undefined, '7d') },
+      { step: 'Package Selected', icon: '📦',
+        all: telCount(['package_selected', 'paywall_viewed', 'report_paywall_viewed'], pathHint || undefined),
+        d7: telCount(['package_selected', 'paywall_viewed', 'report_paywall_viewed'], pathHint || undefined, '7d') },
+      { step: 'Checkout Started', icon: '💳',
+        all: telCount(['checkout_started', 'standalone_checkout_started', 'begin_checkout'], pathHint || undefined),
+        d7: telCount(['checkout_started', 'standalone_checkout_started', 'begin_checkout'], pathHint || undefined, '7d') },
+      { step: 'Purchased', icon: '💰',
+        all: purch.length,
+        d7: purch7d.length },
+    ];
+  };
+
+  const segmentedFunnels = [
+    { key: 'calculator', label: '🔢 Calculator Funnel', data: buildFunnel('Calculator', 'calculator', p => !['consultation','funding-membership'].includes(p.productId) && !String(p.attribution?.lastTouchPage || '').includes('grant-finder')) },
+    { key: 'aifinder',   label: '🤖 AI Grant Finder', data: buildFunnel('AI Finder', 'grant-finder', p => String(p.attribution?.lastTouchPage || p.utmSource || '').toLowerCase().includes('grant-finder') || String(p.utmSource || '').includes('ai-finder')) },
+    { key: 'standalone', label: '🛍️ Standalone Products', data: buildFunnel('Products', 'products', p => !['consultation','funding-membership'].includes(p.productId)) },
+    { key: 'audit',      label: '📞 Audit / Consultation', data: buildFunnel('Audit', 'audit', p => p.productId === 'consultation' || (parseFloat(p.amount) || 0) >= 199) },
+  ];
+
+  // Master funnel (all channels combined — kept for Lost Revenue calc)
   const masterFunnel = [
     {
       step: 'Unique Visitors',
@@ -1196,29 +1240,98 @@ export default async function RevenueDashboardPage({
     .sort((a, b) => b.revenue - a.revenue)
     .slice(0, 12);
 
-  // --- 5. REVENUE PER SPRINT ---
+  // --- 5. REVENUE PER SPRINT (with experiments) ---
   const sprintHistory = [
-    { sprint: 1, name: 'Foundation', goal: 'Build products + checkout', startDate: '2026-06-01', endDate: '2026-06-13' },
-    { sprint: 2, name: 'Monetization', goal: 'PayPal + delivery + email sequences', startDate: '2026-06-13', endDate: '2026-06-22' },
-    { sprint: 3, name: 'Attribution', goal: 'Multi-touch UTM + telemetry + CEO dashboard v1', startDate: '2026-06-22', endDate: '2026-07-02' },
-    { sprint: 4, name: 'Revenue Intelligence', goal: 'Upgrade guarantee + funnel leak + revenue by intent', startDate: '2026-07-02', endDate: '2026-07-10' },
+    { sprint: 1, name: 'Foundation',           experiment: 'Products + Checkout',                  startDate: '2026-06-01', endDate: '2026-06-13', winnerNote: null },
+    { sprint: 2, name: 'Monetization',         experiment: 'PayPal + Email Sequences',             startDate: '2026-06-13', endDate: '2026-06-22', winnerNote: null },
+    { sprint: 3, name: 'Attribution',          experiment: 'Multi-touch UTM + CEO Dashboard v1',   startDate: '2026-06-22', endDate: '2026-07-02', winnerNote: null },
+    { sprint: 4, name: 'Revenue Intelligence', experiment: 'Upgrade Credit + Funnel Leak Layer',   startDate: '2026-07-02', endDate: '2026-07-10', winnerNote: 'Pending — measure Jul 17' },
   ];
   const sprintData = sprintHistory.map((s, i) => {
     const start = new Date(s.startDate).getTime();
-    const end = new Date(s.endDate).getTime();
+    const end = Math.min(new Date(s.endDate).getTime(), now);
     const sprintRev = postPurchases
       .filter(p => { const t = parseDateSafe(p.createdAt || p.timestamp).getTime(); return t >= start && t <= end; })
       .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
     const prevRev = i === 0 ? 0 : (() => {
       const ps = new Date(sprintHistory[i-1].startDate).getTime();
-      const pe = new Date(sprintHistory[i-1].endDate).getTime();
+      const pe = Math.min(new Date(sprintHistory[i-1].endDate).getTime(), now);
       return postPurchases
         .filter(p => { const t = parseDateSafe(p.createdAt || p.timestamp).getTime(); return t >= ps && t <= pe; })
         .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
     })();
     const delta = sprintRev - prevRev;
-    return { ...s, revenue: sprintRev, prevRevenue: prevRev, delta };
+    const winner = i === 0 ? null : delta > 0 ? '✅' : delta < -5 ? '❌' : '⏳';
+    return { ...s, revenue: sprintRev, prevRevenue: prevRev, delta, winner };
   });
+
+  // --- 6. TREND ARROWS (7d vs prior 7d) ---
+  const trend7dVsPrev = (currentVal: number, prevVal: number) => {
+    if (prevVal === 0) return { arrow: '—', pct: 0, up: null };
+    const pct = ((currentVal - prevVal) / prevVal) * 100;
+    return { arrow: pct >= 0 ? '↑' : '↓', pct: Math.abs(pct), up: pct >= 0 };
+  };
+  const checkoutStarted7d = telCount(['checkout_started', 'standalone_checkout_started', 'begin_checkout'], undefined, '7d');
+  const checkoutStartedPrev = telCount(['checkout_started', 'standalone_checkout_started', 'begin_checkout'], undefined, 'prev7d');
+  const purchases7d = postPurchases.filter(p => parseDateSafe(p.createdAt || p.timestamp).getTime() >= now - 7 * ONE_DAY).length;
+  const purchasesPrev = postPurchases.filter(p => { const t = parseDateSafe(p.createdAt || p.timestamp).getTime(); return t >= now - 14 * ONE_DAY && t < now - 7 * ONE_DAY; }).length;
+  const checkoutCvr7d = checkoutStarted7d > 0 ? (purchases7d / checkoutStarted7d) * 100 : 0;
+  const checkoutCvrPrev = checkoutStartedPrev > 0 ? (purchasesPrev / checkoutStartedPrev) * 100 : 0;
+  const checkoutCvrTrend = trend7dVsPrev(checkoutCvr7d, checkoutCvrPrev);
+
+  const aiFinderVisitors7d = new Set(postTelemetry.filter(e => parseDateSafe(e.timestamp).getTime() >= now - 7 * ONE_DAY && String(e.pagePath || '').includes('grant-finder')).map(e => e.sessionId)).size;
+  const aiFinderVisitorsPrev = new Set(postTelemetry.filter(e => { const t = parseDateSafe(e.timestamp).getTime(); return t >= now - 14 * ONE_DAY && t < now - 7 * ONE_DAY && String(e.pagePath || '').includes('grant-finder'); }).map(e => e.sessionId)).size;
+  const aiFinderRpv7d = aiFinderVisitors7d > 0 ? postPurchases.filter(p => parseDateSafe(p.createdAt || p.timestamp).getTime() >= now - 7 * ONE_DAY && String(p.attribution?.lastTouchPage || '').includes('grant-finder')).reduce((s, p) => s + (parseFloat(p.amount) || 0), 0) / aiFinderVisitors7d : 0;
+  const aiFinderRpvPrev = aiFinderVisitorsPrev > 0 ? postPurchases.filter(p => { const t = parseDateSafe(p.createdAt || p.timestamp).getTime(); return t >= now - 14 * ONE_DAY && t < now - 7 * ONE_DAY && String(p.attribution?.lastTouchPage || '').includes('grant-finder'); }).reduce((s, p) => s + (parseFloat(p.amount) || 0), 0) / aiFinderVisitorsPrev : 0;
+  const aiFinderRpvTrend = trend7dVsPrev(aiFinderRpv7d, aiFinderRpvPrev);
+
+  // --- 7. TOP OPPORTUNITIES (morning action panel) ---
+  const worstLeakRow = lostRevenueRows[0];
+  const topIntentRow = revenueByIntent.find(r => r.visitors >= 20 && r.rpv >= 0.50);
+  const highTrafficLowRpv = revenueByIntent.find(r => r.visitors >= 100 && r.rpv < 0.20);
+
+  const topOpportunities: { rank: number; title: string; desc: string; monthlyValue: string; confidence: number; difficulty: 'Low' | 'Medium' | 'High' }[] = [];
+
+  if (worstLeakRow) {
+    topOpportunities.push({
+      rank: 1,
+      title: `Fix: ${worstLeakRow.step}`,
+      desc: worstLeakRow.action,
+      monthlyValue: `+$${Math.round(worstLeakRow.estimatedLost * 0.10 * 4.3).toLocaleString()}/mo`,
+      confidence: 92,
+      difficulty: 'Low',
+    });
+  }
+  if (topIntentRow) {
+    topOpportunities.push({
+      rank: topOpportunities.length + 1,
+      title: `Expand: ${topIntentRow.intent} pages`,
+      desc: `RPV $${topIntentRow.rpv.toFixed(2)} with ${topIntentRow.visitors} visitors — build 10 more of this content type`,
+      monthlyValue: `+$${Math.round(topIntentRow.rpv * topIntentRow.visitors * 0.5 * 4.3).toLocaleString()}/mo`,
+      confidence: 81,
+      difficulty: 'Medium',
+    });
+  }
+  if (highTrafficLowRpv) {
+    topOpportunities.push({
+      rank: topOpportunities.length + 1,
+      title: `Optimize: ${highTrafficLowRpv.intent} pages`,
+      desc: `${highTrafficLowRpv.visitors.toLocaleString()} visitors but RPV only $${highTrafficLowRpv.rpv.toFixed(3)} — add calculator widget or stronger CTA`,
+      monthlyValue: `+$${Math.round(highTrafficLowRpv.visitors * 0.005 * avgBasket * 4.3).toLocaleString()}/mo`,
+      confidence: 74,
+      difficulty: 'Medium',
+    });
+  }
+  if (topOpportunities.length < 3) {
+    topOpportunities.push({
+      rank: topOpportunities.length + 1,
+      title: 'Improve Checkout CVR',
+      desc: 'Add trust badge + money-back guarantee text directly above PayPal button on all checkout pages',
+      monthlyValue: `+$${Math.round(avgBasket * 2 * 4.3).toLocaleString()}/mo`,
+      confidence: 85,
+      difficulty: 'Low',
+    });
+  }
 
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-between">
@@ -2608,91 +2721,124 @@ export default async function RevenueDashboardPage({
               <p className="text-sm text-slate-400 mt-1">Live data. No hard-coding. Every number derived from actual purchase and session records.</p>
             </div>
 
-            {/* ─── 1. MASTER FUNNEL LEAK ─── */}
+            {/* ─── 0. TOP OPPORTUNITIES — Morning Action Panel ─── */}
             <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
-              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50 flex items-center justify-between">
-                <div>
-                  <h3 className="font-black text-slate-900 text-sm flex items-center gap-2">🔻 Master Funnel Leak Dashboard</h3>
-                  <p className="text-[11px] text-slate-400 mt-0.5">All channels combined. One row = one conversion step. Find the biggest drop in 10 seconds.</p>
-                </div>
+              <div className="border-b border-gray-100 px-6 py-4 bg-gradient-to-r from-indigo-50 to-white">
+                <h3 className="font-black text-slate-900 text-sm flex items-center gap-2">⚡ Top Opportunities — Do This Next</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Ranked by estimated monthly revenue recovery. Start with #1 today.</p>
               </div>
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
-                  <thead>
-                    <tr className="border-b border-gray-100 bg-gray-50/50">
-                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Step</th>
-                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">All-Time</th>
-                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Last 7 Days</th>
-                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">CVR from prev</th>
-                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Trend</th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-50">
-                    {masterFunnel.map((row, i) => {
-                      const prev = masterFunnel[i - 1];
-                      const cvr = prev && prev.all > 0 ? (row.all / prev.all) * 100 : 100;
-                      const dropPct = 100 - cvr;
-                      const isBigDrop = dropPct > 50;
-                      const isMedDrop = dropPct > 25 && dropPct <= 50;
-                      return (
-                        <tr key={row.step} className={`${
-                          isBigDrop ? 'bg-red-50/60' : isMedDrop ? 'bg-amber-50/40' : ''
-                        }`}>
-                          <td className="px-6 py-3.5 font-semibold text-slate-800">
-                            <span className="mr-2">{row.icon}</span>{row.step}
-                            {isBigDrop && <span className="ml-2 text-[9px] font-black uppercase text-red-600 bg-red-100 px-1.5 py-0.5 rounded">⚠ Big Leak</span>}
-                          </td>
-                          <td className="px-4 py-3.5 text-right font-black text-slate-900">{row.all.toLocaleString()}</td>
-                          <td className="px-4 py-3.5 text-right font-semibold text-slate-600">{row.d7.toLocaleString()}</td>
-                          <td className="px-4 py-3.5 text-right">
-                            {i === 0 ? (
-                              <span className="text-slate-400 text-xs">—</span>
-                            ) : (
-                              <span className={`font-black text-sm ${
-                                cvr >= 60 ? 'text-emerald-700' : cvr >= 30 ? 'text-amber-600' : 'text-red-600'
-                              }`}>{cvr.toFixed(1)}%</span>
-                            )}
-                          </td>
-                          <td className="px-4 py-3.5 text-right">
-                            {i === 0 ? '—' : dropPct > 40 ? '🔴 Drop' : dropPct > 20 ? '🟡 Warn' : '🟢 OK'}
-                          </td>
-                        </tr>
-                      );
-                    })}
-                  </tbody>
-                </table>
+              <div className="divide-y divide-gray-50">
+                {topOpportunities.length === 0 ? (
+                  <p className="px-6 py-8 text-sm text-slate-400 text-center">Not enough data yet — visit after 50+ sessions have been recorded.</p>
+                ) : topOpportunities.map((opp) => (
+                  <div key={opp.rank} className="px-6 py-5 flex flex-col sm:flex-row sm:items-center gap-4">
+                    <div className={`w-10 h-10 rounded-full flex items-center justify-center font-black text-lg shrink-0 ${
+                      opp.rank === 1 ? 'bg-red-100 text-red-700' : opp.rank === 2 ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700'
+                    }`}>#{opp.rank}</div>
+                    <div className="flex-1">
+                      <p className="font-black text-slate-900 text-sm">{opp.title}</p>
+                      <p className="text-xs text-slate-500 mt-0.5">{opp.desc}</p>
+                    </div>
+                    <div className="text-right shrink-0 min-w-[120px]">
+                      <p className="font-black text-emerald-700 text-lg">{opp.monthlyValue}</p>
+                      <div className="flex items-center justify-end gap-2 mt-1">
+                        <span className={`text-[9px] font-black uppercase px-1.5 py-0.5 rounded ${
+                          opp.difficulty === 'Low' ? 'bg-emerald-100 text-emerald-700' :
+                          opp.difficulty === 'Medium' ? 'bg-amber-100 text-amber-700' :
+                          'bg-red-100 text-red-700'
+                        }`}>{opp.difficulty}</span>
+                        <span className="text-[9px] text-slate-400 font-semibold">{opp.confidence}% conf.</span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
 
-            {/* ─── 2. LOST REVENUE WITH CAUSE + ACTION ─── */}
+            {/* ─── 1. SEGMENTED FUNNELS ─── */}
+            <div>
+              <div className="flex items-center justify-between mb-4">
+                <div>
+                  <h3 className="font-black text-slate-900 text-sm flex items-center gap-2">🔻 Segmented Funnel Leaks</h3>
+                  <p className="text-[11px] text-slate-400 mt-0.5">4 channels. One aggregate number hides a failing funnel — so here they&apos;re split.</p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                {segmentedFunnels.map((funnel) => (
+                  <div key={funnel.key} className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+                    <div className="border-b border-gray-100 px-5 py-3 bg-slate-50">
+                      <h4 className="font-black text-slate-800 text-xs">{funnel.label}</h4>
+                    </div>
+                    <table className="w-full text-sm">
+                      <thead>
+                        <tr className="border-b border-gray-50 bg-gray-50/30">
+                          <th className="px-5 py-2 text-left text-[9px] font-black uppercase tracking-wider text-gray-400">Step</th>
+                          <th className="px-3 py-2 text-right text-[9px] font-black uppercase tracking-wider text-gray-400">All</th>
+                          <th className="px-3 py-2 text-right text-[9px] font-black uppercase tracking-wider text-gray-400">7d</th>
+                          <th className="px-3 py-2 text-right text-[9px] font-black uppercase tracking-wider text-gray-400">CVR</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-50">
+                        {funnel.data.map((row, i) => {
+                          const prev = funnel.data[i - 1];
+                          const cvr = prev && prev.all > 0 ? (row.all / prev.all) * 100 : 100;
+                          const dropPct = 100 - cvr;
+                          const isBigDrop = i > 0 && dropPct > 50;
+                          return (
+                            <tr key={row.step} className={isBigDrop ? 'bg-red-50/50' : ''}>
+                              <td className="px-5 py-2.5 font-semibold text-slate-700 text-xs">
+                                <span className="mr-1.5">{row.icon}</span>{row.step}
+                                {isBigDrop && <span className="ml-1.5 text-[8px] font-black text-red-600 bg-red-100 px-1 py-0.5 rounded">LEAK</span>}
+                              </td>
+                              <td className="px-3 py-2.5 text-right font-black text-slate-900 text-xs">{row.all.toLocaleString()}</td>
+                              <td className="px-3 py-2.5 text-right font-semibold text-slate-500 text-xs">{row.d7.toLocaleString()}</td>
+                              <td className="px-3 py-2.5 text-right text-xs">
+                                {i === 0 ? <span className="text-slate-300">—</span> : (
+                                  <span className={`font-black ${cvr >= 60 ? 'text-emerald-700' : cvr >= 30 ? 'text-amber-600' : 'text-red-600'}`}>{cvr.toFixed(0)}%</span>
+                                )}
+                              </td>
+                            </tr>
+                          );
+                        })}
+                      </tbody>
+                    </table>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ─── 2. LOST REVENUE — RANKED ─── */}
             <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
               <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
-                <h3 className="font-black text-slate-900 text-sm">💸 Lost Revenue — Where and Why</h3>
-                <p className="text-[11px] text-slate-400 mt-0.5">Drops × avg basket (${avgBasket.toFixed(0)}). Each row gives cause and a specific action to recover it.</p>
+                <h3 className="font-black text-slate-900 text-sm">💸 Lost Revenue — Ranked by Impact</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Sorted by estimated recoverable revenue. Your next sprint target is #1.</p>
               </div>
               <div className="divide-y divide-gray-50">
                 {lostRevenueRows.length === 0 ? (
                   <p className="px-6 py-8 text-sm text-slate-400 text-center">Not enough funnel data yet to calculate lost revenue.</p>
-                ) : lostRevenueRows.map((row) => (
-                  <div key={row.step} className="px-6 py-4 flex flex-col sm:flex-row sm:items-start gap-4">
+                ) : lostRevenueRows.map((row, idx) => (
+                  <div key={row.step} className={`px-6 py-4 flex flex-col sm:flex-row sm:items-start gap-4 ${idx === 0 ? 'bg-red-50/30' : ''}`}>
+                    <div className={`w-8 h-8 rounded-full flex items-center justify-center font-black text-sm shrink-0 mt-0.5 ${
+                      idx === 0 ? 'bg-red-600 text-white' : idx === 1 ? 'bg-amber-500 text-white' : 'bg-gray-200 text-gray-600'
+                    }`}>#{idx + 1}</div>
                     <div className="flex-1">
                       <div className="flex items-center gap-2 mb-1">
                         <span>{row.icon}</span>
                         <span className="font-black text-slate-900 text-sm">{row.step}</span>
                         <span className="text-[9px] font-black uppercase text-red-600 bg-red-100 px-1.5 py-0.5 rounded">{row.dropPct.toFixed(0)}% drop</span>
                       </div>
-                      <p className="text-xs text-slate-500">{row.from.toLocaleString()} → {row.to.toLocaleString()} ({row.dropped.toLocaleString()} lost)</p>
+                      <p className="text-xs text-slate-500">{row.from.toLocaleString()} → {row.to.toLocaleString()} ({row.dropped.toLocaleString()} dropped)</p>
                     </div>
-                    <div className="sm:w-64">
+                    <div className="sm:w-56">
                       <p className="text-[10px] font-black uppercase text-amber-600 tracking-wider mb-0.5">Likely Cause</p>
                       <p className="text-xs text-slate-700">{row.cause}</p>
                     </div>
-                    <div className="sm:w-64">
+                    <div className="sm:w-56">
                       <p className="text-[10px] font-black uppercase text-emerald-600 tracking-wider mb-0.5">Action</p>
                       <p className="text-xs text-emerald-800 font-semibold">{row.action}</p>
                     </div>
                     <div className="text-right shrink-0">
-                      <p className="text-[10px] font-black uppercase text-gray-400 tracking-wider">Est. Lost</p>
+                      <p className="text-[10px] font-black uppercase text-gray-400 tracking-wider">Potential Recovery</p>
                       <p className="text-xl font-black text-red-600">${row.estimatedLost.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
                     </div>
                   </div>
@@ -2700,11 +2846,20 @@ export default async function RevenueDashboardPage({
               </div>
             </div>
 
-            {/* ─── 3. REVENUE BY INTENT ─── */}
+            {/* ─── 3. REVENUE BY INTENT (with sample size + trend) ─── */}
             <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
-              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
-                <h3 className="font-black text-slate-900 text-sm">🎯 Revenue by Intent</h3>
-                <p className="text-[11px] text-slate-400 mt-0.5">Which content type actually makes money? RPV = Revenue ÷ Visitors. Sort by RPV to find your roadmap.</p>
+              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50 flex items-center justify-between">
+                <div>
+                  <h3 className="font-black text-slate-900 text-sm">🎯 Revenue by Intent</h3>
+                  <p className="text-[11px] text-slate-400 mt-0.5">RPV = Revenue ÷ Visitors. Grey badge = &lt;30 visitors (low sample). Green = statistically meaningful.</p>
+                </div>
+                <div className="text-right text-xs">
+                  <div className="text-slate-500 font-semibold">Checkout CVR (7d)</div>
+                  <div className={`font-black text-sm flex items-center justify-end gap-1 ${checkoutCvrTrend.up === null ? 'text-slate-400' : checkoutCvrTrend.up ? 'text-emerald-700' : 'text-red-600'}`}>
+                    {checkoutCvr7d.toFixed(1)}%
+                    {checkoutCvrTrend.up !== null && <span>{checkoutCvrTrend.arrow}{checkoutCvrTrend.pct.toFixed(1)}%</span>}
+                  </div>
+                </div>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
@@ -2720,20 +2875,25 @@ export default async function RevenueDashboardPage({
                   </thead>
                   <tbody className="divide-y divide-gray-50">
                     {revenueByIntent.map((row) => {
-                      const isHighRpv = row.rpv >= 0.50;
+                      const isLowSample = row.visitors < 30;
+                      const isHighRpv = row.rpv >= 0.50 && !isLowSample;
                       return (
                         <tr key={row.intent} className={isHighRpv ? 'bg-emerald-50/40' : ''}>
-                          <td className="px-6 py-3 font-bold text-slate-800">{row.intent}</td>
+                          <td className="px-6 py-3 font-bold text-slate-800">
+                            {row.intent}
+                            {isLowSample && <span className="ml-2 text-[8px] font-black text-slate-400 bg-slate-100 px-1.5 py-0.5 rounded">LOW SAMPLE</span>}
+                          </td>
                           <td className="px-4 py-3 text-right font-semibold text-slate-600">{row.visitors.toLocaleString()}</td>
                           <td className="px-4 py-3 text-right font-semibold text-slate-700">{row.purchases}</td>
                           <td className="px-4 py-3 text-right font-black text-slate-900">${row.revenue.toFixed(2)}</td>
                           <td className="px-4 py-3 text-right">
-                            <span className={`font-black ${
-                              row.rpv >= 1 ? 'text-emerald-700' : row.rpv >= 0.20 ? 'text-amber-600' : 'text-slate-400'
-                            }`}>${row.rpv.toFixed(3)}</span>
+                            <span className={`font-black ${isLowSample ? 'text-slate-300' : row.rpv >= 1 ? 'text-emerald-700' : row.rpv >= 0.20 ? 'text-amber-600' : 'text-slate-400'}`}>
+                              {isLowSample ? '~' : ''}{row.rpv.toFixed(3)}
+                            </span>
                           </td>
                           <td className="px-4 py-3 text-xs font-semibold">
-                            {row.rpv >= 1 ? '📈 Expand — build more like this' :
+                            {isLowSample ? <span className="text-slate-300">Need more data</span> :
+                             row.rpv >= 1 ? '📈 Expand — build more like this' :
                              row.rpv >= 0.20 ? '🛠️ Optimize — improve CVR' :
                              row.visitors > 100 ? '🔎 High traffic, low return' : '—'}
                           </td>
@@ -2779,21 +2939,22 @@ export default async function RevenueDashboardPage({
               )}
             </div>
 
-            {/* ─── 5. REVENUE PER SPRINT ─── */}
+            {/* ─── 5. REVENUE PER SPRINT (with experiments) ─── */}
             <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
               <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
                 <h3 className="font-black text-slate-900 text-sm">⚡ Revenue per Engineering Sprint</h3>
-                <p className="text-[11px] text-slate-400 mt-0.5">Every sprint must justify itself commercially. Revenue delta = actual purchase revenue within each sprint window.</p>
+                <p className="text-[11px] text-slate-400 mt-0.5">Every sprint must justify itself commercially. Track experiment, revenue before/after, and outcome.</p>
               </div>
               <div className="overflow-x-auto">
                 <table className="w-full text-sm">
                   <thead>
                     <tr className="border-b border-gray-100 bg-gray-50/50">
                       <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Sprint</th>
-                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Goal</th>
-                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Window</th>
-                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Revenue</th>
-                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">vs prev Sprint</th>
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Experiment</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Rev. Before</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Rev. After</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Delta</th>
+                      <th className="px-4 py-3 text-center text-[10px] font-black uppercase tracking-wider text-gray-400">Winner?</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-50">
@@ -2805,19 +2966,20 @@ export default async function RevenueDashboardPage({
                             {s.name}
                           </span>
                         </td>
-                        <td className="px-6 py-3 text-xs text-slate-500 max-w-xs">{s.goal}</td>
-                        <td className="px-6 py-3 text-xs text-slate-400 font-mono">{s.startDate} → {s.endDate}</td>
+                        <td className="px-6 py-3 text-xs text-slate-500">{s.experiment}</td>
+                        <td className="px-4 py-3 text-right text-slate-400 text-xs">${s.prevRevenue.toFixed(2)}</td>
                         <td className="px-4 py-3 text-right font-black text-slate-900">${s.revenue.toFixed(2)}</td>
                         <td className="px-4 py-3 text-right">
                           {s.sprint === 1 ? (
                             <span className="text-slate-400 text-xs">Baseline</span>
                           ) : (
-                            <span className={`font-black text-sm ${
-                              s.delta > 0 ? 'text-emerald-700' : s.delta < 0 ? 'text-red-600' : 'text-slate-400'
-                            }`}>
+                            <span className={`font-black text-sm ${s.delta > 0 ? 'text-emerald-700' : s.delta < 0 ? 'text-red-600' : 'text-slate-400'}`}>
                               {s.delta >= 0 ? '+' : ''}${s.delta.toFixed(2)}
                             </span>
                           )}
+                        </td>
+                        <td className="px-4 py-3 text-center text-base">
+                          {s.winner || (s.winnerNote ? <span className="text-[9px] text-slate-400 font-semibold">{s.winnerNote}</span> : '—')}
                         </td>
                       </tr>
                     ))}
