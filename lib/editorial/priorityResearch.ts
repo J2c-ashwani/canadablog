@@ -1384,6 +1384,55 @@ const profiles: Record<string, PriorityResearchProfile> = {
     }
   ]
 },
+  '/usa/minnesota': {
+    route: '/usa/minnesota',
+    seoTitle: 'Minnesota Small Business Grants 2026: Stacking State & Federal Funding',
+    seoDescription: 'Discover 17+ active grant programs for Minnesota small businesses in 2026, from $5K to $500K. Learn how state and federal matching funds stack.',
+    expectedIntent: 'medium',
+    reviewedBy: REVIEWED_BY,
+    reviewerRole: REVIEWER_ROLE,
+    lastVerified: LAST_VERIFIED,
+    programStatus: 'Multiple active programs',
+    statusSummary: 'Minnesota DEED manages a portfolio of state-backed grants, seed matching funds, and local development loans. These can often be stacked with federal SBIR/SBA programs.',
+    decisionSummary: 'Minnesota companies should check DEED active windows and match programs based on stacking rules rather than applying for individual opportunities in isolation.',
+    shortAnswerQuestion: 'How can a Minnesota business stack state and federal funding?',
+    shortAnswer: 'Minnesota businesses can stack state DEED grants (like the Minnesota Launch Grant) with federal matching programs (such as SBIR/STTR). The key is maintaining clean books to prove distinct, non-overlapping eligible costs for each program to avoid anti-stacking rules.',
+    verificationNotes: [
+      'Minnesota Launch Grants match up to $35,000 for startup funding.',
+      'SBA-backed local loans require physical presence within Minnesota.',
+      'Always check the active application windows at MN DEED official portal.'
+    ],
+    officialSources: [
+      {
+        name: 'Minnesota Department of Employment and Economic Development (DEED)',
+        url: 'https://mn.gov/deed/business/financing-business/',
+        description: 'Official directory of Minnesota business financing and state grant resources.'
+      },
+      {
+        name: 'Launch Minnesota',
+        url: 'https://mn.gov/deed/business/financing-business/launch-mn/',
+        description: 'State organization providing pre-seed matching grants up to $35,000 for technology startups.'
+      }
+    ],
+    cta: {
+      eyebrow: 'Minnesota Stacking Strategy',
+      title: 'Analyze Minnesota Stacking Options',
+      description: 'Check how state DEED incentives and federal SBIR matching funds align for your business in 60 seconds.',
+      buttonText: 'Check Stacking Match',
+      href: '/calculator',
+      supportingPoints: ['State & Federal cost splits', 'Minnesota DEED compliance', 'Stacking limits checklist']
+    },
+    faq: [
+      {
+        question: "What is Launch Minnesota?",
+        answer: "Launch Minnesota is a state initiative offering pre-seed business development grants of up to $35,000 to qualified Minnesota-based technology startups."
+      },
+      {
+        question: "Can I stack federal SBIR with Minnesota state grants?",
+        answer: "Yes. Launch Minnesota provides matching grants of up to $100,000 for Minnesota companies that have recently won federal SBIR or STTR Phase I awards."
+      }
+    ]
+  },
 };
 
 export function getPriorityResearchProfile(route: string) {

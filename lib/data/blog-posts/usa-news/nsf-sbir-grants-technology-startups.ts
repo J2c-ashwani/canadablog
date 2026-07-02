@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
     id: 64,
     slug: "nsf-sbir-grants-technology-startups",
-    shortAnswerQuestion: "What are the best startup grants and funding options in 2026?",
-    title: "NSF SBIR Grants 2026: The $2M Startup Grant Most Founders Don't Know About",
+    shortAnswerQuestion: "NSF SBIR Grants 2026: Phase I & II Funding Explained (With Success Rates)",
+    title: "NSF SBIR Grants 2026: Phase I & II Funding Explained (With Success Rates)",
     excerpt: "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
@@ -23,12 +23,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      metaTitle: "NSF SBIR Grants 2026: Complete Guide — Apply Now",
-        metaDescription: "Learn how to qualify and apply for NSF SBIR Grants in 2026. Access active government grants & loans. See if you qualify.",
+      metaTitle: "NSF SBIR Grants 2026: Phase I & II Funding Explained (With Success Rates)",
+        metaDescription: "NSF SBIR offers up to $2M in non-dilutive funding for deep tech, AI, software, and hardware startups. See the 4 criteria reviewers grade on.",
         intent: "startup",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
-    }, shortAnswer: "Yes — Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application. Funding available: up to $2M (with related programs offering $275K).",
+        seoVersion: 2,
+        seoUpdatedAt: "2026-07-03T02:41:20.000Z"
+    }, shortAnswer: "NSF SBIR offers up to $2M in non-dilutive funding for deep tech, AI, software, and hardware startups. Learn how the Phase I ($275K) and Phase II ($1.8M) streams work, official success rates, and the 4 criteria reviewers grade on.",
     metrics: [
       { label: 'Phase I', value: '$275K', description: 'Max Award', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Phase II', value: '$2M', description: 'Scale-Up', color: 'text-blue-600', iconName: 'Rocket' },

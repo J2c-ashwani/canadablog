@@ -4,11 +4,11 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
     id: 62,
     slug: "nih-sbir-biotech-grants",
-    shortAnswerQuestion: "How can my business apply for NIH SBIR Biotech Grants 2026-2027 in 2026?",
+    shortAnswerQuestion: "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
 
-    title: "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
+    title: "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
 
-    excerpt: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
+    excerpt: "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $314K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
     category: "USA News",
     categoryColor: "bg-blue-100 text-blue-800",
     author: "Ashwani K.",
@@ -25,12 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      metaTitle: "NIH SBIR Biotech Grants 2026: Complete Guide — Apply Now",
-        metaDescription: "Learn how to qualify and apply for NIH SBIR Biotech Grants in 2026. Access active government grants & loans. See if you qualify.",
+      metaTitle: "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
+        metaDescription: "NIH SBIR Phase I awards up to $314K & Phase II up to $2M for biotech startups. Learn how to qualify, prepare documents, and avoid common rejection reasons.",
         intent: "grant",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
-    }, shortAnswer: "To apply for NIH SBIR Biotech Grants 2026-2027, start by reviewing the eligibility criteria and preparing a project proposal. Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation. Funding available: up to $285K (with related programs offering $2M).",
+        seoVersion: 2,
+        seoUpdatedAt: "2026-07-03T02:41:20.000Z"
+    }, shortAnswer: "NIH SBIR Phase I awards up to $314,363 and Phase II up to $2M for biotech startups. Learn how to qualify, prepare documents, avoid common rejection reasons, and how state/federal funding stacks to maximize non-dilutive capital.",
     metrics: [
       { label: 'Phase I', value: '$285K', description: 'Feasibility', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Phase II', value: '$2M', description: 'Development', color: 'text-blue-600', iconName: 'TrendingUp' },

@@ -8,6 +8,7 @@ import { getLeadsFromSheet } from '@/lib/google-sheets';
 import { ADMIN_SESSION_COOKIE, isValidAdminKey, isValidAdminSession } from '@/lib/admin/auth';
 import { AdminLoginForm } from '../leads/AdminLoginForm';
 import { AdminLogoutButton } from '../leads/AdminLogoutButton';
+import { seoExperiments } from '@/lib/data/seoExperiments';
 import {
   Lock, KeyRound, DollarSign, Users, Calculator, ArrowRight,
   TrendingUp, BarChart3, Clock, Layers, Award, Tag, Sparkles,
@@ -2817,6 +2818,71 @@ export default async function RevenueDashboardPage({
                     </div>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* ─── SEO EXPERIMENTS — Search Demand Capture Sprint ─── */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+              <div className="border-b border-gray-100 px-6 py-4 bg-gradient-to-r from-violet-50 to-white">
+                <h3 className="font-black text-slate-900 text-sm flex items-center gap-2">🧪 SEO Experiments — Search Demand Capture</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Scientific title & meta tests. Goal: Increase Revenue per Impression (RPI) via differentiated promises.</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-100 bg-gray-50/50">
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Page</th>
+                      <th className="px-4 py-3 text-center text-[10px] font-black uppercase tracking-wider text-gray-400">Status</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">CTR Lift</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Revenue</th>
+                      <th className="px-4 py-3 text-center text-[10px] font-black uppercase tracking-wider text-gray-400">Winner?</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50">
+                    {seoExperiments.map((exp) => {
+                      const baselineCtr = exp.versionA.ctr;
+                      const currentCtr = exp.versionB.ctr;
+                      const lift = currentCtr - baselineCtr;
+                      
+                      // Attributed purchases revenue from our dynamic database
+                      // Look up purchases matched to the slug (nih-sbir, nsf-sbir, minnesota)
+                      const matchedPurchases = postPurchases.filter(p => {
+                        const touch = String(p.attribution?.lastTouchPage || '').toLowerCase();
+                        return touch.includes(exp.page.split('/').pop() || 'none');
+                      });
+                      const attributedRevenue = matchedPurchases.reduce((s, p) => s + (parseFloat(p.amount) || 0), 0);
+
+                      const deltaSign = lift > 0 ? '+' : '';
+                      
+                      return (
+                        <tr key={exp.page}>
+                          <td className="px-6 py-4">
+                            <div className="font-bold text-slate-800 text-xs sm:text-sm">{exp.page}</div>
+                            <div className="text-[10px] text-slate-400 mt-0.5">Intent: <span className="font-semibold">{exp.intent}</span> | Pos: {exp.avgPosition.toFixed(1)}</div>
+                          </td>
+                          <td className="px-4 py-4 text-center">
+                            <span className="inline-flex items-center rounded-md bg-violet-50 px-2 py-1 text-xs font-semibold text-violet-700 ring-1 ring-inset ring-violet-700/10">
+                              {exp.status}
+                            </span>
+                          </td>
+                          <td className="px-4 py-4 text-right">
+                            <span className={`font-black ${lift > 0 ? 'text-emerald-700' : 'text-slate-500'}`}>
+                              {deltaSign}{lift.toFixed(2)}%
+                            </span>
+                            <div className="text-[9px] text-slate-400">from {baselineCtr.toFixed(2)}%</div>
+                          </td>
+                          <td className="px-4 py-4 text-right font-black text-slate-900">
+                            ${attributedRevenue.toFixed(0)}
+                            <div className="text-[9px] text-slate-400 font-semibold">{matchedPurchases.length} purchases</div>
+                          </td>
+                          <td className="px-4 py-4 text-center text-lg">
+                            {exp.status === 'Winner Declared' ? '✅' : '⏳'}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
               </div>
             </div>
 

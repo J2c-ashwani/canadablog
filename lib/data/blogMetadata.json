@@ -1,84 +1,6 @@
 {
   "metadata": [
     {
-      "id": 9003,
-      "slug": "canadian-government-grants-database",
-      "title": "The Ultimate Canadian Government Funding Database (250+ Grants, Tax Credits & Loans Updated for 2026)",
-      "excerpt": "Access the definitive directory of 250+ Canadian business grants, tax incentives, and low-interest government loans for startups and SMEs. Filter, stack, and match programs today.",
-      "category": "Tips & Guides",
-      "categoryColor": "bg-purple-100 text-purple-800",
-      "author": "Ashwani K.",
-      "date": "2026-06-28",
-      "readTime": "15 min read",
-      "image": "/images/blog/canada-grants-theme.png",
-      "featured": true,
-      "type": "expert-insight",
-      "seo": {
-        "keywords": [
-          "canadian government grants database",
-          "business grants Canada 2026",
-          "federal provincial funding directory",
-          "SME grants Canada list",
-          "startup funding database"
-        ],
-        "metaTitle": "The Ultimate Canadian Government Funding Database (250+ Grants)",
-        "metaDescription": "Access the definitive directory of 250+ Canadian business grants, tax incentives, and low-interest government loans for startups and SMEs in 2026.",
-        "intent": "grant"
-      }
-    },
-    {
-      "id": 9002,
-      "slug": "how-to-stack-government-grants-canada",
-      "title": "How to Stack Multiple Government Grants in Canada: Rules, Limits, and Strategies",
-      "excerpt": "Can you combine federal and provincial funding? Discover the strict rules of government grant stacking, overlap limitations, and how to maximize your non-dilutive capital safely.",
-      "category": "Tips & Guides",
-      "categoryColor": "bg-purple-100 text-purple-800",
-      "author": "Ashwani K.",
-      "date": "2026-06-27",
-      "readTime": "10 min read",
-      "image": "/images/blog/canada-grants-theme.png",
-      "featured": true,
-      "type": "expert-insight",
-      "seo": {
-        "keywords": [
-          "stacking government grants",
-          "grant stacking rules canada",
-          "canadian business grants guide",
-          "non-dilutive capital stacking",
-          "provincial federal grants combined"
-        ],
-        "metaTitle": "Government Grant Stacking Rules & Strategies | Canada 2026",
-        "metaDescription": "Learn how to stack federal and provincial government business grants in Canada. Master stacking limits, double-dipping exclusions, and co-funding requirements.",
-        "intent": "grant"
-      }
-    },
-    {
-      "id": 9001,
-      "slug": "irap-vs-sred-difference-canada",
-      "title": "IRAP vs SR&ED: The Complete Guide to Stacking Canada's Top R&D Incentives",
-      "excerpt": "Confused about NRC IRAP vs CRA SR&ED? Learn the differences in eligibility, funding models, claiming timelines, and how to successfully stack both programs to cover up to 75% of your costs.",
-      "category": "Tips & Guides",
-      "categoryColor": "bg-purple-100 text-purple-800",
-      "author": "Ashwani K.",
-      "date": "2026-06-27",
-      "readTime": "12 min read",
-      "image": "/images/blog/tech-innovation-theme.png",
-      "featured": true,
-      "type": "expert-insight",
-      "seo": {
-        "keywords": [
-          "irap vs sred",
-          "sred tax credit",
-          "nrc irap grant",
-          "canada rd funding",
-          "stacking grants canada"
-        ],
-        "metaTitle": "IRAP vs SR&ED: How to Stack Canada's Top R&D Grants",
-        "metaDescription": "Read the definitive comparison of NRC IRAP and CRA SR&ED. Understand differences in eligibility, funding mechanisms, and stacking rules.",
-        "intent": "r_and_d"
-      }
-    },
-    {
       "id": 3010,
       "slug": "agricultural-innovation-2026-archive",
       "title": "Canada's $180M Agricultural Innovation Revolution: AgriInnovate Guide",
@@ -2438,8 +2360,8 @@
     {
       "id": 62,
       "slug": "nih-sbir-biotech-grants",
-      "title": "NIH SBIR Biotech Grants 2026-2027 | $285K Phase I, $2M Phase II Medical Device & Digital Health Funding",
-      "excerpt": "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $285K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
+      "title": "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
+      "excerpt": "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $314K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
       "category": "USA News",
       "categoryColor": "bg-blue-100 text-blue-800",
       "author": "Ashwani K.",
@@ -2452,7 +2374,7 @@
     {
       "id": 64,
       "slug": "nsf-sbir-grants-technology-startups",
-      "title": "NSF SBIR Grants 2026: The $2M Startup Grant Most Founders Don't Know About",
+      "title": "NSF SBIR Grants 2026: Phase I & II Funding Explained (With Success Rates)",
       "excerpt": "Complete 2026-2027 guide to NSF SBIR/STTR grants for technology startups. Phase I funding up to $275K, Phase II up to $2M for AI, deep tech, biotech, software, hardware innovation. Application strategies, eligibility, deadlines.",
       "category": "USA News",
       "categoryColor": "bg-blue-100 text-blue-800",
@@ -2890,9 +2812,6 @@
     "usda-rural-grants-2026": "./blog-posts/usa-news/usda-rural-grants-2026.ts",
     "usda-sbir-agtech-grants": "./blog-posts/usa-news/usda-sbir-agtech-grants.ts",
     "veterans-business-grants-2026-archive": "./blog-posts/usa-news/veterans-business-grants-2026-archive.ts",
-    "washington-tech-programs": "./blog-posts/usa-news/washington-tech-programs.ts",
-    "irap-vs-sred-difference-canada": "./blog-posts/tips-guides/irap-vs-sred-difference-canada.ts",
-    "how-to-stack-government-grants-canada": "./blog-posts/tips-guides/how-to-stack-government-grants-canada.ts",
-    "canadian-government-grants-database": "./blog-posts/tips-guides/canadian-government-grants-database.ts"
+    "washington-tech-programs": "./blog-posts/usa-news/washington-tech-programs.ts"
   }
 }
