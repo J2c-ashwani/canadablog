@@ -1039,6 +1039,187 @@ export default async function RevenueDashboardPage({
   const keyParam = resolvedParams.key ? `?key=${resolvedParams.key}` : '';
   const keyParamAmp = resolvedParams.key ? `&key=${resolvedParams.key}` : '';
 
+  // ═══════════════════════════════════════════════════
+  // REVENUE INTELLIGENCE LAYER — All Computations
+  // ═══════════════════════════════════════════════════
+
+  // --- 1. MASTER FUNNEL LEAK (all-channel, 7d + all-time) ---
+  const funnelEventCount = (eventNames: string[], window: 'all' | '7d' = 'all') => {
+    const cutoff = window === '7d' ? now - 7 * ONE_DAY : 0;
+    return postTelemetry.filter(e =>
+      eventNames.includes(e.eventName) &&
+      parseDateSafe(e.timestamp).getTime() >= cutoff
+    ).length;
+  };
+  const funnelEventCount7d = (eventNames: string[]) => funnelEventCount(eventNames, '7d');
+
+  const masterFunnel = [
+    {
+      step: 'Unique Visitors',
+      icon: '🌐',
+      all: postUniqueVisitors,
+      d7: new Set(postTelemetry.filter(e => parseDateSafe(e.timestamp).getTime() >= now - 7 * ONE_DAY).map(e => e.sessionId)).size,
+    },
+    {
+      step: 'Landing Page Views',
+      icon: '📄',
+      all: funnelEventCount(['page_view', 'session_start']),
+      d7: funnelEventCount7d(['page_view', 'session_start']),
+    },
+    {
+      step: 'Calculator Views',
+      icon: '🔢',
+      all: funnelEventCount(['calculator_opened', 'calculator_start', 'calculator_view']),
+      d7: funnelEventCount7d(['calculator_opened', 'calculator_start', 'calculator_view']),
+    },
+    {
+      step: 'Calculator Completions',
+      icon: '✅',
+      all: funnelEventCount(['calculator_complete', 'calculator_completed', 'calculator_results_shown']),
+      d7: funnelEventCount7d(['calculator_complete', 'calculator_completed', 'calculator_results_shown']),
+    },
+    {
+      step: 'Package Selected',
+      icon: '📦',
+      all: funnelEventCount(['package_selected', 'paywall_viewed', 'report_paywall_viewed']),
+      d7: funnelEventCount7d(['package_selected', 'paywall_viewed', 'report_paywall_viewed']),
+    },
+    {
+      step: 'Checkout Started',
+      icon: '💳',
+      all: funnelEventCount(['checkout_started', 'standalone_checkout_started', 'begin_checkout']),
+      d7: funnelEventCount7d(['checkout_started', 'standalone_checkout_started', 'begin_checkout']),
+    },
+    {
+      step: 'Purchase Completed',
+      icon: '💰',
+      all: postPurchases.length,
+      d7: postPurchases.filter(p => parseDateSafe(p.createdAt || p.timestamp).getTime() >= now - 7 * ONE_DAY).length,
+    },
+    {
+      step: 'Report Viewed',
+      icon: '📋',
+      all: funnelEventCount(['report_viewed', 'delivery_viewed']),
+      d7: funnelEventCount7d(['report_viewed', 'delivery_viewed']),
+    },
+    {
+      step: 'Booked Consultation',
+      icon: '📞',
+      all: postPurchases.filter(p => p.productId === 'consultation').length,
+      d7: postPurchases.filter(p => p.productId === 'consultation' && parseDateSafe(p.createdAt || p.timestamp).getTime() >= now - 7 * ONE_DAY).length,
+    },
+    {
+      step: 'Membership',
+      icon: '♾️',
+      all: postPurchases.filter(p => p.productId === 'funding-membership').length,
+      d7: postPurchases.filter(p => p.productId === 'funding-membership' && parseDateSafe(p.createdAt || p.timestamp).getTime() >= now - 7 * ONE_DAY).length,
+    },
+  ];
+
+  // --- 2. LOST REVENUE — per drop with cause+action ---
+  const avgBasket = postPurchases.length > 0 ? postTotalRevenue / postPurchases.length : 49;
+  const lostRevenueRows = masterFunnel.slice(0, -1).map((step, i) => {
+    const next = masterFunnel[i + 1];
+    const dropped = Math.max(0, step.all - next.all);
+    const cvr = step.all > 0 ? ((next.all / step.all) * 100) : 0;
+    const dropPct = 100 - cvr;
+    const estimatedLost = dropped * avgBasket;
+    type CauseAction = { cause: string; action: string };
+    const causeMap: Record<string, CauseAction> = {
+      'Landing Page Views':    { cause: 'Hero CTA not compelling / wrong intent match', action: 'Rewrite hero headline + add calculator prompt above fold' },
+      'Calculator Views':      { cause: 'Calculator not visible / low trust on landing', action: 'Move calculator widget higher, add social proof near entry' },
+      'Calculator Completions':{ cause: 'Form too long / steps unclear', action: 'Reduce to ≤5 steps, add progress indicator, auto-advance' },
+      'Package Selected':      { cause: 'Paywall copy weak / value not clear', action: 'Strengthen pricing copy with ROI framing + upgrade guarantee' },
+      'Checkout Started':      { cause: 'Price shock / trust gap at payment', action: 'Add guarantee badge + testimonial directly above PayPal button' },
+      'Purchase Completed':    { cause: 'PayPal friction / no urgency', action: 'Test Stripe, add deadline timer, show report preview image' },
+      'Report Viewed':         { cause: 'Delivery email delayed or in spam', action: 'Check Resend deliverability, add in-app delivery status page' },
+      'Booked Consultation':   { cause: 'No bridge from report to upsell offer', action: 'Add CTA inside report delivery page to book strategy session' },
+    };
+    const ca = causeMap[step.step] || { cause: 'Unknown drop reason', action: 'Investigate with session recording' };
+    return { step: step.step, icon: step.icon, from: step.all, to: next.all, dropped, dropPct, estimatedLost, ...ca };
+  }).filter(r => r.dropPct > 5).sort((a, b) => b.estimatedLost - a.estimatedLost);
+
+  // --- 3. REVENUE BY INTENT ---
+  const classifyIntent = (path: string): string => {
+    const p = (path || '').toLowerCase();
+    if (p.includes('/compare') || p.includes('-vs-') || p.includes('/best-') || p.includes('comparison')) return 'Comparison';
+    if (p.includes('ai-grant-finder') || p.includes('grant-finder')) return 'AI Grant Finder';
+    if (p.includes('/calculator')) return 'Calculator';
+    if (p.includes('/women') || p.includes('women-entrepreneur') || p.includes('female')) return 'Women Grants';
+    if (p.includes('/restaurant') || p.includes('/food') || p.includes('/hospitality')) return 'Restaurant/Food';
+    if (p.includes('/usa/') && p.split('/').length >= 4) return 'City (USA)';
+    if (p.includes('/programs/')) return 'Program Pages';
+    if (p.includes('/topics/')) return 'Topic Pages';
+    if (p.includes('/guides/') || p.includes('/blog/') || p.includes('/news/')) return 'Content/Guides';
+    if (p.includes('/products/')) return 'Product Pages';
+    if (p.includes('/audit') || p.includes('/consultation')) return 'Audit/Strategy';
+    if (p === '/' || p === '') return 'Homepage';
+    return 'Other';
+  };
+
+  const intentMap = new Map<string, { visitors: Set<string>; revenue: number; purchases: number }>();
+  for (const e of postTelemetry) {
+    const intent = classifyIntent(e.pagePath);
+    if (!intentMap.has(intent)) intentMap.set(intent, { visitors: new Set(), revenue: 0, purchases: 0 });
+    intentMap.get(intent)!.visitors.add(e.sessionId);
+  }
+  for (const p of postPurchases) {
+    const lastTouch = p.attribution?.lastTouchPage || p.attribution?.landingPage || p.landingPage || '/';
+    const intent = classifyIntent(lastTouch);
+    if (!intentMap.has(intent)) intentMap.set(intent, { visitors: new Set(), revenue: 0, purchases: 0 });
+    const slot = intentMap.get(intent)!;
+    slot.revenue += parseFloat(p.amount) || 0;
+    slot.purchases += 1;
+  }
+  const revenueByIntent = Array.from(intentMap.entries())
+    .map(([intent, data]) => ({
+      intent,
+      visitors: data.visitors.size,
+      revenue: data.revenue,
+      purchases: data.purchases,
+      rpv: data.visitors.size > 0 ? data.revenue / data.visitors.size : 0,
+    }))
+    .filter(r => r.visitors > 0 || r.revenue > 0)
+    .sort((a, b) => b.rpv - a.rpv);
+
+  // --- 4. LIVE ATTRIBUTION (no hard-coding) ---
+  const liveRevenueRoutes = new Map<string, { revenue: number; purchases: number }>();
+  for (const p of postPurchases) {
+    const page = p.attribution?.lastTouchPage || p.attribution?.landingPage || p.landingPage || '/';
+    if (!liveRevenueRoutes.has(page)) liveRevenueRoutes.set(page, { revenue: 0, purchases: 0 });
+    const slot = liveRevenueRoutes.get(page)!;
+    slot.revenue += parseFloat(p.amount) || 0;
+    slot.purchases += 1;
+  }
+  const liveAttributionData = Array.from(liveRevenueRoutes.entries())
+    .map(([page, data]) => ({ page, ...data, rpv: data.purchases > 0 ? data.revenue / data.purchases : 0 }))
+    .sort((a, b) => b.revenue - a.revenue)
+    .slice(0, 12);
+
+  // --- 5. REVENUE PER SPRINT ---
+  const sprintHistory = [
+    { sprint: 1, name: 'Foundation', goal: 'Build products + checkout', startDate: '2026-06-01', endDate: '2026-06-13' },
+    { sprint: 2, name: 'Monetization', goal: 'PayPal + delivery + email sequences', startDate: '2026-06-13', endDate: '2026-06-22' },
+    { sprint: 3, name: 'Attribution', goal: 'Multi-touch UTM + telemetry + CEO dashboard v1', startDate: '2026-06-22', endDate: '2026-07-02' },
+    { sprint: 4, name: 'Revenue Intelligence', goal: 'Upgrade guarantee + funnel leak + revenue by intent', startDate: '2026-07-02', endDate: '2026-07-10' },
+  ];
+  const sprintData = sprintHistory.map((s, i) => {
+    const start = new Date(s.startDate).getTime();
+    const end = new Date(s.endDate).getTime();
+    const sprintRev = postPurchases
+      .filter(p => { const t = parseDateSafe(p.createdAt || p.timestamp).getTime(); return t >= start && t <= end; })
+      .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+    const prevRev = i === 0 ? 0 : (() => {
+      const ps = new Date(sprintHistory[i-1].startDate).getTime();
+      const pe = new Date(sprintHistory[i-1].endDate).getTime();
+      return postPurchases
+        .filter(p => { const t = parseDateSafe(p.createdAt || p.timestamp).getTime(); return t >= ps && t <= pe; })
+        .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+    })();
+    const delta = sprintRev - prevRev;
+    return { ...s, revenue: sprintRev, prevRevenue: prevRev, delta };
+  });
+
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-between">
       <Header />
@@ -1101,6 +1282,16 @@ export default async function RevenueDashboardPage({
               }`}
             >
               📊 Telemetry & Funnel Audits
+            </a>
+            <a
+              href={`/admin/dashboard?tab=intelligence${keyParamAmp}`}
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+                resolvedTab === 'intelligence'
+                  ? 'border-emerald-600 text-emerald-700'
+                  : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
+              }`}
+            >
+              🧠 Revenue Intelligence
             </a>
           </nav>
         </div>
@@ -2400,6 +2591,244 @@ export default async function RevenueDashboardPage({
                 </div>
               </div>
             </div>
+          </div>
+        )}
+
+        {resolvedTab === 'intelligence' && (
+          /* 🧠 REVENUE INTELLIGENCE LAYER */
+          <div className="space-y-10">
+
+            {/* Header */}
+            <div className="bg-gradient-to-r from-emerald-950 to-slate-900 rounded-2xl p-6 text-white">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-2xl">🧠</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-emerald-400">Sprint 4 · Revenue Intelligence Layer</span>
+              </div>
+              <h2 className="text-2xl font-black tracking-tight">Where Is the Next $1,000/Month Hiding?</h2>
+              <p className="text-sm text-slate-400 mt-1">Live data. No hard-coding. Every number derived from actual purchase and session records.</p>
+            </div>
+
+            {/* ─── 1. MASTER FUNNEL LEAK ─── */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50 flex items-center justify-between">
+                <div>
+                  <h3 className="font-black text-slate-900 text-sm flex items-center gap-2">🔻 Master Funnel Leak Dashboard</h3>
+                  <p className="text-[11px] text-slate-400 mt-0.5">All channels combined. One row = one conversion step. Find the biggest drop in 10 seconds.</p>
+                </div>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-100 bg-gray-50/50">
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Step</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">All-Time</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Last 7 Days</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">CVR from prev</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Trend</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50">
+                    {masterFunnel.map((row, i) => {
+                      const prev = masterFunnel[i - 1];
+                      const cvr = prev && prev.all > 0 ? (row.all / prev.all) * 100 : 100;
+                      const dropPct = 100 - cvr;
+                      const isBigDrop = dropPct > 50;
+                      const isMedDrop = dropPct > 25 && dropPct <= 50;
+                      return (
+                        <tr key={row.step} className={`${
+                          isBigDrop ? 'bg-red-50/60' : isMedDrop ? 'bg-amber-50/40' : ''
+                        }`}>
+                          <td className="px-6 py-3.5 font-semibold text-slate-800">
+                            <span className="mr-2">{row.icon}</span>{row.step}
+                            {isBigDrop && <span className="ml-2 text-[9px] font-black uppercase text-red-600 bg-red-100 px-1.5 py-0.5 rounded">⚠ Big Leak</span>}
+                          </td>
+                          <td className="px-4 py-3.5 text-right font-black text-slate-900">{row.all.toLocaleString()}</td>
+                          <td className="px-4 py-3.5 text-right font-semibold text-slate-600">{row.d7.toLocaleString()}</td>
+                          <td className="px-4 py-3.5 text-right">
+                            {i === 0 ? (
+                              <span className="text-slate-400 text-xs">—</span>
+                            ) : (
+                              <span className={`font-black text-sm ${
+                                cvr >= 60 ? 'text-emerald-700' : cvr >= 30 ? 'text-amber-600' : 'text-red-600'
+                              }`}>{cvr.toFixed(1)}%</span>
+                            )}
+                          </td>
+                          <td className="px-4 py-3.5 text-right">
+                            {i === 0 ? '—' : dropPct > 40 ? '🔴 Drop' : dropPct > 20 ? '🟡 Warn' : '🟢 OK'}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* ─── 2. LOST REVENUE WITH CAUSE + ACTION ─── */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
+                <h3 className="font-black text-slate-900 text-sm">💸 Lost Revenue — Where and Why</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Drops × avg basket (${avgBasket.toFixed(0)}). Each row gives cause and a specific action to recover it.</p>
+              </div>
+              <div className="divide-y divide-gray-50">
+                {lostRevenueRows.length === 0 ? (
+                  <p className="px-6 py-8 text-sm text-slate-400 text-center">Not enough funnel data yet to calculate lost revenue.</p>
+                ) : lostRevenueRows.map((row) => (
+                  <div key={row.step} className="px-6 py-4 flex flex-col sm:flex-row sm:items-start gap-4">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2 mb-1">
+                        <span>{row.icon}</span>
+                        <span className="font-black text-slate-900 text-sm">{row.step}</span>
+                        <span className="text-[9px] font-black uppercase text-red-600 bg-red-100 px-1.5 py-0.5 rounded">{row.dropPct.toFixed(0)}% drop</span>
+                      </div>
+                      <p className="text-xs text-slate-500">{row.from.toLocaleString()} → {row.to.toLocaleString()} ({row.dropped.toLocaleString()} lost)</p>
+                    </div>
+                    <div className="sm:w-64">
+                      <p className="text-[10px] font-black uppercase text-amber-600 tracking-wider mb-0.5">Likely Cause</p>
+                      <p className="text-xs text-slate-700">{row.cause}</p>
+                    </div>
+                    <div className="sm:w-64">
+                      <p className="text-[10px] font-black uppercase text-emerald-600 tracking-wider mb-0.5">Action</p>
+                      <p className="text-xs text-emerald-800 font-semibold">{row.action}</p>
+                    </div>
+                    <div className="text-right shrink-0">
+                      <p className="text-[10px] font-black uppercase text-gray-400 tracking-wider">Est. Lost</p>
+                      <p className="text-xl font-black text-red-600">${row.estimatedLost.toLocaleString(undefined, {maximumFractionDigits: 0})}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* ─── 3. REVENUE BY INTENT ─── */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
+                <h3 className="font-black text-slate-900 text-sm">🎯 Revenue by Intent</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Which content type actually makes money? RPV = Revenue ÷ Visitors. Sort by RPV to find your roadmap.</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-100 bg-gray-50/50">
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Intent</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Visitors</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Purchases</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Revenue</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">RPV</th>
+                      <th className="px-4 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Signal</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50">
+                    {revenueByIntent.map((row) => {
+                      const isHighRpv = row.rpv >= 0.50;
+                      return (
+                        <tr key={row.intent} className={isHighRpv ? 'bg-emerald-50/40' : ''}>
+                          <td className="px-6 py-3 font-bold text-slate-800">{row.intent}</td>
+                          <td className="px-4 py-3 text-right font-semibold text-slate-600">{row.visitors.toLocaleString()}</td>
+                          <td className="px-4 py-3 text-right font-semibold text-slate-700">{row.purchases}</td>
+                          <td className="px-4 py-3 text-right font-black text-slate-900">${row.revenue.toFixed(2)}</td>
+                          <td className="px-4 py-3 text-right">
+                            <span className={`font-black ${
+                              row.rpv >= 1 ? 'text-emerald-700' : row.rpv >= 0.20 ? 'text-amber-600' : 'text-slate-400'
+                            }`}>${row.rpv.toFixed(3)}</span>
+                          </td>
+                          <td className="px-4 py-3 text-xs font-semibold">
+                            {row.rpv >= 1 ? '📈 Expand — build more like this' :
+                             row.rpv >= 0.20 ? '🛠️ Optimize — improve CVR' :
+                             row.visitors > 100 ? '🔎 High traffic, low return' : '—'}
+                          </td>
+                        </tr>
+                      );
+                    })}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            {/* ─── 4. LIVE ATTRIBUTION ─── */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
+                <h3 className="font-black text-slate-900 text-sm">🗺️ Live Revenue Attribution</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Derived 100% from actual purchase records — no hard-coded routes. Which last-touch page produced revenue?</p>
+              </div>
+              {liveAttributionData.length === 0 ? (
+                <p className="px-6 py-8 text-sm text-slate-400 text-center">No purchase attribution data yet.</p>
+              ) : (
+                <div className="overflow-x-auto">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="border-b border-gray-100 bg-gray-50/50">
+                        <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Last-Touch Page</th>
+                        <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Purchases</th>
+                        <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Revenue</th>
+                        <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Avg. Order</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-50">
+                      {liveAttributionData.map((row) => (
+                        <tr key={row.page}>
+                          <td className="px-6 py-3 font-mono text-xs text-slate-600 max-w-xs truncate" title={row.page}>{row.page || '/'}</td>
+                          <td className="px-4 py-3 text-right font-semibold text-slate-700">{row.purchases}</td>
+                          <td className="px-4 py-3 text-right font-black text-emerald-700">${row.revenue.toFixed(2)}</td>
+                          <td className="px-4 py-3 text-right text-slate-500">${row.rpv.toFixed(2)}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                  </table>
+                </div>
+              )}
+            </div>
+
+            {/* ─── 5. REVENUE PER SPRINT ─── */}
+            <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+              <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
+                <h3 className="font-black text-slate-900 text-sm">⚡ Revenue per Engineering Sprint</h3>
+                <p className="text-[11px] text-slate-400 mt-0.5">Every sprint must justify itself commercially. Revenue delta = actual purchase revenue within each sprint window.</p>
+              </div>
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="border-b border-gray-100 bg-gray-50/50">
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Sprint</th>
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Goal</th>
+                      <th className="px-6 py-3 text-left text-[10px] font-black uppercase tracking-wider text-gray-400">Window</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">Revenue</th>
+                      <th className="px-4 py-3 text-right text-[10px] font-black uppercase tracking-wider text-gray-400">vs prev Sprint</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-gray-50">
+                    {sprintData.map((s) => (
+                      <tr key={s.sprint}>
+                        <td className="px-6 py-3">
+                          <span className="inline-flex items-center gap-1.5 font-black text-slate-800">
+                            <span className="w-6 h-6 rounded-full bg-indigo-100 text-indigo-700 text-[10px] font-black flex items-center justify-center">{s.sprint}</span>
+                            {s.name}
+                          </span>
+                        </td>
+                        <td className="px-6 py-3 text-xs text-slate-500 max-w-xs">{s.goal}</td>
+                        <td className="px-6 py-3 text-xs text-slate-400 font-mono">{s.startDate} → {s.endDate}</td>
+                        <td className="px-4 py-3 text-right font-black text-slate-900">${s.revenue.toFixed(2)}</td>
+                        <td className="px-4 py-3 text-right">
+                          {s.sprint === 1 ? (
+                            <span className="text-slate-400 text-xs">Baseline</span>
+                          ) : (
+                            <span className={`font-black text-sm ${
+                              s.delta > 0 ? 'text-emerald-700' : s.delta < 0 ? 'text-red-600' : 'text-slate-400'
+                            }`}>
+                              {s.delta >= 0 ? '+' : ''}${s.delta.toFixed(2)}
+                            </span>
+                          )}
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+              <div className="px-6 py-3 bg-amber-50 border-t border-amber-100 text-[11px] text-amber-700 font-medium">
+                ⚠️ Note: Sprint revenue has a lag effect (SEO = 30d, UX = 7d). Use this as a directional signal, not a precise attribution.
+              </div>
+            </div>
+
           </div>
         )}
       </main>
