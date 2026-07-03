@@ -2,7 +2,10 @@ const fs = require('fs');
 const path = require('path');
 
 const BASE_URL = 'https://www.fsidigital.ca';
-const CSV_PATH = path.join(__dirname, '../fsidigital.ca-Coverage-Drilldown-2026-06-16/Table.csv');
+
+// Input paths
+const CRAWLED_CSV_PATH = path.join(__dirname, '../fsidigital.ca-Coverage-Drilldown-2026-06-16/Table.csv');
+const DISCOVERED_CSV_PATH = path.join(__dirname, '../gsc-coverage-june30-1/Table.csv');
 const OUTPUT_PATH = path.join(__dirname, '../public/indexing-recovery-crawled-unindexed.xml');
 
 // The 177 new unindexed URLs provided by the user
@@ -195,42 +198,60 @@ function escapeXml(value) {
     .replace(/'/g, '&apos;');
 }
 
+function processCsv(csvPath, urlSet) {
+    if (!fs.existsSync(csvPath)) {
+        console.warn(`⚠️ Warning: ${csvPath} not found.`);
+        return;
+    }
+    
+    console.log(`Reading URLs from ${csvPath}...`);
+    const csvContent = fs.readFileSync(csvPath, 'utf8');
+    const lines = csvContent.split('\n');
+    
+    let processed = 0;
+    let skipped = 0;
+    
+    for (let i = 1; i < lines.length; i++) {
+        const line = lines[i];
+        if (!line) continue;
+        
+        const url = line.split(',')[0].trim();
+        if (url && url.startsWith('https://www.fsidigital.ca')) {
+            // Filter out non-HTML static assets, admin routes, checkouts, and preferences
+            if (
+                url.includes('/_next/') || 
+                url.includes('/static/') || 
+                url.includes('/admin/') || 
+                url.includes('/checkout') || 
+                url.includes('/success') || 
+                url.includes('/preferences') ||
+                url.endsWith('.woff2') || 
+                url.endsWith('.xml') || 
+                url.endsWith('.ico')
+            ) {
+                skipped++;
+                continue;
+            }
+            urlSet.add(url);
+            processed++;
+        }
+    }
+    console.log(`   Processed ${processed} URLs (skipped ${skipped} admin/private/checkout/static URLs).`);
+}
+
 function run() {
-    console.log('Generating Crawled Unindexed Recovery Sitemap...');
+    console.log('Generating Unified Crawled & Discovered Recovery Sitemap...');
     
     const urlsToInclude = new Set(newUrls);
 
-    // Read CSV for the original 812 pages
-    if (fs.existsSync(CSV_PATH)) {
-        console.log(`Reading original unindexed URLs from ${CSV_PATH}...`);
-        const csvContent = fs.readFileSync(CSV_PATH, 'utf8');
-        const lines = csvContent.split('\n');
-        
-        let csvCount = 0;
-        let skippedCount = 0;
-        
-        for (let i = 1; i < lines.length; i++) {
-            const line = lines[i];
-            if (!line) continue;
-            
-            const url = line.split(',')[0].trim();
-            if (url && url.startsWith('https://www.fsidigital.ca')) {
-                // Filter out non-HTML static assets / feeds
-                if (url.includes('/_next/') || url.includes('/static/') || url.endsWith('.woff2') || url.endsWith('.xml') || url.endsWith('.ico')) {
-                    skippedCount++;
-                    continue;
-                }
-                urlsToInclude.add(url);
-                csvCount++;
-            }
-        }
-        console.log(`   Processed ${csvCount} URLs from CSV (skipped ${skippedCount} static asset/non-page URLs).`);
-    } else {
-        console.warn(`⚠️ Warning: ${CSV_PATH} not found. Sitemap will only contain the 177 new URLs.`);
-    }
+    // 1. Process the Crawled But Unindexed CSV
+    processCsv(CRAWLED_CSV_PATH, urlsToInclude);
+
+    // 2. Process the Discovered But Unindexed CSV
+    processCsv(DISCOVERED_CSV_PATH, urlsToInclude);
 
     const finalUrls = Array.from(urlsToInclude).sort();
-    console.log(`Total unique page URLs to include in recovery sitemap: ${finalUrls.length}`);
+    console.log(`Total unique page URLs in unified recovery sitemap: ${finalUrls.length}`);
 
     // Generate XML content
     const lastmod = new Date().toISOString();
@@ -250,7 +271,7 @@ function run() {
     ].join('\n');
 
     fs.writeFileSync(OUTPUT_PATH, xmlContent);
-    console.log(`🎉 Successfully generated indexation recovery sitemap at: ${OUTPUT_PATH}`);
+    console.log(`🎉 Successfully generated unified recovery sitemap at: ${OUTPUT_PATH}`);
 }
 
 run();
