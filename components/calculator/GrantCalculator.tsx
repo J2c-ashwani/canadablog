@@ -40,12 +40,29 @@ const INITIAL_DATA: CalculatorData = {
 }
 
 /** Map province/state codes to readable names */
-const PROVINCE_NAMES: Record<string, string> = {
+const REGION_NAMES: Record<string, string> = {
   on: 'Ontario', bc: 'British Columbia', ab: 'Alberta', qc: 'Quebec',
   ns: 'Nova Scotia', mb: 'Manitoba', sk: 'Saskatchewan', nb: 'New Brunswick',
   nl: 'Newfoundland & Labrador', pe: 'Prince Edward Island',
   territories: 'Territories', national: 'Federal/Nationwide',
+  az: 'Arizona', ca: 'California', co: 'Colorado', fl: 'Florida', ga: 'Georgia',
+  hi: 'Hawaii', id: 'Idaho', il: 'Illinois', in: 'Indiana', ky: 'Kentucky',
+  la: 'Louisiana', ma: 'Massachusetts', md: 'Maryland', mi: 'Michigan', mn: 'Minnesota',
+  nc: 'North Carolina', ne: 'Nebraska', nj: 'New Jersey', nm: 'New Mexico', nv: 'Nevada',
+  ny: 'New York', oh: 'Ohio', ok: 'Oklahoma', pa: 'Pennsylvania', tn: 'Tennessee',
+  tx: 'Texas', va: 'Virginia', wa: 'Washington', wi: 'Wisconsin'
 }
+
+const CANADIAN_PROVS = ['on', 'bc', 'ab', 'qc', 'ns', 'mb', 'sk', 'nb', 'nl', 'pe', 'territories', 'national'];
+
+const US_STATES: Record<string, string> = {
+  az: 'Arizona', ca: 'California', co: 'Colorado', fl: 'Florida', ga: 'Georgia',
+  hi: 'Hawaii', id: 'Idaho', il: 'Illinois', in: 'Indiana', ky: 'Kentucky',
+  la: 'Louisiana', ma: 'Massachusetts', md: 'Maryland', mi: 'Michigan', mn: 'Minnesota',
+  nc: 'North Carolina', ne: 'Nebraska', nj: 'New Jersey', nm: 'New Mexico', nv: 'Nevada',
+  ny: 'New York', oh: 'Ohio', ok: 'Oklahoma', pa: 'Pennsylvania', tn: 'Tennessee',
+  tx: 'Texas', va: 'Virginia', wa: 'Washington', wi: 'Wisconsin', national: 'Federal/Nationwide'
+};
 
 const INDUSTRY_NAMES: Record<string, string> = {
   technology: 'Technology & Software', manufacturing: 'Manufacturing',
@@ -54,9 +71,37 @@ const INDUSTRY_NAMES: Record<string, string> = {
   services: 'Professional Services', other: 'General Business',
 }
 
-export function GrantCalculator() {
+export interface GrantCalculatorProps {
+    defaultProvince?: string;
+    defaultIndustry?: string;
+}
+
+export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: GrantCalculatorProps) {
     const [step, setStep] = useState(1);
-    const [data, setData] = useState<CalculatorData>(INITIAL_DATA);
+    
+    // Normalize inputs
+    const normProvince = defaultProvince ? defaultProvince.toLowerCase().trim() : "";
+    let normIndustry = defaultIndustry ? defaultIndustry.toLowerCase().trim() : "";
+    
+    // Map pSEO industry slugs to calculator industry values
+    if (normIndustry === 'clean-energy') {
+        normIndustry = 'energy';
+    } else if (['women-entrepreneurs', 'minority-owned', 'veterans', 'non-profits', 'arts-entertainment', 'education', 'logistics', 'construction'].includes(normIndustry)) {
+        normIndustry = 'other';
+    }
+    
+    const isUSMode = normProvince ? !CANADIAN_PROVS.includes(normProvince) : false;
+
+    const [data, setData] = useState<CalculatorData>({
+        province: normProvince,
+        industry: normIndustry,
+        revenue: "",
+        goal: "",
+        email: "",
+        name: "",
+        phone: "",
+        company: ""
+    });
     const [isAnalyzing, setIsAnalyzing] = useState(false);
     const [estimate, setEstimate] = useState(0);
     const [estimateMax, setEstimateMax] = useState(0);
@@ -146,7 +191,7 @@ export function GrantCalculator() {
         };
 
         const rawProv = cleanField(data.province, "Canada");
-        const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
+        const provinceName = REGION_NAMES[rawProv.toLowerCase()] || rawProv;
 
         const rawInd = cleanField(data.industry, "General Business");
         const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
@@ -1498,8 +1543,8 @@ export function GrantCalculator() {
       const goal = profile.goal?.toLowerCase() || '';
       const rev = profile.revenue?.toLowerCase() || '';
       const isSmall = rev === 'pre-revenue' || rev === 'under-100k' || rev === '100k-500k';
-      const prov = profile.province?.toLowerCase() || 'on';
-      const provLabel = PROVINCE_NAMES[prov] || 'Ontario';
+       const prov = profile.province?.toLowerCase() || 'on';
+      const provLabel = REGION_NAMES[prov] || 'Ontario';
 
       if (goal === 'hiring' || goal === 'training') {
         return [
@@ -2020,24 +2065,20 @@ export function GrantCalculator() {
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <h3 className="text-xl font-semibold text-center mb-6">Where is your business located?</h3>
                         <div className="space-y-3">
-                            <Label>Province / Territory</Label>
+                            <Label>{isUSMode ? "State / Territory" : "Province / Territory"}</Label>
                             <Select value={data.province} onValueChange={(val) => updateData("province", val)}>
                                 <SelectTrigger className="h-14 text-lg">
-                                    <SelectValue placeholder="Select a region..." />
+                                    <SelectValue placeholder={isUSMode ? "Select a state..." : "Select a region..."} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    <SelectItem value="on">Ontario</SelectItem>
-                                    <SelectItem value="bc">British Columbia</SelectItem>
-                                    <SelectItem value="ab">Alberta</SelectItem>
-                                    <SelectItem value="qc">Quebec</SelectItem>
-                                    <SelectItem value="ns">Nova Scotia</SelectItem>
-                                    <SelectItem value="mb">Manitoba</SelectItem>
-                                    <SelectItem value="sk">Saskatchewan</SelectItem>
-                                    <SelectItem value="nb">New Brunswick</SelectItem>
-                                    <SelectItem value="nl">Newfoundland and Labrador</SelectItem>
-                                    <SelectItem value="pe">Prince Edward Island</SelectItem>
-                                    <SelectItem value="territories">Territories (YT, NT, NU)</SelectItem>
-                                    <SelectItem value="national">Federal/Nationwide</SelectItem>
+                                    {Object.entries(isUSMode ? US_STATES : {
+                                        on: 'Ontario', bc: 'British Columbia', ab: 'Alberta', qc: 'Quebec',
+                                        ns: 'Nova Scotia', mb: 'Manitoba', sk: 'Saskatchewan', nb: 'New Brunswick',
+                                        nl: 'Newfoundland & Labrador', pe: 'Prince Edward Island',
+                                        territories: 'Territories (YT, NT, NU)', national: 'Federal/Nationwide'
+                                    }).map(([code, name]) => (
+                                        <SelectItem key={code} value={code}>{name}</SelectItem>
+                                    ))}
                                 </SelectContent>
                             </Select>
                         </div>
@@ -2663,7 +2704,7 @@ export function GrantCalculator() {
                                   };
 
                                   const rawProv = cleanField(data.province, "Canada");
-                                  const provinceName = PROVINCE_NAMES[rawProv.toLowerCase()] || rawProv;
+                                  const provinceName = REGION_NAMES[rawProv.toLowerCase()] || rawProv;
 
                                   const rawInd = cleanField(data.industry, "General Business");
                                   const industryName = INDUSTRY_NAMES[rawInd.toLowerCase()] || rawInd;
@@ -3479,7 +3520,7 @@ export function GrantCalculator() {
                               <div className="grid grid-cols-2 gap-3 text-sm">
                                 <div>
                                   <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Region</p>
-                                  <p className="font-semibold text-slate-700">{reportData.profile?.provinceName || PROVINCE_NAMES[data.province] || data.province}</p>
+                                  <p className="font-semibold text-slate-700">{reportData.profile?.provinceName || REGION_NAMES[data.province] || data.province}</p>
                                 </div>
                                 <div>
                                   <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Industry</p>
@@ -3641,7 +3682,7 @@ export function GrantCalculator() {
                                     Get Government Funding Deadline Alerts
                                   </h4>
                                   <p className="text-xs text-slate-300 mb-4 leading-relaxed max-w-xl">
-                                    Never miss another grant deadline. Receive weekly updates on active programs, new grants, and approaching deadlines tailored for businesses in <span className="font-semibold text-indigo-300">{PROVINCE_NAMES[data.province] || data.province || 'your region'}</span> in the <span className="font-semibold text-indigo-300">{INDUSTRY_NAMES[data.industry] || data.industry || 'your industry'}</span> sector.
+                                    Never miss another grant deadline. Receive weekly updates on active programs, new grants, and approaching deadlines tailored for businesses in <span className="font-semibold text-indigo-300">{REGION_NAMES[data.province] || data.province || 'your region'}</span> in the <span className="font-semibold text-indigo-300">{INDUSTRY_NAMES[data.industry] || data.industry || 'your industry'}</span> sector.
                                   </p>
                                   
                                   {isAlertsSubscribed ? (
@@ -3649,7 +3690,7 @@ export function GrantCalculator() {
                                       <svg className="w-4 h-4 text-emerald-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                       </svg>
-                                      <span>Success! You are subscribed to deadline alerts for {PROVINCE_NAMES[data.province] || data.province} ({INDUSTRY_NAMES[data.industry] || data.industry}).</span>
+                                      <span>Success! You are subscribed to deadline alerts for {REGION_NAMES[data.province] || data.province} ({INDUSTRY_NAMES[data.industry] || data.industry}).</span>
                                     </div>
                                   ) : (
                                     <form onSubmit={handleAlertsSubmit} className="space-y-3">

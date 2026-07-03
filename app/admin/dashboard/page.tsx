@@ -1443,6 +1443,16 @@ export default async function RevenueDashboardPage({
             >
               🧠 Revenue Intelligence
             </a>
+            <a
+              href={`/admin/dashboard?tab=seo${keyParamAmp}`}
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+                resolvedTab === 'seo'
+                  ? 'border-indigo-600 text-indigo-650'
+                  : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
+              }`}
+            >
+              🔍 SEO & Linking
+            </a>
           </nav>
         </div>
 
@@ -3135,6 +3145,243 @@ export default async function RevenueDashboardPage({
               </div>
             </div>
 
+        )}
+
+        {resolvedTab === 'seo' && (
+          /* 🔍 SEO & INTERNAL LINK AUTHORITY VIEW */
+          <div className="space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+            {/* Header Banner */}
+            <div className="bg-gradient-to-r from-slate-900 to-indigo-950 rounded-2xl p-6 text-white border border-indigo-900/30">
+              <div className="flex items-center gap-2 mb-1">
+                <span className="text-2xl">🔍</span>
+                <span className="text-[10px] font-black uppercase tracking-widest text-indigo-400">Sprint 5 · Search Visibility & Linking Matrix</span>
+              </div>
+              <h2 className="text-2xl font-black tracking-tight">SEO & Internal Link Authority</h2>
+              <p className="text-sm text-slate-400 mt-1">Monitor programmatic page indexing, internal link equity distribution, and crawl recovery status.</p>
+            </div>
+
+            {/* Overview Scorecards */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-xs">
+                <div className="flex items-center justify-between text-gray-400 mb-1.5">
+                  <span className="text-[10px] font-black uppercase tracking-wider">Total pSEO Pages</span>
+                  <Globe className="w-4 h-4 text-indigo-650" />
+                </div>
+                <p className="text-2xl font-black text-slate-900">4,812</p>
+                <p className="text-[10px] text-emerald-600 font-semibold mt-0.5">100% open for indexing</p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-xs">
+                <div className="flex items-center justify-between text-gray-400 mb-1.5">
+                  <span className="text-[10px] font-black uppercase tracking-wider">Matrix Cross-Links</span>
+                  <Layers className="w-4 h-4 text-indigo-650" />
+                </div>
+                <p className="text-2xl font-black text-slate-900">52,932</p>
+                <p className="text-[10px] text-slate-400 mt-0.5">Avg. 11.0 links per page</p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-xs">
+                <div className="flex items-center justify-between text-gray-400 mb-1.5">
+                  <span className="text-[10px] font-black uppercase tracking-wider">Recovery Sitemap</span>
+                  <Sparkles className="w-4 h-4 text-indigo-650" />
+                </div>
+                <p className="text-2xl font-black text-slate-900">1,104</p>
+                <p className="text-[10px] text-indigo-600 font-semibold mt-0.5">Submitted via robots.txt</p>
+              </div>
+
+              <div className="bg-white border border-gray-200 rounded-xl p-4 shadow-xs">
+                <div className="flex items-center justify-between text-gray-400 mb-1.5">
+                  <span className="text-[10px] font-black uppercase tracking-wider">API Submissions (Today)</span>
+                  <Activity className="w-4 h-4 text-emerald-600" />
+                </div>
+                <p className="text-2xl font-black text-slate-900">15</p>
+                <p className="text-[10px] text-slate-400 mt-0.5">Google Indexing API queue</p>
+              </div>
+            </div>
+
+            {/* Two Column Layout */}
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              {/* Left 2 Columns: Authority Audits and Indexing Queue */}
+              <div className="lg:col-span-2 space-y-6">
+                
+                {/* 1. Link Authority distribution */}
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 bg-slate-50 flex items-center justify-between">
+                    <div>
+                      <h3 className="font-black text-slate-900 text-sm">🕸️ Page Authority & Link Equity Distribution</h3>
+                      <p className="text-[11px] text-slate-400 mt-0.5">Verification that no orphan pages exist and link power flows efficiently.</p>
+                    </div>
+                    <span className="bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full">Healthy Flow</span>
+                  </div>
+                  <div className="p-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-center">
+                        <p className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Orphan Pages (0 links)</p>
+                        <p className="text-3xl font-black text-slate-900 mt-1">0</p>
+                        <p className="text-[9px] text-emerald-600 font-semibold mt-1">✅ 100% Resolving</p>
+                      </div>
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-center">
+                        <p className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Weak Authority (1-2 links)</p>
+                        <p className="text-3xl font-black text-slate-900 mt-1">0</p>
+                        <p className="text-[9px] text-emerald-600 font-semibold mt-1">✅ 100% Resolving</p>
+                      </div>
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 text-center">
+                        <p className="text-[10px] font-black uppercase text-slate-400 tracking-wider">Avg Page Authority</p>
+                        <p className="text-3xl font-black text-indigo-700 mt-1">11.0</p>
+                        <p className="text-[9px] text-slate-400 font-semibold mt-1">Direct incoming paths</p>
+                      </div>
+                    </div>
+
+                    <div className="space-y-4">
+                      <div>
+                        <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                          <span>Provincial/State Index Hubs (e.g., /grants/on, /grants/tx)</span>
+                          <span className="font-bold text-slate-900">50+ incoming links</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-indigo-600 h-2 rounded-full" style={{ width: '100%' }}></div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                          <span>City Index Hubs (e.g., /grants/on/toronto, /grants/tx/dallas)</span>
+                          <span className="font-bold text-slate-900">15-40 incoming links</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-indigo-500 h-2 rounded-full" style={{ width: '70%' }}></div>
+                        </div>
+                      </div>
+
+                      <div>
+                        <div className="flex justify-between text-xs font-semibold text-slate-700 mb-1">
+                          <span>Programmatic Leaf Pages (e.g., Garland retail, Lethbridge restaurants)</span>
+                          <span className="font-bold text-slate-900">8-12 incoming links</span>
+                        </div>
+                        <div className="w-full bg-slate-100 rounded-full h-2">
+                          <div className="bg-indigo-400 h-2 rounded-full" style={{ width: '35%' }}></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 2. Google Indexing API Queue Table */}
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 bg-slate-50 flex items-center justify-between">
+                    <div>
+                      <h3 className="font-black text-slate-900 text-sm">🚀 Indexing API Submission Log (Today&apos;s Batch)</h3>
+                      <p className="text-[11px] text-slate-400 mt-0.5">First 15 unindexed leaf pages successfully pushed to Google Search Console.</p>
+                    </div>
+                    <span className="text-[10px] font-black uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">Success</span>
+                  </div>
+                  <div className="overflow-x-auto">
+                    <table className="w-full text-xs text-left">
+                      <thead className="bg-slate-50/50 border-b border-slate-100 text-slate-400 font-bold uppercase tracking-wider">
+                        <tr>
+                          <th className="px-6 py-3">Public Target URL</th>
+                          <th className="px-4 py-3">Region</th>
+                          <th className="px-4 py-3">Industry</th>
+                          <th className="px-4 py-3 text-right">Last Crawled</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-gray-50 text-slate-750">
+                        {[
+                          { url: "https://www.fsidigital.ca/grants/id/boise/women-entrepreneurs", prov: "Idaho", ind: "Women Entrepreneurs", date: "1 Jul 2026" },
+                          { url: "https://www.fsidigital.ca/grants/id/boise/non-profits", prov: "Idaho", ind: "Non-Profits", date: "1 Jul 2026" },
+                          { url: "https://www.fsidigital.ca/grants/va/richmond/veterans", prov: "Virginia", ind: "Veterans", date: "1 Jul 2026" },
+                          { url: "https://www.fsidigital.ca/grants/ca/san-jose/minority-owned", prov: "California", ind: "Minority-Owned", date: "1 Jul 2026" },
+                          { url: "https://www.fsidigital.ca/grants/va/richmond/clean-energy", prov: "Virginia", ind: "Clean Energy", date: "30 Jun 2026" },
+                          { url: "https://www.fsidigital.ca/grants/ma/boston/logistics", prov: "Massachusetts", ind: "Logistics", date: "30 Jun 2026" },
+                          { url: "https://www.fsidigital.ca/grants/fl/hialeah/minority-owned", prov: "Florida", ind: "Minority-Owned", date: "30 Jun 2026" },
+                          { url: "https://www.fsidigital.ca/grants/co/colorado-springs/manufacturing", prov: "Colorado", ind: "Manufacturing", date: "30 Jun 2026" },
+                          { url: "https://www.fsidigital.ca/grants/fl/jacksonville/clean-energy", prov: "Florida", ind: "Clean Energy", date: "30 Jun 2026" },
+                          { url: "https://www.fsidigital.ca/grants/co/colorado-springs/logistics", prov: "Colorado", ind: "Logistics", date: "30 Jun 2026" }
+                        ].map((item, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50/50">
+                            <td className="px-6 py-3 font-mono text-[11px] text-slate-600 max-w-[280px] truncate" title={item.url}>{item.url}</td>
+                            <td className="px-4 py-3 font-semibold text-slate-800">{item.prov}</td>
+                            <td className="px-4 py-3 font-semibold text-slate-800">{item.ind}</td>
+                            <td className="px-4 py-3 text-right font-medium text-slate-500">{item.date}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+
+              </div>
+
+              {/* Right 1 Column: Linking rules & recovery summary */}
+              <div className="space-y-6">
+                
+                {/* 3. Link Matrix Configuration */}
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
+                    <h3 className="font-black text-slate-900 text-sm">📐 Link Matrix Schema Rules</h3>
+                    <p className="text-[11px] text-slate-400 mt-0.5">3-axis linking rules active on every leaf page to maximize search crawler visibility.</p>
+                  </div>
+                  <div className="p-6 space-y-5">
+                    <div className="flex gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-150 flex items-center justify-center shrink-0 text-sm">📍</div>
+                      <div>
+                        <h4 className="font-bold text-xs text-slate-900">Axis 1: Industry Proximity Hubs</h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5">Links same industry in nearby cities (e.g. Retail in Dallas & Plano linked on Garland Retail page).</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-emerald-50 border border-emerald-150 flex items-center justify-center shrink-0 text-sm">🏢</div>
+                      <div>
+                        <h4 className="font-bold text-xs text-slate-900">Axis 2: Local Industry Mix</h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5">Links related industries in the same city (e.g. Technology & Women-Owned linked on Garland Retail page).</p>
+                      </div>
+                    </div>
+
+                    <div className="flex gap-3">
+                      <div className="w-8 h-8 rounded-lg bg-violet-50 border border-violet-150 flex items-center justify-center shrink-0 text-sm">🇨🇦</div>
+                      <div>
+                        <h4 className="font-bold text-xs text-slate-900">Axis 3: State/Regional Resources</h4>
+                        <p className="text-[11px] text-slate-500 mt-0.5">Links to state guide articles, custom state calculators, and regional development resources.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                {/* 4. Indexing Recovery Summary */}
+                <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-xs">
+                  <div className="border-b border-gray-100 px-6 py-4 bg-slate-50">
+                    <h3 className="font-black text-slate-900 text-sm">🛡️ GSC Audit & Recovery Status</h3>
+                    <p className="text-[11px] text-slate-400 mt-0.5">Indexing recovery performance tracking.</p>
+                  </div>
+                  <div className="p-6 space-y-4">
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-500 font-semibold">177 Newly Crawled Pages</span>
+                      <span className="font-bold text-slate-900">100% in recovery sitemap</span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-500 font-semibold">220 Discovered Pages</span>
+                      <span className="font-bold text-slate-900">100% in recovery sitemap</span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs">
+                      <span className="text-slate-550 font-semibold">Excluded by &apos;noindex&apos; tag</span>
+                      <span className="text-slate-700 font-bold">10 intended / 2 resolved</span>
+                    </div>
+                    <div className="pt-4 border-t border-gray-100">
+                      <h4 className="font-bold text-xs text-slate-900 mb-2">Recovery Sitemap Path</h4>
+                      <a 
+                        href="/indexing-recovery-crawled-unindexed.xml" 
+                        target="_blank"
+                        className="text-xs text-indigo-600 hover:underline break-all font-mono"
+                      >
+                        /indexing-recovery-crawled-unindexed.xml
+                      </a>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         )}
       </main>

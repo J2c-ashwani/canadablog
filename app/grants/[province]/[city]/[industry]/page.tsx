@@ -1104,7 +1104,10 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                     {/* Right Column: Sticky Calculator Sidebar */}
                     <div className="lg:col-span-5 relative" id="calculator">
                         <div className="lg:sticky lg:top-24 mt-8 lg:mt-0">
-                            <GrantCalculator />
+                            <GrantCalculator 
+                                defaultProvince={page.provinceSlug} 
+                                defaultIndustry={page.industrySlug} 
+                            />
                             {/* Sidebar Ad below Calculator */}
                             <div className="mt-8">
                                 <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
