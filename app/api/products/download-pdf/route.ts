@@ -35,8 +35,11 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // Verify purchase status is active (completed, processing, pending)
-    const activeStatuses = ['completed', 'processing', 'pending'];
+    // Verify purchase status grants access.
+    // purchase-store.ts always writes status = 'completed' after PayPal COMPLETED verification.
+    // 'pending' is removed — it's a phantom value that will never appear from this codebase.
+    // 'processing' is kept as an admin-settable support recovery value only.
+    const activeStatuses = ['completed', 'processing'];
     const currentStatus = String(purchase.status || '').toLowerCase().trim();
     if (!activeStatuses.includes(currentStatus)) {
       console.warn(`[Download PDF API] Access denied for token ${token}. Status: ${purchase.status}`);
@@ -48,6 +51,7 @@ export async function GET(req: NextRequest) {
         { headers: { 'Content-Type': 'text/html' } }
       );
     }
+
 
     // 2. Parse profile data
     let profileData: any = {};

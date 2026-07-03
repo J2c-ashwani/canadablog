@@ -28,8 +28,13 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid or expired token' }, { status: 404 });
     }
 
-    // Verify purchase status is active (completed, processing, pending)
-    const activeStatuses = ['completed', 'processing', 'pending'];
+    // Verify purchase status grants access.
+    // IMPORTANT: purchase-store.ts always writes status = 'completed' after PayPal verification.
+    // The PayPal library rejects any order that is not COMPLETED before recordPurchase() is called,
+    // so 'pending' / 'processing' are phantom values that will never appear in a real row.
+    // We allow a small set of admin-settable recovery values ('processing') for support edge cases only.
+    // Access is DENIED for: refunded, cancelled, failed, failed_sheets_sync, chargeback, expired.
+    const activeStatuses = ['completed', 'processing'];
     const currentStatus = String(purchase.status || '').toLowerCase().trim();
     if (!activeStatuses.includes(currentStatus)) {
       console.warn(`[Verify API] Access denied for token ${token}. Status: ${purchase.status}`);
