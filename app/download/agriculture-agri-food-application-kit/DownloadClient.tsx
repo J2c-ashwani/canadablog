@@ -57,7 +57,7 @@ export default function AgricultureAgriFoodDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/aafc-agricultural-application-kit/thank-you")
+        router.push("/download/agriculture-agri-food-application-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

@@ -54,7 +54,7 @@ export default function SIFDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/strategic-innovation-fund-application-kit/thank-you")
+        router.push("/download/sif-application-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

@@ -55,7 +55,7 @@ export default function IRAPInnovationDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/irap-innovation-application-kit/thank-you")
+        router.push("/download/irap-innovation-application-guide/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

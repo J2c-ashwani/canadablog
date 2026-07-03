@@ -56,7 +56,7 @@ export default function CSBFPGovernmentDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/csbfp-government-financing-guide/thank-you")
+        router.push("/download/csbfp-government-financing-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

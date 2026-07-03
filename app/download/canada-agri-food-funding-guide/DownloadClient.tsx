@@ -56,7 +56,7 @@ export default function CanadaAgriFoodFundingDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/canada-agrifood-funding-guide/thank-you")
+        router.push("/download/canada-agri-food-funding-guide/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

@@ -58,7 +58,7 @@ export default function WomenEntrepreneurshipDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/women-entrepreneurship-strategy-kit/thank-you")
+        router.push("/download/women-entrepreneurship-application-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

@@ -57,7 +57,7 @@ export default function OntarioBusinessGrantsDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/ontario-business-grants-application-kit/thank-you")
+        router.push("/download/ontario-business-grants-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

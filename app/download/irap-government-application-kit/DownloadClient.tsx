@@ -55,7 +55,7 @@ export default function IRAPGovernmentDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/irap-government-application-toolkit/thank-you")
+        router.push("/download/irap-government-application-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

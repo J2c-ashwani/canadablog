@@ -59,7 +59,7 @@ export default function BritishColumbiaGrantsDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/bc-business-grants-kit/thank-you")
+        router.push("/download/british-columbia-grants-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

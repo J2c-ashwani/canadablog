@@ -49,7 +49,7 @@ export default function BiotechLifeSciencesGrantsGuideDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/biotech-life-sciences-grants-guide/thank-you")
+        router.push("/download/biotech-grants-guide/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

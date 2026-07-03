@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
-import { recordPurchase } from '@/lib/products/purchase-store';
+import { recordPurchase, getPurchasesByEmail } from '@/lib/products/purchase-store';
 import { getProduct } from '@/lib/products/catalog';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
@@ -53,6 +53,23 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Load existing lead for database-level attribution fallback
+    const existing = await SubscriberRepository.getSubscriberByEmail(email);
+
+    const resolvedAttribution = {
+      landingPage: attribution?.landingPage || existing?.pagePath || '',
+      referrer: attribution?.referrer || existing?.referralSource || 'direct',
+      utmSource: attribution?.utmSource || existing?.utmSource || '',
+      utmMedium: attribution?.utmMedium || existing?.utmMedium || '',
+      utmCampaign: attribution?.utmCampaign || existing?.utmCampaign || '',
+      gaClientId: attribution?.gaClientId || existing?.gaClientId || '',
+      lastTouchPage: attribution?.lastTouchPage || '',
+      lastTouchReferrer: attribution?.lastTouchReferrer || '',
+      device: attribution?.device || '',
+      browser: attribution?.browser || '',
+      country: attribution?.country || existing?.country || '',
+    };
+
     // ── Check past purchases to calculate upgrade credit ──
     const purchases = await getPurchasesByEmail(email);
     let totalCredit = 0;
@@ -84,6 +101,32 @@ export async function POST(request: NextRequest) {
         `❌ PayPal verification failed for order ${paypalOrderId}:`,
         verification.error
       );
+
+      // Security telemetry tracking
+      await recordTelemetryEvent({
+        eventName: 'security_anomaly',
+        sessionId: paypalOrderId,
+        pagePath: '/api/products/purchase',
+        referrer: 'paypal',
+        trafficQualityClassification: 'PAYMENT_VERIFICATION_FAILED',
+        utmSource: 'security',
+        utmMedium: 'paypal_purchase_failed',
+        utmCampaign: verification.error || 'unknown_error',
+      }).catch(() => {});
+
+      // Alert owner
+      const adminEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+      await sendEmail({
+        to: adminEmail,
+        subject: '⚠️ PAYMENT SECURITY ANOMALY: Purchase Verification Failed',
+        html: `<p><strong>WARNING:</strong> A product checkout payment verification failed on <code>/api/products/purchase</code>.</p>
+               <p><strong>Product:</strong> ${product.name} (ID: ${productId})</p>
+               <p><strong>Expected Price:</strong> $${expectedPrice.toFixed(2)}</p>
+               <p><strong>PayPal Order ID:</strong> ${paypalOrderId}</p>
+               <p><strong>Error Details:</strong> ${verification.error || 'Verification failed'}</p>
+               <p>The transaction has been rejected.</p>`
+      }).catch(err => console.error('Failed to send security warning email:', err));
+
       return NextResponse.json(
         { error: verification.error || 'Payment verification failed' },
         { status: 400 }
@@ -98,7 +141,7 @@ export async function POST(request: NextRequest) {
       amount: product.priceUsd.toFixed(2),
       paypalOrderId,
       profileData,
-      attribution,
+      attribution: resolvedAttribution,
     });
 
     // ── Record Toolkit addon if purchased ──
@@ -111,7 +154,7 @@ export async function POST(request: NextRequest) {
           amount: '29.00',
           paypalOrderId,
           profileData,
-          attribution,
+          attribution: resolvedAttribution,
         });
       } catch (err) {
         console.error('⚠️ Failed to record Toolkit addon purchase:', err);
@@ -128,7 +171,7 @@ export async function POST(request: NextRequest) {
           amount: '9.00',
           paypalOrderId,
           profileData,
-          attribution,
+          attribution: resolvedAttribution,
         });
       } catch (err) {
         console.error('⚠️ Failed to record Approval Library addon purchase:', err);
@@ -140,8 +183,8 @@ export async function POST(request: NextRequest) {
       await recordTelemetryEvent({
         eventName: productId === 'strategy-audit' ? 'strategy_audit_purchased' : 'purchase_product',
         sessionId: sessionId || 'sess_anonymous',
-        pagePath: attribution?.landingPage || '',
-        referrer: attribution?.referrer || 'direct',
+        pagePath: resolvedAttribution.landingPage || '',
+        referrer: resolvedAttribution.referrer || 'direct',
         productId,
         revenue: product.priceUsd.toFixed(2),
       });
@@ -155,8 +198,8 @@ export async function POST(request: NextRequest) {
         await recordTelemetryEvent({
           eventName: 'purchase_product',
           sessionId: sessionId || 'sess_anonymous',
-          pagePath: attribution?.landingPage || '',
-          referrer: attribution?.referrer || 'direct',
+          pagePath: resolvedAttribution.landingPage || '',
+          referrer: resolvedAttribution.referrer || 'direct',
           productId: 'funding-toolkit',
           revenue: '29.00',
         });
@@ -171,8 +214,8 @@ export async function POST(request: NextRequest) {
         await recordTelemetryEvent({
           eventName: 'purchase_product',
           sessionId: sessionId || 'sess_anonymous',
-          pagePath: attribution?.landingPage || '',
-          referrer: attribution?.referrer || 'direct',
+          pagePath: resolvedAttribution.landingPage || '',
+          referrer: resolvedAttribution.referrer || 'direct',
           productId: 'funding-approval-library',
           revenue: '9.00',
         });
@@ -183,7 +226,6 @@ export async function POST(request: NextRequest) {
 
     // ── Sync purchase status back to CRM Leads sheet ──
     try {
-      const existing = await SubscriberRepository.getSubscriberByEmail(email);
       const updates: any = {
         region: profileData.province || 'ON',
         industry: profileData.industry || 'other',
@@ -192,10 +234,10 @@ export async function POST(request: NextRequest) {
       };
 
       // Set UTM parameters on subscriber updates
-      if (attribution?.utmSource) updates.utmSource = attribution.utmSource;
-      if (attribution?.utmMedium) updates.utmMedium = attribution.utmMedium;
-      if (attribution?.utmCampaign) updates.utmCampaign = attribution.utmCampaign;
-      if (attribution?.gaClientId) updates.gaClientId = attribution.gaClientId;
+      if (resolvedAttribution.utmSource) updates.utmSource = resolvedAttribution.utmSource;
+      if (resolvedAttribution.utmMedium) updates.utmMedium = resolvedAttribution.utmMedium;
+      if (resolvedAttribution.utmCampaign) updates.utmCampaign = resolvedAttribution.utmCampaign;
+      if (resolvedAttribution.gaClientId) updates.gaClientId = resolvedAttribution.gaClientId;
 
       if (productId === 'funding-match-report') {
         updates.reportPurchased = true;

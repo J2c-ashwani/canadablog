@@ -55,7 +55,7 @@ export default function NSERCResearchGrantsDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/nserc-research-grants-application-kit/thank-you")
+        router.push("/download/nserc-research-grants-guide/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

@@ -231,6 +231,7 @@ function parseSheetLead(row: string[]): SheetLead {
     auditCandidate: row[71] || "No",
     annualRevenue: row[72] || "N/A",
     referralSource: row[73] || "N/A",
+    potentialFundingRange: row[74] || "N/A",
   }
 
 
@@ -259,7 +260,7 @@ export async function getLeadsFromSheet(limit = 500) {
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: "Leads!A:BO",
+    range: "Leads!A:BW",
   })
 
 
@@ -286,7 +287,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
     // Fetch all rows to locate index
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:BU",
+      range: "Leads!A:BW",
     })
     
     const rows = response.data.values || []
@@ -310,8 +311,8 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
       const sheetRowNumber = rowIndex + 1
       const targetRow = [...rows[rowIndex]]
       
-      // Ensure array length covers BV (index 73)
-      while (targetRow.length < 74) {
+      // Ensure array length covers BW (index 74)
+      while (targetRow.length < 75) {
         targetRow.push("N/A")
       }
       
@@ -499,10 +500,13 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
       if (updates.referralSource !== undefined) {
         targetRow[73] = updates.referralSource
       }
+      if (updates.potentialFundingRange !== undefined) {
+        targetRow[74] = updates.potentialFundingRange
+      }
 
       await sheets.spreadsheets.values.update({
         spreadsheetId,
-        range: `Leads!A${sheetRowNumber}:BV${sheetRowNumber}`,
+        range: `Leads!A${sheetRowNumber}:BW${sheetRowNumber}`,
         valueInputOption: "USER_ENTERED",
         requestBody: {
           values: [targetRow],

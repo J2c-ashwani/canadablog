@@ -254,7 +254,7 @@ export async function GET(request: NextRequest) {
       ? `/booking?email=${encodeURIComponent(email)}&order=${encodeURIComponent(sessionId)}`
       : `/products/report?token=${accessToken}`;
 
-    const origin = request.headers.get('origin') || 'https://www.fsidigital.ca';
+    const origin = new URL(request.url).origin;
     return NextResponse.redirect(`${origin}${deliveryUrl}`);
   } catch (error: any) {
     console.error('❌ Success redirect processing failed:', error);

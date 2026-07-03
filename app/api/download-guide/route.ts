@@ -37,7 +37,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({
       success: true,
       message: "Guide ready for download",
-      downloadUrl: "/guides/sample-guide.pdf", // Your PDF path
+      downloadUrl: "/lead-magnets/ultimate-grant-guide-2026.pdf",
     })
   } catch (error) {
     console.error("Download guide error:", error)

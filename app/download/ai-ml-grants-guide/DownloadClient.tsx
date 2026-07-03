@@ -50,7 +50,7 @@ export default function AIMachineLearningGrantsGuideDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/ai-machine-learning-grants-guide/thank-you")
+        router.push("/download/ai-ml-grants-guide/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }

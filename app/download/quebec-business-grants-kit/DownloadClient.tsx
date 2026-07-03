@@ -59,7 +59,7 @@ export default function QuebecBusinessGrantsDownloadPage() {
       const data = await response.json()
 
       if (response.ok) {
-        router.push("/download/quebec-business-grants-application-kit/thank-you")
+        router.push("/download/quebec-business-grants-kit/thank-you")
       } else {
         setError(data.error || "Failed to process download")
       }
