@@ -35,6 +35,20 @@ export async function GET(req: NextRequest) {
       );
     }
 
+    // Verify purchase status is active (completed, processing, pending)
+    const activeStatuses = ['completed', 'processing', 'pending'];
+    const currentStatus = String(purchase.status || '').toLowerCase().trim();
+    if (!activeStatuses.includes(currentStatus)) {
+      console.warn(`[Download PDF API] Access denied for token ${token}. Status: ${purchase.status}`);
+      return new NextResponse(
+        `<html><body style="font-family:sans-serif;text-align:center;padding:50px;background:#f8fafc;color:#1e293b;">
+          <h2 style="color:#dc2626;font-size:24px;margin-bottom:10px;">Access Denied</h2>
+          <p style="color:#64748b;font-size:16px;">This purchase status is ${purchase.status || 'unknown'}. Download permissions are restricted. Please contact hello@fsidigital.ca.</p>
+        </body></html>`,
+        { headers: { 'Content-Type': 'text/html' } }
+      );
+    }
+
     // 2. Parse profile data
     let profileData: any = {};
     try {
@@ -49,7 +63,10 @@ export async function GET(req: NextRequest) {
     let hasStrategyUnlocked = false;
     try {
       const emailPurchases = await getPurchasesByEmail(purchase.email);
-      hasStrategyUnlocked = emailPurchases.some(
+      const activePurchases = emailPurchases.filter(
+        (p: any) => activeStatuses.includes(String(p.status || '').toLowerCase().trim())
+      );
+      hasStrategyUnlocked = activePurchases.some(
         (p: any) => p.productId === 'funding-roadmap' || p.productId === 'funding-bundle'
       );
     } catch (err) {

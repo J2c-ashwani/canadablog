@@ -161,14 +161,14 @@ export async function POST(request: NextRequest) {
       leadData.leadActivity = JSON.stringify(activity)
 
       if (existing) {
-        await SubscriberRepository.updateSubscriberPreferences(body.email, {
+        return await SubscriberRepository.updateSubscriberPreferences(body.email, {
           ...leadData,
           companySize: leadData.companySize as any,
           fundingInterests: leadData.fundingInterests as any,
           region: leadData.state
         })
       } else {
-        await appendLeadToSheet({
+        return await appendLeadToSheet({
           ...leadData,
           email: body.email,
           timestamp,
@@ -181,9 +181,32 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    saveLead().catch((error) => {
-      console.error("❌ Failed to save lead to Google Sheets:", error)
-    })
+    const saveResult = await saveLead();
+    if (!saveResult.success) {
+      console.error("❌ CRITICAL: Google Sheets save failed in Grant Finder route. Metadata:", JSON.stringify({
+        timestamp: new Date().toISOString(),
+        source: body.source || "Grant Finder Survey",
+        state: body.state,
+        industry: body.industry,
+        companySize: body.companySize,
+        annualRevenue: body.annualRevenue,
+        readinessScore: body.readinessScore,
+        readinessBand: body.readinessBand,
+        utmSource: body.utmSource,
+        utmMedium: body.utmMedium,
+        utmCampaign: body.utmCampaign,
+        // PII fields redacted
+        email: "[REDACTED]",
+        name: "[REDACTED]",
+        phone: "[REDACTED]",
+        website: "[REDACTED]",
+        companyName: "[REDACTED]",
+      }));
+      return NextResponse.json(
+        { error: "We encountered an issue saving your details. Please try again." },
+        { status: 500 }
+      );
+    }
 
     // Dispatch welcome follow-up email if Sender.net is configured
     const senderApiKey = process.env.SENDER_API_KEY

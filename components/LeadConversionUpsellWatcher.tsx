@@ -16,7 +16,7 @@ const LEAD_UPSELL_EVENT = 'fsi:lead-conversion-upsell';
 const STORAGE_KEY = 'fsi:pending-strategy-session-upsell';
 const GA_MEASUREMENT_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-DZ55NMNLYM';
 
-const LEAD_ENDPOINTS = ['/api/contact', '/api/grant-finder', '/api/download', '/api/download-guide'];
+const LEAD_ENDPOINTS = ['/api/grant-finder', '/api/download', '/api/download-guide'];
 const IGNORED_ENDPOINTS = ['/api/subscribe', '/api/newsletter'];
 const TRACKED_ENDPOINTS = [
   '/api/contact',
@@ -120,7 +120,7 @@ export function trackGAEvent(eventName: string, params: Record<string, any> = {}
 export function LeadConversionUpsellWatcher() {
   const pathname = usePathname();
   const [pendingLead, setPendingLead] = useState<PendingLead | null>(null);
-  const shouldSuppress = pathname === '/consultation' || pathname === '/booking' || pathname === '/calculator' || pathname === '/grant-finder' || pathname.startsWith('/partners');
+  const shouldSuppress = pathname === '/consultation' || pathname === '/booking' || pathname === '/calculator' || pathname === '/grant-finder' || pathname === '/contact' || pathname.startsWith('/partners');
 
   // Capture UTM parameters from URL and store in sessionStorage
   useEffect(() => {

@@ -242,6 +242,33 @@ export function Footer() {
                 </Link>
               </li>
               
+              <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Paid Products</li>
+              <li>
+                <Link href="/products/funding-match-report" className="text-gray-400 hover:text-white text-sm">
+                  Funding Match Report
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/action-plan" className="text-gray-400 hover:text-white text-sm">
+                  Funding Action Plan
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/toolkit" className="text-gray-400 hover:text-white text-sm">
+                  Application Toolkit
+                </Link>
+              </li>
+              <li>
+                <Link href="/products/approval-library" className="text-gray-400 hover:text-white text-sm">
+                  Case Approval Library
+                </Link>
+              </li>
+              <li>
+                <Link href="/membership" className="text-gray-400 hover:text-white text-sm">
+                  Founding Membership
+                </Link>
+              </li>
+              
               <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Industries</li>
               <li>
                 <Link href="/grants/industry/saas-companies" className="text-gray-400 hover:text-white text-sm">

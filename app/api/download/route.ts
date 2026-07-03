@@ -11,7 +11,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Save lead to Google Sheets
-    await appendLeadToSheet({
+    const sheetResult = await appendLeadToSheet({
       source: `PDF Download - ${guideName}`,
       timestamp: new Date().toISOString(),
       email,
@@ -30,7 +30,28 @@ export async function POST(request: NextRequest) {
       utmCampaign,
       gaClientId,
       offlineStatus: "Lead",
-    }).catch((error) => console.error("Failed to save download lead:", error))
+    });
+
+    if (!sheetResult.success) {
+      console.error("❌ CRITICAL: Google Sheets save failed in Download route. Metadata:", JSON.stringify({
+        timestamp: new Date().toISOString(),
+        source: `PDF Download - ${body.guideName}`,
+        industry: body.industry,
+        country: body.country,
+        utmSource: body.utmSource,
+        utmMedium: body.utmMedium,
+        utmCampaign: body.utmCampaign,
+        // PII fields redacted
+        email: "[REDACTED]",
+        name: "[REDACTED]",
+        companyName: "[REDACTED]",
+        phone: "[REDACTED]",
+      }));
+      return NextResponse.json(
+        { error: "We encountered an issue saving your request. Please try again." },
+        { status: 500 }
+      );
+    }
 
 
     return NextResponse.json({

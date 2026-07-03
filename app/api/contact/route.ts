@@ -144,15 +144,48 @@ export async function POST(request: NextRequest) {
     const additionalNotes = `Request Type: ${requestType || "General"}\nMessage: ${businessDescription}\n${phoneValidationNotes}`;
 
     // Save lead to Google Sheets database immediately
-    await appendLeadToSheet({
+    const sheetResult = await appendLeadToSheet({
       ...leadData,
       potentialFundingRange,
       additionalNotes,
       leadTier: tier,
       auditCandidate: isAuditCandidate ? "Yes" : "No",
-    }).catch((error) => {
-      console.error("❌ Failed to save B2B contact lead to Google Sheets:", error);
     });
+
+    if (!sheetResult.success) {
+      console.error("❌ CRITICAL: Google Sheets save failed. Metadata:", JSON.stringify({
+        timestamp: leadData.timestamp,
+        source: leadData.source,
+        country: leadData.country,
+        state: leadData.state,
+        city: leadData.city,
+        industry: leadData.industry,
+        businessStage: leadData.businessStage,
+        companySize: leadData.companySize,
+        annualRevenue: leadData.annualRevenue,
+        fundingAmount: leadData.fundingAmount,
+        fundingPurpose: leadData.fundingPurpose,
+        consentToPartnerContact: leadData.consentToPartnerContact,
+        pagePath: leadData.pagePath,
+        utmSource: leadData.utmSource,
+        utmMedium: leadData.utmMedium,
+        utmCampaign: leadData.utmCampaign,
+        leadTier: tier,
+        auditCandidate: isAuditCandidate ? "Yes" : "No",
+        // PII fields redacted
+        email: "[REDACTED]",
+        name: "[REDACTED]",
+        phone: "[REDACTED]",
+        businessDescription: "[REDACTED]",
+        ipAddress: "[REDACTED]",
+        userAgent: "[REDACTED]",
+        additionalNotes: "[REDACTED]",
+      }));
+      return NextResponse.json(
+        { error: "We encountered an issue saving your qualification details. Please try again." },
+        { status: 500 }
+      );
+    }
 
     console.log(`📧 B2B Lead Captured: ${name} (${email}) - Score: ${score}/100 - Tier: ${tier}`);
 

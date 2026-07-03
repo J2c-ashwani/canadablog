@@ -28,6 +28,16 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid or expired token' }, { status: 404 });
     }
 
+    // Verify purchase status is active (completed, processing, pending)
+    const activeStatuses = ['completed', 'processing', 'pending'];
+    const currentStatus = String(purchase.status || '').toLowerCase().trim();
+    if (!activeStatuses.includes(currentStatus)) {
+      console.warn(`[Verify API] Access denied for token ${token}. Status: ${purchase.status}`);
+      return NextResponse.json({
+        error: `Access denied. Purchase status: ${purchase.status || 'unknown'}. Contact support at hello@fsidigital.ca.`
+      }, { status: 403 });
+    }
+
     // Parse profileData to generate the report
     let profileData: any = {};
     try {
@@ -47,20 +57,32 @@ export async function GET(req: NextRequest) {
       const { getPurchasesByEmail } = await import('@/lib/products/purchase-store');
       const emailPurchases = await getPurchasesByEmail(purchase.email);
       
-      hasStrategyUnlocked = emailPurchases.some(
+      // Filter out refunded, failed, or cancelled purchases
+      const activePurchases = emailPurchases.filter(
+        (p: any) => activeStatuses.includes(String(p.status || '').toLowerCase().trim())
+      );
+      
+      // Entitlement matrix: Complete bundle unlocks all components
+      hasStrategyUnlocked = activePurchases.some(
         (p: any) => p.productId === 'funding-roadmap' || p.productId === 'funding-bundle'
       );
-      hasToolkitUnlocked = emailPurchases.some(
-        (p: any) => p.productId === 'funding-toolkit'
+      hasToolkitUnlocked = activePurchases.some(
+        (p: any) => p.productId === 'funding-toolkit' || p.productId === 'funding-bundle'
       );
-      hasApprovalLibraryUnlocked = emailPurchases.some(
-        (p: any) => p.productId === 'funding-approval-library'
+      hasApprovalLibraryUnlocked = activePurchases.some(
+        (p: any) => p.productId === 'funding-approval-library' || p.productId === 'funding-bundle'
       );
     } catch (err) {
       console.error('Failed to query purchases by email:', err);
-      // Fallback fallback check using current purchase record
+      // Fallback check using current purchase record
       if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-roadmap') {
         hasStrategyUnlocked = true;
+      }
+      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-toolkit') {
+        hasToolkitUnlocked = true;
+      }
+      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-approval-library') {
+        hasApprovalLibraryUnlocked = true;
       }
     }
 

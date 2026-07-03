@@ -179,7 +179,7 @@ export default async function BookingPage({ searchParams }: PageProps) {
               </div>
               
               <Link 
-                href="/audit"
+                href={`/audit?email=${encodeURIComponent(verificationEmail)}&name=${encodeURIComponent(prefilledName)}&source=booking_gate`}
                 className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-2.5 rounded-xl text-xs transition-colors flex items-center justify-center gap-1"
               >
                 Order Funding Strategy Audit ($199) <ArrowRight className="w-3.5 h-3.5" />

@@ -4,16 +4,51 @@ import { usePathname } from 'next/navigation'
 import Script from 'next/script'
 import { useEffect, useState } from 'react'
 
-const EXCLUDED_ROUTES = [
-  '/contact',
-  '/consultation',
-  '/booking',
-  '/partners',
-  '/calculator',
-  '/products',
-  '/portfolio',
-  '/checkout'
+// ─── Ad-Free Zone Configuration ───────────────────────────────────────────────
+// RULE: No ads on any page where a visitor is:
+//   (a) about to pay,     → payment / checkout paths
+//   (b) in the act of paying,  → PayPal / Stripe flows
+//   (c) just paid,        → thank-you / success pages
+//   (d) entering a lead form,  → contact / booking / consultation
+//   (e) receiving a product,   → download / delivery / report
+//   (f) managing an account,   → portfolio / dashboard / membership
+//   (g) in the main funnel,    → calculator / grant-finder / audit tool
+// Adding any new transactional route? Add it here first. Never rely solely on
+// page-level CSS overrides — block at the script loader level.
+// ──────────────────────────────────────────────────────────────────────────────
+const EXCLUDED_ROUTES: string[] = [
+  // ── Lead Capture Pages ────────────────────────────────────────────────────
+  '/contact',           // Contact form
+  '/consultation',      // Book a consultation
+  '/booking',           // Book a call
+
+  // ── Main Conversion Funnel ────────────────────────────────────────────────
+  '/calculator',        // Grant calculator (primary lead entry)
+  '/grant-finder',      // Grant finder tool
+  '/audit',             // Readiness audit tool
+  '/sample-report',     // Report preview (pre-purchase)
+
+  // ── Payment & Checkout ────────────────────────────────────────────────────
+  '/checkout',          // Generic checkout
+  '/partners/checkout', // Partner lead purchase checkout
+  '/products',          // All product pages + sub-pages (/products/*)
+
+  // ── Post-Purchase / Delivery ──────────────────────────────────────────────
+  '/portfolio',         // Buyer dashboard + report delivery
+  '/partners/success',  // Partner purchase success page
+  '/portfolio/thank-you',
+  '/portfolio/report',  // Delivered matching report
+
+  // ── Account & Membership ──────────────────────────────────────────────────
+  '/membership',        // Membership signup / management
+
+  // ── Partner Revenue Flow ──────────────────────────────────────────────────
+  '/partners',          // All partner sub-pages
+
+  // ── Email / Subscription Management ──────────────────────────────────────
+  '/subscribe',         // Subscribe preferences + unsubscribe
 ]
+
 
 const ADSENSE_PUBLISHER_ID = process.env.NEXT_PUBLIC_ADSENSE_PUBLISHER_ID || 'ca-pub-1200907614877581'
 

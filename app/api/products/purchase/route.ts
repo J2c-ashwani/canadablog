@@ -1,11 +1,14 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
-import { recordPurchase, getPurchasesByEmail } from '@/lib/products/purchase-store';
+import { recordPurchase, getPurchasesByEmail, getAllPurchases } from '@/lib/products/purchase-store';
 import { getProduct } from '@/lib/products/catalog';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
+
+// Global in-memory lock set to prevent concurrent purchase race conditions
+const activeLocks = new Set<string>();
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -32,6 +35,7 @@ function shouldUpdateStage(currentStage: string | undefined, newStage: string): 
 }
 
 export async function POST(request: NextRequest) {
+  let lockKey = '';
   try {
     const body = await request.json();
     const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId } = body;
@@ -43,6 +47,39 @@ export async function POST(request: NextRequest) {
         { status: 400 }
       );
     }
+
+    // ── Idempotency Check & Concurrency Wait Lock ──
+    lockKey = `${paypalOrderId}_${productId}`;
+    if (activeLocks.has(lockKey)) {
+      console.log(`⏳ Concurrent request lock hit for ${lockKey}. Waiting...`);
+      let checks = 0;
+      while (activeLocks.has(lockKey) && checks < 5) {
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        checks++;
+      }
+    }
+
+    try {
+      const allPurchases = await getAllPurchases();
+      const existingPurchase = allPurchases.find(
+        (p: any) => p.paypalOrderId === paypalOrderId && p.productId === productId
+      );
+      if (existingPurchase) {
+        console.log(`ℹ️ Duplicate purchase request resolved. Order ID: ${paypalOrderId}. Returning existing token: ${existingPurchase.accessToken}`);
+        const deliveryUrl = productId === 'strategy-audit'
+          ? `/booking?email=${encodeURIComponent(email)}&order=${encodeURIComponent(paypalOrderId)}`
+          : `/products/report?token=${existingPurchase.accessToken}`;
+        return NextResponse.json({
+          success: true,
+          accessToken: existingPurchase.accessToken,
+          deliveryUrl,
+        });
+      }
+    } catch (sheetErr) {
+      console.error('⚠️ Failed to check duplicate purchases from Sheets (non-blocking):', sheetErr);
+    }
+
+    activeLocks.add(lockKey);
 
     // ── Validate product exists ──
     const product = getProduct(productId);
@@ -354,5 +391,9 @@ export async function POST(request: NextRequest) {
       { error: error.message || 'An unexpected error occurred' },
       { status: 500 }
     );
+  } finally {
+    if (lockKey) {
+      activeLocks.delete(lockKey);
+    }
   }
 }

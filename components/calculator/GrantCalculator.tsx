@@ -74,6 +74,9 @@ export function GrantCalculator() {
         upgradeCreditRef.current = upgradeCredit;
     }, [upgradeCredit]);
 
+    // Track email validity to control PayPal mounting lifecycle
+    const isEmailValid = !!(data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()));
+
     // Query server for eligible prior upgrade credit when email is valid on Step 6
     useEffect(() => {
         if (step !== 6 || !isEmailValid) {
@@ -282,8 +285,7 @@ export function GrantCalculator() {
         }
     }, []);
 
-    // Track email validity to control PayPal mounting lifecycle
-    const isEmailValid = !!(data.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email.trim()));
+
 
     const [showExitSurvey, setShowExitSurvey] = useState(false);
     const [exitSurveyStep, setExitSurveyStep] = useState<1 | 2>(1);

@@ -160,14 +160,35 @@ export default function AuditClient() {
     process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID ||
     'ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq';
 
-  /* ── URL Params ── */
+  /* ── URL Params & LocalStorage Prefill ── */
   useEffect(() => {
     const sp = new URLSearchParams(window.location.search);
-    const emailVal = sp.get('email') || '';
-    const nameVal = sp.get('name') || '';
-    const regionVal = sp.get('region') || '';
-    const industryVal = sp.get('industry') || '';
-    const companyVal = sp.get('company') || sp.get('companyName') || sp.get('name') || '';
+    let emailVal = sp.get('email') || '';
+    let nameVal = sp.get('name') || '';
+    let regionVal = sp.get('region') || '';
+    let industryVal = sp.get('industry') || '';
+    let companyVal = sp.get('company') || sp.get('companyName') || sp.get('name') || '';
+
+    // Check localStorage as fallback if URL parameters are missing and not expired (24 hours)
+    if (typeof window !== 'undefined') {
+      const savedAt = localStorage.getItem('fsi:lead_saved_at');
+      const isExpired = savedAt ? (Date.now() - Number(savedAt) > 24 * 60 * 60 * 1000) : false;
+      if (isExpired) {
+        localStorage.removeItem('fsi:lead_email');
+        localStorage.removeItem('fsi:lead_name');
+        localStorage.removeItem('fsi:lead_region');
+        localStorage.removeItem('fsi:lead_industry');
+        localStorage.removeItem('fsi:lead_company');
+        localStorage.removeItem('fsi:lead_saved_at');
+      } else {
+        if (!emailVal) emailVal = localStorage.getItem('fsi:lead_email') || '';
+        if (!nameVal) nameVal = localStorage.getItem('fsi:lead_name') || '';
+        if (!regionVal) regionVal = localStorage.getItem('fsi:lead_region') || '';
+        if (!industryVal) industryVal = localStorage.getItem('fsi:lead_industry') || '';
+        if (!companyVal) companyVal = localStorage.getItem('fsi:lead_company') || '';
+      }
+    }
+
     const sourceVal = sp.get('source') || 'audit-page';
 
     setParams({
@@ -230,8 +251,10 @@ export default function AuditClient() {
     if (!detailsConfirmed || !params.email || !params.name) {
       if (container) {
         container.innerHTML = `
-          <div class="text-center p-4 bg-slate-50 border border-slate-200 border-dashed rounded-xl text-xs font-semibold text-slate-500">
-            Please confirm your details above to unlock checkout.
+          <div class="text-center p-5 bg-slate-50/50 border border-slate-200/80 rounded-xl text-xs text-slate-500 flex flex-col items-center justify-center gap-2 font-sans">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+            <span class="font-bold text-slate-700">Checkout Locked</span>
+            <span class="text-[10px] text-slate-400 max-w-[200px] leading-relaxed mx-auto">Confirm your dossier delivery details in Step 1 to unlock the secure PayPal & card payment buttons.</span>
           </div>
         `;
       }
@@ -511,33 +534,82 @@ export default function AuditClient() {
 
                 {/* Pricing Card */}
                 <div className="bg-white rounded-2xl border-2 border-indigo-200 shadow-xl shadow-indigo-100/40 p-6" id="audit-checkout">
+                  {/* Premium Session Header */}
+                  <div className="border-b border-slate-100 pb-4 mb-4 text-left">
+                    <div className="flex items-center justify-between mb-1.5">
+                      <span className="inline-flex items-center gap-1 bg-indigo-50 text-indigo-700 text-[10px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-md">
+                        Level 4 Upgrade
+                      </span>
+                      <span className="text-[10px] font-semibold text-slate-400 uppercase tracking-wide">
+                        Secure Checkout
+                      </span>
+                    </div>
+                    <h3 className="text-base font-extrabold text-slate-900 leading-snug">
+                      Funding Strategy Review Session
+                    </h3>
+                    <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                      Custom R&D audit report, matched grant analysis, and 1-on-1 strategy call with a funding expert.
+                    </p>
+                    <div className="flex items-baseline gap-2 mt-3">
+                      {isDiscounted ? (
+                        <>
+                          <span className="text-3xl font-black text-slate-900">
+                            ${finalPrice.toFixed(0)}
+                          </span>
+                          <span className="text-sm font-medium text-slate-400 line-through">
+                            $199
+                          </span>
+                          <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded-sm">
+                            Report Credit Applied
+                          </span>
+                        </>
+                      ) : (
+                        <>
+                          <span className="text-3xl font-black text-indigo-600">
+                            $199
+                          </span>
+                          <span className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+                            USD / One-time
+                          </span>
+                        </>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Payment Error Alert Box */}
+                  {paymentError && (
+                    <div className="bg-red-50 border border-red-200 text-red-800 rounded-xl p-3 text-xs mb-4 text-left font-sans flex items-start gap-2">
+                      <span className="text-red-500 font-bold shrink-0 mt-0.5">⚠️</span>
+                      <div className="leading-relaxed">
+                        <span className="font-bold">Error:</span> {paymentError}
+                      </div>
+                    </div>
+                  )}
+
                   {/* Personalization Section vs Form */}
                   {detailsConfirmed ? (
                     <>
-                      {/* Personalized Metadata Header */}
-                      {(params.name || params.industry || params.region) && (
-                        <div className="bg-slate-900 text-white rounded-xl p-3.5 text-left shadow-2xs mb-4 border border-slate-800 flex flex-col gap-1">
-                          <div className="text-[9px] font-bold uppercase tracking-wider text-slate-400">Personalized Audit Queue</div>
-                          <div className="text-xs font-semibold">
-                            <span className="text-slate-400">Prepared for:</span> <span className="text-emerald-400">{params.name || "Qualified Lead"}</span>
-                          </div>
-                          <div className="grid grid-cols-2 gap-2 text-[10px] text-slate-300 pt-1.5 border-t border-slate-800 mt-1">
-                            <div>
-                              <span className="text-slate-400 font-normal">Industry:</span> {params.industry || "General Business"}
-                            </div>
-                            <div>
-                              <span className="text-slate-400 font-normal">Region:</span> {params.region || "Canada"}
-                            </div>
-                          </div>
+                      {/* Step 1: Locked Details Alert */}
+                      <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3.5 text-left mb-4 text-xs">
+                        <div className="flex items-center justify-between mb-1.5">
+                          <span className="font-bold text-emerald-800 flex items-center gap-1">
+                            <span className="flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] font-black">✓</span>
+                            Step 1: Delivery Details Locked
+                          </span>
                           <button
                             type="button"
                             onClick={() => setDetailsConfirmed(false)}
-                            className="text-[9px] text-indigo-400 hover:text-indigo-300 text-left mt-2 underline"
+                            className="text-[10px] text-indigo-600 hover:text-indigo-850 font-bold hover:underline"
                           >
-                            Edit Details
+                            Edit
                           </button>
                         </div>
-                      )}
+                        <div className="space-y-1 text-slate-700">
+                          <p><span className="text-slate-400">Email:</span> {params.email}</p>
+                          <p><span className="text-slate-400">Name:</span> {params.name}</p>
+                          {params.company && <p><span className="text-slate-400">Company:</span> {params.company}</p>}
+                        </div>
+                      </div>
 
                       {/* Opportunity Range Dossier Card */}
                       {(() => {
@@ -585,40 +657,53 @@ export default function AuditClient() {
                     </>
                   ) : (
                     /* Interactive Form to collect details */
-                    <div className="space-y-3.5 mb-5 bg-slate-50 border border-slate-200 rounded-xl p-4 text-left">
-                      <div className="text-[10px] font-black uppercase tracking-wider text-slate-400">Dossier Preparation Details</div>
-                      <div>
-                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Email</label>
-                        <input
-                          type="email"
-                          required
-                          placeholder="you@company.com"
-                          value={params.email}
-                          onChange={(e) => setParams(prev => ({ ...prev, email: e.target.value }))}
-                          className="w-full px-3 py-1.5 text-sm text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
-                        />
+                    <div className="space-y-4 mb-4 text-left">
+                      <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
+                        <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-600 text-white text-[10px] font-black shrink-0">
+                          1
+                        </span>
+                        <span>Step 1: Dossier Delivery Details</span>
                       </div>
-                      <div>
-                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Contact Name</label>
-                        <input
-                          type="text"
-                          required
-                          placeholder="First & Last Name"
-                          value={params.name}
-                          onChange={(e) => setParams(prev => ({ ...prev, name: e.target.value }))}
-                          className="w-full px-3 py-1.5 text-sm text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
-                        />
+                      
+                      <p className="text-[11px] text-slate-500 leading-relaxed bg-slate-50 border border-slate-200/60 p-2.5 rounded-lg">
+                        Provide your delivery coordinates. We need this information to verify your matching credentials, compile your custom eligibility report, and email your booking access link.
+                      </p>
+
+                      <div className="space-y-3">
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Email</label>
+                          <input
+                            type="email"
+                            required
+                            placeholder="you@company.com"
+                            value={params.email}
+                            onChange={(e) => setParams(prev => ({ ...prev, email: e.target.value }))}
+                            className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Contact Name</label>
+                          <input
+                            type="text"
+                            required
+                            placeholder="First & Last Name"
+                            value={params.name}
+                            onChange={(e) => setParams(prev => ({ ...prev, name: e.target.value }))}
+                            className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Name</label>
+                          <input
+                            type="text"
+                            placeholder="Acme Inc. (Optional)"
+                            value={params.company}
+                            onChange={(e) => setParams(prev => ({ ...prev, company: e.target.value }))}
+                            className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
+                          />
+                        </div>
                       </div>
-                      <div>
-                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Name</label>
-                        <input
-                          type="text"
-                          placeholder="Acme Inc. (Optional)"
-                          value={params.company}
-                          onChange={(e) => setParams(prev => ({ ...prev, company: e.target.value }))}
-                          className="w-full px-3 py-1.5 text-sm text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
-                        />
-                      </div>
+
                       <button
                         type="button"
                         onClick={async () => {
@@ -632,6 +717,15 @@ export default function AuditClient() {
                           }
                           setPaymentError(null);
                           setDetailsConfirmed(true);
+
+                          if (typeof window !== 'undefined') {
+                            localStorage.setItem('fsi:lead_email', params.email.trim());
+                            localStorage.setItem('fsi:lead_name', params.name.trim());
+                            localStorage.setItem('fsi:lead_region', params.region || 'ON');
+                            localStorage.setItem('fsi:lead_industry', params.industry || 'other');
+                            localStorage.setItem('fsi:lead_company', params.company || '');
+                            localStorage.setItem('fsi:lead_saved_at', Date.now().toString());
+                          }
 
                           // Capture lead draft immediately to prevent funnel drop-off loss
                           try {
@@ -656,28 +750,60 @@ export default function AuditClient() {
                             console.error('Failed to save lead draft:', e);
                           }
                         }}
-                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 rounded-lg text-xs transition-colors flex items-center justify-center gap-1"
+                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs"
                       >
-                        Confirm & Lock In Dossier
+                        Confirm Details & Continue
+                        <ArrowRight className="w-3.5 h-3.5" />
                       </button>
                     </div>
                   )}
 
-                  {/* Report Credit toward Audit Banner */}
-                  <div className="bg-emerald-50/50 border border-emerald-200 rounded-xl p-3.5 text-xs text-emerald-800 mb-4">
-                    💡 <strong>Risk-Free Start</strong>: Buy a Funding Report today. Upgrade to an audit within 7 days, and your report purchase is 100% credited toward your audit.
-                  </div>
+                  {/* Step 2: Complete Secure Checkout */}
+                  <div className="border-t border-slate-100 pt-4 text-left">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 mb-2">
+                      <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-black shrink-0 ${
+                        detailsConfirmed ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600'
+                      }`}>
+                        2
+                      </span>
+                      <span>Step 2: Complete Secure Checkout</span>
+                    </div>
 
-                  <div id="audit-paypal-button" className="min-h-[56px]">
-                    {!sdkReady && (
-                      <div className="h-14 bg-slate-100 animate-pulse rounded-lg flex items-center justify-center text-xs text-slate-400">
-                        Loading secure checkout...
+                    {detailsConfirmed && (
+                      <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 mb-3 text-xs space-y-1.5">
+                        <div className="flex justify-between text-slate-500">
+                          <span>Audit Session Fee</span>
+                          <span>$199.00 USD</span>
+                        </div>
+                        {isDiscounted && (
+                          <div className="flex justify-between text-emerald-700 font-medium">
+                            <span>Report Credit Offset</span>
+                            <span>-${params.discount.toFixed(2)} USD</span>
+                          </div>
+                        )}
+                        <div className="flex justify-between font-bold text-slate-900 border-t border-slate-200/60 pt-1.5 text-sm">
+                          <span>Total Amount</span>
+                          <span>${finalPrice.toFixed(2)} USD</span>
+                        </div>
                       </div>
                     )}
+
+                    <div id="audit-paypal-button" className="min-h-[56px] mt-2">
+                      {!sdkReady && (
+                        <div className="h-14 bg-slate-100 animate-pulse rounded-lg flex items-center justify-center text-xs text-slate-400">
+                          Loading secure checkout...
+                        </div>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Report Credit toward Audit Banner */}
+                  <div className="bg-emerald-50/50 border border-emerald-200 rounded-xl p-3 text-[11px] text-emerald-800 mt-4 leading-relaxed">
+                    💡 <strong>Risk-Free Stacking</strong>: Buy a Funding Report today. Upgrade to an audit within 7 days, and your report purchase is 100% credited toward your audit.
                   </div>
 
                   <p className="text-center text-[10px] text-slate-400 mt-3">
-                    Pay now → Book your call instantly → Calendly link unlocks immediately after payment
+                    Pay now → Book your call instantly → Booking link unlocks immediately after payment
                   </p>
                 </div>
 

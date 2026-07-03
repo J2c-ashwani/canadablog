@@ -62,7 +62,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.industry || "N/A",
         data.businessStage || "N/A",
         data.fundingAmount || "N/A",
-        data.fundingPurpose || "N/A",
+        Array.isArray(data.fundingPurpose) ? data.fundingPurpose.join(", ") : (data.fundingPurpose || "N/A"),
         data.businessDescription || "N/A",
         data.phone || "N/A",
         data.additionalNotes || "N/A",
@@ -339,7 +339,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
         targetRow[8] = updates.fundingAmount
       }
       if (updates.fundingPurpose !== undefined) {
-        targetRow[9] = updates.fundingPurpose
+        targetRow[9] = Array.isArray(updates.fundingPurpose) ? updates.fundingPurpose.join(", ") : String(updates.fundingPurpose)
       }
       if (updates.businessDescription !== undefined) {
         targetRow[10] = updates.businessDescription

@@ -143,7 +143,8 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
   const employees = data.employees || data.companySize || '';
   const revenue = data.annualRevenue || '';
   const amountStr = data.fundingAmount || '';
-  const purpose = data.fundingPurpose || '';
+  const rawPurpose = data.fundingPurpose || '';
+  const purpose = Array.isArray(rawPurpose) ? rawPurpose.join(', ') : String(rawPurpose);
   const timeline = data.timeline || '';
   const isVerified = data.emailVerified === 'Yes' || data.emailVerified === 'true' || (data as any).emailVerified === true;
   

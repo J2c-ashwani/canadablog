@@ -383,6 +383,15 @@ export default function ContactClient() {
           isAuditCandidate: result.isAuditCandidate
         });
 
+        if (typeof window !== 'undefined') {
+          localStorage.setItem('fsi:lead_email', formData.email.trim());
+          localStorage.setItem('fsi:lead_name', formData.name.trim());
+          localStorage.setItem('fsi:lead_company', formData.companyName.trim());
+          localStorage.setItem('fsi:lead_industry', formData.industry);
+          localStorage.setItem('fsi:lead_region', formData.state);
+          localStorage.setItem('fsi:lead_saved_at', Date.now().toString());
+        }
+
         // Track Lead scoring in telemetry
         trackEvent('lead_scored', { score: result.score, tier: result.tier });
         if (result.tier === 'A') trackEvent('tier_a_assigned');
