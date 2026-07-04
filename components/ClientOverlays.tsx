@@ -22,6 +22,33 @@ const ExitIntentCapture = dynamic(
     { ssr: false }
 )
 
+const EXCLUDED_TRANSACTIONAL_ROUTES = [
+    // Lead capture
+    '/contact',
+    '/consultation',
+    '/booking',
+    // Main conversion funnel
+    '/calculator',
+    '/grant-finder',
+    '/audit',
+    '/sample-report',
+    // Payment & checkout
+    '/checkout',
+    '/partners/checkout',
+    '/products',
+    // Post-purchase / delivery
+    '/portfolio',
+    '/partners/success',
+    '/portfolio/thank-you',
+    '/portfolio/report',
+    // Account & membership
+    '/membership',
+    // Partner revenue flow
+    '/partners',
+    // Email management
+    '/subscribe',
+]
+
 export function ClientOverlays() {
     const [isClient, setIsClient] = useState(false)
     const pathname = usePathname()
@@ -29,46 +56,6 @@ export function ClientOverlays() {
     useEffect(() => {
         setIsClient(true)
     }, [])
-
-    if (!isClient) {
-        return null
-    }
-
-    // ─── Ad-Free & Popup-Free Zone ────────────────────────────────────────────
-    // Must match AdSenseLoader EXCLUDED_ROUTES exactly.
-    // Any route where money changes hands or a lead is captured must be here.
-    const EXCLUDED_TRANSACTIONAL_ROUTES = [
-        // Lead capture
-        '/contact',
-        '/consultation',
-        '/booking',
-        // Main conversion funnel
-        '/calculator',
-        '/grant-finder',
-        '/audit',
-        '/sample-report',
-        // Payment & checkout
-        '/checkout',
-        '/partners/checkout',
-        '/products',
-        // Post-purchase / delivery
-        '/portfolio',
-        '/partners/success',
-        '/portfolio/thank-you',
-        '/portfolio/report',
-        // Account & membership
-        '/membership',
-        // Partner revenue flow
-        '/partners',
-        // Email management
-        '/subscribe',
-    ]
-
-
-    // Suppress lead magnet popups on transaction-focused pages
-    const shouldSuppressPopup = EXCLUDED_TRANSACTIONAL_ROUTES.some(route => 
-        pathname === route || pathname.startsWith(route + "/")
-    )
 
     // Aggressively clean up AdSense vignette iframe and scroll-lock styles upon entering a transactional page
     useEffect(() => {
@@ -125,6 +112,15 @@ export function ClientOverlays() {
             };
         }
     }, [pathname]);
+
+    if (!isClient) {
+        return null
+    }
+
+    // Suppress lead magnet popups on transaction-focused pages
+    const shouldSuppressPopup = EXCLUDED_TRANSACTIONAL_ROUTES.some(route => 
+        pathname === route || pathname.startsWith(route + "/")
+    )
 
     return (
         <>

@@ -3145,6 +3145,7 @@ export default async function RevenueDashboardPage({
               </div>
             </div>
 
+          </div>
         )}
 
         {resolvedTab === 'seo' && (
