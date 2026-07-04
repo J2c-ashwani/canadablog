@@ -91,6 +91,9 @@ export function Footer() {
                 <Link href="/blog" className="text-gray-400 hover:text-white text-sm">
                   Expert Insights
                 </Link>
+                <Link href="/download" className="text-emerald-400 hover:text-emerald-300 font-semibold text-sm">
+                  Free Download Center
+                </Link>
                 <Link href="/contact" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Contact
                 </Link>

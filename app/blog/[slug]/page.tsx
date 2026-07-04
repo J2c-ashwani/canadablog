@@ -9,8 +9,7 @@ import { Badge } from '@/components/ui/badge';
 import AdSlot from '@/components/blog/AdSlot';
 import RelatedPosts from '@/components/blog/RelatedPosts';
 import CategorySidebar from '@/components/blog/CategorySidebar';
-import NewsletterBox from '@/components/blog/NewsletterBox';
-import GrantGuideCTA from '@/components/blog/GrantGuideCTA';
+import { ContextualDownloadCTA } from '@/components/blog/ContextualDownloadCTA';
 import LastVerifiedBadge from '@/components/blog/LastVerifiedBadge';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
@@ -465,6 +464,17 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               {afterCTA && !researchProfile && (
                 <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
                   {afterContentData.nodes}
+                </div>
+              )}
+
+              {/* Contextual PDF Download Lead Capture CTA */}
+              {!researchProfile && (
+                <div className="my-12 not-prose">
+                  <ContextualDownloadCTA 
+                    postSlug={slug}
+                    postCategory={post.category}
+                    postKeywords={post.seo?.keywords}
+                  />
                 </div>
               )}
 

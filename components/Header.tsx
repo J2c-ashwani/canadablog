@@ -22,6 +22,7 @@ export function Header() {
   const [searchQuery, setSearchQuery] = useState("")
   const [usaDropdownOpen, setUsaDropdownOpen] = useState(false)
   const [canadaDropdownOpen, setCanadaDropdownOpen] = useState(false)
+  const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false)
   const router = useRouter()
 
   // Capture the original entry landing page inside sessionStorage for revenue attribution
@@ -59,6 +60,7 @@ export function Header() {
   const closeDropdowns = () => {
     setUsaDropdownOpen(false)
     setCanadaDropdownOpen(false)
+    setResourcesDropdownOpen(false)
   }
 
   return (
@@ -201,17 +203,58 @@ export function Header() {
                 Tools
               </Link> */}
 
-              <Link href="/blog" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
-                Grant News
-              </Link>
-
-              <Link href="/guides" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
-                Guides
-              </Link>
-
-              <Link href="/expert-insights" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
-                Expert Insights
-              </Link>
+              {/* Resources Dropdown - Desktop */}
+              <div
+                className="relative"
+                onMouseLeave={() => setResourcesDropdownOpen(false)}
+              >
+                <button
+                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  onClick={() => {
+                    setResourcesDropdownOpen(!resourcesDropdownOpen)
+                    setUsaDropdownOpen(false)
+                    setCanadaDropdownOpen(false)
+                  }}
+                  onMouseEnter={() => setResourcesDropdownOpen(true)}
+                >
+                  Resources
+                  <ChevronDown className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {resourcesDropdownOpen && (
+                  <div className="absolute top-full left-0 pt-1 w-48 z-50">
+                    <div className="bg-white rounded-lg shadow-lg border">
+                      <Link
+                        href="/download"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium"
+                        onClick={closeDropdowns}
+                      >
+                        Download Center
+                      </Link>
+                      <Link
+                        href="/blog"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={closeDropdowns}
+                      >
+                        Blog / News
+                      </Link>
+                      <Link
+                        href="/guides"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={closeDropdowns}
+                      >
+                        Guides
+                      </Link>
+                      <Link
+                        href="/expert-insights"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg font-medium"
+                        onClick={closeDropdowns}
+                      >
+                        Expert Insights
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               <Link href="/about" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
                 About
@@ -388,29 +431,60 @@ export function Header() {
                   Business Tools
                 </Link> */}
 
-                <Link
-                  href="/blog"
-                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Grant News
-                </Link>
-
-                <Link
-                  href="/guides"
-                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Guides
-                </Link>
-
-                <Link
-                  href="/expert-insights"
-                  className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Expert Insights
-                </Link>
+                {/* Resources Mobile Submenu */}
+                <div className="px-4">
+                  <button
+                    className="w-full text-left text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 rounded-lg transition-colors flex items-center justify-between"
+                    onClick={() => setResourcesDropdownOpen(!resourcesDropdownOpen)}
+                  >
+                    Resources
+                    <ChevronDown className={`w-4 h-4 transition-transform ${resourcesDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {resourcesDropdownOpen && (
+                    <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
+                      <Link
+                        href="/download"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setResourcesDropdownOpen(false)
+                        }}
+                      >
+                        Download Center
+                      </Link>
+                      <Link
+                        href="/blog"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setResourcesDropdownOpen(false)
+                        }}
+                      >
+                        Blog / News
+                      </Link>
+                      <Link
+                        href="/guides"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setResourcesDropdownOpen(false)
+                        }}
+                      >
+                        Guides
+                      </Link>
+                      <Link
+                        href="/expert-insights"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setResourcesDropdownOpen(false)
+                        }}
+                      >
+                        Expert Insights
+                      </Link>
+                    </div>
+                  )}
+                </div>
 
                 <Link
                   href="/about"
