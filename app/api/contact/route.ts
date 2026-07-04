@@ -11,8 +11,10 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   // Rate Limiting (10 requests/hour per IP to accommodate B2B funnel submissions)
-  const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000);
-  if (limitRes.isLimited) return limitRes.response;
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000);
+    if (limitRes.isLimited) return limitRes.response;
+  }
 
   try {
     const body = await request.json();
@@ -54,11 +56,12 @@ export async function POST(request: NextRequest) {
     } = body;
 
     const isCalculator = category === "Grant Calculator" || requestType === "Grant Calculator" || requestType === "Calculator" || body.category === "Grant Calculator";
-    const finalName = name || (isCalculator ? "Founder" : "");
-    const finalCompanyName = companyName || (isCalculator ? "Not provided" : "");
+    const isPhoneOptional = isCalculator || category === "AI Grant Finder" || body.category === "AI Grant Finder";
+    const finalName = name || (isPhoneOptional ? "Founder" : "");
+    const finalCompanyName = companyName || (isPhoneOptional ? "Not provided" : "");
 
-    // Validate required fields (phone and company are optional for calculator leads)
-    if (!email || !finalName || !finalCompanyName || (!isCalculator && !rawPhone) || !industry || !businessStage || !fundingAmount || !fundingPurpose || !businessDescription) {
+    // Validate required fields (phone and company are optional for calculator and AI Finder leads)
+    if (!email || !finalName || !finalCompanyName || (!isPhoneOptional && !rawPhone) || !industry || !businessStage || !fundingAmount || !fundingPurpose || !businessDescription) {
       return NextResponse.json({ error: "Missing required qualification fields" }, { status: 400 });
     }
 
@@ -71,7 +74,7 @@ export async function POST(request: NextRequest) {
     let phone = "Not provided";
     let phoneValidationNotes = "Phone not provided";
 
-    if (rawPhone && rawPhone.trim() !== "") {
+    if (rawPhone && rawPhone.trim() !== "" && rawPhone.trim().toLowerCase() !== "not provided") {
       // Perform phone validation
       const phoneValResult = validatePhone(rawPhone, country);
 
@@ -87,7 +90,7 @@ export async function POST(request: NextRequest) {
         ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
         : '';
       phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
-    } else if (!isCalculator) {
+    } else if (!isPhoneOptional) {
       return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
 

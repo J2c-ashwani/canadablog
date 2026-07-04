@@ -131,14 +131,22 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       ],
     ]
 
-    await sheets.spreadsheets.values.append({
+    // Find the next empty row by checking column A length to avoid Google Sheets API column shifting bug
+    const colARes = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Leads!A:BW",
+      range: "Leads!A:A",
+    });
+    const colARows = colARes.data.values || [];
+    const nextRowIndex = colARows.length + 1;
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `Leads!A${nextRowIndex}:BW${nextRowIndex}`,
       valueInputOption: "USER_ENTERED",
       requestBody: {
         values,
       },
-    })
+    });
 
 
     console.log(`✅ Lead saved from source: ${data.source}`)

@@ -45,8 +45,10 @@ function getLeadTier(body: any): "Tier A" | "Tier B" | "Tier C" {
 
 export async function POST(request: NextRequest) {
   // 1. Rate Limiting (10 requests/hour)
-  const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000)
-  if (limitRes.isLimited) return limitRes.response
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 10, 60 * 60 * 1000)
+    if (limitRes.isLimited) return limitRes.response
+  }
 
   try {
     const body = await request.json() as GrantFinderRequest & {

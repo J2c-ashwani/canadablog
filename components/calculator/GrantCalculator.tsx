@@ -721,20 +721,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 })
             }).catch(e => console.error("Telemetry paywall_viewed error:", e));
 
-            // Fire calculator_complete telemetry to Funnel Events
-            try {
-                const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
-                fetch('/api/telemetry', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        eventName: 'calculator_complete',
-                        sessionId: sessId,
-                        pagePath: window.location.pathname,
-                        referrer: document.referrer || 'direct'
-                    })
-                }).catch(err => console.error('Failed to log telemetry calculator_complete:', err));
-            } catch (tErr) {}
+            // calculator_complete is now fired dynamically on Step 6 transition via the useEffect hook
 
             if (res.ok) {
                 setLeadSaved(true);
@@ -746,35 +733,52 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     };
 
     // --- Free lead capture (fallback) ---
-    const handleSubmitEmail = async (e: React.FormEvent) => {
-        e.preventDefault();
+    const handleSubmitEmail = async (e?: React.FormEvent) => {
+        if (e) e.preventDefault();
         setIsSubmitting(true);
         await saveCalculatorLead(data.email, data.name, true);
         setIsSuccess(true);
         setIsSubmitting(false);
     }
 
-    // --- Telemetry Calculator Start Hook ---
+    // --- Step-level telemetry logging ---
     useEffect(() => {
-        if (step !== 2) return;
-        if (sessionStorage.getItem('fsi_calc_start_logged') === 'true') return;
+        if (step < 1 || step > 6) return;
+        const lockKey = `fsi_calc_step_${step}_logged`;
+        if (sessionStorage.getItem(lockKey) === 'true') return;
 
         try {
             const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
+            const eventName = step === 6 ? 'calculator_complete' : `calculator_step_${step}`;
+            
             fetch('/api/telemetry', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    eventName: 'calculator_start',
+                    eventName,
                     sessionId: sessId,
                     pagePath: window.location.pathname,
                     referrer: document.referrer || 'direct'
                 })
             }).then((res) => {
                 if (res.ok) {
-                    sessionStorage.setItem('fsi_calc_start_logged', 'true');
+                    sessionStorage.setItem(lockKey, 'true');
+                    // Lock calculator_start on step 1 for full analytics compatibility
+                    if (step === 1) {
+                        sessionStorage.setItem('fsi_calc_start_logged', 'true');
+                        fetch('/api/telemetry', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                eventName: 'calculator_start',
+                                sessionId: sessId,
+                                pagePath: window.location.pathname,
+                                referrer: document.referrer || 'direct'
+                            })
+                        }).catch(() => {});
+                    }
                 }
-            }).catch(err => console.error('Failed to log telemetry calculator_start:', err));
+            }).catch(err => console.error(`Failed to log telemetry ${eventName}:`, err));
         } catch (tErr) {}
     }, [step]);
 
@@ -2980,6 +2984,26 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
                                            {/* PayPal Container */}
                                            <div id="calc-paypal-button" className="w-full"></div>
+
+                                           <div className="relative flex py-2 items-center">
+                                             <div className="flex-grow border-t border-slate-200"></div>
+                                             <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or skip upgrade</span>
+                                             <div className="flex-grow border-t border-slate-200"></div>
+                                           </div>
+
+                                           <Button
+                                             type="button"
+                                             variant="outline"
+                                             className="w-full h-11 border-slate-250 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg flex items-center justify-center gap-2 shadow-xs transition-all"
+                                             onClick={() => handleSubmitEmail()}
+                                             disabled={isSubmitting}
+                                           >
+                                             {isSubmitting ? (
+                                               <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                             ) : (
+                                               <>📧 Get Free Email Summary &rarr;</>
+                                             )}
+                                           </Button>
                                          </>
                                     )}
                                 </div>

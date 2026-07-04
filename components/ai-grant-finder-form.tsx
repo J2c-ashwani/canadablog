@@ -21,6 +21,7 @@ export function AIGrantFinderForm() {
   const [isLoading, setIsLoading] = useState(false)
   const [results, setResults] = useState<GrantFinderResponse | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [hasTrackedStart, setHasTrackedStart] = useState(false)
 
   // Monetization State Variables
   const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-roadmap' | 'funding-bundle'>('funding-bundle')
@@ -77,6 +78,21 @@ export function AIGrantFinderForm() {
         })
       }).catch(() => {})
 
+      // Log telemetry completion to Funnel Events
+      try {
+        const sessId = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_session_id') || 'sess_anonymous' : 'sess_anonymous';
+        fetch('/api/telemetry', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventName: 'grant_finder_completed',
+            sessionId: sessId,
+            pagePath: window.location.pathname,
+            referrer: typeof document !== 'undefined' ? document.referrer || 'direct' : 'direct',
+          })
+        }).catch(() => {})
+      } catch (tErr) {}
+
     } catch (err) {
       setError("Something went wrong. Please try again.")
       console.error(err)
@@ -85,7 +101,26 @@ export function AIGrantFinderForm() {
     }
   }
 
+  const trackStart = () => {
+    if (hasTrackedStart) return
+    setHasTrackedStart(true)
+    try {
+      const sessId = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_session_id') || 'sess_anonymous' : 'sess_anonymous';
+      fetch('/api/telemetry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventName: 'grant_finder_started',
+          sessionId: sessId,
+          pagePath: window.location.pathname,
+          referrer: typeof document !== 'undefined' ? document.referrer || 'direct' : 'direct',
+        })
+      }).catch(() => {})
+    } catch (tErr) {}
+  }
+
   const updateFormData = (field: keyof GrantFinderRequest, value: string) => {
+    trackStart()
     setFormData((prev) => ({ ...prev, [field]: value }))
   }
 
