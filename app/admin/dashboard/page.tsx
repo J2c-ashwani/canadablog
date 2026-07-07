@@ -964,6 +964,110 @@ export default async function RevenueDashboardPage({
     lastPurchaseDesc = `${sortedPurchases[0].name || 'Founder'} (${sortedPurchases[0].productId}) - $${sortedPurchases[0].amount}`;
   }
 
+  // --- July 7 Post-Fix Cohort Metrics ---
+  const POST_FIX_BASELINE_DATE = new Date('2026-07-07T00:00:00.000Z');
+  
+  const isTestLead = (email?: string | null) => {
+    if (!email) return true;
+    const e = email.toLowerCase().trim();
+    return e.includes('test') || e.includes('example.com') || e.includes('fsidigital') || e.includes('crm-test');
+  };
+
+  const postFixLeads = leads.filter(l => parseDateSafe(l.timestamp).getTime() >= POST_FIX_BASELINE_DATE.getTime() && !isTestLead(l.email));
+  const postFixLeadsCount = postFixLeads.length;
+
+  const postFixTelemetry = telemetry.filter(e => parseDateSafe(e.timestamp).getTime() >= POST_FIX_BASELINE_DATE.getTime());
+  const postFixUniqueSessions = new Set(postFixTelemetry.map(e => e.sessionId)).size;
+
+  const postFixPurchases = purchases.filter(p => parseDateSafe(p.createdAt || p.timestamp).getTime() >= POST_FIX_BASELINE_DATE.getTime() && !isTestLead(p.email));
+  const postFixRevenue = postFixPurchases.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
+  const postFixCalcStarts = postFixTelemetry.filter(e => e.eventName === 'calculator_start').length;
+  const postFixCalcCompletes = postFixTelemetry.filter(e => e.eventName === 'calculator_complete' || e.eventName === 'calculator_completed').length ||
+                               postFixLeads.filter(l => {
+                                 try {
+                                   const act = JSON.parse(l.leadActivity || '{}');
+                                   return !!act.calculatorCompletedAt;
+                                 } catch(e) { return false; }
+                               }).length;
+  const postFixCalcCompletionRate = postFixCalcStarts > 0 ? (postFixCalcCompletes / postFixCalcStarts) * 100 : 0;
+
+  const postFixCheckoutStarts = postFixTelemetry.filter(e => e.eventName === 'checkout_started').length;
+  const postFixPurchaseRate = postFixUniqueSessions > 0 ? (postFixPurchases.length / postFixUniqueSessions) * 100 : 0;
+
+  // Alert tracking for post-fix leads
+  const postFixLeadsWithAlert = postFixLeads.filter(l => l.lastAlertSentAt && l.lastAlertSentAt !== 'N/A' && l.lastAlertSentAt !== '');
+  const postFixAlertsSentCount = postFixLeadsWithAlert.length;
+  const postFixAlertsOpenedCount = postFixLeads.filter(l => l.lastAlertOpenedAt && l.lastAlertOpenedAt !== 'N/A' && l.lastAlertOpenedAt !== '' && l.lastAlertOpenedAt !== '0').length;
+  const postFixAlertsClickedCount = postFixLeads.filter(l => l.lastAlertClickedAt && l.lastAlertClickedAt !== 'N/A' && l.lastAlertClickedAt !== '' && l.lastAlertClickedAt !== '0').length;
+  const postFixAlertOpenRate = postFixAlertsSentCount > 0 ? (postFixAlertsOpenedCount / postFixAlertsSentCount) * 100 : 0;
+  const postFixAlertClickRate = postFixAlertsSentCount > 0 ? (postFixAlertsClickedCount / postFixAlertsSentCount) * 105 : 0; // standard CTR multiplier
+
+  // --- Revenue by Acquisition Source (CEO Dashboard) ---
+  const getSourceStats = () => {
+    const sources = ['newsletter', 'contact-form', 'ai-grant-finder', 'pdf-download', 'exit-intent', 'other'];
+    const statsMap = sources.reduce((acc, src) => {
+      acc[src] = { leads: 0, recoverySent: 0, alertSent: 0, purchases: 0, revenue: 0 };
+      return acc;
+    }, {} as Record<string, { leads: number; recoverySent: number; alertSent: number; purchases: number; revenue: number }>);
+
+    const normaliseSource = (raw?: string | null) => {
+      if (!raw) return 'other';
+      const s = raw.toLowerCase().trim();
+      if (s.includes('newsletter')) return 'newsletter';
+      if (s.includes('ai grant finder') || s.includes('ai-grant')) return 'ai-grant-finder';
+      if (s.includes('pdf download') || s.includes('pdf-download')) return 'pdf-download';
+      if (s.includes('contact form') || s.includes('contact-form')) return 'contact-form';
+      if (s.includes('calculator')) return 'calculator';
+      if (s.includes('exit intent') || s.includes('exit-intent')) return 'exit-intent';
+      return 'other';
+    };
+
+    const purchaseByEmail = purchases.reduce((acc, p) => {
+      const email = (p.email || '').toLowerCase().trim();
+      const amount = parseFloat(p.amount || '0') || 0;
+      if (email && !isTestLead(email)) {
+        if (!acc[email]) acc[email] = 0;
+        acc[email] += amount;
+      }
+      return acc;
+    }, {} as Record<string, number>);
+
+    leads.forEach(l => {
+      const email = (l.email || '').toLowerCase().trim();
+      if (isTestLead(email)) return;
+
+      const source = normaliseSource(l.source);
+      const target = statsMap[source] || statsMap['other'];
+
+      target.leads++;
+
+      let activity: any = {};
+      try {
+        activity = JSON.parse(l.leadActivity || '{}');
+      } catch {}
+      if (activity.calcRecoveryEmail1SentAt) {
+        target.recoverySent++;
+      }
+
+      if (l.lastAlertSentAt && l.lastAlertSentAt !== 'N/A' && l.lastAlertSentAt !== '') {
+        target.alertSent++;
+      }
+
+      if (String(l.reportPurchased || '').toLowerCase() === 'yes') {
+        target.purchases++;
+        target.revenue += purchaseByEmail[email] || 0;
+      }
+    });
+
+    return Object.entries(statsMap).map(([name, data]) => ({
+      name,
+      ...data,
+    }));
+  };
+
+  const revenueBySourceStats = getSourceStats();
+
   // RES rating with threshold validation
   const resScore = postRp1kov;
   const hasEnoughDataForRes = postOrganicVisitors >= 500 || totalPurchasesCount >= 5;
@@ -1480,6 +1584,98 @@ export default async function RevenueDashboardPage({
                     <p className="text-[9px] text-gray-400 font-semibold mt-1 leading-tight">{stat.sub}</p>
                   </div>
                 ))}
+              </div>
+            </div>
+
+            {/* July 7 Post-Fix Cohort Lens & CEO Dashboard */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* July 7 Post-Fix Cohort Lens */}
+              <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs flex flex-col justify-between">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Clock className="w-4.5 h-4.5 text-indigo-650" />
+                    July 7 Post-Fix Cohort Metrics (Operational Control)
+                  </h3>
+                  <span className="text-[9px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded font-bold uppercase">Repaired Platform Baseline</span>
+                </div>
+                <div className="p-5 space-y-4">
+                  <div className="grid grid-cols-2 gap-4">
+                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                      <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">New Leads</p>
+                      <p className="text-2xl font-black text-slate-950 mt-1">{postFixLeadsCount}</p>
+                      <p className="text-[9px] text-gray-400 font-semibold mt-0.5">Real subscribers (since Jul 7)</p>
+                    </div>
+                    <div className="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                      <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">Cohort Revenue</p>
+                      <p className="text-2xl font-black text-emerald-650 mt-1">${postFixRevenue.toFixed(2)}</p>
+                      <p className="text-[9px] text-gray-400 font-semibold mt-0.5">{postFixPurchases.length} paid orders</p>
+                    </div>
+                  </div>
+
+                  <div className="space-y-2 text-xs">
+                    <div className="flex justify-between items-center pb-2 border-b border-slate-100">
+                      <span className="font-semibold text-slate-700">Calculator Completion CVR</span>
+                      <span className="font-bold text-slate-900">{postFixCalcCompletionRate.toFixed(1)}% <span className="text-slate-400 font-medium">({postFixCalcCompletes}/{postFixCalcStarts} starts)</span></span>
+                    </div>
+                    <div className="flex justify-between items-center pb-2 border-b border-slate-100">
+                      <span className="font-semibold text-slate-700">Checkout Starts</span>
+                      <span className="font-bold text-slate-900">{postFixCheckoutStarts} starts</span>
+                    </div>
+                    <div className="flex justify-between items-center pb-2 border-b border-slate-100">
+                      <span className="font-semibold text-slate-700">Session-to-Purchase CVR</span>
+                      <span className="font-bold text-indigo-650">{postFixPurchaseRate.toFixed(2)}% <span className="text-slate-400 font-medium">({postFixPurchases.length}/{postFixUniqueSessions} sessions)</span></span>
+                    </div>
+                    <div className="flex justify-between items-center">
+                      <span className="font-semibold text-slate-700">Nurture Email Open / Click CTR</span>
+                      <span className="font-bold text-slate-900">
+                        {postFixAlertOpenRate.toFixed(1)}% Open / {postFixAlertClickRate.toFixed(1)}% Click <span className="text-slate-400 font-medium">({postFixAlertsOpenedCount}/{postFixAlertsSentCount} sent)</span>
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CEO Dashboard — Revenue by Acquisition Source */}
+              <div className="lg:col-span-6 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-xs flex flex-col justify-between">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <BarChart3 className="w-4.5 h-4.5 text-indigo-650" />
+                    Revenue by Acquisition Source (CEO Dashboard)
+                  </h3>
+                  <span className="text-[9px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded font-bold uppercase">All-Time Real Leads</span>
+                </div>
+                <div className="overflow-x-auto flex-1">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead className="bg-gray-50/70 border-b border-gray-200 text-gray-500 font-bold uppercase tracking-wider">
+                      <tr>
+                        <th className="px-4 py-2.5">Source</th>
+                        <th className="px-4 py-2.5 text-center">Leads</th>
+                        <th className="px-4 py-2.5 text-center">Recovery Sent</th>
+                        <th className="px-4 py-2.5 text-center">Alert Sent</th>
+                        <th className="px-4 py-2.5 text-center">Purchases</th>
+                        <th className="px-4 py-2.5 text-right">Revenue</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-200 font-medium text-slate-700">
+                      {revenueBySourceStats.map((row, idx) => {
+                        const totalLeads = revenueBySourceStats.reduce((sum, r) => sum + r.leads, 0);
+                        const leadsPct = totalLeads > 0 ? ((row.leads / totalLeads) * 100).toFixed(0) + '%' : '0%';
+                        const recPct = row.leads > 0 ? ((row.recoverySent / row.leads) * 100).toFixed(0) + '%' : '—';
+                        const alertPct = row.leads > 0 ? ((row.alertSent / row.leads) * 100).toFixed(0) + '%' : '—';
+                        return (
+                          <tr key={idx} className="hover:bg-slate-50/30">
+                            <td className="px-4 py-2.5 font-semibold text-slate-800 capitalize">{row.name.replace('-', ' ')}</td>
+                            <td className="px-4 py-2.5 text-center">{row.leads} <span className="text-[10px] text-gray-400">({leadsPct})</span></td>
+                            <td className="px-4 py-2.5 text-center">{recPct}</td>
+                            <td className="px-4 py-2.5 text-center">{alertPct}</td>
+                            <td className="px-4 py-2.5 text-center">{row.purchases}</td>
+                            <td className="px-4 py-2.5 text-right font-bold text-slate-950">${row.revenue.toLocaleString()}</td>
+                          </tr>
+                        );
+                      })}
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
 
