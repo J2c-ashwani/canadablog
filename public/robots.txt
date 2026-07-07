@@ -9,6 +9,28 @@ Allow: /
 Disallow: /download/*/thank-you
 Disallow: /api/
 
+# ---- Block Aggressive SEO Scrapers (Saves Bandwidth) ----
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: Rogerbot
+Disallow: /
+
+User-agent: Pinterestbot
+Disallow: /
+
 # ---- OpenAI / ChatGPT ----
 User-agent: GPTBot
 Allow: /
