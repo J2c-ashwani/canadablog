@@ -73,6 +73,16 @@ export interface ISubscriberRepository {
   getAllSubscribers(): Promise<SubscriberProfile[]>
 }
 
+export const getFallbackLoginToken = (email: string): string => {
+  const tokenSalt = process.env.SESSION_TOKEN_SALT || 'fsi-login-token-2026';
+  return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + tokenSalt).digest("hex").slice(0, 32);
+};
+
+export const getFallbackUnsubscribeToken = (email: string): string => {
+  const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT || 'fsi-salt-2026';
+  return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + unsubscribeSalt).digest("hex").slice(0, 32);
+};
+
 export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   private generateToken(): string {
     return "v2_" + crypto.randomBytes(16).toString("hex")
@@ -81,17 +91,6 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   private mapLeadToSubscriber(lead: any): SubscriberProfile {
     const interestsRaw = lead.fundingInterests || []
     
-    const tokenSalt = process.env.SESSION_TOKEN_SALT || 'fsi-login-token-2026';
-    const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT || 'fsi-salt-2026';
-
-    const getFallbackUnsubscribeToken = (email: string) => {
-      return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + unsubscribeSalt).digest("hex").slice(0, 32);
-    };
-
-    const getFallbackLoginToken = (email: string) => {
-      return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + tokenSalt).digest("hex").slice(0, 32);
-    };
-
     return {
       email: lead.email,
       name: lead.name || "",

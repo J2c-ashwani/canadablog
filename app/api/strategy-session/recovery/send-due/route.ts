@@ -39,6 +39,12 @@ function toTime(value: string) {
 // All unpaid leads follow the relaxed timeline below.
 // ─────────────────────────────────────────────────────────────────────────────
 
+function isSent(val?: string | null) {
+  if (!val) return false;
+  const s = val.trim().toLowerCase();
+  return s !== '' && s !== 'n/a' && s !== '0' && s !== 'false';
+}
+
 function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'email' | null; stage?: StrategyRecoveryEmailStage } {
   // Skip paid or opted-out leads
   if (record.status === 'paid' || record.status === 'unsubscribed') {
@@ -52,16 +58,30 @@ function getDueAction(record: StrategyRecoveryRecord, now: number): { action: 'e
 
   const elapsed = now - createdAt;
 
+  // Email #4 (final_7d) — 7 days after shown event
+  if (elapsed >= 7 * 24 * 60 * 60 * 1000) {
+    if (isSent(record.objection3dSentAt) && !isSent(record.final7dSentAt)) {
+      return { action: 'email', stage: 'final_7d' };
+    }
+  }
+
+  // Email #3 (objection_3d) — 3 days after shown event
+  if (elapsed >= 3 * 24 * 60 * 60 * 1000) {
+    if (isSent(record.followUp24hSentAt) && !isSent(record.objection3dSentAt)) {
+      return { action: 'email', stage: 'objection_3d' };
+    }
+  }
+
   // Email #2 (value_24h) — 4 hours after shown event
   if (elapsed >= 4 * 60 * 60 * 1000) {
-    if (record.initialEmailSentAt && !record.followUp24hSentAt) {
+    if (isSent(record.initialEmailSentAt) && !isSent(record.followUp24hSentAt)) {
       return { action: 'email', stage: 'value_24h' };
     }
   }
 
   // Email #1 (initial) — 30 minutes after shown event
   if (elapsed >= 30 * 60 * 1000) {
-    if (!record.initialEmailSentAt) {
+    if (!isSent(record.initialEmailSentAt)) {
       return { action: 'email', stage: 'initial' };
     }
   }

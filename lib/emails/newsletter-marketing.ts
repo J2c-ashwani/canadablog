@@ -851,3 +851,42 @@ export async function sendReactivationFounderEmail(data: ReactivationEmailData) 
   });
 }
 
+/**
+ * Send automated welcome responder for newsletter subscriptions.
+ */
+export async function sendNewsletterWelcomeEmail(to: string, name?: string, loginToken?: string) {
+  const firstName = getFirstName(name);
+  const token = loginToken || "";
+  const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${token}&source=newsletter_welcome`;
+  
+  const subject = "Welcome to FSI Digital — Your Funding Intelligence Partner";
+  
+  const contentHtml = `
+    <p>Thank you for subscribing to the FSI Digital newsletter!</p>
+    <p>We will send you regular updates on government grants, tax credits, and business funding opportunities tailored to Canadian small businesses.</p>
+    <p>In the meantime, you can access your personalized funding readiness dashboard using the link below:</p>
+    <div style="text-align: center; margin: 28px 0;">
+      <a href="${dashboardUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 12px 24px; text-decoration: none; border-radius: 6px; font-weight: 700; display: inline-block;">View My Dashboard</a>
+    </div>
+    <p style="margin-top: 24px;">From your dashboard, you can also:</p>
+    <ul style="padding-left: 20px; margin: 12px 0;">
+      <li style="margin-bottom: 8px;">Run the <strong>Free Grant Eligibility Calculator</strong> to update your funding score</li>
+      <li style="margin-bottom: 8px;">Explore active <strong>Funding Guides</strong> and compliance roadmaps</li>
+      <li style="margin-bottom: 8px;">Submit priority inquiries to our analyst team</li>
+    </ul>
+  `;
+  
+  const html = wrapNewsletterTemplate(contentHtml, token, firstName, "Welcome to FSI Digital");
+  const text = `Hi ${firstName},\n\nThank you for subscribing to the FSI Digital newsletter!\n\nWe will send you regular updates on government grants and tax credits.\n\nAccess your personalized funding dashboard: ${dashboardUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+
+  return sendEmail({
+    to,
+    subject,
+    html,
+    text,
+    tagType: 'newsletter-welcome',
+    from: BRAND_SENDER,
+  });
+}
+
+

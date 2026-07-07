@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     if (body.errorMessage) activity.lastErrorMessage = body.errorMessage
     if (body.surveyResponse) activity.lastSurveyResponse = body.surveyResponse
 
-    if (event === "checkout_started") {
+    if (event === "checkout_started" || event === "standalone_checkout_started") {
       activity.checkoutStartedAt = now
       if (body.priceShown) {
         activity.priceShown = body.priceShown
