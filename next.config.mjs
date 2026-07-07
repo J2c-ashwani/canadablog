@@ -57,11 +57,6 @@ const nextConfig = {
         permanent: true,
       },
       {
-        source: '/portfolio',
-        destination: '/',
-        permanent: true,
-      },
-      {
         source: '/ai-grant-finder',
         destination: '/grant-finder',
         permanent: true,

@@ -401,7 +401,7 @@ function UsPseoGrantContent({
                     title={`Need help finding the right ${page.cityName} grants?`}
                     description={`Our funding specialists help ${page.industryName} businesses compare federal, state, and local programs before they spend time on the wrong application.`}
                     buttonText="Get Free Assessment"
-                    buttonLink="/get-started"
+                    buttonLink="#calculator"
                 />
             </div>
 
@@ -1001,7 +1001,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                             title={`Need help finding the right ${page.cityName} grants?`}
                                             description={`Our funding specialists have helped ${page.industryName} businesses across ${page.provinceName} identify and successfully apply for government programs. Get a free eligibility assessment — no obligation.`}
                                             buttonText="Get Free Assessment"
-                                            buttonLink="/get-started"
+                                            buttonLink="#calculator"
                                         />
                                     </div>
 
@@ -1108,11 +1108,25 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 defaultProvince={page.provinceSlug} 
                                 defaultIndustry={page.industrySlug} 
                             />
-                            {/* Sidebar Ad below Calculator */}
-                            <div className="mt-8">
-                                <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD!} adFormat="vertical" style={{ minHeight: '600px' }} />
-                            </div>
+                            {/* T1-B: Removed the 600px sidebar ad that was placed directly below
+                                the calculator, degrading conversion context. */}
                         </div>
+                    </div>
+
+                    {/* T1-B: Mobile sticky CTA — always visible on mobile without scrolling.
+                        The calculator is buried below 3,000+ words on mobile (grid stacks).
+                        This anchor button floats at the bottom and scrolls directly to it. */}
+                    <div className="fixed bottom-0 left-0 right-0 z-40 lg:hidden bg-white border-t border-gray-200 shadow-2xl px-4 py-3 flex items-center gap-3">
+                        <div className="flex-1 min-w-0">
+                            <p className="text-xs font-bold text-slate-900 truncate">Free Eligibility Check</p>
+                            <p className="text-[10px] text-slate-500 truncate">See which programs match your business</p>
+                        </div>
+                        <a
+                            href="#calculator"
+                            className="shrink-0 bg-emerald-500 hover:bg-emerald-600 text-white font-bold text-sm px-4 py-2.5 rounded-xl transition-all shadow-md shadow-emerald-500/20 whitespace-nowrap"
+                        >
+                            Start Free Check →
+                        </a>
                     </div>
 
                 </div>

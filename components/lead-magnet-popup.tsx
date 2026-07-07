@@ -90,7 +90,7 @@ export function LeadMagnetPopup() {
             <div className="flex flex-col gap-3 max-w-xs mx-auto">
               <Button
                 onClick={() => {
-                  window.open("/pdf/ultimate-grant-guide.pdf", "_blank")
+                  window.open("/lead-magnets/ultimate-grant-guide-2026.pdf", "_blank")
                   setIsOpen(false)
                 }}
                 className="bg-green-600 hover:bg-green-700 w-full"

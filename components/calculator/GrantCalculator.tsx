@@ -617,6 +617,43 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
       || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq";
 
     // Calculate generic estimate based on inputs
+    /**
+     * Deterministic grant count: derived from province + industry + goal.
+     * Same profile always returns the same count. No Math.random().
+     * Reflects real program density: high-priority industries and provinces
+     * have more active programs.
+     */
+    const getDeterministicGrantCount = (province: string, industry: string, goal: string): number => {
+        // Base programs available nationally
+        let count = 5;
+
+        // Province-level program density
+        const provinceProgramCount: Record<string, number> = {
+            on: 4, bc: 3, ab: 3, qc: 4, ns: 2, mb: 2, sk: 2, nb: 2,
+            nl: 2, pe: 1, territories: 1, national: 3,
+            // US states have fewer Canadian-specific programs
+            ca: 3, ny: 3, tx: 2, fl: 2, il: 2, wa: 2, ma: 2, co: 2
+        };
+        count += (provinceProgramCount[province?.toLowerCase()] ?? 1);
+
+        // Industry-level program density
+        const industryProgramCount: Record<string, number> = {
+            technology: 4, manufacturing: 3, agriculture: 3, healthcare: 3,
+            energy: 3, retail: 1, services: 1, other: 1
+        };
+        count += (industryProgramCount[industry?.toLowerCase()] ?? 1);
+
+        // Goal-level additional programs
+        const goalProgramCount: Record<string, number> = {
+            research: 3, expansion: 2, expansion_equipment: 2, hiring: 2,
+            export: 2, digitize: 1, other: 0
+        };
+        count += (goalProgramCount[goal?.toLowerCase()] ?? 0);
+
+        // Clamp to a realistic and credible range
+        return Math.min(Math.max(count, 6), 18);
+    };
+
     const calculateEstimate = () => {
         let base = 50000;
         let max = 150000;
@@ -640,7 +677,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
         setEstimate(base);
         setEstimateMax(max);
-        setGrantCount(Math.floor(Math.random() * 8) + 7); // Random 7-14 grants
+        // Deterministic — no random number. Same province+industry+goal = same count.
+        setGrantCount(getDeterministicGrantCount(data.province, data.industry, data.goal));
     }
 
     const handleNext = () => {
@@ -660,11 +698,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     }
 
     const handleBack = () => {
-        if (step === 6) {
-            setExitSurveyStep(1);
-            setShowExitSurvey(true);
-            return;
-        }
+        // T1-D fix: Step 6 is the paywall. Back should return to step 5 (results),
+        // not trap the user in an exit survey modal.
         setStep(s => Math.max(1, s - 1));
     }
 

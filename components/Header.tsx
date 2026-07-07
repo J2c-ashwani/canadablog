@@ -515,8 +515,20 @@ export function Header() {
                     <Search className="w-4 h-4 mr-2" />
                     Search Grants
                   </Button>
+                  {/* T1-C fix: "Get Free Guide" now opens the actual PDF — not a qualification form */}
+                  <Button
+                    className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 h-12 text-white font-semibold"
+                    onClick={() => {
+                      window.open("/lead-magnets/ultimate-grant-guide-2026.pdf", "_blank")
+                      setIsMenuOpen(false)
+                    }}
+                  >
+                    Get Free Guide (PDF)
+                  </Button>
                   <Button className="w-full bg-gradient-to-r from-primary to-secondary h-12" asChild>
-                    <Link href="/contact" data-google-vignette="false">Get Free Guide</Link>
+                    <Link href="/grant-finder" data-google-vignette="false" onClick={() => setIsMenuOpen(false)}>
+                      Check My Eligibility →
+                    </Link>
                   </Button>
                 </div>
               </nav>

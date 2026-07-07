@@ -4,10 +4,14 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
 import { ArrowRight, Search, FileText, Bell } from "lucide-react";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
 
 export default function GetStartedClient() {
     return (
-        <div className="container mx-auto px-4 py-12 max-w-6xl">
+        <div className="min-h-screen bg-white">
+            <Header />
+            <div className="container mx-auto px-4 py-12 max-w-6xl">
             <div className="text-center mb-16 space-y-4">
                 <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-gray-900 mb-6">
                     Start Your Funding Journey
@@ -141,6 +145,8 @@ export default function GetStartedClient() {
                     </Button>
                 </div>
             </div>
+            </div>
+            <Footer />
         </div>
     );
 }

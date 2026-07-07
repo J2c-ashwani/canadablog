@@ -132,7 +132,7 @@ export function ExitIntentCapture() {
             <div className="flex flex-col gap-3">
               <Button
                 onClick={() => {
-                  window.open("/pdf/ultimate-grant-guide.pdf", "_blank")
+                  window.open("/lead-magnets/ultimate-grant-guide-2026.pdf", "_blank")
                   setIsOpen(false)
                 }}
                 className="w-full bg-slate-800 hover:bg-slate-700 text-white font-bold transition-all"
