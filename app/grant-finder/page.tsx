@@ -85,7 +85,7 @@ export default function GrantFinderPage() {
                 </div>
                 <h3 className="text-xl font-semibold mb-4">AI Analyzes & Matches</h3>
                 <p className="text-gray-600">
-                  Our AI reviews 800+ grants and finds the best matches based on your criteria.
+                  Our AI reviews 1,200+ grants and finds the best matches based on your criteria.
                 </p>
               </div>
 

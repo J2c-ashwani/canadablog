@@ -142,7 +142,7 @@ export default function HowToApplyGrantsPage() {
         <div className="container mx-auto px-4 max-w-6xl">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="border-l-4 border-indigo-600 pl-4 py-2">
-              <span className="block text-3xl font-extrabold text-slate-900">800+ Active</span>
+              <span className="block text-3xl font-extrabold text-slate-900">1,200+ active</span>
               <span className="text-sm font-semibold text-slate-500 uppercase tracking-wider block mt-1">Grants & Tax Programs</span>
             </div>
             <div className="border-l-4 border-indigo-600 pl-4 py-2">
@@ -347,7 +347,7 @@ export default function HowToApplyGrantsPage() {
                 {/* CTA 2: AI Finder */}
                 <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
                   <Sparkles className="w-8 h-8 text-indigo-600 mb-4" />
-                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 800+ Grants</h3>
+                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 1,200+ grants</h3>
                   <p className="text-slate-500 text-xs leading-relaxed mb-6">
                     Connect with our proprietary AI Funding Finder. Match your business coordinates to active regional, provincial, and national grant programs in seconds.
                   </p>

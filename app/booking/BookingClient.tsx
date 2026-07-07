@@ -439,7 +439,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
                 </h2>
                 <ol className="space-y-3">
                   {[
-                    { step: '1', label: 'Analyst Research (Right Now)', desc: 'Your advisor begins a 2-hour custom eligibility review of 800+ programs against your business profile.' },
+                    { step: '1', label: 'Analyst Research (Right Now)', desc: 'Your advisor begins a 2-hour custom eligibility review of 1,200+ active programs against your business profile.' },
                     { step: '2', label: 'Report Delivered (24h Before Call)', desc: 'A custom Funding Eligibility Report PDF is sent to your inbox before the call so you can review it in advance.' },
                     { step: '3', label: '30-Min Strategy Call', desc: 'Walk through your top 3 matched programs, application sequence, and funding stacking strategy with your advisor.' },
                     { step: '4', label: 'Post-Call Summary', desc: 'A written roadmap of your recommended programs, timelines, and next steps — delivered within 24h of the call.' },

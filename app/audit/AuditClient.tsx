@@ -36,7 +36,7 @@ function getGaClientId() {
 const FAQ_DATA = [
   {
     q: 'Why is this a $199 paid audit and not a free call?',
-    a: 'Free calls are usually high-pressure sales pitches. We charge a research fee because our team does real work before the call — we conduct a custom funding eligibility review of your business profile against 800+ active government programs and prepare a custom Funding Eligibility Report. You keep the report whether or not you hire us further.'
+    a: 'Free calls are usually high-pressure sales pitches. We charge a research fee because our team does real work before the call — we conduct a custom funding eligibility review of your business profile against 1,200+ active government programs and prepare a custom Funding Eligibility Report. You keep the report whether or not you hire us further.'
   },
   {
     q: 'What happens immediately after I pay?',
@@ -64,7 +64,7 @@ const WHAT_IS_COVERED = [
   {
     icon: '📋',
     title: 'Custom Eligibility Review',
-    desc: 'We screen your business profile against 800+ active government programs, tax credits, and grants across federal and provincial levels.'
+    desc: 'We screen your business profile against 1,200+ active government programs, tax credits, and grants across federal and provincial levels.'
   },
   {
     icon: '🎯',
@@ -379,13 +379,13 @@ export default function AuditClient() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6">
-              Get 100% certainty on your government roadmap. An FSI advisor reviews your eligibility against <strong className="text-slate-700">800+ active programs</strong> and delivers a custom Funding Eligibility Report. 100% money-back guarantee if you don&apos;t qualify for at least 2 programs.
+              Get 100% certainty on your government roadmap. An FSI advisor reviews your eligibility against <strong className="text-slate-700">1,200+ active programs</strong> and delivers a custom Funding Eligibility Report. 100% money-back guarantee if you don&apos;t qualify for at least 2 programs.
             </p>
 
             {/* 4-Step B2B Process Timeline */}
             <div className="max-w-4xl mx-auto grid grid-cols-1 sm:grid-cols-4 gap-4 mb-10 mt-6 text-left">
               {[
-                { step: "1. Deep Eligibility Review", desc: "Our analysts perform 2 hours of pre-call research against 800+ government programs." },
+                { step: "1. Deep Eligibility Review", desc: "Our analysts perform 2 hours of pre-call research against 1,200+ government programs." },
                 { step: "2. Custom Report Prepared", desc: "We draft your private Funding Eligibility Report detailing matches, ranges, and pitfalls." },
                 { step: "3. 1-on-1 Strategy Call", desc: "A 30-minute private consultation to walk through matches and stack programs." },
                 { step: "4. Step-by-Step Action Plan", desc: "You receive a prioritized roadmap with deadlines and filing instructions." }

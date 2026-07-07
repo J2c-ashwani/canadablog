@@ -5,7 +5,7 @@ import { Loader2, ShieldCheck, CreditCard, CheckCircle, AlertCircle, Sparkles } 
 import { Button } from '@/components/ui/button';
 
 interface StandaloneCheckoutProps {
-  productId: 'funding-roadmap' | 'funding-toolkit' | 'funding-approval-library';
+  productId: 'funding-roadmap' | 'funding-toolkit' | 'funding-approval-library' | 'funding-match-report';
   price: number;
   productName: string;
 }
@@ -311,8 +311,8 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           </div>
           <div>
             <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">30-Day Satisfaction Guarantee</h4>
-            <p className="text-[10.5px] text-slate-450 mt-0.5 leading-relaxed">
-              We stand behind our materials. If the template set does not fit your business scenario, email hello@fsidigital.ca for a full refund.
+            <p className="text-[10.5px] text-slate-455 mt-0.5 leading-relaxed">
+              We stand behind our products. If this report or template pack does not fit your business scenario, email hello@fsidigital.ca within 30 days and we will make it right.
             </p>
           </div>
         </div>
@@ -483,9 +483,27 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           )}
         </div>
 
-        <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-500 font-semibold border-t border-slate-850 pt-3">
-          <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
-          <span>100% Secure &amp; Protected Payments</span>
+        <div className="border-t border-slate-850 pt-3 flex flex-col items-center gap-2">
+          <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-500 font-semibold">
+            <ShieldCheck className="w-3.5 h-3.5 text-emerald-500 shrink-0" />
+            <span>100% Secure &amp; Protected Payments</span>
+          </div>
+          {/* Payment Method Badges */}
+          <div className="flex items-center justify-center gap-2 opacity-65 hover:opacity-85 transition-opacity mt-0.5">
+            {/* Visa SVG */}
+            <svg className="h-3 w-auto fill-current text-slate-500" viewBox="0 0 24 8" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 0h24v8H0z" fill="none"/>
+              <path d="M3.2 8h1.6L5.8 2H4.2L3.2 8zm5.2-5.7c-.3-.1-.8-.2-1.4-.2-1.5 0-2.6.8-2.6 2 0 .9.8 1.3 1.4 1.6.6.3.8.5.8.7 0 .4-.5.6-.9.6-.6 0-1-.1-1.5-.3l-.2-.1-.2 1.4c.4.2.9.3 1.5.3 1.6 0 2.7-.8 2.7-2 0-.8-.5-1.3-1.5-1.8-.6-.3-1-.5-1-.8 0-.3.3-.6 1-.6.6 0 1 .1 1.3.2l.1.1.2-1.4zm3.5-.3H10.7c-.4 0-.7.1-.8.5L7.5 8h1.7s.3-.8.3-1h1.9c0 .2.2 1 .2 1h1.5L11.9 2zm-1.8 3.6c.1-.3.6-1.5.6-1.5s.1.3.2.6l.4 1h-1.2zM2.8 2H0l2.4 5.6c.1.3.4.4.7.4h1.7L2.8 2z" fill="#94a3b8"/>
+            </svg>
+            {/* MasterCard Text/Logo representation */}
+            <span className="text-[7.5px] font-black border border-slate-700/60 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0">MC</span>
+            {/* Amex */}
+            <span className="text-[7.5px] font-black border border-slate-700/60 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0">AMEX</span>
+            {/* Apple Pay */}
+            <span className="text-[7.5px] font-black border border-slate-700/60 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0"> PAY</span>
+            {/* PayPal */}
+            <span className="text-[7.5px] font-black border border-slate-700/60 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0">PAYPAL</span>
+          </div>
         </div>
       </div>
     </div>

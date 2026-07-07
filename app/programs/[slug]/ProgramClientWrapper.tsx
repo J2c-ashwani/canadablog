@@ -722,7 +722,7 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
                   Get matched to your top 3 programs in 3 minutes
                 </h2>
                 <p className="text-sm text-slate-400 max-w-lg">
-                  Our free eligibility calculator screens {program.name} and 800+ other active programs against your business profile — then shows you exactly where you rank.
+                  Our free eligibility calculator screens {program.name} and 1,200+ other active programs against your business profile — then shows you exactly where you rank.
                 </p>
               </div>
               <div className="flex flex-col sm:flex-row gap-3 shrink-0">

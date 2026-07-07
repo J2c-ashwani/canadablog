@@ -415,7 +415,7 @@ export default function GovernmentLoansEligibilityPage() {
                 {/* CTA 2: AI Finder */}
                 <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
                   <Sparkles className="w-8 h-8 text-amber-600 mb-4" />
-                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 800+ Loans</h3>
+                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 1,200+ loans</h3>
                   <p className="text-slate-500 text-xs leading-relaxed mb-6">
                     Connect with our proprietary AI Funding Finder. Match your business coordinates to active regional, provincial, and national debt and credit programs.
                   </p>

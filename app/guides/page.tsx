@@ -151,7 +151,7 @@ export default function GuidesPage() {
               Grant Application Guides
             </h1>
             <p className="text-lg md:text-xl mb-8 text-slate-300 leading-relaxed max-w-2xl mx-auto">
-              Step-by-step guides for every major government funding program in Canada and the USA. Written by grant specialists with 800+ program coverage.
+              Step-by-step guides for every major government funding program in Canada and the USA. Written by grant specialists with 1,200+ program coverage.
             </p>
 
             {/* CTA Strip */}
@@ -246,7 +246,7 @@ export default function GuidesPage() {
                   <Sparkles className="w-6 h-6 text-purple-600" />
                 </div>
                 <h3 className="font-bold text-slate-900 mb-2">Find More Grants</h3>
-                <p className="text-sm text-slate-500 mb-4">Our AI Grant Finder scans 800+ programs to surface your best-matched funding opportunities.</p>
+                <p className="text-sm text-slate-500 mb-4">Our AI Grant Finder scans 1,200+ active programs to surface your best-matched funding opportunities.</p>
                 <Link
                   href="/grant-finder"
                   className="inline-flex items-center gap-1.5 text-purple-600 font-bold text-sm hover:text-purple-800"

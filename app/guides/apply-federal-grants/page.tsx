@@ -113,7 +113,7 @@ export default function ApplyFederalGrantsGuide() {
                   <div className="text-gray-600">Federal Agencies</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-purple-600 mb-2">2,000+</div>
+                  <div className="text-3xl font-bold text-purple-600 mb-2">1,200+</div>
                   <div className="text-gray-600">Grant Programs Available</div>
                 </div>
                 <div>

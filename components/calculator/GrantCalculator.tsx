@@ -2716,10 +2716,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                               </div>
                               <div>
                                 <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">3,800+</div>
-                                <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Funding Records Indexed</div>
+                                <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Database Records</div>
                               </div>
                               <div>
-                                <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">250+</div>
+                                <div className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">1,200+</div>
                                 <div className="text-[9px] text-slate-500 font-bold uppercase mt-0.5">Active Programs</div>
                               </div>
                               <div>
@@ -2990,67 +2990,68 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         </div>
                                     ) : (
                                         <>
-                                           {/* Stripe Card Payment */}
-                                           {process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY && (
-                                             <>
-                                               <Button 
-                                                 disabled={isStripeLoading}
-                                                 onClick={handleStripeCheckout}
-                                                 className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all"
-                                               >
-                                                 {isStripeLoading ? (
-                                                   <>
-                                                     <Loader2 className="w-4 h-4 animate-spin" /> Starting secure checkout...
-                                                   </>
-                                                 ) : (
-                                                   <>
-                                                     💳 Pay with Credit Card / Apple Pay
-                                                   </>
-                                                 )}
-                                               </Button>
+                                            {/* Stripe Card Payment */}
+                                            {process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY && (
+                                              <>
+                                                <Button 
+                                                  disabled={isStripeLoading}
+                                                  onClick={handleStripeCheckout}
+                                                  className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all"
+                                                >
+                                                  {isStripeLoading ? (
+                                                    <>
+                                                      <Loader2 className="w-4 h-4 animate-spin" /> Starting secure checkout...
+                                                    </>
+                                                  ) : (
+                                                    <>
+                                                      💳 Pay with Credit Card / Apple Pay
+                                                    </>
+                                                  )}
+                                                </Button>
 
-                                               <div className="relative flex py-1.5 items-center">
-                                                 <div className="flex-grow border-t border-slate-200"></div>
-                                                 <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or</span>
-                                                 <div className="flex-grow border-t border-slate-200"></div>
-                                               </div>
-                                             </>
-                                           )}
+                                                <div className="relative flex py-1.5 items-center">
+                                                  <div className="flex-grow border-t border-slate-200"></div>
+                                                  <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or</span>
+                                                  <div className="flex-grow border-t border-slate-200"></div>
+                                                </div>
+                                              </>
+                                            )}
 
-                                           {/* PayPal Container */}
-                                           <div id="calc-paypal-button" className="w-full"></div>
+                                            {/* PayPal Container */}
+                                            <div id="calc-paypal-button" className="w-full"></div>
 
-                                           <div className="relative flex py-2 items-center">
-                                             <div className="flex-grow border-t border-slate-200"></div>
-                                             <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or skip upgrade</span>
-                                             <div className="flex-grow border-t border-slate-200"></div>
-                                           </div>
-
-                                           <Button
-                                             type="button"
-                                             variant="outline"
-                                             className="w-full h-11 border-slate-250 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg flex items-center justify-center gap-2 shadow-xs transition-all"
-                                             onClick={() => handleSubmitEmail()}
-                                             disabled={isSubmitting}
-                                           >
-                                             {isSubmitting ? (
-                                               <Loader2 className="w-3.5 h-3.5 animate-spin" />
-                                             ) : (
-                                               <>📧 Get Free Email Summary &rarr;</>
-                                             )}
-                                           </Button>
+                                            <div className="mt-4 text-center">
+                                              <button
+                                                type="button"
+                                                className="text-xs text-slate-500 hover:text-slate-700 underline font-medium focus:outline-none"
+                                                onClick={() => handleSubmitEmail()}
+                                                disabled={isSubmitting}
+                                              >
+                                                {isSubmitting ? "Sending summary..." : "Need more time? Email me a free summary."}
+                                              </button>
+                                            </div>
                                          </>
                                     )}
+                                </div>
+                                <div className="mt-4 flex items-center justify-center gap-5 text-xs text-slate-500">
+                                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-500" /> 30-Day Guarantee</span>
+                                    <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-500" /> Instant Access</span>
+                                </div>
+                                <div className="mt-3 flex items-center justify-center gap-2 opacity-55">
+                                    <svg className="h-3 w-auto fill-current text-slate-500" viewBox="0 0 24 8" xmlns="http://www.w3.org/2000/svg">
+                                      <path d="M0 0h24v8H0z" fill="none"/>
+                                      <path d="M3.2 8h1.6L5.8 2H4.2L3.2 8zm5.2-5.7c-.3-.1-.8-.2-1.4-.2-1.5 0-2.6.8-2.6 2 0 .9.8 1.3 1.4 1.6.6.3.8.5.8.7 0 .4-.5.6-.9.6-.6 0-1-.1-1.5-.3l-.2-.1-.2 1.4c.4.2.9.3 1.5.3 1.6 0 2.7-.8 2.7-2 0-.8-.5-1.3-1.5-1.8-.6-.3-1-.5-1-.8 0-.3.3-.6 1-.6.6 0 1 .1 1.3.2l.1.1.2-1.4zm3.5-.3H10.7c-.4 0-.7.1-.8.5L7.5 8h1.7s.3-.8.3-1h1.9c0 .2.2 1 .2 1h1.5L11.9 2zm-1.8 3.6c.1-.3.6-1.5.6-1.5s.1.3.2.6l.4 1h-1.2zM2.8 2H0l2.4 5.6c.1.3.4.4.7.4h1.7L2.8 2z" fill="#64748b"/>
+                                    </svg>
+                                    <span className="text-[7.5px] font-black border border-slate-300 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0">MC</span>
+                                    <span className="text-[7.5px] font-black border border-slate-300 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0">AMEX</span>
+                                    <span className="text-[7.5px] font-black border border-slate-300 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0"> PAY</span>
+                                    <span className="text-[7.5px] font-black border border-slate-300 text-slate-500 rounded px-1 tracking-tighter leading-none shrink-0">PAYPAL</span>
                                 </div>
                                 {paymentError && (
                                     <div className="bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg px-4 py-3 mt-4">
                                     {paymentError}
                                     </div>
                                 )}
-                                <div className="mt-4 flex items-center justify-center gap-5 text-xs text-slate-500">
-                                    <span className="flex items-center gap-1.5"><ShieldCheck className="w-4 h-4 text-emerald-500" /> 30-Day Guarantee</span>
-                                    <span className="flex items-center gap-1.5"><Zap className="w-4 h-4 text-emerald-500" /> Instant Access</span>
-                                </div>
                             </div>
                         </div>
 
@@ -3058,26 +3059,54 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                         <div className="md:col-span-5 space-y-6 border-t md:border-t-0 md:border-l border-slate-200 pt-6 md:pt-0 md:pl-6">
                             {/* Founder Authority Block */}
                             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left shadow-2xs">
-                              <div className="flex items-center gap-3.5 mb-3 pb-3 border-b border-slate-200">
-                                <div className="w-12 h-12 bg-emerald-50 border border-emerald-200 rounded-xl flex items-center justify-center text-emerald-600 font-extrabold text-lg shadow-2xs">
-                                  AK
+                              <div className="flex items-center gap-3.5 mb-3.5 pb-3 border-b border-slate-200">
+                                <div className="w-12 h-12 rounded-xl overflow-hidden border border-slate-200 bg-slate-100 shrink-0">
+                                  <img 
+                                    src="/author-ashwani.jpg" 
+                                    alt="Ashwani Kumar" 
+                                    className="w-full h-full object-cover"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = 'none';
+                                      const parent = target.parentElement;
+                                      if (parent) {
+                                        const fallback = document.createElement('div');
+                                        fallback.className = "w-full h-full flex items-center justify-center bg-emerald-50 text-emerald-600 font-extrabold text-sm";
+                                        fallback.innerText = "AK";
+                                        parent.appendChild(fallback);
+                                      }
+                                    }}
+                                  />
                                 </div>
                                 <div>
                                   <h4 className="font-extrabold text-sm text-slate-900 leading-tight">Ashwani Kumar</h4>
-                                  <p className="text-[10px] text-slate-505 font-medium">Founder, FSI Digital</p>
+                                  <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-0.5">Founder, FSI Digital</p>
                                 </div>
                               </div>
                               <h4 className="font-bold text-slate-900 text-xs uppercase tracking-wider text-emerald-700 mb-1.5 flex items-center gap-1.5">
                                 <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" /> Why FSI Digital Exists
                               </h4>
-                              <p className="text-slate-600 text-xs leading-relaxed mb-2">
+                              <p className="text-slate-650 text-[11px] leading-relaxed mb-2">
                                 Finding government funding shouldn&apos;t mean wasting hundreds of hours parsing confusing listings or paying 20% success fees to expensive agencies.
                               </p>
-                              <p className="text-slate-600 text-xs leading-relaxed">
+                              <p className="text-slate-650 text-[11px] leading-relaxed mb-3">
                                 We package consultant-grade research into affordable, self-serve eligibility reports. Every assessment is <strong>built using FSI Digital&apos;s funding research framework and analyst review process</strong>, giving you stacking strategies without high advisory markups.
                               </p>
-                              <div className="mt-3 flex items-center gap-4">
-                                <a href="/methodology" target="_blank" rel="noopener noreferrer" className="text-xs font-bold text-emerald-700 hover:underline">Our Methodology →</a>
+                              
+                              {/* Ontario registration and guarantees */}
+                              <div className="border-t border-slate-200/60 pt-2.5 mt-2.5 text-[9px] text-slate-500 space-y-1">
+                                <div className="flex items-center gap-1">
+                                  <span className="text-emerald-500 font-bold">✓</span>
+                                  <span>Ontario Registered Corp (No. 1000832049)</span>
+                                </div>
+                                <div className="flex items-center gap-1">
+                                  <span className="text-emerald-500 font-bold">✓</span>
+                                  <span>&lt; 12-Hour Question Response Guarantee</span>
+                                </div>
+                              </div>
+
+                              <div className="mt-3.5 flex items-center gap-4">
+                                <a href="/methodology" target="_blank" rel="noopener noreferrer" className="text-xs font-black text-emerald-600 hover:text-emerald-700 transition-colors">Our Methodology →</a>
                               </div>
                             </div>
 

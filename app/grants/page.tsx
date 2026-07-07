@@ -168,7 +168,7 @@ export default function AllGrantsPage() {
                     <Sparkles className="w-6 h-6 text-purple-600" />
                   </div>
                   <h3 className="font-bold text-slate-900 mb-2">Get AI-Matched Grants</h3>
-                  <p className="text-sm text-slate-500 mb-4">Let our AI Grant Finder scan 800+ programs and surface only the ones that match your exact profile.</p>
+                  <p className="text-sm text-slate-500 mb-4">Let our AI Grant Finder scan 1,200+ active programs and surface only the ones that match your exact profile.</p>
                   <Link href="/grant-finder" className="inline-flex items-center gap-1.5 text-purple-600 font-bold text-sm hover:text-purple-800">
                     Try AI Finder <ArrowRight className="w-3.5 h-3.5" />
                   </Link>

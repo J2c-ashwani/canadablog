@@ -5,7 +5,7 @@ export function DiyComparisonTable() {
     {
       category: "Program Discovery",
       diy: "Manual searching through clunky, outdated database websites",
-      fsi: "Automated matching against 800+ active curated B2B programs",
+      fsi: "Automated matching against 1,200+ active curated B2B programs",
     },
     {
       category: "Eligibility Validation",

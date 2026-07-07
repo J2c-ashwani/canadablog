@@ -266,7 +266,16 @@ export function Header() {
             </nav>
 
             {/* Search Button */}
-            <div className="hidden md:flex items-center flex-shrink-0">
+            <div className="hidden md:flex items-center flex-shrink-0 gap-2">
+              <Button
+                className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs"
+                size="sm"
+                asChild
+              >
+                <Link href="/calculator">
+                  Check Eligibility →
+                </Link>
+              </Button>
               <Button
                 variant="outline"
                 size="sm"

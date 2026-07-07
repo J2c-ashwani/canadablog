@@ -377,7 +377,7 @@ export default function CsbfpLoansPage() {
                 {/* CTA 2: AI Finder */}
                 <div className="bg-white rounded-3xl p-6 border border-slate-200 shadow-sm">
                   <Sparkles className="w-8 h-8 text-slate-650 mb-4" />
-                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 800+ Grants</h3>
+                  <h3 className="text-lg font-bold text-slate-950 mb-2">Match 1,200+ grants</h3>
                   <p className="text-slate-500 text-xs leading-relaxed mb-6">
                     Connect with our proprietary AI Funding Finder to locate non-repayable grants that can fund your matching CSBFP project portions.
                   </p>

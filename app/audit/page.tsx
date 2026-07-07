@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   robots: { index: true, follow: true },
   openGraph: {
     title: 'Funding Strategy Audit — $199 | FSI Digital',
-    description: 'Pay first. Book your call instantly. An FSI advisor reviews 800+ programs and delivers a custom Funding Eligibility Report before your 30-min strategy call.',
+    description: 'Pay first. Book your call instantly. An FSI advisor reviews 1,200+ active programs and delivers a custom Funding Eligibility Report before your 30-min strategy call.',
     url: 'https://www.fsidigital.ca/audit',
     type: 'website',
   },

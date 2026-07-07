@@ -24,7 +24,7 @@ const PROCESS_STEPS = [
   {
     step: '01',
     title: 'Funding Audit & Strategy',
-    description: 'We run a deep eligibility assessment across 800+ programs. You receive a structured Priority Report matching your roadmap to active funding streams.',
+    description: 'We run a deep eligibility assessment across 1,200+ active programs. You receive a structured Priority Report matching your roadmap to active funding streams.',
     cost: '$199 (Credited 100% toward filing)'
   },
   {

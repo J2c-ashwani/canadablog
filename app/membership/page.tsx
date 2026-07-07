@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { ShieldCheck, Check, Zap, Sparkles, HelpCircle, Users, ArrowRight, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
+import { WaitlistForm } from '@/components/products/WaitlistForm';
 
 export const metadata: Metadata = {
   title: 'FSI Digital Founding Membership — Custom Government Funding Monitoring',
@@ -28,16 +29,12 @@ export default function MembershipPage() {
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">Get Custom Stacking Monitoring.</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Intake windows open and close in days. For $29/month, we monitor 800+ active Canadian programs against your B2B profile and alert you instantly before deadlines pass.
+            Intake windows open and close in days. We monitor 1,200+ active programs against your B2B profile and alert you instantly before deadlines pass.
           </p>
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-3">
-            <Link href="/calculator">
-              <Button size="lg" className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 text-white font-extrabold text-sm h-12 px-8 rounded-lg shadow-lg shadow-emerald-500/20">
-                Unlock With Eligibility Calculator <ArrowRight className="w-4 h-4 ml-2" />
-              </Button>
-            </Link>
+          <div className="pt-4 max-w-md mx-auto">
+            <WaitlistForm />
           </div>
-          <div className="flex items-center justify-center gap-6 text-[11px] text-slate-500 pt-2 font-medium">
+          <div className="flex items-center justify-center gap-6 text-[11px] text-slate-500 pt-3 font-medium">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Cancel Anytime</span>
             <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-emerald-500" /> Real-time Alerts</span>
             <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-emerald-500" /> Analyst Consultation Included</span>
@@ -131,12 +128,10 @@ export default function MembershipPage() {
                 </li>
               </ul>
 
-              <div className="pt-4">
-                <Link href="/calculator">
-                  <Button className="w-full h-11 bg-indigo-600 hover:bg-indigo-500 text-white font-extrabold text-xs rounded-lg shadow-md transition-all">
-                    Activate Stacking Monitoring
-                  </Button>
-                </Link>
+              <div className="pt-4 text-center">
+                <p className="text-xs text-slate-400 font-bold bg-slate-900 border border-slate-800 rounded-lg p-3">
+                  Founding tier waitlist is active. Enter your email above to lock in founding rates.
+                </p>
               </div>
             </div>
           </div>

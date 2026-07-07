@@ -410,7 +410,7 @@ export default function ConsultationClient() {
   const faqs = [
     {
       q: 'Why is this a paid audit instead of a free consultation?',
-      a: 'Most "free consulting" calls online are high-pressure sales pitches. We charge a research deposit because our team provides real work — we conduct a custom funding eligibility review of your business profile against 800+ active government grants, tax credits, and loans before we meet. You receive a customized, downloadable Funding Eligibility Report to keep, whether or not you choose to work with us further.'
+      a: 'Most "free consulting" calls online are high-pressure sales pitches. We charge a research deposit because our team provides real work — we conduct a custom funding eligibility review of your business profile against 1,200+ active government grants, tax credits, and loans before we meet. You receive a customized, downloadable Funding Eligibility Report to keep, whether or not you choose to work with us further.'
     },
     {
       q: 'What is the difference between the Audit and VIP Blueprint?',
@@ -506,7 +506,7 @@ export default function ConsultationClient() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6 animate-fade-in-d2">
-              Select your audit package below. FSI Digital will conduct a custom funding eligibility review against <strong className="text-slate-700">800+ active programs</strong> and deliver a custom Funding Eligibility Report before your call.
+              Select your audit package below. FSI Digital will conduct a custom funding eligibility review against <strong className="text-slate-700">1,200+ active programs</strong> and deliver a custom Funding Eligibility Report before your call.
             </p>
 
             {/* Trust Strip */}
@@ -772,7 +772,7 @@ export default function ConsultationClient() {
               <div className="grid grid-cols-3 gap-3 sm:gap-4">
                 <div className="bg-white border border-slate-200 rounded-2xl p-4 text-center shadow-sm">
                   <Database className="w-5 h-5 text-indigo-500 mx-auto mb-2" />
-                  <div className="text-xl sm:text-2xl font-black text-slate-950">2,000+</div>
+                  <div className="text-xl sm:text-2xl font-black text-slate-950">1,200+</div>
                   <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Programs Tracked</div>
                 </div>
                 <div className="bg-white border border-slate-200 rounded-2xl p-4 text-center shadow-sm">

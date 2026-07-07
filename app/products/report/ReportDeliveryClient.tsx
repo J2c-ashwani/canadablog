@@ -1185,7 +1185,7 @@ function ReportContent() {
               <Sparkles className="w-5 h-5 text-indigo-650 shrink-0" /> Never Miss a Matching Grant Intake
             </h3>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed font-medium">
-              Intakes open and close quickly. For <strong>$29/month</strong>, we monitor your business profile against 800+ active programs and alert you via SMS &amp; email when windows open. Includes priority analyst Q&amp;A support.
+              Intakes open and close quickly. For <strong>$29/month</strong>, we monitor your business profile against 1,200+ active programs and alert you via SMS &amp; email when windows open. Includes priority analyst Q&amp;A support.
             </p>
           </div>
           <div className="shrink-0 flex flex-col sm:flex-row items-stretch sm:items-center gap-3">

@@ -80,7 +80,7 @@ const CHANGELOG: MonthBlock[] = [
     id: 'january-2026',
     month: 'January 2026',
     entries: [
-      { type: 'ADDED', text: 'Initial 2026 database build: 800+ programs catalogued' },
+      { type: 'ADDED', text: 'Initial 2026 database build: 1,200+ active programs catalogued' },
       { type: 'UPDATED', text: 'All provincial program amounts updated for 2026 fiscal year' },
       { type: 'ADDED', text: 'US SBIR/STTR programs added for cross-border founders' },
       { type: 'UPDATED', text: 'IRAP and SR&ED stacking guidance refreshed' },

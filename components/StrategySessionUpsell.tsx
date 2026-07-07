@@ -167,7 +167,7 @@ export function StrategySessionUpsell({
               </div>
               <h3 className="text-lg font-bold text-slate-950">Upgrade to a Researched Funding Eligibility Audit & Roadmap</h3>
               <p className="mt-1.5 text-xs text-slate-600 leading-relaxed">
-                Skip the 2-day queue. Book a 1-on-1 Funding Eligibility Audit. We conduct <strong>2 hours of manual pre-call research</strong> against 800+ active programs to prepare a customized Roadmap PDF for your business.
+                Skip the 2-day queue. Book a 1-on-1 Funding Eligibility Audit. We conduct <strong>2 hours of manual pre-call research</strong> against 1,200+ active programs to prepare a customized Roadmap PDF for your business.
               </p>
 
               <ul className="mt-3.5 space-y-2.5 text-xs text-slate-700">
