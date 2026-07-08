@@ -2077,7 +2077,16 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 {step === 1 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <h3 className="text-xl font-semibold text-center mb-6">What are you looking for today?</h3>
-                        <RadioGroup value={data.goal} onValueChange={(val) => updateData("goal", val)} className="gap-3">
+                        <RadioGroup 
+                            value={data.goal} 
+                            onValueChange={(val) => {
+                                updateData("goal", val);
+                                setTimeout(() => {
+                                    setStep(2);
+                                }, 300);
+                            }} 
+                            className="gap-3"
+                        >
                             {[
                               { value: 'expansion', label: 'Looking for grants for my business', desc: 'Find active funding streams for operations' },
                               { value: 'hiring', label: 'Hiring & Training funding', desc: 'Wage subsidies and employee skill development grants' },
@@ -2105,7 +2114,15 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                         <h3 className="text-xl font-semibold text-center mb-6">Where is your business located?</h3>
                         <div className="space-y-3">
                             <Label>{isUSMode ? "State / Territory" : "Province / Territory"}</Label>
-                            <Select value={data.province} onValueChange={(val) => updateData("province", val)}>
+                            <Select 
+                                value={data.province} 
+                                onValueChange={(val) => {
+                                    updateData("province", val);
+                                    setTimeout(() => {
+                                        setStep(3);
+                                    }, 300);
+                                }}
+                            >
                                 <SelectTrigger className="h-14 text-lg">
                                     <SelectValue placeholder={isUSMode ? "Select a state..." : "Select a region..."} />
                                 </SelectTrigger>
@@ -2130,7 +2147,15 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                         <h3 className="text-xl font-semibold text-center mb-6">What is your primary industry?</h3>
                         <div className="space-y-3">
                             <Label>Industry Sector</Label>
-                            <Select value={data.industry} onValueChange={(val) => updateData("industry", val)}>
+                            <Select 
+                                value={data.industry} 
+                                onValueChange={(val) => {
+                                    updateData("industry", val);
+                                    setTimeout(() => {
+                                        setStep(4);
+                                    }, 300);
+                                }}
+                            >
                                 <SelectTrigger className="h-14 text-lg">
                                     <SelectValue placeholder="Select industry..." />
                                 </SelectTrigger>
@@ -2153,7 +2178,22 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 {step === 4 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
                         <h3 className="text-xl font-semibold text-center mb-6">What is your current annual revenue?</h3>
-                        <RadioGroup value={data.revenue} onValueChange={(val) => updateData("revenue", val)} className="gap-4">
+                        <RadioGroup 
+                            value={data.revenue} 
+                            onValueChange={(val) => {
+                                updateData("revenue", val);
+                                setTimeout(() => {
+                                    setIsAnalyzing(true);
+                                    calculateEstimate();
+                                    setStep(5);
+                                    setTimeout(() => {
+                                        setIsAnalyzing(false);
+                                        setStep(6);
+                                    }, 2500);
+                                }, 300);
+                            }} 
+                            className="gap-4"
+                        >
                             {[
                               { value: 'pre-revenue', label: 'Pre-revenue / Startup' },
                               { value: 'under-100k', label: 'Under $100,000' },
