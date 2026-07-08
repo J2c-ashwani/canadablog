@@ -803,11 +803,51 @@ export default function ContactClient() {
                 )}
 
                 {assessmentResult.tier === 'C' && (
-                  <div className="space-y-4">
-                    <h3 className="text-lg font-bold text-slate-900">Your Summary is Under Review</h3>
-                    <p className="text-xs text-slate-600 leading-relaxed">
-                      Thank you for submitting your details. Since you are in the researching stage, we will process your summary and alert you via email if active matching programs arise. No further action is required right now.
-                    </p>
+                  <div className="space-y-6 text-left">
+                    <div className="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 space-y-4 shadow-xs">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-950">Want an expert to review your profile within 24 hours?</h3>
+                      <p className="text-xs text-slate-550 leading-relaxed">
+                        Although you are in the researching stage, you can fast-track your eligibility assessment with a professional manual review.
+                      </p>
+                      
+                      <ul className="text-xs text-slate-700 space-y-2.5 font-medium">
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <span><strong>Funding Eligibility Review:</strong> Custom manual audit of federal, state, and provincial options.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <span><strong>Programs Matched:</strong> Exact program names, deadlines, and stacking roadmaps.</span>
+                        </li>
+                        <li className="flex items-start gap-2">
+                          <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <span><strong>Priority Roadmap:</strong> Strategy session recommendations to stack multiple subsidies.</span>
+                        </li>
+                      </ul>
+
+                      <div className="pt-4 border-t border-slate-200">
+                        <div className="flex items-baseline gap-2 mb-3">
+                          <span className="text-2xl font-black text-slate-950">$199</span>
+                          <span className="text-xs text-slate-500 font-bold uppercase">USD One-Time</span>
+                        </div>
+
+                        <Button 
+                          className="w-full bg-indigo-650 hover:bg-indigo-700 text-white py-6 rounded-xl font-black shadow-md shadow-indigo-150 flex items-center justify-center gap-2"
+                          onClick={() => {
+                            trackEvent('audit_recommended_tier_c');
+                            router.push(`/audit?email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.name)}&industry=${encodeURIComponent(formData.industry)}&region=${encodeURIComponent(formData.state)}&source=contact_tier_c`);
+                          }}
+                        >
+                          Get My Strategy Audit
+                          <ArrowRight className="w-4 h-4" />
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 text-xs text-slate-500 text-center">
+                      <span className="font-semibold block text-slate-700 mb-1">Standard Free Option:</span>
+                      Your free email summary will still be processed. We will email you if any active matching programs arise. No immediate action is required.
+                    </div>
                   </div>
                 )}
               </div>
