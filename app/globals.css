@@ -227,9 +227,26 @@ img {
   background-color: transparent;
 }
 
+/* In dark mode, ensure text is light and readable against dark backgrounds */
+.dark .prose table,
+.dark .prose thead,
+.dark .prose tbody,
+.dark .prose tr,
+.dark .prose th,
+.dark .prose td {
+  color: #e5e7eb !important;
+  /* gray-200 — light, readable text */
+  background-color: transparent;
+}
+
 .prose thead {
   background-color: #f3f4f6 !important;
   /* gray-100 header bg */
+}
+
+.dark .prose thead {
+  background-color: #1f2937 !important;
+  /* gray-800 header bg in dark mode */
 }
 
 .prose th {
@@ -238,9 +255,19 @@ img {
   font-weight: 600;
 }
 
+.dark .prose th {
+  color: #f9fafb !important;
+  /* gray-50 — bold header text in dark mode */
+}
+
 .prose tbody tr:nth-child(even) {
   background-color: #f9fafb !important;
   /* gray-50 zebra stripe */
+}
+
+.dark .prose tbody tr:nth-child(even) {
+  background-color: #111827 !important;
+  /* gray-900 zebra stripe in dark mode */
 }
 
 /* Also fix any inline-styled colored backgrounds in blog content */
