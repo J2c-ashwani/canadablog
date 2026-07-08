@@ -55,6 +55,11 @@
   /* Sky 500 - Professional Accent */
   --color-accent-foreground: #ffffff;
 
+  /* Legacy theme color overrides */
+  --color-indigo-650: #4338ca;
+  --color-emerald-650: #059669;
+  --color-red-650: #dc2626;
+
   /* Neutral System */
   --color-background: #ffffff;
   --color-foreground: #1f2937;
