@@ -779,43 +779,73 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     // --- Step-level telemetry logging ---
     useEffect(() => {
         if (step < 1 || step > 6) return;
-        const lockKey = `fsi_calc_step_${step}_logged`;
-        if (sessionStorage.getItem(lockKey) === 'true') return;
 
         try {
             const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
-            const eventName = step === 6 ? 'calculator_complete' : `calculator_step_${step}`;
             
-            fetch('/api/telemetry', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    eventName,
-                    sessionId: sessId,
-                    pagePath: window.location.pathname,
-                    referrer: document.referrer || 'direct'
-                })
-            }).then((res) => {
-                if (res.ok) {
-                    sessionStorage.setItem(lockKey, 'true');
-                    // Lock calculator_start on step 1 for full analytics compatibility
-                    if (step === 1) {
-                        sessionStorage.setItem('fsi_calc_start_logged', 'true');
-                        fetch('/api/telemetry', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify({
-                                eventName: 'calculator_start',
-                                sessionId: sessId,
-                                pagePath: window.location.pathname,
-                                referrer: document.referrer || 'direct'
-                            })
-                        }).catch(() => {});
-                    }
+            // 1. Log "calculator_viewed" once per session on mount
+            if (step === 1 && !data.goal) {
+                const viewKey = 'fsi_calc_viewed_logged';
+                if (sessionStorage.getItem(viewKey) !== 'true') {
+                    fetch('/api/telemetry', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            eventName: 'calculator_viewed',
+                            sessionId: sessId,
+                            pagePath: window.location.pathname,
+                            referrer: document.referrer || 'direct'
+                        })
+                    }).then((res) => {
+                        if (res.ok) sessionStorage.setItem(viewKey, 'true');
+                    }).catch(() => {});
                 }
-            }).catch(err => console.error(`Failed to log telemetry ${eventName}:`, err));
-        } catch (tErr) {}
-    }, [step]);
+                return;
+            }
+
+            // 2. Log "calculator_started" once they make their first selection
+            if (step === 1 && data.goal) {
+                const startKey = 'fsi_calc_started_logged';
+                if (sessionStorage.getItem(startKey) !== 'true') {
+                    fetch('/api/telemetry', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            eventName: 'calculator_started',
+                            sessionId: sessId,
+                            pagePath: window.location.pathname,
+                            referrer: document.referrer || 'direct'
+                        })
+                    }).then((res) => {
+                        if (res.ok) sessionStorage.setItem(startKey, 'true');
+                    }).catch(() => {});
+                }
+                return;
+            }
+
+            // 3. Log subsequent steps (2, 3, 4, 5, 6)
+            if (step > 1) {
+                const stepKey = `fsi_calc_step_${step}_logged`;
+                if (sessionStorage.getItem(stepKey) === 'true') return;
+
+                const eventName = step === 6 ? 'calculator_complete' : `calculator_step_${step}`;
+                fetch('/api/telemetry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        eventName,
+                        sessionId: sessId,
+                        pagePath: window.location.pathname,
+                        referrer: document.referrer || 'direct'
+                    })
+                }).then((res) => {
+                    if (res.ok) sessionStorage.setItem(stepKey, 'true');
+                }).catch(err => console.error(`Failed to log telemetry ${eventName}:`, err));
+            }
+        } catch (tErr) {
+            console.error('Telemetry logging error:', tErr);
+        }
+    }, [step, data.goal]);
 
     // --- Step 6 Entrance, Validation & Exit Telemetry ---
     useEffect(() => {
