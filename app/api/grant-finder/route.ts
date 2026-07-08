@@ -160,6 +160,7 @@ export async function POST(request: NextRequest) {
       if (!activity.firstTouchAt) {
         activity.firstTouchAt = body.firstTouchAt || timestamp
       }
+      activity.aiFinderSubmitted = true
       leadData.leadActivity = JSON.stringify(activity)
 
       if (existing) {

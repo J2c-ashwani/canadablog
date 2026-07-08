@@ -125,6 +125,7 @@ export async function POST(request: NextRequest) {
       gaClientId,
       offlineStatus: "Lead",
       referralSource: referralSource || "N/A",
+      leadActivity: JSON.stringify({ contactFormSubmitted: true }),
     };
 
     const getEstimatedOpportunityRange = (amount: string) => {

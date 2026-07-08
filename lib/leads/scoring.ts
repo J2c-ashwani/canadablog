@@ -304,11 +304,11 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
     intentScore += 20;
   }
   // Contact Form submissions represent direct high-intent inquiries: +25
-  if (leadType === 'Contact Form') {
+  if (activity.contactFormSubmitted || leadType === 'Contact Form') {
     intentScore += 25;
   }
   // AI Finder submissions represent direct high-intent inquiries: +20
-  if (leadType === 'AI Finder') {
+  if (activity.aiFinderSubmitted || leadType === 'AI Finder') {
     intentScore += 20;
   }
   // Selected $79 (Complete Bundle): +25
