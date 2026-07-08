@@ -60,6 +60,24 @@
   --color-emerald-650: #059669;
   --color-red-650: #dc2626;
 
+  /* Custom Tailwind Color Fallbacks */
+  --color-slate-55: #f8fafc;
+  --color-slate-150: #f1f5f9;
+  --color-slate-350: #cbd5e1;
+  --color-slate-450: #94a3b8;
+  --color-slate-455: #94a3b8;
+  --color-slate-550: #64748b;
+  --color-slate-650: #475569;
+  --color-slate-655: #475569;
+  --color-slate-705: #334155;
+  --color-slate-750: #334155;
+  --color-slate-850: #1e293b;
+  --color-indigo-150: #e0e7ff;
+  --color-purple-650: #7c3aed;
+  --color-emerald-250: #a7f3d0;
+  --color-emerald-150: #d1fae5;
+  --color-emerald-450: #10b981;
+
   /* Neutral System */
   --color-background: #ffffff;
   --color-foreground: #1f2937;
