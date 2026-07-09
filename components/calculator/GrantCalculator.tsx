@@ -1176,22 +1176,29 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
               // Log to standard Funnel Events sheet via /api/telemetry
               try {
-                const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
-                fetch('/api/telemetry', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({
-                    eventName: 'checkout_started',
-                    sessionId: sessId,
-                    pagePath: window.location.pathname,
-                    referrer: document.referrer || 'direct',
-                    utmSource: trackingDataRef.current.utmSource || '',
-                    utmMedium: trackingDataRef.current.utmMedium || '',
-                    utmCampaign: trackingDataRef.current.utmCampaign || '',
-                    productId: currentProductId || 'report',
-                    revenue: price.toString()
-                  })
-                }).catch(() => {});
+                const logged = sessionStorage.getItem('fsi_checkout_started_logged') === 'true';
+                if (!logged) {
+                  const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
+                  fetch('/api/telemetry', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                      eventName: 'checkout_started',
+                      sessionId: sessId,
+                      pagePath: window.location.pathname,
+                      referrer: document.referrer || 'direct',
+                      utmSource: trackingDataRef.current.utmSource || '',
+                      utmMedium: trackingDataRef.current.utmMedium || '',
+                      utmCampaign: trackingDataRef.current.utmCampaign || '',
+                      productId: currentProductId || 'report',
+                      revenue: price.toString()
+                    })
+                  }).then((res) => {
+                    if (res.ok) {
+                      sessionStorage.setItem('fsi_checkout_started_logged', 'true');
+                    }
+                  }).catch(() => {});
+                }
               } catch (tErr) {}
 
               fetch("/api/subscriber/track-activity", {
@@ -1492,22 +1499,29 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
             // Log to standard Funnel Events sheet via /api/telemetry
             try {
-              const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
-              fetch('/api/telemetry', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  eventName: 'checkout_started',
-                  sessionId: sessId,
-                  pagePath: window.location.pathname,
-                  referrer: document.referrer || 'direct',
-                  utmSource: trackingData.utmSource || '',
-                  utmMedium: trackingData.utmMedium || '',
-                  utmCampaign: trackingData.utmCampaign || '',
-                  productId: 'funding-roadmap-upgrade',
-                  revenue: price.toString()
-                })
-              }).catch(() => {});
+              const logged = sessionStorage.getItem('fsi_checkout_started_logged') === 'true';
+              if (!logged) {
+                const sessId = sessionStorage.getItem('fsi_session_id') || 'sess_anonymous';
+                fetch('/api/telemetry', {
+                  method: 'POST',
+                  headers: { 'Content-Type': 'application/json' },
+                  body: JSON.stringify({
+                    eventName: 'checkout_started',
+                    sessionId: sessId,
+                    pagePath: window.location.pathname,
+                    referrer: document.referrer || 'direct',
+                    utmSource: trackingData.utmSource || '',
+                    utmMedium: trackingData.utmMedium || '',
+                    utmCampaign: trackingData.utmCampaign || '',
+                    productId: 'funding-roadmap-upgrade',
+                    revenue: price.toString()
+                  })
+                }).then((res) => {
+                  if (res.ok) {
+                    sessionStorage.setItem('fsi_checkout_started_logged', 'true');
+                  }
+                }).catch(() => {});
+              }
             } catch (tErr) {}
             return actions.order.create({
               purchase_units: [{
