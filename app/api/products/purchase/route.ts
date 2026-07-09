@@ -93,12 +93,38 @@ export async function POST(request: NextRequest) {
     // Load existing lead for database-level attribution fallback
     const existing = await SubscriberRepository.getSubscriberByEmail(email);
 
+    // Dynamic session-level telemetry fallback if direct attribution is missing
+    let telemetryFallback: any = {};
+    if (sessionId && sessionId !== 'sess_anonymous') {
+      try {
+        const { getTelemetryEvents } = await import('@/lib/telemetry/telemetry-store');
+        const allEvents = await getTelemetryEvents();
+        // Find the earliest event for this sessionId to trace landing page & UTMs
+        const sessionEvents = allEvents
+          .filter(e => e.sessionId === sessionId)
+          .sort((a, b) => new Date(a.timestamp).getTime() - new Date(b.timestamp).getTime());
+        
+        if (sessionEvents.length > 0) {
+          const firstEvent = sessionEvents[0];
+          telemetryFallback = {
+            landingPage: firstEvent.pagePath,
+            referrer: firstEvent.referrer,
+            utmSource: firstEvent.utmSource,
+            utmMedium: firstEvent.utmMedium,
+            utmCampaign: firstEvent.utmCampaign,
+          };
+        }
+      } catch (telErr) {
+        console.error('⚠️ Telemetry fallback resolution failed:', telErr);
+      }
+    }
+
     const resolvedAttribution = {
-      landingPage: attribution?.landingPage || existing?.pagePath || '',
-      referrer: attribution?.referrer || existing?.referralSource || 'direct',
-      utmSource: attribution?.utmSource || existing?.utmSource || '',
-      utmMedium: attribution?.utmMedium || existing?.utmMedium || '',
-      utmCampaign: attribution?.utmCampaign || existing?.utmCampaign || '',
+      landingPage: attribution?.landingPage || telemetryFallback.landingPage || existing?.pagePath || '',
+      referrer: attribution?.referrer || telemetryFallback.referrer || existing?.referralSource || 'direct',
+      utmSource: attribution?.utmSource || telemetryFallback.utmSource || existing?.utmSource || '',
+      utmMedium: attribution?.utmMedium || telemetryFallback.utmMedium || existing?.utmMedium || '',
+      utmCampaign: attribution?.utmCampaign || telemetryFallback.utmCampaign || existing?.utmCampaign || '',
       gaClientId: attribution?.gaClientId || existing?.gaClientId || '',
       lastTouchPage: attribution?.lastTouchPage || '',
       lastTouchReferrer: attribution?.lastTouchReferrer || '',
