@@ -78,13 +78,6 @@ export const post: BlogPost = {
       "description": "Deep dive into general SBA financing."
     }
   ],
-    seo: {
-        metaTitle: "The 5 Best Government Loans for Agriculture Tech Startu...",
-        metaDescription: "Guide to The 5 Best Government Loans for Agriculture Tech Startups in in 2026. Learn eligibility rules, requirements, and application steps. See if...",
-        intent: "loan",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }
 };
 
 export default post;

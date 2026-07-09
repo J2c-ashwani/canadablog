@@ -215,78 +215,114 @@ img {
   z-index: 50;
 }
 
-/* Fix text contrast in blog content — tables had white text on white backgrounds */
-.prose table,
-.prose thead,
-.prose tbody,
-.prose tr,
-.prose th,
-.prose td {
-  color: #1f2937 !important;
-  /* gray-800 — always dark, readable text */
-  background-color: transparent;
+/* Fix text contrast in blog content tables */
+.prose table {
+  background-color: #ffffff !important; /* Force clean white background in light mode */
+  border-collapse: collapse !important;
+  width: 100% !important;
+  margin: 1.5rem 0 !important;
+  border: 1px solid #e2e8f0 !important; /* slate-200 */
+  border-radius: 0.5rem !important;
+  overflow: hidden !important;
 }
 
-/* In dark mode, ensure text is light and readable against dark backgrounds */
-.dark .prose table,
-.dark .prose thead,
-.dark .prose tbody,
-.dark .prose tr,
-.dark .prose th,
-.dark .prose td {
-  color: #e5e7eb !important;
-  /* gray-200 — light, readable text */
-  background-color: transparent;
+.dark .prose table {
+  background-color: #0f172a !important; /* Force slate-900 in dark mode */
+  border: 1px solid #1e293b !important; /* slate-800 */
 }
 
+/* Let headers have gray background with readable text */
 .prose thead {
-  background-color: #f3f4f6 !important;
-  /* gray-100 header bg */
+  background-color: #f1f5f9 !important; /* slate-100 header in light mode */
 }
 
 .dark .prose thead {
-  background-color: #1f2937 !important;
-  /* gray-800 header bg in dark mode */
+  background-color: #1e293b !important; /* slate-800 header in dark mode */
 }
 
 .prose th {
-  color: #111827 !important;
-  /* gray-900 — bold header text */
-  font-weight: 600;
+  color: #0f172a !important; /* slate-900 bold header text */
+  font-weight: 600 !important;
+  padding: 0.75rem 1rem !important;
+  text-align: left !important;
+  border: 1px solid #cbd5e1 !important; /* slate-300 */
 }
 
 .dark .prose th {
-  color: #f9fafb !important;
-  /* gray-50 — bold header text in dark mode */
+  color: #f8fafc !important; /* slate-50 bold header text in dark mode */
+  border: 1px solid #334155 !important; /* slate-700 */
+}
+
+/* Zebra striping and row styles */
+.prose table tr {
+  background-color: transparent !important;
 }
 
 .prose tbody tr:nth-child(even) {
-  background-color: #f9fafb !important;
-  /* gray-50 zebra stripe */
+  background-color: #f8fafc !important; /* slate-50 zebra stripe in light mode */
 }
 
 .dark .prose tbody tr:nth-child(even) {
-  background-color: #111827 !important;
-  /* gray-900 zebra stripe in dark mode */
+  background-color: rgba(30, 41, 59, 0.4) !important; /* subtle dark zebra stripe */
 }
 
-/* Also fix any inline-styled colored backgrounds in blog content */
-.prose [style*="background"] {
-  color: #1f2937 !important;
+/* Table body cells styling */
+.prose td {
+  color: #334155 !important; /* slate-700 default body text in light mode */
+  padding: 0.75rem 1rem !important;
+  border: 1px solid #e2e8f0 !important; /* slate-200 */
 }
 
-.prose [style*="background"] p,
-.prose [style*="background"] span,
-.prose [style*="background"] li,
-.prose [style*="background"] h1,
-.prose [style*="background"] h2,
-.prose [style*="background"] h3,
-.prose [style*="background"] h4,
-.prose [style*="background"] strong,
-.prose [style*="background"] em,
-.prose [style*="background"] a {
+.dark .prose td {
+  color: #cbd5e1 !important; /* slate-300 default body text in dark mode */
+  border: 1px solid #1e293b !important; /* slate-800 */
+}
+
+/* Make sure text elements inside table cells inherit the correct contrast color */
+.prose table td strong,
+.prose table td em,
+.prose table td span,
+.prose table td p,
+.prose table th strong,
+.prose table th em,
+.prose table th span,
+.prose table th p {
   color: inherit !important;
 }
+
+/* Fix any inline-styled colored backgrounds or Tailwind color classes in blog content outside tables */
+.prose [style*="background"]:not(table):not(tr):not(td):not(th),
+.prose .bg-gray-900:not(table):not(tr):not(td):not(th),
+.prose .bg-slate-900:not(table):not(tr):not(td):not(th),
+.prose .bg-blue-900:not(table):not(tr):not(td):not(th),
+.prose .bg-teal-900:not(table):not(tr):not(td):not(th) {
+  color: inherit;
+}
+
+/* Prevent prose element overrides (like strong, em, a, p) from breaking text color inside colored backgrounds outside tables */
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) p,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) span,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) li,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) h1,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) h2,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) h3,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) h4,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) strong,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) em,
+.prose [style*="background"]:not(table):not(tr):not(td):not(th) a,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) p,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) span,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) li,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) h1,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) h2,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) h3,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) h4,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) strong,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) em,
+.prose [class*="bg-"]:not(table):not(tr):not(td):not(th) a {
+  color: inherit !important;
+}
+
 
 @layer base {
   html {

@@ -62,8 +62,11 @@ export async function POST(request: NextRequest) {
         subject: '⚠️ CRITICAL SECURITY WARNING: Stripe Webhook Vulnerability',
         html: `<p><strong>CRITICAL WARNING:</strong> The Stripe Webhook endpoint was triggered in production, but <code>STRIPE_WEBHOOK_SECRET</code> is missing in your environment variables.</p>
                <p>The request has been rejected for safety to prevent payment bypass exploits.</p>
-               <p><strong>Action required:</strong> Configure <code>STRIPE_WEBHOOK_SECRET</code> on your server immediately.</p>`
+               <p><strong>Action required:</strong> Configure <code>STRIPE_WEBHOOK_SECRET</code> on your server immediately.</p>`,
+        text: 'CRITICAL WARNING: Stripe Webhook triggered but STRIPE_WEBHOOK_SECRET is missing. Configure it immediately.',
+        tagType: 'security-alert'
       }).catch(err => console.error('Failed to send security warning email:', err));
+
 
       return NextResponse.json({ error: 'Internal configuration error' }, { status: 500 });
     }
@@ -94,8 +97,11 @@ export async function POST(request: NextRequest) {
       subject: '⚠️ SECURITY ANOMALY: Stripe Webhook Signature Failed',
       html: `<p><strong>WARNING:</strong> A Stripe Webhook payload failed signature verification.</p>
              <p><strong>Error Message:</strong> ${err.message}</p>
-             <p>The request was rejected with a 400 Bad Request status.</p>`
+             <p>The request was rejected with a 400 Bad Request status.</p>`,
+      text: `WARNING: Stripe Webhook signature verification failed. Error: ${err.message}`,
+      tagType: 'security-alert'
     }).catch(err => console.error('Failed to send security warning email:', err));
+
 
     return NextResponse.json({ error: 'Webhook signature verification failed' }, { status: 400 });
   }

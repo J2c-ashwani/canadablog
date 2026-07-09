@@ -196,7 +196,7 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
                   province: region,
                   industry: industry,
                   revenue: companySize,
-                  goal: program.fundingPurpose || 'research',
+                  goal: (program as any).fundingPurpose || 'research',
                 },
                 attribution: {
                   landingPage: window.location.pathname,

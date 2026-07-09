@@ -14,6 +14,10 @@ export interface GrantFinderRequest {
   email: string
   companyName?: string
   phone?: string
+  annualRevenue?: string
+  companySize?: string
+  readinessScore?: number
+  readinessBand?: string
 }
 
 export interface GrantMatch {

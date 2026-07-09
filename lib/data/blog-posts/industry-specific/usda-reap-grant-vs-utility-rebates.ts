@@ -80,13 +80,6 @@ export const post: BlogPost = {
       "description": "General localized funding strategies for main street."
     }
   ],
-    seo: {
-        metaTitle: "USDA REAP Grant vs. Local Utility Rebates: Get Up to $1M",
-        metaDescription: "Learn how to qualify and apply for USDA REAP Grant vs. Local Utility Rebates in 2026. Access up to $1M in non-dilutive funding. See if you qualify.",
-        intent: "grant",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }
 };
 
 export default post;

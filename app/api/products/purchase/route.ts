@@ -161,8 +161,11 @@ export async function POST(request: NextRequest) {
                <p><strong>Expected Price:</strong> $${expectedPrice.toFixed(2)}</p>
                <p><strong>PayPal Order ID:</strong> ${paypalOrderId}</p>
                <p><strong>Error Details:</strong> ${verification.error || 'Verification failed'}</p>
-               <p>The transaction has been rejected.</p>`
+               <p>The transaction has been rejected.</p>`,
+        text: `WARNING: Purchase verification failed. Product: ${product.name}. Order: ${paypalOrderId}. Error: ${verification.error || 'Verification failed'}`,
+        tagType: 'security-alert'
       }).catch(err => console.error('Failed to send security warning email:', err));
+
 
       return NextResponse.json(
         { error: verification.error || 'Payment verification failed' },

@@ -40,6 +40,7 @@ export async function POST(request: NextRequest) {
       businessStage,
       employees,
       annualRevenue,
+      companySize,
       fundingAmount,
       fundingPurpose,
       timeline,
@@ -54,6 +55,7 @@ export async function POST(request: NextRequest) {
       gaClientId,
       referralSource,
     } = body;
+
 
     const isCalculator = category === "Grant Calculator" || requestType === "Grant Calculator" || requestType === "Calculator" || body.category === "Grant Calculator";
     const isPhoneOptional = isCalculator || category === "AI Grant Finder" || body.category === "AI Grant Finder";
@@ -124,9 +126,11 @@ export async function POST(request: NextRequest) {
       utmCampaign,
       gaClientId,
       offlineStatus: "Lead",
+      companySize: companySize || "N/A",
       referralSource: referralSource || "N/A",
       leadActivity: JSON.stringify({ contactFormSubmitted: true }),
     };
+
 
     const getEstimatedOpportunityRange = (amount: string) => {
       if (amount === "Under $25K") return "$5,000 – $25,000";

@@ -78,13 +78,6 @@ export const post: BlogPost = {
       "description": "Find massive localized funding in your specific state."
     }
   ],
-    seo: {
-        metaTitle: "SBA 7 2026: Complete Guide — Apply Now",
-        metaDescription: "Our comprehensive 2026 guide to SBA 7. Discover eligibility requirements, funding limits, and professional application steps to win. See if you qua...",
-        intent: "loan",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }
 };
 
 export default post;

@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     const encryptedToken = encrypt(payload);
 
     // Send the verification email using Resend
-    let mailRes = { success: true, skipped: false };
+    let mailRes: { success: boolean; skipped?: boolean; error?: string } = { success: true, skipped: false };
     if (email.toLowerCase().trim() !== "sandbox@fsidigital.ca") {
       mailRes = await sendOtpEmail({ to: email, code: otpCode });
     }

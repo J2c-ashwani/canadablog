@@ -141,13 +141,6 @@ export const post: BlogPost = {
       "description": "A massive guide for female entrepreneurs."
     }
   ],
-    seo: {
-        metaTitle: "Top 10 No-Equity Grants for Black Female Entrepreneurs ...",
-        metaDescription: "Guide to Top 10 No-Equity Grants for Black Female Entrepreneurs in in 2026. Learn eligibility rules, requirements, and application steps. See if yo...",
-        intent: "women",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }
 };
 
 export default post;

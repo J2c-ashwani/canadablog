@@ -62,6 +62,7 @@ export interface SubscriberProfile {
   utmCampaign?: string
   gaClientId?: string
   offlineStatus?: string
+  referralSource?: string
 }
 
 export interface ISubscriberRepository {

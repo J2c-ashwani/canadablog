@@ -78,13 +78,6 @@ export const post: BlogPost = {
       "description": "Compare massive Canadian funding to US federal programs."
     }
   ],
-    seo: {
-        metaTitle: "SR&ED Tax Credits vs. CDAP 2026: Complete Guide — Apply No",
-        metaDescription: "Learn how to qualify and apply for SR&ED Tax Credits vs. CDAP in 2026. Access active government grants & loans. See if you qualify.",
-        intent: "r_and_d",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }
 };
 
 export default post;

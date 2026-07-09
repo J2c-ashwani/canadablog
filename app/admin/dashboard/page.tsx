@@ -12,7 +12,7 @@ import { seoExperiments } from '@/lib/data/seoExperiments';
 import {
   Lock, KeyRound, DollarSign, Users, Calculator, ArrowRight,
   TrendingUp, BarChart3, Clock, Layers, Award, Tag, Sparkles,
-  Globe, Building2, Smartphone, Compass, Activity
+  Globe, Building2, Smartphone, Compass, Activity, MapPin
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
