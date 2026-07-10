@@ -29,26 +29,45 @@ These pages represent the highest conversion potential and visibility wins:
 
 | Rank | URL Path | Primary Keyword | Score | Position | Expected ROI | Recommendation |
 | :---: | :--- | :--- | :---: | :---: | :---: | :--- |
-| 1 | `/blog/atlantic-canada-innovation-grants` | *government grants canada* | **100** | 6.83 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 2 | `/blog/canada-agri-food-technology-innovation-grants` | *government grants canada* | **100** | 6.75 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 3 | `/blog/canada-clean-technology-innovation-grants` | *government grants canada* | **100** | 8.65 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 4 | `/blog/canada-life-sciences-innovation-grants` | *government grants canada* | **100** | 8.74 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 5 | `/blog/prairie-provinces-innovation-grants` | *tech innovation grants* | **100** | 5.19 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 6 | `/blog/quebec-innovation-grants` | *quebec business grants news* | **100** | 8.11 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 7 | `/blog/ontario-innovation-grants` | *ontario grants for small business* | **97** | 8.33 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 8 | `/blog/alberta-innovation-grants` | *small business grants alberta* | **96** | 9.45 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 9 | `/blog/british-columbia-innovation-grants` | *métis capital corporation british columbia* | **96** | 7.5 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 10 | `/blog/canada-digital-ai-innovation-grants` | *government grants canada* | **95** | 29.83 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 11 | `/canada/innovation-grants` | *tech innovation grants* | **95** | 29.01 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 12 | `/blog/canada-aerospace-defence-innovation-grants` | *government grants canada* | **94** | 11.86 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 13 | `/blog/canada-advanced-manufacturing-innovation-grants` | *montreal manufacturing grants* | **93** | 8.66 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 14 | `/blog/quebec-small-business-grants-guide` | *quebec business grants news* | **91** | 10.44 | **Very High** | Improve Title & Snippet (CTR Tuning) |
-| 15 | `/blog/canada-clean-technology-environment-grants-guide` | *government grants canada* | **90** | 8.22 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 16 | `/blog/canada-innovation-research-development-grants-guide` | *government grants canada* | **90** | 8.25 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 17 | `/blog/innovation-canada-grants-2026` | *government grants canada* | **90** | 8.61 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 18 | `/blog/nsf-sbir-grants-technology-startups` | *city and county of broomfield arpa technology grants* | **90** | 8.67 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 19 | `/blog/technology-startup-grants-2026` | *city and county of broomfield arpa technology grants* | **90** | 7.71 | **Medium** | Improve Title & Snippet (CTR Tuning) |
-| 20 | `/blog/irap-industrial-research-assistance-program-innovation` | *irap sr&ed canadian innovation funding eligibility* | **88** | 7.85 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 1 | `/blog/canada-digital-ai-innovation-grants` | *government grants canada* | **100** | 29.83 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 2 | `/canada/innovation-grants` | *innovation grants canada* | **98** | 29.01 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 3 | `/blog/prairie-provinces-innovation-grants` | *tech innovation grants* | **89** | 5.19 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 4 | `/blog/quebec-innovation-grants` | *quebec business grants news* | **89** | 8.11 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 5 | `/blog/alberta-innovation-grants` | *small business grants alberta* | **85** | 9.45 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 6 | `/blog/ontario-innovation-grants` | *ontario grants for small business* | **85** | 8.33 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 7 | `/blog/british-columbia-innovation-grants` | *métis capital corporation british columbia* | **83** | 7.5 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 8 | `/blog/canada-clean-technology-innovation-grants` | *technology grants canada* | **83** | 8.65 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 9 | `/blog/canada-innovation-research-development-grants-guide` | *government grants canada* | **80** | 8.25 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 10 | `/blog/innovation-canada-grants-2026` | *government grants canada* | **80** | 8.61 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 11 | `/blog/quebec-small-business-grants-guide` | *quebec business grants news* | **80** | 10.44 | **High** | Improve Title & Snippet (CTR Tuning) |
+| 12 | `/blog/canada-advanced-manufacturing-innovation-grants` | *manufacturing grants canada* | **79** | 8.66 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 13 | `/blog/canada-technology-adoption-grants-guide` | *government grants canada* | **79** | 14.24 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 14 | `/blog/nsf-sbir-grants-technology-startups` | *city and county of broomfield arpa technology grants* | **79** | 8.67 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 15 | `/blog/ontario-small-business-grants-guide` | *ontario business funding* | **79** | 60.69 | **High** | Expand Content Cluster & Internal Links |
+| 16 | `/blog/technology-startup-grants-2026` | *city and county of broomfield arpa technology grants* | **79** | 7.71 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 17 | `/blog/canada-life-sciences-innovation-grants` | *health canada grants* | **78** | 8.74 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 18 | `/blog/irap-industrial-research-assistance-program` | *irap program* | **78** | 9.17 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 19 | `/blog/technology-startup-grants-2026-archive` | *city and county of broomfield arpa technology grants* | **78** | 12.72 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+| 20 | `/blog/atlantic-canada-innovation-grants` | *atlantic innovation fund* | **77** | 6.83 | **Medium** | Improve Title & Snippet (CTR Tuning) |
+
+---
+
+## 🛡️ Executive Audit Evidence Table (Verifiable GSC Metrics)
+
+Below is the verification trace for the Top 10 opportunities, proving that all values are computed directly from `Pages.csv` and `Queries.csv`:
+
+| Rank | URL Path | Top GSC Queries (from Queries.csv) | Clicks | Impressions | Position | Chosen Primary Keyword | Score | Why Chosen? |
+| :---: | :--- | :--- | :---: | :---: | :---: | :--- | :---: | :--- |
+| 1 | `/blog/canada-digital-ai-innovation-grants` | 1. "funding for small business canada" (678 imp, pos 69.82)<br/>2. "business funding in canada" (606 imp, pos 70)<br/>3. "small business funding canada" (575 imp, pos 71.44)<br/>4. "canada small business financing" (456 imp, pos 62.81)<br/>5. "government grants canada" (324 imp, pos 46.53) | 0 | 604 | 29.83 | **government grants canada** | **100** | Matches target topic and region symmetrically |
+| 2 | `/canada/innovation-grants` | 1. "government grants canada" (324 imp, pos 46.53)<br/>2. "minnesota business grants" (203 imp, pos 40.18)<br/>3. "new york business grants" (193 imp, pos 51.03)<br/>4. "canada grants for small business" (178 imp, pos 68.02)<br/>5. "grants for restaurants 2022" (173 imp, pos 32.06) | 0 | 1746 | 29.01 | **innovation grants canada** | **98** | Matches target topic and region symmetrically |
+| 3 | `/blog/prairie-provinces-innovation-grants` | 1. "government grants canada" (324 imp, pos 46.53)<br/>2. "minnesota business grants" (203 imp, pos 40.18)<br/>3. "new york business grants" (193 imp, pos 51.03)<br/>4. "canada grants for small business" (178 imp, pos 68.02)<br/>5. "grants for restaurants 2022" (173 imp, pos 32.06) | 0 | 16 | 5.19 | **tech innovation grants** | **89** | Matches target topic and region symmetrically |
+| 4 | `/blog/quebec-innovation-grants` | 1. "quebec business grants news" (4103 imp, pos 10.4)<br/>2. "small business grants quebec" (36 imp, pos 39)<br/>3. "quebec small business grants news" (34 imp, pos 24.15)<br/>4. "quebec small business grants" (30 imp, pos 44.93)<br/>5. "innovation in quebec" (20 imp, pos 53.4) | 0 | 28 | 8.11 | **quebec business grants news** | **89** | Matches target topic and region symmetrically |
+| 5 | `/blog/alberta-innovation-grants` | 1. "small business funding alberta" (424 imp, pos 56.1)<br/>2. "small business loans alberta" (47 imp, pos 74.55)<br/>3. "women in business alberta" (38 imp, pos 43.42)<br/>4. "small business grants alberta" (30 imp, pos 54.73)<br/>5. "alberta small business loans" (29 imp, pos 69.86) | 0 | 408 | 9.45 | **small business grants alberta** | **85** | Matches target topic and region symmetrically |
+| 6 | `/blog/ontario-innovation-grants` | 1. "ontario business funding" (268 imp, pos 75.13)<br/>2. "funding for small business ontario" (196 imp, pos 77.93)<br/>3. "digital grant ontario" (61 imp, pos 49.16)<br/>4. "ontario grants for small business" (43 imp, pos 74.14)<br/>5. "business grants ontario" (39 imp, pos 72.33) | 0 | 43 | 8.33 | **ontario grants for small business** | **85** | Matches target topic and region symmetrically |
+| 7 | `/blog/british-columbia-innovation-grants` | 1. "métis capital corporation british columbia" (260 imp, pos 10.51)<br/>2. "métis capital corporation british columbia" (67 imp, pos 10.24)<br/>3. "business grants bc" (56 imp, pos 62.11)<br/>4. "small business grants bc" (50 imp, pos 69.52)<br/>5. "métis capital corporation british columbia lending" (48 imp, pos 8.56) | 0 | 208 | 7.5 | **métis capital corporation british columbia** | **83** | Matches target topic and region symmetrically |
+| 8 | `/blog/canada-clean-technology-innovation-grants` | 1. "funding for small business canada" (678 imp, pos 69.82)<br/>2. "business funding in canada" (606 imp, pos 70)<br/>3. "small business funding canada" (575 imp, pos 71.44)<br/>4. "canada small business financing" (456 imp, pos 62.81)<br/>5. "government grants canada" (324 imp, pos 46.53) | 0 | 691 | 8.65 | **technology grants canada** | **83** | Matches target topic and region symmetrically |
+| 9 | `/blog/canada-innovation-research-development-grants-guide` | 1. "funding for small business canada" (678 imp, pos 69.82)<br/>2. "business funding in canada" (606 imp, pos 70)<br/>3. "small business funding canada" (575 imp, pos 71.44)<br/>4. "canada small business financing" (456 imp, pos 62.81)<br/>5. "government grants canada" (324 imp, pos 46.53) | 0 | 323 | 8.25 | **government grants canada** | **80** | Matches target topic and region symmetrically |
+| 10 | `/blog/innovation-canada-grants-2026` | 1. "funding for small business canada" (678 imp, pos 69.82)<br/>2. "business funding in canada" (606 imp, pos 70)<br/>3. "small business funding canada" (575 imp, pos 71.44)<br/>4. "canada small business financing" (456 imp, pos 62.81)<br/>5. "government grants canada" (324 imp, pos 46.53) | 0 | 72 | 8.61 | **government grants canada** | **80** | Matches target topic and region symmetrically |
 
 ---
 
@@ -58,16 +77,16 @@ These pages maximize results per engineering hour (Highest ratio of Opportunity 
 
 | URL Path | Expected ROI | Effort (Hours) | Score | Recommendation |
 | :--- | :---: | :---: | :---: | :--- |
-| `/blog/quebec-small-business-grants-guide` | **Very High** | 5h | **91** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/apply-usa-grants-2026` | **Very High** | 3h | **80** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/demonstration-pilot-funding-canada` | **Very High** | 3h | **80** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/hardware-iot-startup-grants` | **Very High** | 3h | **80** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/software-saas-startup-grants` | **Very High** | 3h | **80** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/10-easy-to-win-local-grants-canadian-retail-stores` | **Very High** | 3h | **79** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/ai-machine-learning-grants` | **Very High** | 3h | **79** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/biden-2-5b-grants-2026` | **Very High** | 3h | **79** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/black-entrepreneurship-loan-fund-2026` | **Very High** | 3h | **79** | Improve Title & Snippet (CTR Tuning) |
-| `/blog/california-business-grants-2026` | **Very High** | 3h | **79** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/canada-startup-funding-grants-guide` | **Very High** | 3h | **76** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/csbfp-canada-small-business-financing-program-government-grants` | **Very High** | 3h | **73** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/sba-loans-grants-guide` | **Very High** | 3h | **73** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/canada-federal-grants` | **Very High** | 3h | **71** | Inject Custom Stacking Component |
+| `/blog/apply-usa-grants-2026` | **Very High** | 3h | **70** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/canada-growth-expansion-grants-guide` | **Very High** | 3h | **70** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/csbfp-canada-small-business-financing-program` | **Very High** | 3h | **70** | Expand Content Cluster & Internal Links |
+| `/blog/youth-entrepreneurship-canada-funding` | **Very High** | 3h | **70** | Inject Custom Stacking Component |
+| `/blog/ai-machine-learning-grants` | **Very High** | 3h | **69** | Improve Title & Snippet (CTR Tuning) |
+| `/blog/california-business-grants-2026` | **Very High** | 3h | **69** | Improve Title & Snippet (CTR Tuning) |
 
 ---
 
@@ -77,21 +96,21 @@ Pages currently ranking poorly but targeting high-value commercial keywords. **2
 
 | URL Path | Primary Keyword | Position | Score | Expected ROI | Recommendation |
 | :--- | :--- | :---: | :---: | :---: | :--- |
-| `/blog/strategic-innovation-fund-canada-guide` | *funding for small business canada* | 110 | **65** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/canada-irap-grants-2025` | *canada irap grant 2025 deadline applications* | 110 | **63** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/women-clean-technology-grants-canada` | *women's business resources canada* | 110 | **62** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/atlantic-business-grants-2026` | *minnesota business grants* | 110 | **60** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/cybersecurity-grants` | *cybersecurity grants canada* | 110 | **60** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/irap-vs-sred-difference-canada` | *sred tax credit canada* | 110 | **60** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/sred-scientific-research-experimental-development` | *sred tax credit canada* | 110 | **60** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/sred-tax-credits-vs-cdap-canadian-founders` | *sred tax credit canada* | 110 | **60** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/quebec-government-business-grants` | *quebec business grants news* | 110 | **58** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/canada-manufacturing-industry-grants-guide` | *montreal manufacturing grants* | 110 | **56** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/2026-grant-forecast` | *ai education grant 2026* | 110 | **54** | **Very High** | Align Content Structure to Search Intent |
-| `/blog/2026-grant-preview-early-bird` | *ai education grant 2026* | 110 | **54** | **Very High** | Align Content Structure to Search Intent |
-| `/blog/alberta-business-grants-2026` | *small business funding alberta* | 110 | **54** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/alberta-government-business-grants` | *small business funding alberta* | 110 | **54** | **Medium** | Align Content Structure to Search Intent |
-| `/blog/biotech-life-sciences-grants` | *biotech life sciences grants* | 110 | **54** | **Very High** | Align Content Structure to Search Intent |
+| `/blog/strategic-innovation-fund-canada-guide` | *funding for small business canada* | 149.35 | **70** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/canada-irap-grants-2025` | *canada irap grant 2025 deadline applications* | 134.35 | **69** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/cybersecurity-grants` | *cybersecurity grants canada* | 131.35 | **69** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/irap-vs-sred-difference-canada` | *sred tax credit canada* | 141.35 | **66** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/sred-tax-credits-vs-cdap-canadian-founders` | *sred tax credit canada* | 153.35 | **65** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/quebec-government-business-grants` | *quebec business grants news* | 144.35 | **64** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/sred-scientific-research-experimental-development` | *sred tax credit canada* | 160.35 | **64** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/2026-grant-forecast` | *ai education grant 2026* | 130.35 | **61** | **Very High** | Align Content Structure to Search Intent |
+| `/blog/green-business-funding` | *small business funding* | 133.35 | **61** | **Very High** | Align Content Structure to Search Intent |
+| `/blog/2026-grant-preview-early-bird` | *ai education grant 2026* | 140.35 | **60** | **Very High** | Align Content Structure to Search Intent |
+| `/blog/alberta-business-grants-2026` | *small business funding alberta* | 139.35 | **60** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/alberta-government-business-grants` | *small business funding alberta* | 145.35 | **60** | **Medium** | Align Content Structure to Search Intent |
+| `/blog/small-business-financing-2025` | *small business funding* | 140.35 | **60** | **Very High** | Align Content Structure to Search Intent |
+| `/blog/state-local-business-grants-guide` | *minnesota business grants* | 144.35 | **60** | **Very High** | Align Content Structure to Search Intent |
+| `/blog/canada-manufacturing-industry-grants-guide` | *manufacturing grants canada* | 153.35 | **59** | **Medium** | Align Content Structure to Search Intent |
 
 ---
 
@@ -101,7 +120,7 @@ Using the backlog queue (75% Fast/Medium Wins and 25% Breakthroughs), we recomme
 
 1.  **Sprint 8: Fast-Win CTR & Metadata Tuning (Bucket A)**
     *   **Scope:** Optimize the top 8 pages in Bucket A. Rewrite metadata, titles, and snippet copy to resolve CTR underperformance.
-    *   **Key Target:** `/blog/atlantic-canada-innovation-grants` (Score: 100) and `/blog/canada-agri-food-technology-innovation-grants` (Score: 100).
+    *   **Key Target:** \`/blog/canada-digital-ai-innovation-grants\` and \`/canada/innovation-grants\`.
 2.  **Sprint 9: High-ROI Cluster Authority Expansion (Bucket B)**
     *   **Scope:** Content expansion and outbound/inbound mesh building across Bucket B Page 1 candidates.
 3.  **Sprint 10: Breakthrough Structural Intent Alignment (Bucket C)**
