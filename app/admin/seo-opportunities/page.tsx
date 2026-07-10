@@ -129,7 +129,7 @@ export default async function SEOOpportunitiesPage({
               <Compass className="w-8 h-8 text-indigo-600" /> Commercial Opportunity Portfolio
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              FSI Digital · {total} scored assets · 9-factor prioritization engine · Sprint 7.1
+              FSI Digital · {total} scored assets · 8-factor opportunity engine + confidence signal · v1.1
             </p>
           </div>
           <div className="mt-4 flex md:mt-0 md:ml-4 gap-2">
@@ -290,6 +290,7 @@ export default async function SEOOpportunitiesPage({
                   <th className="px-4 py-4">Funnel</th>
                   <th className="px-4 py-4 text-center">GSC Pos</th>
                   <th className="px-4 py-4 text-center">Confidence</th>
+                  <th className="px-4 py-4">Why this score</th>
                   <th className="px-4 py-4">Playbook</th>
                   <th className="px-4 py-4 text-right">Live</th>
                 </tr>
@@ -297,7 +298,7 @@ export default async function SEOOpportunitiesPage({
               <tbody className="divide-y divide-slate-100 text-slate-700 bg-white">
                 {top100.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="px-6 py-12 text-center text-slate-500 font-medium">
+                    <td colSpan={9} className="px-6 py-12 text-center text-slate-500 font-medium">
                       <AlertCircle className="w-8 h-8 text-slate-400 mx-auto mb-2" />
                       No scored opportunities found. Run scripts/generate-backlog.ts first.
                     </td>
@@ -368,6 +369,28 @@ export default async function SEOOpportunitiesPage({
                           <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${confidenceColor}`}>
                             {item.confidenceLevel}
                           </span>
+                          <p className="text-[9px] text-slate-400 mt-0.5">data quality</p>
+                        </td>
+                        {/* Reason Score — why this page scored the way it did */}
+                        <td className="px-4 py-3 max-w-[200px]">
+                          {item.reasonScore?.positives?.length > 0 && (
+                            <div className="flex flex-wrap gap-1 mb-1">
+                              {item.reasonScore.positives.map((r: string, ri: number) => (
+                                <span key={ri} className="inline-flex items-center gap-0.5 text-[9px] px-1.5 py-0.5 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200 font-medium leading-tight">
+                                  <span className="text-emerald-500">+</span> {r}
+                                </span>
+                              ))}
+                            </div>
+                          )}
+                          {item.reasonScore?.negatives?.length > 0 && (
+                            <div className="flex flex-wrap gap-1">
+                              {item.reasonScore.negatives.map((r: string, ri: number) => (
+                                <span key={ri} className="inline-flex items-center gap-0.5 text-[9px] px-1.5 py-0.5 rounded-full bg-red-50 text-red-600 border border-red-200 font-medium leading-tight">
+                                  <span className="text-red-400">−</span> {r}
+                                </span>
+                              ))}
+                            </div>
+                          )}
                         </td>
                         <td className="px-4 py-3">
                           <div className="text-[11px] font-semibold text-indigo-600 mb-0.5">{item.playbookType}</div>

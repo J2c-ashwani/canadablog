@@ -335,7 +335,10 @@ const scoredList = commercialCandidates.map(candidate => {
     ? Math.min(100, Math.round((expectedCtr - gscPerformance.ctr) * 50)) 
     : 10;
 
-  // 9. Confidence (Cf - 5%)
+  // 9. Confidence — data quality signal only, NOT baked into opportunity score.
+  // Philosophy: Confidence tells you how certain to be of the opportunity,
+  // not whether the opportunity exists. A page with huge potential but low GSC
+  // data should still surface as high opportunity — just with a confidence caveat.
   let confidenceScore = 20;
   if (gscPerformance.impressions > 500 && kvEntry) {
     confidenceScore = 100;
@@ -356,7 +359,9 @@ const scoredList = commercialCandidates.map(candidate => {
     maintenancePenalty = 0; // Evergreen / None
   }
 
-  // Compute final score
+  // Compute final score — 8 factors only. Confidence is a separate signal.
+  // This means a page with massive opportunity but low GSC data still scores high;
+  // the confidence badge tells the reader how much to trust the score.
   const grossScore = (0.20 * businessImpactScore) +
                      (0.15 * commercialIntentScore) +
                      (0.15 * searchVolumeScore) +
@@ -364,11 +369,39 @@ const scoredList = commercialCandidates.map(candidate => {
                      (0.10 * competitorFeasibility) +
                      (0.10 * strategicImportance) +
                      (0.10 * intentStability) +
-                     (0.05 * ctrOpportunityScore) +
-                     (0.05 * confidenceScore);
+                     (0.10 * ctrOpportunityScore); // CTR weight raised to 10% to keep weights = 100%
 
   const netScore = Math.round(grossScore - maintenancePenalty);
   const opportunityScore = Math.min(100, Math.max(10, netScore));
+
+  // ── Reason Score ────────────────────────────────────────────────────────────
+  // Generate human-readable drivers for the score. Shown on the dashboard so
+  // that revisiting the backlog 6 months later is self-explanatory.
+  const drivers: { label: string; impact: 'positive' | 'negative' | 'neutral'; value: number }[] = [
+    { label: 'Business Impact (funnel depth)', impact: businessImpactScore >= 80 ? 'positive' : businessImpactScore >= 50 ? 'neutral' : 'negative', value: businessImpactScore },
+    { label: 'Commercial Intent (URL signals)', impact: commercialIntentScore >= 85 ? 'positive' : commercialIntentScore >= 70 ? 'neutral' : 'negative', value: commercialIntentScore },
+    { label: 'Search Volume', impact: searchVolumeScore >= 70 ? 'positive' : searchVolumeScore >= 50 ? 'neutral' : 'negative', value: searchVolumeScore },
+    { label: 'Ranking Opportunity (position)', impact: rankingOpportunityScore >= 70 ? 'positive' : rankingOpportunityScore >= 40 ? 'neutral' : 'negative', value: rankingOpportunityScore },
+    { label: 'Competitor Feasibility', impact: competitorFeasibility >= 70 ? 'positive' : competitorFeasibility >= 50 ? 'neutral' : 'negative', value: competitorFeasibility },
+    { label: 'Strategic Importance (cluster)', impact: strategicImportance >= 80 ? 'positive' : strategicImportance >= 50 ? 'neutral' : 'negative', value: strategicImportance },
+    { label: 'Intent Stability (evergreen)', impact: intentStability >= 80 ? 'positive' : intentStability >= 50 ? 'neutral' : 'negative', value: intentStability },
+    { label: 'CTR Opportunity', impact: ctrOpportunityScore >= 60 ? 'positive' : ctrOpportunityScore >= 30 ? 'neutral' : 'negative', value: ctrOpportunityScore },
+    { label: 'GSC Confidence (data quality)', impact: confidenceScore >= 80 ? 'positive' : confidenceScore >= 50 ? 'neutral' : 'negative', value: confidenceScore },
+    { label: 'Maintenance Cost (penalty)', impact: maintenancePenalty >= 10 ? 'negative' : maintenancePenalty >= 5 ? 'neutral' : 'positive', value: -maintenancePenalty },
+  ];
+  // Top 3 positive drivers by weighted contribution
+  const positives = drivers
+    .filter(d => d.impact === 'positive')
+    .sort((a, b) => b.value - a.value)
+    .slice(0, 3)
+    .map(d => d.label);
+  // Top 2 negative or weak factors
+  const negatives = drivers
+    .filter(d => d.impact === 'negative')
+    .sort((a, b) => a.value - b.value)
+    .slice(0, 2)
+    .map(d => d.label);
+  const reasonScore = { positives, negatives };
 
   // Estimate Engineering Hours dynamically
   let engineeringEffort = 3;
@@ -467,6 +500,8 @@ const scoredList = commercialCandidates.map(candidate => {
     ctr: gscPerformance.ctr,
     position: pos === 999 ? 120 : parseFloat(pos.toFixed(2)),
     opportunityScore,
+    confidenceScore,
+    reasonScore,
     priorityBucket,
     monetizationTier,
     engineeringEffort,
