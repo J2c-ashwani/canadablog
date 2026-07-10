@@ -28,6 +28,7 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import FundingStrategyBox from '@/components/blog/FundingStrategyBox';
 import RelatedFundingPaths from '@/components/blog/RelatedFundingPaths';
 import EligibilitySnapshot from '@/components/blog/EligibilitySnapshot';
+import NeedHelpApplying from '@/components/blog/NeedHelpApplying';
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
 import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
@@ -257,7 +258,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const content = stripInlineSchemas(rawContent);
   const richData = await getBlogPostRichData(slug);
   const researchProfile = getPriorityResearchProfile(`/blog/${slug}`);
-  // Also sanitize post.content so the RSC payload doesn't carry duplicate schemas
+  
   const fullPost = {
     ...post,
     ...richData,
@@ -270,6 +271,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     } : {}),
     content: stripInlineSchemas(content),
   };
+
+  const wordCount = fullPost.content ? fullPost.content.replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length : 0;
+  const showNeedHelp = wordCount > 1500;
 
   // Split content for InlineCTA injection
   let beforeCTA = content;
@@ -582,6 +586,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     postKeywords={post.seo?.keywords}
                   />
                 </div>
+              )}
+
+              {/* Need Help Applying Component (Rendered conditionally for long-form content > 1500 words) */}
+              {showNeedHelp && !researchProfile && (
+                <NeedHelpApplying />
               )}
 
               {/* DYNAMIC ENRICHMENT: FAQ UI */}
