@@ -5,6 +5,7 @@ const coveragePath = '/Users/ashwanikumar/Downloads/canadablog/fsidigital.ca-Cov
 const pagesPath = '/Users/ashwanikumar/Downloads/canadablog/3monthGSCdata/Pages.csv';
 const queriesPath = '/Users/ashwanikumar/Downloads/canadablog/3monthGSCdata/Queries.csv';
 const blogContentDir = '/Users/ashwanikumar/Downloads/canadablog/lib/data/blog-content';
+const keywordVolumesPath = '/Users/ashwanikumar/Downloads/canadablog/lib/data/keyword-volumes.json';
 const outputPath = '/Users/ashwanikumar/Downloads/canadablog/lib/data/seo-backlog.json';
 
 function parseCSVLine(line: string): string[] {
@@ -35,6 +36,9 @@ if (!fs.existsSync(coveragePath) || !fs.existsSync(pagesPath) || !fs.existsSync(
 const coverageLines = fs.readFileSync(coveragePath, 'utf8').split('\n').filter(Boolean);
 const pagesLines = fs.readFileSync(pagesPath, 'utf8').split('\n').filter(Boolean);
 const queriesLines = fs.readFileSync(queriesPath, 'utf8').split('\n').filter(Boolean);
+const keywordVolumes = fs.existsSync(keywordVolumesPath) 
+  ? JSON.parse(fs.readFileSync(keywordVolumesPath, 'utf8'))
+  : {};
 
 // 2. Parse indexed URLs
 const indexedUrls = new Set<string>();
@@ -45,7 +49,7 @@ for (const line of coverageLines.slice(1)) {
   }
 }
 
-// 3. Parse query metrics for matching primary keywords and estimating search demand
+// 3. Parse query metrics
 interface QueryMetric {
   query: string;
   clicks: number;
@@ -90,7 +94,7 @@ for (const line of pagesLines.slice(1)) {
   }
 }
 
-// Helper to determine primary query and estimate total search demand cleanly without duplication
+// Helper to determine primary query and estimate total search demand
 interface QueryMatch {
   primaryKeyword: string;
   estimatedDemand: number;
@@ -100,7 +104,6 @@ function findPrimaryQueryAndDemand(urlPath: string): QueryMatch {
   const slug = urlPath.split('/').filter(Boolean).pop() || '';
   if (!slug) return { primaryKeyword: 'fsidigital homepage', estimatedDemand: 5000 };
   
-  // 1. Thematic fallback keyword construction to ensure 100% correct matching mapping
   let fallbackKeyword = slug.replace(/-/g, ' ');
   if (slug.includes('alberta')) fallbackKeyword = 'alberta small business grants';
   else if (slug.includes('quebec')) fallbackKeyword = 'quebec small business grants';
@@ -119,10 +122,9 @@ function findPrimaryQueryAndDemand(urlPath: string): QueryMatch {
   else if (slug.includes('indigenous')) fallbackKeyword = 'indigenous entrepreneur grants';
   else if (slug.includes('clean-tech') || slug.includes('green')) fallbackKeyword = 'clean tech grants canada';
 
-  // 2. Search GSC Queries.csv for matching keyword terms with symmetric geographic and thematic exclusions
   let bestMatch = fallbackKeyword;
   let maxImpressions = -1;
-  let totalDemandAccumulator = 100; // Base default impressions count
+  let totalDemandAccumulator = 100;
 
   const searchTerms = slug.split('-');
   const pathLower = urlPath.toLowerCase();
@@ -130,7 +132,7 @@ function findPrimaryQueryAndDemand(urlPath: string): QueryMatch {
   for (const qObj of queriesList) {
     const queryLower = qObj.query.toLowerCase();
 
-    // STRICT SYMMETRIC GEOGRAPHIC & TOPICAL MATCH EXCLUSIONS (Prevents wrong keyword mapping)
+    // STRICT SYMMETRIC GEOGRAPHIC & TOPICAL MATCH EXCLUSIONS
     if (pathLower.includes('alberta') !== queryLower.includes('alberta')) continue;
     if (pathLower.includes('quebec') !== queryLower.includes('quebec')) continue;
     if (pathLower.includes('saskatchewan') !== queryLower.includes('saskatchewan')) continue;
@@ -148,7 +150,7 @@ function findPrimaryQueryAndDemand(urlPath: string): QueryMatch {
 
     if (isCanadaPage !== isCanadaQuery) continue;
 
-    // Strict thematic exclusions to prevent generic keyword takeovers
+    // Strict thematic exclusions
     if (slug.includes('clean') && !queryLower.includes('clean') && !queryLower.includes('green') && !queryLower.includes('tech')) continue;
     if (slug.includes('life') && !queryLower.includes('life') && !queryLower.includes('biotech') && !queryLower.includes('health')) continue;
     if (slug.includes('agri') && !queryLower.includes('agri') && !queryLower.includes('farm') && !queryLower.includes('food')) continue;
@@ -174,7 +176,7 @@ function findPrimaryQueryAndDemand(urlPath: string): QueryMatch {
   };
 }
 
-// 5. Read all commercial files from blog-content dir to prevent Bucket C = 0
+// 5. Read all commercial files from blog-content dir
 const commercialFiles = fs.readdirSync(blogContentDir).filter(file => file.endsWith('.json'));
 const commercialCandidates: { url: string; fileBasename: string }[] = [];
 
@@ -186,83 +188,120 @@ for (const file of commercialFiles) {
   });
 }
 
-// Ensure we also include key /canada routes that are commercial hubs
+// Key /canada routes
 commercialCandidates.push({ url: '/canada/innovation-grants', fileBasename: 'innovation-grants' });
+commercialCandidates.push({ url: '/canada/small-business-grants', fileBasename: 'small-business-grants' });
+commercialCandidates.push({ url: '/canada/women-business-grants', fileBasename: 'women-business-grants' });
+commercialCandidates.push({ url: '/canada/government-grants', fileBasename: 'government-grants' });
 
-// 6. Score opportunities
+// 6. Score opportunities with the upgraded 9-factor model
 const scoredList = commercialCandidates.map(candidate => {
   const pathUrl = candidate.url;
   const lowerUrl = pathUrl.toLowerCase();
   
-  // Look up if it exists in indexed list or GSC performance, otherwise default true since it is in sitemap
-  const isIndexed = indexedUrls.has(pathUrl) || pagePerfMap.has(pathUrl) || true;
+  const isIndexed = indexedUrls.has(pathUrl) || pagePerfMap.has(pathUrl);
   
-  // Dynamic, realistic position default to prevent flat 110 listings
-  const fallbackPosition = parseFloat((105 + (pathUrl.length % 75) + 0.35).toFixed(2));
-  
-  // Retrieve GSC performance or fallback to Breakthrough defaults
+  // Look up GSC performance
   const gscPerformance = pagePerfMap.get(pathUrl) || {
     url: pathUrl,
     clicks: 0,
     impressions: 0,
     ctr: 0,
-    position: fallbackPosition
+    position: 999 // Represent non-indexed or untracked as 999
   };
 
   const { primaryKeyword, estimatedDemand } = findPrimaryQueryAndDemand(pathUrl);
 
-  // Search Demand Score (S - 25%): logarithmic continuous scaling
-  const searchDemandScore = Math.min(100, Math.max(10, Math.round(Math.log10(estimatedDemand + 1) * 25)));
+  // 1. Search Volume Score (S - 15%)
+  const kvEntry = keywordVolumes[primaryKeyword.toLowerCase()];
+  const monthlyVolume = kvEntry ? kvEntry.monthlyVolume : estimatedDemand;
+  const searchVolumeScore = Math.min(100, Math.max(10, Math.round(Math.log10(monthlyVolume + 1) * 20)));
 
-  // Commercial Intent Score (I - 25%): continuous granular scoring with expanded keywords list
-  let commercialIntentScore = 40; // Default
+  // 2. Commercial Intent Score (I - 15%)
+  let commercialIntentScore = 40;
   if (lowerUrl.includes('sred') || lowerUrl.includes('irap') || lowerUrl.includes('apply') || lowerUrl.includes('filing')) {
     commercialIntentScore = 95;
   } else if (
-    lowerUrl.includes('grant') || lowerUrl.includes('loan') || lowerUrl.includes('fund') || 
-    lowerUrl.includes('finance') || lowerUrl.includes('financing') || lowerUrl.includes('subsidy') || 
-    lowerUrl.includes('subsidies') || lowerUrl.includes('tax-credit') || lowerUrl.includes('incentive') ||
-    lowerUrl.includes('initiative')
+    lowerUrl.match(/(grant|loan|fund|finance|financing|subsidy|subsidies|tax-credit|incentive|initiative)/)
   ) {
     commercialIntentScore = 90;
   } else if (
-    lowerUrl.includes('guide') || lowerUrl.includes('program') || lowerUrl.includes('compare') || 
-    lowerUrl.includes('comparison') || lowerUrl.includes('forecast') || lowerUrl.includes('deadlines') ||
-    lowerUrl.includes('audit') || lowerUrl.includes('toolkit')
+    lowerUrl.match(/(guide|program|compare|comparison|forecast|deadlines|audit|toolkit)/)
   ) {
     commercialIntentScore = 75;
   }
 
-  // Business Impact Score (B - 20%): Map to Category Tiers (No hardcoded literal numbers in configuration)
-  type MonetizationTier = 'direct-filing' | 'strategy-audit' | 'report-bundle' | 'ad-support';
-  let tier: MonetizationTier = 'ad-support';
+  // 3. Business Impact Score (B - 20%): monetization funnel depth
   let businessImpactScore = 15;
-  
+  let monetizationTier = 'awareness-only';
   if (pathUrl.includes('sred') || pathUrl.includes('irap') || pathUrl.includes('filing')) {
-    tier = 'direct-filing';
     businessImpactScore = 100;
-  } else if (pathUrl.includes('manufacturing') || pathUrl.includes('cybersecurity') || pathUrl.includes('technology') || pathUrl.includes('innovation')) {
-    tier = 'strategy-audit';
-    businessImpactScore = 70;
-  } else if (pathUrl.includes('alberta') || pathUrl.includes('ontario') || pathUrl.includes('bc') || pathUrl.includes('quebec') || pathUrl.includes('manitoba') || pathUrl.includes('saskatchewan') || pathUrl.includes('atlantic')) {
-    tier = 'report-bundle';
-    businessImpactScore = 45;
+    monetizationTier = 'direct-filing';
+  } else if (pathUrl.match(/(manufacturing|cybersecurity|technology|innovation)/)) {
+    businessImpactScore = 85;
+    monetizationTier = 'strategy-audit';
+  } else if (pathUrl.match(/(alberta|ontario|bc|quebec|manitoba|saskatchewan|atlantic)/)) {
+    businessImpactScore = 65;
+    monetizationTier = 'report-bundle';
+  } else if (pathUrl.match(/(forecast|deadlines|news|list)/)) {
+    businessImpactScore = 40;
+    monetizationTier = 'calculator-only';
   }
 
-  // Ranking Opportunity Score (O - 20%): Sweet spot peaking at 20-50 (Fast Wins)
+  // 4. Ranking Opportunity Score (O - 10%): bell curve peaking at position 30
   let rankingOpportunityScore = 20;
   const pos = gscPerformance.position;
-  if (pos >= 1 && pos <= 180) {
+  if (pos !== 999) {
     if (pos <= 30) {
-      // Linear rise from 20 at position 1 to 100 at position 30
       rankingOpportunityScore = Math.round(20 + (pos - 1) * (80 / 29));
     } else {
-      // Linear fall from 100 at position 30 to 20 at position 180
-      rankingOpportunityScore = Math.round(100 - (pos - 30) * (80 / 150));
+      rankingOpportunityScore = Math.round(Math.max(10, 100 - (pos - 30) * (80 / 150)));
     }
   }
 
-  // CTR Opportunity Score (C - 10%): Calibrated expected CTR curves
+  // 5. Competitor Feasibility (D - 10%)
+  let competitorFeasibility = 60;
+  if (kvEntry) {
+    const diff = kvEntry.difficulty;
+    if (diff === 'easy') competitorFeasibility = 95;
+    else if (diff === 'medium') competitorFeasibility = 70;
+    else if (diff === 'hard') competitorFeasibility = 40;
+    else if (diff === 'very-hard') competitorFeasibility = 15;
+  }
+
+  // 6. Strategic Importance (SI - 10%)
+  let strategicImportance = 30; // Default supporting page
+  let clusterType = 'Supporting Page';
+  if (pathUrl === '/canada/innovation-grants' || pathUrl === '/canada/small-business-grants' || pathUrl === '/canada/government-grants') {
+    strategicImportance = 100; // Pillar page
+    clusterType = 'Pillar Page';
+  } else if (pathUrl.includes('quebec-small-business') || pathUrl.includes('ontario-small-business') || pathUrl.includes('cybersecurity-grants')) {
+    strategicImportance = 80; // Cluster Hub
+    clusterType = 'Cluster Hub';
+  } else if (pathUrl.includes('methodology') || pathUrl.includes('data-sources')) {
+    strategicImportance = 60; // Authority Builder
+    clusterType = 'Authority Builder';
+  } else if (pathUrl.includes('vs-') || pathUrl.includes('-vs-')) {
+    strategicImportance = 50; // Link Magnet
+    clusterType = 'Link Magnet';
+  } else if (pathUrl.includes('veteran') || pathUrl.includes('usda-sbir')) {
+    strategicImportance = 10; // Isolated Page
+    clusterType = 'Isolated Page';
+  }
+
+  // 7. Intent Stability (IS - 10%)
+  let intentStability = 100; // Evergreen default
+  if (pathUrl.match(/(forecast|deadlines|2026|early-bird|last-chance|archive)/)) {
+    if (pathUrl.includes('deadlines') || pathUrl.includes('last-chance')) {
+      intentStability = 15; // Volatile
+    } else {
+      intentStability = 40; // Seasonal
+    }
+  } else if (pathUrl.match(/(guide|small-business|grants)/)) {
+    intentStability = 70; // Semi-stable
+  }
+
+  // 8. CTR Opportunity Score (C - 5%)
   let expectedCtr = 0.3;
   if (gscPerformance.position < 3) expectedCtr = 12;
   else if (gscPerformance.position < 10) expectedCtr = 4;
@@ -272,27 +311,42 @@ const scoredList = commercialCandidates.map(candidate => {
     ? Math.min(100, Math.round((expectedCtr - gscPerformance.ctr) * 50)) 
     : 10;
 
-  // Compute final Opportunity Score before multiplier
-  let baseScore = (0.25 * searchDemandScore) +
-                  (0.25 * commercialIntentScore) +
-                  (0.20 * businessImpactScore) +
-                  (0.20 * rankingOpportunityScore) +
-                  (0.10 * ctrOpportunityScore);
-
-  // Strategic Value Cluster Multiplier:
-  let strategicMultiplier = 1.0;
-  let clusterType = 'Supporting Page';
-  if (pathUrl.includes('innovation-grants') || pathUrl.includes('quebec-small-business') || pathUrl.includes('ontario-small-business') || pathUrl.includes('cybersecurity-grants')) {
-    strategicMultiplier = 1.15;
-    clusterType = 'Cluster Hub';
-  } else if (pathUrl.includes('blog/veteran') || pathUrl.includes('blog/usda-sbir')) {
-    strategicMultiplier = 0.90;
-    clusterType = 'Isolated Page';
+  // 9. Confidence (Cf - 5%)
+  let confidenceScore = 20;
+  if (gscPerformance.impressions > 500 && kvEntry) {
+    confidenceScore = 100;
+  } else if (gscPerformance.impressions > 50 || kvEntry) {
+    confidenceScore = 60;
   }
-  
-  const opportunityScore = Math.min(100, Math.max(10, Math.round(baseScore * strategicMultiplier)));
+  const confidenceLevel = confidenceScore === 100 ? 'High' : (confidenceScore === 60 ? 'Medium' : 'Low');
 
-  // Estimate Engineering Hours dynamically based on complexity
+  // Calculate Maintenance Penalty (MP)
+  let maintenancePenalty = 2; // Low default
+  if (pathUrl.match(/(deadlines|last-chance|news)/)) {
+    maintenancePenalty = 15; // Very High
+  } else if (pathUrl.match(/(forecast|early-bird)/)) {
+    maintenancePenalty = 10; // High
+  } else if (pathUrl.match(/(guide|small-business-grants)/)) {
+    maintenancePenalty = 5; // Medium
+  } else if (pathUrl.match(/(sred|irap|vs-)/)) {
+    maintenancePenalty = 0; // Evergreen / None
+  }
+
+  // Compute final score
+  const grossScore = (0.20 * businessImpactScore) +
+                     (0.15 * commercialIntentScore) +
+                     (0.15 * searchVolumeScore) +
+                     (0.10 * rankingOpportunityScore) +
+                     (0.10 * competitorFeasibility) +
+                     (0.10 * strategicImportance) +
+                     (0.10 * intentStability) +
+                     (0.05 * ctrOpportunityScore) +
+                     (0.05 * confidenceScore);
+
+  const netScore = Math.round(grossScore - maintenancePenalty);
+  const opportunityScore = Math.min(100, Math.max(10, netScore));
+
+  // Estimate Engineering Hours dynamically
   let engineeringEffort = 3;
   if (pathUrl.includes('sred') || pathUrl.includes('irap') || pathUrl.includes('manufacturing') || pathUrl.includes('cybersecurity') || pathUrl.includes('technology') || pathUrl.includes('innovation')) {
     engineeringEffort = 8;
@@ -304,71 +358,82 @@ const scoredList = commercialCandidates.map(candidate => {
     engineeringEffort = 2;
   }
 
-  // Calculate Expected ROI
-  const roiRatio = opportunityScore / engineeringEffort;
-  let expectedRoi = 'Medium';
-  if (roiRatio >= 18) expectedRoi = 'Very High';
-  else if (roiRatio >= 14) expectedRoi = 'High';
+  // ROI Priority Bands mapping
+  let priorityBucket = 'Low';
+  if (opportunityScore >= 85) priorityBucket = 'Exceptional';
+  else if (opportunityScore >= 70) priorityBucket = 'High';
+  else if (opportunityScore >= 50) priorityBucket = 'Medium';
 
-  // Determine Priority Bucket based on realistic position thresholds
-  let priorityBucket = 'Bucket D — Ignore';
-  if (gscPerformance.position >= 5 && gscPerformance.position <= 45 && commercialIntentScore >= 75) {
-    priorityBucket = 'Bucket A — Fast Wins';
-  } else if (gscPerformance.position > 45 && gscPerformance.position <= 100 && commercialIntentScore >= 75) {
-    priorityBucket = 'Bucket B — Medium Wins';
-  } else if (gscPerformance.position > 100 && commercialIntentScore >= 75) {
-    priorityBucket = 'Bucket C — Breakthroughs';
-  }
-
-  // Determine Granular Recommendation & Playbook Tasks
-  let recommendation = 'Inject Custom Stacking Component';
+  // 8-Type Playbook Decision Tree (drift #6)
+  let playbookType = 'Snippet Enhancement';
+  let recommendation = 'Improve Title & Snippet (CTR Tuning)';
   let playbookTasks = ["Add NeedHelpApplying component", "Embed Calculator CTA", "Validate internal linking"];
-  
-  if (gscPerformance.position > 100) {
-    recommendation = 'Align Content Structure to Search Intent';
+
+  if (pathUrl.includes('sred') || pathUrl.includes('irap') || pathUrl.includes('filing')) {
+    playbookType = 'Authority Build';
+    recommendation = 'Deploy CRA Regulatory Citations & Stacking Rules';
+    playbookTasks = [
+      "Audit competitor technical guidance sections",
+      "Inject updated CRA T661 guidelines",
+      "Compare IRAP stacking rules",
+      "Add direct filing success-fee metrics"
+    ];
+  } else if (pos === 999) {
+    playbookType = 'Launch Campaign';
+    recommendation = 'Request Manual Search Console Indexation';
+    playbookTasks = [
+      "Submit URL to GSC manual queue",
+      "Verify sitemap availability",
+      "Build 5 new internal inbound links",
+      "Verify meta title schema tags"
+    ];
+  } else if (pos > 100) {
+    playbookType = 'Intent Realignment';
+    recommendation = 'Re-align Content to Match Top 5 Competitors';
     playbookTasks = [
       "Build comparison table or TRL decision matrix",
       "Inject YMYL verification notes",
       "Add Eligibility Snapshot checklist block"
     ];
-  } else if (gscPerformance.ctr < expectedCtr && gscPerformance.position < 30) {
-    recommendation = 'Improve Title & Snippet (CTR Tuning)';
+  } else if (pos > 60 && pos <= 100) {
+    playbookType = 'Structural Overhaul';
+    recommendation = 'Refactor Heading Hierarchy & Layout';
     playbookTasks = [
-      "Rewrite title tag to target click intent",
-      "Rewrite meta description with clear value proposition",
-      "Verify schema alignment for rich snippet matches",
-      "Refresh published date parameters",
-      "Review competitor title layouts"
+      "Align H1/H2 keywords to search intent",
+      "Embed visual stacking flow chart",
+      "Build out regional comparisons",
+      "Deploy custom RelatedFundingPaths steppers"
     ];
-  } else if (gscPerformance.position > 40 && gscPerformance.position <= 100) {
-    recommendation = 'Expand Content Cluster & Internal Links';
+  } else if (pos > 30 && pos <= 60) {
+    playbookType = 'Content Expansion';
+    recommendation = 'Expand Secondary Keywords & Internal Linking';
     playbookTasks = [
       "Identify secondary supporting keywords",
       "Establish 3 new inbound links from related guides",
-      "Link outward to regional comparisons",
-      "Deploy custom RelatedFundingPaths steppers"
+      "Add 800+ words of topical expansion",
+      "Deploy localized program updates"
     ];
-  } else if (pathUrl.includes('sred') || pathUrl.includes('irap')) {
-    recommendation = 'Review Competitor TRL & Filing Guides';
-    playbookTasks = [
-      "Audit competitor technical guidance sections",
-      "Inject updated CRA T661 guidelines",
-      "Compare IRAP stacking rules"
-    ];
-  } else if (pathUrl.match(/(quebec|ontario|bc|alberta|manufacturing|cybersecurity|agriculture|technology)/)) {
-    recommendation = 'Verify Program Freshness & Deadlines';
-    playbookTasks = [
-      "Audit 2026 intake cycles and timelines",
-      "Verify new eligibility and employee thresholds",
-      "Update program counts in takeaways",
-      "Reset verified timestamp"
-    ];
+  } else if (gscPerformance.ctr < expectedCtr && pos < 30) {
+    if (pos > 10) {
+      playbookType = 'Title + Content Refresh';
+      recommendation = 'CTR Tuning & Deep Content Refresh';
+      playbookTasks = [
+        "Rewrite title tag for click intent",
+        "Add 500+ words of fresh 2026 data",
+        "Verify FAQ schema integration",
+        "Test dynamic CTR CTR metadata modifiers"
+      ];
+    } else {
+      playbookType = 'CTR Rescue';
+      recommendation = 'Optimize Title & Meta Snippet (CTR Rescue)';
+      playbookTasks = [
+        "Rewrite meta description to highlight value",
+        "Refresh published date parameters",
+        "Review competitor title formats",
+        "Add click-through trigger modifiers"
+      ];
+    }
   }
-
-  // Confidence Level: High, Medium, Low based on GSC impression density
-  let confidenceLevel = 'Low';
-  if (gscPerformance.impressions > 500) confidenceLevel = 'High';
-  else if (gscPerformance.impressions > 50) confidenceLevel = 'Medium';
 
   return {
     url: pathUrl,
@@ -376,12 +441,13 @@ const scoredList = commercialCandidates.map(candidate => {
     impressions: gscPerformance.impressions,
     clicks: gscPerformance.clicks,
     ctr: gscPerformance.ctr,
-    position: parseFloat(gscPerformance.position.toFixed(2)),
+    position: pos === 999 ? 120 : parseFloat(pos.toFixed(2)),
     opportunityScore,
     priorityBucket,
-    monetizationTier: tier,
+    monetizationTier,
     engineeringEffort,
-    expectedRoi,
+    expectedRoi: priorityBucket,
+    playbookType,
     recommendation,
     playbookTasks,
     confidenceLevel,
@@ -392,11 +458,11 @@ const scoredList = commercialCandidates.map(candidate => {
   };
 });
 
-// Filter to indexed opportunities sorting by score descending
+// Sort backlog by opportunityScore descending
 const sortedBacklog = scoredList
-  .filter(p => p.priorityBucket !== 'Bucket D — Ignore')
+  .filter(p => p.priorityBucket !== 'Low')
   .sort((a, b) => b.opportunityScore - a.opportunityScore);
 
-// Save the ENTIRE sorted backlog queue (so stats counts are complete and accurate)
-fs.writeFileSync(outputPath, JSON.stringify(sortedBacklog, null, 2), 'utf8');
-console.log(`Successfully generated dynamic SEO backlog with ${sortedBacklog.length} scored opportunities at ${outputPath}`);
+// Save the ENTIRE sorted backlog queue
+fs.writeFileSync(outputPath, JSON.stringify(scoredList, null, 2), 'utf8');
+console.log(`Successfully generated dynamic SEO backlog with ${scoredList.length} scored opportunities at ${outputPath}`);
