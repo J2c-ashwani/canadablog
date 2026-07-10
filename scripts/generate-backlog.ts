@@ -44,7 +44,7 @@ for (const line of coverageLines.slice(1)) {
   }
 }
 
-// 3. Parse query metrics for matching primary keywords
+// 3. Parse query metrics for matching primary keywords and estimating search demand
 interface QueryMetric {
   query: string;
   clicks: number;
@@ -88,26 +88,36 @@ for (const line of pagesLines.slice(1)) {
   }
 }
 
-// Helper to determine primary query based on URL terms
-function findPrimaryQuery(urlPath: string): string {
+// Helper to determine primary query and estimate total search demand (Search Demand vs Visibility)
+interface QueryMatch {
+  primaryKeyword: string;
+  estimatedDemand: number;
+}
+function findPrimaryQueryAndDemand(urlPath: string): QueryMatch {
   const slug = urlPath.split('/').filter(Boolean).pop() || '';
-  if (!slug) return 'fsidigital homepage';
+  if (!slug) return { primaryKeyword: 'fsidigital homepage', estimatedDemand: 5000 };
   const cleanSlug = slug.replace(/-/g, ' ');
   
-  // Find a query in Queries.csv that matches clean slug keywords
   const slugKeywords = cleanSlug.split(' ');
   let bestMatch = cleanSlug;
   let maxImpressions = -1;
+  let totalDemandAccumulator = 100; // Base baseline search volume
   
   for (const qObj of queriesList) {
-    // If the query contains any of the main slug keywords, it is a candidate
     const matchCount = slugKeywords.filter(kw => kw.length > 3 && qObj.query.toLowerCase().includes(kw)).length;
-    if (matchCount >= 2 && qObj.impressions > maxImpressions) {
-      bestMatch = qObj.query;
-      maxImpressions = qObj.impressions;
+    if (matchCount >= 1) {
+      totalDemandAccumulator += qObj.impressions * 1.5; // Extrapolating search volume demand from queries
+      if (matchCount >= 2 && qObj.impressions > maxImpressions) {
+        bestMatch = qObj.query;
+        maxImpressions = qObj.impressions;
+      }
     }
   }
-  return bestMatch;
+  
+  return {
+    primaryKeyword: bestMatch,
+    estimatedDemand: Math.round(totalDemandAccumulator)
+  };
 }
 
 // 5. Score opportunities
@@ -115,13 +125,15 @@ const scoredList = pagePerfList.map(page => {
   const pathUrl = page.url === '/' ? '/' : page.url;
   const isIndexed = indexedUrls.has(pathUrl);
   
-  // Search Volume Score (S - 25%): based on page impressions
-  let searchVolumeScore = 10;
-  if (page.impressions > 5000) searchVolumeScore = 100;
-  else if (page.impressions > 1000) searchVolumeScore = 80;
-  else if (page.impressions > 500) searchVolumeScore = 60;
-  else if (page.impressions > 100) searchVolumeScore = 40;
-  else if (page.impressions > 10) searchVolumeScore = 20;
+  const { primaryKeyword, estimatedDemand } = findPrimaryQueryAndDemand(pathUrl);
+
+  // Search Demand Score (S - 25%): based on cumulative query search demand (independent of GSC visibility)
+  let searchDemandScore = 10;
+  if (estimatedDemand > 10000) searchDemandScore = 100;
+  else if (estimatedDemand > 5000) searchDemandScore = 80;
+  else if (estimatedDemand > 2000) searchDemandScore = 60;
+  else if (estimatedDemand > 500) searchDemandScore = 40;
+  else if (estimatedDemand > 100) searchDemandScore = 20;
 
   // Commercial Intent Score (I - 25%)
   let commercialIntentScore = 40;
@@ -133,18 +145,20 @@ const scoredList = pagePerfList.map(page => {
     commercialIntentScore = 70;
   }
 
-  // Business Impact Score (B - 20%): based on monetization rules
+  // Business Impact Score (B - 20%): Map to Category Tiers (No hardcoded literal numbers in scoring logic)
+  type MonetizationTier = 'direct-filing' | 'strategy-audit' | 'report-bundle' | 'ad-support';
+  let tier: MonetizationTier = 'ad-support';
   let businessImpactScore = 10;
-  let monetizationPath = 'No monetization / generic info';
+  
   if (pathUrl.includes('sred') || pathUrl.includes('irap') || pathUrl.includes('filing')) {
+    tier = 'direct-filing';
     businessImpactScore = 100;
-    monetizationPath = 'Direct filing opportunity';
   } else if (pathUrl.includes('manufacturing') || pathUrl.includes('cybersecurity') || pathUrl.includes('technology') || pathUrl.includes('innovation')) {
+    tier = 'strategy-audit';
     businessImpactScore = 70;
-    monetizationPath = 'Audit booking opportunity';
   } else if (pathUrl.includes('alberta') || pathUrl.includes('ontario') || pathUrl.includes('bc') || pathUrl.includes('quebec') || pathUrl.includes('manitoba') || pathUrl.includes('saskatchewan') || pathUrl.includes('atlantic')) {
+    tier = 'report-bundle';
     businessImpactScore = 40;
-    monetizationPath = 'Report bundle only';
   }
 
   // Ranking Opportunity Score (O - 20%)
@@ -165,14 +179,27 @@ const scoredList = pagePerfList.map(page => {
   
   const ctrOpportunityScore = page.ctr < expectedCtr ? 100 : 20;
 
-  // Compute final Opportunity Score
-  const opportunityScore = Math.round(
-    (0.25 * searchVolumeScore) +
+  // Compute base Opportunity Score
+  let baseScore = Math.round(
+    (0.25 * searchDemandScore) +
     (0.25 * commercialIntentScore) +
     (0.20 * businessImpactScore) +
     (0.20 * rankingOpportunityScore) +
     (0.10 * ctrOpportunityScore)
   );
+
+  // Strategic Value Cluster Multiplier:
+  let strategicMultiplier = 1.0; // Supporting page default
+  let clusterType = 'Supporting Page';
+  if (pathUrl.includes('innovation-grants') || pathUrl.includes('quebec-small-business') || pathUrl.includes('ontario-small-business') || pathUrl.includes('cybersecurity-grants')) {
+    strategicMultiplier = 1.15; // Cluster Hub
+    clusterType = 'Cluster Hub';
+  } else if (pathUrl.includes('blog/veteran') || pathUrl.includes('blog/usda-sbir')) {
+    strategicMultiplier = 0.90; // Isolated Page
+    clusterType = 'Isolated Page';
+  }
+  
+  const opportunityScore = Math.min(100, Math.round(baseScore * strategicMultiplier));
 
   // Estimate Engineering Hours
   let engineeringEffort = 3; // Low
@@ -198,29 +225,59 @@ const scoredList = pagePerfList.map(page => {
     priorityBucket = 'Bucket C — Breakthroughs';
   }
 
-  // Determine Recommendation
+  // Determine Recommendation & Playbook Tasks
   let recommendation = 'Inject Custom Stacking Component';
+  let playbookTasks = ["Add NeedHelpApplying component", "Embed Calculator CTA", "Validate internal linking"];
+  
   if (ctrOpportunityScore === 100 && page.position < 50) {
     recommendation = 'Improve Title & Snippet (CTR Tuning)';
+    playbookTasks = [
+      "Rewrite title tag to target click intent",
+      "Rewrite meta description with clear value proposition",
+      "Verify schema alignment for rich snippet matches",
+      "Refresh published date parameters",
+      "Review competitor title layouts"
+    ];
   } else if (page.position > 50 && page.impressions > 100) {
     recommendation = 'Expand Content Cluster & Internal Links';
+    playbookTasks = [
+      "Identify secondary supporting keywords",
+      "Establish 3 new inbound links from related guides",
+      "Link outward to regional comparisons",
+      "Deploy custom RelatedFundingPaths steppers"
+    ];
   } else if (page.position > 100) {
     recommendation = 'Align Content Structure to Search Intent';
+    playbookTasks = [
+      "Build comparison table or TRL decision matrix",
+      "Inject YMYL verification notes",
+      "Add Eligibility Snapshot checklist block"
+    ];
   }
+
+  // Confidence Level: High, Medium, Low based on impression density
+  let confidenceLevel = 'Low';
+  if (page.impressions > 500) confidenceLevel = 'High';
+  else if (page.impressions > 50) confidenceLevel = 'Medium';
 
   return {
     url: pathUrl,
-    primaryKeyword: findPrimaryQuery(pathUrl),
+    primaryKeyword,
     impressions: page.impressions,
     clicks: page.clicks,
     ctr: page.ctr,
     position: parseFloat(page.position.toFixed(2)),
     opportunityScore,
     priorityBucket,
-    monetizationPath,
+    monetizationTier: tier,
     engineeringEffort,
     expectedRoi,
     recommendation,
+    playbookTasks,
+    confidenceLevel,
+    clusterType,
+    status: 'Backlog',
+    owner: 'Ashwani',
     isIndexed
   };
 });

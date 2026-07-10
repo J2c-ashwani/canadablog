@@ -8,8 +8,9 @@ import { AdminLoginForm } from '../leads/AdminLoginForm';
 import fs from 'fs';
 import path from 'path';
 import {
-  Lock, KeyRound, ArrowRight, BarChart3, Clock, Compass, AlertCircle, CheckCircle2,
-  TrendingUp, Award, Layers, ShieldCheck, HelpCircle, ExternalLink, RefreshCw
+  Lock, KeyRound, BarChart3, Clock, Compass, AlertCircle, CheckCircle2,
+  TrendingUp, Award, Layers, ShieldCheck, HelpCircle, ExternalLink, RefreshCw,
+  FolderDot, CheckSquare, Sparkles, User, BadgeAlert
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -140,19 +141,20 @@ export default async function SEEOpportunitiesPage({
               <thead className="bg-slate-50 text-slate-500 font-semibold uppercase tracking-wider text-[11px]">
                 <tr>
                   <th className="px-6 py-4">Opportunity Score</th>
-                  <th className="px-6 py-4">Page Route</th>
+                  <th className="px-6 py-4">Page Route / Cluster</th>
                   <th className="px-6 py-4">Primary Keyword</th>
                   <th className="px-6 py-4">Expected ROI</th>
                   <th className="px-6 py-4 text-center">GSC Avg Pos</th>
-                  <th className="px-6 py-4">Indexed?</th>
-                  <th className="px-6 py-4">Recommended Action</th>
+                  <th className="px-6 py-4 text-center">Confidence</th>
+                  <th className="px-6 py-4">Recommended Action & Playbook</th>
+                  <th className="px-6 py-4">Status & Owner</th>
                   <th className="px-6 py-4 text-right">Links</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 text-slate-700 bg-white">
                 {opportunities.length === 0 ? (
                   <tr>
-                    <td colSpan={8} className="px-6 py-12 text-center text-slate-500 font-medium">
+                    <td colSpan={9} className="px-6 py-12 text-center text-slate-500 font-medium">
                       <AlertCircle className="w-8 h-8 text-slate-400 mx-auto mb-2" />
                       No scored opportunities found. Run scripts/generate-backlog.ts first.
                     </td>
@@ -168,6 +170,13 @@ export default async function SEEOpportunitiesPage({
                     if (item.expectedRoi === 'Very High') roiBadge = 'bg-emerald-500 text-white font-bold';
                     else if (item.expectedRoi === 'High') roiBadge = 'bg-indigo-600 text-white font-bold';
 
+                    let confidenceColor = 'text-slate-500 bg-slate-100';
+                    if (item.confidenceLevel === 'High') confidenceColor = 'text-emerald-700 bg-emerald-50';
+                    else if (item.confidenceLevel === 'Medium') confidenceColor = 'text-blue-700 bg-blue-50';
+
+                    let clusterBadge = 'text-slate-500 bg-slate-100';
+                    if (item.clusterType === 'Cluster Hub') clusterBadge = 'text-indigo-700 bg-indigo-50 border border-indigo-150 font-bold';
+
                     return (
                       <tr key={idx} className="hover:bg-slate-50/50 transition-colors">
                         <td className="px-6 py-4 whitespace-nowrap">
@@ -175,8 +184,11 @@ export default async function SEEOpportunitiesPage({
                             {item.opportunityScore}
                           </span>
                         </td>
-                        <td className="px-6 py-4 font-semibold text-slate-900 max-w-xs truncate">
-                          {item.url}
+                        <td className="px-6 py-4 font-semibold text-slate-900 max-w-xs">
+                          <div className="font-semibold text-slate-900 truncate">{item.url}</div>
+                          <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] mt-1 ${clusterBadge}`}>
+                            {item.clusterType}
+                          </span>
                         </td>
                         <td className="px-6 py-4 italic text-slate-500">
                           {item.primaryKeyword}
@@ -189,19 +201,39 @@ export default async function SEEOpportunitiesPage({
                         <td className="px-6 py-4 text-center font-bold text-slate-900 whitespace-nowrap">
                           {item.position}
                         </td>
-                        <td className="px-6 py-4 whitespace-nowrap">
-                          {item.isIndexed ? (
-                            <span className="inline-flex items-center gap-1 text-emerald-600 font-semibold text-xs">
-                              <CheckCircle2 className="w-3.5 h-3.5" /> Indexed
-                            </span>
-                          ) : (
-                            <span className="inline-flex items-center gap-1 text-amber-600 font-semibold text-xs">
-                              <AlertCircle className="w-3.5 h-3.5" /> Untracked
-                            </span>
+                        <td className="px-6 py-4 text-center whitespace-nowrap">
+                          <span className={`inline-flex items-center px-2 py-0.5 rounded text-xs font-semibold ${confidenceColor}`}>
+                            {item.confidenceLevel}
+                          </span>
+                        </td>
+                        <td className="px-6 py-4">
+                          <div className="font-medium text-slate-800 flex items-center gap-1.5">
+                            <Sparkles className="w-3.5 h-3.5 text-indigo-500 shrink-0" /> {item.recommendation}
+                          </div>
+                          
+                          {/* Collapsible Playbook Tasks */}
+                          {item.playbookTasks && item.playbookTasks.length > 0 && (
+                            <details className="mt-1.5 text-xs text-slate-500 cursor-pointer group">
+                              <summary className="font-semibold hover:text-indigo-600 focus:outline-none flex items-center gap-1 select-none">
+                                <CheckSquare className="w-3 h-3 text-slate-400" /> View Playbook Tasks ({item.playbookTasks.length})
+                              </summary>
+                              <ul className="list-disc pl-4 space-y-1 mt-1 text-[11px] text-slate-600 bg-slate-50 p-2.5 rounded border border-slate-100">
+                                {item.playbookTasks.map((t: string, tIdx: number) => (
+                                  <li key={tIdx} className="leading-relaxed">{t}</li>
+                                ))}
+                              </ul>
+                            </details>
                           )}
                         </td>
-                        <td className="px-6 py-4 font-medium text-slate-800">
-                          {item.recommendation}
+                        <td className="px-6 py-4 whitespace-nowrap text-xs text-slate-500">
+                          <div className="flex items-center gap-1">
+                            <span className="w-2 h-2 rounded-full bg-slate-400"></span>
+                            <span>{item.status}</span>
+                          </div>
+                          <div className="flex items-center gap-1 mt-1 text-slate-400">
+                            <User className="w-3 h-3" />
+                            <span>{item.owner}</span>
+                          </div>
                         </td>
                         <td className="px-6 py-4 text-right whitespace-nowrap text-xs font-bold">
                           <div className="flex gap-2 justify-end">
