@@ -25,12 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      metaTitle: "Canada Startup Grants 2026: Complete Guide — Apply Now",
-        metaDescription: "Learn how to qualify and apply for Canada Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
-        intent: "startup",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }, shortAnswer: "Yes — Most Canadian startups only know about Futurpreneur. But there are 35+ programs worth $1.2B — from SR&ED tax credits (45% back) to seed grants. See which ones you qualify for. Funding available: up to $1.2B+ (with related programs offering $1.2B).",
+      metaTitle: "Startup Funding Canada 2026: Access Grants & Loans",
+      metaDescription: "Complete guide to startup funding in Canada for 2026. Access Futurpreneur loans, BDC startup capital, and stackable hiring grants.",
+      intent: "startup",
+      seoVersion: 2,
+      seoUpdatedAt: "2026-07-10T13:30:00.000Z"
+    }, shortAnswer: "Yes — Canadian startup founders can access Futurpreneur young entrepreneur loans (up to $75,000), BDC Startup Loans (up to $100K), and Canada Summer Jobs wage grants. These programs can be stacked with R&D credits like SR&ED and IRAP once technical development begins.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },

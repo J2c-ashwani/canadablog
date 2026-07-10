@@ -63,7 +63,10 @@ export default function CanadianSmallBusinessGrants() {
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Canadian small businesses can access IRAP (up to $500K), CSBFP loan guarantees ($1M), BDC financing, provincial grants, and SR&ED tax credits. Combined federal and provincial support exceeds $5B annually for SMEs with fewer than 500 employees." />
             <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
-            <EligibleCheck />
+            <EligibleCheck 
+              title="Check if your business qualifies for Canadian funding in under 60 seconds." 
+              description="Answering these 2 baseline questions will show if you meet baseline incorporation and revenue requirements for Canada SME grants." 
+            />
           </div>
         </div>
       </section>
@@ -879,6 +882,135 @@ export default function CanadianSmallBusinessGrants() {
                   )
                 })}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Sprint 6: Commercial Optimization Additions ─── */}
+        <section className="py-20 bg-white border-t border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto space-y-16">
+              
+              {/* 1. True Freshness Integration (2026 Rules & Status) */}
+              <div className="bg-blue-50/50 rounded-2xl p-8 border border-blue-100/50">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+                  <div>
+                    <Badge className="bg-blue-600 text-white mb-2">2026 DATABASE UPDATE</Badge>
+                    <h3 className="text-2xl font-bold text-gray-900">Latest Active Program Intake Cycles & Policy Changes</h3>
+                  </div>
+                  <div className="text-sm font-semibold text-blue-600 bg-blue-100/50 px-4 py-2 rounded-lg shrink-0">
+                    Verified: July 2026
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">CSBFP Loan Expansion</h4>
+                    <p className="text-sm text-gray-600">The Canada Small Business Financing Program has officially expanded. Working capital lines of credit are now eligible up to <strong>$150,000</strong>, with loan terms extended to 5 years for general working capital, bypassing traditional asset limits.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-red-700 mb-2">CDAP Program Sunset</h4>
+                    <p className="text-sm text-gray-600">The federal Canada Digital Adoption Program (CDAP) Boost Your Business Technology grant is officially closed. Businesses looking for digital support should pivot to provincial alternatives like Ontario's Digital Main Street or Quebec's SME digital programs.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">Sustainable CAP Intakes</h4>
+                    <p className="text-sm text-gray-600">The Sustainable Canadian Agricultural Partnership (CAP) has reopened multiple regional value-added food processing streams for Q3/Q4 2026. Deadlines are rolling and vary by province.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. SME Stacking Playbook (Topical Stacking Authority) */}
+              <div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-2 text-center">The SME Funding Stacking Playbook</h3>
+                <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">Learn how to combine federal loans, tax credits, and wage subsidies to fund up to 75% of your small business operational budget.</p>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold">1</span>
+                      R&D Core Stacking: IRAP + SR&ED
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      You can combine the <strong>Industrial Research Assistance Program (IRAP)</strong> and the <strong>Scientific Research and Experimental Development (SR&ED)</strong> tax incentive. IRAP funds up to 67% of salaries during the project. The remaining 33% of salaries, plus overheads, can be claimed for a 35% cash refund under SR&ED, effectively reducing net salary costs to under 15%.
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 text-sm font-bold">2</span>
+                      Infrastructure Stacking: CSBFP + Provincial Grants
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      Use a <strong>CSBFP Loan</strong> to fund the purchase of physical equipment or leasehold improvements at prime bank rates. Then, leverage regional expansion grants (like the Ontario Regional Development Program) to offset interest costs or secure tax exemptions on the newly built physical capacity.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Common Application Rejection Mistakes (Search Intent Target) */}
+              <div className="bg-red-50/50 rounded-2xl p-8 border border-red-100/50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  ❌ Common Application Rejection Mistakes (Why Funding is Denied)
+                </h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">1. Retroactive Expense Claims</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Submitting receipts for equipment purchased or employees hired before the grant application is formally submitted.
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Always apply first. Almost all Canadian government grant programs operate on a strict "go-forward" basis and reject retroactive claims.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">2. Stacking Over Limit Limits (Double-Dipping)</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Claiming the exact same salary hours from two separate federal funding sources (e.g. claiming an IRAP salary line on a Youth Employment grant).
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Separate your project work packages. Ensure distinct project hours are assigned to separate grants to keep within stacking caps.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">3. Ineligible Corporation Status</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Unincorporated sole proprietors applying for major programs (like IRAP or CanExport) that require federal or provincial incorporation.
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Incorporate your small business before applying. Incorporation costs ($200–$400) are offset immediately by grant eligibility.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">4. Vague Job Creation Metrology</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Writing about internal technical processes without outlining how the project will create jobs or increase local Canadian GDP.
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Link every grant project to commercial goals, headcount projection, and domestic revenue scaling.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. Structured Topic Cluster Navigation (Pass Authority) */}
+              <div className="border-t border-gray-100 pt-10 text-center">
+                <h4 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider">Explore Related Stacking Resources</h4>
+                <div className="flex flex-wrap justify-center gap-4 text-sm">
+                  <Link href="/canada/women-business-grants" className="text-indigo-600 hover:text-indigo-800 font-medium hover:underline">
+                    Women SME Grants Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/csbfp-canada-small-business-financing-program" className="text-indigo-600 hover:text-indigo-800 font-medium hover:underline">
+                    CSBFP Finance Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/canada-federal-grants" className="text-indigo-600 hover:text-indigo-800 font-medium hover:underline">
+                    Federal Grant Directory
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/alberta-small-business-grants-guide" className="text-indigo-600 hover:text-indigo-800 font-medium hover:underline">
+                    Alberta SME Grants
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/ontario-small-business-grants-guide" className="text-indigo-600 hover:text-indigo-800 font-medium hover:underline">
+                    Ontario SME Grants
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

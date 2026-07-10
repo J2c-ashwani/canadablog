@@ -25,12 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      metaTitle: "Quebec Small Business Grants 2026: Complete Guide — Apply ",
-        metaDescription: "Learn how to qualify and apply for Quebec Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
-        intent: "grant",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-13T21:00:30.005Z"
-    }, shortAnswer: "Yes — Complete guide to Quebec small business grants. Access Investissement Québec SME Fund, Quebec Startup Fund, R&D Tax Credits up to 37.5%, and francophone business support. Funding available: up to $1.8B+.",
+      metaTitle: "Quebec Small Business Grants 2026: Complete SME Guide",
+      metaDescription: "Learn how to qualify and apply for Quebec Small Business Grants in 2026. Access active ESSOR modernization grants, MFOR training funds, and IQ loans.",
+      intent: "grant",
+      seoVersion: 2,
+      seoUpdatedAt: "2026-07-10T14:10:00.000Z"
+    }, shortAnswer: "Yes — Quebec small businesses can access Investissement IQ modernization loans (ESSOR), Service Québec workforce training grants (MFOR up to 50% matching), and R&D tax credits up to 37.5%. These programs can be stacked with federal tools like IRAP and SR&ED to fund up to 75-85% of eligible engineering operations under ideal conditions.",
     metrics: [
       { label: 'Total', value: '$1.8B', description: 'SME Funding', color: 'text-green-600', iconName: 'DollarSign' },
       { label: 'Tax Credit', value: '37.5%', description: 'Max R&D Rate', color: 'text-blue-600', iconName: 'Percent' },

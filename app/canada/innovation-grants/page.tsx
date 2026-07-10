@@ -9,6 +9,7 @@ import type { Metadata } from "next"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import FundingStrategyBox from "@/components/blog/FundingStrategyBox"
 
 export const metadata: Metadata = {
   title: "Canada Innovation Grants 2026: $4.2B+ R&D Funding [Apply]",
@@ -59,7 +60,20 @@ export default function CanadaInnovationGrantsPage() {
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Canada's innovation grant programs include IRAP (up to $500K), SR&ED tax credits (65% refundable), Strategic Innovation Fund ($100M+), Scale AI, NSERC, and provincial R&D credits. Combined innovation funding exceeds $4.2B annually for Canadian businesses." />
             <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
-            <EligibleCheck />
+            <EligibleCheck 
+              title="Find out which tech and innovation grants match your R&D roadmap." 
+              description="Answering these questions will verify your baseline compatibility with IRAP, SR&ED, and provincial tech vouchers." 
+            />
+            <FundingStrategyBox 
+              audience="Canadian Software & Tech Startups"
+              steps={[
+                "Scope R&D: Scope project with NRC ITA to verify IRAP salary alignment",
+                "Talent: Recruit subsidized developer interns via Mitacs Accelerate",
+                "Claim Rebates: File SR&ED tax credits for cash refunds of remaining eligible costs"
+              ]}
+              expectedStack="$250,000–$1,500,000"
+              focusArea="Recommended R&D Stacking Sequence"
+            />
           </div>
         </div>
       </section>
@@ -831,6 +845,97 @@ export default function CanadaInnovationGrantsPage() {
                   </CardContent>
                 </Card>
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Sprint 6 additions: Decision Support, Timelines & Exclusions ─── */}
+        <section className="py-20 bg-white border-t border-b border-gray-150">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto space-y-16">
+              
+              {/* Exclusion Section (Who should NOT apply) */}
+              <div className="bg-red-50/50 rounded-2xl p-8 border border-red-100/50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  ❌ Who should NOT apply for innovation funding?
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">Unincorporated Startups</h4>
+                    <p className="text-sm text-gray-600">
+                      NRC IRAP and SR&ED tax credits require you to be an incorporated, for-profit Canadian corporation. Unregistered sole proprietorships or partnerships are not eligible.
+                    </p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-950 mb-2">Retroactive Project Spend</h4>
+                    <p className="text-sm text-gray-600">
+                      Except for SR&ED (which is claimed at tax year-end), you cannot claim costs incurred before signing your contribution agreement with programs like IRAP or SIF.
+                    </p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">Routine Product Development</h4>
+                    <p className="text-sm text-gray-600">
+                      If your technical roadmap involves straightforward web design, standard APIs, or routine engineering with no technical risk, evaluators will reject your application.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Timelines Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Typical Innovation Program Timelines</h3>
+                <div className="overflow-hidden border border-gray-200 rounded-xl">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Program</th>
+                        <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Typical Approval Time</th>
+                        <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Payout / Disbursement Schedule</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-150 text-sm text-gray-700">
+                      <tr>
+                        <td className="px-6 py-4 font-semibold">NRC IRAP Grants</td>
+                        <td className="px-6 py-4">4 - 8 Weeks</td>
+                        <td className="px-6 py-4">Monthly reimbursement against verified payroll logs</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-semibold">SR&ED Tax Credits</td>
+                        <td className="px-6 py-4">Annual Filing (CRA reviews within 60 days)</td>
+                        <td className="px-6 py-4">Cash refund or tax offset after fiscal year-end</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-semibold">Mitacs Accelerate Internships</td>
+                        <td className="px-6 py-4">6 - 8 Weeks</td>
+                        <td className="px-6 py-4">Split upfront payments per internship term</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Topic Cluster Links */}
+              <div className="border-t border-gray-100 pt-10 text-center">
+                <h4 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider">Explore Related Tech Stack Guides</h4>
+                <div className="flex flex-wrap justify-center gap-4 text-sm">
+                  <Link href="/blog/canada-irap-grants-2026" className="text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                    IRAP R&D Wage Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/quebec-small-business-grants-guide" className="text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                    Quebec Tech Funding
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/canada/small-business-grants" className="text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                    Canada Small Business Grants
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/alberta-small-business-grants-guide" className="text-blue-600 hover:text-blue-800 font-medium hover:underline">
+                    Alberta SME Grants
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

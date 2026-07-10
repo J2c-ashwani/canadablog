@@ -9,6 +9,7 @@ import type { Metadata } from "next"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import FundingStrategyBox from "@/components/blog/FundingStrategyBox"
 
 export const metadata: Metadata = {
   title: "Canadian Government Grants for Business 2026 | Federal & Provincial $12B+ Available",
@@ -63,7 +64,20 @@ export default function CanadaGovernmentGrantsPage() {
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Canadian government grants span federal and provincial programs worth $12B+ annually. Top programs: Strategic Innovation Fund, IRAP ($500K for R&D), SR&ED tax credits (35% federal refundable), CanExport ($75K), and 7 Regional Development Agencies covering every province." />
             <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
-            <EligibleCheck />
+            <EligibleCheck 
+              title="See which government grants and interest-free loans fit your business stage." 
+              description="Answering these questions will verify your compatibility with active federal and provincial capital programs." 
+            />
+            <FundingStrategyBox 
+              audience="Established Canadian SMEs & Manufacturers"
+              steps={[
+                "Find: Use official Innovation directories to filter active federal/provincial streams",
+                "Combine: Combine regional scale-up loans (PrairiesCan/FedDev) with local utility credits",
+                "File: Onboard specialized writers to structure applications and prevent double-dipping"
+              ]}
+              expectedStack="$150,000–$2,000,000"
+              focusArea="Recommended SME Capital Stacking Sequence"
+            />
           </div>
         </div>
       </section>
@@ -731,6 +745,97 @@ export default function CanadaGovernmentGrantsPage() {
                   )
                 })}
               </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ─── Sprint 6 additions: Decision Support, Timelines & Exclusions ─── */}
+        <section className="py-20 bg-white border-t border-b border-gray-150">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto space-y-16">
+              
+              {/* Exclusion Section (Who should NOT apply) */}
+              <div className="bg-red-50/50 rounded-2xl p-8 border border-red-100/50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  ❌ Who should NOT apply for government funding?
+                </h3>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">Unincorporated Sole Proprietorships</h4>
+                    <p className="text-sm text-gray-600">
+                      Standard business grants and guaranteed expansion loans require you to be a registered corporate entity. Unregistered sole proprietors are excluded from accessing these public funds.
+                    </p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-950 mb-2">Retroactive Operational Expense</h4>
+                    <p className="text-sm text-gray-600">
+                      Except for tax credits, you cannot claim or get reimbursement for capital, labor, or vendor invoices paid prior to receiving formal application confirmation.
+                    </p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">Funding Existing Debt</h4>
+                    <p className="text-sm text-gray-600">
+                      Government programs exist to incentivize active projects, hiring, and market expansion. They are legally barred from funding existing commercial loans or shareholder payouts.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Timelines Section */}
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">Typical Government Program Timelines</h3>
+                <div className="overflow-hidden border border-gray-200 rounded-xl">
+                  <table className="min-w-full divide-y divide-gray-200">
+                    <thead className="bg-gray-50">
+                      <tr>
+                        <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Program Type</th>
+                        <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Typical Approval Time</th>
+                        <th className="px-6 py-3 text-left text-xs font-bold text-gray-500 uppercase tracking-wider">Payout / Disbursement Schedule</th>
+                      </tr>
+                    </thead>
+                    <tbody className="bg-white divide-y divide-gray-150 text-sm text-gray-700">
+                      <tr>
+                        <td className="px-6 py-4 font-semibold">Federal Wage Subsidies (e.g. CSJ)</td>
+                        <td className="px-6 py-4">4 - 6 Weeks (during active intake calls)</td>
+                        <td className="px-6 py-4">Reimbursement after project milestones are met</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-semibold">Government-Guaranteed Loans (e.g. CSBFP)</td>
+                        <td className="px-6 py-4">2 - 4 Weeks (via approved commercial banks)</td>
+                        <td className="px-6 py-4">Direct wire/capital account deposit</td>
+                      </tr>
+                      <tr>
+                        <td className="px-6 py-4 font-semibold">Regional Development Scale-Up Funds</td>
+                        <td className="px-6 py-4">3 - 6 Months</td>
+                        <td className="px-6 py-4">Interest-free loan milestone reimbursements</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Topic Cluster Links */}
+              <div className="border-t border-gray-100 pt-10 text-center">
+                <h4 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider">Explore Related Government Guides</h4>
+                <div className="flex flex-wrap justify-center gap-4 text-sm">
+                  <Link href="/canada/small-business-grants" className="text-red-700 hover:text-red-900 font-medium hover:underline">
+                    Canada SME Funding Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/canada-federal-grants" className="text-red-700 hover:text-red-900 font-medium hover:underline">
+                    Federal Grant Directory
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/canada-startup-funding-grants-guide" className="text-red-700 hover:text-red-900 font-medium hover:underline">
+                    Startup Funding Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/alberta-small-business-grants-guide" className="text-red-700 hover:text-red-900 font-medium hover:underline">
+                    Alberta SME Grants
+                  </Link>
+                </div>
+              </div>
+
             </div>
           </div>
         </section>

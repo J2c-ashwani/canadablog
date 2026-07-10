@@ -10,6 +10,8 @@ interface Question {
 
 interface EligibleCheckProps {
     questions?: Question[];
+    title?: string;
+    description?: string;
 }
 
 const DEFAULT_QUESTIONS: Question[] = [
@@ -17,7 +19,11 @@ const DEFAULT_QUESTIONS: Question[] = [
     { id: 'q2', text: 'Does your business generate over $500k in annual revenue?' },
 ];
 
-export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: EligibleCheckProps) {
+export default function EligibleCheck({ 
+    questions = DEFAULT_QUESTIONS,
+    title = '"Am I Eligible?" Micro-Quiz',
+    description = 'Take 10 seconds to answer these questions and instantly see if you meet the baseline criteria for this funding.'
+}: EligibleCheckProps) {
     const [answers, setAnswers] = useState<Record<string, boolean>>({});
     const activeQuestions = questions && questions.length > 0 ? questions : DEFAULT_QUESTIONS;
 
@@ -40,11 +46,11 @@ export default function EligibleCheck({ questions = DEFAULT_QUESTIONS }: Eligibl
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                         </svg>
                     </span>
-                    "Am I Eligible?" Micro-Quiz
+                    {title}
                 </h3>
 
                 <p className="text-sm text-gray-600 dark:text-gray-400 mb-6">
-                    Take 10 seconds to answer these questions and instantly see if you meet the baseline criteria for this funding.
+                    {description}
                 </p>
 
                 <div className="space-y-3">

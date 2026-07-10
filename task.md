@@ -23,12 +23,70 @@
 - [x] **B10**: Dependency mapping of the lead to executive data flow
 - [x] **B11**: Construct final System Integrity Status Table
 
+## Sprint 6: Commercial Query Sprint (Batch 1: First 5 Pages) — COMPLETE ✅
+- [x] **Step 1: Perform SERP Competitor Gap & Search Intent Audits**
+  - [x] Page 1: `/canada/small-business-grants` (Query: `small business funding canada`)
+  - [x] Page 2: `/blog/csbfp-canada-small-business-financing-program` (Query: `canada small business financing`)
+  - [x] Page 3: `/blog/canada-federal-grants` (Query: `government grants canada`)
+  - [x] Page 4: `/canada/women-business-grants` (Query: `small business grants for women`)
+  - [x] Page 5: `/usa/new-york` (Query: `new york business grants`)
+- [x] **Step 2: Core Optimization Implementation (Batch 1)**
+  - [x] Implement true freshness (deadlines, program counts, active cycles)
+  - [x] Implement custom "Common Application Rejection Mistakes" sections
+  - [x] Implement contextual calculator CTAs (custom headlines per page theme)
+  - [x] Establish logical topic cluster linking mesh
+- [x] **Step 3: Verification & Build Validation**
+  - [x] Compile and build local static pages to verify HTML indexability (no noindex tags)
+  - [x] Verify contextual calculator headlines and link mesh components
+  - [x] Submit changes to production and trigger GSC priority recrawls
+
+## Sprint 6: Commercial Query Sprint (Batch 2: Pages 6–10) — COMPLETE ✅
+- [x] **Step 1: Core Optimization Implementation (Batch 2)**
+  - [x] Page 6: `/blog/women-entrepreneurship-grants-2026` (Query: `grants for women owned businesses`)
+  - [x] Page 7: `/canada/innovation-grants` (Query: `tech startup grants canada`)
+  - [x] Page 8: `/blog/alberta-small-business-grants-guide` (Query: `alberta small business grants`)
+  - [x] Page 9: `/blog/canada-startup-funding-grants-guide` (Query: `startup funding canada`)
+  - [x] Page 10: `/canada/government-grants` (Query: `government funding for businesses canada`)
+- [x] **Step 2: Verification & Build Validation**
+  - [x] Compile and build local static pages to verify HTML indexability
+  - [x] Verify contextual calculator headlines, Funding Strategy Boxes, and link mesh components
+  - [x] Terminate compiler and submit changes to production
+
 ## Phase 2: Dashboard Simple Table Integration
 - [x] Import `seoExperiments` array from `lib/data/seoExperiments.ts` into `/app/admin/dashboard/page.tsx`
 - [x] Render the simplified **SEO Experiments** table under the Top Opportunities section:
   - [x] Display Columns: Page, Status, CTR Lift, Revenue, Winner?
 - [x] Verify variables and module imports compile cleanly
 
+## Sprint 6: Commercial Query Sprint (Batch 3: Pages 11–15) — COMPLETE ✅
+- [x] **Step 1: Core Optimization Implementation (Batch 3)**
+  - [x] Page 11: `/blog/quebec-small-business-grants-guide` (Priority: Highest)
+  - [x] Page 12: `/blog/technology-startup-grants-2026` (Priority: High)
+  - [x] Page 13: `/blog/manufacturing-grants-2026` (Priority: High)
+  - [x] Page 14: `/blog/ontario-small-business-grants-guide` (Priority: Medium)
+  - [x] Page 15: `/blog/bc-small-business-grants-guide` (Priority: Medium/Low)
+- [x] **Step 2: Integration & Custom Differentiators**
+  - [x] Bilingual glossary (Quebec), TRL Matrix (Tech), Capital cost write-off matrix (Manufacturing), Regional map directory (Ontario), Woman-owned eligibility checklist (BC)
+  - [x] Flexible `<RelatedFundingPaths />` guided timeline router component
+- [x] **Step 3: Verification & Build Validation**
+  - [x] Verified static rendering and sitemap URLs
+  - [x] Ran full Next.js production builds successfully
+
+## Sprint 6: Commercial Query Sprint (Batch 4: Pages 16–20) — COMPLETE ✅
+- [x] **Step 1: Core Optimization Implementation (Batch 4)**
+  - [x] Page 16: `/blog/manitoba-small-business-grants-guide` (Priority: Medium/Low)
+  - [x] Page 17: `/blog/saskatchewan-small-business-grants-guide` (Priority: Medium)
+  - [x] Page 18: `/blog/atlantic-small-business-grants-guide` (Priority: Low)
+  - [x] Page 19: `/blog/cybersecurity-grants` (Priority: Highest)
+  - [x] Page 20: `/blog/5-best-government-loans-agriculture-tech-startups` (Priority: High)
+- [x] **Step 2: Integration & Custom Differentiators**
+  - [x] Regional map directory (Manitoba), SAVI glossary (Saskatchewan), ACOA BDP interest-free matrix (Atlantic), Cybersecurity supply-chain readiness scorecard (Cybersecurity), Sustainable CAP matching limits chart (Agriculture)
+  - [x] Created and integrated the `EligibilitySnapshot` quick-criteria component
+  - [x] Configured specific guided journeys via `RELATED_PATHS_CONFIG`
+- [x] **Step 3: Verification & Build Validation**
+  - [x] Verified build output on Next.js production compiler
+
 ## Phase 3: Verification & Compilation
 - [x] Run `npm run build` to verify clean build without Webpack errors
 - [x] Git commit and push changes to origin main
+

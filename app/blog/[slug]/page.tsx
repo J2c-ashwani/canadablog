@@ -25,6 +25,9 @@ import { GrantComparisonTable } from "@/components/blog/GrantComparisonTable";
 import { RelatedPageLinks } from '@/components/RelatedPageLinks';
 import { ExpertTipBox } from "@/components/blog/ExpertTipBox";
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import FundingStrategyBox from '@/components/blog/FundingStrategyBox';
+import RelatedFundingPaths from '@/components/blog/RelatedFundingPaths';
+import EligibilitySnapshot from '@/components/blog/EligibilitySnapshot';
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
 import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
@@ -38,6 +41,85 @@ type RelatedFundingLink = {
   href: string;
   title: string;
   description: string;
+};
+
+const RELATED_PATHS_CONFIG: Record<string, {
+  currentPathTitle: string;
+  nextStepTitle: string;
+  nextStepLink: string;
+  nextStepDescription: string;
+  stepType: 'Comparison' | 'Program Guide' | 'Province Guide' | 'Funding Report';
+}> = {
+  'quebec-small-business-grants-guide': {
+    currentPathTitle: "Quebec SME Guide",
+    nextStepTitle: "Quebec IQ Vouchers vs. Federal IRAP",
+    nextStepLink: "/blog/canada-federal-grants",
+    nextStepDescription: "Compare provincial Investissement Québec programs against federal wage subsidies.",
+    stepType: "Comparison"
+  },
+  'technology-startup-grants-2026': {
+    currentPathTitle: "Tech Startup Guide",
+    nextStepTitle: "IRAP vs. SR&ED Comparison Guide",
+    nextStepLink: "/blog/canada-irap-grants-2026",
+    nextStepDescription: "A visual deep dive comparing Scientific Research tax refunds against IRAP wage matching.",
+    stepType: "Comparison"
+  },
+  'manufacturing-grants-2026': {
+    currentPathTitle: "Manufacturing Guide",
+    nextStepTitle: "NGen Supercluster vs. SIF Stream 5",
+    nextStepLink: "/blog/strategic-innovation-fund-canada-guide",
+    nextStepDescription: "Contrast advanced manufacturing co-investments against capital infrastructure funds.",
+    stepType: "Comparison"
+  },
+  'ontario-small-business-grants-guide': {
+    currentPathTitle: "Ontario SME Guide",
+    nextStepTitle: "Ontario RDP vs. Federal SIF Guide",
+    nextStepLink: "/blog/strategic-innovation-fund-canada-guide",
+    nextStepDescription: "Examine provincial regional matching grants next to federal industry funds.",
+    stepType: "Comparison"
+  },
+  'bc-small-business-grants-guide': {
+    currentPathTitle: "BC SME Guide",
+    nextStepTitle: "PacifiCan vs. BDC Financing Guide",
+    nextStepLink: "/blog/canada-startup-funding-grants-guide",
+    nextStepDescription: "Decide between federal scale-up loans and standard economic growth financing.",
+    stepType: "Comparison"
+  },
+  'manitoba-small-business-grants-guide': {
+    currentPathTitle: "Manitoba SME Guide",
+    nextStepTitle: "PrairiesCan vs. BDC Financing Guide",
+    nextStepLink: "/blog/canada-startup-funding-grants-guide",
+    nextStepDescription: "Evaluate regional PrairiesCan funding parameters next to federal loans.",
+    stepType: "Comparison"
+  },
+  'saskatchewan-small-business-grants-guide': {
+    currentPathTitle: "Saskatchewan SME Guide",
+    nextStepTitle: "STSI Tech Investor Tax Incentive Guide",
+    nextStepLink: "/blog/technology-startup-grants-2026",
+    nextStepDescription: "Verify 30% investor tax credits for Saskatchewan innovations.",
+    stepType: "Program Guide"
+  },
+  'atlantic-small-business-grants-guide': {
+    currentPathTitle: "Atlantic SME Guide",
+    nextStepTitle: "ACOA Interest-Free Capital vs. Federal SIF Guide",
+    nextStepLink: "/blog/strategic-innovation-fund-canada-guide",
+    nextStepDescription: "Decide between regional development loans and federal SIF options.",
+    stepType: "Comparison"
+  },
+  'cybersecurity-grants': {
+    currentPathTitle: "Cybersecurity Guide",
+    nextStepTitle: "Canada Federal Grants Guide",
+    nextStepLink: "/blog/canada-federal-grants",
+    nextStepDescription: "Understand the wider ecosystem of federal salary matching and R&D credits.",
+    stepType: "Comparison"
+  },
+  '5-best-government-loans-agriculture-tech-startups': {
+    currentPathTitle: "Agri-Tech Funding Hub",
+    nextStepTitle: "AgriInnovate vs. SIF Stream 5 Guide",
+    nextStepLink: "/blog/strategic-innovation-fund-canada-guide",
+    nextStepDescription: "Deep dive comparison of federal agricultural co-investments against SIF capital.",
+    stepType: "Comparison"
+  }
 };
 
 type Market = 'canada' | 'usa' | 'neutral';
@@ -387,6 +469,28 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               </div>
               )}
 
+              {fullPost.eligibilitySnapshot && (
+                <EligibilitySnapshot 
+                  incorporated={fullPost.eligibilitySnapshot.incorporated}
+                  employees={fullPost.eligibilitySnapshot.employees}
+                  revenue={fullPost.eligibilitySnapshot.revenue}
+                  innovation={fullPost.eligibilitySnapshot.innovation}
+                  matching={fullPost.eligibilitySnapshot.matching}
+                  summaryNote={fullPost.eligibilitySnapshot.summaryNote}
+                />
+              )}
+
+              {fullPost.fundingStrategy && (
+                <FundingStrategyBox 
+                  audience={fullPost.fundingStrategy.audience}
+                  steps={fullPost.fundingStrategy.steps}
+                  expectedStack={fullPost.fundingStrategy.expectedStack}
+                  focusArea={fullPost.fundingStrategy.focusArea}
+                  buttonText={fullPost.fundingStrategy.buttonText}
+                  buttonLink={fullPost.fundingStrategy.buttonLink}
+                />
+              )}
+
               {fullPost.eligibleCheck && (
                 <EligibleCheck />
               )}
@@ -500,6 +604,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* ENGAGEMENT DEPTH: Related Funding Resources */}
+              {RELATED_PATHS_CONFIG[slug] && (
+                <RelatedFundingPaths
+                  currentPathTitle={RELATED_PATHS_CONFIG[slug].currentPathTitle}
+                  nextStepTitle={RELATED_PATHS_CONFIG[slug].nextStepTitle}
+                  nextStepLink={RELATED_PATHS_CONFIG[slug].nextStepLink}
+                  nextStepDescription={RELATED_PATHS_CONFIG[slug].nextStepDescription}
+                  stepType={RELATED_PATHS_CONFIG[slug].stepType}
+                />
+              )}
+
               {relatedFundingLinks.length > 0 && (
                 <div className="mt-12 not-prose">
                   <RelatedPageLinks links={relatedFundingLinks} />

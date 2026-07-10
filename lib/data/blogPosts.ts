@@ -66,6 +66,14 @@ export interface BlogPost {
     buttonText?: string;
     buttonLink?: string;
   };
+  fundingStrategy?: {
+    audience: string;
+    steps: string[];
+    expectedStack: string;
+    focusArea?: string;
+    buttonText?: string;
+    buttonLink?: string;
+  };
   relatedLinks?: {
     href: string;
     title: string;

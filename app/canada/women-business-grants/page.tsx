@@ -59,7 +59,10 @@ export default function WomenBusinessGrantsCanadaPage() {
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Canadian women entrepreneurs can access the Women Entrepreneurship Fund ($100K+), WELF loans ($50K), WES ecosystem grants, Amber Grant, and provincial programs worth $850M+ combined. The federal WES strategy committed $6B to double women-owned businesses." />
             <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
-            <EligibleCheck />
+            <EligibleCheck 
+              title="Check which women entrepreneur funding programs you qualify for." 
+              description="Answering these 2 baseline questions will show if you meet the requirements for female-led business programs in Canada." 
+            />
           </div>
         </div>
       </section>
@@ -1128,6 +1131,136 @@ export default function WomenBusinessGrantsCanadaPage() {
             </div>
           </div>
         </section>
+
+        {/* ─── Sprint 6: Commercial Optimization Additions ─── */}
+        <section className="py-20 bg-white border-t border-b border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-6xl mx-auto space-y-16">
+              
+              {/* 1. True Freshness Integration (2026 Rules & Status) */}
+              <div className="bg-pink-50/50 rounded-2xl p-8 border border-pink-100/50">
+                <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-6">
+                  <div>
+                    <Badge className="bg-pink-600 text-white mb-2">2026 DATABASE UPDATE</Badge>
+                    <h3 className="text-2xl font-bold text-gray-900">Latest Active Program Intake Cycles & Policy Changes</h3>
+                  </div>
+                  <div className="text-sm font-semibold text-pink-600 bg-pink-100/50 px-4 py-2 rounded-lg shrink-0">
+                    Verified: July 2026
+                  </div>
+                </div>
+                <div className="grid md:grid-cols-3 gap-6">
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">WES Microloan Administration</h4>
+                    <p className="text-sm text-gray-600">The federal Women Entrepreneurship Strategy (WES) microloans of up to <strong>$50,000</strong> are actively being distributed through regional partner organizations like Coralus and NACCA. Intakes are open with streamlined collateral requirements.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-pink-700 mb-2">BDC Women in Tech Fund</h4>
+                    <p className="text-sm text-gray-600">BDC has committed a fresh pool of capital to its Women in Tech Venture Fund for 2026. The program features a fast-track <strong>$100,000</strong> loan option for women-led startups meeting baseline traction requirements.</p>
+                  </div>
+                  <div className="bg-white p-5 rounded-xl border border-gray-100 shadow-sm">
+                    <h4 className="font-bold text-gray-900 mb-2">Amber Grant Intakes</h4>
+                    <p className="text-sm text-gray-600">Private monthly Amber Grants ($10,000 monthly award + $25,000 year-end bonus) are actively accepting Canadian submissions. These grants carry no industry restrictions or incorporation requirements.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 2. Women Entrepreneur Stacking Playbook (Topical Stacking Authority) */}
+              <div>
+                <h3 className="text-3xl font-bold text-gray-900 mb-2 text-center">Women Entrepreneur Stacking Playbook</h3>
+                <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">Maximize your operational runway by combining federal microloans, private grants, and provincial wage subsidies.</p>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 text-sm font-bold">1</span>
+                      Capital + Talent Stacking
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      Secure a <strong>$50,000 WES Microloan</strong> to establish your physical or digital infrastructure. Then, stack this with provincial hiring incentives like the <strong>Ontario Co-op Education Tax Credit</strong> or the <strong>BC Tech Co-op Grant</strong>. Use the loan capital to pay the base salary portion, and the government subsidies will refund up to 75% of your student developer costs.
+                    </p>
+                  </div>
+                  <div className="space-y-4">
+                    <h4 className="text-xl font-bold text-gray-900 flex items-center gap-2">
+                      <span className="flex items-center justify-center w-8 h-8 rounded-full bg-pink-100 text-pink-700 text-sm font-bold">2</span>
+                      Private + Public Stacking
+                    </h4>
+                    <p className="text-sm text-gray-600 leading-relaxed">
+                      Apply for monthly private incentives like the <strong>Amber Grant</strong> or the <strong>Cartier Women's Initiative</strong>. Since these private funds do not carry governmental double-dipping rules, you can use them as your matching "equity portion" required to unlock major federal research matching grants like <strong>IRAP</strong> or provincial innovation incentives.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3. Common Application Rejection Mistakes (Search Intent Target) */}
+              <div className="bg-red-50/50 rounded-2xl p-8 border border-red-100/50">
+                <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center gap-2">
+                  ❌ Common Application Rejection Mistakes (Why Funding is Denied)
+                </h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">1. Shareholder Ownership Thresholds</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Applying for women-specific programs when the business is structured under a 50/50 co-founder agreement with a male partner.
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Almost all public women-led programs require at least <strong>51% direct equity ownership</strong> and active day-to-day management control by one or more women. Review your corporate registry before submission.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">2. Lacking Ecosystem Affiliation</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Submitting raw applications without connecting to local Women's Enterprise Organizations or regional incubators.
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Join a recognized ecosystem partner (like Coralus or local provincial Women Business Centers) first. Many programs prioritize applicants who have completed advisory training.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">3. Vague Project Budget Bounding</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Requesting capital for general working capital without bounding it to a specific growth project (e.g. "expansion of eCommerce storefront").
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Specify exact operational project deliverables with clear milestone dates and supplier quotes.
+                    </p>
+                  </div>
+                  <div className="space-y-2">
+                    <h4 className="font-bold text-gray-950">4. Retroactive Project Expense Submission</h4>
+                    <p className="text-sm text-gray-600">
+                      <strong>The Mistake:</strong> Submitting expenses incurred prior to the official grant registration date.
+                      <br />
+                      <strong className="text-red-700">The Fix:</strong> Government programs operate strictly on a go-forward basis. Wait until you have received formal confirmation before spending.
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              {/* 4. Structured Topic Cluster Navigation (Pass Authority) */}
+              <div className="border-t border-gray-100 pt-10 text-center">
+                <h4 className="font-semibold text-gray-900 mb-4 text-sm uppercase tracking-wider">Explore Related Stacking Resources</h4>
+                <div className="flex flex-wrap justify-center gap-4 text-sm">
+                  <Link href="/canada/small-business-grants" className="text-pink-600 hover:text-pink-850 font-medium hover:underline">
+                    Canada SME Funding Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/women-entrepreneurship-grants-2026" className="text-pink-600 hover:text-pink-850 font-medium hover:underline">
+                    Women Grants Blog Guide
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/canada-federal-grants" className="text-pink-600 hover:text-pink-850 font-medium hover:underline">
+                    Federal Grant Directory
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/ontario-small-business-grants-guide" className="text-pink-600 hover:text-pink-850 font-medium hover:underline">
+                    Ontario SME Grants
+                  </Link>
+                  <span className="text-gray-300">•</span>
+                  <Link href="/blog/bc-small-business-grants-guide" className="text-pink-600 hover:text-pink-850 font-medium hover:underline">
+                    BC SME Grants
+                  </Link>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </section>
+
       </div>
       {/* Cross-Links */}
       <section className="py-12 bg-white border-t">

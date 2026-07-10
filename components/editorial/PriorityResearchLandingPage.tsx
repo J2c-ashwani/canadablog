@@ -10,6 +10,7 @@ import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
 import type { PriorityResearchProfile } from '@/lib/editorial/priorityResearch';
 import { generateFAQSchema } from '@/lib/schema';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
+import EligibleCheck from '@/components/blog/EligibleCheck';
 
 interface PriorityResearchLandingPageProps {
   profile: PriorityResearchProfile;
@@ -58,6 +59,36 @@ export function PriorityResearchLandingPage({ profile, eyebrow, title }: Priorit
         <div className="container mx-auto max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
           <ShortAnswerBox question={profile.shortAnswerQuestion} content={profile.shortAnswer} />
           <EEATBadge authorName={profile.reviewedBy} authorImage="/author-ashwani.jpg" date={profile.lastVerified} reviewerRole={profile.reviewerRole} />
+
+          {/* Contextual Micro-Quiz based on state route */}
+          {(() => {
+            const isNewYork = profile.route === '/usa/new-york';
+            const isCalifornia = profile.route === '/usa/california';
+            if (isNewYork || isCalifornia) {
+              const quizTitle = isNewYork 
+                ? 'Check your business eligibility for NY State & NYC grants & tax credits.'
+                : 'Check your business eligibility for CA State & local incentives.';
+              const quizDesc = isNewYork
+                ? 'Answering these 2 baseline questions will show if you meet the initial criteria for New York state and local incentives.'
+                : 'Answering these questions will check your baseline compatibility with California tax credits and upskilling funds.';
+              const quizQuestions = isNewYork ? [
+                { id: 'ny1', text: 'Are you registered to do business in New York State?' },
+                { id: 'ny2', text: 'Do you have a physical office or payroll presence in NY?' }
+              ] : [
+                { id: 'ca1', text: 'Are you registered to do business in California?' },
+                { id: 'ca2', text: 'Do you plan to create physical jobs or hire in California?' }
+              ];
+              
+              return (
+                <EligibleCheck 
+                  title={quizTitle} 
+                  description={quizDesc} 
+                  questions={quizQuestions} 
+                />
+              );
+            }
+            return null;
+          })()}
 
           <div id="research-brief">
             <ResearchBriefPanel profile={profile} />

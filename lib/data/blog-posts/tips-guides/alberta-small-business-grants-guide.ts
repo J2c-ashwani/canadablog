@@ -25,12 +25,12 @@ const post: BlogPost = {
     ],
     content: "",
     seo: {
-      metaTitle: "Alberta Small Business Grants 2026: Complete Guide",
-        metaDescription: "Learn how to qualify and apply for Alberta Small Business Grants in 2026. Access active government grants & loans. See if you qualify.",
-        intent: "grant",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }, shortAnswer: "Yes — Complete guide to Alberta small business grants. Access Alberta Small Business Grant, Technology Innovation Fund, Rural Economic Development, and Energy Diversification programs. Funding available: up to $980M+.",
+      metaTitle: "Alberta Small Business Grants 2026: Complete SME Guide",
+      metaDescription: "Learn how to qualify and apply for Alberta Small Business Grants in 2026. Access active provincial training grants, R&D vouchers, and scale-up loans.",
+      intent: "grant",
+      seoVersion: 2,
+      seoUpdatedAt: "2026-07-10T13:30:00.000Z"
+    }, shortAnswer: "Yes — Alberta small businesses can access the Canada-Alberta Job Grant ($10,000 training support per hire), Alberta Innovates R&D Vouchers (up to $100K), and PrairiesCan interest-free business scale-up loans. These programs can be stacked with federal tools like IRAP and SR&ED to offset operational costs.",
     jumpLinks: [
       { title: 'Programs', id: 'programs' },
       { title: 'Eligibility', id: 'eligibility' },
