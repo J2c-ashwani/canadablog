@@ -232,19 +232,31 @@ const scoredList = commercialCandidates.map(candidate => {
   }
 
   // 3. Business Impact Score (B - 20%): monetization funnel depth
+  // Rule: Every grant/loan/fund page supports Calculator → Report → Audit funnel.
+  // Only truly generic or U.S.-only pages are awareness-only.
   let businessImpactScore = 15;
   let monetizationTier = 'awareness-only';
   if (pathUrl.includes('sred') || pathUrl.includes('irap') || pathUrl.includes('filing')) {
     businessImpactScore = 100;
     monetizationTier = 'direct-filing';
-  } else if (pathUrl.match(/(manufacturing|cybersecurity|technology|innovation)/)) {
+  } else if (pathUrl.match(/(manufacturing|cybersecurity|clean-tech|clean-technology|agri|agriculture|life-sciences|biotech|canexport|csbfp|indigenous|veteran)/)) {
     businessImpactScore = 85;
     monetizationTier = 'strategy-audit';
-  } else if (pathUrl.match(/(alberta|ontario|bc|quebec|manitoba|saskatchewan|atlantic)/)) {
+  } else if (pathUrl.match(/(alberta|ontario|bc|british-columbia|quebec|manitoba|saskatchewan|atlantic|northern|prairie|canada-small-business|canada-federal|canada-startup|canada-regional|canada-growth|innovation-canada|small-business-grants|women-business|women-entrepreneur)/)) {
     businessImpactScore = 65;
     monetizationTier = 'report-bundle';
-  } else if (pathUrl.match(/(forecast|deadlines|news|list)/)) {
+  } else if (pathUrl.match(/(grant|loan|fund|financing|subsidy|incentive|program|guide|stack|compare|how-to)/) && !pathUrl.match(/(usa|california|texas|florida|new-york|minnesota|missouri|colorado|illinois|michigan|pennsylvania|washington|massachusetts|doe-|epa-|hud-|nsf-|sba-|usda-|nwbc|biden|dod-|nasa-|nih-|sbir.*sttr)/) ) {
+    businessImpactScore = 65;
+    monetizationTier = 'report-bundle';
+  } else if (pathUrl.match(/(forecast|deadlines|last-chance|news|q1-|q4-|october-|2026-grant-forecast|early-bird)/)) {
     businessImpactScore = 40;
+    monetizationTier = 'calculator-only';
+  } else if (pathUrl.match(/(usa|california|texas|florida|new-york|minnesota|missouri|colorado|illinois|michigan|pennsylvania|washington|massachusetts|doe-|epa-|hud-|nsf-|sba-|usda-|nwbc|biden|dod-|nasa-|nih-)/) ) {
+    businessImpactScore = 15;
+    monetizationTier = 'awareness-only';
+  } else {
+    // Remaining Canadian-topic pages default to calculator funnel
+    businessImpactScore = 50;
     monetizationTier = 'calculator-only';
   }
 
@@ -272,33 +284,45 @@ const scoredList = commercialCandidates.map(candidate => {
   // 6. Strategic Importance (SI - 10%)
   let strategicImportance = 30; // Default supporting page
   let clusterType = 'Supporting Page';
-  if (pathUrl === '/canada/innovation-grants' || pathUrl === '/canada/small-business-grants' || pathUrl === '/canada/government-grants') {
-    strategicImportance = 100; // Pillar page
+  // Top-level /canada/ routes are Pillar Pages
+  if (pathUrl === '/canada/innovation-grants' || pathUrl === '/canada/small-business-grants' || pathUrl === '/canada/government-grants' || pathUrl === '/canada/women-business-grants') {
+    strategicImportance = 100;
     clusterType = 'Pillar Page';
-  } else if (pathUrl.includes('quebec-small-business') || pathUrl.includes('ontario-small-business') || pathUrl.includes('cybersecurity-grants')) {
-    strategicImportance = 80; // Cluster Hub
+  // Filing program anchors are Cluster Hubs — they anchor the entire SR&ED / IRAP cluster
+  } else if (pathUrl.match(/(\/sred-|\/irap-|\/csbfp-|\/canexport-)/) && !pathUrl.match(/(-2026|-2025|archive)/)) {
+    strategicImportance = 80;
     clusterType = 'Cluster Hub';
-  } else if (pathUrl.includes('methodology') || pathUrl.includes('data-sources')) {
-    strategicImportance = 60; // Authority Builder
-    clusterType = 'Authority Builder';
-  } else if (pathUrl.includes('vs-') || pathUrl.includes('-vs-')) {
-    strategicImportance = 50; // Link Magnet
+  // Provincial guide hubs and known cluster hubs
+  } else if (pathUrl.match(/(quebec-small-business|ontario-small-business|cybersecurity-grants|alberta-small-business|bc-small-business|manitoba-small-business|saskatchewan-small-business|atlantic-small-business)/)) {
+    strategicImportance = 80;
+    clusterType = 'Cluster Hub';
+  // Comparison / link magnet pages
+  } else if (pathUrl.includes('vs-') || pathUrl.includes('-vs-') || pathUrl.includes('how-to-stack') || pathUrl.includes('compare')) {
+    strategicImportance = 50;
     clusterType = 'Link Magnet';
-  } else if (pathUrl.includes('veteran') || pathUrl.includes('usda-sbir')) {
-    strategicImportance = 10; // Isolated Page
+  // Authority builders
+  } else if (pathUrl.includes('methodology') || pathUrl.includes('data-sources')) {
+    strategicImportance = 60;
+    clusterType = 'Authority Builder';
+  // Isolated / U.S. pages
+  } else if (pathUrl.match(/(veteran|usda-sbir|usa\/|\/california|\/texas|\/florida|\/new-york)/) || pathUrl.match(/(biden|nwbc|wosb-federal)/)) {
+    strategicImportance = 10;
     clusterType = 'Isolated Page';
   }
 
   // 7. Intent Stability (IS - 10%)
-  let intentStability = 100; // Evergreen default
-  if (pathUrl.match(/(forecast|deadlines|2026|early-bird|last-chance|archive)/)) {
-    if (pathUrl.includes('deadlines') || pathUrl.includes('last-chance')) {
-      intentStability = 15; // Volatile
-    } else {
-      intentStability = 40; // Seasonal
-    }
-  } else if (pathUrl.match(/(guide|small-business|grants)/)) {
-    intentStability = 70; // Semi-stable
+  // Volatile: year-stamped deadlines/news. Seasonal: year-stamped forecasts.
+  // Semi-stable: provincial/topical guides updated annually.
+  // Evergreen: conceptual explanations, comparison pages, how-tos.
+  let intentStability = 70; // Default: semi-stable (most grant guides)
+  if (pathUrl.match(/(deadlines|last-chance|q1-|q4-|october-)/)) {
+    intentStability = 15; // Volatile
+  } else if (pathUrl.match(/(forecast|early-bird|-2026|-2025|archive)/)) {
+    intentStability = 40; // Seasonal
+  } else if (pathUrl.match(/(vs-|-vs-|how-to-|what-is|irap-vs|sred-vs|difference|compare|stack|stacking|guide$|program$)/)) {
+    intentStability = 100; // Evergreen educational/comparison pages
+  } else if (pathUrl.match(/(sred|irap|csbfp|canexport)/) && !pathUrl.match(/2026|2025|forecast|deadline/)) {
+    intentStability = 100; // Evergreen program pages
   }
 
   // 8. CTR Opportunity Score (C - 5%)
