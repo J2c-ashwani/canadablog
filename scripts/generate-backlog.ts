@@ -194,6 +194,48 @@ commercialCandidates.push({ url: '/canada/small-business-grants', fileBasename: 
 commercialCandidates.push({ url: '/canada/women-business-grants', fileBasename: 'women-business-grants' });
 commercialCandidates.push({ url: '/canada/government-grants', fileBasename: 'government-grants' });
 
+const optimizedUrls = new Set<string>([
+  '/canada/small-business-grants',
+  '/blog/csbfp-canada-small-business-financing-program',
+  '/blog/canada-federal-grants',
+  '/canada/women-business-grants',
+  '/usa/new-york',
+  '/blog/women-entrepreneurship-grants-2026',
+  '/canada/innovation-grants',
+  '/blog/alberta-small-business-grants-guide',
+  '/blog/canada-startup-funding-grants-guide',
+  '/canada/government-grants',
+  '/blog/quebec-small-business-grants-guide',
+  '/blog/technology-startup-grants-2026',
+  '/blog/manufacturing-grants-2026',
+  '/blog/ontario-small-business-grants-guide',
+  '/blog/bc-small-business-grants-guide',
+  '/blog/cybersecurity-grants',
+  '/blog/5-best-government-loans-agriculture-tech-startups',
+  '/blog/saskatchewan-small-business-grants-guide',
+  '/blog/manitoba-small-business-grants-guide',
+  '/blog/atlantic-small-business-grants-guide',
+  '/blog/irap-industrial-research-assistance-program',
+  '/blog/canexport-grants-2026',
+  '/blog/canada-clean-technology-innovation-grants',
+  '/blog/canada-digital-ai-innovation-grants',
+  '/blog/sred-scientific-research-experimental-development',
+  '/blog/irap-vs-sred-difference-canada',
+  '/blog/sred-tax-credits-vs-cdap-canadian-founders',
+  '/blog/canada-agri-food-technology-innovation-grants',
+  '/blog/canada-advanced-manufacturing-innovation-grants',
+  '/blog/quebec-innovation-grants',
+  '/blog/nsf-sbir-grants-technology-startups',
+  '/blog/usda-sbir-agtech-grants',
+  '/blog/healthcare-grants-2026',
+  '/blog/veteran-business-funding-canada-2026',
+  '/blog/nih-sbir-biotech-grants',
+  '/blog/canada-agriculture-agrifood-grants-guide',
+  '/blog/canada-clean-technology-environment-grants-guide',
+  '/blog/alberta-innovation-grants',
+  '/blog/ai-machine-learning-grants'
+]);
+
 // 6. Score opportunities with the upgraded 9-factor model
 const scoredList = commercialCandidates.map(candidate => {
   const pathUrl = candidate.url;
@@ -511,7 +553,7 @@ const scoredList = commercialCandidates.map(candidate => {
     playbookTasks,
     confidenceLevel,
     clusterType,
-    status: 'Backlog',
+    status: optimizedUrls.has(pathUrl) ? 'Optimized' : 'Backlog',
     owner: 'Ashwani',
     isIndexed
   };

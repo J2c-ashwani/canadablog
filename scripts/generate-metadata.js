@@ -53,8 +53,15 @@ async function generateMetadata() {
             // Decouple full content + rich fields to per-slug JSON
             // (keeps blogMetadata.json lightweight for Webpack, rich data loaded at runtime via fs.readFileSync)
             const contentFile = path.join(contentDir, `${post.slug}.json`);
+            let existingContent = "";
+            if (fs.existsSync(contentFile)) {
+              try {
+                const existingJson = JSON.parse(fs.readFileSync(contentFile, 'utf8'));
+                existingContent = existingJson.content || "";
+              } catch (e) {}
+            }
             const richData = {
-              content: post.content || "",
+              content: post.content || existingContent || "",
               // Answer Engine fields
               shortAnswer: post.shortAnswer || undefined,
               shortAnswerQuestion: post.shortAnswerQuestion || undefined,

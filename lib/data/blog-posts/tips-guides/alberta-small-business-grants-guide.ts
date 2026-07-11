@@ -2,95 +2,135 @@
 import type { BlogPost } from '../../blogPosts';
 
 const post: BlogPost = {
-    id: 5,
-    slug: "alberta-small-business-grants-guide",
-    shortAnswerQuestion: "What small business grants are available in 2026?",
-
-    title: "Alberta Small Business Grants 2026 | $980M+ Alberta SME Funding",
-
-    excerpt: "Complete guide to Alberta small business grants. Access Alberta Small Business Grant, Technology Innovation Fund, Rural Economic Development, and Energy Diversification programs.",
-    category: "Tips & Guides",
-    categoryColor: "bg-purple-100 text-purple-800",
-    author: "Ashwani K.",
-    date: "2025-12-01",
-    readTime: "10 min read",
-    image: "/images/blog/canada-grants-theme.png",
-    featured: false,
-    type: "grant-news",
-
-    relatedLinks: [
-      { title: "LOI Requirement", href: "/blog/edc-women-trade-export-financing", description: "Complete guide to EDC Women in Trade with export financing, equity capital investments, and international market support..." },
-      { title: "Stack Your Benefits", href: "/blog/canada-housing-community-grants-2026", description: "🇨🇦 Access CMHC and FCM funding for housing and community projects. Guide to the Housing Accelerator Fund, Green Munici..." },
-      { title: "CA Guarantee vs SBA", href: "/guides/apply-ontario-business-grants", description: "Complete guide to accessing provincial business grants and incentives in Ontario...." }
-    ],
-    content: "",
-    seo: {
-      metaTitle: "Alberta Small Business Grants 2026: Complete SME Guide",
-      metaDescription: "Learn how to qualify and apply for Alberta Small Business Grants in 2026. Access active provincial training grants, R&D vouchers, and scale-up loans.",
-      intent: "grant",
-      seoVersion: 2,
-      seoUpdatedAt: "2026-07-10T13:30:00.000Z"
-    }, shortAnswer: "Yes — Alberta small businesses can access the Canada-Alberta Job Grant ($10,000 training support per hire), Alberta Innovates R&D Vouchers (up to $100K), and PrairiesCan interest-free business scale-up loans. These programs can be stacked with federal tools like IRAP and SR&ED to offset operational costs.",
-    jumpLinks: [
-      { title: 'Programs', id: 'programs' },
-      { title: 'Eligibility', id: 'eligibility' },
-      { title: 'How to Apply', id: 'how-to-apply' },
-      { title: 'FAQ', id: 'faq' }
-    ],
-    eligibleCheck: true,
-    inlineCTA: {
-      description: "Get matched with the right alternative or direct funding for Alberta Small Business Grants 2026 — our specialists navigate the complex federal and provincial channels for you.",
+  "id": 5,
+  "slug": "alberta-small-business-grants-guide",
+  "title": "Alberta Small Business Grants 2026 | $980M+ Alberta SME Funding",
+  "excerpt": "Complete guide to Alberta small business grants. Access Alberta Small Business Grant, Technology Innovation Fund, Rural Economic Development, and Energy Diversification programs.",
+  "category": "Tips & Guides",
+  "categoryColor": "bg-purple-100 text-purple-800",
+  "author": "Ashwani K.",
+  "date": "2025-12-01",
+  "readTime": "10 min read",
+  "image": "/images/blog/canada-grants-theme.png",
+  "featured": false,
+  "type": "grant-news",
+  "relatedLinks": [
+    {
+      "title": "Canada SME Grants",
+      "href": "/canada/small-business-grants",
+      "description": "Complete guide to Canadian small business grants and working capital rules."
     },
-    metrics: [
-      { label: 'Training', value: '$3000', description: 'Job Grant per hire', color: 'text-blue-600', iconName: 'Users' },
-      { label: 'Digital', value: '$15,000', description: 'CDAP + Retooling', color: 'text-purple-600', iconName: 'Globe' },
-      { label: 'Rural', value: 'Priority', description: 'Regional relief', color: 'text-green-600', iconName: 'Mountain' }
-    ],
-    expertTip: {
-      title: "Look for 'CARES'",
-      type: 'tip',
-      content: "The Community and Regional Economic Support (CARES) program often funds local initiatives. Check with your local Chamber of Commerce for municipal-level grants."
+    {
+      "title": "IRAP Guide",
+      "href": "/blog/canada-irap-grants-2026",
+      "description": "Detailed roadmap to securing Industrial Research Assistance funding."
     },
-      comparisonTable: {
-              "title": "Alberta Small Business Grants  | + Alberta SME Funding Funding Options Overview",
-              "programs": [
-                  {
-                      "program": "Core Alberta Small Business Grants  | + Alberta SME Funding Grant",
-                      "amount": "$980M",
-                      "equity": "Non-dilutive",
-                      "bestFor": "Eligible Applicants",
-                      "timeline": "Standard Review"
-                  },
-                  {
-                      "program": "Related Provincial Match",
-                      "amount": "Up to 50%",
-                      "equity": "0%",
-                      "bestFor": "Expansion Projects",
-                      "timeline": "45 Days"
-                  },
-                  {
-                      "program": "Federal Support Program",
-                      "amount": "Varies",
-                      "equity": "Non-dilutive",
-                      "bestFor": "Scaling Businesses",
-                      "timeline": "90 Days"
-                  }
-              ]
-          },
-      faq: [
-              {
-                  "question": "What is the application deadline for Alberta Small Business Grants  | + Alberta SME Funding in 2026?",
-                  "answer": "Deadlines typically vary by specific program tier. However, for 2026, many initiatives operate on a rolling intake basis until funds are depleted. Check the official portal for specific cutoffs."
-              },
-              {
-                  "question": "How much funding can I get through Alberta Small Business Grants  | + Alberta SME Funding?",
-                  "answer": "Funding amounts range depending on business size and scope. Top awards can reach $980M."
-              },
-              {
-                  "question": "Do I have to give up equity for this program?",
-                  "answer": "No. Government grants and subsidies are non-dilutive, meaning you retain 100% ownership of your company."
-              }
-          ]
+    {
+      "title": "Ontario SME Grants",
+      "href": "/blog/ontario-small-business-grants-guide",
+      "description": "Regional program lists for Ontario-based startups."
+    }
+  ],
+  "content": "",
+  "seo": {
+    "metaTitle": "Alberta Small Business Grants 2026: Complete SME Guide",
+    "metaDescription": "Learn how to qualify and apply for Alberta Small Business Grants in 2026. Access active provincial training grants, R&D vouchers, and scale-up loans.",
+    "intent": "grant",
+    "seoVersion": 2,
+    "seoUpdatedAt": "2026-07-10T13:30:00.000Z"
+  },
+  "shortAnswer": "Yes — Alberta small businesses can access the Canada-Alberta Job Grant ($10,000 training support per hire), Alberta Innovates R&D Vouchers (up to $100K), and PrairiesCan interest-free business scale-up loans. These programs can be stacked with federal tools like IRAP and SR&ED to offset operational costs.",
+  "shortAnswerQuestion": "What small business grants are available in Alberta for 2026?",
+  "faq": [
+    {
+      "question": "What is the Canada-Alberta Job Grant limit?",
+      "answer": "The Canada-Alberta Job Grant covers up to 100% of eligible training costs for newly hired unemployed Albertans (up to $10,000 per hire) or up to 67% for existing employees (up to $15,000 per hire)."
+    },
+    {
+      "question": "Are Alberta small business grants non-repayable?",
+      "answer": "Provincial job training grants and research vouchers are 100% non-repayable. Scale-up loans administered by PrairiesCan are interest-free but must be repaid according to milestone agreements."
+    },
+    {
+      "question": "Do I need to be incorporated in Alberta to apply?",
+      "answer": "Yes, to qualify for Alberta Innovates or CARES programs, your business must be incorporated federally or provincially and maintain an active office location in Alberta."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "Job Grant",
+      "value": "Up to $10K",
+      "description": "Per newly hired employee",
+      "color": "text-blue-600",
+      "iconName": "Users"
+    },
+    {
+      "label": "AI Vouchers",
+      "value": "Up to $100K",
+      "description": "Research matching support",
+      "color": "text-purple-600",
+      "iconName": "Zap"
+    },
+    {
+      "label": "Regional Loans",
+      "value": "Interest-Free",
+      "description": "PrairiesCan scale-up funding",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    }
+  ],
+  "expertTip": {
+    "title": "Apply Before Training Begins",
+    "type": "tip",
+    "content": "For the Alberta Job Grant, you must submit your application and receive confirmation before training program payments are made. Retroactive costs are never refunded."
+  },
+  "comparisonTable": {
+    "title": "Alberta Small Business Grants  | + Alberta SME Funding Funding Options Overview",
+    "programs": [
+      {
+        "program": "Core Alberta Small Business Grants  | + Alberta SME Funding Grant",
+        "amount": "$980M",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
+      },
+      {
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
+      },
+      {
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
+      }
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Programs",
+      "id": "programs"
+    },
+    {
+      "title": "Eligibility",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    },
+    {
+      "title": "FAQ",
+      "id": "faq"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "description": "Get matched with the right Alberta provincial grants and interest-free loans matching your business stage. Run our free assessment."
+  }
 };
 
 export default post;

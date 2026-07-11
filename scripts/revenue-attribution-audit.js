@@ -226,13 +226,13 @@ async function main() {
   const experiments = loadExperimentMeta();
   const phaseMap    = loadPhaseMap();
 
-  // 4. Build funnel by landing page from telemetry
+  // 4. Build funnel by landing page from telemetry using session-level landing page resolution
   const funnelByPage = {};
   const EVENT_NAMES  = {
     PAGE_VIEW:          ['page_view', 'pageview', 'page view'],
-    CALCULATOR_START:   ['calculator_start', 'calc_start', 'start_calculator', 'calculator-start'],
+    CALCULATOR_START:   ['calculator_start', 'calc_start', 'start_calculator', 'calculator-start', 'calculator_started'],
     CALCULATOR_STEP:    ['calculator_step', 'calc_step'],
-    CALCULATOR_DONE:    ['calculator_complete', 'calculator_done', 'calc_complete', 'report_generated', 'report-generated'],
+    CALCULATOR_DONE:    ['calculator_complete', 'calculator_done', 'calc_complete', 'report_generated', 'report-generated', 'calculator_completed'],
     CHECKOUT_START:     ['checkout_start', 'checkout-start', 'payment_start', 'paypal_initiated', 'begin_checkout'],
     PURCHASE:           ['purchase', 'payment_success', 'purchase_complete', 'order_complete'],
   };
@@ -242,14 +242,37 @@ async function main() {
     return EVENT_NAMES[category].some(e => n.includes(e));
   }
 
+  // Determine landing page for each session ID (earliest page_view or page path)
+  const sessionLandingMap = {};
+  const sessionEarliestTime = {};
+
   telemetry.forEach(ev => {
+    const sessId = ev['Session ID'] || ev['sessionId'];
+    if (!sessId || sessId === 'sess_anonymous') return;
+    const page = (ev['Page Path'] || ev['pagePath'] || '').split('?')[0];
+    if (!page) return;
+    const time = new Date(ev['Timestamp'] || ev['timestamp']).getTime();
+    if (isNaN(time)) return;
+
+    if (!sessionEarliestTime[sessId] || time < sessionEarliestTime[sessId]) {
+      sessionEarliestTime[sessId] = time;
+      sessionLandingMap[sessId] = page;
+    }
+  });
+
+  telemetry.forEach(ev => {
+    const sessId = ev['Session ID'] || ev['sessionId'];
     const page  = (ev['Page Path'] || ev['pagePath'] || '').split('?')[0];
     const event = (ev['Event Name'] || ev['eventName'] || '');
     if (!page) return;
-    if (!funnelByPage[page]) {
-      funnelByPage[page] = { pageViews:0, calcStarts:0, calcDone:0, checkoutStarts:0, purchases:0, revenue:0 };
+
+    // Resolve landing page of the session, falling back to the event page
+    const lp = (sessId && sessionLandingMap[sessId]) ? sessionLandingMap[sessId] : page;
+
+    if (!funnelByPage[lp]) {
+      funnelByPage[lp] = { pageViews:0, calcStarts:0, calcDone:0, checkoutStarts:0, purchases:0, revenue:0 };
     }
-    const f = funnelByPage[page];
+    const f = funnelByPage[lp];
     if (matchEvent(event, 'PAGE_VIEW'))         f.pageViews++;
     if (matchEvent(event, 'CALCULATOR_START'))  f.calcStarts++;
     if (matchEvent(event, 'CALCULATOR_DONE'))   f.calcDone++;

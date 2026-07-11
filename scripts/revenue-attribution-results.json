@@ -1,17 +1,17 @@
 {
-  "generatedAt": "2026-07-09T03:32:22.792Z",
+  "generatedAt": "2026-07-10T21:56:21.296Z",
   "siteFunnel": {
     "totals": {
-      "pageViews": 2177,
-      "calcStarts": 725,
-      "calcDone": 14,
+      "pageViews": 2524,
+      "calcStarts": 728,
+      "calcDone": 17,
       "checkoutStarts": 0,
       "purchases": 0,
       "revenue": 0
     },
     "rates": {
-      "viewToCalcStart": 0.3330271015158475,
-      "calcStartToDone": 0.019310344827586208,
+      "viewToCalcStart": 0.2884310618066561,
+      "calcStartToDone": 0.023351648351648352,
       "calcDoneToCheckout": 0,
       "checkoutToPurchase": 0,
       "avgOrderValue": 49
@@ -38,10 +38,10 @@
         "revenue": 0
       },
       "estMonthlyClicks": 40,
-      "estRevenue": 39,
+      "estRevenue": 34,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
-      "engROI": "0.8",
+      "engROI": "0.7",
       "confidence": 90
     },
     {
@@ -56,19 +56,19 @@
       "ctrGap": "-0.53",
       "posDelta": "-4.5",
       "funnel": {
-        "pageViews": 18,
-        "calcStarts": 0,
+        "pageViews": 13,
+        "calcStarts": 2,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
       },
       "estMonthlyClicks": 13,
-      "estRevenue": 13,
+      "estRevenue": 11,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
-      "engROI": "0.3",
-      "confidence": 80
+      "engROI": "0.2",
+      "confidence": 90
     },
     {
       "page": "/usa/minnesota",
@@ -82,7 +82,7 @@
       "ctrGap": "-1.90",
       "posDelta": "-7.0",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -90,7 +90,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 12,
-      "estRevenue": 12,
+      "estRevenue": 10,
       "ctrGapRevenue": 0,
       "engMinutes": 20,
       "engROI": "0.3",
@@ -108,7 +108,7 @@
       "ctrGap": "-2.50",
       "posDelta": "0.8",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 6,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -116,7 +116,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 11,
-      "estRevenue": 10,
+      "estRevenue": 9,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.2",
@@ -142,7 +142,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
@@ -160,7 +160,7 @@
       "ctrGap": "0.95",
       "posDelta": "-24.5",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 2,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -168,7 +168,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
@@ -194,7 +194,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
@@ -220,7 +220,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
@@ -238,7 +238,7 @@
       "ctrGap": "-2.60",
       "posDelta": "-4.5",
       "funnel": {
-        "pageViews": 5,
+        "pageViews": 7,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -246,7 +246,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 7,
-      "estRevenue": 7,
+      "estRevenue": 6,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.1",
@@ -264,7 +264,7 @@
       "ctrGap": "-2.52",
       "posDelta": "-2.0",
       "funnel": {
-        "pageViews": 7,
+        "pageViews": 8,
         "calcStarts": 7,
         "calcDone": 1,
         "checkoutStarts": 0,
@@ -272,11 +272,37 @@
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
+      "estRevenue": 5,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
       "confidence": 90
+    },
+    {
+      "page": "/blog/usda-sbir-agtech-grants",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 136,
+      "position": "7.6",
+      "baseCtr": "1.01",
+      "currCtr": "0.00",
+      "benchmark": "3.20",
+      "ctrGap": "-3.20",
+      "posDelta": "-0.2",
+      "funnel": {
+        "pageViews": 4,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 6,
+      "estRevenue": 5,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.1",
+      "confidence": 80
     },
     {
       "page": "/blog/healthcare-grants-2026",
@@ -290,19 +316,19 @@
       "ctrGap": "-4.07",
       "posDelta": "-4.0",
       "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
+        "pageViews": 6,
+        "calcStarts": 2,
+        "calcDone": 1,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
+      "estRevenue": 5,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.1",
-      "confidence": 70
+      "confidence": 80
     },
     {
       "page": "/usa/nevada",
@@ -324,35 +350,9 @@
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.2",
-      "confidence": 80
-    },
-    {
-      "page": "/blog/usda-sbir-agtech-grants",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 136,
-      "position": "7.6",
-      "baseCtr": "1.01",
-      "currCtr": "0.00",
-      "benchmark": "3.20",
-      "ctrGap": "-3.20",
-      "posDelta": "-0.2",
-      "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 6,
       "estRevenue": 5,
       "ctrGapRevenue": 0,
-      "engMinutes": 30,
+      "engMinutes": 20,
       "engROI": "0.1",
       "confidence": 80
     },
@@ -368,8 +368,8 @@
       "ctrGap": "0.34",
       "posDelta": "-1.0",
       "funnel": {
-        "pageViews": 81,
-        "calcStarts": 0,
+        "pageViews": 93,
+        "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -380,7 +380,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
-      "confidence": 80
+      "confidence": 90
     },
     {
       "page": "/grants/bc/vancouver/women-entrepreneurs",
@@ -393,32 +393,6 @@
       "benchmark": "0.60",
       "ctrGap": "0.07",
       "posDelta": "1.8",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 4,
-      "estRevenue": 4,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.1",
-      "confidence": 65
-    },
-    {
-      "page": "/canada/indigenous-entrepreneur-grants",
-      "phase": 1,
-      "pageType": "other",
-      "impressions": 108,
-      "position": "26.2",
-      "baseCtr": "0.46",
-      "currCtr": "0.93",
-      "benchmark": "0.30",
-      "ctrGap": "0.63",
-      "posDelta": "5.8",
       "funnel": {
         "pageViews": 2,
         "calcStarts": 0,
@@ -433,6 +407,32 @@
       "engMinutes": 25,
       "engROI": "0.1",
       "confidence": 80
+    },
+    {
+      "page": "/canada/indigenous-entrepreneur-grants",
+      "phase": 1,
+      "pageType": "other",
+      "impressions": 108,
+      "position": "26.2",
+      "baseCtr": "0.46",
+      "currCtr": "0.93",
+      "benchmark": "0.30",
+      "ctrGap": "0.63",
+      "posDelta": "5.8",
+      "funnel": {
+        "pageViews": 3,
+        "calcStarts": 1,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 4,
+      "estRevenue": 4,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.1",
+      "confidence": 90
     },
     {
       "page": "/grants/il/chicago/women-entrepreneurs",
@@ -524,7 +524,7 @@
       "ctrGap": "-0.65",
       "posDelta": "-2.3",
       "funnel": {
-        "pageViews": 4,
+        "pageViews": 7,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -576,7 +576,7 @@
       "ctrGap": "1.03",
       "posDelta": "-11.2",
       "funnel": {
-        "pageViews": 2,
+        "pageViews": 3,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -602,7 +602,7 @@
       "ctrGap": "0.00",
       "posDelta": "-4.4",
       "funnel": {
-        "pageViews": 6,
+        "pageViews": 7,
         "calcStarts": 4,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -628,7 +628,7 @@
       "ctrGap": "-0.33",
       "posDelta": "-10.6",
       "funnel": {
-        "pageViews": 2,
+        "pageViews": 3,
         "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -732,7 +732,7 @@
       "ctrGap": "-1.30",
       "posDelta": "0.0",
       "funnel": {
-        "pageViews": 0,
+        "pageViews": 4,
         "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -744,7 +744,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
-      "confidence": 65
+      "confidence": 80
     },
     {
       "page": "/grants/nc/charlotte/restaurants-hospitality",
@@ -810,8 +810,8 @@
       "ctrGap": "0.84",
       "posDelta": "-17.3",
       "funnel": {
-        "pageViews": 5,
-        "calcStarts": 0,
+        "pageViews": 9,
+        "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -822,7 +822,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
-      "confidence": 70
+      "confidence": 80
     },
     {
       "page": "/canada/green-energy-grants",
@@ -836,7 +836,7 @@
       "ctrGap": "4.56",
       "posDelta": "-8.9",
       "funnel": {
-        "pageViews": 6,
+        "pageViews": 8,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -875,32 +875,6 @@
       "engMinutes": 25,
       "engROI": "0.1",
       "confidence": 80
-    },
-    {
-      "page": "/usa/ohio",
-      "phase": 2,
-      "pageType": "usa-state",
-      "impressions": 187,
-      "position": "12.2",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "1.50",
-      "ctrGap": "-1.50",
-      "posDelta": "3.6",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 4,
-      "estRevenue": 4,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 65
     },
     {
       "page": "/blog/scotiabank-women-initiative",
@@ -1122,7 +1096,7 @@
       "ctrGap": "-0.86",
       "posDelta": "0.3",
       "funnel": {
-        "pageViews": 1,
+        "pageViews": 2,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1215,84 +1189,6 @@
       "confidence": 75
     },
     {
-      "page": "/usa/technology-startup-grants",
-      "phase": 3,
-      "pageType": "usa-state",
-      "impressions": 149,
-      "position": "11.6",
-      "baseCtr": "0.08",
-      "currCtr": "0.00",
-      "benchmark": "1.50",
-      "ctrGap": "-1.50",
-      "posDelta": "-3.8",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 3,
-      "estRevenue": 3,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 65
-    },
-    {
-      "page": "/usa/missouri",
-      "phase": 2,
-      "pageType": "usa-state",
-      "impressions": 190,
-      "position": "14.3",
-      "baseCtr": "0.17",
-      "currCtr": "0.00",
-      "benchmark": "1.10",
-      "ctrGap": "-1.10",
-      "posDelta": "-1.1",
-      "funnel": {
-        "pageViews": 1,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 3,
-      "estRevenue": 3,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 80
-    },
-    {
-      "page": "/usa/washington",
-      "phase": 2,
-      "pageType": "usa-state",
-      "impressions": 119,
-      "position": "11.2",
-      "baseCtr": "0.24",
-      "currCtr": "0.00",
-      "benchmark": "1.90",
-      "ctrGap": "-1.90",
-      "posDelta": "-5.6",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 3,
-      "estRevenue": 3,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 65
-    },
-    {
       "page": "/blog/colorado-tech-programs",
       "phase": 3,
       "pageType": "blog",
@@ -1319,6 +1215,32 @@
       "confidence": 80
     },
     {
+      "page": "/usa/ohio",
+      "phase": 2,
+      "pageType": "usa-state",
+      "impressions": 187,
+      "position": "12.2",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "1.50",
+      "ctrGap": "-1.50",
+      "posDelta": "3.6",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 4,
+      "estRevenue": 3,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 65
+    },
+    {
       "page": "/blog/women-entrepreneurship-strategy-canada",
       "phase": 2,
       "pageType": "blog",
@@ -1331,7 +1253,7 @@
       "posDelta": "0.1",
       "funnel": {
         "pageViews": 2,
-        "calcStarts": 0,
+        "calcStarts": 2,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -1342,7 +1264,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.0",
-      "confidence": 70
+      "confidence": 80
     },
     {
       "page": "/blog/7-startup-accelerators-california-free-money",
@@ -1356,7 +1278,7 @@
       "ctrGap": "-1.30",
       "posDelta": "-4.3",
       "funnel": {
-        "pageViews": 2,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1371,6 +1293,84 @@
       "confidence": 80
     },
     {
+      "page": "/usa/technology-startup-grants",
+      "phase": 3,
+      "pageType": "usa-state",
+      "impressions": 149,
+      "position": "11.6",
+      "baseCtr": "0.08",
+      "currCtr": "0.00",
+      "benchmark": "1.50",
+      "ctrGap": "-1.50",
+      "posDelta": "-3.8",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 3,
+      "estRevenue": 2,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 65
+    },
+    {
+      "page": "/usa/missouri",
+      "phase": 2,
+      "pageType": "usa-state",
+      "impressions": 190,
+      "position": "14.3",
+      "baseCtr": "0.17",
+      "currCtr": "0.00",
+      "benchmark": "1.10",
+      "ctrGap": "-1.10",
+      "posDelta": "-1.1",
+      "funnel": {
+        "pageViews": 1,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 3,
+      "estRevenue": 2,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 80
+    },
+    {
+      "page": "/usa/washington",
+      "phase": 2,
+      "pageType": "usa-state",
+      "impressions": 119,
+      "position": "11.2",
+      "baseCtr": "0.24",
+      "currCtr": "0.00",
+      "benchmark": "1.90",
+      "ctrGap": "-1.90",
+      "posDelta": "-5.6",
+      "funnel": {
+        "pageViews": 1,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 3,
+      "estRevenue": 2,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 80
+    },
+    {
       "page": "/canada/small-business-grants",
       "phase": 1,
       "pageType": "other",
@@ -1382,35 +1382,9 @@
       "ctrGap": "-0.30",
       "posDelta": "-0.5",
       "funnel": {
-        "pageViews": 17,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 2,
-      "estRevenue": 2,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.1",
-      "confidence": 90
-    },
-    {
-      "page": "/usa",
-      "phase": 1,
-      "pageType": "other",
-      "impressions": 100,
-      "position": "12.7",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "1.30",
-      "ctrGap": "-1.30",
-      "posDelta": "-2.8",
-      "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
+        "pageViews": 24,
+        "calcStarts": 1,
+        "calcDone": 1,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
@@ -1420,7 +1394,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 70
+      "confidence": 95
     },
     {
       "page": "/grants/pa/philadelphia/women-entrepreneurs",
@@ -1460,7 +1434,7 @@
       "ctrGap": "-3.20",
       "posDelta": "-3.0",
       "funnel": {
-        "pageViews": 1,
+        "pageViews": 2,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1523,7 +1497,7 @@
       "estRevenue": 2,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
-      "engROI": "0.1",
+      "engROI": "0.0",
       "confidence": 55
     },
     {
@@ -1538,9 +1512,9 @@
       "ctrGap": "-0.30",
       "posDelta": "-3.0",
       "funnel": {
-        "pageViews": 9,
-        "calcStarts": 0,
-        "calcDone": 0,
+        "pageViews": 27,
+        "calcStarts": 6,
+        "calcDone": 2,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
@@ -1550,7 +1524,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 80
+      "confidence": 90
     },
     {
       "page": "/blog/csbfp-canada-small-business-financing-program",
@@ -1564,7 +1538,7 @@
       "ctrGap": "-0.30",
       "posDelta": "17.8",
       "funnel": {
-        "pageViews": 1,
+        "pageViews": 0,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1576,7 +1550,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.0",
-      "confidence": 80
+      "confidence": 65
     },
     {
       "page": "/grants/bc/vancouver/technology",
@@ -1668,7 +1642,7 @@
       "ctrGap": "-0.30",
       "posDelta": "5.6",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 0,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1680,33 +1654,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 20,
       "engROI": "0.0",
-      "confidence": 80
-    },
-    {
-      "page": "/blog/youth-entrepreneurship-canada-funding",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 64,
-      "position": "17.8",
-      "baseCtr": "0.28",
-      "currCtr": "0.00",
-      "benchmark": "0.70",
-      "ctrGap": "-0.70",
-      "posDelta": "-14.5",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 30,
-      "engROI": "0.0",
-      "confidence": 55
+      "confidence": 65
     },
     {
       "page": "/grants/ma/boston/women-entrepreneurs",
@@ -1746,7 +1694,7 @@
       "ctrGap": "-1.00",
       "posDelta": "-0.8",
       "funnel": {
-        "pageViews": 33,
+        "pageViews": 34,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1813,58 +1761,6 @@
       "confidence": 55
     },
     {
-      "page": "/grants/wa/seattle/education",
-      "phase": 0,
-      "pageType": "other",
-      "impressions": 5,
-      "position": "4.4",
-      "baseCtr": "4.55",
-      "currCtr": "0.00",
-      "benchmark": "8.00",
-      "ctrGap": "-8.00",
-      "posDelta": "-3.5",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.0",
-      "confidence": 55
-    },
-    {
-      "page": "/grants/qc/montreal/technology",
-      "phase": 3,
-      "pageType": "other",
-      "impressions": 11,
-      "position": "7.4",
-      "baseCtr": "7.69",
-      "currCtr": "0.00",
-      "benchmark": "4.00",
-      "ctrGap": "-4.00",
-      "posDelta": "1.0",
-      "funnel": {
-        "pageViews": 2,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.0",
-      "confidence": 70
-    },
-    {
       "page": "/compare/mitacs-vs-irap",
       "phase": 0,
       "pageType": "comparison",
@@ -1902,7 +1798,7 @@
       "ctrGap": "-4.00",
       "posDelta": "1.9",
       "funnel": {
-        "pageViews": 0,
+        "pageViews": 1,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -1914,7 +1810,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 55
+      "confidence": 70
     },
     {
       "page": "/blog/canada-federal-grants",
@@ -1969,6 +1865,32 @@
       "confidence": 70
     },
     {
+      "page": "/usa",
+      "phase": 1,
+      "pageType": "other",
+      "impressions": 100,
+      "position": "12.7",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "1.30",
+      "ctrGap": "-1.30",
+      "posDelta": "-2.8",
+      "funnel": {
+        "pageViews": 1,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 2,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 70
+    },
+    {
       "page": "/guides/nserc-research-grants-guide",
       "phase": 2,
       "pageType": "guide",
@@ -1981,7 +1903,7 @@
       "posDelta": "-1.3",
       "funnel": {
         "pageViews": 0,
-        "calcStarts": 0,
+        "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -1992,7 +1914,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 55
+      "confidence": 65
     },
     {
       "page": "/blog/new-york-business-grants-2026",
@@ -2021,32 +1943,6 @@
       "confidence": 70
     },
     {
-      "page": "/blog/indigenous-business-development-2026",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 24,
-      "position": "11.0",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "1.90",
-      "ctrGap": "-1.90",
-      "posDelta": "-6.2",
-      "funnel": {
-        "pageViews": 1,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 30,
-      "engROI": "0.0",
-      "confidence": 70
-    },
-    {
       "page": "/usa/arkansas",
       "phase": 2,
       "pageType": "usa-state",
@@ -2058,7 +1954,7 @@
       "ctrGap": "-1.30",
       "posDelta": "-3.4",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2099,58 +1995,6 @@
       "confidence": 55
     },
     {
-      "page": "/download/california-tech-guide",
-      "phase": 1,
-      "pageType": "download",
-      "impressions": 22,
-      "position": "10.9",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "1.90",
-      "ctrGap": "-1.90",
-      "posDelta": "-5.2",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.0",
-      "confidence": 55
-    },
-    {
-      "page": "/grants/ga/atlanta/veterans",
-      "phase": 0,
-      "pageType": "other",
-      "impressions": 16,
-      "position": "10.3",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "2.50",
-      "ctrGap": "-2.50",
-      "posDelta": "1.7",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.0",
-      "confidence": 55
-    },
-    {
       "page": "/grants/fl/orlando/technology",
       "phase": 0,
       "pageType": "other",
@@ -2175,58 +2019,6 @@
       "engMinutes": 25,
       "engROI": "0.0",
       "confidence": 65
-    },
-    {
-      "page": "/blog/canexport-grants-2026",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 16,
-      "position": "9.0",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "2.80",
-      "ctrGap": "-2.80",
-      "posDelta": "-7.0",
-      "funnel": {
-        "pageViews": 1,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 30,
-      "engROI": "0.0",
-      "confidence": 70
-    },
-    {
-      "page": "/grants/ga/atlanta/technology",
-      "phase": 0,
-      "pageType": "other",
-      "impressions": 15,
-      "position": "8.8",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "2.80",
-      "ctrGap": "-2.80",
-      "posDelta": "-0.3",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.0",
-      "confidence": 55
     },
     {
       "page": "/grants/tx/dallas/women-entrepreneurs",
@@ -2279,32 +2071,6 @@
       "engMinutes": 30,
       "engROI": "0.0",
       "confidence": 70
-    },
-    {
-      "page": "/grants/qc/montreal/retail",
-      "phase": 1,
-      "pageType": "other",
-      "impressions": 14,
-      "position": "8.4",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "3.20",
-      "ctrGap": "-3.20",
-      "posDelta": "-0.2",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.0",
-      "confidence": 55
     },
     {
       "page": "/grants/il/chicago/minority-owned",
@@ -2448,9 +2214,9 @@
       "ctrGap": "-5.10",
       "posDelta": "-2.5",
       "funnel": {
-        "pageViews": 21,
-        "calcStarts": 43,
-        "calcDone": 12,
+        "pageViews": 9,
+        "calcStarts": 8,
+        "calcDone": 2,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
@@ -2474,7 +2240,7 @@
       "ctrGap": "-5.10",
       "posDelta": "-4.0",
       "funnel": {
-        "pageViews": 1,
+        "pageViews": 8,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2501,7 +2267,7 @@
       "posDelta": "-3.3",
       "funnel": {
         "pageViews": 0,
-        "calcStarts": 0,
+        "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -2512,7 +2278,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 55
+      "confidence": 65
     },
     {
       "page": "/usa/rhode-island",
@@ -2526,7 +2292,7 @@
       "ctrGap": "-0.80",
       "posDelta": "2.6",
       "funnel": {
-        "pageViews": 1,
+        "pageViews": 3,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2537,32 +2303,6 @@
       "estRevenue": 1,
       "ctrGapRevenue": 0,
       "engMinutes": 20,
-      "engROI": "0.0",
-      "confidence": 70
-    },
-    {
-      "page": "/about/author",
-      "phase": 1,
-      "pageType": "other",
-      "impressions": 10,
-      "position": "7.1",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "4.00",
-      "ctrGap": "-4.00",
-      "posDelta": "0.9",
-      "funnel": {
-        "pageViews": 2,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 1,
-      "estRevenue": 1,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
       "engROI": "0.0",
       "confidence": 70
     },
@@ -2603,6 +2343,266 @@
       "benchmark": "5.10",
       "ctrGap": "-5.10",
       "posDelta": "-7.0",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/grants/az/chandler/retail",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 35,
+      "position": "8.9",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "2.80",
+      "ctrGap": "-2.80",
+      "posDelta": "1.7",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/grants/ma/boston/minority-owned",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 17,
+      "position": "6.2",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "5.10",
+      "ctrGap": "-5.10",
+      "posDelta": "-5.8",
+      "funnel": {
+        "pageViews": 1,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 70
+    },
+    {
+      "page": "/grants/tn/nashville/minority-owned",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 11,
+      "position": "5.8",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "5.10",
+      "ctrGap": "-5.10",
+      "posDelta": "-2.1",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/download/nasa-sbir-space-tech-guide",
+      "phase": 1,
+      "pageType": "download",
+      "impressions": 25,
+      "position": "10.0",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "2.50",
+      "ctrGap": "-2.50",
+      "posDelta": "-19.3",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/program-updates",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 22,
+      "position": "6.4",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "5.10",
+      "ctrGap": "-5.10",
+      "posDelta": "2.0",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/grants/ak/anchorage/women-entrepreneurs",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 15,
+      "position": "8.1",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "3.20",
+      "ctrGap": "-3.20",
+      "posDelta": "-2.0",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/download/sif-application-kit",
+      "phase": 1,
+      "pageType": "download",
+      "impressions": 19,
+      "position": "7.2",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "4.00",
+      "ctrGap": "-4.00",
+      "posDelta": "-6.3",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 55
+    },
+    {
+      "page": "/about-founder",
+      "phase": 3,
+      "pageType": "other",
+      "impressions": 14,
+      "position": "6.9",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "4.00",
+      "ctrGap": "-4.00",
+      "posDelta": "-1.4",
+      "funnel": {
+        "pageViews": 2,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 70
+    },
+    {
+      "page": "/grants/oh/cleveland/veterans",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 9,
+      "position": "5.9",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "5.10",
+      "ctrGap": "-5.10",
+      "posDelta": "-3.0",
+      "funnel": {
+        "pageViews": 2,
+        "calcStarts": 2,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 1,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.0",
+      "confidence": 80
+    },
+    {
+      "page": "/grants/oh/cleveland/logistics",
+      "phase": 0,
+      "pageType": "other",
+      "impressions": 8,
+      "position": "2.9",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "11.00",
+      "ctrGap": "-11.00",
+      "posDelta": "-3.9",
       "funnel": {
         "pageViews": 0,
         "calcStarts": 0,
@@ -2660,7 +2660,7 @@
       "currPos": "9.7",
       "impressions": 332,
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 6,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2684,7 +2684,7 @@
       "currPos": "10.6",
       "impressions": 486,
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2714,10 +2714,10 @@
         "revenue": 0
       },
       "estMonthlyClicks": 40,
-      "estRevenue": 39,
+      "estRevenue": 34,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
-      "engROI": "0.8",
+      "engROI": "0.7",
       "confidence": 90
     },
     {
@@ -2732,19 +2732,19 @@
       "ctrGap": "-0.53",
       "posDelta": "-4.5",
       "funnel": {
-        "pageViews": 18,
-        "calcStarts": 0,
+        "pageViews": 13,
+        "calcStarts": 2,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
       },
       "estMonthlyClicks": 13,
-      "estRevenue": 13,
+      "estRevenue": 11,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
-      "engROI": "0.3",
-      "confidence": 80
+      "engROI": "0.2",
+      "confidence": 90
     },
     {
       "page": "/usa/minnesota",
@@ -2758,7 +2758,7 @@
       "ctrGap": "-1.90",
       "posDelta": "-7.0",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2766,7 +2766,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 12,
-      "estRevenue": 12,
+      "estRevenue": 10,
       "ctrGapRevenue": 0,
       "engMinutes": 20,
       "engROI": "0.3",
@@ -2784,7 +2784,7 @@
       "ctrGap": "-2.50",
       "posDelta": "0.8",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 6,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2792,7 +2792,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 11,
-      "estRevenue": 10,
+      "estRevenue": 9,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.2",
@@ -2810,7 +2810,7 @@
       "ctrGap": "-2.60",
       "posDelta": "-4.5",
       "funnel": {
-        "pageViews": 5,
+        "pageViews": 7,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2818,7 +2818,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 7,
-      "estRevenue": 7,
+      "estRevenue": 6,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.1",
@@ -2836,7 +2836,7 @@
       "ctrGap": "-2.52",
       "posDelta": "-2.0",
       "funnel": {
-        "pageViews": 7,
+        "pageViews": 8,
         "calcStarts": 7,
         "calcDone": 1,
         "checkoutStarts": 0,
@@ -2844,11 +2844,37 @@
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
+      "estRevenue": 5,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
       "confidence": 90
+    },
+    {
+      "page": "/blog/usda-sbir-agtech-grants",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 136,
+      "position": "7.6",
+      "baseCtr": "1.01",
+      "currCtr": "0.00",
+      "benchmark": "3.20",
+      "ctrGap": "-3.20",
+      "posDelta": "-0.2",
+      "funnel": {
+        "pageViews": 4,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 6,
+      "estRevenue": 5,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.1",
+      "confidence": 80
     },
     {
       "page": "/blog/healthcare-grants-2026",
@@ -2862,19 +2888,19 @@
       "ctrGap": "-4.07",
       "posDelta": "-4.0",
       "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
+        "pageViews": 6,
+        "calcStarts": 2,
+        "calcDone": 1,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
+      "estRevenue": 5,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.1",
-      "confidence": 70
+      "confidence": 80
     },
     {
       "page": "/usa/nevada",
@@ -2896,35 +2922,9 @@
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.2",
-      "confidence": 80
-    },
-    {
-      "page": "/blog/usda-sbir-agtech-grants",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 136,
-      "position": "7.6",
-      "baseCtr": "1.01",
-      "currCtr": "0.00",
-      "benchmark": "3.20",
-      "ctrGap": "-3.20",
-      "posDelta": "-0.2",
-      "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 6,
       "estRevenue": 5,
       "ctrGapRevenue": 0,
-      "engMinutes": 30,
+      "engMinutes": 20,
       "engROI": "0.1",
       "confidence": 80
     },
@@ -2966,7 +2966,7 @@
       "ctrGap": "-0.65",
       "posDelta": "-2.3",
       "funnel": {
-        "pageViews": 4,
+        "pageViews": 7,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -2992,7 +2992,7 @@
       "ctrGap": "-0.33",
       "posDelta": "-10.6",
       "funnel": {
-        "pageViews": 2,
+        "pageViews": 3,
         "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3018,7 +3018,7 @@
       "ctrGap": "-1.30",
       "posDelta": "0.0",
       "funnel": {
-        "pageViews": 0,
+        "pageViews": 4,
         "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3030,111 +3030,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
-      "confidence": 65
-    },
-    {
-      "page": "/usa/ohio",
-      "phase": 2,
-      "pageType": "usa-state",
-      "impressions": 187,
-      "position": "12.2",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "1.50",
-      "ctrGap": "-1.50",
-      "posDelta": "3.6",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 4,
-      "estRevenue": 4,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 65
-    },
-    {
-      "page": "/usa/technology-startup-grants",
-      "phase": 3,
-      "pageType": "usa-state",
-      "impressions": 149,
-      "position": "11.6",
-      "baseCtr": "0.08",
-      "currCtr": "0.00",
-      "benchmark": "1.50",
-      "ctrGap": "-1.50",
-      "posDelta": "-3.8",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 3,
-      "estRevenue": 3,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 65
-    },
-    {
-      "page": "/usa/missouri",
-      "phase": 2,
-      "pageType": "usa-state",
-      "impressions": 190,
-      "position": "14.3",
-      "baseCtr": "0.17",
-      "currCtr": "0.00",
-      "benchmark": "1.10",
-      "ctrGap": "-1.10",
-      "posDelta": "-1.1",
-      "funnel": {
-        "pageViews": 1,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 3,
-      "estRevenue": 3,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
       "confidence": 80
-    },
-    {
-      "page": "/usa/washington",
-      "phase": 2,
-      "pageType": "usa-state",
-      "impressions": 119,
-      "position": "11.2",
-      "baseCtr": "0.24",
-      "currCtr": "0.00",
-      "benchmark": "1.90",
-      "ctrGap": "-1.90",
-      "posDelta": "-5.6",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 3,
-      "estRevenue": 3,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.1",
-      "confidence": 65
     },
     {
       "page": "/blog/colorado-tech-programs",
@@ -3163,6 +3059,32 @@
       "confidence": 80
     },
     {
+      "page": "/usa/ohio",
+      "phase": 2,
+      "pageType": "usa-state",
+      "impressions": 187,
+      "position": "12.2",
+      "baseCtr": "0.00",
+      "currCtr": "0.00",
+      "benchmark": "1.50",
+      "ctrGap": "-1.50",
+      "posDelta": "3.6",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 4,
+      "estRevenue": 3,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 65
+    },
+    {
       "page": "/blog/women-entrepreneurship-strategy-canada",
       "phase": 2,
       "pageType": "blog",
@@ -3175,7 +3097,7 @@
       "posDelta": "0.1",
       "funnel": {
         "pageViews": 2,
-        "calcStarts": 0,
+        "calcStarts": 2,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -3186,7 +3108,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.0",
-      "confidence": 70
+      "confidence": 80
     },
     {
       "page": "/blog/7-startup-accelerators-california-free-money",
@@ -3200,7 +3122,7 @@
       "ctrGap": "-1.30",
       "posDelta": "-4.3",
       "funnel": {
-        "pageViews": 2,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3215,6 +3137,84 @@
       "confidence": 80
     },
     {
+      "page": "/usa/technology-startup-grants",
+      "phase": 3,
+      "pageType": "usa-state",
+      "impressions": 149,
+      "position": "11.6",
+      "baseCtr": "0.08",
+      "currCtr": "0.00",
+      "benchmark": "1.50",
+      "ctrGap": "-1.50",
+      "posDelta": "-3.8",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 3,
+      "estRevenue": 2,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 65
+    },
+    {
+      "page": "/usa/missouri",
+      "phase": 2,
+      "pageType": "usa-state",
+      "impressions": 190,
+      "position": "14.3",
+      "baseCtr": "0.17",
+      "currCtr": "0.00",
+      "benchmark": "1.10",
+      "ctrGap": "-1.10",
+      "posDelta": "-1.1",
+      "funnel": {
+        "pageViews": 1,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 3,
+      "estRevenue": 2,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 80
+    },
+    {
+      "page": "/usa/washington",
+      "phase": 2,
+      "pageType": "usa-state",
+      "impressions": 119,
+      "position": "11.2",
+      "baseCtr": "0.24",
+      "currCtr": "0.00",
+      "benchmark": "1.90",
+      "ctrGap": "-1.90",
+      "posDelta": "-5.6",
+      "funnel": {
+        "pageViews": 1,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 3,
+      "estRevenue": 2,
+      "ctrGapRevenue": 0,
+      "engMinutes": 20,
+      "engROI": "0.1",
+      "confidence": 80
+    },
+    {
       "page": "/canada/small-business-grants",
       "phase": 1,
       "pageType": "other",
@@ -3226,35 +3226,9 @@
       "ctrGap": "-0.30",
       "posDelta": "-0.5",
       "funnel": {
-        "pageViews": 17,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 2,
-      "estRevenue": 2,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.1",
-      "confidence": 90
-    },
-    {
-      "page": "/usa",
-      "phase": 1,
-      "pageType": "other",
-      "impressions": 100,
-      "position": "12.7",
-      "baseCtr": "0.00",
-      "currCtr": "0.00",
-      "benchmark": "1.30",
-      "ctrGap": "-1.30",
-      "posDelta": "-2.8",
-      "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
+        "pageViews": 24,
+        "calcStarts": 1,
+        "calcDone": 1,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
@@ -3264,7 +3238,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 70
+      "confidence": 95
     },
     {
       "page": "/grants/pa/philadelphia/women-entrepreneurs",
@@ -3304,7 +3278,7 @@
       "ctrGap": "-3.20",
       "posDelta": "-3.0",
       "funnel": {
-        "pageViews": 1,
+        "pageViews": 2,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3330,9 +3304,9 @@
       "ctrGap": "-0.30",
       "posDelta": "-3.0",
       "funnel": {
-        "pageViews": 9,
-        "calcStarts": 0,
-        "calcDone": 0,
+        "pageViews": 27,
+        "calcStarts": 6,
+        "calcDone": 2,
         "checkoutStarts": 0,
         "purchases": 0,
         "revenue": 0
@@ -3342,7 +3316,33 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.0",
-      "confidence": 80
+      "confidence": 90
+    },
+    {
+      "page": "/blog/csbfp-canada-small-business-financing-program",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 394,
+      "position": "68.1",
+      "baseCtr": "0.13",
+      "currCtr": "0.00",
+      "benchmark": "0.30",
+      "ctrGap": "-0.30",
+      "posDelta": "17.8",
+      "funnel": {
+        "pageViews": 0,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 2,
+      "estRevenue": 1,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.0",
+      "confidence": 65
     }
   ],
   "engROI": [
@@ -3366,37 +3366,11 @@
         "revenue": 0
       },
       "estMonthlyClicks": 40,
-      "estRevenue": 39,
+      "estRevenue": 34,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
-      "engROI": "0.8",
+      "engROI": "0.7",
       "confidence": 90
-    },
-    {
-      "page": "/blog/veteran-business-funding-canada-2026",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 132,
-      "position": "8.8",
-      "baseCtr": "2.73",
-      "currCtr": "2.27",
-      "benchmark": "2.80",
-      "ctrGap": "-0.53",
-      "posDelta": "-4.5",
-      "funnel": {
-        "pageViews": 18,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 13,
-      "estRevenue": 13,
-      "ctrGapRevenue": 0,
-      "engMinutes": 30,
-      "engROI": "0.3",
-      "confidence": 80
     },
     {
       "page": "/usa/minnesota",
@@ -3410,7 +3384,7 @@
       "ctrGap": "-1.90",
       "posDelta": "-7.0",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3418,11 +3392,37 @@
         "revenue": 0
       },
       "estMonthlyClicks": 12,
-      "estRevenue": 12,
+      "estRevenue": 10,
       "ctrGapRevenue": 0,
       "engMinutes": 20,
       "engROI": "0.3",
       "confidence": 80
+    },
+    {
+      "page": "/blog/veteran-business-funding-canada-2026",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 132,
+      "position": "8.8",
+      "baseCtr": "2.73",
+      "currCtr": "2.27",
+      "benchmark": "2.80",
+      "ctrGap": "-0.53",
+      "posDelta": "-4.5",
+      "funnel": {
+        "pageViews": 13,
+        "calcStarts": 2,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 13,
+      "estRevenue": 11,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.2",
+      "confidence": 90
     },
     {
       "page": "/blog/nsf-sbir-grants-technology-startups",
@@ -3436,7 +3436,7 @@
       "ctrGap": "-2.50",
       "posDelta": "0.8",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 6,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3444,7 +3444,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 11,
-      "estRevenue": 10,
+      "estRevenue": 9,
       "ctrGapRevenue": 0,
       "engMinutes": 30,
       "engROI": "0.2",
@@ -3470,7 +3470,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
@@ -3488,7 +3488,7 @@
       "ctrGap": "0.95",
       "posDelta": "-24.5",
       "funnel": {
-        "pageViews": 3,
+        "pageViews": 4,
         "calcStarts": 2,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3496,7 +3496,7 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
@@ -3522,11 +3522,115 @@
         "revenue": 0
       },
       "estMonthlyClicks": 9,
-      "estRevenue": 8,
+      "estRevenue": 7,
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.2",
       "confidence": 90
+    },
+    {
+      "page": "/blog/dod-sbir-defense-tech-grants",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 167,
+      "position": "8.0",
+      "baseCtr": "0.35",
+      "currCtr": "0.60",
+      "benchmark": "3.20",
+      "ctrGap": "-2.60",
+      "posDelta": "-4.5",
+      "funnel": {
+        "pageViews": 7,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 7,
+      "estRevenue": 6,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.1",
+      "confidence": 80
+    },
+    {
+      "page": "/grants/on/toronto/restaurants-hospitality",
+      "phase": 2,
+      "pageType": "other",
+      "impressions": 148,
+      "position": "7.9",
+      "baseCtr": "1.40",
+      "currCtr": "0.68",
+      "benchmark": "3.20",
+      "ctrGap": "-2.52",
+      "posDelta": "-2.0",
+      "funnel": {
+        "pageViews": 8,
+        "calcStarts": 7,
+        "calcDone": 1,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 6,
+      "estRevenue": 5,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.1",
+      "confidence": 90
+    },
+    {
+      "page": "/blog/usda-sbir-agtech-grants",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 136,
+      "position": "7.6",
+      "baseCtr": "1.01",
+      "currCtr": "0.00",
+      "benchmark": "3.20",
+      "ctrGap": "-3.20",
+      "posDelta": "-0.2",
+      "funnel": {
+        "pageViews": 4,
+        "calcStarts": 0,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 6,
+      "estRevenue": 5,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.1",
+      "confidence": 80
+    },
+    {
+      "page": "/blog/healthcare-grants-2026",
+      "phase": 2,
+      "pageType": "blog",
+      "impressions": 97,
+      "position": "6.0",
+      "baseCtr": "1.15",
+      "currCtr": "1.03",
+      "benchmark": "5.10",
+      "ctrGap": "-4.07",
+      "posDelta": "-4.0",
+      "funnel": {
+        "pageViews": 6,
+        "calcStarts": 2,
+        "calcDone": 1,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 6,
+      "estRevenue": 5,
+      "ctrGapRevenue": 0,
+      "engMinutes": 30,
+      "engROI": "0.1",
+      "confidence": 80
     },
     {
       "page": "/usa/nevada",
@@ -3548,113 +3652,9 @@
         "revenue": 0
       },
       "estMonthlyClicks": 6,
-      "estRevenue": 6,
-      "ctrGapRevenue": 0,
-      "engMinutes": 20,
-      "engROI": "0.2",
-      "confidence": 80
-    },
-    {
-      "page": "/blog/dod-sbir-defense-tech-grants",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 167,
-      "position": "8.0",
-      "baseCtr": "0.35",
-      "currCtr": "0.60",
-      "benchmark": "3.20",
-      "ctrGap": "-2.60",
-      "posDelta": "-4.5",
-      "funnel": {
-        "pageViews": 5,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 7,
-      "estRevenue": 7,
-      "ctrGapRevenue": 0,
-      "engMinutes": 30,
-      "engROI": "0.1",
-      "confidence": 80
-    },
-    {
-      "page": "/grants/on/toronto/restaurants-hospitality",
-      "phase": 2,
-      "pageType": "other",
-      "impressions": 148,
-      "position": "7.9",
-      "baseCtr": "1.40",
-      "currCtr": "0.68",
-      "benchmark": "3.20",
-      "ctrGap": "-2.52",
-      "posDelta": "-2.0",
-      "funnel": {
-        "pageViews": 7,
-        "calcStarts": 7,
-        "calcDone": 1,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 6,
-      "estRevenue": 6,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.1",
-      "confidence": 90
-    },
-    {
-      "page": "/blog/healthcare-grants-2026",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 97,
-      "position": "6.0",
-      "baseCtr": "1.15",
-      "currCtr": "1.03",
-      "benchmark": "5.10",
-      "ctrGap": "-4.07",
-      "posDelta": "-4.0",
-      "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 6,
-      "estRevenue": 6,
-      "ctrGapRevenue": 0,
-      "engMinutes": 30,
-      "engROI": "0.1",
-      "confidence": 70
-    },
-    {
-      "page": "/blog/usda-sbir-agtech-grants",
-      "phase": 2,
-      "pageType": "blog",
-      "impressions": 136,
-      "position": "7.6",
-      "baseCtr": "1.01",
-      "currCtr": "0.00",
-      "benchmark": "3.20",
-      "ctrGap": "-3.20",
-      "posDelta": "-0.2",
-      "funnel": {
-        "pageViews": 3,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 6,
       "estRevenue": 5,
       "ctrGapRevenue": 0,
-      "engMinutes": 30,
+      "engMinutes": 20,
       "engROI": "0.1",
       "confidence": 80
     },
@@ -3670,8 +3670,8 @@
       "ctrGap": "0.34",
       "posDelta": "-1.0",
       "funnel": {
-        "pageViews": 81,
-        "calcStarts": 0,
+        "pageViews": 93,
+        "calcStarts": 1,
         "calcDone": 0,
         "checkoutStarts": 0,
         "purchases": 0,
@@ -3682,7 +3682,7 @@
       "ctrGapRevenue": 0,
       "engMinutes": 25,
       "engROI": "0.1",
-      "confidence": 80
+      "confidence": 90
     },
     {
       "page": "/grants/bc/vancouver/women-entrepreneurs",
@@ -3695,32 +3695,6 @@
       "benchmark": "0.60",
       "ctrGap": "0.07",
       "posDelta": "1.8",
-      "funnel": {
-        "pageViews": 0,
-        "calcStarts": 0,
-        "calcDone": 0,
-        "checkoutStarts": 0,
-        "purchases": 0,
-        "revenue": 0
-      },
-      "estMonthlyClicks": 4,
-      "estRevenue": 4,
-      "ctrGapRevenue": 0,
-      "engMinutes": 25,
-      "engROI": "0.1",
-      "confidence": 65
-    },
-    {
-      "page": "/canada/indigenous-entrepreneur-grants",
-      "phase": 1,
-      "pageType": "other",
-      "impressions": 108,
-      "position": "26.2",
-      "baseCtr": "0.46",
-      "currCtr": "0.93",
-      "benchmark": "0.30",
-      "ctrGap": "0.63",
-      "posDelta": "5.8",
       "funnel": {
         "pageViews": 2,
         "calcStarts": 0,
@@ -3735,6 +3709,32 @@
       "engMinutes": 25,
       "engROI": "0.1",
       "confidence": 80
+    },
+    {
+      "page": "/canada/indigenous-entrepreneur-grants",
+      "phase": 1,
+      "pageType": "other",
+      "impressions": 108,
+      "position": "26.2",
+      "baseCtr": "0.46",
+      "currCtr": "0.93",
+      "benchmark": "0.30",
+      "ctrGap": "0.63",
+      "posDelta": "5.8",
+      "funnel": {
+        "pageViews": 3,
+        "calcStarts": 1,
+        "calcDone": 0,
+        "checkoutStarts": 0,
+        "purchases": 0,
+        "revenue": 0
+      },
+      "estMonthlyClicks": 4,
+      "estRevenue": 4,
+      "ctrGapRevenue": 0,
+      "engMinutes": 25,
+      "engROI": "0.1",
+      "confidence": 90
     },
     {
       "page": "/grants/il/chicago/women-entrepreneurs",
@@ -3800,7 +3800,7 @@
       "ctrGap": "-0.65",
       "posDelta": "-2.3",
       "funnel": {
-        "pageViews": 4,
+        "pageViews": 7,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3852,7 +3852,7 @@
       "ctrGap": "1.03",
       "posDelta": "-11.2",
       "funnel": {
-        "pageViews": 2,
+        "pageViews": 3,
         "calcStarts": 0,
         "calcDone": 0,
         "checkoutStarts": 0,
@@ -3907,7 +3907,7 @@
         "ctrGap": "-0.30",
         "posDelta": "17.8",
         "funnel": {
-          "pageViews": 1,
+          "pageViews": 0,
           "calcStarts": 0,
           "calcDone": 0,
           "checkoutStarts": 0,
@@ -3919,7 +3919,7 @@
         "ctrGapRevenue": 0,
         "engMinutes": 30,
         "engROI": "0.0",
-        "confidence": 80
+        "confidence": 65
       },
       {
         "page": "/grants/bc/burnaby/manufacturing",
@@ -3959,7 +3959,7 @@
         "ctrGap": "-0.30",
         "posDelta": "11.4",
         "funnel": {
-          "pageViews": 0,
+          "pageViews": 1,
           "calcStarts": 0,
           "calcDone": 0,
           "checkoutStarts": 0,
@@ -3971,7 +3971,7 @@
         "ctrGapRevenue": 0,
         "engMinutes": 30,
         "engROI": "0.0",
-        "confidence": 55
+        "confidence": 70
       },
       {
         "page": "/grants/on/toronto/manufacturing",
@@ -4011,7 +4011,7 @@
         "ctrGap": "-0.30",
         "posDelta": "9.9",
         "funnel": {
-          "pageViews": 2,
+          "pageViews": 3,
           "calcStarts": 0,
           "calcDone": 0,
           "checkoutStarts": 0,
@@ -4167,7 +4167,7 @@
         "ctrGap": "-0.30",
         "posDelta": "5.6",
         "funnel": {
-          "pageViews": 3,
+          "pageViews": 0,
           "calcStarts": 0,
           "calcDone": 0,
           "checkoutStarts": 0,
@@ -4179,7 +4179,7 @@
         "ctrGapRevenue": 0,
         "engMinutes": 20,
         "engROI": "0.0",
-        "confidence": 80
+        "confidence": 65
       },
       {
         "page": "/grants/on/brampton/construction",
@@ -4305,7 +4305,7 @@
           "revenue": 0
         },
         "estMonthlyClicks": 4,
-        "estRevenue": 4,
+        "estRevenue": 3,
         "ctrGapRevenue": 0,
         "engMinutes": 20,
         "engROI": "0.1",
@@ -4349,7 +4349,7 @@
         "ctrGap": "-1.50",
         "posDelta": "3.2",
         "funnel": {
-          "pageViews": 1,
+          "pageViews": 2,
           "calcStarts": 0,
           "calcDone": 0,
           "checkoutStarts": 0,
@@ -4418,6 +4418,32 @@
         "confidence": 55
       },
       {
+        "page": "/usa/wisconsin",
+        "phase": 2,
+        "pageType": "usa-state",
+        "impressions": 49,
+        "position": "19.2",
+        "baseCtr": "0.94",
+        "currCtr": "0.00",
+        "benchmark": "0.60",
+        "ctrGap": "-0.60",
+        "posDelta": "-14.5",
+        "funnel": {
+          "pageViews": 5,
+          "calcStarts": 0,
+          "calcDone": 0,
+          "checkoutStarts": 0,
+          "purchases": 0,
+          "revenue": 0
+        },
+        "estMonthlyClicks": 0,
+        "estRevenue": 0,
+        "ctrGapRevenue": 0,
+        "engMinutes": 20,
+        "engROI": "0.0",
+        "confidence": 70
+      },
+      {
         "page": "/blog/youth-entrepreneurship-canada-funding",
         "phase": 2,
         "pageType": "blog",
@@ -4437,37 +4463,11 @@
           "revenue": 0
         },
         "estMonthlyClicks": 1,
-        "estRevenue": 1,
+        "estRevenue": 0,
         "ctrGapRevenue": 0,
         "engMinutes": 30,
         "engROI": "0.0",
         "confidence": 55
-      },
-      {
-        "page": "/usa/wisconsin",
-        "phase": 2,
-        "pageType": "usa-state",
-        "impressions": 49,
-        "position": "19.2",
-        "baseCtr": "0.94",
-        "currCtr": "0.00",
-        "benchmark": "0.60",
-        "ctrGap": "-0.60",
-        "posDelta": "-14.5",
-        "funnel": {
-          "pageViews": 4,
-          "calcStarts": 0,
-          "calcDone": 0,
-          "checkoutStarts": 0,
-          "purchases": 0,
-          "revenue": 0
-        },
-        "estMonthlyClicks": 0,
-        "estRevenue": 0,
-        "ctrGapRevenue": 0,
-        "engMinutes": 20,
-        "engROI": "0.0",
-        "confidence": 70
       },
       {
         "page": "/grants/on/ottawa/non-profits",
@@ -4637,7 +4637,7 @@
         "ctrGap": "-1.90",
         "posDelta": "-7.0",
         "funnel": {
-          "pageViews": 3,
+          "pageViews": 4,
           "calcStarts": 0,
           "calcDone": 0,
           "checkoutStarts": 0,
@@ -4645,7 +4645,7 @@
           "revenue": 0
         },
         "estMonthlyClicks": 12,
-        "estRevenue": 12,
+        "estRevenue": 10,
         "ctrGapRevenue": 0,
         "engMinutes": 20,
         "engROI": "0.3",

@@ -2,99 +2,141 @@
 import type { BlogPost } from '../../blogPosts';
 
 const post: BlogPost = {
-    id: 63,
-    slug: "nserc-research-grants-canada",
-    shortAnswerQuestion: "How can my business apply for NSERC Research Grants Canada 2026 in 2026?",
-
-    title: "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding Guide",
-
-    excerpt: "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding.",
-    category: "Canada News",
-    categoryColor: "bg-red-100 text-red-800",
-    author: "Ashwani K.",
-    date: "2025-12-01",
-    readTime: "10 min read",
-    image: "/images/blog/canada-grants-theme.png",
-    featured: false,
-    type: "grant-news",
-
-    relatedLinks: [
-      { title: "Scale-Up Focus", href: "/blog/innovation-superclusters-2026", description: "🇨🇦 Canada..." },
-      { title: "Pick the Right SBA Program", href: "/guides/apply-irap-government-grants", description: "Detailed walkthrough of applying for IRAP government funding for innovation projects...." },
-      { title: "Target ", href: "/guides/sba-growth-accelerator-fund-guide", description: "Guide to applying for SBA funding supporting business accelerators and incubators...." }
-    ],
-    content: "",
-    seo: {
-      metaTitle: "NSERC Research Grants Canada 2026: Complete Guide — Apply ",
-        metaDescription: "Learn how to qualify and apply for NSERC Research Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
-        intent: "innovation",
-        seoVersion: 1,
-        seoUpdatedAt: "2026-06-30"
-    }, shortAnswer: "To apply for NSERC Research Grants Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding. Funding available: up to $350K.",
-    metrics: [
-      { label: 'I2I', value: '$350K', description: 'Tech Transfer', color: 'text-green-600', iconName: 'DollarSign' },
-      { label: 'Discovery', value: '$40K/yr', description: 'Basic Research', color: 'text-blue-600', iconName: 'Search' },
-      { label: 'Alliance', value: '$1M+', description: 'Industry collab', color: 'text-purple-600', iconName: 'Handshake' },
-      { label: 'Duration', value: '1-5 yr', description: 'Multi-year', color: 'text-orange-600', iconName: 'Clock' }
-    ],
-    expertTip: {
-      title: "University Affiliation Required",
-      type: 'warning',
-      content: "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI."
+  "id": 63,
+  "slug": "nserc-research-grants-canada",
+  "title": "NSERC Research Grants Canada 2026 | Natural Sciences & Engineering Funding Guide",
+  "excerpt": "Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding.",
+  "category": "Canada News",
+  "categoryColor": "bg-red-100 text-red-800",
+  "author": "Ashwani K.",
+  "date": "2025-12-01",
+  "readTime": "10 min read",
+  "image": "/images/blog/canada-grants-theme.png",
+  "featured": false,
+  "type": "grant-news",
+  "relatedLinks": [
+    {
+      "title": "Scale-Up Focus",
+      "href": "/blog/innovation-superclusters-2026",
+      "description": "🇨🇦 Canada..."
     },
-
-    faq: [
+    {
+      "title": "Pick the Right SBA Program",
+      "href": "/guides/apply-irap-government-grants",
+      "description": "Detailed walkthrough of applying for IRAP government funding for innovation projects...."
+    },
+    {
+      "title": "Target ",
+      "href": "/guides/sba-growth-accelerator-fund-guide",
+      "description": "Guide to applying for SBA funding supporting business accelerators and incubators...."
+    }
+  ],
+  "content": "",
+  "seo": {
+    "metaTitle": "NSERC Research Grants Canada 2026: Complete Guide — Apply ",
+    "metaDescription": "Learn how to qualify and apply for NSERC Research Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+    "intent": "innovation",
+    "seoVersion": 1,
+    "seoUpdatedAt": "2026-06-30"
+  },
+  "shortAnswer": "To apply for NSERC Research Grants Canada 2026, start by reviewing the eligibility criteria and preparing a project proposal. Complete guide to NSERC research grants including Idea to Innovation (I2I) grants up to $350K. University-industry partnerships and technology transfer funding. Funding available: up to $350K.",
+  "shortAnswerQuestion": "How can my business apply for NSERC Research Grants Canada 2026 in 2026?",
+  "faq": [
+    {
+      "question": "Is NSERC only for university professors?",
+      "answer": "While NSERC Discovery Grants target academics, programs like <strong>Alliance Grants</strong> are designed specifically to fund R&D partnerships between Canadian businesses and academic researchers."
+    },
+    {
+      "question": "How much does a business have to contribute to an NSERC Alliance Grant?",
+      "answer": "It depends on the company size. Small-to-medium enterprises (SMEs) typically contribute <strong>between 10% and 33%</strong> of the project cost in cash, while NSERC covers the remaining 67% to 90%."
+    },
+    {
+      "question": "Does NSERC fund software development?",
+      "answer": "Only if the software involves <strong>fundamental research or addressing significant technical uncertainty</strong>. NSERC does not fund routine software engineering, UI design, or simple app development."
+    }
+  ],
+  "metrics": [
+    {
+      "label": "I2I",
+      "value": "$350K",
+      "description": "Tech Transfer",
+      "color": "text-green-600",
+      "iconName": "DollarSign"
+    },
+    {
+      "label": "Discovery",
+      "value": "$40K/yr",
+      "description": "Basic Research",
+      "color": "text-blue-600",
+      "iconName": "Search"
+    },
+    {
+      "label": "Alliance",
+      "value": "$1M+",
+      "description": "Industry collab",
+      "color": "text-purple-600",
+      "iconName": "Handshake"
+    },
+    {
+      "label": "Duration",
+      "value": "1-5 yr",
+      "description": "Multi-year",
+      "color": "text-orange-600",
+      "iconName": "Clock"
+    }
+  ],
+  "expertTip": {
+    "title": "University Affiliation Required",
+    "type": "warning",
+    "content": "NSERC grants require a <strong>principal investigator at a Canadian university</strong>. If you're a startup, partner with a professor who can be your PI."
+  },
+  "comparisonTable": {
+    "title": "NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide Funding Options Overview",
+    "programs": [
       {
-        question: "Is NSERC only for university professors?",
-        answer: "While NSERC Discovery Grants target academics, programs like <strong>Alliance Grants</strong> are designed specifically to fund R&D partnerships between Canadian businesses and academic researchers."
+        "program": "Core NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide Grant",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Eligible Applicants",
+        "timeline": "Standard Review"
       },
       {
-        question: "How much does a business have to contribute to an NSERC Alliance Grant?",
-        answer: "It depends on the company size. Small-to-medium enterprises (SMEs) typically contribute <strong>between 10% and 33%</strong> of the project cost in cash, while NSERC covers the remaining 67% to 90%."
+        "program": "Related Provincial Match",
+        "amount": "Up to 50%",
+        "equity": "0%",
+        "bestFor": "Expansion Projects",
+        "timeline": "45 Days"
       },
       {
-        question: "Does NSERC fund software development?",
-        answer: "Only if the software involves <strong>fundamental research or addressing significant technical uncertainty</strong>. NSERC does not fund routine software engineering, UI design, or simple app development."
+        "program": "Federal Support Program",
+        "amount": "Varies",
+        "equity": "Non-dilutive",
+        "bestFor": "Scaling Businesses",
+        "timeline": "90 Days"
       }
-    ],
-    eligibleCheck: true,
-    inlineCTA: {
-      title: "Need expert help applying for grants?",
-      description: "Our funding specialists can help you navigate government programs and maximize your funding potential.",
-      buttonText: "Get Funding Assistance",
-      buttonLink: "/contact"
+    ]
+  },
+  "jumpLinks": [
+    {
+      "title": "Overview",
+      "id": "overview"
     },
-    jumpLinks: [
-      { title: "Overview", id: "overview" },
-      { title: "Eligibility Requirements", id: "eligibility" },
-      { title: "How to Apply", id: "how-to-apply" }
-    ],
-      comparisonTable: {
-              "title": "NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide Funding Options Overview",
-              "programs": [
-                  {
-                      "program": "Core NSERC Research Grants Canada  | Natural Sciences & Engineering Funding Guide Grant",
-                      "amount": "Varies",
-                      "equity": "Non-dilutive",
-                      "bestFor": "Eligible Applicants",
-                      "timeline": "Standard Review"
-                  },
-                  {
-                      "program": "Related Provincial Match",
-                      "amount": "Up to 50%",
-                      "equity": "0%",
-                      "bestFor": "Expansion Projects",
-                      "timeline": "45 Days"
-                  },
-                  {
-                      "program": "Federal Support Program",
-                      "amount": "Varies",
-                      "equity": "Non-dilutive",
-                      "bestFor": "Scaling Businesses",
-                      "timeline": "90 Days"
-                  }
-              ]
-          }
+    {
+      "title": "Eligibility Requirements",
+      "id": "eligibility"
+    },
+    {
+      "title": "How to Apply",
+      "id": "how-to-apply"
+    }
+  ],
+  "eligibleCheck": true,
+  "inlineCTA": {
+    "title": "Need expert help applying for grants?",
+    "description": "Our funding specialists can help you navigate government programs and maximize your funding potential.",
+    "buttonText": "Get Funding Assistance",
+    "buttonLink": "/contact"
+  }
 };
 
 export default post;

@@ -6,7 +6,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.43,
-    "opportunityScore": 62,
+    "opportunityScore": 66,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -32,7 +44,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 48,
+    "opportunityScore": 46,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Maintenance Cost (penalty)",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -58,7 +81,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 48,
+    "opportunityScore": 46,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Maintenance Cost (penalty)",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -84,7 +118,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.5,
-    "opportunityScore": 61,
+    "opportunityScore": 65,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -99,7 +145,7 @@
     ],
     "confidenceLevel": "Low",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -110,7 +156,18 @@
     "clicks": 5,
     "ctr": 0.56,
     "position": 12.43,
-    "opportunityScore": 44,
+    "opportunityScore": 43,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -136,7 +193,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.33,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -162,7 +231,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.04,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -188,7 +269,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.52,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -214,7 +307,18 @@
     "clicks": 4,
     "ctr": 1,
     "position": 9.55,
-    "opportunityScore": 65,
+    "opportunityScore": 67,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -229,7 +333,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -240,7 +344,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 55,
+    "opportunityScore": 53,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -266,7 +382,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 58,
+    "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -292,7 +420,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.45,
-    "opportunityScore": 64,
+    "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -307,7 +446,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -318,11 +457,22 @@
     "clicks": 2,
     "ctr": 0.14,
     "position": 40.51,
-    "opportunityScore": 72,
-    "priorityBucket": "High",
+    "opportunityScore": 68,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Ranking Opportunity (position)"
+      ],
+      "negatives": [
+        "CTR Opportunity"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
-    "expectedRoi": "High",
+    "expectedRoi": "Medium",
     "playbookType": "Content Expansion",
     "recommendation": "Expand Secondary Keywords & Internal Linking",
     "playbookTasks": [
@@ -333,7 +483,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -344,7 +494,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.62,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -370,7 +532,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.53,
-    "opportunityScore": 60,
+    "opportunityScore": 64,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -396,7 +570,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.72,
-    "opportunityScore": 51,
+    "opportunityScore": 55,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -423,6 +609,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 47,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -448,7 +645,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.83,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -474,7 +683,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.09,
-    "opportunityScore": 64,
+    "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -489,7 +709,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -500,7 +720,19 @@
     "clicks": 1,
     "ctr": 0.26,
     "position": 8.5,
-    "opportunityScore": 57,
+    "opportunityScore": 59,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -526,7 +758,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.9,
-    "opportunityScore": 65,
+    "opportunityScore": 67,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -541,7 +784,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -552,7 +795,19 @@
     "clicks": 2,
     "ctr": 0.2,
     "position": 36.75,
-    "opportunityScore": 59,
+    "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Ranking Opportunity (position)",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -578,7 +833,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.26,
-    "opportunityScore": 62,
+    "opportunityScore": 64,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -604,11 +871,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.78,
-    "opportunityScore": 47,
-    "priorityBucket": "Low",
+    "opportunityScore": 51,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -631,6 +910,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -656,7 +947,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.26,
-    "opportunityScore": 62,
+    "opportunityScore": 64,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -682,7 +985,18 @@
     "clicks": 1,
     "ctr": 1.03,
     "position": 9.1,
-    "opportunityScore": 63,
+    "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -709,6 +1023,18 @@
     "ctr": 0,
     "position": 12.64,
     "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -734,7 +1060,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.5,
-    "opportunityScore": 63,
+    "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -761,6 +1099,18 @@
     "ctr": 0,
     "position": 8.81,
     "opportunityScore": 50,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -787,6 +1137,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 41,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -812,7 +1173,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.66,
-    "opportunityScore": 67,
+    "opportunityScore": 69,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -827,7 +1199,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -838,7 +1210,18 @@
     "clicks": 4,
     "ctr": 0.69,
     "position": 11.86,
-    "opportunityScore": 56,
+    "opportunityScore": 54,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -865,6 +1248,18 @@
     "ctr": 0,
     "position": 6.75,
     "opportunityScore": 70,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -879,7 +1274,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -890,7 +1285,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 10.07,
-    "opportunityScore": 69,
+    "opportunityScore": 67,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -905,7 +1311,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -916,7 +1322,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.22,
-    "opportunityScore": 67,
+    "opportunityScore": 69,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -931,7 +1348,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -943,6 +1360,17 @@
     "ctr": 0,
     "position": 8.65,
     "opportunityScore": 69,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -957,7 +1385,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -968,7 +1396,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 29.83,
-    "opportunityScore": 67,
+    "opportunityScore": 65,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Ranking Opportunity (position)",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -983,7 +1423,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -995,6 +1435,18 @@
     "ctr": 0,
     "position": 10.38,
     "opportunityScore": 59,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1021,6 +1473,18 @@
     "ctr": 0,
     "position": 12.06,
     "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1046,7 +1510,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 39.95,
-    "opportunityScore": 64,
+    "opportunityScore": 60,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "GSC Confidence (data quality)",
+        "Ranking Opportunity (position)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1061,7 +1537,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -1072,7 +1548,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.99,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1099,6 +1587,18 @@
     "ctr": 0,
     "position": 12.63,
     "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1125,6 +1625,18 @@
     "ctr": 0,
     "position": 14.44,
     "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1151,6 +1663,18 @@
     "ctr": 0,
     "position": 14.97,
     "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1176,7 +1700,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.25,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -1203,6 +1739,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 58,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -1229,6 +1777,18 @@
     "ctr": 0,
     "position": 14.46,
     "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Commercial Intent (URL signals)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -1254,7 +1814,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.74,
-    "opportunityScore": 63,
+    "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -1280,7 +1852,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 61,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -1306,7 +1890,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 13.97,
-    "opportunityScore": 52,
+    "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Search Volume",
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1332,7 +1928,19 @@
     "clicks": 1,
     "ctr": 0.27,
     "position": 8.77,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1358,7 +1966,19 @@
     "clicks": 1,
     "ctr": 0.1,
     "position": 29.96,
-    "opportunityScore": 65,
+    "opportunityScore": 63,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Ranking Opportunity (position)",
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Competitor Feasibility"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1373,7 +1993,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -1384,7 +2004,19 @@
     "clicks": 1,
     "ctr": 0.05,
     "position": 14.24,
-    "opportunityScore": 62,
+    "opportunityScore": 60,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -1410,7 +2042,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 55,
+    "opportunityScore": 52,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1436,7 +2080,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.87,
-    "opportunityScore": 65,
+    "opportunityScore": 67,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -1463,6 +2119,18 @@
     "ctr": 0,
     "position": 12.5,
     "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -1477,7 +2145,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -1488,7 +2156,18 @@
     "clicks": 1,
     "ctr": 1.49,
     "position": 9.36,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
@@ -1514,7 +2193,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.49,
-    "opportunityScore": 65,
+    "opportunityScore": 69,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -1540,7 +2231,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.71,
-    "opportunityScore": 56,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Business Impact (funnel depth)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -1566,7 +2269,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.74,
-    "opportunityScore": 55,
+    "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Business Impact (funnel depth)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -1592,7 +2307,18 @@
     "clicks": 1,
     "ctr": 0.04,
     "position": 8.86,
-    "opportunityScore": 50,
+    "opportunityScore": 52,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -1618,7 +2344,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.69,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Competitor Feasibility"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1645,6 +2383,17 @@
     "ctr": 0,
     "position": 23.77,
     "opportunityScore": 73,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Competitor Feasibility"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -1670,11 +2419,23 @@
     "clicks": 3,
     "ctr": 0.08,
     "position": 45.78,
-    "opportunityScore": 74,
-    "priorityBucket": "High",
+    "opportunityScore": 69,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Ranking Opportunity (position)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Competitor Feasibility"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
-    "expectedRoi": "High",
+    "expectedRoi": "Medium",
     "playbookType": "Content Expansion",
     "recommendation": "Expand Secondary Keywords & Internal Linking",
     "playbookTasks": [
@@ -1685,7 +2446,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -1696,7 +2457,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 67,
+    "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -1711,7 +2484,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": false
   },
@@ -1722,7 +2495,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 5.77,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1748,7 +2533,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 53,
+    "opportunityScore": 51,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1774,11 +2570,22 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.86,
-    "opportunityScore": 49,
-    "priorityBucket": "Low",
+    "opportunityScore": 51,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Commercial Intent (URL signals)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -1800,11 +2607,22 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.97,
-    "opportunityScore": 47,
-    "priorityBucket": "Low",
+    "opportunityScore": 51,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -1826,7 +2644,19 @@
     "clicks": 3,
     "ctr": 0.4,
     "position": 10.06,
-    "opportunityScore": 52,
+    "opportunityScore": 51,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -1853,6 +2683,18 @@
     "ctr": 0,
     "position": 10.61,
     "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Competitor Feasibility",
+        "Business Impact (funnel depth)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Commercial Intent (URL signals)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -1878,7 +2720,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.03,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -1904,7 +2758,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.76,
-    "opportunityScore": 51,
+    "opportunityScore": 53,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -1931,6 +2797,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -1956,7 +2833,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 10.04,
-    "opportunityScore": 38,
+    "opportunityScore": 40,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -1983,6 +2871,16 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 33,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2008,7 +2906,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 11.9,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2035,6 +2945,18 @@
     "ctr": 0,
     "position": 7.15,
     "opportunityScore": 50,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2060,7 +2982,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.02,
-    "opportunityScore": 62,
+    "opportunityScore": 64,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2087,6 +3021,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 57,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2112,7 +3058,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.01,
-    "opportunityScore": 64,
+    "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2138,7 +3096,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.2,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2164,7 +3134,19 @@
     "clicks": 8,
     "ctr": 0.47,
     "position": 8.9,
-    "opportunityScore": 62,
+    "opportunityScore": 64,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2179,7 +3161,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -2190,7 +3172,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 60,
+    "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2216,7 +3210,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 10.17,
-    "opportunityScore": 38,
+    "opportunityScore": 40,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2242,7 +3247,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.74,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Competitor Feasibility"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2268,7 +3285,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.02,
-    "opportunityScore": 44,
+    "opportunityScore": 46,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2294,11 +3323,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 51,
-    "priorityBucket": "Medium",
+    "opportunityScore": 49,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Competitor Feasibility",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
+    "priorityBucket": "Low",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
-    "expectedRoi": "Medium",
+    "expectedRoi": "Low",
     "playbookType": "Launch Campaign",
     "recommendation": "Request Manual Search Console Indexation",
     "playbookTasks": [
@@ -2321,6 +3362,18 @@
     "ctr": 0,
     "position": 13.79,
     "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Competitor Feasibility",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Commercial Intent (URL signals)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -2346,7 +3399,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 55,
+    "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -2373,6 +3438,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -2399,6 +3476,18 @@
     "ctr": 0,
     "position": 11.55,
     "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2424,7 +3513,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.61,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -2450,7 +3551,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.47,
-    "opportunityScore": 51,
+    "opportunityScore": 53,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 8,
@@ -2476,7 +3589,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 12.55,
-    "opportunityScore": 75,
+    "opportunityScore": 77,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -2502,7 +3627,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.85,
-    "opportunityScore": 78,
+    "opportunityScore": 80,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Intent Stability (evergreen)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Ranking Opportunity (position)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -2528,7 +3665,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.17,
-    "opportunityScore": 78,
+    "opportunityScore": 80,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Intent Stability (evergreen)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -2543,7 +3691,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -2554,7 +3702,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 75,
+    "opportunityScore": 73,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -2569,7 +3729,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -2580,7 +3740,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.22,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -2606,7 +3778,16 @@
     "clicks": 3,
     "ctr": 0.61,
     "position": 10.33,
-    "opportunityScore": 64,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Strategic Importance (cluster)"
+      ],
+      "negatives": []
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -2621,7 +3802,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -2632,7 +3813,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.51,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -2658,7 +3851,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.75,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -2673,7 +3878,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -2684,7 +3889,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.27,
-    "opportunityScore": 50,
+    "opportunityScore": 52,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2710,7 +3926,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.64,
-    "opportunityScore": 56,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Business Impact (funnel depth)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -2736,7 +3964,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.19,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2763,6 +4003,18 @@
     "ctr": 0,
     "position": 14.05,
     "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2788,7 +4040,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.78,
-    "opportunityScore": 54,
+    "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2814,11 +4078,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.8,
-    "opportunityScore": 48,
-    "priorityBucket": "Low",
+    "opportunityScore": 50,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -2841,6 +4117,18 @@
     "ctr": 0.31,
     "position": 8.65,
     "opportunityScore": 50,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -2866,11 +4154,22 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.65,
-    "opportunityScore": 48,
-    "priorityBucket": "Low",
+    "opportunityScore": 50,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -2893,6 +4192,18 @@
     "ctr": 0,
     "position": 10.02,
     "opportunityScore": 57,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Competitor Feasibility",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2918,11 +4229,22 @@
     "clicks": 1,
     "ctr": 0.01,
     "position": 8.29,
-    "opportunityScore": 68,
-    "priorityBucket": "Medium",
+    "opportunityScore": 70,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
+    "priorityBucket": "High",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
-    "expectedRoi": "Medium",
+    "expectedRoi": "High",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -2933,7 +4255,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -2944,7 +4266,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.19,
-    "opportunityScore": 56,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Competitor Feasibility"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2970,7 +4304,19 @@
     "clicks": 1,
     "ctr": 0.3,
     "position": 9.69,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -2996,7 +4342,19 @@
     "clicks": 2,
     "ctr": 0.04,
     "position": 8.67,
-    "opportunityScore": 54,
+    "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 8,
@@ -3011,7 +4369,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -3022,7 +4380,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.23,
-    "opportunityScore": 42,
+    "opportunityScore": 44,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3049,6 +4418,17 @@
     "ctr": 0,
     "position": 10.58,
     "opportunityScore": 40,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3074,7 +4454,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 5.96,
-    "opportunityScore": 52,
+    "opportunityScore": 56,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "GSC Confidence (data quality)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3100,7 +4491,15 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 23,
+    "opportunityScore": 22,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [],
+      "negatives": [
+        "Maintenance Cost (penalty)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
@@ -3126,7 +4525,18 @@
     "clicks": 1,
     "ctr": 0.47,
     "position": 19.44,
-    "opportunityScore": 64,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Ranking Opportunity (position)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3152,7 +4562,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.33,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -3178,11 +4599,22 @@
     "clicks": 0,
     "ctr": 0,
     "position": 60.69,
-    "opportunityScore": 71,
-    "priorityBucket": "High",
+    "opportunityScore": 67,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
-    "expectedRoi": "High",
+    "expectedRoi": "Medium",
     "playbookType": "Structural Overhaul",
     "recommendation": "Refactor Heading Hierarchy & Layout",
     "playbookTasks": [
@@ -3193,7 +4625,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -3204,7 +4636,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.19,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Search Volume"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3231,6 +4675,18 @@
     "ctr": 0,
     "position": 7.23,
     "opportunityScore": 46,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 8,
@@ -3256,7 +4712,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 5.19,
-    "opportunityScore": 63,
+    "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -3283,6 +4751,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3308,7 +4787,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.57,
-    "opportunityScore": 46,
+    "opportunityScore": 48,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Maintenance Cost (penalty)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3334,7 +4825,17 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.14,
-    "opportunityScore": 34,
+    "opportunityScore": 38,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Maintenance Cost (penalty)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
@@ -3361,6 +4862,18 @@
     "ctr": 0,
     "position": 7.07,
     "opportunityScore": 63,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3386,7 +4899,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 58,
+    "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3412,7 +4937,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.11,
-    "opportunityScore": 64,
+    "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -3427,7 +4963,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -3438,11 +4974,20 @@
     "clicks": 0,
     "ctr": 0,
     "position": 10.44,
-    "opportunityScore": 70,
-    "priorityBucket": "High",
+    "opportunityScore": 68,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": []
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
-    "expectedRoi": "High",
+    "expectedRoi": "Medium",
     "playbookType": "Title + Content Refresh",
     "recommendation": "CTR Tuning & Deep Content Refresh",
     "playbookTasks": [
@@ -3453,7 +4998,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -3464,7 +5009,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 6.21,
-    "opportunityScore": 58,
+    "opportunityScore": 60,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3491,6 +5048,16 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 43,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3517,6 +5084,17 @@
     "ctr": 0,
     "position": 10.17,
     "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3542,11 +5120,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 10.59,
-    "opportunityScore": 48,
-    "priorityBucket": "Low",
+    "opportunityScore": 50,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Search Volume",
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "Title + Content Refresh",
     "recommendation": "CTR Tuning & Deep Content Refresh",
     "playbookTasks": [
@@ -3569,6 +5159,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 43,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
@@ -3594,7 +5195,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.93,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
@@ -3620,11 +5233,22 @@
     "clicks": 2,
     "ctr": 0.25,
     "position": 32.63,
-    "opportunityScore": 72,
-    "priorityBucket": "High",
+    "opportunityScore": 68,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "GSC Confidence (data quality)",
+        "Ranking Opportunity (position)"
+      ],
+      "negatives": [
+        "CTR Opportunity"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 5,
-    "expectedRoi": "High",
+    "expectedRoi": "Medium",
     "playbookType": "Content Expansion",
     "recommendation": "Expand Secondary Keywords & Internal Linking",
     "playbookTasks": [
@@ -3635,7 +5259,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -3646,11 +5270,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.21,
-    "opportunityScore": 49,
-    "priorityBucket": "Low",
+    "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -3673,6 +5309,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3699,6 +5347,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 43,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Low",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3724,7 +5383,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 24.88,
-    "opportunityScore": 55,
+    "opportunityScore": 57,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Ranking Opportunity (position)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3751,6 +5422,18 @@
     "ctr": 0,
     "position": 15.31,
     "opportunityScore": 50,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3776,7 +5459,19 @@
     "clicks": 2,
     "ctr": 0.27,
     "position": 8.69,
-    "opportunityScore": 51,
+    "opportunityScore": 53,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -3803,6 +5498,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3829,6 +5535,16 @@
     "ctr": 0,
     "position": 12.02,
     "opportunityScore": 55,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
@@ -3854,7 +5570,18 @@
     "clicks": 2,
     "ctr": 1.31,
     "position": 8.49,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "calculator-only",
     "engineeringEffort": 3,
@@ -3881,6 +5608,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3906,7 +5645,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.18,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3933,6 +5684,17 @@
     "ctr": 0,
     "position": 11.94,
     "opportunityScore": 64,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3958,7 +5720,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 5.87,
-    "opportunityScore": 64,
+    "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -3984,7 +5758,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 75,
+    "opportunityScore": 73,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -3999,7 +5785,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": false
   },
@@ -4010,7 +5796,19 @@
     "clicks": 1,
     "ctr": 1.43,
     "position": 14.4,
-    "opportunityScore": 68,
+    "opportunityScore": 65,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Commercial Intent (URL signals)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -4036,7 +5834,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 75,
+    "opportunityScore": 73,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Business Impact (funnel depth)",
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "High",
     "monetizationTier": "direct-filing",
     "engineeringEffort": 8,
@@ -4051,7 +5861,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Cluster Hub",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": false
   },
@@ -4062,7 +5872,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 57,
+    "opportunityScore": 54,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4088,7 +5910,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.56,
-    "opportunityScore": 62,
+    "opportunityScore": 66,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4115,6 +5949,16 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 52,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4140,7 +5984,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 53,
+    "opportunityScore": 51,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -4166,7 +6021,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 12.72,
-    "opportunityScore": 59,
+    "opportunityScore": 61,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Search Volume",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -4192,7 +6059,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.71,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -4207,7 +6086,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -4218,7 +6097,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.38,
-    "opportunityScore": 65,
+    "opportunityScore": 67,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4245,6 +6135,18 @@
     "ctr": 0,
     "position": 7.63,
     "opportunityScore": 50,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -4270,7 +6172,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.47,
-    "opportunityScore": 64,
+    "opportunityScore": 66,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4296,7 +6210,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.06,
-    "opportunityScore": 54,
+    "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -4322,7 +6248,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 4.79,
-    "opportunityScore": 59,
+    "opportunityScore": 63,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -4348,11 +6286,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.14,
-    "opportunityScore": 49,
-    "priorityBucket": "Low",
+    "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "GSC Confidence (data quality)"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
-    "expectedRoi": "Low",
+    "expectedRoi": "Medium",
     "playbookType": "CTR Rescue",
     "recommendation": "Optimize Title & Meta Snippet (CTR Rescue)",
     "playbookTasks": [
@@ -4374,7 +6324,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.12,
-    "opportunityScore": 52,
+    "opportunityScore": 54,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -4400,7 +6362,19 @@
     "clicks": 8,
     "ctr": 0.42,
     "position": 7.6,
-    "opportunityScore": 52,
+    "opportunityScore": 54,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Search Volume"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Business Impact (funnel depth)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -4415,7 +6389,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Isolated Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -4426,7 +6400,19 @@
     "clicks": 34,
     "ctr": 1.9,
     "position": 10.41,
-    "opportunityScore": 61,
+    "opportunityScore": 57,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "GSC Confidence (data quality)",
+        "Competitor Feasibility",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -4440,7 +6426,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Isolated Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -4451,7 +6437,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.58,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -4477,7 +6475,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.62,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 3,
@@ -4503,7 +6513,18 @@
     "clicks": 1,
     "ctr": 1.08,
     "position": 8.45,
-    "opportunityScore": 50,
+    "opportunityScore": 52,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Business Impact (funnel depth)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "awareness-only",
     "engineeringEffort": 3,
@@ -4530,6 +6551,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4555,7 +6587,18 @@
     "clicks": 0,
     "ctr": 0,
     "position": 5.79,
-    "opportunityScore": 58,
+    "opportunityScore": 62,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4581,7 +6624,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 8.82,
-    "opportunityScore": 58,
+    "opportunityScore": 62,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4607,7 +6662,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 9.52,
-    "opportunityScore": 60,
+    "opportunityScore": 62,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Intent Stability (evergreen)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4634,6 +6701,18 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 54,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -4660,6 +6739,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4685,7 +6775,19 @@
     "clicks": 1,
     "ctr": 0.07,
     "position": 39.83,
-    "opportunityScore": 61,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Ranking Opportunity (position)",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4700,7 +6802,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Supporting Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -4711,7 +6813,18 @@
     "clicks": 2,
     "ctr": 1.12,
     "position": 8.52,
-    "opportunityScore": 62,
+    "opportunityScore": 64,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4737,7 +6850,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.88,
-    "opportunityScore": 61,
+    "opportunityScore": 63,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4763,7 +6888,18 @@
     "clicks": 3,
     "ctr": 0.2,
     "position": 8.42,
-    "opportunityScore": 54,
+    "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "CTR Opportunity",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)",
+        "Commercial Intent (URL signals)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4790,6 +6926,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4815,7 +6962,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 120,
-    "opportunityScore": 61,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Business Impact (funnel depth)",
+        "Competitor Feasibility"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "strategy-audit",
     "engineeringEffort": 8,
@@ -4842,6 +7001,17 @@
     "ctr": 0,
     "position": 120,
     "opportunityScore": 53,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Ranking Opportunity (position)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4867,7 +7037,19 @@
     "clicks": 0,
     "ctr": 0,
     "position": 7.81,
-    "opportunityScore": 61,
+    "opportunityScore": 65,
+    "confidenceScore": 20,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "GSC Confidence (data quality)",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4893,7 +7075,19 @@
     "clicks": 7,
     "ctr": 1.67,
     "position": 19.51,
-    "opportunityScore": 60,
+    "opportunityScore": 58,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Commercial Intent (URL signals)",
+        "Ranking Opportunity (position)",
+        "Maintenance Cost (penalty)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -4919,6 +7113,16 @@
     "ctr": 0,
     "position": 12.15,
     "opportunityScore": 56,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Intent Stability (evergreen)",
+        "CTR Opportunity"
+      ],
+      "negatives": [
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4944,7 +7148,19 @@
     "clicks": 2,
     "ctr": 0.29,
     "position": 30.94,
-    "opportunityScore": 62,
+    "opportunityScore": 57,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "GSC Confidence (data quality)",
+        "Ranking Opportunity (position)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Strategic Importance (cluster)"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -4970,7 +7186,16 @@
     "clicks": 0,
     "ctr": 0,
     "position": 29.01,
-    "opportunityScore": 74,
+    "opportunityScore": 72,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Strategic Importance (cluster)",
+        "GSC Confidence (data quality)",
+        "Ranking Opportunity (position)"
+      ],
+      "negatives": []
+    },
     "priorityBucket": "High",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 8,
@@ -4985,7 +7210,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Pillar Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -4996,7 +7221,19 @@
     "clicks": 1,
     "ctr": 0.02,
     "position": 65.21,
-    "opportunityScore": 65,
+    "opportunityScore": 61,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Strategic Importance (cluster)",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity",
+        "Competitor Feasibility"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -5011,7 +7248,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Pillar Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -5022,7 +7259,18 @@
     "clicks": 7,
     "ctr": 0.32,
     "position": 43.14,
-    "opportunityScore": 69,
+    "opportunityScore": 67,
+    "confidenceScore": 60,
+    "reasonScore": {
+      "positives": [
+        "Strategic Importance (cluster)",
+        "Ranking Opportunity (position)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "CTR Opportunity"
+      ]
+    },
     "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
@@ -5037,7 +7285,7 @@
     ],
     "confidenceLevel": "Medium",
     "clusterType": "Pillar Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   },
@@ -5048,11 +7296,23 @@
     "clicks": 0,
     "ctr": 0,
     "position": 56.62,
-    "opportunityScore": 70,
-    "priorityBucket": "High",
+    "opportunityScore": 66,
+    "confidenceScore": 100,
+    "reasonScore": {
+      "positives": [
+        "Strategic Importance (cluster)",
+        "GSC Confidence (data quality)",
+        "Commercial Intent (URL signals)"
+      ],
+      "negatives": [
+        "Competitor Feasibility",
+        "CTR Opportunity"
+      ]
+    },
+    "priorityBucket": "Medium",
     "monetizationTier": "report-bundle",
     "engineeringEffort": 3,
-    "expectedRoi": "High",
+    "expectedRoi": "Medium",
     "playbookType": "Content Expansion",
     "recommendation": "Expand Secondary Keywords & Internal Linking",
     "playbookTasks": [
@@ -5063,7 +7323,7 @@
     ],
     "confidenceLevel": "High",
     "clusterType": "Pillar Page",
-    "status": "Backlog",
+    "status": "Optimized",
     "owner": "Ashwani",
     "isIndexed": true
   }

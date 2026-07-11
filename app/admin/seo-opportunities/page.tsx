@@ -76,45 +76,47 @@ export default async function SEOOpportunitiesPage({
     console.error('Error loading seo-backlog.json:', err);
   }
 
-  const total = opportunities.length;
+  const activeOpportunities = opportunities.filter(o => o.status !== 'Optimized');
+  const total = activeOpportunities.length;
+  const optimizedCount = opportunities.filter(o => o.status === 'Optimized').length;
 
   // ── Priority Bands ──────────────────────────────────────────────
-  const exceptional = opportunities.filter(o => o.opportunityScore >= 85).length;
-  const high = opportunities.filter(o => o.opportunityScore >= 70 && o.opportunityScore < 85).length;
-  const medium = opportunities.filter(o => o.opportunityScore >= 50 && o.opportunityScore < 70).length;
-  const low = opportunities.filter(o => o.opportunityScore < 50).length;
+  const exceptional = activeOpportunities.filter(o => o.opportunityScore >= 85).length;
+  const high = activeOpportunities.filter(o => o.opportunityScore >= 70 && o.opportunityScore < 85).length;
+  const medium = activeOpportunities.filter(o => o.opportunityScore >= 50 && o.opportunityScore < 70).length;
+  const low = activeOpportunities.filter(o => o.opportunityScore < 50).length;
 
   // ── Revenue Funnel ───────────────────────────────────────────────
-  const funnelFiling   = opportunities.filter(o => o.monetizationTier === 'direct-filing').length;
-  const funnelAudit    = opportunities.filter(o => o.monetizationTier === 'strategy-audit').length;
-  const funnelReports  = opportunities.filter(o => o.monetizationTier === 'report-bundle').length;
-  const funnelCalc     = opportunities.filter(o => o.monetizationTier === 'calculator-only').length;
-  const funnelAware    = opportunities.filter(o => o.monetizationTier === 'awareness-only').length;
+  const funnelFiling   = activeOpportunities.filter(o => o.monetizationTier === 'direct-filing').length;
+  const funnelAudit    = activeOpportunities.filter(o => o.monetizationTier === 'strategy-audit').length;
+  const funnelReports  = activeOpportunities.filter(o => o.monetizationTier === 'report-bundle').length;
+  const funnelCalc     = activeOpportunities.filter(o => o.monetizationTier === 'calculator-only').length;
+  const funnelAware    = activeOpportunities.filter(o => o.monetizationTier === 'awareness-only').length;
 
   // ── Intent Stability ─────────────────────────────────────────────
-  const evergreen   = opportunities.filter(o =>
+  const evergreen   = activeOpportunities.filter(o =>
     o.url.match(/(vs-|-vs-|how-to-stack|difference|compare)/) ||
     (o.url.match(/(sred|irap|csbfp|canexport)/) && !o.url.match(/2026|2025|forecast|deadline/))
   ).length;
-  const seasonal    = opportunities.filter(o => o.url.match(/(forecast|early-bird|-2026|-2025|archive)/)).length;
-  const volatile_   = opportunities.filter(o => o.url.match(/(deadlines|last-chance|q1-|q4-|october-)/)).length;
+  const seasonal    = activeOpportunities.filter(o => o.url.match(/(forecast|early-bird|-2026|-2025|archive)/)).length;
+  const volatile_   = activeOpportunities.filter(o => o.url.match(/(deadlines|last-chance|q1-|q4-|october-)/)).length;
   const semiStable  = total - evergreen - seasonal - volatile_;
 
   // ── Maintenance Cost ─────────────────────────────────────────────
-  const maintHigh   = opportunities.filter(o => o.url.match(/(deadlines|last-chance|news)/)).length;
-  const maintMed    = opportunities.filter(o => o.url.match(/(forecast|early-bird|q1-|q4-)/)).length;
+  const maintHigh   = activeOpportunities.filter(o => o.url.match(/(deadlines|last-chance|news)/)).length;
+  const maintMed    = activeOpportunities.filter(o => o.url.match(/(forecast|early-bird|q1-|q4-)/)).length;
   const maintLow    = total - maintHigh - maintMed;
 
   // ── Engineering Allocation ───────────────────────────────────────
-  const pbCtr       = opportunities.filter(o => o.playbookType === 'CTR Rescue' || o.playbookType === 'Title + Content Refresh' || o.playbookType === 'Snippet Enhancement').length;
-  const pbContent   = opportunities.filter(o => o.playbookType === 'Content Expansion' || o.playbookType === 'Structural Overhaul' || o.playbookType === 'Intent Realignment').length;
-  const pbAuthority = opportunities.filter(o => o.playbookType === 'Authority Build').length;
-  const pbLaunch    = opportunities.filter(o => o.playbookType === 'Launch Campaign').length;
+  const pbCtr       = activeOpportunities.filter(o => o.playbookType === 'CTR Rescue' || o.playbookType === 'Title + Content Refresh' || o.playbookType === 'Snippet Enhancement').length;
+  const pbContent   = activeOpportunities.filter(o => o.playbookType === 'Content Expansion' || o.playbookType === 'Structural Overhaul' || o.playbookType === 'Intent Realignment').length;
+  const pbAuthority = activeOpportunities.filter(o => o.playbookType === 'Authority Build').length;
+  const pbLaunch    = activeOpportunities.filter(o => o.playbookType === 'Launch Campaign').length;
 
   const pct = (n: number) => total > 0 ? Math.round((n / total) * 100) : 0;
 
   // ── Top 100 sorted ───────────────────────────────────────────────
-  const top100 = [...opportunities].sort((a, b) => b.opportunityScore - a.opportunityScore).slice(0, 100);
+  const top100 = [...activeOpportunities].sort((a, b) => b.opportunityScore - a.opportunityScore).slice(0, 100);
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col justify-between">
@@ -129,7 +131,7 @@ export default async function SEOOpportunitiesPage({
               <Compass className="w-8 h-8 text-indigo-600" /> Commercial Opportunity Portfolio
             </h2>
             <p className="mt-2 text-sm text-slate-600">
-              FSI Digital · {total} scored assets · 8-factor opportunity engine + confidence signal · v1.1
+              FSI Digital · {total} active backlog assets · {optimizedCount} optimized assets · 9-factor opportunity engine + confidence signal · v1.2
             </p>
           </div>
           <div className="mt-4 flex md:mt-0 md:ml-4 gap-2">
@@ -349,7 +351,14 @@ export default async function SEOOpportunitiesPage({
                           </div>
                         </td>
                         <td className="px-4 py-3 font-semibold text-slate-900 max-w-xs">
-                          <div className="font-mono text-xs text-slate-700 truncate max-w-[200px]">{item.url}</div>
+                          <div className="flex items-center gap-1.5 font-mono text-xs text-slate-700 truncate max-w-[200px]">
+                            {item.url}
+                            {item.status === 'Optimized' && (
+                              <span className="inline-flex items-center px-1.5 py-0.2 rounded-full text-[9px] font-bold bg-emerald-100 text-emerald-800 shrink-0">
+                                ✓ Optimized
+                              </span>
+                            )}
+                          </div>
                           <span className={`inline-flex items-center px-1.5 py-0.5 rounded text-[10px] mt-1 ${clusterBadge}`}>
                             {item.clusterType}
                           </span>

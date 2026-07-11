@@ -43,12 +43,12 @@ const LAST_VERIFIED = '2026-06-06';
 const profiles: Record<string, PriorityResearchProfile> = {
   '/usa/new-york': {
     route: '/usa/new-york',
-    seoTitle: 'New York Business Grants & Incentives: 2026 Research Guide',
-    seoDescription: 'Research New York small-business financing, innovation support, export assistance, and incentive programs using official Empire State Development sources.',
+    seoTitle: 'New York Business Grants & Incentives: Get 10 Years Tax-Free',
+    seoDescription: 'Research New York business grants, startup funding, and tax credits in 2026. Learn how to qualify for up to $250K matching funds and 10-year tax exemptions.',
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-11',
     programStatus: 'Multiple active programs',
     statusSummary: 'New York operates a portfolio of financing, innovation, export, and technical-assistance programs. Availability and intake rules differ by program.',
     decisionSummary: 'Start with the project you need to fund, then match it to the correct state, federal, or local route. Do not assume every incentive is a cash grant.',

@@ -29,6 +29,7 @@ import FundingStrategyBox from '@/components/blog/FundingStrategyBox';
 import RelatedFundingPaths from '@/components/blog/RelatedFundingPaths';
 import EligibilitySnapshot from '@/components/blog/EligibilitySnapshot';
 import NeedHelpApplying from '@/components/blog/NeedHelpApplying';
+import TrustChecklist from '@/components/blog/TrustChecklist';
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
 import { IntentStrategyCTA } from '@/components/editorial/IntentStrategyCTA';
@@ -119,6 +120,97 @@ const RELATED_PATHS_CONFIG: Record<string, {
     nextStepTitle: "AgriInnovate vs. SIF Stream 5 Guide",
     nextStepLink: "/blog/strategic-innovation-fund-canada-guide",
     nextStepDescription: "Deep dive comparison of federal agricultural co-investments against SIF capital.",
+    stepType: "Comparison"
+  },
+  'irap-industrial-research-assistance-program': {
+    currentPathTitle: "IRAP Wage Subsidy Guide",
+    nextStepTitle: "IRAP vs. SR&ED Stacking Playbook",
+    nextStepLink: "/blog/irap-vs-sred-difference-canada",
+    nextStepDescription: "Compare and stack NRC labor grants with federal scientific tax refunds.",
+    stepType: "Comparison"
+  },
+  'canexport-grants-2026': {
+    currentPathTitle: "CanExport Program Guide",
+    nextStepTitle: "Canada Digital & AI Innovation Guide",
+    nextStepLink: "/blog/canada-digital-ai-innovation-grants",
+    nextStepDescription: "Evaluate your digital scale-up matching funds alongside international expansion.",
+    stepType: "Program Guide"
+  },
+  'canada-clean-technology-innovation-grants': {
+    currentPathTitle: "Clean Technology Guide",
+    nextStepTitle: "IRAP vs. SR&ED Stacking Playbook",
+    nextStepLink: "/blog/irap-vs-sred-difference-canada",
+    nextStepDescription: "Learn how clean-tech companies stack salary matching and scientific tax credits.",
+    stepType: "Comparison"
+  },
+  'canada-digital-ai-innovation-grants': {
+    currentPathTitle: "Digital & AI Grants Guide",
+    nextStepTitle: "Technology Startup Grants Guide",
+    nextStepLink: "/blog/technology-startup-grants-2026",
+    nextStepDescription: "Discover further R&D funding and student talent matching frameworks.",
+    stepType: "Program Guide"
+  },
+  'sred-scientific-research-experimental-development': {
+    currentPathTitle: "SR&ED Tax Claim Guide",
+    nextStepTitle: "IRAP vs. SR&ED Stacking Playbook",
+    nextStepLink: "/blog/irap-vs-sred-difference-canada",
+    nextStepDescription: "Maximize your R&D refund using the latest scientific development guidelines.",
+    stepType: "Comparison"
+  },
+  'irap-vs-sred-difference-canada': {
+    currentPathTitle: "IRAP vs. SR&ED Comparison",
+    nextStepTitle: "SR&ED Tax Claim Guide",
+    nextStepLink: "/blog/sred-scientific-research-experimental-development",
+    nextStepDescription: "Deep dive back into the CRA's technical eligibility requirements.",
+    stepType: "Comparison"
+  },
+  'sred-tax-credits-vs-cdap-canadian-founders': {
+    currentPathTitle: "SR&ED vs. CDAP Playbook",
+    nextStepTitle: "IRAP vs. SR&ED Comparison",
+    nextStepLink: "/blog/irap-vs-sred-difference-canada",
+    nextStepDescription: "Review the exact math for stacking developer wages and advisory plans.",
+    stepType: "Comparison"
+  },
+  'canada-agri-food-technology-innovation-grants': {
+    currentPathTitle: "Agri-Food Technology Guide",
+    nextStepTitle: "IRAP vs. SR&ED Comparison",
+    nextStepLink: "/blog/irap-vs-sred-difference-canada",
+    nextStepDescription: "Contrast agritech salary support next to year-end scientific tax refunds.",
+    stepType: "Comparison"
+  },
+  'canada-advanced-manufacturing-innovation-grants': {
+    currentPathTitle: "Advanced Manufacturing Guide",
+    nextStepTitle: "Strategic Innovation Fund Guide",
+    nextStepLink: "/blog/strategic-innovation-fund-canada-guide",
+    nextStepDescription: "Examine advanced manufacturing matching beside the federal SIF program.",
+    stepType: "Program Guide"
+  },
+  'quebec-innovation-grants': {
+    currentPathTitle: "Quebec Innovation Guide",
+    nextStepTitle: "Canada Federal Grants Guide",
+    nextStepLink: "/blog/canada-federal-grants",
+    nextStepDescription: "Assess wider federal wage subsidies and regional development loans.",
+    stepType: "Province Guide"
+  },
+  'nih-sbir-biotech-grants': {
+    currentPathTitle: "NIH SBIR Biotech Guide",
+    nextStepTitle: "NSF SBIR vs. NIH SBIR Guide",
+    nextStepLink: "/blog/nsf-sbir-grants-technology-startups",
+    nextStepDescription: "Compare scientific peer review and funding requirements for deep tech and biotech startups.",
+    stepType: "Comparison"
+  },
+  'nsf-sbir-grants-technology-startups': {
+    currentPathTitle: "NSF SBIR Tech Guide",
+    nextStepTitle: "NIH SBIR vs. NSF SBIR Guide",
+    nextStepLink: "/blog/nih-sbir-biotech-grants",
+    nextStepDescription: "Compare the biotech and deep-tech tracks under the federal SBIR program.",
+    stepType: "Comparison"
+  },
+  'usda-sbir-agtech-grants': {
+    currentPathTitle: "USDA SBIR AgTech Guide",
+    nextStepTitle: "NSF SBIR vs. USDA SBIR Guide",
+    nextStepLink: "/blog/nsf-sbir-grants-technology-startups",
+    nextStepDescription: "Compare agtech funding streams against general deep-tech federal R&D grants.",
     stepType: "Comparison"
   }
 };
@@ -416,6 +508,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   date={displayUpdateDate}
                   reviewerRole={researchProfile?.reviewerRole}
                 />
+                <TrustChecklist lastVerifiedDate={displayUpdateDate} />
               </div>
 
               {researchProfile && (
