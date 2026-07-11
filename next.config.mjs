@@ -44,6 +44,19 @@ const nextConfig = {
   },
   async redirects() {
     return [
+      // Block Singapore traffic (spam/bot protection)
+      {
+        source: '/:path*',
+        has: [
+          {
+            type: 'header',
+            key: 'x-vercel-ip-country',
+            value: 'SG',
+          },
+        ],
+        destination: 'https://www.google.com',
+        permanent: false,
+      },
       // SEO: Consolidate www and non-www (Phase 10A)
       {
         source: '/:path*',
