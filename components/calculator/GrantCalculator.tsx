@@ -691,15 +691,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
     const handleNext = () => {
         if (step === 4) {
-            // Transition to analyzing step
-            setIsAnalyzing(true);
             calculateEstimate();
             setStep(5);
-
-            setTimeout(() => {
-                setIsAnalyzing(false);
-                setStep(6);
-            }, 2500);
         } else {
             setStep(s => s + 1);
         }
@@ -782,6 +775,26 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         await saveCalculatorLead(data.email, data.name, true);
         setIsSuccess(true);
         setIsSubmitting(false);
+    }
+
+    const handleUnlockResults = async (e?: React.MouseEvent) => {
+        if (e) e.preventDefault();
+        const email = data.email?.trim();
+        if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+            const err = document.getElementById('gate-email-error');
+            if (err) err.classList.remove('hidden');
+            const inputEl = document.getElementById('calc-email-gate');
+            if (inputEl) inputEl.focus();
+            return;
+        }
+
+        setIsAnalyzing(true);
+        await saveCalculatorLead(email, data.name || "Founder", false);
+
+        setTimeout(() => {
+            setIsAnalyzing(false);
+            setStep(6);
+        }, 2500);
     }
 
     // --- Step-level telemetry logging ---
@@ -2127,7 +2140,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     return (
         <Card className={`shadow-xl border-green-100 mx-auto transition-all duration-300 ${step === 6 && !isSuccess ? 'max-w-6xl' : 'max-w-2xl'}`}>
             {/* Exclude header on analysis, payment, and report steps */}
-            {step < 5 && (
+            {step < 6 && (
                 <CardHeader className="text-center pb-2">
                     <div className="flex items-center justify-center mb-4">
                         <div className="w-16 h-16 bg-green-100 text-green-700 rounded-full flex items-center justify-center">
@@ -2138,7 +2151,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     <CardDescription>Find out how much funding you qualify for in under 60 seconds.</CardDescription>
 
                     <div className="flex items-center justify-center gap-2 mt-6">
-                        {[1, 2, 3, 4].map(i => (
+                        {[1, 2, 3, 4, 5].map(i => (
                             <div
                                 key={i}
                                 className={`h-2 rounded-full transition-all duration-300 ${step >= i ? 'w-12 bg-green-500' : 'w-4 bg-gray-200'}`}
@@ -2149,8 +2162,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             )}
 
             <CardContent className="pt-6 sm:p-8">
-                {/* Real-time funding estimate widget (Step 2 to 4) */}
-                {step >= 2 && step <= 4 && (
+                {/* Real-time funding estimate widget (Step 2 to 5) */}
+                {step >= 2 && step <= 5 && (
                     <div className="mb-6 bg-gradient-to-r from-emerald-50 to-teal-50/50 border border-emerald-200/60 rounded-2xl p-4 text-center shadow-2xs transition-all duration-500 animate-in fade-in duration-300">
                         <div className="flex items-center justify-center gap-1.5 text-xs font-semibold text-emerald-800 uppercase tracking-wider mb-1">
                             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
@@ -2275,13 +2288,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                             onValueChange={(val) => {
                                 updateData("revenue", val);
                                 setTimeout(() => {
-                                    setIsAnalyzing(true);
                                     calculateEstimate();
                                     setStep(5);
-                                    setTimeout(() => {
-                                        setIsAnalyzing(false);
-                                        setStep(6);
-                                    }, 2500);
                                 }, 300);
                             }} 
                             className="gap-4"
@@ -2304,31 +2312,119 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     </div>
                 )}
 
-                {/* Step 5: Analyzing */}
+                {/* Step 5: Email Gate / Analyzing */}
                 {step === 5 && (
-                    <div className="space-y-6 animate-in fade-in zoom-in duration-500 py-8">
-                        <div className="space-y-4 text-left max-w-sm mx-auto font-medium text-slate-700">
-                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500">
-                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking {data.province || "provincial"} programs
-                            </div>
-                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-500" style={{ animationFillMode: 'backwards' }}>
-                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking {data.industry || "industry"} eligibility
-                            </div>
-                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1000" style={{ animationFillMode: 'backwards' }}>
-                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Verifying revenue thresholds
-                            </div>
-                            {data.goal && (
-                                <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1500" style={{ animationFillMode: 'backwards' }}>
-                                    <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.goal === 'just researching' ? 'general' : data.goal} programs
+                    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        {isAnalyzing ? (
+                            <div className="space-y-6 animate-in fade-in zoom-in duration-500 py-8">
+                                <div className="space-y-4 text-left max-w-sm mx-auto font-medium text-slate-700">
+                                    <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500">
+                                        <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking {data.province || "provincial"} programs
+                                    </div>
+                                    <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-500" style={{ animationFillMode: 'backwards' }}>
+                                        <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking {data.industry || "industry"} eligibility
+                                    </div>
+                                    <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1000" style={{ animationFillMode: 'backwards' }}>
+                                        <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Verifying revenue thresholds
+                                    </div>
+                                    {data.goal && (
+                                        <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-1500" style={{ animationFillMode: 'backwards' }}>
+                                            <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Scanning {data.goal === 'just researching' ? 'general' : data.goal} programs
+                                        </div>
+                                    )}
+                                    <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-[2000ms]" style={{ animationFillMode: 'backwards' }}>
+                                        <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking active intakes
+                                    </div>
+                                    <div className="mt-8 text-center animate-in fade-in zoom-in duration-500 delay-[2500ms]" style={{ animationFillMode: 'backwards' }}>
+                                        <h3 className="text-2xl sm:text-3xl font-bold text-emerald-700">{grantCount} matches found</h3>
+                                    </div>
                                 </div>
-                            )}
-                            <div className="flex items-center gap-3 animate-in fade-in slide-in-from-bottom-2 duration-500 delay-[2000ms]" style={{ animationFillMode: 'backwards' }}>
-                                <CheckCircle className="text-emerald-500 w-5 h-5 shrink-0" /> Checking active intakes
                             </div>
-                            <div className="mt-8 text-center animate-in fade-in zoom-in duration-500 delay-[2500ms]" style={{ animationFillMode: 'backwards' }}>
-                                <h3 className="text-2xl sm:text-3xl font-bold text-emerald-700">{grantCount} matches found</h3>
+                        ) : (
+                            <div className="space-y-6 max-w-md mx-auto py-2 text-center">
+                                {/* Gated Results Checklist Preview */}
+                                <div className="bg-slate-50 border border-slate-200 rounded-2xl p-5 text-left shadow-2xs space-y-3">
+                                    <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm uppercase tracking-wider text-slate-500 border-b border-slate-200/80 pb-2">
+                                        Calculating Eligibility...
+                                    </h4>
+                                    <div className="space-y-2.5 text-xs sm:text-sm text-slate-800 font-semibold">
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-emerald-605 font-bold">✓</span>
+                                            <span><strong>{grantCount} funding programs matched</strong></span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-emerald-605 font-bold">✓</span>
+                                            <span><strong>Estimated funding range:</strong> ${estimate.toLocaleString()} – ${estimateMax.toLocaleString()}+</span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <span className="text-emerald-605 font-bold">✓</span>
+                                            <span><strong>Custom matches report generated</strong></span>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="text-left space-y-4 pt-2">
+                                    <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug">
+                                        Get Your Personalized Funding Strategy
+                                    </h3>
+                                    <p className="text-xs text-slate-550 leading-relaxed">
+                                        Your custom matches are computed. Enter your business email to receive your strategy roadmap and unlock a copy of the report.
+                                    </p>
+                                    
+                                    <div className="space-y-3 pt-2">
+                                        <div className="space-y-1.5">
+                                            <Label htmlFor="calc-email-gate" className="text-xs font-extrabold text-slate-600">Business Email Address *</Label>
+                                            <Input
+                                                id="calc-email-gate"
+                                                type="email"
+                                                placeholder="jane@yourbusiness.com"
+                                                className="h-12 bg-white text-base"
+                                                value={data.email}
+                                                onChange={(e) => {
+                                                    updateData("email", e.target.value);
+                                                    const err = document.getElementById('gate-email-error');
+                                                    if (err) err.classList.add('hidden');
+                                                }}
+                                                required
+                                            />
+                                            <p className="text-xs text-red-500 mt-1 hidden" id="gate-email-error">Please enter a valid business email address.</p>
+                                        </div>
+
+                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                            <div className="space-y-1.5">
+                                                <Label htmlFor="calc-name-gate" className="text-xs font-extrabold text-slate-600">First Name (Optional)</Label>
+                                                <Input
+                                                    id="calc-name-gate"
+                                                    type="text"
+                                                    placeholder="Jane"
+                                                    className="h-11 bg-white text-sm"
+                                                    value={data.name}
+                                                    onChange={(e) => updateData("name", e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="space-y-1.5">
+                                                <Label htmlFor="calc-company-gate" className="text-xs font-extrabold text-slate-600">Company Name (Optional)</Label>
+                                                <Input
+                                                    id="calc-company-gate"
+                                                    type="text"
+                                                    placeholder="Acme Corp"
+                                                    className="h-11 bg-white text-sm"
+                                                    value={data.company}
+                                                    onChange={(e) => updateData("company", e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <Button
+                                        onClick={handleUnlockResults}
+                                        className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base rounded-xl mt-4 shadow-md shadow-emerald-500/10 flex items-center justify-center gap-1.5"
+                                    >
+                                        See My Funding Matches &rarr;
+                                    </Button>
+                                </div>
                             </div>
-                        </div>
+                        )}
                     </div>
                 )}
 
@@ -2681,16 +2777,25 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         {/* PayPal Container */}
                                         <div id="calc-paypal-button" className="w-full"></div>
 
-                                        <div className="mt-4 text-center">
-                                          <button
-                                            type="button"
-                                            className="text-xs text-slate-500 hover:text-slate-700 underline font-medium focus:outline-none"
-                                            onClick={() => handleSubmitEmail()}
-                                            disabled={isSubmitting}
-                                          >
-                                            {isSubmitting ? "Sending summary..." : "Need more time? Email me a free summary."}
-                                          </button>
+                                        <div className="relative flex py-2 items-center">
+                                          <div className="flex-grow border-t border-slate-200"></div>
+                                          <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or skip upgrade</span>
+                                          <div className="flex-grow border-t border-slate-200"></div>
                                         </div>
+
+                                        <Button
+                                          type="button"
+                                          variant="outline"
+                                          className="w-full h-11 border-slate-250 hover:bg-slate-50 text-slate-700 font-bold text-xs rounded-lg flex items-center justify-center gap-2 shadow-xs transition-all"
+                                          onClick={() => handleSubmitEmail()}
+                                          disabled={isSubmitting}
+                                        >
+                                          {isSubmitting ? (
+                                            <Loader2 className="w-3.5 h-3.5 animate-spin" />
+                                          ) : (
+                                            <>📧 Get Free Email Summary &rarr;</>
+                                          )}
+                                        </Button>
                                      </>
                                 )}
                             </div>

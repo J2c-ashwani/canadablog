@@ -30,7 +30,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
 
   if (isUSOrCanada) {
     let digits = cleanPhone;
-    if (digits.length === 11 && digits.startsWith('1')) {
+    while (digits.length > 10 && digits.startsWith('1')) {
       digits = digits.slice(1);
     }
     

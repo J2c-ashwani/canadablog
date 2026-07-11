@@ -201,7 +201,7 @@ export async function POST(request: NextRequest) {
     sendContactConfirmation({
       to: email,
       name: name || '',
-      category: requestType || 'General',
+      category: category || requestType || 'General',
       messageSnippet: businessDescription || '',
     }).catch((error) => {
       console.error('❌ Failed to send contact confirmation email:', error);

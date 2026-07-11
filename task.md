@@ -33,11 +33,15 @@
 - [x] **Step 2: Core Optimization Implementation (Batch 1)**
   - [x] Implement true freshness (deadlines, program counts, active cycles)
   - [x] Implement custom "Common Application Rejection Mistakes" sections
-  - [x] Implement contextual calculator CTAs (custom headlines per page theme)
-  - [x] Establish logical topic cluster linking mesh
-- [x] **Step 3: Verification & Build Validation**
-  - [x] Compile and build local static pages to verify HTML indexability (no noindex tags)
-  - [x] Verify contextual calculator headlines and link mesh components
+  - [x] Monetize the Ultimate Grant Guide CTA (`components/blog/GrantGuideCTA.tsx`)
+  - [x] Store email in `sessionStorage` on submission
+  - [x] Render the `OTOUpsellCard` on success state
+- [x] Verification and Testing
+  - [x] Verify phone validator fixes
+  - [x] Verify contact form submission
+  - [x] Verify calculator gated flow and auto-save
+  - [x] Verify automated calculator follow-up email format
+  - [x] Verify Ultimate Grant Guide monetization and pre-filled email
   - [x] Submit changes to production and trigger GSC priority recrawls
 
 ## Sprint 6: Commercial Query Sprint (Batch 2: Pages 6–10) — COMPLETE ✅

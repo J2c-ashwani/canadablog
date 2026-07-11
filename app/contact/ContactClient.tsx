@@ -357,8 +357,13 @@ export default function ContactClient() {
     setErrorMessage(null);
 
     try {
-      const rawPhone = formData.phone.replace(/[^0-9]/g, "");
-      const formattedPhone = `${countryCode}${rawPhone}`;
+      let rawPhone = formData.phone.replace(/[^0-9]/g, "");
+      if (countryCode === "+1" && rawPhone.startsWith("1") && rawPhone.length > 10) {
+        // Already starts with 1 and is full length
+      } else {
+        rawPhone = `${countryCode}${rawPhone}`;
+      }
+      const formattedPhone = rawPhone.startsWith("+") ? rawPhone : `+${rawPhone}`;
 
       // 1. Submit lead to database immediately (Email Verified = "No")
       const response = await fetch("/api/contact", {
