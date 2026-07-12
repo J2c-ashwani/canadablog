@@ -1,5 +1,7 @@
 import crypto from 'crypto';
 
+let memorySecretKey: string | null = null;
+
 function getKey(): Buffer {
   const isProduction = process.env.NODE_ENV === 'production';
   const SECRET_KEY_STRING = process.env.OTP_SECRET;
@@ -8,9 +10,18 @@ function getKey(): Buffer {
     throw new Error("❌ Critical: OTP_SECRET environment variable is missing in production!");
   }
 
+  let secret = SECRET_KEY_STRING;
+  if (!secret) {
+    if (!memorySecretKey) {
+      memorySecretKey = crypto.randomBytes(32).toString('hex');
+      console.warn("⚠️ Warning: OTP_SECRET env variable is missing. Generated a random in-memory secret key for dev/staging.");
+    }
+    secret = memorySecretKey;
+  }
+
   return crypto
     .createHash('sha256')
-    .update(SECRET_KEY_STRING || 'fsi-digital-contact-form-otp-secret-key-32-chars-default!')
+    .update(secret)
     .digest();
 }
 

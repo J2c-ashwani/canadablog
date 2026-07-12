@@ -46,8 +46,11 @@ export async function GET(request: NextRequest) {
     const now = Date.now()
 
     for (const sub of targetLeads) {
-      const createdDate = sub.timestamp ? new Date(sub.timestamp).getTime() : now
-      const elapsedHours = (now - createdDate) / (1000 * 60 * 60)
+      const purchaseTimeStr = sub.assessmentPurchasedAt || sub.timestamp
+      const purchaseDate = purchaseTimeStr && purchaseTimeStr !== "N/A" && purchaseTimeStr !== ""
+        ? new Date(purchaseTimeStr).getTime()
+        : now
+      const elapsedHours = (now - purchaseDate) / (1000 * 60 * 60)
 
       let targetStage: "day2" | "day5" | "day10" | null = null
       const currentFollowup = sub.lastEmailFollowup || "N/A"

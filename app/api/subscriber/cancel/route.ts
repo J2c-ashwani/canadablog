@@ -17,10 +17,14 @@ type CancellationReasonType = typeof CANCELLATION_REASONS[number];
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, reason, comment } = body;
+    const { email, reason, comment, token } = body;
 
-    if (!email || !reason) {
-      return NextResponse.json({ error: 'Email and reason are required.' }, { status: 400 });
+    if (!email || !reason || !token) {
+      return NextResponse.json({ error: 'Email, reason, and token are required.' }, { status: 400 });
+    }
+
+    if (!token.startsWith('v2_')) {
+      return NextResponse.json({ error: 'Invalid token format.' }, { status: 400 });
     }
 
     // Validate that the reason is one of the structured options
@@ -33,6 +37,10 @@ export async function POST(request: NextRequest) {
     const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
     if (!subscriber) {
       return NextResponse.json({ error: 'Subscriber not found.' }, { status: 404 });
+    }
+
+    if (subscriber.loginToken !== token) {
+      return NextResponse.json({ error: 'Unauthorized. Invalid token.' }, { status: 401 });
     }
 
     // Parse existing activity JSON

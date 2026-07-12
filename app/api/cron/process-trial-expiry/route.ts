@@ -13,7 +13,7 @@ export async function GET(request: NextRequest) {
   }
 
   try {
-    const allSubscribers = await SubscriberRepository.getAllSubscribers()
+    const allSubscribers = await SubscriberRepository.getAllSubscribers(true)
     const now = new Date()
     let processedCount = 0
 

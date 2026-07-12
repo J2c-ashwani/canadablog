@@ -131,7 +131,10 @@ export async function GET(request: NextRequest) {
         const hasOpenedReport = !!activity.reportViewedAt
 
         if (!hasOpenedReport && !activity.reportNotViewedEmailSentAt) {
-          const purchaseTimeMs = sub.timestamp ? new Date(sub.timestamp).getTime() : now
+          const purchaseTimeStr = sub.assessmentPurchasedAt || sub.timestamp
+          const purchaseTimeMs = purchaseTimeStr && purchaseTimeStr !== "N/A" && purchaseTimeStr !== ""
+            ? new Date(purchaseTimeStr).getTime()
+            : now
           const elapsedMsSincePurchase = now - purchaseTimeMs
 
           // Send reminder 24 hours after purchase

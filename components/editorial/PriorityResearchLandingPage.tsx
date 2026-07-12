@@ -11,6 +11,10 @@ import type { PriorityResearchProfile } from '@/lib/editorial/priorityResearch';
 import { generateFAQSchema } from '@/lib/schema';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import EligibleCheck from '@/components/blog/EligibleCheck';
+import RelatedFundingPaths from '@/components/blog/RelatedFundingPaths';
+import TRLDiagnostic from '@/components/blog/TRLDiagnostic';
+import StackingDiagnostic from '@/components/blog/StackingDiagnostic';
+import ChecklistDiagnostic from '@/components/blog/ChecklistDiagnostic';
 
 interface PriorityResearchLandingPageProps {
   profile: PriorityResearchProfile;
@@ -100,7 +104,20 @@ export function PriorityResearchLandingPage({ profile, eyebrow, title }: Priorit
 
           <article className="mx-auto max-w-5xl">
             <EditorialResearchContent route={profile.route} />
+            {profile.interactiveTool === 'trl' && <TRLDiagnostic />}
+            {profile.interactiveTool === 'stacking' && <StackingDiagnostic />}
+            {profile.interactiveTool === 'checklist' && <ChecklistDiagnostic />}
             <IntentStrategyCTA cta={profile.cta} />
+
+            {profile.relatedPath && (
+              <RelatedFundingPaths
+                currentPathTitle={profile.relatedPath.currentPathTitle}
+                nextStepTitle={profile.relatedPath.nextStepTitle}
+                nextStepLink={profile.relatedPath.nextStepLink}
+                nextStepDescription={profile.relatedPath.nextStepDescription}
+                stepType={profile.relatedPath.stepType}
+              />
+            )}
 
             {/* Visual FAQ Accordion here */}
             {profile.faq && (

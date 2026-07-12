@@ -23,7 +23,7 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Legacy token version is deprecated. Please request a new link.' }, { status: 400 });
     }
 
-    const all = await SubscriberRepository.getAllSubscribers();
+    const all = await SubscriberRepository.getAllSubscribers(true);
     // Search strictly by loginToken
     const found = all.find((sub) => sub.loginToken === token);
 

@@ -7,10 +7,14 @@ export const runtime = 'nodejs';
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { email, action, subscriptionId } = body;
+    const { email, action, subscriptionId, token } = body;
 
-    if (!email || !action) {
-      return NextResponse.json({ error: 'Email and action are required.' }, { status: 400 });
+    if (!email || !action || !token) {
+      return NextResponse.json({ error: 'Email, action, and token are required.' }, { status: 400 });
+    }
+
+    if (!token.startsWith('v2_')) {
+      return NextResponse.json({ error: 'Invalid token format.' }, { status: 400 });
     }
 
     if (action !== 'trial' && action !== 'active') {
@@ -20,6 +24,10 @@ export async function POST(request: NextRequest) {
     const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
     if (!subscriber) {
       return NextResponse.json({ error: 'Subscriber not found.' }, { status: 404 });
+    }
+
+    if (subscriber.loginToken !== token) {
+      return NextResponse.json({ error: 'Unauthorized. Invalid token.' }, { status: 401 });
     }
 
     const updates: any = {};

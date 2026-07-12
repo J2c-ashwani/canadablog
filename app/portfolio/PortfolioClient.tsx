@@ -341,6 +341,10 @@ export default function PortfolioClient() {
             setTrialStartedAt(sub.trialStartedAt || "")
             setReportPurchased(!!sub.reportPurchased)
             setReportTransactionId(sub.reportTransactionId || "")
+            if (sub.loginToken) {
+              localStorage.setItem("fsi_login_token", sub.loginToken);
+              sessionStorage.setItem("fsi_login_token", sub.loginToken);
+            }
             sessionStorage.setItem("fsi_funding_profile", JSON.stringify(loadedProfile))
             sessionStorage.setItem("fsi_subscription_status", sub.subscriptionStatus || "inactive")
             sessionStorage.setItem("fsi_report_purchased", sub.reportPurchased ? "true" : "false")
@@ -473,13 +477,16 @@ export default function PortfolioClient() {
         onApprove: async (data: any, actions: any) => {
           const subId = data.subscriptionID;
           try {
+            const searchParams = new URLSearchParams(window.location.search);
+            const token = searchParams.get("token") || "";
             const res = await fetch("/api/subscriber/upgrade", {
               method: "POST",
               headers: { "Content-Type": "application/json" },
               body: JSON.stringify({
                 email: profile.email,
                 action: "active",
-                subscriptionId: subId
+                subscriptionId: subId,
+                token: token
               })
             });
             const resData = await res.json();
@@ -604,12 +611,15 @@ export default function PortfolioClient() {
     setIsActivatingTrial(true)
     setPaymentError(null)
     try {
+      const searchParams = new URLSearchParams(window.location.search)
+      const token = searchParams.get("token") || ""
       const res = await fetch("/api/subscriber/upgrade", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email: profile.email,
-          action: "trial"
+          action: "trial",
+          token: token
         })
       })
       const resData = await res.json()
@@ -2068,9 +2078,7 @@ export default function PortfolioClient() {
                 const searchParams = new URLSearchParams(window.location.search)
                 let token = searchParams.get("token")
                 if (!token) {
-                  const res = await fetch(`/api/auth/subscriber?email=${profile.email}`)
-                  const data = await res.json()
-                  token = data.subscriber?.loginToken || ""
+                  token = localStorage.getItem("fsi_login_token") || sessionStorage.getItem("fsi_login_token") || ""
                 }
                 router.push(`/portfolio/report?token=${token || "N/A"}`)
               } catch (e) {

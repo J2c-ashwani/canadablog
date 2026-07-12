@@ -268,6 +268,14 @@ const nextConfig = {
       },
     ];
   },
+  async rewrites() {
+    return [
+      {
+        source: '/lead-magnets/:filename*.pdf',
+        destination: '/lead-magnets/ultimate-grant-guide-2026.pdf',
+      },
+    ];
+  },
 }
 
 export default nextConfig

@@ -23,6 +23,30 @@ function UnsubscribeContent() {
   const [errorMsg, setErrorMsg] = useState("")
   const [successMsg, setSuccessMsg] = useState(isSuccess)
 
+  useEffect(() => {
+    // If a token is provided and we haven't already marked it successful, trigger the opt-out automatically
+    if (token && !isSuccess && !successMsg) {
+      const autoOptOut = async () => {
+        setIsLoading(true);
+        setErrorMsg("");
+        try {
+          const res = await fetch(`/api/subscribe/unsubscribe?token=${token}`);
+          if (res.ok) {
+            setSuccessMsg(true);
+          } else {
+            setErrorMsg("We couldn't process the automatic opt-out. Please enter your email manually below.");
+          }
+        } catch (err) {
+          console.error("Auto unsubscribe failed:", err);
+          setErrorMsg("We couldn't process the automatic opt-out. Please enter your email manually below.");
+        } finally {
+          setIsLoading(false);
+        }
+      };
+      autoOptOut();
+    }
+  }, [token, isSuccess, successMsg]);
+
   const handleManualUnsubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return

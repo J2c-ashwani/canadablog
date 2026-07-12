@@ -1,7 +1,7 @@
 // lib/data/blog-posts/canada-news/sred-tax-credits-vs-cdap-canadian-founders.ts
 import type { BlogPost } from '../../blogPosts';
 
-const post: BlogPost = {
+const post: Partial<BlogPost> = {
   "content": "",
   "shortAnswer": "You must strategically use both, but for entirely different purposes. Use CDAP ($15K grant + $100K 0% loan) exclusively for buying off-the-shelf digital tools and e-commerce upgrades. Use SR&ED exclusively to recoup up to 60-70% of your engineering payroll spent on building net-new, proprietary software.",
   "shortAnswerQuestion": "Should a Canadian tech startup focus on SR&ED or CDAP?",

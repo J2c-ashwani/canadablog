@@ -658,6 +658,57 @@ const content: Record<string, EditorialSection[]> = {
     ]
   }
 ],
+  '/blog/colorado-tech-programs': [
+    {
+      heading: 'Colorado tech funding requires a 2:1 capital match',
+      summary: 'Under Colorado\'s Advanced Industries Accelerator program, founders seeking early-stage growth capital (up to $250,000) or proof-of-concept funding (up to $150,000) must satisfy a 2-to-1 cash match requirement. This means for every dollar requested from OEDIT, you must prove two dollars in private investment, federal SBIR grants, or business revenues. In-kind services or state-level incentives cannot count as match funding.',
+      bullets: ['Prove $2 of matching funds for every $1 requested', 'Federal SBIR awards are highly eligible match sources', 'In-kind contributions do not satisfy match requirements'],
+    },
+    {
+      heading: 'OEDIT conditional awards provide six months of runway',
+      summary: 'If your Colorado company does not have the full matching funds secured at the time of application, OEDIT allows you to request a conditional award. If selected, the state gives you a six-month window to secure the dedicated matching capital from venture capital, angel investment, or federal agency grants before the state funds are disbursed.',
+      bullets: ['Apply even if matching funds are not yet finalized', 'Secure the match within 6 months of conditional approval', 'Disbursement only occurs after match capital is verified'],
+    },
+    {
+      heading: 'Targeting the seven designated advanced industries',
+      summary: 'OEDIT restricts accelerator funding strictly to companies operating in seven key advanced industries: aerospace, bioscience, advanced manufacturing, electronics, energy/natural resources, infrastructure engineering, and technology/information. Your technical roadmap must clearly prove why your innovation fits one of these sectors and how it benefits Colorado\'s regional employment.',
+      bullets: ['Verify tech fit in aerospace, bioscience, or info systems', 'Provide patent or proprietary IP validation', 'Document local hiring targets and economic impact'],
+    },
+  ],
+  '/guides/irap-innovation-application-guide': [
+    {
+      heading: 'Building the initial relationship with your ITA',
+      summary: 'NRC IRAP is a relationship-driven program. There is no open application portal. A Canadian SME must call the NRC central inquiry line (1-877-994-4727) to discuss the project. If initial criteria are met, the company is assigned to a regional Industrial Technology Advisor (ITA). The ITA acts as both the mentor and the evaluator; you must build a strong relationship with them to gain an invitation to submit a proposal.',
+      bullets: ['Call 1-877-994-4727 to request an ITA assignment', 'Prepare a concise 1-page technical project brief', 'Treat the first meeting as a strategic pitch session'],
+    },
+    {
+      heading: 'Scoping the technical uncertainty and risk',
+      summary: 'IRAP funding is designed for novel R&D, not routine software engineering or standard web development. Your project brief must clearly define the technical uncertainty—the specific engineering challenge that your team does not know how to solve using public libraries or standard APIs. It should highlight the technical risk, proposed experimental methodology, and why the project could fail despite having a highly skilled team.',
+      bullets: ['Clearly define the novel technical uncertainty', 'Contrast your solution with standard engineering methods', 'Explain why the project requires experimental testing'],
+    },
+    {
+      heading: 'Managing monthly timesheets and payroll logs',
+      summary: 'IRAP functions strictly on a retrospective reimbursement basis. The program covers 60% to 80% of internal technical salaries, but you must pay the employees first and then submit monthly claims. This requires keeping detailed, audit-compliant payroll logs and timesheets that link each developer\'s hours directly to the approved R&D milestones. Ensure you maintain at least 3 months of operating cash flow to cover the reimbursement cycle delay.',
+      bullets: ['Track developer hours daily against R&D tasks', 'Submit claims monthly with payroll verification', 'Maintain cash reserves to bridge reimbursement delays'],
+    },
+  ],
+  '/blog/canada-technology-adoption-grants-guide': [
+    {
+      heading: 'CDAP digital plans unlock BDC interest-free financing',
+      summary: 'Under the Canada Digital Adoption Program, obtaining a certified digital plan is the mandatory gateway to secondary funding. Once your digital roadmap is approved, your business can access up to $100,000 in interest-free loans from BDC and wage subsidies to hire tech students.',
+      bullets: ['CDAP digital plan is required for interest-free loans', 'Access up to $100,000 in zero-interest BDC financing', 'Secure wage subsidies to hire students for implementation']
+    },
+    {
+      heading: 'Reimbursement is strictly retrospective',
+      summary: 'A common pitfall is paying vendor invoices before receiving official program approval. The CDAP Grow Your Business Online stream operates on a strict reimbursement model. You must receive your approval email first, execute the digital purchases, and then submit receipts for reimbursement.',
+      bullets: ['Wait for approval email before spending', 'Submit clean receipts and quotes for validation', 'Reimbursements are processed within 30 days of submittal']
+    },
+    {
+      heading: 'Hardware is excluded from digital adoption grants',
+      summary: 'Digital transformation grants target intangible assets like software licenses, e-commerce hosting fees, SEO services, and custom developer hours. Physical items like laptops, smartphones, and point-of-sale registers are strictly ineligible under federal guidelines.',
+      bullets: ['Grants cover software, SEO, and developer services', 'Physical hardware like laptops and smartphones are excluded', 'Pre-existing subscriptions cannot be claimed retrospectively']
+    }
+  ],
 };
 
 export function getPriorityResearchContent(route: string) {

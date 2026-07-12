@@ -13,6 +13,8 @@ import AutoLink from "@/components/seo/AutoLink"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import RelatedFundingPaths from "@/components/blog/RelatedFundingPaths"
+import ChecklistDiagnostic from "@/components/blog/ChecklistDiagnostic"
 
 export const metadata: Metadata = {
     title: "Indigenous Entrepreneur Grants Canada 2026 | AEP, NACCA & First Nations Business Funding",
@@ -395,6 +397,15 @@ export default function IndigenousEntrepreneurGrantsPage() {
                                 </div>
                             </div>
 
+                            <ChecklistDiagnostic />
+
+                            <RelatedFundingPaths
+                                currentPathTitle="Indigenous Entrepreneur Grants Guide"
+                                nextStepTitle="Canada Startup Funding Guide"
+                                nextStepLink="/blog/canada-startup-funding-grants-guide"
+                                nextStepDescription="Explore the wider ecosystem of Canadian startup grants, BDC financing, and tax credits."
+                                stepType="Program Guide"
+                            />
                         </div>
 
                         <div className="space-y-6">

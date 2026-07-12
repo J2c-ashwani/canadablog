@@ -38,6 +38,9 @@ import { getPriorityResearchProfile } from '@/lib/editorial/priorityResearch';
 import { InlineGrantChecker } from '@/components/blog/InlineGrantChecker';
 import GrantGuideCTA from '@/components/blog/GrantGuideCTA';
 import NewsletterBox from '@/components/blog/NewsletterBox';
+import TRLDiagnostic from '@/components/blog/TRLDiagnostic';
+import StackingDiagnostic from '@/components/blog/StackingDiagnostic';
+import ChecklistDiagnostic from '@/components/blog/ChecklistDiagnostic';
 
 type RelatedFundingLink = {
   href: string;
@@ -351,7 +354,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const richData = await getBlogPostRichData(slug);
   const researchProfile = getPriorityResearchProfile(`/blog/${slug}`);
   
-  const fullPost = {
+  const fullPost: any = {
     ...post,
     ...richData,
     ...(researchProfile ? {
@@ -610,7 +613,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="mb-10 not-prose">
                   <GrantSuccessTable
                     title="Quick Funding Facts"
-                    metrics={fullPost.metrics.map(m => {
+                    metrics={fullPost.metrics.map((m: any) => {
                       const IconComponent = (m.iconName && iconMap[m.iconName]) ? iconMap[m.iconName] : Target;
                       return {
                         ...m,
@@ -657,7 +660,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   {['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug) ? (
                     <InlineGrantChecker />
                   ) : researchProfile ? (
-                    <IntentStrategyCTA cta={researchProfile.cta} />
+                    <>
+                      {researchProfile.interactiveTool === 'trl' && <TRLDiagnostic />}
+                      {researchProfile.interactiveTool === 'stacking' && <StackingDiagnostic />}
+                      {researchProfile.interactiveTool === 'checklist' && <ChecklistDiagnostic />}
+                      <IntentStrategyCTA cta={researchProfile.cta} />
+                    </>
                   ) : (
                     fullPost.inlineCTA && <InlineCTA {...fullPost.inlineCTA} />
                   )}
@@ -691,10 +699,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="mt-12 mb-8 not-prose">
                   <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">Frequently Asked Questions</h3>
                   <Accordion type="single" collapsible className="w-full">
-                    {fullPost.faq.map((item, index) => (
+                    {fullPost.faq.map((item: any, index: number) => (
                       <AccordionItem key={index} value={`item-${index}`}>
                         <AccordionTrigger className="text-left font-semibold text-gray-900 dark:text-white">
-                          {item.question}
+                           {item.question}
                         </AccordionTrigger>
                         <AccordionContent className="text-gray-600 dark:text-gray-300">
                           <div dangerouslySetInnerHTML={{ __html: item.answer }} />
@@ -706,7 +714,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               )}
 
               {/* ENGAGEMENT DEPTH: Related Funding Resources */}
-              {RELATED_PATHS_CONFIG[slug] && (
+              {researchProfile?.relatedPath ? (
+                <RelatedFundingPaths
+                  currentPathTitle={researchProfile.relatedPath.currentPathTitle}
+                  nextStepTitle={researchProfile.relatedPath.nextStepTitle}
+                  nextStepLink={researchProfile.relatedPath.nextStepLink}
+                  nextStepDescription={researchProfile.relatedPath.nextStepDescription}
+                  stepType={researchProfile.relatedPath.stepType}
+                />
+              ) : RELATED_PATHS_CONFIG[slug] ? (
                 <RelatedFundingPaths
                   currentPathTitle={RELATED_PATHS_CONFIG[slug].currentPathTitle}
                   nextStepTitle={RELATED_PATHS_CONFIG[slug].nextStepTitle}
@@ -714,7 +730,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   nextStepDescription={RELATED_PATHS_CONFIG[slug].nextStepDescription}
                   stepType={RELATED_PATHS_CONFIG[slug].stepType}
                 />
-              )}
+              ) : null}
 
               {relatedFundingLinks.length > 0 && (
                 <div className="mt-12 not-prose">

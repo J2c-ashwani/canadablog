@@ -34,6 +34,14 @@ export interface PriorityResearchProfile {
     supportingPoints: string[];
   };
   faq?: { question: string; answer: string }[];
+  relatedPath?: {
+    currentPathTitle: string;
+    nextStepTitle: string;
+    nextStepLink: string;
+    nextStepDescription: string;
+    stepType: 'Comparison' | 'Program Guide' | 'Province Guide' | 'Funding Report';
+  };
+  interactiveTool?: 'trl' | 'stacking' | 'checklist';
 }
 
 const REVIEWED_BY = 'Ashwani K.';
@@ -101,12 +109,12 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/usa/california': {
     route: '/usa/california',
-    seoTitle: 'California Government Grants & Funding for Businesses (2026)',
-    seoDescription: 'Access active California state and federal grants, SBA loans, and tax credits. Use our free tool to check your business eligibility in 60 seconds.',
+    seoTitle: 'California Business Grants 2026: Get Up to $250K CCTC & TechCred',
+    seoDescription: 'Learn how to qualify and apply for California state business grants, tax credits, and upskilling funds in 2026. Compare CCTC, CalOSBA microgrants, and SBA programs.',
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'California support spans incentives, tax credits, technical assistance, capital access, and targeted grant programs. Intake schedules vary.',
     decisionSummary: 'California companies should match the project to the correct incentive or assistance channel and verify the current application window before planning around an award.',
@@ -135,12 +143,19 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'Check Your Eligibility in 60 Seconds',
-      title: 'Businesses similar to yours may qualify for funding',
-      description: 'Evaluate active California state and federal government grants, tax credits, and capital programs matching your business profile.',
-      buttonText: 'Start Free Assessment',
+      eyebrow: 'California stacking strategy',
+      title: 'Analyze Your California Stacking Match',
+      description: 'Find out which municipal utility rebates and state tax credits your project qualifies for under GO-Biz guidelines.',
+      buttonText: 'Start California Stacking Matrix Check',
       href: '/portfolio?focus=california',
-      supportingPoints: ['Grants & Tax Credits', 'Hiring & Wage Incentives', 'Capital Programs'],
+      supportingPoints: ['CCTC salary requirements check', 'Municipal utility credit compatibility', 'GO-Biz compliance rules'],
+    },
+    relatedPath: {
+      currentPathTitle: "California Guide",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
     faq: [
       {
@@ -337,12 +352,12 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/usa/technology-startup-grants': {
     route: '/usa/technology-startup-grants',
-    seoTitle: 'U.S. Technology Startup Funding: SBIR/STTR Agency Guide',
-    seoDescription: 'Compare U.S. SBIR/STTR routes for technology startups and learn how agency fit, technical risk, eligibility, and active solicitations shape the funding path.',
+    seoTitle: 'U.S. Technology Startup Funding 2026: SBIR/STTR Agency Guide',
+    seoDescription: 'Compare U.S. SBIR/STTR agency routes (NSF vs. NIH vs. DoD) for tech startups in 2026. Learn about Phase I/II solicitation caps, TRL thresholds, and success rates.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Opportunity-specific',
     statusSummary: 'America’s Seed Fund is coordinated by the SBA and delivered by participating federal agencies. Each agency controls its own topics, solicitations, and awards.',
     decisionSummary: 'Choose the agency whose mission and active solicitation fit the technology. Do not select a program based only on the largest advertised award.',
@@ -371,12 +386,19 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'Check Your Eligibility in 60 Seconds',
-      title: 'Businesses similar to yours may qualify for funding',
-      description: 'Evaluate active federal SBIR/STTR agency topics and tech startup incentives matching your profile.',
-      buttonText: 'Start Free Assessment',
+      eyebrow: 'SBIR agency comparison checklist',
+      title: 'Compare All 11 SBIR/STTR Federal Agencies',
+      description: 'Review which federal agencies align with your technology readiness levels (TRL) and target markets.',
+      buttonText: 'Compare SBIR Agencies Checklist',
       href: '/portfolio?focus=tech-startup',
-      supportingPoints: ['Grants & Tax Credits', 'Hiring Incentives', 'Export Funding'],
+      supportingPoints: ['Agency TRL thresholds', 'SBIR vs STTR differences', 'Topic matching search support'],
+    },
+    relatedPath: {
+      currentPathTitle: "Tech Startup Guide",
+      nextStepTitle: "NSF SBIR Guides",
+      nextStepLink: "/blog/nsf-sbir-grants-technology-startups",
+      nextStepDescription: "A deep dive into National Science Foundation pre-seed pitch guidelines and award metrics.",
+      stepType: "Program Guide"
     },
     faq: [
       {
@@ -395,12 +417,12 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/usa/ohio': {
     route: '/usa/ohio',
-    seoTitle: 'Ohio Business Grants & Incentives: 2026 Research Guide',
-    seoDescription: 'Research Ohio small-business incentives, state tax credits, Job Creation Tax Credit, and JobsOhio programs using official state sources.',
+    seoTitle: 'Ohio Business Grants 2026: JobsOhio, TechCred & Tax Credits',
+    seoDescription: 'Learn how to qualify for JobsOhio incentives, TechCred workforce reimbursements ($2K/employee), and the Inclusion Grant ($50K). Compare state vs. federal stacking.',
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Ohio funding options include state-backed JobsOhio grants, TechCred workforce incentives, and regional capital access programs. Deadlines and rules vary.',
     decisionSummary: 'Identify whether you meet physical job creation criteria in Ohio or need workforce-only support like TechCred before selecting a program.',
@@ -430,11 +452,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Ohio business expansion',
-      title: "Navigate Ohio's private economic development programs",
-      description: 'Let our funding specialists review your project plan to target the right JobsOhio or state incentive package.',
-      buttonText: 'Request an Eligibility & Expansion Review',
-      href: '/contact?service=ohio-funding-review',
-      supportingPoints: ['JobsOhio qualification criteria', 'TechCred credential alignment', 'Local tax abatement options'],
+      title: 'Analyze Your JobsOhio & TechCred Fit',
+      description: 'Check if your expansion project qualifies for JobsOhio incentives or bimonthly TechCred workforce reimbursements.',
+      buttonText: 'Ohio Incentive Stack Checklist',
+      href: '/portfolio?focus=tech-startup',
+      supportingPoints: ['JobsOhio qualification criteria', 'TechCred bimonthly window tracker', 'Intel supplier ecosystem alignment'],
+    },
+    relatedPath: {
+      currentPathTitle: "Ohio Guide",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
   },
   '/blog/nasa-sbir-space-tech-grants': {
@@ -444,7 +473,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Opportunity-specific',
     statusSummary: 'NASA releases annual SBIR/STTR solicitations with very specific subtopics. Proposals must address a specific NASA technology need.',
     decisionSummary: 'Do not submit a generic space tech idea. Ensure your R&D maps directly to one of the active NASA subtopics in the current solicitation.',
@@ -474,11 +503,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'NASA R&D funding alignment',
-      title: 'Evaluate your space technology against active NASA subtopics',
-      description: 'A technical evaluation will pressure-test your research case and identify alignment with active NASA needs.',
-      buttonText: 'Request a Technical Funding Review',
-      href: '/contact?service=nasa-sbir-technical-review',
+      title: 'Analyze Your NASA SBIR Subtopic Fit',
+      description: 'Determine if your satellite, robotics, materials, or aerospace research aligns with the 2026 NASA subtopics and Phase I $225K caps.',
+      buttonText: 'NASA SBIR Topic Alignment Check',
+      href: '/portfolio?focus=tech-startup',
       supportingPoints: ['NASA subtopic fit review', 'R&D risk and milestone mapping', 'Required registration readiness'],
+    },
+    relatedPath: {
+      currentPathTitle: "NASA Space Tech Guide",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
   },
   '/blog/dod-sbir-defense-tech-grants': {
@@ -527,7 +563,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Canada startup support includes federal non-repayable grants, risk-sharing business loans, provincial incentives, and the new Canadian Tech Growth Fund. Eligibility is project-specific.',
     decisionSummary: 'Design a funding stack combining non-repayable hiring grants, BDC or Futurpreneur loans, and SR&ED tax credits rather than relying on a single grant.',
@@ -557,12 +593,60 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Canadian startup capital',
-      title: 'Build a non-dilutive funding stack for your Canadian startup',
-      description: 'Our specialists help you evaluate hiring grants, innovation support, and CSBFP routes for your business.',
-      buttonText: 'Request a Startup Funding Review',
-      href: '/contact?service=canada-startup-review',
+      title: 'Analyze Your Canadian Startup Funding Stack',
+      description: 'Determine which combination of non-repayable hiring grants, CSBFP loans, and provincial pre-seed incentives matches your startup.',
+      buttonText: 'Build Startup Funding Stack',
+      href: '/portfolio?focus=canada',
       supportingPoints: ['Hiring and training grant match', 'CSBFP and Futurpreneur readiness', 'SR&ED tax credit integration'],
     },
+    relatedPath: {
+      currentPathTitle: "Canada Startup Funding",
+      nextStepTitle: "Canada Technology Adoption Grants Guide",
+      nextStepLink: "/blog/canada-technology-adoption-grants-guide",
+      nextStepDescription: "Explore CDAP micro-grants and interest-free technology scaling loans.",
+      stepType: "Program Guide"
+    },
+  },
+  '/blog/canada-technology-adoption-grants-guide': {
+    route: '/blog/canada-technology-adoption-grants-guide',
+    seoTitle: 'Canada Technology Adoption Grants 2026: CDAP & Regional Funds',
+    seoDescription: 'Complete guide to technology adoption grants in Canada for 2026. Compare CDAP, provincial digital transformation credits, and cybersecurity funds.',
+    expectedIntent: 'medium',
+    reviewedBy: REVIEWED_BY,
+    reviewerRole: REVIEWER_ROLE,
+    lastVerified: '2026-07-12',
+    programStatus: 'Multiple active programs',
+    statusSummary: 'Canada support for technology adoption spans federal CDAP micro-grants, provincial upskilling funds, interest-free BDC tech loans, and cybersecurity grants.',
+    decisionSummary: 'Apply for CDAP Grow Your Business first to access interest-free BDC financing and wage subsidies. Confirm program windows and quote rules before spending.',
+    shortAnswerQuestion: 'What grants fund technology adoption and digital transformation in Canada?',
+    shortAnswer: 'Canadian businesses can access federal CDAP Grow Your Business Online grants (up to $2,400) for websites and SEO, and provincial upskilling incentives like Ontario\'s Digital Main Street. High-growth tech adopters can qualify for interest-free BDC technology loans up to $100,000 once a certified digital plan is approved.',
+    verificationNotes: [
+      'Federal CDAP Boost Your Business stream is currently closed; Grow Your Business Online remains active.',
+      'Reimbursements are strictly retrospective; do not pay vendors before receiving the official approval email.',
+      'Eligible expenses include new software licenses, consultant fees, and SEO services, but exclude physical hardware.'
+    ],
+    officialSources: [
+      {
+        name: 'Canada Digital Adoption Program (CDAP)',
+        url: 'https://www.ic.gc.ca/eic/site/152.nsf/eng/home',
+        description: 'Official federal directory for CDAP applications and eligibility.'
+      }
+    ],
+    cta: {
+      eyebrow: 'Digital transformation grants',
+      title: 'Analyze Your Digital Technology Stacking Stack',
+      description: 'Check which CDAP micro-grants, BDC loans, and provincial digital credits your business qualifies for in 60 seconds.',
+      buttonText: 'Digital Adoption Stacking Check',
+      href: '/portfolio?focus=canada',
+      supportingPoints: ['CDAP Grow Your Business Online eligibility', 'BDC interest-free loan rules', 'Regional digital credits stacking']
+    },
+    relatedPath: {
+      currentPathTitle: "Canada Technology Adoption",
+      nextStepTitle: "Canada Startup Funding Guide",
+      nextStepLink: "/blog/canada-startup-funding-grants-guide",
+      nextStepDescription: "Compare wider federal and provincial startup grants and loans.",
+      stepType: "Comparison"
+    }
   },
   '/blog/canada-irap-grants-2026': {
     route: '/blog/canada-irap-grants-2026',
@@ -571,7 +655,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Research required before applying',
     statusSummary: 'NRC IRAP provides non-repayable financial support and technical advice for product development. Funding is accessed through direct engagement with an Industrial Technology Advisor.',
     decisionSummary: 'IRAP is not an open grant application portal. You must build a relationship with an ITA and pitch a high-risk technical project to secure funding.',
@@ -596,11 +680,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Canada R&D capital',
-      title: 'Assess your IRAP project fit and ITA pitch strategy',
-      description: 'Ensure your technical proposal aligns with ITA requirements and is structured for maximum salary reimbursement.',
-      buttonText: 'Request an IRAP & R&D Readiness Review',
-      href: '/contact?service=canada-irap-review',
+      title: 'Pre-Screen Your IRAP R&D Wage Fit',
+      description: 'Check if your technology development projects, developer payrolls, and scientific risks meet NRC IRAP co-funding guidelines.',
+      buttonText: 'IRAP Wage Subsidy Screener',
+      href: '/portfolio?focus=irap',
       supportingPoints: ['Technical R&D project scoping', 'ITA pitch readiness checklist', 'Salary subsidy optimization'],
+    },
+    relatedPath: {
+      currentPathTitle: "Canada IRAP Grants",
+      nextStepTitle: "Canada IRAP Innovation Application Guide",
+      nextStepLink: "/guides/irap-innovation-application-guide",
+      nextStepDescription: "Deep dive into engaging an ITA and building a winning proposal.",
+      stepType: "Program Guide"
     },
   },
   '/blog/sba-microloans-complete-guide': {
@@ -610,7 +701,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'The SBA Microloan program offers working capital and expansion financing through local community-based nonprofit lenders. Rules and terms are lender-specific.',
     decisionSummary: 'Identify a local SBA-approved intermediary lender and prepare a detailed business plan with a use-of-funds schedule before applying.',
@@ -635,23 +726,30 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'US working capital',
-      title: 'Organize your business plan and financials for SBA lending',
-      description: 'We help you build a lender-ready loan package and identify the local intermediary lenders best suited for your business.',
-      buttonText: 'Request a Microloan & Capital Review',
-      href: '/contact?service=sba-microloan-review',
+      title: 'Analyze Your SBA Microloan Readiness',
+      description: 'Check if your business plan, physical location, and use-of-funds meet SBA nonprofit intermediary guidelines.',
+      buttonText: 'SBA Microloan Screener',
+      href: '/portfolio?focus=tech-startup',
       supportingPoints: ['Business plan and projection prep', 'Intermediary lender shortlist', 'SBA compliance validation'],
+    },
+    relatedPath: {
+      currentPathTitle: "SBA Microloans",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
   },
 
   // --- 10 NEW PROFILES ---
   '/blog/colorado-tech-programs': {
     route: '/blog/colorado-tech-programs',
-    seoTitle: 'Colorado Tech Startup Grants 2026: Get Up to $250K',
-    seoDescription: 'Colorado\'s Advanced Industries program gives startups up to $250K in early-stage capital. Plus the 35% Investment Tax Credit and SBIR state matching.',
+    seoTitle: 'Colorado Tech Startup Grants 2026: Get Up to $250K Matching',
+    seoDescription: 'Qualify for Colorado Advanced Industries (AI) Accelerator proof-of-concept and early-stage grants in 2026. Review 2:1 cost match rules and state SBIR multipliers.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Colorado\'s Advanced Industries Accelerator program offers proof-of-concept, early-stage capital, and retention grants alongside state matching.',
     decisionSummary: 'Apply for early-stage capital up to $250K or proof-of-concept grants up to $150K. Align your tech with the state\'s seven designated advanced industries.',
@@ -670,12 +768,19 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'Colorado tech grants',
-      title: 'Check your eligibility for Colorado startup grants',
-      description: 'See if your technology project qualifies for Colorado state matching, early-stage grants, and tax credits.',
-      buttonText: 'Start Free Assessment',
+      eyebrow: 'Colorado AI Accelerator match',
+      title: 'Analyze Your 2:1 Matching Capability',
+      description: 'Find out if your company and matching capital sources satisfy OEDIT criteria.',
+      buttonText: 'Colorado AI Accelerator Pre-Screener',
       href: '/portfolio?focus=tech-startup',
-      supportingPoints: ['Advanced Industries fit check', 'Matching fund review', 'SBIR state matching eligibility'],
+      supportingPoints: ['2:1 match source validation', 'Advanced industry sector check', 'OEDIT application assistance'],
+    },
+    relatedPath: {
+      currentPathTitle: "Colorado Tech",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
   },
   '/blog/usda-sbir-agtech-grants': {
@@ -714,12 +819,12 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/usa/kentucky': {
     route: '/usa/kentucky',
-    seoTitle: 'Kentucky Business Grants & Funding: 2026 Guide',
-    seoDescription: 'Find business grants, tax credits, and state funding programs in Kentucky. Access low-interest SBA loans and upskilling funds.',
+    seoTitle: 'Kentucky Business Grants & Funding: 2026 State Match Guide',
+    seoDescription: 'Qualify for Kentucky business grants, discretionary state incentives, and federal SBIR state matching grants. Compare funding limits and SBA loan programs.',
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Kentucky offers discretionary business incentives, SBIR matching grants, small business tax credits, and workforce training incentives.',
     decisionSummary: 'Stack Kentucky state incentives (like the SBIR match or upskilling funds) with federal capital to maximize business extension.',
@@ -738,12 +843,19 @@ const profiles: Record<string, PriorityResearchProfile> = {
       },
     ],
     cta: {
-      eyebrow: 'Kentucky funding guide',
-      title: 'Assess your Kentucky business grant eligibility',
-      description: 'Find Kentucky state grants, SBIR matches, tax credits, and financing programs matching your business profile.',
-      buttonText: 'Start Free Assessment',
-      href: '/portfolio?focus=kentucky',
-      supportingPoints: ['Kentucky SBIR match qualification', 'State tax credit check', 'Upskilling grant eligibility'],
+      eyebrow: 'Kentucky business growth',
+      title: 'Analyze Kentucky State Incentives Stack',
+      description: 'Check if your technology or general business expansion qualifies for the state SBIR match or upskilling credits.',
+      buttonText: 'Kentucky Business Growth Checklist',
+      href: '/portfolio?focus=tech-startup',
+      supportingPoints: ['State SBIR match eligibility', 'Small business tax credits', 'Cabinet incentive parameters'],
+    },
+    relatedPath: {
+      currentPathTitle: "Kentucky Guide",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
   },
   '/blog/women-entrepreneurship-strategy-canada': {
@@ -753,7 +865,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Canada\'s WES provides support through national ecosystems, a dedicated microloan fund, and BDC venture capital initiatives.',
     decisionSummary: 'Ensure your business is majority female-owned (51%+) to access WES microloans up to $50K, ecosystem grants, or specialized BDC equity capital.',
@@ -773,11 +885,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'WES Canada funding',
-      title: 'Check your women entrepreneur grant eligibility',
-      description: 'Discover active federal and provincial women entrepreneurship grants, loans, and mentorship matching your profile.',
-      buttonText: 'Start Free Assessment',
+      title: 'Analyze Your Women Entrepreneurship Strategy Match',
+      description: 'Verify if your business meets the 51% female ownership guidelines to qualify for interest-free microloans or BDC equity funds.',
+      buttonText: 'WES Eligibility Screener',
       href: '/portfolio?focus=women-entrepreneur',
       supportingPoints: ['WES ownership check', 'Microloan partner matching', 'Hiring & expansion grant stack'],
+    },
+    relatedPath: {
+      currentPathTitle: "WES Canada Guide",
+      nextStepTitle: "Canada Startup Funding Guide",
+      nextStepLink: "/blog/canada-startup-funding-grants-guide",
+      nextStepDescription: "Compare wider federal and provincial startup grants and loans.",
+      stepType: "Comparison"
     },
   },
   '/blog/atlantic-small-business-grants-guide': {
@@ -787,7 +906,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Atlantic Canada regional funding is coordinated primarily by the Atlantic Canada Opportunities Agency (ACOA) alongside provincial partners.',
     decisionSummary: 'Target ACOA interest-free repayable contributions for business scaling and provincial hiring grants to build local capacity.',
@@ -807,21 +926,28 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Atlantic Canada funding',
-      title: 'See which Atlantic Canada grants your business fits',
-      description: 'Evaluate ACOA regional contributions, hiring subsidies, and provincial export grants matching your business.',
-      buttonText: 'Start Free Assessment',
+      title: 'Analyze Your Atlantic Canada Stacking Strategy',
+      description: 'Verify how provincial payroll rebates and regional ACOA interest-free expansion loans stack for your business.',
+      buttonText: 'Atlantic Stacking Checker',
       href: '/portfolio?focus=atlantic',
       supportingPoints: ['ACOA program fit check', 'Provincial wage subsidy stack', 'Repayable vs non-repayable review'],
+    },
+    relatedPath: {
+      currentPathTitle: "Atlantic SME Guide",
+      nextStepTitle: "Canada Startup Funding Guide",
+      nextStepLink: "/blog/canada-startup-funding-grants-guide",
+      nextStepDescription: "Compare wider federal and provincial startup grants and loans.",
+      stepType: "Comparison"
     },
   },
   '/guides/irap-innovation-application-guide': {
     route: '/guides/irap-innovation-application-guide',
-    seoTitle: 'IRAP Funding Guide 2026: Get Up to $500K R&D Funding',
-    seoDescription: 'Learn how to qualify for up to $500,000 in NRC IRAP salary subsidies and connect with an Industrial Technology Advisor.',
+    seoTitle: 'Canada IRAP Innovation Application Guide: Win Salary Subsidies',
+    seoDescription: 'Discover how to build a winning proposal for NRC IRAP funding in 2026. Learn ITA engagement strategies, salary reimbursement caps, and co-funding rules.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Research required before applying',
     statusSummary: 'NRC IRAP operates through direct engagement with an Industrial Technology Advisor (ITA) who reviews eligibility and project plans.',
     decisionSummary: 'Prepare a technical brief detailing your innovation, technical uncertainty, and key salary costs before calling the NRC to request an ITA.',
@@ -841,11 +967,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'IRAP application guide',
-      title: 'Assess your IRAP project fit and ITA pitch strategy',
-      description: 'Structure your technical research plan and prepare your project brief for ITA review to maximize your salary subsidy approvals.',
-      buttonText: 'Start Free Assessment',
+      title: 'Analyze Your ITA Pitch Readiness',
+      description: 'Prepare your project brief and technical documentation to successfully secure an Industrial Technology Advisor assignment.',
+      buttonText: 'Start IRAP Readiness Assessment',
       href: '/portfolio?focus=irap',
       supportingPoints: ['ITA pitch deck checklist', 'Eligible salary cost review', 'SR&ED tax credit compatibility'],
+    },
+    relatedPath: {
+      currentPathTitle: "IRAP Guide",
+      nextStepTitle: "Canada IRAP Grants 2026 Guide",
+      nextStepLink: "/blog/canada-irap-grants-2026",
+      nextStepDescription: "Read the detailed Industrial Research Assistance Program breakdown.",
+      stepType: "Program Guide"
     },
   },
   '/guides/apply-strategic-innovation-fund': {
@@ -855,7 +988,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Opportunity-specific',
     statusSummary: 'SIF accepts applications under five different streams, with Streams 1-3 operating on a rolling basis, and Stream 4-5 on competitive calls.',
     decisionSummary: 'Evaluate SIF only if your project has a minimum budget of $20M (seeking $10M+). Secure substantial private matching capital and prepare a detailed statement of interest.',
@@ -875,21 +1008,28 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Strategic Innovation Fund',
-      title: 'Evaluate your SIF project readiness',
-      description: 'Check if your large-scale innovation or scaling project satisfies SIF Stream 1-3 requirements and matching guidelines.',
-      buttonText: 'Start Free Assessment',
-      href: '/portfolio?focus=tech-startup',
+      title: 'Analyze Your SIF Project Readiness',
+      description: 'Check if your high-impact industrial R&D, scaling, or business attraction project satisfies SIF Stream 1-5 requirements and the $20M minimum project cost rule.',
+      buttonText: 'SIF Project Cost & Readiness Check',
+      href: '/portfolio?focus=canada',
       supportingPoints: ['SIF stream alignment check', 'Project cost eligibility review', 'Statement of Interest prep'],
+    },
+    relatedPath: {
+      currentPathTitle: "SIF Application Guide",
+      nextStepTitle: "Canada Startup Funding Guide",
+      nextStepLink: "/blog/canada-startup-funding-grants-guide",
+      nextStepDescription: "Compare wider federal and provincial startup grants and loans.",
+      stepType: "Comparison"
     },
   },
   '/blog/doe-sbir-clean-energy-grants': {
     route: '/blog/doe-sbir-clean-energy-grants',
-    seoTitle: 'DOE SBIR Clean Energy Grants 2026: Get Up to $1.85M',
-    seoDescription: 'Secure up to $1.85M in clean tech R&D grants from the Department of Energy. Learn the topics, deadlines, and project pitch rules.',
+    seoTitle: 'DOE SBIR Clean Energy Grants 2026: Get Up to $1.6M Non-Dilutive',
+    seoDescription: 'Learn how to qualify for Department of Energy SBIR grants in 2026. Compare Phase I ($200K) and Phase II ($1.6M) funding for carbon capture, solar, and grid tech.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Opportunity-specific',
     statusSummary: 'DOE releases SBIR/STTR topics on a fixed annual cycle (typically July/August), with standard application deadlines in October and February.',
     decisionSummary: 'Founders developing solar, wind, battery, grid, or carbon capture solutions must match their project to a specific DOE subtopic and submit a Letter of Intent.',
@@ -909,21 +1049,28 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'DOE Clean Energy grants',
-      title: 'Check your DOE SBIR topic fit',
-      description: 'Check if your renewable energy, storage, or grid modernization technology aligns with active DOE SBIR/STTR solicitation topics.',
-      buttonText: 'Start Free Assessment',
+      title: 'Analyze Your Clean Tech Project Fit',
+      description: 'Review if your carbon capture, solar, wind, or battery storage project aligns with active DOE subtopics.',
+      buttonText: 'Compare Clean Energy SBIR Topics',
       href: '/portfolio?focus=tech-startup',
-      supportingPoints: ['DOE subtopic match', 'Letter of Intent check', 'Phase I proposal readiness'],
+      supportingPoints: ['DOE subtopic matching check', 'LOI submission readiness', 'TABA funding guidelines'],
+    },
+    relatedPath: {
+      currentPathTitle: "DOE Clean Energy Guide",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
   },
   '/blog/healthcare-grants-2026': {
     route: '/blog/healthcare-grants-2026',
-    seoTitle: 'Healthcare Grants Canada 2026: Funding for Health Startups',
-    seoDescription: 'Discover grants, tax credits, and innovation funding programs for healthcare, biotech, medtech, and digital health companies.',
+    seoTitle: 'Healthcare & Life Sciences Grants 2026: NIH/HHS SBIR Guide',
+    seoDescription: 'Complete guide to NIH and federal healthcare grants for digital health, MedTech, and biotech startups in 2026. Learn Phase I/II trial caps and regulatory rules.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Canadian healthcare and biotech startups can leverage federal grants (IRAP, CIHR), provincial programs, and R&D tax credits.',
     decisionSummary: 'Determine whether your project is clinical R&D, digital health software, or medical device commercialization to target the right grants.',
@@ -943,11 +1090,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Healthcare & biotech grants',
-      title: 'Check your healthcare startup grant eligibility',
-      description: 'Find active medical, health tech, and biotech grants, tax credits, and salary subsidies matching your project.',
-      buttonText: 'Start Free Assessment',
+      title: 'Analyze Health R&D Trial Phase Compatibility',
+      description: 'Check if your digital health, medical device, or pharmaceutical research project satisfies clinical trial and NIH agency rules.',
+      buttonText: 'NIH Health R&D Trial Phase Screener',
       href: '/portfolio?focus=healthcare',
-      supportingPoints: ['SR&ED biotech recovery check', 'IRAP salary subsidy match', 'Clinical R&D funding stack'],
+      supportingPoints: ['Clinical trial phase check', 'Regulatory pathway alignment', 'Stackable healthcare credits'],
+    },
+    relatedPath: {
+      currentPathTitle: "Healthcare Grants",
+      nextStepTitle: "NIH SBIR/STTR Biotech Guide",
+      nextStepLink: "/blog/nih-sbir-biotech-grants",
+      nextStepDescription: "Learn how to qualify and apply for NIH biotech funding up to $2.09M.",
+      stepType: "Program Guide"
     },
   },
   '/blog/quebec-business-grants-2026': {
@@ -957,7 +1111,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: '2026-06-11',
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Quebec provides extensive economic support through the ESSOR program, Investissement Québec loans, and sector-specific tax credits.',
     decisionSummary: 'Target the ESSOR program for innovation or expansion capital and combine it with Investissement Québec financing packages.',
@@ -977,11 +1131,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Quebec business grants',
-      title: 'Check your Quebec business grant eligibility',
-      description: 'Discover active ESSOR funding, Investissement Québec loans, and regional development grants matching your business.',
-      buttonText: 'Start Free Assessment',
+      title: 'Analyze Your Quebec ESSOR Stacking Match',
+      description: 'Check if your digital transformation project or capital expansion meets Investissement Québec ESSOR guidelines (max 75% stacking limit).',
+      buttonText: 'ESSOR Stacking Screener',
       href: '/portfolio?focus=quebec',
       supportingPoints: ['ESSOR eligibility check', 'Provincial tax credit stack', 'Regional funding match'],
+    },
+    relatedPath: {
+      currentPathTitle: "Quebec Business Grants",
+      nextStepTitle: "Canada Startup Funding Guide",
+      nextStepLink: "/blog/canada-startup-funding-grants-guide",
+      nextStepDescription: "Compare wider federal and provincial startup grants and loans.",
+      stepType: "Comparison"
     },
   },
   '/blog/ontario-small-business-grants-guide': {
@@ -1386,12 +1547,12 @@ const profiles: Record<string, PriorityResearchProfile> = {
 },
   '/usa/minnesota': {
     route: '/usa/minnesota',
-    seoTitle: 'Minnesota Small Business Grants 2026: Stacking State & Federal Funding',
-    seoDescription: 'Discover 17+ active grant programs for Minnesota small businesses in 2026, from $5K to $500K. Learn how state and federal matching funds stack.',
+    seoTitle: 'Minnesota Small Business Grants 2026: Stack State & Federal DEED',
+    seoDescription: 'Learn how to stack Minnesota DEED Launch Grants ($35K) with federal SBIR matching funds up to $100K. Review compliance rules to avoid double-dipping in 2026.',
     expectedIntent: 'medium',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
-    lastVerified: LAST_VERIFIED,
+    lastVerified: '2026-07-12',
     programStatus: 'Multiple active programs',
     statusSummary: 'Minnesota DEED manages a portfolio of state-backed grants, seed matching funds, and local development loans. These can often be stacked with federal SBIR/SBA programs.',
     decisionSummary: 'Minnesota companies should check DEED active windows and match programs based on stacking rules rather than applying for individual opportunities in isolation.',
@@ -1416,11 +1577,18 @@ const profiles: Record<string, PriorityResearchProfile> = {
     ],
     cta: {
       eyebrow: 'Minnesota Stacking Strategy',
-      title: 'Analyze Minnesota Stacking Options',
-      description: 'Check how state DEED incentives and federal SBIR matching funds align for your business in 60 seconds.',
-      buttonText: 'Check Stacking Match',
-      href: '/calculator',
-      supportingPoints: ['State & Federal cost splits', 'Minnesota DEED compliance', 'Stacking limits checklist']
+      title: 'Analyze Minnesota DEED Pre-Screener Options',
+      description: 'Check if your startup qualifies for Launch Minnesota matching grants or regional financing programs.',
+      buttonText: 'Minnesota DEED Pre-Screener',
+      href: '/portfolio?focus=tech-startup',
+      supportingPoints: ['Launch MN matching limits', 'Minnesota DEED eligible cost divisions', 'Federal SBIR match schedules']
+    },
+    relatedPath: {
+      currentPathTitle: "Minnesota Guide",
+      nextStepTitle: "U.S. Technology Startup Funding Guide",
+      nextStepLink: "/usa/technology-startup-grants",
+      nextStepDescription: "Compare all federal SBIR/STTR agencies and state matching parameters.",
+      stepType: "Comparison"
     },
     faq: [
       {

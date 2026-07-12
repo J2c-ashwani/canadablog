@@ -71,7 +71,7 @@ export interface ISubscriberRepository {
   getSubscribersByFilter(filters: Partial<SubscriberProfile>): Promise<SubscriberProfile[]>
   updateSubscriberPreferences(email: string, updates: Partial<Omit<SubscriberProfile, "email">>): Promise<{ success: boolean; error?: any }>
   unsubscribe(token: string): Promise<{ success: boolean; error?: any }>
-  getAllSubscribers(): Promise<SubscriberProfile[]>
+  getAllSubscribers(includeUnsubscribed?: boolean): Promise<SubscriberProfile[]>
 }
 
 export const getFallbackLoginToken = (email: string): string => {
@@ -384,7 +384,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
     }
   }
 
-  async getAllSubscribers(): Promise<SubscriberProfile[]> {
+  async getAllSubscribers(includeUnsubscribed: boolean = false): Promise<SubscriberProfile[]> {
     try {
       const allLeads = await getLeadsFromSheet(1000)
       
@@ -436,8 +436,8 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         }
       }
       
-      // Return only active subscribers (isSubscribed !== false)
-      return Array.from(mergedMap.values()).filter(sub => sub.isSubscribed);
+      // Return only active subscribers (isSubscribed !== false) unless includeUnsubscribed is true
+      return Array.from(mergedMap.values()).filter(sub => includeUnsubscribed || sub.isSubscribed);
     } catch (err) {
       console.error("Error in repository getAllSubscribers:", err)
       return []
