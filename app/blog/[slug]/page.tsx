@@ -41,6 +41,7 @@ import NewsletterBox from '@/components/blog/NewsletterBox';
 import TRLDiagnostic from '@/components/blog/TRLDiagnostic';
 import StackingDiagnostic from '@/components/blog/StackingDiagnostic';
 import ChecklistDiagnostic from '@/components/blog/ChecklistDiagnostic';
+import RDEDecisionEngine from '@/components/blog/RDEDecisionEngine';
 
 type RelatedFundingLink = {
   href: string;
@@ -335,6 +336,34 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     },
   };
 }
+
+const WAVE3_RDE_SLUGS = new Set([
+  'sred-tax-credits-2026',
+  'canada-regional-development-2026',
+  'q4-2026-deadlines',
+  'canada-agriculture-agrifood-grants-guide',
+  'canexport-grants-2026',
+  'clean-technology-2026',
+  'digital-transformation-2026',
+  'innovation-superclusters-2026',
+  'cybersecurity-grants',
+  'manufacturing-grants-2026',
+  'minority-business-grants-2026',
+  'rural-business-development-2026',
+  'women-business-grants-2026',
+  'october-2026-last-chance',
+  'apply-usa-grants-2026',
+  'nih-sbir-biotech-grants',
+  'nsf-sbir-grants-technology-startups',
+  'csbfp-canada-small-business-financing-program',
+  'veteran-business-funding-canada-2026',
+  'healthcare-grants-2026',
+  'alberta-small-business-grants-guide',
+  'women-entrepreneurship-grants-2026',
+  'canada-startup-funding-grants-guide',
+  'bc-women-business-grants',
+  '7-startup-accelerators-california-free-money'
+]);
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
@@ -655,9 +684,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              {(fullPost.inlineCTA || researchProfile || ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug)) && (
+              {(fullPost.inlineCTA || researchProfile || WAVE3_RDE_SLUGS.has(slug) || ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug)) && (
                 <div className="not-prose my-8">
-                  {['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug) ? (
+                  {WAVE3_RDE_SLUGS.has(slug) ? (
+                    <RDEDecisionEngine configId={slug} />
+                  ) : ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug) ? (
                     <InlineGrantChecker />
                   ) : researchProfile ? (
                     <>

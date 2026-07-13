@@ -23,6 +23,22 @@ const archiveBlogRedirects = [
   { source: '/blog/canada-irap-grants-2025', destination: '/blog/canada-irap-grants-2026', permanent: true },
   { source: '/blog/indigenous-business-development-2025', destination: '/blog/indigenous-business-development-2026', permanent: true },
   { source: '/blog/small-business-financing-2025', destination: '/blog/small-business-financing-2026', permanent: true },
+  { source: '/blog/sred-tax-credits-2025', destination: '/blog/sred-tax-credits-2026', permanent: true },
+  { source: '/blog/canada-regional-development-2025', destination: '/blog/canada-regional-development-2026', permanent: true },
+  { source: '/blog/agricultural-innovation-2025', destination: '/blog/canada-agriculture-agrifood-grants-guide', permanent: true },
+  { source: '/blog/canexport-grants-2025', destination: '/blog/canexport-grants-2026', permanent: true },
+  { source: '/blog/clean-technology-2025', destination: '/blog/clean-technology-2026', permanent: true },
+  { source: '/blog/digital-transformation-2025', destination: '/blog/digital-transformation-2026', permanent: true },
+  { source: '/blog/innovation-superclusters-2025', destination: '/blog/innovation-superclusters-2026', permanent: true },
+  { source: '/blog/minority-business-grants-2025', destination: '/blog/minority-business-grants-2026', permanent: true },
+  { source: '/blog/rural-business-development-2025', destination: '/blog/rural-business-development-2026', permanent: true },
+  { source: '/blog/women-business-grants-2025', destination: '/blog/women-business-grants-2026', permanent: true },
+  { source: '/blog/october-2025-last-chance', destination: '/blog/october-2026-last-chance', permanent: true },
+  { source: '/blog/q4-2025-deadlines', destination: '/blog/q4-2026-deadlines', permanent: true },
+  { source: '/blog/apply-usa-grants-2025', destination: '/blog/apply-usa-grants-2026', permanent: true },
+  { source: '/blog/manufacturing-grants-2025', destination: '/blog/manufacturing-grants-2026', permanent: true },
+  { source: '/blog/veteran-business-funding-canada-2025', destination: '/blog/veteran-business-funding-canada-2026', permanent: true },
+  { source: '/blog/women-entrepreneurship-grants-2025', destination: '/blog/women-entrepreneurship-grants-2026', permanent: true },
 ]
 
 /** @type {import('next').NextConfig} */

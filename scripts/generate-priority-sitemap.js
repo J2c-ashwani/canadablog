@@ -136,7 +136,6 @@ function getPriorityBlogRoutes() {
       if (a.recentlyExpanded !== b.recentlyExpanded) return a.recentlyExpanded ? -1 : 1
       return a.words - b.words
     })
-    .slice(0, 100)
     .map((row) => row.route)
 }
 
@@ -158,10 +157,10 @@ function buildXml(routes) {
   ].join('\n')
 }
 
-const routes = Array.from(new Set([
+// 1. Gather all base priority routes
+const baseRoutes = Array.from(new Set([
   ...CORE_PRIORITY_ROUTES,
   ...GSC_QUICK_WIN_ROUTES,
-  ...getPriorityBlogRoutes(),
   ...getStaticGuideRoutes(),
   ...getDynamicGuideRoutes(),
   '/usa/california',
@@ -174,5 +173,18 @@ const routes = Array.from(new Set([
   '/canada/quebec',
 ]))
 
+// 2. Fetch all sorted blog routes
+const sortedBlogs = getPriorityBlogRoutes()
+
+// 3. Accumulate up to exactly 176 unique routes
+const finalRoutesSet = new Set(baseRoutes)
+for (const route of sortedBlogs) {
+  if (finalRoutesSet.size >= 176) break
+  finalRoutesSet.add(route)
+}
+
+const routes = Array.from(finalRoutesSet)
+
 fs.writeFileSync(OUTPUT_PATH, buildXml(routes))
 console.log(`Generated ${OUTPUT_PATH} with ${routes.length} URLs`)
+

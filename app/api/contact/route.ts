@@ -54,6 +54,8 @@ export async function POST(request: NextRequest) {
       utmCampaign,
       gaClientId,
       referralSource,
+      readinessScore,
+      readinessBand,
     } = body;
 
 
@@ -128,6 +130,8 @@ export async function POST(request: NextRequest) {
       offlineStatus: "Lead",
       companySize: companySize || "N/A",
       referralSource: referralSource || "N/A",
+      readinessScore: readinessScore !== undefined ? Number(readinessScore) : undefined,
+      readinessBand: readinessBand || "N/A",
       leadActivity: JSON.stringify({ contactFormSubmitted: true }),
     };
 
