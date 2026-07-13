@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ArrowRight, CheckCircle2, Mail, Cpu, DollarSign, Calendar, RefreshCw, AlertCircle, Sparkles } from 'lucide-react';
 import { RDE_CONFIGS } from '@/lib/data/rdeConfigs';
 
@@ -28,9 +28,55 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const [recoveryId, setRecoveryId] = useState('');
+  const [hasBooked, setHasBooked] = useState(false);
 
   const questions = config.questions;
   const isQuestionsFinished = currentQuestionIdx >= questions.length;
+  const evaluation = isQuestionsFinished ? config.evaluate(answers) : null;
+
+  useEffect(() => {
+    setRecoveryId('rec_' + Math.random().toString(36).substring(2, 15));
+  }, []);
+
+  // Abandonment tracking for strategy session recovery
+  useEffect(() => {
+    if (!submitted || !email || hasBooked) return;
+
+    const isFilingEscalation = answers.revenue === 'above_3m' && answers.employees === '100_plus';
+    const isStrategyEscalation = !isFilingEscalation && (
+      answers.revenue === 'above_3m' || 
+      answers.employees === '26_99' || 
+      answers.employees === '100_plus' ||
+      (evaluation && evaluation.escalate)
+    );
+
+    if (!isFilingEscalation && !isStrategyEscalation) return;
+
+    const handleUnload = () => {
+      // Use keepalive: true to ensure the request completes even during unload/close
+      void fetch('/api/strategy-session/recovery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({
+          event: 'abandoned',
+          recoveryId,
+          email,
+          name: name || 'Founder',
+          source: `RDE - ${config.title}`,
+          pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+          reason: 'Closed Page'
+        })
+      });
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, [submitted, email, hasBooked, answers, recoveryId, name, config.title, evaluation]);
+
   const activeQuestion = !isQuestionsFinished ? questions[currentQuestionIdx] : null;
 
   // Handle single question selection/input
@@ -52,8 +98,7 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
     setError('');
   };
 
-  // Run evaluation on completed answers
-  const evaluation = isQuestionsFinished ? config.evaluate(answers) : null;
+
 
   const handleLeadSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -107,6 +152,35 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
       if (typeof window !== 'undefined') {
         sessionStorage.setItem('lead_email', email);
         sessionStorage.setItem('lead_name', name);
+      }
+
+      // If escalated, register the lead status as "shown" in the Strategy Session Recovery tab
+      const isFilingEscalation = answers.revenue === 'above_3m' && answers.employees === '100_plus';
+      const isStrategyEscalation = !isFilingEscalation && (
+        answers.revenue === 'above_3m' || 
+        answers.employees === '26_99' || 
+        answers.employees === '100_plus' ||
+        evaluation.escalate
+      );
+
+      if (isFilingEscalation || isStrategyEscalation) {
+        try {
+          await fetch('/api/strategy-session/recovery', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event: 'shown',
+              recoveryId,
+              email,
+              name: name || 'Founder',
+              source: `RDE - ${config.title}`,
+              pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
+              reason: isFilingEscalation ? 'Filing Escalation' : 'Strategy Session Escalation'
+            })
+          });
+        } catch (recErr) {
+          console.error('Failed to log recovery shown event:', recErr);
+        }
       }
 
       setSubmitted(true);
@@ -306,7 +380,8 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
                           <span className="text-lg font-black text-indigo-400">$2,500+ Success Fee</span>
                         </div>
                         <a
-                          href={`/contact?email=${encodeURIComponent(email)}&service=done-for-you-filing`}
+                          href={`/contact?email=${encodeURIComponent(email)}&service=done-for-you-filing&rid=${encodeURIComponent(recoveryId)}&source=RDE`}
+                          onClick={() => setHasBooked(true)}
                           className="h-10 px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
                         >
                           Request Filing Consultation
@@ -330,7 +405,8 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
                           <span className="text-lg font-black text-amber-400">$199.00</span>
                         </div>
                         <a
-                          href={`/products/strategy-session?email=${encodeURIComponent(email)}`}
+                          href={`/booking?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name || 'Founder')}&rid=${encodeURIComponent(recoveryId)}&source=RDE`}
+                          onClick={() => setHasBooked(true)}
                           className="h-10 px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
                         >
                           Book Strategy Session ($199)
