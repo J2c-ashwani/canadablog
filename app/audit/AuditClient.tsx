@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
@@ -145,6 +145,13 @@ export default function AuditClient() {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
   const [detailsConfirmed, setDetailsConfirmed] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
+  const recoveryIdRef = useRef('');
+  if (!recoveryIdRef.current) {
+    recoveryIdRef.current = 'rec_' + Math.random().toString(36).substring(2, 15);
+  }
+  const recoveryId = recoveryIdRef.current;
+  const [hasPaid, setHasPaid] = useState(false);
+
   const [params, setParams] = useState({
     email: '',
     name: '',
@@ -201,6 +208,30 @@ export default function AuditClient() {
       source: sourceVal,
     });
 
+    if (emailVal) {
+      // Register in the Strategy Session Recovery tab on page load
+      const registerRecovery = async () => {
+        try {
+          await fetch('/api/strategy-session/recovery', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              event: 'shown',
+              recoveryId,
+              email: emailVal.trim(),
+              name: nameVal ? nameVal.trim() : 'Founder',
+              source: sourceVal || 'audit-page',
+              pagePath: '/audit',
+              reason: 'Landed on Audit Paywall'
+            })
+          });
+        } catch (recErr) {
+          console.error('Failed to log recovery shown event:', recErr);
+        }
+      };
+      registerRecovery();
+    }
+
     if (emailVal && nameVal) {
       setDetailsConfirmed(true);
 
@@ -230,6 +261,34 @@ export default function AuditClient() {
       captureDraft();
     }
   }, []);
+
+  // Abandonment tracking for audit page checkout
+  useEffect(() => {
+    if (!params.email || hasPaid) return;
+
+    const handleUnload = () => {
+      // Use keepalive: true to ensure the network request completes on page exit
+      void fetch('/api/strategy-session/recovery', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        keepalive: true,
+        body: JSON.stringify({
+          event: 'abandoned',
+          recoveryId,
+          email: params.email.trim(),
+          name: params.name ? params.name.trim() : 'Founder',
+          source: params.source || 'audit-page',
+          pagePath: '/audit',
+          reason: 'Closed Audit Paywall Page'
+        })
+      });
+    };
+
+    window.addEventListener('beforeunload', handleUnload);
+    return () => {
+      window.removeEventListener('beforeunload', handleUnload);
+    };
+  }, [params.email, params.name, params.source, hasPaid, recoveryId]);
 
   /* ── PayPal SDK ── */
   useEffect(() => {
@@ -323,8 +382,11 @@ export default function AuditClient() {
             }
 
             const resData = await res.json();
-            const redirectUrl = resData.deliveryUrl || `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&source=${encodeURIComponent(params.source)}&tier=audit&price=${finalPrice}&order=${encodeURIComponent(orderId)}`;
+            let redirectUrl = resData.deliveryUrl || `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&source=${encodeURIComponent(params.source)}&tier=audit&price=${finalPrice}&order=${encodeURIComponent(orderId)}`;
+            setHasPaid(true);
 
+            const separator = redirectUrl.includes('?') ? '&' : '?';
+            redirectUrl += `${separator}rid=${encodeURIComponent(recoveryId)}`;
             window.location.href = redirectUrl;
           } catch (err: any) {
             console.error('Payment capture/record error:', err);
