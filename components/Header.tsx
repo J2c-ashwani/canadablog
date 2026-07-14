@@ -269,17 +269,7 @@ export function Header() {
                         <div className="font-bold text-gray-900">Action Plan</div>
                         <div className="text-[10px] text-gray-550">Budget & application checklists ($49)</div>
                       </Link>
-                      <Link
-                        href="/products/report"
-                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-bundle' });
-                          closeDropdowns();
-                        }}
-                      >
-                        <div className="font-bold text-emerald-700">Complete Funding Bundle</div>
-                        <div className="text-[10px] text-gray-550">All reports + checklists ($79)</div>
-                      </Link>
+
                       <Link
                         href="/products/toolkit"
                         className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
@@ -592,17 +582,7 @@ export function Header() {
                       >
                         Action Plan ($49)
                       </Link>
-                      <Link
-                        href="/products/report"
-                        className="block text-sm text-emerald-600 hover:text-emerald-700 py-2 font-bold"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-bundle' });
-                          setIsMenuOpen(false);
-                          setProductsDropdownOpen(false);
-                        }}
-                      >
-                        Complete Funding Bundle ($79)
-                      </Link>
+
                       <Link
                         href="/products/toolkit"
                         className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"

@@ -9,6 +9,21 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.fsidigital.ca/about",
   },
+  openGraph: {
+    title: "About FSI Digital | Government Funding & Grant Information",
+    description: "Learn about FSI Digital (formerly Grant Finder Pro). We provide free, comprehensive government grant information for USA and Canada businesses.",
+    url: "https://www.fsidigital.ca/about",
+    siteName: "FSI Digital",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "About FSI Digital",
+      },
+    ],
+  },
 }
 
 export default function About() {

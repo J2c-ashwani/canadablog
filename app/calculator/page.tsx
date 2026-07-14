@@ -10,18 +10,39 @@ export const metadata: Metadata = {
     title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
     description: 'Use our free interactive grant calculator to instantly estimate how much government funding, grants, and loans your Canadian business qualifies for.',
     keywords: 'Canada grant eligibility calculator, estimate my funding, am I eligible for IRAP CDAP SR&ED, business grant calculator 2026, how much funding can I get, free grant eligibility checker Canada',
+    alternates: {
+        canonical: 'https://www.fsidigital.ca/calculator',
+    },
     openGraph: {
         title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
         description: 'Use our free interactive grant calculator to instantly estimate how much government funding, grants, and loans your Canadian business qualifies for.',
-        url: 'https://fsidigital.ca/calculator',
+        url: 'https://www.fsidigital.ca/calculator',
         siteName: 'FSI Digital',
         type: 'website',
     },
 };
 
 export default function CalculatorPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "Canada Grant Eligibility Calculator",
+        "applicationCategory": "BusinessApplication",
+        "description": "Estimate how much government funding, grants, and loans your Canadian business qualifies for instantly.",
+        "operatingSystem": "Web",
+        "url": "https://www.fsidigital.ca/calculator",
+        "publisher": {
+            "@type": "Organization",
+            "name": "FSI Digital"
+        }
+    };
+
     return (
         <div className="min-h-screen bg-white">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
             <div className="bg-gray-50/50 py-12 lg:py-24">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
