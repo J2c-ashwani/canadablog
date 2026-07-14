@@ -152,6 +152,15 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
       if (typeof window !== 'undefined') {
         sessionStorage.setItem('lead_email', email);
         sessionStorage.setItem('lead_name', name);
+        localStorage.setItem('fsi:lead_email', email);
+        localStorage.setItem('fsi:lead_name', name);
+        localStorage.setItem('fsi:lead_matches', String(evaluation.matchedPrograms.length));
+        localStorage.setItem('fsi:lead_matches_list', JSON.stringify(evaluation.matchedPrograms));
+        localStorage.setItem('fsi:lead_estimate', evaluation.eligibilityEstimate);
+        localStorage.setItem('fsi:lead_region', answers.province || 'on');
+        localStorage.setItem('fsi:lead_industry', answers.industry || 'Technology');
+        localStorage.setItem('fsi:lead_company', answers.company || '');
+        localStorage.setItem('fsi:lead_saved_at', String(Date.now()));
       }
 
       // If escalated, register the lead status as "shown" in the Strategy Session Recovery tab
@@ -432,7 +441,7 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
                       </div>
                       <div className="flex justify-end gap-3 pt-2">
                         <a
-                          href={`${evaluation.productPath}?email=${encodeURIComponent(email)}`}
+                          href={`${evaluation.productPath}?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name || '')}&region=${encodeURIComponent(answers.province || '')}&industry=${encodeURIComponent(answers.industry || '')}&matches=${evaluation.matchedPrograms.length}&estimate=${encodeURIComponent(evaluation.eligibilityEstimate)}`}
                           className="h-10 px-5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
                         >
                           Upgrade to PDF Report (${evaluation.productPrice})

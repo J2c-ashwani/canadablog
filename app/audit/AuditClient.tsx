@@ -10,7 +10,7 @@ import { DiyComparisonTable } from '@/components/DiyComparisonTable';
 import {
   CheckCircle, ArrowRight, Shield, Lock, Clock, Star, TrendingUp,
   FileText, Phone, BadgeCheck, ChevronDown, Zap, DollarSign,
-  CalendarClock, ShieldCheck, CircleDollarSign, Award, Users, Sparkles
+  CalendarClock, ShieldCheck, CircleDollarSign, Award, Users, Sparkles, Loader2
 } from 'lucide-react';
 
 /* ─── Architecture: PAY FIRST → CALENDLY UNLOCKS ────────────────────────────
@@ -151,6 +151,8 @@ export default function AuditClient() {
   }
   const recoveryId = recoveryIdRef.current;
   const [hasPaid, setHasPaid] = useState(false);
+  const [paymentSuccessState, setPaymentSuccessState] = useState(false);
+  const [finalPayerEmail, setFinalPayerEmail] = useState('');
 
   const [params, setParams] = useState({
     email: '',
@@ -307,19 +309,6 @@ export default function AuditClient() {
     const container = document.getElementById('audit-paypal-button');
     if (container) container.innerHTML = '';
 
-    if (!detailsConfirmed || !params.email || !params.name) {
-      if (container) {
-        container.innerHTML = `
-          <div class="text-center p-5 bg-slate-50/50 border border-slate-200/80 rounded-xl text-xs text-slate-500 flex flex-col items-center justify-center gap-2 font-sans">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="text-slate-400"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
-            <span class="font-bold text-slate-700">Checkout Locked</span>
-            <span class="text-[10px] text-slate-400 max-w-[200px] leading-relaxed mx-auto">Confirm your dossier delivery details in Step 1 to unlock the secure PayPal & card payment buttons.</span>
-          </div>
-        `;
-      }
-      return;
-    }
-
     const finalPrice = Math.max(0, 199 - params.discount).toFixed(2);
     const desc = params.discount > 0
       ? `FSI Digital Funding Strategy Audit ($${params.discount} report credit applied)`
@@ -335,6 +324,28 @@ export default function AuditClient() {
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 52 },
         createOrder: (_data: any, actions: any) => {
           setPaymentError(null);
+          
+          // Send lead draft if email is entered to prevent funnel drop-off
+          if (params.email) {
+            const sp = new URLSearchParams(window.location.search);
+            fetch('/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify({
+                email: params.email.trim(),
+                name: params.name.trim() || 'Founder',
+                location: params.region || 'ON',
+                industry: params.industry || 'other',
+                country: 'Canada',
+                source: 'Audit Checkout Lead Draft',
+                utmSource: sp.get('utm_source') || 'direct',
+                utmMedium: sp.get('utm_medium') || 'N/A',
+                utmCampaign: sp.get('utm_campaign') || 'N/A',
+                gaClientId: getGaClientId(),
+              }),
+            }).catch(e => console.error('Failed to save lead draft:', e));
+          }
+
           return actions.order.create({
             purchase_units: [{ amount: { value: finalPrice, currency_code: 'USD' }, description: desc }]
           });
@@ -346,6 +357,9 @@ export default function AuditClient() {
             if ((window as any).clarity) (window as any).clarity('event', 'audit_paid');
             const orderId = details?.id || '';
             
+            const payerEmail = params.email.trim() || details?.payer?.email_address || '';
+            const payerName = params.name.trim() || (details?.payer?.name ? `${details.payer.name.given_name || ''} ${details.payer.name.surname || ''}`.trim() : 'Premium Member');
+
             const sp = new URLSearchParams(window.location.search);
             const attribution = {
               landingPage: window.location.pathname,
@@ -361,8 +375,8 @@ export default function AuditClient() {
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 productId: 'strategy-audit',
-                email: params.email.trim(),
-                name: params.name.trim(),
+                email: payerEmail,
+                name: payerName,
                 paypalOrderId: orderId,
                 profileData: {
                   province: params.region || 'ON',
@@ -382,12 +396,21 @@ export default function AuditClient() {
             }
 
             const resData = await res.json();
-            let redirectUrl = resData.deliveryUrl || `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&source=${encodeURIComponent(params.source)}&tier=audit&price=${finalPrice}&order=${encodeURIComponent(orderId)}`;
+            let redirectUrl = resData.deliveryUrl || `/booking?success=true&email=${encodeURIComponent(payerEmail)}&name=${encodeURIComponent(payerName)}&source=${encodeURIComponent(params.source)}&tier=audit&price=${finalPrice}&order=${encodeURIComponent(orderId)}`;
+            
+            // Deactivate exit-intent and update states
             setHasPaid(true);
+            setFinalPayerEmail(payerEmail);
+            setPaymentSuccessState(true);
+            setIsProcessing(false);
 
             const separator = redirectUrl.includes('?') ? '&' : '?';
             redirectUrl += `${separator}rid=${encodeURIComponent(recoveryId)}`;
-            window.location.href = redirectUrl;
+            
+            // 3-second post-purchase validation freeze to reassure the client
+            setTimeout(() => {
+              window.location.href = redirectUrl;
+            }, 3000);
           } catch (err: any) {
             console.error('Payment capture/record error:', err);
             setIsProcessing(false);
@@ -404,7 +427,7 @@ export default function AuditClient() {
       console.error('Failed to render PayPal buttons:', err);
       setPaymentError('Could not load secure checkout. Please refresh the page.');
     }
-  }, [sdkReady, params, detailsConfirmed]);
+  }, [sdkReady, params]);
 
   const finalPrice = Math.max(0, 199 - params.discount);
   const isDiscounted = params.discount > 0;
@@ -649,206 +672,122 @@ export default function AuditClient() {
                   )}
 
                   {/* Personalization Section vs Form */}
-                  {detailsConfirmed ? (
-                    <>
-                      {/* Step 1: Locked Details Alert */}
-                      <div className="bg-emerald-50/70 border border-emerald-200 rounded-xl p-3.5 text-left mb-4 text-xs">
-                        <div className="flex items-center justify-between mb-1.5">
-                          <span className="font-bold text-emerald-800 flex items-center gap-1">
-                            <span className="flex items-center justify-center w-4 h-4 rounded-full bg-emerald-500 text-white text-[9px] font-black">✓</span>
-                            Step 1: Delivery Details Locked
-                          </span>
-                          <button
-                            type="button"
-                            onClick={() => setDetailsConfirmed(false)}
-                            className="text-[10px] text-indigo-600 hover:text-indigo-850 font-bold hover:underline"
-                          >
-                            Edit
-                          </button>
-                        </div>
-                        <div className="space-y-1 text-slate-700">
-                          <p><span className="text-slate-400">Email:</span> {params.email}</p>
-                          <p><span className="text-slate-400">Name:</span> {params.name}</p>
-                          {params.company && <p><span className="text-slate-400">Company:</span> {params.company}</p>}
-                        </div>
-                      </div>
+                  {/* Step 1: Personalized Outcomes Card */}
+                  {(() => {
+                    const companyName = cleanField(params.company || params.name, "Your Business");
+                    const industryName = getIndustryName(params.industry);
+                    const regionName = getProvinceName(params.region);
+                    const opportunityRange = getAuditEstimateRange(params.industry, params.region);
 
-                      {/* Opportunity Range Dossier Card */}
-                      {(() => {
-                        const companyName = cleanField(params.company || params.name, "Your Business");
-                        const industryName = getIndustryName(params.industry);
-                        const regionName = getProvinceName(params.region);
-                        const opportunityRange = getAuditEstimateRange(params.industry, params.region);
-
-                        return (
-                          <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4 text-left shadow-2xs font-sans">
-                            <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs border-b border-slate-200 pb-3 mb-3">
-                              <div>
-                                <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Prepared for:</span>
-                                <span className="font-bold text-slate-800 text-sm">{companyName}</span>
-                              </div>
-                              <div>
-                                <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Industry:</span>
-                                <span className="font-semibold text-slate-700 text-sm">{industryName}</span>
-                              </div>
-                              <div>
-                                <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Region:</span>
-                                <span className="font-semibold text-slate-700 text-sm">{regionName}</span>
-                              </div>
-                              <div>
-                                <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Estimated Opportunity Range:</span>
-                                <span className="font-bold text-emerald-600 text-sm">{opportunityRange}</span>
-                              </div>
-                            </div>
-                            <div className="flex items-center justify-between text-xs pt-0.5">
-                              <div>
-                                <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Generated:</span>
-                                <span className="font-medium text-slate-600">Today</span>
-                              </div>
-                              <div>
-                                <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider text-right">Analysis Status:</span>
-                                <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5 uppercase tracking-wide">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                                  Ready To Unlock
-                                </span>
-                              </div>
-                            </div>
+                    return (
+                      <div className="bg-slate-50 border border-slate-200 rounded-xl p-4 mb-4 text-left shadow-2xs font-sans">
+                        <div className="grid grid-cols-2 gap-x-4 gap-y-3 text-xs border-b border-slate-200 pb-3 mb-3">
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Prepared for:</span>
+                            <span className="font-bold text-slate-800 text-sm">{companyName}</span>
                           </div>
-                        );
-                      })()}
-                    </>
-                  ) : (
-                    /* Interactive Form to collect details */
-                    <div className="space-y-4 mb-4 text-left">
-                      <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800">
-                        <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-600 text-white text-[10px] font-black shrink-0">
-                          1
-                        </span>
-                        <span>Step 1: Dossier Delivery Details</span>
-                      </div>
-                      
-                      <p className="text-[11px] text-slate-500 leading-relaxed bg-slate-50 border border-slate-200/60 p-2.5 rounded-lg">
-                        Provide your delivery coordinates. We need this information to verify your matching credentials, compile your custom eligibility report, and email your booking access link.
-                      </p>
-
-                      <div className="space-y-3">
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Email</label>
-                          <input
-                            type="email"
-                            required
-                            placeholder="you@company.com"
-                            value={params.email}
-                            onChange={(e) => setParams(prev => ({ ...prev, email: e.target.value }))}
-                            className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
-                          />
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Industry:</span>
+                            <span className="font-semibold text-slate-700 text-sm">{industryName}</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Region:</span>
+                            <span className="font-semibold text-slate-700 text-sm">{regionName}</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Opportunity Range:</span>
+                            <span className="font-bold text-emerald-600 text-sm">{opportunityRange}</span>
+                          </div>
                         </div>
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Contact Name</label>
-                          <input
-                            type="text"
-                            required
-                            placeholder="First & Last Name"
-                            value={params.name}
-                            onChange={(e) => setParams(prev => ({ ...prev, name: e.target.value }))}
-                            className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
-                          />
-                        </div>
-                        <div>
-                          <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Name</label>
-                          <input
-                            type="text"
-                            placeholder="Acme Inc. (Optional)"
-                            value={params.company}
-                            onChange={(e) => setParams(prev => ({ ...prev, company: e.target.value }))}
-                            className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
-                          />
+                        <div className="flex items-center justify-between text-xs pt-0.5">
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Dossier Status:</span>
+                            <span className="font-medium text-slate-600">Generated (Pending Upgrade)</span>
+                          </div>
+                          <div>
+                            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider text-right">Analysis Status:</span>
+                            <span className="inline-flex items-center gap-1 bg-emerald-100 text-emerald-800 text-[10px] font-bold px-2 py-0.5 rounded-full mt-0.5 uppercase tracking-wide">
+                              <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
+                              Ready To Unlock
+                            </span>
+                          </div>
                         </div>
                       </div>
+                    );
+                  })()}
 
-                      <button
-                        type="button"
-                        onClick={async () => {
-                          if (!params.email || !params.email.includes('@')) {
-                            setPaymentError('Please enter a valid company email.');
-                            return;
-                          }
-                          if (!params.name || params.name.trim().length < 2) {
-                            setPaymentError('Please enter your contact name.');
-                            return;
-                          }
-                          setPaymentError(null);
-                          setDetailsConfirmed(true);
-
-                          if (typeof window !== 'undefined') {
-                            localStorage.setItem('fsi:lead_email', params.email.trim());
-                            localStorage.setItem('fsi:lead_name', params.name.trim());
-                            localStorage.setItem('fsi:lead_region', params.region || 'ON');
-                            localStorage.setItem('fsi:lead_industry', params.industry || 'other');
-                            localStorage.setItem('fsi:lead_company', params.company || '');
-                            localStorage.setItem('fsi:lead_saved_at', Date.now().toString());
-                          }
-
-                          // Capture lead draft immediately to prevent funnel drop-off loss
-                          try {
-                            const sp = new URLSearchParams(window.location.search);
-                            await fetch('/api/subscribe', {
-                              method: 'POST',
-                              headers: { 'Content-Type': 'application/json' },
-                              body: JSON.stringify({
-                                email: params.email.trim(),
-                                name: params.name.trim(),
-                                location: params.region || 'ON',
-                                industry: params.industry || 'other',
-                                country: 'Canada',
-                                source: 'Audit Checkout Lead Draft',
-                                utmSource: sp.get('utm_source') || 'direct',
-                                utmMedium: sp.get('utm_medium') || 'N/A',
-                                utmCampaign: sp.get('utm_campaign') || 'N/A',
-                                gaClientId: getGaClientId(),
-                              }),
-                            });
-                          } catch (e) {
-                            console.error('Failed to save lead draft:', e);
-                          }
-                        }}
-                        className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2.5 rounded-lg text-xs transition-colors flex items-center justify-center gap-1.5 shadow-xs"
-                      >
-                        Confirm Details & Continue
-                        <ArrowRight className="w-3.5 h-3.5" />
-                      </button>
+                  {/* Step 2: Delivery Details Form */}
+                  <div className="space-y-4 mb-4 text-left border-t border-slate-100 pt-4">
+                    <div className="flex items-center gap-1.5 text-xs font-bold text-slate-850">
+                      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-650 text-white text-[10px] font-black shrink-0">
+                        1
+                      </span>
+                      <span>Step 1: Dossier Delivery Details</span>
                     </div>
-                  )}
+                    
+                    <p className="text-[11px] text-slate-500 leading-relaxed bg-slate-50 border border-slate-200/60 p-2.5 rounded-lg">
+                      Enter your delivery email below. If left blank, we will deliver to your secure PayPal checkout email.
+                    </p>
 
-                  {/* Step 2: Complete Secure Checkout */}
+                    <div className="space-y-3">
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Email</label>
+                        <input
+                          type="email"
+                          placeholder="you@company.com"
+                          value={params.email}
+                          onChange={(e) => setParams(prev => ({ ...prev, email: e.target.value }))}
+                          className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Contact Name</label>
+                        <input
+                          type="text"
+                          placeholder="First & Last Name"
+                          value={params.name}
+                          onChange={(e) => setParams(prev => ({ ...prev, name: e.target.value }))}
+                          className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
+                        />
+                      </div>
+                      <div>
+                        <label className="block text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-1">Company Name</label>
+                        <input
+                          type="text"
+                          placeholder="Acme Inc. (Optional)"
+                          value={params.company}
+                          onChange={(e) => setParams(prev => ({ ...prev, company: e.target.value }))}
+                          className="w-full px-3 py-2 text-xs text-slate-800 bg-white border border-slate-200 rounded-lg focus:outline-hidden focus:border-indigo-500"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Step 3: Complete Secure Checkout */}
                   <div className="border-t border-slate-100 pt-4 text-left">
                     <div className="flex items-center gap-1.5 text-xs font-bold text-slate-800 mb-2">
-                      <span className={`flex items-center justify-center w-5 h-5 rounded-full text-[10px] font-black shrink-0 ${
-                        detailsConfirmed ? 'bg-indigo-600 text-white' : 'bg-slate-200 text-slate-600'
-                      }`}>
+                      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-indigo-650 text-white text-[10px] font-black shrink-0">
                         2
                       </span>
                       <span>Step 2: Complete Secure Checkout</span>
                     </div>
 
-                    {detailsConfirmed && (
-                      <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 mb-3 text-xs space-y-1.5">
-                        <div className="flex justify-between text-slate-500">
-                          <span>Audit Session Fee</span>
-                          <span>$199.00 USD</span>
-                        </div>
-                        {isDiscounted && (
-                          <div className="flex justify-between text-emerald-700 font-medium">
-                            <span>Report Credit Offset</span>
-                            <span>-${params.discount.toFixed(2)} USD</span>
-                          </div>
-                        )}
-                        <div className="flex justify-between font-bold text-slate-900 border-t border-slate-200/60 pt-1.5 text-sm">
-                          <span>Total Amount</span>
-                          <span>${finalPrice.toFixed(2)} USD</span>
-                        </div>
+                    <div className="bg-slate-50 border border-slate-100 rounded-lg p-3 mb-3 text-xs space-y-1.5">
+                      <div className="flex justify-between text-slate-500">
+                        <span>Audit Session Fee</span>
+                        <span>$199.00 USD</span>
                       </div>
-                    )}
+                      {isDiscounted && (
+                        <div className="flex justify-between text-emerald-700 font-medium">
+                          <span>Report Credit Offset</span>
+                          <span>-${params.discount.toFixed(2)} USD</span>
+                        </div>
+                      )}
+                      <div className="flex justify-between font-bold text-slate-900 border-t border-slate-200/60 pt-1.5 text-sm">
+                        <span>Total Amount</span>
+                        <span>${finalPrice.toFixed(2)} USD</span>
+                      </div>
+                    </div>
 
                     <div id="audit-paypal-button" className="min-h-[56px] mt-2">
                       {!sdkReady && (
@@ -913,6 +852,31 @@ export default function AuditClient() {
           <div className="w-12 h-12 border-4 border-slate-700 border-t-indigo-500 rounded-full animate-spin mb-4" />
           <h3 className="text-lg font-bold">Securing Your Transaction...</h3>
           <p className="text-xs text-slate-400 mt-1 animate-pulse">Writing secure purchase record to the ledger, please do not close this window.</p>
+        </div>
+      )}
+      {paymentSuccessState && (
+        <div className="fixed inset-0 bg-slate-950 z-50 flex flex-col items-center justify-center text-white font-sans p-6 text-center animate-in fade-in duration-300">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 max-w-md w-full shadow-2xl flex flex-col items-center gap-5">
+            <div className="w-14 h-14 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center">
+              <CheckCircle className="w-8 h-8 text-emerald-400 animate-bounce" />
+            </div>
+            <div>
+              <h3 className="text-lg font-black text-slate-100">✓ Payment Captured Successfully</h3>
+              <p className="text-xs text-slate-400 mt-2 leading-relaxed">
+                Your Funding Strategy Audit is preparing. We have sent receipt and access instructions to:
+              </p>
+              <div className="mt-3.5 bg-slate-950 border border-slate-850 px-4 py-2.5 rounded-lg text-xs font-bold text-emerald-400 break-all select-all">
+                {finalPayerEmail}
+              </div>
+            </div>
+            <div className="w-full border-t border-slate-800/60 pt-4 flex flex-col items-center gap-2">
+              <div className="flex items-center gap-2 text-[10px] text-slate-500 font-semibold uppercase tracking-wider">
+                <Loader2 className="w-3.5 h-3.5 animate-spin text-indigo-500" />
+                <span>Redirecting to Booking step...</span>
+              </div>
+              <span className="text-[9.5px] text-slate-500">Please do not refresh or close this tab.</span>
+            </div>
+          </div>
         </div>
       )}
       <Footer />

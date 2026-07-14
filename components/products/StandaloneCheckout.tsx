@@ -125,11 +125,49 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     finalProductName = 'Complete Funding Bundle';
   }
 
+  // Load personalized outcomes & prefill
+  const [personalizedMatches, setPersonalizedMatches] = useState<string | null>(null);
+  const [personalizedEstimate, setPersonalizedEstimate] = useState<string | null>(null);
+  const [personalizedIndustry, setPersonalizedIndustry] = useState<string | null>(null);
+  const [personalizedRegion, setPersonalizedRegion] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const sp = new URLSearchParams(window.location.search);
+    
+    let emailVal = sp.get('email') || '';
+    let nameVal = sp.get('name') || '';
+    
+    // Fallback to localStorage if active within 24h
+    const savedAt = localStorage.getItem('fsi:lead_saved_at');
+    const isExpired = savedAt ? (Date.now() - Number(savedAt) > 24 * 60 * 60 * 1000) : false;
+    
+    if (!isExpired) {
+      if (!emailVal) emailVal = localStorage.getItem('fsi:lead_email') || '';
+      if (!nameVal) nameVal = localStorage.getItem('fsi:lead_name') || '';
+    }
+    
+    if (emailVal) setEmail(emailVal);
+    if (nameVal) setName(nameVal);
+
+    // Parse outcomes
+    const m = sp.get('matches') || (!isExpired ? localStorage.getItem('fsi:lead_matches') : null);
+    const est = sp.get('estimate') || (!isExpired ? localStorage.getItem('fsi:lead_estimate') : null);
+    const ind = sp.get('industry') || (!isExpired ? localStorage.getItem('fsi:lead_industry') : null);
+    const reg = sp.get('region') || (!isExpired ? localStorage.getItem('fsi:lead_region') : null);
+
+    if (m) setPersonalizedMatches(m);
+    if (est) setPersonalizedEstimate(est);
+    if (ind) setPersonalizedIndustry(ind);
+    if (reg) setPersonalizedRegion(reg);
+  }, []);
+
   // Email validation
   useEffect(() => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    setIsEmailValid(emailRegex.test(email.trim()) && name.trim().length >= 2);
-  }, [email, name]);
+    // Valid if empty (meaning we fall back to PayPal profile details) or matches pattern
+    setIsEmailValid(email.trim() === '' || emailRegex.test(email.trim()));
+  }, [email]);
 
   const paypalClientId = process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID
     || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
@@ -156,7 +194,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
 
   // Render/Re-render PayPal buttons dynamically based on name, email, price, product, and bump updates
   useEffect(() => {
-    if (!sdkReady || !(window as any).paypal || !isEmailValid) return;
+    if (!sdkReady || !(window as any).paypal) return;
 
     const container = document.getElementById("standalone-paypal-button");
     if (!container) return;
@@ -215,19 +253,22 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             const details = await actions.order.capture();
             const orderId = details?.id || '';
 
+            const payerEmail = email.trim() || details?.payer?.email_address || '';
+            const payerName = name.trim() || (details?.payer?.name ? `${details.payer.name.given_name || ''} ${details.payer.name.surname || ''}`.trim() : 'Premium Member');
+
             // Record purchase
             const res = await fetch('/api/products/purchase', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 productId: finalProductId,
-                email: email.trim(),
-                name: name.trim(),
+                email: payerEmail,
+                name: payerName,
                 paypalOrderId: orderId,
                 addons,
                 profileData: {
-                  province: "",
-                  industry: "",
+                  province: personalizedRegion || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_region') || "") : ""),
+                  industry: personalizedIndustry || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_industry') || "") : ""),
                   revenue: "",
                   goal: ""
                 },
@@ -278,68 +319,62 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
       </div>
 
       <div className="space-y-5">
-        {/* Step 1: Outcome-focused product description (what you'll get) */}
-        <div className="border-b border-slate-700/40 pb-4">
-          <div className="inline-flex items-center gap-1 bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-[9px] font-black uppercase tracking-wider px-2 py-0.5 rounded">
-            <Sparkles className="w-2.5 h-2.5" /> Items Included
+        {/* Step 1: Personalized Outcome Block (Highly dynamic based on assessment results) */}
+        {personalizedMatches || personalizedEstimate ? (
+          <div className="bg-slate-900/60 border border-slate-700/50 rounded-xl p-4 space-y-2.5">
+            <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Personalized Match Outcome</span>
+            <div className="grid grid-cols-2 gap-3 pt-1">
+              <div>
+                <span className="text-[9px] text-slate-400 block uppercase font-bold tracking-wider">Estimated Limit</span>
+                <span className="text-sm font-black text-emerald-400">{personalizedEstimate || '$100,000+'}</span>
+              </div>
+              <div>
+                <span className="text-[9px] text-slate-400 block uppercase font-bold tracking-wider">Matched Programs</span>
+                <span className="text-sm font-black text-indigo-300">{personalizedMatches || '11'} Active Programs</span>
+              </div>
+            </div>
+            {personalizedIndustry && (
+              <div className="text-[10.5px] text-slate-350 border-t border-slate-750 pt-2 flex items-center justify-between">
+                <span>Segment: <span className="font-semibold text-slate-200">{personalizedIndustry}</span></span>
+                <span>Region: <span className="font-semibold text-slate-200">{personalizedRegion ? personalizedRegion.toUpperCase() : 'CA'}</span></span>
+              </div>
+            )}
           </div>
-          <h3 className="font-bold text-base text-slate-100 mt-2">{finalProductName}</h3>
-          <p className="text-[11px] text-slate-400 mt-1.5 leading-relaxed">
+        ) : (
+          <div className="bg-slate-900/60 border border-slate-700/50 rounded-xl p-4 space-y-2">
+            <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Product Outcome Summary</span>
+            <div className="space-y-1.5 pt-1 text-[10.5px] text-slate-300">
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-450 shrink-0" />
+                <span>Eligibility diagnostic profile mapping</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <CheckCircle className="w-3.5 h-3.5 text-emerald-450 shrink-0" />
+                <span>Full step-by-step strategic roadmap</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Step 2: Product Name & Description */}
+        <div className="border-b border-slate-700/40 pb-4">
+          <h3 className="font-bold text-sm text-slate-100 mt-1">{finalProductName}</h3>
+          <p className="text-[11px] text-slate-450 mt-1 leading-relaxed">
             {productId === 'funding-toolkit' && 'Full digital package of 6 pre-formatted Excel grant budgets, cash flow models, hiring wage subsidy planners, and pre-submission audit checklists.'}
             {productId === 'funding-approval-library' && 'Curated directory of successfully funded project proposal narratives, CRA SR&ED technical descriptions, and regional ITA checklist criteria.'}
             {productId === 'funding-roadmap' && 'Step-by-step strategic funding timeline matching your business profile to active Canadian/US grants and tax credits.'}
           </p>
         </div>
 
-        {/* Step 2: Trust indicators (why trust us) */}
-        <div className="flex items-start gap-3 border-b border-slate-700/40 pb-4">
-          <div className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
-            <ShieldCheck className="w-4 h-4 text-emerald-450" />
-          </div>
-          <div>
-            <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">Expert Reviewed & Accredited</h4>
-            <p className="text-[10.5px] text-slate-450 mt-0.5 leading-relaxed">
-              Compiled by FSI Digital Specialists. Peer-reviewed & edited by <span className="font-bold text-slate-200">Ashwani K</span>.
-            </p>
-          </div>
-        </div>
-
-        {/* Step 3: Satisfaction Guarantee */}
-        <div className="flex items-start gap-3 border-b border-slate-700/40 pb-4">
-          <div className="w-8 h-8 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
-            <CheckCircle className="w-4 h-4 text-emerald-450" />
-          </div>
-          <div>
-            <h4 className="text-[10px] font-bold text-slate-300 uppercase tracking-wider">30-Day Satisfaction Guarantee</h4>
-            <p className="text-[10.5px] text-slate-455 mt-0.5 leading-relaxed">
-              We stand behind our products. If this report or template pack does not fit your business scenario, email hello@fsidigital.ca within 30 days and we will make it right.
-            </p>
-          </div>
-        </div>
-
-        {/* Upgrade Credit Guarantee — Brand Promise */}
-        <div className="flex items-start gap-3 border-b border-slate-700/40 pb-4 bg-emerald-900/10 border border-emerald-700/20 rounded-xl px-4 pt-4">
-          <div className="w-8 h-8 rounded-full bg-emerald-900/30 border border-emerald-700/30 flex items-center justify-center shrink-0 mt-0.5">
-            <span className="text-emerald-400 text-base">↑</span>
-          </div>
-          <div>
-            <h4 className="text-[10px] font-bold text-emerald-300 uppercase tracking-wider">Upgrade Credit Guarantee</h4>
-            <p className="text-[10.5px] text-emerald-200/70 mt-0.5 leading-relaxed">
-              Upgrade with confidence. <span className="font-bold text-emerald-300">Every dollar you spend today is credited toward higher-tier products.</span> You&apos;ll never pay twice.
-            </p>
-          </div>
-        </div>
-
-        {/* Step 4: Secure Checkout Setup (PayPal/Stripe) and optional order bumps */}
-        <div className="space-y-4 pt-1">
+        {/* Step 3: Secure Delivery Inputs */}
+        <div className="space-y-3.5 pt-1">
           <div>
             <h4 className="font-bold text-xs uppercase tracking-wider text-indigo-400">Secure Delivery Setup</h4>
-            <p className="text-[11px] text-slate-400 mt-1 leading-normal">
-              Enter your name and email to activate checkout buttons.
+            <p className="text-[10.5px] text-slate-400 mt-1 leading-normal">
+              Enter your details below (or we will use your PayPal profile details automatically).
             </p>
           </div>
 
-          {/* Inputs */}
           <div className="space-y-3">
             <div>
               <label className="block text-[10px] uppercase font-bold text-slate-450 tracking-wider mb-1.5">
@@ -367,6 +402,11 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
                 onChange={(e) => setEmail(e.target.value)}
                 className="w-full h-11 bg-slate-900 border border-slate-700 rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
               />
+              {email.trim().length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) && (
+                <span className="text-[10px] text-red-400 mt-1.5 block">
+                  Please enter a valid email format.
+                </span>
+              )}
             </div>
           </div>
         </div>
@@ -453,13 +493,13 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           </div>
         )}
 
-        {/* Checkout Container */}
+        {/* Checkout Buttons Container */}
         <div className="border-t border-slate-700/60 pt-5 space-y-4">
           <div className="flex justify-between items-baseline">
             <span className="text-xs font-bold text-slate-455">Total Price:</span>
             <div className="flex items-baseline gap-1">
               <span className="text-2xl font-black text-slate-100">${finalPrice}</span>
-              <span className="text-[10px] text-slate-400 uppercase font-semibold">CAD / USD equivalent</span>
+              <span className="text-[10px] text-slate-400 uppercase font-semibold">USD</span>
             </div>
           </div>
 
@@ -472,15 +512,53 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             <div className="flex items-center justify-center py-4 gap-2 text-xs text-slate-400">
               <Loader2 className="w-4 h-4 animate-spin text-indigo-400" /> Loading secure gateway...
             </div>
-          ) : !isEmailValid ? (
-            <div className="text-center p-5 bg-slate-900/40 border border-slate-800 border-dashed rounded-xl text-[11px] font-semibold text-slate-500 animate-pulse">
-              Please enter your name and valid email above to activate checkout.
-            </div>
           ) : (
             <div className="space-y-3.5 animate-in fade-in duration-200">
               <div id="standalone-paypal-button" className="w-full"></div>
             </div>
           )}
+        </div>
+
+        {/* Trust Badges moved below the fold */}
+        <div className="border-t border-slate-700/40 pt-4 space-y-4">
+          {/* Trust 1: Expert Reviewed & Accredited */}
+          <div className="flex items-start gap-3">
+            <div className="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
+              <ShieldCheck className="w-3.5 h-3.5 text-emerald-450" />
+            </div>
+            <div>
+              <h4 className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">Expert Reviewed & Accredited</h4>
+              <p className="text-[10.5px] text-slate-450 mt-0.5 leading-relaxed">
+                Compiled by FSI Digital Specialists. Reviewed by <span className="font-bold text-slate-200">Ashwani K</span>.
+              </p>
+            </div>
+          </div>
+
+          {/* Trust 2: Satisfaction Guarantee */}
+          <div className="flex items-start gap-3">
+            <div className="w-7 h-7 rounded-full bg-slate-900 border border-slate-700 flex items-center justify-center shrink-0 mt-0.5">
+              <CheckCircle className="w-3.5 h-3.5 text-emerald-450" />
+            </div>
+            <div>
+              <h4 className="text-[9px] font-bold text-slate-400 uppercase tracking-wider">30-Day Satisfaction Guarantee</h4>
+              <p className="text-[10.5px] text-slate-455 mt-0.5 leading-relaxed">
+                If this templates/reports pack does not fit your business scenario, email hello@fsidigital.ca within 30 days for adjustment.
+              </p>
+            </div>
+          </div>
+
+          {/* Trust 3: Upgrade Credit Guarantee */}
+          <div className="flex items-start gap-3 bg-emerald-900/10 border border-emerald-700/20 rounded-xl p-3.5">
+            <div className="w-7 h-7 rounded-full bg-emerald-900/30 border border-emerald-700/30 flex items-center justify-center shrink-0 mt-0.5">
+              <span className="text-emerald-400 text-xs">↑</span>
+            </div>
+            <div>
+              <h4 className="text-[9px] font-bold text-emerald-300 uppercase tracking-wider">Upgrade Credit Guarantee</h4>
+              <p className="text-[10px] text-emerald-200/70 mt-0.5 leading-relaxed">
+                Every dollar spent today is credited toward higher-tier services. You&apos;ll never pay twice.
+              </p>
+            </div>
+          </div>
         </div>
 
         <div className="border-t border-slate-850 pt-3 flex flex-col items-center gap-2">

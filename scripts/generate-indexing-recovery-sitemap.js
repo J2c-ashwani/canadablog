@@ -33,7 +33,7 @@ function escapeXml(value) {
 
 function parsePseoSource() {
   const source = fs.readFileSync(SOURCE_PATH, 'utf8')
-  const cities = [...source.matchAll(/\{\s*city:\s*"([^"]+)",\s*citySlug:\s*"([^"]+)",\s*prov:\s*"([^"]+)",\s*provSlug:\s*"([^"]+)"\s*\}/g)]
+  const cities = [...source.matchAll(/\{\s*"?city"?:\s*"([^"]+)",\s*"?citySlug"?:\s*"([^"]+)",\s*"?prov"?:\s*"([^"]+)",\s*"?provSlug"?:\s*"([^"]+)"\s*\}/g)]
     .map((match) => ({
       city: match[1],
       citySlug: match[2],
@@ -43,7 +43,7 @@ function parsePseoSource() {
 
   const industriesBlock = source.match(/const INDUSTRIES = \[([\s\S]*?)\];/)
   const industries = industriesBlock
-    ? [...industriesBlock[1].matchAll(/\{\s*name:\s*"([^"]+)",\s*slug:\s*"([^"]+)"\s*\}/g)]
+    ? [...industriesBlock[1].matchAll(/\{\s*"?name"?:\s*"([^"]+)",\s*"?slug"?:\s*"([^"]+)"\s*\}/g)]
       .map((match) => ({ name: match[1], slug: match[2] }))
     : []
 
