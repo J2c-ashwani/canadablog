@@ -9,6 +9,13 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://www.fsidigital.ca/contact",
   },
+  openGraph: {
+    title: "Contact FSI Digital | Funding Questions",
+    description: "Contact FSI Digital with business funding questions. After submitting your request, you can optionally book a paid funding eligibility audit for a researched grant, loan, and tax-credit roadmap.",
+    url: "https://www.fsidigital.ca/contact",
+    type: "website",
+    siteName: "FSI Digital",
+  },
 }
 
 export default function Contact() {

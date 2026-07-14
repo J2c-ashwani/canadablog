@@ -162,6 +162,7 @@ export default function AuditClient() {
     region: '',
     discount: 0,
     source: 'audit-page',
+    focus: '',
   });
 
   const paypalClientId =
@@ -177,6 +178,7 @@ export default function AuditClient() {
     let regionVal = sp.get('region') || '';
     let industryVal = sp.get('industry') || '';
     let companyVal = sp.get('company') || sp.get('companyName') || sp.get('name') || '';
+    let focusVal = sp.get('focus') || '';
 
     // Check localStorage as fallback if URL parameters are missing and not expired (24 hours)
     if (typeof window !== 'undefined') {
@@ -208,6 +210,7 @@ export default function AuditClient() {
       region: regionVal,
       discount: Number(sp.get('discount')) || 0,
       source: sourceVal,
+      focus: focusVal,
     });
 
     if (emailVal) {
@@ -450,7 +453,42 @@ export default function AuditClient() {
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-slate-950 tracking-tight leading-tight mb-4">
-              {params.source === 'personalized_preview' ? (
+              {params.focus === 'nih-sbir' ? (
+                <>
+                  Pre-verify Your NIH SBIR Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Biotech Strategy Session.</span>
+                </>
+              ) : params.focus === 'nsf-sbir' ? (
+                <>
+                  Pre-verify Your NSF SBIR Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Deep-Tech Strategy Session.</span>
+                </>
+              ) : params.focus === 'nasa-sbir' ? (
+                <>
+                  Pre-verify Your NASA SBIR Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Space-Tech Strategy Session.</span>
+                </>
+              ) : params.focus === 'dod-sbir' ? (
+                <>
+                  Pre-verify Your DoD SBIR Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Defense-Tech Strategy Session.</span>
+                </>
+              ) : params.focus === 'irap' ? (
+                <>
+                  Pre-verify Your NRC IRAP Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your R&D Strategy Session.</span>
+                </>
+              ) : params.focus === 'quebec' ? (
+                <>
+                  Pre-verify Your Quebec Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Quebec Funding Strategy Session.</span>
+                </>
+              ) : params.focus === 'women-entrepreneur' ? (
+                <>
+                  Pre-verify Your WES Match.<br className="hidden sm:block" />
+                  <span className="text-indigo-600">Schedule Your Female Founder Strategy Session.</span>
+                </>
+              ) : params.source === 'personalized_preview' ? (
                 <>
                   Unlock Your Live<br className="hidden sm:block" />
                   <span className="text-indigo-600">Funding Strategy Review.</span>
@@ -464,7 +502,23 @@ export default function AuditClient() {
             </h1>
 
             <p className="text-base sm:text-lg text-slate-500 max-w-2xl mx-auto leading-relaxed mb-6">
-              Get 100% certainty on your government roadmap. An FSI advisor reviews your eligibility against <strong className="text-slate-700">1,200+ active programs</strong> and delivers a custom Funding Eligibility Report. 100% money-back guarantee if you don&apos;t qualify for at least 2 programs.
+              {params.focus === 'nih-sbir' ? (
+                `Get 100% certainty on your NIH Phase I/II or STTR eligibility roadmap. Our biotech analysts review your project pitch and research topics before your 30-min strategy call. 100% money-back guarantee.`
+              ) : params.focus === 'nsf-sbir' ? (
+                `Get 100% certainty on your NSF Project Pitch or America's Seed Fund proposal. Our deep-tech R&D analysts review your technological innovations before your 30-min strategy call.`
+              ) : params.focus === 'nasa-sbir' ? (
+                `Get 100% certainty on your satellite, robotics, or aerospace R&D. Our team reviews NASA subtopic matches and Phase I/II funding caps before your call.`
+              ) : params.focus === 'dod-sbir' ? (
+                `Get 100% certainty on military dual-use R&D funding. We review target BAAs, component sponsors, and DSIP registration guidelines before your call.`
+              ) : params.focus === 'irap' ? (
+                `Get 100% certainty on your IRAP wage subsidy roadmap. We pre-screen developer salaries and prepare your ITA pitch criteria before your strategy call.`
+              ) : params.focus === 'quebec' ? (
+                `Get 100% certainty on your Quebec and federal grant stack. We review CED, Investissement Québec, and tax credit eligibility before your strategy call.`
+              ) : params.focus === 'women-entrepreneur' ? (
+                `Get 100% certainty on dedicated female-founder programs. We stack provincial grants with the federal Women Entrepreneurship Strategy (WES) before your call.`
+              ) : (
+                `Get 100% certainty on your government roadmap. An FSI advisor reviews your eligibility against 1,200+ active programs and delivers a custom Funding Eligibility Report. 100% money-back guarantee if you don't qualify for at least 2 programs.`
+              )}
             </p>
 
             {/* 4-Step B2B Process Timeline */}

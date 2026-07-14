@@ -9,11 +9,44 @@ import { ProductHierarchyMap } from '@/components/products/ProductHierarchyMap';
 export const metadata: Metadata = {
   title: 'Funding Action Plan — Step-by-Step Grant Roadmaps',
   description: 'Map out your prioritized 4-month government grant application timeline, avoid filing risks, and download compliance check sheets for $49.',
+  alternates: {
+    canonical: 'https://www.fsidigital.ca/products/action-plan',
+  },
+  openGraph: {
+    title: 'Funding Action Plan — Step-by-Step Grant Roadmaps',
+    description: 'Map out your prioritized 4-month government grant application timeline, avoid filing risks, and download compliance check sheets for $49.',
+    type: 'website',
+  },
 };
 
 export default function ActionPlanPage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Funding Action Plan",
+    "image": "https://www.fsidigital.ca/product-roadmap-thumbnail.jpg",
+    "description": "Map out your prioritized 4-month government grant application timeline, avoid filing risks, and download compliance check sheets.",
+    "sku": "FSI-ROADMAP-001",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.fsidigital.ca/products/action-plan",
+      "priceCurrency": "CAD",
+      "price": "49.00",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "FSI Digital"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-indigo-500 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Header />
       
       {/* Hero / Sales Section */}

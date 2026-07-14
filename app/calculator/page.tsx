@@ -33,7 +33,7 @@ export default function CalculatorPage() {
                         100% Free & Secure
                     </div>
                     <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
-                        Discover Your True Funding Potential
+                        Canada Grant Eligibility Calculator
                     </h1>
                     <p className="text-xl text-gray-600">
                         Over $3.2 Billion in government funding is available for Canadian businesses this year. Take our 60-second assessment to see how much you qualify for.

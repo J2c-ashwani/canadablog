@@ -9,11 +9,44 @@ import { ProductHierarchyMap } from '@/components/products/ProductHierarchyMap';
 export const metadata: Metadata = {
   title: 'Funding Approval Library — Real Winning Grant Proposals',
   description: "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets for $9.",
+  alternates: {
+    canonical: 'https://www.fsidigital.ca/products/approval-library',
+  },
+  openGraph: {
+    title: 'Funding Approval Library — Real Winning Grant Proposals',
+    description: "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets for $9.",
+    type: 'website',
+  },
 };
 
 export default function ApprovalLibraryPage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Funding Case Study Approval Library",
+    "image": "https://www.fsidigital.ca/product-library-thumbnail.jpg",
+    "description": "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets.",
+    "sku": "FSI-LIBRARY-001",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.fsidigital.ca/products/approval-library",
+      "priceCurrency": "CAD",
+      "price": "9.00",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "FSI Digital"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-indigo-500 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Header />
       
       {/* Hero / Sales Section */}

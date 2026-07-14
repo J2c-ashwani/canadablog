@@ -1603,10 +1603,64 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
 };
 
-export function getPriorityResearchProfile(route: string) {
-  return profiles[route];
+function getRedirectedCtaHref(route: string, currentHref: string): string {
+  const r = route.toLowerCase();
+
+  // 1. High Ticket R&D / Enterprise routes -> route to strategy session /audit with custom focus
+  if (r.includes('nih-sbir')) {
+    return '/audit?focus=nih-sbir';
+  }
+  if (r.includes('nsf-sbir')) {
+    return '/audit?focus=nsf-sbir';
+  }
+  if (r.includes('nasa-sbir')) {
+    return '/audit?focus=nasa-sbir';
+  }
+  if (r.includes('dod-sbir')) {
+    return '/audit?focus=dod-sbir';
+  }
+  if (r.includes('doe-sbir')) {
+    return '/audit?focus=tech-startup'; // general tech startup or /audit
+  }
+  if (r.includes('usda-sbir')) {
+    return '/audit?focus=tech-startup';
+  }
+  if (r.includes('irap')) {
+    return '/audit?focus=irap';
+  }
+  if (r.includes('strategic-innovation-fund')) {
+    return '/audit?focus=irap';
+  }
+
+  // 2. USA regional/state guides -> route to toolkit
+  if (r.includes('/usa/') || r.includes('colorado')) {
+    return '/products/toolkit';
+  }
+
+  // 3. Special target segments
+  if (r.includes('women-entrepreneur')) {
+    return '/audit?focus=women-entrepreneur';
+  }
+  if (r.includes('quebec')) {
+    return '/audit?focus=quebec';
+  }
+
+  // 4. Canada regional / General guides -> route to Match Report
+  return '/products/funding-match-report';
 }
 
-export function getPriorityResearchProfiles() {
-  return Object.values(profiles);
+export function getPriorityResearchProfile(route: string): PriorityResearchProfile | null {
+  const profile = profiles[route];
+  if (!profile) return null;
+  return {
+    ...profile,
+    cta: {
+      ...profile.cta,
+      href: getRedirectedCtaHref(route, profile.cta.href),
+    },
+  };
+}
+
+export function getPriorityResearchProfiles(): PriorityResearchProfile[] {
+  return Object.keys(profiles).map((route) => getPriorityResearchProfile(route)!);
 }

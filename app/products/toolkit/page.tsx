@@ -9,11 +9,44 @@ import { ProductHierarchyMap } from '@/components/products/ProductHierarchyMap';
 export const metadata: Metadata = {
   title: 'Funding Application Toolkit — Premium Grant Templates & Models',
   description: 'Download 6 expert-written grant application templates, budget builders, and wage subsidy planners to write high-converting Canadian grant proposals.',
+  alternates: {
+    canonical: 'https://www.fsidigital.ca/products/toolkit',
+  },
+  openGraph: {
+    title: 'Funding Application Toolkit — Premium Grant Templates & Models',
+    description: 'Download 6 expert-written grant application templates, budget builders, and wage subsidy planners to write high-converting Canadian grant proposals.',
+    type: 'website',
+  },
 };
 
 export default function ToolkitPage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Funding Application Toolkit",
+    "image": "https://www.fsidigital.ca/product-toolkit-thumbnail.jpg",
+    "description": "Download 6 expert-written grant application templates, budget builders, and wage subsidy planners.",
+    "sku": "FSI-TOOLKIT-001",
+    "offers": {
+      "@type": "Offer",
+      "url": "https://www.fsidigital.ca/products/toolkit",
+      "priceCurrency": "CAD",
+      "price": "29.00",
+      "itemCondition": "https://schema.org/NewCondition",
+      "availability": "https://schema.org/InStock",
+      "seller": {
+        "@type": "Organization",
+        "name": "FSI Digital"
+      }
+    }
+  };
+
   return (
     <div className="min-h-screen bg-slate-900 text-white font-sans selection:bg-indigo-500 selection:text-white">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Header />
       
       {/* Hero / Sales Section */}
