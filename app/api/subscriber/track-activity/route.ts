@@ -216,10 +216,17 @@ export async function POST(request: NextRequest) {
       event === "upsell_viewed" ||
       event === "upsell_purchased" ||
       event === "booked_strategy_session" ||
-      event === "became_client"
+      event === "became_client" ||
+      event === "header_products_opened" ||
+      event === "header_product_clicked" ||
+      event === "homepage_product_clicked" ||
+      event === "footer_product_clicked"
     ) {
       activity[`${event}At`] = now;
       activity[event] = true;
+      if (body.productId) {
+        activity[`${event}_productId`] = body.productId;
+      }
     } else {
       return NextResponse.json({ error: `Unsupported event type: ${event}` }, { status: 400 })
     }
