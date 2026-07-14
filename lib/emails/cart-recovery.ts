@@ -1,4 +1,4 @@
-import { sendEmail, getFirstName } from "./mailer";
+import { sendEmail, getFirstName, cleanCompanyName } from "./mailer";
 
 function escapeHtml(value: string) {
   return value
@@ -64,6 +64,7 @@ export async function sendCartRecoveryEmail1({
   priceShown?: string;
 }) {
   const firstName = getFirstName(name);
+  const cleanCompany = cleanCompanyName(companyName);
   const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=cart_recovery&utm_medium=email&utm_campaign=cart_day1`;
   const isBundle = priceShown === '79' || priceShown === '108';
   const productName = isBundle ? 'Complete Funding Bundle' : 'Funding Match Report';
@@ -71,7 +72,7 @@ export async function sendCartRecoveryEmail1({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      I noticed you started checking out for your <strong>${productName}</strong> ${companyName ? `for <strong>${escapeHtml(companyName)}</strong>` : ''} but didn't finish.
+      I noticed you started checking out for your <strong>${productName}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't finish.
     </p>
     <p style="margin: 0 0 16px 0;">
       Our database matches your specific profile against qualified federal and provincial programs. To lock in your matches and compile your custom delivery dashboard, please complete your checkout.
@@ -88,7 +89,7 @@ export async function sendCartRecoveryEmail1({
 
   const text = `Hi ${firstName},\n\nI noticed you started checking out for your ${productName} but didn't finish.\n\nTo finalize your analysis and compile your custom roadmap, please complete your checkout:\n${checkoutUrl}\n\n100% Risk-Free Guarantee: If our system identifies fewer than 2 active funding opportunities, we will refund your purchase immediately.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
-  return sendEmail({ to, subject: `You were one step away from unlocking your matches`, html, text, tagType: 'cart-recovery-1', companyName });
+  return sendEmail({ to, subject: `You were one step away from unlocking your matches`, html, text, tagType: 'cart-recovery-1', companyName: cleanCompany });
 }
 
 // ── CART RECOVERY EMAIL 2 (24 hours) ──
@@ -106,6 +107,7 @@ export async function sendCartRecoveryEmail2({
   priceShown?: string;
 }) {
   const firstName = getFirstName(name);
+  const cleanCompany = cleanCompanyName(companyName);
   const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=cart_recovery&utm_medium=email&utm_campaign=cart_day3`;
   const isBundle = priceShown === '79' || priceShown === '108';
   const productName = isBundle ? 'Complete Funding Bundle' : 'Funding Match Report';
@@ -113,7 +115,7 @@ export async function sendCartRecoveryEmail2({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      Your matched funding opportunities ${companyName ? `for <strong>${escapeHtml(companyName)}</strong>` : ''} are currently locked and waiting in checkout.
+      Your matched funding opportunities ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} are currently locked and waiting in checkout.
     </p>
     <p style="margin: 0 0 20px 0;">
       Your report is delivered instantly. Don't let active government intakes and grant application deadlines pass you by. Resume your secure checkout to unlock access:
@@ -127,7 +129,7 @@ export async function sendCartRecoveryEmail2({
 
   const text = `Hi ${firstName},\n\nYour matched funding opportunities are currently locked. Your report is delivered instantly. Don't let active government intakes pass you by.\n\nResume your secure checkout to unlock access:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
-  return sendEmail({ to, subject: `Your matches are still waiting`, html, text, tagType: 'cart-recovery-2', companyName });
+  return sendEmail({ to, subject: `Your matches are still waiting`, html, text, tagType: 'cart-recovery-2', companyName: cleanCompany });
 }
 
 // ── CART RECOVERY EMAIL 3 (72 hours) ──
@@ -145,6 +147,7 @@ export async function sendCartRecoveryEmail3({
   priceShown?: string;
 }) {
   const firstName = getFirstName(name);
+  const cleanCompany = cleanCompanyName(companyName);
   const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=cart_recovery&utm_medium=email&utm_campaign=cart_day5`;
   const isBundle = priceShown === '79' || priceShown === '108';
   const productName = isBundle ? 'Complete Funding Bundle' : 'Funding Match Report';
@@ -152,7 +155,7 @@ export async function sendCartRecoveryEmail3({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      I am closing out pending reports this week and wanted to check if you still wanted to unlock your matched programs ${companyName ? `for <strong>${escapeHtml(companyName)}</strong>` : ''}.
+      I am closing out pending reports this week and wanted to check if you still wanted to unlock your matched programs ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
     </p>
     <p style="margin: 0 0 20px 0;">
       If you are still actively looking for non-dilutive capital (grants, tax credits, and subsidies) to fund hiring, exporting, or product development, you can resume your checkout below:
@@ -166,7 +169,7 @@ export async function sendCartRecoveryEmail3({
 
   const text = `Hi ${firstName},\n\nI am closing out pending reports this week. If you are still looking for non-dilutive capital, you can resume checkout and access your dashboard here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
-  return sendEmail({ to, subject: `Still interested in funding opportunities?`, html, text, tagType: 'cart-recovery-3', companyName });
+  return sendEmail({ to, subject: `Still interested in funding opportunities?`, html, text, tagType: 'cart-recovery-3', companyName: cleanCompany });
 }
 
 // ── REPORT NOT VIEWED RECOVERY EMAIL (24 hours after purchase) ──

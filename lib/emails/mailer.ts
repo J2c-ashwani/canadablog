@@ -11,6 +11,18 @@ export function getFirstName(name?: string) {
   return name ? escapeHtml(name.split(' ')[0]) : 'Founder';
 }
 
+export function cleanCompanyName(companyName?: string): string {
+  if (!companyName) return '';
+  const cleaned = companyName.trim();
+  const lower = cleaned.toLowerCase();
+  const placeholders = [
+    'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
+    'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
+  ];
+  if (placeholders.includes(lower)) return '';
+  return cleaned;
+}
+
 async function sendViaResend({
   to,
   subject,

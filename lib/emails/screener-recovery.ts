@@ -1,4 +1,4 @@
-import { sendEmail, getFirstName } from "./mailer";
+import { sendEmail, getFirstName, cleanCompanyName } from "./mailer";
 
 export async function sendScreenerRecoveryEmail({
   to,
@@ -12,6 +12,7 @@ export async function sendScreenerRecoveryEmail({
   companyName?: string;
 }) {
   const firstName = getFirstName(name);
+  const cleanCompany = cleanCompanyName(companyName);
   const url = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=screener_recovery`;
   const subject = `Your funding readiness assessment is waiting`;
 
@@ -23,7 +24,7 @@ export async function sendScreenerRecoveryEmail({
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
-          You started building your <strong>Funding Readiness Assessment</strong> for ${companyName ? `<strong>${companyName}</strong>` : 'your business'} yesterday but did not finish.
+          You started building your <strong>Funding Readiness Assessment</strong> for ${cleanCompany ? `<strong>${cleanCompany}</strong>` : 'your business'} yesterday but did not finish.
         </p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
           Our system has matched your profile to active non-dilutive programs (grants, tax credits, and wage subsidies), but we need you to complete the strategic profile to unlock your full stacking roadmap.
@@ -42,7 +43,7 @@ export async function sendScreenerRecoveryEmail({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nYou started building your Funding Readiness Assessment for ${companyName || 'your business'} yesterday but did not finish.\n\nResume here to unlock matching programs:\n${url}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started building your Funding Readiness Assessment for ${cleanCompany || 'your business'} yesterday but did not finish.\n\nResume here to unlock matching programs:\n${url}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
-  return sendEmail({ to, subject, html, text, tagType: 'screener-recovery', companyName });
+  return sendEmail({ to, subject, html, text, tagType: 'screener-recovery', companyName: cleanCompany });
 }

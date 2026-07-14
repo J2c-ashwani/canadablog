@@ -199,7 +199,11 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     if (!val) return "";
     const trimmed = val.trim();
     const lower = trimmed.toLowerCase();
-    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth") {
+    const placeholders = [
+      'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
+      'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
+    ];
+    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || placeholders.includes(lower)) {
       return "";
     }
     return trimmed;
@@ -418,7 +422,11 @@ export function getLeadSegmentation(data: ReactivationEmailData) {
     if (!val) return "";
     const trimmed = val.trim();
     const lower = trimmed.toLowerCase();
-    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth") {
+    const placeholders = [
+      'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
+      'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
+    ];
+    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || placeholders.includes(lower)) {
       return "";
     }
     return trimmed;

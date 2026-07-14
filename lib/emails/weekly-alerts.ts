@@ -1,4 +1,4 @@
-import { sendEmail, getFirstName } from "./mailer";
+import { sendEmail, getFirstName, cleanCompanyName } from "./mailer";
 
 export interface AlertProgramDelta {
   name: string;
@@ -22,6 +22,7 @@ export async function sendWeeklyDeltaAlertEmail({
   deltas: AlertProgramDelta[];
 }) {
   const firstName = getFirstName(name);
+  const cleanCompany = cleanCompanyName(companyName);
   const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=weekly_alert`;
   const subject = `New funding opportunities matched for your business`;
 
@@ -47,7 +48,7 @@ export async function sendWeeklyDeltaAlertEmail({
         </div>
         <p style="font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
         <p style="font-size:15px;color:#334155;line-height:1.6;margin:16px 0;">
-          Our intelligence engine detected new or updated funding opportunities matching ${companyName ? `<strong>${companyName}</strong>` : 'your business'} this week.
+          Our intelligence engine detected new or updated funding opportunities matching ${cleanCompany ? `<strong>${cleanCompany}</strong>` : 'your business'} this week.
         </p>
         
         <div style="margin:24px 0;">
@@ -60,7 +61,7 @@ export async function sendWeeklyDeltaAlertEmail({
         
         <div style="text-align:center;margin:28px 0;">
           <a href="${dashboardUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
-            Access Matching Portfolio &rarr;
+            Access Dashboard &rarr;
           </a>
         </div>
         <div style="padding-top:20px;border-top:1px solid #f1f5f9;margin-top:28px;font-size:14px;color:#475569;">
@@ -72,7 +73,7 @@ export async function sendWeeklyDeltaAlertEmail({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nOur intelligence engine detected new or updated funding opportunities matching ${companyName || 'your business'} this week.\n\n${deltas.map(d => `[${d.deltaType}] ${d.name} (${d.fundingAmount})`).join("\n")}\n\nAccess dashboard to review matches:\n${dashboardUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nOur intelligence engine detected new or updated funding opportunities matching ${cleanCompany || 'your business'} this week.\n\n${deltas.map(d => `[${d.deltaType}] ${d.name} (${d.fundingAmount})`).join("\n")}\n\nAccess dashboard to review matches:\n${dashboardUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
-  return sendEmail({ to, subject, html, text, tagType: 'weekly-alerts', companyName });
+  return sendEmail({ to, subject, html, text, tagType: 'weekly-alerts', companyName: cleanCompany });
 }
