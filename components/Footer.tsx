@@ -11,6 +11,23 @@ export function Footer() {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
+  const trackFooterEvent = (productId: string) => {
+    try {
+      const email = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_checkout_email') || '' : '';
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          event: "footer_product_clicked",
+          journeyId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_journey_id') || '' : '',
+          funnelId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_funnel_id') || '' : '',
+          productId
+        })
+      }).catch(() => {});
+    } catch (e) {}
+  };
+
   const handleFooterSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
@@ -247,28 +264,28 @@ export function Footer() {
               
               <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Paid Products</li>
               <li>
-                <Link href="/products/funding-match-report" className="text-gray-400 hover:text-white text-sm">
-                  Funding Match Report
+                <Link href="/products/funding-match-report" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-match-report')}>
+                  Funding Match Report ($19)
                 </Link>
               </li>
               <li>
-                <Link href="/products/action-plan" className="text-gray-400 hover:text-white text-sm">
-                  Funding Action Plan
+                <Link href="/products/action-plan" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-action-plan')}>
+                  Funding Action Plan ($49)
                 </Link>
               </li>
               <li>
-                <Link href="/products/toolkit" className="text-gray-400 hover:text-white text-sm">
-                  Application Toolkit
+                <Link href="/products/toolkit" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-toolkit')}>
+                  Application Toolkit ($9)
                 </Link>
               </li>
               <li>
-                <Link href="/products/approval-library" className="text-gray-400 hover:text-white text-sm">
-                  Case Approval Library
+                <Link href="/products/approval-library" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-approval-library')}>
+                  Case Approval Library ($9)
                 </Link>
               </li>
               <li>
-                <Link href="/membership" className="text-gray-400 hover:text-white text-sm">
-                  Founding Membership
+                <Link href="/audit" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm" onClick={() => trackFooterEvent('strategy-audit')}>
+                  Book Strategy Session ($199)
                 </Link>
               </li>
               

@@ -23,7 +23,25 @@ export function Header() {
   const [usaDropdownOpen, setUsaDropdownOpen] = useState(false)
   const [canadaDropdownOpen, setCanadaDropdownOpen] = useState(false)
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false)
+  const [productsDropdownOpen, setProductsDropdownOpen] = useState(false)
   const router = useRouter()
+
+  const trackHeaderEvent = (eventName: string, metadata?: any) => {
+    try {
+      const email = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_checkout_email') || '' : '';
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          event: eventName,
+          journeyId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_journey_id') || '' : '',
+          funnelId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_funnel_id') || '' : '',
+          ...metadata
+        })
+      }).catch(() => {});
+    } catch (e) {}
+  };
 
   // Capture the original entry landing page inside sessionStorage for revenue attribution
   useEffect(() => {
@@ -61,6 +79,7 @@ export function Header() {
     setUsaDropdownOpen(false)
     setCanadaDropdownOpen(false)
     setResourcesDropdownOpen(false)
+    setProductsDropdownOpen(false)
   }
 
   return (
@@ -199,9 +218,94 @@ export function Header() {
                 AI Grant Finder
               </Link>
 
-              {/* <Link href="/resources" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
-                Tools
-              </Link> */}
+              {/* Products Dropdown - Desktop */}
+              <div
+                className="relative"
+                onMouseLeave={() => setProductsDropdownOpen(false)}
+              >
+                <button
+                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  onClick={() => {
+                    if (!productsDropdownOpen) {
+                      trackHeaderEvent('header_products_opened');
+                    }
+                    setProductsDropdownOpen(!productsDropdownOpen)
+                    setUsaDropdownOpen(false)
+                    setCanadaDropdownOpen(false)
+                    setResourcesDropdownOpen(false)
+                  }}
+                  onMouseEnter={() => {
+                    if (!productsDropdownOpen) {
+                      trackHeaderEvent('header_products_opened');
+                    }
+                    setProductsDropdownOpen(true)
+                  }}
+                >
+                  Products
+                  <ChevronDown className={`w-4 h-4 transition-transform ${productsDropdownOpen ? 'rotate-180' : ''}`} />
+                </button>
+                {productsDropdownOpen && (
+                  <div className="absolute top-full left-0 pt-1 w-56 z-50">
+                    <div className="bg-white rounded-lg shadow-lg border">
+                      <Link
+                        href="/products/funding-match-report"
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-match-report' });
+                          closeDropdowns();
+                        }}
+                      >
+                        <div className="font-bold text-gray-900">Match Report</div>
+                        <div className="text-[10px] text-gray-550">Instant matching report ($19)</div>
+                      </Link>
+                      <Link
+                        href="/products/action-plan"
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-action-plan' });
+                          closeDropdowns();
+                        }}
+                      >
+                        <div className="font-bold text-gray-900">Action Plan</div>
+                        <div className="text-[10px] text-gray-550">Budget & application checklists ($49)</div>
+                      </Link>
+                      <Link
+                        href="/products/report"
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-bundle' });
+                          closeDropdowns();
+                        }}
+                      >
+                        <div className="font-bold text-emerald-700">Complete Funding Bundle</div>
+                        <div className="text-[10px] text-gray-550">All reports + checklists ($79)</div>
+                      </Link>
+                      <Link
+                        href="/products/toolkit"
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-toolkit' });
+                          closeDropdowns();
+                        }}
+                      >
+                        <div className="font-bold text-gray-900">Application Companion Pack</div>
+                        <div className="text-[10px] text-gray-550">Worksheets & playbooks ($9)</div>
+                      </Link>
+                      <Link
+                        href="/audit"
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 rounded-b-lg font-medium border-t"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' });
+                          closeDropdowns();
+                        }}
+                      >
+                        <div className="font-bold text-primary">1-on-1 Strategy Session</div>
+                        <div className="text-[10px] text-gray-550">Session & diagnostic audit ($199)</div>
+                      </Link>
+                    </div>
+                  </div>
+                )}
+              </div>
 
               {/* Resources Dropdown - Desktop */}
               <div
@@ -267,6 +371,16 @@ export function Header() {
 
             {/* Search Button */}
             <div className="hidden md:flex items-center flex-shrink-0 gap-2">
+              <Button
+                className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs"
+                size="sm"
+                asChild
+                onClick={() => trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' })}
+              >
+                <Link href="/audit">
+                  Book Strategy Session ($199)
+                </Link>
+              </Button>
               <Button
                 className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs"
                 size="sm"
@@ -440,6 +554,81 @@ export function Header() {
                   Business Tools
                 </Link> */}
 
+                {/* Products Mobile Submenu */}
+                <div className="px-4">
+                  <button
+                    className="w-full text-left text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 rounded-lg transition-colors flex items-center justify-between"
+                    onClick={() => {
+                      if (!productsDropdownOpen) {
+                        trackHeaderEvent('header_products_opened');
+                      }
+                      setProductsDropdownOpen(!productsDropdownOpen);
+                    }}
+                  >
+                    Products
+                    <ChevronDown className={`w-4 h-4 transition-transform ${productsDropdownOpen ? 'rotate-180' : ''}`} />
+                  </button>
+                  {productsDropdownOpen && (
+                    <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
+                      <Link
+                        href="/products/funding-match-report"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-match-report' });
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Match Report ($19)
+                      </Link>
+                      <Link
+                        href="/products/action-plan"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-action-plan' });
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Action Plan ($49)
+                      </Link>
+                      <Link
+                        href="/products/report"
+                        className="block text-sm text-emerald-600 hover:text-emerald-700 py-2 font-bold"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-bundle' });
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Complete Funding Bundle ($79)
+                      </Link>
+                      <Link
+                        href="/products/toolkit"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'funding-toolkit' });
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Application Companion Pack ($9)
+                      </Link>
+                      <Link
+                        href="/audit"
+                        className="block text-sm text-blue-600 hover:text-blue-700 py-2 font-bold border-t mt-1 pt-2"
+                        onClick={() => {
+                          trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' });
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Book Strategy Session ($199)
+                      </Link>
+                    </div>
+                  )}
+                </div>
+
                 {/* Resources Mobile Submenu */}
                 <div className="px-4">
                   <button
@@ -524,15 +713,13 @@ export function Header() {
                     <Search className="w-4 h-4 mr-2" />
                     Search Grants
                   </Button>
-                  {/* T1-C fix: "Get Free Guide" now opens the actual PDF — not a qualification form */}
                   <Button
                     className="w-full bg-gradient-to-r from-emerald-600 to-teal-600 h-12 text-white font-semibold"
-                    onClick={() => {
-                      window.open("/lead-magnets/ultimate-grant-guide-2026.pdf", "_blank")
-                      setIsMenuOpen(false)
-                    }}
+                    asChild
                   >
-                    Get Free Guide (PDF)
+                    <Link href="/download" onClick={() => setIsMenuOpen(false)}>
+                      Get Free Guide
+                    </Link>
                   </Button>
                   <Button className="w-full bg-gradient-to-r from-primary to-secondary h-12" asChild>
                     <Link href="/grant-finder" data-google-vignette="false" onClick={() => setIsMenuOpen(false)}>

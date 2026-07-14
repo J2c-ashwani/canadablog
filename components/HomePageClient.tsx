@@ -1,5 +1,4 @@
-// Server-rendered homepage — hero text (LCP element) paints immediately
-// Only the email forms are client components for interactivity
+"use client"
 
 import { Header } from "@/components/Header"
 import { Footer } from "@/components/Footer"
@@ -22,6 +21,22 @@ const AI_FAQS = [
 ];
 
 export default function HomePageClient() {
+  const trackProductClick = (productId: string) => {
+    try {
+      const email = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_checkout_email') || '' : '';
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          event: "homepage_product_clicked",
+          journeyId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_journey_id') || '' : '',
+          funnelId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_funnel_id') || '' : '',
+          productId
+        })
+      }).catch(() => {});
+    } catch (e) {}
+  };
 
     return (
         <div className="min-h-screen bg-white">
@@ -237,6 +252,123 @@ export default function HomePageClient() {
             </section>
 
             <CaseStudiesSection limit={2} />
+
+            {/* Non-Dilutive Funding Solutions — Pricing Ladder */}
+            <section className="py-16 sm:py-20 bg-white">
+                <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+                    <div className="text-center mb-12 sm:mb-16">
+                        <Badge className="mb-3 bg-emerald-105 text-emerald-800 hover:bg-emerald-100 text-xs px-3 py-1 uppercase tracking-wider font-bold">
+                          Non-Dilutive Funding Solutions
+                        </Badge>
+                        <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 mb-4 text-balance">
+                            Select Your Funding Solution
+                        </h2>
+                        <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+                            Choose the right report, plan, or expert strategy session matching your company's stage.
+                        </p>
+                    </div>
+
+                    <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-5 items-stretch max-w-[1400px] mx-auto">
+                        
+                        {/* 1. Free Calculator */}
+                        <div className="border border-gray-200 rounded-2xl p-6 bg-white flex flex-col justify-between hover:shadow-md transition-shadow relative">
+                            <div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex text-yellow-400">
+                                        {"★".repeat(5)}
+                                    </div>
+                                    <Badge className="bg-slate-100 text-slate-800 hover:bg-slate-100 text-[10px]">Free Entry</Badge>
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-950 mb-1">Eligibility Calculator</h3>
+                                <p className="text-xs text-gray-600 mb-4">Instant matching to active government grants in 3 minutes.</p>
+                                <div className="text-3xl font-black text-gray-950 mb-6">$0</div>
+                            </div>
+                            <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs" asChild onClick={() => trackProductClick('free-calculator')}>
+                                <Link href="/calculator">Start Free Check</Link>
+                            </Button>
+                        </div>
+
+                        {/* 2. Match Report ($19) */}
+                        <div className="border border-gray-200 rounded-2xl p-6 bg-white flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex text-yellow-400">
+                                        {"★".repeat(3)}{"☆".repeat(2)}
+                                    </div>
+                                    <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100 text-[10px]">Match Report</Badge>
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-950 mb-1">Funding Match Report</h3>
+                                <p className="text-xs text-gray-600 mb-4">Personalized list matching your business to government grants.</p>
+                                <div className="text-3xl font-black text-gray-950 mb-6">$19</div>
+                            </div>
+                            <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs" asChild onClick={() => trackProductClick('funding-match-report')}>
+                                <Link href="/products/funding-match-report">Get Report</Link>
+                            </Button>
+                        </div>
+
+                        {/* 3. Action Plan ($49) */}
+                        <div className="border border-gray-200 rounded-2xl p-6 bg-white flex flex-col justify-between hover:shadow-md transition-shadow">
+                            <div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex text-yellow-400">
+                                        {"★".repeat(3)}{"☆".repeat(2)}
+                                    </div>
+                                    <Badge className="bg-gray-100 text-gray-800 hover:bg-gray-100 text-[10px]">Action Plan</Badge>
+                                </div>
+                                <h3 className="text-lg font-bold text-gray-950 mb-1">Funding Action Plan</h3>
+                                <p className="text-xs text-gray-600 mb-4">Detailed budgets, timelines, and checklists for matching grants.</p>
+                                <div className="text-3xl font-black text-gray-950 mb-6">$49</div>
+                            </div>
+                            <Button className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold text-xs" asChild onClick={() => trackProductClick('funding-action-plan')}>
+                                <Link href="/products/action-plan">Get Action Plan</Link>
+                            </Button>
+                        </div>
+
+                        {/* 4. Complete Bundle ($79) — MOST POPULAR */}
+                        <div className="border-2 border-emerald-500 rounded-2xl p-6 bg-gradient-to-b from-emerald-50 to-white flex flex-col justify-between hover:shadow-lg transition-shadow relative shadow-sm scale-105 z-10">
+                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-emerald-600 text-white text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full">
+                                Best Value
+                            </div>
+                            <div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex text-yellow-400">
+                                        {"★".repeat(5)}
+                                    </div>
+                                    <Badge className="bg-emerald-600 text-white hover:bg-emerald-700 text-[10px]">Most Popular</Badge>
+                                </div>
+                                <h3 className="text-lg font-black text-slate-900 mb-1">Complete Funding Bundle</h3>
+                                <p className="text-xs text-slate-700 mb-4 font-medium">Match Report + Action Plan + Excel budget templates and checklists.</p>
+                                <div className="text-3xl font-black text-emerald-600 mb-6">$79</div>
+                            </div>
+                            <Button className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs shadow-xs" asChild onClick={() => trackProductClick('funding-bundle')}>
+                                <Link href="/products/report">Buy Bundle Now</Link>
+                            </Button>
+                        </div>
+
+                        {/* 5. 1-on-1 Strategy Session ($199) */}
+                        <div className="border-2 border-blue-500 rounded-2xl p-6 bg-gradient-to-b from-blue-50 to-white flex flex-col justify-between hover:shadow-md transition-shadow relative">
+                            <div className="absolute -top-3 left-1/2 transform -translate-x-1/2 bg-blue-600 text-white text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full">
+                                Enterprise
+                            </div>
+                            <div>
+                                <div className="flex items-center justify-between mb-3">
+                                    <div className="flex text-yellow-400">
+                                        {"★".repeat(5)}
+                                    </div>
+                                    <Badge className="bg-blue-600 text-white hover:bg-blue-700 text-[10px]">High Ticket</Badge>
+                                </div>
+                                <h3 className="text-lg font-black text-slate-900 mb-1">1-on-1 Strategy Session</h3>
+                                <p className="text-xs text-slate-700 mb-4 font-medium">Private 60-min session with senior analyst + detailed diagnostic audit report.</p>
+                                <div className="text-3xl font-black text-blue-600 mb-6">$199</div>
+                            </div>
+                            <Button className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold text-xs shadow-xs" asChild onClick={() => trackProductClick('strategy-audit')}>
+                                <Link href="/audit">Book Session</Link>
+                            </Button>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
 
             {/* Features Section */}
             <section className="py-12 sm:py-16 md:py-20 bg-gray-50">
