@@ -20,7 +20,7 @@ export function FundingMatchReportLanding() {
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-2 bg-emerald-500/20 text-emerald-300 text-sm font-medium rounded-full px-4 py-1.5">
               <DollarSign className="w-4 h-4" />
-              Over 1,200 Active Programs
+              Over 1,200 Active Programs Matched
             </div>
 
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-slate-100">

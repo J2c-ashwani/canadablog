@@ -17,6 +17,7 @@ import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } f
 import { SampleReportPreview } from "@/components/products/SampleReportPreview"
 import { caseStudiesDatabase } from "@/lib/data/case-studies"
 import { DiyComparisonTable } from "@/components/DiyComparisonTable"
+import { getExperimentVariant, getExperiment } from "@/lib/leads/experiment-helper"
 
 type CalculatorData = {
     province: string;
@@ -267,6 +268,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-bundle');
     const [addonToolkit, setAddonToolkit] = useState(false);
     const [addonApprovalLibrary, setAddonApprovalLibrary] = useState(false);
+    const [addonStrategySession, setAddonStrategySession] = useState(false);
+    const addonStrategySessionRef = useRef(addonStrategySession);
+    useEffect(() => {
+        addonStrategySessionRef.current = addonStrategySession;
+    }, [addonStrategySession]);
     const [hasToolkitUnlocked, setHasToolkitUnlocked] = useState(false);
     const [hasApprovalLibraryUnlocked, setHasApprovalLibraryUnlocked] = useState(false);
     const [hasStrategyUnlocked, setHasStrategyUnlocked] = useState(false);
@@ -290,6 +296,12 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [isRestoring, setIsRestoring] = useState(false);
     const [isRestoredSession, setIsRestoredSession] = useState(false);
     const [restorationError, setRestorationError] = useState<string | null>(null);
+    const [experimentVariant, setExperimentVariant] = useState('A');
+    const [calculatorCtaVariant, setCalculatorCtaVariant] = useState('A');
+    useEffect(() => {
+        setExperimentVariant(getExperimentVariant('step6_locked_preview'));
+        setCalculatorCtaVariant(getExperiment('calculator_cta').variant);
+    }, []);
 
     // --- Telemetry & Rendering Refs ---
     const dataRef = useRef(data);
@@ -744,7 +756,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 body: JSON.stringify({
                     email: email,
                     event: "calculator_completed",
-                    source: "Calculator"
+                    source: "Calculator",
+                    calculator_cta_variant: calculatorCtaVariant
                 })
             }).catch(e => console.error("Telemetry error:", e));
 
@@ -755,7 +768,9 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 body: JSON.stringify({
                     email: email,
                     event: "paywall_viewed",
-                    priceShown: "19|79"
+                    priceShown: "19|79",
+                    surveyResponse: experimentVariant,
+                    calculator_cta_variant: calculatorCtaVariant
                 })
             }).catch(e => console.error("Telemetry paywall_viewed error:", e));
 
@@ -795,7 +810,18 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
         setTimeout(() => {
             setIsAnalyzing(false);
-            setStep(6);
+            const isEnterprise = data.revenue === '500k-1m' || data.revenue === 'over-1m';
+            if (isEnterprise) {
+                const focus = data.goal === 'research' ? 'sred' : data.goal === 'hiring' ? 'hiring' : 'tech-startup';
+                window.location.href = `/audit?email=${encodeURIComponent(email)}&focus=${encodeURIComponent(focus)}`;
+            } else {
+                if (data.goal === 'hiring') {
+                    setSelectedProductId('funding-match-report');
+                } else if (data.goal === 'research') {
+                    setSelectedProductId('funding-roadmap');
+                }
+                setStep(6);
+            }
         }, 2500);
     }
 
@@ -1203,6 +1229,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             const currentProductId = selectedProductIdRef.current;
             const currentAddonToolkit = addonToolkitRef.current;
             const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
+            const currentAddonStrategySession = addonStrategySessionRef.current;
 
             let basePrice = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
             const currentCredit = upgradeCreditRef.current || 0;
@@ -1216,6 +1243,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             if (currentAddonApprovalLibrary) {
               price += 9;
               itemsList += ' + Approval Library';
+            }
+            if (currentAddonStrategySession) {
+              price += 180;
+              itemsList += ' + Strategy Session (Upgrade Credit Applied)';
             }
             const desc = `${itemsList} - FSI Digital`;
 
@@ -1290,6 +1321,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             const currentProductId = selectedProductIdRef.current;
             const currentAddonToolkit = addonToolkitRef.current;
             const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
+            const currentAddonStrategySession = addonStrategySessionRef.current;
 
             let basePrice = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
             const currentCredit = upgradeCreditRef.current || 0;
@@ -1303,6 +1335,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             if (currentAddonApprovalLibrary) {
               price += 9;
               itemsList += ' + Approval Library';
+            }
+            if (currentAddonStrategySession) {
+              price += 180;
+              itemsList += ' + Strategy Session (Upgrade Credit Applied)';
             }
             const desc = `${itemsList} - FSI Digital`;
 
@@ -1357,7 +1393,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                   paypalOrderId: orderId,
                   addons: {
                     toolkit: currentAddonToolkit,
-                    approvalLibrary: currentAddonApprovalLibrary
+                    approvalLibrary: currentAddonApprovalLibrary,
+                    strategySession: currentAddonStrategySession
                   },
                   profileData: {
                     province: dataRef.current.province,
@@ -1379,7 +1416,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     browser: trackingDataRef.current.browser,
                     country: trackingDataRef.current.country,
                   },
-                  sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
+                  sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
+                  calculator_cta_variant: calculatorCtaVariant
                 })
               });
 
@@ -1696,7 +1734,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     browser: trackingData.browser,
                     country: trackingData.country,
                   },
-                  sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
+                  sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
+                  calculator_cta_variant: calculatorCtaVariant
                 })
               });
 
@@ -2463,64 +2502,78 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
                                 <div className="text-left space-y-4 pt-2">
                                     <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-snug">
-                                        Get Your Personalized Funding Strategy
+                                        {data.goal === 'research' 
+                                            ? 'Get Your Personalized SR&ED & R&D Tax Credit Estimate'
+                                            : data.goal === 'hiring'
+                                                ? 'Get Your Personalized Wage Subsidy & Hiring Grant Estimate'
+                                                : 'Get Your Personalized Funding Strategy'}
                                     </h3>
-                                    <p className="text-xs text-slate-550 leading-relaxed">
-                                        Your custom matches are computed. Enter your business email to receive your strategy roadmap and unlock a copy of the report.
+                                    <p className="text-xs text-slate-555 leading-relaxed">
+                                        {data.goal === 'research'
+                                            ? 'Your R&D tax credit and grant matches are computed. Enter your business email to receive your custom SR&ED calculation summary and unlock your action plan.'
+                                            : data.goal === 'hiring'
+                                                ? 'Your youth employment, training, and co-op grant matches are computed. Enter your business email to receive your wage subsidy schedule and download application templates.'
+                                                : 'Your custom matches are computed. Enter your business email to receive your strategy roadmap and unlock a copy of the report.'}
                                     </p>
-                                    
-                                    <div className="space-y-3 pt-2">
-                                        <div className="space-y-1.5">
-                                            <Label htmlFor="calc-email-gate" className="text-xs font-extrabold text-slate-600">Business Email Address *</Label>
-                                            <Input
-                                                id="calc-email-gate"
-                                                type="email"
-                                                placeholder="jane@yourbusiness.com"
-                                                className="h-12 bg-white text-base"
-                                                value={data.email}
-                                                onChange={(e) => {
-                                                    updateData("email", e.target.value);
-                                                    const err = document.getElementById('gate-email-error');
-                                                    if (err) err.classList.add('hidden');
-                                                }}
-                                                required
-                                            />
-                                            <p className="text-xs text-red-500 mt-1 hidden" id="gate-email-error">Please enter a valid business email address.</p>
-                                        </div>
-
-                                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                                            <div className="space-y-1.5">
-                                                <Label htmlFor="calc-name-gate" className="text-xs font-extrabold text-slate-600">First Name (Optional)</Label>
-                                                <Input
-                                                    id="calc-name-gate"
-                                                    type="text"
-                                                    placeholder="Jane"
-                                                    className="h-11 bg-white text-sm"
-                                                    value={data.name}
-                                                    onChange={(e) => updateData("name", e.target.value)}
-                                                />
-                                            </div>
-                                            <div className="space-y-1.5">
-                                                <Label htmlFor="calc-company-gate" className="text-xs font-extrabold text-slate-600">Company Name (Optional)</Label>
-                                                <Input
-                                                    id="calc-company-gate"
-                                                    type="text"
-                                                    placeholder="Acme Corp"
-                                                    className="h-11 bg-white text-sm"
-                                                    value={data.company}
-                                                    onChange={(e) => updateData("company", e.target.value)}
-                                                />
-                                            </div>
-                                        </div>
+                                </div>
+                                
+                                <div className="space-y-3 pt-2">
+                                    <div className="space-y-1.5 text-left">
+                                        <Label htmlFor="calc-email-gate" className="text-xs font-extrabold text-slate-600">Business Email Address *</Label>
+                                        <Input
+                                            id="calc-email-gate"
+                                            type="email"
+                                            placeholder="jane@yourbusiness.com"
+                                            className="h-12 bg-white text-base"
+                                            value={data.email}
+                                            onChange={(e) => {
+                                                updateData("email", e.target.value);
+                                                const err = document.getElementById('gate-email-error');
+                                                if (err) err.classList.add('hidden');
+                                            }}
+                                            required
+                                        />
+                                        <p className="text-xs text-red-500 mt-1 hidden" id="gate-email-error">Please enter a valid business email address.</p>
                                     </div>
 
-                                    <Button
-                                        onClick={handleUnlockResults}
-                                        className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base rounded-xl mt-4 shadow-md shadow-emerald-500/10 flex items-center justify-center gap-1.5"
-                                    >
-                                        See My Funding Matches &rarr;
-                                    </Button>
+                                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+                                        <div className="space-y-1.5">
+                                            <Label htmlFor="calc-name-gate" className="text-xs font-extrabold text-slate-600">First Name (Optional)</Label>
+                                            <Input
+                                                id="calc-name-gate"
+                                                type="text"
+                                                placeholder="Jane"
+                                                className="h-11 bg-white text-sm"
+                                                value={data.name}
+                                                onChange={(e) => updateData("name", e.target.value)}
+                                            />
+                                        </div>
+                                        <div className="space-y-1.5">
+                                            <Label htmlFor="calc-company-gate" className="text-xs font-extrabold text-slate-600">Company Name (Optional)</Label>
+                                            <Input
+                                                id="calc-company-gate"
+                                                type="text"
+                                                placeholder="Acme Corp"
+                                                className="h-11 bg-white text-sm"
+                                                value={data.company}
+                                                onChange={(e) => updateData("company", e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
                                 </div>
+
+                                <Button
+                                     onClick={handleUnlockResults}
+                                     className="w-full h-12 bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold text-base rounded-xl mt-4 shadow-md shadow-emerald-500/10 flex items-center justify-center gap-1.5"
+                                 >
+                                     {calculatorCtaVariant === 'B'
+                                         ? 'Get Funding Strategy →'
+                                         : data.goal === 'research' 
+                                             ? 'See My R&D & SR&ED Matches →'
+                                             : data.goal === 'hiring'
+                                                 ? 'See My Hiring & Training Matches →'
+                                                 : 'See My Funding Matches →'}
+                                 </Button>
                             </div>
                         )}
                     </div>
@@ -2588,8 +2641,72 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                             </div>
                         </div>
 
+                        {/* 2.5 PERSONALIZED LOCKED REPORT PREVIEW */}
+                        <div className="bg-slate-50 border-2 border-dashed border-slate-200 rounded-2xl p-5 max-w-md mx-auto text-left shadow-xs space-y-4">
+                            <h4 className="font-extrabold text-slate-900 text-xs sm:text-sm uppercase tracking-wider text-slate-500 border-b border-slate-200/80 pb-2 flex items-center justify-between">
+                                <span>📄 Personalized Report Preview</span>
+                                <span className="text-[10px] text-amber-700 bg-amber-50 border border-amber-200 px-2 py-0.5 rounded font-bold uppercase tracking-widest flex items-center gap-1">
+                                    <Lock className="w-3.5 h-3.5" /> Locked
+                                </span>
+                            </h4>
+                            <div className="space-y-3">
+                                <div className="space-y-1.5">
+                                    <span className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Identified Matching Programs</span>
+                                    <div className="flex flex-wrap gap-1.5">
+                                        <span className="text-xs bg-white border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md font-semibold flex items-center gap-1">
+                                            ✓ {data.goal === 'research' ? 'SR&ED Tax Credit' : 'IRAP Grant'}
+                                        </span>
+                                        <span className="text-xs bg-white border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md font-semibold flex items-center gap-1">
+                                            ✓ {data.goal === 'hiring' ? 'Co-op Wage Subsidy' : 'Mitacs Accelerate'}
+                                        </span>
+                                        <span className="text-xs bg-white border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md font-semibold flex items-center gap-1">
+                                            ✓ CanExport SME
+                                        </span>
+                                        <span className="text-xs bg-white border border-slate-200 text-slate-700 px-2.5 py-1 rounded-md font-semibold flex items-center gap-1">
+                                            ✓ Regional Growth Fund
+                                        </span>
+                                    </div>
+                                </div>
+                                 <div className="space-y-2 pt-2 border-t border-slate-200/60">
+                                    {experimentVariant === 'B' ? (
+                                        <>
+                                            <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+                                                <span className="flex items-center gap-2">🔒 Month 1: Profile & Document Preflight Check</span>
+                                                <span className="text-[10px] uppercase font-bold text-indigo-650 bg-indigo-50 px-1.5 py-0.5 rounded">Unlock to View</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+                                                <span className="flex items-center gap-2">🔒 Month 2: Writing & Cost Splitting Schedules</span>
+                                                <span className="text-[10px] uppercase font-bold text-indigo-650 bg-indigo-50 px-1.5 py-0.5 rounded">Unlock to View</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+                                                <span className="flex items-center gap-2">🔒 Month 3: Budget Builder & App Submission</span>
+                                                <span className="text-[10px] uppercase font-bold text-indigo-650 bg-indigo-50 px-1.5 py-0.5 rounded">Unlock to View</span>
+                                            </div>
+                                        </>
+                                    ) : (
+                                        <>
+                                            <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+                                                <span className="flex items-center gap-2">🔒 Step-by-Step Stacking Plan</span>
+                                                <span className="text-[10px] uppercase font-bold text-indigo-650 bg-indigo-50 px-1.5 py-0.5 rounded">Unlock to View</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+                                                <span className="flex items-center gap-2">🔒 Detailed Application Checklists</span>
+                                                <span className="text-[10px] uppercase font-bold text-indigo-650 bg-indigo-50 px-1.5 py-0.5 rounded">Unlock to View</span>
+                                            </div>
+                                            <div className="flex items-center justify-between text-xs text-slate-400 font-medium">
+                                                <span className="flex items-center gap-2">🔒 Reviewer Guidelines & Tips</span>
+                                                <span className="text-[10px] uppercase font-bold text-indigo-650 bg-indigo-50 px-1.5 py-0.5 rounded">Unlock to View</span>
+                                            </div>
+                                        </>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+
                         {/* 3. URGENCY TRIGGER */}
                         <p className="text-xs sm:text-sm text-slate-500 italic max-w-md mx-auto pt-1 font-medium">
+                            Every funding intake that closes is one less opportunity your business can apply for.
+                        </p> <p className="text-xs sm:text-sm text-slate-500 italic max-w-md mx-auto pt-1 font-medium">
                             Every funding intake that closes is one less opportunity your business can apply for.
                         </p>
 
@@ -2629,16 +2746,17 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                             </li>
                                         </ul>
 
-                                        <div className="mt-5 pt-4 border-t border-slate-100 flex items-baseline gap-1">
-                                            {upgradeCredit > 0 ? (
-                                                <>
-                                                    <span className="text-2xl font-black text-slate-900">${Math.max(0.50, 19 - upgradeCredit).toFixed(2)}</span>
-                                                    <span className="text-xs text-slate-400 line-through font-medium">$19</span>
-                                                </>
-                                            ) : (
-                                                <span className="text-2xl font-black text-slate-900">$19</span>
-                                            )}
-                                            <span className="text-[10px] text-slate-400">one-time</span>
+                                        <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col gap-1 text-left">
+                                            <span className="text-[10px] text-indigo-600 font-bold bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded self-start">
+                                                Exclusive Assessment Price
+                                            </span>
+                                            <div className="flex items-baseline gap-1 mt-1">
+                                                <span className="text-2xl font-black text-slate-900">
+                                                    ${upgradeCredit > 0 ? Math.max(0.50, 19 - upgradeCredit).toFixed(2) : '19'}
+                                                </span>
+                                                <span className="text-xs text-slate-400 line-through font-medium">$49</span>
+                                                <span className="text-[10px] text-slate-400">one-time</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <button
@@ -2691,16 +2809,17 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                             </li>
                                         </ul>
 
-                                        <div className="mt-5 pt-4 border-t border-slate-100 flex items-baseline gap-1">
-                                            {upgradeCredit > 0 ? (
-                                                <>
-                                                    <span className="text-2xl font-black text-slate-900">${Math.max(0.50, 49 - upgradeCredit).toFixed(2)}</span>
-                                                    <span className="text-xs text-slate-400 line-through font-medium">$49</span>
-                                                </>
-                                            ) : (
-                                                <span className="text-2xl font-black text-slate-900">$49</span>
-                                            )}
-                                            <span className="text-[10px] text-slate-400">one-time</span>
+                                        <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col gap-1 text-left">
+                                            <span className="text-[10px] text-indigo-600 font-bold bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded self-start">
+                                                Exclusive Assessment Price
+                                            </span>
+                                            <div className="flex items-baseline gap-1 mt-1">
+                                                <span className="text-2xl font-black text-slate-900">
+                                                    ${upgradeCredit > 0 ? Math.max(0.50, 49 - upgradeCredit).toFixed(2) : '49'}
+                                                </span>
+                                                <span className="text-xs text-slate-400 line-through font-medium">$99</span>
+                                                <span className="text-[10px] text-slate-400">one-time</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <button
@@ -2750,16 +2869,17 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                             </li>
                                         </ul>
 
-                                        <div className="mt-5 pt-4 border-t border-slate-100 flex items-baseline gap-1">
-                                            {upgradeCredit > 0 ? (
-                                                <>
-                                                    <span className="text-2xl font-black text-slate-900">${Math.max(0.50, 79 - upgradeCredit).toFixed(2)}</span>
-                                                    <span className="text-xs text-slate-400 line-through font-medium">$79</span>
-                                                </>
-                                            ) : (
-                                                <span className="text-2xl font-black text-slate-900">$79</span>
-                                            )}
-                                            <span className="text-[10px] text-slate-400">one-time</span>
+                                        <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col gap-1 text-left">
+                                            <span className="text-[10px] text-indigo-600 font-bold bg-indigo-50 border border-indigo-100 px-2 py-0.5 rounded self-start">
+                                                Exclusive Assessment Price
+                                            </span>
+                                            <div className="flex items-baseline gap-1 mt-1">
+                                                <span className="text-2xl font-black text-slate-900">
+                                                    ${upgradeCredit > 0 ? Math.max(0.50, 79 - upgradeCredit).toFixed(2) : '79'}
+                                                </span>
+                                                <span className="text-xs text-slate-400 line-through font-medium">$149</span>
+                                                <span className="text-[10px] text-slate-400">one-time</span>
+                                            </div>
                                         </div>
                                     </div>
                                     <button
@@ -2845,34 +2965,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     </div>
                                 ) : (
                                     <>
-                                        {/* Stripe Card Payment */}
-                                        {process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY && (
-                                          <>
-                                            <Button 
-                                              disabled={isStripeLoading}
-                                              onClick={handleStripeCheckout}
-                                              className="w-full h-12 bg-slate-900 hover:bg-slate-800 text-white font-extrabold text-sm rounded-lg flex items-center justify-center gap-2 shadow-sm transition-all"
-                                            >
-                                              {isStripeLoading ? (
-                                                <>
-                                                  <Loader2 className="w-4 h-4 animate-spin" /> Starting secure checkout...
-                                                </>
-                                              ) : (
-                                                <>
-                                                  💳 Pay with Credit Card / Apple Pay
-                                                </>
-                                              )}
-                                            </Button>
-
-                                            <div className="relative flex py-1.5 items-center">
-                                              <div className="flex-grow border-t border-slate-200"></div>
-                                              <span className="flex-shrink mx-4 text-[9px] text-slate-400 font-bold uppercase tracking-widest">or</span>
-                                              <div className="flex-grow border-t border-slate-200"></div>
-                                            </div>
-                                          </>
-                                        )}
-
-                                        {/* PayPal Container */}
+                                        {/* Secure PayPal Checkout Container */}
                                         <div id="calc-paypal-button" className="w-full"></div>
 
                                         <div className="relative flex py-2 items-center">
@@ -3041,8 +3134,34 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                        </div>
                                        <div>
                                          <h6 className="font-extrabold text-slate-800 text-xs">Add Funding Approval Library (+$9)</h6>
-                                         <p className="text-[11px] text-slate-505 leading-relaxed mt-1">
+                                         <p className="text-[11px] text-slate-550 leading-relaxed mt-1">
                                             Review real successful R&D (SR&ED/IRAP) narratives, project descriptions, and approved budgets to clone winning strategies.
+                                         </p>
+                                       </div>
+                                     </div>
+
+                                     {/* Upgrade 4: Strategy Session Bump ($180 credit applied) */}
+                                     <div 
+                                       onClick={() => setAddonStrategySession(!addonStrategySession)}
+                                       className={`cursor-pointer border rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-slate-50/80 ${
+                                         addonStrategySession ? 'border-indigo-500 bg-indigo-50/5 shadow-2xs' : 'border-slate-200 bg-white'
+                                       }`}
+                                     >
+                                       <div className="pt-1">
+                                         <input 
+                                           type="checkbox" 
+                                           checked={addonStrategySession} 
+                                           onChange={() => {}} 
+                                           className="w-4 h-4 rounded text-indigo-605 focus:ring-indigo-505 border-slate-300"
+                                         />
+                                       </div>
+                                       <div>
+                                         <h6 className="font-extrabold text-slate-800 text-xs flex items-center gap-1.5">
+                                           <span>Add Priority 1-on-1 Strategy & Review Session (+$180)</span>
+                                           <span className="bg-emerald-100 text-emerald-850 text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase">Best Value</span>
+                                         </h6>
+                                         <p className="text-[11px] text-slate-550 leading-relaxed mt-1">
+                                           <strong>You've already invested in your funding roadmap. We'll automatically apply your $19 purchase toward your Strategy Session. Today you'll pay only the remaining $180.</strong> Get personalized alignment directly with our expert advisory team.
                                          </p>
                                        </div>
                                      </div>
@@ -3154,6 +3273,41 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                           <p className="text-sm text-slate-500 mt-1">
                             A copy has been sent to <strong>{data.email}</strong>
                           </p>
+
+                          {/* Enterprise Fast-Track Scheduler (Task 2) */}
+                          {(() => {
+                            const rev = data.revenue || '';
+                            const goal = data.goal || '';
+                            const isEnterprise = rev === '500k-1m' || rev === 'over-1m' || goal === 'audit';
+                            if (isEnterprise) {
+                              const calendlyUrl = `https://calendly.com/fsidigital/strategy-audit?email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.name || '')}&a1=${encodeURIComponent(data.company || '')}`;
+                              return (
+                                <div className="mt-6 bg-gradient-to-br from-indigo-50/50 to-white border border-indigo-150 rounded-2xl p-6 text-left max-w-xl mx-auto space-y-4 shadow-xs">
+                                  <div className="flex items-start gap-3">
+                                    <div className="bg-indigo-100 p-2 rounded-xl text-indigo-700 font-bold shrink-0">🚨</div>
+                                    <div>
+                                      <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-1.5">
+                                        Priority Enterprise Fast-Track: Schedule Your Strategy Review
+                                      </h4>
+                                      <p className="text-xs text-slate-500 mt-0.5">
+                                        Your company qualifies for high-ticket advisory streams. Schedule your 1-on-1 strategy audit session directly with our advisory desk.
+                                      </p>
+                                    </div>
+                                  </div>
+                                  <div className="border-t border-slate-100 pt-4">
+                                    <iframe 
+                                      src={calendlyUrl} 
+                                      width="100%" 
+                                      height="600" 
+                                      frameBorder="0" 
+                                      className="rounded-xl border border-slate-200/80 shadow-2xs"
+                                    ></iframe>
+                                  </div>
+                                </div>
+                              );
+                            }
+                            return null;
+                          })()}
                           {reportData && (
                             <div className="mt-4 flex justify-center">
                               <Button

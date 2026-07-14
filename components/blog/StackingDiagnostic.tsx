@@ -17,6 +17,8 @@ export default function StackingDiagnostic() {
   const [grantType, setGrantType] = useState<string>('');
   const [employees, setEmployees] = useState<string>('');
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -44,11 +46,11 @@ export default function StackingDiagnostic() {
         combination: ['Investissement Québec ESSOR Stream 2 (R&D)', 'Federal Scientific Research & Experimental Development (SR&ED)', 'MFOR Workforce Training Grants'],
         maxStackRate: 'Combined stacking rate can reach up to 80% through refundable provincial tax credits.',
         rules: [
-          'Pre-approval from MEIE required for major capital asset expenditures.',
           'MFOR training subsidies must cover local hiring upskilling programs.',
-          'Language validation remains an audit prerequisite.'
+          'Double-dipping between SR&ED and QC R&D tax credits is prevented by tax offsets.',
+          'Private cost share of at least 25% must be proven via bank statement.'
         ],
-        ctaText: 'Access Quebec Stacking Matrix',
+        ctaText: 'Calculate Quebec Stack Limits',
         ctaHref: '/portfolio?focus=quebec'
       };
     }
@@ -57,27 +59,27 @@ export default function StackingDiagnostic() {
       if (grantType === 'digital') {
         return {
           title: 'Ontario Tech Adoption Stack',
-          combination: ['Digital Main Street Growth Grant ($2.5K)', 'CDAP Online Stream ($2.4K)', 'OJT (Ontario Job Creation) Subsidies'],
-          maxStackRate: 'Max 50-60% stacking limit on salary-based wage subsidies.',
+          combination: ['CDAP Grow Your Business Online ($2.4K)', 'OITC (Ontario Innovation Tax Credit)', 'BDC Tech Loan (interest-free)'],
+          maxStackRate: 'Stacking ceiling matches total actual cash flow outlay of software integration.',
           rules: [
-            'Digital Main Street requires local municipal business tax registration.',
-            'Wage support must be approved before hiring the candidate.',
-            'Standard corporate tax filing must be active in Ontario.'
+            'Software tools must be deployed and hosted within Canada or US.',
+            'In-house developer contracts must state intellectual property ownership.',
+            'Minimum annual revenue of $50,000 required for BDC loan stacking.'
           ],
-          ctaText: 'Evaluate Ontario Stack Fit',
+          ctaText: 'Calculate Ontario Stack Limits',
           ctaHref: '/portfolio?focus=canada'
         };
       }
       return {
-        title: 'Ontario Advanced Manufacturing & Scaling Stack',
-        combination: ['Ontario Regional Development Program (RDP)', 'Federal Scientific Research (SR&ED)', 'FedDev Ontario Scale-up Loan'],
-        maxStackRate: 'Up to 50% matching for regional investments, plus 35% SR&ED tax returns.',
+        title: 'Ontario Advanced Research Stack',
+        combination: ['NRC IRAP Youth Employment Program', 'Ontario Research and Development Tax Credit (ORDTC)', 'Federal SR&ED (15% credit)'],
+        maxStackRate: 'Combined developer wage cost-sharing up to 85% via credits.',
         rules: [
-          'RDP requires a minimum $500,000 project spend and 5 new local jobs created.',
-          'FedDev loan is zero-interest but fully repayable.',
-          'Cannot claim the same developer hours for both provincial training and federal R&D.'
+          'ORDTC eligibility requires scientific research conducted within Ontario borders.',
+          'Wage support must be approved before hiring the candidate.',
+          'SR&ED claims are calculated on the net eligible expenditure base.'
         ],
-        ctaText: 'Calculate FedDev & RDP Stacking Limits',
+        ctaText: 'Calculate Ontario Stack Limits',
         ctaHref: '/portfolio?focus=canada'
       };
     }
@@ -109,8 +111,8 @@ export default function StackingDiagnostic() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          name: 'Founder',
-          companyName: 'Not provided',
+          name: name || 'Founder',
+          companyName: companyName || 'Not provided',
           source: 'Stacking Checker',
           pagePath: typeof window !== 'undefined' ? window.location.pathname : '/canada/government-grants',
           category: 'Grant Calculator',
@@ -259,23 +261,50 @@ export default function StackingDiagnostic() {
                     Secure your calculated co-funding stacking limits, active program matrices, and local compliance checklists.
                   </p>
                 </div>
-                <form onSubmit={handleLeadSubmit} className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your business email..."
-                    className="flex-1 h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="h-11 px-5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer disabled:opacity-50"
-                  >
-                    {loading ? 'Generating...' : 'Get Stacking Plan'}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                <form onSubmit={handleLeadSubmit} className="space-y-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">First Name (Optional)</label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Jane"
+                        className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Company Name (Optional)</label>
+                      <input
+                        type="text"
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                        placeholder="Acme Corp"
+                        className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex-1 space-y-1 text-left">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Business Email *</label>
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="jane@yourbusiness.com"
+                        className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-emerald-500"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="h-11 px-6 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer disabled:opacity-50 sm:self-end mt-4 sm:mt-0"
+                    >
+                      {loading ? 'Generating...' : 'Get Stacking Plan'}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </form>
                 {error && <p className="text-[11px] text-red-400">{error}</p>}
               </div>

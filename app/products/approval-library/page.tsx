@@ -57,7 +57,7 @@ export default function ApprovalLibraryPage() {
           {/* Pitch */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-1.5 bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> outcome-based library
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> Approved Proposal Narratives & Budgets Library
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none text-slate-100">
               Learn How Successful Canadian Funding Applications Are Structured.

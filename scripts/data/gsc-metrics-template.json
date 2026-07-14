@@ -1,0 +1,38 @@
+{
+  "/blog/nih-sbir-biotech-grants": {
+    "clicks": 280,
+    "impressions": 3400,
+    "ctr": 0.082,
+    "position": 3.4
+  },
+  "/canada/women-business-grants": {
+    "clicks": 540,
+    "impressions": 6100,
+    "ctr": 0.088,
+    "position": 2.1
+  },
+  "/canada/small-business-grants": {
+    "clicks": 980,
+    "impressions": 11500,
+    "ctr": 0.085,
+    "position": 1.9
+  },
+  "/blog/veteran-business-funding-canada-2026": {
+    "clicks": 420,
+    "impressions": 5300,
+    "ctr": 0.079,
+    "position": 2.8
+  },
+  "/usa/new-york": {
+    "clicks": 80,
+    "impressions": 1200,
+    "ctr": 0.066,
+    "position": 4.2
+  },
+  "/blog/quebec-small-business-grants-guide": {
+    "clicks": 65,
+    "impressions": 950,
+    "ctr": 0.068,
+    "position": 4.5
+  }
+}

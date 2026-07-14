@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   let lockKey = '';
   try {
     const body = await request.json();
-    const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId, journeyId, funnelId, heuristicMetadata } = body;
+    const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId, journeyId, funnelId, heuristicMetadata, calculator_cta_variant } = body;
 
     // ── Validate required fields ──
     if (!productId || !email || !name || !paypalOrderId || !profileData) {
@@ -133,13 +133,15 @@ export async function POST(request: NextRequest) {
       country: attribution?.country || existing?.country || '',
     };
 
-    // ── Check past purchases to calculate upgrade credit ──
+    // ── Check past purchases to calculate upgrade credit (Task 6 Repeat customer guard) ──
     const purchases = await getPurchasesByEmail(email);
     let totalCredit = 0;
-    for (const p of purchases) {
-      const amountVal = parseFloat(p.amount) || 0;
-      if (amountVal > 0) {
-        totalCredit += amountVal;
+    
+    const hasAlreadyPurchasedStrategy = purchases.some(p => p.productId === 'strategy-session' || p.productId === 'strategy-audit');
+    if ((productId === 'strategy-audit' || productId === 'strategy-session') && !hasAlreadyPurchasedStrategy) {
+      const hasReport = purchases.some(p => p.productId === 'funding-match-report');
+      if (hasReport) {
+        totalCredit = 19; // Apply the $19 report credit exactly once
       }
     }
 
@@ -152,6 +154,7 @@ export async function POST(request: NextRequest) {
     let expectedPrice = netProductPrice;
     if (addons?.toolkit) expectedPrice += 29;
     if (addons?.approvalLibrary) expectedPrice += 9;
+    if (addons?.strategySession) expectedPrice += 180;
 
     // ── Verify PayPal order ──
     const verification = await verifyPayPalOrder(
@@ -204,7 +207,7 @@ export async function POST(request: NextRequest) {
       email,
       name,
       productId,
-      amount: product.priceUsd.toFixed(2),
+      amount: netProductPrice.toFixed(2),
       paypalOrderId,
       profileData,
       attribution: resolvedAttribution,
@@ -241,6 +244,23 @@ export async function POST(request: NextRequest) {
         });
       } catch (err) {
         console.error('⚠️ Failed to record Approval Library addon purchase:', err);
+      }
+    }
+
+    // ── Record Strategy Session addon if purchased (Upgrade Credit applied) ──
+    if (addons?.strategySession) {
+      try {
+        await recordPurchase({
+          email,
+          name,
+          productId: 'strategy-session',
+          amount: '180.00',
+          paypalOrderId,
+          profileData,
+          attribution: resolvedAttribution,
+        });
+      } catch (err) {
+        console.error('⚠️ Failed to record Strategy Session addon purchase:', err);
       }
     }
 
@@ -299,6 +319,25 @@ export async function POST(request: NextRequest) {
       }
     }
 
+    // ── Record telemetry event for Strategy Session addon if purchased ──
+    if (addons?.strategySession) {
+      try {
+        await recordTelemetryEvent({
+          eventName: 'strategy_audit_purchased',
+          sessionId: sessionId || 'sess_anonymous',
+          pagePath: resolvedAttribution.landingPage || '',
+          referrer: resolvedAttribution.referrer || 'direct',
+          productId: 'strategy-session',
+          revenue: '180.00',
+          journeyId,
+          funnelId,
+          heuristicMetadata,
+        });
+      } catch (tErr) {
+        console.error('⚠️ Failed to log Strategy Session purchase telemetry event:', tErr);
+      }
+    }
+
     // ── Sync purchase status back to CRM Leads sheet ──
     try {
       const updates: any = {
@@ -337,7 +376,16 @@ export async function POST(request: NextRequest) {
         if (shouldUpdateStage(existing?.offlineStatus, 'Report Buyer')) {
           updates.offlineStatus = 'Report Buyer';
         }
-      } else if (productId === 'strategy-audit') {
+      } else if (productId === 'strategy-audit' || productId === 'strategy-session') {
+        updates.strategyReportPurchased = true;
+        updates.strategyReportTransactionId = paypalOrderId;
+        updates.engagementScore = 200;
+        if (shouldUpdateStage(existing?.offlineStatus, 'Audit Buyer')) {
+          updates.offlineStatus = 'Audit Buyer';
+        }
+      }
+
+      if (addons?.strategySession) {
         updates.strategyReportPurchased = true;
         updates.strategyReportTransactionId = paypalOrderId;
         updates.engagementScore = 200;
@@ -359,6 +407,7 @@ export async function POST(request: NextRequest) {
       activity.purchasedProductId = productId;
       if (journeyId) activity.journeyId = journeyId;
       if (funnelId) activity.funnelId = funnelId;
+      if (calculator_cta_variant) activity.calculator_cta_variant = calculator_cta_variant;
       
       if (productId === 'strategy-audit') {
         activity.auditPurchasedAt = activity.paymentCompletedAt;
@@ -366,8 +415,20 @@ export async function POST(request: NextRequest) {
         activity.depositPaidAt = activity.paymentCompletedAt;
       }
 
-      if (addons?.toolkit) activity.purchasedToolkit = true;
-      if (addons?.approvalLibrary) activity.purchasedApprovalLibrary = true;
+      if (addons) {
+        if (!activity.addons) activity.addons = {};
+        if (addons.toolkit) {
+          activity.purchasedToolkit = true;
+          activity.addons.toolkit = true;
+        }
+        if (addons.approvalLibrary) {
+          activity.purchasedApprovalLibrary = true;
+          activity.addons.approvalLibrary = true;
+        }
+        if (addons.strategySession) {
+          activity.addons.strategySession = true;
+        }
+      }
       updates.leadActivity = JSON.stringify(activity);
 
       if (existing) {

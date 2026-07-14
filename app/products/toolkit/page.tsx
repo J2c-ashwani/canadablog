@@ -57,7 +57,7 @@ export default function ToolkitPage() {
           {/* Pitch */}
           <div className="lg:col-span-7 space-y-6 text-left">
             <div className="inline-flex items-center gap-1.5 bg-emerald-500/10 border border-emerald-500/20 text-emerald-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> outcome-based toolkit
+              <Sparkles className="w-3.5 h-3.5 animate-pulse" /> Excel Grant Budgets & Pre-Submission Checklists
             </div>
             <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none text-slate-100">
               Submit Stronger Funding Applications in Less Time.

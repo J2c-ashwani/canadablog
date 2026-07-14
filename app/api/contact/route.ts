@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { appendLeadToSheet } from "@/lib/google-sheets";
 import { sendContactConfirmation } from "@/lib/emails/contact-confirmation";
+import { sendEnterpriseSalesAlert } from "@/lib/emails/enterprise-alerts";
 import { validateEmail } from "@/lib/email-validator";
 import { validatePhone } from "@/lib/phone-validator";
 import { calculateLeadIntelligence } from "@/lib/leads/scoring";
@@ -157,7 +158,10 @@ export async function POST(request: NextRequest) {
     const tier = intelligence.tier;
     const isAuditCandidate = tier === "A";
 
-    const additionalNotes = `Request Type: ${requestType || "General"}\nMessage: ${businessDescription}\n${phoneValidationNotes}`;
+    const isEnterprise = tier === "A" || annualRevenue === "500k-1m" || annualRevenue === "over-1m" || companySize === "50-200" || companySize === "over-200";
+    const enterpriseTag = isEnterprise ? "🚨 PRIORITY ENTERPRISE LEAD\n" : "";
+    const opportunityReason = `Opportunity Reason: $${intelligence.estimatedOpportunityValueNum.toLocaleString()} (${intelligence.estimatedOpportunityValueReason})`;
+    const additionalNotes = `${enterpriseTag}Request Type: ${requestType || "General"}\nMessage: ${businessDescription}\n${phoneValidationNotes}\n💡 ${opportunityReason}`;
 
     // Save lead to Google Sheets database immediately
     const sheetResult = await appendLeadToSheet({
@@ -167,6 +171,32 @@ export async function POST(request: NextRequest) {
       leadTier: tier,
       auditCandidate: isAuditCandidate ? "Yes" : "No",
     });
+
+    if (isEnterprise) {
+      sendEnterpriseSalesAlert({
+        email,
+        name: finalName,
+        companyName: finalCompanyName,
+        revenue: annualRevenue || "N/A",
+        goal: Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : (fundingPurpose || "N/A"),
+        state: state || "N/A",
+        industry: finalIndustry,
+        score,
+        tier,
+        businessDescription: additionalNotes,
+        fundingNeed: fundingAmount || "N/A",
+        leadSource: leadData.source,
+        pagePath: pagePath || "N/A",
+        referralSource: referralSource || "Direct",
+        utmSource: utmSource || "N/A",
+        utmMedium: utmMedium || "N/A",
+        utmCampaign: utmCampaign || "N/A",
+        craRiskRating: (fundingPurpose === "hiring" || fundingPurpose === "research") ? "Moderate" : "High",
+        estimatedOpportunityValue: intelligence.estimatedOpportunityValue
+      }).catch((err) => {
+        console.error("❌ Failed to send immediate enterprise sales alert:", err);
+      });
+    }
 
     if (!sheetResult.success) {
       console.error("❌ CRITICAL: Google Sheets save failed. Metadata:", JSON.stringify({

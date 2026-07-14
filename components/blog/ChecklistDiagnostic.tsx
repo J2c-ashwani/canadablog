@@ -20,6 +20,8 @@ export default function ChecklistDiagnostic() {
   const [answers, setAnswers] = useState<Record<number, boolean>>({});
   const [step, setStep] = useState<number>(0);
   const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [companyName, setCompanyName] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -57,8 +59,8 @@ export default function ChecklistDiagnostic() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
-          name: 'Founder',
-          companyName: 'Not provided',
+          name: name || 'Founder',
+          companyName: companyName || 'Not provided',
           source: 'Checklist Screener',
           pagePath: typeof window !== 'undefined' ? window.location.pathname : '/guides/apply-irap-grants',
           category: 'Grant Calculator',
@@ -183,23 +185,50 @@ export default function ChecklistDiagnostic() {
                     Enter your email to receive active program deadlines, custom application templates, and stacking limits matching this diagnostic result.
                   </p>
                 </div>
-                <form onSubmit={handleLeadSubmit} className="flex flex-col sm:flex-row gap-3">
-                  <input
-                    type="email"
-                    required
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your business email..."
-                    className="flex-1 h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"
-                  />
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="h-11 px-5 bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer disabled:opacity-50"
-                  >
-                    {loading ? 'Analyzing...' : 'Unlock Audit Report'}
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </button>
+                <form onSubmit={handleLeadSubmit} className="space-y-3.5">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-left">
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">First Name (Optional)</label>
+                      <input
+                        type="text"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Jane"
+                        className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <div className="space-y-1">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Company Name (Optional)</label>
+                      <input
+                        type="text"
+                        value={companyName}
+                        onChange={(e) => setCompanyName(e.target.value)}
+                        placeholder="Acme Corp"
+                        className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      />
+                    </div>
+                  </div>
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="flex-1 space-y-1 text-left">
+                      <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Business Email *</label>
+                      <input
+                        type="email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        placeholder="jane@yourbusiness.com"
+                        className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                      />
+                    </div>
+                    <button
+                      type="submit"
+                      disabled={loading}
+                      className="h-11 px-6 bg-indigo-500 hover:bg-indigo-400 text-slate-950 font-bold rounded-xl text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer disabled:opacity-50 sm:self-end mt-4 sm:mt-0"
+                    >
+                      {loading ? 'Analyzing...' : 'Unlock Audit Report'}
+                      <ArrowRight className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
                 </form>
                 {error && <p className="text-[11px] text-red-400">{error}</p>}
                 

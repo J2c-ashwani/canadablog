@@ -1,3 +1,4 @@
+import { PRICING_CONFIG } from './pricing-config';
 export const LEAD_CONSENT_VERSION = 'funding-specialist-contact-v2-2026-06-04';
 
 export const LEAD_CONSENT_TEXT =
@@ -86,6 +87,9 @@ export type LeadIntelligence = {
   tier: LeadTier;
   leadType: string;
   estimatedValue: string;
+  estimatedOpportunityValue: string;
+  estimatedOpportunityValueNum: number;
+  estimatedOpportunityValueReason: string;
   buyerSegment: string;
   routing: string;
   consentStatus: 'partner-consent' | 'internal-only' | 'unknown';
@@ -115,7 +119,7 @@ function firstMeaningfulValue(...values: Array<string | undefined>) {
 
 function normalizeAmount(value?: string) {
   const normalized = String(value || '').toLowerCase();
-  if (normalized.includes('over-1m') || normalized.includes('1,000,000') || normalized.includes('1m')) return 'over-1m';
+  if (normalized.includes('over-1m') || normalized.includes('1,000,000') || (normalized.includes('1m') && !normalized.includes('500k'))) return 'over-1m';
   if (normalized.includes('500k') || normalized.includes('500,000')) return '500k-1m';
   if (normalized.includes('100k') || normalized.includes('100,000')) return '100k-500k';
   if (normalized.includes('25k') || normalized.includes('25,000')) return '25k-100k';
@@ -344,8 +348,33 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
     tier = 'B';
   }
 
+  // ── Calculate Estimated Opportunity Value and Reason based on config ──
+  let estimatedOpportunityValueNum = 0;
+  let estimatedOpportunityValueReason = '';
+
+  if (tier === 'A') {
+    const normAmt = normalizeAmount(amountStr);
+    let fundingEst = 0;
+    if (normAmt === 'over-1m') fundingEst = 1500000;
+    else if (normAmt === '500k-1m') fundingEst = 750000;
+    else if (normAmt === '100k-500k') fundingEst = 375000;
+    else if (normAmt === '25k-100k') fundingEst = 62500;
+    else fundingEst = 10000;
+
+    estimatedOpportunityValueNum = PRICING_CONFIG.DFY_BASE_RETAINER + (fundingEst * PRICING_CONFIG.DFY_SUCCESS_FEE_PCT);
+    estimatedOpportunityValueReason = `Tier A, Funding Range: ${amountStr || 'N/A'}, Success Fee: ${(PRICING_CONFIG.DFY_SUCCESS_FEE_PCT * 100)}%, Retainer: $${PRICING_CONFIG.DFY_BASE_RETAINER.toLocaleString()}`;
+  } else if (tier === 'B') {
+    estimatedOpportunityValueNum = PRICING_CONFIG.TIER_B_EXPECTED_LTV;
+    estimatedOpportunityValueReason = `Tier B, Expected LTV: $${PRICING_CONFIG.TIER_B_EXPECTED_LTV.toLocaleString()}`;
+  } else {
+    estimatedOpportunityValueNum = PRICING_CONFIG.TIER_C_EXPECTED_LTV;
+    estimatedOpportunityValueReason = `Tier C/D, Expected LTV: $${PRICING_CONFIG.TIER_C_EXPECTED_LTV.toLocaleString()}`;
+  }
+
+  const estimatedOpportunityValue = `Tier ${tier} Lead (Est. Opportunity Value: $${estimatedOpportunityValueNum.toLocaleString()})`;
+
   const estimatedValue =
-    tier === 'A' ? '$50-$125 exclusive B2B lead' :
+    tier === 'A' ? `$50-$125 exclusive B2B lead` :
     tier === 'B' ? '$25-$60 qualified B2B lead' :
     '$0-$20 nurture/newsletter lead';
 
@@ -373,6 +402,9 @@ export function calculateLeadIntelligence(data: LeadCaptureData): LeadIntelligen
     tier,
     leadType,
     estimatedValue,
+    estimatedOpportunityValue,
+    estimatedOpportunityValueNum,
+    estimatedOpportunityValueReason,
     buyerSegment,
     routing,
     consentStatus,

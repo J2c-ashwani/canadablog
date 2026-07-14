@@ -42,6 +42,7 @@ export async function POST(request: NextRequest) {
     if (body.renderTimeSeconds) activity.renderTimeSeconds = body.renderTimeSeconds
     if (body.errorMessage) activity.lastErrorMessage = body.errorMessage
     if (body.surveyResponse) activity.lastSurveyResponse = body.surveyResponse
+    if (body.calculator_cta_variant) activity.calculator_cta_variant = body.calculator_cta_variant
 
     if (event === "checkout_started" || event === "standalone_checkout_started") {
       activity.checkoutStartedAt = now
