@@ -8,6 +8,8 @@ import { Input } from "@/components/ui/input"
 import { ShieldCheck, Check, Mail, Lock, CheckCircle, Loader2, Sparkles, Download } from "lucide-react"
 import Link from "next/link"
 
+import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
+
 interface PDFPaywallWidgetProps {
   guideName: string
   guideSlug: string
@@ -17,6 +19,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
   const [email, setEmail] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
+  const isEmailValid = !!(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
   
   const [leadSaved, setLeadSaved] = useState(false)
   const [sdkReady, setSdkReady] = useState(false)
@@ -24,64 +27,116 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
   const [paymentError, setPaymentError] = useState<string | null>(null)
   
   const buttonsRenderedRef = useRef(false)
+  const popupOpenedAtRef = useRef<number | null>(null)
   const paypalClientId = "AeuWqg4P1NhiSmsyZt2lDqXg4K6Fz4_lV_mU9t_l1K-08lQ_v2n2vG1T_w_R5f2R2"
 
-  const isEmailValid = !!(email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()))
-
-  // Attempt to recover checkout email from sessionStorage
+  // Track paywall viewed state
   useEffect(() => {
-    if (typeof window !== "undefined") {
-      const stored = window.sessionStorage.getItem("fsi_cdp_profile")
-      if (stored) {
-        try {
-          const parsed = JSON.parse(stored)
-          if (parsed.email) {
-            setEmail(parsed.email)
-          }
-        } catch (e) {}
-      }
-    }
-  }, [])
-
-  const handleSaveLeadDraft = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!isEmailValid) {
-      setError("Please enter a valid work email address.")
-      return
-    }
-    setError("")
-    setIsSubmitting(true)
-
-    try {
-      await fetch("/api/subscribe", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          name: "Guide Reader",
-          country: "Canada",
-          region: "ON",
-          industry: "other",
-          companySize: "10-49",
-          fundingInterests: ["Grants"]
-        })
-      })
-
-      setLeadSaved(true)
-
-      // Telemetry: lead captured
+    if (leadSaved && !isPurchased && isEmailValid) {
+      const jId = getOrCreateJourneyId();
+      const fnId = getOrCreateFunnelId("pdf_paywall");
+      
+      // Funnel telemetry
       fetch("/api/subscriber/track-activity", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           email,
-          event: "guide_page_lead_captured",
-          guideSlug
+          event: "checkout_viewed",
+          priceShown: "9.00",
+          journeyId: jId,
+          funnelId: fnId
         })
-      }).catch(() => {})
+      }).catch(() => {});
 
+      fetch("/api/telemetry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(decorateTelemetryPayload({
+          eventName: "checkout_viewed",
+          sessionId: email || "sess_anonymous",
+          pagePath: window.location.pathname,
+          referrer: document.referrer || "direct",
+          productId: "guide-companion-kit",
+          revenue: "9.00"
+        }, "pdf_paywall"))
+      }).catch(() => {});
+    }
+  }, [leadSaved, isPurchased, isEmailValid, email]);
+
+  // Track browser exited during checkout lifecycle
+  useEffect(() => {
+    const handleUnload = () => {
+      if (leadSaved && !isPurchased && isEmailValid) {
+        const payload = JSON.stringify({
+          email,
+          event: "browser_exited",
+          journeyId: sessionStorage.getItem('fsi_journey_id') || '',
+          funnelId: sessionStorage.getItem('fsi_funnel_id') || ''
+        });
+        if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+          navigator.sendBeacon("/api/subscriber/track-activity", payload);
+        }
+      }
+    };
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, [leadSaved, isPurchased, isEmailValid, email]);
+
+  const validateEmailFormat = (val: string) => {
+    return val.includes("@") && val.trim().length > 5
+  }
+
+  const handleLeadSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setError("")
+    setPaymentError(null)
+
+    if (!validateEmailFormat(email)) {
+      setError("Please enter a valid email address.")
+      return
+    }
+
+    setIsSubmitting(true)
+
+    try {
+      const jId = getOrCreateJourneyId();
+      const fnId = getOrCreateFunnelId("pdf_paywall");
+
+      // Track diagnostic started / lead saved
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          email,
+          event: "lead_saved",
+          journeyId: jId,
+          funnelId: fnId
+        })
+      }).catch(() => {});
+
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(decorateTelemetryPayload({
+          email,
+          category: "PDF Download",
+          fundingPurpose: `Companion Kit - ${guideName}`,
+          businessDescription: `User requested companion kit on guide ${guideSlug}`,
+          pagePath: window.location.pathname
+        }, "pdf_paywall")),
+      })
+
+      if (!res.ok) {
+        const errBody = await res.json()
+        setError(errBody.error || "Failed to submit request.")
+        return
+      }
+
+      setLeadSaved(true)
+      setIsEmailValid(true)
     } catch (err) {
-      console.error("Failed to register lead draft:", err)
+      console.error(err)
       setError("Failed to register email. Please check your connection and try again.")
     } finally {
       setIsSubmitting(false)
@@ -119,8 +174,85 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
     if (container) container.innerHTML = ""
 
     try {
+      // Telemetry: paypal_rendered
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(decorateTelemetryPayload({
+          email,
+          event: "paypal_buttons_rendered"
+        }, "pdf_paywall"))
+      }).catch(() => {})
+
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+        onClick: () => {
+          popupOpenedAtRef.current = Date.now();
+          // Telemetry: clicked, popup opened
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email,
+              event: "paypal_button_clicked"
+            }, "pdf_paywall"))
+          }).catch(() => {})
+
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email,
+              event: "paypal_popup_opened"
+            }, "pdf_paywall"))
+          }).catch(() => {})
+        },
+        onCancel: () => {
+          const duration = popupOpenedAtRef.current ? (Date.now() - popupOpenedAtRef.current) / 1000 : 0;
+          let heuristic = "Trust Issue or Undecided (Closed after 5-20s)";
+          if (duration > 0 && duration < 5) {
+            heuristic = "Price Shock (Immediate close < 5s)";
+          } else if (duration >= 20) {
+            heuristic = "Login/Auth Friction (Closed after > 20s)";
+          }
+
+          // Telemetry: payment_cancelled & popup_closed with heuristics
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email,
+              event: "payment_cancelled",
+              heuristicMetadata: heuristic
+            }, "pdf_paywall"))
+          }).catch(() => {})
+
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email,
+              event: "popup_closed",
+              heuristicMetadata: heuristic
+            }, "pdf_paywall"))
+          }).catch(() => {})
+
+          fetch("/api/telemetry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              eventName: "payment_cancelled",
+              sessionId: email || "sess_anonymous",
+              pagePath: window.location.pathname,
+              referrer: document.referrer || "direct",
+              productId: "guide-companion-kit",
+              revenue: "9.00",
+              heuristicMetadata: heuristic
+            }, "pdf_paywall"))
+          }).catch(() => {});
+
+          setPaymentError(`Checkout closed: ${heuristic.split(" (")[0]}. You can try again when ready.`)
+        },
         createOrder: (_data: any, actions: any) => {
           setPaymentError(null)
 
@@ -128,11 +260,11 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
           fetch("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+            body: JSON.stringify(decorateTelemetryPayload({
               email,
               event: "guide_companion_checkout_started",
               guideSlug
-            })
+            }, "pdf_paywall"))
           }).catch(() => {})
 
           return actions.order.create({
@@ -269,7 +401,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
                 </div>
 
                 {!leadSaved ? (
-                  <form onSubmit={handleSaveLeadDraft} className="space-y-3">
+                  <form onSubmit={handleLeadSubmit} className="space-y-3">
                     {error && (
                       <p className="text-[10px] text-red-500 font-bold text-center">{error}</p>
                     )}

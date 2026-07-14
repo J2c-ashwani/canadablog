@@ -13,6 +13,7 @@ import {
   BarChart3, ExternalLink, Calendar, Shield
 } from "lucide-react"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
+import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
 import { SampleReportPreview } from "@/components/products/SampleReportPreview"
 import { caseStudiesDatabase } from "@/lib/data/case-studies"
 import { DiyComparisonTable } from "@/components/DiyComparisonTable"
@@ -123,6 +124,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [checkingCredit, setCheckingCredit] = useState(false);
 
     const upgradeCreditRef = useRef(upgradeCredit);
+    const popupOpenedAtRef = useRef<number | null>(null);
     useEffect(() => {
         upgradeCreditRef.current = upgradeCredit;
     }, [upgradeCredit]);
@@ -1046,6 +1048,26 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
       document.head.appendChild(script);
     }, [step, paypalClientId]);
 
+    // Track browser exited during checkout lifecycle
+    useEffect(() => {
+      const handleUnload = () => {
+        const emailVal = dataRef.current.email;
+        if (emailVal && step === 6 && !isPurchased) {
+          const payload = JSON.stringify({
+            email: emailVal,
+            event: "browser_exited",
+            journeyId: sessionStorage.getItem('fsi_journey_id') || '',
+            funnelId: sessionStorage.getItem('fsi_funnel_id') || ''
+          });
+          if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+            navigator.sendBeacon("/api/subscriber/track-activity", payload);
+          }
+        }
+      };
+      window.addEventListener("beforeunload", handleUnload);
+      return () => window.removeEventListener("beforeunload", handleUnload);
+    }, [step, isPurchased]);
+
     // --- PayPal Buttons Render ---
     useEffect(() => {
       if (!isEmailValid) {
@@ -1055,6 +1077,9 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
       if (!sdkReady || !(window as any).paypal || step !== 6) return;
       
+      const jId = getOrCreateJourneyId();
+      const fnId = getOrCreateFunnelId("grant_calculator");
+
       // Prevent duplicate rendering in StrictMode or rapid render ticks
       if (buttonsRenderedRef.current) return;
       buttonsRenderedRef.current = true;
@@ -1071,12 +1096,12 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
           fetch("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+            body: JSON.stringify(decorateTelemetryPayload({
               email: currentEmail,
               event: "paypal_buttons_failed",
               errorMessage: "paypal.Buttons is not a function",
               ...getDeviceMetadata()
-            })
+            }, "grant_calculator"))
           }).catch(() => {});
         }
         return;
@@ -1084,16 +1109,42 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
       const emailVal = dataRef.current.email;
       
-      // Telemetry: paypal_container_rendered
+      // Telemetry: checkout_viewed & paypal_container_rendered
       if (emailVal) {
         fetch("/api/subscriber/track-activity", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: emailVal,
-            event: "paypal_container_rendered",
+            event: "checkout_viewed",
+            priceShown: "19.00", // Will be overwritten by checkout_started dynamic price
+            journeyId: jId,
+            funnelId: fnId,
             ...getDeviceMetadata()
           })
+        }).catch(() => {});
+
+        fetch("/api/subscriber/track-activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(decorateTelemetryPayload({
+            email: emailVal,
+            event: "paypal_container_rendered",
+            ...getDeviceMetadata()
+          }, "grant_calculator"))
+        }).catch(() => {});
+
+        fetch("/api/telemetry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(decorateTelemetryPayload({
+            eventName: "checkout_viewed",
+            sessionId: emailVal || "sess_anonymous",
+            pagePath: window.location.pathname,
+            referrer: document.referrer || "direct",
+            productId: selectedProductIdRef.current || "report",
+            revenue: "19.00"
+          }, "grant_calculator"))
         }).catch(() => {});
       }
 
@@ -1101,6 +1152,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         (window as any).paypal.Buttons({
           style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
           onClick: () => {
+            popupOpenedAtRef.current = Date.now();
             trackEvent('preview_cta_clicked');
             const currentEmail = dataRef.current.email;
             
@@ -1109,11 +1161,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               fetch("/api/subscriber/track-activity", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body: JSON.stringify(decorateTelemetryPayload({
                   email: currentEmail,
                   event: "paypal_button_clicked",
                   ...getDeviceMetadata()
-                })
+                }, "grant_calculator"))
               }).catch(() => {});
             }
 
@@ -1122,11 +1174,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               fetch("/api/subscriber/track-activity", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body: JSON.stringify(decorateTelemetryPayload({
                   email: currentEmail,
                   event: "paypal_popup_opened",
                   ...getDeviceMetadata()
-                })
+                }, "grant_calculator"))
               }).catch(() => {});
             }
           },
@@ -1139,11 +1191,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               fetch("/api/subscriber/track-activity", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body: JSON.stringify(decorateTelemetryPayload({
                   email: currentEmail,
                   event: "create_order_started",
                   ...getDeviceMetadata()
-                })
+                }, "grant_calculator"))
               }).catch(() => {});
             }
 
@@ -1395,7 +1447,53 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             }
             const desc = `${itemsList} - FSI Digital`;
 
-            setPaymentError("Payment cancelled. You can try again when ready.");
+            const duration = popupOpenedAtRef.current ? (Date.now() - popupOpenedAtRef.current) / 1000 : 0;
+            let heuristic = "Trust Issue or Undecided (Closed after 5-20s)";
+            if (duration > 0 && duration < 5) {
+              heuristic = "Price Shock (Immediate close < 5s)";
+            } else if (duration >= 20) {
+              heuristic = "Login/Auth Friction (Closed after > 20s)";
+            }
+
+            // Telemetry: payment_cancelled & popup_closed
+            const currentEmail = dataRef.current.email;
+            if (currentEmail) {
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(decorateTelemetryPayload({
+                  email: currentEmail,
+                  event: "payment_cancelled",
+                  heuristicMetadata: heuristic
+                }, "grant_calculator"))
+              }).catch(() => {});
+
+              fetch("/api/subscriber/track-activity", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(decorateTelemetryPayload({
+                  email: currentEmail,
+                  event: "popup_closed",
+                  heuristicMetadata: heuristic
+                }, "grant_calculator"))
+              }).catch(() => {});
+
+              fetch('/api/telemetry', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(decorateTelemetryPayload({
+                  eventName: 'payment_cancelled',
+                  sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
+                  pagePath: window.location.pathname,
+                  referrer: document.referrer || 'direct',
+                  productId: currentProductId || 'report',
+                  revenue: price.toString(),
+                  heuristicMetadata: heuristic
+                }, "grant_calculator"))
+              }).catch(() => {});
+            }
+
+            setPaymentError(`Checkout closed: ${heuristic.split(" (")[0]}. You can try again when ready.`);
             // GA4 event
             if (typeof window !== 'undefined' && (window as any).gtag) {
               (window as any).gtag('event', 'checkout_cancelled', { item_name: desc });

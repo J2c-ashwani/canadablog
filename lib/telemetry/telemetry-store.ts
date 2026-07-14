@@ -15,6 +15,9 @@ export interface TelemetryEvent {
   trafficQualityClassification?: string;
   timezone?: string;
   language?: string;
+  journeyId?: string;
+  funnelId?: string;
+  heuristicMetadata?: string;
 }
 
 const SHEET_TITLE = 'Funnel Events';
@@ -34,6 +37,9 @@ const TELEMETRY_HEADERS = [
   'Traffic Quality Classification',
   'Timezone',
   'Language',
+  'Journey ID',
+  'Funnel ID',
+  'Heuristic Metadata',
 ];
 
 async function ensureTelemetrySheet(
@@ -68,14 +74,14 @@ async function ensureTelemetrySheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:N1`,
+    range: `${SHEET_TITLE}!A1:Q1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== TELEMETRY_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:N1`,
+      range: `${SHEET_TITLE}!A1:Q1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [TELEMETRY_HEADERS],
@@ -98,6 +104,9 @@ export async function recordTelemetryEvent(data: {
   trafficQualityClassification?: string;
   timezone?: string;
   language?: string;
+  journeyId?: string;
+  funnelId?: string;
+  heuristicMetadata?: string;
 }): Promise<void> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -124,11 +133,14 @@ export async function recordTelemetryEvent(data: {
     data.trafficQualityClassification || '',
     data.timezone || '',
     data.language || '',
+    data.journeyId || '',
+    data.funnelId || '',
+    data.heuristicMetadata || '',
   ];
 
   await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A:N`,
+    range: `${SHEET_TITLE}!A:Q`,
     valueInputOption: 'RAW',
     requestBody: {
       values: [row],
@@ -149,7 +161,7 @@ export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:N`,
+      range: `${SHEET_TITLE}!A:Q`,
     });
 
     const rows = response.data.values || [];
@@ -173,6 +185,9 @@ export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
         trafficQualityClassification: row[11] || '',
         timezone: row[12] || '',
         language: row[13] || '',
+        journeyId: row[14] || '',
+        funnelId: row[15] || '',
+        heuristicMetadata: row[16] || '',
       });
     }
 

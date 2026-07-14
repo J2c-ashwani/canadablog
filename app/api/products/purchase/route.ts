@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
   let lockKey = '';
   try {
     const body = await request.json();
-    const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId } = body;
+    const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId, journeyId, funnelId, heuristicMetadata } = body;
 
     // ── Validate required fields ──
     if (!productId || !email || !name || !paypalOrderId || !profileData) {
@@ -253,6 +253,9 @@ export async function POST(request: NextRequest) {
         referrer: resolvedAttribution.referrer || 'direct',
         productId,
         revenue: product.priceUsd.toFixed(2),
+        journeyId,
+        funnelId,
+        heuristicMetadata,
       });
     } catch (tErr) {
       console.error('⚠️ Failed to log main purchase telemetry event:', tErr);
@@ -268,6 +271,9 @@ export async function POST(request: NextRequest) {
           referrer: resolvedAttribution.referrer || 'direct',
           productId: 'funding-toolkit',
           revenue: '29.00',
+          journeyId,
+          funnelId,
+          heuristicMetadata,
         });
       } catch (tErr) {
         console.error('⚠️ Failed to log Toolkit purchase telemetry event:', tErr);
@@ -284,6 +290,9 @@ export async function POST(request: NextRequest) {
           referrer: resolvedAttribution.referrer || 'direct',
           productId: 'funding-approval-library',
           revenue: '9.00',
+          journeyId,
+          funnelId,
+          heuristicMetadata,
         });
       } catch (tErr) {
         console.error('⚠️ Failed to log Approval Library purchase telemetry event:', tErr);
@@ -348,6 +357,8 @@ export async function POST(request: NextRequest) {
       }
       activity.paymentCompletedAt = new Date().toISOString();
       activity.purchasedProductId = productId;
+      if (journeyId) activity.journeyId = journeyId;
+      if (funnelId) activity.funnelId = funnelId;
       
       if (productId === 'strategy-audit') {
         activity.auditPurchasedAt = activity.paymentCompletedAt;

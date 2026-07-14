@@ -204,6 +204,22 @@ export async function POST(request: NextRequest) {
       if (shouldUpdateStage(subscriber.offlineStatus, 'Audit Buyer')) {
         updates.offlineStatus = 'Audit Buyer';
       }
+    } else if (
+      event === "payment_cancelled" ||
+      event === "popup_closed" ||
+      event === "browser_exited" ||
+      event === "diagnostic_started" ||
+      event === "diagnostic_completed" ||
+      event === "lead_saved" ||
+      event === "product_recommended" ||
+      event === "report_delivered" ||
+      event === "upsell_viewed" ||
+      event === "upsell_purchased" ||
+      event === "booked_strategy_session" ||
+      event === "became_client"
+    ) {
+      activity[`${event}At`] = now;
+      activity[event] = true;
     } else {
       return NextResponse.json({ error: `Unsupported event type: ${event}` }, { status: 400 })
     }

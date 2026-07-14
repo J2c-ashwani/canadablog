@@ -2,8 +2,15 @@ import { type NextRequest, NextResponse } from "next/server"
 import { captureEmailLead } from "@/lib/google-sheets"
 import { sendNewsletterWelcomeEmail } from "@/lib/emails/newsletter-marketing"
 import { getFallbackLoginToken } from "@/lib/leads/SubscriberRepository"
+import { applyRateLimit } from "@/lib/rate-limit"
 
 export async function POST(request: NextRequest) {
+  // Rate Limit: 5 requests / minute
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 5, 60 * 1000);
+    if (limitRes.isLimited) return limitRes.response;
+  }
+
   try {
     const { email, name } = await request.json()
 

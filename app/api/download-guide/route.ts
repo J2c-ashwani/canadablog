@@ -1,7 +1,14 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { appendLeadToSheet } from "@/lib/google-sheets"
+import { applyRateLimit } from "@/lib/rate-limit"
 
 export async function POST(request: NextRequest) {
+  // Rate Limit: 10 requests / minute
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 10, 60 * 1000);
+    if (limitRes.isLimited) return limitRes.response;
+  }
+
   try {
     const body = await request.json()
     const { email, name, phone, guideName, country, utmSource, utmMedium, utmCampaign, gaClientId } = body

@@ -60,12 +60,16 @@ export async function POST(request: NextRequest) {
 
 
     const isCalculator = category === "Grant Calculator" || requestType === "Grant Calculator" || requestType === "Calculator" || body.category === "Grant Calculator";
-    const isPhoneOptional = isCalculator || category === "AI Grant Finder" || body.category === "AI Grant Finder";
-    const finalName = name || (isPhoneOptional ? "Founder" : "");
-    const finalCompanyName = companyName || (isPhoneOptional ? "Not provided" : "");
+    const isConsultation = category === "Consultation Request" || requestType === "Consultation Request" || body.category === "Consultation Request";
+    const isPhoneOptional = isCalculator || category === "AI Grant Finder" || body.category === "AI Grant Finder" || isConsultation;
+    const finalName = name || ((isPhoneOptional || isConsultation) ? "Founder" : "");
+    const finalCompanyName = companyName || ((isPhoneOptional || isConsultation) ? "Not provided" : "");
+    const finalIndustry = industry || (isConsultation ? "N/A" : "");
+    const finalBusinessStage = businessStage || (isConsultation ? "N/A" : "");
+    const finalFundingAmount = fundingAmount || (isConsultation ? "N/A" : "");
 
     // Validate required fields (phone and company are optional for calculator and AI Finder leads)
-    if (!email || !finalName || !finalCompanyName || (!isPhoneOptional && !rawPhone) || !industry || !businessStage || !fundingAmount || !fundingPurpose || !businessDescription) {
+    if (!email || !finalName || !finalCompanyName || (!isPhoneOptional && !rawPhone) || !finalIndustry || !finalBusinessStage || !finalFundingAmount || !fundingPurpose || !businessDescription) {
       return NextResponse.json({ error: "Missing required qualification fields" }, { status: 400 });
     }
 
@@ -108,11 +112,11 @@ export async function POST(request: NextRequest) {
       country: country || "N/A",
       state: state || "N/A",
       city: city || "N/A",
-      industry,
-      businessStage,
+      industry: finalIndustry,
+      businessStage: finalBusinessStage,
       employees: employees || "N/A",
       annualRevenue: annualRevenue || "N/A",
-      fundingAmount,
+      fundingAmount: finalFundingAmount,
       fundingPurpose: Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : fundingPurpose,
       timeline: timeline || "N/A",
       businessDescription,

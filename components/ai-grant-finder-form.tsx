@@ -14,6 +14,7 @@ import type { GrantFinderRequest, GrantFinderResponse } from "@/lib/ai-grant-mat
 import { formatFundingRange } from "@/lib/grants-data"
 import Link from "next/link"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
+import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
 
 export function AIGrantFinderForm() {
   const [formData, setFormData] = useState<Partial<GrantFinderRequest>>({})
@@ -33,6 +34,7 @@ export function AIGrantFinderForm() {
   const [paymentError, setPaymentError] = useState<string | null>(null)
 
   const buttonsRenderedRef = useRef(false)
+  const popupOpenedAtRef = useRef<number | null>(null)
   const paypalClientId = "AeuWqg4P1NhiSmsyZt2lDqXg4K6Fz4_lV_mU9t_l1K-08lQ_v2n2vG1T_w_R5f2R2"
 
   const isEmailValid = !!(checkoutEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(checkoutEmail.trim()))
@@ -132,10 +134,25 @@ export function AIGrantFinderForm() {
       try {
         const messageInfo = `AI Grant Finder Lead\nCountry: ${formData.country}\nState: ${formData.state}\nIndustry: ${formData.industry}\nStage: ${formData.businessStage}\nAmount: ${formData.fundingAmount}\nPurpose: ${formData.fundingPurpose}\nDescription: ${formData.businessDescription}`;
 
-        await fetch("/api/contact", {
+        const jId = getOrCreateJourneyId();
+        const fnId = getOrCreateFunnelId("ai_grant_finder");
+
+        // Track diagnostic started / lead saved
+        fetch("/api/subscriber/track-activity", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
+            email: checkoutEmail,
+            event: "lead_saved",
+            journeyId: jId,
+            funnelId: fnId
+          })
+        }).catch(() => {});
+
+        await fetch("/api/contact", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(decorateTelemetryPayload({
             name: formData.email ? formData.email.split("@")[0] : "Founder",
             email: checkoutEmail,
             phone: formData.phone || "Not provided",
@@ -151,20 +168,46 @@ export function AIGrantFinderForm() {
             businessDescription: messageInfo,
             consentToPartnerContact,
             pagePath: window.location.pathname,
-          })
+          }, "ai_grant_finder"))
         })
 
         setLeadSaved(true)
 
-        // Telemetry: lead captured
+        // Telemetry: lead captured & checkout viewed
+        fetch("/api/subscriber/track-activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(decorateTelemetryPayload({
+            email: checkoutEmail,
+            event: "ai_finder_lead_captured"
+          }, "ai_grant_finder"))
+        }).catch(() => {})
+
+        // Log checkout_viewed
         fetch("/api/subscriber/track-activity", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             email: checkoutEmail,
-            event: "ai_finder_lead_captured"
+            event: "checkout_viewed",
+            priceShown: "19.00",
+            journeyId: jId,
+            funnelId: fnId
           })
-        }).catch(() => {})
+        }).catch(() => {});
+
+        fetch("/api/telemetry", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(decorateTelemetryPayload({
+            eventName: "checkout_viewed",
+            sessionId: checkoutEmail || "sess_anonymous",
+            pagePath: window.location.pathname,
+            referrer: document.referrer || "direct",
+            productId: selectedProductId || "report",
+            revenue: selectedProductId === "funding-bundle" ? "79.00" : selectedProductId === "funding-roadmap" ? "49.00" : "19.00"
+          }, "ai_grant_finder"))
+        }).catch(() => {});
 
       } catch (err) {
         console.error("Failed to save AI lead draft:", err)
@@ -173,7 +216,26 @@ export function AIGrantFinderForm() {
 
     const timer = setTimeout(saveLead, 1000)
     return () => clearTimeout(timer)
-  }, [checkoutEmail, isEmailValid, results, leadSaved])
+  }, [checkoutEmail, isEmailValid, results, leadSaved, consentToPartnerContact, selectedProductId])
+
+  // Track browser exited during checkout lifecycle
+  useEffect(() => {
+    const handleUnload = () => {
+      if (results && !isPurchased && isEmailValid) {
+        const payload = JSON.stringify({
+          email: checkoutEmail,
+          event: "browser_exited",
+          journeyId: sessionStorage.getItem('fsi_journey_id') || '',
+          funnelId: sessionStorage.getItem('fsi_funnel_id') || ''
+        });
+        if (typeof navigator !== 'undefined' && navigator.sendBeacon) {
+          navigator.sendBeacon("/api/subscriber/track-activity", payload);
+        }
+      }
+    };
+    window.addEventListener("beforeunload", handleUnload);
+    return () => window.removeEventListener("beforeunload", handleUnload);
+  }, [results, isPurchased, isEmailValid, checkoutEmail]);
 
   // Load PayPal SDK
   useEffect(() => {
@@ -206,8 +268,85 @@ export function AIGrantFinderForm() {
     if (container) container.innerHTML = ""
 
     try {
+      // Telemetry: paypal_rendered
+      fetch("/api/subscriber/track-activity", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(decorateTelemetryPayload({
+          email: checkoutEmail,
+          event: "paypal_buttons_rendered"
+        }, "ai_grant_finder"))
+      }).catch(() => {})
+
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+        onClick: () => {
+          popupOpenedAtRef.current = Date.now();
+          // Telemetry: clicked, popup opened
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email: checkoutEmail,
+              event: "paypal_button_clicked"
+            }, "ai_grant_finder"))
+          }).catch(() => {})
+
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email: checkoutEmail,
+              event: "paypal_popup_opened"
+            }, "ai_grant_finder"))
+          }).catch(() => {})
+        },
+        onCancel: () => {
+          const duration = popupOpenedAtRef.current ? (Date.now() - popupOpenedAtRef.current) / 1000 : 0;
+          let heuristic = "Trust Issue or Undecided (Closed after 5-20s)";
+          if (duration > 0 && duration < 5) {
+            heuristic = "Price Shock (Immediate close < 5s)";
+          } else if (duration >= 20) {
+            heuristic = "Login/Auth Friction (Closed after > 20s)";
+          }
+
+          // Telemetry: payment_cancelled & popup_closed with heuristics
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email: checkoutEmail,
+              event: "payment_cancelled",
+              heuristicMetadata: heuristic
+            }, "ai_grant_finder"))
+          }).catch(() => {})
+
+          fetch("/api/subscriber/track-activity", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              email: checkoutEmail,
+              event: "popup_closed",
+              heuristicMetadata: heuristic
+            }, "ai_grant_finder"))
+          }).catch(() => {})
+
+          fetch("/api/telemetry", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(decorateTelemetryPayload({
+              eventName: "payment_cancelled",
+              sessionId: checkoutEmail || "sess_anonymous",
+              pagePath: window.location.pathname,
+              referrer: document.referrer || "direct",
+              productId: selectedProductId || "report",
+              revenue: selectedProductId === "funding-bundle" ? "79.00" : selectedProductId === "funding-roadmap" ? "49.00" : "19.00",
+              heuristicMetadata: heuristic
+            }, "ai_grant_finder"))
+          }).catch(() => {});
+
+          setPaymentError(`Checkout closed: ${heuristic.split(" (")[0]}. You can try again when ready.`)
+        },
         createOrder: (_data: any, actions: any) => {
           setPaymentError(null)
           
@@ -218,11 +357,11 @@ export function AIGrantFinderForm() {
           fetch("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
+            body: JSON.stringify(decorateTelemetryPayload({
               email: checkoutEmail,
               event: "ai_finder_checkout_started",
               priceShown: price.toString()
-            })
+            }, "ai_grant_finder"))
           }).catch(() => {})
 
           return actions.order.create({
@@ -240,7 +379,7 @@ export function AIGrantFinderForm() {
             const res = await fetch('/api/products/purchase', {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
+              body: JSON.stringify(decorateTelemetryPayload({
                 productId: selectedProductId,
                 email: checkoutEmail,
                 name: formData.email ? formData.email.split("@")[0] : "Founder",
@@ -254,8 +393,9 @@ export function AIGrantFinderForm() {
                 attribution: {
                   landingPage: window.location.pathname,
                   referrer: document.referrer || 'direct',
-                }
-              })
+                },
+                sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
+              }, "ai_grant_finder"))
             })
 
             if (res.ok) {
@@ -265,11 +405,11 @@ export function AIGrantFinderForm() {
               fetch("/api/subscriber/track-activity", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
+                body: JSON.stringify(decorateTelemetryPayload({
                   email: checkoutEmail,
                   event: "ai_finder_purchase_success",
                   productId: selectedProductId
-                })
+                }, "ai_grant_finder"))
               }).catch(() => {})
             } else {
               const errData = await res.json()

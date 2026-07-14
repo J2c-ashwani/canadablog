@@ -21,6 +21,9 @@ export async function POST(request: NextRequest) {
       trafficQualityClassification,
       timezone,
       language,
+      journeyId,
+      funnelId,
+      heuristicMetadata,
     } = body;
 
     if (!eventName || !sessionId) {
@@ -44,6 +47,9 @@ export async function POST(request: NextRequest) {
       trafficQualityClassification,
       timezone,
       language,
+      journeyId,
+      funnelId,
+      heuristicMetadata: heuristicMetadata ? String(heuristicMetadata) : undefined,
     });
 
     return NextResponse.json({ success: true });

@@ -1,4 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server";
+import { applyRateLimit } from "@/lib/rate-limit";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -74,6 +75,12 @@ function buildHtml(name: string, score: number, tier: string, range: string, cat
 }
 
 export async function POST(request: NextRequest) {
+  // Rate Limit: 5 requests / minute
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 5, 60 * 1000);
+    if (limitRes.isLimited) return limitRes.response;
+  }
+
   try {
     const { email, name, score, tier, range, categories } = await request.json();
 

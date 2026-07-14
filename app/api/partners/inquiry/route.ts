@@ -2,8 +2,15 @@ import { type NextRequest, NextResponse } from "next/server"
 import { savePartnerInquiry } from "@/lib/partners/db"
 import { validateEmail } from "@/lib/email-validator"
 import { sendPartnerReceiptEmail } from "@/lib/emails/partner-inquiry"
+import { applyRateLimit } from "@/lib/rate-limit"
 
 export async function POST(request: NextRequest) {
+  // Rate Limit: 5 requests / 5 minutes
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 5, 5 * 60 * 1000);
+    if (limitRes.isLimited) return limitRes.response;
+  }
+
   try {
     const body = await request.json()
     const {
