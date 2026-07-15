@@ -153,6 +153,7 @@ export async function GET(request: NextRequest) {
           industry: profileData.industry || 'other',
           businessStage: profileData.revenue || 'pre-revenue',
           fundingPurpose: profileData.goal || 'expansion',
+          phone: profileData.phone || undefined,
         };
 
         if (attribution?.utmSource) updates.utmSource = attribution.utmSource;
@@ -213,6 +214,7 @@ export async function GET(request: NextRequest) {
           await SubscriberRepository.saveSubscriber({
             email,
             name,
+            phone: profileData.phone || '',
             country: 'Canada',
             region: profileData.province || 'ON',
             industry: profileData.industry || 'other',

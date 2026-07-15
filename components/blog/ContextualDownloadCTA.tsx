@@ -422,7 +422,7 @@ export function ContextualDownloadCTA({ postSlug, postCategory, postKeywords }: 
                 </div>
 
                 <div className="space-y-1.5">
-                  <Label htmlFor="phone" className="text-xs font-bold text-slate-300">Phone Number (For verification)</Label>
+                  <Label htmlFor="phone" className="text-xs font-bold text-slate-300">Phone Number (Optional)</Label>
                   <Input 
                     id="phone"
                     type="tel" 
@@ -431,7 +431,6 @@ export function ContextualDownloadCTA({ postSlug, postCategory, postKeywords }: 
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     onFocus={handleInteraction}
-                    required
                   />
                 </div>
 

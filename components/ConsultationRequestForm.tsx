@@ -14,6 +14,7 @@ export function ConsultationRequestForm({ consultationSlug, cleanTitle }: Consul
     firstName: '',
     lastName: '',
     email: '',
+    phone: '',
     company: '',
     details: '',
   });
@@ -42,6 +43,7 @@ Requested session: ${cleanTitle}`;
         body: JSON.stringify({
           name,
           email: formData.email,
+          phone: formData.phone,
           category: 'Consultation Request',
           message,
           companyName: formData.company,
@@ -60,6 +62,7 @@ Requested session: ${cleanTitle}`;
         firstName: '',
         lastName: '',
         email: '',
+        phone: '',
         company: '',
         details: '',
       });
@@ -136,6 +139,19 @@ Requested session: ${cleanTitle}`;
           id="company"
           value={formData.company}
           onChange={(event) => updateField('company', event.target.value)}
+          className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 transition-all focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-500"
+        />
+      </div>
+
+      <div>
+        <label htmlFor="phone" className="mb-1 block text-sm font-medium text-gray-700">Phone Number *</label>
+        <input
+          type="tel"
+          id="phone"
+          required
+          value={formData.phone}
+          onChange={(event) => updateField('phone', event.target.value)}
+          placeholder="+1 (555) 000-0000"
           className="w-full rounded-lg border border-gray-300 bg-gray-50 px-4 py-3 transition-all focus:border-blue-500 focus:bg-white focus:ring-2 focus:ring-blue-500"
         />
       </div>

@@ -345,6 +345,7 @@ export async function POST(request: NextRequest) {
         industry: profileData.industry || 'other',
         businessStage: profileData.revenue || 'pre-revenue',
         fundingPurpose: profileData.goal || 'expansion',
+        phone: profileData.phone || undefined,
       };
 
       // Set UTM parameters on subscriber updates
@@ -438,6 +439,7 @@ export async function POST(request: NextRequest) {
         await SubscriberRepository.saveSubscriber({
           email,
           name,
+          phone: profileData.phone || '',
           country: 'Canada', // Default fallback country
           region: profileData.province || 'ON',
           industry: profileData.industry || 'other',

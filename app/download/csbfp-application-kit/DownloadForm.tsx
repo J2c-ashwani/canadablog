@@ -95,11 +95,11 @@ export function DownloadForm() {
             />
           </div>
                       <div>
-                        <Label htmlFor="phone">Phone Number *</Label>
+                        <Label htmlFor="phone">Phone Number (Optional)</Label>
                         <Input 
                           id="phone" 
                           type="tel" 
-                          required 
+                           
                           value={formData.phone}
                           onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                           placeholder="+1 (555) 000-0000"

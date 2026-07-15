@@ -3,6 +3,7 @@ import { sendEmail } from "./mailer";
 export async function sendEnterpriseSalesAlert({
   email,
   name,
+  phone,
   companyName,
   revenue,
   goal,
@@ -23,6 +24,7 @@ export async function sendEnterpriseSalesAlert({
 }: {
   email: string;
   name: string;
+  phone?: string;
   companyName: string;
   revenue: string;
   goal: string;
@@ -63,6 +65,10 @@ export async function sendEnterpriseSalesAlert({
           <tr>
             <td style="padding: 4px 0; font-weight: bold;">Email:</td>
             <td><a href="mailto:${email}">${email}</a></td>
+          </tr>
+          <tr>
+            <td style="padding: 4px 0; font-weight: bold;">Phone Number:</td>
+            <td>${phone || "Not provided"}</td>
           </tr>
           <tr>
             <td style="padding: 4px 0; font-weight: bold;">Annual Revenue:</td>
@@ -135,7 +141,7 @@ export async function sendEnterpriseSalesAlert({
     </div>
   `;
 
-  const text = `🚨 PRIORITY ENTERPRISE LEAD CAPTURED\n\nCompany: ${companyName}\nName: ${name}\nEmail: ${email}\nRevenue: ${revenue}\nGoal: ${goal}\nLocation: ${state}\nIndustry: ${industry}\nScore: ${score} (Tier: ${tier})\n\nAttribution Parameters:\n- Funding Need: ${fundingNeed}\n- Est. Opportunity Value: ${estimatedOpportunityValue}\n- CRA Risk: ${craRiskRating}\n- Source Page: ${pagePath}\n- Lead Source: ${leadSource}\n- Referral: ${referralSource}\n- UTMs: ${utmSource} / ${utmMedium} / ${utmCampaign}\n\nDescription:\n"${businessDescription}"`;
+  const text = `🚨 PRIORITY ENTERPRISE LEAD CAPTURED\n\nCompany: ${companyName}\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nRevenue: ${revenue}\nGoal: ${goal}\nLocation: ${state}\nIndustry: ${industry}\nScore: ${score} (Tier: ${tier})\n\nAttribution Parameters:\n- Funding Need: ${fundingNeed}\n- Est. Opportunity Value: ${estimatedOpportunityValue}\n- CRA Risk: ${craRiskRating}\n- Source Page: ${pagePath}\n- Lead Source: ${leadSource}\n- Referral: ${referralSource}\n- UTMs: ${utmSource} / ${utmMedium} / ${utmCampaign}\n\nDescription:\n"${businessDescription}"`;
 
   return sendEmail({
     to: adminEmail,

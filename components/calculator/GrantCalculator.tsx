@@ -805,6 +805,15 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             return;
         }
 
+        const phone = data.phone?.trim();
+        if (!phone || phone.length < 7) {
+            const err = document.getElementById('gate-phone-error');
+            if (err) err.classList.remove('hidden');
+            const inputEl = document.getElementById('calc-phone-gate');
+            if (inputEl) inputEl.focus();
+            return;
+        }
+
         setIsAnalyzing(true);
         await saveCalculatorLead(email, data.name || "Founder", false);
 
@@ -2559,6 +2568,24 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                                 onChange={(e) => updateData("company", e.target.value)}
                                             />
                                         </div>
+                                    </div>
+
+                                    <div className="space-y-1.5 text-left">
+                                        <Label htmlFor="calc-phone-gate" className="text-xs font-extrabold text-slate-600">Phone Number *</Label>
+                                        <Input
+                                            id="calc-phone-gate"
+                                            type="tel"
+                                            placeholder="+1 (555) 000-0000"
+                                            className="h-12 bg-white text-base"
+                                            value={data.phone}
+                                            onChange={(e) => {
+                                                updateData("phone", e.target.value);
+                                                const err = document.getElementById('gate-phone-error');
+                                                if (err) err.classList.add('hidden');
+                                            }}
+                                            required
+                                        />
+                                        <p className="text-xs text-red-500 mt-1 hidden" id="gate-phone-error">Please enter a valid phone number.</p>
                                     </div>
                                 </div>
 

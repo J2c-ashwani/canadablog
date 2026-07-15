@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { savePartnerInquiry } from "@/lib/partners/db"
 import { validateEmail } from "@/lib/email-validator"
+import { validatePhone } from "@/lib/phone-validator"
 import { sendPartnerReceiptEmail } from "@/lib/emails/partner-inquiry"
 import { applyRateLimit } from "@/lib/rate-limit"
 
@@ -41,9 +42,9 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. Required fields validation
-    if (!name || !email || !companyName || !website) {
+    if (!name || !email || !companyName || !website || !phone) {
       return NextResponse.json(
-        { error: "Name, email, company name, and website are required." },
+        { error: "Name, email, phone number, company name, and website are required." },
         { status: 400 }
       )
     }
@@ -52,6 +53,12 @@ export async function POST(request: NextRequest) {
     const emailCheck = validateEmail(email)
     if (!emailCheck.isValid) {
       return NextResponse.json({ error: emailCheck.error }, { status: 400 })
+    }
+
+    // 3b. Phone validator check
+    const phoneCheck = validatePhone(phone, geography)
+    if (!phoneCheck.isValid) {
+      return NextResponse.json({ error: "A valid phone number is required." }, { status: 400 })
     }
 
     // 4. Extract client context metadata

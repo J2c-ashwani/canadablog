@@ -57,14 +57,23 @@ export async function POST(request: NextRequest) {
       referralSource,
       readinessScore,
       readinessBand,
+      source,
     } = body;
 
 
     const isCalculator = category === "Grant Calculator" || requestType === "Grant Calculator" || requestType === "Calculator" || body.category === "Grant Calculator";
     const isConsultation = category === "Consultation Request" || requestType === "Consultation Request" || body.category === "Consultation Request";
-    const isPhoneOptional = isCalculator || category === "AI Grant Finder" || body.category === "AI Grant Finder" || isConsultation;
-    const finalName = name || ((isPhoneOptional || isConsultation) ? "Founder" : "");
-    const finalCompanyName = companyName || ((isPhoneOptional || isConsultation) ? "Not provided" : "");
+    const isFinder = category === "AI Grant Finder" || body.category === "AI Grant Finder";
+    const isWidget = source === "TRL Selector" || 
+                     source === "Stacking Checker" || 
+                     source === "Checklist Screener" || 
+                     source === "Funding Stacking Decision Engine" ||
+                     category === "Funding Estimator Tool" || 
+                     body.category === "Funding Estimator Tool";
+    
+    const isPhoneOptional = isWidget;
+    const finalName = name || ((isCalculator || isConsultation || isFinder || isPhoneOptional) ? "Founder" : "");
+    const finalCompanyName = companyName || ((isCalculator || isConsultation || isFinder || isPhoneOptional) ? "Not provided" : "");
     const finalIndustry = industry || (isConsultation ? "N/A" : "");
     const finalBusinessStage = businessStage || (isConsultation ? "N/A" : "");
     const finalFundingAmount = fundingAmount || (isConsultation ? "N/A" : "");
@@ -176,6 +185,7 @@ export async function POST(request: NextRequest) {
       sendEnterpriseSalesAlert({
         email,
         name: finalName,
+        phone: leadData.phone,
         companyName: finalCompanyName,
         revenue: annualRevenue || "N/A",
         goal: Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : (fundingPurpose || "N/A"),
