@@ -2654,7 +2654,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 <span className="text-[10px] text-slate-400 font-semibold">{data.readinessScore || 85}/100 Internal Assessment</span>
                             </div>
                             <p className="text-xs sm:text-sm text-slate-600 max-w-md mx-auto pt-2 border-t border-slate-150 font-medium leading-relaxed">
-                                This assessment has been prepared using your business profile, funding objectives, and current government funding programs. Unlock your report to access the complete strategy.
+                                Your personalized funding strategy has already been prepared. Unlock your report to see exactly how this opportunity was calculated.
                             </p>
                         </div>
 
@@ -2704,7 +2704,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     </div>
                                     <div className="flex items-center gap-2">
                                         <span className="text-emerald-600 font-bold text-sm">✓</span>
-                                        <span>Ready to unlock instantly</span>
+                                        <span>Built specifically for your business profile</span>
                                     </div>
                                 </div>
 
