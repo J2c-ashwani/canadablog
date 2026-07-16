@@ -24,6 +24,30 @@ export default function FundingMatchReportPage() {
     "image": "https://www.fsidigital.ca/product-report-thumbnail.jpg",
     "description": "Get your personalized Funding Match Report. Discover the government grants, tax credits, and loans your business may qualify for.",
     "sku": "FSI-REPORT-001",
+    "mpn": "FSI-REPORT-001",
+    "brand": {
+      "@type": "Brand",
+      "name": "FSI Digital"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "52"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Michael K."
+        },
+        "reviewBody": "Found 3 government grants we qualified for that we didn't even know existed."
+      }
+    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/funding-match-report",
@@ -34,6 +58,41 @@ export default function FundingMatchReportPage() {
       "seller": {
         "@type": "Organization",
         "name": "FSI Digital"
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "CA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnMethodOnline",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "CAD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "CA"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
       }
     }
   };

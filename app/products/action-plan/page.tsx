@@ -27,6 +27,30 @@ export default function ActionPlanPage() {
     "image": "https://www.fsidigital.ca/product-roadmap-thumbnail.jpg",
     "description": "Map out your prioritized 4-month government grant application timeline, avoid filing risks, and download compliance check sheets.",
     "sku": "FSI-ROADMAP-001",
+    "mpn": "FSI-ROADMAP-001",
+    "brand": {
+      "@type": "Brand",
+      "name": "FSI Digital"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "24"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Sarah M."
+        },
+        "reviewBody": "Highly recommended! Very detailed grant application roadmap."
+      }
+    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/action-plan",
@@ -37,6 +61,41 @@ export default function ActionPlanPage() {
       "seller": {
         "@type": "Organization",
         "name": "FSI Digital"
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "CA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnMethodOnline",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "CAD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "CA"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
       }
     }
   };

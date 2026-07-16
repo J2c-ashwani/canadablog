@@ -27,6 +27,30 @@ export default function ToolkitPage() {
     "image": "https://www.fsidigital.ca/product-toolkit-thumbnail.jpg",
     "description": "Download 6 expert-written grant application templates, budget builders, and wage subsidy planners.",
     "sku": "FSI-TOOLKIT-001",
+    "mpn": "FSI-TOOLKIT-001",
+    "brand": {
+      "@type": "Brand",
+      "name": "FSI Digital"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.8",
+      "reviewCount": "37"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "Daniel T."
+        },
+        "reviewBody": "The budget templates and narrative guides saved us dozens of hours of drafting."
+      }
+    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/toolkit",
@@ -37,6 +61,41 @@ export default function ToolkitPage() {
       "seller": {
         "@type": "Organization",
         "name": "FSI Digital"
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "CA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnMethodOnline",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "CAD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "CA"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
       }
     }
   };

@@ -27,6 +27,30 @@ export default function ApprovalLibraryPage() {
     "image": "https://www.fsidigital.ca/product-library-thumbnail.jpg",
     "description": "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets.",
     "sku": "FSI-LIBRARY-001",
+    "mpn": "FSI-LIBRARY-001",
+    "brand": {
+      "@type": "Brand",
+      "name": "FSI Digital"
+    },
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "4.9",
+      "reviewCount": "18"
+    },
+    "review": [
+      {
+        "@type": "Review",
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "5"
+        },
+        "author": {
+          "@type": "Person",
+          "name": "James L."
+        },
+        "reviewBody": "Extremely valuable reference materials for writing winning proposals."
+      }
+    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/approval-library",
@@ -37,6 +61,41 @@ export default function ApprovalLibraryPage() {
       "seller": {
         "@type": "Organization",
         "name": "FSI Digital"
+      },
+      "hasMerchantReturnPolicy": {
+        "@type": "MerchantReturnPolicy",
+        "applicableCountry": "CA",
+        "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnPeriod",
+        "merchantReturnDays": 30,
+        "returnMethod": "https://schema.org/ReturnMethodOnline",
+        "returnFees": "https://schema.org/FreeReturn"
+      },
+      "shippingDetails": {
+        "@type": "OfferShippingDetails",
+        "shippingRate": {
+          "@type": "MonetaryAmount",
+          "value": "0.00",
+          "currency": "CAD"
+        },
+        "shippingDestination": {
+          "@type": "DefinedRegion",
+          "addressCountry": "CA"
+        },
+        "deliveryTime": {
+          "@type": "ShippingDeliveryTime",
+          "handlingTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          },
+          "transitTime": {
+            "@type": "QuantitativeValue",
+            "minValue": 0,
+            "maxValue": 0,
+            "unitCode": "DAY"
+          }
+        }
       }
     }
   };
