@@ -9,6 +9,12 @@ interface Props {
   currentIndustrySlug: string;
 }
 
+const PRIMARY_AUTHORITY_CITIES = new Set([
+  'toronto', 'vancouver', 'calgary', 'edmonton', 'montreal', 'ottawa', 'mississauga', 'hamilton',
+  'new-york-city', 'los-angeles', 'chicago', 'houston', 'phoenix', 'philadelphia', 'san-antonio',
+  'san-diego', 'dallas', 'austin', 'san-jose', 'seattle', 'boston', 'miami', 'denver', 'atlanta'
+]);
+
 export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug, currentIndustrySlug }: Props) {
   // Get all published pages
   const allPages = getAllPseoPages().filter(p => p.isPublished);
@@ -41,13 +47,18 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
     return (tierWeight[a.tier] || 3) - (tierWeight[b.tier] || 3);
   });
 
+  // Prioritize high-authority hubs first to distribute link equity downwards rather than randomly sideways
   const sortedIndustryPages = [...sameIndustryPages].sort((a, b) => {
+    const aIsPrimary = PRIMARY_AUTHORITY_CITIES.has(a.citySlug) ? 0 : 1;
+    const bIsPrimary = PRIMARY_AUTHORITY_CITIES.has(b.citySlug) ? 0 : 1;
+    if (aIsPrimary !== bIsPrimary) return aIsPrimary - bIsPrimary;
     return (tierWeight[a.tier] || 3) - (tierWeight[b.tier] || 3);
   });
 
   const limit = 8;
   const displayCityPages = sortedCityPages.slice(0, limit);
   const displayIndustryPages = sortedIndustryPages.slice(0, limit);
+
 
   return (
     <div className="bg-slate-50 border-t border-slate-200 py-12 px-4">

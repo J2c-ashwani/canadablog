@@ -12,6 +12,7 @@ import {
   getPseoProvinceSummaries,
   getPseoProvinceSummary,
 } from '@/lib/pseo-data';
+import { getStateDetailBySlugOrAbbreviation } from '@/lib/data/stateDetails';
 
 export const revalidate = 86400;
 
@@ -72,6 +73,10 @@ export default async function CityGrantHubPage({ params }: CityPageProps) {
     .filter((item) => item.citySlug !== resolvedParams.city)
     .slice(0, 12);
 
+  // Fetch unique provincial programs for authority
+  const stateData = getStateDetailBySlugOrAbbreviation(resolvedParams.province);
+  const topPrograms = stateData?.topPrograms?.slice(0, 3) || [];
+
   return (
     <div className="min-h-screen bg-white">
       <Header />
@@ -92,9 +97,14 @@ export default async function CityGrantHubPage({ params }: CityPageProps) {
                 <span className="font-medium text-gray-900">{city.cityName}</span>
               </nav>
 
-              <Badge className="mb-5 bg-blue-100 text-blue-800 hover:bg-blue-100">
-                {city.pageCount} industry grant pages
-              </Badge>
+              <div className="flex flex-wrap items-center gap-3 mb-5">
+                <Badge className="bg-blue-100 text-blue-800 hover:bg-blue-100">
+                  {city.pageCount} industry grant pages
+                </Badge>
+                <span className="text-[10px] text-gray-500 font-bold bg-gray-150 px-2.5 py-1 rounded border border-gray-250 uppercase tracking-wider">
+                  Last Reviewed: July 2026
+                </span>
+              </div>
               <h1 className="max-w-4xl text-4xl font-bold tracking-normal text-gray-950 md:text-5xl">
                 {city.cityName} Business Grants by Industry
               </h1>
@@ -127,6 +137,48 @@ export default async function CityGrantHubPage({ params }: CityPageProps) {
             </div>
           </div>
         </section>
+
+        {/* Dynamic Authority Programs Section */}
+        {topPrograms.length > 0 && (
+          <section className="py-12 bg-white border-b border-gray-100">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-5xl">
+                <h2 className="text-2xl font-bold text-gray-950 mb-3">Provincial Programs Available in {city.cityName}</h2>
+                <p className="text-sm text-gray-600 mb-6 leading-relaxed">
+                  These state-level and provincial grant programs are active and open to qualified businesses operating in the {city.cityName} area:
+                </p>
+                <div className="grid gap-6 md:grid-cols-3">
+                  {topPrograms.map((prog, idx) => (
+                    <div key={idx} className="p-5 border border-gray-200 rounded-xl bg-white shadow-xs flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between gap-2 mb-2">
+                          <h3 className="font-bold text-gray-950 text-sm">{prog.name}</h3>
+                        </div>
+                        <p className="text-[10px] text-gray-500 mb-2">Agency: {prog.agency}</p>
+                        <p className="text-xs text-gray-700 leading-relaxed mb-4">{prog.description}</p>
+                      </div>
+                      <div className="flex items-center justify-between mt-2 pt-3 border-t border-gray-100">
+                        <span className="text-[10px] font-extrabold text-green-700 bg-green-50 px-2 py-0.5 rounded border border-green-200">
+                          {prog.fundingAmount}
+                        </span>
+                        {prog.website && (prog.website.includes('gov') || prog.website.includes('http')) && (
+                          <a 
+                            href={prog.website} 
+                            target="_blank" 
+                            rel="noopener noreferrer" 
+                            className="inline-flex items-center text-[10px] font-bold text-green-800 hover:underline"
+                          >
+                            Apply Portal <ArrowRight className="w-2.5 h-2.5 ml-0.5" />
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="py-14">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
