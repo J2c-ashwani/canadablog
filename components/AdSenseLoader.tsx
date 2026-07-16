@@ -17,6 +17,7 @@ import { useEffect, useState } from 'react'
 // page-level CSS overrides — block at the script loader level.
 // ──────────────────────────────────────────────────────────────────────────────
 const EXCLUDED_ROUTES: string[] = [
+  '/',                  // Homepage (avoid layout shifts & Auto Ad violations)
   // ── Lead Capture Pages ────────────────────────────────────────────────────
   '/contact',           // Contact form
   '/consultation',      // Book a consultation
