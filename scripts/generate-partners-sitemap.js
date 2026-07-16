@@ -22,6 +22,20 @@ const PARTNER_ROUTES = [
   '/partners/clean-energy-grant-leads',
   '/partners/women-owned-business-leads',
   '/partners/nonprofit-grant-leads',
+  '/partners/invoice-financing-leads',
+  '/partners/purchase-order-financing-leads',
+  '/partners/asset-based-lending-leads',
+  '/partners/sba-loan-leads',
+  '/partners/agriculture-funding-leads',
+  '/partners/franchise-financing-leads',
+  '/partners/accounts-receivable-factoring-leads',
+  '/partners/bridge-loan-leads',
+  '/partners/rd-tax-credit-leads',
+  '/partners/export-funding-leads',
+  '/partners/venture-debt-leads',
+  '/partners/business-line-of-credit-leads',
+  '/partners/unsecured-business-loan-leads',
+  '/partners/minority-owned-business-leads',
 ]
 
 function escapeXml(value) {
