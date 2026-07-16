@@ -920,7 +920,7 @@ export default function CybersecurityGrantsPage() {
                   <h3 className="font-semibold text-gray-900 mb-2">AI & Machine Learning Grants</h3>
                   <p className="text-sm text-gray-600">NSF and DOD funding for AI security applications</p>
                 </Link>
-                <Link href="/guides/sbir-sttr-complete-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
+                <Link href="/guides/sbir-research-grants-guide" className="block p-6 bg-white rounded-lg shadow hover:shadow-md transition border-l-4 border-green-500">
                   <h3 className="font-semibold text-gray-900 mb-2">SBIR/STTR Complete Guide</h3>
                   <p className="text-sm text-gray-600">Everything about federal SBIR programs for startups</p>
                 </Link>

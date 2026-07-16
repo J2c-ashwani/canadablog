@@ -285,8 +285,8 @@ export default function MinorityGrantsPage() {
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Programs</span>
                   <div className="flex flex-wrap gap-2.5">
-                    <Link href="/programs/wes-micro-loan" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">WES Micro-loans</Link>
-                    <Link href="/programs/black-entrepreneur-loan" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Black Entrepreneur Loan Fund</Link>
+                    <Link href="/topics/women-entrepreneur-grants-canada" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">WES Funding Guide</Link>
+                    <Link href="/topics/minority-business-grants-canada" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Minority Funding Guide</Link>
                   </div>
                 </div>
                 <div>

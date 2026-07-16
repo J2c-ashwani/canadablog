@@ -184,7 +184,7 @@ export default function HealthcareGrantsPage() {
                                 </CardHeader>
                                 <CardContent>
                                     <div className="space-y-2 text-sm">
-                                        <a href="/canada/life-sciences-funding-guide" className="block text-primary hover:underline">
+                                        <a href="/guides/canada-life-sciences-funding-guide" className="block text-primary hover:underline">
                                             Life Sciences Guide
                                         </a>
                                         <a href="/canada/innovation-grants" className="block text-primary hover:underline">

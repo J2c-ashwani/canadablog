@@ -775,7 +775,7 @@ export default function WomenEntrepreneurshipStrategyGovernmentGrantsBlogPage() 
                     Get our comprehensive WES federal application guide with women entrepreneurship templates and ecosystem strategies.
                   </p>
                   <Button size="lg" className="w-full bg-white text-pink-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/apply-women-entrepreneurship-strateg">
+                    <Link href="/guides/apply-women-entrepreneurship-strategy">
                       <Download className="w-4 h-4 mr-2" />
                       Get WES Federal Guide
                     </Link>

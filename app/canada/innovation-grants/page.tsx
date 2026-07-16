@@ -959,7 +959,7 @@ export default function CanadaInnovationGrantsPage() {
                     Get our comprehensive innovation funding guide with program-specific strategies and templates.
                   </p>
                   <Button size="lg" className="w-full bg-white text-blue-700 hover:bg-gray-100" asChild>
-                    <Link href="/guides/canada-innovation-rd-funding-guide">
+                    <Link href="/guides/apply-strategic-innovation-fund">
                       Get Innovation Guide
                     </Link>
                   </Button>

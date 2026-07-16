@@ -334,8 +334,8 @@ export default function CsbfpLoansPage() {
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Programs</span>
                   <div className="flex flex-wrap gap-2.5">
-                    <Link href="/programs/csbfp-loan" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">CSBFP Loan Details</Link>
-                    <Link href="/programs/bdc-financing" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">BDC Small Business Loan</Link>
+                    <Link href="/topics/csbfp-loans-canada" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">CSBFP Loan Details</Link>
+                    <Link href="/topics/bdc-small-business-loans" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">BDC Small Business Loan</Link>
                   </div>
                 </div>
                 <div>

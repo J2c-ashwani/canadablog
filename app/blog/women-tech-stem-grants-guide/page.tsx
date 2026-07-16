@@ -649,7 +649,7 @@ export default function WomenTechSTEMGrantsGuide() {
                               </a>
                             </li>
                             <li>
-                              <a href="/grants/startup-grants" className="text-blue-600 hover:underline flex items-start">
+                              <a href="/grants" className="text-blue-600 hover:underline flex items-start">
                                 <span className="mr-2">💡</span> Startup Grants Directory
                               </a>
                             </li>

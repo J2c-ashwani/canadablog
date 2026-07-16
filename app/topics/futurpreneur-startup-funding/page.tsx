@@ -323,8 +323,8 @@ export default function FuturpreneurFundingPage() {
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Programs</span>
                   <div className="flex flex-wrap gap-2.5">
-                    <Link href="/programs/futurpreneur" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Futurpreneur Program</Link>
-                    <Link href="/programs/bdc-financing" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">BDC Startup Loan</Link>
+                    <Link href="/topics/startup-grants-canada" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Canada Startup Grants</Link>
+                    <Link href="/topics/bdc-small-business-loans" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">BDC Startup Loan</Link>
                   </div>
                 </div>
                 <div>

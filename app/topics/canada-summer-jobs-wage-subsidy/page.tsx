@@ -323,8 +323,8 @@ export default function CanadaSummerJobsPage() {
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Programs</span>
                   <div className="flex flex-wrap gap-2.5">
-                    <Link href="/programs/canada-summer-jobs" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">CSJ Program Details</Link>
-                    <Link href="/programs/mitacs-wage-subsidy" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Mitacs Co-Funding</Link>
+                    <Link href="/topics/hiring-wage-subsidies-canada" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Hiring Subsidies Guide</Link>
+                    <Link href="/programs/mitacs-accelerate" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">Mitacs Co-Funding</Link>
                   </div>
                 </div>
                 <div>

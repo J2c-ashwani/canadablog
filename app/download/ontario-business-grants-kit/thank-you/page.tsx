@@ -89,7 +89,7 @@ export default function OntarioBusinessGrantsThankYouPage() {
                     </Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href="/guides/ontario-business-grants-application-guide">
+                    <Link href="/guides/apply-ontario-business-grants">
                       View Ontario Application Guide
                     </Link>
                   </Button>

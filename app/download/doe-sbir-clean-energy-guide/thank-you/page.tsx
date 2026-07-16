@@ -89,7 +89,7 @@ export default function DOESBIRDownloadThankYouPage() {
                     </Link>
                   </Button>
                   <Button variant="outline" asChild>
-                    <Link href="/guides/doe-sbir-clean-energy-guide">
+                    <Link href="/guides/apply-doe-clean-energy-grants">
                       View DOE SBIR Application Guide
                     </Link>
                   </Button>

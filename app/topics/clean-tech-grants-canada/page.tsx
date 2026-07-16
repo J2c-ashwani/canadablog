@@ -334,7 +334,7 @@ export default function CleanTechGrantsPage() {
                 <div>
                   <span className="text-xs font-bold text-slate-400 uppercase tracking-wider block mb-3">Related Programs</span>
                   <div className="flex flex-wrap gap-2.5">
-                    <Link href="/programs/act-agri-clean-tech" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">ACT AgTech Grant</Link>
+                    <Link href="/programs/sustainable-cap" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">ACT AgTech Grant</Link>
                     <Link href="/programs/sred-tax-credit" className="text-xs font-semibold bg-slate-100 hover:bg-slate-200 px-3 py-1.5 rounded-full text-slate-800">SR&ED tax credit</Link>
                   </div>
                 </div>

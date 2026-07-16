@@ -546,7 +546,7 @@ export default function AgricultureAgriFoodGovernmentGrantsBlogPage() {
               <h2 className="text-4xl font-bold mb-6">Access AAFC Agricultural Funding</h2>
               <p className="text-xl text-green-100 mb-8">Get expert help navigating the Sustainable Canadian Agricultural Partnership programs. We have helped agricultural businesses and agri-tech companies secure millions in federal funding.</p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/guides/apply-aafc-grants"><Download className="w-4 h-4 mr-2" /> Get AAFC Guide</Link></Button>
+                <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild><Link href="/guides/apply-agriculture-agri-food-canada"><Download className="w-4 h-4 mr-2" /> Get AAFC Guide</Link></Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild><Link href="/contact?program=agriculture">Get Expert Help</Link></Button>
               </div>
             </div>
