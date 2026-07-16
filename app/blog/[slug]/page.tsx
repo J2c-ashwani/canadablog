@@ -216,6 +216,34 @@ const RELATED_PATHS_CONFIG: Record<string, {
     nextStepLink: "/blog/nsf-sbir-grants-technology-startups",
     nextStepDescription: "Compare agtech funding streams against general deep-tech federal R&D grants.",
     stepType: "Comparison"
+  },
+  'california-business-grants-2026': {
+    currentPathTitle: "California SME Guide",
+    nextStepTitle: "California State Funding Hub",
+    nextStepLink: "/usa/california",
+    nextStepDescription: "Deep dive into state-level matching grants, local tax incentives, and seed capital programs.",
+    stepType: "Province Guide"
+  },
+  'texas-business-grants-2026': {
+    currentPathTitle: "Texas SME Guide",
+    nextStepTitle: "Texas State Funding Hub",
+    nextStepLink: "/usa/texas",
+    nextStepDescription: "Explore local Texas enterprise funds, R&D credits, and municipal growth initiatives.",
+    stepType: "Province Guide"
+  },
+  'new-york-business-grants-2026': {
+    currentPathTitle: "New York SME Guide",
+    nextStepTitle: "New York State Funding Hub",
+    nextStepLink: "/usa/new-york",
+    nextStepDescription: "Access NYSERDA, ESD grants, and regional tech development initiatives.",
+    stepType: "Province Guide"
+  },
+  'florida-business-grants-2026': {
+    currentPathTitle: "Florida SME Guide",
+    nextStepTitle: "Florida State Funding Hub",
+    nextStepLink: "/usa/florida",
+    nextStepDescription: "Evaluate Florida Enterprise programs and export support matching grants.",
+    stepType: "Province Guide"
   }
 };
 

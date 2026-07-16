@@ -11,7 +11,7 @@ import { AdminLogoutButton } from '../leads/AdminLogoutButton';
 import { seoExperiments } from '@/lib/data/seoExperiments';
 import {
   Lock, KeyRound, DollarSign, Users, Calculator, ArrowRight,
-  TrendingUp, BarChart3, Clock, Layers, Award, Tag, Sparkles,
+  TrendingUp, TrendingDown, BarChart3, Clock, Layers, Award, Tag, Sparkles,
   Globe, Building2, Smartphone, Compass, Activity, MapPin
 } from 'lucide-react';
 
@@ -83,7 +83,7 @@ export default async function RevenueDashboardPage({
   searchParams: Promise<{ key?: string; tab?: string }>;
 }) {
   const resolvedParams = await searchParams;
-  const resolvedTab = resolvedParams.tab || 'executive';
+  const resolvedTab = resolvedParams.tab || 'founder';
   const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(ADMIN_SESSION_COOKIE)?.value;
@@ -107,6 +107,103 @@ export default async function RevenueDashboardPage({
     console.error('Error fetching dashboard data:', err);
     error = err.message || 'Failed to retrieve database records.';
   }
+
+  // --- Dynamic GSC Comparative Parsing ---
+  const fs = require('fs');
+  const path = require('path');
+  const latestGscPath = path.join(process.cwd(), 'fsidigital.ca-Performance-on-Search-2026-07-02/Pages.csv');
+  const baselineGscPath = path.join(process.cwd(), '3monthGSCdata/Pages.csv');
+
+  const parseGscCsv = (filePath: string) => {
+    const dataMap = new Map<string, { clicks: number; impressions: number; ctr: number; position: number }>();
+    if (!fs.existsSync(filePath)) return dataMap;
+
+    try {
+      const content = fs.readFileSync(filePath, 'utf8').replace(/^\uFEFF/, '');
+      const lines = content.split(/\r?\n/).filter((l: string) => l.trim());
+      if (lines.length < 2) return dataMap;
+
+      const headers = lines[0].split(',').map((h: string) => h.trim().replace(/^"|"$/g, ''));
+      const pageIdx = headers.findIndex((h: string) => h.toLowerCase() === 'top pages' || h.toLowerCase() === 'page' || h.toLowerCase() === 'url');
+      const clicksIdx = headers.findIndex((h: string) => h.toLowerCase() === 'clicks');
+      const impsIdx = headers.findIndex((h: string) => h.toLowerCase() === 'impressions');
+      const ctrIdx = headers.findIndex((h: string) => h.toLowerCase() === 'ctr');
+      const posIdx = headers.findIndex((h: string) => h.toLowerCase() === 'position');
+
+      for (let i = 1; i < lines.length; i++) {
+        const parts = lines[i].split(',').map((p: string) => p.trim().replace(/^"|"$/g, ''));
+        if (parts.length < headers.length) continue;
+
+        const rawPage = parts[pageIdx];
+        if (!rawPage) continue;
+
+        let cleanPath = rawPage;
+        try {
+          if (rawPage.startsWith('http')) {
+            cleanPath = new URL(rawPage).pathname.replace(/\/$/, '') || '/';
+          }
+        } catch (e) {}
+
+        const clicks = parseInt(parts[clicksIdx]) || 0;
+        const impressions = parseInt(parts[impsIdx]) || 0;
+        const ctr = parseFloat(parts[ctrIdx]?.replace('%', '')) || 0;
+        const position = parseFloat(parts[posIdx]) || 0;
+
+        dataMap.set(cleanPath, { clicks, impressions, ctr, position });
+      }
+    } catch (e) {
+      console.error('Error parsing GSC CSV:', filePath, e);
+    }
+    return dataMap;
+  };
+
+  const latestGsc = parseGscCsv(latestGscPath);
+  const baselineGsc = parseGscCsv(baselineGscPath);
+
+  // Compare GSC performance
+  const gscComparisons: { page: string; latestImps: number; baselineImps: number; delta: number; latestClicks: number; position: number }[] = [];
+  latestGsc.forEach((val, page) => {
+    const baseVal = baselineGsc.get(page) || { clicks: 0, impressions: 0, ctr: 0, position: 0 };
+    gscComparisons.push({
+      page,
+      latestImps: val.impressions,
+      baselineImps: baseVal.impressions,
+      delta: val.impressions - baseVal.impressions,
+      latestClicks: val.clicks,
+      position: val.position
+    });
+  });
+
+  const impsGainers = [...gscComparisons].sort((a, b) => b.delta - a.delta).slice(0, 10);
+  const impsLosers = [...gscComparisons].sort((a, b) => a.delta - b.delta).slice(0, 10);
+
+  // Load indexing history
+  let indexedPagesList: { url: string; date: string }[] = [];
+  let totalIndexedCount = 0;
+  try {
+    const historyPath = path.join(process.cwd(), 'scripts/indexing-history.json');
+    if (fs.existsSync(historyPath)) {
+      const historyObj = JSON.parse(fs.readFileSync(historyPath, 'utf8'));
+      indexedPagesList = Object.entries(historyObj).map(([url, date]) => ({ url, date: String(date) }));
+      totalIndexedCount = indexedPagesList.length;
+    }
+  } catch (e) {}
+
+  const recentlyIndexed = [...indexedPagesList]
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+    .slice(0, 10);
+
+  // Monday checklist metrics (last 30 days telemetry / CRM)
+  const totalLatestImps = Array.from(latestGsc.values()).reduce((sum, v) => sum + v.impressions, 0);
+  const totalLatestClicks = Array.from(latestGsc.values()).reduce((sum, v) => sum + v.clicks, 0);
+  const avgLatestCTR = totalLatestImps > 0 ? (totalLatestClicks / totalLatestImps) * 100 : 0;
+  const avgLatestPos = Array.from(latestGsc.values()).reduce((sum, v) => sum + v.position, 0) / (latestGsc.size || 1);
+
+  // Group telemetry events by page path
+  const calcStartsByPageMap = new Map<string, number>();
+  const leadsByPageMap = new Map<string, number>();
+  const purchasesByPageMap = new Map<string, number>();
+  const enterpriseByPageMap = new Map<string, number>();
 
   // --- Calculate Metrics ---
   const TELEMETRY_LAUNCH_DATE_STR = '2026-06-20';
@@ -147,6 +244,31 @@ export default async function RevenueDashboardPage({
 
   const postPurchases = purchases.filter((p) => parseDateSafe(p.createdAt || p.timestamp).getTime() >= TELEMETRY_LAUNCH_DATE.getTime());
   const prePurchases = purchases.filter((p) => parseDateSafe(p.createdAt || p.timestamp).getTime() < TELEMETRY_LAUNCH_DATE.getTime());
+
+  // Group events by page path (last 30 days)
+  postTelemetry.filter(e => is30d(e.timestamp) && e.eventName === 'calculator_start').forEach(e => {
+    const pathName = e.pagePath || '/';
+    calcStartsByPageMap.set(pathName, (calcStartsByPageMap.get(pathName) || 0) + 1);
+  });
+
+  postLeads.filter(l => is30d(l.timestamp)).forEach(l => {
+    const pathName = l.pagePath || l.sourcePage || '/';
+    leadsByPageMap.set(pathName, (leadsByPageMap.get(pathName) || 0) + 1);
+
+    if (l.qualificationScore >= 70 || l.offlineStatus === 'Enterprise Qualified') {
+      enterpriseByPageMap.set(pathName, (enterpriseByPageMap.get(pathName) || 0) + 1);
+    }
+  });
+
+  postPurchases.filter(p => is30d(p.createdAt || p.timestamp)).forEach(p => {
+    const pathName = p.pagePath || p.utmSource || 'Other Direct/Email';
+    purchasesByPageMap.set(pathName, (purchasesByPageMap.get(pathName) || 0) + 1);
+  });
+
+  const topCalcStartsPages = Array.from(calcStartsByPageMap.entries()).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const topLeadsPages = Array.from(leadsByPageMap.entries()).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const topPurchasesPages = Array.from(purchasesByPageMap.entries()).sort((a, b) => b[1] - a[1]).slice(0, 10);
+  const topEnterprisePages = Array.from(enterpriseByPageMap.entries()).sort((a, b) => b[1] - a[1]).slice(0, 10);
 
   // Post-Telemetry top KPIs
   const postLeadsCount = postLeads.length;
@@ -1505,11 +1627,21 @@ export default async function RevenueDashboardPage({
         )}
 
         {/* Tab Navigation */}
-        <div className="border-b border-gray-200 mb-8">
+        <div className="border-b border-gray-200 mb-8 overflow-x-auto">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
             <a
+              href={`/admin/dashboard?tab=founder${keyParamAmp}`}
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
+                resolvedTab === 'founder'
+                  ? 'border-indigo-600 text-indigo-650'
+                  : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
+              }`}
+            >
+              📊 Founder Command View
+            </a>
+            <a
               href={`/admin/dashboard${keyParam}`}
-              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                 resolvedTab === 'executive'
                   ? 'border-indigo-600 text-indigo-650'
                   : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
@@ -1519,7 +1651,7 @@ export default async function RevenueDashboardPage({
             </a>
             <a
               href={`/admin/dashboard?tab=attribution${keyParamAmp}`}
-              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                 resolvedTab === 'attribution'
                   ? 'border-indigo-600 text-indigo-650'
                   : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
@@ -1529,7 +1661,7 @@ export default async function RevenueDashboardPage({
             </a>
             <a
               href={`/admin/dashboard?tab=telemetry${keyParamAmp}`}
-              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                 resolvedTab === 'telemetry'
                   ? 'border-indigo-600 text-indigo-650'
                   : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
@@ -1539,7 +1671,7 @@ export default async function RevenueDashboardPage({
             </a>
             <a
               href={`/admin/dashboard?tab=intelligence${keyParamAmp}`}
-              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                 resolvedTab === 'intelligence'
                   ? 'border-emerald-600 text-emerald-700'
                   : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
@@ -1549,7 +1681,7 @@ export default async function RevenueDashboardPage({
             </a>
             <a
               href={`/admin/dashboard?tab=seo${keyParamAmp}`}
-              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider ${
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                 resolvedTab === 'seo'
                   ? 'border-indigo-600 text-indigo-650'
                   : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
@@ -1560,7 +1692,267 @@ export default async function RevenueDashboardPage({
           </nav>
         </div>
 
-        {resolvedTab === 'executive' ? (
+        {resolvedTab === 'founder' ? (
+          /* 📊📊📊 FOUNDER COMMAND VIEW 📊📊📊 */
+          <div className="space-y-8 animate-fadeIn">
+            {/* Monday Morning Scorecard Checklist */}
+            <div>
+              <h2 className="text-xl font-black text-slate-900 mb-2 flex items-center gap-2">
+                <Activity className="w-5 h-5 text-indigo-600" />
+                Monday Morning Executive Scorecard
+              </h2>
+              <p className="text-xs text-slate-500 mb-4">Core health metrics monitored on a weekly basis to guide growth and distribution.</p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                {[
+                  { label: "Indexed Pages", value: totalIndexedCount.toLocaleString(), sub: "Total registered in sitemaps", color: "border-slate-200" },
+                  { label: "Search Impressions", value: totalLatestImps.toLocaleString(), sub: "GSC latest export", color: "border-slate-200" },
+                  { label: "Search Clicks", value: totalLatestClicks.toLocaleString(), sub: "GSC latest export", color: "border-slate-200" },
+                  { label: "Average CTR", value: `${avgLatestCTR.toFixed(2)}%`, sub: "GSC average CTR", color: "border-slate-200" },
+                  { label: "Average Position", value: avgLatestPos.toFixed(1), sub: "GSC average ranking pos", color: "border-slate-200" },
+                  { label: "Calculator Starts (30d)", value: calcStarts30d.toLocaleString(), sub: "Telemetry tracked", color: "border-slate-200" },
+                  { label: "Calculator Completes (30d)", value: calcCompletes30d.toLocaleString(), sub: `${calcStarts30d > 0 ? ((calcCompletes30d / calcStarts30d) * 100).toFixed(0) + '%' : '0%'} completion rate`, color: "border-slate-200" },
+                  { label: "Report Purchases (30d)", value: reportPurchases30d.toLocaleString(), sub: "$19 - $49 guides/toolkits", color: "border-slate-200" },
+                  { label: "Strategy Session Purchases (30d)", value: auditPurchases30d.toLocaleString(), sub: "$199 executive audits", color: "border-slate-200" },
+                  { label: "Enterprise Leads (30d)", value: enterpriseLeads30d.toLocaleString(), sub: "Tier A qualified prospects", color: "border-slate-200" },
+                  { label: "MRR", value: `$${mrr.toLocaleString()}`, sub: `${activeMemberships.size} active subscriptions`, color: "border-emerald-200 bg-emerald-50/10" },
+                  { label: "Total Revenue (30d)", value: `$${revenue30d.toLocaleString()}`, sub: "All purchases in last 30d", color: "border-indigo-200 bg-indigo-50/10" },
+                ].map((stat) => (
+                  <div key={stat.label} className={`bg-white rounded-xl border p-4 shadow-sm flex flex-col justify-between ${stat.color}`}>
+                    <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider leading-none">{stat.label}</p>
+                    <p className="text-xl font-extrabold text-slate-950 mt-2.5 tracking-tight truncate">{stat.value}</p>
+                    <p className="text-[9px] text-gray-400 font-semibold mt-1 leading-tight">{stat.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* GSC Comparative Lens (Indexation & Impressions) */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Recently Indexed Pages */}
+              <div className="lg:col-span-4 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Globe className="w-4 h-4 text-indigo-600" />
+                    Recently Indexed (Last 30 Days)
+                  </h3>
+                  <span className="text-[9px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded font-bold uppercase">Search Console</span>
+                </div>
+                <div className="p-4 flex-1 overflow-y-auto max-h-96">
+                  {recentlyIndexed.length > 0 ? (
+                    <div className="space-y-3">
+                      {recentlyIndexed.map((item, idx) => (
+                        <div key={idx} className="text-xs border-b border-slate-100 pb-2 last:border-0">
+                          <a href={item.url} target="_blank" className="font-semibold text-indigo-600 hover:underline break-all block">{item.url.replace('https://www.fsidigital.ca', '') || '/'}</a>
+                          <span className="text-[10px] text-gray-400 font-medium">Indexed on: {new Date(item.date).toLocaleDateString()}</span>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-400 text-center py-8 font-medium">No recently indexed records found.</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Impression Gainers */}
+              <div className="lg:col-span-4 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <TrendingUp className="w-4 h-4 text-emerald-600" />
+                    Top Impression Gainers
+                  </h3>
+                  <span className="text-[9px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded font-bold uppercase">GSC Delta</span>
+                </div>
+                <div className="p-4 flex-1 overflow-y-auto max-h-96">
+                  {impsGainers.length > 0 ? (
+                    <div className="space-y-3">
+                      {impsGainers.map((item, idx) => (
+                        <div key={idx} className="text-xs border-b border-slate-100 pb-2 last:border-0 flex justify-between items-start gap-2">
+                          <div className="min-w-0">
+                            <span className="font-semibold text-slate-800 break-all block">{item.page}</span>
+                            <span className="text-[10px] text-gray-400 font-medium">Position: {item.position.toFixed(1)}</span>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <span className="font-bold text-emerald-650 block text-[11px]">+{item.delta.toLocaleString()}</span>
+                            <span className="text-[9px] text-gray-400 font-medium">Imps: {item.latestImps.toLocaleString()}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-400 text-center py-8 font-medium">No GSC data to compare.</p>
+                  )}
+                </div>
+              </div>
+
+              {/* Impression Losers */}
+              <div className="lg:col-span-4 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <TrendingDown className="w-4 h-4 text-rose-600" />
+                    Top Impression Losers
+                  </h3>
+                  <span className="text-[9px] bg-rose-50 text-rose-700 border border-rose-200 px-2 py-0.5 rounded font-bold uppercase">GSC Delta</span>
+                </div>
+                <div className="p-4 flex-1 overflow-y-auto max-h-96">
+                  {impsLosers.length > 0 ? (
+                    <div className="space-y-3">
+                      {impsLosers.map((item, idx) => (
+                        <div key={idx} className="text-xs border-b border-slate-100 pb-2 last:border-0 flex justify-between items-start gap-2">
+                          <div className="min-w-0">
+                            <span className="font-semibold text-slate-800 break-all block">{item.page}</span>
+                            <span className="text-[10px] text-gray-400 font-medium">Position: {item.position.toFixed(1)}</span>
+                          </div>
+                          <div className="text-right shrink-0">
+                            <span className="font-bold text-rose-650 block text-[11px]">{item.delta.toLocaleString()}</span>
+                            <span className="text-[9px] text-gray-400 font-medium">Imps: {item.latestImps.toLocaleString()}</span>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-400 text-center py-8 font-medium">No GSC data to compare.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+
+            {/* Telemetry Conversions by Page Path */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              {/* Pages starting the calculator */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Calculator className="w-4 h-4 text-indigo-600" />
+                    Top Pages: Calculator Starts (Last 30 Days)
+                  </h3>
+                </div>
+                <div className="p-4 overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-gray-400 uppercase font-bold text-[10px] tracking-wider">
+                        <th className="pb-2">Page Path</th>
+                        <th className="pb-2 text-right">Starts</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {topCalcStartsPages.map(([page, count], idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="py-2.5 font-semibold text-slate-800 truncate max-w-xs" title={page}>{page}</td>
+                          <td className="py-2.5 text-right font-bold text-slate-950">{count}</td>
+                        </tr>
+                      ))}
+                      {topCalcStartsPages.length === 0 && (
+                        <tr>
+                          <td colSpan={2} className="py-4 text-center text-gray-400">No calculator starts recorded.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Pages generating leads */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Users className="w-4 h-4 text-indigo-600" />
+                    Top Pages: CRM Lead Gen (Last 30 Days)
+                  </h3>
+                </div>
+                <div className="p-4 overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-gray-400 uppercase font-bold text-[10px] tracking-wider">
+                        <th className="pb-2">Page Path / Campaign Source</th>
+                        <th className="pb-2 text-right">Leads</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {topLeadsPages.map(([page, count], idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="py-2.5 font-semibold text-slate-800 truncate max-w-xs" title={page}>{page}</td>
+                          <td className="py-2.5 text-right font-bold text-slate-950">{count}</td>
+                        </tr>
+                      ))}
+                      {topLeadsPages.length === 0 && (
+                        <tr>
+                          <td colSpan={2} className="py-4 text-center text-gray-400">No leads captured.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Pages generating purchases */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <DollarSign className="w-4 h-4 text-indigo-600" />
+                    Top Pages: Report & Audit Purchases (Last 30 Days)
+                  </h3>
+                </div>
+                <div className="p-4 overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-gray-400 uppercase font-bold text-[10px] tracking-wider">
+                        <th className="pb-2">Attribution Channel / Path</th>
+                        <th className="pb-2 text-right">Orders</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {topPurchasesPages.map(([page, count], idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="py-2.5 font-semibold text-slate-800 truncate max-w-xs" title={page}>{page}</td>
+                          <td className="py-2.5 text-right font-bold text-slate-950">{count}</td>
+                        </tr>
+                      ))}
+                      {topPurchasesPages.length === 0 && (
+                        <tr>
+                          <td colSpan={2} className="py-4 text-center text-gray-400">No purchases completed.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Pages generating enterprise inquiries */}
+              <div className="bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Building2 className="w-4 h-4 text-indigo-600" />
+                    Top Pages: Enterprise Qualified Enquiries (Last 30 Days)
+                  </h3>
+                </div>
+                <div className="p-4 overflow-x-auto">
+                  <table className="w-full text-left text-xs whitespace-nowrap">
+                    <thead>
+                      <tr className="border-b border-slate-200 text-gray-400 uppercase font-bold text-[10px] tracking-wider">
+                        <th className="pb-2">Page Path</th>
+                        <th className="pb-2 text-right">Enterprise Leads</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-slate-100 text-slate-700">
+                      {topEnterprisePages.map(([page, count], idx) => (
+                        <tr key={idx} className="hover:bg-slate-50/50">
+                          <td className="py-2.5 font-semibold text-slate-800 truncate max-w-xs" title={page}>{page}</td>
+                          <td className="py-2.5 text-right font-bold text-slate-950">{count}</td>
+                        </tr>
+                      ))}
+                      {topEnterprisePages.length === 0 && (
+                        <tr>
+                          <td colSpan={2} className="py-4 text-center text-gray-400">No enterprise inquiries.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : resolvedTab === 'executive' ? (
           /* 👑👑👑 FOUNDER REVENUE COMMAND CENTER VIEW 👑👑👑 */
           <div className="space-y-8">
             {/* CEO Scorecard Section */}

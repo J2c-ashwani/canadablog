@@ -709,6 +709,71 @@ const content: Record<string, EditorialSection[]> = {
       bullets: ['Grants cover software, SEO, and developer services', 'Physical hardware like laptops and smartphones are excluded', 'Pre-existing subscriptions cannot be claimed retrospectively']
     }
   ],
+  '/blog/irap-industrial-research-assistance-program-innovation': [
+    {
+      "heading": "NRC IRAP is a relationship, not a portal submission",
+      "summary": "Unlike standard grants that have structured application portals, the Industrial Research Assistance Program (IRAP) operates entirely through direct human engagement. You must be assigned an Industrial Technology Advisor (ITA) who reviews your technology, technical risks, and business roadmap. Only if the ITA invites you can you submit a funding proposal.",
+      "bullets": [
+        "Call NRC to request an assigned local ITA",
+        "Do not commit project costs before receiving ITA approval",
+        "Prepare a structured technical project brief before pitching your advisor"
+      ]
+    },
+    {
+      "heading": "Eligible activities and salary reimbursements",
+      "summary": "IRAP primarily reimburses 50% to 80% of internal technical salaries (developers, engineers, scientists) working on resolved technical uncertainty. It does not fund commercial marketing, sales, or routine web development. Claims are submitted monthly and paid retrospectively against verified timesheets.",
+      "bullets": [
+        "Verify that your hires have Canadian citizenship or PR status",
+        "Document the technological risk and uncertainty being resolved",
+        "Deduct IRAP subsidies from tax credit calculations (SR&ED)"
+      ]
+    }
+  ],
+  '/blog/canada-digital-ai-innovation-grants': [
+    {
+      heading: 'Scale AI co-investment & digital supercluster parameters',
+      summary: 'Scale AI co-investments cover up to 50% of eligible costs for AI adoption and collaborative R&D. Projects must involve Canadian partners and demonstrate how AI solves operational inefficiencies in supply chain, manufacturing, or service sectors.',
+      bullets: ['Consortium model requires 2+ Canadian partners', 'Grants cover up to 50% of eligible labor and subcontracts', 'Proprietary AI development must be central to the project']
+    },
+    {
+      heading: 'CDAP Boost Your Business Technology matching loans',
+      summary: 'CDAP provides up to $15,000 to hire a certified digital advisor who drafts a digital adoption plan. Once approved, the business unlocks a $100,000 interest-free loan from BDC over 5 years plus a $7,300 youth wage subsidy.',
+      bullets: ['Get up to $15,000 for digital advisory roadmap', 'Unlock $100,000 interest-free loan from BDC over 5 years', 'Reimbursements are processed after advisor invoice validation']
+    }
+  ],
+  '/blog/canada-agri-food-technology-innovation-grants': [
+    {
+      heading: 'AgriInnovate Program cost-sharing and limits',
+      summary: 'The federal AgriInnovate Program provides interest-free repayable loans up to $5,000,000 (covering up to 50% of project costs) to commercialize innovative agri-food technologies that improve yield or reduce carbon footprints.',
+      bullets: ['Loans are interest-free over terms up to 10 years', 'Projects must be commercialization-ready (TRL 7-9)', 'Routine farming equipment is strictly ineligible']
+    },
+    {
+      heading: 'Sustainable CAP provincial cost-share matching',
+      summary: 'Under the Sustainable Canadian Agricultural Partnership, provincial streams provide cost-share grants (typically 35% to 50% matching) to adopt energy-efficient machinery, water recycling systems, and carbon tracking sensors.',
+      bullets: ['Cost-share matching typically ranges from 35% to 50%', 'Apply and receive approval before purchasing equipment', 'Check specific provincial intakes and active windows']
+    }
+  ],
+  '/blog/canada-clean-technology-innovation-grants': [
+    {
+      heading: 'Clean technology R&D and capital cost-shares',
+      summary: 'Canadian clean-tech companies can access federal support via SIF Stream 5 (Net-Zero Accelerator) and provincial green grants to offset up to 75% of capital expenses for decarbonization and sustainable development projects.',
+      bullets: ['SIF Stream 5 targets large-scale net-zero projects', 'Government co-funding stack is capped at 75% of costs', 'Projects must prove quantitative carbon offset metrics']
+    }
+  ],
+  '/blog/alberta-innovation-grants': [
+    {
+      heading: 'Alberta Innovates vouchers and tech development',
+      summary: 'Alberta Innovates provides vouchers (up to $100,000) to help tech startups offset prototype testing, engineering subcontracts, and technical feasibility studies. Service providers must be Alberta-based.',
+      bullets: ['Vouchers fund up to $100,000 in prototype R&D', 'Contractors and labs must reside in Alberta', 'Build relationship with a local Alberta Innovates manager']
+    }
+  ],
+  '/blog/bc-small-business-grants-guide': [
+    {
+      heading: 'Innovate BC Ignite and provincial tech vouchers',
+      summary: 'Innovate BC Ignite provides up to $300,000 in matching funds for collaborative research projects resolving technical uncertainty in natural resources, engineering, and health. Partnership with a BC research institution is mandatory.',
+      bullets: ['Ignite awards match up to $300,000 per project', 'Requires partnership with a BC university or researcher', 'Submit proposals during active bi-annual intakes']
+    }
+  ]
 };
 
 export function getPriorityResearchContent(route: string) {

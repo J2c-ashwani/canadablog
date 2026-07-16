@@ -1193,6 +1193,51 @@ const profiles: Record<string, PriorityResearchProfile> = {
     }
   ]
 },
+  '/blog/irap-industrial-research-assistance-program-innovation': {
+    "route": "/blog/irap-industrial-research-assistance-program-innovation",
+    "seoTitle": "IRAP Innovation Funding 2026: Get Up to $500K for R&D",
+    "seoDescription": "Complete guide to NRC IRAP innovation funding. Learn how to qualify, navigate the ITA intake process, and claim R&D wage subsidies.",
+    "expectedIntent": "high",
+    "reviewedBy": "Funding Analyst",
+    "reviewerRole": "Analyst Reviewed | Funding Intelligence Team",
+    "lastVerified": "2026-06-28",
+    "programStatus": "Open or rolling",
+    "statusSummary": "Active ITA Intake & Rolling Proposal Submissions",
+    "decisionSummary": "IRAP is a relationship-based R&D grant administered by the National Research Council. You must pitch a high-risk technical project directly to an assigned ITA to receive proposal invites.",
+    "shortAnswerQuestion": "Why Companies Choose Guided Funding Planning for IRAP?",
+    "shortAnswer": "Because IRAP is relationship-driven, a poor first impression with your ITA can end your application. Guided planning structures your project brief to clearly highlight technical risk and commercial scalability.",
+    "verificationNotes": [
+      "Exclusion: Companies with no technical payroll, no technological risk, or over 500 employees should not apply.",
+      "Lifecycle Timeline: ITA matching takes 2-4 weeks; full proposal review and approval takes 4-8 weeks.",
+      "Typical preparation: Collect docs (2-5 days), Application prep (1-3 weeks), Decision timeline (4-8 weeks)."
+    ],
+    "officialSources": [
+      {
+        "name": "NRC Industrial Research Assistance Program",
+        "url": "https://nrc.canada.ca/en/support-technology-innovation/industrial-research-assistance-program",
+        "description": "Official government portal for IRAP advisors and projects. This guide is independently prepared by FSI Digital and is not affiliated with any government agency."
+      }
+    ],
+    "cta": {
+      "eyebrow": "IRAP Pitch Strategy",
+      "title": "Assess Your IRAP Project Readiness",
+      "description": "Structure your technical research plan and prepare your project brief for ITA review.",
+      "buttonText": "Evaluate IRAP Eligibility",
+      "href": "/calculator",
+      "supportingPoints": [
+        "ITA pitch deck checklist",
+        "Eligible salary cost review",
+        "SR&ED compatibility"
+      ]
+    },
+    "faq": [
+      {
+        "question": "Who should NOT apply for IRAP?",
+        "answer": "SMEs conducting routine software engineering (e.g., standard web development), companies without Canadian-incorporated entities, or those lacking capital to match the co-funding requirements."
+      }
+    ],
+    "interactiveTool": "trl"
+  },
   '/blog/irap-industrial-research-assistance-program': {
   "route": "/blog/irap-industrial-research-assistance-program",
   "seoTitle": "NRC IRAP Funding Guide 2026: Get Up to $500K Tech Grants",
@@ -1601,6 +1646,221 @@ const profiles: Record<string, PriorityResearchProfile> = {
       }
     ]
   },
+  '/blog/canada-digital-ai-innovation-grants': {
+    route: '/blog/canada-digital-ai-innovation-grants',
+    seoTitle: 'Canada Digital & AI Innovation Grants 2026: $1.2B+ Funding',
+    seoDescription: 'Access active Canadian digital transformation & AI grants. Compare CDAP, Scale AI, and supercluster funding parameters.',
+    expectedIntent: 'high',
+    reviewedBy: 'Funding Analyst',
+    reviewerRole: 'Analyst Reviewed | Funding Intelligence Team',
+    lastVerified: '2026-07-10',
+    programStatus: 'Multiple active intakes',
+    statusSummary: 'Scale AI and CDAP Intakes Active for 2026',
+    decisionSummary: 'Scale AI offers up to 50% matching co-investment for AI integration projects. CDAP provides up to $15K digital advisory planning grants and $100K interest-free BDC loans.',
+    shortAnswerQuestion: 'How can Canadian companies fund AI and digital adoption?',
+    shortAnswer: 'SMEs can leverage Scale AI matching funds for proprietary AI development, or secure a $100,000 interest-free BDC loan plus a $15,000 digital planning grant through CDAP to upgrade software, cybersecurity (SOC2), and cloud systems.',
+    verificationNotes: [
+      'Scale AI projects require collaboration with Canadian academic or industry consortium partners.',
+      'CDAP BDC loans require at least $500,000 in gross revenue in one of the previous 3 tax years.'
+    ],
+    officialSources: [
+      {
+        name: 'Scale AI Supercluster Portal',
+        url: 'https://www.scaleai.ca/',
+        description: 'Canada\'s artificial intelligence supercluster matching fund portal.'
+      },
+      {
+        name: 'Canada Digital Adoption Program (CDAP)',
+        url: 'https://www.ic.gc.ca/eic/site/152.nsf/eng/home',
+        description: 'Official federal directory for the Boost Your Business Technology stream.'
+      }
+    ],
+    cta: {
+      eyebrow: 'AI & Digital Stacking',
+      title: 'Check AI Grant Eligibility',
+      description: 'See if your technology roadmap qualifies for Scale AI co-investment or CDAP BDC loan structures.',
+      buttonText: 'Evaluate Digital Grants',
+      href: '/calculator',
+      supportingPoints: ['Scale AI cost-share parameters', 'CDAP interest-free loan criteria', 'SR&ED R&D credit matching']
+    },
+    faq: [
+      {
+        question: "Is CDAP still accepting applications in 2026?",
+        answer: "Yes, active CDAP registrations and BDC interest-free financing routes are open for qualified Canadian private corporations."
+      }
+    ],
+    interactiveTool: "trl"
+  },
+  '/blog/canada-agri-food-technology-innovation-grants': {
+    route: '/blog/canada-agri-food-technology-innovation-grants',
+    seoTitle: 'Canada Agri-Food Tech Grants 2026: Sustainable CAP Guide',
+    seoDescription: 'Access Canadian agricultural innovation grants. Learn about Sustainable CAP cost-share limits (up to 50% matching) and FCC financing.',
+    expectedIntent: 'high',
+    reviewedBy: 'Funding Analyst',
+    reviewerRole: 'Analyst Reviewed | Funding Intelligence Team',
+    lastVerified: '2026-07-12',
+    programStatus: 'Active intakes',
+    statusSummary: 'Sustainable CAP & AgriInnovate Intakes Open',
+    decisionSummary: 'Agricultural innovation is funded via the federal AgriInnovate program (up to $5M interest-free loans) and provincial Sustainable CAP cost-share grants (35-50% matching).',
+    shortAnswerQuestion: 'What agritech and agriculture grants are active in Canada?',
+    shortAnswer: 'Canadian agriculture tech startups can access the federal AgriInnovate program for up to 50% matching ($10M cap) on commercializing new food automation systems, stacked with provincial Sustainable CAP grants for facilities or water conservation.',
+    verificationNotes: [
+      'Pre-revenue startups without matching commercial debt are generally excluded from AgriInnovate.',
+      'Sustainable CAP programs require proof of environmental benefits or yield improvements.'
+    ],
+    officialSources: [
+      {
+        name: 'Agriculture and Agri-Food Canada',
+        url: 'https://agriculture.canada.ca/',
+        description: 'Official portal for federal AgriInnovate and Sustainable CAP programs.'
+      }
+    ],
+    cta: {
+      eyebrow: 'AgriTech Funding Stack',
+      title: 'Analyze Agritech Grant Match Limits',
+      description: 'Find out if your farming technology or food processing facility aligns with Sustainable CAP parameters.',
+      buttonText: 'Evaluate AgriTech Grants',
+      href: '/calculator',
+      supportingPoints: ['AgriInnovate loan terms', 'Sustainable CAP cost-share limits', 'FCC venture debt alternatives']
+    },
+    faq: [
+      {
+        question: "Are vertical indoor farms eligible for agricultural grants?",
+        answer: "Yes, vertical growing systems that prove significant water reduction or carbon offset metrics are highly competitive under Sustainable CAP streams."
+      }
+    ],
+    interactiveTool: "checklist"
+  },
+  '/blog/canada-clean-technology-innovation-grants': {
+    route: '/blog/canada-clean-technology-innovation-grants',
+    seoTitle: 'Canada Clean Tech Grants 2026: Decarbonization Funding Guide',
+    seoDescription: 'Complete guide to Canadian green energy & clean-tech grants. Compare SDTC, SIF Stream 5, and provincial carbon offset incentives.',
+    expectedIntent: 'high',
+    reviewedBy: 'Funding Analyst',
+    reviewerRole: 'Analyst Reviewed | Funding Intelligence Team',
+    lastVerified: '2026-07-15',
+    programStatus: 'Intakes open',
+    statusSummary: 'Federal Green Funds & Net-Zero Matching Active',
+    decisionSummary: 'Clean technology projects can access federal funding via the Strategic Innovation Fund (SIF) Stream 5, packed with provincial clean energy cost-shares and green building tax incentives.',
+    shortAnswerQuestion: 'How can clean-tech companies fund green energy R&D?',
+    shortAnswer: 'Startups building clean technologies or carbon-mitigation systems can stack federal SIF Stream 5 options with provincial carbon tax rebates, leveraging clean energy incentives to offset up to 75% of capital expenses.',
+    verificationNotes: [
+      'Standard environmental upgrades (e.g. basic solar panels) without R&D innovation do not qualify for SIF Stream 5.',
+      'Total government assistance (stacking limit) is capped at 75% of total project costs.'
+    ],
+    officialSources: [
+      {
+        name: 'Strategic Innovation Fund (SIF)',
+        url: 'https://www.canada.ca/en/innovation-science-economic-development/programs/strategic-innovation-fund.html',
+        description: 'Official directory of SIF funding streams for net-zero and clean tech.'
+      }
+    ],
+    cta: {
+      eyebrow: 'Clean Tech Stacking',
+      title: 'Assess Net-Zero Project Funding',
+      description: 'Determine if your green technology project is eligible for federal SIF or provincial utility rebates.',
+      buttonText: 'Clean Tech Pre-Screener',
+      href: '/calculator',
+      supportingPoints: ['SIF Stream 5 Net-Zero parameters', 'Provincial green cost-shares', 'Utility rebate limits']
+    },
+    faq: [
+      {
+        question: "Can I combine clean tech grants with standard utility rebates?",
+        answer: "Yes. In most cases, municipal energy rebates can be stacked on top of provincial/federal clean-tech grants up to the 75% co-funding cap."
+      }
+    ],
+    interactiveTool: "stacking"
+  },
+  '/blog/alberta-innovation-grants': {
+    route: '/blog/alberta-innovation-grants',
+    seoTitle: 'Alberta Business Grants & Tech Incentives (2026 Guide)',
+    seoDescription: 'Find active Alberta government grants and startup incentives. Learn how to apply for Alberta Innovates vouchers and wage subsidies.',
+    expectedIntent: 'medium',
+    reviewedBy: 'Funding Analyst',
+    reviewerRole: 'Analyst Reviewed | Funding Intelligence Team',
+    lastVerified: '2026-07-14',
+    programStatus: 'Multiple active windows',
+    statusSummary: 'Alberta Innovates Vouchers & PrairiesCan Active',
+    decisionSummary: 'Alberta businesses should leverage Alberta Innovates vouchers for early stage development, stacked with federal PrairiesCan matching options.',
+    shortAnswerQuestion: 'What small business grants are available in Alberta?',
+    shortAnswer: 'Alberta startups can secure Alberta Innovates Vouchers (up to $100K) to fund product development, stacked with Canada-Alberta Job Grants to cover up to 66% of employee training costs.',
+    verificationNotes: [
+      'Alberta Innovates requires the provider/contractor to be located in Alberta.',
+      'SMEs must maintain active corporate status in Alberta.'
+    ],
+    officialSources: [
+      {
+        name: 'Alberta Innovates',
+        url: 'https://albertainnovates.ca/',
+        description: 'Official provincial portal for technology development vouchers.'
+      },
+      {
+        name: 'Prairies Economic Development Canada (PrairiesCan)',
+        url: 'https://www.canada.ca/en/prairies-economic-development.html',
+        description: 'Federal economic agency serving Alberta businesses.'
+      }
+    ],
+    cta: {
+      eyebrow: 'Alberta Growth Strategy',
+      title: 'Analyze Alberta Grant Match Limits',
+      description: 'Check your eligibility for Alberta Innovates tech vouchers or PrairiesCan business funding.',
+      buttonText: 'Evaluate Alberta Grants',
+      href: '/calculator',
+      supportingPoints: ['Alberta Innovates voucher criteria', 'Canada-Alberta Job Grant rules', 'PrairiesCan scaling limits']
+    },
+    faq: [
+      {
+        question: "Who qualifies for Alberta Innovates Vouchers?",
+        answer: "Incorporated Alberta-based technology companies developing innovative software, hardware, or process innovations with fewer than 50 employees."
+      }
+    ],
+    interactiveTool: "checklist"
+  },
+  '/blog/bc-small-business-grants-guide': {
+    route: '/blog/bc-small-business-grants-guide',
+    seoTitle: 'BC Small Business Grants 2026: Provincial & PacifiCan Guide',
+    seoDescription: 'Access British Columbia business grants, tech vouchers, and PacifiCan loans. Compare Innovate BC Ignite and local hiring subsidies.',
+    expectedIntent: 'medium',
+    reviewedBy: 'Funding Analyst',
+    reviewerRole: 'Analyst Reviewed | Funding Intelligence Team',
+    lastVerified: '2026-07-12',
+    programStatus: 'Active intakes open',
+    statusSummary: 'Innovate BC & PacifiCan Funding Available',
+    decisionSummary: 'BC companies can stack Innovate BC Ignite matching grants ($300K) with federal PacifiCan interest-free business scale-up financing.',
+    shortAnswerQuestion: 'What business grants are available in British Columbia?',
+    shortAnswer: 'BC startups can apply for Innovate BC Ignite grants for collaborative R&D ($300K cap) or use the BC Employer Training Grant to cover 80% of employee training expenses.',
+    verificationNotes: [
+      'BC Ignite requires a partnership with a BC university or research institution.',
+      'PacifiCan programs require commercial traction and gross revenues.'
+    ],
+    officialSources: [
+      {
+        name: 'Innovate BC Portal',
+        url: 'https://innovatebc.ca/',
+        description: 'Official provincial organization funding BC innovation.'
+      },
+      {
+        name: 'PacifiCan Economic Agency',
+        url: 'https://www.canada.ca/en/pacific-economic-development.html',
+        description: 'Federal scaling agency for British Columbia businesses.'
+      }
+    ],
+    cta: {
+      eyebrow: 'BC Funding Strategy',
+      title: 'Evaluate BC Tech Vouchers',
+      description: 'Determine if your BC-based startup qualifies for Ignite funding or PacifiCan scale-up loans.',
+      buttonText: 'Evaluate BC Grants',
+      href: '/calculator',
+      supportingPoints: ['Innovate BC Ignite requirements', 'BC Employer Training Grant limits', 'PacifiCan scaling criteria']
+    },
+    faq: [
+      {
+        question: "What is the BC Employer Training Grant?",
+        answer: "A provincial grant reimbursing up to 80% of training costs, up to $10,000 per employee, to help businesses upskill their local workforce."
+      }
+    ],
+    interactiveTool: "checklist"
+  }
 };
 
 function getRedirectedCtaHref(route: string, currentHref: string): string {

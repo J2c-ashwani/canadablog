@@ -121,7 +121,7 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
           <p className="text-xs text-indigo-200 max-w-2xl mx-auto mb-5 leading-relaxed">
             Our databases cover municipal vouchers, provincial incentives, and federal tax credits. Explore the complete hubs below.
           </p>
-          <div className="flex flex-wrap justify-center gap-4 text-xs">
+          <div className="flex flex-wrap justify-center gap-4 text-xs mb-4">
             <Link 
               href={`/grants/${currentProvinceSlug}/${currentCitySlug}`} 
               className="bg-indigo-900 hover:bg-indigo-800 text-white font-bold px-4 py-2 rounded-xl transition-colors border border-indigo-700/50"
@@ -140,6 +140,47 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
             >
               Federal Grant Database
             </Link>
+          </div>
+
+          {/* Sibling Authority Link to Commercial Guides */}
+          <div className="pt-4 border-t border-indigo-900 text-center text-xs">
+            <span className="text-indigo-300 font-semibold mr-2">Featured Guide:</span>
+            {(() => {
+              const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
+              const isCanada = CANADIAN_REGION_SLUGS.has(currentProvinceSlug);
+              
+              if (currentIndustrySlug === 'technology' || currentIndustrySlug === 'clean-energy') {
+                return isCanada ? (
+                  <Link href="/canada/innovation-grants" className="text-white hover:text-green-400 underline font-bold">
+                    Canada Innovation & R&D Grants Guide (2026)
+                  </Link>
+                ) : (
+                  <Link href="/usa/technology-startup-grants" className="text-white hover:text-green-400 underline font-bold">
+                    USA Technology & Startup Grants Guide (2026)
+                  </Link>
+                );
+              } else if (currentIndustrySlug === 'women-entrepreneurs') {
+                return isCanada ? (
+                  <Link href="/blog/women-business-grants-2026" className="text-white hover:text-green-400 underline font-bold">
+                    Canada Women Entrepreneur Grants Roadmap
+                  </Link>
+                ) : (
+                  <Link href="/blog/women-entrepreneurship-grants-2026" className="text-white hover:text-green-400 underline font-bold">
+                    USA Women Owned Business Grants Guide
+                  </Link>
+                );
+              } else {
+                return isCanada ? (
+                  <Link href="/canada/small-business-grants" className="text-white hover:text-green-400 underline font-bold">
+                    Canada Small Business Grants Index
+                  </Link>
+                ) : (
+                  <Link href="/usa/small-business-grants" className="text-white hover:text-green-400 underline font-bold">
+                    USA Small Business Grants & Funding Guide
+                  </Link>
+                );
+              }
+            })()}
           </div>
         </div>
 
