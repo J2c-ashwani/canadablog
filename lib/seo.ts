@@ -361,7 +361,8 @@ export function generatePseoSchema(
   provinceName: string,
   industryName: string,
   url: string,
-  publishedAt: string
+  publishedAt: string,
+  countryName?: string
 ) {
   return {
     "@context": "https://schema.org",
@@ -395,7 +396,7 @@ export function generatePseoSchema(
         "name": provinceName,
         "containedInPlace": {
           "@type": "Country",
-          "name": "Canada"
+          "name": countryName || "Canada"
         }
       }
     }

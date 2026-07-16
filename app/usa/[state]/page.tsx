@@ -884,13 +884,30 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     {state.cityGuides && state.cityGuides.length > 0 && (
                         <div>
                             <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">🏙️ {state.name} City Guides</h3>
+                            
                             <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-3">
-                                {state.cityGuides.slice(0, 6).map(city => (
+                                {state.cityGuides.slice(0, 12).map(city => (
                                     <Link key={city.city} href={`/usa/${state.slug}/${city.city.toLowerCase().replace(/\s+/g, '-')}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
                                         <span className="text-sm font-medium text-gray-900 group-hover:text-green-600">{city.city}</span>
                                     </Link>
                                 ))}
                             </div>
+
+                            {state.cityGuides.length > 12 && (
+                                <details className="mt-4 group">
+                                    <summary className="text-sm font-semibold text-green-600 hover:text-green-700 cursor-pointer list-none flex items-center justify-center gap-1 py-2 bg-gray-50 border border-gray-200 rounded-lg max-w-xs mx-auto transition-all">
+                                        <span>Show All {state.cityGuides.length} Cities</span>
+                                        <ChevronRight className="w-4 h-4 transform group-open:rotate-90 transition-transform" />
+                                    </summary>
+                                    <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-3 mt-4">
+                                        {state.cityGuides.slice(12).map(city => (
+                                            <Link key={city.city} href={`/usa/${state.slug}/${city.city.toLowerCase().replace(/\s+/g, '-')}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
+                                                <span className="text-sm font-medium text-gray-900 group-hover:text-green-600">{city.city}</span>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </details>
+                            )}
                         </div>
                     )}
                 </div>

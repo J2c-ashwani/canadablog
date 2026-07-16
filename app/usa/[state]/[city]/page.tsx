@@ -12,7 +12,7 @@ import { CTRTrap } from '@/components/blog/CTRTrap';
 import { getStateDetailBySlug, getAllStateDetails, getRelatedGuides, StateDetailedGrant } from '@/lib/data/stateDetails';
 import { injectWikipediaLinks } from '@/lib/seo/keywordMap';
 import {
-    ArrowLeft, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
+    ArrowLeft, ArrowRight, DollarSign, Users, Briefcase, Target, Building, Zap, TrendingUp,
     Rocket, Mountain, Globe, Leaf, Cpu, Shield, Clock, Award, CheckCircle,
     AlertTriangle, FileText, ExternalLink, ChevronRight, List, HelpCircle,
     BookOpen, Lightbulb, MapPin, Locate
@@ -35,6 +35,7 @@ import WhoShouldLeave from '@/components/pseo/blocks/WhoShouldLeave';
 import KeyLocalInstitutions from '@/components/pseo/blocks/KeyLocalInstitutions';
 import InsiderInsightQuotes from '@/components/pseo/blocks/InsiderInsightQuotes';
 import MicroFAQ from '@/components/pseo/blocks/MicroFAQ';
+import { INDUSTRIES } from '@/lib/pseo-data';
 
 // Helper to create slugs from names
 function toSlug(text: string): string {
@@ -251,6 +252,36 @@ export default async function CityPage({ params }: { params: Promise<{ state: st
                         <p className="text-gray-600">
                             Businesses in these sectors often have access to specialized local funding and incentives in {cityData.city}.
                         </p>
+                    </section>
+
+                    {/* Industry Specific Grant Guides */}
+                    <section className="mb-12">
+                        <h2 className="text-3xl font-bold mb-6 text-gray-900 flex items-center">
+                            <Target className="w-8 h-8 mr-3 text-green-600" />
+                            Industry-Specific Grant Guides for {cityData.city}
+                        </h2>
+                        <p className="text-gray-700 leading-relaxed mb-6">
+                            Select your industry below to access localized eligibility guides, stacking opportunities, and verified funding databases for businesses in {cityData.city}:
+                        </p>
+                        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                            {INDUSTRIES.map((industry) => (
+                                <Link
+                                    key={industry.slug}
+                                    href={`/grants/${state.abbreviation.toLowerCase()}/${cityParam}/${industry.slug}`}
+                                    className="group rounded-xl border border-gray-200 p-5 bg-white shadow-sm transition hover:border-green-300 hover:bg-green-50/30 flex items-center justify-between"
+                                >
+                                    <div>
+                                        <h3 className="font-semibold text-gray-950 group-hover:text-green-800 transition-colors">
+                                            {industry.name}
+                                        </h3>
+                                        <p className="mt-1 text-xs text-gray-500">
+                                            {cityData.city}, {state.abbreviation} funding path
+                                        </p>
+                                    </div>
+                                    <ArrowRight className="h-4 w-4 text-gray-400 group-hover:text-green-700 group-hover:translate-x-1 transition-all shrink-0 ml-2" />
+                                </Link>
+                            ))}
+                        </div>
                     </section>
 
                     {/* Local Programs */}

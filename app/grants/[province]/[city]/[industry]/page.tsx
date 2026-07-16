@@ -348,13 +348,31 @@ function UsPseoGrantContent({
             <div id="landscape" className="prose prose-lg text-gray-700 max-w-none">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">{page.cityName} {page.industryName} Funding Landscape</h2>
                 <p className="lead text-xl text-gray-800">
-                    Funding for {page.industryName} businesses in {page.cityName} usually comes from a stack of federal programs, {page.provinceName} incentives, local economic-development support, and tax credits. The strongest opportunity is rarely a single grant; it is a documented project that matches a public goal such as job creation, workforce training, commercialization, rural development, export growth, or energy efficiency.
+                    {spinParagraph(
+                        `Funding for ${page.industryName} businesses in ${page.cityName} usually comes from a stack of federal programs, ${page.provinceName} incentives, local economic-development support, and tax credits. The strongest opportunity is rarely a single grant; it is a documented project that matches a public goal such as job creation, workforce training, commercialization, rural development, export growth, or energy efficiency.`,
+                        page.cityName,
+                        page.provinceName,
+                        page.industryName,
+                        'us-landscape-1'
+                    )}
                 </p>
                 <p>
-                    For a {page.provinceName} applicant, the first filter is fit. A company buying routine supplies, covering payroll gaps, or asking after expenses have already been incurred will struggle. A company that can show a project budget, matching funds, hiring impact, and a realistic implementation timeline has a much better chance of moving from research to approval.
+                    {spinParagraph(
+                        `For a ${page.provinceName} applicant, the first filter is fit. A company buying routine supplies, covering payroll gaps, or asking after expenses have already been incurred will struggle. A company that can show a project budget, matching funds, hiring impact, and a realistic implementation timeline has a much better chance of moving from research to approval.`,
+                        page.cityName,
+                        page.provinceName,
+                        page.industryName,
+                        'us-landscape-2'
+                    )}
                 </p>
                 <p>
-                    Start with {primaryProgram.name} and {secondaryProgram.name}, then layer in SBA/SBDC support, industry-specific federal programs, and city or county incentives. This approach gives Google and users a clearer local funding map than a generic national grant list.
+                    {spinParagraph(
+                        `Start with ${primaryProgram.name} and ${secondaryProgram.name}, then layer in SBA/SBDC support, industry-specific federal programs, and city or county incentives. This approach gives Google and users a clearer local funding map than a generic national grant list.`,
+                        page.cityName,
+                        page.provinceName,
+                        page.industryName,
+                        'us-landscape-3'
+                    )}
                 </p>
             </div>
 
@@ -413,13 +431,31 @@ function UsPseoGrantContent({
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">Capital Stacking Strategy</h2>
                 <div className="space-y-4 text-gray-800 text-lg leading-relaxed">
                     <p>
-                        A practical U.S. funding stack starts with the project, not the grant. Define the expense category first: hiring, equipment, R&D, facility expansion, export development, clean energy, or training. Then match that expense to the correct funding lane.
+                        {spinParagraph(
+                            'A practical U.S. funding stack starts with the project, not the grant. Define the expense category first: hiring, equipment, R&D, facility expansion, export development, clean energy, or training. Then match that expense to the correct funding lane.',
+                            page.cityName,
+                            page.provinceName,
+                            page.industryName,
+                            'us-stacking-1'
+                        )}
                     </p>
                     <p>
-                        For {page.cityName} businesses, a common stack is local advisor support through an SBDC, a {page.provinceName} incentive or workforce program, federal support where the project qualifies, and a tax credit or lender-backed capital source for the portion that grants will not cover.
+                        {spinParagraph(
+                            `For ${page.cityName} businesses, a common stack is local advisor support through an SBDC, a ${page.provinceName} incentive or workforce program, federal support where the project qualifies, and a tax credit or lender-backed capital source for the portion that grants will not cover.`,
+                            page.cityName,
+                            page.provinceName,
+                            page.industryName,
+                            'us-stacking-2'
+                        )}
                     </p>
                     <p>
-                        The key rule is timing. Many programs reimburse approved expenses, so spending before approval can make the cost ineligible. Keep quotes, payroll estimates, board approvals, and project milestones ready before submitting.
+                        {spinParagraph(
+                            'The key rule is timing. Many programs reimburse approved expenses, so spending before approval can make the cost ineligible. Keep quotes, payroll estimates, board approvals, and project milestones ready before submitting.',
+                            page.cityName,
+                            page.provinceName,
+                            page.industryName,
+                            'us-stacking-3'
+                        )}
                     </p>
                 </div>
             </div>
@@ -428,13 +464,31 @@ function UsPseoGrantContent({
                 <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b pb-4">Tax and Compliance Notes</h2>
                 <div className="space-y-4">
                     <p>
-                        Grants, rebates, tax credits, and loan support do not behave the same way in your books. Some awards may be taxable income, some reduce eligible basis, and some require wage, investment, or location commitments after approval.
+                        {spinParagraph(
+                            'Grants, rebates, tax credits, and loan support do not behave the same way in your books. Some awards may be taxable income, some reduce eligible basis, and some require wage, investment, or location commitments after approval.',
+                            page.cityName,
+                            page.provinceName,
+                            page.industryName,
+                            'us-tax-1'
+                        )}
                     </p>
                     <p>
-                        If your {page.industryName} project uses R&D tax credits, workforce credits, or clean-energy incentives, keep separate records for salaries, contractors, equipment, and dates of service. Do not blend grant-funded costs with unsupported operating expenses.
+                        {spinParagraph(
+                            `If your ${page.industryName} project uses R&D tax credits, workforce credits, or clean-energy incentives, keep separate records for salaries, contractors, equipment, and dates of service. Do not blend grant-funded costs with unsupported operating expenses.`,
+                            page.cityName,
+                            page.provinceName,
+                            page.industryName,
+                            'us-tax-2'
+                        )}
                     </p>
                     <p>
-                        Before signing vendors or buying equipment, confirm whether the program requires pre-approval. This single timing mistake is one of the most common reasons otherwise strong applications are rejected.
+                        {spinParagraph(
+                            'Before signing vendors or buying equipment, confirm whether the program requires pre-approval. This single timing mistake is one of the most common reasons otherwise strong applications are rejected.',
+                            page.cityName,
+                            page.provinceName,
+                            page.industryName,
+                            'us-tax-3'
+                        )}
                     </p>
                 </div>
             </div>
@@ -445,19 +499,43 @@ function UsPseoGrantContent({
                     {[
                         {
                             phase: 'Step 1: Define the funded project',
-                            details: `Write a one-page project brief for your ${page.cityName} operation: the problem, budget, timeline, expected jobs, measurable outcome, and why outside funding changes the speed or scope.`,
+                            details: spinParagraph(
+                                `Write a one-page project brief for your ${page.cityName} operation: the problem, budget, timeline, expected jobs, measurable outcome, and why outside funding changes the speed or scope.`,
+                                page.cityName,
+                                page.provinceName,
+                                page.industryName,
+                                'us-step-1'
+                            ),
                         },
                         {
                             phase: 'Step 2: Match the right program lane',
-                            details: `Compare ${primaryProgram.name}, ${secondaryProgram.name}, SBA/SBDC support, and federal programs tied to your industry. Eliminate programs that require a larger hiring commitment, different location, or expenses you have already incurred.`,
+                            details: spinParagraph(
+                                `Compare ${primaryProgram.name}, ${secondaryProgram.name}, SBA/SBDC support, and federal programs tied to your industry. Eliminate programs that require a larger hiring commitment, different location, or expenses you have already incurred.`,
+                                page.cityName,
+                                page.provinceName,
+                                page.industryName,
+                                'us-step-2'
+                            ),
                         },
                         {
                             phase: 'Step 3: Build the evidence file',
-                            details: `Prepare quotes, payroll records, tax documents, incorporation records, project milestones, and proof of matching funds. Reviewers need to see that the project is ready, not just interesting.`,
+                            details: spinParagraph(
+                                'Prepare quotes, payroll records, tax documents, incorporation records, project milestones, and proof of matching funds. Reviewers need to see that the project is ready, not just interesting.',
+                                page.cityName,
+                                page.provinceName,
+                                page.industryName,
+                                'us-step-3'
+                            ),
                         },
                         {
                             phase: 'Step 4: Apply before spending',
-                            details: `For reimbursement programs, submit and wait for approval before committing funds. If you need to move quickly, ask the agency whether a formal notice to proceed is required.`,
+                            details: spinParagraph(
+                                'For reimbursement programs, submit and wait for approval before committing funds. If you need to move quickly, ask the agency whether a formal notice to proceed is required.',
+                                page.cityName,
+                                page.provinceName,
+                                page.industryName,
+                                'us-step-4'
+                            ),
                         },
                     ].map((step, idx) => (
                         <div key={idx} className="relative pl-12 border-l-4 border-primary pb-4">
@@ -476,13 +554,13 @@ function UsPseoGrantContent({
                     <Shield className="w-8 h-8 text-red-600" /> Common Reasons Applications Fail
                 </h2>
                 <ul className="space-y-4">
-                    {[
+                    {shuffleArray([
                         'Expenses were incurred before the approval date.',
                         'The project does not create measurable local economic impact.',
                         'The company cannot show matching capital or bridge financing.',
                         'The application uses a generic business plan instead of the program scoring criteria.',
                         'The business is too early for discretionary state incentives and should start with SBDC, local, or private funding paths.',
-                    ].map((item, idx) => (
+                    ], `us-dq-${page.cityName}`).map((item, idx) => (
                         <li key={idx} className="flex items-start gap-4">
                             <div className="bg-red-100 p-1.5 rounded-full mt-1 shrink-0">
                                 <ChevronRight className="w-5 h-5 text-red-600" />
@@ -708,7 +786,8 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
         page.provinceName,
         page.industryName,
         `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`,
-        page.publishedAt
+        page.publishedAt,
+        countryName
     );
 
     // Build the short answer — industry-specific or fall back to generic
