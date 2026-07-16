@@ -101,8 +101,8 @@ export function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center space-x-2 lg:space-x-4 xl:space-x-6 flex-1 justify-center">
-              <Link href="/" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+            <nav className="hidden xl:flex items-center space-x-2 2xl:space-x-4 flex-1 justify-center">
+              <Link href="/" className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap">
                 Home
               </Link>
 
@@ -112,7 +112,7 @@ export function Header() {
                 onMouseLeave={() => setUsaDropdownOpen(false)}
               >
                 <button
-                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap flex items-center gap-1 py-2"
                   onClick={() => {
                     setUsaDropdownOpen(!usaDropdownOpen)
                     setCanadaDropdownOpen(false)
@@ -164,7 +164,7 @@ export function Header() {
                 onMouseLeave={() => setCanadaDropdownOpen(false)}
               >
                 <button
-                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap flex items-center gap-1 py-2"
                   onClick={() => {
                     setCanadaDropdownOpen(!canadaDropdownOpen)
                     setUsaDropdownOpen(false)
@@ -210,11 +210,11 @@ export function Header() {
                 )}
               </div>
 
-              <Link href="/calculator" data-google-vignette="false" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/calculator" data-google-vignette="false" className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap">
                 Grant Calculator
               </Link>
 
-              <Link href="/grant-finder" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/grant-finder" className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap">
                 AI Grant Finder
               </Link>
 
@@ -224,7 +224,7 @@ export function Header() {
                 onMouseLeave={() => setProductsDropdownOpen(false)}
               >
                 <button
-                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap flex items-center gap-1 py-2"
                   onClick={() => {
                     if (!productsDropdownOpen) {
                       trackHeaderEvent('header_products_opened');
@@ -303,7 +303,7 @@ export function Header() {
                 onMouseLeave={() => setResourcesDropdownOpen(false)}
               >
                 <button
-                  className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap flex items-center gap-1 py-2"
+                  className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap flex items-center gap-1 py-2"
                   onClick={() => {
                     setResourcesDropdownOpen(!resourcesDropdownOpen)
                     setUsaDropdownOpen(false)
@@ -350,19 +350,19 @@ export function Header() {
                 )}
               </div>
 
-              <Link href="/about" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/about" className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap">
                 About
               </Link>
 
-              <Link href="/contact" data-google-vignette="false" className="text-gray-700 hover:text-primary font-medium text-sm lg:text-base whitespace-nowrap">
+              <Link href="/contact" data-google-vignette="false" className="text-gray-700 hover:text-primary font-medium text-xs 2xl:text-sm whitespace-nowrap">
                 Contact
               </Link>
             </nav>
 
             {/* Search Button */}
-            <div className="hidden md:flex items-center flex-shrink-0 gap-2">
+            <div className="hidden xl:flex items-center flex-shrink-0 gap-1.5 2xl:gap-2">
               <Button
-                className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs"
+                className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"
                 size="sm"
                 asChild
                 onClick={() => trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' })}
@@ -372,34 +372,34 @@ export function Header() {
                 </Link>
               </Button>
               <Button
-                className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs"
+                className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"
                 size="sm"
                 asChild
               >
                 <Link href="/calculator">
-                  Check Eligibility →
+                  Check Eligibility
                 </Link>
               </Button>
               <Button
                 variant="outline"
                 size="sm"
-                className="whitespace-nowrap"
+                className="px-3"
                 onClick={() => setIsSearchOpen(true)}
+                aria-label="Search Grants"
               >
-                <Search className="w-4 h-4 mr-2" />
-                Search Grants
+                <Search className="w-4 h-4" />
               </Button>
             </div>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden p-2 -mr-2 flex-shrink-0" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
+            <button className="xl:hidden p-2 -mr-2 flex-shrink-0" onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Toggle menu">
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
 
           {/* Mobile Menu - FIXED WITH SUBMENUS */}
           {isMenuOpen && (
-            <div className="md:hidden py-4 border-t border-gray-200 bg-white">
+            <div className="xl:hidden py-4 border-t border-gray-200 bg-white">
               <nav className="flex flex-col space-y-1">
                 <Link
                   href="/"
