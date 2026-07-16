@@ -1,6 +1,6 @@
 # FSI Digital — Internal Link Integrity Audit
 **Date:** 7/17/2026
-**Total Pages Indexed:** 7431
+**Total Pages Indexed:** 7716
 **Total Broken Links Found:** 0
 
 ## ✅ Clean Pass

@@ -1937,6 +1937,546 @@ export const CITIES = [
         "citySlug": "green-bay",
         "prov": "Wisconsin",
         "provSlug": "wi"
+    },
+    {
+        "city": "Champaign-Urbana",
+        "citySlug": "champaign-urbana",
+        "prov": "Illinois",
+        "provSlug": "il"
+    },
+    {
+        "city": "Peoria",
+        "citySlug": "peoria",
+        "prov": "Illinois",
+        "provSlug": "il"
+    },
+    {
+        "city": "Allentown / Lehigh Valley",
+        "citySlug": "allentown-lehigh-valley",
+        "prov": "Pennsylvania",
+        "provSlug": "pa"
+    },
+    {
+        "city": "Raleigh-Durham",
+        "citySlug": "raleigh-durham",
+        "prov": "North Carolina",
+        "provSlug": "nc"
+    },
+    {
+        "city": "Asheville",
+        "citySlug": "asheville",
+        "prov": "North Carolina",
+        "provSlug": "nc"
+    },
+    {
+        "city": "Princeton",
+        "citySlug": "princeton",
+        "prov": "New Jersey",
+        "provSlug": "nj"
+    },
+    {
+        "city": "Arlington / Alexandria",
+        "citySlug": "arlington-alexandria",
+        "prov": "Virginia",
+        "provSlug": "va"
+    },
+    {
+        "city": "Richmond",
+        "citySlug": "richmond",
+        "prov": "Virginia",
+        "provSlug": "va"
+    },
+    {
+        "city": "Norfolk / Virginia Beach",
+        "citySlug": "norfolk-virginia-beach",
+        "prov": "Virginia",
+        "provSlug": "va"
+    },
+    {
+        "city": "Boston / Cambridge",
+        "citySlug": "boston-cambridge",
+        "prov": "Massachusetts",
+        "provSlug": "ma"
+    },
+    {
+        "city": "Worcester",
+        "citySlug": "worcester",
+        "prov": "Massachusetts",
+        "provSlug": "ma"
+    },
+    {
+        "city": "Lowell",
+        "citySlug": "lowell",
+        "prov": "Massachusetts",
+        "provSlug": "ma"
+    },
+    {
+        "city": "Chandler / Tempe",
+        "citySlug": "chandler-tempe",
+        "prov": "Arizona",
+        "provSlug": "az"
+    },
+    {
+        "city": "Boulder",
+        "citySlug": "boulder",
+        "prov": "Colorado",
+        "provSlug": "co"
+    },
+    {
+        "city": "Rochester",
+        "citySlug": "rochester",
+        "prov": "Minnesota",
+        "provSlug": "mn"
+    },
+    {
+        "city": "Rockville-Bethesda",
+        "citySlug": "rockville-bethesda",
+        "prov": "Maryland",
+        "provSlug": "md"
+    },
+    {
+        "city": "Columbia",
+        "citySlug": "columbia",
+        "prov": "Maryland",
+        "provSlug": "md"
+    },
+    {
+        "city": "Bloomington",
+        "citySlug": "bloomington",
+        "prov": "Indiana",
+        "provSlug": "in"
+    },
+    {
+        "city": "Lafayette / West Lafayette",
+        "citySlug": "lafayette-west-lafayette",
+        "prov": "Indiana",
+        "provSlug": "in"
+    },
+    {
+        "city": "Green Bay / Appleton",
+        "citySlug": "green-bay-appleton",
+        "prov": "Wisconsin",
+        "provSlug": "wi"
+    },
+    {
+        "city": "St. Louis",
+        "citySlug": "st-louis",
+        "prov": "Missouri",
+        "provSlug": "mo"
+    },
+    {
+        "city": "Kansas City",
+        "citySlug": "kansas-city",
+        "prov": "Missouri",
+        "provSlug": "mo"
+    },
+    {
+        "city": "Columbia",
+        "citySlug": "columbia",
+        "prov": "Missouri",
+        "provSlug": "mo"
+    },
+    {
+        "city": "Greenville",
+        "citySlug": "greenville",
+        "prov": "South Carolina",
+        "provSlug": "sc"
+    },
+    {
+        "city": "Charleston",
+        "citySlug": "charleston",
+        "prov": "South Carolina",
+        "provSlug": "sc"
+    },
+    {
+        "city": "Columbia",
+        "citySlug": "columbia",
+        "prov": "South Carolina",
+        "provSlug": "sc"
+    },
+    {
+        "city": "Huntsville",
+        "citySlug": "huntsville",
+        "prov": "Alabama",
+        "provSlug": "al"
+    },
+    {
+        "city": "Birmingham",
+        "citySlug": "birmingham",
+        "prov": "Alabama",
+        "provSlug": "al"
+    },
+    {
+        "city": "Mobile",
+        "citySlug": "mobile",
+        "prov": "Alabama",
+        "provSlug": "al"
+    },
+    {
+        "city": "Lafayette",
+        "citySlug": "lafayette",
+        "prov": "Louisiana",
+        "provSlug": "la"
+    },
+    {
+        "city": "Bowling Green",
+        "citySlug": "bowling-green",
+        "prov": "Kentucky",
+        "provSlug": "ky"
+    },
+    {
+        "city": "Hillsboro / Washington County",
+        "citySlug": "hillsboro-washington-county",
+        "prov": "Oregon",
+        "provSlug": "or"
+    },
+    {
+        "city": "Bend",
+        "citySlug": "bend",
+        "prov": "Oregon",
+        "provSlug": "or"
+    },
+    {
+        "city": "Oklahoma City",
+        "citySlug": "oklahoma-city",
+        "prov": "Oklahoma",
+        "provSlug": "ok"
+    },
+    {
+        "city": "Tulsa",
+        "citySlug": "tulsa",
+        "prov": "Oklahoma",
+        "provSlug": "ok"
+    },
+    {
+        "city": "Pryor Creek",
+        "citySlug": "pryor-creek",
+        "prov": "Oklahoma",
+        "provSlug": "ok"
+    },
+    {
+        "city": "Hartford",
+        "citySlug": "hartford",
+        "prov": "Connecticut",
+        "provSlug": "ct"
+    },
+    {
+        "city": "New Haven",
+        "citySlug": "new-haven",
+        "prov": "Connecticut",
+        "provSlug": "ct"
+    },
+    {
+        "city": "Groton / New London",
+        "citySlug": "groton-new-london",
+        "prov": "Connecticut",
+        "provSlug": "ct"
+    },
+    {
+        "city": "Des Moines",
+        "citySlug": "des-moines",
+        "prov": "Iowa",
+        "provSlug": "ia"
+    },
+    {
+        "city": "Ames",
+        "citySlug": "ames",
+        "prov": "Iowa",
+        "provSlug": "ia"
+    },
+    {
+        "city": "Cedar Rapids",
+        "citySlug": "cedar-rapids",
+        "prov": "Iowa",
+        "provSlug": "ia"
+    },
+    {
+        "city": "Jackson",
+        "citySlug": "jackson",
+        "prov": "Mississippi",
+        "provSlug": "ms"
+    },
+    {
+        "city": "Biloxi / Gulfport",
+        "citySlug": "biloxi-gulfport",
+        "prov": "Mississippi",
+        "provSlug": "ms"
+    },
+    {
+        "city": "Starkville / Columbus",
+        "citySlug": "starkville-columbus",
+        "prov": "Mississippi",
+        "provSlug": "ms"
+    },
+    {
+        "city": "Bentonville",
+        "citySlug": "bentonville",
+        "prov": "Arkansas",
+        "provSlug": "ar"
+    },
+    {
+        "city": "Little Rock",
+        "citySlug": "little-rock",
+        "prov": "Arkansas",
+        "provSlug": "ar"
+    },
+    {
+        "city": "Osceola / Jonesboro",
+        "citySlug": "osceola-jonesboro",
+        "prov": "Arkansas",
+        "provSlug": "ar"
+    },
+    {
+        "city": "Kansas City (KS)",
+        "citySlug": "kansas-city-ks",
+        "prov": "Kansas",
+        "provSlug": "ks"
+    },
+    {
+        "city": "Manhattan / Junction City",
+        "citySlug": "manhattan-junction-city",
+        "prov": "Kansas",
+        "provSlug": "ks"
+    },
+    {
+        "city": "Salt Lake City",
+        "citySlug": "salt-lake-city",
+        "prov": "Utah",
+        "provSlug": "ut"
+    },
+    {
+        "city": "Lehi",
+        "citySlug": "lehi",
+        "prov": "Utah",
+        "provSlug": "ut"
+    },
+    {
+        "city": "St. George",
+        "citySlug": "st-george",
+        "prov": "Utah",
+        "provSlug": "ut"
+    },
+    {
+        "city": "Santa Fe",
+        "citySlug": "santa-fe",
+        "prov": "New Mexico",
+        "provSlug": "nm"
+    },
+    {
+        "city": "Las Cruces",
+        "citySlug": "las-cruces",
+        "prov": "New Mexico",
+        "provSlug": "nm"
+    },
+    {
+        "city": "Morgantown",
+        "citySlug": "morgantown",
+        "prov": "West Virginia",
+        "provSlug": "wv"
+    },
+    {
+        "city": "Charleston",
+        "citySlug": "charleston",
+        "prov": "West Virginia",
+        "provSlug": "wv"
+    },
+    {
+        "city": "Martinsburg",
+        "citySlug": "martinsburg",
+        "prov": "West Virginia",
+        "provSlug": "wv"
+    },
+    {
+        "city": "Grand Island",
+        "citySlug": "grand-island",
+        "prov": "Nebraska",
+        "provSlug": "ne"
+    },
+    {
+        "city": "Boise",
+        "citySlug": "boise",
+        "prov": "Idaho",
+        "provSlug": "id"
+    },
+    {
+        "city": "Twin Falls",
+        "citySlug": "twin-falls",
+        "prov": "Idaho",
+        "provSlug": "id"
+    },
+    {
+        "city": "Coeur d'Alene",
+        "citySlug": "coeur-dalene",
+        "prov": "Idaho",
+        "provSlug": "id"
+    },
+    {
+        "city": "Kailua-Kona",
+        "citySlug": "kailua-kona",
+        "prov": "Hawaii",
+        "provSlug": "hi"
+    },
+    {
+        "city": "Kahului",
+        "citySlug": "kahului",
+        "prov": "Hawaii",
+        "provSlug": "hi"
+    },
+    {
+        "city": "Portland",
+        "citySlug": "portland",
+        "prov": "Maine",
+        "provSlug": "me"
+    },
+    {
+        "city": "Bangor",
+        "citySlug": "bangor",
+        "prov": "Maine",
+        "provSlug": "me"
+    },
+    {
+        "city": "Lewiston/Auburn",
+        "citySlug": "lewistonauburn",
+        "prov": "Maine",
+        "provSlug": "me"
+    },
+    {
+        "city": "Manchester",
+        "citySlug": "manchester",
+        "prov": "New Hampshire",
+        "provSlug": "nh"
+    },
+    {
+        "city": "Nashua",
+        "citySlug": "nashua",
+        "prov": "New Hampshire",
+        "provSlug": "nh"
+    },
+    {
+        "city": "Portsmouth",
+        "citySlug": "portsmouth",
+        "prov": "New Hampshire",
+        "provSlug": "nh"
+    },
+    {
+        "city": "Providence",
+        "citySlug": "providence",
+        "prov": "Rhode Island",
+        "provSlug": "ri"
+    },
+    {
+        "city": "Newport",
+        "citySlug": "newport",
+        "prov": "Rhode Island",
+        "provSlug": "ri"
+    },
+    {
+        "city": "Pawtucket",
+        "citySlug": "pawtucket",
+        "prov": "Rhode Island",
+        "provSlug": "ri"
+    },
+    {
+        "city": "Bozeman",
+        "citySlug": "bozeman",
+        "prov": "Montana",
+        "provSlug": "mt"
+    },
+    {
+        "city": "Missoula",
+        "citySlug": "missoula",
+        "prov": "Montana",
+        "provSlug": "mt"
+    },
+    {
+        "city": "Billings",
+        "citySlug": "billings",
+        "prov": "Montana",
+        "provSlug": "mt"
+    },
+    {
+        "city": "Wilmington",
+        "citySlug": "wilmington",
+        "prov": "Delaware",
+        "provSlug": "de"
+    },
+    {
+        "city": "Newark",
+        "citySlug": "newark",
+        "prov": "Delaware",
+        "provSlug": "de"
+    },
+    {
+        "city": "Dover",
+        "citySlug": "dover",
+        "prov": "Delaware",
+        "provSlug": "de"
+    },
+    {
+        "city": "Fargo",
+        "citySlug": "fargo",
+        "prov": "North Dakota",
+        "provSlug": "nd"
+    },
+    {
+        "city": "Bismarck",
+        "citySlug": "bismarck",
+        "prov": "North Dakota",
+        "provSlug": "nd"
+    },
+    {
+        "city": "Grand Forks",
+        "citySlug": "grand-forks",
+        "prov": "North Dakota",
+        "provSlug": "nd"
+    },
+    {
+        "city": "Fairbanks",
+        "citySlug": "fairbanks",
+        "prov": "Alaska",
+        "provSlug": "ak"
+    },
+    {
+        "city": "Juneau",
+        "citySlug": "juneau",
+        "prov": "Alaska",
+        "provSlug": "ak"
+    },
+    {
+        "city": "Burlington",
+        "citySlug": "burlington",
+        "prov": "Vermont",
+        "provSlug": "vt"
+    },
+    {
+        "city": "Montpelier/Barre",
+        "citySlug": "montpelierbarre",
+        "prov": "Vermont",
+        "provSlug": "vt"
+    },
+    {
+        "city": "Brattleboro",
+        "citySlug": "brattleboro",
+        "prov": "Vermont",
+        "provSlug": "vt"
+    },
+    {
+        "city": "Cheyenne",
+        "citySlug": "cheyenne",
+        "prov": "Wyoming",
+        "provSlug": "wy"
+    },
+    {
+        "city": "Jackson",
+        "citySlug": "jackson",
+        "prov": "Wyoming",
+        "provSlug": "wy"
+    },
+    {
+        "city": "Laramie",
+        "citySlug": "laramie",
+        "prov": "Wyoming",
+        "provSlug": "wy"
     }
 ];
 
