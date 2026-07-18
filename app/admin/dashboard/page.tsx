@@ -10,9 +10,15 @@ import { AdminLoginForm } from '../leads/AdminLoginForm';
 import { AdminLogoutButton } from '../leads/AdminLogoutButton';
 import { seoExperiments } from '@/lib/data/seoExperiments';
 import {
+  getMCAApplications,
+  getMCAPriorityOrders,
+  getMCAPartnerSubmissions,
+  getMCAPartnerOutcomes
+} from '@/lib/mca/sheets';
+import {
   Lock, KeyRound, DollarSign, Users, Calculator, ArrowRight,
   TrendingUp, TrendingDown, BarChart3, Clock, Layers, Award, Tag, Sparkles,
-  Globe, Building2, Smartphone, Compass, Activity, MapPin
+  Globe, Building2, Smartphone, Compass, Activity, MapPin, Handshake, CheckSquare, Clock3
 } from 'lucide-react';
 
 export const dynamic = 'force-dynamic';
@@ -83,7 +89,7 @@ export default async function RevenueDashboardPage({
   searchParams: Promise<{ key?: string; tab?: string }>;
 }) {
   const resolvedParams = await searchParams;
-  const resolvedTab = resolvedParams.tab || 'founder';
+  const resolvedTab = resolvedParams.tab || 'mca';
   const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(ADMIN_SESSION_COOKIE)?.value;
@@ -97,12 +103,20 @@ export default async function RevenueDashboardPage({
   let purchases: any[] = [];
   let telemetry: any[] = [];
   let leads: any[] = [];
+  let mcaApplications: any[] = [];
+  let mcaPriorityOrders: any[] = [];
+  let mcaPartnerSubmissions: any[] = [];
+  let mcaPartnerOutcomes: any[] = [];
   let error: string | null = null;
 
   try {
     purchases = await getAllPurchases();
     telemetry = await getTelemetryEvents();
     leads = await getLeadsFromSheet(2000);
+    mcaApplications = await getMCAApplications(2000);
+    mcaPriorityOrders = await getMCAPriorityOrders(2000);
+    mcaPartnerSubmissions = await getMCAPartnerSubmissions(2000);
+    mcaPartnerOutcomes = await getMCAPartnerOutcomes(2000);
   } catch (err: any) {
     console.error('Error fetching dashboard data:', err);
     error = err.message || 'Failed to retrieve database records.';
@@ -234,6 +248,58 @@ export default async function RevenueDashboardPage({
     if (!dateStr) return false;
     return parseDateSafe(dateStr).getTime() >= TELEMETRY_LAUNCH_DATE.getTime();
   };
+
+  // --- Canada MCA Metrics Calculations ---
+  const mcaAppsToday = mcaApplications.filter(app => isToday(app.timestamp)).length;
+  const mcaAppsThisWeek = mcaApplications.filter(app => is7d(app.timestamp)).length;
+  
+  const mcaPriorityRevenue = mcaPriorityOrders
+    .filter(order => order.status === 'Captured' || order.status === 'succeeded' || order.status === 'COMPLETED')
+    .reduce((sum, order) => sum + (order.amountCAD || 0), 0);
+    
+  const mcaPartnerRevenue = mcaPartnerOutcomes.reduce((sum, outcome) => sum + (outcome.referralRevenue || 0), 0);
+  
+  const mcaTotalApps = mcaApplications.length;
+  const mcaPriorityApps = mcaApplications.filter(app => app.priorityProcessing).length;
+  const mcaConversionPct = mcaTotalApps > 0 ? (mcaPriorityApps / mcaTotalApps) * 100 : 0;
+  
+  const mcaPendingReviews = mcaPriorityOrders.filter(order => order.fulfilmentStatus === 'Queued' || order.fulfilmentStatus === 'In Review').length;
+  
+  const mcaWaitingCount = mcaApplications.filter(app => !app.partnerOutcome || app.applicationStatus === 'Received' || app.applicationStatus === 'Documents Received').length;
+  
+  const mcaLatestApplicants = [...mcaApplications]
+    .sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime())
+    .slice(0, 10);
+
+  const mcaProvinceCounts = new Map<string, number>();
+  mcaApplications.forEach(app => {
+    const prov = app.province || 'Unknown';
+    mcaProvinceCounts.set(prov, (mcaProvinceCounts.get(prov) || 0) + 1);
+  });
+  const mcaTopProvinceEntry = Array.from(mcaProvinceCounts.entries()).sort((a, b) => b[1] - a[1])[0];
+  const mcaTopProvince = mcaTopProvinceEntry ? `${mcaTopProvinceEntry[0]} (${mcaTopProvinceEntry[1]})` : 'N/A';
+
+  const mcaIndustryCounts = new Map<string, number>();
+  mcaApplications.forEach(app => {
+    const ind = app.industry || 'Unknown';
+    mcaIndustryCounts.set(ind, (mcaIndustryCounts.get(ind) || 0) + 1);
+  });
+  const mcaTopIndustryEntry = Array.from(mcaIndustryCounts.entries()).sort((a, b) => b[1] - a[1])[0];
+  const mcaTopIndustry = mcaTopIndustryEntry ? `${mcaTopIndustryEntry[0]} (${mcaTopIndustryEntry[1]})` : 'N/A';
+
+  const mcaCurrentMonthStart = new Date();
+  mcaCurrentMonthStart.setDate(1);
+  mcaCurrentMonthStart.setHours(0, 0, 0, 0);
+  
+  const mcaMonthlyPriorityRevenue = mcaPriorityOrders
+    .filter(order => (order.status === 'Captured' || order.status === 'succeeded' || order.status === 'COMPLETED') && new Date(order.timestamp).getTime() >= mcaCurrentMonthStart.getTime())
+    .reduce((sum, order) => sum + (order.amountCAD || 0), 0);
+    
+  const mcaMonthlyPartnerRevenue = mcaPartnerOutcomes
+    .filter(outcome => new Date(outcome.timestamp).getTime() >= mcaCurrentMonthStart.getTime())
+    .reduce((sum, outcome) => sum + (outcome.referralRevenue || 0), 0);
+    
+  const mcaMonthlyRevenueTotal = mcaMonthlyPriorityRevenue + mcaMonthlyPartnerRevenue;
 
   // Splitting telemetry, leads, purchases
   const postTelemetry = telemetry.filter((e) => parseDateSafe(e.timestamp).getTime() >= TELEMETRY_LAUNCH_DATE.getTime());
@@ -1653,6 +1719,16 @@ export default async function RevenueDashboardPage({
         <div className="border-b border-gray-200 mb-8 overflow-x-auto">
           <nav className="-mb-px flex space-x-8" aria-label="Tabs">
             <a
+              href={`/admin/dashboard?tab=mca${keyParamAmp}`}
+              className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
+                resolvedTab === 'mca'
+                  ? 'border-indigo-600 text-indigo-650'
+                  : 'border-transparent text-gray-400 hover:border-gray-300 hover:text-gray-600'
+              }`}
+            >
+              🇨🇦 Canada MCA Dashboard
+            </a>
+            <a
               href={`/admin/dashboard?tab=founder${keyParamAmp}`}
               className={`border-b-2 py-4 px-1 text-sm font-bold uppercase tracking-wider whitespace-nowrap ${
                 resolvedTab === 'founder'
@@ -1715,7 +1791,153 @@ export default async function RevenueDashboardPage({
           </nav>
         </div>
 
-        {resolvedTab === 'founder' ? (
+        {resolvedTab === 'mca' ? (
+          /* 🇨🇦🇨🇦🇨🇦 CANADA MCA DASHBOARD 🇨🇦🇨🇦🇨🇦 */
+          <div className="space-y-8 animate-fadeIn">
+            <div>
+              <h2 className="text-xl font-black text-slate-900 mb-2 flex items-center gap-2">
+                <Activity className="w-5 h-5 text-indigo-600" />
+                Canada Merchant Cash Advance (MCA) Command View
+              </h2>
+              <p className="text-xs text-slate-500 mb-4">Core metrics and operational status for fsidigital.ca business funding platform.</p>
+
+              <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+                {[
+                  { label: "Applications Today", value: mcaAppsToday.toLocaleString(), sub: "Last 24 hours", color: "border-indigo-200 bg-indigo-50/5" },
+                  { label: "Applications This Week", value: mcaAppsThisWeek.toLocaleString(), sub: "Last 7 days", color: "border-slate-200" },
+                  { label: "Priority Revenue", value: `$${mcaPriorityRevenue.toLocaleString()}`, sub: "$49 fast-track processing fees", color: "border-emerald-200 bg-emerald-50/10" },
+                  { label: "Partner Revenue", value: `$${mcaPartnerRevenue.toLocaleString()}`, sub: "Referral commissions payout", color: "border-indigo-200 bg-indigo-50/10" },
+                  { label: "Monthly Revenue", value: `$${mcaMonthlyRevenueTotal.toLocaleString()}`, sub: "Priority + partner this month", color: "border-emerald-300 bg-emerald-50/20" },
+                  { label: "Conversion %", value: `${mcaConversionPct.toFixed(1)}%`, sub: "Apps upgrading to Priority", color: "border-slate-200" },
+                  { label: "Pending Reviews", value: mcaPendingReviews.toLocaleString(), sub: "Queued/In Review priority orders", color: "border-amber-250 bg-amber-50/10" },
+                  { label: "Applications Waiting", value: mcaWaitingCount.toLocaleString(), sub: "Awaiting partner routing/docs", color: "border-slate-200" },
+                  { label: "Top Province", value: mcaTopProvince, sub: "Highest volume region", color: "border-slate-200" },
+                  { label: "Top Industry", value: mcaTopIndustry, sub: "Highest volume vertical", color: "border-slate-200" },
+                  { label: "Total Applications", value: mcaTotalApps.toLocaleString(), sub: "All-time submissions", color: "border-slate-200" },
+                ].map((stat) => (
+                  <div key={stat.label} className={`bg-white rounded-xl border p-4 shadow-sm flex flex-col justify-between ${stat.color}`}>
+                    <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider leading-none">{stat.label}</p>
+                    <p className="text-xl font-extrabold text-slate-950 mt-2.5 tracking-tight truncate">{stat.value}</p>
+                    <p className="text-[9px] text-gray-400 font-semibold mt-1 leading-tight">{stat.sub}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Latest Applicants Table & Partner Outcomes */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+              {/* Latest Applicants (Col 8) */}
+              <div className="lg:col-span-8 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Users className="w-4 h-4 text-indigo-600" />
+                    Latest MCA Applications (Recent 10)
+                  </h3>
+                  <span className="text-[9px] bg-indigo-50 text-indigo-700 border border-indigo-200 px-2 py-0.5 rounded font-bold uppercase">Real-time Sheets Sync</span>
+                </div>
+                <div className="overflow-x-auto">
+                  <table className="min-w-full divide-y divide-gray-200 text-left">
+                    <thead className="bg-gray-50 text-[10px] font-extrabold text-gray-500 uppercase tracking-wider">
+                      <tr>
+                        <th className="px-6 py-3">Business Name</th>
+                        <th className="px-6 py-3">Location & Industry</th>
+                        <th className="px-6 py-3">Monthly Revenue</th>
+                        <th className="px-6 py-3">Priority?</th>
+                        <th className="px-6 py-3">Status</th>
+                      </tr>
+                    </thead>
+                    <tbody className="divide-y divide-gray-100 text-xs text-gray-700">
+                      {mcaLatestApplicants.length > 0 ? (
+                        mcaLatestApplicants.map((app, idx) => (
+                          <tr key={idx} className="hover:bg-slate-50/40 transition">
+                            <td className="px-6 py-4">
+                              <div className="font-bold text-gray-900">{app.legalBusinessName}</div>
+                              <div className="text-[10px] text-gray-400 font-medium">{app.applicationId}</div>
+                            </td>
+                            <td className="px-6 py-4">
+                              <div>{app.province}, {app.city}</div>
+                              <div className="text-[10px] text-gray-400 font-medium">{app.industry}</div>
+                            </td>
+                            <td className="px-6 py-4 font-bold">
+                              ${(app.monthlyRevenue || 0).toLocaleString()}
+                            </td>
+                            <td className="px-6 py-4">
+                              {app.priorityProcessing ? (
+                                <span className="bg-amber-100 text-amber-800 border border-amber-250 text-[10px] px-2.5 py-0.5 rounded font-extrabold uppercase">
+                                  ⭐ PRIORITY
+                                </span>
+                              ) : (
+                                <span className="text-gray-400">-</span>
+                              )}
+                            </td>
+                            <td className="px-6 py-4">
+                              <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-[10px] font-bold border ${
+                                app.applicationStatus === 'Completed' ? 'bg-emerald-50 text-emerald-700 border-emerald-200' :
+                                app.applicationStatus === 'Documents Received' ? 'bg-indigo-50 text-indigo-700 border-indigo-200' :
+                                app.applicationStatus === 'Declined' ? 'bg-rose-50 text-rose-700 border-rose-200' :
+                                'bg-gray-100 text-gray-750 border-gray-300'
+                              }`}>
+                                {app.applicationStatus || 'Received'}
+                              </span>
+                            </td>
+                          </tr>
+                        ))
+                      ) : (
+                        <tr>
+                          <td colSpan={5} className="px-6 py-8 text-center text-gray-400 font-medium">No MCA applications found in spreadsheet.</td>
+                        </tr>
+                      )}
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+
+              {/* Partner Outcomes (Col 4) */}
+              <div className="lg:col-span-4 bg-white rounded-xl border border-gray-200 overflow-hidden shadow-sm flex flex-col">
+                <div className="border-b border-gray-150 px-5 py-4 bg-slate-50/50 flex items-center justify-between">
+                  <h3 className="font-extrabold text-slate-900 text-sm flex items-center gap-2">
+                    <Handshake className="w-4 h-4 text-emerald-600" />
+                    Latest Partner Submissions
+                  </h3>
+                  <span className="text-[9px] bg-emerald-50 text-emerald-700 border border-emerald-200 px-2 py-0.5 rounded font-bold uppercase">Referrals</span>
+                </div>
+                <div className="p-4 flex-1 overflow-y-auto max-h-[450px]">
+                  {mcaPartnerSubmissions.length > 0 ? (
+                    <div className="space-y-4">
+                      {mcaPartnerSubmissions.slice(0, 10).map((sub, idx) => {
+                        const matchingOutcome = mcaPartnerOutcomes.find(o => o.applicationId === sub.applicationId);
+                        return (
+                          <div key={idx} className="border-b border-slate-100 pb-3 last:border-0 last:pb-0">
+                            <div className="flex justify-between items-start gap-2">
+                              <div>
+                                <span className="font-bold text-slate-800 text-xs block">{sub.businessName}</span>
+                                <span className="text-[10px] text-gray-400 font-medium">Partner: {sub.submittedBy} ({sub.band} Band)</span>
+                              </div>
+                              <span className={`text-[9px] px-2 py-0.5 rounded font-bold uppercase shrink-0 ${
+                                matchingOutcome?.outcome === 'Funded' ? 'bg-emerald-100 text-emerald-800 border border-emerald-300' :
+                                matchingOutcome?.outcome === 'Declined' ? 'bg-rose-100 text-rose-800 border border-rose-300' :
+                                'bg-amber-100 text-amber-800 border border-amber-300'
+                              }`}>
+                                {matchingOutcome?.outcome || 'Sent / Pending'}
+                              </span>
+                            </div>
+                            {matchingOutcome?.referralRevenue > 0 && (
+                              <div className="text-[10px] text-emerald-750 font-bold mt-1">
+                                💸 Payout: ${matchingOutcome.referralRevenue.toLocaleString()} CAD
+                              </div>
+                            )}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  ) : (
+                    <p className="text-xs text-gray-400 text-center py-8 font-medium">No partner submissions recorded yet.</p>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        ) : resolvedTab === 'founder' ? (
           /* 📊📊📊 FOUNDER COMMAND VIEW 📊📊📊 */
           <div className="space-y-8 animate-fadeIn">
             {/* Monday Morning Scorecard Checklist */}

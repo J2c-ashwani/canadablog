@@ -106,3 +106,59 @@
   - [x] Build the project successfully
   - [x] Verify link structures and sitemap configurations
 
+## Phase 4: Canada Merchant Cash Advance (MCA) Platform (Phase 1)
+- [x] **Infrastructure & APIs**
+  - [x] Route group `(mca)` layout and structure
+  - [x] Sheets integration library with duplicate checking & payment update methods
+  - [x] Vercel Blob PDF file upload route
+  - [x] Main application ingestion pipeline `/api/mca/apply`
+  - [x] PayPal Priority Order initiation `/api/mca/priority-order`
+  - [x] PayPal Priority Order capture `/api/mca/capture-priority-order`
+  - [x] Initialize Google Sheets MCA tabs with headers (`scripts/setup-mca-sheets.js`)
+- [x] **Core & Commercial Pages**
+  - [x] Unified "Business Funding Canada" homepage `/`
+  - [x] 3-step Application flow `/apply`
+  - [x] Thank You & Priority Upsell page `/thank-you`
+  - [x] Priority Success capture verification page `/mca/priority-success`
+  - [x] Priority Processing product page `/priority-processing`
+  - [x] Interactive Funding Calculator `/funding-calculator`
+  - [x] Why Applications Get Declined page `/why-businesses-get-declined`
+  - [x] Merchant Cash Advance Canada page `/merchant-cash-advance-canada`
+  - [x] Business Cash Advance Canada page `/business-cash-advance-canada`
+  - [x] Working Capital Canada page `/working-capital-canada`
+  - [x] Fast Business Funding Canada page `/fast-business-funding-canada`
+  - [x] Same Day Business Funding Canada page `/same-day-business-funding`
+- [x] **Industry & Regional Pages**
+  - [x] 8 Industry vertical pages (Restaurant, Trucking, Construction, Retail, Healthcare, Auto Repair, Manufacturing, Transportation)
+  - [x] 4 Province pages (Ontario, British Columbia, Alberta, Quebec)
+- [x] **Resources & Guides**
+  - [x] Resources Hub integration (merged with main `/resources` page to avoid collisions)
+  - [x] How to Improve Business Cash Flow guide
+  - [x] Business Funding Checklist guide
+  - [x] Common Funding Mistakes guide
+  - [x] Understanding Factor Rates guide
+  - [x] How to Prepare Financial Documents guide
+  - [x] Business Credit Score Guide
+  - [x] Cash Flow Forecasting for Small Business
+- [x] **Verification**
+  - [x] Sitemap regenerated with all new MCA routes included
+
+## Phase 5: MCA Priority Processing Recovery Engine (P0)
+- [x] **Database & Schema Configuration**
+  - [x] Add 11 recovery columns to `setup-mca-sheets.js`
+  - [x] Create and run migration script `scripts/migrate-mca-sheets-recovery.js`
+  - [x] Update `lib/mca/types.ts` with recovery fields and enums
+  - [x] Update `lib/mca/sheets.ts` to write and read recovery columns, and add `getMCAConfig()`
+- [x] **Recovery Email Templates**
+  - [x] Create `lib/emails/mca-recovery.ts` with 5 high-converting templates using Resend
+- [x] **Token Resolution & Checkout Bridge**
+  - [x] Create `/api/mca/resolve-token` endpoint to decrypt/resolve tokens
+  - [x] Update `/priority-processing` to accept token parameter and load PayPal checkout directly
+- [x] **Recovery Cron Scheduler**
+  - [x] Create `/api/cron/process-mca-priority-recovery` GET handler to scan and process recovery emails
+- [x] **Verification**
+  - [x] Create test script `scripts/test-mca-recovery.ts` and run complete recovery sequence checks
+  - [x] Compile and verify type safety
+
+
+

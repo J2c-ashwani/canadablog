@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { CheckCircle, ExternalLink, Briefcase, Landmark, Scale, Calculator } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
     title: "Best Business Tools for Grant Applicants | Banking, Legal & Accounting",
@@ -155,6 +156,83 @@ export default function ResourcesPage() {
                                 <p className="text-gray-600 text-sm">
                                     "If you can't prove it, you didn't spend it." Accounting software is non-negotiable for reporting how you used grant money.
                                 </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Business Funding & Cash Flow Guides */}
+                    <div className="bg-white rounded-xl p-8 shadow-sm border border-gray-200 mb-12">
+                        <h2 className="text-2xl font-bold mb-6">Business Funding &amp; Cash Flow Guides</h2>
+                        <div className="grid md:grid-cols-2 gap-6">
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">6 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">How to Improve Business Cash Flow</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    Practical strategies for Canadian business owners to optimize receivables, manage payables, and maintain positive operational cash reserves.
+                                </p>
+                                <Link href="/resources/how-to-improve-business-cash-flow" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
+                            </div>
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">5 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">Small Business Funding Checklist</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    Prepare your business for a funding application. Learn the exact requirements, credit parameters, and timelines for grants and working capital.
+                                </p>
+                                <Link href="/resources/business-funding-checklist" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
+                            </div>
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">7 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">Common Small Business Funding Mistakes</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    Identify the top administrative and financial presentation errors that lead to immediate underwriting declines, and how to avoid them.
+                                </p>
+                                <Link href="/resources/common-funding-mistakes" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
+                            </div>
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">5 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">Understanding Factor Rates vs APR</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    Demystifying the pricing structure of Merchant Cash Advances. Learn how to calculate total cost of capital vs traditional APR interest.
+                                </p>
+                                <Link href="/resources/understanding-factor-rates" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
+                            </div>
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">4 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">How to Prepare Financial Documents</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    A complete walkthrough on formatting and exporting clean bank statements and entity registrations to pass automated underwriting OCR checks.
+                                </p>
+                                <Link href="/resources/how-to-prepare-financial-documents" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
+                            </div>
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">6 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">Business Credit Score Guide</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    Learn how credit bureaus in Canada track business credit scores, how underwriting uses it, and key steps to build high scores.
+                                </p>
+                                <Link href="/resources/business-credit-score-guide" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
+                            </div>
+                            <div className="border border-gray-100 rounded-lg p-6 hover:shadow-md transition md:col-span-2">
+                                <span className="text-gray-400 text-xs font-semibold block mb-2">5 min read</span>
+                                <h3 className="font-bold text-gray-900 text-lg mb-2">Cash Flow Forecasting for Small Business</h3>
+                                <p className="text-gray-500 text-sm leading-relaxed mb-4">
+                                    A step-by-step framework to project monthly cash inflows, track recurring obligations, and manage operational capital gaps.
+                                </p>
+                                <Link href="/resources/cash-flow-forecasting" className="text-blue-600 hover:text-blue-800 font-semibold text-sm">
+                                    Read Guide →
+                                </Link>
                             </div>
                         </div>
                     </div>

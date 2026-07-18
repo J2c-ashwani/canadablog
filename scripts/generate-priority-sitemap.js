@@ -26,6 +26,51 @@ const CORE_PRIORITY_ROUTES = [
   '/canada/government-grants',
   '/canada/innovation-grants',
   '/canada/women-business-grants',
+  
+  // MCA Platform — Core Pages
+  '/apply',
+  '/why-businesses-get-declined',
+  '/funding-calculator',
+  '/priority-processing',
+  '/merchant-cash-advance-canada',
+  '/business-cash-advance-canada',
+  '/working-capital-canada',
+  '/fast-business-funding-canada',
+  '/same-day-business-funding',
+  
+  // MCA Platform — Industry Verticals
+  '/restaurant-business-funding',
+  '/trucking-business-funding',
+  '/construction-business-funding',
+  '/retail-business-funding',
+  '/healthcare-business-funding',
+  '/auto-repair-financing',
+  '/manufacturing-business-funding',
+  '/transportation-business-funding',
+
+  // MCA Platform — Province Pages
+  '/ontario-business-funding',
+  '/british-columbia-business-funding',
+  '/alberta-business-funding',
+  '/quebec-business-funding',
+
+  // MCA Platform — Educational / Comparison Pages
+  '/merchant-cash-advance-vs-business-loan',
+  '/how-merchant-cash-advance-works',
+  '/business-loan-alternatives',
+  '/working-capital-guide',
+  '/funding-eligibility-guide',
+  '/merchant-cash-advance-rates',
+  
+  // MCA Platform — Resource Center
+  '/resources',
+  '/resources/how-to-improve-business-cash-flow',
+  '/resources/business-funding-checklist',
+  '/resources/common-funding-mistakes',
+  '/resources/understanding-factor-rates',
+  '/resources/how-to-prepare-financial-documents',
+  '/resources/business-credit-score-guide',
+  '/resources/cash-flow-forecasting',
 ]
 
 const GSC_QUICK_WIN_ROUTES = [
