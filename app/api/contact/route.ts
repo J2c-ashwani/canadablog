@@ -243,7 +243,7 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    console.log(`📧 B2B Lead Captured: ${name} (${email}) - Score: ${score}/100 - Tier: ${tier}`);
+    console.log(`📧 B2B Lead Captured successfully - Score: ${score}/100 - Tier: ${tier}`);
 
     // Send confirmation receipt email to the user (fire-and-forget)
     sendContactConfirmation({

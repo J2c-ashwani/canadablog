@@ -39,7 +39,7 @@ export async function POST(request: NextRequest) {
     // Here you would integrate with your email service provider
     // Examples: Mailchimp, ConvertKit, SendGrid, etc.
 
-    console.log(`📧 Newsletter signup: ${email}`)
+    console.log("📧 Newsletter signup processed successfully")
 
     // Send welcome email with PDF guide and OTO dashboard access
     await sendNewsletterWelcomeEmail(email, name, credentials.loginToken).catch((error) => {

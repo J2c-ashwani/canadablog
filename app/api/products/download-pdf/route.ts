@@ -94,7 +94,7 @@ export async function GET(req: NextRequest) {
     const safeProvince = (report.profile.province || 'Canada').toUpperCase().replace(/[^A-Z]/g, '');
     const safeIndustry = (report.profile.industry || 'Business').replace(/[^a-zA-Z0-9]/g, '-');
 
-    console.log(`📥 Server-side PDF downloaded for token: ${token} (${purchase.email})`);
+    console.log(`📥 Server-side PDF downloaded for token: ${token}`);
 
     return new NextResponse(pdfBuffer, {
       headers: {

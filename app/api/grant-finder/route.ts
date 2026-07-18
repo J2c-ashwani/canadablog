@@ -290,7 +290,7 @@ export async function POST(request: NextRequest) {
             html: emailBody
           })
         })
-        console.log(`✉️ Immediate welcome email sent to ${body.email} via Sender.net`)
+        console.log("✉️ Immediate welcome email sent successfully via Sender.net")
       } catch (emailErr) {
         console.error("❌ Failed to dispatch welcome email via Sender.net:", emailErr)
       }

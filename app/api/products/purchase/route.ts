@@ -490,7 +490,7 @@ export async function POST(request: NextRequest) {
 
       if (existing) {
         await SubscriberRepository.updateSubscriberPreferences(email, updates);
-        console.log(`✅ Main CRM lead updated as buyer for: ${email}`);
+        console.log("✅ Main CRM lead updated as buyer");
       } else {
         await SubscriberRepository.saveSubscriber({
           email,
@@ -506,7 +506,7 @@ export async function POST(request: NextRequest) {
           leadActivity: JSON.stringify(activity),
         });
         await SubscriberRepository.updateSubscriberPreferences(email, updates);
-        console.log(`✅ Main CRM lead created and marked as buyer for: ${email}`);
+        console.log("✅ Main CRM lead created and marked as buyer");
       }
     } catch (crmErr) {
       console.error('⚠️ CRM Leads sheet update failed but purchase was completed:', crmErr);

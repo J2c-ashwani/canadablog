@@ -19,6 +19,7 @@ import {
 } from '@/lib/mca/sheets';
 import { getMatchingPartners } from '@/lib/mca/partner-routing.config';
 import type { MCAApplication } from '@/lib/mca/types';
+import { applyRateLimit } from '@/lib/rate-limit';
 
 // ─── Validation Schema ────────────────────────────────────────────────────────
 
@@ -66,6 +67,12 @@ const applicationSchema = z.object({
 // ─── POST Handler ─────────────────────────────────────────────────────────────
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
+  // Rate limiting: 5 application submissions per hour per IP
+  if (process.env.NODE_ENV !== 'development') {
+    const limitRes = await applyRateLimit(request, 5, 60 * 60 * 1000);
+    if (limitRes.isLimited) return limitRes.response as NextResponse;
+  }
+
   try {
     let body: unknown;
     try {
