@@ -11,6 +11,7 @@
     "seo:priority-sitemap": "node scripts/generate-priority-sitemap.js",
     "seo:recovery-sitemap": "node scripts/generate-indexing-recovery-sitemap.js",
     "seo:partners-sitemap": "node scripts/generate-partners-sitemap.js",
+    "seo:mca-sitemap": "node scripts/generate-mca-sitemap.js",
     "funnel:analytics": "node scripts/sales-funnel-diagnostic.js",
     "funnel:hot-leads": "node scripts/hot-leads-report.js",
     "audit-links": "npx tsx scripts/audit-internal-links.ts"
