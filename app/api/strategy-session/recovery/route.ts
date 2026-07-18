@@ -3,13 +3,11 @@ import {
   type StrategyRecoveryEvent,
   upsertStrategyRecoveryEvent,
 } from '@/lib/strategy-session/recovery-store';
-import { verifyPayPalOrder } from '@/lib/payments/paypal';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
-import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 
 export const runtime = 'nodejs';
 
-const VALID_EVENTS: StrategyRecoveryEvent[] = ['shown', 'abandoned', 'paid'];
+const VALID_EVENTS: StrategyRecoveryEvent[] = ['shown', 'abandoned'];
 
 function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
@@ -33,6 +31,16 @@ export async function POST(request: NextRequest) {
 
     // Resolve details from Calendly if invitee URI is available
     if (calendlyInviteeUri) {
+      try {
+        const parsedUrl = new URL(calendlyInviteeUri);
+        if (parsedUrl.protocol !== 'https:' || parsedUrl.hostname !== 'api.calendly.com') {
+          console.error(`[Recovery API] Blocked invalid/malicious Calendly URI: ${calendlyInviteeUri}`);
+          return NextResponse.json({ error: 'Invalid Calendly URI protocol or host.' }, { status: 400 });
+        }
+      } catch (e) {
+        return NextResponse.json({ error: 'Malformed Calendly URI.' }, { status: 400 });
+      }
+
       const apiKey = process.env.CALENDLY_API_TOKEN || process.env.CALENDY_API_TOKEN;
       if (apiKey) {
         try {
@@ -77,41 +85,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Valid email is required.' }, { status: 400 });
     }
 
-    // Secure server-side PayPal order validation
-    if (event === 'paid') {
-      const paypalOrderId = clean(body.paypalOrderId);
-      let expectedAmount = "199.00"; // default
-      try {
-        const summary = JSON.parse(body.rawSummary);
-        if (summary.amount) {
-          expectedAmount = String(summary.amount);
-        } else if (summary.tier === 'vip') {
-          expectedAmount = "499.00";
-        }
-      } catch (e) {}
-
-      const verification = await verifyPayPalOrder(paypalOrderId, expectedAmount);
-      if (!verification.verified) {
-        return NextResponse.json({ error: `Payment verification failed: ${verification.error}` }, { status: 400 });
-      }
-
-      // Log purchase_product telemetry event
-      try {
-        const sessId = clean(body.sessionId, 'sess_anonymous');
-        const prodId = expectedAmount === "499.00" ? "strategy-vip" : "strategy-audit";
-        await recordTelemetryEvent({
-          eventName: 'purchase_product',
-          sessionId: sessId,
-          pagePath: clean(body.pagePath),
-          referrer: 'direct',
-          productId: prodId,
-          revenue: expectedAmount
-        });
-      } catch (tErr) {
-        console.error('Failed to log strategy recovery telemetry:', tErr);
-      }
-    }
-
     const result = await upsertStrategyRecoveryEvent({
       event,
       recoveryId,
@@ -151,7 +124,7 @@ export async function POST(request: NextRequest) {
             activity.auditBookedAt = activity.auditBookedAt || new Date().toISOString();
           }
 
-          activity.depositPaid = (event === 'paid' || result.record.status === 'paid');
+          activity.depositPaid = result.record.status === 'paid';
 
           if (activity.depositPaid) {
             activity.depositPaidAt = activity.depositPaidAt || new Date().toISOString();

@@ -7,6 +7,7 @@ import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { ShieldCheck, Check, DollarSign, Loader2, Sparkles } from "lucide-react"
 import Link from "next/link"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client'
 
 interface OTOUpsellCardProps {
   guideName: string
@@ -72,7 +73,7 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
     try {
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null)
 
           // Telemetry
@@ -86,40 +87,18 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
             })
           }).catch(() => {})
 
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: "29.00", currency_code: 'USD' },
-              description: `Grant Application Toolkit - OTO Upgrade (${guideName})`
-            }]
+          return createServerPayPalProductOrder({
+            productId: 'funding-toolkit', email: checkoutEmail,
+            name: checkoutEmail.split('@')[0] || 'Founder',
+            profileData: { province: 'ON', industry: 'other', revenue: 'startup', goal: 'research' },
+            attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
           })
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (data: any) => {
           try {
-            const details = await actions.order.capture()
-            const orderId = details?.id || ''
+            await finalizeServerPayPalProductOrder(data.orderID || '')
 
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                productId: 'funding-toolkit',
-                email: checkoutEmail,
-                name: checkoutEmail.split("@")[0] || "Founder",
-                paypalOrderId: orderId,
-                profileData: {
-                  province: 'ON',
-                  industry: 'other',
-                  revenue: 'startup',
-                  goal: 'research',
-                },
-                attribution: {
-                  landingPage: window.location.pathname,
-                  referrer: document.referrer || 'direct',
-                }
-              })
-            })
-
-            if (res.ok) {
+            {
               setIsPurchased(true)
               
               // Telemetry
@@ -132,9 +111,6 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
                   guideName
                 })
               }).catch(() => {})
-            } else {
-              const errData = await res.json()
-              setPaymentError(errData.error || "Failed to record purchase.")
             }
           } catch (e) {
             console.error("OTO Payment capture error:", e)

@@ -9,10 +9,14 @@ import {
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
 import type { FundingMatchReport, ReportProgram } from "@/lib/products/report-generator"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 
 function ReportContent() {
   const searchParams = useSearchParams();
   const token = searchParams.get("token");
+  const protectedAssetUrl = (asset: string) => token
+    ? `/api/products/download-asset?token=${encodeURIComponent(token)}&asset=${encodeURIComponent(asset)}`
+    : '#';
 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -194,7 +198,7 @@ function ReportContent() {
 
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null);
           if (typeof window !== 'undefined' && (window as any).gtag) {
             (window as any).gtag('event', 'begin_checkout', {
@@ -211,14 +215,20 @@ function ReportContent() {
               priceShown: upgradePrice.toString()
             })
           }).catch(e => console.error("Telemetry error:", e));
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: upgradePrice.toFixed(2), currency_code: 'USD' },
-              description: 'Funding Action Plan Upgrade - FSI Digital'
-            }]
+          return createServerPayPalProductOrder({
+            productId: 'funding-roadmap',
+            email: purchaseInfo?.email || '',
+            name: purchaseInfo?.name || 'Customer',
+            profileData: {
+              province: report.profile.province,
+              industry: report.profile.industry,
+              revenue: report.profile.revenue,
+              goal: report.profile.goal,
+            },
+            sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
           });
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (_data: any) => {
           try {
             // Fire payment_approved telemetry
             fetch("/api/subscriber/track-activity", {
@@ -230,34 +240,11 @@ function ReportContent() {
                 paypalOrderId: _data?.orderID || ''
               })
             }).catch(e => console.error("Telemetry error:", e));
-            const details = await actions.order.capture();
-            const orderId = details?.id || '';
+            const orderId = _data?.orderID || '';
+            if (!orderId) throw new Error('PayPal did not return an order ID.');
             
-            // Record the purchase of the action plan upgrade
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                productId: 'funding-roadmap',
-                email: purchaseInfo?.email,
-                name: purchaseInfo?.name,
-                paypalOrderId: orderId,
-                profileData: {
-                  province: report.profile.province,
-                  industry: report.profile.industry,
-                  revenue: report.profile.revenue,
-                  goal: report.profile.goal,
-                },
-                sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
-              })
-            });
-
-            const json = await res.json();
-            if (res.ok && json.success) {
-              window.location.reload();
-            } else {
-              throw new Error(json.error || 'Failed to record purchase');
-            }
+            await finalizeServerPayPalProductOrder(orderId);
+            window.location.reload();
           } catch (err) {
             console.error("Payment capture error:", err);
             setPaymentError("Payment was successful, but we failed to unlock the action plan. Please contact hello@fsidigital.ca.");
@@ -341,12 +328,12 @@ function ReportContent() {
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
               {[
-                { name: "1. Grant Budget Template (.xlsx)", url: "/templates/FSI-Grant-Budget-Builder.xlsx" },
-                { name: "2. Cash Flow Forecast Model (.xlsx)", url: "/templates/FSI-Cash-Flow-Forecast.xlsx" },
-                { name: "3. Hiring & Wage Subsidy Plan (.docx)", url: "/templates/FSI-Hiring-Plan-Template.docx" },
-                { name: "4. Project Proposal Outline (.docx)", url: "/templates/FSI-Project-Proposal-Framework.docx" },
-                { name: "5. Pre-Submission Checklist (.pdf)", url: "/templates/FSI-Readiness-Preflight-Checklist.pdf" },
-                { name: "6. Application Progress Tracker (.xlsx)", url: "/templates/FSI-Application-Tracking-Sheet.xlsx" }
+                { name: "1. Grant Budget Template (.xlsx)", url: protectedAssetUrl('grant-budget-builder') },
+                { name: "2. Cash Flow Forecast Model (.xlsx)", url: protectedAssetUrl('cash-flow-forecast') },
+                { name: "3. Hiring & Wage Subsidy Plan (.docx)", url: protectedAssetUrl('hiring-plan-template') },
+                { name: "4. Project Proposal Outline (.docx)", url: protectedAssetUrl('project-proposal-framework') },
+                { name: "5. Pre-Submission Checklist (.pdf)", url: protectedAssetUrl('readiness-preflight-checklist') },
+                { name: "6. Application Progress Tracker (.xlsx)", url: protectedAssetUrl('application-tracking-sheet') }
               ].map((file, idx) => (
                 <a
                   key={idx}
@@ -394,7 +381,7 @@ function ReportContent() {
                 </p>
               </div>
               <a
-                href="/templates/FSI-Funding-Approval-Guide.pdf"
+                href={protectedAssetUrl('funding-approval-guide')}
                 download
                 className="inline-flex items-center gap-1 text-xs font-bold text-indigo-650 hover:text-indigo-850 mt-1"
               >
@@ -506,12 +493,12 @@ function ReportContent() {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {[
-              { name: "1. Grant Budget Template (.xlsx)", url: "/templates/FSI-Grant-Budget-Builder.xlsx" },
-              { name: "2. Cash Flow Forecast Model (.xlsx)", url: "/templates/FSI-Cash-Flow-Forecast.xlsx" },
-              { name: "3. Hiring & Wage Subsidy Plan (.docx)", url: "/templates/FSI-Hiring-Plan-Template.docx" },
-              { name: "4. Project Proposal Outline (.docx)", url: "/templates/FSI-Project-Proposal-Framework.docx" },
-              { name: "5. Pre-Submission Checklist (.pdf)", url: "/templates/FSI-Readiness-Preflight-Checklist.pdf" },
-              { name: "6. Application Progress Tracker (.xlsx)", url: "/templates/FSI-Application-Tracking-Sheet.xlsx" }
+              { name: "1. Grant Budget Template (.xlsx)", url: protectedAssetUrl('grant-budget-builder') },
+              { name: "2. Cash Flow Forecast Model (.xlsx)", url: protectedAssetUrl('cash-flow-forecast') },
+              { name: "3. Hiring & Wage Subsidy Plan (.docx)", url: protectedAssetUrl('hiring-plan-template') },
+              { name: "4. Project Proposal Outline (.docx)", url: protectedAssetUrl('project-proposal-framework') },
+              { name: "5. Pre-Submission Checklist (.pdf)", url: protectedAssetUrl('readiness-preflight-checklist') },
+              { name: "6. Application Progress Tracker (.xlsx)", url: protectedAssetUrl('application-tracking-sheet') }
             ].map((file, idx) => (
               <a
                 key={idx}
@@ -559,7 +546,7 @@ function ReportContent() {
               </p>
             </div>
             <a
-              href="/templates/FSI-Funding-Approval-Guide.pdf"
+              href={protectedAssetUrl('funding-approval-guide')}
               download
               className="inline-flex items-center gap-1 text-xs font-bold text-indigo-650 hover:text-indigo-850 mt-1"
             >

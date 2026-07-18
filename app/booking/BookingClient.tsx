@@ -10,9 +10,10 @@ import { safeSessionStorage } from '@/lib/storage';
 interface BookingClientProps {
   prefilledEmail?: string
   prefilledName?: string
+  token?: string
 }
 
-export default function BookingClient({ prefilledEmail = '', prefilledName = '' }: BookingClientProps) {
+export default function BookingClient({ prefilledEmail = '', prefilledName = '', token = '' }: BookingClientProps) {
   const [loading, setLoading] = useState(true);
   const [isSuccess, setIsSuccess] = useState(false);
   const [email, setEmail] = useState(prefilledEmail);
@@ -20,6 +21,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
   const [rid, setRid] = useState('');
   const [source, setSource] = useState('');
   const [orderId, setOrderId] = useState('');
+  const [tokenState, setTokenState] = useState(token);
 
   // Pre-call questionnaire state
   const [qGoal, setQGoal] = useState('');
@@ -44,10 +46,19 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
     const parsedRid = searchParams.get('rid') || '';
     const parsedSource = searchParams.get('source') || '';
     const parsedOrderId = searchParams.get('order') || '';
+    const parsedToken = token || searchParams.get('token') || '';
     setEmail(parsedEmail);
     setName(parsedName);
     setSource(parsedSource);
     setOrderId(parsedOrderId);
+    if (parsedToken) {
+      setTokenState(parsedToken);
+    } else {
+      try {
+        const storedToken = localStorage.getItem("fsi_login_token") || sessionStorage.getItem("fsi_login_token") || '';
+        if (storedToken) setTokenState(storedToken);
+      } catch (e) {}
+    }
 
     let finalRid = parsedRid;
     if (finalRid) {
@@ -324,6 +335,7 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '' 
                             auditGoal: qGoal,
                             businessAge: qAge,
                             fundingExperience: qExperience,
+                            token: tokenState,
                           }),
                         });
                         setQSubmitted(true);

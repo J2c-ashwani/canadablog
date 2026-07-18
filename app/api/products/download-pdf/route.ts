@@ -1,7 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateFundingMatchReport } from '@/lib/products/report-generator';
 import { generateFundingMatchReportPDF } from '@/lib/products/report-pdf';
-import { getPurchaseByToken, getPurchasesByEmail } from '@/lib/products/purchase-store';
+import { getPurchaseByToken } from '@/lib/products/purchase-store';
+import { hasActiveEntitlement } from '@/lib/products/entitlements';
 
 /**
  * GET /api/products/download-pdf?token=...
@@ -64,21 +65,7 @@ export async function GET(req: NextRequest) {
     }
 
     // 3. Check for Action Plan upgrade matching this email
-    let hasStrategyUnlocked = false;
-    try {
-      const emailPurchases = await getPurchasesByEmail(purchase.email);
-      const activePurchases = emailPurchases.filter(
-        (p: any) => activeStatuses.includes(String(p.status || '').toLowerCase().trim())
-      );
-      hasStrategyUnlocked = activePurchases.some(
-        (p: any) => p.productId === 'funding-roadmap' || p.productId === 'funding-bundle'
-      );
-    } catch (err) {
-      console.error('Failed to verify email purchases inside download API:', err);
-      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-roadmap') {
-        hasStrategyUnlocked = true;
-      }
-    }
+    const hasStrategyUnlocked = await hasActiveEntitlement(purchase.email, 'action-plan');
 
     // 4. Generate report data structure
     const report = generateFundingMatchReport({

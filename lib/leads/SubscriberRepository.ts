@@ -1,10 +1,15 @@
-import crypto from "crypto"
 import { 
   appendLeadToSheet, 
   getLeadsFromSheet, 
   updateLeadInSheet 
 } from "@/lib/google-sheets"
 import type { LeadCaptureData } from "@/lib/leads/scoring"
+import {
+  createLoginToken,
+  createUnsubscribeToken,
+  isLoginToken,
+  isUnsubscribeToken,
+} from '@/lib/auth/subscriber-tokens'
 
 export interface SubscriberProfile {
   email: string
@@ -74,21 +79,45 @@ export interface ISubscriberRepository {
   getAllSubscribers(includeUnsubscribed?: boolean): Promise<SubscriberProfile[]>
 }
 
-export const getFallbackLoginToken = (email: string): string => {
-  const tokenSalt = process.env.SESSION_TOKEN_SALT || 'fsi-login-token-2026';
-  return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + tokenSalt).digest("hex").slice(0, 32);
+export const getFallbackLoginToken = (_email: string): string => {
+  // Legacy deterministic tokens were predictable and are intentionally unsupported.
+  return '';
 };
 
-export const getFallbackUnsubscribeToken = (email: string): string => {
-  const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT || 'fsi-salt-2026';
-  return 'v2_' + crypto.createHash("sha256").update(email.toLowerCase().trim() + unsubscribeSalt).digest("hex").slice(0, 32);
+export const getFallbackUnsubscribeToken = (_email: string): string => {
+  return '';
 };
 
-export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
-  private generateToken(): string {
-    return "v2_" + crypto.randomBytes(16).toString("hex")
+/**
+ * Migrates a subscriber to capability-scoped credentials.  The legacy token
+ * formats deliberately never authenticate a request after this release.
+ */
+export async function ensureScopedSubscriberTokens(email: string): Promise<{
+  loginToken: string;
+  unsubscribeToken: string;
+} | null> {
+  const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
+  if (!subscriber) return null;
+
+  const loginToken = isLoginToken(subscriber.loginToken, subscriber.loginToken)
+    ? subscriber.loginToken
+    : createLoginToken();
+  const unsubscribeToken = isUnsubscribeToken(subscriber.unsubscribeToken, subscriber.unsubscribeToken)
+    ? subscriber.unsubscribeToken
+    : createUnsubscribeToken();
+
+  if (loginToken !== subscriber.loginToken || unsubscribeToken !== subscriber.unsubscribeToken) {
+    const updated = await SubscriberRepository.updateSubscriberPreferences(email, {
+      loginToken,
+      unsubscribeToken,
+    });
+    if (!updated.success) return null;
   }
 
+  return { loginToken: loginToken!, unsubscribeToken: unsubscribeToken! };
+}
+
+export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   private mapLeadToSubscriber(lead: any): SubscriberProfile {
     const interestsRaw = lead.fundingInterests || []
     
@@ -101,12 +130,12 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       companySize: (lead.companySize || "1-9") as any,
       fundingInterests: interestsRaw as any[],
       isSubscribed: lead.isSubscribed !== false,
-      unsubscribeToken: lead.unsubscribeToken || (lead.email ? getFallbackUnsubscribeToken(lead.email) : this.generateToken()),
+      unsubscribeToken: lead.unsubscribeToken || '',
       engagementScore: lead.engagementScore !== undefined ? Number(lead.engagementScore) : 100,
       lastOpenedAt: lead.lastOpenedAt || undefined,
       lastClickedAt: lead.lastClickedAt || undefined,
       timestamp: lead.timestamp,
-      loginToken: lead.loginToken || (lead.email ? getFallbackLoginToken(lead.email) : this.generateToken()),
+      loginToken: lead.loginToken || '',
       subscriptionStatus: lead.subscriptionStatus || "inactive",
       subscriptionId: lead.subscriptionId || "",
       trialStartedAt: lead.trialStartedAt || "",
@@ -167,8 +196,8 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         })
       }
 
-      const token = this.generateToken()
-      const logToken = this.generateToken()
+      const token = createUnsubscribeToken()
+      const logToken = createLoginToken()
       const data: LeadCaptureData = {
         source: "Funding Intelligence Alerts Registration",
         timestamp: new Date().toISOString(),
@@ -355,20 +384,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   }
 
   async unsubscribe(token: string): Promise<{ success: boolean; error?: any }> {
-    if (!token || !token.startsWith('v2_')) {
-      return { success: false, error: "Legacy or invalid unsubscribe token" }
-    }
-
     try {
-      const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT || 'fsi-salt-2026';
       const allLeads = await getLeadsFromSheet(1000)
       const found = allLeads.find((l: any) => {
-        if (l.unsubscribeToken === token) return true
-        if (!l.unsubscribeToken && l.email) {
-          const deterministic = 'v2_' + crypto.createHash("sha256").update(l.email.toLowerCase().trim() + unsubscribeSalt).digest("hex").slice(0, 32)
-          return deterministic === token
-        }
-        return false
+        return isUnsubscribeToken(token, l.unsubscribeToken)
       })
       if (!found) {
         console.warn(`Unsubscribe token not found: ${token}`)

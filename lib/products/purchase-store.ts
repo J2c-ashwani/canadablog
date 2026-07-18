@@ -395,6 +395,32 @@ export async function getPurchasesByEmail(email: string): Promise<PurchaseRecord
   }
 }
 
+/** Revokes product access before an external refund is initiated. */
+export async function updatePurchaseStatusByOrder(orderId: string, status: string) {
+  const sheets = await getGoogleSheetsClient();
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
+
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A2:T`,
+  });
+  const rows = response.data.values || [];
+  const matches: PurchaseRecord[] = [];
+  for (let index = 0; index < rows.length; index++) {
+    if (rows[index][5] !== orderId) continue;
+    rows[index][9] = status;
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!J${index + 2}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[status]] },
+    });
+    matches.push(parseRow(rows[index]));
+  }
+  return matches;
+}
+
 function parseRow(row: string[]): PurchaseRecord {
   return {
     purchaseId: row[0] || '',

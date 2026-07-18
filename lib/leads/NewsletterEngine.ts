@@ -104,7 +104,7 @@ export class NewsletterEngine {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
       range: `${SETTINGS_SHEET_NAME}!A2:I2`,
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       requestBody: { values }
     })
   }
@@ -148,7 +148,7 @@ export class NewsletterEngine {
         await sheets.spreadsheets.values.update({
           spreadsheetId,
           range: `${SETTINGS_SHEET_NAME}!A1:I1`,
-          valueInputOption: "USER_ENTERED",
+          valueInputOption: "RAW",
           requestBody: { values: headers }
         })
       }

@@ -3,6 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import { Loader2, ShieldCheck, CreditCard, CheckCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
 
 interface StandaloneCheckoutProps {
   productId: 'funding-roadmap' | 'funding-toolkit' | 'funding-approval-library' | 'funding-match-report';
@@ -215,7 +216,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           label: 'pay',
           height: 44
         },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null);
           setCheckoutStarted(true);
           
@@ -240,60 +241,29 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             })
           }).catch(e => console.error(e));
 
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: finalPrice.toFixed(2), currency_code: 'USD' },
-              description: `${finalProductName} - FSI Digital`
-            }]
+          return createServerPayPalProductOrder({
+            productId: finalProductId,
+            email: email.trim(),
+            name: name.trim() || 'Premium Member',
+            addons,
+            profileData: {
+              province: personalizedRegion || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_region') || '') : ''),
+              industry: personalizedIndustry || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_industry') || '') : ''),
+              revenue: '', goal: '',
+            },
+            sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
+            attribution: attributionData,
           });
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (data: any) => {
           try {
             setIsProcessing(true);
-            const details = await actions.order.capture();
-            const orderId = details?.id || '';
-
-            const payerEmail = email.trim() || details?.payer?.email_address || '';
-            const payerName = name.trim() || (details?.payer?.name ? `${details.payer.name.given_name || ''} ${details.payer.name.surname || ''}`.trim() : 'Premium Member');
-
-            // Record purchase
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                productId: finalProductId,
-                email: payerEmail,
-                name: payerName,
-                paypalOrderId: orderId,
-                addons,
-                profileData: {
-                  province: personalizedRegion || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_region') || "") : ""),
-                  industry: personalizedIndustry || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_industry') || "") : ""),
-                  revenue: "",
-                  goal: ""
-                },
-                sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
-                attribution: {
-                  landingPage: attributionData.landingPage,
-                  referrer: attributionData.referrer,
-                  utmSource: attributionData.utmSource,
-                  utmMedium: attributionData.utmMedium,
-                  utmCampaign: attributionData.utmCampaign,
-                  lastTouchPage: attributionData.lastTouchPage,
-                  lastTouchReferrer: attributionData.lastTouchReferrer,
-                  device: attributionData.device,
-                  browser: attributionData.browser,
-                  country: attributionData.country
-                }
-              })
-            });
-
-            const json = await res.json();
-            if (res.ok && json.success && json.deliveryUrl) {
+            const json = await finalizeServerPayPalProductOrder(data.orderID || '');
+            if (json.deliveryUrl) {
               // Redirect to delivery page
               window.location.href = json.deliveryUrl;
             } else {
-              throw new Error(json.error || 'Failed to record purchase');
+              throw new Error('Payment verification did not return a delivery link.');
             }
           } catch (err: any) {
             console.error("Capture error:", err);

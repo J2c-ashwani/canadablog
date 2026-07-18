@@ -1,6 +1,7 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { verifyPayPalSubscription } from '@/lib/payments/paypal';
+import { isLoginToken } from '@/lib/auth/subscriber-tokens';
 
 export const runtime = 'nodejs';
 
@@ -13,10 +14,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email, action, and token are required.' }, { status: 400 });
     }
 
-    if (!token.startsWith('v2_')) {
-      return NextResponse.json({ error: 'Invalid token format.' }, { status: 400 });
-    }
-
     if (action !== 'trial' && action !== 'active') {
       return NextResponse.json({ error: 'Invalid upgrade action.' }, { status: 400 });
     }
@@ -26,7 +23,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Subscriber not found.' }, { status: 404 });
     }
 
-    if (subscriber.loginToken !== token) {
+    if (!isLoginToken(token, subscriber.loginToken)) {
       return NextResponse.json({ error: 'Unauthorized. Invalid token.' }, { status: 401 });
     }
 

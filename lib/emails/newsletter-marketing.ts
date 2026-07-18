@@ -39,7 +39,7 @@ const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
 function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string, preheader?: string) {
   const pricing = getReactivationPriceForEmail(loginToken); // fallback if token used
   const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=newsletter_campaign`;
-  const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${loginToken}`;
+  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
   const year = new Date().getFullYear();
 
   return `
@@ -783,7 +783,7 @@ export async function sendReactivationFinalCloseEmail(data: ReactivationEmailDat
 export async function sendReactivationFounderEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_founder`;
-  const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${data.loginToken}`;
+  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   const { leadClass, companyName, industry, region, provinceName } = getLeadSegmentation(data);
 
@@ -896,5 +896,4 @@ export async function sendNewsletterWelcomeEmail(to: string, name?: string, logi
     from: BRAND_SENDER,
   });
 }
-
 

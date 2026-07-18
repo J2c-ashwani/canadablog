@@ -3,7 +3,7 @@ import { sendEmail, getFirstName, escapeHtml } from "./mailer";
 const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
 
 function wrapAlertNurtureTemplate(contentHtml: string, loginToken: string, firstName: string) {
-  const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${loginToken}`;
+  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
   const year = new Date().getFullYear();
 
   return `
@@ -411,4 +411,3 @@ export async function sendAlertReferralEmail({
 
   return sendEmail({ to, subject, html, text, tagType: 'alert-nurture-referral' });
 }
-

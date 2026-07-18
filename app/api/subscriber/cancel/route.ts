@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { isLoginToken } from '@/lib/auth/subscriber-tokens';
 
 export const runtime = 'nodejs';
 
@@ -23,10 +24,6 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Email, reason, and token are required.' }, { status: 400 });
     }
 
-    if (!token.startsWith('v2_')) {
-      return NextResponse.json({ error: 'Invalid token format.' }, { status: 400 });
-    }
-
     // Validate that the reason is one of the structured options
     if (!CANCELLATION_REASONS.includes(reason as any)) {
       return NextResponse.json({ 
@@ -39,7 +36,7 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Subscriber not found.' }, { status: 404 });
     }
 
-    if (subscriber.loginToken !== token) {
+    if (!isLoginToken(token, subscriber.loginToken)) {
       return NextResponse.json({ error: 'Unauthorized. Invalid token.' }, { status: 401 });
     }
 

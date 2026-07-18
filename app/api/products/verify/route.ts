@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { generateFundingMatchReport } from '@/lib/products/report-generator';
+import { hasActiveEntitlement } from '@/lib/products/entitlements';
 
 /**
  * GET /api/products/verify?token=...
@@ -53,43 +54,12 @@ export async function GET(req: NextRequest) {
       profileData = {};
     }
 
-    // ── Check if Funding Action Plan, Toolkit, or Approval Library is unlocked ──
-    let hasStrategyUnlocked = false;
-    let hasToolkitUnlocked = false;
-    let hasApprovalLibraryUnlocked = false;
-    
-    try {
-      const { getPurchasesByEmail } = await import('@/lib/products/purchase-store');
-      const emailPurchases = await getPurchasesByEmail(purchase.email);
-      
-      // Filter out refunded, failed, or cancelled purchases
-      const activePurchases = emailPurchases.filter(
-        (p: any) => activeStatuses.includes(String(p.status || '').toLowerCase().trim())
-      );
-      
-      // Entitlement matrix: Complete bundle unlocks all components
-      hasStrategyUnlocked = activePurchases.some(
-        (p: any) => p.productId === 'funding-roadmap' || p.productId === 'funding-bundle'
-      );
-      hasToolkitUnlocked = activePurchases.some(
-        (p: any) => p.productId === 'funding-toolkit' || p.productId === 'funding-bundle'
-      );
-      hasApprovalLibraryUnlocked = activePurchases.some(
-        (p: any) => p.productId === 'funding-approval-library' || p.productId === 'funding-bundle'
-      );
-    } catch (err) {
-      console.error('Failed to query purchases by email:', err);
-      // Fallback check using current purchase record
-      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-roadmap') {
-        hasStrategyUnlocked = true;
-      }
-      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-toolkit') {
-        hasToolkitUnlocked = true;
-      }
-      if (purchase.productId === 'funding-bundle' || purchase.productId === 'funding-approval-library') {
-        hasApprovalLibraryUnlocked = true;
-      }
-    }
+    // Entitlements are capability-based; products never inherit unrelated access by price or email.
+    const [hasStrategyUnlocked, hasToolkitUnlocked, hasApprovalLibraryUnlocked] = await Promise.all([
+      hasActiveEntitlement(purchase.email, 'action-plan'),
+      hasActiveEntitlement(purchase.email, 'toolkit'),
+      hasActiveEntitlement(purchase.email, 'approval-library'),
+    ]);
 
     // Generate the full report from the profile data
     const report = generateFundingMatchReport({

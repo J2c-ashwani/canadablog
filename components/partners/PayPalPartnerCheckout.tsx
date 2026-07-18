@@ -92,28 +92,21 @@ export function PayPalPartnerCheckout({
         setError('');
         return actions.resolve();
       },
-      createOrder: (_data: unknown, actions: any) => {
+      createOrder: async () => {
         setIsProcessing(true);
         setError('');
-        const amount = selectedPackage.priceUsd.toFixed(2);
-
-        return actions.order.create({
-          purchase_units: [
-            {
-              reference_id: selectedPackage.id,
-              custom_id: selectedPackage.id,
-              amount: {
-                value: amount,
-                currency_code: currency,
-              },
-              description: `${selectedPackage.name} - FSI Digital`,
-            },
-          ],
+        const response = await fetch('/api/paypal/create-order', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ packageId: selectedPackage.id }),
         });
+        const data = await response.json();
+        if (!response.ok || !data.id) throw new Error(data.error || 'Unable to start secure checkout.');
+        return data.id;
       },
-      onApprove: async (data: { orderID?: string }, actions: any) => {
-        const capture = await actions.order.capture();
-        const orderId = capture?.id || data.orderID || '';
+      onApprove: async (data: { orderID?: string }) => {
+        const orderId = data.orderID || '';
+        if (!orderId) throw new Error('PayPal did not return an order ID.');
         const combinedNotes = `[Title: ${buyerInfoRef.current.buyerTitle || 'N/A'}] [Tax ID: ${buyerInfoRef.current.taxId || 'N/A'}] ${buyerInfoRef.current.notes || ''}`.trim();
 
         await fetch('/api/paypal/record-partner-payment', {
@@ -122,7 +115,6 @@ export function PayPalPartnerCheckout({
           body: JSON.stringify({
             orderId,
             packageId: selectedPackage.id,
-            capture,
             buyerName: buyerInfoRef.current.buyerName,
             buyerEmail: buyerInfoRef.current.buyerEmail,
             company: buyerInfoRef.current.company,

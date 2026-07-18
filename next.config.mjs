@@ -46,12 +46,13 @@ const nextConfig = {
   outputFileTracingRoot: projectRoot,
   outputFileTracingIncludes: {
     '/blog/[slug]': ['./lib/data/blog-content/**/*'],
+    '/api/products/download-asset': ['./private-assets/templates/**/*'],
   },
   eslint: {
-    ignoreDuringBuilds: true,
+    ignoreDuringBuilds: false,
   },
   typescript: {
-    ignoreBuildErrors: true,
+    ignoreBuildErrors: false,
   },
   images: {
     formats: ['image/avif', 'image/webp'],

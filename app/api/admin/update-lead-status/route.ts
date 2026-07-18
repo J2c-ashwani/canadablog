@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
       range: `Leads!AF${rowIndex}`,
-      valueInputOption: 'USER_ENTERED',
+      valueInputOption: 'RAW',
       requestBody: {
         values: [[status]],
       },
@@ -54,7 +54,7 @@ export async function POST(request: NextRequest) {
       await sheets.spreadsheets.values.update({
         spreadsheetId,
         range: `Leads!AG${rowIndex}`,
-        valueInputOption: 'USER_ENTERED',
+        valueInputOption: 'RAW',
         requestBody: {
           values: [[actualSignedValue]],
         },

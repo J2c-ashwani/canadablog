@@ -1,7 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { captureEmailLead } from "@/lib/google-sheets"
 import { sendNewsletterWelcomeEmail } from "@/lib/emails/newsletter-marketing"
-import { getFallbackLoginToken } from "@/lib/leads/SubscriberRepository"
+import { ensureScopedSubscriberTokens, SubscriberRepository } from "@/lib/leads/SubscriberRepository"
 import { applyRateLimit } from "@/lib/rate-limit"
 
 export async function POST(request: NextRequest) {
@@ -18,12 +17,24 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Valid email is required" }, { status: 400 })
     }
 
-    const loginToken = getFallbackLoginToken(email)
-
-    // Save lead to Google Sheets with source tracking
-    captureEmailLead(email, "Newsletter Subscription", name, undefined, undefined, undefined, undefined, undefined, undefined, undefined).catch((error) => {
-      console.error("❌ Failed to save newsletter lead to Google Sheets:", error)
+    const saved = await SubscriberRepository.saveSubscriber({
+      email,
+      name: name || '',
+      country: 'Canada',
+      region: 'ON',
+      industry: 'other',
+      companySize: '1-9',
+      fundingInterests: ['Grants'],
+      leadActivity: JSON.stringify({ newsletterSubscribedAt: new Date().toISOString() }),
     })
+    if (!saved.success) {
+      return NextResponse.json({ error: "Unable to save your subscription" }, { status: 500 })
+    }
+
+    const credentials = await ensureScopedSubscriberTokens(email)
+    if (!credentials) {
+      return NextResponse.json({ error: "Unable to secure your subscription" }, { status: 500 })
+    }
 
     // Here you would integrate with your email service provider
     // Examples: Mailchimp, ConvertKit, SendGrid, etc.
@@ -31,7 +42,7 @@ export async function POST(request: NextRequest) {
     console.log(`📧 Newsletter signup: ${email}`)
 
     // Send welcome email with PDF guide and OTO dashboard access
-    await sendNewsletterWelcomeEmail(email, name, loginToken).catch((error) => {
+    await sendNewsletterWelcomeEmail(email, name, credentials.loginToken).catch((error) => {
       console.error("❌ Failed to send welcome email to newsletter subscriber:", error)
     })
 

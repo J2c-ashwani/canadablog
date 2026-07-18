@@ -9,6 +9,7 @@ import { ShieldCheck, Check, Mail, Lock, CheckCircle, Loader2, Sparkles, Downloa
 import Link from "next/link"
 
 import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 
 interface PDFPaywallWidgetProps {
   guideName: string
@@ -134,7 +135,6 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
       }
 
       setLeadSaved(true)
-      setIsEmailValid(true)
     } catch (err) {
       console.error(err)
       setError("Failed to register email. Please check your connection and try again.")
@@ -182,7 +182,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
           email,
           event: "paypal_buttons_rendered"
         }, "pdf_paywall"))
-      }).catch(() => {})
+      }).catch(() => {});
 
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
@@ -196,7 +196,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
               email,
               event: "paypal_button_clicked"
             }, "pdf_paywall"))
-          }).catch(() => {})
+          }).catch(() => {});
 
           fetch("/api/subscriber/track-activity", {
             method: "POST",
@@ -205,7 +205,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
               email,
               event: "paypal_popup_opened"
             }, "pdf_paywall"))
-          }).catch(() => {})
+          }).catch(() => {});
         },
         onCancel: () => {
           const duration = popupOpenedAtRef.current ? (Date.now() - popupOpenedAtRef.current) / 1000 : 0;
@@ -225,7 +225,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
               event: "payment_cancelled",
               heuristicMetadata: heuristic
             }, "pdf_paywall"))
-          }).catch(() => {})
+          }).catch(() => {});
 
           fetch("/api/subscriber/track-activity", {
             method: "POST",
@@ -235,7 +235,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
               event: "popup_closed",
               heuristicMetadata: heuristic
             }, "pdf_paywall"))
-          }).catch(() => {})
+          }).catch(() => {});
 
           fetch("/api/telemetry", {
             method: "POST",
@@ -251,10 +251,10 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
             }, "pdf_paywall"))
           }).catch(() => {});
 
-          setPaymentError(`Checkout closed: ${heuristic.split(" (")[0]}. You can try again when ready.`)
+          setPaymentError(`Checkout closed: ${heuristic.split(" (")[0]}. You can try again when ready.`);
         },
-        createOrder: (_data: any, actions: any) => {
-          setPaymentError(null)
+        createOrder: async () => {
+          setPaymentError(null);
 
           // Telemetry
           fetch("/api/subscriber/track-activity", {
@@ -265,58 +265,29 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
               event: "guide_companion_checkout_started",
               guideSlug
             }, "pdf_paywall"))
-          }).catch(() => {})
+          }).catch(() => {});
 
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: "9.00", currency_code: 'USD' },
-              description: `Application Companion Kit - ${guideName}`
-            }]
+          return createServerPayPalProductOrder({
+            productId: 'guide-companion-kit',
+            email,
+            name: 'Guide Reader',
+            profileData: { province: 'ON', industry: 'other', revenue: '10-49', goal: 'execute' },
+            attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
           })
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (_data: any) => {
           try {
-            const details = await actions.order.capture()
-            const orderId = details?.id || ''
+            const orderId = _data?.orderID || ''
+            if (!orderId) throw new Error('PayPal did not return an order ID.')
+            await finalizeServerPayPalProductOrder(orderId)
+            setIsPurchased(true)
 
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                productId: 'guide-companion-kit',
-                email: email,
-                name: "Guide Reader",
-                paypalOrderId: orderId,
-                profileData: {
-                  province: 'ON',
-                  industry: 'other',
-                  revenue: '10-49',
-                  goal: 'execute',
-                },
-                attribution: {
-                  landingPage: window.location.pathname,
-                  referrer: document.referrer || 'direct',
-                }
-              })
-            })
-
-            if (res.ok) {
-              setIsPurchased(true)
-
-              // Telemetry
-              fetch("/api/subscriber/track-activity", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email,
-                  event: "guide_companion_purchase_success",
-                  guideSlug
-                })
-              }).catch(() => {})
-            } else {
-              const errData = await res.json()
-              setPaymentError(errData.error || "Failed to record purchase.")
-            }
+            // Telemetry
+            fetch("/api/subscriber/track-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({ email, event: "guide_companion_purchase_success", guideSlug })
+            }).catch(() => {})
           } catch (e) {
             console.error("Companion Kit Payment capture error:", e)
             setPaymentError("An error occurred during payment capture.")

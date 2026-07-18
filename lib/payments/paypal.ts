@@ -26,6 +26,14 @@ export type PayPalCaptureResponse = {
   purchase_units?: Array<{
     reference_id?: string;
     custom_id?: string;
+    amount?: {
+      currency_code?: string;
+      value?: string;
+    };
+    payee?: {
+      email_address?: string;
+      merchant_id?: string;
+    };
     payments?: {
       captures?: Array<{
         id?: string;
@@ -40,6 +48,14 @@ export type PayPalCaptureResponse = {
   message?: string;
   details?: unknown;
 };
+
+export interface ProductPayPalOrderInput {
+  intentId: string;
+  productId: string;
+  productName: string;
+  amount: string;
+  currency: string;
+}
 
 function getPayPalBaseUrl() {
   return process.env.PAYPAL_ENV === 'live'
@@ -139,6 +155,46 @@ export async function createPayPalOrder(partnerPackage: PartnerPackage) {
   return data;
 }
 
+/** Creates an order whose product, price, currency, and internal intent ID are server-owned. */
+export async function createProductPayPalOrder(input: ProductPayPalOrderInput) {
+  const accessToken = await getPayPalAccessToken();
+  const response = await fetch(`${getPayPalBaseUrl()}/v2/checkout/orders`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      intent: 'CAPTURE',
+      purchase_units: [{
+        reference_id: input.productId,
+        custom_id: input.intentId,
+        description: `${input.productName} - FSI Digital`,
+        amount: {
+          currency_code: input.currency,
+          value: input.amount,
+          breakdown: { item_total: { currency_code: input.currency, value: input.amount } },
+        },
+        items: [{
+          name: input.productName,
+          quantity: '1',
+          category: 'DIGITAL_GOODS',
+          unit_amount: { currency_code: input.currency, value: input.amount },
+        }],
+      }],
+      application_context: {
+        brand_name: 'FSI Digital',
+        shipping_preference: 'NO_SHIPPING',
+        user_action: 'PAY_NOW',
+      },
+    }),
+  });
+
+  const data = (await response.json()) as PayPalOrderResponse;
+  if (!response.ok || !data.id) throw new Error(data.message || 'Unable to create PayPal order.');
+  return data;
+}
+
 export async function capturePayPalOrder(orderId: string) {
   const accessToken = await getPayPalAccessToken();
 
@@ -159,13 +215,37 @@ export async function capturePayPalOrder(orderId: string) {
   return data;
 }
 
+export async function refundPayPalOrder(orderId: string) {
+  const accessToken = await getPayPalAccessToken();
+  const orderResponse = await fetch(`${getPayPalBaseUrl()}/v2/checkout/orders/${encodeURIComponent(orderId)}`, {
+    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+  });
+  const order = await orderResponse.json() as PayPalCaptureResponse;
+  const captureId = order.purchase_units?.[0]?.payments?.captures?.[0]?.id;
+  if (!orderResponse.ok || !captureId) throw new Error('PayPal capture could not be found for refund.');
+
+  const response = await fetch(`${getPayPalBaseUrl()}/v2/payments/captures/${encodeURIComponent(captureId)}/refund`, {
+    method: 'POST',
+    headers: { Authorization: `Bearer ${accessToken}`, 'Content-Type': 'application/json' },
+    body: '{}',
+  });
+  const data = await response.json() as PayPalCaptureResponse;
+  if (!response.ok) throw new Error(data.message || 'PayPal refund was rejected.');
+  return data;
+}
+
 /**
  * Verifies a PayPal order ID against the PayPal REST API to ensure it is approved/completed
  * and matches the expected transaction amount.
  * 
  * Falls back to warning bypass mode if environment variables are not configured.
  */
-export async function verifyPayPalOrder(orderId: string, expectedAmount: string) {
+export async function verifyPayPalOrder(orderId: string, expectedAmount: string, expected?: {
+  customId?: string;
+  referenceId?: string;
+  currency?: string;
+  payerEmail?: string;
+}) {
   const isProduction = process.env.NODE_ENV === 'production' || process.env.PAYPAL_ENV === 'live';
 
   if (!isProduction && (!orderId || orderId === 'N/A' || orderId.startsWith('TEST-'))) {
@@ -223,6 +303,40 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string)
       return { verified: false, error: `Invalid order status: ${status}` };
     }
 
+    // Validate currency
+    const currencyCode = orderData.purchase_units?.[0]?.amount?.currency_code || 
+                         orderData.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.currency_code;
+    const expectedCurrency = expected?.currency || process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || 'USD';
+    
+    if (currencyCode && currencyCode.toUpperCase() !== expectedCurrency.toUpperCase()) {
+      return {
+        verified: false,
+        error: `Transaction currency mismatch: expected ${expectedCurrency}, got ${currencyCode}`
+      };
+    }
+
+    const purchaseUnit = orderData.purchase_units?.[0];
+    if (expected?.customId && purchaseUnit?.custom_id !== expected.customId) {
+      return { verified: false, error: 'Transaction intent mismatch' };
+    }
+    if (expected?.referenceId && purchaseUnit?.reference_id !== expected.referenceId) {
+      return { verified: false, error: 'Transaction product mismatch' };
+    }
+    if (expected?.payerEmail && orderData.payer?.email_address?.toLowerCase() !== expected.payerEmail.toLowerCase()) {
+      return { verified: false, error: 'Transaction purchaser mismatch' };
+    }
+
+    // Validate payee email (merchant email) if configured to prevent payment diversion / bypass
+    const payeeEmail = orderData.purchase_units?.[0]?.payee?.email_address ||
+                       orderData.purchase_units?.[0]?.payments?.captures?.[0]?.payee?.email_address;
+    const expectedPayee = process.env.PAYPAL_MERCHANT_EMAIL;
+    if (expectedPayee && payeeEmail && payeeEmail.toLowerCase() !== expectedPayee.toLowerCase()) {
+      return {
+        verified: false,
+        error: `Transaction merchant mismatch: expected ${expectedPayee}, got ${payeeEmail}`
+      };
+    }
+
     // Amount could be in purchase_units directly or nested in payments.captures for capture responses
     const amountVal = orderData.purchase_units?.[0]?.amount?.value || 
                       orderData.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.value;
@@ -235,8 +349,8 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string)
       return { 
         verified: false, 
         error: `Transaction amount mismatch: expected ${expectedAmount}, got ${amountVal}` 
-      };
-    }
+        };
+      }
 
     return { verified: true, bypass: false, orderData };
   } catch (error: any) {

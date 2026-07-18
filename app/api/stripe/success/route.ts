@@ -4,8 +4,9 @@ import { getProduct } from '@/lib/products/catalog';
 import { recordPurchase, getAllPurchases } from '@/lib/products/purchase-store';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
-import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { ensureScopedSubscriberTokens, SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
+import { grantEntitlements } from '@/lib/products/entitlements';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -57,7 +58,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const { productId, email, name, profileData: profileDataRaw, addons: addonsRaw, attribution: attributionRaw } = session.metadata || {};
+    const { productId, email, name, profileData: profileDataRaw, addons: addonsRaw, attribution: attributionRaw, expectedAmount, currency, baseAmount } = session.metadata || {};
 
     if (!productId || !email || !name || !profileDataRaw) {
       throw new Error('Required session metadata is missing');
@@ -66,6 +67,10 @@ export async function GET(request: NextRequest) {
     const profileData = JSON.parse(profileDataRaw);
     const addons = JSON.parse(addonsRaw || '{}');
     const attribution = JSON.parse(attributionRaw || '{}');
+    const serverAmount = Number(expectedAmount);
+    if (!Number.isFinite(serverAmount) || session.amount_total !== Math.round(serverAmount * 100) || session.currency?.toUpperCase() !== String(currency || '').toUpperCase()) {
+      throw new Error('Stripe session commercial terms did not match the server-owned checkout record');
+    }
 
     // ── Check if already recorded to prevent duplication ──
     const allPurchases = await getAllPurchases();
@@ -80,27 +85,26 @@ export async function GET(request: NextRequest) {
       const product = getProduct(productId);
       if (!product) throw new Error(`Product not found: ${productId}`);
 
-      let expectedPrice = product.priceUsd;
-      if (addons?.toolkit) expectedPrice += 29;
-      if (addons?.approvalLibrary) expectedPrice += 9;
+      const expectedPrice = serverAmount;
 
       // 1. Record main purchase (map Stripe sessionId to paypalOrderId col)
       const purchase = await recordPurchase({
         email,
         name,
         productId,
-        amount: product.priceUsd.toFixed(2),
+        amount: String(baseAmount || product.priceUsd),
         paypalOrderId: sessionId,
         profileData,
         attribution,
       });
+      await grantEntitlements({ purchaseId: purchase.purchaseId, email, productId, orderId: sessionId });
 
       accessToken = purchase.accessToken;
 
       // 2. Record Toolkit addon if purchased
       if (addons?.toolkit) {
         try {
-          await recordPurchase({
+          const addonPurchase = await recordPurchase({
             email,
             name,
             productId: 'funding-toolkit',
@@ -109,6 +113,7 @@ export async function GET(request: NextRequest) {
             profileData,
             attribution,
           });
+          await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-toolkit', orderId: sessionId });
         } catch (err) {
           console.error('⚠️ Failed to record Toolkit addon purchase:', err);
         }
@@ -117,7 +122,7 @@ export async function GET(request: NextRequest) {
       // 3. Record Approval Library addon if purchased
       if (addons?.approvalLibrary) {
         try {
-          await recordPurchase({
+          const addonPurchase = await recordPurchase({
             email,
             name,
             productId: 'funding-approval-library',
@@ -126,6 +131,7 @@ export async function GET(request: NextRequest) {
             profileData,
             attribution,
           });
+          await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-approval-library', orderId: sessionId });
         } catch (err) {
           console.error('⚠️ Failed to record Approval Library addon purchase:', err);
         }
@@ -252,8 +258,10 @@ export async function GET(request: NextRequest) {
     }
 
     // Redirect to the actual report delivery view page
-    const deliveryUrl = productId === 'strategy-audit'
-      ? `/booking?email=${encodeURIComponent(email)}&order=${encodeURIComponent(sessionId)}`
+    const credentials = await ensureScopedSubscriberTokens(email);
+    if (!credentials) throw new Error('Secure subscriber credentials could not be issued');
+    const deliveryUrl = productId === 'strategy-audit' || productId === 'strategy-vip'
+      ? `/booking?token=${encodeURIComponent(credentials.loginToken)}`
       : `/products/report?token=${accessToken}`;
 
     const origin = new URL(request.url).origin;

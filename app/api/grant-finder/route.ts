@@ -5,9 +5,14 @@ import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
 import { getAllPrograms } from "@/lib/data/programs"
 import { MatchScoreEngine } from "@/lib/leads/MatchScoreEngine"
 import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
-import crypto from "crypto"
 import { validateEmail } from "@/lib/email-validator"
 import { applyRateLimit } from "@/lib/rate-limit"
+import {
+  createLoginToken,
+  createUnsubscribeToken,
+  isLoginToken,
+  isUnsubscribeToken,
+} from "@/lib/auth/subscriber-tokens"
 
 function getLeadTier(body: any): "Tier A" | "Tier B" | "Tier C" {
   const country = body.country || "Canada"
@@ -96,18 +101,18 @@ export async function POST(request: NextRequest) {
     const leadSource = body.source || "AI Grant Finder"
     const timestamp = new Date().toISOString()
 
-    const unsubscribeToken = 'v2_' + crypto.randomBytes(16).toString("hex")
-    const loginToken = 'v2_' + crypto.randomBytes(16).toString("hex")
+    const unsubscribeToken = createUnsubscribeToken()
+    const loginToken = createLoginToken()
 
     const existing = await SubscriberRepository.getSubscriberByEmail(body.email)
     let finalLoginToken = loginToken
     let finalUnsubscribeToken = unsubscribeToken
     if (existing) {
-      if (existing.loginToken && existing.loginToken.startsWith('v2_')) {
-        finalLoginToken = existing.loginToken
+      if (isLoginToken(existing.loginToken, existing.loginToken)) {
+        finalLoginToken = existing.loginToken!
       }
-      if (existing.unsubscribeToken && existing.unsubscribeToken.startsWith('v2_')) {
-        finalUnsubscribeToken = existing.unsubscribeToken
+      if (isUnsubscribeToken(existing.unsubscribeToken, existing.unsubscribeToken)) {
+        finalUnsubscribeToken = existing.unsubscribeToken!
       }
     }
 
@@ -166,6 +171,8 @@ export async function POST(request: NextRequest) {
       if (existing) {
         return await SubscriberRepository.updateSubscriberPreferences(body.email, {
           ...leadData,
+          loginToken: finalLoginToken,
+          unsubscribeToken: finalUnsubscribeToken,
           companySize: leadData.companySize as any,
           fundingInterests: leadData.fundingInterests as any,
           region: leadData.state

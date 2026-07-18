@@ -23,7 +23,10 @@ export async function POST(request: NextRequest) {
     }
 
     const expectedAmount = partnerPackage.priceUsd.toFixed(2);
-    const verification = await verifyPayPalOrder(orderId, expectedAmount);
+    const verification = await verifyPayPalOrder(orderId, expectedAmount, {
+      customId: partnerPackage.id,
+      referenceId: partnerPackage.id,
+    });
 
     if (!verification.verified) {
       const errorMsg = verification.error || 'Payment verification failed.';

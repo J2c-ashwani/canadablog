@@ -32,6 +32,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 import { trackGAEvent } from "@/components/LeadConversionUpsellWatcher"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 
 export default function PortfolioClient() {
   const router = useRouter()
@@ -548,32 +549,31 @@ export default function PortfolioClient() {
             })
           }).catch(err => console.error("Failed to track checkout start:", err))
         },
-        createOrder: (data: any, actions: any) => {
-          return actions.order.create({
-            purchase_units: [{
-              description: `Executive Funding Assessment - ${profile.companyName || "Your Company"}`,
-              amount: {
-                currency_code: "USD",
-                value: String(currentPrice)
-              }
-            }]
+        createOrder: async () => {
+          return createServerPayPalProductOrder({
+            productId: 'portfolio-assessment',
+            email: profile.email,
+            name: profile.name || 'Customer',
+            profileData: {
+              province: profile.region || 'ON',
+              industry: profile.industry || 'other',
+              revenue: profile.companySize || '1-9',
+              goal: 'funding assessment',
+              company: profile.companyName || '',
+            },
+            attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
+            sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
           })
         },
-        onApprove: async (data: any, actions: any) => {
-          return actions.order.capture().then(async (details: any) => {
-            const orderId = details.id
+        onApprove: async (data: any) => {
+          const orderId = data?.orderID || ''
+          if (!orderId) {
+            setPaymentError('PayPal did not return an order ID.')
+            return
+          }
             try {
-              const res = await fetch("/api/subscriber/buy-report", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email: profile.email,
-                  transactionId: orderId,
-                  source: sessionStorage.getItem("fsi_attribution_source") || undefined
-                })
-              })
-              const resData = await res.json()
-              if (resData.success) {
+              const result = await finalizeServerPayPalProductOrder(orderId)
+              if (result.success) {
                 if (typeof window !== "undefined" && (window as any).clarity) {
                   (window as any).clarity("event", "assessment_purchased")
                 }
@@ -588,16 +588,13 @@ export default function PortfolioClient() {
                 })
                 
                 // Redirect to thank-you page instead of directly to report
-                const token = resData.loginToken || ""
+                const token = result.loginToken || ""
                 router.push(`/portfolio/thank-you?token=${token}`)
-              } else {
-                setPaymentError(resData.error || "Failed to record payment.")
               }
             } catch (err: any) {
               console.error("Report buy error:", err)
               setPaymentError(err.message || "Failed to record report purchase.")
             }
-          })
         },
         onError: (err: any) => {
           console.error("PayPal error:", err)

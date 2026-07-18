@@ -1,11 +1,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
-import { recordPurchase, getPurchasesByEmail, getAllPurchases } from '@/lib/products/purchase-store';
+import { recordPurchase, getAllPurchases } from '@/lib/products/purchase-store';
 import { getProduct } from '@/lib/products/catalog';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
-import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { ensureScopedSubscriberTokens, SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
+import {
+  getProductPaymentIntent,
+  markProductPaymentIntentCompleted,
+} from '@/lib/payments/product-payment-intents';
+import { grantEntitlements } from '@/lib/products/entitlements';
 
 // Global in-memory lock set to prevent concurrent purchase race conditions
 const activeLocks = new Set<string>();
@@ -34,22 +39,53 @@ function shouldUpdateStage(currentStage: string | undefined, newStage: string): 
   return newIndex > currentIndex;
 }
 
+function stringValue(value: unknown, fallback = ''): string {
+  return typeof value === 'string' ? value : fallback;
+}
+
 export async function POST(request: NextRequest) {
   let lockKey = '';
   try {
     const body = await request.json();
-    const { productId, email, name, paypalOrderId, profileData, addons, attribution, sessionId, journeyId, funnelId, heuristicMetadata, calculator_cta_variant } = body;
+    const paymentIntentId = String(body.paymentIntentId || '');
+    const paypalOrderId = String(body.paypalOrderId || '');
 
-    // ── Validate required fields ──
-    if (!productId || !email || !name || !paypalOrderId || !profileData) {
+    if (!paymentIntentId || !paypalOrderId) {
       return NextResponse.json(
-        { error: 'Missing required fields: productId, email, name, paypalOrderId, profileData' },
+        { error: 'A server-created payment intent and PayPal order are required.' },
         { status: 400 }
       );
     }
 
+    const paymentIntent = await getProductPaymentIntent(paymentIntentId);
+    if (!paymentIntent || paymentIntent.paypalOrderId !== paypalOrderId) {
+      return NextResponse.json({ error: 'Invalid payment intent.' }, { status: 403 });
+    }
+
+    const {
+      productId,
+      email,
+      name,
+      profileData,
+      addons,
+      attribution,
+      sessionId,
+    } = paymentIntent;
+    const journeyId = '';
+    const funnelId = '';
+    const heuristicMetadata = '';
+    const calculator_cta_variant = '';
+    const normalizedProfileData = {
+      province: stringValue(profileData.province, 'ON'),
+      industry: stringValue(profileData.industry, 'other'),
+      revenue: stringValue(profileData.revenue, 'pre-revenue'),
+      goal: stringValue(profileData.goal, 'expansion'),
+      company: stringValue(profileData.company),
+      phone: stringValue(profileData.phone),
+    };
+
     // ── Idempotency Check & Concurrency Wait Lock ──
-    lockKey = `${paypalOrderId}_${productId}`;
+    lockKey = paymentIntentId;
     if (activeLocks.has(lockKey)) {
       console.log(`⏳ Concurrent request lock hit for ${lockKey}. Waiting...`);
       let checks = 0;
@@ -66,8 +102,10 @@ export async function POST(request: NextRequest) {
       );
       if (existingPurchase) {
         console.log(`ℹ️ Duplicate purchase request resolved. Order ID: ${paypalOrderId}. Returning existing token: ${existingPurchase.accessToken}`);
-        const deliveryUrl = productId === 'strategy-audit'
-          ? `/booking?email=${encodeURIComponent(email)}&order=${encodeURIComponent(paypalOrderId)}`
+        await markProductPaymentIntentCompleted(paymentIntentId);
+        const credentials = await ensureScopedSubscriberTokens(email);
+        const deliveryUrl = productId === 'strategy-audit' || productId === 'strategy-vip'
+          ? credentials ? `/booking?token=${encodeURIComponent(credentials.loginToken)}` : ''
           : `/products/report?token=${existingPurchase.accessToken}`;
         return NextResponse.json({
           success: true,
@@ -120,46 +158,40 @@ export async function POST(request: NextRequest) {
     }
 
     const resolvedAttribution = {
-      landingPage: attribution?.landingPage || telemetryFallback.landingPage || existing?.pagePath || '',
-      referrer: attribution?.referrer || telemetryFallback.referrer || existing?.referralSource || 'direct',
-      utmSource: attribution?.utmSource || telemetryFallback.utmSource || existing?.utmSource || '',
-      utmMedium: attribution?.utmMedium || telemetryFallback.utmMedium || existing?.utmMedium || '',
-      utmCampaign: attribution?.utmCampaign || telemetryFallback.utmCampaign || existing?.utmCampaign || '',
-      gaClientId: attribution?.gaClientId || existing?.gaClientId || '',
-      lastTouchPage: attribution?.lastTouchPage || '',
-      lastTouchReferrer: attribution?.lastTouchReferrer || '',
-      device: attribution?.device || '',
-      browser: attribution?.browser || '',
-      country: attribution?.country || existing?.country || '',
+      landingPage: stringValue(attribution?.landingPage) || stringValue(telemetryFallback.landingPage) || existing?.pagePath || '',
+      referrer: stringValue(attribution?.referrer) || stringValue(telemetryFallback.referrer) || existing?.referralSource || 'direct',
+      utmSource: stringValue(attribution?.utmSource) || stringValue(telemetryFallback.utmSource) || existing?.utmSource || '',
+      utmMedium: stringValue(attribution?.utmMedium) || stringValue(telemetryFallback.utmMedium) || existing?.utmMedium || '',
+      utmCampaign: stringValue(attribution?.utmCampaign) || stringValue(telemetryFallback.utmCampaign) || existing?.utmCampaign || '',
+      gaClientId: stringValue(attribution?.gaClientId) || existing?.gaClientId || '',
+      lastTouchPage: stringValue(attribution?.lastTouchPage),
+      lastTouchReferrer: stringValue(attribution?.lastTouchReferrer),
+      device: stringValue(attribution?.device),
+      browser: stringValue(attribution?.browser),
+      country: stringValue(attribution?.country) || existing?.country || '',
     };
 
-    // ── Check past purchases to calculate upgrade credit (Task 6 Repeat customer guard) ──
-    const purchases = await getPurchasesByEmail(email);
-    let totalCredit = 0;
-    
-    const hasAlreadyPurchasedStrategy = purchases.some(p => p.productId === 'strategy-session' || p.productId === 'strategy-audit');
-    if ((productId === 'strategy-audit' || productId === 'strategy-session') && !hasAlreadyPurchasedStrategy) {
-      const hasReport = purchases.some(p => p.productId === 'funding-match-report');
-      if (hasReport) {
-        totalCredit = 19; // Apply the $19 report credit exactly once
-      }
+    // Prices, product IDs, customer, and add-ons come only from the stored intent.
+    const expectedPrice = Number(paymentIntent.expectedAmount);
+    if (!Number.isFinite(expectedPrice) || expectedPrice < 0.5) {
+      return NextResponse.json({ error: 'Invalid server-side payment amount.' }, { status: 400 });
     }
-
-    // ── Calculate total expected price with addons ──
-    let netProductPrice = product.priceUsd - totalCredit;
-    if (netProductPrice < 0.50) {
-      netProductPrice = 0.50; // Minimum floor matching Stripe/PayPal processing
-    }
-
-    let expectedPrice = netProductPrice;
-    if (addons?.toolkit) expectedPrice += 29;
-    if (addons?.approvalLibrary) expectedPrice += 9;
-    if (addons?.strategySession) expectedPrice += 180;
+    let addonTotal = 0;
+    if (addons?.toolkit) addonTotal += 29;
+    if (addons?.approvalLibrary) addonTotal += 9;
+    if (addons?.strategySession) addonTotal += 180;
+    const netProductPrice = expectedPrice - addonTotal;
 
     // ── Verify PayPal order ──
     const verification = await verifyPayPalOrder(
       paypalOrderId,
-      expectedPrice.toFixed(2)
+      expectedPrice.toFixed(2),
+      {
+        customId: paymentIntentId,
+        referenceId: productId,
+        currency: paymentIntent.currency,
+        payerEmail: email,
+      }
     );
 
     if (!verification.verified) {
@@ -209,21 +241,33 @@ export async function POST(request: NextRequest) {
       productId,
       amount: netProductPrice.toFixed(2),
       paypalOrderId,
-      profileData,
+      profileData: normalizedProfileData,
       attribution: resolvedAttribution,
+    });
+    await grantEntitlements({
+      purchaseId: purchase.purchaseId,
+      email,
+      productId,
+      orderId: paypalOrderId,
     });
 
     // ── Record Toolkit addon if purchased ──
     if (addons?.toolkit) {
       try {
-        await recordPurchase({
+        const addonPurchase = await recordPurchase({
           email,
           name,
           productId: 'funding-toolkit',
           amount: '29.00',
           paypalOrderId,
-          profileData,
+          profileData: normalizedProfileData,
           attribution: resolvedAttribution,
+        });
+        await grantEntitlements({
+          purchaseId: addonPurchase.purchaseId,
+          email,
+          productId: 'funding-toolkit',
+          orderId: paypalOrderId,
         });
       } catch (err) {
         console.error('⚠️ Failed to record Toolkit addon purchase:', err);
@@ -233,14 +277,20 @@ export async function POST(request: NextRequest) {
     // ── Record Approval Library addon if purchased ──
     if (addons?.approvalLibrary) {
       try {
-        await recordPurchase({
+        const addonPurchase = await recordPurchase({
           email,
           name,
           productId: 'funding-approval-library',
           amount: '9.00',
           paypalOrderId,
-          profileData,
+          profileData: normalizedProfileData,
           attribution: resolvedAttribution,
+        });
+        await grantEntitlements({
+          purchaseId: addonPurchase.purchaseId,
+          email,
+          productId: 'funding-approval-library',
+          orderId: paypalOrderId,
         });
       } catch (err) {
         console.error('⚠️ Failed to record Approval Library addon purchase:', err);
@@ -250,14 +300,20 @@ export async function POST(request: NextRequest) {
     // ── Record Strategy Session addon if purchased (Upgrade Credit applied) ──
     if (addons?.strategySession) {
       try {
-        await recordPurchase({
+        const addonPurchase = await recordPurchase({
           email,
           name,
           productId: 'strategy-session',
           amount: '180.00',
           paypalOrderId,
-          profileData,
+          profileData: normalizedProfileData,
           attribution: resolvedAttribution,
+        });
+        await grantEntitlements({
+          purchaseId: addonPurchase.purchaseId,
+          email,
+          productId: 'strategy-session',
+          orderId: paypalOrderId,
         });
       } catch (err) {
         console.error('⚠️ Failed to record Strategy Session addon purchase:', err);
@@ -341,11 +397,11 @@ export async function POST(request: NextRequest) {
     // ── Sync purchase status back to CRM Leads sheet ──
     try {
       const updates: any = {
-        region: profileData.province || 'ON',
-        industry: profileData.industry || 'other',
-        businessStage: profileData.revenue || 'pre-revenue',
-        fundingPurpose: profileData.goal || 'expansion',
-        phone: profileData.phone || undefined,
+        region: normalizedProfileData.province,
+        industry: normalizedProfileData.industry,
+        businessStage: normalizedProfileData.revenue,
+        fundingPurpose: normalizedProfileData.goal,
+        phone: normalizedProfileData.phone || undefined,
       };
 
       // Set UTM parameters on subscriber updates
@@ -354,7 +410,7 @@ export async function POST(request: NextRequest) {
       if (resolvedAttribution.utmCampaign) updates.utmCampaign = resolvedAttribution.utmCampaign;
       if (resolvedAttribution.gaClientId) updates.gaClientId = resolvedAttribution.gaClientId;
 
-      if (productId === 'funding-match-report') {
+      if (productId === 'funding-match-report' || productId === 'portfolio-assessment') {
         updates.reportPurchased = true;
         updates.reportTransactionId = paypalOrderId;
         updates.engagementScore = 120;
@@ -439,10 +495,10 @@ export async function POST(request: NextRequest) {
         await SubscriberRepository.saveSubscriber({
           email,
           name,
-          phone: profileData.phone || '',
+          phone: normalizedProfileData.phone,
           country: 'Canada', // Default fallback country
-          region: profileData.province || 'ON',
-          industry: profileData.industry || 'other',
+          region: normalizedProfileData.province,
+          industry: normalizedProfileData.industry,
           companySize: '1-9',
           fundingInterests: ['Grants'],
           website: '',
@@ -454,6 +510,11 @@ export async function POST(request: NextRequest) {
       }
     } catch (crmErr) {
       console.error('⚠️ CRM Leads sheet update failed but purchase was completed:', crmErr);
+    }
+
+    const credentials = await ensureScopedSubscriberTokens(email);
+    if (!credentials) {
+      throw new Error('Payment succeeded but secure account credentials could not be issued. Please contact support.');
     }
 
     // ── Send confirmation email ──
@@ -478,15 +539,18 @@ export async function POST(request: NextRequest) {
       `✅ Product purchase completed: ${product.name} with addons for ${email} (order: ${paypalOrderId})`
     );
 
+    await markProductPaymentIntentCompleted(paymentIntentId);
+
     // ── Return success ──
-    const deliveryUrl = productId === 'strategy-audit'
-      ? `/booking?email=${encodeURIComponent(email)}&order=${encodeURIComponent(paypalOrderId)}`
+    const deliveryUrl = productId === 'strategy-audit' || productId === 'strategy-vip' || addons?.strategySession
+      ? `/booking?token=${encodeURIComponent(credentials.loginToken)}`
       : `/products/report?token=${purchase.accessToken}`;
 
     return NextResponse.json({
       success: true,
       accessToken: purchase.accessToken,
       deliveryUrl,
+      loginToken: credentials.loginToken,
     });
   } catch (error: any) {
     console.error('❌ Product purchase error:', error);

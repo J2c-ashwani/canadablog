@@ -15,6 +15,7 @@ import { formatFundingRange } from "@/lib/grants-data"
 import Link from "next/link"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 
 export function AIGrantFinderForm() {
   const [formData, setFormData] = useState<Partial<GrantFinderRequest>>({})
@@ -269,7 +270,7 @@ export function AIGrantFinderForm() {
 
     try {
       // Telemetry: paypal_rendered
-      fetch("/api/subscriber/track-activity", {
+      (window.fetch as any)("/api/subscriber/track-activity", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(decorateTelemetryPayload({
@@ -283,16 +284,16 @@ export function AIGrantFinderForm() {
         onClick: () => {
           popupOpenedAtRef.current = Date.now();
           // Telemetry: clicked, popup opened
-          fetch("/api/subscriber/track-activity", {
+          (window.fetch as any)("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(decorateTelemetryPayload({
               email: checkoutEmail,
               event: "paypal_button_clicked"
             }, "ai_grant_finder"))
-          }).catch(() => {})
+          }).catch(() => {});
 
-          fetch("/api/subscriber/track-activity", {
+          (window.fetch as any)("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(decorateTelemetryPayload({
@@ -311,7 +312,7 @@ export function AIGrantFinderForm() {
           }
 
           // Telemetry: payment_cancelled & popup_closed with heuristics
-          fetch("/api/subscriber/track-activity", {
+          (window.fetch as any)("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(decorateTelemetryPayload({
@@ -319,9 +320,9 @@ export function AIGrantFinderForm() {
               event: "payment_cancelled",
               heuristicMetadata: heuristic
             }, "ai_grant_finder"))
-          }).catch(() => {})
+          }).catch(() => {});
 
-          fetch("/api/subscriber/track-activity", {
+          (window.fetch as any)("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(decorateTelemetryPayload({
@@ -329,9 +330,9 @@ export function AIGrantFinderForm() {
               event: "popup_closed",
               heuristicMetadata: heuristic
             }, "ai_grant_finder"))
-          }).catch(() => {})
+          }).catch(() => {});
 
-          fetch("/api/telemetry", {
+          (window.fetch as any)("/api/telemetry", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(decorateTelemetryPayload({
@@ -347,14 +348,14 @@ export function AIGrantFinderForm() {
 
           setPaymentError(`Checkout closed: ${heuristic.split(" (")[0]}. You can try again when ready.`)
         },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null)
           
-          let price = selectedProductId === 'funding-bundle' ? 79 : selectedProductId === 'funding-roadmap' ? 49 : 19
-          const desc = `${selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle' : selectedProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report'} - AI Finder`
+          let price = selectedProductId === 'funding-bundle' ? 79 : selectedProductId === 'funding-roadmap' ? 49 : 19;
+          const desc = `${selectedProductId === 'funding-bundle' ? 'Complete Funding Bundle' : selectedProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report'} - AI Finder`;
 
           // Telemetry
-          fetch("/api/subscriber/track-activity", {
+          (window.fetch as any)("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(decorateTelemetryPayload({
@@ -364,45 +365,29 @@ export function AIGrantFinderForm() {
             }, "ai_grant_finder"))
           }).catch(() => {})
 
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: price.toFixed(2), currency_code: 'USD' },
-              description: desc
-            }]
+          return createServerPayPalProductOrder({
+            productId: selectedProductId,
+            email: checkoutEmail,
+            name: formData.email ? formData.email.split("@")[0] : 'Founder',
+            profileData: {
+              province: formData.state || 'ON',
+              industry: formData.industry || 'other',
+              revenue: formData.businessStage || 'startup',
+              goal: formData.fundingPurpose || 'research',
+            },
+            attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
+            sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
           })
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (_data: any) => {
           try {
-            const details = await actions.order.capture()
-            const orderId = details?.id || ''
-
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify(decorateTelemetryPayload({
-                productId: selectedProductId,
-                email: checkoutEmail,
-                name: formData.email ? formData.email.split("@")[0] : "Founder",
-                paypalOrderId: orderId,
-                profileData: {
-                  province: formData.state || 'ON',
-                  industry: formData.industry || 'other',
-                  revenue: formData.businessStage || 'startup',
-                  goal: formData.fundingPurpose || 'research',
-                },
-                attribution: {
-                  landingPage: window.location.pathname,
-                  referrer: document.referrer || 'direct',
-                },
-                sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous'
-              }, "ai_grant_finder"))
-            })
-
-            if (res.ok) {
-              setIsPurchased(true)
+            const orderId = _data?.orderID || ''
+            if (!orderId) throw new Error('PayPal did not return an order ID.')
+            await finalizeServerPayPalProductOrder(orderId)
+            setIsPurchased(true);
               
               // Telemetry
-              fetch("/api/subscriber/track-activity", {
+              (window.fetch as any)("/api/subscriber/track-activity", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify(decorateTelemetryPayload({
@@ -411,10 +396,6 @@ export function AIGrantFinderForm() {
                   productId: selectedProductId
                 }, "ai_grant_finder"))
               }).catch(() => {})
-            } else {
-              const errData = await res.json()
-              setPaymentError(errData.error || "Failed to record purchase details.")
-            }
           } catch (e) {
             console.error("Payment capture error:", e)
             setPaymentError("An error occurred during payment capture.")

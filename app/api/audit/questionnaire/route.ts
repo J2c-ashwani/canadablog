@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
+import { isLoginToken } from '@/lib/auth/subscriber-tokens';
 
 export const runtime = 'nodejs';
 
@@ -45,6 +46,15 @@ export async function POST(request: NextRequest) {
 
     // Fetch current subscriber row
     const subscriber = await SubscriberRepository.getSubscriberByEmail(email);
+
+    // Questionnaire edits require the dashboard credential; a payment/order ID is not an identity credential.
+    const token = body.token;
+    const isAuthorized = !!(subscriber && isLoginToken(token, subscriber.loginToken));
+
+    if (!isAuthorized) {
+      console.warn(`[Security check] Unauthenticated attempt to post questionnaire for subscriber: ${email}`);
+      return NextResponse.json({ error: 'Unauthorized questionnaire update.' }, { status: 401 });
+    }
 
     let activity: Record<string, any> = {};
     if (subscriber?.leadActivity && subscriber.leadActivity !== 'N/A' && subscriber.leadActivity !== '{}') {

@@ -110,7 +110,7 @@ export async function GET(request: NextRequest) {
             await sheets.spreadsheets.values.update({
               spreadsheetId,
               range,
-              valueInputOption: 'USER_ENTERED',
+              valueInputOption: 'RAW',
               requestBody: {
                 values: [[JSON.stringify(activity)]],
               },

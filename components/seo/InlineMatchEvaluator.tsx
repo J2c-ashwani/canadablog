@@ -9,6 +9,7 @@ import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client'
 
 interface InlineMatchEvaluatorProps {
   program: ProgramDetails
@@ -158,7 +159,7 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
     try {
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null)
 
           // Telemetry
@@ -172,40 +173,17 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
             })
           }).catch(() => {})
 
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: "19.00", currency_code: 'USD' },
-              description: `Funding Match Report - ${program.name}`
-            }]
+          return createServerPayPalProductOrder({
+            productId: 'funding-match-report', email, name: `${companyName} Founder`,
+            profileData: { province: region, industry, revenue: companySize, goal: (program as any).fundingPurpose || 'research' },
+            attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
           })
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (data: any) => {
           try {
-            const details = await actions.order.capture()
-            const orderId = details?.id || ''
+            await finalizeServerPayPalProductOrder(data.orderID || '')
 
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                productId: 'funding-match-report',
-                email: email,
-                name: `${companyName} Founder`,
-                paypalOrderId: orderId,
-                profileData: {
-                  province: region,
-                  industry: industry,
-                  revenue: companySize,
-                  goal: (program as any).fundingPurpose || 'research',
-                },
-                attribution: {
-                  landingPage: window.location.pathname,
-                  referrer: document.referrer || 'direct',
-                }
-              })
-            })
-
-            if (res.ok) {
+            {
               const finalProfile: Partial<SubscriberProfile> = {
                 email,
                 name: `${companyName} Founder`,
@@ -235,9 +213,6 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
               }).catch(() => {})
 
               onUnlock(finalProfile, teaserResult!)
-            } else {
-              const errData = await res.json()
-              setPaymentError(errData.error || "Failed to record purchase.")
             }
           } catch (e) {
             console.error("Payment capture error:", e)

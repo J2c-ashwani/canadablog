@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { isLoginToken } from '@/lib/auth/subscriber-tokens'
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -17,6 +18,18 @@ export async function POST(request: NextRequest) {
     const subscriber = await SubscriberRepository.getSubscriberByEmail(email)
     if (!subscriber) {
       return NextResponse.json({ error: "Subscriber not found." }, { status: 404 })
+    }
+
+    // Authenticate activity updates to prevent unauthenticated database mutations
+    const token = body.token
+    const isAuthorized = isLoginToken(token, subscriber.loginToken)
+    if (!isAuthorized) {
+      console.warn(`[Security check] Unauthenticated attempt to track activity for subscriber: ${email}`)
+      return NextResponse.json({
+        success: true,
+        bypassed: true,
+        message: "Activity event accepted."
+      })
     }
 
     // Parse lead activity JSON safely

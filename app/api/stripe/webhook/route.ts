@@ -6,6 +6,7 @@ import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
+import { grantEntitlements } from '@/lib/products/entitlements';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -114,7 +115,7 @@ export async function POST(request: NextRequest) {
     console.log(`🔔 Webhook received for Stripe session: ${sessionId}`);
 
     try {
-      const { productId, email, name, profileData: profileDataRaw, addons: addonsRaw, attribution: attributionRaw } = session.metadata || {};
+      const { productId, email, name, profileData: profileDataRaw, addons: addonsRaw, attribution: attributionRaw, expectedAmount, currency, baseAmount } = session.metadata || {};
 
       if (!productId || !email || !name || !profileDataRaw) {
         console.warn('⚠️ Webhook session is missing metadata, skipping processing');
@@ -124,6 +125,10 @@ export async function POST(request: NextRequest) {
       const profileData = JSON.parse(profileDataRaw);
       const addons = JSON.parse(addonsRaw || '{}');
       const attribution = JSON.parse(attributionRaw || '{}');
+      const serverAmount = Number(expectedAmount);
+      if (!Number.isFinite(serverAmount) || session.amount_total !== Math.round(serverAmount * 100) || session.currency?.toUpperCase() !== String(currency || '').toUpperCase()) {
+        throw new Error('Stripe session commercial terms did not match the server-owned checkout record');
+      }
 
       // Double-lock write check
       const allPurchases = await getAllPurchases();
@@ -137,25 +142,24 @@ export async function POST(request: NextRequest) {
       const product = getProduct(productId);
       if (!product) throw new Error(`Product not found: ${productId}`);
 
-      let expectedPrice = product.priceUsd;
-      if (addons?.toolkit) expectedPrice += 29;
-      if (addons?.approvalLibrary) expectedPrice += 9;
+      const expectedPrice = serverAmount;
 
       // 1. Record main purchase
       const purchase = await recordPurchase({
         email,
         name,
         productId,
-        amount: product.priceUsd.toFixed(2),
+        amount: String(baseAmount || product.priceUsd),
         paypalOrderId: sessionId,
         profileData,
         attribution,
       });
+      await grantEntitlements({ purchaseId: purchase.purchaseId, email, productId, orderId: sessionId });
 
       // 2. Record Toolkit addon
       if (addons?.toolkit) {
         try {
-          await recordPurchase({
+          const addonPurchase = await recordPurchase({
             email,
             name,
             productId: 'funding-toolkit',
@@ -164,6 +168,7 @@ export async function POST(request: NextRequest) {
             profileData,
             attribution,
           });
+          await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-toolkit', orderId: sessionId });
         } catch (err) {
           console.error('⚠️ Webhook: Failed to record Toolkit addon:', err);
         }
@@ -172,7 +177,7 @@ export async function POST(request: NextRequest) {
       // 3. Record Approval Library addon
       if (addons?.approvalLibrary) {
         try {
-          await recordPurchase({
+          const addonPurchase = await recordPurchase({
             email,
             name,
             productId: 'funding-approval-library',
@@ -181,6 +186,7 @@ export async function POST(request: NextRequest) {
             profileData,
             attribution,
           });
+          await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-approval-library', orderId: sessionId });
         } catch (err) {
           console.error('⚠️ Webhook: Failed to record Approval Library addon:', err);
         }

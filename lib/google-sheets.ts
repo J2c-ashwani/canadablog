@@ -131,22 +131,30 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       ],
     ]
 
-    // Find the next empty row by checking column A length to avoid Google Sheets API column shifting bug
-    const colARes = await sheets.spreadsheets.values.get({
+    // Atomic append to avoid race conditions and concurrent lead overwrite
+    const appendResult = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:A",
-    });
-    const colARows = colARes.data.values || [];
-    const nextRowIndex = colARows.length + 1;
-
-    await sheets.spreadsheets.values.update({
-      spreadsheetId,
-      range: `Leads!A${nextRowIndex}:BW${nextRowIndex}`,
-      valueInputOption: "USER_ENTERED",
+      range: "Leads!A:BW",
+      // Customer fields are data, never spreadsheet expressions.
+      valueInputOption: "RAW",
+      insertDataOption: "INSERT_ROWS",
       requestBody: {
         values,
       },
     });
+
+    // This is the only formula written by this workflow. It is generated on the
+    // server into its dedicated WhatsApp column after the raw lead row exists.
+    const updatedRange = appendResult.data.updates?.updatedRange || '';
+    const rowMatch = updatedRange.match(/!A(\d+):/);
+    if (rowMatch && waLink !== 'N/A') {
+      await sheets.spreadsheets.values.update({
+        spreadsheetId,
+        range: `Leads!AA${rowMatch[1]}`,
+        valueInputOption: 'USER_ENTERED',
+        requestBody: { values: [[waLink]] },
+      });
+    }
 
 
     console.log(`✅ Lead saved from source: ${data.source}`)
@@ -515,11 +523,23 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
       await sheets.spreadsheets.values.update({
         spreadsheetId,
         range: `Leads!A${sheetRowNumber}:BW${sheetRowNumber}`,
-        valueInputOption: "USER_ENTERED",
+        valueInputOption: "RAW",
         requestBody: {
           values: [targetRow],
         },
       })
+
+      // Restore the single server-generated WhatsApp formula. No user-controlled
+      // field is ever submitted with USER_ENTERED semantics.
+      const waLink = targetRow[26]
+      if (typeof waLink === 'string' && waLink.startsWith('=HYPERLINK(')) {
+        await sheets.spreadsheets.values.update({
+          spreadsheetId,
+          range: `Leads!AA${sheetRowNumber}`,
+          valueInputOption: 'USER_ENTERED',
+          requestBody: { values: [[waLink]] },
+        })
+      }
       console.log(`✅ Lead ${email} updated at row ${sheetRowNumber}`)
     }
     return { success: true }
@@ -775,7 +795,7 @@ export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData,
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: "Partner Inquiries!A:Z",
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       requestBody: {
         values,
       },
@@ -885,7 +905,7 @@ export async function appendMatchEvaluationToSheet(data: MatchEvaluationLog) {
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: "Match Logs!A:I",
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       requestBody: {
         values,
       },
@@ -935,7 +955,7 @@ export async function queueAlertJob(programSlug: string, severity: "minor" | "ma
       await sheets.spreadsheets.values.update({
         spreadsheetId,
         range: "AlertJobsQueue!A1:E1",
-        valueInputOption: "USER_ENTERED",
+        valueInputOption: "RAW",
         requestBody: {
           values: [["Timestamp", "Program Slug", "Severity", "Status", "Processed Count"]]
         }
@@ -953,7 +973,7 @@ export async function queueAlertJob(programSlug: string, severity: "minor" | "ma
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: "AlertJobsQueue!A:E",
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       requestBody: {
         values
       }
@@ -1011,7 +1031,7 @@ export async function updateAlertJobStatus(rowIndex: number, status: string, pro
     await sheets.spreadsheets.values.update({
       spreadsheetId,
       range: `AlertJobsQueue!D${sheetRowNumber}:E${sheetRowNumber}`,
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       requestBody: {
         values: [[status, String(processedCount)]]
       }
@@ -1100,7 +1120,7 @@ export async function appendAlertLeadToSheet(data: Omit<AlertLeadData, 'timestam
     await sheets.spreadsheets.values.append({
       spreadsheetId,
       range: "Alerts Leads!A:E",
-      valueInputOption: "USER_ENTERED",
+      valueInputOption: "RAW",
       requestBody: {
         values,
       },
@@ -1113,4 +1133,3 @@ export async function appendAlertLeadToSheet(data: Omit<AlertLeadData, 'timestam
     return { success: false, error }
   }
 }
-

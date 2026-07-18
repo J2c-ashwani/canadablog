@@ -2,6 +2,7 @@ import { NextResponse, type NextRequest } from 'next/server';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { applyRateLimit } from '@/lib/rate-limit';
 import { getReactivationPriceForEmail } from '@/lib/leads/pricing-test';
+import { isLoginToken } from '@/lib/auth/subscriber-tokens';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -19,13 +20,9 @@ export async function GET(request: NextRequest) {
       return NextResponse.json({ error: 'Token is required.' }, { status: 400 });
     }
 
-    if (!token.startsWith('v2_')) {
-      return NextResponse.json({ error: 'Legacy token version is deprecated. Please request a new link.' }, { status: 400 });
-    }
-
     const all = await SubscriberRepository.getAllSubscribers(true);
     // Search strictly by loginToken
-    const found = all.find((sub) => sub.loginToken === token);
+    const found = all.find((sub) => isLoginToken(token, sub.loginToken));
 
     if (!found) {
       return NextResponse.json({ error: 'Invalid or expired login token.' }, { status: 404 });

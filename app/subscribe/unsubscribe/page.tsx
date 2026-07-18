@@ -55,8 +55,8 @@ function UnsubscribeContent() {
     setErrorMsg("")
 
     try {
-      // Find and unsubscribe by calling a manual route or checking token
-      const response = await fetch("/api/subscribe/unsubscribe/manual", {
+      // Send a scoped confirmation link; an email address alone never changes subscription state.
+      const response = await fetch("/api/subscribe/unsubscribe/request", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

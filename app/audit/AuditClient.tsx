@@ -12,6 +12,7 @@ import {
   FileText, Phone, BadgeCheck, ChevronDown, Zap, DollarSign,
   CalendarClock, ShieldCheck, CircleDollarSign, Award, Users, Sparkles, Loader2
 } from 'lucide-react';
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
 
 /* ─── Architecture: PAY FIRST → CALENDLY UNLOCKS ────────────────────────────
    This page enforces the revenue ladder rule:
@@ -325,7 +326,7 @@ export default function AuditClient() {
     try {
       (window as any).paypal.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 52 },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null);
           
           // Send lead draft if email is entered to prevent funnel drop-off
@@ -349,61 +350,36 @@ export default function AuditClient() {
             }).catch(e => console.error('Failed to save lead draft:', e));
           }
 
-          return actions.order.create({
-            purchase_units: [{ amount: { value: finalPrice, currency_code: 'USD' }, description: desc }]
+          const sp = new URLSearchParams(window.location.search);
+          return createServerPayPalProductOrder({
+            productId: 'strategy-audit',
+            email: params.email.trim(),
+            name: params.name.trim() || 'Premium Member',
+            profileData: {
+              province: params.region || 'ON', industry: params.industry || 'other',
+              revenue: 'N/A', goal: 'Funding Strategy Audit', company: params.company || '',
+            },
+            attribution: {
+              landingPage: window.location.pathname, referrer: document.referrer || 'direct',
+              utmSource: sp.get('utm_source') || sp.get('source') || 'direct',
+              utmMedium: sp.get('utm_medium') || 'N/A', utmCampaign: sp.get('utm_campaign') || 'N/A',
+              gaClientId: getGaClientId(),
+            },
+            sessionId: 'sess_audit_landing',
           });
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (data: any) => {
           try {
             setIsProcessing(true);
-            const details = await actions.order.capture();
             if ((window as any).clarity) (window as any).clarity('event', 'audit_paid');
-            const orderId = details?.id || '';
+            const orderId = data.orderID || '';
             
-            const payerEmail = params.email.trim() || details?.payer?.email_address || '';
-            const payerName = params.name.trim() || (details?.payer?.name ? `${details.payer.name.given_name || ''} ${details.payer.name.surname || ''}`.trim() : 'Premium Member');
-
-            const sp = new URLSearchParams(window.location.search);
-            const attribution = {
-              landingPage: window.location.pathname,
-              referrer: document.referrer || 'direct',
-              utmSource: sp.get('utm_source') || sp.get('source') || 'direct',
-              utmMedium: sp.get('utm_medium') || 'N/A',
-              utmCampaign: sp.get('utm_campaign') || 'N/A',
-              gaClientId: getGaClientId(),
-            };
-
-            const res = await fetch('/api/products/purchase', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                productId: 'strategy-audit',
-                email: payerEmail,
-                name: payerName,
-                paypalOrderId: orderId,
-                profileData: {
-                  province: params.region || 'ON',
-                  industry: params.industry || 'other',
-                  revenue: 'N/A',
-                  goal: 'Funding Strategy Audit',
-                  company: params.company || '',
-                },
-                attribution,
-                sessionId: 'sess_audit_landing',
-              }),
-            });
-
-            if (!res.ok) {
-              const errBody = await res.json();
-              throw new Error(errBody.error || 'Server failed to record purchase');
-            }
-
-            const resData = await res.json();
-            let redirectUrl = resData.deliveryUrl || `/booking?success=true&email=${encodeURIComponent(payerEmail)}&name=${encodeURIComponent(payerName)}&source=${encodeURIComponent(params.source)}&tier=audit&price=${finalPrice}&order=${encodeURIComponent(orderId)}`;
+            const resData = await finalizeServerPayPalProductOrder(orderId);
+            let redirectUrl = resData.deliveryUrl;
             
             // Deactivate exit-intent and update states
             setHasPaid(true);
-            setFinalPayerEmail(payerEmail);
+            setFinalPayerEmail(params.email.trim());
             setPaymentSuccessState(true);
             setIsProcessing(false);
 
@@ -432,7 +408,7 @@ export default function AuditClient() {
     }
   }, [sdkReady, params]);
 
-  const finalPrice = Math.max(0, 199 - params.discount);
+  const finalPrice = 199;
   const isDiscounted = params.discount > 0;
 
   return (

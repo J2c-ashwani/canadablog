@@ -1,7 +1,7 @@
-import crypto from 'crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import { getLeadsFromSheet } from '@/lib/google-sheets';
 import { getPurchasesByEmail } from '@/lib/products/purchase-store';
+import { isLoginToken } from '@/lib/auth/subscriber-tokens';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -14,44 +14,14 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Missing token parameter' }, { status: 400 });
     }
 
-    if (!token.startsWith('v2_')) {
-      return NextResponse.json({ error: 'Legacy token version is deprecated. Please request a new link.' }, { status: 400 });
-    }
-
     // Read leads from sheets database
     const leads = await getLeadsFromSheet(2000);
 
-    const tokenSalt = process.env.SESSION_TOKEN_SALT;
-    const unsubscribeSalt = process.env.SESSION_UNSUBSCRIBE_SALT;
-    const isProduction = process.env.NODE_ENV === 'production';
-
-    if (isProduction && (!tokenSalt || !unsubscribeSalt)) {
-      throw new Error('❌ Critical: SESSION_TOKEN_SALT or SESSION_UNSUBSCRIBE_SALT environment variable is missing in production!');
-    }
-
-    const defaultTokenSalt = tokenSalt || 'fsi-login-token-2026';
-    const defaultUnsubscribeSalt = unsubscribeSalt || 'fsi-salt-2026';
-
-    // Securely find the lead by token (including deterministic fallbacks for older leads)
+    // Only a v3 login token may restore a session. Unsubscribe credentials and
+    // retired deterministic tokens are deliberately never accepted here.
     const lead = leads.find((l) => {
       if (!l.email) return false;
-      const deterministicLoginToken = 'v2_' + crypto
-        .createHash('sha256')
-        .update(l.email.toLowerCase().trim() + defaultTokenSalt)
-        .digest('hex')
-        .slice(0, 32);
-      const deterministicUnsubscribeToken = 'v2_' + crypto
-        .createHash('sha256')
-        .update(l.email.toLowerCase().trim() + defaultUnsubscribeSalt)
-        .digest('hex')
-        .slice(0, 32);
-
-      return (
-        (l.loginToken && l.loginToken === token) ||
-        deterministicLoginToken === token ||
-        (l.unsubscribeToken && l.unsubscribeToken === token) ||
-        deterministicUnsubscribeToken === token
-      );
+      return isLoginToken(token, l.loginToken);
     });
 
     if (!lead) {

@@ -974,6 +974,29 @@ export default async function RevenueDashboardPage({
   );
   const mrr = activeMemberships.size * 29;
 
+  // --- 30-Day Executive Scorecard Metrics ---
+  const calcStarts30d = postTelemetry.filter(e => e.eventName === 'calculator_start' && parseDateSafe(e.timestamp).getTime() >= last30DaysTime).length;
+  const calcCompletes30d = postTelemetry.filter(e => (e.eventName === 'calculator_complete' || e.eventName === 'calculator_completed' || e.eventName === 'calculator_results_shown') && parseDateSafe(e.timestamp).getTime() >= last30DaysTime).length;
+  
+  const reportPurchases30d = purchases.filter(p => {
+    const isReport = p.productId === 'funding-match-report' || p.productId === 'agriculture-toolkit' || p.productId === 'women-founder-toolkit' || p.productId === 'digital-toolkit' || p.productId === 'report';
+    return isReport && parseDateSafe(p.createdAt || p.timestamp).getTime() >= last30DaysTime;
+  }).length;
+
+  const auditPurchases30d = purchases.filter(p => {
+    const isAudit = p.productId === 'strategy-audit' || p.productId === 'strategy-vip' || p.productId === 'strategy-session' || p.productId === 'funding-roadmap' || p.productId === 'funding-bundle';
+    return isAudit && parseDateSafe(p.createdAt || p.timestamp).getTime() >= last30DaysTime;
+  }).length;
+
+  const enterpriseLeads30d = leads.filter(l => {
+    const isTierA = l.leadTier === 'Tier A' || l.tier === 'Tier A' || (l.score !== undefined && Number(l.score) >= 80);
+    return isTierA && parseDateSafe(l.timestamp).getTime() >= last30DaysTime;
+  }).length;
+
+  const revenue30d = purchases
+    .filter(p => parseDateSafe(p.createdAt || p.timestamp).getTime() >= last30DaysTime)
+    .reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
+
   // --- Business Health Score Metrics ---
   const getHealthStatus = (metric: string) => {
     switch (metric) {

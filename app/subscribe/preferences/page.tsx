@@ -13,6 +13,7 @@ import { Loader2, Settings, CheckCircle2, Sparkles, AlertTriangle } from "lucide
 function PreferencesContent() {
   const searchParams = useSearchParams()
   const queryEmail = searchParams.get("email") || ""
+  const queryToken = searchParams.get("token") || ""
 
   // Form States
   const [email, setEmail] = useState(queryEmail)
@@ -33,16 +34,16 @@ function PreferencesContent() {
   // Fetch subscriber profile if email query exists
   useEffect(() => {
     if (queryEmail) {
-      loadProfile(queryEmail)
+      loadProfile(queryEmail, queryToken)
     }
-  }, [queryEmail])
+  }, [queryEmail, queryToken])
 
-  const loadProfile = async (targetEmail: string) => {
+  const loadProfile = async (targetEmail: string, targetToken: string) => {
     setIsLoadingProfile(true)
     setErrorMsg("")
     setSuccessMsg("")
     try {
-      const response = await fetch(`/api/subscribe/profile?email=${encodeURIComponent(targetEmail)}`)
+      const response = await fetch(`/api/subscribe/profile?email=${encodeURIComponent(targetEmail)}&token=${encodeURIComponent(targetToken)}`)
       const data = await response.json()
       if (response.ok && data.success && data.profile) {
         const p = data.profile
@@ -54,7 +55,7 @@ function PreferencesContent() {
         setInterests(p.fundingInterests || [])
         setProfileLoaded(true)
       } else {
-        setErrorMsg("Email profile not found in our directory. You can save to register a new alert profile.")
+        setErrorMsg("Email profile not found in our directory or invalid token. You can save to register a new alert profile.")
       }
     } catch (err) {
       console.error(err)
@@ -94,6 +95,7 @@ function PreferencesContent() {
           industry,
           companySize,
           fundingInterests: interests,
+          token: queryToken,
         }),
       })
 
@@ -186,7 +188,7 @@ function PreferencesContent() {
                     className="bg-slate-950 border-slate-800 text-white placeholder-slate-500 text-xs"
                   />
                   <Button 
-                    onClick={() => loadProfile(email)}
+                    onClick={() => loadProfile(email, queryToken || "")}
                     disabled={isLoadingProfile || !email}
                     className="bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs whitespace-nowrap px-4"
                   >

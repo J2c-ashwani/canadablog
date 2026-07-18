@@ -11,7 +11,7 @@ function escapeHtml(value: string) {
 }
 
 function wrapCalculatorRecoveryTemplate(contentHtml: string, loginToken: string, firstName: string) {
-  const unsubscribeUrl = `https://www.fsidigital.ca/subscribe/unsubscribe?token=${loginToken}`;
+  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   return `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;margin:0;">

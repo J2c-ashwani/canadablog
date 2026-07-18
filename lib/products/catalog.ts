@@ -1,4 +1,4 @@
-export type ProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library' | 'strategy-audit' | 'funding-membership';
+export type ProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library' | 'guide-companion-kit' | 'strategy-audit' | 'strategy-vip' | 'portfolio-assessment' | 'funding-membership';
 
 export interface Product {
   id: ProductId;
@@ -118,6 +118,16 @@ export const PRODUCTS: Record<ProductId, Product> = {
       'Downloadable PDF guide with examples',
     ],
   },
+  'guide-companion-kit': {
+    id: 'guide-companion-kit',
+    name: 'Application Companion Kit',
+    slug: 'guide-companion-kit',
+    priceUsd: 9,
+    tagline: 'Practical application examples and companion resources',
+    description: 'A guide-specific companion kit with premium application examples and practical reference material.',
+    features: ['Application examples', 'Reference material'],
+    deliverables: ['Entitlement-protected digital delivery'],
+  },
   'strategy-audit': {
     id: 'strategy-audit',
     name: 'Funding Strategy Audit',
@@ -138,6 +148,26 @@ export const PRODUCTS: Record<ProductId, Product> = {
       '1-on-1 Strategy Consultation call slot',
       'Calendly booking access link',
     ],
+  },
+  'strategy-vip': {
+    id: 'strategy-vip',
+    name: 'VIP Funding Eligibility Blueprint',
+    slug: 'strategy-vip',
+    priceUsd: 499,
+    tagline: 'Senior-advisor funding assessment and strategy session',
+    description: 'A 60-minute senior-advisor assessment with a comprehensive funding strategy and booking entitlement.',
+    features: ['Comprehensive funding assessment', '60-minute strategy session', 'Priority stack timeline'],
+    deliverables: ['Protected report delivery', 'Strategy session booking access'],
+  },
+  'portfolio-assessment': {
+    id: 'portfolio-assessment',
+    name: 'Executive Funding Assessment',
+    slug: 'portfolio-assessment',
+    priceUsd: 199,
+    tagline: 'Executive funding assessment and portfolio analysis',
+    description: 'A personalised executive funding assessment with portfolio analysis.',
+    features: ['Funding assessment', 'Portfolio analysis'],
+    deliverables: ['Entitlement-protected assessment access'],
   },
   'funding-membership': {
     id: 'funding-membership',

@@ -1,5 +1,6 @@
 import { NextResponse, type NextRequest } from "next/server"
 import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { isLoginToken } from '@/lib/auth/subscriber-tokens'
 import { getAllPrograms } from "@/lib/data/programs"
 import { MatchScoreEngine } from "@/lib/leads/MatchScoreEngine"
 import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
@@ -60,29 +61,36 @@ export async function POST(request: NextRequest) {
 
     if (step === 1) {
       if (existing) {
-        const updates: any = {}
-        if (name) updates.name = name
-        if (pagePath) updates.pagePath = pagePath
-        if (data) {
-          if (data.country) updates.country = data.country
-          if (data.region) updates.region = data.region
-          if (data.companySize) updates.companySize = data.companySize
-          if (data.industry) updates.industry = data.industry
-          if (data.phone) updates.phone = data.phone
-        }
-
-        // Backup attribution to leadActivity JSON
-        let activity: any = {}
-        try {
-          if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
-            activity = JSON.parse(existing.leadActivity)
+        const token = body.token
+        const isAuthorized = isLoginToken(token, existing.loginToken)
+        
+        if (isAuthorized) {
+          const updates: any = {}
+          if (name) updates.name = name
+          if (pagePath) updates.pagePath = pagePath
+          if (data) {
+            if (data.country) updates.country = data.country
+            if (data.region) updates.region = data.region
+            if (data.companySize) updates.companySize = data.companySize
+            if (data.industry) updates.industry = data.industry
+            if (data.phone) updates.phone = data.phone
           }
-        } catch (e) {}
-        if (!activity.firstTouchPage) activity.firstTouchPage = pagePath || "/portfolio"
-        if (!activity.firstTouchAt) activity.firstTouchAt = firstTouchAt || new Date().toISOString()
-        updates.leadActivity = JSON.stringify(activity)
 
-        await SubscriberRepository.updateSubscriberPreferences(email, updates)
+          // Backup attribution to leadActivity JSON
+          let activity: any = {}
+          try {
+            if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
+              activity = JSON.parse(existing.leadActivity)
+            }
+          } catch (e) {}
+          if (!activity.firstTouchPage) activity.firstTouchPage = pagePath || "/portfolio"
+          if (!activity.firstTouchAt) activity.firstTouchAt = firstTouchAt || new Date().toISOString()
+          updates.leadActivity = JSON.stringify(activity)
+
+          await SubscriberRepository.updateSubscriberPreferences(email, updates)
+        } else {
+          console.warn(`[Security check] Unauthenticated attempt to overwrite step 1 subscriber draft: ${email}`)
+        }
         return NextResponse.json({ success: true, isNew: false, leadTier: existing.leadTier || "Tier C" })
       } else {
         const country = (data?.country === "USA" || data?.country === "US") ? "USA" : "Canada"
@@ -127,41 +135,48 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ error: "Draft not found." }, { status: 404 })
       }
       
-      const updates: any = {}
-      if (pagePath) updates.pagePath = pagePath
-      if (data) {
-        if (data.country) updates.country = data.country
-        if (data.region) updates.region = data.region
-        if (data.companySize) updates.companySize = data.companySize
-        if (data.industry) updates.industry = data.industry
-        if (data.fundingInterests) updates.fundingInterests = data.fundingInterests
-        if (data.website) updates.website = data.website
-        if (data.companyName) updates.companyName = data.companyName
-        if (data.phone) updates.phone = data.phone
-
-        // Re-calculate tier on step 3 completion
-        const tier = calculateLeadTier({
-          country: data.country || existing.country,
-          region: data.region || existing.region,
-          companySize: data.companySize || existing.companySize,
-          industry: data.industry || existing.industry
-        })
-        updates.leadTier = tier
-      }
-
-      // Backup attribution to leadActivity JSON
-      let activity: any = {}
-      try {
-        if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
-          activity = JSON.parse(existing.leadActivity)
-        }
-      } catch (e) {}
-      if (!activity.firstTouchPage) activity.firstTouchPage = pagePath || "/portfolio"
-      if (!activity.firstTouchAt) activity.firstTouchAt = firstTouchAt || new Date().toISOString()
-      updates.leadActivity = JSON.stringify(activity)
+      const token = body.token
+      const isAuthorized = isLoginToken(token, existing.loginToken)
       
-      await SubscriberRepository.updateSubscriberPreferences(email, updates)
-      return NextResponse.json({ success: true, leadTier: updates.leadTier || existing.leadTier || "Tier C" })
+      if (isAuthorized) {
+        const updates: any = {}
+        if (pagePath) updates.pagePath = pagePath
+        if (data) {
+          if (data.country) updates.country = data.country
+          if (data.region) updates.region = data.region
+          if (data.companySize) updates.companySize = data.companySize
+          if (data.industry) updates.industry = data.industry
+          if (data.fundingInterests) updates.fundingInterests = data.fundingInterests
+          if (data.website) updates.website = data.website
+          if (data.companyName) updates.companyName = data.companyName
+          if (data.phone) updates.phone = data.phone
+
+          // Re-calculate tier on step 3 completion
+          const tier = calculateLeadTier({
+            country: data.country || existing.country,
+            region: data.region || existing.region,
+            companySize: data.companySize || existing.companySize,
+            industry: data.industry || existing.industry
+          })
+          updates.leadTier = tier
+        }
+
+        // Backup attribution to leadActivity JSON
+        let activity: any = {}
+        try {
+          if (existing.leadActivity && existing.leadActivity !== "N/A" && existing.leadActivity !== "{}") {
+            activity = JSON.parse(existing.leadActivity)
+          }
+        } catch (e) {}
+        if (!activity.firstTouchPage) activity.firstTouchPage = pagePath || "/portfolio"
+        if (!activity.firstTouchAt) activity.firstTouchAt = firstTouchAt || new Date().toISOString()
+        updates.leadActivity = JSON.stringify(activity)
+        
+        await SubscriberRepository.updateSubscriberPreferences(email, updates)
+      } else {
+        console.warn(`[Security check] Unauthenticated attempt to overwrite step 3 subscriber draft: ${email}`)
+      }
+      return NextResponse.json({ success: true, leadTier: existing.leadTier || "Tier C" })
     }
 
     return NextResponse.json({ error: "Invalid step." }, { status: 400 })

@@ -95,7 +95,11 @@ export async function rateLimit(
  * Helper to apply rate limiting in Next.js API Routes.
  */
 export async function applyRateLimit(request: Request, limit: number, windowMs: number) {
-  const ip = request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "127.0.0.1";
+  const ip = (request as any).ip || 
+             request.headers.get("x-vercel-forwarding-ip") || 
+             request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || 
+             request.headers.get("x-real-ip") || 
+             "127.0.0.1";
   const result = await rateLimit(ip, limit, windowMs);
   
   if (!result.success) {

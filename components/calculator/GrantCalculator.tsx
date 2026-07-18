@@ -18,6 +18,7 @@ import { SampleReportPreview } from "@/components/products/SampleReportPreview"
 import { caseStudiesDatabase } from "@/lib/data/case-studies"
 import { DiyComparisonTable } from "@/components/DiyComparisonTable"
 import { getExperimentVariant, getExperiment } from "@/lib/leads/experiment-helper"
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 
 type CalculatorData = {
     province: string;
@@ -1236,7 +1237,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               }).catch(() => {});
             }
           },
-          createOrder: (_data: any, actions: any) => {
+          createOrder: async () => {
             setPaymentError(null);
             const currentEmail = dataRef.current.email;
 
@@ -1336,14 +1337,28 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               }).catch(() => {});
             }
 
-            return actions.order.create({
-              purchase_units: [{
-                amount: { value: price.toFixed(2), currency_code: 'USD' },
-                description: desc
-              }]
+            return createServerPayPalProductOrder({
+              productId: currentProductId,
+              email: currentEmail,
+              name: dataRef.current.name,
+              addons: {
+                toolkit: currentAddonToolkit,
+                approvalLibrary: currentAddonApprovalLibrary,
+                strategySession: currentAddonStrategySession,
+              },
+              profileData: {
+                province: dataRef.current.province,
+                industry: dataRef.current.industry,
+                revenue: dataRef.current.revenue,
+                goal: dataRef.current.goal,
+                company: dataRef.current.company,
+                phone: dataRef.current.phone,
+              },
+              attribution: trackingDataRef.current,
+              sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
             });
           },
-          onApprove: async (_data: any, actions: any) => {
+          onApprove: async (_data: any) => {
             const currentEmail = dataRef.current.email;
             const currentName = dataRef.current.name;
             const currentProductId = selectedProductIdRef.current;
@@ -1385,8 +1400,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 }).catch(e => console.error("Telemetry error:", e));
               }
 
-              const details = await actions.order.capture();
-              const orderId = details?.id || '';
+              const orderId = _data?.orderID || '';
+              if (!orderId) throw new Error('PayPal did not return an order ID.');
 
               // GA4 event: purchase complete
               if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -1410,46 +1425,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 }).catch(() => {});
               }
 
-              // Record purchase via API
-              const res = await fetch('/api/products/purchase', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  productId: currentProductId,
-                  email: currentEmail,
-                  name: currentName,
-                  paypalOrderId: orderId,
-                  addons: {
-                    toolkit: currentAddonToolkit,
-                    approvalLibrary: currentAddonApprovalLibrary,
-                    strategySession: currentAddonStrategySession
-                  },
-                  profileData: {
-                    province: dataRef.current.province,
-                    industry: dataRef.current.industry,
-                    revenue: dataRef.current.revenue,
-                    goal: dataRef.current.goal,
-                    company: dataRef.current.company,
-                    phone: dataRef.current.phone,
-                  },
-                  attribution: {
-                    landingPage: trackingDataRef.current.landingPage,
-                    referrer: trackingDataRef.current.referrer,
-                    utmSource: trackingDataRef.current.utmSource,
-                    utmMedium: trackingDataRef.current.utmMedium,
-                    utmCampaign: trackingDataRef.current.utmCampaign,
-                    lastTouchPage: trackingDataRef.current.lastTouchPage,
-                    lastTouchReferrer: trackingDataRef.current.lastTouchReferrer,
-                    device: trackingDataRef.current.device,
-                    browser: trackingDataRef.current.browser,
-                    country: trackingDataRef.current.country,
-                  },
-                  sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
-                  calculator_cta_variant: calculatorCtaVariant
-                })
-              });
-
-              const result = await res.json();
+              const result = await finalizeServerPayPalProductOrder(orderId);
 
               if (result.success) {
                 setAccessToken(result.accessToken);
@@ -1653,7 +1629,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               }).catch(() => {});
             }
           },
-          createOrder: (_data: any, actions: any) => {
+          createOrder: async () => {
             setPaymentError(null);
             const currentCredit = upgradeCreditRef.current || 0;
             const price = Math.max(0.50, 49 - currentCredit);
@@ -1700,14 +1676,23 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 }).catch(() => {});
               }
             } catch (tErr) {}
-            return actions.order.create({
-              purchase_units: [{
-                amount: { value: price.toFixed(2), currency_code: 'USD' },
-                description: 'Funding Action Plan Upgrade - FSI Digital'
-              }]
+            return createServerPayPalProductOrder({
+              productId: 'funding-roadmap',
+              email: data.email,
+              name: data.name,
+              profileData: {
+                province: data.province,
+                industry: data.industry,
+                revenue: data.revenue,
+                goal: data.goal,
+                company: data.company,
+                phone: data.phone,
+              },
+              attribution: trackingData,
+              sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
             });
           },
-          onApprove: async (_data: any, actions: any) => {
+          onApprove: async (_data: any) => {
             try {
               // Fire payment_approved telemetry
               fetch("/api/subscriber/track-activity", {
@@ -1719,8 +1704,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                   paypalOrderId: _data?.orderID || ''
                 })
               }).catch(e => console.error("Telemetry error:", e));
-              const details = await actions.order.capture();
-              const orderId = details?.id || '';
+              const orderId = _data?.orderID || '';
+              if (!orderId) throw new Error('PayPal did not return an order ID.');
 
               const currentCredit = upgradeCreditRef.current || 0;
               const price = Math.max(0.50, 49 - currentCredit);
@@ -1733,41 +1718,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 });
               }
 
-              // Record upgrade purchase via API
-              const res = await fetch('/api/products/purchase', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                  productId: 'funding-roadmap',
-                  email: data.email,
-                  name: data.name,
-                  paypalOrderId: orderId,
-                  profileData: {
-                    province: data.province,
-                    industry: data.industry,
-                    revenue: data.revenue,
-                    goal: data.goal,
-                    company: data.company,
-                    phone: data.phone,
-                  },
-                  attribution: {
-                    landingPage: trackingData.landingPage,
-                    referrer: trackingData.referrer,
-                    utmSource: trackingData.utmSource,
-                    utmMedium: trackingData.utmMedium,
-                    utmCampaign: trackingData.utmCampaign,
-                    lastTouchPage: trackingData.lastTouchPage,
-                    lastTouchReferrer: trackingData.lastTouchReferrer,
-                    device: trackingData.device,
-                    browser: trackingData.browser,
-                    country: trackingData.country,
-                  },
-                  sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
-                  calculator_cta_variant: calculatorCtaVariant
-                })
-              });
-
-              const result = await res.json();
+              const result = await finalizeServerPayPalProductOrder(orderId);
               if (result.success) {
                 // Reload report to get unlocked action plan data
                 await loadReport(accessToken || result.accessToken);
@@ -3460,16 +3411,16 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 </p>
                                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                   {[
-                                    { name: "1. Grant Budget Template (.xlsx)", url: "/templates/FSI-Grant-Budget-Builder.xlsx" },
-                                    { name: "2. Cash Flow Forecast Model (.xlsx)", url: "/templates/FSI-Cash-Flow-Forecast.xlsx" },
-                                    { name: "3. Hiring & Wage Subsidy Plan (.docx)", url: "/templates/FSI-Hiring-Plan-Template.docx" },
-                                    { name: "4. Project Proposal Outline (.docx)", url: "/templates/FSI-Project-Proposal-Framework.docx" },
-                                    { name: "5. Pre-Submission Checklist (.pdf)", url: "/templates/FSI-Readiness-Preflight-Checklist.pdf" },
-                                    { name: "6. Application Progress Tracker (.xlsx)", url: "/templates/FSI-Application-Tracking-Sheet.xlsx" }
+                                    { name: "1. Grant Budget Template (.xlsx)", asset: 'grant-budget-builder' },
+                                    { name: "2. Cash Flow Forecast Model (.xlsx)", asset: 'cash-flow-forecast' },
+                                    { name: "3. Hiring & Wage Subsidy Plan (.docx)", asset: 'hiring-plan-template' },
+                                    { name: "4. Project Proposal Outline (.docx)", asset: 'project-proposal-framework' },
+                                    { name: "5. Pre-Submission Checklist (.pdf)", asset: 'readiness-preflight-checklist' },
+                                    { name: "6. Application Progress Tracker (.xlsx)", asset: 'application-tracking-sheet' }
                                   ].map((file, idx) => (
                                     <a
                                       key={idx}
-                                      href={file.url}
+                                      href={`/api/products/download-asset?token=${encodeURIComponent(accessToken)}&asset=${file.asset}`}
                                       download
                                       className="flex items-center justify-between p-2.5 bg-white border border-slate-150 rounded-lg hover:border-emerald-300 hover:bg-emerald-50/10 transition-colors text-xs font-semibold text-slate-700"
                                     >
@@ -3513,7 +3464,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     </p>
                                   </div>
                                   <a
-                                    href="/templates/FSI-Funding-Approval-Guide.pdf"
+                                    href={`/api/products/download-asset?token=${encodeURIComponent(accessToken)}&asset=funding-approval-guide`}
                                     download
                                     className="inline-flex items-center gap-1 text-xs font-bold text-indigo-650 hover:text-indigo-850 mt-1"
                                   >

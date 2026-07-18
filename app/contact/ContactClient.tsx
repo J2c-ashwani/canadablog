@@ -403,24 +403,26 @@ export default function ContactClient() {
         else if (result.tier === 'B') trackEvent('tier_b_assigned');
         else trackEvent('tier_c_assigned');
 
-        // Skip OTP verification modal, verify immediately, and show assessment dashboard
-        setEmailVerified(true);
-        trackEvent('email_verified');
-        
-        // Background track email verification on sheets telemetry
+        // Send OTP code and open the OTP verification modal
+        setShowOtpModal(true);
+        setOtpError(null);
         try {
-          const sessId = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_session_id') || 'sess_anonymous' : 'sess_anonymous';
-          fetch('/api/telemetry', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              eventName: 'email_verified',
-              sessionId: sessId,
-              pagePath: window.location.pathname,
-              referrer: typeof document !== 'undefined' ? document.referrer || 'direct' : 'direct',
-            })
-          }).catch(() => {});
-        } catch (tErr) {}
+          const otpResponse = await fetch("/api/contact/otp/send", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email: formData.email }),
+          });
+          if (otpResponse.ok) {
+            const otpData = await otpResponse.json();
+            setOtpToken(otpData.token);
+            setResendCooldown(60);
+          } else {
+            const data = await otpResponse.json();
+            setOtpError(data.error || "Failed to send verification code. Please request resend.");
+          }
+        } catch (otpErr) {
+          setOtpError("Network error sending verification code. Please request resend.");
+        }
 
         setSubmitStatus("success");
       } else {

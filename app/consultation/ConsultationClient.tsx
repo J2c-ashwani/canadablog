@@ -6,6 +6,7 @@ import { Footer } from "@/components/Footer";
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 import { safeSessionStorage } from '@/lib/storage';
 import { getPreviewConfidenceLevel, getPreviewOpportunities } from '@/lib/leads/preview-engine';
+import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
 
 import {
   CheckCircle,
@@ -223,35 +224,6 @@ export default function ConsultationClient() {
   };
 
   /* ── Recovery Tracking ── */
-  const markRecoveryPaid = useCallback(async (details: any) => {
-    if (!params.rid) return;
-    const paypalOrderId = String(details?.id || '');
-    await fetch('/api/strategy-session/recovery', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        event: 'paid',
-        recoveryId: params.rid,
-        source: params.source,
-        pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
-        sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
-        paypalOrderId,
-        rawSummary: JSON.stringify({
-          paypalOrderId,
-          status: details?.status || '',
-          payerEmail: details?.payer?.email_address || '',
-          tier: selectedTier,
-          amount: selectedTier === 'audit' ? (199.00 - params.discount) : 499.00
-        }),
-        calendlyEventUri: params.eventUri,
-        calendlyInviteeUri: params.inviteeUri,
-        gaClientId: getGaClientId(),
-      }),
-    }).catch((error) => {
-      console.error('Strategy session paid recovery update failed:', error);
-    });
-  }, [params.rid, params.source, params.eventUri, params.inviteeUri, selectedTier]);
-
   const markRecoveryAbandoned = useCallback(async (reason: string) => {
     if (!params.rid) return;
     await fetch('/api/strategy-session/recovery', {
@@ -319,24 +291,32 @@ export default function ConsultationClient() {
           label: 'pay',
           height: 48
         },
-        createOrder: (_data: any, actions: any) => {
+        createOrder: async () => {
           setPaymentError(null);
-          return actions.order.create({
-            purchase_units: [{
-              amount: { value: price, currency_code: 'USD' },
-              description
-            }]
+          return createServerPayPalProductOrder({
+            productId: selectedTier === 'vip' ? 'strategy-vip' : 'strategy-audit',
+            email: params.email,
+            name: params.name || 'Customer',
+            profileData: {
+              province: params.region || 'ON',
+              industry: params.industry || 'other',
+              revenue: params.businessStage || 'pre-revenue',
+              goal: 'funding strategy',
+              company: params.companyName || '',
+            },
+            attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
+            sessionId: params.rid || 'sess_anonymous',
           });
         },
-        onApprove: async (_data: any, actions: any) => {
+        onApprove: async (_data: any) => {
           try {
-            const details = await actions.order.capture();
+            const orderId = _data?.orderID || '';
+            if (!orderId) throw new Error('PayPal did not return an order ID.');
+            const result = await finalizeServerPayPalProductOrder(orderId);
             if (typeof window !== 'undefined' && (window as any).clarity) {
               (window as any).clarity("event", "strategy_session_paid");
             }
-            await markRecoveryPaid(details);
-            const orderId = details?.id || '';
-            window.location.href = `/booking?success=true&email=${encodeURIComponent(params.email)}&name=${encodeURIComponent(params.name)}&rid=${encodeURIComponent(params.rid)}&source=${encodeURIComponent(params.source)}&tier=${selectedTier}&price=${price}&order=${encodeURIComponent(orderId)}`;
+            window.location.href = result.deliveryUrl;
           } catch (err) {
             console.error("Payment capture error:", err);
             setPaymentError("Payment was processed, but we encountered an issue locking your slot. Please contact support.");
@@ -357,7 +337,7 @@ export default function ConsultationClient() {
       console.error("Failed to render PayPal buttons:", err);
       setPaymentError("Could not load secure checkout. Please refresh the page.");
     }
-  }, [sdkReady, selectedTier, params, markRecoveryPaid, markRecoveryAbandoned]);
+  }, [sdkReady, selectedTier, params, markRecoveryAbandoned]);
 
   /* ── Funding Potential Score™ ── */
   const getFundingPotential = () => {
