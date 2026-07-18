@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Get Your Free Colorado Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital",
   description: "Download our comprehensive Colorado technology startup grants toolkit covering Advanced Industries Accelerator Program Early-Stage Capital and Retention...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/colorado-tech-programs",
+    canonical: "https://www.fsidigital.ca/download/colorado-tech-guide",
   },
 }
 

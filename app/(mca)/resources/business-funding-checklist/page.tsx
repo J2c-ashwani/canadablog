@@ -30,7 +30,7 @@ const CONTENT = `
 </ul>
 
 <h2>Step 4: Align with Partner Requirements</h2>
-<p>Once your documents are organized, use our interactive funding calculator to estimate your range, then apply online to fast-track your file through our priority routing portal.</p>
+<p>Once your documents are organized, use our interactive funding calculator to estimate your range, then apply online for a specialist document review before partner submission.</p>
 `;
 
 export default function ChecklistPage() {
@@ -40,7 +40,7 @@ export default function ChecklistPage() {
       description={metadata.description}
       readTime="5 min read"
       contentHtml={CONTENT}
-      ctaText="Apply with Priority Checklist Audit"
+      ctaText="Apply with Pre-Submission Document Review"
       ctaUrl="/priority-processing"
     />
   );

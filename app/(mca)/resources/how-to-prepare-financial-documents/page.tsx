@@ -34,7 +34,7 @@ export default function PrepareDocumentsPage() {
       description={metadata.description}
       readTime="4 min read"
       contentHtml={CONTENT}
-      ctaText="Apply with Priority Document Verification"
+      ctaText="Apply with Pre-Submission Document Review"
       ctaUrl="/apply"
     />
   );

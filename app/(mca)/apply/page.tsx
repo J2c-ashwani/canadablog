@@ -634,8 +634,8 @@ export default function ApplyPage() {
                   <input type="checkbox" id="consent" checked={form.consent}
                     onChange={(e) => set('consent', e.target.checked)} />
                   <span>
-                    I agree to the <a href="/terms-of-service" target="_blank" rel="noopener noreferrer">Terms of Service</a> and{' '}
-                    <a href="/privacy-policy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
+                    I agree to the <a href="/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> and{' '}
+                    <a href="/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a>.
                     I understand this application does not guarantee approval or funding. <span className="req">*</span>
                   </span>
                 </label>

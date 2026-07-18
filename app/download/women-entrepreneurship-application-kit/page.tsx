@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "WES Women Entrepreneurship Application Toolkit | FSI Digital",
   description: "Get instant access to comprehensive Women Entrepreneurship Strategy application templates, federal gender equality compliance strategies, and ecosystem ...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/women-business-grants-2026",
+    canonical: "https://www.fsidigital.ca/download/women-entrepreneurship-application-kit",
   },
 }
 

@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Get Your Free Women Technology Grants Guide | FSI Digital",
   description: "Download our comprehensive women technology grants toolkit covering software development, AI/ML, digital innovation funding with NRC IRAP application st...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/women-technology-grants-canada",
+    canonical: "https://www.fsidigital.ca/download/women-technology-grants-guide",
   },
 }
 

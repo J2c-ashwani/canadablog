@@ -107,7 +107,7 @@ async function verifyRevenueBacklog() {
   console.log("\n------------------------------------------------------");
   console.log("🧪 Test 4: Verify Output Backlog Report Generation");
   
-  const backlogReportPath = path.join("/Users/ashwanikumar/.gemini/antigravity/brain/3861610f-ba06-40f7-9b69-5a0cbbf0df8b", "revenue_opportunities_backlog.md");
+  const backlogReportPath = path.join(process.env.ANTIGRAVITY_ARTIFACT_DIR || path.resolve(process.cwd(), "scratch"), "revenue_opportunities_backlog.md");
   
   // Temporarily delete if exists to ensure new write
   if (fs.existsSync(backlogReportPath)) {

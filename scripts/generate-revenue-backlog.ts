@@ -9,7 +9,7 @@ import { calculateLeadIntelligence } from "../lib/leads/scoring";
 import { PRICING_CONFIG } from "../lib/leads/pricing-config";
 
 // Artifact destination directory
-const ART_DIR = "/Users/ashwanikumar/.gemini/antigravity/brain/3861610f-ba06-40f7-9b69-5a0cbbf0df8b";
+const ART_DIR = process.env.ANTIGRAVITY_ARTIFACT_DIR || path.resolve(process.cwd(), "scratch");
 
 interface Metrics {
   clicks: number | "Unknown";

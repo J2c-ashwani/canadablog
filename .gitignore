@@ -38,3 +38,5 @@ google-credentials.json
 .env*.local
 scripts/sales/lead-buyers.csv
 scratch/
+cr28/
+gscmarch/

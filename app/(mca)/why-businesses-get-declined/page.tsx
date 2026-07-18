@@ -79,23 +79,23 @@ export default function WhyDeclinedPage() {
         </div>
       </section>
 
-      {/* Priority Upsell Banner */}
+      {/* Pre-Submission Document Review Banner */}
       <section className="max-w-4xl mx-auto px-6 mt-10">
         <div className="bg-gradient-to-r from-blue-900 to-indigo-900 text-white rounded-2xl p-6 sm:p-8 shadow-xl border border-blue-800 flex flex-col md:flex-row justify-between items-center gap-6">
           <div className="max-w-xl text-center md:text-left">
             <span className="bg-blue-800 text-xs font-bold px-2.5 py-1 rounded-full uppercase tracking-wider">
-              Priority Handling Upsell
+              Optional Document Review
             </span>
             <h2 className="text-xl sm:text-2xl font-black mt-3 text-white">
-              Want us to review your application before submission?
+              Want a specialist to review your application before submission?
             </h2>
             <p className="text-blue-100 text-sm mt-2 leading-relaxed">
               Our specialists identify and resolve bank statement issues, file anomalies,
-              and formatting errors before they reach underwriters, ensuring optimal presentation.
+              and formatting errors before they reach underwriters, reducing avoidable rejection risk.
             </p>
           </div>
           <Link href="/apply" className="bg-white text-blue-900 font-extrabold px-6 py-3 rounded-lg text-sm transition hover:bg-gray-100 whitespace-nowrap shadow-lg">
-            🔒 Apply with Priority Review
+            📋 Apply with Pre-Submission Review
           </Link>
         </div>
       </section>

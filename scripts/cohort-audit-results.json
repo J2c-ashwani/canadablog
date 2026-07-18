@@ -1,945 +1,693 @@
 {
-  "generatedAt": "2026-07-12T03:54:31.226Z",
+  "generatedAt": "2026-07-18T19:01:52.437Z",
   "overallScores": {
-    "seoHealthScore": 44,
-    "growthScore": 85,
-    "rolloutConfidenceScore": 59,
-    "commercialIntentScore": 20,
-    "queryExpansionRate": 32.4,
-    "netWeightedImpact": -775
+    "seoHealthScore": 39,
+    "growthScore": 34,
+    "rolloutConfidenceScore": 55,
+    "commercialIntentScore": 24,
+    "queryExpansionRate": 7.1,
+    "netWeightedImpact": -349
   },
   "cohortSummaries": {
     "phase0": {
-      "count": 882,
-      "avgPosDelta": "-1.05",
-      "avgBasePos": "10.9",
-      "avgCurrPos": "9.9",
-      "totalImpressions": 11266,
-      "totalClicks": 50,
-      "improvedCount": 212,
-      "droppedCount": 130,
-      "improvedPct": "24.0",
-      "droppedPct": "14.7",
-      "weightedGain": 20694,
-      "weightedLoss": -9347,
-      "netWeighted": 11347,
-      "avgRevScore": "66.2"
-    },
-    "phase1": {
-      "count": 117,
-      "avgPosDelta": "-1.59",
-      "avgBasePos": "19.8",
-      "avgCurrPos": "18.3",
-      "totalImpressions": 9991,
-      "totalClicks": 14,
-      "improvedCount": 48,
-      "droppedCount": 32,
-      "improvedPct": "41.0",
-      "droppedPct": "27.4",
-      "weightedGain": 43373,
-      "weightedLoss": -17968,
-      "netWeighted": 25405,
-      "avgRevScore": "55.5"
-    },
-    "phase2": {
-      "count": 166,
-      "avgPosDelta": "-0.01",
-      "avgBasePos": "15.8",
-      "avgCurrPos": "15.8",
-      "totalImpressions": 22203,
-      "totalClicks": 17,
-      "improvedCount": 62,
-      "droppedCount": 53,
-      "improvedPct": "37.3",
-      "droppedPct": "31.9",
-      "weightedGain": 52706,
-      "weightedLoss": -78682,
-      "netWeighted": -25976,
-      "avgRevScore": "66.5"
-    },
-    "phase3": {
-      "count": 260,
-      "avgPosDelta": "0.01",
+      "count": 619,
+      "avgPosDelta": "-0.06",
       "avgBasePos": "11.6",
       "avgCurrPos": "11.6",
-      "totalImpressions": 13878,
-      "totalClicks": 32,
-      "improvedCount": 44,
-      "droppedCount": 40,
-      "improvedPct": "16.9",
-      "droppedPct": "15.4",
-      "weightedGain": 19110,
-      "weightedLoss": -13463,
-      "netWeighted": 5647,
-      "avgRevScore": "65.9"
+      "totalImpressions": 10529,
+      "totalClicks": 79,
+      "improvedCount": 59,
+      "droppedCount": 58,
+      "improvedPct": "9.5",
+      "droppedPct": "9.4",
+      "weightedGain": 2951,
+      "weightedLoss": -4551,
+      "netWeighted": -1600,
+      "avgRevScore": "65.8"
+    },
+    "phase1": {
+      "count": 106,
+      "avgPosDelta": "-0.47",
+      "avgBasePos": "20.4",
+      "avgCurrPos": "19.9",
+      "totalImpressions": 9962,
+      "totalClicks": 42,
+      "improvedCount": 21,
+      "droppedCount": 30,
+      "improvedPct": "19.8",
+      "droppedPct": "28.3",
+      "weightedGain": 5719,
+      "weightedLoss": -6875,
+      "netWeighted": -1156,
+      "avgRevScore": "50.9"
+    },
+    "phase2": {
+      "count": 159,
+      "avgPosDelta": "0.56",
+      "avgBasePos": "16.0",
+      "avgCurrPos": "16.6",
+      "totalImpressions": 22151,
+      "totalClicks": 91,
+      "improvedCount": 18,
+      "droppedCount": 34,
+      "improvedPct": "11.3",
+      "droppedPct": "21.4",
+      "weightedGain": 8899,
+      "weightedLoss": -36220,
+      "netWeighted": -27321,
+      "avgRevScore": "64.0"
+    },
+    "phase3": {
+      "count": 227,
+      "avgPosDelta": "0.19",
+      "avgBasePos": "11.5",
+      "avgCurrPos": "11.7",
+      "totalImpressions": 13644,
+      "totalClicks": 44,
+      "improvedCount": 19,
+      "droppedCount": 27,
+      "improvedPct": "8.4",
+      "droppedPct": "11.9",
+      "weightedGain": 4657,
+      "weightedLoss": -5037,
+      "netWeighted": -380,
+      "avgRevScore": "66.9"
     }
   },
   "pageTypeSummaries": {
     "blog": {
-      "count": 95,
-      "avgPosDelta": "0.69",
-      "avgBasePos": "15.1",
-      "avgCurrPos": "15.8",
-      "totalImpressions": 18439,
-      "totalClicks": 8,
-      "improvedCount": 21,
-      "droppedCount": 24,
-      "improvedPct": "22.1",
-      "droppedPct": "25.3",
-      "weightedGain": 29281,
-      "weightedLoss": -55406,
-      "netWeighted": -26125,
-      "avgRevScore": "70.3"
+      "count": 87,
+      "avgPosDelta": "0.70",
+      "avgBasePos": "15.3",
+      "avgCurrPos": "16.0",
+      "totalImpressions": 18415,
+      "totalClicks": 51,
+      "improvedCount": 7,
+      "droppedCount": 19,
+      "improvedPct": "8.0",
+      "droppedPct": "21.8",
+      "weightedGain": 3871,
+      "weightedLoss": -12302,
+      "netWeighted": -8431,
+      "avgRevScore": "68.5"
     },
     "comparison": {
-      "count": 7,
-      "avgPosDelta": "-4.62",
-      "avgBasePos": "18.3",
-      "avgCurrPos": "13.6",
-      "totalImpressions": 71,
-      "totalClicks": 0,
-      "improvedCount": 4,
+      "count": 5,
+      "avgPosDelta": "-1.94",
+      "avgBasePos": "18.4",
+      "avgCurrPos": "16.5",
+      "totalImpressions": 59,
+      "totalClicks": 1,
+      "improvedCount": 3,
       "droppedCount": 0,
-      "improvedPct": "57.1",
+      "improvedPct": "60.0",
       "droppedPct": "0.0",
-      "weightedGain": 517,
+      "weightedGain": 152,
       "weightedLoss": 0,
-      "netWeighted": 517,
-      "avgRevScore": "61.7"
+      "netWeighted": 152,
+      "avgRevScore": "52.8"
     },
     "download": {
-      "count": 55,
-      "avgPosDelta": "-0.63",
-      "avgBasePos": "20.7",
-      "avgCurrPos": "20.1",
-      "totalImpressions": 1545,
-      "totalClicks": 1,
-      "improvedCount": 24,
-      "droppedCount": 21,
-      "improvedPct": "43.6",
-      "droppedPct": "38.2",
-      "weightedGain": 5320,
-      "weightedLoss": -4514,
-      "netWeighted": 806,
-      "avgRevScore": "47.7"
+      "count": 54,
+      "avgPosDelta": "-0.26",
+      "avgBasePos": "21.0",
+      "avgCurrPos": "20.8",
+      "totalImpressions": 1535,
+      "totalClicks": 6,
+      "improvedCount": 11,
+      "droppedCount": 17,
+      "improvedPct": "20.4",
+      "droppedPct": "31.5",
+      "weightedGain": 1157,
+      "weightedLoss": -1163,
+      "netWeighted": -6,
+      "avgRevScore": "43.5"
     },
     "guide": {
-      "count": 27,
-      "avgPosDelta": "-1.10",
-      "avgBasePos": "17.0",
-      "avgCurrPos": "15.9",
-      "totalImpressions": 1580,
-      "totalClicks": 2,
-      "improvedCount": 8,
-      "droppedCount": 9,
-      "improvedPct": "29.6",
-      "droppedPct": "33.3",
-      "weightedGain": 1785,
-      "weightedLoss": -4098,
-      "netWeighted": -2313,
-      "avgRevScore": "65.4"
+      "count": 26,
+      "avgPosDelta": "1.36",
+      "avgBasePos": "17.3",
+      "avgCurrPos": "18.7",
+      "totalImpressions": 1569,
+      "totalClicks": 3,
+      "improvedCount": 2,
+      "droppedCount": 8,
+      "improvedPct": "7.7",
+      "droppedPct": "30.8",
+      "weightedGain": 94,
+      "weightedLoss": -1948,
+      "netWeighted": -1854,
+      "avgRevScore": "61.7"
     },
     "home": {
       "count": 1,
-      "avgPosDelta": "-1.00",
+      "avgPosDelta": "-0.55",
       "avgBasePos": "22.1",
-      "avgCurrPos": "21.1",
+      "avgCurrPos": "21.6",
       "totalImpressions": 739,
-      "totalClicks": 1,
+      "totalClicks": 8,
       "improvedCount": 0,
       "droppedCount": 0,
       "improvedPct": "0.0",
       "droppedPct": "0.0",
-      "weightedGain": 739,
+      "weightedGain": 406,
       "weightedLoss": 0,
-      "netWeighted": 739,
+      "netWeighted": 406,
       "avgRevScore": "65.0"
     },
     "industry": {
-      "count": 18,
-      "avgPosDelta": "-1.40",
-      "avgBasePos": "17.0",
-      "avgCurrPos": "15.6",
-      "totalImpressions": 198,
+      "count": 10,
+      "avgPosDelta": "-0.15",
+      "avgBasePos": "15.0",
+      "avgCurrPos": "14.9",
+      "totalImpressions": 161,
       "totalClicks": 1,
-      "improvedCount": 3,
+      "improvedCount": 1,
       "droppedCount": 1,
-      "improvedPct": "16.7",
-      "droppedPct": "5.6",
-      "weightedGain": 292,
-      "weightedLoss": -126,
-      "netWeighted": 166,
-      "avgRevScore": "61.9"
+      "improvedPct": "10.0",
+      "droppedPct": "10.0",
+      "weightedGain": 26,
+      "weightedLoss": -13,
+      "netWeighted": 13,
+      "avgRevScore": "63.8"
     },
     "other": {
-      "count": 1135,
-      "avgPosDelta": "-0.84",
-      "avgBasePos": "11.2",
-      "avgCurrPos": "10.3",
-      "totalImpressions": 23695,
-      "totalClicks": 95,
-      "improvedCount": 275,
-      "droppedCount": 180,
-      "improvedPct": "24.2",
-      "droppedPct": "15.9",
-      "weightedGain": 60996,
-      "weightedLoss": -30980,
-      "netWeighted": 30016,
-      "avgRevScore": "65.9"
+      "count": 844,
+      "avgPosDelta": "0.01",
+      "avgBasePos": "11.7",
+      "avgCurrPos": "11.7",
+      "totalImpressions": 22845,
+      "totalClicks": 167,
+      "improvedCount": 76,
+      "droppedCount": 94,
+      "improvedPct": "9.0",
+      "droppedPct": "11.1",
+      "weightedGain": 7728,
+      "weightedLoss": -12382,
+      "netWeighted": -4654,
+      "avgRevScore": "65.6"
     },
     "tool": {
       "count": 1,
-      "avgPosDelta": "-2.46",
+      "avgPosDelta": "-0.99",
       "avgBasePos": "8.9",
-      "avgCurrPos": "6.4",
+      "avgCurrPos": "7.9",
       "totalImpressions": 31,
+      "totalClicks": 0,
+      "improvedCount": 0,
+      "droppedCount": 0,
+      "improvedPct": "0.0",
+      "droppedPct": "0.0",
+      "weightedGain": 31,
+      "weightedLoss": 0,
+      "netWeighted": 31,
+      "avgRevScore": "93.0"
+    },
+    "trust": {
+      "count": 1,
+      "avgPosDelta": "-1.25",
+      "avgBasePos": "9.3",
+      "avgCurrPos": "8.0",
+      "totalImpressions": 5,
       "totalClicks": 0,
       "improvedCount": 1,
       "droppedCount": 0,
       "improvedPct": "100.0",
       "droppedPct": "0.0",
-      "weightedGain": 76,
+      "weightedGain": 6,
       "weightedLoss": 0,
-      "netWeighted": 76,
-      "avgRevScore": "93.0"
-    },
-    "trust": {
-      "count": 2,
-      "avgPosDelta": "-1.92",
-      "avgBasePos": "6.5",
-      "avgCurrPos": "4.6",
-      "totalImpressions": 9,
-      "totalClicks": 0,
-      "improvedCount": 1,
-      "droppedCount": 0,
-      "improvedPct": "50.0",
-      "droppedPct": "0.0",
-      "weightedGain": 19,
-      "weightedLoss": 0,
-      "netWeighted": 19,
-      "avgRevScore": "60.5"
+      "netWeighted": 6,
+      "avgRevScore": "76.0"
     },
     "usa-city": {
-      "count": 54,
-      "avgPosDelta": "0.08",
-      "avgBasePos": "14.9",
-      "avgCurrPos": "15.0",
-      "totalImpressions": 1718,
-      "totalClicks": 1,
-      "improvedCount": 14,
-      "droppedCount": 12,
-      "improvedPct": "25.9",
-      "droppedPct": "22.2",
-      "weightedGain": 3720,
-      "weightedLoss": -7090,
-      "netWeighted": -3370,
-      "avgRevScore": "59.1"
+      "count": 53,
+      "avgPosDelta": "-0.49",
+      "avgBasePos": "15.0",
+      "avgCurrPos": "14.5",
+      "totalImpressions": 1686,
+      "totalClicks": 5,
+      "improvedCount": 9,
+      "droppedCount": 4,
+      "improvedPct": "17.0",
+      "droppedPct": "7.5",
+      "weightedGain": 1063,
+      "weightedLoss": -789,
+      "netWeighted": 274,
+      "avgRevScore": "58.7"
     },
     "usa-state": {
-      "count": 30,
-      "avgPosDelta": "-3.17",
-      "avgBasePos": "21.0",
-      "avgCurrPos": "17.8",
-      "totalImpressions": 9313,
-      "totalClicks": 4,
-      "improvedCount": 15,
-      "droppedCount": 8,
-      "improvedPct": "50.0",
-      "droppedPct": "26.7",
-      "weightedGain": 33138,
-      "weightedLoss": -17246,
-      "netWeighted": 15892,
-      "avgRevScore": "73.1"
+      "count": 29,
+      "avgPosDelta": "-0.01",
+      "avgBasePos": "20.7",
+      "avgCurrPos": "20.7",
+      "totalImpressions": 9241,
+      "totalClicks": 14,
+      "improvedCount": 7,
+      "droppedCount": 6,
+      "improvedPct": "24.1",
+      "droppedPct": "20.7",
+      "weightedGain": 7692,
+      "weightedLoss": -24086,
+      "netWeighted": -16394,
+      "avgRevScore": "69.0"
     }
   },
   "queryExpansion": {
-    "totalTracked": 1519,
-    "gained": 492,
-    "lost": 65,
-    "rising": 214,
-    "dropping": 241,
+    "totalTracked": 1106,
+    "gained": 79,
+    "lost": 80,
+    "rising": 88,
+    "dropping": 98,
     "byCategory": {
       "grant": {
-        "count": 792,
-        "rising": 169
+        "count": 580,
+        "rising": 127
       },
       "loan": {
-        "count": 211,
-        "rising": 30
-      },
-      "women": {
-        "count": 122,
-        "rising": 40
-      },
-      "startup": {
-        "count": 125,
-        "rising": 37
-      },
-      "technology": {
-        "count": 148,
-        "rising": 38
-      },
-      "healthcare": {
-        "count": 11,
-        "rising": 3
-      },
-      "caRegional": {
-        "count": 386,
-        "rising": 93
-      },
-      "usRegional": {
-        "count": 66,
+        "count": 139,
         "rising": 16
       },
+      "women": {
+        "count": 98,
+        "rising": 30
+      },
+      "startup": {
+        "count": 101,
+        "rising": 30
+      },
+      "technology": {
+        "count": 124,
+        "rising": 28
+      },
+      "healthcare": {
+        "count": 10,
+        "rising": 2
+      },
+      "caRegional": {
+        "count": 286,
+        "rising": 68
+      },
+      "usRegional": {
+        "count": 48,
+        "rising": 14
+      },
       "headTerms": {
-        "count": 161,
-        "rising": 41
+        "count": 110,
+        "rising": 36
       },
       "longTail": {
-        "count": 553,
-        "rising": 119
+        "count": 415,
+        "rising": 83
       },
       "commercial": {
-        "count": 50,
-        "rising": 10
+        "count": 38,
+        "rising": 9
       }
     }
   },
   "weightedImpact": {
-    "totalGain": 32223,
-    "totalLoss": -32998,
-    "net": -775,
+    "totalGain": 8137,
+    "totalLoss": -8486,
+    "net": -349,
     "top50gainers": [
-      {
-        "query": "funding for small business canada",
-        "impressions": 221,
-        "delta": "-6.3",
-        "weighted": 1399,
-        "cats": "funding,canada-regional,long-tail"
-      },
       {
         "query": "government funding",
         "impressions": 134,
-        "delta": "-6.9",
-        "weighted": 927,
+        "delta": "-3.2",
+        "weighted": 431,
         "cats": "funding,head-term"
       },
       {
-        "query": "grants for restaurants 2022",
-        "impressions": 88,
-        "delta": "-10.2",
-        "weighted": 896,
+        "query": "mn grants for small business",
+        "impressions": 7,
+        "delta": "-38.9",
+        "weighted": 272,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "small business grants",
+        "impressions": 24,
+        "delta": "-10.5",
+        "weighted": 252,
         "cats": "grant,mid-tail"
+      },
+      {
+        "query": "funding for small business canada",
+        "impressions": 221,
+        "delta": "-1.0",
+        "weighted": 228,
+        "cats": "funding,canada-regional,long-tail"
       },
       {
         "query": "minnesota business grants",
         "impressions": 73,
-        "delta": "-12.0",
-        "weighted": 878,
+        "delta": "-3.0",
+        "weighted": 222,
         "cats": "grant,usa-regional,mid-tail"
+      },
+      {
+        "query": "tech grants canada",
+        "impressions": 44,
+        "delta": "-4.0",
+        "weighted": 175,
+        "cats": "grant,technology,canada-regional,mid-tail"
+      },
+      {
+        "query": "young canadian entrepreneurs",
+        "impressions": 14,
+        "delta": "-11.4",
+        "weighted": 160,
+        "cats": "mid-tail"
+      },
+      {
+        "query": "small business funding bc",
+        "impressions": 76,
+        "delta": "-1.8",
+        "weighted": 140,
+        "cats": "funding,canada-regional,mid-tail"
+      },
+      {
+        "query": "women in business grants",
+        "impressions": 13,
+        "delta": "-8.5",
+        "weighted": 110,
+        "cats": "grant,women,mid-tail"
+      },
+      {
+        "query": "government grants canada",
+        "impressions": 104,
+        "delta": "-1.0",
+        "weighted": 107,
+        "cats": "grant,canada-regional,mid-tail"
+      },
+      {
+        "query": "business loans for women",
+        "impressions": 19,
+        "delta": "-5.3",
+        "weighted": 101,
+        "cats": "loan,women,mid-tail"
+      },
+      {
+        "query": "grants for female business owners",
+        "impressions": 45,
+        "delta": "-2.1",
+        "weighted": 96,
+        "cats": "grant,women,long-tail"
       },
       {
         "query": "small business grants for women",
         "impressions": 62,
-        "delta": "-13.5",
-        "weighted": 839,
+        "delta": "-1.5",
+        "weighted": 94,
         "cats": "grant,women,long-tail"
       },
       {
         "query": "are there grants for women to start a business",
         "impressions": 31,
-        "delta": "-23.6",
-        "weighted": 730,
+        "delta": "-3.0",
+        "weighted": 93,
         "cats": "grant,women,long-tail"
-      },
-      {
-        "query": "government grants canada",
-        "impressions": 104,
-        "delta": "-6.6",
-        "weighted": 682,
-        "cats": "grant,canada-regional,mid-tail"
-      },
-      {
-        "query": "small business grants",
-        "impressions": 24,
-        "delta": "-28.0",
-        "weighted": 671,
-        "cats": "grant,mid-tail"
       },
       {
         "query": "grants government of canada",
         "impressions": 47,
-        "delta": "-11.9",
-        "weighted": 561,
+        "delta": "-1.9",
+        "weighted": 90,
         "cats": "grant,canada-regional,mid-tail"
       },
       {
-        "query": "business grants for women",
-        "impressions": 59,
-        "delta": "-9.2",
-        "weighted": 543,
-        "cats": "grant,women,mid-tail"
-      },
-      {
-        "query": "government grants in canada",
-        "impressions": 52,
-        "delta": "-10.4",
-        "weighted": 542,
-        "cats": "grant,canada-regional,mid-tail"
+        "query": "canadian government grants",
+        "impressions": 28,
+        "delta": "-3.2",
+        "weighted": 89,
+        "cats": "grant,mid-tail"
       },
       {
         "query": "small business funding for women",
         "impressions": 61,
-        "delta": "-8.7",
-        "weighted": 531,
+        "delta": "-1.4",
+        "weighted": 87,
         "cats": "funding,women,long-tail"
       },
       {
-        "query": "tech grants canada",
-        "impressions": 44,
-        "delta": "-10.9",
-        "weighted": 479,
-        "cats": "grant,technology,canada-regional,mid-tail"
+        "query": "ontario business funding",
+        "impressions": 30,
+        "delta": "-2.7",
+        "weighted": 82,
+        "cats": "funding,canada-regional,mid-tail"
       },
       {
-        "query": "technology grants",
-        "impressions": 81,
-        "delta": "-5.5",
-        "weighted": 446,
-        "cats": "grant,technology,head-term"
+        "query": "government funding canada",
+        "impressions": 38,
+        "delta": "-2.1",
+        "weighted": 81,
+        "cats": "funding,canada-regional,mid-tail"
+      },
+      {
+        "query": "women's business resources canada",
+        "impressions": 56,
+        "delta": "-1.4",
+        "weighted": 79,
+        "cats": "women,canada-regional,mid-tail"
       },
       {
         "query": "restaurant funding",
         "impressions": 38,
-        "delta": "-11.3",
-        "weighted": 428,
+        "delta": "-2.1",
+        "weighted": 78,
         "cats": "funding,head-term"
       },
       {
-        "query": "funding for small businesses",
-        "impressions": 61,
-        "delta": "-6.8",
-        "weighted": 417,
-        "cats": "funding,mid-tail"
+        "query": "startup ny",
+        "impressions": 28,
+        "delta": "-2.8",
+        "weighted": 78,
+        "cats": "startup,head-term"
       },
       {
-        "query": "funding",
-        "impressions": 30,
-        "delta": "-13.3",
-        "weighted": 398,
-        "cats": "funding,head-term"
-      },
-      {
-        "query": "canada small business grants news",
-        "impressions": 15,
-        "delta": "-25.3",
-        "weighted": 379,
-        "cats": "grant,canada-regional,long-tail"
-      },
-      {
-        "query": "tech grants",
-        "impressions": 10,
-        "delta": "-37.7",
-        "weighted": 377,
-        "cats": "grant,technology,head-term"
-      },
-      {
-        "query": "small business women grants",
-        "impressions": 9,
-        "delta": "-38.9",
-        "weighted": 350,
-        "cats": "grant,women,mid-tail"
-      },
-      {
-        "query": "federal funding programs canada",
-        "impressions": 13,
-        "delta": "-26.6",
-        "weighted": 346,
-        "cats": "funding,canada-regional,mid-tail"
-      },
-      {
-        "query": "startup business grants",
-        "impressions": 5,
-        "delta": "-68.8",
-        "weighted": 344,
-        "cats": "grant,startup,mid-tail"
-      },
-      {
-        "query": "grants money canadian government",
-        "impressions": 40,
-        "delta": "-8.4",
-        "weighted": 335,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "government funds",
-        "impressions": 24,
-        "delta": "-12.9",
-        "weighted": 310,
-        "cats": "funding,head-term"
-      },
-      {
-        "query": "ohio business grants 2024",
-        "impressions": 18,
-        "delta": "-16.3",
-        "weighted": 293,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "canadian government funding",
-        "impressions": 18,
-        "delta": "-15.7",
-        "weighted": 283,
-        "cats": "funding,mid-tail"
-      },
-      {
-        "query": "funding for women entrepreneurs",
-        "impressions": 13,
-        "delta": "-21.7",
-        "weighted": 282,
-        "cats": "funding,women,mid-tail"
-      },
-      {
-        "query": "ladies business loan",
-        "impressions": 33,
-        "delta": "-8.3",
-        "weighted": 275,
-        "cats": "loan,women,mid-tail"
-      },
-      {
-        "query": "mn grants for small business",
-        "impressions": 7,
-        "delta": "-39.3",
-        "weighted": 275,
-        "cats": "grant,long-tail"
-      },
-      {
-        "query": "start a fund manitoba",
-        "impressions": 8,
-        "delta": "-32.5",
-        "weighted": 260,
-        "cats": "funding,mid-tail"
-      },
-      {
-        "query": "canada grants for small business",
-        "impressions": 50,
-        "delta": "-5.0",
-        "weighted": 251,
-        "cats": "grant,canada-regional,long-tail"
-      },
-      {
-        "query": "federal grants canada",
-        "impressions": 24,
-        "delta": "-10.4",
-        "weighted": 249,
-        "cats": "grant,canada-regional,mid-tail"
-      },
-      {
-        "query": "canada government grants",
-        "impressions": 21,
-        "delta": "-11.8",
-        "weighted": 249,
-        "cats": "grant,canada-regional,mid-tail"
-      },
-      {
-        "query": "are there any web development grants or subsidies available in canada",
-        "impressions": 17,
-        "delta": "-14.6",
-        "weighted": 249,
-        "cats": "grant,technology,canada-regional,long-tail"
-      },
-      {
-        "query": "nasa sbir grant for startups space startup grant application",
-        "impressions": 15,
-        "delta": "-16.6",
-        "weighted": 249,
-        "cats": "grant,startup,long-tail"
-      },
-      {
-        "query": "nonprofit grants manitoba",
-        "impressions": 9,
-        "delta": "-26.9",
-        "weighted": 242,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "canada technology grants",
-        "impressions": 41,
-        "delta": "-5.9",
-        "weighted": 240,
-        "cats": "grant,technology,canada-regional,mid-tail"
-      },
-      {
-        "query": "business funding in canada",
-        "impressions": 116,
-        "delta": "-2.0",
-        "weighted": 235,
-        "cats": "funding,canada-regional,mid-tail"
-      },
-      {
-        "query": "grants for female business owners",
-        "impressions": 45,
-        "delta": "-4.9",
-        "weighted": 220,
-        "cats": "grant,women,long-tail"
-      },
-      {
-        "query": "technology startup funding",
+        "query": "how to start a small business in grand rapids mi",
         "impressions": 22,
-        "delta": "-10.0",
-        "weighted": 220,
-        "cats": "funding,startup,technology,mid-tail"
-      },
-      {
-        "query": "minnesota small business grants",
-        "impressions": 14,
-        "delta": "-15.4",
-        "weighted": 216,
-        "cats": "grant,usa-regional,mid-tail"
-      },
-      {
-        "query": "federal funding",
-        "impressions": 14,
-        "delta": "-15.4",
-        "weighted": 215,
-        "cats": "funding,head-term"
-      },
-      {
-        "query": "business loans for minorities",
-        "impressions": 12,
-        "delta": "-17.3",
-        "weighted": 208,
-        "cats": "loan,mid-tail"
-      },
-      {
-        "query": "business loans for women",
-        "impressions": 19,
-        "delta": "-10.8",
-        "weighted": 205,
-        "cats": "loan,women,mid-tail"
-      },
-      {
-        "query": "grants and government",
-        "impressions": 5,
-        "delta": "-40.0",
-        "weighted": 200,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "small business funding for veterans",
-        "impressions": 42,
-        "delta": "-4.7",
-        "weighted": 198,
-        "cats": "funding,veteran,long-tail"
+        "delta": "-3.5",
+        "weighted": 76,
+        "cats": "commercial-intent,long-tail"
       },
       {
         "query": "business grants wisconsin",
         "impressions": 27,
-        "delta": "-7.0",
-        "weighted": 190,
+        "delta": "-2.8",
+        "weighted": 75,
         "cats": "grant,mid-tail"
+      },
+      {
+        "query": "apply for commercial business loan minneapolis",
+        "impressions": 12,
+        "delta": "-5.8",
+        "weighted": 70,
+        "cats": "loan,commercial-intent,long-tail"
+      },
+      {
+        "query": "indigenous business funding",
+        "impressions": 63,
+        "delta": "-1.1",
+        "weighted": 69,
+        "cats": "funding,mid-tail"
+      },
+      {
+        "query": "saskatchewan small business loan",
+        "impressions": 25,
+        "delta": "-2.8",
+        "weighted": 69,
+        "cats": "loan,mid-tail"
+      },
+      {
+        "query": "women owned small business grants",
+        "impressions": 36,
+        "delta": "-1.9",
+        "weighted": 68,
+        "cats": "grant,women,long-tail"
       },
       {
         "query": "business grants",
         "impressions": 9,
-        "delta": "-21.1",
-        "weighted": 190,
+        "delta": "-7.1",
+        "weighted": 64,
         "cats": "grant,head-term"
       },
       {
-        "query": "female entrepreneur grants",
-        "impressions": 17,
-        "delta": "-11.1",
-        "weighted": 188,
-        "cats": "grant,women,mid-tail"
+        "query": "grants money canadian government",
+        "impressions": 40,
+        "delta": "-1.6",
+        "weighted": 63,
+        "cats": "grant,mid-tail"
+      },
+      {
+        "query": "small business loans saskatchewan",
+        "impressions": 32,
+        "delta": "-1.9",
+        "weighted": 62,
+        "cats": "loan,mid-tail"
+      },
+      {
+        "query": "tech startup funding",
+        "impressions": 9,
+        "delta": "-6.9",
+        "weighted": 62,
+        "cats": "funding,startup,technology,mid-tail"
+      },
+      {
+        "query": "government funds",
+        "impressions": 24,
+        "delta": "-2.5",
+        "weighted": 60,
+        "cats": "funding,head-term"
+      },
+      {
+        "query": "federal grants canada",
+        "impressions": 24,
+        "delta": "-2.4",
+        "weighted": 58,
+        "cats": "grant,canada-regional,mid-tail"
       },
       {
         "query": "canada digital adoption program 2022",
         "impressions": 15,
-        "delta": "-12.2",
-        "weighted": 183,
+        "delta": "-3.9",
+        "weighted": 58,
         "cats": "technology,canada-regional,long-tail"
+      },
+      {
+        "query": "canada grants",
+        "impressions": 20,
+        "delta": "-2.7",
+        "weighted": 55,
+        "cats": "grant,canada-regional,head-term"
+      },
+      {
+        "query": "small business funding saskatchewan",
+        "impressions": 37,
+        "delta": "-1.5",
+        "weighted": 54,
+        "cats": "funding,mid-tail"
+      },
+      {
+        "query": "digital grant ontario",
+        "impressions": 46,
+        "delta": "-1.1",
+        "weighted": 53,
+        "cats": "grant,technology,canada-regional,mid-tail"
+      },
+      {
+        "query": "canada business funding",
+        "impressions": 18,
+        "delta": "-2.9",
+        "weighted": 53,
+        "cats": "funding,canada-regional,mid-tail"
+      },
+      {
+        "query": "grants canada",
+        "impressions": 17,
+        "delta": "-3.1",
+        "weighted": 53,
+        "cats": "grant,canada-regional,head-term"
+      },
+      {
+        "query": "federal government canada grants",
+        "impressions": 14,
+        "delta": "-3.8",
+        "weighted": 53,
+        "cats": "grant,canada-regional,mid-tail"
+      },
+      {
+        "query": "business grant for women",
+        "impressions": 11,
+        "delta": "-4.9",
+        "weighted": 53,
+        "cats": "grant,women,mid-tail"
+      },
+      {
+        "query": "minnesota small business grants",
+        "impressions": 14,
+        "delta": "-3.7",
+        "weighted": 52,
+        "cats": "grant,usa-regional,mid-tail"
+      },
+      {
+        "query": "funding for technology companies",
+        "impressions": 8,
+        "delta": "-6.5",
+        "weighted": 52,
+        "cats": "funding,technology,mid-tail"
+      },
+      {
+        "query": "funding for technology startups",
+        "impressions": 8,
+        "delta": "-6.3",
+        "weighted": 51,
+        "cats": "funding,startup,technology,mid-tail"
+      },
+      {
+        "query": "business funding in canada",
+        "impressions": 116,
+        "delta": "-0.4",
+        "weighted": 50,
+        "cats": "funding,canada-regional,mid-tail"
+      },
+      {
+        "query": "business funding for veterans",
+        "impressions": 48,
+        "delta": "-1.0",
+        "weighted": 50,
+        "cats": "funding,veteran,mid-tail"
+      },
+      {
+        "query": "business funding canada",
+        "impressions": 34,
+        "delta": "-1.5",
+        "weighted": 50,
+        "cats": "funding,canada-regional,mid-tail"
+      },
+      {
+        "query": "technology grants",
+        "impressions": 81,
+        "delta": "-0.6",
+        "weighted": 49,
+        "cats": "grant,technology,head-term"
+      },
+      {
+        "query": "ohio business grants 2024",
+        "impressions": 18,
+        "delta": "-2.7",
+        "weighted": 49,
+        "cats": "grant,mid-tail"
       }
     ],
     "top50losers": [
       {
         "query": "canada small business financing",
         "impressions": 231,
-        "delta": "10.5",
-        "weighted": -2423,
-        "cats": "loan,canada-regional,mid-tail"
-      },
-      {
-        "query": "small business financing",
-        "impressions": 54,
-        "delta": "23.2",
-        "weighted": -1251,
-        "cats": "loan,mid-tail"
-      },
-      {
-        "query": "canada small business financing program",
-        "impressions": 64,
-        "delta": "15.8",
-        "weighted": -1008,
-        "cats": "loan,canada-regional,long-tail"
-      },
-      {
-        "query": "small business loans canada",
-        "impressions": 65,
-        "delta": "14.5",
-        "weighted": -944,
+        "delta": "2.3",
+        "weighted": -536,
         "cats": "loan,canada-regional,mid-tail"
       },
       {
         "query": "canada small business financing loan",
         "impressions": 64,
-        "delta": "12.4",
-        "weighted": -794,
+        "delta": "3.8",
+        "weighted": -244,
         "cats": "loan,canada-regional,long-tail"
-      },
-      {
-        "query": "new york business grants",
-        "impressions": 64,
-        "delta": "9.1",
-        "weighted": -585,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "grants for women entrepreneurs",
-        "impressions": 29,
-        "delta": "19.4",
-        "weighted": -561,
-        "cats": "grant,women,mid-tail"
-      },
-      {
-        "query": "grants for women in business canada",
-        "impressions": 41,
-        "delta": "13.4",
-        "weighted": -551,
-        "cats": "grant,women,canada-regional,long-tail"
-      },
-      {
-        "query": "nys small business grants",
-        "impressions": 34,
-        "delta": "13.3",
-        "weighted": -453,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "state grants for small business",
-        "impressions": 15,
-        "delta": "29.9",
-        "weighted": -448,
-        "cats": "grant,long-tail"
-      },
-      {
-        "query": "female small business grants",
-        "impressions": 42,
-        "delta": "10.5",
-        "weighted": -439,
-        "cats": "grant,women,mid-tail"
-      },
-      {
-        "query": "canadian small business financing",
-        "impressions": 24,
-        "delta": "17.1",
-        "weighted": -410,
-        "cats": "loan,mid-tail"
       },
       {
         "query": "business financing canada",
         "impressions": 74,
-        "delta": "5.2",
-        "weighted": -384,
+        "delta": "3.0",
+        "weighted": -222,
         "cats": "loan,canada-regional,mid-tail"
       },
       {
-        "query": "apply for small business grant",
-        "impressions": 21,
-        "delta": "17.9",
-        "weighted": -375,
-        "cats": "grant,commercial-intent,long-tail"
-      },
-      {
-        "query": "csbfp",
-        "impressions": 45,
-        "delta": "8.1",
-        "weighted": -363,
-        "cats": "head-term"
-      },
-      {
-        "query": "small business loan canada",
-        "impressions": 40,
-        "delta": "9.0",
-        "weighted": -361,
-        "cats": "loan,canada-regional,mid-tail"
-      },
-      {
-        "query": "small business financing canada",
-        "impressions": 19,
-        "delta": "19.0",
-        "weighted": -361,
-        "cats": "loan,canada-regional,mid-tail"
-      },
-      {
-        "query": "canadian business financing",
-        "impressions": 26,
-        "delta": "13.4",
-        "weighted": -350,
-        "cats": "loan,mid-tail"
-      },
-      {
-        "query": "small business loans saskatchewan",
-        "impressions": 32,
-        "delta": "10.6",
-        "weighted": -339,
-        "cats": "loan,mid-tail"
-      },
-      {
-        "query": "canada business financing",
-        "impressions": 35,
-        "delta": "9.6",
-        "weighted": -336,
-        "cats": "loan,canada-regional,mid-tail"
-      },
-      {
-        "query": "female owned business grants",
-        "impressions": 15,
-        "delta": "22.2",
-        "weighted": -333,
-        "cats": "grant,women,mid-tail"
-      },
-      {
-        "query": "grants for women",
-        "impressions": 10,
-        "delta": "33.2",
-        "weighted": -332,
-        "cats": "grant,women,mid-tail"
-      },
-      {
-        "query": "canadian small business loans",
-        "impressions": 16,
-        "delta": "20.6",
-        "weighted": -329,
-        "cats": "loan,mid-tail"
-      },
-      {
-        "query": "government grants for small business",
-        "impressions": 17,
-        "delta": "18.2",
-        "weighted": -310,
-        "cats": "grant,long-tail"
-      },
-      {
-        "query": "government grants for starting a business",
-        "impressions": 15,
-        "delta": "18.8",
-        "weighted": -282,
-        "cats": "grant,long-tail"
-      },
-      {
-        "query": "canadian small business financing loan",
-        "impressions": 18,
-        "delta": "15.6",
-        "weighted": -280,
-        "cats": "loan,long-tail"
-      },
-      {
-        "query": "how to get a small business grant",
-        "impressions": 15,
-        "delta": "18.6",
-        "weighted": -279,
-        "cats": "grant,commercial-intent,long-tail"
-      },
-      {
-        "query": "csbf loan",
-        "impressions": 20,
-        "delta": "13.8",
-        "weighted": -275,
-        "cats": "loan,head-term"
-      },
-      {
-        "query": "canada small business loan",
-        "impressions": 20,
-        "delta": "13.3",
-        "weighted": -265,
-        "cats": "loan,canada-regional,mid-tail"
-      },
-      {
-        "query": "how to get approved for canada digital adoption program",
-        "impressions": 14,
-        "delta": "18.6",
-        "weighted": -261,
-        "cats": "technology,canada-regional,commercial-intent,long-tail"
-      },
-      {
-        "query": "new business loans canada",
-        "impressions": 17,
-        "delta": "15.1",
-        "weighted": -257,
-        "cats": "loan,canada-regional,mid-tail"
-      },
-      {
-        "query": "small business digital grants program",
-        "impressions": 25,
-        "delta": "10.0",
-        "weighted": -250,
-        "cats": "grant,technology,long-tail"
-      },
-      {
-        "query": "sr&ed grants tech startups",
-        "impressions": 6,
-        "delta": "40.5",
-        "weighted": -243,
-        "cats": "grant,startup,technology,mid-tail"
-      },
-      {
-        "query": "csbfp loan",
-        "impressions": 21,
-        "delta": "11.0",
-        "weighted": -232,
-        "cats": "loan,head-term"
-      },
-      {
-        "query": "real time grant alerts",
-        "impressions": 34,
-        "delta": "6.8",
-        "weighted": -231,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "small business grants new york",
-        "impressions": 17,
-        "delta": "13.4",
-        "weighted": -228,
-        "cats": "grant,long-tail"
-      },
-      {
-        "query": "women owned small business grants",
-        "impressions": 36,
-        "delta": "6.1",
-        "weighted": -221,
-        "cats": "grant,women,long-tail"
-      },
-      {
-        "query": "business grants canada",
-        "impressions": 21,
-        "delta": "10.5",
-        "weighted": -220,
-        "cats": "grant,canada-regional,mid-tail"
-      },
-      {
-        "query": "small business grants new york state",
-        "impressions": 12,
-        "delta": "18.1",
-        "weighted": -217,
-        "cats": "grant,usa-regional,long-tail"
-      },
-      {
-        "query": "grants for small businesses",
-        "impressions": 5,
-        "delta": "41.4",
-        "weighted": -207,
+        "query": "new york business grants",
+        "impressions": 64,
+        "delta": "3.2",
+        "weighted": -205,
         "cats": "grant,mid-tail"
       },
       {
@@ -950,246 +698,421 @@
         "cats": "grant,long-tail"
       },
       {
-        "query": "canadian small business loan",
-        "impressions": 21,
-        "delta": "9.5",
-        "weighted": -199,
-        "cats": "loan,mid-tail"
-      },
-      {
-        "query": "canadian business grants",
-        "impressions": 28,
-        "delta": "6.9",
-        "weighted": -192,
-        "cats": "grant,mid-tail"
-      },
-      {
-        "query": "women business grants",
-        "impressions": 11,
-        "delta": "17.4",
-        "weighted": -191,
+        "query": "grants for women entrepreneurs",
+        "impressions": 29,
+        "delta": "6.0",
+        "weighted": -175,
         "cats": "grant,women,mid-tail"
       },
       {
-        "query": "canada digital adoption program small business bc",
-        "impressions": 16,
-        "delta": "11.8",
-        "weighted": -188,
-        "cats": "technology,canada-regional,long-tail"
+        "query": "canada small business financing program",
+        "impressions": 64,
+        "delta": "2.7",
+        "weighted": -174,
+        "cats": "loan,canada-regional,long-tail"
       },
       {
-        "query": "how to apply for small business grants",
-        "impressions": 7,
-        "delta": "26.8",
-        "weighted": -188,
+        "query": "nys small business grants",
+        "impressions": 34,
+        "delta": "4.7",
+        "weighted": -161,
+        "cats": "grant,mid-tail"
+      },
+      {
+        "query": "how to get approved for canada digital adoption program",
+        "impressions": 5,
+        "delta": "31.0",
+        "weighted": -155,
+        "cats": "technology,canada-regional,commercial-intent,long-tail"
+      },
+      {
+        "query": "canada small business grants news",
+        "impressions": 15,
+        "delta": "10.2",
+        "weighted": -152,
+        "cats": "grant,canada-regional,long-tail"
+      },
+      {
+        "query": "canada business financing",
+        "impressions": 35,
+        "delta": "3.8",
+        "weighted": -134,
+        "cats": "loan,canada-regional,mid-tail"
+      },
+      {
+        "query": "what grants can i get to start a business",
+        "impressions": 24,
+        "delta": "5.6",
+        "weighted": -134,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "small business loan canada",
+        "impressions": 40,
+        "delta": "3.3",
+        "weighted": -131,
+        "cats": "loan,canada-regional,mid-tail"
+      },
+      {
+        "query": "how do i apply for a government business grant",
+        "impressions": 30,
+        "delta": "4.2",
+        "weighted": -125,
         "cats": "grant,commercial-intent,long-tail"
       },
       {
-        "query": "technology funding",
-        "impressions": 10,
-        "delta": "18.0",
-        "weighted": -180,
-        "cats": "funding,technology,head-term"
+        "query": "how can you get a grant to start a business",
+        "impressions": 25,
+        "delta": "4.9",
+        "weighted": -123,
+        "cats": "grant,long-tail"
       },
       {
-        "query": "business loans for veterans",
-        "impressions": 26,
-        "delta": "6.7",
-        "weighted": -173,
-        "cats": "loan,veteran,mid-tail"
+        "query": "small business loans canada",
+        "impressions": 65,
+        "delta": "1.8",
+        "weighted": -114,
+        "cats": "loan,canada-regional,mid-tail"
       },
       {
-        "query": "canada small business funding",
+        "query": "how do i get grants to start a business",
+        "impressions": 21,
+        "delta": "5.3",
+        "weighted": -112,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "canadian small business financing loan",
+        "impressions": 18,
+        "delta": "6.0",
+        "weighted": -108,
+        "cats": "loan,long-tail"
+      },
+      {
+        "query": "small business digital grants program",
+        "impressions": 25,
+        "delta": "4.2",
+        "weighted": -105,
+        "cats": "grant,technology,long-tail"
+      },
+      {
+        "query": "can you get a government grant to open a business",
+        "impressions": 14,
+        "delta": "7.4",
+        "weighted": -104,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "small business financing canada",
+        "impressions": 19,
+        "delta": "5.3",
+        "weighted": -100,
+        "cats": "loan,canada-regional,mid-tail"
+      },
+      {
+        "query": "where to get a grant to start a business",
+        "impressions": 14,
+        "delta": "6.6",
+        "weighted": -92,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "canada digital adoption program small business bc",
+        "impressions": 6,
+        "delta": "15.3",
+        "weighted": -91,
+        "cats": "technology,canada-regional,long-tail"
+      },
+      {
+        "query": "how can i get a grant to open a business",
+        "impressions": 23,
+        "delta": "3.8",
+        "weighted": -87,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "state grants for small business",
+        "impressions": 15,
+        "delta": "5.8",
+        "weighted": -87,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "does the government give grants to start a business",
+        "impressions": 23,
+        "delta": "3.7",
+        "weighted": -84,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "can you get a grant to start a business",
+        "impressions": 27,
+        "delta": "3.1",
+        "weighted": -83,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "csbfp loan",
+        "impressions": 21,
+        "delta": "3.9",
+        "weighted": -83,
+        "cats": "loan,head-term"
+      },
+      {
+        "query": "small business grants new york",
+        "impressions": 17,
+        "delta": "4.8",
+        "weighted": -82,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "grants for female entrepreneurs",
+        "impressions": 20,
+        "delta": "4.1",
+        "weighted": -82,
+        "cats": "grant,women,mid-tail"
+      },
+      {
+        "query": "sr&ed grants tech startups",
+        "impressions": 6,
+        "delta": "13.5",
+        "weighted": -81,
+        "cats": "grant,startup,technology,mid-tail"
+      },
+      {
+        "query": "grants for restaurants 2022",
+        "impressions": 88,
+        "delta": "0.9",
+        "weighted": -78,
+        "cats": "grant,mid-tail"
+      },
+      {
+        "query": "canada small business financing program csbfp",
+        "impressions": 12,
+        "delta": "6.4",
+        "weighted": -77,
+        "cats": "loan,canada-regional,long-tail"
+      },
+      {
+        "query": "small business financing program canada",
+        "impressions": 17,
+        "delta": "4.5",
+        "weighted": -76,
+        "cats": "loan,canada-regional,long-tail"
+      },
+      {
+        "query": "canadian small business loans",
         "impressions": 16,
-        "delta": "10.8",
-        "weighted": -173,
+        "delta": "4.8",
+        "weighted": -76,
+        "cats": "loan,mid-tail"
+      },
+      {
+        "query": "new business loans canada",
+        "impressions": 17,
+        "delta": "4.1",
+        "weighted": -69,
+        "cats": "loan,canada-regional,mid-tail"
+      },
+      {
+        "query": "federal grants for small business",
+        "impressions": 17,
+        "delta": "4.0",
+        "weighted": -69,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "canada small business loan",
+        "impressions": 20,
+        "delta": "3.4",
+        "weighted": -67,
+        "cats": "loan,canada-regional,mid-tail"
+      },
+      {
+        "query": "sba grants 2026",
+        "impressions": 4,
+        "delta": "16.4",
+        "weighted": -66,
+        "cats": "grant,mid-tail"
+      },
+      {
+        "query": "canadian business financing",
+        "impressions": 26,
+        "delta": "2.5",
+        "weighted": -66,
+        "cats": "loan,mid-tail"
+      },
+      {
+        "query": "women manufacturing business loans",
+        "impressions": 5,
+        "delta": "13.3",
+        "weighted": -66,
+        "cats": "loan,women,manufacturing,mid-tail"
+      },
+      {
+        "query": "how do i get government grants to start a business",
+        "impressions": 26,
+        "delta": "2.4",
+        "weighted": -62,
+        "cats": "grant,long-tail"
+      },
+      {
+        "query": "csbfp",
+        "impressions": 45,
+        "delta": "1.3",
+        "weighted": -60,
+        "cats": "head-term"
+      },
+      {
+        "query": "canadian small business financing program",
+        "impressions": 23,
+        "delta": "2.6",
+        "weighted": -60,
+        "cats": "loan,long-tail"
+      },
+      {
+        "query": "small business funding canada",
+        "impressions": 124,
+        "delta": "0.5",
+        "weighted": -58,
         "cats": "funding,canada-regional,mid-tail"
       },
       {
-        "query": "canada grants",
-        "impressions": 20,
-        "delta": "8.4",
-        "weighted": -169,
-        "cats": "grant,canada-regional,head-term"
+        "query": "canadian small business loan",
+        "impressions": 21,
+        "delta": "2.8",
+        "weighted": -58,
+        "cats": "loan,mid-tail"
+      },
+      {
+        "query": "small business financing",
+        "impressions": 54,
+        "delta": "1.0",
+        "weighted": -55,
+        "cats": "loan,mid-tail"
+      },
+      {
+        "query": "e commerce grants canada",
+        "impressions": 12,
+        "delta": "4.6",
+        "weighted": -55,
+        "cats": "grant,canada-regional,mid-tail"
+      },
+      {
+        "query": "apply for small business grant",
+        "impressions": 21,
+        "delta": "2.6",
+        "weighted": -54,
+        "cats": "grant,commercial-intent,long-tail"
+      },
+      {
+        "query": "business funding",
+        "impressions": 11,
+        "delta": "4.9",
+        "weighted": -54,
+        "cats": "funding,head-term"
       }
     ]
   },
   "top100RevOpportunity": [
     {
-      "page": "/usa/kentucky",
-      "type": "usa-state",
-      "phase": 2,
-      "position": "9.7",
-      "impressions": 439,
-      "clicks": 1,
-      "revScore": 115,
-      "intentScore": 0,
-      "posDelta": "-2.3"
-    },
-    {
-      "page": "/usa/nevada",
-      "type": "usa-state",
-      "phase": 2,
-      "position": "8.0",
-      "impressions": 351,
-      "clicks": 0,
-      "revScore": 115,
-      "intentScore": 0,
-      "posDelta": "-6.6"
-    },
-    {
       "page": "/blog/nsf-sbir-grants-technology-startups",
       "type": "blog",
       "phase": 3,
-      "position": "9.7",
+      "position": "9.1",
       "impressions": 2849,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 114,
       "intentScore": 20,
-      "posDelta": "0.8"
-    },
-    {
-      "page": "/blog/veteran-business-funding-canada-2026",
-      "type": "blog",
-      "phase": 2,
-      "position": "8.8",
-      "impressions": 549,
-      "clicks": 3,
-      "revScore": 112,
-      "intentScore": 10,
-      "posDelta": "-4.5"
+      "posDelta": "0.2"
     },
     {
       "page": "/blog/usda-sbir-agtech-grants",
       "type": "blog",
       "phase": 2,
-      "position": "7.6",
+      "position": "7.8",
       "impressions": 592,
-      "clicks": 0,
+      "clicks": 6,
       "revScore": 112,
       "intentScore": 10,
-      "posDelta": "-0.2"
+      "posDelta": "-0.0"
     },
     {
       "page": "/blog/healthcare-grants-2026",
       "type": "blog",
       "phase": 2,
-      "position": "6.0",
+      "position": "9.9",
       "impressions": 373,
-      "clicks": 1,
+      "clicks": 5,
       "revScore": 112,
       "intentScore": 10,
-      "posDelta": "-4.0"
-    },
-    {
-      "page": "/blog/dod-sbir-defense-tech-grants",
-      "type": "blog",
-      "phase": 2,
-      "position": "8.0",
-      "impressions": 399,
-      "clicks": 1,
-      "revScore": 112,
-      "intentScore": 10,
-      "posDelta": "-4.5"
+      "posDelta": "-0.1"
     },
     {
       "page": "/blog/nih-sbir-biotech-grants",
       "type": "blog",
       "phase": 3,
-      "position": "8.6",
+      "position": "8.7",
       "impressions": 3264,
       "clicks": 0,
       "revScore": 112,
       "intentScore": 10,
-      "posDelta": "0.0"
-    },
-    {
-      "page": "/blog/quebec-small-business-grants-guide",
-      "type": "blog",
-      "phase": 2,
-      "position": "8.9",
-      "impressions": 626,
-      "clicks": 0,
-      "revScore": 112,
-      "intentScore": 10,
-      "posDelta": "-1.9"
-    },
-    {
-      "page": "/blog/colorado-tech-programs",
-      "type": "blog",
-      "phase": 3,
-      "position": "10.0",
-      "impressions": 424,
-      "clicks": 0,
-      "revScore": 112,
-      "intentScore": 10,
-      "posDelta": "-0.6"
+      "posDelta": "0.2"
     },
     {
       "page": "/blog/women-entrepreneurship-strategy-canada",
       "type": "blog",
       "phase": 2,
-      "position": "9.2",
+      "position": "9.4",
       "impressions": 574,
-      "clicks": 0,
+      "clicks": 3,
       "revScore": 110,
       "intentScore": 0,
-      "posDelta": "0.1"
+      "posDelta": "0.2"
     },
     {
       "page": "/grants/on/toronto/restaurants-hospitality",
       "type": "other",
       "phase": 2,
-      "position": "7.9",
+      "position": "9.7",
       "impressions": 509,
-      "clicks": 1,
+      "clicks": 9,
       "revScore": 107,
       "intentScore": 10,
-      "posDelta": "-2.0"
+      "posDelta": "-0.2"
     },
     {
       "page": "/grants/il/chicago/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "8.8",
+      "position": "8.9",
       "impressions": 430,
-      "clicks": 1,
+      "clicks": 2,
       "revScore": 107,
       "intentScore": 10,
-      "posDelta": "-0.1"
+      "posDelta": "0.1"
     },
     {
-      "page": "/guides/nserc-research-grants-guide",
-      "type": "guide",
+      "page": "/usa/ohio",
+      "type": "usa-state",
       "phase": 2,
-      "position": "9.8",
-      "impressions": 248,
+      "position": "9.3",
+      "impressions": 162,
       "clicks": 0,
-      "revScore": 105,
-      "intentScore": 10,
-      "posDelta": "-1.3"
+      "revScore": 101,
+      "intentScore": 0,
+      "posDelta": "0.7"
     },
     {
       "page": "/blog/new-york-business-grants-2026",
       "type": "blog",
       "phase": 2,
-      "position": "8.5",
+      "position": "8.4",
       "impressions": 183,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 100,
       "intentScore": 10,
-      "posDelta": "-0.0"
-    },
-    {
-      "page": "/usa/technology-startup-grants",
-      "type": "usa-state",
-      "phase": 3,
-      "position": "11.6",
-      "impressions": 1233,
-      "clicks": 0,
-      "revScore": 99,
-      "intentScore": 20,
-      "posDelta": "-3.8"
+      "posDelta": "-0.1"
     },
     {
       "page": "/grants/md/baltimore/veterans",
@@ -1206,56 +1129,67 @@
       "page": "/grants/ma/boston/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "9.3",
+      "position": "9.7",
       "impressions": 194,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 96,
       "intentScore": 10,
-      "posDelta": "-0.5"
+      "posDelta": "-0.1"
     },
     {
       "page": "/grants/pa/philadelphia/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "8.5",
+      "position": "8.9",
       "impressions": 192,
       "clicks": 0,
       "revScore": 96,
       "intentScore": 10,
-      "posDelta": "-0.5"
+      "posDelta": "-0.1"
     },
     {
       "page": "/usa/missouri",
       "type": "usa-state",
       "phase": 2,
-      "position": "14.3",
+      "position": "13.7",
       "impressions": 755,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 95,
       "intentScore": 0,
-      "posDelta": "-1.1"
+      "posDelta": "-1.7"
     },
     {
-      "page": "/usa/washington",
+      "page": "/usa/kentucky",
       "type": "usa-state",
       "phase": 2,
-      "position": "11.2",
-      "impressions": 470,
-      "clicks": 0,
+      "position": "11.8",
+      "impressions": 439,
+      "clicks": 1,
       "revScore": 95,
       "intentScore": 0,
-      "posDelta": "-5.6"
+      "posDelta": "-0.2"
+    },
+    {
+      "page": "/usa/nevada",
+      "type": "usa-state",
+      "phase": 2,
+      "position": "14.4",
+      "impressions": 351,
+      "clicks": 1,
+      "revScore": 95,
+      "intentScore": 0,
+      "posDelta": "-0.1"
     },
     {
       "page": "/usa/minnesota",
       "type": "usa-state",
       "phase": 3,
-      "position": "10.6",
+      "position": "14.5",
       "impressions": 895,
       "clicks": 0,
       "revScore": 95,
       "intentScore": 0,
-      "posDelta": "-7.0"
+      "posDelta": "-3.1"
     },
     {
       "page": "/grants/az/phoenix/women-entrepreneurs",
@@ -1272,45 +1206,78 @@
       "page": "/calculator",
       "type": "tool",
       "phase": 1,
-      "position": "6.4",
+      "position": "7.9",
       "impressions": 31,
       "clicks": 0,
       "revScore": 93,
       "intentScore": 0,
-      "posDelta": "-2.5"
+      "posDelta": "-1.0"
     },
     {
-      "page": "/blog/7-startup-accelerators-california-free-money",
+      "page": "/blog/veteran-business-funding-canada-2026",
       "type": "blog",
       "phase": 2,
-      "position": "12.8",
-      "impressions": 455,
+      "position": "13.3",
+      "impressions": 549,
+      "clicks": 16,
+      "revScore": 92,
+      "intentScore": 10,
+      "posDelta": "0.1"
+    },
+    {
+      "page": "/blog/dod-sbir-defense-tech-grants",
+      "type": "blog",
+      "phase": 2,
+      "position": "11.6",
+      "impressions": 399,
+      "clicks": 2,
+      "revScore": 92,
+      "intentScore": 10,
+      "posDelta": "-0.9"
+    },
+    {
+      "page": "/blog/quebec-small-business-grants-guide",
+      "type": "blog",
+      "phase": 2,
+      "position": "10.9",
+      "impressions": 626,
       "clicks": 0,
       "revScore": 92,
       "intentScore": 10,
-      "posDelta": "-4.3"
+      "posDelta": "0.1"
     },
     {
-      "page": "/grants/mb/winnipeg/non-profits",
-      "type": "other",
-      "phase": 1,
-      "position": "9.7",
-      "impressions": 142,
-      "clicks": 2,
-      "revScore": 91,
+      "page": "/blog/colorado-tech-programs",
+      "type": "blog",
+      "phase": 3,
+      "position": "10.2",
+      "impressions": 424,
+      "clicks": 0,
+      "revScore": 92,
       "intentScore": 10,
-      "posDelta": "-24.5"
+      "posDelta": "-0.4"
     },
     {
       "page": "/grants/ga/atlanta/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "7.1",
+      "position": "8.9",
       "impressions": 118,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 89,
       "intentScore": 10,
-      "posDelta": "-1.9"
+      "posDelta": "-0.0"
+    },
+    {
+      "page": "/blog/sba-sbir-grants-2026",
+      "type": "blog",
+      "phase": 2,
+      "position": "8.8",
+      "impressions": 70,
+      "clicks": 1,
+      "revScore": 89,
+      "intentScore": 10,
+      "posDelta": "0.0"
     },
     {
       "page": "/blog/atlantic-small-business-grants-guide",
@@ -1324,26 +1291,15 @@
       "posDelta": "0.0"
     },
     {
-      "page": "/blog/canexport-grants-2026",
-      "type": "blog",
-      "phase": 2,
-      "position": "9.0",
-      "impressions": 67,
-      "clicks": 0,
-      "revScore": 89,
-      "intentScore": 10,
-      "posDelta": "-7.0"
-    },
-    {
       "page": "/grants/mi/detroit/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "8.5",
+      "position": "9.9",
       "impressions": 114,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 88,
       "intentScore": 10,
-      "posDelta": "-1.1"
+      "posDelta": "0.3"
     },
     {
       "page": "/grants/wa/seattle/veterans",
@@ -1357,70 +1313,59 @@
       "posDelta": "0.5"
     },
     {
+      "page": "/grants/ga/atlanta/veterans",
+      "type": "other",
+      "phase": 0,
+      "position": "8.7",
+      "impressions": 113,
+      "clicks": 0,
+      "revScore": 88,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
       "page": "/usa/new-hampshire",
       "type": "usa-state",
       "phase": 2,
-      "position": "9.8",
+      "position": "8.2",
       "impressions": 34,
       "clicks": 0,
       "revScore": 88,
       "intentScore": 0,
-      "posDelta": "1.7"
+      "posDelta": "0.1"
     },
     {
       "page": "/usa/vermont",
       "type": "usa-state",
       "phase": 2,
-      "position": "5.7",
+      "position": "9.8",
       "impressions": 25,
       "clicks": 0,
       "revScore": 88,
       "intentScore": 0,
-      "posDelta": "-4.0"
+      "posDelta": "0.0"
     },
     {
       "page": "/usa/massachusetts",
       "type": "usa-state",
       "phase": 3,
-      "position": "8.0",
+      "position": "9.9",
       "impressions": 30,
-      "clicks": 1,
+      "clicks": 0,
       "revScore": 88,
       "intentScore": 0,
-      "posDelta": "-1.9"
+      "posDelta": "0.1"
     },
     {
-      "page": "/grants/bc/vancouver/technology",
-      "type": "other",
-      "phase": 2,
-      "position": "15.0",
-      "impressions": 405,
-      "clicks": 0,
-      "revScore": 87,
-      "intentScore": 10,
-      "posDelta": "0.4"
-    },
-    {
-      "page": "/grants/ab/calgary/restaurants-hospitality",
+      "page": "/grants/qc/montreal/women-entrepreneurs",
       "type": "other",
       "phase": 1,
-      "position": "9.6",
-      "impressions": 97,
-      "clicks": 1,
+      "position": "13.0",
+      "impressions": 494,
+      "clicks": 4,
       "revScore": 87,
       "intentScore": 10,
-      "posDelta": "-10.6"
-    },
-    {
-      "page": "/compare/mitacs-vs-irap",
-      "type": "comparison",
-      "phase": 0,
-      "position": "9.7",
-      "impressions": 25,
-      "clicks": 0,
-      "revScore": 87,
-      "intentScore": 10,
-      "posDelta": "-5.0"
+      "posDelta": "-0.6"
     },
     {
       "page": "/programs/mb-clean-energy",
@@ -1445,26 +1390,15 @@
       "posDelta": "-0.2"
     },
     {
-      "page": "/blog/nasa-sbir-space-tech-grants",
-      "type": "blog",
-      "phase": 2,
-      "position": "5.4",
-      "impressions": 46,
-      "clicks": 0,
-      "revScore": 87,
-      "intentScore": 10,
-      "posDelta": "-12.2"
-    },
-    {
       "page": "/usa/nebraska",
       "type": "usa-state",
       "phase": 2,
-      "position": "8.0",
+      "position": "9.6",
       "impressions": 18,
       "clicks": 0,
       "revScore": 87,
       "intentScore": 0,
-      "posDelta": "-1.2"
+      "posDelta": "0.3"
     },
     {
       "page": "/grants/nc/raleigh/veterans",
@@ -1478,48 +1412,15 @@
       "posDelta": "1.1"
     },
     {
-      "page": "/grants/tx/houston/women-entrepreneurs",
-      "type": "other",
-      "phase": 0,
-      "position": "7.0",
-      "impressions": 94,
-      "clicks": 0,
-      "revScore": 86,
-      "intentScore": 10,
-      "posDelta": "-3.8"
-    },
-    {
       "page": "/grants/tx/fort-worth/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "6.6",
+      "position": "9.2",
       "impressions": 89,
       "clicks": 0,
       "revScore": 86,
       "intentScore": 10,
-      "posDelta": "-2.8"
-    },
-    {
-      "page": "/programs/mitacs-accelerate",
-      "type": "other",
-      "phase": 0,
-      "position": "8.3",
-      "impressions": 94,
-      "clicks": 0,
-      "revScore": 86,
-      "intentScore": 10,
-      "posDelta": "-3.0"
-    },
-    {
-      "page": "/blog/nsf-stem-research-2026",
-      "type": "blog",
-      "phase": 2,
-      "position": "8.8",
-      "impressions": 55,
-      "clicks": 0,
-      "revScore": 86,
-      "intentScore": 0,
-      "posDelta": "-3.5"
+      "posDelta": "-0.2"
     },
     {
       "page": "/blog/doe-sbir-clean-energy-grants",
@@ -1533,26 +1434,15 @@
       "posDelta": "1.0"
     },
     {
-      "page": "/blog/irap-industrial-research-assistance-program",
+      "page": "/blog/women-entrepreneurship-loan-fund-canada",
       "type": "blog",
-      "phase": 2,
-      "position": "8.3",
-      "impressions": 16,
-      "clicks": 0,
-      "revScore": 86,
-      "intentScore": 20,
-      "posDelta": "-10.5"
-    },
-    {
-      "page": "/grants/industry/clean-tech",
-      "type": "industry",
-      "phase": 0,
-      "position": "5.5",
-      "impressions": 15,
+      "phase": 3,
+      "position": "7.6",
+      "impressions": 38,
       "clicks": 0,
       "revScore": 86,
       "intentScore": 10,
-      "posDelta": "-6.3"
+      "posDelta": "0.8"
     },
     {
       "page": "/usa/oklahoma",
@@ -1566,48 +1456,70 @@
       "posDelta": "0.0"
     },
     {
-      "page": "/usa",
-      "type": "other",
+      "page": "/guides/nserc-research-grants-guide",
+      "type": "guide",
+      "phase": 2,
+      "position": "11.1",
+      "impressions": 248,
+      "clicks": 0,
+      "revScore": 85,
+      "intentScore": 10,
+      "posDelta": "-0.0"
+    },
+    {
+      "page": "/blog/canada-agriculture-agrifood-grants-guide",
+      "type": "blog",
+      "phase": 3,
+      "position": "10.8",
+      "impressions": 230,
+      "clicks": 0,
+      "revScore": 85,
+      "intentScore": 10,
+      "posDelta": "0.2"
+    },
+    {
+      "page": "/download/bdc-women-entrepreneurs-financing-guide",
+      "type": "download",
       "phase": 1,
-      "position": "12.7",
-      "impressions": 606,
+      "position": "9.0",
+      "impressions": 96,
       "clicks": 0,
       "revScore": 85,
       "intentScore": 0,
-      "posDelta": "-2.8"
+      "posDelta": "-0.3"
     },
     {
       "page": "/grants/wa/seattle/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "9.0",
+      "position": "9.7",
       "impressions": 82,
-      "clicks": 1,
+      "clicks": 0,
       "revScore": 85,
       "intentScore": 10,
-      "posDelta": "-0.2"
+      "posDelta": "0.5"
     },
     {
       "page": "/grants/fl/jacksonville/women-entrepreneurs",
       "type": "other",
       "phase": 3,
-      "position": "8.8",
+      "position": "7.6",
       "impressions": 80,
       "clicks": 0,
       "revScore": 85,
       "intentScore": 10,
-      "posDelta": "1.2"
+      "posDelta": "-0.0"
     },
     {
       "page": "/grants/il/chicago/technology",
       "type": "other",
       "phase": 0,
-      "position": "7.6",
+      "position": "9.0",
       "impressions": 78,
       "clicks": 0,
       "revScore": 85,
       "intentScore": 10,
-      "posDelta": "-1.3"
+      "posDelta": "0.1"
     },
     {
       "page": "/blog/quebec-business-grants-2026",
@@ -1624,12 +1536,12 @@
       "page": "/grants/industry/ontario-saas",
       "type": "industry",
       "phase": 0,
-      "position": "9.0",
+      "position": "7.0",
       "impressions": 9,
       "clicks": 0,
       "revScore": 85,
       "intentScore": 10,
-      "posDelta": "1.0"
+      "posDelta": "-1.0"
     },
     {
       "page": "/grants/industry/saas-companies",
@@ -1643,37 +1555,15 @@
       "posDelta": "-1.0"
     },
     {
-      "page": "/grants/industry/healthcare-medtech",
-      "type": "industry",
+      "page": "/grants/il/chicago/veterans",
+      "type": "other",
       "phase": 0,
       "position": "9.0",
-      "impressions": 11,
-      "clicks": 0,
-      "revScore": 85,
+      "impressions": 74,
+      "clicks": 1,
+      "revScore": 84,
       "intentScore": 10,
-      "posDelta": "-1.0"
-    },
-    {
-      "page": "/grants/industry/bc-tourism",
-      "type": "industry",
-      "phase": 0,
-      "position": "7.0",
-      "impressions": 8,
-      "clicks": 0,
-      "revScore": 85,
-      "intentScore": 10,
-      "posDelta": "0.3"
-    },
-    {
-      "page": "/grants/industry/bc-saas",
-      "type": "industry",
-      "phase": 0,
-      "position": "6.8",
-      "impressions": 12,
-      "clicks": 0,
-      "revScore": 85,
-      "intentScore": 10,
-      "posDelta": "0.0"
+      "posDelta": "0.5"
     },
     {
       "page": "/grants/fl/st-petersburg/retail",
@@ -1690,34 +1580,45 @@
       "page": "/grants/oh/columbus/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "8.3",
+      "position": "8.6",
       "impressions": 65,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 84,
       "intentScore": 10,
-      "posDelta": "0.3"
+      "posDelta": "0.6"
+    },
+    {
+      "page": "/usa/tennessee/nashville",
+      "type": "usa-city",
+      "phase": 3,
+      "position": "8.8",
+      "impressions": 62,
+      "clicks": 1,
+      "revScore": 84,
+      "intentScore": 0,
+      "posDelta": "-0.1"
     },
     {
       "page": "/grants/fl/orlando/technology",
       "type": "other",
       "phase": 0,
-      "position": "7.4",
+      "position": "8.5",
       "impressions": 71,
       "clicks": 0,
       "revScore": 84,
       "intentScore": 10,
-      "posDelta": "-0.1"
+      "posDelta": "1.0"
     },
     {
       "page": "/grants/tx/austin/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "6.3",
+      "position": "8.5",
       "impressions": 69,
       "clicks": 0,
       "revScore": 84,
       "intentScore": 10,
-      "posDelta": "-2.2"
+      "posDelta": "-0.0"
     },
     {
       "page": "/grants/ok/oklahoma-city/veterans",
@@ -1731,103 +1632,37 @@
       "posDelta": "0.3"
     },
     {
-      "page": "/grants/pa/philadelphia/technology",
-      "type": "other",
-      "phase": 0,
-      "position": "8.4",
-      "impressions": 72,
-      "clicks": 0,
-      "revScore": 84,
-      "intentScore": 10,
-      "posDelta": "-2.3"
-    },
-    {
-      "page": "/usa/ohio",
-      "type": "usa-state",
-      "phase": 2,
-      "position": "12.2",
-      "impressions": 187,
-      "clicks": 0,
-      "revScore": 84,
-      "intentScore": 0,
-      "posDelta": "3.6"
-    },
-    {
-      "page": "/blog/ontario-small-business-grants-guide",
-      "type": "blog",
-      "phase": 2,
-      "position": "7.0",
-      "impressions": 24,
-      "clicks": 0,
-      "revScore": 84,
-      "intentScore": 10,
-      "posDelta": "-11.1"
-    },
-    {
-      "page": "/blog/manitoba-small-business-grants-guide",
-      "type": "blog",
-      "phase": 2,
-      "position": "10.0",
-      "impressions": 18,
-      "clicks": 0,
-      "revScore": 84,
-      "intentScore": 10,
-      "posDelta": "-6.9"
-    },
-    {
-      "page": "/compare/nsf-vs-nih-sbir",
-      "type": "comparison",
-      "phase": 0,
-      "position": "7.0",
-      "impressions": 16,
-      "clicks": 0,
-      "revScore": 84,
-      "intentScore": 0,
-      "posDelta": "-21.6"
-    },
-    {
-      "page": "/grants/on/toronto/healthcare",
+      "page": "/grants/on/ottawa/women-entrepreneurs",
       "type": "other",
       "phase": 2,
-      "position": "9.4",
+      "position": "9.2",
+      "impressions": 63,
+      "clicks": 0,
+      "revScore": 83,
+      "intentScore": 10,
+      "posDelta": "0.9"
+    },
+    {
+      "page": "/blog/canada-regional-economic-development-grants-guide",
+      "type": "blog",
+      "phase": 3,
+      "position": "8.6",
+      "impressions": 14,
+      "clicks": 1,
+      "revScore": 83,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/grants/il/chicago/non-profits",
+      "type": "other",
+      "phase": 0,
+      "position": "9.3",
       "impressions": 60,
       "clicks": 0,
       "revScore": 83,
       "intentScore": 10,
-      "posDelta": "-0.4"
-    },
-    {
-      "page": "/grants/nc/raleigh/women-entrepreneurs",
-      "type": "other",
-      "phase": 3,
-      "position": "9.0",
-      "impressions": 56,
-      "clicks": 0,
-      "revScore": 83,
-      "intentScore": 10,
-      "posDelta": "-1.7"
-    },
-    {
-      "page": "/grant-finder",
-      "type": "other",
-      "phase": 3,
-      "position": "8.6",
-      "impressions": 56,
-      "clicks": 0,
-      "revScore": 83,
-      "intentScore": 10,
-      "posDelta": "-3.0"
-    },
-    {
-      "page": "/usa/michigan/ann-arbor",
-      "type": "usa-city",
-      "phase": 2,
-      "position": "9.7",
-      "impressions": 45,
-      "clicks": 0,
-      "revScore": 83,
-      "intentScore": 0,
-      "posDelta": "-0.4"
+      "posDelta": "-0.3"
     },
     {
       "page": "/blog/pennsylvania-innovation-2026",
@@ -1841,26 +1676,15 @@
       "posDelta": "-0.0"
     },
     {
-      "page": "/blog/scotiabank-women-initiative",
-      "type": "blog",
-      "phase": 2,
-      "position": "7.2",
-      "impressions": 30,
-      "clicks": 1,
-      "revScore": 83,
-      "intentScore": 0,
-      "posDelta": "-4.1"
-    },
-    {
       "page": "/usa/ohio/columbus",
       "type": "usa-city",
       "phase": 2,
-      "position": "7.4",
+      "position": "8.2",
       "impressions": 47,
       "clicks": 0,
       "revScore": 83,
       "intentScore": 0,
-      "posDelta": "-3.3"
+      "posDelta": "-2.6"
     },
     {
       "page": "/blog/top-10-no-equity-grants-black-female-entrepreneurs",
@@ -1872,6 +1696,17 @@
       "revScore": 83,
       "intentScore": 10,
       "posDelta": "0.0"
+    },
+    {
+      "page": "/blog/nserc-research-grants-canada",
+      "type": "blog",
+      "phase": 3,
+      "position": "9.6",
+      "impressions": 12,
+      "clicks": 0,
+      "revScore": 83,
+      "intentScore": 10,
+      "posDelta": "-1.7"
     },
     {
       "page": "/blog/federal-grants-women-minorities",
@@ -1910,12 +1745,12 @@
       "page": "/blog/texas-business-grants-2026",
       "type": "blog",
       "phase": 3,
-      "position": "8.0",
+      "position": "8.5",
       "impressions": 13,
       "clicks": 0,
       "revScore": 83,
       "intentScore": 10,
-      "posDelta": "-1.7"
+      "posDelta": "-1.2"
     },
     {
       "page": "/blog/massachusetts-tech-programs",
@@ -1932,23 +1767,34 @@
       "page": "/blog/biden-2-5b-grants-2026",
       "type": "blog",
       "phase": 2,
-      "position": "7.0",
+      "position": "8.3",
       "impressions": 13,
       "clicks": 0,
       "revScore": 83,
       "intentScore": 10,
-      "posDelta": "-0.6"
+      "posDelta": "0.8"
+    },
+    {
+      "page": "/blog/florida-business-grants-2026",
+      "type": "blog",
+      "phase": 2,
+      "position": "8.7",
+      "impressions": 9,
+      "clicks": 0,
+      "revScore": 83,
+      "intentScore": 10,
+      "posDelta": "0.0"
     },
     {
       "page": "/guides/apply-sbir-grants",
       "type": "guide",
       "phase": 2,
-      "position": "10.0",
+      "position": "9.3",
       "impressions": 7,
       "clicks": 0,
       "revScore": 83,
       "intentScore": 20,
-      "posDelta": "1.9"
+      "posDelta": "1.1"
     },
     {
       "page": "/blog/women-entrepreneurship-strategy-canada-government-grants",
@@ -1973,92 +1819,48 @@
       "posDelta": "0.0"
     },
     {
-      "page": "/guides/apply-quebec-business-grants",
-      "type": "guide",
-      "phase": 2,
-      "position": "8.3",
-      "impressions": 13,
-      "clicks": 0,
-      "revScore": 83,
-      "intentScore": 20,
-      "posDelta": "-9.8"
-    },
-    {
       "page": "/blog/sba-7a-loans-complete-guide",
       "type": "blog",
       "phase": 2,
-      "position": "9.0",
+      "position": "6.4",
       "impressions": 9,
       "clicks": 0,
       "revScore": 83,
       "intentScore": 10,
-      "posDelta": "3.8"
-    },
-    {
-      "page": "/blog/regional-development-agencies-government-grants",
-      "type": "blog",
-      "phase": 3,
-      "position": "8.8",
-      "impressions": 9,
-      "clicks": 0,
-      "revScore": 83,
-      "intentScore": 10,
-      "posDelta": "0.5"
-    },
-    {
-      "page": "/guides/apply-doe-clean-energy-grants",
-      "type": "guide",
-      "phase": 2,
-      "position": "8.0",
-      "impressions": 11,
-      "clicks": 0,
-      "revScore": 83,
-      "intentScore": 20,
-      "posDelta": "0.0"
-    },
-    {
-      "page": "/usa/north-carolina",
-      "type": "usa-state",
-      "phase": 3,
-      "position": "14.8",
-      "impressions": 173,
-      "clicks": 0,
-      "revScore": 82,
-      "intentScore": 0,
-      "posDelta": "-0.8"
+      "posDelta": "1.3"
     },
     {
       "page": "/grants/tx/houston/technology",
       "type": "other",
       "phase": 3,
-      "position": "8.0",
+      "position": "9.7",
       "impressions": 51,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 82,
       "intentScore": 10,
-      "posDelta": "-1.6"
+      "posDelta": "0.1"
     },
     {
-      "page": "/grants/bc/vancouver/restaurants-hospitality",
+      "page": "/grants/tx/houston/restaurants-hospitality",
       "type": "other",
-      "phase": 2,
-      "position": "7.2",
-      "impressions": 46,
-      "clicks": 0,
+      "phase": 0,
+      "position": "8.1",
+      "impressions": 50,
+      "clicks": 1,
       "revScore": 82,
       "intentScore": 10,
-      "posDelta": "-14.7"
+      "posDelta": "1.4"
     },
     {
       "page": "/grants/pa/philadelphia/veterans",
       "type": "other",
       "phase": 0,
-      "position": "7.8",
+      "position": "8.5",
       "impressions": 46,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 82,
       "intentScore": 10,
-      "posDelta": "-0.0"
+      "posDelta": "0.6"
     },
     {
       "page": "/grants/az/phoenix/veterans",
@@ -2066,7 +1868,7 @@
       "phase": 0,
       "position": "8.6",
       "impressions": 51,
-      "clicks": 0,
+      "clicks": 1,
       "revScore": 82,
       "intentScore": 10,
       "posDelta": "-0.1"
@@ -2075,64 +1877,266 @@
       "page": "/grants/ga/atlanta/technology",
       "type": "other",
       "phase": 0,
-      "position": "8.8",
+      "position": "9.1",
       "impressions": 51,
       "clicks": 0,
       "revScore": 82,
       "intentScore": 10,
-      "posDelta": "-0.3"
+      "posDelta": "-0.0"
     },
     {
-      "page": "/grants/tx/dallas/women-entrepreneurs",
-      "type": "other",
-      "phase": 0,
-      "position": "8.2",
-      "impressions": 46,
+      "page": "/guides/apply-regional-development-agencies",
+      "type": "guide",
+      "phase": 2,
+      "position": "8.0",
+      "impressions": 21,
       "clicks": 0,
       "revScore": 82,
       "intentScore": 10,
-      "posDelta": "-1.9"
+      "posDelta": "0.0"
     },
     {
-      "page": "/usa/california/san-diego",
-      "type": "usa-city",
+      "page": "/blog/q4-2026-deadlines",
+      "type": "blog",
       "phase": 2,
-      "position": "9.5",
-      "impressions": 44,
+      "position": "8.4",
+      "impressions": 16,
       "clicks": 0,
       "revScore": 82,
       "intentScore": 0,
-      "posDelta": "-3.3"
+      "posDelta": "-0.3"
     },
     {
-      "page": "/grants/ny/new-york-city/restaurants-hospitality",
-      "type": "other",
-      "phase": 0,
-      "position": "5.3",
-      "impressions": 48,
+      "page": "/blog/cartier-womens-initiative-canada",
+      "type": "blog",
+      "phase": 2,
+      "position": "9.3",
+      "impressions": 15,
       "clicks": 0,
       "revScore": 82,
+      "intentScore": 0,
+      "posDelta": "-0.3"
+    },
+    {
+      "page": "/blog/canada-aerospace-defence-innovation-grants",
+      "type": "blog",
+      "phase": 2,
+      "position": "14.2",
+      "impressions": 189,
+      "clicks": 2,
+      "revScore": 81,
       "intentScore": 10,
-      "posDelta": "-4.9"
+      "posDelta": "-0.8"
+    },
+    {
+      "page": "/grants/ga/atlanta/restaurants-hospitality",
+      "type": "other",
+      "phase": 3,
+      "position": "6.9",
+      "impressions": 41,
+      "clicks": 1,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.3"
+    },
+    {
+      "page": "/grants/wa/seattle/restaurants-hospitality",
+      "type": "other",
+      "phase": 0,
+      "position": "7.5",
+      "impressions": 37,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.3"
+    },
+    {
+      "page": "/grants/bc/victoria/technology",
+      "type": "other",
+      "phase": 1,
+      "position": "8.3",
+      "impressions": 42,
+      "clicks": 1,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.3"
+    },
+    {
+      "page": "/programs/pa-tech-innovation",
+      "type": "other",
+      "phase": 0,
+      "position": "8.6",
+      "impressions": 36,
+      "clicks": 1,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/programs/sif",
+      "type": "other",
+      "phase": 0,
+      "position": "8.6",
+      "impressions": 41,
+      "clicks": 1,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.7"
+    },
+    {
+      "page": "/grants/tx/san-antonio/women-entrepreneurs",
+      "type": "other",
+      "phase": 0,
+      "position": "9.1",
+      "impressions": 43,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.4"
+    },
+    {
+      "page": "/about",
+      "type": "other",
+      "phase": 1,
+      "position": "7.0",
+      "impressions": 58,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 0,
+      "posDelta": "-0.2"
+    },
+    {
+      "page": "/grants/ok/oklahoma-city/agriculture",
+      "type": "other",
+      "phase": 0,
+      "position": "6.4",
+      "impressions": 40,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/grants/co/colorado-springs/veterans",
+      "type": "other",
+      "phase": 0,
+      "position": "8.5",
+      "impressions": 43,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/grants/qc/montreal/retail",
+      "type": "other",
+      "phase": 1,
+      "position": "8.7",
+      "impressions": 44,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/grants/wi/milwaukee/veterans",
+      "type": "other",
+      "phase": 3,
+      "position": "8.9",
+      "impressions": 39,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/grants/on/mississauga/technology",
+      "type": "other",
+      "phase": 2,
+      "position": "8.2",
+      "impressions": 38,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.4"
+    },
+    {
+      "page": "/grants/il/chicago/minority-owned",
+      "type": "other",
+      "phase": 0,
+      "position": "8.2",
+      "impressions": 37,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "1.8"
+    },
+    {
+      "page": "/programs/ga-tech-innovation",
+      "type": "other",
+      "phase": 0,
+      "position": "7.5",
+      "impressions": 36,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "0.0"
+    },
+    {
+      "page": "/grants/hi/honolulu/veterans",
+      "type": "other",
+      "phase": 0,
+      "position": "6.7",
+      "impressions": 37,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.2"
+    },
+    {
+      "page": "/grants/pa/philadelphia/restaurants-hospitality",
+      "type": "other",
+      "phase": 0,
+      "position": "7.3",
+      "impressions": 37,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.3"
+    },
+    {
+      "page": "/grants/qc/montreal/education",
+      "type": "other",
+      "phase": 1,
+      "position": "7.7",
+      "impressions": 35,
+      "clicks": 0,
+      "revScore": 81,
+      "intentScore": 10,
+      "posDelta": "-0.3"
     }
   ],
   "controlGroup": {
-    "optimizedPages": 543,
-    "untouchedPages": 882,
-    "optimizedImprovedPct": "28.4",
-    "untouchedImprovedPct": "24.0",
-    "optimizedDroppedPct": "23.0",
-    "untouchedDroppedPct": "14.7",
-    "outperformDelta": "4.3"
+    "optimizedPages": 492,
+    "untouchedPages": 619,
+    "optimizedImprovedPct": "11.8",
+    "untouchedImprovedPct": "9.5",
+    "optimizedDroppedPct": "18.5",
+    "untouchedDroppedPct": "9.4",
+    "outperformDelta": "2.3"
   },
   "winningPagePatterns": {
     "topTypes": [
       [
         "other",
-        17
+        11
       ],
       [
         "usa-state",
+        7
+      ],
+      [
+        "usa-city",
         4
       ],
       [
@@ -2141,87 +2145,83 @@
       ],
       [
         "download",
-        3
+        2
       ],
       [
-        "usa-city",
-        1
-      ],
-      [
-        "guide",
+        "comparison",
         1
       ]
     ],
     "sampleWinners": [
       {
-        "page": "/programs/on-tech-innovation",
+        "page": "/resources",
         "type": "other",
-        "phase": 0,
-        "posImprovement": "46.2",
-        "peakImpressions": 24
+        "phase": 1,
+        "posImprovement": "19.1",
+        "peakImpressions": 23
+      },
+      {
+        "page": "/download/nasa-sbir-space-tech-guide",
+        "type": "download",
+        "phase": 1,
+        "posImprovement": "12.7",
+        "peakImpressions": 35
       },
       {
         "page": "/guides",
         "type": "other",
         "phase": 1,
-        "posImprovement": "45.3",
+        "posImprovement": "11.9",
         "peakImpressions": 20
       },
       {
         "page": "/usa/delaware/wilmington",
         "type": "usa-city",
         "phase": 2,
-        "posImprovement": "43.9",
+        "posImprovement": "9.3",
         "peakImpressions": 20
-      },
-      {
-        "page": "/grants/location/alberta",
-        "type": "other",
-        "phase": 0,
-        "posImprovement": "41.4",
-        "peakImpressions": 29
-      },
-      {
-        "page": "/usa/small-business-grants",
-        "type": "usa-state",
-        "phase": 1,
-        "posImprovement": "32.7",
-        "peakImpressions": 98
-      },
-      {
-        "page": "/programs/bc-tech-innovation",
-        "type": "other",
-        "phase": 0,
-        "posImprovement": "28.6",
-        "peakImpressions": 21
       },
       {
         "page": "/usa/women-entrepreneurs-grants",
         "type": "usa-state",
         "phase": 1,
-        "posImprovement": "25.9",
+        "posImprovement": "7.7",
         "peakImpressions": 88
+      },
+      {
+        "page": "/blog",
+        "type": "other",
+        "phase": 3,
+        "posImprovement": "6.6",
+        "peakImpressions": 25
+      },
+      {
+        "page": "/grants",
+        "type": "other",
+        "phase": 1,
+        "posImprovement": "5.7",
+        "peakImpressions": 36
+      },
+      {
+        "page": "/contact",
+        "type": "other",
+        "phase": 3,
+        "posImprovement": "4.8",
+        "peakImpressions": 47
       },
       {
         "page": "/grants/mb/winnipeg/non-profits",
         "type": "other",
         "phase": 1,
-        "posImprovement": "24.5",
+        "posImprovement": "4.4",
         "peakImpressions": 142
       },
       {
-        "page": "/download/nasa-sbir-space-tech-guide",
-        "type": "download",
-        "phase": 1,
-        "posImprovement": "19.3",
-        "peakImpressions": 35
-      },
-      {
-        "page": "/canada",
-        "type": "other",
-        "phase": 1,
-        "posImprovement": "17.3",
-        "peakImpressions": 1055
+        "page": "/usa/wisconsin",
+        "type": "usa-state",
+        "phase": 2,
+        "posImprovement": "3.8",
+        "peakImpressions": 254
       }
     ]
   },
@@ -2230,7 +2230,7 @@
       "page": "/blog/nih-sbir-biotech-grants",
       "type": "blog",
       "phase": 3,
-      "position": "8.6",
+      "position": "8.7",
       "impressions": 3264,
       "ctr": "0.00"
     },
@@ -2238,23 +2238,23 @@
       "page": "/blog/nsf-sbir-grants-technology-startups",
       "type": "blog",
       "phase": 3,
-      "position": "9.7",
+      "position": "9.1",
       "impressions": 2849,
-      "ctr": "0.00"
+      "ctr": "0.04"
     },
     {
       "page": "/usa/technology-startup-grants",
       "type": "usa-state",
       "phase": 3,
-      "position": "11.6",
+      "position": "15.7",
       "impressions": 1233,
-      "ctr": "0.00"
+      "ctr": "0.10"
     },
     {
       "page": "/usa/minnesota",
       "type": "usa-state",
       "phase": 3,
-      "position": "10.6",
+      "position": "14.5",
       "impressions": 895,
       "ctr": "0.00"
     },
@@ -2270,15 +2270,23 @@
       "page": "/usa/missouri",
       "type": "usa-state",
       "phase": 2,
-      "position": "14.3",
+      "position": "13.7",
       "impressions": 755,
-      "ctr": "0.00"
+      "ctr": "0.13"
+    },
+    {
+      "page": "/usa/minnesota/minneapolis",
+      "type": "usa-city",
+      "phase": 2,
+      "position": "17.8",
+      "impressions": 635,
+      "ctr": "0.32"
     },
     {
       "page": "/blog/quebec-small-business-grants-guide",
       "type": "blog",
       "phase": 2,
-      "position": "8.9",
+      "position": "10.9",
       "impressions": 626,
       "ctr": "0.00"
     },
@@ -2286,47 +2294,31 @@
       "page": "/usa",
       "type": "other",
       "phase": 1,
-      "position": "12.7",
+      "position": "17.8",
       "impressions": 606,
-      "ctr": "0.00"
-    },
-    {
-      "page": "/blog/usda-sbir-agtech-grants",
-      "type": "blog",
-      "phase": 2,
-      "position": "7.6",
-      "impressions": 592,
-      "ctr": "0.00"
-    },
-    {
-      "page": "/blog/women-entrepreneurship-strategy-canada",
-      "type": "blog",
-      "phase": 2,
-      "position": "9.2",
-      "impressions": 574,
       "ctr": "0.00"
     },
     {
       "page": "/usa/washington",
       "type": "usa-state",
       "phase": 2,
-      "position": "11.2",
+      "position": "15.6",
       "impressions": 470,
-      "ctr": "0.00"
+      "ctr": "0.21"
     },
     {
-      "page": "/blog/7-startup-accelerators-california-free-money",
-      "type": "blog",
+      "page": "/usa/kentucky",
+      "type": "usa-state",
       "phase": 2,
-      "position": "12.8",
-      "impressions": 455,
-      "ctr": "0.00"
+      "position": "11.8",
+      "impressions": 439,
+      "ctr": "0.24"
     },
     {
       "page": "/blog/colorado-tech-programs",
       "type": "blog",
       "phase": 3,
-      "position": "10.0",
+      "position": "10.2",
       "impressions": 424,
       "ctr": "0.00"
     },
@@ -2336,37 +2328,29 @@
       "phase": 2,
       "position": "15.0",
       "impressions": 405,
-      "ctr": "0.00"
-    },
-    {
-      "page": "/blog/youth-entrepreneurship-canada-funding",
-      "type": "blog",
-      "phase": 2,
-      "position": "17.8",
-      "impressions": 358,
-      "ctr": "0.00"
+      "ctr": "0.25"
     },
     {
       "page": "/usa/nevada",
       "type": "usa-state",
       "phase": 2,
-      "position": "8.0",
+      "position": "14.4",
       "impressions": 351,
-      "ctr": "0.00"
+      "ctr": "0.28"
     },
     {
-      "page": "/usa/wisconsin",
-      "type": "usa-state",
-      "phase": 2,
-      "position": "19.2",
-      "impressions": 254,
-      "ctr": "0.00"
+      "page": "/grants/ca/san-francisco/technology",
+      "type": "other",
+      "phase": 0,
+      "position": "18.0",
+      "impressions": 267,
+      "ctr": "0.37"
     },
     {
       "page": "/guides/nserc-research-grants-guide",
       "type": "guide",
       "phase": 2,
-      "position": "9.8",
+      "position": "11.1",
       "impressions": 248,
       "ctr": "0.00"
     },
@@ -2374,7 +2358,7 @@
       "page": "/blog/canada-agriculture-agrifood-grants-guide",
       "type": "blog",
       "phase": 3,
-      "position": "17.4",
+      "position": "10.8",
       "impressions": 230,
       "ctr": "0.00"
     },
@@ -2387,246 +2371,262 @@
       "ctr": "0.00"
     },
     {
-      "page": "/grants/on/ottawa/non-profits",
-      "type": "other",
-      "phase": 2,
-      "position": "13.7",
-      "impressions": 210,
-      "ctr": "0.00"
-    },
-    {
-      "page": "/usa/louisiana",
-      "type": "usa-state",
-      "phase": 2,
-      "position": "18.1",
-      "impressions": 208,
-      "ctr": "0.00"
-    },
-    {
-      "page": "/grants/ma/boston/women-entrepreneurs",
-      "type": "other",
-      "phase": 0,
-      "position": "9.3",
-      "impressions": 194,
-      "ctr": "0.00"
-    },
-    {
       "page": "/grants/pa/philadelphia/women-entrepreneurs",
       "type": "other",
       "phase": 0,
-      "position": "8.5",
+      "position": "8.9",
       "impressions": 192,
       "ctr": "0.00"
     },
     {
-      "page": "/blog/canada-aerospace-defence-innovation-grants",
-      "type": "blog",
-      "phase": 2,
-      "position": "16.6",
-      "impressions": 189,
+      "page": "/guides/california-loan-guarantee-guide",
+      "type": "guide",
+      "phase": 3,
+      "position": "11.0",
+      "impressions": 175,
       "ctr": "0.00"
-    }
-  ],
-  "highest25Risk": [
+    },
     {
-      "page": "/blog/csbfp-canada-small-business-financing-program",
+      "page": "/blog/indigenous-business-development-2026",
       "type": "blog",
       "phase": 2,
-      "posDrop": "17.8",
-      "impressions": 1526,
-      "weightedLoss": -27132
-    },
-    {
-      "page": "/usa/new-york",
-      "type": "usa-state",
-      "phase": 2,
-      "posDrop": "5.6",
-      "impressions": 2673,
-      "weightedLoss": -14889
-    },
-    {
-      "page": "/blog/alberta-small-business-grants-guide",
-      "type": "blog",
-      "phase": 2,
-      "posDrop": "9.9",
-      "impressions": 631,
-      "weightedLoss": -6260
-    },
-    {
-      "page": "/canada/indigenous-entrepreneur-grants",
-      "type": "other",
-      "phase": 1,
-      "posDrop": "5.8",
-      "impressions": 1079,
-      "weightedLoss": -6226
-    },
-    {
-      "page": "/blog/women-entrepreneurship-grants-2026",
-      "type": "blog",
-      "phase": 2,
-      "posDrop": "9.0",
-      "impressions": 645,
-      "weightedLoss": -5831
-    },
-    {
-      "page": "/usa/minnesota/minneapolis",
-      "type": "usa-city",
-      "phase": 2,
-      "posDrop": "7.6",
-      "impressions": 635,
-      "weightedLoss": -4820
-    },
-    {
-      "page": "/canada/government-grants",
-      "type": "other",
-      "phase": 1,
-      "posDrop": "10.5",
-      "impressions": 284,
-      "weightedLoss": -2968
-    },
-    {
-      "page": "/grants/qc/montreal/women-entrepreneurs",
-      "type": "other",
-      "phase": 1,
-      "posDrop": "5.4",
-      "impressions": 494,
-      "weightedLoss": -2643
-    },
-    {
-      "page": "/blog/saskatchewan-small-business-grants-guide",
-      "type": "blog",
-      "phase": 3,
-      "posDrop": "6.0",
-      "impressions": 433,
-      "weightedLoss": -2615
-    },
-    {
-      "page": "/blog/bc-women-business-grants",
-      "type": "blog",
-      "phase": 2,
-      "posDrop": "5.0",
-      "impressions": 434,
-      "weightedLoss": -2157
-    },
-    {
-      "page": "/grants/on/ottawa/women-entrepreneurs",
-      "type": "other",
-      "phase": 2,
-      "posDrop": "32.4",
-      "impressions": 63,
-      "weightedLoss": -2044
-    },
-    {
-      "page": "/blog/canada-digital-ai-innovation-grants",
-      "type": "blog",
-      "phase": 2,
-      "posDrop": "11.4",
-      "impressions": 159,
-      "weightedLoss": -1819
-    },
-    {
-      "page": "/blog/canada-agriculture-agrifood-grants-guide",
-      "type": "blog",
-      "phase": 3,
-      "posDrop": "6.8",
-      "impressions": 230,
-      "weightedLoss": -1564
-    },
-    {
-      "page": "/grants/bc/vancouver/women-entrepreneurs",
-      "type": "other",
-      "phase": 2,
-      "posDrop": "1.8",
-      "impressions": 837,
-      "weightedLoss": -1523
-    },
-    {
-      "page": "/guides/apply-small-business-grants",
-      "type": "guide",
-      "phase": 2,
-      "posDrop": "2.4",
-      "impressions": 606,
-      "weightedLoss": -1460
-    },
-    {
-      "page": "/download/indigenous-women-business-grants-guide",
-      "type": "download",
-      "phase": 1,
-      "posDrop": "20.5",
-      "impressions": 58,
-      "weightedLoss": -1187
-    },
-    {
-      "page": "/blog/canada-startup-funding-grants-guide",
-      "type": "blog",
-      "phase": 3,
-      "posDrop": "3.3",
-      "impressions": 346,
-      "weightedLoss": -1149
-    },
-    {
-      "page": "/guides/apply-ontario-business-grants",
-      "type": "guide",
-      "phase": 3,
-      "posDrop": "11.9",
-      "impressions": 96,
-      "weightedLoss": -1144
-    },
-    {
-      "page": "/usa/iowa",
-      "type": "usa-state",
-      "phase": 2,
-      "posDrop": "4.1",
-      "impressions": 266,
-      "weightedLoss": -1101
-    },
-    {
-      "page": "/blog/women-technology-grants-canada",
-      "type": "blog",
-      "phase": 2,
-      "posDrop": "4.3",
-      "impressions": 236,
-      "weightedLoss": -1022
-    },
-    {
-      "page": "/guides/apply-irap-grants",
-      "type": "guide",
-      "phase": 2,
-      "posDrop": "9.7",
-      "impressions": 93,
-      "weightedLoss": -899
-    },
-    {
-      "page": "/download/massachusetts-tech-guide",
-      "type": "download",
-      "phase": 1,
-      "posDrop": "10.7",
-      "impressions": 71,
-      "weightedLoss": -760
-    },
-    {
-      "page": "/blog/newcomer-entrepreneur-grants-2026",
-      "type": "blog",
-      "phase": 2,
-      "posDrop": "13.8",
-      "impressions": 55,
-      "weightedLoss": -758
-    },
-    {
-      "page": "/blog/women-entrepreneurship-loan-fund-canada",
-      "type": "blog",
-      "phase": 3,
-      "posDrop": "18.1",
-      "impressions": 38,
-      "weightedLoss": -689
+      "position": "18.1",
+      "impressions": 166,
+      "ctr": "0.00"
     },
     {
       "page": "/usa/ohio",
       "type": "usa-state",
       "phase": 2,
-      "posDrop": "3.6",
-      "impressions": 187,
-      "weightedLoss": -669
+      "position": "9.3",
+      "impressions": 162,
+      "ctr": "0.00"
+    },
+    {
+      "page": "/grants/az/phoenix/women-entrepreneurs",
+      "type": "other",
+      "phase": 0,
+      "position": "8.5",
+      "impressions": 157,
+      "ctr": "0.00"
+    },
+    {
+      "page": "/download/amber-grant-women-application-guide",
+      "type": "download",
+      "phase": 1,
+      "position": "12.9",
+      "impressions": 130,
+      "ctr": "0.00"
+    },
+    {
+      "page": "/grants/wa/seattle/veterans",
+      "type": "other",
+      "phase": 0,
+      "position": "9.4",
+      "impressions": 114,
+      "ctr": "0.00"
+    }
+  ],
+  "highest25Risk": [
+    {
+      "page": "/usa/new-york",
+      "type": "usa-state",
+      "phase": 2,
+      "posDrop": "8.5",
+      "impressions": 2673,
+      "weightedLoss": -22747
+    },
+    {
+      "page": "/blog/csbfp-canada-small-business-financing-program",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "3.2",
+      "impressions": 1526,
+      "weightedLoss": -4944
+    },
+    {
+      "page": "/blog/alberta-small-business-grants-guide",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "2.4",
+      "impressions": 631,
+      "weightedLoss": -1540
+    },
+    {
+      "page": "/canada/indigenous-entrepreneur-grants",
+      "type": "other",
+      "phase": 1,
+      "posDrop": "1.4",
+      "impressions": 1079,
+      "weightedLoss": -1500
+    },
+    {
+      "page": "/usa",
+      "type": "other",
+      "phase": 1,
+      "posDrop": "2.2",
+      "impressions": 606,
+      "weightedLoss": -1357
+    },
+    {
+      "page": "/blog/women-entrepreneurship-grants-2026",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "1.7",
+      "impressions": 645,
+      "weightedLoss": -1071
+    },
+    {
+      "page": "/blog/canada-technology-adoption-grants-guide",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "9.1",
+      "impressions": 110,
+      "weightedLoss": -1000
+    },
+    {
+      "page": "/guides/apply-ontario-business-grants",
+      "type": "guide",
+      "phase": 3,
+      "posDrop": "9.1",
+      "impressions": 96,
+      "weightedLoss": -874
+    },
+    {
+      "page": "/grants/ca/san-francisco/technology",
+      "type": "other",
+      "phase": 0,
+      "posDrop": "2.6",
+      "impressions": 267,
+      "weightedLoss": -700
+    },
+    {
+      "page": "/canada/innovation-grants",
+      "type": "other",
+      "phase": 1,
+      "posDrop": "1.6",
+      "impressions": 449,
+      "weightedLoss": -696
+    },
+    {
+      "page": "/grants/ab/calgary/minority-owned",
+      "type": "other",
+      "phase": 1,
+      "posDrop": "3.8",
+      "impressions": 119,
+      "weightedLoss": -449
+    },
+    {
+      "page": "/usa/north-carolina",
+      "type": "usa-state",
+      "phase": 3,
+      "posDrop": "2.1",
+      "impressions": 173,
+      "weightedLoss": -367
+    },
+    {
+      "page": "/grants/on/toronto/manufacturing",
+      "type": "other",
+      "phase": 2,
+      "posDrop": "11.0",
+      "impressions": 33,
+      "weightedLoss": -362
+    },
+    {
+      "page": "/blog/women-technology-grants-canada",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "1.3",
+      "impressions": 236,
+      "weightedLoss": -309
+    },
+    {
+      "page": "/blog/ai-machine-learning-grants",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "1.9",
+      "impressions": 146,
+      "weightedLoss": -277
+    },
+    {
+      "page": "/grants/ca/san-francisco/women-entrepreneurs",
+      "type": "other",
+      "phase": 3,
+      "posDrop": "4.8",
+      "impressions": 53,
+      "weightedLoss": -255
+    },
+    {
+      "page": "/grants/on/ottawa/non-profits",
+      "type": "other",
+      "phase": 2,
+      "posDrop": "1.2",
+      "impressions": 210,
+      "weightedLoss": -252
+    },
+    {
+      "page": "/blog/canada-digital-ai-innovation-grants",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "1.5",
+      "impressions": 159,
+      "weightedLoss": -242
+    },
+    {
+      "page": "/grants/mi/detroit/minority-owned",
+      "type": "other",
+      "phase": 0,
+      "posDrop": "3.2",
+      "impressions": 72,
+      "weightedLoss": -227
+    },
+    {
+      "page": "/guides/apply-irap-grants",
+      "type": "guide",
+      "phase": 2,
+      "posDrop": "2.2",
+      "impressions": 93,
+      "weightedLoss": -207
+    },
+    {
+      "page": "/blog/newcomer-entrepreneur-grants-2026",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "3.2",
+      "impressions": 55,
+      "weightedLoss": -178
+    },
+    {
+      "page": "/download/new-york-tech-guide",
+      "type": "download",
+      "phase": 1,
+      "posDrop": "1.9",
+      "impressions": 90,
+      "weightedLoss": -172
+    },
+    {
+      "page": "/download/amber-grant-women-application-guide",
+      "type": "download",
+      "phase": 1,
+      "posDrop": "1.3",
+      "impressions": 130,
+      "weightedLoss": -168
+    },
+    {
+      "page": "/download/indigenous-women-business-grants-guide",
+      "type": "download",
+      "phase": 1,
+      "posDrop": "2.9",
+      "impressions": 58,
+      "weightedLoss": -168
+    },
+    {
+      "page": "/blog/sba-microloans-complete-guide",
+      "type": "blog",
+      "phase": 2,
+      "posDrop": "1.5",
+      "impressions": 105,
+      "weightedLoss": -159
     }
   ]
 }

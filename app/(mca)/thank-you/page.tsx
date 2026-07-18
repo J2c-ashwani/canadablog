@@ -1,7 +1,7 @@
 'use client';
 
 // app/(mca)/thank-you/page.tsx
-// Post-application confirmation + Priority Funding Processing upsell (CAD $49)
+// Post-application confirmation + optional Pre-Submission Document Review upsell (CAD $49)
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
@@ -9,12 +9,12 @@ import { Suspense, useState } from 'react';
 const PRIORITY_PRICE_CAD = 49;
 const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
 
-const PRIORITY_INCLUDES = [
-  { icon: '⚡', title: 'Immediate Application Review', desc: 'A dedicated specialist reviews your file within 4 hours.' },
-  { icon: '📋', title: 'Document Verification', desc: 'We verify your bank statements and confirm completeness.' },
-  { icon: '✅', title: 'Funding Readiness Assessment', desc: 'Identify any missing items before your partner receives the file.' },
-  { icon: '🚀', title: 'Priority Submission', desc: 'Your application moves to the front of the partner queue.' },
-  { icon: '📞', title: 'Dedicated Support', desc: 'Direct contact with your specialist until funding decision.' },
+const REVIEW_INCLUDES = [
+  { icon: '⚡', title: 'Pre-Submission File Audit', desc: 'A specialist reviews your bank statements and application files for completeness before partner submission.' },
+  { icon: '📋', title: 'Document Formatting Check', desc: 'We verify statement clarity, PDF quality, and OCR readability to reduce automated rejection risk.' },
+  { icon: '✅', title: 'Funding Readiness Assessment', desc: 'Identify any missing items, low-balance warnings, or transaction flags before your file is forwarded.' },
+  { icon: '🔍', title: 'Compliance Verification', desc: 'Confirm registration numbers, IDs, and financial records match precisely to avoid underwriting delays.' },
+  { icon: '📞', title: 'Dedicated Specialist Contact', desc: 'Direct email access to your assigned analyst for updates and document guidance.' },
 ];
 
 function ThankYouContent() {
@@ -107,18 +107,18 @@ function ThankYouContent() {
           </div>
         </div>
 
-        {/* Priority Processing Upsell */}
+        {/* Optional Pre-Submission Document Review */}
         {!priorityPurchased && (
           <div className="mca-upsell-card">
-            <div className="mca-upsell-badge">OPTIONAL UPGRADE</div>
-            <h2 className="mca-upsell-title">Want your application reviewed first?</h2>
+            <div className="mca-upsell-badge">OPTIONAL SERVICE</div>
+            <h2 className="mca-upsell-title">Would you like a specialist to review your application before it is forwarded?</h2>
             <p className="mca-upsell-sub">
-              Get a dedicated funding specialist to prepare and submit your application with priority handling.
-              <strong> Not required — your free application is already submitted.</strong>
+              Our optional Pre-Submission Document Review assigns an application specialist to audit your financial files for completeness and formatting issues before they are sent to a funding partner.
+              <strong> Your application is already active — this service is entirely optional.</strong>
             </p>
 
             <div className="mca-upsell-includes">
-              {PRIORITY_INCLUDES.map((item) => (
+              {REVIEW_INCLUDES.map((item) => (
                 <div key={item.title} className="mca-upsell-item">
                   <span className="mca-upsell-item-icon">{item.icon}</span>
                   <div>
@@ -131,7 +131,7 @@ function ThankYouContent() {
 
             <div className="mca-upsell-cta">
               <div className="mca-upsell-price">
-                <span className="mca-price-label">One-time</span>
+                <span className="mca-price-label">One-time review fee</span>
                 <span className="mca-price-amount">CAD $49</span>
                 <span className="mca-price-note">No subscription · No hidden fees</span>
               </div>
@@ -145,7 +145,7 @@ function ThankYouContent() {
                 {processing ? (
                   <><div className="mca-spinner-sm" /> Redirecting to secure checkout…</>
                 ) : (
-                  <>⚡ Get Priority Processing — CAD $49</>
+                  <>📋 Request Pre-Submission Document Review — CAD $49</>
                 )}
               </button>
 
@@ -153,19 +153,20 @@ function ThankYouContent() {
 
               <p className="mca-upsell-disclaimer">
                 Secure payment via PayPal. We do not store your payment information.
-                Priority Processing does not guarantee funding approval — it ensures professional
-                handling and priority submission to our funding partner.
+                Pre-Submission Document Review does not guarantee funding approval — it ensures
+                professional file verification by a specialist before partner submission.
+                Your application remains active in our standard queue whether or not you choose this service.
               </p>
             </div>
           </div>
         )}
 
-        {/* Priority purchased confirmation */}
+        {/* Document Review purchased confirmation */}
         {priorityPurchased && (
           <div className="mca-priority-confirmed">
-            <div className="mca-ty-checkmark small">⚡</div>
-            <h2>Priority Processing Activated</h2>
-            <p>A specialist will review your application within 4 hours.</p>
+            <div className="mca-ty-checkmark small">✓</div>
+            <h2>Pre-Submission Document Review Activated</h2>
+            <p>An application specialist will begin reviewing your files shortly. You will receive a direct email from your analyst.</p>
           </div>
         )}
 

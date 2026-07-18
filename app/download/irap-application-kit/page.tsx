@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Get your free IRAP application kit with technical templates, project frameworks, and step-by-step R&D grant guides. Increase your approval chances by 89%.",
   keywords: "IRAP application kit, Canada R&D grant templates, free tech grant templates, IRAP project framework, NRC funding guide",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/irap-industrial-research-assistance-program",
+    canonical: "https://www.fsidigital.ca/download/irap-application-kit",
   },
 }
 

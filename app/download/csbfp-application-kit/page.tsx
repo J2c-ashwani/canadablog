@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Get your free CSBFP application kit with templates, checklists, and step-by-step guides. Increase your approval chances by 73%.",
   keywords: "CSBFP application kit, Canada Small Business Financing templates, free business loan templates, CSBFP checklist",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/csbfp-canada-small-business-financing-program",
+    canonical: "https://www.fsidigital.ca/download/csbfp-application-kit",
   },
 }
 

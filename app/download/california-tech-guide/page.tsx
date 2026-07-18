@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Get Your Free California Tech Startup Grants Application Guide & Complete Funding Templates | FSI Digital",
   description: "Download our comprehensive California technology startup grants toolkit covering CalSEED clean energy grants ($50,000 non-dilutive), SBIR State Match Pr...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/california-tech-programs",
+    canonical: "https://www.fsidigital.ca/download/california-tech-guide",
   },
 }
 

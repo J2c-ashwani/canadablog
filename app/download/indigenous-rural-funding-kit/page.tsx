@@ -13,7 +13,7 @@ export const metadata: Metadata = {
   description: "Get your free Indigenous and rural business funding kit with Aboriginal Entrepreneurship Program templates, NACCA application guides, and culturally appropriate business strategies. Increase approval chances by 82%.",
   keywords: "Indigenous business funding kit, Aboriginal business grant templates Canada, NACCA application templates, rural business funding guide, free Indigenous business templates, First Nations business funding kit",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/indigenous-rural-business-funding-canada",
+    canonical: "https://www.fsidigital.ca/download/indigenous-rural-funding-kit",
   },
 }
 

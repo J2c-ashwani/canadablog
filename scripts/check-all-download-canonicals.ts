@@ -26,9 +26,10 @@ async function run() {
 
     const relativeFolder = path.basename(dirPath);
     const content = fs.readFileSync(pagePath, 'utf8');
+    const expectedCanonical = `https://www.fsidigital.ca/download/${relativeFolder}`;
 
-    // Check if canonical is already defined
-    if (content.includes('canonical:')) {
+    // Check if correct canonical is already defined
+    if (content.includes(`canonical: "${expectedCanonical}"`) || content.includes(`canonical: '${expectedCanonical}'`)) {
       continue;
     }
 

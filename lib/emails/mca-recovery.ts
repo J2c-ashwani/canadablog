@@ -1,6 +1,6 @@
 // lib/emails/mca-recovery.ts
-// MCA Priority Processing Recovery Emails
-// Sends high-converting, personalized recovery templates via Resend.
+// MCA Priority Processing Recovery Emails — Trust-First Copy Optimization
+// Positioned as an optional operational/readiness review rather than a paid queue-bypass.
 
 import { sendEmail, getFirstName } from "./mailer";
 
@@ -15,7 +15,7 @@ function wrapMCARecoveryTemplate(contentHtml: string, firstName: string) {
         <div style="padding-bottom:18px;border-bottom:1px solid #f1f5f9;margin-bottom:24px;text-align:left;">
           <span style="font-size:18px;font-weight:800;color:#0f172a;letter-spacing:-0.5px;">FSI <span style="color:#2563eb;">Digital</span></span>
           <span style="float:right;font-size:11px;font-weight:700;color:#2563eb;text-transform:uppercase;padding:2px 8px;background-color:#eff6ff;border-radius:4px;margin-top:2px;">
-            Canada Funding Priority
+            Application Operations
           </span>
         </div>
 
@@ -61,23 +61,26 @@ export async function sendMCARecoveryEmail1({
 
   const html = wrapMCARecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      We have successfully received your business funding application for FSI Digital.
+      Your business funding application has been received successfully.
     </p>
     <p style="margin: 0 0 16px 0;">
-      Please note that your file is currently placed in the standard queue. A senior analyst has not yet started reviewing your financial documents.
+      Our operations team reviews applications in the order they are received. Standard files are submitted sequentially as spacing opens up with our funding partners.
     </p>
-    <p style="margin: 0 0 20px 0;">
-      If you want to accelerate your application and bypass the standard queue wait time, you can upgrade to <strong>Priority Funding Processing</strong> for a one-time fee of <strong>CAD $49</strong>. This activates immediate review and priority partner delivery:
+    <p style="margin: 0 0 16px 0;">
+      If you would like a specialist to audit your financial files and verify your details before they are forwarded to a funding partner, you can request our optional <strong>Pre-Submission Document Review</strong> for a one-time fee of <strong>CAD $49</strong>. This identifies any compliance gaps, Low-OCR PDF formatting faults, or missing statements that could cause immediate partner declines.
     </p>
-
+    
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#2563eb;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(37,99,235,0.2);">
-        Complete Priority Processing &rarr;
+        Request Pre-Submission Review &rarr;
       </a>
+      <p style="font-size:12px;color:#64748b;margin-top:12px;font-style:italic;margin-bottom:0;">
+        Your application remains active in our standard queue whether or not you choose this optional service.
+      </p>
     </div>
   `, firstName);
 
-  const text = `Hi ${firstName},\n\nWe received your business funding application successfully. Standard queue reviews take time. Upgrade to Priority Processing for CAD $49 to fast-track your review and skip the queue:\n${checkoutUrl}\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nYour application has been received successfully. We review files in the order received. If you'd like a specialist to review your files before partner submission, you can opt for our Pre-Submission Document Review for CAD $49 here:\n${checkoutUrl}\n\nNote: Your application remains active in our standard queue whether or not you choose this optional service.\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
 
   return sendEmail({ to, subject, html, text, tagType: 'mca-recovery-email1' });
 }
@@ -99,23 +102,26 @@ export async function sendMCARecoveryEmail2({
 
   const html = wrapMCARecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      Underwriting checks are automated, and even tiny formatting errors or transaction anomalies on your bank statements can trigger immediate partner declines.
+      Many business owners are unaware that standard automated credit underwriting checks can reject applications due to minor document glitches, transaction formatting errors, or illegible PDF statements.
     </p>
     <p style="margin: 0 0 16px 0;">
-      With <strong>Priority Processing</strong>, our specialists audit your bank statements manually to catch red flags (like NSFs, low balances, or corrupted PDFs) and assist you in fixing them <strong>before</strong> your file goes to partners.
+      Some applications require additional clarification or updated documentation before they are ready for submission. Our optional <strong>Pre-Submission Document Review</strong> assigns an application specialist to audit your files, catch potential red flags (such as transaction irregularities or corrupted statements), and guide you in resolving them before partner underwriting begins.
     </p>
     <p style="margin: 0 0 20px 0;">
-      Protect your credit rating and avoid automated partner declines by opting for priority review today:
+      If you want to review your file for completeness, you can activate your review here:
     </p>
 
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#2563eb;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(37,99,235,0.2);">
-        Secure My Application &rarr;
+        Verify My Application Details &rarr;
       </a>
+      <p style="font-size:12px;color:#64748b;margin-top:12px;font-style:italic;margin-bottom:0;">
+        Your application remains active in our standard queue whether or not you choose this optional service.
+      </p>
     </div>
   `, firstName);
 
-  const text = `Hi ${firstName},\n\nMinor bank statement issues can cause automated partner declines. Enable Priority Processing for CAD $49 to have our specialists verify your documents before partner submission:\n${checkoutUrl}\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nAutomated checks can reject files due to minor document glitches. Our optional Pre-Submission Document Review audits your files beforehand. Get started here:\n${checkoutUrl}\n\nNote: Your application remains active in our standard queue whether or not you choose this optional service.\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
 
   return sendEmail({ to, subject, html, text, tagType: 'mca-recovery-email2' });
 }
@@ -137,23 +143,26 @@ export async function sendMCARecoveryEmail3({
 
   const html = wrapMCARecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      This is a quick update regarding your business funding profile. Standard applications are processed sequentially in submission order, which can cause significant delays during high volume periods.
+      Your business funding profile has been received. Standard applications are processed sequentially in submission order. During periods of high volume, sequential processing can take up to several business days.
     </p>
     <p style="margin: 0 0 16px 0;">
-      Our <strong>Priority Queue</strong> bypasses this standard wait list completely, landing your file directly on the priority desks of our primary funding partner.
+      Some applicants choose to have our specialists perform an optional <strong>Pre-Submission Document Review</strong>. This service accelerates document preparation, resolves formatting warnings, and delivers a clean, pre-verified file straight to our primary partner's desk.
     </p>
     <p style="margin: 0 0 20px 0;">
-      Fast-track your application and complete your document verification today:
+      If you would like to initiate a specialist review before your file is forwarded, you can do so here:
     </p>
 
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#2563eb;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(37,99,235,0.2);">
-        Fast-Track My Review Now &rarr;
+        Initiate Pre-Submission Review &rarr;
       </a>
+      <p style="font-size:12px;color:#64748b;margin-top:12px;font-style:italic;margin-bottom:0;">
+        Your application remains active in our standard queue whether or not you choose this optional service.
+      </p>
     </div>
   `, firstName);
 
-  const text = `Hi ${firstName},\n\nYour application is in the standard review queue. Bypass the queue completely and get priority specialist review within 4 hours for CAD $49:\n${checkoutUrl}\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nStandard applications are reviewed sequentially. For a dedicated Pre-Submission Document Review before forwarding, you can activate this optional upgrade:\n${checkoutUrl}\n\nNote: Your application remains active in our standard queue whether or not you choose this optional service.\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
 
   return sendEmail({ to, subject, html, text, tagType: 'mca-recovery-email3' });
 }
@@ -178,20 +187,23 @@ export async function sendMCARecoveryEmail4({
       We wanted to reach out one more time regarding your business funding request.
     </p>
     <p style="margin: 0 0 16px 0;">
-      If you are ready to proceed with securing working capital for inventory, payroll, or expansion, completing your Priority Processing ensures you get immediate, dedicated review.
+      If you are ready to proceed with securing working capital for inventory, payroll, or expansion, opting for our Pre-Submission Document Review ensures you get a dedicated application review to optimize your document pack.
     </p>
     <p style="margin: 0 0 20px 0;">
-      Click below to upgrade your application in one click:
+      You can access the optional pre-submission audit check directly:
     </p>
 
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#2563eb;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(37,99,235,0.2);">
-        Complete Priority Review &rarr;
+        Get Dedicated Document Review &rarr;
       </a>
+      <p style="font-size:12px;color:#64748b;margin-top:12px;font-style:italic;margin-bottom:0;">
+        Your application remains active in our standard queue whether or not you choose this optional service.
+      </p>
     </div>
   `, firstName);
 
-  const text = `Hi ${firstName},\n\nIf you are still looking to secure working capital for your business, you can complete your Priority Processing review here:\n${checkoutUrl}\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nIf you're still looking to secure working capital, you can request an optional Pre-Submission Document Review here:\n${checkoutUrl}\n\nNote: Your application remains active in our standard queue whether or not you choose this optional service.\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
 
   return sendEmail({ to, subject, html, text, tagType: 'mca-recovery-email4' });
 }
@@ -213,23 +225,26 @@ export async function sendMCARecoveryEmail5({
 
   const html = wrapMCARecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      This is our final notice regarding your priority funding options.
+      This is our final notice regarding your optional pre-submission document review.
     </p>
     <p style="margin: 0 0 16px 0;">
-      We will close your active recovery sequence in 24 hours. You can still complete your priority processing upgrade today to ensure your application is reviewed and submitted to our partners with highest queue standing.
+      We will stop sending reminders after tomorrow. You can still complete your Pre-Submission Document Review today to ensure your application files are verified by a specialist before partner submission.
     </p>
     <p style="margin: 0 0 20px 0;">
-      Complete your review now before the priority window closes:
+      Complete your review now before the registration window closes:
     </p>
 
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#2563eb;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(37,99,235,0.2);">
-        Complete Final Review &rarr;
+        Complete Final Document Review &rarr;
       </a>
+      <p style="font-size:12px;color:#64748b;margin-top:12px;font-style:italic;margin-bottom:0;">
+        Your application remains active in our standard queue whether or not you choose this optional service.
+      </p>
     </div>
   `, firstName);
 
-  const text = `Hi ${firstName},\n\nThis is our final notice before closing your active recovery sequence. Complete your Priority Processing upgrade to verify your documents:\n${checkoutUrl}\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nWe'll stop sending reminders after tomorrow. You can still complete your optional Pre-Submission Document Review to verify your documents:\n${checkoutUrl}\n\nNote: Your application remains active in our standard queue whether or not you choose this optional service.\n\nBest,\nFunding Operations Team\nFSI Digital Canada`;
 
   return sendEmail({ to, subject, html, text, tagType: 'mca-recovery-email5' });
 }

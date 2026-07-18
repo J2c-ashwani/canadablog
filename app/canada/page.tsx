@@ -264,7 +264,7 @@ export default function CanadaGrantsPage() {
                 description: "Dedicated funding for women entrepreneurs",
                 icon: Users,
                 count: "45+ grants",
-                href: "/canada/women-entrepreneurship-grants",
+                href: "/canada/women-business-grants",
               },
               {
                 title: "Indigenous Entrepreneurs",

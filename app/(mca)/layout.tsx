@@ -33,8 +33,8 @@ export default function MCALayout({ children }: { children: React.ReactNode }) {
       <footer className="mca-footer">
         <div className="mca-footer-inner">
           <div className="mca-footer-links">
-            <a href="/privacy-policy">Privacy Policy</a>
-            <a href="/terms-of-service">Terms of Service</a>
+            <a href="/privacy">Privacy Policy</a>
+            <a href="/terms">Terms of Service</a>
             <a href="/contact">Contact</a>
           </div>
           <p className="mca-footer-disclaimer">

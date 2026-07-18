@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "Get Your Free NASA SBIR Space Tech Grants Application Guide & Proposal Templates | FSI Digital",
   description: "Download our comprehensive NASA SBIR/STTR space tech grants toolkit covering Phase I ($150,000) and Phase II ($850,000) application strategies, technica...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/nasa-sbir-space-tech-grants",
+    canonical: "https://www.fsidigital.ca/download/nasa-sbir-space-tech-guide",
   },
 }
 

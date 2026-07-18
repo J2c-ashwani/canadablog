@@ -13,8 +13,14 @@ import * as mailer from '../lib/emails/mailer';
 import * as purchaseStore from '../lib/products/purchase-store';
 import * as contactMail from '../lib/emails/contact-confirmation';
 import * as enterpriseAlerts from '../lib/emails/enterprise-alerts';
+import * as subTokens from '../lib/auth/subscriber-tokens';
 import { NextRequest } from 'next/server';
 import { google } from 'googleapis';
+
+// ── Auto-authorize activity tracking updates for testing ──
+(subTokens as any).isLoginToken = (candidate: any, expected: any) => {
+  return true;
+};
 
 // ── Intercept Global Fetch to capture Resend Email payloads ──
 export let sentEmailsList: any[] = [];
@@ -41,7 +47,7 @@ google.sheets = () => {
   return {
     spreadsheets: {
       get: async () => {
-        return { data: { sheets: [{ properties: { title: 'Purchases' } }] } };
+        return { data: { sheets: [{ properties: { title: 'Purchases' } }, { properties: { title: 'Payment Intents' } }] } };
       },
       batchUpdate: async () => {
         return { data: {} };
@@ -51,6 +57,9 @@ google.sheets = () => {
           if (params.range.includes('Purchases')) {
             return { data: { values: sheetValuesStore } };
           }
+          if (params.range.includes('Payment Intents')) {
+            return { data: { values: paymentIntentsStore } };
+          }
           return { data: { values: [] } };
         },
         append: async (params: any) => {
@@ -58,9 +67,29 @@ google.sheets = () => {
             const vals = params.requestBody?.values || [];
             sheetValuesStore.push(...vals);
           }
+          if (params.range.includes('Payment Intents')) {
+            const vals = params.requestBody?.values || [];
+            paymentIntentsStore.push(...vals);
+          }
           return { data: {} };
         },
-        update: async () => {
+        update: async (params: any) => {
+          if (params.range.includes('Payment Intents')) {
+            const match = params.range.match(/L(\d+)/) || params.range.match(/B(\d+)/);
+            if (match) {
+              const rowIdx = parseInt(match[1]) - 1;
+              if (paymentIntentsStore[rowIdx]) {
+                const vals = params.requestBody?.values?.[0] || [];
+                if (params.range.includes('B')) {
+                  paymentIntentsStore[rowIdx][1] = vals[0] || '';
+                } else if (params.range.includes('L')) {
+                  paymentIntentsStore[rowIdx][11] = vals[0] || '';
+                  paymentIntentsStore[rowIdx][12] = vals[1] || '';
+                  paymentIntentsStore[rowIdx][13] = vals[2] || '';
+                }
+              }
+            }
+          }
           return { data: {} };
         }
       }
@@ -121,6 +150,9 @@ SubscriberRepository.getAllSubscribers = async () => {
 let sheetValuesStore: any[][] = [
   ['Purchase ID', 'Email', 'Product ID', 'Amount', 'Timestamp']
 ];
+let paymentIntentsStore: any[][] = [
+  ['Intent ID', 'PayPal Order ID', 'Email', 'Name', 'Product ID', 'Addons', 'Expected Amount', 'Currency', 'Profile Data', 'Attribution', 'Session ID', 'Status', 'Created At', 'Completed At']
+];
 
 async function runEndToEndVerification() {
   let failureCount = 0;
@@ -128,6 +160,7 @@ async function runEndToEndVerification() {
 
   // Reset Sheets store
   sheetValuesStore = [['Purchase ID', 'Email', 'Product ID', 'Amount', 'Timestamp']];
+  paymentIntentsStore = [['Intent ID', 'PayPal Order ID', 'Email', 'Name', 'Product ID', 'Addons', 'Expected Amount', 'Currency', 'Profile Data', 'Attribution', 'Session ID', 'Status', 'Created At', 'Completed At']];
 
   // 1. Report purchase only ($19)
   console.log('\n------------------------------------------------------');
@@ -135,16 +168,19 @@ async function runEndToEndVerification() {
   const email1 = 'buyer-report@fsidigital.ca';
   leadStore[email1] = { email: email1, name: 'Report Buyer', reportPurchased: false };
   
+  const intentId1 = 'intent-123-1';
+  paymentIntentsStore.push([
+    intentId1, 'TEST-ORDER-19', email1, 'Report Buyer', 'funding-match-report', JSON.stringify({}), '19.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-1', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq1 = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'funding-match-report',
-      email: email1,
-      name: 'Report Buyer',
+      paymentIntentId: intentId1,
       paypalOrderId: 'TEST-ORDER-19',
-      addons: { toolkit: false, approvalLibrary: false, strategySession: false },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res1 = await purchaseHandler(purchaseReq1);
@@ -167,16 +203,20 @@ async function runEndToEndVerification() {
   console.log('🧪 Test 2: Report + Toolkit purchase');
   const email2 = 'buyer-toolkit@fsidigital.ca';
   leadStore[email2] = { email: email2, name: 'Toolkit Buyer', reportPurchased: false };
+  
+  const intentId2 = 'intent-123-2';
+  paymentIntentsStore.push([
+    intentId2, 'TEST-ORDER-48', email2, 'Toolkit Buyer', 'funding-match-report', JSON.stringify({ toolkit: true, approvalLibrary: false, strategySession: false }), '48.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-2', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq2 = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'funding-match-report',
-      email: email2,
-      name: 'Toolkit Buyer',
+      paymentIntentId: intentId2,
       paypalOrderId: 'TEST-ORDER-48',
-      addons: { toolkit: true, approvalLibrary: false, strategySession: false },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res2 = await purchaseHandler(purchaseReq2);
@@ -193,16 +233,20 @@ async function runEndToEndVerification() {
   console.log('🧪 Test 3: Report + Strategy upgrade credit applied ($180 Strategy + $19 Report)');
   const email3 = 'buyer-credit@fsidigital.ca';
   leadStore[email3] = { email: email3, name: 'Upgrade Buyer', reportPurchased: false, strategyReportPurchased: false };
+  
+  const intentId3 = 'intent-123-3';
+  paymentIntentsStore.push([
+    intentId3, 'TEST-ORDER-180', email3, 'Upgrade Buyer', 'funding-match-report', JSON.stringify({ toolkit: false, approvalLibrary: false, strategySession: true }), '199.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-3', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq3 = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'funding-match-report',
-      email: email3,
-      name: 'Upgrade Buyer',
+      paymentIntentId: intentId3,
       paypalOrderId: 'TEST-ORDER-180',
-      addons: { toolkit: false, approvalLibrary: false, strategySession: true },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res3 = await purchaseHandler(purchaseReq3);
@@ -225,16 +269,20 @@ async function runEndToEndVerification() {
   console.log('🧪 Test 4: Strategy Session Only direct purchase ($199)');
   const email4 = 'buyer-strategy@fsidigital.ca';
   leadStore[email4] = { email: email4, name: 'Strategy Buyer', strategyReportPurchased: false };
+  
+  const intentId4 = 'intent-123-4';
+  paymentIntentsStore.push([
+    intentId4, 'TEST-ORDER-199', email4, 'Strategy Buyer', 'strategy-audit', JSON.stringify({}), '199.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-4', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq4 = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'strategy-audit',
-      email: email4,
-      name: 'Strategy Buyer',
+      paymentIntentId: intentId4,
       paypalOrderId: 'TEST-ORDER-199',
-      addons: { toolkit: false, approvalLibrary: false, strategySession: false },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res4 = await purchaseHandler(purchaseReq4);
@@ -297,16 +345,19 @@ async function runEndToEndVerification() {
   
   // Step A: Buy report first
   console.log('  Step A: Simulating first purchase (Report only for $19)...');
+  const intentId6A = 'intent-123-6a';
+  paymentIntentsStore.push([
+    intentId6A, 'ORDER-REP-1', email6, 'Repeat Buyer', 'funding-match-report', JSON.stringify({}), '19.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-6a', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq6A = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'funding-match-report',
-      email: email6,
-      name: 'Repeat Buyer',
+      paymentIntentId: intentId6A,
       paypalOrderId: 'ORDER-REP-1',
-      addons: { toolkit: false, approvalLibrary: false, strategySession: false },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res6A = await purchaseHandler(purchaseReq6A);
@@ -320,16 +371,19 @@ async function runEndToEndVerification() {
 
   // Step B: Buy Strategy Session using upgrade credit ($180)
   console.log('  Step B: Simulating second purchase (Strategy Session using credit for $180)...');
+  const intentId6B = 'intent-123-6b';
+  paymentIntentsStore.push([
+    intentId6B, 'ORDER-REP-2', email6, 'Repeat Buyer', 'funding-match-report', JSON.stringify({ toolkit: false, approvalLibrary: false, strategySession: true }), '199.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-6b', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq6B = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'strategy-audit',
-      email: email6,
-      name: 'Repeat Buyer',
+      paymentIntentId: intentId6B,
       paypalOrderId: 'ORDER-REP-2',
-      addons: { toolkit: false, approvalLibrary: false, strategySession: false },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res6B = await purchaseHandler(purchaseReq6B);
@@ -343,16 +397,19 @@ async function runEndToEndVerification() {
 
   // Step C: Try to buy ANOTHER Strategy Session. Credit should NOT be applied.
   console.log('  Step C: Simulating third purchase (Attempting second Strategy Session purchase)...');
+  const intentId6C = 'intent-123-6c';
+  paymentIntentsStore.push([
+    intentId6C, 'ORDER-REP-3', email6, 'Repeat Buyer', 'strategy-audit', JSON.stringify({}), '199.00', 'USD',
+    JSON.stringify({ province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }),
+    JSON.stringify({}), 'sess-123-6c', 'created', new Date().toISOString(), ''
+  ]);
+
   const purchaseReq6C = new NextRequest('http://localhost:3000/api/products/purchase', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      productId: 'strategy-audit',
-      email: email6,
-      name: 'Repeat Buyer',
+      paymentIntentId: intentId6C,
       paypalOrderId: 'ORDER-REP-3',
-      addons: { toolkit: false, approvalLibrary: false, strategySession: false },
-      profileData: { province: 'ON', industry: 'technology', revenue: 'pre-revenue', goal: 'hiring' }
     })
   });
   const res6C = await purchaseHandler(purchaseReq6C);
@@ -375,8 +432,8 @@ async function runEndToEndVerification() {
   console.log('🧪 Test 7: A/B Variant Attribution & RPV Test');
   const email7A = 'variant-a@fsidigital.ca';
   const email7B = 'variant-b@fsidigital.ca';
-  leadStore[email7A] = { email: email7A, name: 'Variant A User', reportPurchased: false };
-  leadStore[email7B] = { email: email7B, name: 'Variant B User', reportPurchased: false };
+  leadStore[email7A] = { email: email7A, name: 'Variant A User', reportPurchased: false, loginToken: 'login_v3_token_a_12345678901234567890' };
+  leadStore[email7B] = { email: email7B, name: 'Variant B User', reportPurchased: false, loginToken: 'login_v3_token_b_12345678901234567890' };
 
   // Track activity for Variant A
   const trackReq7A = new NextRequest('http://localhost:3000/api/subscriber/track-activity', {
@@ -384,6 +441,7 @@ async function runEndToEndVerification() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: email7A,
+      token: 'login_v3_token_a_12345678901234567890',
       event: 'calculator_completed',
       source: 'Calculator',
       calculator_cta_variant: 'A'
@@ -397,6 +455,7 @@ async function runEndToEndVerification() {
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
       email: email7B,
+      token: 'login_v3_token_b_12345678901234567890',
       event: 'calculator_completed',
       source: 'Calculator',
       calculator_cta_variant: 'B'

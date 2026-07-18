@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "NSERC Research Grants Application Toolkit | FSI Digital",
   description: "Get instant access to comprehensive NSERC research application templates, I2I grant guides, and university-industry partnership strategies used by succe...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/nserc-research-grants-canada",
+    canonical: "https://www.fsidigital.ca/download/nserc-research-grants-guide",
   },
 }
 

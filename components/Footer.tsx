@@ -284,6 +284,11 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/membership" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('membership')}>
+                  Premium Membership
+                </Link>
+              </li>
+              <li>
                 <Link href="/audit" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm" onClick={() => trackFooterEvent('strategy-audit')}>
                   Book Strategy Session ($199)
                 </Link>

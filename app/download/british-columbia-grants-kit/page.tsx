@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   title: "BC Business Grants Application Toolkit | FSI Digital",
   description: "Get instant access to comprehensive British Columbia provincial business grants application templates, innovation compliance strategies, and CleanBC sus...",
   alternates: {
-    canonical: "https://www.fsidigital.ca/blog/bc-small-business-grants-guide",
+    canonical: "https://www.fsidigital.ca/download/british-columbia-grants-kit",
   },
 }
 
