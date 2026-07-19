@@ -1,3 +1,5 @@
+import { cleanCompanyName } from "./mailer";
+
 type ReportPurchaseInput = {
   to: string;
   name: string;
@@ -48,7 +50,7 @@ function buildHtml({
         <p style="margin:0 0 16px 0;font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
 
         <p style="margin:0 0 16px 0;font-size:15px;color:#334155;line-height:1.6;">
-          Thank you for purchasing the <strong>Executive Funding Opportunity Assessment</strong> for <strong>${escapeHtml(companyName)}</strong>.
+          Thank you for purchasing the <strong>Executive Funding Opportunity Assessment</strong>${companyName ? ` for <strong>${escapeHtml(companyName)}</strong>` : ''}.
         </p>
 
         <div style="background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 18px 20px; margin: 20px 0; text-align: center;">
@@ -70,7 +72,7 @@ function buildHtml({
           </a>
         </div>
 
-        <p style="margin:24px 0 12px 0;font-weight:700;color:#0f172a;font-size:15px;">Next Steps for ${escapeHtml(companyName)}:</p>
+        <p style="margin:24px 0 12px 0;font-weight:700;color:#0f172a;font-size:15px;">Next Steps${companyName ? ` for ${escapeHtml(companyName)}` : ''}:</p>
         <table style="width:100%;border-collapse:collapse;margin:0 0 20px 0;" cellpadding="0" cellspacing="0">
           <tr>
             <td style="vertical-align:top;width:20px;padding-bottom:10px;font-size:14px;color:#059669;font-weight:bold;">1.</td>
@@ -123,7 +125,7 @@ function buildText({
 
   return `Hi ${firstName},
 
-Thank you for purchasing the Executive Funding Opportunity Assessment for ${companyName}.
+Thank you for purchasing the Executive Funding Opportunity Assessment${companyName ? ` for ${companyName}` : ''}.
 
 Readiness Score: ${readinessScore}/100
 Estimated Funding Stack: ${estimatedFunding}
@@ -162,8 +164,9 @@ export async function sendReportPurchaseEmail({
   }
 
   const firstName = getFirstName(name);
-  const html = buildHtml({ firstName, companyName, readinessScore, estimatedFunding, loginToken });
-  const text = buildText({ firstName, companyName, readinessScore, estimatedFunding, loginToken });
+  const cleanCompany = cleanCompanyName(companyName);
+  const html = buildHtml({ firstName, companyName: cleanCompany, readinessScore, estimatedFunding, loginToken });
+  const text = buildText({ firstName, companyName: cleanCompany, readinessScore, estimatedFunding, loginToken });
 
   try {
     const response = await fetch('https://api.resend.com/emails', {
@@ -176,12 +179,12 @@ export async function sendReportPurchaseEmail({
         from: fromEmail,
         to: [to],
         reply_to: replyToEmail,
-        subject: `Your Executive Funding Assessment Report - ${companyName}`,
+        subject: `Your Executive Funding Assessment Report${cleanCompany ? ` - ${cleanCompany}` : ''}`,
         html,
         text,
         tags: [
           { name: 'type', value: 'report-purchase' },
-          { name: 'company', value: companyName.replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 50) },
+          { name: 'company', value: (cleanCompany || 'Unknown').replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 50) },
         ],
       }),
     });
