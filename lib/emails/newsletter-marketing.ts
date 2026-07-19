@@ -36,6 +36,20 @@ export interface MissingFundingAlertData {
 
 const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
 
+export const cleanField = (val?: string) => {
+  if (!val) return "";
+  const trimmed = val.trim();
+  const lower = trimmed.toLowerCase();
+  const placeholders = [
+    'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
+    'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
+  ];
+  if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || placeholders.includes(lower)) {
+    return "";
+  }
+  return trimmed;
+};
+
 function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string, preheader?: string) {
   const pricing = getReactivationPriceForEmail(loginToken); // fallback if token used
   const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=newsletter_campaign`;
@@ -171,8 +185,9 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
   `;
 
   const text = `Hi ${firstName},\n\nSince your last funding review, we have identified ${data.newProgramsCount} additional funding programs that may be relevant to your business.\n\nSome of the newly added opportunities include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nWe've refreshed your funding profile to reflect these additions. Log in to view your updated matches here:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
-  const subject = data.companyName
-    ? `New funding opportunities identified for ${data.companyName}`
+  const cleanCompany = cleanField(data.companyName);
+  const subject = cleanCompany
+    ? `New funding opportunities identified for ${cleanCompany}`
     : `We reviewed your funding profile`;
 
   return sendEmail({
@@ -193,21 +208,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
 export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData) {
   const firstName = getFirstName(data.name);
   const link = `https://www.fsidigital.ca/calculator?token=${data.loginToken || ""}`;
-
-  // Helper to clean fields and ignore placeholders, Other, and N/A
-  const cleanField = (val?: string) => {
-    if (!val) return "";
-    const trimmed = val.trim();
-    const lower = trimmed.toLowerCase();
-    const placeholders = [
-      'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
-      'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
-    ];
-    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || placeholders.includes(lower)) {
-      return "";
-    }
-    return trimmed;
-  };
+  // Reuses top-level cleanField helper
 
   const cleanIndustry = cleanField(data.industry);
   const cleanRegion = cleanField(data.region);
@@ -418,19 +419,7 @@ export interface ReactivationEmailData {
 }
 
 export function getLeadSegmentation(data: ReactivationEmailData) {
-  const cleanField = (val?: string) => {
-    if (!val) return "";
-    const trimmed = val.trim();
-    const lower = trimmed.toLowerCase();
-    const placeholders = [
-      'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
-      'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
-    ];
-    if (lower === "n/a" || lower === "other" || lower === "general" || lower === "canada" || lower === "growth" || placeholders.includes(lower)) {
-      return "";
-    }
-    return trimmed;
-  };
+  // Reuses top-level cleanField helper
 
   const cleanIndustry = cleanField(data.industry);
   const cleanRegion = cleanField(data.region);
