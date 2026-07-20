@@ -1041,11 +1041,18 @@ export default function ConsultationClient() {
                     <div>
                       {paymentError && (
                         <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-xl text-red-700 text-xs font-semibold text-center leading-normal">
-                          {paymentError}
+                          <p className="mb-2">{paymentError}</p>
+                          <button
+                            type="button"
+                            onClick={() => window.location.reload()}
+                            className="inline-block px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded text-[11px] font-bold shadow-xs transition-colors"
+                          >
+                            Refresh Checkout
+                          </button>
                         </div>
                       )}
 
-                      {!sdkReady && (
+                      {!sdkReady && !paymentError && (
                         <div className="w-full py-5 flex flex-col items-center justify-center gap-2 border border-slate-200 rounded-2xl bg-slate-50 mb-3">
                           <div className="w-6 h-6 border-2 border-indigo-600 border-t-transparent rounded-full animate-spin" />
                           <span className="text-slate-400 text-xs font-semibold animate-pulse">Loading secure checkout...</span>
