@@ -69,17 +69,22 @@ export async function POST(request: NextRequest) {
                      source === "Checklist Screener" || 
                      source === "Funding Stacking Decision Engine" ||
                      category === "Funding Estimator Tool" || 
-                     body.category === "Funding Estimator Tool";
+                     body.category === "Funding Estimator Tool" ||
+                     !!source ||
+                     !!category;
     
-    const isPhoneOptional = isWidget;
-    const finalName = name || ((isCalculator || isConsultation || isFinder || isPhoneOptional) ? "Founder" : "");
-    const finalCompanyName = companyName || ((isCalculator || isConsultation || isFinder || isPhoneOptional) ? "Not provided" : "");
-    const finalIndustry = industry || (isConsultation ? "N/A" : "");
-    const finalBusinessStage = businessStage || (isConsultation ? "N/A" : "");
-    const finalFundingAmount = fundingAmount || (isConsultation ? "N/A" : "");
+    const isShortFormLead = isCalculator || isConsultation || isFinder || isWidget;
+    const isPhoneOptional = isShortFormLead;
+    const finalName = name || (isShortFormLead ? "Founder" : "");
+    const finalCompanyName = companyName || (isShortFormLead ? "Not provided" : "");
+    const finalIndustry = industry || (isShortFormLead ? "General Business" : "");
+    const finalBusinessStage = businessStage || (isShortFormLead ? "N/A" : "");
+    const finalFundingAmount = fundingAmount || (isShortFormLead ? "N/A" : "");
+    const finalFundingPurpose = (Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : fundingPurpose) || (isShortFormLead ? "Funding Eligibility Assessment" : "");
+    const finalBusinessDescription = businessDescription || (isShortFormLead ? `Lead submission from ${source || category || pagePath || "Interactive Tool"}` : "");
 
-    // Validate required fields (phone and company are optional for calculator and AI Finder leads)
-    if (!email || !finalName || !finalCompanyName || (!isPhoneOptional && !rawPhone) || !finalIndustry || !finalBusinessStage || !finalFundingAmount || !fundingPurpose || !businessDescription) {
+    // Validate required fields (phone and detailed firmographics are optional for short-form/tool leads)
+    if (!email || !finalName || !finalCompanyName || (!isPhoneOptional && !rawPhone) || !finalIndustry || !finalBusinessStage || !finalFundingAmount || !finalFundingPurpose || !finalBusinessDescription) {
       return NextResponse.json({ error: "Missing required qualification fields" }, { status: 400 });
     }
 
@@ -127,9 +132,9 @@ export async function POST(request: NextRequest) {
       employees: employees || "N/A",
       annualRevenue: annualRevenue || "N/A",
       fundingAmount: finalFundingAmount,
-      fundingPurpose: Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : fundingPurpose,
+      fundingPurpose: finalFundingPurpose,
       timeline: timeline || "N/A",
-      businessDescription,
+      businessDescription: finalBusinessDescription,
       requestType: requestType || "General",
       phone,
       emailVerified: "No", // Marked unverified initially until OTP validation succeeds
