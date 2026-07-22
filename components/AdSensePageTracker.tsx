@@ -90,6 +90,65 @@ export function AdSensePageTracker() {
   useEffect(() => {
     if (typeof window === 'undefined') return
 
+    // Reset Google AdSense auto-ads injected styling (margin-top/padding-top) on HTML/body
+    // to prevent layout shifts/white spacers on page navigation.
+    const cleanAdSenseStyles = () => {
+      const htmlEl = document.documentElement;
+      const bodyEl = document.body;
+
+      if (htmlEl) {
+        // Remove style properties
+        htmlEl.style.removeProperty('margin-top');
+        htmlEl.style.removeProperty('padding-top');
+        htmlEl.style.marginTop = '';
+        htmlEl.style.paddingTop = '';
+        // If inline style attribute is present, parse and clean it
+        const currentStyle = htmlEl.getAttribute('style') || '';
+        if (currentStyle.includes('margin-top') || currentStyle.includes('padding-top')) {
+          const cleaned = currentStyle
+            .split(';')
+            .filter(s => {
+              const trimmed = s.trim().toLowerCase();
+              return !trimmed.startsWith('margin-top') && !trimmed.startsWith('padding-top');
+            })
+            .join(';');
+          htmlEl.setAttribute('style', cleaned);
+        }
+      }
+
+      if (bodyEl) {
+        bodyEl.style.removeProperty('margin-top');
+        bodyEl.style.removeProperty('padding-top');
+        bodyEl.style.marginTop = '';
+        bodyEl.style.paddingTop = '';
+        const currentStyle = bodyEl.getAttribute('style') || '';
+        if (currentStyle.includes('margin-top') || currentStyle.includes('padding-top')) {
+          const cleaned = currentStyle
+            .split(';')
+            .filter(s => {
+              const trimmed = s.trim().toLowerCase();
+              return !trimmed.startsWith('margin-top') && !trimmed.startsWith('padding-top');
+            })
+            .join(';');
+          bodyEl.setAttribute('style', cleaned);
+        }
+      }
+
+      // Also clean up any auto-inserted AdSense anchor container divs at the top of the body
+      const googlePlacedAds = document.querySelectorAll('.google-auto-placed, .adsbygoogle-noablate, #google_vignette');
+      googlePlacedAds.forEach(el => {
+        if (el) {
+          (el as HTMLElement).style.setProperty('display', 'none', 'important');
+        }
+      });
+    };
+
+    // Run clean up immediately and then again after 100ms and 500ms (to capture late-injects)
+    cleanAdSenseStyles();
+    const t1 = setTimeout(cleanAdSenseStyles, 100);
+    const t2 = setTimeout(cleanAdSenseStyles, 500);
+    const t3 = setTimeout(cleanAdSenseStyles, 1500);
+
     // Increment pages viewed
     const currentViews = parseInt(sessionStorage.getItem('fsi_pages_viewed') || '0', 10)
     sessionStorage.setItem('fsi_pages_viewed', (currentViews + 1).toString())
@@ -146,7 +205,12 @@ export function AdSensePageTracker() {
 
     // Delay event dispatch by 100ms to let document.title reflect the client transition metadata
     const timer = setTimeout(handleTracking, 100)
-    return () => clearTimeout(timer)
+    return () => {
+      clearTimeout(timer)
+      clearTimeout(t1)
+      clearTimeout(t2)
+      clearTimeout(t3)
+    }
   }, [pathname])
 
   return null
