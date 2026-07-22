@@ -119,7 +119,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       const safeName = file.name.replace(/[^a-zA-Z0-9._-]/g, '_');
       const blobPath = `mca-statements/pending/${timestamp}-${i + 1}-${safeName}`;
 
-      const blob = await put(blobPath, file, {
+      // Convert File to ArrayBuffer and then Buffer to avoid serialization/type compatibility issues on Vercel Node runtime
+      const arrayBuffer = await file.arrayBuffer();
+      const buffer = Buffer.from(arrayBuffer);
+
+      const blob = await put(blobPath, buffer, {
+        contentType: file.type || ALLOWED_MIME,
         access: 'public', // Will be moved to private folder on final submit
         token: process.env.BLOB_READ_WRITE_TOKEN,
       });
