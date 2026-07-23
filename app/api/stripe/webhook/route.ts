@@ -135,7 +135,22 @@ export async function POST(request: NextRequest) {
       const existing = allPurchases.find((p) => p.paypalOrderId === sessionId);
 
       if (existing) {
-        console.log(`ℹ️ Webhook: Purchase for session ${sessionId} already processed, skipping duplicate.`);
+        // Purchase exists — but ensure entitlements were also granted (recovery for prior partial failures)
+        try {
+          const { getEntitlementsForEmail } = await import('@/lib/products/entitlements');
+          const existingEntitlements = await getEntitlementsForEmail(email);
+          const hasPrimaryEntitlement = existingEntitlements.some(
+            (e) => e.orderId === sessionId && e.sourceProductId === productId && e.status === 'active'
+          );
+          if (!hasPrimaryEntitlement) {
+            console.log(`⚠️ Webhook retry: Purchase exists but entitlements missing for ${sessionId}. Recovering...`);
+            await grantEntitlements({ purchaseId: existing.purchaseId, email, productId, orderId: sessionId });
+            console.log(`✅ Webhook retry: Entitlements recovered for ${sessionId}`);
+          }
+        } catch (recoveryErr) {
+          console.error(`❌ Webhook retry: Entitlement recovery failed for ${sessionId}:`, recoveryErr);
+        }
+        console.log(`ℹ️ Webhook: Purchase for session ${sessionId} already processed.`);
         return NextResponse.json({ received: true });
       }
 

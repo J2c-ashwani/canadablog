@@ -567,7 +567,22 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '',
                   height="700px" 
                   frameBorder="0"
                   className="rounded-2xl bg-white"
+                  onLoad={() => setLoading(false)}
+                  onError={() => setLoading(false)}
                 />
+
+                {/* Fallback CTA if Calendly fails to load */}
+                {!loading && (
+                  <noscript>
+                    <div style={{ padding: '2rem', textAlign: 'center', background: '#f8fafc', borderRadius: '1rem', margin: '1rem' }}>
+                      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0f172a', marginBottom: '0.5rem' }}>Booking Widget Unavailable</h3>
+                      <p style={{ color: '#64748b', marginBottom: '1rem' }}>Please contact us directly to schedule your strategy session.</p>
+                      <a href="mailto:ashwani@fsidigital.ca?subject=Strategy%20Session%20Booking%20Request" style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: '#4f46e5', color: 'white', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 600 }}>
+                        Email: ashwani@fsidigital.ca
+                      </a>
+                    </div>
+                  </noscript>
+                )}
               </div>
 
               <div className="flex gap-2 text-xs text-slate-500 max-w-lg mx-auto leading-relaxed border-t border-slate-200/60 pt-6 justify-center">

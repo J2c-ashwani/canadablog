@@ -41,6 +41,8 @@ const VALID_CONSULTATIONS = new Set([
   "emergency-grant-support"
 ]);
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return Array.from(VALID_CONSULTATIONS).map((consultationSlug) => ({
     consultationSlug,

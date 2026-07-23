@@ -157,3 +157,42 @@ Sprint 3 is considered commercially successful only when:
 
 *Until then:*
 > **Sprint 3 remains commercially under evaluation.**
+
+---
+
+## Sprint 6 — Production Resilience & Revenue Safeguards (Approved Fixes)
+
+All Tier 1 and high-priority fixes approved in the implementation plan have been successfully executed and validated with a clean TypeScript compilation check under custom memory configurations (`--max-old-space-size=4096`).
+
+### 1. Payment Pipeline Reliability & Graceful Recovery
+- **Implemented in**: [purchase/route.ts](file:///Users/ashwanikumar/Downloads/canadablog/app/api/products/purchase/route.ts)
+- **What changed**:
+  - Wrapped `ensureScopedSubscriberTokens` in a try/catch block. If secure token generation fails (e.g. Google Sheets API latency/outage), the purchase flow **no longer crashes**. The purchase is completed, payment is captured, and the user receives their purchase access token directly.
+  - Made the response payload null-safe: delivery URLs fall back cleanly to `/booking` and the response doesn't throw on undefined `loginToken`.
+
+### 2. Stripe Webhook Entitlement Recovery
+- **Implemented in**: [webhook/route.ts](file:///Users/ashwanikumar/Downloads/canadablog/app/api/stripe/webhook/route.ts)
+- **What changed**:
+  - Re-architected duplicate checking logic. If a Stripe webhook retries after a partial failure where the purchase was recorded but the server aborted before granting entitlements, the retry now queries current entitlements for that email and **restores/grants the missing capabilities** instead of silently exiting.
+
+### 3. Application-Wide Error Boundaries & custom 404
+- **Implemented in**: 
+  - [app/error.tsx](file:///Users/ashwanikumar/Downloads/canadablog/app/error.tsx) (React Client Error boundary)
+  - [app/global-error.tsx](file:///Users/ashwanikumar/Downloads/canadablog/app/global-error.tsx) (Root layout fallback wrapper)
+  - [app/not-found.tsx](file:///Users/ashwanikumar/Downloads/canadablog/app/not-found.tsx) (Dynamic Custom 404 status router)
+  - [app/loading.tsx](file:///Users/ashwanikumar/Downloads/canadablog/app/loading.tsx) (Sleek CSS pulse animation skeleton loader)
+- **Goal**: Replaced standard browser crash pages with branded, user-friendly recovery flows keeping visitors in the FSI Digital ecosystem.
+
+### 4. Interactive Tools Lead Capture Gate
+- **Implemented in**: [ToolsClient.tsx](file:///Users/ashwanikumar/Downloads/canadablog/app/tools/ToolsClient.tsx)
+- **What changed**:
+  - Gated the SR&ED and Hiring Subsidy Calculators. Results are now blurred using a CSS filter overlay.
+  - Injected an inline lead-capture form. Once the user submits their email, name, and company, the system POSTs a lead payload to `/api/contact` and removes the blur.
+  - Saved state to `sessionStorage` under `calculator_unlocked` to avoid re-prompting active visitors, emitting a custom telemetry event upon successful gating unlock.
+
+### 5. PayPal Idempotency & Calendly Fallback
+- **Implemented in**: [paypal.ts](file:///Users/ashwanikumar/Downloads/canadablog/lib/payments/paypal.ts) and [BookingClient.tsx](file:///Users/ashwanikumar/Downloads/canadablog/app/booking/BookingClient.tsx)
+- **What changed**:
+  - Added `'PayPal-Request-Id': 'capture-' + orderId` to PayPal capture headers to guarantee network-retry safety.
+  - Added iframe loading handlers and a `<noscript>` container fallback inside Calendly iframe blocks to serve direct email booking links if the Calendly widget fails.
+

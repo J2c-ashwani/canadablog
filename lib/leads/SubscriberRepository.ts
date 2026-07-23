@@ -196,6 +196,37 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         })
       }
 
+      if (process.env.DATABASE_URL) {
+        try {
+          const { query } = await import('@/lib/db/postgres');
+          let leadActivityObj = {};
+          try { leadActivityObj = profile.leadActivity ? JSON.parse(profile.leadActivity) : {}; } catch (e) {}
+          await query(
+            `INSERT INTO subscribers (email, name, country, region, industry, is_subscribed, lead_activity, synced_to_sheets) 
+             VALUES ($1, $2, $3, $4, $5, $6, $7, false)
+             ON CONFLICT (email) DO UPDATE SET 
+               name = EXCLUDED.name,
+               country = EXCLUDED.country,
+               region = EXCLUDED.region,
+               industry = EXCLUDED.industry,
+               is_subscribed = EXCLUDED.is_subscribed,
+               lead_activity = EXCLUDED.lead_activity,
+               synced_to_sheets = false`,
+            [
+              profile.email, 
+              profile.name || null, 
+              profile.country, 
+              profile.region, 
+              profile.industry, 
+              true, 
+              leadActivityObj
+            ]
+          );
+        } catch (err) {
+          console.warn('Failed to upsert to PostgreSQL in saveSubscriber:', err);
+        }
+      }
+
       const token = createUnsubscribeToken()
       const logToken = createLoginToken()
       const data: LeadCaptureData = {
@@ -240,8 +271,20 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         lastClickedAt: "N/A",
       }
 
-      const res = await appendLeadToSheet(data)
-      return { success: res.success, error: res.error }
+      appendLeadToSheet(data)
+        .then(async (res) => {
+          if (res.success && process.env.DATABASE_URL) {
+            try {
+              const { query } = await import('@/lib/db/postgres');
+              await query('UPDATE subscribers SET synced_to_sheets = true WHERE email = $1', [profile.email]);
+              console.log(`✅ Sheets sync success marked for ${profile.email}`);
+            } catch (dbErr) {
+              console.error('Failed to update synced_to_sheets flag:', dbErr);
+            }
+          }
+        })
+        .catch(err => console.error("Background Sheets save failed:", err));
+      return { success: true }
     } catch (err) {
       console.error("Error in repository saveSubscriber:", err)
       return { success: false, error: err }
@@ -249,6 +292,31 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   }
 
   async getSubscriberByEmail(email: string): Promise<SubscriberProfile | null> {
+    if (process.env.DATABASE_URL) {
+      try {
+        const { query } = await import('@/lib/db/postgres');
+        const res = await query('SELECT * FROM subscribers WHERE email = $1 LIMIT 1', [email]);
+        if (res.rows.length > 0) {
+          const row = res.rows[0];
+          return {
+            email: row.email,
+            name: row.name || "",
+            country: (row.country === "USA" || row.country === "US") ? "USA" : "Canada",
+            region: row.region || "ON",
+            industry: row.industry || "other",
+            companySize: "1-9",
+            fundingInterests: [],
+            isSubscribed: row.is_subscribed !== false,
+            unsubscribeToken: "",
+            engagementScore: 100,
+            leadActivity: typeof row.lead_activity === 'string' ? row.lead_activity : JSON.stringify(row.lead_activity || {}),
+          };
+        }
+      } catch (err) {
+        console.warn('Failed to query PostgreSQL for getSubscriberByEmail, falling back to Sheets:', err);
+      }
+    }
+
     try {
       const allLeads = await getLeadsFromSheet(1000)
       const matches = allLeads.filter((l) => l.email && l.email.toLowerCase().trim() === email.toLowerCase().trim())
@@ -322,6 +390,35 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
     updates: Partial<Omit<SubscriberProfile, "email">>
   ): Promise<{ success: boolean; error?: any }> {
     try {
+      if (process.env.DATABASE_URL) {
+        try {
+          const { query } = await import('@/lib/db/postgres');
+          const setClauses: string[] = [];
+          const values: any[] = [];
+          let paramIdx = 1;
+          
+          if (updates.name !== undefined) { setClauses.push(`name = $${paramIdx++}`); values.push(updates.name); }
+          if (updates.country !== undefined) { setClauses.push(`country = $${paramIdx++}`); values.push(updates.country); }
+          if (updates.region !== undefined) { setClauses.push(`region = $${paramIdx++}`); values.push(updates.region); }
+          if (updates.industry !== undefined) { setClauses.push(`industry = $${paramIdx++}`); values.push(updates.industry); }
+          if (updates.isSubscribed !== undefined) { setClauses.push(`is_subscribed = $${paramIdx++}`); values.push(updates.isSubscribed); }
+          if (updates.leadActivity !== undefined) { 
+            setClauses.push(`lead_activity = $${paramIdx++}`); 
+            try { values.push(JSON.parse(updates.leadActivity)); } catch { values.push({}); }
+          }
+          
+          setClauses.push(`synced_to_sheets = false`);
+
+          if (setClauses.length > 0) {
+            values.push(email);
+            const sql = `UPDATE subscribers SET ${setClauses.join(', ')} WHERE email = $${paramIdx}`;
+            await query(sql, values);
+          }
+        } catch (err) {
+          console.warn('Failed to update PostgreSQL in updateSubscriberPreferences:', err);
+        }
+      }
+
       const data: Partial<LeadCaptureData> = {}
       if (updates.name !== undefined) data.name = updates.name
       if (updates.country !== undefined) data.country = updates.country
@@ -375,8 +472,20 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       if (updates.gaClientId !== undefined) data.gaClientId = updates.gaClientId
       if (updates.offlineStatus !== undefined) data.offlineStatus = updates.offlineStatus
 
-      const res = await updateLeadInSheet(email, data)
-      return { success: res.success, error: res.error }
+      updateLeadInSheet(email, data)
+        .then(async (res) => {
+          if (res.success && process.env.DATABASE_URL) {
+            try {
+              const { query } = await import('@/lib/db/postgres');
+              await query('UPDATE subscribers SET synced_to_sheets = true WHERE email = $1', [email]);
+              console.log(`✅ Sheets sync update success marked for ${email}`);
+            } catch (dbErr) {
+              console.error('Failed to update synced_to_sheets flag on update:', dbErr);
+            }
+          }
+        })
+        .catch(err => console.error("Background Sheets update failed:", err));
+      return { success: true }
     } catch (err) {
       console.error("Error in repository updateSubscriberPreferences:", err)
       return { success: false, error: err }

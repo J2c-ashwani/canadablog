@@ -512,9 +512,15 @@ export async function POST(request: NextRequest) {
       console.error('⚠️ CRM Leads sheet update failed but purchase was completed:', crmErr);
     }
 
-    const credentials = await ensureScopedSubscriberTokens(email);
+    let credentials: Awaited<ReturnType<typeof ensureScopedSubscriberTokens>> = null;
+    try {
+      credentials = await ensureScopedSubscriberTokens(email);
+    } catch (credErr) {
+      console.error('⚠️ ensureScopedSubscriberTokens failed (non-blocking, purchase already completed):', credErr);
+    }
+    // If credentials could not be issued, the purchase is still valid — the user can access via accessToken
     if (!credentials) {
-      throw new Error('Payment succeeded but secure account credentials could not be issued. Please contact support.');
+      console.warn(`⚠️ Secure credentials could not be issued for ${email}. Purchase ${purchase.purchaseId} is valid but user will need manual token recovery.`);
     }
 
     // ── Send confirmation email ──
@@ -542,15 +548,15 @@ export async function POST(request: NextRequest) {
     await markProductPaymentIntentCompleted(paymentIntentId);
 
     // ── Return success ──
-    const deliveryUrl = productId === 'strategy-audit' || productId === 'strategy-vip' || addons?.strategySession
-      ? `/booking?token=${encodeURIComponent(credentials.loginToken)}`
+    const deliveryUrl = (productId === 'strategy-audit' || productId === 'strategy-vip' || addons?.strategySession)
+      ? (credentials ? `/booking?token=${encodeURIComponent(credentials.loginToken)}` : `/booking`)
       : `/products/report?token=${purchase.accessToken}`;
 
     return NextResponse.json({
       success: true,
       accessToken: purchase.accessToken,
       deliveryUrl,
-      loginToken: credentials.loginToken,
+      loginToken: credentials?.loginToken || null,
     });
   } catch (error: any) {
     console.error('❌ Product purchase error:', error);

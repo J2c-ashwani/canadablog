@@ -203,6 +203,7 @@ export async function capturePayPalOrder(orderId: string) {
     headers: {
       Authorization: `Bearer ${accessToken}`,
       'Content-Type': 'application/json',
+      'PayPal-Request-Id': `capture-${orderId}`,
     },
   });
 

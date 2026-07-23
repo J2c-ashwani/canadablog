@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
@@ -9,6 +9,130 @@ import Link from "next/link"
 
 export default function ToolsClient() {
   const [activeTool, setActiveTool] = useState<"sred" | "hiring">("sred")
+
+  // Unlock State
+  const [isUnlocked, setIsUnlocked] = useState<boolean>(false)
+  const [formState, setFormState] = useState({ email: "", name: "", company: "" })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [error, setError] = useState("")
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      const unlocked = sessionStorage.getItem("calculator_unlocked")
+      if (unlocked === "true") {
+        setIsUnlocked(true)
+      }
+    }
+  }, [])
+
+  const handleUnlock = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+    setError("")
+    
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...formState,
+          source: activeTool === "sred" ? "SR&ED Calculator" : "Hiring Subsidy Calculator",
+          message: "Requested calculator unlock"
+        })
+      })
+      
+      if (res.ok) {
+        setIsUnlocked(true)
+        if (typeof window !== "undefined") {
+          sessionStorage.setItem("calculator_unlocked", "true")
+          console.log("Telemetry: Email captured for calculator unlock", formState.email)
+          window.dispatchEvent(new CustomEvent("calculator_unlock", { detail: { tool: activeTool } }))
+        }
+      } else {
+        setError("Something went wrong. Please try again.")
+      }
+    } catch (err) {
+      setError("Network error. Please try again.")
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
+
+  const formContainerStyle: React.CSSProperties = {
+    background: "linear-gradient(145deg, #1e293b, #0f172a)",
+    border: "1px solid #334155",
+    padding: "24px",
+    borderRadius: "16px",
+    width: "100%",
+    maxWidth: "320px",
+    boxShadow: "0 10px 25px -5px rgba(0, 0, 0, 0.5)",
+    textAlign: "center",
+  }
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "10px 12px",
+    marginBottom: "12px",
+    backgroundColor: "#0f172a",
+    border: "1px solid #475569",
+    borderRadius: "8px",
+    color: "#f8fafc",
+    fontSize: "14px",
+    outline: "none",
+  }
+
+  const buttonStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "12px",
+    backgroundColor: "#059669",
+    color: "white",
+    border: "none",
+    borderRadius: "8px",
+    fontWeight: "bold",
+    cursor: "pointer",
+    fontSize: "14px",
+    transition: "background-color 0.2s",
+  }
+
+  const renderCaptureForm = () => (
+    <div style={formContainerStyle}>
+      <h4 style={{ color: "#fff", margin: "0 0 8px 0", fontSize: "18px", fontWeight: "bold" }}>See Your Estimate</h4>
+      <p style={{ color: "#94a3b8", margin: "0 0 20px 0", fontSize: "13px", lineHeight: "1.4" }}>
+        Enter your email to reveal your personalized funding estimate.
+      </p>
+      <form onSubmit={handleUnlock} style={{ display: "flex", flexDirection: "column" }}>
+        <input
+          type="text"
+          placeholder="Name (optional)"
+          style={inputStyle}
+          value={formState.name}
+          onChange={(e) => setFormState(prev => ({ ...prev, name: e.target.value }))}
+        />
+        <input
+          type="text"
+          placeholder="Company (optional)"
+          style={inputStyle}
+          value={formState.company}
+          onChange={(e) => setFormState(prev => ({ ...prev, company: e.target.value }))}
+        />
+        <input
+          type="email"
+          placeholder="Email address (required)"
+          required
+          style={inputStyle}
+          value={formState.email}
+          onChange={(e) => setFormState(prev => ({ ...prev, email: e.target.value }))}
+        />
+        {error && <p style={{ color: "#ef4444", fontSize: "12px", margin: "0 0 10px 0" }}>{error}</p>}
+        <button type="submit" style={{ ...buttonStyle, opacity: isSubmitting ? 0.7 : 1 }} disabled={isSubmitting}>
+          {isSubmitting ? "Unlocking..." : "Reveal My Estimate"}
+        </button>
+      </form>
+      <p style={{ color: "#64748b", margin: "16px 0 0 0", fontSize: "11px" }}>
+        We respect your privacy. Unsubscribe anytime.
+      </p>
+    </div>
+  )
 
   // SR&ED State
   const [salaries, setSalaries] = useState<number>(150000)
@@ -160,37 +284,59 @@ export default function ToolsClient() {
           <Card className="border border-emerald-200 bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="space-y-1 relative z-10">
-              <Badge className="bg-emerald-600 text-white border-none font-bold uppercase tracking-wider text-[9px]">CCPC Refund Estimate</Badge>
-              <h3 className="text-slate-400 font-bold text-xs uppercase">Total Potential SR&ED Yield</h3>
-              <div className="text-4xl sm:text-5xl font-black text-emerald-400 font-mono">
-                ${Math.round(totalSredRefund).toLocaleString()}
+            <div style={{ position: "relative" }}>
+              <div style={{ filter: !isUnlocked ? "blur(8px)" : "none", opacity: !isUnlocked ? 0.3 : 1, transition: "all 0.3s ease", pointerEvents: !isUnlocked ? "none" : "auto" }}>
+                <div className="space-y-1 relative z-10">
+                  <Badge className="bg-emerald-600 text-white border-none font-bold uppercase tracking-wider text-[9px]">CCPC Refund Estimate</Badge>
+                  <h3 className="text-slate-400 font-bold text-xs uppercase">Total Potential SR&ED Yield</h3>
+                  <div className="text-4xl sm:text-5xl font-black text-emerald-400 font-mono">
+                    ${isUnlocked ? Math.round(totalSredRefund).toLocaleString() : "XX,XXX"}
+                  </div>
+                </div>
+
+                <hr className="border-white/10 my-6" />
+
+                <div className="space-y-3 text-xs sm:text-sm text-slate-300 relative z-10">
+                  <div className="flex justify-between">
+                    <span>Federal CCPC Refund (35%):</span>
+                    <span className="font-mono text-white">${isUnlocked ? Math.round(federalRefund).toLocaleString() : "X,XXX"}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Provincial Refund ({provRate * 100}%):</span>
+                    <span className="font-mono text-white">${isUnlocked ? Math.round(provincialRefund).toLocaleString() : "X,XXX"}</span>
+                  </div>
+                  <div className="flex justify-between text-xs text-slate-400 italic">
+                    <span>Assumes Proxy Overhead Option:</span>
+                    <span>Active</span>
+                  </div>
+                </div>
+
+                <hr className="border-white/10 my-6" />
+
+                <div className="space-y-4 relative z-10">
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    *This is an estimation. Exact yields depend on CCPC status, taxable capital limits, and contemporaneous documentation logs.
+                  </p>
+                </div>
               </div>
+
+              {!isUnlocked && (
+                <div style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  zIndex: 20
+                }}>
+                  {renderCaptureForm()}
+                </div>
+              )}
             </div>
 
-            <hr className="border-white/10" />
-
-            <div className="space-y-3 text-xs sm:text-sm text-slate-300 relative z-10">
-              <div className="flex justify-between">
-                <span>Federal CCPC Refund (35%):</span>
-                <span className="font-mono text-white">${Math.round(federalRefund).toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Provincial Refund ({provRate * 100}%):</span>
-                <span className="font-mono text-white">${Math.round(provincialRefund).toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between text-xs text-slate-400 italic">
-                <span>Assumes Proxy Overhead Option:</span>
-                <span>Active</span>
-              </div>
-            </div>
-
-            <hr className="border-white/10" />
-
-            <div className="space-y-4 relative z-10">
-              <p className="text-xs text-slate-400 leading-relaxed">
-                *This is an estimation. Exact yields depend on CCPC status, taxable capital limits, and contemporaneous documentation logs.
-              </p>
+            <div className="relative z-10 mt-4">
               <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl shadow-md">
                 <Link href="/get-started?calculator=sred" className="flex items-center justify-center gap-1.5">
                   Request SR&ED Pre-Audit <ArrowRight className="w-4 h-4" />
@@ -292,37 +438,59 @@ export default function ToolsClient() {
           <Card className="border border-emerald-200 bg-gradient-to-br from-emerald-950 via-slate-900 to-emerald-950 text-white p-6 sm:p-8 rounded-3xl space-y-6 shadow-xl relative overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none" />
 
-            <div className="space-y-1 relative z-10">
-              <Badge className="bg-emerald-600 text-white border-none font-bold uppercase tracking-wider text-[9px]">SWPP Subsidy Estimate</Badge>
-              <h3 className="text-slate-400 font-bold text-xs uppercase">Potential Grant Support</h3>
-              <div className="text-4xl sm:text-5xl font-black text-emerald-400 font-mono">
-                ${Math.round(estimatedHiringGrant).toLocaleString()}
+            <div style={{ position: "relative" }}>
+              <div style={{ filter: !isUnlocked ? "blur(8px)" : "none", opacity: !isUnlocked ? 0.3 : 1, transition: "all 0.3s ease", pointerEvents: !isUnlocked ? "none" : "auto" }}>
+                <div className="space-y-1 relative z-10">
+                  <Badge className="bg-emerald-600 text-white border-none font-bold uppercase tracking-wider text-[9px]">SWPP Subsidy Estimate</Badge>
+                  <h3 className="text-slate-400 font-bold text-xs uppercase">Potential Grant Support</h3>
+                  <div className="text-4xl sm:text-5xl font-black text-emerald-400 font-mono">
+                    ${isUnlocked ? Math.round(estimatedHiringGrant).toLocaleString() : "XX,XXX"}
+                  </div>
+                </div>
+
+                <hr className="border-white/10 my-6" />
+
+                <div className="space-y-3 text-xs sm:text-sm text-slate-300 relative z-10">
+                  <div className="flex justify-between">
+                    <span>Total Gross Wages:</span>
+                    <span className="font-mono text-white">${isUnlocked ? Math.round(totalWageCost).toLocaleString() : "X,XXX"}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Matching Grant (Up to 70%):</span>
+                    <span className="font-mono text-emerald-400">+${isUnlocked ? Math.round(estimatedHiringGrant).toLocaleString() : "X,XXX"}</span>
+                  </div>
+                  <div className="flex justify-between font-bold border-t border-white/10 pt-2">
+                    <span>Net Corporate Cost:</span>
+                    <span className="font-mono text-white">${isUnlocked ? Math.round(netHiringCost).toLocaleString() : "X,XXX"}</span>
+                  </div>
+                </div>
+
+                <hr className="border-white/10 my-6" />
+
+                <div className="space-y-4 relative z-10">
+                  <p className="text-xs text-slate-400 leading-relaxed">
+                    *Estimation based on federal student co-op placement matching rules. Students must be enrolled in recognized post-secondary institutions.
+                  </p>
+                </div>
               </div>
+
+              {!isUnlocked && (
+                <div style={{
+                  position: "absolute",
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                  width: "100%",
+                  display: "flex",
+                  justifyContent: "center",
+                  zIndex: 20
+                }}>
+                  {renderCaptureForm()}
+                </div>
+              )}
             </div>
 
-            <hr className="border-white/10" />
-
-            <div className="space-y-3 text-xs sm:text-sm text-slate-300 relative z-10">
-              <div className="flex justify-between">
-                <span>Total Gross Wages:</span>
-                <span className="font-mono text-white">${Math.round(totalWageCost).toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between">
-                <span>Matching Grant (Up to 70%):</span>
-                <span className="font-mono text-emerald-400">+${Math.round(estimatedHiringGrant).toLocaleString()}</span>
-              </div>
-              <div className="flex justify-between font-bold border-t border-white/10 pt-2">
-                <span>Net Corporate Cost:</span>
-                <span className="font-mono text-white">${Math.round(netHiringCost).toLocaleString()}</span>
-              </div>
-            </div>
-
-            <hr className="border-white/10" />
-
-            <div className="space-y-4 relative z-10">
-              <p className="text-xs text-slate-400 leading-relaxed">
-                *Estimation based on federal student co-op placement matching rules. Students must be enrolled in recognized post-secondary institutions.
-              </p>
+            <div className="relative z-10 mt-4">
               <Button asChild className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-extrabold py-3 rounded-xl shadow-md">
                 <Link href="/get-started?calculator=hiring" className="flex items-center justify-center gap-1.5">
                   Secure Hiring Voucher <ArrowRight className="w-4 h-4" />
