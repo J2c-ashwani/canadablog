@@ -101,7 +101,7 @@ export default function GreenEnergyGrantsPage() {
                     {/* EEAT Components */}
                     <div className="mb-8 space-y-3 max-w-3xl mx-auto">
                       <ShortAnswerBox content="Canadian clean energy businesses can access SDTC funding (up to $10M), NRCan Smart Renewables program ($50M+), Clean Investment Tax Credits (up to 30% refundable), and provincial green energy grants. Canada's $8B+ dedicated federal funding targets Net Zero by 2050." />
-                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                       <EligibleCheck />
                     </div>
 

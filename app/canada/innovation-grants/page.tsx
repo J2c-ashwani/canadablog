@@ -59,7 +59,7 @@ export default function CanadaInnovationGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Canada's innovation grant programs include IRAP (up to $500K), SR&ED tax credits (65% refundable), Strategic Innovation Fund ($100M+), Scale AI, NSERC, and provincial R&D credits. Combined innovation funding exceeds $4.2B annually for Canadian businesses." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck 
               title="Find out which tech and innovation grants match your R&D roadmap." 
               description="Answering these questions will verify your baseline compatibility with IRAP, SR&ED, and provincial tech vouchers." 

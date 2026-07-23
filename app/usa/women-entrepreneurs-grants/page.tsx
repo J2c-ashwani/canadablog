@@ -99,7 +99,7 @@ export default function USAWomenEntrepreneursGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Women entrepreneurs in the U.S. can access SBA WOSB federal contracting set-asides, Amber Grant ($10K monthly), NWBC programs, and state-level women business center grants. Combined value exceeds $500M annually nationwide." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck />
           </div>
         </div>

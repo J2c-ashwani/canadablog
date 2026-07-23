@@ -63,7 +63,7 @@ export default function CanadaGovernmentGrantsPage() {
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
             <ShortAnswerBox content="Canadian government grants span federal and provincial programs worth $12B+ annually. Top programs: Strategic Innovation Fund, IRAP ($500K for R&D), SR&ED tax credits (35% federal refundable), CanExport ($75K), and 7 Regional Development Agencies covering every province." />
-            <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+            <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck 
               title="See which government grants and interest-free loans fit your business stage." 
               description="Answering these questions will verify your compatibility with active federal and provincial capital programs." 

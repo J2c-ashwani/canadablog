@@ -152,7 +152,7 @@ export default function ColoradoTechProgramsPage() {
         <section className="py-2 mb-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2026-01-05" />
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-01-05" />
             </div>
           </div>
         </section>

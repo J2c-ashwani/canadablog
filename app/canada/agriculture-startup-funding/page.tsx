@@ -101,7 +101,7 @@ export default function AgricultureGrantsPage() {
                     {/* EEAT Components */}
                     <div className="mb-8 space-y-3 max-w-3xl mx-auto">
                       <ShortAnswerBox content="Canadian agriculture businesses can access AgriInnovate ($10M per project), the Agricultural Clean Technology Program ($2M), AAFC programs, and provincial agri-food grants. The Canadian Agricultural Partnership provides $3B+ over 5 years for farm innovation and sustainability." />
-                      <EEATBadge authorName="Ashwani K." authorImage="/ash-author-1.jpg" date="2026-03-01" />
+                      <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                       <EligibleCheck />
                     </div>
 

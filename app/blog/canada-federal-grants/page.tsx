@@ -141,7 +141,7 @@ export default function CanadaFederalGrantsPage() {
         <section className="py-2 mb-8">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <EEATBadge authorName="Ashwani K." authorImage="/images/author-ashwani.jpg" date="2025-12-25" />
+              <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2025-12-25" />
             </div>
           </div>
         </section>
