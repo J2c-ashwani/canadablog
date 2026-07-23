@@ -21,12 +21,15 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
   }
 
   // Handle US/Canada (+1) numbers
-  const isUSOrCanada = countryLower.includes('canada') || 
-                      countryLower.includes('united states') || 
-                      countryLower.includes('us') || 
-                      phone.startsWith('+1') ||
-                      (cleanPhone.length === 10 && !phone.startsWith('+')) ||
-                      (cleanPhone.length === 11 && cleanPhone.startsWith('1'));
+  const isExplicitInternational = phone.startsWith('+') && !phone.startsWith('+1');
+  const isUSOrCanada = !isExplicitInternational && (
+    countryLower.includes('canada') || 
+    countryLower.includes('united states') || 
+    countryLower.includes('us') || 
+    phone.startsWith('+1') ||
+    (cleanPhone.length === 10 && !phone.startsWith('+')) ||
+    (cleanPhone.length === 11 && cleanPhone.startsWith('1'))
+  );
 
   if (isUSOrCanada) {
     let digits = cleanPhone;
@@ -58,7 +61,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
       };
     }
 
-    const formatted = `+1 (${areaCode}) ${exchangeCode}-${digits.slice(6)}`;
+    const formatted = `(${areaCode}) ${exchangeCode}-${digits.slice(6)}`;
     
     // Detect toll-free numbers
     const tollFreeAreaCodes = ['800', '888', '877', '866', '855', '844', '833'];
@@ -95,7 +98,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
   }
 
   // International numbers
-  const formatted = `+${cleanPhone}`;
+  const formatted = `${cleanPhone}`;
   return {
     isValid: true,
     formatted,

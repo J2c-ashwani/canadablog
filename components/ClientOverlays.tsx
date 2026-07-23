@@ -166,7 +166,7 @@ export function ClientOverlays() {
             <LeadConversionUpsellWatcher />
             {!shouldSuppressPopup && (
                 <>
-                    {(pathname === '/' || pathname === '/blog') && <LeadMagnetPopup />}
+                    <LeadMagnetPopup />
                     <ExitIntentCapture />
                 </>
             )}

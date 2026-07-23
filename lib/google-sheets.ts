@@ -134,7 +134,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
     // Atomic append to avoid race conditions and concurrent lead overwrite
     const appendResult = await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Leads!A:BW",
+      range: "Leads!A1",
       // Customer fields are data, never spreadsheet expressions.
       valueInputOption: "RAW",
       insertDataOption: "INSERT_ROWS",
