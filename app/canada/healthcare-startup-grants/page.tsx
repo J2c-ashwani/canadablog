@@ -11,6 +11,7 @@ import AutoLink from "@/components/seo/AutoLink"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import RDEDecisionEngine from "@/components/blog/RDEDecisionEngine"
 
 export const metadata: Metadata = {
     title: "Healthcare Startup Grants Canada 2026: Fund Your Health Tech",
@@ -173,6 +174,10 @@ export default function HealthcareGrantsPage() {
                                     </ul>
                                 </CardContent>
                             </Card>
+
+                            <div className="mt-8">
+                                <RDEDecisionEngine configId="healthcare-grants-2026" />
+                            </div>
                         </div>
 
                         <div className="space-y-6">

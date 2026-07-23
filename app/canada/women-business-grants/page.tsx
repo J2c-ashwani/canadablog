@@ -9,6 +9,7 @@ import type { Metadata } from "next"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import RDEDecisionEngine from "@/components/blog/RDEDecisionEngine"
 
 export const metadata: Metadata = {
   title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
@@ -1229,7 +1230,10 @@ export default function WomenBusinessGrantsCanadaPage() {
                     </p>
                   </div>
                 </div>
+              <div className="mt-12">
+                <RDEDecisionEngine configId="women-business-grants-2026" />
               </div>
+            </div>
 
               {/* 4. Structured Topic Cluster Navigation (Pass Authority) */}
               <div className="border-t border-gray-100 pt-10 text-center">
