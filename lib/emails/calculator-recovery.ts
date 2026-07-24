@@ -64,7 +64,8 @@ export async function sendCalculatorRecoveryEmail1({
   loginToken: string;
 }) {
   const firstName = getFirstName(name);
-  const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=calculator_recovery&utm_medium=email&utm_campaign=calc_recovery_day0_4h`;
+  const tokenParam = loginToken && loginToken !== 'N/A' ? `token=${loginToken}&` : '';
+  const checkoutUrl = `https://www.fsidigital.ca/calculator?${tokenParam}step=6&email=${encodeURIComponent(to)}&utm_source=calculator_recovery&utm_medium=email&utm_campaign=calc_recovery_day0_4h`;
   const subject = `Your government funding matches are ready`;
 
   const html = wrapCalculatorRecoveryTemplate(`

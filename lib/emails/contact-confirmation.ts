@@ -332,6 +332,9 @@ Founder, FSI Digital
 ${replyToEmail}`;
 }
 
+// Backend Idempotency Protection: 1-Hour Cooldown Map per email to prevent duplicate email triggers
+const confirmationEmailCooldownStore = new Map<string, number>();
+
 export async function sendContactConfirmation({
   to,
   name,
@@ -345,6 +348,16 @@ export async function sendContactConfirmation({
   if (!apiKey) {
     console.warn('Contact confirmation email skipped — RESEND_API_KEY is not set.');
     return { success: false, skipped: true };
+  }
+
+  // Backend Idempotency Check (1-Hour Cooldown Window)
+  const emailKey = to.toLowerCase().trim();
+  const now = Date.now();
+  const lastSentTime = confirmationEmailCooldownStore.get(emailKey);
+
+  if (lastSentTime && (now - lastSentTime < 60 * 60 * 1000)) {
+    console.log(`🛡️ [Backend Idempotency] Suppressed duplicate confirmation email to ${to} (Cooldown active)`);
+    return { success: true, skipped: true, reason: 'idempotency_cooldown' };
   }
 
   const firstName = getFirstName(name);
@@ -393,6 +406,7 @@ export async function sendContactConfirmation({
       return { success: false, error: errorText };
     }
 
+    confirmationEmailCooldownStore.set(emailKey, now);
     return { success: true };
   } catch (error) {
     console.error('Contact confirmation email error:', error);
