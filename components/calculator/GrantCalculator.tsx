@@ -509,13 +509,30 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         }
 
         const token = params.get('token');
+        // ARCHITECTURAL FIX: Explicit URL parameters (step=6 & email) ALWAYS take precedence over session restoration.
+        // If explicit parameters are present, render Step 6 immediately without showing a restoration spinner.
+        if (stepParam === '6' && emailParam) {
+            setIsRestoring(false);
+            return;
+        }
+
         if (!token) return;
 
         const restoreSession = async () => {
             setIsRestoring(true);
             setRestorationError(null);
+
+            // Hard 3-second safety timeout to guarantee the loading spinner NEVER hangs indefinitely
+            const safetyTimeout = setTimeout(() => {
+                console.warn('⚠️ Session restoration timed out after 3s — unblocking UI');
+                setIsRestoring(false);
+            }, 3000);
+
             try {
-                const res = await fetch(`/api/subscriber/restore?token=${encodeURIComponent(token)}`);
+                const res = await fetch(`/api/subscriber/restore?token=${encodeURIComponent(token)}`, {
+                    cache: 'no-store',
+                    headers: { 'Cache-Control': 'no-cache' }
+                });
                 if (!res.ok) {
                     throw new Error('Restoration failed');
                 }
@@ -556,6 +573,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 console.error('Session restoration failed:', err);
                 setRestorationError('Failed to restore session.');
             } finally {
+                clearTimeout(safetyTimeout);
                 setIsRestoring(false);
             }
         };
