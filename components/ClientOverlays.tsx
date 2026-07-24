@@ -25,10 +25,14 @@ const ExitIntentCapture = dynamic(
 const EXCLUDED_TRANSACTIONAL_ROUTES = [
     // Lead capture
     '/contact',
+    '/apply',
     '/consultation',
     '/booking',
     // Main conversion funnel
     '/calculator',
+    '/funding-calculator',
+    '/priority-processing',
+    '/thank-you',
     '/grant-finder',
     '/audit',
     '/sample-report',

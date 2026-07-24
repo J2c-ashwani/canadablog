@@ -20,11 +20,15 @@ const EXCLUDED_ROUTES: string[] = [
   '/',                  // Homepage (avoid layout shifts & Auto Ad violations)
   // ── Lead Capture Pages ────────────────────────────────────────────────────
   '/contact',           // Contact form
+  '/apply',             // MCA Application Page (High-intent revenue form)
   '/consultation',      // Book a consultation
   '/booking',           // Book a call
 
   // ── Main Conversion Funnel ────────────────────────────────────────────────
   '/calculator',        // Grant calculator (primary lead entry)
+  '/funding-calculator',// MCA Funding Calculator
+  '/priority-processing',// Priority processing checkout
+  '/thank-you',         // Application submission thank-you
   '/grant-finder',      // Grant finder tool
   '/audit',             // Readiness audit tool
   '/sample-report',     // Report preview (pre-purchase)
