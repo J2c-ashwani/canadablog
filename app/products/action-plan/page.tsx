@@ -54,7 +54,7 @@ export default function ActionPlanPage() {
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/action-plan",
-      "priceCurrency": "CAD",
+      "priceCurrency": "USD",
       "price": "49.00",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock",

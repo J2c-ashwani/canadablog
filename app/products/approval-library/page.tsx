@@ -54,7 +54,7 @@ export default function ApprovalLibraryPage() {
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/approval-library",
-      "priceCurrency": "CAD",
+      "priceCurrency": "USD",
       "price": "9.00",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock",

@@ -51,7 +51,7 @@ export default function FundingMatchReportPage() {
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/funding-match-report",
-      "priceCurrency": "CAD",
+      "priceCurrency": "USD",
       "price": "19.00",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock",

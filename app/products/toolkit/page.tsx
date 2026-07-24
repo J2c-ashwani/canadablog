@@ -54,7 +54,7 @@ export default function ToolkitPage() {
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/toolkit",
-      "priceCurrency": "CAD",
+      "priceCurrency": "USD",
       "price": "29.00",
       "itemCondition": "https://schema.org/NewCondition",
       "availability": "https://schema.org/InStock",
