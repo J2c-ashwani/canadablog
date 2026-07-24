@@ -175,7 +175,7 @@ export default function CalculatorPage() {
               href="/calculator"
               className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-md transition flex-shrink-0"
             >
-              🇨🇦 Switch to Government Grant Finder →
+              🏛️ Switch to Government Grant Finder →
             </a>
           </div>
         </div>

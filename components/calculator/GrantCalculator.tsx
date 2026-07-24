@@ -2281,8 +2281,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                             <Calculator className="w-8 h-8" />
                         </div>
                     </div>
-                    <CardTitle className="text-2xl font-black text-slate-900">🇨🇦 Government Grant &amp; Subsidy Matching Engine</CardTitle>
-                    <CardDescription className="text-sm font-medium text-slate-600">Find non-repayable grants and tax credits your business qualifies for. 100% Equity-Free — No bank statements required.</CardDescription>
+                    <CardTitle className="text-2xl font-black text-slate-900">🏛️ Government Grant &amp; Subsidy Matching Engine</CardTitle>
+                    <CardDescription className="text-sm font-medium text-slate-600">Find non-repayable grants and tax credits your business qualifies for across Canada &amp; the United States. 100% Equity-Free — No bank statements required.</CardDescription>
 
                     <div className="flex items-center justify-center gap-2 mt-6">
                         {[1, 2, 3, 4, 5].map(i => (
