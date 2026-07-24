@@ -165,10 +165,25 @@ export default function CalculatorPage() {
   return (
     <>
       <div className="mca-calc-page">
+        {/* Return to Government Grants Banner */}
+        <div className="bg-slate-900 text-slate-200 p-4 border-b border-emerald-500/30">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div className="text-xs sm:text-sm">
+              <span className="font-bold text-emerald-400">Looking for Government Grants?</span> Find non-repayable equity-free grants &amp; subsidies (no bank statements required).
+            </div>
+            <a
+              href="/calculator"
+              className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-md transition flex-shrink-0"
+            >
+              🇨🇦 Switch to Government Grant Finder →
+            </a>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="mca-calc-header">
-          <h1>Business Funding Calculator</h1>
-          <p>Estimate your potential funding amount and check eligibility in 60 seconds</p>
+          <h1>Revenue-Based Business Financing Calculator</h1>
+          <p>For established businesses seeking fast working capital based on monthly sales (24–48h decision · Requires 3 months bank statements)</p>
         </div>
 
         <div className="mca-calc-container">

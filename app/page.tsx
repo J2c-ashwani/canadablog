@@ -48,29 +48,45 @@ export default function HomePage() {
 
       {/* Hero Section */}
       <section className="mca-hero text-white py-16 sm:py-24">
-        <div className="container mx-auto px-6 text-center">
-          <div className="mca-hero-badge">
-            🇨🇦 <span>CANADIAN BUSINESS FUNDING PORTAL · 2026</span>
+        <div className="container mx-auto px-6 text-center max-w-4xl">
+          <div className="mca-hero-badge bg-emerald-900/60 text-emerald-300 border border-emerald-500/30 px-4 py-1.5 rounded-full inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider mb-6">
+            🇨🇦 <span>CANADIAN GOVERNMENT GRANTS &amp; FUNDING PLATFORM</span>
           </div>
-          <h1 className="mca-hero-title">
-            Secure the Capital Your Business Needs to Grow
+          <h1 className="mca-hero-title text-4xl sm:text-6xl font-black tracking-tight text-white mb-6 leading-tight">
+            Find Government Grants Your Business May Qualify For
           </h1>
-          <p className="mca-hero-desc">
-            FSI Digital connects Canadian small businesses with non-repayable government grants,
-            tax credits, and fast working capital solutions. Check your eligibility in 3 minutes.
+          <p className="mca-hero-desc text-lg sm:text-xl text-slate-200 mb-8 max-w-3xl mx-auto leading-relaxed">
+            FSI Digital helps Canadian small businesses discover non-repayable government grants,
+            subsidies, and tax credits. Check your grant eligibility in 3 minutes.
           </p>
 
-          <div className="mca-hero-ctas">
-            <Link href="/apply" className="mca-hero-btn-primary">
-              Apply for Funding Now
-            </Link>
-            <Link href="/funding-calculator" className="mca-hero-btn-secondary">
-              Calculate Funding Range
-            </Link>
+          {/* Core Value Checkmarks */}
+          <div className="flex flex-wrap justify-center gap-4 text-sm font-semibold text-emerald-200 mb-10">
+            <span className="flex items-center gap-1.5 bg-emerald-950/40 px-3.5 py-1.5 rounded-lg border border-emerald-800/40">✓ 100% Equity-Free Capital</span>
+            <span className="flex items-center gap-1.5 bg-emerald-950/40 px-3.5 py-1.5 rounded-lg border border-emerald-800/40">✓ No Bank Statements Required</span>
+            <span className="flex items-center gap-1.5 bg-emerald-950/40 px-3.5 py-1.5 rounded-lg border border-emerald-800/40">✓ Eligibility Match Engine</span>
           </div>
 
-          <p className="mca-hero-disclosure">
-            FSI Digital is an independent private advisory. We are not affiliated with the government.
+          {/* Primary Hero CTA - Dominant Grants Focus */}
+          <div className="mb-10">
+            <Link href="/calculator" className="inline-flex items-center justify-center gap-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-lg sm:text-xl px-10 py-5 rounded-xl shadow-2xl transition duration-200 transform hover:-translate-y-0.5 w-full sm:w-auto">
+              🇨🇦 Find Government Grants (Non-Repayable) →
+            </Link>
+            <p className="text-xs text-slate-400 mt-2 font-medium">Free eligibility check · Takes 3 minutes · Zero credit impact</p>
+          </div>
+
+          {/* Secondary Financing Option (Complementary Module) */}
+          <div className="pt-8 border-t border-slate-800/80 max-w-xl mx-auto">
+            <p className="text-xs uppercase tracking-wider text-slate-400 font-bold mb-2">Need funding faster?</p>
+            <p className="text-sm text-slate-300 mb-4">Government grants take 30–90 days for approval. If your business needs emergency working capital this week:</p>
+            <Link href="/funding-calculator" className="inline-flex items-center justify-center gap-2 bg-slate-800/90 hover:bg-slate-700 text-sky-300 border border-sky-500/40 font-bold text-sm px-6 py-3 rounded-lg transition duration-200">
+              ⚡ Explore Fast Business Financing (24–48h Approval) →
+            </Link>
+            <p className="text-[11px] text-slate-400 mt-1.5">Revenue-based financing ($10k–$100k) · Requires 3 months bank statements</p>
+          </div>
+
+          <p className="mca-hero-disclosure text-[11px] text-slate-500 mt-8">
+            FSI Digital is an independent private advisory platform. We are not affiliated with government agencies.
           </p>
         </div>
       </section>
@@ -78,59 +94,60 @@ export default function HomePage() {
       {/* Trust bar */}
       <section className="py-6 bg-gray-50 border-y border-gray-100">
         <div className="container mx-auto px-6 flex flex-wrap justify-around gap-4 text-center">
-          <div className="mca-trust-pill">⚡ <strong>24–72h Approval</strong> for working capital</div>
           <div className="mca-trust-pill">🇨🇦 <strong>$2.5B+ Government Grants</strong> tracked</div>
+          <div className="mca-trust-pill">⚡ <strong>24–48h Approval</strong> for business financing</div>
           <div className="mca-trust-pill">🔒 <strong>No Credit Impact</strong> to check eligibility</div>
         </div>
       </section>
 
-      {/* Two Pillars Section */}
-      <section className="py-16 sm:py-24">
+      {/* Comparison Section: Grants vs Business Financing */}
+      <section className="py-16 sm:py-24 bg-white">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-gray-900 tracking-tight">
-              Choose the Right Funding Option for Your Stage
+          <div className="text-center mb-14 max-w-3xl mx-auto">
+            <h2 className="text-3xl sm:text-4xl font-black text-gray-900 tracking-tight">
+              Compare Your Funding Options
             </h2>
-            <p className="text-lg text-gray-600 mt-3 max-w-2xl mx-auto">
-              We help founders secure the capital they need via non-repayable programs or fast cash-flow advances.
+            <p className="text-base sm:text-lg text-gray-600 mt-3">
+              Explore our core government grant database or fast revenue-based business financing.
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-            {/* Pillar 1: Grants */}
-            <div className="mca-pillar-card">
-              <div className="mca-pillar-icon bg-blue-50 text-blue-600">🇨🇦</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Government Grants &amp; Tax Credits</h3>
+            {/* Pillar 1: Government Grants (Primary Brand) */}
+            <div className="mca-pillar-card border-2 border-emerald-500 shadow-xl relative bg-emerald-50/20">
+              <div className="mca-pillar-badge bg-emerald-600 text-white font-bold text-xs uppercase px-3 py-1 rounded-full">CORE EXPERTISE</div>
+              <div className="mca-pillar-icon bg-emerald-100 text-emerald-700">🇨🇦</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Government Grants &amp; Subsidies</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Access non-repayable funding from provincial and federal agencies (like SR&amp;ED or IRAP).
-                Best for technology developers, hiring, export expansion, and R&amp;D.
+                Access non-repayable federal and provincial government programs (like SR&amp;ED or IRAP). Best for hiring, R&amp;D, technology, export, and expansion.
               </p>
-              <ul className="mca-pillar-features">
-                <li>✓ <strong>Non-repayable:</strong> 100% equity-free capital</li>
-                <li>✓ <strong>$15K – $500K+</strong> average funding amounts</li>
-                <li>⏱ <strong>Timeline:</strong> 3 – 6 months approval</li>
+              <ul className="mca-pillar-features space-y-2 mb-8 text-sm text-gray-700">
+                <li className="flex items-center gap-2">✓ <strong>Capital Type:</strong> Non-repayable (100% Equity-Free)</li>
+                <li className="flex items-center gap-2">✓ <strong>Bank Statements:</strong> Not required</li>
+                <li className="flex items-center gap-2">✓ <strong>Average Range:</strong> $15,000 – $500,000+</li>
+                <li className="flex items-center gap-2">⏱ <strong>Timeline:</strong> 30 to 90 days approval</li>
               </ul>
-              <Link href="/grant-finder" className="mca-pillar-btn-blue">
+              <Link href="/calculator" className="w-full inline-block text-center bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 px-6 rounded-lg transition duration-200">
                 Find Government Grants →
               </Link>
             </div>
 
-            {/* Pillar 2: Fast Capital / MCA */}
-            <div className="mca-pillar-card border-blue-200 shadow-md">
-              <div className="mca-pillar-badge">POPULAR</div>
-              <div className="mca-pillar-icon bg-green-50 text-green-600">⚡</div>
-              <h3 className="text-xl font-bold text-gray-900 mb-2">Fast Capital &amp; Cash Advances</h3>
+            {/* Pillar 2: Business Financing (Secondary Solution) */}
+            <div className="mca-pillar-card border border-slate-200 shadow-md bg-white">
+              <div className="mca-pillar-badge bg-sky-100 text-sky-800 font-bold text-xs uppercase px-3 py-1 rounded-full">FAST FINANCING</div>
+              <div className="mca-pillar-icon bg-sky-100 text-sky-700">⚡</div>
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Revenue-Based Business Financing</h3>
               <p className="text-gray-600 text-sm leading-relaxed mb-6">
-                Get an advance against your future business revenue deposits. No collateral, no high
-                credit scores needed. Best for inventory, equipment, payroll, or immediate cash flow.
+                For established businesses that need cash flow this week before grant decisions are finalized. Repayable based on your monthly revenue deposits.
               </p>
-              <ul className="mca-pillar-features">
-                <li>✓ <strong>Speed:</strong> Funds in bank within 24–72 hours</li>
-                <li>✓ <strong>$5K – $250K</strong> based on monthly revenue</li>
-                <li>⏱ <strong>Timeline:</strong> Same day decision</li>
+              <ul className="mca-pillar-features space-y-2 mb-8 text-sm text-gray-700">
+                <li className="flex items-center gap-2">✓ <strong>Capital Type:</strong> Repayable (Revenue-based)</li>
+                <li className="flex items-center gap-2">✓ <strong>Bank Statements:</strong> 3 recent months required</li>
+                <li className="flex items-center gap-2">✓ <strong>Average Range:</strong> $10,000 – $100,000+</li>
+                <li className="flex items-center gap-2">⏱ <strong>Timeline:</strong> 24 to 48 hours approval</li>
               </ul>
-              <Link href="/apply" className="mca-pillar-btn-green">
-                Get Fast Business Funding →
+              <Link href="/funding-calculator" className="w-full inline-block text-center bg-slate-800 hover:bg-slate-900 text-white font-bold py-3.5 px-6 rounded-lg transition duration-200">
+                Explore Business Financing →
               </Link>
             </div>
           </div>

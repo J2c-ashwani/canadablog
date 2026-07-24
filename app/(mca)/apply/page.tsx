@@ -348,10 +348,25 @@ export default function ApplyPage() {
   return (
     <>
       <div className="mca-apply-page" ref={topRef}>
+        {/* Return to Government Grants Banner */}
+        <div className="bg-slate-900 text-slate-200 p-4 border-b border-emerald-500/30">
+          <div className="max-w-4xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3 text-center sm:text-left">
+            <div className="text-xs sm:text-sm">
+              <span className="font-bold text-emerald-400">Looking for Government Grants?</span> Find non-repayable equity-free grants &amp; subsidies (no bank statements required).
+            </div>
+            <a
+              href="/calculator"
+              className="inline-flex items-center gap-1.5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs px-4 py-2 rounded-md transition flex-shrink-0"
+            >
+              🇨🇦 Switch to Government Grant Finder →
+            </a>
+          </div>
+        </div>
+
         {/* Header */}
         <div className="mca-apply-header">
-          <h1>Apply for Business Funding</h1>
-          <p>Free application · No credit impact · Canadian businesses only · 3-minute process</p>
+          <h1>Revenue-Based Business Financing Application</h1>
+          <p>Fast Working Capital ($10k–$100k+) · Requires $10,000+ Monthly Revenue &amp; 3 Months Bank Statements</p>
         </div>
 
         {/* Progress Steps */}
@@ -564,13 +579,14 @@ export default function ApplyPage() {
             <div className="mca-form-section">
               <h2 className="mca-section-title">Upload your bank statements</h2>
 
-              <div className="mca-upload-notice">
-                <div className="mca-upload-icon">📄</div>
-                <p>
-                  Please upload your <strong>last 6 months of business bank statements</strong>.
-                  This helps our funding specialists assess your eligibility accurately and speeds up
-                  the review process with our funding partner.
+              <div className="mca-upload-notice border-l-4 border-sky-500 bg-sky-50/70 p-4 rounded-r-lg mb-6">
+                <div className="mca-upload-icon text-2xl mb-1">📄</div>
+                <p className="text-sm text-slate-700 leading-relaxed">
+                  Please upload your <strong>3 to 6 most recent months of business bank statements</strong> (PDF format).
                 </p>
+                <div className="mt-2 text-xs text-sky-900 bg-sky-100/80 p-2.5 rounded font-medium">
+                  <strong>Why Bank Statements?</strong> Revenue-based business financing is approved based on your monthly sales deposits rather than personal collateral or rigid credit scores.
+                </div>
               </div>
 
               {/* Upload Area */}
