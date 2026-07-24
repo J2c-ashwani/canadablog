@@ -353,11 +353,34 @@ export async function sendContactConfirmation({
   // Backend Idempotency Check (1-Hour Cooldown Window)
   const emailKey = to.toLowerCase().trim();
   const now = Date.now();
-  const lastSentTime = confirmationEmailCooldownStore.get(emailKey);
+  const memoryLastSent = confirmationEmailCooldownStore.get(emailKey);
 
-  if (lastSentTime && (now - lastSentTime < 60 * 60 * 1000)) {
-    console.log(`🛡️ [Backend Idempotency] Suppressed duplicate confirmation email to ${to} (Cooldown active)`);
-    return { success: true, skipped: true, reason: 'idempotency_cooldown' };
+  if (memoryLastSent && (now - memoryLastSent < 60 * 60 * 1000)) {
+    console.log(`🛡️ [Backend Idempotency - Memory] Suppressed duplicate confirmation email to ${to}`);
+    return { success: true, skipped: true, reason: 'idempotency_cooldown_memory' };
+  }
+
+  // Persistent Database Check (Vercel Serverless & Multi-Instance Safe)
+  try {
+    const { SubscriberRepository } = await import('@/lib/leads/SubscriberRepository');
+    const sub = await SubscriberRepository.getSubscriberByEmail(emailKey);
+    if (sub && sub.leadActivity) {
+      let activity: any = {};
+      try {
+        activity = typeof sub.leadActivity === 'string' ? JSON.parse(sub.leadActivity) : sub.leadActivity;
+      } catch (e) {}
+
+      if (activity.contactConfirmationSentAt) {
+        const sentMs = new Date(activity.contactConfirmationSentAt).getTime();
+        if (!Number.isNaN(sentMs) && (now - sentMs < 60 * 60 * 1000)) {
+          confirmationEmailCooldownStore.set(emailKey, sentMs);
+          console.log(`🛡️ [Backend Idempotency - Database] Suppressed duplicate confirmation email to ${to} (Sent ${Math.round((now - sentMs)/1000)}s ago)`);
+          return { success: true, skipped: true, reason: 'idempotency_cooldown_db' };
+        }
+      }
+    }
+  } catch (dbErr) {
+    console.warn('⚠️ Idempotency DB check skipped:', dbErr);
   }
 
   const firstName = getFirstName(name);
@@ -407,6 +430,25 @@ export async function sendContactConfirmation({
     }
 
     confirmationEmailCooldownStore.set(emailKey, now);
+
+    // Persist confirmation email timestamp to Database & Google Sheets
+    try {
+      const { SubscriberRepository } = await import('@/lib/leads/SubscriberRepository');
+      const sub = await SubscriberRepository.getSubscriberByEmail(emailKey);
+      let activity: any = {};
+      if (sub && sub.leadActivity) {
+        try {
+          activity = typeof sub.leadActivity === 'string' ? JSON.parse(sub.leadActivity) : sub.leadActivity;
+        } catch (e) {}
+      }
+      activity.contactConfirmationSentAt = new Date(now).toISOString();
+      await SubscriberRepository.updateSubscriberPreferences(emailKey, {
+        leadActivity: JSON.stringify(activity)
+      });
+    } catch (e) {
+      console.warn('⚠️ Failed to persist contactConfirmationSentAt to database:', e);
+    }
+
     return { success: true };
   } catch (error) {
     console.error('Contact confirmation email error:', error);
