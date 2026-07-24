@@ -125,6 +125,10 @@ export default function ApplyPage() {
     const province = params.get('province') || '';
     const yearsInBusiness = params.get('yearsInBusiness') || '';
     const fundingAmount = params.get('fundingAmount') || '';
+    const email = params.get('email') || '';
+    const phone = params.get('phone') || '';
+    const company = params.get('company') || params.get('companyName') || params.get('legalBusinessName') || '';
+    const name = params.get('name') || params.get('ownerName') || '';
 
     // Standardize matching options
     const matchedIndustry = INDUSTRIES.find(
@@ -142,6 +146,10 @@ export default function ApplyPage() {
       province: matchedProvince || prev.province,
       yearsInBusiness: yearsInBusiness || prev.yearsInBusiness,
       fundingAmount: fundingAmount ? Number(fundingAmount).toLocaleString() : prev.fundingAmount,
+      email: email || prev.email,
+      phone: phone || prev.phone,
+      legalBusinessName: company || prev.legalBusinessName,
+      ownerName: name || prev.ownerName,
     }));
   }, []);
 
