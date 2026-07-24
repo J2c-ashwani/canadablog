@@ -332,6 +332,109 @@ Founder, FSI Digital
 ${replyToEmail}`;
 }
 
+function parseMcaSnippet(snippet: string) {
+  const indMatch = snippet.match(/Industry:\s*([^,]+)/i);
+  const provMatch = snippet.match(/Province:\s*([^,]+)/i);
+  const revMatch = snippet.match(/Revenue:\s*([^,]+)/i);
+  const fundMatch = snippet.match(/Estimated Funding:\s*([^,]+)/i);
+
+  return {
+    industry: indMatch ? indMatch[1].trim() : 'Business',
+    province: provMatch ? provMatch[1].trim() : 'Canada',
+    revenue: revMatch ? revMatch[1].trim() : '$10,000+/mo',
+    estimatedFunding: fundMatch ? fundMatch[1].trim() : '$10,000 – $100,000',
+  };
+}
+
+function buildMcaCalculatorHtml({
+  firstName,
+  parsed,
+  applyUrl,
+  replyToEmail,
+}: {
+  firstName: string;
+  parsed: ReturnType<typeof parseMcaSnippet>;
+  applyUrl: string;
+  replyToEmail: string;
+}) {
+  return `
+    <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
+      <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">
+        <!-- Brand Header -->
+        <div style="padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 24px; display: table; width: 100%;">
+          <span style="font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; display: table-cell;">FSI <span style="color: #0284c7;">Digital</span></span>
+          <span style="font-size: 12px; font-weight: 600; color: #0284c7; background-color: #e0f2fe; padding: 4px 8px; border-radius: 4px; display: table-cell; text-align: right; width: 130px;">Commercial Lending</span>
+        </div>
+
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
+
+        <p style="margin:0 0 20px 0;font-size:15px;color:#334155;line-height:1.6;">Thank you for using our Business Funding Calculator. Based on your business profile, your estimated working capital funding range has been calculated.</p>
+
+        <!-- Eligibility Result Card -->
+        <div style="background-color: #f0f9ff; border: 1px solid #bae6fd; border-radius: 12px; padding: 24px; margin: 24px 0; text-align: center;">
+          <p style="margin: 0 0 8px 0; font-size: 11px; color: #0369a1; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Estimated Working Capital Match</p>
+          <h2 style="margin: 0 0 10px 0; font-size: 32px; font-weight: 900; color: #0369a1; letter-spacing: -0.03em;">${escapeHtml(parsed.estimatedFunding)}</h2>
+          <div style="display: inline-block; background-color: #e0f2fe; color: #0369a1; font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 9999px;">
+            Industry: ${escapeHtml(parsed.industry)} · Province: ${escapeHtml(parsed.province)}
+          </div>
+        </div>
+
+        <p style="margin: 0 0 16px 0; font-size: 14px; color: #334155; line-height: 1.6;">To proceed with pre-approval and secure your funding term sheet, complete your business application and upload your 3 most recent bank statements:</p>
+
+        <div style="text-align: center; margin: 28px 0;">
+          <a href="${applyUrl}" style="background-color: #0284c7; color: #ffffff; padding: 14px 32px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block; font-size: 15px; box-shadow: 0 4px 6px -1px rgba(2, 132, 199, 0.2);">
+            Complete Application &amp; Upload Bank Statements &rarr;
+          </a>
+        </div>
+
+        <div style="background-color: #f8fafc; border-left: 4px solid #0284c7; padding: 14px 16px; margin: 24px 0; border-radius: 0 8px 8px 0;">
+          <p style="margin: 0; font-size: 13px; color: #334155; line-height: 1.5;">
+            <strong>Next Steps:</strong> Once submitted, our commercial underwriting desk reviews your application within 4–24 business hours. No upfront fees or credit impact to view pre-approval terms.
+          </p>
+        </div>
+
+        <!-- Footer Signature -->
+        <div style="padding-top: 24px; border-top: 1px solid #f1f5f9; font-size: 13px; color: #64748b;">
+          <p style="margin: 0 0 4px 0; font-weight: 600; color: #334155;">Commercial Capital Desk</p>
+          <p style="margin: 0;">FSI Digital · <a href="mailto:${replyToEmail}" style="color: #0284c7; text-decoration: none;">${replyToEmail}</a></p>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function buildMcaCalculatorText({
+  firstName,
+  parsed,
+  applyUrl,
+  replyToEmail,
+}: {
+  firstName: string;
+  parsed: ReturnType<typeof parseMcaSnippet>;
+  applyUrl: string;
+  replyToEmail: string;
+}) {
+  return `Hi ${firstName},
+
+Thank you for using our Business Funding Calculator. Based on your business profile, your estimated working capital funding match is ${parsed.estimatedFunding}.
+
+Industry: ${parsed.industry}
+Province: ${parsed.province}
+
+Complete your application and upload your 3 most recent bank statements to view your pre-approval term sheet:
+${applyUrl}
+
+Next steps:
+1. Complete your 3-step application.
+2. Upload 3 months of business bank statements.
+3. Receive your custom term sheet within 4–24 hours.
+
+Best regards,
+Commercial Capital Desk
+FSI Digital
+${replyToEmail}`;
+}
+
 // Backend Idempotency Protection: 1-Hour Cooldown Map per email to prevent duplicate email triggers
 const confirmationEmailCooldownStore = new Map<string, number>();
 
@@ -396,6 +499,13 @@ export async function sendContactConfirmation({
     subject = `Your funding strategy is waiting, ${firstName}`;
     html = buildCalculatorHtml({ firstName, parsed, restoreUrl, replyToEmail, to });
     text = buildCalculatorText({ firstName, parsed, restoreUrl, replyToEmail });
+  } else if (category === 'MCA Funding Calculator' || category === 'MCA Application') {
+    const parsed = parseMcaSnippet(messageSnippet);
+    const applyUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}&province=${encodeURIComponent(parsed.province)}&industry=${encodeURIComponent(parsed.industry)}&name=${encodeURIComponent(name)}`;
+    
+    subject = `Your Business Funding Estimate — ${parsed.estimatedFunding}`;
+    html = buildMcaCalculatorHtml({ firstName, parsed, applyUrl, replyToEmail });
+    text = buildMcaCalculatorText({ firstName, parsed, applyUrl, replyToEmail });
   } else {
     const snippet = truncateMessage(messageSnippet);
     html = buildHtml({ firstName, category, messageSnippet: snippet, replyToEmail });
