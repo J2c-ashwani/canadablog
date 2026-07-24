@@ -8,6 +8,7 @@ export type LeadTier = 'A' | 'B' | 'C' | 'D';
 
 export type LeadCaptureData = {
   source: string;
+  category?: string;
   timestamp: string;
   email: string;
   name?: string;

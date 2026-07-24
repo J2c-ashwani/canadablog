@@ -143,6 +143,32 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       },
     });
 
+    // Also route MCA leads directly to the dedicated "MCA Applications" sheet tab
+    const isMcaLead = (
+      data.category === 'MCA Funding Calculator' ||
+      data.category === 'MCA Application' ||
+      (data.source || '').toLowerCase().includes('mca') ||
+      (data.pagePath || '').includes('/apply') ||
+      (data.pagePath || '').includes('/funding-calculator')
+    );
+
+    if (isMcaLead) {
+      try {
+        await sheets.spreadsheets.values.append({
+          spreadsheetId,
+          range: "MCA Applications!A1",
+          valueInputOption: "RAW",
+          insertDataOption: "INSERT_ROWS",
+          requestBody: {
+            values,
+          },
+        });
+        console.log(`✅ MCA Lead appended to "MCA Applications" tab for ${data.email}`);
+      } catch (mcaErr: any) {
+        console.warn("⚠️ Failed to append lead to MCA Applications tab:", mcaErr?.message || mcaErr);
+      }
+    }
+
     // This is the only formula written by this workflow. It is generated on the
     // server into its dedicated WhatsApp column after the raw lead row exists.
     const updatedRange = appendResult.data.updates?.updatedRange || '';
