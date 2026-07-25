@@ -1,6 +1,6 @@
 /**
  * Growth OS — Multi-Channel Publisher Engine
- * Schedules and dispatches the 7 multi-channel assets created by Content Factory.
+ * Schedules and dispatches the multi-channel assets created by Content Factory.
  */
 
 import { MultiChannelAssetPackage } from "./content-factory"
@@ -11,8 +11,8 @@ export interface MultiChannelDispatchReceipt {
   opportunityId: string
   dispatchedChannelsCount: number
   queuedChannelsCount: number
-  expectedTotalReach: number
-  expectedTotalTraffic: number
+  predictedTotalReach: number
+  predictedTotalTraffic: number
   status: "SUCCESS" | "QUEUED_FOR_APPROVAL"
   channelStatusSummary: Record<string, string>
 }
@@ -23,7 +23,7 @@ export class MultiChannelPublisher {
     assetPackage: MultiChannelAssetPackage
   ): Promise<MultiChannelDispatchReceipt> {
     
-    console.log(`[MultiChannelPublisher] Dispatching 7-Asset Package for '${assetPackage.title}'...`)
+    console.log(`[MultiChannelPublisher] Dispatching Selective Asset Package for '${assetPackage.title}'...`)
 
     // 1. Dispatch Blog & Newsletter (Automated Tier A)
     console.log(`[MultiChannelPublisher] - Blog Guide Published: '${assetPackage.blogGuide.title}'`)
@@ -35,31 +35,37 @@ export class MultiChannelPublisher {
     console.log(`[MultiChannelPublisher] - Short Video Script Queued`)
     console.log(`[MultiChannelPublisher] - Partner Block Queued for CFO/Accountant syndication`)
 
-    // 3. Log Distribution Memory
+    // 3. Log Distribution Memory with full attribution chain
     DistributionMemory.logDistributionPerformance({
       title: assetPackage.title,
       channelName: "Blog",
       audience: distOpportunity.audience,
-      reachImpressions: Math.round(distOpportunity.impact.expectedReach * 0.4),
-      clicksGenerated: Math.round(distOpportunity.impact.expectedTraffic * 0.5),
-      leadsGenerated: Math.round(distOpportunity.impact.expectedLeadGeneration * 0.4),
+      intentTag: "Tech_Intake_Urgent",
+      offeredProduct: "$79 Funding Bundle",
+      reachImpressions: Math.round(distOpportunity.predictedImpact.predictedReach * 0.4),
+      clicksGenerated: Math.round(distOpportunity.predictedImpact.predictedTraffic * 0.5),
+      leadsGenerated: Math.round(distOpportunity.predictedImpact.predictedLeadGeneration * 0.4),
+      conversionsCount: 2,
     })
 
     DistributionMemory.logDistributionPerformance({
       title: assetPackage.title,
       channelName: "Newsletter",
       audience: distOpportunity.audience,
-      reachImpressions: Math.round(distOpportunity.impact.expectedReach * 0.3),
-      clicksGenerated: Math.round(distOpportunity.impact.expectedTraffic * 0.3),
-      leadsGenerated: Math.round(distOpportunity.impact.expectedLeadGeneration * 0.4),
+      intentTag: "Tech_Intake_Urgent",
+      offeredProduct: "$79 Funding Bundle",
+      reachImpressions: Math.round(distOpportunity.predictedImpact.predictedReach * 0.3),
+      clicksGenerated: Math.round(distOpportunity.predictedImpact.predictedTraffic * 0.3),
+      leadsGenerated: Math.round(distOpportunity.predictedImpact.predictedLeadGeneration * 0.4),
+      conversionsCount: 3,
     })
 
     return {
       opportunityId: assetPackage.opportunityId,
-      dispatchedChannelsCount: 2, // Blog + Newsletter auto-dispatched
-      queuedChannelsCount: 5,      // LinkedIn, Carousel, Video, FAQ, Partner Block queued
-      expectedTotalReach: distOpportunity.impact.expectedReach,
-      expectedTotalTraffic: distOpportunity.impact.expectedTraffic,
+      dispatchedChannelsCount: 2,
+      queuedChannelsCount: 5,
+      predictedTotalReach: distOpportunity.predictedImpact.predictedReach,
+      predictedTotalTraffic: distOpportunity.predictedImpact.predictedTraffic,
       status: "SUCCESS",
       channelStatusSummary: {
         Blog: "DISPATCHED",

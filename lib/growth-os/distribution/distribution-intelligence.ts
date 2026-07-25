@@ -1,15 +1,15 @@
 /**
  * Growth OS — Distribution Intelligence Engine
- * Identifies high-growth traffic opportunities and decides where FSI Digital should appear today.
+ * Evaluates distribution opportunities with predicted impact metrics.
  */
 
 import { RevenueOpportunity } from "../types"
 
-export interface DistributionImpact {
-  expectedReach: number
-  expectedTraffic: number
-  expectedLeadGeneration: number
-  expectedRevenue: number
+export interface PredictedDistributionImpact {
+  predictedReach: number
+  predictedTraffic: number
+  predictedLeadGeneration: number
+  predictedRevenue: number
   confidence: number
 }
 
@@ -19,7 +19,7 @@ export interface DistributionOpportunity {
   audience: string
   objective: "Traffic" | "Leads" | "Partnership" | "Brand"
   channels: ("Blog" | "LinkedIn" | "Newsletter" | "PartnerBlock" | "SocialCarousel" | "VideoScript")[]
-  impact: DistributionImpact
+  predictedImpact: PredictedDistributionImpact
   priorityScore: number
   evidence: string[]
   createdAt: string
@@ -31,29 +31,29 @@ export class DistributionIntelligenceEngine {
     const isWomen = opportunity.buyerSegment.includes("Women")
     const isManufacturing = opportunity.buyerSegment.includes("Manufacturing")
 
-    let expectedReach = 2500
-    let expectedTraffic = 120
-    let expectedLeads = 18
+    let predictedReach = 2500
+    let predictedTraffic = 120
+    let predictedLeads = 18
     let objective: DistributionOpportunity["objective"] = "Traffic"
 
     if (isTech) {
-      expectedReach = 8500
-      expectedTraffic = 340
-      expectedLeads = 42
+      predictedReach = 8500
+      predictedTraffic = 340
+      predictedLeads = 42
       objective = "Leads"
     } else if (isWomen) {
-      expectedReach = 4500
-      expectedTraffic = 210
-      expectedLeads = 28
+      predictedReach = 4500
+      predictedTraffic = 210
+      predictedLeads = 28
       objective = "Traffic"
     } else if (isManufacturing) {
-      expectedReach = 3200
-      expectedTraffic = 150
-      expectedLeads = 22
+      predictedReach = 3200
+      predictedTraffic = 150
+      predictedLeads = 22
       objective = "Partnership"
     }
 
-    const expectedRevenue = Math.round(expectedLeads * 0.12 * 79) // 12% conv to $79 Bundle
+    const predictedRevenue = Math.round(predictedLeads * 0.12 * 79) // 12% conv to $79 Bundle
 
     return {
       id: `dist_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
@@ -61,11 +61,11 @@ export class DistributionIntelligenceEngine {
       audience: opportunity.buyerSegment,
       objective,
       channels: ["Blog", "LinkedIn", "Newsletter", "PartnerBlock", "SocialCarousel", "VideoScript"],
-      impact: {
-        expectedReach,
-        expectedTraffic,
-        expectedLeadGeneration: expectedLeads,
-        expectedRevenue,
+      predictedImpact: {
+        predictedReach,
+        predictedTraffic,
+        predictedLeadGeneration: predictedLeads,
+        predictedRevenue,
         confidence: 90,
       },
       priorityScore: opportunity.priorityScore,

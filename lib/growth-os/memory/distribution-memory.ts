@@ -1,6 +1,6 @@
 /**
  * Growth OS — Distribution Memory Subsystem
- * Remembers channel performance, reach, clicks, and traffic acquisition metrics.
+ * Tracks full attribution chain: Audience -> IntentTag -> OfferedProduct -> Conversions.
  */
 
 export interface DistributionMemoryItem {
@@ -8,9 +8,12 @@ export interface DistributionMemoryItem {
   title: string
   channelName: "Blog" | "LinkedIn" | "Newsletter" | "PartnerBlock" | "SocialCarousel" | "VideoScript"
   audience: string
+  intentTag: string
+  offeredProduct: string
   reachImpressions: number
   clicksGenerated: number
   leadsGenerated: number
+  conversionsCount: number
   recordedTimestamp: string
 }
 
@@ -30,19 +33,20 @@ export class DistributionMemory {
   public static getTopChannelsForAudience(audience: string): DistributionMemoryItem[] {
     return this.memory
       .filter((m) => m.audience.toLowerCase().includes(audience.toLowerCase()))
-      .sort((a, b) => b.leadsGenerated - a.leadsGenerated)
+      .sort((a, b) => b.conversionsCount - a.conversionsCount)
   }
 
-  public static getChannelPerformanceSummary(): Record<string, { reach: number; clicks: number; leads: number }> {
-    const summary: Record<string, { reach: number; clicks: number; leads: number }> = {}
+  public static getChannelPerformanceSummary(): Record<string, { reach: number; clicks: number; leads: number; conversions: number }> {
+    const summary: Record<string, { reach: number; clicks: number; leads: number; conversions: number }> = {}
 
     for (const item of this.memory) {
       if (!summary[item.channelName]) {
-        summary[item.channelName] = { reach: 0, clicks: 0, leads: 0 }
+        summary[item.channelName] = { reach: 0, clicks: 0, leads: 0, conversions: 0 }
       }
       summary[item.channelName].reach += item.reachImpressions
       summary[item.channelName].clicks += item.clicksGenerated
       summary[item.channelName].leads += item.leadsGenerated
+      summary[item.channelName].conversions += item.conversionsCount
     }
 
     return summary
