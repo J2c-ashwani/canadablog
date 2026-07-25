@@ -77,8 +77,7 @@ export function FoundingMemberCheckout() {
           <div className="flex items-center gap-2">✓ <strong className="text-white">Personalized Weekly Radar Briefing</strong> (Every Monday)</div>
           <div className="flex items-center gap-2">✓ <strong className="text-white">Matching Opening &amp; Closing Deadline Alerts</strong></div>
           <div className="flex items-center gap-2">✓ <strong className="text-white">Template &amp; Budget Worksheet Library Access</strong></div>
-          <div className="flex items-center gap-2">✓ <strong className="text-white">1 Monthly Group Office Hour</strong></div>
-          <div className="flex items-center gap-2 text-slate-400">ℹ️ Self-serve automated intelligence &amp; group sessions</div>
+          <div className="flex items-center gap-2 text-slate-400">ℹ️ Self-serve automated funding intelligence &amp; member dashboard</div>
         </div>
 
         {error && (
