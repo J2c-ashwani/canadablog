@@ -410,3 +410,24 @@ export async function verifyPayPalSubscription(subscriptionId: string) {
     return { verified: false, error: error.message || "Unknown subscription validation error" };
   }
 }
+
+export async function cancelPayPalSubscription(subscriptionId: string, reason = "Customer requested cancellation via Dashboard") {
+  const accessToken = await getPayPalAccessToken();
+  const host = getPayPalBaseUrl();
+
+  const res = await fetch(`${host}/v1/billing/subscriptions/${encodeURIComponent(subscriptionId)}/cancel`, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${accessToken}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ reason }),
+  });
+
+  if (!res.ok && res.status !== 204) {
+    const errText = await res.text();
+    throw new Error(`PayPal cancellation failed: ${errText}`);
+  }
+
+  return { success: true };
+}

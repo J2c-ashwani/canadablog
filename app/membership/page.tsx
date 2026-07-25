@@ -5,11 +5,11 @@ import { Footer } from '@/components/Footer';
 import { ShieldCheck, Check, Zap, Sparkles, HelpCircle, Users, ArrowRight, Shield } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
-import { WaitlistForm } from '@/components/products/WaitlistForm';
+import { FoundingMemberCheckout } from '@/components/membership/FoundingMemberCheckout';
 
 export const metadata: Metadata = {
-  title: 'FSI Digital Founding Membership — Custom Government Funding Monitoring',
-  description: 'Secure active government funding alerts, application templates, and priority analyst support for your business for $29/mo.',
+  title: 'FSI Digital Founding Member Beta — Custom Government Funding Monitoring',
+  description: 'Secure active government funding alerts, application templates, and weekly intelligence briefings for $29/mo.',
 };
 
 export default function MembershipPage() {
@@ -22,17 +22,17 @@ export default function MembershipPage() {
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(79,70,229,0.15),transparent_50%)]"></div>
         <div className="max-w-5xl mx-auto px-4 relative text-center space-y-6">
           <div className="inline-flex items-center gap-1.5 bg-indigo-500/10 border border-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-            <Sparkles className="w-3.5 h-3.5" /> Limited Founding Member Launch
+            <Sparkles className="w-3.5 h-3.5" /> Capped at 50 Founding Member Spots
           </div>
           <h1 className="text-3xl sm:text-4xl md:text-5xl font-black tracking-tight leading-none text-slate-100 max-w-3xl mx-auto">
-            Never Miss a Government Grant.<br/>
-            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">Get Custom Stacking Monitoring.</span>
+            We Tell You What Materially Changed<br/>
+            <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">For Your Business This Week.</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Intake windows open and close in days. We monitor 1,200+ active programs against your B2B profile and alert you instantly before deadlines pass.
+            Intake windows open and close in days. We monitor 1,200+ active federal &amp; regional programs against your B2B profile and dispatch weekly intelligence briefings.
           </p>
           <div className="pt-4 max-w-md mx-auto">
-            <WaitlistForm />
+            <FoundingMemberCheckout />
           </div>
           <div className="flex items-center justify-center gap-6 text-[11px] text-slate-500 pt-3 font-medium">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Cancel Anytime</span>
