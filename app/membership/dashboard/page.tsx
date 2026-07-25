@@ -147,6 +147,33 @@ export default function MemberDashboardPage() {
               </div>
             </div>
 
+            {/* Funding Journey Timeline Stepper */}
+            <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
+              <div className="flex justify-between items-center mb-4">
+                <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">Funding Journey Timeline</h3>
+                <span className="text-xs text-emerald-400 font-bold bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded-md">Stage 2: Eligibility Match Confirmed</span>
+              </div>
+              <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
+                {[
+                  { step: '1', title: 'Start Journey', status: 'Completed', done: true },
+                  { step: '2', title: 'Eligibility Complete', status: 'Current Stage', current: true },
+                  { step: '3', title: 'Documents Ready', status: 'Next Action', pending: true },
+                  { step: '4', title: 'Application Submitted', status: 'Pending', pending: true },
+                  { step: '5', title: 'Funding Awarded', status: 'Target Milestone', pending: true },
+                ].map((s, idx) => (
+                  <div key={idx} className={`p-3.5 rounded-xl border transition ${
+                    s.done ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-300' :
+                    s.current ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-lg font-bold' :
+                    'bg-slate-950 border-slate-800 text-slate-500'
+                  }`}>
+                    <div className="text-[10px] uppercase tracking-wider font-black mb-1">Step 0{s.step}</div>
+                    <div className="text-xs font-extrabold leading-tight mb-1">{s.title}</div>
+                    <div className="text-[9px] font-semibold opacity-80">{s.status}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
               <h3 className="text-lg font-bold text-white mb-2">Personalized Funding Matches</h3>
               <p className="text-xs text-slate-400 mb-6">Verified against active federal and provincial program intake openings.</p>
