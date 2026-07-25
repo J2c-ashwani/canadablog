@@ -60,7 +60,7 @@ export function FoundingMemberCheckout() {
   return (
     <div className="bg-slate-950 border border-emerald-500/40 rounded-2xl p-6 sm:p-8 text-left shadow-2xl relative overflow-hidden">
       <div className="absolute top-0 right-0 bg-emerald-600 text-slate-950 text-[9px] font-black px-3.5 py-1 uppercase tracking-wider rounded-bl-lg">
-        34 of 50 Spots Remaining
+        Founding Member Beta Cohort
       </div>
 
       <div className="space-y-4">

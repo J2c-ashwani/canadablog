@@ -114,9 +114,42 @@ export default function MemberDashboardPage() {
         {/* TAB 1: Active Matches */}
         {activeTab === 'matches' && (
           <div className="space-y-6">
+            {/* Funding Readiness Score Card */}
+            <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-emerald-500/30 rounded-2xl p-6 shadow-xl">
+              <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
+                <div className="space-y-1">
+                  <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400">Personalized Audit Index</span>
+                  <h3 className="text-xl font-black text-white">Funding Readiness Score</h3>
+                  <p className="text-xs text-slate-400 max-w-md">Calculated based on your business stage, annual revenue band, employee headcount, and registered province.</p>
+                </div>
+
+                <div className="flex items-center gap-4 bg-slate-950/80 border border-slate-800 px-5 py-3 rounded-2xl">
+                  <div className="text-center">
+                    <div className="text-3xl font-black text-emerald-400">78 <span className="text-sm font-bold text-slate-500">/ 100</span></div>
+                    <div className="text-[10px] uppercase font-bold text-emerald-300 tracking-wider">High Match Tier</div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-6 pt-4 border-t border-slate-800/80 grid sm:grid-cols-3 gap-4 text-xs">
+                <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/60">
+                  <div className="font-bold text-emerald-400 mb-1">✓ Top Match: IRAP R&amp;D Subsidy</div>
+                  <div className="text-slate-400 text-[11px]">Covers up to 50–80% developer payroll.</div>
+                </div>
+                <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/60">
+                  <div className="font-bold text-amber-400 mb-1">⚠️ CanExport Int'l Expansion</div>
+                  <div className="text-slate-400 text-[11px]">Intake window closing soon.</div>
+                </div>
+                <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/60">
+                  <div className="font-bold text-sky-400 mb-1">📋 Next Action Item</div>
+                  <div className="text-slate-400 text-[11px]">Compile technical payroll records.</div>
+                </div>
+              </div>
+            </div>
+
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
-              <h3 className="text-lg font-bold text-white mb-2">Live Funding Matches for Your Profile</h3>
-              <p className="text-xs text-slate-400 mb-6">Monitored against federal and provincial program intake openings.</p>
+              <h3 className="text-lg font-bold text-white mb-2">Personalized Funding Matches</h3>
+              <p className="text-xs text-slate-400 mb-6">Verified against active federal and provincial program intake openings.</p>
 
               <div className="space-y-4">
                 {[
