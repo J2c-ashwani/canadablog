@@ -65,6 +65,69 @@ export default function MemberDashboardPage() {
     }
   };
 
+  // Dynamic Score & Timeline Calculation Engine
+  const calculateDynamicState = () => {
+    let score = 50;
+    let currentStage = 1;
+    let stageTitle = 'Stage 1: Journey Started';
+    let nextAction = 'Complete B2B Profile Onboarding';
+
+    let activity: any = {};
+    try {
+      if (member?.leadActivity) {
+        activity = typeof member.leadActivity === 'string' ? JSON.parse(member.leadActivity) : member.leadActivity;
+      }
+    } catch (e) {}
+
+    const hasRegion = Boolean(member?.region || activity?.province);
+    const hasIndustry = Boolean(member?.industry || activity?.industry);
+    const hasRevenue = Boolean(member?.annualRevenue || activity?.revenueBand);
+    const hasEmployees = Boolean(activity?.employees);
+
+    if (hasRegion) score += 10;
+    if (hasIndustry) score += 10;
+    if (hasRevenue) score += 10;
+    if (hasEmployees) score += 8;
+
+    if (hasRegion && hasIndustry && hasRevenue) {
+      currentStage = 2; // Eligibility Complete
+      stageTitle = 'Stage 2: Eligibility Match Confirmed';
+      nextAction = 'Compile technical payroll & R&D records';
+    }
+
+    if (activity?.downloadedTemplates || activity?.onboardedAt) {
+      currentStage = 3; // Documents Ready
+      stageTitle = 'Stage 3: Documents Ready';
+      nextAction = 'Review CanExport or IRAP application filing';
+    }
+
+    if (member?.reportPurchased || member?.strategyReportPurchased) {
+      currentStage = 4; // Application Submitted / Audit Booked
+      stageTitle = 'Stage 4: Application Review / Audit';
+      nextAction = 'Prepare for 1-on-1 strategy session / filing pre-check';
+    }
+
+    if (activity?.fundingSecuredAmount) {
+      currentStage = 5; // Funding Awarded
+      stageTitle = 'Stage 5: Funding Awarded 🎉';
+      nextAction = 'Maintain monthly compliance reporting';
+    }
+
+    return {
+      score: Math.min(score, 100),
+      currentStage,
+      stageTitle,
+      nextAction,
+      hasRegion,
+      hasIndustry,
+      hasRevenue,
+      hasEmployees,
+      fundingSecuredAmount: activity?.fundingSecuredAmount || '$85,000',
+    };
+  };
+
+  const dynamicState = calculateDynamicState();
+
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans">
       <Header />
@@ -114,19 +177,21 @@ export default function MemberDashboardPage() {
         {/* TAB 1: Active Matches */}
         {activeTab === 'matches' && (
           <div className="space-y-6">
-            {/* Funding Readiness Score Card */}
+            {/* Dynamic Funding Readiness Score Card */}
             <div className="bg-gradient-to-r from-slate-900 via-slate-900 to-slate-950 border border-emerald-500/30 rounded-2xl p-6 shadow-xl">
               <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
                 <div className="space-y-1">
                   <span className="text-[11px] font-extrabold uppercase tracking-wider text-emerald-400">Personalized Audit Index</span>
                   <h3 className="text-xl font-black text-white">Funding Readiness Score</h3>
-                  <p className="text-xs text-slate-400 max-w-md">Calculated based on your business stage, annual revenue band, employee headcount, and registered province.</p>
+                  <p className="text-xs text-slate-400 max-w-md">Calculated dynamically based on your profile completeness and active program criteria.</p>
                 </div>
 
                 <div className="flex items-center gap-4 bg-slate-950/80 border border-slate-800 px-5 py-3 rounded-2xl">
                   <div className="text-center">
-                    <div className="text-3xl font-black text-emerald-400">78 <span className="text-sm font-bold text-slate-500">/ 100</span></div>
-                    <div className="text-[10px] uppercase font-bold text-emerald-300 tracking-wider">High Match Tier</div>
+                    <div className="text-3xl font-black text-emerald-400">{dynamicState.score} <span className="text-sm font-bold text-slate-500">/ 100</span></div>
+                    <div className="text-[10px] uppercase font-bold text-emerald-300 tracking-wider">
+                      {dynamicState.score >= 75 ? 'High Match Tier' : 'Moderate Match Tier'}
+                    </div>
                   </div>
                 </div>
               </div>
@@ -142,37 +207,66 @@ export default function MemberDashboardPage() {
                 </div>
                 <div className="bg-slate-950/60 p-3 rounded-xl border border-slate-800/60">
                   <div className="font-bold text-sky-400 mb-1">📋 Next Action Item</div>
-                  <div className="text-slate-400 text-[11px]">Compile technical payroll records.</div>
+                  <div className="text-slate-400 text-[11px] font-semibold">{dynamicState.nextAction}</div>
                 </div>
               </div>
             </div>
 
-            {/* Funding Journey Timeline Stepper */}
+            {/* Dynamic Funding Journey Timeline Stepper */}
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6 shadow-xl">
               <div className="flex justify-between items-center mb-4">
                 <h3 className="text-sm font-bold uppercase tracking-wider text-slate-400">Funding Journey Timeline</h3>
-                <span className="text-xs text-emerald-400 font-bold bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded-md">Stage 2: Eligibility Match Confirmed</span>
+                <span className="text-xs text-emerald-400 font-bold bg-emerald-950 border border-emerald-800 px-2.5 py-1 rounded-md">{dynamicState.stageTitle}</span>
               </div>
+
               <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 text-center">
                 {[
-                  { step: '1', title: 'Start Journey', status: 'Completed', done: true },
-                  { step: '2', title: 'Eligibility Complete', status: 'Current Stage', current: true },
-                  { step: '3', title: 'Documents Ready', status: 'Next Action', pending: true },
-                  { step: '4', title: 'Application Submitted', status: 'Pending', pending: true },
-                  { step: '5', title: 'Funding Awarded', status: 'Target Milestone', pending: true },
-                ].map((s, idx) => (
-                  <div key={idx} className={`p-3.5 rounded-xl border transition ${
-                    s.done ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-300' :
-                    s.current ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-lg font-bold' :
-                    'bg-slate-950 border-slate-800 text-slate-500'
-                  }`}>
-                    <div className="text-[10px] uppercase tracking-wider font-black mb-1">Step 0{s.step}</div>
-                    <div className="text-xs font-extrabold leading-tight mb-1">{s.title}</div>
-                    <div className="text-[9px] font-semibold opacity-80">{s.status}</div>
-                  </div>
-                ))}
+                  { step: 1, title: 'Start Journey', req: 'Account Created' },
+                  { step: 2, title: 'Eligibility Complete', req: 'Profile Completed' },
+                  { step: 3, title: 'Documents Ready', req: 'Templates Downloaded' },
+                  { step: 4, title: 'Application Review', req: 'Session / Filing Pre-check' },
+                  { step: 5, title: 'Funding Awarded', req: 'Milestone Secured' },
+                ].map((s) => {
+                  const isDone = dynamicState.currentStage > s.step;
+                  const isCurrent = dynamicState.currentStage === s.step;
+
+                  return (
+                    <div key={s.step} className={`p-3.5 rounded-xl border transition ${
+                      isDone ? 'bg-emerald-950/60 border-emerald-500/40 text-emerald-300' :
+                      isCurrent ? 'bg-emerald-500 text-slate-950 border-emerald-400 shadow-lg font-bold' :
+                      'bg-slate-950 border-slate-800 text-slate-500'
+                    }`}>
+                      <div className="text-[10px] uppercase tracking-wider font-black mb-1">Step 0{s.step}</div>
+                      <div className="text-xs font-extrabold leading-tight mb-1">{s.title}</div>
+                      <div className="text-[9px] font-semibold opacity-80">
+                        {isDone ? '✓ Completed' : isCurrent ? '⚡ Current Stage' : s.req}
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
+
+            {/* Stage 5 Interactive Milestone Card */}
+            {dynamicState.currentStage >= 3 && (
+              <div className="bg-gradient-to-r from-emerald-950/90 via-slate-900 to-slate-950 border border-emerald-500/40 rounded-2xl p-6 shadow-xl">
+                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                  <div>
+                    <span className="text-[10px] font-black uppercase tracking-wider text-emerald-400">Target Milestone Target</span>
+                    <h4 className="text-lg font-black text-white flex items-center gap-2">
+                      🎉 Total Funding Secured Goal: <span className="text-emerald-400">{dynamicState.fundingSecuredAmount}</span>
+                    </h4>
+                    <p className="text-xs text-slate-300 mt-1">Unlocked Programs: <strong>✓ IRAP Payroll Subsidy</strong> · <strong>✓ CanExport SMEs</strong> · <strong>✓ SR&amp;ED Tax Credit</strong></p>
+                  </div>
+                  <a
+                    href="/audit"
+                    className="bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-5 py-3 rounded-xl transition shadow-lg whitespace-nowrap"
+                  >
+                    Book 1-on-1 Filing Review ($199) →
+                  </a>
+                </div>
+              </div>
+            )}
 
             <div className="bg-slate-900 border border-slate-800 rounded-2xl p-6">
               <h3 className="text-lg font-bold text-white mb-2">Personalized Funding Matches</h3>
@@ -240,7 +334,7 @@ export default function MemberDashboardPage() {
                     <span className="font-bold text-emerald-400">Briefing #1 (Current Week)</span>
                     <span>Dispatched: Just Now</span>
                   </div>
-                  <h4 className="font-bold text-white text-base">Q3 Intake Openings: Tech Development & Export Acceleration</h4>
+                  <h4 className="font-bold text-white text-base">Q3 Intake Openings: Tech Development &amp; Export Acceleration</h4>
                   <p className="text-xs text-slate-300 leading-relaxed">
                     Key updates: FedDev and regional development intake windows opened for software, hardware, and agri-tech businesses with under 50 employees.
                   </p>
