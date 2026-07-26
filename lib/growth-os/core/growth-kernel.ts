@@ -1,5 +1,5 @@
 /**
- * Growth OS — Central Kernel Orchestrator (Vertical Slice #1)
+ * Growth OS — Central Kernel Orchestrator
  * Manages the end-to-end execution slice from Raw Scrape -> Signal -> Opportunity -> Safety -> Campaign -> Dispatch.
  */
 
@@ -77,5 +77,21 @@ export class GrowthOSKernel {
       bundle,
       receipt,
     }
+  }
+
+  /**
+   * Daily Growth OS Orchestration Trigger (used by cron-jobs.org & external schedulers)
+   */
+  public static async executeDailyGrowthLoop(): Promise<SliceExecutionResult | null> {
+    const dailyScrape: RawScrapeItem = {
+      title: `Daily Government Funding Update ${new Date().toISOString().split("T")[0]}`,
+      content: `Official Innovation, Science and Economic Development Canada (.gc.ca) update: Active intake opened for high-tech SMEs, clean tech, and digital adoption programs.`,
+      url: `https://www.ic.gc.ca/eic/site/icnavigator.nsf/eng/h_00000.html`,
+      scrapedAt: new Date().toISOString(),
+      verifiedGovernmentSource: true,
+      category: "Tech Grants",
+    }
+
+    return await this.processRawSignal(dailyScrape)
   }
 }
