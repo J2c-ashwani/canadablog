@@ -28,6 +28,7 @@ import {
   Lock,
   KeyRound,
   ArrowRight,
+  Mail,
 } from "lucide-react"
 
 interface PublicationItem {
@@ -42,7 +43,8 @@ interface PublicationItem {
 export default function LinkedInPublisherPage() {
   // Authentication Gate State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
-  const [accessCodeInput, setAccessCodeInput] = useState<string>("")
+  const [emailInput, setEmailInput] = useState<string>("reviewer@fsidigital.ca")
+  const [passwordInput, setPasswordInput] = useState<string>("")
   const [authError, setAuthError] = useState<string | null>(null)
 
   // Content State
@@ -90,12 +92,15 @@ export default function LinkedInPublisherPage() {
 
   const handleLoginSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    if (accessCodeInput.trim() === "fsi2026admin") {
+    const pwd = passwordInput.trim()
+    const validPasswords = ["fsi2026admin", "FsiReviewer2026!", "fsi2026"]
+    
+    if (validPasswords.includes(pwd)) {
       setIsAuthenticated(true)
       localStorage.setItem("fsi_admin_auth", "authenticated")
       setAuthError(null)
     } else {
-      setAuthError("Incorrect access code. Please try again.")
+      setAuthError("Incorrect password or access code. Please try again.")
     }
   }
 
@@ -166,7 +171,7 @@ export default function LinkedInPublisherPage() {
   }
 
   // ---------------------------------------------------
-  // SECURITY LOCK GATE IF UNAUTHENTICATED
+  // SECURITY LOCK GATE FOR LINKEDIN REVIEWER
   // ---------------------------------------------------
   if (!isAuthenticated) {
     return (
@@ -177,23 +182,39 @@ export default function LinkedInPublisherPage() {
           </div>
 
           <div>
-            <h1 className="text-xl font-bold text-white tracking-tight">Protected Admin Portal</h1>
+            <h1 className="text-xl font-bold text-white tracking-tight">FSI Digital Admin Portal</h1>
             <p className="text-xs text-slate-400 mt-1">
-              Enter your private access code to unlock the FSI Digital LinkedIn Publisher.
+              Reviewer access portal for the FSI Digital LinkedIn Publisher module.
             </p>
           </div>
 
           <form onSubmit={handleLoginSubmit} className="space-y-4">
             <div>
               <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
-                Access Code / Password
+                Reviewer Email
+              </label>
+              <div className="relative">
+                <input
+                  type="email"
+                  value={emailInput}
+                  onChange={(e) => setEmailInput(e.target.value)}
+                  placeholder="reviewer@fsidigital.ca"
+                  className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
+                />
+                <Mail className="w-4 h-4 text-slate-500 absolute right-3.5 top-3.5" />
+              </div>
+            </div>
+
+            <div>
+              <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
+                Password / Access Code
               </label>
               <div className="relative">
                 <input
                   type="password"
-                  value={accessCodeInput}
-                  onChange={(e) => setAccessCodeInput(e.target.value)}
-                  placeholder="Enter fsi2026admin..."
+                  value={passwordInput}
+                  onChange={(e) => setPasswordInput(e.target.value)}
+                  placeholder="Enter password..."
                   className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                 />
                 <KeyRound className="w-4 h-4 text-slate-500 absolute right-3.5 top-3.5" />
@@ -205,12 +226,12 @@ export default function LinkedInPublisherPage() {
               type="submit"
               className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs py-3 px-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
             >
-              Unlock Dashboard <ArrowRight className="w-4 h-4" />
+              Sign In to LinkedIn Publisher <ArrowRight className="w-4 h-4" />
             </button>
           </form>
 
           <div className="pt-4 border-t border-slate-700/60 text-center">
-            <span className="text-[11px] text-slate-500">FSI Digital Admin OS Security Protocol</span>
+            <span className="text-[11px] text-slate-500">FSI Digital Admin OS • Reviewer Test Portal</span>
           </div>
         </div>
       </div>
@@ -554,9 +575,7 @@ export default function LinkedInPublisherPage() {
             </div>
           </div>
 
-          {/* --------------------------------------------------- */}
-          {/* BOTTOM SECTION: DYNAMIC Recent Publications Table   */}
-          {/* --------------------------------------------------- */}
+          {/* BOTTOM SECTION */}
           <div className="bg-white rounded-xl border border-slate-200 p-6 shadow-sm space-y-4">
             <div className="flex items-center justify-between">
               <div>
