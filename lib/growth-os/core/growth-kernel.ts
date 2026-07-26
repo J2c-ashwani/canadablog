@@ -85,11 +85,11 @@ export class GrowthOSKernel {
   public static async executeDailyGrowthLoop(): Promise<SliceExecutionResult | null> {
     const dailyScrape: RawScrapeItem = {
       title: `Daily Government Funding Update ${new Date().toISOString().split("T")[0]}`,
-      content: `Official Innovation, Science and Economic Development Canada (.gc.ca) update: Active intake opened for high-tech SMEs, clean tech, and digital adoption programs.`,
-      url: `https://www.ic.gc.ca/eic/site/icnavigator.nsf/eng/h_00000.html`,
-      scrapedAt: new Date().toISOString(),
-      verifiedGovernmentSource: true,
-      category: "Tech Grants",
+      rawText: `Official Innovation, Science and Economic Development Canada (.gc.ca) update: Active intake opened for high-tech SMEs, clean tech, and digital adoption programs grant funding.`,
+      sourceUrl: `https://www.ic.gc.ca/eic/site/icnavigator.nsf/eng/h_00000.html`,
+      detectedProgram: "Canada Digital Adoption Program & IRAP Tech Grant Intake",
+      industry: "Technology",
+      province: "Federal / Canada Wide",
     }
 
     return await this.processRawSignal(dailyScrape)
