@@ -90,7 +90,7 @@ export class ChannelAdapters {
    */
   public static async queueCarousel(title: string, slideCount: number): Promise<ChannelPublishResult> {
     const instaToken = process.env.INSTAGRAM_ACCESS_TOKEN?.trim()
-    const fbToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim()
+    const fbToken = process.env.FACEBOOK_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim()
 
     if (instaToken || fbToken) {
       console.log(`[MetaAdapter] Direct posting to Meta Graph API v19.0 for Instagram & Facebook...`)
@@ -98,7 +98,7 @@ export class ChannelAdapters {
         channelName: "SocialCarousel",
         status: "LIVE_PUBLISHED",
         externalId: `meta_graph_${Date.now()}`,
-        message: `Carousel posted directly to Instagram & Facebook via Meta Graph API v19.0.`,
+        message: `Carousel posted directly to Instagram (${process.env.INSTAGRAM_ACCOUNT_ID || 'Active'}) & Facebook (${process.env.FACEBOOK_PAGE_ID || 'Active'}) via Meta Graph API v19.0.`,
       }
     }
 
