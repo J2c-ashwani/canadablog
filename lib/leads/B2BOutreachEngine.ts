@@ -12,8 +12,11 @@ export interface B2BOutreachCandidate {
 }
 
 export class B2BOutreachEngine {
-  // We only target highly qualified B2B leads with Behavior + ICP Priority Score >= 65
+  // Tier 1: Candidate Pool Filter Threshold (Score >= 65 to enter outreach pipeline evaluation)
   static MINIMUM_PRIORITY_SCORE = 65;
+  
+  // Tier 2: Smart Autopilot Direct Dispatch Threshold (Score >= 80 required for instant automated send; 65-79 held in Review Queue)
+  static AUTOPILOT_DIRECT_SEND_SCORE = 80;
 
   static calculatePriorityScore(sub: SubscriberProfile): { score: number; signals: string[] } {
     let behaviorScore = 50; // Base for form submission
