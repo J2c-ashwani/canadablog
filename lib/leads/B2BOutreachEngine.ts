@@ -1,6 +1,8 @@
 import { SubscriberRepository, type SubscriberProfile } from "./SubscriberRepository";
 import { sendEmail } from "../emails/mailer";
 import { getB2BEmailContent, type B2BOutreachStage } from "../emails/b2b-outreach-templates";
+import { appendOutreachSentLeadToSheet } from "../google-sheets";
+
 
 export interface B2BOutreachCandidate {
   lead: SubscriberProfile;
@@ -172,36 +174,35 @@ export class B2BOutreachEngine {
 
     for (const cand of batch) {
       const { lead, nextStage } = cand;
+      if (nextStage === "completed") continue;
       const email = lead.email;
       
       let success = false;
       let errorMsg: any = null;
 
       try {
+        const industry = lead.industry || 'N/A';
+        const state = lead.region || 'ON';
+        const content = getB2BEmailContent(nextStage, lead.name || 'Founder', industry, state);
+
         if (dryRun) {
           success = true;
           console.log(`[DRY RUN] Would send ${nextStage} outreach email to ${email} (Score: ${cand.priorityScore})`);
         } else {
-          if (nextStage !== "completed") {
-            const industry = lead.industry || 'N/A';
-            const state = lead.region || 'ON';
-            const content = getB2BEmailContent(nextStage, lead.name || 'Founder', industry, state);
-
-            const res = await sendEmail({
-              to: email,
-              subject: content.subject,
-              html: content.html,
-              text: content.text,
-              tagType: nextStage,
-              companyName: lead.companyName,
-              forceResend: true
-            });
-            success = res.success;
-            errorMsg = res.error;
-          }
+          const res = await sendEmail({
+            to: email,
+            subject: content.subject,
+            html: content.html,
+            text: content.text,
+            tagType: nextStage,
+            companyName: lead.companyName,
+            forceResend: true
+          });
+          success = res.success;
+          errorMsg = res.error;
         }
 
-        if (success && nextStage !== "completed") {
+        if (success) {
           let activity: any = {};
           try {
             if (lead.leadActivity && lead.leadActivity !== "N/A") {
@@ -216,11 +217,32 @@ export class B2BOutreachEngine {
             await SubscriberRepository.updateSubscriberPreferences(email, {
               leadActivity: JSON.stringify(activity)
             });
+
+            // Auto-append sent lead directly to "Outreach Sent Leads" tab in Google Sheets
+            try {
+              await appendOutreachSentLeadToSheet({
+                timestamp: now.toISOString(),
+                companyName: lead.companyName || lead.name || "N/A",
+                domain: lead.website || "N/A",
+                email: email,
+                decisionMaker: lead.name || "Founder",
+                intentScore: cand.priorityScore,
+                fundingConfidencePct: 100,
+                outreachStage: nextStage,
+                subject: content.subject,
+                recommendedGuides: "SR&ED / IRAP Playbook",
+                status: "SENT (24x7 VERCEL AUTOPILOT)"
+              });
+            } catch (sheetErr: any) {
+              console.warn("⚠️ Failed to append lead to Outreach Sent Leads tab:", sheetErr?.message || sheetErr);
+            }
+
             await sleep(800); // respects sheets API throttling
           }
           sentCount++;
           console.log(`✉️ B2B Outreach: Sent ${nextStage} to ${email}`);
         }
+
       } catch (err: any) {
         console.error(`B2B outreach failure for ${email} at stage ${nextStage}:`, err);
         errors.push({ email, stage: nextStage, error: err.message || err });
