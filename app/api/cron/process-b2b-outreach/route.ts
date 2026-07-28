@@ -6,15 +6,25 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  if (!isValidCronRequest(request)) {
+  const authHeader = request.headers.get("authorization");
+  const searchParams = request.nextUrl.searchParams;
+  const keyParam = searchParams.get("key");
+
+  // Allow cron-jobs.org via ?key=fsi2026admin OR Authorization: Bearer fsi2026admin OR Vercel CRON_SECRET
+  const isAuthorized =
+    isValidCronRequest(request) ||
+    keyParam === "fsi2026admin" ||
+    authHeader === `Bearer fsi2026admin` ||
+    authHeader === `Bearer ${process.env.CRON_SECRET}`;
+
+  if (!isAuthorized) {
     return NextResponse.json({ error: "Unauthorized B2B outreach cron execution." }, { status: 401 });
   }
 
   try {
     let limit = 5; // Safe batch limit per execution run to respect Resend and Sheets quotas
     try {
-      const parsedUrl = new URL(request.url);
-      const limitParam = parsedUrl.searchParams.get("limit");
+      const limitParam = searchParams.get("limit");
       if (limitParam) {
         const parsedLimit = parseInt(limitParam, 10);
         if (!isNaN(parsedLimit) && parsedLimit > 0 && parsedLimit <= 20) {
@@ -30,6 +40,7 @@ export async function GET(request: NextRequest) {
     
     return NextResponse.json({
       success: true,
+      timestamp: new Date().toISOString(),
       limit,
       result
     });
