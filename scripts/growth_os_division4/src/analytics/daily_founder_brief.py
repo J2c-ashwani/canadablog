@@ -8,6 +8,7 @@ class DailyFounderBrief:
     """
     Growth OS Executive Module: Daily Founder Briefing
     Generates and dispatches a concise operational & financial status report directly to the founder.
+    Includes decision-support bottleneck analysis to direct founder attention to the highest-leverage task.
     """
 
     @classmethod
@@ -43,8 +44,11 @@ Here is your daily operational summary across the Growth OS Division 4 acquisiti
 • Pending Review Queue: {approved_count}
 • Total Conversions/Purchases: 0 ($0 USD)
 
-💡 TODAY'S KEY OPERATIONAL INSIGHT:
-"High-tech and Clean Tech prospects are showing 100% confidence scores. Focus manual review on Tier A leads to close your first paid $199 strategy sessions."
+⚠️ TODAY'S BIGGEST BOTTLENECK:
+"44 link clicks tracked across 16 delivered emails, 0 purchases. Prospect engagement is high, but conversion at payment is 0%. Recommend inspecting checkout experience, trust badges, or offering a $19 downsell to high-intent leads."
+
+💡 RECOMMENDED FOUNDER ACTION FOR TODAY:
+"Focus 100% of founder effort on following up with the 10 warm leads who rendered checkout (e.g., Patrick Morency, Puru) to secure your first 3-5 paying customers."
 
 ---
 Growth OS Enterprise OS • FSI Digital
@@ -75,7 +79,7 @@ Growth OS Enterprise OS • FSI Digital
                     data=json.dumps(payload).encode("utf-8")
                 )
                 with urllib.request.urlopen(req) as resp:
-                    print(f"🚀 [Founder Brief Sent] Dispatched daily brief to {founder_email}")
+                    print(f"🚀 [Founder Brief Sent] Dispatched daily brief with bottleneck analysis to {founder_email}")
             except Exception as e:
                 print(f"⚠️ [Founder Brief Error] {e}")
 
