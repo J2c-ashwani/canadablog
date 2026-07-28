@@ -209,6 +209,20 @@ const nextConfig = {
       { source: '/grants/community-grants', destination: '/grant-finder', permanent: true },
       { source: '/grants/small-business-grants', destination: '/blog/small-business-grants-complete-guide', permanent: true },
       { source: '/usa/arizona/chandler-/-tempe', destination: '/usa/arizona/chandler-tempe', permanent: true },
+
+      // GSC 404 fixes — July 2026 (Slash-separated city slug fixes)
+      { source: '/usa/oregon/hillsboro-/-washington-county', destination: '/usa/oregon/hillsboro-washington-county', permanent: true },
+      { source: '/usa/arkansas/osceola-/-jonesboro', destination: '/usa/arkansas/osceola-jonesboro', permanent: true },
+      { source: '/usa/wisconsin/green-bay-/-appleton', destination: '/usa/wisconsin/green-bay-appleton', permanent: true },
+      { source: '/usa/vermont/montpelier/barre', destination: '/usa/vermont/montpelierbarre', permanent: true },
+      { source: '/usa/pennsylvania/allentown-/-lehigh-valley', destination: '/usa/pennsylvania/allentown-lehigh-valley', permanent: true },
+      { source: '/usa/virginia/arlington-/-alexandria', destination: '/usa/virginia/arlington-alexandria', permanent: true },
+      { source: '/usa/virginia/norfolk-/-virginia-beach', destination: '/usa/virginia/norfolk-virginia-beach', permanent: true },
+      { source: '/usa/indiana/lafayette-/-west-lafayette', destination: '/usa/indiana/lafayette-west-lafayette', permanent: true },
+      { source: '/usa/connecticut/groton-/-new-london', destination: '/usa/connecticut/groton-new-london', permanent: true },
+      { source: '/usa/mississippi/biloxi-/-gulfport', destination: '/usa/mississippi/biloxi-gulfport', permanent: true },
+      { source: '/usa/mississippi/starkville-/-columbus', destination: '/usa/mississippi/starkville-columbus', permanent: true },
+      { source: '/usa/kansas/manhattan-/-junction-city', destination: '/usa/kansas/manhattan-junction-city', permanent: true },
     ]
   },
   async headers() {
@@ -268,6 +282,13 @@ const nextConfig = {
         source: '/consultation',
         headers: [
           { key: 'X-Robots-Tag', value: 'noindex, nofollow' },
+        ],
+      },
+      {
+        // Prevent indexing of search query parameter pages
+        source: '/search',
+        headers: [
+          { key: 'X-Robots-Tag', value: 'noindex, follow' },
         ],
       },
       {

@@ -36,6 +36,13 @@ const iconMap: Record<string, any> = {
     Grid, Home, Percent, Flag, AlertCircle
 };
 
+function toCitySlug(text: string): string {
+    return text.toLowerCase()
+        .replace(/[^\w\s-]/g, '')
+        .replace(/\s+/g, '-')
+        .replace(/-+/g, '-');
+}
+
 export async function generateStaticParams() {
     const states = getAllStateDetails();
     return states.map((state) => ({ state: state.slug }));
@@ -887,7 +894,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                             
                             <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-3">
                                 {state.cityGuides.slice(0, 12).map(city => (
-                                    <Link key={city.city} href={`/usa/${state.slug}/${city.city.toLowerCase().replace(/\s+/g, '-')}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
+                                    <Link key={city.city} href={`/usa/${state.slug}/${toCitySlug(city.city)}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
                                         <span className="text-sm font-medium text-gray-900 group-hover:text-green-600">{city.city}</span>
                                     </Link>
                                 ))}
@@ -901,7 +908,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                                     </summary>
                                     <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-3 mt-4">
                                         {state.cityGuides.slice(12).map(city => (
-                                            <Link key={city.city} href={`/usa/${state.slug}/${city.city.toLowerCase().replace(/\s+/g, '-')}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
+                                            <Link key={city.city} href={`/usa/${state.slug}/${toCitySlug(city.city)}`} className="group block p-3 bg-white rounded-lg border border-gray-200 hover:border-green-500 hover:shadow-sm transition-all text-center">
                                                 <span className="text-sm font-medium text-gray-900 group-hover:text-green-600">{city.city}</span>
                                             </Link>
                                         ))}

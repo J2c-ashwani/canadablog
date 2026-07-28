@@ -14,6 +14,7 @@ import {
 import { getAllPrograms } from '@/lib/data/programs'
 import { getAllCaseStudies } from '@/lib/data/case-studies'
 import { industryDatabase } from '@/lib/data/industry-pages'
+import { getAllComparisons } from '@/lib/data/comparisons'
 
 
 const SUPERSEDED_BLOG_SLUGS = new Set([
@@ -57,6 +58,7 @@ function getAllRoutes(dir: string, baseDir: string = 'app'): string[] {
         .replace('/page.tsx', '')
         .replace('/page.ts', '')
         .replace(/\\/g, '/')  // Normalize Windows paths
+        .replace(/\/\([^)]+\)/g, '') // Strip Next.js route groups e.g. (mca)
       routes.push(route || '/')
     }
   }
@@ -184,6 +186,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     '/blog/versus/sba-7a-vs-state-grants'
   ]
 
+  // 12. Add Dynamic Comparison Pages
+  const compareRoutes = getAllComparisons().map(c => `/compare/${c.slug}`)
+
   // Combine all routes
   const allRoutes = Array.from(new Set([
     ...staticRoutes,
@@ -200,6 +205,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...locationRoutes,
     ...caseStudyDetailRoutes,
     ...versusRoutes,
+    ...compareRoutes,
   ])).filter(isIndexableRoute)
 
   // Convert to sitemap format

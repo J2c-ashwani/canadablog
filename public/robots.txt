@@ -8,6 +8,7 @@ User-agent: *
 Allow: /
 Disallow: /download/*/thank-you
 Disallow: /api/
+Disallow: /search
 
 # ---- Block Aggressive SEO Scrapers (Saves Bandwidth) ----
 User-agent: AhrefsBot
