@@ -1159,3 +1159,119 @@ export async function appendAlertLeadToSheet(data: Omit<AlertLeadData, 'timestam
     return { success: false, error }
   }
 }
+
+export interface OutreachSentLeadData {
+  timestamp: string
+  companyName: string
+  domain: string
+  email: string
+  decisionMaker?: string
+  intentScore: number
+  fundingConfidencePct: number
+  outreachStage: string
+  subject: string
+  recommendedGuides: string
+  status: string
+}
+
+const OUTREACH_SENT_LEADS_HEADERS = [
+  "Sent Timestamp",
+  "Company Name",
+  "Domain",
+  "Recipient Email",
+  "Decision Maker",
+  "Intent Score",
+  "Funding Confidence %",
+  "Outreach Stage",
+  "Subject",
+  "Recommended Guides",
+  "Status"
+]
+
+export async function ensureOutreachSentLeadsSheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "Outreach Leads"
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  })
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE)
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: SHEET_TITLE,
+              },
+            },
+          },
+        ],
+      },
+    })
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:K1`,
+  })
+
+  const header = headerResponse.data.values?.[0] || []
+  if (header.join("|") !== OUTREACH_SENT_LEADS_HEADERS.join("|")) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:K1`,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [OUTREACH_SENT_LEADS_HEADERS],
+      },
+    })
+  }
+}
+
+export async function appendOutreachSentLeadToSheet(data: OutreachSentLeadData) {
+  try {
+    const sheets = await getGoogleSheetsClient()
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID
+    if (!spreadsheetId) {
+      throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+    }
+
+    await ensureOutreachSentLeadsSheet(sheets, spreadsheetId)
+
+    const values = [
+      [
+        data.timestamp,
+        data.companyName || "N/A",
+        data.domain || "N/A",
+        data.email,
+        data.decisionMaker || "N/A",
+        data.intentScore || 0,
+        data.fundingConfidencePct || 0,
+        data.outreachStage || "b2b_day1",
+        data.subject || "N/A",
+        data.recommendedGuides || "N/A",
+        data.status || "SENT (24x7 VERCEL AUTOPILOT)",
+      ]
+    ]
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "Outreach Leads!A:K",
+      valueInputOption: "RAW",
+      requestBody: {
+        values,
+      },
+    })
+
+    console.log(`✅ Outreach Lead appended to "Outreach Leads" tab for ${data.email}`)
+    return { success: true }
+  } catch (error) {
+    console.error("❌ Error appending outreach lead to Google Sheets:", error)
+    return { success: false, error }
+  }
+}
+
