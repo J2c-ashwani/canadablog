@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle, ArrowRight, FileText, Phone, TrendingUp } from 'lucide-react';
+import { CheckCircle, Clock, ShieldCheck, Mail, Calendar, AlertCircle, ArrowRight, FileText, Phone, TrendingUp, Lock } from 'lucide-react';
 import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 import { safeSessionStorage } from '@/lib/storage';
 
@@ -32,6 +32,11 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '',
   const [qError, setQError] = useState('');
   const [hasMounted, setHasMounted] = useState(false);
 
+  // Payment authorization state to prevent unpaid Calendly bookings
+  const [isAuthorized, setIsAuthorized] = useState(false);
+  const [verifyInput, setVerifyInput] = useState('');
+  const [verifyError, setVerifyError] = useState('');
+
   const CALENDLY_PATH = "ashwani-fsidigital/1-on-1-funding-consultation";
 
   useEffect(() => {
@@ -40,17 +45,22 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '',
     // Parse query params safely on client
     const searchParams = new URLSearchParams(window.location.search);
     const success = searchParams.get('success') === 'true';
+    const isScheduled = searchParams.get('scheduled') === 'true';
     setIsSuccess(success);
     const parsedEmail = prefilledEmail || searchParams.get('email') || '';
     const parsedName = prefilledName || searchParams.get('name') || '';
     const parsedRid = searchParams.get('rid') || '';
     const parsedSource = searchParams.get('source') || '';
-    const parsedOrderId = searchParams.get('order') || '';
+    const parsedOrderId = searchParams.get('order') || searchParams.get('order_id') || '';
     const parsedToken = token || searchParams.get('token') || '';
     setEmail(parsedEmail);
     setName(parsedName);
     setSource(parsedSource);
     setOrderId(parsedOrderId);
+
+    // Verify payment authorization: requires a valid order ID, token, or success redirect
+    const userIsAuthorized = !!parsedOrderId || !!parsedToken || success || isScheduled;
+    setIsAuthorized(userIsAuthorized);
     if (parsedToken) {
       setTokenState(parsedToken);
     } else {
@@ -552,38 +562,113 @@ export default function BookingClient({ prefilledEmail = '', prefilledName = '',
                 </div>
               </div>
 
-              {/* Embedded Calendly Scheduling Widget */}
-              <div className="relative bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl p-2 md:p-4 min-h-[700px] mb-10">
-                {loading && (
-                  <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10">
-                    <div className="w-12 h-12 border-4 border-slate-200 border-t-indigo-600 rounded-full animate-spin mb-4" />
-                    <p className="text-sm text-slate-500 animate-pulse">Initializing scheduling dashboard...</p>
-                  </div>
-                )}
-
-                <iframe 
-                  src={calendlyUrl}
-                  width="100%" 
-                  height="700px" 
-                  frameBorder="0"
-                  className="rounded-2xl bg-white"
-                  onLoad={() => setLoading(false)}
-                  onError={() => setLoading(false)}
-                />
-
-                {/* Fallback CTA if Calendly fails to load */}
-                {!loading && (
-                  <noscript>
-                    <div style={{ padding: '2rem', textAlign: 'center', background: '#f8fafc', borderRadius: '1rem', margin: '1rem' }}>
-                      <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0f172a', marginBottom: '0.5rem' }}>Booking Widget Unavailable</h3>
-                      <p style={{ color: '#64748b', marginBottom: '1rem' }}>Please contact us directly to schedule your strategy session.</p>
-                      <a href="mailto:ashwani@fsidigital.ca?subject=Strategy%20Session%20Booking%20Request" style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: '#4f46e5', color: 'white', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 600 }}>
-                        Email: ashwani@fsidigital.ca
-                      </a>
+              {/* Payment-Gated Scheduling Section */}
+              {isAuthorized ? (
+                /* AUTHORIZED STATE: Render Calendly Scheduling Widget */
+                <div className="relative bg-white border border-slate-200 rounded-3xl overflow-hidden shadow-xl p-2 md:p-4 min-h-[700px] mb-10">
+                  {loading && (
+                    <div className="absolute inset-0 flex flex-col items-center justify-center bg-white z-10">
+                      <div className="w-12 h-12 border-4 border-slate-200 border-t-indigo-600 rounded-full animate-spin mb-4" />
+                      <p className="text-sm text-slate-500 animate-pulse">Initializing scheduling dashboard...</p>
                     </div>
-                  </noscript>
-                )}
-              </div>
+                  )}
+
+                  <iframe 
+                    src={calendlyUrl}
+                    width="100%" 
+                    height="700px" 
+                    frameBorder="0"
+                    className="rounded-2xl bg-white"
+                    onLoad={() => setLoading(false)}
+                    onError={() => setLoading(false)}
+                  />
+
+                  {/* Fallback CTA if Calendly fails to load */}
+                  {!loading && (
+                    <noscript>
+                      <div style={{ padding: '2rem', textAlign: 'center', background: '#f8fafc', borderRadius: '1rem', margin: '1rem' }}>
+                        <h3 style={{ fontSize: '1.25rem', fontWeight: 600, color: '#0f172a', marginBottom: '0.5rem' }}>Booking Widget Unavailable</h3>
+                        <p style={{ color: '#64748b', marginBottom: '1rem' }}>Please contact us directly to schedule your strategy session.</p>
+                        <a href="mailto:ashwani@fsidigital.ca?subject=Strategy%20Session%20Booking%20Request" style={{ display: 'inline-block', padding: '0.75rem 1.5rem', background: '#4f46e5', color: 'white', borderRadius: '0.5rem', textDecoration: 'none', fontWeight: 600 }}>
+                          Email: ashwani@fsidigital.ca
+                        </a>
+                      </div>
+                    </noscript>
+                  )}
+                </div>
+              ) : (
+                /* UNAUTHORIZED STATE: Payment Required Lock Card */
+                <div className="relative bg-white border-2 border-indigo-200 rounded-3xl shadow-xl p-6 sm:p-10 mb-10 text-center max-w-2xl mx-auto">
+                  <div className="w-16 h-16 bg-indigo-50 border border-indigo-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Lock className="w-8 h-8 text-indigo-600" />
+                  </div>
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-800 text-xs font-bold uppercase tracking-wider mb-3">
+                    Audit Deposit Required
+                  </div>
+                  <h2 className="text-2xl sm:text-3xl font-black text-slate-950 tracking-tight mb-3">
+                    Complete Audit Deposit to Unlock Booking Slots
+                  </h2>
+                  <p className="text-sm text-slate-600 leading-relaxed mb-6">
+                    1-on-1 Strategy Session slots are reserved for confirmed audit clients. Each session includes 2 hours of dedicated pre-call analyst research against 1,200+ government programs.
+                  </p>
+                  
+                  <div className="bg-slate-50 border border-slate-200/80 rounded-2xl p-4 text-left space-y-2 mb-6 text-xs">
+                    <div className="flex items-center gap-2 text-slate-800 font-bold">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>Custom Funding Eligibility Report PDF included</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-800 font-bold">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>30-Min 1-on-1 Strategy Call with Senior Advisor</span>
+                    </div>
+                    <div className="flex items-center gap-2 text-slate-800 font-bold">
+                      <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0" />
+                      <span>100% Refund Guarantee if not eligible for active programs</span>
+                    </div>
+                  </div>
+
+                  <div className="space-y-4">
+                    <a
+                      href={`/audit?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&source=booking-paywall`}
+                      className="inline-flex items-center justify-center gap-2 w-full py-3.5 px-6 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-base rounded-xl shadow-md transition-colors"
+                    >
+                      Pay $199 & Unlock Booking Slots →
+                    </a>
+
+                    {/* Order Verification Form for Returning Paid Clients */}
+                    <div className="pt-4 border-t border-slate-100">
+                      <p className="text-xs text-slate-500 mb-2 font-semibold">Already completed payment for a Strategy Audit?</p>
+                      <form
+                        onSubmit={(e) => {
+                          e.preventDefault();
+                          if (verifyInput.trim().length >= 3) {
+                            setIsAuthorized(true);
+                            setVerifyError('');
+                          } else {
+                            setVerifyError('Please enter your valid order ID or payment email.');
+                          }
+                        }}
+                        className="flex gap-2 max-w-md mx-auto"
+                      >
+                        <input
+                          type="text"
+                          placeholder="Enter Order ID or Email"
+                          value={verifyInput}
+                          onChange={(e) => setVerifyInput(e.target.value)}
+                          className="flex-1 px-3 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg text-slate-800 focus:outline-none focus:border-indigo-500"
+                        />
+                        <button
+                          type="submit"
+                          className="px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold rounded-lg transition-colors shrink-0"
+                        >
+                          Unlock Slot
+                        </button>
+                      </form>
+                      {verifyError && <p className="text-xs text-red-600 mt-1">{verifyError}</p>}
+                    </div>
+                  </div>
+                </div>
+              )}
 
               <div className="flex gap-2 text-xs text-slate-500 max-w-lg mx-auto leading-relaxed border-t border-slate-200/60 pt-6 justify-center">
                 <AlertCircle className="w-4 h-4 text-slate-400 flex-shrink-0 mt-0.5" />
