@@ -183,6 +183,10 @@ export async function POST(request: NextRequest) {
     const netProductPrice = expectedPrice - addonTotal;
 
     // ── Verify PayPal order ──
+    // NOTE: payerEmail is intentionally NOT passed for verification because the PayPal
+    // account email frequently differs from the email used on our site (e.g., a company
+    // uses ajit@kolethe.com on PayPal but reach@sutrakatha.ca on our checkout form).
+    // The payer email mismatch check was causing real payments to be rejected.
     const verification = await verifyPayPalOrder(
       paypalOrderId,
       expectedPrice.toFixed(2),
@@ -190,14 +194,14 @@ export async function POST(request: NextRequest) {
         customId: paymentIntentId,
         referenceId: productId,
         currency: paymentIntent.currency,
-        payerEmail: email,
       }
     );
 
     if (!verification.verified) {
       console.error(
         `❌ PayPal verification failed for order ${paypalOrderId}:`,
-        verification.error
+        verification.error,
+        `| Product: ${productId} | Email: ${email} | Amount: $${expectedPrice.toFixed(2)}`
       );
 
       // Security telemetry tracking
@@ -212,18 +216,74 @@ export async function POST(request: NextRequest) {
         utmCampaign: verification.error || 'unknown_error',
       }).catch(() => {});
 
-      // Alert owner
+      // ── MANUAL REVIEW QUEUE ──
+      // Instead of silently rejecting, record a pending-review purchase so the customer
+      // is not left without product after a real payment. Admin is alerted to investigate.
+      try {
+        const pendingPurchase = await recordPurchase({
+          email,
+          name,
+          productId,
+          amount: expectedPrice.toFixed(2),
+          paypalOrderId,
+          profileData: normalizedProfileData,
+          attribution: resolvedAttribution,
+          status: 'pending_review',
+        });
+        console.log(`📋 Order ${paypalOrderId} placed in MANUAL REVIEW queue. Purchase ID: ${pendingPurchase.purchaseId}`);
+
+        // Alert owner with manual review instructions
+        const adminEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+        await sendEmail({
+          to: adminEmail,
+          subject: '🔍 MANUAL REVIEW REQUIRED: PayPal Payment Needs Verification',
+          html: `<p><strong>ACTION REQUIRED:</strong> A PayPal payment was received but automated verification failed. The order has been placed in the <strong>Manual Review Queue</strong>.</p>
+                 <p><strong>Customer Email:</strong> ${email}</p>
+                 <p><strong>Customer Name:</strong> ${name}</p>
+                 <p><strong>Product:</strong> ${product.name} (ID: ${productId})</p>
+                 <p><strong>Expected Price:</strong> $${expectedPrice.toFixed(2)}</p>
+                 <p><strong>PayPal Order ID:</strong> ${paypalOrderId}</p>
+                 <p><strong>Payment Intent ID:</strong> ${paymentIntentId}</p>
+                 <p><strong>Verification Error:</strong> ${verification.error || 'Unknown'}</p>
+                 <hr/>
+                 <p><strong>Next Steps:</strong></p>
+                 <ol>
+                   <li>Check your PayPal dashboard for Order ID: ${paypalOrderId}</li>
+                   <li>If payment is confirmed, mark the purchase as completed and send the product</li>
+                   <li>If payment is NOT in PayPal, this may be a fraud attempt — take no action</li>
+                 </ol>
+                 <p>The customer has been told their order is being processed.</p>`,
+          text: `MANUAL REVIEW: PayPal order ${paypalOrderId} from ${email} for ${product.name} ($${expectedPrice.toFixed(2)}). Verification error: ${verification.error}. Check PayPal dashboard and fulfill if confirmed.`,
+          tagType: 'security-alert'
+        }).catch(err => console.error('Failed to send manual review email:', err));
+
+        // Return a non-error response so the customer knows their order was received
+        return NextResponse.json(
+          {
+            error: 'Your payment has been received and is being processed. You will receive a confirmation email shortly. If you have questions, contact hello@fsidigital.ca',
+            pendingReview: true,
+          },
+          { status: 202 }
+        );
+      } catch (queueErr) {
+        console.error('❌ Failed to queue order for manual review:', queueErr);
+        // Fall through to the original rejection if even the queue fails
+      }
+
+      // Absolute fallback: alert admin and reject
       const adminEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
       await sendEmail({
         to: adminEmail,
         subject: '⚠️ PAYMENT SECURITY ANOMALY: Purchase Verification Failed',
         html: `<p><strong>WARNING:</strong> A product checkout payment verification failed on <code>/api/products/purchase</code>.</p>
                <p><strong>Product:</strong> ${product.name} (ID: ${productId})</p>
+               <p><strong>Customer:</strong> ${name} (${email})</p>
                <p><strong>Expected Price:</strong> $${expectedPrice.toFixed(2)}</p>
                <p><strong>PayPal Order ID:</strong> ${paypalOrderId}</p>
+               <p><strong>Payment Intent ID:</strong> ${paymentIntentId}</p>
                <p><strong>Error Details:</strong> ${verification.error || 'Verification failed'}</p>
-               <p>The transaction has been rejected.</p>`,
-        text: `WARNING: Purchase verification failed. Product: ${product.name}. Order: ${paypalOrderId}. Error: ${verification.error || 'Verification failed'}`,
+               <p>The transaction has been rejected. Check PayPal dashboard to verify if funds were received.</p>`,
+        text: `WARNING: Purchase verification failed. Product: ${product.name}. Customer: ${email}. Order: ${paypalOrderId}. Error: ${verification.error || 'Verification failed'}`,
         tagType: 'security-alert'
       }).catch(err => console.error('Failed to send security warning email:', err));
 

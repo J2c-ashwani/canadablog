@@ -145,6 +145,7 @@ export async function recordPurchase(data: {
     browser?: string;
     country?: string;
   };
+  status?: string;
 }): Promise<PurchaseRecord> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -159,7 +160,7 @@ export async function recordPurchase(data: {
   const accessToken = randomUUID();
   const createdAt = new Date().toISOString();
   const profileDataJson = JSON.stringify(data.profileData);
-  const status = 'completed';
+  const status = data.status || 'completed';
 
   const row = [
     purchaseId,

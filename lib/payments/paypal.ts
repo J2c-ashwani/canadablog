@@ -286,6 +286,9 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
     let orderData = await orderRes.json();
     let status = orderData.status;
 
+    // Preserve original order data before capture — capture response may omit fields like custom_id
+    const originalOrderData = JSON.parse(JSON.stringify(orderData));
+
     // If order is APPROVED, capture it server-side to secure merchant funds and prevent client-side bypass
     if (status === "APPROVED") {
       console.log(`[PayPal Security Check] Order ${orderId} is APPROVED. Capturing server-side...`);
@@ -295,21 +298,46 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
         status = captureData.status || "COMPLETED";
         console.log(`[PayPal Security Check] Order ${orderId} captured successfully. New status: ${status}`);
       } catch (captureError: any) {
-        console.error(`[PayPal Security Check] Failed to capture APPROVED order ${orderId} server-side:`, captureError);
-        return { verified: false, error: `Failed to capture order: ${captureError.message}` };
+        // If capture fails with ORDER_ALREADY_CAPTURED, the order was captured client-side or by webhook.
+        // Re-fetch the order to get the completed status instead of failing.
+        if (captureError.message?.includes('ORDER_ALREADY_CAPTURED') || captureError.message?.includes('UNPROCESSABLE_ENTITY')) {
+          console.log(`[PayPal Security Check] Order ${orderId} was already captured. Re-fetching order details...`);
+          try {
+            const refetchRes = await fetch(`${host}/v2/checkout/orders/${encodeURIComponent(orderId)}`, {
+              headers: { Authorization: `Bearer ${accessToken}`, "Content-Type": "application/json" },
+              cache: "no-store"
+            });
+            if (refetchRes.ok) {
+              orderData = await refetchRes.json();
+              status = orderData.status;
+              console.log(`[PayPal Security Check] Re-fetched order ${orderId}. Status: ${status}`);
+            } else {
+              console.error(`[PayPal Security Check] Failed to re-fetch already-captured order ${orderId}`);
+              return { verified: false, error: `Failed to capture order: ${captureError.message}` };
+            }
+          } catch (refetchErr: any) {
+            console.error(`[PayPal Security Check] Re-fetch failed for order ${orderId}:`, refetchErr);
+            return { verified: false, error: `Failed to capture order: ${captureError.message}` };
+          }
+        } else {
+          console.error(`[PayPal Security Check] Failed to capture APPROVED order ${orderId} server-side:`, captureError);
+          return { verified: false, error: `Failed to capture order: ${captureError.message}` };
+        }
       }
     }
 
     if (status !== "COMPLETED") {
+      console.error(`[PayPal Security Check] Order ${orderId} has invalid status: ${status}`);
       return { verified: false, error: `Invalid order status: ${status}` };
     }
 
-    // Validate currency
+    // Validate currency — check both top-level and nested capture locations
     const currencyCode = orderData.purchase_units?.[0]?.amount?.currency_code || 
                          orderData.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.currency_code;
     const expectedCurrency = expected?.currency || process.env.NEXT_PUBLIC_PAYPAL_CURRENCY || 'USD';
     
     if (currencyCode && currencyCode.toUpperCase() !== expectedCurrency.toUpperCase()) {
+      console.error(`[PayPal Security Check] Currency mismatch for order ${orderId}: expected=${expectedCurrency}, received=${currencyCode}`);
       return {
         verified: false,
         error: `Transaction currency mismatch: expected ${expectedCurrency}, got ${currencyCode}`
@@ -317,14 +345,41 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
     }
 
     const purchaseUnit = orderData.purchase_units?.[0];
-    if (expected?.customId && purchaseUnit?.custom_id !== expected.customId) {
-      return { verified: false, error: 'Transaction intent mismatch' };
+    // After capture, custom_id may not be at the top-level purchase_units[0] —
+    // check both the current response AND the preserved original order data.
+    const resolvedCustomId = purchaseUnit?.custom_id
+      || purchaseUnit?.payments?.captures?.[0]?.custom_id
+      || originalOrderData.purchase_units?.[0]?.custom_id;
+    const resolvedReferenceId = purchaseUnit?.reference_id
+      || purchaseUnit?.payments?.captures?.[0]?.reference_id
+      || originalOrderData.purchase_units?.[0]?.reference_id;
+
+    if (expected?.customId && resolvedCustomId !== expected.customId) {
+      console.error(
+        `[PayPal Security Check] Intent mismatch for order ${orderId}: ` +
+        `expected custom_id="${expected.customId}", ` +
+        `got purchase_units[0].custom_id="${purchaseUnit?.custom_id}", ` +
+        `captures[0].custom_id="${purchaseUnit?.payments?.captures?.[0]?.custom_id}", ` +
+        `original custom_id="${originalOrderData.purchase_units?.[0]?.custom_id}", ` +
+        `resolved="${resolvedCustomId}"`
+      );
+      return { verified: false, error: `Transaction intent mismatch: expected custom_id "${expected.customId}", got "${resolvedCustomId || 'undefined'}"` };
     }
-    if (expected?.referenceId && purchaseUnit?.reference_id !== expected.referenceId) {
-      return { verified: false, error: 'Transaction product mismatch' };
+    if (expected?.referenceId && resolvedReferenceId !== expected.referenceId) {
+      console.error(
+        `[PayPal Security Check] Product mismatch for order ${orderId}: ` +
+        `expected reference_id="${expected.referenceId}", got="${resolvedReferenceId}"`
+      );
+      return { verified: false, error: `Transaction product mismatch: expected reference_id "${expected.referenceId}", got "${resolvedReferenceId || 'undefined'}"` };
     }
     if (expected?.payerEmail && orderData.payer?.email_address?.toLowerCase() !== expected.payerEmail.toLowerCase()) {
-      return { verified: false, error: 'Transaction purchaser mismatch' };
+      // PayPal payer email may differ from the email used to sign up on our site (e.g. ajit@kolethe.com vs reach@sutrakatha.ca).
+      // Log but do NOT reject — the payment was completed and the payer email is PayPal-verified.
+      console.warn(
+        `[PayPal Security Check] Payer email mismatch for order ${orderId} (non-blocking): ` +
+        `expected="${expected.payerEmail}", got="${orderData.payer?.email_address}". ` +
+        `Allowing because PayPal has verified the payer identity.`
+      );
     }
 
     // Validate payee email (merchant email) if configured to prevent payment diversion / bypass
@@ -332,6 +387,10 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
                        orderData.purchase_units?.[0]?.payments?.captures?.[0]?.payee?.email_address;
     const expectedPayee = process.env.PAYPAL_MERCHANT_EMAIL;
     if (expectedPayee && payeeEmail && payeeEmail.toLowerCase() !== expectedPayee.toLowerCase()) {
+      console.error(
+        `[PayPal Security Check] Merchant mismatch for order ${orderId}: ` +
+        `expected="${expectedPayee}", got="${payeeEmail}"`
+      );
       return {
         verified: false,
         error: `Transaction merchant mismatch: expected ${expectedPayee}, got ${payeeEmail}`
@@ -343,15 +402,28 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
                       orderData.purchase_units?.[0]?.payments?.captures?.[0]?.amount?.value;
 
     // Verify amount matches within a small delta (e.g. 0.01) to account for decimal formatting
+    // IMPORTANT: Always compare GROSS amount, NOT net-of-fees amount
     const parsedAmount = parseFloat(amountVal || "0");
     const parsedExpected = parseFloat(expectedAmount || "0");
 
     if (Math.abs(parsedAmount - parsedExpected) > 0.01) {
+      console.error(
+        `[PayPal Security Check] Amount mismatch for order ${orderId}: ` +
+        `expected=${expectedAmount}, got=${amountVal}, ` +
+        `parsed_expected=${parsedExpected}, parsed_got=${parsedAmount}, ` +
+        `delta=${Math.abs(parsedAmount - parsedExpected)}`
+      );
       return { 
         verified: false, 
         error: `Transaction amount mismatch: expected ${expectedAmount}, got ${amountVal}` 
         };
       }
+
+    console.log(
+      `[PayPal Security Check] ✅ Order ${orderId} verified successfully: ` +
+      `status=${status}, amount=${amountVal}, currency=${currencyCode}, ` +
+      `custom_id=${resolvedCustomId}, reference_id=${resolvedReferenceId}`
+    );
 
     return { verified: true, bypass: false, orderData };
   } catch (error: any) {

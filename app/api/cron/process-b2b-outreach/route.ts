@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import { isValidCronRequest } from "@/lib/admin/auth";
 import { B2BOutreachEngine } from "@/lib/leads/B2BOutreachEngine";
+import { SERPERProspector } from "@/lib/leads/SERPERProspector";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -35,13 +36,20 @@ export async function GET(request: NextRequest) {
       // fallback to default
     }
 
-    console.log(`🤖 [B2B Outreach Cron] Triggering priority outreach batch (limit: ${limit})...`);
+    console.log(`🤖 [B2B Outreach Cron] Step 1: Running live SERPER Google Search outbound discovery...`);
+    const discoveryResult = await SERPERProspector.discoverNewProspects(5).catch(err => {
+      console.error("SERPER prospect discovery failed (non-blocking):", err);
+      return { discoveredCount: 0, savedCount: 0, prospects: [] };
+    });
+
+    console.log(`🤖 [B2B Outreach Cron] Step 2: Triggering priority outreach batch (limit: ${limit})...`);
     const result = await B2BOutreachEngine.processDailyBatch(limit);
     
     return NextResponse.json({
       success: true,
       timestamp: new Date().toISOString(),
       limit,
+      discovery: discoveryResult,
       result
     });
   } catch (err: any) {
