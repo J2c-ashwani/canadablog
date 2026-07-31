@@ -171,7 +171,7 @@ export class SERPERProspector {
                 region,
                 industry,
                 companySize: "10-49",
-                fundingInterests: ["Grants", "SR&ED", "IRAP"],
+                fundingInterests: ["Grants", "Tax Credits"],
                 website: `https://${domain}`,
                 companyName,
                 leadActivity: activityJson,
