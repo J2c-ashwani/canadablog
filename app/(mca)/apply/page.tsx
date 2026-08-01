@@ -221,6 +221,18 @@ export default function ApplyPage() {
           })
         }).catch(() => {});
       }
+      // Track step transition telemetry for step-by-step drop-off analysis
+      fetch('/api/telemetry', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          eventName: `mca_step${step}_complete`,
+          pagePath: '/apply',
+          timestamp: new Date().toISOString(),
+          metadata: { step, email: form.email, province: form.province, industry: form.industry }
+        })
+      }).catch(() => {});
+
       setStep((s) => s + 1);
       topRef.current?.scrollIntoView({ behavior: 'smooth' });
     }

@@ -2,6 +2,7 @@ import { type NextRequest, NextResponse } from "next/server";
 import { appendLeadToSheet } from "@/lib/google-sheets";
 import { sendContactConfirmation } from "@/lib/emails/contact-confirmation";
 import { sendEnterpriseSalesAlert } from "@/lib/emails/enterprise-alerts";
+import { sendMCAAbandonmentEmail } from "@/lib/emails/mca-abandonment";
 import { validateEmail } from "@/lib/email-validator";
 import { validatePhone } from "@/lib/phone-validator";
 import { calculateLeadIntelligence } from "@/lib/leads/scoring";
@@ -210,6 +211,18 @@ export async function POST(request: NextRequest) {
         estimatedOpportunityValue: intelligence.estimatedOpportunityValue
       }).catch((err) => {
         console.error("❌ Failed to send immediate enterprise sales alert:", err);
+      });
+    }
+
+    // Trigger MCA Application Abandonment Recovery Email for Step 1 partial leads
+    if (leadData.source === 'MCA Application Step 1' || body.toolUsed === 'MCA 3-Step Intake') {
+      sendMCAAbandonmentEmail({
+        to: leadData.email,
+        name: leadData.name,
+        companyName: leadData.companyName,
+        province: leadData.state
+      }).catch((err) => {
+        console.error("❌ Failed to send MCA abandonment recovery email:", err);
       });
     }
 
