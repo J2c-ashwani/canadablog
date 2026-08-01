@@ -42,9 +42,9 @@ export async function POST(request: NextRequest) {
     }
 
     // 2. Required fields validation
-    if (!name || !email || !companyName || !website || !phone) {
+    if (!name || !email || !companyName || !phone) {
       return NextResponse.json(
-        { error: "Name, email, phone number, company name, and website are required." },
+        { error: "Name, email, phone number, and company name are required." },
         { status: 400 }
       )
     }
@@ -82,7 +82,7 @@ export async function POST(request: NextRequest) {
       email: email.trim().toLowerCase(),
       phone: phone ? phone.trim() : "N/A",
       companyName: companyName.trim(),
-      website: website.trim(),
+      website: website ? website.trim() : "N/A",
       leadType: cleanLeadType,
       geography: cleanGeography,
       existingVolume: cleanExistingVolume,

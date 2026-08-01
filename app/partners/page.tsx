@@ -350,8 +350,14 @@ export default function FundingPartnerProgramPage() {
                   className="mt-5 inline-flex w-full items-center justify-center gap-2 rounded-md bg-gray-950 px-4 py-3 font-semibold text-white transition hover:bg-gray-800"
                 >
                   <CreditCard className="h-4 w-4" />
-                  Pay with PayPal
+                  Pay with PayPal (${partnerPackage.priceUsd})
                 </Link>
+                <a
+                  href="#inquiry-form"
+                  className="mt-2 inline-flex w-full items-center justify-center gap-2 rounded-md border border-gray-300 bg-white px-4 py-2.5 text-xs font-semibold text-gray-700 hover:bg-gray-50 transition"
+                >
+                  Request Free Sample Leads &rarr;
+                </a>
               </div>
             ))}
           </div>
