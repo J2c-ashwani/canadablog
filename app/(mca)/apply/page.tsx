@@ -193,13 +193,10 @@ export default function ApplyPage() {
 
   function validateStep3(): boolean {
     const e: Partial<Record<keyof FormData, string>> = {};
-    if (uploadedFiles.length === 0) {
-      setUploadError('Bank statements are required to submit your application');
-    }
     if (!form.consentToShare) e.consentToShare = 'Authorization to share documents is required';
     if (!form.consent) e.consent = 'Agreement to terms is required';
     setErrors(e);
-    return uploadedFiles.length > 0 && Object.keys(e).length === 0;
+    return Object.keys(e).length === 0;
   }
 
   // ─── Navigation ────────────────────────────────────────────────────────────
@@ -207,6 +204,23 @@ export default function ApplyPage() {
   const goNext = () => {
     const valid = step === 1 ? validateStep1() : step === 2 ? validateStep2() : false;
     if (valid) {
+      // Auto-save partial lead on Step 1 completion
+      if (step === 1) {
+        fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            name: form.ownerName,
+            email: form.email,
+            phone: form.phone,
+            company: form.legalBusinessName,
+            province: form.province,
+            source: 'MCA Application Step 1',
+            toolUsed: 'MCA 3-Step Intake',
+            pagePath: '/apply'
+          })
+        }).catch(() => {});
+      }
       setStep((s) => s + 1);
       topRef.current?.scrollIntoView({ behavior: 'smooth' });
     }

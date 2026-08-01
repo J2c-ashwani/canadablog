@@ -45,9 +45,9 @@ const applicationSchema = z.object({
   fundingAmount: z.number().min(1000, 'Funding amount must be at least $1,000'),
   fundingPurpose: z.string().min(5, 'Funding purpose is required'),
 
-  // Step 3 — Documents + Consent
-  storageFileUrls: z.array(z.string().url()).min(1, 'Bank statements are required'),
-  fileCount: z.number().min(1),
+  // Step 3 — Documents + Consent (Bank statements optional for initial lead capture)
+  storageFileUrls: z.array(z.string()).optional().default([]),
+  fileCount: z.number().optional().default(0),
   consentToShare: z.literal(true, {
     errorMap: () => ({ message: 'Authorization to share documents is required' }),
   }),
