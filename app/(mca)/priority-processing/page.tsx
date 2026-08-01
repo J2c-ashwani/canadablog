@@ -252,7 +252,7 @@ function PriorityCheckoutBridge() {
 
       {/* Main Benefits Grid */}
       <section className="max-w-4xl mx-auto px-6 mt-16">
-        <h2 className="text-2xl font-black text-gray-900 text-center mb-10">What is included in the Funding Readiness Review?</h2>
+        <h2 className="text-2xl font-black text-gray-900 text-center mb-10">What is included in the Funding Readiness Review™?</h2>
         <div className="space-y-6">
           {BENEFITS.map((b) => (
             <div key={b.title} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 flex gap-4">
@@ -263,6 +263,29 @@ function PriorityCheckoutBridge() {
               </div>
             </div>
           ))}
+        </div>
+
+        {/* What Happens After Purchase */}
+        <div className="mt-12 bg-slate-900 text-white rounded-2xl p-8 border border-slate-800 shadow-xl">
+          <h3 className="text-lg font-bold text-emerald-400 mb-4 text-center">What Happens After Requesting Your Review?</h3>
+          <div className="space-y-3 text-sm text-slate-200">
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-400 font-bold">1.</span>
+              <span><strong>Document & Statement Audit:</strong> We review your submitted documents and bank statement formatting for completeness.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-400 font-bold">2.</span>
+              <span><strong>Information Verification:</strong> We identify missing pages, deposit frequency gaps, or NSF risk patterns.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-400 font-bold">3.</span>
+              <span><strong>Written Summary Report:</strong> We send you a written readiness summary highlighting key underwriting observations.</span>
+            </div>
+            <div className="flex items-start gap-3">
+              <span className="text-emerald-400 font-bold">4.</span>
+              <span><strong>Pre-Forwarding Opportunity:</strong> If updates are needed, you have the opportunity to provide revised documents before lender submission.</span>
+            </div>
+          </div>
         </div>
       </section>
 

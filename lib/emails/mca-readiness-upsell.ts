@@ -37,11 +37,11 @@ export async function sendMCAReadinessEmail1({
           </p>
 
           <p style="margin: 0 0 16px 0;">
-            Did you know that over 40% of working capital applications in Canada get declined due to simple, avoidable issues like missing statement pages, unverified deposit formatting, or unaddressed NSF flags?
+            Many funding delays and lender requests for additional information arise from incomplete documentation, missing pages, or deposit formatting inconsistencies.
           </p>
 
           <div style="background-color:#f0fdf4;border:1px solid #bbf7d0;border-radius:8px;padding:20px;margin:24px 0;">
-            <h4 style="margin:0 0 12px 0;color:#166534;font-size:15px;font-weight:700;">Optional Funding Readiness Review ($49 CAD)</h4>
+            <h4 style="margin:0 0 12px 0;color:#166534;font-size:15px;font-weight:700;">Funding Readiness Review™ ($49 CAD)</h4>
             <p style="margin:0 0 12px 0;font-size:13px;color:#15803d;line-height:1.5;">
               Have an application specialist audit your file before it is sent to Canadian lenders. We verify:
             </p>
@@ -55,7 +55,7 @@ export async function sendMCAReadinessEmail1({
 
           <div style="text-align:center;margin:28px 0;">
             <a href="${reviewUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-              Request Funding Readiness Review ($49) &rarr;
+              Request Funding Readiness Review™ ($49 CAD) &rarr;
             </a>
           </div>
         </div>
@@ -71,7 +71,7 @@ export async function sendMCAReadinessEmail1({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nWe have received your business funding application for ${cleanCompany}.\n\nOver 40% of working capital applications get declined due to simple, avoidable issues like missing statement pages or deposit formatting errors.\n\nOptional Funding Readiness Review ($49 CAD):\n- Missing bank statement pages check\n- NSF & overdraft risk pattern check\n- Monthly deposit consistency check\n- Business info accuracy check\n\nRequest Funding Readiness Review: ${reviewUrl}\n\nBest regards,\nFunding Intelligence Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nWe have received your business funding application for ${cleanCompany}.\n\nMany funding delays and lender requests for additional information arise from incomplete documentation, missing pages, or deposit formatting inconsistencies.\n\nFunding Readiness Review™ ($49 CAD):\n- Missing bank statement pages check\n- NSF & overdraft risk pattern check\n- Monthly deposit consistency check\n- Business info accuracy check\n\nRequest Funding Readiness Review™: ${reviewUrl}\n\nBest regards,\nFunding Intelligence Team\nFSI Digital Canada`;
 
   return sendEmail({
     to,
@@ -106,17 +106,17 @@ export async function sendMCAReadinessEmail2({
           <p style="font-weight:600;margin-top:0;margin-bottom:16px;">Hi ${firstName},</p>
           
           <p style="margin: 0 0 16px 0;">
-            Before your application for <strong>${cleanCompany}</strong> is reviewed by Canadian funding partners, here are the 3 most common reasons files get delayed or declined:
+            Before your application for <strong>${cleanCompany}</strong> is reviewed by Canadian funding partners, here are 3 common areas underwriters check:
           </p>
 
           <ol style="margin:0 0 20px 0;padding-left:20px;line-height:1.6;font-size:14px;color:#334155;">
-            <li style="margin-bottom:8px;"><strong>Incomplete PDF Pages:</strong> Underwriters auto-reject bank statements missing summary pages.</li>
-            <li style="margin-bottom:8px;"><strong>Recent NSF Events:</strong> Overdraft fees in the last 30 days trigger strict lender hold policies.</li>
-            <li style="margin-bottom:8px;"><strong>Deposit Frequency Drops:</strong> Irregular weekly deposits reduce calculated funding brackets.</li>
+            <li style="margin-bottom:8px;"><strong>Complete PDF Pages:</strong> Underwriters review all bank statement pages for missing summary tables.</li>
+            <li style="margin-bottom:8px;"><strong>NSF & Overdraft Patterns:</strong> Recent transaction flags trigger additional lender inquiries.</li>
+            <li style="margin-bottom:8px;"><strong>Deposit Frequency:</strong> Regular deposit volume helps maintain calculated funding brackets.</li>
           </ol>
 
           <p style="margin: 0 0 16px 0;">
-            Our optional <strong>Funding Readiness Review ($49 CAD)</strong> audits your financial files against all 3 criteria before submission.
+            Our optional <strong>Funding Readiness Review™ ($49 CAD)</strong> audits your financial files against these parameters before lender submission.
           </p>
 
           <div style="text-align:center;margin:28px 0;">
@@ -136,11 +136,11 @@ export async function sendMCAReadinessEmail2({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nBefore your application for ${cleanCompany} is reviewed by Canadian funding partners, here are the 3 most common reasons files get delayed or declined:\n1. Incomplete PDF Pages\n2. Recent NSF Events\n3. Deposit Frequency Drops\n\nOur optional Funding Readiness Review ($49 CAD) audits your financial files against all 3 criteria before submission.\n\nAudit Your File: ${reviewUrl}\n\nBest regards,\nFunding Intelligence Team\nFSI Digital Canada`;
+  const text = `Hi ${firstName},\n\nBefore your application for ${cleanCompany} is reviewed by Canadian funding partners, here are 3 common areas underwriters check:\n1. Complete PDF Pages\n2. NSF & Overdraft Patterns\n3. Deposit Frequency\n\nOur optional Funding Readiness Review™ ($49 CAD) audits your financial files against these parameters before lender submission.\n\nAudit Your File: ${reviewUrl}\n\nBest regards,\nFunding Intelligence Team\nFSI Digital Canada`;
 
   return sendEmail({
     to,
-    subject: `Avoidable underwriting mistakes to check for ${cleanCompany}`,
+    subject: `Underwriting checklist for ${cleanCompany}`,
     html,
     text,
     tagType: 'mca-readiness-2',
@@ -180,7 +180,7 @@ export async function sendMCAReadinessEmail3({
 
           <div style="text-align:center;margin:28px 0;">
             <a href="${reviewUrl}" style="background-color:#0f172a;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
-              Request Pre-Submission Review ($49) &rarr;
+              Request Pre-Submission Review ($49 CAD) &rarr;
             </a>
           </div>
         </div>
