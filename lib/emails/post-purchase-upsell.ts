@@ -139,3 +139,41 @@ export async function sendUpsellEmail3({
 
   return sendEmail({ to, subject: `Limited: $50 off your Strategy Audit this week`, html, text, tagType: 'upsell-email-3', companyName: cleanCompany });
 }
+
+// ── CUSTOMER FEEDBACK & SATISFACTION EMAIL (Day 14) ──
+export async function sendFeedbackEmail({
+  to,
+  name,
+  loginToken,
+  companyName
+}: UpsellEmailParams) {
+  const firstName = getFirstName(name);
+  const cleanCompany = cleanCompanyName(companyName);
+  const feedbackUrl = `https://www.fsidigital.ca/contact?subject=Customer+Feedback`;
+
+  const html = wrapUpsellTemplate(`
+    <p style="margin: 0 0 16px 0;">
+      It's been two weeks since you received your Funding Match Report. I'm reaching out directly to ask: <strong>How was your experience?</strong>
+    </p>
+    <p style="margin: 0 0 16px 0;">
+      As the founder of FSI Digital, I personally review every piece of feedback to improve our reports, data accuracy, and tools.
+    </p>
+    <ul style="margin: 0 0 20px 0; padding-left: 20px;">
+      <li>Did the report help you identify relevant funding options?</li>
+      <li>Were there any specific features or grant programs you wish we covered?</li>
+      <li>Did you encounter any issues with report delivery or data accuracy?</li>
+    </ul>
+    <p style="margin: 0 0 16px 0;">
+      Simply reply directly to this email or click below to share your thoughts. Your feedback directly shapes our product roadmap.
+    </p>
+    <div style="text-align:center;margin:28px 0;">
+      <a href="${feedbackUrl}" style="background-color:#0f172a;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
+        Share 2-Minute Feedback &rarr;
+      </a>
+    </div>
+  `, loginToken, firstName);
+
+  const text = `Hi ${firstName},\n\nIt's been two weeks since you received your Funding Match Report. I'm reaching out directly to ask: How was your experience?\n\nAs the founder of FSI Digital, I personally review every piece of feedback to improve our reports, data accuracy, and tools.\n\nSimply reply directly to this email or share your thoughts here: ${feedbackUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+
+  return sendEmail({ to, subject: `Quick question about your funding report (Founder check-in)`, html, text, tagType: 'customer-feedback', companyName: cleanCompany });
+}

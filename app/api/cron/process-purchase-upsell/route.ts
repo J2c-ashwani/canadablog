@@ -3,7 +3,8 @@ import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
 import {
   sendUpsellEmail1,
   sendUpsellEmail2,
-  sendUpsellEmail3
+  sendUpsellEmail3,
+  sendFeedbackEmail
 } from "@/lib/emails/post-purchase-upsell"
 
 import { isValidCronRequest } from "@/lib/admin/auth"
@@ -33,6 +34,7 @@ export async function GET(request: NextRequest) {
     let upsell1Count = 0
     let upsell2Count = 0
     let upsell3Count = 0
+    let feedbackCount = 0
     let skippedCount = 0
 
     for (const sub of subscribers) {
@@ -128,6 +130,23 @@ export async function GET(request: NextRequest) {
           upsell3Count++
         }
       }
+      // Day 14 (336 hours) — Customer Satisfaction & Feedback Loop
+      else if (elapsedMs >= 336 * 60 * 60 * 1000 && activity.upsellEmail3SentAt && !activity.feedbackEmailSentAt) {
+        console.log(`✉️ Triggering Day 14 Customer Feedback Email for: ${sub.email}`)
+        const res = await sendFeedbackEmail({
+          to: sub.email,
+          name: sub.name,
+          loginToken: sub.loginToken || "",
+          companyName: sub.companyName,
+          province: sub.region,
+          productPurchased: activity.purchasedProductId || "Funding Match Report"
+        })
+        if (res.success || res.skipped) {
+          activity.feedbackEmailSentAt = new Date().toISOString()
+          emailSent = true
+          feedbackCount++
+        }
+      }
 
       if (emailSent) {
         // Sync database activity column
@@ -145,7 +164,8 @@ export async function GET(request: NextRequest) {
       sent: {
         upsell1: upsell1Count,
         upsell2: upsell2Count,
-        upsell3: upsell3Count
+        upsell3: upsell3Count,
+        feedback: feedbackCount
       },
       skipped: skippedCount
     })
