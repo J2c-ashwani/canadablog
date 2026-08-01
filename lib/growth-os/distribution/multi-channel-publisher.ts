@@ -14,7 +14,7 @@ export interface MultiChannelDispatchReceipt {
   queuedChannelsCount: number
   predictedTotalReach: number
   predictedTotalTraffic: number
-  status: "SUCCESS" | "QUEUED_FOR_APPROVAL"
+  status: "SUCCESS" | "PARTIAL_SUCCESS" | "FAILED" | "QUEUED_FOR_APPROVAL"
   channelResults: ChannelPublishResult[]
   channelStatusSummary: Record<string, string>
 }
@@ -78,13 +78,47 @@ export class MultiChannelPublisher {
       conversionsCount: 3,
     })
 
+    // Alert founder if channels failed
+    if (queuedCount > 0) {
+      const failedChannels = results.filter(r => r.status !== "LIVE_PUBLISHED").map(r => `${r.channelName}: ${r.message}`)
+      console.warn(`[MultiChannelPublisher] ⚠️ ${queuedCount} channel(s) failed or queued:`, failedChannels)
+      
+      // Send founder alert email
+      try {
+        const { sendEmail } = await import("@/lib/emails/mailer")
+        await sendEmail({
+          to: "ashwani@fsidigital.ca",
+          subject: `[Growth OS Alert] ${queuedCount} of 7 channels failed to publish`,
+          html: `<h2>Growth OS Publishing Alert</h2>
+            <p><strong>${dispatchedCount}</strong> of 7 channels published successfully.</p>
+            <p><strong>${queuedCount}</strong> channel(s) failed or were queued:</p>
+            <ul>${failedChannels.map(f => `<li>${f}</li>`).join("")}</ul>
+            <p>Check Vercel logs for details. Title: <strong>${assetPackage.title}</strong></p>`,
+          text: `Growth OS Alert: ${dispatchedCount}/7 channels published. ${queuedCount} failed: ${failedChannels.join("; ")}`,
+          tagType: "growth-os-alert",
+        })
+      } catch (emailErr) {
+        console.error("[MultiChannelPublisher] Failed to send founder alert:", emailErr)
+      }
+    }
+
+    // Determine honest dispatch status
+    let overallStatus: MultiChannelDispatchReceipt["status"]
+    if (dispatchedCount === 0) {
+      overallStatus = "FAILED"
+    } else if (queuedCount > 0) {
+      overallStatus = "PARTIAL_SUCCESS"
+    } else {
+      overallStatus = "SUCCESS"
+    }
+
     return {
       opportunityId: assetPackage.opportunityId,
       dispatchedChannelsCount: dispatchedCount,
       queuedChannelsCount: queuedCount,
       predictedTotalReach: distOpportunity.predictedImpact.predictedReach,
       predictedTotalTraffic: distOpportunity.predictedImpact.predictedTraffic,
-      status: "SUCCESS",
+      status: overallStatus,
       channelResults: results,
       channelStatusSummary,
     }

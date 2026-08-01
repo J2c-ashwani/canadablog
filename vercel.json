@@ -1,1 +1,24 @@
-{}
+{
+  "crons": [
+    {
+      "path": "/api/cron/growth-os?key=fsi2026admin",
+      "schedule": "0 6 * * *"
+    },
+    {
+      "path": "/api/cron/growth-os-health?key=fsi2026admin",
+      "schedule": "0 12 * * *"
+    },
+    {
+      "path": "/api/cron/growth-os-synthetic-test?key=fsi2026admin",
+      "schedule": "0 4 * * *"
+    },
+    {
+      "path": "/api/cron/process-cart-recovery?key=fsi2026admin",
+      "schedule": "*/30 * * * *"
+    },
+    {
+      "path": "/api/cron/process-purchase-upsell?key=fsi2026admin",
+      "schedule": "0 14 * * *"
+    }
+  ]
+}
