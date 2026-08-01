@@ -15,7 +15,7 @@ export async function sendMCAAbandonmentEmail({
 }: MCAAbandonmentParams) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const resumeUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}`;
+  const resumeUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}&step=3`;
 
   const html = `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;">
@@ -80,7 +80,7 @@ export async function sendMCAAbandonmentEmail2({
 }: MCAAbandonmentParams) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const resumeUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}`;
+  const resumeUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}&step=3`;
 
   const html = `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;">
@@ -138,7 +138,7 @@ export async function sendMCAAbandonmentEmail3({
 }: MCAAbandonmentParams) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const resumeUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}`;
+  const resumeUrl = `https://www.fsidigital.ca/apply?email=${encodeURIComponent(to)}&step=3`;
 
   const html = `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;">

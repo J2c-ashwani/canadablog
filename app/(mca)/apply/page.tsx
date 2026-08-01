@@ -139,6 +139,13 @@ export default function ApplyPage() {
       (p) => p.code.toUpperCase() === province.toUpperCase()
     )?.code || '';
 
+    const stepParam = params.get('step') || params.get('upload');
+    if (stepParam === '3' || stepParam === 'upload' || stepParam === 'true') {
+      setStep(3);
+    } else if (stepParam === '2') {
+      setStep(2);
+    }
+
     setForm((prev) => ({
       ...prev,
       monthlyRevenue: monthlyRevenue ? Number(monthlyRevenue).toLocaleString() : prev.monthlyRevenue,
