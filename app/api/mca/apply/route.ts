@@ -20,6 +20,7 @@ import {
 import { getMatchingPartners } from '@/lib/mca/partner-routing.config';
 import type { MCAApplication } from '@/lib/mca/types';
 import { applyRateLimit } from '@/lib/rate-limit';
+import { sendMCAReadinessEmail1 } from '@/lib/emails/mca-readiness-upsell';
 
 // ─── Validation Schema ────────────────────────────────────────────────────────
 
@@ -242,6 +243,17 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
         }
       })
     ).catch(() => {}); // errors handled per-promise above
+
+    // Dispatch immediate Funding Readiness Review ($49 CAD) upsell email
+    sendMCAReadinessEmail1({
+      to: data.email,
+      name: data.ownerName,
+      companyName: data.legalBusinessName,
+      province: data.province,
+      applicationId
+    }).catch((err) => {
+      console.error("❌ Failed to send immediate MCA readiness email:", err);
+    });
 
     return NextResponse.json(
       {

@@ -107,13 +107,13 @@ function ThankYouContent() {
           </div>
         </div>
 
-        {/* Optional Pre-Submission Document Review */}
+        {/* Optional Funding Readiness Review */}
         {!priorityPurchased && (
           <div className="mca-upsell-card">
-            <div className="mca-upsell-badge">OPTIONAL SERVICE</div>
-            <h2 className="mca-upsell-title">Would you like a specialist to review your application before it is forwarded?</h2>
+            <div className="mca-upsell-badge">OPTIONAL EXPERT SERVICE</div>
+            <h2 className="mca-upsell-title">Funding Readiness Review ($49 CAD)</h2>
             <p className="mca-upsell-sub">
-              Our optional Pre-Submission Document Review assigns an application specialist to audit your financial files for completeness and formatting issues before they are sent to a funding partner.
+              Have an application specialist manually audit your financial files for completeness, missing pages, and NSF risk patterns before they are sent to funding partners.
               <strong> Your application is already active — this service is entirely optional.</strong>
             </p>
 

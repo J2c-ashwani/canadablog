@@ -205,17 +205,46 @@ function PriorityCheckoutBridge() {
       <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white py-16 sm:py-24 px-6 text-center">
         <div className="max-w-3xl mx-auto">
           <span className="bg-blue-600 text-white font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">
-            OPTIONAL VERIFICATION SERVICE
+            OPTIONAL EXPERT VERIFICATION SERVICE
           </span>
           <h1 className="text-3xl sm:text-5xl font-black mt-4 tracking-tight leading-none text-white">
-            Pre-Submission Document Review
+            Funding Readiness Review
           </h1>
           <p className="text-blue-200 mt-4 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Avoid common formatting mistakes, low balances warnings, and PDF glitches. Have an application specialist manually audit your files for completeness before they go to partners for a one-time fee of <strong>CAD $49</strong>.
+            Avoid common formatting mistakes, missing bank statement pages, and NSF flags. Have a funding specialist manually audit your application files for completeness before lender submission for a one-time fee of <strong>CAD $49</strong>.
           </p>
-          <div className="mt-8">
+          
+          {/* 6-Point Audit Checklist */}
+          <div className="mt-8 bg-slate-900/80 border border-blue-500/30 rounded-xl p-6 text-left max-w-xl mx-auto backdrop-blur-sm shadow-xl">
+            <h4 className="text-sm font-bold uppercase tracking-wider text-blue-300 mb-3 text-center">Your Application Will Be Verified For:</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-blue-100 font-medium">
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400">✓</span> Missing bank statement pages
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400">✓</span> NSF & overdraft risk patterns
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400">✓</span> Revenue & deposit consistency
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400">✓</span> Seasonal deposit trends
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400">✓</span> Business info accuracy
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-emerald-400">✓</span> Submission readiness score
+              </div>
+            </div>
+            <p className="text-[11px] text-blue-300/80 text-center mt-3 pt-2 border-t border-blue-500/20">
+              ⏱️ Estimated Review Time: 1 Business Day
+            </p>
+          </div>
+
+          <div className="mt-6">
             <Link href="/apply" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-lg text-base shadow-lg transition-transform active:scale-95 inline-block">
-              Apply & Request Document Review
+              Apply & Request Funding Readiness Review
             </Link>
           </div>
         </div>
@@ -223,7 +252,7 @@ function PriorityCheckoutBridge() {
 
       {/* Main Benefits Grid */}
       <section className="max-w-4xl mx-auto px-6 mt-16">
-        <h2 className="text-2xl font-black text-gray-900 text-center mb-10">What is included in the Pre-Submission Review?</h2>
+        <h2 className="text-2xl font-black text-gray-900 text-center mb-10">What is included in the Funding Readiness Review?</h2>
         <div className="space-y-6">
           {BENEFITS.map((b) => (
             <div key={b.title} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 flex gap-4">
