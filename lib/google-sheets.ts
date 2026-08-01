@@ -148,8 +148,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       data.category === 'MCA Funding Calculator' ||
       data.category === 'MCA Application' ||
       (data.source || '').toLowerCase().includes('mca') ||
-      (data.pagePath || '').includes('/apply') ||
-      (data.pagePath || '').includes('/funding-calculator')
+      (data.pagePath || '').includes('/mca')
     );
 
     if (isMcaLead) {
