@@ -63,19 +63,20 @@ export async function GET(request: NextRequest) {
     const runFacebookTest = async () => {
       const start = Date.now()
       const fbToken = process.env.FACEBOOK_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim()
+      const fbPageId = process.env.FACEBOOK_PAGE_ID?.trim() || 'me'
       if (!fbToken) {
         results.push({ channel: "Facebook", status: "SKIP", message: "No credentials configured" })
         return
       }
       try {
-        const res = await fetch(`https://graph.facebook.com/v19.0/me?access_token=${fbToken}`)
+        const res = await fetch(`https://graph.facebook.com/v19.0/${fbPageId}?fields=id,name&access_token=${fbToken}`)
         const time = Date.now() - start
         if (res.ok) {
           results.push({ channel: "Facebook", status: "PASS", message: "Auth successful", responseTime: time })
-        } else if (res.status === 401 || res.status === 403) {
-          results.push({ channel: "Facebook", status: "FAIL", message: "Token expired or Insufficient permissions", responseTime: time })
         } else {
-          results.push({ channel: "Facebook", status: "FAIL", message: `HTTP ${res.status}: ${res.statusText}`, responseTime: time })
+          const data = await res.json().catch(() => ({}))
+          const errorMsg = data?.error?.message || `HTTP ${res.status}: ${res.statusText}`
+          results.push({ channel: "Facebook", status: "FAIL", message: errorMsg, responseTime: time })
         }
       } catch (err: any) {
         results.push({ channel: "Facebook", status: "FAIL", message: err.message, responseTime: Date.now() - start })
@@ -100,10 +101,10 @@ export async function GET(request: NextRequest) {
         const time = Date.now() - start
         if (res.ok) {
           results.push({ channel: "Instagram", status: "PASS", message: "Auth successful", responseTime: time })
-        } else if (res.status === 401 || res.status === 403) {
-          results.push({ channel: "Instagram", status: "FAIL", message: "Token expired or Insufficient permissions", responseTime: time })
         } else {
-          results.push({ channel: "Instagram", status: "FAIL", message: `HTTP ${res.status}: ${res.statusText}`, responseTime: time })
+          const data = await res.json().catch(() => ({}))
+          const errorMsg = data?.error?.message || `HTTP ${res.status}: ${res.statusText}`
+          results.push({ channel: "Instagram", status: "FAIL", message: errorMsg, responseTime: time })
         }
       } catch (err: any) {
         results.push({ channel: "Instagram", status: "FAIL", message: err.message, responseTime: Date.now() - start })
