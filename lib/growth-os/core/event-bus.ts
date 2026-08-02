@@ -37,3 +37,24 @@ class EventBus {
 }
 
 export const globalEventBus = new EventBus()
+
+// ─── Phase 3: Authority Engine Event Registration ───────────────────────────
+// Pre-register Authority Engine event channels for type-safe publishing.
+// Handlers are attached lazily by the Authority Engine modules at runtime.
+export const AUTHORITY_EVENT_CHANNELS = [
+  'authority.opportunity.discovered',
+  'authority.opportunity.qualified',
+  'authority.outreach.drafted',
+  'authority.guardrail.passed',
+  'authority.guardrail.failed',
+  'authority.outreach.sent',
+  'authority.outreach.opened',
+  'authority.outreach.replied',
+  'authority.backlink.earned',
+  'authority.backlink.lost',
+  'authority.backlink.verified',
+  'authority.killswitch.triggered',
+  'authority.killswitch.resumed',
+  'authority.exception.queued',
+  'authority.flywheel.updated',
+] as const

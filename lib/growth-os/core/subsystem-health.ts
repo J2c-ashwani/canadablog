@@ -4,6 +4,7 @@
  */
 
 import { BusinessImpactScore } from "../types"
+import { AuthorityEngine } from "../authority/authority-engine"
 
 export interface SubsystemHealthReport {
   subsystemId: string
@@ -17,6 +18,10 @@ export interface SubsystemHealthReport {
 
 export class SubsystemHealthMonitor {
   private static healthReports: Map<string, SubsystemHealthReport> = new Map([
+    [
+      "sub_authority_engine",
+      AuthorityEngine.getSubsystemHealth(),
+    ],
     [
       "sub_campaign_gen",
       {

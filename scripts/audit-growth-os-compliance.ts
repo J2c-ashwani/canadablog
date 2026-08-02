@@ -22,6 +22,7 @@ import { CampaignMemory } from "../lib/growth-os/memory/campaign-memory"
 import { SubsystemHealthMonitor } from "../lib/growth-os/core/subsystem-health"
 import { TenantRegistry } from "../lib/growth-os/tenants/tenant-registry"
 import { RevenueAttributionEngine } from "../lib/growth-os/analytics/attribution"
+import { AuthorityEngine } from "../lib/growth-os/authority/authority-engine"
 
 async function runChairmanComplianceAudit() {
   console.log("=========================================================")
@@ -48,6 +49,7 @@ async function runChairmanComplianceAudit() {
     ExecutiveDigestEngine,
     RevenueAttributionEngine,
     TenantRegistry,
+    AuthorityEngine,
   ]
   const phase1Pass = requiredSubsystems.every((s) => Boolean(s))
   auditResults["Architecture Compliance"] = phase1Pass ? "PASS" : "FAIL"

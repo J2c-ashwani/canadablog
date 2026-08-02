@@ -89,3 +89,31 @@ export interface DomainEvent<T = any> {
 }
 
 export type EventHandler<T = any> = (event: DomainEvent<T>) => Promise<void>
+
+// ─── Phase 3: Authority Engine Re-exports ───────────────────────────────────
+export type {
+  AuthorityCategory,
+  AuthorityTier,
+  AuthorityScore,
+  AuthorityOpportunity,
+  QualifiedOpportunity,
+  FSIAsset,
+  OutreachDraft,
+  OutreachAngle,
+  GuardrailResult,
+  GuardrailCheck,
+  KillSwitchThresholds,
+  KillSwitchState,
+  KillSwitchStatus,
+  ExceptionQueueItem,
+  AuthoritySendConfig,
+  SendSchedulerState,
+  BacklinkVerification,
+  BacklinkRevenueAttribution,
+  CategoryPerformance,
+  AuthorityFlywheelScore,
+  AuthorityPipelineResult,
+  AuthorityPipelineStage,
+} from './authority/types'
+
+export { AUTHORITY_EVENTS } from './authority/types'

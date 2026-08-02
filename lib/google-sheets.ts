@@ -1496,4 +1496,198 @@ export async function seedOutreachProspects(prospects: Omit<OutreachProspect, "r
   }
 }
 
+// ═══════════════════════════════════════════════════════════════════════════════
+// AUTHORITY ENGINE — Google Sheets Integration (Phase 3)
+// ═══════════════════════════════════════════════════════════════════════════════
 
+export interface AuthorityExceptionRecord {
+  id: string
+  prospectEmail: string
+  prospectName: string
+  website: string
+  draftSubject: string
+  failedChecks: string
+  status: string
+  ceoNotes: string
+  createdAt: string
+  resolvedAt: string
+}
+
+const AUTHORITY_EXCEPTIONS_HEADERS = [
+  "ID",
+  "Prospect Email",
+  "Prospect Name",
+  "Website",
+  "Draft Subject",
+  "Failed Checks",
+  "Status",
+  "CEO Notes",
+  "Created At",
+  "Resolved At"
+];
+
+export async function ensureAuthorityExceptionsSheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "AuthorityExceptions";
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  });
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE);
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [{ addSheet: { properties: { title: SHEET_TITLE } } }],
+      },
+    });
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:J1`,
+  });
+
+  const header = headerResponse.data.values?.[0] || [];
+  if (header.join("|") !== AUTHORITY_EXCEPTIONS_HEADERS.join("|")) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:J1`,
+      valueInputOption: "RAW",
+      requestBody: { values: [AUTHORITY_EXCEPTIONS_HEADERS] },
+    });
+  }
+}
+
+export async function appendAuthorityException(data: AuthorityExceptionRecord): Promise<{ success: boolean; error?: any }> {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing");
+
+    await ensureAuthorityExceptionsSheet(sheets, spreadsheetId);
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "AuthorityExceptions!A:J",
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [[
+          data.id,
+          data.prospectEmail,
+          data.prospectName,
+          data.website,
+          data.draftSubject,
+          data.failedChecks,
+          data.status,
+          data.ceoNotes,
+          data.createdAt,
+          data.resolvedAt
+        ]],
+      },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("❌ Failed to append authority exception:", error);
+    return { success: false, error };
+  }
+}
+
+export async function getAuthorityExceptions(): Promise<AuthorityExceptionRecord[]> {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing");
+
+    await ensureAuthorityExceptionsSheet(sheets, spreadsheetId);
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "AuthorityExceptions!A:J",
+    });
+
+    const rows = response.data.values || [];
+    const records: AuthorityExceptionRecord[] = [];
+
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      records.push({
+        id: row[0] || "",
+        prospectEmail: row[1] || "",
+        prospectName: row[2] || "",
+        website: row[3] || "",
+        draftSubject: row[4] || "",
+        failedChecks: row[5] || "",
+        status: row[6] || "pending",
+        ceoNotes: row[7] || "",
+        createdAt: row[8] || "",
+        resolvedAt: row[9] || ""
+      });
+    }
+
+    return records;
+  } catch (error) {
+    console.error("❌ Failed to fetch authority exceptions:", error);
+    return [];
+  }
+}
+
+export async function updateAuthorityException(
+  exceptionId: string,
+  updates: { status?: string; ceoNotes?: string; resolvedAt?: string }
+): Promise<{ success: boolean; error?: any }> {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing");
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "AuthorityExceptions!A:J",
+    });
+
+    const rows = response.data.values || [];
+    let targetRowIndex = -1;
+
+    for (let i = 1; i < rows.length; i++) {
+      if (rows[i][0] === exceptionId) {
+        targetRowIndex = i;
+        break;
+      }
+    }
+
+    if (targetRowIndex === -1) {
+      return { success: false, error: `Exception ${exceptionId} not found` };
+    }
+
+    const currentRow = rows[targetRowIndex];
+    const sheetRowNumber = targetRowIndex + 1;
+
+    const updatedRow = [
+      currentRow[0] || "",
+      currentRow[1] || "",
+      currentRow[2] || "",
+      currentRow[3] || "",
+      currentRow[4] || "",
+      currentRow[5] || "",
+      updates.status !== undefined ? updates.status : (currentRow[6] || "pending"),
+      updates.ceoNotes !== undefined ? updates.ceoNotes : (currentRow[7] || ""),
+      currentRow[8] || "",
+      updates.resolvedAt !== undefined ? updates.resolvedAt : (currentRow[9] || "")
+    ];
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `AuthorityExceptions!A${sheetRowNumber}:J${sheetRowNumber}`,
+      valueInputOption: "RAW",
+      requestBody: { values: [updatedRow] },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error(`❌ Failed to update authority exception ${exceptionId}:`, error);
+    return { success: false, error };
+  }
+}
