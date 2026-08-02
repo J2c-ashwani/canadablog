@@ -74,7 +74,7 @@ export class B2BOutreachEngine {
     return { score, signals };
   }
 
-  static async processDailyBatch(limit = 10, dryRun = false): Promise<{
+  static async processDailyBatch(limit = 10, dryRun = false, ignoreHours = false): Promise<{
     processed: number;
     sentCount: number;
     completedCount: number;
@@ -82,7 +82,7 @@ export class B2BOutreachEngine {
     dryRun: boolean;
     skippedReason?: string;
   }> {
-    // Business Hours Validation (9 AM - 5 PM EST)
+    // Business Hours Validation (9 AM - 5 PM EST, Monday-Friday)
     const etString = new Date().toLocaleString("en-US", { timeZone: "America/New_York" });
     const etDate = new Date(etString);
     const dayOfWeek = etDate.getDay(); 
@@ -91,8 +91,8 @@ export class B2BOutreachEngine {
     const isWeekend = dayOfWeek === 0 || dayOfWeek === 6;
     const isOutsideHours = hours < 9 || hours >= 17;
 
-    if ((isWeekend || isOutsideHours) && !dryRun) {
-      const reason = `Skipping campaign dispatch: Outside North American B2B business hours (EST Time: ${etDate.toLocaleTimeString()}).`;
+    if ((isWeekend || isOutsideHours) && !dryRun && !ignoreHours) {
+      const reason = `Skipping campaign dispatch: Outside North American B2B business hours (EST Time: ${etDate.toLocaleTimeString()}). Pass ?force=true to override.`;
       console.log(`⏳ ${reason}`);
       return { processed: 0, sentCount: 0, completedCount: 0, errors: [], dryRun, skippedReason: reason };
     }

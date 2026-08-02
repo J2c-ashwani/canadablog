@@ -36,14 +36,17 @@ export async function GET(request: NextRequest) {
       // fallback to default
     }
 
+    const force = searchParams.get("force") === "true";
+    const dryRun = searchParams.get("dry") === "true";
+
     console.log(`🤖 [B2B Outreach Cron] Step 1: Running live SERPER Google Search outbound discovery...`);
     const discoveryResult = await SERPERProspector.discoverNewProspects(5).catch(err => {
       console.error("SERPER prospect discovery failed (non-blocking):", err);
       return { discoveredCount: 0, savedCount: 0, prospects: [] };
     });
 
-    console.log(`🤖 [B2B Outreach Cron] Step 2: Triggering priority outreach batch (limit: ${limit})...`);
-    const result = await B2BOutreachEngine.processDailyBatch(limit);
+    console.log(`🤖 [B2B Outreach Cron] Step 2: Triggering priority outreach batch (limit: ${limit}, force: ${force}, dry: ${dryRun})...`);
+    const result = await B2BOutreachEngine.processDailyBatch(limit, dryRun, force);
     
     return NextResponse.json({
       success: true,
