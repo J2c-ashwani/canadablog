@@ -94,10 +94,10 @@ export async function GET(request: NextRequest) {
         { name: 'Blog', status: summary.Blog },
         { name: 'Newsletter', status: summary.Newsletter },
         { name: 'LinkedIn', status: summary.LinkedIn },
-        { name: 'Instagram/Facebook', status: summary.InstagramFacebook },
-        { name: 'YouTube', status: summary.YouTube },
-        { name: 'FAQ', status: summary.FAQ },
-        { name: 'Partner', status: summary.Partner }
+        { name: 'Instagram/Facebook', status: summary.SocialCarousel || summary.InstagramFacebook },
+        { name: 'YouTube', status: summary.VideoScript || summary.YouTube },
+        { name: 'FAQ', status: summary.FAQExpansion || summary.FAQ },
+        { name: 'Partner', status: summary.PartnerBlock || summary.Partner }
       ]
 
       channels.forEach(ch => {
