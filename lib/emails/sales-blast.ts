@@ -53,15 +53,15 @@ export async function sendSalesBlast1({
         </p>
 
         <p style="margin:0 0 16px 0;">
-          I just wanted to let you know it's still available if you're continuing your funding search.
+          If you're still exploring funding opportunities for your business, your report is still available whenever you're ready.
         </p>
 
         <p style="margin:0 0 16px 0;">
-          Most founders who use our eligibility checker are trying to answer one simple question: <em>"Which funding programs are actually relevant for my business?"</em>
+          Most founders use our eligibility checker because they're trying to answer one question: <em><strong>"Which funding programs are actually relevant for my business?"</strong></em>
         </p>
 
         <p style="margin:0 0 16px 0;">
-          That's exactly what your personalized report is designed to help with. It summarizes the programs that may be relevant based on the information you entered${contextLine}, and suggested next steps.
+          Based on the information you entered, your report highlights funding programs that may be relevant to your business, outlines the application requirements, and suggests practical next steps to help you move forward.
         </p>
 
         <p style="margin:0 0 6px 0;font-weight:600;color:#1a1a1a;">Your report includes:</p>
@@ -70,22 +70,18 @@ export async function sendSalesBlast1({
         <p style="margin:0 0 4px 0;color:#1a1a1a;">✅ Application requirements</p>
         <p style="margin:0 0 16px 0;color:#1a1a1a;">✅ Suggested next steps</p>
 
+        <p style="margin:0 0 16px 0;">
+          There's no rush—your report will be available whenever you're ready.
+        </p>
+
         <div style="text-align:center;margin:28px 0;">
           <a href="${reportUrl}" style="background-color:#059669;color:white;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:600;display:inline-block;font-size:14px;">
-            Access Your Report ($19) &rarr;
+            View My Funding Match Report ($19)
           </a>
         </div>
 
-        <p style="margin:16px 0 16px 0;font-size:13px;color:#6b7280;">
-          Already purchased by Canadian founders looking for technology funding, manufacturing expansion, clean technology, and R&D programs.
-        </p>
-
         <p style="margin:0 0 16px 0;">
-          If you've decided not to pursue funding right now, no worries at all.
-        </p>
-
-        <p style="margin:0 0 16px 0;">
-          If you have any questions, simply reply to this email.
+          If you have any questions, just reply to this email. I'll be happy to help.
         </p>
 
         <p style="margin:0 0 4px 0;">Thanks,</p>
@@ -96,7 +92,8 @@ export async function sendSalesBlast1({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nI noticed you completed our funding eligibility check recently but didn't have a chance to access your personalized report.\n\nI just wanted to let you know it's still available if you're continuing your funding search.\n\nMost founders who use our eligibility checker are trying to answer one simple question: "Which funding programs are actually relevant for my business?"\n\nThat's exactly what your personalized report is designed to help with. It summarizes the programs that may be relevant based on the information you entered${contextLine}, and suggested next steps.\n\nYour report includes:\n✅ Programs matched to your business\n✅ Estimated funding opportunities\n✅ Application requirements\n✅ Suggested next steps\n\nAccess Your Report ($19): ${reportUrl}\n\nAlready purchased by Canadian founders looking for technology funding, manufacturing expansion, clean technology, and R&D programs.\n\nIf you've decided not to pursue funding right now, no worries at all.\n\nIf you have any questions, simply reply to this email.\n\nThanks,\nAshwani K\nFounder\nFSI Digital`;
+  const text = `Hi ${firstName},\n\nI noticed you completed our funding eligibility check recently but didn't have a chance to access your personalized report.\n\nIf you're still exploring funding opportunities for your business, your report is still available whenever you're ready.\n\nMost founders use our eligibility checker because they're trying to answer one question: "Which funding programs are actually relevant for my business?"\n\nBased on the information you entered, your report highlights funding programs that may be relevant to your business, outlines the application requirements, and suggests practical next steps to help you move forward.\n\nYour report includes:\n✅ Programs matched to your business\n✅ Estimated funding opportunities\n✅ Application requirements\n✅ Suggested next steps\n\nThere's no rush—your report will be available whenever you're ready.\n\nView My Funding Match Report ($19): ${reportUrl}\n\nIf you have any questions, just reply to this email. I'll be happy to help.\n\nThanks,\nAshwani K\nFounder\nFSI Digital`;
+
 
   return sendEmail({
     to,
