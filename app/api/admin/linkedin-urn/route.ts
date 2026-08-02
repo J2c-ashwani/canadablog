@@ -49,13 +49,42 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    // Attempt 3: Try JWT payload decoding if token is a structured JWT
+    try {
+      const parts = token.split('.');
+      if (parts.length === 3) {
+        const payloadJson = Buffer.from(parts[1], 'base64').toString('utf-8');
+        const payload = JSON.parse(payloadJson);
+        const sub = payload.sub || payload.member_id || payload.user_id;
+        if (sub) {
+          const urn = sub.startsWith('urn:li:') ? sub : `urn:li:person:${sub}`;
+          return NextResponse.json({
+            success: true,
+            method: "jwt_token_decode",
+            linkedinPersonUrn: urn,
+            instructions: `Copy '${urn}' and set it as LINKEDIN_PERSON_URN in Vercel environment variables.`
+          });
+        }
+      }
+    } catch {
+      // ignore token decode failure
+    }
+
     const errData = await res.json().catch(() => ({}));
     return NextResponse.json({
-      error: "LinkedIn API error",
+      error: "LinkedIn API token lacks profile-read scope (w_member_social only)",
       status: res.status,
       details: errData,
-      instructions: "Check if your LinkedIn access token has 'openid profile' or 'w_member_social' permissions."
-    }, { status: 400 });
+      manualInstructions: [
+        "Your token has posting permissions (w_member_social) but LinkedIn requires finding your URN manually:",
+        "1. Open LinkedIn.com in Chrome and go to your Profile page.",
+        "2. Right-click anywhere -> 'View Page Source' (or press Cmd+Option+U on Mac).",
+        "3. Press Cmd+F and search for: 'urn:li:member:' or 'urn:li:fsd_profile:'",
+        "4. Copy the number/ID (e.g. 876543210 or ACoAAA...)",
+        "5. Your LINKEDIN_PERSON_URN is: 'urn:li:person:YOUR_ID'",
+        "6. Add LINKEDIN_PERSON_URN in Vercel Environment Variables and redeploy."
+      ]
+    }, { status: 200 });
 
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
