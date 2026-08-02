@@ -105,7 +105,7 @@ export async function sendSalesBlast1({
   });
 }
 
-// ── Wave 2: Wednesday Follow-up (Non-openers) ──
+// ── Wave 2: Wednesday Follow-up (Non-buyers) ──
 export async function sendSalesBlast2({
   to,
   name,
@@ -127,25 +127,25 @@ export async function sendSalesBlast2({
         <p style="margin:0 0 16px 0;">Hi ${firstName},</p>
         
         <p style="margin:0 0 16px 0;">
-          Quick follow-up — I sent you a note on Monday about your funding eligibility results${cleanCompany !== 'your business' ? ` for <strong>${cleanCompany}</strong>` : ''}. Just wanted to make sure it didn't get buried.
+          Quick follow-up—I sent a note on Monday regarding your funding eligibility check${cleanCompany !== 'your business' ? ` for <strong>${cleanCompany}</strong>` : ''}. I just wanted to make sure it didn't get buried in your inbox.
         </p>
 
         <p style="margin:0 0 16px 0;">
-          If you're still exploring funding options, your personalized report is ready to access. It takes about 2 minutes to review and shows you exactly which programs may be relevant for your business.
+          If you're still exploring funding options, your personalized report is ready whenever you are. It takes about 2 minutes to review and highlights the programs that may be relevant to your business.
         </p>
 
         <div style="text-align:center;margin:28px 0;">
           <a href="${reportUrl}" style="background-color:#059669;color:white;padding:13px 26px;text-decoration:none;border-radius:6px;font-weight:600;display:inline-block;font-size:14px;">
-            Access Your Report ($19) &rarr;
+            View My Funding Match Report ($19)
           </a>
         </div>
 
-        <p style="margin:16px 0 16px 0;font-size:13px;color:#6b7280;">
-          If you'd also like a step-by-step application timeline showing which programs to apply for first, the <a href="${bundleUrl}" style="color:#059669;">Funding Action Plan ($49)</a> includes your match report plus a prioritized Month 1–4 roadmap.
+        <p style="margin:16px 0 16px 0;font-size:13px;color:#6b7280;line-height:1.6;">
+          <em>Note: If you also need a step-by-step application timeline showing which programs to apply for first, the <a href="${bundleUrl}" style="color:#059669;font-weight:600;">Funding Action Plan ($49)</a> includes your match report plus a prioritized Month 1–4 roadmap.</em>
         </p>
 
         <p style="margin:0 0 16px 0;">
-          Either way, no pressure. If you have questions, just reply.
+          Either way, no rush or pressure. If you have any questions, just reply to this email and I'll be happy to help.
         </p>
 
         <p style="margin:0 0 4px 0;">Thanks,</p>
@@ -156,7 +156,7 @@ export async function sendSalesBlast2({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nQuick follow-up — I sent you a note on Monday about your funding eligibility results${cleanCompany !== 'your business' ? ` for ${cleanCompany}` : ''}. Just wanted to make sure it didn't get buried.\n\nIf you're still exploring funding options, your personalized report is ready to access. It takes about 2 minutes to review and shows you exactly which programs may be relevant for your business.\n\nAccess Your Report ($19): ${reportUrl}\n\nIf you'd also like a step-by-step application timeline, the Funding Action Plan ($49) includes your match report plus a prioritized Month 1-4 roadmap: ${bundleUrl}\n\nEither way, no pressure. If you have questions, just reply.\n\nThanks,\nAshwani K\nFounder\nFSI Digital`;
+  const text = `Hi ${firstName},\n\nQuick follow-up—I sent a note on Monday regarding your funding eligibility check${cleanCompany !== 'your business' ? ` for ${cleanCompany}` : ''}. I just wanted to make sure it didn't get buried in your inbox.\n\nIf you're still exploring funding options, your personalized report is ready whenever you are. It takes about 2 minutes to review and highlights the programs that may be relevant to your business.\n\nView My Funding Match Report ($19): ${reportUrl}\n\nNote: If you also need a step-by-step application timeline, the Funding Action Plan ($49) includes your match report plus a prioritized Month 1-4 roadmap: ${bundleUrl}\n\nEither way, no rush or pressure. If you have any questions, just reply to this email and I'll be happy to help.\n\nThanks,\nAshwani K\nFounder\nFSI Digital`;
 
   return sendEmail({
     to,
