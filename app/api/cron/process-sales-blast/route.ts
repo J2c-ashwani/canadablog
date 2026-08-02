@@ -27,10 +27,24 @@ export async function GET(request: NextRequest) {
 
     const allSubscribers = await SubscriberRepository.getAllSubscribers();
 
-    // Filter: subscribed, has email, has used calculator or tools, has NOT purchased a report
+    // Disposable/test email domains to exclude (protects sender reputation)
+    const DISPOSABLE_DOMAINS = new Set([
+      'mailinator.com', 'guerrillamail.com', 'tempmail.com', 'throwaway.email',
+      'yopmail.com', 'sharklasers.com', 'guerrillamailblock.com', 'grr.la',
+      'dispostable.com', 'trashmail.com', 'fakeinbox.com', 'maildrop.cc',
+      'temp-mail.org', 'getairmail.com', 'mohmal.com', 'burnermail.io',
+      'tempail.com', 'emailondeck.com', 'getnada.com', '10minutemail.com',
+      'minuteinbox.com', 'tempr.email', 'discard.email', 'tmpmail.net'
+    ]);
+
+    // Filter: subscribed, has email, not disposable, has used calculator/tools, NOT purchased
     const targets = allSubscribers.filter(sub => {
       if (!sub.email || !sub.email.includes("@")) return false;
       if (!sub.isSubscribed) return false;
+
+      // Skip disposable/test email domains
+      const emailDomain = sub.email.split('@')[1]?.toLowerCase();
+      if (!emailDomain || DISPOSABLE_DOMAINS.has(emailDomain)) return false;
 
       // Skip if already purchased a report
       if (sub.reportPurchased) return false;
