@@ -1274,3 +1274,226 @@ export async function appendOutreachSentLeadToSheet(data: OutreachSentLeadData) 
   }
 }
 
+// ── Outreach Prospects Database Tab for Backlinks Campaign ──
+
+export interface OutreachProspect {
+  rowIndex: number;
+  website: string;
+  prospectName: string;
+  email: string;
+  targetPage: string;
+  name: string;
+  personalizedHook: string;
+  status: string;
+  sentAt: string | null;
+  deliveryStatus: string | null;
+  replied: boolean;
+  positiveConversation: boolean;
+  backlinkEarned: boolean;
+}
+
+const OUTREACH_PROSPECTS_HEADERS = [
+  "Website",
+  "Prospect Name",
+  "Email",
+  "Target Page",
+  "Name",
+  "Personalized Hook",
+  "Status",
+  "Sent At",
+  "Delivery Status",
+  "Replied",
+  "Positive Conversation",
+  "Backlink Earned"
+];
+
+export async function ensureOutreachProspectsSheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "OutreachProspects";
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  });
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE);
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: SHEET_TITLE,
+              },
+            },
+          },
+        ],
+      },
+    });
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:L1`,
+  });
+
+  const header = headerResponse.data.values?.[0] || [];
+  if (header.join("|") !== OUTREACH_PROSPECTS_HEADERS.join("|")) {
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:L1`,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [OUTREACH_PROSPECTS_HEADERS],
+      },
+    });
+  }
+}
+
+export async function getOutreachProspectsFromSheet(): Promise<OutreachProspect[]> {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing");
+
+    await ensureOutreachProspectsSheet(sheets, spreadsheetId);
+
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "OutreachProspects!A:L",
+    });
+
+    const rows = response.data.values || [];
+    const prospects: OutreachProspect[] = [];
+
+    // Skip header row
+    for (let i = 1; i < rows.length; i++) {
+      const row = rows[i];
+      prospects.push({
+        rowIndex: i - 1, // 0-based data index (maps to sheet row i + 1)
+        website: row[0] || "",
+        prospectName: row[1] || "",
+        email: row[2] || "",
+        targetPage: row[3] || "",
+        name: row[4] || "",
+        personalizedHook: row[5] || "",
+        status: row[6] || "pending",
+        sentAt: row[7] || null,
+        deliveryStatus: row[8] || null,
+        replied: row[9] === "TRUE" || row[9] === "true",
+        positiveConversation: row[10] === "TRUE" || row[10] === "true",
+        backlinkEarned: row[11] === "TRUE" || row[11] === "true",
+      });
+    }
+
+    return prospects;
+  } catch (error) {
+    console.error("❌ Failed to fetch outreach prospects from Google Sheets:", error);
+    return [];
+  }
+}
+
+export async function updateOutreachProspectInSheet(
+  rowIndex: number,
+  updates: Partial<Omit<OutreachProspect, "rowIndex">>
+) {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing");
+
+    // Row index is 0-based data row. Sheet row = data index + 2 (account for 1-based index and header row).
+    const sheetRowNumber = rowIndex + 2;
+
+    // Get the current row values to patch
+    const response = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: `OutreachProspects!A${sheetRowNumber}:L${sheetRowNumber}`,
+    });
+
+    const currentRow = response.data.values?.[0] || [];
+
+    const website = updates.website !== undefined ? updates.website : (currentRow[0] || "");
+    const prospectName = updates.prospectName !== undefined ? updates.prospectName : (currentRow[1] || "");
+    const email = updates.email !== undefined ? updates.email : (currentRow[2] || "");
+    const targetPage = updates.targetPage !== undefined ? updates.targetPage : (currentRow[3] || "");
+    const name = updates.name !== undefined ? updates.name : (currentRow[4] || "");
+    const personalizedHook = updates.personalizedHook !== undefined ? updates.personalizedHook : (currentRow[5] || "");
+    const status = updates.status !== undefined ? updates.status : (currentRow[6] || "pending");
+    const sentAt = updates.sentAt !== undefined ? updates.sentAt : (currentRow[7] || "");
+    const deliveryStatus = updates.deliveryStatus !== undefined ? updates.deliveryStatus : (currentRow[8] || "");
+    const replied = updates.replied !== undefined ? String(updates.replied).toUpperCase() : (currentRow[9] || "FALSE");
+    const positiveConversation = updates.positiveConversation !== undefined ? String(updates.positiveConversation).toUpperCase() : (currentRow[10] || "FALSE");
+    const backlinkEarned = updates.backlinkEarned !== undefined ? String(updates.backlinkEarned).toUpperCase() : (currentRow[11] || "FALSE");
+
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `OutreachProspects!A${sheetRowNumber}:L${sheetRowNumber}`,
+      valueInputOption: "RAW",
+      requestBody: {
+        values: [[
+          website,
+          prospectName,
+          email,
+          targetPage,
+          name,
+          personalizedHook,
+          status,
+          sentAt,
+          deliveryStatus,
+          replied,
+          positiveConversation,
+          backlinkEarned
+        ]],
+      },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error(`❌ Failed to update outreach prospect at row index ${rowIndex}:`, error);
+    return { success: false, error };
+  }
+}
+
+export async function seedOutreachProspects(prospects: Omit<OutreachProspect, "rowIndex">[]) {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+    if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID missing");
+
+    await ensureOutreachProspectsSheet(sheets, spreadsheetId);
+
+    const values = prospects.map((p) => [
+      p.website,
+      p.prospectName,
+      p.email,
+      p.targetPage,
+      p.name,
+      p.personalizedHook,
+      p.status,
+      p.sentAt || "",
+      p.deliveryStatus || "",
+      String(p.replied).toUpperCase(),
+      String(p.positiveConversation).toUpperCase(),
+      String(p.backlinkEarned).toUpperCase(),
+    ]);
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "OutreachProspects!A:L",
+      valueInputOption: "RAW",
+      requestBody: {
+        values,
+      },
+    });
+
+    console.log(`✅ Seeded ${prospects.length} prospects into "OutreachProspects" tab.`);
+    return { success: true };
+  } catch (error) {
+    console.error("❌ Failed to seed outreach prospects:", error);
+    return { success: false, error };
+  }
+}
+
+
