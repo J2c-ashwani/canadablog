@@ -54,6 +54,12 @@ export class ContentFactory {
     const product = opportunity.recommendedProduct
     const link = `https://fsidigital.ca${opportunity.targetLandingPage}`
 
+    const isUS = opportunity.targetLandingPage.includes("/usa") || opportunity.trigger.toLowerCase().includes("sbir") || opportunity.trigger.toLowerCase().includes("usda") || opportunity.trigger.toLowerCase().includes("nih") || opportunity.trigger.toLowerCase().includes("nsf") || opportunity.trigger.toLowerCase().includes("sba");
+    
+    const northAmericanHashtags = isUS
+      ? ["#SmallBusinessGrants", "#SBIR", "#STTR", "#SBA", "#USBusinessGrants", "#TechStartups", "#NonDilutiveCapital", "#FounderFunding"]
+      : ["#CanadianBusiness", "#IRAP", "#SRED", "#CanExport", "#SmallBusinessGrants", "#GovernmentGrants", "#NorthAmericanBusiness", "#FounderFunding"];
+
     return {
       opportunityId: opportunity.id,
       title,
@@ -62,40 +68,40 @@ export class ContentFactory {
       schema,
       qaReport,
       blogGuide: {
-        title: `Comprehensive Guide: ${title} for ${audience}`,
+        title: `North American Founder Guide: ${title} for ${audience}`,
         excerpt: `Discover the exact eligibility criteria, funding caps, and application order for ${title}. Reviewed by ${eeat.authorName} on ${eeat.lastReviewedDate}.`,
         ctaText: `Claim Your Custom ${product}`,
         wordCountTarget: researchPackage.wordCountTarget.targetWords,
       },
       linkedInPost: {
-        copy: `Key Funding Update for ${audience}:\n\n${title} application windows are officially open.\n\nKey details:\n• Funding Caps: Up to $150,000 non-repayable\n• Who Qualifies: Active ${audience}\n• Application Order: Stack legally without forfeiting funds.\n\nVerified by ${eeat.authorName} (${eeat.authorRole}).\nRead full breakdown: ${link}`,
-        hashtags: ["#CanadianBusiness", "#StartupFunding", "#IRAP", "#SRED", "#BusinessGrants"],
+        copy: `🚨 North American Funding Update for ${audience}:\n\n${title} application windows are officially active.\n\nKey details:\n• Non-Dilutive Capital: Up to $150,000+ non-repayable\n• Who Qualifies: Active ${audience}\n• Application Strategy: Stack compliant programs without forfeiting eligibility.\n\nVerified by ${eeat.authorName} (${eeat.authorRole}).\nRead full North American breakdown: ${link}`,
+        hashtags: northAmericanHashtags,
       },
       socialCarousel: {
         slides: [
-          { slideNumber: 1, title: title, content: `Funding Intake Guide for ${audience}` },
+          { slideNumber: 1, title: title, content: `North American Funding Intake Guide for ${audience}` },
           { slideNumber: 2, title: "Who Qualifies?", content: `Active ${audience} with non-dilutive capital needs.` },
           { slideNumber: 3, title: "Common Mistakes", content: "Applying in the wrong order or failing stacking limits." },
           { slideNumber: 4, title: "Next Steps", content: `Get your custom ${product} at ${link}` },
         ],
       },
       newsletterSection: {
-        subjectLine: `[Funding Alert] ${title} - Intake Open`,
+        subjectLine: `[North American Funding Alert] ${title} - Intake Open`,
         body: `Hi Founder,\n\nNew non-repayable capital intake has opened: ${title}.\n\nIf you are operating as a ${audience}, check your custom eligibility here: ${link}`,
       },
       shortVideoScript: {
-        hook: `If you run a ${audience}, stop scrolling!`,
+        hook: `If you run a ${audience} in North America, stop scrolling!`,
         body: `A new funding intake just opened for ${title}. You could be eligible for non-repayable grants up to $150,000. Don't make the mistake of applying without checking stacking rules.`,
         callToAction: `Tap the link in bio to check your ${product}!`,
       },
       faqExpansion: [
         {
-          question: `How do I apply for ${title}?`,
-          answer: `Applications are processed directly through official channels. Verify your stacking limits using our ${product} before submitting.`,
+          question: `How do North American businesses apply for ${title}?`,
+          answer: `Applications are processed directly through official program channels. Verify your stacking limits using our ${product} before submitting.`,
         },
         {
-          question: `Can I stack ${title} with other provincial grants?`,
-          answer: `Yes, provided total government assistance does not exceed 75% of total eligible project costs.`,
+          question: `Can I stack ${title} with other federal or state/provincial grants?`,
+          answer: `Yes, provided total government assistance does not exceed compliance caps for eligible project costs.`,
         },
       ],
       partnerBlock: {
