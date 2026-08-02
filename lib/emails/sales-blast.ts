@@ -105,7 +105,7 @@ export async function sendSalesBlast1({
   });
 }
 
-// ── Wave 2: Wednesday Follow-up (Non-buyers) ──
+// ── Wave 2: Follow-up (Non-buyers) ──
 export async function sendSalesBlast2({
   to,
   name,
@@ -127,11 +127,15 @@ export async function sendSalesBlast2({
         <p style="margin:0 0 16px 0;">Hi ${firstName},</p>
         
         <p style="margin:0 0 16px 0;">
-          Quick follow-up—I sent a note on Monday regarding your funding eligibility check${cleanCompany !== 'your business' ? ` for <strong>${cleanCompany}</strong>` : ''}. I just wanted to make sure it didn't get buried in your inbox.
+          I wanted to quickly follow up on the email I sent a few days ago regarding your funding eligibility check${cleanCompany !== 'your business' ? ` for <strong>${cleanCompany}</strong>` : ''}. I just wanted to make sure it didn't get buried in your inbox.
         </p>
 
         <p style="margin:0 0 16px 0;">
-          If you're still exploring funding options, your personalized report is ready whenever you are. It takes about 2 minutes to review and highlights the programs that may be relevant to your business.
+          If you're still exploring funding opportunities for your business, your personalized report is still available whenever you're ready. It takes about two minutes to review and highlights the funding programs that may be relevant based on the information you provided.
+        </p>
+
+        <p style="margin:0 0 16px 0;font-size:14px;color:#4b5563;">
+          We've been continuously improving our funding database and reports based on feedback from business owners using FSI Digital.
         </p>
 
         <div style="text-align:center;margin:28px 0;">
@@ -140,12 +144,12 @@ export async function sendSalesBlast2({
           </a>
         </div>
 
-        <p style="margin:16px 0 16px 0;font-size:13px;color:#6b7280;line-height:1.6;">
-          <em>Note: If you also need a step-by-step application timeline showing which programs to apply for first, the <a href="${bundleUrl}" style="color:#059669;font-weight:600;">Funding Action Plan ($49)</a> includes your match report plus a prioritized Month 1–4 roadmap.</em>
+        <p style="margin:16px 0 16px 0;font-size:14px;color:#374151;line-height:1.6;">
+          If you're looking for more than just a list of funding programs, we also offer a <a href="${bundleUrl}" style="color:#059669;font-weight:600;">Funding Action Plan ($49)</a>, which includes your Funding Match Report along with a prioritized roadmap to help you decide what to apply for first.
         </p>
 
         <p style="margin:0 0 16px 0;">
-          Either way, no rush or pressure. If you have any questions, just reply to this email and I'll be happy to help.
+          If you're still looking for funding, just reply to this email and let me know where you're getting stuck. I'll be happy to help if I can.
         </p>
 
         <p style="margin:0 0 4px 0;">Thanks,</p>
@@ -156,7 +160,7 @@ export async function sendSalesBlast2({
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nQuick follow-up—I sent a note on Monday regarding your funding eligibility check${cleanCompany !== 'your business' ? ` for ${cleanCompany}` : ''}. I just wanted to make sure it didn't get buried in your inbox.\n\nIf you're still exploring funding options, your personalized report is ready whenever you are. It takes about 2 minutes to review and highlights the programs that may be relevant to your business.\n\nView My Funding Match Report ($19): ${reportUrl}\n\nNote: If you also need a step-by-step application timeline, the Funding Action Plan ($49) includes your match report plus a prioritized Month 1-4 roadmap: ${bundleUrl}\n\nEither way, no rush or pressure. If you have any questions, just reply to this email and I'll be happy to help.\n\nThanks,\nAshwani K\nFounder\nFSI Digital`;
+  const text = `Hi ${firstName},\n\nI wanted to quickly follow up on the email I sent a few days ago regarding your funding eligibility check${cleanCompany !== 'your business' ? ` for ${cleanCompany}` : ''}. I just wanted to make sure it didn't get buried in your inbox.\n\nIf you're still exploring funding opportunities for your business, your personalized report is still available whenever you're ready. It takes about two minutes to review and highlights the funding programs that may be relevant based on the information you provided.\n\nWe've been continuously improving our funding database and reports based on feedback from business owners using FSI Digital.\n\nView My Funding Match Report ($19): ${reportUrl}\n\nIf you're looking for more than just a list of funding programs, we also offer a Funding Action Plan ($49), which includes your Funding Match Report along with a prioritized roadmap to help you decide what to apply for first: ${bundleUrl}\n\nIf you're still looking for funding, just reply to this email and let me know where you're getting stuck. I'll be happy to help if I can.\n\nThanks,\nAshwani K\nFounder\nFSI Digital`;
 
   return sendEmail({
     to,
