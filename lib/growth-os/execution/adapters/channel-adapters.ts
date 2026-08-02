@@ -213,6 +213,28 @@ export class ChannelAdapters {
    * 5. YouTube Shorts Direct API Adapter (YouTube Data API v3)
    */
   public static async queueVideoScript(hook: string): Promise<ChannelPublishResult> {
+    const shotstackKey = process.env.SHOTSTACK_API_KEY?.trim()
+    if (shotstackKey) {
+      try {
+        const { ShotstackVideoAdapter } = await import("./shotstack-adapter")
+        const render = await ShotstackVideoAdapter.renderShortVideo(
+          hook,
+          "New non-repayable grant intake active.",
+          "Check your eligibility now at fsidigital.ca!"
+        )
+        if (render.success) {
+          return {
+            channelName: "VideoScript",
+            status: "LIVE_PUBLISHED",
+            externalId: render.renderId || `shotstack_${Date.now()}`,
+            message: `Cloud MP4 video rendering initiated via Shotstack API for YouTube Shorts / Reels.`,
+          }
+        }
+      } catch (err: any) {
+        console.error("[YouTubeAdapter] Shotstack render error:", err)
+      }
+    }
+
     return {
       channelName: "VideoScript",
       status: "LIVE_PUBLISHED",
