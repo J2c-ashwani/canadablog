@@ -196,3 +196,51 @@ All Tier 1 and high-priority fixes approved in the implementation plan have been
   - Added `'PayPal-Request-Id': 'capture-' + orderId` to PayPal capture headers to guarantee network-retry safety.
   - Added iframe loading handlers and a `<noscript>` container fallback inside Calendly iframe blocks to serve direct email booking links if the Calendly widget fails.
 
+---
+
+## Sprint 12 — Telemetry, Deduplication, & Purchase Attribution Fixes
+
+All telemetry metrics and attribution logic have been verified and successfully deployed.
+
+### 1. Checkout Telemetry Fix (`checkout_started` event)
+- **Implemented in**: [components/calculator/GrantCalculator.tsx](file:///Users/ashwanikumar/Downloads/canadablog/components/calculator/GrantCalculator.tsx)
+- **What changed**:
+  - Hooked directly into the **PayPal checkout buttons lifecycle**. Added unified `/api/telemetry` POST logging calls inside both `createOrder` hooks (the main report packages and the Action Plan upgrade flow).
+  - When a user clicks a PayPal button, the system logs a `checkout_started` event with active UTM metadata and product parameters, closing the funnel measurement loop.
+
+### 2. Telemetry Refresh & Cancel Deduplication
+- **Implemented in**: [components/calculator/GrantCalculator.tsx](file:///Users/ashwanikumar/Downloads/canadablog/components/calculator/GrantCalculator.tsx)
+- **What changed**:
+  - Added a session-level state guard using `sessionStorage` inside both `createOrder` hooks.
+  - This prevents duplicate `checkout_started` telemetry events on page refreshes or cancel-and-retry actions, keeping conversion metrics accurate.
+
+### 3. Purchase Landing Page Attribution Fail-Safe
+- **Implemented in**: [app/api/products/purchase/route.ts](file:///Users/ashwanikumar/Downloads/canadablog/app/api/products/purchase/route.ts)
+- **What changed**:
+  - Implemented a fallback attribution recovery engine. If a Stripe or PayPal purchase completes but client-side session metadata is missing, the backend queries `SubscriberRepository` to get the original opt-in page and UTM parameters.
+  - If still missing, the backend queries the sheet database using the buyer's `sessionId` to fetch the earliest telemetry log corresponding to their landing page view.
+
+---
+
+## Sprint 13 — Commercial Execution & Metadata Rescue
+
+Sprint 13 focused on execution-only optimization of high-impression, low-CTR page-1 and page-2 commercial candidates.
+
+### 1. Title & Meta Snippet Rescues
+- **Implemented in**: 
+  - `/blog/nih-sbir-biotech-grants` (Impressions: 8,233 | Title: `NIH SBIR Biotech Grants 2026: Get Up to $2.09M Non-Dilutive`)
+  - `/usa/new-york` (Impressions: 8,117 | Title: `New York Business Grants & Incentives: Get 10 Years Tax-Free`)
+  - `/blog/nsf-sbir-grants-technology-startups` (Impressions: 5,267 | Title: `NSF SBIR Grants 2026: Get Up to $2.27M Non-Dilutive Funding`)
+  - `/blog/quebec-small-business-grants-guide` (Impressions: 4,314 | Title: `Quebec Small Business Grants Guide 2026: Get Up to $1.8B SME Funding`)
+  - `/blog/usda-sbir-agtech-grants` (Impressions: 1,884 | Title: `USDA SBIR AgTech Grants 2026: Get Up to $700K Non-Dilutive`)
+- **What changed**: Rewrote titles, meta descriptions, and configured `<RelatedFundingPaths />` component guides to target maximum CTR lift.
+
+### 2. Content Safety Safeguards
+- **Implemented in**: [scripts/generate-metadata.js](file:///Users/ashwanikumar/Downloads/canadablog/scripts/generate-metadata.js)
+- **What changed**:
+  - Modified the metadata generator to prevent accidental dynamic content wiping. It now checks for existing JSON content files before write and preserves their HTML body payloads if the TS source content field is empty.
+
+### 3. Competitor Audit & SERP Analysis Catch-Up
+- **Scope**: Completed comprehensive gap audits and documented competitor SERPs for all 11 unlogged pages from Sprints 8, 9, 10, and 11 (including IRAP, SR&ED, CanExport, Agri-Food, Quebec Innovation, Veteran Funding, AI, and Alberta Innovation).
+
+
