@@ -1,4 +1,5 @@
 export function escapeHtml(value: string) {
+  if (!value) return '';
   return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -7,20 +8,85 @@ export function escapeHtml(value: string) {
     .replace(/'/g, '&#039;');
 }
 
-export function getFirstName(name?: string) {
-  return name ? escapeHtml(name.split(' ')[0]) : 'Founder';
+const PLACEHOLDERS = new Set([
+  'n/a', 'n/a.', 'not provided', 'not_provided', 'not-provided',
+  'unknown', 'none', 'null', 'undefined', 'n/a province', 'na',
+  'other', 'blank', 'not_specified', 'not specified'
+]);
+
+export function getFirstName(name?: string): string {
+  if (!name) return 'Founder';
+  const cleaned = name.trim();
+  const lower = cleaned.toLowerCase();
+  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
+    return 'Founder';
+  }
+  const firstWord = cleaned.split(/\s+/)[0];
+  if (PLACEHOLDERS.has(firstWord.toLowerCase())) {
+    return 'Founder';
+  }
+  return escapeHtml(firstWord);
 }
 
 export function cleanCompanyName(companyName?: string): string {
   if (!companyName) return '';
   const cleaned = companyName.trim();
   const lower = cleaned.toLowerCase();
-  const placeholders = [
-    'not provided', 'n/a', 'not_provided', 'unknown', 'none', 'null', 'undefined',
-    'not-provided', 'not provided.', 'n/a.', 'not_provided.', 'unknown.', 'none.'
-  ];
-  if (placeholders.includes(lower)) return '';
-  return cleaned;
+  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
+    return '';
+  }
+  return escapeHtml(cleaned);
+}
+
+export function cleanRegionName(region?: string): string {
+  if (!region) return 'Canada';
+  const cleaned = region.trim();
+  const lower = cleaned.toLowerCase();
+  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
+    return 'Canada';
+  }
+
+  const provinceMap: Record<string, string> = {
+    'on': 'Ontario',
+    'ontario': 'Ontario',
+    'ab': 'Alberta',
+    'alberta': 'Alberta',
+    'bc': 'British Columbia',
+    'british columbia': 'British Columbia',
+    'qc': 'Quebec',
+    'quebec': 'Quebec',
+    'mb': 'Manitoba',
+    'manitoba': 'Manitoba',
+    'sk': 'Saskatchewan',
+    'saskatchewan': 'Saskatchewan',
+    'ns': 'Nova Scotia',
+    'nova scotia': 'Nova Scotia',
+    'nb': 'New Brunswick',
+    'new brunswick': 'New Brunswick',
+    'nl': 'Newfoundland and Labrador',
+    'newfoundland': 'Newfoundland and Labrador',
+    'pe': 'Prince Edward Island',
+    'prince edward island': 'Prince Edward Island',
+    'yt': 'Yukon',
+    'nt': 'Northwest Territories',
+    'nu': 'Nunavut',
+    'ca': 'Canada',
+    'canada': 'Canada',
+    'us': 'US',
+    'usa': 'US'
+  };
+
+  return provinceMap[lower] || escapeHtml(cleaned);
+}
+
+export function cleanIndustryName(industry?: string): string {
+  if (!industry) return 'business';
+  const cleaned = industry.trim();
+  const lower = cleaned.toLowerCase();
+  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
+    return 'business';
+  }
+  return escapeHtml(cleaned);
 }
 
 async function sendViaBrevo({
@@ -187,7 +253,7 @@ async function sendViaResend({
         text,
         tags: [
           { name: 'type', value: tagType },
-          { name: 'company', value: (companyName || 'Unknown').replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 50) },
+          { name: 'company', value: (cleanCompanyName(companyName) || 'Unknown').replace(/[^a-zA-Z0-9_-]/g, '-').slice(0, 50) },
         ],
       }),
     });

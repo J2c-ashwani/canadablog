@@ -1,7 +1,8 @@
-import { sendEmail, getFirstName } from "./mailer";
+import { sendEmail, getFirstName, cleanRegionName, cleanIndustryName } from "./mailer";
 import { generateFundingMatchReport } from "../products/report-generator";
 
 function escapeHtml(value: string) {
+  if (!value) return '';
   return value
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
@@ -52,7 +53,6 @@ function wrapCalculatorRecoveryTemplate(contentHtml: string, loginToken: string,
 
 /**
  * Calculator Recovery Email 1: Your funding matches are ready (4h Reminder)
- * Sent 4 hours after completion
  */
 export async function sendCalculatorRecoveryEmail1({
   to,
@@ -93,7 +93,6 @@ export async function sendCalculatorRecoveryEmail1({
 
 /**
  * Calculator Recovery Email 2: Your personalized funding report summary (24h Summary)
- * Sent 24 hours after completion. Includes profile summary & funding ranges.
  */
 export async function sendCalculatorRecoveryEmail2({
   to,
@@ -109,14 +108,17 @@ export async function sendCalculatorRecoveryEmail2({
   to: string;
   name?: string;
   loginToken: string;
-  province: string;
-  industry: string;
-  revenue: string;
-  goal: string;
+  province?: string;
+  industry?: string;
+  revenue?: string;
+  goal?: string;
   estimatedMin: number;
   estimatedMax: number;
 }) {
   const firstName = getFirstName(name);
+  const cleanProvince = cleanRegionName(province);
+  const cleanInd = cleanIndustryName(industry);
+
   const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=calculator_recovery&utm_medium=email&utm_campaign=calc_recovery_day1_24h`;
   const subject = `Your personalized funding report summary`;
 
@@ -130,20 +132,22 @@ export async function sendCalculatorRecoveryEmail2({
       <table style="width:100%;font-size:13.5px;color:#475569;">
         <tr>
           <td style="padding:3px 0;"><strong>Location:</strong></td>
-          <td style="text-align:right;color:#0f172a;">${escapeHtml(province)}</td>
+          <td style="text-align:right;color:#0f172a;">${escapeHtml(cleanProvince)}</td>
         </tr>
         <tr>
           <td style="padding:3px 0;"><strong>Industry:</strong></td>
-          <td style="text-align:right;color:#0f172a;">${escapeHtml(industry)}</td>
+          <td style="text-align:right;color:#0f172a;">${escapeHtml(cleanInd)}</td>
         </tr>
+        ${revenue && revenue.toUpperCase() !== 'N/A' ? `
         <tr>
           <td style="padding:3px 0;"><strong>Revenue Tier:</strong></td>
           <td style="text-align:right;color:#0f172a;">${escapeHtml(revenue)}</td>
-        </tr>
+        </tr>` : ''}
+        ${goal && goal.toUpperCase() !== 'N/A' ? `
         <tr>
           <td style="padding:3px 0;"><strong>Funding Goal:</strong></td>
           <td style="text-align:right;color:#0f172a;">${escapeHtml(goal)}</td>
-        </tr>
+        </tr>` : ''}
         <tr>
           <td style="padding:8px 0 0 0;font-size:14px;color:#059669;border-top:1px solid #e2e8f0;"><strong>Est. Potential Funding:</strong></td>
           <td style="padding:8px 0 0 0;text-align:right;font-size:15px;font-weight:800;color:#059669;border-top:1px solid #e2e8f0;">$${estimatedMin.toLocaleString()} – $${estimatedMax.toLocaleString()}</td>
@@ -152,7 +156,7 @@ export async function sendCalculatorRecoveryEmail2({
     </div>
 
     <p style="margin: 0 0 20px 0;">
-      Unlock your personalized **Funding Match Report** to get the exact list of matching grants, loans, and subsidies, along with their specific application guides and required document lists:
+      Unlock your personalized <strong>Funding Match Report</strong> to get the exact list of matching grants, loans, and subsidies, along with their specific application guides and required document lists:
     </p>
 
     <div style="text-align:center;margin:28px 0;">
@@ -162,14 +166,13 @@ export async function sendCalculatorRecoveryEmail2({
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou recently calculated your funding matches. Based on your ${industry} business in ${province}, your estimated potential funding is $${estimatedMin.toLocaleString()} - $${estimatedMax.toLocaleString()}.\n\nUnlock your full Funding Match Report ($19) to see all matched programs:\n${checkoutUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou recently calculated your funding matches. Based on your ${cleanInd} business in ${cleanProvince}, your estimated potential funding is $${estimatedMin.toLocaleString()} - $${estimatedMax.toLocaleString()}.\n\nUnlock your full Funding Match Report ($19) to see all matched programs:\n${checkoutUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'calc-recovery-email2' });
 }
 
 /**
  * Calculator Recovery Email 3: Top matching programs + Free Bonus Package (72h Urgency)
- * Sent 72 hours (3 days) after completion. Includes value-added bonuses to preserve $19 price integrity.
  */
 export async function sendCalculatorRecoveryEmail3({
   to,
@@ -183,21 +186,20 @@ export async function sendCalculatorRecoveryEmail3({
   to: string;
   name?: string;
   loginToken: string;
-  provinceCode: string;
-  industryCode: string;
-  revenueCode: string;
-  goalCode: string;
+  provinceCode?: string;
+  industryCode?: string;
+  revenueCode?: string;
+  goalCode?: string;
 }) {
   const firstName = getFirstName(name);
   const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=calculator_recovery&utm_medium=email&utm_campaign=calc_recovery_day3_72h&bonus=cro_value_pack`;
   const subject = `See the top programs we found for your business (Free Value-Add Bonuses)`;
 
-  // Fetch real programs matches from report generator
   const report = generateFundingMatchReport({
-    province: provinceCode,
-    industry: industryCode,
-    revenue: revenueCode,
-    goal: goalCode
+    province: provinceCode || 'on',
+    industry: industryCode || 'technology',
+    revenue: revenueCode || 'pre-revenue',
+    goal: goalCode || 'hiring'
   });
 
   const topPrograms = report.programs.slice(0, 3);
@@ -226,9 +228,11 @@ export async function sendCalculatorRecoveryEmail3({
     programsText = `We matched your profile against federal and provincial grant streams, regional credits, and tax refunds.`;
   }
 
+  const cleanProvince = cleanRegionName(report.profile.provinceName);
+
   const html = wrapCalculatorRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      A generic list of government grants is useless. That's why our system mapped your specific business profile in **${escapeHtml(report.profile.provinceName)}** against active programs.
+      A generic list of government grants is useless. That's why our system mapped your specific business profile in <strong>${escapeHtml(cleanProvince)}</strong> against active programs.
     </p>
     
     <p style="margin: 16px 0 8px 0;">
@@ -247,24 +251,23 @@ export async function sendCalculatorRecoveryEmail3({
     </div>
 
     <p style="margin: 16px 0 20px 0;">
-      Unlock your full report for $19 and get the complete B2B Stacking & Reviewer package added to your download dashboard automatically at checkout:
+      Unlock your full report for $19 and get the complete B2B Stacking &amp; Reviewer package added to your download dashboard automatically at checkout:
     </p>
 
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-        Unlock My Report + Free Bonuses ($19) &rarr;
+        Unlock My Match Report + Free Bonuses ($19) &rarr;
       </a>
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nWe matched your business to top active programs based on your profile in ${report.profile.provinceName}:${programsText}\n\nUnlock your complete Funding Match Report ($19) and we will automatically add our B2B Stacking, Reviewer Checklists, and Timeline templates completely free.\n\nClaim your report and bonuses here:\n${checkoutUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nWe matched your business to top active programs based on your profile in ${cleanProvince}:${programsText}\n\nUnlock your complete Funding Match Report ($19) and we will automatically add our B2B Stacking, Reviewer Checklists, and Timeline templates completely free.\n\nClaim your report and bonuses here:\n${checkoutUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'calc-recovery-email3' });
 }
 
 /**
- * Calculator Recovery Email 4: Educational Guide (7d educational sequence)
- * Sent 7 days (168 hours) after completion. Pure value, no promotional pitching.
+ * Calculator Recovery Email 4: Stacking rules & compliance guide (7d Final)
  */
 export async function sendCalculatorRecoveryEmail4({
   to,
@@ -278,10 +281,10 @@ export async function sendCalculatorRecoveryEmail4({
   to: string;
   name?: string;
   loginToken: string;
-  provinceCode: string;
-  industryCode: string;
-  revenueCode: string;
-  goalCode: string;
+  provinceCode?: string;
+  industryCode?: string;
+  revenueCode?: string;
+  goalCode?: string;
 }) {
   const firstName = getFirstName(name);
   const subject = `How to stack Canadian government grants (CRA compliance guide)`;
@@ -296,9 +299,9 @@ export async function sendCalculatorRecoveryEmail4({
     </p>
     
     <div style="background-color:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:16px;margin:20px 0;font-size:13.5px;color:#78350f;line-height:1.5;">
-      <strong>Key CRA Stacking & Co-Funding Compliance Rules:</strong>
+      <strong>Key CRA Stacking &amp; Co-Funding Compliance Rules:</strong>
       <ul style="margin:8px 0 0 0;padding-left:20px;">
-        <li style="margin-bottom:6px;"><strong>Proxy Tax Offsets:</strong> If you receive an IRAP wage subsidy for a developer, that funding amount reduces your eligible expenditure base for SR&ED tax claims on Form T661.</li>
+        <li style="margin-bottom:6px;"><strong>Proxy Tax Offsets:</strong> If you receive an IRAP wage subsidy for a developer, that funding amount reduces your eligible expenditure base for SR&amp;ED tax claims on Form T661.</li>
         <li style="margin-bottom:6px;"><strong>Separate Cost Centers:</strong> You must track separate development sprints. Program A must fund developer hours on front-end UI adoption, while Program B claims focus on core technical uncertainty.</li>
         <li style="margin-bottom:6px;"><strong>Cost Share Ceilings:</strong> Most federal programs limit total stacked co-funding (federal + provincial + municipal) to 75% or 85% of total project costs. You must support the remainder via private capital.</li>
       </ul>
@@ -336,7 +339,7 @@ export async function sendCustomerSuccessFollowup({
   const subject = `Have you started your government funding applications yet?`;
   
   const yesUrl = `https://www.fsidigital.ca/products/toolkit?token=${loginToken}&utm_source=customer_success&utm_medium=email&utm_campaign=success_started_yes`;
-  const noUrl = `https://www.fsidigital.ca/audit?token=${loginToken}&utm_source=customer_success&utm_medium=email&utm_campaign=success_started_no`;
+  const noUrl = `https://www.fsidigital.ca/booking?token=${loginToken}&utm_source=customer_success&utm_medium=email&utm_campaign=success_started_no`;
 
   const html = wrapCalculatorRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
