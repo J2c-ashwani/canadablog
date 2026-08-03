@@ -260,7 +260,9 @@ Sprint 14 focused on auditing and reconstructing the complete optimization histo
 - **What changed**:
   - Compared search rankings, clicks, impressions, and CTR for the optimized page cohort between the June 28 baseline and the latest August 4, 2026 GSC performance report.
   - Confirmed the cohort average CTR rose from **0.27% to 0.37%** (a **+0.10% absolute CTR gain**).
-  - Compiled the CEO Experiment Report outlining recommendations on what to scale and which components need calibration (e.g. the loan-query volume drop).
+  - Integrated the live Google Sheets lead-and-purchase database to perform URL-by-URL revenue attribution, mapping 11 leads and 2 purchases ($38 revenue) directly back to their original optimized landing pages.
+  - Compiled the CEO Experiment Report and Revenue Playbook outlining recommendations on what to scale and which components need calibration (e.g. the loan-query volume drop).
+
 
 
 
