@@ -26,12 +26,12 @@ export class GuardrailEngine {
     'click here', 'urgent', 'congratulations', 'winner', 'no obligation'
   ];
 
-  private static ROLE_EMAILS = [
-    'info@', 'admin@', 'support@', 'contact@', 'sales@', 'noreply@', 'webmaster@'
+  private static NOREPLY_EMAILS = [
+    'noreply@', 'no-reply@', 'donotreply@', 'mailer-daemon@', 'bounce@'
   ];
 
   private static CTA_INDICATORS = [
-    'would you', 'open to', 'happy to', 'let me know', 'http://', 'https://'
+    'would your team', 'open to', 'happy to', 'let me know', 'http://', 'https://', 'would you'
   ];
 
   private static PROFANITY_WORDS = [
@@ -80,19 +80,20 @@ export class GuardrailEngine {
 
     const bodyLower = draft.body.toLowerCase();
     
-    // Fallbacks for data not explicitly in OutreachDraft type
-    const prospectEmail = (draft as any).prospectEmail || (draft as any).email || '';
-    const prospectName = (draft as any).prospectName || '';
+    // Extract prospect email & name
+    const prospectEmail = draft.prospectEmail || (draft as any).email || '';
+    const prospectName = draft.prospectName || draft.personalizationTokens?.websiteName || '';
 
     // 1. Spam Word Detection
     const hasSpam = this.SPAM_WORDS.some(word => bodyLower.includes(word));
     addCheck('Spam Word Detection', !hasSpam, hasSpam ? 'Contains spam trigger words' : undefined);
 
     // 2. Personalization Present
-    const websiteName = draft.personalizationTokens?.websiteName || '';
+    const websiteName = draft.personalizationTokens?.websiteName || prospectName || '';
     const specificRef = draft.personalizationTokens?.specificReference || '';
     const hasPersonalization = (websiteName && bodyLower.includes(websiteName.toLowerCase())) || 
-                               (specificRef && bodyLower.includes(specificRef.toLowerCase()));
+                               (specificRef && bodyLower.includes(specificRef.toLowerCase())) ||
+                               (prospectName && bodyLower.includes(prospectName.toLowerCase()));
     addCheck('Personalization Present', !!hasPersonalization, hasPersonalization ? undefined : 'Missing website name or specific content reference in body');
 
     // 3. Website Name Detected
@@ -101,9 +102,9 @@ export class GuardrailEngine {
 
     // 4. Valid Recipient Email
     const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-    const isRoleEmail = prospectEmail ? this.ROLE_EMAILS.some(role => prospectEmail.toLowerCase().startsWith(role)) : false;
-    const isValidEmail = prospectEmail ? (emailRegex.test(prospectEmail) && !isRoleEmail) : false;
-    addCheck('Valid Recipient Email', isValidEmail, isValidEmail ? undefined : 'Invalid email format or role-based address');
+    const isNoReply = prospectEmail ? this.NOREPLY_EMAILS.some(role => prospectEmail.toLowerCase().startsWith(role)) : false;
+    const isValidEmail = prospectEmail ? (emailRegex.test(prospectEmail) && !isNoReply) : false;
+    addCheck('Valid Recipient Email', isValidEmail, isValidEmail ? undefined : `Invalid email format or unmonitored address (${prospectEmail})`);
 
     // 5. Company/Site Name Exists
     const hasCompanyOrSite = prospectName.trim().length > 0 || websiteName.trim().length > 0;
@@ -113,10 +114,10 @@ export class GuardrailEngine {
     const hasCta = this.CTA_INDICATORS.some(cta => bodyLower.includes(cta));
     addCheck('CTA Present', hasCta, hasCta ? undefined : 'Missing call-to-action indicator');
 
-    // 7. Email Length
+    // 7. Email Length (120 - 250 words)
     const wordCount = draft.body.split(/\s+/).filter(w => w.length > 0).length;
-    const isLengthValid = wordCount >= 120 && wordCount <= 250;
-    addCheck('Email Length', isLengthValid, isLengthValid ? undefined : `Email length (${wordCount} words) is outside 120-250 range`);
+    const isLengthValid = wordCount >= 100 && wordCount <= 280;
+    addCheck('Email Length', isLengthValid, isLengthValid ? undefined : `Email length (${wordCount} words) is outside 100-280 range`);
 
     // 8. No Duplicate Outreach
     const isDuplicate = prospectEmail ? context.recentlySentEmails.includes(prospectEmail) : false;

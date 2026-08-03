@@ -75,6 +75,8 @@ If you'd prefer not to receive these emails, please reply with "unsubscribe".`;
     // 5. Return complete OutreachDraft object matching types.ts
     return {
       prospectId: opp.id,
+      prospectEmail: opp.email,
+      prospectName: prospectName,
       category: opp.category,
       angle,
       subject,

@@ -98,6 +98,8 @@ export type OutreachAngle =
 
 export interface OutreachDraft {
   prospectId: string
+  prospectEmail?: string
+  prospectName?: string
   category: AuthorityCategory
   angle: OutreachAngle
   subject: string
