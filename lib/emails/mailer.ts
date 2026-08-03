@@ -168,7 +168,7 @@ async function sendViaResend({
 
   if (!apiKey) {
     console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
-    return sendViaBrevo({ to, subject, html, text, tagType, from });
+    return { success: false, skipped: true };
   }
 
   try {
@@ -195,18 +195,6 @@ async function sendViaResend({
     if (!response.ok) {
       const errorText = await response.text();
       console.error(`Resend email failed [${tagType}]:`, errorText);
-
-      // Dual-Provider Fallback to Brevo or Sender.net if Resend fails (e.g. daily quota reached)
-      if (process.env.BREVO_API_KEY) {
-        console.log(`🔄 Resend failed/exhausted. Attempting Brevo fallback for ${to}...`);
-        return sendViaBrevo({ to, subject, html, text, tagType, from });
-      }
-
-      if (process.env.SENDER_API_KEY) {
-        console.log(`🔄 Resend failed/exhausted. Attempting Sender.net fallback for ${to}...`);
-        return sendViaSenderNet({ to, subject, html, text, tagType, from });
-      }
-
       return { success: false, error: errorText };
     }
 
@@ -214,14 +202,6 @@ async function sendViaResend({
     return { success: true };
   } catch (error) {
     console.error(`Resend email exception [${tagType}]:`, error);
-    if (process.env.BREVO_API_KEY) {
-      console.log(`🔄 Exception in Resend. Attempting Brevo fallback for ${to}...`);
-      return sendViaBrevo({ to, subject, html, text, tagType, from });
-    }
-    if (process.env.SENDER_API_KEY) {
-      console.log(`🔄 Exception in Resend. Attempting Sender.net fallback for ${to}...`);
-      return sendViaSenderNet({ to, subject, html, text, tagType, from });
-    }
     return { success: false, error: String(error) };
   }
 }
@@ -257,13 +237,14 @@ export async function sendEmail({
     return { success: true };
   }
 
-  // 1. If Brevo API Key is present, try Brevo first (300/day free limit)
+  // 1. ALWAYS TRY BREVO FIRST if BREVO_API_KEY exists (300/day free limit)
   if (process.env.BREVO_API_KEY) {
     const brevoRes = await sendViaBrevo({ to, subject, html, text, tagType, from });
     if (brevoRes.success) return brevoRes;
+    console.warn(`Brevo send failed/exhausted. Falling back to Resend...`);
   }
 
-  // 2. If forceResend or Brevo unconfigured, try Resend
+  // 2. Try Resend if Brevo is unconfigured or failed
   const resendResult = await sendViaResend({ to, subject, html, text, tagType, companyName, from });
   if (resendResult.success) return resendResult;
 
