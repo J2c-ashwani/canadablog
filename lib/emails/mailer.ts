@@ -70,7 +70,7 @@ async function sendViaBrevo({
       return { success: false, error: errorText };
     }
 
-    console.log(`✉️ Email successfully sent to ${to} via Brevo [${tagType}]`);
+    console.log(`✉️ Email successfully sent to ${to} via Brevo fallback [${tagType}]`);
     return { success: true };
   } catch (error) {
     console.warn(`Brevo email exception [${tagType}]: ${error}`);
@@ -237,18 +237,18 @@ export async function sendEmail({
     return { success: true };
   }
 
-  // 1. ALWAYS TRY BREVO FIRST if BREVO_API_KEY exists (300/day free limit)
-  if (process.env.BREVO_API_KEY) {
-    const brevoRes = await sendViaBrevo({ to, subject, html, text, tagType, from });
-    if (brevoRes.success) return brevoRes;
-    console.warn(`Brevo send failed/exhausted. Falling back to Resend...`);
-  }
-
-  // 2. Try Resend if Brevo is unconfigured or failed
+  // 1. PRIMARY: Always try Resend first (Clean, unbranded, professional signature)
   const resendResult = await sendViaResend({ to, subject, html, text, tagType, companyName, from });
   if (resendResult.success) return resendResult;
 
-  // 3. Fallback to Sender.net if configured
+  // 2. FALLBACK 1: If Resend fails or daily quota (100) is reached -> Failover to Brevo
+  if (process.env.BREVO_API_KEY) {
+    console.log(`🔄 Resend quota/error encountered. Failing over to Brevo for ${to}...`);
+    const brevoResult = await sendViaBrevo({ to, subject, html, text, tagType, from });
+    if (brevoResult.success) return brevoResult;
+  }
+
+  // 3. FALLBACK 2: Sender.net
   if (process.env.SENDER_API_KEY) {
     return sendViaSenderNet({ to, subject, html, text, tagType, from });
   }
