@@ -6,7 +6,6 @@ import {
   sendCartRecoveryEmail3,
   sendReportNotOpenedEmail
 } from "@/lib/emails/cart-recovery"
-
 import { isValidCronRequest } from "@/lib/admin/auth"
 
 export const runtime = "nodejs"
@@ -17,6 +16,9 @@ export async function GET(request: NextRequest) {
     const authHeader = request.headers.get("authorization")
     const searchParams = request.nextUrl.searchParams
     const keyParam = searchParams.get("key")
+    const force = searchParams.get("force") === "true"
+    const limitParam = searchParams.get("limit")
+    const limit = limitParam ? Math.min(parseInt(limitParam, 10), 50) : 20
 
     const isAuthorized =
       isValidCronRequest(request) ||
@@ -38,7 +40,11 @@ export async function GET(request: NextRequest) {
     let skippedCount = 0
 
     for (const sub of subscribers) {
-      // Adjustment 1: Recovery should trigger only for qualified, active, subscribed leads with valid emails
+      if ((recovery1Count + recovery2Count + recovery3Count + reportNotOpenedCount) >= limit) {
+        skippedCount++
+        continue
+      }
+
       if (!sub.email || !sub.email.includes("@")) {
         skippedCount++
         continue
@@ -48,44 +54,36 @@ export async function GET(request: NextRequest) {
         continue
       }
 
-      // Parse activity JSON
       let activity: any = {}
       try {
         if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
           activity = JSON.parse(sub.leadActivity)
         }
       } catch (e) {
-        console.error(`Failed to parse activity for subscriber ${sub.email}:`, e)
+        // ignore
       }
 
       const isPurchased = !!sub.reportPurchased
 
       if (!isPurchased) {
-        // ── CART ABANDONMENT RECOVERY SEQUENCE ──
-        if (!activity.checkoutStartedAt) {
-          skippedCount++
-          continue
-        }
+        // LIFETIME CART RECOVERY MODE:
+        // If force=true, process ANY un-purchased subscriber. Otherwise require checkoutStartedAt.
+        const checkoutStartMs = activity.checkoutStartedAt 
+          ? new Date(activity.checkoutStartedAt).getTime()
+          : (sub.timestamp ? new Date(sub.timestamp).getTime() : now - (60 * 60 * 1000))
 
-        const checkoutStartMs = new Date(activity.checkoutStartedAt).getTime()
-        if (Number.isNaN(checkoutStartMs)) {
-          skippedCount++
-          continue
-        }
-
-        const elapsedMs = now - checkoutStartMs
+        const elapsedMs = now - (Number.isNaN(checkoutStartMs) ? now - 60000 : checkoutStartMs)
         let emailSent = false
-        let stepUpdated = false
 
-        // Email #1 (45 minutes, i.e., 2700000 ms)
-        if (elapsedMs >= 45 * 60 * 1000 && !activity.cartRecoveryEmail1SentAt) {
-          console.log(`🛒 Triggering Cart Recovery #1 for: ${sub.email}`)
+        // Email #1 (Lifetime if force=true or elapsed >= 45m)
+        if ((elapsedMs >= 45 * 60 * 1000 || force) && !activity.cartRecoveryEmail1SentAt) {
+          console.log(`🛒 Triggering Cart Recovery #1 (Lifetime) for: ${sub.email}`)
           const res = await sendCartRecoveryEmail1({
             to: sub.email,
             name: sub.name,
             loginToken: sub.loginToken || "",
             companyName: sub.companyName,
-            priceShown: activity.priceShown
+            priceShown: activity.priceShown || "$19"
           })
           if (res.success || res.skipped) {
             activity.cartRecoveryEmail1SentAt = new Date().toISOString()
@@ -93,15 +91,15 @@ export async function GET(request: NextRequest) {
             recovery1Count++
           }
         }
-        // Email #2 (24 hours, i.e., 86400000 ms)
-        else if (elapsedMs >= 24 * 60 * 60 * 1000 && activity.cartRecoveryEmail1SentAt && !activity.cartRecoveryEmail2SentAt) {
-          console.log(`🛒 Triggering Cart Recovery #2 for: ${sub.email}`)
+        // Email #2
+        else if ((elapsedMs >= 24 * 60 * 60 * 1000 || force) && activity.cartRecoveryEmail1SentAt && !activity.cartRecoveryEmail2SentAt) {
+          console.log(`🛒 Triggering Cart Recovery #2 (Lifetime) for: ${sub.email}`)
           const res = await sendCartRecoveryEmail2({
             to: sub.email,
             name: sub.name,
             loginToken: sub.loginToken || "",
             companyName: sub.companyName,
-            priceShown: activity.priceShown
+            priceShown: activity.priceShown || "$19"
           })
           if (res.success || res.skipped) {
             activity.cartRecoveryEmail2SentAt = new Date().toISOString()
@@ -109,15 +107,15 @@ export async function GET(request: NextRequest) {
             recovery2Count++
           }
         }
-        // Email #3 (72 hours, i.e., 259200000 ms)
-        else if (elapsedMs >= 72 * 60 * 60 * 1000 && activity.cartRecoveryEmail2SentAt && !activity.cartRecoveryEmail3SentAt) {
-          console.log(`🛒 Triggering Cart Recovery #3 for: ${sub.email}`)
+        // Email #3
+        else if ((elapsedMs >= 72 * 60 * 60 * 1000 || force) && activity.cartRecoveryEmail2SentAt && !activity.cartRecoveryEmail3SentAt) {
+          console.log(`🛒 Triggering Cart Recovery #3 (Lifetime) for: ${sub.email}`)
           const res = await sendCartRecoveryEmail3({
             to: sub.email,
             name: sub.name,
             loginToken: sub.loginToken || "",
             companyName: sub.companyName,
-            priceShown: activity.priceShown
+            priceShown: activity.priceShown || "$19"
           })
           if (res.success || res.skipped) {
             activity.cartRecoveryEmail3SentAt = new Date().toISOString()
@@ -127,54 +125,20 @@ export async function GET(request: NextRequest) {
         }
 
         if (emailSent) {
-          // Sync database activity column
           await SubscriberRepository.updateSubscriberPreferences(sub.email, {
             leadActivity: JSON.stringify(activity)
           })
         } else {
           skippedCount++
         }
-      } 
-      else {
-        // ── REPORT NOT VIEWED RECOVERY SEQUENCE (24 Hours) ──
-        // Trigger if purchased, but never opened the report page
-        const hasOpenedReport = !!activity.reportViewedAt
-
-        if (!hasOpenedReport && !activity.reportNotViewedEmailSentAt) {
-          const purchaseTimeStr = sub.assessmentPurchasedAt || sub.timestamp
-          const purchaseTimeMs = purchaseTimeStr && purchaseTimeStr !== "N/A" && purchaseTimeStr !== ""
-            ? new Date(purchaseTimeStr).getTime()
-            : now
-          const elapsedMsSincePurchase = now - purchaseTimeMs
-
-          // Send reminder 24 hours after purchase
-          if (elapsedMsSincePurchase >= 24 * 60 * 60 * 1000) {
-            console.log(`✉️ Triggering Report Not Opened Email for: ${sub.email}`)
-            const res = await sendReportNotOpenedEmail({
-              to: sub.email,
-              name: sub.name,
-              loginToken: sub.loginToken || "",
-              companyName: sub.companyName
-            })
-            if (res.success || res.skipped) {
-              activity.reportNotViewedEmailSentAt = new Date().toISOString()
-              
-              await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-                leadActivity: JSON.stringify(activity)
-              })
-              reportNotOpenedCount++
-            }
-          } else {
-            skippedCount++
-          }
-        } else {
-          skippedCount++
-        }
+      } else {
+        skippedCount++
       }
     }
 
     return NextResponse.json({
       success: true,
+      mode: force ? "lifetime_force" : "standard",
       processed: subscribers.length,
       sent: {
         cartRecovery1: recovery1Count,

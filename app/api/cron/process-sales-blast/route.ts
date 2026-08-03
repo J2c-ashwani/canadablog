@@ -14,6 +14,7 @@ export async function GET(request: NextRequest) {
     const wave = url.searchParams.get("wave") || "1"; // "1" = Monday blast, "2" = Wednesday follow-up
     const limit = parseInt(url.searchParams.get("limit") || "50", 10);
     const dryRun = url.searchParams.get("dry") === "true";
+    const force = url.searchParams.get("force") === "true";
 
     const isAuthorized =
       isValidCronRequest(request) ||
@@ -27,7 +28,6 @@ export async function GET(request: NextRequest) {
 
     const allSubscribers = await SubscriberRepository.getAllSubscribers();
 
-    // Disposable/test email domains to exclude (protects sender reputation)
     const DISPOSABLE_DOMAINS = new Set([
       'mailinator.com', 'guerrillamail.com', 'tempmail.com', 'throwaway.email',
       'yopmail.com', 'sharklasers.com', 'guerrillamailblock.com', 'grr.la',
@@ -37,20 +37,18 @@ export async function GET(request: NextRequest) {
       'minuteinbox.com', 'tempr.email', 'discard.email', 'tmpmail.net'
     ]);
 
-    // Filter: subscribed, has email, not disposable, has used calculator/tools, NOT purchased
     const targets = allSubscribers.filter(sub => {
       if (!sub.email || !sub.email.includes("@")) return false;
       if (!sub.isSubscribed) return false;
 
-      // Skip disposable/test email domains
       const emailDomain = sub.email.split('@')[1]?.toLowerCase();
       if (!emailDomain || DISPOSABLE_DOMAINS.has(emailDomain)) return false;
 
-      // Skip if already purchased a report
       if (sub.reportPurchased) return false;
       if (sub.offlineStatus === 'Report Buyer' || sub.offlineStatus === 'Audit Buyer') return false;
 
-      // Must have some profile data (used calculator/tool)
+      if (force) return true;
+
       const hasProfile = sub.companyName && sub.companyName !== 'N/A' && sub.companyName !== '';
       const hasRegion = sub.region && sub.region !== 'N/A' && sub.region !== '';
       const hasIndustry = sub.industry && sub.industry !== 'N/A' && sub.industry !== '';
@@ -58,7 +56,6 @@ export async function GET(request: NextRequest) {
       return hasProfile || hasRegion || hasIndustry;
     });
 
-    // Check activity for blast tracking
     const pendingTargets = targets.filter(sub => {
       let activity: any = {};
       try {
@@ -68,10 +65,9 @@ export async function GET(request: NextRequest) {
       } catch { activity = {}; }
 
       if (wave === "1") {
-        return !activity.salesBlast1SentAt;
+        return force || !activity.salesBlast1SentAt;
       } else {
-        // Wave 2: Only send to people who received wave 1 but haven't been sent wave 2
-        return activity.salesBlast1SentAt && !activity.salesBlast2SentAt;
+        return activity.salesBlast1SentAt && (!activity.salesBlast2SentAt || force);
       }
     });
 
@@ -115,7 +111,6 @@ export async function GET(request: NextRequest) {
           : await sendSalesBlast2(params);
 
         if (result.success || result.skipped) {
-          // Update activity tracking
           let activity: any = {};
           try {
             if (sub.leadActivity && sub.leadActivity !== 'N/A' && sub.leadActivity !== '{}') {
@@ -140,7 +135,6 @@ export async function GET(request: NextRequest) {
         errorCount++;
       }
 
-      // Rate limit: 200ms between emails to avoid throttling
       await new Promise(resolve => setTimeout(resolve, 200));
     }
 
