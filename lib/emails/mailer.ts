@@ -23,6 +23,61 @@ export function cleanCompanyName(companyName?: string): string {
   return cleaned;
 }
 
+async function sendViaBrevo({
+  to,
+  subject,
+  html,
+  text,
+  tagType,
+  from
+}: {
+  to: string;
+  subject: string;
+  html: string;
+  text: string;
+  tagType: string;
+  from?: string;
+}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
+  const apiKey = process.env.BREVO_API_KEY;
+  if (!apiKey) return { success: false, skipped: true };
+
+  const fromEmail = process.env.BREVO_FROM_EMAIL || 'hello@fsidigital.ca';
+  const fromName = process.env.BREVO_FROM_NAME || 'FSI Digital';
+  const replyToEmail = process.env.BREVO_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
+
+  try {
+    const response = await fetch('https://api.brevo.com/v3/smtp/email', {
+      method: 'POST',
+      headers: {
+        'api-key': apiKey,
+        'Content-Type': 'application/json',
+        'Accept': 'application/json',
+      },
+      body: JSON.stringify({
+        sender: { name: fromName, email: fromEmail },
+        to: [{ email: to }],
+        replyTo: { email: replyToEmail, name: fromName },
+        subject,
+        htmlContent: html,
+        textContent: text,
+        tags: [tagType],
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.warn(`Brevo email failed [${tagType}]: ${errorText}`);
+      return { success: false, error: errorText };
+    }
+
+    console.log(`✉️ Email successfully sent to ${to} via Brevo [${tagType}]`);
+    return { success: true };
+  } catch (error) {
+    console.warn(`Brevo email exception [${tagType}]: ${error}`);
+    return { success: false, error: String(error) };
+  }
+}
+
 async function sendViaSenderNet({
   to,
   subject,
@@ -113,7 +168,7 @@ async function sendViaResend({
 
   if (!apiKey) {
     console.warn(`Resend email skipped [${tagType}] — RESEND_API_KEY is not set.`);
-    return sendViaSenderNet({ to, subject, html, text, tagType, from });
+    return sendViaBrevo({ to, subject, html, text, tagType, from });
   }
 
   try {
@@ -141,7 +196,12 @@ async function sendViaResend({
       const errorText = await response.text();
       console.error(`Resend email failed [${tagType}]:`, errorText);
 
-      // Dual-Provider Fallback to Sender.net if Resend fails (e.g. daily quota reached)
+      // Dual-Provider Fallback to Brevo or Sender.net if Resend fails (e.g. daily quota reached)
+      if (process.env.BREVO_API_KEY) {
+        console.log(`🔄 Resend failed/exhausted. Attempting Brevo fallback for ${to}...`);
+        return sendViaBrevo({ to, subject, html, text, tagType, from });
+      }
+
       if (process.env.SENDER_API_KEY) {
         console.log(`🔄 Resend failed/exhausted. Attempting Sender.net fallback for ${to}...`);
         return sendViaSenderNet({ to, subject, html, text, tagType, from });
@@ -154,6 +214,10 @@ async function sendViaResend({
     return { success: true };
   } catch (error) {
     console.error(`Resend email exception [${tagType}]:`, error);
+    if (process.env.BREVO_API_KEY) {
+      console.log(`🔄 Exception in Resend. Attempting Brevo fallback for ${to}...`);
+      return sendViaBrevo({ to, subject, html, text, tagType, from });
+    }
     if (process.env.SENDER_API_KEY) {
       console.log(`🔄 Exception in Resend. Attempting Sender.net fallback for ${to}...`);
       return sendViaSenderNet({ to, subject, html, text, tagType, from });
@@ -193,17 +257,20 @@ export async function sendEmail({
     return { success: true };
   }
 
-  if (forceResend && !process.env.SENDER_API_KEY) {
-    return sendViaResend({ to, subject, html, text, tagType, companyName, from });
+  // 1. If Brevo API Key is present, try Brevo first (300/day free limit)
+  if (process.env.BREVO_API_KEY) {
+    const brevoRes = await sendViaBrevo({ to, subject, html, text, tagType, from });
+    if (brevoRes.success) return brevoRes;
   }
 
-  const senderApiKey = process.env.SENDER_API_KEY;
+  // 2. If forceResend or Brevo unconfigured, try Resend
+  const resendResult = await sendViaResend({ to, subject, html, text, tagType, companyName, from });
+  if (resendResult.success) return resendResult;
 
-  if (senderApiKey) {
-    const res = await sendViaSenderNet({ to, subject, html, text, tagType, from });
-    if (res.success) return res;
-    return sendViaResend({ to, subject, html, text, tagType, companyName, from });
+  // 3. Fallback to Sender.net if configured
+  if (process.env.SENDER_API_KEY) {
+    return sendViaSenderNet({ to, subject, html, text, tagType, from });
   }
 
-  return sendViaResend({ to, subject, html, text, tagType, companyName, from });
+  return resendResult;
 }
