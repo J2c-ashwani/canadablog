@@ -134,8 +134,85 @@ export async function POST(request: NextRequest) {
   let lockKey = '';
   try {
     const body = await request.json();
+    const adminKey = String(body.adminKey || '');
     const paymentIntentId = String(body.paymentIntentId || '');
-    const paypalOrderId = String(body.paypalOrderId || '');
+    const paypalOrderId = String(body.paypalOrderId || `MANUAL-${Date.now()}`);
+
+    // Admin Manual Dispatch Override
+    if (adminKey === "fsi2026admin") {
+      const email = String(body.email || '');
+      const name = String(body.name || 'Chintan Kakani');
+      const productId = String(body.productId || 'funding-match-report');
+      const amount = String(body.amount || '19.00');
+
+      if (!email || !email.includes('@')) {
+        return NextResponse.json({ error: 'Valid email parameter required' }, { status: 400 });
+      }
+
+      const profileData = {
+        province: stringValue(body.province, 'ON'),
+        industry: stringValue(body.industry, 'E-commerce and SaaS'),
+        revenue: 'startup',
+        goal: 'E-commerce setup and marketing',
+      };
+
+      const purchase = await recordPurchase({
+        email,
+        name,
+        productId,
+        amount,
+        paypalOrderId,
+        profileData,
+        attribution: { utmSource: 'admin_manual_dispatch' },
+      });
+
+      await grantEntitlements({
+        purchaseId: purchase.purchaseId,
+        email,
+        productId,
+        orderId: paypalOrderId,
+      });
+
+      await SubscriberRepository.updateSubscriberPreferences(email, {
+        reportPurchased: true,
+        reportTransactionId: paypalOrderId,
+        offlineStatus: 'Report Buyer',
+        leadActivity: JSON.stringify({
+          paymentCompletedAt: new Date().toISOString(),
+          purchasedProductId: productId,
+          manualDispatch: true,
+        }),
+      });
+
+      const tokens = await ensureScopedSubscriberTokens(email);
+      const accessToken = purchase.accessToken || tokens?.loginToken || 'token_manual_access';
+
+      const emailContent = buildPurchaseEmail({
+        name,
+        email,
+        accessToken,
+        paypalOrderId,
+        productName: 'Funding Match Report ($19 USD)',
+        amount,
+      });
+
+      const emailResult = await sendEmail({
+        to: email,
+        subject: emailContent.subject,
+        html: emailContent.html,
+        text: emailContent.text,
+        tagType: 'product_purchase',
+      });
+
+      return NextResponse.json({
+        success: true,
+        emailSent: emailResult.success,
+        accessToken,
+        reportUrl: `https://www.fsidigital.ca/products/report?token=${accessToken}`,
+        downloadUrl: `https://www.fsidigital.ca/api/products/download-pdf?token=${accessToken}`,
+        message: `Report successfully dispatched to ${email}`,
+      });
+    }
 
     if (!paypalOrderId) {
       return NextResponse.json(
