@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-// Trigger Vercel rebuild 2026-08-05T22:14:00Z
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
 import { recordPurchase, getAllPurchases } from '@/lib/products/purchase-store';
 import { getProduct } from '@/lib/products/catalog';
