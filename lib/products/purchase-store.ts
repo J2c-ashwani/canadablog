@@ -147,14 +147,7 @@ export async function recordPurchase(data: {
   };
   status?: string;
 }): Promise<PurchaseRecord> {
-  const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
-
-  if (!spreadsheetId) {
-    throw new Error('GOOGLE_SHEET_ID environment variable is missing');
-  }
-
-  await ensurePurchaseSheet(sheets, spreadsheetId);
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '1GAt0DTPzPAQXI9j4JwtlFLhLw4fTzf2XmMHttytu9To';
 
   const purchaseId = randomUUID();
   const accessToken = randomUUID();
@@ -162,125 +155,7 @@ export async function recordPurchase(data: {
   const profileDataJson = JSON.stringify(data.profileData);
   const status = data.status || 'completed';
 
-  const row = [
-    purchaseId,
-    data.email,
-    data.name,
-    data.productId,
-    data.amount,
-    data.paypalOrderId,
-    accessToken,
-    profileDataJson,
-    createdAt,
-    status,
-    data.attribution?.landingPage || '',
-    data.attribution?.referrer || '',
-    data.attribution?.utmSource || '',
-    data.attribution?.utmMedium || '',
-    data.attribution?.utmCampaign || '',
-    data.attribution?.lastTouchPage || '',
-    data.attribution?.lastTouchReferrer || '',
-    data.attribution?.device || '',
-    data.attribution?.browser || '',
-    data.attribution?.country || '',
-  ];
-
-  let success = false;
-  const maxRetries = 3;
-  let attempt = 0;
-
-  while (!success && attempt < maxRetries) {
-    try {
-      await sheets.spreadsheets.values.append({
-        spreadsheetId,
-        range: `${SHEET_TITLE}!A:T`,
-        valueInputOption: 'RAW',
-        requestBody: {
-          values: [row],
-        },
-      });
-      success = true;
-      console.log(`✅ Product purchase recorded on attempt ${attempt + 1}: ${purchaseId} for ${data.email}`);
-    } catch (appendError: any) {
-      attempt += 1;
-      console.error(`⚠️ Attempt ${attempt} failed to write purchase to Google Sheets:`, appendError.message || appendError);
-      if (attempt < maxRetries) {
-        const delay = Math.pow(2, attempt) * 1000;
-        console.log(`Retrying in ${delay}ms...`);
-        await new Promise(resolve => setTimeout(resolve, delay));
-      }
-    }
-  }
-
-  if (!success) {
-    console.error(`❌ ALL ${maxRetries} ATTEMPTS FAILED to write purchase to Google Sheets. Triggering local backup & emergency alerts...`);
-    
-    const failedRecord = {
-      purchaseId,
-      email: data.email,
-      name: data.name,
-      productId: data.productId,
-      amount: data.amount,
-      paypalOrderId: data.paypalOrderId,
-      accessToken,
-      profileData: profileDataJson,
-      createdAt,
-      status: 'failed_sheets_sync',
-      landingPage: data.attribution?.landingPage || '',
-      referrer: data.attribution?.referrer || '',
-      utmSource: data.attribution?.utmSource || '',
-      utmMedium: data.attribution?.utmMedium || '',
-      utmCampaign: data.attribution?.utmCampaign || '',
-      lastTouchPage: data.attribution?.lastTouchPage || '',
-      lastTouchReferrer: data.attribution?.lastTouchReferrer || '',
-      device: data.attribution?.device || '',
-      browser: data.attribution?.browser || '',
-      country: data.attribution?.country || '',
-      error: 'Google Sheets sync failed after 3 attempts'
-    };
-
-    // 1. Back up locally to JSON log
-    logFailedPurchase(failedRecord);
-
-    // 2. Send emergency email alerts
-    try {
-      const { sendEmail } = await import('@/lib/emails/mailer');
-      await sendEmail({
-        to: 'hello@fsidigital.ca',
-        subject: '🚨 EMERGENCY: Google Sheets Purchase Log Failure!',
-        html: `
-          <div style="font-family:sans-serif;padding:20px;color:#333;">
-            <h2 style="color:#dc2626;">🚨 Emergency: Google Sheets Purchase Log Failed</h2>
-            <p>A customer purchase was processed successfully, but the server failed to record it in the Google Sheets database after 3 retries.</p>
-            
-            <div style="background:#f3f4f6;padding:15px;border-radius:6px;border:1px solid #e5e7eb;margin:20px 0;">
-              <h3>Purchase Details (Backed Up Locally)</h3>
-              <p><strong>Customer Name:</strong> ${data.name}</p>
-              <p><strong>Customer Email:</strong> ${data.email}</p>
-              <p><strong>Product ID:</strong> ${data.productId}</p>
-              <p><strong>Amount:</strong> $${data.amount} USD</p>
-              <p><strong>PayPal Order ID:</strong> ${data.paypalOrderId}</p>
-              <p><strong>Access Token:</strong> ${accessToken}</p>
-              <p><strong>Profile Data:</strong> <code>${profileDataJson}</code></p>
-              <p><strong>Created At:</strong> ${createdAt}</p>
-            </div>
-            
-            <p style="color:#666;font-size:13px;">
-              This purchase has been saved locally at <code>lib/data/failed-purchases.json</code>. 
-              Please manually import this row into the Google Sheet to restore tracking.
-            </p>
-          </div>
-        `,
-        text: `EMERGENCY: Google Sheets purchase record write failed.\n\nPurchase ID: ${purchaseId}\nName: ${data.name}\nEmail: ${data.email}\nProduct ID: ${data.productId}\nAmount: ${data.amount}\nPayPal Order ID: ${data.paypalOrderId}\nAccess Token: ${accessToken}\nProfile Data: ${profileDataJson}\n\nPlease check the local backup log file at lib/data/failed-purchases.json to manually recover this record.`,
-        tagType: 'system-alert'
-      });
-      console.log(`✉️ Emergency alert email sent to hello@fsidigital.ca`);
-    } catch (emailErr) {
-      console.error('❌ Failed to send emergency backup alert email:', emailErr);
-    }
-  }
-
-  return {
+  const record: PurchaseRecord = {
     purchaseId,
     email: data.email,
     name: data.name,
@@ -290,7 +165,7 @@ export async function recordPurchase(data: {
     accessToken,
     profileData: profileDataJson,
     createdAt,
-    status: success ? status : 'failed_sheets_sync',
+    status,
     landingPage: data.attribution?.landingPage || '',
     referrer: data.attribution?.referrer || '',
     utmSource: data.attribution?.utmSource || '',
@@ -302,6 +177,47 @@ export async function recordPurchase(data: {
     browser: data.attribution?.browser || '',
     country: data.attribution?.country || '',
   };
+
+  try {
+    const sheets = await getGoogleSheetsClient();
+    if (spreadsheetId) {
+      await ensurePurchaseSheet(sheets, spreadsheetId);
+      const row = [
+        purchaseId,
+        data.email,
+        data.name,
+        data.productId,
+        data.amount,
+        data.paypalOrderId,
+        accessToken,
+        profileDataJson,
+        createdAt,
+        status,
+        data.attribution?.landingPage || '',
+        data.attribution?.referrer || '',
+        data.attribution?.utmSource || '',
+        data.attribution?.utmMedium || '',
+        data.attribution?.utmCampaign || '',
+        data.attribution?.lastTouchPage || '',
+        data.attribution?.lastTouchReferrer || '',
+        data.attribution?.device || '',
+        data.attribution?.browser || '',
+        data.attribution?.country || '',
+      ];
+      await sheets.spreadsheets.values.append({
+        spreadsheetId,
+        range: `${SHEET_TITLE}!A:T`,
+        valueInputOption: 'RAW',
+        requestBody: { values: [row] },
+      });
+      console.log(`✅ Product purchase recorded in Google Sheets: ${purchaseId} for ${data.email}`);
+    }
+  } catch (sheetErr: any) {
+    console.error('⚠️ Google Sheets recording failed (non-blocking backup active):', sheetErr?.message || sheetErr);
+    logFailedPurchase(record);
+  }
+
+  return record;
 }
 
 export async function getAllPurchases(): Promise<PurchaseRecord[]> {
