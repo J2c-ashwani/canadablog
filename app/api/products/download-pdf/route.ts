@@ -1,4 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
+
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
 import { generateFundingMatchReport } from '@/lib/products/report-generator';
 import { generateFundingMatchReportPDF } from '@/lib/products/report-pdf';
 import { getPurchaseByToken } from '@/lib/products/purchase-store';
