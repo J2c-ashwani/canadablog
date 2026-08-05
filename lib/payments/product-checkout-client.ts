@@ -27,8 +27,7 @@ export async function createServerPayPalProductOrder(input: ProductCheckoutInput
 }
 
 export async function finalizeServerPayPalProductOrder(orderId: string) {
-  const paymentIntentId = sessionStorage.getItem(intentKey(orderId));
-  if (!paymentIntentId) throw new Error('Secure checkout session expired. Please start again.');
+  const paymentIntentId = sessionStorage.getItem(intentKey(orderId)) || '';
 
   const response = await fetch('/api/products/purchase', {
     method: 'POST',

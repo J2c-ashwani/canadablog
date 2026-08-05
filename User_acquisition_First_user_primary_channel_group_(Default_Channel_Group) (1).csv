@@ -1,0 +1,16 @@
+# ----------------------------------------
+# User acquisition: First user primary channel group (Default Channel Group)
+# Account: FSIDIGITAL
+# Property: FSIDIGITAL
+# ----------------------------------------
+# 
+# All Users
+# Start date: 20260625
+# End date: 20260722
+First user primary channel group (Default Channel Group),Total users,New users,Returning users,Average engagement time per active user,Engaged sessions per active user,Event count,Key events,User key event rate
+Direct,3800,3785,25,2.908636124275935,0.09162717219589257,26236,1,0.0002632964718272775
+Organic Search,456,446,49,55.51101321585903,0.7687224669603524,5514,0,0
+AI Assistant,52,48,10,43.36,0.64,551,0,0
+Referral,6,5,3,70.16666666666667,0.8333333333333334,119,0,0
+Unassigned,5,5,0,17.8,0.4,39,0,0
+Paid Search,1,1,0,0,0,4,0,0

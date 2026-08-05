@@ -102,17 +102,18 @@ export async function saveProductPaymentIntent(intent: ProductPaymentIntent) {
   });
 }
 
-async function findIntent(intentId: string) {
+async function findIntent(intentIdOrOrderId: string) {
   const { sheets, spreadsheetId } = await ensureSheet();
   const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:N` });
   const rows = response.data.values || [];
-  const rowIndex = rows.findIndex((row) => row[0] === intentId);
+  // Match by Intent ID (column A / index 0) or PayPal Order ID (column B / index 1)
+  const rowIndex = rows.findIndex((row) => row[0] === intentIdOrOrderId || row[1] === intentIdOrOrderId);
   if (rowIndex < 0) return null;
   return { intent: parseRow(rows[rowIndex]), row: rowIndex + 2, sheets, spreadsheetId };
 }
 
-export async function getProductPaymentIntent(intentId: string) {
-  const found = await findIntent(intentId);
+export async function getProductPaymentIntent(intentIdOrOrderId: string) {
+  const found = await findIntent(intentIdOrOrderId);
   return found?.intent || null;
 }
 

@@ -50,15 +50,17 @@ export async function POST(request: NextRequest) {
     const paymentIntentId = String(body.paymentIntentId || '');
     const paypalOrderId = String(body.paypalOrderId || '');
 
-    if (!paymentIntentId || !paypalOrderId) {
+    if (!paypalOrderId) {
       return NextResponse.json(
-        { error: 'A server-created payment intent and PayPal order are required.' },
+        { error: 'A valid PayPal order ID is required.' },
         { status: 400 }
       );
     }
 
-    const paymentIntent = await getProductPaymentIntent(paymentIntentId);
-    if (!paymentIntent || paymentIntent.paypalOrderId !== paypalOrderId) {
+    // Lookup payment intent by paymentIntentId or fallback to paypalOrderId
+    const lookupId = paymentIntentId || paypalOrderId;
+    const paymentIntent = await getProductPaymentIntent(lookupId);
+    if (!paymentIntent || (paypalOrderId && paymentIntent.paypalOrderId && paymentIntent.paypalOrderId !== paypalOrderId)) {
       return NextResponse.json({ error: 'Invalid payment intent.' }, { status: 403 });
     }
 
