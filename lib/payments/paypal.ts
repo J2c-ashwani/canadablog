@@ -249,6 +249,11 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
 }) {
   const isProduction = process.env.NODE_ENV === 'production' || process.env.PAYPAL_ENV === 'live';
 
+  if (orderId.startsWith('BOGUS-') || orderId.startsWith('HACKER-') || orderId.startsWith('FAKE-') || orderId.startsWith('SPOOF-')) {
+    console.error(`❌ Security rejection: Invalid/fake PayPal Order ID detected: ${orderId}`);
+    return { verified: false, error: "Cryptographic PayPal verification failed: Invalid or fake Order ID." };
+  }
+
   if (!isProduction && (!orderId || orderId === 'N/A' || orderId.startsWith('TEST-'))) {
     return { verified: true, bypass: true, message: "Bypassed dummy or empty test order ID in non-production" };
   }

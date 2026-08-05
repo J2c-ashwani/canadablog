@@ -307,9 +307,9 @@ export async function sendEmail({
   const resendResult = await sendViaResend({ to, subject, html, text, tagType, companyName, from });
   if (resendResult.success) return resendResult;
 
-  // 2. FALLBACK 1: If Resend fails or daily quota (100) is reached -> Failover to Brevo
+  // 2. FALLBACK 1: If Resend fails, skipped, or daily quota (100) is reached -> Failover to Brevo
   if (process.env.BREVO_API_KEY) {
-    console.log(`🔄 Resend quota/error encountered. Failing over to Brevo for ${to}...`);
+    console.log(`🔄 Resend skipped/error encountered. Failing over to Brevo for ${to}...`);
     const brevoResult = await sendViaBrevo({ to, subject, html, text, tagType, from });
     if (brevoResult.success) return brevoResult;
   }
