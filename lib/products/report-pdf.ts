@@ -233,11 +233,36 @@ export function generateFundingMatchReportPDF(
 
   yPos += 12;
 
+  const formatStars = (str?: string) => {
+    if (!str) return '5/5 Rating';
+    const filled = (str.match(/★/g) || []).length;
+    if (filled > 0) return `${filled}/5 Rating`;
+    return str.replace(/★/g, '*').replace(/☆/g, '-');
+  };
+
   const recList = platform?.primaryRecommendations || [];
   const displayPrograms = recList.length > 0 ? recList : report.programs;
 
   displayPrograms.forEach((prog: any, idx: number) => {
-    const cardHeight = 52;
+    // 1. Calculate dynamic text block heights to prevent vertical overlaps
+    const wrappedTitle = doc.splitTextToSize(prog.programName || prog.name, contentWidth - 75);
+    const titleHeight = wrappedTitle.length * 4.5;
+
+    const whyText = doc.splitTextToSize(prog.whyRankedHere || prog.whyRecommended || prog.matchReason || '', contentWidth - 10);
+    const whyHeight = whyText.length * 3.8;
+
+    let calloutLines: string[] = [];
+    if (prog.whyNumberOne && prog.whyNumberOne.length > 0) {
+      calloutLines = doc.splitTextToSize(`Key Advantage: ${prog.whyNumberOne.join('; ')}`, contentWidth - 10);
+    } else if (prog.whyNotNumberOne && prog.whyNotNumberOne.length > 0) {
+      calloutLines = doc.splitTextToSize(`Preparation Note: ${prog.whyNotNumberOne.join('; ')}`, contentWidth - 10);
+    }
+    const calloutHeight = calloutLines.length * 3.5;
+
+    // Card dimensions
+    const topHeaderHeight = 6 + titleHeight + 4; // Tier label + Title + Agency
+    const cardHeight = Math.max(58, topHeaderHeight + 8 + whyHeight + (calloutHeight ? calloutHeight + 3 : 0) + 7);
+
     doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
     doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
     doc.setLineWidth(0.3);
@@ -249,77 +274,88 @@ export function generateFundingMatchReportPDF(
     doc.setFillColor(accentColor[0], accentColor[1], accentColor[2]);
     doc.rect(margin, yPos, 1.5, cardHeight, 'F');
 
-    // Title & Agency
+    // Tier Label Header
+    let currentCursorY = yPos + 5;
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(8.5);
     doc.setTextColor(accentColor[0], accentColor[1], accentColor[2]);
-    doc.text(`${seqLabel.toUpperCase()} — ${prog.recommendationType || 'Immediate Opportunity'}`, margin + 4, yPos + 5.5);
+    doc.text(`${seqLabel.toUpperCase()} — ${prog.recommendationType || 'Immediate Opportunity'}`, margin + 4, currentCursorY);
 
+    // Title
+    currentCursorY += 4.5;
     doc.setFontSize(10.5);
     doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    const wrappedTitle = doc.splitTextToSize(prog.programName || prog.name, contentWidth - 65);
-    doc.text(wrappedTitle, margin + 4, yPos + 10.5);
+    doc.text(wrappedTitle, margin + 4, currentCursorY);
 
+    // Agency (placed dynamically below wrapped title)
+    currentCursorY += titleHeight;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(100, 116, 139);
-    doc.text(`Agency: ${prog.agency}`, margin + 4, yPos + 15.5);
+    doc.text(`Agency: ${prog.agency}`, margin + 4, currentCursorY);
 
-    // Right Funding Range
+    // Right Side Highlights (Funding & Fit Scores)
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10.5);
+    doc.setFontSize(10);
     doc.setTextColor(colors.strongMatch[0], colors.strongMatch[1], colors.strongMatch[2]);
-    doc.text(prog.fundingAmount || prog.estimatedRange, pageWidth - margin - 4, yPos + 7.5, { align: 'right' });
+    doc.text(prog.fundingAmount || prog.estimatedRange, pageWidth - margin - 4, yPos + 6.5, { align: 'right' });
 
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7.5);
     doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-    doc.text(`Stars: ${prog.readinessStars || '★★★★★'}`, pageWidth - margin - 4, yPos + 12.5, { align: 'right' });
-    doc.text(prog.recommendationConfidence || `${prog.commercialScore || 90}% Profile Fit`, pageWidth - margin - 4, yPos + 16.5, { align: 'right' });
+    doc.text(prog.recommendationConfidence || `${prog.commercialScore || 90}% Profile Fit`, pageWidth - margin - 4, yPos + 11, { align: 'right' });
+    doc.text(`Rating: ${formatStars(prog.readinessStars)}`, pageWidth - margin - 4, yPos + 15, { align: 'right' });
 
     if (prog.evidenceRating) {
       doc.setFontSize(6.5);
       doc.setTextColor(100, 116, 139);
-      doc.text(`Gov Auth: ${prog.evidenceRating.governmentAuthority}  Fit: ${prog.evidenceRating.eligibilityFit}`, pageWidth - margin - 4, yPos + 20.5, { align: 'right' });
+      doc.text(`Gov Auth: ${formatStars(prog.evidenceRating.governmentAuthority)} | Fit: ${formatStars(prog.evidenceRating.eligibilityFit)}`, pageWidth - margin - 4, yPos + 19, { align: 'right' });
     }
 
-    // Score Breakdown Pill Bar
+    // Score Breakdown Line
+    currentCursorY += 5;
     if (prog.scoreBreakdown) {
       const sb = prog.scoreBreakdown;
       doc.setFontSize(6.5);
       doc.setFont('helvetica', 'bold');
       doc.setTextColor(79, 70, 229); // Indigo
-      doc.text(`Score Breakdown (Max 96): Ind=${sb.industryFit}/25  Obj=${sb.objectiveFit}/20  Stage=${sb.stageFit}/15  Prov=${sb.provinceMatch}/10  Stat=${sb.statusAccessibility}/10  ROI=${sb.commercialRoiValue}/20`, margin + 4, yPos + 21);
+      doc.text(`Score Breakdown (Max 96): Ind=${sb.industryFit}/25  Obj=${sb.objectiveFit}/20  Stage=${sb.stageFit}/15  Prov=${sb.provinceMatch}/10  Stat=${sb.statusAccessibility}/10  ROI=${sb.commercialRoiValue}/20`, margin + 4, currentCursorY);
+      currentCursorY += 2;
     }
 
-    // Divider
+    // Divider Line
+    currentCursorY += 2;
     doc.setDrawColor(226, 232, 240);
-    doc.line(margin + 4, yPos + 23, pageWidth - margin - 4, yPos + 23);
+    doc.line(margin + 4, currentCursorY, pageWidth - margin - 4, currentCursorY);
 
-    // Why Recommended & Rank Rationale
+    // Why Recommended Header & Rationale
+    currentCursorY += 4;
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(7.5);
     doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Why Recommended & Rank Rationale:', margin + 4, yPos + 27);
+    doc.text('Why Recommended & Rank Rationale:', margin + 4, currentCursorY);
 
+    currentCursorY += 3.5;
     doc.setFont('helvetica', 'normal');
     doc.setFontSize(7);
     doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-    const whyText = doc.splitTextToSize(prog.whyRankedHere || prog.whyRecommended || prog.matchReason || '', contentWidth - 8);
-    doc.text(whyText, margin + 4, yPos + 31);
+    doc.text(whyText, margin + 4, currentCursorY);
 
-    // Why #1 Callouts if available
-    if (prog.whyNumberOne && prog.whyNumberOne.length > 0) {
+    currentCursorY += whyHeight + 1;
+
+    // Key Advantage / Preparation Note Wrapped Callout
+    if (calloutLines.length > 0) {
       doc.setFontSize(6.5);
-      doc.setTextColor(16, 185, 129); // Green
-      doc.text(`Key Advantage: ${prog.whyNumberOne.join('; ')}`, margin + 4, yPos + 40);
-    } else if (prog.whyNotNumberOne && prog.whyNotNumberOne.length > 0) {
-      doc.setFontSize(6.5);
-      doc.setTextColor(245, 158, 11); // Amber
-      doc.text(`Preparation Note: ${prog.whyNotNumberOne.join('; ')}`, margin + 4, yPos + 40);
+      doc.setFont('helvetica', 'bold');
+      if (prog.whyNumberOne && prog.whyNumberOne.length > 0) {
+        doc.setTextColor(16, 185, 129); // Green
+      } else {
+        doc.setTextColor(245, 158, 11); // Amber
+      }
+      doc.text(calloutLines, margin + 4, currentCursorY);
     }
 
-    // Metadata Bar at bottom of card
+    // Bottom Card Footer Metadata Bar
     const prep = prog.preparationTime || '2–3 weeks';
     const rev = prog.reviewTime || '4–8 weeks';
     const docs = prog.documentsRequiredCount || 4;
@@ -327,7 +363,7 @@ export function generateFundingMatchReportPDF(
     doc.setFont('helvetica', 'bold');
     doc.setFontSize(7);
     doc.setTextColor(100, 116, 139);
-    doc.text(`Prep Time: ${prep}   |   Review Window: ${rev}   |   Required Docs: ${docs}   |   ${fresh}`, margin + 4, yPos + cardHeight - 2);
+    doc.text(`Prep Time: ${prep}   |   Review Window: ${rev}   |   Required Docs: ${docs}   |   ${fresh}`, margin + 4, yPos + cardHeight - 2.5);
 
     yPos += cardHeight + 4;
   });
