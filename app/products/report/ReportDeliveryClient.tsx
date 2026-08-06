@@ -658,22 +658,22 @@ function ReportContent() {
       )}
 
       {/* Profile Summary */}
-      <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-5">
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
+      <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-4 sm:p-5">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 text-xs sm:text-sm">
           <div>
-            <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Region</p>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Region</p>
             <p className="font-semibold text-slate-700">{platformResult?.profile?.provinceName || report.profile.provinceName}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Industry</p>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Industry</p>
             <p className="font-semibold text-slate-700">{platformResult?.profile?.industryName || report.profile.industryName}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Revenue</p>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Revenue</p>
             <p className="font-semibold text-slate-700">{platformResult?.profile?.revenueName || report.profile.revenueName}</p>
           </div>
           <div>
-            <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Goal</p>
+            <p className="text-[10px] sm:text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Goal</p>
             <p className="font-semibold text-slate-700">{platformResult?.profile?.goalName || report.profile.goalName}</p>
           </div>
         </div>

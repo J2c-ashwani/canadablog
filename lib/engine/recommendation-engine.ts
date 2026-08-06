@@ -264,6 +264,11 @@ function buildEvaluatedRecommendation(
   const reviewTime = program.reviewTime || '4–8 weeks';
   const docCount = program.documentsRequiredCount || (program.eligibility?.length || 4);
 
+  const lowerIndustry = (profile.industryName || '').toLowerCase();
+  const industryLabel = lowerIndustry.endsWith('business') || lowerIndustry.endsWith('operations') || lowerIndustry.endsWith('services')
+    ? lowerIndustry
+    : `${lowerIndustry} business`;
+
   return {
     programId: program.id,
     programName: program.name,
@@ -295,7 +300,7 @@ function buildEvaluatedRecommendation(
     preparationTime: prepTime,
     reviewTime,
     documentsRequiredCount: docCount,
-    whyRecommended: `Highly tailored fit for your ${profile.industryName.toLowerCase()} business focusing on ${profile.businessObjective.toLowerCase()}. ${descSnippet}.`,
+    whyRecommended: `Highly tailored fit for your ${industryLabel} focusing on ${profile.businessObjective.toLowerCase()}. ${descSnippet}.`,
     whyRankedHere: `Ranked ${sequenceTier.toLowerCase()} due to high commercial ROI, strong profile alignment, and manageable preparation effort (${prepTime}).`,
     typicalRejectionReason: `Common rejection occurs from non-contemporaneous documentation or starting project expenditures before formal application registration.`,
     howToImproveSuccess: [

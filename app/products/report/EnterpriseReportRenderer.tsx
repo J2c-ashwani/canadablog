@@ -38,10 +38,10 @@ export function assertEnterprisePlatform(platform: FundingRecommendationResult |
 // ═══════════════════════════════════════════════════════════════════
 function ExecutiveDashboardSection({ dashboard }: { dashboard: ExecutiveDashboard }) {
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-5 sm:p-7 relative overflow-hidden">
+    <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-4 sm:p-7 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
       <div className="relative z-10">
-        <div className="flex items-center gap-2 mb-5">
+        <div className="flex items-center gap-2 mb-4 sm:mb-5">
           <div className="bg-indigo-500/20 border border-indigo-500/30 p-1.5 rounded-lg">
             <BarChart3 className="w-4 h-4 text-indigo-300" />
           </div>
@@ -49,54 +49,54 @@ function ExecutiveDashboardSection({ dashboard }: { dashboard: ExecutiveDashboar
         </div>
 
         {/* Top Metrics Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-5">
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 text-center">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 mb-4 sm:mb-5">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
             <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Overall Readiness</p>
-            <p className="text-2xl font-black text-white">{dashboard.overallReadiness}<span className="text-sm opacity-50">/100</span></p>
+            <p className="text-xl sm:text-2xl font-black text-white">{dashboard.overallReadiness}<span className="text-xs sm:text-sm opacity-50">/100</span></p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 text-center">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
             <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Immediate Opportunities</p>
-            <p className="text-2xl font-black text-emerald-400">{dashboard.immediateOpportunities}</p>
+            <p className="text-xl sm:text-2xl font-black text-emerald-400">{dashboard.immediateOpportunities}</p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 text-center">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
             <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Blocked</p>
-            <p className="text-2xl font-black text-amber-400">{dashboard.blockedOpportunities}</p>
+            <p className="text-xl sm:text-2xl font-black text-amber-400">{dashboard.blockedOpportunities}</p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-3.5 text-center">
+          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
             <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Critical Risks</p>
-            <p className="text-2xl font-black text-red-400">{dashboard.criticalRisks}</p>
+            <p className="text-xl sm:text-2xl font-black text-red-400">{dashboard.criticalRisks}</p>
           </div>
         </div>
 
         {/* Strategic Insights Row */}
-        <div className="grid sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
           {/* Fastest Win */}
-          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3.5">
-            <div className="flex items-center gap-1.5 mb-2">
+          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3 sm:p-3.5">
+            <div className="flex items-center gap-1.5 mb-1.5">
               <Zap className="w-3.5 h-3.5 text-emerald-400" />
               <p className="text-[10px] uppercase tracking-wider text-emerald-300 font-bold">Fastest Win</p>
             </div>
-            <p className="text-sm font-bold text-white leading-snug mb-1">{dashboard.fastestWin.programName}</p>
+            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">{dashboard.fastestWin.programName}</p>
             <p className="text-[11px] text-slate-300">
               Prep: {dashboard.fastestWin.prepTime} · Window: {dashboard.fastestWin.decisionWindow}
             </p>
           </div>
           {/* Highest ROI */}
-          <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-3.5">
-            <div className="flex items-center gap-1.5 mb-2">
+          <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-3 sm:p-3.5">
+            <div className="flex items-center gap-1.5 mb-1.5">
               <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
               <p className="text-[10px] uppercase tracking-wider text-indigo-300 font-bold">Highest ROI</p>
             </div>
-            <p className="text-sm font-bold text-white leading-snug mb-1">{dashboard.highestROI.programName}</p>
+            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">{dashboard.highestROI.programName}</p>
             <p className="text-[11px] text-slate-300">{dashboard.highestROI.reason}</p>
           </div>
           {/* Opportunity Cost */}
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3.5">
-            <div className="flex items-center gap-1.5 mb-2">
+          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 sm:p-3.5">
+            <div className="flex items-center gap-1.5 mb-1.5">
               <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
               <p className="text-[10px] uppercase tracking-wider text-amber-300 font-bold">Opportunity Cost</p>
             </div>
-            <p className="text-sm font-bold text-white leading-snug mb-1">{dashboard.opportunityCost.missedRecoveryEstimate}</p>
+            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">{dashboard.opportunityCost.missedRecoveryEstimate}</p>
             <p className="text-[11px] text-slate-300">{dashboard.opportunityCost.missedRecoveryReason}</p>
           </div>
         </div>
@@ -116,66 +116,66 @@ function ExecutiveRecommendationSummary({ platform }: { platform: FundingRecomme
   return (
     <div className="space-y-4">
       {/* Primary Potential Banner */}
-      <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-xl p-5 sm:p-6 shadow-sm">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <p className="text-xs uppercase tracking-wider text-emerald-200 font-medium mb-1">Primary Estimated Funding Potential</p>
-            <p className="text-2xl sm:text-3xl font-bold">
+      <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-xl p-4 sm:p-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+          <div>
+            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-emerald-200 font-medium mb-1">Primary Estimated Funding Potential</p>
+            <p className="text-xl sm:text-3xl font-bold">
               ${rec.totalEstimatedFundingMin.toLocaleString()} – ${rec.totalEstimatedFundingMax.toLocaleString()}
             </p>
           </div>
-          <div className="flex gap-6">
+          <div className="flex gap-4 sm:gap-6 justify-center">
             <div className="text-center">
-              <p className="text-2xl font-bold">{rec.evaluatedCount}</p>
-              <p className="text-xs text-emerald-200">Evaluated</p>
+              <p className="text-xl sm:text-2xl font-bold">{rec.evaluatedCount}</p>
+              <p className="text-[10px] sm:text-xs text-emerald-200">Evaluated</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold">{rec.excludedCount}</p>
-              <p className="text-xs text-emerald-200">Excluded</p>
+              <p className="text-xl sm:text-2xl font-bold">{rec.excludedCount}</p>
+              <p className="text-[10px] sm:text-xs text-emerald-200">Excluded</p>
             </div>
             <div className="text-center">
-              <p className="text-2xl font-bold text-white">{rec.recommendedCount}</p>
-              <p className="text-xs text-emerald-200">Recommended</p>
+              <p className="text-xl sm:text-2xl font-bold text-white">{rec.recommendedCount}</p>
+              <p className="text-[10px] sm:text-xs text-emerald-200">Recommended</p>
             </div>
           </div>
         </div>
         {rec.advisoryText && (
-          <p className="text-xs text-emerald-100 mt-3 bg-emerald-700/40 rounded-lg p-3 border border-emerald-400/20 leading-relaxed">
-            <Info className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 text-emerald-300" />{rec.advisoryText}
+          <p className="text-xs text-emerald-100 mt-3 bg-emerald-700/40 rounded-lg p-3 border border-emerald-400/20 leading-relaxed text-left">
+            <Info className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 text-emerald-300 shrink-0" />{rec.advisoryText}
           </p>
         )}
       </div>
 
       {/* How We Chose These Programs — Why NOT the Other 114 Breakdown */}
-      <div className="bg-slate-900 text-white rounded-xl p-5 border border-slate-800 shadow-sm">
+      <div className="bg-slate-900 text-white rounded-xl p-4 sm:p-5 border border-slate-800 shadow-sm">
         <div className="flex items-center gap-2 mb-3">
           <ListChecks className="w-4 h-4 text-emerald-400" />
-          <h3 className="font-bold text-sm text-white">How We Chose These Programs (117 Opportunities Reviewed)</h3>
+          <h3 className="font-bold text-xs sm:text-sm text-white">How We Chose These Programs (117 Opportunities Reviewed)</h3>
         </div>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
-          <div className="bg-slate-800/60 p-3 rounded-lg border border-emerald-500/30">
-            <p className="font-bold text-emerald-400 flex items-center gap-1.5 mb-1">
-              <CheckCircle className="w-3.5 h-3.5" /> {recCount} Priority Recommended
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
+          <div className="bg-slate-800/60 p-2.5 sm:p-3 rounded-lg border border-emerald-500/30">
+            <p className="font-bold text-emerald-400 flex items-center gap-1.5 mb-1 text-xs">
+              <CheckCircle className="w-3.5 h-3.5 shrink-0" /> {recCount} Priority Recommended
             </p>
-            <p className="text-slate-300 text-[11px]">Matched against your specific stage, region, and objective.</p>
+            <p className="text-slate-300 text-[11px] leading-relaxed">Matched against your specific stage, region, and objective.</p>
           </div>
-          <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
-            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1">
-              <XCircle className="w-3.5 h-3.5 text-red-400" /> {Math.round(exclCount * 0.54)} Sector Mismatch
+          <div className="bg-slate-800/60 p-2.5 sm:p-3 rounded-lg border border-slate-700">
+            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1 text-xs">
+              <XCircle className="w-3.5 h-3.5 text-red-400 shrink-0" /> {Math.round(exclCount * 0.54)} Sector Mismatch
             </p>
-            <p className="text-slate-400 text-[11px]">Ineligible clean energy, agricultural, or heavy manufacturing rules.</p>
+            <p className="text-slate-400 text-[11px] leading-relaxed">Ineligible clean energy, agricultural, or heavy manufacturing rules.</p>
           </div>
-          <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
-            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1">
-              <XCircle className="w-3.5 h-3.5 text-amber-400" /> {Math.round(exclCount * 0.25)} Province Mismatch
+          <div className="bg-slate-800/60 p-2.5 sm:p-3 rounded-lg border border-slate-700">
+            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1 text-xs">
+              <XCircle className="w-3.5 h-3.5 text-amber-400 shrink-0" /> {Math.round(exclCount * 0.25)} Province Mismatch
             </p>
-            <p className="text-slate-400 text-[11px]">Restricted to specific non-matching Canadian provinces or territories.</p>
+            <p className="text-slate-400 text-[11px] leading-relaxed">Restricted to specific non-matching Canadian provinces or territories.</p>
           </div>
-          <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
-            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1">
-              <Clock className="w-3.5 h-3.5 text-blue-400" /> {exclCount - Math.round(exclCount * 0.54) - Math.round(exclCount * 0.25)} Closed / Ineligible
+          <div className="bg-slate-800/60 p-2.5 sm:p-3 rounded-lg border border-slate-700">
+            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1 text-xs">
+              <Clock className="w-3.5 h-3.5 text-blue-400 shrink-0" /> {exclCount - Math.round(exclCount * 0.54) - Math.round(exclCount * 0.25)} Closed / Ineligible
             </p>
-            <p className="text-slate-400 text-[11px]">Closed quarterly intake pools or revenue stage mismatches.</p>
+            <p className="text-slate-400 text-[11px] leading-relaxed">Closed quarterly intake pools or revenue stage mismatches.</p>
           </div>
         </div>
       </div>
@@ -205,7 +205,7 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
     <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md">
       {/* Card Header */}
       <div className="p-4 sm:p-5 space-y-3">
-        <div className="flex items-start justify-between gap-3">
+        <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5 sm:gap-4">
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-2 mb-1 flex-wrap">
               <span className="bg-indigo-600 text-white text-xs font-bold px-2.5 py-0.5 rounded-md shadow-sm">
@@ -215,17 +215,17 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
                 {rec.sequenceTier}
               </span>
             </div>
-            <h3 className="font-bold text-slate-800 text-base mt-1.5">{rec.programName}</h3>
-            <p className="text-sm text-slate-500">{rec.agency}</p>
+            <h3 className="font-bold text-slate-800 text-base sm:text-lg mt-1 leading-snug">{rec.programName}</h3>
+            <p className="text-xs sm:text-sm text-slate-500 mt-0.5">{rec.agency}</p>
           </div>
-          <div className="text-right shrink-0">
-            <p className="font-bold text-emerald-700 text-lg">{rec.fundingAmount}</p>
-            <p className="text-xs text-slate-500">{rec.fundingType}</p>
+          <div className="sm:text-right shrink-0 bg-emerald-50/70 sm:bg-transparent p-2.5 sm:p-0 rounded-lg border border-emerald-100 sm:border-0">
+            <p className="font-bold text-emerald-700 text-base sm:text-lg">{rec.fundingAmount}</p>
+            <p className="text-[11px] sm:text-xs text-slate-500">{rec.fundingType}</p>
           </div>
         </div>
 
         {/* Score & Confidence Badges */}
-        <div className="flex flex-wrap gap-2 text-xs">
+        <div className="flex flex-wrap gap-1.5 sm:gap-2 text-xs">
           <span className="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full font-medium flex items-center gap-1">
             <Target className="w-3 h-3" />Score: {rec.commercialScore}/100
           </span>
@@ -251,21 +251,21 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
         {/* Why Recommended */}
         <div className="bg-emerald-50 border border-emerald-100 rounded-lg p-3">
           <p className="text-xs font-semibold text-emerald-700 mb-1 flex items-center gap-1">
-            <CheckCircle className="w-3.5 h-3.5" /> Why Recommended
+            <CheckCircle className="w-3.5 h-3.5 shrink-0" /> Why Recommended
           </p>
-          <p className="text-sm text-slate-700 leading-relaxed">{rec.whyRecommended}</p>
+          <p className="text-xs sm:text-sm text-slate-700 leading-relaxed">{rec.whyRecommended}</p>
         </div>
 
         {/* Why Ranked Here */}
         <div className="bg-slate-50 border border-slate-100 rounded-lg p-3">
           <p className="text-xs font-semibold text-slate-500 mb-1">Why Ranked #{rank}</p>
-          <p className="text-sm text-slate-600 leading-relaxed">{rec.whyRankedHere}</p>
+          <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">{rec.whyRankedHere}</p>
         </div>
 
         {/* Expand/Collapse Toggle */}
         <button
           onClick={() => setExpanded(!expanded)}
-          className="flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
+          className="flex items-center gap-1 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors pt-1"
         >
           {expanded ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
           {expanded ? 'Hide Details' : 'Show Full Analysis'}
@@ -278,18 +278,18 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
           {/* Score Breakdown */}
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Score Breakdown</p>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2">
+            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-2">
               {[
                 { label: 'Industry Fit', value: rec.scoreBreakdown.industryFit },
                 { label: 'Objective Fit', value: rec.scoreBreakdown.objectiveFit },
                 { label: 'Stage Fit', value: rec.scoreBreakdown.stageFit },
                 { label: 'Province Match', value: rec.scoreBreakdown.provinceMatch },
-                { label: 'Status Accessibility', value: rec.scoreBreakdown.statusAccessibility },
+                { label: 'Accessibility', value: rec.scoreBreakdown.statusAccessibility },
                 { label: 'Commercial ROI', value: rec.scoreBreakdown.commercialRoiValue },
               ].map((item, idx) => (
-                <div key={idx} className="bg-white border border-slate-100 rounded-lg p-2.5 text-center">
-                  <p className="text-[10px] text-slate-400 font-medium uppercase">{item.label}</p>
-                  <p className="text-sm font-bold text-slate-800">{item.value}</p>
+                <div key={idx} className="bg-white border border-slate-100 rounded-lg p-2 sm:p-2.5 text-center">
+                  <p className="text-[10px] text-slate-400 font-medium uppercase truncate">{item.label}</p>
+                  <p className="text-xs sm:text-sm font-bold text-slate-800">{item.value}</p>
                 </div>
               ))}
             </div>
@@ -298,7 +298,7 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
           {/* Evidence Rating */}
           <div>
             <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Evidence Rating</p>
-            <div className="grid sm:grid-cols-3 gap-2 text-xs">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 text-xs">
               <div className="bg-white border border-slate-100 rounded-lg p-2.5">
                 <p className="text-[10px] text-slate-400 uppercase font-medium">Government Authority</p>
                 <p className="font-semibold text-slate-700 mt-0.5">{rec.evidenceRating.governmentAuthority}</p>
@@ -345,9 +345,9 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
           {/* Typical Rejection Reason */}
           <div className="bg-red-50 border border-red-100 rounded-lg p-3">
             <p className="text-xs font-semibold text-red-700 mb-1 flex items-center gap-1">
-              <XCircle className="w-3.5 h-3.5" /> Typical Rejection Reason
+              <XCircle className="w-3.5 h-3.5 shrink-0" /> Typical Rejection Reason
             </p>
-            <p className="text-xs text-slate-600">{rec.typicalRejectionReason}</p>
+            <p className="text-xs text-slate-600 leading-relaxed">{rec.typicalRejectionReason}</p>
           </div>
 
           {/* How to Improve Success */}
@@ -365,8 +365,8 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
             </div>
           )}
 
-          {/* Required Documents & Application Steps */}
-          <div className="grid sm:grid-cols-2 gap-4">
+          {/* Required Documents & Application Steps (EXPLICIT STACKING ON MOBILE) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
             {rec.requiredDocuments && rec.requiredDocuments.length > 0 && (
               <div>
                 <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">
@@ -376,7 +376,7 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
                   {rec.requiredDocuments.map((doc, j) => (
                     <li key={j} className="flex items-start gap-1.5">
                       <FileText className="w-3.5 h-3.5 text-slate-400 shrink-0 mt-0.5" />
-                      <span>{doc}</span>
+                      <span className="leading-relaxed">{doc}</span>
                     </li>
                   ))}
                 </ul>
@@ -389,7 +389,7 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
                   {rec.applicationSteps.map((step, j) => (
                     <li key={j} className="flex items-start gap-1.5">
                       <span className="text-indigo-600 font-bold shrink-0 w-4">{j + 1}.</span>
-                      <span>{step}</span>
+                      <span className="leading-relaxed">{step}</span>
                     </li>
                   ))}
                 </ol>
@@ -403,7 +403,7 @@ function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank:
               href={rec.officialWebsite}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors"
+              className="inline-flex items-center gap-1.5 text-xs font-semibold text-indigo-600 hover:text-indigo-700 transition-colors pt-1"
             >
               <ExternalLink className="w-3.5 h-3.5" /> Visit Official Program Page
             </a>
