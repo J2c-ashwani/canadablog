@@ -3,13 +3,15 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 import { generateFundingMatchReport } from '@/lib/products/report-generator';
+import { generateFundingRecommendationPlatform } from '@/lib/products/report-generator';
 import { hasActiveEntitlement } from '@/lib/products/entitlements';
 
 /**
  * GET /api/products/verify?token=...
  * 
  * Verifies a purchase token and returns the full report data.
- * Used by both the in-page delivery (Step 8) and the standalone delivery page.
+ * Returns both the enterprise `platformResult` (primary) and the legacy
+ * `report` wrapper (for backward compatibility with GrantCalculator, emails, etc.)
  */
 export async function GET(req: NextRequest) {
   try {
@@ -64,13 +66,19 @@ export async function GET(req: NextRequest) {
       hasActiveEntitlement(purchase.email, 'approval-library'),
     ]);
 
-    // Generate the full report from the profile data
-    const report = generateFundingMatchReport({
+    const reportInput = {
       province: profileData.province || '',
       industry: profileData.industry || '',
       revenue: profileData.revenue || '',
       goal: profileData.goal || '',
-    });
+    };
+
+    // Generate the enterprise platform result directly (primary data model)
+    const platformResult = generateFundingRecommendationPlatform(reportInput);
+
+    // Generate legacy report wrapper for backward compatibility
+    // (GrantCalculator, recovery emails, and other consumers still read report.programs)
+    const report = generateFundingMatchReport(reportInput);
 
     let strategyData: any = null;
     if (hasStrategyUnlocked) {
@@ -80,6 +88,9 @@ export async function GET(req: NextRequest) {
 
     return NextResponse.json({
       success: true,
+      // Enterprise data model (primary — used by EnterpriseReportRenderer)
+      platformResult,
+      // Legacy adapter (backward compatibility — used by GrantCalculator, emails)
       report,
       hasStrategyUnlocked,
       strategyData,

@@ -40,6 +40,33 @@ If the answer is **NO**... **DO NOT BUILD IT.**
 
 ---
 
+## 🔒 v1.0 Core Engine Freeze Policy (Effective v1.0 Release)
+The core Funding Intelligence Platform (`FundingRecommendationResult`, scoring engines, rule engines, dependency graphs, and contract definitions) is **OFFICIALLY FROZEN**.
+
+### 🟢 ALLOWED (Post-v1.0 Freeze):
+- Bug fixes & critical production defects
+- Visual excellence & UX improvements (Apple/McKinsey-level visual quality)
+- Typography, copywriting, & layout polish
+- Performance, caching, & responsiveness
+- Accessibility & mobile touch QA
+- Automated testing, Golden Masters, & smoke test expansions
+
+### 🔴 NOT ALLOWED (Post-v1.0 Freeze):
+- New engine features or new scoring dimensions
+- New contract definitions or data model mutations
+- New recommendation logic or sector rule engines
+- New business rules or scoring weights
+*(UNLESS explicitly authorized for critical production defect resolution).*
+
+---
+
+## 🛡️ Mandatory Production Build Guards
+Every build and deployment MUST pass two automated enforcement checks:
+1. **Architectural Guard (`npm run check:architecture`)**: Fails build if new presentation code in `app/` or `components/` references deprecated legacy models (`report.programs`, `matchStrength`, `ReportProgram`).
+2. **Production Smoke Test (`npm run test:smoke`)**: Simulates the full customer journey (Purchase → Token → Verify API → PDF Compilation → Strategy Action Plan → Recovery Email) and fails build if ANY stage breaks.
+
+---
+
 ## 🚫 Infrastructure Freeze Policy
 Do NOT build:
 - Admin dashboards

@@ -7,7 +7,7 @@ import {
   sendCalculatorRecoveryEmail4,
   sendCustomerSuccessFollowup
 } from "@/lib/emails/calculator-recovery";
-import { generateFundingMatchReport } from "@/lib/products/report-generator";
+import { generateFundingRecommendationPlatform } from "@/lib/products/report-generator";
 import { isValidCronRequest } from "@/lib/admin/auth";
 
 export const runtime = "nodejs";
@@ -145,7 +145,7 @@ export async function GET(request: NextRequest) {
       else if ((elapsedMs >= 24 * 60 * 60 * 1000 || force) && activity.calcRecoveryEmail1SentAt && !activity.calcRecoveryEmail2SentAt) {
         console.log(`⏱️ Triggering Calculator Recovery #2 for: ${sub.email}`);
         
-        const report = generateFundingMatchReport({
+        const platformResult = generateFundingRecommendationPlatform({
           province: sub.region || 'on',
           industry: sub.industry || 'technology',
           revenue: sub.businessStage || 'pre-revenue',
@@ -156,12 +156,12 @@ export async function GET(request: NextRequest) {
           to: sub.email,
           name: sub.name,
           loginToken: sub.loginToken || "",
-          province: report.profile.provinceName,
-          industry: report.profile.industryName,
-          revenue: report.profile.revenueName,
-          goal: report.profile.goalName,
-          estimatedMin: report.summary.estimatedTotalMin,
-          estimatedMax: report.summary.estimatedTotalMax
+          province: platformResult.profile.provinceName,
+          industry: platformResult.profile.industryName,
+          revenue: platformResult.profile.revenueName,
+          goal: platformResult.profile.goalName,
+          estimatedMin: platformResult.executiveRecommendation.totalEstimatedFundingMin,
+          estimatedMax: platformResult.executiveRecommendation.totalEstimatedFundingMax
         });
         if (res.success || res.skipped) {
           activity.calcRecoveryEmail2SentAt = new Date().toISOString();

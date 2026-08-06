@@ -1,5 +1,5 @@
 import { sendEmail, getFirstName, cleanRegionName, cleanIndustryName } from "./mailer";
-import { generateFundingMatchReport } from "../products/report-generator";
+import { generateFundingRecommendationPlatform } from "../products/report-generator";
 
 function escapeHtml(value: string) {
   if (!value) return '';
@@ -195,14 +195,14 @@ export async function sendCalculatorRecoveryEmail3({
   const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=calculator_recovery&utm_medium=email&utm_campaign=calc_recovery_day3_72h&bonus=cro_value_pack`;
   const subject = `See the top programs we found for your business (Free Value-Add Bonuses)`;
 
-  const report = generateFundingMatchReport({
+  const platformResult = generateFundingRecommendationPlatform({
     province: provinceCode || 'on',
     industry: industryCode || 'technology',
     revenue: revenueCode || 'pre-revenue',
     goal: goalCode || 'hiring'
   });
 
-  const topPrograms = report.programs.slice(0, 3);
+  const topPrograms = platformResult.primaryRecommendations.slice(0, 3);
   let programsHtml = "";
   let programsText = "";
 
@@ -212,11 +212,11 @@ export async function sendCalculatorRecoveryEmail3({
       programsHtml += `
         <li style="margin-bottom:10px;padding-left:24px;position:relative;">
           <span style="color:#059669;font-weight:bold;position:absolute;left:0;top:0;">✔</span>
-          <strong>${escapeHtml(p.name)}</strong><br>
-          <span style="font-size:12px;color:#64748b;">${escapeHtml(p.agency)} · Type: ${escapeHtml(p.fundingType)} · Max Est: ${escapeHtml(p.estimatedRange)}</span>
+          <strong>${escapeHtml(p.programName)}</strong><br>
+          <span style="font-size:12px;color:#64748b;">${escapeHtml(p.agency)} · Type: ${escapeHtml(p.fundingType)} · Max Est: ${escapeHtml(p.fundingAmount)}</span>
         </li>
       `;
-      programsText += `\n* ${p.name} (Agency: ${p.agency}, Est Range: ${p.estimatedRange})`;
+      programsText += `\n* ${p.programName} (Agency: ${p.agency}, Est Range: ${p.fundingAmount})`;
     });
     programsHtml += `</ul>`;
   } else {
@@ -228,7 +228,7 @@ export async function sendCalculatorRecoveryEmail3({
     programsText = `We matched your profile against federal and provincial grant streams, regional credits, and tax refunds.`;
   }
 
-  const cleanProvince = cleanRegionName(report.profile.provinceName);
+  const cleanProvince = cleanRegionName(platformResult.profile.provinceName);
 
   const html = wrapCalculatorRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">

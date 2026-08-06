@@ -8,7 +8,9 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
-import type { FundingMatchReport, ReportProgram } from "@/lib/products/report-generator"
+import type { FundingMatchReport } from "@/lib/products/report-generator"
+import type { FundingRecommendationResult } from "@/lib/engine/types"
+import { EnterpriseReportRenderer } from "./EnterpriseReportRenderer"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 
 function ReportContent() {
@@ -21,6 +23,7 @@ function ReportContent() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [report, setReport] = useState<FundingMatchReport | null>(null);
+  const [platformResult, setPlatformResult] = useState<FundingRecommendationResult | null>(null);
   const [purchaseInfo, setPurchaseInfo] = useState<any>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const [hasStrategyUnlocked, setHasStrategyUnlocked] = useState(false);
@@ -52,8 +55,8 @@ function ReportContent() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email: alertsEmail,
-          province: report?.profile?.provinceName || report?.profile?.province || 'ON',
-          industry: report?.profile?.industryName || report?.profile?.industry || 'other',
+          province: platformResult?.profile?.provinceName || report?.profile?.provinceName || report?.profile?.province || 'ON',
+          industry: platformResult?.profile?.industryName || report?.profile?.industryName || report?.profile?.industry || 'other',
           source: 'standalone-report-widget'
         })
       });
@@ -113,6 +116,8 @@ function ReportContent() {
         }
 
         setReport(json.report);
+        // Enterprise data model — top-level from verify API (not nested in report)
+        setPlatformResult(json.platformResult || json.report?.platformResult || null);
         setPurchaseInfo(json.purchase);
         setHasStrategyUnlocked(!!json.hasStrategyUnlocked);
         setStrategyData(json.strategyData || null);
@@ -220,10 +225,10 @@ function ReportContent() {
             email: purchaseInfo?.email || '',
             name: purchaseInfo?.name || 'Customer',
             profileData: {
-              province: report.profile.province,
-              industry: report.profile.industry,
-              revenue: report.profile.revenue,
-              goal: report.profile.goal,
+              province: platformResult?.profile?.province || report.profile.province,
+              industry: platformResult?.profile?.industry || report.profile.industry,
+              revenue: platformResult?.profile?.revenue || report.profile.revenue,
+              goal: platformResult?.profile?.goal || report.profile.goal,
             },
             sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
           });
@@ -294,7 +299,8 @@ function ReportContent() {
 
   if (!report) return null;
 
-  const isStandaloneBuyer = !report.profile.province && !report.profile.industry && !report.profile.revenue && !report.profile.goal;
+  const profile = platformResult?.profile || report.profile;
+  const isStandaloneBuyer = !profile.province && !profile.industry && !profile.revenue && !profile.goal;
 
   if (isStandaloneBuyer) {
     return (
@@ -426,7 +432,7 @@ function ReportContent() {
         <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 rounded-full mb-3">
           <FileText className="w-7 h-7 text-emerald-600" />
         </div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Your Funding Match Report</h1>
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Your Funding Recommendation Report</h1>
         {purchaseInfo && (
           <p className="text-sm text-slate-500 mt-1">
             Prepared for {purchaseInfo.name} · {new Date(report.generatedAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
@@ -656,139 +662,34 @@ function ReportContent() {
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-sm">
           <div>
             <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Region</p>
-            <p className="font-semibold text-slate-700">{report.profile.provinceName}</p>
+            <p className="font-semibold text-slate-700">{platformResult?.profile?.provinceName || report.profile.provinceName}</p>
           </div>
           <div>
             <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Industry</p>
-            <p className="font-semibold text-slate-700">{report.profile.industryName}</p>
+            <p className="font-semibold text-slate-700">{platformResult?.profile?.industryName || report.profile.industryName}</p>
           </div>
           <div>
             <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Revenue</p>
-            <p className="font-semibold text-slate-700">{report.profile.revenueName}</p>
+            <p className="font-semibold text-slate-700">{platformResult?.profile?.revenueName || report.profile.revenueName}</p>
           </div>
           <div>
             <p className="text-xs text-slate-400 font-medium uppercase tracking-wide mb-0.5">Goal</p>
-            <p className="font-semibold text-slate-700">{report.profile.goalName}</p>
+            <p className="font-semibold text-slate-700">{platformResult?.profile?.goalName || report.profile.goalName}</p>
           </div>
         </div>
       </div>
 
-      {/* Summary Banner */}
-      <div className="bg-gradient-to-br from-emerald-500 to-emerald-700 text-white rounded-xl p-5 sm:p-6">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="text-center sm:text-left">
-            <p className="text-xs uppercase tracking-wider text-emerald-200 font-medium mb-1">Total Estimated Funding Range</p>
-            <p className="text-2xl sm:text-3xl font-bold">
-              ${report.summary.estimatedTotalMin.toLocaleString()} – ${report.summary.estimatedTotalMax.toLocaleString()}
-            </p>
-          </div>
-          <div className="flex gap-6">
-            <div className="text-center">
-              <p className="text-2xl font-bold">{report.summary.totalPrograms}</p>
-              <p className="text-xs text-emerald-200">Programs</p>
-            </div>
-            <div className="text-center">
-              <p className="text-2xl font-bold">{report.summary.readinessScore}<span className="text-lg opacity-70">/100</span></p>
-              <p className="text-xs text-emerald-200">Readiness</p>
-            </div>
-          </div>
+      {/* ═══════ ENTERPRISE REPORT RENDERER ═══════ */}
+      {/* This replaces the legacy summary banner + program cards with the full enterprise output */}
+      {platformResult ? (
+        <EnterpriseReportRenderer platform={platformResult} />
+      ) : (
+        <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center">
+          <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
+          <p className="text-sm font-bold text-red-700">Enterprise Renderer Error</p>
+          <p className="text-xs text-red-600 mt-1">Platform result is missing. Please contact support at hello@fsidigital.ca</p>
         </div>
-      </div>
-
-      {/* Program Cards */}
-      <div className="space-y-4">
-        <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-          <BarChart3 className="w-5 h-5 text-emerald-600" />
-          Matched Programs ({report.programs.length})
-        </h2>
-
-        {report.programs.map((prog, i) => (
-          <div key={prog.id || i} className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden">
-            {/* Program Header */}
-            <div className="p-4 sm:p-5 space-y-3">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0 flex-1">
-                  <div className="flex items-center gap-2 mb-1 flex-wrap">
-                    <span className={`text-xs font-bold px-2 py-0.5 rounded ${
-                      prog.matchStrength === 'Strong Match' ? 'bg-emerald-100 text-emerald-700' :
-                      prog.matchStrength === 'Good Match' ? 'bg-blue-100 text-blue-700' :
-                      'bg-amber-100 text-amber-700'
-                    }`}>#{i + 1}</span>
-                    <h3 className="font-bold text-slate-800">{prog.name}</h3>
-                  </div>
-                  <p className="text-sm text-slate-500">{prog.agency}</p>
-                </div>
-                <div className="text-right shrink-0">
-                  <p className="font-bold text-emerald-700">{prog.estimatedRange || prog.fundingAmount}</p>
-                  <p className="text-xs text-slate-500">{prog.fundingType}</p>
-                </div>
-              </div>
-
-              {/* Badges */}
-              <div className="flex flex-wrap gap-2 text-xs">
-                <span className={`px-2.5 py-1 rounded-full font-medium flex items-center gap-1 ${
-                  prog.matchStrength === 'Strong Match' ? 'bg-emerald-50 text-emerald-700' :
-                  prog.matchStrength === 'Good Match' ? 'bg-blue-50 text-blue-700' :
-                  'bg-amber-50 text-amber-700'
-                }`}>
-                  <Star className="w-3 h-3" />{prog.matchStrength}
-                </span>
-                <span className={`px-2.5 py-1 rounded-full ${
-                  prog.difficulty === 'Low' ? 'bg-green-50 text-green-700' :
-                  prog.difficulty === 'Moderate' ? 'bg-amber-50 text-amber-700' :
-                  'bg-red-50 text-red-700'
-                }`}>
-                  Difficulty: {prog.difficulty}
-                </span>
-                <span className="bg-slate-50 text-slate-600 px-2.5 py-1 rounded-full">
-                  {prog.deadline || prog.status}
-                </span>
-              </div>
-
-              {/* Match Reason */}
-              {prog.matchReason && (
-                <div className="bg-slate-50 rounded-lg p-3 text-sm text-slate-600">
-                  <p className="text-xs font-semibold text-slate-500 mb-1">Why This Matches</p>
-                  {prog.matchReason}
-                </div>
-              )}
-            </div>
-
-            {/* Requirements + Steps */}
-            <div className="border-t border-slate-100 bg-slate-50/50 p-4 sm:p-5 grid sm:grid-cols-2 gap-4">
-              {/* Requirements */}
-              {prog.requiredDocuments && prog.requiredDocuments.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Eligibility Requirements</p>
-                  <ul className="text-xs text-slate-600 space-y-1.5">
-                    {prog.requiredDocuments.map((doc, j) => (
-                      <li key={j} className="flex items-start gap-1.5">
-                        <CheckCircle className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{doc}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Application Steps */}
-              {prog.applicationSteps && prog.applicationSteps.length > 0 && (
-                <div>
-                  <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2">Application Steps</p>
-                  <ol className="text-xs text-slate-600 space-y-1.5">
-                    {prog.applicationSteps.map((step, j) => (
-                      <li key={j} className="flex items-start gap-1.5">
-                        <span className="text-emerald-600 font-bold shrink-0 w-4">{j + 1}.</span>
-                        <span>{step}</span>
-                      </li>
-                    ))}
-                  </ol>
-                </div>
-              )}
-            </div>
-          </div>
-        ))}
-      </div>
+      )}
 
       {/* ═══════ FUNDING ACTION PLAN DASHBOARD ═══════ */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-5 space-y-4">
@@ -804,45 +705,35 @@ function ReportContent() {
           )}
         </div>
 
-        {/* Funding Potential Summary */}
-        {hasStrategyUnlocked && (
+        {/* Funding Potential Summary — reads from platformResult directly */}
+        {hasStrategyUnlocked && platformResult && (
           <div className="bg-slate-50 border border-slate-150 rounded-xl p-4 sm:p-5">
             <h3 className="text-xs font-bold text-indigo-900 uppercase tracking-wide mb-3">Funding Potential Summary</h3>
             <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 text-center sm:text-left">
               <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Potential Programs</span>
-                <span className="text-lg font-extrabold text-slate-800 mt-1 block">{report?.programs?.length || 0}</span>
+                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Evaluated</span>
+                <span className="text-lg font-extrabold text-slate-800 mt-1 block">{platformResult.executiveRecommendation.evaluatedCount}</span>
               </div>
               <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Priority Programs</span>
-                <span className="text-lg font-extrabold text-slate-800 mt-1 block">3</span>
+                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Recommended</span>
+                <span className="text-lg font-extrabold text-slate-800 mt-1 block">{platformResult.executiveRecommendation.recommendedCount}</span>
               </div>
               <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs col-span-2 sm:col-span-1">
                 <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Est. Funding Range</span>
                 <span className="text-sm font-extrabold text-emerald-700 mt-1 block">
-                  ${(report?.summary?.estimatedTotalMin || 0).toLocaleString()} – ${(report?.summary?.estimatedTotalMax || 0).toLocaleString()}
+                  ${platformResult.executiveRecommendation.totalEstimatedFundingMin.toLocaleString()} – ${platformResult.executiveRecommendation.totalEstimatedFundingMax.toLocaleString()}
                 </span>
               </div>
               <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Est. Prep Time</span>
+                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Readiness</span>
                 <span className="text-sm font-extrabold text-slate-800 mt-1 block">
-                  {(() => {
-                    const topProgs = report?.programs?.slice(0, 3) || [];
-                    const highCount = topProgs.filter((p: any) => p.difficulty === 'High').length;
-                    const lowCount = topProgs.filter((p: any) => p.difficulty === 'Low').length;
-                    return highCount >= 2 ? '4-8 Weeks' : lowCount >= 2 ? '2-4 Weeks' : '3-6 Weeks';
-                  })()}
+                  {platformResult.executiveDashboard.overallReadiness}/100
                 </span>
               </div>
               <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Complexity</span>
+                <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Risks</span>
                 <span className="text-sm font-extrabold text-slate-800 mt-1 block">
-                  {(() => {
-                    const topProgs = report?.programs?.slice(0, 3) || [];
-                    const highCount = topProgs.filter((p: any) => p.difficulty === 'High').length;
-                    const lowCount = topProgs.filter((p: any) => p.difficulty === 'Low').length;
-                    return highCount >= 2 ? 'High' : lowCount >= 2 ? 'Low' : 'Medium';
-                  })()}
+                  {platformResult.executiveDashboard.criticalRisks}
                 </span>
               </div>
             </div>

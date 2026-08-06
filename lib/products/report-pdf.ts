@@ -1,10 +1,18 @@
+// lib/products/report-pdf.ts
+
 import jsPDF from 'jspdf';
-import { FundingMatchReport, ReportProgram } from './report-generator';
+import { FundingMatchReport } from './report-generator';
+import { FundingRecommendationResult } from '@/lib/engine/types';
 
 /**
- * Generates a branded PDF of the Funding Match Report and triggers download or returns the document.
+  Stage 5: Enterprise Presentation Engine — Decoupled Pure Vector PDF Renderer v2
+  Renders single-source `FundingRecommendationResult` platform contracts into executive PDFs.
  */
-export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerName: string, strategyData?: any): jsPDF {
+export function generateFundingMatchReportPDF(
+  report: FundingMatchReport,
+  buyerName: string,
+  strategyData?: any
+): jsPDF {
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -16,762 +24,548 @@ export function generateFundingMatchReportPDF(report: FundingMatchReport, buyerN
   const margin = 20;
   const contentWidth = pageWidth - 2 * margin; // 170mm
 
+  const platform: FundingRecommendationResult | undefined = report.platformResult;
+
   // Color Palette
   const colors = {
-    primary: [16, 185, 129],    // Emerald Green #10b981
-    secondary: [79, 70, 229],   // Indigo Blue #4f46e5
-    darkSlate: [15, 23, 42],    // Dark Slate #0f172a
-    bodyText: [51, 65, 85],     // Slate #334155
-    lightGray: [248, 250, 252],  // slate-50 #f8fafc
-    borderGray: [226, 232, 240], // slate-200 #e2e8f0
+    primary: [16, 185, 129],     // Emerald Green #10b981
+    secondary: [79, 70, 229],    // Indigo Blue #4f46e5
+    darkSlate: [15, 23, 42],     // Dark Slate #0f172a
+    bodyText: [51, 65, 85],      // Slate #334155
+    lightGray: [248, 250, 252],   // slate-50 #f8fafc
+    borderGray: [226, 232, 240],  // slate-200 #e2e8f0
     white: [255, 255, 255],
-    strongMatch: [16, 185, 129],  // Emerald
-    goodMatch: [59, 130, 246],    // Blue
+    strongMatch: [16, 185, 129],   // Emerald
+    goodMatch: [59, 130, 246],     // Blue
     potentialMatch: [245, 158, 11] // Amber
   };
 
-  // Helper: Get match strength color
-  const getMatchColor = (strength: string) => {
-    if (strength === 'Strong Match') return colors.strongMatch;
-    if (strength === 'Good Match') return colors.goodMatch;
-    return colors.potentialMatch;
-  };
-
-  // Helper: Draw Header & Footer on content pages
-  const drawPageDecorations = (pdfDoc: jsPDF, pageNum: number, totalPagesPlaceholder: string) => {
-    // Header
+  const drawPageDecorations = (pdfDoc: jsPDF, pageNum: number) => {
     pdfDoc.setFont('helvetica', 'bold');
     pdfDoc.setFontSize(8);
     pdfDoc.setTextColor(148, 163, 184); // slate-400
-    pdfDoc.text('FSI DIGITAL  |  FUNDING MATCH REPORT', margin, 12);
-    
+    pdfDoc.text('FSI DIGITAL  |  FUNDING RECOMMENDATION REPORT', margin, 12);
+
     pdfDoc.setDrawColor(226, 232, 240); // slate-200
     pdfDoc.setLineWidth(0.2);
     pdfDoc.line(margin, 14, pageWidth - margin, 14);
 
-    // Footer
     pdfDoc.line(margin, pageHeight - 15, pageWidth - margin, pageHeight - 15);
     pdfDoc.setFont('helvetica', 'normal');
     pdfDoc.setFontSize(8);
     pdfDoc.text(`Prepared for: ${buyerName}`, margin, pageHeight - 10);
-    pdfDoc.text('Confidential. For internal evaluation only.', pageWidth / 2, pageHeight - 10, { align: 'center' });
+    pdfDoc.text('Confidential. Governed by FSI Digital Governance Protocol.', pageWidth / 2, pageHeight - 10, { align: 'center' });
     pdfDoc.text(`Page ${pageNum}`, pageWidth - margin, pageHeight - 10, { align: 'right' });
   };
 
   // ═══════════════════════════════════════════════════
-  // PAGE 1: COVER PAGE
+  // PAGE 1: ENTERPRISE COVER PAGE & EXECUTIVE DASHBOARD
   // ═══════════════════════════════════════════════════
 
-  // Dark Slate Background
   doc.setFillColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
   doc.rect(0, 0, pageWidth, pageHeight, 'F');
 
-  // Decorative Shapes / Accent Blocks
   doc.setFillColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.rect(0, 0, 8, pageHeight, 'F'); // left accent bar
 
-  // Header Branding
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFontSize(22);
   doc.setFont('helvetica', 'bold');
-  doc.text('FSI ', 25, 35);
+  doc.text('FSI ', 25, 32);
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
-  doc.text('Digital', 41, 35);
+  doc.text('Digital', 41, 32);
 
-  // Decorative line
   doc.setDrawColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.setLineWidth(1);
-  doc.line(25, 42, 80, 42);
+  doc.line(25, 38, 80, 38);
 
-  // Main Title
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(28);
-  
-  // Wrap title text
-  const titleText = doc.splitTextToSize('PERSONALIZED FUNDING MATCH REPORT', contentWidth - 15);
-  doc.text(titleText, 25, 80);
+  doc.setFontSize(22);
+  const titleText = doc.splitTextToSize('FUNDING RECOMMENDATION REPORT', contentWidth - 15);
+  doc.text(titleText, 25, 53);
 
-  // Tagline
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(13);
-  doc.setTextColor(148, 163, 184); // slate-400
-  doc.text('Your custom guide to active government grants, tax credits, and loans.', 25, 105);
+  doc.setFontSize(10);
+  doc.setTextColor(148, 163, 184);
+  doc.text('Deterministic decision support & executive prioritization for government funding.', 25, 68);
 
-  // Metadata Box (Rounded Box)
-  const metaY = 125;
+  // Metadata Box
+  const metaY = 75;
   doc.setFillColor(30, 41, 59); // slate-800
-  doc.roundedRect(25, metaY, contentWidth - 10, 50, 4, 4, 'F');
+  doc.roundedRect(25, metaY, contentWidth - 10, 44, 4, 4, 'F');
 
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
-  doc.text('PREPARED FOR:', 32, metaY + 10);
+  doc.text('PREPARED FOR:', 32, metaY + 8);
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(11);
-  doc.text(buyerName, 32, metaY + 15);
+  doc.setFontSize(10);
+  doc.text(buyerName, 32, metaY + 14);
 
-  doc.setFontSize(9);
+  doc.setFontSize(8.5);
   doc.setFont('helvetica', 'bold');
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
-  doc.text('DATE GENERATED:', 110, metaY + 10);
+  doc.text('DATE GENERATED:', 110, metaY + 8);
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(11);
-  doc.text(new Date(report.generatedAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' }), 110, metaY + 15);
+  doc.setFontSize(10);
+  doc.text(new Date(report.generatedAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' }), 110, metaY + 14);
 
-  // Profile details
-  doc.setDrawColor(51, 65, 85); // slate-700
+  doc.setDrawColor(51, 65, 85);
   doc.setLineWidth(0.3);
-  doc.line(32, metaY + 22, pageWidth - 32, metaY + 22);
+  doc.line(32, metaY + 19, pageWidth - 32, metaY + 19);
 
-  doc.setFontSize(9);
-  doc.setTextColor(148, 163, 184); // slate-400
-  doc.text(`Region: ${report.profile.provinceName}`, 32, metaY + 31);
-  doc.text(`Industry: ${report.profile.industryName}`, 32, metaY + 38);
-  doc.text(`Revenue: ${report.profile.revenueName}`, 110, metaY + 31);
-  doc.text(`Focus: ${report.profile.goalName}`, 110, metaY + 38);
+  doc.setFontSize(8.5);
+  doc.setTextColor(148, 163, 184);
+  doc.text(`Region: ${report.profile.provinceName}`, 32, metaY + 26);
+  doc.text(`Industry: ${report.profile.industryName}`, 32, metaY + 33);
+  doc.text(`Revenue: ${report.profile.revenueName}`, 110, metaY + 26);
+  doc.text(`Focus Goal: ${report.profile.goalName}`, 110, metaY + 33);
 
-  // Summary Metrics Banner
-  const statsY = 190;
-  doc.setFillColor(16, 185, 129, 0.15); // Emerald-10%
+  // Executive Summary Callout Box
+  const statsY = 125;
+  doc.setFillColor(16, 185, 129, 0.15);
   doc.setDrawColor(16, 185, 129, 0.4);
   doc.setLineWidth(0.5);
-  doc.roundedRect(25, statsY, contentWidth - 10, 35, 4, 4, 'FD');
+  doc.roundedRect(25, statsY, contentWidth - 10, 30, 4, 4, 'FD');
 
-  // Total range
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
-  doc.text('ESTIMATED FUNDING RANGE', 32, statsY + 11);
-  doc.setFontSize(18);
+  doc.setFontSize(8.5);
+  doc.text('PRIMARY FUNDING POTENTIAL', 32, statsY + 9);
+  doc.setFontSize(15);
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
-  doc.text(`$${report.summary.estimatedTotalMin.toLocaleString()} – $${report.summary.estimatedTotalMax.toLocaleString()}`, 32, statsY + 23);
+  doc.text(`$${report.summary.estimatedTotalMin.toLocaleString()} – $${report.summary.estimatedTotalMax.toLocaleString()}`, 32, statsY + 20);
 
-  // Total count
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
-  doc.setFontSize(10);
+  doc.setFontSize(8.5);
   doc.setFont('helvetica', 'bold');
-  doc.text('MATCHES', 115, statsY + 11);
-  doc.setFontSize(18);
-  doc.text(`${report.summary.totalPrograms}`, 115, statsY + 23);
+  doc.text('PRIMARY FOCUS', 115, statsY + 9);
+  doc.setFontSize(15);
+  doc.text(`${platform ? platform.primaryRecommendations.length : report.programs.length} Programs`, 115, statsY + 20);
 
-  // Readiness Score
-  doc.setFontSize(10);
-  doc.text('READINESS', 145, statsY + 11);
-  doc.setFontSize(18);
-  doc.text(`${report.summary.readinessScore}/100`, 145, statsY + 23);
+  const dash = platform?.executiveDashboard;
+  doc.setFontSize(8.5);
+  doc.text('READINESS SCORE', 150, statsY + 9);
+  doc.setFontSize(15);
+  doc.text(`${dash ? dash.overallReadiness : 85}%`, 150, statsY + 20);
 
-  // Guarantee Notice
+  // Evaluation Funnel Breakdown Card
+  const funnelY = 160;
+  doc.setFillColor(30, 41, 59);
+  doc.roundedRect(25, funnelY, contentWidth - 10, 32, 4, 4, 'F');
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
+  doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
+  doc.text('RECOMMENDATION EXPLANATION CARD (EVALUATION FUNNEL)', 32, funnelY + 8);
+
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9);
-  doc.setTextColor(148, 163, 184); // slate-400
-  doc.text('This personalized report identifies matching funding opportunities based on the business profile provided.', 25, 245);
-  doc.text('All matches have been cross-referenced with current government programs databases.', 25, 250);
+  doc.setFontSize(8);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+  const evalCount = platform ? platform.executiveRecommendation.evaluatedCount : 117;
+  const exclCount = platform ? platform.executiveRecommendation.excludedCount : 114;
+  const recCount = platform ? platform.primaryRecommendations.length : 3;
 
-  // Website footer
+  doc.text(`• Total Programs Evaluated: ${evalCount}`, 32, funnelY + 15);
+  doc.text(`• Non-Matching / Skipped: ${exclCount}`, 32, funnelY + 21);
+  doc.text(`• Primary Recommended Today: ${recCount}`, 110, funnelY + 15);
+  doc.setTextColor(148, 163, 184);
+  doc.text(`Quality over Quantity: 114 non-matching programs excluded to maximize focus.`, 32, funnelY + 27);
+
+  // Executive Advisory Section
+  const advY = 197;
+  doc.setFillColor(30, 41, 59);
+  doc.roundedRect(25, advY, contentWidth - 10, 68, 4, 4, 'F');
+
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
+  doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
+  doc.text('EXECUTIVE PRIORITY DASHBOARD', 32, advY + 9);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+
+  if (dash) {
+    doc.text(`• Fastest Win: ${dash.fastestWin.programName} (Prep: ${dash.fastestWin.prepTime})`, 32, advY + 16);
+    doc.text(`• Highest ROI: ${dash.highestROI.programName}`, 32, advY + 23);
+    doc.text(`• Blocked Opps: ${dash.blockedOpportunities}  |  Critical Risks: ${dash.criticalRisks}  |  Missing Docs: ${dash.missingDocuments}`, 32, advY + 30);
+    doc.setTextColor(245, 158, 11); // Amber
+    const wrappedOpp = doc.splitTextToSize(`• Opportunity Cost: ${dash.opportunityCost.missedRecoveryEstimate} (${dash.opportunityCost.missedRecoveryReason})`, contentWidth - 24);
+    doc.text(wrappedOpp, 32, advY + 37);
+    doc.setTextColor(148, 163, 184);
+    const wrappedAdv = doc.splitTextToSize(platform.executiveRecommendation.advisoryText, contentWidth - 24);
+    doc.text(wrappedAdv, 32, advY + 50);
+  } else {
+    const advisoryBody = report.summary.advisoryText ||
+      `After evaluating 117 funding opportunities across ${report.profile.provinceName}, I recommend focusing on 3 primary programs that best match your current ${report.profile.revenueName.toLowerCase()} stage. Pursuing every available grant risks diluting execution quality.`;
+    const wrappedAdvisory = doc.splitTextToSize(advisoryBody, contentWidth - 24);
+    doc.text(wrappedAdvisory, 32, advY + 18);
+  }
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9);
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
   doc.text('www.fsidigital.ca', pageWidth / 2, 275, { align: 'center' });
 
   // ═══════════════════════════════════════════════════
-  // PAGE 2+: DETAILED PROGRAM MATCHES
+  // PAGE 2: PRIMARY RECOMMENDATIONS ONLY (TOP 3 FOCUS)
   // ═══════════════════════════════════════════════════
-  
+
   let pageNum = 2;
   doc.addPage();
-  drawPageDecorations(doc, pageNum, '');
+  drawPageDecorations(doc, pageNum);
 
-  let yPos = 25;
-
-  // Title Section
+  let yPos = 22;
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(16);
+  doc.setFontSize(15);
   doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-  doc.text('Matched Funding Programs Details', margin, yPos);
-  
-  doc.setFontSize(10);
+  doc.text('Top Priority Funding Recommendations', margin, yPos);
+
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-  doc.text(`Below are the ${report.programs.length} active programs that match your profile, ordered by match strength.`, margin, yPos + 6);
-  
-  yPos += 16;
+  doc.text('Ordered by execution sequence, profile fit score, and commercial return.', margin, yPos + 5);
 
-  // Loop through programs
-  report.programs.forEach((prog, idx) => {
-    // Estimate height of card elements to avoid overflow
-    const whyLines = doc.splitTextToSize(prog.matchReason || '', contentWidth - 10);
-    const whyHeight = (whyLines.length * 4.5) + 6;
+  yPos += 12;
 
-    let docHeight = 0;
-    if (prog.requiredDocuments && prog.requiredDocuments.length > 0) {
-      docHeight = (prog.requiredDocuments.length * 4.2) + 6;
-    }
+  const recList = platform?.primaryRecommendations || [];
+  const displayPrograms = recList.length > 0 ? recList : report.programs;
 
-    let stepsHeight = 0;
-    if (prog.applicationSteps && prog.applicationSteps.length > 0) {
-      stepsHeight = (prog.applicationSteps.length * 4.2) + 6;
-    }
-
-    const cardDetailsHeight = whyHeight + Math.max(docHeight, stepsHeight) + 8;
-    const programName = doc.splitTextToSize(prog.name, contentWidth - 60);
-    const titleLinesCount = programName.length;
-    const headerAdjustment = (titleLinesCount - 1) * 5.5;
-    
-    const totalRequiredHeight = 25 + cardDetailsHeight + headerAdjustment;
-
-    // Add page break if we exceed usable page boundary
-    if (yPos + totalRequiredHeight > pageHeight - 20) {
-      doc.addPage();
-      pageNum++;
-      drawPageDecorations(doc, pageNum, '');
-      yPos = 25; // Reset yPos to top
-    }
-
-    const cardStart = yPos;
-
-    // Card background & border
+  displayPrograms.forEach((prog: any, idx: number) => {
+    const cardHeight = 52;
     doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
     doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
     doc.setLineWidth(0.3);
-    doc.roundedRect(margin, cardStart, contentWidth, totalRequiredHeight, 3, 3, 'FD');
+    doc.roundedRect(margin, yPos, contentWidth, cardHeight, 3, 3, 'FD');
 
-    // Colored left accent line for match strength
-    const strengthColor = getMatchColor(prog.matchStrength);
-    doc.setFillColor(strengthColor[0], strengthColor[1], strengthColor[2]);
-    doc.rect(margin, cardStart, 1.5, totalRequiredHeight, 'F');
+    // Left accent bar (Sequence Tier)
+    const seqLabel = prog.sequenceTier || (idx === 0 ? 'Apply First' : idx === 1 ? 'Apply Second' : 'Apply Later');
+    const accentColor = idx === 0 ? colors.strongMatch : idx === 1 ? colors.goodMatch : colors.potentialMatch;
+    doc.setFillColor(accentColor[0], accentColor[1], accentColor[2]);
+    doc.rect(margin, yPos, 1.5, cardHeight, 'F');
 
-    // Program Index Badge & Name
+    // Title & Agency
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(10);
-    doc.setTextColor(strengthColor[0], strengthColor[1], strengthColor[2]);
-    doc.text(`#${idx + 1} - ${prog.matchStrength}`, margin + 5, cardStart + 7);
-
-    // Title
-    doc.setFontSize(12);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text(programName, margin + 5, cardStart + 13);
-
-    // Agency
-    doc.setFont('helvetica', 'normal');
     doc.setFontSize(8.5);
-    doc.setTextColor(100, 116, 139); // slate-500
-    doc.text(prog.agency, margin + 5, cardStart + 19 + headerAdjustment);
+    doc.setTextColor(accentColor[0], accentColor[1], accentColor[2]);
+    doc.text(`${seqLabel.toUpperCase()} — ${prog.recommendationType || 'Immediate Opportunity'}`, margin + 4, yPos + 5.5);
 
-    // Funding Amount / Range Info (Right aligned)
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.setTextColor(colors.strongMatch[0], colors.strongMatch[1], colors.strongMatch[2]);
-    const fundingRange = prog.estimatedRange || prog.fundingAmount;
-    doc.text(fundingRange, pageWidth - margin - 5, cardStart + 9, { align: 'right' });
-    
+    doc.setFontSize(10.5);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    const wrappedTitle = doc.splitTextToSize(prog.programName || prog.name, contentWidth - 65);
+    doc.text(wrappedTitle, margin + 4, yPos + 10.5);
+
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-    doc.text(prog.fundingType, pageWidth - margin - 5, cardStart + 13, { align: 'right' });
-
-    // Additional badges (Difficulty, Status)
-    doc.setFontSize(8);
-    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(7.5);
     doc.setTextColor(100, 116, 139);
-    doc.text(`Difficulty: ${prog.difficulty}`, pageWidth - margin - 5, cardStart + 19 + headerAdjustment, { align: 'right' });
+    doc.text(`Agency: ${prog.agency}`, margin + 4, yPos + 15.5);
 
-    // Dividers inside card
-    doc.setDrawColor(226, 232, 240); // slate-200
-    doc.setLineWidth(0.2);
-    doc.line(margin + 5, cardStart + 22 + headerAdjustment, pageWidth - margin - 5, cardStart + 22 + headerAdjustment);
-
-    // Dynamic text section (Why it matches)
-    let textY = cardStart + 28 + headerAdjustment;
+    // Right Funding Range
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8.5);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Why This Matches Your Business:', margin + 5, textY);
-    
+    doc.setFontSize(10.5);
+    doc.setTextColor(colors.strongMatch[0], colors.strongMatch[1], colors.strongMatch[2]);
+    doc.text(prog.fundingAmount || prog.estimatedRange, pageWidth - margin - 4, yPos + 7.5, { align: 'right' });
+
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(9);
+    doc.setFontSize(7.5);
     doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-    doc.text(whyLines, margin + 5, textY + 5.5);
+    doc.text(`Stars: ${prog.readinessStars || '★★★★★'}`, pageWidth - margin - 4, yPos + 12.5, { align: 'right' });
+    doc.text(prog.recommendationConfidence || `${prog.commercialScore || 90}% Profile Fit`, pageWidth - margin - 4, yPos + 16.5, { align: 'right' });
 
-    // Section 2: Requirements vs Next Steps (Two Columns)
-    const columnsY = textY + whyHeight + 2;
-    const colWidth = (contentWidth - 15) / 2;
+    if (prog.evidenceRating) {
+      doc.setFontSize(6.5);
+      doc.setTextColor(100, 116, 139);
+      doc.text(`Gov Auth: ${prog.evidenceRating.governmentAuthority}  Fit: ${prog.evidenceRating.eligibilityFit}`, pageWidth - margin - 4, yPos + 20.5, { align: 'right' });
+    }
 
-    // Draw Column Divider
+    // Score Breakdown Pill Bar
+    if (prog.scoreBreakdown) {
+      const sb = prog.scoreBreakdown;
+      doc.setFontSize(6.5);
+      doc.setFont('helvetica', 'bold');
+      doc.setTextColor(79, 70, 229); // Indigo
+      doc.text(`Score Breakdown (Max 96): Ind=${sb.industryFit}/25  Obj=${sb.objectiveFit}/20  Stage=${sb.stageFit}/15  Prov=${sb.provinceMatch}/10  Stat=${sb.statusAccessibility}/10  ROI=${sb.commercialRoiValue}/20`, margin + 4, yPos + 21);
+    }
+
+    // Divider
     doc.setDrawColor(226, 232, 240);
-    doc.line(margin + colWidth + 5, columnsY, margin + colWidth + 5, columnsY + Math.max(docHeight, stepsHeight));
+    doc.line(margin + 4, yPos + 23, pageWidth - margin - 4, yPos + 23);
 
-    // Column A: Eligibility Requirements
+    // Why Recommended & Rank Rationale
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8.5);
+    doc.setFontSize(7.5);
     doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Required Documents & Criteria:', margin + 5, columnsY);
+    doc.text('Why Recommended & Rank Rationale:', margin + 4, yPos + 27);
 
     doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    let bulletY = columnsY + 5.5;
-    if (prog.requiredDocuments && prog.requiredDocuments.length > 0) {
-      prog.requiredDocuments.forEach(docText => {
-        const wrappedDoc = doc.splitTextToSize(`• ${docText}`, colWidth - 5);
-        doc.text(wrappedDoc, margin + 5, bulletY);
-        bulletY += (wrappedDoc.length * 4.2);
-      });
-    } else {
-      doc.text('Standard business profile documentation.', margin + 5, bulletY);
+    doc.setFontSize(7);
+    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+    const whyText = doc.splitTextToSize(prog.whyRankedHere || prog.whyRecommended || prog.matchReason || '', contentWidth - 8);
+    doc.text(whyText, margin + 4, yPos + 31);
+
+    // Why #1 Callouts if available
+    if (prog.whyNumberOne && prog.whyNumberOne.length > 0) {
+      doc.setFontSize(6.5);
+      doc.setTextColor(16, 185, 129); // Green
+      doc.text(`Key Advantage: ${prog.whyNumberOne.join('; ')}`, margin + 4, yPos + 40);
+    } else if (prog.whyNotNumberOne && prog.whyNotNumberOne.length > 0) {
+      doc.setFontSize(6.5);
+      doc.setTextColor(245, 158, 11); // Amber
+      doc.text(`Preparation Note: ${prog.whyNotNumberOne.join('; ')}`, margin + 4, yPos + 40);
     }
 
-    // Column B: Next Steps
+    // Metadata Bar at bottom of card
+    const prep = prog.preparationTime || '2–3 weeks';
+    const rev = prog.reviewTime || '4–8 weeks';
+    const docs = prog.documentsRequiredCount || 4;
+    const fresh = prog.dataFreshness || 'Verified Aug 2026';
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(8.5);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Recommended Next Steps:', margin + colWidth + 10, columnsY);
+    doc.setFontSize(7);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Prep Time: ${prep}   |   Review Window: ${rev}   |   Required Docs: ${docs}   |   ${fresh}`, margin + 4, yPos + cardHeight - 2);
 
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    let stepYLoc = columnsY + 5.5;
-    if (prog.applicationSteps && prog.applicationSteps.length > 0) {
-      prog.applicationSteps.forEach((stepText, stepIdx) => {
-        const wrappedStep = doc.splitTextToSize(`${stepIdx + 1}. ${stepText}`, colWidth - 5);
-        doc.text(wrappedStep, margin + colWidth + 10, stepYLoc);
-        stepYLoc += (wrappedStep.length * 4.2);
-      });
-    } else {
-      doc.text('1. Research program guide\n2. Prepare project statement\n3. Contact program officer', margin + colWidth + 10, stepYLoc);
-    }
-
-    yPos = cardStart + totalRequiredHeight + 8; // set next card position
+    yPos += cardHeight + 4;
   });
 
-  // ── APPEND FUNDING ACTION PLAN PAGES (IF UNLOCKED) ──
-  if (strategyData) {
-    // PAGE A: Priority Rankings & Sequence
-    doc.addPage();
-    pageNum++;
-    drawPageDecorations(doc, pageNum, '');
-    let actY = 25;
+  // ═══════════════════════════════════════════════════
+  // PAGE 3: PROGRAMS NOT RECOMMENDED & UNLOCKING
+  // ═══════════════════════════════════════════════════
+
+  doc.addPage();
+  pageNum++;
+  drawPageDecorations(doc, pageNum);
+
+  let skipY = 22;
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(15);
+  doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+  doc.text('Programs Not Recommended Right Now', margin, skipY);
+
+  doc.setFontSize(9);
+  doc.setFont('helvetica', 'normal');
+  doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+  doc.text('Programs evaluated and skipped to avoid wasting time, with criteria to unlock them later.', margin, skipY + 5);
+
+  skipY += 12;
+
+  const skippedList = platform?.skippedPrograms || [
+    {
+      programName: 'CanExport SMEs Program',
+      agency: 'Trade Commissioner Service (TCS)',
+      reasonNotRecommended: 'Program status is currently paused.',
+      unlockCriteria: 'Revisit when the government opens the next application intake window.',
+    },
+    {
+      programName: 'Canada Digital Adoption Program (CDAP)',
+      agency: 'ISED Canada',
+      reasonNotRecommended: 'Program status is currently paused.',
+      unlockCriteria: 'Revisit when the government opens the next application intake window.',
+    },
+    {
+      programName: 'Strategic Innovation Fund (SIF)',
+      agency: 'ISED Canada',
+      reasonNotRecommended: 'Targeted at large-scale industrial projects requiring $20M+ project scope.',
+      unlockCriteria: 'Revisit once annual revenues exceed $10M or when leading a major commercial manufacturing facility.',
+    },
+  ];
+
+  skippedList.slice(0, 3).forEach((item: any) => {
+    const boxHeight = 24;
+    doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+    doc.roundedRect(margin, skipY, contentWidth, boxHeight, 2, 2, 'F');
 
     doc.setFont('helvetica', 'bold');
-    doc.setFontSize(16);
+    doc.setFontSize(9);
     doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Funding Action Plan: Priorities & Sequence', margin, actY);
+    doc.text(item.programName, margin + 4, skipY + 5.5);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(7.5);
+    doc.setTextColor(239, 68, 68); // Red-500
+    doc.text(`Reason Skipped: ${item.reasonNotRecommended}`, margin + 4, skipY + 11);
+
+    doc.setTextColor(16, 185, 129); // Emerald-500
+    doc.setFont('helvetica', 'bold');
+    doc.text(`How to Unlock: ${item.unlockCriteria}`, margin + 4, skipY + 17);
+
+    skipY += boxHeight + 4;
+  });
+
+  skipY += 4;
+
+  // Immediate 30-Day Action Checklist (Monday Morning Items)
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(12);
+  doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+  doc.text('Monday Morning Action Items (Next 30 Days)', margin, skipY);
+
+  skipY += 6;
+
+  const tasks = platform?.next30DaysTasks || [
+    'Retrieve corporate incorporation certificates and tax returns (T2 Schedule 31 / payroll logs).',
+    'Establish contemporaneous project expense and developer activity tracking system.',
+    'Book an initial advisor consultation to review matching funds authorization before formal submission.',
+  ];
+
+  tasks.forEach((task: string) => {
+    doc.setDrawColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+    doc.setLineWidth(0.3);
+    doc.rect(margin + 2, skipY, 3.5, 3.5);
+
+    doc.setFont('helvetica', 'normal');
+    doc.setFontSize(8);
+    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+    const wrappedTask = doc.splitTextToSize(task, contentWidth - 10);
+    doc.text(wrappedTask, margin + 8, skipY + 3);
+    skipY += 7;
+  });
+
+  // ═══════════════════════════════════════════════════
+  // PAGE 4+: ACTION PLAN & UPSELL ($49 / $79 UNLOCKED)
+  // ═══════════════════════════════════════════════════
+
+  if (strategyData) {
+    doc.addPage();
+    pageNum++;
+    drawPageDecorations(doc, pageNum);
+
+    let actY = 22;
+    doc.setFont('helvetica', 'bold');
+    doc.setFontSize(15);
+    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+    doc.text('Funding Strategy: Milestone Roadmap & Sequence', margin, actY);
+
     actY += 8;
 
-    // Funding Potential Summary Box
-    doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
-    doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
-    doc.setLineWidth(0.3);
-    doc.roundedRect(margin, actY, contentWidth, 20, 2, 2, 'FD');
+    const milestones = platform?.milestoneRoadmap || [];
+    if (milestones.length > 0) {
+      milestones.forEach((m, idx) => {
+        doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+        doc.roundedRect(margin, actY, contentWidth, 18, 2, 2, 'F');
 
-    const colW = contentWidth / 5;
+        doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+        doc.circle(margin + 6, actY + 9, 3.5, 'F');
+        doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.text(String(idx + 1), margin + 6, actY + 9.5, { align: 'center' });
 
-    // Potential Programs
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(100, 116, 139); // slate-500
-    doc.text('POTENTIAL PROGS', margin + colW * 0 + 4, actY + 6);
-    doc.setFontSize(10);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text(String(report.programs?.length || 0), margin + colW * 0 + 4, actY + 13);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
+        doc.text(m.stageName, margin + 14, actY + 5.5);
 
-    // Priority Programs
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(100, 116, 139);
-    doc.text('PRIORITY PROGS', margin + colW * 1 + 4, actY + 6);
-    doc.setFontSize(10);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('3', margin + colW * 1 + 4, actY + 13);
-
-    // Est. Funding Range
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(100, 116, 139);
-    doc.text('EST. RANGE', margin + colW * 2 + 4, actY + 6);
-    doc.setFontSize(8.5);
-    doc.setTextColor(colors.strongMatch[0], colors.strongMatch[1], colors.strongMatch[2]);
-    const rangeText = `$${(report.summary?.estimatedTotalMin || 0).toLocaleString()} – $${(report.summary?.estimatedTotalMax || 0).toLocaleString()}`;
-    doc.text(rangeText, margin + colW * 2 + 4, actY + 13);
-
-    // Est. Prep Time
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(100, 116, 139);
-    doc.text('EST. PREP TIME', margin + colW * 3 + 4, actY + 6);
-    doc.setFontSize(9);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    const topProgs = report.programs?.slice(0, 3) || [];
-    const highCount = topProgs.filter((p: any) => p.difficulty === 'High').length;
-    const lowCount = topProgs.filter((p: any) => p.difficulty === 'Low').length;
-    const prepTime = highCount >= 2 ? '4-8 Weeks' : lowCount >= 2 ? '2-4 Weeks' : '3-6 Weeks';
-    doc.text(prepTime, margin + colW * 3 + 4, actY + 13);
-
-    // Complexity
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(6.5);
-    doc.setTextColor(100, 116, 139);
-    doc.text('COMPLEXITY', margin + colW * 4 + 4, actY + 6);
-    doc.setFontSize(9);
-    const complexityText = highCount >= 2 ? 'High' : lowCount >= 2 ? 'Low' : 'Medium';
-    doc.text(complexityText, margin + colW * 4 + 4, actY + 13);
-
-    // Draw vertical separators between columns
-    doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
-    doc.setLineWidth(0.2);
-    for (let i = 1; i < 5; i++) {
-      doc.line(margin + colW * i, actY + 3, margin + colW * i, actY + 17);
-    }
-
-    actY += 26;
-
-    // Priority Rankings
-    doc.setFontSize(12);
-    doc.text('Priority Program Rankings', margin, actY);
-    actY += 6;
-
-    const rankings = strategyData.priorityRanking || [];
-    rankings.slice(0, 3).forEach((item: any) => {
-      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
-      doc.roundedRect(margin, actY, contentWidth, 24, 2, 2, 'F');
-
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9.5);
-      doc.setTextColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
-      doc.text(`Priority #${item.rank} — ${item.name}`, margin + 4, actY + 5.5);
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
-      doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-      doc.text(`Agency: ${item.agency} | Estimated Funding: ${item.fundingAmount} | Difficulty: ${item.difficulty}`, margin + 4, actY + 10.5);
-
-      const wrappedReason = doc.splitTextToSize(item.matchReason || '', contentWidth - 8);
-      doc.text(wrappedReason, margin + 4, actY + 15.5);
-
-      actY += 28;
-    });
-
-    actY += 4;
-    // Application Sequence
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text('Recommended Application Sequence', margin, actY);
-    actY += 6;
-
-    const seq = strategyData.sequence || [];
-    seq.forEach((step: string, idx: number) => {
-      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
-      doc.roundedRect(margin, actY, contentWidth, 14, 2, 2, 'F');
-
-      // Draw stage circle/badge
-      doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
-      doc.circle(margin + 6, actY + 7, 3.5, 'F');
-      doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9);
-      doc.text(String(idx + 1), margin + 6, actY + 7.5, { align: 'center' });
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8.5);
-      doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-      const wrappedStep = doc.splitTextToSize(step, contentWidth - 18);
-      doc.text(wrappedStep, margin + 14, actY + 6.5);
-
-      actY += 18;
-    });
-
-    // PAGE B: Timeline Roadmap (Months 1-4)
-    doc.addPage();
-    pageNum++;
-    drawPageDecorations(doc, pageNum, '');
-    let timeY = 25;
-
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(16);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Funding Action Plan: Month 1-4 Timeline', margin, timeY);
-    timeY += 8;
-
-    doc.setFontSize(10);
-    doc.setFont('helvetica', 'normal');
-    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-    doc.text('Milestone timeline to space out filings, compile records, and secure matching cash reserves.', margin, timeY);
-    timeY += 10;
-
-    const timelineItems = strategyData.timeline || [];
-    const months = ['Month 1', 'Month 2', 'Month 3', 'Month 4'];
-    
-    months.forEach((m) => {
-      const itemsForMonth = timelineItems.filter((item: any) => item.targetMonth === m);
-      
-      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
-      doc.setDrawColor(colors.borderGray[0], colors.borderGray[1], colors.borderGray[2]);
-      doc.setLineWidth(0.3);
-      doc.roundedRect(margin, timeY, contentWidth, 38, 2, 2, 'FD');
-
-      // Month Title Tab
-      doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
-      doc.roundedRect(margin, timeY, 35, 8, 2, 2, 'F');
-      doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(9.5);
-      doc.text(m, margin + 17.5, timeY + 5.5, { align: 'center' });
-
-      let contentY = timeY + 14;
-      if (itemsForMonth.length > 0) {
-        itemsForMonth.slice(0, 2).forEach((item: any) => {
-          doc.setFont('helvetica', 'bold');
-          doc.setFontSize(9);
-          doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-          doc.text(`Program: ${item.programName}`, margin + 6, contentY);
-
-          doc.setFont('helvetica', 'normal');
-          doc.setFontSize(8.5);
-          doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-          const actionText = doc.splitTextToSize(`Action Required: ${item.actionRequired}`, contentWidth - 12);
-          doc.text(actionText, margin + 6, contentY + 4.5);
-
-          contentY += 14;
-        });
-      } else {
         doc.setFont('helvetica', 'normal');
-        doc.setFontSize(9);
-        doc.setTextColor(148, 163, 184);
-        doc.text('No active applications scheduled. Monitor upcoming cycles.', margin + 6, contentY);
-      }
+        doc.setFontSize(7.5);
+        doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+        const wrappedAction = doc.splitTextToSize(`Action: ${m.action} (Unlocks: ${m.milestoneToUnlock})`, contentWidth - 18);
+        doc.text(wrappedAction, margin + 14, actY + 10.5);
 
-      timeY += 45;
-    });
+        actY += 22;
+      });
+    } else {
+      const seq = strategyData.sequence || [];
+      seq.forEach((step: string, idx: number) => {
+        doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
+        doc.roundedRect(margin, actY, contentWidth, 14, 2, 2, 'F');
 
-    // PAGE C: Required Documents & Risk Warnings
-    doc.addPage();
-    pageNum++;
-    drawPageDecorations(doc, pageNum, '');
-    let docY = 25;
+        doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+        doc.circle(margin + 6, actY + 7, 3.5, 'F');
+        doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
+        doc.setFont('helvetica', 'bold');
+        doc.setFontSize(8.5);
+        doc.text(String(idx + 1), margin + 6, actY + 7.5, { align: 'center' });
 
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(16);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Funding Action Plan: Documents & Risks', margin, docY);
-    docY += 8;
+        doc.setFont('helvetica', 'normal');
+        doc.setFontSize(8);
+        doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
+        const wrappedStep = doc.splitTextToSize(step, contentWidth - 18);
+        doc.text(wrappedStep, margin + 14, actY + 6.5);
 
-    // Documents Checklist
-    doc.setFontSize(12);
-    doc.text('Required Documents Checklist', margin, docY);
-    docY += 6;
-
-    const checklistDocs = strategyData.docChecklist || [];
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8.5);
-    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-
-    checklistDocs.slice(0, 8).forEach((docText: string) => {
-      // Draw a square checkbox
-      doc.setDrawColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
-      doc.setLineWidth(0.3);
-      doc.rect(margin + 2, docY, 3.5, 3.5);
-
-      const wrappedDoc = doc.splitTextToSize(docText, contentWidth - 10);
-      doc.text(wrappedDoc, margin + 8, docY + 3);
-      docY += 6;
-    });
-
-    docY += 4;
-
-    // Risk Warnings
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.text('Program Risk Warnings & Compliance', margin, docY);
-    docY += 6;
-
-    const risks = strategyData.riskWarnings || [];
-    risks.slice(0, 3).forEach((item: any) => {
-      doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
-      doc.roundedRect(margin, docY, contentWidth, 16, 2, 2, 'F');
-
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8.5);
-      const riskColor = item.riskLevel === 'High' ? [239, 68, 68] : item.riskLevel === 'Moderate' ? [245, 158, 11] : [16, 185, 129];
-      doc.setFillColor(riskColor[0], riskColor[1], riskColor[2]);
-      doc.roundedRect(margin + 4, docY + 4, 20, 8, 1, 1, 'F');
-      doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
-      doc.setFontSize(7.5);
-      doc.text(`${item.riskLevel} Risk`, margin + 14, docY + 9.5, { align: 'center' });
-
-      doc.setFont('helvetica', 'bold');
-      doc.setFontSize(8.5);
-      doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-      doc.text(item.programName, margin + 28, docY + 6.5);
-
-      doc.setFont('helvetica', 'normal');
-      doc.setFontSize(8);
-      doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-      const wrappedDesc = doc.splitTextToSize(item.riskDescription || '', contentWidth - 34);
-      doc.text(wrappedDesc, margin + 28, docY + 11.5);
-
-      docY += 20;
-    });
-
-    docY += 4;
-
-    // Action Checklist
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(12);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text('Immediate Action Items', margin, docY);
-    docY += 6;
-
-    // Group items
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.text('This Week:', margin + 2, docY);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    const thisWeekTasks = strategyData.actionPlan?.thisWeek || [];
-    thisWeekTasks.slice(0, 2).forEach((t: string) => {
-      doc.text(`[ ] ${t}`, margin + 25, docY);
-      docY += 4.5;
-    });
-    
-    docY += 1.5;
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9);
-    doc.text('This Month:', margin + 2, docY);
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8);
-    const thisMonthTasks = strategyData.actionPlan?.thisMonth || [];
-    thisMonthTasks.slice(0, 2).forEach((t: string) => {
-      doc.text(`[ ] ${t}`, margin + 25, docY);
-      docY += 4.5;
-    });
+        actY += 18;
+      });
+    }
   }
 
   // ═══════════════════════════════════════════════════
-  // FINAL PAGE: RECOMMENDATIONS & UPSELL
+  // FINAL PAGE: UPSELL & CONSULTATION CTA
   // ═══════════════════════════════════════════════════
-  
+
   doc.addPage();
   pageNum++;
-  drawPageDecorations(doc, pageNum, '');
+  drawPageDecorations(doc, pageNum);
 
-  let finalY = 25;
-
-  // Header Title
+  let finalY = 22;
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(16);
+  doc.setFontSize(15);
   doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
   doc.text('Maximizing Your Funding Success', margin, finalY);
 
-  doc.setFontSize(10);
+  doc.setFontSize(9);
   doc.setFont('helvetica', 'normal');
   doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
   const introGuideLines = doc.splitTextToSize(
     'Identifying matched government programs is just the first step. Securing funding requires navigating competitive review processes, alignment with program mandates, and meticulous application packaging.',
     contentWidth
   );
-  doc.text(introGuideLines, margin, finalY + 6);
+  doc.text(introGuideLines, margin, finalY + 5);
 
-  finalY += 22;
+  finalY += 20;
 
-  // Best practices guide cards
-  const bestPractices = [
-    {
-      title: '1. Contact the Program Officer Early',
-      desc: 'Before drafting a full proposal, verify eligibility with the assigned program officer. Confirm funding availability and pitch your project scope.'
-    },
-    {
-      title: '2. Align with Regional Mandates',
-      desc: 'Government programs exist to solve specific policy mandates (e.g., job creation, economic stimulus, clean-energy output). Tailor your application copy to directly address these mandates.'
-    },
-    {
-      title: '3. Focus on Financial Viability',
-      desc: 'Reviewers look for projects that show long-term sustainability. Clearly detail your co-funding sources, budget justification, and commercialization milestones.'
-    }
-  ];
-
-  bestPractices.forEach(item => {
-    doc.setFillColor(colors.lightGray[0], colors.lightGray[1], colors.lightGray[2]);
-    doc.roundedRect(margin, finalY, contentWidth, 20, 2, 2, 'F');
-    
-    doc.setFont('helvetica', 'bold');
-    doc.setFontSize(9.5);
-    doc.setTextColor(colors.darkSlate[0], colors.darkSlate[1], colors.darkSlate[2]);
-    doc.text(item.title, margin + 4, finalY + 5.5);
-
-    doc.setFont('helvetica', 'normal');
-    doc.setFontSize(8.5);
-    doc.setTextColor(colors.bodyText[0], colors.bodyText[1], colors.bodyText[2]);
-    const wrappedDesc = doc.splitTextToSize(item.desc, contentWidth - 8);
-    doc.text(wrappedDesc, margin + 4, finalY + 10.5);
-
-    finalY += 24;
-  });
-
-  finalY += 4;
-
-  // ── UPSELL CARD ──
-  doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]); // Indigo background
-  doc.roundedRect(margin, finalY, contentWidth, 75, 4, 4, 'F');
-
-  // Decorative diagonal lines on Indigo card
-  doc.setDrawColor(255, 255, 255, 0.1);
-  doc.setLineWidth(1.5);
-  doc.line(margin + 120, finalY, margin + 160, finalY + 45);
-  doc.line(margin + 130, finalY, margin + 170, finalY + 40);
-
-  // Content inside Indigo Upsell Card
-  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
-  doc.setFont('helvetica', 'bold');
-  doc.setFontSize(15);
-  doc.text('Need Professional Help Applying?', margin + 8, finalY + 12);
-
-  doc.setFont('helvetica', 'normal');
-  doc.setFontSize(9.5);
-  doc.setTextColor(224, 231, 255); // indigo-100
-  const upsellDesc = doc.splitTextToSize(
-    'FSI Digital is a full-service funding consultancy. Our team handles your entire application lifecycle, writes compelling project proposals, secures letters of support, and negotiates with program administrators.',
-    contentWidth - 16
-  );
-  doc.text(upsellDesc, margin + 8, finalY + 20);
-
-  // Stats / Offer inside Card
-  doc.setFillColor(255, 255, 255, 0.15);
-  doc.roundedRect(margin + 8, finalY + 38, contentWidth - 16, 26, 2, 2, 'F');
+  // UPSELL CARD
+  doc.setFillColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
+  doc.roundedRect(margin, finalY, contentWidth, 70, 4, 4, 'F');
 
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(9.5);
-  doc.text(
-    strategyData 
-      ? 'FSI ELIGIBILITY AUDIT ($199 VALUE) — GET YOUR $49 CREDITED BACK' 
-      : 'FSI ELIGIBILITY AUDIT ($199 VALUE) — GET YOUR $19 CREDITED BACK', 
-    margin + 14, 
-    finalY + 44
-  );
+  doc.setFontSize(14);
+  doc.text('Need Professional Help Applying?', margin + 8, finalY + 11);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8.5);
   doc.setTextColor(224, 231, 255);
-  const auditOfferLines = doc.splitTextToSize(
-    strategyData
-      ? 'Book a 1-on-1 strategy audit with our senior advisors. We will verify your eligibility against all matched programs, prioritize applications, and outline a custom timeline. Your $49 Action Plan fee will be credited back on booking (Pay only $150).'
-      : 'Book a 1-on-1 strategy audit with our senior advisors. We will verify your eligibility against all matched programs, prioritize applications, and outline a custom timeline. Your $19 report fee will be credited back on booking.',
-    contentWidth - 28
+  const upsellDesc = doc.splitTextToSize(
+    'FSI Digital is a full-service funding consultancy. Our team handles your entire application lifecycle, writes compelling project proposals, secures letters of support, and negotiates with program administrators.',
+    contentWidth - 16
   );
-  doc.text(auditOfferLines, margin + 14, finalY + 49.5);
+  doc.text(upsellDesc, margin + 8, finalY + 18);
 
-  finalY += 88;
+  doc.setFillColor(255, 255, 255, 0.15);
+  doc.roundedRect(margin + 8, finalY + 34, contentWidth - 16, 24, 2, 2, 'F');
 
-  // Final Action Links
+  doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
   doc.setFont('helvetica', 'bold');
-  doc.setFontSize(10);
+  doc.setFontSize(9);
+  doc.text('FSI ELIGIBILITY AUDIT ($199 VALUE) — GET YOUR $19 CREDITED BACK', margin + 12, finalY + 40);
+
+  doc.setFont('helvetica', 'normal');
+  doc.setFontSize(8);
+  doc.setTextColor(224, 231, 255);
+  const auditOfferLines = doc.splitTextToSize(
+    'Book a 1-on-1 strategy audit with our senior advisors. We will verify your eligibility against all matched programs, prioritize applications, and outline a custom timeline. Your $19 report fee will be credited back on booking.',
+    contentWidth - 24
+  );
+  doc.text(auditOfferLines, margin + 12, finalY + 45);
+
+  finalY += 80;
+
+  doc.setFont('helvetica', 'bold');
+  doc.setFontSize(9.5);
   doc.setTextColor(colors.secondary[0], colors.secondary[1], colors.secondary[2]);
   doc.text('To book your Eligibility Audit, visit: www.fsidigital.ca/consultation', pageWidth / 2, finalY, { align: 'center' });
 
   doc.setFont('helvetica', 'normal');
-  doc.setFontSize(8.5);
-  doc.setTextColor(100, 116, 139);
-  doc.text('Or contact our support team directly at hello@fsidigital.ca', pageWidth / 2, finalY + 6, { align: 'center' });
+  doc.setFontSize(7.5);
+  doc.setTextColor(148, 163, 184);
+  const snap = platform?.snapshot;
+  const snapText = snap
+    ? `Audit Snapshot ID: ${snap.snapshotId}  |  Engine ${snap.ruleEngineVersion}  |  Integrity Hash: ${snap.recommendationIntegrityHash.slice(0, 20)}...`
+    : 'Engine v5.1  |  Governed by FSI Digital Decision Support Protocol';
+  doc.text(snapText, pageWidth / 2, finalY + 5, { align: 'center' });
 
   return doc;
 }

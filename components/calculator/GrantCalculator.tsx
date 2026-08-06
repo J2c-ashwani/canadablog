@@ -19,6 +19,7 @@ import { caseStudiesDatabase } from "@/lib/data/case-studies"
 import { DiyComparisonTable } from "@/components/DiyComparisonTable"
 import { getExperimentVariant, getExperiment } from "@/lib/leads/experiment-helper"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { EnterpriseReportRenderer } from "@/app/products/report/EnterpriseReportRenderer"
 
 type CalculatorData = {
     province: string;
@@ -262,6 +263,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [isPurchased, setIsPurchased] = useState(false);
     const [accessToken, setAccessToken] = useState<string>('');
     const [reportData, setReportData] = useState<any>(null);
+    const [platformResult, setPlatformResult] = useState<any>(null);
     const [isLoadingReport, setIsLoadingReport] = useState(false);
     const [reportLoadStep, setReportLoadStep] = useState(0);
     const [isDownloading, setIsDownloading] = useState(false);
@@ -1804,6 +1806,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
       if (reportResult) {
         setReportData(reportResult.report);
+        setPlatformResult(reportResult.platformResult || reportResult.report?.platformResult || null);
         setHasStrategyUnlocked(!!reportResult.hasStrategyUnlocked);
         setStrategyData(reportResult.strategyData || null);
         setHasToolkitUnlocked(!!reportResult.hasToolkitUnlocked);
@@ -3587,99 +3590,32 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                               )
                             )}
 
-                            {/* Profile Summary */}
-                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
-                              <div className="grid grid-cols-2 gap-3 text-sm">
-                                <div>
-                                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Region</p>
-                                  <p className="font-semibold text-slate-700">{reportData.profile?.provinceName || REGION_NAMES[data.province] || data.province}</p>
-                                </div>
-                                <div>
-                                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Industry</p>
-                                  <p className="font-semibold text-slate-700">{reportData.profile?.industryName || INDUSTRY_NAMES[data.industry] || data.industry}</p>
-                                </div>
-                                <div>
-                                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Programs Matched</p>
-                                  <p className="font-semibold text-emerald-700">{reportData.summary?.totalPrograms || grantCount}</p>
-                                </div>
-                                <div>
-                                  <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Readiness Score</p>
-                                  <p className="font-semibold text-emerald-700">{reportData.summary?.readinessScore || 75}/100</p>
-                                </div>
-                              </div>
-                            </div>
-
-                            {/* Estimated Range */}
-                            <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-4 text-center">
-                              <p className="text-xs text-emerald-600 font-medium uppercase tracking-wide mb-1">Total Estimated Funding Range</p>
-                              <p className="text-2xl font-bold text-emerald-700">
-                                ${(reportData.summary?.estimatedTotalMin || estimate).toLocaleString()} – ${(reportData.summary?.estimatedTotalMax || estimateMax).toLocaleString()}
-                              </p>
-                            </div>
-
-                            {/* Program Cards */}
-                            <div className="space-y-3">
-                              <h4 className="font-semibold text-slate-700 text-sm px-1">Matched Programs</h4>
-                              {(reportData.programs || []).map((prog: any, i: number) => (
-                                <div key={prog.id || i} className="border border-gray-200 rounded-xl p-4 space-y-3 bg-white">
-                                  <div className="flex items-start justify-between gap-3">
-                                    <div className="min-w-0 flex-1">
-                                      <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                        <span className={`text-xs font-bold px-2 py-0.5 rounded ${
-                                          prog.matchStrength === 'Strong Match' ? 'bg-emerald-100 text-emerald-700' :
-                                          prog.matchStrength === 'Good Match' ? 'bg-blue-100 text-blue-700' :
-                                          'bg-amber-100 text-amber-700'
-                                        }`}>#{i + 1}</span>
-                                        <h5 className="font-semibold text-slate-800 text-sm">{prog.name}</h5>
-                                      </div>
-                                      <p className="text-xs text-slate-500">{prog.agency}</p>
-                                    </div>
-                                    <div className="text-right shrink-0">
-                                      <p className="text-sm font-bold text-emerald-700">{prog.estimatedRange || prog.fundingAmount}</p>
-                                      <p className="text-xs text-slate-500">{prog.fundingType}</p>
-                                    </div>
-                                  </div>
-
-                                  <div className="flex flex-wrap gap-2 text-xs">
-                                    <span className={`px-2 py-0.5 rounded-full font-medium ${
-                                      prog.matchStrength === 'Strong Match' ? 'bg-emerald-50 text-emerald-700' :
-                                      prog.matchStrength === 'Good Match' ? 'bg-blue-50 text-blue-700' :
-                                      'bg-amber-50 text-amber-700'
-                                    }`}>
-                                      <Star className="w-3 h-3 inline mr-0.5" />{prog.matchStrength}
-                                    </span>
-                                    <span className={`px-2 py-0.5 rounded-full ${
-                                      prog.difficulty === 'Low' ? 'bg-green-50 text-green-700' :
-                                      prog.difficulty === 'Moderate' ? 'bg-amber-50 text-amber-700' :
-                                      'bg-red-50 text-red-700'
-                                    }`}>
-                                      Difficulty: {prog.difficulty}
-                                    </span>
-                                    <span className="bg-slate-50 text-slate-600 px-2 py-0.5 rounded-full">{prog.deadline || prog.status}</span>
-                                  </div>
-
-                                  {prog.matchReason && (
-                                    <p className="text-xs text-slate-600 bg-slate-50 rounded-lg px-3 py-2">
-                                      {prog.matchReason}
-                                    </p>
-                                  )}
-
-                                  {prog.applicationSteps && prog.applicationSteps.length > 0 && (
-                                    <div>
-                                      <p className="text-xs font-semibold text-slate-500 uppercase tracking-wide mb-1">Next Steps</p>
-                                      <ul className="text-xs text-slate-600 space-y-1">
-                                        {prog.applicationSteps.slice(0, 3).map((step: string, j: number) => (
-                                          <li key={j} className="flex items-start gap-1.5">
-                                            <span className="text-emerald-500 mt-0.5">→</span>
-                                            <span>{step}</span>
-                                          </li>
-                                        ))}
-                                      </ul>
-                                    </div>
-                                  )}
-                                </div>
-                              ))}
-                            </div>
+                            {/* ═══════ ENTERPRISE REPORT RENDERER ═══════ */}
+                             {platformResult ? (
+                               <EnterpriseReportRenderer platform={platformResult} />
+                             ) : (
+                               /* Profile Summary Fallback */
+                               <div className="bg-slate-50 border border-slate-200 rounded-xl p-4">
+                                 <div className="grid grid-cols-2 gap-3 text-sm">
+                                   <div>
+                                     <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Region</p>
+                                     <p className="font-semibold text-slate-700">{reportData.profile?.provinceName || REGION_NAMES[data.province] || data.province}</p>
+                                   </div>
+                                   <div>
+                                     <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Industry</p>
+                                     <p className="font-semibold text-slate-700">{reportData.profile?.industryName || INDUSTRY_NAMES[data.industry] || data.industry}</p>
+                                   </div>
+                                   <div>
+                                     <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Programs Matched</p>
+                                     <p className="font-semibold text-emerald-700">{reportData.summary?.totalPrograms || grantCount}</p>
+                                   </div>
+                                   <div>
+                                     <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">Readiness Score</p>
+                                     <p className="font-semibold text-emerald-700">{reportData.summary?.readinessScore || 75}/100</p>
+                                   </div>
+                                 </div>
+                               </div>
+                             )}
 
                             {/* ═══════ FUNDING ACTION PLAN DASHBOARD ═══════ */}
                             <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-5 space-y-4">
@@ -3695,45 +3631,35 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 )}
                               </div>
 
-                              {/* Funding Potential Summary */}
-                              {hasStrategyUnlocked && (
+                              {/* Funding Potential Summary — reads from platformResult directly */}
+                              {hasStrategyUnlocked && platformResult && (
                                 <div className="bg-slate-50 border border-slate-150 rounded-xl p-4 sm:p-5 text-left animate-in fade-in duration-300">
                                   <h4 className="text-xs font-bold text-indigo-900 uppercase tracking-wide mb-3">Funding Potential Summary</h4>
                                   <div className="grid grid-cols-2 sm:grid-cols-5 gap-4 text-center sm:text-left">
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Potential Programs</span>
-                                      <span className="text-lg font-extrabold text-slate-800 mt-1 block">{reportData?.programs?.length || 0}</span>
+                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Evaluated</span>
+                                      <span className="text-lg font-extrabold text-slate-800 mt-1 block">{platformResult.executiveRecommendation.evaluatedCount}</span>
                                     </div>
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Priority Programs</span>
-                                      <span className="text-lg font-extrabold text-slate-800 mt-1 block">3</span>
+                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Recommended</span>
+                                      <span className="text-lg font-extrabold text-slate-800 mt-1 block">{platformResult.executiveRecommendation.recommendedCount}</span>
                                     </div>
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs col-span-2 sm:col-span-1">
                                       <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Est. Funding Range</span>
                                       <span className="text-sm font-extrabold text-emerald-700 mt-1 block">
-                                        ${(reportData?.summary?.estimatedTotalMin || 0).toLocaleString()} – ${(reportData?.summary?.estimatedTotalMax || 0).toLocaleString()}
+                                        ${platformResult.executiveRecommendation.totalEstimatedFundingMin.toLocaleString()} – ${platformResult.executiveRecommendation.totalEstimatedFundingMax.toLocaleString()}
                                       </span>
                                     </div>
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Est. Prep Time</span>
+                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Readiness</span>
                                       <span className="text-sm font-extrabold text-slate-800 mt-1 block">
-                                        {(() => {
-                                          const topProgs = reportData?.programs?.slice(0, 3) || [];
-                                          const highCount = topProgs.filter((p: any) => p.difficulty === 'High').length;
-                                          const lowCount = topProgs.filter((p: any) => p.difficulty === 'Low').length;
-                                          return highCount >= 2 ? '4-8 Weeks' : lowCount >= 2 ? '2-4 Weeks' : '3-6 Weeks';
-                                        })()}
+                                        {platformResult.executiveDashboard.overallReadiness}/100
                                       </span>
                                     </div>
                                     <div className="bg-white border border-slate-100 rounded-lg p-3 shadow-xs">
-                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Complexity</span>
+                                      <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Risks</span>
                                       <span className="text-sm font-extrabold text-slate-800 mt-1 block">
-                                        {(() => {
-                                          const topProgs = reportData?.programs?.slice(0, 3) || [];
-                                          const highCount = topProgs.filter((p: any) => p.difficulty === 'High').length;
-                                          const lowCount = topProgs.filter((p: any) => p.difficulty === 'Low').length;
-                                          return highCount >= 2 ? 'High' : lowCount >= 2 ? 'Low' : 'Medium';
-                                        })()}
+                                        {platformResult.executiveDashboard.criticalRisks}
                                       </span>
                                     </div>
                                   </div>
