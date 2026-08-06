@@ -14,7 +14,7 @@ import {
   ExternalLink, Star, BarChart3, ListChecks, AlertCircle, Info, Lock
 } from "lucide-react"
 import { useState } from "react"
-import { getTierCapabilities } from "@/lib/products/entitlements"
+import { getTierCapabilities } from "@/lib/products/tier-capabilities"
 
 // ═══════════════════════════════════════════════════════════════════
 // PRODUCTION ASSERTION
