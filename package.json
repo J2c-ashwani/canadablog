@@ -3,10 +3,11 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "build": "npx tsx scripts/verify-golden-master.ts && npx tsx scripts/verify-architecture-guard.ts && npx tsx scripts/verify-negative-scenarios.ts && npx tsx scripts/smoke-test-production-pipeline.ts && tsx scripts/verify-production-secrets.ts && next build",
+    "build": "npx tsx scripts/verify-golden-master.ts && npx tsx scripts/verify-architecture-guard.ts && npx tsx scripts/verify-negative-scenarios.ts && npx tsx scripts/verify-pdf-qa-stress-suite.ts && npx tsx scripts/smoke-test-production-pipeline.ts && tsx scripts/verify-production-secrets.ts && next build",
     "test:golden-master": "npx tsx scripts/verify-golden-master.ts",
     "check:architecture": "npx tsx scripts/verify-architecture-guard.ts",
     "test:negative": "npx tsx scripts/verify-negative-scenarios.ts",
+    "test:pdf-qa": "npx tsx scripts/verify-pdf-qa-stress-suite.ts",
     "test:smoke": "npx tsx scripts/smoke-test-production-pipeline.ts",
     "dev": "next dev",
     "lint": "next lint",
