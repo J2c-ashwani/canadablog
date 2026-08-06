@@ -4,7 +4,7 @@ import { useSearchParams } from "next/navigation"
 import { useEffect, useState, Suspense } from "react"
 import {
   CheckCircle, Loader2, Star, FileText, TrendingUp,
-  ArrowRight, AlertCircle, BarChart3, Lock, Sparkles
+  ArrowRight, AlertCircle, BarChart3, Lock, Sparkles, Shield
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
