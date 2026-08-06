@@ -300,13 +300,18 @@ const nextConfig = {
       },
     ];
   },
-  async rewrites() {
-    return [
-      {
-        source: '/lead-magnets/:filename*.pdf',
-        destination: '/lead-magnets/ultimate-grant-guide-2026.pdf',
-      },
-    ];
+  webpack: (config, { isServer }) => {
+    if (!isServer) {
+      config.resolve.fallback = {
+        ...config.resolve.fallback,
+        fs: false,
+        net: false,
+        tls: false,
+        child_process: false,
+        dns: false,
+      };
+    }
+    return config;
   },
 }
 
