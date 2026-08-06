@@ -3,7 +3,7 @@
 import jsPDF from 'jspdf';
 import { FundingMatchReport } from './report-generator';
 import { FundingRecommendationResult } from '@/lib/engine/types';
-import { getTierCapabilities } from '@/lib/products/entitlements';
+import { getTierCapabilities } from '@/lib/products/tier-capabilities';
 
 
 /**

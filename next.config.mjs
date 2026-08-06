@@ -309,6 +309,14 @@ const nextConfig = {
         tls: false,
         child_process: false,
         dns: false,
+        http2: false,
+        http: false,
+        https: false,
+        stream: false,
+        crypto: false,
+        os: false,
+        path: false,
+        zlib: false,
       };
     }
     return config;
