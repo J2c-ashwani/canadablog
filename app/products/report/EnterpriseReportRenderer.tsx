@@ -11,9 +11,10 @@ import type {
 import {
   CheckCircle, AlertTriangle, XCircle, Shield, Clock,
   TrendingUp, Target, FileText, Zap, ChevronDown, ChevronUp,
-  ExternalLink, Star, BarChart3, ListChecks, AlertCircle, Info
+  ExternalLink, Star, BarChart3, ListChecks, AlertCircle, Info, Lock
 } from "lucide-react"
 import { useState } from "react"
+import { getTierCapabilities } from "@/lib/products/entitlements"
 
 // ═══════════════════════════════════════════════════════════════════
 // PRODUCTION ASSERTION
@@ -48,7 +49,7 @@ function ExecutiveDashboardSection({ dashboard }: { dashboard: ExecutiveDashboar
             </div>
             <div>
               <h2 className="text-base font-extrabold text-white tracking-tight">Executive Priority & Decision Dashboard</h2>
-              <p className="text-[11px] text-slate-400 font-medium">Deterministic evaluation summary & immediate funding pipeline</p>
+              <p className="text-[11px] text-emerald-400 font-semibold">Decision Question: Where should I focus my funding efforts first?</p>
             </div>
           </div>
           <span className="hidden sm:inline-flex items-center gap-1.5 bg-slate-800/80 border border-slate-700 text-slate-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
@@ -165,9 +166,12 @@ function ExecutiveRecommendationSummary({ platform }: { platform: FundingRecomme
 
       {/* How We Chose These Programs — Why NOT the Other 114 Breakdown */}
       <div className="bg-slate-900 text-white rounded-xl p-4 sm:p-5 border border-slate-800 shadow-sm">
-        <div className="flex items-center gap-2 mb-3">
-          <ListChecks className="w-4 h-4 text-emerald-400" />
-          <h3 className="font-bold text-xs sm:text-sm text-white tracking-wide">How We Chose These Programs (117 Opportunities Reviewed)</h3>
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-1 mb-3">
+          <div className="flex items-center gap-2">
+            <ListChecks className="w-4 h-4 text-emerald-400" />
+            <h3 className="font-bold text-xs sm:text-sm text-white tracking-wide">How We Chose These Programs (117 Opportunities Reviewed)</h3>
+          </div>
+          <span className="text-[10px] text-slate-400 font-medium">Decision Question: Why were non-matching programs excluded?</span>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
           <div className="bg-slate-800/60 p-2.5 sm:p-3 rounded-lg border border-emerald-500/30">
@@ -737,55 +741,146 @@ function MilestoneRoadmapSection({ milestones }: { milestones: FundingRecommenda
 }
 
 // ═══════════════════════════════════════════════════════════════════
+// APPROVAL KILLERS — AWARENESS-ONLY PREVIEW (all tiers $19+)
+// ═══════════════════════════════════════════════════════════════════
+function ApprovalKillersAwarenessSection({ killers }: { killers: ApprovalKiller[] }) {
+  if (!killers || killers.length === 0) return null;
+
+  return (
+    <div className="bg-white border border-slate-200 rounded-xl shadow-sm p-4 sm:p-5 space-y-3">
+      <div className="flex items-center justify-between gap-2 flex-wrap">
+        <div className="flex items-center gap-2">
+          <AlertTriangle className="w-5 h-5 text-amber-500" />
+          <h2 className="text-base font-bold text-slate-800">Filing Risk Alerts</h2>
+        </div>
+        <span className="bg-amber-50 border border-amber-200 text-amber-700 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">Awareness Summary</span>
+      </div>
+      <p className="text-xs text-slate-500 leading-relaxed">
+        Based on your profile, the following compliance rules are the most common reasons applications are rejected. Address each before submitting.
+      </p>
+      <div className="space-y-2">
+        {killers.map((killer, i) => {
+          const severityStyles = killer.severity === 'HIGH RISK'
+            ? 'bg-red-100 text-red-700 border-red-200'
+            : killer.severity === 'MEDIUM RISK'
+              ? 'bg-amber-100 text-amber-700 border-amber-200'
+              : 'bg-green-100 text-green-700 border-green-200';
+
+          return (
+            <div key={i} className="border border-slate-100 rounded-lg p-3 bg-slate-50/50">
+              <div className="flex items-center gap-2 flex-wrap">
+                <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${severityStyles}`}>
+                  {killer.severity}
+                </span>
+                <h4 className="text-sm font-bold text-slate-800">{killer.riskTitle}</h4>
+              </div>
+              <p className="text-xs text-slate-500 mt-1.5 leading-relaxed">{killer.description}</p>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
+// ═══════════════════════════════════════════════════════════════════
 // MAIN ENTERPRISE REPORT RENDERER
 // ═══════════════════════════════════════════════════════════════════
 export function EnterpriseReportRenderer({
   platform,
+  productId,
 }: {
   platform: FundingRecommendationResult;
+  productId?: string;
 }) {
   // PRODUCTION ASSERTION — this is the guard the CEO requested
   assertEnterprisePlatform(platform);
 
+  // Machine-readable capability flags from centralized entitlement config
+  const caps = getTierCapabilities(productId || 'funding-match-report');
+
   return (
     <div className="space-y-5">
-      {/* Section 1: Executive Dashboard */}
-      <ExecutiveDashboardSection dashboard={platform.executiveDashboard} />
 
-      {/* Section 2: Executive Recommendation Summary (replaces legacy summary banner) */}
-      <ExecutiveRecommendationSummary platform={platform} />
-
-      {/* Section 3: Primary Recommendation Cards (replaces legacy card rendering) */}
-      <div className="space-y-4">
-        <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
-          <Target className="w-5 h-5 text-emerald-600" />
-          Recommended Programs ({platform.primaryRecommendations.length})
-        </h2>
-        {platform.primaryRecommendations.map((rec, i) => (
-          <RecommendationCard key={rec.programId || i} rec={rec} rank={i + 1} />
-        ))}
+      {/* Tier capability badge — outcome-driven, no price shown */}
+      <div className="flex items-center gap-3 pb-1">
+        <div className="flex items-center gap-2 bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1.5 rounded-full">
+          <Shield className="w-3 h-3 text-emerald-600" />
+          {caps.tierName}
+        </div>
+        <p className="text-xs text-slate-400 font-medium hidden sm:block">
+          {caps.questionAnswered}
+        </p>
       </div>
 
-      {/* Section 4: Skipped Programs (NEW — transparent exclusion) */}
-      <SkippedProgramsSection programs={platform.skippedPrograms} />
+      {/* Section 1: Executive Dashboard (all tiers) */}
+      {caps.canViewDashboard && (
+        <ExecutiveDashboardSection dashboard={platform.executiveDashboard} />
+      )}
 
-      {/* Section 5: Approval Killers (NEW) */}
-      <ApprovalKillersSection killers={platform.approvalKillers} />
+      {/* Section 2: Executive Recommendation Summary (all tiers) */}
+      <ExecutiveRecommendationSummary platform={platform} />
 
-      {/* Section 6: Document Readiness Matrix (NEW) */}
-      <DocumentReadinessSection matrix={platform.documentReadinessMatrix} />
+      {/* Section 3: Primary Recommendation Cards (all tiers) */}
+      {caps.canViewRecommendations && (
+        <div className="space-y-4">
+          <div className="flex items-center justify-between gap-2 flex-wrap border-b border-slate-200 pb-2">
+            <h2 className="text-lg font-bold text-slate-800 flex items-center gap-2">
+              <Target className="w-5 h-5 text-emerald-600" />
+              Recommended Programs ({platform.primaryRecommendations.length})
+            </h2>
+            <span className="text-xs text-indigo-600 font-semibold">Decision Question: Which specific programs match my stage and region?</span>
+          </div>
+          {platform.primaryRecommendations.map((rec, i) => (
+            <RecommendationCard key={rec.programId || i} rec={rec} rank={i + 1} />
+          ))}
+          {/* Rule 5: Transition Bridge */}
+          <div className="bg-slate-50 border border-slate-200 rounded-lg p-3 text-xs text-slate-600 flex items-center justify-between">
+            <span>Next Phase: Review transparent exclusion logs to verify why other programs were filtered out.</span>
+            <ChevronDown className="w-4 h-4 text-slate-400 shrink-0" />
+          </div>
+        </div>
+      )}
 
-      {/* Section 7: Funding Timeline (NEW) */}
-      <FundingTimelineSection timeline={platform.fundingTimeline} />
+      {/* Section 4: Skipped Programs (all tiers — transparent exclusion) */}
+      {caps.canViewExclusionsSummary && (
+        <SkippedProgramsSection programs={platform.skippedPrograms} />
+      )}
 
-      {/* Section 8: Monday Morning Checklist (NEW) */}
-      <MondayMorningChecklist tasks={platform.next30DaysTasks} />
+      {/* Section 5: Filing Risk Alerts — Progressive Capability Expansion
+          • All tiers ($19+): Awareness — risk titles + descriptions only
+          • $49+ tiers: Full mitigations via ApprovalKillersSection below */}
+      {caps.canViewRiskAlerts && !caps.canViewRiskMitigations && (
+        <ApprovalKillersAwarenessSection killers={platform.approvalKillers} />
+      )}
+      {caps.canViewRiskMitigations && (
+        <ApprovalKillersSection killers={platform.approvalKillers} />
+      )}
 
-      {/* Section 9: Dependency Graphs (NEW) */}
-      <DependencyGraphsSection graphs={platform.dependencyGraphs} />
+      {/* Section 6: Document Readiness Matrix ($49+) */}
+      {caps.canViewDocumentMatrix && (
+        <DocumentReadinessSection matrix={platform.documentReadinessMatrix} />
+      )}
 
-      {/* Section 10: Milestone Roadmap (NEW) */}
-      <MilestoneRoadmapSection milestones={platform.milestoneRoadmap} />
+      {/* Section 7: Funding Timeline ($49+) */}
+      {caps.canViewPreparationChecklist && (
+        <FundingTimelineSection timeline={platform.fundingTimeline} />
+      )}
+
+      {/* Section 8: Monday Morning Checklist ($49+) */}
+      {caps.canViewPreparationChecklist && (
+        <MondayMorningChecklist tasks={platform.next30DaysTasks} />
+      )}
+
+      {/* Section 9: Application Dependencies ($49+) */}
+      {caps.canViewDependencies && (
+        <DependencyGraphsSection graphs={platform.dependencyGraphs} />
+      )}
+
+      {/* Section 10: Milestone Roadmap ($79 Executive Funding Strategy Dossier only) */}
+      {caps.canViewMilestoneRoadmap && (
+        <MilestoneRoadmapSection milestones={platform.milestoneRoadmap} />
+      )}
     </div>
   );
 }

@@ -464,29 +464,6 @@ function ReportContent() {
         </div>
       </div>
 
-      {/* Done-For-You Strategic Consultation review CTA */}
-      <div className="bg-gradient-to-r from-emerald-600 via-indigo-600 to-slate-900 p-0.5 rounded-2xl shadow-md my-5 animate-in fade-in duration-300">
-        <div className="bg-white rounded-[14px] p-5 sm:p-6 text-left space-y-4">
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="space-y-1.5 max-w-xl">
-              <span className="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
-                Done-For-You Advisory Services
-              </span>
-              <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
-                Want Our Funding Specialists to Package & File Your Grant Applications?
-              </h3>
-              <p className="text-xs text-slate-600 leading-relaxed font-medium">
-                Eliminate compliance risks and non-contemporaneous documentation penalties. Book a 15-minute Strategy Consultation to evaluate full-service application preparation and maximize non-dilutive capital recovery.
-              </p>
-            </div>
-            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shrink-0 self-start sm:self-center px-4 py-2.5 rounded-xl shadow-sm" asChild>
-              <Link href="/consultation?source=report-dfy-hook">
-                Book Consultation Call &rarr;
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </div>
 
       {/* Unlocked Toolkit Add-on */}
       {hasToolkitUnlocked && (
@@ -687,7 +664,10 @@ function ReportContent() {
       {/* ═══════ ENTERPRISE REPORT RENDERER ═══════ */}
       {/* This replaces the legacy summary banner + program cards with the full enterprise output */}
       {platformResult ? (
-        <EnterpriseReportRenderer platform={platformResult} />
+        <EnterpriseReportRenderer
+          platform={platformResult}
+          productId={purchaseInfo?.productId}
+        />
       ) : (
         <div className="bg-red-50 border border-red-200 rounded-xl p-5 text-center">
           <AlertCircle className="w-8 h-8 text-red-500 mx-auto mb-2" />
@@ -695,6 +675,32 @@ function ReportContent() {
           <p className="text-xs text-red-600 mt-1">Platform result is missing. Please contact support at hello@fsidigital.ca</p>
         </div>
       )}
+
+      {/* ═══════ DONE-FOR-YOU CTA — Rule 6: Trust Before Upsell ═══════
+           Positioned AFTER report delivery so the founder has already
+           received full value before seeing a service offer. */}
+      <div className="bg-gradient-to-r from-emerald-600 via-indigo-600 to-slate-900 p-0.5 rounded-2xl shadow-md animate-in fade-in duration-500">
+        <div className="bg-white rounded-[14px] p-5 sm:p-6 text-left space-y-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div className="space-y-1.5 max-w-xl">
+              <span className="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
+                Full-Service Advisory
+              </span>
+              <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
+                Want FSI Digital to Handle Your Application Filing?
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                Our specialists handle your entire application lifecycle — proposal writing, documentation packaging, eligibility compliance, and program liaison. Book a free 15-minute discovery call to see if full-service filing is right for your situation.
+              </p>
+            </div>
+            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shrink-0 self-start sm:self-center px-4 py-2.5 rounded-xl shadow-sm" asChild>
+              <Link href="/consultation?source=report-dfy-hook">
+                Book a Free Discovery Call &rarr;
+              </Link>
+            </Button>
+          </div>
+        </div>
+      </div>
 
       {/* ═══════ FUNDING ACTION PLAN DASHBOARD ═══════ */}
       <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden p-5 space-y-4">
@@ -1018,9 +1024,9 @@ function ReportContent() {
           const netPrice = 199 - discount;
           return (
             <>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Need Help Applying?</h3>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">Get a Dedicated Advisor to Review Your Applications</h3>
               <p className="text-sm text-slate-500 mb-5 max-w-lg mx-auto">
-                Our funding advisors can help you prepare applications, maximize eligibility, and navigate the process.
+                Our funding advisors review your specific profile, confirm eligibility before you invest time applying, and give you a clear action plan.
                 <strong className="block mt-3 text-emerald-700 font-semibold bg-emerald-50 border border-emerald-100 rounded-lg p-3">
                   Your ${discount} fee is credited back on booking — verification audit is only ${netPrice}
                 </strong>

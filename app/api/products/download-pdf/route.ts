@@ -90,7 +90,7 @@ export async function GET(req: NextRequest) {
     }
 
     // 6. Generate the branded vector PDF
-    const doc = generateFundingMatchReportPDF(report, purchase.name, strategyData);
+    const doc = generateFundingMatchReportPDF(report, purchase.name, strategyData, purchase.productId);
     
     // 7. Output PDF as server buffer stream
     const pdfBuffer = Buffer.from(doc.output('arraybuffer'));

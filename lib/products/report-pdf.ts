@@ -3,6 +3,8 @@
 import jsPDF from 'jspdf';
 import { FundingMatchReport } from './report-generator';
 import { FundingRecommendationResult } from '@/lib/engine/types';
+import { getTierCapabilities } from '@/lib/products/entitlements';
+
 
 /**
  * Stage 5: Enterprise Presentation Engine — Decoupled Pure Vector PDF Renderer v3
@@ -37,8 +39,11 @@ function formatStarsForPdf(str?: string): string {
 export function generateFundingMatchReportPDF(
   report: FundingMatchReport,
   buyerName: string,
-  strategyData?: any
+  strategyData?: any,
+  productId?: string
 ): jsPDF {
+  const caps = getTierCapabilities(productId || (strategyData ? 'funding-roadmap' : 'funding-match-report'));
+
   const doc = new jsPDF({
     orientation: 'portrait',
     unit: 'mm',
@@ -560,7 +565,7 @@ export function generateFundingMatchReportPDF(
   // PAGE 4+: MILESTONE ROADMAP ($49 / $79 UNLOCKED)
   // ═══════════════════════════════════════════════════
 
-  if (strategyData) {
+  if (strategyData || caps.canViewMilestoneRoadmap) {
     currentPageNum++;
     doc.addPage();
     drawPageDecorations(doc, currentPageNum);
