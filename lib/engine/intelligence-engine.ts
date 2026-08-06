@@ -89,7 +89,7 @@ export function normalizeProvinceInput(raw: string): string {
   if (s.includes('saskatchewan') || s === 'sk') return 'sk';
   if (s.includes('new brunswick') || s === 'nb') return 'nb';
   if (s.includes('newfoundland') || s === 'nl') return 'nl';
-  if (s.includes('prince edward') || s === 'pe') return 'pe';
+  if (s.includes('prince edward') || s === 'pe' || s === 'pei' || s.includes('p.e.i')) return 'pe';
   if (s.includes('territor')) return 'territories';
   if (s.includes('california') || s === 'ca') return 'ca';
   if (s.includes('texas') || s === 'tx') return 'tx';
@@ -106,6 +106,7 @@ export function normalizeIndustryInput(raw: string): string {
   if (s.includes('clean') || s.includes('energy') || s.includes('solar') || s.includes('green')) return 'energy';
   if (s.includes('retail') || s.includes('commerce') || s.includes('store')) return 'retail';
   if (s.includes('service') || s.includes('consult')) return 'services';
+  if (s.includes('other') || s.includes('general')) return 'other';
   return 'technology';
 }
 
