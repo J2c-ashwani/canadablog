@@ -35,11 +35,20 @@ function verifyProductionSecrets() {
   });
 
   if (missing.length > 0) {
-    console.warn('\n⚠️  WARNING: Missing some secrets in deployment environment:');
-    missing.forEach((secret) => {
-      console.warn(`   - ${secret}`);
-    });
-    console.warn('Continuing build with available fallbacks.\n');
+    if (isStrictDeployment) {
+      console.error('\n🚨 BUILD FAILED: Missing required production secrets:');
+      missing.forEach((secret) => {
+        console.error(`   - ${secret}`);
+      });
+      console.error('\nPlease configure these environment variables in your hosting environment (e.g. Vercel dashboard).\n');
+      process.exit(1);
+    } else {
+      console.warn('\n⚠️  WARNING: Missing some secrets required for production deployment:');
+      missing.forEach((secret) => {
+        console.warn(`   - ${secret}`);
+      });
+      console.warn('Continuing build since this is a local build step.\n');
+    }
   } else {
     console.log('✅ All production secrets are configured correctly!\n');
   }
