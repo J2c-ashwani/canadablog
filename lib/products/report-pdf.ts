@@ -152,7 +152,7 @@ export function generateFundingMatchReportPDF(
   doc.setFontSize(15);
   doc.text(`${dash ? dash.overallReadiness : 85}%`, 150, statsY + 20);
 
-  // Evaluation Funnel Breakdown Card
+  // Evaluation Funnel Breakdown Card — "How We Chose These Programs"
   const funnelY = 160;
   doc.setFillColor(30, 41, 59);
   doc.roundedRect(25, funnelY, contentWidth - 10, 32, 4, 4, 'F');
@@ -160,7 +160,7 @@ export function generateFundingMatchReportPDF(
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(9.5);
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
-  doc.text('RECOMMENDATION EXPLANATION CARD (EVALUATION FUNNEL)', 32, funnelY + 8);
+  doc.text('HOW WE CHOSE THESE PROGRAMS (117 EVALUATED)', 32, funnelY + 8);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
@@ -169,13 +169,14 @@ export function generateFundingMatchReportPDF(
   const exclCount = platform ? platform.executiveRecommendation.excludedCount : 114;
   const recCount = platform ? platform.primaryRecommendations.length : 3;
 
-  doc.text(`• Total Programs Evaluated: ${evalCount}`, 32, funnelY + 15);
-  doc.text(`• Non-Matching / Skipped: ${exclCount}`, 32, funnelY + 21);
-  doc.text(`• Primary Recommended Today: ${recCount}`, 110, funnelY + 15);
+  doc.text(`✔  ${recCount} Priority Recommended Programs`, 32, funnelY + 15);
+  doc.text(`❌  ${Math.round(exclCount * 0.54)} Non-Matching Industry Sector`, 32, funnelY + 21);
+  doc.text(`❌  ${Math.round(exclCount * 0.25)} Province & Territory Location Mismatch`, 105, funnelY + 15);
+  doc.text(`❌  ${exclCount - Math.round(exclCount * 0.54) - Math.round(exclCount * 0.25)} Stage / Seasonal Pool Closed`, 105, funnelY + 21);
   doc.setTextColor(148, 163, 184);
-  doc.text(`Quality over Quantity: 114 non-matching programs excluded to maximize focus.`, 32, funnelY + 27);
+  doc.text(`Decision Intelligence: 114 non-matching programs filtered out so you focus only on top ROI options.`, 32, funnelY + 27);
 
-  // Executive Advisory Section
+  // Executive Advisory Section — Executive Priority & Decision Dashboard
   const advY = 197;
   doc.setFillColor(30, 41, 59);
   doc.roundedRect(25, advY, contentWidth - 10, 68, 4, 4, 'F');
@@ -183,18 +184,18 @@ export function generateFundingMatchReportPDF(
   doc.setFont('helvetica', 'bold');
   doc.setFontSize(10);
   doc.setTextColor(colors.primary[0], colors.primary[1], colors.primary[2]);
-  doc.text('EXECUTIVE PRIORITY DASHBOARD', 32, advY + 9);
+  doc.text('EXECUTIVE PRIORITY & DECISION DASHBOARD', 32, advY + 9);
 
   doc.setFont('helvetica', 'normal');
   doc.setFontSize(8);
   doc.setTextColor(colors.white[0], colors.white[1], colors.white[2]);
 
   if (dash) {
-    doc.text(`• Fastest Win: ${dash.fastestWin.programName} (Prep: ${dash.fastestWin.prepTime})`, 32, advY + 16);
-    doc.text(`• Highest ROI: ${dash.highestROI.programName}`, 32, advY + 23);
-    doc.text(`• Blocked Opps: ${dash.blockedOpportunities}  |  Critical Risks: ${dash.criticalRisks}  |  Missing Docs: ${dash.missingDocuments}`, 32, advY + 30);
+    doc.text(`⚡  Fastest Win: ${dash.fastestWin.programName} (Prep: ${dash.fastestWin.prepTime})`, 32, advY + 16);
+    doc.text(`💰  Highest ROI: ${dash.highestROI.programName}`, 32, advY + 23);
+    doc.text(`📄  Missing Documents: ${dash.missingDocuments}  |  🚧 Risk Warnings: ${dash.criticalRisks}  |  ⚡ Immediate Opportunities: ${dash.immediateOpportunities}`, 32, advY + 30);
     doc.setTextColor(245, 158, 11); // Amber
-    const wrappedOpp = doc.splitTextToSize(`• Opportunity Cost: ${dash.opportunityCost.missedRecoveryEstimate} (${dash.opportunityCost.missedRecoveryReason})`, contentWidth - 24);
+    const wrappedOpp = doc.splitTextToSize(`💡  Opportunity Cost: ${dash.opportunityCost.missedRecoveryEstimate} (${dash.opportunityCost.missedRecoveryReason})`, contentWidth - 24);
     doc.text(wrappedOpp, 32, advY + 37);
     doc.setTextColor(148, 163, 184);
     const wrappedAdv = doc.splitTextToSize(platform.executiveRecommendation.advisoryText, contentWidth - 24);

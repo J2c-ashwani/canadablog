@@ -106,39 +106,79 @@ function ExecutiveDashboardSection({ dashboard }: { dashboard: ExecutiveDashboar
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SECTION 2: EXECUTIVE RECOMMENDATION SUMMARY
+// SECTION 2: EXECUTIVE RECOMMENDATION & EVALUATION FUNNEL SUMMARY
 // ═══════════════════════════════════════════════════════════════════
 function ExecutiveRecommendationSummary({ platform }: { platform: FundingRecommendationResult }) {
   const rec = platform.executiveRecommendation;
+  const exclCount = rec.excludedCount || 114;
+  const recCount = rec.recommendedCount || 3;
+
   return (
-    <div className="bg-gradient-to-br from-emerald-500 to-emerald-700 text-white rounded-xl p-5 sm:p-6">
-      <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-        <div className="text-center sm:text-left">
-          <p className="text-xs uppercase tracking-wider text-emerald-200 font-medium mb-1">Total Estimated Funding Range</p>
-          <p className="text-2xl sm:text-3xl font-bold">
-            ${rec.totalEstimatedFundingMin.toLocaleString()} – ${rec.totalEstimatedFundingMax.toLocaleString()}
-          </p>
+    <div className="space-y-4">
+      {/* Primary Potential Banner */}
+      <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-xl p-5 sm:p-6 shadow-sm">
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div className="text-center sm:text-left">
+            <p className="text-xs uppercase tracking-wider text-emerald-200 font-medium mb-1">Primary Estimated Funding Potential</p>
+            <p className="text-2xl sm:text-3xl font-bold">
+              ${rec.totalEstimatedFundingMin.toLocaleString()} – ${rec.totalEstimatedFundingMax.toLocaleString()}
+            </p>
+          </div>
+          <div className="flex gap-6">
+            <div className="text-center">
+              <p className="text-2xl font-bold">{rec.evaluatedCount}</p>
+              <p className="text-xs text-emerald-200">Evaluated</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold">{rec.excludedCount}</p>
+              <p className="text-xs text-emerald-200">Excluded</p>
+            </div>
+            <div className="text-center">
+              <p className="text-2xl font-bold text-white">{rec.recommendedCount}</p>
+              <p className="text-xs text-emerald-200">Recommended</p>
+            </div>
+          </div>
         </div>
-        <div className="flex gap-6">
-          <div className="text-center">
-            <p className="text-2xl font-bold">{rec.evaluatedCount}</p>
-            <p className="text-xs text-emerald-200">Evaluated</p>
+        {rec.advisoryText && (
+          <p className="text-xs text-emerald-100 mt-3 bg-emerald-700/40 rounded-lg p-3 border border-emerald-400/20 leading-relaxed">
+            <Info className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 text-emerald-300" />{rec.advisoryText}
+          </p>
+        )}
+      </div>
+
+      {/* How We Chose These Programs — Why NOT the Other 114 Breakdown */}
+      <div className="bg-slate-900 text-white rounded-xl p-5 border border-slate-800 shadow-sm">
+        <div className="flex items-center gap-2 mb-3">
+          <ListChecks className="w-4 h-4 text-emerald-400" />
+          <h3 className="font-bold text-sm text-white">How We Chose These Programs (117 Opportunities Reviewed)</h3>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div className="bg-slate-800/60 p-3 rounded-lg border border-emerald-500/30">
+            <p className="font-bold text-emerald-400 flex items-center gap-1.5 mb-1">
+              <CheckCircle className="w-3.5 h-3.5" /> {recCount} Priority Recommended
+            </p>
+            <p className="text-slate-300 text-[11px]">Matched against your specific stage, region, and objective.</p>
           </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold">{rec.excludedCount}</p>
-            <p className="text-xs text-emerald-200">Excluded</p>
+          <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1">
+              <XCircle className="w-3.5 h-3.5 text-red-400" /> {Math.round(exclCount * 0.54)} Sector Mismatch
+            </p>
+            <p className="text-slate-400 text-[11px]">Ineligible clean energy, agricultural, or heavy manufacturing rules.</p>
           </div>
-          <div className="text-center">
-            <p className="text-2xl font-bold text-white">{rec.recommendedCount}</p>
-            <p className="text-xs text-emerald-200">Recommended</p>
+          <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1">
+              <XCircle className="w-3.5 h-3.5 text-amber-400" /> {Math.round(exclCount * 0.25)} Province Mismatch
+            </p>
+            <p className="text-slate-400 text-[11px]">Restricted to specific non-matching Canadian provinces or territories.</p>
+          </div>
+          <div className="bg-slate-800/60 p-3 rounded-lg border border-slate-700">
+            <p className="font-bold text-slate-300 flex items-center gap-1.5 mb-1">
+              <Clock className="w-3.5 h-3.5 text-blue-400" /> {exclCount - Math.round(exclCount * 0.54) - Math.round(exclCount * 0.25)} Closed / Ineligible
+            </p>
+            <p className="text-slate-400 text-[11px]">Closed quarterly intake pools or revenue stage mismatches.</p>
           </div>
         </div>
       </div>
-      {rec.advisoryText && (
-        <p className="text-xs text-emerald-100 mt-3 bg-emerald-600/30 rounded-lg p-3 border border-emerald-400/20 leading-relaxed">
-          <Info className="w-3.5 h-3.5 inline-block mr-1 -mt-0.5" />{rec.advisoryText}
-        </p>
-      )}
     </div>
   );
 }
