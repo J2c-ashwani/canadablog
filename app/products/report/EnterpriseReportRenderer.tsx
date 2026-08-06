@@ -18,7 +18,7 @@ import { useState } from "react"
 // ═══════════════════════════════════════════════════════════════════
 // PRODUCTION ASSERTION
 // ═══════════════════════════════════════════════════════════════════
-function assertEnterprisePlatform(platform: FundingRecommendationResult | null | undefined): asserts platform is FundingRecommendationResult {
+export function assertEnterprisePlatform(platform: FundingRecommendationResult | null | undefined): asserts platform is FundingRecommendationResult {
   if (!platform) {
     throw new Error(
       "EnterpriseReportRenderer requires FundingRecommendationResult. " +
