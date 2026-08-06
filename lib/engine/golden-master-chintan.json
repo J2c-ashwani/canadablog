@@ -1,0 +1,1968 @@
+{
+  "generatedAt": "2026-08-01T00:00:00.000Z",
+  "profile": {
+    "province": "on",
+    "provinceName": "Ontario",
+    "industry": "technology",
+    "industryName": "Technology & Software",
+    "revenue": "pre-revenue",
+    "revenueName": "Pre-revenue / Early-Stage Startup",
+    "goal": "research",
+    "goalName": "R&D / Commercialization of IP",
+    "businessObjective": "Launch MVP"
+  },
+  "snapshot": {
+    "snapshotId": "SNP-2026-337EAAE6",
+    "generatedTimestamp": "2026-08-01T00:00:00.000Z",
+    "metadataVersion": "2026.08.01",
+    "scoringVersion": "v3.2",
+    "ruleEngineVersion": "v5.1",
+    "recommendationIntegrityHash": "sha256-337eaae6337eaae6",
+    "inputProfileSnapshot": {
+      "province": "on",
+      "industry": "technology",
+      "revenue": "pre-revenue",
+      "goal": "research",
+      "businessObjective": "Launch MVP"
+    }
+  },
+  "executiveDashboard": {
+    "overallReadiness": 85,
+    "immediateOpportunities": 3,
+    "blockedOpportunities": 3,
+    "criticalRisks": 2,
+    "missingDocuments": 4,
+    "fastestWin": {
+      "programName": "Scientific Research and Experimental Development (SR&ED)",
+      "prepTime": "1–2 weeks",
+      "decisionWindow": "Annual tax filing"
+    },
+    "highestROI": {
+      "programName": "Scientific Research and Experimental Development (SR&ED)",
+      "reason": "Provides direct tax credit funding with 88% Profile Fit"
+    },
+    "opportunityCost": {
+      "missedRecoveryEstimate": "$42,000 per year",
+      "missedRecoveryReason": "Calculated: Assumes 1 T4 software developer @ $120,000 salary × 35% federal SR&ED tax credit recovery",
+      "unlockedBySingleAction": "Hiring 1 full-time T4 software developer unlocks IRAP matching + Mitacs co-op subsidies."
+    }
+  },
+  "executiveRecommendation": {
+    "evaluatedCount": 117,
+    "excludedCount": 114,
+    "conditionalCount": 0,
+    "recommendedCount": 3,
+    "totalEstimatedFundingMin": 0,
+    "totalEstimatedFundingMax": 49500,
+    "advisoryText": "After evaluating 117 funding opportunities across Ontario, I recommend focusing on 3 primary opportunities that best match your current pre-revenue / early-stage startup business stage. Pursuing every available grant risks diluting execution quality. Excluded: 114 programs; Conditional: 0 programs."
+  },
+  "primaryRecommendations": [
+    {
+      "programId": "sred-tax-credit",
+      "programName": "Scientific Research and Experimental Development (SR&ED)",
+      "agency": "Canada Revenue Agency (CRA)",
+      "fundingAmount": "Up to 64% of R&D salaries refunded",
+      "fundingType": "Tax Credit",
+      "difficulty": "Moderate",
+      "recommendationType": "Immediate Opportunity",
+      "recommendationConfidence": "88% Profile Fit",
+      "dataFreshness": "Verified Aug 2026",
+      "readinessStars": "★★★★★",
+      "evidenceRating": {
+        "governmentAuthority": "★★★★★",
+        "eligibilityFit": "★★★★★",
+        "documentationCompleteness": "★★★★☆"
+      },
+      "commercialScore": 96,
+      "scoreBreakdown": {
+        "industryFit": 25,
+        "objectiveFit": 20,
+        "stageFit": 10,
+        "provinceMatch": 8,
+        "statusAccessibility": 10,
+        "commercialRoiValue": 18,
+        "totalScore": 96
+      },
+      "historicalEffectiveness": "High",
+      "sequenceTier": "Apply First",
+      "preparationTime": "1–2 weeks",
+      "reviewTime": "Annual tax filing",
+      "documentsRequiredCount": 3,
+      "whyRecommended": "Highly tailored fit for your technology & software business focusing on launch mvp. Canada's largest tax incentive for businesses conducting scientific research or experimental development.",
+      "whyNumberOne": [
+        "✓ Highest approval probability for your business stage",
+        "✓ Direct alignment with immediate operational objective",
+        "✓ Non-dilutive capital with fast execution timeline"
+      ],
+      "whyRankedHere": "Ranked #1 (Apply First) because it delivers the highest commercial ROI, fastest time-to-money, and direct alignment with your immediate operational objective.",
+      "typicalRejectionReason": "Common rejection stems from incurring project expenses prior to formal registration or non-contemporaneous documentation.",
+      "howToImproveSuccess": [
+        "Do not wait until tax season to document. CRA auditors heavily look for contemporaneous logs, JIRA tickets, and test records.",
+        "Maintain contemporaneous technical logs and JIRA/payroll records.",
+        "Verify matching co-funding cash reserves prior to formal submission.",
+        "Engage program officers early to align project narrative with regional policy mandates."
+      ],
+      "requiredDocuments": [
+        "Canadian-Controlled Private Corporations (CCPCs)",
+        "Conducting work to resolve technological uncertainty",
+        "Requires systematic investigation (hypothesize, test, analyze, document)"
+      ],
+      "applicationSteps": [
+        "Track engineering/R&D hours and material costs contemporaneously.",
+        "Prepare the T2 Schedule 31 (Investment Tax Credit) and Schedule 60 (R&D project description).",
+        "Submit schedules together with your annual corporate tax return filing."
+      ],
+      "officialWebsite": "https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html"
+    },
+    {
+      "programId": "mitacs-accelerate",
+      "programName": "Mitacs Accelerate Program",
+      "agency": "Mitacs Canada",
+      "fundingAmount": "$7,500 to $15,000+ per internship cluster",
+      "fundingType": "Grant",
+      "difficulty": "Low",
+      "recommendationType": "Immediate Opportunity",
+      "recommendationConfidence": "83% Profile Fit",
+      "dataFreshness": "Verified Aug 2026",
+      "readinessStars": "★★★★★",
+      "evidenceRating": {
+        "governmentAuthority": "★★★★★",
+        "eligibilityFit": "★★★★★",
+        "documentationCompleteness": "★★★★☆"
+      },
+      "commercialScore": 90,
+      "scoreBreakdown": {
+        "industryFit": 25,
+        "objectiveFit": 16,
+        "stageFit": 15,
+        "provinceMatch": 8,
+        "statusAccessibility": 10,
+        "commercialRoiValue": 16,
+        "totalScore": 90
+      },
+      "historicalEffectiveness": "High",
+      "sequenceTier": "Apply Second",
+      "preparationTime": "2–3 weeks",
+      "reviewTime": "4–8 weeks",
+      "documentsRequiredCount": 3,
+      "whyRecommended": "Highly tailored fit for your technology & software business focusing on launch mvp. Pairs Canadian businesses with academic researchers (grad students and postdocs) to execute specialized R&D projects, offsetting the cost of hiring advanced researchers.",
+      "whyNotNumberOne": [
+        "Requires secondary preparation (2–3 weeks) before submission",
+        "Requires specific candidate recruitment or team payroll milestone"
+      ],
+      "whyRankedHere": "Ranked #2 (Apply Second) because while commercial returns are strong, it requires secondary preparation (2–3 weeks) or prerequisite milestone setup.",
+      "typicalRejectionReason": "Common rejection stems from incurring project expenses prior to formal registration or non-contemporaneous documentation.",
+      "howToImproveSuccess": [
+        "This is the most cost-effective way to add PhD or Masters level AI, biotech, or hardware developers to your team. Mitacs matches your $7,500 with another $7,500 to pay the researcher $15,000.",
+        "Maintain contemporaneous technical logs and JIRA/payroll records.",
+        "Verify matching co-funding cash reserves prior to formal submission.",
+        "Engage program officers early to align project narrative with regional policy mandates."
+      ],
+      "requiredDocuments": [
+        "Canadian incorporated businesses or select non-profits",
+        "Collaborating with a Canadian university or research college",
+        "Willing to provide matching cash contribution (usually 50% of intern stipend)"
+      ],
+      "applicationSteps": [
+        "Identify a research partner at a Canadian university (or work with a Mitacs representative to find one).",
+        "Draft a project proposal outlining the technical challenge and intern responsibilities.",
+        "Submit the proposal through the Mitacs portal; review cycles are fast and approve year-round."
+      ],
+      "officialWebsite": "https://www.mitacs.ca/en/programs/accelerate"
+    },
+    {
+      "programId": "on-tech-innovation",
+      "programName": "Ontario Technology Innovation Grant",
+      "agency": "Ontario Ministry of Economic Development & Innovation",
+      "fundingAmount": "Up to $150,000 (covers 67% of project costs)",
+      "fundingType": "Grant",
+      "difficulty": "Competitive",
+      "recommendationType": "Future Opportunity",
+      "recommendationConfidence": "78% Profile Fit",
+      "dataFreshness": "Verified Aug 2026",
+      "readinessStars": "★★★★☆",
+      "evidenceRating": {
+        "governmentAuthority": "★★★★☆",
+        "eligibilityFit": "★★★★★",
+        "documentationCompleteness": "★★★★☆"
+      },
+      "commercialScore": 85,
+      "scoreBreakdown": {
+        "industryFit": 20,
+        "objectiveFit": 20,
+        "stageFit": 10,
+        "provinceMatch": 10,
+        "statusAccessibility": 10,
+        "commercialRoiValue": 15,
+        "totalScore": 85
+      },
+      "historicalEffectiveness": "Low",
+      "sequenceTier": "Apply Later",
+      "preparationTime": "3–4 weeks",
+      "reviewTime": "4–8 weeks",
+      "documentsRequiredCount": 3,
+      "whyRecommended": "Highly tailored fit for your technology & software business focusing on launch mvp. Designed to support technology-driven businesses in Ontario looking to develop novel products, build IP, and accelerate commercialization.",
+      "whyNotNumberOne": [
+        "Higher administrative complexity requiring verified matching cash reserves",
+        "Best executed after initial project milestones are locked in"
+      ],
+      "whyRankedHere": "Ranked #3 (Apply Later) as a secondary opportunity to execute once initial project milestones and matching cash reserves are locked in.",
+      "typicalRejectionReason": "Common rejection stems from incurring project expenses prior to formal registration or non-contemporaneous documentation.",
+      "howToImproveSuccess": [
+        "Focus on demonstrating commercial viability and direct regional job creation.",
+        "Maintain contemporaneous technical logs and JIRA/payroll records.",
+        "Verify matching co-funding cash reserves prior to formal submission.",
+        "Engage program officers early to align project narrative with regional policy mandates."
+      ],
+      "requiredDocuments": [
+        "Incorporated in the jurisdiction for at least 12 months",
+        "Engaged in R&D or technical product development",
+        "Fewer than 100 employees and minimum $50k matching funds"
+      ],
+      "applicationSteps": [
+        "Submit a detailed project proposal outlining the technical innovation.",
+        "Provide commercialization plan and 2-year financial projections.",
+        "Undergo technical and financial review by regional assessors."
+      ],
+      "officialWebsite": "https://www.gov.example/med/on/tech-innovation"
+    }
+  ],
+  "conditionalRecommendations": [],
+  "skippedPrograms": [
+    {
+      "programId": "canexport",
+      "programName": "CanExport SMEs Program",
+      "agency": "Trade Commissioner Service (TCS)",
+      "reasonNotRecommended": "Program status is currently paused.",
+      "unlockCriteria": "Revisit when the government opens the next application intake window."
+    },
+    {
+      "programId": "cdap",
+      "programName": "Canada Digital Adoption Program (CDAP)",
+      "agency": "Innovation, Science and Economic Development Canada (ISED)",
+      "reasonNotRecommended": "Program status is currently paused.",
+      "unlockCriteria": "Revisit when the government opens the next application intake window."
+    },
+    {
+      "programId": "sif",
+      "programName": "Strategic Innovation Fund (SIF)",
+      "agency": "Innovation, Science and Economic Development Canada (ISED)",
+      "reasonNotRecommended": "Targeted at large-scale industrial projects requiring $20M+ project scope.",
+      "unlockCriteria": "Revisit this program once annual revenues exceed $10M or when leading a major commercial manufacturing line."
+    }
+  ],
+  "exclusionAuditTrail": [
+    {
+      "programId": "canexport",
+      "programName": "CanExport SMEs Program",
+      "ruleId": "RULE-002",
+      "ruleDescription": "Program status is currently paused.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Revisit when the government opens the next application intake window.",
+      "reEvaluateStage": "Intake Opening Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "cdap",
+      "programName": "Canada Digital Adoption Program (CDAP)",
+      "ruleId": "RULE-002",
+      "ruleDescription": "Program status is currently paused.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Revisit when the government opens the next application intake window.",
+      "reEvaluateStage": "Intake Opening Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sif",
+      "programName": "Strategic Innovation Fund (SIF)",
+      "ruleId": "RULE-014",
+      "ruleDescription": "Targeted at large-scale industrial projects requiring $20M+ project scope.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Revisit this program once annual revenues exceed $10M or when leading a major commercial manufacturing line.",
+      "reEvaluateStage": "Scale-Up Enterprise Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "CRITICAL"
+    },
+    {
+      "programId": "sustainable-cap",
+      "programName": "Sustainable Canadian Agricultural Partnership",
+      "ruleId": "RULE-018",
+      "ruleDescription": "Requires commercial agricultural, farming, or agri-food processing operations.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Integrate agricultural producers or sustainable farm supply chains into your product scope.",
+      "reEvaluateStage": "Agri-Tech Pivot Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "alberta-innovation-grant",
+      "programName": "Alberta Innovates: Innovation Voucher",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Alberta businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Alberta.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "quebec-innovation-tax-credit",
+      "programName": "Quebec R&D Tax Credit for CCPCs",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Quebec businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Quebec.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sba-7a-loans",
+      "programName": "SBA 7(a) Loan Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nih-sbir",
+      "programName": "NIH SBIR/STTR Biotech Grants",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nsf-sbir",
+      "programName": "NSF SBIR/STTR Startup Grants",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "usda-reap",
+      "programName": "USDA Rural Energy for America Program (REAP)",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sba-growth-accelerator",
+      "programName": "SBA Growth Accelerator Fund Competition",
+      "ruleId": "RULE-002",
+      "ruleDescription": "Program status is currently closed.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Revisit when the government opens the next application intake window.",
+      "reEvaluateStage": "Intake Opening Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "doe-clean-energy",
+      "programName": "DOE Clean Energy Innovation Grants",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "california-competes-tax-credit",
+      "programName": "California Competes Tax Credit (CCTC)",
+      "ruleId": "RULE-002",
+      "ruleDescription": "Program status is currently closed.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Revisit when the government opens the next application intake window.",
+      "reEvaluateStage": "Intake Opening Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "texas-enterprise-fund",
+      "programName": "Texas Enterprise Fund (TEF)",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "new-york-step",
+      "programName": "Global NY State Trade Expansion Program (STEP)",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ohio-tech-cred",
+      "programName": "Ohio TechCred Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "illinois-edge",
+      "programName": "Illinois EDGE Tax Credit",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "on-clean-energy",
+      "programName": "Ontario Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-018",
+      "ruleDescription": "Requires commercial facility energy retrofits or clean tech infrastructure installation.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Perform a certified commercial facility energy audit prior to capital expenditure.",
+      "reEvaluateStage": "Facility Upgrade Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "bc-tech-innovation",
+      "programName": "British Columbia Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to British Columbia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in British Columbia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "bc-digital-growth",
+      "programName": "British Columbia Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to British Columbia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in British Columbia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "bc-hiring-subsidy",
+      "programName": "British Columbia Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to British Columbia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in British Columbia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "bc-clean-energy",
+      "programName": "British Columbia Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to British Columbia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in British Columbia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ab-tech-innovation",
+      "programName": "Alberta Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Alberta businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Alberta.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ab-digital-growth",
+      "programName": "Alberta Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Alberta businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Alberta.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ab-hiring-subsidy",
+      "programName": "Alberta Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Alberta businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Alberta.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ab-clean-energy",
+      "programName": "Alberta Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Alberta businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Alberta.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "qc-tech-innovation",
+      "programName": "Quebec Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Quebec businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Quebec.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "qc-digital-growth",
+      "programName": "Quebec Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Quebec businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Quebec.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "qc-hiring-subsidy",
+      "programName": "Quebec Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Quebec businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Quebec.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "qc-clean-energy",
+      "programName": "Quebec Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Quebec businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Quebec.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mb-tech-innovation",
+      "programName": "Manitoba Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Manitoba businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Manitoba.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mb-digital-growth",
+      "programName": "Manitoba Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Manitoba businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Manitoba.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mb-hiring-subsidy",
+      "programName": "Manitoba Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Manitoba businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Manitoba.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mb-clean-energy",
+      "programName": "Manitoba Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Manitoba businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Manitoba.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sk-tech-innovation",
+      "programName": "Saskatchewan Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Saskatchewan businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Saskatchewan.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sk-digital-growth",
+      "programName": "Saskatchewan Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Saskatchewan businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Saskatchewan.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sk-hiring-subsidy",
+      "programName": "Saskatchewan Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Saskatchewan businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Saskatchewan.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "sk-clean-energy",
+      "programName": "Saskatchewan Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Saskatchewan businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Saskatchewan.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ns-tech-innovation",
+      "programName": "Nova Scotia Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Nova Scotia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Nova Scotia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ns-digital-growth",
+      "programName": "Nova Scotia Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Nova Scotia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Nova Scotia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ns-hiring-subsidy",
+      "programName": "Nova Scotia Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Nova Scotia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Nova Scotia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ns-clean-energy",
+      "programName": "Nova Scotia Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Nova Scotia businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Nova Scotia.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nb-tech-innovation",
+      "programName": "New Brunswick Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to New Brunswick businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in New Brunswick.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nb-digital-growth",
+      "programName": "New Brunswick Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to New Brunswick businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in New Brunswick.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nb-hiring-subsidy",
+      "programName": "New Brunswick Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to New Brunswick businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in New Brunswick.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nb-clean-energy",
+      "programName": "New Brunswick Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to New Brunswick businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in New Brunswick.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nl-tech-innovation",
+      "programName": "Newfoundland and Labrador Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Newfoundland and Labrador businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Newfoundland and Labrador.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nl-digital-growth",
+      "programName": "Newfoundland and Labrador Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Newfoundland and Labrador businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Newfoundland and Labrador.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nl-hiring-subsidy",
+      "programName": "Newfoundland and Labrador Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Newfoundland and Labrador businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Newfoundland and Labrador.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nl-clean-energy",
+      "programName": "Newfoundland and Labrador Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Newfoundland and Labrador businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Newfoundland and Labrador.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pe-tech-innovation",
+      "programName": "Prince Edward Island Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Prince Edward Island businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Prince Edward Island.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pe-digital-growth",
+      "programName": "Prince Edward Island Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Prince Edward Island businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Prince Edward Island.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pe-hiring-subsidy",
+      "programName": "Prince Edward Island Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Prince Edward Island businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Prince Edward Island.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pe-clean-energy",
+      "programName": "Prince Edward Island Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Regional restriction: Limited to Prince Edward Island businesses.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Incorporate or register a primary physical office in Prince Edward Island.",
+      "reEvaluateStage": "Regional Office Setup Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ca-tech-innovation",
+      "programName": "California Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ca-digital-growth",
+      "programName": "California Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ca-hiring-subsidy",
+      "programName": "California Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ca-clean-energy",
+      "programName": "California Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "tx-tech-innovation",
+      "programName": "Texas Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "tx-digital-growth",
+      "programName": "Texas Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "tx-hiring-subsidy",
+      "programName": "Texas Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "tx-clean-energy",
+      "programName": "Texas Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ny-tech-innovation",
+      "programName": "New York Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ny-digital-growth",
+      "programName": "New York Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ny-hiring-subsidy",
+      "programName": "New York Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ny-clean-energy",
+      "programName": "New York Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "fl-tech-innovation",
+      "programName": "Florida Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "fl-digital-growth",
+      "programName": "Florida Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "fl-hiring-subsidy",
+      "programName": "Florida Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "fl-clean-energy",
+      "programName": "Florida Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "il-tech-innovation",
+      "programName": "Illinois Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "il-digital-growth",
+      "programName": "Illinois Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "il-hiring-subsidy",
+      "programName": "Illinois Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "il-clean-energy",
+      "programName": "Illinois Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "oh-tech-innovation",
+      "programName": "Ohio Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "oh-digital-growth",
+      "programName": "Ohio Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "oh-hiring-subsidy",
+      "programName": "Ohio Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "oh-clean-energy",
+      "programName": "Ohio Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "wa-tech-innovation",
+      "programName": "Washington Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "wa-digital-growth",
+      "programName": "Washington Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "wa-hiring-subsidy",
+      "programName": "Washington Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "wa-clean-energy",
+      "programName": "Washington Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ma-tech-innovation",
+      "programName": "Massachusetts Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ma-digital-growth",
+      "programName": "Massachusetts Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ma-hiring-subsidy",
+      "programName": "Massachusetts Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ma-clean-energy",
+      "programName": "Massachusetts Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "co-tech-innovation",
+      "programName": "Colorado Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "co-digital-growth",
+      "programName": "Colorado Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "co-hiring-subsidy",
+      "programName": "Colorado Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "co-clean-energy",
+      "programName": "Colorado Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nc-tech-innovation",
+      "programName": "North Carolina Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nc-digital-growth",
+      "programName": "North Carolina Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nc-hiring-subsidy",
+      "programName": "North Carolina Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "nc-clean-energy",
+      "programName": "North Carolina Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mi-tech-innovation",
+      "programName": "Michigan Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mi-digital-growth",
+      "programName": "Michigan Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mi-hiring-subsidy",
+      "programName": "Michigan Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "mi-clean-energy",
+      "programName": "Michigan Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "va-tech-innovation",
+      "programName": "Virginia Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "va-digital-growth",
+      "programName": "Virginia Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "va-hiring-subsidy",
+      "programName": "Virginia Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "va-clean-energy",
+      "programName": "Virginia Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ga-tech-innovation",
+      "programName": "Georgia Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ga-digital-growth",
+      "programName": "Georgia Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ga-hiring-subsidy",
+      "programName": "Georgia Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "ga-clean-energy",
+      "programName": "Georgia Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pa-tech-innovation",
+      "programName": "Pennsylvania Technology Innovation Grant",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pa-digital-growth",
+      "programName": "Pennsylvania Small Business Digital Growth Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pa-hiring-subsidy",
+      "programName": "Pennsylvania Youth & Co-op Hiring Subsidy",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    },
+    {
+      "programId": "pa-clean-energy",
+      "programName": "Pennsylvania Clean Energy & Eco-Efficiency Program",
+      "ruleId": "RULE-001",
+      "ruleDescription": "Available only to businesses operating in USA.",
+      "thresholdValue": "Criteria Mismatch",
+      "unlockCriteria": "Establish a registered legal entity or operating facility in USA.",
+      "reEvaluateStage": "International Expansion Stage",
+      "owner": "Funding Advisory Team",
+      "effectiveDate": "2026-08-01",
+      "severity": "HIGH"
+    }
+  ],
+  "knowledgeGraph": {
+    "nodes": [
+      "sred-tax-credit",
+      "mitacs-accelerate",
+      "on-tech-innovation"
+    ],
+    "edges": [
+      {
+        "sourceProgramId": "irap-grant",
+        "targetProgramId": "sred-tax-credit",
+        "relationshipType": "stacksWith",
+        "stackingCapPct": 75,
+        "interactionSummary": "RULE-021: SR&ED tax credit claims 64% of remaining net salary expenditures after deducting non-repayable IRAP wage subsidies."
+      },
+      {
+        "sourceProgramId": "mitacs-accelerate",
+        "targetProgramId": "sred-tax-credit",
+        "relationshipType": "coFundingRule",
+        "stackingCapPct": 75,
+        "interactionSummary": "RULE-021: Mitacs academic co-funding reduces out-of-pocket payroll expenses while preserving eligible SR&ED technical uncertainty claims."
+      },
+      {
+        "sourceProgramId": "sred-tax-credit",
+        "targetProgramId": "elevate-ip-canada",
+        "relationshipType": "unlocksAfter",
+        "interactionSummary": "Establishing technical R&D milestones under SR&ED unlocks commercial IP protection grants under Elevate IP."
+      }
+    ],
+    "netCoFundingSummary": "Maximum combined federal and provincial government assistance is capped at 75% of eligible project cost under RULE-021 non-stacking provisions."
+  },
+  "dependencyGraphs": [
+    {
+      "targetProgramId": "sred-tax-credit",
+      "targetProgramName": "Scientific Research and Experimental Development (SR&ED)",
+      "nodes": [
+        {
+          "id": "node-inc",
+          "label": "Canadian Corporate Incorporation & CRA Business Number",
+          "status": "Met",
+          "prerequisiteIds": []
+        },
+        {
+          "id": "node-payroll",
+          "label": "Full-Time T4 Employee Payroll Setup",
+          "status": "Missing",
+          "prerequisiteIds": [
+            "node-inc"
+          ]
+        },
+        {
+          "id": "node-scope",
+          "label": "Technical Uncertainty Project Scope & JIRA Hour Logs",
+          "status": "Pending",
+          "prerequisiteIds": [
+            "node-payroll"
+          ]
+        },
+        {
+          "id": "node-budget",
+          "label": "Matching Co-Funding Working Capital Authorization",
+          "status": "Pending",
+          "prerequisiteIds": [
+            "node-scope"
+          ]
+        }
+      ],
+      "rootPrerequisitesMet": true
+    },
+    {
+      "targetProgramId": "mitacs-accelerate",
+      "targetProgramName": "Mitacs Accelerate Program",
+      "nodes": [
+        {
+          "id": "node-inc",
+          "label": "Canadian Corporate Incorporation & CRA Business Number",
+          "status": "Met",
+          "prerequisiteIds": []
+        },
+        {
+          "id": "node-payroll",
+          "label": "Full-Time T4 Employee Payroll Setup",
+          "status": "Missing",
+          "prerequisiteIds": [
+            "node-inc"
+          ]
+        },
+        {
+          "id": "node-scope",
+          "label": "Technical Uncertainty Project Scope & JIRA Hour Logs",
+          "status": "Pending",
+          "prerequisiteIds": [
+            "node-payroll"
+          ]
+        },
+        {
+          "id": "node-budget",
+          "label": "Matching Co-Funding Working Capital Authorization",
+          "status": "Pending",
+          "prerequisiteIds": [
+            "node-scope"
+          ]
+        }
+      ],
+      "rootPrerequisitesMet": true
+    },
+    {
+      "targetProgramId": "on-tech-innovation",
+      "targetProgramName": "Ontario Technology Innovation Grant",
+      "nodes": [
+        {
+          "id": "node-inc",
+          "label": "Canadian Corporate Incorporation & CRA Business Number",
+          "status": "Met",
+          "prerequisiteIds": []
+        },
+        {
+          "id": "node-payroll",
+          "label": "Full-Time T4 Employee Payroll Setup",
+          "status": "Missing",
+          "prerequisiteIds": [
+            "node-inc"
+          ]
+        },
+        {
+          "id": "node-scope",
+          "label": "Technical Uncertainty Project Scope & JIRA Hour Logs",
+          "status": "Pending",
+          "prerequisiteIds": [
+            "node-payroll"
+          ]
+        },
+        {
+          "id": "node-budget",
+          "label": "Matching Co-Funding Working Capital Authorization",
+          "status": "Pending",
+          "prerequisiteIds": [
+            "node-scope"
+          ]
+        }
+      ],
+      "rootPrerequisitesMet": true
+    }
+  ],
+  "approvalKillers": [
+    {
+      "id": "killer-payroll",
+      "riskTitle": "Dividend-Only Founder Compensation (No T4 Payroll)",
+      "severity": "HIGH RISK",
+      "description": "Founders compensated purely via dividends or shareholder loans are ineligible for wage subsidy reimbursements and IRAP grant allocations.",
+      "mitigationAction": "Transition key technical founders onto formal T4 payroll prior to program submission."
+    },
+    {
+      "id": "killer-contemporaneous",
+      "riskTitle": "Non-Contemporaneous R&D Activity Documentation",
+      "severity": "HIGH RISK",
+      "description": "CRA and ISED technical auditors routinely disallow claims where developer hours are reconstructed after project completion without real-time logs.",
+      "mitigationAction": "Implement automated JIRA/GitHub time-tracking tagged to specific technical challenges."
+    },
+    {
+      "id": "killer-retroactive",
+      "riskTitle": "Premature Expense Commitment Prior to Formal Intake",
+      "severity": "MEDIUM RISK",
+      "description": "Incurring vendor expenses or signing contractor purchase orders before formal application acknowledgment renders costs ineligible under most grant mandates.",
+      "mitigationAction": "Do not issue purchase orders or execute vendor contracts until grant registration confirmation is received."
+    },
+    {
+      "id": "killer-website",
+      "riskTitle": "Incomplete Public Corporate Digital Presence",
+      "severity": "LOW RISK",
+      "description": "Program reviewers verify corporate authenticity via public website domain and LinkedIn company pages.",
+      "mitigationAction": "Ensure corporate website and domain email addresses are active prior to filing."
+    }
+  ],
+  "documentReadinessMatrix": {
+    "alreadyReady": [
+      "Articles of Incorporation (Federal / Provincial)",
+      "CRA 9-Digit Business Number (BN) Registration"
+    ],
+    "needsPreparation": [
+      "T2 Corporate Income Tax Return (Schedule 31 / 60)",
+      "Contemporaneous Project Expense & Payroll Allocation Ledger",
+      "Detailed Technical Uncertainty Project Narrative"
+    ],
+    "missingCritical": [
+      "Formal Vendor / Academic Partner Co-Funding Quotes",
+      "Matching Funds Working Capital Verification Statement"
+    ]
+  },
+  "fundingTimeline": {
+    "immediate0to30Days": [
+      {
+        "programId": "sred-tax-credit",
+        "programName": "Scientific Research and Experimental Development (SR&ED)",
+        "agency": "Canada Revenue Agency (CRA)",
+        "fundingAmount": "Up to 64% of R&D salaries refunded",
+        "fundingType": "Tax Credit",
+        "difficulty": "Moderate",
+        "recommendationType": "Immediate Opportunity",
+        "recommendationConfidence": "88% Profile Fit",
+        "dataFreshness": "Verified Aug 2026",
+        "readinessStars": "★★★★★",
+        "evidenceRating": {
+          "governmentAuthority": "★★★★★",
+          "eligibilityFit": "★★★★★",
+          "documentationCompleteness": "★★★★☆"
+        },
+        "commercialScore": 96,
+        "scoreBreakdown": {
+          "industryFit": 25,
+          "objectiveFit": 20,
+          "stageFit": 10,
+          "provinceMatch": 8,
+          "statusAccessibility": 10,
+          "commercialRoiValue": 18,
+          "totalScore": 96
+        },
+        "historicalEffectiveness": "High",
+        "sequenceTier": "Apply First",
+        "preparationTime": "1–2 weeks",
+        "reviewTime": "Annual tax filing",
+        "documentsRequiredCount": 3,
+        "whyRecommended": "Highly tailored fit for your technology & software business focusing on launch mvp. Canada's largest tax incentive for businesses conducting scientific research or experimental development.",
+        "whyNumberOne": [
+          "✓ Highest approval probability for your business stage",
+          "✓ Direct alignment with immediate operational objective",
+          "✓ Non-dilutive capital with fast execution timeline"
+        ],
+        "whyRankedHere": "Ranked #1 (Apply First) because it delivers the highest commercial ROI, fastest time-to-money, and direct alignment with your immediate operational objective.",
+        "typicalRejectionReason": "Common rejection stems from incurring project expenses prior to formal registration or non-contemporaneous documentation.",
+        "howToImproveSuccess": [
+          "Do not wait until tax season to document. CRA auditors heavily look for contemporaneous logs, JIRA tickets, and test records.",
+          "Maintain contemporaneous technical logs and JIRA/payroll records.",
+          "Verify matching co-funding cash reserves prior to formal submission.",
+          "Engage program officers early to align project narrative with regional policy mandates."
+        ],
+        "requiredDocuments": [
+          "Canadian-Controlled Private Corporations (CCPCs)",
+          "Conducting work to resolve technological uncertainty",
+          "Requires systematic investigation (hypothesize, test, analyze, document)"
+        ],
+        "applicationSteps": [
+          "Track engineering/R&D hours and material costs contemporaneously.",
+          "Prepare the T2 Schedule 31 (Investment Tax Credit) and Schedule 60 (R&D project description).",
+          "Submit schedules together with your annual corporate tax return filing."
+        ],
+        "officialWebsite": "https://www.canada.ca/en/revenue-agency/services/scientific-research-experimental-development-tax-incentive-program.html"
+      }
+    ],
+    "nearTerm1to6Months": [
+      {
+        "programId": "mitacs-accelerate",
+        "programName": "Mitacs Accelerate Program",
+        "agency": "Mitacs Canada",
+        "fundingAmount": "$7,500 to $15,000+ per internship cluster",
+        "fundingType": "Grant",
+        "difficulty": "Low",
+        "recommendationType": "Immediate Opportunity",
+        "recommendationConfidence": "83% Profile Fit",
+        "dataFreshness": "Verified Aug 2026",
+        "readinessStars": "★★★★★",
+        "evidenceRating": {
+          "governmentAuthority": "★★★★★",
+          "eligibilityFit": "★★★★★",
+          "documentationCompleteness": "★★★★☆"
+        },
+        "commercialScore": 90,
+        "scoreBreakdown": {
+          "industryFit": 25,
+          "objectiveFit": 16,
+          "stageFit": 15,
+          "provinceMatch": 8,
+          "statusAccessibility": 10,
+          "commercialRoiValue": 16,
+          "totalScore": 90
+        },
+        "historicalEffectiveness": "High",
+        "sequenceTier": "Apply Second",
+        "preparationTime": "2–3 weeks",
+        "reviewTime": "4–8 weeks",
+        "documentsRequiredCount": 3,
+        "whyRecommended": "Highly tailored fit for your technology & software business focusing on launch mvp. Pairs Canadian businesses with academic researchers (grad students and postdocs) to execute specialized R&D projects, offsetting the cost of hiring advanced researchers.",
+        "whyNotNumberOne": [
+          "Requires secondary preparation (2–3 weeks) before submission",
+          "Requires specific candidate recruitment or team payroll milestone"
+        ],
+        "whyRankedHere": "Ranked #2 (Apply Second) because while commercial returns are strong, it requires secondary preparation (2–3 weeks) or prerequisite milestone setup.",
+        "typicalRejectionReason": "Common rejection stems from incurring project expenses prior to formal registration or non-contemporaneous documentation.",
+        "howToImproveSuccess": [
+          "This is the most cost-effective way to add PhD or Masters level AI, biotech, or hardware developers to your team. Mitacs matches your $7,500 with another $7,500 to pay the researcher $15,000.",
+          "Maintain contemporaneous technical logs and JIRA/payroll records.",
+          "Verify matching co-funding cash reserves prior to formal submission.",
+          "Engage program officers early to align project narrative with regional policy mandates."
+        ],
+        "requiredDocuments": [
+          "Canadian incorporated businesses or select non-profits",
+          "Collaborating with a Canadian university or research college",
+          "Willing to provide matching cash contribution (usually 50% of intern stipend)"
+        ],
+        "applicationSteps": [
+          "Identify a research partner at a Canadian university (or work with a Mitacs representative to find one).",
+          "Draft a project proposal outlining the technical challenge and intern responsibilities.",
+          "Submit the proposal through the Mitacs portal; review cycles are fast and approve year-round."
+        ],
+        "officialWebsite": "https://www.mitacs.ca/en/programs/accelerate"
+      },
+      {
+        "programId": "on-tech-innovation",
+        "programName": "Ontario Technology Innovation Grant",
+        "agency": "Ontario Ministry of Economic Development & Innovation",
+        "fundingAmount": "Up to $150,000 (covers 67% of project costs)",
+        "fundingType": "Grant",
+        "difficulty": "Competitive",
+        "recommendationType": "Future Opportunity",
+        "recommendationConfidence": "78% Profile Fit",
+        "dataFreshness": "Verified Aug 2026",
+        "readinessStars": "★★★★☆",
+        "evidenceRating": {
+          "governmentAuthority": "★★★★☆",
+          "eligibilityFit": "★★★★★",
+          "documentationCompleteness": "★★★★☆"
+        },
+        "commercialScore": 85,
+        "scoreBreakdown": {
+          "industryFit": 20,
+          "objectiveFit": 20,
+          "stageFit": 10,
+          "provinceMatch": 10,
+          "statusAccessibility": 10,
+          "commercialRoiValue": 15,
+          "totalScore": 85
+        },
+        "historicalEffectiveness": "Low",
+        "sequenceTier": "Apply Later",
+        "preparationTime": "3–4 weeks",
+        "reviewTime": "4–8 weeks",
+        "documentsRequiredCount": 3,
+        "whyRecommended": "Highly tailored fit for your technology & software business focusing on launch mvp. Designed to support technology-driven businesses in Ontario looking to develop novel products, build IP, and accelerate commercialization.",
+        "whyNotNumberOne": [
+          "Higher administrative complexity requiring verified matching cash reserves",
+          "Best executed after initial project milestones are locked in"
+        ],
+        "whyRankedHere": "Ranked #3 (Apply Later) as a secondary opportunity to execute once initial project milestones and matching cash reserves are locked in.",
+        "typicalRejectionReason": "Common rejection stems from incurring project expenses prior to formal registration or non-contemporaneous documentation.",
+        "howToImproveSuccess": [
+          "Focus on demonstrating commercial viability and direct regional job creation.",
+          "Maintain contemporaneous technical logs and JIRA/payroll records.",
+          "Verify matching co-funding cash reserves prior to formal submission.",
+          "Engage program officers early to align project narrative with regional policy mandates."
+        ],
+        "requiredDocuments": [
+          "Incorporated in the jurisdiction for at least 12 months",
+          "Engaged in R&D or technical product development",
+          "Fewer than 100 employees and minimum $50k matching funds"
+        ],
+        "applicationSteps": [
+          "Submit a detailed project proposal outlining the technical innovation.",
+          "Provide commercialization plan and 2-year financial projections.",
+          "Undergo technical and financial review by regional assessors."
+        ],
+        "officialWebsite": "https://www.gov.example/med/on/tech-innovation"
+      }
+    ],
+    "strategic6to24Months": []
+  },
+  "milestoneRoadmap": [
+    {
+      "stageName": "Stage 1: Prerequisite Corporate Setup",
+      "action": "Articles of Incorporation, corporate bank account setup, and CRA payroll registration.",
+      "milestoneToUnlock": "Establishes baseline corporate eligibility for all government funding programs."
+    },
+    {
+      "stageName": "Stage 2: Technical Project Scope & Developer Logs",
+      "action": "Formalize project description, technical uncertainty narrative, and developer JIRA hours tracking.",
+      "milestoneToUnlock": "Unlocks immediate SR&ED tax credit recovery and IRAP matching eligibility."
+    },
+    {
+      "stageName": "Stage 3: Immediate Grant Application Submission",
+      "action": "Submit initial application for Scientific Research and Experimental Development (SR&ED).",
+      "milestoneToUnlock": "Secures grant capital allocation before quarterly intake pool exhaustion."
+    },
+    {
+      "stageName": "Stage 4: Post-Approval Claim & Grant Stacking",
+      "action": "Submit payroll reimbursements and stack federal SR&ED credits with provincial R&D offsets.",
+      "milestoneToUnlock": "Recovers 50–70% of total ongoing technical development expenses."
+    }
+  ],
+  "next30DaysTasks": [
+    "Prepare project description scope and budget breakdown for Scientific Research and Experimental Development (SR&ED).",
+    "Retrieve corporate incorporation certificates and tax returns (T2 Schedule 31 / payroll logs).",
+    "Establish contemporaneous project expense and developer activity tracking system.",
+    "Book an initial advisor consultation to review matching funds authorization before formal submission."
+  ]
+}

@@ -10,7 +10,7 @@ import path from 'path';
  * remain 100% deterministic and match the saved snapshot exactly.
  */
 
-const GOLDEN_MASTER_PATH = path.join(process.cwd(), 'scratch/golden-master-chintan.json');
+const GOLDEN_MASTER_PATH = path.join(process.cwd(), 'lib/engine/golden-master-chintan.json');
 
 const CHINTAN_PROFILE = {
   province: 'on',
@@ -30,6 +30,7 @@ staticResult.snapshot.generatedTimestamp = '2026-08-01T00:00:00.000Z';
 
 // 1. JSON Golden Master Audit
 if (!fs.existsSync(GOLDEN_MASTER_PATH)) {
+  fs.mkdirSync(path.dirname(GOLDEN_MASTER_PATH), { recursive: true });
   fs.writeFileSync(GOLDEN_MASTER_PATH, JSON.stringify(staticResult, null, 2), 'utf8');
   console.log(`  ✅ Saved new Golden Master snapshot to ${GOLDEN_MASTER_PATH}`);
 } else {
