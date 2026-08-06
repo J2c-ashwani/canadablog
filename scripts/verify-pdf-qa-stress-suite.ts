@@ -50,19 +50,27 @@ STRESS_PROFILES.forEach((testCase) => {
   const duration = performance.now() - start;
   const pdfBuffer = Buffer.from(pdfDoc.output('arraybuffer'));
 
-  // Save to brain artifacts and Downloads
+  // Save to safe local scratch directory
   const fileName = `${testCase.label}.pdf`;
-  const artifactPath = path.join(ARTIFACT_DIR, fileName);
-  const downloadPath = path.join(DOWNLOADS_DIR, fileName);
+  const scratchDir = path.join(process.cwd(), 'scratch/audit-pdfs');
+  if (!fs.existsSync(scratchDir)) {
+    fs.mkdirSync(scratchDir, { recursive: true });
+  }
+  const scratchPath = path.join(scratchDir, fileName);
+  fs.writeFileSync(scratchPath, pdfBuffer);
 
-  fs.writeFileSync(artifactPath, pdfBuffer);
-  fs.writeFileSync(downloadPath, pdfBuffer);
+  // Optional local dev environment sync (bypassed in Vercel CI)
+  if (fs.existsSync(ARTIFACT_DIR)) {
+    try { fs.writeFileSync(path.join(ARTIFACT_DIR, fileName), pdfBuffer); } catch (e) {}
+  }
+  if (fs.existsSync(DOWNLOADS_DIR)) {
+    try { fs.writeFileSync(path.join(DOWNLOADS_DIR, fileName), pdfBuffer); } catch (e) {}
+  }
 
   console.log(`✅ [PASS] PDF QA Test Case: ${testCase.label}`);
   console.log(`     Buyer: "${testCase.name}"`);
   console.log(`     Pages: ${pdfDoc.getNumberOfPages()} | Size: ${(pdfBuffer.length / 1024).toFixed(1)} KB | Time: ${duration.toFixed(2)} ms`);
-  console.log(`     Brain Artifact: ${artifactPath}`);
-  console.log(`     Downloads Copy: ${downloadPath}\n`);
+  console.log(`     Output Path: ${scratchPath}\n`);
 });
 
 console.log('================================================================');
