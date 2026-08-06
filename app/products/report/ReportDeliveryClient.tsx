@@ -428,31 +428,36 @@ function ReportContent() {
   return (
     <div className="space-y-6">
       {/* Header */}
-      <div className="text-center">
-        <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-100 rounded-full mb-3">
-          <FileText className="w-7 h-7 text-emerald-600" />
+      <div className="text-center space-y-3">
+        <div className="inline-flex items-center justify-center w-14 h-14 bg-emerald-100/80 border border-emerald-200 rounded-2xl mb-1 shadow-xs">
+          <FileText className="w-7 h-7 text-emerald-700" />
         </div>
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900">Your Funding Recommendation Report</h1>
-        {purchaseInfo && (
-          <p className="text-sm text-slate-500 mt-1">
-            Prepared for {purchaseInfo.name} · {new Date(report.generatedAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
-          </p>
-        )}
-        <div className="mt-4 flex justify-center">
+        <div>
+          <span className="bg-slate-100 border border-slate-200 text-slate-700 text-[10px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full inline-flex items-center gap-1.5 mb-2">
+            <Shield className="w-3 h-3 text-emerald-600" /> Official Advisory Deliverable
+          </span>
+          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">Your Funding Recommendation Report</h1>
+          {purchaseInfo && (
+            <p className="text-xs sm:text-sm text-slate-500 font-medium mt-1">
+              Prepared for <span className="font-bold text-slate-800">{purchaseInfo.name}</span> · {new Date(report.generatedAt).toLocaleDateString('en-CA', { year: 'numeric', month: 'long', day: 'numeric' })}
+            </p>
+          )}
+        </div>
+        <div className="pt-1 flex justify-center">
           <Button
             onClick={handleDownloadPDF}
             disabled={isDownloading}
-            className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium flex items-center gap-2 shadow-sm"
+            className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-xs flex items-center gap-2 shadow-md px-5 py-2.5 rounded-xl transition-all"
           >
             {isDownloading ? (
               <>
-                <Loader2 className="w-4.5 h-4.5 animate-spin" />
-                Generating PDF...
+                <Loader2 className="w-4 h-4 animate-spin" />
+                Generating Vector PDF...
               </>
             ) : (
               <>
-                <FileText className="w-4.5 h-4.5" />
-                Download PDF Report
+                <FileText className="w-4 h-4" />
+                Download Vector PDF Report
               </>
             )}
           </Button>
@@ -460,23 +465,23 @@ function ReportContent() {
       </div>
 
       {/* Done-For-You Strategic Consultation review CTA */}
-      <div className="bg-gradient-to-r from-emerald-500 to-indigo-650 p-0.5 rounded-xl shadow-xs my-4 animate-in fade-in duration-300">
-        <div className="bg-white rounded-[10px] p-5 md:p-6 text-left space-y-4">
+      <div className="bg-gradient-to-r from-emerald-600 via-indigo-600 to-slate-900 p-0.5 rounded-2xl shadow-md my-5 animate-in fade-in duration-300">
+        <div className="bg-white rounded-[14px] p-5 sm:p-6 text-left space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-            <div className="space-y-1">
-              <span className="bg-indigo-50 text-indigo-700 text-[9px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
-                Done-For-You Assistance
+            <div className="space-y-1.5 max-w-xl">
+              <span className="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
+                Done-For-You Advisory Services
               </span>
-              <h3 className="text-base font-extrabold text-slate-900 mt-2 leading-tight">
-                Want Our Funding Specialists to Handle Your Filings?
+              <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
+                Want Our Funding Specialists to Package & File Your Grant Applications?
               </h3>
-              <p className="text-xs text-slate-500 mt-1 max-w-xl leading-relaxed">
-                Take the stress out of compliance. Book a complimentary 15-minute consultation review to evaluate full-service application filing and secure max funding without manual writing.
+              <p className="text-xs text-slate-600 leading-relaxed font-medium">
+                Eliminate compliance risks and non-contemporaneous documentation penalties. Book a 15-minute Strategy Consultation to evaluate full-service application preparation and maximize non-dilutive capital recovery.
               </p>
             </div>
-            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-xs shrink-0 self-start sm:self-center" asChild>
+            <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shrink-0 self-start sm:self-center px-4 py-2.5 rounded-xl shadow-sm" asChild>
               <Link href="/consultation?source=report-dfy-hook">
-                Book Consultation Call
+                Book Consultation Call &rarr;
               </Link>
             </Button>
           </div>

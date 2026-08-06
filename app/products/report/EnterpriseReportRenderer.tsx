@@ -38,66 +38,77 @@ export function assertEnterprisePlatform(platform: FundingRecommendationResult |
 // ═══════════════════════════════════════════════════════════════════
 function ExecutiveDashboardSection({ dashboard }: { dashboard: ExecutiveDashboard }) {
   return (
-    <div className="bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-white rounded-2xl p-4 sm:p-7 relative overflow-hidden">
-      <div className="absolute top-0 right-0 w-48 h-48 bg-indigo-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div className="relative z-10">
-        <div className="flex items-center gap-2 mb-4 sm:mb-5">
-          <div className="bg-indigo-500/20 border border-indigo-500/30 p-1.5 rounded-lg">
-            <BarChart3 className="w-4 h-4 text-indigo-300" />
+    <div className="bg-gradient-to-br from-slate-900 via-slate-950 to-indigo-950 text-white rounded-2xl p-5 sm:p-7 border border-slate-800 shadow-xl relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div className="relative z-10 space-y-5">
+        <div className="flex items-center justify-between border-b border-slate-800 pb-3.5">
+          <div className="flex items-center gap-2.5">
+            <div className="bg-emerald-500/20 border border-emerald-500/30 p-1.5 rounded-lg">
+              <BarChart3 className="w-4 h-4 text-emerald-400" />
+            </div>
+            <div>
+              <h2 className="text-base font-extrabold text-white tracking-tight">Executive Priority & Decision Dashboard</h2>
+              <p className="text-[11px] text-slate-400 font-medium">Deterministic evaluation summary & immediate funding pipeline</p>
+            </div>
           </div>
-          <h2 className="text-base font-bold text-white tracking-tight">Executive Dashboard</h2>
+          <span className="hidden sm:inline-flex items-center gap-1.5 bg-slate-800/80 border border-slate-700 text-slate-300 text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full">
+            <Shield className="w-3 h-3 text-emerald-400" /> Verified Audit
+          </span>
         </div>
 
         {/* Top Metrics Row */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-2.5 sm:gap-3.5 mb-4 sm:mb-5">
-          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Overall Readiness</p>
-            <p className="text-xl sm:text-2xl font-black text-white">{dashboard.overallReadiness}<span className="text-xs sm:text-sm opacity-50">/100</span></p>
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+          <div className="bg-slate-800/50 border border-slate-700/60 rounded-xl p-3 sm:p-4 text-center hover:border-slate-600 transition-colors">
+            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-bold mb-1">Overall Readiness</p>
+            <p className="text-2xl sm:text-3xl font-black text-white">{dashboard.overallReadiness}<span className="text-xs sm:text-sm font-medium text-slate-400">/100</span></p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Immediate Opportunities</p>
-            <p className="text-xl sm:text-2xl font-black text-emerald-400">{dashboard.immediateOpportunities}</p>
+          <div className="bg-slate-800/50 border border-emerald-500/30 rounded-xl p-3 sm:p-4 text-center hover:border-emerald-500/50 transition-colors">
+            <p className="text-[10px] uppercase tracking-wider text-emerald-300 font-bold mb-1">Immediate Opps</p>
+            <p className="text-2xl sm:text-3xl font-black text-emerald-400">{dashboard.immediateOpportunities}</p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Blocked</p>
-            <p className="text-xl sm:text-2xl font-black text-amber-400">{dashboard.blockedOpportunities}</p>
+          <div className="bg-slate-800/50 border border-amber-500/30 rounded-xl p-3 sm:p-4 text-center hover:border-amber-500/50 transition-colors">
+            <p className="text-[10px] uppercase tracking-wider text-amber-300 font-bold mb-1">Blocked</p>
+            <p className="text-2xl sm:text-3xl font-black text-amber-400">{dashboard.blockedOpportunities}</p>
           </div>
-          <div className="bg-white/5 border border-white/10 rounded-xl p-2.5 sm:p-3.5 text-center">
-            <p className="text-[10px] uppercase tracking-wider text-slate-400 font-semibold mb-1">Critical Risks</p>
-            <p className="text-xl sm:text-2xl font-black text-red-400">{dashboard.criticalRisks}</p>
+          <div className="bg-slate-800/50 border border-red-500/30 rounded-xl p-3 sm:p-4 text-center hover:border-red-500/50 transition-colors">
+            <p className="text-[10px] uppercase tracking-wider text-red-300 font-bold mb-1">Critical Risks</p>
+            <p className="text-2xl sm:text-3xl font-black text-red-400">{dashboard.criticalRisks}</p>
           </div>
         </div>
 
         {/* Strategic Insights Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+        <div className="grid grid-cols-1 sm:grid-cols-3 gap-3.5">
           {/* Fastest Win */}
-          <div className="bg-emerald-500/10 border border-emerald-500/20 rounded-xl p-3 sm:p-3.5">
-            <div className="flex items-center gap-1.5 mb-1.5">
+          <div className="bg-emerald-950/40 border border-emerald-500/30 rounded-xl p-3.5 sm:p-4 relative overflow-hidden">
+            <div className="w-1 h-full bg-emerald-500 absolute left-0 top-0"></div>
+            <div className="flex items-center gap-1.5 mb-1.5 pl-1">
               <Zap className="w-3.5 h-3.5 text-emerald-400" />
-              <p className="text-[10px] uppercase tracking-wider text-emerald-300 font-bold">Fastest Win</p>
+              <p className="text-[10px] uppercase tracking-wider text-emerald-300 font-extrabold">Fastest Win</p>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">{dashboard.fastestWin.programName}</p>
-            <p className="text-[11px] text-slate-300">
+            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1 pl-1">{dashboard.fastestWin.programName}</p>
+            <p className="text-[11px] text-slate-300 pl-1">
               Prep: {dashboard.fastestWin.prepTime} · Window: {dashboard.fastestWin.decisionWindow}
             </p>
           </div>
           {/* Highest ROI */}
-          <div className="bg-indigo-500/10 border border-indigo-500/20 rounded-xl p-3 sm:p-3.5">
-            <div className="flex items-center gap-1.5 mb-1.5">
+          <div className="bg-indigo-950/40 border border-indigo-500/30 rounded-xl p-3.5 sm:p-4 relative overflow-hidden">
+            <div className="w-1 h-full bg-indigo-500 absolute left-0 top-0"></div>
+            <div className="flex items-center gap-1.5 mb-1.5 pl-1">
               <TrendingUp className="w-3.5 h-3.5 text-indigo-400" />
-              <p className="text-[10px] uppercase tracking-wider text-indigo-300 font-bold">Highest ROI</p>
+              <p className="text-[10px] uppercase tracking-wider text-indigo-300 font-extrabold">Highest ROI</p>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">{dashboard.highestROI.programName}</p>
-            <p className="text-[11px] text-slate-300">{dashboard.highestROI.reason}</p>
+            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1 pl-1">{dashboard.highestROI.programName}</p>
+            <p className="text-[11px] text-slate-300 pl-1">{dashboard.highestROI.reason}</p>
           </div>
           {/* Opportunity Cost */}
-          <div className="bg-amber-500/10 border border-amber-500/20 rounded-xl p-3 sm:p-3.5">
-            <div className="flex items-center gap-1.5 mb-1.5">
+          <div className="bg-amber-950/40 border border-amber-500/30 rounded-xl p-3.5 sm:p-4 relative overflow-hidden">
+            <div className="w-1 h-full bg-amber-500 absolute left-0 top-0"></div>
+            <div className="flex items-center gap-1.5 mb-1.5 pl-1">
               <AlertTriangle className="w-3.5 h-3.5 text-amber-400" />
-              <p className="text-[10px] uppercase tracking-wider text-amber-300 font-bold">Opportunity Cost</p>
+              <p className="text-[10px] uppercase tracking-wider text-amber-300 font-extrabold">Opportunity Cost</p>
             </div>
-            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1">{dashboard.opportunityCost.missedRecoveryEstimate}</p>
-            <p className="text-[11px] text-slate-300">{dashboard.opportunityCost.missedRecoveryReason}</p>
+            <p className="text-xs sm:text-sm font-bold text-white leading-snug mb-1 pl-1">{dashboard.opportunityCost.missedRecoveryEstimate}</p>
+            <p className="text-[11px] text-slate-300 pl-1">{dashboard.opportunityCost.missedRecoveryReason}</p>
           </div>
         </div>
       </div>
@@ -116,33 +127,39 @@ function ExecutiveRecommendationSummary({ platform }: { platform: FundingRecomme
   return (
     <div className="space-y-4">
       {/* Primary Potential Banner */}
-      <div className="bg-gradient-to-br from-emerald-600 to-emerald-800 text-white rounded-xl p-4 sm:p-6 shadow-sm">
-        <div className="flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+      <div className="bg-gradient-to-r from-slate-900 via-emerald-950 to-slate-900 text-white rounded-2xl p-5 sm:p-7 border border-emerald-500/30 shadow-lg relative overflow-hidden">
+        <div className="w-2 h-full bg-emerald-500 absolute left-0 top-0"></div>
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-5 text-center sm:text-left pl-1">
           <div>
-            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-emerald-200 font-medium mb-1">Primary Estimated Funding Potential</p>
-            <p className="text-xl sm:text-3xl font-bold">
+            <p className="text-[10px] sm:text-xs uppercase tracking-wider text-emerald-300 font-extrabold mb-1 flex items-center justify-center sm:justify-start gap-1.5">
+              <Target className="w-3.5 h-3.5 text-emerald-400" /> Primary Estimated Funding Potential
+            </p>
+            <p className="text-2xl sm:text-4xl font-black text-white tracking-tight">
               ${rec.totalEstimatedFundingMin.toLocaleString()} – ${rec.totalEstimatedFundingMax.toLocaleString()}
             </p>
           </div>
-          <div className="flex gap-4 sm:gap-6 justify-center">
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold">{rec.evaluatedCount}</p>
-              <p className="text-[10px] sm:text-xs text-emerald-200">Evaluated</p>
+          <div className="flex gap-4 sm:gap-6 justify-center bg-slate-800/60 p-3 sm:p-3.5 rounded-xl border border-slate-700/60">
+            <div className="text-center px-2">
+              <p className="text-lg sm:text-2xl font-black text-white">{rec.evaluatedCount}</p>
+              <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Evaluated</p>
             </div>
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold">{rec.excludedCount}</p>
-              <p className="text-[10px] sm:text-xs text-emerald-200">Excluded</p>
+            <div className="w-px bg-slate-700 my-1"></div>
+            <div className="text-center px-2">
+              <p className="text-lg sm:text-2xl font-black text-slate-300">{rec.excludedCount}</p>
+              <p className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Excluded</p>
             </div>
-            <div className="text-center">
-              <p className="text-xl sm:text-2xl font-bold text-white">{rec.recommendedCount}</p>
-              <p className="text-[10px] sm:text-xs text-emerald-200">Recommended</p>
+            <div className="w-px bg-slate-700 my-1"></div>
+            <div className="text-center px-2">
+              <p className="text-lg sm:text-2xl font-black text-emerald-400">{rec.recommendedCount}</p>
+              <p className="text-[10px] uppercase font-bold tracking-wider text-emerald-300">Recommended</p>
             </div>
           </div>
         </div>
         {rec.advisoryText && (
-          <p className="text-xs text-emerald-100 mt-3 bg-emerald-700/40 rounded-lg p-3 border border-emerald-400/20 leading-relaxed text-left">
-            <Info className="w-3.5 h-3.5 inline-block mr-1.5 -mt-0.5 text-emerald-300 shrink-0" />{rec.advisoryText}
-          </p>
+          <div className="text-xs text-slate-200 mt-4 bg-slate-800/80 rounded-xl p-3.5 border border-slate-700/60 leading-relaxed text-left pl-1 flex items-start gap-2.5">
+            <Info className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+            <span>{rec.advisoryText}</span>
+          </div>
         )}
       </div>
 
@@ -150,7 +167,7 @@ function ExecutiveRecommendationSummary({ platform }: { platform: FundingRecomme
       <div className="bg-slate-900 text-white rounded-xl p-4 sm:p-5 border border-slate-800 shadow-sm">
         <div className="flex items-center gap-2 mb-3">
           <ListChecks className="w-4 h-4 text-emerald-400" />
-          <h3 className="font-bold text-xs sm:text-sm text-white">How We Chose These Programs (117 Opportunities Reviewed)</h3>
+          <h3 className="font-bold text-xs sm:text-sm text-white tracking-wide">How We Chose These Programs (117 Opportunities Reviewed)</h3>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5 sm:gap-3 text-xs">
           <div className="bg-slate-800/60 p-2.5 sm:p-3 rounded-lg border border-emerald-500/30">
@@ -189,61 +206,66 @@ function ExecutiveRecommendationSummary({ platform }: { platform: FundingRecomme
 function RecommendationCard({ rec, rank }: { rec: EvaluatedRecommendation; rank: number }) {
   const [expanded, setExpanded] = useState(false);
 
+  const borderAccentColor = rank === 1
+    ? 'border-l-4 border-l-emerald-500'
+    : rank === 2
+      ? 'border-l-4 border-l-blue-500'
+      : 'border-l-4 border-l-amber-500';
+
   const tierColor = rec.sequenceTier === 'Apply First'
-    ? 'bg-emerald-100 text-emerald-700 border-emerald-200'
+    ? 'bg-emerald-100 text-emerald-800 border-emerald-300 font-extrabold'
     : rec.sequenceTier === 'Apply Second'
-      ? 'bg-blue-100 text-blue-700 border-blue-200'
-      : 'bg-slate-100 text-slate-600 border-slate-200';
+      ? 'bg-blue-100 text-blue-800 border-blue-300 font-extrabold'
+      : 'bg-slate-100 text-slate-700 border-slate-300 font-extrabold';
 
   const confidenceColor = rec.recommendationConfidence === 'Very High' || rec.recommendationConfidence === 'High'
-    ? 'text-emerald-600'
+    ? 'text-emerald-700 bg-emerald-50 border-emerald-200'
     : rec.recommendationConfidence === 'Medium'
-      ? 'text-amber-600'
-      : 'text-slate-500';
+      ? 'text-amber-700 bg-amber-50 border-amber-200'
+      : 'text-slate-700 bg-slate-50 border-slate-200';
 
   return (
-    <div className="bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md">
+    <div className={`bg-white border border-slate-200 rounded-xl shadow-sm overflow-hidden transition-all hover:shadow-md ${borderAccentColor}`}>
       {/* Card Header */}
-      <div className="p-4 sm:p-5 space-y-3">
+      <div className="p-4 sm:p-5 space-y-3.5">
         <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2.5 sm:gap-4">
           <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2 mb-1 flex-wrap">
-              <span className="bg-indigo-600 text-white text-xs font-bold px-2.5 py-0.5 rounded-md shadow-sm">
+            <div className="flex items-center gap-2 mb-1.5 flex-wrap">
+              <span className="bg-slate-900 text-white text-xs font-black px-2.5 py-0.5 rounded-md shadow-xs">
                 #{rank}
               </span>
-              <span className={`text-[10px] font-bold px-2 py-0.5 rounded border ${tierColor}`}>
+              <span className={`text-[10px] uppercase tracking-wider px-2.5 py-0.5 rounded border ${tierColor}`}>
                 {rec.sequenceTier}
               </span>
             </div>
-            <h3 className="font-bold text-slate-800 text-base sm:text-lg mt-1 leading-snug">{rec.programName}</h3>
-            <p className="text-xs sm:text-sm text-slate-500 mt-0.5">{rec.agency}</p>
+            <h3 className="font-extrabold text-slate-900 text-base sm:text-lg tracking-tight mt-1 leading-snug">{rec.programName}</h3>
+            <p className="text-xs sm:text-sm text-slate-500 font-medium mt-0.5">{rec.agency}</p>
           </div>
-          <div className="sm:text-right shrink-0 bg-emerald-50/70 sm:bg-transparent p-2.5 sm:p-0 rounded-lg border border-emerald-100 sm:border-0">
-            <p className="font-bold text-emerald-700 text-base sm:text-lg">{rec.fundingAmount}</p>
-            <p className="text-[11px] sm:text-xs text-slate-500">{rec.fundingType}</p>
+          <div className="sm:text-right shrink-0 bg-emerald-50/80 sm:bg-emerald-50/50 p-3 sm:p-3 rounded-xl border border-emerald-200/60">
+            <p className="font-black text-emerald-800 text-base sm:text-xl tracking-tight">{rec.fundingAmount}</p>
+            <p className="text-[11px] sm:text-xs text-emerald-700 font-semibold">{rec.fundingType}</p>
           </div>
         </div>
 
         {/* Score & Confidence Badges */}
         <div className="flex flex-wrap gap-1.5 sm:gap-2 text-xs">
-          <span className="bg-indigo-50 text-indigo-700 px-2.5 py-1 rounded-full font-medium flex items-center gap-1">
-            <Target className="w-3 h-3" />Score: {rec.commercialScore}/100
+          <span className="bg-indigo-50 border border-indigo-200 text-indigo-800 px-2.5 py-1 rounded-full font-bold flex items-center gap-1 shadow-2xs">
+            <Target className="w-3 h-3 text-indigo-600" />Score: {rec.commercialScore}/100
           </span>
-          <span className={`px-2.5 py-1 rounded-full font-medium flex items-center gap-1 ${confidenceColor} bg-opacity-10`}
-            style={{ backgroundColor: rec.recommendationConfidence === 'Very High' || rec.recommendationConfidence === 'High' ? 'rgb(236 253 245)' : rec.recommendationConfidence === 'Medium' ? 'rgb(255 251 235)' : 'rgb(248 250 252)' }}>
+          <span className={`px-2.5 py-1 rounded-full font-bold flex items-center gap-1 border shadow-2xs ${confidenceColor}`}>
             <Shield className="w-3 h-3" />{rec.recommendationConfidence} Confidence
           </span>
-          <span className={`px-2.5 py-1 rounded-full font-medium ${
-            rec.difficulty === 'Low' ? 'bg-green-50 text-green-700' :
-            rec.difficulty === 'Moderate' ? 'bg-amber-50 text-amber-700' :
-            'bg-red-50 text-red-700'
+          <span className={`px-2.5 py-1 rounded-full font-bold border shadow-2xs ${
+            rec.difficulty === 'Low' ? 'bg-green-50 text-green-800 border-green-200' :
+            rec.difficulty === 'Moderate' ? 'bg-amber-50 text-amber-800 border-amber-200' :
+            'bg-red-50 text-red-800 border-red-200'
           }`}>
             {rec.difficulty} Difficulty
           </span>
-          <span className="bg-slate-50 text-slate-600 px-2.5 py-1 rounded-full font-medium flex items-center gap-1">
-            <Clock className="w-3 h-3" />{rec.preparationTime} prep
+          <span className="bg-slate-50 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-full font-semibold flex items-center gap-1">
+            <Clock className="w-3 h-3 text-slate-500" />{rec.preparationTime} prep
           </span>
-          <span className="bg-slate-50 text-slate-600 px-2.5 py-1 rounded-full font-medium">
+          <span className="bg-slate-50 border border-slate-200 text-slate-700 px-2.5 py-1 rounded-full font-semibold">
             {rec.readinessStars}
           </span>
         </div>
