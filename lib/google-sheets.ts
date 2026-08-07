@@ -155,7 +155,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       try {
         await sheets.spreadsheets.values.append({
           spreadsheetId,
-          range: "MCA Applications!A1",
+          range: "'MCA Applications'!A1",
           valueInputOption: "RAW",
           insertDataOption: "INSERT_ROWS",
           requestBody: {
@@ -602,7 +602,7 @@ export async function appendPartnerPaymentToSheet(data: PartnerPaymentData) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Partner Payments!A:Q",
+      range: "'Product Purchases'!A:Q",
       valueInputOption: "RAW",
       requestBody: {
         values: [[
@@ -669,7 +669,7 @@ export async function getPartnerPaymentsFromSheet() {
     const spreadsheetId = process.env.GOOGLE_SHEET_ID
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "Partner Payments!A:Q",
+      range: "'Partner Payments'!A:Q",
     })
     return response.data.values || []
   } catch (error) {
@@ -819,7 +819,7 @@ export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData,
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Partner Inquiries!A:Z",
+      range: "'Partner Inquiries'!A:Z",
       valueInputOption: "RAW",
       requestBody: {
         values,
@@ -929,7 +929,7 @@ export async function appendMatchEvaluationToSheet(data: MatchEvaluationLog) {
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Match Logs!A:I",
+      range: "'Match Logs'!A:I",
       valueInputOption: "RAW",
       requestBody: {
         values,
@@ -1144,7 +1144,7 @@ export async function appendAlertLeadToSheet(data: Omit<AlertLeadData, 'timestam
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Alerts Leads!A:E",
+      range: "'Alerts Leads'!A:E",
       valueInputOption: "RAW",
       requestBody: {
         values,
@@ -1259,7 +1259,7 @@ export async function appendOutreachSentLeadToSheet(data: OutreachSentLeadData) 
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "Outreach Leads!A:K",
+      range: "'Outreach Leads'!A:K",
       valueInputOption: "RAW",
       requestBody: {
         values,
