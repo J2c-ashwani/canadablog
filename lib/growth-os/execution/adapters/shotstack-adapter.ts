@@ -81,6 +81,7 @@ export class ShotstackVideoAdapter {
           aspectRatio: "9:16",
           fps: 30,
         },
+        callback: "https://www.fsidigital.ca/api/webhooks/shotstack",
       };
 
       const response = await fetch("https://api.shotstack.io/edit/v1/render", {
