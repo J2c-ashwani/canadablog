@@ -152,36 +152,29 @@ export class SERPERProspector {
 
           discovered.push(prospect);
 
-          // Save to SubscriberRepository / CRM if not already present
+          // Save directly to "OutreachProspects" Google Sheet tab for targeted cold outreach
           try {
-            const existing = await SubscriberRepository.getSubscriberByEmail(email);
-            if (!existing) {
-              const activityJson = JSON.stringify({
-                outreachSource: "SERPER_GOVERNMENT_SERP",
-                intentScore,
-                confidencePct,
-                discoveredAt: new Date().toISOString(),
-                sourceQuery: query,
-              });
-
-              await SubscriberRepository.saveSubscriber({
-                email,
-                name: decisionMakerName,
-                country: "Canada",
-                region,
-                industry,
-                companySize: "10-49",
-                fundingInterests: ["Grants", "Tax Credits"],
+            const { seedOutreachProspects } = await import("@/lib/google-sheets");
+            await seedOutreachProspects([
+              {
                 website: `https://${domain}`,
-                companyName,
-                leadActivity: activityJson,
-              });
-
-              savedCount++;
-              console.log(`✅ [SERPER Prospector] Saved new outbound lead to CRM: ${email} (${companyName}) | Intent: ${intentScore}`);
-            }
+                prospectName: decisionMakerName,
+                email,
+                targetPage: "/blog/canada-federal-grants",
+                name: decisionMakerName,
+                personalizedHook: `Found active ${industry} expansion signal for ${companyName} via Google SERP (${query}).`,
+                status: "pending",
+                sentAt: null,
+                deliveryStatus: null,
+                replied: false,
+                positiveConversation: false,
+                backlinkEarned: false,
+              },
+            ]);
+            savedCount++;
+            console.log(`✅ [SERPER Prospector] Saved new outbound prospect to 'OutreachProspects' tab: ${email} (${companyName}) | Intent: ${intentScore}`);
           } catch (saveErr) {
-            console.error(`⚠️ Failed to save discovered prospect ${email}:`, saveErr);
+            console.error(`⚠️ Failed to save discovered prospect ${email} to OutreachProspects tab:`, saveErr);
           }
         }
       } catch (err) {
