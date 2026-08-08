@@ -25,15 +25,21 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
 
   const isEmailValid = !!(checkoutEmail && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(checkoutEmail.trim()))
 
-  // Attempt to recover checkout email from sessionStorage or state
+  const checkoutEmailRef = useRef(checkoutEmail)
+  useEffect(() => {
+    checkoutEmailRef.current = checkoutEmail
+  }, [checkoutEmail])
+
+  // Attempt to recover checkout email from sessionStorage or state and auto-advance leadSaved if valid
   useEffect(() => {
     if (typeof window !== "undefined") {
       const stored = window.sessionStorage.getItem("fsi_cdp_profile")
       if (stored) {
         try {
           const parsed = JSON.parse(stored)
-          if (parsed.email) {
+          if (parsed.email && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(parsed.email.trim())) {
             setCheckoutEmail(parsed.email)
+            setLeadSaved(true)
           }
         } catch (e) {}
       }
@@ -46,7 +52,7 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
     if ((window as any).paypal) { setSdkReady(true); return; }
 
     const script = document.createElement("script")
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons&enable-funding=card`
     script.type = "text/javascript"
     script.async = true
     script.onload = () => setSdkReady(true)
@@ -57,39 +63,45 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
     document.head.appendChild(script)
   }, [isPurchased])
 
-  // Render PayPal buttons
+  // Render PayPal buttons safely
   useEffect(() => {
-    if (isPurchased || !isEmailValid || !sdkReady || !(window as any).paypal) {
+    if (isPurchased || !isEmailValid || !sdkReady || !(window as any).paypal || !leadSaved) {
       buttonsRenderedRef.current = false
       return
     }
 
-    if (buttonsRenderedRef.current) return
-    buttonsRenderedRef.current = true
-
     const container = document.getElementById("oto-paypal-button")
-    if (container) container.innerHTML = ""
+    if (!container) {
+      buttonsRenderedRef.current = false
+      return
+    }
+
+    if (buttonsRenderedRef.current && container.children.length > 0) return
+    buttonsRenderedRef.current = true
+    container.innerHTML = ""
 
     try {
       (window as any).paypal.Buttons({
-        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
+        style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 48 },
         createOrder: async () => {
           setPaymentError(null)
+          const targetEmail = checkoutEmailRef.current || checkoutEmail
 
           // Telemetry
           fetch("/api/subscriber/track-activity", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              email: checkoutEmail,
+              email: targetEmail,
               event: "download_oto_checkout_started",
               guideName
             })
           }).catch(() => {})
 
           return createServerPayPalProductOrder({
-            productId: 'funding-toolkit', email: checkoutEmail,
-            name: checkoutEmail.split('@')[0] || 'Founder',
+            productId: 'funding-toolkit', 
+            email: targetEmail,
+            name: targetEmail.split('@')[0] || 'Founder',
             profileData: { province: 'ON', industry: 'other', revenue: 'startup', goal: 'research' },
             attribution: { landingPage: window.location.pathname, referrer: document.referrer || 'direct' },
           })
@@ -97,21 +109,18 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
         onApprove: async (data: any) => {
           try {
             await finalizeServerPayPalProductOrder(data.orderID || '')
-
-            {
-              setIsPurchased(true)
-              
-              // Telemetry
-              fetch("/api/subscriber/track-activity", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                  email: checkoutEmail,
-                  event: "download_oto_purchase_success",
-                  guideName
-                })
-              }).catch(() => {})
-            }
+            setIsPurchased(true)
+            
+            const targetEmail = checkoutEmailRef.current || checkoutEmail
+            fetch("/api/subscriber/track-activity", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify({
+                email: targetEmail,
+                event: "download_oto_purchase_success",
+                guideName
+              })
+            }).catch(() => {})
           } catch (e) {
             console.error("OTO Payment capture error:", e)
             setPaymentError("An error occurred during payment capture.")
@@ -127,7 +136,7 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
       console.error("PayPal OTO render exception:", e)
       buttonsRenderedRef.current = false
     }
-  }, [isPurchased, isEmailValid, sdkReady, checkoutEmail, guideName])
+  }, [isPurchased, isEmailValid, sdkReady, leadSaved, guideName])
 
   return (
     <Card className="border-2 border-indigo-600 bg-white rounded-2xl shadow-lg overflow-hidden text-left my-8">

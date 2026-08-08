@@ -174,6 +174,13 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
     || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq";
 
+  const nameRef = useRef(name);
+  const emailRef = useRef(email);
+  useEffect(() => {
+    nameRef.current = name;
+    emailRef.current = email;
+  }, [name, email]);
+
   // Load PayPal SDK on mount
   useEffect(() => {
     if ((window as any).paypal) {
@@ -182,7 +189,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     }
 
     const script = document.createElement("script");
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`;
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons&enable-funding=card`;
     script.type = "text/javascript";
     script.async = true;
     script.onload = () => setSdkReady(true);
@@ -193,7 +200,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     document.head.appendChild(script);
   }, [paypalClientId]);
 
-  // Render/Re-render PayPal buttons dynamically based on name, email, price, product, and bump updates
+  // Render/Re-render PayPal buttons dynamically based on price, product, and bump updates (without re-rendering on every keypress)
   useEffect(() => {
     if (!sdkReady || !(window as any).paypal) return;
 
@@ -214,11 +221,13 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           color: 'gold',
           shape: 'rect',
           label: 'pay',
-          height: 44
+          height: 48
         },
         createOrder: async () => {
           setPaymentError(null);
           setCheckoutStarted(true);
+          const targetEmail = emailRef.current.trim();
+          const targetName = nameRef.current.trim() || 'Premium Member';
           
           // Track event
           if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -234,7 +243,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
-              email: email.trim(),
+              email: targetEmail,
               event: "standalone_checkout_started",
               productId: finalProductId,
               priceShown: finalPrice.toString()
@@ -243,8 +252,8 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
 
           return createServerPayPalProductOrder({
             productId: finalProductId,
-            email: email.trim(),
-            name: name.trim() || 'Premium Member',
+            email: targetEmail,
+            name: targetName,
             addons,
             profileData: {
               province: personalizedRegion || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_region') || '') : ''),
@@ -280,7 +289,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     } catch (err) {
       console.error("PayPal render error:", err);
     }
-  }, [sdkReady, isEmailValid, name, email, finalProductId, finalPrice, finalProductName, addons, attributionData]);
+  }, [sdkReady, finalProductId, finalPrice, finalProductName, addons, attributionData]);
 
   return (
     <div className="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-left relative overflow-hidden backdrop-blur-md shadow-xl shadow-slate-950/20 font-sans">

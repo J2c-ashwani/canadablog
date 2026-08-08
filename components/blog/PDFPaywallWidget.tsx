@@ -149,7 +149,7 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
     if ((window as any).paypal) { setSdkReady(true); return; }
 
     const script = document.createElement("script")
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons&enable-funding=card`
     script.type = "text/javascript"
     script.async = true
     script.onload = () => setSdkReady(true)
@@ -167,11 +167,15 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
       return
     }
 
-    if (buttonsRenderedRef.current) return
-    buttonsRenderedRef.current = true
-
     const container = document.getElementById("guide-paypal-button")
-    if (container) container.innerHTML = ""
+    if (!container) {
+      buttonsRenderedRef.current = false
+      return
+    }
+
+    if (buttonsRenderedRef.current && container.children.length > 0) return
+    buttonsRenderedRef.current = true
+    container.innerHTML = ""
 
     try {
       // Telemetry: paypal_rendered

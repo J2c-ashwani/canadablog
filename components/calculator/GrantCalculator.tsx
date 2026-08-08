@@ -1155,12 +1155,16 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
       const jId = getOrCreateJourneyId();
       const fnId = getOrCreateFunnelId("grant_calculator");
 
-      // Prevent duplicate rendering in StrictMode or rapid render ticks
-      if (buttonsRenderedRef.current) return;
-      buttonsRenderedRef.current = true;
-
       const container = document.getElementById("calc-paypal-button");
-      if (container) container.innerHTML = "";
+      if (!container) {
+        buttonsRenderedRef.current = false;
+        return;
+      }
+
+      // Prevent duplicate rendering in StrictMode or rapid render ticks
+      if (buttonsRenderedRef.current && container.children.length > 0) return;
+      buttonsRenderedRef.current = true;
+      container.innerHTML = "";
 
       if (typeof (window as any).paypal.Buttons !== 'function') {
         setPaymentError("Could not load secure checkout. Please refresh.");

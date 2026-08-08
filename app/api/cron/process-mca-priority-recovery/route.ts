@@ -72,7 +72,7 @@ export async function GET(request: NextRequest) {
       const status = app.priorityRecoveryStatus ?? 'ACTIVE';
 
       // --- Stage 1 (1 hour delay) ---
-      if ((status === 'ACTIVE' || status === 'NONE') && elapsed >= delay1) {
+      if ((status === 'ACTIVE' || status === 'NONE' || status === '' || status === 'CHECKOUT_STARTED') && elapsed >= delay1) {
         console.log(`✉️ Triggering MCA Recovery Email 1 (1h) for application ${app.applicationId}`);
         const res = await sendMCARecoveryEmail1({
           to: app.email,

@@ -4,8 +4,7 @@
 
 import { NextRequest, NextResponse } from 'next/server';
 import { z } from 'zod';
-import { appendMCAPriorityOrder } from '@/lib/mca/sheets';
-import { appendMCAActivityLog } from '@/lib/mca/sheets';
+import { appendMCAPriorityOrder, appendMCAActivityLog, updateMCAApplicationRecovery } from '@/lib/mca/sheets';
 
 const PRIORITY_PRICE_CAD = '49.00';
 const PAYPAL_API_BASE = process.env.PAYPAL_API_BASE ?? 'https://api-m.paypal.com';
@@ -95,6 +94,12 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       amountCAD: 49,
       status: 'Pending',
       fulfilmentStatus: 'Queued',
+    }).catch(() => {}); // non-blocking
+
+    // Explicitly update application recovery status so automated recovery cron picks it up
+    await updateMCAApplicationRecovery(applicationId, {
+      priorityRecoveryStatus: 'ACTIVE',
+      recoveryStage: 'CHECKOUT_STARTED',
     }).catch(() => {}); // non-blocking
 
     // Activity log
