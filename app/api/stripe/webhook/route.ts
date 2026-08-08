@@ -328,7 +328,7 @@ export async function POST(request: NextRequest) {
         amount: expectedPrice.toFixed(2),
       });
 
-      await sendEmail({
+      const emailResult = await sendEmail({
         to: email,
         subject: emailContent.subject,
         html: emailContent.html,

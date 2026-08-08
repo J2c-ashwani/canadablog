@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server'
 import { CEOAgent } from '@/lib/ceo-agent/ceo-agent'
 import { validateCronAuth } from '@/lib/auth/cron-auth'
 
-export async function handleCEORun(req: Request) {
+async function handleCEORun(req: Request) {
   try {
     const authResult = validateCronAuth(req)
     if (!authResult.authorized && authResult.response) {
