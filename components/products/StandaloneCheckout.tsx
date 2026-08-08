@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Loader2, ShieldCheck, CreditCard, CheckCircle, AlertCircle, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
