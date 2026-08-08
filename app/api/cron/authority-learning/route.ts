@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { AuthorityMetrics } from "@/lib/growth-os/authority/authority-metrics";
 import { isValidCronRequest } from "@/lib/admin/auth";
 
-export async function handleAuthorityLearning(request: Request) {
+async function handleAuthorityLearning(request: Request) {
   if (!isValidCronRequest(request)) {
     return NextResponse.json({ error: "Unauthorized: Missing or invalid secret credentials" }, { status: 401 });
   }
