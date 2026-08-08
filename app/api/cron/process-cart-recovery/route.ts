@@ -1,5 +1,5 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { getLeadsFromSheet, updateLeadInSheet } from "@/lib/google-sheets"
 import {
   sendCartRecoveryEmail1,
   sendCartRecoveryEmail2,
@@ -12,133 +12,114 @@ export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
   try {
-    const searchParams = request.nextUrl.searchParams
-    const force = searchParams.get("force") === "true"
-    const limitParam = searchParams.get("limit")
-    // Fast batch limit: default 5 per execution run to prevent HTTP timeout
-    const limit = limitParam ? Math.min(parseInt(limitParam, 10), 50) : 5
-
     if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized cart recovery cron execution." }, { status: 401 })
     }
 
-    const subscribers = await SubscriberRepository.getAllSubscribers()
-    const now = Date.now()
+    const searchParams = request.nextUrl.searchParams
+    const force = searchParams.get("force") === "true"
 
-    let recovery1Count = 0
-    let recovery2Count = 0
-    let recovery3Count = 0
-    let skippedCount = 0
-
-    for (const sub of subscribers) {
-      if ((recovery1Count + recovery2Count + recovery3Count) >= limit) {
-        skippedCount++
-        continue
-      }
-
-      if (!sub.email || !sub.email.includes("@")) {
-        skippedCount++
-        continue
-      }
-      if (!sub.isSubscribed) {
-        skippedCount++
-        continue
-      }
-
-      let activity: any = {}
-      try {
-        if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
-          activity = JSON.parse(sub.leadActivity)
-        }
-      } catch (e) {
-        // ignore
-      }
-
-      const isPurchased = !!sub.reportPurchased
-
-      if (!isPurchased) {
-        const checkoutStartMs = activity.checkoutStartedAt 
-          ? new Date(activity.checkoutStartedAt).getTime()
-          : (sub.timestamp ? new Date(sub.timestamp).getTime() : now - (60 * 60 * 1000))
-
-        const elapsedMs = now - (Number.isNaN(checkoutStartMs) ? now - 60000 : checkoutStartMs)
-        let emailSent = false
-
-        // Email #1 (Lifetime if force=true or elapsed >= 45m)
-        if ((elapsedMs >= 45 * 60 * 1000 || force) && !activity.cartRecoveryEmail1SentAt) {
-          console.log(`🛒 Triggering Cart Recovery #1 for: ${sub.email}`)
-          const res = await sendCartRecoveryEmail1({
-            to: sub.email,
-            name: sub.name,
-            loginToken: sub.loginToken || "",
-            companyName: sub.companyName,
-            priceShown: activity.priceShown || "$19"
-          })
-          if (res.success) {
-            activity.cartRecoveryEmail1SentAt = new Date().toISOString()
-            emailSent = true
-            recovery1Count++
-          }
-        }
-        // Email #2
-        else if ((elapsedMs >= 24 * 60 * 60 * 1000 || force) && activity.cartRecoveryEmail1SentAt && !activity.cartRecoveryEmail2SentAt) {
-          console.log(`🛒 Triggering Cart Recovery #2 for: ${sub.email}`)
-          const res = await sendCartRecoveryEmail2({
-            to: sub.email,
-            name: sub.name,
-            loginToken: sub.loginToken || "",
-            companyName: sub.companyName,
-            priceShown: activity.priceShown || "$19"
-          })
-          if (res.success) {
-            activity.cartRecoveryEmail2SentAt = new Date().toISOString()
-            emailSent = true
-            recovery2Count++
-          }
-        }
-        // Email #3
-        else if ((elapsedMs >= 72 * 60 * 60 * 1000 || force) && activity.cartRecoveryEmail2SentAt && !activity.cartRecoveryEmail3SentAt) {
-          console.log(`🛒 Triggering Cart Recovery #3 for: ${sub.email}`)
-          const res = await sendCartRecoveryEmail3({
-            to: sub.email,
-            name: sub.name,
-            loginToken: sub.loginToken || "",
-            companyName: sub.companyName,
-            priceShown: activity.priceShown || "$19"
-          })
-          if (res.success) {
-            activity.cartRecoveryEmail3SentAt = new Date().toISOString()
-            emailSent = true
-            recovery3Count++
-          }
-        }
-
-        if (emailSent) {
-          await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-            leadActivity: JSON.stringify(activity)
-          })
-        } else {
-          skippedCount++
-        }
-      } else {
-        skippedCount++
-      }
-    }
+    // Asynchronous non-blocking background processing to prevent cron-job.org 30s timeout
+    processCartRecoveryAsync(force).catch((err) => console.error("Async cart recovery background error:", err))
 
     return NextResponse.json({
       success: true,
+      message: "Cart recovery processing initiated asynchronously.",
       mode: force ? "lifetime_force" : "standard",
-      processed: subscribers.length,
-      sent: {
-        cartRecovery1: recovery1Count,
-        cartRecovery2: recovery2Count,
-        cartRecovery3: recovery3Count,
-      },
-      skipped: skippedCount
+      timestamp: new Date().toISOString()
     })
   } catch (error: any) {
     console.error("Cart recovery cron execution error:", error)
     return NextResponse.json({ error: error.message || "Internal server error" }, { status: 500 })
+  }
+}
+
+async function processCartRecoveryAsync(force: boolean) {
+  const now = Date.now()
+  // Fast fetch max 50 recent leads to avoid Google Sheets API latency
+  const leads = await getLeadsFromSheet(50)
+  if (!leads || leads.length === 0) return
+
+  let processedCount = 0
+  const maxEmailsPerRun = 5
+
+  for (const sub of leads) {
+    if (processedCount >= maxEmailsPerRun) break
+    if (!sub.email || !sub.email.includes("@")) continue
+
+    let activity: any = {}
+    try {
+      if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
+        activity = JSON.parse(sub.leadActivity)
+      }
+    } catch (e) {
+      // ignore
+    }
+
+    const isPurchased = !!sub.reportPurchased
+
+    if (!isPurchased) {
+      const checkoutStartMs = activity.checkoutStartedAt
+        ? new Date(activity.checkoutStartedAt).getTime()
+        : (sub.timestamp ? new Date(sub.timestamp).getTime() : now - (60 * 60 * 1000))
+
+      const elapsedMs = now - (Number.isNaN(checkoutStartMs) ? now - 60000 : checkoutStartMs)
+      let emailSent = false
+
+      if ((elapsedMs >= 45 * 60 * 1000 || force) && !activity.cartRecoveryEmail1SentAt) {
+        console.log(`🛒 [Async Cron] Triggering Cart Recovery #1 for: ${sub.email}`)
+        const res = await sendCartRecoveryEmail1({
+          to: sub.email,
+          name: sub.name,
+          loginToken: sub.loginToken || "",
+          companyName: sub.companyName,
+          priceShown: activity.priceShown || "$19"
+        })
+        if (res.success) {
+          activity.cartRecoveryEmail1SentAt = new Date().toISOString()
+          emailSent = true
+          processedCount++
+        }
+      } else if ((elapsedMs >= 24 * 60 * 60 * 1000 || force) && activity.cartRecoveryEmail1SentAt && !activity.cartRecoveryEmail2SentAt) {
+        console.log(`🛒 [Async Cron] Triggering Cart Recovery #2 for: ${sub.email}`)
+        const res = await sendCartRecoveryEmail2({
+          to: sub.email,
+          name: sub.name,
+          loginToken: sub.loginToken || "",
+          companyName: sub.companyName,
+          priceShown: activity.priceShown || "$19"
+        })
+        if (res.success) {
+          activity.cartRecoveryEmail2SentAt = new Date().toISOString()
+          emailSent = true
+          processedCount++
+        }
+      } else if ((elapsedMs >= 72 * 60 * 60 * 1000 || force) && activity.cartRecoveryEmail2SentAt && !activity.cartRecoveryEmail3SentAt) {
+        console.log(`🛒 [Async Cron] Triggering Cart Recovery #3 for: ${sub.email}`)
+        const res = await sendCartRecoveryEmail3({
+          to: sub.email,
+          name: sub.name,
+          loginToken: sub.loginToken || "",
+          companyName: sub.companyName,
+          priceShown: activity.priceShown || "$19"
+        })
+        if (res.success) {
+          activity.cartRecoveryEmail3SentAt = new Date().toISOString()
+          emailSent = true
+          processedCount++
+        }
+      }
+
+      if (emailSent) {
+        try {
+          await updateLeadInSheet(sub.email, {
+            leadActivity: JSON.stringify(activity)
+          })
+        } catch (err) {
+          console.error(`[Cart Recovery] Error updating lead activity in sheet for ${sub.email}:`, err)
+        }
+      }
+    }
   }
 }
 
