@@ -19,25 +19,31 @@ export interface CEOExperiment {
 }
 
 const FALLBACK_EXP_PATH = path.join(process.cwd(), 'reports', 'ceo-experiments-fallback.json')
+let inMemoryExperiments: CEOExperiment[] = []
 
 function loadFallbackExperiments(): CEOExperiment[] {
-  if (!fs.existsSync(FALLBACK_EXP_PATH)) {
-    return []
-  }
   try {
-    const data = fs.readFileSync(FALLBACK_EXP_PATH, 'utf-8')
-    return JSON.parse(data)
+    if (fs.existsSync(FALLBACK_EXP_PATH)) {
+      const data = fs.readFileSync(FALLBACK_EXP_PATH, 'utf-8')
+      inMemoryExperiments = JSON.parse(data)
+    }
   } catch (err) {
-    return []
+    // Read-only filesystem on Vercel production
   }
+  return inMemoryExperiments
 }
 
 function saveFallbackExperiments(experiments: CEOExperiment[]) {
-  const dir = path.dirname(FALLBACK_EXP_PATH)
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true })
+  inMemoryExperiments = experiments
+  try {
+    const dir = path.dirname(FALLBACK_EXP_PATH)
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true })
+    }
+    fs.writeFileSync(FALLBACK_EXP_PATH, JSON.stringify(experiments, null, 2))
+  } catch (err) {
+    // Read-only filesystem on Vercel production
   }
-  fs.writeFileSync(FALLBACK_EXP_PATH, JSON.stringify(experiments, null, 2))
 }
 
 export class CEOExperimentEngine {
@@ -100,57 +106,44 @@ export class CEOExperimentEngine {
   public static async evaluateExperimentOutcome(
     experimentId: string,
     actualResultMetric: number,
-    revenueRecoveredUSD: number,
-    attributionConfidence: 'HIGH' | 'MEDIUM' | 'LOW' = 'MEDIUM'
+    revenueRecoveredUsd: number
   ): Promise<CEOExperiment | null> {
     const experiments = loadFallbackExperiments()
-    const exp = experiments.find((e) => e.id === experimentId)
-    if (!exp) {
-      console.warn(`[CEOExperimentEngine] Experiment ${experimentId} not found`)
-      return null
-    }
+    const expIndex = experiments.findIndex(e => e.id === experimentId)
+    if (expIndex === -1) return null
 
+    const exp = experiments[expIndex]
     exp.actual_result_metric = actualResultMetric
-    exp.revenue_recovered_usd = revenueRecoveredUSD
-    exp.attribution_confidence = attributionConfidence
+    exp.revenue_recovered_usd = revenueRecoveredUsd
     exp.completed_at = new Date().toISOString()
 
-    // Determine verdict
-    const metricImprovement = actualResultMetric - exp.baseline_metric
-    const targetImprovement = exp.target_metric - exp.baseline_metric
-
-    if (metricImprovement >= targetImprovement * 0.8) {
+    if (actualResultMetric >= exp.target_metric) {
       exp.verdict = 'SCALE'
-    } else if (metricImprovement > 0) {
+      exp.attribution_confidence = 'HIGH'
+    } else if (actualResultMetric > exp.baseline_metric) {
       exp.verdict = 'ITERATE'
+      exp.attribution_confidence = 'MEDIUM'
     } else {
       exp.verdict = 'ABANDON'
+      exp.attribution_confidence = 'LOW'
     }
 
     if (process.env.DATABASE_URL) {
       try {
         await query(
           `UPDATE ceo_experiments SET
-            actual_result_metric = $1,
-            revenue_recovered_usd = $2,
-            attribution_confidence = $3,
-            verdict = $4,
-            completed_at = NOW()
+            actual_result_metric = $1, revenue_recovered_usd = $2,
+            verdict = $3, attribution_confidence = $4, completed_at = NOW()
           WHERE id = $5`,
-          [exp.actual_result_metric, exp.revenue_recovered_usd, exp.attribution_confidence, exp.verdict, exp.id]
+          [exp.actual_result_metric, exp.revenue_recovered_usd, exp.verdict, exp.attribution_confidence, exp.id]
         )
       } catch (err) {
-        console.warn('[CEOExperimentEngine] DB update failed:', err)
+        console.warn('[CEOExperimentEngine] DB update failed, using fallback:', err)
       }
     }
 
+    experiments[expIndex] = exp
     saveFallbackExperiments(experiments)
-    console.log(`[CEOExperimentEngine] 📊 Evaluated ${exp.id}: Verdict=${exp.verdict}, Recovered=$${exp.revenue_recovered_usd}`)
     return exp
-  }
-
-  public static async getActiveExperiments(): Promise<CEOExperiment[]> {
-    const experiments = loadFallbackExperiments()
-    return experiments.filter((e) => e.verdict === 'IN_PROGRESS')
   }
 }

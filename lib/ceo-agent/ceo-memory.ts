@@ -45,64 +45,47 @@ export interface CEODecisionRecord {
 
 const FALLBACK_FILE_PATH = path.join(process.cwd(), 'reports', 'ceo-db-fallback.json')
 
-function ensureFallbackDir() {
-  const dir = path.dirname(FALLBACK_FILE_PATH)
-  if (!fs.existsSync(dir)) {
-    fs.mkdirSync(dir, { recursive: true })
-  }
+let memoryStore: { goalState: CEOGoalState; decisions: CEODecisionRecord[] } = {
+  goalState: {
+    id: 'current',
+    monthly_revenue_target_usd: 15000,
+    recurring_mrr_target_usd: 0,
+    daily_target_pace_usd: 500,
+    current_mtd_verified_revenue_usd: 106,
+    current_mtd_mrr_usd: 0,
+    revenue_recovered_by_ceo_usd: 0,
+    revenue_influenced_by_ceo_usd: 0,
+    primary_bottleneck: 'Checkout -> Payment Conversion',
+    estimated_monthly_leakage_usd: 2054,
+    priority_focus: 'P0 — Repair broken payment validation and report delivery',
+    updated_at: new Date().toISOString()
+  },
+  decisions: []
 }
 
 function loadFallbackData(): { goalState: CEOGoalState; decisions: CEODecisionRecord[] } {
-  ensureFallbackDir()
-  if (!fs.existsSync(FALLBACK_FILE_PATH)) {
-    const defaultData = {
-      goalState: {
-        id: 'current',
-        monthly_revenue_target_usd: 15000,
-        recurring_mrr_target_usd: 0,
-        daily_target_pace_usd: 500,
-        current_mtd_verified_revenue_usd: 87,
-        current_mtd_mrr_usd: 0,
-        revenue_recovered_by_ceo_usd: 0,
-        revenue_influenced_by_ceo_usd: 0,
-        primary_bottleneck: 'Checkout -> Payment Conversion',
-        estimated_monthly_leakage_usd: 1840,
-        priority_focus: 'P0 — Repair broken payment validation and report delivery',
-        updated_at: new Date().toISOString()
-      },
-      decisions: []
-    }
-    fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(defaultData, null, 2))
-    return defaultData
-  }
   try {
-    const content = fs.readFileSync(FALLBACK_FILE_PATH, 'utf-8')
-    return JSON.parse(content)
-  } catch (err) {
-    console.warn('[CEOMemory] Failed reading fallback JSON:', err)
-    return {
-      goalState: {
-        id: 'current',
-        monthly_revenue_target_usd: 15000,
-        recurring_mrr_target_usd: 0,
-        daily_target_pace_usd: 500,
-        current_mtd_verified_revenue_usd: 87,
-        current_mtd_mrr_usd: 0,
-        revenue_recovered_by_ceo_usd: 0,
-        revenue_influenced_by_ceo_usd: 0,
-        primary_bottleneck: 'Checkout -> Payment Conversion',
-        estimated_monthly_leakage_usd: 1840,
-        priority_focus: 'P0 — Repair broken payment validation and report delivery',
-        updated_at: new Date().toISOString()
-      },
-      decisions: []
+    if (fs.existsSync(FALLBACK_FILE_PATH)) {
+      const content = fs.readFileSync(FALLBACK_FILE_PATH, 'utf-8')
+      memoryStore = JSON.parse(content)
     }
+  } catch (err) {
+    // Ignore read errors on serverless environments
   }
+  return memoryStore
 }
 
 function saveFallbackData(data: { goalState: CEOGoalState; decisions: CEODecisionRecord[] }) {
-  ensureFallbackDir()
-  fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(data, null, 2))
+  memoryStore = data
+  try {
+    const dir = path.dirname(FALLBACK_FILE_PATH)
+    if (!fs.existsSync(dir)) {
+      fs.mkdirSync(dir, { recursive: true })
+    }
+    fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(data, null, 2))
+  } catch (err) {
+    // Read-only filesystem on Vercel production serverless
+  }
 }
 
 export class CEOMemory {
@@ -128,7 +111,7 @@ export class CEOMemory {
           }
         }
       } catch (err) {
-        console.warn('[CEOMemory] Postgres query failed, falling back to local storage:', err)
+        console.warn('[CEOMemory] Postgres query failed, falling back to in-memory store:', err)
       }
     }
     const fallback = loadFallbackData()
@@ -178,7 +161,7 @@ export class CEOMemory {
           ]
         )
       } catch (err) {
-        console.warn('[CEOMemory] Postgres update failed, using fallback:', err)
+        console.warn('[CEOMemory] DB update failed, saving to in-memory fallback:', err)
       }
     }
 
@@ -188,11 +171,29 @@ export class CEOMemory {
     return updated
   }
 
-  public static async recordDecision(decision: Omit<CEODecisionRecord, 'id' | 'created_at'>): Promise<CEODecisionRecord> {
+  public static async recordDecision(params: {
+    run_id: string
+    trigger_source: 'cron' | 'event' | 'on_demand' | 'verification'
+    monthly_target_usd: number
+    verified_mtd_usd: number
+    primary_bottleneck: string
+    estimated_leakage_usd: number
+    decision_basis: CEODecisionBasis
+    directives: string[]
+    forbidden_actions: string[]
+  }): Promise<CEODecisionRecord> {
     const id = `dec_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
     const record: CEODecisionRecord = {
-      ...decision,
       id,
+      run_id: params.run_id,
+      trigger_source: params.trigger_source,
+      monthly_target_usd: params.monthly_target_usd,
+      verified_mtd_usd: params.verified_mtd_usd,
+      primary_bottleneck: params.primary_bottleneck,
+      estimated_leakage_usd: params.estimated_leakage_usd,
+      decision_basis: params.decision_basis,
+      directives: params.directives,
+      forbidden_actions: params.forbidden_actions,
       created_at: new Date().toISOString()
     }
 
@@ -204,7 +205,7 @@ export class CEOMemory {
             primary_bottleneck, estimated_leakage_usd, decision_basis, directives, forbidden_actions, created_at
           ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())`,
           [
-            id,
+            record.id,
             record.run_id,
             record.trigger_source,
             record.monthly_target_usd,
@@ -217,16 +218,12 @@ export class CEOMemory {
           ]
         )
       } catch (err) {
-        console.warn('[CEOMemory] Postgres recordDecision failed:', err)
+        console.warn('[CEOMemory] DB recordDecision failed, using fallback:', err)
       }
     }
 
     const fallback = loadFallbackData()
     fallback.decisions.unshift(record)
-    // keep latest 100 decisions
-    if (fallback.decisions.length > 100) {
-      fallback.decisions = fallback.decisions.slice(0, 100)
-    }
     saveFallbackData(fallback)
     return record
   }
