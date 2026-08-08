@@ -1,5 +1,5 @@
 /**
- * Unified Canonical Cron Authentication Helper
+ * Strict Unified Canonical Cron Authentication Helper
  * Standardized across all FSI Digital production cron endpoints (Growth OS, CEO OS, Recovery, Outreach).
  * 
  * Supports:
@@ -8,22 +8,29 @@
  * 3. ?secret=<CRON_SECRET> query parameter (cron-job.org)
  * 
  * SECURITY RULE: NEVER log, print, or expose secret values.
+ * STRICT ENFORCEMENT: No fallback bypasses.
  */
 
 import { NextResponse } from 'next/server'
 
 export interface CronAuthResult {
   authorized: boolean
-  authMethod: 'BEARER_HEADER' | 'X_CRON_HEADER' | 'QUERY_PARAM' | 'DEV_ALLOW'
+  authMethod: 'BEARER_HEADER' | 'X_CRON_HEADER' | 'QUERY_PARAM'
   response?: NextResponse
 }
 
 export function validateCronAuth(req: Request): CronAuthResult {
   const secretEnv = process.env.CRON_SECRET
 
-  // If no secret configured in environment (e.g. local dev or test sandbox), allow with warning
   if (!secretEnv) {
-    return { authorized: true, authMethod: 'DEV_ALLOW' }
+    return {
+      authorized: false,
+      authMethod: 'BEARER_HEADER',
+      response: NextResponse.json(
+        { success: false, error: 'Unauthorized: CRON_SECRET environment variable is not configured on server.' },
+        { status: 401 }
+      )
+    }
   }
 
   const url = new URL(req.url)
