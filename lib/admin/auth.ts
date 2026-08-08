@@ -38,20 +38,8 @@ export function isValidAdminRequest(request: Request): boolean {
   return authHeader === `Bearer ${secret}` || headerSecret === secret;
 }
 
-export function isValidCronRequest(request: Request): boolean {
-  const secret = process.env.CRON_SECRET;
-  if (!secret && process.env.NODE_ENV !== 'production') {
-    return true;
-  }
-  if (!secret) {
-    return false;
-  }
+import { validateCronAuth } from '@/lib/auth/cron-auth';
 
-  const authHeader = request.headers.get('authorization') || '';
-  const headerSecret = request.headers.get('x-cron-secret') || '';
-  
-  return (
-    authHeader === `Bearer ${secret}` ||
-    headerSecret === secret
-  );
+export function isValidCronRequest(request: Request): boolean {
+  return validateCronAuth(request).authorized;
 }

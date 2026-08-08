@@ -12,6 +12,7 @@
     "test:smoke": "npx tsx scripts/smoke-test-production-pipeline.ts",
     "test:ceo-commercial": "npx tsx scripts/verify-ceo-commercial-suite.ts",
     "test:ceo-autonomous": "npx tsx scripts/verify-autonomous-event-detection.ts",
+    "test:cron-audit": "npx tsx scripts/verify-cron-forensic-audit.ts",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",

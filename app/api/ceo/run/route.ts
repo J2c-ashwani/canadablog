@@ -1,23 +1,16 @@
 import { NextResponse } from 'next/server'
 import { CEOAgent } from '@/lib/ceo-agent/ceo-agent'
+import { validateCronAuth } from '@/lib/auth/cron-auth'
 
 export async function handleCEORun(req: Request) {
   try {
-    const url = new URL(req.url)
-    const triggerParam = url.searchParams.get('trigger') || 'cron'
-    const secretParam = url.searchParams.get('secret')
-    const authHeader = req.headers.get('authorization')
-
-    // Validate CRON_SECRET if configured (supports HTTP Authorization header OR ?secret= query parameter for cron-job.org)
-    if (process.env.CRON_SECRET) {
-      const isHeaderValid = authHeader === `Bearer ${process.env.CRON_SECRET}`
-      const isSecretParamValid = secretParam === process.env.CRON_SECRET
-
-      if (!isHeaderValid && !isSecretParamValid) {
-        return NextResponse.json({ error: 'Unauthorized: Invalid CRON_SECRET' }, { status: 401 })
-      }
+    const authResult = validateCronAuth(req)
+    if (!authResult.authorized && authResult.response) {
+      return authResult.response
     }
 
+    const url = new URL(req.url)
+    const triggerParam = url.searchParams.get('trigger') || 'cron'
     const triggerSource = ['cron', 'event', 'on_demand', 'verification'].includes(triggerParam)
       ? (triggerParam as 'cron' | 'event' | 'on_demand' | 'verification')
       : 'cron'
@@ -28,6 +21,7 @@ export async function handleCEORun(req: Request) {
       success: true,
       runId: result.runId,
       triggerSource: result.triggerSource,
+      authMethod: authResult.authMethod,
       timestamp: result.timestamp,
       scoreboard: result.scoreboard,
       pathToTarget: result.pathToTarget,
