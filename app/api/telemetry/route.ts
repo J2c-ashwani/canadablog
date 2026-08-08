@@ -56,8 +56,8 @@ export async function POST(request: NextRequest) {
   } catch (err: any) {
     console.error('Telemetry route error:', err);
     return NextResponse.json(
-      { error: err.message || 'Internal server error' },
-      { status: 500 }
+      { error: err.message || 'Telemetry is temporarily unavailable. Retry this event.' },
+      { status: 503, headers: { 'Retry-After': '60' } }
     );
   }
 }

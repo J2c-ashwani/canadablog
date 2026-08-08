@@ -1,69 +1,56 @@
 import { NextResponse } from 'next/server';
 import { globalEventBus } from '@/lib/growth-os/core/event-bus';
 import { AUTHORITY_EVENTS } from '@/lib/growth-os/authority/types';
+import {
+  normalizeResendDeliveryEvent,
+  persistDeliveryEvent,
+  verifyResendWebhook,
+} from '@/lib/emails/delivery-events';
+import { updateOutreachProspectFromDeliveryEvent } from '@/lib/google-sheets';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
-// In-memory state for tracking consecutive bounces.
-let consecutiveBounces = 0;
-
 /**
- * Resend Webhook API route for real-time delivery event tracking.
- * Tracks bounces, complaints, clicks, and opens.
+ * Resend delivery events are accepted only after signature verification and a
+ * confirmed durable write. Provider acceptance and inbox delivery stay distinct.
  */
 export async function POST(request: Request) {
+  const rawBody = await request.text();
+  if (!verifyResendWebhook(request.headers, rawBody)) {
+    console.error('Resend webhook signature verification failed or is not configured.');
+    return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
   try {
-    const payload = await request.json();
-    const eventType = payload?.type;
+    const payload = JSON.parse(rawBody);
+    const event = normalizeResendDeliveryEvent(payload);
+    if (!event) return NextResponse.json({ error: 'Unsupported event payload' }, { status: 400 });
 
-    if (!eventType) {
-      return NextResponse.json({ error: 'Missing event type' }, { status: 400 });
+    await persistDeliveryEvent(event);
+    await updateOutreachProspectFromDeliveryEvent(
+      event.providerMessageId,
+      event.eventType,
+      event.occurredAt
+    );
+
+    if (event.eventType === 'email.bounced') {
+      await globalEventBus.publish(AUTHORITY_EVENTS.KILL_SWITCH_TRIGGERED, {
+        reason: 'Email bounce received', event,
+      });
+    } else if (event.eventType === 'email.opened') {
+      await globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_OPENED, { event });
+    } else if (event.eventType === 'email.clicked') {
+      await globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_CLICKED, { event });
+    } else if (event.eventType === 'email.complained') {
+      await globalEventBus.publish(AUTHORITY_EVENTS.KILL_SWITCH_TRIGGERED, {
+        reason: 'Spam complaint received', event,
+      });
     }
 
-    switch (eventType) {
-      case 'email.bounced':
-        consecutiveBounces++;
-        if (consecutiveBounces > 10) {
-          globalEventBus.publish(AUTHORITY_EVENTS.KILL_SWITCH_TRIGGERED, {
-            reason: 'Excessive consecutive bounces detected',
-            count: consecutiveBounces,
-            timestamp: new Date().toISOString()
-          });
-        }
-        break;
-
-      case 'email.opened':
-        consecutiveBounces = 0; // Reset counter on successful open
-        globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_OPENED, {
-          payload,
-          timestamp: new Date().toISOString()
-        });
-        break;
-
-      case 'email.clicked':
-        consecutiveBounces = 0; // Reset counter on successful click
-        globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_OPENED, {
-          payload,
-          timestamp: new Date().toISOString()
-        });
-        break;
-        
-      case 'email.complained':
-        globalEventBus.publish(AUTHORITY_EVENTS.KILL_SWITCH_TRIGGERED, {
-          reason: 'Spam complaint registered',
-          payload,
-          timestamp: new Date().toISOString()
-        });
-        break;
-
-      default:
-        break;
-    }
-
-    return NextResponse.json({ received: true });
+    return NextResponse.json({ received: true, persisted: true });
   } catch (error) {
-    console.error('Resend Webhook Error:', error);
+    console.error('Resend webhook processing error:', error);
     return NextResponse.json({ error: 'Internal Server Error' }, { status: 500 });
   }
 }

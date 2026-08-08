@@ -11,7 +11,7 @@ export interface DispatchReceipt {
   campaignName: string
   dispatchedTimestamp: string
   emailsSentCount: number
-  status: "SUCCESS" | "QUEUED_FOR_HUMAN_APPROVAL" | "FAILED"
+  status: "SUCCESS" | "QUEUED_FOR_HUMAN_APPROVAL" | "NOT_DISPATCHED" | "FAILED"
   receiptMessage: string
 }
 
@@ -34,17 +34,17 @@ export class Publisher {
       }
     }
 
-    // Tier A Execution: Auto-dispatch to intent-segmented database
-    const estimatedRecipients = opportunity.buyerSegment.includes("Tech") ? 180 : 120
-    console.log(`[Publisher] Auto-dispatching campaign '${bundle.campaignName}' to ${estimatedRecipients} consented leads.`)
+    // This component has no recipient query or provider dispatch. Returning a
+    // fabricated count would corrupt commercial reporting.
+    console.warn(`[Publisher] Campaign '${bundle.campaignName}' was generated but not dispatched; no recipient selection is implemented.`)
 
     return {
       opportunityId: opportunity.id,
       campaignName: bundle.campaignName,
       dispatchedTimestamp: new Date().toISOString(),
-      emailsSentCount: estimatedRecipients,
-      status: "SUCCESS",
-      receiptMessage: `Successfully dispatched email sequence '${bundle.emailSubject}' to ${estimatedRecipients} leads. Primary CTA: ${bundle.primaryCta}`,
+      emailsSentCount: 0,
+      status: "NOT_DISPATCHED",
+      receiptMessage: `Campaign '${bundle.emailSubject}' was generated but not dispatched. No recipient or provider evidence exists.`,
     }
   }
 }

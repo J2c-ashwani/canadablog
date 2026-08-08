@@ -11,17 +11,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    const url = new URL(request.url)
-    const keyParam = url.searchParams.get("key")
-    const authHeader = request.headers.get("authorization")
-
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized MCA readiness cron execution." }, { status: 401 })
     }
 
@@ -77,7 +67,7 @@ export async function GET(request: NextRequest) {
           province: sub.region,
           applicationId: activity.mcaApplicationId || ""
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.mcaReadinessEmail2SentAt = new Date().toISOString()
           emailSent = true
           readiness2Count++
@@ -93,7 +83,7 @@ export async function GET(request: NextRequest) {
           province: sub.region,
           applicationId: activity.mcaApplicationId || ""
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.mcaReadinessEmail3SentAt = new Date().toISOString()
           emailSent = true
           readiness3Count++

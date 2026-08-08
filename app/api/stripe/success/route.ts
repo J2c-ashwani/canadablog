@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/payments/stripe';
 import { getProduct } from '@/lib/products/catalog';
-import { recordPurchase, getAllPurchases } from '@/lib/products/purchase-store';
+import { recordPurchase, getAllPurchases, updatePurchaseDeliveryStatus } from '@/lib/products/purchase-store';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { ensureScopedSubscriberTokens, SubscriberRepository } from '@/lib/leads/SubscriberRepository';
@@ -96,6 +96,10 @@ export async function GET(request: NextRequest) {
         paypalOrderId: sessionId,
         profileData,
         attribution,
+        currency: String(currency || '').toUpperCase(),
+        paypalCaptureId: session.payment_intent ? String(session.payment_intent) : sessionId,
+        paymentStatus: 'stripe_payment_verified',
+        deliveryStatus: 'retry_pending',
       });
       await grantEntitlements({ purchaseId: purchase.purchaseId, email, productId, orderId: sessionId });
 
@@ -112,6 +116,10 @@ export async function GET(request: NextRequest) {
             paypalOrderId: sessionId,
             profileData,
             attribution,
+            currency: String(currency || '').toUpperCase(),
+            paypalCaptureId: session.payment_intent ? String(session.payment_intent) : sessionId,
+            paymentStatus: 'stripe_payment_verified',
+            deliveryStatus: 'retry_pending',
           });
           await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-toolkit', orderId: sessionId });
         } catch (err) {
@@ -130,6 +138,10 @@ export async function GET(request: NextRequest) {
             paypalOrderId: sessionId,
             profileData,
             attribution,
+            currency: String(currency || '').toUpperCase(),
+            paypalCaptureId: session.payment_intent ? String(session.payment_intent) : sessionId,
+            paymentStatus: 'stripe_payment_verified',
+            deliveryStatus: 'retry_pending',
           });
           await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-approval-library', orderId: sessionId });
         } catch (err) {
@@ -246,13 +258,18 @@ export async function GET(request: NextRequest) {
         amount: expectedPrice.toFixed(2),
       });
 
-      await sendEmail({
+      const emailResult = await sendEmail({
         to: email,
         subject: emailContent.subject,
         html: emailContent.html,
         text: emailContent.text,
         tagType: 'product-purchase',
       });
+      await updatePurchaseDeliveryStatus(
+        purchase.purchaseId,
+        emailResult.success ? 'provider_accepted' : 'retry_pending',
+        emailResult.providerMessageId || ''
+      );
 
       console.log(`✅ Stripe purchase success processed & registered: ${email}`);
     }

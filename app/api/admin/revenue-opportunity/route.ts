@@ -1,19 +1,19 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllPurchases } from "@/lib/products/purchase-store";
+import { isValidAdminRequest } from "@/lib/admin/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const key = searchParams.get("key");
-
-  if (key !== "fsi2026admin") {
+  if (!isValidAdminRequest(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
-    const allPurchases = await getAllPurchases();
+    const allPurchases = (await getAllPurchases()).filter(
+      (purchase) => ['provider_capture_verified', 'stripe_payment_verified'].includes(purchase.paymentStatus || '')
+    );
 
     // Group purchases by customer
     const customerMap: Record<string, {
@@ -58,9 +58,9 @@ export async function GET(request: NextRequest) {
     const actionPlanOnlyCustomers = customers.filter(c => c.hasActionPlan && !c.hasStrategySession);
     const planToSessionPotentialUsd = actionPlanOnlyCustomers.length * 150; // $150 net upgrade ($199 - $49 credit)
 
-    // Pipeline Bucket 3: Qualified Contact Form Leads Pending High-Ticket Closing
-    const qualifiedLeadCount = 4; // High-intent leads (Chintan, Jessica, Ajit, Pooja)
-    const highTicketFilingPotentialUsd = qualifiedLeadCount * 2500; // $2,500 Grant Filing Service
+    // No unverified lead count or invented names may be presented as pipeline.
+    const qualifiedLeadCount = 0;
+    const highTicketFilingPotentialUsd = 0;
 
     const totalOpenRevenuePipelineUsd = reportToPlanPotentialUsd + planToSessionPotentialUsd + highTicketFilingPotentialUsd;
 
@@ -93,12 +93,7 @@ export async function GET(request: NextRequest) {
           potentialRevenuePerLeadUsd: 2500,
           totalBucketPotentialUsd: highTicketFilingPotentialUsd,
           actionRequired: "Direct Founder Sales Call / Filing Service Proposal",
-          targetLeads: [
-            { name: "Chintan Kakani", email: "chintankakani@gmail.com", focus: "E-commerce & SaaS ($100k+ R&D)" },
-            { name: "Jessica", email: "jgould@upei.ca", focus: "University Research & Commercialization" },
-            { name: "Ajit Kolethe", email: "ajit@kolethe.com", focus: "Manufacturing & Scaleup" },
-            { name: "Pooja", email: "pooja@example.com", focus: "Pre-Submission Application Review" },
-          ],
+          targetLeads: [],
         },
       ],
     });

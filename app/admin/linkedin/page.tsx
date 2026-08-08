@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useEffect } from "react"
+import React, { useState } from "react"
 import Link from "next/link"
 import {
   Linkedin,
@@ -43,7 +43,7 @@ interface PublicationItem {
 export default function LinkedInPublisherPage() {
   // Authentication Gate State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
-  const [emailInput, setEmailInput] = useState<string>("reviewer@fsidigital.ca")
+  const [emailInput, setEmailInput] = useState<string>("")
   const [passwordInput, setPasswordInput] = useState<string>("")
   const [authError, setAuthError] = useState<string | null>(null)
 
@@ -82,25 +82,22 @@ export default function LinkedInPublisherPage() {
     },
   ])
 
-  // Check Session Cookie / Auth on mount
-  useEffect(() => {
-    const savedAuth = typeof window !== "undefined" ? localStorage.getItem("fsi_admin_auth") : null
-    if (savedAuth === "authenticated") {
-      setIsAuthenticated(true)
-    }
-  }, [])
-
-  const handleLoginSubmit = (e: React.FormEvent) => {
+  const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    const pwd = passwordInput.trim()
-    const validPasswords = ["fsi2026admin", "FsiReviewer2026!", "fsi2026"]
-    
-    if (validPasswords.includes(pwd)) {
+    try {
+      const response = await fetch('/api/admin/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ key: passwordInput.trim() }),
+      })
+      if (response.ok) {
       setIsAuthenticated(true)
-      localStorage.setItem("fsi_admin_auth", "authenticated")
       setAuthError(null)
-    } else {
-      setAuthError("Incorrect password or access code. Please try again.")
+      } else {
+        setAuthError("Incorrect password or access code. Please try again.")
+      }
+    } catch {
+      setAuthError("Unable to reach the secure admin login service.")
     }
   }
 

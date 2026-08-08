@@ -29,7 +29,7 @@ export class SERPERProspector {
     return (
       process.env.SERPER_API_KEY ||
       process.env.NEXT_PUBLIC_SERPER_API_KEY ||
-      "960fb0979530c15d5b507f53aa8c7f15f12a9bd9"
+      ""
     );
   }
 
@@ -163,7 +163,9 @@ export class SERPERProspector {
                 targetPage: "/blog/canada-federal-grants",
                 name: decisionMakerName,
                 personalizedHook: `Found active ${industry} expansion signal for ${companyName} via Google SERP (${query}).`,
-                status: "pending",
+                // Discovery alone is not consent to commercial email. These prospects
+                // remain in review_required until a compliant contact permission is recorded.
+                status: "review_required",
                 sentAt: null,
                 deliveryStatus: null,
                 replied: false,

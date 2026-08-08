@@ -1,14 +1,12 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllPurchases } from "@/lib/products/purchase-store";
+import { isValidAdminRequest } from "@/lib/admin/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const key = searchParams.get("key");
-
-  if (key !== "fsi2026admin") {
+  if (!isValidAdminRequest(request)) {
     return NextResponse.json({ error: "Unauthorized access to fulfillment audit" }, { status: 401 });
   }
 
@@ -20,11 +18,17 @@ export async function GET(request: NextRequest) {
     const totalOrders = allPurchases.length;
     const ordersTodayCount = todayPurchases.length;
 
-    const deliveredCount = allPurchases.filter(p => p.status === "completed" || p.accessToken).length;
-    const failedCount = allPurchases.filter(p => p.status === "failed_sheets_sync" || p.status === "pending_review").length;
-    const autoRecoveredCount = allPurchases.filter(p => p.landingPage?.includes("admin_manual_dispatch") || p.paypalOrderId?.startsWith("MANUAL-")).length;
+    const providerVerifiedCount = allPurchases.filter(p => p.paymentStatus === "provider_capture_verified").length;
+    const deliveredCount = allPurchases.filter(p => p.deliveryStatus === "delivered").length;
+    const acceptedForDeliveryCount = allPurchases.filter(p => p.deliveryStatus === "provider_accepted").length;
+    const failedCount = allPurchases.filter(p => p.status === "pending_review" || p.deliveryStatus === "retry_pending").length;
+    const historicalManualRecordCount = allPurchases.filter(
+      p => p.landingPage?.includes("admin_manual_dispatch") || p.paypalOrderId?.startsWith("MANUAL-")
+    ).length;
 
-    const successRate = totalOrders > 0 ? ((deliveredCount / totalOrders) * 100).toFixed(1) + "%" : "100%";
+    const deliveryRate = providerVerifiedCount > 0
+      ? ((deliveredCount / providerVerifiedCount) * 100).toFixed(1) + "%"
+      : "N/A";
 
     const auditTrail = allPurchases.map(p => ({
       purchaseId: p.purchaseId,
@@ -37,27 +41,29 @@ export async function GET(request: NextRequest) {
       status: p.status,
       accessToken: p.accessToken ? `${p.accessToken.substring(0, 8)}...` : "N/A",
       pipelineSteps: [
-        { step: "Payment Received", status: "PASS", timestamp: p.createdAt },
-        { step: "PayPal Cryptographic Verification", status: "PASS", timestamp: p.createdAt },
-        { step: "Payment Intent & Entitlements", status: "PASS", timestamp: p.createdAt },
+        { step: "Provider capture", status: p.paymentStatus === "provider_capture_verified" ? "VERIFIED" : "UNVERIFIED", timestamp: p.createdAt },
+        { step: "PayPal capture ID", status: p.paypalCaptureId ? "RECORDED" : "MISSING", timestamp: p.createdAt },
+        { step: "Entitlement", status: p.status === "completed" ? "RECORDED" : "UNKNOWN", timestamp: p.createdAt },
         { step: "Access Token Generation", status: p.accessToken ? "PASS" : "FAIL", timestamp: p.createdAt },
-        { step: "Delivery Email Dispatch", status: p.status === "completed" ? "PASS" : "WARN", timestamp: p.createdAt },
-        { step: "CRM Database Sync", status: p.status === "failed_sheets_sync" ? "LOCAL_BACKUP" : "PASS", timestamp: p.createdAt },
+        { step: "Delivery email", status: p.deliveryStatus || "UNKNOWN", timestamp: p.createdAt },
+        { step: "CRM sync", status: "NOT_PROVEN_BY_THIS_LEDGER", timestamp: p.createdAt },
       ],
     }));
 
     return NextResponse.json({
       summary: {
-        systemStatus: "HEALTHY",
-        architectureMode: "Server-Side Order Recovery + Cryptographic PayPal Verification",
+        systemStatus: "EVIDENCE_BASED",
+        architectureMode: "Provider capture → durable ledger → entitlement → delivery event",
         ordersTotal: totalOrders,
         ordersToday: ordersTodayCount,
+        providerVerifiedTotal: providerVerifiedCount,
         deliveredTotal: deliveredCount,
-        deliverySuccessRate: successRate,
-        avgDeliveryTimeSec: 3.4,
+        providerAcceptedTotal: acceptedForDeliveryCount,
+        deliverySuccessRate: deliveryRate,
+        avgDeliveryTimeSec: "NOT_MEASURED",
         failedOrdersCount: failedCount,
-        autoRecoveredOrdersCount: autoRecoveredCount,
-        manualInterventionRequired: 0,
+        historicalManualRecordCount,
+        manualInterventionRequired: "NOT_MEASURED",
       },
       auditTrail,
     });

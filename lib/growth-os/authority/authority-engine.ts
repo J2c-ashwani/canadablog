@@ -131,7 +131,7 @@ export class AuthorityEngine {
       // Case-insensitive status matching
       const pendingProspects = prospects.filter(p => {
         const statusLower = (p.status || '').trim().toLowerCase();
-        return statusLower === 'pending' || statusLower === '';
+        return statusLower === 'qualified';
       });
 
       if (pendingProspects.length === 0) {
@@ -168,7 +168,7 @@ export class AuthorityEngine {
       const batch = pendingProspects.slice(0, maxSends);
 
       for (const prospect of batch) {
-        const prospectId = `auth_${prospect.rowIndex}_${Date.now()}`;
+        const prospectId = prospect.prospectId || `legacy_row_${prospect.rowIndex}`;
 
         try {
           const website = prospect.website || 'fsidigital.ca';
@@ -237,7 +237,10 @@ export class AuthorityEngine {
                 await updateOutreachProspectInSheet(prospect.rowIndex, {
                   status: 'sent',
                   sentAt: new Date().toISOString(),
-                  deliveryStatus: 'delivered',
+                  // Provider acceptance is not proof of inbox delivery; delivery webhooks
+                  // are the only path allowed to advance this value to "delivered".
+                  deliveryStatus: 'provider_accepted',
+                  providerMessageId: sendResult.providerMessageId || '',
                 });
 
                 await globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_SENT, {

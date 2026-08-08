@@ -1,4 +1,5 @@
 import { google } from "googleapis"
+import { randomUUID } from "crypto"
 import {
   calculateLeadIntelligence,
   LEAD_CONSENT_TEXT,
@@ -1290,6 +1291,17 @@ export interface OutreachProspect {
   replied: boolean;
   positiveConversation: boolean;
   backlinkEarned: boolean;
+  prospectId?: string;
+  campaignId?: string;
+  source?: string;
+  sourceUrl?: string;
+  createdAt?: string;
+  providerMessageId?: string;
+  deliveredAt?: string;
+  repliedAt?: string;
+  checkoutAt?: string;
+  paymentId?: string;
+  revenue?: string;
 }
 
 const OUTREACH_PROSPECTS_HEADERS = [
@@ -1304,7 +1316,18 @@ const OUTREACH_PROSPECTS_HEADERS = [
   "Delivery Status",
   "Replied",
   "Positive Conversation",
-  "Backlink Earned"
+  "Backlink Earned",
+  "Prospect ID",
+  "Campaign ID",
+  "Source",
+  "Source URL",
+  "Created At",
+  "Provider Message ID",
+  "Delivered At",
+  "Replied At",
+  "Checkout At",
+  "Payment ID",
+  "Revenue"
 ];
 
 export async function ensureOutreachProspectsSheet(sheets: any, spreadsheetId: string) {
@@ -1335,14 +1358,14 @@ export async function ensureOutreachProspectsSheet(sheets: any, spreadsheetId: s
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:L1`,
+    range: `${SHEET_TITLE}!A1:W1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join("|") !== OUTREACH_PROSPECTS_HEADERS.join("|")) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:L1`,
+      range: `${SHEET_TITLE}!A1:W1`,
       valueInputOption: "RAW",
       requestBody: {
         values: [OUTREACH_PROSPECTS_HEADERS],
@@ -1361,7 +1384,7 @@ export async function getOutreachProspectsFromSheet(): Promise<OutreachProspect[
 
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: "OutreachProspects!A:L",
+      range: "OutreachProspects!A:W",
     });
 
     const rows = response.data.values || [];
@@ -1384,6 +1407,17 @@ export async function getOutreachProspectsFromSheet(): Promise<OutreachProspect[
         replied: row[9] === "TRUE" || row[9] === "true",
         positiveConversation: row[10] === "TRUE" || row[10] === "true",
         backlinkEarned: row[11] === "TRUE" || row[11] === "true",
+        prospectId: row[12] || "",
+        campaignId: row[13] || "",
+        source: row[14] || "",
+        sourceUrl: row[15] || "",
+        createdAt: row[16] || "",
+        providerMessageId: row[17] || "",
+        deliveredAt: row[18] || "",
+        repliedAt: row[19] || "",
+        checkoutAt: row[20] || "",
+        paymentId: row[21] || "",
+        revenue: row[22] || "",
       });
     }
 
@@ -1409,7 +1443,7 @@ export async function updateOutreachProspectInSheet(
     // Get the current row values to patch
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `OutreachProspects!A${sheetRowNumber}:L${sheetRowNumber}`,
+      range: `OutreachProspects!A${sheetRowNumber}:W${sheetRowNumber}`,
     });
 
     const currentRow = response.data.values?.[0] || [];
@@ -1426,10 +1460,21 @@ export async function updateOutreachProspectInSheet(
     const replied = updates.replied !== undefined ? String(updates.replied).toUpperCase() : (currentRow[9] || "FALSE");
     const positiveConversation = updates.positiveConversation !== undefined ? String(updates.positiveConversation).toUpperCase() : (currentRow[10] || "FALSE");
     const backlinkEarned = updates.backlinkEarned !== undefined ? String(updates.backlinkEarned).toUpperCase() : (currentRow[11] || "FALSE");
+    const prospectId = updates.prospectId !== undefined ? updates.prospectId : (currentRow[12] || "");
+    const campaignId = updates.campaignId !== undefined ? updates.campaignId : (currentRow[13] || "");
+    const source = updates.source !== undefined ? updates.source : (currentRow[14] || "");
+    const sourceUrl = updates.sourceUrl !== undefined ? updates.sourceUrl : (currentRow[15] || "");
+    const createdAt = updates.createdAt !== undefined ? updates.createdAt : (currentRow[16] || "");
+    const providerMessageId = updates.providerMessageId !== undefined ? updates.providerMessageId : (currentRow[17] || "");
+    const deliveredAt = updates.deliveredAt !== undefined ? updates.deliveredAt : (currentRow[18] || "");
+    const repliedAt = updates.repliedAt !== undefined ? updates.repliedAt : (currentRow[19] || "");
+    const checkoutAt = updates.checkoutAt !== undefined ? updates.checkoutAt : (currentRow[20] || "");
+    const paymentId = updates.paymentId !== undefined ? updates.paymentId : (currentRow[21] || "");
+    const revenue = updates.revenue !== undefined ? updates.revenue : (currentRow[22] || "");
 
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `OutreachProspects!A${sheetRowNumber}:L${sheetRowNumber}`,
+      range: `OutreachProspects!A${sheetRowNumber}:W${sheetRowNumber}`,
       valueInputOption: "RAW",
       requestBody: {
         values: [[
@@ -1444,7 +1489,18 @@ export async function updateOutreachProspectInSheet(
           deliveryStatus,
           replied,
           positiveConversation,
-          backlinkEarned
+          backlinkEarned,
+          prospectId,
+          campaignId,
+          source,
+          sourceUrl,
+          createdAt,
+          providerMessageId,
+          deliveredAt,
+          repliedAt,
+          checkoutAt,
+          paymentId,
+          revenue
         ]],
       },
     });
@@ -1464,7 +1520,21 @@ export async function seedOutreachProspects(prospects: Omit<OutreachProspect, "r
 
     await ensureOutreachProspectsSheet(sheets, spreadsheetId);
 
-    const values = prospects.map((p) => [
+    const existingResponse = await sheets.spreadsheets.values.get({
+      spreadsheetId,
+      range: "OutreachProspects!A2:C",
+    });
+    const existingKeys = new Set(
+      (existingResponse.data.values || []).map((row) => `${String(row[0] || '').toLowerCase()}|${String(row[2] || '').toLowerCase()}`)
+    );
+    const now = new Date().toISOString();
+    const uniqueProspects = prospects.filter((p) => {
+      const key = `${p.website.toLowerCase()}|${p.email.toLowerCase()}`;
+      if (existingKeys.has(key)) return false;
+      existingKeys.add(key);
+      return true;
+    });
+    const values = uniqueProspects.map((p) => [
       p.website,
       p.prospectName,
       p.email,
@@ -1477,23 +1547,65 @@ export async function seedOutreachProspects(prospects: Omit<OutreachProspect, "r
       String(p.replied).toUpperCase(),
       String(p.positiveConversation).toUpperCase(),
       String(p.backlinkEarned).toUpperCase(),
+      p.prospectId || randomUUID(),
+      p.campaignId || "authority_discovery_v1",
+      p.source || "authority_discovery",
+      p.sourceUrl || p.website,
+      p.createdAt || now,
+      p.providerMessageId || "",
+      p.deliveredAt || "",
+      p.repliedAt || "",
+      p.checkoutAt || "",
+      p.paymentId || "",
+      p.revenue || "",
     ]);
+
+    if (values.length === 0) {
+      return { success: true, inserted: 0, duplicateCount: prospects.length };
+    }
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "OutreachProspects!A:L",
+      range: "OutreachProspects!A:W",
       valueInputOption: "RAW",
       requestBody: {
         values,
       },
     });
 
-    console.log(`✅ Seeded ${prospects.length} prospects into "OutreachProspects" tab.`);
-    return { success: true };
+    console.log(`✅ Seeded ${values.length} prospects into "OutreachProspects" tab.`);
+    return { success: true, inserted: values.length, duplicateCount: prospects.length - values.length };
   } catch (error) {
     console.error("❌ Failed to seed outreach prospects:", error);
     return { success: false, error };
   }
+}
+
+/** Applies a signed provider event to the exact outbound message that produced it. */
+export async function updateOutreachProspectFromDeliveryEvent(
+  providerMessageId: string,
+  eventType: string,
+  occurredAt: string
+) {
+  if (!providerMessageId) return { updated: false };
+  const prospects = await getOutreachProspectsFromSheet();
+  const prospect = prospects.find((item) => item.providerMessageId === providerMessageId);
+  if (!prospect) return { updated: false };
+
+  if (eventType === 'email.delivered') {
+    return updateOutreachProspectInSheet(prospect.rowIndex, {
+      status: 'delivered',
+      deliveryStatus: 'delivered',
+      deliveredAt: occurredAt,
+    });
+  }
+  if (eventType === 'email.bounced' || eventType === 'email.complained') {
+    return updateOutreachProspectInSheet(prospect.rowIndex, {
+      status: eventType === 'email.bounced' ? 'bounced' : 'complained',
+      deliveryStatus: eventType,
+    });
+  }
+  return { updated: false };
 }
 
 // ═══════════════════════════════════════════════════════════════════════════════

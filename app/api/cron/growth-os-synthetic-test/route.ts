@@ -14,17 +14,7 @@ interface ChannelTestResult {
 
 export async function GET(request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization")
-    const searchParams = request.nextUrl.searchParams
-    const keyParam = searchParams.get("key")
-
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json(
         { error: "Unauthorized Synthetic Test execution. Access denied." },
         { status: 401 }

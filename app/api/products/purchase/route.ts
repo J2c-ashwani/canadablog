@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 import { verifyPayPalOrder } from '@/lib/payments/paypal';
-import { recordPurchase, getAllPurchases } from '@/lib/products/purchase-store';
+import { recordPurchase, getAllPurchases, updatePurchaseDeliveryStatus } from '@/lib/products/purchase-store';
 import { getProduct } from '@/lib/products/catalog';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
@@ -11,7 +11,8 @@ import { ensureScopedSubscriberTokens, SubscriberRepository } from '@/lib/leads/
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 import {
   getProductPaymentIntent,
-  markProductPaymentIntentCompleted,
+  markProductPaymentIntentFulfilled,
+  recordProductPaymentCapture,
 } from '@/lib/payments/product-payment-intents';
 import { grantEntitlements } from '@/lib/products/entitlements';
 
@@ -46,193 +47,17 @@ function stringValue(value: unknown, fallback = ''): string {
   return typeof value === 'string' ? value : fallback;
 }
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const adminKey = searchParams.get("key");
-  const email = searchParams.get("email");
-  const name = searchParams.get("name") || "Chintan Kakani";
-  const productId = searchParams.get("product") || "funding-match-report";
-  const amount = searchParams.get("amount") || "19.00";
-  const paypalOrderId = searchParams.get("order") || `MANUAL-${Date.now()}`;
-
-  if (adminKey !== "fsi2026admin") {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  if (!email || !email.includes("@")) {
-    return NextResponse.json({ error: "Valid email parameter required" }, { status: 400 });
-  }
-
-  try {
-    const profileData = {
-      province: searchParams.get("province") || "ON",
-      industry: searchParams.get("industry") || "E-commerce and SaaS",
-      revenue: "startup",
-      goal: "E-commerce setup and marketing",
-    };
-
-    const purchase = await recordPurchase({
-      email,
-      name,
-      productId,
-      amount,
-      paypalOrderId,
-      profileData,
-      attribution: { utmSource: "admin_manual_dispatch" },
-    });
-
-    await grantEntitlements({
-      purchaseId: purchase.purchaseId,
-      email,
-      productId,
-      orderId: paypalOrderId,
-    });
-
-    await SubscriberRepository.updateSubscriberPreferences(email, {
-      reportPurchased: true,
-      reportTransactionId: paypalOrderId,
-      offlineStatus: "Report Buyer",
-      leadActivity: JSON.stringify({
-        paymentCompletedAt: new Date().toISOString(),
-        purchasedProductId: productId,
-        manualDispatch: true,
-      }),
-    });
-
-    const tokens = await ensureScopedSubscriberTokens(email);
-    const accessToken = purchase.accessToken || tokens?.loginToken || "token_manual_access";
-
-    const emailContent = buildPurchaseEmail({
-      name,
-      email,
-      accessToken,
-      paypalOrderId,
-      productName: "Funding Match Report ($19 USD)",
-      amount,
-    });
-
-    const emailResult = await sendEmail({
-      to: email,
-      subject: emailContent.subject,
-      html: emailContent.html,
-      text: emailContent.text,
-      tagType: "product_purchase",
-    });
-
-    return NextResponse.json({
-      success: true,
-      emailSent: emailResult.success,
-      accessToken,
-      reportUrl: `https://www.fsidigital.ca/products/report?token=${accessToken}`,
-      downloadUrl: `https://www.fsidigital.ca/api/products/download-pdf?token=${accessToken}`,
-      message: `Report successfully dispatched to ${email}`,
-    });
-  } catch (err: any) {
-    console.error("❌ Admin manual dispatch failed:", err);
-    return NextResponse.json({ error: err.message || String(err) }, { status: 500 });
-  }
-}
-
 export async function POST(request: NextRequest) {
   let lockKey = '';
   try {
     const body = await request.json();
-    const adminKey = String(body.adminKey || '');
     const paymentIntentId = String(body.paymentIntentId || '');
-    const paypalOrderId = String(body.paypalOrderId || `MANUAL-${Date.now()}`);
+    const paypalOrderId = String(body.paypalOrderId || '');
 
-    // Admin Manual Dispatch Override
-    if (adminKey === "fsi2026admin") {
-      try {
-        const email = String(body.email || '');
-        const name = String(body.name || 'Chintan Kakani');
-        const productId = String(body.productId || 'funding-match-report');
-        const amount = String(body.amount || '19.00');
-
-        if (!email || !email.includes('@')) {
-          return NextResponse.json({ error: 'Valid email parameter required' }, { status: 400 });
-        }
-
-        const profileData = {
-          province: stringValue(body.province, 'ON'),
-          industry: stringValue(body.industry, 'E-commerce and SaaS'),
-          revenue: 'startup',
-          goal: 'E-commerce setup and marketing',
-        };
-
-        const purchase = await recordPurchase({
-          email,
-          name,
-          productId,
-          amount,
-          paypalOrderId,
-          profileData,
-          attribution: { utmSource: 'admin_manual_dispatch' },
-        });
-
-        try {
-          await grantEntitlements({
-            purchaseId: purchase.purchaseId,
-            email,
-            productId,
-            orderId: paypalOrderId,
-          });
-        } catch (entErr) {
-          console.warn('⚠️ grantEntitlements failed (non-blocking):', entErr);
-        }
-
-        try {
-          await SubscriberRepository.updateSubscriberPreferences(email, {
-            reportPurchased: true,
-            reportTransactionId: paypalOrderId,
-            offlineStatus: 'Report Buyer',
-            leadActivity: JSON.stringify({
-              paymentCompletedAt: new Date().toISOString(),
-              purchasedProductId: productId,
-              manualDispatch: true,
-            }),
-          });
-        } catch (crmErr) {
-          console.warn('⚠️ CRM update failed (non-blocking):', crmErr);
-        }
-
-        let accessToken = purchase.accessToken;
-        try {
-          const tokens = await ensureScopedSubscriberTokens(email);
-          if (tokens?.loginToken) accessToken = tokens.loginToken;
-        } catch (tokenErr) {
-          console.warn('⚠️ Token generation failed (using purchase.accessToken fallback):', tokenErr);
-        }
-
-        const emailContent = buildPurchaseEmail({
-          name,
-          email,
-          accessToken,
-          paypalOrderId,
-          productName: 'Funding Match Report ($19 USD)',
-          amount,
-        });
-
-        const emailResult = await sendEmail({
-          to: email,
-          subject: emailContent.subject,
-          html: emailContent.html,
-          text: emailContent.text,
-          tagType: 'product_purchase',
-        });
-
-        return NextResponse.json({
-          success: true,
-          emailSent: emailResult.success,
-          accessToken,
-          reportUrl: `https://www.fsidigital.ca/products/report?token=${accessToken}`,
-          downloadUrl: `https://www.fsidigital.ca/api/products/download-pdf?token=${accessToken}`,
-          message: `Report successfully dispatched to ${email}`,
-        });
-      } catch (adminErr: any) {
-        console.error("❌ Admin manual dispatch failed inside POST:", adminErr);
-        return NextResponse.json({ error: `Admin dispatch failed: ${adminErr.message || String(adminErr)}` }, { status: 500 });
-      }
+    // A paid entitlement can only originate from a server-created payment intent.
+    // Historical exceptions belong in the reconciliation workflow, never this public route.
+    if (body.adminKey) {
+      return NextResponse.json({ error: 'Manual fulfilment is disabled on the public purchase endpoint.' }, { status: 403 });
     }
 
     if (!paypalOrderId) {
@@ -242,42 +67,14 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Lookup payment intent by paymentIntentId or fallback to paypalOrderId
+    // Lookup a server-created payment intent by its internal ID or provider order ID.
     const lookupId = paymentIntentId || paypalOrderId;
-    let paymentIntent = await getProductPaymentIntent(lookupId);
-
-    // Fallback: If paymentIntent is not found in database, construct synthetic intent from POST body
+    const paymentIntent = await getProductPaymentIntent(lookupId);
     if (!paymentIntent) {
-      const email = String(body.email || '');
-      const name = String(body.name || 'Valued Customer');
-      const productId = String(body.productId || 'funding-match-report');
-      const expectedAmount = String(body.amount || '19.00');
-
-      if (email && email.includes('@')) {
-        console.log(`ℹ️ Payment intent not found for ${lookupId}. Constructing fallback intent for ${email}`);
-        paymentIntent = {
-          intentId: paymentIntentId || `syn_${Date.now()}`,
-          paypalOrderId: paypalOrderId,
-          email,
-          name,
-          productId,
-          addons: body.addons || {},
-          expectedAmount,
-          currency: 'USD',
-          profileData: body.profileData || {
-            province: body.province || 'ON',
-            industry: body.industry || 'General Business',
-            revenue: 'startup',
-            goal: 'Funding Eligibility Assessment',
-          },
-          attribution: body.attribution || { utmSource: 'fallback_fulfillment' },
-          sessionId: body.sessionId || 'sess_anonymous',
-          status: 'created',
-          createdAt: new Date().toISOString(),
-        };
-      } else {
-        return NextResponse.json({ error: 'Invalid payment intent.' }, { status: 403 });
-      }
+      return NextResponse.json({ error: 'Payment intent not found. Start checkout again.' }, { status: 409 });
+    }
+    if (!paymentIntent.paypalOrderId || paymentIntent.paypalOrderId !== paypalOrderId) {
+      return NextResponse.json({ error: 'Payment order does not match the server-created intent.' }, { status: 409 });
     }
 
     const {
@@ -303,7 +100,7 @@ export async function POST(request: NextRequest) {
     };
 
     // ── Idempotency Check & Concurrency Wait Lock ──
-    lockKey = paymentIntentId;
+    lockKey = paymentIntent.intentId;
     if (activeLocks.has(lockKey)) {
       console.log(`⏳ Concurrent request lock hit for ${lockKey}. Waiting...`);
       let checks = 0;
@@ -320,7 +117,19 @@ export async function POST(request: NextRequest) {
       );
       if (existingPurchase) {
         console.log(`ℹ️ Duplicate purchase request resolved. Order ID: ${paypalOrderId}. Returning existing token: ${existingPurchase.accessToken}`);
-        await markProductPaymentIntentCompleted(paymentIntentId);
+        if (paymentIntent.status === 'captured' || paymentIntent.status === 'completed') {
+          await grantEntitlements({
+            purchaseId: existingPurchase.purchaseId,
+            email,
+            productId,
+            orderId: paypalOrderId,
+          });
+          await markProductPaymentIntentFulfilled(
+            paymentIntent.intentId,
+            existingPurchase.purchaseId,
+            existingPurchase.deliveryStatus || 'retry_pending'
+          );
+        }
         const credentials = await ensureScopedSubscriberTokens(email);
         const deliveryUrl = productId === 'strategy-audit' || productId === 'strategy-vip'
           ? credentials ? `/booking?token=${encodeURIComponent(credentials.loginToken)}` : ''
@@ -409,7 +218,7 @@ export async function POST(request: NextRequest) {
       paypalOrderId,
       expectedPrice.toFixed(2),
       {
-        customId: paymentIntentId,
+        customId: paymentIntent.intentId,
         referenceId: productId,
         currency: paymentIntent.currency,
       }
@@ -447,6 +256,9 @@ export async function POST(request: NextRequest) {
           profileData: normalizedProfileData,
           attribution: resolvedAttribution,
           status: 'pending_review',
+          currency: paymentIntent.currency,
+          paymentStatus: 'verification_failed',
+          deliveryStatus: 'not_triggered',
         });
         console.log(`📋 Order ${paypalOrderId} placed in MANUAL REVIEW queue. Purchase ID: ${pendingPurchase.purchaseId}`);
 
@@ -512,6 +324,9 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    const paypalCaptureId = 'captureId' in verification ? verification.captureId || '' : '';
+    await recordProductPaymentCapture(paymentIntent.intentId, paypalCaptureId);
+
     // ── Record main purchase in Google Sheets ──
     const purchase = await recordPurchase({
       email,
@@ -521,6 +336,10 @@ export async function POST(request: NextRequest) {
       paypalOrderId,
       profileData: normalizedProfileData,
       attribution: resolvedAttribution,
+      currency: paymentIntent.currency,
+      paypalCaptureId,
+      paymentStatus: 'provider_capture_verified',
+      deliveryStatus: 'retry_pending',
     });
     await grantEntitlements({
       purchaseId: purchase.purchaseId,
@@ -540,6 +359,10 @@ export async function POST(request: NextRequest) {
           paypalOrderId,
           profileData: normalizedProfileData,
           attribution: resolvedAttribution,
+          currency: paymentIntent.currency,
+          paypalCaptureId,
+          paymentStatus: 'provider_capture_verified',
+          deliveryStatus: 'retry_pending',
         });
         await grantEntitlements({
           purchaseId: addonPurchase.purchaseId,
@@ -563,6 +386,10 @@ export async function POST(request: NextRequest) {
           paypalOrderId,
           profileData: normalizedProfileData,
           attribution: resolvedAttribution,
+          currency: paymentIntent.currency,
+          paypalCaptureId,
+          paymentStatus: 'provider_capture_verified',
+          deliveryStatus: 'retry_pending',
         });
         await grantEntitlements({
           purchaseId: addonPurchase.purchaseId,
@@ -586,6 +413,10 @@ export async function POST(request: NextRequest) {
           paypalOrderId,
           profileData: normalizedProfileData,
           attribution: resolvedAttribution,
+          currency: paymentIntent.currency,
+          paypalCaptureId,
+          paymentStatus: 'provider_capture_verified',
+          deliveryStatus: 'retry_pending',
         });
         await grantEntitlements({
           purchaseId: addonPurchase.purchaseId,
@@ -811,19 +642,30 @@ export async function POST(request: NextRequest) {
       amount: expectedPrice.toFixed(2),
     });
 
-    await sendEmail({
+    const emailResult = await sendEmail({
       to: email,
       subject: emailContent.subject,
       html: emailContent.html,
       text: emailContent.text,
       tagType: 'product-purchase',
     });
+    await updatePurchaseDeliveryStatus(
+      purchase.purchaseId,
+      emailResult.success ? 'provider_accepted' : 'retry_pending',
+      emailResult.providerMessageId || ''
+    ).catch((deliveryLedgerError) => {
+      console.error('❌ Could not persist product delivery state:', deliveryLedgerError);
+    });
 
     console.log(
       `✅ Product purchase completed: ${product.name} with addons for ${email} (order: ${paypalOrderId})`
     );
 
-    await markProductPaymentIntentCompleted(paymentIntentId);
+    await markProductPaymentIntentFulfilled(
+      paymentIntent.intentId,
+      purchase.purchaseId,
+      emailResult.success ? 'provider_accepted' : 'retry_pending'
+    );
 
     // ── Return success ──
     const deliveryUrl = (productId === 'strategy-audit' || productId === 'strategy-vip' || addons?.strategySession)

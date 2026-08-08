@@ -143,21 +143,21 @@ export async function GET(request: NextRequest) {
       } else {
         errors.push({ email: sub.email || "unknown", error: result.error })
         console.error(`❌ Failed to send email to ${sub.email}:`, result.error)
-        
-        // Still update rows to mark them as tried so we don't loop indefinitely
-        await updateAllRowsForEmail(sub.email, config.campaignId)
+        // Do not advance campaign state for an unsuccessful provider call. The
+        // recipient stays eligible for the next controlled retry instead of
+        // being incorrectly represented as contacted.
       }
 
       // 1 second delay between sends
       await new Promise(resolve => setTimeout(resolve, 1000))
     }
 
-    // 5. Update progress counts (sentCount tracks all attempted dispatches)
-    const updatedSentCount = config.sentCount + batch.length
+    // 5. Update progress counts only for provider-accepted messages.
+    const updatedSentCount = config.sentCount + successCount
     config.sentCount = updatedSentCount
     
     // Check if we just completed all remaining targets
-    if (pendingLeads.length - batch.length <= 0) {
+    if (pendingLeads.length - successCount <= 0) {
       config.status = "completed"
     }
 
@@ -174,10 +174,7 @@ export async function GET(request: NextRequest) {
       remainingTargets: Math.max(0, pendingLeads.length - batch.length),
       campaignStatus: config.status,
       errors: errors.length > 0 ? errors : undefined,
-      senderKeyDiagnostics: {
-        length: process.env.SENDER_API_KEY ? process.env.SENDER_API_KEY.length : 0,
-        snippet: process.env.SENDER_API_KEY ? `${process.env.SENDER_API_KEY.slice(0, 6)}...${process.env.SENDER_API_KEY.slice(-6)}` : 'none'
-      }
+      deliveryState: "provider_accepted_only",
     })
 
   } catch (err: any) {

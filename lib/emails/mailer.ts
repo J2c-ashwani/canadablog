@@ -103,7 +103,7 @@ async function sendViaBrevo({
   text: string;
   tagType: string;
   from?: string;
-}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
+}): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string }> {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) return { success: false, skipped: true };
 
@@ -136,77 +136,11 @@ async function sendViaBrevo({
       return { success: false, error: errorText };
     }
 
-    console.log(`✉️ Email successfully sent to ${to} via Brevo fallback [${tagType}]`);
-    return { success: true };
+    const payload = await response.json().catch(() => ({})) as { messageId?: string };
+    console.log(`✉️ Email accepted by Brevo for ${to} [${tagType}]`);
+    return { success: true, provider: 'brevo', providerMessageId: payload.messageId || '' };
   } catch (error) {
     console.warn(`Brevo email exception [${tagType}]: ${error}`);
-    return { success: false, error: String(error) };
-  }
-}
-
-async function sendViaSenderNet({
-  to,
-  subject,
-  html,
-  text,
-  tagType,
-  from
-}: {
-  to: string;
-  subject: string;
-  html: string;
-  text: string;
-  tagType: string;
-  from?: string;
-}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
-  const senderApiKey = process.env.SENDER_API_KEY;
-  if (!senderApiKey) return { success: false, skipped: true };
-
-  const defaultEmail = process.env.SENDER_FROM_EMAIL || 'partners@fsidigital.ca';
-  const defaultName = process.env.SENDER_FROM_NAME || 'FSI Digital';
-
-  const parseAddress = (addr?: string) => {
-    if (!addr) return { email: defaultEmail, name: defaultName };
-    const match = addr.match(/^(?:"?([^"]*)"?\s)?<?([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})>?$/);
-    if (match) {
-      return {
-        name: match[1]?.trim() || defaultName,
-        email: match[2]?.trim() || defaultEmail
-      };
-    }
-    return { email: addr, name: defaultName };
-  };
-
-  const fromParsed = parseAddress(from);
-  const toParsed = parseAddress(to);
-
-  try {
-    const response = await fetch('https://api.sender.net/v2/message/send', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Accept': 'application/json',
-        'Authorization': `Bearer ${senderApiKey}`,
-      },
-      body: JSON.stringify({
-        from: { email: fromParsed.email, name: fromParsed.name },
-        to: { email: toParsed.email, name: toParsed.name },
-        subject,
-        html,
-        text,
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.warn(`Sender.net email failed [${tagType}]: ${errorText}`);
-      return { success: false, error: errorText };
-    }
-
-    console.log(`✉️ Email successfully sent to ${toParsed.email} via Sender.net [${tagType}]`);
-    return { success: true };
-  } catch (error) {
-    console.warn(`Sender.net email exception [${tagType}]: ${error}`);
     return { success: false, error: String(error) };
   }
 }
@@ -227,7 +161,7 @@ async function sendViaResend({
   tagType: string;
   companyName?: string;
   from?: string;
-}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
+}): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string }> {
   const apiKey = process.env.RESEND_API_KEY;
   const fromEmail = from || process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
   const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
@@ -264,8 +198,9 @@ async function sendViaResend({
       return { success: false, error: errorText };
     }
 
-    console.log(`✉️ Email successfully sent to ${to} via Resend [${tagType}]`);
-    return { success: true };
+    const payload = await response.json().catch(() => ({})) as { id?: string };
+    console.log(`✉️ Email accepted by Resend for ${to} [${tagType}]`);
+    return { success: true, provider: 'resend', providerMessageId: payload.id || '' };
   } catch (error) {
     console.error(`Resend email exception [${tagType}]:`, error);
     return { success: false, error: String(error) };
@@ -290,7 +225,7 @@ export async function sendEmail({
   companyName?: string;
   from?: string;
   forceResend?: boolean;
-}): Promise<{ success: boolean; error?: string; skipped?: boolean }> {
+}): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string }> {
   // Check for global mock (used to compile previews in Next.js ESM context)
   if (typeof global !== "undefined" && (global as any).mockSendEmailActive) {
     if ((global as any).mockSendEmailCallback) {
@@ -300,7 +235,7 @@ export async function sendEmail({
         console.error("Error in mockSendEmailCallback:", e);
       }
     }
-    return { success: true };
+    return { success: true, provider: 'mock' };
   }
 
   // 1. PRIMARY: Always try Resend first (Clean, unbranded, professional signature)
@@ -314,10 +249,10 @@ export async function sendEmail({
     if (brevoResult.success) return brevoResult;
   }
 
-  // 3. FALLBACK 2: Sender.net
-  if (process.env.SENDER_API_KEY) {
-    return sendViaSenderNet({ to, subject, html, text, tagType, from });
-  }
-
-  return resendResult;
+  // Resend and Brevo are the only active production providers. Do not turn an
+  // inactive third-party credential into a false delivery attempt.
+  return {
+    success: false,
+    error: resendResult.error || 'Resend and Brevo could not accept the message.',
+  };
 }

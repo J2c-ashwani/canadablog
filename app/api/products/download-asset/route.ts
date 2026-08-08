@@ -2,7 +2,7 @@ import fs from 'fs/promises';
 import path from 'path';
 import { NextRequest, NextResponse } from 'next/server';
 import { getPurchaseByToken } from '@/lib/products/purchase-store';
-import { hasActiveEntitlement, type EntitlementCapability } from '@/lib/products/entitlements';
+import { hasActiveEntitlement, hasActiveEntitlementForPurchase, type EntitlementCapability } from '@/lib/products/entitlements';
 
 export const runtime = 'nodejs';
 
@@ -43,8 +43,12 @@ export async function GET(request: NextRequest) {
   if (!token || !asset) return NextResponse.json({ error: 'Invalid download request.' }, { status: 400 });
 
   const purchase = await getPurchaseByToken(token);
-  if (!purchase || !['completed', 'processing'].includes(String(purchase.status || '').toLowerCase())) {
+  if (!purchase || !['completed'].includes(String(purchase.status || '').toLowerCase())) {
     return NextResponse.json({ error: 'Purchase access is invalid or revoked.' }, { status: 403 });
+  }
+
+  if (!await hasActiveEntitlementForPurchase(purchase.purchaseId, purchase.productId)) {
+    return NextResponse.json({ error: 'Purchase entitlement is invalid or revoked.' }, { status: 403 });
   }
 
   if (!await hasActiveEntitlement(purchase.email, asset.capability)) {

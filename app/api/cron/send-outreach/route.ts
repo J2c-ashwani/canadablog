@@ -49,17 +49,8 @@ function isNorthStarBusinessHours(): { isHours: boolean; reason: string } {
 }
 
 export async function GET(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
   const searchParams = request.nextUrl.searchParams;
-  const keyParam = searchParams.get("key") || searchParams.get("secret");
-
-  const isAuthorized =
-    isValidCronRequest(request) ||
-    keyParam === "fsi2026admin" ||
-    authHeader === `Bearer fsi2026admin` ||
-    authHeader === `Bearer ${process.env.CRON_SECRET}`;
-
-  if (!isAuthorized) {
+  if (!isValidCronRequest(request)) {
     return NextResponse.json({ error: "Unauthorized cron execution." }, { status: 401 });
   }
 

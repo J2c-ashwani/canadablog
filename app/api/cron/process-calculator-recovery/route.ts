@@ -15,18 +15,10 @@ export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization");
     const searchParams = request.nextUrl.searchParams;
-    const keyParam = searchParams.get("key");
     const force = searchParams.get("force") === "true";
 
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`;
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized calculator recovery cron execution." }, { status: 401 });
     }
 
@@ -84,7 +76,7 @@ export async function GET(request: NextRequest) {
                 name: sub.name,
                 loginToken: sub.loginToken || ""
               });
-              if (res.success || res.skipped) {
+              if (res.success) {
                 activity.successFollowupEmailSentAt = new Date().toISOString();
                 await SubscriberRepository.updateSubscriberPreferences(sub.email, {
                   leadActivity: JSON.stringify(activity)
@@ -135,7 +127,7 @@ export async function GET(request: NextRequest) {
           name: sub.name,
           loginToken: sub.loginToken || ""
         });
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.calcRecoveryEmail1SentAt = new Date().toISOString();
           emailSent = true;
           recovery1Count++;
@@ -163,7 +155,7 @@ export async function GET(request: NextRequest) {
           estimatedMin: platformResult.executiveRecommendation.totalEstimatedFundingMin,
           estimatedMax: platformResult.executiveRecommendation.totalEstimatedFundingMax
         });
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.calcRecoveryEmail2SentAt = new Date().toISOString();
           emailSent = true;
           recovery2Count++;
@@ -182,7 +174,7 @@ export async function GET(request: NextRequest) {
           revenueCode: sub.businessStage || "pre-revenue",
           goalCode: sub.fundingPurpose || "hiring"
         });
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.calcRecoveryEmail3SentAt = new Date().toISOString();
           emailSent = true;
           recovery3Count++;

@@ -1,34 +1,5 @@
 import { randomUUID } from 'crypto';
 import { getGoogleSheetsClient } from '@/lib/google-sheets';
-import fs from 'fs';
-import path from 'path';
-
-const FAILED_LOG_PATH = path.join(process.cwd(), 'lib/data/failed-purchases.json');
-
-function logFailedPurchase(record: any) {
-  try {
-    const logDir = path.dirname(FAILED_LOG_PATH);
-    if (!fs.existsSync(logDir)) {
-      fs.mkdirSync(logDir, { recursive: true });
-    }
-
-    let logs: any[] = [];
-    if (fs.existsSync(FAILED_LOG_PATH)) {
-      try {
-        const fileContent = fs.readFileSync(FAILED_LOG_PATH, 'utf8');
-        logs = JSON.parse(fileContent);
-      } catch (e) {
-        console.error('Failed to parse existing failed-purchases.json, starting fresh:', e);
-      }
-    }
-
-    logs.push(record);
-    fs.writeFileSync(FAILED_LOG_PATH, JSON.stringify(logs, null, 2), 'utf8');
-    console.log(`💾 Failed purchase backed up locally at ${FAILED_LOG_PATH}`);
-  } catch (err) {
-    console.error('❌ Failed to write backup log of failed purchase:', err);
-  }
-}
 
 export interface PurchaseRecord {
   purchaseId: string;
@@ -51,6 +22,11 @@ export interface PurchaseRecord {
   device?: string;
   browser?: string;
   country?: string;
+  currency?: string;
+  paypalCaptureId?: string;
+  paymentStatus?: string;
+  deliveryStatus?: string;
+  deliveryProviderMessageId?: string;
 }
 
 const SHEET_TITLE = 'Product Purchases';
@@ -76,6 +52,11 @@ const PURCHASE_HEADERS = [
   'Device',
   'Browser',
   'Country',
+  'Currency',
+  'Provider Capture ID',
+  'Payment Status',
+  'Delivery Status',
+  'Delivery Provider Message ID',
 ];
 
 async function ensurePurchaseSheet(
@@ -110,14 +91,14 @@ async function ensurePurchaseSheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:T1`,
+    range: `${SHEET_TITLE}!A1:Y1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== PURCHASE_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:T1`,
+      range: `${SHEET_TITLE}!A1:Y1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [PURCHASE_HEADERS],
@@ -146,8 +127,14 @@ export async function recordPurchase(data: {
     country?: string;
   };
   status?: string;
+  currency?: string;
+  paypalCaptureId?: string;
+  paymentStatus?: string;
+  deliveryStatus?: string;
+  deliveryProviderMessageId?: string;
 }): Promise<PurchaseRecord> {
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '1GAt0DTPzPAQXI9j4JwtlFLhLw4fTzf2XmMHttytu9To';
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
 
   const purchaseId = randomUUID();
   const accessToken = randomUUID();
@@ -176,6 +163,11 @@ export async function recordPurchase(data: {
     device: data.attribution?.device || '',
     browser: data.attribution?.browser || '',
     country: data.attribution?.country || '',
+    currency: data.currency || 'USD',
+    paypalCaptureId: data.paypalCaptureId || '',
+    paymentStatus: data.paymentStatus || 'unverified',
+    deliveryStatus: data.deliveryStatus || 'pending',
+    deliveryProviderMessageId: data.deliveryProviderMessageId || '',
   };
 
   try {
@@ -203,18 +195,26 @@ export async function recordPurchase(data: {
         data.attribution?.device || '',
         data.attribution?.browser || '',
         data.attribution?.country || '',
+        data.currency || 'USD',
+        data.paypalCaptureId || '',
+        data.paymentStatus || 'unverified',
+        data.deliveryStatus || 'pending',
+        data.deliveryProviderMessageId || '',
       ];
-      await sheets.spreadsheets.values.append({
+      const appendResult = await sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: `${SHEET_TITLE}!A:T`,
+        range: `${SHEET_TITLE}!A:Y`,
         valueInputOption: 'RAW',
         requestBody: { values: [row] },
       });
+      if ((appendResult.data.updates?.updatedRows || 0) !== 1) {
+        throw new Error('Purchase ledger write was not confirmed by Google Sheets.');
+      }
       console.log(`✅ Product purchase recorded in Google Sheets: ${purchaseId} for ${data.email}`);
     }
   } catch (sheetErr: any) {
-    console.error('⚠️ Google Sheets recording failed (non-blocking backup active):', sheetErr?.message || sheetErr);
-    logFailedPurchase(record);
+    console.error('❌ Google Sheets purchase-ledger write failed:', sheetErr?.message || sheetErr);
+    throw new Error('Purchase could not be durably recorded. Fulfilment was not started.');
   }
 
   return record;
@@ -222,7 +222,7 @@ export async function recordPurchase(data: {
 
 export async function getAllPurchases(): Promise<PurchaseRecord[]> {
   const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
   if (!spreadsheetId) {
     throw new Error('GOOGLE_SHEET_ID environment variable is missing');
@@ -231,7 +231,7 @@ export async function getAllPurchases(): Promise<PurchaseRecord[]> {
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:T`,
+      range: `${SHEET_TITLE}!A:Y`,
     });
 
     const rows = response.data.values || [];
@@ -249,96 +249,48 @@ export async function getAllPurchases(): Promise<PurchaseRecord[]> {
   }
 }
 
+/** Records provider acceptance separately from actual email delivery. */
+export async function updatePurchaseDeliveryStatus(
+  purchaseId: string,
+  deliveryStatus: string,
+  providerMessageId = ''
+): Promise<void> {
+  const sheets = await getGoogleSheetsClient();
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
+
+  await ensurePurchaseSheet(sheets, spreadsheetId);
+  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:Y` });
+  const rows = response.data.values || [];
+  const dataIndex = rows.findIndex((row) => row[0] === purchaseId);
+  if (dataIndex < 0) throw new Error(`Purchase ${purchaseId} was not found in the ledger.`);
+
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!X${dataIndex + 2}:Y${dataIndex + 2}`,
+    valueInputOption: 'RAW',
+    requestBody: { values: [[deliveryStatus, providerMessageId]] },
+  });
+}
+
 export async function getPurchaseByToken(token: string): Promise<PurchaseRecord | null> {
   const normalizedToken = String(token || '').trim().toLowerCase();
-
-  // Instant fallback for Chintan Kakani tokens
-  if (normalizedToken.includes('chintan') || normalizedToken.includes('08da6e3b-f795-4653-9193-9a6dcf42d730')) {
-    return {
-      purchaseId: '3e7b9d6a-6e85-45ce-8962-c61934e2a544',
-      email: 'chintankakani@gmail.com',
-      name: 'Chintan Kakani',
-      productId: 'funding-match-report',
-      amount: '19.00',
-      paypalOrderId: '6B784594LT354905D',
-      accessToken: token,
-      profileData: JSON.stringify({
-        province: 'on',
-        industry: 'technology',
-        revenue: 'pre-revenue',
-        goal: 'research',
-      }),
-      createdAt: '2026-08-05T13:40:40.690Z',
-      status: 'completed',
-      landingPage: '/products/funding-match-report',
-      referrer: 'direct',
-      utmSource: 'email',
-    };
-  }
-
-  // Instant fallback for Puja tokens
-  if (normalizedToken.includes('puja') || normalizedToken.includes('8f4dfbaa-6d0d-437a-b32f-56038593fc8f')) {
-    return {
-      purchaseId: '8f4dfbaa-6d0d-437a-b32f-56038593fc8f',
-      email: 'puja@fsidigital.ca',
-      name: 'Puja',
-      productId: 'funding-match-report',
-      amount: '19.00',
-      paypalOrderId: 'PUJA-PAYPAL-102',
-      accessToken: token,
-      profileData: JSON.stringify({
-        province: 'Ontario',
-        industry: 'Healthcare & Life Sciences',
-        revenue: 'pre-revenue',
-        goal: 'R&D product development and hiring',
-      }),
-      createdAt: '2026-08-05T14:10:00.000Z',
-      status: 'completed',
-      landingPage: '/products/funding-match-report',
-      referrer: 'direct',
-      utmSource: 'email',
-    };
-  }
-
-  // Instant fallback for Token 19e3475e-ea67-4bb1-96f6-3810a2c29972
-  if (normalizedToken.includes('19e3475e-ea67-4bb1-96f6-3810a2c29972')) {
-    return {
-      purchaseId: '19e3475e-ea67-4bb1-96f6-3810a2c29972',
-      email: 'client@fsidigital.ca',
-      name: 'Valued Client',
-      productId: 'funding-match-report',
-      amount: '19.00',
-      paypalOrderId: 'PAYPAL-ORD-19E3475E',
-      accessToken: token,
-      profileData: JSON.stringify({
-        province: 'Ontario',
-        industry: 'Technology & Software',
-        revenue: 'pre-revenue',
-        goal: 'R&D product development, MVP launch, and hiring',
-      }),
-      createdAt: '2026-08-05T15:30:00.000Z',
-      status: 'completed',
-      landingPage: '/products/funding-match-report',
-      referrer: 'direct',
-      utmSource: 'email',
-    };
-  }
 
   // 1. Check Google Sheets 'Product Purchases' table
   try {
     const sheets = await getGoogleSheetsClient();
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID || '1GAt0DTPzPAQXI9j4JwtlFLhLw4fTzf2XmMHttytu9To';
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
     if (spreadsheetId) {
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
-        range: `${SHEET_TITLE}!A:T`,
+        range: `${SHEET_TITLE}!A:Y`,
       });
 
       const rows = response.data.values || [];
       for (let i = 1; i < rows.length; i++) {
         const row = rows[i];
-        if (row[6] === normalizedToken || (normalizedToken.toLowerCase().includes('chintan') && row[1]?.toLowerCase().includes('chintankakani'))) {
+        if (String(row[6] || '').trim().toLowerCase() === normalizedToken) {
           return parseRow(row);
         }
       }
@@ -347,59 +299,12 @@ export async function getPurchaseByToken(token: string): Promise<PurchaseRecord 
     console.error('❌ Error reading purchase by token from Sheets:', error);
   }
 
-  // 2. Check local failed-purchases.json backup file
-  try {
-    if (fs.existsSync(FAILED_LOG_PATH)) {
-      const fileContent = fs.readFileSync(FAILED_LOG_PATH, 'utf8');
-      const logs: any[] = JSON.parse(fileContent);
-      for (const log of logs) {
-        if (log.accessToken === normalizedToken || (normalizedToken.toLowerCase().includes('chintan') && log.email?.toLowerCase().includes('chintankakani'))) {
-          return {
-            purchaseId: log.purchaseId || 'syn_backup',
-            email: log.email || 'chintankakani@gmail.com',
-            name: log.name || 'Chintan Kakani',
-            productId: log.productId || 'funding-match-report',
-            amount: log.amount || '19.00',
-            paypalOrderId: log.paypalOrderId || 'MANUAL-CHINTAN-101',
-            accessToken: normalizedToken,
-            profileData: typeof log.profileData === 'string' ? log.profileData : JSON.stringify(log.profileData || { province: 'ON', industry: 'E-commerce and SaaS', revenue: 'startup', goal: 'E-commerce setup and marketing' }),
-            createdAt: log.createdAt || new Date().toISOString(),
-            status: 'completed',
-          };
-        }
-      }
-    }
-  } catch (logErr) {
-    console.error('⚠️ Error reading local failed-purchases.json log:', logErr);
-  }
-
-  // 3. Fallback for Chintan Kakani or email token aliases
-  if (normalizedToken.toLowerCase().includes('chintan')) {
-    return {
-      purchaseId: 'chintan_purch_2026',
-      email: 'chintankakani@gmail.com',
-      name: 'Chintan Kakani',
-      productId: 'funding-match-report',
-      amount: '19.00',
-      paypalOrderId: 'MANUAL-CHINTAN-101',
-      accessToken: normalizedToken,
-      profileData: JSON.stringify({
-        province: 'ON',
-        industry: 'E-commerce and SaaS',
-        revenue: 'startup',
-        goal: 'E-commerce setup and web-to-print platform development',
-      }),
-      createdAt: new Date().toISOString(),
-      status: 'completed',
-    };
-  }
-
   return null;
 }
 
 export async function getPurchasesByEmail(email: string): Promise<PurchaseRecord[]> {
   const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
   if (!spreadsheetId) {
     throw new Error('GOOGLE_SHEET_ID environment variable is missing');
@@ -477,5 +382,10 @@ function parseRow(row: string[]): PurchaseRecord {
     device: row[17] || '',
     browser: row[18] || '',
     country: row[19] || '',
+    currency: row[20] || '',
+    paypalCaptureId: row[21] || '',
+    paymentStatus: row[22] || '',
+    deliveryStatus: row[23] || '',
+    deliveryProviderMessageId: row[24] || '',
   };
 }

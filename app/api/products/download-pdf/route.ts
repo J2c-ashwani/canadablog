@@ -5,7 +5,7 @@ export const dynamic = 'force-dynamic';
 import { generateFundingMatchReport } from '@/lib/products/report-generator';
 import { generateFundingMatchReportPDF } from '@/lib/products/report-pdf';
 import { getPurchaseByToken } from '@/lib/products/purchase-store';
-import { hasActiveEntitlement } from '@/lib/products/entitlements';
+import { hasActiveEntitlement, hasActiveEntitlementForPurchase } from '@/lib/products/entitlements';
 
 /**
  * GET /api/products/download-pdf?token=...
@@ -39,11 +39,9 @@ export async function GET(req: NextRequest) {
       );
     }
 
-    // Verify purchase status grants access.
-    // purchase-store.ts always writes status = 'completed' after PayPal COMPLETED verification.
-    // 'pending' is removed — it's a phantom value that will never appear from this codebase.
-    // 'processing' is kept as an admin-settable support recovery value only.
-    const activeStatuses = ['completed', 'processing'];
+    // A completed ledger row is insufficient by itself; the exact token purchase
+    // needs a durable active entitlement.
+    const activeStatuses = ['completed'];
     const currentStatus = String(purchase.status || '').toLowerCase().trim();
     if (!activeStatuses.includes(currentStatus)) {
       console.warn(`[Download PDF API] Access denied for token ${token}. Status: ${purchase.status}`);
@@ -53,6 +51,12 @@ export async function GET(req: NextRequest) {
           <p style="color:#64748b;font-size:16px;">This purchase status is ${purchase.status || 'unknown'}. Download permissions are restricted. Please contact hello@fsidigital.ca.</p>
         </body></html>`,
         { headers: { 'Content-Type': 'text/html' } }
+      );
+    }
+    if (!(await hasActiveEntitlementForPurchase(purchase.purchaseId, purchase.productId))) {
+      return new NextResponse(
+        `<html><body style="font-family:sans-serif;text-align:center;padding:50px"><h2>Access Denied</h2><p>This purchase has no active entitlement.</p></body></html>`,
+        { status: 403, headers: { 'Content-Type': 'text/html' } }
       );
     }
 

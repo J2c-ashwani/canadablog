@@ -21,6 +21,7 @@ export interface TelemetryEvent {
 }
 
 const SHEET_TITLE = 'Funnel Events';
+let ensuredSpreadsheetId = '';
 
 const TELEMETRY_HEADERS = [
   'Timestamp',
@@ -46,6 +47,7 @@ async function ensureTelemetrySheet(
   sheets: Awaited<ReturnType<typeof getGoogleSheetsClient>>,
   spreadsheetId: string
 ) {
+  if (ensuredSpreadsheetId === spreadsheetId) return;
   const spreadsheet = await sheets.spreadsheets.get({
     spreadsheetId,
     fields: 'sheets.properties.title',
@@ -88,6 +90,7 @@ async function ensureTelemetrySheet(
       },
     });
   }
+  ensuredSpreadsheetId = spreadsheetId;
 }
 
 export async function recordTelemetryEvent(data: {
@@ -109,7 +112,7 @@ export async function recordTelemetryEvent(data: {
   heuristicMetadata?: string;
 }): Promise<void> {
   const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
   if (!spreadsheetId) {
     throw new Error('GOOGLE_SHEET_ID environment variable is missing');
@@ -138,7 +141,7 @@ export async function recordTelemetryEvent(data: {
     data.heuristicMetadata || '',
   ];
 
-  await sheets.spreadsheets.values.append({
+  const appendResult = await sheets.spreadsheets.values.append({
     spreadsheetId,
     range: `${SHEET_TITLE}!A:Q`,
     valueInputOption: 'RAW',
@@ -146,13 +149,16 @@ export async function recordTelemetryEvent(data: {
       values: [row],
     },
   });
+  if ((appendResult.data.updates?.updatedRows || 0) !== 1) {
+    throw new Error('Telemetry write was not confirmed by Google Sheets.');
+  }
 
   console.log(`📊 Telemetry logged: ${data.eventName} (session: ${data.sessionId}, quality: ${data.trafficQualityClassification})`);
 }
 
 export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
   const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
   if (!spreadsheetId) {
     throw new Error('GOOGLE_SHEET_ID environment variable is missing');

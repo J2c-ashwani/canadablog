@@ -1,19 +1,21 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getAllPurchases } from "@/lib/products/purchase-store";
+import { isValidAdminRequest } from "@/lib/admin/auth";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function GET(request: NextRequest) {
-  const { searchParams } = new URL(request.url);
-  const key = searchParams.get("key");
-
-  if (key !== "fsi2026admin") {
+  if (!isValidAdminRequest(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   try {
-    const allPurchases = await getAllPurchases();
+    // A row is revenue only after provider capture verification. Historical rows
+    // lacking this field stay in the reconciliation report, not this dashboard.
+    const allPurchases = (await getAllPurchases()).filter(
+      (purchase) => ['provider_capture_verified', 'stripe_payment_verified'].includes(purchase.paymentStatus || '')
+    );
 
     // Group purchases by customer email to calculate LTV and upgrade paths
     const customerMap: Record<string, {

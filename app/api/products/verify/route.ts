@@ -4,7 +4,7 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 import { generateFundingMatchReport } from '@/lib/products/report-generator';
 import { generateFundingRecommendationPlatform } from '@/lib/products/report-generator';
-import { hasActiveEntitlement } from '@/lib/products/entitlements';
+import { hasActiveEntitlement, hasActiveEntitlementForPurchase } from '@/lib/products/entitlements';
 
 /**
  * GET /api/products/verify?token=...
@@ -34,19 +34,21 @@ export async function GET(req: NextRequest) {
       return NextResponse.json({ error: 'Invalid or expired token' }, { status: 404 });
     }
 
-    // Verify purchase status grants access.
-    // IMPORTANT: purchase-store.ts always writes status = 'completed' after PayPal verification.
-    // The PayPal library rejects any order that is not COMPLETED before recordPurchase() is called,
-    // so 'pending' / 'processing' are phantom values that will never appear in a real row.
-    // We allow a small set of admin-settable recovery values ('processing') for support edge cases only.
-    // Access is DENIED for: refunded, cancelled, failed, failed_sheets_sync, chargeback, expired.
-    const activeStatuses = ['completed', 'processing'];
+    // A ledger state alone never grants access. This binds the access token to a
+    // durable, active entitlement created for the exact verified purchase.
+    const activeStatuses = ['completed'];
     const currentStatus = String(purchase.status || '').toLowerCase().trim();
     if (!activeStatuses.includes(currentStatus)) {
       console.warn(`[Verify API] Access denied for token ${token}. Status: ${purchase.status}`);
       return NextResponse.json({
         error: `Access denied. Purchase status: ${purchase.status || 'unknown'}. Contact support at hello@fsidigital.ca.`
       }, { status: 403 });
+    }
+    if (!(await hasActiveEntitlementForPurchase(purchase.purchaseId, purchase.productId))) {
+      return NextResponse.json(
+        { error: 'Access is not yet entitled for this purchase. Contact support at hello@fsidigital.ca.' },
+        { status: 403 }
+      );
     }
 
     // Parse profileData to generate the report

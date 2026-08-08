@@ -1,6 +1,7 @@
 /**
- * Growth OS — Pub/Sub Domain Event Bus
- * Decouples system capabilities through domain event publishing.
+ * Growth OS — Pub/Sub Domain Event Bus with CEO OS Reactive Event Hooks
+ * Decouples system capabilities through domain event publishing and triggers
+ * 24x7 CEO OS reactive analysis on critical production anomalies.
  */
 
 import { DomainEvent, EventHandler } from "../types"
@@ -32,15 +33,43 @@ class EventBus {
       }
     }
 
+    // ─── 24x7 Reactive CEO Trigger for Critical Production Events ───
+    if (this.isCEOSignificantEvent(eventName)) {
+      this.triggerCEOLoopAsync(eventName, payload)
+    }
+
     return event
+  }
+
+  private isCEOSignificantEvent(eventName: string): boolean {
+    const CRITICAL_EVENTS = [
+      'PaymentFailed',
+      'PaymentCaptured',
+      'IntentMismatchDetected',
+      'ReportDeliveryFailed',
+      'CheckoutAbandoned',
+      'OutboundDispatchStalled',
+      'LeadCaptured'
+    ]
+    return CRITICAL_EVENTS.includes(eventName) || eventName.startsWith('authority.killswitch.')
+  }
+
+  private triggerCEOLoopAsync(eventName: string, payload: any): void {
+    // Asynchronous non-blocking invocation of CEO Agent loop
+    setTimeout(async () => {
+      try {
+        const { CEOAgent } = await import('../../ceo-agent/ceo-agent')
+        console.log(`[EventBus -> CEO OS] ⚡ Critical Event '${eventName}' triggered reactive CEO run...`)
+        await CEOAgent.runCEOLoop('event')
+      } catch (err) {
+        console.error(`[EventBus -> CEO OS] Failed to trigger reactive CEO loop for ${eventName}:`, err)
+      }
+    }, 100)
   }
 }
 
 export const globalEventBus = new EventBus()
 
-// ─── Phase 3: Authority Engine Event Registration ───────────────────────────
-// Pre-register Authority Engine event channels for type-safe publishing.
-// Handlers are attached lazily by the Authority Engine modules at runtime.
 export const AUTHORITY_EVENT_CHANNELS = [
   'authority.opportunity.discovered',
   'authority.opportunity.qualified',

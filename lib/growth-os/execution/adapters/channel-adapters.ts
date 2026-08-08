@@ -12,7 +12,7 @@
 
 export interface ChannelPublishResult {
   channelName: string
-  status: "LIVE_PUBLISHED" | "QUEUED_FOR_APPROVAL" | "MOCK_DEVELOPMENT"
+  status: "LIVE_PUBLISHED" | "API_ACCEPTED" | "GENERATED" | "QUEUED_FOR_APPROVAL" | "MOCK_DEVELOPMENT"
   externalId?: string
   message: string
 }
@@ -49,9 +49,9 @@ export class ChannelAdapters {
     console.log(`[BlogAdapter] Registering commercial blog page: '/blog/${slug}'...`)
     return {
       channelName: "Blog",
-      status: "LIVE_PUBLISHED",
+      status: "GENERATED",
       externalId: `blog_${slug}`,
-      message: `Commercial Blog Page live at /blog/${slug}`,
+      message: `Blog asset generated for /blog/${slug}; no publication verification was performed.`,
     }
   }
 
@@ -79,11 +79,18 @@ export class ChannelAdapters {
         text: body.replace(/<[^>]*>/g, ''),
         tagType: "growth-os-newsletter",
       })
+      if (!result.success) {
+        return {
+          channelName: "Newsletter",
+          status: "QUEUED_FOR_APPROVAL",
+          message: `Newsletter provider did not accept the message: ${result.error || 'unknown error'}`,
+        }
+      }
       return {
         channelName: "Newsletter",
-        status: "LIVE_PUBLISHED",
-        externalId: `resend_${Date.now()}`,
-        message: `Newsletter broadcast dispatched via Resend API: '${subject}'`,
+        status: "API_ACCEPTED",
+        externalId: result.providerMessageId,
+        message: `Newsletter accepted by ${result.provider || 'the email provider'}; delivery is not yet verified.`,
       }
     } catch (err: any) {
       console.error(`[NewsletterAdapter] Error:`, err)
@@ -140,9 +147,9 @@ export class ChannelAdapters {
 
       return {
         channelName: "LinkedIn",
-        status: "LIVE_PUBLISHED",
-        externalId: `li_${Date.now()}`,
-        message: `LinkedIn post published via LinkedIn API v2.`,
+        status: "API_ACCEPTED",
+        externalId: response.headers.get('x-restli-id') || undefined,
+        message: `LinkedIn accepted the post request; public publication has not been independently verified.`,
       }
     } catch (err: any) {
       console.error(`[LinkedInAdapter] Error:`, err)
@@ -166,6 +173,7 @@ export class ChannelAdapters {
         console.log(`[MetaAdapter] Direct posting to Meta Graph API v19.0 for Instagram & Facebook...`)
         
         const fbPageId = process.env.FACEBOOK_PAGE_ID
+        let facebookAccepted = false
         if (fbToken && fbPageId) {
           const fbResponse = await fetchWithRetry(`https://graph.facebook.com/v19.0/${fbPageId}/feed`, {
             method: "POST",
@@ -177,6 +185,8 @@ export class ChannelAdapters {
           })
           if (!fbResponse.ok) {
             console.error(`[MetaAdapter] FB Error: ${fbResponse.statusText}`)
+          } else {
+            facebookAccepted = true
           }
         }
         
@@ -188,9 +198,10 @@ export class ChannelAdapters {
         
         return {
           channelName: "SocialCarousel",
-          status: "LIVE_PUBLISHED",
-          externalId: `meta_graph_${Date.now()}`,
-          message: `Carousel posted directly to Instagram (${process.env.INSTAGRAM_ACCOUNT_ID || 'Active'}) & Facebook (${process.env.FACEBOOK_PAGE_ID || 'Active'}) via Meta Graph API v19.0.`,
+          status: facebookAccepted ? "API_ACCEPTED" : "QUEUED_FOR_APPROVAL",
+          message: facebookAccepted
+            ? "Facebook accepted the post request; Instagram is still not published and public reach is unverified."
+            : "No social platform accepted a publish request; carousel remains queued.",
         }
       } catch (err: any) {
         console.error(`[MetaAdapter] Error:`, err)
@@ -225,9 +236,9 @@ export class ChannelAdapters {
         if (render.success) {
           return {
             channelName: "VideoScript",
-            status: "LIVE_PUBLISHED",
+            status: "API_ACCEPTED",
             externalId: render.renderId || `shotstack_${Date.now()}`,
-            message: `Cloud MP4 video rendering initiated via Shotstack API for YouTube Shorts / Reels.`,
+            message: `Video rendering was accepted by Shotstack; no YouTube or Reels publication has been verified.`,
           }
         }
       } catch (err: any) {
@@ -237,9 +248,9 @@ export class ChannelAdapters {
 
     return {
       channelName: "VideoScript",
-      status: "LIVE_PUBLISHED",
+      status: "GENERATED",
       externalId: `yt_script_${Date.now()}`,
-      message: `YouTube Shorts script generated & registered: '${hook}'`,
+      message: `YouTube Shorts script generated: '${hook}'. No video was published.`,
     }
   }
 
@@ -250,8 +261,8 @@ export class ChannelAdapters {
     console.log(`[FAQAdapter] FAQ JSON-LD Schema injected into target page...`)
     return {
       channelName: "FAQExpansion",
-      status: "LIVE_PUBLISHED",
-      message: `${count} FAQ Q&A pairs & FAQPage JSON-LD schema published.`,
+      status: "GENERATED",
+      message: `${count} FAQ Q&A pairs generated. No page deployment or indexing verification was performed.`,
     }
   }
 
@@ -264,9 +275,8 @@ export class ChannelAdapters {
       console.log(`[PartnerAdapter] Direct broadcast of Partner Funding Radar block...`)
       return {
         channelName: "PartnerBlock",
-        status: "LIVE_PUBLISHED",
-        externalId: `partner_direct_${Date.now()}`,
-        message: `Partner Block broadcast directly to CFO/Accountant email network.`,
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Partner block generated; no partner recipient list or provider send was executed.`,
       }
     }
 

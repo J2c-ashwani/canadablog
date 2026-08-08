@@ -84,12 +84,24 @@ function verifyArchitecture(): void {
     });
   });
 
+  // CEO OS Core Engine Freeze Guard
+  const ceoFiles = scanDirectory(path.resolve(process.cwd(), 'lib/ceo-agent'));
+  ceoFiles.forEach((filePath) => {
+    const relativePath = path.relative(process.cwd(), filePath);
+    const content = fs.readFileSync(filePath, 'utf-8');
+    if (/import.*from.*['"].*lib\/engine\b/.test(content)) {
+      console.error(`❌ ARCHITECTURAL VIOLATION in ${relativePath}`);
+      console.error(`   Reason: CEO OS code must not import frozen engine modules directly.\n`);
+      violations++;
+    }
+  });
+
   if (violations > 0) {
     console.error(`💥 Build Failed: ${violations} architectural violation(s) found.`);
     console.error(`   New presentation code must read FundingRecommendationResult from @/lib/engine/types.`);
     process.exit(1);
   } else {
-    console.log(`✅ Architectural Enforcement Passed: 0 legacy model references in app/ and components/.`);
+    console.log(`✅ Architectural Enforcement Passed: 0 legacy model references & CEO freeze compliance verified.`);
   }
 }
 

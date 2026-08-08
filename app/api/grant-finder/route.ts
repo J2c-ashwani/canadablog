@@ -7,6 +7,7 @@ import { MatchScoreEngine } from "@/lib/leads/MatchScoreEngine"
 import { PortfolioScoreEngine } from "@/lib/leads/PortfolioScoreEngine"
 import { validateEmail } from "@/lib/email-validator"
 import { applyRateLimit } from "@/lib/rate-limit"
+import { sendEmail } from "@/lib/emails/mailer"
 import {
   createLoginToken,
   createUnsubscribeToken,
@@ -218,11 +219,8 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Dispatch welcome follow-up email if Sender.net is configured
-    const senderApiKey = process.env.SENDER_API_KEY
-    if (senderApiKey && body.email) {
-      const senderFromEmail = process.env.SENDER_FROM_EMAIL || "hello@fsidigital.ca"
-      const senderFromName = process.env.SENDER_FROM_NAME || "FSI Digital"
+    // Dispatch through the active Resend → Brevo provider chain.
+    if (body.email) {
       const firstName = (body.name || "").split(" ")[0] || "Founder"
       
       let emailBody = ""
@@ -276,23 +274,21 @@ export async function POST(request: NextRequest) {
       }
 
       try {
-        await fetch("https://api.sender.net/v2/message/send", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Accept": "application/json",
-            "Authorization": `Bearer ${senderApiKey}`
-          },
-          body: JSON.stringify({
-            from: { email: senderFromEmail, name: senderFromName },
-            to: { email: body.email, name: body.name || "Founder" },
-            subject: subject,
-            html: emailBody
-          })
+        const emailResult = await sendEmail({
+          to: body.email,
+          subject,
+          html: emailBody,
+          text: `Your Funding Intelligence results are ready: https://www.fsidigital.ca/portfolio?token=${finalLoginToken}`,
+          tagType: 'grant_finder_welcome',
+          companyName: body.companyName,
         })
-        console.log("✉️ Immediate welcome email sent successfully via Sender.net")
+        if (emailResult.success) {
+          console.log(`✉️ Grant Finder welcome email accepted by ${emailResult.provider || 'active provider'}`)
+        } else {
+          console.error("❌ Grant Finder welcome email was not accepted:", emailResult.error)
+        }
       } catch (emailErr) {
-        console.error("❌ Failed to dispatch welcome email via Sender.net:", emailErr)
+        console.error("❌ Failed to dispatch Grant Finder welcome email:", emailErr)
       }
     }
 

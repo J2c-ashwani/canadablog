@@ -321,6 +321,7 @@ export const AUTHORITY_EVENTS = {
   GUARDRAIL_FAILED: 'authority.guardrail.failed',
   OUTREACH_SENT: 'authority.outreach.sent',
   OUTREACH_OPENED: 'authority.outreach.opened',
+  OUTREACH_CLICKED: 'authority.outreach.clicked',
   OUTREACH_REPLIED: 'authority.outreach.replied',
   BACKLINK_EARNED: 'authority.backlink.earned',
   BACKLINK_LOST: 'authority.backlink.lost',

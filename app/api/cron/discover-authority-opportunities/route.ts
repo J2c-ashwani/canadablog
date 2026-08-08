@@ -13,17 +13,8 @@ export const dynamic = "force-dynamic";
  */
 export async function GET(request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization");
     const searchParams = request.nextUrl.searchParams;
-    const keyParam = searchParams.get("key") || searchParams.get("secret");
-
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`;
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized request" }, { status: 401 });
     }
 
@@ -50,7 +41,7 @@ export async function GET(request: NextRequest) {
       targetPage: opp.targetPage,
       name: opp.prospectName,
       personalizedHook: opp.metadata?.siteDescription || `Discovered resource on ${opp.website}`,
-      status: "pending",
+      status: "review_required",
       sentAt: null,
       deliveryStatus: null,
       replied: false,

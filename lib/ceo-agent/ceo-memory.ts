@@ -1,0 +1,233 @@
+import fs from 'fs'
+import path from 'path'
+import { query } from '../db/postgres'
+
+export interface CEOGoalState {
+  id: string
+  monthly_revenue_target_usd: number
+  recurring_mrr_target_usd: number
+  daily_target_pace_usd: number
+  current_mtd_verified_revenue_usd: number
+  current_mtd_mrr_usd: number
+  revenue_recovered_by_ceo_usd: number
+  revenue_influenced_by_ceo_usd: number
+  primary_bottleneck: string
+  estimated_monthly_leakage_usd: number
+  priority_focus: string
+  updated_at: string
+}
+
+export interface CEODecisionBasis {
+  primary_bottleneck: string
+  evidence_refs: string[]
+  observed_conversion_rate: number
+  baseline_rate: number
+  estimated_monthly_leakage_usd: number
+  hypothesis: string
+  decision: string
+  expected_revenue_impact_usd: number
+  attribution_confidence: 'HIGH' | 'MEDIUM' | 'LOW'
+}
+
+export interface CEODecisionRecord {
+  id: string
+  run_id: string
+  trigger_source: 'cron' | 'event' | 'on_demand' | 'verification'
+  monthly_target_usd: number
+  verified_mtd_usd: number
+  primary_bottleneck: string
+  estimated_leakage_usd: number
+  decision_basis: CEODecisionBasis
+  directives: string[]
+  forbidden_actions: string[]
+  created_at: string
+}
+
+const FALLBACK_FILE_PATH = path.join(process.cwd(), 'reports', 'ceo-db-fallback.json')
+
+function ensureFallbackDir() {
+  const dir = path.dirname(FALLBACK_FILE_PATH)
+  if (!fs.existsSync(dir)) {
+    fs.mkdirSync(dir, { recursive: true })
+  }
+}
+
+function loadFallbackData(): { goalState: CEOGoalState; decisions: CEODecisionRecord[] } {
+  ensureFallbackDir()
+  if (!fs.existsSync(FALLBACK_FILE_PATH)) {
+    const defaultData = {
+      goalState: {
+        id: 'current',
+        monthly_revenue_target_usd: 15000,
+        recurring_mrr_target_usd: 0,
+        daily_target_pace_usd: 500,
+        current_mtd_verified_revenue_usd: 87,
+        current_mtd_mrr_usd: 0,
+        revenue_recovered_by_ceo_usd: 0,
+        revenue_influenced_by_ceo_usd: 0,
+        primary_bottleneck: 'Checkout -> Payment Conversion',
+        estimated_monthly_leakage_usd: 1840,
+        priority_focus: 'P0 — Repair broken payment validation and report delivery',
+        updated_at: new Date().toISOString()
+      },
+      decisions: []
+    }
+    fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(defaultData, null, 2))
+    return defaultData
+  }
+  try {
+    const content = fs.readFileSync(FALLBACK_FILE_PATH, 'utf-8')
+    return JSON.parse(content)
+  } catch (err) {
+    console.warn('[CEOMemory] Failed reading fallback JSON:', err)
+    return {
+      goalState: {
+        id: 'current',
+        monthly_revenue_target_usd: 15000,
+        recurring_mrr_target_usd: 0,
+        daily_target_pace_usd: 500,
+        current_mtd_verified_revenue_usd: 87,
+        current_mtd_mrr_usd: 0,
+        revenue_recovered_by_ceo_usd: 0,
+        revenue_influenced_by_ceo_usd: 0,
+        primary_bottleneck: 'Checkout -> Payment Conversion',
+        estimated_monthly_leakage_usd: 1840,
+        priority_focus: 'P0 — Repair broken payment validation and report delivery',
+        updated_at: new Date().toISOString()
+      },
+      decisions: []
+    }
+  }
+}
+
+function saveFallbackData(data: { goalState: CEOGoalState; decisions: CEODecisionRecord[] }) {
+  ensureFallbackDir()
+  fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(data, null, 2))
+}
+
+export class CEOMemory {
+  public static async getGoalState(): Promise<CEOGoalState> {
+    if (process.env.DATABASE_URL) {
+      try {
+        const res = await query('SELECT * FROM ceo_goal_state WHERE id = $1 LIMIT 1', ['current'])
+        if (res.rows && res.rows.length > 0) {
+          const row = res.rows[0]
+          return {
+            id: row.id,
+            monthly_revenue_target_usd: Number(row.monthly_revenue_target_usd),
+            recurring_mrr_target_usd: Number(row.recurring_mrr_target_usd),
+            daily_target_pace_usd: Number(row.daily_target_pace_usd),
+            current_mtd_verified_revenue_usd: Number(row.current_mtd_verified_revenue_usd),
+            current_mtd_mrr_usd: Number(row.current_mtd_mrr_usd),
+            revenue_recovered_by_ceo_usd: Number(row.revenue_recovered_by_ceo_usd),
+            revenue_influenced_by_ceo_usd: Number(row.revenue_influenced_by_ceo_usd),
+            primary_bottleneck: row.primary_bottleneck || '',
+            estimated_monthly_leakage_usd: Number(row.estimated_monthly_leakage_usd || 0),
+            priority_focus: row.priority_focus || '',
+            updated_at: row.updated_at ? new Date(row.updated_at).toISOString() : new Date().toISOString()
+          }
+        }
+      } catch (err) {
+        console.warn('[CEOMemory] Postgres query failed, falling back to local storage:', err)
+      }
+    }
+    const fallback = loadFallbackData()
+    return fallback.goalState
+  }
+
+  public static async updateGoalState(updates: Partial<CEOGoalState>): Promise<CEOGoalState> {
+    const current = await this.getGoalState()
+    const updated: CEOGoalState = {
+      ...current,
+      ...updates,
+      updated_at: new Date().toISOString()
+    }
+
+    if (process.env.DATABASE_URL) {
+      try {
+        await query(
+          `INSERT INTO ceo_goal_state (
+            id, monthly_revenue_target_usd, recurring_mrr_target_usd, daily_target_pace_usd,
+            current_mtd_verified_revenue_usd, current_mtd_mrr_usd, revenue_recovered_by_ceo_usd,
+            revenue_influenced_by_ceo_usd, primary_bottleneck, estimated_monthly_leakage_usd, priority_focus, updated_at
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW())
+          ON CONFLICT (id) DO UPDATE SET
+            monthly_revenue_target_usd = EXCLUDED.monthly_revenue_target_usd,
+            recurring_mrr_target_usd = EXCLUDED.recurring_mrr_target_usd,
+            daily_target_pace_usd = EXCLUDED.daily_target_pace_usd,
+            current_mtd_verified_revenue_usd = EXCLUDED.current_mtd_verified_revenue_usd,
+            current_mtd_mrr_usd = EXCLUDED.current_mtd_mrr_usd,
+            revenue_recovered_by_ceo_usd = EXCLUDED.revenue_recovered_by_ceo_usd,
+            revenue_influenced_by_ceo_usd = EXCLUDED.revenue_influenced_by_ceo_usd,
+            primary_bottleneck = EXCLUDED.primary_bottleneck,
+            estimated_monthly_leakage_usd = EXCLUDED.estimated_monthly_leakage_usd,
+            priority_focus = EXCLUDED.priority_focus,
+            updated_at = NOW()`,
+          [
+            'current',
+            updated.monthly_revenue_target_usd,
+            updated.recurring_mrr_target_usd,
+            updated.daily_target_pace_usd,
+            updated.current_mtd_verified_revenue_usd,
+            updated.current_mtd_mrr_usd,
+            updated.revenue_recovered_by_ceo_usd,
+            updated.revenue_influenced_by_ceo_usd,
+            updated.primary_bottleneck,
+            updated.estimated_monthly_leakage_usd,
+            updated.priority_focus
+          ]
+        )
+      } catch (err) {
+        console.warn('[CEOMemory] Postgres update failed, using fallback:', err)
+      }
+    }
+
+    const fallback = loadFallbackData()
+    fallback.goalState = updated
+    saveFallbackData(fallback)
+    return updated
+  }
+
+  public static async recordDecision(decision: Omit<CEODecisionRecord, 'id' | 'created_at'>): Promise<CEODecisionRecord> {
+    const id = `dec_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
+    const record: CEODecisionRecord = {
+      ...decision,
+      id,
+      created_at: new Date().toISOString()
+    }
+
+    if (process.env.DATABASE_URL) {
+      try {
+        await query(
+          `INSERT INTO ceo_decisions (
+            id, run_id, trigger_source, monthly_target_usd, verified_mtd_usd,
+            primary_bottleneck, estimated_leakage_usd, decision_basis, directives, forbidden_actions, created_at
+          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())`,
+          [
+            id,
+            record.run_id,
+            record.trigger_source,
+            record.monthly_target_usd,
+            record.verified_mtd_usd,
+            record.primary_bottleneck,
+            record.estimated_leakage_usd,
+            JSON.stringify(record.decision_basis),
+            JSON.stringify(record.directives),
+            JSON.stringify(record.forbidden_actions)
+          ]
+        )
+      } catch (err) {
+        console.warn('[CEOMemory] Postgres recordDecision failed:', err)
+      }
+    }
+
+    const fallback = loadFallbackData()
+    fallback.decisions.unshift(record)
+    // keep latest 100 decisions
+    if (fallback.decisions.length > 100) {
+      fallback.decisions = fallback.decisions.slice(0, 100)
+    }
+    saveFallbackData(fallback)
+    return record
+  }
+}

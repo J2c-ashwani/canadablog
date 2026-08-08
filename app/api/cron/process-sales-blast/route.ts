@@ -9,20 +9,12 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   try {
     const url = new URL(request.url);
-    const keyParam = url.searchParams.get("key");
-    const authHeader = request.headers.get("authorization");
     const wave = url.searchParams.get("wave") || "1"; // "1" = Monday blast, "2" = Wednesday follow-up
     const limit = parseInt(url.searchParams.get("limit") || "50", 10);
     const dryRun = url.searchParams.get("dry") === "true";
     const force = url.searchParams.get("force") === "true";
 
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`;
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized sales blast execution." }, { status: 401 });
     }
 

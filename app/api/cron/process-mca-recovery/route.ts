@@ -11,17 +11,7 @@ export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
   try {
-    const url = new URL(request.url)
-    const keyParam = url.searchParams.get("key")
-    const authHeader = request.headers.get("authorization")
-
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized MCA recovery cron execution." }, { status: 401 })
     }
 
@@ -77,7 +67,7 @@ export async function GET(request: NextRequest) {
           companyName: sub.companyName,
           province: sub.region
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.mcaRecover2SentAt = new Date().toISOString()
           emailSent = true
           mcaRecover2Count++
@@ -92,7 +82,7 @@ export async function GET(request: NextRequest) {
           companyName: sub.companyName,
           province: sub.region
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.mcaRecover3SentAt = new Date().toISOString()
           emailSent = true
           mcaRecover3Count++

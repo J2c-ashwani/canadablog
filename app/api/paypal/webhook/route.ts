@@ -1,11 +1,15 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getAllPurchases, recordPurchase } from "@/lib/products/purchase-store"
+import { getAllPurchases, recordPurchase, updatePurchaseDeliveryStatus } from "@/lib/products/purchase-store"
 import { getProduct } from "@/lib/products/catalog"
 import { grantEntitlements } from "@/lib/products/entitlements"
 import { sendEmail } from "@/lib/emails/mailer"
 import { buildPurchaseEmail } from "@/lib/emails/product-purchase"
 import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
-import { getProductPaymentIntent, markProductPaymentIntentCompleted } from "@/lib/payments/product-payment-intents"
+import {
+  getProductPaymentIntent,
+  markProductPaymentIntentFulfilled,
+  recordProductPaymentCapture,
+} from "@/lib/payments/product-payment-intents"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -49,7 +53,7 @@ async function verifyPayPalWebhookSignature(request: NextRequest, body: string):
   const authResponse = await fetch(`${baseUrl}/v1/oauth2/token`, {
     method: "POST",
     headers: {
-      "Authorization": `Basic ${Buffer.from(`${process.env.PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`).toString("base64")}`,
+      "Authorization": `Basic ${Buffer.from(`${process.env.PAYPAL_CLIENT_ID || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}:${process.env.PAYPAL_CLIENT_SECRET}`).toString("base64")}`,
       "Content-Type": "application/x-www-form-urlencoded",
     },
     body: "grant_type=client_credentials",
@@ -117,7 +121,25 @@ export async function POST(request: NextRequest) {
       }
       
       actualProductId = actualProductId || paymentIntent.productId
-      actualOrderId = paymentIntent.paypalOrderId || actualOrderId
+      if (!paymentIntent.paypalOrderId || paymentIntent.paypalOrderId !== actualOrderId) {
+          console.error(`[PayPal Webhook] Order mismatch for intent ${actualIntentId}`)
+          return NextResponse.json({ error: "Payment order does not match its server-owned intent." }, { status: 409 })
+      }
+      if (actualProductId && actualProductId !== paymentIntent.productId) {
+          console.error(`[PayPal Webhook] Product mismatch for intent ${actualIntentId}`)
+          return NextResponse.json({ error: "Payment product does not match its server-owned intent." }, { status: 409 })
+      }
+      actualProductId = paymentIntent.productId
+
+      const capture = resource.payments?.captures?.[0] || purchaseUnit?.payments?.captures?.[0] || resource
+      const captureId = String(capture?.id || "")
+      const capturedAmount = String(capture?.amount?.value || purchaseUnit?.amount?.value || "")
+      const capturedCurrency = String(capture?.amount?.currency_code || purchaseUnit?.amount?.currency_code || "")
+      if (!captureId || Number(capturedAmount) !== Number(paymentIntent.expectedAmount) || capturedCurrency.toUpperCase() !== paymentIntent.currency.toUpperCase()) {
+          console.error(`[PayPal Webhook] Capture terms mismatch for intent ${actualIntentId}`)
+          return NextResponse.json({ error: "Provider capture terms do not match the server-owned intent." }, { status: 409 })
+      }
+      await recordProductPaymentCapture(actualIntentId, captureId)
       
       const allPurchases = await getAllPurchases()
       const existingPurchase = allPurchases.find(
@@ -125,7 +147,20 @@ export async function POST(request: NextRequest) {
       )
       
       if (existingPurchase) {
-          console.log(`[PayPal Webhook] Purchase already fulfilled for order ${actualOrderId}`)
+          // A retry may arrive after the ledger write but before entitlement
+          // creation. Entitlements are idempotent, so safely repair that gap.
+          await grantEntitlements({
+            purchaseId: existingPurchase.purchaseId,
+            email: paymentIntent.email,
+            productId: actualProductId,
+            orderId: actualOrderId,
+          })
+          await markProductPaymentIntentFulfilled(
+            actualIntentId,
+            existingPurchase.purchaseId,
+            existingPurchase.deliveryStatus || 'retry_pending'
+          )
+          console.log(`[PayPal Webhook] Existing purchase reconciled for order ${actualOrderId}`)
           return NextResponse.json({ received: true })
       }
       
@@ -162,6 +197,10 @@ export async function POST(request: NextRequest) {
           paypalOrderId: actualOrderId,
           profileData: normalizedProfileData,
           attribution: attribution || {},
+          currency: paymentIntent.currency,
+          paypalCaptureId: captureId,
+          paymentStatus: "provider_capture_verified",
+          deliveryStatus: "retry_pending",
       })
       
       await grantEntitlements({
@@ -175,21 +214,24 @@ export async function POST(request: NextRequest) {
       if (addons?.toolkit) {
           const addonPurchase = await recordPurchase({
               email, name, productId: 'funding-toolkit', amount: '29.00', paypalOrderId: actualOrderId,
-              profileData: normalizedProfileData, attribution: attribution || {}
+              profileData: normalizedProfileData, attribution: attribution || {}, currency: paymentIntent.currency,
+              paypalCaptureId: captureId, paymentStatus: "provider_capture_verified", deliveryStatus: "retry_pending",
           })
           await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-toolkit', orderId: actualOrderId })
       }
       if (addons?.approvalLibrary) {
           const addonPurchase = await recordPurchase({
               email, name, productId: 'funding-approval-library', amount: '9.00', paypalOrderId: actualOrderId,
-              profileData: normalizedProfileData, attribution: attribution || {}
+              profileData: normalizedProfileData, attribution: attribution || {}, currency: paymentIntent.currency,
+              paypalCaptureId: captureId, paymentStatus: "provider_capture_verified", deliveryStatus: "retry_pending",
           })
           await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'funding-approval-library', orderId: actualOrderId })
       }
       if (addons?.strategySession) {
           const addonPurchase = await recordPurchase({
               email, name, productId: 'strategy-session', amount: '180.00', paypalOrderId: actualOrderId,
-              profileData: normalizedProfileData, attribution: attribution || {}
+              profileData: normalizedProfileData, attribution: attribution || {}, currency: paymentIntent.currency,
+              paypalCaptureId: captureId, paymentStatus: "provider_capture_verified", deliveryStatus: "retry_pending",
           })
           await grantEntitlements({ purchaseId: addonPurchase.purchaseId, email, productId: 'strategy-session', orderId: actualOrderId })
       }
@@ -267,15 +309,24 @@ export async function POST(request: NextRequest) {
           amount: expectedPrice.toFixed(2),
       })
       
-      await sendEmail({
+      const emailResult = await sendEmail({
           to: email,
           subject: emailContent.subject,
           html: emailContent.html,
           text: emailContent.text,
           tagType: 'product-purchase'
       })
+      await updatePurchaseDeliveryStatus(
+        purchase.purchaseId,
+        emailResult.success ? 'provider_accepted' : 'retry_pending',
+        emailResult.providerMessageId || ''
+      )
       
-      await markProductPaymentIntentCompleted(actualIntentId)
+      await markProductPaymentIntentFulfilled(
+        actualIntentId,
+        purchase.purchaseId,
+        emailResult.success ? 'provider_accepted' : 'retry_pending'
+      )
       console.log(`[PayPal Webhook] Successfully processed order ${actualOrderId}`)
     } else {
       console.log(`[PayPal Webhook] Unhandled event type: ${event.event_type}`)
@@ -292,7 +343,7 @@ export async function POST(request: NextRequest) {
         tagType: 'system-alert'
     }).catch(() => {})
     
-    // Return 200 to prevent retries
-    return NextResponse.json({ received: true, error: "Internal Error, but handled" })
+    // A non-2xx response asks PayPal to retry a transient processing failure.
+    return NextResponse.json({ error: "Webhook processing failed" }, { status: 500 })
   }
 }

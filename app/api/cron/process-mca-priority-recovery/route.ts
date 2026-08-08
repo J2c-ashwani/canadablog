@@ -80,7 +80,7 @@ export async function GET(request: NextRequest) {
           recoveryToken: app.recoveryToken,
         });
 
-        if (res.success || res.skipped) {
+        if (res.success) {
           const sentTime = new Date().toISOString();
           await updateMCAApplicationRecovery(app.applicationId, {
             priorityRecoveryStatus: 'EMAIL_1_SENT',
@@ -109,7 +109,7 @@ export async function GET(request: NextRequest) {
           recoveryToken: app.recoveryToken,
         });
 
-        if (res.success || res.skipped) {
+        if (res.success) {
           const sentTime = new Date().toISOString();
           await updateMCAApplicationRecovery(app.applicationId, {
             priorityRecoveryStatus: 'EMAIL_2_SENT',
@@ -138,7 +138,7 @@ export async function GET(request: NextRequest) {
           recoveryToken: app.recoveryToken,
         });
 
-        if (res.success || res.skipped) {
+        if (res.success) {
           const sentTime = new Date().toISOString();
           await updateMCAApplicationRecovery(app.applicationId, {
             priorityRecoveryStatus: 'EMAIL_3_SENT',
@@ -167,7 +167,7 @@ export async function GET(request: NextRequest) {
           recoveryToken: app.recoveryToken,
         });
 
-        if (res.success || res.skipped) {
+        if (res.success) {
           const sentTime = new Date().toISOString();
           await updateMCAApplicationRecovery(app.applicationId, {
             priorityRecoveryStatus: 'EMAIL_4_SENT',
@@ -196,7 +196,7 @@ export async function GET(request: NextRequest) {
           recoveryToken: app.recoveryToken,
         });
 
-        if (res.success || res.skipped) {
+        if (res.success) {
           const sentTime = new Date().toISOString();
           await updateMCAApplicationRecovery(app.applicationId, {
             priorityRecoveryStatus: 'COMPLETED', // Complete active recovery polling

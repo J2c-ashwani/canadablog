@@ -85,7 +85,7 @@ function parseRow(row: string[]): EntitlementRecord {
 
 async function getSheetContext() {
   const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
   if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
   return { sheets, spreadsheetId };
 }
@@ -130,7 +130,19 @@ export async function grantEntitlements(input: {
 
   const { sheets, spreadsheetId } = await ensureSheet();
   const createdAt = new Date().toISOString();
-  const rows = capabilities.map((capability) => [
+  const existingResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A2:J`,
+  });
+  const existingCapabilities = new Set(
+    (existingResponse.data.values || [])
+      .map((row) => parseRow(row))
+      .filter((record) => record.purchaseId === input.purchaseId && record.status === 'active')
+      .map((record) => record.capability)
+  );
+  const rows = capabilities
+    .filter((capability) => !existingCapabilities.has(capability))
+    .map((capability) => [
     randomUUID(),
     input.purchaseId,
     normalizeEmail(input.email),
@@ -143,6 +155,7 @@ export async function grantEntitlements(input: {
     '',
   ]);
 
+  if (rows.length === 0) return;
   await sheets.spreadsheets.values.append({
     spreadsheetId,
     range: `${SHEET_TITLE}!A:J`,
@@ -170,17 +183,22 @@ export async function hasActiveEntitlement(email: string, capability: Entitlemen
     return true;
   }
 
-  // Existing paid customers are supported during the one-time entitlement backfill.
-  // New purchases always receive explicit entitlement rows above.
-  if (entitlements.length === 0) {
-    const { getPurchasesByEmail } = await import('@/lib/products/purchase-store');
-    const purchases = await getPurchasesByEmail(email);
-    return purchases.some((purchase) =>
-      ['completed', 'processing'].includes(String(purchase.status || '').toLowerCase()) &&
-      capabilitiesForProduct(purchase.productId).includes(capability)
-    );
-  }
   return false;
+}
+
+/** Access checks must bind a token to its own purchase, not merely the email. */
+export async function hasActiveEntitlementForPurchase(purchaseId: string, productId: string): Promise<boolean> {
+  const capabilities = capabilitiesForProduct(productId);
+  if (capabilities.length === 0) return false;
+  const { sheets, spreadsheetId } = await ensureSheet();
+  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:J` });
+  const activeCapabilities = new Set(
+    (response.data.values || [])
+      .map((row) => parseRow(row))
+      .filter((record) => record.purchaseId === purchaseId && record.status === 'active')
+      .map((record) => record.capability)
+  );
+  return capabilities.every((capability) => activeCapabilities.has(capability));
 }
 
 /**

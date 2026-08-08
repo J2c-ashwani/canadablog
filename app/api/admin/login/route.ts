@@ -10,7 +10,11 @@ export async function POST(request: NextRequest) {
   if (limitRes.isLimited) return limitRes.response;
 
   try {
-    const adminSecret = process.env.LEAD_DASHBOARD_SECRET || "fsi2026admin";
+    const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
+    if (!adminSecret) {
+      console.error('LEAD_DASHBOARD_SECRET is not configured.');
+      return NextResponse.json({ error: 'Admin login is not configured.' }, { status: 503 });
+    }
 
     const body = await request.json();
     const key = String(body.key || '');

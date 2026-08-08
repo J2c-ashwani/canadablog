@@ -29,6 +29,15 @@ export function isValidAdminSession(candidate: string | undefined | null, secret
   return safeCompare(candidate, createAdminSessionToken(secret));
 }
 
+/** Admin credentials are accepted only in headers or an authenticated session, never URLs. */
+export function isValidAdminRequest(request: Request): boolean {
+  const secret = process.env.LEAD_DASHBOARD_SECRET;
+  if (!secret) return false;
+  const authHeader = request.headers.get('authorization') || '';
+  const headerSecret = request.headers.get('x-admin-secret') || '';
+  return authHeader === `Bearer ${secret}` || headerSecret === secret;
+}
+
 export function isValidCronRequest(request: Request): boolean {
   const secret = process.env.CRON_SECRET;
   if (!secret && process.env.NODE_ENV !== 'production') {
@@ -41,18 +50,8 @@ export function isValidCronRequest(request: Request): boolean {
   const authHeader = request.headers.get('authorization') || '';
   const headerSecret = request.headers.get('x-cron-secret') || '';
   
-  let querySecret = '';
-  try {
-    const parsedUrl = new URL(request.url);
-    querySecret = parsedUrl.searchParams.get('secret') || '';
-  } catch (e) {
-    // Ignore invalid URLs
-  }
-
   return (
     authHeader === `Bearer ${secret}` ||
-    headerSecret === secret ||
-    querySecret === secret
+    headerSecret === secret
   );
 }
-

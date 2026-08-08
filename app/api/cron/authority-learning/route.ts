@@ -1,15 +1,9 @@
 import { NextResponse } from "next/server";
 import { AuthorityMetrics } from "@/lib/growth-os/authority/authority-metrics";
+import { isValidCronRequest } from "@/lib/admin/auth";
 
 export async function GET(request: Request) {
-  const { searchParams } = new URL(request.url);
-  const authHeader = request.headers.get("authorization");
-  const keyParam = searchParams.get("key");
-
-  if (
-    authHeader !== `Bearer ${process.env.CRON_SECRET}` &&
-    keyParam !== "fsi2026admin"
-  ) {
+  if (!isValidCronRequest(request)) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 

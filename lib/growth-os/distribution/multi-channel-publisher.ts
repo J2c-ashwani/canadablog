@@ -5,15 +5,14 @@
 
 import { MultiChannelAssetPackage } from "./content-factory"
 import { DistributionOpportunity } from "./distribution-intelligence"
-import { DistributionMemory } from "../memory/distribution-memory"
 import { ChannelAdapters, ChannelPublishResult } from "../execution/adapters/channel-adapters"
 
 export interface MultiChannelDispatchReceipt {
   opportunityId: string
   dispatchedChannelsCount: number
   queuedChannelsCount: number
-  predictedTotalReach: number
-  predictedTotalTraffic: number
+  observedTotalReach: number
+  observedTotalTraffic: number
   status: "SUCCESS" | "PARTIAL_SUCCESS" | "FAILED" | "QUEUED_FOR_APPROVAL"
   channelResults: ChannelPublishResult[]
   channelStatusSummary: Record<string, string>
@@ -53,31 +52,6 @@ export class MultiChannelPublisher {
       }
     }
 
-    // Log Distribution Memory with full attribution chain
-    DistributionMemory.logDistributionPerformance({
-      title: assetPackage.title,
-      channelName: "Blog",
-      audience: distOpportunity.audience,
-      intentTag: "Tech_Intake_Urgent",
-      offeredProduct: "$79 Funding Bundle",
-      reachImpressions: Math.round(distOpportunity.predictedImpact.predictedReach * 0.4),
-      clicksGenerated: Math.round(distOpportunity.predictedImpact.predictedTraffic * 0.5),
-      leadsGenerated: Math.round(distOpportunity.predictedImpact.predictedLeadGeneration * 0.4),
-      conversionsCount: 2,
-    })
-
-    DistributionMemory.logDistributionPerformance({
-      title: assetPackage.title,
-      channelName: "Newsletter",
-      audience: distOpportunity.audience,
-      intentTag: "Tech_Intake_Urgent",
-      offeredProduct: "$79 Funding Bundle",
-      reachImpressions: Math.round(distOpportunity.predictedImpact.predictedReach * 0.3),
-      clicksGenerated: Math.round(distOpportunity.predictedImpact.predictedTraffic * 0.3),
-      leadsGenerated: Math.round(distOpportunity.predictedImpact.predictedLeadGeneration * 0.4),
-      conversionsCount: 3,
-    })
-
     // Alert founder if channels failed
     if (queuedCount > 0) {
       const failedChannels = results.filter(r => r.status !== "LIVE_PUBLISHED").map(r => `${r.channelName}: ${r.message}`)
@@ -116,8 +90,8 @@ export class MultiChannelPublisher {
       opportunityId: assetPackage.opportunityId,
       dispatchedChannelsCount: dispatchedCount,
       queuedChannelsCount: queuedCount,
-      predictedTotalReach: distOpportunity.predictedImpact.predictedReach,
-      predictedTotalTraffic: distOpportunity.predictedImpact.predictedTraffic,
+      observedTotalReach: 0,
+      observedTotalTraffic: 0,
       status: overallStatus,
       channelResults: results,
       channelStatusSummary,

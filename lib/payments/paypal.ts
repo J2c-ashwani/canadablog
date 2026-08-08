@@ -430,7 +430,12 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
       `custom_id=${resolvedCustomId}, reference_id=${resolvedReferenceId}`
     );
 
-    return { verified: true, bypass: false, orderData };
+    return {
+      verified: true,
+      bypass: false,
+      orderData,
+      captureId: orderData.purchase_units?.[0]?.payments?.captures?.[0]?.id || '',
+    };
   } catch (error: any) {
     console.error(`[PayPal Security Check] Verification failed for order ${orderId}:`, error);
     return { verified: false, error: error.message || "Unknown validation error" };

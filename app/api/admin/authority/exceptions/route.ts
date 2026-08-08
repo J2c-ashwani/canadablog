@@ -1,5 +1,5 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { isValidCronRequest, isValidAdminSession } from "@/lib/admin/auth";
+import { isValidCronRequest, isValidAdminSession, isValidAdminRequest } from "@/lib/admin/auth";
 import { getAuthorityExceptions, updateAuthorityException } from "@/lib/google-sheets";
 import { cookies } from "next/headers";
 import { ADMIN_SESSION_COOKIE } from "@/lib/admin/auth";
@@ -8,21 +8,14 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 async function isAuthorized(request: NextRequest) {
-  const authHeader = request.headers.get("authorization");
-  const searchParams = request.nextUrl.searchParams;
-  const keyParam = searchParams.get("key") || searchParams.get("secret");
-
   const cookieStore = await cookies();
   const sessionCookie = cookieStore.get(ADMIN_SESSION_COOKIE)?.value;
-  const adminSecret = process.env.LEAD_DASHBOARD_SECRET || "fsi2026admin";
+  const adminSecret = process.env.LEAD_DASHBOARD_SECRET;
 
   return (
     isValidCronRequest(request) ||
-    keyParam === "fsi2026admin" ||
-    keyParam === adminSecret ||
-    authHeader === `Bearer fsi2026admin` ||
-    authHeader === `Bearer ${process.env.CRON_SECRET}` ||
-    (sessionCookie && isValidAdminSession(sessionCookie, adminSecret))
+    isValidAdminRequest(request) ||
+    Boolean(adminSecret && sessionCookie && isValidAdminSession(sessionCookie, adminSecret))
   );
 }
 

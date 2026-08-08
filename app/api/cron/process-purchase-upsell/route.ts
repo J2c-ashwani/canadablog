@@ -14,17 +14,7 @@ export const dynamic = "force-dynamic"
 
 export async function GET(request: NextRequest) {
   try {
-    const authHeader = request.headers.get("authorization")
-    const searchParams = request.nextUrl.searchParams
-    const keyParam = searchParams.get("key")
-
-    const isAuthorized =
-      isValidCronRequest(request) ||
-      keyParam === "fsi2026admin" ||
-      authHeader === `Bearer fsi2026admin` ||
-      authHeader === `Bearer ${process.env.CRON_SECRET}`
-
-    if (!isAuthorized) {
+    if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized post purchase upsell cron execution." }, { status: 401 })
     }
 
@@ -90,7 +80,7 @@ export async function GET(request: NextRequest) {
           province: sub.region,
           productPurchased: activity.purchasedProductId || "Funding Match Report"
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.upsellEmail1SentAt = new Date().toISOString()
           emailSent = true
           upsell1Count++
@@ -107,7 +97,7 @@ export async function GET(request: NextRequest) {
           province: sub.region,
           productPurchased: activity.purchasedProductId || "Funding Match Report"
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.upsellEmail2SentAt = new Date().toISOString()
           emailSent = true
           upsell2Count++
@@ -124,7 +114,7 @@ export async function GET(request: NextRequest) {
           province: sub.region,
           productPurchased: activity.purchasedProductId || "Funding Match Report"
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.upsellEmail3SentAt = new Date().toISOString()
           emailSent = true
           upsell3Count++
@@ -141,7 +131,7 @@ export async function GET(request: NextRequest) {
           province: sub.region,
           productPurchased: activity.purchasedProductId || "Funding Match Report"
         })
-        if (res.success || res.skipped) {
+        if (res.success) {
           activity.feedbackEmailSentAt = new Date().toISOString()
           emailSent = true
           feedbackCount++
