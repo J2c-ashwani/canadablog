@@ -126,7 +126,7 @@ export async function POST(request: NextRequest) {
       name: finalName,
       companyName: finalCompanyName,
       country: country || request.headers.get("x-vercel-ip-country") || "N/A",
-      region: province || state || request.headers.get("x-vercel-ip-country-region") || "N/A",
+      region: state || request.headers.get("x-vercel-ip-country-region") || "N/A",
       state: state || "N/A",
       city: city || "N/A",
       industry: finalIndustry,
