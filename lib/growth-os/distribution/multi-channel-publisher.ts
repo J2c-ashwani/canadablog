@@ -40,35 +40,49 @@ export class MultiChannelPublisher {
     ])
 
     let dispatchedCount = 0
-    let queuedCount = 0
+    let generatedCount = 0
+    let failedCount = 0
     const channelStatusSummary: Record<string, string> = {}
 
     for (const r of results) {
       channelStatusSummary[r.channelName] = r.status
-      if (r.status === "LIVE_PUBLISHED") {
+      if (r.status === "LIVE_PUBLISHED" || r.status === "API_ACCEPTED") {
         dispatchedCount += 1
+      } else if (r.status === "GENERATED") {
+        generatedCount += 1
       } else {
-        queuedCount += 1
+        failedCount += 1
       }
     }
 
-    // Alert founder if channels failed
-    if (queuedCount > 0) {
-      const failedChannels = results.filter(r => r.status !== "LIVE_PUBLISHED").map(r => `${r.channelName}: ${r.message}`)
-      console.warn(`[MultiChannelPublisher] ⚠️ ${queuedCount} channel(s) failed or queued:`, failedChannels)
+    // Alert founder if channels failed (only real failures, not generated assets)
+    if (failedCount > 0) {
+      const failedChannels = results
+        .filter(r => r.status === "QUEUED_FOR_APPROVAL" || r.status === "MOCK_DEVELOPMENT")
+        .map(r => `${r.channelName}: ${r.message}`)
+      console.warn(`[MultiChannelPublisher] ⚠️ ${failedCount} channel(s) failed:`, failedChannels)
       
+      const generatedChannels = results
+        .filter(r => r.status === "GENERATED")
+        .map(r => `${r.channelName}: ${r.message}`)
+      
+      const successChannels = results
+        .filter(r => r.status === "LIVE_PUBLISHED" || r.status === "API_ACCEPTED")
+        .map(r => `${r.channelName}: ✅ ${r.message}`)
+
       // Send founder alert email
       try {
         const { sendEmail } = await import("@/lib/emails/mailer")
         await sendEmail({
           to: "ashwani@fsidigital.ca",
-          subject: `[Growth OS Alert] ${queuedCount} of 7 channels failed to publish`,
-          html: `<h2>Growth OS Publishing Alert</h2>
-            <p><strong>${dispatchedCount}</strong> of 7 channels published successfully.</p>
-            <p><strong>${queuedCount}</strong> channel(s) failed or were queued:</p>
-            <ul>${failedChannels.map(f => `<li>${f}</li>`).join("")}</ul>
+          subject: `[Growth OS] ${dispatchedCount} published, ${generatedCount} assets created, ${failedCount} failed`,
+          html: `<h2>Growth OS Publishing Report</h2>
+            <p><strong>${dispatchedCount}</strong> of 7 channels published successfully (API confirmed).</p>
+            ${successChannels.length > 0 ? `<h3>✅ Published</h3><ul>${successChannels.map(f => `<li>${f}</li>`).join("")}</ul>` : ""}
+            ${generatedChannels.length > 0 ? `<h3>📄 Assets Generated (no live deployment)</h3><ul>${generatedChannels.map(f => `<li>${f}</li>`).join("")}</ul>` : ""}
+            ${failedChannels.length > 0 ? `<h3>❌ Failed</h3><ul>${failedChannels.map(f => `<li>${f}</li>`).join("")}</ul>` : ""}
             <p>Check Vercel logs for details. Title: <strong>${assetPackage.title}</strong></p>`,
-          text: `Growth OS Alert: ${dispatchedCount}/7 channels published. ${queuedCount} failed: ${failedChannels.join("; ")}`,
+          text: `Growth OS: ${dispatchedCount}/7 published, ${generatedCount} assets, ${failedCount} failed. ${failedChannels.join("; ")}`,
           tagType: "growth-os-alert",
         })
       } catch (emailErr) {
@@ -78,9 +92,9 @@ export class MultiChannelPublisher {
 
     // Determine honest dispatch status
     let overallStatus: MultiChannelDispatchReceipt["status"]
-    if (dispatchedCount === 0) {
+    if (dispatchedCount === 0 && generatedCount === 0) {
       overallStatus = "FAILED"
-    } else if (queuedCount > 0) {
+    } else if (failedCount > 0) {
       overallStatus = "PARTIAL_SUCCESS"
     } else {
       overallStatus = "SUCCESS"
@@ -89,7 +103,7 @@ export class MultiChannelPublisher {
     return {
       opportunityId: assetPackage.opportunityId,
       dispatchedChannelsCount: dispatchedCount,
-      queuedChannelsCount: queuedCount,
+      queuedChannelsCount: failedCount,
       observedTotalReach: 0,
       observedTotalTraffic: 0,
       status: overallStatus,

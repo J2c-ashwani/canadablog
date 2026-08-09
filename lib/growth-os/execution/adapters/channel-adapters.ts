@@ -121,35 +121,44 @@ export class ChannelAdapters {
     }
 
     try {
-      const response = await fetchWithRetry("https://api.linkedin.com/v2/ugcPosts", {
+      // LinkedIn deprecated /v2/ugcPosts — use the current /rest/posts API
+      const versionDate = new Date().toISOString().slice(0, 7).replace("-", "") // YYYYMM format
+      const postBody = {
+        author: linkedInUrn,
+        commentary: `${text}\n\n${hashtags.join(" ")}`,
+        visibility: "PUBLIC",
+        distribution: {
+          feedDistribution: "MAIN_FEED",
+          targetEntities: [],
+          thirdPartyDistributionChannels: [],
+        },
+        lifecycleState: "PUBLISHED",
+      }
+
+      console.log(`[LinkedInAdapter] Posting via /rest/posts API (version ${versionDate}) to ${linkedInUrn}...`)
+
+      const response = await fetchWithRetry("https://api.linkedin.com/rest/posts", {
         method: "POST",
         headers: {
           "Authorization": `Bearer ${token}`,
           "Content-Type": "application/json",
           "X-Restli-Protocol-Version": "2.0.0",
+          "LinkedIn-Version": versionDate,
         },
-        body: JSON.stringify({
-          author: linkedInUrn,
-          lifecycleState: "PUBLISHED",
-          specificContent: {
-            "com.linkedin.ugc.ShareContent": {
-              shareCommentary: { text: `${text}\n\n${hashtags.join(" ")}` },
-              shareMediaCategory: "NONE",
-            },
-          },
-          visibility: { "com.linkedin.ugc.MemberNetworkVisibility": "PUBLIC" },
-        }),
+        body: JSON.stringify(postBody),
       })
 
       if (!response.ok) {
-        throw new Error(`LinkedIn API error: ${response.statusText}`)
+        const errBody = await response.text().catch(() => "")
+        console.error(`[LinkedInAdapter] API error ${response.status}: ${errBody}`)
+        throw new Error(`LinkedIn API error: ${response.status} ${response.statusText} — ${errBody.slice(0, 200)}`)
       }
 
       return {
         channelName: "LinkedIn",
         status: "API_ACCEPTED",
-        externalId: response.headers.get('x-restli-id') || undefined,
-        message: `LinkedIn accepted the post request; public publication has not been independently verified.`,
+        externalId: response.headers.get('x-linkedin-id') || response.headers.get('x-restli-id') || undefined,
+        message: `LinkedIn accepted the post via /rest/posts API; public publication has not been independently verified.`,
       }
     } catch (err: any) {
       console.error(`[LinkedInAdapter] Error:`, err)
@@ -170,7 +179,7 @@ export class ChannelAdapters {
 
     if (instaToken || fbToken) {
       try {
-        console.log(`[MetaAdapter] Direct posting to Meta Graph API v19.0 for Instagram & Facebook...`)
+        console.log(`[MetaAdapter] Direct posting to Meta Graph API v19.0 for Instagram & Facebook (instaToken: ${instaToken ? 'CONFIGURED' : 'MISSING'}, fbToken: ${fbToken ? 'CONFIGURED' : 'MISSING'}, FB_PAGE_ID: ${process.env.FACEBOOK_PAGE_ID ? 'CONFIGURED' : 'MISSING'})...`)
         
         const fbPageId = process.env.FACEBOOK_PAGE_ID
         let facebookAccepted = false
