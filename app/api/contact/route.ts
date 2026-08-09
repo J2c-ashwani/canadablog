@@ -142,6 +142,8 @@ export async function POST(request: NextRequest) {
       consentToPartnerContact: !!consentToPartnerContact,
       pagePath: pagePath || request.headers.get("referer") || "N/A",
       ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
+      country: request.headers.get("x-vercel-ip-country") || "N/A",
+      region: request.headers.get("x-vercel-ip-country-region") || province || state || "N/A",
       userAgent: request.headers.get("user-agent") || "N/A",
       utmSource,
       utmMedium,
