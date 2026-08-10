@@ -121,8 +121,11 @@ export class ChannelAdapters {
     }
 
     try {
-      // LinkedIn deprecated /v2/ugcPosts — use the current /rest/posts API
-      const versionDate = new Date().toISOString().slice(0, 7).replace("-", "") // YYYYMM format
+      // LinkedIn API requires a specific released version (YYYYMM). Versions are released monthly
+      // and supported for ~12 months. Use the previous month's version to ensure it's always active.
+      const now = new Date()
+      const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1)
+      const versionDate = `${prevMonth.getFullYear()}${String(prevMonth.getMonth() + 1).padStart(2, '0')}`
       const postBody = {
         author: linkedInUrn,
         commentary: `${text}\n\n${hashtags.join(" ")}`,
@@ -175,7 +178,7 @@ export class ChannelAdapters {
    */
   public static async queueCarousel(title: string, slideCount: number): Promise<ChannelPublishResult> {
     const instaToken = process.env.INSTAGRAM_ACCESS_TOKEN?.trim()
-    const fbToken = process.env.FACEBOOK_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim()
+    const fbToken = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
 
     if (instaToken || fbToken) {
       try {
