@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
 
 interface StandaloneCheckoutProps {
-  productId: 'funding-roadmap' | 'funding-toolkit' | 'funding-approval-library' | 'funding-match-report';
+  productId: 'funding-roadmap' | 'funding-toolkit' | 'funding-approval-library' | 'funding-match-report' | 'funding-bundle';
   price: number;
   productName: string;
 }
