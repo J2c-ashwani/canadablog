@@ -84,7 +84,16 @@ export class ShotstackVideoAdapter {
         callback: "https://www.fsidigital.ca/api/webhooks/shotstack",
       };
 
-      const response = await fetch("https://api.shotstack.io/edit/v1/render", {
+      // Shotstack has separate production (/edit/v1/) and sandbox (/edit/stage/) endpoints.
+      // Each requires its own API key. Default to stage (sandbox) which works with free-tier keys.
+      const env = process.env.SHOTSTACK_ENV?.trim()?.toLowerCase();
+      const baseUrl = (env === 'production' || env === 'v1')
+        ? 'https://api.shotstack.io/edit/v1/render'
+        : 'https://api.shotstack.io/edit/stage/render';
+
+      console.log(`[ShotstackAdapter] Using endpoint: ${baseUrl}`);
+
+      const response = await fetch(baseUrl, {
         method: "POST",
         headers: {
           "x-api-key": apiKey,
@@ -95,7 +104,8 @@ export class ShotstackVideoAdapter {
 
       if (!response.ok) {
         const errText = await response.text();
-        throw new Error(`Shotstack API Error ${response.status}: ${errText}`);
+        console.error(`[ShotstackAdapter] API Error ${response.status}: ${errText.slice(0, 500)}`);
+        throw new Error(`Shotstack API Error ${response.status}: ${errText.slice(0, 200)}`);
       }
 
       const resData = await response.json();

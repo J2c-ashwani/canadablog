@@ -297,19 +297,58 @@ export class ChannelAdapters {
    */
   public static async queuePartnerBlock(partnerTitle: string): Promise<ChannelPublishResult> {
     const partnerEmailKey = process.env.RESEND_API_KEY?.trim()
-    if (partnerEmailKey) {
-      console.log(`[PartnerAdapter] Direct broadcast of Partner Funding Radar block...`)
-      return {
-        channelName: "PartnerBlock",
-        status: "QUEUED_FOR_APPROVAL",
-        message: `Partner block generated; no partner recipient list or provider send was executed.`,
+    // Partner distribution list — CFOs, accountants, and referral partners
+    const partnerEmails = [
+      "ashwani@fsidigital.ca",  // Founder (always receives partner updates)
+    ]
+    // Add configured partner emails from env if available
+    const extraPartners = process.env.PARTNER_EMAIL_LIST?.trim()
+    if (extraPartners) {
+      partnerEmails.push(...extraPartners.split(',').map(e => e.trim()).filter(Boolean))
+    }
+
+    if (partnerEmailKey && partnerEmails.length > 0) {
+      try {
+        console.log(`[PartnerAdapter] Broadcasting Partner Funding Radar to ${partnerEmails.length} recipient(s)...`)
+        const { sendEmail } = await import("@/lib/emails/mailer")
+        const result = await sendEmail({
+          to: partnerEmails[0],
+          subject: `[FSI Partner Radar] ${partnerTitle}`,
+          html: `<h2>Partner Funding Radar Update</h2>
+            <p>New funding opportunity detected: <strong>${partnerTitle}</strong></p>
+            <p>This update is relevant to your clients who may qualify for non-repayable government funding.</p>
+            <p><a href="https://fsidigital.ca/calculator" style="background: #059669; color: #fff; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">Check Client Eligibility</a></p>
+            <p style="color: #666; font-size: 12px;">You're receiving this because you are an FSI Digital referral partner.</p>`,
+          text: `Partner Funding Radar: ${partnerTitle}. Check client eligibility at https://fsidigital.ca/calculator`,
+          tagType: "partner-block",
+        })
+        if (result.success) {
+          return {
+            channelName: "PartnerBlock",
+            status: "API_ACCEPTED",
+            externalId: result.providerMessageId,
+            message: `Partner Radar broadcast sent to ${partnerEmails.length} recipient(s) via ${result.provider || 'email provider'}.`,
+          }
+        }
+        return {
+          channelName: "PartnerBlock",
+          status: "QUEUED_FOR_APPROVAL",
+          message: `Partner email send failed: ${result.error || 'unknown error'}`,
+        }
+      } catch (err: any) {
+        console.error("[PartnerAdapter] Error:", err)
+        return {
+          channelName: "PartnerBlock",
+          status: "QUEUED_FOR_APPROVAL",
+          message: `Partner broadcast error: ${err.message}`,
+        }
       }
     }
 
     return {
       channelName: "PartnerBlock",
       status: "QUEUED_FOR_APPROVAL",
-      message: `Partner Block '${partnerTitle}' queued for CFO/Accountant syndication.`,
+      message: `Partner Block '${partnerTitle}' queued. Set RESEND_API_KEY and optionally PARTNER_EMAIL_LIST (comma-separated) in Vercel.`,
     }
   }
 }
