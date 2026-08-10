@@ -126,7 +126,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   )
   const pseoRouteDates = new Map(
     publishedPseoPages
-      .map(page => [`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`, page.publishedAt])
+      .map(page => [`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`, new Date().toISOString()])
   )
 
   const partnerRoutes = [
