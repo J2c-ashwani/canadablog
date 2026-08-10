@@ -149,7 +149,7 @@ export default function BundlePage() {
       </section>
 
       {/* Product Hierarchy Map */}
-      <ProductHierarchyMap currentProductId="funding-bundle" />
+      <ProductHierarchyMap currentTier="complete" />
 
       {/* What's Inside Blueprint Section */}
       <section className="py-16 bg-slate-950 border-t border-slate-800">
