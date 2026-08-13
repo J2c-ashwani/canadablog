@@ -40,6 +40,7 @@ export interface CompetitorOrganicResult {
 
 export interface DeepCompetitorForensics {
   keyword: string
+  totalResultsCount?: number
   topCompetitors: CompetitorOrganicResult[]
   serpFeatures: string[]
   attackability: SERPAttackability
