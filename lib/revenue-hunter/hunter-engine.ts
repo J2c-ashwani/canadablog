@@ -47,8 +47,8 @@ export class RevenueHunterEngine {
       topActionableOpportunities: summary.topCashOpportunities,
       activeCohortId,
       activeCohortSize: 5,
-      observationWindowHoursRemaining: 72,
-      currentStrategyDirective: 'Active 72-Hour Cohort Observation: Measuring response rates for top Tier-1 & Tier-2 prospects. No unmetered blast allowed.'
+      observationWindowHoursRemaining: 120,
+      currentStrategyDirective: 'Active Business Day Cohort Observation (Aug 14–19 factoring in weekend): Measuring response rates for top Tier-1 & Tier-2 prospects. No unmetered blast allowed.'
     }
   }
 

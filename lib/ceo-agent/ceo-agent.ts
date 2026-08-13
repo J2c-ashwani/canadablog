@@ -211,7 +211,7 @@ export class CEOAgent {
      - Progress: 5/10 contacted (Batch 1 of 2 active)
      - Funnel State: Sent: 5 | Delivered: 5 | Opened: 0 | Clicked: 0 | Replied: 0 | Booked: 0 | Paid: 0
      - Incremental Attributed Revenue: $0.00 USD (Baseline)
-     - Cadence Rule: Active 72-Hour Observation Window until August 17, 08:00 UTC. No unmetered blast allowed.
+     - Cadence Rule: Active Observation Window extended to August 19, 08:00 UTC (120h window to factor in the Aug 15-16 weekend). No unmetered blast allowed.
      - Ultimate KPI: Verified cash ($199–$2,500) generated from this cohort.
    • Execution Proof Chain (CEO Action Ledger):
      ${actions.map((a) => `• [${a.status}] ${a.toolName}: ${a.message}`).join('\n     ')}
@@ -221,7 +221,7 @@ export class CEOAgent {
    • Milestone Target:               $2,000.00 USD
    • Incremental Collected Cash:     $${rev.directlyAttributedToCEOUSD || 0}.00 USD / $2,000.00 Target
    • Pipeline Expected Value ($EV):  $${pipeline.totalPipelineExpectedValueUSD?.toLocaleString() || '18,450.00'} USD (Probability-weighted)
-   • Strategy Directive:             Active 72-Hour Cohort Observation. Measuring response rates for top Tier-1 & Tier-2 prospects.
+   • Strategy Directive:             Active Business Day Cohort Observation (Aug 14–19). Measuring response rates for top Tier-1 & Tier-2 prospects.
    • Kill-or-Scale Mechanism:        Auto-kill offer/segment if 0 sales across 50 attempts; auto-scale cohort if conversion >= 3%.
 
 ----------------------------------------------------------------------------------
