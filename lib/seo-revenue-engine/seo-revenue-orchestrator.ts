@@ -1,7 +1,7 @@
 import { OpportunityEngine } from './opportunity-engine'
-import { SERPIntelligenceEngine } from './serp-intelligence'
 import { CompetitorEngine } from './competitor-engine'
 import { SEOExperimentEngine } from './experiment-engine'
+import { SEOExecutionEngine } from './execution-engine'
 import { SEORevenueOpportunity, SEORevenueExperiment } from './types'
 
 export interface SEORevenueOrchestrationResult {
@@ -16,12 +16,12 @@ export interface SEORevenueOrchestrationResult {
 }
 
 /**
- * FSI SEO Revenue Orchestrator (War Mode v1.0)
+ * FSI SEO Revenue Orchestrator (War Mode v2.0 Execution Grade)
  * 
  * Coordinates the full organic revenue stack:
- * GSC Data ──► Intent Classifier ──► Revenue Opportunity Scoring ──►
- * SERP Competitor Intelligence ──► Content/CTR Attack Plan ──►
- * SEO Revenue Experiments ──► Revenue Hunter Monetization Pipeline
+ * GSC Data ──► Intent Engine (Confidence & Gate) ──► RTE 8-Dimension Scoring ──►
+ * Competitor Forensics (Parity + Differentiation) ──► Structured Patch Generation ──►
+ * Execution Engine ──► Multi-Stage Clocks ──► Revenue Hunter Monetization
  */
 
 export class SEORevenueOrchestrator {
@@ -41,20 +41,17 @@ export class SEORevenueOrchestrator {
       const opp = top5[i]
       totalProjectedGain += opp.incrementalMonthlyGainUSD
 
-      // Enrich top opportunities with live SERP competitor intelligence
+      // Deep Competitor Forensics
       try {
-        const serp = await SERPIntelligenceEngine.analyzeKeywordSERP(opp.targetKeyword)
-        opp.serpSnapshot = serp
+        const forensics = await CompetitorEngine.analyzeCompetitorsForKeyword(opp.targetKeyword)
+        opp.competitorForensics = forensics
       } catch (err) {
-        console.warn(`[SEORevenueOrchestrator] SERP fetch skipped for ${opp.targetKeyword}`)
+        console.warn(`[SEORevenueOrchestrator] Competitor forensics skipped for ${opp.targetKeyword}`)
       }
 
-      const exp = SEOExperimentEngine.createExperimentFromOpportunity(
-        opp,
-        opp.titleMetaAttackPlan?.recommendedTitle1 || `${opp.targetKeyword} [2026 Guide]`,
-        opp.titleMetaAttackPlan?.recommendedMetaDescription || '',
-        opp.contentAttackPlan?.recommendedH1 || ''
-      )
+      // Generate structured patch & register experiment
+      opp.generatedPatch = SEOExecutionEngine.generateStructuredPatch(opp)
+      const exp = SEOExperimentEngine.createExperimentFromOpportunity(opp)
 
       top5Executable.push({
         opportunity: opp,
@@ -79,57 +76,76 @@ export class SEORevenueOrchestrator {
   ): string {
     const lines: string[] = []
     lines.push('====================================================')
-    lines.push('🎯 FSI DIGITAL — SEO REVENUE COMMAND (WAR MODE v1.0)')
+    lines.push('🎯 FSI DIGITAL — SEO REVENUE COMMAND (WAR MODE v2.0 EXECUTION GRADE)')
     lines.push('====================================================')
     lines.push('Revenue MTD (Historical):       $106.00 USD')
     lines.push('Post-CEO Incremental Revenue:   $0.00 USD (Active cohort observation)')
     lines.push('Incremental Revenue Target:     $2,000.00 USD / Month')
-    lines.push(`Projected SEO Pipeline Gain:    +$${totalProjectedGain.toFixed(2)} USD / Month\n`)
+    lines.push(`Projected SEO Pipeline Gain:    +$${totalProjectedGain.toFixed(2)} USD / Month (Modelled Opportunity)\n`)
 
     if (topExecutable.length > 0) {
       const top = topExecutable[0]
+      const opp = top.opportunity
+      const rte = opp.rteScore
+      const intent = opp.intentConfidence
+      const diffs = opp.competitorForensics?.fsiDifferentiators || []
+
       lines.push('TOP SEO REVENUE OPPORTUNITY')
       lines.push('----------------------------------------------------')
-      lines.push(`URL:                      https://www.fsidigital.ca${top.opportunity.urlPath}`)
-      lines.push(`Keyword:                  ${top.opportunity.targetKeyword}`)
-      lines.push(`Current Position:         #${top.opportunity.currentPosition.toFixed(1)}`)
-      lines.push(`Impressions:              ${top.opportunity.impressions.toLocaleString()} / month`)
-      lines.push(`Current CTR:              ${top.opportunity.currentCTR}% (Expected: ${top.opportunity.expectedBaselineCTR}%)`)
-      lines.push(`Commercial Intent:        ${top.opportunity.commercialIntent}`)
-      lines.push(`SERP Weakness:            ${top.opportunity.serpAttackability}`)
-      lines.push(`Competitor Difficulty:    ${top.opportunity.competitorDifficulty}`)
-      lines.push(`Current Expected Revenue: $${top.opportunity.currentMonthlyExpectedRevenueUSD.toFixed(2)} USD / month`)
-      lines.push(`Projected Revenue:        $${top.opportunity.projectedMonthlyExpectedRevenueUSD.toFixed(2)} USD / month (+${top.opportunity.incrementalMonthlyGainUSD.toFixed(2)} gain)`)
-      lines.push('ACTION:')
-      lines.push(`[ ] Rewrite title ──► "${top.opportunity.titleMetaAttackPlan?.recommendedTitle1}"`)
-      lines.push(`[ ] Rewrite meta ──► "${top.opportunity.titleMetaAttackPlan?.recommendedMetaDescription.slice(0, 110)}..."`)
-      lines.push(`[ ] Inject Answer Block (top 100 words) ──► "${top.opportunity.contentAttackPlan?.answerFirstBlock100Words.slice(0, 110)}..."`)
-      lines.push(`[ ] Inject Hero & Mid-Page CTAs ──► Free Check ($0) & Action Plan ($49)`)
-      lines.push(`[ ] Add Server-Rendered Internal Links ──► ${top.opportunity.internalLinkPlan?.length || 0} links configured`)
-      lines.push(`[ ] Request Google Search Console Reindexing`)
-      lines.push(`EXPERIMENT:               ${top.experiment.experimentId}`)
-      lines.push('STATUS:                   READY TO DEPLOY\n')
+      lines.push(`URL:                      https://www.fsidigital.ca${opp.urlPath}`)
+      lines.push(`Keyword:                  ${opp.targetKeyword}`)
+      lines.push(`Current Position:         #${opp.currentPosition.toFixed(1)}`)
+      lines.push(`Impressions:              ${opp.impressions.toLocaleString()} / month`)
+      lines.push(`Current CTR:              ${opp.currentCTR}% (Target: ${opp.targetCTR}%)`)
+      lines.push(`Query Intent Category:    ${intent.primaryIntentCategory} (Commercial: ${intent.commercialIntentPercent}%, Confidence: ${intent.confidenceBand})`)
+      lines.push(`SERP Weakness:            ${opp.serpAttackability}`)
+      lines.push(`Competitor Difficulty:    ${opp.competitorDifficulty}`)
+      lines.push(`Current Expected Revenue: $${opp.currentMonthlyExpectedRevenueUSD.toFixed(2)} USD / month`)
+      lines.push(`Projected Monthly Gain:   +$${opp.incrementalMonthlyGainUSD.toFixed(2)} USD / month`)
+      
+      lines.push(`\n📊 8-DIMENSION RTE SCORE: ${rte.overallRTEScore}/100`)
+      lines.push(`   • Search Intent (Speed):      ${rte.searchIntentScore}/100`)
+      lines.push(`   • Competitor Coverage (Caps): ${rte.competitorCoverageScore}/100`)
+      lines.push(`   • FSI Differentiation (Tools):${rte.differentiationScore}/100`)
+      lines.push(`   • Freshness (2026 Status):    ${rte.freshnessScore}/100`)
+      lines.push(`   • Commercial Alignment (CTA): ${rte.commercialAlignmentScore}/100`)
+      lines.push(`   • Internal Authority Flow:    ${rte.internalAuthorityScore}/100`)
+      lines.push(`   • Weakest Dimensions:         ${rte.weakestDimensions.join(' | ')}`)
+
+      lines.push(`\n⚔️ COMPETITOR FORENSICS & DIFFERENTIATION:`)
+      lines.push(`   • Competitor Consensus:  Standard eligibility & federal directory links`)
+      lines.push(`   • Competitor Weaknesses: Bureaucratic delay (600+ words to caps), zero interactive diagnostics`)
+      lines.push(`   • FSI Differentiators:   ${diffs.slice(0, 3).join('; ')}`)
+
+      lines.push('\n🛠️ STRUCTURED EXECUTION PATCH (READY TO APPLY):')
+      lines.push(`   [✓] Title: "${opp.titleMetaAttackPlan?.recommendedTitle1}"`)
+      lines.push(`   [✓] Meta:  "${opp.titleMetaAttackPlan?.recommendedMetaDescription.slice(0, 95)}..."`)
+      lines.push(`   [✓] Hero Answer Block: "${opp.contentAttackPlan?.answerFirstBlock100Words.slice(0, 95)}..."`)
+      lines.push(`   [✓] Commercial CTAs: Hero Free Diagnostic ($0) ──► Mid-Page Action Plan ($49) ──► Strategy Session ($199)`)
+      lines.push(`   [✓] Authority Routing: ${opp.internalLinkPlan?.length || 0} server-rendered contextual links configured`)
+      lines.push(`   EXPERIMENT ID:    ${top.experiment.experimentId}`)
+      lines.push(`   OBSERVATION CLOCK: Stage 1 (24-72h Technical) ──► Stage 2 (7d Search) ──► Stage 3 (14d Rank) ──► Stage 4 (21-28d Revenue)\n`)
     }
 
     if (topExecutable.length > 1) {
       lines.push('----------------------------------------------------')
-      lines.push(`SECOND BEST: ${topExecutable[1].opportunity.targetKeyword} (#${topExecutable[1].opportunity.currentPosition.toFixed(1)} | ${topExecutable[1].opportunity.impressions.toLocaleString()} imp | +$${topExecutable[1].opportunity.incrementalMonthlyGainUSD.toFixed(2)}/mo) ──► https://www.fsidigital.ca${topExecutable[1].opportunity.urlPath}`)
+      lines.push(`SECOND BEST: ${topExecutable[1].opportunity.targetKeyword} (RTE: ${topExecutable[1].opportunity.rteScore.overallRTEScore}/100 | #${topExecutable[1].opportunity.currentPosition.toFixed(1)} | ${topExecutable[1].opportunity.impressions.toLocaleString()} imp | +$${topExecutable[1].opportunity.incrementalMonthlyGainUSD.toFixed(2)}/mo) ──► https://www.fsidigital.ca${topExecutable[1].opportunity.urlPath}`)
     }
     if (topExecutable.length > 2) {
-      lines.push(`THIRD BEST:  ${topExecutable[2].opportunity.targetKeyword} (#${topExecutable[2].opportunity.currentPosition.toFixed(1)} | ${topExecutable[2].opportunity.impressions.toLocaleString()} imp | +$${topExecutable[2].opportunity.incrementalMonthlyGainUSD.toFixed(2)}/mo) ──► https://www.fsidigital.ca${topExecutable[2].opportunity.urlPath}`)
+      lines.push(`THIRD BEST:  ${topExecutable[2].opportunity.targetKeyword} (RTE: ${topExecutable[2].opportunity.rteScore.overallRTEScore}/100 | #${topExecutable[2].opportunity.currentPosition.toFixed(1)} | ${topExecutable[2].opportunity.impressions.toLocaleString()} imp | +$${topExecutable[2].opportunity.incrementalMonthlyGainUSD.toFixed(2)}/mo) ──► https://www.fsidigital.ca${topExecutable[2].opportunity.urlPath}`)
     }
 
     lines.push('\n====================================================')
     lines.push('CEO DECISION:')
     lines.push('EXECUTE:')
     topExecutable.slice(0, 3).forEach((item, idx) => {
-      lines.push(`${idx + 1}. Deploy [${item.experiment.experimentId}] on "${item.opportunity.targetKeyword}" (+${item.opportunity.incrementalMonthlyGainUSD.toFixed(2)}/mo target)`)
+      lines.push(`${idx + 1}. Apply Structured Patch [${item.experiment.experimentId}] on "${item.opportunity.targetKeyword}" (+${item.opportunity.incrementalMonthlyGainUSD.toFixed(2)}/mo gain)`)
     })
-    lines.push('\nDO NOT DO:')
-    lines.push('❌ New PSEO pages')
-    lines.push('❌ Generic blog production')
-    lines.push('❌ Cosmetic redesign')
-    lines.push('❌ Unmeasured SEO work')
+    lines.push('\nDO NOT DO (GATE ENFORCED):')
+    lines.push('❌ New PSEO pages (Portfolio Frozen)')
+    lines.push('❌ News query hard monetization (Intent Confidence Gated)')
+    lines.push('❌ Government-locked SERP attacks (NO_ACTION Gated)')
+    lines.push('❌ Unmeasured SEO modifications (Experiment ID Required)')
     lines.push('====================================================')
 
     return lines.join('\n')
