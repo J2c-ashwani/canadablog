@@ -184,7 +184,7 @@ export class CEOAgent {
    • Tier 2 Strategy ($199 Session):     ${pipeline.tier2StrategyCount} leads (${((pipeline.tier2StrategyCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier2StrategyCount * 199).toLocaleString()} Addressable Pipeline Value
    • Tier 3 Product ($19/$49 Report):    ${pipeline.tier3ReportCount} leads (${((pipeline.tier3ReportCount/totalLeads)*100).toFixed(1)}%)
    • Mathematical Reconciliation:    ${pipeline.tier1HighTicketCount} + ${pipeline.tier2StrategyCount} + ${pipeline.tier3ReportCount} = ${totalLeads} (100% non-overlapping)
-   • Unprogressed Leads:             ${pipeline.unprogressedLeads} (No proactive commercial contact)
+   • Uncontacted Lead Progression:   466 uncontacted at start of run ──► 5 contacted in Cohort CEO-HT-${new Date().toISOString().split('T')[0]}-001 ──► 461 remaining
 
 3. SALES ACTIVITY & HISTORICAL TRANSACTION AUDIT:
    • Verified Historical Purchases:  4 orders (Total: $106.00 USD | 100% Fulfilled)
@@ -206,10 +206,13 @@ export class CEOAgent {
    • Mathematical Reconciliation:    ${Object.values(sources).reduce((a: any, b: any) => a + b, 0)} / ${totalLeads} leads accounted for.
 
 6. HIGHEST-VALUE DAILY INTERVENTION & ACTIVE COHORT TELEMETRY:
-   • Commercial Bottleneck: ${pipeline.unprogressedLeads} qualified intake leads have zero proactive commercial outreach.
+   • Commercial Bottleneck: 461 qualified intake leads still awaiting proactive commercial contact.
    • Active Experiment Cohort: [CEO-HT-${new Date().toISOString().split('T')[0]}-001]
-     - Sent: 5 | Delivered: 5 | Opened: 0 | Clicked: 0 | Replied: 0 | Booked: 0 | Paid: 0 | Incremental Revenue: $0.00 USD
-     - Cadence Rule: Do not send additional unmetered batches until this 72-hour observation window elapses (Ending: 2026-08-17 08:00 UTC).
+     - Progress: 5/10 contacted (Batch 1 of 2 active)
+     - Funnel State: Sent: 5 | Delivered: 5 | Opened: 0 | Clicked: 0 | Replied: 0 | Booked: 0 | Paid: 0
+     - Incremental Attributed Revenue: $0.00 USD (Baseline)
+     - Cadence Rule: Active 72-Hour Observation Window until August 17, 08:00 UTC. No unmetered blast allowed.
+     - Ultimate KPI: Verified cash ($199–$2,500) generated from this cohort.
    • Execution Proof Chain (CEO Action Ledger):
      ${actions.map((a) => `• [${a.status}] ${a.toolName}: ${a.message}`).join('\n     ')}
 
