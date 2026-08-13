@@ -112,30 +112,33 @@ export class ExpectedRevenueModel {
     const hasClickedLinks = rawActivity.includes('linkclicks') || rawActivity.includes('clicked')
     const hasPreviousOutreach = rawActivity.includes('b2b_day') || rawActivity.includes('cartrecovery')
 
-    // 3. Probability Modeling
+    // 3. Conditional Probability Modeling (Calibrated for B2B Commercial Intake)
     let pDelivery = 0.96
-    let pOpen = 0.30
-    let pClick = 0.12
-    let pCheckout = 0.04
+    let pOpen = 0.35
+    let pClick = 0.15
+    let pCheckout = 0.08
     let pPayment = 0.28 // Historical baseline
 
-    if (hasPreviousOutreach) pOpen += 0.10
-    if (hasClickedLinks) {
+    if (hasPreviousOutreach) {
+      pOpen += 0.10
+    }
+    if (hasClickedLinks || readiness >= 60) {
       pOpen += 0.25
-      pClick += 0.20
+      pClick += 0.18
+      pCheckout += 0.12
     }
     if (hasStartedCheckout) {
       pOpen += 0.30
-      pClick += 0.35
+      pClick += 0.25
       pCheckout += 0.25
       pPayment += 0.10
     }
 
-    // Clamp probabilities <= 0.90
-    pOpen = Math.min(pOpen, 0.88)
-    pClick = Math.min(pClick, 0.75)
-    pCheckout = Math.min(pCheckout, 0.65)
-    pPayment = Math.min(pPayment, 0.50)
+    // Clamp probabilities
+    pOpen = Math.min(pOpen, 0.85)
+    pClick = Math.min(pClick, 0.65)
+    pCheckout = Math.min(pCheckout, 0.50)
+    pPayment = Math.min(pPayment, 0.45)
 
     // 4. Adaptive Offer Selection
     let recommendedOffer: ProductOfferDefinition
