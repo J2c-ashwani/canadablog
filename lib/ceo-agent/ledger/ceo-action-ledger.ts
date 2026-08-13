@@ -3,6 +3,7 @@ import path from 'path'
 
 export interface CEOActionRecord {
   actionId: string
+  experimentId: string
   timestamp: string
   leadEmail: string
   leadName: string

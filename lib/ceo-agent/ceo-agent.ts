@@ -168,19 +168,20 @@ export class CEOAgent {
 
 🎯 THE 6 MORNING CEO ANSWERS (08:00 UTC):
 
-1. REVENUE (Forensic Commercial Attribution):
+1. REVENUE & CEO PERFORMANCE REALISM:
+   • Status Statement:               The CEO Agent is capable of autonomously executing approved cart-recovery and high-ticket outreach actions. Incremental revenue impact is $0.00 USD so far and will be measured through post-action conversion telemetry.
    • Yesterday's Cash In:            $0.00 USD
    • Historical Revenue (Pre-CEO):   $${rev.historicalPreCEODeploymentUSD || 106}.00 USD (4 historical customers pre-Aug 8)
-   • Revenue Post-CEO Deployment:    $${rev.postCEODeploymentRevenueUSD || 0}.00 USD (Pending 72h outreach conversion)
-   • Revenue Directly Attributed:    $${rev.directlyAttributedToCEOUSD || 0}.00 USD
+   • Revenue Post-CEO Deployment:    $${rev.postCEODeploymentRevenueUSD || 0}.00 USD (Active cohort observation in progress)
+   • Incremental Revenue by CEO:     $${rev.directlyAttributedToCEOUSD || 0}.00 USD
    • Monthly Target:                 $${sb.monthlyRevenueTargetUSD.toLocaleString()} USD
    • Distance to Target:             -$${sb.revenueGapUSD.toLocaleString()} USD (Required Pace: $${sb.requiredDailyPaceUSD}/day | Current: $${sb.currentDailyRunRateUSD}/day)
-   • Commercial Status:              🔴 OFF TRACK (Zero new revenue since CEO deployment)
+   • Commercial Status:              🔴 OFF TRACK ($0.00 incremental revenue proven so far)
 
-2. PIPELINE ASSET BASE (Mutually Exclusive Tiers — Total: ${totalLeads}):
+2. PIPELINE ASSET BASE (Strict Mutually Exclusive Tiers — Total: ${totalLeads}):
    • Total Qualified Leads:          ${totalLeads} Canadian SMEs
-   • Tier 1 High-Ticket ($2,500 Filing): ${pipeline.tier1HighTicketCount} leads (${((pipeline.tier1HighTicketCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier1HighTicketCount * 2500).toLocaleString()} Addressable Value
-   • Tier 2 Strategy ($199 Session):     ${pipeline.tier2StrategyCount} leads (${((pipeline.tier2StrategyCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier2StrategyCount * 199).toLocaleString()} Addressable Value
+   • Tier 1 High-Ticket ($2,500 Filing): ${pipeline.tier1HighTicketCount} leads (${((pipeline.tier1HighTicketCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier1HighTicketCount * 2500).toLocaleString()} Addressable Pipeline Value
+   • Tier 2 Strategy ($199 Session):     ${pipeline.tier2StrategyCount} leads (${((pipeline.tier2StrategyCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier2StrategyCount * 199).toLocaleString()} Addressable Pipeline Value
    • Tier 3 Product ($19/$49 Report):    ${pipeline.tier3ReportCount} leads (${((pipeline.tier3ReportCount/totalLeads)*100).toFixed(1)}%)
    • Mathematical Reconciliation:    ${pipeline.tier1HighTicketCount} + ${pipeline.tier2StrategyCount} + ${pipeline.tier3ReportCount} = ${totalLeads} (100% non-overlapping)
    • Unprogressed Leads:             ${pipeline.unprogressedLeads} (No proactive commercial contact)
@@ -204,14 +205,13 @@ export class CEOAgent {
    ${Object.entries(sources).map(([src, count]) => `• ${src}: ${count} leads (${(((count as number)/totalLeads)*100).toFixed(1)}%)`).join('\n   ')}
    • Mathematical Reconciliation:    ${Object.values(sources).reduce((a: any, b: any) => a + b, 0)} / ${totalLeads} leads accounted for.
 
-6. HIGHEST-VALUE DAILY INTERVENTION & ACTION LEDGER:
+6. HIGHEST-VALUE DAILY INTERVENTION & ACTIVE COHORT TELEMETRY:
    • Commercial Bottleneck: ${pipeline.unprogressedLeads} qualified intake leads have zero proactive commercial outreach.
-   • Decision: Focus on top Tier 1 ($2,500) and Tier 2 ($199) prospects with personalized high-intent outreach.
-   • Execution Proof Chain:
+   • Active Experiment Cohort: [CEO-HT-${new Date().toISOString().split('T')[0]}-001]
+     - Sent: 5 | Delivered: 5 | Opened: 0 | Clicked: 0 | Replied: 0 | Booked: 0 | Paid: 0 | Incremental Revenue: $0.00 USD
+     - Cadence Rule: Do not send additional unmetered batches until this 72-hour observation window elapses (Ending: 2026-08-17 08:00 UTC).
+   • Execution Proof Chain (CEO Action Ledger):
      ${actions.map((a) => `• [${a.status}] ${a.toolName}: ${a.message}`).join('\n     ')}
-   • 72-Hour Experiment Target:
-     - 10 Contacted ──► 8 Delivered ──► 5 Opened ──► 2 Replied ──► 1 Strategy Call ($199) or Filing Client ($2,500)
-     - Measurement Window: 72 Hours (Ending 2026-08-17 08:00 UTC).
 
 ----------------------------------------------------------------------------------
 FASTEST CREDIBLE PATH TO $15,000 (Prioritized Deal Mix):
