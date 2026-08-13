@@ -93,7 +93,9 @@ export class RevenueHunterEngine {
           to: prospect.leadEmail,
           subject: message.subject,
           html: message.htmlBody,
-          text: message.plainTextBody
+          text: message.plainTextBody,
+          tagType: `revenue-hunter-${message.offerTier.toLowerCase()}`,
+          companyName: prospect.companyName
         })
 
         if (sendResult.success) {
