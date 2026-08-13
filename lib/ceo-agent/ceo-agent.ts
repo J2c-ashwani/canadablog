@@ -35,8 +35,26 @@ export class CEOAgent {
     const pathToTarget = CEOScoreboard.calculatePathToTarget(revAudit.verifiedRevenueUSD, 15000, 22)
     const leakageReport = CEOScoreboard.calculateLeakageReport(14, 3, salesAudit.uncontactedHighIntentLeads, productAudit.pendingDeliveriesCount)
 
-    // 3. Level 3 Low-Risk Executions (e.g., auto-retry pending report dispatches)
+    // 3. Autonomous Level 3 Revenue Executions:
     const executedActions = []
+
+    // 3a. Auto-trigger Cart Recovery Engine for abandoned checkouts
+    try {
+      const cartReceipt = await ActionTools.triggerCartRecovery(5, false)
+      executedActions.push(cartReceipt)
+    } catch (err: any) {
+      console.warn('[CEOAgent] Cart recovery execution notice:', err)
+    }
+
+    // 3b. Auto-trigger High-Ticket B2B Outreach for unprogressed qualified leads
+    try {
+      const outreachReceipt = await ActionTools.triggerHighTicketOutreach(5, true)
+      executedActions.push(outreachReceipt)
+    } catch (err: any) {
+      console.warn('[CEOAgent] B2B outreach execution notice:', err)
+    }
+
+    // 3c. Auto-retry pending customer report deliveries
     if (productAudit.pendingDeliveriesCount > 0) {
       const receipt = await ActionTools.retryFailedDelivery('ord_historical_c1_c2')
       executedActions.push(receipt)

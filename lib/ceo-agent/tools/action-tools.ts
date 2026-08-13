@@ -1,5 +1,7 @@
 import fs from 'fs'
 import path from 'path'
+import { CartRecoveryService } from '@/lib/leads/cart-recovery-service'
+import { B2BOutreachEngine } from '@/lib/leads/B2BOutreachEngine'
 
 export interface ActionExecutionReceipt {
   actionId: string
@@ -11,6 +13,62 @@ export interface ActionExecutionReceipt {
 }
 
 export class ActionTools {
+  /**
+   * Execute real automated Cart Recovery for abandoned checkout sessions
+   */
+  public static async triggerCartRecovery(maxBatch = 5, force = false): Promise<ActionExecutionReceipt> {
+    console.log(`[ActionTools] 🛒 CEO Agent triggering Cart Recovery Engine (batch: ${maxBatch}, force: ${force})...`)
+    try {
+      const result = await CartRecoveryService.processCartRecoveryBatch(maxBatch, force)
+      return {
+        actionId: `act_cart_recovery_${Date.now()}`,
+        toolName: 'trigger_cart_recovery',
+        status: result.errors.length === 0 ? 'SUCCESS' : 'FAILED',
+        message: `Dispatched ${result.processedCount} personalized cart recovery emails. Candidates: ${result.recoveredCandidates.join(', ') || 'None in active window'}`,
+        timestamp: new Date().toISOString(),
+        details: result
+      }
+    } catch (err: any) {
+      console.error('[ActionTools] Error in triggerCartRecovery:', err)
+      return {
+        actionId: `act_cart_recovery_${Date.now()}`,
+        toolName: 'trigger_cart_recovery',
+        status: 'FAILED',
+        message: `Cart recovery failed: ${err.message}`,
+        timestamp: new Date().toISOString(),
+        details: { error: err.message }
+      }
+    }
+  }
+
+  /**
+   * Execute real automated High-Ticket B2B Outreach for unprogressed leads
+   */
+  public static async triggerHighTicketOutreach(limit = 5, force = true): Promise<ActionExecutionReceipt> {
+    console.log(`[ActionTools] 🎯 CEO Agent triggering High-Ticket B2B Outreach (limit: ${limit})...`)
+    try {
+      const result = await B2BOutreachEngine.processDailyBatch(limit, false, force)
+      return {
+        actionId: `act_outreach_${Date.now()}`,
+        toolName: 'trigger_high_ticket_outreach',
+        status: result.errors.length === 0 ? 'SUCCESS' : 'FAILED',
+        message: `Dispatched ${result.sentCount} high-ticket outreach emails to qualified candidates.`,
+        timestamp: new Date().toISOString(),
+        details: result
+      }
+    } catch (err: any) {
+      console.error('[ActionTools] Error in triggerHighTicketOutreach:', err)
+      return {
+        actionId: `act_outreach_${Date.now()}`,
+        toolName: 'trigger_high_ticket_outreach',
+        status: 'FAILED',
+        message: `High-ticket outreach failed: ${err.message}`,
+        timestamp: new Date().toISOString(),
+        details: { error: err.message }
+      }
+    }
+  }
+
   public static async retryFailedDelivery(orderId: string): Promise<ActionExecutionReceipt> {
     console.log(`[ActionTools] 🔄 Initiating Level 3 recovery retry for Order ID: ${orderId}...`)
     
