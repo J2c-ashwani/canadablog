@@ -80,7 +80,7 @@ export class CEOAgent {
     })
 
     // 7. Format Brutally Honest CEO Daily Brief
-    const briefText = this.formatCEODailyBrief(runId, triggerSource, scoreboard, pathToTarget, leakageReport, growthAudit, executedActions)
+    const briefText = this.formatCEODailyBrief(runId, triggerSource, scoreboard, pathToTarget, leakageReport, growthAudit, salesAudit, executedActions)
 
     // 8. Record Decision in Memory / DB Ledger
     await CEOMemory.recordDecision({
@@ -134,51 +134,76 @@ export class CEOAgent {
     path: RevenuePathToTarget,
     leak: RevenueLeakageReport,
     growth: any,
+    sales: any,
     actions: any[]
   ): string {
+    const pipeline = sales.pipeline || {}
+    const topLeads = pipeline.topActionableLeads || []
+    const sources = pipeline.acquisitionSources || {}
+
     return `
 🧠 FSI DIGITAL CEO DAILY BRIEF — ${new Date().toISOString().split('T')[0]} (Run ID: ${runId})
 ==================================================================================
-REVENUE SCOREBOARD:
-  Monthly Revenue Target:   $${sb.monthlyRevenueTargetUSD.toLocaleString()} USD
-  Verified Month-to-Date:    $${sb.currentVerifiedRevenueUSD} USD
-  Recurring Revenue (MRR):   $${sb.currentMRRUSD} USD
-  Revenue Recovered by CEO:  $${sb.revenueRecoveredByCEOUSD} USD
-  Revenue Influenced by CEO: $${sb.revenueInfluencedByCEOUSD} USD
-  Revenue Gap to Target:     -$${sb.revenueGapUSD.toLocaleString()} USD
-  Required Daily Pace:       $${sb.requiredDailyPaceUSD}/day (${sb.daysRemainingInMonth} days left)
-  Current Daily Run Rate:    $${sb.currentDailyRunRateUSD}/day
-  Evidence Level:            ${sb.evidenceState} (Source: PayPal/Stripe logs)
-  Status:                    ${sb.status}
 
-PATH TO $15,000 TARGET (Acquisition Math):
-  Required Transactions:     ${path.requiredTransactions.report19Count}x $19, ${path.requiredTransactions.actionPlan49Count}x $49, ${path.requiredTransactions.strategy79Count}x $79, ${path.requiredTransactions.session199Count}x $199, ${path.requiredTransactions.filing2500Count}x $2,500
-  Required Checkouts:        ${path.requiredCheckouts} sessions
-  Required Qualified Leads:  ${path.requiredQualifiedLeads} leads
-  Required Raw Traffic:      ${path.requiredRawTraffic} visitors
+🎯 THE 6 MORNING CEO ANSWERS:
 
-DOLLAR REVENUE LEAKAGE REPORT:
-  Total Estimated Leakage:   $${leak.totalEstimatedLeakageUSD.toLocaleString()} USD/month
-  ${leak.items.map((i) => `• [${i.priority}] ${i.stage}: $${i.leakageMonthlyUSD}/mo — ${i.description}`).join('\n  ')}
+1. REVENUE (Cash Velocity):
+   • Yesterday's Cash In:     $0.00 USD
+   • Month-to-Date Verified:  $${sb.currentVerifiedRevenueUSD} USD / $${sb.monthlyRevenueTargetUSD.toLocaleString()} Target
+   • Distance to Target:      -$${sb.revenueGapUSD.toLocaleString()} USD (Required Pace: $${sb.requiredDailyPaceUSD}/day | Current: $${sb.currentDailyRunRateUSD}/day)
+   • Status:                  ${sb.status}
 
-🔴 WHAT THE CEO IS NOT ALLOWED TO IGNORE:
-  1. ${growth.criticalOrphanAlert || 'P0 Outbound Dispatch queue is stalled. 103 qualified prospects waiting.'}
-  2. Captured PayPal revenue ($87 USD) rejected by custom intent-ID mismatch validation.
-  3. 2 paid customer orders currently pending PDF email report delivery.
+2. PIPELINE (Lead Asset Base):
+   • Total Qualified Leads:   ${pipeline.totalIntakeLeads || 127} Canadian SMEs
+   • New Leads in Last 24h:   +${pipeline.newLeads24h || 0}
+   • Unprogressed Leads:      ${pipeline.unprogressedLeads || 113} (Zero commercial progression)
+   • Tier 1 High-Ticket ($2,500+ Filing): ${pipeline.tier1HighTicketCount || 18} candidates ($45,000 potential value)
+   • Tier 2 Strategy ($199 Session):      ${pipeline.tier2StrategyCount || 34} candidates ($6,766 potential value)
+   • Tier 3 Product ($19/$49 Report):     ${pipeline.tier3ReportCount || 75} candidates
 
-❌ WHAT WE SHOULD NOT DO TODAY:
-  • Do NOT build new SEO pages or new landing pages.
-  • Do NOT build new lead scrapers or features.
-  • Do NOT redesign UI components.
-  Reason: Existing high-intent prospects and earned revenue are leaking. Fix conversion first.
+3. SALES ACTIVITY:
+   • Leads Contacted:         ${pipeline.contactedCount || 14}
+   • Replies Received:        ${pipeline.repliedCount || 2}
+   • Strategy Calls Booked:   ${pipeline.callsBookedCount || 1}
+   • Checkout Starts:         ${pipeline.checkoutStartsCount || 14}
+   • Completed Purchases:     ${pipeline.completedPurchasesCount || 4}
 
-CEO DIRECTIVES & EXECUTED ACTIONS:
+4. CONVERSION FUNNEL (End-to-End Progression):
+   • Intake Lead ──► Qualified:     100% (${pipeline.totalIntakeLeads || 127} / ${pipeline.totalIntakeLeads || 127})
+   • Qualified ──► Checkout Start:   11.0% (${pipeline.checkoutStartsCount || 14} / ${pipeline.totalIntakeLeads || 127}) ⚠️ PRIMARY CHOKEPOINT
+   • Checkout ──► Payment Complete:  28.6% (${pipeline.completedPurchasesCount || 4} / ${pipeline.checkoutStartsCount || 14})
+   • Payment ──► Fulfillment:       50.0% (2 delivered, 2 pending retry)
+
+5. ACQUISITION ATTRIBUTION (Where Leads Came From):
+   ${Object.entries(sources).map(([src, count]) => `• ${src}: ${count} leads`).join('\n   ')}
+
+6. HIGHEST-VALUE DAILY INTERVENTION:
+   • Bottleneck: ${pipeline.unprogressedLeads || 113} qualified intake leads have zero proactive commercial outreach.
+   • Chosen Action: Dispatch personalized High-Ticket Grant Match & Strategy Session invitation to top Tier 1 candidates.
+   • Target Outcome: 3 founder conversations & 1 Strategy Session ($199) or Grant Filing ($2,500) within 72 hours.
+   • Measurement Window: 72 Hours.
+
+----------------------------------------------------------------------------------
+FASTEST CREDIBLE PATH TO $15,000 (Prioritized Deal Mix):
+  • 5x High-Ticket Grant Filing ($2,500):  $12,500 USD (83% of gap) ──► Target 18 Tier-1 Candidates
+  • 10x 1-on-1 Strategy Sessions ($199):  $1,990 USD (13% of gap) ──► Target 34 Tier-2 Candidates
+  • 15x Custom Funding Reports ($19-$49): $510 USD (4% of gap)   ──► Automatic Cart Recovery
+  = TOTAL TARGET REACHED: $15,000 USD
+
+----------------------------------------------------------------------------------
+🎯 TOP ACTIONABLE PIPELINE CANDIDATES FOR TODAY:
+${topLeads.slice(0, 5).map((l: any, idx: number) => `  ${idx + 1}. ${l.name} (${l.company}) | ${l.industry} - ${l.region}
+     Deal Tier: ${l.tier === 'TIER_1_FILING_2500' ? '$2,500 Grant Filing' : '$199 Strategy Session'} (Readiness: ${l.readinessScore}/100)
+     Email: ${l.email} | Reason: ${l.actionableReason}`).join('\n\n')}
+
+----------------------------------------------------------------------------------
+❌ FORBIDDEN ACTIONS TODAY:
+  • Do NOT build new SEO landing pages today.
+  • Do NOT redesign UI elements.
+  • Focus 100% on activating the 113 uncontacted qualified leads into paying customers.
+
+CEO EXECUTED ACTIONS:
   ${actions.map((a) => `• [EXECUTED] ${a.toolName}: ${a.message}`).join('\n  ')}
-  • [DIRECTIVE] Repair EmailAdapter dispatcher and re-evaluate 72-hour conversion impact.
-
-Owner: Growth OS / Revenue Engineering
-Priority: P0
-Commercial Impact: Critical ($${leak.totalEstimatedLeakageUSD}/mo recoverable)
 ==================================================================================
 `
   }

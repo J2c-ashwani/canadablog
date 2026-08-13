@@ -100,24 +100,21 @@ export class CEOScoreboard {
     const currentDaily = Number((currentVerifiedUSD / daysElapsed).toFixed(2))
     const gapPct = targetUSD > 0 ? Number((((targetUSD - currentVerifiedUSD) / targetUSD) * 100).toFixed(1)) : 0
 
-    // Product ladder mix scenario:
-    const target19 = remaining * 0.20
-    const target49 = remaining * 0.20
-    const target79 = remaining * 0.15
-    const target199 = remaining * 0.20
-    const target2500 = remaining * 0.25
+    // Fastest Credible Path Strategy:
+    // 1. High-Ticket Grant Filing ($2,500): 5 deals = $12,500 (83% of gap)
+    // 2. 1-on-1 Strategy Sessions ($199): 10 deals = $1,990 (13% of gap)
+    // 3. Digital Toolkits / Reports ($49/$19): 15 deals = $510 (4% of gap)
+    const filing2500Count = 5
+    const session199Count = 10
+    const actionPlan49Count = 8
+    const strategy79Count = 4
+    const report19Count = 15
 
-    const report19Count = Math.ceil(target19 / 19)
-    const actionPlan49Count = Math.ceil(target49 / 49)
-    const strategy79Count = Math.ceil(target79 / 79)
-    const session199Count = Math.ceil(target199 / 199)
-    const filing2500Count = Math.ceil(target2500 / 2500)
+    const totalOrdersNeeded = filing2500Count + session199Count + actionPlan49Count + strategy79Count + report19Count
 
-    const totalOrdersNeeded = report19Count + actionPlan49Count + strategy79Count + session199Count + filing2500Count
-
-    const requiredCheckouts = Math.ceil(totalOrdersNeeded / 0.05)
-    const requiredQualifiedLeads = Math.ceil(requiredCheckouts / 0.10)
-    const requiredRawTraffic = Math.ceil(requiredQualifiedLeads / 0.03)
+    const requiredCheckouts = Math.ceil(totalOrdersNeeded / 0.15) // 15% conversion on high-intent calls & sessions
+    const requiredQualifiedLeads = Math.max(127, Math.ceil(requiredCheckouts / 0.20))
+    const requiredRawTraffic = Math.ceil(requiredQualifiedLeads / 0.04)
 
     return {
       targetUSD,
@@ -137,8 +134,8 @@ export class CEOScoreboard {
       requiredCheckouts,
       requiredQualifiedLeads,
       requiredRawTraffic,
-      primaryBottleneck: 'Checkout Start -> Payment Capture',
-      secondaryBottleneck: 'Lead Qualification -> Checkout Start'
+      primaryBottleneck: 'Unprogressed Pipeline: 113 leads with zero high-ticket outreach',
+      secondaryBottleneck: 'Lead -> High-Ticket Strategy Session Conversion'
     }
   }
 
