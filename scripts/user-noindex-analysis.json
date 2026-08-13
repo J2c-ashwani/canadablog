@@ -1,0 +1,3987 @@
+{
+  "summary": {
+    "totalInput": 662,
+    "genuineActiveCount": 527,
+    "invalidExcludedCount": 135,
+    "marchAprilCrawled": 226,
+    "mayCrawled": 283,
+    "juneCrawled": 11,
+    "julyAugustCrawled": 6
+  },
+  "genuinePages": [
+    {
+      "url": "https://www.fsidigital.ca/compare/sred-vs-rd-tax-credit-usa",
+      "path": "/compare/sred-vs-rd-tax-credit-usa",
+      "lastCrawled": "2026-07-29",
+      "type": "Comparison Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/compare/mitacs-vs-nserc",
+      "path": "/compare/mitacs-vs-nserc",
+      "lastCrawled": "2026-07-22",
+      "type": "Comparison Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/compare/ised-vs-bdc",
+      "path": "/compare/ised-vs-bdc",
+      "lastCrawled": "2026-07-19",
+      "type": "Comparison Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ok/tulsa/agriculture",
+      "path": "/grants/ok/tulsa/agriculture",
+      "lastCrawled": "2026-07-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ok/tulsa/non-profits",
+      "path": "/grants/ok/tulsa/non-profits",
+      "lastCrawled": "2026-07-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ok/tulsa",
+      "path": "/grants/ok/tulsa",
+      "lastCrawled": "2026-07-04",
+      "type": "PSEO City Hub Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/compare/canexport-vs-edc",
+      "path": "/compare/canexport-vs-edc",
+      "lastCrawled": "2026-06-20",
+      "type": "Comparison Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/chandler/arts-entertainment",
+      "path": "/grants/az/chandler/arts-entertainment",
+      "lastCrawled": "2026-06-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/compare/nsf-sbir-vs-darpa",
+      "path": "/compare/nsf-sbir-vs-darpa",
+      "lastCrawled": "2026-06-20",
+      "type": "Comparison Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/in/fort-wayne/education",
+      "path": "/grants/in/fort-wayne/education",
+      "lastCrawled": "2026-06-17",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nc/greensboro/retail",
+      "path": "/grants/nc/greensboro/retail",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nc/greensboro/women-entrepreneurs",
+      "path": "/grants/nc/greensboro/women-entrepreneurs",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nc/greensboro/agriculture",
+      "path": "/grants/nc/greensboro/agriculture",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nc/greensboro/restaurants-hospitality",
+      "path": "/grants/nc/greensboro/restaurants-hospitality",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nc/greensboro/veterans",
+      "path": "/grants/nc/greensboro/veterans",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ak/anchorage/restaurants-hospitality",
+      "path": "/grants/ak/anchorage/restaurants-hospitality",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ak/anchorage/education",
+      "path": "/grants/ak/anchorage/education",
+      "lastCrawled": "2026-06-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/la/new-orleans/healthcare",
+      "path": "/grants/la/new-orleans/healthcare",
+      "lastCrawled": "2026-05-31",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/la/new-orleans/manufacturing",
+      "path": "/grants/la/new-orleans/manufacturing",
+      "lastCrawled": "2026-05-31",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/logistics",
+      "path": "/grants/on/windsor/logistics",
+      "lastCrawled": "2026-05-17",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/manufacturing",
+      "path": "/grants/on/cambridge/manufacturing",
+      "lastCrawled": "2026-05-16",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/clean-energy",
+      "path": "/grants/on/windsor/clean-energy",
+      "lastCrawled": "2026-05-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/logistics",
+      "path": "/grants/on/barrie/logistics",
+      "lastCrawled": "2026-05-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/sherbrooke/veterans",
+      "path": "/grants/qc/sherbrooke/veterans",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/education",
+      "path": "/grants/ab/medicine-hat/education",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/construction",
+      "path": "/grants/ab/medicine-hat/construction",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/women-entrepreneurs",
+      "path": "/grants/ab/st-albert/women-entrepreneurs",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/agriculture",
+      "path": "/grants/ab/medicine-hat/agriculture",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/clean-energy",
+      "path": "/grants/ab/st-albert/clean-energy",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/minority-owned",
+      "path": "/grants/bc/kelowna/minority-owned",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/manufacturing",
+      "path": "/grants/bc/kamloops/manufacturing",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/veterans",
+      "path": "/grants/bc/saanich/veterans",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/veterans",
+      "path": "/grants/bc/nanaimo/veterans",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/levis/agriculture",
+      "path": "/grants/qc/levis/agriculture",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/sherbrooke/education",
+      "path": "/grants/qc/sherbrooke/education",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/levis/women-entrepreneurs",
+      "path": "/grants/qc/levis/women-entrepreneurs",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/logistics",
+      "path": "/grants/bc/saanich/logistics",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/veterans",
+      "path": "/grants/on/kitchener/veterans",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/logistics",
+      "path": "/grants/qc/gatineau/logistics",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/retail",
+      "path": "/grants/ab/red-deer/retail",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/levis/education",
+      "path": "/grants/qc/levis/education",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/levis/construction",
+      "path": "/grants/qc/levis/construction",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/clean-energy",
+      "path": "/grants/on/oshawa/clean-energy",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/manufacturing",
+      "path": "/grants/on/kitchener/manufacturing",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/restaurants-hospitality",
+      "path": "/grants/on/vaughan/restaurants-hospitality",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/women-entrepreneurs",
+      "path": "/grants/bc/kamloops/women-entrepreneurs",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/agriculture",
+      "path": "/grants/on/windsor/agriculture",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/clean-energy",
+      "path": "/grants/on/burlington/clean-energy",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/construction",
+      "path": "/grants/on/kitchener/construction",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/minority-owned",
+      "path": "/grants/on/richmond-hill/minority-owned",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/manufacturing",
+      "path": "/grants/on/barrie/manufacturing",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/arts-entertainment",
+      "path": "/grants/on/kitchener/arts-entertainment",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/agriculture",
+      "path": "/grants/on/london/agriculture",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/non-profits",
+      "path": "/grants/on/kitchener/non-profits",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/restaurants-hospitality",
+      "path": "/grants/on/london/restaurants-hospitality",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/non-profits",
+      "path": "/grants/bc/coquitlam/non-profits",
+      "lastCrawled": "2026-05-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/education",
+      "path": "/grants/bc/kelowna/education",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/veterans",
+      "path": "/grants/on/london/veterans",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/non-profits",
+      "path": "/grants/ab/red-deer/non-profits",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/clean-energy",
+      "path": "/grants/on/markham/clean-energy",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/construction",
+      "path": "/grants/on/greater-sudbury/construction",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/healthcare",
+      "path": "/grants/on/markham/healthcare",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/non-profits",
+      "path": "/grants/on/burlington/non-profits",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/women-entrepreneurs",
+      "path": "/grants/on/london/women-entrepreneurs",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/women-entrepreneurs",
+      "path": "/grants/on/kitchener/women-entrepreneurs",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/education",
+      "path": "/grants/on/burlington/education",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/education",
+      "path": "/grants/on/vaughan/education",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/education",
+      "path": "/grants/on/london/education",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/women-entrepreneurs",
+      "path": "/grants/on/cambridge/women-entrepreneurs",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/technology",
+      "path": "/grants/on/oakville/technology",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/restaurants-hospitality",
+      "path": "/grants/on/oakville/restaurants-hospitality",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/construction",
+      "path": "/grants/bc/coquitlam/construction",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/manufacturing",
+      "path": "/grants/bc/saanich/manufacturing",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/agriculture",
+      "path": "/grants/bc/kamloops/agriculture",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/retail",
+      "path": "/grants/qc/gatineau/retail",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/healthcare",
+      "path": "/grants/qc/longueuil/healthcare",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/minority-owned",
+      "path": "/grants/ab/st-albert/minority-owned",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/technology",
+      "path": "/grants/bc/saanich/technology",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/construction",
+      "path": "/grants/bc/saanich/construction",
+      "lastCrawled": "2026-05-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/in/indianapolis/minority-owned",
+      "path": "/grants/in/indianapolis/minority-owned",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/retail",
+      "path": "/grants/on/kitchener/retail",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/veterans",
+      "path": "/grants/on/burlington/veterans",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/veterans",
+      "path": "/grants/on/windsor/veterans",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/healthcare",
+      "path": "/grants/bc/saanich/healthcare",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/healthcare",
+      "path": "/grants/bc/abbotsford/healthcare",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/agriculture",
+      "path": "/grants/bc/kelowna/agriculture",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/arts-entertainment",
+      "path": "/grants/bc/kelowna/arts-entertainment",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/construction",
+      "path": "/grants/bc/kelowna/construction",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/education",
+      "path": "/grants/bc/coquitlam/education",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/healthcare",
+      "path": "/grants/ab/lethbridge/healthcare",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/veterans",
+      "path": "/grants/qc/longueuil/veterans",
+      "lastCrawled": "2026-05-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/construction",
+      "path": "/grants/ab/st-albert/construction",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/technology",
+      "path": "/grants/ab/medicine-hat/technology",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/minority-owned",
+      "path": "/grants/bc/abbotsford/minority-owned",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/oh/columbus/construction",
+      "path": "/grants/oh/columbus/construction",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/oh/columbus/logistics",
+      "path": "/grants/oh/columbus/logistics",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/oh/columbus/retail",
+      "path": "/grants/oh/columbus/retail",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/sherbrooke/manufacturing",
+      "path": "/grants/qc/sherbrooke/manufacturing",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/healthcare",
+      "path": "/grants/bc/nanaimo/healthcare",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/healthcare",
+      "path": "/grants/on/guelph/healthcare",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/construction",
+      "path": "/grants/bc/nanaimo/construction",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/arts-entertainment",
+      "path": "/grants/bc/saanich/arts-entertainment",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/education",
+      "path": "/grants/bc/saanich/education",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/agriculture",
+      "path": "/grants/bc/saanich/agriculture",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/restaurants-hospitality",
+      "path": "/grants/bc/saanich/restaurants-hospitality",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/veterans",
+      "path": "/grants/ab/red-deer/veterans",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/manufacturing",
+      "path": "/grants/bc/coquitlam/manufacturing",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/non-profits",
+      "path": "/grants/bc/saanich/non-profits",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/healthcare",
+      "path": "/grants/on/cambridge/healthcare",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/agriculture",
+      "path": "/grants/bc/coquitlam/agriculture",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/arts-entertainment",
+      "path": "/grants/on/markham/arts-entertainment",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/manufacturing",
+      "path": "/grants/qc/gatineau/manufacturing",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/women-entrepreneurs",
+      "path": "/grants/qc/gatineau/women-entrepreneurs",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/healthcare",
+      "path": "/grants/qc/gatineau/healthcare",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/logistics",
+      "path": "/grants/bc/kelowna/logistics",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/restaurants-hospitality",
+      "path": "/grants/qc/gatineau/restaurants-hospitality",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/manufacturing",
+      "path": "/grants/on/kingston/manufacturing",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/technology",
+      "path": "/grants/qc/longueuil/technology",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/restaurants-hospitality",
+      "path": "/grants/on/richmond-hill/restaurants-hospitality",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/veterans",
+      "path": "/grants/on/richmond-hill/veterans",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/education",
+      "path": "/grants/on/greater-sudbury/education",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/veterans",
+      "path": "/grants/qc/gatineau/veterans",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/education",
+      "path": "/grants/qc/gatineau/education",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/clean-energy",
+      "path": "/grants/qc/longueuil/clean-energy",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/clean-energy",
+      "path": "/grants/qc/gatineau/clean-energy",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/agriculture",
+      "path": "/grants/qc/gatineau/agriculture",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/healthcare",
+      "path": "/grants/on/oshawa/healthcare",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/healthcare",
+      "path": "/grants/on/kingston/healthcare",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/veterans",
+      "path": "/grants/ab/st-albert/veterans",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/non-profits",
+      "path": "/grants/ab/lethbridge/non-profits",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/agriculture",
+      "path": "/grants/ab/red-deer/agriculture",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/clean-energy",
+      "path": "/grants/on/kingston/clean-energy",
+      "lastCrawled": "2026-05-11",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/minority-owned",
+      "path": "/grants/on/burlington/minority-owned",
+      "lastCrawled": "2026-05-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/women-entrepreneurs",
+      "path": "/grants/bc/saanich/women-entrepreneurs",
+      "lastCrawled": "2026-05-10",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/manufacturing",
+      "path": "/grants/nl/st-johns/manufacturing",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/agriculture",
+      "path": "/grants/on/kitchener/agriculture",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/manufacturing",
+      "path": "/grants/on/st-catharines/manufacturing",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/veterans",
+      "path": "/grants/bc/abbotsford/veterans",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ny/yonkers/minority-owned",
+      "path": "/grants/ny/yonkers/minority-owned",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/agriculture",
+      "path": "/grants/on/kingston/agriculture",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/education",
+      "path": "/grants/on/kingston/education",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/technology",
+      "path": "/grants/on/guelph/technology",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/veterans",
+      "path": "/grants/on/guelph/veterans",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/clean-energy",
+      "path": "/grants/on/vaughan/clean-energy",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/healthcare",
+      "path": "/grants/on/st-catharines/healthcare",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/restaurants-hospitality",
+      "path": "/grants/bc/nanaimo/restaurants-hospitality",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/construction",
+      "path": "/grants/on/markham/construction",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/minority-owned",
+      "path": "/grants/on/london/minority-owned",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/logistics",
+      "path": "/grants/on/kitchener/logistics",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/construction",
+      "path": "/grants/on/barrie/construction",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/education",
+      "path": "/grants/on/kitchener/education",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/technology",
+      "path": "/grants/on/oshawa/technology",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/clean-energy",
+      "path": "/grants/on/barrie/clean-energy",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/agriculture",
+      "path": "/grants/on/oakville/agriculture",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/retail",
+      "path": "/grants/on/london/retail",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/construction",
+      "path": "/grants/on/guelph/construction",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/women-entrepreneurs",
+      "path": "/grants/on/oshawa/women-entrepreneurs",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/restaurants-hospitality",
+      "path": "/grants/on/oshawa/restaurants-hospitality",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/technology",
+      "path": "/grants/on/barrie/technology",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/veterans",
+      "path": "/grants/on/oshawa/veterans",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/minority-owned",
+      "path": "/grants/on/oshawa/minority-owned",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/clean-energy",
+      "path": "/grants/on/cambridge/clean-energy",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/education",
+      "path": "/grants/on/st-catharines/education",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/minority-owned",
+      "path": "/grants/on/vaughan/minority-owned",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/restaurants-hospitality",
+      "path": "/grants/on/burlington/restaurants-hospitality",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/technology",
+      "path": "/grants/on/greater-sudbury/technology",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/education",
+      "path": "/grants/on/markham/education",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/technology",
+      "path": "/grants/on/kitchener/technology",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/restaurants-hospitality",
+      "path": "/grants/on/st-catharines/restaurants-hospitality",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/arts-entertainment",
+      "path": "/grants/on/oakville/arts-entertainment",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/non-profits",
+      "path": "/grants/on/greater-sudbury/non-profits",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/healthcare",
+      "path": "/grants/on/kitchener/healthcare",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/manufacturing",
+      "path": "/grants/on/windsor/manufacturing",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/clean-energy",
+      "path": "/grants/bc/saanich/clean-energy",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ny/syracuse/restaurants-hospitality",
+      "path": "/grants/ny/syracuse/restaurants-hospitality",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/arts-entertainment",
+      "path": "/grants/on/richmond-hill/arts-entertainment",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/clean-energy",
+      "path": "/grants/on/guelph/clean-energy",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/healthcare",
+      "path": "/grants/on/barrie/healthcare",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/minority-owned",
+      "path": "/grants/qc/gatineau/minority-owned",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/manufacturing",
+      "path": "/grants/on/london/manufacturing",
+      "lastCrawled": "2026-05-09",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/retail",
+      "path": "/grants/on/st-catharines/retail",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/retail",
+      "path": "/grants/on/kingston/retail",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/construction",
+      "path": "/grants/on/burlington/construction",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/technology",
+      "path": "/grants/on/london/technology",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/gatineau/non-profits",
+      "path": "/grants/qc/gatineau/non-profits",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/veterans",
+      "path": "/grants/on/greater-sudbury/veterans",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/agriculture",
+      "path": "/grants/on/greater-sudbury/agriculture",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/veterans",
+      "path": "/grants/on/vaughan/veterans",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/construction",
+      "path": "/grants/on/kingston/construction",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/clean-energy",
+      "path": "/grants/bc/abbotsford/clean-energy",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/non-profits",
+      "path": "/grants/on/guelph/non-profits",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/manufacturing",
+      "path": "/grants/on/oshawa/manufacturing",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/arts-entertainment",
+      "path": "/grants/on/windsor/arts-entertainment",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/minority-owned",
+      "path": "/grants/on/st-catharines/minority-owned",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/manufacturing",
+      "path": "/grants/ab/medicine-hat/manufacturing",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/healthcare",
+      "path": "/grants/bc/kamloops/healthcare",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/non-profits",
+      "path": "/grants/bc/kamloops/non-profits",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/women-entrepreneurs",
+      "path": "/grants/on/greater-sudbury/women-entrepreneurs",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/construction",
+      "path": "/grants/ab/lethbridge/construction",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/restaurants-hospitality",
+      "path": "/grants/ab/st-albert/restaurants-hospitality",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/st-albert/arts-entertainment",
+      "path": "/grants/ab/st-albert/arts-entertainment",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/manufacturing",
+      "path": "/grants/ab/lethbridge/manufacturing",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/minority-owned",
+      "path": "/grants/bc/nanaimo/minority-owned",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/clean-energy",
+      "path": "/grants/ab/medicine-hat/clean-energy",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/veterans",
+      "path": "/grants/qc/trois-rivieres/veterans",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/education",
+      "path": "/grants/on/barrie/education",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/construction",
+      "path": "/grants/on/richmond-hill/construction",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/women-entrepreneurs",
+      "path": "/grants/on/kingston/women-entrepreneurs",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/veterans",
+      "path": "/grants/on/markham/veterans",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/manufacturing",
+      "path": "/grants/on/burlington/manufacturing",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/levis/minority-owned",
+      "path": "/grants/qc/levis/minority-owned",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/restaurants-hospitality",
+      "path": "/grants/ab/red-deer/restaurants-hospitality",
+      "lastCrawled": "2026-05-08",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/technology",
+      "path": "/grants/bc/nanaimo/technology",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/veterans",
+      "path": "/grants/on/oakville/veterans",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/women-entrepreneurs",
+      "path": "/grants/on/guelph/women-entrepreneurs",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/non-profits",
+      "path": "/grants/on/richmond-hill/non-profits",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/non-profits",
+      "path": "/grants/on/windsor/non-profits",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/arts-entertainment",
+      "path": "/grants/on/vaughan/arts-entertainment",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/women-entrepreneurs",
+      "path": "/grants/on/st-catharines/women-entrepreneurs",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/medicine-hat/logistics",
+      "path": "/grants/ab/medicine-hat/logistics",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/arts-entertainment",
+      "path": "/grants/ab/lethbridge/arts-entertainment",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/arts-entertainment",
+      "path": "/grants/qc/longueuil/arts-entertainment",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/arts-entertainment",
+      "path": "/grants/on/oshawa/arts-entertainment",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/agriculture",
+      "path": "/grants/nl/st-johns/agriculture",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/technology",
+      "path": "/grants/ab/red-deer/technology",
+      "lastCrawled": "2026-05-07",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/healthcare",
+      "path": "/grants/on/oakville/healthcare",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/manufacturing",
+      "path": "/grants/ab/red-deer/manufacturing",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/non-profits",
+      "path": "/grants/qc/trois-rivieres/non-profits",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/technology",
+      "path": "/grants/qc/trois-rivieres/technology",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/restaurants-hospitality",
+      "path": "/grants/on/markham/restaurants-hospitality",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/restaurants-hospitality",
+      "path": "/grants/on/greater-sudbury/restaurants-hospitality",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/agriculture",
+      "path": "/grants/on/oshawa/agriculture",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/retail",
+      "path": "/grants/on/cambridge/retail",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/manufacturing",
+      "path": "/grants/on/markham/manufacturing",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/logistics",
+      "path": "/grants/on/vaughan/logistics",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/retail",
+      "path": "/grants/on/markham/retail",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/healthcare",
+      "path": "/grants/on/richmond-hill/healthcare",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/technology",
+      "path": "/grants/on/windsor/technology",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/women-entrepreneurs",
+      "path": "/grants/on/windsor/women-entrepreneurs",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/non-profits",
+      "path": "/grants/on/oakville/non-profits",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/clean-energy",
+      "path": "/grants/on/oakville/clean-energy",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/education",
+      "path": "/grants/on/cambridge/education",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/restaurants-hospitality",
+      "path": "/grants/on/kitchener/restaurants-hospitality",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/logistics",
+      "path": "/grants/on/oshawa/logistics",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/minority-owned",
+      "path": "/grants/on/kitchener/minority-owned",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/education",
+      "path": "/grants/on/richmond-hill/education",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/clean-energy",
+      "path": "/grants/on/london/clean-energy",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/logistics",
+      "path": "/grants/on/markham/logistics",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/agriculture",
+      "path": "/grants/on/richmond-hill/agriculture",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/technology",
+      "path": "/grants/on/markham/technology",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/logistics",
+      "path": "/grants/on/oakville/logistics",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/education",
+      "path": "/grants/on/oshawa/education",
+      "lastCrawled": "2026-05-06",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/manufacturing",
+      "path": "/grants/qc/trois-rivieres/manufacturing",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/healthcare",
+      "path": "/grants/on/burlington/healthcare",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/sherbrooke/construction",
+      "path": "/grants/qc/sherbrooke/construction",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/retail",
+      "path": "/grants/on/guelph/retail",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/logistics",
+      "path": "/grants/qc/longueuil/logistics",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/minority-owned",
+      "path": "/grants/qc/trois-rivieres/minority-owned",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/fl/tallahassee/clean-energy",
+      "path": "/grants/fl/tallahassee/clean-energy",
+      "lastCrawled": "2026-05-05",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/women-entrepreneurs",
+      "path": "/grants/ab/red-deer/women-entrepreneurs",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/agriculture",
+      "path": "/grants/qc/trois-rivieres/agriculture",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/logistics",
+      "path": "/grants/on/guelph/logistics",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/arts-entertainment",
+      "path": "/grants/on/cambridge/arts-entertainment",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/education",
+      "path": "/grants/on/oakville/education",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/retail",
+      "path": "/grants/on/greater-sudbury/retail",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/healthcare",
+      "path": "/grants/qc/trois-rivieres/healthcare",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/construction",
+      "path": "/grants/qc/trois-rivieres/construction",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/sherbrooke/non-profits",
+      "path": "/grants/qc/sherbrooke/non-profits",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/retail",
+      "path": "/grants/on/oakville/retail",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/logistics",
+      "path": "/grants/on/richmond-hill/logistics",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/logistics",
+      "path": "/grants/on/vaughan/logistics",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/women-entrepreneurs",
+      "path": "/grants/on/vaughan/women-entrepreneurs",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/retail",
+      "path": "/grants/on/oshawa/retail",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/manufacturing",
+      "path": "/grants/on/vaughan/manufacturing",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/construction",
+      "path": "/grants/ab/red-deer/construction",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/education",
+      "path": "/grants/ab/red-deer/education",
+      "lastCrawled": "2026-05-04",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/red-deer/logistics",
+      "path": "/grants/ab/red-deer/logistics",
+      "lastCrawled": "2026-05-03",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/retail",
+      "path": "/grants/ab/lethbridge/retail",
+      "lastCrawled": "2026-05-03",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ab/lethbridge/veterans",
+      "path": "/grants/ab/lethbridge/veterans",
+      "lastCrawled": "2026-05-03",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/women-entrepreneurs",
+      "path": "/grants/qc/trois-rivieres/women-entrepreneurs",
+      "lastCrawled": "2026-05-03",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/levis/retail",
+      "path": "/grants/qc/levis/retail",
+      "lastCrawled": "2026-05-03",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/fl/st-petersburg/technology",
+      "path": "/grants/fl/st-petersburg/technology",
+      "lastCrawled": "2026-05-03",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/restaurants-hospitality",
+      "path": "/grants/qc/trois-rivieres/restaurants-hospitality",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/clean-energy",
+      "path": "/grants/bc/coquitlam/clean-energy",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/construction",
+      "path": "/grants/on/st-catharines/construction",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/arts-entertainment",
+      "path": "/grants/on/burlington/arts-entertainment",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/minority-owned",
+      "path": "/grants/bc/saanich/minority-owned",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/construction",
+      "path": "/grants/on/oakville/construction",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/construction",
+      "path": "/grants/on/windsor/construction",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kitchener/clean-energy",
+      "path": "/grants/on/kitchener/clean-energy",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/retail",
+      "path": "/grants/bc/kamloops/retail",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/women-entrepreneurs",
+      "path": "/grants/on/barrie/women-entrepreneurs",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/minority-owned",
+      "path": "/grants/on/markham/minority-owned",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/non-profits",
+      "path": "/grants/on/oshawa/non-profits",
+      "lastCrawled": "2026-05-02",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/logistics",
+      "path": "/grants/bc/kamloops/logistics",
+      "lastCrawled": "2026-05-01",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/women-entrepreneurs",
+      "path": "/grants/bc/nanaimo/women-entrepreneurs",
+      "lastCrawled": "2026-05-01",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/agriculture",
+      "path": "/grants/bc/nanaimo/agriculture",
+      "lastCrawled": "2026-05-01",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/retail",
+      "path": "/grants/bc/nanaimo/retail",
+      "lastCrawled": "2026-05-01",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/clean-energy",
+      "path": "/grants/bc/nanaimo/clean-energy",
+      "lastCrawled": "2026-05-01",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/non-profits",
+      "path": "/grants/bc/kelowna/non-profits",
+      "lastCrawled": "2026-05-01",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/fl/jacksonville/technology",
+      "path": "/grants/fl/jacksonville/technology",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/arts-entertainment",
+      "path": "/grants/bc/abbotsford/arts-entertainment",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/restaurants-hospitality",
+      "path": "/grants/on/windsor/restaurants-hospitality",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/retail",
+      "path": "/grants/on/barrie/retail",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/construction",
+      "path": "/grants/bc/abbotsford/construction",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/restaurants-hospitality",
+      "path": "/grants/bc/coquitlam/restaurants-hospitality",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/logistics",
+      "path": "/grants/bc/abbotsford/logistics",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/manufacturing",
+      "path": "/grants/on/oakville/manufacturing",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/manufacturing",
+      "path": "/grants/on/richmond-hill/manufacturing",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/logistics",
+      "path": "/grants/on/london/logistics",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/manufacturing",
+      "path": "/grants/on/greater-sudbury/manufacturing",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/non-profits",
+      "path": "/grants/on/london/non-profits",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/logistics",
+      "path": "/grants/on/greater-sudbury/logistics",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/education",
+      "path": "/grants/on/windsor/education",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/women-entrepreneurs",
+      "path": "/grants/on/richmond-hill/women-entrepreneurs",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/healthcare",
+      "path": "/grants/on/vaughan/healthcare",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/women-entrepreneurs",
+      "path": "/grants/on/markham/women-entrepreneurs",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/technology",
+      "path": "/grants/on/burlington/technology",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/healthcare",
+      "path": "/grants/on/greater-sudbury/healthcare",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/longueuil/restaurants-hospitality",
+      "path": "/grants/qc/longueuil/restaurants-hospitality",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/sherbrooke/clean-energy",
+      "path": "/grants/qc/sherbrooke/clean-energy",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/minority-owned",
+      "path": "/grants/on/windsor/minority-owned",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/retail",
+      "path": "/grants/on/burlington/retail",
+      "lastCrawled": "2026-04-30",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/vaughan/retail",
+      "path": "/grants/on/vaughan/retail",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/non-profits",
+      "path": "/grants/on/markham/non-profits",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/logistics",
+      "path": "/grants/bc/nanaimo/logistics",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/technology",
+      "path": "/grants/on/richmond-hill/technology",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/saanich/retail",
+      "path": "/grants/bc/saanich/retail",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/technology",
+      "path": "/grants/bc/kamloops/technology",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/arts-entertainment",
+      "path": "/grants/bc/nanaimo/arts-entertainment",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/healthcare",
+      "path": "/grants/on/london/healthcare",
+      "lastCrawled": "2026-04-29",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/women-entrepreneurs",
+      "path": "/grants/bc/abbotsford/women-entrepreneurs",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/retail",
+      "path": "/grants/bc/abbotsford/retail",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/technology",
+      "path": "/grants/bc/abbotsford/technology",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/retail",
+      "path": "/grants/bc/kelowna/retail",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/abbotsford/agriculture",
+      "path": "/grants/bc/abbotsford/agriculture",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/logistics",
+      "path": "/grants/bc/coquitlam/logistics",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/logistics",
+      "path": "/grants/on/kingston/logistics",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/coquitlam/healthcare",
+      "path": "/grants/bc/coquitlam/healthcare",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/manufacturing",
+      "path": "/grants/on/guelph/manufacturing",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/clean-energy",
+      "path": "/grants/bc/kelowna/clean-energy",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/arts-entertainment",
+      "path": "/grants/bc/kamloops/arts-entertainment",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/education",
+      "path": "/grants/bc/kamloops/education",
+      "lastCrawled": "2026-04-28",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/arlington/retail",
+      "path": "/grants/tx/arlington/retail",
+      "lastCrawled": "2026-04-27",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/minority-owned",
+      "path": "/grants/on/oakville/minority-owned",
+      "lastCrawled": "2026-04-27",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/arts-entertainment",
+      "path": "/grants/on/st-catharines/arts-entertainment",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kelowna/technology",
+      "path": "/grants/bc/kelowna/technology",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/veterans",
+      "path": "/grants/on/st-catharines/veterans",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/technology",
+      "path": "/grants/on/cambridge/technology",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/technology",
+      "path": "/grants/on/kingston/technology",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/construction",
+      "path": "/grants/on/cambridge/construction",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/restaurants-hospitality",
+      "path": "/grants/on/kingston/restaurants-hospitality",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/agriculture",
+      "path": "/grants/on/st-catharines/agriculture",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/cambridge/veterans",
+      "path": "/grants/on/cambridge/veterans",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/clean-energy",
+      "path": "/grants/on/st-catharines/clean-energy",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/kingston/non-profits",
+      "path": "/grants/on/kingston/non-profits",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/logistics",
+      "path": "/grants/on/st-catharines/logistics",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/non-profits",
+      "path": "/grants/on/st-catharines/non-profits",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/st-catharines/technology",
+      "path": "/grants/on/st-catharines/technology",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/sbir-sttr-grants-guide",
+      "path": "/usa/sbir-sttr-grants-guide",
+      "lastCrawled": "2026-04-26",
+      "type": "USA Location Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/kamloops/construction",
+      "path": "/grants/bc/kamloops/construction",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/arts-entertainment",
+      "path": "/grants/on/london/arts-entertainment",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oakville/women-entrepreneurs",
+      "path": "/grants/on/oakville/women-entrepreneurs",
+      "lastCrawled": "2026-04-26",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/retail",
+      "path": "/grants/on/richmond-hill/retail",
+      "lastCrawled": "2026-04-25",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/restaurants-hospitality",
+      "path": "/grants/on/guelph/restaurants-hospitality",
+      "lastCrawled": "2026-04-24",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/quebec",
+      "path": "/usa/quebec",
+      "lastCrawled": "2026-04-24",
+      "type": "USA Location Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/qc/trois-rivieres/arts-entertainment",
+      "path": "/grants/qc/trois-rivieres/arts-entertainment",
+      "lastCrawled": "2026-04-24",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/logistics",
+      "path": "/grants/ca/bakersfield/logistics",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/agriculture",
+      "path": "/grants/ca/anaheim/agriculture",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/arts-entertainment",
+      "path": "/grants/ca/anaheim/arts-entertainment",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/education",
+      "path": "/grants/ca/anaheim/education",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/non-profits",
+      "path": "/grants/ca/anaheim/non-profits",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/technology",
+      "path": "/grants/ca/anaheim/technology",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/education",
+      "path": "/grants/ca/bakersfield/education",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/clean-energy",
+      "path": "/grants/ca/anaheim/clean-energy",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/healthcare",
+      "path": "/grants/ca/anaheim/healthcare",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/manufacturing",
+      "path": "/grants/ca/anaheim/manufacturing",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/veterans",
+      "path": "/grants/ca/anaheim/veterans",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/anaheim/restaurants-hospitality",
+      "path": "/grants/ca/anaheim/restaurants-hospitality",
+      "lastCrawled": "2026-04-23",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/oshawa/construction",
+      "path": "/grants/on/oshawa/construction",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/women-entrepreneurs",
+      "path": "/grants/on/burlington/women-entrepreneurs",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/windsor/healthcare",
+      "path": "/grants/on/windsor/healthcare",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/minority-owned",
+      "path": "/grants/on/barrie/minority-owned",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/markham/agriculture",
+      "path": "/grants/on/markham/agriculture",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/burlington/agriculture",
+      "path": "/grants/on/burlington/agriculture",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/london/construction",
+      "path": "/grants/on/london/construction",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/manufacturing",
+      "path": "/grants/ca/bakersfield/manufacturing",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/non-profits",
+      "path": "/grants/ca/bakersfield/non-profits",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/veterans",
+      "path": "/grants/ca/bakersfield/veterans",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/retail",
+      "path": "/grants/ca/oakland/retail",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/agriculture",
+      "path": "/grants/ca/bakersfield/agriculture",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/technology",
+      "path": "/grants/ca/bakersfield/technology",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/women-entrepreneurs",
+      "path": "/grants/ca/bakersfield/women-entrepreneurs",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/construction",
+      "path": "/grants/ca/oakland/construction",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/education",
+      "path": "/grants/ca/oakland/education",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/logistics",
+      "path": "/grants/ca/oakland/logistics",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/minority-owned",
+      "path": "/grants/ca/oakland/minority-owned",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/restaurants-hospitality",
+      "path": "/grants/ca/oakland/restaurants-hospitality",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/restaurants-hospitality",
+      "path": "/grants/ca/bakersfield/restaurants-hospitality",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/retail",
+      "path": "/grants/ca/bakersfield/retail",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/veterans",
+      "path": "/grants/ca/oakland/veterans",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/women-entrepreneurs",
+      "path": "/grants/ca/oakland/women-entrepreneurs",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/healthcare",
+      "path": "/grants/ca/bakersfield/healthcare",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/arts-entertainment",
+      "path": "/grants/ca/oakland/arts-entertainment",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/bakersfield/clean-energy",
+      "path": "/grants/ca/bakersfield/clean-energy",
+      "lastCrawled": "2026-04-22",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/veterans",
+      "path": "/grants/ca/long-beach/veterans",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/women-entrepreneurs",
+      "path": "/grants/ca/long-beach/women-entrepreneurs",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/clean-energy",
+      "path": "/grants/ca/oakland/clean-energy",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/agriculture",
+      "path": "/grants/ca/long-beach/agriculture",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/non-profits",
+      "path": "/grants/ca/long-beach/non-profits",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/retail",
+      "path": "/grants/ca/long-beach/retail",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/agriculture",
+      "path": "/grants/ca/oakland/agriculture",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/construction",
+      "path": "/grants/ca/long-beach/construction",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/manufacturing",
+      "path": "/grants/ca/long-beach/manufacturing",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/education",
+      "path": "/grants/ca/long-beach/education",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/manufacturing",
+      "path": "/grants/ca/oakland/manufacturing",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/arts-entertainment",
+      "path": "/grants/ca/long-beach/arts-entertainment",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/restaurants-hospitality",
+      "path": "/grants/ca/long-beach/restaurants-hospitality",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/oakland/technology",
+      "path": "/grants/ca/oakland/technology",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/technology",
+      "path": "/grants/ca/long-beach/technology",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/logistics",
+      "path": "/grants/ca/long-beach/logistics",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/clean-energy",
+      "path": "/grants/ca/long-beach/clean-energy",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/healthcare",
+      "path": "/grants/ca/long-beach/healthcare",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/long-beach/minority-owned",
+      "path": "/grants/ca/long-beach/minority-owned",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/richmond-hill/clean-energy",
+      "path": "/grants/on/richmond-hill/clean-energy",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/barrie/veterans",
+      "path": "/grants/on/barrie/veterans",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/clean-energy",
+      "path": "/grants/ca/sacramento/clean-energy",
+      "lastCrawled": "2026-04-20",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/technology",
+      "path": "/grants/ca/sacramento/technology",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/logistics",
+      "path": "/grants/ca/sacramento/logistics",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/women-entrepreneurs",
+      "path": "/grants/ca/sacramento/women-entrepreneurs",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/education",
+      "path": "/grants/ca/fresno/education",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/construction",
+      "path": "/grants/ca/sacramento/construction",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/agriculture",
+      "path": "/grants/ca/sacramento/agriculture",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/non-profits",
+      "path": "/grants/ca/sacramento/non-profits",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/education",
+      "path": "/grants/ca/sacramento/education",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/manufacturing",
+      "path": "/grants/ca/sacramento/manufacturing",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/minority-owned",
+      "path": "/grants/ca/fresno/minority-owned",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/veterans",
+      "path": "/grants/ca/sacramento/veterans",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/restaurants-hospitality",
+      "path": "/grants/ca/sacramento/restaurants-hospitality",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/retail",
+      "path": "/grants/ca/sacramento/retail",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/logistics",
+      "path": "/grants/ca/fresno/logistics",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/construction",
+      "path": "/grants/ca/fresno/construction",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/healthcare",
+      "path": "/grants/ca/sacramento/healthcare",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/minority-owned",
+      "path": "/grants/ca/sacramento/minority-owned",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/arts-entertainment",
+      "path": "/grants/ca/fresno/arts-entertainment",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/sacramento/arts-entertainment",
+      "path": "/grants/ca/sacramento/arts-entertainment",
+      "lastCrawled": "2026-04-19",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/technology",
+      "path": "/grants/ca/fresno/technology",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/restaurants-hospitality",
+      "path": "/grants/ca/fresno/restaurants-hospitality",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/agriculture",
+      "path": "/grants/ca/fresno/agriculture",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/healthcare",
+      "path": "/grants/ca/fresno/healthcare",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/manufacturing",
+      "path": "/grants/ca/fresno/manufacturing",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/clean-energy",
+      "path": "/grants/ca/fresno/clean-energy",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/veterans",
+      "path": "/grants/ca/fresno/veterans",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/ca/fresno/retail",
+      "path": "/grants/ca/fresno/retail",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/guelph/arts-entertainment",
+      "path": "/grants/on/guelph/arts-entertainment",
+      "lastCrawled": "2026-04-18",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/non-profits",
+      "path": "/grants/pe/charlottetown/non-profits",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/veterans",
+      "path": "/grants/pe/charlottetown/veterans",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/education",
+      "path": "/grants/pe/charlottetown/education",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/logistics",
+      "path": "/grants/pe/charlottetown/logistics",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/restaurants-hospitality",
+      "path": "/grants/pe/charlottetown/restaurants-hospitality",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/retail",
+      "path": "/grants/pe/charlottetown/retail",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/construction",
+      "path": "/grants/pe/charlottetown/construction",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/minority-owned",
+      "path": "/grants/pe/charlottetown/minority-owned",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/arts-entertainment",
+      "path": "/grants/pe/charlottetown/arts-entertainment",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/women-entrepreneurs",
+      "path": "/grants/pe/charlottetown/women-entrepreneurs",
+      "lastCrawled": "2026-04-15",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/arts-entertainment",
+      "path": "/grants/nb/fredericton/arts-entertainment",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/education",
+      "path": "/grants/nb/fredericton/education",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/clean-energy",
+      "path": "/grants/pe/charlottetown/clean-energy",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/retail",
+      "path": "/grants/nb/fredericton/retail",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/agriculture",
+      "path": "/grants/nb/fredericton/agriculture",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/construction",
+      "path": "/grants/nb/fredericton/construction",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/minority-owned",
+      "path": "/grants/nb/fredericton/minority-owned",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/restaurants-hospitality",
+      "path": "/grants/nb/fredericton/restaurants-hospitality",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/women-entrepreneurs",
+      "path": "/grants/nb/fredericton/women-entrepreneurs",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/manufacturing",
+      "path": "/grants/pe/charlottetown/manufacturing",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/manufacturing",
+      "path": "/grants/nb/fredericton/manufacturing",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/non-profits",
+      "path": "/grants/nb/fredericton/non-profits",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/technology",
+      "path": "/grants/nb/fredericton/technology",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/healthcare",
+      "path": "/grants/pe/charlottetown/healthcare",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/agriculture",
+      "path": "/grants/pe/charlottetown/agriculture",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/veterans",
+      "path": "/grants/nb/fredericton/veterans",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/healthcare",
+      "path": "/grants/nb/fredericton/healthcare",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/clean-energy",
+      "path": "/grants/nb/fredericton/clean-energy",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/pe/charlottetown/technology",
+      "path": "/grants/pe/charlottetown/technology",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/fredericton/logistics",
+      "path": "/grants/nb/fredericton/logistics",
+      "lastCrawled": "2026-04-14",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/on/greater-sudbury/clean-energy",
+      "path": "/grants/on/greater-sudbury/clean-energy",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/construction",
+      "path": "/grants/nl/st-johns/construction",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/manufacturing",
+      "path": "/grants/nb/moncton/manufacturing",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/minority-owned",
+      "path": "/grants/nb/moncton/minority-owned",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/education",
+      "path": "/grants/nb/saint-john/education",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/construction",
+      "path": "/grants/nb/moncton/construction",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/restaurants-hospitality",
+      "path": "/grants/nl/st-johns/restaurants-hospitality",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/retail",
+      "path": "/grants/nb/moncton/retail",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/arts-entertainment",
+      "path": "/grants/nb/saint-john/arts-entertainment",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/healthcare",
+      "path": "/grants/nb/saint-john/healthcare",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/technology",
+      "path": "/grants/nb/saint-john/technology",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/healthcare",
+      "path": "/grants/nb/moncton/healthcare",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/clean-energy",
+      "path": "/grants/nb/saint-john/clean-energy",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/veterans",
+      "path": "/grants/nb/saint-john/veterans",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/women-entrepreneurs",
+      "path": "/grants/nb/moncton/women-entrepreneurs",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/restaurants-hospitality",
+      "path": "/grants/nb/saint-john/restaurants-hospitality",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/logistics",
+      "path": "/grants/nl/st-johns/logistics",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/clean-energy",
+      "path": "/grants/nb/moncton/clean-energy",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/arts-entertainment",
+      "path": "/grants/nl/st-johns/arts-entertainment",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/non-profits",
+      "path": "/grants/nb/moncton/non-profits",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/restaurants-hospitality",
+      "path": "/grants/nb/moncton/restaurants-hospitality",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/retail",
+      "path": "/grants/nb/saint-john/retail",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/retail",
+      "path": "/grants/nl/st-johns/retail",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/arts-entertainment",
+      "path": "/grants/nb/moncton/arts-entertainment",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/education",
+      "path": "/grants/nb/moncton/education",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/veterans",
+      "path": "/grants/nb/moncton/veterans",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/non-profits",
+      "path": "/grants/nb/saint-john/non-profits",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/education",
+      "path": "/grants/nl/st-johns/education",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/non-profits",
+      "path": "/grants/nl/st-johns/non-profits",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/veterans",
+      "path": "/grants/nl/st-johns/veterans",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/women-entrepreneurs",
+      "path": "/grants/nl/st-johns/women-entrepreneurs",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/nanaimo/non-profits",
+      "path": "/grants/bc/nanaimo/non-profits",
+      "lastCrawled": "2026-04-13",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/technology",
+      "path": "/grants/nb/moncton/technology",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nl/st-johns/minority-owned",
+      "path": "/grants/nl/st-johns/minority-owned",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/construction",
+      "path": "/grants/nb/saint-john/construction",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/logistics",
+      "path": "/grants/nb/moncton/logistics",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/moncton/agriculture",
+      "path": "/grants/nb/moncton/agriculture",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/women-entrepreneurs",
+      "path": "/grants/nb/saint-john/women-entrepreneurs",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/nb/saint-john/logistics",
+      "path": "/grants/nb/saint-john/logistics",
+      "lastCrawled": "2026-04-12",
+      "type": "PSEO City+Industry Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/canada",
+      "path": "/usa/canada",
+      "lastCrawled": "2026-04-11",
+      "type": "USA Location Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/sba-loans",
+      "path": "/usa/sba-loans",
+      "lastCrawled": "2026-03-19",
+      "type": "USA Location Page"
+    },
+    {
+      "url": "https://www.fsidigital.ca/editorial-policy",
+      "path": "/editorial-policy",
+      "lastCrawled": "2026-01-12",
+      "type": "Static Core Page"
+    }
+  ],
+  "invalidOrExcludedPages": [
+    {
+      "url": "https://www.fsidigital.ca/grants/va/chesapeake/manufacturing",
+      "path": "/grants/va/chesapeake/manufacturing",
+      "lastCrawled": "2026-08-08",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/richmond/healthcare",
+      "path": "/grants/bc/richmond/healthcare",
+      "lastCrawled": "2026-08-08",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/richmond/manufacturing",
+      "path": "/grants/bc/richmond/manufacturing",
+      "lastCrawled": "2026-08-08",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/chesapeake/restaurants-hospitality",
+      "path": "/grants/va/chesapeake/restaurants-hospitality",
+      "lastCrawled": "2026-08-06",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/women-entrepreneurs",
+      "path": "/grants/va/norfolk/women-entrepreneurs",
+      "lastCrawled": "2026-08-05",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/veterans",
+      "path": "/grants/tx/irving/veterans",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/technology",
+      "path": "/grants/va/norfolk/technology",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/glendale/veterans",
+      "path": "/grants/az/glendale/veterans",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/manufacturing",
+      "path": "/grants/va/norfolk/manufacturing",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/glendale/logistics",
+      "path": "/grants/az/glendale/logistics",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/glendale/women-entrepreneurs",
+      "path": "/grants/az/glendale/women-entrepreneurs",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/arts-entertainment",
+      "path": "/grants/va/norfolk/arts-entertainment",
+      "lastCrawled": "2026-08-03",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/healthcare",
+      "path": "/grants/va/norfolk/healthcare",
+      "lastCrawled": "2026-08-02",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/glendale/manufacturing",
+      "path": "/grants/az/glendale/manufacturing",
+      "lastCrawled": "2026-08-01",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/healthcare",
+      "path": "/grants/tx/irving/healthcare",
+      "lastCrawled": "2026-08-01",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/arts-entertainment",
+      "path": "/grants/tx/irving/arts-entertainment",
+      "lastCrawled": "2026-08-01",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/non-profits",
+      "path": "/grants/tx/irving/non-profits",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/retail",
+      "path": "/grants/tx/irving/retail",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/clean-energy",
+      "path": "/grants/va/norfolk/clean-energy",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/bc/richmond/retail",
+      "path": "/grants/bc/richmond/retail",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/glendale/agriculture",
+      "path": "/grants/az/glendale/agriculture",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/non-profits",
+      "path": "/grants/va/norfolk/non-profits",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/retail",
+      "path": "/grants/va/norfolk/retail",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/veterans",
+      "path": "/grants/va/norfolk/veterans",
+      "lastCrawled": "2026-07-31",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/education",
+      "path": "/grants/va/norfolk/education",
+      "lastCrawled": "2026-07-30",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/restaurants-hospitality",
+      "path": "/grants/va/norfolk/restaurants-hospitality",
+      "lastCrawled": "2026-07-30",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/az/glendale/healthcare",
+      "path": "/grants/az/glendale/healthcare",
+      "lastCrawled": "2026-07-30",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/logistics",
+      "path": "/grants/va/norfolk/logistics",
+      "lastCrawled": "2026-07-30",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/va/norfolk/construction",
+      "path": "/grants/va/norfolk/construction",
+      "lastCrawled": "2026-07-29",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/technology",
+      "path": "/grants/tx/irving/technology",
+      "lastCrawled": "2026-07-26",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/restaurants-hospitality",
+      "path": "/grants/tx/irving/restaurants-hospitality",
+      "lastCrawled": "2026-07-25",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/manufacturing",
+      "path": "/grants/tx/irving/manufacturing",
+      "lastCrawled": "2026-07-25",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/education",
+      "path": "/grants/tx/irving/education",
+      "lastCrawled": "2026-07-23",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving",
+      "path": "/grants/tx/irving",
+      "lastCrawled": "2026-07-23",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/tx/irving/agriculture",
+      "path": "/grants/tx/irving/agriculture",
+      "lastCrawled": "2026-07-22",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/dc/washington/retail",
+      "path": "/grants/dc/washington/retail",
+      "lastCrawled": "2026-07-16",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/admin/seo-opportunities",
+      "path": "/admin/seo-opportunities",
+      "lastCrawled": "2026-07-16",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/expert-insights?category=Canada News",
+      "path": "/expert-insights?category=Canada%20News",
+      "lastCrawled": "2026-07-09",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/programs/black-entrepreneur-loan",
+      "path": "/programs/black-entrepreneur-loan",
+      "lastCrawled": "2026-07-08",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/admin/dashboard",
+      "path": "/admin/dashboard",
+      "lastCrawled": "2026-07-08",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/partners/checkout",
+      "path": "/partners/checkout",
+      "lastCrawled": "2026-07-08",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/programs/edc-credit-insurance",
+      "path": "/programs/edc-credit-insurance",
+      "lastCrawled": "2026-07-07",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/programs/mitacs-wage-subsidy",
+      "path": "/programs/mitacs-wage-subsidy",
+      "lastCrawled": "2026-07-06",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/programs/canada-summer-jobs",
+      "path": "/programs/canada-summer-jobs",
+      "lastCrawled": "2026-07-06",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/partners/success",
+      "path": "/partners/success",
+      "lastCrawled": "2026-07-05",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "http://www.fsidigital.ca/author",
+      "path": "/author",
+      "lastCrawled": "2026-07-04",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/author",
+      "path": "/author",
+      "lastCrawled": "2026-07-04",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/consultation?ref=program_page_bottom_cta",
+      "path": "/consultation?ref=program_page_bottom_cta",
+      "lastCrawled": "2026-07-04",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/admin/leads",
+      "path": "/admin/leads",
+      "lastCrawled": "2026-07-03",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Demographic-Specific&page=1",
+      "path": "/blog?category=Demographic-Specific&page=1",
+      "lastCrawled": "2026-06-24",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/&",
+      "path": "/&",
+      "lastCrawled": "2026-06-21",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/$",
+      "path": "/$",
+      "lastCrawled": "2026-06-21",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/partners/checkout?package=shared-pilot",
+      "path": "/partners/checkout?package=shared-pilot",
+      "lastCrawled": "2026-06-21",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Demographic-Specific&page=2",
+      "path": "/blog?category=Demographic-Specific&page=2",
+      "lastCrawled": "2026-06-20",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/partners/checkout?package=booked-call-pilot",
+      "path": "/partners/checkout?package=booked-call-pilot",
+      "lastCrawled": "2026-06-19",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/partners/checkout?package=exclusive-pilot",
+      "path": "/partners/checkout?package=exclusive-pilot",
+      "lastCrawled": "2026-06-19",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/products/report",
+      "path": "/products/report",
+      "lastCrawled": "2026-06-17",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/admin/alerts",
+      "path": "/admin/alerts",
+      "lastCrawled": "2026-06-14",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/booking",
+      "path": "/booking",
+      "lastCrawled": "2026-06-04",
+      "reason": "Intentional noindex system route (Admin / Checkout / Booking / Author / Internal)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=USA News&page=3",
+      "path": "/blog?category=USA%20News&page=3",
+      "lastCrawled": "2026-06-03",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=USA News&page=5",
+      "path": "/blog?category=USA%20News&page=5",
+      "lastCrawled": "2026-06-01",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=USA News&page=2",
+      "path": "/blog?category=USA%20News&page=2",
+      "lastCrawled": "2026-06-01",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?page=3",
+      "path": "/blog?page=3",
+      "lastCrawled": "2026-05-31",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Canada News&page=6",
+      "path": "/blog?category=Canada%20News&page=6",
+      "lastCrawled": "2026-05-23",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?page=18",
+      "path": "/blog?page=18",
+      "lastCrawled": "2026-05-18",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/grants/dc/washington/healthcare",
+      "path": "/grants/dc/washington/healthcare",
+      "lastCrawled": "2026-05-16",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Canada News&page=4",
+      "path": "/blog?category=Canada%20News&page=4",
+      "lastCrawled": "2026-05-14",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Canada News&page=2",
+      "path": "/blog?category=Canada%20News&page=2",
+      "lastCrawled": "2026-05-14",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Canada News&page=5",
+      "path": "/blog?category=Canada%20News&page=5",
+      "lastCrawled": "2026-05-11",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Seasonal",
+      "path": "/blog?category=Seasonal",
+      "lastCrawled": "2026-05-10",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Demographic-Specific",
+      "path": "/blog?category=Demographic-Specific",
+      "lastCrawled": "2026-05-09",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Canada News&page=3",
+      "path": "/blog?category=Canada%20News&page=3",
+      "lastCrawled": "2026-05-04",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=USA News",
+      "path": "/blog?category=USA%20News",
+      "lastCrawled": "2026-04-30",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=USA News&page=4",
+      "path": "/blog?category=USA%20News&page=4",
+      "lastCrawled": "2026-04-29",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?page=16",
+      "path": "/blog?page=16",
+      "lastCrawled": "2026-04-28",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/ontario-business-grants-guide",
+      "path": "/blog/ontario-business-grants-guide",
+      "lastCrawled": "2026-04-26",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/bc-business-grants-guide",
+      "path": "/blog/bc-business-grants-guide",
+      "lastCrawled": "2026-04-26",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/strategic-innovation-fund",
+      "path": "/blog/strategic-innovation-fund",
+      "lastCrawled": "2026-04-26",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=Funding Alerts",
+      "path": "/blog?category=Funding%20Alerts",
+      "lastCrawled": "2026-04-26",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/startup-grants-canada-guide",
+      "path": "/blog/startup-grants-canada-guide",
+      "lastCrawled": "2026-04-25",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/indigenous-women-business-grants",
+      "path": "/blog/indigenous-women-business-grants",
+      "lastCrawled": "2026-04-25",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canada-federal-grants-guide",
+      "path": "/blog/canada-federal-grants-guide",
+      "lastCrawled": "2026-04-24",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/black-women-business-grants",
+      "path": "/blog/black-women-business-grants",
+      "lastCrawled": "2026-04-24",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/expert-insights?category=Tips",
+      "path": "/expert-insights?category=Tips",
+      "lastCrawled": "2026-04-24",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/expert-insights?category=Canada News",
+      "path": "/expert-insights?category=Canada%20News",
+      "lastCrawled": "2026-04-24",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/alberta-business-grants-guide",
+      "path": "/blog/alberta-business-grants-guide",
+      "lastCrawled": "2026-04-24",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/indigenous-business-grants-canada",
+      "path": "/blog/indigenous-business-grants-canada",
+      "lastCrawled": "2026-04-23",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?page=12",
+      "path": "/blog?page=12",
+      "lastCrawled": "2026-04-18",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog?category=USA News&page=1",
+      "path": "/blog?category=USA%20News&page=1",
+      "lastCrawled": "2026-04-15",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/expert-insights?category=Seasonal",
+      "path": "/expert-insights?category=Seasonal",
+      "lastCrawled": "2026-04-14",
+      "reason": "Query string parameter page (intentional noindex)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/bc-business-grants-2025",
+      "path": "/blog/bc-business-grants-2025",
+      "lastCrawled": "2026-04-11",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/ontario-business-grants-2025",
+      "path": "/blog/ontario-business-grants-2025",
+      "lastCrawled": "2026-04-09",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/clean-tech-grants-2026",
+      "path": "/blog/clean-tech-grants-2026",
+      "lastCrawled": "2026-04-01",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/regional-development-agencies-funding",
+      "path": "/blog/regional-development-agencies-funding",
+      "lastCrawled": "2026-03-27",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/california/sacramento",
+      "path": "/usa/california/sacramento",
+      "lastCrawled": "2026-03-20",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/alberta",
+      "path": "/usa/alberta",
+      "lastCrawled": "2026-03-20",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/ontario",
+      "path": "/usa/ontario",
+      "lastCrawled": "2026-03-19",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/usa/minority-owned-business-grants",
+      "path": "/usa/minority-owned-business-grants",
+      "lastCrawled": "2026-03-19",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/irap-nrc-canada-guide",
+      "path": "/blog/irap-nrc-canada-guide",
+      "lastCrawled": "2026-03-19",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/top-10-no-equity-grants-black-female-entrepreneurs-2026",
+      "path": "/blog/top-10-no-equity-grants-black-female-entrepreneurs-2026",
+      "lastCrawled": "2026-03-19",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/sustainable-development-technology-canada-guide",
+      "path": "/blog/sustainable-development-technology-canada-guide",
+      "lastCrawled": "2026-03-16",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/agriculture-agri-food-canada-grants",
+      "path": "/blog/agriculture-agri-food-canada-grants",
+      "lastCrawled": "2026-03-12",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canadian-government-grants-tech-startups",
+      "path": "/blog/canadian-government-grants-tech-startups",
+      "lastCrawled": "2026-03-05",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/biden-2-5b-grants-2025",
+      "path": "/blog/biden-2-5b-grants-2025",
+      "lastCrawled": "2026-03-02",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/agricultural-grants-canada",
+      "path": "/blog/agricultural-grants-canada",
+      "lastCrawled": "2026-03-02",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/sred-tax-credits-guide",
+      "path": "/blog/sred-tax-credits-guide",
+      "lastCrawled": "2026-03-01",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canada-aerospace--defence-innovation-grants",
+      "path": "/blog/canada-aerospace--defence-innovation-grants",
+      "lastCrawled": "2026-03-01",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/energy-efficiency-grants-canada",
+      "path": "/blog/energy-efficiency-grants-canada",
+      "lastCrawled": "2026-02-28",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/texas-tech-programs",
+      "path": "/blog/texas-tech-programs",
+      "lastCrawled": "2026-02-28",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/guides/apply-women-entrepreneurship-strateg",
+      "path": "/guides/apply-women-entrepreneurship-strateg",
+      "lastCrawled": "2026-02-28",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/small-business-grants-ontario",
+      "path": "/blog/small-business-grants-ontario",
+      "lastCrawled": "2026-02-27",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/quebec-business-grants-loans-guide",
+      "path": "/blog/quebec-business-grants-loans-guide",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/women-business-grants-canada",
+      "path": "/blog/women-business-grants-canada",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canada-digital--ai-innovation-grants",
+      "path": "/blog/canada-digital--ai-innovation-grants",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/guides/canada-innovation-rd-funding-guide",
+      "path": "/guides/canada-innovation-rd-funding-guide",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/guides/sbir-sttr-complete-guide",
+      "path": "/guides/sbir-sttr-complete-guide",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/health-tech-grants",
+      "path": "/blog/health-tech-grants",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/cdap-guide",
+      "path": "/blog/cdap-guide",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/manufacturing-grants",
+      "path": "/blog/manufacturing-grants",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/ocean-tech-grants",
+      "path": "/blog/ocean-tech-grants",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/rural-funding-guide",
+      "path": "/blog/rural-funding-guide",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/texas-business-incentives",
+      "path": "/blog/texas-business-incentives",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/futurpreneur-loans-mentorship",
+      "path": "/blog/futurpreneur-loans-mentorship",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/sred-guide",
+      "path": "/blog/sred-guide",
+      "lastCrawled": "2026-02-26",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canexport-guide",
+      "path": "/blog/canexport-guide",
+      "lastCrawled": "2026-02-25",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canadian-small-business-funding-guide",
+      "path": "/blog/canadian-small-business-funding-guide",
+      "lastCrawled": "2026-02-25",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/women-minority-business-grants-guide",
+      "path": "/blog/women-minority-business-grants-guide",
+      "lastCrawled": "2026-02-25",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/startup-business-grants-canada-guide",
+      "path": "/blog/startup-business-grants-canada-guide",
+      "lastCrawled": "2026-02-25",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/guides/apply-aafc-grants",
+      "path": "/guides/apply-aafc-grants",
+      "lastCrawled": "2026-02-24",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/cybersecurity-startup-grants",
+      "path": "/blog/cybersecurity-startup-grants",
+      "lastCrawled": "2026-02-23",
+      "reason": "404 Non-existent page (Mismatch city slug or deleted route)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/small-business-financing-2025",
+      "path": "/blog/small-business-financing-2025",
+      "lastCrawled": "2026-02-22",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/canada-regional-development-2025",
+      "path": "/blog/canada-regional-development-2025",
+      "lastCrawled": "2026-02-21",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/quebec-business-grants-2025",
+      "path": "/blog/quebec-business-grants-2025",
+      "lastCrawled": "2026-02-21",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/indigenous-business-development-2025",
+      "path": "/blog/indigenous-business-development-2025",
+      "lastCrawled": "2026-02-21",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    },
+    {
+      "url": "https://www.fsidigital.ca/blog/october-2025-last-chance",
+      "path": "/blog/october-2025-last-chance",
+      "lastCrawled": "2026-02-19",
+      "reason": "Redirected legacy URL (301 Permanent Redirect in next.config.mjs)"
+    }
+  ]
+}
