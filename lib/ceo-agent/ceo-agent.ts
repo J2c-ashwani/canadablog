@@ -6,14 +6,16 @@ import { SalesAgent } from './specialists/sales-agent'
 import { ProductAgent } from './specialists/product-agent'
 import { ActionTools } from './tools/action-tools'
 import { CEOExperimentEngine } from './ceo-experiments'
+import { SEORevenueOrchestrator, SEORevenueOrchestrationResult } from '@/lib/seo-revenue-engine/seo-revenue-orchestrator'
 
 export interface CEORunResult {
   runId: string
   triggerSource: 'cron' | 'event' | 'on_demand' | 'verification'
   timestamp: string
-  scoreboard: CommercialScoreboard
-  pathToTarget: RevenuePathToTarget
-  leakageReport: RevenueLeakageReport
+  scoreboard: any
+  pathToTarget: any
+  leakageReport: any
+  seoWarModeReport?: SEORevenueOrchestrationResult
   briefText: string
   decisionBasis: CEODecisionBasis
   executedActions: any[]
@@ -29,6 +31,14 @@ export class CEOAgent {
     const growthAudit = await GrowthAgent.auditGrowthOS()
     const salesAudit = await SalesAgent.auditSales()
     const productAudit = await ProductAgent.auditProduct()
+    
+    // 1b. SEO Revenue War Mode Orchestrator
+    let seoWarResult: SEORevenueOrchestrationResult | undefined
+    try {
+      seoWarResult = await SEORevenueOrchestrator.runWarModeAnalysis()
+    } catch (err: any) {
+      console.warn('[CEOAgent] SEO Revenue War Mode notice:', err.message)
+    }
 
     // 2. Scoreboard, Math Path & Dollar Leakage Calculations
     const scoreboard = await CEOScoreboard.calculateScoreboard(revAudit.verifiedTotalRevenueUSD, 0, salesAudit.leadIntakeCount, 22)
@@ -98,7 +108,7 @@ export class CEOAgent {
     })
 
     // 7. Format Brutally Honest CEO Daily Brief
-    const briefText = this.formatCEODailyBrief(runId, triggerSource, scoreboard, pathToTarget, leakageReport, growthAudit, salesAudit, revAudit, executedActions)
+    const briefText = this.formatCEODailyBrief(runId, triggerSource, scoreboard, pathToTarget, leakageReport, growthAudit, salesAudit, revAudit, executedActions, seoWarResult)
 
     // 8. Record Decision in Memory / DB Ledger
     await CEOMemory.recordDecision({
@@ -110,15 +120,15 @@ export class CEOAgent {
       estimated_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
       decision_basis: decisionBasis,
       directives: [
-        'P0: Repair EmailAdapter outbound dispatch queue.',
-        'P0: Fix post-capture intent validation logic in product-payment-intents.ts.',
-        'P1: Re-evaluate 72-hour checkout recovery email conversion rate.'
+        'P0: Execute Top 5 SEO Revenue War Experiments on High-Intent Keywords.',
+        'P0: Connect every organic visitor to Revenue Hunter adaptive monetization.',
+        'P1: Measure active 120h observation cohort conversion.'
       ],
       forbidden_actions: [
         '❌ DO NOT build new SEO landing pages today.',
         '❌ DO NOT build new lead scraper features.',
         '❌ DO NOT redesign UI components.',
-        '❌ DO NOT increase SERPER scraper volume until dispatch is fixed.'
+        '❌ DO NOT increase SERPER scraper volume without targeted ROI.'
       ]
     })
 
@@ -127,7 +137,7 @@ export class CEOAgent {
       current_mtd_verified_revenue_usd: scoreboard.currentVerifiedRevenueUSD,
       primary_bottleneck: decisionBasis.primary_bottleneck,
       estimated_monthly_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
-      priority_focus: 'P0: Collect earned revenue and repair email dispatch queue'
+      priority_focus: 'P0: SEO Revenue War Mode + Revenue Hunter Cash Generation'
     })
 
     console.log(`[CEOAgent] ✅ CEO Loop Completed (${runId}). Status: ${scoreboard.status}\n`)
@@ -139,6 +149,7 @@ export class CEOAgent {
       scoreboard,
       pathToTarget,
       leakageReport,
+      seoWarModeReport: seoWarResult,
       briefText,
       decisionBasis,
       executedActions
@@ -148,13 +159,14 @@ export class CEOAgent {
   private static formatCEODailyBrief(
     runId: string,
     triggerSource: string,
-    sb: CommercialScoreboard,
-    path: RevenuePathToTarget,
-    leak: RevenueLeakageReport,
+    sb: any,
+    path: any,
+    leak: any,
     growth: any,
     sales: any,
     rev: any,
-    actions: any[]
+    actions: any[],
+    seoWarResult?: SEORevenueOrchestrationResult
   ): string {
     const pipeline = sales.pipeline || {}
     const topLeads = pipeline.topActionableLeads || []
@@ -238,11 +250,12 @@ ${topLeads.slice(0, 5).map((l: any, idx: number) => `  ${idx + 1}. ${l.name} (${
      Expected Value ($EV): $${l.expectedValueUSD || 0} USD (Confidence: ${l.readinessScore}%)
      Email: ${l.email} | Context: ${l.actionableReason}`).join('\n\n')}
 
+${seoWarResult ? `\n${seoWarResult.executiveBriefText}\n` : ''}
 ----------------------------------------------------------------------------------
 ❌ FORBIDDEN ACTIONS TODAY:
   • Do NOT build new SEO landing pages today.
   • Do NOT redesign UI components.
-  • Focus 100% on activating the ${pipeline.unprogressedLeads} uncontacted qualified leads into commercial events.
+  • Focus 100% on activating the ${pipeline.unprogressedLeads} uncontacted qualified leads and executing Top 5 SEO Revenue War targets.
 ==================================================================================
 `
   }
