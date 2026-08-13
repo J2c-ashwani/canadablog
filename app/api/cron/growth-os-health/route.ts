@@ -90,7 +90,8 @@ export async function GET(request: NextRequest) {
       ]
 
       channels.forEach(ch => {
-        const isLive = ch.status === 'LIVE_PUBLISHED'
+        const isLive = ch.status === 'LIVE_PUBLISHED' || ch.status === 'API_ACCEPTED'
+        const isGenerated = ch.status === 'GENERATED'
         const isQueued = ch.status === 'QUEUED_FOR_APPROVAL'
         const isFailed = ch.status === 'FAILED'
         
@@ -98,8 +99,12 @@ export async function GET(request: NextRequest) {
         if (isLive) {
           icon = '✅'
           channelsLive++
+        } else if (isGenerated) {
+          icon = '📄'
+          channelsLive++
         } else if (isQueued) {
-          icon = '❌'
+          icon = '⚠️'
+          channelsFailed++
         } else if (isFailed) {
           icon = '❌'
           channelsFailed++
@@ -114,7 +119,7 @@ export async function GET(request: NextRequest) {
         }
       })
       
-      if (channelsLive === totalChannels) {
+      if (channelsFailed === 0) {
         overallStatusText = 'SUCCESS'
       } else if (channelsLive > 0) {
         overallStatusText = 'PARTIAL_SUCCESS'
