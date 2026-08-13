@@ -52,6 +52,8 @@ export interface DeepCompetitorForensics {
   capturedAt: string
 }
 
+export type SERPIntelligenceSnapshot = DeepCompetitorForensics
+
 export interface QueryIntentConfidence {
   commercialIntentPercent: number // e.g. 85%
   informationalIntentPercent: number // e.g. 15%

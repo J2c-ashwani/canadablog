@@ -97,8 +97,24 @@ export class SERPIntelligenceEngine {
         serpFeatures,
         attackability,
         governmentDominancePercent: Number(govDominance.toFixed(1)),
+        competitorConsensus: [
+          'Standard incorporation and CRA eligibility requirements',
+          'Federal and provincial grant directory listings'
+        ],
+        competitorWeaknesses: [
+          '600+ words to answer funding caps',
+          'Static directories lacking interactive calculators'
+        ],
+        fsiParityFeatures: [
+          'Verified provincial and federal program tables',
+          'Accurate 2026 application deadlines'
+        ],
+        fsiDifferentiators: [
+          '⚡ 100-Word Answer Block',
+          '🎯 60-Second Grant Calculator',
+          '📊 $49 Action Plan with Preflight Checklist'
+        ],
         winnerAdvantageSummary: this.synthesizeWinnerAdvantage(competitors, attackability),
-        primaryContentGaps: this.extractContentGaps(keyword, competitors),
         capturedAt: new Date().toISOString()
       }
     } catch (error: any) {
@@ -227,8 +243,24 @@ export class SERPIntelligenceEngine {
       serpFeatures: ['People Also Ask (PAA)', 'Direct Answer Box'],
       attackability,
       governmentDominancePercent: govDominance,
+      competitorConsensus: [
+        'Standard eligibility criteria (Incorporation, CRA compliance)',
+        'Federal directory lists and general grant descriptions'
+      ],
+      competitorWeaknesses: [
+        'Takes 600+ words to answer funding amounts',
+        'Zero interactive roadmaps or instant preflight checks'
+      ],
+      fsiParityFeatures: [
+        'Verified Canadian funding database tables',
+        'Accurate 2026 intake cycle deadlines'
+      ],
+      fsiDifferentiators: [
+        '⚡ 100-Word Answer Block with explicit dollar caps',
+        '🎯 Instant 60-Second Grant Calculator',
+        '📊 $49 Comprehensive Funding Action Plan'
+      ],
       winnerAdvantageSummary: 'SERP has 2 institutional portals but 3 private/consultant spots that are highly attackable through our interactive decision engine and 2026 answer-first copy.',
-      primaryContentGaps: this.extractContentGaps(keyword, competitors),
       capturedAt: new Date().toISOString()
     }
   }
