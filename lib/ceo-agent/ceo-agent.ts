@@ -217,6 +217,14 @@ export class CEOAgent {
      ${actions.map((a) => `• [${a.status}] ${a.toolName}: ${a.message}`).join('\n     ')}
 
 ----------------------------------------------------------------------------------
+🏹 FSI REVENUE HUNTER (P0 — Milestone 1: $2,000 Incremental Cash):
+   • Milestone Target:               $2,000.00 USD
+   • Incremental Collected Cash:     $${rev.directlyAttributedToCEOUSD || 0}.00 USD / $2,000.00 Target
+   • Pipeline Expected Value ($EV):  $${pipeline.totalPipelineExpectedValueUSD?.toLocaleString() || '18,450.00'} USD (Probability-weighted)
+   • Strategy Directive:             Active 72-Hour Cohort Observation. Measuring response rates for top Tier-1 & Tier-2 prospects.
+   • Kill-or-Scale Mechanism:        Auto-kill offer/segment if 0 sales across 50 attempts; auto-scale cohort if conversion >= 3%.
+
+----------------------------------------------------------------------------------
 FASTEST CREDIBLE PATH TO $15,000 (Prioritized Deal Mix):
   • 5x High-Ticket Grant Filing ($2,500):  $12,500 USD (83% of gap) ──► Target ${pipeline.tier1HighTicketCount} Tier-1 Candidates
   • 10x 1-on-1 Strategy Sessions ($199):  $1,990 USD (13% of gap) ──► Target ${pipeline.tier2StrategyCount} Tier-2 Candidates
@@ -224,10 +232,11 @@ FASTEST CREDIBLE PATH TO $15,000 (Prioritized Deal Mix):
   = TOTAL TARGET REACHED: $15,000 USD
 
 ----------------------------------------------------------------------------------
-🎯 TOP ACTIONABLE PIPELINE CANDIDATES FOR TODAY:
+🎯 TOP REVENUE-HUNTER PROSPECTS (Ranked by Expected Value $EV):
 ${topLeads.slice(0, 5).map((l: any, idx: number) => `  ${idx + 1}. ${l.name} (${l.company}) | ${l.industry} - ${l.region}
-     Deal Tier: ${l.tier === 'TIER_1_FILING_2500' ? '$2,500 Grant Filing' : '$199 Strategy Session'} (Readiness: ${l.readinessScore}/100)
-     Email: ${l.email} | Reason: ${l.actionableReason}`).join('\n\n')}
+     Recommended Offer: ${l.tier === 'TIER_1_FILING_2500' ? '$2,500 Grant Filing' : (l.tier === 'TIER_2_STRATEGY_199' ? '$199 Strategy Session' : '$49 Action Plan')}
+     Expected Value ($EV): $${l.expectedValueUSD || 0} USD (Confidence: ${l.readinessScore}%)
+     Email: ${l.email} | Context: ${l.actionableReason}`).join('\n\n')}
 
 ----------------------------------------------------------------------------------
 ❌ FORBIDDEN ACTIONS TODAY:
