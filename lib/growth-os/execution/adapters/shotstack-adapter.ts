@@ -87,13 +87,16 @@ export class ShotstackVideoAdapter {
       // Shotstack has separate production (/edit/v1/) and sandbox (/edit/stage/) endpoints.
       // Each requires its own API key. Default to stage (sandbox) which works with free-tier keys.
       const env = process.env.SHOTSTACK_ENV?.trim()?.toLowerCase();
-      const baseUrl = (env === 'production' || env === 'v1')
+      let primaryUrl = (env === 'production' || env === 'v1')
         ? 'https://api.shotstack.io/edit/v1/render'
         : 'https://api.shotstack.io/edit/stage/render';
+      let fallbackUrl = primaryUrl.includes('/v1/')
+        ? 'https://api.shotstack.io/edit/stage/render'
+        : 'https://api.shotstack.io/edit/v1/render';
 
-      console.log(`[ShotstackAdapter] Using endpoint: ${baseUrl}`);
+      console.log(`[ShotstackAdapter] Dispatching render request to ${primaryUrl}...`);
 
-      const response = await fetch(baseUrl, {
+      let response = await fetch(primaryUrl, {
         method: "POST",
         headers: {
           "x-api-key": apiKey,
@@ -101,6 +104,19 @@ export class ShotstackVideoAdapter {
         },
         body: JSON.stringify(payload),
       });
+
+      // If 401 or 403, try the alternate endpoint in case the key is for the other environment
+      if ((response.status === 401 || response.status === 403) && !env) {
+        console.warn(`[ShotstackAdapter] HTTP ${response.status} from primary. Retrying with fallback: ${fallbackUrl}...`);
+        response = await fetch(fallbackUrl, {
+          method: "POST",
+          headers: {
+            "x-api-key": apiKey,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(payload),
+        });
+      }
 
       if (!response.ok) {
         const errText = await response.text();
@@ -110,6 +126,7 @@ export class ShotstackVideoAdapter {
 
       const resData = await response.json();
       const renderId = resData.response?.id;
+      console.log(`[ShotstackAdapter] ✅ Render queued with Shotstack (renderId: ${renderId})`);
 
       return {
         success: true,

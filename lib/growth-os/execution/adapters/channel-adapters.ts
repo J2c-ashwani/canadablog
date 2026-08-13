@@ -249,6 +249,7 @@ export class ChannelAdapters {
 
     console.log(`[YouTubeAdapter] Video pipeline check (SHOTSTACK_API_KEY: ${shotstackKey ? 'CONFIGURED' : 'MISSING'}, YOUTUBE_REFRESH_TOKEN: ${youtubeRefreshToken ? 'CONFIGURED' : 'MISSING'})...`)
 
+    let renderError = ""
     if (shotstackKey) {
       try {
         const { ShotstackVideoAdapter } = await import("./shotstack-adapter")
@@ -264,9 +265,12 @@ export class ChannelAdapters {
             externalId: render.renderId || `shotstack_${Date.now()}`,
             message: `Video rendering accepted by Shotstack (renderId: ${render.renderId}); webhook will auto-upload to YouTube Shorts once MP4 is ready.`,
           }
+        } else {
+          renderError = render.error || "Shotstack render failed"
         }
       } catch (err: any) {
         console.error("[YouTubeAdapter] Shotstack render error:", err)
+        renderError = err.message
       }
     }
 
@@ -276,7 +280,7 @@ export class ChannelAdapters {
       externalId: `yt_script_${Date.now()}`,
       message: !shotstackKey 
         ? `YouTube Shorts script generated: '${hook}'. Set SHOTSTACK_API_KEY in Vercel to enable cloud MP4 video rendering.`
-        : `YouTube Shorts script generated: '${hook}'. Cloud render failed.`,
+        : `YouTube Shorts script generated: '${hook}'. Cloud render failed: ${renderError || 'Unknown render error'}`,
     }
   }
 
