@@ -160,6 +160,8 @@ export class SEOExecutionEngine {
       await CEOActionLedger.recordAction({
         experimentId: patch.experimentId,
         leadEmail: 'seo-crawler@google.com',
+        leadName: 'Google Organic Visitor',
+        company: 'Organic Search Demand',
         tier: 'TIER_3_REPORT_49',
         offer: `SEO Revenue Patch: ${patch.targetKeyword} (+$49 Plan / $199 Strategy CTAs)`,
         decisionReason: `Deployed high-intent title, meta, answer-first block, and commercial CTAs on ${patch.urlPath}`,
