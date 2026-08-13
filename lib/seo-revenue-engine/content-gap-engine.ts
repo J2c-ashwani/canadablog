@@ -40,12 +40,20 @@ export class ContentGapEngine {
       highTicketFilingCTA: `💼 Full-Service Grant Filing & Technical Writing Engagement ($2,500+ USD) ──► https://www.fsidigital.ca/contact?service=grant_filing_2500`
     }
 
+    const fsiDifferentiators = [
+      '⚡ 100-Word Answer Block with explicit dollar caps',
+      '🎯 Instant 60-Second Interactive Grant Calculator & Eligibility Screener',
+      '📊 Actionable $49 Comprehensive Funding Action Plan & Preflight Checklist',
+      '🔗 Legal Multi-Grant Capital Stacking Framework (IRAP + SR&ED + Regional)'
+    ]
+
     return {
       currentH1: currentH1 || `${titleKw} Overview`,
       recommendedH1: recH1,
       answerFirstBlock100Words: answerFirstBlock,
       mustIncludeSections: mustInclude,
       missingTopics,
+      fsiDifferentiators,
       commercialCTABlocks: commercialCTAs
     }
   }
