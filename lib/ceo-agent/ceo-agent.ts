@@ -31,8 +31,8 @@ export class CEOAgent {
     const productAudit = await ProductAgent.auditProduct()
 
     // 2. Scoreboard, Math Path & Dollar Leakage Calculations
-    const scoreboard = await CEOScoreboard.calculateScoreboard(revAudit.verifiedRevenueUSD, 0, salesAudit.leadIntakeCount, 22)
-    const pathToTarget = CEOScoreboard.calculatePathToTarget(revAudit.verifiedRevenueUSD, 15000, 22)
+    const scoreboard = await CEOScoreboard.calculateScoreboard(revAudit.verifiedTotalRevenueUSD, 0, salesAudit.leadIntakeCount, 22)
+    const pathToTarget = CEOScoreboard.calculatePathToTarget(revAudit.verifiedTotalRevenueUSD, 15000, 22)
     const leakageReport = CEOScoreboard.calculateLeakageReport(14, 3, salesAudit.uncontactedHighIntentLeads, productAudit.pendingDeliveriesCount)
 
     // 3. Autonomous Level 3 Revenue Executions:
@@ -74,7 +74,7 @@ export class CEOAgent {
     const decisionBasis: CEODecisionBasis = {
       primary_bottleneck: growthAudit.criticalOrphanAlert ? 'Outbound Email Dispatcher Stalled' : 'Checkout -> Payment Conversion',
       evidence_refs: [
-        `Verified MTD Revenue: $${revAudit.verifiedRevenueUSD} USD (Source: PayPal log evidence)`,
+        `Verified MTD Revenue: $${revAudit.verifiedTotalRevenueUSD} USD (Source: PayPal log evidence)`,
         `Discovered Leads: ${salesAudit.leadIntakeCount}, Uncontacted: ${salesAudit.uncontactedHighIntentLeads}`,
         `Stalled Dispatches: ${growthAudit.criticalOrphanAlert ? 'YES (Aug 7)' : 'NO'}`
       ],

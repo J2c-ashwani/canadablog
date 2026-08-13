@@ -15,6 +15,7 @@ export interface HistoricalTransactionRecord {
 export interface RevenueAgentAudit {
   // Historical & Total Accounting
   verifiedTotalRevenueUSD: number
+  verifiedRevenueUSD: number // Alias for total verified revenue
   historicalPreCEODeploymentUSD: number
   postCEODeploymentRevenueUSD: number
   directlyAttributedToCEOUSD: number
@@ -81,9 +82,11 @@ export class RevenueAgent {
     const historicalPreCEODeploymentUSD = historicalTransactions.reduce((sum, t) => sum + t.amountUSD, 0) // $106.00
     const postCEODeploymentRevenueUSD = ledgerSummary.totalRevenueRecoveredUSD // $0.00 until verified downstream payment
     const directlyAttributedToCEOUSD = ledgerSummary.totalRevenueRecoveredUSD
+    const verifiedTotalRevenueUSD = historicalPreCEODeploymentUSD + postCEODeploymentRevenueUSD
 
     return {
-      verifiedTotalRevenueUSD: historicalPreCEODeploymentUSD + postCEODeploymentRevenueUSD,
+      verifiedTotalRevenueUSD,
+      verifiedRevenueUSD: verifiedTotalRevenueUSD,
       historicalPreCEODeploymentUSD,
       postCEODeploymentRevenueUSD,
       directlyAttributedToCEOUSD,
