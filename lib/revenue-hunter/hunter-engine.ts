@@ -112,7 +112,7 @@ export class RevenueHunterEngine {
             decisionReason: `High $EV candidate ($${prospect.expectedValueUSD} EV, Rank: ${prospect.priorityRankScore})`,
             executionStatus: 'EXECUTED_DELIVERED',
             provider: sendResult.provider || 'Brevo/Resend',
-            providerMessageId: sendResult.id || `msg_${Date.now()}`,
+            providerMessageId: sendResult.providerMessageId || `msg_${Date.now()}`,
             funnelState: {
               sent: true,
               delivered: true,
@@ -145,7 +145,7 @@ export class RevenueHunterEngine {
             offer: prospect.recommendedOffer.name,
             expectedValueUSD: prospect.expectedValueUSD,
             status: 'DELIVERED',
-            providerMessageId: sendResult.id
+            providerMessageId: sendResult.providerMessageId || `msg_${Date.now()}`
           })
         } else {
           errors.push(`Failed to send to ${prospect.leadEmail}: ${sendResult.error}`)
