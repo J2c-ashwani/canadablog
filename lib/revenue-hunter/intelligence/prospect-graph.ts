@@ -19,6 +19,20 @@ export interface ProspectGraphSummary {
   topCashOpportunities: ExpectedRevenueCalculation[]
 }
 
+export function isTestOrInternalLead(email: string, name?: string): boolean {
+  const e = (email || '').toLowerCase().trim()
+  const n = (name || '').toLowerCase().trim()
+  
+  if (e.endsWith('@fsidigital.ca')) return true
+  if (e.endsWith('@example.com')) return true
+  if (e.endsWith('@test.com')) return true
+  if (e.includes('test-') || e.startsWith('test.') || e.includes('audit-test') || e.includes('alert-nurture-test')) return true
+  if (e.includes('sukashwanikumar') || e.includes('ashwani')) return true
+  if (n.includes('test lead') || n.includes('audit test') || n.includes('ashwani kumar')) return true
+  
+  return false
+}
+
 export class ProspectIntelligenceEngine {
   public static async buildCommercialGraph(): Promise<{
     rankedProspects: ExpectedRevenueCalculation[]
@@ -53,6 +67,12 @@ export class ProspectIntelligenceEngine {
 
     for (const sub of subscribers) {
       if (!sub.email || !sub.email.includes('@')) continue
+      
+      // Strict Data Hygiene: Exclude internal, test, and self accounts
+      if (isTestOrInternalLead(sub.email, sub.name)) {
+        continue
+      }
+
       const calc = ExpectedRevenueModel.calculateExpectedRevenue({
         email: sub.email,
         name: sub.name,
