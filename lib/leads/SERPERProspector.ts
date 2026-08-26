@@ -1,6 +1,3 @@
-import { SubscriberRepository } from "./SubscriberRepository";
-import { B2BOutreachEngine } from "./B2BOutreachEngine";
-
 export interface DiscoveredProspect {
   companyName: string;
   domain: string;
@@ -26,11 +23,7 @@ const SEARCH_QUERIES = [
 
 export class SERPERProspector {
   private static getSerperApiKey(): string {
-    return (
-      process.env.SERPER_API_KEY ||
-      process.env.NEXT_PUBLIC_SERPER_API_KEY ||
-      ""
-    );
+    return process.env.SERPER_API_KEY || '';
   }
 
   /**
@@ -102,9 +95,10 @@ export class SERPERProspector {
           const companyName = domain.split(".")[0].toUpperCase();
           const decisionMakerName = title.split("-")[0]?.split("|")[0]?.trim() || "Founder";
 
-          // Extract email pattern if present in snippet, otherwise construct domain email
+          // Only use a public address actually present in the source snippet.
           const emailMatch = snippet.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-          const email = emailMatch ? emailMatch[0].toLowerCase() : `contact@${domain}`;
+          if (!emailMatch) continue;
+          const email = emailMatch[0].toLowerCase();
 
           // Determine industry & region from query/snippet
           const snippetLower = (title + " " + snippet).toLowerCase();
@@ -155,7 +149,7 @@ export class SERPERProspector {
           // Save directly to "OutreachProspects" Google Sheet tab for targeted cold outreach
           try {
             const { seedOutreachProspects } = await import("@/lib/google-sheets");
-            await seedOutreachProspects([
+            const save = await seedOutreachProspects([
               {
                 website: `https://${domain}`,
                 prospectName: decisionMakerName,
@@ -173,7 +167,8 @@ export class SERPERProspector {
                 backlinkEarned: false,
               },
             ]);
-            savedCount++;
+            if (!save.success) throw save.error || new Error('Prospect could not be durably saved.');
+            savedCount += save.inserted || 0;
             console.log(`✅ [SERPER Prospector] Saved new outbound prospect to 'OutreachProspects' tab: ${email} (${companyName}) | Intent: ${intentScore}`);
           } catch (saveErr) {
             console.error(`⚠️ Failed to save discovered prospect ${email} to OutreachProspects tab:`, saveErr);

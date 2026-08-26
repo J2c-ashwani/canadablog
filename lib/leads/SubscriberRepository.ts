@@ -76,7 +76,7 @@ export interface ISubscriberRepository {
   getSubscribersByFilter(filters: Partial<SubscriberProfile>): Promise<SubscriberProfile[]>
   updateSubscriberPreferences(email: string, updates: Partial<Omit<SubscriberProfile, "email">>): Promise<{ success: boolean; error?: any }>
   unsubscribe(token: string): Promise<{ success: boolean; error?: any }>
-  getAllSubscribers(includeUnsubscribed?: boolean): Promise<SubscriberProfile[]>
+  getAllSubscribers(includeUnsubscribed?: boolean, strict?: boolean): Promise<SubscriberProfile[]>
 }
 
 export const getFallbackLoginToken = (_email: string): string => {
@@ -193,6 +193,12 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
           companySize: profile.companySize,
           fundingInterests: profile.fundingInterests,
           isSubscribed: true, // Re-subscribe if they register again
+          subscriptionStatus: profile.subscriptionStatus || existing.subscriptionStatus,
+          subscriptionId: profile.subscriptionId || existing.subscriptionId,
+          website: profile.website || existing.website,
+          companyName: profile.companyName || existing.companyName,
+          leadActivity: profile.leadActivity || existing.leadActivity,
+          source: profile.source || existing.source,
         })
       }
 
@@ -242,8 +248,8 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         isSubscribed: true,
         unsubscribeToken: token,
         loginToken: logToken,
-        subscriptionStatus: "inactive",
-        subscriptionId: "N/A",
+        subscriptionStatus: profile.subscriptionStatus || "inactive",
+        subscriptionId: profile.subscriptionId || "N/A",
         trialStartedAt: "N/A",
         website: profile.website || "N/A",
         companyName: profile.companyName || "N/A",
@@ -271,19 +277,17 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         lastClickedAt: "N/A",
       }
 
-      appendLeadToSheet(data)
-        .then(async (res) => {
-          if (res.success && process.env.DATABASE_URL) {
-            try {
-              const { query } = await import('@/lib/db/postgres');
-              await query('UPDATE subscribers SET synced_to_sheets = true WHERE email = $1', [profile.email]);
-              console.log(`✅ Sheets sync success marked for ${profile.email}`);
-            } catch (dbErr) {
-              console.error('Failed to update synced_to_sheets flag:', dbErr);
-            }
-          }
-        })
-        .catch(err => console.error("Background Sheets save failed:", err));
+      const sheetResult = await appendLeadToSheet(data)
+      if (!sheetResult.success) return { success: false, error: sheetResult.error }
+      if (process.env.DATABASE_URL) {
+        try {
+          const { query } = await import('@/lib/db/postgres');
+          await query('UPDATE subscribers SET synced_to_sheets = true WHERE email = $1', [profile.email]);
+          console.log(`✅ Sheets sync success marked for ${profile.email}`);
+        } catch (dbErr) {
+          console.error('Failed to update synced_to_sheets flag:', dbErr);
+        }
+      }
       return { success: true }
     } catch (err) {
       console.error("Error in repository saveSubscriber:", err)
@@ -472,19 +476,17 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       if (updates.gaClientId !== undefined) data.gaClientId = updates.gaClientId
       if (updates.offlineStatus !== undefined) data.offlineStatus = updates.offlineStatus
 
-      updateLeadInSheet(email, data)
-        .then(async (res) => {
-          if (res.success && process.env.DATABASE_URL) {
-            try {
-              const { query } = await import('@/lib/db/postgres');
-              await query('UPDATE subscribers SET synced_to_sheets = true WHERE email = $1', [email]);
-              console.log(`✅ Sheets sync update success marked for ${email}`);
-            } catch (dbErr) {
-              console.error('Failed to update synced_to_sheets flag on update:', dbErr);
-            }
-          }
-        })
-        .catch(err => console.error("Background Sheets update failed:", err));
+      const sheetResult = await updateLeadInSheet(email, data)
+      if (!sheetResult.success) return { success: false, error: sheetResult.error }
+      if (process.env.DATABASE_URL) {
+        try {
+          const { query } = await import('@/lib/db/postgres');
+          await query('UPDATE subscribers SET synced_to_sheets = true WHERE email = $1', [email]);
+          console.log(`✅ Sheets sync update success marked for ${email}`);
+        } catch (dbErr) {
+          console.error('Failed to update synced_to_sheets flag on update:', dbErr);
+        }
+      }
       return { success: true }
     } catch (err) {
       console.error("Error in repository updateSubscriberPreferences:", err)
@@ -512,7 +514,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
     }
   }
 
-  async getAllSubscribers(includeUnsubscribed: boolean = false): Promise<SubscriberProfile[]> {
+  async getAllSubscribers(includeUnsubscribed: boolean = false, strict: boolean = false): Promise<SubscriberProfile[]> {
     try {
       const allLeads = await getLeadsFromSheet(1000)
       
@@ -568,6 +570,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       return Array.from(mergedMap.values()).filter(sub => includeUnsubscribed || sub.isSubscribed);
     } catch (err) {
       console.error("Error in repository getAllSubscribers:", err)
+      if (strict) throw err
       return []
     }
   }

@@ -3,6 +3,7 @@ import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { applyRateLimit } from '@/lib/rate-limit';
 import { getReactivationPriceForEmail } from '@/lib/leads/pricing-test';
 import { isLoginToken } from '@/lib/auth/subscriber-tokens';
+import { buildMemberProgramMatches } from '@/lib/membership/member-matches';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -55,6 +56,10 @@ export async function GET(request: NextRequest) {
       });
     }
 
+    const memberMatches = String(found.subscriptionStatus || '').toUpperCase() === 'ACTIVE'
+      ? buildMemberProgramMatches(found, 5)
+      : [];
+
     return NextResponse.json({
       success: true,
       subscriber: {
@@ -81,7 +86,8 @@ export async function GET(request: NextRequest) {
         fundingPurpose: found.fundingPurpose || '',
         leadActivity: JSON.stringify(activity),
         reactivationPrice,
-        pricingGroup
+        pricingGroup,
+        memberMatches,
       }
     });
   } catch (err: any) {

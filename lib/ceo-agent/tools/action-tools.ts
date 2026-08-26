@@ -1,7 +1,8 @@
-import fs from 'fs'
-import path from 'path'
-import { CartRecoveryService } from '@/lib/leads/cart-recovery-service'
+import { appendOperationalRow } from '@/lib/growth-os/operations-store'
 import { B2BOutreachEngine } from '@/lib/leads/B2BOutreachEngine'
+import { CartRecoveryService } from '@/lib/leads/cart-recovery-service'
+import { recoverProductDeliveries } from '@/lib/products/delivery-recovery'
+import { CEOActionLedger } from '../ledger/ceo-action-ledger'
 
 export interface ActionExecutionReceipt {
   actionId: string
@@ -12,144 +13,152 @@ export interface ActionExecutionReceipt {
   details?: any
 }
 
+const TASK_HEADERS = ['Task ID', 'Title', 'Priority', 'Details', 'Status', 'Created At']
+
 export class ActionTools {
-  /**
-   * Execute real automated Cart Recovery for abandoned checkout sessions
-   */
   public static async triggerCartRecovery(maxBatch = 5, force = false): Promise<ActionExecutionReceipt> {
-    console.log(`[ActionTools] 🛒 CEO Agent triggering Cart Recovery Engine (batch: ${maxBatch}, force: ${force})...`)
     try {
+      if (force && process.env.NODE_ENV === 'production') {
+        return {
+          actionId: `act_cart_recovery_${Date.now()}`,
+          toolName: 'trigger_cart_recovery',
+          status: 'BLOCKED',
+          message: 'Force mode is disabled in production; recovery requires a real checkout timestamp and elapsed window.',
+          timestamp: new Date().toISOString(),
+        }
+      }
       const result = await CartRecoveryService.processCartRecoveryBatch(maxBatch, force)
+      const failed = result.errors.length > 0
       return {
         actionId: `act_cart_recovery_${Date.now()}`,
         toolName: 'trigger_cart_recovery',
-        status: result.errors.length === 0 ? 'SUCCESS' : 'FAILED',
-        message: `Dispatched ${result.processedCount} personalized cart recovery emails. Candidates: ${result.recoveredCandidates.join(', ') || 'None in active window'}`,
+        status: failed ? 'FAILED' : 'SUCCESS',
+        message: failed
+          ? `Cart recovery completed with ${result.errors.length} provider or persistence errors.`
+          : `${result.processedCount} eligible checkout-recovery messages were provider-accepted.`,
         timestamp: new Date().toISOString(),
-        details: result
+        details: result,
       }
-    } catch (err: any) {
-      console.error('[ActionTools] Error in triggerCartRecovery:', err)
+    } catch (error: any) {
       return {
         actionId: `act_cart_recovery_${Date.now()}`,
         toolName: 'trigger_cart_recovery',
         status: 'FAILED',
-        message: `Cart recovery failed: ${err.message}`,
+        message: `Cart recovery failed: ${error.message || String(error)}`,
         timestamp: new Date().toISOString(),
-        details: { error: err.message }
+        details: { error: error.message || String(error) },
       }
     }
   }
 
-  /**
-   * Execute real automated High-Ticket B2B Outreach for unprogressed leads
-   */
-  public static async triggerHighTicketOutreach(limit = 5, force = true): Promise<ActionExecutionReceipt> {
+  /** Kept under the legacy tool name for API compatibility; it now distributes only the current product set. */
+  public static async triggerHighTicketOutreach(limit = 5, force = false): Promise<ActionExecutionReceipt> {
     const today = new Date().toISOString().split('T')[0]
-    const experimentId = `CEO-HT-${today}-001`
-    console.log(`[ActionTools] 🎯 CEO Agent triggering High-Ticket B2B Outreach (Experiment: ${experimentId}, limit: ${limit})...`)
-    
+    const experimentId = `CEO-PRODUCT-${today}`
     try {
       const result = await B2BOutreachEngine.processDailyBatch(limit, false, force)
-      
-      // Log to CEO Action Ledger
-      const { CEOActionLedger } = await import('../ledger/ceo-action-ledger')
-      await CEOActionLedger.recordAction({
-        experimentId,
-        leadEmail: `cohort_${today}_${result.sentCount}_leads`,
-        leadName: 'Canadian SME Cohort',
-        company: 'Innovation Sector Cohort',
-        tier: 'TIER_1_FILING_2500',
-        offer: '$2,500 Grant Filing Qualification Assessment & $199 Strategy Session',
-        decisionReason: 'Autonomous B2B outreach to top unprogressed innovation sector leads',
-        executionStatus: result.errors.length === 0 ? 'EXECUTED_DELIVERED' : 'FAILED',
-        provider: 'Brevo / Resend API',
-        providerMessageId: `msg_${Date.now()}`,
-        funnelState: {
-          sent: result.sentCount > 0,
-          delivered: result.sentCount > 0,
-          opened: false,
-          clicked: false,
-          replied: false,
-          callBooked: false,
-          checkoutStarted: false,
-          paymentCaptured: false,
-          revenueAttributedUSD: 0
-        },
-        attribution: 'Direct CEO Autonomous High-Ticket Engine'
-      })
-
-      return {
-        actionId: `act_outreach_${Date.now()}`,
-        toolName: 'trigger_high_ticket_outreach',
-        status: result.errors.length === 0 ? 'SUCCESS' : 'FAILED',
-        message: `[${experimentId}] Dispatched ${result.sentCount} high-ticket outreach emails to qualified candidates (72h observation active).`,
-        timestamp: new Date().toISOString(),
-        details: { experimentId, ...result }
+      for (const receipt of result.receipts) {
+        await CEOActionLedger.recordAction({
+          experimentId,
+          leadEmail: receipt.email,
+          leadName: 'Consented funding lead',
+          company: 'CRM product cohort',
+          tier: 'TIER_3_REPORT_49',
+          offer: 'Current $19/$29/$49/$79/$199 funding product ladder',
+          decisionReason: 'Controlled product-matched outreach to an explicitly subscribed lead',
+          executionStatus: 'PROVIDER_ACCEPTED',
+          provider: receipt.provider,
+          providerMessageId: receipt.providerMessageId,
+          funnelState: {
+            sent: true,
+            delivered: false,
+            opened: false,
+            clicked: false,
+            replied: false,
+            callBooked: false,
+            checkoutStarted: false,
+            paymentCaptured: false,
+            revenueAttributedUSD: 0,
+          },
+          attribution: 'CEO controlled current-product distribution cohort',
+        })
       }
-    } catch (err: any) {
-      console.error('[ActionTools] Error in triggerHighTicketOutreach:', err)
+      if (result.skippedReason) {
+        return {
+          actionId: `act_outreach_${Date.now()}`,
+          toolName: 'trigger_current_product_outreach',
+          status: 'BLOCKED',
+          message: result.skippedReason,
+          timestamp: new Date().toISOString(),
+          details: { experimentId, ...result },
+        }
+      }
       return {
         actionId: `act_outreach_${Date.now()}`,
-        toolName: 'trigger_high_ticket_outreach',
-        status: 'FAILED',
-        message: `High-ticket outreach failed: ${err.message}`,
+        toolName: 'trigger_current_product_outreach',
+        status: result.errors.length > 0 ? 'FAILED' : 'SUCCESS',
+        message: `${result.receipts.length} messages were provider-accepted; delivery remains unverified until signed webhook events arrive.`,
         timestamp: new Date().toISOString(),
-        details: { error: err.message }
+        details: { experimentId, ...result },
+      }
+    } catch (error: any) {
+      return {
+        actionId: `act_outreach_${Date.now()}`,
+        toolName: 'trigger_current_product_outreach',
+        status: 'FAILED',
+        message: `Product outreach failed: ${error.message || String(error)}`,
+        timestamp: new Date().toISOString(),
+        details: { error: error.message || String(error) },
       }
     }
   }
 
   public static async retryFailedDelivery(orderId: string): Promise<ActionExecutionReceipt> {
-    console.log(`[ActionTools] 🔄 Fulfillment Integrity Maintenance: Retrying report dispatch for Order ID: ${orderId}...`)
-    
+    const result = await recoverProductDeliveries({ limit: 10, orderId })
+    if (result.candidates === 0) {
+      return {
+        actionId: `act_retry_${Date.now()}`,
+        toolName: 'fulfillment_integrity_retry',
+        status: 'BLOCKED',
+        message: `No provider-verified pending purchase matched ${orderId}; no retry was attempted.`,
+        timestamp: new Date().toISOString(),
+        details: result,
+      }
+    }
+    const failures = result.outcomes.filter((outcome) => !outcome.providerAccepted)
     return {
       actionId: `act_retry_${Date.now()}`,
       toolName: 'fulfillment_integrity_retry',
-      status: 'SUCCESS',
-      message: `Fulfillment Integrity: Verified PDF report delivery for historical customer order ${orderId} (Not counted as new revenue).`,
+      status: failures.length > 0 ? 'FAILED' : 'SUCCESS',
+      message: failures.length > 0
+        ? `${failures.length} fulfilment retries were rejected or could not be durably recorded.`
+        : `${result.outcomes.length} fulfilment messages were provider-accepted; delivery awaits webhook verification.`,
       timestamp: new Date().toISOString(),
-      details: { orderId, retriedAt: new Date().toISOString(), classification: 'FULFILLMENT_MAINTENANCE' }
+      details: result,
     }
   }
 
   public static async createFollowupTask(title: string, priority: 'P0' | 'P1' | 'P2', details: string): Promise<ActionExecutionReceipt> {
-    const newTask = {
-      id: `task_${Date.now()}`,
+    const task = {
+      id: `task_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`,
       title,
       priority,
       details,
-      created_at: new Date().toISOString(),
-      status: 'OPEN'
+      status: 'OPEN',
+      createdAt: new Date().toISOString(),
     }
-
-    try {
-      const taskFile = path.join(process.cwd(), 'reports', 'ceo-action-items.json')
-      let tasks = []
-      if (fs.existsSync(taskFile)) {
-        try {
-          tasks = JSON.parse(fs.readFileSync(taskFile, 'utf-8'))
-        } catch (err) {
-          tasks = []
-        }
-      }
-      tasks.unshift(newTask)
-      fs.mkdirSync(path.dirname(taskFile), { recursive: true })
-      fs.writeFileSync(taskFile, JSON.stringify(tasks, null, 2))
-    } catch (err) {
-      // Handle read-only filesystem gracefully on Vercel production
-      console.warn('[ActionTools] Read-only filesystem detected on production serverless environment; task logged to memory trace.')
+    if (process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID) {
+      await appendOperationalRow('CEO Tasks', TASK_HEADERS, [
+        task.id, task.title, task.priority, task.details, task.status, task.createdAt,
+      ])
     }
-
-    console.log(`[ActionTools] 📋 Created ${priority} Follow-up Task: "${title}"`)
-
     return {
-      actionId: newTask.id,
+      actionId: task.id,
       toolName: 'create_followup_task',
       status: 'SUCCESS',
-      message: `Created ${priority} action item: "${title}".`,
-      timestamp: new Date().toISOString(),
-      details: newTask
+      message: `Created durable ${priority} action item: "${title}".`,
+      timestamp: task.createdAt,
+      details: task,
     }
   }
 }

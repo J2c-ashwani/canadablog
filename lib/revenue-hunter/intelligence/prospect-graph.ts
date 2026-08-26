@@ -40,7 +40,8 @@ export class ProspectIntelligenceEngine {
   }> {
     let subscribers: SubscriberProfile[] = []
     try {
-      subscribers = await SubscriberRepository.getAllSubscribers(true)
+      // Commercial ranking is restricted to explicitly subscribed contacts.
+      subscribers = await SubscriberRepository.getAllSubscribers(false)
     } catch (err) {
       console.warn('[ProspectIntelligenceEngine] Failed to load subscribers:', err)
     }

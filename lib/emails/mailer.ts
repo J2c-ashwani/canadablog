@@ -8,6 +8,13 @@ export function escapeHtml(value: string) {
     .replace(/'/g, '&#039;');
 }
 
+function extractEmailAddress(value?: string): string {
+  if (!value) return '';
+  const angleBracketMatch = value.match(/<\s*([^<>\s]+@[^<>\s]+)\s*>/);
+  const candidate = (angleBracketMatch?.[1] || value).trim();
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(candidate) ? candidate : '';
+}
+
 const PLACEHOLDERS = new Set([
   'n/a', 'n/a.', 'not provided', 'not_provided', 'not-provided',
   'unknown', 'none', 'null', 'undefined', 'n/a province', 'na',
@@ -107,7 +114,12 @@ async function sendViaBrevo({
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) return { success: false, skipped: true };
 
-  const fromEmail = process.env.BREVO_FROM_EMAIL || 'hello@fsidigital.ca';
+  const fromEmail = extractEmailAddress(
+    process.env.BREVO_FROM_EMAIL || from || process.env.RESEND_FROM_EMAIL
+  );
+  if (!fromEmail) {
+    return { success: false, skipped: true, error: 'No configured sender address is available for Brevo.' };
+  }
   const fromName = process.env.BREVO_FROM_NAME || 'FSI Digital';
   const replyToEmail = process.env.BREVO_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
@@ -137,8 +149,9 @@ async function sendViaBrevo({
     }
 
     const payload = await response.json().catch(() => ({})) as { messageId?: string };
+    if (!payload.messageId) return { success: false, error: 'Brevo accepted the request without a message ID.' };
     console.log(`✉️ Email accepted by Brevo for ${to} [${tagType}]`);
-    return { success: true, provider: 'brevo', providerMessageId: payload.messageId || '' };
+    return { success: true, provider: 'brevo', providerMessageId: payload.messageId };
   } catch (error) {
     console.warn(`Brevo email exception [${tagType}]: ${error}`);
     return { success: false, error: String(error) };
@@ -199,8 +212,9 @@ async function sendViaResend({
     }
 
     const payload = await response.json().catch(() => ({})) as { id?: string };
+    if (!payload.id) return { success: false, error: 'Resend accepted the request without a message ID.' };
     console.log(`✉️ Email accepted by Resend for ${to} [${tagType}]`);
-    return { success: true, provider: 'resend', providerMessageId: payload.id || '' };
+    return { success: true, provider: 'resend', providerMessageId: payload.id };
   } catch (error) {
     console.error(`Resend email exception [${tagType}]:`, error);
     return { success: false, error: String(error) };

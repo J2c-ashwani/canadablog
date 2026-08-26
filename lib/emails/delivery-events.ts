@@ -36,6 +36,8 @@ export function verifyResendWebhook(headers: Headers, rawBody: string): boolean 
   const timestamp = headers.get('svix-timestamp') || '';
   const signatureHeader = headers.get('svix-signature') || '';
   if (!id || !timestamp || !signatureHeader) return false;
+  const timestampSeconds = Number(timestamp);
+  if (!Number.isFinite(timestampSeconds) || Math.abs(Date.now() / 1000 - timestampSeconds) > 5 * 60) return false;
 
   const encodedSecret = secret.startsWith('whsec_') ? secret.slice('whsec_'.length) : secret;
   let signingKey: Buffer;

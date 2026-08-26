@@ -77,10 +77,10 @@ export default async function AuthorityDashboardPage({
   
   // Stats calculations
   const totalProspects = prospects.length;
-  const sentCount = prospects.filter((p) => p.status === 'sent').length;
-  const replyCount = prospects.filter((p) => p.status === 'replied').length;
-  const backlinkCount = prospects.filter((p) => p.status === 'backlink_earned').length;
-  const pendingProspectsCount = prospects.filter((p) => p.status === 'pending').length;
+  const sentCount = prospects.filter((p) => Boolean(p.providerMessageId)).length;
+  const replyCount = prospects.filter((p) => p.replied || Boolean(p.repliedAt)).length;
+  const backlinkCount = prospects.filter((p) => p.backlinkEarned).length;
+  const pendingProspectsCount = prospects.filter((p) => ['pending', 'qualified', 'review_required'].includes(String(p.status || '').toLowerCase())).length;
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -92,7 +92,7 @@ export default async function AuthorityDashboardPage({
               <Zap className="h-8 w-8 text-indigo-600" />
               Authority Engine
             </h1>
-            <p className="text-gray-500 mt-1">Growth OS Phase 3 Autonomous Link Building</p>
+            <p className="text-gray-500 mt-1">Controlled authority outreach with provider-receipt evidence</p>
           </div>
         </div>
 
@@ -108,12 +108,12 @@ export default async function AuthorityDashboardPage({
                 <span className="text-sm text-gray-500">System Mode</span>
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-green-50 px-2.5 py-0.5 text-xs font-medium text-green-700">
                   <span className="h-1.5 w-1.5 rounded-full bg-green-500"></span>
-                  Active
+                  Controlled
                 </span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Kill Switch</span>
-                {engineStatus.killSwitchEngaged ? (
+                {engineStatus.killSwitch !== 'active' ? (
                   <span className="inline-flex items-center text-xs font-medium text-red-600"><XCircle className="w-4 h-4 mr-1"/> Engaged</span>
                 ) : (
                   <span className="inline-flex items-center text-xs font-medium text-green-600"><CheckCircle className="w-4 h-4 mr-1"/> Safe</span>
@@ -121,11 +121,11 @@ export default async function AuthorityDashboardPage({
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Daily Volume</span>
-                <span className="text-sm font-medium text-gray-900">{engineStatus.dailySent || 0} / {engineStatus.dailyCap || 15}</span>
+                <span className="text-sm font-medium text-gray-900">{engineStatus.dailySentCount || 0} / {engineStatus.effectiveDailyCap || 5}</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-sm text-gray-500">Warm-up Week</span>
-                <span className="text-sm font-medium text-gray-900">Week {engineStatus.warmupWeek || 1}</span>
+                <span className="text-sm font-medium text-gray-900">{engineStatus.warmUpWeek ? `Week ${engineStatus.warmUpWeek}` : 'Controlled cap'}</span>
               </div>
             </div>
           </div>
@@ -140,7 +140,7 @@ export default async function AuthorityDashboardPage({
               <div className="p-4 bg-gray-50 rounded-lg">
                 <div className="flex items-center gap-2 text-gray-500 mb-1">
                   <Mail className="h-4 w-4" />
-                  <span className="text-xs font-medium uppercase tracking-wider">Sent</span>
+                  <span className="text-xs font-medium uppercase tracking-wider">Provider accepted</span>
                 </div>
                 <div className="text-2xl font-bold text-gray-900">{sentCount}</div>
               </div>

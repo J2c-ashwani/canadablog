@@ -132,6 +132,15 @@ export async function getProductPaymentIntent(intentIdOrOrderId: string) {
   return found?.intent || null;
 }
 
+export async function getAllProductPaymentIntents(): Promise<ProductPaymentIntent[]> {
+  const { sheets, spreadsheetId } = await ensureSheet();
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A2:T`,
+  });
+  return (response.data.values || []).map((row) => parseRow(row as string[]));
+}
+
 export async function attachPayPalOrderToIntent(intentId: string, paypalOrderId: string) {
   const found = await findIntent(intentId);
   if (!found) throw new Error('Payment intent not found');

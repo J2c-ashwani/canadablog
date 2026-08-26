@@ -87,7 +87,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
         data.gaClientId || "N/A",
         data.offlineStatus || "Lead",
         data.actualSignedValue || "N/A",
-        data.isSubscribed !== false ? "Yes" : "No",
+        data.isSubscribed === true ? "Yes" : "No",
         data.unsubscribeToken || "",
         data.engagementScore !== undefined ? String(data.engagementScore) : "100",
         data.lastOpenedAt || "N/A",
@@ -232,7 +232,7 @@ function parseSheetLead(row: string[]): SheetLead {
     utmCampaign: row[29] || "N/A",
     offlineStatus: row[31] || "Lead",
     actualSignedValue: row[32] || "N/A",
-    isSubscribed: row[33] ? String(row[33]).toLowerCase() !== "no" : true,
+    isSubscribed: String(row[33] || "").toLowerCase() === "yes",
     unsubscribeToken: row[34] || "",
     engagementScore: row[35] ? Number(row[35]) : 100,
     lastOpenedAt: row[36] || "",
@@ -1172,6 +1172,9 @@ export interface OutreachSentLeadData {
   subject: string
   recommendedGuides: string
   status: string
+  provider?: string
+  providerMessageId?: string
+  providerAcceptance?: string
 }
 
 const OUTREACH_SENT_LEADS_HEADERS = [
@@ -1185,7 +1188,10 @@ const OUTREACH_SENT_LEADS_HEADERS = [
   "Outreach Stage",
   "Subject",
   "Recommended Guides",
-  "Status"
+  "Status",
+  "Provider",
+  "Provider Message ID",
+  "Provider Acceptance"
 ]
 
 export async function ensureOutreachSentLeadsSheet(sheets: any, spreadsheetId: string) {
@@ -1216,14 +1222,14 @@ export async function ensureOutreachSentLeadsSheet(sheets: any, spreadsheetId: s
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:K1`,
+    range: `${SHEET_TITLE}!A1:N1`,
   })
 
   const header = headerResponse.data.values?.[0] || []
   if (header.join("|") !== OUTREACH_SENT_LEADS_HEADERS.join("|")) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:K1`,
+      range: `${SHEET_TITLE}!A1:N1`,
       valueInputOption: "RAW",
       requestBody: {
         values: [OUTREACH_SENT_LEADS_HEADERS],
@@ -1255,12 +1261,15 @@ export async function appendOutreachSentLeadToSheet(data: OutreachSentLeadData) 
         data.subject || "N/A",
         data.recommendedGuides || "N/A",
         data.status || "SENT (24x7 VERCEL AUTOPILOT)",
+        data.provider || "",
+        data.providerMessageId || "",
+        data.providerAcceptance || "",
       ]
     ]
 
     await sheets.spreadsheets.values.append({
       spreadsheetId,
-      range: "'Outreach Leads'!A:K",
+      range: "'Outreach Leads'!A:N",
       valueInputOption: "RAW",
       requestBody: {
         values,
@@ -1273,6 +1282,40 @@ export async function appendOutreachSentLeadToSheet(data: OutreachSentLeadData) 
     console.error("❌ Error appending outreach lead to Google Sheets:", error)
     return { success: false, error }
   }
+}
+
+export async function updateOutreachSentLeadFromDeliveryEvent(
+  providerMessageId: string,
+  eventType: string
+) {
+  if (!providerMessageId) return { updated: false }
+  const sheets = await getGoogleSheetsClient()
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing')
+  await ensureOutreachSentLeadsSheet(sheets, spreadsheetId)
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: "'Outreach Leads'!A2:N",
+  })
+  const rows = response.data.values || []
+  const index = rows.findIndex((row) => row[12] === providerMessageId)
+  if (index < 0) return { updated: false }
+  const statusByEvent: Record<string, string> = {
+    'email.delivered': 'DELIVERED',
+    'email.opened': 'OPENED',
+    'email.clicked': 'CLICKED',
+    'email.bounced': 'BOUNCED',
+    'email.complained': 'COMPLAINED',
+  }
+  const status = statusByEvent[eventType]
+  if (!status) return { updated: false }
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: `'Outreach Leads'!K${index + 2}`,
+    valueInputOption: 'RAW',
+    requestBody: { values: [[status]] },
+  })
+  return { updated: true }
 }
 
 // ── Outreach Prospects Database Tab for Backlinks Campaign ──
@@ -1374,7 +1417,7 @@ export async function ensureOutreachProspectsSheet(sheets: any, spreadsheetId: s
   }
 }
 
-export async function getOutreachProspectsFromSheet(): Promise<OutreachProspect[]> {
+export async function getOutreachProspectsFromSheet(options?: { strict?: boolean }): Promise<OutreachProspect[]> {
   try {
     const sheets = await getGoogleSheetsClient();
     const spreadsheetId = process.env.GOOGLE_SHEET_ID;
@@ -1424,6 +1467,7 @@ export async function getOutreachProspectsFromSheet(): Promise<OutreachProspect[
     return prospects;
   } catch (error) {
     console.error("❌ Failed to fetch outreach prospects from Google Sheets:", error);
+    if (options?.strict) throw error;
     return [];
   }
 }

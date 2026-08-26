@@ -1,6 +1,4 @@
-import fs from 'fs'
-import path from 'path'
-import { query } from '../db/postgres'
+import { appendOperationalRow, getLatestOperationalState, setOperationalState } from '@/lib/growth-os/operations-store';
 
 export interface CEOGoalState {
   id: string
@@ -43,132 +41,78 @@ export interface CEODecisionRecord {
   created_at: string
 }
 
-const FALLBACK_FILE_PATH = path.join(process.cwd(), 'reports', 'ceo-db-fallback.json')
+const STATE_KEY = 'ceo_goal_state_v3';
+const DECISION_HEADERS = [
+  'Decision ID', 'Run ID', 'Trigger Source', 'Monthly Target USD', 'Verified MTD USD',
+  'Primary Bottleneck', 'Estimated Leakage USD', 'Decision Basis JSON', 'Directives JSON',
+  'Forbidden Actions JSON', 'Created At',
+];
 
-let memoryStore: { goalState: CEOGoalState; decisions: CEODecisionRecord[] } = {
-  goalState: {
+function configuredTarget(name: string, fallback: number) {
+  const value = Number(process.env[name] || fallback);
+  return Number.isFinite(value) && value > 0 ? value : fallback;
+}
+
+function defaultState(): CEOGoalState {
+  const monthlyTarget = configuredTarget('GROWTH_OS_MONTHLY_REVENUE_TARGET_USD', 10000);
+  const recurringTarget = configuredTarget('GROWTH_OS_MRR_TARGET_USD', 10000);
+  const now = new Date();
+  const daysInMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).getUTCDate();
+  return {
     id: 'current',
-    monthly_revenue_target_usd: 15000,
-    recurring_mrr_target_usd: 0,
-    daily_target_pace_usd: 500,
-    current_mtd_verified_revenue_usd: 106,
+    monthly_revenue_target_usd: monthlyTarget,
+    recurring_mrr_target_usd: recurringTarget,
+    daily_target_pace_usd: Number((monthlyTarget / daysInMonth).toFixed(2)),
+    current_mtd_verified_revenue_usd: 0,
     current_mtd_mrr_usd: 0,
     revenue_recovered_by_ceo_usd: 0,
     revenue_influenced_by_ceo_usd: 0,
-    primary_bottleneck: 'Checkout -> Payment Conversion',
-    estimated_monthly_leakage_usd: 2054,
-    priority_focus: 'P0 — Repair broken payment validation and report delivery',
-    updated_at: new Date().toISOString()
-  },
-  decisions: []
+    primary_bottleneck: 'No provider-verified revenue evidence loaded yet',
+    estimated_monthly_leakage_usd: 0,
+    priority_focus: 'Acquire the first 10 provider-verified customers from the current product set',
+    updated_at: now.toISOString(),
+  };
 }
 
-function loadFallbackData(): { goalState: CEOGoalState; decisions: CEODecisionRecord[] } {
-  try {
-    if (fs.existsSync(FALLBACK_FILE_PATH)) {
-      const content = fs.readFileSync(FALLBACK_FILE_PATH, 'utf-8')
-      memoryStore = JSON.parse(content)
-    }
-  } catch (err) {
-    // Ignore read errors on serverless environments
-  }
-  return memoryStore
-}
+let memoryState = defaultState();
 
-function saveFallbackData(data: { goalState: CEOGoalState; decisions: CEODecisionRecord[] }) {
-  memoryStore = data
-  try {
-    const dir = path.dirname(FALLBACK_FILE_PATH)
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-    fs.writeFileSync(FALLBACK_FILE_PATH, JSON.stringify(data, null, 2))
-  } catch (err) {
-    // Read-only filesystem on Vercel production serverless
-  }
+function hasSheetsConfiguration() {
+  return Boolean(process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID);
 }
 
 export class CEOMemory {
   public static async getGoalState(): Promise<CEOGoalState> {
-    if (process.env.DATABASE_URL) {
+    if (hasSheetsConfiguration()) {
       try {
-        const res = await query('SELECT * FROM ceo_goal_state WHERE id = $1 LIMIT 1', ['current'])
-        if (res.rows && res.rows.length > 0) {
-          const row = res.rows[0]
-          return {
-            id: row.id,
-            monthly_revenue_target_usd: Number(row.monthly_revenue_target_usd),
-            recurring_mrr_target_usd: Number(row.recurring_mrr_target_usd),
-            daily_target_pace_usd: Number(row.daily_target_pace_usd),
-            current_mtd_verified_revenue_usd: Number(row.current_mtd_verified_revenue_usd),
-            current_mtd_mrr_usd: Number(row.current_mtd_mrr_usd),
-            revenue_recovered_by_ceo_usd: Number(row.revenue_recovered_by_ceo_usd),
-            revenue_influenced_by_ceo_usd: Number(row.revenue_influenced_by_ceo_usd),
-            primary_bottleneck: row.primary_bottleneck || '',
-            estimated_monthly_leakage_usd: Number(row.estimated_monthly_leakage_usd || 0),
-            priority_focus: row.priority_focus || '',
-            updated_at: row.updated_at ? new Date(row.updated_at).toISOString() : new Date().toISOString()
-          }
-        }
-      } catch (err) {
-        console.warn('[CEOMemory] Postgres query failed, falling back to in-memory store:', err)
+        const persisted = await getLatestOperationalState<CEOGoalState>(STATE_KEY);
+        if (persisted) memoryState = { ...defaultState(), ...persisted };
+      } catch (error) {
+        console.error('[CEOMemory] Durable state read failed:', error);
       }
     }
-    const fallback = loadFallbackData()
-    return fallback.goalState
+
+    const configured = defaultState();
+    memoryState.monthly_revenue_target_usd = configured.monthly_revenue_target_usd;
+    memoryState.recurring_mrr_target_usd = configured.recurring_mrr_target_usd;
+    memoryState.daily_target_pace_usd = configured.daily_target_pace_usd;
+    return memoryState;
   }
 
   public static async updateGoalState(updates: Partial<CEOGoalState>): Promise<CEOGoalState> {
-    const current = await this.getGoalState()
+    const current = await this.getGoalState();
+    const configured = defaultState();
     const updated: CEOGoalState = {
       ...current,
       ...updates,
-      updated_at: new Date().toISOString()
-    }
-
-    if (process.env.DATABASE_URL) {
-      try {
-        await query(
-          `INSERT INTO ceo_goal_state (
-            id, monthly_revenue_target_usd, recurring_mrr_target_usd, daily_target_pace_usd,
-            current_mtd_verified_revenue_usd, current_mtd_mrr_usd, revenue_recovered_by_ceo_usd,
-            revenue_influenced_by_ceo_usd, primary_bottleneck, estimated_monthly_leakage_usd, priority_focus, updated_at
-          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, NOW())
-          ON CONFLICT (id) DO UPDATE SET
-            monthly_revenue_target_usd = EXCLUDED.monthly_revenue_target_usd,
-            recurring_mrr_target_usd = EXCLUDED.recurring_mrr_target_usd,
-            daily_target_pace_usd = EXCLUDED.daily_target_pace_usd,
-            current_mtd_verified_revenue_usd = EXCLUDED.current_mtd_verified_revenue_usd,
-            current_mtd_mrr_usd = EXCLUDED.current_mtd_mrr_usd,
-            revenue_recovered_by_ceo_usd = EXCLUDED.revenue_recovered_by_ceo_usd,
-            revenue_influenced_by_ceo_usd = EXCLUDED.revenue_influenced_by_ceo_usd,
-            primary_bottleneck = EXCLUDED.primary_bottleneck,
-            estimated_monthly_leakage_usd = EXCLUDED.estimated_monthly_leakage_usd,
-            priority_focus = EXCLUDED.priority_focus,
-            updated_at = NOW()`,
-          [
-            'current',
-            updated.monthly_revenue_target_usd,
-            updated.recurring_mrr_target_usd,
-            updated.daily_target_pace_usd,
-            updated.current_mtd_verified_revenue_usd,
-            updated.current_mtd_mrr_usd,
-            updated.revenue_recovered_by_ceo_usd,
-            updated.revenue_influenced_by_ceo_usd,
-            updated.primary_bottleneck,
-            updated.estimated_monthly_leakage_usd,
-            updated.priority_focus
-          ]
-        )
-      } catch (err) {
-        console.warn('[CEOMemory] DB update failed, saving to in-memory fallback:', err)
-      }
-    }
-
-    const fallback = loadFallbackData()
-    fallback.goalState = updated
-    saveFallbackData(fallback)
-    return updated
+      id: 'current',
+      monthly_revenue_target_usd: configured.monthly_revenue_target_usd,
+      recurring_mrr_target_usd: configured.recurring_mrr_target_usd,
+      daily_target_pace_usd: configured.daily_target_pace_usd,
+      updated_at: new Date().toISOString(),
+    };
+    memoryState = updated;
+    if (hasSheetsConfiguration()) await setOperationalState(STATE_KEY, updated);
+    return updated;
   }
 
   public static async recordDecision(params: {
@@ -182,49 +126,26 @@ export class CEOMemory {
     directives: string[]
     forbidden_actions: string[]
   }): Promise<CEODecisionRecord> {
-    const id = `dec_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
     const record: CEODecisionRecord = {
-      id,
-      run_id: params.run_id,
-      trigger_source: params.trigger_source,
-      monthly_target_usd: params.monthly_target_usd,
-      verified_mtd_usd: params.verified_mtd_usd,
-      primary_bottleneck: params.primary_bottleneck,
-      estimated_leakage_usd: params.estimated_leakage_usd,
-      decision_basis: params.decision_basis,
-      directives: params.directives,
-      forbidden_actions: params.forbidden_actions,
-      created_at: new Date().toISOString()
+      id: `dec_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      ...params,
+      created_at: new Date().toISOString(),
+    };
+    if (hasSheetsConfiguration()) {
+      await appendOperationalRow('CEO Decisions', DECISION_HEADERS, [
+        record.id,
+        record.run_id,
+        record.trigger_source,
+        record.monthly_target_usd,
+        record.verified_mtd_usd,
+        record.primary_bottleneck,
+        record.estimated_leakage_usd,
+        JSON.stringify(record.decision_basis),
+        JSON.stringify(record.directives),
+        JSON.stringify(record.forbidden_actions),
+        record.created_at,
+      ]);
     }
-
-    if (process.env.DATABASE_URL) {
-      try {
-        await query(
-          `INSERT INTO ceo_decisions (
-            id, run_id, trigger_source, monthly_target_usd, verified_mtd_usd,
-            primary_bottleneck, estimated_leakage_usd, decision_basis, directives, forbidden_actions, created_at
-          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, NOW())`,
-          [
-            record.id,
-            record.run_id,
-            record.trigger_source,
-            record.monthly_target_usd,
-            record.verified_mtd_usd,
-            record.primary_bottleneck,
-            record.estimated_leakage_usd,
-            JSON.stringify(record.decision_basis),
-            JSON.stringify(record.directives),
-            JSON.stringify(record.forbidden_actions)
-          ]
-        )
-      } catch (err) {
-        console.warn('[CEOMemory] DB recordDecision failed, using fallback:', err)
-      }
-    }
-
-    const fallback = loadFallbackData()
-    fallback.decisions.unshift(record)
-    saveFallbackData(fallback)
-    return record
+    return record;
   }
 }

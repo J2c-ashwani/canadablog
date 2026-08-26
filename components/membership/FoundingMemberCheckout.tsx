@@ -1,59 +1,112 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
-import { ShieldCheck, Loader2, CheckCircle2, Lock } from 'lucide-react';
+import { Loader2, Lock } from 'lucide-react';
 
 export function FoundingMemberCheckout() {
   const router = useRouter();
   const [email, setEmail] = useState('');
+  const [checkoutReady, setCheckoutReady] = useState(false);
+  const [sdkReady, setSdkReady] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
+  const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '';
+  const planId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || '';
+  const containerId = useMemo(() => `membership-paypal-${Math.random().toString(36).slice(2)}`, []);
 
-  const handleCheckout = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!email) {
-      setError('Please enter your business email address.');
+  useEffect(() => {
+    if (!checkoutReady || !paypalClientId || !planId) return;
+    if ((window as any).paypal?.Buttons) {
+      setSdkReady(true);
       return;
     }
+    const existing = document.querySelector<HTMLScriptElement>('script[data-fsi-membership-paypal="true"]');
+    if (existing) {
+      existing.addEventListener('load', () => setSdkReady(true), { once: true });
+      existing.addEventListener('error', () => setError('PayPal checkout could not load.'), { once: true });
+      return;
+    }
+    const script = document.createElement('script');
+    script.dataset.fsiMembershipPaypal = 'true';
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&vault=true&intent=subscription&components=buttons`;
+    script.async = true;
+    script.onload = () => setSdkReady(true);
+    script.onerror = () => setError('PayPal checkout could not load. Please try again.');
+    document.head.appendChild(script);
+  }, [checkoutReady, paypalClientId, planId]);
 
-    setLoading(true);
+  useEffect(() => {
+    if (!checkoutReady || !sdkReady || !email || !planId) return;
+    const container = document.getElementById(containerId);
+    const paypal = (window as any).paypal;
+    if (!container || !paypal?.Buttons) return;
+    container.innerHTML = '';
+
+    const buttons = paypal.Buttons({
+      style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'subscribe' },
+      createSubscription: (_data: any, actions: any) => actions.subscription.create({
+        plan_id: planId,
+        subscriber: { email_address: email.toLowerCase().trim() },
+        application_context: {
+          brand_name: 'FSI Digital',
+          shipping_preference: 'NO_SHIPPING',
+          user_action: 'SUBSCRIBE_NOW',
+        },
+      }),
+      onApprove: async (data: any) => {
+        setLoading(true);
+        setError('');
+        try {
+          const subscriptionId = String(data.subscriptionID || '');
+          if (!subscriptionId) throw new Error('PayPal did not return a subscription ID.');
+          const response = await fetch('/api/paypal/capture-subscription', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ subscriptionId, email }),
+          });
+          const result = await response.json();
+          if (!response.ok) throw new Error(result.error || 'Subscription verification failed.');
+          if ((window as any).gtag) {
+            (window as any).gtag('event', 'membership_started', {
+              value: 29,
+              currency: 'USD',
+              transaction_id: subscriptionId,
+            });
+          }
+          router.push(result.redirectUrl);
+        } catch (checkoutError: any) {
+          setError(checkoutError.message || 'Membership activation failed.');
+          setLoading(false);
+        }
+      },
+      onCancel: () => setError('PayPal checkout was cancelled; no subscription was created.'),
+      onError: (paypalError: any) => {
+        console.error('Membership PayPal error:', paypalError);
+        setError('PayPal could not create the subscription. Please try again.');
+      },
+    });
+    if (buttons.isEligible()) buttons.render(`#${containerId}`);
+    else setError('PayPal subscriptions are not available for this browser or account.');
+    return () => {
+      try { buttons.close(); } catch {}
+    };
+  }, [checkoutReady, sdkReady, email, planId, containerId, router]);
+
+  const prepareCheckout = (event: React.FormEvent) => {
+    event.preventDefault();
     setError('');
-
-    // Simulate PayPal Subscription Session Creation
-    try {
-      const mockSubId = `SUB-FOUNDING-${Date.now()}`;
-      const res = await fetch('/api/paypal/capture-subscription', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          subscriptionId: mockSubId,
-          email,
-          name: '',
-        }),
-      });
-
-      const json = await res.json();
-      if (!res.ok) {
-        setError(json.error || 'Failed to initialize subscription checkout.');
-        setLoading(false);
-        return;
-      }
-
-      // Track Privacy-First GA4 Event
-      if (typeof window !== 'undefined' && (window as any).gtag) {
-        (window as any).gtag('event', 'membership_started', {
-          value: 29.00,
-          currency: 'USD',
-          subscription_id: mockSubId,
-        });
-      }
-
-      // Redirect to onboarding
-      router.push(json.redirectUrl);
-    } catch {
-      setError('Checkout connection failed. Please try again.');
-      setLoading(false);
+    if (!email.includes('@')) {
+      setError('Please enter a valid business email address.');
+      return;
+    }
+    if (!paypalClientId || !planId) {
+      setError('Membership billing is temporarily unavailable because PayPal plan configuration is incomplete.');
+      return;
+    }
+    setCheckoutReady(true);
+    if ((window as any).gtag) {
+      (window as any).gtag('event', 'membership_checkout_started', { value: 29, currency: 'USD' });
     }
   };
 
@@ -62,7 +115,6 @@ export function FoundingMemberCheckout() {
       <div className="absolute top-0 right-0 bg-emerald-600 text-slate-950 text-[9px] font-black px-3.5 py-1 uppercase tracking-wider rounded-bl-lg">
         Founding Member Beta Cohort
       </div>
-
       <div className="space-y-4">
         <div>
           <span className="text-xs font-bold uppercase tracking-wider text-emerald-400">Founding Member Beta</span>
@@ -70,43 +122,40 @@ export function FoundingMemberCheckout() {
             <span className="text-4xl font-black text-white">$29</span>
             <span className="text-sm font-semibold text-slate-400">/ month USD</span>
           </div>
-          <p className="text-xs text-slate-400 mt-1">Cancel or pause anytime in 1 click from your Member Dashboard.</p>
+          <p className="text-xs text-slate-400 mt-1">Cancel anytime from your secure Member Dashboard.</p>
         </div>
-
         <div className="space-y-2 border-t border-b border-slate-800 py-4 text-xs text-slate-300">
-          <div className="flex items-center gap-2">✓ <strong className="text-white">Personalized Weekly Radar Briefing</strong> (Every Monday)</div>
-          <div className="flex items-center gap-2">✓ <strong className="text-white">Matching Opening &amp; Closing Deadline Alerts</strong></div>
-          <div className="flex items-center gap-2">✓ <strong className="text-white">Template &amp; Budget Worksheet Library Access</strong></div>
-          <div className="flex items-center gap-2 text-slate-400">ℹ️ Self-serve automated funding intelligence &amp; member dashboard</div>
+          <div>✓ <strong className="text-white">Automated Weekly Funding Radar</strong></div>
+          <div>✓ <strong className="text-white">Matching opening and deadline alerts</strong></div>
+          <div>✓ <strong className="text-white">Template and worksheet library access</strong></div>
+          <div className="text-slate-400">ℹ️ Fully self-serve; no calls or live sessions included</div>
         </div>
-
-        {error && (
-          <div className="p-3 bg-red-900/40 border border-red-500/50 rounded-xl text-red-200 text-xs font-medium">
-            {error}
-          </div>
-        )}
-
-        <form onSubmit={handleCheckout} className="space-y-3">
+        {error && <div className="p-3 bg-red-900/40 border border-red-500/50 rounded-xl text-red-200 text-xs font-medium">{error}</div>}
+        <form onSubmit={prepareCheckout} className="space-y-3">
           <input
             type="email"
             required
+            disabled={checkoutReady || loading}
             placeholder="Enter your business email"
             value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:border-emerald-500 outline-none"
+            onChange={(event) => setEmail(event.target.value)}
+            className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:border-emerald-500 outline-none disabled:opacity-70"
           />
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 px-6 rounded-xl transition flex items-center justify-center gap-2 text-base shadow-xl"
-          >
-            {loading ? <Loader2 className="w-5 h-5 animate-spin" /> : <>Join Founding Member Beta ($29/mo) →</>}
-          </button>
+          {!checkoutReady && (
+            <button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 px-6 rounded-xl transition text-base shadow-xl">
+              Continue to secure PayPal subscription →
+            </button>
+          )}
         </form>
-
+        {checkoutReady && (
+          <div className="space-y-2">
+            {(!sdkReady || loading) && <div className="flex items-center justify-center gap-2 py-4 text-xs text-slate-400"><Loader2 className="w-4 h-4 animate-spin" /> {loading ? 'Verifying subscription…' : 'Loading PayPal…'}</div>}
+            <div id={containerId} className={loading ? 'pointer-events-none opacity-50' : ''} />
+            <button type="button" onClick={() => setCheckoutReady(false)} className="w-full text-xs text-slate-500 hover:text-slate-300">Use a different email</button>
+          </div>
+        )}
         <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 font-medium pt-1">
-          <Lock className="w-3 h-3 text-emerald-500" /> Secure SSL PayPal Checkout · 100% Privacy Protected
+          <Lock className="w-3 h-3 text-emerald-500" /> PayPal recurring billing · Cancel anytime
         </div>
       </div>
     </div>

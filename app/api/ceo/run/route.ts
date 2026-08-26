@@ -18,8 +18,11 @@ async function handleCEORun(req: Request) {
 
     const result = await CEOAgent.runCEOLoop(triggerSource)
 
+    const evidenceUnknown = result.scoreboard?.evidenceState === 'UNKNOWN'
+    const actionFailed = result.executedActions.some((action: any) => action.status === 'FAILED')
+    const success = Boolean(result.skipped || (!evidenceUnknown && !actionFailed))
     return NextResponse.json({
-      success: true,
+      success,
       runId: result.runId,
       triggerSource: result.triggerSource,
       authMethod: authResult.authMethod,
@@ -29,8 +32,11 @@ async function handleCEORun(req: Request) {
       leakageReport: result.leakageReport,
       brief: result.briefText,
       decisionBasis: result.decisionBasis,
-      executedActions: result.executedActions
-    })
+      executedActions: result.executedActions,
+      specialistReports: result.specialistReports,
+      skipped: result.skipped || false,
+      skipReason: result.skipReason || '',
+    }, { status: success ? 200 : evidenceUnknown ? 503 : 502 })
   } catch (error: any) {
     console.error('[API /api/ceo/run] Execution error:', error)
     return NextResponse.json({ success: false, error: error.message }, { status: 500 })

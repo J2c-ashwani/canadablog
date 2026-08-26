@@ -5,6 +5,40 @@
  */
 
 import { DomainEvent, EventHandler } from "../types"
+import { appendOperationalRow, readOperationalRows, updateOperationalRow } from '@/lib/growth-os/operations-store'
+
+const EVENT_HEADERS = ['Event ID', 'Event Name', 'Occurred At', 'Payload JSON', 'Status']
+
+export interface QueuedGrowthOSEvent {
+  rowNumber: number
+  id: string
+  name: string
+  occurredAt: string
+  payload: Record<string, unknown>
+  status: string
+}
+
+export async function getQueuedGrowthOSEvents(limit = 50): Promise<QueuedGrowthOSEvent[]> {
+  if (!process.env.GOOGLE_SHEET_ID && !process.env.GOOGLE_SHEETS_SPREADSHEET_ID) return []
+  const rows = await readOperationalRows('GrowthOS Events', EVENT_HEADERS)
+  return rows.map((row, index) => {
+    let payload: Record<string, unknown> = {}
+    try { payload = JSON.parse(row[3] || '{}') } catch {}
+    return { rowNumber: index + 2, id: row[0] || '', name: row[1] || '', occurredAt: row[2] || '', payload, status: row[4] || '' }
+  }).filter((event) => event.status === 'QUEUED_FOR_CEO_EVIDENCE_RUN').slice(0, limit)
+}
+
+export async function markGrowthOSEventsReviewed(events: QueuedGrowthOSEvent[], runId: string) {
+  for (const event of events) {
+    await updateOperationalRow('GrowthOS Events', EVENT_HEADERS, event.rowNumber, [
+      event.id,
+      event.name,
+      event.occurredAt,
+      JSON.stringify(event.payload),
+      `REVIEWED_BY_${runId}`,
+    ])
+  }
+}
 
 class EventBus {
   private handlers: Map<string, EventHandler[]> = new Map()
@@ -33,9 +67,11 @@ class EventBus {
       }
     }
 
-    // ─── 24x7 Reactive CEO Trigger for Critical Production Events ───
+    // Critical signals are durably queued. Starting an unawaited CEO loop with
+    // setTimeout is unreliable in serverless runtimes; the scheduled CEO lease
+    // consumes the current evidence without losing the originating signal.
     if (this.isCEOSignificantEvent(eventName)) {
-      this.triggerCEOLoopAsync(eventName, payload)
+      await this.persistCEOSignal(event)
     }
 
     return event
@@ -54,17 +90,15 @@ class EventBus {
     return CRITICAL_EVENTS.includes(eventName) || eventName.startsWith('authority.killswitch.')
   }
 
-  private triggerCEOLoopAsync(eventName: string, payload: any): void {
-    // Asynchronous non-blocking invocation of CEO Agent loop
-    setTimeout(async () => {
-      try {
-        const { CEOAgent } = await import('../../ceo-agent/ceo-agent')
-        console.log(`[EventBus -> CEO OS] ⚡ Critical Event '${eventName}' triggered reactive CEO run...`)
-        await CEOAgent.runCEOLoop('event')
-      } catch (err) {
-        console.error(`[EventBus -> CEO OS] Failed to trigger reactive CEO loop for ${eventName}:`, err)
-      }
-    }, 100)
+  private async persistCEOSignal(event: DomainEvent<any>): Promise<void> {
+    if (!process.env.GOOGLE_SHEET_ID && !process.env.GOOGLE_SHEETS_SPREADSHEET_ID) return
+    await appendOperationalRow('GrowthOS Events', EVENT_HEADERS, [
+      event.id,
+      event.name,
+      event.timestamp,
+      JSON.stringify(event.payload || {}),
+      'QUEUED_FOR_CEO_EVIDENCE_RUN',
+    ])
   }
 }
 

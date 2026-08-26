@@ -1,5 +1,4 @@
-import fs from 'fs'
-import path from 'path'
+import { appendOperationalRow, readOperationalRows } from '@/lib/growth-os/operations-store';
 
 export interface CEOActionRecord {
   actionId: string
@@ -11,7 +10,7 @@ export interface CEOActionRecord {
   tier: 'TIER_1_FILING_2500' | 'TIER_2_STRATEGY_199' | 'TIER_3_REPORT_49'
   offer: string
   decisionReason: string
-  executionStatus: 'EXECUTED_DELIVERED' | 'QUEUED' | 'FAILED'
+  executionStatus: 'PROVIDER_ACCEPTED' | 'DELIVERED' | 'QUEUED' | 'FAILED' | 'SKIPPED'
   provider: string
   providerMessageId?: string
   funnelState: {
@@ -30,6 +29,7 @@ export interface CEOActionRecord {
 
 export interface CEOActionLedgerSummary {
   totalActionsExecuted: number
+  totalProviderAccepted: number
   totalDelivered: number
   totalOpened: number
   totalClicked: number
@@ -41,89 +41,118 @@ export interface CEOActionLedgerSummary {
   recentActions: CEOActionRecord[]
 }
 
-const LEDGER_FILE_PATH = path.join(process.cwd(), 'reports', 'ceo-action-ledger.json')
+const ACTION_HEADERS = [
+  'Action ID', 'Experiment ID', 'Timestamp', 'Lead Email', 'Lead Name', 'Company', 'Tier',
+  'Offer', 'Decision Reason', 'Execution Status', 'Provider', 'Provider Message ID',
+  'Funnel State JSON', 'Attribution',
+];
+const EMAIL_EVENT_HEADERS = [
+  'Event ID', 'Provider', 'Provider Message ID', 'Event Type', 'Recipient', 'Occurred At', 'Received At',
+];
+let inMemoryLedger: CEOActionRecord[] = [];
 
-let inMemoryLedger: CEOActionRecord[] = []
-
-function loadLedger(): CEOActionRecord[] {
-  try {
-    if (fs.existsSync(LEDGER_FILE_PATH)) {
-      const content = fs.readFileSync(LEDGER_FILE_PATH, 'utf-8')
-      inMemoryLedger = JSON.parse(content)
-    }
-  } catch (err) {
-    // Graceful fallback for serverless
-  }
-  return inMemoryLedger
+function hasSheetsConfiguration() {
+  return Boolean(process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID);
 }
 
-function persistLedger(records: CEOActionRecord[]) {
-  inMemoryLedger = records
+function parseAction(row: string[]): CEOActionRecord | null {
   try {
-    const dir = path.dirname(LEDGER_FILE_PATH)
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-    fs.writeFileSync(LEDGER_FILE_PATH, JSON.stringify(records, null, 2))
-  } catch (err) {
-    // Read-only filesystem on Vercel
+    return {
+      actionId: row[0] || '',
+      experimentId: row[1] || '',
+      timestamp: row[2] || '',
+      leadEmail: row[3] || '',
+      leadName: row[4] || '',
+      company: row[5] || '',
+      tier: (row[6] || 'TIER_3_REPORT_49') as CEOActionRecord['tier'],
+      offer: row[7] || '',
+      decisionReason: row[8] || '',
+      executionStatus: (row[9] || 'FAILED') as CEOActionRecord['executionStatus'],
+      provider: row[10] || '',
+      providerMessageId: row[11] || '',
+      funnelState: JSON.parse(row[12] || '{}'),
+      attribution: row[13] || '',
+    };
+  } catch {
+    return null;
   }
 }
 
 export class CEOActionLedger {
   public static async recordAction(action: Omit<CEOActionRecord, 'actionId' | 'timestamp'>): Promise<CEOActionRecord> {
-    const records = loadLedger()
-    const newRecord: CEOActionRecord = {
+    const record: CEOActionRecord = {
       ...action,
       actionId: `ceo_act_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
-      timestamp: new Date().toISOString()
+      timestamp: new Date().toISOString(),
+    };
+    if (hasSheetsConfiguration()) {
+      await appendOperationalRow('CEO Actions', ACTION_HEADERS, [
+        record.actionId,
+        record.experimentId,
+        record.timestamp,
+        record.leadEmail,
+        record.leadName,
+        record.company,
+        record.tier,
+        record.offer,
+        record.decisionReason,
+        record.executionStatus,
+        record.provider,
+        record.providerMessageId || '',
+        JSON.stringify(record.funnelState),
+        record.attribution,
+      ]);
+    } else {
+      inMemoryLedger.unshift(record);
     }
-
-    records.unshift(newRecord)
-    // Keep max 500 actions
-    if (records.length > 500) records.length = 500
-
-    persistLedger(records)
-    console.log(`[CEOActionLedger] 📋 Recorded action ${newRecord.actionId} for ${newRecord.leadEmail} (${newRecord.executionStatus})`)
-    return newRecord
+    return record;
   }
 
   public static async getLedgerSummary(): Promise<CEOActionLedgerSummary> {
-    const records = loadLedger()
-
-    let totalDelivered = 0
-    let totalOpened = 0
-    let totalClicked = 0
-    let totalReplied = 0
-    let totalCallsBooked = 0
-    let totalCheckouts = 0
-    let totalPayments = 0
-    let totalRevenueRecoveredUSD = 0
-
-    for (const r of records) {
-      if (r.funnelState.delivered) totalDelivered++
-      if (r.funnelState.opened) totalOpened++
-      if (r.funnelState.clicked) totalClicked++
-      if (r.funnelState.replied) totalReplied++
-      if (r.funnelState.callBooked) totalCallsBooked++
-      if (r.funnelState.checkoutStarted) totalCheckouts++
-      if (r.funnelState.paymentCaptured) {
-        totalPayments++
-        totalRevenueRecoveredUSD += r.funnelState.revenueAttributedUSD
-      }
+    let records = inMemoryLedger;
+    let deliveryByMessage = new Map<string, string>();
+    if (hasSheetsConfiguration()) {
+      const [rows, emailEvents] = await Promise.all([
+        readOperationalRows('CEO Actions', ACTION_HEADERS),
+        readOperationalRows('Email Events', EMAIL_EVENT_HEADERS),
+      ]);
+      records = rows.map(parseAction).filter((record): record is CEOActionRecord => Boolean(record));
+      deliveryByMessage = new Map(emailEvents.map((row) => [row[2] || '', String(row[3] || '').toLowerCase()]));
     }
+
+    const reconciled = records.map((record) => {
+      const providerEvent = record.providerMessageId ? deliveryByMessage.get(record.providerMessageId) : '';
+      const funnelState = { ...record.funnelState };
+      if (providerEvent === 'email.delivered') funnelState.delivered = true;
+      if (providerEvent === 'email.opened') {
+        funnelState.delivered = true;
+        funnelState.opened = true;
+      }
+      if (providerEvent === 'email.clicked') {
+        funnelState.delivered = true;
+        funnelState.clicked = true;
+      }
+      return {
+        ...record,
+        executionStatus: (funnelState.delivered ? 'DELIVERED' : record.executionStatus) as CEOActionRecord['executionStatus'],
+        funnelState,
+      };
+    });
 
     return {
-      totalActionsExecuted: records.length,
-      totalDelivered,
-      totalOpened,
-      totalClicked,
-      totalReplied,
-      totalCallsBooked,
-      totalCheckouts,
-      totalPayments,
-      totalRevenueRecoveredUSD,
-      recentActions: records.slice(0, 10)
-    }
+      totalActionsExecuted: reconciled.length,
+      totalProviderAccepted: reconciled.filter((record) => record.executionStatus === 'PROVIDER_ACCEPTED' || record.executionStatus === 'DELIVERED').length,
+      totalDelivered: reconciled.filter((record) => record.funnelState.delivered).length,
+      totalOpened: reconciled.filter((record) => record.funnelState.opened).length,
+      totalClicked: reconciled.filter((record) => record.funnelState.clicked).length,
+      totalReplied: reconciled.filter((record) => record.funnelState.replied).length,
+      totalCallsBooked: reconciled.filter((record) => record.funnelState.callBooked).length,
+      totalCheckouts: reconciled.filter((record) => record.funnelState.checkoutStarted).length,
+      totalPayments: reconciled.filter((record) => record.funnelState.paymentCaptured).length,
+      totalRevenueRecoveredUSD: Number(reconciled.reduce((sum, record) =>
+        sum + (record.funnelState.paymentCaptured ? Number(record.funnelState.revenueAttributedUSD || 0) : 0), 0
+      ).toFixed(2)),
+      recentActions: reconciled.sort((a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime()).slice(0, 10),
+    };
   }
 }

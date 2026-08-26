@@ -1,262 +1,273 @@
-import { CEOMemory, CEODecisionBasis } from './ceo-memory'
-import { CEOScoreboard, CommercialScoreboard, RevenuePathToTarget, RevenueLeakageReport } from './ceo-scoreboard'
+import { CEOMemory, type CEODecisionBasis } from './ceo-memory'
+import { CEOScoreboard } from './ceo-scoreboard'
 import { RevenueAgent } from './specialists/revenue-agent'
 import { GrowthAgent } from './specialists/growth-agent'
 import { SalesAgent } from './specialists/sales-agent'
 import { ProductAgent } from './specialists/product-agent'
-import { ActionTools } from './tools/action-tools'
 import { CEOExperimentEngine } from './ceo-experiments'
-import { SEORevenueOrchestrator, SEORevenueOrchestrationResult } from '@/lib/seo-revenue-engine/seo-revenue-orchestrator'
+import { acquireOperationLease, finishOperationLease, type OperationLease } from '@/lib/growth-os/operations-store'
+import { sendEmail } from '@/lib/emails/mailer'
+import { getQueuedGrowthOSEvents, markGrowthOSEventsReviewed } from '@/lib/growth-os/core/event-bus'
 
 export interface CEORunResult {
   runId: string
   triggerSource: 'cron' | 'event' | 'on_demand' | 'verification'
   timestamp: string
+  skipped?: boolean
+  skipReason?: string
   scoreboard: any
   pathToTarget: any
   leakageReport: any
-  seoWarModeReport?: SEORevenueOrchestrationResult
   briefText: string
   decisionBasis: CEODecisionBasis
   executedActions: any[]
+  specialistReports: Record<string, any>
+}
+
+function hasSheetsConfiguration() {
+  return Boolean(process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID)
+}
+
+function defaultDecisionBasis(): CEODecisionBasis {
+  return {
+    primary_bottleneck: 'Duplicate execution suppressed',
+    evidence_refs: [],
+    observed_conversion_rate: 0,
+    baseline_rate: 0,
+    estimated_monthly_leakage_usd: 0,
+    hypothesis: 'No new decision was required.',
+    decision: 'Use the earlier run in the active lease window.',
+    expected_revenue_impact_usd: 0,
+    attribution_confidence: 'LOW',
+  }
 }
 
 export class CEOAgent {
-  public static async runCEOLoop(triggerSource: 'cron' | 'event' | 'on_demand' | 'verification' = 'cron'): Promise<CEORunResult> {
+  public static async runCEOLoop(
+    triggerSource: 'cron' | 'event' | 'on_demand' | 'verification' = 'cron'
+  ): Promise<CEORunResult> {
     const runId = `run_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
-    console.log(`\n[CEOAgent] 🚀 Initiating CEO OS Loop (${runId}) — Trigger: ${triggerSource}...`)
+    let lease: OperationLease | null = null
+    if (triggerSource !== 'verification' && hasSheetsConfiguration()) {
+      lease = await acquireOperationLease('ceo-evidence-loop', 30 * 60 * 1000)
+      if (!lease.acquired) {
+        return {
+          runId,
+          triggerSource,
+          timestamp: new Date().toISOString(),
+          skipped: true,
+          skipReason: lease.reason,
+          scoreboard: null,
+          pathToTarget: null,
+          leakageReport: null,
+          briefText: `CEO run skipped: ${lease.reason}`,
+          decisionBasis: defaultDecisionBasis(),
+          executedActions: [],
+          specialistReports: {},
+        }
+      }
+    }
 
-    // 1. Specialist Sub-Agent Audits
-    const revAudit = await RevenueAgent.auditRevenue()
-    const growthAudit = await GrowthAgent.auditGrowthOS()
-    const salesAudit = await SalesAgent.auditSales()
-    const productAudit = await ProductAgent.auditProduct()
-    
-    // 1b. SEO Revenue War Mode Orchestrator
-    let seoWarResult: SEORevenueOrchestrationResult | undefined
     try {
-      seoWarResult = await SEORevenueOrchestrator.runWarModeAnalysis()
-    } catch (err: any) {
-      console.warn('[CEOAgent] SEO Revenue War Mode notice:', err.message)
-    }
-
-    // 2. Scoreboard, Math Path & Dollar Leakage Calculations
-    const scoreboard = await CEOScoreboard.calculateScoreboard(revAudit.verifiedTotalRevenueUSD, 0, salesAudit.leadIntakeCount, 22)
-    const pathToTarget = CEOScoreboard.calculatePathToTarget(revAudit.verifiedTotalRevenueUSD, 15000, 22)
-    const leakageReport = CEOScoreboard.calculateLeakageReport(14, 3, salesAudit.uncontactedHighIntentLeads, productAudit.pendingDeliveriesCount)
-
-    // 3. Autonomous Level 3 Revenue Executions:
-    const executedActions = []
-
-    // 3a. Auto-trigger Cart Recovery Engine for abandoned checkouts
-    try {
-      const cartReceipt = await ActionTools.triggerCartRecovery(5, false)
-      executedActions.push(cartReceipt)
-    } catch (err: any) {
-      console.warn('[CEOAgent] Cart recovery execution notice:', err)
-    }
-
-    // 3b. Auto-trigger High-Ticket B2B Outreach for unprogressed qualified leads
-    try {
-      const outreachReceipt = await ActionTools.triggerHighTicketOutreach(5, true)
-      executedActions.push(outreachReceipt)
-    } catch (err: any) {
-      console.warn('[CEOAgent] B2B outreach execution notice:', err)
-    }
-
-    // 3c. Auto-retry pending customer report deliveries
-    if (productAudit.pendingDeliveriesCount > 0) {
-      const receipt = await ActionTools.retryFailedDelivery('ord_historical_c1_c2')
-      executedActions.push(receipt)
-    }
-
-    // 4. Create CEO Follow-up Task for P0 Orphan Queue if present
-    if (growthAudit.criticalOrphanAlert) {
-      const taskReceipt = await ActionTools.createFollowupTask(
-        'P0: Repair EmailAdapter Outbound Queue Dispatcher',
-        'P0',
-        `${growthAudit.criticalOrphanAlert}. Estimated monthly leakage: $${leakageReport.items[0]?.leakageMonthlyUSD || 1840}.`
+      const [revenue, growth, sales, product, queuedSignals] = await Promise.all([
+        RevenueAgent.auditRevenue(),
+        GrowthAgent.auditGrowthOS(),
+        SalesAgent.auditSales(),
+        ProductAgent.auditProduct(),
+        getQueuedGrowthOSEvents(),
+      ])
+      const scoreboard = await CEOScoreboard.calculateScoreboard(
+        revenue.verifiedMTDRevenueUSD,
+        revenue.verifiedMRRUSD,
+        revenue.activeMemberships,
+        revenue.evidenceState
       )
-      executedActions.push(taskReceipt)
-    }
+      const pathToTarget = CEOScoreboard.calculatePathToTarget(
+        revenue.verifiedMTDRevenueUSD,
+        scoreboard.monthlyRevenueTargetUSD,
+        scoreboard.daysRemainingInMonth
+      )
+      const leakageReport = CEOScoreboard.calculateLeakageReport(
+        sales.pipeline.checkoutStartsCount,
+        sales.pipeline.completedPurchasesCount,
+        sales.pipeline.unprogressedLeads,
+        product.pendingDeliveriesCount + product.failedDeliveriesCount
+      )
 
-    // 5. Build Structured Decision Basis
-    const decisionBasis: CEODecisionBasis = {
-      primary_bottleneck: growthAudit.criticalOrphanAlert ? 'Outbound Email Dispatcher Stalled' : 'Checkout -> Payment Conversion',
-      evidence_refs: [
-        `Verified MTD Revenue: $${revAudit.verifiedTotalRevenueUSD} USD (Source: PayPal log evidence)`,
-        `Discovered Leads: ${salesAudit.leadIntakeCount}, Uncontacted: ${salesAudit.uncontactedHighIntentLeads}`,
-        `Stalled Dispatches: ${growthAudit.criticalOrphanAlert ? 'YES (Aug 7)' : 'NO'}`
-      ],
-      observed_conversion_rate: 0.071,
-      baseline_rate: 0.12,
-      estimated_monthly_leakage_usd: leakageReport.totalEstimatedLeakageUSD,
-      hypothesis: 'Repairing post-capture payment validation & outbound email dispatch queue will recover lost transactions and move daily pace toward $500/day target.',
-      decision: 'Execute P0 outbound repair and report delivery retries before any new feature development.',
-      expected_revenue_impact_usd: leakageReport.totalEstimatedLeakageUSD,
-      attribution_confidence: 'HIGH'
-    }
+      let primaryBottleneck = sales.primaryBottleneck
+      if (product.pendingDeliveriesCount + product.failedDeliveriesCount > 0) {
+        primaryBottleneck = 'Provider-verified purchases are awaiting fulfilment'
+      } else if (revenue.activeMemberships === 0) {
+        primaryBottleneck = 'Zero provider-verified $29 membership subscriptions'
+      } else if (growth.criticalOrphanAlert) {
+        primaryBottleneck = growth.criticalOrphanAlert
+      }
+      const conversionRate = sales.pipeline.checkoutStartsCount > 0
+        ? sales.pipeline.completedPurchasesCount / sales.pipeline.checkoutStartsCount
+        : 0
+      const decisionBasis: CEODecisionBasis = {
+        primary_bottleneck: primaryBottleneck,
+        evidence_refs: [
+          `Product Purchases: $${revenue.verifiedMTDRevenueUSD.toFixed(2)} provider-verified MTD revenue`,
+          `Membership Subscriptions: ${revenue.activeMemberships} active / $${revenue.verifiedMRRUSD.toFixed(2)} verified MRR`,
+          `Funnel Events: ${sales.pipeline.checkoutStartsCount} checkout starts in the evidence window`,
+          `Email Events: ${sales.pipeline.deliveredCount} signed provider deliveries`,
+          `Fulfilment: ${product.pendingDeliveriesCount + product.failedDeliveriesCount} verified purchases pending or failed`,
+          `GrowthOS Events: ${queuedSignals.length} durable signals queued for this run`,
+        ],
+        observed_conversion_rate: Number(conversionRate.toFixed(4)),
+        baseline_rate: 0.10,
+        estimated_monthly_leakage_usd: leakageReport.totalEstimatedLeakageUSD,
+        hypothesis: revenue.activeMemberships === 0
+          ? 'A real PayPal subscription funnel plus controlled distribution to consented leads can establish the first verified MRR cohort.'
+          : 'Scaling only cohorts with verified delivery-to-capture evidence will improve monthly revenue without adding products.',
+        decision: 'Run the current product ladder through dedicated, idempotent distribution crons; do not create new products, pages, or unmeasured campaigns.',
+        expected_revenue_impact_usd: leakageReport.totalEstimatedLeakageUSD,
+        attribution_confidence: revenue.evidenceState === 'VERIFIED' ? 'HIGH' : revenue.evidenceState === 'PARTIAL' ? 'MEDIUM' : 'LOW',
+      }
 
-    // 6. Register Revenue Experiment
-    await CEOExperimentEngine.registerExperiment({
-      hypothesis: decisionBasis.hypothesis,
-      funnel_stage: 5, // Payment Reconciled / Delivery
-      baseline_metric: 0.071,
-      target_metric: 0.12,
-      action_taken: decisionBasis.decision,
-      observation_window_hours: 72
-    })
+      if (triggerSource !== 'verification') {
+        const pendingExperiments = await CEOExperimentEngine.getExperimentsAwaitingEvaluation()
+        const now = Date.now()
+        for (const experiment of pendingExperiments) {
+          const observationEndsAt = new Date(experiment.created_at).getTime() + experiment.observation_window_hours * 60 * 60 * 1000
+          if (Number.isFinite(observationEndsAt) && observationEndsAt <= now) {
+            await CEOExperimentEngine.evaluateExperimentOutcome(
+              experiment.id,
+              decisionBasis.observed_conversion_rate,
+              revenue.directlyAttributedToCEOUSD
+            )
+          }
+        }
+        const activeExperiments = await CEOExperimentEngine.getActiveExperiments()
+        if (activeExperiments.length === 0) {
+          await CEOExperimentEngine.registerExperiment({
+            hypothesis: decisionBasis.hypothesis,
+            funnel_stage: revenue.activeMemberships === 0 ? 4 : 3,
+            baseline_metric: decisionBasis.observed_conversion_rate,
+            target_metric: Math.max(0.03, decisionBasis.observed_conversion_rate * 1.2),
+            action_taken: decisionBasis.decision,
+            observation_window_hours: 168,
+          })
+        }
+      }
 
-    // 7. Format Brutally Honest CEO Daily Brief
-    const briefText = this.formatCEODailyBrief(runId, triggerSource, scoreboard, pathToTarget, leakageReport, growthAudit, salesAudit, revAudit, executedActions, seoWarResult)
+      const briefText = this.formatBrief(runId, scoreboard, pathToTarget, leakageReport, revenue, growth, sales, product, decisionBasis)
+      if (triggerSource !== 'verification') await CEOMemory.recordDecision({
+        run_id: runId,
+        trigger_source: triggerSource,
+        monthly_target_usd: scoreboard.monthlyRevenueTargetUSD,
+        verified_mtd_usd: scoreboard.currentVerifiedRevenueUSD,
+        primary_bottleneck: decisionBasis.primary_bottleneck,
+        estimated_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
+        decision_basis: decisionBasis,
+        directives: [
+          'Distribute only the current $19/$29/$49/$79/$199 grant products and $49 CAD MCA product.',
+          'Scale only cohorts with provider message IDs and verified downstream captures.',
+          'Prioritize the first 10 provider-verified customers before broader strategy changes.',
+        ],
+        forbidden_actions: [
+          'No fabricated delivered, reply, checkout, payment, or revenue states.',
+          'No outreach to contacts without explicit subscription consent.',
+          'No forced recovery and no new positioning or product work.',
+        ],
+      })
+      if (triggerSource !== 'verification') await CEOMemory.updateGoalState({
+        current_mtd_verified_revenue_usd: scoreboard.currentVerifiedRevenueUSD,
+        current_mtd_mrr_usd: scoreboard.currentMRRUSD,
+        primary_bottleneck: decisionBasis.primary_bottleneck,
+        estimated_monthly_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
+        priority_focus: 'First 10 provider-verified customers from the existing product ladder',
+      })
+      if (triggerSource !== 'verification' && queuedSignals.length > 0) {
+        await markGrowthOSEventsReviewed(queuedSignals, runId)
+      }
 
-    // 8. Record Decision in Memory / DB Ledger
-    await CEOMemory.recordDecision({
-      run_id: runId,
-      trigger_source: triggerSource,
-      monthly_target_usd: scoreboard.monthlyRevenueTargetUSD,
-      verified_mtd_usd: scoreboard.currentVerifiedRevenueUSD,
-      primary_bottleneck: decisionBasis.primary_bottleneck,
-      estimated_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
-      decision_basis: decisionBasis,
-      directives: [
-        'P0: Execute Top 5 SEO Revenue War Experiments on High-Intent Keywords.',
-        'P0: Connect every organic visitor to Revenue Hunter adaptive monetization.',
-        'P1: Measure active 120h observation cohort conversion.'
-      ],
-      forbidden_actions: [
-        '❌ DO NOT build new SEO landing pages today.',
-        '❌ DO NOT build new lead scraper features.',
-        '❌ DO NOT redesign UI components.',
-        '❌ DO NOT increase SERPER scraper volume without targeted ROI.'
-      ]
-    })
+      const executedActions: any[] = []
+      if (triggerSource === 'cron') {
+        const report = await sendEmail({
+          to: process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca',
+          subject: `CEO report ${scoreboard.status} — MRR $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()}`,
+          html: `<pre style="white-space:pre-wrap;font-family:Arial,sans-serif">${briefText.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</pre>`,
+          text: briefText,
+          tagType: 'ceo-daily-report',
+        })
+        executedActions.push({
+          toolName: 'ceo_daily_report',
+          status: report.success && report.providerMessageId ? 'PROVIDER_ACCEPTED' : 'FAILED',
+          provider: report.provider || '',
+          providerMessageId: report.providerMessageId || '',
+          error: report.error || '',
+        })
+      }
 
-    // Update global state
-    await CEOMemory.updateGoalState({
-      current_mtd_verified_revenue_usd: scoreboard.currentVerifiedRevenueUSD,
-      primary_bottleneck: decisionBasis.primary_bottleneck,
-      estimated_monthly_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
-      priority_focus: 'P0: SEO Revenue War Mode + Revenue Hunter Cash Generation'
-    })
-
-    console.log(`[CEOAgent] ✅ CEO Loop Completed (${runId}). Status: ${scoreboard.status}\n`)
-
-    return {
-      runId,
-      triggerSource,
-      timestamp: new Date().toISOString(),
-      scoreboard,
-      pathToTarget,
-      leakageReport,
-      seoWarModeReport: seoWarResult,
-      briefText,
-      decisionBasis,
-      executedActions
+      const specialistReports = { revenue, growth, sales, product, queuedSignals }
+      const result: CEORunResult = {
+        runId,
+        triggerSource,
+        timestamp: new Date().toISOString(),
+        scoreboard,
+        pathToTarget,
+        leakageReport,
+        briefText,
+        decisionBasis,
+        executedActions,
+        specialistReports,
+      }
+      if (lease) await finishOperationLease(lease, revenue.evidenceState === 'VERIFIED' ? 'SUCCEEDED' : 'PARTIAL', {
+        runId,
+        status: scoreboard.status,
+        evidenceState: revenue.evidenceState,
+        verifiedMTDRevenueUSD: revenue.verifiedMTDRevenueUSD,
+        verifiedMRRUSD: revenue.verifiedMRRUSD,
+      })
+      return result
+    } catch (error: any) {
+      if (lease?.acquired) await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) })
+      throw error
     }
   }
 
-  private static formatCEODailyBrief(
+  private static formatBrief(
     runId: string,
-    triggerSource: string,
-    sb: any,
+    scoreboard: any,
     path: any,
-    leak: any,
+    leakage: any,
+    revenue: any,
     growth: any,
     sales: any,
-    rev: any,
-    actions: any[],
-    seoWarResult?: SEORevenueOrchestrationResult
-  ): string {
-    const pipeline = sales.pipeline || {}
-    const topLeads = pipeline.topActionableLeads || []
-    const sources = pipeline.acquisitionSources || {}
-    const totalLeads = pipeline.totalIntakeLeads || 470
-    const histTx = rev.historicalTransactions || []
+    product: any,
+    decision: CEODecisionBasis
+  ) {
+    const productMix = path.requiredTransactions
+    return `FSI DIGITAL CEO EVIDENCE REPORT — ${new Date().toISOString().slice(0, 10)}
+Run: ${runId}
 
-    return `
-🧠 FSI DIGITAL CEO DAILY BRIEF — ${new Date().toISOString().split('T')[0]} (Run ID: ${runId})
-==================================================================================
+STATUS
+${scoreboard.status} · Evidence: ${scoreboard.evidenceState}
+Verified MTD revenue: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()}
+Verified MRR: $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()}
+Active $29 memberships: ${scoreboard.activeMemberships}; additional memberships required for strict MRR target: ${scoreboard.membershipsRequiredForMRRTarget}
 
-🎯 THE 6 MORNING CEO ANSWERS (08:00 UTC):
+LIVE FUNNEL
+Leads: ${sales.pipeline.totalIntakeLeads} total; ${sales.pipeline.consentedLeads} explicitly consented; ${sales.pipeline.newLeads24h} new in 24h
+Provider-accepted outreach: ${sales.pipeline.contactedCount}; signed deliveries: ${sales.pipeline.deliveredCount}; replies: ${sales.pipeline.repliedCount}
+Checkout starts: ${sales.pipeline.checkoutStartsCount}; provider-verified purchases: ${sales.pipeline.completedPurchasesCount}
+Verified product records: ${product.generatedReportsCount}; delivered: ${product.deliveredReportsCount}; provider-accepted only: ${product.providerAcceptedDeliveriesCount}; pending/failed: ${product.pendingDeliveriesCount + product.failedDeliveriesCount}
 
-1. REVENUE & CEO PERFORMANCE REALISM:
-   • Status Statement:               The CEO Agent is capable of autonomously executing approved cart-recovery and high-ticket outreach actions. Incremental revenue impact is $0.00 USD so far and will be measured through post-action conversion telemetry.
-   • Yesterday's Cash In:            $0.00 USD
-   • Historical Revenue (Pre-CEO):   $${rev.historicalPreCEODeploymentUSD || 106}.00 USD (4 historical customers pre-Aug 8)
-   • Revenue Post-CEO Deployment:    $${rev.postCEODeploymentRevenueUSD || 0}.00 USD (Active cohort observation in progress)
-   • Incremental Revenue by CEO:     $${rev.directlyAttributedToCEOUSD || 0}.00 USD
-   • Monthly Target:                 $${sb.monthlyRevenueTargetUSD.toLocaleString()} USD
-   • Distance to Target:             -$${sb.revenueGapUSD.toLocaleString()} USD (Required Pace: $${sb.requiredDailyPaceUSD}/day | Current: $${sb.currentDailyRunRateUSD}/day)
-   • Commercial Status:              🔴 OFF TRACK ($0.00 incremental revenue proven so far)
+PRIMARY BOTTLENECK
+${decision.primary_bottleneck}
 
-2. PIPELINE ASSET BASE (Strict Mutually Exclusive Tiers — Total: ${totalLeads}):
-   • Total Qualified Leads:          ${totalLeads} Canadian SMEs
-   • Tier 1 High-Ticket ($2,500 Filing): ${pipeline.tier1HighTicketCount} leads (${((pipeline.tier1HighTicketCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier1HighTicketCount * 2500).toLocaleString()} Addressable Pipeline Value
-   • Tier 2 Strategy ($199 Session):     ${pipeline.tier2StrategyCount} leads (${((pipeline.tier2StrategyCount/totalLeads)*100).toFixed(1)}%) ──► $${(pipeline.tier2StrategyCount * 199).toLocaleString()} Addressable Pipeline Value
-   • Tier 3 Product ($19/$49 Report):    ${pipeline.tier3ReportCount} leads (${((pipeline.tier3ReportCount/totalLeads)*100).toFixed(1)}%)
-   • Mathematical Reconciliation:    ${pipeline.tier1HighTicketCount} + ${pipeline.tier2StrategyCount} + ${pipeline.tier3ReportCount} = ${totalLeads} (100% non-overlapping)
-   • Uncontacted Lead Progression:   466 uncontacted at start of run ──► 5 contacted in Cohort CEO-HT-${new Date().toISOString().split('T')[0]}-001 ──► 461 remaining
+CEO DECISION
+${decision.decision}
 
-3. SALES ACTIVITY & HISTORICAL TRANSACTION AUDIT:
-   • Verified Historical Purchases:  4 orders (Total: $106.00 USD | 100% Fulfilled)
-     1. Jessica Gould | $19.00 USD | Order: 6LU31970NG3464453 | Paid: 2026-07-31 | Status: DELIVERED
-     2. Jessica Gould | $19.00 USD | Order: 0U3930093L744772K | Paid: 2026-07-31 | Status: DELIVERED
-     3. Chintan Kakani | $19.00 USD | Order: 6B784594LT354905D | Paid: 2026-08-05 | Status: DELIVERED
-     4. Chintan Patel | $49.00 USD | Order: HISTORICAL_ROADMAP | Paid: 2026-08-07 | Status: DELIVERED
-   • Checkout Sessions Tracked:      14 starts
-   • Historical Conversion Rate:     28.6% (4 purchases / 14 checkouts)
+CURRENT-PRODUCT PLANNING MIX FOR THE MONTHLY REVENUE GAP
+$29 membership: ${productMix.membership29Count}; $79 bundle: ${productMix.strategy79Count}; $49 plan: ${productMix.actionPlan49Count}; $199 product: ${productMix.session199Count}; $19 report: ${productMix.report19Count}; $2,500 services: 0
+This is a planning model, not a forecast. Strict $10K MRR still requires 345 active $29 memberships.
 
-4. CONVERSION FUNNEL (End-to-End Progression):
-   • Intake Lead ──► Qualified:      100% (${totalLeads} / ${totalLeads})
-   • Qualified ──► Checkout Start:    3.0% (14 / ${totalLeads}) ⚠️ PRIMARY CHOKEPOINT
-   • Checkout ──► Payment Complete:  28.6% (4 / 14)
-   • Payment ──► Fulfillment:       100% (4 delivered / 4 verified customer orders)
-
-5. ACQUISITION ATTRIBUTION (Mutually Exclusive Partition — Total: ${totalLeads}):
-   ${Object.entries(sources).map(([src, count]) => `• ${src}: ${count} leads (${(((count as number)/totalLeads)*100).toFixed(1)}%)`).join('\n   ')}
-   • Mathematical Reconciliation:    ${Object.values(sources).reduce((a: any, b: any) => a + b, 0)} / ${totalLeads} leads accounted for.
-
-6. HIGHEST-VALUE DAILY INTERVENTION & ACTIVE COHORT TELEMETRY:
-   • Commercial Bottleneck: 461 qualified intake leads still awaiting proactive commercial contact.
-   • Active Experiment Cohort: [CEO-HT-${new Date().toISOString().split('T')[0]}-001]
-     - Progress: 5/10 contacted (Batch 1 of 2 active)
-     - Funnel State: Sent: 5 | Delivered: 5 | Opened: 0 | Clicked: 0 | Replied: 0 | Booked: 0 | Paid: 0
-     - Incremental Attributed Revenue: $0.00 USD (Baseline)
-     - Cadence Rule: Active Observation Window extended to August 19, 08:00 UTC (120h window to factor in the Aug 15-16 weekend). No unmetered blast allowed.
-     - Ultimate KPI: Verified cash ($199–$2,500) generated from this cohort.
-   • Execution Proof Chain (CEO Action Ledger):
-     ${actions.map((a) => `• [${a.status}] ${a.toolName}: ${a.message}`).join('\n     ')}
-
-----------------------------------------------------------------------------------
-🏹 FSI REVENUE HUNTER (P0 — Milestone 1: $2,000 Incremental Cash):
-   • Milestone Target:               $2,000.00 USD
-   • Incremental Collected Cash:     $${rev.directlyAttributedToCEOUSD || 0}.00 USD / $2,000.00 Target
-   • Pipeline Expected Value ($EV):  $${pipeline.totalPipelineExpectedValueUSD?.toLocaleString() || '18,450.00'} USD (Probability-weighted)
-   • Strategy Directive:             Active Business Day Cohort Observation (Aug 14–19). Measuring response rates for top Tier-1 & Tier-2 prospects.
-   • Kill-or-Scale Mechanism:        Auto-kill offer/segment if 0 sales across 50 attempts; auto-scale cohort if conversion >= 3%.
-
-----------------------------------------------------------------------------------
-FASTEST CREDIBLE PATH TO $15,000 (Prioritized Deal Mix):
-  • 5x High-Ticket Grant Filing ($2,500):  $12,500 USD (83% of gap) ──► Target ${pipeline.tier1HighTicketCount} Tier-1 Candidates
-  • 10x 1-on-1 Strategy Sessions ($199):  $1,990 USD (13% of gap) ──► Target ${pipeline.tier2StrategyCount} Tier-2 Candidates
-  • 15x Custom Funding Reports ($19-$49): $510 USD (4% of gap)   ──► Automatic Cart Recovery
-  = TOTAL TARGET REACHED: $15,000 USD
-
-----------------------------------------------------------------------------------
-🎯 TOP REVENUE-HUNTER PROSPECTS (Ranked by Expected Value $EV):
-${topLeads.slice(0, 5).map((l: any, idx: number) => `  ${idx + 1}. ${l.name} (${l.company}) | ${l.industry} - ${l.region}
-     Recommended Offer: ${l.tier === 'TIER_1_FILING_2500' ? '$2,500 Grant Filing' : (l.tier === 'TIER_2_STRATEGY_199' ? '$199 Strategy Session' : '$49 Action Plan')}
-     Expected Value ($EV): $${l.expectedValueUSD || 0} USD (Confidence: ${l.readinessScore}%)
-     Email: ${l.email} | Context: ${l.actionableReason}`).join('\n\n')}
-
-${seoWarResult ? `\n${seoWarResult.executiveBriefText}\n` : ''}
-----------------------------------------------------------------------------------
-❌ FORBIDDEN ACTIONS TODAY:
-  • Do NOT build new SEO landing pages today.
-  • Do NOT redesign UI components.
-  • Focus 100% on activating the ${pipeline.unprogressedLeads} uncontacted qualified leads and executing Top 5 SEO Revenue War targets.
-==================================================================================
+AGENT HEALTH
+Revenue Agent: ${revenue.evidenceState}; Growth Agent: ${growth.pipelineStatus}; Sales Agent: live evidence; Product Agent: live purchase/delivery ledger
+Estimated evidence-backed leakage: $${leakage.totalEstimatedLeakageUSD.toFixed(2)}
 `
   }
 }

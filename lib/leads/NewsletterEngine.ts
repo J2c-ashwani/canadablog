@@ -241,7 +241,7 @@ export class NewsletterEngine {
   static async sendNewsletterToLead(
     config: NewsletterCampaignConfig,
     sub: SubscriberProfile
-  ): Promise<{ success: boolean; error?: string }> {
+  ): Promise<{ success: boolean; error?: string; provider?: string; providerMessageId?: string }> {
     if (!sub.email) return { success: false, error: "Missing email address" }
 
     try {
@@ -259,7 +259,7 @@ export class NewsletterEngine {
           region: sub.region || "ON",
           industry: sub.industry || "technology"
         })
-        return { success: res.success, error: res.error }
+        return { success: res.success, error: res.error, provider: res.provider, providerMessageId: res.providerMessageId }
       }
 
       if (config.campaignType === "match_update") {
@@ -273,7 +273,7 @@ export class NewsletterEngine {
             ? config.newProgramsList
             : ["Scale-Up Support Program", "Technology Growth Fund", "Provincial Job Grant"]
         })
-        return { success: res.success, error: res.error }
+        return { success: res.success, error: res.error, provider: res.provider, providerMessageId: res.providerMessageId }
       }
 
       if (config.campaignType === "missing_funding") {
@@ -287,7 +287,7 @@ export class NewsletterEngine {
           industry: sub.industry || "",
           businessStage: sub.businessStage || ""
         })
-        return { success: res.success, error: res.error }
+        return { success: res.success, error: res.error, provider: res.provider, providerMessageId: res.providerMessageId }
       }
     } catch (err) {
       console.error(`Error sending newsletter to ${sub.email}:`, err)
@@ -307,10 +307,10 @@ export class NewsletterEngine {
     const config: NewsletterCampaignConfig = {
       campaignId: `autopilot_campaign_${weekId}`,
       campaignType: "match_update",
-      newProgramsCount: activePrograms.length > 0 ? activePrograms.length : 3,
-      newProgramsList: newProgramsList.length > 0 ? newProgramsList : ["Scale-Up Support Program", "Technology Growth Fund", "Provincial Job Grant"],
-      missingFundingAmount: "$120,000",
-      status: "running",
+      newProgramsCount: activePrograms.length,
+      newProgramsList,
+      missingFundingAmount: "",
+      status: activePrograms.length > 0 ? "running" : "idle",
       startedAt: new Date().toISOString(),
       sentCount: 0
     };

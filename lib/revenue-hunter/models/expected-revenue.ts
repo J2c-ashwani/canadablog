@@ -21,7 +21,7 @@ export const PRODUCT_OFFERS: Record<ProductOfferTier, ProductOfferDefinition> = 
     priceUSD: 19,
     targetIntentLevel: 'LOW',
     idealCandidateProfile: 'Early-stage founders, pre-revenue SMEs seeking high-level grant discovery',
-    checkoutUrl: 'https://www.fsidigital.ca/checkout?product=report_19'
+    checkoutUrl: 'https://www.fsidigital.ca/products/funding-match-report'
   },
   TIER_ACTION_PLAN_49: {
     tier: 'TIER_ACTION_PLAN_49',
@@ -29,7 +29,7 @@ export const PRODUCT_OFFERS: Record<ProductOfferTier, ProductOfferDefinition> = 
     priceUSD: 49,
     targetIntentLevel: 'MEDIUM',
     idealCandidateProfile: 'Active SMEs planning Q3/Q4 grant applications needing step-by-step roadmaps',
-    checkoutUrl: 'https://www.fsidigital.ca/checkout?product=action_plan_49'
+    checkoutUrl: 'https://www.fsidigital.ca/products/action-plan'
   },
   TIER_BUNDLE_79: {
     tier: 'TIER_BUNDLE_79',
@@ -37,7 +37,7 @@ export const PRODUCT_OFFERS: Record<ProductOfferTier, ProductOfferDefinition> = 
     priceUSD: 79,
     targetIntentLevel: 'HIGH',
     idealCandidateProfile: 'High-growth companies aiming to stack federal, provincial, and tax credits (SR&ED + IRAP)',
-    checkoutUrl: 'https://www.fsidigital.ca/checkout?product=bundle_79'
+    checkoutUrl: 'https://www.fsidigital.ca/products/bundle'
   },
   TIER_STRATEGY_199: {
     tier: 'TIER_STRATEGY_199',
@@ -45,7 +45,7 @@ export const PRODUCT_OFFERS: Record<ProductOfferTier, ProductOfferDefinition> = 
     priceUSD: 199,
     targetIntentLevel: 'HIGH',
     idealCandidateProfile: 'Founders with $100K+ capital requirements seeking live expert alignment and review',
-    checkoutUrl: 'https://www.fsidigital.ca/checkout?product=strategy_session_199'
+    checkoutUrl: 'https://www.fsidigital.ca/audit'
   },
   TIER_FILING_2500: {
     tier: 'TIER_FILING_2500',
@@ -148,8 +148,8 @@ export class ExpectedRevenueModel {
       recommendedOffer = PRODUCT_OFFERS.TIER_ACTION_PLAN_49
       primaryIntentDriver = 'Recent Abandoned Checkout — High Willingness to Transact'
     } else if (isTechOrMfg && isLargeFunding && (readiness >= 65 || isMultiPersonTeam)) {
-      recommendedOffer = PRODUCT_OFFERS.TIER_FILING_2500
-      primaryIntentDriver = 'High-Value Innovation SME ($100K+ Target, Team > 10)'
+      recommendedOffer = PRODUCT_OFFERS.TIER_STRATEGY_199
+      primaryIntentDriver = 'High-Intent Innovation SME — $199 Funding Strategy Product'
     } else if (hasClickedLinks || readiness >= 60 || engagement >= 40) {
       recommendedOffer = PRODUCT_OFFERS.TIER_STRATEGY_199
       primaryIntentDriver = 'High Intent via Assessment / Multiple Link Clicks'

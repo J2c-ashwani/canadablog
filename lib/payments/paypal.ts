@@ -442,7 +442,10 @@ export async function verifyPayPalOrder(orderId: string, expectedAmount: string,
   }
 }
 
-export async function verifyPayPalSubscription(subscriptionId: string) {
+export async function verifyPayPalSubscription(
+  subscriptionId: string,
+  expectations?: { email?: string; planId?: string; requireActive?: boolean }
+) {
   const isProduction = process.env.NODE_ENV === 'production' || process.env.PAYPAL_ENV === 'live';
 
   if (!isProduction && (!subscriptionId || subscriptionId === 'N/A' || subscriptionId.startsWith('TEST-'))) {
@@ -480,10 +483,24 @@ export async function verifyPayPalSubscription(subscriptionId: string) {
     const subData = await res.json();
     const status = subData.status;
 
-    // A subscription is valid if status is ACTIVE or APPROVED or SUSPENDED
-    const isValid = ["ACTIVE", "APPROVED"].includes(status);
+    const allowedStatuses = expectations?.requireActive === false ? ["ACTIVE", "APPROVED"] : ["ACTIVE"];
+    const isValid = allowedStatuses.includes(status);
     if (!isValid) {
       return { verified: false, error: `Invalid subscription status: ${status}` };
+    }
+
+    const expectedPlanId = expectations?.planId || process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || '';
+    if (expectedPlanId && subData.plan_id !== expectedPlanId) {
+      return { verified: false, error: 'PayPal subscription plan does not match the $29 membership plan.' };
+    }
+
+    const expectedEmail = String(expectations?.email || '').toLowerCase().trim();
+    const providerEmail = String(subData.subscriber?.email_address || '').toLowerCase().trim();
+    if (expectedEmail && !providerEmail) {
+      return { verified: false, error: 'PayPal did not return a subscriber email for account binding.' };
+    }
+    if (expectedEmail && expectedEmail !== providerEmail) {
+      return { verified: false, error: 'PayPal subscriber email does not match the membership account.' };
     }
 
     return { verified: true, bypass: false, subscriptionData: subData };

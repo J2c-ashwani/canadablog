@@ -10,7 +10,9 @@ function escapeHtml(value: string) {
 }
 
 function wrapCartRecoveryTemplate(contentHtml: string, loginToken: string, firstName: string) {
-  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
+  const unsubscribeUrl = loginToken
+    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
+    : 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   return `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;">
@@ -75,10 +77,7 @@ export async function sendCartRecoveryEmail1({
       I noticed you started checking out for your <strong>${productName}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't finish.
     </p>
     <p style="margin: 0 0 16px 0;">
-      Our database matches your specific profile against qualified federal and provincial programs. To lock in your matches and compile your custom delivery dashboard, please complete your checkout.
-    </p>
-    <p style="margin: 0 0 20px 0;background-color:#f0fdf4;padding:12px;border-left:4px solid #10b981;border-radius:4px;font-size:14px;color:#15803d;">
-      <strong>100% Risk-Free Guarantee:</strong> If our system identifies fewer than 2 active funding opportunities for your business, we will refund your ${priceText} immediately.
+      The product compares your saved profile with programs in the current FSI database. If you still want the report, you can resume the checkout you started.
     </p>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
@@ -87,7 +86,7 @@ export async function sendCartRecoveryEmail1({
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nI noticed you started checking out for your ${productName} but didn't finish.\n\nTo finalize your analysis and compile your custom roadmap, please complete your checkout:\n${checkoutUrl}\n\n100% Risk-Free Guarantee: If our system identifies fewer than 2 active funding opportunities, we will refund your purchase immediately.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started checkout for the ${productName} but did not complete it. If you still want the self-serve report, resume here:\n${checkoutUrl}\n\nProgram status and full eligibility should always be confirmed with the official funding body.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `You were one step away from unlocking your matches`, html, text, tagType: 'cart-recovery-1', companyName: cleanCompany });
 }
@@ -115,10 +114,10 @@ export async function sendCartRecoveryEmail2({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      Your matched funding opportunities ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} are currently locked and waiting in checkout.
+      You started checkout for the ${productName} ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}, but no provider-verified purchase is recorded.
     </p>
     <p style="margin: 0 0 20px 0;">
-      Your report is delivered instantly. Don't let active government intakes and grant application deadlines pass you by. Resume your secure checkout to unlock access:
+      If you still want the self-serve report, resume the secure checkout below. No purchase is required to continue using the free site resources.
     </p>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
@@ -127,7 +126,7 @@ export async function sendCartRecoveryEmail2({
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYour matched funding opportunities are currently locked. Your report is delivered instantly. Don't let active government intakes pass you by.\n\nResume your secure checkout to unlock access:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started checkout for the ${productName}, but no provider-verified purchase is recorded. If you still want the self-serve report, resume here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `Your matches are still waiting`, html, text, tagType: 'cart-recovery-2', companyName: cleanCompany });
 }
@@ -155,7 +154,7 @@ export async function sendCartRecoveryEmail3({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      I am closing out pending reports this week and wanted to check if you still wanted to unlock your matched programs ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
+      This is the final automated reminder about the ${productName} checkout you started ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
     </p>
     <p style="margin: 0 0 20px 0;">
       If you are still actively looking for non-dilutive capital (grants, tax credits, and subsidies) to fund hiring, exporting, or product development, you can resume your checkout below:
@@ -167,7 +166,7 @@ export async function sendCartRecoveryEmail3({
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nI am closing out pending reports this week. If you are still looking for non-dilutive capital, you can resume checkout and access your dashboard here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nThis is the final automated reminder about the ${productName} checkout you started. You can resume here if you still want it:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `Still interested in funding opportunities?`, html, text, tagType: 'cart-recovery-3', companyName: cleanCompany });
 }

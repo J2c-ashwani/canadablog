@@ -11,6 +11,13 @@ export async function GET(request: NextRequest) {
     if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized reactivation cron execution." }, { status: 401 });
     }
+    if (process.env.GROWTH_OS_LEGACY_REACTIVATION_ENABLED !== 'true') {
+      return NextResponse.json({
+        success: true,
+        disabled: true,
+        reason: 'The legacy six-email reactivation sequence is disabled; controlled current-product distribution replaces it.',
+      });
+    }
 
     let limit = 10;
     try {

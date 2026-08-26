@@ -1,212 +1,131 @@
-import { type NextRequest, NextResponse } from "next/server";
-import { SubscriberRepository } from "@/lib/leads/SubscriberRepository";
+import { type NextRequest, NextResponse } from 'next/server';
+import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import {
   sendCalculatorRecoveryEmail1,
   sendCalculatorRecoveryEmail2,
   sendCalculatorRecoveryEmail3,
-  sendCalculatorRecoveryEmail4,
-  sendCustomerSuccessFollowup
-} from "@/lib/emails/calculator-recovery";
-import { generateFundingRecommendationPlatform } from "@/lib/products/report-generator";
-import { isValidCronRequest } from "@/lib/admin/auth";
+} from '@/lib/emails/calculator-recovery';
+import { generateFundingRecommendationPlatform } from '@/lib/products/report-generator';
+import { isValidCronRequest } from '@/lib/admin/auth';
+import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
+import { getAllPurchases } from '@/lib/products/purchase-store';
+import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
 
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 120;
+
+function parseActivity(value?: string) {
+  try { return JSON.parse(value || '{}'); } catch { return {}; }
+}
 
 export async function GET(request: NextRequest) {
+  if (!isValidCronRequest(request)) {
+    return NextResponse.json({ error: 'Unauthorized calculator recovery cron execution.' }, { status: 401 });
+  }
+
+  const force = request.nextUrl.searchParams.get('force') === 'true';
+  if (force && process.env.NODE_ENV === 'production') {
+    return NextResponse.json({ error: 'Forced calculator outreach is disabled in production.' }, { status: 403 });
+  }
+
+  const lease = await acquireOperationLease('calculator-recovery', 45 * 60 * 1000);
+  if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason });
+
   try {
-    const searchParams = request.nextUrl.searchParams;
-    const force = searchParams.get("force") === "true";
-
-    if (!isValidCronRequest(request)) {
-      return NextResponse.json({ error: "Unauthorized calculator recovery cron execution." }, { status: 401 });
-    }
-
-    const subscribers = await SubscriberRepository.getAllSubscribers();
+    const limit = Math.min(Math.max(Number(request.nextUrl.searchParams.get('limit') || 10), 1), 25);
+    const [subscribers, purchases] = await Promise.all([
+      SubscriberRepository.getAllSubscribers(true),
+      getAllPurchases(),
+    ]);
+    const paidEmails = new Set(purchases
+      .filter(isProviderVerifiedPurchase)
+      .map((purchase) => purchase.email.toLowerCase().trim()));
     const now = Date.now();
+    const outcomes: Array<{ email: string; stage: number; providerAccepted: boolean; providerMessageId?: string; error?: string }> = [];
 
-    let recovery1Count = 0;
-    let recovery2Count = 0;
-    let recovery3Count = 0;
-    let recovery4Count = 0;
-    let skippedCount = 0;
+    for (const subscriber of subscribers) {
+      if (outcomes.length >= limit) break;
+      const email = subscriber.email.toLowerCase().trim();
+      if (!subscriber.isSubscribed || !email.includes('@') || paidEmails.has(email)) continue;
 
-    const limitParam = searchParams.get("limit");
-    const BATCH_LIMIT = limitParam ? Math.min(parseInt(limitParam, 10), 50) : 10;
-    // Allow up to 90 days when forced, default to 30 days
-    const MAX_RECOVERY_AGE_MS = force ? 90 * 24 * 60 * 60 * 1000 : 30 * 24 * 60 * 60 * 1000;
+      const activity = parseActivity(subscriber.leadActivity);
+      if (activity.checkoutStartedAt) continue;
+      // Never substitute the generic lead timestamp. Recovery requires explicit calculator evidence.
+      const completedAt = activity.calculatorCompletedAt;
+      const completedMs = completedAt ? new Date(completedAt).getTime() : Number.NaN;
+      if (!Number.isFinite(completedMs)) continue;
+      const elapsedMs = now - completedMs;
+      if (elapsedMs < 0 || elapsedMs > 30 * 24 * 60 * 60 * 1000) continue;
 
-    for (const sub of subscribers) {
-      if (!sub.email || !sub.email.includes("@")) {
-        skippedCount++;
-        continue;
-      }
-      if (!sub.isSubscribed) {
-        skippedCount++;
-        continue;
-      }
-
-      // Check batch limit to prevent timeout
-      if ((recovery1Count + recovery2Count + recovery3Count + recovery4Count) >= BATCH_LIMIT) {
-        skippedCount++;
-        continue;
-      }
-
-      // Parse activity JSON safely
-      let activity: any = {};
-      try {
-        if (sub.leadActivity && sub.leadActivity !== "N/A" && sub.leadActivity !== "{}") {
-          activity = JSON.parse(sub.leadActivity);
-        }
-      } catch (e) {
-        // ignore
-      }
-
-      // Handle Customer Success Trigger for report buyers
-      if (sub.reportPurchased) {
-        const purchaseTimeStr = sub.assessmentPurchasedAt || activity.paymentCompletedAt || sub.timestamp;
-        if (purchaseTimeStr) {
-          const purchaseTimeMs = new Date(purchaseTimeStr).getTime();
-          if (!Number.isNaN(purchaseTimeMs)) {
-            const elapsedPurchaseMs = now - purchaseTimeMs;
-            if (elapsedPurchaseMs >= 7 * 24 * 60 * 60 * 1000 && !activity.successFollowupEmailSentAt) {
-              console.log(`⏱️ Triggering Customer Success Followup (7d) for: ${sub.email}`);
-              const res = await sendCustomerSuccessFollowup({
-                to: sub.email,
-                name: sub.name,
-                loginToken: sub.loginToken || ""
-              });
-              if (res.success) {
-                activity.successFollowupEmailSentAt = new Date().toISOString();
-                await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-                  leadActivity: JSON.stringify(activity)
-                });
-              }
-            }
-          }
-        }
-        skippedCount++;
-        continue;
-      }
-
-      // Skip if they started checkout (they are in the Cart Recovery sequence)
-      if (activity.checkoutStartedAt && !force) {
-        skippedCount++;
-        continue;
-      }
-
-      // Determine calculator completion timestamp
-      const compTimeStr = activity.calculatorCompletedAt || sub.timestamp;
-      if (!compTimeStr) {
-        skippedCount++;
-        continue;
-      }
-
-      const compTimeMs = new Date(compTimeStr).getTime();
-      if (Number.isNaN(compTimeMs)) {
-        skippedCount++;
-        continue;
-      }
-
-      const elapsedMs = now - compTimeMs;
-
-      // Skip very old leads unless forced
-      if (elapsedMs > MAX_RECOVERY_AGE_MS) {
-        skippedCount++;
-        continue;
-      }
-
-      let emailSent = false;
-
-      // Email #1 (4 hours = 14,400,000 ms or force)
-      if ((elapsedMs >= 4 * 60 * 60 * 1000 || force) && !activity.calcRecoveryEmail1SentAt) {
-        console.log(`⏱️ Triggering Calculator Recovery #1 for: ${sub.email}`);
-        
-        const res = await sendCalculatorRecoveryEmail1({
-          to: sub.email,
-          name: sub.name,
-          loginToken: sub.loginToken || ""
+      let stage = 0;
+      let result: Awaited<ReturnType<typeof sendCalculatorRecoveryEmail1>> | null = null;
+      if ((elapsedMs >= 72 * 60 * 60 * 1000 || force) && activity.calcRecoveryEmail2AcceptedAt && !activity.calcRecoveryEmail3AcceptedAt) {
+        stage = 3;
+        result = await sendCalculatorRecoveryEmail3({
+          to: email,
+          name: subscriber.name,
+          loginToken: subscriber.loginToken || '',
+          provinceCode: subscriber.region || 'on',
+          industryCode: subscriber.industry || 'technology',
+          revenueCode: subscriber.businessStage || 'pre-revenue',
+          goalCode: subscriber.fundingPurpose || 'hiring',
         });
-        if (res.success) {
-          activity.calcRecoveryEmail1SentAt = new Date().toISOString();
-          emailSent = true;
-          recovery1Count++;
-        }
-      }
-      // Email #2 (24 hours = 86,400,000 ms)
-      else if ((elapsedMs >= 24 * 60 * 60 * 1000 || force) && activity.calcRecoveryEmail1SentAt && !activity.calcRecoveryEmail2SentAt) {
-        console.log(`⏱️ Triggering Calculator Recovery #2 for: ${sub.email}`);
-        
-        const platformResult = generateFundingRecommendationPlatform({
-          province: sub.region || 'on',
-          industry: sub.industry || 'technology',
-          revenue: sub.businessStage || 'pre-revenue',
-          goal: sub.fundingPurpose || 'hiring'
+      } else if ((elapsedMs >= 24 * 60 * 60 * 1000 || force) && activity.calcRecoveryEmail1AcceptedAt && !activity.calcRecoveryEmail2AcceptedAt) {
+        stage = 2;
+        const recommendation = generateFundingRecommendationPlatform({
+          province: subscriber.region || 'on',
+          industry: subscriber.industry || 'technology',
+          revenue: subscriber.businessStage || 'pre-revenue',
+          goal: subscriber.fundingPurpose || 'hiring',
         });
-
-        const res = await sendCalculatorRecoveryEmail2({
-          to: sub.email,
-          name: sub.name,
-          loginToken: sub.loginToken || "",
-          province: platformResult.profile.provinceName,
-          industry: platformResult.profile.industryName,
-          revenue: platformResult.profile.revenueName,
-          goal: platformResult.profile.goalName,
-          estimatedMin: platformResult.executiveRecommendation.totalEstimatedFundingMin,
-          estimatedMax: platformResult.executiveRecommendation.totalEstimatedFundingMax
+        result = await sendCalculatorRecoveryEmail2({
+          to: email,
+          name: subscriber.name,
+          loginToken: subscriber.loginToken || '',
+          province: recommendation.profile.provinceName,
+          industry: recommendation.profile.industryName,
+          revenue: recommendation.profile.revenueName,
+          goal: recommendation.profile.goalName,
+          estimatedMin: recommendation.executiveRecommendation.totalEstimatedFundingMin,
+          estimatedMax: recommendation.executiveRecommendation.totalEstimatedFundingMax,
         });
-        if (res.success) {
-          activity.calcRecoveryEmail2SentAt = new Date().toISOString();
-          emailSent = true;
-          recovery2Count++;
-        }
-      }
-      // Email #3 (72 hours = 259,200,000 ms)
-      else if ((elapsedMs >= 72 * 60 * 60 * 1000 || force) && activity.calcRecoveryEmail2SentAt && !activity.calcRecoveryEmail3SentAt) {
-        console.log(`⏱️ Triggering Calculator Recovery #3 for: ${sub.email}`);
-        
-        const res = await sendCalculatorRecoveryEmail3({
-          to: sub.email,
-          name: sub.name,
-          loginToken: sub.loginToken || "",
-          provinceCode: sub.region || "on",
-          industryCode: sub.industry || "technology",
-          revenueCode: sub.businessStage || "pre-revenue",
-          goalCode: sub.fundingPurpose || "hiring"
+      } else if ((elapsedMs >= 4 * 60 * 60 * 1000 || force) && !activity.calcRecoveryEmail1AcceptedAt) {
+        stage = 1;
+        result = await sendCalculatorRecoveryEmail1({
+          to: email,
+          name: subscriber.name,
+          loginToken: subscriber.loginToken || '',
         });
-        if (res.success) {
-          activity.calcRecoveryEmail3SentAt = new Date().toISOString();
-          emailSent = true;
-          recovery3Count++;
-        }
       }
 
-      if (emailSent) {
-        await SubscriberRepository.updateSubscriberPreferences(sub.email, {
-          leadActivity: JSON.stringify(activity)
-        });
-      } else {
-        skippedCount++;
+      if (!stage || !result) continue;
+      if (!result.success || !result.providerMessageId) {
+        outcomes.push({ email, stage, providerAccepted: false, error: result.error || 'Provider message ID missing.' });
+        continue;
       }
+
+      activity[`calcRecoveryEmail${stage}AcceptedAt`] = new Date().toISOString();
+      activity[`calcRecoveryEmail${stage}Provider`] = result.provider;
+      activity[`calcRecoveryEmail${stage}ProviderMessageId`] = result.providerMessageId;
+      const saved = await SubscriberRepository.updateSubscriberPreferences(email, { leadActivity: JSON.stringify(activity) });
+      outcomes.push({
+        email,
+        stage,
+        providerAccepted: saved.success,
+        providerMessageId: result.providerMessageId,
+        error: saved.success ? undefined : 'Provider accepted, but CRM receipt persistence failed.',
+      });
     }
 
-    return NextResponse.json({
-      success: true,
-      processed: subscribers.length,
-      sent: {
-        calcRecovery1: recovery1Count,
-        calcRecovery2: recovery2Count,
-        calcRecovery3: recovery3Count,
-        calcRecovery4: recovery4Count
-      },
-      skipped: skippedCount
-    });
+    const failed = outcomes.filter((outcome) => !outcome.providerAccepted);
+    const summary = { candidatesSent: outcomes.length, providerAccepted: outcomes.length - failed.length, failed: failed.length, outcomes };
+    await finishOperationLease(lease, failed.length ? 'PARTIAL' : 'SUCCEEDED', summary);
+    return NextResponse.json({ success: failed.length === 0, ...summary }, { status: failed.length ? 502 : 200 });
   } catch (error: any) {
-    console.error("Calculator recovery cron execution error:", error);
-    return NextResponse.json({ error: error.message || "Internal server error" }, { status: 500 });
+    await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) });
+    return NextResponse.json({ success: false, error: error.message || 'Calculator recovery failed.' }, { status: 500 });
   }
 }
 
-export async function POST(request: NextRequest) {
-  return GET(request);
-}
+export async function POST(request: NextRequest) { return GET(request); }

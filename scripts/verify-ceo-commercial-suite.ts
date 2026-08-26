@@ -1,103 +1,56 @@
-/**
- * FSI Digital CEO OS Commercial Failure-Injection Test Suite (v2.1)
- * Validates 7 mandatory commercial failure scenarios.
- */
+import fs from 'node:fs';
+import path from 'node:path';
+import { CEOScoreboard } from '../lib/ceo-agent/ceo-scoreboard';
+import { isProviderVerifiedPurchase } from '../lib/growth-os/evidence-metrics';
+import { getB2BEmailContent } from '../lib/emails/b2b-outreach-templates';
+import { buildMemberProgramMatches } from '../lib/membership/member-matches';
 
-import { RevenueTools } from '../lib/ceo-agent/tools/revenue-tools'
-import { CEOScoreboard } from '../lib/ceo-agent/ceo-scoreboard'
-import { GrowthTools } from '../lib/ceo-agent/tools/growth-tools'
-import { CEOPolicies } from '../lib/ceo-agent/guards/ceo-policies'
-import { CEOAgent } from '../lib/ceo-agent/ceo-agent'
-
-async function runCommercialTestSuite() {
-  console.log('====================================================')
-  console.log('🧪 RUNNING FSI DIGITAL CEO OS COMMERCIAL TEST SUITE')
-  console.log('====================================================\n')
-
-  let passedTests = 0
-  const totalTests = 7
-
-  // Test 1: Reconciled Revenue Truth ($106 USD across 4 orders)
-  console.log('Test 1: Reconciled Revenue Truth')
-  const ledger = await RevenueTools.getRevenueLedger()
-  if (ledger.verifiedRevenueUSD === 106 && ledger.captureCount === 4 && ledger.excludedTestDataUSD > 0) {
-    console.log(`✅ PASS: Reconciled 4 verified orders ($106 USD total, $26.50 AOV). Excluded $${ledger.excludedTestDataUSD} USD test rows.`)
-    passedTests++
-  } else {
-    console.error(`❌ FAIL: Revenue reconciliation mismatch (Expected $106, got $${ledger.verifiedRevenueUSD}).`)
-  }
-
-  // Test 2: Unreconciled / Fake Intent Rejection
-  console.log('\nTest 2: Unreconciled / Fake Intent Rejection')
-  if (ledger.evidenceState === 'VERIFIED') {
-    console.log('✅ PASS: Only provider-captured PayPal orders ($106 USD) included in verified revenue.')
-    passedTests++
-  } else {
-    console.error('❌ FAIL: Evidence state is not VERIFIED.')
-  }
-
-  // Test 3: Funnel Bottleneck Diagnosis
-  console.log('\nTest 3: Funnel Bottleneck Diagnosis')
-  const leakage = CEOScoreboard.calculateLeakageReport(100, 2, 50, 0)
-  if (leakage.totalEstimatedLeakageUSD > 0 && leakage.items.some((i) => i.priority === 'P0' || i.priority === 'P1')) {
-    console.log(`✅ PASS: Correctly identified checkout-to-payment leak (Leakage: $${leakage.totalEstimatedLeakageUSD}/mo).`)
-    passedTests++
-  } else {
-    console.error('❌ FAIL: Failed to diagnose bottleneck in high checkout / low payment scenario.')
-  }
-
-  // Test 4: Growth OS Orphan Detection
-  console.log('\nTest 4: Growth OS Orphan Detection')
-  const growthAudit = await GrowthTools.getGrowthOSStatus()
-  const orphan = growthAudit.orphanedStagesDetected.find((o) => o.severity === 'P0')
-  if (orphan && orphan.stage.includes('Lead Queue')) {
-    console.log(`✅ PASS: P0 Orphan Alert triggered correctly for zero email dispatches (${orphan.issue}).`)
-    passedTests++
-  } else {
-    console.error('❌ FAIL: Failed to trigger P0 orphan alert on zero email dispatches.')
-  }
-
-  // Test 5: Fulfillment Failure Detection
-  console.log('\nTest 5: Fulfillment Failure Detection')
-  const leakRep = CEOScoreboard.calculateLeakageReport(14, 4, 103, 2)
-  const fulfillmentItem = leakRep.items.find((i) => i.stage.includes('Report Delivery'))
-  if (fulfillmentItem && fulfillmentItem.leakageMonthlyUSD > 0) {
-    console.log(`✅ PASS: Correctly detected undelivered report fulfillment leak ($${fulfillmentItem.leakageMonthlyUSD}/mo).`)
-    passedTests++
-  } else {
-    console.error('❌ FAIL: Failed to detect pending report delivery leak.')
-  }
-
-  // Test 6: Feature Distraction Rejection
-  console.log('\nTest 6: Feature Distraction Rejection')
-  const runResult = await CEOAgent.runCEOLoop('verification')
-  if (runResult.briefText.includes('❌ WHAT WE SHOULD NOT DO TODAY') && runResult.briefText.includes('Do NOT build new SEO pages')) {
-    console.log('✅ PASS: CEO Agent explicitly rejected low-priority feature building during conversion leak.')
-    passedTests++
-  } else {
-    console.error('❌ FAIL: CEO Agent failed to suppress feature distraction tasks.')
-  }
-
-  // Test 7: Target Feasibility Math
-  console.log('\nTest 7: Target Feasibility Math')
-  const mathPath = CEOScoreboard.calculatePathToTarget(106, 15000, 22)
-  if (mathPath.requiredDailyRevenueUSD > 0 && mathPath.requiredCheckouts > 0 && mathPath.requiredQualifiedLeads > 0) {
-    console.log(`✅ PASS: Mathematical acquisition equation accurately computed ($${mathPath.requiredDailyRevenueUSD}/day, ${mathPath.requiredCheckouts} checkouts needed).`)
-    passedTests++
-  } else {
-    console.error('❌ FAIL: Mathematical path calculation failed.')
-  }
-
-  console.log('\n====================================================')
-  console.log(`SUMMARY: ${passedTests}/${totalTests} COMMERCIAL TESTS PASSED`)
-  console.log('====================================================\n')
-
-  if (passedTests !== totalTests) {
-    process.exit(1)
-  }
+function assert(condition: unknown, message: string) {
+  if (!condition) throw new Error(message);
+  console.log(`PASS: ${message}`);
 }
 
-runCommercialTestSuite().catch((err) => {
-  console.error('Fatal error in Commercial Test Suite:', err)
-  process.exit(1)
-})
+async function run() {
+  console.log('GrowthOS commercial reliability suite');
+
+  const paypalPurchase: any = { paypalCaptureId: 'CAPTURE-REAL', paymentStatus: 'provider_capture_verified', status: 'completed' };
+  const stripePurchase: any = { paypalCaptureId: 'pi_real', paymentStatus: 'stripe_payment_verified', status: 'completed' };
+  const unverifiedPurchase: any = { paypalCaptureId: '', paymentStatus: 'completed', status: 'completed' };
+  assert(isProviderVerifiedPurchase(paypalPurchase), 'PayPal provider captures count as verified revenue');
+  assert(isProviderVerifiedPurchase(stripePurchase), 'Stripe provider captures count as verified revenue');
+  assert(!isProviderVerifiedPurchase(unverifiedPurchase), 'Rows without a provider capture ID never count as revenue');
+
+  const pathToTarget = CEOScoreboard.calculatePathToTarget(0, 10_000, 10);
+  assert(pathToTarget.targetUSD === 10_000 && pathToTarget.requiredDailyRevenueUSD === 1_000, '$10K monthly revenue target math is explicit');
+  assert(pathToTarget.requiredTransactions.filing2500Count === 0, 'The planning mix excludes unapproved $2,500 services');
+  assert(pathToTarget.assumptions.some((item) => item.includes('345 active $29 memberships')), 'True $10K MRR is distinguished from one-time revenue');
+
+  const leakage = CEOScoreboard.calculateLeakageReport(10, 1, 5, 2);
+  assert(leakage.items.some((item) => item.stage.includes('Provider Capture')), 'Checkout-to-capture leakage is detected');
+  assert(leakage.items.some((item) => item.stage.includes('Product Delivery')), 'Captured-but-undelivered purchases are P0 leakage');
+
+  const day1 = getB2BEmailContent('b2b_day1', 'Founder', 'Software', 'ON');
+  const day4 = getB2BEmailContent('b2b_day4', 'Founder', 'Software', 'ON');
+  const day7 = getB2BEmailContent('b2b_day7', 'Founder', 'Software', 'ON');
+  const sequence = `${day1.text} ${day4.text} ${day7.text}`.toLowerCase();
+  assert(sequence.includes('$19') && sequence.includes('$79') && sequence.includes('$29'), 'B2B distribution uses the current self-serve product ladder');
+  assert(!sequence.includes('schedule a call') && !sequence.includes('book a slot') && !sequence.includes('case study'), 'Automated outreach makes no live-call or unsupported case-study promise');
+
+  const matches = buildMemberProgramMatches({ country: 'Canada', region: 'ON', industry: 'technology', companySize: '1-9', fundingInterests: ['Grants'] }, 5);
+  assert(matches.every((match) => match.status === 'Open' || match.status === 'Upcoming'), 'Member radar excludes paused and closed database programs');
+
+  const root = process.cwd();
+  const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
+  const membershipCheckout = fs.readFileSync(path.join(root, 'components/membership/FoundingMemberCheckout.tsx'), 'utf8');
+  const authorityDiscovery = fs.readFileSync(path.join(root, 'lib/growth-os/authority/opportunity-discovery.ts'), 'utf8');
+  assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
+  assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
+  assert(!authorityDiscovery.includes('contact@${domain}') && !authorityDiscovery.includes('960fb097'), 'Authority discovery neither guesses recipients nor embeds credentials');
+
+  console.log('All GrowthOS commercial reliability checks passed.');
+}
+
+run().catch((error) => {
+  console.error(error);
+  process.exit(1);
+});

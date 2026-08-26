@@ -10,11 +10,10 @@ export default function MembershipOnboardingPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
 
-  const emailParam = searchParams.get('email') || '';
-  const subParam = searchParams.get('sub') || '';
+  const tokenParam = searchParams.get('token') || '';
 
   const [form, setForm] = useState({
-    email: emailParam,
+    email: '',
     name: '',
     companyName: '',
     province: 'ON',
@@ -31,10 +30,20 @@ export default function MembershipOnboardingPage() {
   const [error, setError] = useState('');
 
   useEffect(() => {
-    if (emailParam) {
-      setForm((prev) => ({ ...prev, email: emailParam }));
+    if (!tokenParam) {
+      setError('Your secure onboarding link is missing or invalid.');
+      return;
     }
-  }, [emailParam]);
+    fetch(`/api/auth/subscriber?token=${encodeURIComponent(tokenParam)}`)
+      .then(async (response) => {
+        const result = await response.json();
+        if (!response.ok || String(result.subscriber?.subscriptionStatus || '').toUpperCase() !== 'ACTIVE') {
+          throw new Error(result.error || 'An active membership could not be verified.');
+        }
+        setForm((previous) => ({ ...previous, email: result.subscriber.email || '' }));
+      })
+      .catch((authError) => setError(authError.message || 'Membership verification failed.'));
+  }, [tokenParam]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -50,7 +59,7 @@ export default function MembershipOnboardingPage() {
       const res = await fetch('/api/membership/onboarding', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...form, subscriptionId: subParam }),
+        body: JSON.stringify({ ...form, token: tokenParam }),
       });
 
       const json = await res.json();
@@ -62,7 +71,7 @@ export default function MembershipOnboardingPage() {
 
       setSubmitted(true);
       setTimeout(() => {
-        router.push(`/membership/dashboard?email=${encodeURIComponent(form.email)}`);
+        router.push(`/membership/dashboard?token=${encodeURIComponent(tokenParam)}`);
       }, 2000);
     } catch {
       setError('Connection error. Please try again.');
@@ -84,7 +93,7 @@ export default function MembershipOnboardingPage() {
             Set Up Your Custom Funding Radar Profile
           </h1>
           <p className="text-sm text-slate-400 max-w-lg mx-auto">
-            We use these 7 parameters to match your business against 1,200+ government grants and tax credits.
+            We use these 7 parameters to rank programs in the current FSI funding database for your profile.
           </p>
         </div>
 
@@ -93,7 +102,7 @@ export default function MembershipOnboardingPage() {
             <CheckCircle2 className="w-16 h-16 text-emerald-400 mx-auto animate-bounce" />
             <h2 className="text-2xl font-bold text-white">Onboarding Complete!</h2>
             <p className="text-sm text-slate-300">
-              Your first custom Funding Radar briefing has been dispatched to <strong>{form.email}</strong>.
+              Your welcome Funding Radar briefing was accepted by our email provider for <strong>{form.email}</strong>.
             </p>
             <p className="text-xs text-slate-500">Redirecting to your Member Dashboard...</p>
           </div>
@@ -112,6 +121,7 @@ export default function MembershipOnboardingPage() {
                   <input
                     type="email"
                     required
+                    disabled
                     value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full bg-slate-950 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:border-emerald-500 outline-none"

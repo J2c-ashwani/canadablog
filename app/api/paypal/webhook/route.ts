@@ -10,6 +10,12 @@ import {
   markProductPaymentIntentFulfilled,
   recordProductPaymentCapture,
 } from "@/lib/payments/product-payment-intents"
+import {
+  getMembershipSubscription,
+  recordMembershipPayment,
+  recordMembershipSubscription,
+  type MembershipSubscriptionStatus,
+} from '@/lib/membership/membership-store'
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -38,6 +44,92 @@ function shouldUpdateStage(currentStage: string | undefined, newStage: string): 
   return newIndex > currentIndex;
 }
 
+function parseActivity(value?: string) {
+  try { return JSON.parse(value || '{}') } catch { return {} }
+}
+
+async function handleMembershipWebhook(event: any): Promise<boolean> {
+  const eventType = String(event.event_type || '')
+  const resource = event.resource || {}
+  const statusByEvent: Record<string, MembershipSubscriptionStatus> = {
+    'BILLING.SUBSCRIPTION.ACTIVATED': 'ACTIVE',
+    'BILLING.SUBSCRIPTION.CANCELLED': 'CANCELLED',
+    'BILLING.SUBSCRIPTION.SUSPENDED': 'SUSPENDED',
+    'BILLING.SUBSCRIPTION.EXPIRED': 'EXPIRED',
+  }
+  if (statusByEvent[eventType]) {
+    const subscriptionId = String(resource.id || '')
+    const existing = await getMembershipSubscription(subscriptionId)
+    const email = String(resource.subscriber?.email_address || existing?.email || '').toLowerCase().trim()
+    const planId = String(resource.plan_id || existing?.planId || '')
+    const expectedPlanId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || ''
+    if (!subscriptionId || !email) throw new Error('Membership webhook is missing subscription identity.')
+    if (expectedPlanId && planId !== expectedPlanId) throw new Error('Membership webhook plan ID mismatch.')
+    const status = statusByEvent[eventType]
+    const occurredAt = String(event.create_time || new Date().toISOString())
+    await recordMembershipSubscription({
+      subscriptionId,
+      email,
+      planId,
+      status,
+      amountUSD: existing?.amountUSD || 29,
+      providerVerifiedAt: occurredAt,
+      lastPaymentId: existing?.lastPaymentId || '',
+      lastPaymentAt: existing?.lastPaymentAt || '',
+      cancelledAt: status === 'CANCELLED' ? occurredAt : existing?.cancelledAt || '',
+      evidenceSource: `paypal_signed_webhook:${eventType}`,
+    })
+    const subscriber = await SubscriberRepository.getSubscriberByEmail(email)
+    if (subscriber) {
+      const activity = parseActivity(subscriber.leadActivity)
+      activity.membershipStatus = status
+      activity.membershipWebhookVerifiedAt = occurredAt
+      const update = await SubscriberRepository.updateSubscriberPreferences(email, {
+        subscriptionStatus: status,
+        subscriptionId,
+        subscriptionCancelledAt: status === 'CANCELLED' ? occurredAt : subscriber.subscriptionCancelledAt,
+        leadActivity: JSON.stringify(activity),
+      })
+      if (!update.success) throw new Error('Membership webhook could not update the subscriber account.')
+    }
+    return true
+  }
+
+  if (eventType === 'PAYMENT.SALE.COMPLETED') {
+    const subscriptionId = String(resource.billing_agreement_id || '')
+    if (!subscriptionId) return false
+    const subscription = await getMembershipSubscription(subscriptionId)
+    if (!subscription) throw new Error(`Membership subscription ${subscriptionId} was not found.`)
+    const paymentId = String(resource.id || '')
+    const occurredAt = String(resource.create_time || event.create_time || new Date().toISOString())
+    const paymentAmount = Number(resource.amount?.total || 0)
+    const paymentCurrency = String(resource.amount?.currency || '').toUpperCase()
+    const paymentState = String(resource.state || '').toLowerCase()
+    if (!paymentId || paymentState !== 'completed' || paymentCurrency !== 'USD' || Math.abs(paymentAmount - subscription.amountUSD) > 0.01) {
+      throw new Error('Membership payment webhook terms do not match the verified subscription.')
+    }
+    await recordMembershipPayment({
+      paymentId,
+      subscriptionId,
+      email: subscription.email,
+      amount: String(resource.amount?.total || ''),
+      currency: String(resource.amount?.currency || 'USD'),
+      status: String(resource.state || 'completed'),
+      occurredAt,
+    })
+    await recordMembershipSubscription({
+      ...subscription,
+      status: 'ACTIVE',
+      providerVerifiedAt: occurredAt,
+      lastPaymentId: paymentId,
+      lastPaymentAt: occurredAt,
+      evidenceSource: `paypal_signed_webhook:${eventType}`,
+    })
+    return true
+  }
+  return false
+}
+
 async function verifyPayPalWebhookSignature(request: NextRequest, body: string): Promise<boolean> {
   const webhookId = process.env.PAYPAL_WEBHOOK_ID
   if (!webhookId) {
@@ -58,8 +150,9 @@ async function verifyPayPalWebhookSignature(request: NextRequest, body: string):
     },
     body: "grant_type=client_credentials",
   })
-  
-  const { access_token } = await authResponse.json()
+  const authPayload = await authResponse.json()
+  const access_token = authPayload.access_token
+  if (!authResponse.ok || !access_token) throw new Error('PayPal webhook authentication failed.')
   
   // Verify webhook signature
   const verifyResponse = await fetch(`${baseUrl}/v1/notifications/verify-webhook-signature`, {
@@ -80,6 +173,7 @@ async function verifyPayPalWebhookSignature(request: NextRequest, body: string):
   })
   
   const verifyResult = await verifyResponse.json()
+  if (!verifyResponse.ok) throw new Error('PayPal webhook signature verification request failed.')
   return verifyResult.verification_status === "SUCCESS"
 }
 
@@ -95,6 +189,10 @@ export async function POST(request: NextRequest) {
     
     const event = JSON.parse(bodyText)
     console.log(`[PayPal Webhook] Received event: ${event.event_type}`)
+
+    if (await handleMembershipWebhook(event)) {
+      return NextResponse.json({ received: true, membershipEvent: true })
+    }
     
     if (event.event_type === "CHECKOUT.ORDER.COMPLETED" || event.event_type === "PAYMENT.CAPTURE.COMPLETED") {
       const resource = event.resource

@@ -34,8 +34,6 @@ export interface MissingFundingAlertData {
   forceResend?: boolean;
 }
 
-const BRAND_SENDER = "FSI Digital Partners <partners@fsidigital.ca>";
-
 export const cleanField = (val?: string) => {
   if (!val) return "";
   const trimmed = val.trim();
@@ -53,7 +51,9 @@ export const cleanField = (val?: string) => {
 function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string, preheader?: string) {
   const pricing = getReactivationPriceForEmail(loginToken); // fallback if token used
   const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=newsletter_campaign`;
-  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
+  const unsubscribeUrl = loginToken
+    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
+    : 'https://www.fsidigital.ca/subscribe/unsubscribe';
   const year = new Date().getFullYear();
 
   return `
@@ -141,8 +141,7 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
     html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
     text,
     tagType: "newsletter-new-funding",
-    companyName: data.companyName,
-    from: BRAND_SENDER
+    companyName: data.companyName
   });
 }
 
@@ -162,11 +161,11 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
 
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
-      Since your last funding review, we have identified <strong>${data.newProgramsCount} additional funding programs</strong> that may be relevant to businesses like yours.
+      The current FSI database lists <strong>${data.newProgramsCount} open funding programs</strong> that may be relevant to businesses like yours.
     </p>
 
     <p style="margin: 16px 0;">
-      Some of the newly added opportunities include:
+      Programs currently marked open include:
     </p>
 
     <ul style="list-style-type: none; padding-left: 0; margin: 16px 0; font-size: 14px;">
@@ -174,7 +173,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     </ul>
 
     <p style="margin: 16px 0;">
-      We've refreshed your funding profile to reflect these additions. Log in to view your updated matches and see whether any of these opportunities could increase your potential funding options.
+      Log in to review your saved profile. Always confirm current intake and full eligibility with the official funding body before applying.
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
@@ -184,11 +183,11 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nSince your last funding review, we have identified ${data.newProgramsCount} additional funding programs that may be relevant to your business.\n\nSome of the newly added opportunities include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nWe've refreshed your funding profile to reflect these additions. Log in to view your updated matches here:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nThe current FSI database lists ${data.newProgramsCount} open funding programs that may be relevant to businesses like yours.\n\nPrograms currently marked open include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nReview your saved profile here: ${targetUrl}\n\nAlways confirm current intake and full eligibility with the official funding body before applying.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
   const cleanCompany = cleanField(data.companyName);
   const subject = cleanCompany
-    ? `New funding opportunities identified for ${cleanCompany}`
-    : `We reviewed your funding profile`;
+    ? `Current funding-program update for ${cleanCompany}`
+    : `Current funding-program update`;
 
   return sendEmail({
     to: data.to,
@@ -197,7 +196,6 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     text,
     tagType: "newsletter-match-update",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -382,7 +380,6 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     text,
     tagType: "newsletter-missing-funding",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -531,7 +528,6 @@ export async function sendReactivationReminderEmail(data: ReactivationEmailData)
     text: textCopy,
     tagType: "reactivation-reminder",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -616,7 +612,6 @@ export async function sendReactivationCaseStudyEmail(data: ReactivationEmailData
     text: textCopy,
     tagType: "reactivation-casestudy",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -690,7 +685,6 @@ export async function sendReactivationLastChanceEmail(data: ReactivationEmailDat
     text: textCopy,
     tagType: "reactivation-lastchance",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -761,7 +755,6 @@ export async function sendReactivationFinalCloseEmail(data: ReactivationEmailDat
     text: textCopy,
     tagType: "reactivation-finalclose",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -772,7 +765,9 @@ export async function sendReactivationFinalCloseEmail(data: ReactivationEmailDat
 export async function sendReactivationFounderEmail(data: ReactivationEmailData) {
   const firstName = getFirstName(data.name);
   const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=reactivation_founder`;
-  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
+  const unsubscribeUrl = data.loginToken
+    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(data.loginToken)}`
+    : 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   const { leadClass, companyName, industry, region, provinceName } = getLeadSegmentation(data);
 
@@ -843,7 +838,6 @@ export async function sendReactivationFounderEmail(data: ReactivationEmailData) 
     text,
     tagType: "reactivation-founder",
     companyName: data.companyName,
-    from: BRAND_SENDER,
     forceResend: data.forceResend
   });
 }
@@ -869,7 +863,7 @@ export async function sendNewsletterWelcomeEmail(to: string, name?: string, logi
     <ul style="padding-left: 20px; margin: 12px 0;">
       <li style="margin-bottom: 8px;">Run the <strong>Free Grant Eligibility Calculator</strong> to update your funding score</li>
       <li style="margin-bottom: 8px;">Explore active <strong>Funding Guides</strong> and compliance roadmaps</li>
-      <li style="margin-bottom: 8px;">Submit priority inquiries to our analyst team</li>
+      <li style="margin-bottom: 8px;">Review self-serve funding products and preparation resources</li>
     </ul>
   `;
   
@@ -882,7 +876,5 @@ export async function sendNewsletterWelcomeEmail(to: string, name?: string, logi
     html,
     text,
     tagType: 'newsletter-welcome',
-    from: BRAND_SENDER,
   });
 }
-

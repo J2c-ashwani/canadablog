@@ -41,7 +41,7 @@ export class OutreachGenerator {
 
 I was reviewing ${siteTitle} recently and noticed your excellent coverage of resources for founders and entrepreneurs.
 
-Given your focus on supporting growing companies, I wanted to share a comprehensive resource we've developed on Canadian funding programs: ${bestAsset}. It covers the latest federal and provincial grants, including specific eligibility criteria that your audience might find highly relevant. We regularly update this data to ensure accuracy and have seen it help many founders navigate the complex landscape of non-dilutive capital.
+Given your focus on supporting growing companies, I wanted to share a resource we've developed on Canadian funding programs: https://www.fsidigital.ca${bestAsset}. It summarizes federal and provincial programs and links readers to the underlying program information. Because program rules change, readers are asked to confirm current details with the official funding body.
 
 Would your team be open to reviewing this resource to see if it's a good fit to share with your community? I'd be happy to provide any additional data or context you might need or even put together a custom summary for your readers.
 

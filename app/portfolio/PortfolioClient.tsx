@@ -337,7 +337,7 @@ export default function PortfolioClient() {
             setProfile(loadedProfile)
             setHasProfile(true)
             setIsUnlocked(true)
-            setSubscriptionStatus(sub.subscriptionStatus || "inactive")
+            setSubscriptionStatus(String(sub.subscriptionStatus || "inactive").toLowerCase())
             setSubscriptionId(sub.subscriptionId || "")
             setTrialStartedAt(sub.trialStartedAt || "")
             setReportPurchased(!!sub.reportPurchased)
@@ -470,7 +470,8 @@ export default function PortfolioClient() {
           label: 'pay'
         },
         createSubscription: (data: any, actions: any) => {
-          const planId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || "P-4NW64491Y0450531PM2WUT7Y";
+          const planId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID;
+          if (!planId) throw new Error('PayPal membership plan is not configured.');
           return actions.subscription.create({
             plan_id: planId
           });

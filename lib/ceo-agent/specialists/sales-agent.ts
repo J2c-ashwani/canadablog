@@ -1,6 +1,7 @@
-import { SubscriberRepository, SubscriberProfile } from '@/lib/leads/SubscriberRepository'
+import { SubscriberRepository, type SubscriberProfile } from '@/lib/leads/SubscriberRepository'
+import { collectGrowthOSEvidence } from '@/lib/growth-os/evidence-metrics'
 import { ProspectIntelligenceEngine } from '@/lib/revenue-hunter/intelligence/prospect-graph'
-import { RevenueHunterEngine, RevenueHunterStatus } from '@/lib/revenue-hunter/hunter-engine'
+import { RevenueHunterEngine, type RevenueHunterStatus } from '@/lib/revenue-hunter/hunter-engine'
 
 export interface RankedLeadOpportunity {
   email: string
@@ -18,13 +19,16 @@ export interface RankedLeadOpportunity {
 
 export interface PipelineStageMetrics {
   totalIntakeLeads: number
+  consentedLeads: number
   newLeads24h: number
   unprogressedLeads: number
-  tier1HighTicketCount: number // $2,500+ candidates
-  tier2StrategyCount: number   // $199 candidates
-  tier3ReportCount: number     // $19/$49 candidates
+  membershipCandidatesCount: number
+  tier1HighTicketCount: number
+  tier2StrategyCount: number
+  tier3ReportCount: number
   totalPipelineExpectedValueUSD: number
   contactedCount: number
+  deliveredCount: number
   repliedCount: number
   callsBookedCount: number
   checkoutStartsCount: number
@@ -35,6 +39,7 @@ export interface PipelineStageMetrics {
 
 export interface SalesAgentAudit {
   leadIntakeCount: number
+  consentedLeadCount: number
   uncontactedHighIntentLeads: number
   checkoutAbandonmentRate: number
   pipeline: PipelineStageMetrics
@@ -43,94 +48,77 @@ export interface SalesAgentAudit {
   recommendation: string
 }
 
+function sourceOf(subscriber: SubscriberProfile) {
+  const source = `${subscriber.utmSource || ''} ${subscriber.referralSource || ''} ${subscriber.source || ''} ${subscriber.pagePath || ''}`.toLowerCase()
+  if (source.includes('google')) return 'Google organic/search'
+  if (source.includes('chatgpt') || source.includes('copilot')) return 'AI referral'
+  if (source.includes('calculator')) return 'Calculator'
+  if (source.includes('newsletter')) return 'Newsletter'
+  if (source.includes('gmail')) return 'Email return visit'
+  return 'Direct / unattributed'
+}
+
 export class SalesAgent {
   public static async auditSales(): Promise<SalesAgentAudit> {
-    const { rankedProspects, summary } = await ProspectIntelligenceEngine.buildCommercialGraph()
-    const hunterStatus = await RevenueHunterEngine.getHunterStatus()
-
-    let subscribers: SubscriberProfile[] = []
-    try {
-      subscribers = await SubscriberRepository.getAllSubscribers(true)
-    } catch (err) {
-      console.warn('[SalesAgent] Error fetching live subscribers:', err)
-    }
-
-    const totalIntakeLeads = Math.max(subscribers.length, 470)
-    const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000)
-    
-    let newLeads24h = 0
-    let tier1Count = summary.tierBreakdown.tierFiling2500Count
-    let tier2Count = summary.tierBreakdown.tierStrategy199Count
-    let tier3Count = summary.tierBreakdown.tierBundle79Count + summary.tierBreakdown.tierActionPlan49Count + summary.tierBreakdown.tierReport19Count
-    let unprogressedCount = 0
+    const [{ rankedProspects, summary }, hunterStatus, allSubscribers, consentedSubscribers, evidence] = await Promise.all([
+      ProspectIntelligenceEngine.buildCommercialGraph(),
+      RevenueHunterEngine.getHunterStatus(),
+      SubscriberRepository.getAllSubscribers(true),
+      SubscriberRepository.getAllSubscribers(false),
+      collectGrowthOSEvidence(),
+    ])
     const acquisitionSources: Record<string, number> = {}
-
-    for (const sub of subscribers) {
-      if (sub.timestamp && new Date(sub.timestamp) >= oneDayAgo) {
-        newLeads24h++
-      }
-
-      const rawSrc = (sub.utmSource || sub.source || sub.pagePath || '').toLowerCase()
-      const rawRef = (sub.referralSource || '').toLowerCase()
-      
-      let primaryAttribution = 'Direct / Organic Inferred'
-      if (rawSrc.includes('chatgpt') || rawSrc.includes('copilot') || rawRef.includes('google') || rawSrc.includes('google')) {
-        primaryAttribution = 'Verified AI / Search Referrals (ChatGPT, Copilot, Google)'
-      } else if (rawSrc.includes('calculator') || (sub.pagePath || '').includes('calculator')) {
-        primaryAttribution = 'Verified Interactive Calculator Intake'
-      } else if (rawSrc.includes('newsletter') || (sub.source || '').includes('Newsletter')) {
-        primaryAttribution = 'Verified Direct Newsletter Subscriptions'
-      }
-      acquisitionSources[primaryAttribution] = (acquisitionSources[primaryAttribution] || 0) + 1
-
-      if (!sub.reportPurchased && !sub.strategyReportPurchased) {
-        unprogressedCount++
-      }
-    }
-
-    const rankedLeads: RankedLeadOpportunity[] = rankedProspects.slice(0, 10).map(p => ({
-      email: p.leadEmail,
-      name: p.leadName,
-      company: p.companyName,
-      tier: p.recommendedOffer.tier === 'TIER_FILING_2500' ? 'TIER_1_FILING_2500' : (p.recommendedOffer.tier === 'TIER_STRATEGY_199' ? 'TIER_2_STRATEGY_199' : 'TIER_3_REPORT_49'),
-      estimatedDealValueUSD: p.recommendedOffer.priceUSD,
-      expectedValueUSD: p.expectedValueUSD,
-      industry: p.industry,
-      region: p.province,
-      readinessScore: Math.round(p.confidenceScore * 100),
-      source: p.primaryIntentDriver,
-      actionableReason: `${p.primaryIntentDriver} (P(Conv): ${(p.pOpen * p.pClick * p.pCheckout * p.pPayment * 100).toFixed(1)}%, EV: $${p.expectedValueUSD})`
+    allSubscribers.forEach((subscriber) => {
+      const source = sourceOf(subscriber)
+      acquisitionSources[source] = (acquisitionSources[source] || 0) + 1
+    })
+    const rankedLeads: RankedLeadOpportunity[] = rankedProspects.slice(0, 10).map((prospect) => ({
+      email: prospect.leadEmail,
+      name: prospect.leadName,
+      company: prospect.companyName,
+      tier: prospect.recommendedOffer.tier === 'TIER_STRATEGY_199' ? 'TIER_2_STRATEGY_199' : 'TIER_3_REPORT_49',
+      estimatedDealValueUSD: prospect.recommendedOffer.priceUSD,
+      expectedValueUSD: prospect.expectedValueUSD,
+      industry: prospect.industry,
+      region: prospect.province,
+      readinessScore: Math.round(prospect.confidenceScore * 100),
+      source: prospect.primaryIntentDriver,
+      actionableReason: `${prospect.primaryIntentDriver} (modelled EV: $${prospect.expectedValueUSD})`,
     }))
-
-    const checkoutStarts = 14
-    const completedPurchases = 4
-    const uncontacted = Math.max(unprogressedCount, totalIntakeLeads - completedPurchases)
-
+    const contacted = evidence.outreach.b2bProviderAccepted + evidence.outreach.authorityProviderAccepted
+    const completedPurchases = evidence.funnel.providerVerifiedPurchases30d
+    const checkoutStarts = evidence.funnel.checkoutStarts30d
+    const unprogressed = Math.max(0, consentedSubscribers.length - contacted - completedPurchases)
     const pipeline: PipelineStageMetrics = {
-      totalIntakeLeads,
-      newLeads24h,
-      unprogressedLeads: uncontacted,
-      tier1HighTicketCount: tier1Count,
-      tier2StrategyCount: tier2Count,
-      tier3ReportCount: tier3Count,
+      totalIntakeLeads: allSubscribers.length,
+      consentedLeads: consentedSubscribers.length,
+      newLeads24h: evidence.funnel.newLeads24h,
+      unprogressedLeads: unprogressed,
+      membershipCandidatesCount: consentedSubscribers.filter((subscriber) => String(subscriber.subscriptionStatus || '').toUpperCase() !== 'ACTIVE').length,
+      tier1HighTicketCount: 0,
+      tier2StrategyCount: summary.tierBreakdown.tierStrategy199Count,
+      tier3ReportCount: summary.tierBreakdown.tierBundle79Count + summary.tierBreakdown.tierActionPlan49Count + summary.tierBreakdown.tierReport19Count,
       totalPipelineExpectedValueUSD: summary.totalPipelineExpectedValueUSD,
-      contactedCount: 14,
-      repliedCount: 2,
-      callsBookedCount: 1,
+      contactedCount: contacted,
+      deliveredCount: evidence.outreach.emailDelivered,
+      repliedCount: evidence.outreach.authorityReplies,
+      callsBookedCount: 0,
       checkoutStartsCount: checkoutStarts,
       completedPurchasesCount: completedPurchases,
       topActionableLeads: rankedLeads,
-      acquisitionSources
+      acquisitionSources,
     }
-
     return {
-      leadIntakeCount: totalIntakeLeads,
-      uncontactedHighIntentLeads: uncontacted,
-      checkoutAbandonmentRate: Number(((checkoutStarts - completedPurchases) / checkoutStarts).toFixed(2)),
+      leadIntakeCount: allSubscribers.length,
+      consentedLeadCount: consentedSubscribers.length,
+      uncontactedHighIntentLeads: unprogressed,
+      checkoutAbandonmentRate: checkoutStarts > 0 ? Number(((checkoutStarts - completedPurchases) / checkoutStarts).toFixed(4)) : 0,
       pipeline,
       hunterStatus,
-      primaryBottleneck: `${uncontacted} qualified intake leads have zero proactive commercial progression.`,
-      recommendation: `Revenue Hunter deployed: Target $2,000 incremental milestone by optimizing EV-ranked outreach.`
+      primaryBottleneck: evidence.revenue.activeMemberships === 0
+        ? 'Zero provider-verified membership activations'
+        : `${unprogressed} consented leads have no verified commercial progression.`,
+      recommendation: 'Distribute the current $19/$29/$49/$79/$199 offers in controlled cohorts and scale only provider-verified winners.',
     }
   }
 }

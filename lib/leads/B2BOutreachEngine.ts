@@ -2,6 +2,8 @@ import { SubscriberRepository, type SubscriberProfile } from "./SubscriberReposi
 import { sendEmail } from "../emails/mailer";
 import { getB2BEmailContent, type B2BOutreachStage } from "../emails/b2b-outreach-templates";
 import { appendOutreachSentLeadToSheet } from "../google-sheets";
+import { getAllPurchases } from '@/lib/products/purchase-store';
+import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
 
 
 export interface B2BOutreachCandidate {
@@ -34,7 +36,7 @@ export class B2BOutreachEngine {
       // ignore
     }
 
-    if (activity.calcRecoveryEmail1SentAt) {
+    if (activity.calculatorCompletedAt) {
       behaviorScore += 30;
       signals.push('Used calculator (+30)');
     }
@@ -79,6 +81,7 @@ export class B2BOutreachEngine {
     sentCount: number;
     completedCount: number;
     errors: { email: string; stage: string; error: any }[];
+    receipts: Array<{ email: string; stage: string; provider: string; providerMessageId: string; acceptedAt: string }>;
     dryRun: boolean;
     skippedReason?: string;
   }> {
@@ -94,10 +97,15 @@ export class B2BOutreachEngine {
     if ((isWeekend || isOutsideHours) && !dryRun && !ignoreHours) {
       const reason = `Skipping campaign dispatch: Outside North American B2B business hours (EST Time: ${etDate.toLocaleTimeString()}). Pass ?force=true to override.`;
       console.log(`⏳ ${reason}`);
-      return { processed: 0, sentCount: 0, completedCount: 0, errors: [], dryRun, skippedReason: reason };
+      return { processed: 0, sentCount: 0, completedCount: 0, errors: [], receipts: [], dryRun, skippedReason: reason };
     }
 
     const allSubs = await SubscriberRepository.getAllSubscribers();
+    const verifiedBuyerEmails = new Set(
+      (await getAllPurchases())
+        .filter(isProviderVerifiedPurchase)
+        .map((purchase) => purchase.email.toLowerCase().trim())
+    );
     const now = new Date();
     const candidates: B2BOutreachCandidate[] = [];
     let completedCount = 0;
@@ -105,11 +113,11 @@ export class B2BOutreachEngine {
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
     for (const sub of allSubs) {
-      if (!sub.isSubscribed || !sub.email || sub.reportPurchased) continue;
+      if (!sub.isSubscribed || !sub.email || verifiedBuyerEmails.has(sub.email.toLowerCase().trim())) continue;
 
       // Calculate Priority Score
       const { score } = this.calculatePriorityScore(sub);
-      if (score < this.MINIMUM_PRIORITY_SCORE) continue;
+      if (score < this.AUTOPILOT_DIRECT_SEND_SCORE) continue;
 
       let activity: any = {};
       try {
@@ -121,7 +129,11 @@ export class B2BOutreachEngine {
       }
 
       const currentStage = activity.b2bOutreachStage || null;
-      const lastSentStr = activity.b2bOutreachSentAt;
+      const lastSentStr = activity.b2bOutreachAcceptedAt;
+
+      // Legacy stages without a provider receipt are not reliable enough to
+      // advance or restart automatically; leave them untouched for audit.
+      if (currentStage && !activity.b2bOutreachProviderMessageId) continue;
 
       if (currentStage === "completed") continue;
 
@@ -149,12 +161,13 @@ export class B2BOutreachEngine {
         } else if (currentStage === "b2b_day7" && elapsedDays >= 3) {
           // Complete campaign stage
           activity.b2bOutreachStage = "completed";
-          activity.b2bOutreachSentAt = now.toISOString();
+          activity.b2bOutreachAcceptedAt = now.toISOString();
           try {
             if (!dryRun) {
-              await SubscriberRepository.updateSubscriberPreferences(sub.email, {
+              const completionWrite = await SubscriberRepository.updateSubscriberPreferences(sub.email, {
                 leadActivity: JSON.stringify(activity)
               });
+              if (!completionWrite.success) throw completionWrite.error || new Error('Campaign completion state could not be persisted.');
               await sleep(800);
             }
             completedCount++;
@@ -172,6 +185,7 @@ export class B2BOutreachEngine {
     const batch = candidates.slice(0, limit);
     let sentCount = 0;
     const errors: { email: string; stage: string; error: any }[] = [];
+    const receipts: Array<{ email: string; stage: string; provider: string; providerMessageId: string; acceptedAt: string }> = [];
 
     console.log(`🚀 [B2B Outreach] Batching ${batch.length} of ${candidates.length} candidates (dryRun: ${dryRun})...`);
 
@@ -186,7 +200,9 @@ export class B2BOutreachEngine {
       try {
         const industry = lead.industry || 'N/A';
         const state = lead.region || 'ON';
-        const content = getB2BEmailContent(nextStage, lead.name || 'Founder', industry, state);
+        const content = getB2BEmailContent(nextStage, lead.name || 'Founder', industry, state, 'general', lead.unsubscribeToken);
+        let provider = 'dry-run';
+        let providerMessageId = '';
 
         if (dryRun) {
           success = true;
@@ -203,6 +219,12 @@ export class B2BOutreachEngine {
           });
           success = res.success;
           errorMsg = res.error;
+          provider = res.provider || '';
+          providerMessageId = res.providerMessageId || '';
+          if (success && !providerMessageId) {
+            success = false;
+            errorMsg = 'Provider accepted the request without returning a durable message ID.';
+          }
         }
 
         if (success) {
@@ -214,36 +236,46 @@ export class B2BOutreachEngine {
           } catch (e) {}
 
           activity.b2bOutreachStage = nextStage;
-          activity.b2bOutreachSentAt = now.toISOString();
+          activity.b2bOutreachAcceptedAt = now.toISOString();
+          activity.b2bOutreachProvider = provider;
+          activity.b2bOutreachProviderMessageId = providerMessageId;
 
           if (!dryRun) {
-            await SubscriberRepository.updateSubscriberPreferences(email, {
+            const subscriberWrite = await SubscriberRepository.updateSubscriberPreferences(email, {
               leadActivity: JSON.stringify(activity)
             });
+            if (!subscriberWrite.success) throw new Error('Provider accepted the email, but the CRM stage could not be persisted.');
 
             // Auto-append sent lead directly to "Outreach Sent Leads" tab in Google Sheets
             try {
-              await appendOutreachSentLeadToSheet({
+              const outreachWrite = await appendOutreachSentLeadToSheet({
                 timestamp: now.toISOString(),
                 companyName: lead.companyName || lead.name || "N/A",
                 domain: lead.website || "N/A",
                 email: email,
                 decisionMaker: lead.name || "Founder",
                 intentScore: cand.priorityScore,
-                fundingConfidencePct: 100,
+                fundingConfidencePct: cand.priorityScore,
                 outreachStage: nextStage,
                 subject: content.subject,
                 recommendedGuides: "SR&ED / IRAP Playbook",
-                status: "SENT (24x7 VERCEL AUTOPILOT)"
+                status: "PROVIDER_ACCEPTED",
+                provider,
+                providerMessageId,
+                providerAcceptance: "accepted",
               });
+              if (!outreachWrite.success) throw outreachWrite.error || new Error('Outreach receipt write failed.');
             } catch (sheetErr: any) {
-              console.warn("⚠️ Failed to append lead to Outreach Sent Leads tab:", sheetErr?.message || sheetErr);
+              throw new Error(`Provider accepted the email, but the outreach receipt could not be persisted: ${sheetErr?.message || sheetErr}`);
             }
 
             await sleep(800); // respects sheets API throttling
           }
           sentCount++;
-          console.log(`✉️ B2B Outreach: Sent ${nextStage} to ${email}`);
+          if (!dryRun) receipts.push({ email, stage: nextStage, provider, providerMessageId, acceptedAt: now.toISOString() });
+          console.log(`✉️ B2B Outreach: Provider accepted ${nextStage} for ${email}`);
+        } else if (!dryRun) {
+          errors.push({ email, stage: nextStage, error: errorMsg || 'Email provider rejected the message.' });
         }
 
       } catch (err: any) {
@@ -252,7 +284,7 @@ export class B2BOutreachEngine {
       }
     }
 
-    return { processed: batch.length, sentCount, completedCount, errors, dryRun };
+    return { processed: batch.length, sentCount, completedCount, errors, receipts, dryRun };
   }
 
   private static getNextStage(stage: string): string {

@@ -220,7 +220,7 @@ export async function recordPurchase(data: {
   return record;
 }
 
-export async function getAllPurchases(): Promise<PurchaseRecord[]> {
+export async function getAllPurchases(options?: { strict?: boolean }): Promise<PurchaseRecord[]> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
@@ -245,6 +245,7 @@ export async function getAllPurchases(): Promise<PurchaseRecord[]> {
     return results;
   } catch (error) {
     console.error('❌ Error reading all purchases:', error);
+    if (options?.strict) throw error;
     return [];
   }
 }
@@ -271,6 +272,35 @@ export async function updatePurchaseDeliveryStatus(
     valueInputOption: 'RAW',
     requestBody: { values: [[deliveryStatus, providerMessageId]] },
   });
+}
+
+export async function updatePurchaseDeliveryFromProviderEvent(
+  providerMessageId: string,
+  eventType: string
+) {
+  if (!providerMessageId) return { updated: false };
+  const sheets = await getGoogleSheetsClient();
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
+  await ensurePurchaseSheet(sheets, spreadsheetId);
+  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:Y` });
+  const rows = response.data.values || [];
+  const index = rows.findIndex((row) => row[24] === providerMessageId);
+  if (index < 0) return { updated: false };
+  const statusByEvent: Record<string, string> = {
+    'email.delivered': 'delivered',
+    'email.bounced': 'bounced',
+    'email.complained': 'complained',
+  };
+  const status = statusByEvent[eventType];
+  if (!status) return { updated: false };
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!X${index + 2}`,
+    valueInputOption: 'RAW',
+    requestBody: { values: [[status]] },
+  });
+  return { updated: true };
 }
 
 export async function getPurchaseByToken(token: string): Promise<PurchaseRecord | null> {

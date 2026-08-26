@@ -98,7 +98,7 @@ export class RevenueHunterEngine {
           companyName: prospect.companyName
         })
 
-        if (sendResult.success) {
+        if (sendResult.success && sendResult.providerMessageId) {
           dispatchedCount++
           
           // Record to CEO Action Ledger
@@ -110,12 +110,12 @@ export class RevenueHunterEngine {
             tier: prospect.recommendedOffer.tier === 'TIER_FILING_2500' ? 'TIER_1_FILING_2500' : (prospect.recommendedOffer.tier === 'TIER_STRATEGY_199' ? 'TIER_2_STRATEGY_199' : 'TIER_3_REPORT_49'),
             offer: `${message.offerTier} ($${message.priceUSD} USD)`,
             decisionReason: `High $EV candidate ($${prospect.expectedValueUSD} EV, Rank: ${prospect.priorityRankScore})`,
-            executionStatus: 'EXECUTED_DELIVERED',
+            executionStatus: 'PROVIDER_ACCEPTED',
             provider: sendResult.provider || 'Brevo/Resend',
-            providerMessageId: sendResult.providerMessageId || `msg_${Date.now()}`,
+            providerMessageId: sendResult.providerMessageId,
             funnelState: {
               sent: true,
-              delivered: true,
+              delivered: false,
               opened: false,
               clicked: false,
               replied: false,
@@ -144,8 +144,8 @@ export class RevenueHunterEngine {
             leadEmail: prospect.leadEmail,
             offer: prospect.recommendedOffer.name,
             expectedValueUSD: prospect.expectedValueUSD,
-            status: 'DELIVERED',
-            providerMessageId: sendResult.providerMessageId || `msg_${Date.now()}`
+            status: 'PROVIDER_ACCEPTED',
+            providerMessageId: sendResult.providerMessageId
           })
         } else {
           errors.push(`Failed to send to ${prospect.leadEmail}: ${sendResult.error}`)

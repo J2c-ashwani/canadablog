@@ -2,9 +2,9 @@
 
 CREATE TABLE IF NOT EXISTS ceo_goal_state (
   id VARCHAR(50) PRIMARY KEY DEFAULT 'current',
-  monthly_revenue_target_usd NUMERIC(12,2) NOT NULL DEFAULT 15000.00,
-  recurring_mrr_target_usd NUMERIC(12,2) NOT NULL DEFAULT 0.00,
-  daily_target_pace_usd NUMERIC(12,2) NOT NULL DEFAULT 500.00,
+  monthly_revenue_target_usd NUMERIC(12,2) NOT NULL DEFAULT 10000.00,
+  recurring_mrr_target_usd NUMERIC(12,2) NOT NULL DEFAULT 10000.00,
+  daily_target_pace_usd NUMERIC(12,2) NOT NULL DEFAULT 333.33,
   current_mtd_verified_revenue_usd NUMERIC(12,2) NOT NULL DEFAULT 0.00,
   current_mtd_mrr_usd NUMERIC(12,2) NOT NULL DEFAULT 0.00,
   revenue_recovered_by_ceo_usd NUMERIC(12,2) NOT NULL DEFAULT 0.00,

@@ -9,7 +9,7 @@ export class StrategicIntelligenceEngine {
   private static activeGoal: GrowthGoal = {
     id: "goal_2026_q3",
     period: "2026-Q3",
-    revenueTargetUSD: 15000,
+    revenueTargetUSD: 10000,
     priorityMarkets: ["Canada", "USA"],
     priorityProducts: ["$19 Match Report", "$49 Action Plan", "$79 Funding Bundle", "$29 Watch", "$199 Dossier"],
     constraints: {

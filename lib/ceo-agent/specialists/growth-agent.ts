@@ -5,20 +5,19 @@ export interface GrowthAgentAudit {
   orphanedStagesCount: number
   criticalOrphanAlert: string | null
   recommendation: string
+  evidenceState: 'VERIFIED' | 'PARTIAL' | 'UNKNOWN'
 }
 
 export class GrowthAgent {
   public static async auditGrowthOS(): Promise<GrowthAgentAudit> {
     const status = await GrowthTools.getGrowthOSStatus()
-    const orphan = status.orphanedStagesDetected.find((o) => o.severity === 'P0')
-
+    const critical = status.orphanedStagesDetected.find((orphan) => orphan.severity === 'P0')
     return {
-      pipelineStatus: orphan ? '🔴 ORPHANED STAGE DETECTED' : '🟢 HEALTHY',
+      pipelineStatus: critical ? '🔴 CRITICAL EVIDENCE-BACKED FAILURE' : status.orphanedStagesDetected.length > 0 ? '🟡 DEGRADED' : '🟢 HEALTHY',
       orphanedStagesCount: status.orphanedStagesDetected.length,
-      criticalOrphanAlert: orphan ? orphan.issue : null,
-      recommendation: orphan
-        ? 'P0: DO NOT BUILD NEW SCRAPERS. Repair EmailAdapter dispatch queue immediately.'
-        : 'Maintain SERPER distribution and monitor outreach queues.'
+      criticalOrphanAlert: critical?.issue || null,
+      recommendation: critical?.impact || 'Continue controlled distribution and monitor provider-verified conversion evidence.',
+      evidenceState: status.evidenceState,
     }
   }
 }

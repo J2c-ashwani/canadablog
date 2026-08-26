@@ -33,20 +33,21 @@ export interface ProviderConfig {
 }
 
 export class ProviderRouter {
+  private static readonly geminiModel = process.env.GEMINI_MODEL || "gemini-3.6-flash"
   // Configurable Fallback Priority Order
   private static priorityChain: ProviderName[] = ["Gemini", "Claude", "OpenAI"]
 
   // Capability Configuration Map
   private static capabilityMap: Map<CapabilityType, ProviderConfig> = new Map([
-    ["Research", { providerName: "Gemini", modelName: "gemini-2.0-flash-exp", active: true, isHealthy: true }],
-    ["Quality", { providerName: "Gemini", modelName: "gemini-2.0-flash-exp", active: true, isHealthy: true }],
-    ["Writing", { providerName: "Gemini", modelName: "gemini-2.0-flash-exp", active: true, isHealthy: true }],
-    ["Reasoning", { providerName: "Gemini", modelName: "gemini-2.0-flash-exp", active: true, isHealthy: true }],
+    ["Research", { providerName: "Gemini", modelName: ProviderRouter.geminiModel, active: true, isHealthy: true }],
+    ["Quality", { providerName: "Gemini", modelName: ProviderRouter.geminiModel, active: true, isHealthy: true }],
+    ["Writing", { providerName: "Gemini", modelName: ProviderRouter.geminiModel, active: true, isHealthy: true }],
+    ["Reasoning", { providerName: "Gemini", modelName: ProviderRouter.geminiModel, active: true, isHealthy: true }],
   ])
 
   // Runtime Health & Circuit Breaker Tracking
   private static healthRegistry: Map<ProviderName, ProviderStatus> = new Map([
-    ["Gemini", { providerName: "Gemini", modelName: "gemini-2.0-flash-exp", isConfigured: true, isHealthy: true, failureCount: 0, averageLatencyMs: 250 }],
+    ["Gemini", { providerName: "Gemini", modelName: ProviderRouter.geminiModel, isConfigured: false, isHealthy: false, failureCount: 0, averageLatencyMs: 0 }],
     ["Claude", { providerName: "Claude", modelName: "claude-3-5-sonnet", isConfigured: false, isHealthy: false, failureCount: 0, averageLatencyMs: 400 }],
     ["OpenAI", { providerName: "OpenAI", modelName: "gpt-4o", isConfigured: false, isHealthy: false, failureCount: 0, averageLatencyMs: 350 }],
   ])
@@ -150,7 +151,7 @@ export class ProviderRouter {
         console.log(`[ProviderRouter] Fallback chain resolved to healthy provider: '${candidate}' for '${capability}'.`)
         return {
           providerName: candidate,
-          modelName: candidate === "Claude" ? "claude-3-5-sonnet" : candidate === "OpenAI" ? "gpt-4o" : "gemini-2.0-flash-exp",
+          modelName: candidate === "Claude" ? "claude-3-5-sonnet" : candidate === "OpenAI" ? "gpt-4o" : this.geminiModel,
           active: true,
           isHealthy: true,
         }
@@ -160,7 +161,7 @@ export class ProviderRouter {
     // Default Fallback
     return {
       providerName: "Gemini",
-      modelName: "gemini-2.0-flash-exp",
+      modelName: this.geminiModel,
       active: true,
       isHealthy: this.isProviderConfigured("Gemini"),
     }
@@ -177,7 +178,7 @@ export class ProviderRouter {
   public static updateRouting(capability: CapabilityType, config: Partial<ProviderConfig>): void {
     const existing = this.capabilityMap.get(capability) || {
       providerName: "Gemini",
-      modelName: "gemini-2.0-flash-exp",
+      modelName: this.geminiModel,
       active: true,
       isHealthy: true,
     }

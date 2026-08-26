@@ -29,15 +29,15 @@ export default function MembershipPage() {
             <span className="bg-gradient-to-r from-emerald-400 via-teal-300 to-indigo-400 bg-clip-text text-transparent">For Your Business This Week.</span>
           </h1>
           <p className="text-sm sm:text-base text-slate-400 max-w-xl mx-auto leading-relaxed">
-            Intake windows open and close in days. We monitor 1,200+ active federal &amp; regional programs against your B2B profile and dispatch weekly intelligence briefings.
+            Funding rules and intake windows change. Funding Watch compares your profile with our government-funding database and sends an automated weekly email radar.
           </p>
           <div className="pt-4 max-w-md mx-auto">
             <FoundingMemberCheckout />
           </div>
           <div className="flex items-center justify-center gap-6 text-[11px] text-slate-500 pt-3 font-medium">
             <span className="flex items-center gap-1.5"><ShieldCheck className="w-3.5 h-3.5 text-emerald-500" /> Cancel Anytime</span>
-            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-emerald-500" /> Real-time Alerts</span>
-            <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-emerald-500" /> Analyst Consultation Included</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-emerald-500" /> Weekly Email Radar</span>
+            <span className="flex items-center gap-1.5"><Users className="w-3.5 h-3.5 text-emerald-500" /> Fully Self-Serve</span>
           </div>
         </div>
       </section>
@@ -55,19 +55,19 @@ export default function MembershipPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
-                title: 'Real-Time Intake Alerts',
-                desc: 'Get notified via SMS and email the hour a matching program opens. Never miss a window or hit a capping limit.',
-                details: 'Covers FedDev, IRAP, SR&ED, CAP, and provincial credits.',
+                title: 'Automated Weekly Radar',
+                desc: 'Receive a weekly email summary based on your saved region, industry, company stage, and funding objective.',
+                details: 'Designed for consistent self-serve funding monitoring.',
               },
               {
-                title: 'Priority Analyst Support',
-                desc: 'Have a quick question about an application requirement? Email our analyst team and receive a response within 12 hours.',
-                details: 'Includes document pre-checks and stacking validations.',
+                title: 'Deadline Change Alerts',
+                desc: 'When a tracked matching program changes in our database, the alert system highlights the change and next step.',
+                details: 'Email alerts only; no live calls or manual analyst review.',
               },
               {
-                title: 'Unlimited Report Re-runs',
-                desc: 'As your business hires staff, launches new R&D, or grows revenue, re-evaluate your matches with updated numbers.',
-                details: 'Generate unlimited fresh report and action plan copies.',
+                title: 'Self-Serve Member Library',
+                desc: 'Use the member dashboard to review your profile, funding matches, briefing history, and preparation templates.',
+                details: 'Available while the PayPal subscription remains active.',
               },
             ].map((b, idx) => (
               <div key={idx} className="bg-slate-900 border border-slate-800 rounded-xl p-5 hover:border-slate-700 transition-colors space-y-3">
@@ -108,15 +108,15 @@ export default function MembershipPage() {
               <ul className="space-y-2.5 text-xs text-slate-300 border-t border-slate-800 pt-4 font-semibold">
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Real-time SMS &amp; email intake alerts</span>
+                  <span>Automated weekly email funding radar</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Priority analyst support (12hr response)</span>
+                  <span>Matching program-change and deadline alerts</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>Unlimited Match Report re-runs</span>
+                  <span>Self-serve member dashboard</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-500 shrink-0" />
@@ -124,13 +124,13 @@ export default function MembershipPage() {
                 </li>
                 <li className="flex items-center gap-2">
                   <Check className="w-4 h-4 text-emerald-500 shrink-0" />
-                  <span>10% discount on 1-on-1 Strategy Audits</span>
+                  <span>Cancel anytime through PayPal-backed billing</span>
                 </li>
               </ul>
 
               <div className="pt-4 text-center">
                 <p className="text-xs text-slate-400 font-bold bg-slate-900 border border-slate-800 rounded-lg p-3">
-                  Founding tier waitlist is active. Enter your email above to lock in founding rates.
+                  The founding tier is available through the secure PayPal subscription checkout above.
                 </p>
               </div>
             </div>
@@ -146,15 +146,15 @@ export default function MembershipPage() {
             {[
               {
                 q: 'How does the monitoring alert system work?',
-                a: 'Our analysts track updates from the Canadian government, regional agencies, and municipal chambers weekly. When a program opens that matches your region, industry, and size, our system parses your profile and alerts you instantly.',
+                a: 'The automated system compares your saved profile with the funding-program database each week and emails relevant matches and recorded changes. Always confirm final eligibility on the official program page.',
               },
               {
                 q: 'Can I cancel my membership at any time?',
                 a: 'Yes. You can cancel or pause your subscription in one click from your dashboard, or by emailing hello@fsidigital.ca. There are no contract terms, setup fees, or cancellation penalties.',
               },
               {
-                q: 'What is the priority analyst support?',
-                a: 'As a member, you get direct access to our analyst desk. You can submit questions about program requirements, have us check draft project descriptions, or ask about double-dipping rules. We respond within 12 business hours.',
+                q: 'Does the membership include calls or analyst review?',
+                a: 'No. The $29 plan is a fully self-serve automated product. It includes the weekly radar, matching alerts, dashboard, and template library, but no calls, live sessions, or manual application review.',
               },
             ].map((faq, idx) => (
               <div key={idx} className="bg-slate-900 border border-slate-800 rounded-xl p-5">

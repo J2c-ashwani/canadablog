@@ -42,7 +42,7 @@ Respond ONLY in valid JSON format with keys:
 
     try {
       if (process.env.GOOGLE_GEMINI_API_KEY) {
-        const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
+        const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || "gemini-3.6-flash" })
         const result = await model.generateContent(prompt)
         const response = await result.response
         const rawText = response.text().replace(/```json/g, "").replace(/```/g, "").trim()

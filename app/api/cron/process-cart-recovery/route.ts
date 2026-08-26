@@ -1,14 +1,11 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getLeadsFromSheet, updateLeadInSheet } from "@/lib/google-sheets"
-import {
-  sendCartRecoveryEmail1,
-  sendCartRecoveryEmail2,
-  sendCartRecoveryEmail3,
-} from "@/lib/emails/cart-recovery"
 import { isValidCronRequest } from "@/lib/admin/auth"
+import { CartRecoveryService } from '@/lib/leads/cart-recovery-service'
+import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store'
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
+export const maxDuration = 60
 
 export async function GET(request: NextRequest) {
   try {
@@ -18,16 +15,16 @@ export async function GET(request: NextRequest) {
 
     const searchParams = request.nextUrl.searchParams
     const force = searchParams.get("force") === "true"
-
-    // Asynchronous non-blocking background processing to prevent cron-job.org 30s timeout
-    const { CartRecoveryService } = await import("@/lib/leads/cart-recovery-service")
-    CartRecoveryService.processCartRecoveryBatch(5, force).catch((err) => console.error("Async cart recovery background error:", err))
-
-    return NextResponse.json({
-      success: true,
-      message: "Cart recovery processing initiated asynchronously via CartRecoveryService.",
-      mode: force ? "lifetime_force" : "standard",
-      timestamp: new Date().toISOString()
+    if (force && process.env.NODE_ENV === 'production') {
+      return NextResponse.json({ success: false, error: 'Force mode is disabled in production.' }, { status: 400 })
+    }
+    const lease = await acquireOperationLease('cart-recovery', 10 * 60 * 1000)
+    if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason })
+    const result = await CartRecoveryService.processCartRecoveryBatch(5, force)
+    const status = result.errors.length > 0 ? 'PARTIAL' : 'SUCCEEDED'
+    await finishOperationLease(lease, status, result)
+    return NextResponse.json({ success: result.errors.length === 0, mode: force ? 'manual_force' : 'standard', result }, {
+      status: result.errors.length > 0 ? 502 : 200,
     })
   } catch (error: any) {
     console.error("Cart recovery cron execution error:", error)

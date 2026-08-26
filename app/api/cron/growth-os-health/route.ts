@@ -1,207 +1,68 @@
-import { type NextRequest, NextResponse } from "next/server"
-import { isValidCronRequest } from "@/lib/admin/auth"
-import { GrowthOSKernel } from "@/lib/growth-os/core/growth-kernel"
-import { getAllPurchases } from "@/lib/products/purchase-store"
-import { sendEmail } from "@/lib/emails/mailer"
+import { type NextRequest, NextResponse } from 'next/server'
+import { isValidCronRequest } from '@/lib/admin/auth'
+import { collectGrowthOSEvidence } from '@/lib/growth-os/evidence-metrics'
+import { GrowthTools } from '@/lib/ceo-agent/tools/growth-tools'
+import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store'
+import { sendEmail } from '@/lib/emails/mailer'
 
-export const runtime = "nodejs"
-export const dynamic = "force-dynamic"
+export const runtime = 'nodejs'
+export const dynamic = 'force-dynamic'
+export const maxDuration = 120
+
+function escapeHtml(value: unknown) {
+  return String(value ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+}
 
 export async function GET(request: NextRequest) {
+  if (!isValidCronRequest(request)) {
+    return NextResponse.json({ error: 'Unauthorized Growth OS health execution.' }, { status: 401 })
+  }
+  const lease = await acquireOperationLease('growth-os-health', 30 * 60 * 1000)
+  if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason })
+
   try {
-    if (!isValidCronRequest(request)) {
-      return NextResponse.json(
-        { error: "Unauthorized Growth OS Health Cron execution. Access denied." },
-        { status: 401 }
-      )
-    }
-
-    console.log(`[GrowthOSHealthCron] Executing daily health check...`)
-
-    // 2. Run the Growth OS daily loop and capture the result
-    let kernelResult = null
-    let kernelError = null
-
-    try {
-      kernelResult = await GrowthOSKernel.executeDailyGrowthLoop()
-    } catch (error: any) {
-      console.error("[GrowthOSHealthCron] Error executing master growth loop:", error)
-      kernelError = error.message || String(error)
-    }
-
-    // 3. Gather purchase data from the last 24 hours
-    let recentPurchases = []
-    let totalRevenue = 0
-    let productsSold: string[] = []
-    
-    try {
-      const allPurchases = await getAllPurchases()
-      const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000)
-      
-      recentPurchases = allPurchases.filter(p => {
-        if (!p.createdAt) return false
-        const pDate = new Date(p.createdAt)
-        return pDate >= oneDayAgo
-      })
-
-      recentPurchases.forEach(p => {
-        totalRevenue += parseFloat(p.amount) || 0
-        if (p.productId) productsSold.push(p.productId)
-      })
-    } catch (err: any) {
-      console.error("[GrowthOSHealthCron] Error gathering purchases:", err)
-    }
-
-    // 3b. Gather subscriber lead intelligence metrics
-    let totalSubscribers = 0
-    let newLeads24h = 0
-    try {
-      const { SubscriberRepository } = await import("@/lib/leads/SubscriberRepository")
-      const subscribers = await SubscriberRepository.getAllSubscribers()
-      totalSubscribers = subscribers.length
-      const oneDayAgo = new Date(Date.now() - 24 * 60 * 60 * 1000)
-      newLeads24h = subscribers.filter(s => s.timestamp && new Date(s.timestamp) >= oneDayAgo).length
-    } catch (subErr) {
-      console.error("[GrowthOSHealthCron] Error gathering subscriber metrics:", subErr)
-    }
-
-    // 4. Build and send a formatted HTML email report
-    const todayDate = new Date().toISOString().split("T")[0]
-    const getStatusIcon = (status: boolean) => status ? '✅' : '❌'
-    
-    let channelStatusHtml = ''
-    let exceptionsHtml = ''
-    let channelsLive = 0
-    let channelsFailed = 0
-    const totalChannels = 7
-    let overallStatusText = 'FAILED'
-
-    if (kernelResult?.multiChannelReceipt?.channelStatusSummary) {
-      const summary = kernelResult.multiChannelReceipt.channelStatusSummary
-      
-      const channels = [
-        { name: 'Blog', status: summary.Blog },
-        { name: 'Newsletter', status: summary.Newsletter },
-        { name: 'LinkedIn', status: summary.LinkedIn },
-        { name: 'Instagram/Facebook', status: summary.SocialCarousel || summary.InstagramFacebook },
-        { name: 'YouTube', status: summary.VideoScript || summary.YouTube },
-        { name: 'FAQ', status: summary.FAQExpansion || summary.FAQ },
-        { name: 'Partner', status: summary.PartnerBlock || summary.Partner }
-      ]
-
-      channels.forEach(ch => {
-        const isLive = ch.status === 'LIVE_PUBLISHED' || ch.status === 'API_ACCEPTED'
-        const isGenerated = ch.status === 'GENERATED'
-        const isQueued = ch.status === 'QUEUED_FOR_APPROVAL'
-        const isFailed = ch.status === 'FAILED'
-        
-        let icon = '❌'
-        if (isLive) {
-          icon = '✅'
-          channelsLive++
-        } else if (isGenerated) {
-          icon = '📄'
-          channelsLive++
-        } else if (isQueued) {
-          icon = '⚠️'
-          channelsFailed++
-        } else if (isFailed) {
-          icon = '❌'
-          channelsFailed++
-        }
-        
-        channelStatusHtml += `<li>${ch.name}: ${icon} ${ch.status || 'UNKNOWN'}</li>`
-
-        if (isQueued) {
-           exceptionsHtml += `<li>${ch.name} returned QUEUED_FOR_APPROVAL</li>`
-        } else if (isFailed) {
-           exceptionsHtml += `<li>${ch.name} returned FAILED</li>`
-        }
-      })
-      
-      if (channelsFailed === 0) {
-        overallStatusText = 'SUCCESS'
-      } else if (channelsLive > 0) {
-        overallStatusText = 'PARTIAL_SUCCESS'
-      } else {
-        overallStatusText = 'FAILED'
-      }
-    } else {
-       channelStatusHtml = '<li>No channel data available (Kernel failed or returned no receipt)</li>'
-       channelsFailed = totalChannels
-    }
-    
-    if (!exceptionsHtml) {
-      exceptionsHtml = '<li>None</li>'
-    }
-
-    if (kernelError) {
-      exceptionsHtml += `<li><strong style="color:#ef4444">Kernel Error:</strong> ${kernelError}</li>`
-    }
-
-    const htmlContent = `
-      <div style="font-family: sans-serif; background-color: #1a1a2e; color: #ffffff; padding: 20px; line-height: 1.6;">
-        <h2 style="color: #4ade80; border-bottom: 1px solid #334155; padding-bottom: 10px;">GROWTH OS DAILY HEALTH REPORT &mdash; ${todayDate}</h2>
-        
-        <h3 style="color: #94a3b8; margin-top: 20px;">CONTENT PIPELINE</h3>
+    const [evidence, pipeline] = await Promise.all([collectGrowthOSEvidence(), GrowthTools.getGrowthOSStatus()])
+    const critical = pipeline.orphanedStagesDetected.filter((item) => item.severity === 'P0')
+    const status = evidence.evidenceState === 'UNKNOWN' || critical.length > 0
+      ? 'FAILED'
+      : pipeline.orphanedStagesDetected.length > 0 || evidence.evidenceState === 'PARTIAL' ? 'DEGRADED' : 'HEALTHY'
+    const issues = pipeline.orphanedStagesDetected.map((item) =>
+      `<li><strong>${escapeHtml(item.severity)} · ${escapeHtml(item.stage)}:</strong> ${escapeHtml(item.issue)}</li>`
+    ).join('') || '<li>No evidence-backed pipeline failures detected.</li>'
+    const html = `
+      <div style="font-family:Arial,sans-serif;background:#0f172a;color:#e2e8f0;padding:24px;line-height:1.55">
+        <h2>GrowthOS evidence health — ${escapeHtml(new Date().toISOString().slice(0, 10))}</h2>
+        <p><strong>Status:</strong> ${escapeHtml(status)} · Evidence: ${escapeHtml(evidence.evidenceState)}</p>
+        <h3>Revenue truth</h3>
         <ul>
-          <li><strong>Topic:</strong> ${kernelResult?.opportunity?.id || kernelResult?.opportunity?.buyerSegment || 'N/A'}</li>
-          <li><strong>Signal Processed:</strong> ${getStatusIcon(!!kernelResult?.opportunity)}</li>
-          <li><strong>Campaign Generated:</strong> ${getStatusIcon(!!kernelResult?.bundle)}</li>
+          <li>Verified MTD revenue: $${evidence.revenue.mtdVerifiedUSD.toFixed(2)} USD</li>
+          <li>Verified MRR: $${evidence.revenue.verifiedMRRUSD.toFixed(2)} USD (${evidence.revenue.activeMemberships} active memberships)</li>
+          <li>Provider-verified purchase records: ${evidence.revenue.verifiedPurchaseRecords}</li>
         </ul>
-
-        <h3 style="color: #94a3b8; margin-top: 20px;">CHANNEL STATUS</h3>
-        <ul style="list-style-type: none; padding-left: 0;">
-          ${channelStatusHtml}
-        </ul>
-
-        <h3 style="color: #94a3b8; margin-top: 20px;">OVERALL STATUS</h3>
+        <h3>30-day funnel</h3>
         <ul>
-          <li><strong>Channels Live:</strong> ${channelsLive} / ${totalChannels}</li>
-          <li><strong>Channels Failed:</strong> ${channelsFailed}</li>
-          <li><strong>Overall:</strong> ${overallStatusText === 'SUCCESS' ? '<span style="color:#4ade80">SUCCESS</span>' : overallStatusText === 'PARTIAL_SUCCESS' ? '<span style="color:#fbbf24">PARTIAL_SUCCESS</span>' : '<span style="color:#ef4444">FAILED</span>'}</li>
+          <li>Leads: ${evidence.funnel.newLeads30d}; unique measured sessions: ${evidence.funnel.uniqueSessions30d}</li>
+          <li>Checkout starts: ${evidence.funnel.checkoutStarts30d}; verified purchases: ${evidence.funnel.providerVerifiedPurchases30d}</li>
+          <li>Provider-accepted outreach: ${pipeline.dispatchedEmailsCount}; verified deliveries: ${pipeline.deliveredEmailsCount}; replies: ${pipeline.repliesCount}</li>
         </ul>
-
-        <h3 style="color: #94a3b8; margin-top: 20px;">REVENUE & BUSINESS HEALTH (Last 24 Hours)</h3>
-        <ul>
-          <li><strong>Total Purchases:</strong> ${recentPurchases.length}</li>
-          <li><strong>Total Revenue:</strong> $${totalRevenue.toFixed(2)}</li>
-          <li><strong>Products Sold:</strong> ${productsSold.length > 0 ? productsSold.join(", ") : "None"}</li>
-          <li><strong>New Leads (24h):</strong> ${newLeads24h}</li>
-          <li><strong>Total Lead Database:</strong> ${totalSubscribers} subscribers</li>
-        </ul>
-
-        <h3 style="color: #94a3b8; margin-top: 20px;">EXCEPTIONS</h3>
-        <ul>
-          ${exceptionsHtml}
-        </ul>
-      </div>
-    `
-
-    const plainTextContent = `GROWTH OS DAILY HEALTH REPORT - ${todayDate}
-Overall: ${overallStatusText}
-Revenue: $${totalRevenue.toFixed(2)} (${recentPurchases.length} purchases)`
-
-    await sendEmail({
-      to: "ashwani@fsidigital.ca",
-      subject: `GROWTH OS DAILY HEALTH REPORT — ${todayDate}`,
-      html: htmlContent,
-      text: plainTextContent,
-      tagType: "health-report",
-      from: "FSI Digital Growth OS <hello@fsidigital.ca>"
+        <h3>Failures and evidence gaps</h3><ul>${issues}</ul>
+      </div>`
+    const report = await sendEmail({
+      to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
+      subject: `GrowthOS ${status} — verified MRR $${evidence.revenue.verifiedMRRUSD.toFixed(2)}`,
+      html,
+      text: `GrowthOS ${status}. Evidence ${evidence.evidenceState}. MTD revenue $${evidence.revenue.mtdVerifiedUSD}. MRR $${evidence.revenue.verifiedMRRUSD}.`,
+      tagType: 'growth-os-health',
     })
-
-    return NextResponse.json({
-      success: true,
-      timestamp: new Date().toISOString(),
-      message: "Growth OS Health Cron executed and report sent.",
-      kernelStatus: overallStatusText,
-    })
+    const reportAccepted = Boolean(report.success && report.providerMessageId)
+    const finalStatus = status === 'HEALTHY' && reportAccepted ? 'SUCCEEDED' : status === 'FAILED' ? 'FAILED' : 'PARTIAL'
+    await finishOperationLease(lease, finalStatus, { status, evidence, reportAccepted, reportProviderMessageId: report.providerMessageId || '' })
+    const success = status !== 'FAILED' && reportAccepted
+    return NextResponse.json({ success, status, evidence, pipeline, reportAccepted }, { status: success ? 200 : 502 })
   } catch (error: any) {
-    console.error("[GrowthOSHealthCron] Unhandled error:", error)
-    return NextResponse.json(
-      { success: false, error: error.message || "Failed to execute Growth OS Health Cron" },
-      { status: 500 }
-    )
+    await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) })
+    return NextResponse.json({ success: false, error: error.message || 'Growth OS health failed.' }, { status: 500 })
   }
 }
+
+export async function POST(request: NextRequest) { return GET(request) }

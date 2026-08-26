@@ -10,11 +10,7 @@ const CATEGORY_QUERIES: Record<string, string> = {
 
 export class OpportunityDiscovery {
   private static getSerperApiKey(): string {
-    return (
-      process.env.SERPER_API_KEY ||
-      process.env.NEXT_PUBLIC_SERPER_API_KEY ||
-      "960fb0979530c15d5b507f53aa8c7f15f12a9bd9"
-    );
+    return process.env.SERPER_API_KEY || '';
   }
 
   /**
@@ -102,7 +98,7 @@ export class OpportunityDiscovery {
           }
 
           const emailMatch = snippet.match(/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/);
-          const email = emailMatch ? emailMatch[0].toLowerCase() : `contact@${domain}`;
+          const email = emailMatch ? emailMatch[0].toLowerCase() : undefined;
 
           const opp: AuthorityOpportunity = {
             id: `opp_${Date.now()}_${Math.random().toString(36).substring(2,7)}`,

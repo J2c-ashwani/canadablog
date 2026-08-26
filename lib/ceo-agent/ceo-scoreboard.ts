@@ -1,4 +1,4 @@
-import { CEOMemory, CEOGoalState } from './ceo-memory'
+import { CEOMemory } from './ceo-memory'
 
 export interface CommercialScoreboard {
   monthlyRevenueTargetUSD: number
@@ -8,11 +8,14 @@ export interface CommercialScoreboard {
   revenueRecoveredByCEOUSD: number
   revenueInfluencedByCEOUSD: number
   revenueGapUSD: number
+  mrrGapUSD: number
   daysRemainingInMonth: number
   requiredDailyPaceUSD: number
   currentDailyRunRateUSD: number
+  activeMemberships: number
+  membershipsRequiredForMRRTarget: number
   status: '🟢 ON TRACK' | '🟡 AT RISK' | '🔴 OFF TRACK'
-  evidenceState: 'VERIFIED' | 'DERIVED' | 'UNKNOWN'
+  evidenceState: 'VERIFIED' | 'PARTIAL' | 'UNKNOWN'
 }
 
 export interface RevenuePathToTarget {
@@ -24,6 +27,7 @@ export interface RevenuePathToTarget {
   currentDailyRunRateUSD: number
   gapPercentage: number
   requiredTransactions: {
+    membership29Count: number
     report19Count: number
     actionPlan49Count: number
     strategy79Count: number
@@ -35,6 +39,7 @@ export interface RevenuePathToTarget {
   requiredRawTraffic: number
   primaryBottleneck: string
   secondaryBottleneck: string
+  assumptions: string[]
 }
 
 export interface RevenueLeakageItem {
@@ -51,27 +56,33 @@ export interface RevenueLeakageReport {
   recommendation: string
 }
 
+function utcMonthTiming() {
+  const now = new Date()
+  const daysInMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).getUTCDate()
+  const day = now.getUTCDate()
+  return { daysInMonth, daysElapsed: Math.max(1, day), daysRemaining: Math.max(0, daysInMonth - day + 1) }
+}
+
 export class CEOScoreboard {
   public static async calculateScoreboard(
-    verifiedRevenue: number = 106,
-    verifiedMRR: number = 0,
-    checkoutStarts: number = 14,
-    daysRemaining: number = 22
+    verifiedRevenue = 0,
+    verifiedMRR = 0,
+    activeMemberships = 0,
+    evidenceState: CommercialScoreboard['evidenceState'] = 'UNKNOWN'
   ): Promise<CommercialScoreboard> {
     const memoryState = await CEOMemory.getGoalState()
-    const monthlyTarget = memoryState.monthly_revenue_target_usd || 15000
-    const mrrTarget = memoryState.recurring_mrr_target_usd || 0
+    const monthlyTarget = memoryState.monthly_revenue_target_usd
+    const mrrTarget = memoryState.recurring_mrr_target_usd
+    const timing = utcMonthTiming()
     const gap = Math.max(0, monthlyTarget - verifiedRevenue)
-    const requiredDailyPace = daysRemaining > 0 ? Number((gap / daysRemaining).toFixed(2)) : gap
-    const daysElapsed = Math.max(1, 30 - daysRemaining)
-    const currentDailyRunRate = Number((verifiedRevenue / daysElapsed).toFixed(2))
+    const mrrGap = Math.max(0, mrrTarget - verifiedMRR)
+    const requiredDailyPace = timing.daysRemaining > 0 ? Number((gap / timing.daysRemaining).toFixed(2)) : gap
+    const currentDailyRunRate = Number((verifiedRevenue / timing.daysElapsed).toFixed(2))
+    const projectedMonthRevenue = currentDailyRunRate * timing.daysInMonth
 
-    let status: '🟢 ON TRACK' | '🟡 AT RISK' | '🔴 OFF TRACK' = '🔴 OFF TRACK'
-    if (verifiedRevenue >= monthlyTarget) {
-      status = '🟢 ON TRACK'
-    } else if (currentDailyRunRate >= requiredDailyPace * 0.8) {
-      status = '🟡 AT RISK'
-    }
+    let status: CommercialScoreboard['status'] = '🔴 OFF TRACK'
+    if (verifiedRevenue >= monthlyTarget && verifiedMRR >= mrrTarget) status = '🟢 ON TRACK'
+    else if (projectedMonthRevenue >= monthlyTarget * 0.8 || verifiedMRR >= mrrTarget * 0.8) status = '🟡 AT RISK'
 
     return {
       monthlyRevenueTargetUSD: monthlyTarget,
@@ -81,40 +92,40 @@ export class CEOScoreboard {
       revenueRecoveredByCEOUSD: memoryState.revenue_recovered_by_ceo_usd,
       revenueInfluencedByCEOUSD: memoryState.revenue_influenced_by_ceo_usd,
       revenueGapUSD: gap,
-      daysRemainingInMonth: daysRemaining,
+      mrrGapUSD: mrrGap,
+      daysRemainingInMonth: timing.daysRemaining,
       requiredDailyPaceUSD: requiredDailyPace,
       currentDailyRunRateUSD: currentDailyRunRate,
+      activeMemberships,
+      membershipsRequiredForMRRTarget: Math.ceil(mrrGap / 29),
       status,
-      evidenceState: 'VERIFIED'
+      evidenceState,
     }
   }
 
   public static calculatePathToTarget(
-    currentVerifiedUSD: number = 106,
-    targetUSD: number = 15000,
-    daysRemaining: number = 22
+    currentVerifiedUSD = 0,
+    targetUSD = 10000,
+    daysRemaining = utcMonthTiming().daysRemaining
   ): RevenuePathToTarget {
     const remaining = Math.max(0, targetUSD - currentVerifiedUSD)
     const requiredDaily = daysRemaining > 0 ? Number((remaining / daysRemaining).toFixed(2)) : remaining
-    const daysElapsed = Math.max(1, 30 - daysRemaining)
-    const currentDaily = Number((currentVerifiedUSD / daysElapsed).toFixed(2))
-    const gapPct = targetUSD > 0 ? Number((((targetUSD - currentVerifiedUSD) / targetUSD) * 100).toFixed(1)) : 0
+    const timing = utcMonthTiming()
+    const currentDaily = Number((currentVerifiedUSD / timing.daysElapsed).toFixed(2))
+    const gapPct = targetUSD > 0 ? Number(((remaining / targetUSD) * 100).toFixed(1)) : 0
 
-    // Fastest Credible Path Strategy:
-    // 1. High-Ticket Grant Filing ($2,500): 5 deals = $12,500 (83% of gap)
-    // 2. 1-on-1 Strategy Sessions ($199): 10 deals = $1,990 (13% of gap)
-    // 3. Digital Toolkits / Reports ($49/$19): 15 deals = $510 (4% of gap)
-    const filing2500Count = 5
-    const session199Count = 10
-    const actionPlan49Count = 8
-    const strategy79Count = 4
-    const report19Count = 15
-
-    const totalOrdersNeeded = filing2500Count + session199Count + actionPlan49Count + strategy79Count + report19Count
-
-    const requiredCheckouts = Math.ceil(totalOrdersNeeded / 0.15) // 15% conversion on high-intent calls & sessions
-    const requiredQualifiedLeads = Math.max(127, Math.ceil(requiredCheckouts / 0.20))
-    const requiredRawTraffic = Math.ceil(requiredQualifiedLeads / 0.04)
+    const membership29Count = Math.ceil((remaining * 0.40) / 29)
+    const strategy79Count = Math.ceil((remaining * 0.25) / 79)
+    const actionPlan49Count = Math.ceil((remaining * 0.20) / 49)
+    const session199Count = Math.ceil((remaining * 0.10) / 199)
+    const report19Count = Math.ceil((remaining * 0.05) / 19)
+    const totalOrdersNeeded = membership29Count + strategy79Count + actionPlan49Count + session199Count + report19Count
+    const assumedCheckoutConversion = 0.10
+    const assumedLeadToCheckout = 0.08
+    const assumedVisitorToLead = 0.04
+    const requiredCheckouts = Math.ceil(totalOrdersNeeded / assumedCheckoutConversion)
+    const requiredQualifiedLeads = Math.ceil(requiredCheckouts / assumedLeadToCheckout)
+    const requiredRawTraffic = Math.ceil(requiredQualifiedLeads / assumedVisitorToLead)
 
     return {
       targetUSD,
@@ -125,77 +136,66 @@ export class CEOScoreboard {
       currentDailyRunRateUSD: currentDaily,
       gapPercentage: gapPct,
       requiredTransactions: {
+        membership29Count,
         report19Count,
         actionPlan49Count,
         strategy79Count,
         session199Count,
-        filing2500Count
+        filing2500Count: 0,
       },
       requiredCheckouts,
       requiredQualifiedLeads,
       requiredRawTraffic,
-      primaryBottleneck: 'Unprogressed Pipeline: 113 leads with zero high-ticket outreach',
-      secondaryBottleneck: 'Lead -> High-Ticket Strategy Session Conversion'
+      primaryBottleneck: 'Insufficient provider-verified checkouts and subscription activations',
+      secondaryBottleneck: 'Insufficient measurable distribution to consented, product-matched cohorts',
+      assumptions: [
+        'Illustrative mix: 40% $29 membership, 25% $79 bundle, 20% $49 plan, 10% $199 product, 5% $19 report.',
+        'Planning assumptions only: 10% checkout-to-payment, 8% qualified-lead-to-checkout, 4% visitor-to-lead.',
+        'Strict $10K MRR requires 345 active $29 memberships; one-time products count toward monthly revenue, not MRR.',
+      ],
     }
   }
 
   public static calculateLeakageReport(
-    checkoutStarts: number = 14,
-    completedPayments: number = 4,
-    uncontactedLeads: number = 103,
-    undeliveredReports: number = 2
+    checkoutStarts = 0,
+    completedPayments = 0,
+    consentedUnprogressedLeads = 0,
+    undeliveredReports = 0
   ): RevenueLeakageReport {
-    // 1. Payment Capture Validation Leakage:
-    const paymentCaptureLeak = 4 * 26.5 * 4 // $424/mo projected leakage
-
-    // 2. Checkout Abandonment Leakage:
-    const checkoutLeak = 10 * 49 * 2 // $980/mo
-
-    // 3. Stalled Outbound Queue Leakage:
-    const leadOutboundLeak = Math.round(uncontactedLeads * 0.05 * 49) // ~$252/mo
-
-    // 4. Undelivered Report Fulfilment Leakage:
-    const fulfillmentLeak = undeliveredReports * 199 // $398/mo
-
-    const items: RevenueLeakageItem[] = [
-      {
-        stage: 'Stage 4-5 (Payment Capture & Intent Validation)',
+    const abandonedCheckouts = Math.max(0, checkoutStarts - completedPayments)
+    const items: RevenueLeakageItem[] = []
+    if (abandonedCheckouts > 0) {
+      items.push({
+        stage: 'Checkout Start → Provider Capture',
         priority: 'P0',
-        leakageMonthlyUSD: paymentCaptureLeak,
-        description: 'Captured PayPal payments rejected by custom intent-ID mismatch validation',
-        recoveryAction: 'Fix post-capture intent validation logic in product-payment-intents.ts'
-      },
-      {
-        stage: 'Stage 2-3 (Checkout Start -> Payment)',
+        leakageMonthlyUSD: abandonedCheckouts * 49,
+        description: `${abandonedCheckouts} measured checkout starts have no matching provider-verified purchase in the reporting window.`,
+        recoveryAction: 'Recover only consented leads with an explicit checkout timestamp and stop on any verified purchase.',
+      })
+    }
+    if (undeliveredReports > 0) {
+      items.push({
+        stage: 'Provider Capture → Product Delivery',
+        priority: 'P0',
+        leakageMonthlyUSD: undeliveredReports * 49,
+        description: `${undeliveredReports} verified purchases are pending or failed delivery.`,
+        recoveryAction: 'Replay the real fulfilment pipeline and retain provider acceptance/delivery evidence.',
+      })
+    }
+    if (consentedUnprogressedLeads > 0) {
+      items.push({
+        stage: 'Consented Lead → Product-Matched Distribution',
         priority: 'P1',
-        leakageMonthlyUSD: checkoutLeak,
-        description: 'Abandoned checkout sessions without automated high-intent email recovery',
-        recoveryAction: 'Deploy 1-hour personalized checkout recovery email trigger'
-      },
-      {
-        stage: 'Stage 8 (Report Delivery & Fulfilment)',
-        priority: 'P0',
-        leakageMonthlyUSD: fulfillmentLeak,
-        description: 'Paid customers with pending/undelivered PDF reports',
-        recoveryAction: 'Auto-retry report generation and email dispatch for verified purchases'
-      },
-      {
-        stage: 'Stage 1-2 (Lead Storage -> Outreach)',
-        priority: 'P2',
-        leakageMonthlyUSD: leadOutboundLeak,
-        description: 'Qualified RDE leads discovered but never dispatched via email adapter',
-        recoveryAction: 'Repair Growth OS outbound queue email adapter dispatch loop'
-      }
-    ]
-
+        leakageMonthlyUSD: Math.round(consentedUnprogressedLeads * 0.02 * 49),
+        description: `${consentedUnprogressedLeads} consented leads have no measurable commercial progression.`,
+        recoveryAction: 'Run controlled product cohorts and retain provider IDs, clicks, checkouts, captures, and revenue attribution.',
+      })
+    }
     items.sort((a, b) => b.leakageMonthlyUSD - a.leakageMonthlyUSD)
-
-    const totalEstimatedLeakageUSD = items.reduce((sum, item) => sum + item.leakageMonthlyUSD, 0)
-
     return {
-      totalEstimatedLeakageUSD,
+      totalEstimatedLeakageUSD: items.reduce((sum, item) => sum + item.leakageMonthlyUSD, 0),
       items,
-      recommendation: `P0 Focus: Immediately resolve Payment Capture Validation ($${paymentCaptureLeak}/mo) and Report Delivery ($${fulfillmentLeak}/mo) to protect earned revenue.`
+      recommendation: items[0]?.recoveryAction || 'No leakage estimate is justified by the current evidence window.',
     }
   }
 }

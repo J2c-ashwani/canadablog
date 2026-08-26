@@ -24,6 +24,9 @@ import {
 import { sendEmail } from '@/lib/emails/mailer';
 import type { SubsystemHealthReport } from '../core/subsystem-health';
 import type { BusinessImpactScore } from '../types';
+import { readOperationalRows } from '@/lib/growth-os/operations-store';
+
+const EMAIL_EVENT_HEADERS = ['Event ID', 'Provider', 'Provider Message ID', 'Event Type', 'Recipient', 'Occurred At', 'Received At'];
 
 export interface PipelineOptions {
   dryRun?: boolean;
@@ -41,8 +44,6 @@ export interface AuthorityEngineStatus {
   warmUpWeek: number;
   lastPipelineRun: string | null;
 }
-
-const sleep = (ms: number) => new Promise(r => setTimeout(r, ms));
 
 export class AuthorityEngine {
   // In-memory tracking for current execution context
@@ -77,19 +78,34 @@ export class AuthorityEngine {
     };
 
     try {
+      const prospects = await getOutreachProspectsFromSheet();
+      const providerIds = new Set(prospects.map((prospect) => prospect.providerMessageId).filter(Boolean));
+      const emailEvents = await readOperationalRows('Email Events', EMAIL_EVENT_HEADERS);
+      const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+      const authorityEvents = emailEvents.filter((row) =>
+        providerIds.has(row[2] || '') && new Date(row[5] || row[6] || '').getTime() >= sevenDaysAgo
+      );
+      const todayET = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+      this.dailySentCount = prospects.filter((prospect) => prospect.providerMessageId && prospect.sentAt &&
+        new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(prospect.sentAt)) === todayET
+      ).length;
+      const sent7d = prospects.filter((prospect) => prospect.providerMessageId && new Date(prospect.sentAt || '').getTime() >= sevenDaysAgo);
+      const bounced7d = authorityEvents.filter((row) => String(row[3] || '').toLowerCase() === 'email.bounced').length;
+      const complained7d = authorityEvents.filter((row) => String(row[3] || '').toLowerCase() === 'email.complained').length;
+      const replied7d = sent7d.filter((prospect) => prospect.replied || Boolean(prospect.repliedAt)).length;
       // Step 1: Check Kill Switch
       const killSwitchState: KillSwitchState = {
         status: 'active',
         lastEvaluatedAt: new Date().toISOString(),
         metrics: {
-          totalSent: this.dailySentCount,
-          totalBounced: 0,
-          totalSpamComplaints: 0,
-          totalReplied: 0,
-          consecutiveBounces: 0,
-          bounceRatePercent: 0,
-          spamComplaintRatePercent: 0,
-          replyRatePercent: 0,
+          totalSent: sent7d.length,
+          totalBounced: bounced7d,
+          totalSpamComplaints: complained7d,
+          totalReplied: replied7d,
+          consecutiveBounces: bounced7d,
+          bounceRatePercent: sent7d.length ? Number(((bounced7d / sent7d.length) * 100).toFixed(2)) : 0,
+          spamComplaintRatePercent: sent7d.length ? Number(((complained7d / sent7d.length) * 100).toFixed(2)) : 0,
+          replyRatePercent: sent7d.length ? Number(((replied7d / sent7d.length) * 100).toFixed(2)) : 0,
         },
       };
 
@@ -126,8 +142,6 @@ export class AuthorityEngine {
 
       // Step 4: Load Pending Prospects from Google Sheets
       console.log('📋 [AuthorityEngine] Loading pending prospects from Google Sheets...');
-      const prospects = await getOutreachProspectsFromSheet();
-      
       // Case-insensitive status matching
       const pendingProspects = prospects.filter(p => {
         const statusLower = (p.status || '').trim().toLowerCase();
@@ -232,16 +246,17 @@ export class AuthorityEngine {
                 forceResend: true,
               });
 
-              if (sendResult.success) {
+              if (sendResult.success && sendResult.providerMessageId) {
                 console.log(`✉️ [AuthorityEngine] Email successfully sent to ${prospect.email}`);
-                await updateOutreachProspectInSheet(prospect.rowIndex, {
+                const persisted = await updateOutreachProspectInSheet(prospect.rowIndex, {
                   status: 'sent',
                   sentAt: new Date().toISOString(),
                   // Provider acceptance is not proof of inbox delivery; delivery webhooks
                   // are the only path allowed to advance this value to "delivered".
                   deliveryStatus: 'provider_accepted',
-                  providerMessageId: sendResult.providerMessageId || '',
+                  providerMessageId: sendResult.providerMessageId,
                 });
+                if (!persisted.success) throw persisted.error || new Error('Authority provider receipt could not be persisted.');
 
                 await globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_SENT, {
                   prospectId,
@@ -254,10 +269,6 @@ export class AuthorityEngine {
                 guardrailContext.dailySentCount = this.dailySentCount;
                 result.sent++;
 
-                // Pacing delay
-                const delay = SendScheduler.getRandomizedDelay(config);
-                console.log(`⏳ [AuthorityEngine] Waiting ${Math.round(delay / 1000)}s before next send...`);
-                await sleep(delay);
               } else {
                 console.error(`❌ [AuthorityEngine] Send failed for ${prospect.email}: ${sendResult.error}`);
                 await updateOutreachProspectInSheet(prospect.rowIndex, {
@@ -327,7 +338,6 @@ export class AuthorityEngine {
           });
         }
 
-        await sleep(800);
       }
     } catch (err: any) {
       console.error('❌ [AuthorityEngine] Pipeline error:', err.message);
@@ -359,13 +369,41 @@ export class AuthorityEngine {
   static async getEngineStatus(): Promise<AuthorityEngineStatus> {
     let pendingCount = 0;
     let exceptionsCount = 0;
+    let killSwitch: KillSwitchStatus = 'active';
 
     try {
       const prospects = await getOutreachProspectsFromSheet();
       pendingCount = prospects.filter(p => {
         const s = (p.status || '').trim().toLowerCase();
-        return s === 'pending' || s === '';
+        return s === 'pending' || s === 'qualified' || s === 'review_required' || s === '';
       }).length;
+      const providerIds = new Set(prospects.map((prospect) => prospect.providerMessageId).filter(Boolean));
+      const events = await readOperationalRows('Email Events', EMAIL_EVENT_HEADERS);
+      const sevenDaysAgo = Date.now() - 7 * 24 * 60 * 60 * 1000;
+      const sent = prospects.filter((prospect) => prospect.providerMessageId && new Date(prospect.sentAt || '').getTime() >= sevenDaysAgo);
+      const relevantEvents = events.filter((row) => providerIds.has(row[2] || '') && new Date(row[5] || row[6] || '').getTime() >= sevenDaysAgo);
+      const bounced = relevantEvents.filter((row) => String(row[3] || '').toLowerCase() === 'email.bounced').length;
+      const complained = relevantEvents.filter((row) => String(row[3] || '').toLowerCase() === 'email.complained').length;
+      const replied = sent.filter((prospect) => prospect.replied || Boolean(prospect.repliedAt)).length;
+      const evaluation = GuardrailEngine.evaluateKillSwitch({
+        status: 'active',
+        lastEvaluatedAt: new Date().toISOString(),
+        metrics: {
+          totalSent: sent.length,
+          totalBounced: bounced,
+          totalSpamComplaints: complained,
+          totalReplied: replied,
+          consecutiveBounces: bounced,
+          bounceRatePercent: sent.length ? (bounced / sent.length) * 100 : 0,
+          spamComplaintRatePercent: sent.length ? (complained / sent.length) * 100 : 0,
+          replyRatePercent: sent.length ? (replied / sent.length) * 100 : 0,
+        },
+      });
+      killSwitch = evaluation.shouldPause ? 'paused' : 'active';
+      const todayET = new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
+      this.dailySentCount = prospects.filter((prospect) => prospect.providerMessageId && prospect.sentAt &&
+        new Intl.DateTimeFormat('en-CA', { timeZone: 'America/New_York', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date(prospect.sentAt)) === todayET
+      ).length;
     } catch {
       // Graceful degradation
     }
@@ -382,7 +420,7 @@ export class AuthorityEngine {
     const effectiveCap = SendScheduler.calculateEffectiveCap(config, null);
 
     return {
-      killSwitch: 'active',
+      killSwitch,
       dailySentCount: this.dailySentCount,
       effectiveDailyCap: effectiveCap,
       pendingProspects: pendingCount,
@@ -398,21 +436,21 @@ export class AuthorityEngine {
   static getSubsystemHealth(): SubsystemHealthReport {
     const impact: BusinessImpactScore = {
       revenueImpactUSD: 0,
-      founderTimeSavedMinutes: 120,
-      customerTrustAddedScore: 50,
-      knowledgeAddedScore: 10,
-      competitiveAdvantageScore: 30,
-      compositeImpactRating: 42,
+      founderTimeSavedMinutes: 0,
+      customerTrustAddedScore: 0,
+      knowledgeAddedScore: 0,
+      competitiveAdvantageScore: 0,
+      compositeImpactRating: 0,
     };
 
     return {
       subsystemId: 'sub_authority_engine',
       subsystemName: 'Authority Engine (Phase 3)',
-      monthlyCostUSD: 5.0,
+      monthlyCostUSD: 0,
       totalImpactGenerated: impact,
-      lastUsedTimestamp: this.lastPipelineRun || new Date().toISOString(),
+      lastUsedTimestamp: this.lastPipelineRun || '',
       recommendation: 'ACTIVE',
-      reason: 'Core system for automated authority building and backlink outreach.',
+      reason: 'Impact and cost remain unverified until provider delivery, backlink, and revenue evidence are linked.',
     };
   }
 }

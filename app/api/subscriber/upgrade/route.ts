@@ -28,6 +28,7 @@ export async function POST(request: NextRequest) {
     }
 
     const updates: any = {};
+    const membershipPlanId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || '';
     if (action === 'trial') {
       updates.subscriptionStatus = 'trial';
       updates.trialStartedAt = new Date().toISOString();
@@ -36,17 +37,45 @@ export async function POST(request: NextRequest) {
       if (!subscriptionId) {
         return NextResponse.json({ error: 'Subscription ID is required for active status upgrade.' }, { status: 400 });
       }
-      const verification = await verifyPayPalSubscription(subscriptionId);
+      if (!membershipPlanId && process.env.NODE_ENV === 'production') {
+        return NextResponse.json({ error: 'PayPal membership plan is not configured.' }, { status: 503 });
+      }
+      const verification = await verifyPayPalSubscription(subscriptionId, {
+        email,
+        planId: membershipPlanId,
+        requireActive: true,
+      });
       if (!verification.verified) {
         return NextResponse.json({ error: `Subscription verification failed: ${verification.error}` }, { status: 400 });
       }
-      updates.subscriptionStatus = 'active';
+      updates.subscriptionStatus = 'ACTIVE';
       updates.subscriptionId = subscriptionId;
+      let activity: any = {};
+      try { activity = JSON.parse(subscriber.leadActivity || '{}'); } catch {}
+      activity.membershipVerifiedAt = new Date().toISOString();
+      activity.paypalSubscriptionVerifiedAt = activity.membershipVerifiedAt;
+      updates.leadActivity = JSON.stringify(activity);
     }
 
     const res = await SubscriberRepository.updateSubscriberPreferences(email, updates);
     if (!res.success) {
       return NextResponse.json({ error: res.error || 'Failed to update database.' }, { status: 500 });
+    }
+
+    if (action === 'active') {
+      const { recordMembershipSubscription } = await import('@/lib/membership/membership-store');
+      await recordMembershipSubscription({
+        subscriptionId,
+        email,
+        planId: membershipPlanId,
+        status: 'ACTIVE',
+        amountUSD: 29,
+        providerVerifiedAt: new Date().toISOString(),
+        lastPaymentId: '',
+        lastPaymentAt: '',
+        cancelledAt: '',
+        evidenceSource: 'paypal_api_verification_portfolio_upgrade',
+      });
     }
 
     return NextResponse.json({

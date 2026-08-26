@@ -98,7 +98,7 @@ export async function findMatchingGrantsWithAI(
 
   try {
 
-    const model = genAI.getGenerativeModel({ model: "gemini-2.0-flash-exp" })
+    const model = genAI.getGenerativeModel({ model: process.env.GEMINI_MODEL || "gemini-3.6-flash" })
 
     const prompt = `You are an expert grant advisor.
 

@@ -12,7 +12,9 @@ function escapeHtml(value: string) {
 }
 
 function wrapCalculatorRecoveryTemplate(contentHtml: string, loginToken: string, firstName: string) {
-  const unsubscribeUrl = 'https://www.fsidigital.ca/subscribe/unsubscribe';
+  const unsubscribeUrl = loginToken
+    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
+    : 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   return `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;margin:0;">
@@ -70,10 +72,10 @@ export async function sendCalculatorRecoveryEmail1({
 
   const html = wrapCalculatorRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      You recently ran your business profile through our Government Funding Calculator. Your dynamic matching report has been generated successfully.
+      You recently completed a business profile in our Government Funding Calculator. Your saved results are ready to review.
     </p>
     <p style="margin: 0 0 16px 0;">
-      We matched your location, industry, and funding goals to active government programs accepting applications right now.
+      The calculator compared your location, industry, and funding goals with programs in the current FSI database.
     </p>
     <p style="margin: 0 0 20px 0;">
       Avoid missing current intake windows. Access your customized report to review matching programs:

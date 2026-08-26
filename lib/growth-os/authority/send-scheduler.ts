@@ -8,18 +8,18 @@ import { AuthoritySendConfig, SendSchedulerState } from './types';
 export class SendScheduler {
   static getDefaultConfig(): AuthoritySendConfig {
     return {
-      dailyCap: 50,
-      hourlyMax: 8,
-      minIntervalMinutes: 5,
-      maxIntervalMinutes: 12,
+      dailyCap: 5,
+      hourlyMax: 3,
+      minIntervalMinutes: 1,
+      maxIntervalMinutes: 3,
       businessHoursOnly: true,
       warmUp: {
         enabled: true,
         schedule: {
           week1: 5,
-          week2: 15,
-          week3: 30,
-          week4: 50
+          week2: 5,
+          week3: 5,
+          week4: 5
         }
       }
     };

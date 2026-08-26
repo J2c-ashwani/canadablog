@@ -6,7 +6,8 @@ import {
   persistDeliveryEvent,
   verifyResendWebhook,
 } from '@/lib/emails/delivery-events';
-import { updateOutreachProspectFromDeliveryEvent } from '@/lib/google-sheets';
+import { updateOutreachProspectFromDeliveryEvent, updateOutreachSentLeadFromDeliveryEvent } from '@/lib/google-sheets';
+import { updatePurchaseDeliveryFromProviderEvent } from '@/lib/products/purchase-store';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -33,6 +34,8 @@ export async function POST(request: Request) {
       event.eventType,
       event.occurredAt
     );
+    await updateOutreachSentLeadFromDeliveryEvent(event.providerMessageId, event.eventType);
+    await updatePurchaseDeliveryFromProviderEvent(event.providerMessageId, event.eventType);
 
     if (event.eventType === 'email.bounced') {
       await globalEventBus.publish(AUTHORITY_EVENTS.KILL_SWITCH_TRIGGERED, {

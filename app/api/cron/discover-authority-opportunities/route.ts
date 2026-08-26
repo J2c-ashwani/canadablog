@@ -4,19 +4,24 @@ import { OpportunityDiscovery } from "@/lib/growth-os/authority/opportunity-disc
 import { OpportunityQualifier } from "@/lib/growth-os/authority/opportunity-qualifier";
 import { seedOutreachProspects, type OutreachProspect } from "@/lib/google-sheets";
 import type { AuthorityCategory } from "@/lib/growth-os/authority/types";
+import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
+export const maxDuration = 60;
 
 /**
  * Cron route for autonomous authority opportunity discovery and qualification.
  */
 export async function GET(request: NextRequest) {
-  try {
-    const searchParams = request.nextUrl.searchParams;
-    if (!isValidCronRequest(request)) {
+  const searchParams = request.nextUrl.searchParams;
+  if (!isValidCronRequest(request)) {
       return NextResponse.json({ error: "Unauthorized request" }, { status: 401 });
-    }
+  }
+  const lease = await acquireOperationLease('authority-discovery', 6 * 60 * 60 * 1000);
+  if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason });
+
+  try {
 
     const categoryParam = searchParams.get("category");
     const category = categoryParam ? (categoryParam as AuthorityCategory) : undefined;
@@ -34,10 +39,13 @@ export async function GET(request: NextRequest) {
     );
 
     // Map to OutreachProspect format for Google Sheets
-    const sheetProspects: Omit<OutreachProspect, "rowIndex">[] = autoOutreachOpps.map((opp) => ({
+    // Do not invent contact@ addresses. A prospect without a discovered public
+    // address remains a research opportunity and is never queued for sending.
+    const contactableOpps = autoOutreachOpps.filter((opp) => Boolean(opp.email));
+    const sheetProspects: Omit<OutreachProspect, "rowIndex">[] = contactableOpps.map((opp) => ({
       website: opp.website,
       prospectName: opp.prospectName,
-      email: opp.email || `contact@${opp.website}`,
+      email: opp.email!,
       targetPage: opp.targetPage,
       name: opp.prospectName,
       personalizedHook: opp.metadata?.siteDescription || `Discovered resource on ${opp.website}`,
@@ -51,19 +59,24 @@ export async function GET(request: NextRequest) {
 
     let savedToSheet = 0;
     if (sheetProspects.length > 0) {
-      await seedOutreachProspects(sheetProspects);
-      savedToSheet = sheetProspects.length;
+      const save = await seedOutreachProspects(sheetProspects);
+      if (!save.success) throw save.error || new Error('Authority prospects could not be durably saved.');
+      savedToSheet = save.inserted || 0;
     }
 
+    const summary = {
+      discovered: discoveredOpps.length,
+      qualified: qualifiedOpps.length,
+      contactable: contactableOpps.length,
+      savedToSheet,
+    };
+    await finishOperationLease(lease, 'SUCCEEDED', summary);
     return NextResponse.json({
       success: true,
-      summary: {
-        discovered: discoveredOpps.length,
-        qualified: qualifiedOpps.length,
-        savedToSheet,
-      },
+      summary,
     });
   } catch (error: any) {
+    await finishOperationLease(lease, 'FAILED', { error: error?.message || String(error) });
     console.error("Error in discover-authority-opportunities cron:", error);
     return NextResponse.json(
       { error: "Internal Server Error", details: error?.message || String(error) },

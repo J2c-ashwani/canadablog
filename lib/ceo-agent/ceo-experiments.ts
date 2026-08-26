@@ -1,11 +1,9 @@
-import fs from 'fs'
-import path from 'path'
-import { query } from '../db/postgres'
+import { appendOperationalRow, readOperationalRows } from '@/lib/growth-os/operations-store';
 
 export interface CEOExperiment {
   id: string
   hypothesis: string
-  funnel_stage: number // 1 to 10
+  funnel_stage: number
   baseline_metric: number
   target_metric: number
   action_taken: string
@@ -18,32 +16,67 @@ export interface CEOExperiment {
   completed_at: string | null
 }
 
-const FALLBACK_EXP_PATH = path.join(process.cwd(), 'reports', 'ceo-experiments-fallback.json')
-let inMemoryExperiments: CEOExperiment[] = []
+const HEADERS = [
+  'Experiment ID', 'Hypothesis', 'Funnel Stage', 'Baseline Metric', 'Target Metric',
+  'Action Taken', 'Observation Window Hours', 'Actual Result Metric', 'Revenue Recovered USD',
+  'Attribution Confidence', 'Verdict', 'Created At', 'Completed At',
+];
+let inMemoryExperiments: CEOExperiment[] = [];
 
-function loadFallbackExperiments(): CEOExperiment[] {
-  try {
-    if (fs.existsSync(FALLBACK_EXP_PATH)) {
-      const data = fs.readFileSync(FALLBACK_EXP_PATH, 'utf-8')
-      inMemoryExperiments = JSON.parse(data)
-    }
-  } catch (err) {
-    // Read-only filesystem on Vercel production
-  }
-  return inMemoryExperiments
+function hasSheetsConfiguration() {
+  return Boolean(process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID);
 }
 
-function saveFallbackExperiments(experiments: CEOExperiment[]) {
-  inMemoryExperiments = experiments
-  try {
-    const dir = path.dirname(FALLBACK_EXP_PATH)
-    if (!fs.existsSync(dir)) {
-      fs.mkdirSync(dir, { recursive: true })
-    }
-    fs.writeFileSync(FALLBACK_EXP_PATH, JSON.stringify(experiments, null, 2))
-  } catch (err) {
-    // Read-only filesystem on Vercel production
+function parseExperiment(row: string[]): CEOExperiment {
+  return {
+    id: row[0] || '',
+    hypothesis: row[1] || '',
+    funnel_stage: Number(row[2] || 0),
+    baseline_metric: Number(row[3] || 0),
+    target_metric: Number(row[4] || 0),
+    action_taken: row[5] || '',
+    observation_window_hours: Number(row[6] || 72),
+    actual_result_metric: row[7] === '' || row[7] === undefined ? null : Number(row[7]),
+    revenue_recovered_usd: Number(row[8] || 0),
+    attribution_confidence: (row[9] || 'LOW') as CEOExperiment['attribution_confidence'],
+    verdict: (row[10] || 'IN_PROGRESS') as CEOExperiment['verdict'],
+    created_at: row[11] || '',
+    completed_at: row[12] || null,
+  };
+}
+
+async function persist(experiment: CEOExperiment) {
+  if (!hasSheetsConfiguration()) {
+    const index = inMemoryExperiments.findIndex((item) => item.id === experiment.id);
+    if (index >= 0) inMemoryExperiments[index] = experiment;
+    else inMemoryExperiments.unshift(experiment);
+    return;
   }
+  await appendOperationalRow('CEO Experiments', HEADERS, [
+    experiment.id,
+    experiment.hypothesis,
+    experiment.funnel_stage,
+    experiment.baseline_metric,
+    experiment.target_metric,
+    experiment.action_taken,
+    experiment.observation_window_hours,
+    experiment.actual_result_metric ?? '',
+    experiment.revenue_recovered_usd,
+    experiment.attribution_confidence,
+    experiment.verdict,
+    experiment.created_at,
+    experiment.completed_at || '',
+  ]);
+}
+
+async function getAll(): Promise<CEOExperiment[]> {
+  if (!hasSheetsConfiguration()) return inMemoryExperiments;
+  const rows = await readOperationalRows('CEO Experiments', HEADERS);
+  const latestById = new Map<string, CEOExperiment>();
+  rows.map(parseExperiment).forEach((experiment) => latestById.set(experiment.id, experiment));
+  return Array.from(latestById.values()).sort((a, b) =>
+    new Date(b.created_at).getTime() - new Date(a.created_at).getTime()
+  );
 }
 
 export class CEOExperimentEngine {
@@ -55,9 +88,8 @@ export class CEOExperimentEngine {
     action_taken: string
     observation_window_hours?: number
   }): Promise<CEOExperiment> {
-    const id = `exp_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`
     const experiment: CEOExperiment = {
-      id,
+      id: `exp_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
       hypothesis: params.hypothesis,
       funnel_stage: params.funnel_stage,
       baseline_metric: params.baseline_metric,
@@ -66,41 +98,13 @@ export class CEOExperimentEngine {
       observation_window_hours: params.observation_window_hours || 72,
       actual_result_metric: null,
       revenue_recovered_usd: 0,
-      attribution_confidence: 'MEDIUM',
+      attribution_confidence: 'LOW',
       verdict: 'IN_PROGRESS',
       created_at: new Date().toISOString(),
-      completed_at: null
-    }
-
-    if (process.env.DATABASE_URL) {
-      try {
-        await query(
-          `INSERT INTO ceo_experiments (
-            id, hypothesis, funnel_stage, baseline_metric, target_metric, action_taken,
-            observation_window_hours, verdict, created_at
-          ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, NOW())`,
-          [
-            experiment.id,
-            experiment.hypothesis,
-            experiment.funnel_stage,
-            experiment.baseline_metric,
-            experiment.target_metric,
-            experiment.action_taken,
-            experiment.observation_window_hours,
-            experiment.verdict
-          ]
-        )
-      } catch (err) {
-        console.warn('[CEOExperimentEngine] DB insert failed, using fallback:', err)
-      }
-    }
-
-    const experiments = loadFallbackExperiments()
-    experiments.unshift(experiment)
-    saveFallbackExperiments(experiments)
-
-    console.log(`[CEOExperimentEngine] 🧪 Registered Experiment ${experiment.id}: "${experiment.hypothesis}"`)
-    return experiment
+      completed_at: null,
+    };
+    await persist(experiment);
+    return experiment;
   }
 
   public static async evaluateExperimentOutcome(
@@ -108,42 +112,33 @@ export class CEOExperimentEngine {
     actualResultMetric: number,
     revenueRecoveredUsd: number
   ): Promise<CEOExperiment | null> {
-    const experiments = loadFallbackExperiments()
-    const expIndex = experiments.findIndex(e => e.id === experimentId)
-    if (expIndex === -1) return null
+    const experiment = (await getAll()).find((item) => item.id === experimentId);
+    if (!experiment) return null;
+    const updated: CEOExperiment = {
+      ...experiment,
+      actual_result_metric: actualResultMetric,
+      revenue_recovered_usd: revenueRecoveredUsd,
+      completed_at: new Date().toISOString(),
+      verdict: actualResultMetric >= experiment.target_metric
+        ? 'SCALE'
+        : actualResultMetric > experiment.baseline_metric ? 'ITERATE' : 'ABANDON',
+      attribution_confidence: revenueRecoveredUsd > 0 ? 'HIGH' : 'MEDIUM',
+    };
+    await persist(updated);
+    return updated;
+  }
 
-    const exp = experiments[expIndex]
-    exp.actual_result_metric = actualResultMetric
-    exp.revenue_recovered_usd = revenueRecoveredUsd
-    exp.completed_at = new Date().toISOString()
+  public static async getActiveExperiments(): Promise<CEOExperiment[]> {
+    const now = Date.now();
+    return (await getAll()).filter((experiment) => {
+      if (experiment.verdict !== 'IN_PROGRESS') return false;
+      const createdAt = new Date(experiment.created_at).getTime();
+      return Number.isFinite(createdAt)
+        && now - createdAt <= experiment.observation_window_hours * 60 * 60 * 1000;
+    });
+  }
 
-    if (actualResultMetric >= exp.target_metric) {
-      exp.verdict = 'SCALE'
-      exp.attribution_confidence = 'HIGH'
-    } else if (actualResultMetric > exp.baseline_metric) {
-      exp.verdict = 'ITERATE'
-      exp.attribution_confidence = 'MEDIUM'
-    } else {
-      exp.verdict = 'ABANDON'
-      exp.attribution_confidence = 'LOW'
-    }
-
-    if (process.env.DATABASE_URL) {
-      try {
-        await query(
-          `UPDATE ceo_experiments SET
-            actual_result_metric = $1, revenue_recovered_usd = $2,
-            verdict = $3, attribution_confidence = $4, completed_at = NOW()
-          WHERE id = $5`,
-          [exp.actual_result_metric, exp.revenue_recovered_usd, exp.verdict, exp.attribution_confidence, exp.id]
-        )
-      } catch (err) {
-        console.warn('[CEOExperimentEngine] DB update failed, using fallback:', err)
-      }
-    }
-
-    experiments[expIndex] = exp
-    saveFallbackExperiments(experiments)
-    return exp
+  public static async getExperimentsAwaitingEvaluation(): Promise<CEOExperiment[]> {
+    return (await getAll()).filter((experiment) => experiment.verdict === 'IN_PROGRESS');
   }
 }

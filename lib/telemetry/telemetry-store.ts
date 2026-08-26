@@ -156,7 +156,7 @@ export async function recordTelemetryEvent(data: {
   console.log(`📊 Telemetry logged: ${data.eventName} (session: ${data.sessionId}, quality: ${data.trafficQualityClassification})`);
 }
 
-export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
+export async function getTelemetryEvents(options?: { strict?: boolean }): Promise<TelemetryEvent[]> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
@@ -200,6 +200,7 @@ export async function getTelemetryEvents(): Promise<TelemetryEvent[]> {
     return results;
   } catch (error) {
     console.error('❌ Error reading telemetry events:', error);
+    if (options?.strict) throw error;
     return [];
   }
 }
