@@ -1,5 +1,9 @@
 import { randomUUID } from 'crypto';
-import { getGoogleSheetsClient } from '@/lib/google-sheets';
+import {
+  getCachedSheetValues,
+  getGoogleSheetsClient,
+  invalidateCachedSheetValues,
+} from '@/lib/google-sheets';
 
 type SheetContext = {
   sheets: Awaited<ReturnType<typeof getGoogleSheetsClient>>;
@@ -10,11 +14,14 @@ export interface OperationLease {
   acquired: boolean;
   operation: string;
   attemptId: string;
+  startedAt: string;
   rowNumber?: number;
   reason?: string;
 }
 
 const ensuredSheets = new Set<string>();
+const ensurePromises = new Map<string, Promise<void>>();
+const sheetTitlePromises = new Map<string, { expiresAt: number; promise: Promise<Set<string>> }>();
 
 function quoteSheetTitle(title: string) {
   return `'${title.replace(/'/g, "''")}'`;
@@ -26,38 +33,64 @@ async function getContext(): Promise<SheetContext> {
   return { sheets: await getGoogleSheetsClient(), spreadsheetId };
 }
 
+async function getKnownSheetTitles(context: SheetContext): Promise<Set<string>> {
+  const cached = sheetTitlePromises.get(context.spreadsheetId);
+  if (cached && cached.expiresAt > Date.now()) return cached.promise;
+  const promise = context.sheets.spreadsheets.get({
+    spreadsheetId: context.spreadsheetId,
+    fields: 'sheets.properties.title',
+  }).then((spreadsheet) => new Set(
+    (spreadsheet.data.sheets || [])
+      .map((sheet: any) => String(sheet.properties?.title || ''))
+      .filter(Boolean)
+  ));
+  sheetTitlePromises.set(context.spreadsheetId, { expiresAt: Date.now() + 60_000, promise });
+  try {
+    return await promise;
+  } catch (error) {
+    sheetTitlePromises.delete(context.spreadsheetId);
+    throw error;
+  }
+}
+
 export async function ensureOperationalSheet(title: string, headers: string[]): Promise<SheetContext> {
   const context = await getContext();
   const cacheKey = `${context.spreadsheetId}:${title}:${headers.join('|')}`;
   if (ensuredSheets.has(cacheKey)) return context;
+  let pending = ensurePromises.get(cacheKey);
+  if (!pending) {
+    pending = (async () => {
+      const knownTitles = await getKnownSheetTitles(context);
+      if (!knownTitles.has(title)) {
+        await context.sheets.spreadsheets.batchUpdate({
+          spreadsheetId: context.spreadsheetId,
+          requestBody: { requests: [{ addSheet: { properties: { title } } }] },
+        });
+        knownTitles.add(title);
+      }
 
-  const spreadsheet = await context.sheets.spreadsheets.get({
-    spreadsheetId: context.spreadsheetId,
-    fields: 'sheets.properties.title',
-  });
-  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === title);
-  if (!exists) {
-    await context.sheets.spreadsheets.batchUpdate({
-      spreadsheetId: context.spreadsheetId,
-      requestBody: { requests: [{ addSheet: { properties: { title } } }] },
-    });
+      const rangeTitle = quoteSheetTitle(title);
+      const current = await context.sheets.spreadsheets.values.get({
+        spreadsheetId: context.spreadsheetId,
+        range: `${rangeTitle}!1:1`,
+      });
+      if ((current.data.values?.[0] || []).join('|') !== headers.join('|')) {
+        await context.sheets.spreadsheets.values.update({
+          spreadsheetId: context.spreadsheetId,
+          range: `${rangeTitle}!A1`,
+          valueInputOption: 'RAW',
+          requestBody: { values: [headers] },
+        });
+      }
+      ensuredSheets.add(cacheKey);
+    })();
+    ensurePromises.set(cacheKey, pending);
   }
-
-  const rangeTitle = quoteSheetTitle(title);
-  const current = await context.sheets.spreadsheets.values.get({
-    spreadsheetId: context.spreadsheetId,
-    range: `${rangeTitle}!1:1`,
-  });
-  if ((current.data.values?.[0] || []).join('|') !== headers.join('|')) {
-    await context.sheets.spreadsheets.values.update({
-      spreadsheetId: context.spreadsheetId,
-      range: `${rangeTitle}!A1`,
-      valueInputOption: 'RAW',
-      requestBody: { values: [headers] },
-    });
+  try {
+    await pending;
+  } finally {
+    ensurePromises.delete(cacheKey);
   }
-
-  ensuredSheets.add(cacheKey);
   return context;
 }
 
@@ -73,18 +106,15 @@ export async function appendOperationalRow(title: string, headers: string[], val
   if ((result.data.updates?.updatedRows || 0) !== 1) {
     throw new Error(`Durable write to ${title} was not confirmed.`);
   }
+  invalidateCachedSheetValues(title);
   const updatedRange = result.data.updates?.updatedRange || '';
   const rowNumber = Number(updatedRange.match(/![A-Z]+(\d+):/)?.[1] || 0);
   return { rowNumber, updatedRange };
 }
 
 export async function readOperationalRows(title: string, headers: string[]): Promise<string[][]> {
-  const context = await ensureOperationalSheet(title, headers);
-  const result = await context.sheets.spreadsheets.values.get({
-    spreadsheetId: context.spreadsheetId,
-    range: `${quoteSheetTitle(title)}!A2:${columnName(headers.length)}`,
-  });
-  return (result.data.values || []) as string[][];
+  await ensureOperationalSheet(title, headers);
+  return getCachedSheetValues(`${quoteSheetTitle(title)}!A2:${columnName(headers.length)}`);
 }
 
 export async function updateOperationalRow(
@@ -101,6 +131,7 @@ export async function updateOperationalRow(
     valueInputOption: 'RAW',
     requestBody: { values: [values.map((value) => value ?? '')] },
   });
+  invalidateCachedSheetValues(title);
 }
 
 const STATE_HEADERS = ['Key', 'JSON Value', 'Updated At'];
@@ -183,6 +214,7 @@ export async function acquireOperationLease(
     acquired,
     operation,
     attemptId,
+    startedAt,
     rowNumber: append.rowNumber,
     reason: acquired ? undefined : 'A recent execution already owns this operation lease.',
   };
@@ -194,12 +226,10 @@ export async function finishOperationLease(
   summary: unknown
 ) {
   if (!lease.rowNumber) return;
-  const rows = await readOperationalRows('GrowthOS Runs', RUN_HEADERS);
-  const current = rows[lease.rowNumber - 2] || [];
   await updateOperationalRow('GrowthOS Runs', RUN_HEADERS, lease.rowNumber, [
     lease.attemptId,
     lease.operation,
-    current[2] || new Date().toISOString(),
+    lease.startedAt,
     status,
     new Date().toISOString(),
     typeof summary === 'string' ? summary : JSON.stringify(summary),

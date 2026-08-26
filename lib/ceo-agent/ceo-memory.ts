@@ -83,6 +83,7 @@ function defaultState(): CEOGoalState {
 }
 
 let memoryState = defaultState();
+let memoryStateLoadedAt = 0;
 
 function hasSheetsConfiguration() {
   return Boolean(process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID);
@@ -90,12 +91,14 @@ function hasSheetsConfiguration() {
 
 export class CEOMemory {
   public static async getGoalState(): Promise<CEOGoalState> {
-    if (hasSheetsConfiguration()) {
+    if (hasSheetsConfiguration() && Date.now() - memoryStateLoadedAt > 30_000) {
       try {
         const persisted = await getLatestOperationalState<CEOGoalState>(STATE_KEY);
         if (persisted) memoryState = { ...defaultState(), ...persisted };
       } catch (error) {
         console.error('[CEOMemory] Durable state read failed:', error);
+      } finally {
+        memoryStateLoadedAt = Date.now();
       }
     }
 
@@ -119,6 +122,7 @@ export class CEOMemory {
       updated_at: new Date().toISOString(),
     };
     memoryState = updated;
+    memoryStateLoadedAt = Date.now();
     if (hasSheetsConfiguration()) await setOperationalState(STATE_KEY, updated);
     return updated;
   }

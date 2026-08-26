@@ -2,6 +2,8 @@ import { NextResponse } from 'next/server'
 import { CEOAgent } from '@/lib/ceo-agent/ceo-agent'
 import { validateCronAuth } from '@/lib/auth/cron-auth'
 
+export const maxDuration = 60
+
 // FSI Digital CEO OS Production Executive Route Handler (v2.1)
 async function handleCEORun(req: Request) {
   try {

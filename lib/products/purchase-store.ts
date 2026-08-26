@@ -1,5 +1,9 @@
 import { randomUUID } from 'crypto';
-import { getGoogleSheetsClient } from '@/lib/google-sheets';
+import {
+  getCachedSheetValues,
+  getGoogleSheetsClient,
+  invalidateCachedSheetValues,
+} from '@/lib/google-sheets';
 
 export interface PurchaseRecord {
   purchaseId: string;
@@ -230,6 +234,7 @@ export async function recordPurchase(data: {
       if ((appendResult.data.updates?.updatedRows || 0) !== 1) {
         throw new Error('Purchase ledger write was not confirmed by Google Sheets.');
       }
+      invalidateCachedSheetValues(SHEET_TITLE);
       console.log(`✅ Product purchase recorded in Google Sheets: ${purchaseId} for ${data.email}`);
     }
   } catch (sheetErr: any) {
@@ -241,7 +246,6 @@ export async function recordPurchase(data: {
 }
 
 export async function getAllPurchases(options?: { strict?: boolean }): Promise<PurchaseRecord[]> {
-  const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
   if (!spreadsheetId) {
@@ -249,12 +253,7 @@ export async function getAllPurchases(options?: { strict?: boolean }): Promise<P
   }
 
   try {
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: `${SHEET_TITLE}!A:AC`,
-    });
-
-    const rows = response.data.values || [];
+    const rows = await getCachedSheetValues(`${SHEET_TITLE}!A:AC`);
     const results: PurchaseRecord[] = [];
 
     // Skip header row (index 0)
@@ -292,6 +291,7 @@ export async function updatePurchaseDeliveryStatus(
     valueInputOption: 'RAW',
     requestBody: { values: [[deliveryStatus, providerMessageId]] },
   });
+  invalidateCachedSheetValues(SHEET_TITLE);
 }
 
 export async function updatePurchaseDeliveryFromProviderEvent(
@@ -320,6 +320,7 @@ export async function updatePurchaseDeliveryFromProviderEvent(
     valueInputOption: 'RAW',
     requestBody: { values: [[status]] },
   });
+  invalidateCachedSheetValues(SHEET_TITLE);
   return { updated: true };
 }
 
@@ -328,16 +329,10 @@ export async function getPurchaseByToken(token: string): Promise<PurchaseRecord 
 
   // 1. Check Google Sheets 'Product Purchases' table
   try {
-    const sheets = await getGoogleSheetsClient();
     const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
     if (spreadsheetId) {
-      const response = await sheets.spreadsheets.values.get({
-        spreadsheetId,
-        range: `${SHEET_TITLE}!A:AC`,
-      });
-
-      const rows = response.data.values || [];
+      const rows = await getCachedSheetValues(`${SHEET_TITLE}!A:AC`);
       for (let i = 1; i < rows.length; i++) {
         const row = rows[i];
         if (String(row[6] || '').trim().toLowerCase() === normalizedToken) {
@@ -353,7 +348,6 @@ export async function getPurchaseByToken(token: string): Promise<PurchaseRecord 
 }
 
 export async function getPurchasesByEmail(email: string): Promise<PurchaseRecord[]> {
-  const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
 
   if (!spreadsheetId) {
@@ -361,12 +355,7 @@ export async function getPurchasesByEmail(email: string): Promise<PurchaseRecord
   }
 
   try {
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: `${SHEET_TITLE}!A:T`,
-    });
-
-    const rows = response.data.values || [];
+    const rows = await getCachedSheetValues(`${SHEET_TITLE}!A:AC`);
     const results: PurchaseRecord[] = [];
 
     // Skip header row (index 0)
@@ -407,6 +396,7 @@ export async function updatePurchaseStatusByOrder(orderId: string, status: strin
     });
     matches.push(parseRow(rows[index]));
   }
+  if (matches.length > 0) invalidateCachedSheetValues(SHEET_TITLE);
   return matches;
 }
 

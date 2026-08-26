@@ -8,8 +8,10 @@ import {
 } from "@/lib/leads/scoring"
 
 const SCOPES = ["https://www.googleapis.com/auth/spreadsheets"]
+let cachedSheetsClient: ReturnType<typeof google.sheets> | null = null
 
 export async function getGoogleSheetsClient() {
+  if (cachedSheetsClient) return cachedSheetsClient
   const auth = new google.auth.GoogleAuth({
     credentials: {
       client_email: process.env.GOOGLE_SHEETS_CLIENT_EMAIL,
@@ -19,7 +21,59 @@ export async function getGoogleSheetsClient() {
   })
 
   const sheets = google.sheets({ version: "v4", auth })
+  cachedSheetsClient = sheets
   return sheets
+}
+
+type CachedSheetValues = {
+  expiresAt: number
+  promise: Promise<string[][]>
+}
+
+const sheetValuesCache = new Map<string, CachedSheetValues>()
+
+/**
+ * Short-lived, in-flight-aware cache for read-heavy executive/reporting paths.
+ * A single CEO run asks several specialists for the same ledgers in parallel;
+ * coalescing those reads keeps the run below Google Sheets' per-user quota
+ * without weakening payment or delivery verification.
+ */
+export async function getCachedSheetValues(range: string, ttlMs = 30_000): Promise<string[][]> {
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID
+  if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+
+  const key = `${spreadsheetId}:${range}`
+  const existing = sheetValuesCache.get(key)
+  if (existing && existing.expiresAt > Date.now()) {
+    return (await existing.promise).map((row) => [...row])
+  }
+
+  const promise = (async () => {
+    const sheets = await getGoogleSheetsClient()
+    const response = await sheets.spreadsheets.values.get({ spreadsheetId, range })
+    return (response.data.values || []) as string[][]
+  })()
+  sheetValuesCache.set(key, { expiresAt: Date.now() + ttlMs, promise })
+
+  try {
+    return (await promise).map((row) => [...row])
+  } catch (error) {
+    sheetValuesCache.delete(key)
+    throw error
+  }
+}
+
+export function invalidateCachedSheetValues(sheetTitle?: string) {
+  if (!sheetTitle) {
+    sheetValuesCache.clear()
+    return
+  }
+  const marker = `:${sheetTitle.replace(/^'+|'+$/g, '')}!`
+  for (const key of sheetValuesCache.keys()) {
+    if (key.includes(marker) || key.includes(`:'${sheetTitle.replace(/^'+|'+$/g, '')}'!`)) {
+      sheetValuesCache.delete(key)
+    }
+  }
 }
 
 // Unified lead capture with source tracking
@@ -182,7 +236,7 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
       });
     }
 
-
+    invalidateCachedSheetValues("Leads")
     console.log(`✅ Lead saved from source: ${data.source}`)
     return { success: true }
   } catch (error) {
@@ -297,16 +351,7 @@ function parseSheetLead(row: string[]): SheetLead {
 
 
 export async function getLeadsFromSheet(limit = 500) {
-  const sheets = await getGoogleSheetsClient()
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID
-
-  const response = await sheets.spreadsheets.values.get({
-    spreadsheetId,
-    range: "Leads!A:BW",
-  })
-
-
-  const rows = response.data.values || []
+  const rows = await getCachedSheetValues("Leads!A:BW")
   return rows
     .map((row, index) => ({ row, rowIndex: index + 1 }))
     .filter(({ row }) => row[0] && row[2] && row[2] !== "Email")
@@ -568,6 +613,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
       }
       console.log(`✅ Lead ${email} updated at row ${sheetRowNumber}`)
     }
+    invalidateCachedSheetValues("Leads")
     return { success: true }
   } catch (error) {
     console.error("❌ Error updating lead in Google Sheets:", error)
@@ -1425,12 +1471,7 @@ export async function getOutreachProspectsFromSheet(options?: { strict?: boolean
 
     await ensureOutreachProspectsSheet(sheets, spreadsheetId);
 
-    const response = await sheets.spreadsheets.values.get({
-      spreadsheetId,
-      range: "OutreachProspects!A:W",
-    });
-
-    const rows = response.data.values || [];
+    const rows = await getCachedSheetValues("OutreachProspects!A:W");
     const prospects: OutreachProspect[] = [];
 
     // Skip header row
