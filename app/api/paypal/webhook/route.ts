@@ -16,6 +16,7 @@ import {
   recordMembershipSubscription,
   type MembershipSubscriptionStatus,
 } from '@/lib/membership/membership-store'
+import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution'
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -79,6 +80,10 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
       lastPaymentAt: existing?.lastPaymentAt || '',
       cancelledAt: status === 'CANCELLED' ? occurredAt : existing?.cancelledAt || '',
       evidenceSource: `paypal_signed_webhook:${eventType}`,
+      actionId: existing?.actionId,
+      actionChannel: existing?.actionChannel,
+      actionCampaign: existing?.actionCampaign,
+      actionRecipientId: existing?.actionRecipientId,
     })
     const subscriber = await SubscriberRepository.getSubscriberByEmail(email)
     if (subscriber) {
@@ -117,7 +122,29 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
       currency: String(resource.amount?.currency || 'USD'),
       status: String(resource.state || 'completed'),
       occurredAt,
+      actionId: subscription.actionId,
+      actionChannel: subscription.actionChannel,
+      actionCampaign: subscription.actionCampaign,
+      actionRecipientId: subscription.actionRecipientId,
     })
+    if (subscription.actionId) {
+      await recordGrowthActionEvent({
+        eventId: `membership-payment:paypal:${paymentId}`,
+        actionId: subscription.actionId,
+        channel: subscription.actionChannel,
+        campaign: subscription.actionCampaign,
+        recipientId: subscription.actionRecipientId,
+        eventType: 'membership_payment_verified',
+        provider: 'paypal',
+        providerMessageId: '',
+        productId: 'funding-membership',
+        revenueUSD: paymentAmount,
+        revenueCAD: 0,
+        mrrUSD: 0,
+        referenceId: paymentId,
+        metadata: { subscriptionId, currency: paymentCurrency },
+      }).catch((error) => console.error('Membership payment attribution write failed:', error))
+    }
     await recordMembershipSubscription({
       ...subscription,
       status: 'ACTIVE',
@@ -239,6 +266,22 @@ export async function POST(request: NextRequest) {
           return NextResponse.json({ error: "Provider capture terms do not match the server-owned intent." }, { status: 409 })
       }
       await recordProductPaymentCapture(actualIntentId, captureId)
+      const capturedAction = actionContextFromAttribution(paymentIntent.attribution)
+      if (capturedAction) {
+        await recordGrowthActionEvent({
+          eventId: `purchase:paypal:${captureId}`,
+          ...capturedAction,
+          eventType: 'purchase_verified',
+          provider: 'paypal',
+          providerMessageId: '',
+          productId: paymentIntent.productId,
+          revenueUSD: paymentIntent.currency.toUpperCase() === 'USD' ? Number(capturedAmount) : 0,
+          revenueCAD: paymentIntent.currency.toUpperCase() === 'CAD' ? Number(capturedAmount) : 0,
+          mrrUSD: 0,
+          referenceId: captureId,
+          metadata: { orderId: actualOrderId, currency: paymentIntent.currency },
+        }).catch((error) => console.error('Verified PayPal purchase attribution write failed:', error))
+      }
       
       const allPurchases = await getAllPurchases()
       const existingPurchase = allPurchases.find(

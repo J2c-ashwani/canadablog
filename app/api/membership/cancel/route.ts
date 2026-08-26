@@ -43,6 +43,10 @@ export async function POST(request: Request) {
       lastPaymentAt: existing?.lastPaymentAt || '',
       cancelledAt,
       evidenceSource: 'member_requested_paypal_api_cancellation',
+      actionId: existing?.actionId,
+      actionChannel: existing?.actionChannel,
+      actionCampaign: existing?.actionCampaign,
+      actionRecipientId: existing?.actionRecipientId,
     });
     return NextResponse.json({ success: true, message: 'Subscription cancelled successfully.' });
   } catch (error: any) {

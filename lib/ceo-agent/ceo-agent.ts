@@ -76,14 +76,27 @@ export class CEOAgent {
         ProductAgent.auditProduct(),
         getQueuedGrowthOSEvents(),
       ])
+      const goalState = await CEOMemory.getGoalState()
+      const sprintBaseline = goalState.sprint_baseline_initialized_at
+        ? goalState.sprint_baseline_verified_revenue_usd
+        : revenue.verifiedTotalRevenueUSD
+      const verifiedSprintRevenueUSD = Number(Math.max(0, revenue.verifiedTotalRevenueUSD - sprintBaseline).toFixed(2))
+      if (triggerSource !== 'verification' && !goalState.sprint_baseline_initialized_at) {
+        await CEOMemory.updateGoalState({
+          sprint_started_at: new Date().toISOString(),
+          sprint_ends_at: new Date(Date.now() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+          sprint_baseline_verified_revenue_usd: revenue.verifiedTotalRevenueUSD,
+          sprint_baseline_initialized_at: new Date().toISOString(),
+        })
+      }
       const scoreboard = await CEOScoreboard.calculateScoreboard(
-        revenue.verifiedMTDRevenueUSD,
+        verifiedSprintRevenueUSD,
         revenue.verifiedMRRUSD,
         revenue.activeMemberships,
         revenue.evidenceState
       )
       const pathToTarget = CEOScoreboard.calculatePathToTarget(
-        revenue.verifiedMTDRevenueUSD,
+        verifiedSprintRevenueUSD,
         scoreboard.monthlyRevenueTargetUSD,
         scoreboard.daysRemainingInMonth
       )
@@ -108,7 +121,7 @@ export class CEOAgent {
       const decisionBasis: CEODecisionBasis = {
         primary_bottleneck: primaryBottleneck,
         evidence_refs: [
-          `Product Purchases: $${revenue.verifiedMTDRevenueUSD.toFixed(2)} provider-verified MTD revenue`,
+          `30-day sprint: $${verifiedSprintRevenueUSD.toFixed(2)} provider-verified cash above the launch baseline of $${sprintBaseline.toFixed(2)}`,
           `Membership Subscriptions: ${revenue.activeMemberships} active / $${revenue.verifiedMRRUSD.toFixed(2)} verified MRR`,
           `Funnel Events: ${sales.pipeline.checkoutStartsCount} checkout starts in the evidence window`,
           `Email Events: ${sales.pipeline.deliveredCount} signed provider deliveries`,
@@ -162,7 +175,7 @@ export class CEOAgent {
         estimated_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
         decision_basis: decisionBasis,
         directives: [
-          'Distribute only the current $19/$29/$49/$79/$199 grant products and $49 CAD MCA product.',
+          'Distribute the self-serve $19/$29/$49/$79 grant products and $49 CAD MCA product; do not automate call-dependent $199 sales.',
           'Scale only cohorts with provider message IDs and verified downstream captures.',
           'Prioritize the first 10 provider-verified customers before broader strategy changes.',
         ],
@@ -218,7 +231,8 @@ export class CEOAgent {
         runId,
         status: scoreboard.status,
         evidenceState: revenue.evidenceState,
-        verifiedMTDRevenueUSD: revenue.verifiedMTDRevenueUSD,
+        verifiedSprintRevenueUSD,
+        sprintBaselineUSD: sprintBaseline,
         verifiedMRRUSD: revenue.verifiedMRRUSD,
       })
       return result
@@ -245,7 +259,7 @@ Run: ${runId}
 
 STATUS
 ${scoreboard.status} · Evidence: ${scoreboard.evidenceState}
-Verified MTD revenue: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()}
+Verified 30-day sprint cash: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()} by ${new Date(scoreboard.targetWindowEndsAt).toISOString().slice(0, 10)}
 Verified MRR: $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()}
 Active $29 memberships: ${scoreboard.activeMemberships}; additional memberships required for strict MRR target: ${scoreboard.membershipsRequiredForMRRTarget}
 
@@ -262,8 +276,14 @@ CEO DECISION
 ${decision.decision}
 
 CURRENT-PRODUCT PLANNING MIX FOR THE MONTHLY REVENUE GAP
-$29 membership: ${productMix.membership29Count}; $79 bundle: ${productMix.strategy79Count}; $49 plan: ${productMix.actionPlan49Count}; $199 product: ${productMix.session199Count}; $19 report: ${productMix.report19Count}; $2,500 services: 0
+$29 membership: ${productMix.membership29Count}; $79 bundle: ${productMix.strategy79Count}; $49 plan: ${productMix.actionPlan49Count}; $19 report: ${productMix.report19Count}; call-dependent $199 product: 0; $2,500 services: 0
 This is a planning model, not a forecast. Strict $10K MRR still requires 345 active $29 memberships.
+
+ACTION P&L — LAST 30 DAYS
+Qualified leads affected: ${revenue.actionPerformance.totalQualifiedLeadsAffected}; attributed payments: ${revenue.actionPerformance.totalPurchases}
+Attributed verified cash: $${revenue.actionPerformance.totalRevenueUSD.toFixed(2)} USD + $${revenue.actionPerformance.totalRevenueCAD.toFixed(2)} CAD; attributed active MRR: $${revenue.actionPerformance.totalAttributedMRRUSD.toFixed(2)}
+Verified revenue per qualified lead: $${revenue.actionPerformance.verifiedRevenuePerQualifiedLeadUSD.toFixed(2)}
+${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.decision} | ${action.campaign} | leads ${action.qualifiedLeadsAffected} | accepted ${action.providerAccepted} | delivered ${action.delivered} | clicks ${action.clicks} | checkouts ${action.checkouts} | payments ${action.purchases} | revenue $${action.revenueUSD.toFixed(2)} | MRR $${action.mrrUSD.toFixed(2)}`).join('\n') || 'No attributed commercial actions yet.'}
 
 AGENT HEALTH
 Revenue Agent: ${revenue.evidenceState}; Growth Agent: ${growth.pipelineStatus}; Sales Agent: live evidence; Product Agent: live purchase/delivery ledger

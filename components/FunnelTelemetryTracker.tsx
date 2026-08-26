@@ -27,6 +27,16 @@ function TelemetryTrackerInner() {
     const sessionId = getOrSetSessionId();
     const referrer = document.referrer || 'direct';
     const quality = calculateTrafficQuality();
+    const actionId = searchParams?.get('go_action') || localStorage.getItem('fsi_growth_action_id') || '';
+    const actionChannel = searchParams?.get('go_channel') || localStorage.getItem('fsi_growth_action_channel') || '';
+    const actionCampaign = searchParams?.get('go_campaign') || localStorage.getItem('fsi_growth_action_campaign') || '';
+    const actionRecipientId = searchParams?.get('go_recipient') || localStorage.getItem('fsi_growth_action_recipient') || '';
+    if (searchParams?.get('go_action')) {
+      localStorage.setItem('fsi_growth_action_id', actionId);
+      localStorage.setItem('fsi_growth_action_channel', actionChannel);
+      localStorage.setItem('fsi_growth_action_campaign', actionCampaign);
+      localStorage.setItem('fsi_growth_action_recipient', actionRecipientId);
+    }
 
     // Avoid logging duplicate page views for the exact same path/search combination in the same component lifecycle
     const currentPathString = pathname + (searchParams?.toString() ? '?' + searchParams.toString() : '');
@@ -48,6 +58,10 @@ function TelemetryTrackerInner() {
         trafficQualityClassification: quality.classification,
         timezone: quality.timezone,
         language: quality.language,
+        actionId,
+        actionChannel,
+        actionCampaign,
+        actionRecipientId,
       }),
     }).catch((err) => console.error('Failed to log telemetry page_view:', err));
 
@@ -110,6 +124,10 @@ function TelemetryTrackerInner() {
           trafficQualityClassification: quality.classification,
           timezone: quality.timezone,
           language: quality.language,
+          actionId,
+          actionChannel,
+          actionCampaign,
+          actionRecipientId,
         }),
       })
         .then((res) => {
@@ -142,6 +160,10 @@ function TelemetryTrackerInner() {
             trafficQualityClassification: quality.classification,
             timezone: quality.timezone,
             language: quality.language,
+            actionId,
+            actionChannel,
+            actionCampaign,
+            actionRecipientId,
           }),
         }).catch((err) => console.error('Failed to log telemetry emailClicked:', err));
       }

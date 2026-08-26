@@ -7,7 +7,12 @@ import {
 import { getTelemetryEvents, type TelemetryEvent } from '@/lib/telemetry/telemetry-store';
 import { getOutreachProspectsFromSheet, type OutreachProspect } from '@/lib/google-sheets';
 import { readOperationalRows } from '@/lib/growth-os/operations-store';
-import { getLatestMembershipSubscriptions, type MembershipSubscriptionRecord } from '@/lib/membership/membership-store';
+import {
+  getLatestMembershipSubscriptions,
+  getMembershipPayments,
+  type MembershipPaymentRecord,
+  type MembershipSubscriptionRecord,
+} from '@/lib/membership/membership-store';
 
 const EMAIL_EVENT_HEADERS = [
   'Event ID', 'Provider', 'Provider Message ID', 'Event Type', 'Recipient', 'Occurred At', 'Received At',
@@ -26,6 +31,8 @@ export interface GrowthOSEvidenceSnapshot {
     allTimeVerifiedUSD: number;
     mtdVerifiedUSD: number;
     mtdOneTimeRevenueUSD: number;
+    mtdMembershipRevenueUSD: number;
+    rolling30dVerifiedUSD: number;
     activeMemberships: number;
     verifiedMRRUSD: number;
     verifiedPurchaseRecords: number;
@@ -77,6 +84,15 @@ function dateValue(value: unknown) {
   return Number.isFinite(parsed) ? parsed : 0;
 }
 
+function isTestIdentity(email: string, name = '') {
+  const normalized = `${email} ${name}`.toLowerCase();
+  return normalized.includes('@example.com')
+    || normalized.includes('@test.com')
+    || normalized.includes('@fsidigital.ca')
+    || normalized.includes('test purchase')
+    || normalized.includes('audit test');
+}
+
 function isProviderVerifiedPurchase(purchase: PurchaseRecord) {
   const paymentStatus = String(purchase.paymentStatus || '').toLowerCase();
   const status = String(purchase.status || '').toLowerCase();
@@ -118,7 +134,7 @@ async function settleSource<T>(
 
 async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
   const sourceErrors: string[] = [];
-  const [subscribers, purchases, intents, telemetry, prospects, emailEvents, b2bOutreach, memberships] = await Promise.all([
+  const [subscribers, purchases, intents, telemetry, prospects, emailEvents, b2bOutreach, memberships, membershipPayments] = await Promise.all([
     settleSource('Leads', () => SubscriberRepository.getAllSubscribers(true, true), [], sourceErrors),
     settleSource('Product Purchases', () => getAllPurchases({ strict: true }), [], sourceErrors),
     settleSource('Payment Intents', getAllProductPaymentIntents, [], sourceErrors),
@@ -127,6 +143,7 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
     settleSource('Email Events', () => readOperationalRows('Email Events', EMAIL_EVENT_HEADERS), [], sourceErrors),
     settleSource('Outreach Leads', () => readOperationalRows('Outreach Leads', B2B_OUTREACH_HEADERS), [], sourceErrors),
     settleSource('Membership Subscriptions', getLatestMembershipSubscriptions, [], sourceErrors),
+    settleSource('Membership Payments', getMembershipPayments, [], sourceErrors),
   ] as const) as [
     SubscriberProfile[],
     PurchaseRecord[],
@@ -136,19 +153,43 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
     string[][],
     string[][],
     MembershipSubscriptionRecord[],
+    MembershipPaymentRecord[],
   ];
 
   const now = new Date();
   const monthStart = Date.UTC(now.getUTCFullYear(), now.getUTCMonth(), 1);
   const thirtyDaysAgo = now.getTime() - 30 * 24 * 60 * 60 * 1000;
   const oneDayAgo = now.getTime() - 24 * 60 * 60 * 1000;
-  const verifiedPurchases = purchases.filter(isProviderVerifiedPurchase);
+  const verifiedPurchases = purchases.filter((purchase) =>
+    isProviderVerifiedPurchase(purchase) && !isTestIdentity(purchase.email, purchase.name)
+  );
   const verifiedMtdPurchases = verifiedPurchases.filter((purchase) => dateValue(purchase.createdAt) >= monthStart);
   const verified30dPurchases = verifiedPurchases.filter((purchase) => dateValue(purchase.createdAt) >= thirtyDaysAgo);
+  const verifiedMembershipPayments = membershipPayments.filter((payment) =>
+    Boolean(payment.paymentId)
+    && payment.currency.toUpperCase() === 'USD'
+    && payment.status.toLowerCase() === 'completed'
+    && !isTestIdentity(payment.email)
+  );
+  const verifiedMtdMembershipPayments = verifiedMembershipPayments.filter((payment) => dateValue(payment.occurredAt) >= monthStart);
+  const verified30dMembershipPayments = verifiedMembershipPayments.filter((payment) => dateValue(payment.occurredAt) >= thirtyDaysAgo);
+  const allTimeProductRevenueUSD = verifiedPurchases
+    .filter((purchase) => String(purchase.currency || 'USD').toUpperCase() === 'USD')
+    .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
+  const mtdProductRevenueUSD = verifiedMtdPurchases
+    .filter((purchase) => String(purchase.currency || 'USD').toUpperCase() === 'USD')
+    .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
+  const allTimeMembershipRevenueUSD = verifiedMembershipPayments.reduce((sum, payment) => sum + payment.amount, 0);
+  const mtdMembershipRevenueUSD = verifiedMtdMembershipPayments.reduce((sum, payment) => sum + payment.amount, 0);
+  const rolling30dProductRevenueUSD = verified30dPurchases
+    .filter((purchase) => String(purchase.currency || 'USD').toUpperCase() === 'USD')
+    .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
+  const rolling30dMembershipRevenueUSD = verified30dMembershipPayments.reduce((sum, payment) => sum + payment.amount, 0);
   const activeMembers = memberships.filter((membership) =>
     membership.status === 'ACTIVE'
     && Boolean(membership.providerVerifiedAt)
     && membership.subscriptionId.startsWith('I-')
+    && !isTestIdentity(membership.email)
   );
   const telemetry30d = telemetry.filter((event) => dateValue(event.timestamp) >= thirtyDaysAgo);
   const checkoutNames = new Set(['checkout_started', 'standalone_checkout_started', 'begin_checkout']);
@@ -187,9 +228,11 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
     evidenceState: sourceErrors.length === 0 ? 'VERIFIED' : sourceErrors.length < 3 ? 'PARTIAL' : 'UNKNOWN',
     sourceErrors,
     revenue: {
-      allTimeVerifiedUSD: Number(verifiedPurchases.reduce((sum, purchase) => sum + numberValue(purchase.amount), 0).toFixed(2)),
-      mtdVerifiedUSD: Number(verifiedMtdPurchases.reduce((sum, purchase) => sum + numberValue(purchase.amount), 0).toFixed(2)),
-      mtdOneTimeRevenueUSD: Number(verifiedMtdPurchases.reduce((sum, purchase) => sum + numberValue(purchase.amount), 0).toFixed(2)),
+      allTimeVerifiedUSD: Number((allTimeProductRevenueUSD + allTimeMembershipRevenueUSD).toFixed(2)),
+      mtdVerifiedUSD: Number((mtdProductRevenueUSD + mtdMembershipRevenueUSD).toFixed(2)),
+      mtdOneTimeRevenueUSD: Number(mtdProductRevenueUSD.toFixed(2)),
+      mtdMembershipRevenueUSD: Number(mtdMembershipRevenueUSD.toFixed(2)),
+      rolling30dVerifiedUSD: Number((rolling30dProductRevenueUSD + rolling30dMembershipRevenueUSD).toFixed(2)),
       activeMemberships: activeMembers.length,
       verifiedMRRUSD: Number(activeMembers.reduce((sum, membership) => sum + membership.amountUSD, 0).toFixed(2)),
       verifiedPurchaseRecords: verifiedPurchases.length,

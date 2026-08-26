@@ -77,7 +77,11 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     lastTouchReferrer: '',
     device: '',
     browser: '',
-    country: ''
+    country: '',
+    actionId: '',
+    actionChannel: '',
+    actionCampaign: '',
+    actionRecipientId: '',
   });
 
   // Extract multi-touch parameters on mount
@@ -89,6 +93,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     const firstTouchUtmSource = localStorage.getItem('fsi_first_touch_utm_source') || '';
     const firstTouchUtmMedium = localStorage.getItem('fsi_first_touch_utm_medium') || '';
     const firstTouchUtmCampaign = localStorage.getItem('fsi_first_touch_utm_campaign') || '';
+    const params = new URLSearchParams(window.location.search);
 
     const deviceMeta = getDeviceMetadata();
 
@@ -102,7 +107,11 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
       lastTouchReferrer: document.referrer || 'direct',
       device: deviceMeta.device || 'Desktop',
       browser: deviceMeta.browser || 'Other',
-      country: deviceMeta.country || 'Unknown'
+      country: deviceMeta.country || 'Unknown',
+      actionId: localStorage.getItem('fsi_growth_action_id') || params.get('go_action') || '',
+      actionChannel: localStorage.getItem('fsi_growth_action_channel') || params.get('go_channel') || '',
+      actionCampaign: localStorage.getItem('fsi_growth_action_campaign') || params.get('go_campaign') || '',
+      actionRecipientId: localStorage.getItem('fsi_growth_action_recipient') || params.get('go_recipient') || '',
     });
   }, []);
 

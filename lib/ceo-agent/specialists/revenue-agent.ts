@@ -1,5 +1,5 @@
-import { CEOActionLedger } from '../ledger/ceo-action-ledger'
 import { RevenueTools } from '../tools/revenue-tools'
+import { getActionPerformanceScorecard, type ActionPerformanceScorecard } from '@/lib/growth-os/action-scorecard'
 
 export interface HistoricalTransactionRecord {
   orderId: string
@@ -16,6 +16,7 @@ export interface RevenueAgentAudit {
   verifiedTotalRevenueUSD: number
   verifiedRevenueUSD: number
   verifiedMTDRevenueUSD: number
+  verified30DayRevenueUSD: number
   verifiedMRRUSD: number
   activeMemberships: number
   historicalPreCEODeploymentUSD: number
@@ -29,13 +30,14 @@ export interface RevenueAgentAudit {
   sourceErrors: string[]
   primaryLeakageSource: string
   recommendation: string
+  actionPerformance: ActionPerformanceScorecard
 }
 
 export class RevenueAgent {
   public static async auditRevenue(): Promise<RevenueAgentAudit> {
-    const [ledger, actionLedger] = await Promise.all([
+    const [ledger, actionPerformance] = await Promise.all([
       RevenueTools.getRevenueLedger(),
-      CEOActionLedger.getLedgerSummary(),
+      getActionPerformanceScorecard(),
     ])
     const ceoDeploymentTimestamp = process.env.CEO_DEPLOYMENT_TIMESTAMP || '2026-08-08T00:00:00.000Z'
     const deploymentMs = new Date(ceoDeploymentTimestamp).getTime()
@@ -64,12 +66,13 @@ export class RevenueAgent {
       verifiedTotalRevenueUSD: ledger.verifiedRevenueUSD,
       verifiedRevenueUSD: ledger.verifiedRevenueUSD,
       verifiedMTDRevenueUSD: ledger.verifiedMTDRevenueUSD,
+      verified30DayRevenueUSD: ledger.verified30DayRevenueUSD,
       verifiedMRRUSD: ledger.verifiedMRRUSD,
       activeMemberships: ledger.activeMemberships,
       historicalPreCEODeploymentUSD: Number(historicalPreCEODeploymentUSD.toFixed(2)),
       postCEODeploymentRevenueUSD: Number(postCEODeploymentRevenueUSD.toFixed(2)),
-      directlyAttributedToCEOUSD: actionLedger.totalRevenueRecoveredUSD,
-      recoveredByCEOUSD: actionLedger.totalRevenueRecoveredUSD,
+      directlyAttributedToCEOUSD: actionPerformance.totalRevenueUSD,
+      recoveredByCEOUSD: actionPerformance.totalRevenueUSD,
       historicalTransactions,
       unverifiedCandidateUSD: ledger.unverifiedCandidateUSD,
       excludedTestDataUSD: ledger.excludedTestDataUSD,
@@ -79,6 +82,7 @@ export class RevenueAgent {
         ? 'No provider-verified $29 membership subscriptions'
         : 'Insufficient provider-verified product distribution volume',
       recommendation: 'Measure each consented cohort from provider acceptance through delivery, click, checkout, capture, and revenue.',
+      actionPerformance,
     }
   }
 }

@@ -1,3 +1,9 @@
+import {
+  instrumentCommercialEmail,
+  recordGrowthActionEvent,
+  type GrowthActionContext,
+} from '@/lib/growth-os/action-attribution';
+
 export function escapeHtml(value: string) {
   if (!value) return '';
   return value
@@ -239,7 +245,7 @@ export async function sendEmail({
   companyName?: string;
   from?: string;
   forceResend?: boolean;
-}): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string }> {
+}): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string; actionId?: string }> {
   // Check for global mock (used to compile previews in Next.js ESM context)
   if (typeof global !== "undefined" && (global as any).mockSendEmailActive) {
     if ((global as any).mockSendEmailCallback) {
@@ -252,15 +258,57 @@ export async function sendEmail({
     return { success: true, provider: 'mock' };
   }
 
+  const instrumented = instrumentCommercialEmail({ html, text, to, tagType });
+  const persistAcceptance = async (
+    result: { success: boolean; provider?: string; providerMessageId?: string },
+    context: GrowthActionContext | null
+  ) => {
+    if (!result.success || !result.providerMessageId || !context) return;
+    await recordGrowthActionEvent({
+      eventId: `accepted:${result.provider}:${result.providerMessageId}`,
+      ...context,
+      eventType: 'provider_accepted',
+      provider: result.provider || '',
+      providerMessageId: result.providerMessageId,
+      productId: '',
+      revenueUSD: 0,
+      revenueCAD: 0,
+      mrrUSD: 0,
+      referenceId: result.providerMessageId,
+      metadata: { tagType },
+    }).catch((error) => console.error('Commercial email acceptance attribution could not be persisted:', error));
+  };
+
   // 1. PRIMARY: Always try Resend first (Clean, unbranded, professional signature)
-  const resendResult = await sendViaResend({ to, subject, html, text, tagType, companyName, from });
-  if (resendResult.success) return resendResult;
+  const resendResult = await sendViaResend({
+    to,
+    subject,
+    html: instrumented.html,
+    text: instrumented.text,
+    tagType,
+    companyName,
+    from,
+  });
+  if (resendResult.success) {
+    await persistAcceptance(resendResult, instrumented.context);
+    return { ...resendResult, actionId: instrumented.context?.actionId };
+  }
 
   // 2. FALLBACK 1: If Resend fails, skipped, or daily quota (100) is reached -> Failover to Brevo
   if (process.env.BREVO_API_KEY) {
     console.log(`🔄 Resend skipped/error encountered. Failing over to Brevo for ${to}...`);
-    const brevoResult = await sendViaBrevo({ to, subject, html, text, tagType, from });
-    if (brevoResult.success) return brevoResult;
+    const brevoResult = await sendViaBrevo({
+      to,
+      subject,
+      html: instrumented.html,
+      text: instrumented.text,
+      tagType,
+      from,
+    });
+    if (brevoResult.success) {
+      await persistAcceptance(brevoResult, instrumented.context);
+      return { ...brevoResult, actionId: instrumented.context?.actionId };
+    }
   }
 
   // Resend and Brevo are the only active production providers. Do not turn an

@@ -15,6 +15,7 @@ import {
   recordProductPaymentCapture,
 } from '@/lib/payments/product-payment-intents';
 import { grantEntitlements } from '@/lib/products/entitlements';
+import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
 
 // Global in-memory lock set to prevent concurrent purchase race conditions
 const activeLocks = new Set<string>();
@@ -196,6 +197,10 @@ export async function POST(request: NextRequest) {
       device: stringValue(attribution?.device),
       browser: stringValue(attribution?.browser),
       country: stringValue(attribution?.country) || existing?.country || '',
+      actionId: stringValue(attribution?.actionId),
+      actionChannel: stringValue(attribution?.actionChannel),
+      actionCampaign: stringValue(attribution?.actionCampaign),
+      actionRecipientId: stringValue(attribution?.actionRecipientId),
     };
 
     // Prices, product IDs, customer, and add-ons come only from the stored intent.
@@ -326,6 +331,22 @@ export async function POST(request: NextRequest) {
 
     const paypalCaptureId = 'captureId' in verification ? verification.captureId || '' : '';
     await recordProductPaymentCapture(paymentIntent.intentId, paypalCaptureId);
+    const capturedAction = actionContextFromAttribution(resolvedAttribution);
+    if (capturedAction) {
+      await recordGrowthActionEvent({
+        eventId: `purchase:paypal:${paypalCaptureId}`,
+        ...capturedAction,
+        eventType: 'purchase_verified',
+        provider: 'paypal',
+        providerMessageId: '',
+        productId,
+        revenueUSD: paymentIntent.currency.toUpperCase() === 'USD' ? expectedPrice : 0,
+        revenueCAD: paymentIntent.currency.toUpperCase() === 'CAD' ? expectedPrice : 0,
+        mrrUSD: 0,
+        referenceId: paypalCaptureId,
+        metadata: { orderId: paypalOrderId, currency: paymentIntent.currency },
+      }).catch((error) => console.error('Verified PayPal purchase attribution write failed:', error));
+    }
 
     // ── Record main purchase in Google Sheets ──
     const purchase = await recordPurchase({

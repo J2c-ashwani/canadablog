@@ -1,10 +1,26 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/payments/stripe';
 import { buildServerCheckout } from '@/lib/products/checkout';
+import { actionContextFromAttribution, parseTrackedGrowthToken, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
 
 export async function POST(request: NextRequest) {
   try {
-    const details = await buildServerCheckout(await request.json());
+    const input = await request.json();
+    const trustedAction = parseTrackedGrowthToken(request.cookies.get('fsi_growth_action_token')?.value || '');
+    const attribution = input.attribution && typeof input.attribution === 'object' ? { ...input.attribution } : {};
+    delete attribution.actionId;
+    delete attribution.actionChannel;
+    delete attribution.actionCampaign;
+    delete attribution.actionRecipientId;
+    input.attribution = attribution;
+    if (trustedAction) input.attribution = {
+      ...attribution,
+      actionId: trustedAction.actionId,
+      actionChannel: trustedAction.channel,
+      actionCampaign: trustedAction.campaign,
+      actionRecipientId: trustedAction.recipientId,
+    };
+    const details = await buildServerCheckout(input);
     const stripeCurrency = details.currency.toLowerCase();
     let expectedPrice = details.baseAmount;
     const lineItems: any[] = [
@@ -79,6 +95,22 @@ export async function POST(request: NextRequest) {
     });
 
     console.log(`✅ Stripe Checkout Session created for ${details.email}: ${session.id}`);
+    const action = actionContextFromAttribution(details.attribution);
+    if (action) {
+      await recordGrowthActionEvent({
+        eventId: `checkout:stripe:${session.id}`,
+        ...action,
+        eventType: 'checkout_started',
+        provider: 'stripe',
+        providerMessageId: '',
+        productId: details.productId,
+        revenueUSD: 0,
+        revenueCAD: 0,
+        mrrUSD: 0,
+        referenceId: session.id,
+        metadata: { expectedAmount: expectedPrice.toFixed(2), currency: details.currency },
+      }).catch((error) => console.error('Stripe checkout attribution write failed:', error));
+    }
 
     return NextResponse.json({
       sessionId: session.id,

@@ -24,6 +24,10 @@ export async function POST(request: NextRequest) {
       journeyId,
       funnelId,
       heuristicMetadata,
+      actionId,
+      actionChannel,
+      actionCampaign,
+      actionRecipientId,
     } = body;
 
     if (!eventName || !sessionId) {
@@ -50,6 +54,10 @@ export async function POST(request: NextRequest) {
       journeyId,
       funnelId,
       heuristicMetadata: heuristicMetadata ? String(heuristicMetadata) : undefined,
+      actionId: actionId ? String(actionId) : undefined,
+      actionChannel: actionChannel ? String(actionChannel) : undefined,
+      actionCampaign: actionCampaign ? String(actionCampaign) : undefined,
+      actionRecipientId: actionRecipientId ? String(actionRecipientId) : undefined,
     });
 
     return NextResponse.json({ success: true });

@@ -16,6 +16,7 @@ export interface CommercialScoreboard {
   membershipsRequiredForMRRTarget: number
   status: '🟢 ON TRACK' | '🟡 AT RISK' | '🔴 OFF TRACK'
   evidenceState: 'VERIFIED' | 'PARTIAL' | 'UNKNOWN'
+  targetWindowEndsAt: string
 }
 
 export interface RevenuePathToTarget {
@@ -63,6 +64,19 @@ function utcMonthTiming() {
   return { daysInMonth, daysElapsed: Math.max(1, day), daysRemaining: Math.max(0, daysInMonth - day + 1) }
 }
 
+function sprintTiming(startValue: string, endValue: string) {
+  const now = Date.now();
+  const start = new Date(startValue).getTime();
+  const end = new Date(endValue).getTime();
+  const validStart = Number.isFinite(start) ? start : now;
+  const validEnd = Number.isFinite(end) && end > validStart ? end : validStart + 30 * 24 * 60 * 60 * 1000;
+  return {
+    daysElapsed: Math.max(1, Math.ceil((now - validStart) / (24 * 60 * 60 * 1000))),
+    daysRemaining: Math.max(0, Math.ceil((validEnd - now) / (24 * 60 * 60 * 1000))),
+    targetWindowEndsAt: new Date(validEnd).toISOString(),
+  };
+}
+
 export class CEOScoreboard {
   public static async calculateScoreboard(
     verifiedRevenue = 0,
@@ -73,16 +87,16 @@ export class CEOScoreboard {
     const memoryState = await CEOMemory.getGoalState()
     const monthlyTarget = memoryState.monthly_revenue_target_usd
     const mrrTarget = memoryState.recurring_mrr_target_usd
-    const timing = utcMonthTiming()
+    const timing = sprintTiming(memoryState.sprint_started_at, memoryState.sprint_ends_at)
     const gap = Math.max(0, monthlyTarget - verifiedRevenue)
     const mrrGap = Math.max(0, mrrTarget - verifiedMRR)
     const requiredDailyPace = timing.daysRemaining > 0 ? Number((gap / timing.daysRemaining).toFixed(2)) : gap
     const currentDailyRunRate = Number((verifiedRevenue / timing.daysElapsed).toFixed(2))
-    const projectedMonthRevenue = currentDailyRunRate * timing.daysInMonth
+    const projectedMonthRevenue = currentDailyRunRate * 30
 
     let status: CommercialScoreboard['status'] = '🔴 OFF TRACK'
-    if (verifiedRevenue >= monthlyTarget && verifiedMRR >= mrrTarget) status = '🟢 ON TRACK'
-    else if (projectedMonthRevenue >= monthlyTarget * 0.8 || verifiedMRR >= mrrTarget * 0.8) status = '🟡 AT RISK'
+    if (verifiedRevenue >= monthlyTarget) status = '🟢 ON TRACK'
+    else if (projectedMonthRevenue >= monthlyTarget * 0.8) status = '🟡 AT RISK'
 
     return {
       monthlyRevenueTargetUSD: monthlyTarget,
@@ -100,6 +114,7 @@ export class CEOScoreboard {
       membershipsRequiredForMRRTarget: Math.ceil(mrrGap / 29),
       status,
       evidenceState,
+      targetWindowEndsAt: timing.targetWindowEndsAt,
     }
   }
 
@@ -110,15 +125,15 @@ export class CEOScoreboard {
   ): RevenuePathToTarget {
     const remaining = Math.max(0, targetUSD - currentVerifiedUSD)
     const requiredDaily = daysRemaining > 0 ? Number((remaining / daysRemaining).toFixed(2)) : remaining
-    const timing = utcMonthTiming()
-    const currentDaily = Number((currentVerifiedUSD / timing.daysElapsed).toFixed(2))
+    const daysElapsed = Math.max(1, 31 - Math.max(0, daysRemaining))
+    const currentDaily = Number((currentVerifiedUSD / daysElapsed).toFixed(2))
     const gapPct = targetUSD > 0 ? Number(((remaining / targetUSD) * 100).toFixed(1)) : 0
 
-    const membership29Count = Math.ceil((remaining * 0.40) / 29)
-    const strategy79Count = Math.ceil((remaining * 0.25) / 79)
-    const actionPlan49Count = Math.ceil((remaining * 0.20) / 49)
-    const session199Count = Math.ceil((remaining * 0.10) / 199)
-    const report19Count = Math.ceil((remaining * 0.05) / 19)
+    const membership29Count = Math.ceil((remaining * 0.30) / 29)
+    const strategy79Count = Math.ceil((remaining * 0.30) / 79)
+    const actionPlan49Count = Math.ceil((remaining * 0.25) / 49)
+    const session199Count = 0
+    const report19Count = Math.ceil((remaining * 0.15) / 19)
     const totalOrdersNeeded = membership29Count + strategy79Count + actionPlan49Count + session199Count + report19Count
     const assumedCheckoutConversion = 0.10
     const assumedLeadToCheckout = 0.08
@@ -149,9 +164,10 @@ export class CEOScoreboard {
       primaryBottleneck: 'Insufficient provider-verified checkouts and subscription activations',
       secondaryBottleneck: 'Insufficient measurable distribution to consented, product-matched cohorts',
       assumptions: [
-        'Illustrative mix: 40% $29 membership, 25% $79 bundle, 20% $49 plan, 10% $199 product, 5% $19 report.',
+        'Illustrative self-serve mix: 30% $29 membership, 30% $79 bundle, 25% $49 plan, 15% $19 report.',
+        '$199 1-on-1 strategy products are excluded from automated distribution because the solo operator cannot deliver calls.',
         'Planning assumptions only: 10% checkout-to-payment, 8% qualified-lead-to-checkout, 4% visitor-to-lead.',
-        'Strict $10K MRR requires 345 active $29 memberships; one-time products count toward monthly revenue, not MRR.',
+        'Strict $10K MRR requires 345 active $29 memberships; one-time products count toward 30-day cash, not MRR.',
       ],
     }
   }

@@ -18,6 +18,10 @@ export interface TelemetryEvent {
   journeyId?: string;
   funnelId?: string;
   heuristicMetadata?: string;
+  actionId?: string;
+  actionChannel?: string;
+  actionCampaign?: string;
+  actionRecipientId?: string;
 }
 
 const SHEET_TITLE = 'Funnel Events';
@@ -41,6 +45,10 @@ const TELEMETRY_HEADERS = [
   'Journey ID',
   'Funnel ID',
   'Heuristic Metadata',
+  'Action ID',
+  'Action Channel',
+  'Action Campaign',
+  'Action Recipient ID',
 ];
 
 async function ensureTelemetrySheet(
@@ -76,14 +84,14 @@ async function ensureTelemetrySheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:Q1`,
+    range: `${SHEET_TITLE}!A1:U1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== TELEMETRY_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:Q1`,
+      range: `${SHEET_TITLE}!A1:U1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [TELEMETRY_HEADERS],
@@ -110,6 +118,10 @@ export async function recordTelemetryEvent(data: {
   journeyId?: string;
   funnelId?: string;
   heuristicMetadata?: string;
+  actionId?: string;
+  actionChannel?: string;
+  actionCampaign?: string;
+  actionRecipientId?: string;
 }): Promise<void> {
   const sheets = await getGoogleSheetsClient();
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
@@ -139,11 +151,15 @@ export async function recordTelemetryEvent(data: {
     data.journeyId || '',
     data.funnelId || '',
     data.heuristicMetadata || '',
+    data.actionId || '',
+    data.actionChannel || '',
+    data.actionCampaign || '',
+    data.actionRecipientId || '',
   ];
 
   const appendResult = await sheets.spreadsheets.values.append({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A:Q`,
+    range: `${SHEET_TITLE}!A:U`,
     valueInputOption: 'RAW',
     requestBody: {
       values: [row],
@@ -167,7 +183,7 @@ export async function getTelemetryEvents(options?: { strict?: boolean }): Promis
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:Q`,
+      range: `${SHEET_TITLE}!A:U`,
     });
 
     const rows = response.data.values || [];
@@ -194,6 +210,10 @@ export async function getTelemetryEvents(options?: { strict?: boolean }): Promis
         journeyId: row[14] || '',
         funnelId: row[15] || '',
         heuristicMetadata: row[16] || '',
+        actionId: row[17] || '',
+        actionChannel: row[18] || '',
+        actionCampaign: row[19] || '',
+        actionRecipientId: row[20] || '',
       });
     }
 

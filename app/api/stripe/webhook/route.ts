@@ -7,6 +7,7 @@ import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 import { grantEntitlements } from '@/lib/products/entitlements';
+import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -128,6 +129,22 @@ export async function POST(request: NextRequest) {
       const serverAmount = Number(expectedAmount);
       if (!Number.isFinite(serverAmount) || session.amount_total !== Math.round(serverAmount * 100) || session.currency?.toUpperCase() !== String(currency || '').toUpperCase()) {
         throw new Error('Stripe session commercial terms did not match the server-owned checkout record');
+      }
+      const capturedAction = actionContextFromAttribution(attribution);
+      if (capturedAction) {
+        await recordGrowthActionEvent({
+          eventId: `purchase:stripe:${sessionId}`,
+          ...capturedAction,
+          eventType: 'purchase_verified',
+          provider: 'stripe',
+          providerMessageId: '',
+          productId,
+          revenueUSD: String(currency || '').toUpperCase() === 'USD' ? serverAmount : 0,
+          revenueCAD: String(currency || '').toUpperCase() === 'CAD' ? serverAmount : 0,
+          mrrUSD: 0,
+          referenceId: String(session.payment_intent || sessionId),
+          metadata: { checkoutSessionId: sessionId, currency },
+        }).catch((error) => console.error('Verified Stripe purchase attribution write failed:', error));
       }
 
       // Double-lock write check

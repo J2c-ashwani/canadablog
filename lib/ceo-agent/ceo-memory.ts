@@ -12,6 +12,10 @@ export interface CEOGoalState {
   primary_bottleneck: string
   estimated_monthly_leakage_usd: number
   priority_focus: string
+  sprint_started_at: string
+  sprint_ends_at: string
+  sprint_baseline_verified_revenue_usd: number
+  sprint_baseline_initialized_at: string
   updated_at: string
 }
 
@@ -70,6 +74,10 @@ function defaultState(): CEOGoalState {
     primary_bottleneck: 'No provider-verified revenue evidence loaded yet',
     estimated_monthly_leakage_usd: 0,
     priority_focus: 'Acquire the first 10 provider-verified customers from the current product set',
+    sprint_started_at: now.toISOString(),
+    sprint_ends_at: new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    sprint_baseline_verified_revenue_usd: 0,
+    sprint_baseline_initialized_at: '',
     updated_at: now.toISOString(),
   };
 }

@@ -63,7 +63,16 @@ export function FoundingMemberCheckout() {
           const response = await fetch('/api/paypal/capture-subscription', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ subscriptionId, email }),
+            body: JSON.stringify({
+              subscriptionId,
+              email,
+              attribution: {
+                actionId: localStorage.getItem('fsi_growth_action_id') || '',
+                actionChannel: localStorage.getItem('fsi_growth_action_channel') || '',
+                actionCampaign: localStorage.getItem('fsi_growth_action_campaign') || '',
+                actionRecipientId: localStorage.getItem('fsi_growth_action_recipient') || '',
+              },
+            }),
           });
           const result = await response.json();
           if (!response.ok) throw new Error(result.error || 'Subscription verification failed.');
@@ -108,6 +117,22 @@ export function FoundingMemberCheckout() {
     if ((window as any).gtag) {
       (window as any).gtag('event', 'membership_checkout_started', { value: 29, currency: 'USD' });
     }
+    fetch('/api/telemetry', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventName: 'checkout_started',
+        sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
+        pagePath: window.location.pathname,
+        referrer: document.referrer || 'direct',
+        productId: 'funding-membership',
+        revenue: '29.00',
+        actionId: localStorage.getItem('fsi_growth_action_id') || '',
+        actionChannel: localStorage.getItem('fsi_growth_action_channel') || '',
+        actionCampaign: localStorage.getItem('fsi_growth_action_campaign') || '',
+        actionRecipientId: localStorage.getItem('fsi_growth_action_recipient') || '',
+      }),
+    }).catch(() => {});
   };
 
   return (

@@ -6,6 +6,7 @@ import { CEOMemory } from '../ceo-memory'
 export interface RevenueLedgerSummary {
   verifiedRevenueUSD: number
   verifiedMTDRevenueUSD: number
+  verified30DayRevenueUSD: number
   verifiedMRRUSD: number
   activeMemberships: number
   unverifiedCandidateUSD: number
@@ -38,17 +39,20 @@ export class RevenueTools {
     const verified = realPurchases.filter(isProviderVerifiedPurchase)
     const unverified = realPurchases.filter((purchase) => !isProviderVerifiedPurchase(purchase))
     const excluded = purchases.filter((purchase) => isTestPurchase(purchase.email, purchase.name))
-    const verifiedRevenueUSD = verified.reduce((sum, purchase) => sum + amountOf(purchase.amount), 0)
+    const verifiedProductRevenueUSD = verified
+      .filter((purchase) => String(purchase.currency || 'USD').toUpperCase() === 'USD')
+      .reduce((sum, purchase) => sum + amountOf(purchase.amount), 0)
 
     return {
-      verifiedRevenueUSD: Number(verifiedRevenueUSD.toFixed(2)),
+      verifiedRevenueUSD: evidence.revenue.allTimeVerifiedUSD,
       verifiedMTDRevenueUSD: evidence.revenue.mtdVerifiedUSD,
+      verified30DayRevenueUSD: evidence.revenue.rolling30dVerifiedUSD,
       verifiedMRRUSD: evidence.revenue.verifiedMRRUSD,
       activeMemberships: evidence.revenue.activeMemberships,
       unverifiedCandidateUSD: Number(unverified.reduce((sum, purchase) => sum + amountOf(purchase.amount), 0).toFixed(2)),
       excludedTestDataUSD: Number(excluded.reduce((sum, purchase) => sum + amountOf(purchase.amount), 0).toFixed(2)),
       captureCount: new Set(verified.map((purchase) => purchase.paypalCaptureId).filter(Boolean)).size,
-      averageOrderValueUSD: verified.length > 0 ? Number((verifiedRevenueUSD / verified.length).toFixed(2)) : 0,
+      averageOrderValueUSD: verified.length > 0 ? Number((verifiedProductRevenueUSD / verified.length).toFixed(2)) : 0,
       historicalCapturedOrders: verified.map((purchase) => ({
         customer: purchase.email ? `Customer ${purchase.email.slice(0, 2)}***` : 'Customer',
         product: purchase.productId,
@@ -65,8 +69,11 @@ export class RevenueTools {
   public static async getRevenuePathToTarget(params?: { targetUSD?: number; daysRemaining?: number }) {
     const memory = await CEOMemory.getGoalState()
     const ledger = await this.getRevenueLedger()
+    // This utility has no sprint-baseline context; the CEO loop uses its
+    // frozen launch baseline directly. Here the rolling 30-day value is the
+    // least misleading standalone fallback.
     return CEOScoreboard.calculatePathToTarget(
-      ledger.verifiedMTDRevenueUSD,
+      ledger.verified30DayRevenueUSD,
       params?.targetUSD || memory.monthly_revenue_target_usd,
       params?.daysRemaining
     )

@@ -303,7 +303,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         lastTouchReferrer: '',
         device: '',
         browser: '',
-        country: ''
+        country: '',
+        actionId: '',
+        actionChannel: '',
+        actionCampaign: '',
+        actionRecipientId: '',
     });
     const [isRestoring, setIsRestoring] = useState(false);
     const [isRestoredSession, setIsRestoredSession] = useState(false);
@@ -462,7 +466,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             lastTouchReferrer: document.referrer || 'direct',
             device: deviceMeta.device || 'Desktop',
             browser: deviceMeta.browser || 'Other',
-            country: deviceMeta.country || 'Unknown'
+            country: deviceMeta.country || 'Unknown',
+            actionId: localStorage.getItem('fsi_growth_action_id') || params.get('go_action') || '',
+            actionChannel: localStorage.getItem('fsi_growth_action_channel') || params.get('go_channel') || '',
+            actionCampaign: localStorage.getItem('fsi_growth_action_campaign') || params.get('go_campaign') || '',
+            actionRecipientId: localStorage.getItem('fsi_growth_action_recipient') || params.get('go_recipient') || '',
         });
 
         const emailParam = params.get('email');

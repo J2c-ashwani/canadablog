@@ -27,6 +27,10 @@ export interface PurchaseRecord {
   paymentStatus?: string;
   deliveryStatus?: string;
   deliveryProviderMessageId?: string;
+  actionId?: string;
+  actionChannel?: string;
+  actionCampaign?: string;
+  actionRecipientId?: string;
 }
 
 const SHEET_TITLE = 'Product Purchases';
@@ -57,6 +61,10 @@ const PURCHASE_HEADERS = [
   'Payment Status',
   'Delivery Status',
   'Delivery Provider Message ID',
+  'Action ID',
+  'Action Channel',
+  'Action Campaign',
+  'Action Recipient ID',
 ];
 
 async function ensurePurchaseSheet(
@@ -91,14 +99,14 @@ async function ensurePurchaseSheet(
 
   const headerResponse = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A1:Y1`,
+    range: `${SHEET_TITLE}!A1:AC1`,
   });
 
   const header = headerResponse.data.values?.[0] || [];
   if (header.join('|') !== PURCHASE_HEADERS.join('|')) {
     await sheets.spreadsheets.values.update({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A1:Y1`,
+      range: `${SHEET_TITLE}!A1:AC1`,
       valueInputOption: 'RAW',
       requestBody: {
         values: [PURCHASE_HEADERS],
@@ -125,6 +133,10 @@ export async function recordPurchase(data: {
     device?: string;
     browser?: string;
     country?: string;
+    actionId?: string;
+    actionChannel?: string;
+    actionCampaign?: string;
+    actionRecipientId?: string;
   };
   status?: string;
   currency?: string;
@@ -168,6 +180,10 @@ export async function recordPurchase(data: {
     paymentStatus: data.paymentStatus || 'unverified',
     deliveryStatus: data.deliveryStatus || 'pending',
     deliveryProviderMessageId: data.deliveryProviderMessageId || '',
+    actionId: data.attribution?.actionId || '',
+    actionChannel: data.attribution?.actionChannel || '',
+    actionCampaign: data.attribution?.actionCampaign || '',
+    actionRecipientId: data.attribution?.actionRecipientId || '',
   };
 
   try {
@@ -200,10 +216,14 @@ export async function recordPurchase(data: {
         data.paymentStatus || 'unverified',
         data.deliveryStatus || 'pending',
         data.deliveryProviderMessageId || '',
+        data.attribution?.actionId || '',
+        data.attribution?.actionChannel || '',
+        data.attribution?.actionCampaign || '',
+        data.attribution?.actionRecipientId || '',
       ];
       const appendResult = await sheets.spreadsheets.values.append({
         spreadsheetId,
-        range: `${SHEET_TITLE}!A:Y`,
+        range: `${SHEET_TITLE}!A:AC`,
         valueInputOption: 'RAW',
         requestBody: { values: [row] },
       });
@@ -231,7 +251,7 @@ export async function getAllPurchases(options?: { strict?: boolean }): Promise<P
   try {
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
-      range: `${SHEET_TITLE}!A:Y`,
+      range: `${SHEET_TITLE}!A:AC`,
     });
 
     const rows = response.data.values || [];
@@ -261,7 +281,7 @@ export async function updatePurchaseDeliveryStatus(
   if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
 
   await ensurePurchaseSheet(sheets, spreadsheetId);
-  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:Y` });
+  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:AC` });
   const rows = response.data.values || [];
   const dataIndex = rows.findIndex((row) => row[0] === purchaseId);
   if (dataIndex < 0) throw new Error(`Purchase ${purchaseId} was not found in the ledger.`);
@@ -283,7 +303,7 @@ export async function updatePurchaseDeliveryFromProviderEvent(
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
   if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
   await ensurePurchaseSheet(sheets, spreadsheetId);
-  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:Y` });
+  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:AC` });
   const rows = response.data.values || [];
   const index = rows.findIndex((row) => row[24] === providerMessageId);
   if (index < 0) return { updated: false };
@@ -314,7 +334,7 @@ export async function getPurchaseByToken(token: string): Promise<PurchaseRecord 
     if (spreadsheetId) {
       const response = await sheets.spreadsheets.values.get({
         spreadsheetId,
-        range: `${SHEET_TITLE}!A:Y`,
+        range: `${SHEET_TITLE}!A:AC`,
       });
 
       const rows = response.data.values || [];
@@ -417,5 +437,9 @@ function parseRow(row: string[]): PurchaseRecord {
     paymentStatus: row[22] || '',
     deliveryStatus: row[23] || '',
     deliveryProviderMessageId: row[24] || '',
+    actionId: row[25] || '',
+    actionChannel: row[26] || '',
+    actionCampaign: row[27] || '',
+    actionRecipientId: row[28] || '',
   };
 }
