@@ -53,6 +53,7 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
   const resource = event.resource || {}
   const statusByEvent: Record<string, MembershipSubscriptionStatus> = {
     'BILLING.SUBSCRIPTION.ACTIVATED': 'ACTIVE',
+    'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE',
     'BILLING.SUBSCRIPTION.CANCELLED': 'CANCELLED',
     'BILLING.SUBSCRIPTION.SUSPENDED': 'SUSPENDED',
     'BILLING.SUBSCRIPTION.EXPIRED': 'EXPIRED',
