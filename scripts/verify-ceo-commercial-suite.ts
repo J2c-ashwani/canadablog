@@ -88,6 +88,10 @@ async function run() {
   const authorityDiscovery = fs.readFileSync(path.join(root, 'lib/growth-os/authority/opportunity-discovery.ts'), 'utf8');
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
+  const organicProductLadder = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadder.tsx'), 'utf8');
+  const onsiteClickRoute = fs.readFileSync(path.join(root, 'app/api/growth-os/onsite-click/route.ts'), 'utf8');
+  const blogRoute = fs.readFileSync(path.join(root, 'app/blog/[slug]/page.tsx'), 'utf8');
+  const pseoRoute = fs.readFileSync(path.join(root, 'app/grants/[province]/[city]/[industry]/page.tsx'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
@@ -98,6 +102,11 @@ async function run() {
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');
   const leaseFinalizer = operationsStore.slice(operationsStore.indexOf('export async function finishOperationLease'));
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');
+  assert(['$19', '$29', '$49', '$79', 'match-report', 'toolkit', 'action-plan', 'bundle', 'membership'].every((value) => organicProductLadder.includes(value)), 'Organic content distributes the complete self-serve product ladder');
+  assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
+  assert(onsiteClickRoute.includes('createTrackedGrowthUrl') && onsiteClickRoute.includes('fsi_organic_visitor') && onsiteClickRoute.includes('const OFFERS'), 'On-site product clicks use allowlisted signed first-party attribution');
+  assert(blogRoute.includes('<OrganicProductLadder surface="blog"') && pseoRoute.includes('<OrganicProductLadder'), 'Paid self-serve distribution is present on blog and city-industry organic templates');
+  assert(actionScorecard.includes("event.channel === 'organic_onsite'"), 'CEO action P&L treats unique first-party product clicks as qualified organic leads');
 
   console.log('All GrowthOS commercial reliability checks passed.');
 }

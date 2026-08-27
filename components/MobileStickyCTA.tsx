@@ -1,10 +1,11 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { X, Sparkles } from "lucide-react";
 
 export function MobileStickyCTA() {
+    const pathname = usePathname();
     const [isVisible, setIsVisible] = useState(false);
     const [isDismissed, setIsDismissed] = useState(false);
 
@@ -71,17 +72,18 @@ export function MobileStickyCTA() {
                 <div className="pr-6">
                     <div className="flex items-center gap-2 mb-1.5">
                         <Sparkles className="w-4 h-4 text-primary" />
-                        <h4 className="text-sm font-bold text-gray-900">Find Your Funding</h4>
+                        <h4 className="text-sm font-bold text-gray-900">Your Funding Match Report</h4>
                     </div>
                     <p className="text-xs text-gray-600 mb-3 leading-tight">
-                        See exactly how much your business qualifies for in 60 seconds.
+                        See matched programs, requirements, and next steps for $19 USD.
                     </p>
 
-                    <Link href="/calculator" className="block w-full">
-                        <button className="w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2.5 px-4 rounded-xl shadow-sm text-sm transition-all active:scale-[0.98]">
-                            Calculate Grant Match ➔
-                        </button>
-                    </Link>
+                    <a
+                        href={`/api/growth-os/onsite-click?surface=mobile-sticky&context=${encodeURIComponent(pathname || 'blog')}&offer=match-report`}
+                        className="block w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2.5 px-4 rounded-xl shadow-sm text-sm text-center transition-all active:scale-[0.98]"
+                    >
+                        Get My Report — $19 ➔
+                    </a>
                 </div>
             </div>
         </div>

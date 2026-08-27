@@ -118,7 +118,11 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       && membership.status === 'ACTIVE'
       && !isTestIdentity(membership.email)
     );
-    const qualifiedLeads = new Set(acceptedEvents.map((event) => event.recipientId).filter(Boolean)).size;
+    const organicClickEvents = actionEvents.filter((event) => event.eventType === 'click' && event.channel === 'organic_onsite');
+    const qualifiedLeads = new Set([
+      ...acceptedEvents.map((event) => event.recipientId),
+      ...organicClickEvents.map((event) => event.recipientId),
+    ].filter(Boolean)).size;
     const checkouts = new Set(actionEvents.filter((event) => event.eventType === 'checkout_started').map((event) => event.referenceId || event.eventId)).size;
     const productTransactions = new Set(actionPurchases.map((purchase) => purchase.paypalCaptureId || purchase.paypalOrderId).filter(Boolean));
     const membershipTransactions = new Set(actionMembershipPayments.map((payment) => payment.paymentId));
@@ -146,9 +150,9 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     } else if (purchasesCount >= 1 && revenueUSD > 0) {
       decision = 'SCALE';
       decisionReason = 'At least one provider-verified payment is directly attributed to this action.';
-    } else if (acceptedMessageIds.size >= 20 && checkouts === 0) {
+    } else if ((acceptedMessageIds.size >= 20 || organicClickEvents.length >= 20) && checkouts === 0) {
       decision = 'STOP';
-      decisionReason = 'Twenty provider-accepted messages produced no measured checkout; stop and replace the campaign.';
+      decisionReason = 'Twenty qualified contacts or first-party product clicks produced no measured checkout; stop and replace the action.';
     }
     const first = actionEvents[0];
     return {
@@ -175,7 +179,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
   }).sort((left, right) => right.revenueUSD - left.revenueUSD || right.mrrUSD - left.mrrUSD || right.providerAccepted - left.providerAccepted);
 
   const totalQualifiedLeadsAffected = new Set(recentEvents
-    .filter((event) => event.eventType === 'provider_accepted')
+    .filter((event) => event.eventType === 'provider_accepted' || (event.eventType === 'click' && event.channel === 'organic_onsite'))
     .map((event) => event.recipientId)
     .filter(Boolean)).size;
   const totalRevenueUSD = roundMoney(rows.reduce((sum, row) => sum + row.revenueUSD, 0));

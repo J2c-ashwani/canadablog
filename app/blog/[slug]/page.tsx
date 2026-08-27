@@ -15,7 +15,6 @@ import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import StickyTOC from '@/components/blog/StickyTOC';
-import InlineCTA from '@/components/blog/InlineCTA';
 import { FundingEstimator } from '@/components/seo/FundingEstimator';
 import { getBlogPostBySlug, getAllBlogPosts, blogCategories, getBlogPostContent, getBlogPostRichData } from '@/lib/data/blogPosts';
 import { generateMetadata as generateSEOMetadata } from '@/lib/seo';
@@ -28,7 +27,6 @@ import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/
 import FundingStrategyBox from '@/components/blog/FundingStrategyBox';
 import RelatedFundingPaths from '@/components/blog/RelatedFundingPaths';
 import EligibilitySnapshot from '@/components/blog/EligibilitySnapshot';
-import NeedHelpApplying from '@/components/blog/NeedHelpApplying';
 import TrustChecklist from '@/components/blog/TrustChecklist';
 import { MobileStickyCTA } from "@/components/MobileStickyCTA";
 import { ResearchBriefPanel } from '@/components/editorial/ResearchBriefPanel';
@@ -42,6 +40,7 @@ import TRLDiagnostic from '@/components/blog/TRLDiagnostic';
 import StackingDiagnostic from '@/components/blog/StackingDiagnostic';
 import ChecklistDiagnostic from '@/components/blog/ChecklistDiagnostic';
 import RDEDecisionEngine from '@/components/blog/RDEDecisionEngine';
+import { OrganicProductLadder } from '@/components/products/OrganicProductLadder';
 
 type RelatedFundingLink = {
   href: string;
@@ -424,13 +423,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     content: stripInlineSchemas(content),
   };
 
-  const wordCount = fullPost.content ? fullPost.content.replace(/<[^>]*>/g, ' ').split(/\s+/).filter(Boolean).length : 0;
-  const showNeedHelp = wordCount > 1500;
-
-  // Split content for InlineCTA injection
+  // Split every article so the paid self-serve next step appears while intent is active.
   let beforeCTA = content;
   let afterCTA = "";
-  if (fullPost.inlineCTA || researchProfile) {
+  if (content) {
     const h2Matches = [...content.matchAll(/<h2/gi)];
     if (h2Matches.length >= 2) {
       const splitIndex = h2Matches[Math.min(2, h2Matches.length - 1)].index;
@@ -712,7 +708,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              {(fullPost.inlineCTA || researchProfile || WAVE3_RDE_SLUGS.has(slug) || ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug)) && (
+              {(researchProfile || WAVE3_RDE_SLUGS.has(slug) || ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug)) && (
                 <div className="not-prose my-8">
                   {WAVE3_RDE_SLUGS.has(slug) ? (
                     <RDEDecisionEngine configId={slug} />
@@ -725,11 +721,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                       {researchProfile.interactiveTool === 'checklist' && <ChecklistDiagnostic />}
                       <IntentStrategyCTA cta={researchProfile.cta} />
                     </>
-                  ) : (
-                    fullPost.inlineCTA && <InlineCTA {...fullPost.inlineCTA} />
-                  )}
+                  ) : null}
                 </div>
               )}
+
+              <OrganicProductLadder surface="blog" context={slug} />
 
               {afterCTA && !researchProfile && (
                 <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">
@@ -746,11 +742,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     postKeywords={post.seo?.keywords}
                   />
                 </div>
-              )}
-
-              {/* Need Help Applying Component (Rendered conditionally for long-form content > 1500 words) */}
-              {showNeedHelp && !researchProfile && (
-                <NeedHelpApplying />
               )}
 
               {/* DYNAMIC ENRICHMENT: FAQ UI */}

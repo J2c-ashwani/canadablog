@@ -15,7 +15,6 @@ import Link from 'next/link';
 import EEATBadge from '@/components/blog/EEATBadge';
 import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
-import InlineCTA from '@/components/blog/InlineCTA';
 import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
 import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
@@ -37,6 +36,7 @@ import KeyLocalInstitutions from '@/components/pseo/blocks/KeyLocalInstitutions'
 import InsiderInsightQuotes from '@/components/pseo/blocks/InsiderInsightQuotes';
 import MicroFAQ from '@/components/pseo/blocks/MicroFAQ';
 import LocalResourceHub from '@/components/pseo/LocalResourceHub';
+import { OrganicProductLadder } from '@/components/products/OrganicProductLadder';
 
 const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
 
@@ -414,14 +414,10 @@ function UsPseoGrantContent({
                 </div>
             </div>
 
-            <div className="my-12">
-                <InlineCTA
-                    title={`Need help finding the right ${page.cityName} grants?`}
-                    description={`Our funding specialists help ${page.industryName} businesses compare federal, state, and local programs before they spend time on the wrong application.`}
-                    buttonText="Get Free Assessment"
-                    buttonLink="#calculator"
-                />
-            </div>
+            <OrganicProductLadder
+                surface="grants-city-industry"
+                context={`${page.provinceSlug}-${page.citySlug}-${page.industrySlug}`}
+            />
 
             <div className="my-8">
                 <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL!} adFormat="horizontal" style={{ minHeight: '120px', width: '100%' }} />
@@ -1074,15 +1070,10 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                         </div>
                                     </div>
 
-                                    {/* Inline CTA — Mid-page */}
-                                    <div className="my-12">
-                                        <InlineCTA
-                                            title={`Need help finding the right ${page.cityName} grants?`}
-                                            description={`Our funding specialists have helped ${page.industryName} businesses across ${page.provinceName} identify and successfully apply for government programs. Get a free eligibility assessment — no obligation.`}
-                                            buttonText="Get Free Assessment"
-                                            buttonLink="#calculator"
-                                        />
-                                    </div>
+                                    <OrganicProductLadder
+                                        surface="grants-city-industry"
+                                        context={`${page.provinceSlug}-${page.citySlug}-${page.industrySlug}`}
+                                    />
 
                                     {/* In-Content Horizontal Ad */}
                                     <div className="my-8">

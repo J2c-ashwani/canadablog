@@ -95,8 +95,8 @@ export default function GrantGuideCTA() {
                                 asChild
                                 className="w-full sm:w-auto bg-indigo-650 hover:bg-indigo-700 text-white font-bold text-[10px] h-8"
                             >
-                                <a href={`/calculator?email=${encodeURIComponent(email)}&phone=${encodeURIComponent(phone)}&utm_source=grant_guide_cta_success`}>
-                                    Check Eligibility (30s)
+                                <a href="/api/growth-os/onsite-click?surface=grant-guide&context=ultimate-grant-guide-2026&offer=toolkit">
+                                    Get the $29 Toolkit
                                 </a>
                             </Button>
                         </div>
