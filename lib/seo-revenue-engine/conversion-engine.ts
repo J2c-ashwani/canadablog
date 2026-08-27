@@ -13,14 +13,14 @@ export interface CommercialFunnelStructure {
     ctaUrl: string
     priceUSD: number
   }
-  bottomBlock: {
+  membershipBlock: {
     heading: string
     body: string
     ctaText: string
     ctaUrl: string
     priceUSD: number
   }
-  highTicketBlock: {
+  bundleBlock: {
     heading: string
     body: string
     ctaText: string
@@ -54,19 +54,19 @@ export class ConversionEngine {
         ctaUrl: 'https://www.fsidigital.ca/checkout?product=action_plan_49',
         priceUSD: 49
       },
-      bottomBlock: {
-        heading: 'Need Help Deciding Which Grants to Pursue?',
-        body: 'Book a 1-on-1 strategy and grant audit session with an FSI funding specialist to review your capital stack.',
-        ctaText: 'Book 1-on-1 Strategy Session — $199 USD',
-        ctaUrl: 'https://www.fsidigital.ca/checkout?product=strategy_session_199',
-        priceUSD: 199
+      membershipBlock: {
+        heading: 'Keep Funding Matches and Deadlines Current',
+        body: 'Use Funding Watch for recurring funding matches, deadline monitoring, briefing archives, and self-serve templates.',
+        ctaText: 'Start Funding Watch — $29 USD/month',
+        ctaUrl: 'https://www.fsidigital.ca/membership',
+        priceUSD: 29
       },
-      highTicketBlock: {
-        heading: 'Want Us to Handle Your Grant Filing End-to-End?',
-        body: 'For established tech, clean-tech, and manufacturing ventures targeting $250K+ in capital, our senior writing team manages the entire submission.',
-        ctaText: 'Request Grant Filing Assessment ($2,500+)',
-        ctaUrl: 'https://www.fsidigital.ca/contact?service=grant_filing_2500',
-        priceUSD: 2500
+      bundleBlock: {
+        heading: 'Build a Complete Self-Serve Funding Blueprint',
+        body: 'Combine the action plan, application templates, compliance checks, and capital-stacking tools in one instant-access bundle.',
+        ctaText: 'Get Complete Funding Blueprint — $79 USD',
+        ctaUrl: 'https://www.fsidigital.ca/products/bundle',
+        priceUSD: 79
       }
     }
   }

@@ -98,9 +98,9 @@ export class IntentEngine {
           primaryIntentCategory: 'APPLICATION',
           isEligibleForAggressiveMonetization: true
         },
-        recommendedOfferPriceUSD: 199,
-        offerName: '1-on-1 Executive Grant Strategy & Filing Assessment',
-        reason: 'Urgent application intent for direct capital execution'
+        recommendedOfferPriceUSD: 79,
+        offerName: 'Complete Self-Serve Funding Blueprint',
+        reason: 'Urgent application intent routed to the highest active self-serve product'
       }
     }
 

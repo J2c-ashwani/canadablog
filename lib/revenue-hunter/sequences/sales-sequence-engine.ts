@@ -23,37 +23,6 @@ export class SalesSequenceEngine {
     let ctaButtonText = ''
 
     switch (offer.tier) {
-      case 'TIER_FILING_2500':
-        subject = `Technical Grant Strategy for ${company} (${province} ${industry} allocation)`
-        bodyIntro = `We completed a funding assessment for <strong>${company}</strong> targeting non-dilutive capital in ${province}. Based on your focus in ${industry}, your profile aligns with major Canadian innovation and growth envelopes (including NRC IRAP, regional development grants, and SR&ED stacking).`
-        offerSection = `
-          <div style="background-color: #f8fafc; border-left: 4px solid #0284c7; padding: 16px; margin: 20px 0; border-radius: 4px;">
-            <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Full-Service Technical Grant Filing & Alignment</p>
-            <p style="margin: 0 0 12px; font-size: 14px; color: #334155;">
-              Our senior grant specialists handle the entire technical writing, narrative positioning, financial budget modeling, and direct submission management to maximize non-dilutive grant awards.
-            </p>
-            <p style="margin: 0; font-size: 14px; color: #0284c7; font-weight: 600;">
-              Target Envelope: $100,000 – $500,000+ Non-Dilutive Capital
-            </p>
-          </div>
-        `
-        ctaButtonText = 'Schedule Technical Qualification Review'
-        break
-
-      case 'TIER_STRATEGY_199':
-        subject = `1-on-1 Grant Strategy & Eligibility Audit for ${company}`
-        bodyIntro = `Reviewing ${company}'s funding intake data for ${province}, there are high-probability non-dilutive programs with active submission windows closing over the next 60 days.`
-        offerSection = `
-          <div style="background-color: #f8fafc; border-left: 4px solid #4f46e5; padding: 16px; margin: 20px 0; border-radius: 4px;">
-            <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">1-on-1 Grant Audit & Action Roadmap ($199 USD)</p>
-            <p style="margin: 0 0 12px; font-size: 14px; color: #334155;">
-              A 45-minute live working session with our principal funding advisor to review your project scope, eliminate rejection risks, and deliver your customized program application roadmap.
-            </p>
-          </div>
-        `
-        ctaButtonText = 'Reserve Your Strategy Session ($199)'
-        break
-
       case 'TIER_BUNDLE_79':
         subject = `Capital Stacking Toolkit for ${company} (${province})`
         bodyIntro = `Canadian funding programs yield the highest return when federal non-dilutive grants and provincial tax incentives are combined without exceeding stacking caps.`
@@ -66,6 +35,34 @@ export class SalesSequenceEngine {
           </div>
         `
         ctaButtonText = 'Access Capital Stacking Toolkit ($79)'
+        break
+
+      case 'TIER_REPORT_19':
+        subject = `Funding Match Report for ${company}`
+        bodyIntro = `Use your current business profile in ${province} to narrow the grant and funding programs worth reviewing first.`
+        offerSection = `
+          <div style="background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 16px; margin: 20px 0; border-radius: 4px;">
+            <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Personalized Funding Match Report ($19 USD)</p>
+            <p style="margin: 0 0 12px; font-size: 14px; color: #334155;">
+              Get a self-serve shortlist and next-step view based on your declared region, industry, stage, and funding objective.
+            </p>
+          </div>
+        `
+        ctaButtonText = 'Get My Funding Match Report ($19)'
+        break
+
+      case 'TIER_MEMBERSHIP_29':
+        subject = `Funding Watch for ${company} (${province})`
+        bodyIntro = `Funding windows and deadlines change throughout the year. Funding Watch keeps ${company}'s self-serve funding shortlist current without requiring a call or live session.`
+        offerSection = `
+          <div style="background-color: #f8fafc; border-left: 4px solid #7c3aed; padding: 16px; margin: 20px 0; border-radius: 4px;">
+            <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Funding Watch Membership ($29 USD/month)</p>
+            <p style="margin: 0 0 12px; font-size: 14px; color: #334155;">
+              Receive recurring funding matches, deadline monitoring, briefing archives, and self-serve templates matched to your declared profile.
+            </p>
+          </div>
+        `
+        ctaButtonText = 'Start Funding Watch ($29/month)'
         break
 
       case 'TIER_ACTION_PLAN_49':

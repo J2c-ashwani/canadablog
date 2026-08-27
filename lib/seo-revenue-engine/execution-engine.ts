@@ -52,14 +52,20 @@ export class SEOExecutionEngine {
       {
         placement: 'MID_PAGE',
         ctaText: 'Get Comprehensive Funding Action Plan — $49 USD',
-        targetUrl: 'https://www.fsidigital.ca/checkout?product=action_plan_49',
+        targetUrl: 'https://www.fsidigital.ca/products/action-plan',
         priceUSD: 49
       },
       {
         placement: 'BOTTOM',
-        ctaText: 'Book 1-on-1 Strategy & Audit Session — $199 USD',
-        targetUrl: 'https://www.fsidigital.ca/checkout?product=strategy_session_199',
-        priceUSD: 199
+        ctaText: 'Start Funding Watch — $29 USD/month',
+        targetUrl: 'https://www.fsidigital.ca/membership',
+        priceUSD: 29
+      },
+      {
+        placement: 'BOTTOM_SECONDARY',
+        ctaText: 'Get Complete Self-Serve Funding Blueprint — $79 USD',
+        targetUrl: 'https://www.fsidigital.ca/products/bundle',
+        priceUSD: 79
       }
     ]
 
@@ -162,8 +168,8 @@ export class SEOExecutionEngine {
         leadEmail: 'seo-crawler@google.com',
         leadName: 'Google Organic Visitor',
         company: 'Organic Search Demand',
-        tier: 'TIER_3_REPORT_49',
-        offer: `SEO Revenue Patch: ${patch.targetKeyword} (+$49 Plan / $199 Strategy CTAs)`,
+        tier: 'TIER_3_ACTION_PLAN_49',
+        offer: `SEO Revenue Patch: ${patch.targetKeyword} ($19/$49/$79 self-serve CTAs)`,
         decisionReason: `Deployed high-intent title, meta, answer-first block, and commercial CTAs on ${patch.urlPath}`,
         executionStatus: 'QUEUED',
         provider: 'SEOExecutionEngine',

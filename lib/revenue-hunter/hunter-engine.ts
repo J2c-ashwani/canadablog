@@ -48,7 +48,7 @@ export class RevenueHunterEngine {
       activeCohortId,
       activeCohortSize: 5,
       observationWindowHoursRemaining: 120,
-      currentStrategyDirective: 'Active Business Day Cohort Observation (Aug 14–19 factoring in weekend): Measuring response rates for top Tier-1 & Tier-2 prospects. No unmetered blast allowed.'
+      currentStrategyDirective: 'Measure the active self-serve $19/$29 membership/$49/$79 ladder in controlled consented cohorts. No call-dependent or unmetered blast is allowed.'
     }
   }
 
@@ -107,7 +107,13 @@ export class RevenueHunterEngine {
             leadEmail: prospect.leadEmail,
             leadName: prospect.leadName,
             company: prospect.companyName,
-            tier: prospect.recommendedOffer.tier === 'TIER_FILING_2500' ? 'TIER_1_FILING_2500' : (prospect.recommendedOffer.tier === 'TIER_STRATEGY_199' ? 'TIER_2_STRATEGY_199' : 'TIER_3_REPORT_49'),
+            tier: prospect.recommendedOffer.tier === 'TIER_BUNDLE_79'
+              ? 'TIER_1_BUNDLE_79'
+              : prospect.recommendedOffer.tier === 'TIER_MEMBERSHIP_29'
+                ? 'TIER_2_MEMBERSHIP_29'
+                : prospect.recommendedOffer.tier === 'TIER_ACTION_PLAN_49'
+                  ? 'TIER_3_ACTION_PLAN_49'
+                  : 'TIER_4_REPORT_19',
             offer: `${message.offerTier} ($${message.priceUSD} USD)`,
             decisionReason: `High $EV candidate ($${prospect.expectedValueUSD} EV, Rank: ${prospect.priorityRankScore})`,
             executionStatus: 'PROVIDER_ACCEPTED',

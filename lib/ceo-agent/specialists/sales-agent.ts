@@ -7,7 +7,7 @@ export interface RankedLeadOpportunity {
   email: string
   name: string
   company: string
-  tier: 'TIER_1_FILING_2500' | 'TIER_2_STRATEGY_199' | 'TIER_3_REPORT_49'
+  tier: 'TIER_1_BUNDLE_79' | 'TIER_2_MEMBERSHIP_29' | 'TIER_3_ACTION_PLAN_49' | 'TIER_4_REPORT_19'
   estimatedDealValueUSD: number
   expectedValueUSD: number
   industry: string
@@ -23,9 +23,10 @@ export interface PipelineStageMetrics {
   newLeads24h: number
   unprogressedLeads: number
   membershipCandidatesCount: number
-  tier1HighTicketCount: number
-  tier2StrategyCount: number
-  tier3ReportCount: number
+  tier1BundleCount: number
+  tier2MembershipCount: number
+  tier3ActionPlanCount: number
+  tier4ReportCount: number
   totalPipelineExpectedValueUSD: number
   contactedCount: number
   deliveredCount: number
@@ -76,7 +77,13 @@ export class SalesAgent {
       email: prospect.leadEmail,
       name: prospect.leadName,
       company: prospect.companyName,
-      tier: prospect.recommendedOffer.tier === 'TIER_STRATEGY_199' ? 'TIER_2_STRATEGY_199' : 'TIER_3_REPORT_49',
+      tier: prospect.recommendedOffer.tier === 'TIER_BUNDLE_79'
+        ? 'TIER_1_BUNDLE_79'
+        : prospect.recommendedOffer.tier === 'TIER_MEMBERSHIP_29'
+          ? 'TIER_2_MEMBERSHIP_29'
+          : prospect.recommendedOffer.tier === 'TIER_ACTION_PLAN_49'
+            ? 'TIER_3_ACTION_PLAN_49'
+            : 'TIER_4_REPORT_19',
       estimatedDealValueUSD: prospect.recommendedOffer.priceUSD,
       expectedValueUSD: prospect.expectedValueUSD,
       industry: prospect.industry,
@@ -95,9 +102,10 @@ export class SalesAgent {
       newLeads24h: evidence.funnel.newLeads24h,
       unprogressedLeads: unprogressed,
       membershipCandidatesCount: consentedSubscribers.filter((subscriber) => String(subscriber.subscriptionStatus || '').toUpperCase() !== 'ACTIVE').length,
-      tier1HighTicketCount: 0,
-      tier2StrategyCount: summary.tierBreakdown.tierStrategy199Count,
-      tier3ReportCount: summary.tierBreakdown.tierBundle79Count + summary.tierBreakdown.tierActionPlan49Count + summary.tierBreakdown.tierReport19Count,
+      tier1BundleCount: summary.tierBreakdown.tierBundle79Count,
+      tier2MembershipCount: summary.tierBreakdown.tierMembership29Count,
+      tier3ActionPlanCount: summary.tierBreakdown.tierActionPlan49Count,
+      tier4ReportCount: summary.tierBreakdown.tierReport19Count,
       totalPipelineExpectedValueUSD: summary.totalPipelineExpectedValueUSD,
       contactedCount: contacted,
       deliveredCount: evidence.outreach.emailDelivered,
@@ -118,7 +126,7 @@ export class SalesAgent {
       primaryBottleneck: evidence.revenue.activeMemberships === 0
         ? 'Zero provider-verified membership activations'
         : `${unprogressed} consented leads have no verified commercial progression.`,
-      recommendation: 'Distribute the current $19/$29/$49/$79/$199 offers in controlled cohorts and scale only provider-verified winners.',
+      recommendation: 'Distribute the current $19/$29/$49/$79 self-serve offers in controlled cohorts and scale only provider-verified winners.',
     }
   }
 }

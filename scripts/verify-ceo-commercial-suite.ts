@@ -14,6 +14,8 @@ import {
 } from '../lib/leads/commercial-eligibility';
 import { B2BOutreachEngine } from '../lib/leads/B2BOutreachEngine';
 import { buildMCAReadinessReport } from '../lib/mca/readiness-report';
+import { ExpectedRevenueModel } from '../lib/revenue-hunter/models/expected-revenue';
+import { IntentEngine } from '../lib/seo-revenue-engine/intent-engine';
 
 function assert(condition: unknown, message: string) {
   if (!condition) throw new Error(message);
@@ -86,6 +88,23 @@ async function run() {
   });
   assert(mcaReport.score === 100 && mcaReport.requestToRevenueRatio === 1.25, 'MCA readiness score is deterministic from declared profile data');
   assert(mcaReport.notChecked.some((item) => item.includes('Bank-statement transactions')), 'MCA report explicitly discloses that transaction content is not inspected');
+  const highIntentLead = ExpectedRevenueModel.calculateExpectedRevenue({
+    email: 'founder@business.ca', readinessScore: 75, engagementScore: 60, fundingAmount: '$250,000', industry: 'technology', companySize: '10-49',
+  });
+  assert(highIntentLead.recommendedOffer.tier === 'TIER_BUNDLE_79' && highIntentLead.recommendedOffer.priceUSD === 79, 'Revenue Hunter routes high-intent leads to the highest active self-serve offer');
+  const monitoringLead = ExpectedRevenueModel.calculateExpectedRevenue({
+    email: 'subscriber@business.ca', readinessScore: 50, engagementScore: 20, leadActivity: 'newsletter weekly deadline alert',
+  });
+  assert(monitoringLead.recommendedOffer.tier === 'TIER_MEMBERSHIP_29' && monitoringLead.recommendedOffer.priceUSD === 29, 'Revenue Hunter routes recurring monitoring intent to the $29 membership');
+  const activeSearchLead = ExpectedRevenueModel.calculateExpectedRevenue({
+    email: 'searcher@business.ca', fundingAmount: '$100,000', engagementScore: 100,
+  });
+  assert(activeSearchLead.recommendedOffer.tier === 'TIER_ACTION_PLAN_49', 'Revenue Hunter routes an explicit funding requirement to the $49 action plan');
+  const discoveryLead = ExpectedRevenueModel.calculateExpectedRevenue({
+    email: 'discovery@business.ca', engagementScore: 100,
+  });
+  assert(discoveryLead.recommendedOffer.tier === 'TIER_REPORT_19', 'A legacy default engagement score never fabricates high purchase intent');
+  assert(IntentEngine.classifyKeyword('grant application help').recommendedOfferPriceUSD === 79, 'SEO intent engine routes application demand to the self-serve $79 blueprint');
 
   const root = process.cwd();
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
@@ -123,6 +142,14 @@ async function run() {
   const mcaRecoveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-recovery.ts'), 'utf8');
   const evidenceMetrics = fs.readFileSync(path.join(root, 'lib/growth-os/evidence-metrics.ts'), 'utf8');
   const deliveryRecovery = fs.readFileSync(path.join(root, 'lib/products/delivery-recovery.ts'), 'utf8');
+  const salesAgent = fs.readFileSync(path.join(root, 'lib/ceo-agent/specialists/sales-agent.ts'), 'utf8');
+  const salesSequence = fs.readFileSync(path.join(root, 'lib/revenue-hunter/sequences/sales-sequence-engine.ts'), 'utf8');
+  const revenueOffers = fs.readFileSync(path.join(root, 'lib/revenue-hunter/models/expected-revenue.ts'), 'utf8');
+  const contentGapEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/content-gap-engine.ts'), 'utf8');
+  const conversionEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/conversion-engine.ts'), 'utf8');
+  const seoExecutionEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/execution-engine.ts'), 'utf8');
+  const seoMatrixEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/rte-matrix-engine.ts'), 'utf8');
+  const objectionHandler = fs.readFileSync(path.join(root, 'lib/revenue-hunter/objections/objection-handler.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
@@ -174,6 +201,14 @@ async function run() {
   assert(mcaDeliveryEmail.includes("tagType: 'mca-product-delivery'"), 'MCA transactional delivery is not misclassified as promotional outreach');
   assert(deliveryRecovery.includes("purchase.productId === 'mca-readiness-report'") && deliveryRecovery.includes('sendMCAReadinessReportDelivery'), 'Daily product-delivery recovery retries failed MCA report emails');
   assert(evidenceMetrics.includes('allTimeVerifiedCAD') && evidenceMetrics.includes('rolling30dVerifiedCAD'), 'CEO evidence reports verified CAD cash separately from USD');
+  const agentOfferSurface = `${salesAgent} ${salesSequence} ${revenueOffers}`;
+  assert(!agentOfferSurface.includes('TIER_STRATEGY_199') && !agentOfferSurface.includes('TIER_FILING_2500'), 'CEO and Revenue Hunter contain no call-dependent or service-dependent offer tiers');
+  assert(!agentOfferSurface.includes('Schedule Technical Qualification Review') && !agentOfferSurface.includes('Reserve Your Strategy Session'), 'Autonomous sales copy contains no call-booking CTA');
+  assert(salesSequence.includes('TIER_MEMBERSHIP_29') && salesSequence.includes('Start Funding Watch ($29/month)'), 'Autonomous sales copy has a dedicated $29 membership sequence');
+  const seoOfferSurface = `${contentGapEngine} ${conversionEngine} ${seoExecutionEngine} ${seoMatrixEngine}`;
+  assert(!seoOfferSurface.includes('strategy_session_199') && !seoOfferSurface.includes('grant_filing_2500'), 'SEO conversion engines contain no call-dependent or service-dependent offer');
+  assert(seoOfferSurface.includes('/membership') && seoOfferSurface.includes('/products/bundle'), 'SEO conversion engines distribute the $29 membership and $79 bundle');
+  assert(!objectionHandler.includes('reserve your session') && !objectionHandler.includes('book a working session'), 'Revenue Hunter reply guidance remains self-serve and call-free');
 
   console.log('All GrowthOS commercial reliability checks passed.');
 }

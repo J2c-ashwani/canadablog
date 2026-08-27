@@ -73,9 +73,10 @@ async function runSEOWarPipeline() {
     const serpAttackability = position <= 15 ? 'VERY_HIGH' : (position <= 35 ? 'HIGH' : 'MEDIUM')
 
     // Commercial Offer Modeling
-    const offerPrice = classification.recommendedOfferPriceUSD || 49
-    const offerTier = offerPrice === 2500 ? 'TIER_FILING_2500' : (offerPrice === 199 ? 'TIER_STRATEGY_199' : (offerPrice === 79 ? 'TIER_BUNDLE_79' : (offerPrice === 49 ? 'TIER_ACTION_PLAN_49' : 'TIER_REPORT_19')))
-    const convRate = offerPrice === 2500 ? 0.0015 : (offerPrice === 199 ? 0.008 : (offerPrice === 79 ? 0.012 : (offerPrice === 49 ? 0.018 : 0.025)))
+    const rawOfferPrice = classification.recommendedOfferPriceUSD || 49
+    const offerPrice = rawOfferPrice >= 79 ? 79 : rawOfferPrice >= 49 ? 49 : 19
+    const offerTier = offerPrice === 79 ? 'TIER_BUNDLE_79' : (offerPrice === 49 ? 'TIER_ACTION_PLAN_49' : 'TIER_REPORT_19')
+    const convRate = offerPrice === 79 ? 0.012 : (offerPrice === 49 ? 0.018 : 0.025)
 
     const currentMonthlyExpectedRevenueUSD = Number(((impressions * (currentCTR / 100)) * convRate * offerPrice).toFixed(2))
     const projectedMonthlyExpectedRevenueUSD = Number(((impressions * (targetCTR / 100)) * convRate * offerPrice).toFixed(2))

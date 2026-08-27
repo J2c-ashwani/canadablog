@@ -121,7 +121,7 @@ export class SEORevenueOrchestrator {
       lines.push(`   [✓] Title: "${opp.titleMetaAttackPlan?.recommendedTitle1}"`)
       lines.push(`   [✓] Meta:  "${opp.titleMetaAttackPlan?.recommendedMetaDescription.slice(0, 95)}..."`)
       lines.push(`   [✓] Hero Answer Block: "${opp.contentAttackPlan?.answerFirstBlock100Words.slice(0, 95)}..."`)
-      lines.push(`   [✓] Commercial CTAs: Hero Free Diagnostic ($0) ──► Mid-Page Action Plan ($49) ──► Strategy Session ($199)`)
+      lines.push(`   [✓] Commercial CTAs: Match Report ($19) ──► Funding Watch ($29/month) ──► Action Plan ($49) ──► Complete Blueprint ($79)`)
       lines.push(`   [✓] Authority Routing: ${opp.internalLinkPlan?.length || 0} server-rendered contextual links configured`)
       lines.push(`   EXPERIMENT ID:    ${top.experiment.experimentId}`)
       lines.push(`   OBSERVATION CLOCK: Stage 1 (24-72h Technical) ──► Stage 2 (7d Search) ──► Stage 3 (14d Rank) ──► Stage 4 (21-28d Revenue)\n`)

@@ -120,8 +120,8 @@ export interface ContentAttackPlan {
   commercialCTABlocks: {
     heroCTA: string
     midPageCTA: string
-    bottomStrategyCTA: string
-    highTicketFilingCTA: string
+    bottomMembershipCTA: string
+    highValueBundleCTA: string
   }
 }
 
@@ -205,7 +205,7 @@ export interface SEORevenueOpportunity {
   intentConfidence: QueryIntentConfidence
   serpAttackability: SERPAttackability
   competitorDifficulty: 'LOW' | 'MEDIUM' | 'HIGH' | 'EXTREME'
-  recommendedOfferTier: 'TIER_REPORT_19' | 'TIER_ACTION_PLAN_49' | 'TIER_BUNDLE_79' | 'TIER_STRATEGY_199' | 'TIER_FILING_2500'
+  recommendedOfferTier: 'TIER_REPORT_19' | 'TIER_ACTION_PLAN_49' | 'TIER_BUNDLE_79'
   offerPriceUSD: number
   currentMonthlyExpectedRevenueUSD: number
   projectedMonthlyExpectedRevenueUSD: number

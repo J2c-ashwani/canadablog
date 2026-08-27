@@ -35,12 +35,10 @@ export class ObjectionHandler {
         recommendedAction: 'ROUTE_TO_CHECKOUT',
         suggestedResponseHtml: `
           <p>Hi ${prospectName},</p>
-          <p>Fantastic — we would be glad to work with you on your funding applications.</p>
-          <p>You can reserve your session or complete your project intake directly here:</p>
-          <p><a href="https://www.fsidigital.ca/checkout" style="font-weight: bold; color: #0284c7;">Complete Intake & Proceed &rarr;</a></p>
-          <p>Once submitted, our team prepares your draft immediately.</p>
+          <p>Thanks for your interest. The Complete Funding Blueprint gives you instant, self-serve access to the action plan, application templates, compliance checks, and capital-stacking tools.</p>
+          <p><a href="https://www.fsidigital.ca/products/bundle" style="font-weight: bold; color: #0284c7;">Get the Complete Funding Blueprint — $79 USD &rarr;</a></p>
         `,
-        suggestedResponseText: `Hi ${prospectName},\n\nFantastic — you can reserve your session or complete your project intake here:\nhttps://www.fsidigital.ca/checkout\n\nBest regards,\nFSI Digital Team`
+        suggestedResponseText: `Hi ${prospectName},\n\nThanks for your interest. Get instant self-serve access to the Complete Funding Blueprint for $79 USD:\nhttps://www.fsidigital.ca/products/bundle\n\nBest regards,\nFSI Digital Team`
       }
     }
 
@@ -51,11 +49,10 @@ export class ObjectionHandler {
         recommendedAction: 'OFFER_DOWNSELL',
         suggestedResponseHtml: `
           <p>Hi ${prospectName},</p>
-          <p>Understood completely. If a full engagement or strategy session is not the right fit for your current cash flow, we also offer our self-serve <strong>Step-by-Step Funding Action Plan ($49 USD)</strong>.</p>
-          <p>It provides full application templates, scoring rubrics, and direct government portal links so you can file independently.</p>
-          <p><a href="https://www.fsidigital.ca/checkout?product=action_plan_49" style="font-weight: bold; color: #0284c7;">Access $49 Funding Action Plan &rarr;</a></p>
+          <p>Understood. The self-serve <strong>Personalized Funding Match Report ($19 USD)</strong> is the lowest-cost way to narrow the programs worth reviewing first.</p>
+          <p><a href="https://www.fsidigital.ca/products/funding-match-report" style="font-weight: bold; color: #0284c7;">Get the $19 Funding Match Report &rarr;</a></p>
         `,
-        suggestedResponseText: `Hi ${prospectName},\n\nUnderstood. We also offer our self-serve Funding Action Plan for $49 USD:\nhttps://www.fsidigital.ca/checkout?product=action_plan_49\n\nBest regards,\nFSI Digital Team`
+        suggestedResponseText: `Hi ${prospectName},\n\nUnderstood. Start with the self-serve Personalized Funding Match Report for $19 USD:\nhttps://www.fsidigital.ca/products/funding-match-report\n\nBest regards,\nFSI Digital Team`
       }
     }
 
@@ -66,10 +63,10 @@ export class ObjectionHandler {
       recommendedAction: 'PROVIDE_FAQ_CLARIFICATION',
       suggestedResponseHtml: `
         <p>Hi ${prospectName},</p>
-        <p>Thank you for reaching out. In our ${offerName}, we conduct a comprehensive evaluation of your company's R&D, capital expenditures, and hiring plans to map exact non-dilutive grant programs.</p>
-        <p>Let us know if you'd like to review your current grant eligibility or book a working session.</p>
+        <p>Thank you for reaching out. ${offerName} is a self-serve product built from the business profile and funding objective you provide.</p>
+        <p>You can review the current product scope and proceed directly from the product page—no call or live session is required.</p>
       `,
-      suggestedResponseText: `Hi ${prospectName},\n\nThank you for reaching out. We would be happy to review your grant eligibility.\n\nBest regards,\nFSI Digital Team`
+      suggestedResponseText: `Hi ${prospectName},\n\nThank you for reaching out. ${offerName} is self-serve and does not require a call or live session. You can review its scope and proceed directly from the product page.\n\nBest regards,\nFSI Digital Team`
     }
   }
 }

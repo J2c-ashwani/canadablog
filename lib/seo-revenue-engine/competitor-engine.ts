@@ -45,7 +45,7 @@ export class CompetitorEngine {
       '🎯 Instant 60-Second Interactive Grant Calculator & Eligibility Screener',
       '📊 Actionable $49 Comprehensive Funding Action Plan & Preflight Checklist',
       '🔗 Legal Multi-Grant Capital Stacking Framework (IRAP + SR&ED + Regional)',
-      '🤝 Direct routing to 1-on-1 Executive Strategy Sessions ($199) and Full-Service Filing ($2,500+)'
+      '📡 Recurring $29 Funding Watch alerts plus the $79 complete self-serve funding blueprint'
     ]
 
     return {

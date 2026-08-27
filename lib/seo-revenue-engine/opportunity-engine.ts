@@ -54,12 +54,13 @@ export class OpportunityEngine {
       if (classification.intentConfidence.primaryIntentCategory === 'NEWS') {
         offerPrice = 19 // Downgrade news queries to soft $19 / $0 diagnostic
       }
+      offerPrice = offerPrice >= 79 ? 79 : offerPrice >= 49 ? 49 : 19
 
-      const offerTier = offerPrice === 2500 ? 'TIER_FILING_2500' : (offerPrice === 199 ? 'TIER_STRATEGY_199' : (offerPrice === 79 ? 'TIER_BUNDLE_79' : (offerPrice === 49 ? 'TIER_ACTION_PLAN_49' : 'TIER_REPORT_19')))
+      const offerTier = offerPrice === 79 ? 'TIER_BUNDLE_79' : (offerPrice === 49 ? 'TIER_ACTION_PLAN_49' : 'TIER_REPORT_19')
       
       // Expected Conversion Rate:
-      // $19: ~2.5%, $49: ~1.8%, $199: ~0.8%, $2,500: ~0.15%
-      const convRate = offerPrice === 2500 ? 0.0015 : (offerPrice === 199 ? 0.008 : (offerPrice === 79 ? 0.012 : (offerPrice === 49 ? 0.018 : 0.025)))
+      // Current self-serve planning assumptions: $19 ~2.5%, $49 ~1.8%, $79 ~1.2%.
+      const convRate = offerPrice === 79 ? 0.012 : (offerPrice === 49 ? 0.018 : 0.025)
 
       const currentMonthlyExpectedRevenueUSD = Number((impressions * currentCTR * convRate * offerPrice).toFixed(2))
       const projectedMonthlyExpectedRevenueUSD = Number((impressions * targetCTR * convRate * offerPrice).toFixed(2))

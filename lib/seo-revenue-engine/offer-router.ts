@@ -5,7 +5,7 @@ import { KeywordClassification } from './types'
  * FSI Offer Router (War Mode v1.0)
  * 
  * Routes organic search visitors and newly captured leads to their optimal paid offer tier:
- * $0 Free Diagnostic ──► $19 Report ──► $49 Action Plan ──► $79 Bundle ──► $199 Strategy ──► $2,500 Filing
+ * $0 Free Diagnostic ──► $19 Report ──► $49 Action Plan ──► $79 Self-Serve Bundle
  */
 export class OfferRouter {
   public static routeOrganicLeadToOffer(input: {
@@ -16,14 +16,14 @@ export class OfferRouter {
   }): ProductOfferDefinition {
     const { keywordClassification, fundingRequirementUSD = 50000, companySize = '1-9', readinessScore = 50 } = input
 
-    // 1. Enterprise / Large Capital
+    // 1. Enterprise / large-capital intent still routes to the highest self-serve offer.
     if (fundingRequirementUSD >= 250000 && companySize !== '1-9' && readinessScore >= 65) {
-      return PRODUCT_OFFERS.TIER_FILING_2500
+      return PRODUCT_OFFERS.TIER_BUNDLE_79
     }
 
-    // 2. High-Intent / Strategy Session
-    if (keywordClassification.recommendedOfferPriceUSD === 199 || readinessScore >= 60) {
-      return PRODUCT_OFFERS.TIER_STRATEGY_199
+    // 2. High intent must remain self-serve for solo-operator fulfillment.
+    if (keywordClassification.recommendedOfferPriceUSD === 79 || readinessScore >= 60) {
+      return PRODUCT_OFFERS.TIER_BUNDLE_79
     }
 
     // 3. Action Plan ($49) — Best general conversion sweet spot

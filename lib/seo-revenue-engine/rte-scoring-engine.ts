@@ -8,7 +8,7 @@ import { RTEScoreBreakdown, SERPAttackability, CommercialIntentLevel } from './t
  * 2. Competitor Coverage (Tables, eligibility rules, funding caps)
  * 3. Differentiation (Decision frameworks, calculators, preflight checks)
  * 4. Freshness (2026 active dates, current intake windows)
- * 5. Commercial Alignment (Hero/Mid/Bottom CTAs to $0/$49/$199/$2.5K)
+ * 5. Commercial Alignment (self-serve CTAs to $19/$29/$49/$79)
  * 6. Internal Authority (Server-rendered bidirectional in-cluster links)
  * 7. SERP Attackability (Opportunity to displace weak non-gov rankings)
  * 8. Technical SEO (Schema, metadata, canonical, mobile touch)

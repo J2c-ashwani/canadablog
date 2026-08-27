@@ -35,9 +35,9 @@ export class ContentGapEngine {
 
     const commercialCTAs = {
       heroCTA: `🔎 Check Your 2026 ${titleKw} Eligibility (Free 60-Second Diagnostic) ──► Instant Funding Report ($0)`,
-      midPageCTA: `📊 Accelerate Your Application: Download the Comprehensive ${titleKw} Action Plan & Preflight Checklist ($49 USD) ──► https://www.fsidigital.ca/checkout?product=action_plan_49`,
-      bottomStrategyCTA: `🎯 Book a 1-on-1 Executive Funding Strategy Session ($199 USD) with an FSI Capital Specialist ──► https://www.fsidigital.ca/checkout?product=strategy_session_199`,
-      highTicketFilingCTA: `💼 Full-Service Grant Filing & Technical Writing Engagement ($2,500+ USD) ──► https://www.fsidigital.ca/contact?service=grant_filing_2500`
+      midPageCTA: `📊 Accelerate Your Application: Download the Comprehensive ${titleKw} Action Plan & Preflight Checklist ($49 USD) ──► https://www.fsidigital.ca/products/action-plan`,
+      bottomMembershipCTA: `📡 Monitor New Matches and Deadlines with Funding Watch ($29 USD/month) ──► https://www.fsidigital.ca/membership`,
+      highValueBundleCTA: `🧩 Get the Complete Self-Serve Funding Blueprint ($79 USD) ──► https://www.fsidigital.ca/products/bundle`
     }
 
     const fsiDifferentiators = [

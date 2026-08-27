@@ -5,12 +5,10 @@ export interface ProspectGraphSummary {
   totalLeadsAudited: number
   totalPipelineExpectedValueUSD: number
   tierBreakdown: {
-    tierFiling2500Count: number
-    tierFiling2500EV: number
-    tierStrategy199Count: number
-    tierStrategy199EV: number
     tierBundle79Count: number
     tierBundle79EV: number
+    tierMembership29Count: number
+    tierMembership29EV: number
     tierActionPlan49Count: number
     tierActionPlan49EV: number
     tierReport19Count: number
@@ -53,9 +51,8 @@ export class ProspectIntelligenceEngine {
           totalLeadsAudited: 0,
           totalPipelineExpectedValueUSD: 0,
           tierBreakdown: {
-            tierFiling2500Count: 0, tierFiling2500EV: 0,
-            tierStrategy199Count: 0, tierStrategy199EV: 0,
             tierBundle79Count: 0, tierBundle79EV: 0,
+            tierMembership29Count: 0, tierMembership29EV: 0,
             tierActionPlan49Count: 0, tierActionPlan49EV: 0,
             tierReport19Count: 0, tierReport19EV: 0
           },
@@ -94,26 +91,21 @@ export class ProspectIntelligenceEngine {
     calculatedProspects.sort((a, b) => b.priorityRankScore - a.priorityRankScore || b.expectedValueUSD - a.expectedValueUSD)
 
     let totalEV = 0
-    let filing2500Count = 0, filing2500EV = 0
-    let strat199Count = 0, strat199EV = 0
     let bundle79Count = 0, bundle79EV = 0
+    let membership29Count = 0, membership29EV = 0
     let plan49Count = 0, plan49EV = 0
     let rep19Count = 0, rep19EV = 0
 
     for (const p of calculatedProspects) {
       totalEV += p.expectedValueUSD
       switch (p.recommendedOffer.tier) {
-        case 'TIER_FILING_2500':
-          filing2500Count++
-          filing2500EV += p.expectedValueUSD
-          break
-        case 'TIER_STRATEGY_199':
-          strat199Count++
-          strat199EV += p.expectedValueUSD
-          break
         case 'TIER_BUNDLE_79':
           bundle79Count++
           bundle79EV += p.expectedValueUSD
+          break
+        case 'TIER_MEMBERSHIP_29':
+          membership29Count++
+          membership29EV += p.expectedValueUSD
           break
         case 'TIER_ACTION_PLAN_49':
           plan49Count++
@@ -130,12 +122,10 @@ export class ProspectIntelligenceEngine {
       totalLeadsAudited: calculatedProspects.length,
       totalPipelineExpectedValueUSD: Number(totalEV.toFixed(2)),
       tierBreakdown: {
-        tierFiling2500Count: filing2500Count,
-        tierFiling2500EV: Number(filing2500EV.toFixed(2)),
-        tierStrategy199Count: strat199Count,
-        tierStrategy199EV: Number(strat199EV.toFixed(2)),
         tierBundle79Count: bundle79Count,
         tierBundle79EV: Number(bundle79EV.toFixed(2)),
+        tierMembership29Count: membership29Count,
+        tierMembership29EV: Number(membership29EV.toFixed(2)),
         tierActionPlan49Count: plan49Count,
         tierActionPlan49EV: Number(plan49EV.toFixed(2)),
         tierReport19Count: rep19Count,

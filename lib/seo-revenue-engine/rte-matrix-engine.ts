@@ -140,7 +140,7 @@ export class RTEMatrixEngine {
         competitor1: '$2,500+ consultation only',
         competitor2: 'None (Public service)',
         competitor3: 'SaaS subscription ($99/mo)',
-        fsiTargetUpgraded: '4-Tier Revenue Ladder: Free Diagnostic ($0) ──► Action Plan ($49) ──► Strategy Session ($199) ──► Full Filing ($2,500+)'
+        fsiTargetUpgraded: 'Self-Serve Revenue Ladder: Match Report ($19) ──► Funding Watch ($29/month) ──► Action Plan ($49) ──► Complete Blueprint ($79)'
       },
       {
         dimension: '14. Trust & E-E-A-T',
@@ -176,7 +176,7 @@ export class RTEMatrixEngine {
         '🎯 Instant 60-Second Interactive Grant Calculator & Eligibility Screener',
         '📊 Actionable $49 Comprehensive Funding Action Plan & Preflight Checklist',
         '🔗 Legal Multi-Grant Capital Stacking Framework (IRAP + SR&ED + Regional)',
-        '🤝 Direct routing to 1-on-1 Executive Strategy Sessions ($199) and Full-Service Filing ($2,500+)'
+        '📡 Recurring $29 Funding Watch alerts plus the $79 complete self-serve funding blueprint'
       ],
       matrix
     }

@@ -7,7 +7,7 @@ export interface CEOActionRecord {
   leadEmail: string
   leadName: string
   company: string
-  tier: 'TIER_1_FILING_2500' | 'TIER_2_STRATEGY_199' | 'TIER_3_REPORT_49'
+  tier: 'TIER_1_BUNDLE_79' | 'TIER_2_MEMBERSHIP_29' | 'TIER_3_ACTION_PLAN_49' | 'TIER_4_REPORT_19' | 'LEGACY_CALL_DEPENDENT'
   offer: string
   decisionReason: string
   executionStatus: 'PROVIDER_ACCEPTED' | 'DELIVERED' | 'QUEUED' | 'FAILED' | 'SKIPPED'
@@ -64,7 +64,7 @@ function parseAction(row: string[]): CEOActionRecord | null {
       leadEmail: row[3] || '',
       leadName: row[4] || '',
       company: row[5] || '',
-      tier: (row[6] || 'TIER_3_REPORT_49') as CEOActionRecord['tier'],
+      tier: (row[6] || 'TIER_4_REPORT_19') as CEOActionRecord['tier'],
       offer: row[7] || '',
       decisionReason: row[8] || '',
       executionStatus: (row[9] || 'FAILED') as CEOActionRecord['executionStatus'],

@@ -1,9 +1,8 @@
 export type ProductOfferTier = 
   | 'TIER_REPORT_19' 
+  | 'TIER_MEMBERSHIP_29'
   | 'TIER_ACTION_PLAN_49' 
-  | 'TIER_BUNDLE_79' 
-  | 'TIER_STRATEGY_199' 
-  | 'TIER_FILING_2500'
+  | 'TIER_BUNDLE_79'
 
 export interface ProductOfferDefinition {
   tier: ProductOfferTier
@@ -31,6 +30,14 @@ export const PRODUCT_OFFERS: Record<ProductOfferTier, ProductOfferDefinition> = 
     idealCandidateProfile: 'Active SMEs planning Q3/Q4 grant applications needing step-by-step roadmaps',
     checkoutUrl: 'https://www.fsidigital.ca/products/action-plan'
   },
+  TIER_MEMBERSHIP_29: {
+    tier: 'TIER_MEMBERSHIP_29',
+    name: 'Funding Watch Membership',
+    priceUSD: 29,
+    targetIntentLevel: 'MEDIUM',
+    idealCandidateProfile: 'Founders who want recurring funding matches, deadline monitoring, and self-serve templates',
+    checkoutUrl: 'https://www.fsidigital.ca/membership'
+  },
   TIER_BUNDLE_79: {
     tier: 'TIER_BUNDLE_79',
     name: 'Complete Capital Stacking Toolkit',
@@ -39,22 +46,6 @@ export const PRODUCT_OFFERS: Record<ProductOfferTier, ProductOfferDefinition> = 
     idealCandidateProfile: 'High-growth companies aiming to stack federal, provincial, and tax credits (SR&ED + IRAP)',
     checkoutUrl: 'https://www.fsidigital.ca/products/bundle'
   },
-  TIER_STRATEGY_199: {
-    tier: 'TIER_STRATEGY_199',
-    name: '1-on-1 Executive Grant Strategy & Audit Session',
-    priceUSD: 199,
-    targetIntentLevel: 'HIGH',
-    idealCandidateProfile: 'Founders with $100K+ capital requirements seeking live expert alignment and review',
-    checkoutUrl: 'https://www.fsidigital.ca/audit'
-  },
-  TIER_FILING_2500: {
-    tier: 'TIER_FILING_2500',
-    name: 'Full-Service Grant Filing & Technical Writing Engagement',
-    priceUSD: 2500,
-    targetIntentLevel: 'ENTERPRISE',
-    idealCandidateProfile: 'Established Tech, CleanTech, AgriTech, and Manufacturing firms targeting $250K+ in non-dilutive capital',
-    checkoutUrl: 'https://www.fsidigital.ca/contact?service=grant_filing_2500'
-  }
 }
 
 export interface ExpectedRevenueCalculation {
@@ -99,8 +90,8 @@ export class ExpectedRevenueModel {
     const ind = (lead.industry || '').toLowerCase()
     const funding = (lead.fundingAmount || '').toLowerCase()
     const size = lead.companySize || '1-9'
-    const readiness = lead.readinessScore || 50
-    const engagement = lead.engagementScore || 0
+    const hasExplicitReadiness = typeof lead.readinessScore === 'number' && Number.isFinite(lead.readinessScore)
+    const readiness = hasExplicitReadiness ? lead.readinessScore! : 0
 
     // 1. Sector & Size Multipliers
     const isTechOrMfg = ['tech', 'software', 'mfg', 'manufacturing', 'clean', 'agri', 'life sciences', 'ai', 'biotech'].some(s => ind.includes(s))
@@ -111,6 +102,10 @@ export class ExpectedRevenueModel {
     const hasStartedCheckout = rawActivity.includes('checkoutstarted')
     const hasClickedLinks = rawActivity.includes('linkclicks') || rawActivity.includes('clicked')
     const hasPreviousOutreach = rawActivity.includes('b2b_day') || rawActivity.includes('cartrecovery')
+    const hasRecurringMonitoringIntent = rawActivity.includes('newsletter')
+      || rawActivity.includes('weekly')
+      || rawActivity.includes('alert')
+      || rawActivity.includes('deadline')
 
     // 3. Conditional Probability Modeling (Calibrated for B2B Commercial Intake)
     let pDelivery = 0.96
@@ -147,18 +142,18 @@ export class ExpectedRevenueModel {
     if (hasStartedCheckout) {
       recommendedOffer = PRODUCT_OFFERS.TIER_ACTION_PLAN_49
       primaryIntentDriver = 'Recent Abandoned Checkout — High Willingness to Transact'
-    } else if (isTechOrMfg && isLargeFunding && (readiness >= 65 || isMultiPersonTeam)) {
-      recommendedOffer = PRODUCT_OFFERS.TIER_STRATEGY_199
-      primaryIntentDriver = 'High-Intent Innovation SME — $199 Funding Strategy Product'
-    } else if (hasClickedLinks || readiness >= 60 || engagement >= 40) {
-      recommendedOffer = PRODUCT_OFFERS.TIER_STRATEGY_199
-      primaryIntentDriver = 'High Intent via Assessment / Multiple Link Clicks'
-    } else if (isLargeFunding || readiness >= 50) {
+    } else if (hasRecurringMonitoringIntent) {
+      recommendedOffer = PRODUCT_OFFERS.TIER_MEMBERSHIP_29
+      primaryIntentDriver = 'Recurring Funding Monitoring / Deadline Alert Intent'
+    } else if (
+      readiness >= 70
+      || (isTechOrMfg && isLargeFunding && (isMultiPersonTeam || hasClickedLinks))
+    ) {
       recommendedOffer = PRODUCT_OFFERS.TIER_BUNDLE_79
-      primaryIntentDriver = 'Active SME Seeking Multi-Program Capital Stacking'
-    } else if (readiness >= 40) {
+      primaryIntentDriver = 'High-Intent Funding Profile — Complete Self-Serve Blueprint'
+    } else if (hasClickedLinks || isLargeFunding || isMultiPersonTeam || readiness >= 45) {
       recommendedOffer = PRODUCT_OFFERS.TIER_ACTION_PLAN_49
-      primaryIntentDriver = 'Early Stage Discovery Needing Step-by-Step Action Plan'
+      primaryIntentDriver = 'Active Funding Search Needing a Step-by-Step Action Plan'
     } else {
       recommendedOffer = PRODUCT_OFFERS.TIER_REPORT_19
       primaryIntentDriver = 'Entry Level Grant Overview'
@@ -176,7 +171,10 @@ export class ExpectedRevenueModel {
     
     // Recency decay: slightly penalize stale leads > 90 days
     const recencyWeight = Math.max(0.5, 1 - (daysSinceIntake / 365) * 0.5)
-    const confidenceScore = Number(((readiness / 100) * 0.6 + (pOpen) * 0.4).toFixed(2))
+    const profileConfidence = hasExplicitReadiness
+      ? readiness / 100
+      : (isLargeFunding || isMultiPersonTeam || hasClickedLinks || hasRecurringMonitoringIntent ? 0.45 : 0.25)
+    const confidenceScore = Number((profileConfidence * 0.6 + pOpen * 0.4).toFixed(2))
     
     const priorityRankScore = Number((expectedValueUSD * confidenceScore * recencyWeight * 100).toFixed(1))
 
