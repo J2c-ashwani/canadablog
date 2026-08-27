@@ -260,6 +260,7 @@ Run: ${runId}
 STATUS
 ${scoreboard.status} · Evidence: ${scoreboard.evidenceState}
 Verified 30-day sprint cash: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()} by ${new Date(scoreboard.targetWindowEndsAt).toISOString().slice(0, 10)}
+Verified CAD cash (reported separately, never converted silently): $${revenue.verified30DayRevenueCAD.toFixed(2)} CAD in the last 30 days; $${revenue.verifiedTotalRevenueCAD.toFixed(2)} CAD all time
 Verified MRR: $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()}
 Active $29 memberships: ${scoreboard.activeMemberships}; additional memberships required for strict MRR target: ${scoreboard.membershipsRequiredForMRRTarget}
 

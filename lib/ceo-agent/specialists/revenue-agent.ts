@@ -14,9 +14,12 @@ export interface HistoricalTransactionRecord {
 
 export interface RevenueAgentAudit {
   verifiedTotalRevenueUSD: number
+  verifiedTotalRevenueCAD: number
   verifiedRevenueUSD: number
   verifiedMTDRevenueUSD: number
+  verifiedMTDRevenueCAD: number
   verified30DayRevenueUSD: number
+  verified30DayRevenueCAD: number
   verifiedMRRUSD: number
   activeMemberships: number
   historicalPreCEODeploymentUSD: number
@@ -64,9 +67,12 @@ export class RevenueAgent {
 
     return {
       verifiedTotalRevenueUSD: ledger.verifiedRevenueUSD,
+      verifiedTotalRevenueCAD: ledger.verifiedRevenueCAD,
       verifiedRevenueUSD: ledger.verifiedRevenueUSD,
       verifiedMTDRevenueUSD: ledger.verifiedMTDRevenueUSD,
+      verifiedMTDRevenueCAD: ledger.verifiedMTDRevenueCAD,
       verified30DayRevenueUSD: ledger.verified30DayRevenueUSD,
+      verified30DayRevenueCAD: ledger.verified30DayRevenueCAD,
       verifiedMRRUSD: ledger.verifiedMRRUSD,
       activeMemberships: ledger.activeMemberships,
       historicalPreCEODeploymentUSD: Number(historicalPreCEODeploymentUSD.toFixed(2)),

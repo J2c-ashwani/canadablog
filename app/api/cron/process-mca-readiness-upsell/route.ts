@@ -65,7 +65,7 @@ export async function GET(request: NextRequest) {
           name: sub.name,
           companyName: sub.companyName,
           province: sub.region,
-          applicationId: activity.mcaApplicationId || ""
+          recoveryToken: activity.mcaRecoveryToken || ""
         })
         if (res.success) {
           activity.mcaReadinessEmail2SentAt = new Date().toISOString()
@@ -81,7 +81,7 @@ export async function GET(request: NextRequest) {
           name: sub.name,
           companyName: sub.companyName,
           province: sub.region,
-          applicationId: activity.mcaApplicationId || ""
+          recoveryToken: activity.mcaRecoveryToken || ""
         })
         if (res.success) {
           activity.mcaReadinessEmail3SentAt = new Date().toISOString()

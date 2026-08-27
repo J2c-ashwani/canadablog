@@ -5,8 +5,11 @@ import { CEOMemory } from '../ceo-memory'
 
 export interface RevenueLedgerSummary {
   verifiedRevenueUSD: number
+  verifiedRevenueCAD: number
   verifiedMTDRevenueUSD: number
+  verifiedMTDRevenueCAD: number
   verified30DayRevenueUSD: number
+  verified30DayRevenueCAD: number
   verifiedMRRUSD: number
   activeMemberships: number
   unverifiedCandidateUSD: number
@@ -45,8 +48,11 @@ export class RevenueTools {
 
     return {
       verifiedRevenueUSD: evidence.revenue.allTimeVerifiedUSD,
+      verifiedRevenueCAD: evidence.revenue.allTimeVerifiedCAD,
       verifiedMTDRevenueUSD: evidence.revenue.mtdVerifiedUSD,
+      verifiedMTDRevenueCAD: evidence.revenue.mtdVerifiedCAD,
       verified30DayRevenueUSD: evidence.revenue.rolling30dVerifiedUSD,
+      verified30DayRevenueCAD: evidence.revenue.rolling30dVerifiedCAD,
       verifiedMRRUSD: evidence.revenue.verifiedMRRUSD,
       activeMemberships: evidence.revenue.activeMemberships,
       unverifiedCandidateUSD: Number(unverified.reduce((sum, purchase) => sum + amountOf(purchase.amount), 0).toFixed(2)),

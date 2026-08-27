@@ -73,7 +73,7 @@ export default async function GrowthOSDashboardPage({ searchParams }: { searchPa
 
     <div className="mt-6 grid gap-6 lg:grid-cols-2">
       <section className="rounded-2xl border border-slate-800 bg-slate-900 p-6"><h2 className="flex items-center gap-2 text-lg font-black"><Bot className="h-5 w-5 text-sky-400" />Agent truth</h2><div className="mt-5 space-y-3 text-sm">
-        <div className="rounded-xl bg-slate-950 p-4"><strong>Revenue Agent:</strong> {revenue.evidenceState || 'UNKNOWN'} · all-time verified {money(revenue.verifiedTotalRevenueUSD)} · attributed to CEO {money(revenue.directlyAttributedToCEOUSD)}</div>
+        <div className="rounded-xl bg-slate-950 p-4"><strong>Revenue Agent:</strong> {revenue.evidenceState || 'UNKNOWN'} · all-time verified {money(revenue.verifiedTotalRevenueUSD)} USD + C${money(revenue.verifiedTotalRevenueCAD)} CAD · attributed to CEO {money(revenue.directlyAttributedToCEOUSD)} USD + C${money(actionPerformance.totalRevenueCAD)} CAD</div>
         <div className="rounded-xl bg-slate-950 p-4"><strong>Growth Agent:</strong> {growth.pipelineStatus || 'UNKNOWN'} · {growth.orphanedStagesCount || 0} measured pipeline gaps</div>
         <div className="rounded-xl bg-slate-950 p-4"><strong>Sales Agent:</strong> {pipeline.consentedLeads || 0} consented leads · {pipeline.checkoutStartsCount || 0} checkout starts · {pipeline.completedPurchasesCount || 0} purchases</div>
         <div className="rounded-xl bg-slate-950 p-4"><strong>Product Agent:</strong> {product.generatedReportsCount || 0} verified purchase records · {product.deliveredReportsCount || 0} webhook-verified deliveries</div>

@@ -13,6 +13,7 @@ import {
   isTestOrInternalContact,
 } from '../lib/leads/commercial-eligibility';
 import { B2BOutreachEngine } from '../lib/leads/B2BOutreachEngine';
+import { buildMCAReadinessReport } from '../lib/mca/readiness-report';
 
 function assert(condition: unknown, message: string) {
   if (!condition) throw new Error(message);
@@ -79,6 +80,13 @@ async function run() {
   const matches = buildMemberProgramMatches({ country: 'Canada', region: 'ON', industry: 'technology', companySize: '1-9', fundingInterests: ['Grants'] }, 5);
   assert(matches.every((match) => match.status === 'Open' || match.status === 'Upcoming'), 'Member radar excludes paused and closed database programs');
 
+  const mcaReport = buildMCAReadinessReport({
+    applicationId: 'MCA-TEST', legalBusinessName: 'Test Business', province: 'ON', industry: 'retail',
+    yearsInBusiness: 2, monthlyRevenue: 20_000, fundingAmount: 25_000, fundingPurpose: 'inventory', fileCount: 3,
+  });
+  assert(mcaReport.score === 100 && mcaReport.requestToRevenueRatio === 1.25, 'MCA readiness score is deterministic from declared profile data');
+  assert(mcaReport.notChecked.some((item) => item.includes('Bank-statement transactions')), 'MCA report explicitly discloses that transaction content is not inspected');
+
   const root = process.cwd();
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
   const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
@@ -106,6 +114,15 @@ async function run() {
   const industryPage = fs.readFileSync(path.join(root, 'app/grants/industry/[slug]/page.tsx'), 'utf8');
   const provincePage = fs.readFileSync(path.join(root, 'app/grants/[province]/page.tsx'), 'utf8');
   const statePage = fs.readFileSync(path.join(root, 'app/usa/[state]/page.tsx'), 'utf8');
+  const mcaOrderRoute = fs.readFileSync(path.join(root, 'app/api/mca/priority-order/route.ts'), 'utf8');
+  const mcaCaptureRoute = fs.readFileSync(path.join(root, 'app/api/mca/capture-priority-order/route.ts'), 'utf8');
+  const mcaCheckoutPage = fs.readFileSync(path.join(root, 'app/(mca)/priority-processing/page.tsx'), 'utf8');
+  const mcaThankYouPage = fs.readFileSync(path.join(root, 'app/(mca)/thank-you/page.tsx'), 'utf8');
+  const mcaSuccessPage = fs.readFileSync(path.join(root, 'app/mca/priority-success/page.tsx'), 'utf8');
+  const mcaDeliveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-readiness-delivery.ts'), 'utf8');
+  const mcaRecoveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-recovery.ts'), 'utf8');
+  const evidenceMetrics = fs.readFileSync(path.join(root, 'lib/growth-os/evidence-metrics.ts'), 'utf8');
+  const deliveryRecovery = fs.readFileSync(path.join(root, 'lib/products/delivery-recovery.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
@@ -145,6 +162,18 @@ async function run() {
   assert(industryPage.includes('surface=industry-page') && !industryPage.includes('href="/audit"'), 'Industry templates distribute the signed $79 bundle instead of a consultation');
   assert(provincePage.includes('surface=province-page') && !provincePage.includes('Strategy Session Audit'), 'Province templates distribute signed $19 and $79 products');
   assert(statePage.includes('surface=state-page') && !statePage.includes('Book Strategy Call') && !statePage.includes('Get Free Consultation'), 'US state templates distribute signed self-serve products instead of calls');
+  assert(mcaOrderRoute.includes('newProductPaymentIntent') && mcaOrderRoute.includes("expectedAmount: PRICE_CAD") && mcaOrderRoute.includes("currency: 'CAD'"), 'MCA checkout persists server-owned CAD $49 terms before PayPal approval');
+  assert(mcaOrderRoute.includes("recoveryToken: z.string().regex") && mcaOrderRoute.includes("entry.recoveryToken === parsed.data.recoveryToken"), 'MCA checkout resolves the application through an unguessable recovery token, not client-supplied email');
+  assert(mcaOrderRoute.includes('fsi_growth_action_token') && mcaOrderRoute.includes("eventType: 'checkout_started'"), 'MCA checkout preserves signed action attribution');
+  assert(mcaCaptureRoute.includes('verifyPayPalOrder') && mcaCaptureRoute.includes("referenceId: PRODUCT_ID") && mcaCaptureRoute.includes("currency: 'CAD'"), 'MCA capture verifies amount, currency, product, and intent with PayPal');
+  assert(mcaCaptureRoute.includes('recordProductPaymentCapture') && mcaCaptureRoute.includes('recordPurchase') && mcaCaptureRoute.includes("revenueCAD: 49"), 'Verified MCA cash enters the purchase ledger and CEO action P&L');
+  assert(mcaCaptureRoute.includes('sendMCAReadinessReportDelivery') && mcaSuccessPage.includes('Open my readiness report'), 'MCA report is delivered instantly in-browser with transactional email backup');
+  const mcaPromiseSurface = `${mcaCheckoutPage} ${mcaThankYouPage} ${mcaSuccessPage} ${mcaRecoveryEmail}`.toLowerCase();
+  assert(!mcaPromiseSurface.includes('assigned analyst') && !mcaPromiseSurface.includes('dedicated specialist') && !mcaPromiseSurface.includes('manually audit') && !mcaPromiseSurface.includes('within 4 hours'), 'MCA product makes no manual specialist or time-bound fulfillment promise');
+  assert(mcaCheckoutPage.includes('does not read bank-statement contents') && mcaRecoveryEmail.includes('does not inspect bank-statement contents'), 'MCA sales and recovery copy state the automated report boundary');
+  assert(mcaDeliveryEmail.includes("tagType: 'mca-product-delivery'"), 'MCA transactional delivery is not misclassified as promotional outreach');
+  assert(deliveryRecovery.includes("purchase.productId === 'mca-readiness-report'") && deliveryRecovery.includes('sendMCAReadinessReportDelivery'), 'Daily product-delivery recovery retries failed MCA report emails');
+  assert(evidenceMetrics.includes('allTimeVerifiedCAD') && evidenceMetrics.includes('rolling30dVerifiedCAD'), 'CEO evidence reports verified CAD cash separately from USD');
 
   console.log('All GrowthOS commercial reliability checks passed.');
 }

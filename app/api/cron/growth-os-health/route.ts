@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
         <p><strong>Status:</strong> ${escapeHtml(status)} · Evidence: ${escapeHtml(evidence.evidenceState)}</p>
         <h3>Revenue truth</h3>
         <ul>
-          <li>Verified MTD revenue: $${evidence.revenue.mtdVerifiedUSD.toFixed(2)} USD</li>
+          <li>Verified MTD revenue: $${evidence.revenue.mtdVerifiedUSD.toFixed(2)} USD + $${evidence.revenue.mtdVerifiedCAD.toFixed(2)} CAD (reported separately)</li>
           <li>Verified MRR: $${evidence.revenue.verifiedMRRUSD.toFixed(2)} USD (${evidence.revenue.activeMemberships} active memberships)</li>
           <li>Provider-verified purchase records: ${evidence.revenue.verifiedPurchaseRecords}</li>
         </ul>
@@ -51,7 +51,7 @@ export async function GET(request: NextRequest) {
       to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
       subject: `GrowthOS ${status} — verified MRR $${evidence.revenue.verifiedMRRUSD.toFixed(2)}`,
       html,
-      text: `GrowthOS ${status}. Evidence ${evidence.evidenceState}. MTD revenue $${evidence.revenue.mtdVerifiedUSD}. MRR $${evidence.revenue.verifiedMRRUSD}.`,
+      text: `GrowthOS ${status}. Evidence ${evidence.evidenceState}. MTD revenue $${evidence.revenue.mtdVerifiedUSD} USD + $${evidence.revenue.mtdVerifiedCAD} CAD. MRR $${evidence.revenue.verifiedMRRUSD} USD.`,
       tagType: 'growth-os-health',
     })
     const reportAccepted = Boolean(report.success && report.providerMessageId)

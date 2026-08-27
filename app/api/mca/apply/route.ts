@@ -8,6 +8,7 @@
 // 6. Route to matching partners (configurable)
 
 import { NextRequest, NextResponse } from 'next/server';
+import { randomBytes } from 'crypto';
 import { z } from 'zod';
 import { calculatePriorityScore } from '@/lib/mca/priority-score';
 import {
@@ -146,6 +147,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     // ─── Build Application Record ─────────────────────────────────────────────
     const applicationId = generateApplicationId();
     const timestamp = new Date().toISOString();
+    const recoveryToken = `mca_rec_${randomBytes(16).toString('hex')}`;
 
     const application: MCAApplication = {
       ...data,
@@ -156,6 +158,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       applicationStatus: 'New',
       priorityProcessing: false,
       revenue: 0,
+      recoveryToken,
     };
 
     // ─── Write to Google Sheets ───────────────────────────────────────────────
@@ -250,7 +253,7 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       name: data.ownerName,
       companyName: data.legalBusinessName,
       province: data.province,
-      applicationId
+      recoveryToken,
     }).catch((err) => {
       console.error("❌ Failed to send immediate MCA readiness email:", err);
     });
@@ -259,7 +262,8 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
       {
         success: true,
         applicationId,
-        message: 'Your application has been received. Our team will be in touch within 24 hours.',
+        recoveryToken,
+        message: 'Your application has been received. Any routing or status updates will be sent by email.',
       },
       { status: 201 }
     );

@@ -17,7 +17,7 @@ export function Footer() {
   const isExistingLadderRoute = pathname === '/'
     || /^\/blog\/[^/]+\/?$/.test(pathname)
     || /^\/grants\/[^/]+\/[^/]+\/[^/]+\/?$/.test(pathname);
-  const isTransactionalRoute = /^\/(?:admin|api|apply|audit|booking|calculator|download|funding-calculator|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
+  const isTransactionalRoute = /^\/(?:admin|api|apply|audit|booking|calculator|download|funding-calculator|mca|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
   const showOrganicProductLadder = !isExistingLadderRoute && !isTransactionalRoute;
   const footerOfferHref = (offer: 'match-report' | 'toolkit' | 'action-plan' | 'bundle' | 'membership') => {
     const params = new URLSearchParams({ surface: 'footer', context: pathname, offer });

@@ -9,6 +9,7 @@ type PayPalAccessTokenResponse = {
 type PayPalOrderResponse = {
   id?: string;
   status?: string;
+  links?: Array<{ rel?: string; href?: string; method?: string }>;
   message?: string;
   details?: unknown;
 };
@@ -55,6 +56,8 @@ export interface ProductPayPalOrderInput {
   productName: string;
   amount: string;
   currency: string;
+  returnUrl?: string;
+  cancelUrl?: string;
 }
 
 function getPayPalBaseUrl() {
@@ -186,6 +189,8 @@ export async function createProductPayPalOrder(input: ProductPayPalOrderInput) {
         brand_name: 'FSI Digital',
         shipping_preference: 'NO_SHIPPING',
         user_action: 'PAY_NOW',
+        ...(input.returnUrl ? { return_url: input.returnUrl } : {}),
+        ...(input.cancelUrl ? { cancel_url: input.cancelUrl } : {}),
       },
     }),
   });

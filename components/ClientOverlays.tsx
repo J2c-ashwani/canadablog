@@ -33,6 +33,7 @@ const EXCLUDED_TRANSACTIONAL_ROUTES = [
     '/funding-calculator',
     '/priority-processing',
     '/thank-you',
+    '/mca',
     '/grant-finder',
     '/audit',
     '/sample-report',

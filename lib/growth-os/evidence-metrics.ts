@@ -29,10 +29,13 @@ export interface GrowthOSEvidenceSnapshot {
   sourceErrors: string[];
   revenue: {
     allTimeVerifiedUSD: number;
+    allTimeVerifiedCAD: number;
     mtdVerifiedUSD: number;
+    mtdVerifiedCAD: number;
     mtdOneTimeRevenueUSD: number;
     mtdMembershipRevenueUSD: number;
     rolling30dVerifiedUSD: number;
+    rolling30dVerifiedCAD: number;
     activeMemberships: number;
     verifiedMRRUSD: number;
     verifiedPurchaseRecords: number;
@@ -184,6 +187,15 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
   const rolling30dProductRevenueUSD = verified30dPurchases
     .filter((purchase) => String(purchase.currency || 'USD').toUpperCase() === 'USD')
     .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
+  const allTimeProductRevenueCAD = verifiedPurchases
+    .filter((purchase) => String(purchase.currency || '').toUpperCase() === 'CAD')
+    .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
+  const mtdProductRevenueCAD = verifiedMtdPurchases
+    .filter((purchase) => String(purchase.currency || '').toUpperCase() === 'CAD')
+    .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
+  const rolling30dProductRevenueCAD = verified30dPurchases
+    .filter((purchase) => String(purchase.currency || '').toUpperCase() === 'CAD')
+    .reduce((sum, purchase) => sum + numberValue(purchase.amount), 0);
   const rolling30dMembershipRevenueUSD = verified30dMembershipPayments.reduce((sum, payment) => sum + payment.amount, 0);
   const activeMembers = memberships.filter((membership) =>
     membership.status === 'ACTIVE'
@@ -229,10 +241,13 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
     sourceErrors,
     revenue: {
       allTimeVerifiedUSD: Number((allTimeProductRevenueUSD + allTimeMembershipRevenueUSD).toFixed(2)),
+      allTimeVerifiedCAD: Number(allTimeProductRevenueCAD.toFixed(2)),
       mtdVerifiedUSD: Number((mtdProductRevenueUSD + mtdMembershipRevenueUSD).toFixed(2)),
+      mtdVerifiedCAD: Number(mtdProductRevenueCAD.toFixed(2)),
       mtdOneTimeRevenueUSD: Number(mtdProductRevenueUSD.toFixed(2)),
       mtdMembershipRevenueUSD: Number(mtdMembershipRevenueUSD.toFixed(2)),
       rolling30dVerifiedUSD: Number((rolling30dProductRevenueUSD + rolling30dMembershipRevenueUSD).toFixed(2)),
+      rolling30dVerifiedCAD: Number(rolling30dProductRevenueCAD.toFixed(2)),
       activeMemberships: activeMembers.length,
       verifiedMRRUSD: Number(activeMembers.reduce((sum, membership) => sum + membership.amountUSD, 0).toFixed(2)),
       verifiedPurchaseRecords: verifiedPurchases.length,

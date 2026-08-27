@@ -27,7 +27,7 @@ export async function GET(request: NextRequest): Promise<NextResponse> {
     if (app.priorityProcessing) {
       return NextResponse.json({
         alreadyPaid: true,
-        message: 'Priority Processing has already been completed for this application.',
+        message: 'The MCA Funding Readiness Report has already been purchased for this application.',
         applicationId: app.applicationId,
       }, { status: 200 });
     }

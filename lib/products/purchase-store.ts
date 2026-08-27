@@ -125,7 +125,15 @@ export async function recordPurchase(data: {
   productId: string;
   amount: string;
   paypalOrderId: string;
-  profileData: { province: string; industry: string; revenue: string; goal: string; company?: string; phone?: string };
+  profileData: {
+    province: string;
+    industry: string;
+    revenue: string;
+    goal: string;
+    company?: string;
+    phone?: string;
+    [key: string]: unknown;
+  };
   attribution?: {
     landingPage?: string;
     referrer?: string;

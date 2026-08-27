@@ -369,7 +369,7 @@ export default function ApplyPage() {
       }).catch(() => {});
 
       setApplicationId(json.applicationId);
-      window.location.href = `/thank-you?id=${json.applicationId}&email=${encodeURIComponent(form.email)}`;
+      window.location.href = `/thank-you?id=${encodeURIComponent(json.applicationId)}&t=${encodeURIComponent(json.recoveryToken || '')}`;
     } catch {
       setUploadError('Submission failed. Please check your connection and try again.');
       setSubmitting(false);

@@ -1,33 +1,28 @@
 'use client';
 
 // app/(mca)/thank-you/page.tsx
-// Post-application confirmation + optional Pre-Submission Document Review upsell (CAD $49)
+// Post-application confirmation + optional self-serve MCA readiness report (CAD $49)
 
 import { useSearchParams } from 'next/navigation';
 import { Suspense, useState } from 'react';
 
-const PRIORITY_PRICE_CAD = 49;
-const PAYPAL_CLIENT_ID = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID;
-
 const REVIEW_INCLUDES = [
-  { icon: '⚡', title: 'Pre-Submission File Audit', desc: 'A specialist reviews your bank statements and application files for completeness before partner submission.' },
-  { icon: '📋', title: 'Document Formatting Check', desc: 'We verify statement clarity, PDF quality, and OCR readability to reduce automated rejection risk.' },
-  { icon: '✅', title: 'Funding Readiness Assessment', desc: 'Identify any missing items, low-balance warnings, or transaction flags before your file is forwarded.' },
-  { icon: '🔍', title: 'Compliance Verification', desc: 'Confirm registration numbers, IDs, and financial records match precisely to avoid underwriting delays.' },
-  { icon: '📞', title: 'Dedicated Specialist Contact', desc: 'Direct email access to your assigned analyst for updates and document guidance.' },
+  { icon: '⚡', title: 'Instant Readiness Score', desc: 'A transparent 0–100 score based on the business information declared in your application.' },
+  { icon: '📊', title: 'Funding Request Ratio', desc: 'See the requested amount relative to declared monthly revenue.' },
+  { icon: '📋', title: 'Document Inventory Check', desc: 'Review whether your recorded upload count meets the report preparation threshold.' },
+  { icon: '✅', title: 'Preparation Checklist', desc: 'Get practical steps for complete PDFs, consistent business details, and underwriting preparation.' },
 ];
 
 function ThankYouContent() {
   const params = useSearchParams();
   const applicationId = params.get('id') ?? '';
-  const email = params.get('email') ?? '';
+  const recoveryToken = params.get('t') ?? '';
 
-  const [priorityPurchased, setPriorityPurchased] = useState(false);
   const [processing, setProcessing] = useState(false);
   const [paypalError, setPaypalError] = useState('');
 
   const handlePriorityPurchase = async () => {
-    if (!applicationId) return;
+    if (!applicationId || !recoveryToken) return;
     setProcessing(true);
     setPaypalError('');
 
@@ -36,7 +31,7 @@ function ThankYouContent() {
       const res = await fetch('/api/mca/priority-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ applicationId, email }),
+        body: JSON.stringify({ recoveryToken }),
       });
       const data = await res.json();
 
@@ -63,13 +58,9 @@ function ThankYouContent() {
           <h1>Application Received</h1>
           <p>
             Your application <strong>{applicationId}</strong> has been submitted successfully.
-            Our team will be in touch within 24 hours.
+            Any routing or status updates will be sent by email.
           </p>
-          {email && (
-            <p className="mca-ty-email-note">
-              A confirmation has been sent to <strong>{email}</strong>
-            </p>
-          )}
+          <p className="mca-ty-email-note">A confirmation has been sent to the email used in your application.</p>
         </div>
 
         {/* Timeline */}
@@ -86,35 +77,34 @@ function ThankYouContent() {
             <div className="mca-tl-item">
               <div className="mca-tl-dot">2</div>
               <div>
-                <strong>Documents Reviewed</strong>
-                <p>Our team reviews your bank statements and application details.</p>
+                <strong>Partner Review</strong>
+                <p>If routed, the funding partner reviews the information and documents provided.</p>
               </div>
             </div>
             <div className="mca-tl-item">
               <div className="mca-tl-dot">3</div>
               <div>
                 <strong>Submitted to Funding Partner</strong>
-                <p>Your complete application is forwarded to our Canadian funding partner.</p>
+                <p>Eligible profiles may be forwarded to a matching Canadian funding partner.</p>
               </div>
             </div>
             <div className="mca-tl-item">
               <div className="mca-tl-dot">4</div>
               <div>
                 <strong>Funding Decision</strong>
-                <p>The partner contacts you directly with their decision — typically 24–72 hours.</p>
+                <p>The funding partner controls its own underwriting timeline and contacts you directly.</p>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Optional Funding Readiness Review */}
-        {!priorityPurchased && (
-          <div className="mca-upsell-card">
-            <div className="mca-upsell-badge">OPTIONAL EXPERT SERVICE</div>
-            <h2 className="mca-upsell-title">Funding Readiness Review ($49 CAD)</h2>
+        {/* Optional automated Funding Readiness Report */}
+        <div className="mca-upsell-card">
+            <div className="mca-upsell-badge">OPTIONAL SELF-SERVE REPORT</div>
+            <h2 className="mca-upsell-title">MCA Funding Readiness Report ($49 CAD)</h2>
             <p className="mca-upsell-sub">
-              Have an application specialist manually audit your financial files for completeness, missing pages, and NSF risk patterns before they are sent to funding partners.
-              <strong> Your application is already active — this service is entirely optional.</strong>
+              Turn your declared application profile into an instant readiness score, funding-request ratio, and preparation checklist.
+              <strong> Your application is already active—this information product is entirely optional.</strong>
             </p>
 
             <div className="mca-upsell-includes">
@@ -140,35 +130,26 @@ function ThankYouContent() {
                 id="mca-priority-purchase"
                 className="mca-btn-priority"
                 onClick={handlePriorityPurchase}
-                disabled={processing}
+                disabled={processing || !recoveryToken}
               >
                 {processing ? (
                   <><div className="mca-spinner-sm" /> Redirecting to secure checkout…</>
                 ) : (
-                  <>📋 Request Pre-Submission Document Review — CAD $49</>
+                  <>📋 Get My Instant Readiness Report — CAD $49</>
                 )}
               </button>
 
               {paypalError && <p className="mca-error" style={{ marginTop: '0.75rem' }}>{paypalError}</p>}
+              {!recoveryToken && <p className="mca-error" style={{ marginTop: '0.75rem' }}>Use the private link in your application email to access secure checkout.</p>}
 
               <p className="mca-upsell-disclaimer">
                 Secure payment via PayPal. We do not store your payment information.
-                Pre-Submission Document Review does not guarantee funding approval — it ensures
-                professional file verification by a specialist before partner submission.
-                Your application remains active in our standard queue whether or not you choose this service.
+                The automated report evaluates declared application fields and recorded upload count only.
+                It does not inspect bank-statement contents, make a credit decision, or guarantee funding.
+                Your application remains active whether or not you purchase it.
               </p>
             </div>
-          </div>
-        )}
-
-        {/* Document Review purchased confirmation */}
-        {priorityPurchased && (
-          <div className="mca-priority-confirmed">
-            <div className="mca-ty-checkmark small">✓</div>
-            <h2>Pre-Submission Document Review Activated</h2>
-            <p>An application specialist will begin reviewing your files shortly. You will receive a direct email from your analyst.</p>
-          </div>
-        )}
+        </div>
 
         {/* Next steps */}
         <div className="mca-ty-footer-card">

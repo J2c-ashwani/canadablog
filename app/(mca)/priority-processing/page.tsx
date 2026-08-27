@@ -1,328 +1,74 @@
 'use client';
 
-// app/(mca)/priority-processing/page.tsx
-// Pre-Submission Document Review Landing Page with automated token-based checkout bridge
-// Transitioned from "priority-queue bypass" to "trust-first Pre-Submission Document Review"
-
-import { useSearchParams } from 'next/navigation';
-import { Suspense, useEffect, useState, useRef } from 'react';
 import Link from 'next/link';
+import { Suspense, useEffect, useRef, useState } from 'react';
+import { useSearchParams } from 'next/navigation';
 
-const BENEFITS = [
-  {
-    icon: '⚡',
-    title: 'Pre-Submission Document Review',
-    desc: 'An application specialist audits your financial documents manually to detect potential red flags before they are sent to funding partners.',
-  },
-  {
-    icon: '📋',
-    title: 'Bank Statement Formatting Check',
-    desc: 'We verify statement completeness, calculate exact monthly average deposits, and ensure file formats meet partner system expectations.',
-  },
-  {
-    icon: '✅',
-    title: 'Risk Minimization Audit',
-    desc: 'Identify transaction issues (such as negative balances, transaction flags, or NSF warnings) that could trigger automated declines.',
-  },
-  {
-    icon: '🚀',
-    title: 'Operational Readiness Check',
-    desc: 'Verify that all registration numbers, IDs, and financial records match precisely to avoid underwriting delays.',
-  },
-  {
-    icon: '📞',
-    title: 'Dedicated Specialist Contact',
-    desc: 'Get direct email access to your assigned analyst for continuous updates and verification support.',
-  },
+const INCLUDES = [
+  ['Readiness score', 'A transparent 0–100 score from your declared monthly revenue, time in business, requested amount, and uploaded-file count.'],
+  ['Request-to-revenue analysis', 'See how the requested funding amount compares with the monthly revenue declared in your application.'],
+  ['Document inventory check', 'Confirm whether the number of uploaded files meets the report’s preparation threshold.'],
+  ['Preparation checklist', 'Get specific steps to prepare complete PDFs, consistent business details, and factual explanations before underwriting.'],
 ];
 
-function PriorityCheckoutBridge() {
-  const searchParams = useSearchParams();
-  const token = searchParams.get('t') ?? '';
-
-  const [loading, setLoading] = useState(!!token);
-  const [appDetails, setAppDetails] = useState<any>(null);
-  const [alreadyPaid, setAlreadyPaid] = useState(false);
-  const [errorMsg, setErrorMsg] = useState('');
-  const [processing, setProcessing] = useState(false);
-  const [paypalError, setPaypalError] = useState('');
+function Checkout() {
+  const params = useSearchParams();
+  const token = params.get('t') || '';
   const resolvedRef = useRef(false);
+  const [application, setApplication] = useState<any>(null);
+  const [alreadyPaid, setAlreadyPaid] = useState(false);
+  const [loading, setLoading] = useState(Boolean(token));
+  const [processing, setProcessing] = useState(false);
+  const [error, setError] = useState('');
 
   useEffect(() => {
-    if (!token) return;
-    if (resolvedRef.current) return;
+    if (!token || resolvedRef.current) return;
     resolvedRef.current = true;
-
-    async function resolveToken() {
-      try {
-        const res = await fetch(`/api/mca/resolve-token?t=${encodeURIComponent(token)}`);
-        const data = await res.json();
-
-        if (res.ok && data.alreadyPaid) {
-          setAlreadyPaid(true);
-          setLoading(false);
-          return;
-        }
-
-        if (!res.ok) {
-          setErrorMsg(data.error ?? 'Invalid or expired recovery link.');
-          setLoading(false);
-          return;
-        }
-
-        setAppDetails(data);
-        setLoading(false);
-      } catch (err) {
-        setErrorMsg('Connection error resolving recovery link.');
-        setLoading(false);
-      }
-    }
-
-    resolveToken();
+    fetch(`/api/mca/resolve-token?t=${encodeURIComponent(token)}`)
+      .then(async (response) => ({ response, data: await response.json() }))
+      .then(({ response, data }) => {
+        if (response.ok && data.alreadyPaid) setAlreadyPaid(true);
+        else if (response.ok) setApplication(data);
+        else setError(data.error || 'This application link is unavailable.');
+      })
+      .catch(() => setError('The application link could not be loaded.'))
+      .finally(() => setLoading(false));
   }, [token]);
 
-  const handlePriorityPurchase = async () => {
-    if (!appDetails?.applicationId) return;
+  async function startCheckout() {
+    if (!application?.applicationId) return;
     setProcessing(true);
-    setPaypalError('');
-
+    setError('');
     try {
-      const res = await fetch('/api/mca/priority-order', {
+      const response = await fetch('/api/mca/priority-order', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          applicationId: appDetails.applicationId,
-          email: appDetails.email,
-        }),
+        body: JSON.stringify({ recoveryToken: token }),
       });
-      const data = await res.json();
-
-      if (!res.ok || !data.approveUrl) {
-        setPaypalError('Unable to initiate payment. Please try again.');
-        setProcessing(false);
-        return;
-      }
-
-      window.location.href = data.approveUrl;
-    } catch {
-      setPaypalError('Payment system error. Please try again.');
+      const result = await response.json();
+      if (!response.ok || !result.approveUrl) throw new Error(result.error || 'PayPal checkout could not be started.');
+      window.location.assign(result.approveUrl);
+    } catch (checkoutError) {
+      setError(checkoutError instanceof Error ? checkoutError.message : 'PayPal checkout could not be started.');
       setProcessing(false);
     }
-  };
-
-  // 1. Loading State
-  if (token && loading) {
-    return (
-      <div className="max-w-md mx-auto my-16 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-center">
-        <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-        <h2 className="text-lg font-bold text-gray-900">Accessing Your Application...</h2>
-        <p className="text-gray-500 text-sm mt-2">Loading secure checkout bridge, please wait.</p>
-      </div>
-    );
   }
 
-  // 2. Error State
-  if (token && errorMsg) {
-    return (
-      <div className="max-w-md mx-auto my-16 bg-white p-8 rounded-2xl border border-red-200 shadow-sm text-center">
-        <div className="w-12 h-12 bg-red-50 text-red-650 flex items-center justify-center rounded-full mx-auto mb-4 text-xl font-bold">⚠️</div>
-        <h2 className="text-lg font-bold text-gray-950">Link Unavailable</h2>
-        <p className="text-gray-700 text-sm mt-2">{errorMsg}</p>
-        <Link href="/apply" className="mt-6 inline-block bg-indigo-650 text-white font-bold text-sm px-6 py-2.5 rounded-lg">
-          Submit New Application
-        </Link>
-      </div>
-    );
-  }
+  if (loading) return <div className="mx-auto my-16 max-w-lg rounded-2xl border bg-white p-10 text-center"><div className="mx-auto h-10 w-10 animate-spin rounded-full border-4 border-blue-100 border-t-blue-600" /><p className="mt-4 text-sm text-slate-600">Loading your secure application checkout…</p></div>;
+  if (alreadyPaid) return <div className="mx-auto my-16 max-w-lg rounded-2xl border border-emerald-200 bg-white p-10 text-center"><h1 className="text-2xl font-black text-slate-950">Report already purchased</h1><p className="mt-3 text-sm text-slate-600">This application already has a completed MCA readiness-report purchase. Use the private link delivered after payment.</p></div>;
 
-  // 3. Already Paid State
-  if (token && alreadyPaid) {
-    return (
-      <div className="max-w-md mx-auto my-16 bg-white p-8 rounded-2xl border border-emerald-200 shadow-sm text-center">
-        <div className="w-12 h-12 bg-emerald-50 text-emerald-650 flex items-center justify-center rounded-full mx-auto mb-4 text-xl font-bold">✓</div>
-        <h2 className="text-lg font-bold text-gray-950">Document Review Active</h2>
-        <p className="text-gray-700 text-sm mt-2">A Funding Pre-Submission Review is already active for this application. Your files are with our document specialists.</p>
-        <Link href="/" className="mt-6 inline-block bg-indigo-650 text-white font-bold text-sm px-6 py-2.5 rounded-lg">
-          Return to Homepage
-        </Link>
-      </div>
-    );
-  }
+  return <main className="bg-slate-50 pb-20">
+    <section className="bg-slate-950 px-5 py-16 text-center text-white sm:py-20"><div className="mx-auto max-w-3xl"><div className="text-xs font-black uppercase tracking-[0.2em] text-blue-300">Optional self-serve information product</div><h1 className="mt-4 text-4xl font-black sm:text-5xl">MCA Funding Readiness Report</h1><p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-slate-300">Turn the information already declared in your application into an instant readiness score, funding-request ratio, and underwriting preparation checklist for a one-time <strong>CAD $49</strong>.</p></div></section>
 
-  // 4. Token Resolved & Active Checkout Bridging
-  if (token && appDetails) {
-    return (
-      <div className="max-w-lg mx-auto my-16 bg-white rounded-2xl border border-indigo-250 shadow-lg overflow-hidden">
-        <div className="bg-indigo-650 text-white px-6 py-4 text-center">
-          <span className="text-[10px] bg-white/20 px-2 py-0.5 rounded font-extrabold uppercase tracking-wider">Application Review Bridge</span>
-          <h2 className="text-xl font-black mt-1">Pre-Submission Document Review</h2>
-        </div>
-        <div className="p-6">
-          <p className="text-sm text-gray-650 leading-relaxed text-center mb-6">
-            Hi <strong>{appDetails.legalBusinessName}</strong>, request an optional pre-submission document audit for application <strong>{appDetails.applicationId}</strong>.
-          </p>
+    <section className="mx-auto -mt-7 max-w-4xl px-5"><div className="rounded-2xl border border-slate-200 bg-white p-7 shadow-xl sm:p-10"><div className="grid gap-5 sm:grid-cols-2">{INCLUDES.map(([title, description]) => <div key={title} className="rounded-xl border border-slate-200 p-5"><h2 className="font-black text-slate-950">{title}</h2><p className="mt-2 text-sm leading-6 text-slate-600">{description}</p></div>)}</div>
 
-          <div className="bg-slate-50 border border-slate-150 rounded-xl p-4 mb-6">
-            <h3 className="text-xs font-extrabold text-slate-800 uppercase tracking-wider mb-2">Service Package Includes:</h3>
-            <ul className="text-xs text-slate-650 space-y-2">
-              <li>⚡ <strong>Manual File Verification:</strong> Specialist reviews bank statement clarity and completeness.</li>
-              <li>🚀 <strong>Risk Mitigation:</strong> Pre-submission warning alerts for negative balances or OCR flags.</li>
-              <li>📞 <strong>Specialist Support:</strong> Direct communication details to update documents as needed.</li>
-            </ul>
-          </div>
+      <div className="mt-8 rounded-xl border border-amber-200 bg-amber-50 p-5 text-sm leading-6 text-amber-950"><strong>Transparent scope:</strong> this automated report does not read bank-statement contents, identify NSF transactions, assess creditworthiness, make a lender decision, or guarantee funding. It evaluates declared fields and recorded document count only.</div>
 
-          <div className="text-center p-4 border border-indigo-100 rounded-xl bg-indigo-50/20 mb-6">
-            <span className="text-xs text-gray-400 block uppercase tracking-wider leading-none">One-time Review Fee</span>
-            <span className="text-3xl font-black text-gray-900 block mt-2">CAD $49</span>
-          </div>
-
-          <button
-            onClick={handlePriorityPurchase}
-            disabled={processing}
-            className="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-black text-base py-3.5 rounded-xl shadow-md transition active:scale-98 flex items-center justify-center gap-2"
-          >
-            {processing ? (
-              <><div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> Redirecting to PayPal...</>
-            ) : (
-              <>⚡ Request Pre-Submission Review</>
-            )}
-          </button>
-          
-          <p className="text-[11px] text-gray-500 text-center mt-3 leading-relaxed">
-            Your application has already been received. This optional service is for businesses that would like a specialist to review their application before it is forwarded to a funding partner. Your application remains active in our standard queue whether or not you choose this optional service.
-          </p>
-
-          {paypalError && <p className="text-xs text-red-650 text-center mt-2.5 font-bold">{paypalError}</p>}
-        </div>
-      </div>
-    );
-  }
-
-  // 5. Default General Layout (No Token Parameter)
-  return (
-    <div className="font-sans pb-16">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-slate-900 via-blue-950 to-slate-900 text-white py-16 sm:py-24 px-6 text-center">
-        <div className="max-w-3xl mx-auto">
-          <span className="bg-blue-600 text-white font-bold text-xs uppercase tracking-widest px-3 py-1 rounded-full">
-            OPTIONAL EXPERT VERIFICATION SERVICE
-          </span>
-          <h1 className="text-3xl sm:text-5xl font-black mt-4 tracking-tight leading-none text-white">
-            Funding Readiness Review
-          </h1>
-          <p className="text-blue-200 mt-4 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
-            Avoid common formatting mistakes, missing bank statement pages, and NSF flags. Have a funding specialist manually audit your application files for completeness before lender submission for a one-time fee of <strong>CAD $49</strong>.
-          </p>
-          
-          {/* 6-Point Audit Checklist */}
-          <div className="mt-8 bg-slate-900/80 border border-blue-500/30 rounded-xl p-6 text-left max-w-xl mx-auto backdrop-blur-sm shadow-xl">
-            <h4 className="text-sm font-bold uppercase tracking-wider text-blue-300 mb-3 text-center">Your Application Will Be Verified For:</h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-blue-100 font-medium">
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400">✓</span> Missing bank statement pages
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400">✓</span> NSF & overdraft risk patterns
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400">✓</span> Revenue & deposit consistency
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400">✓</span> Seasonal deposit trends
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400">✓</span> Business info accuracy
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="text-emerald-400">✓</span> Submission readiness score
-              </div>
-            </div>
-            <p className="text-[11px] text-blue-300/80 text-center mt-3 pt-2 border-t border-blue-500/20">
-              ⏱️ Estimated Review Time: 1 Business Day
-            </p>
-          </div>
-
-          <div className="mt-6">
-            <Link href="/apply" className="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-3.5 rounded-lg text-base shadow-lg transition-transform active:scale-95 inline-block">
-              Apply & Request Funding Readiness Review
-            </Link>
-          </div>
-        </div>
-      </section>
-
-      {/* Main Benefits Grid */}
-      <section className="max-w-4xl mx-auto px-6 mt-16">
-        <h2 className="text-2xl font-black text-gray-900 text-center mb-10">What is included in the Funding Readiness Review™?</h2>
-        <div className="space-y-6">
-          {BENEFITS.map((b) => (
-            <div key={b.title} className="bg-white rounded-xl p-6 shadow-sm border border-gray-200 flex gap-4">
-              <span className="text-2xl">{b.icon}</span>
-              <div>
-                <h3 className="font-bold text-gray-900 text-base mb-1">{b.title}</h3>
-                <p className="text-gray-600 text-sm leading-relaxed">{b.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {/* What Happens After Purchase */}
-        <div className="mt-12 bg-slate-900 text-white rounded-2xl p-8 border border-slate-800 shadow-xl">
-          <h3 className="text-lg font-bold text-emerald-400 mb-4 text-center">What Happens After Requesting Your Review?</h3>
-          <div className="space-y-3 text-sm text-slate-200">
-            <div className="flex items-start gap-3">
-              <span className="text-emerald-400 font-bold">1.</span>
-              <span><strong>Document & Statement Audit:</strong> We review your submitted documents and bank statement formatting for completeness.</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-emerald-400 font-bold">2.</span>
-              <span><strong>Information Verification:</strong> We identify missing pages, deposit frequency gaps, or NSF risk patterns.</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-emerald-400 font-bold">3.</span>
-              <span><strong>Written Summary Report:</strong> We send you a written readiness summary highlighting key underwriting observations.</span>
-            </div>
-            <div className="flex items-start gap-3">
-              <span className="text-emerald-400 font-bold">4.</span>
-              <span><strong>Pre-Forwarding Opportunity:</strong> If updates are needed, you have the opportunity to provide revised documents before lender submission.</span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Pricing / Callout */}
-      <section className="max-w-3xl mx-auto px-6 mt-16 text-center">
-        <div className="bg-white rounded-2xl p-8 border border-blue-200 shadow-md">
-          <h3 className="text-lg font-bold text-gray-900 mb-1">Simple Transparent Pricing</h3>
-          <span className="text-gray-400 text-xs block mb-4 uppercase tracking-wider">One-Time Review Fee</span>
-          <div className="text-3xl font-black text-gray-900 mb-6">CAD $49</div>
-          
-          <p className="text-gray-500 text-sm max-w-md mx-auto mb-6">
-            No subscriptions. No success-based deductions. Your application remains 100% free to submit; this verification service is entirely optional and your application remains active in our standard queue regardless.
-          </p>
-          
-          <Link href="/apply" className="bg-blue-600 hover:bg-blue-700 text-white font-bold px-8 py-3 rounded-lg text-sm transition-transform active:scale-95 inline-block shadow-md">
-            🔒 Start Secure Application
-          </Link>
-        </div>
-      </section>
-
-      {/* Disclaimers */}
-      <section className="max-w-3xl mx-auto px-6 mt-12 text-center text-xs text-gray-400 leading-relaxed">
-        * Pre-Submission Document Review is a document validation and verification service. FSI Digital does not make credit decisions. Requesting this service guarantees manual file verification by an application specialist before partner forwarding, but does not guarantee funding approval.
-      </section>
-    </div>
-  );
+      {token && application ? <div className="mt-8 rounded-2xl border-2 border-blue-200 bg-blue-50 p-6 text-center"><p className="text-sm text-slate-700">Report for <strong>{application.legalBusinessName}</strong><br /><span className="text-xs text-slate-500">Application {application.applicationId}</span></p><div className="mt-5 text-4xl font-black text-slate-950">CAD $49</div><div className="mt-1 text-xs text-slate-500">one time · no subscription</div><button type="button" onClick={startCheckout} disabled={processing} className="mt-6 w-full rounded-xl bg-emerald-600 px-6 py-4 font-black text-white hover:bg-emerald-700 disabled:opacity-60">{processing ? 'Opening secure PayPal checkout…' : 'Get my instant readiness report →'}</button>{error && <p className="mt-3 text-sm font-bold text-red-700">{error}</p>}</div> : <div className="mt-8 text-center"><p className="text-sm text-slate-600">The report needs the data from a submitted business-funding application.</p><Link href="/apply" className="mt-5 inline-flex rounded-xl bg-blue-600 px-7 py-4 font-black text-white hover:bg-blue-700">Submit application first →</Link>{error && <p className="mt-3 text-sm font-bold text-red-700">{error}</p>}</div>}
+    </div></section>
+  </main>;
 }
 
 export default function PriorityProcessingPage() {
-  return (
-    <Suspense fallback={
-      <div className="max-w-md mx-auto my-16 bg-white p-8 rounded-2xl border border-gray-200 shadow-sm text-center">
-        <div className="w-10 h-10 border-4 border-indigo-600 border-t-transparent rounded-full animate-spin mx-auto mb-4" />
-        <h2 className="text-lg font-bold text-gray-900">Loading checkout...</h2>
-      </div>
-    }>
-      <PriorityCheckoutBridge />
-    </Suspense>
-  );
+  return <Suspense fallback={<main className="min-h-[60vh] bg-slate-50 p-16 text-center text-slate-500">Loading checkout…</main>}><Checkout /></Suspense>;
 }

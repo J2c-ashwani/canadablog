@@ -29,6 +29,7 @@ const EXCLUDED_ROUTES: string[] = [
   '/funding-calculator',// MCA Funding Calculator
   '/priority-processing',// Priority processing checkout
   '/thank-you',         // Application submission thank-you
+  '/mca',               // MCA payment success + private report delivery
   '/grant-finder',      // Grant finder tool
   '/audit',             // Readiness audit tool
   '/sample-report',     // Report preview (pre-purchase)
@@ -109,4 +110,3 @@ export function AdSenseLoader() {
     />
   )
 }
-
