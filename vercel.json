@@ -10,7 +10,7 @@
     },
     {
       "path": "/api/cron/process-b2b-outreach",
-      "schedule": "0 14 * * 1-5"
+      "schedule": "0 14,18 * * 1-5"
     },
     {
       "path": "/api/cron/process-cart-recovery",

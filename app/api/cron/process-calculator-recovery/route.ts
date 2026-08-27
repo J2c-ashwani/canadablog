@@ -10,6 +10,7 @@ import { isValidCronRequest } from '@/lib/admin/auth';
 import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
 import { getAllPurchases } from '@/lib/products/purchase-store';
 import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
+import { isTestOrInternalContact } from '@/lib/leads/commercial-eligibility';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -47,7 +48,7 @@ export async function GET(request: NextRequest) {
     for (const subscriber of subscribers) {
       if (outcomes.length >= limit) break;
       const email = subscriber.email.toLowerCase().trim();
-      if (!subscriber.isSubscribed || !email.includes('@') || paidEmails.has(email)) continue;
+      if (!subscriber.isSubscribed || !email.includes('@') || isTestOrInternalContact(subscriber) || paidEmails.has(email)) continue;
 
       const activity = parseActivity(subscriber.leadActivity);
       if (activity.checkoutStartedAt) continue;

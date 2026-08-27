@@ -8,6 +8,11 @@ import {
   instrumentCommercialEmail,
   parseTrackedGrowthToken,
 } from '../lib/growth-os/action-attribution';
+import {
+  hasRecentCommercialProviderAcceptance,
+  isTestOrInternalContact,
+} from '../lib/leads/commercial-eligibility';
+import { B2BOutreachEngine } from '../lib/leads/B2BOutreachEngine';
 
 function assert(condition: unknown, message: string) {
   if (!condition) throw new Error(message);
@@ -40,6 +45,15 @@ async function run() {
   const sequence = `${day1.text} ${day4.text} ${day7.text}`.toLowerCase();
   assert(sequence.includes('$19') && sequence.includes('$79') && sequence.includes('$29'), 'B2B distribution uses the current self-serve product ladder');
   assert(!sequence.includes('schedule a call') && !sequence.includes('book a slot') && !sequence.includes('case study'), 'Automated outreach makes no live-call or unsupported case-study promise');
+  assert(B2BOutreachEngine.AUTOPILOT_DIRECT_SEND_SCORE === B2BOutreachEngine.MINIMUM_PRIORITY_SCORE, 'Consented qualified leads are not blocked by an unreachable autopilot threshold');
+  assert(isTestOrInternalContact({ email: 'alert-nurture-test-1@example.com' }), 'Commercial distribution excludes internal and synthetic contacts');
+  assert(hasRecentCommercialProviderAcceptance({
+    email: 'buyer@business.ca',
+    leadActivity: JSON.stringify({
+      lastNewsletterAcceptedAt: new Date().toISOString(),
+      lastNewsletterProviderMessageId: 'provider-real',
+    }),
+  }), 'Commercial distribution suppresses overlapping provider-accepted messages for 48 hours');
 
   process.env.GROWTH_ATTRIBUTION_SECRET = 'commercial-suite-secret';
   const instrumented = instrumentCommercialEmail({
@@ -67,6 +81,7 @@ async function run() {
 
   const root = process.cwd();
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
+  const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
   const membershipCheckout = fs.readFileSync(path.join(root, 'components/membership/FoundingMemberCheckout.tsx'), 'utf8');
   const paypalWebhook = fs.readFileSync(path.join(root, 'app/api/paypal/webhook/route.ts'), 'utf8');
   const actionScorecard = fs.readFileSync(path.join(root, 'lib/growth-os/action-scorecard.ts'), 'utf8');
@@ -74,6 +89,7 @@ async function run() {
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
+  assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');
   assert(paypalWebhook.includes("eventType: 'membership_payment_verified'"), 'Membership cash attribution requires a signed PayPal payment webhook');

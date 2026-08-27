@@ -6,6 +6,7 @@ import {
   sendCartRecoveryEmail2,
   sendCartRecoveryEmail3,
 } from '@/lib/emails/cart-recovery'
+import { isTestOrInternalContact } from '@/lib/leads/commercial-eligibility'
 
 export interface CartRecoveryRunSummary {
   processedCount: number
@@ -59,7 +60,7 @@ export class CartRecoveryService {
     for (const lead of leads) {
       if (summary.attemptedCount >= maxEmailsPerRun) break
       const email = String(lead.email || '').toLowerCase().trim()
-      if (!email.includes('@') || lead.isSubscribed !== true) continue
+      if (!email.includes('@') || lead.isSubscribed !== true || isTestOrInternalContact(lead)) continue
       const activity = parseActivity(lead.leadActivity)
       if (!activity.checkoutStartedAt) continue
       summary.eligibleCheckoutCount++

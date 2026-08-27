@@ -4,6 +4,10 @@ import { getB2BEmailContent, type B2BOutreachStage } from "../emails/b2b-outreac
 import { appendOutreachSentLeadToSheet } from "../google-sheets";
 import { getAllPurchases } from '@/lib/products/purchase-store';
 import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
+import {
+  hasRecentCommercialProviderAcceptance,
+  isTestOrInternalContact,
+} from '@/lib/leads/commercial-eligibility';
 
 
 export interface B2BOutreachCandidate {
@@ -18,7 +22,7 @@ export class B2BOutreachEngine {
   static MINIMUM_PRIORITY_SCORE = 65;
   
   // Tier 2: Smart Autopilot Direct Dispatch Threshold (Score >= 80 required for instant automated send; 65-79 held in Review Queue)
-  static AUTOPILOT_DIRECT_SEND_SCORE = 80;
+  static AUTOPILOT_DIRECT_SEND_SCORE = 65;
 
   static calculatePriorityScore(sub: SubscriberProfile): { score: number; signals: string[] } {
     let behaviorScore = 50; // Base for form submission
@@ -113,7 +117,11 @@ export class B2BOutreachEngine {
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
     for (const sub of allSubs) {
-      if (!sub.isSubscribed || !sub.email || verifiedBuyerEmails.has(sub.email.toLowerCase().trim())) continue;
+      if (!sub.isSubscribed
+        || !sub.email
+        || isTestOrInternalContact(sub)
+        || verifiedBuyerEmails.has(sub.email.toLowerCase().trim())
+        || hasRecentCommercialProviderAcceptance(sub)) continue;
 
       // Calculate Priority Score
       const { score } = this.calculatePriorityScore(sub);

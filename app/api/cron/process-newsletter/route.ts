@@ -3,6 +3,10 @@ import { isValidCronRequest } from '@/lib/admin/auth';
 import { NewsletterEngine } from '@/lib/leads/NewsletterEngine';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
+import {
+  hasRecentCommercialProviderAcceptance,
+  isTestOrInternalContact,
+} from '@/lib/leads/commercial-eligibility';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -38,7 +42,13 @@ export async function GET(request: NextRequest) {
     const allSubscribers = await SubscriberRepository.getAllSubscribers(true);
     const targets = (await NewsletterEngine.getTargetLeadsForCampaign(config, allSubscribers))
       .filter((subscriber) => subscriber.isSubscribed)
-      .filter((subscriber) => parseActivity(subscriber.leadActivity).lastNewsletterCampaignId !== config.campaignId)
+      .filter((subscriber) => !isTestOrInternalContact(subscriber))
+      .filter((subscriber) => {
+        const activity = parseActivity(subscriber.leadActivity);
+        return activity.lastNewsletterCampaignId !== config.campaignId
+          || !activity.lastNewsletterProviderMessageId;
+      })
+      .filter((subscriber) => !hasRecentCommercialProviderAcceptance(subscriber))
       .slice(0, 20);
     const outcomes: Array<{ email: string; providerAccepted: boolean; providerMessageId?: string; error?: string }> = [];
 
