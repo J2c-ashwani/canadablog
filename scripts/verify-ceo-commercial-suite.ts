@@ -92,6 +92,7 @@ async function run() {
   const onsiteClickRoute = fs.readFileSync(path.join(root, 'app/api/growth-os/onsite-click/route.ts'), 'utf8');
   const blogRoute = fs.readFileSync(path.join(root, 'app/blog/[slug]/page.tsx'), 'utf8');
   const pseoRoute = fs.readFileSync(path.join(root, 'app/grants/[province]/[city]/[industry]/page.tsx'), 'utf8');
+  const footer = fs.readFileSync(path.join(root, 'components/Footer.tsx'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
@@ -107,6 +108,9 @@ async function run() {
   assert(onsiteClickRoute.includes('createTrackedGrowthUrl') && onsiteClickRoute.includes('fsi_organic_visitor') && onsiteClickRoute.includes('const OFFERS'), 'On-site product clicks use allowlisted signed first-party attribution');
   assert(blogRoute.includes('<OrganicProductLadder surface="blog"') && pseoRoute.includes('<OrganicProductLadder'), 'Paid self-serve distribution is present on blog and city-industry organic templates');
   assert(actionScorecard.includes("event.channel === 'organic_onsite'"), 'CEO action P&L treats unique first-party product clicks as qualified organic leads');
+  assert(footer.includes('<OrganicProductLadder surface="footer"') && onsiteClickRoute.includes("'footer'"), 'Uncovered content routes receive the signed product ladder through the global footer');
+  assert(footer.includes('Application Toolkit ($29)') && footer.includes('Complete Funding Blueprint ($79)') && footer.includes('Funding Watch ($29/month)'), 'Global product navigation matches the active self-serve checkout prices');
+  assert(!footer.includes('Book Strategy Session ($199)') && !footer.includes('Application Toolkit ($9)'), 'Global distribution removes call-dependent and stale-price offers');
 
   console.log('All GrowthOS commercial reliability checks passed.');
 }

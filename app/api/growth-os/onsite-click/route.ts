@@ -18,6 +18,7 @@ const SURFACES = new Set([
   'grants-city-industry',
   'grant-guide',
   'mobile-sticky',
+  'footer',
 ]);
 
 function safeSlug(value: string, fallback: string) {

@@ -5,27 +5,22 @@ import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { useState, FormEvent } from 'react';
+import { usePathname } from 'next/navigation';
 import { RelatedTopics } from "@/components/RelatedTopics";
+import { OrganicProductLadder } from '@/components/products/OrganicProductLadder';
 
 export function Footer() {
+  const pathname = usePathname() || '/';
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const trackFooterEvent = (productId: string) => {
-    try {
-      const email = typeof window !== 'undefined' ? sessionStorage.getItem('fsi_checkout_email') || '' : '';
-      fetch("/api/subscriber/track-activity", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email,
-          event: "footer_product_clicked",
-          journeyId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_journey_id') || '' : '',
-          funnelId: typeof window !== 'undefined' ? sessionStorage.getItem('fsi_funnel_id') || '' : '',
-          productId
-        })
-      }).catch(() => {});
-    } catch (e) {}
+  const isExistingLadderRoute = /^\/blog\/[^/]+\/?$/.test(pathname)
+    || /^\/grants\/[^/]+\/[^/]+\/[^/]+\/?$/.test(pathname);
+  const isTransactionalRoute = /^\/(?:admin|api|apply|audit|booking|calculator|download|funding-calculator|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
+  const showOrganicProductLadder = !isExistingLadderRoute && !isTransactionalRoute;
+  const footerOfferHref = (offer: 'match-report' | 'toolkit' | 'action-plan' | 'bundle' | 'membership') => {
+    const params = new URLSearchParams({ surface: 'footer', context: pathname, offer });
+    return `/api/growth-os/onsite-click?${params.toString()}`;
   };
 
   const handleFooterSubmit = async (e: FormEvent) => {
@@ -66,6 +61,11 @@ export function Footer() {
 
   return (
     <>
+      {showOrganicProductLadder && (
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <OrganicProductLadder surface="footer" context={pathname} />
+        </div>
+      )}
       <RelatedTopics />
       <footer className="bg-gray-900 text-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
@@ -264,34 +264,29 @@ export function Footer() {
               
               <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Paid Products</li>
               <li>
-                <Link href="/products/funding-match-report" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-match-report')}>
+                <a href={footerOfferHref('match-report')} className="text-gray-400 hover:text-white text-sm">
                   Funding Match Report ($19)
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/products/action-plan" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-action-plan')}>
+                <a href={footerOfferHref('action-plan')} className="text-gray-400 hover:text-white text-sm">
                   Funding Action Plan ($49)
-                </Link>
+                </a>
               </li>
               <li>
-                <Link href="/products/toolkit" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-toolkit')}>
-                  Application Toolkit ($9)
-                </Link>
+                <a href={footerOfferHref('toolkit')} className="text-gray-400 hover:text-white text-sm">
+                  Application Toolkit ($29)
+                </a>
               </li>
               <li>
-                <Link href="/products/approval-library" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('funding-approval-library')}>
-                  Case Approval Library ($9)
-                </Link>
+                <a href={footerOfferHref('bundle')} className="text-gray-400 hover:text-white text-sm">
+                  Complete Funding Blueprint ($79)
+                </a>
               </li>
               <li>
-                <Link href="/membership" className="text-gray-400 hover:text-white text-sm" onClick={() => trackFooterEvent('membership')}>
-                  Premium Membership
-                </Link>
-              </li>
-              <li>
-                <Link href="/audit" className="text-emerald-400 hover:text-emerald-300 font-bold text-sm" onClick={() => trackFooterEvent('strategy-audit')}>
-                  Book Strategy Session ($199)
-                </Link>
+                <a href={footerOfferHref('membership')} className="text-emerald-400 hover:text-emerald-300 font-bold text-sm">
+                  Funding Watch ($29/month)
+                </a>
               </li>
               
               <li className="text-gray-300 font-bold text-[10px] uppercase tracking-wider mt-3 mb-1">Industries</li>

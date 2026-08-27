@@ -1,6 +1,6 @@
 import { ArrowRight, BellRing, FileCheck2, FileSearch, Layers3 } from 'lucide-react';
 
-type Surface = 'blog' | 'grants-city-industry';
+type Surface = 'blog' | 'grants-city-industry' | 'footer';
 
 interface OrganicProductLadderProps {
   surface: Surface;
