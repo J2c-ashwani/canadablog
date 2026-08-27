@@ -543,10 +543,10 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
                   </div>
                 </div>
 
-                {/* Secondary Booking Action */}
+                {/* Secondary self-serve action */}
                 <div className="text-center mt-2">
                   <p className="text-[10px] text-slate-400">
-                    Not ready to purchase? <a href="/consultation?source=program-page-wizard" className="text-purple-650 font-bold hover:underline">Book a 15-minute funding review.</a>
+                    Prefer application documents? <a href={`/api/growth-os/onsite-click?surface=program-evaluator&context=${encodeURIComponent(program.slug)}&offer=toolkit`} className="text-purple-650 font-bold hover:underline">Get the $29 toolkit.</a>
                   </p>
                 </div>
               </div>

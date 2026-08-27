@@ -67,7 +67,7 @@ export function StackingPortfolio({ profile, currentProgramSlug }: StackingPortf
     maximumFractionDigits: 0
   })
 
-  // Prefill checkout/consultation links
+  // Preserve profile context only on internal program links.
   const queryParams = new URLSearchParams()
   if (profile.email) queryParams.set("email", profile.email)
   if (profile.name) queryParams.set("name", profile.name)
@@ -75,9 +75,7 @@ export function StackingPortfolio({ profile, currentProgramSlug }: StackingPortf
   if (profile.industry) queryParams.set("industry", profile.industry)
   if (profile.companySize) queryParams.set("size", profile.companySize)
   queryParams.set("ref", "funding_portfolio_stack")
-  queryParams.set("stack_value", String(totalValue))
-
-  const checkoutUrl = `/consultation?${queryParams.toString()}`
+  const checkoutUrl = `/api/growth-os/onsite-click?surface=stacking-portfolio&context=${encodeURIComponent(currentProgramSlug)}&offer=bundle`
 
   return (
     <div className="space-y-6">
@@ -136,15 +134,15 @@ export function StackingPortfolio({ profile, currentProgramSlug }: StackingPortf
               Claim Your {formattedTotal}+ Stacking Opportunity
             </h3>
             <p className="text-slate-300 text-xs leading-relaxed max-w-xl font-medium">
-              Maximize your yield. Our funding analysts will review your company profile, stack regional wage subsidies, and outline a complete pre-qualification report with a 100% money-back guarantee.
+              Use the complete self-serve report, action plan, and templates to organize the matching opportunities shown above.
             </p>
           </div>
-          <Link 
+          <a
             href={checkoutUrl}
             className="inline-flex items-center justify-center gap-2 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-xs px-6 py-4 rounded-xl shadow-lg shadow-emerald-500/10 transition-colors shrink-0 w-full md:w-auto text-center"
           >
-            Claim Research Audit <ArrowRight className="h-4 w-4" />
-          </Link>
+            Get Complete Blueprint ($79) <ArrowRight className="h-4 w-4" />
+          </a>
         </div>
       </Card>
     </div>

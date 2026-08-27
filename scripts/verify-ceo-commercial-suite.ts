@@ -93,6 +93,19 @@ async function run() {
   const blogRoute = fs.readFileSync(path.join(root, 'app/blog/[slug]/page.tsx'), 'utf8');
   const pseoRoute = fs.readFileSync(path.join(root, 'app/grants/[province]/[city]/[industry]/page.tsx'), 'utf8');
   const footer = fs.readFileSync(path.join(root, 'components/Footer.tsx'), 'utf8');
+  const header = fs.readFileSync(path.join(root, 'components/Header.tsx'), 'utf8');
+  const relatedFundingPaths = fs.readFileSync(path.join(root, 'components/blog/RelatedFundingPaths.tsx'), 'utf8');
+  const rdeDecisionEngine = fs.readFileSync(path.join(root, 'components/blog/RDEDecisionEngine.tsx'), 'utf8');
+  const homepage = fs.readFileSync(path.join(root, 'app/page.tsx'), 'utf8');
+  const legacyHomepage = fs.readFileSync(path.join(root, 'components/HomePageClient.tsx'), 'utf8');
+  const leadConversionUpsell = fs.readFileSync(path.join(root, 'components/StrategySessionUpsell.tsx'), 'utf8');
+  const stackingPlanner = fs.readFileSync(path.join(root, 'components/blog/FundingStackingDecisionEngine.tsx'), 'utf8');
+  const programEvaluator = fs.readFileSync(path.join(root, 'components/seo/InlineMatchEvaluator.tsx'), 'utf8');
+  const stackingPortfolio = fs.readFileSync(path.join(root, 'components/seo/StackingPortfolio.tsx'), 'utf8');
+  const calculatorComponent = fs.readFileSync(path.join(root, 'components/calculator/GrantCalculator.tsx'), 'utf8');
+  const industryPage = fs.readFileSync(path.join(root, 'app/grants/industry/[slug]/page.tsx'), 'utf8');
+  const provincePage = fs.readFileSync(path.join(root, 'app/grants/[province]/page.tsx'), 'utf8');
+  const statePage = fs.readFileSync(path.join(root, 'app/usa/[state]/page.tsx'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
@@ -111,6 +124,27 @@ async function run() {
   assert(footer.includes('<OrganicProductLadder surface="footer"') && onsiteClickRoute.includes("'footer'"), 'Uncovered content routes receive the signed product ladder through the global footer');
   assert(footer.includes('Application Toolkit ($29)') && footer.includes('Complete Funding Blueprint ($79)') && footer.includes('Funding Watch ($29/month)'), 'Global product navigation matches the active self-serve checkout prices');
   assert(!footer.includes('Book Strategy Session ($199)') && !footer.includes('Application Toolkit ($9)'), 'Global distribution removes call-dependent and stale-price offers');
+  assert(header.includes("surface=header") && onsiteClickRoute.includes("'header'"), 'Desktop and mobile product navigation use signed action attribution');
+  assert(['($19)', '($29)', '($49)', '($79)', '($29/month)'].every((price) => header.includes(price)), 'Header distributes every active self-serve price point');
+  assert(!header.includes('($9)') && !header.includes('($199)') && !header.includes('href="/audit"'), 'Header contains no stale toolkit price or call-dependent product CTA');
+  assert(relatedFundingPaths.includes('surface=guided-path') && relatedFundingPaths.includes('Get Complete Bundle — $79'), 'Guided funding paths end at the attributable $79 self-serve bundle');
+  assert(!relatedFundingPaths.includes('/audit') && !relatedFundingPaths.includes('Book Strategy Audit'), 'Guided funding paths require no live-call fulfillment');
+  assert(rdeDecisionEngine.includes('surface=rde') && rdeDecisionEngine.includes('recommendedOffer'), 'Interactive decision engine recommends only active attributable self-serve offers');
+  assert(!rdeDecisionEngine.includes('/booking') && !rdeDecisionEngine.includes('/api/strategy-session/recovery') && !rdeDecisionEngine.includes('$2,500') && !rdeDecisionEngine.includes('$199'), 'Interactive decision engine contains no booking, consultation-recovery, or unsupported high-ticket escalation');
+  assert(homepage.includes('<OrganicProductLadder surface="homepage"') && onsiteClickRoute.includes("'homepage'"), 'Homepage distributes the same attributable self-serve product ladder');
+  assert(!homepage.includes('Book Session') && !homepage.includes('1-on-1 Strategy Session') && !legacyHomepage.includes('Book Session'), 'Current and legacy homepage components no longer distribute call-dependent fulfillment');
+  assert(footer.includes("pathname === '/'") && !homepage.includes('<OrganicProductLadder surface="footer"'), 'Live homepage renders one product ladder instead of duplicating the footer ladder');
+  assert(leadConversionUpsell.includes('surface=lead-conversion') && leadConversionUpsell.includes('Get Complete Blueprint ($79)') && leadConversionUpsell.includes('Match Report ($19)'), 'Post-lead conversion modal distributes attributable instant products');
+  assert(!leadConversionUpsell.includes('/booking') && !leadConversionUpsell.includes('/api/strategy-session/recovery'), 'Post-lead conversion modal does not create booking or recovery noise');
+  assert(stackingPlanner.includes('surface=stacking-planner') && !stackingPlanner.includes('/audit?source=stacking_planner'), 'Stacking planner routes both risk outcomes into active self-serve products');
+  assert(programEvaluator.includes('surface=program-evaluator') && !programEvaluator.includes('/consultation?source=program-page-wizard'), 'Program evaluator fallback distributes the $29 toolkit without a consultation');
+  assert(stackingPortfolio.includes('surface=stacking-portfolio') && !stackingPortfolio.includes('/consultation?'), 'Stacking portfolio distributes the attributable $79 bundle without exposing lead PII in the URL');
+  assert(calculatorComponent.includes('surface=calculator-result') && calculatorComponent.includes('Start Funding Watch — $29/month'), 'Calculator converts enterprise and verified-buyer results into attributable self-serve offers');
+  assert(!calculatorComponent.includes('addonStrategySession') && !calculatorComponent.includes('setAddonApprovalLibrary') && !calculatorComponent.includes('calendly.com/fsidigital/strategy-audit'), 'Calculator checkout cannot sell call-dependent or discontinued add-ons');
+  assert(!calculatorComponent.includes('event: "redirect_booking"') && !calculatorComponent.includes('href={`/audit?source=report-upsell'), 'Calculator telemetry and post-purchase monetization contain no false booking path');
+  assert(industryPage.includes('surface=industry-page') && !industryPage.includes('href="/audit"'), 'Industry templates distribute the signed $79 bundle instead of a consultation');
+  assert(provincePage.includes('surface=province-page') && !provincePage.includes('Strategy Session Audit'), 'Province templates distribute signed $19 and $79 products');
+  assert(statePage.includes('surface=state-page') && !statePage.includes('Book Strategy Call') && !statePage.includes('Get Free Consultation'), 'US state templates distribute signed self-serve products instead of calls');
 
   console.log('All GrowthOS commercial reliability checks passed.');
 }

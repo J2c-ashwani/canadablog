@@ -316,25 +316,25 @@ export default function FundingStackingDecisionEngine() {
             <div className="bg-gradient-to-br from-indigo-50 to-white border-2 border-indigo-200 rounded-2xl p-5 text-left space-y-4">
               <div>
                 <span className="bg-indigo-100 text-indigo-850 text-[9px] font-extrabold uppercase px-2 py-0.5 rounded">
-                  Recommended Advisory Option
+                  Recommended Self-Serve Option
                 </span>
                 <h4 className="text-sm font-extrabold text-indigo-950 mt-1">
-                  {riskRating === "High" 
-                    ? "Schedule an Expert 1-on-1 Stacking & Compliance Review ($199)" 
-                    : "Download the Complete Funding Application Toolkit ($49)"}
+                  {riskRating === "High"
+                    ? "Complete Funding Blueprint ($79)"
+                    : "Funding Application Toolkit ($29)"}
                 </h4>
                 <p className="text-xs text-slate-650 mt-1">
                   {riskRating === "High"
-                    ? "Get a full audit preflight check of your developer wage claims. Let us verify your cost centers and offset calculations to prevent CRA clawbacks."
-                    : "Access template packages, cash flow sheets, and grant budgets to satisfy co-share requirements and speed up applications by 40+ hours."}
+                    ? "Use the full report, action plan, cash-flow sheets, and application templates to review the stack before filing."
+                    : "Access template packages, cash flow sheets, and grant budgets to satisfy co-share requirements."}
                 </p>
               </div>
               
               <a 
-                href={riskRating === "High" ? "/audit?source=stacking_planner" : "/products/toolkit?source=stacking_planner"}
+                href={`/api/growth-os/onsite-click?surface=stacking-planner&context=${riskRating.toLowerCase()}-risk&offer=${riskRating === "High" ? "bundle" : "toolkit"}`}
                 className="inline-flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs px-4 py-2.5 rounded-lg shadow-xs transition-colors"
               >
-                {riskRating === "High" ? "Book Strategy Session" : "Get Application Toolkit"} <ArrowRight className="w-3.5 h-3.5" />
+                {riskRating === "High" ? "Get Complete Blueprint ($79)" : "Get Application Toolkit ($29)"} <ArrowRight className="w-3.5 h-3.5" />
               </a>
             </div>
           </div>

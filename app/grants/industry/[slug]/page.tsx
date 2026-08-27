@@ -184,16 +184,16 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
                 </CardContent>
               </Card>
 
-              {/* ── Consulting Bridge CTA Strip ── */}
+              {/* ── Self-serve CTA strip ── */}
               <div className="rounded-2xl border border-indigo-100 bg-gradient-to-r from-indigo-50 to-slate-50 p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div className="flex items-start gap-3">
                   <div className="p-2 bg-indigo-100 rounded-lg shrink-0">
-                    <Phone className="h-5 w-5 text-indigo-700" />
+                    <FileText className="h-5 w-5 text-indigo-700" />
                   </div>
                   <div>
-                    <p className="font-bold text-slate-900 text-sm">Not ready to complete the estimator?</p>
+                    <p className="font-bold text-slate-900 text-sm">Want a complete application roadmap?</p>
                     <p className="text-xs text-slate-500 mt-0.5">
-                      Book a paid 30-minute Funding Audit. Our advisors identify your top 3 programs and build your application roadmap.
+                      Get the report, action plan, and application toolkit instantly without booking a call.
                     </p>
                   </div>
                 </div>
@@ -204,9 +204,9 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
                     </Link>
                   </Button>
                   <Button asChild size="sm" variant="outline" className="border-indigo-200 text-indigo-700 hover:bg-indigo-50 font-bold rounded-lg">
-                    <Link href="/audit" className="flex items-center gap-1.5">
-                      <CalendarClock className="h-3.5 w-3.5" /> Talk To A Funding Strategist
-                    </Link>
+                    <a href={`/api/growth-os/onsite-click?surface=industry-page&context=${encodeURIComponent(resolvedParams.slug)}&offer=bundle`} className="flex items-center gap-1.5">
+                      <FileText className="h-3.5 w-3.5" /> Get Complete Blueprint ($79)
+                    </a>
                   </Button>
                 </div>
               </div>
@@ -516,19 +516,19 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
                   </div>
                 </div>
 
-                {/* Consulting Bridge (Sidebar) */}
+                {/* Self-serve product bridge (sidebar) */}
                 <div className="rounded-xl border border-indigo-100 bg-gradient-to-b from-indigo-50 to-white p-5">
                   <div className="flex items-center gap-2 mb-3">
                     <BadgeCheck className="h-5 w-5 text-indigo-600" />
-                    <span className="text-sm font-bold text-slate-900">Want expert guidance?</span>
+                    <span className="text-sm font-bold text-slate-900">Want a usable funding plan?</span>
                   </div>
                   <p className="text-xs text-slate-500 mb-4 leading-relaxed">
-                    Book a 30-minute paid Funding Audit. An FSI advisor reviews your eligibility, identifies your top 3 programs, and builds your action plan.
+                    Get the complete report, action plan, and toolkit immediately with no live-session dependency.
                   </p>
                   <Button asChild size="sm" variant="outline" className="w-full border-indigo-200 text-indigo-700 hover:bg-indigo-50 font-bold rounded-lg">
-                    <Link href="/audit" className="flex items-center justify-center gap-1.5">
-                      <CalendarClock className="h-3.5 w-3.5" /> Talk To A Funding Strategist
-                    </Link>
+                    <a href={`/api/growth-os/onsite-click?surface=industry-page&context=${encodeURIComponent(resolvedParams.slug)}&offer=bundle`} className="flex items-center justify-center gap-1.5">
+                      <FileText className="h-3.5 w-3.5" /> Get Complete Blueprint ($79)
+                    </a>
                   </Button>
                 </div>
               </div>

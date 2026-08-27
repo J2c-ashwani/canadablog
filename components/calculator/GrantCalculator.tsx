@@ -279,12 +279,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         }, 50);
     };
     const [addonToolkit, setAddonToolkit] = useState(false);
-    const [addonApprovalLibrary, setAddonApprovalLibrary] = useState(false);
-    const [addonStrategySession, setAddonStrategySession] = useState(false);
-    const addonStrategySessionRef = useRef(addonStrategySession);
-    useEffect(() => {
-        addonStrategySessionRef.current = addonStrategySession;
-    }, [addonStrategySession]);
     const [hasToolkitUnlocked, setHasToolkitUnlocked] = useState(false);
     const [hasApprovalLibraryUnlocked, setHasApprovalLibraryUnlocked] = useState(false);
     const [hasStrategyUnlocked, setHasStrategyUnlocked] = useState(false);
@@ -339,11 +333,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     useEffect(() => {
         addonToolkitRef.current = addonToolkit;
     }, [addonToolkit]);
-
-    const addonApprovalLibraryRef = useRef(addonApprovalLibrary);
-    useEffect(() => {
-        addonApprovalLibraryRef.current = addonApprovalLibrary;
-    }, [addonApprovalLibrary]);
 
     const buttonsRenderedRef = useRef(false);
 
@@ -1075,7 +1064,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             },
             addons: {
               toolkit: addonToolkit,
-              approvalLibrary: addonApprovalLibrary
+              approvalLibrary: false,
+              strategySession: false,
             },
             attribution: {
               landingPage: typeof window !== 'undefined' ? window.location.pathname : '',
@@ -1289,8 +1279,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             // Compute values dynamically from refs
             const currentProductId = selectedProductIdRef.current;
             const currentAddonToolkit = addonToolkitRef.current;
-            const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
-            const currentAddonStrategySession = addonStrategySessionRef.current;
 
             let basePrice = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
             const currentCredit = upgradeCreditRef.current || 0;
@@ -1300,14 +1288,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             if (currentAddonToolkit) {
               price += 29;
               itemsList += ' + Toolkit';
-            }
-            if (currentAddonApprovalLibrary) {
-              price += 9;
-              itemsList += ' + Approval Library';
-            }
-            if (currentAddonStrategySession) {
-              price += 180;
-              itemsList += ' + Strategy Session (Upgrade Credit Applied)';
             }
             const desc = `${itemsList} - FSI Digital`;
 
@@ -1375,8 +1355,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               name: dataRef.current.name,
               addons: {
                 toolkit: currentAddonToolkit,
-                approvalLibrary: currentAddonApprovalLibrary,
-                strategySession: currentAddonStrategySession,
+                approvalLibrary: false,
+                strategySession: false,
               },
               profileData: {
                 province: dataRef.current.province,
@@ -1395,8 +1375,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             const currentName = dataRef.current.name;
             const currentProductId = selectedProductIdRef.current;
             const currentAddonToolkit = addonToolkitRef.current;
-            const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
-            const currentAddonStrategySession = addonStrategySessionRef.current;
 
             let basePrice = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
             const currentCredit = upgradeCreditRef.current || 0;
@@ -1406,14 +1384,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             if (currentAddonToolkit) {
               price += 29;
               itemsList += ' + Toolkit';
-            }
-            if (currentAddonApprovalLibrary) {
-              price += 9;
-              itemsList += ' + Approval Library';
-            }
-            if (currentAddonStrategySession) {
-              price += 180;
-              itemsList += ' + Strategy Session (Upgrade Credit Applied)';
             }
             const desc = `${itemsList} - FSI Digital`;
 
@@ -1467,14 +1437,14 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 }
                 setStep(8);
 
-                // Telemetry: redirect_booking
+                // Telemetry: begin verified report delivery.
                 if (currentEmail) {
                   fetch("/api/subscriber/track-activity", {
                     method: "POST",
                     headers: { "Content-Type": "application/json" },
                     body: JSON.stringify({
                       email: currentEmail,
-                      event: "redirect_booking",
+                      event: "report_delivery_started",
                       ...getDeviceMetadata()
                     })
                   }).catch(() => {});
@@ -1507,17 +1477,12 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
           onCancel: () => {
             const currentProductId = selectedProductIdRef.current;
             const currentAddonToolkit = addonToolkitRef.current;
-            const currentAddonApprovalLibrary = addonApprovalLibraryRef.current;
 
             let price = currentProductId === 'funding-bundle' ? 79 : currentProductId === 'funding-roadmap' ? 49 : 19;
             let itemsList = currentProductId === 'funding-bundle' ? 'Complete Funding Bundle' : currentProductId === 'funding-roadmap' ? 'Funding Action Plan' : 'Funding Match Report';
             if (currentAddonToolkit) {
               price += 29;
               itemsList += ' + Toolkit';
-            }
-            if (currentAddonApprovalLibrary) {
-              price += 9;
-              itemsList += ' + Approval Library';
             }
             const desc = `${itemsList} - FSI Digital`;
 
@@ -3136,54 +3101,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                        </div>
                                      </div>
 
-                                     {/* Upgrade 3: Approval Library Addon ($9) */}
-                                     <div 
-                                       onClick={() => setAddonApprovalLibrary(!addonApprovalLibrary)}
-                                       className={`cursor-pointer border rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-slate-50/80 ${
-                                         addonApprovalLibrary ? 'border-indigo-500 bg-indigo-50/5 shadow-2xs' : 'border-slate-200 bg-white'
-                                       }`}
-                                     >
-                                       <div className="pt-1">
-                                         <input 
-                                           type="checkbox" 
-                                           checked={addonApprovalLibrary} 
-                                           onChange={() => {}} 
-                                           className="w-4 h-4 rounded text-indigo-605 focus:ring-indigo-505 border-slate-300"
-                                         />
-                                       </div>
-                                       <div>
-                                         <h6 className="font-extrabold text-slate-800 text-xs">Add Funding Approval Library (+$9)</h6>
-                                         <p className="text-[11px] text-slate-550 leading-relaxed mt-1">
-                                            Review real successful R&D (SR&ED/IRAP) narratives, project descriptions, and approved budgets to clone winning strategies.
-                                         </p>
-                                       </div>
-                                     </div>
-
-                                     {/* Upgrade 4: Strategy Session Bump ($180 credit applied) */}
-                                     <div 
-                                       onClick={() => setAddonStrategySession(!addonStrategySession)}
-                                       className={`cursor-pointer border rounded-xl p-4 flex items-start gap-3 transition-all hover:bg-slate-50/80 ${
-                                         addonStrategySession ? 'border-indigo-500 bg-indigo-50/5 shadow-2xs' : 'border-slate-200 bg-white'
-                                       }`}
-                                     >
-                                       <div className="pt-1">
-                                         <input 
-                                           type="checkbox" 
-                                           checked={addonStrategySession} 
-                                           onChange={() => {}} 
-                                           className="w-4 h-4 rounded text-indigo-605 focus:ring-indigo-505 border-slate-300"
-                                         />
-                                       </div>
-                                       <div>
-                                         <h6 className="font-extrabold text-slate-800 text-xs flex items-center gap-1.5">
-                                           <span>Add Priority 1-on-1 Strategy & Review Session (+$180)</span>
-                                           <span className="bg-emerald-100 text-emerald-850 text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase">Best Value</span>
-                                         </h6>
-                                         <p className="text-[11px] text-slate-550 leading-relaxed mt-1">
-                                           <strong>You've already invested in your funding roadmap. We'll automatically apply your $19 purchase toward your Strategy Session. Today you'll pay only the remaining $180.</strong> Get personalized alignment directly with our expert advisory team.
-                                         </p>
-                                       </div>
-                                     </div>
                                  </div>
                     </div>
                     </div>
@@ -3293,35 +3210,31 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                             A copy has been sent to <strong>{data.email}</strong>
                           </p>
 
-                          {/* Enterprise Fast-Track Scheduler (Task 2) */}
+                          {/* Enterprise self-serve recommendation */}
                           {(() => {
                             const rev = data.revenue || '';
                             const goal = data.goal || '';
                             const isEnterprise = rev === '500k-1m' || rev === 'over-1m' || goal === 'audit';
                             if (isEnterprise) {
-                              const calendlyUrl = `https://calendly.com/fsidigital/strategy-audit?email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.name || '')}&a1=${encodeURIComponent(data.company || '')}`;
                               return (
                                 <div className="mt-6 bg-gradient-to-br from-indigo-50/50 to-white border border-indigo-150 rounded-2xl p-6 text-left max-w-xl mx-auto space-y-4 shadow-xs">
                                   <div className="flex items-start gap-3">
                                     <div className="bg-indigo-100 p-2 rounded-xl text-indigo-700 font-bold shrink-0">🚨</div>
                                     <div>
                                       <h4 className="font-extrabold text-slate-900 text-sm flex items-center gap-1.5">
-                                        Priority Enterprise Fast-Track: Schedule Your Strategy Review
+                                        Enterprise Profile: Use the Complete Funding Blueprint
                                       </h4>
                                       <p className="text-xs text-slate-500 mt-0.5">
-                                        Your company qualifies for high-ticket advisory streams. Schedule your 1-on-1 strategy audit session directly with our advisory desk.
+                                        Organize multiple programs with the full report, action plan, budget sheets, and application templates—without a call.
                                       </p>
                                     </div>
                                   </div>
-                                  <div className="border-t border-slate-100 pt-4">
-                                    <iframe 
-                                      src={calendlyUrl} 
-                                      width="100%" 
-                                      height="600" 
-                                      frameBorder="0" 
-                                      className="rounded-xl border border-slate-200/80 shadow-2xs"
-                                    ></iframe>
-                                  </div>
+                                  <a
+                                    href="/api/growth-os/onsite-click?surface=calculator-result&context=enterprise-profile&offer=bundle"
+                                    className="inline-flex items-center justify-center rounded-xl bg-indigo-600 px-5 py-3 text-sm font-extrabold text-white hover:bg-indigo-700"
+                                  >
+                                    Get Complete Blueprint ($79)
+                                  </a>
                                 </div>
                               );
                             }
@@ -3949,58 +3862,27 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                           </div>
                         )}
 
-                        {/* ═══════ UPSELL TO $199 AUDIT (Level 4 — Pay First) ═══════ */}
-                        {(() => {
-                          const discount = hasStrategyUnlocked 
-                            ? (selectedProductId === 'funding-bundle' ? 79 : 49) 
-                            : 19;
-                          const netPrice = 199 - discount;
-                          return (
-                            <div className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-5 sm:p-6 text-center relative overflow-hidden">
-                              <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-bl uppercase tracking-wider">
-                                ${discount} Credit Applied
-                              </div>
-                              <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-3">
-                                <TrendingUp className="w-6 h-6 text-indigo-600" />
-                              </div>
-                              <h4 className="text-lg font-bold text-slate-800 mb-1">Level 4 — Funding Strategy Audit</h4>
-                              <p className="text-sm text-slate-500 mb-1 max-w-md mx-auto">
-                                Want an FSI advisor to review your eligibility, identify your top 3 programs, and build a custom application roadmap?
-                              </p>
-                              <p className="text-xs text-slate-400 mb-4 max-w-sm mx-auto">
-                                Pay now, then immediately book your 30-min strategy call. No waiting room. No sales pitch. Custom report delivered before the call.
-                              </p>
-                              <strong className="block mb-4 text-emerald-700 font-semibold bg-emerald-50 border border-emerald-100 rounded-lg p-2.5 max-w-xs mx-auto text-sm">
-                                Your ${discount} report credit is applied — pay only ${netPrice}
-                              </strong>
-                              <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
-                                <a
-                                  href={`/audit?source=report-upsell&email=${encodeURIComponent(data.email)}&name=${encodeURIComponent(data.name)}&industry=${encodeURIComponent(data.industry)}&region=${encodeURIComponent(data.province)}&discount=${discount}`}
-                                  data-google-vignette="false"
-                                  className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-indigo-200"
-                                  onClick={() => {
-                                    trackEvent('audit_upsell_clicked', { source: 'funding_match_report' });
-                                    fetch("/api/subscriber/track-activity", {
-                                      method: "POST",
-                                      headers: { "Content-Type": "application/json" },
-                                      body: JSON.stringify({
-                                        email: data.email,
-                                        event: "audit_cta_clicked"
-                                      })
-                                    }).catch(e => console.error("Telemetry error:", e));
-                                  }}
-                                >
-                                  Upgrade to Funding Audit — ${netPrice} <ArrowRight className="w-4 h-4" />
-                                </a>
-                                <span className="bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold px-3 py-1.5 rounded-full text-[11px] flex items-center gap-1 shadow-sm shrink-0">
-                                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                                  ${discount} Report Credit Applied
-                                </span>
-                              </div>
-                              <p className="text-xs text-slate-400 mt-2">Pay first → Book your call instantly → 100% refund if no programs match</p>
-                            </div>
-                          );
-                        })()}
+                        {/* Recurring post-purchase next step */}
+                        <div className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-5 sm:p-6 text-center relative overflow-hidden">
+                          <div className="absolute top-0 right-0 bg-emerald-500 text-white text-[10px] font-bold px-2.5 py-0.5 rounded-bl uppercase tracking-wider">
+                            Automated Weekly Radar
+                          </div>
+                          <div className="inline-flex items-center justify-center w-12 h-12 bg-indigo-100 rounded-full mb-3">
+                            <TrendingUp className="w-6 h-6 text-indigo-600" />
+                          </div>
+                          <h4 className="text-lg font-bold text-slate-800 mb-1">Keep Your Funding Matches Current</h4>
+                          <p className="text-sm text-slate-500 mb-4 max-w-md mx-auto">
+                            Funding Watch monitors new matches and deadlines for your saved business profile. No call or live session is required.
+                          </p>
+                          <a
+                            href="/api/growth-os/onsite-click?surface=calculator-result&context=verified-buyer&offer=membership"
+                            data-google-vignette="false"
+                            className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-6 py-3 rounded-xl transition-colors shadow-lg shadow-indigo-200"
+                          >
+                            Start Funding Watch — $29/month <ArrowRight className="w-4 h-4" />
+                          </a>
+                          <p className="text-xs text-slate-400 mt-2">Cancel anytime from the self-serve member dashboard.</p>
+                        </div>
                       </div>
                     )}
                   </div>

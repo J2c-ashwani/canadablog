@@ -14,7 +14,8 @@ export function Footer() {
   const [email, setEmail] = useState('');
   const [isLoading, setIsLoading] = useState(false);
 
-  const isExistingLadderRoute = /^\/blog\/[^/]+\/?$/.test(pathname)
+  const isExistingLadderRoute = pathname === '/'
+    || /^\/blog\/[^/]+\/?$/.test(pathname)
     || /^\/grants\/[^/]+\/[^/]+\/[^/]+\/?$/.test(pathname);
   const isTransactionalRoute = /^\/(?:admin|api|apply|audit|booking|calculator|download|funding-calculator|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
   const showOrganicProductLadder = !isExistingLadderRoute && !isTransactionalRoute;

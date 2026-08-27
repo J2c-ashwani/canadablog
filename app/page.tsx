@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
+import { OrganicProductLadder } from '@/components/products/OrganicProductLadder';
 
 export const metadata: Metadata = {
   title: 'Business Funding Canada | Small Business Grants & Fast Capital',
@@ -201,6 +202,9 @@ export default function HomePage() {
         </div>
       </section>
 
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <OrganicProductLadder surface="homepage" context="homepage" />
+      </div>
       <Footer />
 
       <style>{`

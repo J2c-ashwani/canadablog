@@ -180,14 +180,14 @@ export default async function ProvinceGrantHubPage({ params }: ProvincePageProps
                         <span className="block text-xs font-bold">📊 Free Grant Calculator →</span>
                         <span className="block text-[10px] text-indigo-200 mt-0.5">Find matching funding in 2 minutes</span>
                       </Link>
-                      <Link href="/get-started" className="block p-3 rounded-lg bg-indigo-900/50 hover:bg-indigo-900 border border-indigo-800 transition-colors">
-                        <span className="block text-xs font-bold">🤝 Strategy Session Audit →</span>
-                        <span className="block text-[10px] text-indigo-200 mt-0.5">Book 1-on-1 session with a grant expert</span>
-                      </Link>
-                      <Link href="/products/report" className="block p-3 rounded-lg bg-indigo-900/50 hover:bg-indigo-900 border border-indigo-800 transition-colors">
+                      <a href={`/api/growth-os/onsite-click?surface=province-page&context=${encodeURIComponent(resolvedParams.province)}&offer=bundle`} className="block p-3 rounded-lg bg-indigo-900/50 hover:bg-indigo-900 border border-indigo-800 transition-colors">
+                        <span className="block text-xs font-bold">🧭 $79 Complete Funding Blueprint →</span>
+                        <span className="block text-[10px] text-indigo-200 mt-0.5">Report, action plan, and toolkit—self-serve</span>
+                      </a>
+                      <a href={`/api/growth-os/onsite-click?surface=province-page&context=${encodeURIComponent(resolvedParams.province)}&offer=match-report`} className="block p-3 rounded-lg bg-indigo-900/50 hover:bg-indigo-900 border border-indigo-800 transition-colors">
                         <span className="block text-xs font-bold">📄 $19 Custom Funding Report →</span>
                         <span className="block text-[10px] text-indigo-200 mt-0.5">Get a personalized PDF funding roadmap</span>
-                      </Link>
+                      </a>
                       <Link href="/grants" className="block p-3 rounded-lg bg-indigo-900/50 hover:bg-indigo-900 border border-indigo-800 transition-colors">
                         <span className="block text-xs font-bold">🗂️ Federal Grant Database →</span>
                         <span className="block text-[10px] text-indigo-200 mt-0.5">Browse 500+ national incentives</span>

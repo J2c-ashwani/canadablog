@@ -725,13 +725,13 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
 
                     {/* CTA Section */}
                     <section className="bg-gradient-to-r from-green-600 to-blue-600 rounded-xl p-8 text-white text-center">
-                        <h3 className="text-2xl font-bold mb-4">Get Your Free {state.name} Grant Strategy</h3>
+                        <h3 className="text-2xl font-bold mb-4">Get Your {state.name} Funding Match Report</h3>
                         <p className="mb-6 text-green-100">
-                            Expert guidance on accessing {state.heroStats.totalFunding} in {state.name} funding opportunities
+                            Turn this research into a personalized, self-serve funding shortlist
                         </p>
                         <div className="flex flex-col sm:flex-row gap-4 justify-center">
                             <Button size="lg" className="bg-white text-green-700 hover:bg-gray-100" asChild>
-                                <Link href="/contact">Get Free Consultation</Link>
+                                <a href={`/api/growth-os/onsite-click?surface=state-page&context=${encodeURIComponent(state.slug)}&offer=match-report`}>Get Match Report ($19)</a>
                             </Button>
                             <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10" asChild>
                                 <Link href="/grant-finder">Use Grant Finder Tool</Link>
@@ -825,12 +825,12 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                                     </div>
                                 </div>
                                 
-                                {/* Contact Box Widget */}
+                                {/* Self-serve product widget */}
                                 <div className="mt-8 bg-blue-50 rounded-xl p-6 border border-blue-100 text-center">
-                                    <h4 className="font-bold text-blue-900 mb-2">Need Expert Help?</h4>
-                                    <p className="text-sm text-blue-700 mb-4">Our specialized strategic consultants can navigate this massive application process for you.</p>
+                                    <h4 className="font-bold text-blue-900 mb-2">Need a Complete Application Plan?</h4>
+                                    <p className="text-sm text-blue-700 mb-4">Get the full report, action plan, and toolkit immediately—no call required.</p>
                                     <Button size="sm" className="w-full bg-blue-600 hover:bg-blue-700 text-white" asChild>
-                                        <Link href="/contact">Book Strategy Call</Link>
+                                        <a href={`/api/growth-os/onsite-click?surface=state-page&context=${encodeURIComponent(state.slug)}&offer=bundle`}>Get Complete Blueprint ($79)</a>
                                     </Button>
                                 </div>
 

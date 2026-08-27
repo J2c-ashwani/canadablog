@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { useRouter } from "next/navigation"
+import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { safeSessionStorage } from "@/lib/storage"
 import { Menu, X, Search, ChevronDown } from "lucide-react"
@@ -25,6 +25,10 @@ export function Header() {
   const [resourcesDropdownOpen, setResourcesDropdownOpen] = useState(false)
   const [productsDropdownOpen, setProductsDropdownOpen] = useState(false)
   const router = useRouter()
+  const pathname = usePathname() || "/"
+
+  const productHref = (offer: 'match-report' | 'toolkit' | 'action-plan' | 'bundle' | 'membership') =>
+    `/api/growth-os/onsite-click?surface=header&context=${encodeURIComponent(pathname)}&offer=${offer}`
 
   const trackHeaderEvent = (eventName: string, metadata?: any) => {
     try {
@@ -247,51 +251,46 @@ export function Header() {
                 {productsDropdownOpen && (
                   <div className="absolute top-full left-0 pt-1 w-56 z-50">
                     <div className="bg-white rounded-lg shadow-lg border">
-                      <Link
-                        href="/products/funding-match-report"
+                      <a
+                        href={productHref('match-report')}
                         className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 rounded-t-lg font-medium"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-match-report' });
-                          closeDropdowns();
-                        }}
+                        onClick={closeDropdowns}
                       >
                         <div className="font-bold text-gray-900">Match Report</div>
                         <div className="text-[10px] text-gray-550">Instant matching report ($19)</div>
-                      </Link>
-                      <Link
-                        href="/products/action-plan"
+                      </a>
+                      <a
+                        href={productHref('toolkit')}
                         className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-action-plan' });
-                          closeDropdowns();
-                        }}
+                        onClick={closeDropdowns}
+                      >
+                        <div className="font-bold text-gray-900">Application Toolkit</div>
+                        <div className="text-[10px] text-gray-550">Worksheets & playbooks ($29)</div>
+                      </a>
+                      <a
+                        href={productHref('action-plan')}
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={closeDropdowns}
                       >
                         <div className="font-bold text-gray-900">Action Plan</div>
                         <div className="text-[10px] text-gray-550">Budget & application checklists ($49)</div>
-                      </Link>
-
-                      <Link
-                        href="/products/toolkit"
-                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-toolkit' });
-                          closeDropdowns();
-                        }}
+                      </a>
+                      <a
+                        href={productHref('bundle')}
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 font-medium border-t"
+                        onClick={closeDropdowns}
                       >
-                        <div className="font-bold text-gray-900">Application Companion Pack</div>
-                        <div className="text-[10px] text-gray-550">Worksheets & playbooks ($9)</div>
-                      </Link>
-                      <Link
-                        href="/audit"
-                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 rounded-b-lg font-medium border-t"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' });
-                          closeDropdowns();
-                        }}
+                        <div className="font-bold text-primary">Complete Funding Blueprint</div>
+                        <div className="text-[10px] text-gray-550">All self-serve resources ($79)</div>
+                      </a>
+                      <a
+                        href={productHref('membership')}
+                        className="block px-4 py-2.5 text-xs text-gray-700 hover:bg-gray-50 rounded-b-lg font-medium"
+                        onClick={closeDropdowns}
                       >
-                        <div className="font-bold text-primary">1-on-1 Strategy Session</div>
-                        <div className="text-[10px] text-gray-550">Session & diagnostic audit ($199)</div>
-                      </Link>
+                        <div className="font-bold text-gray-900">Funding Watch</div>
+                        <div className="text-[10px] text-gray-550">Personalized funding radar ($29/month)</div>
+                      </a>
                     </div>
                   </div>
                 )}
@@ -365,11 +364,8 @@ export function Header() {
                 className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"
                 size="sm"
                 asChild
-                onClick={() => trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' })}
               >
-                <Link href="/audit">
-                  Book Strategy Session ($199)
-                </Link>
+                <a href={productHref('bundle')}>Complete Bundle ($79)</a>
               </Button>
               <Button
                 className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"
@@ -560,51 +556,56 @@ export function Header() {
                   </button>
                   {productsDropdownOpen && (
                     <div className="ml-4 mt-1 space-y-1 border-l-2 border-gray-200 pl-3">
-                      <Link
-                        href="/products/funding-match-report"
+                      <a
+                        href={productHref('match-report')}
                         className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
                         onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-match-report' });
                           setIsMenuOpen(false);
                           setProductsDropdownOpen(false);
                         }}
                       >
                         Match Report ($19)
-                      </Link>
-                      <Link
-                        href="/products/action-plan"
+                      </a>
+                      <a
+                        href={productHref('toolkit')}
                         className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
                         onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-action-plan' });
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Application Toolkit ($29)
+                      </a>
+                      <a
+                        href={productHref('action-plan')}
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
                           setIsMenuOpen(false);
                           setProductsDropdownOpen(false);
                         }}
                       >
                         Action Plan ($49)
-                      </Link>
-
-                      <Link
-                        href="/products/toolkit"
-                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
-                        onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'funding-toolkit' });
-                          setIsMenuOpen(false);
-                          setProductsDropdownOpen(false);
-                        }}
-                      >
-                        Application Companion Pack ($9)
-                      </Link>
-                      <Link
-                        href="/audit"
+                      </a>
+                      <a
+                        href={productHref('bundle')}
                         className="block text-sm text-blue-600 hover:text-blue-700 py-2 font-bold border-t mt-1 pt-2"
                         onClick={() => {
-                          trackHeaderEvent('header_product_clicked', { productId: 'strategy-audit' });
                           setIsMenuOpen(false);
                           setProductsDropdownOpen(false);
                         }}
                       >
-                        Book Strategy Session ($199)
-                      </Link>
+                        Complete Funding Blueprint ($79)
+                      </a>
+                      <a
+                        href={productHref('membership')}
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setProductsDropdownOpen(false);
+                        }}
+                      >
+                        Funding Watch ($29/month)
+                      </a>
                     </div>
                   )}
                 </div>

@@ -1,8 +1,9 @@
 "use client";
 
 import React from 'react';
-import { ArrowRight, BookOpen, Calculator, Calendar } from 'lucide-react';
+import { ArrowRight, BookOpen, Calculator } from 'lucide-react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 export interface RelatedFundingPathsProps {
   currentPathTitle: string;
@@ -11,7 +12,6 @@ export interface RelatedFundingPathsProps {
   nextStepDescription?: string;
   stepType: 'Comparison' | 'Program Guide' | 'Province Guide' | 'Funding Report';
   calculatorLink?: string;
-  consultationLink?: string;
 }
 
 export default function RelatedFundingPaths({
@@ -20,9 +20,10 @@ export default function RelatedFundingPaths({
   nextStepLink,
   nextStepDescription = "Deep dive into program parameters and eligibility structures.",
   stepType,
-  calculatorLink = "/calculator",
-  consultationLink = "/audit"
+  calculatorLink = "/calculator"
 }: RelatedFundingPathsProps) {
+  const pathname = usePathname() || '/';
+  const bundleHref = `/api/growth-os/onsite-click?surface=guided-path&context=${encodeURIComponent(pathname)}&offer=bundle`;
   return (
     <div className="my-10 rounded-2xl border border-indigo-100 bg-gradient-to-br from-indigo-50/20 via-white to-slate-50/30 p-6 md:p-8 shadow-sm">
       <h4 className="text-lg font-bold text-gray-900 mb-6 flex items-center gap-2">
@@ -88,25 +89,25 @@ export default function RelatedFundingPaths({
           </div>
         </div>
 
-        {/* Step 4: Audit */}
-        <div className="relative flex flex-col justify-between p-4 rounded-xl border border-gray-150 bg-white hover:border-red-300 hover:shadow-sm transition-all duration-300">
+        {/* Step 4: Self-serve bundle */}
+        <div className="relative flex flex-col justify-between p-4 rounded-xl border border-gray-150 bg-white hover:border-indigo-300 hover:shadow-sm transition-all duration-300">
           <div>
             <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[10px] font-bold bg-red-100 text-red-800 uppercase tracking-wide mb-2">
-              Step 4: Expert Review
+              Step 4: Self-Serve Plan
             </span>
             <h5 className="font-semibold text-gray-900 text-sm leading-snug">
-              <Link href={consultationLink}>Strategy Audit</Link>
+              <a href={bundleHref}>Complete Funding Blueprint</a>
             </h5>
-            <p className="text-[11px] text-gray-500 mt-1">Validate application portfolio and prevent double-dipping.</p>
+            <p className="text-[11px] text-gray-500 mt-1">Use the full report, action plan, and toolkit without booking a call.</p>
           </div>
           <div className="mt-4">
-            <Link 
-              href={consultationLink} 
+            <a
+              href={bundleHref}
               className="inline-flex items-center gap-1 text-[11px] font-bold text-red-600 hover:text-red-800"
             >
-              <span>Book Strategy Audit</span>
+              <span>Get Complete Bundle — $79</span>
               <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            </a>
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
-import { ArrowRight, CheckCircle2, Mail, Cpu, DollarSign, Calendar, RefreshCw, AlertCircle, Sparkles } from 'lucide-react';
+import { useState } from 'react';
+import { ArrowRight, CheckCircle2, Mail, Cpu, DollarSign, RefreshCw, AlertCircle, Sparkles } from 'lucide-react';
 import { RDE_CONFIGS } from '@/lib/data/rdeConfigs';
 
 interface RDEDecisionEngineProps {
@@ -28,54 +28,33 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
-  const [recoveryId, setRecoveryId] = useState('');
-  const [hasBooked, setHasBooked] = useState(false);
-
   const questions = config.questions;
   const isQuestionsFinished = currentQuestionIdx >= questions.length;
   const evaluation = isQuestionsFinished ? config.evaluate(answers) : null;
 
-  useEffect(() => {
-    setRecoveryId('rec_' + Math.random().toString(36).substring(2, 15));
-  }, []);
-
-  // Abandonment tracking for strategy session recovery
-  useEffect(() => {
-    if (!submitted || !email || hasBooked) return;
-
-    const isFilingEscalation = answers.revenue === 'above_3m' && answers.employees === '100_plus';
-    const isStrategyEscalation = !isFilingEscalation && (
-      answers.revenue === 'above_3m' || 
-      answers.employees === '26_99' || 
-      answers.employees === '100_plus' ||
-      (evaluation && evaluation.escalate)
-    );
-
-    if (!isFilingEscalation && !isStrategyEscalation) return;
-
-    const handleUnload = () => {
-      // Use keepalive: true to ensure the request completes even during unload/close
-      void fetch('/api/strategy-session/recovery', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        keepalive: true,
-        body: JSON.stringify({
-          event: 'abandoned',
-          recoveryId,
-          email,
-          name: name || 'Founder',
-          source: `RDE - ${config.title}`,
-          pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
-          reason: 'Closed Page'
-        })
-      });
-    };
-
-    window.addEventListener('beforeunload', handleUnload);
-    return () => {
-      window.removeEventListener('beforeunload', handleUnload);
-    };
-  }, [submitted, email, hasBooked, answers, recoveryId, name, config.title, evaluation]);
+  const recommendsBundle = Boolean(evaluation && (
+    answers.revenue === 'above_3m' ||
+    answers.employees === '26_99' ||
+    answers.employees === '100_plus' ||
+    evaluation.escalate
+  ));
+  const recommendedOffer = !evaluation
+    ? 'match-report'
+    : recommendsBundle
+      ? 'bundle'
+      : evaluation.productPrice >= 49
+        ? 'action-plan'
+        : evaluation.productPrice >= 29
+          ? 'toolkit'
+          : 'match-report';
+  const recommendedProduct = recommendsBundle
+    ? { name: 'Complete Funding Blueprint', price: 79 }
+    : recommendedOffer === 'action-plan'
+      ? { name: 'Funding Action Plan', price: 49 }
+      : recommendedOffer === 'toolkit'
+        ? { name: 'Application Toolkit', price: 29 }
+        : { name: 'Personalized Funding Match Report', price: 19 };
+  const recommendedHref = `/api/growth-os/onsite-click?surface=rde&context=${encodeURIComponent(configId)}&offer=${recommendedOffer}`;
 
   const activeQuestion = !isQuestionsFinished ? questions[currentQuestionIdx] : null;
 
@@ -134,7 +113,7 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
           qualificationScore: evaluation.probability,
           fundingEstimate: evaluation.eligibilityEstimate,
           matchedPrograms: evaluation.matchedPrograms,
-          productRecommended: evaluation.escalate ? '1-on-1 Strategy Session ($199)' : evaluation.productName,
+          productRecommended: `${recommendedProduct.name} ($${recommendedProduct.price})`,
           sourcePage: typeof window !== 'undefined' ? window.location.pathname : `/blog/${configId}`,
           utmSource,
           utmMedium,
@@ -161,35 +140,6 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
         localStorage.setItem('fsi:lead_industry', answers.industry || 'Technology');
         localStorage.setItem('fsi:lead_company', answers.company || '');
         localStorage.setItem('fsi:lead_saved_at', String(Date.now()));
-      }
-
-      // If escalated, register the lead status as "shown" in the Strategy Session Recovery tab
-      const isFilingEscalation = answers.revenue === 'above_3m' && answers.employees === '100_plus';
-      const isStrategyEscalation = !isFilingEscalation && (
-        answers.revenue === 'above_3m' || 
-        answers.employees === '26_99' || 
-        answers.employees === '100_plus' ||
-        evaluation.escalate
-      );
-
-      if (isFilingEscalation || isStrategyEscalation) {
-        try {
-          await fetch('/api/strategy-session/recovery', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              event: 'shown',
-              recoveryId,
-              email,
-              name: name || 'Founder',
-              source: `RDE - ${config.title}`,
-              pagePath: typeof window !== 'undefined' ? window.location.pathname : '',
-              reason: isFilingEscalation ? 'Filing Escalation' : 'Strategy Session Escalation'
-            })
-          });
-        } catch (recErr) {
-          console.error('Failed to log recovery shown event:', recErr);
-        }
       }
 
       setSubmitted(true);
@@ -372,84 +322,31 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
                     </p>
                   </div>
                   
-                  {/* Dynamic Monetization Block / Enterprise Escalation */}
-                  {answers.revenue === 'above_3m' && answers.employees === '100_plus' ? (
-                    // 1. Enterprise Done-For-You Filing Service ($2,500+)
-                    <div className="rounded-xl bg-gradient-to-br from-slate-900 to-indigo-950 border-2 border-indigo-500/50 p-5 space-y-4 shadow-2xl animate-in fade-in duration-300">
+                  {/* One self-serve recommendation, selected from active checkouts only. */}
+                  <div className="rounded-xl bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-white/10 p-5 space-y-3 animate-in fade-in duration-300">
+                    <div className="flex justify-between items-start gap-4">
                       <div>
-                        <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Done-For-You Filing Service</span>
-                        <h6 className="font-bold text-white text-base mt-2">Done-For-You Government Grant & Tax Credit Filing</h6>
-                        <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-                          Your enterprise profile qualifies for our success-based preparation and filing track. Our senior advisors manage your entire application pipeline, technical studies, and government submissions.
+                        <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Recommended Self-Serve Next Step</span>
+                        <h6 className="font-bold text-white text-sm mt-2">{recommendedProduct.name}</h6>
+                        <p className="text-xs text-slate-350 mt-1 leading-relaxed">
+                          Get the relevant report, application plan, and templates immediately—no consultation or live session required.
                         </p>
                       </div>
-                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2 border-t border-white/5">
-                        <div className="text-left">
-                          <span className="text-[10px] text-slate-400 block">Service Model</span>
-                          <span className="text-lg font-black text-indigo-400">$2,500+ Success Fee</span>
-                        </div>
-                        <a
-                          href={`/contact?email=${encodeURIComponent(email)}&service=done-for-you-filing&rid=${encodeURIComponent(recoveryId)}&source=RDE`}
-                          onClick={() => setHasBooked(true)}
-                          className="h-10 px-6 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
-                        >
-                          Request Filing Consultation
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </a>
+                      <div className="text-right shrink-0">
+                        <span className="text-lg font-black text-emerald-400 block">${recommendedProduct.price}</span>
+                        <span className="text-[10px] text-slate-400">one-time</span>
                       </div>
                     </div>
-                  ) : (answers.revenue === 'above_3m' || answers.employees === '26_99' || answers.employees === '100_plus' || evaluation.escalate) ? (
-                    // 2. High-Value Strategy Session ($199)
-                    <div className="rounded-xl bg-gradient-to-br from-indigo-950 to-slate-950 border border-indigo-500/30 p-5 space-y-4 animate-in fade-in duration-300">
-                      <div>
-                        <span className="text-[9px] font-black text-amber-400 uppercase tracking-widest bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">Enterprise Strategy Track</span>
-                        <h6 className="font-bold text-white text-base mt-2">1-on-1 Government Funding Strategy Session</h6>
-                        <p className="text-xs text-slate-300 mt-1.5 leading-relaxed">
-                          Your business qualifies for regional matching grants and multi-program stacking. Schedule an audit session directly with our senior consultant to structure your application pipeline.
-                        </p>
-                      </div>
-                      <div className="flex flex-col sm:flex-row justify-between items-center gap-4 pt-2 border-t border-white/5">
-                        <div className="text-left">
-                          <span className="text-[10px] text-slate-400 block">Session Fee</span>
-                          <span className="text-lg font-black text-amber-400">$199.00</span>
-                        </div>
-                        <a
-                          href={`/booking?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name || 'Founder')}&rid=${encodeURIComponent(recoveryId)}&source=RDE`}
-                          onClick={() => setHasBooked(true)}
-                          className="h-10 px-6 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
-                        >
-                          Book Strategy Session ($199)
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
+                    <div className="flex justify-end gap-3 pt-2">
+                      <a
+                        href={recommendedHref}
+                        className="h-10 px-5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
+                      >
+                        Get {recommendedProduct.name} (${recommendedProduct.price})
+                        <ArrowRight className="w-3.5 h-3.5" />
+                      </a>
                     </div>
-                  ) : (
-                    // 3. Standard Low-Ticket Product Upgrade ($19 - $49)
-                    <div className="rounded-xl bg-gradient-to-br from-slate-900 to-indigo-950/40 border border-white/10 p-5 space-y-3 animate-in fade-in duration-300">
-                      <div className="flex justify-between items-start gap-4">
-                        <div>
-                          <span className="text-[9px] font-black text-indigo-400 uppercase tracking-widest bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20">Recommended Product Upgrade</span>
-                          <h6 className="font-bold text-white text-sm mt-2">{evaluation.productName}</h6>
-                          <p className="text-xs text-slate-350 mt-1 leading-relaxed">
-                            Unlock full program requirements, step-by-step templates, month-by-month timelines, and advisor contacts. 100% money-back guarantee.
-                          </p>
-                        </div>
-                        <div className="text-right shrink-0">
-                          <span className="text-xs line-through text-slate-400">$49</span>
-                          <span className="text-lg font-black text-emerald-400 block">${evaluation.productPrice}</span>
-                        </div>
-                      </div>
-                      <div className="flex justify-end gap-3 pt-2">
-                        <a
-                          href={`${evaluation.productPath}?email=${encodeURIComponent(email)}&name=${encodeURIComponent(name || '')}&region=${encodeURIComponent(answers.province || '')}&industry=${encodeURIComponent(answers.industry || '')}&matches=${evaluation.matchedPrograms.length}&estimate=${encodeURIComponent(evaluation.eligibilityEstimate)}`}
-                          className="h-10 px-5 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold rounded-lg text-xs uppercase tracking-wider flex items-center justify-center gap-1.5 transition-all duration-300 cursor-pointer"
-                        >
-                          Upgrade to PDF Report (${evaluation.productPrice})
-                          <ArrowRight className="w-3.5 h-3.5" />
-                        </a>
-                      </div>
-                    </div>
-                  )}
+                  </div>
                 </div>
               )}
             </div>
