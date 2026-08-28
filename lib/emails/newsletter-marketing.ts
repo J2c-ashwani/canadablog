@@ -1,10 +1,12 @@
 import { sendEmail, getFirstName } from "./mailer";
 import { getReactivationPriceForEmail } from "../leads/pricing-test";
+import { isUnsubscribeToken } from '@/lib/auth/subscriber-tokens';
 
 export interface NewFundingAlertData {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken?: string;
   companyName?: string;
   programName: string;
   maxFundingAmount: string;
@@ -16,6 +18,7 @@ export interface FundingMatchUpdateData {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken?: string;
   companyName?: string;
   newProgramsCount: number;
   newProgramsList: string[];
@@ -26,6 +29,7 @@ export interface MissingFundingAlertData {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken?: string;
   companyName?: string;
   missingFundingAmount: string;
   region?: string;
@@ -48,9 +52,10 @@ export const cleanField = (val?: string) => {
   return trimmed;
 };
 
-function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string, preheader?: string) {
-  const unsubscribeUrl = loginToken
-    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
+function wrapNewsletterTemplate(contentHtml: string, unsubscribeTokenCandidate: string | undefined, firstName: string, preheader?: string) {
+  const hasScopedUnsubscribeToken = isUnsubscribeToken(unsubscribeTokenCandidate, unsubscribeTokenCandidate);
+  const unsubscribeUrl = hasScopedUnsubscribeToken
+    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(unsubscribeTokenCandidate!)}`
     : 'https://www.fsidigital.ca/subscribe/unsubscribe';
   const year = new Date().getFullYear();
 
@@ -135,7 +140,7 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
   return sendEmail({
     to: data.to,
     subject,
-    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    html: wrapNewsletterTemplate(contentHtml, data.unsubscribeToken, firstName),
     text,
     tagType: "newsletter-new-funding",
     companyName: data.companyName
@@ -188,7 +193,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
   return sendEmail({
     to: data.to,
     subject,
-    html: wrapNewsletterTemplate(contentHtml, data.loginToken, firstName),
+    html: wrapNewsletterTemplate(contentHtml, data.unsubscribeToken, firstName),
     text,
     tagType: "newsletter-match-update",
     companyName: data.companyName,
@@ -372,7 +377,7 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
   return sendEmail({
     to: data.to,
     subject,
-    html: wrapNewsletterTemplate(finalContentHtml, data.loginToken, firstName, preheaderText),
+    html: wrapNewsletterTemplate(finalContentHtml, data.unsubscribeToken, firstName, preheaderText),
     text,
     tagType: "newsletter-missing-funding",
     companyName: data.companyName,

@@ -109,6 +109,7 @@ async function run() {
   const root = process.cwd();
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
   const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
+  const approvedNewsletterCohortRoute = fs.readFileSync(path.join(root, 'app/api/admin/alerts/newsletter/approved-cohort/route.ts'), 'utf8');
   const telemetryRoute = fs.readFileSync(path.join(root, 'app/api/telemetry/route.ts'), 'utf8');
   const membershipCheckout = fs.readFileSync(path.join(root, 'components/membership/FoundingMemberCheckout.tsx'), 'utf8');
   const paypalWebhook = fs.readFileSync(path.join(root, 'app/api/paypal/webhook/route.ts'), 'utf8');
@@ -176,8 +177,13 @@ async function run() {
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(newsletterRoute.includes('CONTROLLED_COHORT_CAP = 20') && newsletterRoute.includes('remainingCohortCapacity'), 'Newsletter distribution is capped at a 20-contact evidence cohort across repeated scheduler runs');
   assert(newsletterRoute.includes('providerAccepted: true') && newsletterRoute.includes('crmReceiptPersisted: saved.success') && newsletterRoute.includes('recentlyAcceptedRecipientIds'), 'A provider-accepted newsletter is suppressed even if CRM receipt persistence failed');
+  assert(newsletterRoute.includes('APPROVED_PRODUCT_COHORT_ID') && newsletterRoute.includes('isLoginToken') && newsletterRoute.includes('isUnsubscribeToken'), 'Approved cohort preserves its one-time campaign and requires scoped checkout and unsubscribe credentials');
+  assert(!newsletterRoute.includes('outcomes.push({ email:') && newsletterRoute.includes('outcomes.push({ recipientId'), 'Controlled cohort responses expose hashed recipient IDs instead of contact emails');
+  assert(approvedNewsletterCohortRoute.includes('isValidAdminSession') && approvedNewsletterCohortRoute.includes("REQUIRED_CONFIRMATION = 'SEND_APPROVED_20'") && approvedNewsletterCohortRoute.includes('config.sentCount >= 20'), 'Approved 20-contact dispatch is admin-authenticated, explicitly confirmed, capped, and idempotent');
+  assert(approvedNewsletterCohortRoute.includes('authorization: `Bearer ${cronSecret}`') && approvedNewsletterCohortRoute.includes('APPROVED_PRODUCT_COHORT_ID'), 'Approved manual dispatch reuses the authenticated controlled newsletter sender');
   const activeNewsletterTemplates = newsletterMarketing.slice(newsletterMarketing.indexOf('export async function sendNewFundingAlertEmail'), newsletterMarketing.indexOf('function getProvinceName'));
   assert(activeNewsletterTemplates.includes('/products/funding-match-report?token=') && !activeNewsletterTemplates.includes('/portfolio?token='), 'Active newsletters distribute the $19 product instead of the legacy $99/$199 portfolio checkout');
+  assert(activeNewsletterTemplates.includes('data.unsubscribeToken') && !activeNewsletterTemplates.includes('wrapNewsletterTemplate(contentHtml, data.loginToken'), 'Active commercial newsletters use a scoped unsubscribe credential instead of a login credential');
   assert(checkoutProfileRoute.includes('isLoginToken(token, candidate.loginToken)') && standaloneCheckout.includes('/api/products/checkout-profile?token='), 'Opaque subscriber tokens securely prefill the self-serve checkout without email in the campaign URL');
   assert(telemetryRoute.includes("eventName === 'checkout_started'") && telemetryRoute.includes('parseTrackedGrowthToken'), 'Membership checkout starts enter the action P&L only through trusted first-party attribution');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');

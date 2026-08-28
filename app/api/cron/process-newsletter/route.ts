@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { isValidCronRequest } from '@/lib/admin/auth';
-import { NewsletterEngine } from '@/lib/leads/NewsletterEngine';
+import { APPROVED_PRODUCT_COHORT_ID, NewsletterEngine } from '@/lib/leads/NewsletterEngine';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
 import {
@@ -8,6 +8,7 @@ import {
   isTestOrInternalContact,
 } from '@/lib/leads/commercial-eligibility';
 import { buildEmailActionContext, getGrowthActionEvents } from '@/lib/growth-os/action-attribution';
+import { isLoginToken, isUnsubscribeToken } from '@/lib/auth/subscriber-tokens';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -40,7 +41,12 @@ export async function GET(request: NextRequest) {
   try {
     let config = await NewsletterEngine.getCampaignConfig();
     const targetCampaignId = `autopilot_campaign_${weekId}`;
-    if (config.campaignId !== targetCampaignId) config = await NewsletterEngine.autoInitializeWeeklyCampaign(weekId);
+    const requestedCampaignId = request.nextUrl.searchParams.get('campaign');
+    const preserveApprovedCampaign = requestedCampaignId === APPROVED_PRODUCT_COHORT_ID
+      && config.campaignId === APPROVED_PRODUCT_COHORT_ID;
+    if (!preserveApprovedCampaign && config.campaignId !== targetCampaignId) {
+      config = await NewsletterEngine.autoInitializeWeeklyCampaign(weekId);
+    }
     if (config.status !== 'running') {
       const summary = { campaignId: config.campaignId, providerAccepted: 0, reason: 'No verified open programs were available for a weekly update.' };
       await finishOperationLease(lease, 'SUCCEEDED', summary);
@@ -75,6 +81,8 @@ export async function GET(request: NextRequest) {
     const targets = (await NewsletterEngine.getTargetLeadsForCampaign(config, allSubscribers))
       .filter((subscriber) => subscriber.isSubscribed)
       .filter((subscriber) => !isTestOrInternalContact(subscriber))
+      .filter((subscriber) => isLoginToken(subscriber.loginToken, subscriber.loginToken))
+      .filter((subscriber) => isUnsubscribeToken(subscriber.unsubscribeToken, subscriber.unsubscribeToken))
       .filter((subscriber) => {
         const activity = parseActivity(subscriber.leadActivity);
         return activity.lastNewsletterCampaignId !== config.campaignId
@@ -83,12 +91,13 @@ export async function GET(request: NextRequest) {
       .filter((subscriber) => !hasRecentCommercialProviderAcceptance(subscriber))
       .filter((subscriber) => !recentlyAcceptedRecipientIds.has(buildEmailActionContext(tagType, subscriber.email).recipientId))
       .slice(0, Math.min(20, remainingCohortCapacity));
-    const outcomes: Array<{ email: string; providerAccepted: boolean; crmReceiptPersisted?: boolean; providerMessageId?: string; error?: string }> = [];
+    const outcomes: Array<{ recipientId: string; providerAccepted: boolean; crmReceiptPersisted?: boolean; providerMessageId?: string; error?: string }> = [];
 
     for (const subscriber of targets) {
+      const recipientId = buildEmailActionContext(tagType, subscriber.email).recipientId;
       const result = await NewsletterEngine.sendNewsletterToLead(config, subscriber);
       if (!result.success || !result.providerMessageId) {
-        outcomes.push({ email: subscriber.email, providerAccepted: false, error: result.error || 'Provider message ID missing.' });
+        outcomes.push({ recipientId, providerAccepted: false, error: result.error || 'Provider message ID missing.' });
         continue;
       }
       const activity = parseActivity(subscriber.leadActivity);
@@ -98,7 +107,7 @@ export async function GET(request: NextRequest) {
       activity.lastNewsletterProviderMessageId = result.providerMessageId;
       const saved = await SubscriberRepository.updateSubscriberPreferences(subscriber.email, { leadActivity: JSON.stringify(activity) });
       outcomes.push({
-        email: subscriber.email,
+        recipientId,
         providerAccepted: true,
         crmReceiptPersisted: saved.success,
         providerMessageId: result.providerMessageId,

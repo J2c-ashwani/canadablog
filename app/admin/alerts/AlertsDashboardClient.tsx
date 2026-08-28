@@ -64,6 +64,7 @@ export default function AlertsDashboardClient() {
   const [newsletterPreview, setNewsletterPreview] = useState("")
   const [isLoadingNewsletter, setIsLoadingNewsletter] = useState(false)
   const [isLaunchingNewsletter, setIsLaunchingNewsletter] = useState(false)
+  const [isSendingApprovedCohort, setIsSendingApprovedCohort] = useState(false)
   const [newsletterError, setNewsletterError] = useState("")
   const [newsletterSuccess, setNewsletterSuccess] = useState("")
 
@@ -203,6 +204,32 @@ export default function AlertsDashboardClient() {
       setNewsletterError("An unexpected error occurred.")
     } finally {
       setIsLaunchingNewsletter(false)
+    }
+  }
+
+  const handleSendApprovedCohort = async () => {
+    setIsSendingApprovedCohort(true)
+    setNewsletterError("")
+    setNewsletterSuccess("")
+    try {
+      const response = await fetch("/api/admin/alerts/newsletter/approved-cohort", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ confirmation: "SEND_APPROVED_20" }),
+      })
+      const data = await response.json()
+      if (response.ok && data.success) {
+        const accepted = Number(data.providerAccepted || 0)
+        setNewsletterSuccess(data.reason || `Provider accepted ${accepted} messages in the approved cohort.`)
+        await fetchNewsletterStatus()
+      } else {
+        setNewsletterError(data.error || "Approved cohort dispatch failed.")
+      }
+    } catch (error) {
+      console.error(error)
+      setNewsletterError("Approved cohort dispatch failed.")
+    } finally {
+      setIsSendingApprovedCohort(false)
     }
   }
 
@@ -601,6 +628,22 @@ export default function AlertsDashboardClient() {
                   </CardHeader>
                   <CardContent className="p-6">
                     <form onSubmit={handleLaunchNewsletterCampaign} className="space-y-4">
+                      <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4">
+                        <p className="text-xs font-bold text-amber-300">CEO-approved evidence cohort</p>
+                        <p className="mt-1 text-[11px] leading-relaxed text-slate-300">
+                          Send the corrected $19 Funding Match Report update to at most 20 existing opted-in contacts. Recent provider-accepted recipients, internal contacts, invalid credentials, and duplicates are suppressed automatically.
+                        </p>
+                        <Button
+                          type="button"
+                          onClick={handleSendApprovedCohort}
+                          disabled={isSendingApprovedCohort}
+                          className="mt-3 w-full bg-amber-500 text-slate-950 hover:bg-amber-400 font-black"
+                        >
+                          {isSendingApprovedCohort ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Send className="mr-2 h-4 w-4" />}
+                          Send Approved 20-Contact Cohort Now
+                        </Button>
+                      </div>
+
                       {/* Campaign Type Dropdown */}
                       <div className="space-y-1.5">
                         <label className="text-[10px] font-bold text-slate-500 uppercase tracking-wider block">Campaign Copy Model</label>

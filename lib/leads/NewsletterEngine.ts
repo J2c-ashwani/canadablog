@@ -20,6 +20,8 @@ export interface NewsletterCampaignConfig {
   sentCount: number;
 }
 
+export const APPROVED_PRODUCT_COHORT_ID = 'approved_product_cohort_2026-08-28';
+
 const SETTINGS_SHEET_NAME = "CampaignSettings"
 
 export class NewsletterEngine {
@@ -253,6 +255,7 @@ export class NewsletterEngine {
           to: sub.email,
           name: sub.name,
           loginToken: sub.loginToken || "",
+          unsubscribeToken: sub.unsubscribeToken || "",
           companyName: sub.companyName,
           programName: prog.name,
           maxFundingAmount: prog.fundingAmount,
@@ -267,6 +270,7 @@ export class NewsletterEngine {
           to: sub.email,
           name: sub.name,
           loginToken: sub.loginToken || "",
+          unsubscribeToken: sub.unsubscribeToken || "",
           companyName: sub.companyName,
           newProgramsCount: config.newProgramsCount || 3,
           newProgramsList: config.newProgramsList && config.newProgramsList.length > 0
@@ -281,6 +285,7 @@ export class NewsletterEngine {
           to: sub.email,
           name: sub.name,
           loginToken: sub.loginToken || "",
+          unsubscribeToken: sub.unsubscribeToken || "",
           companyName: sub.companyName,
           missingFundingAmount: config.missingFundingAmount || "$120,000",
           region: sub.region || "",
