@@ -140,6 +140,9 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
   const [personalizedEstimate, setPersonalizedEstimate] = useState<string | null>(null);
   const [personalizedIndustry, setPersonalizedIndustry] = useState<string | null>(null);
   const [personalizedRegion, setPersonalizedRegion] = useState<string | null>(null);
+  const [personalizedRevenue, setPersonalizedRevenue] = useState<string | null>(null);
+  const [personalizedGoal, setPersonalizedGoal] = useState<string | null>(null);
+  const [personalizedCompany, setPersonalizedCompany] = useState<string | null>(null);
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
@@ -170,6 +173,24 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     if (est) setPersonalizedEstimate(est);
     if (ind) setPersonalizedIndustry(ind);
     if (reg) setPersonalizedRegion(reg);
+
+    const token = sp.get('token') || '';
+    if (token) {
+      fetch(`/api/products/checkout-profile?token=${encodeURIComponent(token)}`, { cache: 'no-store' })
+        .then(async (response) => {
+          const result = await response.json();
+          if (!response.ok || !result.profile) return;
+          const profile = result.profile as Record<string, string>;
+          if (profile.email) setEmail(profile.email);
+          if (profile.name) setName(profile.name);
+          if (profile.province) setPersonalizedRegion(profile.province);
+          if (profile.industry) setPersonalizedIndustry(profile.industry);
+          if (profile.revenue) setPersonalizedRevenue(profile.revenue);
+          if (profile.goal) setPersonalizedGoal(profile.goal);
+          if (profile.company) setPersonalizedCompany(profile.company);
+        })
+        .catch(() => {});
+    }
   }, []);
 
   // Email validation
@@ -269,7 +290,9 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             profileData: {
               province: personalizedRegion || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_region') || '') : ''),
               industry: personalizedIndustry || (typeof window !== 'undefined' ? (localStorage.getItem('fsi:lead_industry') || '') : ''),
-              revenue: '', goal: '',
+              revenue: personalizedRevenue || '',
+              goal: personalizedGoal || '',
+              company: personalizedCompany || '',
             },
             sessionId: typeof window !== 'undefined' ? (sessionStorage.getItem('fsi_session_id') || 'sess_anonymous') : 'sess_anonymous',
             attribution: attributionData,
@@ -300,7 +323,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     } catch (err) {
       console.error("PayPal render error:", err);
     }
-  }, [sdkReady, isEmailValid, finalProductId, finalPrice, finalProductName, addons, attributionData]);
+  }, [sdkReady, isEmailValid, finalProductId, finalPrice, finalProductName, addons, attributionData, personalizedRegion, personalizedIndustry, personalizedRevenue, personalizedGoal, personalizedCompany]);
 
   return (
     <div className="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-left relative overflow-hidden backdrop-blur-md shadow-xl shadow-slate-950/20 font-sans">

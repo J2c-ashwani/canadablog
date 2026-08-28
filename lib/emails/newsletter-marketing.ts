@@ -49,8 +49,6 @@ export const cleanField = (val?: string) => {
 };
 
 function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstName: string, preheader?: string) {
-  const pricing = getReactivationPriceForEmail(loginToken); // fallback if token used
-  const dashboardUrl = `https://www.fsidigital.ca/portfolio?token=${loginToken}&source=newsletter_campaign`;
   const unsubscribeUrl = loginToken
     ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
     : 'https://www.fsidigital.ca/subscribe/unsubscribe';
@@ -99,8 +97,7 @@ function wrapNewsletterTemplate(contentHtml: string, loginToken: string, firstNa
  */
 export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
   const firstName = getFirstName(data.name);
-  const pricing = getReactivationPriceForEmail(data.to);
-  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=new_funding_alert&price=${pricing.price}`;
+  const targetUrl = `https://www.fsidigital.ca/products/funding-match-report?token=${encodeURIComponent(data.loginToken)}&source=new_funding_alert`;
   
   const contentHtml = `
     <p style="margin: 0 0 16px 0;">
@@ -122,17 +119,17 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
     </div>
 
     <p style="margin: 16px 0;">
-      Application cycles are competitive and often close on short notice. Tap below to check your specific eligibility score and access our application guide.
+      Application cycles are competitive and often close on short notice. Open the prefilled checkout below to get your personalized report for $19 USD one time.
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
-        See If You Qualify &rarr;
+        Get My Funding Match Report — $19 &rarr;
       </a>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nA high-value grant matching your business profile has been updated:\n\n* Opportunity: ${data.programName}\n* Value: Up to ${data.maxFundingAmount}\n* Criteria: ${data.industry} companies in ${data.region}\n\nSee if you qualify:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nA high-value grant matching your business profile has been updated:\n\n* Opportunity: ${data.programName}\n* Value: Up to ${data.maxFundingAmount}\n* Criteria: ${data.industry} companies in ${data.region}\n\nGet your personalized Funding Match Report for $19 USD one time:\n${targetUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
   const subject = `${data.region} Funding Alert: ${data.maxFundingAmount} Available`;
 
   return sendEmail({
@@ -150,8 +147,7 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
  */
 export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) {
   const firstName = getFirstName(data.name);
-  const pricing = getReactivationPriceForEmail(data.to);
-  const targetUrl = `https://www.fsidigital.ca/portfolio?token=${data.loginToken}&source=match_update_alert&price=${pricing.price}`;
+  const targetUrl = `https://www.fsidigital.ca/products/funding-match-report?token=${encodeURIComponent(data.loginToken)}&source=match_update_alert`;
 
   const programsListHtml = data.newProgramsList.map(name => `
     <li style="margin-bottom: 6px; font-weight: 500;">
@@ -173,17 +169,17 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     </ul>
 
     <p style="margin: 16px 0;">
-      Log in to review your saved profile. Always confirm current intake and full eligibility with the official funding body before applying.
+      Your saved profile can prefill the secure checkout for a personalized Funding Match Report. The report is $19 USD one time; always confirm current intake with the official funding body before applying.
     </p>
 
     <div style="text-align: center; margin: 28px 0;">
       <a href="${targetUrl}" target="_blank" rel="noopener noreferrer" style="background-color: #059669; color: white; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: bold; display: inline-block; font-size: 14px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.2);">
-        View My Updated Matches &rarr;
+        Get My Funding Match Report — $19 &rarr;
       </a>
     </div>
   `;
 
-  const text = `Hi ${firstName},\n\nThe current FSI database lists ${data.newProgramsCount} open funding programs that may be relevant to businesses like yours.\n\nPrograms currently marked open include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nReview your saved profile here: ${targetUrl}\n\nAlways confirm current intake and full eligibility with the official funding body before applying.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nThe current FSI database lists ${data.newProgramsCount} open funding programs that may be relevant to businesses like yours.\n\nPrograms currently marked open include:\n${data.newProgramsList.map(n => `- ${n}`).join("\n")}\n\nGet your personalized Funding Match Report for $19 USD one time: ${targetUrl}\n\nAlways confirm current intake and full eligibility with the official funding body before applying.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
   const cleanCompany = cleanField(data.companyName);
   const subject = cleanCompany
     ? `Current funding-program update for ${cleanCompany}`
@@ -205,7 +201,7 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
  */
 export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData) {
   const firstName = getFirstName(data.name);
-  const link = `https://www.fsidigital.ca/calculator?token=${data.loginToken || ""}`;
+  const link = `https://www.fsidigital.ca/products/funding-match-report?token=${encodeURIComponent(data.loginToken || "")}&source=missing_funding_alert`;
   // Reuses top-level cleanField helper
 
   const cleanIndustry = cleanField(data.industry);

@@ -160,10 +160,15 @@ async function run() {
   const objectionHandler = fs.readFileSync(path.join(root, 'lib/revenue-hunter/objections/objection-handler.ts'), 'utf8');
   const resendReconciliation = fs.readFileSync(path.join(root, 'lib/emails/resend-reconciliation.ts'), 'utf8');
   const growthHealthRoute = fs.readFileSync(path.join(root, 'app/api/cron/growth-os-health/route.ts'), 'utf8');
+  const newsletterMarketing = fs.readFileSync(path.join(root, 'lib/emails/newsletter-marketing.ts'), 'utf8');
+  const checkoutProfileRoute = fs.readFileSync(path.join(root, 'app/api/products/checkout-profile/route.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(newsletterRoute.includes('CONTROLLED_COHORT_CAP = 20') && newsletterRoute.includes('remainingCohortCapacity'), 'Newsletter distribution is capped at a 20-contact evidence cohort across repeated scheduler runs');
   assert(newsletterRoute.includes('providerAccepted: true') && newsletterRoute.includes('crmReceiptPersisted: saved.success') && newsletterRoute.includes('recentlyAcceptedRecipientIds'), 'A provider-accepted newsletter is suppressed even if CRM receipt persistence failed');
+  const activeNewsletterTemplates = newsletterMarketing.slice(newsletterMarketing.indexOf('export async function sendNewFundingAlertEmail'), newsletterMarketing.indexOf('function getProvinceName'));
+  assert(activeNewsletterTemplates.includes('/products/funding-match-report?token=') && !activeNewsletterTemplates.includes('/portfolio?token='), 'Active newsletters distribute the $19 product instead of the legacy $99/$199 portfolio checkout');
+  assert(checkoutProfileRoute.includes('isLoginToken(token, candidate.loginToken)') && standaloneCheckout.includes('/api/products/checkout-profile?token='), 'Opaque subscriber tokens securely prefill the self-serve checkout without email in the campaign URL');
   assert(telemetryRoute.includes("eventName === 'checkout_started'") && telemetryRoute.includes('parseTrackedGrowthToken'), 'Membership checkout starts enter the action P&L only through trusted first-party attribution');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');
