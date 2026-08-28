@@ -75,7 +75,7 @@ export default function ApprovalLibraryPage() {
         "shippingRate": {
           "@type": "MonetaryAmount",
           "value": "0.00",
-          "currency": "CAD"
+          "currency": "USD"
         },
         "shippingDestination": {
           "@type": "DefinedRegion",

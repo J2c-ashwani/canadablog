@@ -72,7 +72,7 @@ export default function FundingMatchReportPage() {
         "shippingRate": {
           "@type": "MonetaryAmount",
           "value": "0.00",
-          "currency": "CAD"
+          "currency": "USD"
         },
         "shippingDestination": {
           "@type": "DefinedRegion",

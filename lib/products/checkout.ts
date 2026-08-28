@@ -35,11 +35,15 @@ export async function buildServerCheckout(input: ProductCheckoutRequest): Promis
   if (!product || !EMAIL.test(email) || !name || !input.profileData || typeof input.profileData !== 'object') {
     throw new Error('Invalid checkout details');
   }
+  // Funding Watch is a recurring PayPal subscription and must never be sold
+  // through the one-time product-order endpoint.
+  if (product.id === 'funding-membership') {
+    throw new Error('Funding Watch must be purchased through the recurring membership checkout.');
+  }
 
   const addons = {
     toolkit: input.addons?.toolkit === true,
     approvalLibrary: input.addons?.approvalLibrary === true,
-    strategySession: input.addons?.strategySession === true,
   };
 
   // A report buyer may apply exactly one $19 credit to an approved upgrade.
@@ -60,7 +64,6 @@ export async function buildServerCheckout(input: ProductCheckoutRequest): Promis
   let expectedAmount = baseAmount;
   if (addons.toolkit) expectedAmount += 29;
   if (addons.approvalLibrary) expectedAmount += 9;
-  if (addons.strategySession) expectedAmount += 180;
 
   return {
     productId: product.id,

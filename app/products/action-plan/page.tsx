@@ -75,7 +75,7 @@ export default function ActionPlanPage() {
         "shippingRate": {
           "@type": "MonetaryAmount",
           "value": "0.00",
-          "currency": "CAD"
+          "currency": "USD"
         },
         "shippingDestination": {
           "@type": "DefinedRegion",

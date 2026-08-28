@@ -118,6 +118,8 @@ async function run() {
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
   const organicProductLadder = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadder.tsx'), 'utf8');
   const standaloneCheckout = fs.readFileSync(path.join(root, 'components/products/StandaloneCheckout.tsx'), 'utf8');
+  const productCatalog = fs.readFileSync(path.join(root, 'lib/products/catalog.ts'), 'utf8');
+  const serverCheckout = fs.readFileSync(path.join(root, 'lib/products/checkout.ts'), 'utf8');
   const productHierarchy = fs.readFileSync(path.join(root, 'components/products/ProductHierarchyMap.tsx'), 'utf8');
   const matchReportLanding = fs.readFileSync(path.join(root, 'app/products/funding-match-report/FundingMatchReportLanding.tsx'), 'utf8');
   const bundlePage = fs.readFileSync(path.join(root, 'app/products/bundle/page.tsx'), 'utf8');
@@ -174,6 +176,21 @@ async function run() {
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
   assert(standaloneCheckout.includes('!isEmailValid ?') && standaloneCheckout.includes('Business Email Address · Required'), 'Product checkout cannot expose PayPal before the server-required delivery email is valid');
   assert(!standaloneCheckout.includes("email.trim() === '' ||"), 'Product checkout never claims an empty email is server-valid');
+  assert(
+    [
+      ["'funding-match-report'", 'priceUsd: 19'],
+      ["'funding-toolkit'", 'priceUsd: 29'],
+      ["'funding-roadmap'", 'priceUsd: 49'],
+      ["'funding-bundle'", 'priceUsd: 79'],
+      ["'funding-membership'", 'priceUsd: 29'],
+    ].every(([productId, price]) => {
+      const productStart = productCatalog.indexOf(`${productId}: {`);
+      return productStart >= 0 && productCatalog.slice(productStart, productStart + 500).includes(price);
+    }),
+    'Server product catalog preserves the approved $19/$29/$49/$79 ladder'
+  );
+  assert(serverCheckout.includes("product.id === 'funding-membership'") && serverCheckout.includes('recurring membership checkout'), 'One-time checkout cannot create a counterfeit membership payment');
+  assert(!serverCheckout.includes('input.addons?.strategySession') && !serverCheckout.includes('expectedAmount += 180'), 'New public product intents cannot sell the unsupported call-dependent add-on');
   const buyerJourneySurface = `${productHierarchy} ${matchReportLanding} ${bundlePage} ${reportDeliveryClient}`.toLowerCase();
   assert(!buyerJourneySurface.includes('$199') && !buyerJourneySurface.includes('book a free discovery call') && !buyerJourneySurface.includes('1-on-1 advisor'), 'Product and post-purchase journeys contain no call-dependent or $199 upsell');
   assert(productHierarchy.includes("price: '$19'") && productHierarchy.includes("price: '$29'") && productHierarchy.includes("price: '$49'") && productHierarchy.includes("price: '$79'"), 'Product comparison presents only the active self-serve price ladder');
