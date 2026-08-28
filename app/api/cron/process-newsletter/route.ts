@@ -35,11 +35,9 @@ function campaignTag(campaignType: 'new_funding' | 'match_update' | 'missing_fun
 export async function GET(request: NextRequest) {
   if (!isValidCronRequest(request)) return NextResponse.json({ error: 'Unauthorized newsletter cron execution.' }, { status: 401 });
   const weekId = getYearWeekString();
-  const lease = await acquireOperationLease(`newsletter:${weekId}`, 45 * 60 * 1000);
-  if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason });
-
+  let config: Awaited<ReturnType<typeof NewsletterEngine.getCampaignConfig>>;
   try {
-    let config = await NewsletterEngine.getCampaignConfig();
+    config = await NewsletterEngine.getCampaignConfig();
     const targetCampaignId = `autopilot_campaign_${weekId}`;
     const requestedCampaignId = request.nextUrl.searchParams.get('campaign');
     const preserveApprovedCampaign = requestedCampaignId === APPROVED_PRODUCT_COHORT_ID
@@ -47,6 +45,17 @@ export async function GET(request: NextRequest) {
     if (!preserveApprovedCampaign && config.campaignId !== targetCampaignId) {
       config = await NewsletterEngine.autoInitializeWeeklyCampaign(weekId);
     }
+  } catch (error: any) {
+    return NextResponse.json({ success: false, error: error.message || 'Newsletter campaign initialization failed.' }, { status: 500 });
+  }
+
+  // The campaign—not the calendar week—is the commercial operation. This keeps
+  // a manually approved evidence cohort isolated from the scheduled weekly run,
+  // while repeated calls for the same campaign remain idempotent.
+  const lease = await acquireOperationLease(`newsletter:${config.campaignId}`, 45 * 60 * 1000);
+  if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, campaignId: config.campaignId, reason: lease.reason });
+
+  try {
     if (config.status !== 'running') {
       const summary = { campaignId: config.campaignId, providerAccepted: 0, reason: 'No verified open programs were available for a weekly update.' };
       await finishOperationLease(lease, 'SUCCEEDED', summary);
