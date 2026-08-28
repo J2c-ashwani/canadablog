@@ -158,6 +158,8 @@ async function run() {
   const seoExecutionEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/execution-engine.ts'), 'utf8');
   const seoMatrixEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/rte-matrix-engine.ts'), 'utf8');
   const objectionHandler = fs.readFileSync(path.join(root, 'lib/revenue-hunter/objections/objection-handler.ts'), 'utf8');
+  const resendReconciliation = fs.readFileSync(path.join(root, 'lib/emails/resend-reconciliation.ts'), 'utf8');
+  const growthHealthRoute = fs.readFileSync(path.join(root, 'app/api/cron/growth-os-health/route.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(newsletterRoute.includes('CONTROLLED_COHORT_CAP = 20') && newsletterRoute.includes('remainingCohortCapacity'), 'Newsletter distribution is capped at a 20-contact evidence cohort across repeated scheduler runs');
@@ -166,6 +168,9 @@ async function run() {
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');
   assert(paypalWebhook.includes("eventType: 'membership_payment_verified'"), 'Membership cash attribution requires a signed PayPal payment webhook');
+  assert(resendReconciliation.includes("fetch(url") && resendReconciliation.includes("Authorization: `Bearer ${apiKey}`"), 'Resend delivery fallback reads authenticated provider state');
+  assert(resendReconciliation.includes("event.eventType === 'provider_accepted'") && resendReconciliation.includes("event.provider.toLowerCase() === 'resend'"), 'Resend reconciliation is restricted to provider IDs already accepted into the commercial ledger');
+  assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()'), 'Daily GrowthOS health reconciles provider delivery state before reporting evidence');
   assert(actionScorecard.includes("decision: 'SCALE' | 'HOLD' | 'STOP'"), 'CEO action P&L emits explicit scale, hold, or stop decisions');
   assert(actionScorecard.includes('verifiedPageViewKeys') && actionScorecard.includes('isLikelyAutomatedUserAgent'), 'CEO action P&L excludes bot and link-scanner clicks from qualified-lead decisions');
   assert(!authorityDiscovery.includes('contact@${domain}') && !authorityDiscovery.includes('960fb097'), 'Authority discovery neither guesses recipients nor embeds credentials');

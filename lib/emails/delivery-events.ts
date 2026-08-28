@@ -97,19 +97,29 @@ async function ensureEmailEventsSheet(sheets: Awaited<ReturnType<typeof getGoogl
 
 /** Appends an external provider event; a successful HTTP webhook is not enough. */
 export async function persistDeliveryEvent(event: DeliveryEvent): Promise<void> {
+  await persistDeliveryEvents([event]);
+}
+
+/** Persists a provider-authenticated batch with one dedupe read and one append. */
+export async function persistDeliveryEvents(events: DeliveryEvent[]): Promise<number> {
+  if (events.length === 0) return 0;
   const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
   if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
   const sheets = await getGoogleSheetsClient();
   await ensureEmailEventsSheet(sheets, spreadsheetId);
 
   const existing = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:A` });
-  if ((existing.data.values || []).some((row) => row[0] === event.eventId)) return;
+  const existingIds = new Set((existing.data.values || []).map((row) => String(row[0] || '')).filter(Boolean));
+  const pending = Array.from(new Map(events
+    .filter((event) => event.eventId && !existingIds.has(event.eventId))
+    .map((event) => [event.eventId, event])).values());
+  if (pending.length === 0) return 0;
 
   const result = await sheets.spreadsheets.values.append({
     spreadsheetId,
     range: `${SHEET_TITLE}!A:G`,
     valueInputOption: 'RAW',
-    requestBody: { values: [[
+    requestBody: { values: pending.map((event) => [
       event.eventId,
       event.provider,
       event.providerMessageId,
@@ -117,9 +127,10 @@ export async function persistDeliveryEvent(event: DeliveryEvent): Promise<void> 
       event.recipient,
       event.occurredAt,
       new Date().toISOString(),
-    ]] },
+    ]) },
   });
-  if ((result.data.updates?.updatedRows || 0) !== 1) {
+  if ((result.data.updates?.updatedRows || 0) !== pending.length) {
     throw new Error('Email-event write was not confirmed by Google Sheets.');
   }
+  return pending.length;
 }

@@ -4,6 +4,7 @@ import { collectGrowthOSEvidence } from '@/lib/growth-os/evidence-metrics'
 import { GrowthTools } from '@/lib/ceo-agent/tools/growth-tools'
 import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store'
 import { sendEmail } from '@/lib/emails/mailer'
+import { reconcileResendDeliveryEvents } from '@/lib/emails/resend-reconciliation'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -21,6 +22,19 @@ export async function GET(request: NextRequest) {
   if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason })
 
   try {
+    let resendReconciliation: Awaited<ReturnType<typeof reconcileResendDeliveryEvents>> | { skipped: true; reason: string; eligible: number; matched: number; persisted: number }
+    try {
+      resendReconciliation = await reconcileResendDeliveryEvents()
+    } catch (error: any) {
+      console.error('Resend delivery reconciliation failed without blocking GrowthOS health:', error)
+      resendReconciliation = {
+        skipped: true,
+        reason: error?.message || 'Resend delivery reconciliation failed',
+        eligible: 0,
+        matched: 0,
+        persisted: 0,
+      }
+    }
     const [evidence, pipeline] = await Promise.all([collectGrowthOSEvidence(), GrowthTools.getGrowthOSStatus()])
     const critical = pipeline.orphanedStagesDetected.filter((item) => item.severity === 'P0')
     const status = evidence.evidenceState === 'UNKNOWN' || critical.length > 0
@@ -56,9 +70,9 @@ export async function GET(request: NextRequest) {
     })
     const reportAccepted = Boolean(report.success && report.providerMessageId)
     const finalStatus = status === 'HEALTHY' && reportAccepted ? 'SUCCEEDED' : status === 'FAILED' ? 'FAILED' : 'PARTIAL'
-    await finishOperationLease(lease, finalStatus, { status, evidence, reportAccepted, reportProviderMessageId: report.providerMessageId || '' })
+    await finishOperationLease(lease, finalStatus, { status, evidence, resendReconciliation, reportAccepted, reportProviderMessageId: report.providerMessageId || '' })
     const success = status !== 'FAILED' && reportAccepted
-    return NextResponse.json({ success, status, evidence, pipeline, reportAccepted }, { status: success ? 200 : 502 })
+    return NextResponse.json({ success, status, evidence, pipeline, resendReconciliation, reportAccepted }, { status: success ? 200 : 502 })
   } catch (error: any) {
     await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) })
     return NextResponse.json({ success: false, error: error.message || 'Growth OS health failed.' }, { status: 500 })
