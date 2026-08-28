@@ -105,13 +105,13 @@ export const PRODUCTS: Record<ProductId, Product> = {
     name: 'Funding Approval Library',
     slug: 'funding-approval-library',
     priceUsd: 9,
-    tagline: 'See real winning grant applications, project descriptions and budgets',
+    tagline: 'Study proposal framing examples, project descriptions, and reference budgets',
     description:
-      'Analyze real-world successful grant proposals, research projects, and hiring plan texts that won non-repayable government funding.',
+      'Study proposal structures, research project examples, and hiring-plan reference text when preparing a funding application.',
     features: [
-      'Successful R&D (SR&ED/IRAP) Project Outlines',
-      'Winning Hiring Grant Descriptions',
-      'Real Budgets Submitted & Approved',
+      'R&D (SR&ED/IRAP) Project Outline Examples',
+      'Hiring Grant Description Examples',
+      'Reference Project Budgets',
       'Step-by-Step Framing Instructions',
     ],
     deliverables: [

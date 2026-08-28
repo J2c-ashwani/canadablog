@@ -369,7 +369,7 @@ function ReportContent() {
               </h4>
             </div>
             <p className="text-xs text-slate-650 mb-3">
-              Analyze successful grant templates and projects that successfully won non-repayable government funding:
+              Study proposal framing examples, project structures, and reference budgets:
             </p>
             <div className="space-y-2.5">
               <div className="bg-white border border-slate-150 rounded-lg p-3">
@@ -516,7 +516,7 @@ function ReportContent() {
             </h4>
           </div>
           <p className="text-xs text-slate-650 mb-3">
-            Analyze successful grant templates and projects that successfully won non-repayable government funding:
+            Study proposal framing examples, project structures, and reference budgets:
           </p>
           <div className="space-y-2.5">
             <div className="bg-white border border-slate-150 rounded-lg p-3">

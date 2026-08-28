@@ -8,13 +8,13 @@ import { ProductHierarchyMap } from '@/components/products/ProductHierarchyMap';
 
 export const metadata: Metadata = {
   title: 'Funding Application Toolkit — Premium Grant Templates & Models',
-  description: 'Download 6 expert-written grant application templates, budget builders, and wage subsidy planners to write high-converting Canadian grant proposals.',
+  description: 'Download 6 grant application templates, budget builders, and wage subsidy planners to structure Canadian funding applications.',
   alternates: {
     canonical: 'https://www.fsidigital.ca/products/toolkit',
   },
   openGraph: {
     title: 'Funding Application Toolkit — Premium Grant Templates & Models',
-    description: 'Download 6 expert-written grant application templates, budget builders, and wage subsidy planners to write high-converting Canadian grant proposals.',
+    description: 'Download 6 grant application templates, budget builders, and wage subsidy planners to structure Canadian funding applications.',
     type: 'website',
   },
 };
@@ -32,25 +32,6 @@ export default function ToolkitPage() {
       "@type": "Brand",
       "name": "FSI Digital"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.8",
-      "reviewCount": "37"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Daniel T."
-        },
-        "reviewBody": "The budget templates and narrative guides saved us dozens of hours of drafting."
-      }
-    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/toolkit",
@@ -122,7 +103,7 @@ export default function ToolkitPage() {
               Submit Stronger Funding Applications in Less Time.
             </h1>
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-xl font-medium">
-              Secure the exact pre-formatted grant budget spreadsheets, wage templates, and project frameworks FSI Digital uses to land federal and provincial co-funding. Save over 40 hours of preparation.
+              Get pre-formatted grant budget spreadsheets, wage templates, and project frameworks designed to reduce repetitive setup work for federal and provincial funding applications.
             </p>
 
             {/* Trust Badges */}

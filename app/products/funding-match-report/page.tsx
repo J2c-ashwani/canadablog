@@ -29,25 +29,6 @@ export default function FundingMatchReportPage() {
       "@type": "Brand",
       "name": "FSI Digital"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "52"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Michael K."
-        },
-        "reviewBody": "Found 3 government grants we qualified for that we didn't even know existed."
-      }
-    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/funding-match-report",

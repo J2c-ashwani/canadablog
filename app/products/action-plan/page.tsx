@@ -32,25 +32,6 @@ export default function ActionPlanPage() {
       "@type": "Brand",
       "name": "FSI Digital"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "24"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "Sarah M."
-        },
-        "reviewBody": "Highly recommended! Very detailed grant application roadmap."
-      }
-    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/action-plan",
@@ -188,7 +169,7 @@ export default function ActionPlanPage() {
           <div className="text-center max-w-xl mx-auto space-y-2">
             <h2 className="text-2xl sm:text-3xl font-black text-slate-100">Step-by-Step Strategic Framework</h2>
             <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
-              Every Action Plan ensures you target matching government programs in the exact order required to ensure high approval rates.
+              Every Action Plan helps you prioritize matching programs by timing, preparation effort, and stacking constraints.
             </p>
           </div>
 

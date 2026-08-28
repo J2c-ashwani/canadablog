@@ -4,6 +4,8 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { Loader2, Lock } from 'lucide-react';
 
+const PAYPAL_MEMBERSHIP_NAMESPACE = 'paypalMembershipCheckout';
+
 export function FoundingMemberCheckout() {
   const router = useRouter();
   const [email, setEmail] = useState('');
@@ -17,29 +19,42 @@ export function FoundingMemberCheckout() {
 
   useEffect(() => {
     if (!checkoutReady || !paypalClientId || !planId) return;
-    if ((window as any).paypal?.Buttons) {
+    if ((window as any)[PAYPAL_MEMBERSHIP_NAMESPACE]?.Buttons) {
       setSdkReady(true);
       return;
     }
+    const markReady = () => {
+      if ((window as any)[PAYPAL_MEMBERSHIP_NAMESPACE]?.Buttons) setSdkReady(true);
+      else setError('PayPal subscription checkout could not initialize. Please refresh the page.');
+    };
+    const markFailed = () => setError('PayPal checkout could not load. Please try again.');
     const existing = document.querySelector<HTMLScriptElement>('script[data-fsi-membership-paypal="true"]');
     if (existing) {
-      existing.addEventListener('load', () => setSdkReady(true), { once: true });
-      existing.addEventListener('error', () => setError('PayPal checkout could not load.'), { once: true });
-      return;
+      existing.addEventListener('load', markReady, { once: true });
+      existing.addEventListener('error', markFailed, { once: true });
+      return () => {
+        existing.removeEventListener('load', markReady);
+        existing.removeEventListener('error', markFailed);
+      };
     }
     const script = document.createElement('script');
     script.dataset.fsiMembershipPaypal = 'true';
+    script.setAttribute('data-namespace', PAYPAL_MEMBERSHIP_NAMESPACE);
     script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&vault=true&intent=subscription&components=buttons`;
     script.async = true;
-    script.onload = () => setSdkReady(true);
-    script.onerror = () => setError('PayPal checkout could not load. Please try again.');
+    script.onload = markReady;
+    script.onerror = markFailed;
     document.head.appendChild(script);
+    return () => {
+      script.onload = null;
+      script.onerror = null;
+    };
   }, [checkoutReady, paypalClientId, planId]);
 
   useEffect(() => {
     if (!checkoutReady || !sdkReady || !email || !planId) return;
     const container = document.getElementById(containerId);
-    const paypal = (window as any).paypal;
+    const paypal = (window as any)[PAYPAL_MEMBERSHIP_NAMESPACE];
     if (!container || !paypal?.Buttons) return;
     container.innerHTML = '';
 

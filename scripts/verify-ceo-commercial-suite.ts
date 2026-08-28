@@ -122,6 +122,10 @@ async function run() {
   const serverCheckout = fs.readFileSync(path.join(root, 'lib/products/checkout.ts'), 'utf8');
   const productHierarchy = fs.readFileSync(path.join(root, 'components/products/ProductHierarchyMap.tsx'), 'utf8');
   const matchReportLanding = fs.readFileSync(path.join(root, 'app/products/funding-match-report/FundingMatchReportLanding.tsx'), 'utf8');
+  const matchReportPage = fs.readFileSync(path.join(root, 'app/products/funding-match-report/page.tsx'), 'utf8');
+  const toolkitPage = fs.readFileSync(path.join(root, 'app/products/toolkit/page.tsx'), 'utf8');
+  const actionPlanPage = fs.readFileSync(path.join(root, 'app/products/action-plan/page.tsx'), 'utf8');
+  const approvalLibraryPage = fs.readFileSync(path.join(root, 'app/products/approval-library/page.tsx'), 'utf8');
   const bundlePage = fs.readFileSync(path.join(root, 'app/products/bundle/page.tsx'), 'utf8');
   const reportDeliveryClient = fs.readFileSync(path.join(root, 'app/products/report/ReportDeliveryClient.tsx'), 'utf8');
   const onsiteClickRoute = fs.readFileSync(path.join(root, 'app/api/growth-os/onsite-click/route.ts'), 'utf8');
@@ -184,10 +188,17 @@ async function run() {
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');
   assert(['$19', '$29', '$49', '$79', 'match-report', 'toolkit', 'action-plan', 'bundle', 'membership'].every((value) => organicProductLadder.includes(value)), 'Organic content distributes the complete self-serve product ladder');
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
-  assert(organicProductLadder.includes("surface === 'footer'") && organicProductLadder.includes("? 'toolkit'") && organicProductLadder.includes("surface === 'grants-city-industry'") && organicProductLadder.includes("? 'action-plan'"), 'Focused organic experiment promotes the offers preferred by verified human clicks on each high-volume surface');
+  assert(organicProductLadder.includes("surface === 'footer'") && organicProductLadder.includes("? 'bundle'") && organicProductLadder.includes("surface === 'grants-city-industry'") && organicProductLadder.includes("? 'action-plan'"), 'Focused organic experiment promotes the strongest observed cash and checkout offers on each high-volume surface');
   assert(organicProductLadder.includes("experiment: 'focused-v2'") && onsiteClickRoute.includes("get('experiment') === 'focused-v2'") && onsiteClickRoute.includes('product_ladder_${experiment}'), 'Focused organic experiment has a separate first-party action ID for clean revenue measurement');
-  assert(standaloneCheckout.includes('!isEmailValid ?') && standaloneCheckout.includes('Business Email Address · Required'), 'Product checkout cannot expose PayPal before the server-required delivery email is valid');
+  assert(standaloneCheckout.includes('!isEmailValid ?') && standaloneCheckout.includes('Delivery Email · Required'), 'Product checkout cannot expose PayPal before the server-required delivery email is valid');
   assert(!standaloneCheckout.includes("email.trim() === '' ||"), 'Product checkout never claims an empty email is server-valid');
+  assert(!standaloneCheckout.includes('Full Name') && standaloneCheckout.includes('autoComplete="email"'), 'One-time product checkout asks for only the delivery field required before PayPal');
+  assert(standaloneCheckout.includes("PAYPAL_PRODUCT_NAMESPACE = 'paypalProductCheckout'") && standaloneCheckout.includes("setAttribute('data-namespace', PAYPAL_PRODUCT_NAMESPACE)"), 'One-time product checkout isolates its PayPal capture SDK namespace');
+  assert(membershipCheckout.includes("PAYPAL_MEMBERSHIP_NAMESPACE = 'paypalMembershipCheckout'") && membershipCheckout.includes("setAttribute('data-namespace', PAYPAL_MEMBERSHIP_NAMESPACE)"), 'Membership checkout isolates its PayPal subscription SDK namespace');
+  assert(['product_checkout_viewed', 'checkout_delivery_email_ready', 'paypal_buttons_rendered', 'paypal_button_clicked', 'paypal_order_create_failed', 'paypal_capture_failed'].every((event) => standaloneCheckout.includes(event)), 'Product checkout measures each revenue handoff without customer PII');
+  const productProofSurface = `${matchReportPage} ${toolkitPage} ${actionPlanPage} ${approvalLibraryPage} ${bundlePage}`;
+  assert(!productProofSurface.includes('aggregateRating') && !productProofSurface.includes('reviewCount') && !productProofSurface.includes('"review"'), 'Product structured data contains no unsupported review evidence');
+  assert(!bundlePage.includes('Full Template Pack') && bundlePage.includes('Multi-Year Stacking Simulation'), '$79 bundle promises only the assets present in its server catalog');
   assert(
     [
       ["'funding-match-report'", 'priceUsd: 19'],

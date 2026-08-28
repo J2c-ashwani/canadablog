@@ -7,14 +7,14 @@ import { StandaloneCheckout } from '@/components/products/StandaloneCheckout';
 import { ProductHierarchyMap } from '@/components/products/ProductHierarchyMap';
 
 export const metadata: Metadata = {
-  title: 'Funding Approval Library — Real Winning Grant Proposals',
-  description: "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets for $9.",
+  title: 'Funding Approval Library — Proposal Framing Examples',
+  description: 'Access proposal framing examples, project narrative patterns, and reference budgets for $9.',
   alternates: {
     canonical: 'https://www.fsidigital.ca/products/approval-library',
   },
   openGraph: {
-    title: 'Funding Approval Library — Real Winning Grant Proposals',
-    description: "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets for $9.",
+    title: 'Funding Approval Library — Proposal Framing Examples',
+    description: 'Access proposal framing examples, project narrative patterns, and reference budgets for $9.',
     type: 'website',
   },
 };
@@ -25,32 +25,13 @@ export default function ApprovalLibraryPage() {
     "@type": "Product",
     "name": "Funding Case Study Approval Library",
     "image": "https://www.fsidigital.ca/product-library-thumbnail.jpg",
-    "description": "Unlock FSI Digital's private archive of approved Canadian grant applications, project narratives, and budgets.",
+    "description": "Access proposal framing examples, project narrative patterns, and reference budgets.",
     "sku": "FSI-LIBRARY-001",
     "mpn": "FSI-LIBRARY-001",
     "brand": {
       "@type": "Brand",
       "name": "FSI Digital"
     },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "18"
-    },
-    "review": [
-      {
-        "@type": "Review",
-        "reviewRating": {
-          "@type": "Rating",
-          "ratingValue": "5"
-        },
-        "author": {
-          "@type": "Person",
-          "name": "James L."
-        },
-        "reviewBody": "Extremely valuable reference materials for writing winning proposals."
-      }
-    ],
     "offers": {
       "@type": "Offer",
       "url": "https://www.fsidigital.ca/products/approval-library",
@@ -122,7 +103,7 @@ export default function ApprovalLibraryPage() {
               Learn How Successful Canadian Funding Applications Are Structured.
             </h1>
             <p className="text-sm sm:text-base text-slate-400 leading-relaxed max-w-xl font-medium">
-              Get direct access to real, approved project descriptions, budgets, and R&D narratives that successfully won non-repayable government funding. Stop guessing what review officers want to read.
+              Get direct access to proposal framing examples, reference budgets, and R&amp;D narrative patterns that help you structure a clearer funding application.
             </p>
 
             {/* Trust Badges */}

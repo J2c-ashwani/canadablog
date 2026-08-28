@@ -62,7 +62,7 @@ function trackedHref(surface: Surface, context: string, offer: string) {
 
 export function OrganicProductLadder({ surface, context }: OrganicProductLadderProps) {
   const recommendedId = surface === 'footer'
-    ? 'toolkit'
+    ? 'bundle'
     : surface === 'grants-city-industry'
       ? 'action-plan'
       : 'match-report';

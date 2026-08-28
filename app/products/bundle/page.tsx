@@ -8,13 +8,13 @@ import { ProductHierarchyMap } from '@/components/products/ProductHierarchyMap';
 
 export const metadata: Metadata = {
   title: 'Complete Funding Blueprint ($79) — Full Grant Strategy & Stacking Package',
-  description: 'Download the complete $79 Funding Blueprint: Includes Funding Recommendation Report, 4-Month Action Plan Roadmap, Multi-Year Stacking Simulation, and Full Template Pack.',
+  description: 'Download the complete $79 Funding Blueprint: Funding Recommendation Report, 4-Month Action Plan Roadmap, Multi-Year Stacking Simulation, and document checklists.',
   alternates: {
     canonical: 'https://www.fsidigital.ca/products/bundle',
   },
   openGraph: {
     title: 'Complete Funding Blueprint ($79) — Full Grant Strategy & Stacking Package',
-    description: 'Download the complete $79 Funding Blueprint: Includes Funding Recommendation Report, 4-Month Action Plan Roadmap, Multi-Year Stacking Simulation, and Full Template Pack.',
+    description: 'Download the complete $79 Funding Blueprint: Funding Recommendation Report, 4-Month Action Plan Roadmap, Multi-Year Stacking Simulation, and document checklists.',
     type: 'website',
   },
 };
@@ -25,17 +25,12 @@ export default function BundlePage() {
     "@type": "Product",
     "name": "Complete Funding Blueprint ($79)",
     "image": "https://www.fsidigital.ca/product-blueprint-thumbnail.jpg",
-    "description": "Complete Funding Blueprint: Includes Funding Recommendation Report, 4-Month Action Plan Roadmap, Multi-Year Stacking Simulation, and Full Template Pack.",
+    "description": "Complete Funding Blueprint: Includes Funding Recommendation Report, 4-Month Action Plan Roadmap, Multi-Year Stacking Simulation, and document checklists.",
     "sku": "FSI-BUNDLE-001",
     "mpn": "FSI-BUNDLE-001",
     "brand": {
       "@type": "Brand",
       "name": "FSI Digital"
-    },
-    "aggregateRating": {
-      "@type": "AggregateRating",
-      "ratingValue": "4.9",
-      "reviewCount": "64"
     },
     "offers": {
       "@type": "Offer",
@@ -100,7 +95,7 @@ export default function BundlePage() {
                 'Everything in the $19 Funding Match Report',
                 'Everything in the $49 Strategy & Action Plan',
                 'Multi-Year Grant Stacking & Combination Matrix',
-                'Full Application Template Pack & Budget Builders',
+                'Custom document checklist and next-actions list',
                 'Instant dashboard and PDF access — no live session required'
               ].map((feat, i) => (
                 <div key={i} className="flex items-start gap-3">
