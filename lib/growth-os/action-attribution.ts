@@ -85,6 +85,16 @@ function slug(value: string) {
   return value.toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '').slice(0, 80) || 'unknown';
 }
 
+export function isLikelyAutomatedUserAgent(value: unknown) {
+  const userAgent = String(value || '').toLowerCase();
+  if (!userAgent) return true;
+  return [
+    'bot', 'crawler', 'spider', 'slurp', 'headless', 'lighthouse', 'phantomjs',
+    'selenium', 'playwright', 'puppeteer', 'python-requests', 'python/', 'axios',
+    'curl/', 'wget/', 'go-http-client', 'facebookexternalhit', 'google-inspectiontool',
+  ].some((signal) => userAgent.includes(signal));
+}
+
 function isAllowedTarget(value: string) {
   try {
     const url = new URL(value);

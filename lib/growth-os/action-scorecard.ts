@@ -1,7 +1,8 @@
-import { getGrowthActionEvents } from '@/lib/growth-os/action-attribution';
+import { getGrowthActionEvents, isLikelyAutomatedUserAgent } from '@/lib/growth-os/action-attribution';
 import { readOperationalRows } from '@/lib/growth-os/operations-store';
 import { getLatestMembershipSubscriptions, getMembershipPayments } from '@/lib/membership/membership-store';
 import { getAllPurchases, type PurchaseRecord } from '@/lib/products/purchase-store';
+import { getTelemetryEvents } from '@/lib/telemetry/telemetry-store';
 
 const EMAIL_EVENT_HEADERS = [
   'Event ID', 'Provider', 'Provider Message ID', 'Event Type', 'Recipient', 'Occurred At', 'Received At',
@@ -68,15 +69,25 @@ function isTestIdentity(email: string, name = '') {
 }
 
 export async function getActionPerformanceScorecard(windowDays = 30): Promise<ActionPerformanceScorecard> {
-  const [events, emailEvents, purchases, membershipPayments, memberships] = await Promise.all([
+  const [events, emailEvents, purchases, membershipPayments, memberships, telemetry] = await Promise.all([
     getGrowthActionEvents(),
     readOperationalRows('Email Events', EMAIL_EVENT_HEADERS),
     getAllPurchases({ strict: true }),
     getMembershipPayments(),
     getLatestMembershipSubscriptions(),
+    getTelemetryEvents({ strict: true }),
   ]);
   const cutoff = Date.now() - windowDays * 24 * 60 * 60 * 1000;
   const recentEvents = events.filter((event) => dateValue(event.occurredAt) >= cutoff);
+  const verifiedPageViewKeys = new Set(telemetry
+    .filter((event) => dateValue(event.timestamp) >= cutoff)
+    .filter((event) => event.eventName === 'page_view' && event.actionId && event.actionRecipientId)
+    .filter((event) => !['Likely Bot', 'Suspicious'].includes(event.trafficQualityClassification || ''))
+    .map((event) => `${event.actionId}:${event.actionRecipientId}`));
+  const isVerifiedBrowserClick = (event: (typeof recentEvents)[number]) =>
+    event.eventType === 'click'
+    && !isLikelyAutomatedUserAgent(event.metadata?.userAgent)
+    && verifiedPageViewKeys.has(`${event.actionId}:${event.recipientId}`);
   const actionIds = new Set(recentEvents.map((event) => event.actionId).filter(Boolean));
   purchases.filter((purchase) => dateValue(purchase.createdAt) >= cutoff && purchase.actionId).forEach((purchase) => actionIds.add(purchase.actionId!));
   membershipPayments.filter((payment) => dateValue(payment.occurredAt) >= cutoff && payment.actionId).forEach((payment) => actionIds.add(payment.actionId));
@@ -118,7 +129,8 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       && membership.status === 'ACTIVE'
       && !isTestIdentity(membership.email)
     );
-    const organicClickEvents = actionEvents.filter((event) => event.eventType === 'click' && event.channel === 'organic_onsite');
+    const verifiedClickEvents = actionEvents.filter(isVerifiedBrowserClick);
+    const organicClickEvents = verifiedClickEvents.filter((event) => event.channel === 'organic_onsite');
     const qualifiedLeads = new Set([
       ...acceptedEvents.map((event) => event.recipientId),
       ...organicClickEvents.map((event) => event.recipientId),
@@ -162,7 +174,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       qualifiedLeadsAffected: qualifiedLeads,
       providerAccepted: acceptedMessageIds.size,
       delivered,
-      clicks: new Set(actionEvents.filter((event) => event.eventType === 'click').map((event) => event.recipientId || event.eventId)).size,
+      clicks: new Set(verifiedClickEvents.map((event) => event.recipientId || event.eventId)).size,
       checkouts,
       purchases: purchasesCount,
       activeSubscriptions: activeSubscriptions.length,
@@ -179,7 +191,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
   }).sort((left, right) => right.revenueUSD - left.revenueUSD || right.mrrUSD - left.mrrUSD || right.providerAccepted - left.providerAccepted);
 
   const totalQualifiedLeadsAffected = new Set(recentEvents
-    .filter((event) => event.eventType === 'provider_accepted' || (event.eventType === 'click' && event.channel === 'organic_onsite'))
+    .filter((event) => event.eventType === 'provider_accepted' || (event.channel === 'organic_onsite' && isVerifiedBrowserClick(event)))
     .map((event) => event.recipientId)
     .filter(Boolean)).size;
   const totalRevenueUSD = roundMoney(rows.reduce((sum, row) => sum + row.revenueUSD, 0));

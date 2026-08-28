@@ -175,8 +175,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
   // Email validation
   useEffect(() => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    // Valid if empty (meaning we fall back to PayPal profile details) or matches pattern
-    setIsEmailValid(email.trim() === '' || emailRegex.test(email.trim()));
+    setIsEmailValid(emailRegex.test(email.trim()));
   }, [email]);
 
   const paypalClientId = process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID
@@ -211,7 +210,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
 
   // Render/Re-render PayPal buttons dynamically based on price, product, and bump updates (without re-rendering on every keypress)
   useEffect(() => {
-    if (!sdkReady || !(window as any).paypal) return;
+    if (!sdkReady || !isEmailValid || !(window as any).paypal) return;
 
     const container = document.getElementById("standalone-paypal-button");
     if (!container) return;
@@ -234,9 +233,12 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
         },
         createOrder: async () => {
           setPaymentError(null);
-          setCheckoutStarted(true);
           const targetEmail = emailRef.current.trim();
           const targetName = nameRef.current.trim() || 'Premium Member';
+          if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(targetEmail)) {
+            throw new Error('Enter a valid business email before opening PayPal.');
+          }
+          setCheckoutStarted(true);
           
           // Track event
           if (typeof window !== 'undefined' && (window as any).gtag) {
@@ -298,7 +300,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     } catch (err) {
       console.error("PayPal render error:", err);
     }
-  }, [sdkReady, finalProductId, finalPrice, finalProductName, addons, attributionData]);
+  }, [sdkReady, isEmailValid, finalProductId, finalPrice, finalProductName, addons, attributionData]);
 
   return (
     <div className="bg-slate-800/80 border border-slate-700/60 rounded-2xl p-6 sm:p-8 max-w-md mx-auto text-left relative overflow-hidden backdrop-blur-md shadow-xl shadow-slate-950/20 font-sans">
@@ -359,7 +361,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           <div>
             <h4 className="font-bold text-xs uppercase tracking-wider text-indigo-400">Secure Delivery Setup</h4>
             <p className="text-[10.5px] text-slate-400 mt-1 leading-normal">
-              Enter your details below (or we will use your PayPal profile details automatically).
+              Enter a valid business email so we can securely deliver your purchase and recovery link.
             </p>
           </div>
 
@@ -380,7 +382,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
 
             <div>
               <label className="block text-[10px] uppercase font-bold text-slate-450 tracking-wider mb-1.5">
-                Business Email Address
+                Business Email Address · Required
               </label>
               <input
                 type="email"
@@ -500,6 +502,10 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             <div className="flex items-center justify-center py-4 gap-2 text-xs text-slate-400">
               <Loader2 className="w-4 h-4 animate-spin text-indigo-400" /> Loading secure gateway...
             </div>
+          ) : !isEmailValid ? (
+            <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-center text-xs font-semibold text-amber-200">
+              Enter a valid business email above to unlock secure PayPal checkout.
+            </div>
           ) : (
             <div className="space-y-3.5 animate-in fade-in duration-200">
               <div id="standalone-paypal-button" className="w-full"></div>
@@ -543,7 +549,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             <div>
               <h4 className="text-[9px] font-bold text-emerald-300 uppercase tracking-wider">Upgrade Credit Guarantee</h4>
               <p className="text-[10px] text-emerald-200/70 mt-0.5 leading-relaxed">
-                Every dollar spent today is credited toward higher-tier services. You&apos;ll never pay twice.
+                Eligible report upgrades receive the stated checkout credit toward higher-tier self-serve products.
               </p>
             </div>
           </div>

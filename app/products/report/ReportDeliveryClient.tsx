@@ -676,26 +676,24 @@ function ReportContent() {
         </div>
       )}
 
-      {/* ═══════ DONE-FOR-YOU CTA — Rule 6: Trust Before Upsell ═══════
-           Positioned AFTER report delivery so the founder has already
-           received full value before seeing a service offer. */}
+      {/* Self-serve recurring update CTA shown only after report value is delivered. */}
       <div className="bg-gradient-to-r from-emerald-600 via-indigo-600 to-slate-900 p-0.5 rounded-2xl shadow-md animate-in fade-in duration-500">
         <div className="bg-white rounded-[14px] p-5 sm:p-6 text-left space-y-4">
           <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
             <div className="space-y-1.5 max-w-xl">
               <span className="bg-indigo-50 border border-indigo-200 text-indigo-800 text-[9px] font-extrabold uppercase tracking-widest px-2.5 py-0.5 rounded-full">
-                Full-Service Advisory
+                Automated Funding Monitoring
               </span>
               <h3 className="text-base sm:text-lg font-black text-slate-900 leading-tight">
-                Want FSI Digital to Handle Your Application Filing?
+                Keep Your Funding Matches and Deadlines Current
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                Our specialists handle your entire application lifecycle — proposal writing, documentation packaging, eligibility compliance, and program liaison. Book a free 15-minute discovery call to see if full-service filing is right for your situation.
+                Funding Watch adds recurring funding matches, deadline monitoring, briefing archives, and reusable templates to your self-serve workflow.
               </p>
             </div>
             <Button className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shrink-0 self-start sm:self-center px-4 py-2.5 rounded-xl shadow-sm" asChild>
-              <Link href="/consultation?source=report-dfy-hook">
-                Book a Free Discovery Call &rarr;
+              <Link href="/membership?source=report-membership-upgrade">
+                Start Funding Watch — $29/month &rarr;
               </Link>
             </Button>
           </div>
@@ -1007,55 +1005,33 @@ function ReportContent() {
         </div>
       </div>
 
-      {/* ═══════ UPSELL TO $199 AUDIT ═══════ */}
+      {/* Self-serve upgrade from the report into the complete product ladder. */}
       <div className="border-2 border-indigo-200 bg-gradient-to-br from-indigo-50 to-white rounded-2xl p-6 sm:p-8 text-center relative overflow-hidden">
         <div className="absolute top-0 right-0 bg-emerald-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
-          {hasStrategyUnlocked ? '$49 Credit Active' : '$19 Credit Active'}
+          Instant Self-Serve Upgrade
         </div>
         <div className="inline-flex items-center justify-center w-14 h-14 bg-indigo-100 rounded-full mb-4">
           <TrendingUp className="w-7 h-7 text-indigo-600" />
         </div>
         {(() => {
-          const discount = purchaseInfo?.productId === 'funding-bundle'
-            ? 79
-            : (purchaseInfo?.productId === 'funding-roadmap' || hasStrategyUnlocked)
-              ? 49
-              : 19;
-          const netPrice = 199 - discount;
+          const ownsBundle = purchaseInfo?.productId === 'funding-bundle';
           return (
             <>
-              <h3 className="text-xl font-bold text-slate-800 mb-2">Get a Dedicated Advisor to Review Your Applications</h3>
+              <h3 className="text-xl font-bold text-slate-800 mb-2">
+                {ownsBundle ? 'Keep Your Funding Radar Current' : 'Get the Complete Self-Serve Funding Blueprint'}
+              </h3>
               <p className="text-sm text-slate-500 mb-5 max-w-lg mx-auto">
-                Our funding advisors review your specific profile, confirm eligibility before you invest time applying, and give you a clear action plan.
-                <strong className="block mt-3 text-emerald-700 font-semibold bg-emerald-50 border border-emerald-100 rounded-lg p-3">
-                  Your ${discount} fee is credited back on booking — verification audit is only ${netPrice}
-                </strong>
+                {ownsBundle
+                  ? 'Funding Watch provides recurring matches, deadline monitoring, briefing archives, and templates for $29 USD/month.'
+                  : 'Add the application roadmap, preparation templates, compliance checks, and capital-stacking tools for $79 USD one time.'}
               </p>
               <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
                 <a
-                  href={`/consultation?source=report-upsell&email=${encodeURIComponent(purchaseInfo?.email || '')}&name=${encodeURIComponent(purchaseInfo?.name || '')}&discount=${discount}`}
+                  href={ownsBundle ? '/membership?source=report-delivery' : '/products/bundle?source=report-delivery'}
                   className="inline-flex items-center gap-2 bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-7 py-3.5 rounded-xl transition-colors shadow-lg shadow-indigo-200"
-                  onClick={() => {
-                    if (typeof window !== 'undefined' && (window as any).gtag) {
-                      (window as any).gtag('event', 'audit_upsell_clicked', { source: 'standalone_report_page' });
-                    }
-                    // Fire audit_cta_clicked telemetry
-                    fetch("/api/subscriber/track-activity", {
-                      method: "POST",
-                      headers: { "Content-Type": "application/json" },
-                      body: JSON.stringify({
-                        email: purchaseInfo?.email || "",
-                        event: "audit_cta_clicked"
-                      })
-                    }).catch(e => console.error("Telemetry error:", e));
-                  }}
                 >
-                  Book a $199 Funding Audit (${netPrice} net) <ArrowRight className="w-4 h-4" />
+                  {ownsBundle ? 'Start Funding Watch — $29/month' : 'Get Complete Blueprint — $79'} <ArrowRight className="w-4 h-4" />
                 </a>
-                <span className="bg-emerald-100 text-emerald-800 border border-emerald-200 font-bold px-3.5 py-2 rounded-full text-xs flex items-center gap-1.5 shadow-sm shrink-0">
-                  <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                  ${discount} Coupon Applied (Pay ${netPrice})
-                </span>
               </div>
             </>
           );

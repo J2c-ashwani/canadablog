@@ -1,5 +1,9 @@
 import { type NextRequest, NextResponse } from 'next/server';
-import { parseTrackedGrowthToken, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import {
+  isLikelyAutomatedUserAgent,
+  parseTrackedGrowthToken,
+  recordGrowthActionEvent,
+} from '@/lib/growth-os/action-attribution';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -16,25 +20,25 @@ export async function GET(request: NextRequest) {
   if (!destination.searchParams.has('utm_medium')) destination.searchParams.set('utm_medium', payload.channel);
   if (!destination.searchParams.has('utm_campaign')) destination.searchParams.set('utm_campaign', payload.campaign);
 
-  await recordGrowthActionEvent({
-    eventId: `click:${payload.actionId}:${payload.recipientId}`,
-    actionId: payload.actionId,
-    channel: payload.channel,
-    campaign: payload.campaign,
-    recipientId: payload.recipientId,
-    eventType: 'click',
-    provider: 'first_party_redirect',
-    providerMessageId: '',
-    productId: '',
-    revenueUSD: 0,
-    revenueCAD: 0,
-    mrrUSD: 0,
-    referenceId: '',
-    metadata: {
-      targetPath: destination.pathname,
-      userAgent: String(request.headers.get('user-agent') || '').slice(0, 240),
-    },
-  }).catch((error) => console.error('Growth action click could not be persisted:', error));
+  const userAgent = String(request.headers.get('user-agent') || '').slice(0, 240);
+  if (!isLikelyAutomatedUserAgent(userAgent)) {
+    await recordGrowthActionEvent({
+      eventId: `click:${payload.actionId}:${payload.recipientId}`,
+      actionId: payload.actionId,
+      channel: payload.channel,
+      campaign: payload.campaign,
+      recipientId: payload.recipientId,
+      eventType: 'click',
+      provider: 'first_party_redirect',
+      providerMessageId: '',
+      productId: '',
+      revenueUSD: 0,
+      revenueCAD: 0,
+      mrrUSD: 0,
+      referenceId: '',
+      metadata: { targetPath: destination.pathname, userAgent },
+    }).catch((error) => console.error('Growth action click could not be persisted:', error));
+  }
 
   const response = NextResponse.redirect(destination);
   response.cookies.set('fsi_growth_action', JSON.stringify({

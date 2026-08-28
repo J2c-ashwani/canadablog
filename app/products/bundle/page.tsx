@@ -101,7 +101,7 @@ export default function BundlePage() {
                 'Everything in the $49 Strategy & Action Plan',
                 'Multi-Year Grant Stacking & Combination Matrix',
                 'Full Application Template Pack & Budget Builders',
-                '100% Fee Credit Eligibility toward 1-on-1 Strategy Sessions'
+                'Instant dashboard and PDF access — no live session required'
               ].map((feat, i) => (
                 <div key={i} className="flex items-start gap-3">
                   <div className="mt-1 bg-indigo-500/20 text-indigo-400 p-0.5 rounded-full shrink-0">
@@ -125,8 +125,7 @@ export default function BundlePage() {
                 <div className="text-2xl font-black text-slate-100">Complete Funding Blueprint</div>
                 <div className="flex items-baseline gap-2 mt-2">
                   <span className="text-3xl font-black text-slate-100">$79</span>
-                  <span className="text-sm text-slate-400 line-through font-medium">$199 USD</span>
-                  <span className="text-xs font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">Save 60%</span>
+                  <span className="text-xs font-bold text-amber-400 bg-amber-500/10 px-2 py-0.5 rounded border border-amber-500/20">One-time USD</span>
                 </div>
               </div>
 

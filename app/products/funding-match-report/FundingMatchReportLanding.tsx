@@ -44,7 +44,7 @@ export function FundingMatchReportLanding() {
             {/* Upgrade Credit Guarantee */}
             <div className="inline-flex items-start gap-2 bg-emerald-900/30 border border-emerald-600/30 text-emerald-300 text-xs font-medium rounded-2xl px-5 py-3 text-left">
               <span className="text-base shrink-0">↑</span>
-              <span><strong>Upgrade with confidence.</strong> Every dollar spent today is credited 100% toward higher-tier products (like our 1-on-1 Strategy Review). You&apos;ll never pay twice.</span>
+              <span><strong>Start small.</strong> Use the $19 report to identify priority programs, then move to the self-serve Action Plan or Complete Blueprint if you need more structure.</span>
             </div>
           </div>
 
@@ -219,7 +219,7 @@ export function FundingMatchReportLanding() {
               },
               {
                 q: 'Can I get help applying for programs in my report?',
-                a: 'Yes. After your report, you can book a $199 Funding Eligibility Audit where our advisors help you prepare applications and maximize your eligibility. Your $19 report purchase is credited toward the audit.',
+                a: 'Yes. Continue independently with the $49 Funding Action Plan or the $79 Complete Funding Blueprint for templates, sequencing, and preparation tools. No call or live session is required.',
               },
               {
                 q: 'How fast is delivery?',

@@ -1,6 +1,10 @@
 import { randomUUID } from 'node:crypto';
 import { type NextRequest, NextResponse } from 'next/server';
-import { createTrackedGrowthUrl, type GrowthActionContext } from '@/lib/growth-os/action-attribution';
+import {
+  createTrackedGrowthUrl,
+  isLikelyAutomatedUserAgent,
+  type GrowthActionContext,
+} from '@/lib/growth-os/action-attribution';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -61,8 +65,9 @@ export async function GET(request: NextRequest) {
   const existingVisitorId = request.cookies.get('fsi_organic_visitor')?.value || '';
   const visitorId = /^[a-f0-9-]{36}$/i.test(existingVisitorId) ? existingVisitorId : randomUUID();
   const campaign = `product-ladder-${surface}`;
+  const actionDate = new Date().toISOString().slice(0, 10);
   const context: GrowthActionContext = {
-    actionId: `act_onsite_${surface}_product_ladder_2026-08-27`,
+    actionId: `act_onsite_${surface}_product_ladder_${actionDate}`,
     channel: 'organic_onsite',
     campaign,
     recipientId: `web_${visitorId}`,

@@ -4,7 +4,7 @@ import React from 'react';
 import { Layers, CheckCircle2, ShieldCheck, Clock, Users, ArrowUpRight } from 'lucide-react';
 
 interface ProductHierarchyMapProps {
-  currentTier: 'starter' | 'planning' | 'roadmap' | 'complete' | 'expert' | 'dfy';
+  currentTier: 'starter' | 'planning' | 'roadmap' | 'complete';
 }
 
 export function ProductHierarchyMap({ currentTier }: ProductHierarchyMapProps) {
@@ -12,10 +12,10 @@ export function ProductHierarchyMap({ currentTier }: ProductHierarchyMapProps) {
     { 
       id: 'starter', 
       name: 'Starter', 
-      price: '$9', 
-      product: 'Approval Case Library', 
-      desc: 'Winning narratives & budgets',
-      bestFor: 'DIY writing references',
+      price: '$29',
+      product: 'Application Toolkit',
+      desc: 'Budgets, worksheets & checklists',
+      bestFor: 'DIY application preparation',
       time: '3–5 hours',
       guarantee: '30-Day Risk-Free'
     },
@@ -49,25 +49,15 @@ export function ProductHierarchyMap({ currentTier }: ProductHierarchyMapProps) {
       time: '2–4 hours',
       guarantee: '30-Day Risk-Free'
     },
-    { 
-      id: 'expert', 
-      name: 'Expert', 
-      price: '$199', 
-      product: 'Strategy Session Audit', 
-      desc: '1-on-1 advisor review',
-      bestFor: 'Pre-flight expert review',
-      time: '60 minutes',
-      guarantee: 'Upgrade Credit Applied'
-    },
-    { 
-      id: 'dfy', 
-      name: 'Done-For-You', 
-      price: 'Retainer + Fee', 
-      product: 'Application Filing Service', 
-      desc: 'Full-service writing & audit',
-      bestFor: 'Outsourcing everything',
-      time: 'Minimal (FSI writes)',
-      guarantee: 'Contracted SLA'
+    {
+      id: 'watch',
+      name: 'Recurring',
+      price: '$29/mo',
+      product: 'Funding Watch',
+      desc: 'Automated matches & deadline radar',
+      bestFor: 'Keeping opportunities current',
+      time: 'Self-serve',
+      guarantee: 'Cancel Anytime'
     }
   ];
 
@@ -80,21 +70,21 @@ export function ProductHierarchyMap({ currentTier }: ProductHierarchyMapProps) {
           <span className="bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-[10px] font-bold uppercase tracking-widest px-2.5 py-0.5 rounded-full inline-flex items-center gap-1.5">
             <Layers className="w-3.5 h-3.5" /> FSI Digital Value Ascension Pathway
           </span>
-          <h3 className="text-xl sm:text-2xl font-black text-slate-100 mt-2">Which Service Matches Your Stage?</h3>
+          <h3 className="text-xl sm:text-2xl font-black text-slate-100 mt-2">Which Self-Serve Product Matches Your Stage?</h3>
           <p className="text-xs sm:text-sm text-slate-400 max-w-xl leading-relaxed">
-            From self-serve templates to fully managed agency filing, we provide the exact level of support your co-funding application requires.
+            Choose instant templates, a personalized plan, the complete blueprint, or recurring automated monitoring.
           </p>
         </div>
         <div className="bg-emerald-950/20 border border-emerald-800/30 rounded-xl px-4 py-3 shrink-0 flex items-center gap-3">
           <ShieldCheck className="w-5 h-5 text-emerald-400 shrink-0" />
           <p className="text-[11px] text-emerald-300/80 leading-snug font-medium max-w-xs">
-            <span className="font-extrabold text-emerald-300">Upgrade Credit Guarantee:</span> Every dollar spent on self-serve products is credited if you upgrade to a Strategy Session.
+            <span className="font-extrabold text-emerald-300">Solo-operator friendly:</span> Every option shown here is delivered without a call or live session.
           </p>
         </div>
       </div>
 
       {/* Ascension Ladder Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-6 gap-4">
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
         {tiers.map((tier, idx) => {
           const isActive = tier.id === currentTier;
           return (
