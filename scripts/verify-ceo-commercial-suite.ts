@@ -152,6 +152,12 @@ async function run() {
   const mcaSuccessPage = fs.readFileSync(path.join(root, 'app/mca/priority-success/page.tsx'), 'utf8');
   const mcaDeliveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-readiness-delivery.ts'), 'utf8');
   const mcaRecoveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-recovery.ts'), 'utf8');
+  const contactPage = fs.readFileSync(path.join(root, 'app/contact/page.tsx'), 'utf8');
+  const contactClient = fs.readFileSync(path.join(root, 'app/contact/ContactClient.tsx'), 'utf8');
+  const contactRoute = fs.readFileSync(path.join(root, 'app/api/contact/route.ts'), 'utf8');
+  const contactAssessmentEmail = fs.readFileSync(path.join(root, 'app/api/contact/assessment/send/route.ts'), 'utf8');
+  const contactConfirmation = fs.readFileSync(path.join(root, 'lib/emails/contact-confirmation.ts'), 'utf8');
+  const enterpriseAlert = fs.readFileSync(path.join(root, 'lib/emails/enterprise-alerts.ts'), 'utf8');
   const evidenceMetrics = fs.readFileSync(path.join(root, 'lib/growth-os/evidence-metrics.ts'), 'utf8');
   const deliveryRecovery = fs.readFileSync(path.join(root, 'lib/products/delivery-recovery.ts'), 'utf8');
   const salesAgent = fs.readFileSync(path.join(root, 'lib/ceo-agent/specialists/sales-agent.ts'), 'utf8');
@@ -182,6 +188,7 @@ async function run() {
   assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()'), 'Daily GrowthOS health reconciles provider delivery state before reporting evidence');
   assert(actionScorecard.includes("decision: 'SCALE' | 'HOLD' | 'STOP'"), 'CEO action P&L emits explicit scale, hold, or stop decisions');
   assert(actionScorecard.includes('verifiedPageViewKeys') && actionScorecard.includes('isLikelyAutomatedUserAgent'), 'CEO action P&L excludes bot and link-scanner clicks from qualified-lead decisions');
+  assert(['productCheckoutViews', 'deliveryEmailsReady', 'paypalButtonsRendered', 'paypalButtonClicks', 'paypalApprovals', 'paypalFailures'].every((stage) => actionScorecard.includes(stage)), 'CEO action P&L reports every newly measured product-to-PayPal handoff');
   assert(!authorityDiscovery.includes('contact@${domain}') && !authorityDiscovery.includes('960fb097'), 'Authority discovery neither guesses recipients nor embeds credentials');
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');
   const leaseFinalizer = operationsStore.slice(operationsStore.indexOf('export async function finishOperationLease'));
@@ -234,6 +241,14 @@ async function run() {
   assert(!rdeDecisionEngine.includes('/booking') && !rdeDecisionEngine.includes('/api/strategy-session/recovery') && !rdeDecisionEngine.includes('$2,500') && !rdeDecisionEngine.includes('$199'), 'Interactive decision engine contains no booking, consultation-recovery, or unsupported high-ticket escalation');
   assert(homepage.includes('<OrganicProductLadder surface="homepage"') && onsiteClickRoute.includes("'homepage'"), 'Homepage distributes the same attributable self-serve product ladder');
   assert(!homepage.includes('Book Session') && !homepage.includes('1-on-1 Strategy Session') && !legacyHomepage.includes('Book Session'), 'Current and legacy homepage components no longer distribute call-dependent fulfillment');
+  const contactConversionSurface = `${contactPage} ${contactClient} ${contactAssessmentEmail}`;
+  assert(['Get Complete Blueprint — $79', 'Get My Action Plan — $49', 'Get My Match Report — $19', 'Start Funding Watch — $29/month'].every((offer) => contactClient.includes(offer)), 'Highest-intent contact results route every tier into the approved self-serve ladder');
+  assert(!contactConversionSurface.includes('/audit?') && !contactConversionSurface.includes('$199') && !contactConversionSurface.includes('Strategy Session'), 'Contact and assessment-copy journeys contain no call-dependent offer');
+  assert(!contactClient.includes('encodeURIComponent(formData.email)') && !contactClient.includes('encodeURIComponent(formData.phone)') && contactClient.includes('/api/growth-os/onsite-click?'), 'Contact conversion uses signed first-party attribution without lead PII in URLs');
+  assert(contactRoute.includes('isSubscribed: !!consentToPartnerContact') && contactClient.includes('automated funding alerts and self-serve product updates'), 'Contact leads become commercially eligible only through explicit automated-update consent');
+  assert(!sheetsStore.includes('wa.me/') && !sheetsStore.includes('consultation?source=whatsapp') && !sheetsStore.includes('refund the $199'), 'New lead persistence creates no manual WhatsApp or call-dependent sales action');
+  assert(!contactConfirmation.includes('responds within <strong>24–48 hours</strong>') && contactConfirmation.includes('No call or live session is required'), 'Contact confirmation makes no manual-response promise');
+  assert(enterpriseAlert.includes('No manual call or live-session follow-up is required'), 'High-intent internal alerts reinforce self-serve fulfillment');
   assert(footer.includes("pathname === '/'") && !homepage.includes('<OrganicProductLadder surface="footer"'), 'Live homepage renders one product ladder instead of duplicating the footer ladder');
   assert(leadConversionUpsell.includes('surface=lead-conversion') && leadConversionUpsell.includes('Get Complete Blueprint ($79)') && leadConversionUpsell.includes('Match Report ($19)'), 'Post-lead conversion modal distributes attributable instant products');
   assert(!leadConversionUpsell.includes('/booking') && !leadConversionUpsell.includes('/api/strategy-session/recovery'), 'Post-lead conversion modal does not create booking or recovery noise');

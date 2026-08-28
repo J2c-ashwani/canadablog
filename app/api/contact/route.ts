@@ -141,6 +141,11 @@ export async function POST(request: NextRequest) {
       phone,
       emailVerified: "No", // Marked unverified initially until OTP validation succeeds
       consentToPartnerContact: !!consentToPartnerContact,
+      isSubscribed: !!consentToPartnerContact,
+      consentVersion: consentToPartnerContact ? 'fsi-automated-funding-updates-v3-2026-08-28' : '',
+      consentText: consentToPartnerContact
+        ? 'I agree to receive automated funding alerts and self-serve product updates from FSI Digital.'
+        : '',
       pagePath: pagePath || request.headers.get("referer") || "N/A",
       ipAddress: request.headers.get("x-forwarded-for")?.split(",")[0]?.trim() || request.headers.get("x-real-ip") || "N/A",
       userAgent: request.headers.get("user-agent") || "N/A",

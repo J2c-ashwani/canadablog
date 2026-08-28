@@ -43,12 +43,12 @@ function buildHtml({
         <!-- Brand Header -->
         <div style="padding-bottom: 16px; border-bottom: 1px solid #f1f5f9; margin-bottom: 24px; display: table; width: 100%;">
           <span style="font-size: 18px; font-weight: 800; color: #0f172a; letter-spacing: -0.02em; display: table-cell;">FSI <span style="color: #059669;">Digital</span></span>
-          <span style="font-size: 12px; font-weight: 600; color: #64748b; background-color: #f1f5f9; padding: 4px 8px; border-radius: 4px; display: table-cell; text-align: right; width: 100px;">Advisory Desk</span>
+          <span style="font-size: 12px; font-weight: 600; color: #64748b; background-color: #f1f5f9; padding: 4px 8px; border-radius: 4px; display: table-cell; text-align: right; width: 100px;">Profile Receipt</span>
         </div>
 
         <p style="margin:0 0 16px 0;font-size:15px;color:#334155;font-weight:500;">Hi ${firstName},</p>
 
-        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;line-height:1.6;">Thank you for reaching out to FSI Digital. We have received your message and a member of our team will review it.</p>
+        <p style="margin:0 0 16px 0;font-size:15px;color:#334155;line-height:1.6;">Thank you for submitting your funding profile. This confirms that FSI Digital received the information you entered.</p>
 
         <div style="background-color: #f0fdf4; border: 1px solid #bbf7d0; border-radius: 8px; padding: 18px 20px; margin: 20px 0;">
           <p style="margin: 0 0 8px 0; font-size: 11px; color: #047857; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;">Your Request</p>
@@ -65,13 +65,13 @@ function buildHtml({
           <tr>
             <td style="vertical-align:top;width:20px;padding-bottom:8px;font-size:14px;color:#059669;font-weight:bold;">•</td>
             <td style="vertical-align:top;font-size:14px;color:#475569;padding-bottom:8px;line-height:1.5;">
-              Our team typically responds within <strong>24–48 hours</strong>.
+              Complete the email-verification step on the site to unlock your readiness score.
             </td>
           </tr>
           <tr>
             <td style="vertical-align:top;width:20px;font-size:14px;color:#059669;font-weight:bold;">•</td>
             <td style="vertical-align:top;font-size:14px;color:#475569;line-height:1.5;">
-              If you need to add any details, simply reply to this email.
+              Your results page will recommend an instant self-serve report, action plan, or blueprint. No call or live session is required.
             </td>
           </tr>
         </table>
@@ -103,15 +103,15 @@ function buildText({
 }) {
   return `Hi ${firstName},
 
-Thank you for reaching out to FSI Digital. We have received your message and a member of our team will review it.
+Thank you for submitting your funding profile. This confirms that FSI Digital received the information you entered.
 
 Your request:
 Category: ${category}
 "${messageSnippet}"
 
 What happens next:
-- Our team typically responds within 24–48 hours.
-- If you need to add any details, simply reply to this email.
+- Complete the email-verification step on the site to unlock your readiness score.
+- Your results page will recommend an instant self-serve report, action plan, or blueprint. No call or live session is required.
 
 Best regards,
 Ashwani K

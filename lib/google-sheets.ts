@@ -81,30 +81,18 @@ export async function appendLeadToSheet(data: LeadCaptureData) {
   try {
     const sheets = await getGoogleSheetsClient()
     const spreadsheetId = process.env.GOOGLE_SHEET_ID
-    const consentVersion = data.consentVersion || LEAD_CONSENT_VERSION
-    const consentText = data.consentText || LEAD_CONSENT_TEXT
+    const hasExplicitConsent = data.consentToPartnerContact === true || data.isSubscribed === true
+    const consentVersion = hasExplicitConsent ? (data.consentVersion || LEAD_CONSENT_VERSION) : ''
+    const consentText = hasExplicitConsent ? (data.consentText || LEAD_CONSENT_TEXT) : ''
     const intelligence = calculateLeadIntelligence({
       ...data,
       consentVersion,
       consentText,
     })
 
-    const cleanPhone = (data.phone || "").replace(/[^0-9]/g, "")
-    const firstName = (data.name || "").split(" ")[0] || "there"
-    
-    // Dynamically adjust country adjective for B2B relevance
-    const countryLower = (data.country || "").toLowerCase()
-    let countryPhrase = "active grants & loans"
-    if (countryLower.includes("united states") || countryLower.includes("us")) {
-      countryPhrase = "active US grants & loans"
-    } else if (countryLower.includes("canada")) {
-      countryPhrase = "active Canadian grants & loans"
-    }
-
-    const waMessage = `Hi ${firstName}, Ashwani here from FSI Digital. I reviewed your business funding inquiry. Based on your profile, we can prepare a custom Funding Roadmap matching you to ${countryPhrase}.\n\nYou can lock in your 2-hour research audit and secure your Strategy Session slot here: https://www.fsidigital.ca/consultation?source=whatsapp\n\nIf our research shows you don't qualify for any active programs, we refund the $199 immediately (100% risk-free). Let me know if you have any questions!`
-    const waLink = cleanPhone 
-      ? `=HYPERLINK("https://wa.me/${cleanPhone}?text=${encodeURIComponent(waMessage)}", "WhatsApp Chat")` 
-      : "N/A"
+    // Manual call/WhatsApp fulfilment is outside the self-serve operating model.
+    // Keep the legacy sheet column stable without generating a contact action.
+    const waLink = "N/A"
 
     const values = [
       [

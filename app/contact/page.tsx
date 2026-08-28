@@ -4,14 +4,14 @@ import ContactClient from "./ContactClient"
 
 export const metadata: Metadata = {
   title: "Contact FSI Digital | Funding Questions",
-  description: "Contact FSI Digital with business funding questions. After submitting your request, you can optionally book a paid funding eligibility audit for a researched grant, loan, and tax-credit roadmap.",
-  keywords: "contact FSI Digital, funding eligibility audit, grant application help, government funding consultation, business grants support Canada USA",
+  description: "Submit your business funding profile and continue with an instant self-serve grant report, action plan, blueprint, or automated funding watch.",
+  keywords: "contact FSI Digital, funding eligibility, grant action plan, government funding report, business grants Canada USA",
   alternates: {
     canonical: "https://www.fsidigital.ca/contact",
   },
   openGraph: {
     title: "Contact FSI Digital | Funding Questions",
-    description: "Contact FSI Digital with business funding questions. After submitting your request, you can optionally book a paid funding eligibility audit for a researched grant, loan, and tax-credit roadmap.",
+    description: "Submit your business funding profile and continue with an instant self-serve grant report, action plan, blueprint, or automated funding watch.",
     url: "https://www.fsidigital.ca/contact",
     type: "website",
     siteName: "FSI Digital",

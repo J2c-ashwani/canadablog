@@ -194,11 +194,17 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     const est = sp.get('estimate') || (!isExpired ? localStorage.getItem('fsi:lead_estimate') : null);
     const ind = sp.get('industry') || (!isExpired ? localStorage.getItem('fsi:lead_industry') : null);
     const reg = sp.get('region') || (!isExpired ? localStorage.getItem('fsi:lead_region') : null);
+    const rev = !isExpired ? localStorage.getItem('fsi:lead_revenue') : null;
+    const goal = !isExpired ? localStorage.getItem('fsi:lead_goal') : null;
+    const company = !isExpired ? localStorage.getItem('fsi:lead_company') : null;
 
     if (m) setPersonalizedMatches(m);
     if (est) setPersonalizedEstimate(est);
     if (ind) setPersonalizedIndustry(ind);
     if (reg) setPersonalizedRegion(reg);
+    if (rev) setPersonalizedRevenue(rev);
+    if (goal) setPersonalizedGoal(goal);
+    if (company) setPersonalizedCompany(company);
 
     const token = sp.get('token') || '';
     if (token) {

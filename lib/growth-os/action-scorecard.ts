@@ -16,6 +16,12 @@ export interface ActionPerformanceRow {
   providerAccepted: number;
   delivered: number;
   clicks: number;
+  productCheckoutViews: number;
+  deliveryEmailsReady: number;
+  paypalButtonsRendered: number;
+  paypalButtonClicks: number;
+  paypalApprovals: number;
+  paypalFailures: number;
   checkouts: number;
   purchases: number;
   activeSubscriptions: number;
@@ -104,6 +110,13 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
 
   const rows: ActionPerformanceRow[] = Array.from(actionIds).map((actionId) => {
     const actionEvents = recentEvents.filter((event) => event.actionId === actionId);
+    const actionTelemetry = telemetry.filter((event) =>
+      event.actionId === actionId && dateValue(event.timestamp) >= cutoff
+    );
+    const uniqueTelemetrySessions = (...eventNames: string[]) => new Set(actionTelemetry
+      .filter((event) => eventNames.includes(event.eventName))
+      .map((event) => event.sessionId)
+      .filter(Boolean)).size;
     const acceptedEvents = actionEvents.filter((event) => event.eventType === 'provider_accepted');
     const acceptedMessageIds = new Set(acceptedEvents.map((event) => event.providerMessageId).filter(Boolean));
     const delivered = Array.from(acceptedMessageIds).filter((messageId) => {
@@ -136,6 +149,18 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       ...organicClickEvents.map((event) => event.recipientId),
     ].filter(Boolean)).size;
     const checkouts = new Set(actionEvents.filter((event) => event.eventType === 'checkout_started').map((event) => event.referenceId || event.eventId)).size;
+    const productCheckoutViews = uniqueTelemetrySessions('product_checkout_viewed');
+    const deliveryEmailsReady = uniqueTelemetrySessions('checkout_delivery_email_ready');
+    const paypalButtonsRendered = uniqueTelemetrySessions('paypal_buttons_rendered');
+    const paypalButtonClicks = uniqueTelemetrySessions('paypal_button_clicked');
+    const paypalApprovals = uniqueTelemetrySessions('paypal_payment_approved');
+    const paypalFailures = uniqueTelemetrySessions(
+      'paypal_sdk_load_failed',
+      'paypal_buttons_render_failed',
+      'paypal_order_create_failed',
+      'paypal_checkout_error',
+      'paypal_capture_failed'
+    );
     const productTransactions = new Set(actionPurchases.map((purchase) => purchase.paypalCaptureId || purchase.paypalOrderId).filter(Boolean));
     const membershipTransactions = new Set(actionMembershipPayments.map((payment) => payment.paymentId));
     const purchasesCount = productTransactions.size + membershipTransactions.size;
@@ -175,6 +200,12 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       providerAccepted: acceptedMessageIds.size,
       delivered,
       clicks: new Set(verifiedClickEvents.map((event) => event.recipientId || event.eventId)).size,
+      productCheckoutViews,
+      deliveryEmailsReady,
+      paypalButtonsRendered,
+      paypalButtonClicks,
+      paypalApprovals,
+      paypalFailures,
       checkouts,
       purchases: purchasesCount,
       activeSubscriptions: activeSubscriptions.length,

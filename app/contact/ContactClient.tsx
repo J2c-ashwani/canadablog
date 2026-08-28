@@ -17,11 +17,9 @@ import {
   BookOpen,
   Send,
   X,
-  Lock,
   Building,
   DollarSign,
-  TrendingUp,
-  FileCheck2
+  TrendingUp
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
@@ -307,6 +305,20 @@ export default function ContactClient() {
     } catch (e) {}
   }
 
+  const routeToSelfServeOffer = (
+    offer: 'match-report' | 'action-plan' | 'bundle' | 'membership',
+    context: string
+  ) => {
+    trackEvent('self_serve_offer_clicked', { offer, context });
+    const params = new URLSearchParams({
+      surface: 'lead-conversion',
+      context,
+      offer,
+      experiment: 'focused-v2',
+    });
+    router.push(`/api/growth-os/onsite-click?${params.toString()}`);
+  }
+
   // Resend OTP Countdown Cooldown Timer
   useEffect(() => {
     if (resendCooldown <= 0) return;
@@ -394,6 +406,10 @@ export default function ContactClient() {
           localStorage.setItem('fsi:lead_company', formData.companyName.trim());
           localStorage.setItem('fsi:lead_industry', formData.industry);
           localStorage.setItem('fsi:lead_region', formData.state);
+          localStorage.setItem('fsi:lead_revenue', formData.annualRevenue);
+          localStorage.setItem('fsi:lead_goal', formData.fundingPurpose[0] || 'expansion');
+          localStorage.setItem('fsi:lead_matches', String(getMatchedCategoriesList(formData.fundingPurpose).length));
+          localStorage.setItem('fsi:lead_estimate', getEstimatedOpportunityRange(formData.fundingAmount));
           localStorage.setItem('fsi:lead_saved_at', Date.now().toString());
         }
 
@@ -504,11 +520,13 @@ export default function ContactClient() {
         trackEvent('email_verified');
         trackEvent('contact_form_completed');
         
-        // Track the routing recomendations
+        // Track the self-serve routing recommendation shown after verification.
         if (assessmentResult?.tier === 'A') {
-          trackEvent('audit_recommended');
+          trackEvent('bundle_recommended');
         } else if (assessmentResult?.tier === 'B') {
-          trackEvent('calculator_recommended');
+          trackEvent('action_plan_recommended');
+        } else {
+          trackEvent('match_report_recommended');
         }
       } else {
         if (result.token) {
@@ -732,57 +750,28 @@ export default function ContactClient() {
                 <div className="absolute top-0 right-0 bg-indigo-500 text-white text-[9px] font-bold px-2 py-0.5 rounded-bl uppercase">Recommended Next Step</div>
                 
                 {assessmentResult.tier === 'A' && (
-                  <div className="space-y-6">
+                  <div className="space-y-5">
                     <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm uppercase tracking-wider">
                       <Flame className="w-5 h-5 text-amber-500 fill-amber-500 animate-pulse" />
-                      Priority Matching Opportunities
+                      Complete Self-Serve Recommendation
                     </div>
-
-                    <h3 className="text-xl font-bold text-slate-900">Personalized Outcome Preview</h3>
-                    <p className="text-xs text-slate-500 leading-relaxed">
-                      We identified high-probability opportunity categories matching your business profile. Specific program names and application strategies are currently locked.
+                    <h3 className="text-xl font-bold text-slate-900">Complete Funding Blueprint — $79 USD</h3>
+                    <p className="text-xs text-slate-600 leading-relaxed">
+                      Your verified profile spans multiple funding categories. Continue with the complete automated package for named program matches, a prioritized action plan, and a multi-year stacking simulation.
                     </p>
-
-                    {/* Lock Overlay Container */}
-                    <div className="relative border border-slate-200 rounded-2xl p-4 bg-slate-50/50 space-y-3">
-                      {/* Blurred Cards */}
-                      <div className="space-y-3 filter blur-[1.5px] opacity-80 pointer-events-none select-none">
-                        <div className="border border-slate-200 rounded-xl p-3 bg-white">
-                          <span className="text-[9px] font-bold text-indigo-600 uppercase">Primary Opportunity Category</span>
-                          <h4 className="font-bold text-slate-800 text-sm mt-0.5">{getPrimaryOpportunity(formData.fundingPurpose, formData.industry)}</h4>
-                          <span className="text-xs font-bold text-emerald-600 block mt-1">Est. Benefit: {getEstimatedOpportunityRange(formData.fundingAmount)}</span>
-                          <span className="text-[10px] text-slate-450 block mt-1">Program Details: [Program Name Hidden]</span>
-                        </div>
-                        <div className="border border-slate-200 rounded-xl p-3 bg-white">
-                          <span className="text-[9px] font-bold text-indigo-600 uppercase">Secondary Opportunity Category</span>
-                          <h4 className="font-bold text-slate-800 text-sm mt-0.5">{getSecondaryOpportunity(formData.fundingPurpose, formData.industry)}</h4>
-                          <span className="text-xs font-bold text-emerald-600 block mt-1">Est. Benefit: Up to $50,000</span>
-                          <span className="text-[10px] text-slate-450 block mt-1">Program Details: [Program Name Hidden]</span>
-                        </div>
-                      </div>
-
-                      {/* Glassmorphic Lock Banner Overlay */}
-                      <div className="absolute inset-0 flex flex-col items-center justify-center p-5 text-center bg-white/75 backdrop-blur-[3.5px] rounded-2xl border-2 border-indigo-200 shadow-md">
-                        <div className="w-9 h-9 rounded-full bg-indigo-50 flex items-center justify-center border border-indigo-150 mb-2">
-                          <Lock className="w-4 h-4 text-indigo-600" />
-                        </div>
-                        <h4 className="text-xs sm:text-sm font-black text-slate-900 mb-1">Funding Program Details Locked</h4>
-                        <p className="text-[10px] sm:text-xs text-slate-500 max-w-sm leading-relaxed mb-3">
-                          Schedule a Funding Strategy Session to unlock program names, eligibility criteria, and your stacking roadmap.
-                        </p>
-                        
-                        <Button 
-                          className="bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs sm:text-sm px-5 py-3.5 rounded-xl shadow-md flex items-center animate-in fade-in duration-300"
-                          onClick={() => {
-                            trackEvent('audit_recommended_preview');
-                            router.push(`/audit?email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.name)}&industry=${encodeURIComponent(formData.industry)}&region=${encodeURIComponent(formData.state)}&source=personalized_preview`);
-                          }}
-                        >
-                          Unlock My Full Funding Analysis
-                          <ArrowRight className="w-4 h-4 ml-2" />
-                        </Button>
-                      </div>
+                    <div className="grid gap-2 rounded-xl border border-indigo-100 bg-white p-4 text-xs font-semibold text-slate-700 sm:grid-cols-3">
+                      <span>✓ Funding Match Report</span>
+                      <span>✓ Four-Month Action Plan</span>
+                      <span>✓ Stacking Simulation</span>
                     </div>
+                    <Button
+                      className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-xl font-black shadow-md shadow-indigo-150"
+                      onClick={() => routeToSelfServeOffer('bundle', 'contact-tier-a')}
+                    >
+                      Get Complete Blueprint — $79
+                      <ArrowRight className="w-4 h-4 ml-2" />
+                    </Button>
+                    <p className="text-center text-[10px] text-slate-500">Instant digital delivery · no call or live session required</p>
                   </div>
                 )}
 
@@ -790,70 +779,52 @@ export default function ContactClient() {
                   <div className="space-y-4">
                     <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm uppercase tracking-wider">
                       <TrendingUp className="w-5 h-5 text-indigo-600" />
-                      Roadmap & Report Match
+                      Prioritized Self-Serve Plan
                     </div>
-                    <h3 className="text-xl font-bold text-slate-900">Unlock Matched Programs & Reports</h3>
+                    <h3 className="text-xl font-bold text-slate-900">Funding Action Plan — $49 USD</h3>
                     <p className="text-xs text-slate-600 leading-relaxed">
-                      Your business profile has matched active government grants and loans. We recommend loading your parameters directly into the Grant Calculator to select your report package ($19 / $49 / $79) and view named programs, deadlines, and next steps immediately.
+                      Turn your verified profile into a prioritized four-month application sequence with document requirements, timing, and stacking constraints.
                     </p>
                     <Button 
                       className="w-full bg-indigo-600 hover:bg-indigo-700 text-white py-6 rounded-xl font-black shadow-md shadow-indigo-150"
-                      onClick={() => {
-                        trackEvent('calculator_recommended');
-                        router.push(`/calculator?step=6&email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.name)}&phone=${encodeURIComponent(formData.phone)}&company=${encodeURIComponent(formData.companyName)}&province=${encodeURIComponent(formData.state)}&industry=${encodeURIComponent(formData.industry)}&revenue=${encodeURIComponent(formData.annualRevenue)}&goal=${encodeURIComponent(formData.fundingPurpose[0] || 'expansion')}&source=contact_form`);
-                      }}
+                      onClick={() => routeToSelfServeOffer('action-plan', 'contact-tier-b')}
                     >
-                      Unlock Program Matches ($19+)
+                      Get My Action Plan — $49
                       <ArrowRight className="w-4 h-4 ml-2" />
                     </Button>
+                    <p className="text-center text-[10px] text-slate-500">Instant digital delivery · no call or live session required</p>
                   </div>
                 )}
 
                 {assessmentResult.tier === 'C' && (
-                  <div className="space-y-6 text-left">
-                    <div className="border border-slate-200 rounded-2xl p-6 bg-slate-50/50 space-y-4 shadow-xs">
-                      <h3 className="text-lg sm:text-xl font-bold text-slate-950">Want an expert to review your profile within 24 hours?</h3>
+                  <div className="space-y-5 text-left">
+                    <div className="flex items-center gap-2 text-indigo-900 font-extrabold text-sm uppercase tracking-wider">
+                      <BookOpen className="w-5 h-5 text-indigo-600" />
+                      Start With the Lowest-Risk Product
+                    </div>
+                    <div className="border border-slate-200 rounded-2xl p-6 bg-white space-y-4 shadow-xs">
+                      <h3 className="text-lg sm:text-xl font-bold text-slate-950">Funding Match Report — $19 USD</h3>
                       <p className="text-xs text-slate-550 leading-relaxed">
-                        Although you are in the researching stage, you can fast-track your eligibility assessment with a professional manual review.
+                        See the programs that match your current profile, estimated ranges, requirements, and recommended next steps before investing in a larger plan.
                       </p>
-                      
-                      <ul className="text-xs text-slate-700 space-y-2.5 font-medium">
-                        <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          <span><strong>Funding Eligibility Review:</strong> Custom manual audit of federal, state, and provincial options.</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          <span><strong>Programs Matched:</strong> Exact program names, deadlines, and stacking roadmaps.</span>
-                        </li>
-                        <li className="flex items-start gap-2">
-                          <CheckCircle className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                          <span><strong>Priority Roadmap:</strong> Strategy session recommendations to stack multiple subsidies.</span>
-                        </li>
-                      </ul>
-
-                      <div className="pt-4 border-t border-slate-200">
-                        <div className="flex items-baseline gap-2 mb-3">
-                          <span className="text-2xl font-black text-slate-950">$199</span>
-                          <span className="text-xs text-slate-500 font-bold uppercase">USD One-Time</span>
-                        </div>
-
-                        <Button 
-                          className="w-full bg-indigo-650 hover:bg-indigo-700 text-white py-6 rounded-xl font-black shadow-md shadow-indigo-150 flex items-center justify-center gap-2"
-                          onClick={() => {
-                            trackEvent('audit_recommended_tier_c');
-                            router.push(`/audit?email=${encodeURIComponent(formData.email)}&name=${encodeURIComponent(formData.name)}&industry=${encodeURIComponent(formData.industry)}&region=${encodeURIComponent(formData.state)}&source=contact_tier_c`);
-                          }}
-                        >
-                          Get My Strategy Audit
-                          <ArrowRight className="w-4 h-4" />
-                        </Button>
-                      </div>
+                      <Button
+                        className="w-full bg-indigo-650 hover:bg-indigo-700 text-white py-6 rounded-xl font-black shadow-md shadow-indigo-150 flex items-center justify-center gap-2"
+                        onClick={() => routeToSelfServeOffer('match-report', 'contact-tier-c')}
+                      >
+                        Get My Match Report — $19
+                        <ArrowRight className="w-4 h-4" />
+                      </Button>
                     </div>
 
-                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 text-xs text-slate-500 text-center">
-                      <span className="font-semibold block text-slate-700 mb-1">Standard Free Option:</span>
-                      Your free email summary will still be processed. We will email you if any active matching programs arise. No immediate action is required.
+                    <div className="bg-slate-50 p-4 rounded-xl border border-slate-150 text-xs text-slate-600 text-center">
+                      Prefer ongoing monitoring?{' '}
+                      <button
+                        type="button"
+                        className="font-bold text-indigo-700 hover:text-indigo-900"
+                        onClick={() => routeToSelfServeOffer('membership', 'contact-tier-c-monitoring')}
+                      >
+                        Start Funding Watch — $29/month
+                      </button>
                     </div>
                   </div>
                 )}
@@ -1237,7 +1208,7 @@ export default function ContactClient() {
                     onChange={(e) => handleInputChange("consentToPartnerContact", e.target.checked)}
                   />
                   <span>
-                    I agree that FSI Digital and vetted funding specialists may contact me about grants, loans, tax credits, and business funding options. Unsubscribe anytime.
+                    I agree to receive automated funding alerts and self-serve product updates from FSI Digital. Unsubscribe anytime.
                   </span>
                 </label>
 

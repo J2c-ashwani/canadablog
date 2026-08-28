@@ -44,12 +44,12 @@ export async function sendEnterpriseSalesAlert({
   estimatedOpportunityValue?: string;
 }) {
   const adminEmail = process.env.ADMIN_ALERT_EMAIL || "hello@fsidigital.ca";
-  const subject = `🚨 PRIORITY ENTERPRISE LEAD: ${companyName} (${revenue} | Focus: ${goal})`;
+  const subject = `High-intent self-serve profile: ${companyName} (${revenue} | Focus: ${goal})`;
   
   const html = `
     <div style="font-family: sans-serif; padding: 20px; line-height: 1.6; max-width: 600px; border: 2px solid #dc2626; border-radius: 12px;">
-      <h2 style="color: #dc2626; margin-top: 0;">🚨 Priority Enterprise Lead Dashboard</h2>
-      <p>A high-value enterprise prospect requires immediate sales follow-up (target timeline: 30 minutes).</p>
+      <h2 style="color: #dc2626; margin-top: 0;">High-Intent Self-Serve Profile</h2>
+      <p>This customer completed the funding profile and was routed to the existing self-serve product ladder. No manual call or live-session follow-up is required.</p>
       
       <div style="background-color: #fef2f2; border: 1px solid #fee2e2; border-radius: 8px; padding: 16px; margin: 20px 0;">
         <h4 style="margin: 0 0 10px 0; color: #b91c1c; border-bottom: 1px solid #fecaca; pb: 4px; uppercase; font-size: 11px;">Client Profile</h4>
@@ -136,12 +136,12 @@ export async function sendEnterpriseSalesAlert({
       
       <p style="margin-top: 24px; font-size: 11px; color: #64748b;">
         Sync timestamp: ${new Date().toISOString()}<br/>
-        FSI Digital Auto Sales Alert System
+        FSI Digital Self-Serve Conversion Monitor
       </p>
     </div>
   `;
 
-  const text = `🚨 PRIORITY ENTERPRISE LEAD CAPTURED\n\nCompany: ${companyName}\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nRevenue: ${revenue}\nGoal: ${goal}\nLocation: ${state}\nIndustry: ${industry}\nScore: ${score} (Tier: ${tier})\n\nAttribution Parameters:\n- Funding Need: ${fundingNeed}\n- Est. Opportunity Value: ${estimatedOpportunityValue}\n- CRA Risk: ${craRiskRating}\n- Source Page: ${pagePath}\n- Lead Source: ${leadSource}\n- Referral: ${referralSource}\n- UTMs: ${utmSource} / ${utmMedium} / ${utmCampaign}\n\nDescription:\n"${businessDescription}"`;
+  const text = `HIGH-INTENT SELF-SERVE PROFILE\n\nThis customer was routed to the existing self-serve product ladder; no manual call or live-session follow-up is required.\n\nCompany: ${companyName}\nName: ${name}\nEmail: ${email}\nPhone: ${phone || "Not provided"}\nRevenue: ${revenue}\nGoal: ${goal}\nLocation: ${state}\nIndustry: ${industry}\nScore: ${score} (Tier: ${tier})\n\nAttribution Parameters:\n- Funding Need: ${fundingNeed}\n- Est. Opportunity Value: ${estimatedOpportunityValue}\n- CRA Risk: ${craRiskRating}\n- Source Page: ${pagePath}\n- Lead Source: ${leadSource}\n- Referral: ${referralSource}\n- UTMs: ${utmSource} / ${utmMedium} / ${utmCampaign}\n\nDescription:\n"${businessDescription}"`;
 
   return sendEmail({
     to: adminEmail,

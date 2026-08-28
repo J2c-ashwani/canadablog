@@ -1,8 +1,8 @@
 import { PRICING_CONFIG } from './pricing-config';
-export const LEAD_CONSENT_VERSION = 'funding-specialist-contact-v2-2026-06-04';
+export const LEAD_CONSENT_VERSION = 'fsi-automated-funding-updates-v3-2026-08-28';
 
 export const LEAD_CONSENT_TEXT =
-  'I agree that FSI Digital and vetted funding specialists may contact me about grants, loans, tax credits, and business funding options.';
+  'I agree to receive automated funding alerts and self-serve product updates from FSI Digital.';
 
 export type LeadTier = 'A' | 'B' | 'C' | 'D';
 
