@@ -62,12 +62,13 @@ export async function GET(request: NextRequest) {
   }
 
   const contentContext = safeSlug(request.nextUrl.searchParams.get('context') || '', 'unknown');
+  const experiment = request.nextUrl.searchParams.get('experiment') === 'focused-v2' ? 'focused-v2' : 'baseline';
   const existingVisitorId = request.cookies.get('fsi_organic_visitor')?.value || '';
   const visitorId = /^[a-f0-9-]{36}$/i.test(existingVisitorId) ? existingVisitorId : randomUUID();
-  const campaign = `product-ladder-${surface}`;
+  const campaign = `product-ladder-${experiment}-${surface}`;
   const actionDate = new Date().toISOString().slice(0, 10);
   const context: GrowthActionContext = {
-    actionId: `act_onsite_${surface}_product_ladder_${actionDate}`,
+    actionId: `act_onsite_${surface}_product_ladder_${experiment}_${actionDate}`,
     channel: 'organic_onsite',
     campaign,
     recipientId: `web_${visitorId}`,

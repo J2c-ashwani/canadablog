@@ -184,6 +184,8 @@ async function run() {
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');
   assert(['$19', '$29', '$49', '$79', 'match-report', 'toolkit', 'action-plan', 'bundle', 'membership'].every((value) => organicProductLadder.includes(value)), 'Organic content distributes the complete self-serve product ladder');
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
+  assert(organicProductLadder.includes("surface === 'footer'") && organicProductLadder.includes("? 'toolkit'") && organicProductLadder.includes("surface === 'grants-city-industry'") && organicProductLadder.includes("? 'action-plan'"), 'Focused organic experiment promotes the offers preferred by verified human clicks on each high-volume surface');
+  assert(organicProductLadder.includes("experiment: 'focused-v2'") && onsiteClickRoute.includes("get('experiment') === 'focused-v2'") && onsiteClickRoute.includes('product_ladder_${experiment}'), 'Focused organic experiment has a separate first-party action ID for clean revenue measurement');
   assert(standaloneCheckout.includes('!isEmailValid ?') && standaloneCheckout.includes('Business Email Address · Required'), 'Product checkout cannot expose PayPal before the server-required delivery email is valid');
   assert(!standaloneCheckout.includes("email.trim() === '' ||"), 'Product checkout never claims an empty email is server-valid');
   assert(
