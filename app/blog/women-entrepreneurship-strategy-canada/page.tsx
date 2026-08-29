@@ -70,11 +70,11 @@ export default function WESBlogPage() {
                 👩‍💼 Women Entrepreneurship Strategy Guide
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Women Entrepreneurship Strategy Canada 2026
+                {researchProfile.seoTitle}
               </h1>
               
               <div className="text-left mb-6 max-w-4xl mx-auto shadow-sm mt-6 relative z-20">
-                 <ShortAnswerBox content="Yes — Canada's Women Entrepreneurship Strategy (WES) offers $6B+ through 15+ coordinated programs, including grants up to $100K, BDC loans, and free mentorship. It's not a single program — stack multiple WES initiatives for maximum funding." />
+                 <ShortAnswerBox question={researchProfile.shortAnswerQuestion} content={researchProfile.shortAnswer} />
               </div>
               <div className="flex justify-center mb-8 relative z-20">
                  <div className="inline-block text-left bg-white/10 backdrop-blur-sm rounded-xl border border-white/20 shadow-xl overflow-hidden">
@@ -89,8 +89,8 @@ export default function WESBlogPage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-white text-white hover:bg-white/10 bg-white/10" asChild>
-                  <Link href="/canada/small-business-grants">
-                    Back to Canadian Business Grants
+                  <Link href="/api/growth-os/onsite-click?surface=blog&context=women-entrepreneurship-strategy-canada&offer=match-report&experiment=focused-v2">
+                    Get My $19 Match Report
                   </Link>
                 </Button>
               </div>

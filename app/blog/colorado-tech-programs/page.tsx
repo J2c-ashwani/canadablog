@@ -74,10 +74,10 @@ export default function ColoradoTechProgramsPage() {
                 🏔️ Colorado Technology Startup Grants & Innovation Programs 2026-2027
               </Badge>
               <h1 className="text-4xl md:text-5xl font-bold mb-6">
-                Colorado Tech Startup Grants 2026-2027: Advanced Industries Accelerator Program Early-Stage Capital Grants Up to $250,000, Proof of Concept Grants $150,000, Advanced Industry Investment Tax Credit 35% Rural Enterprise Zones, SBIR State Matching Program, Clean Energy Fund Supporting Denver Boulder Colorado Springs Fort Collins Tech Corridor Seven Advanced Industries Ecosystem
+                {researchProfile.seoTitle}
               </h1>
               <p className="text-xl text-blue-100 mb-8">
-                Comprehensive 2026-2027 guide to Colorado State technology startup grants, Denver tech scene funding, advanced industries innovation programs, clean energy support providing Advanced Industries Accelerator Program comprehensive grant portfolio Early-Stage Capital and Retention Grants up to $250,000 supporting Colorado-based advanced industries technology businesses develop commercialize advanced technologies created manufactured in Colorado driving innovation job creation, Proof of Concept Grants up to $150,000 helping Colorado research institutions speed applied research advanced industries commercialize products services partnership private sector universities University of Colorado Colorado State University Colorado School of Mines, Advanced Industry Investment Tax Credit offering investors 25% state income tax credit investments advanced industries businesses up to $100,000 credits or 35% tax credit investments businesses located rural counties Enterprise Zones encouraging early-stage capital formation, SBIR State Matching Program enhancing federal Phase I Phase II SBIR/STTR awards providing additional Colorado funding extending runway supporting commercialization, Colorado Clean Energy Fund supporting renewable energy clean technology innovations solar wind energy storage grid modernization zero-emission vehicles advancing state climate goals carbon neutrality commitments. State programs serve seven designated Advanced Industries including aerospace, advanced manufacturing, bioscience, electronics, energy natural resources, infrastructure engineering, technology information throughout Colorado requiring minimal equity many programs complementing federal SBIR/STTR funding $50M+ annually Colorado companies, venture capital investment from Denver Boulder tech ecosystem $2B+ annual investment advancing Colorado position as global innovation leader technology economic competitiveness Rocky Mountain innovation supporting outdoor lifestyle quality of life[web:253][web:256][web:257].
+                {researchProfile.seoDescription}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <Button size="lg" className="bg-white text-blue-700 hover:bg-gray-100" asChild>
@@ -86,8 +86,8 @@ export default function ColoradoTechProgramsPage() {
                   </Link>
                 </Button>
                 <Button size="lg" variant="outline" className="border-2 border-white bg-transparent text-white hover:bg-white hover:text-blue-700" asChild>
-                  <Link href="/download/colorado-tech-guide">
-                    Get Free Application Guide
+                  <Link href="/api/growth-os/onsite-click?surface=blog&context=colorado-tech-programs&offer=match-report&experiment=focused-v2">
+                    Get My $19 Match Report
                   </Link>
                 </Button>
               </div>
@@ -103,7 +103,7 @@ export default function ColoradoTechProgramsPage() {
             <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-blue-200">
               <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
                 <span className="font-bold text-blue-800 dark:text-blue-400">The Short Answer: </span>
-                Colorado is uniquely appealing to deep-tech startups thanks to its <strong>Advanced Industries Accelerator Program</strong>, which offers Early-Stage Capital grants up to $250,000 for companies focusing on areas like aerospace, bioscience, or advanced manufacturing. On top of that, investors can get a <strong>35% tax credit</strong> if the startup is in a rural enterprise zone. This means Colorado is prioritizing hard science commercialization and rural economic diversity over general software or e-commerce.
+                {researchProfile.shortAnswer}
               </p>
             </div>
           </div>
