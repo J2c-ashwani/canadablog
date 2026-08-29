@@ -19,7 +19,7 @@ export const CEO_TOOL_DEFINITIONS: CEOToolDefinition[] = [
   },
   {
     name: 'get_revenue_path_to_target',
-    description: 'Calculates mathematical acquisition equation (orders, checkouts, leads, traffic needed) to reach $15,000 monthly revenue target.',
+    description: 'Calculates orders, checkouts, product visitors, and traffic required for the active $10,000 verified-cash target.',
     parameters: {
       type: 'object',
       properties: {

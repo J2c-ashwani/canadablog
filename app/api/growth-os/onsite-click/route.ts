@@ -35,6 +35,7 @@ const SURFACES = new Set([
   'industry-page',
   'province-page',
   'state-page',
+  'engaged-reader',
 ]);
 
 function safeSlug(value: string, fallback: string) {
@@ -62,7 +63,10 @@ export async function GET(request: NextRequest) {
   }
 
   const contentContext = safeSlug(request.nextUrl.searchParams.get('context') || '', 'unknown');
-  const experiment = request.nextUrl.searchParams.get('experiment') === 'focused-v2' ? 'focused-v2' : 'baseline';
+  const experimentInput = request.nextUrl.searchParams.get('experiment');
+  const experiment = experimentInput === 'focused-v2' || experimentInput === 'intent-v1'
+    ? experimentInput
+    : 'baseline';
   const existingVisitorId = request.cookies.get('fsi_organic_visitor')?.value || '';
   const visitorId = /^[a-f0-9-]{36}$/i.test(existingVisitorId) ? existingVisitorId : randomUUID();
   const campaign = `product-ladder-${experiment}-${surface}`;

@@ -1,4 +1,5 @@
 import { ArrowRight, BellRing, FileCheck2, FileSearch, Layers3 } from 'lucide-react';
+import { selectDistributedOffer } from '@/lib/products/distribution';
 
 type Surface = 'blog' | 'grants-city-industry' | 'footer' | 'homepage';
 
@@ -61,11 +62,12 @@ function trackedHref(surface: Surface, context: string, offer: string) {
 }
 
 export function OrganicProductLadder({ surface, context }: OrganicProductLadderProps) {
-  const recommendedId = surface === 'footer'
+  const fallbackId = surface === 'footer'
     ? 'bundle'
     : surface === 'grants-city-industry'
       ? 'action-plan'
       : 'match-report';
+  const recommendedId = selectDistributedOffer(context, fallbackId).id;
   const recommended = offers.find((offer) => offer.id === recommendedId) || offers[0];
   const alternatives = offers.filter((offer) => offer.id !== recommended.id);
   const RecommendedIcon = recommended.icon;

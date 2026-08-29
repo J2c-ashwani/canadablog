@@ -21,6 +21,9 @@ export interface PipelineStageMetrics {
   totalIntakeLeads: number
   consentedLeads: number
   newLeads24h: number
+  uniqueSessions30d: number
+  paidOfferImpressions30d: number
+  productVisitors30d: number
   unprogressedLeads: number
   membershipCandidatesCount: number
   tier1BundleCount: number
@@ -100,6 +103,9 @@ export class SalesAgent {
       totalIntakeLeads: allSubscribers.length,
       consentedLeads: consentedSubscribers.length,
       newLeads24h: evidence.funnel.newLeads24h,
+      uniqueSessions30d: evidence.funnel.uniqueSessions30d,
+      paidOfferImpressions30d: evidence.funnel.paidOfferImpressions30d,
+      productVisitors30d: evidence.funnel.productVisitors30d,
       unprogressedLeads: unprogressed,
       membershipCandidatesCount: consentedSubscribers.filter((subscriber) => String(subscriber.subscriptionStatus || '').toUpperCase() !== 'ACTIVE').length,
       tier1BundleCount: summary.tierBreakdown.tierBundle79Count,

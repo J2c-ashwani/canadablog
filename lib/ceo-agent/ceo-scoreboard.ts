@@ -35,7 +35,9 @@ export interface RevenuePathToTarget {
     session199Count: number
     filing2500Count: number
   }
+  requiredOrders: number
   requiredCheckouts: number
+  requiredProductVisitors: number
   requiredQualifiedLeads: number
   requiredRawTraffic: number
   primaryBottleneck: string
@@ -129,18 +131,25 @@ export class CEOScoreboard {
     const currentDaily = Number((currentVerifiedUSD / daysElapsed).toFixed(2))
     const gapPct = targetUSD > 0 ? Number(((remaining / targetUSD) * 100).toFixed(1)) : 0
 
-    const membership29Count = Math.ceil((remaining * 0.30) / 29)
-    const strategy79Count = Math.ceil((remaining * 0.30) / 79)
-    const actionPlan49Count = Math.ceil((remaining * 0.25) / 49)
+    // $10K reference mix: 80 bundles + 40 plans + 40 memberships + 30
+    // reports = 190 orders and $10,010. Scale the mix with the remaining gap.
+    const mixScale = remaining / 10_010
+    const strategy79Count = remaining > 0 ? Math.round(80 * mixScale) : 0
+    const actionPlan49Count = remaining > 0 ? Math.round(40 * mixScale) : 0
+    const membership29Count = remaining > 0 ? Math.round(40 * mixScale) : 0
     const session199Count = 0
-    const report19Count = Math.ceil((remaining * 0.15) / 19)
+    const allocatedRevenue = strategy79Count * 79 + actionPlan49Count * 49 + membership29Count * 29
+    const report19Count = remaining > allocatedRevenue
+      ? Math.ceil((remaining - allocatedRevenue) / 19)
+      : 0
     const totalOrdersNeeded = membership29Count + strategy79Count + actionPlan49Count + session199Count + report19Count
-    const assumedCheckoutConversion = 0.10
-    const assumedLeadToCheckout = 0.08
-    const assumedVisitorToLead = 0.04
+    const assumedCheckoutConversion = 0.40
+    const assumedProductVisitorToCheckout = 0.06
+    const assumedTrafficToProductVisit = 0.50
     const requiredCheckouts = Math.ceil(totalOrdersNeeded / assumedCheckoutConversion)
-    const requiredQualifiedLeads = Math.ceil(requiredCheckouts / assumedLeadToCheckout)
-    const requiredRawTraffic = Math.ceil(requiredQualifiedLeads / assumedVisitorToLead)
+    const requiredProductVisitors = Math.ceil(requiredCheckouts / assumedProductVisitorToCheckout)
+    const requiredQualifiedLeads = requiredProductVisitors
+    const requiredRawTraffic = Math.ceil(requiredProductVisitors / assumedTrafficToProductVisit)
 
     return {
       targetUSD,
@@ -158,15 +167,17 @@ export class CEOScoreboard {
         session199Count,
         filing2500Count: 0,
       },
+      requiredOrders: totalOrdersNeeded,
       requiredCheckouts,
+      requiredProductVisitors,
       requiredQualifiedLeads,
       requiredRawTraffic,
       primaryBottleneck: 'Insufficient provider-verified checkouts and subscription activations',
       secondaryBottleneck: 'Insufficient measurable distribution to consented, product-matched cohorts',
       assumptions: [
-        'Illustrative self-serve mix: 30% $29 membership, 30% $79 bundle, 25% $49 plan, 15% $19 report.',
+        'Target mix at the full $10K gap: 80 $79 bundles, 40 $49 plans, 40 $29 memberships, and 30 $19 reports = $10,010 from 190 orders.',
         '$199 1-on-1 strategy products are excluded from automated distribution because the solo operator cannot deliver calls.',
-        'Planning assumptions only: 10% checkout-to-payment, 8% qualified-lead-to-checkout, 4% visitor-to-lead.',
+        'Capacity targets, not a forecast: route 50% of traffic to product decisions, convert 6% of product visitors to checkout, and capture 40% of checkout starts.',
         'Strict $10K MRR requires 345 active $29 memberships; one-time products count toward 30-day cash, not MRR.',
       ],
     }

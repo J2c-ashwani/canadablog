@@ -129,12 +129,12 @@ export class CEOAgent {
           `GrowthOS Events: ${queuedSignals.length} durable signals queued for this run`,
         ],
         observed_conversion_rate: Number(conversionRate.toFixed(4)),
-        baseline_rate: 0.10,
+        baseline_rate: 0.20,
         estimated_monthly_leakage_usd: leakageReport.totalEstimatedLeakageUSD,
         hypothesis: revenue.activeMemberships === 0
           ? 'A real PayPal subscription funnel plus controlled distribution to consented leads can establish the first verified MRR cohort.'
           : 'Scaling only cohorts with verified delivery-to-capture evidence will improve monthly revenue without adding products.',
-        decision: 'Run the current product ladder through dedicated, idempotent distribution crons; do not create new products, pages, or unmeasured campaigns.',
+        decision: 'Route engaged organic traffic into intent-matched self-serve products, run approved consented cohorts through isolated leases, and scale only surfaces with provider-verified checkout and cash evidence.',
         expected_revenue_impact_usd: leakageReport.totalEstimatedLeakageUSD,
         attribution_confidence: revenue.evidenceState === 'VERIFIED' ? 'HIGH' : revenue.evidenceState === 'PARTIAL' ? 'MEDIUM' : 'LOW',
       }
@@ -177,7 +177,7 @@ export class CEOAgent {
         directives: [
           'Distribute the self-serve $19/$29/$49/$79 grant products and $49 CAD MCA product; do not automate call-dependent $199 sales.',
           'Scale only cohorts with provider message IDs and verified downstream captures.',
-          'Prioritize the first 10 provider-verified customers before broader strategy changes.',
+          'Operate toward 190 provider-verified orders for the $10K cash target; use 19 customers as the first evidence checkpoint.',
         ],
         forbidden_actions: [
           'No fabricated delivered, reply, checkout, payment, or revenue states.',
@@ -190,7 +190,7 @@ export class CEOAgent {
         current_mtd_mrr_usd: scoreboard.currentMRRUSD,
         primary_bottleneck: decisionBasis.primary_bottleneck,
         estimated_monthly_leakage_usd: decisionBasis.estimated_monthly_leakage_usd,
-        priority_focus: 'First 10 provider-verified customers from the existing product ladder',
+        priority_focus: '190 provider-verified orders from the existing product ladder; first checkpoint 19 customers',
       })
       if (triggerSource !== 'verification' && queuedSignals.length > 0) {
         await markGrowthOSEventsReviewed(queuedSignals, runId)
@@ -266,6 +266,7 @@ Active $29 memberships: ${scoreboard.activeMemberships}; additional memberships 
 
 LIVE FUNNEL
 Leads: ${sales.pipeline.totalIntakeLeads} total; ${sales.pipeline.consentedLeads} explicitly consented; ${sales.pipeline.newLeads24h} new in 24h
+Human sessions: ${sales.pipeline.uniqueSessions30d}; paid-offer impressions: ${sales.pipeline.paidOfferImpressions30d}; product visitors: ${sales.pipeline.productVisitors30d}
 Provider-accepted outreach: ${sales.pipeline.contactedCount}; signed deliveries: ${sales.pipeline.deliveredCount}; replies: ${sales.pipeline.repliedCount}
 Checkout starts: ${sales.pipeline.checkoutStartsCount}; provider-verified purchases: ${sales.pipeline.completedPurchasesCount}
 Verified product records: ${product.generatedReportsCount}; delivered: ${product.deliveredReportsCount}; provider-accepted only: ${product.providerAcceptedDeliveriesCount}; pending/failed: ${product.pendingDeliveriesCount + product.failedDeliveriesCount}
@@ -278,7 +279,7 @@ ${decision.decision}
 
 CURRENT-PRODUCT PLANNING MIX FOR THE MONTHLY REVENUE GAP
 $29 membership: ${productMix.membership29Count}; $79 bundle: ${productMix.strategy79Count}; $49 plan: ${productMix.actionPlan49Count}; $19 report: ${productMix.report19Count}; call-dependent $199 product: 0; $2,500 services: 0
-This is a planning model, not a forecast. Strict $10K MRR still requires 345 active $29 memberships.
+Capacity plan: ${path.requiredOrders} orders from ${path.requiredCheckouts} checkout starts and ${path.requiredProductVisitors} product visitors. This is a target model, not a forecast. Strict $10K MRR still requires 345 active $29 memberships.
 
 ACTION P&L — LAST 30 DAYS
 Qualified leads affected: ${revenue.actionPerformance.totalQualifiedLeadsAffected}; attributed payments: ${revenue.actionPerformance.totalPurchases}

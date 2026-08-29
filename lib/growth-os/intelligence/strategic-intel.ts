@@ -7,11 +7,11 @@ import { GrowthGoal } from "../types"
 
 export class StrategicIntelligenceEngine {
   private static activeGoal: GrowthGoal = {
-    id: "goal_2026_q3",
-    period: "2026-Q3",
+    id: "goal_2026_30d_cash_10k",
+    period: "30-day verified-cash sprint",
     revenueTargetUSD: 10000,
     priorityMarkets: ["Canada", "USA"],
-    priorityProducts: ["$19 Match Report", "$49 Action Plan", "$79 Funding Bundle", "$29 Watch", "$199 Dossier"],
+    priorityProducts: ["$79 Funding Bundle", "$49 Action Plan", "$29 Watch", "$19 Match Report", "$49 CAD MCA Readiness Report"],
     constraints: {
       maxMonthlyComputeBudgetUSD: 250,
       maxDailyEmailVolume: 1000,

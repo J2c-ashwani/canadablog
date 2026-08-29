@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import dynamic from "next/dynamic"
 import { usePathname } from "next/navigation"
+import { isPaidDistributionContentRoute } from '@/lib/products/distribution'
 
 // Lazy-load these components so they don't block the main thread at page load
 const CookieConsent = dynamic(
@@ -15,6 +16,10 @@ const LeadMagnetPopup = dynamic(
 )
 const LeadConversionUpsellWatcher = dynamic(
     () => import("@/components/LeadConversionUpsellWatcher").then(m => ({ default: m.LeadConversionUpsellWatcher })),
+    { ssr: false }
+)
+const EngagedReaderProductCTA = dynamic(
+    () => import("@/components/products/EngagedReaderProductCTA").then(m => ({ default: m.EngagedReaderProductCTA })),
     { ssr: false }
 )
 const ExitIntentCapture = dynamic(
@@ -126,6 +131,7 @@ export function ClientOverlays() {
     const shouldSuppressPopup = EXCLUDED_TRANSACTIONAL_ROUTES.some(route => 
         pathname === route || pathname.startsWith(route + "/")
     )
+    const shouldPrioritizePaidDistribution = isPaidDistributionContentRoute(pathname)
 
     return (
         <>
@@ -169,7 +175,8 @@ export function ClientOverlays() {
             )}
             <CookieConsent />
             <LeadConversionUpsellWatcher />
-            {!shouldSuppressPopup && (
+            <EngagedReaderProductCTA />
+            {!shouldSuppressPopup && !shouldPrioritizePaidDistribution && (
                 <>
                     <LeadMagnetPopup />
                     <ExitIntentCapture />

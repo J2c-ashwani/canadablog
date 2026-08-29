@@ -47,6 +47,8 @@ export interface GrowthOSEvidenceSnapshot {
     newLeads24h: number;
     newLeads30d: number;
     uniqueSessions30d: number;
+    paidOfferImpressions30d: number;
+    productVisitors30d: number;
     checkoutStarts30d: number;
     providerVerifiedPurchases30d: number;
     checkoutToPaymentRate30d: number;
@@ -204,11 +206,23 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
     && !isTestIdentity(membership.email)
   );
   const telemetry30d = telemetry.filter((event) => dateValue(event.timestamp) >= thirtyDaysAgo);
+  const humanTelemetry30d = telemetry30d.filter((event) =>
+    !['Likely Bot', 'Suspicious'].includes(event.trafficQualityClassification || '')
+  );
   const checkoutNames = new Set(['checkout_started', 'standalone_checkout_started', 'begin_checkout']);
-  const checkoutStarts30d = telemetry30d.filter((event) => checkoutNames.has(event.eventName)).length;
+  const checkoutStarts30d = humanTelemetry30d.filter((event) => checkoutNames.has(event.eventName)).length;
   const uniqueSessions30d = new Set(
-    telemetry30d.map((event) => event.sessionId).filter((sessionId) => sessionId && sessionId !== 'sess_anonymous')
+    humanTelemetry30d.map((event) => event.sessionId).filter((sessionId) => sessionId && sessionId !== 'sess_anonymous')
   ).size;
+  const paidOfferImpressions30d = new Set(humanTelemetry30d
+    .filter((event) => event.eventName === 'paid_offer_impression')
+    .map((event) => event.sessionId)
+    .filter(Boolean)).size;
+  const productVisitors30d = new Set(humanTelemetry30d
+    .filter((event) => event.eventName === 'page_view')
+    .filter((event) => event.pagePath.startsWith('/products/') || event.pagePath === '/membership')
+    .map((event) => event.sessionId)
+    .filter(Boolean)).size;
 
   const deliveredStatuses = new Set(['delivered', 'email.delivered']);
   const acceptedStatuses = new Set(['provider_accepted', 'accepted', 'api_accepted']);
@@ -259,6 +273,8 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
       newLeads24h: subscribers.filter((subscriber) => dateValue(subscriber.timestamp) >= oneDayAgo).length,
       newLeads30d: subscribers.filter((subscriber) => dateValue(subscriber.timestamp) >= thirtyDaysAgo).length,
       uniqueSessions30d,
+      paidOfferImpressions30d,
+      productVisitors30d,
       checkoutStarts30d,
       providerVerifiedPurchases30d: verified30dPurchases.length,
       checkoutToPaymentRate30d: checkoutStarts30d > 0

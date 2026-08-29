@@ -11,7 +11,7 @@ export const TOOL_PERMISSIONS: Record<string, ToolPermission> = {
   get_revenue_ledger: { level: 'level_1', needsApproval: false, description: 'Queries verified PayPal/Stripe revenue captures' },
   get_funnel_health: { level: 'level_1', needsApproval: false, description: 'Audits 10-stage commercial funnel stats' },
   get_growth_os_status: { level: 'level_1', needsApproval: false, description: 'Audits Growth OS queues and email delivery health' },
-  get_revenue_path_to_target: { level: 'level_1', needsApproval: false, description: 'Calculates mathematical acquisition path to $15K target' },
+  get_revenue_path_to_target: { level: 'level_1', needsApproval: false, description: 'Calculates the acquisition capacity required for the active $10K cash target' },
   get_revenue_leakage_report: { level: 'level_1', needsApproval: false, description: 'Quantifies estimated dollar leakage per funnel bottleneck' },
 
   // Level 2: Recommend

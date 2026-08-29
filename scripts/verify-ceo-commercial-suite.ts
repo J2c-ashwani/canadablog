@@ -34,6 +34,8 @@ async function run() {
 
   const pathToTarget = CEOScoreboard.calculatePathToTarget(0, 10_000, 10);
   assert(pathToTarget.targetUSD === 10_000 && pathToTarget.requiredDailyRevenueUSD === 1_000, '$10K 30-day cash target math is explicit');
+  assert(pathToTarget.requiredOrders === 190 && pathToTarget.requiredCheckouts === 475, '$10K distribution model requires 190 orders and 475 checkout starts');
+  assert(pathToTarget.requiredProductVisitors === 7_917 && pathToTarget.requiredRawTraffic === 15_834, '$10K distribution model exposes product-visit and raw-traffic capacity');
   assert(pathToTarget.requiredTransactions.filing2500Count === 0, 'The planning mix excludes unapproved $2,500 services');
   assert(pathToTarget.requiredTransactions.session199Count === 0, 'Automated planning excludes the call-dependent $199 product');
   assert(pathToTarget.assumptions.some((item) => item.includes('345 active $29 memberships')), 'True $10K MRR is distinguished from one-time revenue');
@@ -118,6 +120,9 @@ async function run() {
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
   const organicProductLadder = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadder.tsx'), 'utf8');
+  const engagedReaderCTA = fs.readFileSync(path.join(root, 'components/products/EngagedReaderProductCTA.tsx'), 'utf8');
+  const distributionClassifier = fs.readFileSync(path.join(root, 'lib/products/distribution.ts'), 'utf8');
+  const clientOverlays = fs.readFileSync(path.join(root, 'components/ClientOverlays.tsx'), 'utf8');
   const standaloneCheckout = fs.readFileSync(path.join(root, 'components/products/StandaloneCheckout.tsx'), 'utf8');
   const productCatalog = fs.readFileSync(path.join(root, 'lib/products/catalog.ts'), 'utf8');
   const serverCheckout = fs.readFileSync(path.join(root, 'lib/products/checkout.ts'), 'utf8');
@@ -203,7 +208,11 @@ async function run() {
   assert(['$19', '$29', '$49', '$79', 'match-report', 'toolkit', 'action-plan', 'bundle', 'membership'].every((value) => organicProductLadder.includes(value)), 'Organic content distributes the complete self-serve product ladder');
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
   assert(organicProductLadder.includes("surface === 'footer'") && organicProductLadder.includes("? 'bundle'") && organicProductLadder.includes("surface === 'grants-city-industry'") && organicProductLadder.includes("? 'action-plan'"), 'Focused organic experiment promotes the strongest observed cash and checkout offers on each high-volume surface');
-  assert(organicProductLadder.includes("experiment: 'focused-v2'") && onsiteClickRoute.includes("get('experiment') === 'focused-v2'") && onsiteClickRoute.includes('product_ladder_${experiment}'), 'Focused organic experiment has a separate first-party action ID for clean revenue measurement');
+  assert(organicProductLadder.includes("experiment: 'focused-v2'") && onsiteClickRoute.includes("experimentInput === 'focused-v2'") && onsiteClickRoute.includes('product_ladder_${experiment}'), 'Focused organic experiment has a separate first-party action ID for clean revenue measurement');
+  assert(engagedReaderCTA.includes("surface: 'engaged-reader'") && engagedReaderCTA.includes("experiment: 'intent-v1'") && onsiteClickRoute.includes("'engaged-reader'"), 'Engaged content readers receive an intent-matched, separately attributable paid-product decision');
+  assert(engagedReaderCTA.includes("eventName: 'paid_offer_impression'") && engagedReaderCTA.includes('trafficQualityClassification'), 'Paid distribution records human-quality recommendation impressions before the click');
+  assert(distributionClassifier.includes('selectDistributedOffer') && distributionClassifier.includes('MONITORING_INTENT') && distributionClassifier.includes('ACTION_INTENT'), 'Paid distribution deterministically matches page intent to a current self-serve offer');
+  assert(clientOverlays.includes('shouldPrioritizePaidDistribution') && clientOverlays.includes('<EngagedReaderProductCTA />'), 'High-intent content prioritizes paid distribution over competing generic lead popups');
   assert(standaloneCheckout.includes('!isEmailValid ?') && standaloneCheckout.includes('Delivery Email · Required'), 'Product checkout cannot expose PayPal before the server-required delivery email is valid');
   assert(!standaloneCheckout.includes("email.trim() === '' ||"), 'Product checkout never claims an empty email is server-valid');
   assert(!standaloneCheckout.includes('Full Name') && standaloneCheckout.includes('autoComplete="email"'), 'One-time product checkout asks for only the delivery field required before PayPal');
