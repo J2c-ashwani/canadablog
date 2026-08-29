@@ -36,7 +36,7 @@ export default function USATechnologyStartupGrantsPage() {
     <PriorityResearchLandingPage
       profile={researchProfile}
       eyebrow="U.S. technology funding research"
-      title="Federal R&D Funding for Technology Startups"
+      title="U.S. Technology Startup Grants & SBIR/STTR Funding"
     />
   );
 }
