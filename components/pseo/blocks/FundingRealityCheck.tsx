@@ -4,14 +4,11 @@ import { AlertCircle, TrendingDown, Target } from 'lucide-react';
 interface Props {
   program1: string;
   amount1: string;
+  regionType?: 'state' | 'province';
 }
 
-export default function FundingRealityCheck({ program1, amount1 }: Props) {
-  // Rotate phrasing automatically based on month to keep Google crawler engaged with a freshness hook
-  const currentMonth = new Date().getMonth();
-  const dynamicsText = currentMonth % 2 === 0 
-    ? "approval odds heavily skew toward companies demonstrating out-of-state competition"
-    : "statutory funds frequently dry up before Q4, requiring early-year filings";
+export default function FundingRealityCheck({ program1, amount1, regionType = 'state' }: Props) {
+  const regionNoun = regionType === 'province' ? 'province' : 'state';
 
   return (
     <div className="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded-r-lg mb-8">
@@ -21,7 +18,7 @@ export default function FundingRealityCheck({ program1, amount1 }: Props) {
       </div>
       
       <p className="text-yellow-800 text-sm leading-relaxed mb-6">
-        Let’s cut through the noise: securing state capital is currently intensely competitive. The baseline success rate for unsolicited applications is hovering around <strong>22-28%</strong>. Why? Because most founders submit generic applications for high-profile funds like the <strong>{program1}</strong> ({amount1}) without proving a net-positive regional ROI. Furthermore, {dynamicsText}.
+        A listing is not proof that your company qualifies. For <strong>{program1}</strong> ({amount1}), verify the current intake and controlling program guide before you plan around the funding. Competitive programs commonly evaluate project fit, applicant eligibility, budget evidence, delivery capacity, and measurable outcomes, but the exact test differs by program.
       </p>
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -30,7 +27,7 @@ export default function FundingRealityCheck({ program1, amount1 }: Props) {
             <TrendingDown className="w-5 h-5 text-red-500" />
             <h4 className="font-semibold text-gray-900 text-sm m-0">Primary Risk Factor</h4>
           </div>
-          <p className="text-gray-600 text-xs">Failure to explicitly map your expansion to the state's 5-Year Economic Action Plan.</p>
+          <p className="text-gray-600 text-xs">Spending before approval, relying on an outdated intake, or submitting costs the program does not support.</p>
         </div>
         
         <div className="bg-white p-4 rounded border border-yellow-200">
@@ -38,7 +35,7 @@ export default function FundingRealityCheck({ program1, amount1 }: Props) {
             <Target className="w-5 h-5 text-green-600" />
             <h4 className="font-semibold text-gray-900 text-sm m-0">Funding Lever</h4>
           </div>
-          <p className="text-gray-600 text-xs">Instead of 100% cash up front, structure your ask as a performance-based payroll rebate.</p>
+          <p className="text-gray-600 text-xs">Build a documented project brief, then compare federal, {regionNoun}, and local routes against the same budget.</p>
         </div>
       </div>
     </div>

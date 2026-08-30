@@ -29,11 +29,11 @@ export default function NearbyAlternatives({ currentTier, stateSlug, anchorText 
     <div className="bg-sky-50 border border-sky-200 p-6 rounded-xl mb-8">
       <h3 className="text-lg font-bold text-sky-900 flex items-center gap-2 m-0 mb-3">
         <ArrowRightLeft className="w-5 h-5 text-sky-600" />
-        Consider These Better-Funded Alternatives
+        Compare Nearby Funding Guides
       </h3>
       {currentTier !== 'A' && (
         <p className="text-sm text-sky-800 mb-4">
-          Operating in a Tier {currentTier} zone means smaller discretionary funds. These nearby Tier A economic centers offer significantly more capital access:
+          Program availability can differ by applicant location and project site. Compare nearby guides, but confirm that relocating or operating elsewhere is genuinely allowed by the program.
         </p>
       )}
       <div className="space-y-2">

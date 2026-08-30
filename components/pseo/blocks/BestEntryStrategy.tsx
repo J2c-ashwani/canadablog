@@ -6,9 +6,6 @@ interface Props {
 }
 
 export default function BestEntryStrategy({ program1 }: Props) {
-  // Freshness Hook Example
-  const currentQtr = Math.floor((new Date().getMonth() + 3) / 3);
-
   return (
     <div className="bg-blue-50/50 border border-blue-200 p-8 rounded-xl mb-8 relative overflow-hidden">
       {/* Decorative background element */}
@@ -17,11 +14,11 @@ export default function BestEntryStrategy({ program1 }: Props) {
       <div className="relative z-10">
         <h3 className="text-xl font-bold text-blue-900 mb-6 flex items-center gap-2 m-0">
           <Route className="w-6 h-6 text-blue-600" />
-          The Optimal Entry Strategy (Q{currentQtr} Update)
+          A Practical Entry Strategy
         </h3>
         
         <p className="text-gray-700 mb-6 text-sm leading-relaxed">
-          The most common failure pattern we observe is startups applying directly for massive capital facility funds on day one. You need to build a "compliance track record" with the state first. Before submitting an exhaustive application for the <strong>{program1}</strong>, execute this 3-step sequence:
+          Before preparing an application for <strong>{program1}</strong>, reduce wasted work with this three-step research sequence:
         </p>
 
         <div className="space-y-4">
@@ -30,8 +27,8 @@ export default function BestEntryStrategy({ program1 }: Props) {
               <CheckCircle2 className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 text-sm m-0">1. Trigger a Micro-Grant (Training/Upskilling)</h4>
-              <p className="text-sm text-gray-600 mt-1">First, apply for a standard workforce training grant (usually $1K-$3K per employee). These have near 90% approval rates and instantly get you into the state's procurement system as an approved vendor.</p>
+              <h4 className="font-semibold text-gray-900 text-sm m-0">1. Define the funded project</h4>
+              <p className="text-sm text-gray-600 mt-1">Write the goal, eligible location, start date, milestones, itemized costs, matching funds, and measurable outcomes on one page.</p>
             </div>
           </div>
           
@@ -40,8 +37,8 @@ export default function BestEntryStrategy({ program1 }: Props) {
               <CheckCircle2 className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 text-sm m-0">2. File for a Discretionary Local Match</h4>
-              <p className="text-sm text-gray-600 mt-1">Simultaneously approach the local municipal economic council. Secure a small $10k-$25k property tax abatement. State-level funds heavily prioritize businesses that already have municipal "skin in the game."</p>
+              <h4 className="font-semibold text-gray-900 text-sm m-0">2. Verify the controlling rules</h4>
+              <p className="text-sm text-gray-600 mt-1">Confirm the intake, applicant test, supported costs, approval timing, contribution type, and official application channel.</p>
             </div>
           </div>
 
@@ -50,8 +47,8 @@ export default function BestEntryStrategy({ program1 }: Props) {
               <CheckCircle2 className="w-5 h-5 text-blue-600" />
             </div>
             <div>
-              <h4 className="font-semibold text-gray-900 text-sm m-0">3. Engage the State with the "Threat to Leave"</h4>
-              <p className="text-sm text-gray-600 mt-1">Once you have local backing, approach the state for the major <strong>{program1}</strong>. Crucially, document that you are actively considering taking your expansion to a neighboring state if the numbers don't align.</p>
+              <h4 className="font-semibold text-gray-900 text-sm m-0">3. Build the evidence file</h4>
+              <p className="text-sm text-gray-600 mt-1">Prepare incorporation and ownership records, financials, quotes, project capacity, customer or technical evidence, and any required partner commitments.</p>
             </div>
           </div>
         </div>

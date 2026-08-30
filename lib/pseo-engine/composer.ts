@@ -49,13 +49,14 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
   const stateData = getStateDetailBySlugOrAbbreviation(req.stateSlug);
   const regionType = CANADIAN_REGION_SLUGS.has(req.stateSlug) ? 'province' : 'state';
   
-  // Entity Proof Layer (Pull Top 2 Programs to inject hyper-local proof - HARD REQUIREMENT)
+  // Use named programs only when the regional dataset actually contains them.
+  // Neutral fallbacks avoid inventing a fund or award amount for thin regions.
   const program1 = stateData?.topPrograms?.[0]?.name ||
-    (regionType === 'province' ? 'Provincial Business Growth Fund' : 'State Growth Fund');
-  const amount1 = stateData?.topPrograms?.[0]?.fundingAmount || '$50,000+ grants';
+    (regionType === 'province' ? 'official provincial business-support directory' : 'official state business-support directory');
+  const amount1 = stateData?.topPrograms?.[0]?.fundingAmount || 'program-specific support';
   const program2 = stateData?.topPrograms?.[1]?.name ||
-    (regionType === 'province' ? 'Regional Job Creation Grant' : 'Regional Job Creation Incentive');
-  const amount2 = stateData?.topPrograms?.[1]?.fundingAmount || 'Variable grants and tax credits';
+    (regionType === 'province' ? 'regional development and workforce programs' : 'regional development and workforce programs');
+  const amount2 = stateData?.topPrograms?.[1]?.fundingAmount || 'eligibility and amounts vary';
 
   // Internal Linking Anchor Text Variation Logic
   const anchorVariations = [
@@ -83,7 +84,7 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
 
   // 2. Intent-Based Block Selection with Diversity Shifting
   if (req.intent === 'informational') {
-    blocks.push({ type: 'FundingRealityCheck', props: { program1, amount1 } });
+    blocks.push({ type: 'FundingRealityCheck', props: { program1, amount1, regionType } });
     if (diversityShift === 0) blocks.push({ type: 'WhoWinsMatrix', props: {} });
     if (diversityShift === 1 && req.tier === 'A') blocks.push({ type: 'FundingDensitySnapshot', props: {} });
   } 
@@ -92,17 +93,19 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
     if (diversityShift !== 2) blocks.push({ type: 'LocalBrokerStrategy', props: {} });
   } 
   else if (req.intent === 'comparative') {
-    blocks.push({ type: 'NearbyAlternatives', props: { currentTier: req.tier, stateSlug: req.stateSlug, anchorText } });
+    if (regionType === 'state') {
+      blocks.push({ type: 'NearbyAlternatives', props: { currentTier: req.tier, stateSlug: req.stateSlug, anchorText } });
+    }
     if (diversityShift === 0) blocks.push({ type: 'FundingDecisionTree', props: {} });
   }
 
   // 3. Conditional Overrides based on Tier & Industry
   if (req.tier === 'A') {
-    if (diversityShift === 1) blocks.push({ type: 'LocalAdvantageHack', props: {} });
+    if (diversityShift === 1) blocks.push({ type: 'LocalAdvantageHack', props: { regionType } });
   } 
   else if (req.tier === 'B' || req.tier === 'C') {
-    blocks.push({ type: 'DisqualifiersList', props: { industrySlug: req.industrySlug, program2 } });
-    if (!blocks.find(b => b.type === 'NearbyAlternatives')) {
+    blocks.push({ type: 'DisqualifiersList', props: { industrySlug: req.industrySlug, program2, regionType } });
+    if (regionType === 'state' && !blocks.find(b => b.type === 'NearbyAlternatives')) {
       blocks.push({ type: 'NearbyAlternatives', props: { currentTier: req.tier, stateSlug: req.stateSlug, anchorText } });
     }
   }
@@ -120,7 +123,7 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
 
   // 5. Who Should Leave (Trust Builder)
   if (req.citySlug.length % 2 === 0 && !blocks.find(b => b.type === 'WhoShouldLeave')) {
-      blocks.push({ type: 'WhoShouldLeave', props: {} });
+      blocks.push({ type: 'WhoShouldLeave', props: { regionType } });
   }
 
   // Cap at 6 blocks exactly (excluding Anchor)
