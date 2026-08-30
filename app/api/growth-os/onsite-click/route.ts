@@ -36,6 +36,8 @@ const SURFACES = new Set([
   'province-page',
   'state-page',
   'engaged-reader',
+  'linkedin-company',
+  'facebook-page',
 ]);
 
 function safeSlug(value: string, fallback: string) {
@@ -64,23 +66,33 @@ export async function GET(request: NextRequest) {
 
   const contentContext = safeSlug(request.nextUrl.searchParams.get('context') || '', 'unknown');
   const experimentInput = request.nextUrl.searchParams.get('experiment');
-  const experiment = experimentInput === 'focused-v2' || experimentInput === 'intent-v1'
+  const experiment = experimentInput === 'focused-v2' || experimentInput === 'intent-v1' || experimentInput === 'social-v1'
     ? experimentInput
     : 'baseline';
   const existingVisitorId = request.cookies.get('fsi_organic_visitor')?.value || '';
   const visitorId = /^[a-f0-9-]{36}$/i.test(existingVisitorId) ? existingVisitorId : randomUUID();
-  const campaign = `product-ladder-${experiment}-${surface}`;
+  const socialSource = surface === 'linkedin-company'
+    ? 'linkedin'
+    : surface === 'facebook-page'
+      ? 'facebook'
+      : '';
+  const channel = socialSource ? 'organic_social' : 'organic_onsite';
+  const campaign = socialSource
+    ? `revenue-sprint-social-${socialSource}-${experiment}`
+    : `product-ladder-${experiment}-${surface}`;
   const actionDate = new Date().toISOString().slice(0, 10);
   const context: GrowthActionContext = {
-    actionId: `act_onsite_${surface}_product_ladder_${experiment}_${actionDate}`,
-    channel: 'organic_onsite',
+    actionId: socialSource
+      ? `act_social_${socialSource}_${offer}_${experiment}_${actionDate}`
+      : `act_onsite_${surface}_product_ladder_${experiment}_${actionDate}`,
+    channel,
     campaign,
     recipientId: `web_${visitorId}`,
   };
 
   const destination = new URL(targetPath, request.nextUrl.origin);
-  destination.searchParams.set('utm_source', 'organic_content');
-  destination.searchParams.set('utm_medium', 'onsite');
+  destination.searchParams.set('utm_source', socialSource || 'organic_content');
+  destination.searchParams.set('utm_medium', socialSource ? 'organic_social' : 'onsite');
   destination.searchParams.set('utm_campaign', campaign);
   destination.searchParams.set('utm_content', `${contentContext}-${offer}`);
 

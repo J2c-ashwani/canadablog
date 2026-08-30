@@ -267,6 +267,7 @@ async function run() {
   assert(reportDeliveryClient.includes('/membership?source=report-membership-upgrade') && reportDeliveryClient.includes('/products/bundle?source=report-delivery'), 'Post-purchase distribution routes to Funding Watch and the complete self-serve bundle');
   assert(onsiteClickRoute.includes('createTrackedGrowthUrl') && onsiteClickRoute.includes('fsi_organic_visitor') && onsiteClickRoute.includes('const OFFERS'), 'On-site product clicks use allowlisted signed first-party attribution');
   assert(onsiteClickRoute.includes('actionDate') && !onsiteClickRoute.includes('product_ladder_2026-08-27'), 'On-site action IDs rotate by the actual UTC date instead of a hardcoded launch date');
+  assert(onsiteClickRoute.includes("'linkedin-company'") && onsiteClickRoute.includes("channel = socialSource ? 'organic_social' : 'organic_onsite'"), 'LinkedIn company traffic receives unique signed first-party revenue attribution');
   assert(blogRoute.includes('<OrganicProductLadder surface="blog"') && pseoRoute.includes('<OrganicProductLadder'), 'Paid self-serve distribution is present on blog and city-industry organic templates');
   assert(actionScorecard.includes("event.channel.startsWith('organic_')"), 'CEO action P&L treats unique first-party product clicks as qualified organic leads');
   assert(footer.includes('<OrganicProductLadder surface="footer"') && onsiteClickRoute.includes("'footer'"), 'Uncovered content routes receive the signed product ladder through the global footer');
