@@ -178,6 +178,11 @@ async function run() {
   const growthHealthRoute = fs.readFileSync(path.join(root, 'app/api/cron/growth-os-health/route.ts'), 'utf8');
   const newsletterMarketing = fs.readFileSync(path.join(root, 'lib/emails/newsletter-marketing.ts'), 'utf8');
   const checkoutProfileRoute = fs.readFileSync(path.join(root, 'app/api/products/checkout-profile/route.ts'), 'utf8');
+  const revenueSprintRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-revenue-sprint/route.ts'), 'utf8');
+  const revenueSprintService = fs.readFileSync(path.join(root, 'lib/leads/revenue-sprint-service.ts'), 'utf8');
+  const revenueSprintEmail = fs.readFileSync(path.join(root, 'lib/emails/revenue-sprint.ts'), 'utf8');
+  const cartRecoveryService = fs.readFileSync(path.join(root, 'lib/leads/cart-recovery-service.ts'), 'utf8');
+  const cartRecoveryEmail = fs.readFileSync(path.join(root, 'lib/emails/cart-recovery.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(newsletterRoute.includes('CONTROLLED_COHORT_CAP = 20') && newsletterRoute.includes('remainingCohortCapacity'), 'Newsletter distribution is capped at a 20-contact evidence cohort across repeated scheduler runs');
@@ -191,6 +196,14 @@ async function run() {
   assert(activeNewsletterTemplates.includes('/products/funding-match-report?token=') && !activeNewsletterTemplates.includes('/portfolio?token='), 'Active newsletters distribute the $19 product instead of the legacy $99/$199 portfolio checkout');
   assert(activeNewsletterTemplates.includes('data.unsubscribeToken') && !activeNewsletterTemplates.includes('wrapNewsletterTemplate(contentHtml, data.loginToken'), 'Active commercial newsletters use a scoped unsubscribe credential instead of a login credential');
   assert(checkoutProfileRoute.includes('isLoginToken(token, candidate.loginToken)') && standaloneCheckout.includes('/api/products/checkout-profile?token='), 'Opaque subscriber tokens securely prefill the self-serve checkout without email in the campaign URL');
+  assert(revenueSprintRoute.includes('isValidCronRequest') && revenueSprintRoute.includes('acquireOperationLease') && revenueSprintRoute.includes('Math.min(20'), 'Revenue sprint is authenticated, leased, and capped at 20 recipients per run');
+  assert(['INITIAL_COHORT_CAP = 20', 'CHECKOUT_VALIDATED_CAP = 40', 'PAYMENT_VALIDATED_CAP = 100', 'PAUSE_NO_CHECKOUT', 'REVENUE_SPRINT_END_AT'].every((value) => revenueSprintService.includes(value)), 'Revenue sprint scales only from provider-accepted messages to checkout evidence to verified payment and then expires');
+  assert(revenueSprintService.includes('isProviderVerifiedPurchase') && revenueSprintService.includes('isTestOrInternalContact') && revenueSprintService.includes('hasRecentCommercialProviderAcceptance') && revenueSprintService.includes('recentlyAcceptedRecipientIds'), 'Revenue sprint excludes buyers, internal contacts, and every recipient contacted in the prior 48 hours');
+  assert(['funding-bundle', 'funding-roadmap', 'funding-membership', 'funding-match-report'].every((offer) => revenueSprintEmail.includes(`'${offer}'`)), 'Revenue sprint distributes the complete call-free $79/$49/$29/$19 product ladder');
+  assert(revenueSprintEmail.includes('unsubscribeToken') && revenueSprintEmail.includes('No call or live session is required') && !revenueSprintEmail.toLowerCase().includes('limited time'), 'Revenue sprint uses scoped unsubscribe links and makes no call or false-urgency promise');
+  assert(cartRecoveryService.includes('getAllProductPaymentIntents') && cartRecoveryService.includes('recoverableProductIds') && !cartRecoveryService.includes("recoverableProductIds.add('strategy-audit')"), 'Cart recovery uses server payment-intent evidence and excludes call-dependent products');
+  assert(cartRecoveryService.includes('recentlyAcceptedRecipientIds') && cartRecoveryService.includes('provider accepted, but CRM receipt persistence failed'), 'Cart recovery suppresses duplicate sends even when CRM receipt persistence fails');
+  assert(cartRecoveryEmail.includes('unsubscribeToken') && !cartRecoveryEmail.includes('`, loginToken, firstName);'), 'Every cart and report-recovery template uses a scoped unsubscribe credential');
   assert(telemetryRoute.includes("eventName === 'checkout_started'") && telemetryRoute.includes('parseTrackedGrowthToken'), 'Membership checkout starts enter the action P&L only through trusted first-party attribution');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');

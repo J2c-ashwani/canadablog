@@ -1,6 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
-import { parseTrackedGrowthToken, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import {
+  isLikelyAutomatedUserAgent,
+  parseTrackedGrowthToken,
+  recordGrowthActionEvent,
+} from '@/lib/growth-os/action-attribution';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -36,6 +40,19 @@ export async function POST(request: NextRequest) {
 
     const trustedAction = parseTrackedGrowthToken(request.cookies.get('fsi_growth_action_token')?.value || '');
 
+    const allowedQualityClassifications = new Set([
+      'High Confidence Human',
+      'Medium Confidence',
+      'Suspicious',
+      'Likely Bot',
+    ]);
+    const requestUserAgent = request.headers.get('user-agent') || '';
+    const verifiedQualityClassification = isLikelyAutomatedUserAgent(requestUserAgent)
+      ? 'Likely Bot'
+      : allowedQualityClassifications.has(String(trafficQualityClassification || ''))
+        ? String(trafficQualityClassification)
+        : 'Medium Confidence';
+
     await recordTelemetryEvent({
       eventName,
       sessionId,
@@ -47,7 +64,7 @@ export async function POST(request: NextRequest) {
       productId,
       revenue: revenue ? String(revenue) : undefined,
       trafficQualityScore,
-      trafficQualityClassification,
+      trafficQualityClassification: verifiedQualityClassification,
       timezone,
       language,
       journeyId,

@@ -24,6 +24,7 @@
     "seo:mca-sitemap": "node scripts/generate-mca-sitemap.js",
     "funnel:analytics": "node scripts/sales-funnel-diagnostic.js",
     "funnel:hot-leads": "node scripts/hot-leads-report.js",
+    "maintenance:migrate-subscriber-tokens": "npx tsx scripts/migrate-subscriber-tokens.ts",
     "audit-links": "npx tsx scripts/audit-internal-links.ts"
   },
   "dependencies": {

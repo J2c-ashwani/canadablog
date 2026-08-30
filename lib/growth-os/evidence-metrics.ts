@@ -206,10 +206,20 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
     && !isTestIdentity(membership.email)
   );
   const telemetry30d = telemetry.filter((event) => dateValue(event.timestamp) >= thirtyDaysAgo);
-  const humanTelemetry30d = telemetry30d.filter((event) =>
-    !['Likely Bot', 'Suspicious'].includes(event.trafficQualityClassification || '')
-  );
   const checkoutNames = new Set(['checkout_started', 'standalone_checkout_started', 'begin_checkout']);
+  const explicitHumanSessions = new Set(telemetry30d
+    .filter((event) => event.trafficQualityClassification === 'High Confidence Human'
+      || checkoutNames.has(event.eventName)
+      || event.eventName === 'purchase_completed')
+    .map((event) => event.sessionId)
+    .filter(Boolean));
+  // Blank legacy classifications and medium-confidence one-page sessions are
+  // not reliable evidence of a person. A session becomes commercially human
+  // only after a strong interaction signal or an explicit checkout event.
+  const humanTelemetry30d = telemetry30d.filter((event) =>
+    explicitHumanSessions.has(event.sessionId)
+    && !['Likely Bot', 'Suspicious'].includes(event.trafficQualityClassification || '')
+  );
   const checkoutStarts30d = humanTelemetry30d.filter((event) => checkoutNames.has(event.eventName)).length;
   const uniqueSessions30d = new Set(
     humanTelemetry30d.map((event) => event.sessionId).filter((sessionId) => sessionId && sessionId !== 'sess_anonymous')

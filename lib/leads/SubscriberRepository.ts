@@ -132,6 +132,8 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       isSubscribed: lead.isSubscribed !== false,
       unsubscribeToken: lead.unsubscribeToken || '',
       engagementScore: lead.engagementScore !== undefined ? Number(lead.engagementScore) : 100,
+      readinessScore: lead.readinessScore !== undefined ? Number(lead.readinessScore) : undefined,
+      readinessBand: lead.readinessBand || undefined,
       lastOpenedAt: lead.lastOpenedAt || undefined,
       lastClickedAt: lead.lastClickedAt || undefined,
       timestamp: lead.timestamp,
@@ -175,6 +177,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       utmCampaign: lead.utmCampaign || "",
       gaClientId: lead.gaClientId || "",
       offlineStatus: lead.offlineStatus || "",
+      referralSource: lead.referralSource || "",
     }
   }
 
@@ -296,6 +299,50 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
   }
 
   async getSubscriberByEmail(email: string): Promise<SubscriberProfile | null> {
+    // Sheets is the credential source of truth because capability-scoped login
+    // and unsubscribe tokens are not stored in the PostgreSQL mirror. Returning
+    // the mirror first made every authenticated checkout/activity request look
+    // unauthenticated whenever DATABASE_URL was configured.
+    try {
+      const allLeads = await getLeadsFromSheet(1000)
+      const matches = allLeads.filter((l) => l.email && l.email.toLowerCase().trim() === email.toLowerCase().trim())
+      if (matches.length > 0) {
+        // Merge all matches (oldest to newest, so newest overwrites oldest)
+        let mergedSub = this.mapLeadToSubscriber(matches[matches.length - 1]); // oldest
+
+        for (let i = matches.length - 2; i >= 0; i--) {
+          const newerSub = this.mapLeadToSubscriber(matches[i]);
+
+          let mergedActivity: any = {};
+          try { mergedActivity = JSON.parse(mergedSub.leadActivity || "{}"); } catch(e){}
+          let newerActivity: any = {};
+          try { newerActivity = JSON.parse(newerSub.leadActivity || "{}"); } catch(e){}
+
+          const nextActivity = {
+            ...mergedActivity,
+            ...newerActivity
+          };
+
+          mergedSub = {
+            ...mergedSub,
+            ...newerSub,
+            leadActivity: JSON.stringify(nextActivity)
+          };
+
+          if (newerSub.reportPurchased || mergedSub.reportPurchased) {
+            mergedSub.reportPurchased = true;
+          }
+          if (newerSub.strategyReportPurchased || mergedSub.strategyReportPurchased) {
+            mergedSub.strategyReportPurchased = true;
+          }
+        }
+
+        return mergedSub;
+      }
+    } catch (err) {
+      console.warn("Failed to query Sheets for getSubscriberByEmail; trying the operational mirror:", err)
+    }
+
     if (process.env.DATABASE_URL) {
       try {
         const { query } = await import('@/lib/db/postgres');
@@ -317,50 +364,11 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
           };
         }
       } catch (err) {
-        console.warn('Failed to query PostgreSQL for getSubscriberByEmail, falling back to Sheets:', err);
+        console.error('Failed to query PostgreSQL fallback for getSubscriberByEmail:', err);
       }
     }
 
-    try {
-      const allLeads = await getLeadsFromSheet(1000)
-      const matches = allLeads.filter((l) => l.email && l.email.toLowerCase().trim() === email.toLowerCase().trim())
-      if (matches.length === 0) return null
-      
-      // Merge all matches (oldest to newest, so newest overwrites oldest)
-      let mergedSub = this.mapLeadToSubscriber(matches[matches.length - 1]); // oldest
-      
-      for (let i = matches.length - 2; i >= 0; i--) {
-        const newerSub = this.mapLeadToSubscriber(matches[i]);
-        
-        let mergedActivity: any = {};
-        try { mergedActivity = JSON.parse(mergedSub.leadActivity || "{}"); } catch(e){}
-        let newerActivity: any = {};
-        try { newerActivity = JSON.parse(newerSub.leadActivity || "{}"); } catch(e){}
-        
-        const nextActivity = {
-          ...mergedActivity,
-          ...newerActivity
-        };
-        
-        mergedSub = {
-          ...mergedSub,
-          ...newerSub,
-          leadActivity: JSON.stringify(nextActivity)
-        };
-        
-        if (newerSub.reportPurchased || mergedSub.reportPurchased) {
-          mergedSub.reportPurchased = true;
-        }
-        if (newerSub.strategyReportPurchased || mergedSub.strategyReportPurchased) {
-          mergedSub.strategyReportPurchased = true;
-        }
-      }
-      
-      return mergedSub;
-    } catch (err) {
-      console.error("Error in repository getSubscriberByEmail:", err)
-      return null
-    }
+    return null
   }
 
   async getSubscribersByFilter(filters: Partial<SubscriberProfile>): Promise<SubscriberProfile[]> {
@@ -521,8 +529,11 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
       // De-duplicate and merge rows by email (case-insensitive)
       const mergedMap = new Map<string, SubscriberProfile>();
       
-      // Iterate in reverse (oldest first) so that newer entries naturally override older ones
-      for (let i = allLeads.length - 1; i >= 0; i--) {
+      // getLeadsFromSheet is newest-first. Keep the latest consent, credentials,
+      // and profile values authoritative while merging older activity only as a
+      // fallback. The previous reverse iteration retained the oldest consent
+      // state and could suppress newer readiness data.
+      for (let i = 0; i < allLeads.length; i++) {
         const lead = allLeads[i];
         if (!lead.email) continue;
         const emailKey = lead.email.toLowerCase().trim();
@@ -531,7 +542,7 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
         if (!mergedMap.has(emailKey)) {
           mergedMap.set(emailKey, sub);
         } else {
-          // Merge existing newer profile with this older duplicate row's details
+          // Merge this older duplicate into the existing newer profile.
           const existing = mergedMap.get(emailKey)!;
           
           let existingActivity: any = {};
@@ -543,12 +554,6 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
             olderActivity = JSON.parse(sub.leadActivity || "{}");
           } catch(e) {}
           
-          const mergedActivity = {
-            ...existingActivity, // newer profile data
-            ...olderActivity // older profile data (fallback)
-          };
-          
-          // Actually we want newer to overwrite older:
           const finalActivity = {
             ...olderActivity,
             ...existingActivity

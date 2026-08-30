@@ -17,6 +17,10 @@
       "schedule": "0 * * * *"
     },
     {
+      "path": "/api/cron/process-revenue-sprint",
+      "schedule": "0 */2 * * *"
+    },
+    {
       "path": "/api/cron/process-calculator-recovery",
       "schedule": "0 11 * * *"
     },

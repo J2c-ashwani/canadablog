@@ -39,6 +39,7 @@ export function hasRecentCommercialProviderAcceptance(
     [activity.calcRecoveryEmail1AcceptedAt, activity.calcRecoveryEmail1ProviderMessageId],
     [activity.calcRecoveryEmail2AcceptedAt, activity.calcRecoveryEmail2ProviderMessageId],
     [activity.calcRecoveryEmail3AcceptedAt, activity.calcRecoveryEmail3ProviderMessageId],
+    [activity.revenueSprintAcceptedAt, activity.revenueSprintProviderMessageId],
   ];
   const cutoff = Date.now() - withinHours * 60 * 60 * 1000;
   return pairs.some(([acceptedAt, providerMessageId]) => {

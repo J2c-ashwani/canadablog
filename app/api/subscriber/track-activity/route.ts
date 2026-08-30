@@ -59,6 +59,7 @@ export async function POST(request: NextRequest) {
 
     if (event === "checkout_started" || event === "standalone_checkout_started") {
       activity.checkoutStartedAt = now
+      if (body.productId) activity.checkoutProductId = String(body.productId)
       if (body.priceShown) {
         activity.priceShown = body.priceShown
       }

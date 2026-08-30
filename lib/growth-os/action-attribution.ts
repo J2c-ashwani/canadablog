@@ -61,6 +61,7 @@ const COMMERCIAL_TAG_PREFIXES = [
   'partner-block',
   'reactivation-',
   'report-not-viewed',
+  'revenue-sprint-',
   'revenue-hunter-',
   'sales-blast',
   'screener-recovery',

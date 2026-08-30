@@ -1,4 +1,5 @@
 import { sendEmail, getFirstName, cleanCompanyName } from "./mailer";
+import { isUnsubscribeToken } from '@/lib/auth/subscriber-tokens';
 
 function escapeHtml(value: string) {
   return value
@@ -9,9 +10,9 @@ function escapeHtml(value: string) {
     .replace(/'/g, '&#039;');
 }
 
-function wrapCartRecoveryTemplate(contentHtml: string, loginToken: string, firstName: string) {
-  const unsubscribeUrl = loginToken
-    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
+function wrapCartRecoveryTemplate(contentHtml: string, unsubscribeToken: string, firstName: string) {
+  const unsubscribeUrl = isUnsubscribeToken(unsubscribeToken, unsubscribeToken)
+    ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(unsubscribeToken)}`
     : 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   return `
@@ -51,42 +52,72 @@ function wrapCartRecoveryTemplate(contentHtml: string, loginToken: string, first
   `;
 }
 
+type RecoveryProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library';
+
+function recoveryProduct(productId?: string, priceShown?: string) {
+  const products: Record<RecoveryProductId, { name: string; path: string; price: string }> = {
+    'funding-match-report': { name: 'Funding Match Report', path: '/products/funding-match-report', price: '$19' },
+    'funding-roadmap': { name: 'Funding Strategy & Action Plan', path: '/products/action-plan', price: '$49' },
+    'funding-bundle': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
+    'funding-toolkit': { name: 'Funding Application Toolkit', path: '/products/toolkit', price: '$29' },
+    'funding-approval-library': { name: 'Funding Approval Library', path: '/products/approval-library', price: '$9' },
+  };
+  if (productId && productId in products) return products[productId as RecoveryProductId];
+  if (priceShown === '79' || priceShown === '108') return products['funding-bundle'];
+  if (priceShown === '49') return products['funding-roadmap'];
+  if (priceShown === '29') return products['funding-toolkit'];
+  if (priceShown === '9') return products['funding-approval-library'];
+  return products['funding-match-report'];
+}
+
+function recoveryCheckoutUrl(path: string, loginToken: string, campaign: string) {
+  const params = new URLSearchParams({
+    utm_source: 'cart_recovery',
+    utm_medium: 'email',
+    utm_campaign: campaign,
+  });
+  if (loginToken) params.set('token', loginToken);
+  return `https://www.fsidigital.ca${path}?${params.toString()}`;
+}
+
 // ── CART RECOVERY EMAIL 1 (45 minutes) ──
 export async function sendCartRecoveryEmail1({
   to,
   name,
   loginToken,
+  unsubscribeToken,
   companyName,
-  priceShown
+  priceShown,
+  productId,
 }: {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken: string;
   companyName?: string;
   priceShown?: string;
+  productId?: string;
 }) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=cart_recovery&utm_medium=email&utm_campaign=cart_day1`;
-  const isBundle = priceShown === '79' || priceShown === '108';
-  const productName = isBundle ? 'Complete Funding Bundle' : 'Funding Match Report';
-  const priceText = isBundle ? '$79' : '$19';
+  const product = recoveryProduct(productId, priceShown);
+  const checkoutUrl = recoveryCheckoutUrl(product.path, loginToken, 'cart_day1');
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      I noticed you started checking out for your <strong>${productName}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't finish.
+      I noticed you started checking out for your <strong>${product.name}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't finish.
     </p>
     <p style="margin: 0 0 16px 0;">
       The product compares your saved profile with programs in the current FSI database. If you still want the report, you can resume the checkout you started.
     </p>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-        Complete My Checkout (${priceText}) &rarr;
+        Complete My Checkout (${product.price}) &rarr;
       </a>
     </div>
-  `, loginToken, firstName);
+  `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou started checkout for the ${productName} but did not complete it. If you still want the self-serve report, resume here:\n${checkoutUrl}\n\nProgram status and full eligibility should always be confirmed with the official funding body.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name} but did not complete it. If you still want the self-serve product, resume here:\n${checkoutUrl}\n\nProgram status and full eligibility should always be confirmed with the official funding body.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `You were one step away from unlocking your matches`, html, text, tagType: 'cart-recovery-1', companyName: cleanCompany });
 }
@@ -96,37 +127,39 @@ export async function sendCartRecoveryEmail2({
   to,
   name,
   loginToken,
+  unsubscribeToken,
   companyName,
-  priceShown
+  priceShown,
+  productId,
 }: {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken: string;
   companyName?: string;
   priceShown?: string;
+  productId?: string;
 }) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=cart_recovery&utm_medium=email&utm_campaign=cart_day3`;
-  const isBundle = priceShown === '79' || priceShown === '108';
-  const productName = isBundle ? 'Complete Funding Bundle' : 'Funding Match Report';
-  const priceText = isBundle ? '$79' : '$19';
+  const product = recoveryProduct(productId, priceShown);
+  const checkoutUrl = recoveryCheckoutUrl(product.path, loginToken, 'cart_day3');
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      You started checkout for the ${productName} ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}, but no provider-verified purchase is recorded.
+      You started checkout for the ${product.name} ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}, but no provider-verified purchase is recorded.
     </p>
     <p style="margin: 0 0 20px 0;">
       If you still want the self-serve report, resume the secure checkout below. No purchase is required to continue using the free site resources.
     </p>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-        Unlock My Match Report (${priceText}) &rarr;
+        Resume Secure Checkout (${product.price}) &rarr;
       </a>
     </div>
-  `, loginToken, firstName);
+  `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou started checkout for the ${productName}, but no provider-verified purchase is recorded. If you still want the self-serve report, resume here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name}, but no provider-verified purchase is recorded. If you still want the self-serve product, resume here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `Your matches are still waiting`, html, text, tagType: 'cart-recovery-2', companyName: cleanCompany });
 }
@@ -136,25 +169,27 @@ export async function sendCartRecoveryEmail3({
   to,
   name,
   loginToken,
+  unsubscribeToken,
   companyName,
-  priceShown
+  priceShown,
+  productId,
 }: {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken: string;
   companyName?: string;
   priceShown?: string;
+  productId?: string;
 }) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const checkoutUrl = `https://www.fsidigital.ca/calculator?token=${loginToken}&utm_source=cart_recovery&utm_medium=email&utm_campaign=cart_day5`;
-  const isBundle = priceShown === '79' || priceShown === '108';
-  const productName = isBundle ? 'Complete Funding Bundle' : 'Funding Match Report';
-  const priceText = isBundle ? '$79' : '$19';
+  const product = recoveryProduct(productId, priceShown);
+  const checkoutUrl = recoveryCheckoutUrl(product.path, loginToken, 'cart_day5');
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      This is the final automated reminder about the ${productName} checkout you started ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
+      This is the final automated reminder about the ${product.name} checkout you started ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
     </p>
     <p style="margin: 0 0 20px 0;">
       If you are still actively looking for non-dilutive capital (grants, tax credits, and subsidies) to fund hiring, exporting, or product development, you can resume your checkout below:
@@ -164,9 +199,9 @@ export async function sendCartRecoveryEmail3({
         Complete Checkout &amp; Access Dashboard &rarr;
       </a>
     </div>
-  `, loginToken, firstName);
+  `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nThis is the final automated reminder about the ${productName} checkout you started. You can resume here if you still want it:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nThis is the final automated reminder about the ${product.name} checkout you started. You can resume here if you still want it:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `Still interested in funding opportunities?`, html, text, tagType: 'cart-recovery-3', companyName: cleanCompany });
 }
@@ -176,11 +211,13 @@ export async function sendReportNotOpenedEmail({
   to,
   name,
   loginToken,
+  unsubscribeToken,
   companyName
 }: {
   to: string;
   name?: string;
   loginToken: string;
+  unsubscribeToken: string;
   companyName?: string;
 }) {
   const firstName = getFirstName(name);
@@ -199,7 +236,7 @@ export async function sendReportNotOpenedEmail({
         View My Assessment Report &rarr;
       </a>
     </div>
-  `, loginToken, firstName);
+  `, unsubscribeToken, firstName);
 
   const text = `Hi ${firstName},\n\nThank you again for purchasing your assessment report.\n\nWe noticed you haven't opened your report yet. It is ready to view, print, or download in your portal:\n${reportUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 

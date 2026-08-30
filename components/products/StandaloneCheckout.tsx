@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Loader2, ShieldCheck, CheckCircle, AlertCircle } from 'lucide-react';
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
+import { calculateTrafficQuality } from '@/lib/telemetry/traffic-quality';
 
 const PAYPAL_PRODUCT_NAMESPACE = 'paypalProductCheckout';
 
@@ -13,6 +14,7 @@ function trackCheckoutStage(input: {
   metadata?: Record<string, unknown>;
 }) {
   if (typeof window === 'undefined') return;
+  const quality = calculateTrafficQuality();
   fetch('/api/telemetry', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -24,6 +26,10 @@ function trackCheckoutStage(input: {
       referrer: document.referrer || 'direct',
       productId: input.productId,
       revenue: input.revenue.toFixed(2),
+      trafficQualityScore: quality.score,
+      trafficQualityClassification: quality.classification,
+      timezone: quality.timezone,
+      language: quality.language,
       heuristicMetadata: JSON.stringify(input.metadata || {}),
     }),
   }).catch(() => {});
@@ -374,7 +380,8 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
               email: targetEmail,
               event: "standalone_checkout_started",
               productId: finalProductId,
-              priceShown: finalPrice.toString()
+              priceShown: finalPrice.toString(),
+              token: new URLSearchParams(window.location.search).get('token') || '',
             })
           }).catch(e => console.error(e));
 
