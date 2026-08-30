@@ -43,61 +43,6 @@ const PROVINCE_OPTIONS: RDEQuestionOption[] = [
   { value: 'other', label: 'Other / Non-Canadian' }
 ];
 
-const US_STATE_OPTIONS: RDEQuestionOption[] = [
-  { value: 'al', label: 'Alabama' },
-  { value: 'ak', label: 'Alaska' },
-  { value: 'az', label: 'Arizona' },
-  { value: 'ar', label: 'Arkansas' },
-  { value: 'ca', label: 'California' },
-  { value: 'co', label: 'Colorado' },
-  { value: 'ct', label: 'Connecticut' },
-  { value: 'de', label: 'Delaware' },
-  { value: 'dc', label: 'District of Columbia' },
-  { value: 'fl', label: 'Florida' },
-  { value: 'ga', label: 'Georgia' },
-  { value: 'hi', label: 'Hawaii' },
-  { value: 'id', label: 'Idaho' },
-  { value: 'il', label: 'Illinois' },
-  { value: 'in', label: 'Indiana' },
-  { value: 'ia', label: 'Iowa' },
-  { value: 'ks', label: 'Kansas' },
-  { value: 'ky', label: 'Kentucky' },
-  { value: 'la', label: 'Louisiana' },
-  { value: 'me', label: 'Maine' },
-  { value: 'md', label: 'Maryland' },
-  { value: 'ma', label: 'Massachusetts' },
-  { value: 'mi', label: 'Michigan' },
-  { value: 'mn', label: 'Minnesota' },
-  { value: 'ms', label: 'Mississippi' },
-  { value: 'mo', label: 'Missouri' },
-  { value: 'mt', label: 'Montana' },
-  { value: 'ne', label: 'Nebraska' },
-  { value: 'nv', label: 'Nevada' },
-  { value: 'nh', label: 'New Hampshire' },
-  { value: 'nj', label: 'New Jersey' },
-  { value: 'nm', label: 'New Mexico' },
-  { value: 'ny', label: 'New York' },
-  { value: 'nc', label: 'North Carolina' },
-  { value: 'nd', label: 'North Dakota' },
-  { value: 'oh', label: 'Ohio' },
-  { value: 'ok', label: 'Oklahoma' },
-  { value: 'or', label: 'Oregon' },
-  { value: 'pa', label: 'Pennsylvania' },
-  { value: 'ri', label: 'Rhode Island' },
-  { value: 'sc', label: 'South Carolina' },
-  { value: 'sd', label: 'South Dakota' },
-  { value: 'tn', label: 'Tennessee' },
-  { value: 'tx', label: 'Texas' },
-  { value: 'ut', label: 'Utah' },
-  { value: 'vt', label: 'Vermont' },
-  { value: 'va', label: 'Virginia' },
-  { value: 'wa', label: 'Washington' },
-  { value: 'wv', label: 'West Virginia' },
-  { value: 'wi', label: 'Wisconsin' },
-  { value: 'wy', label: 'Wyoming' },
-  { value: 'territory', label: 'U.S. territory or possession' }
-];
-
 const REVENUE_OPTIONS: RDEQuestionOption[] = [
   { value: 'under_100k', label: 'Under $100K' },
   { value: '100k_500k', label: '$100K - $500K' },
@@ -644,7 +589,7 @@ export const RDE_CONFIGS: Record<string, RDEConfig> = {
     title: 'NIH SBIR Biotech Qualifier',
     description: 'Assess your biomedical research project against NIH Phase I and Phase II commercialization thresholds.',
     questions: [
-      { id: 'state', text: 'Select your U.S. state or territory of operation:', type: 'select', options: US_STATE_OPTIONS },
+      { id: 'province', text: 'Select your state/province of operation:', type: 'select', options: PROVINCE_OPTIONS },
       { id: 'revenue', text: 'Select your annual revenue range:', type: 'select', options: REVENUE_OPTIONS },
       { id: 'employees', text: 'Select your company employee count:', type: 'select', options: EMPLOYEE_OPTIONS },
       { id: 'clinical_trials', text: 'Does your research require human clinical trials or FDA clearance tracks?', type: 'yesno' }
@@ -675,7 +620,7 @@ export const RDE_CONFIGS: Record<string, RDEConfig> = {
     title: 'NSF Deep-Tech Qualifier',
     description: 'Verify your deep-tech scientific research project against NSF commercialization and innovation standards.',
     questions: [
-      { id: 'state', text: 'Select your U.S. state or territory of operation:', type: 'select', options: US_STATE_OPTIONS },
+      { id: 'province', text: 'Select your state/province:', type: 'select', options: PROVINCE_OPTIONS },
       { id: 'revenue', text: 'Annual corporate revenue:', type: 'select', options: REVENUE_OPTIONS },
       { id: 'employees', text: 'Company size:', type: 'select', options: EMPLOYEE_OPTIONS },
       { id: 'innovation', text: 'Is your project building a novel, high-risk technical innovation with no current market solution?', type: 'yesno' }
@@ -950,3 +895,4 @@ export const RDE_CONFIGS: Record<string, RDEConfig> = {
     }
   }
 };
+

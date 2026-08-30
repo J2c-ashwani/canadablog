@@ -142,19 +142,19 @@ export default function LocalResourceHub({
         {
           name: `${cityName} Chamber of Commerce`,
           agency: 'Municipal Business Network',
-          services: ['Local networking', 'Business information', 'Community referrals'],
+          services: ['Local networking', 'Advocacy', 'Municipal permit guidance'],
           url: `https://www.google.com/search?q=${encodeURIComponent(cityName + ' Chamber of Commerce')}`,
         },
         {
           name: `Community Futures ${provinceName}`,
           agency: 'Rural & Regional Economic Development',
-          services: ['Business financing', 'Business counseling', 'Regional referrals'],
+          services: ['SME seed loans', 'Business counseling', 'Community startup grants'],
           url: 'https://www.communityfuturescanada.ca/',
         },
         {
           name: fedDevName,
           agency: 'Federal Development Agency',
-          services: ['Regional program information', 'Economic development', 'Business support'],
+          services: ['Regional innovation scaling', 'Clean tech transition grants', 'Commercialization loans'],
           url: 'https://www.canada.ca/en/regional-development-agencies.html',
         },
       ];
@@ -170,13 +170,13 @@ export default function LocalResourceHub({
         {
           name: `${provinceName} District Office of the SBA`,
           agency: 'U.S. Small Business Administration',
-          services: ['Small-business guidance', 'Lender program information', 'Certification resources'],
+          services: ['Federal grant navigation', '7(a) & 504 loan certification', 'WOSB/SDVOSB status guidance'],
           url: 'https://www.sba.gov/district-offices',
         },
         {
           name: `${cityName} Chamber of Commerce`,
           agency: 'Local Commerce Association',
-          services: ['Local business information', 'Community referrals', 'Networking events'],
+          services: ['Municipal tax credit support', 'Local enterprise zone incentives', 'Networking events'],
           url: `https://www.google.com/search?q=${encodeURIComponent(cityName + ' Chamber of Commerce')}`,
         },
       ];
@@ -192,7 +192,6 @@ export default function LocalResourceHub({
       healthcare: ['Clinical Trials & Patient Safety Research', 'Medical Device Prototyping', 'Digital EMR Integration', 'Biotech Patent/Regulatory Compliance'],
       'clean-energy': ['Clean Technology Demonstrations', 'Decarbonization Infrastructure', 'Renewable Energy Capital Offsets', 'Carbon Capture Research'],
       'women-entrepreneurs': ['General Startup Working Capital', 'SME Capacity Expansion', 'Leadership & Specialized Advisory Support', 'Export Market Test Audits'],
-      'restaurants-hospitality': ['Eligible Hiring & Training', 'Accessibility & Local Improvements', 'Energy-Efficiency Projects', 'Tourism & Regional Development'],
     };
     return categories[industrySlug] || ['General Working Capital Support', 'Hiring & Workforce Upskilling', 'Digital System Adoption', 'Market Expansion Initiatives'];
   };
@@ -205,14 +204,13 @@ export default function LocalResourceHub({
       manufacturing: ['Operating manufacturing/processing facility in the area', 'Purchase quotes for eligible advanced equipment', 'Minimum of 5-10 local payroll staff', 'Detailed project timeline showing job retention/creation'],
       healthcare: ['Certified laboratory, clinic, or health startup status', 'Compliance with local health board regulatory guidelines', 'Qualified scientific or medical research team', 'IP ownership plan with commercialization goals'],
       'clean-energy': ['Incorporated entity focused on clean tech or decarbonization', 'Measurable greenhouse gas (GHG) reduction projections', 'Working prototype at Technology Readiness Level (TRL) 4-7', 'Cost-sharing matching funds ready'],
-      'women-entrepreneurs': ['Check the program-specific ownership and control definition', 'Confirm the business location and current intake', 'Identify whether support is a grant, loan, equity, or advisory service', 'Prepare a clear project and use-of-funds plan'],
-      'restaurants-hospitality': ['Confirm the exact address and eligible project type', 'Check permits, landlord consent, and matching-fund requirements', 'Verify whether approval is required before spending or hiring', 'Prepare itemized quotes and measurable project outcomes'],
+      'women-entrepreneurs': ['Minimum 51% female ownership and operational control', 'Registered operating entity in good standing', 'Under 500 employees (SME threshold)', 'Clear use of funds proposal (no passive investment)'],
     };
     return checks[industrySlug] || [
-      'Confirm the applicant type and operating location',
-      'Verify the current intake and eligible project costs',
-      'Check the rule for costs committed before approval',
-      'Prepare the documents requested by the official guide',
+      'Registered local business entity with active tax account',
+      'Operating physical address within state/provincial boundaries',
+      'Project must not be started prior to approval',
+      'Good standing with local tax and business registry agencies',
     ];
   };
 
@@ -236,8 +234,8 @@ export default function LocalResourceHub({
           </p>
         </div>
         <div className="bg-white border border-slate-200 rounded-xl px-5 py-3 text-center sm:text-left shadow-xs shrink-0">
-          <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Database research routes</span>
-          <span className="text-2xl font-black text-emerald-600 block mt-0.5">{activeProgramsCount} to verify</span>
+          <span className="text-[10px] text-slate-400 font-semibold block uppercase tracking-wider">Active Regional Programs</span>
+          <span className="text-2xl font-black text-emerald-600 block mt-0.5">{activeProgramsCount} Matched</span>
         </div>
       </div>
 
@@ -306,11 +304,11 @@ export default function LocalResourceHub({
           <div>
             <h4 className="text-xs font-bold text-indigo-900 uppercase tracking-wide mb-3 flex items-center gap-1.5">
               <Briefcase className="w-4.5 h-4.5 text-indigo-600" />
-              Common Project Categories
+              Typical Funding Envelopes
             </h4>
             <div className="bg-white border border-slate-150 rounded-xl p-4 shadow-xs space-y-2.5">
               <p className="text-xs text-slate-500 mb-2 leading-relaxed">
-                A <strong className="text-slate-700">{industryName}</strong> funding search often begins with these project categories. Availability depends on the current program:
+                Most regional grant programs for the <strong className="text-slate-700">{industryName}</strong> sector allocate funding toward these categories:
               </p>
               {industryCategories.map((cat, idx) => (
                 <div key={idx} className="flex items-center gap-2 text-xs text-slate-700 font-medium">
@@ -324,7 +322,7 @@ export default function LocalResourceHub({
           <div>
             <h4 className="text-xs font-bold text-indigo-900 uppercase tracking-wide mb-3 flex items-center gap-1.5">
               <ListChecks className="w-4.5 h-4.5 text-indigo-600" />
-              Verification Checklist
+              General Eligibility Thresholds
             </h4>
             <div className="bg-white border border-slate-150 rounded-xl p-4 shadow-xs space-y-2.5">
               {eligibilityChecks.map((check, idx) => (

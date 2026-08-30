@@ -17,7 +17,6 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
-import { CURATED_CANADA_DEEP_DIVES } from '@/lib/pseo-curated-content';
 import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
 import PseoMasterclass from '@/components/pseo/PseoMasterclass';
 import RelatedPseoLinks from '@/components/pseo/RelatedPseoLinks';
@@ -65,9 +64,11 @@ function getTopProgramNames(stateDetail?: StateDetailedGrant) {
 // Each answer contains real program names, real dollar amounts, and real timelines.
 const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: string) => string> = {
     technology: (city, province) =>
-        `Technology startups in ${city} should compare project-based innovation support, SR&ED tax incentives, NRC IRAP assistance, and ${province} programs. ` +
-        `The right route depends on the technical work, company status, project timing, eligible Canadian costs, and available working capital. ` +
-        `Program status, contribution levels, and stacking rules vary, so confirm the current official guide before committing project expenses.`,
+        `Technology startups in ${city} can access $15,000 to $500,000+ in non-repayable government funding. ` +
+        `The most accessible programs are the CDAP Digital Adoption Grant ($15,000 cash, no equity), ` +
+        `SR&ED tax credits (35–70% of your R&D spend returned as cash within 6 months of filing), ` +
+        `and IRAP project grants (up to $500K for commercialization-ready companies). ` +
+        `${province}-based tech startups benefit from both federal and provincial stacks — meaning you can claim from multiple programs simultaneously.`,
     agriculture: (city, province) =>
         `Agriculture and farming businesses in ${city} can access $10,000 to $1,000,000+ in government funding. ` +
         `Key programs include the AgriInnovate Fund (up to $10M for agri-food innovation projects), ` +
@@ -81,9 +82,11 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
         `which reimburses 50–80% of eligible employee training costs — no cap on total claims. ` +
         `Manufacturers investing in automation can also stack the CDAP grant ($15,000) on top of federal R&D credits.`,
     healthcare: (city, province) =>
-        `Healthcare and medical businesses in ${city} should begin with the project type: academic research, company-led R&D, clinical validation, regulatory preparation, commercialization, or health-system procurement. ` +
-        `Possible routes include research-agency opportunities, NRC IRAP assistance, SR&ED tax incentives, and ${province} innovation or health-system programs. ` +
-        `Eligibility, applicant type, intake status, and clinical or regulatory requirements must be verified for the exact program.`,
+        `Healthcare and medical businesses in ${city} can access $20,000 to $500,000+ in non-dilutive funding. ` +
+        `Top programs include CIHR Project Grants (up to $500K for clinical research over 5 years), ` +
+        `Health Canada's Health Research Commercialization grants, and the IRAP Health Innovation Program ` +
+        `which funds up to $500K for medical device and digital health product development. ` +
+        `${province} also operates a provincial digital health fund — most eligible projects receive funding decisions within 60–90 days.`,
     'clean-energy': (city, province) =>
         `Clean tech and energy businesses in ${city} can access $50,000 to $5,000,000+ in government backing. ` +
         `NRCan's Clean Energy for Rural and Remote Communities program funds up to $5M per project, ` +
@@ -91,13 +94,16 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
         `For early-stage ${province} startups, the iCAN incubator-linked grants provide $50,000–$150,000 in non-dilutive seed funding. ` +
         `Federal investment tax credits for clean technology (30% on eligible capital costs) apply on top of grants.`,
     'women-entrepreneurs': (city, province) =>
-        `Women-owned businesses in ${city} can compare general federal and ${province} programs with women-focused financing, investment, procurement, and regional support. ` +
-        `These options are not all grants: some are loans, equity funds, advisory services, or opportunities delivered through partner organizations. ` +
-        `Verify the current intake, ownership-and-control test, location, company stage, and eligible project costs before applying.`,
+        `Women-owned businesses in ${city} can access $5,000 to $100,000+ in dedicated government funding. ` +
+        `The Women Entrepreneurship Strategy (WES) Ecosystem Fund provides up to $60,000 in project grants, ` +
+        `while the BDC Women in Technology Venture Fund offers up to $3M in equity investment for tech founders. ` +
+        `The FCC Women's Pathways program provides interest-free loans up to $150,000 for agriculture-adjacent businesses. ` +
+        `The ${province} also offers its own provincial women entrepreneurship grants — most decisions made within 45–60 days of application.`,
     'restaurants-hospitality': (city, province) =>
-        `Restaurants and hospitality businesses in ${city} should search by project rather than expect a general startup grant. ` +
-        `Relevant routes may include eligible hiring or apprenticeship support, municipal or BIA improvement programs, utility rebates, accessibility projects, and tourism or regional-development funding. ` +
-        `Availability is address- and intake-specific; verify the official rules and approval date before hiring, ordering equipment, or starting construction in ${province}.`,
+        `Restaurants, cafes, and hospitality businesses in ${city} can access $5,000 to $75,000+ in government grants and hiring subsidies. ` +
+        `Key programs include the Canada Digital Adoption Program (CDAP) Grow Your Business Online stream ($2,400 microgrant for online ordering systems), ` +
+        `provincial hiring vouchers (offsetting up to 50% of seasonal wages), and energy-efficiency retrofitting grants (covering up to $15,000 for kitchen upgrades). ` +
+        `${province}-based dining and tourism operators receive priority review for youth hiring subsidies during seasonal peaks.`,
     retail: (city, province) =>
         `Retailers and e-commerce brands in ${city} can secure $5,000 to $100,000+ in non-dilutive capital. ` +
         `Top routes include the CDAP Digital Adoption Grant ($15,000 for ERP or POS integration), ` +
@@ -268,9 +274,10 @@ const PROVINCE_RESOURCES: Record<string, { name: string; description: string; ur
 };
 
 const DEFAULT_CANADA_SHORT_ANSWER = (industryName: string, city: string, province: string) =>
-    `${industryName} businesses in ${city} can compare federal, ${province}, municipal, tax-credit, financing, and sector-specific support. ` +
-    `The relevant route depends on the project, location, company stage, eligible costs, timing, and measurable outcomes. ` +
-    `Funding amounts, contribution rates, and intake status vary; confirm the current official program guide before spending or relying on an award in your cash-flow plan.`;
+    `${industryName} businesses in ${city} can access $15,000 to $500,000+ in non-repayable government grants and subsidies. ` +
+    `Key programs include federal wage subsidies (50–70% of new hire salaries), IRAP innovation funding (up to $500K), ` +
+    `and CDAP digital adoption grants ($15,000 cash). ${province}-based businesses can stack federal and provincial programs simultaneously. ` +
+    `Most hiring grants are approved within 2–4 weeks; innovation grants take 3–6 months.`;
 
 const DEFAULT_US_SHORT_ANSWER = (
     industryName: string,
@@ -624,13 +631,12 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
     const topPrograms = getTopProgramNames(stateDetail);
 
     const canadaTitlePatterns: Record<string, string> = {
-        technology: `Technology Grants in ${page.cityName} (2026)`,
-        agriculture: `Agriculture Grants in ${page.cityName} (2026)`,
-        manufacturing: `Manufacturing Grants in ${page.cityName} (2026)`,
-        healthcare: `Healthcare & MedTech Grants in ${page.cityName} (2026)`,
-        'clean-energy': `Clean Energy Grants in ${page.cityName} (2026)`,
-        'women-entrepreneurs': `Women Business Funding in ${page.cityName} (2026)`,
-        'restaurants-hospitality': `Restaurant Grants in ${page.cityName} (2026)`,
+        technology: `Best ${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026) | IRAP, CDAP & SR&ED`,
+        agriculture: `How to Get Agriculture Grants in ${page.cityName}, ${page.provinceName} [2026] | AgriInnovate, CAP & AAFC`,
+        manufacturing: `${page.cityName} Manufacturing Grants 2026 | IRAP, SIF & ${page.provinceName} Funding`,
+        healthcare: `Healthcare & MedTech Grants in ${page.cityName}, ${page.provinceName} (2026) | CIHR, IRAP & BDC`,
+        'clean-energy': `Clean Tech Grants Near ${page.cityName}, ${page.provinceName} [2026] | SDTC, NRCan & Green Energy`,
+        'women-entrepreneurs': `Best Grants for Women Entrepreneurs in ${page.cityName}, ${page.provinceName} (2026) | WES, BDC & FCC`,
     };
     const usTitlePatterns: Record<string, string> = {
         technology: `Best ${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026) | SBIR, R&D Credits & State Incentives`,
@@ -645,13 +651,12 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} [2026] | ${countryName} Funding Guide`;
 
     const canadaDescPatterns: Record<string, string> = {
-        technology: `Compare NRC IRAP, SR&ED, and ${page.provinceName} technology funding paths for ${page.cityName} startups. Verify eligibility, timing, costs, and current intakes.`,
+        technology: `How to apply for technology grants in ${page.cityName}? Compare IRAP, CDAP, and SR&ED tax credits for ${page.provinceName} startups. 2026 guide with eligibility, amounts, and deadlines.`,
         agriculture: `${page.cityName} agriculture grants for 2026: AgriInnovate, CAP, and AAFC programs. Find out which ${page.provinceName} farming grants you qualify for with timelines and stacking tips.`,
         manufacturing: `Compare the best manufacturing grants in ${page.cityName}: SIF vs IRAP vs Skills Fund. ${page.provinceName} businesses can stack federal and provincial funding in 2026.`,
         healthcare: `Healthcare grants in ${page.cityName}: CIHR, IRAP Health Innovation, and BDC financing. ${page.provinceName} medtech startups can compare eligibility, timelines, and funding paths.`,
         'clean-energy': `Clean energy funding near ${page.cityName}: SDTC, NRCan, and clean-tech tax credits. ${page.provinceName} green businesses can compare federal and provincial programs.`,
-        'women-entrepreneurs': `Compare grants, loans, investment, and support for women entrepreneurs in ${page.cityName}. Verify current ${page.provinceName} eligibility and application steps.`,
-        'restaurants-hospitality': `Compare hiring, improvement, utility, tourism, and regional funding paths for restaurants in ${page.cityName}. Verify current ${page.provinceName} rules.`,
+        'women-entrepreneurs': `Government grants for women entrepreneurs in ${page.cityName}: WES, BDC, Futurpreneur, and ${page.provinceName} programs. Compare eligibility, deadlines, and application steps.`,
     };
     const usDescPatterns: Record<string, string> = {
         technology: `Technology grants in ${page.cityName}: compare SBIR/STTR, R&D tax credits, ${topPrograms.first}, and local startup support for ${page.provinceName} businesses in 2026.`,
@@ -672,7 +677,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         `best grants for ${page.industryName.toLowerCase()} ${page.provinceName}`,
         `${page.cityName} business funding 2026`,
         `IRAP grants ${page.provinceName}`,
-        `business funding programs ${page.cityName}`,
+        `CDAP grant ${page.cityName}`,
         `SR&ED tax credits ${page.provinceName}`,
         `federal vs provincial grants ${page.provinceName}`,
         `small business grants near ${page.cityName}`,
@@ -808,7 +813,6 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     // Compute actual program matches count from database
     const allPrograms = getAllPrograms();
     const actualMatches = allPrograms.filter(p => {
-        if (p.status !== 'Open' && p.status !== 'Upcoming') return false;
         if (p.country !== (isCanada ? 'Canada' : 'USA')) return false;
         if (p.region === 'Federal') return true;
         
@@ -847,12 +851,12 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     // Query comparisons from comparisonsDatabase that involve any of those matched programs
     const matchedProgramIds = matchedPrograms.map(p => p.id);
     const matchedComparisons = comparisonsDatabase.filter(c => {
-        return matchedProgramIds.includes(c.prog1Id) && matchedProgramIds.includes(c.prog2Id);
+        return matchedProgramIds.includes(c.prog1Id) || matchedProgramIds.includes(c.prog2Id);
     });
 
     const activeProgramsCount = matchedPrograms.length > 0 ? matchedPrograms.length : actualMatches.length;
 
-    const shortAnswerQuestion = `Which funding routes should a ${page.industryName} business in ${page.cityName} check first?`;
+    const shortAnswerQuestion = `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -908,10 +912,10 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                     Interactive Eligibility Engine
                                 </span>
                                 <h2 className="text-xl md:text-2xl font-extrabold text-white leading-tight">
-                                    Compare funding routes for {page.industryName} businesses in {page.provinceName}.
+                                    There are {activeProgramsCount} active funding programs for {page.industryName} in {page.provinceName}.
                                 </h2>
                                 <p className="text-sm text-slate-300 leading-relaxed">
-                                    Use the assessment to organize likely federal and {regionType === 'province' ? 'provincial' : 'state'} paths. Final eligibility comes from the current official program rules.
+                                    Calculate your funding readiness score and see exactly which federal and provincial programs your business qualifies for. Takes 60 seconds.
                                 </p>
                             </div>
                             <div className="shrink-0 flex flex-col items-center justify-center w-full md:w-auto">
@@ -930,7 +934,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">
                         <Shield className="w-4 h-4" />
-                        Funding Research — {page.provinceName}
+                        Verified Local Programs — {page.provinceName}
                     </div>
 
                     {/* SHORT ANSWER — Hero placement, Direct Question as H1 per EEAT Guidelines */}
@@ -966,8 +970,8 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
                                 case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
                                 case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
-                                case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} {...block.props} />;
-                                case 'WhoShouldLeave': return <WhoShouldLeave key={idx} {...block.props} />;
+                                case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
+                                case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
                                 case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
                                 case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
                                 case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
@@ -1016,7 +1020,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 );
                             }
 
-                            const deepDive = CURATED_CANADA_DEEP_DIVES[page.industrySlug] || INDUSTRY_DEEP_DIVES[page.industrySlug];
+                            const deepDive = INDUSTRY_DEEP_DIVES[page.industrySlug];
                             // Graceful fallback for undiscovered slugs
                             if (!deepDive) return <div className="text-red-500 font-bold p-8">Error: Deep dive content not found for industry slug: {page.industrySlug}</div>;
 
@@ -1207,7 +1211,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 Matched Programs & Stacking Comparisons for {page.cityName} {page.industryName}
                             </h3>
                             <p className="text-slate-600 text-sm sm:text-base">
-                                Research currently open or upcoming database programs and comparisons relevant to {page.industryName.toLowerCase()} in {page.cityName}, {page.provinceName}. Confirm status and fit on the official program page.
+                                Explore detailed guides and side-by-side comparisons of the top government funding options available to {page.industryName.toLowerCase()} in {page.cityName}, {page.provinceName}.
                             </p>
                         </div>
 

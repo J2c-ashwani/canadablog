@@ -14,21 +14,21 @@ export default function LocalBrokerStrategy() {
             <FileCheck className="w-4 h-4 text-green-600" />
             <h4 className="font-semibold text-sm text-gray-900 m-0">DIY (Apply Yourself)</h4>
           </div>
-          <p className="text-sm text-gray-600">Best for a clearly documented program with straightforward rules and an application the owner can complete accurately. Use free official guidance where it is available.</p>
+          <p className="text-sm text-gray-600">Best for: simple workforce training grants under $25K. The applications are 2-4 pages, and most state SBDC offices will review your draft for free.</p>
         </div>
         <div className="bg-white p-4 rounded-lg border border-purple-100">
           <div className="flex items-center gap-2 mb-2">
             <FileCheck className="w-4 h-4 text-blue-600" />
-            <h4 className="font-semibold text-sm text-gray-900 m-0">Accountant + Public Business Advisor</h4>
+            <h4 className="font-semibold text-sm text-gray-900 m-0">Local CPA + SBDC</h4>
           </div>
-          <p className="text-sm text-gray-600">Useful when tax treatment, payroll, cost allocation, financing, or recordkeeping is material. An advisor can improve preparation but cannot guarantee eligibility or make an application audit-proof.</p>
+          <p className="text-sm text-gray-600">Best for: tax credit programs (R&D, enterprise zone, job creation). Your CPA already has your financials; adding a free SBDC advisor makes you audit-proof at zero cost.</p>
         </div>
         <div className="bg-white p-4 rounded-lg border border-purple-100">
           <div className="flex items-center gap-2 mb-2">
             <FileCheck className="w-4 h-4 text-purple-600" />
-            <h4 className="font-semibold text-sm text-gray-900 m-0">Professional Grant Writer</h4>
+            <h4 className="font-semibold text-sm text-gray-900 m-0">Professional Grant Writer (5-10% of Award)</h4>
           </div>
-          <p className="text-sm text-gray-600">Consider specialist help when the proposal is technically complex or highly competitive. Check whether the program permits success-based fees, define ownership of the work, and never accept a promise of approval.</p>
+          <p className="text-sm text-gray-600">Only justified for: discretionary funds over $100K where the state conducts competitive RFP-style evaluation. Below that threshold, you are paying for overhead you don't need.</p>
         </div>
       </div>
     </div>

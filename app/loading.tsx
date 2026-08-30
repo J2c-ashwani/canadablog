@@ -11,12 +11,9 @@ export default function Loading() {
         }
       `}</style>
       <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '2rem' }}>
-        <div
-          aria-label="FSI Digital is loading"
-          style={{ fontSize: '2rem', fontWeight: 'bold', color: '#38bdf8', margin: 0, animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}
-        >
+        <h1 style={{ fontSize: '2rem', fontWeight: 'bold', color: '#38bdf8', margin: 0, animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite' }}>
           FSI Digital
-        </div>
+        </h1>
         
         {/* Loading spinner */}
         <div style={{ 

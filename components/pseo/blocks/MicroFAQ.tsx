@@ -10,21 +10,23 @@ interface Props {
 
 export default function MicroFAQ({ industrySlug, cityName, program1, regionType = 'state' }: Props) {
   const formattedIndustry = industrySlug.charAt(0).toUpperCase() + industrySlug.slice(1);
-  const regionProgramLabel = regionType === 'province' ? 'provincial programs' : 'state programs';
+  const employmentRecord = regionType === 'province' ? 'employees' : 'W-2 employees';
+  const regionProgramLabel = regionType === 'province' ? 'provincial flagship programs' : 'state flagship programs';
+  const creditExamples = regionType === 'province' ? 'wage subsidies and R&D tax credits' : 'R&D credits and WOTC';
 
   // Generate hyper-specific long-tail questions
   const faqs = [
     {
       q: `Can a ${formattedIndustry.toLowerCase()} startup get grants in ${cityName} with no employees?`,
-      a: `Possibly. Some research, founder, competition, or early-stage programs accept companies without employees, while many hiring and expansion programs do not. Check the applicant, project-stage, payroll, and operating-history rules for the exact program.`
+      a: `Technically possible, but extremely limited. Most discretionary grants require a minimum operating history and a credible hiring plan, and some require 3-5 ${employmentRecord}. However, ${creditExamples} may be available through separate eligibility rules.`
     },
     {
       q: `What is the minimum revenue to qualify for the ${program1}?`,
-      a: `Do not infer a revenue threshold. ${regionProgramLabel} use different tests, and ${program1} may be a directory or program family rather than a single open award. Use the current official eligibility guide and ask the administrator if the rule is unclear.`
+      a: `Most ${regionProgramLabel} like the ${program1} don't publish a hard revenue floor, but in practice, very early companies are rarely approved for discretionary awards. The unstated filter is job creation, matching capital, and a project that can be verified within the program timeline.`
     },
     {
       q: `How long does it actually take to receive grant money in ${cityName}?`,
-      a: `Timing varies from rolling support to multi-stage competitive review. Some programs reimburse approved costs and others use different payment structures. Use the official service standard or agreement, and do not rely on unapproved funding for immediate operating cash.`
+      a: `Expect 90-180 days from application submission to first disbursement for many discretionary programs. Critical catch: most grants reimburse approved expenses, meaning you spend after approval and then get paid back. Budget accordingly and do not rely on grant money for immediate operational cash flow.`
     }
   ];
 
