@@ -183,6 +183,9 @@ async function run() {
   const revenueSprintEmail = fs.readFileSync(path.join(root, 'lib/emails/revenue-sprint.ts'), 'utf8');
   const cartRecoveryService = fs.readFileSync(path.join(root, 'lib/leads/cart-recovery-service.ts'), 'utf8');
   const cartRecoveryEmail = fs.readFileSync(path.join(root, 'lib/emails/cart-recovery.ts'), 'utf8');
+  const socialSprintRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-social-revenue-sprint/route.ts'), 'utf8');
+  const socialSprintService = fs.readFileSync(path.join(root, 'lib/growth-os/social-revenue-sprint.ts'), 'utf8');
+  const channelAdapters = fs.readFileSync(path.join(root, 'lib/growth-os/execution/adapters/channel-adapters.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(newsletterRoute.includes('CONTROLLED_COHORT_CAP = 20') && newsletterRoute.includes('remainingCohortCapacity'), 'Newsletter distribution is capped at a 20-contact evidence cohort across repeated scheduler runs');
@@ -204,6 +207,14 @@ async function run() {
   assert(cartRecoveryService.includes('getAllProductPaymentIntents') && cartRecoveryService.includes('recoverableProductIds') && !cartRecoveryService.includes("recoverableProductIds.add('strategy-audit')"), 'Cart recovery uses server payment-intent evidence and excludes call-dependent products');
   assert(cartRecoveryService.includes('recentlyAcceptedRecipientIds') && cartRecoveryService.includes('provider accepted, but CRM receipt persistence failed'), 'Cart recovery suppresses duplicate sends even when CRM receipt persistence fails');
   assert(cartRecoveryEmail.includes('unsubscribeToken') && !cartRecoveryEmail.includes('`, loginToken, firstName);'), 'Every cart and report-recovery template uses a scoped unsubscribe credential');
+  assert(socialSprintRoute.includes('isValidCronRequest') && socialSprintRoute.includes('acquireOperationLease'), 'Organic social revenue sprint is authenticated and protected by a durable execution lease');
+  assert(socialSprintService.includes('SOCIAL_REVENUE_SPRINT_END_AT') && socialSprintService.includes('MIN_VARIANT_GAP_MS') && socialSprintService.includes('getLatestOperationalState'), 'Organic social sprint is self-expiring, paced, and idempotent across production invocations');
+  assert(socialSprintService.includes('createTrackedGrowthUrl') && socialSprintService.includes("channel: 'organic_social'"), 'Every social product link enters first-party checkout and payment attribution');
+  assert(['$19 USD', '$49 USD', '$79 USD', '$29 USD/month', 'No sales call or live session is required'].every((value) => socialSprintService.includes(value)), 'Social copy truthfully distributes the approved call-free product ladder');
+  assert(!socialSprintService.toLowerCase().includes('guaranteed') && !socialSprintService.toLowerCase().includes('limited time') && !socialSprintService.includes('Up to $150,000'), 'Social revenue copy contains no guarantee, false urgency, or unsupported funding amount');
+  assert(channelAdapters.includes('const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()') && !channelAdapters.includes('process.env.LINKEDIN_CLIENT_ID?.trim()\n    const linkedInUrn'), 'LinkedIn publishing never mistakes a public client ID for an access token');
+  assert(channelAdapters.includes('postFacebook(message: string, link: string)') && channelAdapters.includes('provider post ID'), 'Facebook publishing requires a provider-returned post ID');
+  assert(actionScorecard.includes("event.channel.startsWith('organic_')"), 'CEO action P&L recognizes verified social and onsite organic clicks');
   assert(telemetryRoute.includes("eventName === 'checkout_started'") && telemetryRoute.includes('parseTrackedGrowthToken'), 'Membership checkout starts enter the action P&L only through trusted first-party attribution');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');
@@ -257,7 +268,7 @@ async function run() {
   assert(onsiteClickRoute.includes('createTrackedGrowthUrl') && onsiteClickRoute.includes('fsi_organic_visitor') && onsiteClickRoute.includes('const OFFERS'), 'On-site product clicks use allowlisted signed first-party attribution');
   assert(onsiteClickRoute.includes('actionDate') && !onsiteClickRoute.includes('product_ladder_2026-08-27'), 'On-site action IDs rotate by the actual UTC date instead of a hardcoded launch date');
   assert(blogRoute.includes('<OrganicProductLadder surface="blog"') && pseoRoute.includes('<OrganicProductLadder'), 'Paid self-serve distribution is present on blog and city-industry organic templates');
-  assert(actionScorecard.includes("event.channel === 'organic_onsite'"), 'CEO action P&L treats unique first-party product clicks as qualified organic leads');
+  assert(actionScorecard.includes("event.channel.startsWith('organic_')"), 'CEO action P&L treats unique first-party product clicks as qualified organic leads');
   assert(footer.includes('<OrganicProductLadder surface="footer"') && onsiteClickRoute.includes("'footer'"), 'Uncovered content routes receive the signed product ladder through the global footer');
   assert(footer.includes('Application Toolkit ($29)') && footer.includes('Complete Funding Blueprint ($79)') && footer.includes('Funding Watch ($29/month)'), 'Global product navigation matches the active self-serve checkout prices');
   assert(!footer.includes('Book Strategy Session ($199)') && !footer.includes('Application Toolkit ($9)'), 'Global distribution removes call-dependent and stale-price offers');

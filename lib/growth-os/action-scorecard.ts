@@ -143,7 +143,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       && !isTestIdentity(membership.email)
     );
     const verifiedClickEvents = actionEvents.filter(isVerifiedBrowserClick);
-    const organicClickEvents = verifiedClickEvents.filter((event) => event.channel === 'organic_onsite');
+    const organicClickEvents = verifiedClickEvents.filter((event) => event.channel.startsWith('organic_'));
     const qualifiedLeads = new Set([
       ...acceptedEvents.map((event) => event.recipientId),
       ...organicClickEvents.map((event) => event.recipientId),
@@ -222,7 +222,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
   }).sort((left, right) => right.revenueUSD - left.revenueUSD || right.mrrUSD - left.mrrUSD || right.providerAccepted - left.providerAccepted);
 
   const totalQualifiedLeadsAffected = new Set(recentEvents
-    .filter((event) => event.eventType === 'provider_accepted' || (event.channel === 'organic_onsite' && isVerifiedBrowserClick(event)))
+    .filter((event) => event.eventType === 'provider_accepted' || (event.channel.startsWith('organic_') && isVerifiedBrowserClick(event)))
     .map((event) => event.recipientId)
     .filter(Boolean)).size;
   const totalRevenueUSD = roundMoney(rows.reduce((sum, row) => sum + row.revenueUSD, 0));

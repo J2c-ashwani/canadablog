@@ -21,6 +21,10 @@
       "schedule": "0 */2 * * *"
     },
     {
+      "path": "/api/cron/process-social-revenue-sprint",
+      "schedule": "30 13 30,31 8 *"
+    },
+    {
       "path": "/api/cron/process-calculator-recovery",
       "schedule": "0 11 * * *"
     },

@@ -106,7 +106,7 @@ export class ChannelAdapters {
    * 3. LinkedIn API Adapter
    */
   public static async postLinkedIn(text: string, hashtags: string[]): Promise<ChannelPublishResult> {
-    const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim() || process.env.LINKEDIN_CLIENT_ID?.trim()
+    const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()
     const linkedInUrn = process.env.LINKEDIN_PERSON_URN?.trim() || process.env.LINKEDIN_ORG_URN?.trim()
 
     if (!token || !linkedInUrn) {
@@ -160,7 +160,10 @@ export class ChannelAdapters {
       return {
         channelName: "LinkedIn",
         status: "API_ACCEPTED",
-        externalId: response.headers.get('x-linkedin-id') || response.headers.get('x-restli-id') || undefined,
+        externalId: response.headers.get('x-linkedin-id')
+          || response.headers.get('x-restli-id')
+          || response.headers.get('location')
+          || undefined,
         message: `LinkedIn accepted the post via /rest/posts API; public publication has not been independently verified.`,
       }
     } catch (err: any) {
@@ -169,6 +172,48 @@ export class ChannelAdapters {
         channelName: "LinkedIn",
         status: "QUEUED_FOR_APPROVAL",
         message: `LinkedIn API error: ${err.message}`,
+      }
+    }
+  }
+
+  /**
+   * Publish a truthful text/link post to the connected Facebook Page.
+   */
+  public static async postFacebook(message: string, link: string): Promise<ChannelPublishResult> {
+    const token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    const pageId = process.env.FACEBOOK_PAGE_ID?.trim()
+    if (!token || !pageId) {
+      return {
+        channelName: "Facebook",
+        status: "QUEUED_FOR_APPROVAL",
+        message: !token ? "Facebook Page access token is missing." : "FACEBOOK_PAGE_ID is missing.",
+      }
+    }
+
+    try {
+      // An unversioned Graph URL uses the app's configured supported version,
+      // avoiding a hardcoded version that can expire while the sprint is live.
+      const response = await fetchWithRetry(`https://graph.facebook.com/${encodeURIComponent(pageId)}/feed`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message, link, access_token: token }),
+      })
+      const payload = await response.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!response.ok || !payload.id) {
+        throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider post ID missing'}`)
+      }
+      return {
+        channelName: "Facebook",
+        status: "API_ACCEPTED",
+        externalId: payload.id,
+        message: "Facebook accepted the Page post and returned a provider post ID.",
+      }
+    } catch (err: any) {
+      console.error(`[FacebookAdapter] Error:`, err)
+      return {
+        channelName: "Facebook",
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Facebook API error: ${err.message || String(err)}`,
       }
     }
   }
