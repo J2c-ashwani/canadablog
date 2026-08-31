@@ -56,6 +56,15 @@ The nine approved cohort URLs may be submitted to participating IndexNow search 
 
 Resend has provider-accepted messages in the commercial ledger, but the production sender credential is restricted to sending and no signed webhook events are arriving. Growth OS supports a separate `RESEND_RECONCILIATION_API_KEY` with read access as well as the signed webhook route. Until one of those sources persists delivery evidence, email actions remain HOLD, do not count as qualified distribution, and daily Growth OS health reports DEGRADED.
 
+## Bottom-of-funnel recovery audit
+
+Two PII-free dry-run tools now distinguish database rows from reachable commercial inventory.
+
+- Product checkout recovery: 12 total payment-intent rows reduced to two unique, recent, open PayPal-backed intents on the approved product allowlist. Both were $19 Funding Match Report intents, representing $38 of inventory value—not forecast revenue. One contact was not opted in; the other already had payment evidence. The eligible recovery audience and eligible potential revenue were therefore both zero. The existing hourly cart-recovery job correctly sent nothing.
+- $49 CAD MCA recovery: eight MCA applications reduced to zero eligible recovery candidates. Two were already paid/closed and six lacked the required unguessable recovery token. No MCA recovery cron was activated.
+
+The CEO dashboard must not treat an open row, a stale checkout, or an application without a safe recovery credential as reachable pipeline. Only an opted-in, unpaid, deduplicated, due candidate with explicit checkout evidence is recovery eligible.
+
 ## Release safeguards
 
 - Existing prices, product promises, checkout, PayPal/Stripe capture, fulfillment, calculator, and URLs are unchanged.
