@@ -16,6 +16,7 @@ import { B2BOutreachEngine } from '../lib/leads/B2BOutreachEngine';
 import { buildMCAReadinessReport } from '../lib/mca/readiness-report';
 import { ExpectedRevenueModel } from '../lib/revenue-hunter/models/expected-revenue';
 import { IntentEngine } from '../lib/seo-revenue-engine/intent-engine';
+import { mapBrevoEvent } from '../lib/emails/brevo-reconciliation';
 
 function assert(condition: unknown, message: string) {
   if (!condition) throw new Error(message);
@@ -80,6 +81,7 @@ async function run() {
     text: 'https://www.fsidigital.ca/download',
   });
   assert(transactional.context === null && !transactional.html.includes('/api/growth-os/click'), 'Transactional delivery links are never routed through commercial tracking');
+  assert(mapBrevoEvent('delivered') === 'email.delivered' && mapBrevoEvent('error') === 'email.failed' && mapBrevoEvent('requests') === '', 'Brevo provider events distinguish delivery, provider failure, and request acceptance');
 
   const matches = buildMemberProgramMatches({ country: 'Canada', region: 'ON', industry: 'technology', companySize: '1-9', fundingInterests: ['Grants'] }, 5);
   assert(matches.every((match) => match.status === 'Open' || match.status === 'Upcoming'), 'Member radar excludes paused and closed database programs');
@@ -110,6 +112,7 @@ async function run() {
 
   const root = process.cwd();
   const ceoMemory = fs.readFileSync(path.join(root, 'lib/ceo-agent/ceo-memory.ts'), 'utf8');
+  const ceoAgent = fs.readFileSync(path.join(root, 'lib/ceo-agent/ceo-agent.ts'), 'utf8');
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
   assert(ceoMemory.includes("ACTIVE_CASH_TARGET_END_AT = '2026-09-25T23:59:59.000Z'"), 'CEO scoreboard is aligned to the approved September 25 cash deadline');
   const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
@@ -180,6 +183,7 @@ async function run() {
   const seoMatrixEngine = fs.readFileSync(path.join(root, 'lib/seo-revenue-engine/rte-matrix-engine.ts'), 'utf8');
   const objectionHandler = fs.readFileSync(path.join(root, 'lib/revenue-hunter/objections/objection-handler.ts'), 'utf8');
   const resendReconciliation = fs.readFileSync(path.join(root, 'lib/emails/resend-reconciliation.ts'), 'utf8');
+  const brevoReconciliation = fs.readFileSync(path.join(root, 'lib/emails/brevo-reconciliation.ts'), 'utf8');
   const growthHealthRoute = fs.readFileSync(path.join(root, 'app/api/cron/growth-os-health/route.ts'), 'utf8');
   const newsletterMarketing = fs.readFileSync(path.join(root, 'lib/emails/newsletter-marketing.ts'), 'utf8');
   const checkoutProfileRoute = fs.readFileSync(path.join(root, 'app/api/products/checkout-profile/route.ts'), 'utf8');
@@ -237,8 +241,11 @@ async function run() {
   assert(resendReconciliation.includes("fetch(url") && resendReconciliation.includes("Authorization: `Bearer ${apiKey}`"), 'Resend delivery fallback reads authenticated provider state');
   assert(resendReconciliation.includes('RESEND_RECONCILIATION_API_KEY') && resendReconciliation.includes('requiresReadAccess: true'), 'Resend delivery reconciliation supports a dedicated read credential and exposes permission gaps');
   assert(resendReconciliation.includes("event.eventType === 'provider_accepted'") && resendReconciliation.includes("event.provider.toLowerCase() === 'resend'"), 'Resend reconciliation is restricted to provider IDs already accepted into the commercial ledger');
-  assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()') && growthHealthRoute.includes('deliveryEvidenceGap'), 'Daily GrowthOS health reconciles provider delivery state and degrades when read evidence is unavailable');
+  assert(brevoReconciliation.includes("event.provider.toLowerCase() === 'brevo'") && brevoReconciliation.includes('eligibleCanonicalIds.get(canonicalBrevoMessageId(event.messageId))'), 'Brevo reconciliation persists only canonical provider IDs already accepted into the commercial ledger');
+  assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()') && growthHealthRoute.includes('await reconcileBrevoDeliveryEvents()') && growthHealthRoute.includes('deliveryEvidenceGap'), 'Daily GrowthOS health reconciles both active providers and degrades when read evidence is unavailable');
+  assert(mailer.includes("fetch('https://api.brevo.com/v3/senders'") && mailer.includes("endsWith('@fsidigital.ca')"), 'Brevo fallback resolves a provider-confirmed active FSI Digital sender instead of reusing a stale cross-provider default');
   assert(actionScorecard.includes("decision: 'SCALE' | 'HOLD' | 'STOP'"), 'CEO action P&L emits explicit scale, hold, or stop decisions');
+  assert(actionScorecard.includes('providerFailures') && actionScorecard.includes("has('email.failed')") && ceoAgent.includes('provider failures ${action.providerFailures}'), 'CEO action P&L reports provider-confirmed email failures separately from checkout failures');
   assert(actionScorecard.includes('verifiedPageViewKeys') && actionScorecard.includes('isLikelyAutomatedUserAgent'), 'CEO action P&L excludes bot and link-scanner clicks from qualified-lead decisions');
   assert(actionScorecard.includes('explicitHumanSessions') && actionScorecard.includes('deliveredMessageIds'), 'CEO action P&L requires explicit human sessions and verified email delivery before counting qualified leads');
   assert(!actionScorecard.includes('acceptedMessageIds.size >= 20 || organicClickEvents.length >= 20'), 'Provider acceptance alone cannot trigger a channel stop decision');

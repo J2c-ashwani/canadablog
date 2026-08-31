@@ -107,3 +107,11 @@ The 2026-08-29 Search Console export showed the nine-page cohort at 5,504 impres
 Only those three allowlisted routes received reversible title and description treatments using direct grant-intent language. The cohort size, URLs, canonicals, index directives, page templates, pricing, and the other 6,144 city-industry controls remain unchanged. The 14-day Gates A-D expansion lock remains mandatory; these Search Console counts are baseline evidence, not a revenue forecast.
 
 Product-ladder impressions are now persisted only when the actual offer enters the browser viewport. This corrects the earlier metric that counted only the engaged-reader popup and therefore understated on-page product exposure. Clicks, checkouts, and provider-verified payments remain separate evidence stages.
+
+## Active-provider delivery repair
+
+A PII-free provider audit confirmed that the Brevo API and event-history API are reachable. Its latest 20 message attempts produced 20 request events followed by 20 provider errors—not deliveries—because the submitted sender did not match Brevo's verified sender. The account has one active `fsidigital.ca` sender. Brevo fallback now resolves that exact provider-confirmed sender before submitting a message, rather than borrowing a possibly empty or mismatched Resend sender value.
+
+Daily Growth OS health now reconciles both active providers. Brevo reconciliation is restricted to provider message IDs already present in the FSI commercial or transactional ledgers, queries the authenticated event API by exact message ID, and persists delivered, opened, clicked, bounced, complaint, unsubscribe, and provider-failure states separately. A Brevo request or message ID still does not count as delivery or revenue.
+
+One non-promotional internal verification message was accepted after resolving the active `fsidigital.ca` sender and returned a provider message ID. No terminal delivery event appeared during the immediate observation window, so the test is recorded only as provider acceptance—not delivery—and is excluded from commercial action counts.

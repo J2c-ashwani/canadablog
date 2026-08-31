@@ -69,6 +69,7 @@ export interface GrowthOSEvidenceSnapshot {
     emailDelivered: number;
     emailBounced: number;
     emailComplained: number;
+    emailFailed: number;
   };
   fulfillment: {
     verifiedPurchases: number;
@@ -307,6 +308,7 @@ async function buildGrowthOSEvidence(): Promise<GrowthOSEvidenceSnapshot> {
       emailDelivered: emailEventTypes.filter((type) => type === 'email.delivered').length,
       emailBounced: emailEventTypes.filter((type) => type === 'email.bounced').length,
       emailComplained: emailEventTypes.filter((type) => type === 'email.complained').length,
+      emailFailed: emailEventTypes.filter((type) => type === 'email.failed').length,
     },
     fulfillment,
   };

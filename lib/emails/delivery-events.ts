@@ -14,7 +14,7 @@ const HEADERS = [
 
 export type DeliveryEvent = {
   eventId: string;
-  provider: 'resend';
+  provider: 'resend' | 'brevo';
   providerMessageId: string;
   eventType: string;
   recipient: string;

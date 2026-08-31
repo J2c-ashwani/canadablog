@@ -102,6 +102,33 @@ export function cleanIndustryName(industry?: string): string {
   return escapeHtml(cleaned);
 }
 
+type BrevoSender = { email?: string; name?: string; active?: boolean };
+let brevoSenderCache: { expiresAt: number; email: string; name: string } | null = null;
+
+/** Resolves only a provider-confirmed active sender; stale cross-provider defaults fail closed. */
+async function resolveBrevoSender(apiKey: string, configuredFrom?: string) {
+  if (brevoSenderCache && brevoSenderCache.expiresAt > Date.now()) return brevoSenderCache;
+  const configuredEmail = extractEmailAddress(configuredFrom);
+  const response = await fetch('https://api.brevo.com/v3/senders', {
+    headers: { 'api-key': apiKey, Accept: 'application/json' },
+    cache: 'no-store',
+  });
+  const payload = await response.json().catch(() => ({})) as { senders?: BrevoSender[]; message?: string };
+  if (!response.ok) throw new Error(payload.message || `Brevo sender lookup failed with HTTP ${response.status}.`);
+  const activeSenders = (payload.senders || []).filter((sender) => sender.active && extractEmailAddress(sender.email));
+  const configuredMatch = activeSenders.find((sender) => extractEmailAddress(sender.email) === configuredEmail);
+  const domainMatch = activeSenders.find((sender) => extractEmailAddress(sender.email).endsWith('@fsidigital.ca'));
+  const sender = configuredMatch || domainMatch;
+  const email = extractEmailAddress(sender?.email);
+  if (!email) throw new Error('Brevo has no active FSI Digital sender.');
+  brevoSenderCache = {
+    expiresAt: Date.now() + 15 * 60 * 1000,
+    email,
+    name: process.env.BREVO_FROM_NAME || sender?.name || 'FSI Digital',
+  };
+  return brevoSenderCache;
+}
+
 async function sendViaBrevo({
   to,
   subject,
@@ -119,17 +146,13 @@ async function sendViaBrevo({
 }): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string }> {
   const apiKey = process.env.BREVO_API_KEY;
   if (!apiKey) return { success: false, skipped: true };
-
-  const fromEmail = extractEmailAddress(
-    process.env.BREVO_FROM_EMAIL || from || process.env.RESEND_FROM_EMAIL
-  );
-  if (!fromEmail) {
-    return { success: false, skipped: true, error: 'No configured sender address is available for Brevo.' };
-  }
-  const fromName = process.env.BREVO_FROM_NAME || 'FSI Digital';
   const replyToEmail = process.env.BREVO_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   try {
+    const sender = await resolveBrevoSender(
+      apiKey,
+      process.env.BREVO_FROM_EMAIL || from || process.env.RESEND_FROM_EMAIL
+    );
     const response = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
@@ -138,9 +161,9 @@ async function sendViaBrevo({
         'Accept': 'application/json',
       },
       body: JSON.stringify({
-        sender: { name: fromName, email: fromEmail },
+        sender: { name: sender.name, email: sender.email },
         to: [{ email: to }],
-        replyTo: { email: replyToEmail, name: fromName },
+        replyTo: { email: replyToEmail, name: sender.name },
         subject,
         htmlContent: html,
         textContent: text,

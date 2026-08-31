@@ -5,6 +5,7 @@ import { GrowthTools } from '@/lib/ceo-agent/tools/growth-tools'
 import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store'
 import { sendEmail } from '@/lib/emails/mailer'
 import { reconcileResendDeliveryEvents } from '@/lib/emails/resend-reconciliation'
+import { reconcileBrevoDeliveryEvents } from '@/lib/emails/brevo-reconciliation'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
@@ -23,6 +24,7 @@ export async function GET(request: NextRequest) {
 
   try {
     let resendReconciliation: Awaited<ReturnType<typeof reconcileResendDeliveryEvents>> | { skipped: true; reason: string; eligible: number; matched: number; persisted: number; requiresReadAccess: boolean }
+    let brevoReconciliation: Awaited<ReturnType<typeof reconcileBrevoDeliveryEvents>> | { skipped: true; reason: string; eligible: number; matched: number; persisted: number; failed: number; requiresReadAccess: boolean }
     try {
       resendReconciliation = await reconcileResendDeliveryEvents()
     } catch (error: any) {
@@ -36,11 +38,28 @@ export async function GET(request: NextRequest) {
         requiresReadAccess: false,
       }
     }
+    try {
+      brevoReconciliation = await reconcileBrevoDeliveryEvents()
+    } catch (error: any) {
+      console.error('Brevo delivery reconciliation failed without blocking GrowthOS health:', error)
+      brevoReconciliation = {
+        skipped: true,
+        reason: error?.message || 'Brevo delivery reconciliation failed',
+        eligible: 0,
+        matched: 0,
+        persisted: 0,
+        failed: 0,
+        requiresReadAccess: false,
+      }
+    }
     const [evidence, pipeline] = await Promise.all([collectGrowthOSEvidence(), GrowthTools.getGrowthOSStatus()])
     const critical = pipeline.orphanedStagesDetected.filter((item) => item.severity === 'P0')
     const deliveryEvidenceGap = resendReconciliation.skipped
       && resendReconciliation.eligible > 0
       && resendReconciliation.requiresReadAccess
+      || brevoReconciliation.skipped
+      && brevoReconciliation.eligible > 0
+      && brevoReconciliation.requiresReadAccess
     const status = evidence.evidenceState === 'UNKNOWN' || critical.length > 0
       ? 'FAILED'
       : pipeline.orphanedStagesDetected.length > 0 || evidence.evidenceState === 'PARTIAL' || deliveryEvidenceGap ? 'DEGRADED' : 'HEALTHY'
@@ -62,7 +81,9 @@ export async function GET(request: NextRequest) {
           <li>Leads: ${evidence.funnel.newLeads30d}; unique measured sessions: ${evidence.funnel.uniqueSessions30d}</li>
           <li>Checkout starts: ${evidence.funnel.checkoutStarts30d}; verified purchases: ${evidence.funnel.providerVerifiedPurchases30d}</li>
           <li>Provider-accepted outreach: ${pipeline.dispatchedEmailsCount}; verified deliveries: ${pipeline.deliveredEmailsCount}; replies: ${pipeline.repliesCount}</li>
+          <li>Provider-confirmed email failures: ${evidence.outreach.emailFailed}</li>
           <li>Resend delivery reconciliation: ${resendReconciliation.skipped ? `DEGRADED — ${escapeHtml(resendReconciliation.reason)}` : `${resendReconciliation.matched}/${resendReconciliation.eligible} eligible provider records matched`}</li>
+          <li>Brevo delivery reconciliation: ${brevoReconciliation.skipped ? `DEGRADED — ${escapeHtml(brevoReconciliation.reason)}` : `${brevoReconciliation.matched}/${brevoReconciliation.eligible} eligible provider records matched; ${brevoReconciliation.failed} provider failures`}</li>
         </ul>
         <h3>Failures and evidence gaps</h3><ul>${issues}</ul>
       </div>`
@@ -75,9 +96,9 @@ export async function GET(request: NextRequest) {
     })
     const reportAccepted = Boolean(report.success && report.providerMessageId)
     const finalStatus = status === 'HEALTHY' && reportAccepted ? 'SUCCEEDED' : status === 'FAILED' ? 'FAILED' : 'PARTIAL'
-    await finishOperationLease(lease, finalStatus, { status, evidence, resendReconciliation, reportAccepted, reportProviderMessageId: report.providerMessageId || '' })
+    await finishOperationLease(lease, finalStatus, { status, evidence, resendReconciliation, brevoReconciliation, reportAccepted, reportProviderMessageId: report.providerMessageId || '' })
     const success = status !== 'FAILED' && reportAccepted
-    return NextResponse.json({ success, status, evidence, pipeline, resendReconciliation, reportAccepted }, { status: success ? 200 : 502 })
+    return NextResponse.json({ success, status, evidence, pipeline, resendReconciliation, brevoReconciliation, reportAccepted }, { status: success ? 200 : 502 })
   } catch (error: any) {
     await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) })
     return NextResponse.json({ success: false, error: error.message || 'Growth OS health failed.' }, { status: 500 })

@@ -15,6 +15,7 @@ export interface ActionPerformanceRow {
   qualifiedLeadsAffected: number;
   providerAccepted: number;
   delivered: number;
+  providerFailures: number;
   clicks: number;
   productCheckoutViews: number;
   deliveryEmailsReady: number;
@@ -133,6 +134,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     }).length;
     const bounced = Array.from(acceptedMessageIds).filter((messageId) => providerState.get(messageId)?.has('email.bounced')).length;
     const complained = Array.from(acceptedMessageIds).filter((messageId) => providerState.get(messageId)?.has('email.complained')).length;
+    const providerFailures = Array.from(acceptedMessageIds).filter((messageId) => providerState.get(messageId)?.has('email.failed')).length;
     const actionPurchases = purchases.filter((purchase) =>
       purchase.actionId === actionId
       && dateValue(purchase.createdAt) >= cutoff
@@ -205,6 +207,8 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     } else if ((deliveredMessageIds.size >= 20 || organicClickEvents.length >= 20) && checkouts === 0) {
       decision = 'STOP';
       decisionReason = 'Twenty verified deliveries or first-party human product clicks produced no measured checkout; stop and replace the action.';
+    } else if (providerFailures > 0 && deliveredMessageIds.size === 0) {
+      decisionReason = 'Provider-confirmed failures exist; repair the provider path before retrying or scaling this action.';
     } else if (acceptedMessageIds.size > 0 && deliveredMessageIds.size === 0) {
       decisionReason = 'Provider acceptance exists, but delivery is not verified; reconcile provider evidence before scaling or stopping.';
     }
@@ -216,6 +220,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
       qualifiedLeadsAffected: qualifiedLeads,
       providerAccepted: acceptedMessageIds.size,
       delivered,
+      providerFailures,
       clicks: new Set(verifiedClickEvents.map((event) => event.recipientId || event.eventId)).size,
       productCheckoutViews,
       deliveryEmailsReady,
