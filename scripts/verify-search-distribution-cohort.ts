@@ -92,6 +92,22 @@ const loadingSource = readFileSync('app/loading.tsx', 'utf8');
 assert.equal(/<h1\b/i.test(loadingSource), false, 'global loading UI must not inject a second H1');
 const onsiteClickSource = readFileSync('app/api/growth-os/onsite-click/route.ts', 'utf8');
 assert.equal(onsiteClickSource.includes("contentContext.startsWith('seo-cohort-v1-')"), true, 'cohort action attribution is missing');
+const pseoTemplateSource = readFileSync('app/grants/[province]/[city]/[industry]/page.tsx', 'utf8');
+const blogTemplateSource = readFileSync('app/blog/[slug]/page.tsx', 'utf8');
+assert.equal(
+  pseoTemplateSource.includes('data-cohort-revenue-cta="hero-match-report"')
+    && pseoTemplateSource.includes('verifiedCohort && (')
+    && pseoTemplateSource.includes('offer=match-report&experiment=focused-v2'),
+  true,
+  'city cohort must expose one attributable $19 opening CTA without changing control rendering',
+);
+assert.equal(
+  blogTemplateSource.includes('data-cohort-revenue-cta="opening-match-report"')
+    && blogTemplateSource.includes('verifiedSearchCohort && (')
+    && blogTemplateSource.includes('offer=match-report&experiment=focused-v2'),
+  true,
+  'editorial cohort must expose one attributable $19 opening CTA without changing control rendering',
+);
 const dashboardSource = readFileSync('app/admin/dashboard/page.tsx', 'utf8');
 const indexNowSource = readFileSync('scripts/submit-search-cohort-indexnow.ts', 'utf8');
 const indexNowKey = readFileSync('public/9f2d760a190decd61c5ea57bab9f5d7b.txt', 'utf8').trim();
@@ -103,4 +119,4 @@ assert.equal(indexNowSource.includes('getAllPseoPages'), false, 'IndexNow submis
 
 console.log(`PASS search-distribution cohort: 9 routes (${pseoCohort.length} city-industry + ${exactBlogRoutes.length} editorial)`);
 console.log(`PASS controls preserved across ${pseoPages.length - pseoCohort.length} non-cohort city-industry pages`);
-console.log('PASS exact-route SBIR gating, attributed product paths, verified-revenue KPI, and single-H1 loading guard');
+console.log('PASS exact-route SBIR gating, cohort-only opening CTAs, attributed product paths, verified-revenue KPI, and single-H1 loading guard');

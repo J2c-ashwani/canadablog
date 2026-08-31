@@ -52,6 +52,10 @@ Traffic alone never authorizes expansion. Unknown evidence remains locked, and a
 
 The nine approved cohort URLs may be submitted to participating IndexNow search engines after the ownership key is live. The submission script imports the exact cohort allowlist and cannot enumerate the 6,144 controls. An HTTP 200/202 proves notification receipt only; it is not ranking, traffic, or revenue evidence.
 
+The cohort conversion audit found that the six city-industry pages exposed only the free assessment above the fold, while their attributable paid ladder appeared much later. The three SBIR pages also deferred the paid next step until after substantial content. A single reversible $19 Funding Match Report handoff is now rendered near the opening answer on the nine allowlisted routes only. It has a distinct first-party cohort context so the CEO can measure opening CTA → product → checkout → verified cash separately. Control pages retain their previous rendering.
+
+During local render verification, normal client instrumentation persisted medium-confidence development page/impression events because the local environment referenced the production sheet. No product click, checkout, or payment event was generated, and medium-confidence events do not qualify an action. Telemetry now fails closed outside production unless `ALLOW_NON_PRODUCTION_TELEMETRY=true` is explicitly configured for an isolated test sink, preventing future local/staging checks from entering the production evidence ledger.
+
 ## Known evidence gap
 
 Resend has provider-accepted messages in the commercial ledger, but the production sender credential is restricted to sending and no signed webhook events are arriving. Growth OS supports a separate `RESEND_RECONCILIATION_API_KEY` with read access as well as the signed webhook route. Until one of those sources persists delivery evidence, email actions remain HOLD, do not count as qualified distribution, and daily Growth OS health reports DEGRADED.
@@ -64,6 +68,12 @@ Two PII-free dry-run tools now distinguish database rows from reachable commerci
 - $49 CAD MCA recovery: eight MCA applications reduced to zero eligible recovery candidates. Two were already paid/closed and six lacked the required unguessable recovery token. No MCA recovery cron was activated.
 
 The CEO dashboard must not treat an open row, a stale checkout, or an application without a safe recovery credential as reachable pipeline. Only an opted-in, unpaid, deduplicated, due candidate with explicit checkout evidence is recovery eligible.
+
+## Social distribution reality
+
+- The FSI Digital LinkedIn company page had three followers. Its first $79 post recorded 11 organic impressions after approximately 17 hours. That is evidence of a very small owned audience, not a scalable revenue channel by itself.
+- The locally configured Facebook Page token was expired as of 2026-08-01 and the Page ID was unset. The API channel remains fail-closed; no post was attempted or counted.
+- A $19 match-report social variant may be published only as a controlled, attributable public action after explicit action-time approval. Social publishing receipts, clicks, checkouts, and provider-verified cash remain separate stages.
 
 ## Release safeguards
 

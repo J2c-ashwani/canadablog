@@ -986,8 +986,19 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 >
                                     Start Free Assessment &rarr;
                                 </a>
+                                {verifiedCohort && (
+                                    <a
+                                        data-cohort-revenue-cta="hero-match-report"
+                                        href={`/api/growth-os/onsite-click?surface=grants-city-industry&context=${encodeURIComponent(`${getSearchDistributionContext(page.provinceSlug, page.citySlug, page.industrySlug)}-hero`)}&offer=match-report&experiment=focused-v2`}
+                                        className="mt-3 block w-full rounded-xl border border-white/25 bg-white/10 px-6 py-3 text-center text-sm font-extrabold text-white transition-colors hover:bg-white/15"
+                                    >
+                                        Get the $19 Match Report &rarr;
+                                    </a>
+                                )}
                                 <span className="text-[10px] text-slate-400 mt-2 flex items-center gap-1">
-                                    <Clock className="w-3 h-3 text-slate-400" /> No fee · 100% confidential
+                                    <Clock className="w-3 h-3 text-slate-400" /> {verifiedCohort
+                                        ? 'Free assessment or paid self-serve report · No call required'
+                                        : 'No fee · 100% confidential'}
                                 </span>
                             </div>
                         </div>

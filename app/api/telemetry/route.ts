@@ -10,6 +10,16 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
+  // Keep local/staging browser checks out of the production evidence ledger.
+  // An isolated non-production telemetry sink may opt in explicitly.
+  if (process.env.NODE_ENV !== 'production' && process.env.ALLOW_NON_PRODUCTION_TELEMETRY !== 'true') {
+    return NextResponse.json({
+      success: true,
+      persisted: false,
+      reason: 'non_production_telemetry_disabled',
+    });
+  }
+
   try {
     const body = await request.json();
     const {

@@ -222,6 +222,12 @@ async function run() {
   assert(!mailer.includes('accepted by Resend for ${to}') && !mailer.includes('accepted by Brevo for ${to}') && !sheetsStore.includes('Lead ${email} updated'), 'Commercial runtime logs do not expose recipient email addresses');
   assert(actionScorecard.includes("event.channel.startsWith('organic_')"), 'CEO action P&L recognizes verified social and onsite organic clicks');
   assert(telemetryRoute.includes("eventName === 'checkout_started'") && telemetryRoute.includes('parseTrackedGrowthToken'), 'Membership checkout starts enter the action P&L only through trusted first-party attribution');
+  assert(
+    telemetryRoute.includes("process.env.NODE_ENV !== 'production'")
+      && telemetryRoute.includes("ALLOW_NON_PRODUCTION_TELEMETRY !== 'true'")
+      && telemetryRoute.includes("reason: 'non_production_telemetry_disabled'"),
+    'Local and staging browser tests cannot contaminate the production telemetry ledger by default',
+  );
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');
   assert(paypalWebhook.includes("eventType: 'membership_payment_verified'"), 'Membership cash attribution requires a signed PayPal payment webhook');

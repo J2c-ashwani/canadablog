@@ -579,6 +579,27 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 />
               )}
 
+              {verifiedSearchCohort && (
+                <div
+                  data-cohort-revenue-cta="opening-match-report"
+                  className="mb-10 mt-6 flex flex-col gap-4 rounded-2xl border border-indigo-200 bg-indigo-50 p-5 not-prose sm:flex-row sm:items-center sm:justify-between"
+                >
+                  <div>
+                    <p className="font-extrabold text-indigo-950">Want a profile-specific funding shortlist?</p>
+                    <p className="mt-1 max-w-2xl text-sm leading-6 text-indigo-800">
+                      The $19 USD Funding Match Report compares your saved business profile with current database programs and organizes the requirements to verify next.
+                    </p>
+                    <p className="mt-1 text-xs text-indigo-700">Self-serve digital access · No call required · Confirm final eligibility with the official funding body.</p>
+                  </div>
+                  <a
+                    href={`/api/growth-os/onsite-click?surface=blog&context=${encodeURIComponent(`${SEARCH_DISTRIBUTION_ROLLOUT_ID}-${slug}-opening`)}&offer=match-report&experiment=focused-v2`}
+                    className="inline-flex shrink-0 items-center justify-center rounded-xl bg-indigo-700 px-5 py-3 text-sm font-extrabold text-white transition-colors hover:bg-indigo-800"
+                  >
+                    Get the $19 Match Report &rarr;
+                  </a>
+                </div>
+              )}
+
               {/* Metadata Bar (below hero) */}
               <div className="flex flex-wrap items-center gap-6 mb-6 text-sm text-gray-500 dark:text-gray-400">
                 <div className="flex items-center">
