@@ -1,233 +1,196 @@
-// app/api/cron/process-mca-priority-recovery/route.ts
-// Polling engine that manages the timed Priority Recovery email sequences.
-// Run periodically (e.g. every hour) to scan applications, verify elapsed thresholds against sheets,
-// send Resend alerts, and update the sheets CRM.
-
-import { type NextRequest, NextResponse } from "next/server";
+import { type NextRequest, NextResponse } from 'next/server';
+import { isValidCronRequest } from '@/lib/admin/auth';
 import {
+  appendMCAActivityLog,
   getMCAApplications,
   getMCAConfig,
   updateMCAApplicationRecovery,
-  appendMCAActivityLog,
-} from "@/lib/mca/sheets";
-import {
-  sendMCARecoveryEmail1,
-  sendMCARecoveryEmail2,
-  sendMCARecoveryEmail3,
-  sendMCARecoveryEmail4,
-  sendMCARecoveryEmail5,
-} from "@/lib/emails/mca-recovery";
-import { isValidCronRequest } from "@/lib/admin/auth";
+} from '@/lib/mca/sheets';
+import { sendMCARecoveryEmail1, sendMCARecoveryEmail2 } from '@/lib/emails/mca-recovery';
+import { buildEmailActionContext, getGrowthActionEvents } from '@/lib/growth-os/action-attribution';
+import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
 
-export const runtime = "nodejs";
-export const dynamic = "force-dynamic";
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+export const maxDuration = 180;
+
+const BATCH_LIMIT = 5;
+const MIN_STAGE_1_HOURS = 24;
+const MIN_STAGE_2_HOURS = 72;
+const RECOVERY_TOKEN = /^mca_rec_[a-f0-9]{32}$/;
+const TERMINAL_APPLICATION_STATUSES = new Set(['Approved', 'Declined', 'Funded', 'Closed']);
+const RETIRED_SEQUENCE_STATUSES = new Set(['EMAIL_2_SENT', 'EMAIL_3_SENT', 'EMAIL_4_SENT', 'EMAIL_5_SENT']);
+
+function dateValue(value: unknown) {
+  const parsed = new Date(String(value || '')).getTime();
+  return Number.isFinite(parsed) ? parsed : 0;
+}
+
+function configuredDelayHours(value: string | undefined, minimum: number) {
+  const parsed = Number.parseFloat(String(value || ''));
+  return Number.isFinite(parsed) ? Math.max(minimum, parsed) : minimum;
+}
 
 export async function GET(request: NextRequest) {
-  try {
-    // 1. Authorization check
-    if (!isValidCronRequest(request)) {
-      return NextResponse.json({ error: "Unauthorized MCA recovery cron execution." }, { status: 401 });
-    }
-
-    console.log("🏁 Starting MCA Priority Processing Recovery Cron Job...");
-
-    // 2. Fetch Config & Timing Delays
-    const config = await getMCAConfig();
-    const delay1 = parseFloat(config['Recovery Stage 1 Delay (Hours)'] || '1') * 60 * 60 * 1000;
-    const delay2 = parseFloat(config['Recovery Stage 2 Delay (Hours)'] || '6') * 60 * 60 * 1000;
-    const delay3 = parseFloat(config['Recovery Stage 3 Delay (Hours)'] || '24') * 60 * 60 * 1000;
-    const delay4 = parseFloat(config['Recovery Stage 4 Delay (Hours)'] || '72') * 60 * 60 * 1000;
-    const delay5 = parseFloat(config['Recovery Stage 5 Delay (Hours)'] || '168') * 60 * 60 * 1000;
-
-    // 3. Load Applications
-    const applications = await getMCAApplications(2000);
-    const now = Date.now();
-    const BATCH_LIMIT = 5;
-    let sentCount = 0;
-    let skippedCount = 0;
-
-    for (const app of applications) {
-      // Skip if they already purchased Priority Processing
-      if (app.priorityProcessing || app.recoveryPurchased) {
-        skippedCount++;
-        continue;
-      }
-
-      // Check if sequence is finished or cancelled
-      if (app.priorityRecoveryStatus === 'COMPLETED' || app.priorityRecoveryStatus === 'CANCELLED') {
-        skippedCount++;
-        continue;
-      }
-
-      if (sentCount >= BATCH_LIMIT) {
-        skippedCount++;
-        continue;
-      }
-
-      const elapsed = now - new Date(app.timestamp).getTime();
-      const lastSentTime = app.lastRecoveryEmail ? new Date(app.lastRecoveryEmail).getTime() : 0;
-      const elapsedSinceLastEmail = now - lastSentTime;
-
-      let emailSent = false;
-      const status = app.priorityRecoveryStatus ?? 'ACTIVE';
-
-      // --- Stage 1 (1 hour delay) ---
-      if ((status === 'ACTIVE' || status === 'NONE' || status === '' || status === 'CHECKOUT_STARTED') && elapsed >= delay1) {
-        console.log(`✉️ Triggering MCA Recovery Email 1 (1h) for application ${app.applicationId}`);
-        const res = await sendMCARecoveryEmail1({
-          to: app.email,
-          name: app.ownerName,
-          recoveryToken: app.recoveryToken,
-        });
-
-        if (res.success) {
-          const sentTime = new Date().toISOString();
-          await updateMCAApplicationRecovery(app.applicationId, {
-            priorityRecoveryStatus: 'EMAIL_1_SENT',
-            recoveryStage: 'EMAIL_1',
-            recoveryEmail1Sent: sentTime,
-            lastRecoveryEmail: sentTime,
-          });
-          
-          await appendMCAActivityLog({
-            timestamp: sentTime,
-            applicationId: app.applicationId,
-            email: app.email,
-            event: 'mca_recovery_email_1_sent',
-          }).catch(() => {});
-
-          emailSent = true;
-        }
-      }
-
-      // --- Stage 2 (6 hours delay) ---
-      else if (status === 'EMAIL_1_SENT' && elapsed >= delay2 && elapsedSinceLastEmail >= 2 * 60 * 60 * 1000) {
-        console.log(`✉️ Triggering MCA Recovery Email 2 (6h) for application ${app.applicationId}`);
-        const res = await sendMCARecoveryEmail2({
-          to: app.email,
-          name: app.ownerName,
-          recoveryToken: app.recoveryToken,
-        });
-
-        if (res.success) {
-          const sentTime = new Date().toISOString();
-          await updateMCAApplicationRecovery(app.applicationId, {
-            priorityRecoveryStatus: 'EMAIL_2_SENT',
-            recoveryStage: 'EMAIL_2',
-            recoveryEmail2Sent: sentTime,
-            lastRecoveryEmail: sentTime,
-          });
-
-          await appendMCAActivityLog({
-            timestamp: sentTime,
-            applicationId: app.applicationId,
-            email: app.email,
-            event: 'mca_recovery_email_2_sent',
-          }).catch(() => {});
-
-          emailSent = true;
-        }
-      }
-
-      // --- Stage 3 (24 hours delay) ---
-      else if (status === 'EMAIL_2_SENT' && elapsed >= delay3 && elapsedSinceLastEmail >= 12 * 60 * 60 * 1000) {
-        console.log(`✉️ Triggering MCA Recovery Email 3 (24h) for application ${app.applicationId}`);
-        const res = await sendMCARecoveryEmail3({
-          to: app.email,
-          name: app.ownerName,
-          recoveryToken: app.recoveryToken,
-        });
-
-        if (res.success) {
-          const sentTime = new Date().toISOString();
-          await updateMCAApplicationRecovery(app.applicationId, {
-            priorityRecoveryStatus: 'EMAIL_3_SENT',
-            recoveryStage: 'EMAIL_3',
-            recoveryEmail3Sent: sentTime,
-            lastRecoveryEmail: sentTime,
-          });
-
-          await appendMCAActivityLog({
-            timestamp: sentTime,
-            applicationId: app.applicationId,
-            email: app.email,
-            event: 'mca_recovery_email_3_sent',
-          }).catch(() => {});
-
-          emailSent = true;
-        }
-      }
-
-      // --- Stage 4 (3 days delay) ---
-      else if (status === 'EMAIL_3_SENT' && elapsed >= delay4 && elapsedSinceLastEmail >= 24 * 60 * 60 * 1000) {
-        console.log(`✉️ Triggering MCA Recovery Email 4 (3d) for application ${app.applicationId}`);
-        const res = await sendMCARecoveryEmail4({
-          to: app.email,
-          name: app.ownerName,
-          recoveryToken: app.recoveryToken,
-        });
-
-        if (res.success) {
-          const sentTime = new Date().toISOString();
-          await updateMCAApplicationRecovery(app.applicationId, {
-            priorityRecoveryStatus: 'EMAIL_4_SENT',
-            recoveryStage: 'EMAIL_4',
-            recoveryEmail4Sent: sentTime,
-            lastRecoveryEmail: sentTime,
-          });
-
-          await appendMCAActivityLog({
-            timestamp: sentTime,
-            applicationId: app.applicationId,
-            email: app.email,
-            event: 'mca_recovery_email_4_sent',
-          }).catch(() => {});
-
-          emailSent = true;
-        }
-      }
-
-      // --- Stage 5 (7 days delay - Final notice) ---
-      else if (status === 'EMAIL_4_SENT' && elapsed >= delay5 && elapsedSinceLastEmail >= 24 * 60 * 60 * 1000) {
-        console.log(`✉️ Triggering MCA Recovery Email 5 (7d) for application ${app.applicationId}`);
-        const res = await sendMCARecoveryEmail5({
-          to: app.email,
-          name: app.ownerName,
-          recoveryToken: app.recoveryToken,
-        });
-
-        if (res.success) {
-          const sentTime = new Date().toISOString();
-          await updateMCAApplicationRecovery(app.applicationId, {
-            priorityRecoveryStatus: 'COMPLETED', // Complete active recovery polling
-            recoveryStage: 'COMPLETED',
-            recoveryEmail5Sent: sentTime,
-            lastRecoveryEmail: sentTime,
-          });
-
-          await appendMCAActivityLog({
-            timestamp: sentTime,
-            applicationId: app.applicationId,
-            email: app.email,
-            event: 'mca_recovery_email_5_sent_sequence_completed',
-          }).catch(() => {});
-
-          emailSent = true;
-        }
-      }
-
-      if (emailSent) {
-        sentCount++;
-      } else {
-        skippedCount++;
-      }
-    }
-
-    console.log(`🏁 MCA Recovery Cron complete. Sent: ${sentCount}, Skipped/Active: ${skippedCount}`);
-    return NextResponse.json({ success: true, processed: sentCount, skipped: skippedCount }, { status: 200 });
-
-  } catch (error) {
-    console.error("MCA Priority Recovery Cron error:", error);
-    return NextResponse.json({ error: error instanceof Error ? error.message : "Cron processing aborted." }, { status: 500 });
+  if (!isValidCronRequest(request)) {
+    return NextResponse.json({ error: 'Unauthorized MCA recovery cron execution.' }, { status: 401 });
   }
+
+  const lease = await acquireOperationLease('mca-priority-recovery', 90 * 60 * 1000);
+  if (!lease.acquired) {
+    return NextResponse.json({ success: true, skipped: true, reason: lease.reason });
+  }
+
+  try {
+    const [config, applications, actionEvents] = await Promise.all([
+      getMCAConfig(),
+      getMCAApplications(2000),
+      getGrowthActionEvents(),
+    ]);
+    const stage1DelayMs = configuredDelayHours(
+      config['Recovery Stage 1 Delay (Hours)'],
+      MIN_STAGE_1_HOURS,
+    ) * 60 * 60 * 1000;
+    const stage2DelayMs = configuredDelayHours(
+      config['Recovery Stage 2 Delay (Hours)'],
+      MIN_STAGE_2_HOURS,
+    ) * 60 * 60 * 1000;
+    const now = Date.now();
+    let attempted = 0;
+    let providerAccepted = 0;
+    let reconciledAcceptances = 0;
+    let completed = 0;
+    let failed = 0;
+    let skipped = 0;
+
+    const acceptedEvent = (tagType: string, email: string) => {
+      const context = buildEmailActionContext(tagType, email);
+      if (!context.recipientId) return undefined;
+      return actionEvents.find((event) =>
+        event.eventType === 'provider_accepted'
+        && event.campaign === context.campaign
+        && event.recipientId === context.recipientId
+        && Boolean(event.providerMessageId)
+      );
+    };
+
+    for (const application of applications) {
+      const status = String(application.priorityRecoveryStatus || 'ACTIVE');
+      if (application.priorityProcessing
+        || application.recoveryPurchased
+        || ['COMPLETED', 'CANCELLED'].includes(status)
+        || TERMINAL_APPLICATION_STATUSES.has(String(application.applicationStatus || ''))) {
+        skipped++;
+        continue;
+      }
+      if (RETIRED_SEQUENCE_STATUSES.has(status)) {
+        await updateMCAApplicationRecovery(application.applicationId, {
+          priorityRecoveryStatus: 'COMPLETED',
+          recoveryStage: 'COMPLETED',
+        });
+        completed++;
+        continue;
+      }
+      if (!application.consent
+        || !application.consentToShare
+        || !/^\S+@\S+\.\S+$/.test(String(application.email || ''))
+        || !RECOVERY_TOKEN.test(String(application.recoveryToken || ''))) {
+        skipped++;
+        continue;
+      }
+      const createdAt = dateValue(application.timestamp);
+      if (!createdAt || createdAt > now) {
+        skipped++;
+        continue;
+      }
+
+      const isStage1 = ['ACTIVE', 'NONE', '', 'CHECKOUT_STARTED'].includes(status)
+        && now - createdAt >= stage1DelayMs;
+      const isStage2 = status === 'EMAIL_1_SENT'
+        && now - createdAt >= stage2DelayMs
+        && now - dateValue(application.lastRecoveryEmail) >= 24 * 60 * 60 * 1000;
+      if (!isStage1 && !isStage2) {
+        skipped++;
+        continue;
+      }
+      if (attempted >= BATCH_LIMIT) {
+        skipped++;
+        continue;
+      }
+
+      const stage = isStage1 ? 1 : 2;
+      const tagType = `mca-recovery-email${stage}`;
+      const previousAcceptance = acceptedEvent(tagType, application.email);
+      const acceptedAt = previousAcceptance?.occurredAt || new Date().toISOString();
+      if (!previousAcceptance) {
+        attempted++;
+        const result = stage === 1
+          ? await sendMCARecoveryEmail1({
+              to: application.email,
+              name: application.ownerName,
+              recoveryToken: application.recoveryToken,
+            })
+          : await sendMCARecoveryEmail2({
+              to: application.email,
+              name: application.ownerName,
+              recoveryToken: application.recoveryToken,
+            });
+        if (!result.success || !result.providerMessageId) {
+          failed++;
+          continue;
+        }
+        providerAccepted++;
+      } else {
+        reconciledAcceptances++;
+      }
+
+      const finalStage = stage === 2;
+      const updated = await updateMCAApplicationRecovery(application.applicationId, {
+        priorityRecoveryStatus: finalStage ? 'COMPLETED' : 'EMAIL_1_SENT',
+        recoveryStage: finalStage ? 'COMPLETED' : 'EMAIL_1',
+        recoveryEmail1Sent: stage === 1 ? acceptedAt : application.recoveryEmail1Sent,
+        recoveryEmail2Sent: stage === 2 ? acceptedAt : application.recoveryEmail2Sent,
+        lastRecoveryEmail: acceptedAt,
+      });
+      if (!updated) {
+        failed++;
+        continue;
+      }
+      if (finalStage) completed++;
+      await appendMCAActivityLog({
+        timestamp: acceptedAt,
+        applicationId: application.applicationId,
+        email: application.email,
+        event: finalStage
+          ? 'mca_recovery_email_2_provider_accepted_sequence_completed'
+          : 'mca_recovery_email_1_provider_accepted',
+        metadata: { providerAccepted: true, stage },
+      }).catch(() => {});
+    }
+
+    const summary = {
+      applications: applications.length,
+      attempted,
+      providerAccepted,
+      reconciledAcceptances,
+      completed,
+      failed,
+      skipped,
+      batchLimit: BATCH_LIMIT,
+      stages: 2,
+    };
+    await finishOperationLease(lease, failed > 0 ? 'PARTIAL' : 'SUCCEEDED', summary);
+    return NextResponse.json(
+      { success: failed === 0, result: summary },
+      { status: failed > 0 ? 502 : 200 },
+    );
+  } catch (error) {
+    const message = error instanceof Error ? error.message : 'MCA recovery processing failed.';
+    await finishOperationLease(lease, 'FAILED', { error: message });
+    return NextResponse.json({ success: false, error: message }, { status: 500 });
+  }
+}
+
+export async function POST(request: NextRequest) {
+  return GET(request);
 }

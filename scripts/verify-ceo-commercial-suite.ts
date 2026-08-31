@@ -166,6 +166,8 @@ async function run() {
   const mcaSuccessPage = fs.readFileSync(path.join(root, 'app/mca/priority-success/page.tsx'), 'utf8');
   const mcaDeliveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-readiness-delivery.ts'), 'utf8');
   const mcaRecoveryEmail = fs.readFileSync(path.join(root, 'lib/emails/mca-recovery.ts'), 'utf8');
+  const mcaRecoveryRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-mca-priority-recovery/route.ts'), 'utf8');
+  const vercelConfig = fs.readFileSync(path.join(root, 'vercel.json'), 'utf8');
   const contactPage = fs.readFileSync(path.join(root, 'app/contact/page.tsx'), 'utf8');
   const contactClient = fs.readFileSync(path.join(root, 'app/contact/ContactClient.tsx'), 'utf8');
   const contactRoute = fs.readFileSync(path.join(root, 'app/api/contact/route.ts'), 'utf8');
@@ -346,6 +348,10 @@ async function run() {
   const mcaPromiseSurface = `${mcaCheckoutPage} ${mcaThankYouPage} ${mcaSuccessPage} ${mcaRecoveryEmail}`.toLowerCase();
   assert(!mcaPromiseSurface.includes('assigned analyst') && !mcaPromiseSurface.includes('dedicated specialist') && !mcaPromiseSurface.includes('manually audit') && !mcaPromiseSurface.includes('within 4 hours'), 'MCA product makes no manual specialist or time-bound fulfillment promise');
   assert(mcaCheckoutPage.includes('does not read bank-statement contents') && mcaRecoveryEmail.includes('does not inspect bank-statement contents'), 'MCA sales and recovery copy state the automated report boundary');
+  assert(mcaRecoveryRoute.includes("acquireOperationLease('mca-priority-recovery'") && mcaRecoveryRoute.includes('BATCH_LIMIT = 5'), 'MCA recovery is protected by a durable lease and a five-recipient execution cap');
+  assert(mcaRecoveryRoute.includes('MIN_STAGE_1_HOURS = 24') && mcaRecoveryRoute.includes('MIN_STAGE_2_HOURS = 72') && mcaRecoveryRoute.includes('stages: 2'), 'MCA recovery is limited to a conservative 24-hour and 72-hour two-touch sequence');
+  assert(mcaRecoveryRoute.includes('RECOVERY_TOKEN.test') && mcaRecoveryRoute.includes('application.consentToShare') && mcaRecoveryRoute.includes("event.eventType === 'provider_accepted'"), 'MCA recovery requires consent, a private token, and durable provider-acceptance deduplication');
+  assert(vercelConfig.includes('/api/cron/process-mca-priority-recovery'), 'The validated CAD $49 MCA recovery path is scheduled in production');
   assert(mcaDeliveryEmail.includes("tagType: 'mca-product-delivery'"), 'MCA transactional delivery is not misclassified as promotional outreach');
   assert(deliveryRecovery.includes("purchase.productId === 'mca-readiness-report'") && deliveryRecovery.includes('sendMCAReadinessReportDelivery'), 'Daily product-delivery recovery retries failed MCA report emails');
   assert(evidenceMetrics.includes('allTimeVerifiedCAD') && evidenceMetrics.includes('rolling30dVerifiedCAD'), 'CEO evidence reports verified CAD cash separately from USD');

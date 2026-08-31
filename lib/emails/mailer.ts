@@ -329,7 +329,7 @@ export async function sendEmail({
 
   // 2. FALLBACK 1: If Resend fails, skipped, or daily quota (100) is reached -> Failover to Brevo
   if (process.env.BREVO_API_KEY) {
-    console.log(`🔄 Resend skipped/error encountered. Failing over to Brevo for ${to}...`);
+    console.log('🔄 Resend skipped/error encountered. Attempting authenticated Brevo fallback.');
     const brevoResult = await sendViaBrevo({
       to,
       subject,
