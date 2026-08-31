@@ -109,7 +109,9 @@ async function run() {
   assert(IntentEngine.classifyKeyword('grant application help').recommendedOfferPriceUSD === 79, 'SEO intent engine routes application demand to the self-serve $79 blueprint');
 
   const root = process.cwd();
+  const ceoMemory = fs.readFileSync(path.join(root, 'lib/ceo-agent/ceo-memory.ts'), 'utf8');
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
+  assert(ceoMemory.includes("ACTIVE_CASH_TARGET_END_AT = '2026-09-25T23:59:59.000Z'"), 'CEO scoreboard is aligned to the approved September 25 cash deadline');
   const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
   const approvedNewsletterCohortRoute = fs.readFileSync(path.join(root, 'app/api/admin/alerts/newsletter/approved-cohort/route.ts'), 'utf8');
   const telemetryRoute = fs.readFileSync(path.join(root, 'app/api/telemetry/route.ts'), 'utf8');
@@ -200,7 +202,8 @@ async function run() {
   assert(activeNewsletterTemplates.includes('data.unsubscribeToken') && !activeNewsletterTemplates.includes('wrapNewsletterTemplate(contentHtml, data.loginToken'), 'Active commercial newsletters use a scoped unsubscribe credential instead of a login credential');
   assert(checkoutProfileRoute.includes('isLoginToken(token, candidate.loginToken)') && standaloneCheckout.includes('/api/products/checkout-profile?token='), 'Opaque subscriber tokens securely prefill the self-serve checkout without email in the campaign URL');
   assert(revenueSprintRoute.includes('isValidCronRequest') && revenueSprintRoute.includes('acquireOperationLease') && revenueSprintRoute.includes('Math.min(20'), 'Revenue sprint is authenticated, leased, and capped at 20 recipients per run');
-  assert(['INITIAL_COHORT_CAP = 20', 'CHECKOUT_VALIDATED_CAP = 40', 'PAYMENT_VALIDATED_CAP = 100', 'PAUSE_NO_CHECKOUT', 'REVENUE_SPRINT_END_AT'].every((value) => revenueSprintService.includes(value)), 'Revenue sprint scales only from provider-accepted messages to checkout evidence to verified payment and then expires');
+  assert(['INITIAL_COHORT_CAP = 20', 'CHECKOUT_VALIDATED_CAP = 40', 'PAYMENT_VALIDATED_CAP = 100', 'PAUSE_NO_CHECKOUT', "REVENUE_SPRINT_END_AT = '2026-09-25", "REVENUE_SPRINT_CAMPAIGN = 'revenue-sprint-september-entry-19'"].every((value) => revenueSprintService.includes(value)), 'September revenue sprint is isolated, scales only from checkout to verified payment, and expires on the target date');
+  assert(revenueSprintService.includes("offerId: 'funding-match-report' as RevenueSprintOfferId"), 'The fresh evidence cohort tests the lowest-friction existing $19 product after the $79 cohort failed to create a checkout');
   assert(revenueSprintService.includes('isProviderVerifiedPurchase') && revenueSprintService.includes('isTestOrInternalContact') && revenueSprintService.includes('hasRecentCommercialProviderAcceptance') && revenueSprintService.includes('recentlyAcceptedRecipientIds'), 'Revenue sprint excludes buyers, internal contacts, and every recipient contacted in the prior 48 hours');
   assert(['funding-bundle', 'funding-roadmap', 'funding-membership', 'funding-match-report'].every((offer) => revenueSprintEmail.includes(`'${offer}'`)), 'Revenue sprint distributes the complete call-free $79/$49/$29/$19 product ladder');
   assert(revenueSprintEmail.includes('unsubscribeToken') && revenueSprintEmail.includes('No call or live session is required') && !revenueSprintEmail.toLowerCase().includes('limited time'), 'Revenue sprint uses scoped unsubscribe links and makes no call or false-urgency promise');
@@ -224,6 +227,8 @@ async function run() {
   assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()'), 'Daily GrowthOS health reconciles provider delivery state before reporting evidence');
   assert(actionScorecard.includes("decision: 'SCALE' | 'HOLD' | 'STOP'"), 'CEO action P&L emits explicit scale, hold, or stop decisions');
   assert(actionScorecard.includes('verifiedPageViewKeys') && actionScorecard.includes('isLikelyAutomatedUserAgent'), 'CEO action P&L excludes bot and link-scanner clicks from qualified-lead decisions');
+  assert(actionScorecard.includes('explicitHumanSessions') && actionScorecard.includes('deliveredMessageIds'), 'CEO action P&L requires explicit human sessions and verified email delivery before counting qualified leads');
+  assert(!actionScorecard.includes('acceptedMessageIds.size >= 20 || organicClickEvents.length >= 20'), 'Provider acceptance alone cannot trigger a channel stop decision');
   assert(['productCheckoutViews', 'deliveryEmailsReady', 'paypalButtonsRendered', 'paypalButtonClicks', 'paypalApprovals', 'paypalFailures'].every((stage) => actionScorecard.includes(stage)), 'CEO action P&L reports every newly measured product-to-PayPal handoff');
   assert(!authorityDiscovery.includes('contact@${domain}') && !authorityDiscovery.includes('960fb097'), 'Authority discovery neither guesses recipients nor embeds credentials');
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');

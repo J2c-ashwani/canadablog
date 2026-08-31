@@ -5,6 +5,7 @@ import { Footer } from '@/components/Footer';
 import { getAllPurchases } from '@/lib/products/purchase-store';
 import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
 import {
+  evaluateSearchDistributionExpansion,
   normalizeSearchDistributionPath,
   SEARCH_DISTRIBUTION_COHORT_PATHS,
   SEARCH_DISTRIBUTION_ROLLOUT_ID,
@@ -964,6 +965,16 @@ export default async function RevenueDashboardPage({
   const searchCohortRp1kov = searchCohortOrganicVisitors > 0
     ? (searchCohortRevenue / searchCohortOrganicVisitors) * 1000
     : 0;
+  const searchCohortExpansion = evaluateSearchDistributionExpansion({
+    organicVisitors: searchCohortOrganicVisitors,
+    verifiedPurchases: searchCohortPurchases.length,
+    verifiedRevenueUSD: searchCohortRevenue,
+    // GSC comparison, funnel baseline, and protected-flow verification require
+    // the 14-day human review. Unknown evidence deliberately fails closed.
+    seoPerformance: 'unknown',
+    funnelPerformance: 'unknown',
+    protectedFlows: 'unknown',
+  });
 
   // Unit Economics
   const totalPurchasesCount = postPurchases.length;
@@ -1303,7 +1314,7 @@ export default async function RevenueDashboardPage({
 
   // RES rating with threshold validation
   const resScore = postRp1kov;
-  const hasEnoughDataForRes = postOrganicVisitors >= 500 || totalPurchasesCount >= 5;
+  const hasEnoughDataForRes = postOrganicVisitors >= 500 && totalPurchasesCount >= 5;
   let resRating = { color: 'text-red-650 bg-red-50 border-red-200', text: 'Funnel Not Validated', badge: '🔴 Under $100' };
   if (resScore >= 700) {
     resRating = { color: 'text-purple-600 bg-purple-50 border-purple-200', text: 'Scale Aggressively', badge: '🟣 $700+' };
@@ -2509,7 +2520,7 @@ export default async function RevenueDashboardPage({
                     </div>
                   ) : (
                     <div className="mt-3 text-[9px] text-gray-400 leading-snug font-medium">
-                      Requires 500+ organic visitors or 5+ purchases to compute reliable score.
+                      Requires 500+ organic visitors and 5+ verified purchases. Traffic alone never validates revenue efficiency.
                     </div>
                   )}
                 </div>
@@ -2525,16 +2536,18 @@ export default async function RevenueDashboardPage({
                   </div>
                   <div className="mt-4 grid grid-cols-3 gap-1 border-t border-gray-100 pt-3 text-[9px] text-gray-500 font-bold uppercase text-center">
                     <div>
-                      <div className="text-gray-400 text-[8px]">Target</div>
-                      <div className="text-slate-900 font-extrabold">$300.00</div>
+                      <div className="text-gray-400 text-[8px]">Purchases</div>
+                      <div className="text-slate-900 font-extrabold">{searchCohortPurchases.length} / 5</div>
                     </div>
                     <div>
-                      <div className="text-gray-400 text-[8px]">Sitewide</div>
-                      <div className="text-slate-900 font-extrabold">${postRp1kov.toFixed(2)}</div>
+                      <div className="text-gray-400 text-[8px]">Observation</div>
+                      <div className="text-slate-900 font-extrabold">{searchCohortExpansion.observationDays} / 14d</div>
                     </div>
                     <div>
-                      <div className="text-gray-400 text-[8px]">Trend</div>
-                      <div className="text-emerald-600 font-extrabold">+∞</div>
+                      <div className="text-gray-400 text-[8px]">Expansion</div>
+                      <div className={searchCohortExpansion.eligible ? 'text-emerald-600 font-extrabold' : 'text-amber-600 font-extrabold'}>
+                        {searchCohortExpansion.eligible ? 'ELIGIBLE' : 'LOCKED'}
+                      </div>
                     </div>
                   </div>
                 </div>

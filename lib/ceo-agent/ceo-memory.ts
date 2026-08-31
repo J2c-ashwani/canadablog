@@ -46,6 +46,7 @@ export interface CEODecisionRecord {
 }
 
 const STATE_KEY = 'ceo_goal_state_v3';
+export const ACTIVE_CASH_TARGET_END_AT = '2026-09-25T23:59:59.000Z';
 const DECISION_HEADERS = [
   'Decision ID', 'Run ID', 'Trigger Source', 'Monthly Target USD', 'Verified MTD USD',
   'Primary Bottleneck', 'Estimated Leakage USD', 'Decision Basis JSON', 'Directives JSON',
@@ -61,6 +62,9 @@ function defaultState(): CEOGoalState {
   const monthlyTarget = configuredTarget('GROWTH_OS_MONTHLY_REVENUE_TARGET_USD', 10000);
   const recurringTarget = configuredTarget('GROWTH_OS_MRR_TARGET_USD', 10000);
   const now = new Date();
+  const activeDeadline = new Date(ACTIVE_CASH_TARGET_END_AT).getTime() > now.getTime()
+    ? ACTIVE_CASH_TARGET_END_AT
+    : new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString();
   const daysInMonth = new Date(Date.UTC(now.getUTCFullYear(), now.getUTCMonth() + 1, 0)).getUTCDate();
   return {
     id: 'current',
@@ -75,7 +79,7 @@ function defaultState(): CEOGoalState {
     estimated_monthly_leakage_usd: 0,
     priority_focus: 'Acquire the first 10 provider-verified customers from the current product set',
     sprint_started_at: now.toISOString(),
-    sprint_ends_at: new Date(now.getTime() + 30 * 24 * 60 * 60 * 1000).toISOString(),
+    sprint_ends_at: activeDeadline,
     sprint_baseline_verified_revenue_usd: 0,
     sprint_baseline_initialized_at: '',
     updated_at: now.toISOString(),
@@ -106,6 +110,7 @@ export class CEOMemory {
     memoryState.monthly_revenue_target_usd = configured.monthly_revenue_target_usd;
     memoryState.recurring_mrr_target_usd = configured.recurring_mrr_target_usd;
     memoryState.daily_target_pace_usd = configured.daily_target_pace_usd;
+    memoryState.sprint_ends_at = configured.sprint_ends_at;
     return memoryState;
   }
 
@@ -119,6 +124,7 @@ export class CEOMemory {
       monthly_revenue_target_usd: configured.monthly_revenue_target_usd,
       recurring_mrr_target_usd: configured.recurring_mrr_target_usd,
       daily_target_pace_usd: configured.daily_target_pace_usd,
+      sprint_ends_at: configured.sprint_ends_at,
       updated_at: new Date().toISOString(),
     };
     memoryState = updated;

@@ -34,4 +34,14 @@ The earlier local `next build` compiled and type-checked, then stopped during st
 
 ## Expansion rule
 
-Do not enable the shared template across the remaining pages from this release. Expansion requires a clean production cohort, no protected-flow regression, and enough measured organic traffic to evaluate the provider-verified revenue KPI. Each later batch must remain independently reversible.
+Do not enable the shared template across the remaining pages from this release. Traffic alone never authorizes expansion.
+
+Every later batch requires all of these gates:
+
+1. **Observation:** at least 14 full days since the cohort release and at least 500 unique organic cohort visitors.
+2. **SEO:** cohort rankings/CTR improve or remain neutral; a regression fails the gate.
+3. **Funnel:** organic visitor → product click → checkout performance does not materially deteriorate.
+4. **Revenue:** at least five provider-verified cohort purchases, or the conservative alternative evidence threshold of at least 1,000 organic cohort visitors, three verified purchases, and positive verified RP1KOV.
+5. **No regression:** checkout, payment, fulfillment, email, calculator, Growth OS, and sitewide verified revenue remain healthy.
+
+Unknown evidence fails closed. A human-reviewed expansion decision is still required even when every coded gate passes. Each later batch must remain independently reversible.

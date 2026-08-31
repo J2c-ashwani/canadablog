@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import { getAllPseoPages } from '../lib/pseo-data';
 import { resolveBenchmarkBySlug } from '../lib/editorial/eligibilityBenchmarks';
 import {
+  evaluateSearchDistributionExpansion,
   getPseoSearchDistributionPath,
   getSearchDistributionContext,
   isSearchDistributionCohortPath,
@@ -29,6 +30,34 @@ assert.equal(isSearchDistributionCohortPath('/GRANTS/ON/TORONTO/RESTAURANTS-HOSP
 assert.equal(isSearchDistributionCohortPath('/grants/on/ottawa/technology'), false);
 assert.equal(isSearchDistributionCohortPath('/grants/tx/austin/technology'), false);
 assert.equal(normalizeSearchDistributionPath(' /BLOG/NIH-SBIR-BIOTECH-GRANTS/ '), '/blog/nih-sbir-biotech-grants');
+
+assert.equal(evaluateSearchDistributionExpansion({
+  evaluatedAt: '2026-09-20T00:00:00.000Z',
+  organicVisitors: 500,
+  verifiedPurchases: 0,
+  verifiedRevenueUSD: 0,
+  seoPerformance: 'improved',
+  funnelPerformance: 'non_degrading',
+  protectedFlows: 'healthy',
+}).eligible, false, 'traffic alone must never authorize expansion');
+assert.equal(evaluateSearchDistributionExpansion({
+  evaluatedAt: '2026-09-20T00:00:00.000Z',
+  organicVisitors: 1000,
+  verifiedPurchases: 3,
+  verifiedRevenueUSD: 57,
+  seoPerformance: 'neutral',
+  funnelPerformance: 'non_degrading',
+  protectedFlows: 'healthy',
+}).eligible, true, 'conservative positive-RP1KOV alternative should pass after 14 days');
+assert.equal(evaluateSearchDistributionExpansion({
+  evaluatedAt: '2026-09-10T00:00:00.000Z',
+  organicVisitors: 1000,
+  verifiedPurchases: 5,
+  verifiedRevenueUSD: 95,
+  seoPerformance: 'improved',
+  funnelPerformance: 'non_degrading',
+  protectedFlows: 'healthy',
+}).eligible, false, 'purchase evidence must not bypass the minimum observation period');
 
 const pseoPages = getAllPseoPages();
 const pseoCohort = pseoPages.filter((page) => isSearchDistributionCohortPath(

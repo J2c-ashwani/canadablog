@@ -85,10 +85,20 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
   ]);
   const cutoff = Date.now() - windowDays * 24 * 60 * 60 * 1000;
   const recentEvents = events.filter((event) => dateValue(event.occurredAt) >= cutoff);
-  const verifiedPageViewKeys = new Set(telemetry
+  const checkoutEventNames = new Set(['checkout_started', 'standalone_checkout_started', 'begin_checkout']);
+  const explicitHumanSessions = new Set(telemetry
     .filter((event) => dateValue(event.timestamp) >= cutoff)
+    .filter((event) => event.trafficQualityClassification === 'High Confidence Human'
+      || checkoutEventNames.has(event.eventName)
+      || event.eventName === 'purchase_completed')
+    .map((event) => event.sessionId)
+    .filter(Boolean));
+  const humanTelemetry = telemetry
+    .filter((event) => dateValue(event.timestamp) >= cutoff)
+    .filter((event) => explicitHumanSessions.has(event.sessionId))
+    .filter((event) => !['Likely Bot', 'Suspicious'].includes(event.trafficQualityClassification || ''));
+  const verifiedPageViewKeys = new Set(humanTelemetry
     .filter((event) => event.eventName === 'page_view' && event.actionId && event.actionRecipientId)
-    .filter((event) => !['Likely Bot', 'Suspicious'].includes(event.trafficQualityClassification || ''))
     .map((event) => `${event.actionId}:${event.actionRecipientId}`));
   const isVerifiedBrowserClick = (event: (typeof recentEvents)[number]) =>
     event.eventType === 'click'
@@ -110,9 +120,7 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
 
   const rows: ActionPerformanceRow[] = Array.from(actionIds).map((actionId) => {
     const actionEvents = recentEvents.filter((event) => event.actionId === actionId);
-    const actionTelemetry = telemetry.filter((event) =>
-      event.actionId === actionId && dateValue(event.timestamp) >= cutoff
-    );
+    const actionTelemetry = humanTelemetry.filter((event) => event.actionId === actionId);
     const uniqueTelemetrySessions = (...eventNames: string[]) => new Set(actionTelemetry
       .filter((event) => eventNames.includes(event.eventName))
       .map((event) => event.sessionId)
@@ -144,8 +152,15 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     );
     const verifiedClickEvents = actionEvents.filter(isVerifiedBrowserClick);
     const organicClickEvents = verifiedClickEvents.filter((event) => event.channel.startsWith('organic_'));
+    const deliveredMessageIds = new Set(Array.from(acceptedMessageIds).filter((messageId) => {
+      const states = providerState.get(messageId) || new Set<string>();
+      return states.has('email.delivered') || states.has('email.opened') || states.has('email.clicked');
+    }));
+    const deliveredRecipientIds = acceptedEvents
+      .filter((event) => deliveredMessageIds.has(event.providerMessageId))
+      .map((event) => event.recipientId);
     const qualifiedLeads = new Set([
-      ...acceptedEvents.map((event) => event.recipientId),
+      ...deliveredRecipientIds,
       ...organicClickEvents.map((event) => event.recipientId),
     ].filter(Boolean)).size;
     const checkouts = new Set(actionEvents.filter((event) => event.eventType === 'checkout_started').map((event) => event.referenceId || event.eventId)).size;
@@ -187,9 +202,11 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     } else if (purchasesCount >= 1 && revenueUSD > 0) {
       decision = 'SCALE';
       decisionReason = 'At least one provider-verified payment is directly attributed to this action.';
-    } else if ((acceptedMessageIds.size >= 20 || organicClickEvents.length >= 20) && checkouts === 0) {
+    } else if ((deliveredMessageIds.size >= 20 || organicClickEvents.length >= 20) && checkouts === 0) {
       decision = 'STOP';
-      decisionReason = 'Twenty qualified contacts or first-party product clicks produced no measured checkout; stop and replace the action.';
+      decisionReason = 'Twenty verified deliveries or first-party human product clicks produced no measured checkout; stop and replace the action.';
+    } else if (acceptedMessageIds.size > 0 && deliveredMessageIds.size === 0) {
+      decisionReason = 'Provider acceptance exists, but delivery is not verified; reconcile provider evidence before scaling or stopping.';
     }
     const first = actionEvents[0];
     return {
@@ -221,8 +238,14 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     };
   }).sort((left, right) => right.revenueUSD - left.revenueUSD || right.mrrUSD - left.mrrUSD || right.providerAccepted - left.providerAccepted);
 
+  const deliveredProviderMessageIds = new Set(Array.from(providerState.entries())
+    .filter(([, states]) => states.has('email.delivered') || states.has('email.opened') || states.has('email.clicked'))
+    .map(([messageId]) => messageId));
   const totalQualifiedLeadsAffected = new Set(recentEvents
-    .filter((event) => event.eventType === 'provider_accepted' || (event.channel.startsWith('organic_') && isVerifiedBrowserClick(event)))
+    .filter((event) => (
+      (event.eventType === 'provider_accepted' && deliveredProviderMessageIds.has(event.providerMessageId))
+      || (event.channel.startsWith('organic_') && isVerifiedBrowserClick(event))
+    ))
     .map((event) => event.recipientId)
     .filter(Boolean)).size;
   const totalRevenueUSD = roundMoney(rows.reduce((sum, row) => sum + row.revenueUSD, 0));

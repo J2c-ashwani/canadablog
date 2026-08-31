@@ -69,13 +69,17 @@ export async function sendRevenueSprintOffer(input: {
   loginToken: string
   unsubscribeToken: string
   offerId: RevenueSprintOfferId
+  campaignTagType?: string
 }) {
   const offer = OFFERS[input.offerId]
+  const campaignTagType = input.campaignTagType?.startsWith('revenue-sprint-')
+    ? input.campaignTagType
+    : offer.tagType
   const firstName = getFirstName(input.name)
   const company = cleanCompanyName(input.companyName)
   const industry = cleanIndustryName(input.industry)
   const region = cleanRegionName(input.region)
-  const checkoutUrl = buildUrl(offer.path, input.loginToken, offer.tagType)
+  const checkoutUrl = buildUrl(offer.path, input.loginToken, campaignTagType)
   const unsubscribeUrl = isUnsubscribeToken(input.unsubscribeToken, input.unsubscribeToken)
     ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(input.unsubscribeToken)}`
     : 'https://www.fsidigital.ca/subscribe/unsubscribe'
@@ -110,7 +114,7 @@ export async function sendRevenueSprintOffer(input: {
     subject: offer.subject,
     html,
     text,
-    tagType: offer.tagType,
+    tagType: campaignTagType,
     companyName: input.companyName,
   })
 }

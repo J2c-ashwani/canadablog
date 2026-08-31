@@ -19,8 +19,9 @@ import {
   type RevenueSprintOfferId,
 } from '@/lib/emails/revenue-sprint'
 
-export const REVENUE_SPRINT_START_AT = '2026-08-30T00:00:00.000Z'
-export const REVENUE_SPRINT_END_AT = '2026-08-31T18:29:59.000Z'
+export const REVENUE_SPRINT_START_AT = '2026-08-31T00:00:00.000Z'
+export const REVENUE_SPRINT_END_AT = '2026-09-25T23:59:59.000Z'
+export const REVENUE_SPRINT_CAMPAIGN = 'revenue-sprint-september-entry-19'
 const INITIAL_COHORT_CAP = 20
 const CHECKOUT_VALIDATED_CAP = 40
 const PAYMENT_VALIDATED_CAP = 100
@@ -118,7 +119,7 @@ export class RevenueSprintService {
     const now = Date.now()
     const events = await getGrowthActionEvents()
     const sprintEvents = events.filter((event) =>
-      event.campaign.startsWith('revenue-sprint-')
+      event.campaign === REVENUE_SPRINT_CAMPAIGN
       && new Date(event.occurredAt).getTime() >= new Date(REVENUE_SPRINT_START_AT).getTime()
     )
     const acceptedMessageIds = new Set(sprintEvents
@@ -147,7 +148,7 @@ export class RevenueSprintService {
 
     let decision: RevenueSprintRunSummary['decision'] = 'INITIAL_COHORT'
     let cohortCap = INITIAL_COHORT_CAP
-    let reason = 'Run the first evidence cohort and require checkout evidence before expanding.'
+    let reason = 'Run a fresh $19 entry-offer evidence cohort and require checkout evidence before expanding.'
     if (now > new Date(REVENUE_SPRINT_END_AT).getTime()) {
       decision = 'EXPIRED'
       cohortCap = acceptedMessageIds.size
@@ -214,10 +215,17 @@ export class RevenueSprintService {
       .filter((subscriber) => !activeMemberEmails.has(subscriber.email.toLowerCase().trim()))
       .filter((subscriber) => !hasRecentCommercialProviderAcceptance(subscriber))
       .filter((subscriber) => !recentlyAcceptedRecipientIds.has(
-        buildEmailActionContext('revenue-sprint-report-19', subscriber.email).recipientId
+        buildEmailActionContext(REVENUE_SPRINT_CAMPAIGN, subscriber.email).recipientId
       ))
       .filter((subscriber) => !parseCommercialActivity(subscriber.leadActivity).revenueSprintProviderMessageId)
-      .map((subscriber) => ({ subscriber, ...chooseOffer(subscriber) }))
+      // The prior $79 cohort produced no measured checkout. The next isolated
+      // experiment uses the lowest-friction current product while retaining
+      // high-fit lead priority. Post-purchase journeys distribute the ladder.
+      .map((subscriber) => ({
+        subscriber,
+        offerId: 'funding-match-report' as RevenueSprintOfferId,
+        priority: chooseOffer(subscriber).priority,
+      }))
       .sort((left, right) => right.priority - left.priority)
     summary.availableCandidates = candidates.length
 
@@ -234,7 +242,7 @@ export class RevenueSprintService {
         const credentials = await ensureScopedSubscriberTokens(subscriber.email)
         if (!credentials) {
           summary.failed++
-          summary.errors.push(`${buildEmailActionContext(offer.tagType, subscriber.email).recipientId}: secure credentials could not be issued`)
+          summary.errors.push(`${buildEmailActionContext(REVENUE_SPRINT_CAMPAIGN, subscriber.email).recipientId}: secure credentials could not be issued`)
           continue
         }
         loginToken = credentials.loginToken
@@ -250,8 +258,9 @@ export class RevenueSprintService {
         loginToken,
         unsubscribeToken,
         offerId: candidate.offerId,
+        campaignTagType: REVENUE_SPRINT_CAMPAIGN,
       })
-      const recipientId = buildEmailActionContext(offer.tagType, subscriber.email).recipientId
+      const recipientId = buildEmailActionContext(REVENUE_SPRINT_CAMPAIGN, subscriber.email).recipientId
       if (!result.success || !result.providerMessageId) {
         summary.failed++
         summary.errors.push(`${recipientId}: ${result.error || 'provider message ID missing'}`)
@@ -263,6 +272,7 @@ export class RevenueSprintService {
       activity.revenueSprintProvider = result.provider || ''
       activity.revenueSprintProviderMessageId = result.providerMessageId
       activity.revenueSprintOfferId = candidate.offerId
+      activity.revenueSprintCampaign = REVENUE_SPRINT_CAMPAIGN
       activity.revenueSprintPriceUSD = offer.price
       const saved = await SubscriberRepository.updateSubscriberPreferences(subscriber.email, {
         leadActivity: JSON.stringify(activity),
