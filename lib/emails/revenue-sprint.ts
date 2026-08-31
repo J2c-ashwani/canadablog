@@ -44,8 +44,8 @@ const OFFERS: Record<RevenueSprintOfferId, {
     price: 19,
     path: '/products/funding-match-report',
     tagType: 'revenue-sprint-report-19',
-    subject: 'Your next self-serve funding-screening step',
-    description: 'A concise first step for narrowing the current FSI database to programs worth reviewing for your profile.',
+    subject: 'Narrow your funding shortlist before you start applying',
+    description: 'Use your saved business profile to narrow the current FSI program database before spending time reading guidelines or preparing applications.',
     deliverables: ['Personalized program shortlist', 'Readiness indicators', 'Recommended next steps'],
   },
 }
@@ -86,13 +86,16 @@ export async function sendRevenueSprintOffer(input: {
   const profileContext = company
     ? `${company}'s ${industry} funding search in ${region}`
     : `your ${industry} funding search in ${region}`
+  const introduction = input.offerId === 'funding-match-report'
+    ? `You previously asked FSI Digital for business-funding information. Before spending time on applications, the first decision is which programs are actually worth reviewing for ${profileContext}. This is the lowest-cost self-serve way to take that next step:`
+    : `You previously asked FSI Digital for business-funding information. Based on the profile saved for ${profileContext}, this is the most relevant next self-serve option in the current product set:`
 
   const html = `
     <div style="background:#f8fafc;padding:36px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Arial,sans-serif;color:#334155;">
       <div style="max-width:580px;margin:0 auto;background:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:30px;">
         <div style="font-size:18px;font-weight:800;color:#0f172a;padding-bottom:16px;border-bottom:1px solid #f1f5f9;">FSI <span style="color:#059669;">Digital</span></div>
         <p style="font-weight:600;margin:22px 0 14px;">Hi ${firstName},</p>
-        <p style="line-height:1.65;margin:0 0 14px;">You previously asked FSI Digital for business-funding information. Based on the profile saved for ${profileContext}, this is the most relevant next self-serve option in the current product set:</p>
+        <p style="line-height:1.65;margin:0 0 14px;">${introduction}</p>
         <div style="margin:22px 0;padding:20px;background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;">
           <div style="font-size:17px;font-weight:800;color:#064e3b;">${offer.name} — $${offer.price}${input.offerId === 'funding-membership' ? '/month' : ' USD one time'}</div>
           <p style="font-size:14px;line-height:1.55;color:#065f46;margin:9px 0 12px;">${offer.description}</p>
@@ -107,7 +110,7 @@ export async function sendRevenueSprintOffer(input: {
       </div>
     </div>`
 
-  const text = `Hi ${firstName},\n\nYou previously asked FSI Digital for business-funding information. Based on the profile saved for ${profileContext}, the most relevant next self-serve option is:\n\n${offer.name} — $${offer.price}${input.offerId === 'funding-membership' ? '/month' : ' USD one time'}\n${offer.description}\n\nIncludes:\n${offer.deliverables.map((item) => `- ${item}`).join('\n')}\n\nNo call or live session is required. View it here:\n${checkoutUrl}\n\nProgram availability and final eligibility should always be confirmed with the official funding body.\n\nBest regards,\nAshwani K\nFounder, FSI Digital\n\nUnsubscribe: ${unsubscribeUrl}`
+  const text = `Hi ${firstName},\n\n${introduction}\n\n${offer.name} — $${offer.price}${input.offerId === 'funding-membership' ? '/month' : ' USD one time'}\n${offer.description}\n\nIncludes:\n${offer.deliverables.map((item) => `- ${item}`).join('\n')}\n\nNo call or live session is required. View it here:\n${checkoutUrl}\n\nProgram availability and final eligibility should always be confirmed with the official funding body.\n\nBest regards,\nAshwani K\nFounder, FSI Digital\n\nUnsubscribe: ${unsubscribeUrl}`
 
   return sendEmail({
     to: input.to,
