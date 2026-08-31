@@ -21,6 +21,7 @@
     "submit:search-cohort-indexnow": "npx tsx scripts/submit-search-cohort-indexnow.ts",
     "dry-run:mca-priority-recovery": "npx tsx -r dotenv/config scripts/dry-run-mca-priority-recovery.ts",
     "dry-run:cart-recovery": "npx tsx -r dotenv/config scripts/dry-run-cart-recovery.ts",
+    "dry-run:authority-partner-pilot": "npx tsx -r dotenv/config scripts/dry-run-authority-partner-pilot.ts",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",

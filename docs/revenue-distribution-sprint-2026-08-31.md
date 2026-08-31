@@ -75,6 +75,12 @@ The CEO dashboard must not treat an open row, a stale checkout, or an applicatio
 - The locally configured Facebook Page token was expired as of 2026-08-01 and the Page ID was unset. The API channel remains fail-closed; no post was attempted or counted.
 - A $19 match-report social variant may be published only as a controlled, attributable public action after explicit action-time approval. Social publishing receipts, clicks, checkouts, and provider-verified cash remain separate stages.
 
+## Authority and partner inventory
+
+A PII-free dry run found 115 authority rows but zero send-qualified or human-review-ready prospects. None had an exact persisted public source URL; 68 were pending, 38 were legacy exceptions, five had failed, and four were marked review-required. The email-shaped values therefore remain discovery data, not verified contact inventory, and no authority message was sent.
+
+Future discovery now persists the exact public result page, discovery source, campaign, and prospect ID while keeping every record `review_required`. The sheet writer no longer substitutes a bare domain when source provenance is missing. Only a later human review may move a prospect to `qualified`; the existing authority sender continues to ignore pending and review-required rows.
+
 ## Release safeguards
 
 - Existing prices, product promises, checkout, PayPal/Stripe capture, fulfillment, calculator, and URLs are unchanged.

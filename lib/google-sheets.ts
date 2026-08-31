@@ -1623,7 +1623,9 @@ export async function seedOutreachProspects(prospects: Omit<OutreachProspect, "r
       p.prospectId || randomUUID(),
       p.campaignId || "authority_discovery_v1",
       p.source || "authority_discovery",
-      p.sourceUrl || p.website,
+      // A bare domain is not proof that a contact address was publicly listed.
+      // Missing provenance remains blank and therefore review-blocked.
+      p.sourceUrl || "",
       p.createdAt || now,
       p.providerMessageId || "",
       p.deliveredAt || "",

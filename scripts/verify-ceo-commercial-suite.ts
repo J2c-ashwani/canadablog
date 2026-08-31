@@ -119,6 +119,7 @@ async function run() {
   const paypalWebhook = fs.readFileSync(path.join(root, 'app/api/paypal/webhook/route.ts'), 'utf8');
   const actionScorecard = fs.readFileSync(path.join(root, 'lib/growth-os/action-scorecard.ts'), 'utf8');
   const authorityDiscovery = fs.readFileSync(path.join(root, 'lib/growth-os/authority/opportunity-discovery.ts'), 'utf8');
+  const authorityDiscoveryRoute = fs.readFileSync(path.join(root, 'app/api/cron/discover-authority-opportunities/route.ts'), 'utf8');
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
   const organicProductLadder = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadder.tsx'), 'utf8');
@@ -241,6 +242,13 @@ async function run() {
   assert(!actionScorecard.includes('acceptedMessageIds.size >= 20 || organicClickEvents.length >= 20'), 'Provider acceptance alone cannot trigger a channel stop decision');
   assert(['productCheckoutViews', 'deliveryEmailsReady', 'paypalButtonsRendered', 'paypalButtonClicks', 'paypalApprovals', 'paypalFailures'].every((stage) => actionScorecard.includes(stage)), 'CEO action P&L reports every newly measured product-to-PayPal handoff');
   assert(!authorityDiscovery.includes('contact@${domain}') && !authorityDiscovery.includes('960fb097'), 'Authority discovery neither guesses recipients nor embeds credentials');
+  assert(
+    authorityDiscoveryRoute.includes('source: "serper_search_result"')
+      && authorityDiscoveryRoute.includes('sourceUrl: opp.targetPage')
+      && sheetsStore.includes('p.sourceUrl || ""')
+      && !sheetsStore.includes('p.sourceUrl || p.website'),
+    'Authority discovery persists exact public provenance and fails closed when it is missing',
+  );
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');
   const leaseFinalizer = operationsStore.slice(operationsStore.indexOf('export async function finishOperationLease'));
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');

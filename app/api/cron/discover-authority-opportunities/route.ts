@@ -55,6 +55,11 @@ export async function GET(request: NextRequest) {
       replied: false,
       positiveConversation: false,
       backlinkEarned: false,
+      prospectId: opp.id,
+      campaignId: `authority_discovery_${opp.category}`,
+      source: "serper_search_result",
+      sourceUrl: opp.targetPage,
+      createdAt: opp.discoveredAt,
     }));
 
     let savedToSheet = 0;
