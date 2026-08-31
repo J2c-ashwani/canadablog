@@ -686,6 +686,13 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         if (page.industrySlug === 'women-entrepreneurs') title = `Women Business Funding in ${page.cityName} (2026)`;
         else if (page.industrySlug === 'restaurants-hospitality') title = `Restaurant Grants in ${page.cityName} (2026)`;
         else title = `${page.industryName} Funding in ${page.cityName} (2026)`;
+
+        const zeroClickPageOneTitles: Record<string, string> = {
+            '/grants/va/norfolk-virginia-beach/arts-entertainment': 'Arts & Entertainment Grants in Norfolk & Virginia Beach (2026)',
+            '/grants/nc/raleigh/logistics': 'Logistics & Supply Chain Grants in Raleigh, NC (2026)',
+            '/grants/pa/erie/veterans': 'Veteran Business Grants in Erie, PA (2026)',
+        };
+        title = zeroClickPageOneTitles[rolloutPath] || title;
     }
 
     const canadaDescPatterns: Record<string, string> = {
@@ -711,6 +718,13 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         description = isCanada
             ? `Compare current grants, financing, and business-support routes for ${page.industryName.toLowerCase()} in ${page.cityName}. Verify ${page.provinceName} eligibility, timing, and official intakes.`
             : `Compare federal, ${page.provinceName}, and local funding routes for ${page.industryName.toLowerCase()} businesses in ${page.cityName}. Verify current eligibility and official intakes.`;
+
+        const zeroClickPageOneDescriptions: Record<string, string> = {
+            '/grants/va/norfolk-virginia-beach/arts-entertainment': 'Compare current arts and entertainment grants, Virginia incentives, and local creative-business funding in Norfolk and Virginia Beach. Verify official 2026 eligibility and intakes.',
+            '/grants/nc/raleigh/logistics': 'Compare logistics and supply-chain grants, North Carolina incentives, workforce funding, and financing for Raleigh businesses. Verify official 2026 eligibility and intakes.',
+            '/grants/pa/erie/veterans': 'Compare veteran business grants, Pennsylvania incentives, SBA support, procurement programs, and local funding routes in Erie. Verify official 2026 eligibility and intakes.',
+        };
+        description = zeroClickPageOneDescriptions[rolloutPath] || description;
     }
 
     const canadaKeywords = [

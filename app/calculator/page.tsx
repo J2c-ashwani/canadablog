@@ -5,6 +5,7 @@ import { GrantCalculator } from '@/components/calculator/GrantCalculator';
 import { Shield, Users, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
+import { OrganicProductLadderImpression } from '@/components/products/OrganicProductLadderImpression';
 
 export const metadata: Metadata = {
     title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
@@ -79,8 +80,8 @@ export default function CalculatorPage() {
                         <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto">
                             <Users className="w-6 h-6" />
                         </div>
-                        <h4 className="font-semibold text-lg">Expert Support</h4>
-                        <p className="text-gray-500 text-sm">Our grant specialists review your matches and guide you through applications.</p>
+                        <h4 className="font-semibold text-lg">Self-Serve Guidance</h4>
+                        <p className="text-gray-500 text-sm">Choose an instant match report, action plan, blueprint, or automated funding radar without booking a call.</p>
                     </div>
                     <div className="space-y-4">
                         <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
@@ -91,14 +92,31 @@ export default function CalculatorPage() {
                     </div>
                 </div>
 
-                {/* Call to action */}
-                <div className="mt-24 text-center">
-                    <p className="text-gray-600 mb-4">Want to speak with someone right away?</p>
-                    <Button variant="outline" size="lg" asChild className="rounded-full">
-                        <Link href="/contact">
-                            Talk to a Grant Specialist <ArrowRight className="w-4 h-4 ml-2" />
-                        </Link>
-                    </Button>
+                {/* Self-serve revenue handoff */}
+                <div className="mt-24 rounded-2xl border border-slate-200 bg-slate-950 px-6 py-8 text-center text-white shadow-xl sm:px-10">
+                    <OrganicProductLadderImpression
+                        surface="calculator-result"
+                        context="calculator-page-exit"
+                        offerId="match-report"
+                    />
+                    <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-400">Continue without a call</p>
+                    <h2 className="mt-3 text-2xl font-extrabold">Turn the estimate into a practical next step</h2>
+                    <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-300">
+                        Get the one-time $19 Funding Match Report now, or use the $29/month Funding Watch for automated matching and deadline monitoring.
+                    </p>
+                    <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
+                        <Button size="lg" asChild className="rounded-full bg-emerald-500 font-extrabold text-slate-950 hover:bg-emerald-400">
+                            <Link href="/api/growth-os/onsite-click?surface=calculator-result&context=calculator-page-exit&offer=match-report&experiment=focused-v2">
+                                Get the $19 Match Report <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                        </Button>
+                        <Button variant="outline" size="lg" asChild className="rounded-full border-slate-600 bg-transparent font-extrabold text-white hover:bg-slate-800 hover:text-white">
+                            <Link href="/api/growth-os/onsite-click?surface=calculator-result&context=calculator-page-exit&offer=membership&experiment=focused-v2">
+                                Start Funding Watch — $29/month <ArrowRight className="ml-2 h-4 w-4" />
+                            </Link>
+                        </Button>
+                    </div>
+                    <p className="mt-4 text-xs text-slate-400">Instant or automated digital delivery · no consultation or live session included</p>
                 </div>
 
             </div>

@@ -95,6 +95,15 @@ assert.equal(onsiteClickSource.includes("contentContext.startsWith('seo-cohort-v
 const pseoTemplateSource = readFileSync('app/grants/[province]/[city]/[industry]/page.tsx', 'utf8');
 const blogTemplateSource = readFileSync('app/blog/[slug]/page.tsx', 'utf8');
 assert.equal(
+  [
+    'Arts & Entertainment Grants in Norfolk & Virginia Beach (2026)',
+    'Logistics & Supply Chain Grants in Raleigh, NC (2026)',
+    'Veteran Business Grants in Erie, PA (2026)',
+  ].every((title) => pseoTemplateSource.includes(title)),
+  true,
+  'page-one zero-click cohort routes must retain their isolated CTR title treatments',
+);
+assert.equal(
   pseoTemplateSource.includes('data-cohort-revenue-cta="hero-match-report"')
     && pseoTemplateSource.includes('verifiedCohort && (')
     && pseoTemplateSource.includes('offer=match-report&experiment=focused-v2'),

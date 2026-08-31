@@ -1,5 +1,6 @@
 import { ArrowRight, BellRing, FileCheck2, FileSearch, Layers3 } from 'lucide-react';
 import { selectDistributedOffer } from '@/lib/products/distribution';
+import { OrganicProductLadderImpression } from '@/components/products/OrganicProductLadderImpression';
 
 type Surface = 'blog' | 'grants-city-industry' | 'footer' | 'homepage';
 
@@ -77,6 +78,11 @@ export function OrganicProductLadder({ surface, context }: OrganicProductLadderP
       aria-label="Self-serve funding products"
       className="not-prose my-12 overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 text-white shadow-xl"
     >
+      <OrganicProductLadderImpression
+        surface={surface}
+        context={context}
+        offerId={recommended.id}
+      />
       <div className="border-b border-slate-800 bg-gradient-to-r from-slate-950 via-indigo-950/60 to-slate-950 px-5 py-6 sm:px-7">
         <p className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-400">Recommended self-serve next step</p>
         <h2 className="mt-2 text-xl font-black text-white sm:text-2xl">Move from grant research to one useful outcome</h2>

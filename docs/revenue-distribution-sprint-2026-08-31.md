@@ -86,3 +86,24 @@ Future discovery now persists the exact public result page, discovery source, ca
 - Existing prices, product promises, checkout, PayPal/Stripe capture, fulfillment, calculator, and URLs are unchanged.
 - No paid advertising, guessed emails, mass outreach, fabricated delivery, fabricated revenue, or call-dependent offer is introduced.
 - The release is limited to evidence integrity, the approved search gate, the target deadline, and controlled distribution of the existing $19 product.
+
+## Same-day distribution decision — calculator and zero-click cohort pages
+
+The provider-verified refresh at 2026-08-31T11:41Z found no safe inventory to scale through email, cart recovery, MCA recovery, or authority outreach:
+
+- The isolated $19 email cohort remained paused at 20 provider acceptances, zero signed deliveries, zero measured checkouts, and zero verified cash.
+- Product recovery had zero eligible contacts and $0 eligible inventory value after consent, payment-evidence, and deduplication checks.
+- MCA recovery had zero eligible applications because the six open records lacked an unguessable recovery credential.
+- Authority inventory had zero exact-source, send-qualified prospects.
+
+The current first-party telemetry instead identified the calculator as the only measured entry surface producing checkout starts: 26 qualified sessions produced two product visits and both recorded checkout starts. The calculator's below-funnel exit nevertheless asked the visitor to speak with a grant specialist, contradicting the solo-operator, self-serve fulfillment rule. That exit now distributes two existing products through signed first-party attribution: the $19 Funding Match Report and the $29/month Funding Watch. No price, checkout, payment, report, or membership behavior changed.
+
+The 2026-08-29 Search Console export showed the nine-page cohort at 5,504 impressions, 33 clicks, and 0.60% weighted CTR over 28 days. Three approved pages were already near page one but produced zero clicks:
+
+- Norfolk / Virginia Beach arts and entertainment: 680 impressions, position 9.39.
+- Raleigh logistics: 312 impressions, position 9.35.
+- Erie veteran-owned businesses: 252 impressions, position 10.13.
+
+Only those three allowlisted routes received reversible title and description treatments using direct grant-intent language. The cohort size, URLs, canonicals, index directives, page templates, pricing, and the other 6,144 city-industry controls remain unchanged. The 14-day Gates A-D expansion lock remains mandatory; these Search Console counts are baseline evidence, not a revenue forecast.
+
+Product-ladder impressions are now persisted only when the actual offer enters the browser viewport. This corrects the earlier metric that counted only the engaged-reader popup and therefore understated on-page product exposure. Clicks, checkouts, and provider-verified payments remain separate evidence stages.

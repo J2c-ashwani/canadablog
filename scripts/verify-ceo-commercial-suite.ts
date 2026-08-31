@@ -123,7 +123,9 @@ async function run() {
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
   const organicProductLadder = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadder.tsx'), 'utf8');
+  const organicProductLadderImpression = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadderImpression.tsx'), 'utf8');
   const engagedReaderCTA = fs.readFileSync(path.join(root, 'components/products/EngagedReaderProductCTA.tsx'), 'utf8');
+  const calculatorPage = fs.readFileSync(path.join(root, 'app/calculator/page.tsx'), 'utf8');
   const distributionClassifier = fs.readFileSync(path.join(root, 'lib/products/distribution.ts'), 'utf8');
   const clientOverlays = fs.readFileSync(path.join(root, 'components/ClientOverlays.tsx'), 'utf8');
   const standaloneCheckout = fs.readFileSync(path.join(root, 'components/products/StandaloneCheckout.tsx'), 'utf8');
@@ -256,6 +258,9 @@ async function run() {
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
   assert(organicProductLadder.includes("surface === 'footer'") && organicProductLadder.includes("? 'bundle'") && organicProductLadder.includes("surface === 'grants-city-industry'") && organicProductLadder.includes("? 'action-plan'"), 'Focused organic experiment promotes the strongest observed cash and checkout offers on each high-volume surface');
   assert(organicProductLadder.includes("experiment: 'focused-v2'") && onsiteClickRoute.includes("experimentInput === 'focused-v2'") && onsiteClickRoute.includes('product_ladder_${experiment}'), 'Focused organic experiment has a separate first-party action ID for clean revenue measurement');
+  assert(organicProductLadder.includes('<OrganicProductLadderImpression') && organicProductLadderImpression.includes("eventName: 'paid_offer_impression'") && organicProductLadderImpression.includes("evidence: 'viewport'"), 'Organic product ladders count an impression only after the offer enters the viewport');
+  assert(calculatorPage.includes('surface=calculator-result') && calculatorPage.includes('offer=match-report') && calculatorPage.includes('offer=membership'), 'The checkout-producing calculator routes exit traffic into attributable $19 and $29 self-serve offers');
+  assert(!calculatorPage.includes('Talk to a Grant Specialist') && !calculatorPage.includes('Our grant specialists review your matches'), 'Calculator distribution makes no call-dependent or manual-review promise');
   assert(engagedReaderCTA.includes("surface: 'engaged-reader'") && engagedReaderCTA.includes("experiment: 'intent-v1'") && onsiteClickRoute.includes("'engaged-reader'"), 'Engaged content readers receive an intent-matched, separately attributable paid-product decision');
   assert(engagedReaderCTA.includes("eventName: 'paid_offer_impression'") && engagedReaderCTA.includes('trafficQualityClassification'), 'Paid distribution records human-quality recommendation impressions before the click');
   assert(distributionClassifier.includes('selectDistributedOffer') && distributionClassifier.includes('MONITORING_INTENT') && distributionClassifier.includes('ACTION_INTENT'), 'Paid distribution deterministically matches page intent to a current self-serve offer');
