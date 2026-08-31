@@ -109,12 +109,22 @@ let brevoSenderCache: { expiresAt: number; email: string; name: string } | null 
 async function resolveBrevoSender(apiKey: string, configuredFrom?: string) {
   if (brevoSenderCache && brevoSenderCache.expiresAt > Date.now()) return brevoSenderCache;
   const configuredEmail = extractEmailAddress(configuredFrom);
-  const response = await fetch('https://api.brevo.com/v3/senders', {
-    headers: { 'api-key': apiKey, Accept: 'application/json' },
-    cache: 'no-store',
-  });
+  const [response, domainResponse] = await Promise.all([
+    fetch('https://api.brevo.com/v3/senders', {
+      headers: { 'api-key': apiKey, Accept: 'application/json' },
+      cache: 'no-store',
+    }),
+    fetch('https://api.brevo.com/v3/senders/domains/fsidigital.ca', {
+      headers: { 'api-key': apiKey, Accept: 'application/json' },
+      cache: 'no-store',
+    }),
+  ]);
   const payload = await response.json().catch(() => ({})) as { senders?: BrevoSender[]; message?: string };
+  const domainPayload = await domainResponse.json().catch(() => ({})) as { authenticated?: boolean; verified?: boolean; message?: string };
   if (!response.ok) throw new Error(payload.message || `Brevo sender lookup failed with HTTP ${response.status}.`);
+  if (!domainResponse.ok || !domainPayload.authenticated || !domainPayload.verified) {
+    throw new Error(domainPayload.message || 'Brevo sending domain is not provider-authenticated.');
+  }
   const activeSenders = (payload.senders || []).filter((sender) => sender.active && extractEmailAddress(sender.email));
   const configuredMatch = activeSenders.find((sender) => extractEmailAddress(sender.email) === configuredEmail);
   const domainMatch = activeSenders.find((sender) => extractEmailAddress(sender.email).endsWith('@fsidigital.ca'));
