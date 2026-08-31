@@ -17,6 +17,7 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox';
 import EligibleCheck from '@/components/blog/EligibleCheck';
 import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
+import { CURATED_CANADA_DEEP_DIVES } from '@/lib/pseo-curated-content';
 import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
 import PseoMasterclass from '@/components/pseo/PseoMasterclass';
 import RelatedPseoLinks from '@/components/pseo/RelatedPseoLinks';
@@ -37,6 +38,13 @@ import InsiderInsightQuotes from '@/components/pseo/blocks/InsiderInsightQuotes'
 import MicroFAQ from '@/components/pseo/blocks/MicroFAQ';
 import LocalResourceHub from '@/components/pseo/LocalResourceHub';
 import { OrganicProductLadder } from '@/components/products/OrganicProductLadder';
+import { CohortApplicationPlaybook, CohortResourceHub, CohortTrustBlocks } from '@/components/pseo/SearchDistributionCohort';
+import {
+    getPseoSearchDistributionPath,
+    getSearchDistributionContext,
+    isSearchDistributionCohortPath,
+    SEARCH_DISTRIBUTION_ROLLOUT_ID,
+} from '@/lib/seo/searchDistributionRollout';
 
 const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
 
@@ -143,6 +151,17 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
         `Key programs include the Canada Job Grant (covering up to 83% of training costs for heavy equipment or safety certifications), ` +
         `provincial apprentice hiring tax credits (up to $10,000 per apprentice per year), and clean building retrofitting programs. ` +
         `In ${province}, trades receive priority approvals for provincial skills development fund allocations.`,
+};
+
+const COHORT_CANADA_SHORT_ANSWERS: Record<string, (city: string, province: string) => string> = {
+    'women-entrepreneurs': (city, province) =>
+        `Women-owned businesses in ${city} can compare general federal and ${province} programs with women-focused financing, investment, procurement, and regional support. ` +
+        `These options are not all grants: some are loans, equity funds, advisory services, or opportunities delivered through partner organizations. ` +
+        `Verify the current intake, ownership-and-control test, location, company stage, and eligible project costs before applying.`,
+    'restaurants-hospitality': (city, province) =>
+        `Restaurants and hospitality businesses in ${city} should search by project rather than expect a general startup grant. ` +
+        `Relevant routes may include eligible hiring or apprenticeship support, municipal or BIA improvement programs, utility rebates, accessibility projects, and tourism or regional-development funding. ` +
+        `Availability is address- and intake-specific; verify the official rules and approval date before hiring, ordering equipment, or starting construction in ${province}.`,
 };
 
 const US_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, state: string, stateDetail?: StateDetailedGrant) => string> = {
@@ -297,11 +316,13 @@ function UsPseoGrantContent({
     stateDetail,
     regionType,
     countryName,
+    verifiedCohort,
 }: {
     page: PseoPage;
     stateDetail?: StateDetailedGrant;
     regionType: 'state' | 'province';
     countryName: 'United States' | 'Canada';
+    verifiedCohort: boolean;
 }) {
     const topPrograms = stateDetail?.topPrograms?.slice(0, 3) || [
         {
@@ -416,7 +437,7 @@ function UsPseoGrantContent({
 
             <OrganicProductLadder
                 surface="grants-city-industry"
-                context={`${page.provinceSlug}-${page.citySlug}-${page.industrySlug}`}
+                context={getSearchDistributionContext(page.provinceSlug, page.citySlug, page.industrySlug)}
             />
 
             <div className="my-8">
@@ -582,13 +603,23 @@ function UsPseoGrantContent({
                 </div>
             </div>
 
-            <PseoMasterclass
-                industryName={page.industryName}
-                cityName={page.cityName}
-                provinceName={page.provinceName}
-                regionType={regionType}
-                countryName={countryName}
-            />
+            {verifiedCohort ? (
+                <CohortApplicationPlaybook
+                    industryName={page.industryName}
+                    cityName={page.cityName}
+                    provinceName={page.provinceName}
+                    regionType={regionType}
+                    isCanada={false}
+                />
+            ) : (
+                <PseoMasterclass
+                    industryName={page.industryName}
+                    cityName={page.cityName}
+                    provinceName={page.provinceName}
+                    regionType={regionType}
+                    countryName={countryName}
+                />
+            )}
 
             <div className="mt-16">
                 <EligibleCheck />
@@ -629,6 +660,8 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
     const countryName = getCountryName(page.provinceSlug);
     const stateDetail = isCanada ? undefined : getStateDetailBySlugOrAbbreviation(page.provinceSlug);
     const topPrograms = getTopProgramNames(stateDetail);
+    const rolloutPath = getPseoSearchDistributionPath(page.provinceSlug, page.citySlug, page.industrySlug);
+    const verifiedCohort = isSearchDistributionCohortPath(rolloutPath);
 
     const canadaTitlePatterns: Record<string, string> = {
         technology: `Best ${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026) | IRAP, CDAP & SR&ED`,
@@ -647,8 +680,13 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         'women-entrepreneurs': `Best Grants for Women Entrepreneurs in ${page.cityName}, ${page.provinceName} (2026) | SBA, State & Local Funds`,
     };
     const titlePatterns = isCanada ? canadaTitlePatterns : usTitlePatterns;
-    const title = titlePatterns[page.industrySlug] ||
+    let title = titlePatterns[page.industrySlug] ||
         `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} [2026] | ${countryName} Funding Guide`;
+    if (verifiedCohort) {
+        if (page.industrySlug === 'women-entrepreneurs') title = `Women Business Funding in ${page.cityName} (2026)`;
+        else if (page.industrySlug === 'restaurants-hospitality') title = `Restaurant Grants in ${page.cityName} (2026)`;
+        else title = `${page.industryName} Funding in ${page.cityName} (2026)`;
+    }
 
     const canadaDescPatterns: Record<string, string> = {
         technology: `How to apply for technology grants in ${page.cityName}? Compare IRAP, CDAP, and SR&ED tax credits for ${page.provinceName} startups. 2026 guide with eligibility, amounts, and deadlines.`,
@@ -667,8 +705,13 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         'women-entrepreneurs': `Grants and funding for women entrepreneurs in ${page.cityName}: compare SBA support, local microgrants, Women's Business Centers, and ${page.provinceName} incentives.`,
     };
     const descPatterns = isCanada ? canadaDescPatterns : usDescPatterns;
-    const description = descPatterns[page.industrySlug] ||
+    let description = descPatterns[page.industrySlug] ||
         `How much can a ${page.industryName} business in ${page.cityName} get? Compare federal programs, ${page.provinceName} incentives, local grants, tax credits, and application steps for 2026.`;
+    if (verifiedCohort) {
+        description = isCanada
+            ? `Compare current grants, financing, and business-support routes for ${page.industryName.toLowerCase()} in ${page.cityName}. Verify ${page.provinceName} eligibility, timing, and official intakes.`
+            : `Compare federal, ${page.provinceName}, and local funding routes for ${page.industryName.toLowerCase()} businesses in ${page.cityName}. Verify current eligibility and official intakes.`;
+    }
 
     const canadaKeywords = [
         `${page.industryName.toLowerCase()} grants ${page.cityName}`,
@@ -700,7 +743,8 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         `${page.industryName.toLowerCase()} startup funding United States`,
         `government funding ${page.industryName.toLowerCase()} ${page.provinceName} 2026`,
     ];
-    const baseKeywords = isCanada ? canadaKeywords : usKeywords;
+    const baseKeywords = (isCanada ? canadaKeywords : usKeywords)
+        .filter(keyword => !verifiedCohort || !keyword.toLowerCase().includes('cdap'));
 
     return {
         title,
@@ -776,6 +820,8 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     const regionType = getRegionType(page.provinceSlug);
     const countryName = getCountryName(page.provinceSlug);
     const stateDetail = isCanada ? undefined : getStateDetailBySlugOrAbbreviation(page.provinceSlug);
+    const rolloutPath = getPseoSearchDistributionPath(page.provinceSlug, page.citySlug, page.industrySlug);
+    const verifiedCohort = isSearchDistributionCohortPath(rolloutPath);
 
     const schema = generatePseoSchema(
         page.cityName,
@@ -787,7 +833,9 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     );
 
     // Build the short answer — industry-specific or fall back to generic
-    const canadaShortAnswerFn = CANADA_INDUSTRY_SHORT_ANSWERS[page.industrySlug];
+    const canadaShortAnswerFn = verifiedCohort
+        ? (COHORT_CANADA_SHORT_ANSWERS[page.industrySlug] || CANADA_INDUSTRY_SHORT_ANSWERS[page.industrySlug])
+        : CANADA_INDUSTRY_SHORT_ANSWERS[page.industrySlug];
     const usShortAnswerFn = US_INDUSTRY_SHORT_ANSWERS[page.industrySlug];
     const shortAnswerContent = isCanada
         ? (canadaShortAnswerFn
@@ -814,6 +862,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     const allPrograms = getAllPrograms();
     const actualMatches = allPrograms.filter(p => {
         if (p.country !== (isCanada ? 'Canada' : 'USA')) return false;
+        if (verifiedCohort && p.status !== 'Open' && p.status !== 'Upcoming') return false;
         if (p.region === 'Federal') return true;
         
         const regLower = p.region.toLowerCase().trim();
@@ -851,12 +900,17 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     // Query comparisons from comparisonsDatabase that involve any of those matched programs
     const matchedProgramIds = matchedPrograms.map(p => p.id);
     const matchedComparisons = comparisonsDatabase.filter(c => {
+        if (verifiedCohort) {
+            return matchedProgramIds.includes(c.prog1Id) && matchedProgramIds.includes(c.prog2Id);
+        }
         return matchedProgramIds.includes(c.prog1Id) || matchedProgramIds.includes(c.prog2Id);
     });
 
     const activeProgramsCount = matchedPrograms.length > 0 ? matchedPrograms.length : actualMatches.length;
 
-    const shortAnswerQuestion = `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
+    const shortAnswerQuestion = verifiedCohort
+        ? `Which funding routes should a ${page.industryName} business in ${page.cityName}, ${page.provinceName} check first?`
+        : `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
 
     const breadcrumbSchema = {
         "@context": "https://schema.org",
@@ -873,7 +927,10 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
 
     return (
-        <div className="min-h-screen bg-white">
+        <div
+            className="min-h-screen bg-white"
+            data-search-distribution-cohort={verifiedCohort ? SEARCH_DISTRIBUTION_ROLLOUT_ID : undefined}
+        >
             <Header />
             {/* Header Ad */}
             <div className="container mx-auto px-4 py-4">
@@ -912,10 +969,14 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                     Interactive Eligibility Engine
                                 </span>
                                 <h2 className="text-xl md:text-2xl font-extrabold text-white leading-tight">
-                                    There are {activeProgramsCount} active funding programs for {page.industryName} in {page.provinceName}.
+                                    {verifiedCohort
+                                        ? `Compare funding routes for ${page.industryName} in ${page.cityName}.`
+                                        : `There are ${activeProgramsCount} active funding programs for ${page.industryName} in ${page.provinceName}.`}
                                 </h2>
                                 <p className="text-sm text-slate-300 leading-relaxed">
-                                    Calculate your funding readiness score and see exactly which federal and provincial programs your business qualifies for. Takes 60 seconds.
+                                    {verifiedCohort
+                                        ? `Use the assessment to organize likely federal and ${regionType} paths. Final eligibility comes from each program's current official rules.`
+                                        : 'Calculate your funding readiness score and see exactly which federal and provincial programs your business qualifies for. Takes 60 seconds.'}
                                 </p>
                             </div>
                             <div className="shrink-0 flex flex-col items-center justify-center w-full md:w-auto">
@@ -934,7 +995,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">
                         <Shield className="w-4 h-4" />
-                        Verified Local Programs — {page.provinceName}
+                        {verifiedCohort ? `Funding Research — ${page.provinceName}` : `Verified Local Programs — ${page.provinceName}`}
                     </div>
 
                     {/* SHORT ANSWER — Hero placement, Direct Question as H1 per EEAT Guidelines */}
@@ -947,37 +1008,56 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                     </div>
 
                     {/* Local Resource Hub — Authentic Local Data and Support Channels */}
-                    <LocalResourceHub
-                        cityName={page.cityName}
-                        provinceName={page.provinceName}
-                        provinceSlug={page.provinceSlug}
-                        industryName={page.industryName}
-                        industrySlug={page.industrySlug}
-                        isCanada={isCanada}
-                        activeProgramsCount={activeProgramsCount}
-                    />
+                    {verifiedCohort ? (
+                        <CohortResourceHub
+                            cityName={page.cityName}
+                            provinceName={page.provinceName}
+                            industryName={page.industryName}
+                            regionType={regionType}
+                            isCanada={isCanada}
+                            researchRouteCount={activeProgramsCount}
+                        />
+                    ) : (
+                        <LocalResourceHub
+                            cityName={page.cityName}
+                            provinceName={page.provinceName}
+                            provinceSlug={page.provinceSlug}
+                            industryName={page.industryName}
+                            industrySlug={page.industrySlug}
+                            isCanada={isCanada}
+                            activeProgramsCount={activeProgramsCount}
+                        />
+                    )}
                     
                     {/* PHASE 4: Dynamic Composed Blocks Render Output */}
                     <div className="mt-12 mb-8">
-                        {blocksData.map((block, idx) => {
-                            switch (block.type) {
-                                case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
-                                case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
-                                case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
-                                case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
-                                case 'WhoWinsMatrix': return <WhoWinsMatrix key={idx} />;
-                                case 'FundingDensitySnapshot': return <FundingDensitySnapshot key={idx} />;
-                                case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
-                                case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
-                                case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
-                                case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
-                                case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
-                                case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
-                                case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
-                                case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
-                                default: return null; 
-                            }
-                        })}
+                        {verifiedCohort ? (
+                            <CohortTrustBlocks
+                                cityName={page.cityName}
+                                provinceName={page.provinceName}
+                                industryName={page.industryName}
+                                regionType={regionType}
+                                isCanada={isCanada}
+                            />
+                        ) : blocksData.map((block, idx) => {
+                                switch (block.type) {
+                                    case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
+                                    case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
+                                    case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
+                                    case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
+                                    case 'WhoWinsMatrix': return <WhoWinsMatrix key={idx} />;
+                                    case 'FundingDensitySnapshot': return <FundingDensitySnapshot key={idx} />;
+                                    case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
+                                    case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
+                                    case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
+                                    case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
+                                    case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
+                                    case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
+                                    case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
+                                    case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
+                                    default: return null;
+                                }
+                            })}
                     </div>
                 </div>
             </section>
@@ -1016,11 +1096,14 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                         stateDetail={stateDetail}
                                         regionType={regionType}
                                         countryName={countryName}
+                                        verifiedCohort={verifiedCohort}
                                     />
                                 );
                             }
 
-                            const deepDive = INDUSTRY_DEEP_DIVES[page.industrySlug];
+                            const deepDive = verifiedCohort
+                                ? (CURATED_CANADA_DEEP_DIVES[page.industrySlug] || INDUSTRY_DEEP_DIVES[page.industrySlug])
+                                : INDUSTRY_DEEP_DIVES[page.industrySlug];
                             // Graceful fallback for undiscovered slugs
                             if (!deepDive) return <div className="text-red-500 font-bold p-8">Error: Deep dive content not found for industry slug: {page.industrySlug}</div>;
 
@@ -1072,7 +1155,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                                     <OrganicProductLadder
                                         surface="grants-city-industry"
-                                        context={`${page.provinceSlug}-${page.citySlug}-${page.industrySlug}`}
+                                        context={getSearchDistributionContext(page.provinceSlug, page.citySlug, page.industrySlug)}
                                     />
 
                                     {/* In-Content Horizontal Ad */}
@@ -1153,13 +1236,23 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                                     
                                     {/* SEO Word Count Expansion Module (Interaction Safe) */}
-                                    <PseoMasterclass 
-                                        industryName={page.industryName} 
-                                        cityName={page.cityName} 
-                                        provinceName={page.provinceName} 
-                                        regionType={regionType}
-                                        countryName={countryName}
-                                    />
+                                    {verifiedCohort ? (
+                                        <CohortApplicationPlaybook
+                                            industryName={page.industryName}
+                                            cityName={page.cityName}
+                                            provinceName={page.provinceName}
+                                            regionType={regionType}
+                                            isCanada={true}
+                                        />
+                                    ) : (
+                                        <PseoMasterclass
+                                            industryName={page.industryName}
+                                            cityName={page.cityName}
+                                            provinceName={page.provinceName}
+                                            regionType={regionType}
+                                            countryName={countryName}
+                                        />
+                                    )}
                                     
                                     {/* Eligibility Check Widget */}
                                     <div className="mt-16">
@@ -1211,7 +1304,9 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 Matched Programs & Stacking Comparisons for {page.cityName} {page.industryName}
                             </h3>
                             <p className="text-slate-600 text-sm sm:text-base">
-                                Explore detailed guides and side-by-side comparisons of the top government funding options available to {page.industryName.toLowerCase()} in {page.cityName}, {page.provinceName}.
+                                {verifiedCohort
+                                    ? `Research currently open or upcoming database programs for ${page.industryName.toLowerCase()} in ${page.cityName}, and confirm availability on the official program page before applying.`
+                                    : `Explore detailed guides and side-by-side comparisons of the top government funding options available to ${page.industryName.toLowerCase()} in ${page.cityName}, ${page.provinceName}.`}
                             </p>
                         </div>
 

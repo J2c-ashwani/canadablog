@@ -1,6 +1,6 @@
 import { CheckCircle2 } from 'lucide-react';
 import { getPriorityResearchContent } from '@/lib/editorial/priorityResearchContent';
-import { PROGRAM_BENCHMARKS, resolveBenchmarkBySlug } from '@/lib/editorial/eligibilityBenchmarks';
+import { resolveBenchmarkBySlug } from '@/lib/editorial/eligibilityBenchmarks';
 import { EligibilityBenchmarkWidget } from '@/components/seo/EligibilityBenchmarkWidget';
 
 interface EditorialResearchContentProps {

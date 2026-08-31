@@ -77,14 +77,19 @@ export async function GET(request: NextRequest) {
       ? 'facebook'
       : '';
   const channel = socialSource ? 'organic_social' : 'organic_onsite';
+  const isSearchDistributionCohort = contentContext.startsWith('seo-cohort-v1-');
   const campaign = socialSource
     ? `revenue-sprint-social-${socialSource}-${experiment}`
-    : `product-ladder-${experiment}-${surface}`;
+    : isSearchDistributionCohort
+      ? `product-ladder-${experiment}-${surface}-${contentContext}`
+      : `product-ladder-${experiment}-${surface}`;
   const actionDate = new Date().toISOString().slice(0, 10);
   const context: GrowthActionContext = {
     actionId: socialSource
       ? `act_social_${socialSource}_${offer}_${experiment}_${actionDate}`
-      : `act_onsite_${surface}_product_ladder_${experiment}_${actionDate}`,
+      : isSearchDistributionCohort
+        ? `act_onsite_${surface}_${contentContext}_${offer}_${actionDate}`
+        : `act_onsite_${surface}_product_ladder_${experiment}_${actionDate}`,
     channel,
     campaign,
     recipientId: `web_${visitorId}`,

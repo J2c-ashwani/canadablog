@@ -41,6 +41,7 @@ import StackingDiagnostic from '@/components/blog/StackingDiagnostic';
 import ChecklistDiagnostic from '@/components/blog/ChecklistDiagnostic';
 import RDEDecisionEngine from '@/components/blog/RDEDecisionEngine';
 import { OrganicProductLadder } from '@/components/products/OrganicProductLadder';
+import { isSearchDistributionCohortPath, SEARCH_DISTRIBUTION_ROLLOUT_ID } from '@/lib/seo/searchDistributionRollout';
 
 type RelatedFundingLink = {
   href: string;
@@ -409,6 +410,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const content = stripInlineSchemas(rawContent);
   const richData = await getBlogPostRichData(slug);
   const researchProfile = getPriorityResearchProfile(`/blog/${slug}`);
+  const verifiedSearchCohort = isSearchDistributionCohortPath(`/blog/${slug}`);
   
   const fullPost: any = {
     ...post,
@@ -492,7 +494,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const afterContentData = renderContentWithAds(afterCTA, beforeContentData.totalParagraphs);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div
+      className="min-h-screen bg-white dark:bg-black"
+      data-search-distribution-cohort={verifiedSearchCohort ? SEARCH_DISTRIBUTION_ROLLOUT_ID : undefined}
+    >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(blogPostSchema) }}
@@ -725,7 +730,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              <OrganicProductLadder surface="blog" context={slug} />
+              <OrganicProductLadder surface="blog"
+                context={verifiedSearchCohort ? `${SEARCH_DISTRIBUTION_ROLLOUT_ID}-${slug}` : slug}
+              />
 
               {afterCTA && !researchProfile && (
                 <div className="prose prose-lg max-w-none dark:prose-invert prose-headings:text-gray-900 dark:prose-headings:text-white prose-a:text-blue-600 hover:prose-a:text-blue-700">

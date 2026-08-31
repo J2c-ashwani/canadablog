@@ -8,9 +8,67 @@ export interface ProgramBenchmark {
   struggles: string[];
   screenerFocus: string;
   complianceNote: string;
+  ctaHref?: string;
 }
 
 export const PROGRAM_BENCHMARKS: Record<string, ProgramBenchmark> = {
+  'nih-sbir': {
+    programName: 'NIH SBIR/STTR',
+    avgRevenue: 'No revenue minimum stated',
+    avgEmployees: '500 or fewer, affiliates included',
+    avgFunding: 'Opportunity-specific',
+    stage: 'Biomedical R&D and commercialization',
+    qualifiers: [
+      'U.S. for-profit small business with a U.S. place of business',
+      'Ownership and control meet the current SBIR/STTR rules',
+      'Research fits an open NIH funding opportunity and institute priorities'
+    ],
+    struggles: [
+      'Applying through a university instead of the eligible small business',
+      'Missing required federal registrations before submission',
+      'Proposing work outside the United States without a compelling exception'
+    ],
+    screenerFocus: 'nih-sbir',
+    complianceNote: 'NIH evaluates company eligibility, scientific merit, public-health relevance, team capability, and commercialization potential under the specific opportunity. Confirm the current notice before applying.'
+  },
+  'nsf-sbir': {
+    programName: 'NSF SBIR/STTR',
+    avgRevenue: 'No revenue minimum stated',
+    avgEmployees: 'Fewer than 500, affiliates included',
+    avgFunding: 'Phase and solicitation-specific',
+    stage: 'High-risk technology R&D',
+    qualifiers: [
+      'U.S. small business meeting current ownership and control requirements',
+      'Novel technology with technical risk and commercial potential',
+      'Project Pitch submitted and invitation received before a Phase I proposal'
+    ],
+    struggles: [
+      'Routine product development without meaningful technical risk',
+      'Principal investigator employment does not meet the program rule',
+      'Budget allocation or U.S.-performance requirements are not met'
+    ],
+    screenerFocus: 'nsf-sbir',
+    complianceNote: 'NSF evaluates intellectual merit, broader impacts, and commercial impact. Check eligibility and submission steps against the current solicitation.'
+  },
+  'dod-sbir': {
+    programName: 'Department of Defense SBIR/STTR',
+    avgRevenue: 'No revenue minimum stated',
+    avgEmployees: '500 or fewer, affiliates included',
+    avgFunding: 'Topic and phase-specific',
+    stage: 'Defense-relevant R&D',
+    qualifiers: [
+      'U.S. for-profit small business meeting current SBIR/STTR rules',
+      'Technical approach directly addresses an open component topic',
+      'Company can perform the required share of the research effort'
+    ],
+    struggles: [
+      'Submitting a generic capability pitch without matching an open topic',
+      'Missing required federal or Defense submission registrations',
+      'Proposal does not follow component-specific instructions and deadlines'
+    ],
+    screenerFocus: 'dod-sbir',
+    complianceNote: 'Defense components publish topic-specific requirements and submission instructions. Check the current announcement before preparing a proposal.'
+  },
   'tech-startup': {
     programName: 'Technology & R&D Funding (IRAP/SR&ED)',
     avgRevenue: '$100k – $15M',
@@ -147,7 +205,28 @@ export const PROGRAM_BENCHMARKS: Record<string, ProgramBenchmark> = {
 };
 
 export function resolveBenchmarkBySlug(slug: string, category?: string): ProgramBenchmark {
-  const normalized = slug.toLowerCase();
+  const normalized = slug.toLowerCase().replace(/\/+$/, '');
+  const cohortBenchmark = {
+    '/blog/nih-sbir-biotech-grants': {
+      key: 'nih-sbir',
+      ctaHref: '/api/growth-os/onsite-click?surface=blog&context=seo-cohort-v1-nih-sbir&offer=match-report&experiment=focused-v2'
+    },
+    '/blog/nsf-sbir-grants-technology-startups': {
+      key: 'nsf-sbir',
+      ctaHref: '/api/growth-os/onsite-click?surface=blog&context=seo-cohort-v1-nsf-sbir&offer=match-report&experiment=focused-v2'
+    },
+    '/blog/dod-sbir-defense-tech-grants': {
+      key: 'dod-sbir',
+      ctaHref: '/api/growth-os/onsite-click?surface=blog&context=seo-cohort-v1-dod-sbir&offer=match-report&experiment=focused-v2'
+    }
+  }[normalized];
+
+  if (cohortBenchmark) {
+    return {
+      ...PROGRAM_BENCHMARKS[cohortBenchmark.key],
+      ctaHref: cohortBenchmark.ctaHref
+    };
+  }
   
   if (normalized.includes('sred') || normalized.includes('irap') || normalized.includes('software') || normalized.includes('saas') || normalized.includes('tech') || normalized.includes('ai-machine')) {
     return PROGRAM_BENCHMARKS['tech-startup'];

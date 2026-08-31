@@ -2,8 +2,13 @@ import { CheckCircle, XCircle, AlertCircle, BarChart3 } from 'lucide-react';
 import { ProgramBenchmark } from '@/lib/editorial/eligibilityBenchmarks';
 
 export function EligibilityBenchmarkWidget({ benchmark }: { benchmark: ProgramBenchmark }) {
+  const isSearchCohort = Boolean(benchmark.ctaHref);
+
   return (
-    <div className="my-10 rounded-2xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8 not-prose shadow-sm max-w-4xl mx-auto text-left">
+    <div
+      data-search-distribution-cohort={isSearchCohort ? 'seo-cohort-v1' : undefined}
+      className="my-10 rounded-2xl border border-slate-200 bg-slate-50/50 p-6 sm:p-8 not-prose shadow-sm max-w-4xl mx-auto text-left"
+    >
       <div className="flex items-center gap-3 border-b border-slate-200/60 pb-4 mb-6">
         <BarChart3 className="w-5 h-5 text-indigo-600" />
         <h4 className="text-lg font-black text-slate-900">
@@ -14,19 +19,19 @@ export function EligibilityBenchmarkWidget({ benchmark }: { benchmark: ProgramBe
       {/* Stats Grid */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
         <div className="bg-white border border-slate-200/60 rounded-xl p-3 text-center">
-          <span className="block text-[10px] uppercase font-bold text-slate-400">Est. Funding</span>
+          <span className="block text-[10px] uppercase font-bold text-slate-400">{isSearchCohort ? 'Funding scope' : 'Est. Funding'}</span>
           <span className="block text-sm font-black text-slate-900 mt-0.5">{benchmark.avgFunding}</span>
         </div>
         <div className="bg-white border border-slate-200/60 rounded-xl p-3 text-center">
-          <span className="block text-[10px] uppercase font-bold text-slate-400">Avg Revenue</span>
+          <span className="block text-[10px] uppercase font-bold text-slate-400">{isSearchCohort ? 'Revenue test' : 'Avg Revenue'}</span>
           <span className="block text-sm font-black text-slate-900 mt-0.5">{benchmark.avgRevenue}</span>
         </div>
         <div className="bg-white border border-slate-200/60 rounded-xl p-3 text-center">
-          <span className="block text-[10px] uppercase font-bold text-slate-400">Min. Team Size</span>
+          <span className="block text-[10px] uppercase font-bold text-slate-400">{isSearchCohort ? 'Size test' : 'Min. Team Size'}</span>
           <span className="block text-sm font-black text-slate-900 mt-0.5">{benchmark.avgEmployees}</span>
         </div>
         <div className="bg-white border border-slate-200/60 rounded-xl p-3 text-center">
-          <span className="block text-[10px] uppercase font-bold text-slate-400">Target Stage</span>
+          <span className="block text-[10px] uppercase font-bold text-slate-400">{isSearchCohort ? 'Project stage' : 'Target Stage'}</span>
           <span className="block text-sm font-black text-slate-900 mt-0.5">{benchmark.stage}</span>
         </div>
       </div>
@@ -68,15 +73,17 @@ export function EligibilityBenchmarkWidget({ benchmark }: { benchmark: ProgramBe
           <div>
             <h6 className="font-extrabold text-indigo-950 text-sm">How Does Your Business Compare?</h6>
             <p className="text-[11px] text-indigo-700 leading-relaxed mt-0.5">
-              {benchmark.complianceNote} Estimate your <strong>Funding Match Score</strong> (e.g. 82/100) based on your team, location, and development activities.
+              {benchmark.complianceNote} {isSearchCohort
+                ? 'Use the research report to compare likely fit, evidence requirements, and next steps.'
+                : <>Estimate your <strong>Funding Match Score</strong> (e.g. 82/100) based on your team, location, and development activities.</>}
             </p>
           </div>
         </div>
         <a
-          href={`/portfolio?focus=${benchmark.screenerFocus}`}
+          href={benchmark.ctaHref || `/portfolio?focus=${benchmark.screenerFocus}`}
           className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-indigo-600 hover:bg-indigo-700 px-5 py-2.5 text-xs font-bold text-white transition-colors shadow-sm whitespace-nowrap"
         >
-          See My Funding Match Score
+          {isSearchCohort ? 'Get the $19 Match Report' : 'See My Funding Match Score'}
         </a>
       </div>
     </div>

@@ -3,6 +3,12 @@ import { cookies } from 'next/headers';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { getAllPurchases } from '@/lib/products/purchase-store';
+import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
+import {
+  normalizeSearchDistributionPath,
+  SEARCH_DISTRIBUTION_COHORT_PATHS,
+  SEARCH_DISTRIBUTION_ROLLOUT_ID,
+} from '@/lib/seo/searchDistributionRollout';
 import { getTelemetryEvents } from '@/lib/telemetry/telemetry-store';
 import { getLeadsFromSheet } from '@/lib/google-sheets';
 import { ADMIN_SESSION_COOKIE, isValidAdminKey, isValidAdminSession } from '@/lib/admin/auth';
@@ -110,7 +116,7 @@ export default async function RevenueDashboardPage({
   let error: string | null = null;
 
   try {
-    purchases = await getAllPurchases();
+    purchases = (await getAllPurchases()).filter(isProviderVerifiedPurchase);
     telemetry = await getTelemetryEvents();
     leads = await getLeadsFromSheet(2000);
     mcaApplications = await getMCAApplications(2000);
@@ -942,6 +948,22 @@ export default async function RevenueDashboardPage({
   });
   const postOrganicRevenue = organicPurchasesPost.reduce((sum, p) => sum + (parseFloat(p.amount) || 0), 0);
   const postRp1kov = postOrganicVisitors > 0 ? (postOrganicRevenue / postOrganicVisitors) * 1000 : 0;
+
+  // Controlled search-distribution cohort: provider-verified revenue only.
+  const searchCohortPaths = new Set<string>(SEARCH_DISTRIBUTION_COHORT_PATHS);
+  const searchCohortOrganicTelemetry = organicTelemetryPost.filter((event) => {
+    const path = normalizeSearchDistributionPath(String(event.pagePath || '').split('?')[0]);
+    return searchCohortPaths.has(path as (typeof SEARCH_DISTRIBUTION_COHORT_PATHS)[number]);
+  });
+  const searchCohortOrganicVisitors = new Set(searchCohortOrganicTelemetry.map((event) => event.sessionId)).size;
+  const searchCohortPurchases = postPurchases.filter((purchase) =>
+    String(purchase.actionCampaign || '').includes(SEARCH_DISTRIBUTION_ROLLOUT_ID)
+    || searchCohortPaths.has(normalizeSearchDistributionPath(String(purchase.landingPage || '').split('?')[0]) as (typeof SEARCH_DISTRIBUTION_COHORT_PATHS)[number])
+  );
+  const searchCohortRevenue = searchCohortPurchases.reduce((sum, purchase) => sum + (parseFloat(purchase.amount) || 0), 0);
+  const searchCohortRp1kov = searchCohortOrganicVisitors > 0
+    ? (searchCohortRevenue / searchCohortOrganicVisitors) * 1000
+    : 0;
 
   // Unit Economics
   const totalPurchasesCount = postPurchases.length;
@@ -2492,11 +2514,14 @@ export default async function RevenueDashboardPage({
                   )}
                 </div>
 
-                {/* RP1KOV Widget */}
+                {/* Controlled-cohort RP1KOV Widget */}
                 <div className="bg-white rounded-xl border border-gray-200 p-5 shadow-xs flex flex-col justify-between">
                   <div>
-                    <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">RP1KOV (Rev / 1k Org Visitors)</p>
-                    <p className="text-3xl font-black text-indigo-650 mt-2">${postRp1kov.toFixed(2)}</p>
+                    <p className="text-[10px] text-gray-400 font-extrabold uppercase tracking-wider">Search Cohort RP1KOV</p>
+                    <p className="text-3xl font-black text-indigo-650 mt-2">${searchCohortRp1kov.toFixed(2)}</p>
+                    <p className="mt-1 text-[9px] font-semibold text-gray-400">
+                      ${searchCohortRevenue.toFixed(2)} verified / {searchCohortOrganicVisitors} organic visitors
+                    </p>
                   </div>
                   <div className="mt-4 grid grid-cols-3 gap-1 border-t border-gray-100 pt-3 text-[9px] text-gray-500 font-bold uppercase text-center">
                     <div>
@@ -2504,8 +2529,8 @@ export default async function RevenueDashboardPage({
                       <div className="text-slate-900 font-extrabold">$300.00</div>
                     </div>
                     <div>
-                      <div className="text-gray-400 text-[8px]">Prev Mo</div>
-                      <div className="text-slate-900 font-extrabold">$0.00</div>
+                      <div className="text-gray-400 text-[8px]">Sitewide</div>
+                      <div className="text-slate-900 font-extrabold">${postRp1kov.toFixed(2)}</div>
                     </div>
                     <div>
                       <div className="text-gray-400 text-[8px]">Trend</div>
