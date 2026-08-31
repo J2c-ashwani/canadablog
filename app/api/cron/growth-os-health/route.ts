@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
   if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason })
 
   try {
-    let resendReconciliation: Awaited<ReturnType<typeof reconcileResendDeliveryEvents>> | { skipped: true; reason: string; eligible: number; matched: number; persisted: number }
+    let resendReconciliation: Awaited<ReturnType<typeof reconcileResendDeliveryEvents>> | { skipped: true; reason: string; eligible: number; matched: number; persisted: number; requiresReadAccess: boolean }
     try {
       resendReconciliation = await reconcileResendDeliveryEvents()
     } catch (error: any) {
@@ -33,13 +33,17 @@ export async function GET(request: NextRequest) {
         eligible: 0,
         matched: 0,
         persisted: 0,
+        requiresReadAccess: false,
       }
     }
     const [evidence, pipeline] = await Promise.all([collectGrowthOSEvidence(), GrowthTools.getGrowthOSStatus()])
     const critical = pipeline.orphanedStagesDetected.filter((item) => item.severity === 'P0')
+    const deliveryEvidenceGap = resendReconciliation.skipped
+      && resendReconciliation.eligible > 0
+      && resendReconciliation.requiresReadAccess
     const status = evidence.evidenceState === 'UNKNOWN' || critical.length > 0
       ? 'FAILED'
-      : pipeline.orphanedStagesDetected.length > 0 || evidence.evidenceState === 'PARTIAL' ? 'DEGRADED' : 'HEALTHY'
+      : pipeline.orphanedStagesDetected.length > 0 || evidence.evidenceState === 'PARTIAL' || deliveryEvidenceGap ? 'DEGRADED' : 'HEALTHY'
     const issues = pipeline.orphanedStagesDetected.map((item) =>
       `<li><strong>${escapeHtml(item.severity)} · ${escapeHtml(item.stage)}:</strong> ${escapeHtml(item.issue)}</li>`
     ).join('') || '<li>No evidence-backed pipeline failures detected.</li>'
@@ -58,6 +62,7 @@ export async function GET(request: NextRequest) {
           <li>Leads: ${evidence.funnel.newLeads30d}; unique measured sessions: ${evidence.funnel.uniqueSessions30d}</li>
           <li>Checkout starts: ${evidence.funnel.checkoutStarts30d}; verified purchases: ${evidence.funnel.providerVerifiedPurchases30d}</li>
           <li>Provider-accepted outreach: ${pipeline.dispatchedEmailsCount}; verified deliveries: ${pipeline.deliveredEmailsCount}; replies: ${pipeline.repliesCount}</li>
+          <li>Resend delivery reconciliation: ${resendReconciliation.skipped ? `DEGRADED — ${escapeHtml(resendReconciliation.reason)}` : `${resendReconciliation.matched}/${resendReconciliation.eligible} eligible provider records matched`}</li>
         </ul>
         <h3>Failures and evidence gaps</h3><ul>${issues}</ul>
       </div>`

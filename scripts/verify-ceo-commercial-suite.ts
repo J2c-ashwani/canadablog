@@ -226,8 +226,9 @@ async function run() {
   assert(paypalWebhook.includes("'BILLING.SUBSCRIPTION.RE-ACTIVATED': 'ACTIVE'"), 'PayPal re-activation restores active membership status');
   assert(paypalWebhook.includes("eventType: 'membership_payment_verified'"), 'Membership cash attribution requires a signed PayPal payment webhook');
   assert(resendReconciliation.includes("fetch(url") && resendReconciliation.includes("Authorization: `Bearer ${apiKey}`"), 'Resend delivery fallback reads authenticated provider state');
+  assert(resendReconciliation.includes('RESEND_RECONCILIATION_API_KEY') && resendReconciliation.includes('requiresReadAccess: true'), 'Resend delivery reconciliation supports a dedicated read credential and exposes permission gaps');
   assert(resendReconciliation.includes("event.eventType === 'provider_accepted'") && resendReconciliation.includes("event.provider.toLowerCase() === 'resend'"), 'Resend reconciliation is restricted to provider IDs already accepted into the commercial ledger');
-  assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()'), 'Daily GrowthOS health reconciles provider delivery state before reporting evidence');
+  assert(growthHealthRoute.includes('await reconcileResendDeliveryEvents()') && growthHealthRoute.includes('deliveryEvidenceGap'), 'Daily GrowthOS health reconciles provider delivery state and degrades when read evidence is unavailable');
   assert(actionScorecard.includes("decision: 'SCALE' | 'HOLD' | 'STOP'"), 'CEO action P&L emits explicit scale, hold, or stop decisions');
   assert(actionScorecard.includes('verifiedPageViewKeys') && actionScorecard.includes('isLikelyAutomatedUserAgent'), 'CEO action P&L excludes bot and link-scanner clicks from qualified-lead decisions');
   assert(actionScorecard.includes('explicitHumanSessions') && actionScorecard.includes('deliveredMessageIds'), 'CEO action P&L requires explicit human sessions and verified email delivery before counting qualified leads');

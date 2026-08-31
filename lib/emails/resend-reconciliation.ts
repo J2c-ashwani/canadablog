@@ -43,8 +43,16 @@ async function listResendPage(apiKey: string, after = '') {
  * absent. Only provider IDs already recorded by our own ledgers are eligible.
  */
 export async function reconcileResendDeliveryEvents(options?: { maxPages?: number }) {
-  const apiKey = process.env.RESEND_API_KEY?.trim();
-  if (!apiKey) return { skipped: true, reason: 'RESEND_API_KEY is not configured', eligible: 0, matched: 0, persisted: 0 };
+  const reconciliationKey = process.env.RESEND_RECONCILIATION_API_KEY?.trim();
+  const apiKey = reconciliationKey || process.env.RESEND_API_KEY?.trim();
+  if (!apiKey) return {
+    skipped: true,
+    reason: 'RESEND_RECONCILIATION_API_KEY and RESEND_API_KEY are not configured',
+    eligible: 0,
+    matched: 0,
+    persisted: 0,
+    requiresReadAccess: true,
+  };
 
   const [actionEvents, purchases, emailRows] = await Promise.all([
     getGrowthActionEvents(),
@@ -62,13 +70,36 @@ export async function reconcileResendDeliveryEvents(options?: { maxPages?: numbe
       .map((event) => event.providerMessageId),
     ...purchaseMessageIds,
   ].filter((messageId) => messageId && !existingTerminalIds.has(messageId)));
-  if (eligibleIds.size === 0) return { skipped: false, eligible: 0, matched: 0, persisted: 0 };
+  if (eligibleIds.size === 0) return {
+    skipped: false,
+    eligible: 0,
+    matched: 0,
+    persisted: 0,
+    requiresReadAccess: false,
+    credentialSource: reconciliationKey ? 'dedicated_reconciliation_key' : 'send_key_with_read_access',
+  };
 
   const matched = new Map<string, ResendEmailSummary>();
   let after = '';
   const maxPages = Math.min(Math.max(options?.maxPages || 10, 1), 20);
   for (let page = 0; page < maxPages && matched.size < eligibleIds.size; page++) {
-    const response = await listResendPage(apiKey, after);
+    let response: ResendListResponse;
+    try {
+      response = await listResendPage(apiKey, after);
+    } catch (error: any) {
+      const reason = error?.message || String(error);
+      if (/restricted to only send emails|permission|unauthorized|forbidden/i.test(reason)) {
+        return {
+          skipped: true,
+          reason: 'Configure RESEND_RECONCILIATION_API_KEY with Resend read access, or configure the signed Resend webhook.',
+          eligible: eligibleIds.size,
+          matched: 0,
+          persisted: 0,
+          requiresReadAccess: true,
+        };
+      }
+      throw error;
+    }
     const emails = Array.isArray(response.data) ? response.data : [];
     for (const email of emails) {
       const id = String(email.id || '');
@@ -101,5 +132,12 @@ export async function reconcileResendDeliveryEvents(options?: { maxPages?: numbe
     await updatePurchaseDeliveryFromProviderEvent(event.providerMessageId, event.eventType);
   }
 
-  return { skipped: false, eligible: eligibleIds.size, matched: matched.size, persisted };
+  return {
+    skipped: false,
+    eligible: eligibleIds.size,
+    matched: matched.size,
+    persisted,
+    requiresReadAccess: false,
+    credentialSource: reconciliationKey ? 'dedicated_reconciliation_key' : 'send_key_with_read_access',
+  };
 }

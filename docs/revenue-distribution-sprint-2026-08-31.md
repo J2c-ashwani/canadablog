@@ -54,7 +54,7 @@ The nine approved cohort URLs may be submitted to participating IndexNow search 
 
 ## Known evidence gap
 
-Resend has provider-accepted messages in the commercial ledger, but the local audit has no production Resend API credential and currently sees zero signed delivery events. Production Growth OS already runs authenticated Resend reconciliation before its daily health report. Until that evidence is persisted, email actions remain HOLD and do not count as qualified distribution.
+Resend has provider-accepted messages in the commercial ledger, but the production sender credential is restricted to sending and no signed webhook events are arriving. Growth OS supports a separate `RESEND_RECONCILIATION_API_KEY` with read access as well as the signed webhook route. Until one of those sources persists delivery evidence, email actions remain HOLD, do not count as qualified distribution, and daily Growth OS health reports DEGRADED.
 
 ## Release safeguards
 
