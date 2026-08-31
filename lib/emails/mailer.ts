@@ -156,7 +156,7 @@ async function sendViaBrevo({
 
     const payload = await response.json().catch(() => ({})) as { messageId?: string };
     if (!payload.messageId) return { success: false, error: 'Brevo accepted the request without a message ID.' };
-    console.log(`✉️ Email accepted by Brevo for ${to} [${tagType}]`);
+    console.log(`✉️ Email accepted by Brevo [${tagType}] [provider:${payload.messageId}]`);
     return { success: true, provider: 'brevo', providerMessageId: payload.messageId };
   } catch (error) {
     console.warn(`Brevo email exception [${tagType}]: ${error}`);
@@ -219,7 +219,7 @@ async function sendViaResend({
 
     const payload = await response.json().catch(() => ({})) as { id?: string };
     if (!payload.id) return { success: false, error: 'Resend accepted the request without a message ID.' };
-    console.log(`✉️ Email accepted by Resend for ${to} [${tagType}]`);
+    console.log(`✉️ Email accepted by Resend [${tagType}] [provider:${payload.id}]`);
     return { success: true, provider: 'resend', providerMessageId: payload.id };
   } catch (error) {
     console.error(`Resend email exception [${tagType}]:`, error);

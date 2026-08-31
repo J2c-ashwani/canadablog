@@ -188,6 +188,7 @@ async function run() {
   const socialSprintRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-social-revenue-sprint/route.ts'), 'utf8');
   const socialSprintService = fs.readFileSync(path.join(root, 'lib/growth-os/social-revenue-sprint.ts'), 'utf8');
   const channelAdapters = fs.readFileSync(path.join(root, 'lib/growth-os/execution/adapters/channel-adapters.ts'), 'utf8');
+  const mailer = fs.readFileSync(path.join(root, 'lib/emails/mailer.ts'), 'utf8');
   assert(!calculatorRoute.includes('activity.calculatorCompletedAt || sub.timestamp'), 'Calculator recovery requires explicit calculator completion evidence');
   assert(newsletterRoute.includes('|| !activity.lastNewsletterProviderMessageId'), 'Newsletter retries legacy campaign markers that lack provider acceptance evidence');
   assert(newsletterRoute.includes('CONTROLLED_COHORT_CAP = 20') && newsletterRoute.includes('remainingCohortCapacity'), 'Newsletter distribution is capped at a 20-contact evidence cohort across repeated scheduler runs');
@@ -217,6 +218,7 @@ async function run() {
   assert(!socialSprintService.toLowerCase().includes('guaranteed') && !socialSprintService.toLowerCase().includes('limited time') && !socialSprintService.includes('Up to $150,000'), 'Social revenue copy contains no guarantee, false urgency, or unsupported funding amount');
   assert(channelAdapters.includes('const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()') && !channelAdapters.includes('process.env.LINKEDIN_CLIENT_ID?.trim()\n    const linkedInUrn'), 'LinkedIn publishing never mistakes a public client ID for an access token');
   assert(channelAdapters.includes('postFacebook(message: string, link: string)') && channelAdapters.includes('provider post ID'), 'Facebook publishing requires a provider-returned post ID');
+  assert(!mailer.includes('accepted by Resend for ${to}') && !mailer.includes('accepted by Brevo for ${to}') && !sheetsStore.includes('Lead ${email} updated'), 'Commercial runtime logs do not expose recipient email addresses');
   assert(actionScorecard.includes("event.channel.startsWith('organic_')"), 'CEO action P&L recognizes verified social and onsite organic clicks');
   assert(telemetryRoute.includes("eventName === 'checkout_started'") && telemetryRoute.includes('parseTrackedGrowthToken'), 'Membership checkout starts enter the action P&L only through trusted first-party attribution');
   assert(!membershipCheckout.includes('SUB-FOUNDING-'), 'Membership checkout never fabricates a PayPal subscription ID');

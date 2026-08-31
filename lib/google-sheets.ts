@@ -599,7 +599,7 @@ export async function updateLeadInSheet(email: string, updates: Partial<LeadCapt
           requestBody: { values: [[waLink]] },
         })
       }
-      console.log(`✅ Lead ${email} updated at row ${sheetRowNumber}`)
+      console.log(`✅ Lead record updated at row ${sheetRowNumber}`)
     }
     invalidateCachedSheetValues("Leads")
     return { success: true }
