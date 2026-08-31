@@ -93,8 +93,13 @@ assert.equal(/<h1\b/i.test(loadingSource), false, 'global loading UI must not in
 const onsiteClickSource = readFileSync('app/api/growth-os/onsite-click/route.ts', 'utf8');
 assert.equal(onsiteClickSource.includes("contentContext.startsWith('seo-cohort-v1-')"), true, 'cohort action attribution is missing');
 const dashboardSource = readFileSync('app/admin/dashboard/page.tsx', 'utf8');
+const indexNowSource = readFileSync('scripts/submit-search-cohort-indexnow.ts', 'utf8');
+const indexNowKey = readFileSync('public/9f2d760a190decd61c5ea57bab9f5d7b.txt', 'utf8').trim();
 assert.equal(dashboardSource.includes('.filter(isProviderVerifiedPurchase)'), true, 'dashboard KPI must exclude unverified purchase rows');
 assert.equal(dashboardSource.includes('Search Cohort RP1KOV'), true, 'controlled-cohort KPI is missing');
+assert.equal(indexNowKey, '9f2d760a190decd61c5ea57bab9f5d7b', 'IndexNow ownership key file is invalid');
+assert.equal(indexNowSource.includes('SEARCH_DISTRIBUTION_COHORT_PATHS.map'), true, 'IndexNow submission must derive only from the controlled cohort allowlist');
+assert.equal(indexNowSource.includes('getAllPseoPages'), false, 'IndexNow submission must never expand to the full pSEO inventory');
 
 console.log(`PASS search-distribution cohort: 9 routes (${pseoCohort.length} city-industry + ${exactBlogRoutes.length} editorial)`);
 console.log(`PASS controls preserved across ${pseoPages.length - pseoCohort.length} non-cohort city-industry pages`);

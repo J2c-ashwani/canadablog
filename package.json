@@ -18,6 +18,7 @@
     "report:commercial-baseline": "npx tsx -r dotenv/config scripts/report-verified-commercial-baseline.ts",
     "reconcile:resend-evidence": "npx tsx -r dotenv/config scripts/reconcile-resend-delivery-evidence.ts",
     "dry-run:revenue-sprint": "npx tsx -r dotenv/config scripts/dry-run-revenue-sprint.ts",
+    "submit:search-cohort-indexnow": "npx tsx scripts/submit-search-cohort-indexnow.ts",
     "dev": "next dev",
     "lint": "next lint",
     "start": "next start",

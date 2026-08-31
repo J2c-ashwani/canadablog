@@ -50,6 +50,8 @@ Expansion fails closed unless every gate passes:
 
 Traffic alone never authorizes expansion. Unknown evidence remains locked, and a human review is required even after every coded gate passes.
 
+The nine approved cohort URLs may be submitted to participating IndexNow search engines after the ownership key is live. The submission script imports the exact cohort allowlist and cannot enumerate the 6,144 controls. An HTTP 200/202 proves notification receipt only; it is not ranking, traffic, or revenue evidence.
+
 ## Known evidence gap
 
 Resend has provider-accepted messages in the commercial ledger, but the local audit has no production Resend API credential and currently sees zero signed delivery events. Production Growth OS already runs authenticated Resend reconciliation before its daily health report. Until that evidence is persisted, email actions remain HOLD and do not count as qualified distribution.
