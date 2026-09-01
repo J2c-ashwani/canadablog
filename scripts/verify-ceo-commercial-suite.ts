@@ -262,6 +262,7 @@ async function run() {
   assert(!actionScorecard.includes('acceptedMessageIds.size >= 20 || organicClickEvents.length >= 20'), 'Provider acceptance alone cannot trigger a channel stop decision');
   assert(['productCheckoutViews', 'deliveryEmailsReady', 'paypalButtonsRendered', 'paypalButtonClicks', 'paypalApprovals', 'paypalFailures'].every((stage) => actionScorecard.includes(stage)), 'CEO action P&L reports every newly measured product-to-PayPal handoff');
   assert(!authorityDiscovery.includes('contact@${domain}') && !authorityDiscovery.includes('960fb097'), 'Authority discovery neither guesses recipients nor embeds credentials');
+  assert(authorityDiscovery.includes('extractSameSitePublicEmail') && authorityDiscovery.includes("redirect: 'manual'") && authorityDiscoveryRoute.includes('status: "review_required"'), 'Authority discovery extracts only publicly displayed same-site contacts, blocks redirects, and preserves human review before any send');
   assert(
     authorityDiscoveryRoute.includes('source: "serper_search_result"')
       && authorityDiscoveryRoute.includes('sourceUrl: opp.targetPage')
