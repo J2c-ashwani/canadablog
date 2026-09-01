@@ -5,6 +5,7 @@ import { getLatestOperationalState, setOperationalState } from '@/lib/growth-os/
 export const SOCIAL_REVENUE_SPRINT_END_AT = '2026-09-25T18:29:59.000Z'
 const STATE_KEY = 'social-revenue-sprint-september-v1'
 const MIN_VARIANT_GAP_MS = 36 * 60 * 60 * 1000
+const INITIAL_VARIANT_ID = 'sep-match-fit-v1'
 
 type ChannelId = 'linkedin' | 'facebook'
 
@@ -149,7 +150,14 @@ export class SocialRevenueSprintService {
       return { active: false, decision: 'EXPIRED', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
     }
 
-    const variant = VARIANTS.find((candidate) => {
+    // The prior $79 social experiment generated only 11 organic impressions
+    // and no downstream payment evidence. Start this new, isolated September
+    // state with the lowest-friction $19 product to establish a paid social
+    // baseline before presenting higher-value tiers.
+    const orderedVariants = [...VARIANTS].sort((left, right) =>
+      Number(right.id === INITIAL_VARIANT_ID) - Number(left.id === INITIAL_VARIANT_ID)
+    )
+    const variant = orderedVariants.find((candidate) => {
       const receipts = state.variants[candidate.id] || {}
       return !accepted(receipts.linkedin) || !accepted(receipts.facebook)
     })
@@ -157,7 +165,7 @@ export class SocialRevenueSprintService {
       return { active: true, decision: 'COMPLETE', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
     }
 
-    const isFirstVariant = variant.id === VARIANTS[0].id
+    const isFirstVariant = variant.id === INITIAL_VARIANT_ID
     const lastAcceptedMs = new Date(state.lastAcceptedAt || '').getTime()
     if (!isFirstVariant && Number.isFinite(lastAcceptedMs) && now - lastAcceptedMs < MIN_VARIANT_GAP_MS) {
       return { active: true, decision: 'WAITING_FOR_NEXT_VARIANT', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
