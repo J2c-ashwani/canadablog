@@ -1,5 +1,10 @@
 import { createHmac, randomUUID, timingSafeEqual } from 'crypto';
 import { appendOperationalRow, readOperationalRows } from '@/lib/growth-os/operations-store';
+import {
+  getRedisGrowthActionEvents,
+  hasOperationalRedis,
+  persistRedisGrowthActionEvent,
+} from '@/lib/growth-os/redis-operations';
 
 export type GrowthActionEventType =
   | 'provider_accepted'
@@ -224,6 +229,9 @@ export async function recordGrowthActionEvent(input: Omit<GrowthActionEvent, 'ev
     eventId: input.eventId || randomUUID(),
     occurredAt: input.occurredAt || new Date().toISOString(),
   };
+  if (hasOperationalRedis()) {
+    return persistRedisGrowthActionEvent(event);
+  }
   if (!knownEventIds) {
     const rows = await readOperationalRows('Growth Action Events', EVENT_HEADERS);
     knownEventIds = new Set(rows.map((row) => row[0]).filter(Boolean));
@@ -254,5 +262,17 @@ export async function recordGrowthActionEvent(input: Omit<GrowthActionEvent, 'ev
 }
 
 export async function getGrowthActionEvents() {
-  return (await readOperationalRows('Growth Action Events', EVENT_HEADERS)).map(parseEvent);
+  const sheetPromise = readOperationalRows('Growth Action Events', EVENT_HEADERS).then((rows) => rows.map(parseEvent));
+  if (!hasOperationalRedis()) return sheetPromise;
+  const [sheetEvents, redisEvents] = await Promise.all([
+    sheetPromise,
+    getRedisGrowthActionEvents<GrowthActionEvent>(),
+  ]);
+  const merged = new Map<string, GrowthActionEvent>();
+  for (const event of [...sheetEvents, ...redisEvents]) {
+    if (event.eventId) merged.set(event.eventId, event);
+  }
+  return [...merged.values()].sort((left, right) =>
+    new Date(left.occurredAt).getTime() - new Date(right.occurredAt).getTime()
+  );
 }

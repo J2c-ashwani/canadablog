@@ -4,6 +4,12 @@ import {
   getGoogleSheetsClient,
   invalidateCachedSheetValues,
 } from '@/lib/google-sheets';
+import {
+  acquireRedisOperationLease,
+  finishRedisOperationLease,
+  getRedisOperationRunRows,
+  hasOperationalRedis,
+} from '@/lib/growth-os/redis-operations';
 
 type SheetContext = {
   sheets: Awaited<ReturnType<typeof getGoogleSheetsClient>>;
@@ -16,6 +22,7 @@ export interface OperationLease {
   attemptId: string;
   startedAt: string;
   rowNumber?: number;
+  backend?: 'redis' | 'sheets';
   reason?: string;
 }
 
@@ -114,7 +121,16 @@ export async function appendOperationalRow(title: string, headers: string[], val
 
 export async function readOperationalRows(title: string, headers: string[]): Promise<string[][]> {
   await ensureOperationalSheet(title, headers);
-  return getCachedSheetValues(`${quoteSheetTitle(title)}!A2:${columnName(headers.length)}`);
+  const sheetRows = await getCachedSheetValues(`${quoteSheetTitle(title)}!A2:${columnName(headers.length)}`);
+  if (title !== 'GrowthOS Runs' || !hasOperationalRedis()) return sheetRows;
+  const redisRows = await getRedisOperationRunRows();
+  const merged = new Map<string, string[]>();
+  for (const row of [...sheetRows, ...redisRows]) {
+    if (row[0]) merged.set(row[0], row);
+  }
+  return [...merged.values()].sort((left, right) =>
+    new Date(left[2] || '').getTime() - new Date(right[2] || '').getTime()
+  );
 }
 
 export async function updateOperationalRow(
@@ -178,6 +194,22 @@ export async function acquireOperationLease(
 ): Promise<OperationLease> {
   const attemptId = randomUUID();
   const startedAt = new Date().toISOString();
+  if (hasOperationalRedis()) {
+    const result = await acquireRedisOperationLease({
+      attemptId,
+      operation,
+      startedAt,
+      dedupeWindowMs,
+    });
+    return {
+      acquired: result.acquired,
+      operation,
+      attemptId,
+      startedAt,
+      backend: 'redis',
+      reason: result.acquired ? undefined : 'A recent execution already owns this operation lease.',
+    };
+  }
   const append = await appendOperationalRow('GrowthOS Runs', RUN_HEADERS, [
     attemptId,
     operation,
@@ -216,6 +248,7 @@ export async function acquireOperationLease(
     attemptId,
     startedAt,
     rowNumber: append.rowNumber,
+    backend: 'sheets',
     reason: acquired ? undefined : 'A recent execution already owns this operation lease.',
   };
 }
@@ -225,6 +258,17 @@ export async function finishOperationLease(
   status: 'SUCCEEDED' | 'PARTIAL' | 'FAILED',
   summary: unknown
 ) {
+  const serializedSummary = typeof summary === 'string' ? summary : JSON.stringify(summary);
+  if (lease.backend === 'redis') {
+    await finishRedisOperationLease({
+      attemptId: lease.attemptId,
+      operation: lease.operation,
+      startedAt: lease.startedAt,
+      status,
+      summary: serializedSummary,
+    });
+    return;
+  }
   if (!lease.rowNumber) return;
   await updateOperationalRow('GrowthOS Runs', RUN_HEADERS, lease.rowNumber, [
     lease.attemptId,
@@ -232,7 +276,7 @@ export async function finishOperationLease(
     lease.startedAt,
     status,
     new Date().toISOString(),
-    typeof summary === 'string' ? summary : JSON.stringify(summary),
+    serializedSummary,
   ]);
 }
 

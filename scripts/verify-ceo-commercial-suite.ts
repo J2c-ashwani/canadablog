@@ -124,6 +124,8 @@ async function run() {
   const authorityDiscovery = fs.readFileSync(path.join(root, 'lib/growth-os/authority/opportunity-discovery.ts'), 'utf8');
   const authorityDiscoveryRoute = fs.readFileSync(path.join(root, 'app/api/cron/discover-authority-opportunities/route.ts'), 'utf8');
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
+  const redisOperations = fs.readFileSync(path.join(root, 'lib/growth-os/redis-operations.ts'), 'utf8');
+  const actionAttribution = fs.readFileSync(path.join(root, 'lib/growth-os/action-attribution.ts'), 'utf8');
   const sheetsStore = fs.readFileSync(path.join(root, 'lib/google-sheets.ts'), 'utf8');
   const organicProductLadder = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadder.tsx'), 'utf8');
   const organicProductLadderImpression = fs.readFileSync(path.join(root, 'components/products/OrganicProductLadderImpression.tsx'), 'utf8');
@@ -263,6 +265,40 @@ async function run() {
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');
   const leaseFinalizer = operationsStore.slice(operationsStore.indexOf('export async function finishOperationLease'));
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');
+  assert(
+    operationsStore.includes('if (hasOperationalRedis())')
+      && operationsStore.includes('acquireRedisOperationLease')
+      && operationsStore.includes("backend: 'redis'"),
+    'Production scheduler leases leave the quota-limited Google Sheets write path when durable Redis is configured',
+  );
+  assert(
+    redisOperations.includes('nx: true')
+      && redisOperations.includes('dedupeWindowMs')
+      && redisOperations.includes('SKIPPED_DUPLICATE'),
+    'Redis scheduler leases use an atomic set-if-absent guard and preserve duplicate-run evidence',
+  );
+  assert(
+    actionAttribution.includes('persistRedisGrowthActionEvent(event)')
+      && actionAttribution.includes('getRedisGrowthActionEvents<GrowthActionEvent>()')
+      && redisOperations.includes('EVENT_RETENTION_MS = 120'),
+    'High-frequency commercial events use durable Redis with 120-day evidence retention instead of exhausting Sheets writes',
+  );
+  assert(
+    actionAttribution.includes('new Map<string, GrowthActionEvent>()')
+      && operationsStore.includes('for (const row of [...sheetRows, ...redisRows])'),
+    'CEO evidence merges legacy Sheets history with the new Redis operational ledger',
+  );
+  const productionCrons = JSON.parse(vercelConfig).crons as Array<{ path: string; schedule: string }>;
+  const cronSchedule = (pathName: string) => productionCrons.find((entry) => entry.path === pathName)?.schedule;
+  assert(
+    cronSchedule('/api/cron/process-cart-recovery') === '5 * * * *'
+      && cronSchedule('/api/cron/process-revenue-sprint') === '35 */2 * * *'
+      && cronSchedule('/api/cron/process-newsletter') === '10 15 * * 1-5'
+      && cronSchedule('/api/cron/authority-pipeline') === '40 15 * * 1-5'
+      && cronSchedule('/api/cron/process-product-delivery-recovery') === '10 17 * * *'
+      && cronSchedule('/api/cron/process-membership-briefings') === '40 13,17 * * 1-5',
+    'High-write production schedulers are staggered instead of creating minute-zero Sheets bursts',
+  );
   assert(['$19', '$29', '$49', '$79', 'match-report', 'toolkit', 'action-plan', 'bundle', 'membership'].every((value) => organicProductLadder.includes(value)), 'Organic content distributes the complete self-serve product ladder');
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');
   assert(organicProductLadder.includes("surface === 'footer'") && organicProductLadder.includes("? 'bundle'") && organicProductLadder.includes("surface === 'grants-city-industry'") && organicProductLadder.includes("? 'action-plan'"), 'Focused organic experiment promotes the strongest observed cash and checkout offers on each high-volume surface');

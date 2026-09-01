@@ -2,23 +2,23 @@
   "crons": [
     {
       "path": "/api/cron/growth-os-health",
-      "schedule": "0 9 * * *"
+      "schedule": "10 9 * * *"
     },
     {
       "path": "/api/cron/discover-authority-opportunities",
-      "schedule": "0 10 * * *"
+      "schedule": "20 10 * * *"
     },
     {
       "path": "/api/cron/process-b2b-outreach",
-      "schedule": "0 14,18 * * 1-5"
+      "schedule": "20 14,18 * * 1-5"
     },
     {
       "path": "/api/cron/process-cart-recovery",
-      "schedule": "0 * * * *"
+      "schedule": "5 * * * *"
     },
     {
       "path": "/api/cron/process-revenue-sprint",
-      "schedule": "0 */2 * * *"
+      "schedule": "35 */2 * * *"
     },
     {
       "path": "/api/cron/process-social-revenue-sprint",
@@ -26,19 +26,19 @@
     },
     {
       "path": "/api/cron/process-calculator-recovery",
-      "schedule": "0 11 * * *"
+      "schedule": "20 11 * * *"
     },
     {
       "path": "/api/cron/process-newsletter",
-      "schedule": "0 15 * * 1-5"
+      "schedule": "10 15 * * 1-5"
     },
     {
       "path": "/api/cron/authority-pipeline",
-      "schedule": "0 15 * * 1-5"
+      "schedule": "40 15 * * 1-5"
     },
     {
       "path": "/api/cron/process-product-delivery-recovery",
-      "schedule": "0 17 * * *"
+      "schedule": "10 17 * * *"
     },
     {
       "path": "/api/cron/process-mca-priority-recovery",
@@ -46,11 +46,11 @@
     },
     {
       "path": "/api/ceo/run?trigger=cron",
-      "schedule": "0 8 * * *"
+      "schedule": "10 8 * * *"
     },
     {
       "path": "/api/cron/process-membership-briefings",
-      "schedule": "0 13,17 * * 1-5"
+      "schedule": "40 13,17 * * 1-5"
     }
   ]
 }
