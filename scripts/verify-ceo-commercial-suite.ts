@@ -114,6 +114,7 @@ async function run() {
   const ceoMemory = fs.readFileSync(path.join(root, 'lib/ceo-agent/ceo-memory.ts'), 'utf8');
   const ceoAgent = fs.readFileSync(path.join(root, 'lib/ceo-agent/ceo-agent.ts'), 'utf8');
   const calculatorRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-calculator-recovery/route.ts'), 'utf8');
+  const legacyAlertQueueRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-alert-queue/route.ts'), 'utf8');
   assert(ceoMemory.includes("ACTIVE_CASH_TARGET_END_AT = '2026-09-25T23:59:59.000Z'"), 'CEO scoreboard is aligned to the approved September 25 cash deadline');
   const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
   const approvedNewsletterCohortRoute = fs.readFileSync(path.join(root, 'app/api/admin/alerts/newsletter/approved-cohort/route.ts'), 'utf8');
@@ -322,6 +323,12 @@ async function run() {
       && cronSchedule('/api/cron/process-product-delivery-recovery') === '10 17 * * *'
       && cronSchedule('/api/cron/process-membership-briefings') === '40 13,17 * * 1-5',
     'High-write production schedulers are staggered instead of creating minute-zero Sheets bursts',
+  );
+  assert(
+    legacyAlertQueueRoute.includes('ENABLE_LEGACY_ALERT_QUEUE !== "true"')
+      && legacyAlertQueueRoute.includes('status: "PAUSED"')
+      && legacyAlertQueueRoute.indexOf('ENABLE_LEGACY_ALERT_QUEUE') < legacyAlertQueueRoute.indexOf('getPendingAlertJobs()'),
+    'Uncapped legacy mass alerts fail closed before the missing Google Sheet or any subscriber send',
   );
   assert(['$19', '$29', '$49', '$79', 'match-report', 'toolkit', 'action-plan', 'bundle', 'membership'].every((value) => organicProductLadder.includes(value)), 'Organic content distributes the complete self-serve product ladder');
   assert(!organicProductLadder.includes('$199') && !organicProductLadder.toLowerCase().includes('book a call'), 'Organic product ladder requires no live-call fulfillment');

@@ -42,6 +42,8 @@ The runtime path now:
 
 Legacy Sheet evidence is still merged with current Redis evidence. Provider-verified payment truth remains unchanged.
 
+The forensic log pass also found an externally invoked legacy `process-alert-queue` route that attempted to read a nonexistent `AlertJobsQueue` sheet, swallowed the error as an empty queue, and returned HTTP 200. Because that path could fan one draft out to every Tier A subscriber without a cohort cap, it now fails closed as `PAUSED` unless `ENABLE_LEGACY_ALERT_QUEUE=true` is deliberately configured. The capped Revenue Sprint and approved newsletter cohort remain the active commercial email paths.
+
 ## Verification
 
 - TypeScript compilation: passed.

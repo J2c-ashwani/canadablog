@@ -15,6 +15,17 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized alert queue cron execution." }, { status: 401 })
   }
 
+  // This legacy queue has no cohort cap and can fan a single draft out to every
+  // Tier A subscriber. Keep it fail-closed while Revenue Sprint/newsletter own
+  // the approved, provider-evidenced distribution cohorts.
+  if (process.env.ENABLE_LEGACY_ALERT_QUEUE !== "true") {
+    return NextResponse.json({
+      success: true,
+      status: "PAUSED",
+      message: "Legacy mass alert queue is disabled; use the capped distribution cohorts."
+    })
+  }
+
   try {
     const pendingJobs = await getPendingAlertJobs()
     if (pendingJobs.length === 0) {
