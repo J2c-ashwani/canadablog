@@ -1,4 +1,4 @@
-import { randomUUID } from 'node:crypto';
+import { createHmac, randomUUID } from 'node:crypto';
 import { type NextRequest, NextResponse } from 'next/server';
 import {
   createTrackedGrowthUrl,
@@ -48,6 +48,20 @@ function safeSlug(value: string, fallback: string) {
     .slice(0, 80) || fallback;
 }
 
+function anonymousVisitorId(request: NextRequest) {
+  const existingVisitorId = request.cookies.get('fsi_organic_visitor')?.value || '';
+  if (/^(?:[a-f0-9-]{36}|[a-f0-9]{32})$/i.test(existingVisitorId)) return existingVisitorId;
+  const secret = process.env.GROWTH_ATTRIBUTION_SECRET
+    || process.env.CRON_SECRET
+    || process.env.LEAD_DASHBOARD_SECRET
+    || '';
+  if (!secret) return randomUUID();
+  const forwardedFor = String(request.headers.get('x-forwarded-for') || '').split(',')[0].trim();
+  const userAgent = String(request.headers.get('user-agent') || '').slice(0, 240);
+  const dailyFingerprint = `${forwardedFor}|${userAgent}|${new Date().toISOString().slice(0, 10)}`;
+  return createHmac('sha256', secret).update(dailyFingerprint).digest('hex').slice(0, 32);
+}
+
 /**
  * First-party redirect for organic product distribution. The browser never
  * creates or signs attribution data: this route allowlists the destination,
@@ -69,8 +83,7 @@ export async function GET(request: NextRequest) {
   const experiment = experimentInput === 'focused-v2' || experimentInput === 'intent-v1' || experimentInput === 'social-v1'
     ? experimentInput
     : 'baseline';
-  const existingVisitorId = request.cookies.get('fsi_organic_visitor')?.value || '';
-  const visitorId = /^[a-f0-9-]{36}$/i.test(existingVisitorId) ? existingVisitorId : randomUUID();
+  const visitorId = anonymousVisitorId(request);
   const socialSource = surface === 'linkedin-company'
     ? 'linkedin'
     : surface === 'facebook-page'
@@ -100,6 +113,10 @@ export async function GET(request: NextRequest) {
   destination.searchParams.set('utm_medium', socialSource ? 'organic_social' : 'onsite');
   destination.searchParams.set('utm_campaign', campaign);
   destination.searchParams.set('utm_content', `${contentContext}-${offer}`);
+
+  if (isLikelyAutomatedUserAgent(request.headers.get('user-agent'))) {
+    return NextResponse.redirect(destination);
+  }
 
   const trackedUrl = createTrackedGrowthUrl(destination.toString(), context);
   const response = NextResponse.redirect(trackedUrl);

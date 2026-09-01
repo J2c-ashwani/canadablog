@@ -300,6 +300,18 @@ async function run() {
       && telemetryStore.includes('return [...results, ...redisEvents].sort'),
     'CEO funnel evidence merges legacy Sheet telemetry with current Redis telemetry',
   );
+  assert(
+    redisOperations.includes('REDIS_MGET_CHUNK_SIZE = 200')
+      && redisOperations.includes('getNewestIndexMembers')
+      && !redisOperations.includes("client.zrange<string[]>(EVENT_INDEX_KEY, 0, -1)"),
+    'Redis evidence reads are bounded and chunked below the provider request-size ceiling',
+  );
+  assert(
+    redisOperations.includes('CRITICAL_EVENT_INDEX_KEY')
+      && redisOperations.includes('CRITICAL_TELEMETRY_INDEX_KEY')
+      && redisOperations.includes("durableEvent.eventType !== 'click'"),
+    'Critical commercial evidence has a separate durable index that click volume cannot displace',
+  );
   const productionCrons = JSON.parse(vercelConfig).crons as Array<{ path: string; schedule: string }>;
   const cronSchedule = (pathName: string) => productionCrons.find((entry) => entry.path === pathName)?.schedule;
   assert(
@@ -351,6 +363,8 @@ async function run() {
   assert(productHierarchy.includes("price: '$19'") && productHierarchy.includes("price: '$29'") && productHierarchy.includes("price: '$49'") && productHierarchy.includes("price: '$79'"), 'Product comparison presents only the active self-serve price ladder');
   assert(reportDeliveryClient.includes('/membership?source=report-membership-upgrade') && reportDeliveryClient.includes('/products/bundle?source=report-delivery'), 'Post-purchase distribution routes to Funding Watch and the complete self-serve bundle');
   assert(onsiteClickRoute.includes('createTrackedGrowthUrl') && onsiteClickRoute.includes('fsi_organic_visitor') && onsiteClickRoute.includes('const OFFERS'), 'On-site product clicks use allowlisted signed first-party attribution');
+  assert(onsiteClickRoute.includes('dailyFingerprint') && onsiteClickRoute.includes("createHmac('sha256', secret)"), 'Cookie-less browser traffic receives a privacy-preserving daily stable ID instead of unbounded random click identities');
+  assert(onsiteClickRoute.includes('isLikelyAutomatedUserAgent(request.headers.get') && onsiteClickRoute.includes('return NextResponse.redirect(destination)'), 'Recognized crawlers bypass the commercial click ledger');
   assert(onsiteClickRoute.includes('actionDate') && !onsiteClickRoute.includes('product_ladder_2026-08-27'), 'On-site action IDs rotate by the actual UTC date instead of a hardcoded launch date');
   assert(onsiteClickRoute.includes("'linkedin-company'") && onsiteClickRoute.includes("channel = socialSource ? 'organic_social' : 'organic_onsite'"), 'LinkedIn company traffic receives unique signed first-party revenue attribution');
   assert(blogRoute.includes('<OrganicProductLadder surface="blog"') && pseoRoute.includes('<OrganicProductLadder'), 'Paid self-serve distribution is present on blog and city-industry organic templates');

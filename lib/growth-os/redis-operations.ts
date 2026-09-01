@@ -4,11 +4,20 @@ import { Redis } from '@upstash/redis';
 const PREFIX = 'fsi:growthos:v1';
 const RUN_INDEX_KEY = `${PREFIX}:runs`;
 const EVENT_INDEX_KEY = `${PREFIX}:events`;
+const CRITICAL_EVENT_INDEX_KEY = `${PREFIX}:events:critical`;
 const TELEMETRY_INDEX_KEY = `${PREFIX}:telemetry`;
+const CRITICAL_TELEMETRY_INDEX_KEY = `${PREFIX}:telemetry:critical`;
 const RETENTION_SECONDS = 180 * 24 * 60 * 60;
 const EVENT_RETENTION_MS = 120 * 24 * 60 * 60 * 1000;
 const TELEMETRY_RETENTION_MS = 120 * 24 * 60 * 60 * 1000;
 const RUN_RETENTION_MS = RETENTION_SECONDS * 1000;
+const REDIS_MGET_CHUNK_SIZE = 200;
+const REDIS_MGET_CONCURRENCY = 5;
+const MAX_OPERATION_RUNS_READ = 5_000;
+const MAX_GENERAL_ACTION_EVENTS_READ = 5_000;
+const MAX_CRITICAL_ACTION_EVENTS_READ = 20_000;
+const MAX_GENERAL_TELEMETRY_EVENTS_READ = 10_000;
+const MAX_CRITICAL_TELEMETRY_EVENTS_READ = 30_000;
 
 export type RedisOperationRun = {
   attemptId: string;
@@ -60,6 +69,28 @@ function eventKey(eventId: string) {
 
 function telemetryKey(eventId: string) {
   return `${PREFIX}:telemetry-event:${eventId}`;
+}
+
+async function chunkedMget<T>(client: Redis, keys: string[]): Promise<Array<T | null>> {
+  const values: Array<T | null> = [];
+  const batchSize = REDIS_MGET_CHUNK_SIZE * REDIS_MGET_CONCURRENCY;
+  for (let offset = 0; offset < keys.length; offset += batchSize) {
+    const batch = keys.slice(offset, offset + batchSize);
+    const chunks: string[][] = [];
+    for (let chunkOffset = 0; chunkOffset < batch.length; chunkOffset += REDIS_MGET_CHUNK_SIZE) {
+      chunks.push(batch.slice(chunkOffset, chunkOffset + REDIS_MGET_CHUNK_SIZE));
+    }
+    const batchValues = await Promise.all(
+      chunks.map((chunk) => client.mget<Array<T | null>>(...chunk))
+    );
+    values.push(...batchValues.flat());
+  }
+  return values;
+}
+
+async function getNewestIndexMembers(client: Redis, indexKey: string, limit: number) {
+  const count = Math.max(1, Math.floor(limit));
+  return client.zrange<string[]>(indexKey, -count, -1);
 }
 
 async function persistRun(run: RedisOperationRun) {
@@ -122,11 +153,9 @@ export async function finishRedisOperationLease(input: {
 export async function getRedisOperationRunRows(): Promise<string[][]> {
   const client = redis();
   if (!client) return [];
-  const attemptIds = await client.zrange<string[]>(RUN_INDEX_KEY, 0, -1);
+  const attemptIds = await getNewestIndexMembers(client, RUN_INDEX_KEY, MAX_OPERATION_RUNS_READ);
   if (!attemptIds.length) return [];
-  const runs = await client.mget<Array<RedisOperationRun | null>>(
-    ...attemptIds.map((attemptId) => runKey(String(attemptId)))
-  );
+  const runs = await chunkedMget<RedisOperationRun>(client, attemptIds.map((attemptId) => runKey(String(attemptId))));
   return runs
     .filter((run): run is RedisOperationRun => Boolean(run?.attemptId))
     .sort((left, right) => new Date(left.startedAt).getTime() - new Date(right.startedAt).getTime())
@@ -143,6 +172,7 @@ export async function getRedisOperationRunRows(): Promise<string[][]> {
 export async function persistRedisGrowthActionEvent<T extends {
   eventId: string;
   occurredAt: string;
+  eventType?: string;
 }>(event: T): Promise<T> {
   const client = redis();
   if (!client) throw new Error('Operational Redis is not configured.');
@@ -152,39 +182,50 @@ export async function persistRedisGrowthActionEvent<T extends {
     ex: Math.ceil(EVENT_RETENTION_MS / 1000),
   });
   const durableEvent = stored === 'OK' ? event : ((await client.get<T>(key)) || event);
-  await Promise.all([
+  const indexWrites: Array<Promise<unknown>> = [
     client.zadd(EVENT_INDEX_KEY, {
       score: new Date(durableEvent.occurredAt).getTime(),
       member: durableEvent.eventId,
     }),
     client.expire(EVENT_INDEX_KEY, Math.ceil(EVENT_RETENTION_MS / 1000)),
     client.zremrangebyscore(EVENT_INDEX_KEY, 0, Date.now() - EVENT_RETENTION_MS),
-  ]);
+  ];
+  if (durableEvent.eventType && durableEvent.eventType !== 'click') {
+    indexWrites.push(
+      client.zadd(CRITICAL_EVENT_INDEX_KEY, {
+        score: new Date(durableEvent.occurredAt).getTime(),
+        member: durableEvent.eventId,
+      }),
+      client.expire(CRITICAL_EVENT_INDEX_KEY, Math.ceil(EVENT_RETENTION_MS / 1000)),
+      client.zremrangebyscore(CRITICAL_EVENT_INDEX_KEY, 0, Date.now() - EVENT_RETENTION_MS),
+    );
+  }
+  await Promise.all(indexWrites);
   return durableEvent;
 }
 
 export async function getRedisGrowthActionEvents<T extends { eventId: string }>(): Promise<T[]> {
   const client = redis();
   if (!client) return [];
-  const eventIds = await client.zrange<string[]>(
-    EVENT_INDEX_KEY,
-    Date.now() - EVENT_RETENTION_MS,
-    Date.now() + 5 * 60 * 1000,
-    { byScore: true }
-  );
+  const [generalEventIds, criticalEventIds] = await Promise.all([
+    getNewestIndexMembers(client, EVENT_INDEX_KEY, MAX_GENERAL_ACTION_EVENTS_READ),
+    getNewestIndexMembers(client, CRITICAL_EVENT_INDEX_KEY, MAX_CRITICAL_ACTION_EVENTS_READ),
+  ]);
+  const eventIds = [...new Set([...generalEventIds, ...criticalEventIds])];
   if (!eventIds.length) return [];
-  const events = await client.mget<Array<T | null>>(
-    ...eventIds.map((eventId) => eventKey(String(eventId)))
-  );
+  const events = await chunkedMget<T>(client, eventIds.map((eventId) => eventKey(String(eventId))));
   return events.filter((event): event is T => Boolean(event?.eventId));
 }
 
-export async function persistRedisTelemetryEvent<T>(eventId: string, event: T): Promise<void> {
+export async function persistRedisTelemetryEvent<T extends {
+  eventName?: string;
+  trafficQualityClassification?: string;
+}>(eventId: string, event: T): Promise<void> {
   const client = redis();
   if (!client) throw new Error('Operational Redis is not configured.');
   const timestamp = new Date((event as { timestamp?: string }).timestamp || '').getTime();
   const score = Number.isFinite(timestamp) ? timestamp : Date.now();
-  await Promise.all([
+  const indexWrites: Array<Promise<unknown>> = [
     client.set(telemetryKey(eventId), event, {
       nx: true,
       ex: Math.ceil(TELEMETRY_RETENTION_MS / 1000),
@@ -192,21 +233,29 @@ export async function persistRedisTelemetryEvent<T>(eventId: string, event: T): 
     client.zadd(TELEMETRY_INDEX_KEY, { score, member: eventId }),
     client.expire(TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
     client.zremrangebyscore(TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
-  ]);
+  ];
+  const eventName = String(event.eventName || '');
+  const isCritical = event.trafficQualityClassification === 'High Confidence Human'
+    || /(?:checkout|purchase|payment|paypal|subscription)/i.test(eventName);
+  if (isCritical) {
+    indexWrites.push(
+      client.zadd(CRITICAL_TELEMETRY_INDEX_KEY, { score, member: eventId }),
+      client.expire(CRITICAL_TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
+      client.zremrangebyscore(CRITICAL_TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
+    );
+  }
+  await Promise.all(indexWrites);
 }
 
 export async function getRedisTelemetryEvents<T>(): Promise<T[]> {
   const client = redis();
   if (!client) return [];
-  const eventIds = await client.zrange<string[]>(
-    TELEMETRY_INDEX_KEY,
-    Date.now() - TELEMETRY_RETENTION_MS,
-    Date.now() + 5 * 60 * 1000,
-    { byScore: true }
-  );
+  const [generalEventIds, criticalEventIds] = await Promise.all([
+    getNewestIndexMembers(client, TELEMETRY_INDEX_KEY, MAX_GENERAL_TELEMETRY_EVENTS_READ),
+    getNewestIndexMembers(client, CRITICAL_TELEMETRY_INDEX_KEY, MAX_CRITICAL_TELEMETRY_EVENTS_READ),
+  ]);
+  const eventIds = [...new Set([...generalEventIds, ...criticalEventIds])];
   if (!eventIds.length) return [];
-  const events = await client.mget<Array<T | null>>(
-    ...eventIds.map((eventId) => telemetryKey(String(eventId)))
-  );
+  const events = await chunkedMget<T>(client, eventIds.map((eventId) => telemetryKey(String(eventId))));
   return events.filter((event): event is T => Boolean(event));
 }

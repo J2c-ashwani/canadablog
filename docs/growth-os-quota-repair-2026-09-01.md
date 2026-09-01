@@ -4,7 +4,7 @@
 
 Production logs showed that GrowthOS was being invoked, but several runs and first-party click receipts were failing because the shared Google Sheets service account exceeded its per-minute write quota. The affected paths included Revenue Sprint, MCA recovery, and signed GrowthOS click attribution. A successful redirect did not guarantee that its attribution row had been recorded.
 
-This release moves the two highest-frequency operational workloads to the already configured Upstash Redis service:
+This release moves the three highest-frequency operational workloads to the already configured Upstash Redis service:
 
 1. distributed scheduler leases and run receipts;
 2. attributed commercial events such as provider acceptance, signed clicks, checkout starts, and verified payments;
@@ -28,12 +28,29 @@ The former lease path used an append plus status update plus completion update f
 
 Vercel schedules are also staggered across the hour. Cart recovery, Revenue Sprint, newsletter, authority, product-delivery, membership, CEO, and health runs no longer start together at minute zero.
 
+## Runtime batch-read repair
+
+The first Redis-backed production deployment exposed a second limit: a crawler burst created enough signed on-site click records that an unbounded `MGET` exceeded Upstash's 10 MB request ceiling. That caused cart recovery and CEO reads to fail even though individual Redis writes were durable.
+
+The runtime path now:
+
+- reads sorted-set indexes through hard maximums instead of loading the complete 120-day index into one command;
+- fetches records in 200-key chunks with bounded concurrency;
+- keeps separate critical indexes for payments, checkouts, subscriptions, provider acceptances, and high-confidence human telemetry so revenue evidence cannot be displaced by click volume;
+- gives cookie-less visitors a daily HMAC pseudonymous ID, deduplicating browser-like crawlers without storing raw IP addresses;
+- bypasses the signed attribution ledger entirely for recognized crawler user agents.
+
+Legacy Sheet evidence is still merged with current Redis evidence. Provider-verified payment truth remains unchanged.
+
 ## Verification
 
 - TypeScript compilation: passed.
 - GrowthOS commercial reliability suite: passed, including Redis atomic lease, retention, and merged-history guards.
 - Cron forensic audit: passed.
-- Production runtime verification required after deployment: confirm Redis-backed run receipts and absence of new Google Sheets 429 errors for Revenue Sprint, MCA recovery, and GrowthOS click attribution.
+- Search distribution cohort gate: passed, including the 14-day observation minimum and a proof that 500 visitors with zero verified purchases remains locked.
+- Production telemetry POST on deployment `dpl_528w6rXaodeFPiDkbS1N7JVSCwvU`: HTTP 200.
+- No error-level logs were present on that deployment at the time of the bounded audit.
+- Final runtime verification remains required after the bounded-read repair is deployed: confirm cart recovery, CEO, Revenue Sprint, MCA recovery, and GrowthOS click/telemetry paths have no new Sheets 429 or Upstash request-size errors.
 
 ## Remaining commercial blockers
 
