@@ -22,7 +22,7 @@
     },
     {
       "path": "/api/cron/process-social-revenue-sprint",
-      "schedule": "30 13 * * 1-5"
+      "schedule": "30 13 * * *"
     },
     {
       "path": "/api/cron/process-calculator-recovery",
