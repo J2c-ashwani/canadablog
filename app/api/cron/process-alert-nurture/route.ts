@@ -10,6 +10,14 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized alert nurture cron execution." }, { status: 401 })
   }
 
+  if (process.env.ENABLE_LEGACY_ALERT_NURTURE !== "true") {
+    return NextResponse.json({
+      success: true,
+      status: "PAUSED",
+      message: "Legacy alert nurture is disabled; use the current capped self-serve distribution cohorts."
+    })
+  }
+
   try {
     let limit = 5; // Safe default for Vercel Hobby timeouts
     try {
@@ -29,10 +37,10 @@ export async function GET(request: NextRequest) {
     const result = await AlertNurtureEngine.processDailyBatch(limit)
     
     return NextResponse.json({
-      success: true,
+      success: result.errors.length === 0,
       limit,
       result
-    })
+    }, { status: result.errors.length === 0 ? 200 : 207 })
   } catch (err: any) {
     console.error("Alert nurture batch cron error:", err)
     return NextResponse.json({ error: err.message || "Internal server error" }, { status: 500 })

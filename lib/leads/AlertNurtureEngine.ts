@@ -9,6 +9,7 @@ import {
   sendAlertAuditFollowupEmail,
   sendAlertReferralEmail
 } from "../emails/alert-nurture";
+import { isTestOrInternalContact } from "./commercial-eligibility";
 
 export interface AlertNurtureCandidate {
   lead: SubscriberProfile;
@@ -42,6 +43,7 @@ export class AlertNurtureEngine {
     
     for (const sub of allSubs) {
       if (!sub.isSubscribed || !sub.email) continue;
+      if (isTestOrInternalContact(sub)) continue;
       
       // Parse activity JSON
       let activity: any = {};

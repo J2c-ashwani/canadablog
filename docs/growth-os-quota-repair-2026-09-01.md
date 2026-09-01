@@ -44,6 +44,8 @@ Legacy Sheet evidence is still merged with current Redis evidence. Provider-veri
 
 The forensic log pass also found an externally invoked legacy `process-alert-queue` route that attempted to read a nonexistent `AlertJobsQueue` sheet, swallowed the error as an empty queue, and returned HTTP 200. Because that path could fan one draft out to every Tier A subscriber without a cohort cap, it now fails closed as `PAUSED` unless `ENABLE_LEGACY_ALERT_QUEUE=true` is deliberately configured. The capped Revenue Sprint and approved newsletter cohort remain the active commercial email paths.
 
+A later log snapshot found the old Alert Nurture sequence selecting a synthetic `@example.com` record and attempting its outdated `audit` email in production. That sequence is now also fail-closed as `PAUSED` unless `ENABLE_LEGACY_ALERT_NURTURE=true` is deliberately configured. Its engine excludes test/internal identities as defense in depth, and an explicitly enabled run with provider failures returns HTTP 207 rather than a false full-success response.
+
 ## Verification
 
 - TypeScript compilation: passed.
