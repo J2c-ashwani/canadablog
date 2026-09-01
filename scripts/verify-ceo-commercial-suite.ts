@@ -118,6 +118,7 @@ async function run() {
   const newsletterRoute = fs.readFileSync(path.join(root, 'app/api/cron/process-newsletter/route.ts'), 'utf8');
   const approvedNewsletterCohortRoute = fs.readFileSync(path.join(root, 'app/api/admin/alerts/newsletter/approved-cohort/route.ts'), 'utf8');
   const telemetryRoute = fs.readFileSync(path.join(root, 'app/api/telemetry/route.ts'), 'utf8');
+  const telemetryStore = fs.readFileSync(path.join(root, 'lib/telemetry/telemetry-store.ts'), 'utf8');
   const membershipCheckout = fs.readFileSync(path.join(root, 'components/membership/FoundingMemberCheckout.tsx'), 'utf8');
   const paypalWebhook = fs.readFileSync(path.join(root, 'app/api/paypal/webhook/route.ts'), 'utf8');
   const actionScorecard = fs.readFileSync(path.join(root, 'lib/growth-os/action-scorecard.ts'), 'utf8');
@@ -287,6 +288,17 @@ async function run() {
     actionAttribution.includes('new Map<string, GrowthActionEvent>()')
       && operationsStore.includes('for (const row of [...sheetRows, ...redisRows])'),
     'CEO evidence merges legacy Sheets history with the new Redis operational ledger',
+  );
+  assert(
+    telemetryStore.includes('await persistRedisTelemetryEvent(randomUUID(), event)')
+      && telemetryStore.indexOf('persistRedisTelemetryEvent(randomUUID(), event)') < telemetryStore.indexOf('spreadsheets.values.append')
+      && redisOperations.includes('TELEMETRY_RETENTION_MS = 120'),
+    'High-frequency funnel telemetry uses the 120-day Redis ledger before the Sheets fallback path',
+  );
+  assert(
+    telemetryStore.includes('getRedisTelemetryEvents<TelemetryEvent>()')
+      && telemetryStore.includes('return [...results, ...redisEvents].sort'),
+    'CEO funnel evidence merges legacy Sheet telemetry with current Redis telemetry',
   );
   const productionCrons = JSON.parse(vercelConfig).crons as Array<{ path: string; schedule: string }>;
   const cronSchedule = (pathName: string) => productionCrons.find((entry) => entry.path === pathName)?.schedule;

@@ -7,7 +7,8 @@ Production logs showed that GrowthOS was being invoked, but several runs and fir
 This release moves the two highest-frequency operational workloads to the already configured Upstash Redis service:
 
 1. distributed scheduler leases and run receipts;
-2. attributed commercial events such as provider acceptance, signed clicks, checkout starts, and verified payments.
+2. attributed commercial events such as provider acceptance, signed clicks, checkout starts, and verified payments;
+3. browser and server funnel telemetry used by the CEO conversion dashboard.
 
 Customer, purchase, membership, fulfillment, and historical evidence ledgers remain unchanged. The CEO evidence layer merges legacy Google Sheets history with the new 120-day Redis event ledger.
 
@@ -23,7 +24,7 @@ Customer, purchase, membership, fulfillment, and historical evidence ledgers rem
 
 ## Load reduction
 
-The former lease path used an append plus status update plus completion update for every scheduler execution. Signed click and checkout events also appended directly to Sheets. The new production path performs these writes in Redis, removing burst traffic from the quota-limited Sheet writer.
+The former lease path used an append plus status update plus completion update for every scheduler execution. Signed click, checkout, and browser funnel events also appended directly to Sheets. The new production path performs these writes in Redis, removing burst traffic from the quota-limited Sheet writer.
 
 Vercel schedules are also staggered across the hour. Cart recovery, Revenue Sprint, newsletter, authority, product-delivery, membership, CEO, and health runs no longer start together at minute zero.
 
@@ -41,4 +42,3 @@ This reliability repair does not count as revenue. The latest provider evidence 
 1. Namecheap DMARC update for Brevo domain authentication;
 2. Brevo provider status `authenticated=true` and `verified=true` before commercial fallback resumes;
 3. authenticated PayPal review for a fresh provider-verified cash total.
-

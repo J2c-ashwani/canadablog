@@ -4,8 +4,10 @@ import { Redis } from '@upstash/redis';
 const PREFIX = 'fsi:growthos:v1';
 const RUN_INDEX_KEY = `${PREFIX}:runs`;
 const EVENT_INDEX_KEY = `${PREFIX}:events`;
+const TELEMETRY_INDEX_KEY = `${PREFIX}:telemetry`;
 const RETENTION_SECONDS = 180 * 24 * 60 * 60;
 const EVENT_RETENTION_MS = 120 * 24 * 60 * 60 * 1000;
+const TELEMETRY_RETENTION_MS = 120 * 24 * 60 * 60 * 1000;
 const RUN_RETENTION_MS = RETENTION_SECONDS * 1000;
 
 export type RedisOperationRun = {
@@ -54,6 +56,10 @@ function runKey(attemptId: string) {
 function eventKey(eventId: string) {
   const digest = createHash('sha256').update(eventId).digest('hex');
   return `${PREFIX}:event:${digest}`;
+}
+
+function telemetryKey(eventId: string) {
+  return `${PREFIX}:telemetry-event:${eventId}`;
 }
 
 async function persistRun(run: RedisOperationRun) {
@@ -171,4 +177,36 @@ export async function getRedisGrowthActionEvents<T extends { eventId: string }>(
     ...eventIds.map((eventId) => eventKey(String(eventId)))
   );
   return events.filter((event): event is T => Boolean(event?.eventId));
+}
+
+export async function persistRedisTelemetryEvent<T>(eventId: string, event: T): Promise<void> {
+  const client = redis();
+  if (!client) throw new Error('Operational Redis is not configured.');
+  const timestamp = new Date((event as { timestamp?: string }).timestamp || '').getTime();
+  const score = Number.isFinite(timestamp) ? timestamp : Date.now();
+  await Promise.all([
+    client.set(telemetryKey(eventId), event, {
+      nx: true,
+      ex: Math.ceil(TELEMETRY_RETENTION_MS / 1000),
+    }),
+    client.zadd(TELEMETRY_INDEX_KEY, { score, member: eventId }),
+    client.expire(TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
+    client.zremrangebyscore(TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
+  ]);
+}
+
+export async function getRedisTelemetryEvents<T>(): Promise<T[]> {
+  const client = redis();
+  if (!client) return [];
+  const eventIds = await client.zrange<string[]>(
+    TELEMETRY_INDEX_KEY,
+    Date.now() - TELEMETRY_RETENTION_MS,
+    Date.now() + 5 * 60 * 1000,
+    { byScore: true }
+  );
+  if (!eventIds.length) return [];
+  const events = await client.mget<Array<T | null>>(
+    ...eventIds.map((eventId) => telemetryKey(String(eventId)))
+  );
+  return events.filter((event): event is T => Boolean(event));
 }

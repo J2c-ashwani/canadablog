@@ -1,4 +1,10 @@
+import { randomUUID } from 'crypto';
 import { getGoogleSheetsClient } from '@/lib/google-sheets';
+import {
+  getRedisTelemetryEvents,
+  hasOperationalRedis,
+  persistRedisTelemetryEvent,
+} from '@/lib/growth-os/redis-operations';
 
 export interface TelemetryEvent {
   timestamp: string;
@@ -123,38 +129,61 @@ export async function recordTelemetryEvent(data: {
   actionCampaign?: string;
   actionRecipientId?: string;
 }): Promise<void> {
-  const sheets = await getGoogleSheetsClient();
-  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
-
-  if (!spreadsheetId) {
-    throw new Error('GOOGLE_SHEET_ID environment variable is missing');
+  const timestamp = new Date().toISOString();
+  const event: TelemetryEvent = {
+    timestamp,
+    eventName: data.eventName,
+    sessionId: data.sessionId,
+    pagePath: data.pagePath || '',
+    referrer: data.referrer || '',
+    utmSource: data.utmSource || '',
+    utmMedium: data.utmMedium || '',
+    utmCampaign: data.utmCampaign || '',
+    productId: data.productId || '',
+    revenue: data.revenue || '',
+    trafficQualityScore: data.trafficQualityScore !== undefined ? String(data.trafficQualityScore) : '',
+    trafficQualityClassification: data.trafficQualityClassification || '',
+    timezone: data.timezone || '',
+    language: data.language || '',
+    journeyId: data.journeyId || '',
+    funnelId: data.funnelId || '',
+    heuristicMetadata: data.heuristicMetadata || '',
+    actionId: data.actionId || '',
+    actionChannel: data.actionChannel || '',
+    actionCampaign: data.actionCampaign || '',
+    actionRecipientId: data.actionRecipientId || '',
+  };
+  if (hasOperationalRedis()) {
+    await persistRedisTelemetryEvent(randomUUID(), event);
+    return;
   }
 
+  const sheets = await getGoogleSheetsClient();
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
   await ensureTelemetrySheet(sheets, spreadsheetId);
-
-  const timestamp = new Date().toISOString();
   const row = [
     timestamp,
-    data.eventName,
-    data.sessionId,
-    data.pagePath || '',
-    data.referrer || '',
-    data.utmSource || '',
-    data.utmMedium || '',
-    data.utmCampaign || '',
-    data.productId || '',
-    data.revenue || '',
-    data.trafficQualityScore !== undefined ? String(data.trafficQualityScore) : '',
-    data.trafficQualityClassification || '',
-    data.timezone || '',
-    data.language || '',
-    data.journeyId || '',
-    data.funnelId || '',
-    data.heuristicMetadata || '',
-    data.actionId || '',
-    data.actionChannel || '',
-    data.actionCampaign || '',
-    data.actionRecipientId || '',
+    event.eventName,
+    event.sessionId,
+    event.pagePath,
+    event.referrer,
+    event.utmSource,
+    event.utmMedium,
+    event.utmCampaign,
+    event.productId,
+    event.revenue,
+    event.trafficQualityScore,
+    event.trafficQualityClassification,
+    event.timezone,
+    event.language,
+    event.journeyId,
+    event.funnelId,
+    event.heuristicMetadata,
+    event.actionId,
+    event.actionChannel,
+    event.actionCampaign,
+    event.actionRecipientId,
   ];
 
   const appendResult = await sheets.spreadsheets.values.append({
@@ -217,7 +246,11 @@ export async function getTelemetryEvents(options?: { strict?: boolean }): Promis
       });
     }
 
-    return results;
+    if (!hasOperationalRedis()) return results;
+    const redisEvents = await getRedisTelemetryEvents<TelemetryEvent>();
+    return [...results, ...redisEvents].sort((left, right) =>
+      new Date(left.timestamp).getTime() - new Date(right.timestamp).getTime()
+    );
   } catch (error) {
     console.error('❌ Error reading telemetry events:', error);
     if (options?.strict) throw error;
