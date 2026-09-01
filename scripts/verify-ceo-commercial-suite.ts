@@ -127,6 +127,9 @@ async function run() {
   const actionScorecard = fs.readFileSync(path.join(root, 'lib/growth-os/action-scorecard.ts'), 'utf8');
   const authorityDiscovery = fs.readFileSync(path.join(root, 'lib/growth-os/authority/opportunity-discovery.ts'), 'utf8');
   const authorityDiscoveryRoute = fs.readFileSync(path.join(root, 'app/api/cron/discover-authority-opportunities/route.ts'), 'utf8');
+  const authorityEngine = fs.readFileSync(path.join(root, 'lib/growth-os/authority/authority-engine.ts'), 'utf8');
+  const authorityProspectReviewRoute = fs.readFileSync(path.join(root, 'app/api/admin/authority/prospects/route.ts'), 'utf8');
+  const authorityProspectReviewUi = fs.readFileSync(path.join(root, 'components/admin/AuthorityProspectReviewClient.tsx'), 'utf8');
   const operationsStore = fs.readFileSync(path.join(root, 'lib/growth-os/operations-store.ts'), 'utf8');
   const redisOperations = fs.readFileSync(path.join(root, 'lib/growth-os/redis-operations.ts'), 'utf8');
   const actionAttribution = fs.readFileSync(path.join(root, 'lib/growth-os/action-attribution.ts'), 'utf8');
@@ -271,6 +274,9 @@ async function run() {
       && !sheetsStore.includes('p.sourceUrl || p.website'),
     'Authority discovery persists exact public provenance and fails closed when it is missing',
   );
+  assert(authorityEngine.includes("deliveryStatus || '').trim() === 'human_approved_source_verified'"), 'Authority outreach only sends records explicitly approved through the source-review workflow');
+  assert(authorityProspectReviewRoute.includes('hasSameSitePublicContact') && authorityProspectReviewRoute.includes("status: approved ? 'qualified' : 'rejected'") && authorityProspectReviewRoute.includes('No message was sent by this review action'), 'Authority review verifies source and same-site contact evidence before a human may queue a record');
+  assert(authorityProspectReviewUi.includes('window.confirm') && authorityProspectReviewUi.includes('Inspect page') && authorityProspectReviewUi.includes('Queue after review'), 'Authority dashboard requires an explicit human confirmation after inspecting the exact public source');
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');
   const leaseFinalizer = operationsStore.slice(operationsStore.indexOf('export async function finishOperationLease'));
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');

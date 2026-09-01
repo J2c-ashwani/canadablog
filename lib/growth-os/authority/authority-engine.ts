@@ -145,7 +145,11 @@ export class AuthorityEngine {
       // Case-insensitive status matching
       const pendingProspects = prospects.filter(p => {
         const statusLower = (p.status || '').trim().toLowerCase();
-        return statusLower === 'qualified';
+        // A status alone is not authorization. Only a prospect approved through
+        // the source-review workflow may reach the sender. This also prevents
+        // legacy sheet rows from being swept into a new outreach run.
+        return statusLower === 'qualified'
+          && String(p.deliveryStatus || '').trim() === 'human_approved_source_verified';
       });
 
       if (pendingProspects.length === 0) {

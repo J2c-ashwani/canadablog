@@ -86,6 +86,8 @@ Future discovery now persists the exact public result page, discovery source, ca
 
 The original discovery implementation only accepted an address printed inside a search-result snippet, which produced almost no reviewable partner inventory. It now reads the exact HTTPS candidate page with a timeout and size limit, rejects redirects, and extracts only an email visibly published by that same candidate domain. The stored source URL remains the exact page where that address was displayed. This creates `review_required` research records only; it does not infer consent, guess an address, or authorize a send.
 
+The Authority Engine dashboard now provides the only route from `review_required` to send eligibility. A reviewer must inspect the exact public source page and explicitly confirm the record; the backend re-checks HTTPS provenance, source/website/email domain alignment, an unsent state, and personalization evidence. Approval marks only that row as `human_approved_source_verified`; it sends nothing immediately. The capped authority sender ignores every legacy or manually marked `qualified` row unless it has that exact approval receipt.
+
 ## Release safeguards
 
 - Existing prices, product promises, checkout, PayPal/Stripe capture, fulfillment, calculator, and URLs are unchanged.

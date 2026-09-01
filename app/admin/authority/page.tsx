@@ -7,6 +7,7 @@ import { getAuthorityExceptions, getOutreachProspectsFromSheet } from '@/lib/goo
 import { AuthorityEngine } from '@/lib/growth-os/authority/authority-engine';
 import { Shield, Mail, Link as LinkIcon, AlertTriangle, CheckCircle, XCircle, Clock, Activity, Zap, KeyRound, Lock } from 'lucide-react';
 import { AdminLoginForm } from '../leads/AdminLoginForm';
+import { AuthorityProspectReviewClient } from '@/components/admin/AuthorityProspectReviewClient';
 
 export const dynamic = 'force-dynamic';
 
@@ -81,6 +82,17 @@ export default async function AuthorityDashboardPage({
   const replyCount = prospects.filter((p) => p.replied || Boolean(p.repliedAt)).length;
   const backlinkCount = prospects.filter((p) => p.backlinkEarned).length;
   const pendingProspectsCount = prospects.filter((p) => ['pending', 'qualified', 'review_required'].includes(String(p.status || '').toLowerCase())).length;
+  const reviewProspects = prospects
+    .filter((p) => String(p.status || '').trim().toLowerCase() === 'review_required')
+    .filter((p) => p.prospectId && p.sourceUrl && p.email)
+    .map((p) => ({
+      prospectId: p.prospectId || '',
+      prospectName: p.prospectName || p.name || '',
+      website: p.website || '',
+      email: p.email || '',
+      sourceUrl: p.sourceUrl || '',
+      personalizedHook: p.personalizedHook || '',
+    }));
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -167,6 +179,22 @@ export default async function AuthorityDashboardPage({
               </div>
             </div>
           </div>
+        </div>
+
+        <div className="mb-8 overflow-hidden rounded-xl border border-gray-200 bg-white shadow-sm">
+          <div className="border-b border-gray-200 bg-emerald-50/50 px-6 py-5">
+            <h2 className="flex items-center gap-2 text-lg font-semibold text-gray-900">
+              <CheckCircle className="h-5 w-5 text-emerald-600" />
+              Source-backed prospect review
+              {reviewProspects.length > 0 && (
+                <span className="ml-2 inline-flex items-center rounded-full bg-emerald-100 px-2.5 py-0.5 text-xs font-medium text-emerald-800">
+                  {reviewProspects.length} awaiting a decision
+                </span>
+              )}
+            </h2>
+            <p className="mt-1 text-sm text-gray-600">Open the exact public source, verify the published same-site contact and relevance, then explicitly queue or reject it. Queuing never sends a message immediately.</p>
+          </div>
+          <AuthorityProspectReviewClient prospects={reviewProspects} />
         </div>
 
         {/* Exception Queue */}
