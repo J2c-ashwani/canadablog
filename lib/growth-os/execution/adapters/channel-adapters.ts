@@ -157,13 +157,22 @@ export class ChannelAdapters {
         throw new Error(`LinkedIn API error: ${response.status} ${response.statusText} — ${errBody.slice(0, 200)}`)
       }
 
+      const externalId = response.headers.get('x-linkedin-id')
+        || response.headers.get('x-restli-id')
+        || response.headers.get('location')
+        || ''
+      if (!externalId) {
+        return {
+          channelName: "LinkedIn",
+          status: "QUEUED_FOR_APPROVAL",
+          message: "LinkedIn returned a successful response without a provider post ID; publication cannot be verified.",
+        }
+      }
+
       return {
         channelName: "LinkedIn",
         status: "API_ACCEPTED",
-        externalId: response.headers.get('x-linkedin-id')
-          || response.headers.get('x-restli-id')
-          || response.headers.get('location')
-          || undefined,
+        externalId,
         message: `LinkedIn accepted the post via /rest/posts API; public publication has not been independently verified.`,
       }
     } catch (err: any) {
