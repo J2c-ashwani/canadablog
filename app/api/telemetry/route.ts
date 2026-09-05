@@ -63,6 +63,11 @@ export async function POST(request: NextRequest) {
         ? String(trafficQualityClassification)
         : 'Medium Confidence';
 
+    // Suppress telemetry writes for automated crawlers and bots to prevent quota exhaustion
+    if (verifiedQualityClassification === 'Likely Bot') {
+      return NextResponse.json({ success: true, filtered: 'bot_ignored' });
+    }
+
     await recordTelemetryEvent({
       eventName,
       sessionId,

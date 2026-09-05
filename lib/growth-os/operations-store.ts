@@ -123,7 +123,10 @@ export async function readOperationalRows(title: string, headers: string[]): Pro
   await ensureOperationalSheet(title, headers);
   const sheetRows = await getCachedSheetValues(`${quoteSheetTitle(title)}!A2:${columnName(headers.length)}`);
   if (title !== 'GrowthOS Runs' || !hasOperationalRedis()) return sheetRows;
-  const redisRows = await getRedisOperationRunRows();
+  const redisRows = await getRedisOperationRunRows().catch((err) => {
+    console.warn('⚠️ Operational Redis runs read failed:', err?.message || err);
+    return [];
+  });
   const merged = new Map<string, string[]>();
   for (const row of [...sheetRows, ...redisRows]) {
     if (row[0]) merged.set(row[0], row);
@@ -195,20 +198,24 @@ export async function acquireOperationLease(
   const attemptId = randomUUID();
   const startedAt = new Date().toISOString();
   if (hasOperationalRedis()) {
-    const result = await acquireRedisOperationLease({
-      attemptId,
-      operation,
-      startedAt,
-      dedupeWindowMs,
-    });
-    return {
-      acquired: result.acquired,
-      operation,
-      attemptId,
-      startedAt,
-      backend: 'redis',
-      reason: result.acquired ? undefined : 'A recent execution already owns this operation lease.',
-    };
+    try {
+      const result = await acquireRedisOperationLease({
+        attemptId,
+        operation,
+        startedAt,
+        dedupeWindowMs,
+      });
+      return {
+        acquired: result.acquired,
+        operation,
+        attemptId,
+        startedAt,
+        backend: 'redis',
+        reason: result.acquired ? undefined : 'A recent execution already owns this operation lease.',
+      };
+    } catch (redisErr: any) {
+      console.warn(`⚠️ Operational Redis lease failed for ${operation} (${redisErr?.message || redisErr}), falling back to Sheets coordination.`);
+    }
   }
   const append = await appendOperationalRow('GrowthOS Runs', RUN_HEADERS, [
     attemptId,
@@ -260,13 +267,17 @@ export async function finishOperationLease(
 ) {
   const serializedSummary = typeof summary === 'string' ? summary : JSON.stringify(summary);
   if (lease.backend === 'redis') {
-    await finishRedisOperationLease({
-      attemptId: lease.attemptId,
-      operation: lease.operation,
-      startedAt: lease.startedAt,
-      status,
-      summary: serializedSummary,
-    });
+    try {
+      await finishRedisOperationLease({
+        attemptId: lease.attemptId,
+        operation: lease.operation,
+        startedAt: lease.startedAt,
+        status,
+        summary: serializedSummary,
+      });
+    } catch (redisErr: any) {
+      console.warn(`⚠️ Operational Redis finish lease failed for ${lease.operation} (${redisErr?.message || redisErr})`);
+    }
     return;
   }
   if (!lease.rowNumber) return;

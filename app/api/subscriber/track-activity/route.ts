@@ -20,11 +20,44 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Subscriber not found." }, { status: 404 })
     }
 
+    const PUBLIC_LIFECYCLE_EVENTS = new Set([
+      'calculator_completed',
+      'checkout_started',
+      'standalone_checkout_started',
+      'checkout_viewed',
+      'paywall_viewed',
+      'step6_entered',
+      'step6_exit',
+      'email_validated',
+      'exit_survey_submitted',
+      'package_selected',
+      'paypal_container_rendered',
+      'paypal_buttons_rendered',
+      'paypal_button_clicked',
+      'create_order_started',
+      'create_order_success',
+      'create_order_failed',
+      'paypal_popup_opened',
+      'payment_capture_failed',
+      'paypal_visible',
+      'redirect_booking',
+      'diagnostic_started',
+      'diagnostic_completed',
+      'lead_saved',
+      'product_recommended',
+      'upsell_viewed',
+      'header_products_opened',
+      'header_product_clicked',
+      'homepage_product_clicked',
+      'footer_product_clicked',
+      'preview_cta_clicked',
+    ]);
+
     // Authenticate activity updates to prevent unauthenticated database mutations
     const token = body.token
     const isAuthorized = isLoginToken(token, subscriber.loginToken)
-    if (!isAuthorized) {
-      console.warn(`[Security check] Unauthenticated attempt to track activity for subscriber: ${email}`)
+    if (!isAuthorized && !PUBLIC_LIFECYCLE_EVENTS.has(event)) {
+      console.warn(`[Security check] Unauthenticated attempt to track non-public activity for subscriber: ${email}`)
       return NextResponse.json({
         success: true,
         bypassed: true,

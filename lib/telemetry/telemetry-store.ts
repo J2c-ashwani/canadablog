@@ -154,7 +154,14 @@ export async function recordTelemetryEvent(data: {
     actionRecipientId: data.actionRecipientId || '',
   };
   if (hasOperationalRedis()) {
-    await persistRedisTelemetryEvent(randomUUID(), event);
+    try {
+      await persistRedisTelemetryEvent(randomUUID(), event);
+    } catch (redisError: any) {
+      // Telemetry failure must NEVER become a revenue-system failure or crash user requests.
+      // Dropping non-critical telemetry on Redis quota/connectivity outage is strictly preferred
+      // over hammering Google Sheets and risking Sheets 429 quota exhaustion.
+      console.warn('⚠️ Operational Redis telemetry persist failed (dropping event to protect runtime):', redisError?.message || redisError);
+    }
     return;
   }
 
@@ -247,10 +254,15 @@ export async function getTelemetryEvents(options?: { strict?: boolean }): Promis
     }
 
     if (!hasOperationalRedis()) return results;
-    const redisEvents = await getRedisTelemetryEvents<TelemetryEvent>();
-    return [...results, ...redisEvents].sort((left, right) =>
-      new Date(left.timestamp).getTime() - new Date(right.timestamp).getTime()
-    );
+    try {
+      const redisEvents = await getRedisTelemetryEvents<TelemetryEvent>();
+      return [...results, ...redisEvents].sort((left, right) =>
+        new Date(left.timestamp).getTime() - new Date(right.timestamp).getTime()
+      );
+    } catch (redisReadErr: any) {
+      console.warn('⚠️ Operational Redis telemetry read failed:', redisReadErr?.message || redisReadErr);
+      return results;
+    }
   } catch (error) {
     console.error('❌ Error reading telemetry events:', error);
     if (options?.strict) throw error;

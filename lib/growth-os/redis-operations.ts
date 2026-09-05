@@ -31,6 +31,7 @@ export type RedisOperationRun = {
 let redisClient: Redis | null | undefined;
 
 function configured() {
+  if (process.env.DISABLE_REDIS === 'true') return false;
   return Boolean(
     process.env.UPSTASH_REDIS_REST_URL
     && process.env.UPSTASH_REDIS_REST_TOKEN
@@ -187,8 +188,6 @@ export async function persistRedisGrowthActionEvent<T extends {
       score: new Date(durableEvent.occurredAt).getTime(),
       member: durableEvent.eventId,
     }),
-    client.expire(EVENT_INDEX_KEY, Math.ceil(EVENT_RETENTION_MS / 1000)),
-    client.zremrangebyscore(EVENT_INDEX_KEY, 0, Date.now() - EVENT_RETENTION_MS),
   ];
   if (durableEvent.eventType && durableEvent.eventType !== 'click') {
     indexWrites.push(
@@ -196,9 +195,20 @@ export async function persistRedisGrowthActionEvent<T extends {
         score: new Date(durableEvent.occurredAt).getTime(),
         member: durableEvent.eventId,
       }),
-      client.expire(CRITICAL_EVENT_INDEX_KEY, Math.ceil(EVENT_RETENTION_MS / 1000)),
-      client.zremrangebyscore(CRITICAL_EVENT_INDEX_KEY, 0, Date.now() - EVENT_RETENTION_MS),
     );
+  }
+  // Lazy index pruning to prevent quota burnout
+  if (Math.random() < 0.02) {
+    indexWrites.push(
+      client.expire(EVENT_INDEX_KEY, Math.ceil(EVENT_RETENTION_MS / 1000)),
+      client.zremrangebyscore(EVENT_INDEX_KEY, 0, Date.now() - EVENT_RETENTION_MS),
+    );
+    if (durableEvent.eventType && durableEvent.eventType !== 'click') {
+      indexWrites.push(
+        client.expire(CRITICAL_EVENT_INDEX_KEY, Math.ceil(EVENT_RETENTION_MS / 1000)),
+        client.zremrangebyscore(CRITICAL_EVENT_INDEX_KEY, 0, Date.now() - EVENT_RETENTION_MS),
+      );
+    }
   }
   await Promise.all(indexWrites);
   return durableEvent;
@@ -231,8 +241,6 @@ export async function persistRedisTelemetryEvent<T extends {
       ex: Math.ceil(TELEMETRY_RETENTION_MS / 1000),
     }),
     client.zadd(TELEMETRY_INDEX_KEY, { score, member: eventId }),
-    client.expire(TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
-    client.zremrangebyscore(TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
   ];
   const eventName = String(event.eventName || '');
   const isCritical = event.trafficQualityClassification === 'High Confidence Human'
@@ -240,9 +248,20 @@ export async function persistRedisTelemetryEvent<T extends {
   if (isCritical) {
     indexWrites.push(
       client.zadd(CRITICAL_TELEMETRY_INDEX_KEY, { score, member: eventId }),
-      client.expire(CRITICAL_TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
-      client.zremrangebyscore(CRITICAL_TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
     );
+  }
+  // Lazy index pruning (approx. 1% of writes) to eliminate command bloat
+  if (Math.random() < 0.01) {
+    indexWrites.push(
+      client.expire(TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
+      client.zremrangebyscore(TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
+    );
+    if (isCritical) {
+      indexWrites.push(
+        client.expire(CRITICAL_TELEMETRY_INDEX_KEY, Math.ceil(TELEMETRY_RETENTION_MS / 1000)),
+        client.zremrangebyscore(CRITICAL_TELEMETRY_INDEX_KEY, 0, Date.now() - TELEMETRY_RETENTION_MS),
+      );
+    }
   }
   await Promise.all(indexWrites);
 }

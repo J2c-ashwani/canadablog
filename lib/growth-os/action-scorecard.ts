@@ -46,6 +46,7 @@ export interface ActionPerformanceScorecard {
   totalRevenueCAD: number;
   totalAttributedMRRUSD: number;
   verifiedRevenuePerQualifiedLeadUSD: number;
+  recoveryEfficiencyPer1kLeadsUSD?: number;
   actions: ActionPerformanceRow[];
 }
 
@@ -264,6 +265,9 @@ export async function getActionPerformanceScorecard(windowDays = 30): Promise<Ac
     totalAttributedMRRUSD: roundMoney(rows.reduce((sum, row) => sum + row.mrrUSD, 0)),
     verifiedRevenuePerQualifiedLeadUSD: totalQualifiedLeadsAffected > 0
       ? roundMoney(totalRevenueUSD / totalQualifiedLeadsAffected)
+      : 0,
+    recoveryEfficiencyPer1kLeadsUSD: totalQualifiedLeadsAffected > 0
+      ? roundMoney((totalRevenueUSD / totalQualifiedLeadsAffected) * 1000)
       : 0,
     actions: rows,
   };

@@ -122,10 +122,13 @@ export async function GET(request: NextRequest) {
     const failed = outcomes.filter((outcome) => !outcome.providerAccepted);
     const summary = { candidatesSent: outcomes.length, providerAccepted: outcomes.length - failed.length, failed: failed.length, outcomes };
     await finishOperationLease(lease, failed.length ? 'PARTIAL' : 'SUCCEEDED', summary);
-    return NextResponse.json({ success: failed.length === 0, ...summary }, { status: failed.length ? 502 : 200 });
+    return NextResponse.json({ success: failed.length === 0, ...summary }, { status: failed.length ? 207 : 200 });
   } catch (error: any) {
     await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) });
-    return NextResponse.json({ success: false, error: error.message || 'Calculator recovery failed.' }, { status: 500 });
+    return NextResponse.json(
+      { success: false, error: error.message || 'Calculator recovery failed.' },
+      { status: 503, headers: { 'Retry-After': '300' } }
+    );
   }
 }
 

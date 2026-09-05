@@ -118,10 +118,25 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
 
+    const isCalculatorLead = isCalculator
+      || String(body.category || "").includes("Calculator")
+      || String(body.toolUsed || "").includes("Calculator")
+      || String(body.source || "").includes("Calculator");
+
+    const nowIso = new Date().toISOString();
+    const initialActivity: Record<string, any> = { contactFormSubmitted: true };
+    if (isCalculatorLead) {
+      initialActivity.calculatorCompletedAt = nowIso;
+      initialActivity.source = "Grant Calculator Intake";
+      if (body.calculator_cta_variant) {
+        initialActivity.calculator_cta_variant = body.calculator_cta_variant;
+      }
+    }
+
     // Compile lead details for scoring
     const leadData = {
       source: `Contact Form - ${requestType || "General"}`,
-      timestamp: new Date().toISOString(),
+      timestamp: nowIso,
       email,
       name: finalName,
       companyName: finalCompanyName,
@@ -158,7 +173,7 @@ export async function POST(request: NextRequest) {
       referralSource: referralSource || "N/A",
       readinessScore: readinessScore !== undefined ? Number(readinessScore) : undefined,
       readinessBand: readinessBand || "N/A",
-      leadActivity: JSON.stringify({ contactFormSubmitted: true }),
+      leadActivity: JSON.stringify(initialActivity),
     };
 
 

@@ -230,7 +230,11 @@ export async function recordGrowthActionEvent(input: Omit<GrowthActionEvent, 'ev
     occurredAt: input.occurredAt || new Date().toISOString(),
   };
   if (hasOperationalRedis()) {
-    return persistRedisGrowthActionEvent(event);
+    try {
+      return await persistRedisGrowthActionEvent(event);
+    } catch (redisErr: any) {
+      console.warn('⚠️ Operational Redis action event persist failed, falling back to Sheets:', redisErr?.message || redisErr);
+    }
   }
   if (!knownEventIds) {
     const rows = await readOperationalRows('Growth Action Events', EVENT_HEADERS);
@@ -266,7 +270,10 @@ export async function getGrowthActionEvents() {
   if (!hasOperationalRedis()) return sheetPromise;
   const [sheetEvents, redisEvents] = await Promise.all([
     sheetPromise,
-    getRedisGrowthActionEvents<GrowthActionEvent>(),
+    getRedisGrowthActionEvents<GrowthActionEvent>().catch((err) => {
+      console.warn('⚠️ Operational Redis action events read failed:', err?.message || err);
+      return [];
+    }),
   ]);
   const merged = new Map<string, GrowthActionEvent>();
   for (const event of [...sheetEvents, ...redisEvents]) {

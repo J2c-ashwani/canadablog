@@ -22,9 +22,9 @@ if (typeof global !== 'undefined') {
   }
 }
 
-// Initialize Upstash Redis if URL and token are configured in the environment
+// Initialize Upstash Redis if URL and token are configured in the environment and not explicitly disabled
 let redis: Redis | null = null;
-if (process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
+if (process.env.DISABLE_REDIS !== 'true' && process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN) {
   redis = new Redis({
     url: process.env.UPSTASH_REDIS_REST_URL,
     token: process.env.UPSTASH_REDIS_REST_TOKEN,

@@ -24,11 +24,14 @@ export async function GET(request: NextRequest) {
     const status = result.errors.length > 0 ? 'PARTIAL' : 'SUCCEEDED'
     await finishOperationLease(lease, status, result)
     return NextResponse.json({ success: result.errors.length === 0, mode: force ? 'manual_force' : 'standard', result }, {
-      status: result.errors.length > 0 ? 502 : 200,
+      status: result.errors.length > 0 ? 207 : 200,
     })
   } catch (error: any) {
     console.error("Cart recovery cron execution error:", error)
-    return NextResponse.json({ error: error.message || "Internal server error" }, { status: 500 })
+    return NextResponse.json(
+      { success: false, error: error.message || "Internal server error" },
+      { status: 503, headers: { 'Retry-After': '300' } }
+    )
   }
 }
 
