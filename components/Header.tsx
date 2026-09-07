@@ -365,7 +365,7 @@ export function Header() {
                 size="sm"
                 asChild
               >
-                <a href={productHref('bundle')}>Complete Bundle ($79)</a>
+                <a href={productHref('match-report')}>Match Report ($19)</a>
               </Button>
               <Button
                 className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"

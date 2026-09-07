@@ -268,7 +268,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [reportLoadStep, setReportLoadStep] = useState(0);
     const [isDownloading, setIsDownloading] = useState(false);
     const [isStripeLoading, setIsStripeLoading] = useState(false);
-    const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-bundle');
+    const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-match-report');
     const selectProductAndScroll = (productId: 'funding-match-report' | 'funding-bundle' | 'funding-roadmap') => {
         setSelectedProductId(productId);
         setTimeout(() => {
@@ -832,15 +832,6 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             return;
         }
 
-        const phone = data.phone?.trim();
-        if (!phone || phone.length < 7) {
-            const err = document.getElementById('gate-phone-error');
-            if (err) err.classList.remove('hidden');
-            const inputEl = document.getElementById('calc-phone-gate');
-            if (inputEl) inputEl.focus();
-            return;
-        }
-
         setIsAnalyzing(true);
         await saveCalculatorLead(email, data.name || "Founder", false);
 
@@ -848,17 +839,14 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             setIsAnalyzing(false);
             const isEnterprise = data.revenue === '500k-1m' || data.revenue === 'over-1m';
             if (isEnterprise) {
-                const focus = data.goal === 'research' ? 'sred' : data.goal === 'hiring' ? 'hiring' : 'tech-startup';
-                window.location.href = `/audit?email=${encodeURIComponent(email)}&focus=${encodeURIComponent(focus)}`;
+                setSelectedProductId('funding-bundle');
+            } else if (data.goal === 'research') {
+                setSelectedProductId('funding-roadmap');
             } else {
-                if (data.goal === 'hiring') {
-                    setSelectedProductId('funding-match-report');
-                } else if (data.goal === 'research') {
-                    setSelectedProductId('funding-roadmap');
-                }
-                setStep(6);
+                setSelectedProductId('funding-match-report');
             }
-        }, 2500);
+            setStep(6);
+        }, 650);
     }
 
     // --- Step-level telemetry logging ---
@@ -2538,23 +2526,17 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         </div>
                                     </div>
 
-                                    <div className="space-y-1.5 text-left">
-                                        <Label htmlFor="calc-phone-gate" className="text-xs font-extrabold text-slate-600">Phone Number *</Label>
-                                        <Input
-                                            id="calc-phone-gate"
-                                            type="tel"
-                                            placeholder="+1 (555) 000-0000"
-                                            className="h-12 bg-white text-base"
-                                            value={data.phone}
-                                            onChange={(e) => {
-                                                updateData("phone", e.target.value);
-                                                const err = document.getElementById('gate-phone-error');
-                                                if (err) err.classList.add('hidden');
-                                            }}
-                                            required
+                                    <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-left">
+                                        <input
+                                            type="checkbox"
+                                            checked={consentToPartnerContact}
+                                            onChange={(event) => setConsentToPartnerContact(event.target.checked)}
+                                            className="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
                                         />
-                                        <p className="text-xs text-red-500 mt-1 hidden" id="gate-phone-error">Please enter a valid phone number.</p>
-                                    </div>
+                                        <span className="text-xs leading-relaxed text-slate-600">
+                                            Send me automated funding alerts and occasional self-serve product updates. Unsubscribe anytime. No sales call is required.
+                                        </span>
+                                    </label>
                                 </div>
 
                                 <Button
