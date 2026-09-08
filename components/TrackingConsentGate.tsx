@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Script from 'next/script';
+import { usePathname } from 'next/navigation';
 
 interface TrackingConsentGateProps {
   gaMeasurementId: string;
@@ -19,6 +20,7 @@ export function TrackingConsentGate({
   linkedinInsightId,
 }: TrackingConsentGateProps) {
   const [consentGranted, setConsentGranted] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
     // Check consent status on mount
@@ -46,7 +48,7 @@ export function TrackingConsentGate({
     };
   }, []);
 
-  if (!consentGranted) return null;
+  if (!consentGranted || pathname === '/affiliates/status' || pathname === '/admin/affiliates') return null;
 
   return (
     <>

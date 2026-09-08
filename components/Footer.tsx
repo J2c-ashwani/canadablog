@@ -17,7 +17,7 @@ export function Footer() {
   const isExistingLadderRoute = pathname === '/'
     || /^\/blog\/[^/]+\/?$/.test(pathname)
     || /^\/grants\/[^/]+\/[^/]+\/[^/]+\/?$/.test(pathname);
-  const isTransactionalRoute = /^\/(?:admin|api|apply|audit|booking|calculator|download|funding-calculator|mca|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
+  const isTransactionalRoute = /^\/(?:admin|affiliates|api|apply|audit|booking|calculator|download|funding-calculator|mca|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
   const showOrganicProductLadder = !isExistingLadderRoute && !isTransactionalRoute;
   const footerOfferHref = (offer: 'match-report' | 'toolkit' | 'action-plan' | 'bundle' | 'membership') => {
     const params = new URLSearchParams({ surface: 'footer', context: pathname, offer });
@@ -123,6 +123,9 @@ export function Footer() {
                 </Link>
                 <Link href="/partners" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Funding Partners
+                </Link>
+                <Link href="/affiliates" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
+                  Affiliate Program
                 </Link>
                 <Link href="/methodology" className="text-gray-400 hover:text-white text-sm">
                   Research Methodology
@@ -422,6 +425,9 @@ export function Footer() {
                 </Link>
                 <Link href="/partners" data-google-vignette="false" className="text-gray-400 hover:text-white text-xs">
                   Partners
+                </Link>
+                <Link href="/affiliates" data-google-vignette="false" className="text-gray-400 hover:text-white text-xs">
+                  Affiliates
                 </Link>
                 <a href="https://www.linkedin.com/company/fsidigital" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors" aria-label="Follow FSI Digital on LinkedIn">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5">

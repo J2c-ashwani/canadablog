@@ -50,6 +50,7 @@ const EXCLUDED_ROUTES: string[] = [
 
   // ── Partner Revenue Flow ──────────────────────────────────────────────────
   '/partners',          // All partner sub-pages
+  '/affiliates',        // Affiliate application and private reporting
 
   // ── Email / Subscription Management ──────────────────────────────────────
   '/subscribe',         // Subscribe preferences + unsubscribe

@@ -9,8 +9,16 @@ export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
 
 export async function GET(request: NextRequest) {
-  const payload = parseTrackedGrowthToken(request.nextUrl.searchParams.get('t') || '');
+  const requestedToken = request.nextUrl.searchParams.get('t') || '';
+  const payload = parseTrackedGrowthToken(requestedToken);
   if (!payload) return NextResponse.redirect(new URL('/', request.url));
+  const existingToken = request.cookies.get('fsi_growth_action_token')?.value || '';
+  const existingPayload = parseTrackedGrowthToken(existingToken);
+  // Internal navigation and house campaigns must not steal a still-current
+  // affiliate referral. A later affiliate click remains free to replace it.
+  const preserveAffiliate = existingPayload?.channel === 'affiliate' && payload.channel !== 'affiliate';
+  const cookiePayload = preserveAffiliate ? existingPayload : payload;
+  const cookieToken = preserveAffiliate ? existingToken : requestedToken;
 
   const destination = new URL(payload.target);
   destination.searchParams.set('go_action', payload.actionId);
@@ -42,10 +50,10 @@ export async function GET(request: NextRequest) {
 
   const response = NextResponse.redirect(destination);
   response.cookies.set('fsi_growth_action', JSON.stringify({
-    actionId: payload.actionId,
-    channel: payload.channel,
-    campaign: payload.campaign,
-    recipientId: payload.recipientId,
+    actionId: cookiePayload.actionId,
+    channel: cookiePayload.channel,
+    campaign: cookiePayload.campaign,
+    recipientId: cookiePayload.recipientId,
   }), {
     httpOnly: false,
     sameSite: 'lax',
@@ -53,7 +61,7 @@ export async function GET(request: NextRequest) {
     maxAge: 30 * 24 * 60 * 60,
     path: '/',
   });
-  response.cookies.set('fsi_growth_action_token', request.nextUrl.searchParams.get('t') || '', {
+  response.cookies.set('fsi_growth_action_token', cookieToken, {
     httpOnly: true,
     sameSite: 'lax',
     secure: true,

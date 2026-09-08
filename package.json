@@ -16,6 +16,7 @@
     "test:cron-audit": "npx tsx scripts/verify-cron-forensic-audit.ts",
     "test:edge-traffic": "npx tsx scripts/verify-edge-traffic.ts",
     "test:search-cohort": "npx tsx scripts/verify-search-distribution-cohort.ts",
+    "test:affiliate": "npx tsx scripts/verify-affiliate-distribution.ts",
     "report:commercial-baseline": "npx tsx -r dotenv/config scripts/report-verified-commercial-baseline.ts",
     "reconcile:resend-evidence": "npx tsx -r dotenv/config scripts/reconcile-resend-delivery-evidence.ts",
     "reconcile:brevo-evidence": "npx tsx -r dotenv/config scripts/reconcile-brevo-delivery-evidence.ts",

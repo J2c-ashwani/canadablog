@@ -1,8 +1,12 @@
 import { type NextRequest, NextResponse } from 'next/server';
 import { verifyPayPalSubscription } from '@/lib/payments/paypal';
 import { ensureScopedSubscriberTokens, SubscriberRepository } from '@/lib/leads/SubscriberRepository';
-import { recordMembershipSubscription } from '@/lib/membership/membership-store';
+import { getMembershipSubscription, recordMembershipSubscription } from '@/lib/membership/membership-store';
 import { parseTrackedGrowthToken, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import {
+  attributionFromAffiliateIntent,
+  consumeAffiliateAttributionIntent,
+} from '@/lib/affiliates/store';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -17,11 +21,12 @@ export async function POST(request: NextRequest) {
     const subscriptionId = String(body.subscriptionId || '').trim();
     const cleanEmail = String(body.email || '').toLowerCase().trim();
     const trustedAction = parseTrackedGrowthToken(request.cookies.get('fsi_growth_action_token')?.value || '');
-    const action = trustedAction ? {
+    let action = trustedAction ? {
           actionId: trustedAction.actionId,
           channel: trustedAction.channel,
           campaign: trustedAction.campaign,
           recipientId: trustedAction.recipientId,
+          issuedAt: trustedAction.issuedAt,
         } : null;
     const planId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || '';
     if (!subscriptionId || !cleanEmail.includes('@')) {
@@ -42,6 +47,38 @@ export async function POST(request: NextRequest) {
 
     const providerData = verification.subscriptionData;
     const verifiedAt = new Date().toISOString();
+    const existingMembership = await getMembershipSubscription(subscriptionId);
+    // Repeated browser callbacks cannot reassign an existing subscription to a
+    // new referral cookie or reset its original activation/payment history.
+    if (existingMembership) {
+      action = existingMembership.actionId ? {
+        actionId: existingMembership.actionId,
+        channel: existingMembership.actionChannel,
+        campaign: existingMembership.actionCampaign,
+        recipientId: existingMembership.actionRecipientId,
+        issuedAt: existingMembership.actionIssuedAt,
+      } : null;
+    }
+    const providerCustomId = String(providerData.custom_id || '');
+    if (providerCustomId.startsWith('afi_')) {
+      try {
+        const intent = await consumeAffiliateAttributionIntent({
+          intentId: providerCustomId,
+          subscriptionId,
+          buyerEmail: cleanEmail,
+        });
+        const restored = attributionFromAffiliateIntent(intent);
+        action = {
+          actionId: restored.actionId,
+          channel: restored.actionChannel,
+          campaign: restored.actionCampaign,
+          recipientId: restored.actionRecipientId,
+          issuedAt: restored.affiliateAttributedAt,
+        };
+      } catch (attributionError) {
+        console.error('Membership affiliate attribution intent could not be restored:', attributionError);
+      }
+    }
     const existing = await SubscriberRepository.getSubscriberByEmail(cleanEmail);
     const activity = parseActivity(existing?.leadActivity);
     activity.membershipVerifiedAt = verifiedAt;
@@ -80,14 +117,16 @@ export async function POST(request: NextRequest) {
       status: 'ACTIVE',
       amountUSD: 29,
       providerVerifiedAt: verifiedAt,
-      lastPaymentId: '',
-      lastPaymentAt: '',
+      lastPaymentId: existingMembership?.lastPaymentId || '',
+      lastPaymentAt: existingMembership?.lastPaymentAt || '',
       cancelledAt: '',
       evidenceSource: 'paypal_api_verification',
       actionId: action?.actionId,
       actionChannel: action?.channel,
       actionCampaign: action?.campaign,
       actionRecipientId: action?.recipientId,
+      actionIssuedAt: action?.issuedAt,
+      activatedAt: existingMembership?.activatedAt || String(providerData.create_time || verifiedAt),
     });
     if (action) {
       await recordGrowthActionEvent({

@@ -389,12 +389,41 @@ export async function updatePurchaseStatusByOrder(orderId: string, status: strin
 
   const response = await sheets.spreadsheets.values.get({
     spreadsheetId,
-    range: `${SHEET_TITLE}!A2:T`,
+    range: `${SHEET_TITLE}!A2:AC`,
   });
   const rows = response.data.values || [];
   const matches: PurchaseRecord[] = [];
   for (let index = 0; index < rows.length; index++) {
     if (rows[index][5] !== orderId) continue;
+    rows[index][9] = status;
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!J${index + 2}`,
+      valueInputOption: 'RAW',
+      requestBody: { values: [[status]] },
+    });
+    matches.push(parseRow(rows[index]));
+  }
+  if (matches.length > 0) invalidateCachedSheetValues(SHEET_TITLE);
+  return matches;
+}
+
+/** Updates every ledger line tied to the same provider capture/payment intent. */
+export async function updatePurchaseStatusByProviderCapture(captureId: string, status: string) {
+  const sheets = await getGoogleSheetsClient();
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID;
+  if (!spreadsheetId) throw new Error('GOOGLE_SHEET_ID environment variable is missing');
+  const normalizedCaptureId = String(captureId || '').trim();
+  if (!normalizedCaptureId) return [];
+
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A2:AC`,
+  });
+  const rows = response.data.values || [];
+  const matches: PurchaseRecord[] = [];
+  for (let index = 0; index < rows.length; index++) {
+    if (rows[index][21] !== normalizedCaptureId) continue;
     rows[index][9] = status;
     await sheets.spreadsheets.values.update({
       spreadsheetId,

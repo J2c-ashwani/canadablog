@@ -19,6 +19,18 @@ export async function POST(request: NextRequest) {
     delete attribution.actionChannel;
     delete attribution.actionCampaign;
     delete attribution.actionRecipientId;
+    delete attribution.actionIssuedAt;
+    delete attribution.goActionId;
+    delete attribution.goChannel;
+    delete attribution.goCampaign;
+    delete attribution.goRecipientId;
+    delete attribution.goIssuedAt;
+    delete attribution.affiliatePartnerId;
+    delete attribution.affiliateCode;
+    delete attribution.affiliateAttributedAt;
+    delete attribution.partnerId;
+    delete attribution.referralCode;
+    delete attribution.commissionRate;
     input.attribution = attribution;
     if (trustedAction) input.attribution = {
       ...attribution,
@@ -26,6 +38,7 @@ export async function POST(request: NextRequest) {
       actionChannel: trustedAction.channel,
       actionCampaign: trustedAction.campaign,
       actionRecipientId: trustedAction.recipientId,
+      actionIssuedAt: trustedAction.issuedAt,
     };
     const details = await buildServerCheckout(input);
     const intent = newProductPaymentIntent({

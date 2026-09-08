@@ -23,6 +23,7 @@ function TelemetryTrackerInner() {
 
   useEffect(() => {
     if (typeof window === 'undefined') return;
+    if (pathname === '/affiliates/status' || pathname === '/admin/affiliates') return;
 
     const sessionId = getOrSetSessionId();
     const referrer = document.referrer || 'direct';

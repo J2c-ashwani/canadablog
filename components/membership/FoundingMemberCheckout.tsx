@@ -12,6 +12,7 @@ export function FoundingMemberCheckout() {
   const [checkoutReady, setCheckoutReady] = useState(false);
   const [sdkReady, setSdkReady] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [membershipAttributionId, setMembershipAttributionId] = useState('');
   const [error, setError] = useState('');
   const paypalClientId = process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID || '';
   const planId = process.env.NEXT_PUBLIC_PAYPAL_PLAN_ID || '';
@@ -60,15 +61,19 @@ export function FoundingMemberCheckout() {
 
     const buttons = paypal.Buttons({
       style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'subscribe' },
-      createSubscription: (_data: any, actions: any) => actions.subscription.create({
-        plan_id: planId,
-        subscriber: { email_address: email.toLowerCase().trim() },
-        application_context: {
-          brand_name: 'FSI Digital',
-          shipping_preference: 'NO_SHIPPING',
-          user_action: 'SUBSCRIBE_NOW',
-        },
-      }),
+      createSubscription: (_data: any, actions: any) => {
+        const subscription: Record<string, unknown> = {
+          plan_id: planId,
+          subscriber: { email_address: email.toLowerCase().trim() },
+          application_context: {
+            brand_name: 'FSI Digital',
+            shipping_preference: 'NO_SHIPPING',
+            user_action: 'SUBSCRIBE_NOW',
+          },
+        };
+        if (membershipAttributionId) subscription.custom_id = membershipAttributionId;
+        return actions.subscription.create(subscription);
+      },
       onApprove: async (data: any) => {
         setLoading(true);
         setError('');
@@ -115,9 +120,9 @@ export function FoundingMemberCheckout() {
     return () => {
       try { buttons.close(); } catch {}
     };
-  }, [checkoutReady, sdkReady, email, planId, containerId, router]);
+  }, [checkoutReady, sdkReady, email, planId, containerId, membershipAttributionId, router]);
 
-  const prepareCheckout = (event: React.FormEvent) => {
+  const prepareCheckout = async (event: React.FormEvent) => {
     event.preventDefault();
     setError('');
     if (!email.includes('@')) {
@@ -128,7 +133,21 @@ export function FoundingMemberCheckout() {
       setError('Membership billing is temporarily unavailable because PayPal plan configuration is incomplete.');
       return;
     }
-    setCheckoutReady(true);
+    setLoading(true);
+    try {
+      const response = await fetch('/api/membership/affiliate-intent', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const result = await response.json().catch(() => ({}));
+      setMembershipAttributionId(response.ok ? String(result.customId || '') : '');
+    } catch {
+      setMembershipAttributionId('');
+    } finally {
+      setLoading(false);
+      setCheckoutReady(true);
+    }
     if ((window as any).gtag) {
       (window as any).gtag('event', 'membership_checkout_started', { value: 29, currency: 'USD' });
     }
@@ -182,8 +201,8 @@ export function FoundingMemberCheckout() {
             className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:border-emerald-500 outline-none disabled:opacity-70"
           />
           {!checkoutReady && (
-            <button type="submit" className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 px-6 rounded-xl transition text-base shadow-xl">
-              Continue to secure PayPal subscription →
+            <button type="submit" disabled={loading} className="w-full bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black py-4 px-6 rounded-xl transition text-base shadow-xl disabled:cursor-not-allowed disabled:opacity-60">
+              {loading ? 'Preparing secure checkout…' : 'Continue to secure PayPal subscription →'}
             </button>
           )}
         </form>
@@ -191,7 +210,7 @@ export function FoundingMemberCheckout() {
           <div className="space-y-2">
             {(!sdkReady || loading) && <div className="flex items-center justify-center gap-2 py-4 text-xs text-slate-400"><Loader2 className="w-4 h-4 animate-spin" /> {loading ? 'Verifying subscription…' : 'Loading PayPal…'}</div>}
             <div id={containerId} className={loading ? 'pointer-events-none opacity-50' : ''} />
-            <button type="button" onClick={() => setCheckoutReady(false)} className="w-full text-xs text-slate-500 hover:text-slate-300">Use a different email</button>
+            <button type="button" onClick={() => { setCheckoutReady(false); setMembershipAttributionId(''); }} className="w-full text-xs text-slate-500 hover:text-slate-300">Use a different email</button>
           </div>
         )}
         <div className="flex items-center justify-center gap-2 text-[11px] text-slate-500 font-medium pt-1">

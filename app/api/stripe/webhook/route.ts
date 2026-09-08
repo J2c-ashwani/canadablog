@@ -1,13 +1,20 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { stripe } from '@/lib/payments/stripe';
 import { getProduct } from '@/lib/products/catalog';
-import { recordPurchase, getAllPurchases, updatePurchaseDeliveryStatus } from '@/lib/products/purchase-store';
+import {
+  recordPurchase,
+  getAllPurchases,
+  updatePurchaseDeliveryStatus,
+  updatePurchaseStatusByProviderCapture,
+} from '@/lib/products/purchase-store';
 import { sendEmail } from '@/lib/emails/mailer';
 import { buildPurchaseEmail } from '@/lib/emails/product-purchase';
 import { SubscriberRepository } from '@/lib/leads/SubscriberRepository';
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 import { grantEntitlements } from '@/lib/products/entitlements';
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration';
+import { reverseAffiliateCommissionForSource } from '@/lib/affiliates/store';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -31,6 +38,35 @@ function shouldUpdateStage(currentStage: string | undefined, newStage: string): 
   const newIndex = STAGE_HIERARCHY.indexOf(normalizedNew);
   if (currentIndex === -1) return true;
   return newIndex > currentIndex;
+}
+
+async function handleStripeReversalEvent(event: any) {
+  const supported = new Set(['charge.refunded', 'charge.dispute.created', 'charge.dispute.closed']);
+  if (!supported.has(String(event?.type || ''))) return false;
+  const resource = event?.data?.object || {};
+  let paymentIntentId = typeof resource.payment_intent === 'string' ? resource.payment_intent : resource.payment_intent?.id || '';
+  if (!paymentIntentId && resource.charge) {
+    const chargeId = typeof resource.charge === 'string' ? resource.charge : resource.charge?.id;
+    if (chargeId) {
+      const charge = await stripe.charges.retrieve(chargeId);
+      paymentIntentId = typeof charge.payment_intent === 'string' ? charge.payment_intent : charge.payment_intent?.id || '';
+    }
+  }
+  if (!paymentIntentId) throw new Error(`${event.type} did not contain a Stripe payment intent reference.`);
+
+  if (event.type === 'charge.dispute.closed' && String(resource.status || '').toLowerCase() === 'won') {
+    await updatePurchaseStatusByProviderCapture(paymentIntentId, 'completed');
+    return true;
+  }
+  const status = event.type === 'charge.refunded' ? 'refunded' : 'disputed';
+  await updatePurchaseStatusByProviderCapture(paymentIntentId, status);
+  await reverseAffiliateCommissionForSource({
+    provider: 'stripe',
+    sourceId: paymentIntentId,
+    reviewedBy: `stripe_signed_webhook:${event.type}`,
+    reason: `Provider-confirmed ${event.type} at ${new Date((event.created || Math.floor(Date.now() / 1000)) * 1000).toISOString()}.`,
+  });
+  return true;
 }
 
 export async function POST(request: NextRequest) {
@@ -108,6 +144,15 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: 'Webhook signature verification failed' }, { status: 400 });
   }
 
+  try {
+    if (await handleStripeReversalEvent(event)) {
+      return NextResponse.json({ received: true, reversalEvent: true });
+    }
+  } catch (reversalError) {
+    console.error('Stripe reversal handling failed:', reversalError);
+    return NextResponse.json({ error: 'Stripe reversal handling failed' }, { status: 500 });
+  }
+
   // Handle checkout.session.completed event
   if (event.type === 'checkout.session.completed') {
     const session = event.data.object;
@@ -127,6 +172,9 @@ export async function POST(request: NextRequest) {
       const addons = JSON.parse(addonsRaw || '{}');
       const attribution = JSON.parse(attributionRaw || '{}');
       const serverAmount = Number(expectedAmount);
+      if (session.payment_status !== 'paid') {
+        throw new Error('Stripe checkout session is not provider-confirmed as paid');
+      }
       if (!Number.isFinite(serverAmount) || session.amount_total !== Math.round(serverAmount * 100) || session.currency?.toUpperCase() !== String(currency || '').toUpperCase()) {
         throw new Error('Stripe session commercial terms did not match the server-owned checkout record');
       }
@@ -146,6 +194,18 @@ export async function POST(request: NextRequest) {
           metadata: { checkoutSessionId: sessionId, currency },
         }).catch((error) => console.error('Verified Stripe purchase attribution write failed:', error));
       }
+      await recordAffiliateCommissionForVerifiedCheckout({
+        provider: 'stripe',
+        providerPaymentId: session.payment_intent ? String(session.payment_intent) : '',
+        providerReference: sessionId,
+        productId,
+        totalAmount: serverAmount,
+        currency: String(currency || ''),
+        addons,
+        buyerEmail: email,
+        providerVerifiedAt: new Date((session.created || Math.floor(Date.now() / 1000)) * 1000).toISOString(),
+        attribution,
+      }).catch((error) => console.error('Stripe webhook affiliate commission could not be recorded; reconciliation is required:', error));
 
       // Double-lock write check
       const allPurchases = await getAllPurchases();

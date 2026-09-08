@@ -55,6 +55,7 @@ const EXCLUDED_TRANSACTIONAL_ROUTES = [
     '/membership',
     // Partner revenue flow
     '/partners',
+    '/affiliates',
     // Email management
     '/subscribe',
 ]

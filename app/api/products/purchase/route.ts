@@ -16,6 +16,7 @@ import {
 } from '@/lib/payments/product-payment-intents';
 import { grantEntitlements } from '@/lib/products/entitlements';
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration';
 
 // Global in-memory lock set to prevent concurrent purchase race conditions
 const activeLocks = new Set<string>();
@@ -330,7 +331,7 @@ export async function POST(request: NextRequest) {
     }
 
     const paypalCaptureId = 'captureId' in verification ? verification.captureId || '' : '';
-    await recordProductPaymentCapture(paymentIntent.intentId, paypalCaptureId);
+    const capturedIntent = await recordProductPaymentCapture(paymentIntent.intentId, paypalCaptureId);
     const capturedAction = actionContextFromAttribution(resolvedAttribution);
     if (capturedAction) {
       await recordGrowthActionEvent({
@@ -347,6 +348,18 @@ export async function POST(request: NextRequest) {
         metadata: { orderId: paypalOrderId, currency: paymentIntent.currency },
       }).catch((error) => console.error('Verified PayPal purchase attribution write failed:', error));
     }
+    await recordAffiliateCommissionForVerifiedCheckout({
+      provider: 'paypal',
+      providerPaymentId: paypalCaptureId,
+      providerReference: paypalOrderId,
+      productId,
+      totalAmount: expectedPrice,
+      currency: paymentIntent.currency,
+      addons,
+      buyerEmail: email,
+      providerVerifiedAt: capturedIntent.captureVerifiedAt || new Date().toISOString(),
+      attribution: paymentIntent.attribution,
+    }).catch((error) => console.error('PayPal affiliate commission could not be recorded; reconciliation is required:', error));
 
     // ── Record main purchase in Google Sheets ──
     const purchase = await recordPurchase({

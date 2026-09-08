@@ -60,7 +60,10 @@ function isVerifiedPurchase(purchase: PurchaseRecord) {
   const status = String(purchase.status || '').toLowerCase();
   return Boolean(purchase.paypalCaptureId)
     && ['provider_capture_verified', 'stripe_payment_verified', 'completed'].includes(paymentStatus)
-    && !['refunded', 'revoked', 'failed', 'cancelled'].includes(status);
+    && ![
+      'refund_pending', 'refunded', 'reversal_pending', 'reversed',
+      'disputed', 'chargeback', 'revoked', 'failed', 'cancelled',
+    ].includes(status);
 }
 
 function roundMoney(value: number) {

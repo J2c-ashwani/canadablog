@@ -8,6 +8,7 @@ import { ensureScopedSubscriberTokens, SubscriberRepository } from '@/lib/leads/
 import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 import { grantEntitlements } from '@/lib/products/entitlements';
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -88,6 +89,18 @@ export async function GET(request: NextRequest) {
         metadata: { checkoutSessionId: sessionId, currency },
       }).catch((error) => console.error('Verified Stripe purchase attribution write failed:', error));
     }
+    await recordAffiliateCommissionForVerifiedCheckout({
+      provider: 'stripe',
+      providerPaymentId: session.payment_intent ? String(session.payment_intent) : '',
+      providerReference: sessionId,
+      productId,
+      totalAmount: serverAmount,
+      currency: String(currency || ''),
+      addons,
+      buyerEmail: email,
+      providerVerifiedAt: new Date((session.created || Math.floor(Date.now() / 1000)) * 1000).toISOString(),
+      attribution,
+    }).catch((error) => console.error('Stripe affiliate commission could not be recorded; reconciliation is required:', error));
 
     // ── Check if already recorded to prevent duplication ──
     const allPurchases = await getAllPurchases();

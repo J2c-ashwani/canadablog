@@ -172,8 +172,15 @@ export async function markProductPaymentIntentCompleted(intentId: string) {
 export async function recordProductPaymentCapture(intentId: string, captureId: string) {
   const found = await findIntent(intentId);
   if (!found) throw new Error('Payment intent not found');
-  if (found.intent.status === 'completed') return found.intent;
-  if (found.intent.status !== 'created' && found.intent.status !== 'captured') {
+  const normalizedCaptureId = String(captureId || '').trim();
+  if (!normalizedCaptureId) throw new Error('A provider capture ID is required.');
+  if (found.intent.status === 'captured' || found.intent.status === 'completed') {
+    if (found.intent.captureId && found.intent.captureId !== normalizedCaptureId) {
+      throw new Error('Provider capture ID does not match the recorded payment intent.');
+    }
+    return found.intent;
+  }
+  if (found.intent.status !== 'created') {
     throw new Error(`Payment intent is ${found.intent.status}`);
   }
 
@@ -183,11 +190,11 @@ export async function recordProductPaymentCapture(intentId: string, captureId: s
     range: `${SHEET_TITLE}!L${found.row}:T${found.row}`,
     valueInputOption: 'RAW',
     requestBody: { values: [[
-      'captured', found.intent.createdAt, '', captureId, 'COMPLETED', verifiedAt,
+      'captured', found.intent.createdAt, '', normalizedCaptureId, 'COMPLETED', verifiedAt,
       found.intent.purchaseId || '', found.intent.entitlementStatus || '', 'pending',
     ]] },
   });
-  return { ...found.intent, status: 'captured' as const, captureId, captureStatus: 'COMPLETED', captureVerifiedAt: verifiedAt, deliveryStatus: 'pending' };
+  return { ...found.intent, status: 'captured' as const, captureId: normalizedCaptureId, captureStatus: 'COMPLETED', captureVerifiedAt: verifiedAt, deliveryStatus: 'pending' };
 }
 
 /** Mark fulfilment only after the ledger row and entitlement have both been written. */
@@ -224,4 +231,14 @@ export async function markProductPaymentIntentRefunded(intentId: string) {
     valueInputOption: 'RAW',
     requestBody: { values: [['refunded']] },
   });
+}
+
+export async function markProductPaymentIntentRefundedByCapture(captureId: string) {
+  const normalizedCaptureId = String(captureId || '').trim();
+  if (!normalizedCaptureId) return null;
+  const intents = await getAllProductPaymentIntents();
+  const intent = intents.find((candidate) => candidate.captureId === normalizedCaptureId);
+  if (!intent) return null;
+  await markProductPaymentIntentRefunded(intent.intentId);
+  return intent;
 }

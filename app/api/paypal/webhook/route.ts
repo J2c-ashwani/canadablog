@@ -1,5 +1,10 @@
 import { type NextRequest, NextResponse } from "next/server"
-import { getAllPurchases, recordPurchase, updatePurchaseDeliveryStatus } from "@/lib/products/purchase-store"
+import {
+  getAllPurchases,
+  recordPurchase,
+  updatePurchaseDeliveryStatus,
+  updatePurchaseStatusByProviderCapture,
+} from "@/lib/products/purchase-store"
 import { getProduct } from "@/lib/products/catalog"
 import { grantEntitlements } from "@/lib/products/entitlements"
 import { sendEmail } from "@/lib/emails/mailer"
@@ -7,16 +12,26 @@ import { buildPurchaseEmail } from "@/lib/emails/product-purchase"
 import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
 import {
   getProductPaymentIntent,
+  markProductPaymentIntentRefundedByCapture,
   markProductPaymentIntentFulfilled,
   recordProductPaymentCapture,
 } from "@/lib/payments/product-payment-intents"
 import {
   getMembershipSubscription,
+  getMembershipPaymentSequenceNumber,
   recordMembershipPayment,
+  recordMembershipPaymentTransition,
   recordMembershipSubscription,
   type MembershipSubscriptionStatus,
 } from '@/lib/membership/membership-store'
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution'
+import {
+  attributionFromAffiliateIntent,
+  consumeAffiliateAttributionIntent,
+  recordAffiliateMembershipCommission,
+  reverseAffiliateCommissionForSource,
+} from '@/lib/affiliates/store'
+import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration'
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -49,6 +64,64 @@ function parseActivity(value?: string) {
   try { return JSON.parse(value || '{}') } catch { return {} }
 }
 
+const PAYPAL_REVERSAL_EVENTS = new Set([
+  'PAYMENT.CAPTURE.REFUNDED',
+  'PAYMENT.CAPTURE.REVERSED',
+  'PAYMENT.SALE.REFUNDED',
+  'PAYMENT.SALE.REVERSED',
+  'CUSTOMER.DISPUTE.CREATED',
+  'CUSTOMER.DISPUTE.RESOLVED',
+])
+
+function paypalReversalSourceIds(event: any) {
+  const eventType = String(event?.event_type || '')
+  const resource = event?.resource || {}
+  const ids = new Set<string>()
+  const add = (value: unknown) => {
+    const normalized = String(value || '').trim()
+    if (normalized) ids.add(normalized)
+  }
+  add(resource.capture_id)
+  add(resource.sale_id)
+  add(resource.parent_payment)
+  add(resource.supplementary_data?.related_ids?.capture_id)
+  if (eventType === 'PAYMENT.CAPTURE.REVERSED' || eventType === 'PAYMENT.SALE.REVERSED') add(resource.id)
+  for (const transaction of resource.disputed_transactions || []) {
+    add(transaction?.seller_transaction_id)
+    add(transaction?.transaction_id)
+  }
+  for (const link of resource.links || []) {
+    if (!['up', 'parent_payment'].includes(String(link?.rel || ''))) continue
+    const match = String(link?.href || '').match(/\/(?:captures|sale|payments)\/([^/?#]+)/i)
+    if (match?.[1]) add(match[1])
+  }
+  return [...ids]
+}
+
+async function handlePayPalReversal(event: any) {
+  const eventType = String(event?.event_type || '')
+  if (!PAYPAL_REVERSAL_EVENTS.has(eventType)) return false
+  const sourceIds = paypalReversalSourceIds(event)
+  if (sourceIds.length === 0) throw new Error(`${eventType} did not contain a reversible provider payment reference.`)
+  const occurredAt = String(event?.create_time || new Date().toISOString())
+  const isDispute = eventType.startsWith('CUSTOMER.DISPUTE')
+  const status = isDispute ? 'disputed' : 'refunded'
+  for (const sourceId of sourceIds) {
+    await Promise.all([
+      updatePurchaseStatusByProviderCapture(sourceId, status),
+      markProductPaymentIntentRefundedByCapture(sourceId),
+      recordMembershipPaymentTransition({ paymentId: sourceId, status, occurredAt }),
+    ])
+    await reverseAffiliateCommissionForSource({
+      provider: 'paypal',
+      sourceId,
+      reviewedBy: `paypal_signed_webhook:${eventType}`,
+      reason: `Provider-confirmed ${eventType} at ${occurredAt}.`,
+    })
+  }
+  return true
+}
+
 async function handleMembershipWebhook(event: any): Promise<boolean> {
   const eventType = String(event.event_type || '')
   const resource = event.resource || {}
@@ -69,6 +142,33 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
     if (expectedPlanId && planId !== expectedPlanId) throw new Error('Membership webhook plan ID mismatch.')
     const status = statusByEvent[eventType]
     const occurredAt = String(event.create_time || new Date().toISOString())
+    let actionFields = {
+      actionId: existing?.actionId || '',
+      actionChannel: existing?.actionChannel || '',
+      actionCampaign: existing?.actionCampaign || '',
+      actionRecipientId: existing?.actionRecipientId || '',
+      actionIssuedAt: existing?.actionIssuedAt || '',
+    }
+    const providerCustomId = String(resource.custom_id || '')
+    if (!actionFields.actionId && providerCustomId.startsWith('afi_')) {
+      try {
+        const affiliateIntent = await consumeAffiliateAttributionIntent({
+          intentId: providerCustomId,
+          subscriptionId,
+          buyerEmail: email,
+        })
+        const restored = attributionFromAffiliateIntent(affiliateIntent)
+        actionFields = {
+          actionId: restored.actionId,
+          actionChannel: restored.actionChannel,
+          actionCampaign: restored.actionCampaign,
+          actionRecipientId: restored.actionRecipientId,
+          actionIssuedAt: restored.affiliateAttributedAt,
+        }
+      } catch (attributionError) {
+        console.error('Signed membership webhook could not restore affiliate attribution:', attributionError)
+      }
+    }
     await recordMembershipSubscription({
       subscriptionId,
       email,
@@ -80,11 +180,31 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
       lastPaymentAt: existing?.lastPaymentAt || '',
       cancelledAt: status === 'CANCELLED' ? occurredAt : existing?.cancelledAt || '',
       evidenceSource: `paypal_signed_webhook:${eventType}`,
-      actionId: existing?.actionId,
-      actionChannel: existing?.actionChannel,
-      actionCampaign: existing?.actionCampaign,
-      actionRecipientId: existing?.actionRecipientId,
+      actionId: actionFields.actionId,
+      actionChannel: actionFields.actionChannel,
+      actionCampaign: actionFields.actionCampaign,
+      actionRecipientId: actionFields.actionRecipientId,
+      actionIssuedAt: actionFields.actionIssuedAt,
+      activatedAt: existing?.activatedAt || (status === 'ACTIVE' ? occurredAt : ''),
     })
+    if (status === 'ACTIVE' && actionFields.actionId) {
+      await recordGrowthActionEvent({
+        eventId: `subscription:paypal:${subscriptionId}`,
+        actionId: actionFields.actionId,
+        channel: actionFields.actionChannel,
+        campaign: actionFields.actionCampaign,
+        recipientId: actionFields.actionRecipientId,
+        eventType: 'subscription_verified',
+        provider: 'paypal',
+        providerMessageId: '',
+        productId: 'funding-membership',
+        revenueUSD: 0,
+        revenueCAD: 0,
+        mrrUSD: 29,
+        referenceId: subscriptionId,
+        metadata: { planId, status },
+      }).catch((error) => console.error('Membership webhook attribution write failed:', error))
+    }
     const subscriber = await SubscriberRepository.getSubscriberByEmail(email)
     if (subscriber) {
       const activity = parseActivity(subscriber.leadActivity)
@@ -114,7 +234,7 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
     if (!paymentId || paymentState !== 'completed' || paymentCurrency !== 'USD' || Math.abs(paymentAmount - subscription.amountUSD) > 0.01) {
       throw new Error('Membership payment webhook terms do not match the verified subscription.')
     }
-    await recordMembershipPayment({
+    const paymentWrite = await recordMembershipPayment({
       paymentId,
       subscriptionId,
       email: subscription.email,
@@ -153,6 +273,32 @@ async function handleMembershipWebhook(event: any): Promise<boolean> {
       lastPaymentAt: occurredAt,
       evidenceSource: `paypal_signed_webhook:${eventType}`,
     })
+    if (!paymentWrite.duplicate && subscription.actionChannel === 'affiliate') {
+      const paymentNumber = await getMembershipPaymentSequenceNumber(subscriptionId, paymentId)
+      if (paymentNumber > 0 && paymentNumber <= 3) {
+        await recordAffiliateMembershipCommission({
+          sourceId: paymentId,
+          provider: 'paypal',
+          providerReference: paymentId,
+          productId: 'funding-membership',
+          amount: paymentAmount,
+          currency: paymentCurrency,
+          buyerEmail: subscription.email,
+          providerVerified: true,
+          providerVerifiedAt: occurredAt,
+          attributionQualifiedAt: subscription.activatedAt || subscription.providerVerifiedAt,
+          attribution: {
+            actionId: subscription.actionId,
+            actionChannel: subscription.actionChannel,
+            actionCampaign: subscription.actionCampaign,
+            actionRecipientId: subscription.actionRecipientId,
+            actionIssuedAt: subscription.actionIssuedAt,
+          },
+          membershipSubscriptionId: subscriptionId,
+          membershipPaymentNumber: paymentNumber,
+        }).catch((error) => console.error('Membership affiliate commission could not be recorded; reconciliation is required:', error))
+      }
+    }
     return true
   }
   return false
@@ -218,6 +364,9 @@ export async function POST(request: NextRequest) {
     const event = JSON.parse(bodyText)
     console.log(`[PayPal Webhook] Received event: ${event.event_type}`)
 
+    if (await handlePayPalReversal(event)) {
+      return NextResponse.json({ received: true, reversalEvent: true })
+    }
     if (await handleMembershipWebhook(event)) {
       return NextResponse.json({ received: true, membershipEvent: true })
     }
@@ -265,7 +414,7 @@ export async function POST(request: NextRequest) {
           console.error(`[PayPal Webhook] Capture terms mismatch for intent ${actualIntentId}`)
           return NextResponse.json({ error: "Provider capture terms do not match the server-owned intent." }, { status: 409 })
       }
-      await recordProductPaymentCapture(actualIntentId, captureId)
+      const capturedIntent = await recordProductPaymentCapture(actualIntentId, captureId)
       const capturedAction = actionContextFromAttribution(paymentIntent.attribution)
       if (capturedAction) {
         await recordGrowthActionEvent({
@@ -282,6 +431,18 @@ export async function POST(request: NextRequest) {
           metadata: { orderId: actualOrderId, currency: paymentIntent.currency },
         }).catch((error) => console.error('Verified PayPal purchase attribution write failed:', error))
       }
+      await recordAffiliateCommissionForVerifiedCheckout({
+        provider: 'paypal',
+        providerPaymentId: captureId,
+        providerReference: actualOrderId,
+        productId: paymentIntent.productId,
+        totalAmount: Number(capturedAmount),
+        currency: paymentIntent.currency,
+        addons: paymentIntent.addons,
+        buyerEmail: paymentIntent.email,
+        providerVerifiedAt: capturedIntent.captureVerifiedAt || String(event.create_time || new Date().toISOString()),
+        attribution: paymentIntent.attribution,
+      }).catch((error) => console.error('PayPal webhook affiliate commission could not be recorded; reconciliation is required:', error))
       
       const allPurchases = await getAllPurchases()
       const existingPurchase = allPurchases.find(
