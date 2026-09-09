@@ -54,7 +54,7 @@ export interface AffiliatePartner {
   updatedAt: string;
 }
 
-export interface PublicAffiliatePartner extends Omit<AffiliatePartner, 'portalTokenHash'> {}
+export type PublicAffiliatePartner = Omit<AffiliatePartner, 'portalTokenHash'>;
 
 export interface AffiliateCommission {
   commissionId: string;
