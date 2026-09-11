@@ -232,8 +232,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/nih-sbir-biotech-grants': {
     route: '/blog/nih-sbir-biotech-grants',
-    seoTitle: 'NIH SBIR Grants 2026: Eligibility & Application Guide',
-    seoDescription: 'Check NIH SBIR/STTR eligibility for biotech, medtech, and digital-health R&D. Compare institute fit, active notices, registrations, and application steps.',
+    seoTitle: 'NIH SBIR Biotech Grants 2026 | Eligibility, Deadlines & Funding Routes',
+    seoDescription: 'Evaluate NIH SBIR/STTR funding routes for biotech, medtech, and digital health startups. Review institute matching, active parent notices, submission dates, and Phase I/II requirements.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -294,8 +294,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/nsf-sbir-grants-technology-startups': {
     route: '/blog/nsf-sbir-grants-technology-startups',
-    seoTitle: 'NSF SBIR Grants 2026: Project Pitch & Eligibility',
-    seoDescription: 'Learn who qualifies for NSF SBIR/STTR, how the Project Pitch works, and what evidence technology startups need before a full proposal.',
+    seoTitle: 'NSF SBIR Grants for Tech Startups 2026 | Project Pitch & Eligibility Guide',
+    seoDescription: 'Learn who qualifies for NSF SBIR/STTR funding, how the Project Pitch screening works, and what deep-tech evidence founders need before submitting a full proposal.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -860,8 +860,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/women-entrepreneurship-strategy-canada': {
     route: '/blog/women-entrepreneurship-strategy-canada',
-    seoTitle: 'Women Entrepreneurship Grants Canada 2026: Funding Guide',
-    seoDescription: 'Find Canada funding for women-owned businesses. Compare Women Entrepreneurship Strategy loans, ecosystem support, eligibility, and official application routes.',
+    seoTitle: 'Women Entrepreneurship Strategy Canada (2026) | WES Grants & Loan Guide',
+    seoDescription: 'Explore Canada\'s Women Entrepreneurship Strategy (WES). Review ecosystem project grants, loan fund financing options, eligibility criteria, and application steps.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,

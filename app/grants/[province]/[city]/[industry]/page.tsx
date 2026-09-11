@@ -678,6 +678,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         healthcare: `Healthcare & MedTech Grants in ${page.cityName}, ${page.provinceName} (2026) | NIH SBIR, SBA & State Programs`,
         'clean-energy': `Clean Energy Grants Near ${page.cityName}, ${page.provinceName} [2026] | DOE, USDA REAP & State Incentives`,
         'women-entrepreneurs': `Best Grants for Women Entrepreneurs in ${page.cityName}, ${page.provinceName} (2026) | SBA, State & Local Funds`,
+        'arts-entertainment': `${page.cityName}, ${page.provinceSlug.toUpperCase()} Arts & Cultural Grants 2026 | Funding Programs & Eligibility`,
     };
     const titlePatterns = isCanada ? canadaTitlePatterns : usTitlePatterns;
     let title = titlePatterns[page.industrySlug] ||
@@ -691,6 +692,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
             '/grants/va/norfolk-virginia-beach/arts-entertainment': 'Arts & Entertainment Grants in Norfolk & Virginia Beach (2026)',
             '/grants/nc/raleigh/logistics': 'Logistics & Supply Chain Grants in Raleigh, NC (2026)',
             '/grants/pa/erie/veterans': 'Veteran Business Grants in Erie, PA (2026)',
+            '/grants/va/richmond/arts-entertainment': 'Richmond, VA Arts & Cultural Grants 2026 | Funding Programs & Eligibility',
         };
         title = zeroClickPageOneTitles[rolloutPath] || title;
     }
@@ -710,6 +712,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         healthcare: `Healthcare and MedTech grants in ${page.cityName}: compare NIH SBIR/STTR, SBA-backed capital, ${topPrograms.first}, and ${page.provinceName} innovation programs.`,
         'clean-energy': `Clean energy funding near ${page.cityName}: compare DOE programs, USDA REAP, clean-energy tax credits, utility rebates, and ${page.provinceName} incentives.`,
         'women-entrepreneurs': `Grants and funding for women entrepreneurs in ${page.cityName}: compare SBA support, local microgrants, Women's Business Centers, and ${page.provinceName} incentives.`,
+        'arts-entertainment': `Arts and cultural funding opportunities for ${page.cityName}, ${page.provinceSlug.toUpperCase()} organizations. Compare Virginia Commission for the Arts, NEA, and local municipal grants with application guidelines.`,
     };
     const descPatterns = isCanada ? canadaDescPatterns : usDescPatterns;
     let description = descPatterns[page.industrySlug] ||
@@ -723,6 +726,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
             '/grants/va/norfolk-virginia-beach/arts-entertainment': 'Compare current arts and entertainment grants, Virginia incentives, and local creative-business funding in Norfolk and Virginia Beach. Verify official 2026 eligibility and intakes.',
             '/grants/nc/raleigh/logistics': 'Compare logistics and supply-chain grants, North Carolina incentives, workforce funding, and financing for Raleigh businesses. Verify official 2026 eligibility and intakes.',
             '/grants/pa/erie/veterans': 'Compare veteran business grants, Pennsylvania incentives, SBA support, procurement programs, and local funding routes in Erie. Verify official 2026 eligibility and intakes.',
+            '/grants/va/richmond/arts-entertainment': 'Arts and cultural funding opportunities for Richmond, VA organizations. Compare Virginia Commission for the Arts, NEA, and local municipal grants with application guidelines.',
         };
         description = zeroClickPageOneDescriptions[rolloutPath] || description;
     }

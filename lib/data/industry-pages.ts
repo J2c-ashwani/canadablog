@@ -26,8 +26,8 @@ export const industryDatabase: Record<string, IndustryProfile> = {
   "saas-companies": {
     "name": "SaaS Companies & Software Startups",
     "identity": "a SaaS company or software startup",
-    "seoTitle": "Government Grants & Funding for SaaS Companies (2026)",
-    "description": "Discover available government grants, R&D tax credits, and software hiring subsidies designed for SaaS and subscription-based tech businesses.",
+    "seoTitle": "Government Grants & Tax Credits for SaaS Companies (2026) | Stacking Guide",
+    "description": "Discover non-dilutive government grants, R&D tax credits, and software hiring subsidies for SaaS startups. Compare SR&ED, IRAP, and state incentives to fund engineering costs.",
     "subtext": "Offset software engineering salaries and server costs by stacking federal wage subsidies and retroactive tax incentives.",
     "programIds": [
       "sred-tax-credit",
