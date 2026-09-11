@@ -1,5 +1,6 @@
 import { google } from "googleapis"
 import { randomUUID } from "crypto"
+import { readWithQuotaRetry } from '@/lib/sheets-read-retry'
 import {
   calculateLeadIntelligence,
   LEAD_CONSENT_TEXT,
@@ -50,7 +51,7 @@ export async function getCachedSheetValues(range: string, ttlMs = 30_000): Promi
 
   const promise = (async () => {
     const sheets = await getGoogleSheetsClient()
-    const response = await sheets.spreadsheets.values.get({ spreadsheetId, range })
+    const response = await readWithQuotaRetry(() => sheets.spreadsheets.values.get({ spreadsheetId, range }))
     return (response.data.values || []) as string[][]
   })()
   sheetValuesCache.set(key, { expiresAt: Date.now() + ttlMs, promise })

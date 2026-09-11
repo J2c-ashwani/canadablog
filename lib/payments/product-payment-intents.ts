@@ -1,5 +1,6 @@
 import crypto from 'crypto';
 import { getGoogleSheetsClient } from '@/lib/google-sheets';
+import { readWithQuotaRetry } from '@/lib/sheets-read-retry';
 
 export type PaymentIntentStatus = 'created' | 'captured' | 'completed' | 'refunded' | 'failed';
 
@@ -118,8 +119,8 @@ export async function saveProductPaymentIntent(intent: ProductPaymentIntent) {
 }
 
 async function findIntent(intentIdOrOrderId: string) {
-  const { sheets, spreadsheetId } = await ensureSheet();
-  const response = await sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:T` });
+  const { sheets, spreadsheetId } = await getSheetContext();
+  const response = await readWithQuotaRetry(() => sheets.spreadsheets.values.get({ spreadsheetId, range: `${SHEET_TITLE}!A2:T` }));
   const rows = response.data.values || [];
   // Match by Intent ID (column A / index 0) or PayPal Order ID (column B / index 1)
   const rowIndex = rows.findIndex((row) => row[0] === intentIdOrOrderId || row[1] === intentIdOrOrderId);
@@ -133,11 +134,13 @@ export async function getProductPaymentIntent(intentIdOrOrderId: string) {
 }
 
 export async function getAllProductPaymentIntents(): Promise<ProductPaymentIntent[]> {
-  const { sheets, spreadsheetId } = await ensureSheet();
-  const response = await sheets.spreadsheets.values.get({
+  // The writer creates the ledger. Readers must not inspect/rewrite its schema
+  // on every recovery run, especially when Redis falls back to Sheets.
+  const { sheets, spreadsheetId } = await getSheetContext();
+  const response = await readWithQuotaRetry(() => sheets.spreadsheets.values.get({
     spreadsheetId,
     range: `${SHEET_TITLE}!A2:T`,
-  });
+  }));
   return (response.data.values || []).map((row) => parseRow(row as string[]));
 }
 

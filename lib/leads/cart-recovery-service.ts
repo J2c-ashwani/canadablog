@@ -56,7 +56,7 @@ export class CartRecoveryService {
     const now = Date.now()
     const [leads, purchases, paymentIntents, actionEvents] = await Promise.all([
       getLeadsFromSheet(1000),
-      getAllPurchases(),
+      getAllPurchases({ strict: true }),
       getAllProductPaymentIntents(),
       getGrowthActionEvents(),
     ])
