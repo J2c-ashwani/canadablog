@@ -21,6 +21,12 @@ export function SampleReportPreview() {
         <span className="text-xs text-slate-400 bg-slate-700/60 px-2.5 py-1 rounded-full">Preview</span>
       </div>
 
+      {/* Illustrative Example Notice */}
+      <div className="bg-amber-50 border-b border-amber-200/80 px-4 py-2 text-[11px] text-amber-800 flex items-start gap-2">
+        <span className="font-bold shrink-0 uppercase tracking-wider text-[10px] bg-amber-200/70 text-amber-900 px-1.5 py-0.5 rounded mt-0.5">Illustrative Sample</span>
+        <span className="leading-snug">Sample report — illustrative example only. Actual matched programs, estimated amounts, and readiness scores are calculated specifically from your business profile upon report purchase.</span>
+      </div>
+
       {/* Summary Bar */}
       <div className="bg-emerald-50 border-b border-emerald-100 px-5 py-3 flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-4 text-sm">

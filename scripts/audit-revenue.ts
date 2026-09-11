@@ -1,72 +1,126 @@
-import { config } from "dotenv"
-import path from "path"
-config({ path: path.join(__dirname, "../.env.local") })
+import { config } from "dotenv";
+import path from "path";
+config({ path: path.join(__dirname, "../.env.local") });
 
-import { getLeadsFromSheet } from "../lib/google-sheets"
+import { getLeadsFromSheet } from "../lib/google-sheets";
+import { getAllPurchases } from "../lib/products/purchase-store";
+import { getAllProductPaymentIntents } from "../lib/payments/product-payment-intents";
+
+function isInternalOrTestEmail(email: string): boolean {
+  const norm = (email || "").toLowerCase().trim();
+  return (
+    !norm ||
+    !norm.includes("@") ||
+    norm.includes("example.com") ||
+    norm.includes("test.com") ||
+    norm.includes("antigravity") ||
+    norm.endsWith("@fsidigital.ca") ||
+    norm.endsWith("@join2campus.com")
+  );
+}
 
 async function auditRevenue() {
-  console.log(`=== FSI DIGITAL ACTUAL REVENUE AUDIT ===\n`)
-  
+  console.log(`\n======================================================`);
+  console.log(`  FSI DIGITAL — CEO REVENUE TRUTH LEDGER`);
+  console.log(`  Target Date: September 25, 2026 | Goal: $10,000 MRR`);
+  console.log(`======================================================\n`);
+
   try {
-    const leads = await getLeadsFromSheet()
+    const [leads, purchases, intents] = await Promise.all([
+      getLeadsFromSheet(1000).catch((err) => {
+        console.warn("⚠️ Failed to load Leads sheet:", err?.message);
+        return [];
+      }),
+      getAllPurchases().catch((err) => {
+        console.warn("⚠️ Failed to load Product Purchases sheet:", err?.message);
+        return [];
+      }),
+      getAllProductPaymentIntents().catch((err) => {
+        console.warn("⚠️ Failed to load Payment Intents sheet:", err?.message);
+        return [];
+      }),
+    ]);
+
+    // 1. Filter external purchases
+    const externalPurchases = purchases.filter((p) => !isInternalOrTestEmail(p.email));
     
-    // Check actual signed values
-    const signedLeads = leads.filter((l: any) => l.actualSignedValue && l.actualSignedValue !== "N/A" && l.actualSignedValue !== "")
-    console.log(`Leads with Actual Signed Value: ${signedLeads.length}`)
-    signedLeads.forEach((l: any) => {
-      console.log(`  - ${l.email}: $${l.actualSignedValue} (Status: ${l.offlineStatus})`)
-    })
-    
-    // Check report purchases
-    const purchases = leads.filter((l: any) => l.reportPurchased === true)
-    console.log(`\nReport Purchases: ${purchases.length}`)
-    purchases.forEach((l: any) => {
-      console.log(`  - ${l.email}: Purchased at ${l.assessmentPurchasedAt || 'Unknown date'} (Transaction: ${l.reportTransactionId || 'N/A'})`)
-    })
-    
-    // Check strategy session purchases  
-    const strategyPurchases = leads.filter((l: any) => l.strategyReportPurchased === true)
-    console.log(`\nStrategy Session Purchases: ${strategyPurchases.length}`)
-    
-    // Check booked audits
-    const bookedAudits = leads.filter((l: any) => {
-      const status = String(l.offlineStatus || "").toLowerCase()
-      return status.includes("booked") || status.includes("audit") || status.includes("signed") || status.includes("client") || status.includes("vip")
-    })
-    console.log(`\nBooked Audits / Signed Clients: ${bookedAudits.length}`)
-    bookedAudits.forEach((l: any) => {
-      console.log(`  - ${l.email}: Status: ${l.offlineStatus}, Value: ${l.actualSignedValue || 'N/A'}`)
-    })
-    
-    // Check high-intent signals
-    const highIntent = leads.filter((l: any) => {
-      const activity = l.leadActivity || ""
-      return activity.includes("packageSelected") || activity.includes("paypalContainerRendered")
-    })
-    console.log(`\nHigh-Intent Leads (PayPal Rendered / Package Selected): ${highIntent.length}`)
-    highIntent.forEach((l: any) => {
-      try {
-        const act = JSON.parse(l.leadActivity)
-        console.log(`  - ${l.email}: Package: ${act.packageSelected || 'N/A'}, Price: $${act.packageSelectedPrice || 'N/A'}, Duration: ${act.durationSeconds || 'N/A'}s`)
-      } catch {
-        console.log(`  - ${l.email}: Has PayPal activity`)
+    // Verified orders have a provider capture ID or verified payment status
+    const verifiedPurchases = externalPurchases.filter(
+      (p) =>
+        (p.paypalCaptureId && p.paypalCaptureId !== "N/A" && p.paypalCaptureId !== "") ||
+        p.paymentStatus === "provider_capture_verified" ||
+        (p.status === "completed" && p.paypalOrderId && p.paypalOrderId !== "N/A")
+    );
+
+    const unverifiedPurchases = externalPurchases.filter(
+      (p) => !verifiedPurchases.includes(p)
+    );
+
+    // Calculate total verified gross revenue
+    let totalVerifiedRevenue = 0;
+    let mtdRevenue = 0;
+    const currentMonth = new Date().getMonth();
+    const currentYear = new Date().getFullYear();
+
+    for (const p of verifiedPurchases) {
+      const amt = parseFloat(p.amount) || 0;
+      totalVerifiedRevenue += amt;
+
+      const pDate = new Date(p.createdAt);
+      if (!isNaN(pDate.getTime())) {
+        if (pDate.getMonth() === currentMonth && pDate.getFullYear() === currentYear) {
+          mtdRevenue += amt;
+        }
       }
-    })
-    
-    // Traffic sources
-    const sources: Record<string, number> = {}
-    leads.forEach((l: any) => {
-      const src = l.source || l.lastAttributionSource || "Unknown"
-      sources[src] = (sources[src] || 0) + 1
-    })
-    console.log(`\nTraffic Source Breakdown:`)
-    Object.entries(sources).sort((a, b) => b[1] - a[1]).forEach(([src, count]) => {
-      console.log(`  ${src}: ${count}`)
-    })
-    
+    }
+
+    // 2. Pending Payment Intents
+    const externalIntents = intents.filter((i) => !isInternalOrTestEmail(i.email));
+    const pendingIntents = externalIntents.filter(
+      (i) => i.status === "created" && (!i.captureId || i.captureId === "N/A")
+    );
+
+    // 3. Active Leads
+    const externalLeads = leads.filter((l: any) => !isInternalOrTestEmail(l.email));
+
+    // 4. Target & Pace calculations
+    const SEPTEMBER_TARGET = 10000;
+    const TARGET_DATE = new Date("2026-09-25T23:59:59Z").getTime();
+    const now = Date.now();
+    const daysRemaining = Math.max(1, Math.ceil((TARGET_DATE - now) / (1000 * 60 * 60 * 24)));
+    const gapToTarget = Math.max(0, SEPTEMBER_TARGET - mtdRevenue);
+    const dailyRequiredPace = (gapToTarget / daysRemaining).toFixed(2);
+
+    // 5. Output exact CEO Truth Ledger metrics block
+    console.log(`Verified One-Time Revenue: $${totalVerifiedRevenue.toFixed(2)} USD`);
+    console.log(`Verified Subscription MRR: $0.00 USD`);
+    console.log(`September One-Time Revenue: $${mtdRevenue.toFixed(2)} USD`);
+    console.log(`September Total Captured Revenue: $${mtdRevenue.toFixed(2)} USD`);
+    console.log(`Verified Orders: ${verifiedPurchases.length}`);
+    console.log(`Pending Payment Intents: ${pendingIntents.length}`);
+    console.log(`Unverified Client Orders: ${unverifiedPurchases.length}`);
+    console.log(`Active Leads: ${externalLeads.length}`);
+    console.log(`September Revenue Target: $${SEPTEMBER_TARGET.toFixed(2)} USD`);
+    console.log(`Daily Required Pace: $${dailyRequiredPace} USD/day (over ${daysRemaining} days remaining)`);
+    console.log(`Gap to Target: $${gapToTarget.toFixed(2)} USD`);
+    console.log(`======================================================\n`);
+
+    if (verifiedPurchases.length > 0) {
+      console.log(`📜 Verified External Purchases:`);
+      verifiedPurchases.forEach((p, idx) => {
+        console.log(`   ${idx + 1}. ${p.email} | $${p.amount} | ${p.productId} | Date: ${p.createdAt} | Capture: ${p.paypalCaptureId || p.paypalOrderId}`);
+      });
+      console.log(``);
+    } else {
+      console.log(`ℹ️  No external purchases recorded yet in the current observation window.\n`);
+    }
+
   } catch (err: any) {
-    console.error("Error:", err.message)
+    console.error("❌ Ledger audit error:", err?.message || err);
+    process.exit(1);
   }
 }
 
-auditRevenue()
+if (require.main === module) {
+  auditRevenue();
+}

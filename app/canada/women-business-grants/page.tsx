@@ -58,7 +58,12 @@ export default function WomenBusinessGrantsCanadaPage() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Canadian women entrepreneurs can access the Women Entrepreneurship Fund ($100K+), WELF loans ($50K), WES ecosystem grants, Amber Grant, and provincial programs worth $850M+ combined. The federal WES strategy committed $6B to double women-owned businesses." />
+            <ShortAnswerBox 
+              content="Canadian women entrepreneurs can access the Women Entrepreneurship Fund ($100K+), WELF loans ($50K), WES ecosystem grants, Amber Grant, and provincial programs worth $850M+ combined. The federal WES strategy committed $6B to double women-owned businesses." 
+              ctaText="Check whether your business qualifies for women entrepreneur grants"
+              ctaHref="/calculator"
+              ctaContext="women-pilot"
+            />
             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck 
               title="Check which women entrepreneur funding programs you qualify for." 

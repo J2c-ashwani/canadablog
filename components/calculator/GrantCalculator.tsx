@@ -2676,6 +2676,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                             Every funding intake that closes is one less opportunity your business can apply for.
                         </p>
 
+                        {/* 3.5 VISUAL DELIVERABLE PROOF: SAMPLE REPORT PREVIEW */}
+                        <div className="max-w-xl mx-auto text-left not-prose my-6 shadow-sm rounded-2xl overflow-hidden">
+                            <SampleReportPreview />
+                        </div>
+
                         {/* 4. DECISION PATHWAY PRICING CARDS */}
                         <div className="space-y-4 max-w-3xl mx-auto pt-2">
                             <h3 className="text-lg font-bold text-slate-900">Select Your Funding Strategy Pathway</h3>

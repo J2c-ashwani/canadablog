@@ -61,7 +61,12 @@ export default function CanadianSmallBusinessGrants() {
       <section className="py-6 bg-emerald-50">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto space-y-4">
-            <ShortAnswerBox content="Canadian small businesses can access IRAP (up to $500K), CSBFP loan guarantees ($1M), BDC financing, provincial grants, and SR&ED tax credits. Combined federal and provincial support exceeds $5B annually for SMEs with fewer than 500 employees." />
+            <ShortAnswerBox 
+              content="Canadian small businesses can access IRAP (up to $500K), CSBFP loan guarantees ($1M), BDC financing, provincial grants, and SR&ED tax credits. Combined federal and provincial support exceeds $5B annually for SMEs with fewer than 500 employees." 
+              ctaText="Check your small business funding eligibility in 60s"
+              ctaHref="/calculator"
+              ctaContext="smallbiz-pilot"
+            />
             <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
             <EligibleCheck 
               title="Check if your business qualifies for Canadian funding in under 60 seconds." 

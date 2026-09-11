@@ -338,11 +338,21 @@ export function FundingEstimator({ defaultRegion = 'on', defaultIndustry = 'tech
               </ul>
             </div>
 
-            <Button asChild className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 shadow-md">
-              <a href={`/get-started?service=eligibility-audit&potential=${result.min}-${result.max}&company=${encodeURIComponent(companyName)}`}>
-                Book Your Funding Eligibility Audit <ArrowRight className="ml-2 h-4 w-4" />
-              </a>
-            </Button>
+            <div className="space-y-2.5">
+              <Button asChild className="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 shadow-md text-sm">
+                <a href={`/api/growth-os/onsite-click?surface=industry-page&context=${encodeURIComponent(industry)}&offer=match-report`}>
+                  Unlock Full Match Report ($19 USD) <ArrowRight className="ml-2 h-4 w-4" />
+                </a>
+              </Button>
+              <div className="pt-1">
+                <a
+                  href={`/get-started?service=eligibility-audit&potential=${result.min}-${result.max}&company=${encodeURIComponent(companyName)}`}
+                  className="text-xs text-slate-500 hover:text-slate-700 font-medium inline-flex items-center gap-1"
+                >
+                  Need hands-on advisory? Book an Eligibility Audit Session →
+                </a>
+              </div>
+            </div>
 
             <button type="button" onClick={resetEstimator} className="text-xs text-slate-400 hover:text-slate-600 underline">
               Recalculate Estimate
