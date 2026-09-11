@@ -217,47 +217,63 @@ export async function acquireOperationLease(
       console.warn(`⚠️ Operational Redis lease failed for ${operation} (${redisErr?.message || redisErr}), falling back to Sheets coordination.`);
     }
   }
-  const append = await appendOperationalRow('GrowthOS Runs', RUN_HEADERS, [
-    attemptId,
-    operation,
-    startedAt,
-    'STARTING',
-    '',
-    '',
-  ]);
-  const rows = await readOperationalRows('GrowthOS Runs', RUN_HEADERS);
-  const cutoff = Date.now() - dedupeWindowMs;
-  const contenders = rows
-    .map((row, index) => ({ row, rowNumber: index + 2 }))
-    .filter(({ row }) => {
-      const started = new Date(row[2] || '').getTime();
-      return row[1] === operation && Number.isFinite(started) && started >= cutoff && row[3] !== 'FAILED';
-    })
-    .sort((left, right) => {
-      const timeDiff = new Date(left.row[2]).getTime() - new Date(right.row[2]).getTime();
-      return timeDiff || left.rowNumber - right.rowNumber;
-    });
+  try {
+    const append = await appendOperationalRow('GrowthOS Runs', RUN_HEADERS, [
+      attemptId,
+      operation,
+      startedAt,
+      'STARTING',
+      '',
+      '',
+    ]);
+    const rows = await readOperationalRows('GrowthOS Runs', RUN_HEADERS);
+    const cutoff = Date.now() - dedupeWindowMs;
+    const contenders = rows
+      .map((row, index) => ({ row, rowNumber: index + 2 }))
+      .filter(({ row }) => {
+        const started = new Date(row[2] || '').getTime();
+        return row[1] === operation && Number.isFinite(started) && started >= cutoff && row[3] !== 'FAILED';
+      })
+      .sort((left, right) => {
+        const timeDiff = new Date(left.row[2]).getTime() - new Date(right.row[2]).getTime();
+        return timeDiff || left.rowNumber - right.rowNumber;
+      });
 
-  const owner = contenders[0];
-  const acquired = owner?.row?.[0] === attemptId;
-  await updateOperationalRow('GrowthOS Runs', RUN_HEADERS, append.rowNumber, [
-    attemptId,
-    operation,
-    startedAt,
-    acquired ? 'RUNNING' : 'SKIPPED_DUPLICATE',
-    acquired ? '' : new Date().toISOString(),
-    acquired ? '' : `Lease already owned by ${owner?.row?.[0] || 'another attempt'}`,
-  ]);
+    const owner = contenders[0];
+    const acquired = owner?.row?.[0] === attemptId;
+    await updateOperationalRow('GrowthOS Runs', RUN_HEADERS, append.rowNumber, [
+      attemptId,
+      operation,
+      startedAt,
+      acquired ? 'RUNNING' : 'SKIPPED_DUPLICATE',
+      acquired ? '' : new Date().toISOString(),
+      acquired ? '' : `Lease already owned by ${owner?.row?.[0] || 'another attempt'}`,
+    ]);
 
-  return {
-    acquired,
-    operation,
-    attemptId,
-    startedAt,
-    rowNumber: append.rowNumber,
-    backend: 'sheets',
-    reason: acquired ? undefined : 'A recent execution already owns this operation lease.',
-  };
+    return {
+      acquired,
+      operation,
+      attemptId,
+      startedAt,
+      rowNumber: append.rowNumber,
+      backend: 'sheets',
+      reason: acquired ? undefined : 'A recent execution already owns this operation lease.',
+    };
+  } catch (sheetsErr: any) {
+    // Both Redis AND Sheets are unavailable. Proceed optimistically rather
+    // than returning 503 — the business logic already deduplicates via
+    // lead-level activity timestamps, so double-execution is safe while
+    // total failure is not.
+    console.warn(`⚠️ Sheets lease coordination also failed for ${operation} (${sheetsErr?.message || sheetsErr}). Proceeding optimistically.`);
+    return {
+      acquired: true,
+      operation,
+      attemptId,
+      startedAt,
+      backend: 'sheets',
+      reason: 'Optimistic grant — both Redis and Sheets coordination unavailable.',
+    };
+  }
 }
 
 export async function finishOperationLease(
@@ -281,14 +297,18 @@ export async function finishOperationLease(
     return;
   }
   if (!lease.rowNumber) return;
-  await updateOperationalRow('GrowthOS Runs', RUN_HEADERS, lease.rowNumber, [
-    lease.attemptId,
-    lease.operation,
-    lease.startedAt,
-    status,
-    new Date().toISOString(),
-    serializedSummary,
-  ]);
+  try {
+    await updateOperationalRow('GrowthOS Runs', RUN_HEADERS, lease.rowNumber, [
+      lease.attemptId,
+      lease.operation,
+      lease.startedAt,
+      status,
+      new Date().toISOString(),
+      serializedSummary,
+    ]);
+  } catch (sheetsErr: any) {
+    console.warn(`⚠️ Sheets finish lease failed for ${lease.operation} (${sheetsErr?.message || sheetsErr}). Work was completed but run status was not persisted.`);
+  }
 }
 
 function columnName(count: number) {
