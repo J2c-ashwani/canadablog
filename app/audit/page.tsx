@@ -15,5 +15,30 @@ export const metadata: Metadata = {
 };
 
 export default function AuditPage() {
-  return <AuditClient />;
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    "name": "Funding Strategy Audit",
+    "description": "Book a paid 30-minute Funding Strategy Audit. Pay first, then immediately book your call. An FSI advisor reviews your eligibility, identifies your top 3 programs, and builds a custom application roadmap.",
+    "offers": {
+      "@type": "Offer",
+      "price": "199.00",
+      "priceCurrency": "CAD",
+      "url": "https://www.fsidigital.ca/audit"
+    },
+    "provider": {
+      "@type": "Organization",
+      "name": "FSI Digital"
+    }
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
+      <AuditClient />
+    </>
+  );
 }

@@ -325,6 +325,11 @@ export default function ServicesClient() {
                     Start Funding Audit ($199) <ArrowRight className="w-4 h-4" />
                   </span>
                 </Link>
+                <Link href="/calculator">
+                  <span className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white transition-colors cursor-pointer shadow-sm">
+                    Free Grant Calculator (60s)
+                  </span>
+                </Link>
                 <Link href="/contact">
                   <span className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl text-sm font-bold bg-white hover:bg-slate-50 text-slate-700 border border-slate-200 transition-colors cursor-pointer">
                     Ask a Question

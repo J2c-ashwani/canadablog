@@ -54,8 +54,8 @@ export default function CanadaGrantsPage() {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="bg-yellow-500 hover:bg-yellow-600 text-gray-900 font-semibold" asChild>
-                <Link href="/grant-finder">
-                  Find Matching Grants
+                <Link href="/calculator">
+                  Check Grant Eligibility (Free 60s)
                 </Link>
               </Button>
               <Button size="lg" variant="outline" className="bg-white/10 border-white/30 text-white hover:bg-white/20" asChild>
@@ -552,6 +552,28 @@ export default function CanadaGrantsPage() {
               <h3 className="font-semibold text-gray-900 group-hover:text-green-600 mb-2">📚 Canada Startup Funding Guide</h3>
               <p className="text-sm text-gray-600">35+ programs worth $1.2B+ for Canadian startups.</p>
             </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* Grant Calculator Sticky / Conversion Section */}
+      <section className="py-16 bg-gradient-to-r from-red-700 to-red-900 text-white text-center">
+        <div className="container mx-auto px-4 max-w-3xl space-y-6">
+          <Badge className="bg-white/20 text-white border-white/30 text-xs">
+            Free 60-Second Diagnostic
+          </Badge>
+          <h2 className="text-3xl sm:text-4xl font-black">
+            Calculate Your Government Grant Eligibility
+          </h2>
+          <p className="text-red-100 text-sm sm:text-base leading-relaxed">
+            Answer 4 simple questions about your company, province, and project spend to identify high-probability federal and provincial grant programs.
+          </p>
+          <div className="pt-2">
+            <Button size="lg" className="bg-yellow-400 hover:bg-yellow-500 text-gray-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-transform hover:scale-105" asChild>
+              <Link href="/calculator">
+                Open Free Grant Calculator →
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

@@ -79,6 +79,11 @@ const nextConfig = {
         permanent: true,
       },
       {
+        source: '/products',
+        destination: '/products/funding-match-report',
+        permanent: true,
+      },
+      {
         source: '/free-grant-consultation',
         destination: '/contact',
         permanent: true,

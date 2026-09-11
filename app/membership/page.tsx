@@ -10,6 +10,9 @@ import { FoundingMemberCheckout } from '@/components/membership/FoundingMemberCh
 export const metadata: Metadata = {
   title: 'FSI Digital Founding Member Beta — Custom Government Funding Monitoring',
   description: 'Secure active government funding alerts, application templates, and weekly intelligence briefings for $29/mo.',
+  alternates: {
+    canonical: 'https://www.fsidigital.ca/membership',
+  },
 };
 
 export default function MembershipPage() {
@@ -168,6 +171,27 @@ export default function MembershipPage() {
         </div>
       </section>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Product",
+            name: "Funding Watch Membership",
+            description: "Secure active government funding alerts, application templates, and weekly intelligence briefings for $29/mo.",
+            offers: {
+              "@type": "Offer",
+              price: "29.00",
+              priceCurrency: "CAD",
+              url: "https://www.fsidigital.ca/membership"
+            },
+            provider: {
+              "@type": "Organization",
+              name: "FSI Digital"
+            }
+          }),
+        }}
+      />
       <Footer />
     </div>
   );

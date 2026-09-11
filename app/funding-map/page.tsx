@@ -136,9 +136,34 @@ export default function FundingMapPage() {
 
           </div>
 
+          {/* Call to action */}
+          <div className="mt-12 p-8 border border-slate-200 bg-white rounded-3xl text-center shadow-sm">
+            <h2 className="text-2xl font-bold text-slate-900 mb-4">Found your province?</h2>
+            <p className="text-slate-600 mb-6">Check your eligibility for specific grants →</p>
+            <Link href="/calculator" className="inline-flex items-center px-6 py-3 rounded-full text-sm font-bold bg-emerald-600 text-white hover:bg-emerald-700 transition-colors">
+              Free Grant Calculator
+            </Link>
+          </div>
+
         </div>
       </main>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "SoftwareApplication",
+            name: "Interactive Canada Funding Map",
+            applicationCategory: "FinanceApplication",
+            offers: {
+              "@type": "Offer",
+              price: "0",
+              priceCurrency: "CAD"
+            }
+          })
+        }}
+      />
       <Footer />
     </div>
   )

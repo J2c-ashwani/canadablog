@@ -7,13 +7,14 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { Calendar, Clock, Bell } from "lucide-react"
 import type { Metadata } from "next"
+import Link from "next/link"
 
 export const metadata: Metadata = {
   title: "Grant Deadlines Calendar 2026: Never Miss a Deadline [Free]",
   description:
     "Track USA grant deadlines with our interactive calendar. Get deadline alerts, export to Google Calendar, and never miss a funding opportunity.",
   keywords:
-    "USA grant deadlines 2025, grant calendar, funding deadlines, grant deadline alerts, government grant calendar",
+    "USA grant deadlines 2026, grant calendar, funding deadlines, grant deadline alerts, government grant calendar",
   alternates: {
     canonical: "https://www.fsidigital.ca/deadline-calendar",
   },
@@ -151,6 +152,16 @@ export default function DeadlineCalendarPage() {
               title="Get Deadline Reminders"
               description="Receive weekly deadline alerts and never miss a grant opportunity"
             />
+          </div>
+
+          {/* New CTAs */}
+          <div className="flex flex-col sm:flex-row justify-center gap-4 mt-8">
+            <Link href="/membership" className="inline-flex justify-center items-center px-6 py-3 rounded-full text-sm font-bold bg-blue-600 text-white hover:bg-blue-700 transition-colors">
+              Never miss a deadline — get automated weekly funding alerts for $29/month
+            </Link>
+            <Link href="/calculator" className="inline-flex justify-center items-center px-6 py-3 rounded-full text-sm font-bold bg-white text-slate-800 border border-slate-200 hover:bg-slate-50 transition-colors">
+              Check your grant eligibility now →
+            </Link>
           </div>
         </div>
       </main>

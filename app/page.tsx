@@ -207,6 +207,24 @@ export default function HomePage() {
       </div>
       <Footer />
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: FAQS.map((faq) => ({
+              "@type": "Question",
+              name: faq.question,
+              acceptedAnswer: {
+                "@type": "Answer",
+                text: faq.answer,
+              },
+            })),
+          }),
+        }}
+      />
+
       <style>{`
         .mca-hero {
           background: linear-gradient(135deg, #111827 0%, #1e3a8a 100%);

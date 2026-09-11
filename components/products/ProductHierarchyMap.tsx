@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Link from 'next/link';
 import { Layers, CheckCircle2, ShieldCheck, Clock, Users, ArrowUpRight } from 'lucide-react';
 
 interface ProductHierarchyMapProps {
@@ -151,6 +152,20 @@ export function ProductHierarchyMap({ currentTier }: ProductHierarchyMapProps) {
             </tbody>
           </table>
         </div>
+      </div>
+
+      {/* Exit to Grant Calculator */}
+      <div className="mt-8 p-6 bg-slate-950/80 border border-slate-800 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+        <div>
+          <h4 className="text-sm font-bold text-slate-200">Not sure which package fits your business?</h4>
+          <p className="text-xs text-slate-400 mt-0.5">Run our free 60-second eligibility intake to get a personalized recommendation.</p>
+        </div>
+        <Link
+          href="/calculator"
+          className="inline-flex items-center gap-1.5 px-5 py-2.5 rounded-full text-xs font-bold bg-emerald-500 hover:bg-emerald-450 text-slate-950 transition-colors shrink-0"
+        >
+          Run Free Calculator →
+        </Link>
       </div>
 
     </div>
