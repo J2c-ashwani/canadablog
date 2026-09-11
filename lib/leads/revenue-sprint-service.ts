@@ -22,9 +22,9 @@ import {
 export const REVENUE_SPRINT_START_AT = '2026-08-31T00:00:00.000Z'
 export const REVENUE_SPRINT_END_AT = '2026-09-25T23:59:59.000Z'
 export const REVENUE_SPRINT_CAMPAIGN = 'revenue-sprint-september-entry-19'
-const INITIAL_COHORT_CAP = 20
-const CHECKOUT_VALIDATED_CAP = 40
-const PAYMENT_VALIDATED_CAP = 100
+const INITIAL_COHORT_CAP = 300
+const CHECKOUT_VALIDATED_CAP = 300
+const PAYMENT_VALIDATED_CAP = 500
 
 type Candidate = {
   subscriber: SubscriberProfile
@@ -162,9 +162,9 @@ export class RevenueSprintService {
       cohortCap = CHECKOUT_VALIDATED_CAP
       reason = 'At least one server-verified checkout is attributed to this sprint; expand once while awaiting payment evidence.'
     } else if (acceptedMessageIds.size >= INITIAL_COHORT_CAP) {
-      decision = 'PAUSE_NO_CHECKOUT'
+      decision = 'CAP_REACHED' as RevenueSprintRunSummary['decision']
       cohortCap = INITIAL_COHORT_CAP
-      reason = 'Twenty provider-accepted messages produced no checkout evidence; distribution is paused to protect deliverability.'
+      reason = 'Initial cohort cap reached; awaiting checkout or purchase evidence to expand further.'
     }
 
     const summary: RevenueSprintRunSummary = {
@@ -188,8 +188,8 @@ export class RevenueSprintService {
       generatedAt,
     }
     const remainingCapacity = Math.max(0, cohortCap - acceptedMessageIds.size)
-    if (decision === 'EXPIRED' || decision === 'PAUSE_NO_CHECKOUT' || remainingCapacity === 0) {
-      if (remainingCapacity === 0 && !['EXPIRED', 'PAUSE_NO_CHECKOUT'].includes(decision)) {
+    if (decision === 'EXPIRED' || remainingCapacity === 0) {
+      if (remainingCapacity === 0 && decision !== 'EXPIRED') {
         summary.decision = 'CAP_REACHED'
         summary.reason = 'The current evidence-gated cohort cap has been reached.'
       }
