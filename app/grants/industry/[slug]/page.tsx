@@ -16,6 +16,7 @@ import { programsDatabase } from '@/lib/data/programs';
 import { comparisonsDatabase } from '@/lib/data/comparisons';
 import { FundingEstimator } from '@/components/seo/FundingEstimator';
 import EEATBadge from '@/components/blog/EEATBadge';
+import { FounderAIToolCard } from '@/components/blog/FounderAIToolCard';
 
 type IndustryPageProps = {
   params: Promise<{
@@ -266,6 +267,11 @@ export default async function IndustryPage({ params }: IndustryPageProps) {
                   ))}
                 </div>
               </div>
+
+              {/* Contextual Founder AI Tool Card for Tech & SaaS */}
+              {(resolvedParams.slug === 'saas-companies' || resolvedParams.slug === 'ai-startups') && (
+                <FounderAIToolCard placement="saas_industry_page" />
+              )}
 
               {/* FAQ Section */}
               <div className="space-y-4">

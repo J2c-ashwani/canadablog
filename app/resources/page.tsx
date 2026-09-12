@@ -4,7 +4,7 @@ import { NewsletterSignup } from "@/components/newsletter-signup"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { CheckCircle, ExternalLink, Briefcase, Landmark, Scale, Calculator } from "lucide-react"
+import { CheckCircle, ExternalLink, Briefcase, Landmark, Scale, Calculator, Sparkles } from "lucide-react"
 import type { Metadata } from "next"
 import Link from "next/link"
 
@@ -25,6 +25,7 @@ interface Resource {
     features: string[]
     link: string
     badge?: string
+    buttonText?: string
 }
 
 const resources: Resource[] = [
@@ -65,6 +66,22 @@ const resources: Resource[] = [
         icon: <Briefcase className="w-8 h-8 text-orange-600" />,
         features: ["Automated Payroll", "Tax Filing", "Benefits"],
         link: "https://gusto.com",
+    },
+    {
+        id: "founder-ai-1",
+        name: "TwinGenie",
+        category: "Founder Productivity & Cognitive AI",
+        description: "Personalized AI companion designed for startup founders and entrepreneurs to reduce decision fatigue, reflect on strategy, and maintain clarity.",
+        icon: <Sparkles className="w-8 h-8 text-indigo-600" />,
+        features: [
+            "Learns your communication style & habits",
+            "Confidential decision-making reflection",
+            "Executive journaling & daily synthesis",
+            "Zero-ad, distraction-free environment"
+        ],
+        link: "https://play.google.com/store/apps/details?id=com.asmind.app&referrer=utm_source%3Dfsidigital%26utm_medium%3Dreferral%26utm_campaign%3Dfounder_ai_twin%26utm_content%3Dresources_directory",
+        badge: "Top Founder Pick",
+        buttonText: "Get TwinGenie on Google Play"
     }
 ]
 
@@ -125,9 +142,17 @@ export default function ResourcesPage() {
                                         ))}
                                     </div>
 
+                                    {resource.id === 'founder-ai-1' && (
+                                        <div className="mb-3 text-center">
+                                            <Link href="/founder-ai" className="text-xs font-semibold text-indigo-600 hover:text-indigo-800 underline underline-offset-4">
+                                                Read the Founder AI Guide &amp; Hub →
+                                            </Link>
+                                        </div>
+                                    )}
+
                                     <Button className="w-full" asChild>
                                         <a href={resource.link} target="_blank" rel="noopener noreferrer">
-                                            Visit Website <ExternalLink className="w-4 h-4 ml-2" />
+                                            {resource.buttonText || 'Visit Website'} <ExternalLink className="w-4 h-4 ml-2" />
                                         </a>
                                     </Button>
                                 </CardContent>

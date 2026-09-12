@@ -232,8 +232,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/nih-sbir-biotech-grants': {
     route: '/blog/nih-sbir-biotech-grants',
-    seoTitle: 'NIH SBIR Biotech Grants 2026 | Eligibility, Deadlines & Funding Routes',
-    seoDescription: 'Evaluate NIH SBIR/STTR funding routes for biotech, medtech, and digital health startups. Review institute matching, active parent notices, submission dates, and Phase I/II requirements.',
+    seoTitle: 'NIH SBIR Biotech Grants 2026: Up to $2M+ Phase I & II Funding Guide',
+    seoDescription: 'Apply for 2026 NIH SBIR/STTR biotech grants. Secure up to $300K Phase I & $2M Phase II non-dilutive funding for health, medtech, and biotech startups.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -294,8 +294,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/nsf-sbir-grants-technology-startups': {
     route: '/blog/nsf-sbir-grants-technology-startups',
-    seoTitle: 'NSF SBIR Grants for Tech Startups 2026 | Project Pitch & Eligibility Guide',
-    seoDescription: 'Learn who qualifies for NSF SBIR/STTR funding, how the Project Pitch screening works, and what deep-tech evidence founders need before submitting a full proposal.',
+    seoTitle: 'NSF SBIR Grants for Tech Startups 2026: Up to $2M Seed Funding | Project Pitch Guide',
+    seoDescription: 'Qualify for NSF SBIR/STTR grants in 2026. Secure up to $305K Phase I & $1.25M Phase II non-dilutive seed funding. Complete Project Pitch & proposal guide.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,

@@ -18,6 +18,7 @@ const CORE_PRIORITY_ROUTES = [
   '/usa',
   '/canada',
   '/contact',
+  '/founder-ai',
   '/usa/small-business-grants',
   '/usa/technology-startup-grants',
   '/usa/women-entrepreneurs-grants',

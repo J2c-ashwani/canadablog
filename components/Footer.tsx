@@ -154,6 +154,34 @@ export function Footer() {
                 </Link>
               </div>
             </div>
+
+            {/* Founder Tool Highlight - TwinGenie */}
+            <div className="mt-4 pt-4 border-t border-gray-800 rounded-lg bg-gray-800/40 p-3">
+              <div className="flex items-center gap-1.5">
+                <span className="text-[10px] font-bold uppercase tracking-wider text-indigo-400">Founder Tool</span>
+                <span className="text-[9px] bg-indigo-950 text-indigo-300 px-1.5 py-0.5 rounded border border-indigo-800/80">AI Twin</span>
+              </div>
+              <p className="text-xs text-gray-200 font-semibold mt-1">Meet Your AI Twin</p>
+              <p className="text-[11px] text-gray-400 mt-0.5 leading-relaxed">
+                A personal AI companion that learns your communication style, priorities, and preferences.
+              </p>
+              <div className="flex flex-col space-y-1.5 mt-2.5">
+                <Link
+                  href="/founder-ai"
+                  className="text-xs font-semibold text-slate-300 hover:text-white transition-colors"
+                >
+                  Explore Founder AI Hub →
+                </Link>
+                <a 
+                  href="https://play.google.com/store/apps/details?id=com.asmind.app&referrer=utm_source%3Dfsidigital%26utm_medium%3Dreferral%26utm_campaign%3Dfounder_ai_twin%26utm_content%3Dfooter_ecosystem" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-xs font-semibold text-indigo-400 hover:text-indigo-300 transition-colors"
+                >
+                  Get TwinGenie on Google Play →
+                </a>
+              </div>
+            </div>
           </div>
 
           {/* USA Grants */}
