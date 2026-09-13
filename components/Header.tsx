@@ -6,7 +6,7 @@ import Image from "next/image"
 import { usePathname, useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { safeSessionStorage } from "@/lib/storage"
-import { Menu, X, Search, ChevronDown } from "lucide-react"
+import { Menu, X, Search, ChevronDown, Sparkles } from "lucide-react"
 import {
   Dialog,
   DialogContent,
@@ -222,6 +222,15 @@ export function Header() {
                 AI Grant Finder
               </Link>
 
+              <Link
+                href="/founder-ai"
+                className="inline-flex items-center gap-1.5 px-2.5 py-1 text-xs 2xl:text-sm font-bold text-indigo-700 bg-indigo-50 hover:bg-indigo-100 border border-indigo-200/90 rounded-full transition-all whitespace-nowrap shadow-xs hover:border-indigo-300"
+                title="TwinGenie - Personal AI Twin App for Founders"
+              >
+                <Sparkles className="w-3.5 h-3.5 text-indigo-600 animate-pulse" />
+                <span>TwinGenie App</span>
+              </Link>
+
               {/* Products Dropdown - Desktop */}
               <div
                 className="relative"
@@ -346,10 +355,11 @@ export function Header() {
                       </Link>
                       <Link
                         href="/founder-ai"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-b-lg font-medium"
+                        className="block px-4 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-b-lg font-semibold flex items-center justify-between"
                         onClick={closeDropdowns}
                       >
-                        Founder AI
+                        <span>TwinGenie App</span>
+                        <span className="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded">AI Twin</span>
                       </Link>
                     </div>
                   </div>
@@ -539,6 +549,20 @@ export function Header() {
                   AI Grant Finder
                 </Link>
 
+                <Link
+                  href="/founder-ai"
+                  className="text-indigo-700 hover:text-indigo-800 hover:bg-indigo-50 font-bold py-3 px-4 rounded-lg transition-colors flex items-center justify-between bg-indigo-50/70 border border-indigo-100"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 text-indigo-600 animate-pulse" />
+                    <span>TwinGenie App</span>
+                  </div>
+                  <span className="text-[11px] bg-indigo-100 text-indigo-700 font-bold px-2 py-0.5 rounded-full">
+                    AI Twin
+                  </span>
+                </Link>
+
                 {/* <Link
                   href="/resources"
                   className="text-gray-700 hover:text-primary hover:bg-gray-50 font-medium py-3 px-4 rounded-lg transition-colors"
@@ -670,13 +694,14 @@ export function Header() {
                       </Link>
                       <Link
                         href="/founder-ai"
-                        className="block text-sm text-indigo-600 hover:text-indigo-700 py-2 font-semibold"
+                        className="block text-sm text-indigo-600 hover:text-indigo-700 py-2 font-semibold flex items-center justify-between"
                         onClick={() => {
                           setIsMenuOpen(false)
                           setResourcesDropdownOpen(false)
                         }}
                       >
-                        Founder AI
+                        <span>TwinGenie App</span>
+                        <span className="text-[10px] bg-indigo-100 text-indigo-700 font-bold px-1.5 py-0.5 rounded">AI Twin</span>
                       </Link>
                     </div>
                   )}
