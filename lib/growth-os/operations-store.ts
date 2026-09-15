@@ -260,18 +260,17 @@ export async function acquireOperationLease(
       reason: acquired ? undefined : 'A recent execution already owns this operation lease.',
     };
   } catch (sheetsErr: any) {
-    // Both Redis AND Sheets are unavailable. Proceed optimistically rather
-    // than returning 503 — the business logic already deduplicates via
-    // lead-level activity timestamps, so double-execution is safe while
-    // total failure is not.
-    console.warn(`⚠️ Sheets lease coordination also failed for ${operation} (${sheetsErr?.message || sheetsErr}). Proceeding optimistically.`);
+    // A recipient-level timestamp is not an atomic lock. If both coordination
+    // backends are unavailable, fail closed so overlapping cron invocations
+    // cannot send the same commercial message more than once.
+    console.warn(`⚠️ Sheets lease coordination also failed for ${operation} (${sheetsErr?.message || sheetsErr}). Execution refused.`);
     return {
-      acquired: true,
+      acquired: false,
       operation,
       attemptId,
       startedAt,
       backend: 'sheets',
-      reason: 'Optimistic grant — both Redis and Sheets coordination unavailable.',
+      reason: 'Execution coordination is unavailable; retry after a durable backend recovers.',
     };
   }
 }

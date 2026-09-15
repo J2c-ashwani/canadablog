@@ -278,6 +278,12 @@ async function run() {
   assert(authorityProspectReviewRoute.includes('hasSameSitePublicContact') && authorityProspectReviewRoute.includes("status: approved ? 'qualified' : 'rejected'") && authorityProspectReviewRoute.includes('No message was sent by this review action'), 'Authority review verifies source and same-site contact evidence before a human may queue a record');
   assert(authorityProspectReviewUi.includes('window.confirm') && authorityProspectReviewUi.includes('Inspect page') && authorityProspectReviewUi.includes('Queue after review'), 'Authority dashboard requires an explicit human confirmation after inspecting the exact public source');
   assert(operationsStore.includes('getCachedSheetValues') && sheetsStore.includes('sheetValuesCache'), 'CEO specialists coalesce duplicate Google Sheets reads');
+  assert(
+    operationsStore.includes("acquired: false")
+      && operationsStore.includes('Execution coordination is unavailable; retry after a durable backend recovers.')
+      && !operationsStore.includes('Optimistic grant'),
+    'Commercial schedulers fail closed when both durable coordination backends are unavailable'
+  );
   const leaseFinalizer = operationsStore.slice(operationsStore.indexOf('export async function finishOperationLease'));
   assert(!leaseFinalizer.includes("readOperationalRows('GrowthOS Runs'"), 'CEO lease finalization does not spend a read-quota request');
   assert(
