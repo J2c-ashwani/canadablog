@@ -55,6 +55,10 @@
     {
       "path": "/api/cron/reconcile-affiliate-commissions",
       "schedule": "55 11 * * *"
+    },
+    {
+      "path": "/api/cron/process-revenue-hunter",
+      "schedule": "0 14 * * 1-5"
     }
   ]
 }

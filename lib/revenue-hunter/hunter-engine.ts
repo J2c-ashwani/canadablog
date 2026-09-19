@@ -53,10 +53,26 @@ export class RevenueHunterEngine {
   }
 
   /**
+   * Unit Economics Parameters (per CEO Directive):
+   * Net EV = (Purchase Probability * Expected Collected Revenue) - Outreach Cost - Expected Fulfillment Cost - Risk Reserve
+   */
+  private static readonly OUTREACH_COST_USD = 0.01
+  private static readonly FULFILLMENT_COST_BY_TIER: Record<ProductOfferTier, number> = {
+    TIER_REPORT_19: 1.00,
+    TIER_MEMBERSHIP_29: 1.50,
+    TIER_ACTION_PLAN_49: 2.50,
+    TIER_BUNDLE_79: 4.00,
+  }
+  private static readonly RISK_RESERVE_USD = 0.50
+  private static readonly MIN_CONFIDENCE_THRESHOLD = 0.35
+  private static readonly MIN_NET_EV_THRESHOLD_USD = 0.50
+
+  /**
    * Execute a controlled micro-cohort sales action
+   * Default batch size strictly 3 leads per CEO directive.
    */
   public static async executeCohortHunt(
-    cohortSize = 5,
+    cohortSize = 3,
     filterTier?: ProductOfferTier,
     dryRun = false
   ): Promise<{
@@ -64,18 +80,85 @@ export class RevenueHunterEngine {
     cohortId: string
     receipts: any[]
     errors: string[]
+    circuitBreakerStatus?: string
   }> {
     const today = new Date().toISOString().split('T')[0]
     const cohortId = `HUNTER-${today}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`
-    const cohort = await ProspectIntelligenceEngine.getTargetedCohort(cohortSize, filterTier)
-
+    
     const receipts: any[] = []
     const errors: string[] = []
     let dispatchedCount = 0
 
+    // 1. Reputation Safeguard Circuit Breaker Inspection
+    if (!dryRun) {
+      try {
+        const ledger = await CEOActionLedger.getLedgerSummary()
+        const recentHunterActions = ledger.recentActions.filter(a => a.experimentId?.startsWith('HUNTER-'))
+        
+        if (recentHunterActions.length >= 3) {
+          // Check for bounces or negative outcomes
+          const failedCount = recentHunterActions.filter(a => a.executionStatus === 'FAILED').length
+          if (failedCount > 0 && (failedCount / recentHunterActions.length) >= 0.05) {
+            console.warn('[RevenueHunterEngine] 🛑 Circuit Breaker tripped: PAUSE_REPUTATION_DEFENSE (Bounces detected)')
+            return {
+              dispatchedCount: 0,
+              cohortId,
+              receipts,
+              errors: ['PAUSE_REPUTATION_DEFENSE: Prior cohort triggered bounce/delivery failures. Outbound halted.'],
+              circuitBreakerStatus: 'PAUSE_REPUTATION_DEFENSE'
+            }
+          }
+
+          // Absolute-Count Engagement Protection (per CEO Directive):
+          // If 0 checkouts after 48h, require at least 2 distinct opens OR 1 click across the cohort before advancing
+          const checkouts = recentHunterActions.filter(a => a.funnelState.checkoutStarted).length
+          const opens = recentHunterActions.filter(a => a.funnelState.opened).length
+          const clicks = recentHunterActions.filter(a => a.funnelState.clicked).length
+          
+          if (checkouts === 0 && opens < 2 && clicks < 1) {
+            console.warn('[RevenueHunterEngine] 🛑 Circuit Breaker tripped: PAUSE_LOW_ENGAGEMENT (<2 opens, 0 clicks)')
+            return {
+              dispatchedCount: 0,
+              cohortId,
+              receipts,
+              errors: ['PAUSE_LOW_ENGAGEMENT: Prior cohort produced 0 checkouts and insufficient engagement (<2 opens, 0 clicks). Halted for review.'],
+              circuitBreakerStatus: 'PAUSE_LOW_ENGAGEMENT'
+            }
+          }
+        }
+      } catch (cbErr: any) {
+        console.warn('[RevenueHunterEngine] Circuit breaker check warning (non-blocking):', cbErr.message)
+      }
+    }
+
+    // 2. Fetch Targeted Micro-Cohort
+    const cohort = await ProspectIntelligenceEngine.getTargetedCohort(cohortSize, filterTier)
+
     console.log(`[RevenueHunterEngine] 🚀 Executing Cohort ${cohortId} (Size: ${cohort.length}, dryRun: ${dryRun})...`)
 
     for (const prospect of cohort) {
+      // 3. Explicit Unit Economics Evaluation (per CEO Directive)
+      const fulfillmentCost = this.FULFILLMENT_COST_BY_TIER[prospect.recommendedOffer.tier] || 1.00
+      const netEV = Number((prospect.expectedValueUSD - this.OUTREACH_COST_USD - fulfillmentCost - this.RISK_RESERVE_USD).toFixed(2))
+      const probabilityOfConversion = Number((prospect.pDelivery * prospect.pOpen * prospect.pClick * prospect.pCheckout * prospect.pPayment).toFixed(4))
+      
+      const isApprovedUnitEconomics = prospect.confidenceScore >= this.MIN_CONFIDENCE_THRESHOLD && netEV >= this.MIN_NET_EV_THRESHOLD_USD
+      const decision = isApprovedUnitEconomics ? 'APPROVE' : 'DISQUALIFY_UNIT_ECONOMICS'
+
+      console.log(`[RevenueHunterEngine] Lead: ${prospect.leadEmail} | Offer: ${prospect.recommendedOffer.tier} ($${prospect.recommendedOffer.priceUSD}) | P(Conv): ${probabilityOfConversion} | Exp Revenue: $${prospect.expectedValueUSD} | Outreach: $${this.OUTREACH_COST_USD} | Fulfillment: $${fulfillmentCost} | Net EV: $${netEV} | Decision: ${decision}`)
+
+      if (!isApprovedUnitEconomics) {
+        receipts.push({
+          leadEmail: prospect.leadEmail,
+          offer: prospect.recommendedOffer.name,
+          expectedValueUSD: prospect.expectedValueUSD,
+          netEV,
+          status: 'DISQUALIFIED_UNIT_ECONOMICS',
+          reason: `Net EV ($${netEV}) below threshold ($${this.MIN_NET_EV_THRESHOLD_USD}) or confidence (${prospect.confidenceScore}) below ${this.MIN_CONFIDENCE_THRESHOLD}`
+        })
+        continue
+      }
+
       const message = SalesSequenceEngine.generateMessageForProspect(prospect)
 
       if (dryRun) {
@@ -83,7 +166,10 @@ export class RevenueHunterEngine {
           leadEmail: prospect.leadEmail,
           offer: prospect.recommendedOffer.name,
           expectedValueUSD: prospect.expectedValueUSD,
-          status: 'SIMULATED'
+          netEV,
+          probabilityOfConversion,
+          status: 'SIMULATED_APPROVED',
+          decision: 'APPROVE'
         })
         continue
       }

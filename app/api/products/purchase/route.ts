@@ -17,6 +17,7 @@ import {
 import { grantEntitlements } from '@/lib/products/entitlements';
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
 import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration';
+import { CEOActionLedger } from '@/lib/ceo-agent/ledger/ceo-action-ledger';
 
 // Global in-memory lock set to prevent concurrent purchase race conditions
 const activeLocks = new Set<string>();
@@ -360,6 +361,19 @@ export async function POST(request: NextRequest) {
       providerVerifiedAt: capturedIntent.captureVerifiedAt || new Date().toISOString(),
       attribution: paymentIntent.attribution,
     }).catch((error) => console.error('PayPal affiliate commission could not be recorded; reconciliation is required:', error));
+
+    // P0 Financial Integrity: Record verified PayPal payment attribution in CEO Action Ledger
+    await CEOActionLedger.recordPaymentAttribution({
+      provider: 'paypal',
+      providerPaymentId: paypalCaptureId,
+      providerEventId: paypalOrderId,
+      buyerEmail: email,
+      buyerName: name,
+      company: typeof profileData === 'object' && profileData?.company ? String(profileData.company) : undefined,
+      amountUSD: paymentIntent.currency.toUpperCase() === 'USD' ? expectedPrice : 0,
+      productId,
+      attribution: typeof resolvedAttribution === 'string' ? resolvedAttribution : JSON.stringify(resolvedAttribution || {}),
+    }).catch((error) => console.error('PayPal CEO Action Ledger payment attribution write failed:', error));
 
     // ── Record main purchase in Google Sheets ──
     const purchase = await recordPurchase({

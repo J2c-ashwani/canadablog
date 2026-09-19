@@ -71,6 +71,28 @@ export class ProspectIntelligenceEngine {
         continue
       }
 
+      // Canonical Explicit Outbound Consent Filter (per CEO Directive):
+      // Explicit consent required (sub.consentToPartnerContact === true or parsed leadActivity commercial consent)
+      // Generic isSubscribed is NOT sufficient. Unsubscribed or cancelled contacts are rejected.
+      if (sub.isSubscribed === false || sub.subscriptionCancelledAt) {
+        continue
+      }
+
+      let parsedActivity: Record<string, any> = {}
+      if (sub.leadActivity && sub.leadActivity !== 'N/A') {
+        try { parsedActivity = JSON.parse(sub.leadActivity) } catch {}
+      }
+
+      const hasExplicitOutboundConsent = 
+        sub.consentToPartnerContact === true || 
+        parsedActivity.consentToPartnerContact === true || 
+        parsedActivity.commercialConsent === true ||
+        parsedActivity.explicitOutboundConsent === true
+
+      if (!hasExplicitOutboundConsent) {
+        continue
+      }
+
       const calc = ExpectedRevenueModel.calculateExpectedRevenue({
         email: sub.email,
         name: sub.name,

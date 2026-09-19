@@ -54,11 +54,13 @@ async function main() {
       .map((event) => event.recipientId)
       .filter(Boolean),
   );
-  const leadByEmail = new Map(
-    leads
-      .map((lead) => [String(lead.email || '').toLowerCase().trim(), lead] as const)
-      .filter(([email]) => email.includes('@')),
-  );
+  // Match the live recovery worker: Sheets returns newest first, and the first
+  // row determines consent. Map(entries) instead retained the oldest duplicate.
+  const leadByEmail = new Map<string, (typeof leads)[number]>();
+  for (const lead of leads) {
+    const email = String(lead.email || '').toLowerCase().trim();
+    if (email.includes('@') && !leadByEmail.has(email)) leadByEmail.set(email, lead);
+  }
   const latestIntentByEmail = new Map<string, (typeof paymentIntents)[number]>();
   const productBreakdown: Record<string, { intents: number; potentialRevenue: number; currency: string }> = {};
 

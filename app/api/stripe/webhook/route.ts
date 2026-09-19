@@ -15,6 +15,7 @@ import { grantEntitlements } from '@/lib/products/entitlements';
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
 import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration';
 import { reverseAffiliateCommissionForSource } from '@/lib/affiliates/store';
+import { CEOActionLedger } from '@/lib/ceo-agent/ledger/ceo-action-ledger';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -66,6 +67,18 @@ async function handleStripeReversalEvent(event: any) {
     reviewedBy: `stripe_signed_webhook:${event.type}`,
     reason: `Provider-confirmed ${event.type} at ${new Date((event.created || Math.floor(Date.now() / 1000)) * 1000).toISOString()}.`,
   });
+
+  // P0 Financial Integrity: Record reversal in CEO Action Ledger
+  const reversalAmount = resource.amount_refunded ? resource.amount_refunded / 100 : (resource.amount ? resource.amount / 100 : 0);
+  await CEOActionLedger.recordPaymentReversal({
+    provider: 'stripe',
+    providerPaymentId: paymentIntentId,
+    providerEventId: event.id,
+    amountUSD: reversalAmount,
+    type: event.type === 'charge.refunded' ? 'refund' : 'chargeback',
+    reason: `Stripe ${event.type} at ${new Date((event.created || Math.floor(Date.now() / 1000)) * 1000).toISOString()}`,
+  }).catch((err) => console.error('Stripe CEO Action Ledger reversal recording failed:', err));
+
   return true;
 }
 
@@ -206,6 +219,19 @@ export async function POST(request: NextRequest) {
         providerVerifiedAt: new Date((session.created || Math.floor(Date.now() / 1000)) * 1000).toISOString(),
         attribution,
       }).catch((error) => console.error('Stripe webhook affiliate commission could not be recorded; reconciliation is required:', error));
+
+      // P0 Financial Integrity: Record verified Stripe payment attribution in CEO Action Ledger
+      await CEOActionLedger.recordPaymentAttribution({
+        provider: 'stripe',
+        providerPaymentId: session.payment_intent ? String(session.payment_intent) : sessionId,
+        providerEventId: event.id,
+        buyerEmail: email,
+        buyerName: name,
+        company: profileData?.company ? String(profileData.company) : undefined,
+        amountUSD: String(currency || '').toUpperCase() === 'USD' ? serverAmount : 0,
+        productId,
+        attribution: typeof attribution === 'string' ? attribution : JSON.stringify(attribution || {}),
+      }).catch((error) => console.error('Stripe CEO Action Ledger payment attribution write failed:', error));
 
       // Double-lock write check
       const allPurchases = await getAllPurchases();

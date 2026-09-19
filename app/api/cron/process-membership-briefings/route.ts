@@ -46,7 +46,10 @@ export async function GET(request: NextRequest) {
     for (const subscriber of candidates) {
       if (outcomes.length >= limit) break;
       const activity = parseActivity(subscriber.leadActivity);
-      if (activity.membershipRadarWeek === weekKey) continue;
+      const memberBriefingKey = `${weekKey}:${subscriber.email.toLowerCase()}:weekly-radar`;
+      if (activity.membershipRadarWeek === weekKey || activity.membershipBriefingIdempotencyKey === memberBriefingKey) {
+        continue;
+      }
       if (!subscriber.loginToken) {
         outcomes.push({ email: subscriber.email, providerAccepted: false, error: 'Secure login token missing.' });
         continue;
@@ -77,6 +80,7 @@ export async function GET(request: NextRequest) {
         continue;
       }
       activity.membershipRadarWeek = weekKey;
+      activity.membershipBriefingIdempotencyKey = memberBriefingKey;
       activity.membershipRadarAcceptedAt = new Date().toISOString();
       activity.membershipRadarProvider = mail.provider;
       activity.membershipRadarProviderMessageId = mail.providerMessageId;
