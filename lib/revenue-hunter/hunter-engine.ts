@@ -139,13 +139,15 @@ export class RevenueHunterEngine {
     for (const prospect of cohort) {
       // 3. Explicit Unit Economics Evaluation (per CEO Directive)
       const fulfillmentCost = this.FULFILLMENT_COST_BY_TIER[prospect.recommendedOffer.tier] || 1.00
-      const netEV = Number((prospect.expectedValueUSD - this.OUTREACH_COST_USD - fulfillmentCost - this.RISK_RESERVE_USD).toFixed(2))
       const probabilityOfConversion = Number((prospect.pDelivery * prospect.pOpen * prospect.pClick * prospect.pCheckout * prospect.pPayment).toFixed(4))
+      const expectedFulfillmentUSD = Number((probabilityOfConversion * fulfillmentCost).toFixed(4))
+      const expectedRiskReserveUSD = Number((probabilityOfConversion * this.RISK_RESERVE_USD).toFixed(4))
+      const netEV = Number((prospect.expectedValueUSD - this.OUTREACH_COST_USD - expectedFulfillmentUSD - expectedRiskReserveUSD).toFixed(2))
       
       const isApprovedUnitEconomics = prospect.confidenceScore >= this.MIN_CONFIDENCE_THRESHOLD && netEV >= this.MIN_NET_EV_THRESHOLD_USD
       const decision = isApprovedUnitEconomics ? 'APPROVE' : 'DISQUALIFY_UNIT_ECONOMICS'
 
-      console.log(`[RevenueHunterEngine] Lead: ${prospect.leadEmail} | Offer: ${prospect.recommendedOffer.tier} ($${prospect.recommendedOffer.priceUSD}) | P(Conv): ${probabilityOfConversion} | Exp Revenue: $${prospect.expectedValueUSD} | Outreach: $${this.OUTREACH_COST_USD} | Fulfillment: $${fulfillmentCost} | Net EV: $${netEV} | Decision: ${decision}`)
+      console.log(`[RevenueHunterEngine] Lead: ${prospect.leadEmail} | Offer: ${prospect.recommendedOffer.tier} ($${prospect.recommendedOffer.priceUSD}) | P(Conv): ${probabilityOfConversion} | Exp Revenue: $${prospect.expectedValueUSD} | Outreach: $${this.OUTREACH_COST_USD} | Exp Fulfillment: $${expectedFulfillmentUSD} | Net EV: $${netEV} | Decision: ${decision}`)
 
       if (!isApprovedUnitEconomics) {
         receipts.push({

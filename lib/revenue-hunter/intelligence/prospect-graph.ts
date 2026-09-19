@@ -74,7 +74,7 @@ export class ProspectIntelligenceEngine {
       // Canonical Explicit Outbound Consent Filter (per CEO Directive):
       // Explicit consent required (sub.consentToPartnerContact === true or parsed leadActivity commercial consent)
       // Generic isSubscribed is NOT sufficient. Unsubscribed or cancelled contacts are rejected.
-      if (sub.isSubscribed === false || sub.subscriptionCancelledAt) {
+      if (sub.isSubscribed === false || (sub.subscriptionCancelledAt && sub.subscriptionCancelledAt !== 'N/A')) {
         continue
       }
 
