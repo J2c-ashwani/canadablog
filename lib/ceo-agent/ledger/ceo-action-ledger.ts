@@ -1,5 +1,6 @@
 import { appendOperationalRow, readOperationalRows } from '@/lib/growth-os/operations-store';
-import { getAllPurchases, isProviderVerifiedPurchase, type PurchaseRecord } from '@/lib/products/purchase-store';
+import { getAllPurchases, type PurchaseRecord } from '@/lib/products/purchase-store';
+import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
 
 export interface CEOActionRecord {
   actionId: string
