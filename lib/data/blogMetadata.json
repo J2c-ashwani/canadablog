@@ -1,6 +1,20 @@
 {
   "metadata": [
     {
+      "id": 9003,
+      "slug": "canadian-government-grants-database",
+      "title": "The Ultimate Canadian Government Funding Database (250+ Grants, Tax Credits & Loans Updated for 2026)",
+      "excerpt": "Access the definitive directory of 250+ Canadian business grants, tax incentives, and low-interest government loans for startups and SMEs. Filter, stack, and match programs today.",
+      "category": "Tips & Guides",
+      "categoryColor": "bg-purple-100 text-purple-800",
+      "author": "Ashwani K.",
+      "date": "2026-06-28",
+      "readTime": "15 min read",
+      "image": "/images/blog/canada-grants-theme.png",
+      "featured": true,
+      "type": "expert-insight"
+    },
+    {
       "id": 3010,
       "slug": "agricultural-innovation-2026-archive",
       "title": "Canada's $180M Agricultural Innovation Revolution: AgriInnovate Guide",

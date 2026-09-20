@@ -228,6 +228,7 @@ const nextConfig = {
       { source: '/usa/mississippi/biloxi-/-gulfport', destination: '/usa/mississippi/biloxi-gulfport', permanent: true },
       { source: '/usa/mississippi/starkville-/-columbus', destination: '/usa/mississippi/starkville-columbus', permanent: true },
       { source: '/usa/kansas/manhattan-/-junction-city', destination: '/usa/kansas/manhattan-junction-city', permanent: true },
+      { source: '/grants/bc/richmond', destination: '/grants/bc/richmond-bc', permanent: true },
     ]
   },
   async headers() {
