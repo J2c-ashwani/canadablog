@@ -9,6 +9,7 @@ Allow: /
 Disallow: /download/*/thank-you
 Disallow: /api/
 Disallow: /search
+Disallow: /_next/
 
 # ---- Block Aggressive SEO Scrapers (Saves Bandwidth) ----
 User-agent: AhrefsBot

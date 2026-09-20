@@ -27,6 +27,9 @@ export const metadata: Metadata = {
     url: "https://www.fsidigital.ca/blog/regional-development-agencies-government-grants",
     images: ["/og-image.png"],
   },
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/regional-development-agencies-government-grants",
+  },
 }
 
 export default function RDAGovernmentGrantsBlogPage() {

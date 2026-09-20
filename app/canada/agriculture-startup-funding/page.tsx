@@ -18,6 +18,9 @@ export const metadata: Metadata = {
         "Find agriculture startup funding and grants in Canada. Complete guide to agritech grants, FCC loans, and Sustainable Canadian Agricultural Partnership.",
     keywords:
         "Agriculture grants Canada, agritech funding, farm startup grants, FCC loans, Sustainable CAP, food processing grants",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/agriculture-startup-funding",
+    },
 }
 
 const agriGrants: Grant[] = [
