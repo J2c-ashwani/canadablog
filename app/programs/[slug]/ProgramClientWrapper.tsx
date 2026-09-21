@@ -276,7 +276,7 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
     queryParams.set("ref", "program_page_bottom_cta")
     if (matchResult?.score) queryParams.set("match_score", String(matchResult.score))
     
-    return `/consultation?${queryParams.toString()}`
+    return `/audit?${queryParams.toString()}`
   }, [profile, matchResult])
 
   return (

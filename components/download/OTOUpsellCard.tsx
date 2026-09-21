@@ -253,7 +253,7 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
 
               <div className="text-center mt-4 pt-3 border-t border-slate-100">
                 <p className="text-[10px] text-slate-400">
-                  Not ready to purchase? <a href="/consultation?source=download-oto-upsell" className="text-indigo-650 font-bold hover:underline">Book a 15-minute review call.</a>
+                  Not ready to purchase? <a href="/audit?source=download-oto-upsell" className="text-indigo-650 font-bold hover:underline">Book a 15-minute review call.</a>
                 </p>
               </div>
 

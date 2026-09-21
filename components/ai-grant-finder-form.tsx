@@ -721,7 +721,7 @@ export function AIGrantFinderForm() {
                       {/* Secondary Booking Action */}
                       <div className="text-center mt-4">
                         <p className="text-[11px] text-slate-400">
-                          Not ready to purchase? <a href="/consultation?source=grant-finder-upsell" className="text-purple-600 font-bold hover:underline">Book a 15-minute funding review.</a>
+                          Not ready to purchase? <a href="/audit?source=grant-finder-upsell" className="text-purple-600 font-bold hover:underline">Book a 15-minute funding review.</a>
                         </p>
                       </div>
 

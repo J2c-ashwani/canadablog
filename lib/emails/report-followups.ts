@@ -20,7 +20,7 @@ function getFirstName(name: string) {
 }
 
 export function buildDay2Html({ firstName, companyName, estimatedFunding, loginToken }: { firstName: string; companyName: string; estimatedFunding: string; loginToken: string }) {
-  const bookingUrl = `https://www.fsidigital.ca/consultation?email=${encodeURIComponent(loginToken)}&name=${encodeURIComponent(firstName)}&ref=followup_day2`;
+  const bookingUrl = `https://www.fsidigital.ca/audit?email=${encodeURIComponent(loginToken)}&name=${encodeURIComponent(firstName)}&ref=followup_day2`;
   return `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
       <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">
@@ -58,7 +58,7 @@ export function buildDay2Html({ firstName, companyName, estimatedFunding, loginT
 }
 
 export function buildDay5Html({ firstName, companyName, loginToken }: { firstName: string; companyName: string; loginToken: string }) {
-  const bookingUrl = `https://www.fsidigital.ca/consultation?email=${encodeURIComponent(loginToken)}&name=${encodeURIComponent(firstName)}&ref=followup_day5`;
+  const bookingUrl = `https://www.fsidigital.ca/audit?email=${encodeURIComponent(loginToken)}&name=${encodeURIComponent(firstName)}&ref=followup_day5`;
   return `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
       <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">
@@ -98,7 +98,7 @@ export function buildDay5Html({ firstName, companyName, loginToken }: { firstNam
 }
 
 export function buildDay10Html({ firstName, companyName, loginToken }: { firstName: string; companyName: string; loginToken: string }) {
-  const bookingUrl = `https://www.fsidigital.ca/consultation?email=${encodeURIComponent(loginToken)}&name=${encodeURIComponent(firstName)}&ref=followup_day10`;
+  const bookingUrl = `https://www.fsidigital.ca/audit?email=${encodeURIComponent(loginToken)}&name=${encodeURIComponent(firstName)}&ref=followup_day10`;
   return `
     <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;">
       <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 1px 3px 0 rgba(0, 0, 0, 0.05);">

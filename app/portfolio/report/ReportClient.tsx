@@ -307,7 +307,7 @@ export default function ReportClient() {
 
 
   const bookingUrl = useMemo(() => {
-    if (!profile) return "/consultation"
+    if (!profile) return "/audit"
     const queryParams = new URLSearchParams()
     queryParams.set("email", profile.email)
     queryParams.set("name", profile.name)
@@ -317,7 +317,7 @@ export default function ReportClient() {
     queryParams.set("score", String(readinessScore))
     queryParams.set("range", stackingRange.formatted)
     queryParams.set("ref", "report_upsell")
-    return `/consultation?${queryParams.toString()}`
+    return `/audit?${queryParams.toString()}`
   }, [profile, readinessScore, stackingRange])
 
   // Print function

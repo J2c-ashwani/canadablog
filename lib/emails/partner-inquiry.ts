@@ -159,7 +159,7 @@ function buildApprovalHtml({
         </ul>
 
         <p style="margin:20px 0 16px 0;font-size:14px;color:#475569;line-height:1.6;">
-          Once payment is verified, routing parameters are activated automatically. If you have custom API routing configurations or prefer a brief phone onboarding session, you can schedule a call here: <a href="https://www.fsidigital.ca/consultation?source=partner-approved" style="color:#2563eb;text-decoration:none;">Briefing Booking Page</a>.
+          Once payment is verified, routing parameters are activated automatically. If you have custom API routing configurations or prefer a brief phone onboarding session, you can schedule a call here: <a href="https://www.fsidigital.ca/audit?source=partner-approved" style="color:#2563eb;text-decoration:none;">Briefing Booking Page</a>.
         </p>
 
         <!-- Footer Signature -->

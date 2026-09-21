@@ -675,7 +675,7 @@ export async function sendStrategyRecoveryEmail({
     consultationParams.set('booked_at', String(bookedAt));
   }
   consultationParams.set('scheduled', 'true');
-  const consultationUrl = `https://www.fsidigital.ca/consultation?${consultationParams.toString()}`;
+  const consultationUrl = `https://www.fsidigital.ca/audit?${consultationParams.toString()}`;
   const firstName = getFirstName(name);
 
   let subscriber: any = undefined;

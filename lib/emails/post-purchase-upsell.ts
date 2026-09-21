@@ -54,7 +54,7 @@ export async function sendUpsellEmail1({
 }: UpsellEmailParams) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const bookingUrl = `https://www.fsidigital.ca/consultation`;
+  const bookingUrl = `https://www.fsidigital.ca/audit`;
 
   const html = wrapUpsellTemplate(`
     <p style="margin: 0 0 16px 0;">
@@ -85,7 +85,7 @@ export async function sendUpsellEmail2({
 }: UpsellEmailParams) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const bookingUrl = `https://www.fsidigital.ca/consultation`;
+  const bookingUrl = `https://www.fsidigital.ca/audit`;
   const displayProvince = province || 'your region';
 
   const html = wrapUpsellTemplate(`
@@ -116,7 +116,7 @@ export async function sendUpsellEmail3({
 }: UpsellEmailParams) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
-  const bookingUrl = `https://www.fsidigital.ca/consultation`;
+  const bookingUrl = `https://www.fsidigital.ca/audit`;
 
   const html = wrapUpsellTemplate(`
     <p style="margin: 0 0 16px 0;">

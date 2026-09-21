@@ -1063,7 +1063,7 @@ export default function PortfolioClient() {
   queryParams.set("programs", checkedSlugs.join(","))
   queryParams.set("ref", "portfolio_engine")
   
-  const bookingUrl = `/consultation?${queryParams.toString()}`
+  const bookingUrl = `/audit?${queryParams.toString()}`
 
   // Wording optimization based on candidate scoring
   const ctaText = (readiness.score >= 70) ? "Schedule Priority Review" : "Get Funding Assessment"

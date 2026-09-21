@@ -22,7 +22,7 @@ export function buildPurchaseEmail(data: {
   const firstName = getFirstName(data.name);
   const reportUrl = `https://www.fsidigital.ca/products/report?token=${data.accessToken}&ref=purchase_email`;
   const downloadUrl = `https://www.fsidigital.ca/api/products/download-pdf?token=${data.accessToken}`;
-  const auditUrl = 'https://www.fsidigital.ca/consultation?source=report_purchase_email';
+  const auditUrl = 'https://www.fsidigital.ca/audit?source=report_purchase_email';
 
   const subject = 'Your Funding Match Report is Ready';
 

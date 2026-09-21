@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "build": "next build",
-    "test:all": "npx tsx scripts/verify-golden-master.ts && npx tsx scripts/verify-architecture-guard.ts && npx tsx scripts/verify-negative-scenarios.ts && npx tsx scripts/verify-pdf-qa-stress-suite.ts && npx tsx scripts/smoke-test-production-pipeline.ts && npx tsx scripts/verify-ceo-commercial-suite.ts && npx tsx scripts/test-commercial-recovery-e2e.ts",
+    "test:all": "npm run test:checkout-client && npx tsx scripts/verify-golden-master.ts && npx tsx scripts/verify-architecture-guard.ts && npx tsx scripts/verify-negative-scenarios.ts && npx tsx scripts/verify-pdf-qa-stress-suite.ts && npx tsx scripts/smoke-test-production-pipeline.ts && npx tsx scripts/verify-ceo-commercial-suite.ts && npx tsx scripts/test-commercial-recovery-e2e.ts",
+    "test:checkout-client": "node --import tsx scripts/verify-product-checkout-client.ts",
     "test:golden-master": "npx tsx scripts/verify-golden-master.ts",
     "check:architecture": "npx tsx scripts/verify-architecture-guard.ts",
     "test:negative": "npx tsx scripts/verify-negative-scenarios.ts",

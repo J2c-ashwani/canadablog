@@ -392,7 +392,7 @@ export default function DatabaseClient() {
                 Take our 5-minute pre-qualification eligibility audit. Our vetted intelligence team will cross-reference your business profile with all federal and regional grants to build your custom timeline.
               </p>
               <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
-                <Link href="/consultation" className="w-full sm:w-auto">
+                <Link href="/audit" className="w-full sm:w-auto">
                   <Button className="w-full bg-blue-600 hover:bg-blue-500 text-white font-bold px-8 py-6 rounded-xl transition-all shadow-lg shadow-blue-600/20">
                     Book Funding Eligibility Audit
                   </Button>
