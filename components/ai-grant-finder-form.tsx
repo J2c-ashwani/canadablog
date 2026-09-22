@@ -68,6 +68,7 @@ export function AIGrantFinderForm() {
       // Auto-set the checkout email if it was entered in the initial form
       if (formData.email) {
         setCheckoutEmail(formData.email)
+        setLeadSaved(true)
       }
 
       // Track telemetry

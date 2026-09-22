@@ -326,6 +326,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
           mergedSub = {
             ...mergedSub,
             ...newerSub,
+            loginToken: newerSub.loginToken || mergedSub.loginToken,
+            unsubscribeToken: newerSub.unsubscribeToken || mergedSub.unsubscribeToken,
+            readinessScore: newerSub.readinessScore !== undefined ? newerSub.readinessScore : mergedSub.readinessScore,
+            readinessBand: newerSub.readinessBand || mergedSub.readinessBand,
             leadActivity: JSON.stringify(nextActivity)
           };
 
@@ -568,6 +572,10 @@ export class GoogleSheetsSubscriberRepository implements ISubscriberRepository {
           if (!existing.companyName && sub.companyName) existing.companyName = sub.companyName;
           if (!existing.region && sub.region) existing.region = sub.region;
           if (!existing.industry && sub.industry) existing.industry = sub.industry;
+          if (!existing.loginToken && sub.loginToken) existing.loginToken = sub.loginToken;
+          if (!existing.unsubscribeToken && sub.unsubscribeToken) existing.unsubscribeToken = sub.unsubscribeToken;
+          if (existing.readinessScore === undefined && sub.readinessScore !== undefined) existing.readinessScore = sub.readinessScore;
+          if (!existing.readinessBand && sub.readinessBand) existing.readinessBand = sub.readinessBand;
         }
       }
       
