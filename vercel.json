@@ -9,18 +9,6 @@
       "schedule": "20 10 * * *"
     },
     {
-      "path": "/api/cron/process-b2b-outreach",
-      "schedule": "20 14,18 * * 1-5"
-    },
-    {
-      "path": "/api/cron/process-cart-recovery",
-      "schedule": "5 * * * *"
-    },
-    {
-      "path": "/api/cron/process-revenue-sprint",
-      "schedule": "35 */2 * * *"
-    },
-    {
       "path": "/api/cron/process-social-revenue-sprint",
       "schedule": "30 13 * * *"
     },
@@ -47,10 +35,6 @@
     {
       "path": "/api/ceo/run?trigger=cron",
       "schedule": "10 8 * * *"
-    },
-    {
-      "path": "/api/cron/process-membership-briefings",
-      "schedule": "40 13,17 * * 1-5"
     },
     {
       "path": "/api/cron/reconcile-affiliate-commissions",
