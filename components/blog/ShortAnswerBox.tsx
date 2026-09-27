@@ -18,9 +18,9 @@ export default function ShortAnswerBox({ question, content, isH1 = false, ctaTex
                         {question}
                     </h1>
                 ) : (
-                    <p className="text-gray-900 dark:text-gray-100 text-xl md:text-2xl font-bold mb-3 leading-snug">
+                    <h2 className="text-gray-900 dark:text-gray-100 text-xl md:text-2xl font-bold mb-3 leading-snug">
                         {question}
-                    </p>
+                    </h2>
                 )
             )}
             <p className="text-gray-800 dark:text-gray-200 text-[1.05rem] md:text-lg leading-relaxed">

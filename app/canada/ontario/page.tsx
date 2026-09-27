@@ -13,6 +13,7 @@ import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
+import ProvincialCityMesh from "@/components/pseo/ProvincialCityMesh"
 
 export const metadata: Metadata = {
   title: "$10K–$2.5M Ontario Business Grants (2026) — 12 Programs Open Now",
@@ -341,7 +342,7 @@ export default function OntarioGrantsPage() {
                 </CardHeader>
                 <CardContent>
                   <div className="space-y-2 text-sm">
-                    <a href="/contact" className="block text-primary hover:underline">
+                    <a href="/canada/quebec" className="block text-primary hover:underline">
                       Quebec Small Business Grants
                     </a>
                     <a href="/canada/government-grants" className="block text-primary hover:underline">
@@ -474,6 +475,9 @@ export default function OntarioGrantsPage() {
             </div>
 
           </div>
+
+          {/* Internal Linking Mesh: Hub-to-Spoke City Directories */}
+          <ProvincialCityMesh provinceSlug="on" provinceName="Ontario" />
 
           {/* Newsletter CTA */}
           <div className="mb-8">

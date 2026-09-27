@@ -13,6 +13,7 @@ import { MapPin, DollarSign, Users, TrendingUp } from "lucide-react"
 import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
+import ProvincialCityMesh from "@/components/pseo/ProvincialCityMesh"
 
 export const metadata: Metadata = {
     title: "$10K–$500K Saskatchewan Business Grants (2026 Directory) — Open Intakes",
@@ -407,6 +408,9 @@ export default function SaskatchewanGrantsPage() {
                         </div>
 
                     </div>
+
+                    {/* Internal Linking Mesh: Hub-to-Spoke City Directories */}
+                    <ProvincialCityMesh provinceSlug="sk" provinceName="Saskatchewan" />
 
                     {/* Newsletter CTA */}
                     <div className="mb-8">
