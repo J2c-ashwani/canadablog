@@ -23,7 +23,7 @@ import {
 } from "lucide-react"
 import { PARTNER_PACKAGES } from "@/lib/partners/packages"
 
-export const revalidate = 86400 // Revalidate once a day
+export const revalidate = false // Persistent static cache
 
 // Map of all programmatic partner slugs and their customized content
 interface SlugContent {

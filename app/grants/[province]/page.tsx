@@ -13,7 +13,7 @@ import {
 } from '@/lib/pseo-data';
 import { getStateDetailBySlugOrAbbreviation } from '@/lib/data/stateDetails';
 
-export const revalidate = 86400;
+export const revalidate = false; // Persistent static cache
 
 type ProvincePageProps = {
   params: Promise<{

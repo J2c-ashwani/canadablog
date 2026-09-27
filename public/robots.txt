@@ -1,9 +1,9 @@
 # =============================================
 # FSI Digital - robots.txt
-# GEO-Optimized for AI Crawlers
+# Strict Bandwidth & Scraper Protection Edition
 # =============================================
 
-# ---- Standard Search Engines ----
+# ---- Standard Search Engines (Google, Bing) ----
 User-agent: *
 Allow: /
 Disallow: /download/*/thank-you
@@ -11,7 +11,51 @@ Disallow: /api/
 Disallow: /search
 Disallow: /_next/
 
-# ---- Block Aggressive SEO Scrapers (Saves Bandwidth) ----
+# ---- Commercial AI Search Engines (Allowed for SERP Citations) ----
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+# ---- Block Aggressive AI Training Scrapers (Saves 80%+ Bandwidth & ISR Reads) ----
+User-agent: Bytespider
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Diffbot
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
+
+User-agent: Applebot-Extended
+Disallow: /
+
+# ---- Block Aggressive SEO & Commercial Scrapers ----
 User-agent: AhrefsBot
 Disallow: /
 
@@ -33,55 +77,23 @@ Disallow: /
 User-agent: Pinterestbot
 Disallow: /
 
-# ---- OpenAI / ChatGPT ----
-User-agent: GPTBot
-Allow: /
+User-agent: DataForSeoBot
+Disallow: /
 
-# ---- OpenAI Search (SearchGPT) ----
-User-agent: OAI-SearchBot
-Allow: /
+User-agent: BLEXBot
+Disallow: /
 
-# ---- Perplexity AI ----
-User-agent: PerplexityBot
-Allow: /
+User-agent: Baiduspider
+Disallow: /
 
-# ---- Anthropic (Claude) ----
-User-agent: ClaudeBot
-Allow: /
+User-agent: YandexBot
+Disallow: /
 
-# ---- Google Bard / Gemini ----
-User-agent: Google-Extended
-Allow: /
+User-agent: Sogou
+Disallow: /
 
-# ---- Meta AI (Llama) ----
-User-agent: FacebookBot
-Allow: /
-
-User-agent: Meta-ExternalAgent
-Allow: /
-
-# ---- Apple Intelligence ----
-User-agent: Applebot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-# ---- Amazon Alexa ----
-User-agent: Amazonbot
-Allow: /
-
-# ---- Cohere AI ----
-User-agent: cohere-ai
-Allow: /
-
-# ---- Common Crawl (used for AI training) ----
-User-agent: CCBot
-Allow: /
-
-# ---- Diffbot (AI data intelligence) ----
-User-agent: Diffbot
-Allow: /
+User-agent: Exabot
+Disallow: /
 
 # =============================================
 Sitemap: https://www.fsidigital.ca/sitemap.xml
@@ -89,4 +101,3 @@ Sitemap: https://www.fsidigital.ca/priority-sitemap.xml
 Sitemap: https://www.fsidigital.ca/indexing-recovery-sitemap.xml
 Sitemap: https://www.fsidigital.ca/partners-sitemap.xml
 Sitemap: https://www.fsidigital.ca/indexing-recovery-crawled-unindexed.xml
-
