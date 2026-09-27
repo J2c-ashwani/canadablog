@@ -15,11 +15,14 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Manitoba Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
+    title: "$25K–$1M Manitoba Business Grants (2026 Directory) — Open Intakes",
     description:
-        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Apply for Manitoba business grants: Innovation Growth Program ($100K), Manitoba Works Capital Incentive ($1M), PrairiesCan, and tax credits. Check eligibility in 2 min.",
     keywords:
         "Manitoba business grants, Manitoba government funding, provincial grants Manitoba, Winnipeg business grants, startup funding Manitoba",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/manitoba",
+    },
 }
 
 const manitobaGrants: Grant[] = [
@@ -32,7 +35,7 @@ const manitobaGrants: Grant[] = [
         deadline: "Quarterly intakes",
         applicationLink: "https://www.gov.mb.ca/iec/invest/igp.html",
         description:
-        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Cost-matching grants up to $100,000 for Manitoba SMEs developing and commercializing new innovative products and processes.",
         country: "Canada",
         region: "Manitoba",
         category: "Innovation",
@@ -51,7 +54,7 @@ const manitobaGrants: Grant[] = [
         deadline: "Open",
         applicationLink: "https://www.gov.mb.ca/iec/invest/mwci.html",
         description:
-        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Tax rebate funding up to $1,000,000 for businesses making major capital investments that create skilled jobs in Manitoba.",
         country: "Canada",
         region: "Manitoba",
         category: "Business Development",
@@ -70,7 +73,7 @@ const manitobaGrants: Grant[] = [
         deadline: "Various",
         applicationLink: "https://www.gov.mb.ca/",
         description:
-        "Apply directly with official links for Manitoba business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Targeted funding up to $150,000 supporting business expansion and productivity in key Manitoba economic sectors.",
         country: "Canada",
         region: "Manitoba",
         category: "Sector Specific",
@@ -83,8 +86,78 @@ const manitobaGrants: Grant[] = [
 ]
 
 export default function ManitobaGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/manitoba",
+                "url": "https://www.fsidigital.ca/canada/manitoba",
+                "name": "$25K–$1M Manitoba Business Grants (2026 Directory) — Open Intakes",
+                "description": "Apply for Manitoba business grants: Innovation Growth Program ($100K), Manitoba Works Capital Incentive ($1M), PrairiesCan, and tax credits. Check eligibility in 2 min.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Manitoba",
+                        "item": "https://www.fsidigital.ca/canada/manitoba"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What government grants are available for Manitoba businesses in 2026?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Manitoba businesses can access the Innovation Growth Program (up to $100K non-repayable), Manitoba Works Capital Incentive (up to $1M), PrairiesCan federal economic development contributions, and the Manitoba Interactive Digital Media Tax Credit (40% of eligible labour)."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the Manitoba Innovation Growth Program work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The Innovation Growth Program provides up to $100,000 in non-repayable cost-shared funding (50/50 match) to Manitoba SMEs developing or commercializing innovative products, services, or processes."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can Manitoba companies stack provincial grants with federal funding?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes — Manitoba provincial grants can typically be stacked with federal programs like NRC-IRAP, CanExport, and SR&ED up to government stacking limits (usually 75% to 100% of eligible costs)."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -97,7 +170,7 @@ export default function ManitobaGrantsPage() {
                                 Manitoba Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Manitoba Business Grants 2026</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$25K–$1M Manitoba Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>

@@ -15,11 +15,14 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Saskatchewan Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
+    title: "$10K–$500K Saskatchewan Business Grants (2026 Directory) — Open Intakes",
     description:
-        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Access Saskatchewan business grants: STSI angel tax credit ($500K), Innovation Saskatchewan, Lean Manufacturing, and Job Grants. Check eligibility in 2 min.",
     keywords:
         "Saskatchewan business grants, SK government funding, provincial grants Saskatchewan, Regina business grants, startup funding Saskatoon",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/saskatchewan",
+    },
 }
 
 const saskGrants: Grant[] = [
@@ -32,7 +35,7 @@ const saskGrants: Grant[] = [
         deadline: "Ongoing",
         applicationLink: "https://www.saskatchewan.ca/business/investment-and-economic-development/science-and-technology/metrics-and-achievements/saskatchewan-technology-startup-incentive",
         description:
-        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "45% non-refundable tax credit for angel investors providing up to $500,000 in early-stage equity funding to Saskatchewan tech startups.",
         country: "Canada",
         region: "Saskatchewan",
         category: "Technology",
@@ -51,7 +54,7 @@ const saskGrants: Grant[] = [
         deadline: "Open",
         applicationLink: "https://www.saskatchewan.ca/",
         description:
-        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Matching grant up to $20,000 helping Saskatchewan agri-food processors and manufacturers adopt lean efficiency improvements.",
         country: "Canada",
         region: "Saskatchewan",
         category: "Manufacturing",
@@ -70,7 +73,7 @@ const saskGrants: Grant[] = [
         deadline: "Rolling",
         applicationLink: "https://www.saskatchewan.ca/business/hire-train-and-manage-employees/apply-for-the-canada-saskatchewan-job-grant",
         description:
-        "Apply directly with official links for Saskatchewan business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Workforce funding covering up to $10,000 per employee for third-party skills training and workforce upskilling.",
         country: "Canada",
         region: "Saskatchewan",
         category: "Workforce",
@@ -83,8 +86,78 @@ const saskGrants: Grant[] = [
 ]
 
 export default function SaskatchewanGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/saskatchewan",
+                "url": "https://www.fsidigital.ca/canada/saskatchewan",
+                "name": "$10K–$500K Saskatchewan Business Grants (2026 Directory) — Open Intakes",
+                "description": "Access Saskatchewan business grants: STSI angel tax credit ($500K), Innovation Saskatchewan, Lean Manufacturing, and Job Grants. Check eligibility in 2 min.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Saskatchewan",
+                        "item": "https://www.fsidigital.ca/canada/saskatchewan"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is the Saskatchewan Technology Startup Incentive (STSI)?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "STSI offers a 45% non-refundable tax credit to eligible angel investors who invest in qualifying early-stage Saskatchewan tech companies, making early fundraising significantly easier for local founders."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What funding is available for Saskatchewan agri-food and manufacturing?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Saskatchewan businesses benefit from Sustainable CAP agriculture grants, Lean Improvements in Manufacturing (SLIM) grants up to $20K, and PrairiesCan regional development contributions."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the Canada-Saskatchewan Job Grant work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The Canada-Saskatchewan Job Grant reimburses employers up to two-thirds of eligible employee training costs, up to $10,000 per trainee ($15,000 for hiring unemployed individuals)."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -97,7 +170,7 @@ export default function SaskatchewanGrantsPage() {
                                 Saskatchewan Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Saskatchewan Business Grants 2026</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$10K–$500K Saskatchewan Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>

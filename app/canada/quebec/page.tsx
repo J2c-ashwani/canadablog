@@ -15,11 +15,14 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Quebec Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
+    title: "$50K–$5M Quebec Business Grants & Subventions (2026 Directory)",
     description:
-        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Directory of Quebec business grants: Investissement Québec ESSOR ($5M), Technoclimat ($3M), PME en action, and R&D tax credits. Check eligibility in 2 min.",
     keywords:
         "Quebec business grants, Quebec government funding, subventions entreprises Quebec, Investissement Quebec, startup funding Quebec",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/quebec",
+    },
 }
 
 const quebecGrants: Grant[] = [
@@ -32,7 +35,7 @@ const quebecGrants: Grant[] = [
         deadline: "Rolling basis",
         applicationLink: "https://www.investquebec.com/quebec/en/financial-products/all-our-solutions/ESSOR.html",
         description:
-        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Major capital and productivity funding providing up to $5M for Quebec companies accelerating growth, digitization, and export expansion.",
         country: "Canada",
         region: "Quebec",
         category: "Business Growth",
@@ -51,7 +54,7 @@ const quebecGrants: Grant[] = [
         deadline: "Open",
         applicationLink: "https://transitionenergetique.gouv.qc.ca/en/innovation/programme-technoclimat",
         description:
-        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Innovation grants up to $3M supporting testing and demonstration of advanced greenhouse gas reduction technologies in Quebec.",
         country: "Canada",
         region: "Quebec",
         category: "Green Energy",
@@ -70,7 +73,7 @@ const quebecGrants: Grant[] = [
         deadline: "Various",
         applicationLink: "https://www.economie.gouv.qc.ca/",
         description:
-        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Direct productivity and feasibility grants up to $50,000 for Quebec SMEs implementing operational efficiency and automation improvements.",
         country: "Canada",
         region: "Quebec",
         category: "SME Support",
@@ -89,7 +92,7 @@ const quebecGrants: Grant[] = [
         deadline: "Ongoing",
         applicationLink: "https://www.investquebec.com/",
         description:
-        "Apply directly with official links for Quebec business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Non-dilutive financing up to $5M supporting innovation, prototype development, and process improvements for Quebec companies.",
         country: "Canada",
         region: "Quebec",
         category: "Innovation",
@@ -102,8 +105,86 @@ const quebecGrants: Grant[] = [
 ]
 
 export default function QuebecGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/quebec",
+                "url": "https://www.fsidigital.ca/canada/quebec",
+                "name": "$50K–$5M Quebec Business Grants & Subventions (2026 Directory)",
+                "description": "Directory of Quebec business grants: Investissement Québec ESSOR ($5M), Technoclimat ($3M), PME en action, and R&D tax credits. Check eligibility in 2 min.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Quebec",
+                        "item": "https://www.fsidigital.ca/canada/quebec"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is the best Quebec grant for early-stage startups in Montreal or Quebec City?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Early-stage Quebec startups benefit most from PRIMA Québec (for advanced materials and clean tech), MEIE innovation vouchers, and the Quebec R&D tax credit (up to 30% refundable on salaries). In Montreal, Centech, FounderFuel, and District 3 offer non-dilutive pre-seed funding."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How generous is the Quebec R&D tax credit compared to other provinces?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Quebec offers Canada's most generous provincial R&D incentive: a 14% to 30% refundable tax credit on qualifying R&D salaries, claimed in addition to the federal 15–35% SR&ED credit."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is Investissement Québec and how do I apply for funding?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Investissement Québec is the provincial economic development bank offering grants, term loans, loan guarantees, and equity under the ESSOR and Créativité Québec programs with dedicated regional account managers."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Can English-speaking businesses access Quebec provincial grants?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes — Quebec provincial grants are open to all Quebec-incorporated businesses regardless of working language, provided the enterprise complies with Charter of the French Language requirements."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -116,7 +197,7 @@ export default function QuebecGrantsPage() {
                                 Quebec Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Quebec Business Grants 2026: Programs Open Now</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$50K–$5M Quebec Business Grants & Subventions (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>

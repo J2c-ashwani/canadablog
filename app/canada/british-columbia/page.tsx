@@ -15,11 +15,14 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "British Columbia Grants 2026 ($10K–$250K) | Apply Now + Deadlines",
+    title: "$10K–$300K British Columbia Business Grants — 2026 Open Intakes",
     description:
-        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Apply for BC small business grants: Innovate BC Ignite ($300K), CleanBC Industry Fund ($5M), BC Employer Training ($300K), and PacifiCan. Check eligibility in 2 min.",
     keywords:
         "BC business grants, British Columbia government funding, provincial grants BC, Innovate BC, startup funding Vancouver",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/british-columbia",
+    },
 }
 
 const bcGrants: Grant[] = [
@@ -32,7 +35,7 @@ const bcGrants: Grant[] = [
         deadline: "Annual calls",
         applicationLink: "https://www.innovatebc.ca/programs/ignite/",
         description:
-        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "R&D commercialization grants of up to $300,000 for BC-based innovation consortia and academic-industry partnerships.",
         country: "Canada",
         region: "British Columbia",
         category: "Innovation",
@@ -51,7 +54,7 @@ const bcGrants: Grant[] = [
         deadline: "Calls for proposals",
         applicationLink: "https://www2.gov.bc.ca/gov/content/environment/climate-change/industry/cleanbc-industry-fund",
         description:
-        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Capital project grants up to $5M supporting industrial emissions reduction and clean technology deployment in BC.",
         country: "Canada",
         region: "British Columbia",
         category: "Green Energy",
@@ -70,7 +73,7 @@ const bcGrants: Grant[] = [
         deadline: "Rolling",
         applicationLink: "https://www.workbc.ca/Employer-Resources/BC-Employer-Training-Grant.aspx",
         description:
-        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Workforce funding covering up to 80% of training costs (up to $300K per employer) for employee upskilling and tech hiring.",
         country: "Canada",
         region: "British Columbia",
         category: "Workforce",
@@ -89,7 +92,7 @@ const bcGrants: Grant[] = [
         deadline: "Annual",
         applicationLink: "https://buybc.gov.bc.ca/",
         description:
-        "Apply directly with official links for British Columbia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Cost-share funding up to $75,000 for BC agriculture and food & beverage producers to expand local and international market presence.",
         country: "Canada",
         region: "British Columbia",
         category: "Agriculture",
@@ -102,8 +105,86 @@ const bcGrants: Grant[] = [
 ]
 
 export default function BritishColumbiaGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/british-columbia",
+                "url": "https://www.fsidigital.ca/canada/british-columbia",
+                "name": "$10K–$300K British Columbia Business Grants — 2026 Open Intakes",
+                "description": "Apply for BC small business grants: Innovate BC Ignite ($300K), CleanBC Industry Fund ($5M), BC Employer Training ($300K), and PacifiCan. Check eligibility in 2 min.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "British Columbia",
+                        "item": "https://www.fsidigital.ca/canada/british-columbia"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What BC grant is best for a technology startup in Vancouver?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "For early-stage Vancouver tech startups, the Innovate BC Venture Acceleration Program ($50K non-dilutive + structured support) is the most accessible direct startup grant. For startups doing collaborative R&D with universities, Innovate BC Ignite ($100K–$300K) provides substantial non-repayable funding."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does BC have grants for clean energy or cleantech companies?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes — BC is one of Canada's top jurisdictions for cleantech funding. CleanBC Industry Fund (up to $5M+), the Innovative Clean Energy Fund ($50K–$5M), and CleanBC commercial EV incentives provide substantial support when stacked with federal programs."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is PacifiCan and how does it differ from Innovate BC?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "PacifiCan is the federal regional development agency for British Columbia focusing on scale-up and economic diversification. Innovate BC is a provincial Crown corporation focused on innovation, commercialization, and startup incubation."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the BC Employer Training Grant work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The BC Employer Training Grant covers up to 80% of eligible training costs (up to $300K per employer) for BC companies upskilling their workforce, including technical training for software, AI, and data science."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -116,7 +197,7 @@ export default function BritishColumbiaGrantsPage() {
                                 British Columbia Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">BC Business Grants 2026: $200M+ Available</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$10K–$300K British Columbia Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>

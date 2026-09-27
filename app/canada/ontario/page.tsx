@@ -15,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-  title: "Ontario Business Grants (2026) – Applications Open Now + Deadlines",
+  title: "$10K–$2.5M Ontario Business Grants (2026) — 12 Programs Open Now",
   description:
-        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+    "Apply for Ontario small business grants: Ontario Together Fund ($2.5M), OITC (10% R&D refund), Scale-Up Vouchers ($25K), and FedDev Ontario. Check eligibility in 2 min.",
   keywords:
     "Ontario business grants, Ontario government funding, provincial grants Ontario, small business funding Ontario",
   alternates: {
@@ -35,7 +35,7 @@ const ontarioGrants: Grant[] = [
     deadline: "Rolling basis",
     applicationLink: "https://www.ontario.ca/page/ontario-together-fund",
     description:
-        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+      "Grant providing up to $2.5M for manufacturers and businesses investing in local supply chain resilience, innovation, and domestic production.",
     country: "Canada",
     region: "Ontario",
     category: "Business Growth",
@@ -54,7 +54,7 @@ const ontarioGrants: Grant[] = [
     deadline: "Annual",
     applicationLink: "https://www.ontario.ca/page/ontario-innovation-tax-credit",
     description:
-        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+      "Refundable 10% provincial tax credit on qualifying SR&ED expenditures for Ontario CCPCs, claimed alongside federal SR&ED.",
     country: "Canada",
     region: "Ontario",
     category: "R&D",
@@ -73,7 +73,7 @@ const ontarioGrants: Grant[] = [
     deadline: "Quarterly",
     applicationLink: "https://www.ontario.ca/page/ontario-scale-vouchers-program",
     description:
-        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+      "Non-repayable vouchers providing up to $25,000 for high-growth tech startups accessing specialized scaling and advisory services.",
     country: "Canada",
     region: "Ontario",
     category: "Startups",
@@ -92,7 +92,7 @@ const ontarioGrants: Grant[] = [
     deadline: "Multiple rounds",
     applicationLink: "https://www.oce-ontario.org/",
     description:
-        "Apply directly with official links for Ontario business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+      "Collaborative R&D grants providing up to $500,000 for Ontario tech companies partnered with accredited academic research institutions.",
     country: "Canada",
     region: "Ontario",
     category: "Technology",
@@ -105,8 +105,94 @@ const ontarioGrants: Grant[] = [
 ]
 
 export default function OntarioGrantsPage() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.fsidigital.ca/canada/ontario",
+        "url": "https://www.fsidigital.ca/canada/ontario",
+        "name": "$10K–$2.5M Ontario Business Grants (2026) — 12 Programs Open Now",
+        "description": "Apply for Ontario small business grants: Ontario Together Fund ($2.5M), OITC (10% R&D refund), Scale-Up Vouchers ($25K), and FedDev Ontario. Check eligibility in 2 min.",
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.fsidigital.ca"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Canada",
+            "item": "https://www.fsidigital.ca/canada"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Ontario",
+            "item": "https://www.fsidigital.ca/canada/ontario"
+          }
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What is the largest Ontario business grant available to startups?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The largest accessible Ontario startup grant is OCE Smart Prosperity (up to $500K) for tech-enabled companies doing collaborative R&D with Ontario universities. For growth-stage startups (with revenue), FedDev Ontario Business Scale-Up offers contributions from $500K to $10M+ but requires demonstrated traction. For true early-stage startups, Ontario Scale-Up Vouchers ($25K) are the most accessible with quarterly intake."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does Ontario have grants for manufacturing businesses?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — Ontario has strong manufacturing support. Ontario Together Fund ($250K–$2.5M) specifically supports manufacturers adapting supply chains. The Automotive Supplier Innovation Program (ASIP) supports automotive sector innovation. FedDev Ontario supports manufacturing scale-up, and SR&ED + OITC credits apply to manufacturing R&D."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does the Ontario Centres of Excellence differ from IRAP?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "NRC-IRAP (federal) funds a company's own internal R&D projects with no university partner required. OCE (provincial) specifically funds collaborative R&D projects between an Ontario company and an Ontario post-secondary institution where an academic partner is mandatory."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are there Ontario grants for the digital media and gaming industry?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes — Ontario Media Development Corporation (OMDC) administers several programs for Ontario digital media and interactive digital media including the Interactive Digital Media Fund ($15K–$150K) and the Export Fund for international market development."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is Invest Ontario and who qualifies?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Invest Ontario is the province's foreign direct investment agency. Invest Ontario Fund contributions ($500K–$10M+) are negotiated with large employers making significant capital investments in Ontario with substantial job creation commitments."
+            }
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      />
       <Header />
 
       <main className="container mx-auto px-4 py-12">
@@ -119,7 +205,7 @@ export default function OntarioGrantsPage() {
                 Ontario Provincial Funding
               </Badge>
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Ontario Business Grants 2026</h1>
+            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$10K–$2.5M Ontario Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>

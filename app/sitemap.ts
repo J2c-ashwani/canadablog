@@ -212,17 +212,85 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...compareRoutes,
   ])).filter(isIndexableRoute)
 
+const RECENTLY_OPTIMIZED_ROUTES = new Set([
+  '/',
+  '/calculator',
+  '/canada/small-business-grants',
+  '/canada/government-grants',
+  '/canada/women-business-grants',
+  '/canada/indigenous-entrepreneur-grants',
+  '/canada/innovation-grants',
+  '/canada/ontario',
+  '/canada/british-columbia',
+  '/canada/alberta',
+  '/canada/quebec',
+  '/canada/manitoba',
+  '/canada/saskatchewan',
+  '/canada/nova-scotia',
+  '/canada/new-brunswick',
+  '/blog/nih-sbir-biotech-grants',
+  '/blog/new-york-tech-programs',
+  '/blog/colorado-tech-programs',
+  '/blog/dod-sbir-defense-tech-grants',
+  '/blog/healthcare-grants-2026',
+  '/blog/canexport-grants-2026',
+  '/blog/bmo-celebrating-women-grant',
+  '/blog/usda-sbir-agtech-grants',
+  '/blog/7-startup-accelerators-california-free-money',
+  '/blog/women-entrepreneurship-strategy-canada',
+  '/compare/nsf-vs-nih-sbir',
+  '/compare/mitacs-vs-irap',
+  '/download/amber-grant-women-application-guide',
+])
+
+function getPriorityAndFrequency(route: string): { priority: number; changeFrequency: 'daily' | 'weekly' | 'monthly' } {
+  if (route === '/') {
+    return { priority: 1.0, changeFrequency: 'daily' }
+  }
+  if (route === '/calculator') {
+    return { priority: 0.95, changeFrequency: 'daily' }
+  }
+  if (
+    route === '/canada/small-business-grants' ||
+    route === '/canada/government-grants' ||
+    route === '/canada/women-business-grants' ||
+    route === '/canada/indigenous-entrepreneur-grants' ||
+    route === '/canada/innovation-grants'
+  ) {
+    return { priority: 0.95, changeFrequency: 'weekly' }
+  }
+  if (route.startsWith('/canada/')) {
+    return { priority: 0.9, changeFrequency: 'weekly' }
+  }
+  if (route.startsWith('/compare/') || route.startsWith('/blog/versus/')) {
+    return { priority: 0.85, changeFrequency: 'weekly' }
+  }
+  if (route.startsWith('/usa/') && route.split('/').length === 3) {
+    return { priority: 0.85, changeFrequency: 'weekly' }
+  }
+  if (route.startsWith('/blog/') || route.startsWith('/guides/')) {
+    return { priority: 0.8, changeFrequency: 'weekly' }
+  }
+  if (route.startsWith('/grants/') || route.startsWith('/usa/')) {
+    return { priority: 0.75, changeFrequency: 'weekly' }
+  }
+  return { priority: 0.7, changeFrequency: 'monthly' }
+}
+
   // Convert to sitemap format
   const sitemapEntries = allRoutes.map(route => {
-    const routeDate = blogRouteDates.get(route) || guideRouteDates.get(route) || pseoRouteDates.get(route)
+    const isRecentlyOptimized = RECENTLY_OPTIMIZED_ROUTES.has(route) || route.startsWith('/grants/')
+    const routeDate = isRecentlyOptimized
+      ? new Date().toISOString()
+      : (blogRouteDates.get(route) || guideRouteDates.get(route) || pseoRouteDates.get(route))
+
+    const { priority, changeFrequency } = getPriorityAndFrequency(route)
 
     return {
       url: `${baseUrl}${route}`,
       lastModified: routeDate ? new Date(routeDate) : new Date(),
-      changeFrequency: route.includes('/blog/') || route.includes('/guides/')
-        ? 'weekly' as const
-        : 'monthly' as const,
-      priority: route === '/' ? 1.0 : route.startsWith('/usa/') ? 0.8 : 0.7,
+      changeFrequency,
+      priority,
     }
   })
 

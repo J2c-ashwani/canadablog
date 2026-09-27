@@ -15,11 +15,14 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Alberta Business Grants (2026) – Applications Open Now + Deadlines",
+    title: "$10K–$100K+ Alberta Innovates & Small Business Grants (2026 Guide)",
     description:
-        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Access Alberta business grants: Alberta Innovates Vouchers ($100K), Digital Traction ($50K), Export Expansion, and PrairiesCan funding. Check eligibility in 2 min.",
     keywords:
         "Alberta business grants, Alberta government funding, provincial grants Alberta, Alberta Innovates, startup funding Edmonton Calgary",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/alberta",
+    },
 }
 
 const albertaGrants: Grant[] = [
@@ -32,7 +35,7 @@ const albertaGrants: Grant[] = [
         deadline: "Rolling",
         applicationLink: "https://albertainnovates.ca/programs/voucher/",
         description:
-        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Non-dilutive vouchers up to $100,000 for Alberta technology and hardware SMEs to access external technical expertise, testing, and prototyping.",
         country: "Canada",
         region: "Alberta",
         category: "Technology",
@@ -51,7 +54,7 @@ const albertaGrants: Grant[] = [
         deadline: "Closed",
         applicationLink: "https://www.alberta.ca/community-and-regional-economic-support-program.aspx",
         description:
-        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Regional development funding up to $50,000 for Alberta communities, municipal alliances, and non-profits fostering local economic growth.",
         country: "Canada",
         region: "Alberta",
         category: "Community",
@@ -70,7 +73,7 @@ const albertaGrants: Grant[] = [
         deadline: "First-come, first-served",
         applicationLink: "https://www.alberta.ca/alberta-export-expansion-program.aspx",
         description:
-        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Export market grant up to $25,000 covering international trade show participation, travel, and international market development for Alberta businesses.",
         country: "Canada",
         region: "Alberta",
         category: "Export",
@@ -89,7 +92,7 @@ const albertaGrants: Grant[] = [
         deadline: "Rolling",
         applicationLink: "https://albertainnovates.ca/",
         description:
-        "Apply directly with official links for Alberta business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Product development grants up to $50,000 for early-stage Alberta software companies commercializing digital platforms and applications.",
         country: "Canada",
         region: "Alberta",
         category: "Technology",
@@ -102,8 +105,86 @@ const albertaGrants: Grant[] = [
 ]
 
 export default function AlbertaGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/alberta",
+                "url": "https://www.fsidigital.ca/canada/alberta",
+                "name": "$10K–$100K+ Alberta Innovates & Small Business Grants (2026 Guide)",
+                "description": "Access Alberta business grants: Alberta Innovates Vouchers ($100K), Digital Traction ($50K), Export Expansion, and PrairiesCan funding. Check eligibility in 2 min.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Alberta",
+                        "item": "https://www.fsidigital.ca/canada/alberta"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What is the best Alberta grant for early-stage tech startups in Calgary or Edmonton?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "For early-stage Alberta tech startups, Alberta Innovates Vouchers ($10K–$100K) and Digital Traction ($25K–$50K) are the primary entry points. Vouchers fund external technical expertise and prototyping with no equity taken."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does Alberta Innovates compare to federal NRC-IRAP?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "NRC-IRAP is federal and funds internal technical salaries, whereas Alberta Innovates Vouchers pay external service providers and third-party contractors. Sophisticated Alberta tech companies frequently stack both simultaneously."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "Does Alberta have funding for agriculture and agri-food businesses?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Yes — Alberta is a national leader in agri-food funding. The Sustainable Canadian Agricultural Partnership (Sustainable CAP), Agri-Processing Investment Tax Credit, and Alberta Innovates Agri-Food streams provide millions in capital and innovation funding."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is PrairiesCan and what programs does it offer in Alberta?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "PrairiesCan is the federal regional development agency for Alberta, Saskatchewan, and Manitoba. Its Business Scale-up and Productivity (BSP) program provides interest-free repayable contributions for scaling companies."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -116,13 +197,10 @@ export default function AlbertaGrantsPage() {
                                 Alberta Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Alberta Business Grants 2026: Programs Open Now</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$10K–$100K+ Alberta Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>
-
-
-                        <CTRTrap />
 
             <div className="mt-8 mb-4 text-left">
               <ShortAnswerBox

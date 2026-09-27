@@ -15,11 +15,14 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "New Brunswick Business Grants (2026) – Applications Open Now + Deadlines",
+    title: "$10K–$500K New Brunswick Business Grants (2026 Directory) — Open Intakes",
     description:
-        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Access New Brunswick business grants: Opportunities NB ($500K), Workforce Expansion wage subsidies, Export Development, and ACOA funding. Check eligibility in 2 min.",
     keywords:
         "New Brunswick business grants, NB government funding, provincial grants New Brunswick, Opportunities NB, startup funding Moncton Fredericton",
+    alternates: {
+        canonical: "https://www.fsidigital.ca/canada/new-brunswick",
+    },
 }
 
 const nbGrants: Grant[] = [
@@ -32,7 +35,7 @@ const nbGrants: Grant[] = [
         deadline: "Ongoing",
         applicationLink: "https://onbcanada.ca/",
         description:
-        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Growth and capital financing up to $500,000 for New Brunswick companies expanding operations, productivity, and market reach.",
         country: "Canada",
         region: "New Brunswick",
         category: "Business Growth",
@@ -51,7 +54,7 @@ const nbGrants: Grant[] = [
         deadline: "Apply before travel",
         applicationLink: "https://onbcanada.ca/exporting/",
         description:
-        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Export assistance funding up to $20,000 covering trade mission costs, market research, and international business expansion.",
         country: "Canada",
         region: "New Brunswick",
         category: "Export",
@@ -70,7 +73,7 @@ const nbGrants: Grant[] = [
         deadline: "Ongoing",
         applicationLink: "https://www2.gnb.ca/content/gnb/en/services/services_renderer.201467.Workforce_Expansion_Program.html",
         description:
-        "Apply directly with official links for New Brunswick business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Wage subsidies providing up to $100,000 per employer to offset the cost of creating permanent full-time jobs in New Brunswick.",
         country: "Canada",
         region: "New Brunswick",
         category: "Workforce",
@@ -83,8 +86,78 @@ const nbGrants: Grant[] = [
 ]
 
 export default function NewBrunswickGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/new-brunswick",
+                "url": "https://www.fsidigital.ca/canada/new-brunswick",
+                "name": "$10K–$500K New Brunswick Business Grants (2026 Directory) — Open Intakes",
+                "description": "Access New Brunswick business grants: Opportunities NB ($500K), Workforce Expansion wage subsidies, Export Development, and ACOA funding. Check eligibility in 2 min.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "New Brunswick",
+                        "item": "https://www.fsidigital.ca/canada/new-brunswick"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What government grants are available for New Brunswick businesses in 2026?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "New Brunswick businesses can access Opportunities NB business development contributions up to $500K, Workforce Expansion wage subsidies, federal ACOA funding, and NB innovation vouchers for collaborative R&D."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is Opportunities NB (ONB) and what programs do they provide?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Opportunities NB is the lead economic development agency for New Brunswick, providing direct financial assistance, export development support, and investment attraction programs."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the NB Workforce Expansion Program work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "The Workforce Expansion Program provides wage subsidies to eligible New Brunswick employers who create new, permanent, full-time jobs for unemployed or underemployed individuals."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -97,7 +170,7 @@ export default function NewBrunswickGrantsPage() {
                                 New Brunswick Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">New Brunswick Business Grants 2026</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$10K–$500K New Brunswick Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>

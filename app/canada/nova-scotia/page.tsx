@@ -15,9 +15,9 @@ import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 
 export const metadata: Metadata = {
-    title: "Nova Scotia Business Grants (2026) – Applications Open Now + Deadlines",
+    title: "$10K–$500K Nova Scotia Business Grants (2026 Directory) — Open Intakes",
     description:
-        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+        "Apply for Nova Scotia business grants: Invest Nova Scotia export funding, Small Business Loan Guarantee ($500K), ACOA grants, and hiring subsidies. Check eligibility.",
     keywords:
         "Nova Scotia business grants, Nova Scotia government funding, provincial grants NS, Halifax business grants, Invest Nova Scotia",
     alternates: {
@@ -36,7 +36,7 @@ const nsGrants: Grant[] = [
         deadline: "Rolling",
         applicationLink: "https://investnovascotia.ca/export/export-development-program",
         description:
-        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Reimbursable grants up to $15,000 supporting Nova Scotia businesses expanding into new international markets.",
         country: "Canada",
         region: "Nova Scotia",
         category: "Export",
@@ -55,7 +55,7 @@ const nsGrants: Grant[] = [
         deadline: "Ongoing",
         applicationLink: "https://cuc.cu/business/small-business-loan-guarantee-program/",
         description:
-        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Provincially-backed financing up to $500,000 for Nova Scotia small businesses, startups, and social enterprises.",
         country: "Canada",
         region: "Nova Scotia",
         category: "Small Business",
@@ -74,7 +74,7 @@ const nsGrants: Grant[] = [
         deadline: "Ongoing",
         applicationLink: "https://novascotia.ca/programs/graduate-to-opportunity/",
         description:
-        "Apply directly with official links for Nova Scotia business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.",
+            "Wage subsidies covering up to 25% of first-year salaries and 12.5% of second-year salaries for hiring recent post-secondary grads.",
         country: "Canada",
         region: "Nova Scotia",
         category: "Workforce",
@@ -87,8 +87,78 @@ const nsGrants: Grant[] = [
 ]
 
 export default function NovaScotiaGrantsPage() {
+    const schema = {
+        "@context": "https://schema.org",
+        "@graph": [
+            {
+                "@type": "WebPage",
+                "@id": "https://www.fsidigital.ca/canada/nova-scotia",
+                "url": "https://www.fsidigital.ca/canada/nova-scotia",
+                "name": "$10K–$500K Nova Scotia Business Grants (2026 Directory) — Open Intakes",
+                "description": "Apply for Nova Scotia business grants: Invest Nova Scotia export funding, Small Business Loan Guarantee ($500K), ACOA grants, and hiring subsidies. Check eligibility.",
+                "inLanguage": "en-CA"
+            },
+            {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Home",
+                        "item": "https://www.fsidigital.ca"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Canada",
+                        "item": "https://www.fsidigital.ca/canada"
+                    },
+                    {
+                        "@type": "ListItem",
+                        "position": 3,
+                        "name": "Nova Scotia",
+                        "item": "https://www.fsidigital.ca/canada/nova-scotia"
+                    }
+                ]
+            },
+            {
+                "@type": "FAQPage",
+                "mainEntity": [
+                    {
+                        "@type": "Question",
+                        "name": "What government grants are available for Nova Scotia businesses in 2026?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "Nova Scotia businesses can access Invest Nova Scotia innovation and export programs, the Graduate to Opportunity hiring subsidy, the Small Business Loan Guarantee up to $500K, and federal ACOA (Atlantic Canada Opportunities Agency) contributions."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "What is ACOA and how does it support Atlantic Canadian businesses?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "ACOA is the federal regional development agency for Atlantic Canada, providing interest-free repayable and non-repayable contributions for business expansion, innovation, and export development."
+                        }
+                    },
+                    {
+                        "@type": "Question",
+                        "name": "How does the Graduate to Opportunity (GTO) program work?",
+                        "acceptedAnswer": {
+                            "@type": "Answer",
+                            "text": "GTO provides Nova Scotia employers with a wage subsidy of 25% of the first year's salary and 12.5% of the second year's salary when hiring a recent graduate into a permanent full-time position."
+                        }
+                    }
+                ]
+            }
+        ]
+    };
+
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            />
             <Header />
 
             <main className="container mx-auto px-4 py-12">
@@ -101,7 +171,7 @@ export default function NovaScotiaGrantsPage() {
                                 Nova Scotia Provincial Funding
                             </Badge>
                         </div>
-                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">Nova Scotia Business Grants 2026</h1>
+                        <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">$10K–$500K Nova Scotia Business Grants (2026)</h1>
                         <div className="mt-6">
                             <CTRTrap />
                         </div>
