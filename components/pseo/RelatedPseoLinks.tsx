@@ -60,10 +60,90 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
   const displayIndustryPages = sortedIndustryPages.slice(0, limit);
 
 
+  const CANADIAN_REGIONS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nb', 'pe', 'nl']);
+  const isCanada = CANADIAN_REGIONS.has(currentProvinceSlug.toLowerCase());
+
   return (
     <div className="bg-slate-50 border-t border-slate-200 py-12 px-4">
       <div className="max-w-6xl mx-auto space-y-10">
         
+        {/* Hub & Spoke Pillar: Link directly to parent commercial hubs */}
+        <div className="bg-white border border-slate-200/90 rounded-2xl p-6 shadow-xs">
+          <h3 className="text-base font-extrabold text-slate-900 mb-4 flex items-center gap-2 pb-3 border-b border-slate-100">
+            <BookOpen className="w-4.5 h-4.5 text-emerald-600" />
+            {isCanada ? 'Canadian Flagship Funding Hubs & Directories' : 'U.S. Federal & State Funding Directories'}
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+            {isCanada ? (
+              <>
+                <Link
+                  href="/canada/small-business-grants"
+                  className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                >
+                  <span>Small Business Grants Canada ($10K–$500K)</span>
+                  <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                </Link>
+                <Link
+                  href="/canada/government-grants"
+                  className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                >
+                  <span>Federal & Provincial Grants Directory</span>
+                  <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                </Link>
+                <Link
+                  href={`/canada/${currentProvinceSlug.toLowerCase()}`}
+                  className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                >
+                  <span>{provinceName} Business Grants Hub</span>
+                  <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                </Link>
+                {currentIndustrySlug === 'women-entrepreneurs' && (
+                  <Link
+                    href="/canada/women-business-grants"
+                    className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                  >
+                    <span>Women-Owned Business Grants Guide</span>
+                    <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                  </Link>
+                )}
+                {['technology', 'clean-energy', 'healthcare'].includes(currentIndustrySlug) && (
+                  <Link
+                    href="/canada/innovation-grants"
+                    className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                  >
+                    <span>Canada Innovation & R&D Grants Guide</span>
+                    <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                  </Link>
+                )}
+              </>
+            ) : (
+              <>
+                <Link
+                  href="/usa/small-business-grants"
+                  className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                >
+                  <span>U.S. Small Business Grants Guide</span>
+                  <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                </Link>
+                <Link
+                  href={`/usa/${currentProvinceSlug.toLowerCase()}`}
+                  className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                >
+                  <span>{provinceName} State Grants & Incentives</span>
+                  <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                </Link>
+                <Link
+                  href={`/usa/${currentProvinceSlug.toLowerCase()}/${currentCitySlug.toLowerCase()}`}
+                  className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
+                >
+                  <span>{cityName} City Grants Hub</span>
+                  <span className="text-emerald-600 font-extrabold">&rarr;</span>
+                </Link>
+              </>
+            )}
+          </div>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {/* Silo A: City Hub and Spokes */}
           {displayCityPages.length > 0 && (

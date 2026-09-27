@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 62,
   "slug": "nih-sbir-biotech-grants",
-  "title": "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
-  "excerpt": "Complete 2026-2027 guide to NIH SBIR/STTR grants for biotech startups. Phase I up to $314K, Phase II up to $2M for therapeutics, medical devices, diagnostics, digital health innovation.",
+  "title": "2 NIH SBIR Grants for Biotech (Up to $2M) — 2026 Guide",
+  "excerpt": "Get up to $2M in non-dilutive funding via NIH SBIR Phase 1 & 2 for digital health & medical devices. Check eligibility in 2 minutes!",
   "category": "USA News",
   "categoryColor": "bg-blue-100 text-blue-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
-    "metaDescription": "NIH SBIR Phase I awards up to $314K & Phase II up to $2M for biotech startups. Learn how to qualify, prepare documents, and avoid common rejection reasons.",
+    "metaTitle": "2 NIH SBIR Grants for Biotech (Up to $2M) — 2026 Guide",
+    "metaDescription": "Get up to $2M in non-dilutive funding via NIH SBIR Phase 1 & 2 for digital health & medical devices. Check eligibility in 2 minutes!",
     "intent": "grant",
     "seoVersion": 2,
     "seoUpdatedAt": "2026-07-03T02:41:20.000Z"

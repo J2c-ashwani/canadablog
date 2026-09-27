@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 14,
   "slug": "bmo-celebrating-women-grant",
-  "title": "BMO Celebrating Women Grant 2026 | $10K Grants + Business Advisory for Women Entrepreneurs",
-  "excerpt": "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resources. Applications open August 5-19, 2026 for Canadian and U.S. women business owners.",
+  "title": "15 BMO Celebrating Women Grants ($10K Cash) — 2026 Deadlines",
+  "excerpt": "Win one of 15 BMO Celebrating Women Grants worth $10,000 plus expert business advisory for female entrepreneurs. Check your eligibility in 2 minutes!",
   "category": "Demographic-Specific",
   "categoryColor": "bg-pink-100 text-pink-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "BMO Celebrating Women Grant 2026: Complete Guide — Apply N",
-    "metaDescription": "Learn how to qualify and apply for BMO Celebrating Women Grant in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "15 BMO Celebrating Women Grants ($10K Cash) — 2026 Deadlines",
+    "metaDescription": "Win one of 15 BMO Celebrating Women Grants worth $10,000 plus expert business advisory for female entrepreneurs. Check your eligibility in 2 minutes!",
     "intent": "women",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-30"

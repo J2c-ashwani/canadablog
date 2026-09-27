@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 902,
   "slug": "7-startup-accelerators-california-free-money",
-  "title": "7 Startup Accelerators in California That Give Free Money in 2026",
-  "excerpt": "Looking to scale your tech startup without giving up 7% equity? Discover the top 7 non-dilutive California startup accelerators granting free funding.",
+  "title": "7 California Startup Accelerators ($50K Zero-Equity Grants)",
+  "excerpt": "Access up to $50K in free non-dilutive money without giving up 7% equity. Explore top California accelerator programs. Check eligibility in 2 minutes.",
   "category": "State-Specific",
   "categoryColor": "bg-green-100 text-green-800",
   "author": "Ashwani K.",
@@ -28,8 +28,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "Top 7 California Accelerators with Zero-Equity Grants (2026)",
-    "metaDescription": "Looking to scale your tech startup without giving up 7% equity? Discover the top 7 non-dilutive California startup accelerators granting free funding.",
+    "metaTitle": "7 California Startup Accelerators ($50K Zero-Equity Grants)",
+    "metaDescription": "Access up to $50K in free non-dilutive money without giving up 7% equity. Explore top California accelerator programs. Check eligibility in 2 minutes.",
     "keywords": [
       "best zero dilution accelerators for software startups in california",
       "how to get free accelerator money without giving up equity in Silicon Valley",

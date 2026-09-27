@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 95,
   "slug": "usda-sbir-agtech-grants",
-  "title": "USDA SBIR AgTech Grants 2026-2027 | $125K Phase I, $575K Phase II Agriculture & Food Tech Funding",
-  "excerpt": "Complete 2026-2027 guide to USDA SBIR/STTR grants for AgTech startups. Phase I up to $125K, Phase II up to $575K for precision farming, food safety, sustainable agriculture innovation.",
+  "title": "2 USDA SBIR AgTech Grants (Up to $575K) — 2026 Open Now",
+  "excerpt": "Secure up to $575K in non-dilutive AgTech funding via USDA SBIR Phase I & II. Perfect for agriculture innovations. Check eligibility in 2 minutes.",
   "category": "USA News",
   "categoryColor": "bg-blue-100 text-blue-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "USDA SBIR AgTech Grants 2026: Complete Guide — Apply Now",
-    "metaDescription": "Learn how to qualify and apply for USDA SBIR AgTech Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "2 USDA SBIR AgTech Grants (Up to $575K) — 2026 Open Now",
+    "metaDescription": "Secure up to $575K in non-dilutive AgTech funding via USDA SBIR Phase I & II. Perfect for agriculture innovations. Check eligibility in 2 minutes.",
     "intent": "grant",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-13T21:00:30.005Z"

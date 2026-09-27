@@ -71,18 +71,17 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     const cityData = state.cityGuides.find(c => toSlug(c.city) === cityParam);
     if (!cityData) notFound();
 
-    const estimatedPrograms = state.heroStats?.programCount || "50";
-    const funding = state.heroStats?.totalFunding || "$1M+";
+    const progs = state.topPrograms || [];
+    const count = progs.length || parseInt(state.heroStats?.programCount || '6');
+    const funding = state.heroStats?.totalFunding || '$1M+';
+    const topProg = progs[0]?.name || `${state.name} State Incentives`;
 
-    // A/B Mix — deterministic split based on city name length
-    const isFormatA = cityData.city.length % 2 === 0;
-    const title = isFormatA
-        ? `${cityData.city} Business Grants 2026 | ${estimatedPrograms} Programs + Apply Now + Deadlines`
-        : `${cityData.city} Grants 2026 ($10K–$250K) | Apply Now + Deadlines`;
+    const title = `${cityData.city}, ${state.abbreviation || state.name} Business Grants — ${count} Programs Open (2026)`;
+    const description = `Apply for ${cityData.city} business grants, ${topProg}, and ${state.name} funding. Compare ${count} programs and deadlines. Check eligibility in 2 minutes.`;
 
     return {
         title,
-        description: `Apply directly with official links for ${cityData.city} business grants. No middlemen. Updated deadlines and verified zero-equity funding programs for 2026.`,
+        description,
         keywords: [
             `${cityData.city} business grants 2026`,
             `small business grants ${cityData.city} ${state.name}`,

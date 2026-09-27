@@ -17,12 +17,67 @@ import RelatedFundingPaths from "@/components/blog/RelatedFundingPaths"
 import ChecklistDiagnostic from "@/components/blog/ChecklistDiagnostic"
 
 export const metadata: Metadata = {
-    title: "Indigenous Entrepreneur Grants Canada 2026 | AEP, NACCA & First Nations Business Funding",
-    description: "Complete guide to Indigenous entrepreneur grants in Canada 2026. Aboriginal Entrepreneurship Program (AEP), NACCA Aboriginal Financial Institutions network, Métis Capital Corporation, federal procurement set-asides, and provincial Indigenous business programs for First Nations, Métis, and Inuit founders.",
+    title: "$25K–$350K Indigenous Entrepreneur Grants in Canada — 2026 Directory",
+    description: "Access the Aboriginal Entrepreneurship Program (AEP), NACCA financing, Métis Capital, and federal 5% procurement set-asides. Check eligibility in 2 minutes.",
     keywords: "Indigenous entrepreneur grants Canada 2026, Aboriginal Entrepreneurship Program, NACCA grants, First Nations business grants, Métis entrepreneur funding, Inuit entrepreneur grants, Indigenous Small Business Financing, AEP Canada, Indigenous procurement Canada",
     alternates: { canonical: "https://www.fsidigital.ca/canada/indigenous-entrepreneur-grants" },
-    openGraph: { title: "Indigenous Entrepreneur Grants Canada 2026 | AEP, NACCA & First Nations Business Funding", description: "Discover Canadian Indigenous entrepreneur grants — AEP, NACCA AFI network, Métis Capital, and federal procurement set-asides for First Nations, Métis, and Inuit businesses in 2026.", url: "https://www.fsidigital.ca/canada/indigenous-entrepreneur-grants" },
+    openGraph: { title: "$25K–$350K Indigenous Entrepreneur Grants in Canada — 2026 Directory", description: "Access the Aboriginal Entrepreneurship Program (AEP), NACCA financing, Métis Capital, and federal 5% procurement set-asides. Check eligibility in 2 minutes.", url: "https://www.fsidigital.ca/canada/indigenous-entrepreneur-grants" },
 }
+
+const faqs = [
+  {
+    question: "Do I need to live on-reserve to access Indigenous business funding in Canada?",
+    answer: "No — Indigenous business funding in Canada is available to First Nations, Métis, and Inuit entrepreneurs regardless of where they live in Canada. AEP, NACCA AFI loans, Métis Capital programs, PSIB, and WES Indigenous streams are all available to Indigenous entrepreneurs living on-reserve, living off-reserve in urban settings, and living in rural non-reserve communities. The NFN (Native Friendship Centres) in urban areas often have specific programs for urban Indigenous entrepreneurs. Some programs have geographic restrictions (e.g., Nunavut-specific programs for Inuit entrepreneurs in Nunavut), but the core federal programs are available nationally."
+  },
+  {
+    question: "What documentation is needed to prove Indigenous identity for business programs?",
+    answer: "Documentation requirements vary by program. AEP and most AFI programs accept self-identification — you declare your Indigenous identity in the application, sometimes with a supporting document. This may include: Status Card (for Status First Nations), Métis Nation provincial registry card, a letter from your band council or First Nation, Inuit land claims organization membership documentation, or a statutory declaration of Indigenous identity. Programs cannot require DNA testing or blood quantum documentation — this is prohibited under Canadian human rights law and Indigenous self-determination principles. If a program asks for documentation you don't have, contact the AFI or program officer to discuss acceptable alternatives."
+  },
+  {
+    question: "What is the difference between a NACCA AFI loan and an AEP grant?",
+    answer: "AEP (Aboriginal Entrepreneurship Program) has two components: contribution grants (non-repayable, typically $5K–$20K for business development costs like planning, training, and market access) and loan components (repayable, up to $99,999). NACCA AFI loans are the lending programs of the 59 Aboriginal Financial Institutions — they can provide larger amounts (up to $1M at some AFIs) and are structured as conventional business loans (repayable with interest, though at below-market terms with flexible collateral requirements). In practice, an Indigenous entrepreneur often accesses AEP grants first for startup costs, then an NACCA AFI loan for working capital and equipment. Both are administered by regional AFIs — contact your AFI to understand which programs you qualify for simultaneously."
+  }
+];
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.fsidigital.ca/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Canada",
+          "item": "https://www.fsidigital.ca/canada"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Indigenous Entrepreneur Grants",
+          "item": "https://www.fsidigital.ca/canada/indigenous-entrepreneur-grants"
+        }
+      ]
+    }
+  ]
+};
 
 const indigenousGrants: Grant[] = [
     { id: "ca-aep", name: "Aboriginal Entrepreneurship Program (AEP)", fundingMin: 5000, fundingMax: 99999, eligibility: ["First Nations, Métis, and Inuit entrepreneurs", "Starting or expanding a business", "Business located in Canada"], deadline: "Rolling through Aboriginal Financial Institutions (AFIs)", applicationLink: "https://www.sac-isc.gc.ca/eng/1375201178602/1610797594523", description: "Non-repayable business support grants and repayable micro-loans for Indigenous entrepreneurs, delivered through the national network of Aboriginal Financial Institutions (AFIs). Provides up to $99,999 per project.", country: "Canada", region: "Federal", category: "Business Support Grant", agency: "Indigenous Services Canada / NACCA AFI Network", status: "Active", tags: ["Indigenous Business", "Grant", "Micro-loan", "AFI"], requirements: ["Self-identified First Nations, Métis, or Inuit", "Canadian business project", "Business plan required", "Application through regional AFI"], lastUpdated: "2026-01-01" },
@@ -35,6 +90,10 @@ const indigenousGrants: Grant[] = [
 export default function IndigenousEntrepreneurGrantsPage() {
     return (
         <div className="min-h-screen bg-gradient-to-br from-slate-50 to-orange-50">
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+            />
             <Header />
 
             <section className="bg-gradient-to-br from-orange-700 via-amber-800 to-red-900 text-white py-20">

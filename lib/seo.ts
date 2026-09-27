@@ -364,41 +364,107 @@ export function generatePseoSchema(
   publishedAt: string,
   countryName?: string
 ) {
+  const isUS = countryName === "United States";
+  const parentHubUrl = isUS ? "https://www.fsidigital.ca/usa" : "https://www.fsidigital.ca/canada";
+  const parentHubName = isUS ? "U.S. Grants" : "Canadian Grants";
+
   return {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    "name": `${industryName} Grants in ${cityName}, ${provinceName}`,
-    "description": `Discover active ${industryName} government grants, loans, and financial assistance programs available for businesses in ${cityName}, ${provinceName}.`,
-    "url": url,
-    "datePublished": publishedAt,
-    "dateModified": publishedAt,
-    "publisher": {
-      "@type": "Organization",
-      "name": "FSI Digital",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "https://www.fsidigital.ca/logo.png"
-      }
-    },
-    "mainEntityOfPage": {
-      "@type": "CollectionPage",
-      "@id": url
-    },
-    "about": {
-      "@type": "Thing",
-      "name": `${industryName} Grants`
-    },
-    "spatialCoverage": {
-      "@type": "City",
-      "name": cityName,
-      "containedInPlace": {
-        "@type": "State",
-        "name": provinceName,
-        "containedInPlace": {
-          "@type": "Country",
-          "name": countryName || "Canada"
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": url,
+        "url": url,
+        "name": `${industryName} Grants in ${cityName}, ${provinceName} (2026)`,
+        "description": `Discover active ${industryName} government grants, loans, and non-dilutive financial assistance for businesses in ${cityName}, ${provinceName}.`,
+        "datePublished": publishedAt,
+        "dateModified": publishedAt,
+        "publisher": {
+          "@type": "Organization",
+          "name": "FSI Digital",
+          "url": "https://www.fsidigital.ca",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://www.fsidigital.ca/logo.png"
+          }
+        },
+        "about": {
+          "@type": "Thing",
+          "name": `${industryName} Grants`
+        },
+        "spatialCoverage": {
+          "@type": "City",
+          "name": cityName,
+          "containedInPlace": {
+            "@type": "State",
+            "name": provinceName,
+            "containedInPlace": {
+              "@type": "Country",
+              "name": countryName || "Canada"
+            }
+          }
         }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${url}#faq`,
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": `How much funding can a ${industryName.toLowerCase()} business get in ${cityName}?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Eligible ${industryName.toLowerCase()} companies in ${cityName}, ${provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, ${provinceName} regional, and local economic development programs.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Do businesses in ${cityName} have to give up equity for government grants?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `No. Official government business grants and R&D wage subsidies in ${provinceName} are non-dilutive. Founders retain 100% of their equity and board control.`
+            }
+          },
+          {
+            "@type": "Question",
+            "name": `Can companies in ${cityName} stack federal and ${provinceName} funding?`,
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": `Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with ${provinceName} state/provincial hiring and commercialization grants.`
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": `${url}#breadcrumbs`,
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.fsidigital.ca"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": parentHubName,
+            "item": parentHubUrl
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": provinceName,
+            "item": `${parentHubUrl}/${provinceName.toLowerCase().replace(/\s+/g, '-')}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 4,
+            "name": `${cityName} ${industryName}`,
+            "item": url
+          }
+        ]
       }
-    }
+    ]
   };
 }

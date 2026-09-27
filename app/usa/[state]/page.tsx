@@ -54,15 +54,17 @@ export async function generateMetadata({ params }: { params: Promise<{ state: st
     if (!state) notFound();
     const researchProfile = getPriorityResearchProfile(`/usa/${state.slug}`);
 
-    const funding = state.heroStats.totalFunding;
-    const programs = state.heroStats.programCount;
-    const topProgram = state.topPrograms?.[0]?.name;
+    const funding = state.heroStats.totalFunding || '$1M+';
+    const progs = state.topPrograms || [];
+    const count = progs.length || parseInt(state.heroStats.programCount || '6');
+    const p1 = progs[0]?.name || 'State Incentives';
+    const p2 = progs[1]?.name || 'Workforce Grants';
 
-    const title = topProgram && topProgram.length <= 34
-        ? `${state.name} Business Grants 2026: ${topProgram}`
-        : `${state.name} Business Grants 2026: ${funding} Available`;
+    const title = researchProfile?.seoTitle ||
+        `${funding} ${state.name} Business Grants — ${count} Programs Open (2026)`;
 
-    const description = `Find ${state.name} business grants, ${topProgram ? `${topProgram}, ` : ''}tax credits, SBA/SBIR support, and state incentives. Compare ${programs} programs and eligibility.`;
+    const description = researchProfile?.seoDescription ||
+        `Apply for ${state.name} business grants: ${p1} & ${p2}. Compare ${count} programs, eligibility, and deadlines. Check eligibility in 2 minutes.`;
 
     return {
         title: researchProfile?.seoTitle || title,

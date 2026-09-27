@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 102,
   "slug": "women-entrepreneurship-strategy-canada",
-  "title": "Women Entrepreneurship Strategy Canada 2026 | $6B+ Female Business Grants & Loans",
-  "excerpt": "Complete guide to Canada",
+  "title": "4 Women Entrepreneurship Strategy Grants ($6B Fund) — 2026",
+  "excerpt": "Tap into Canada's $6B Women Entrepreneurship Strategy fund for female founders. Get access to no-equity grants and loans. Check eligibility in 2 mins.",
   "category": "Canada News",
   "categoryColor": "bg-red-100 text-red-800",
   "author": "Ashwani K.",
@@ -34,8 +34,8 @@ const post: BlogPost = {
   "content": "",
   "seo": {
     "keywords": [],
-    "metaTitle": "Women Entrepreneurship Strategy Canada 2026 Guide — Apply ",
-    "metaDescription": "Learn how to qualify and apply for Women Entrepreneurship Strategy Canada in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "4 Women Entrepreneurship Strategy Grants ($6B Fund) — 2026",
+    "metaDescription": "Tap into Canada's $6B Women Entrepreneurship Strategy fund for female founders. Get access to no-equity grants and loans. Check eligibility in 2 mins.",
     "intent": "loan",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-11T17:27:10.749Z"

@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 1018,
   "slug": "canexport-grants-2026",
-  "title": "Canexport Grants 2026 | $75M+ Funding Guide",
-  "excerpt": "🇨🇦 CanExport Grants 2026: International Market Expansion - $75M+ Export Engine\n    \n      \n        🏆 CanExport Program Portfolio\n        \n          • ...",
+  "title": "CanExport SME Grants (Up to $50K / 50% Match) — 2026 Open",
+  "excerpt": "Get up to $50K in matching grants to cover 50% of your international expansion costs with the CanExport SME program. Check eligibility in 2 minutes.",
   "category": "Canada News",
   "categoryColor": "bg-red-100 text-red-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "Canexport Grants 2026: Complete Guide — Apply Now",
-    "metaDescription": "Learn how to qualify and apply for Canexport Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "CanExport SME Grants (Up to $50K / 50% Match) — 2026 Open",
+    "metaDescription": "Get up to $50K in matching grants to cover 50% of your international expansion costs with the CanExport SME program. Check eligibility in 2 minutes.",
     "intent": "export",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-30"

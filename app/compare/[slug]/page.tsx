@@ -38,16 +38,27 @@ export async function generateMetadata({ params }: ComparePageProps): Promise<Me
     }
   }
 
+  const program1 = getProgramBySlug(comparison.prog1Id);
+  const program2 = getProgramBySlug(comparison.prog2Id);
+
+  // Extract dollar figures if available
+  const p1Amount = program1?.fundingAmount?.match(/\$[\d,.]+[KMB]?/i)?.[0] || '';
+  const p2Amount = program2?.fundingAmount?.match(/\$[\d,.]+[KMB]?/i)?.[0] || '';
+  const amountSnippet = p1Amount && p2Amount ? ` (${p1Amount} vs ${p2Amount})` : p1Amount ? ` (${p1Amount})` : '';
+
   const canonical = `https://www.fsidigital.ca/compare/${comparison.slug}`
+  const shortTitle = comparison.title.includes(':') ? comparison.title.split(':')[0].trim() : comparison.title;
+  const title = `${shortTitle}${amountSnippet} — 2026 Guide`;
+  const description = `${comparison.description.slice(0, 110)}... Compare eligibility, amounts, and timelines. Check eligibility in 2 minutes.`;
 
   return {
-    title: `${comparison.title} (2026 Guide)`,
-    description: comparison.description,
+    title,
+    description,
     alternates: { canonical },
     robots: { index: true, follow: true },
     openGraph: {
-      title: `${comparison.title} (2026 Guide)`,
-      description: comparison.description,
+      title,
+      description,
       url: canonical,
       type: "article",
     },

@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 46,
   "slug": "dod-sbir-defense-tech-grants",
-  "title": "DOD SBIR 2026: Win $1.7M in Defense Grants (No Equity, No Repayment)",
-  "excerpt": "How to win DOD SBIR grants in 2026: Most defense tech companies leave $1.7M on the table by skipping Phase I. We show you the exact solicitation-matching process that doubles approval rates.",
+  "title": "2 DOD SBIR Defense Grants (Up to $1.7M) — 2026 Application",
+  "excerpt": "Win up to $1.7M in non-dilutive funding with DOD SBIR Phase 1 & 2 for defense tech startups. No equity or repayment. Check eligibility in 2 minutes.",
   "category": "USA News",
   "categoryColor": "bg-blue-100 text-blue-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "DOD SBIR 2026: Complete Guide — Apply Now",
-    "metaDescription": "Our comprehensive 2026 guide to DOD SBIR. Discover eligibility requirements, funding limits, and professional application steps to win. See if you ...",
+    "metaTitle": "2 DOD SBIR Defense Grants (Up to $1.7M) — 2026 Application",
+    "metaDescription": "Win up to $1.7M in non-dilutive funding with DOD SBIR Phase 1 & 2 for defense tech startups. No equity or repayment. Check eligibility in 2 minutes.",
     "intent": "grant",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-13T21:00:30.005Z"

@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 61,
   "slug": "new-york-tech-programs",
-  "title": "New York Tech Startup Grants 2026-2027 | START-UP NY Tax-Free 10 Years, $250K Seed Matching Fund, NYSERDA Clean Energy Innovation Programs",
-  "excerpt": "Complete 2026-2027 guide to New York technology startup grants and incentives. START-UP NY program 10-year tax-free operation university campuses, Pre-Seed Seed Matching Fund $50K-$250K, NYSERDA innovation grants clean energy, Empire State Development ESD programs, NYC Economic Development Corporation grants supporting Manhattan Brooklyn Queens innovation ecosystem.",
+  "title": "3 New York Tech Grants (Up to $250K & 10Y Tax-Free) — 2026 Guide",
+  "excerpt": "$250K Seed Matching Funds & 10 Years Tax-Free for NY startups. Explore START-UP NY and NYSERDA Clean Energy programs. Check eligibility in 2 minutes.",
   "category": "USA News",
   "categoryColor": "bg-blue-100 text-blue-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "New York Tech Startup Grants 2026: Complete Guide — Apply ",
-    "metaDescription": "Learn how to qualify and apply for New York Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "3 New York Tech Grants (Up to $250K & 10Y Tax-Free) — 2026 Guide",
+    "metaDescription": "$250K Seed Matching Funds & 10 Years Tax-Free for NY startups. Explore START-UP NY and NYSERDA Clean Energy programs. Check eligibility in 2 minutes.",
     "intent": "startup",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-30"

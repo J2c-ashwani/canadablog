@@ -232,8 +232,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/nih-sbir-biotech-grants': {
     route: '/blog/nih-sbir-biotech-grants',
-    seoTitle: 'NIH SBIR Biotech Grants 2026: Up to $2M+ Phase I & II Funding Guide',
-    seoDescription: 'Apply for 2026 NIH SBIR/STTR biotech grants. Secure up to $300K Phase I & $2M Phase II non-dilutive funding for health, medtech, and biotech startups.',
+    seoTitle: '2 NIH SBIR Grants for Biotech (Up to $2M) — 2026 Guide',
+    seoDescription: 'Get up to $2M in non-dilutive funding via NIH SBIR Phase 1 & 2 for digital health & medical devices. Check eligibility in 2 minutes!',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -519,8 +519,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/dod-sbir-defense-tech-grants': {
     route: '/blog/dod-sbir-defense-tech-grants',
-    seoTitle: 'DoD SBIR Grants 2026: Topics, Eligibility & Application',
-    seoDescription: 'Find DoD SBIR/STTR topics for defense and dual-use startups. Check eligibility, component fit, DSIP registration, and application requirements for 2026.',
+    seoTitle: '$1.8M DoD SBIR Grants for Defense Tech — Open Now (2026)',
+    seoDescription: 'Access up to $1.8M Phase I & II DoD SBIR/STTR funding for dual-use tech & software. Check DARPA & Air Force eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -744,8 +744,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   // --- 10 NEW PROFILES ---
   '/blog/colorado-tech-programs': {
     route: '/blog/colorado-tech-programs',
-    seoTitle: 'Colorado Tech Startup Grants 2026: Programs & Eligibility',
-    seoDescription: 'Find Colorado technology startup grants and incentives. Review Advanced Industries eligibility, matching requirements, and application steps for 2026.',
+    seoTitle: '$250K Colorado Tech Grants — 4 Programs Open Now (2026)',
+    seoDescription: 'Apply for up to $250,000 via Colorado Advanced Industries Accelerator & Early-Stage Capital grants. Check eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -785,8 +785,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/usda-sbir-agtech-grants': {
     route: '/blog/usda-sbir-agtech-grants',
-    seoTitle: 'USDA SBIR Grants 2026: AgTech Eligibility & Application',
-    seoDescription: 'Check USDA SBIR/STTR eligibility for AgTech, food, and forestry R&D. Review topic fit, registrations, Phase I/II requirements, and application steps.',
+    seoTitle: '$650K USDA SBIR Grants for AgTech Startups (2026 Guide)',
+    seoDescription: 'Secure up to $650,000 Phase I & II USDA SBIR grants for agriculture technology, robotics & food R&D. Check eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -860,8 +860,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/women-entrepreneurship-strategy-canada': {
     route: '/blog/women-entrepreneurship-strategy-canada',
-    seoTitle: 'Women Entrepreneurship Strategy Canada (2026) | WES Grants & Loan Guide',
-    seoDescription: 'Explore Canada\'s Women Entrepreneurship Strategy (WES). Review ecosystem project grants, loan fund financing options, eligibility criteria, and application steps.',
+    seoTitle: '$50K–$100K WES Grants for Women Founders in Canada (2026)',
+    seoDescription: 'Apply for Canada\'s Women Entrepreneurship Strategy (WES) funding, zero-equity project grants & BDC loans. Check eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -1065,8 +1065,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/healthcare-grants-2026': {
     route: '/blog/healthcare-grants-2026',
-    seoTitle: 'Canada Healthcare Grants 2026: IRAP, CIHR & SR&ED',
-    seoDescription: 'Find Canadian healthcare and life-sciences funding for biotech, medtech, and digital health. Compare IRAP, CIHR, and SR&ED eligibility and next steps.',
+    seoTitle: '$500K Healthcare & MedTech Grants in Canada — 2026 Guide',
+    seoDescription: 'Access up to $500K via CIHR, NRC-IRAP & SR&ED tax credits for Canadian health startups. Check eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,

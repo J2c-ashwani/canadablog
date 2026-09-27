@@ -11,20 +11,90 @@ import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 
 export const metadata: Metadata = {
-  title: "Small Business Grants Canada 2026: IRAP, SR&ED, CSBFP",
-  description: "Compare funding for small business in Canada: IRAP, SR&ED, CSBFP, BDC financing, wage subsidies, and provincial SME grants.",
+  title: "$10K–$500K Small Business Grants in Canada — 18 Programs Open (2026)",
+  description: "Apply for Canada small business grants: IRAP ($500K), SR&ED (up to 70% back), CSBFP ($1M), and provincial hiring subsidies. Check eligibility in 2 minutes.",
   keywords: "Canadian small business grants, Canada SME funding, small business grants Canada, federal business grants, provincial SME support",
   openGraph: {
-    title: "Small Business Grants Canada 2026: IRAP, SR&ED, CSBFP",
-    description: "Complete guide to small business grants and funding in Canada.",
+    title: "$10K–$500K Small Business Grants in Canada — 18 Programs Open (2026)",
+    description: "Apply for Canada small business grants: IRAP ($500K), SR&ED (up to 70% back), CSBFP ($1M), and provincial hiring subsidies. Check eligibility in 2 minutes.",
     url: "https://www.fsidigital.ca/canada/small-business-grants",
     images: ["/og-image.png"],
   },
 }
 
 export default function CanadianSmallBusinessGrants() {
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How much funding can a small business get in Canada?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Canadian small businesses can access various funding amounts depending on the program. For example, IRAP offers up to $500K for R&D, while CSBFP provides loan guarantees up to $1M. In total, federal and provincial programs offer over $8B annually for eligible SMEs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Are Canadian government grants taxable?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, in most cases, Canadian government grants are considered taxable income. They must be reported on your corporate tax return. However, they are often offset by the deductible expenses the grant was used to pay for."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I stack federal and provincial grants?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, you can stack federal and provincial grants in Canada, but there are strict 'stacking limits' (usually capping total government funding at 75% to 100% of eligible project costs). You cannot claim the exact same expense twice across different programs."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is the difference between IRAP and SR&ED?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "IRAP is a proactive grant program that provides funding upfront for technical R&D projects and requires pre-approval. SR&ED is a retroactive tax credit that allows you to claim up to 35% (federal) of eligible R&D expenses incurred in your previous fiscal year."
+            }
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.fsidigital.ca/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Canada",
+            "item": "https://www.fsidigital.ca/canada"
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": "Small Business Grants",
+            "item": "https://www.fsidigital.ca/canada/small-business-grants"
+          }
+        ]
+      }
+    ]
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -1016,6 +1086,33 @@ export default function CanadianSmallBusinessGrants() {
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-16 bg-white border-t border-gray-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">Frequently Asked Questions</h2>
+              <div className="space-y-6">
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">How much funding can a small business get in Canada?</h3>
+                  <p className="text-gray-600">Canadian small businesses can access various funding amounts depending on the program. For example, IRAP offers up to $500K for R&D, while CSBFP provides loan guarantees up to $1M. In total, federal and provincial programs offer over $8B annually for eligible SMEs.</p>
+                </div>
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Are Canadian government grants taxable?</h3>
+                  <p className="text-gray-600">Yes, in most cases, Canadian government grants are considered taxable income. They must be reported on your corporate tax return. However, they are often offset by the deductible expenses the grant was used to pay for.</p>
+                </div>
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">Can I stack federal and provincial grants?</h3>
+                  <p className="text-gray-600">Yes, you can stack federal and provincial grants in Canada, but there are strict 'stacking limits' (usually capping total government funding at 75% to 100% of eligible project costs). You cannot claim the exact same expense twice across different programs.</p>
+                </div>
+                <div className="border border-gray-200 rounded-lg p-6">
+                  <h3 className="text-xl font-semibold text-gray-900 mb-3">What is the difference between IRAP and SR&ED?</h3>
+                  <p className="text-gray-600">IRAP is a proactive grant program that provides funding upfront for technical R&D projects and requires pre-approval. SR&ED is a retroactive tax credit that allows you to claim up to 35% (federal) of eligible R&D expenses incurred in your previous fiscal year.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>

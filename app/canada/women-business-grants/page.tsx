@@ -12,20 +12,83 @@ import EligibleCheck from "@/components/blog/EligibleCheck"
 import RDEDecisionEngine from "@/components/blog/RDEDecisionEngine"
 
 export const metadata: Metadata = {
-  title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
-  description: "150+ grants for women entrepreneurs in Canada. WELF microloans ($50K), WES Strategy, BDC women financing & provincial programs. See which ones you qualify for.",
+  title: "$10K–$150K Grants for Women Entrepreneurs in Canada — 2026 Guide",
+  description: "Explore WES grants ($60K), BDC Women in Tech, WELF microloans ($50K), and provincial funding for female founders in Canada. Check eligibility in 2 minutes.",
   keywords: "women-owned business grants canada, women entrepreneurs canada, grants for women in business canada, canadian grants for women entrepreneurs, funding for women entrepreneurs, women business loans Canada, ladies business loan",
   openGraph: {
-    title: "Women-Owned Business Grants Canada 2026: $6B+ [Full List]",
-    description: "150+ grants for women entrepreneurs in Canada. WELF, BDC, and provincial programs with $6B+ available.",
+    title: "$10K–$150K Grants for Women Entrepreneurs in Canada — 2026 Guide",
+    description: "Explore WES grants ($60K), BDC Women in Tech, WELF microloans ($50K), and provincial funding for female founders in Canada. Check eligibility in 2 minutes.",
     url: "https://www.fsidigital.ca/canada/women-business-grants",
     images: ["/og-image.png"],
   },
 }
 
+const faqs = [
+  {
+    question: "What qualifies as a women-owned or women-led business in Canada?",
+    answer: "Most programs require 51% or more ownership by women, or majority women leadership in decision-making roles. Some programs have flexible definitions including women-identifying entrepreneurs, women majority boards, or businesses advancing women's economic participation."
+  },
+  {
+    question: "How much funding can women entrepreneurs access in Canada?",
+    answer: "Women entrepreneurs can access over $6 billion through combined federal, provincial, and organizational programs. Individual grants range from $2,500 microloans to multi-million dollar innovation funding. The Women Entrepreneurship Loan Fund provides up to $50,000, while growth programs can exceed $1M for established businesses."
+  },
+  {
+    question: "Are women business grants repayable in Canada?",
+    answer: "Programs vary: grants are non-repayable contributions, loans require repayment with flexible terms, and equity investments involve ownership stakes. Women Entrepreneurship Fund grants are non-repayable, while Women Entrepreneurship Loan Fund requires repayment. Review each program's specific terms carefully."
+  },
+  {
+    question: "What industries receive the most women business grant funding?",
+    answer: "Technology, clean energy, manufacturing, healthcare, and social enterprises receive substantial women entrepreneur funding. However, programs exist for all industries including retail, services, agriculture, creative industries, and professional services. Industry-agnostic programs focus on innovation, growth potential, and economic impact."
+  }
+];
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.fsidigital.ca/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Canada",
+          "item": "https://www.fsidigital.ca/canada"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Women Business Grants",
+          "item": "https://www.fsidigital.ca/canada/women-business-grants"
+        }
+      ]
+    }
+  ]
+};
+
 export default function WomenBusinessGrantsCanadaPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}

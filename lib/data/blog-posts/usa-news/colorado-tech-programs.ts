@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 39,
   "slug": "colorado-tech-programs",
-  "title": "Colorado Tech Startup Grants 2026-2027 | $500K Advanced Industries Accelerator, $250K Early-Stage Capital, SBIR Matching, Clean Energy Fund",
-  "excerpt": "Complete 2026-2027 guide to Colorado technology startup grants. Advanced Industries Accelerator Early-Stage Capital grants up to $250K, Proof of Concept $150K, 35% Investment Tax Credit, SBIR State Matching, Clean Energy Fund supporting Denver Boulder Colorado Springs tech corridor ecosystem.",
+  "title": "4 Colorado Tech Startup Grants (Up to $500K) — 2026 Open Now",
+  "excerpt": "Access up to $500K via the Advanced Industries Accelerator, Early-Stage Capital, and SBIR Matching. No equity required. Check eligibility in 2 minutes.",
   "category": "USA News",
   "categoryColor": "bg-blue-100 text-blue-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "Colorado Tech Startup Grants 2026: Complete Guide — Apply ",
-    "metaDescription": "Learn how to qualify and apply for Colorado Tech Startup Grants in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "4 Colorado Tech Startup Grants (Up to $500K) — 2026 Open Now",
+    "metaDescription": "Access up to $500K via the Advanced Industries Accelerator, Early-Stage Capital, and SBIR Matching. No equity required. Check eligibility in 2 minutes.",
     "intent": "startup",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-13T21:00:30.005Z"

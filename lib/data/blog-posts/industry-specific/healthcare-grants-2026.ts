@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 1024,
   "slug": "healthcare-grants-2026",
-  "title": "Healthcare Grants Canada 2026: $14B Available [Who Qualifies]",
-  "excerpt": "90% of health startups apply to the wrong program and get rejected. CIHR is for academics — if you're a business, you need IRAP, ISC, or your provincial health authority. Here's how.",
+  "title": "5 Healthcare Grants in Canada (Up to $10M) — 2026 Guide",
+  "excerpt": "Tap into a $14B total fund pool. Secure up to $10M in no-repayment healthcare and biotech grants in Canada for 2026. Check eligibility in 2 minutes.",
   "category": "Industry-Specific",
   "categoryColor": "bg-orange-100 text-orange-800",
   "author": "Ashwani K.",
@@ -33,8 +33,8 @@ const post: BlogPost = {
   ],
   "content": "",
   "seo": {
-    "metaTitle": "Healthcare Grants Canada 2026: Complete Guide — Apply Now",
-    "metaDescription": "Learn how to qualify and apply for Healthcare Grants Canada in 2026. Access active government grants & loans. See if you qualify.",
+    "metaTitle": "5 Healthcare Grants in Canada (Up to $10M) — 2026 Guide",
+    "metaDescription": "Tap into a $14B total fund pool. Secure up to $10M in no-repayment healthcare and biotech grants in Canada for 2026. Check eligibility in 2 minutes.",
     "intent": "grant",
     "seoVersion": 1,
     "seoUpdatedAt": "2026-06-13T21:00:30.005Z"

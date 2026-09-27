@@ -19,6 +19,8 @@ import AdSlot from '@/components/blog/AdSlot';
 import { INDUSTRY_DEEP_DIVES } from '@/lib/pseo-content';
 import { CURATED_CANADA_DEEP_DIVES } from '@/lib/pseo-curated-content';
 import { spinParagraph, shuffleArray } from '@/lib/pseo-rewriter';
+import { generatePseoMetadata } from '@/lib/seo/pseo-metadata';
+import RegionalFundingShowcase from '@/components/pseo/RegionalFundingShowcase';
 import PseoMasterclass from '@/components/pseo/PseoMasterclass';
 import RelatedPseoLinks from '@/components/pseo/RelatedPseoLinks';
 import { composePseoBlocks, BlockIntent } from '@/lib/pseo-engine/composer';
@@ -639,7 +641,8 @@ export async function generateStaticParams() {
     }));
 }
 
-// Generate highly targeted metadata with long-tail SEO/AEO/GEO keywords
+// Generate CTR-optimized metadata for pSEO grant pages
+// Core logic lives in lib/seo/pseo-metadata.ts for maintainability
 export async function generateMetadata({ params }: { params: Promise<{ province: string, city: string, industry: string }> }): Promise<Metadata> {
     const resolvedParams = await params;
     const page = getPseoPage(resolvedParams.province, resolvedParams.city, resolvedParams.industry);
@@ -656,132 +659,7 @@ export async function generateMetadata({ params }: { params: Promise<{ province:
         };
     }
 
-    const isCanada = isCanadianRegion(page.provinceSlug);
-    const countryName = getCountryName(page.provinceSlug);
-    const stateDetail = isCanada ? undefined : getStateDetailBySlugOrAbbreviation(page.provinceSlug);
-    const topPrograms = getTopProgramNames(stateDetail);
-    const rolloutPath = getPseoSearchDistributionPath(page.provinceSlug, page.citySlug, page.industrySlug);
-    const verifiedCohort = isSearchDistributionCohortPath(rolloutPath);
-
-    const canadaTitlePatterns: Record<string, string> = {
-        technology: `Best ${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026) | IRAP, CDAP & SR&ED`,
-        agriculture: `How to Get Agriculture Grants in ${page.cityName}, ${page.provinceName} [2026] | AgriInnovate, CAP & AAFC`,
-        manufacturing: `${page.cityName} Manufacturing Grants 2026 | IRAP, SIF & ${page.provinceName} Funding`,
-        healthcare: `Healthcare & MedTech Grants in ${page.cityName}, ${page.provinceName} (2026) | CIHR, IRAP & BDC`,
-        'clean-energy': `Clean Tech Grants Near ${page.cityName}, ${page.provinceName} [2026] | SDTC, NRCan & Green Energy`,
-        'women-entrepreneurs': `Best Grants for Women Entrepreneurs in ${page.cityName}, ${page.provinceName} (2026) | WES, BDC & FCC`,
-    };
-    const usTitlePatterns: Record<string, string> = {
-        technology: `Best ${page.industryName} Grants in ${page.cityName}, ${page.provinceName} (2026) | SBIR, R&D Credits & State Incentives`,
-        agriculture: `How to Get Agriculture Grants in ${page.cityName}, ${page.provinceName} [2026] | USDA, REAP & State Funding`,
-        manufacturing: `${page.cityName} Manufacturing Grants 2026 | Workforce Funds, Tax Credits & ${page.provinceName} Incentives`,
-        healthcare: `Healthcare & MedTech Grants in ${page.cityName}, ${page.provinceName} (2026) | NIH SBIR, SBA & State Programs`,
-        'clean-energy': `Clean Energy Grants Near ${page.cityName}, ${page.provinceName} [2026] | DOE, USDA REAP & State Incentives`,
-        'women-entrepreneurs': `Best Grants for Women Entrepreneurs in ${page.cityName}, ${page.provinceName} (2026) | SBA, State & Local Funds`,
-        'arts-entertainment': `${page.cityName}, ${page.provinceSlug.toUpperCase()} Arts & Cultural Grants 2026 | Funding Programs & Eligibility`,
-    };
-    const titlePatterns = isCanada ? canadaTitlePatterns : usTitlePatterns;
-    let title = titlePatterns[page.industrySlug] ||
-        `${page.industryName} Grants in ${page.cityName}, ${page.provinceName} [2026] | ${countryName} Funding Guide`;
-    if (verifiedCohort) {
-        if (page.industrySlug === 'women-entrepreneurs') title = `Women Business Funding in ${page.cityName} (2026)`;
-        else if (page.industrySlug === 'restaurants-hospitality') title = `Restaurant Grants in ${page.cityName} (2026)`;
-        else title = `${page.industryName} Funding in ${page.cityName} (2026)`;
-
-        const zeroClickPageOneTitles: Record<string, string> = {
-            '/grants/va/norfolk-virginia-beach/arts-entertainment': 'Arts & Entertainment Grants in Norfolk & Virginia Beach (2026)',
-            '/grants/nc/raleigh/logistics': 'Logistics & Supply Chain Grants in Raleigh, NC (2026)',
-            '/grants/pa/erie/veterans': 'Veteran Business Grants in Erie, PA (2026)',
-            '/grants/va/richmond/arts-entertainment': 'Richmond, VA Arts & Cultural Grants 2026 | Funding Programs & Eligibility',
-        };
-        title = zeroClickPageOneTitles[rolloutPath] || title;
-    }
-
-    const canadaDescPatterns: Record<string, string> = {
-        technology: `How to apply for technology grants in ${page.cityName}? Compare IRAP, CDAP, and SR&ED tax credits for ${page.provinceName} startups. 2026 guide with eligibility, amounts, and deadlines.`,
-        agriculture: `${page.cityName} agriculture grants for 2026: AgriInnovate, CAP, and AAFC programs. Find out which ${page.provinceName} farming grants you qualify for with timelines and stacking tips.`,
-        manufacturing: `Compare the best manufacturing grants in ${page.cityName}: SIF vs IRAP vs Skills Fund. ${page.provinceName} businesses can stack federal and provincial funding in 2026.`,
-        healthcare: `Healthcare grants in ${page.cityName}: CIHR, IRAP Health Innovation, and BDC financing. ${page.provinceName} medtech startups can compare eligibility, timelines, and funding paths.`,
-        'clean-energy': `Clean energy funding near ${page.cityName}: SDTC, NRCan, and clean-tech tax credits. ${page.provinceName} green businesses can compare federal and provincial programs.`,
-        'women-entrepreneurs': `Government grants for women entrepreneurs in ${page.cityName}: WES, BDC, Futurpreneur, and ${page.provinceName} programs. Compare eligibility, deadlines, and application steps.`,
-    };
-    const usDescPatterns: Record<string, string> = {
-        technology: `Technology grants in ${page.cityName}: compare SBIR/STTR, R&D tax credits, ${topPrograms.first}, and local startup support for ${page.provinceName} businesses in 2026.`,
-        agriculture: `${page.cityName} agriculture grants for 2026: compare USDA Rural Development, REAP, ${topPrograms.first}, and ${page.provinceName} farm or rural business incentives.`,
-        manufacturing: `Compare manufacturing grants in ${page.cityName}: workforce training funds, MEP support, tax credits, ${topPrograms.first}, and ${page.provinceName} expansion incentives.`,
-        healthcare: `Healthcare and MedTech grants in ${page.cityName}: compare NIH SBIR/STTR, SBA-backed capital, ${topPrograms.first}, and ${page.provinceName} innovation programs.`,
-        'clean-energy': `Clean energy funding near ${page.cityName}: compare DOE programs, USDA REAP, clean-energy tax credits, utility rebates, and ${page.provinceName} incentives.`,
-        'women-entrepreneurs': `Grants and funding for women entrepreneurs in ${page.cityName}: compare SBA support, local microgrants, Women's Business Centers, and ${page.provinceName} incentives.`,
-        'arts-entertainment': `Arts and cultural funding opportunities for ${page.cityName}, ${page.provinceSlug.toUpperCase()} organizations. Compare Virginia Commission for the Arts, NEA, and local municipal grants with application guidelines.`,
-    };
-    const descPatterns = isCanada ? canadaDescPatterns : usDescPatterns;
-    let description = descPatterns[page.industrySlug] ||
-        `How much can a ${page.industryName} business in ${page.cityName} get? Compare federal programs, ${page.provinceName} incentives, local grants, tax credits, and application steps for 2026.`;
-    if (verifiedCohort) {
-        description = isCanada
-            ? `Compare current grants, financing, and business-support routes for ${page.industryName.toLowerCase()} in ${page.cityName}. Verify ${page.provinceName} eligibility, timing, and official intakes.`
-            : `Compare federal, ${page.provinceName}, and local funding routes for ${page.industryName.toLowerCase()} businesses in ${page.cityName}. Verify current eligibility and official intakes.`;
-
-        const zeroClickPageOneDescriptions: Record<string, string> = {
-            '/grants/va/norfolk-virginia-beach/arts-entertainment': 'Compare current arts and entertainment grants, Virginia incentives, and local creative-business funding in Norfolk and Virginia Beach. Verify official 2026 eligibility and intakes.',
-            '/grants/nc/raleigh/logistics': 'Compare logistics and supply-chain grants, North Carolina incentives, workforce funding, and financing for Raleigh businesses. Verify official 2026 eligibility and intakes.',
-            '/grants/pa/erie/veterans': 'Compare veteran business grants, Pennsylvania incentives, SBA support, procurement programs, and local funding routes in Erie. Verify official 2026 eligibility and intakes.',
-            '/grants/va/richmond/arts-entertainment': 'Arts and cultural funding opportunities for Richmond, VA organizations. Compare Virginia Commission for the Arts, NEA, and local municipal grants with application guidelines.',
-        };
-        description = zeroClickPageOneDescriptions[rolloutPath] || description;
-    }
-
-    const canadaKeywords = [
-        `${page.industryName.toLowerCase()} grants ${page.cityName}`,
-        `government grants ${page.cityName} ${page.provinceName}`,
-        `how to apply for grants in ${page.cityName}`,
-        `best grants for ${page.industryName.toLowerCase()} ${page.provinceName}`,
-        `${page.cityName} business funding 2026`,
-        `IRAP grants ${page.provinceName}`,
-        `CDAP grant ${page.cityName}`,
-        `SR&ED tax credits ${page.provinceName}`,
-        `federal vs provincial grants ${page.provinceName}`,
-        `small business grants near ${page.cityName}`,
-        `non-repayable grants ${page.cityName} ${page.provinceName}`,
-        `${page.industryName.toLowerCase()} startup funding Canada`,
-        `government funding ${page.industryName.toLowerCase()} ${page.provinceName} 2026`,
-    ];
-    const usKeywords = [
-        `${page.industryName.toLowerCase()} grants ${page.cityName}`,
-        `small business grants ${page.cityName} ${page.provinceName}`,
-        `how to apply for business grants in ${page.cityName}`,
-        `best grants for ${page.industryName.toLowerCase()} ${page.provinceName}`,
-        `${page.cityName} business funding 2026`,
-        `SBIR grants ${page.provinceName}`,
-        `SBA grants ${page.cityName}`,
-        `R&D tax credits ${page.provinceName}`,
-        `state incentives ${page.provinceName}`,
-        `workforce training grants ${page.cityName}`,
-        `non-dilutive funding ${page.cityName} ${page.provinceName}`,
-        `${page.industryName.toLowerCase()} startup funding United States`,
-        `government funding ${page.industryName.toLowerCase()} ${page.provinceName} 2026`,
-    ];
-    const baseKeywords = (isCanada ? canadaKeywords : usKeywords)
-        .filter(keyword => !verifiedCohort || !keyword.toLowerCase().includes('cdap'));
-
-    return {
-        title,
-        description,
-        keywords: baseKeywords.join(', '),
-        alternates: {
-            canonical: `https://www.fsidigital.ca/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`,
-        },
-        robots: {
-            index: true,
-            follow: true
-        },
-        openGraph: {
-            title,
-            description,
-            type: 'article',
-            publishedTime: page.publishedAt,
-        }
-    };
+    return generatePseoMetadata(page);
 }
 
 const INDUSTRY_SLUG_TO_DB_KEY: Record<string, string> = {
@@ -1181,6 +1059,16 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                             ))}
                                         </div>
                                     </div>
+
+                                    {/* Regional State / Provincial Funding Showcase for Local Differentiation */}
+                                    <RegionalFundingShowcase
+                                        cityName={page.cityName}
+                                        provinceName={page.provinceName}
+                                        provinceSlug={page.provinceSlug}
+                                        industryName={page.industryName}
+                                        isCanada={isCanada}
+                                        stateDetail={stateDetail}
+                                    />
 
                                     <OrganicProductLadder
                                         surface="grants-city-industry"

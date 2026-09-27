@@ -12,20 +12,79 @@ import EligibleCheck from "@/components/blog/EligibleCheck"
 import FundingStrategyBox from "@/components/blog/FundingStrategyBox"
 
 export const metadata: Metadata = {
-  title: "Canada Innovation Grants 2026: $4.2B+ R&D Funding [Apply]",
-  description: "Comprehensive guide to Canadian innovation grants. Access SR&ED, IRAP, SIF, NSERC, and 45+ programs offering $4.2B+ for research, development, and technology commercialization.",
+  title: "$50K–$2M Innovation & R&D Grants in Canada — 2026 Directory",
+  description: "Apply for Canadian innovation grants: SR&ED tax credits, NRC-IRAP ($500K), Strategic Innovation Fund, and NSERC. Check eligibility in 2 minutes.",
   keywords: "Canada innovation grants, R&D funding Canada, SR&ED tax credits, IRAP grants, Strategic Innovation Fund, NSERC funding, technology commercialization Canada",
   openGraph: {
-    title: "Canada Innovation Grants 2026: $4.2B+ R&D Funding [Apply]",
-    description: "Complete guide to Canadian innovation funding with federal and provincial programs offering $4.2B+ for research, development, and commercialization.",
+    title: "$50K–$2M Innovation & R&D Grants in Canada — 2026 Directory",
+    description: "Apply for Canadian innovation grants: SR&ED tax credits, NRC-IRAP ($500K), Strategic Innovation Fund, and NSERC. Check eligibility in 2 minutes.",
     url: "https://www.fsidigital.ca/canada/innovation-grants",
     images: ["/og-image.png"],
   },
 }
 
+const faqs = [
+  {
+    question: "What is the difference between SR&ED and IRAP?",
+    answer: "SR&ED is a retroactive tax credit that you claim at year-end for R&D expenditures already incurred. IRAP is a proactive grant that you apply for before starting a project, providing monthly wage subsidies for technical staff. The two can be stacked, but IRAP funding will reduce your eligible SR&ED expenditures for that specific project."
+  },
+  {
+    question: "How long does it take to get approved for Canadian innovation grants?",
+    answer: "IRAP typically takes 4-8 weeks from proposal to funding agreement if your firm is already engaged with an Industrial Technology Advisor (ITA). The Strategic Innovation Fund (SIF) is a multi-stage process taking 6-12+ months. SR&ED claims are processed after corporate tax filing, typically taking 60 days for refundable claims if not selected for review."
+  },
+  {
+    question: "Are innovation grants considered taxable income in Canada?",
+    answer: "Yes, government grants and subsidies are generally treated as taxable income in the year they are received. Alternatively, you can elect to reduce the capital cost of depreciable property or reduce deductible expenses by the grant amount. SR&ED Investment Tax Credits (ITCs) reduce the deductible pool of SR&ED expenditures in the following year."
+  }
+];
+
+const schemaOrg = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "mainEntity": faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.fsidigital.ca/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Canada",
+          "item": "https://www.fsidigital.ca/canada"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Innovation Grants",
+          "item": "https://www.fsidigital.ca/canada/innovation-grants"
+        }
+      ]
+    }
+  ]
+};
+
 export default function CanadaInnovationGrantsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(schemaOrg) }}
+      />
       <Header />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
@@ -936,6 +995,36 @@ export default function CanadaInnovationGrantsPage() {
                 </div>
               </div>
 
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-20 bg-gray-50 border-t border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="text-center mb-12">
+                <Badge className="mb-4 bg-gray-100 text-gray-800 border-gray-200">
+                  Frequently Asked Questions
+                </Badge>
+                <h2 className="text-3xl font-bold text-gray-900 mb-6">
+                  Canada Innovation Grants FAQ
+                </h2>
+              </div>
+              <div className="space-y-6">
+                {faqs.map((faq, index) => (
+                  <Card key={index}>
+                    <CardHeader>
+                      <CardTitle className="text-lg text-gray-900">
+                        {faq.question}
+                      </CardTitle>
+                    </CardHeader>
+                    <CardContent>
+                      <p className="text-gray-700">{faq.answer}</p>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
           </div>
         </section>
