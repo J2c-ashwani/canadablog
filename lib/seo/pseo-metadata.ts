@@ -82,21 +82,21 @@ export function generatePseoMetadata(page: PseoPage): Metadata {
 
     if (isCanada) {
         const canadaTitles: Record<string, string> = {
-            technology: `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName} — ${industryData.programCount} Grants Open`,
-            agriculture: `${industryData.fundingRange} Farm Grants in ${page.cityName}, ${stateAbbr} — Apply Now (2026)`,
-            manufacturing: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel} — ${industryData.programCount} Programs Open`,
-            healthcare: `${industryData.fundingRange} ${audienceLabel} Grants in ${page.cityName} (2026 Guide)`,
-            'clean-energy': `${industryData.fundingRange} Clean Tech Funding in ${page.cityName} — ${industryData.programCount} Programs`,
-            'women-entrepreneurs': `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName} — No Equity Required`,
-            'restaurants-hospitality': `${industryData.fundingRange} for ${page.cityName} Restaurants — ${industryData.programCount} Grants (2026)`,
-            retail: `${industryData.fundingRange} for ${page.cityName} Retailers — CanExport + CDAP (2026)`,
-            'non-profits': `${industryData.fundingRange} for ${page.cityName} Non-Profits — ${industryData.programCount} Grants Open`,
-            veterans: `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName} (2026)`,
-            'minority-owned': `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName} — Apply 2026`,
-            'arts-entertainment': `${industryData.fundingRange} ${audienceLabel} Grants in ${page.cityName} — ${industryData.programCount} Programs`,
-            education: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel} — Mitacs + CDAP (2026)`,
-            logistics: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel} — ${industryData.programCount} Programs`,
-            construction: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel} — Hiring Grants + Tax Credits`,
+            technology: `${industryData.fundingRange} for Tech Startups in ${page.cityName} — ${industryData.programCount} Grants Open`,
+            agriculture: `${industryData.fundingRange} Farm & Agri-Food Grants in ${page.cityName} (2026 Guide)`,
+            manufacturing: `${industryData.fundingRange} Manufacturing Grants in ${page.cityName} — ${industryData.programCount} Open`,
+            healthcare: `${industryData.fundingRange} Healthcare & MedTech Grants in ${page.cityName} (2026)`,
+            'clean-energy': `${industryData.fundingRange} Clean Energy Grants in ${page.cityName} — ${industryData.programCount} Programs`,
+            'women-entrepreneurs': `${industryData.fundingRange} Grants for Women Entrepreneurs in ${page.cityName} (2026)`,
+            'restaurants-hospitality': `${industryData.fundingRange} Grants for Restaurants in ${page.cityName} — 4 Open (2026)`,
+            retail: `${industryData.fundingRange} Retail & E-Commerce Grants in ${page.cityName} (2026)`,
+            'non-profits': `${industryData.fundingRange} Non-Profit Grants in ${page.cityName} — ${industryData.programCount} Programs Open`,
+            veterans: `${industryData.fundingRange} Veteran Business Grants in ${page.cityName} (2026 Guide)`,
+            'minority-owned': `${industryData.fundingRange} Grants for Minority-Owned Businesses in ${page.cityName} (2026)`,
+            'arts-entertainment': `${industryData.fundingRange} Arts & Creative Grants in ${page.cityName} — ${industryData.programCount} Programs`,
+            education: `${industryData.fundingRange} Education & EdTech Grants in ${page.cityName} (2026)`,
+            logistics: `${industryData.fundingRange} Logistics & Transport Grants in ${page.cityName} (2026)`,
+            construction: `${industryData.fundingRange} Construction & Trade Grants in ${page.cityName} (2026)`,
         };
         title = canadaTitles[page.industrySlug] ||
             `${industryData.fundingRange} ${page.industryName} Grants in ${page.cityName} (2026)`;
@@ -105,21 +105,21 @@ export function generatePseoMetadata(page: PseoPage): Metadata {
         const totalPrograms = Math.max(industryData.programCount, stateHighlight.programCount);
 
         const usTitles: Record<string, string> = {
-            technology: `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName}, ${stateAbbr} — SBIR + ${totalPrograms} More`,
-            agriculture: `${industryData.fundingRange} Farm Grants in ${page.cityName}, ${stateAbbr} — USDA + State (2026)`,
-            manufacturing: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel}${stateProgramName} (2026)`,
-            healthcare: `${industryData.fundingRange} ${audienceLabel} Grants in ${page.cityName}, ${stateAbbr} — NIH + State`,
-            'clean-energy': `${industryData.fundingRange} Clean Energy Grants Near ${page.cityName}, ${stateAbbr} (2026)`,
-            'women-entrepreneurs': `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName}, ${stateAbbr} — ${totalPrograms} Programs`,
-            'restaurants-hospitality': `${industryData.fundingRange} for ${page.cityName}, ${stateAbbr} Restaurants — ${totalPrograms} Grants Open`,
-            retail: `${industryData.fundingRange} for ${page.cityName} Retailers — SBA + ${page.provinceName} Grants (2026)`,
-            'non-profits': `${industryData.fundingRange} for ${page.cityName} Non-Profits${stateProgramName} — Apply 2026`,
-            veterans: `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName}, ${stateAbbr} — SBA + State`,
-            'minority-owned': `${industryData.fundingRange} for ${audienceLabel} in ${page.cityName}, ${stateAbbr} — ${totalPrograms} Programs`,
-            'arts-entertainment': `${industryData.fundingRange} ${audienceLabel} Grants in ${page.cityName}, ${stateAbbr} — Apply Now`,
-            education: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel}${stateProgramName} (2026)`,
-            logistics: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel} — SBIR + ${stateAbbr} Incentives`,
-            construction: `${industryData.fundingRange} for ${page.cityName} ${audienceLabel} — Workforce + Tax Credits`,
+            technology: `${industryData.fundingRange} Tech Startup Grants in ${page.cityName}, ${stateAbbr} — SBIR + State`,
+            agriculture: `${industryData.fundingRange} Farm & AgTech Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            manufacturing: `${industryData.fundingRange} Manufacturing Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            healthcare: `${industryData.fundingRange} Healthcare & MedTech Grants in ${page.cityName}, ${stateAbbr}`,
+            'clean-energy': `${industryData.fundingRange} Clean Energy Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            'women-entrepreneurs': `${industryData.fundingRange} Grants for Women Entrepreneurs in ${page.cityName}, ${stateAbbr} (2026)`,
+            'restaurants-hospitality': `${industryData.fundingRange} Restaurant Grants in ${page.cityName}, ${stateAbbr} (2026 Guide)`,
+            retail: `${industryData.fundingRange} Retail & Small Business Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            'non-profits': `${industryData.fundingRange} Non-Profit Grants in ${page.cityName}, ${stateAbbr} (2026 Guide)`,
+            veterans: `${industryData.fundingRange} Veteran Business Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            'minority-owned': `${industryData.fundingRange} Minority Business Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            'arts-entertainment': `${industryData.fundingRange} Arts & Creative Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            education: `${industryData.fundingRange} Education & EdTech Grants in ${page.cityName}, ${stateAbbr} (2026)`,
+            logistics: `${industryData.fundingRange} Logistics & Supply Chain Grants in ${page.cityName}, ${stateAbbr}`,
+            construction: `${industryData.fundingRange} Construction & Trade Grants in ${page.cityName}, ${stateAbbr} (2026)`,
         };
         title = usTitles[page.industrySlug] ||
             `${industryData.fundingRange} ${page.industryName} Grants in ${page.cityName}, ${stateAbbr} (2026)`;

@@ -18,12 +18,18 @@ import ShortAnswerBox from '@/components/blog/ShortAnswerBox'
 import AutoLink from '@/components/seo/AutoLink';
 
 export const metadata: Metadata = {
-  title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
-  description: "Most businesses apply to the wrong agency and get rejected. This playbook shows you exactly which of the 3 federal agencies to target and the stacking limits that trip up 80% of applicants.",
-  keywords: "Canada federal grants 2026, Strategic Innovation Fund streams, SR&ED guide 2026, IRAP funding guide, Canadian government business grants, startup funding Canada",
+  title: "$10K–$5M Canadian Federal Grants (2026 Directory) — 24 Programs",
+  description:
+    "Access Canadian federal business grants: SIF ($5M+), NRC-IRAP ($500K), SR&ED (up to 70% back), and Regional Agencies (FedDev, PrairiesCan). Check eligibility in 2 min.",
+  keywords:
+    "Canada federal grants 2026, Strategic Innovation Fund streams, SR&ED guide 2026, IRAP funding guide, Canadian government business grants, startup funding Canada",
+  alternates: {
+    canonical: "https://www.fsidigital.ca/blog/canada-federal-grants",
+  },
   openGraph: {
-    title: "Canadian Government Grants (2026): The Complete Federal Funding Guide",
-    description: "Don't just apply—strategize. This comprehensive guide covers every major federal funding agency in Canada and how to win their grants.",
+    title: "$10K–$5M Canadian Federal Grants (2026 Directory) — 24 Programs",
+    description:
+      "Access Canadian federal business grants: SIF ($5M+), NRC-IRAP ($500K), SR&ED (up to 70% back), and Regional Agencies. Check eligibility in 2 min.",
     url: "https://www.fsidigital.ca/blog/canada-federal-grants",
     images: ["/og-image.png"],
   },
@@ -49,8 +55,47 @@ export default function CanadaFederalGrantsPage() {
     }
   ];
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.fsidigital.ca/blog/canada-federal-grants",
+        "url": "https://www.fsidigital.ca/blog/canada-federal-grants",
+        "name": "$10K–$5M Canadian Federal Grants (2026 Directory) — 24 Programs",
+        "description": "Access Canadian federal business grants: SIF ($5M+), NRC-IRAP ($500K), SR&ED (up to 70% back), and Regional Agencies.",
+        "inLanguage": "en-CA"
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://www.fsidigital.ca/blog/canada-federal-grants#faq",
+        "mainEntity": faqData.map((f) => ({
+          "@type": "Question",
+          "name": f.question,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": f.answer
+          }
+        }))
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.fsidigital.ca/blog/canada-federal-grants#breadcrumbs",
+        "itemListElement": [
+          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.fsidigital.ca" },
+          { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://www.fsidigital.ca/blog" },
+          { "@type": "ListItem", "position": 3, "name": "Canadian Federal Grants", "item": "https://www.fsidigital.ca/blog/canada-federal-grants" }
+        ]
+      }
+    ]
+  };
+
     return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header />
       <div className="container mx-auto px-4 py-4">
         <AdSlot adSlot={process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD!} adFormat="horizontal" className="mb-6" style={{ minHeight: '90px' }} />
@@ -92,14 +137,15 @@ export default function CanadaFederalGrantsPage() {
         </section>
 
         
-        {/* EEAT ENRICHMENT COMPONENTS */}
+        {/* EEAT ENRICHMENT COMPONENTS — ShortAnswerBox with semantic H2 */}
         <section className="py-6 bg-red-50 dark:bg-red-950/20">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="max-w-4xl mx-auto bg-white dark:bg-neutral-900 rounded-xl p-6 shadow-sm border border-red-200">
-              <p className="text-gray-800 dark:text-gray-200 text-base leading-relaxed">
-                <span className="font-bold text-red-800 dark:text-red-400">The Short Answer: </span>
-                The Canadian federal government deploys billions annually through three main instruments: Non-Repayable Grants (for high-risk R&D), Repayable Contributions (0% interest loans for scale-ups), and Tax Credits (like SR&ED). Success depends on targeting the right agency among the "Big Three"—ISED (for large scale-ups), NRC-IRAP (for technical innovation), or AAFC (for agri-food).
-              </p>
+            <div className="max-w-4xl mx-auto">
+              <ShortAnswerBox
+                question="How Much Canadian Federal Grant Funding Is Available for Businesses in 2026?"
+                content="The Canadian federal government deploys over $5 billion annually through non-repayable grants, repayable 0% loans, and tax credits. Major programs include the Strategic Innovation Fund ($10M+), NRC-IRAP ($500K for technical R&D), and SR&ED tax credits (refunding up to 70% of eligible R&D labor). Stacking allows combining multiple programs up to 75% of total project costs."
+                isH1={false}
+              />
             </div>
           </div>
         </section>

@@ -69,7 +69,21 @@ const SPRINT_URLS = [
     "https://www.fsidigital.ca/grants/il/peoria-il/minority-owned",
     "https://www.fsidigital.ca/grants/mb/winnipeg/restaurants-hospitality",
     "https://www.fsidigital.ca/grants/nc/raleigh/logistics",
-    "https://www.fsidigital.ca/grants/pa/erie/veterans"
+    "https://www.fsidigital.ca/grants/pa/erie/veterans",
+
+    // Sprint 6 High-Impact Additions (Minnesota, California, Veteran, Federal Grants)
+    "https://www.fsidigital.ca/usa/minnesota",
+    "https://www.fsidigital.ca/usa/california",
+    "https://www.fsidigital.ca/blog/veteran-business-funding-canada-2026",
+    "https://www.fsidigital.ca/blog/canada-federal-grants",
+    "https://www.fsidigital.ca/blog/canada-startup-funding-grants-guide",
+    "https://www.fsidigital.ca/blog/women-technology-grants-canada",
+    "https://www.fsidigital.ca/blog/canada-aerospace-defence-innovation-grants",
+    "https://www.fsidigital.ca/grants/on/toronto/restaurants-hospitality",
+    "https://www.fsidigital.ca/grants/qc/montreal/women-entrepreneurs",
+    "https://www.fsidigital.ca/grants/mb/winnipeg/non-profits",
+    "https://www.fsidigital.ca/grants/ab/calgary/restaurants-hospitality",
+    "https://www.fsidigital.ca/grants/on/toronto/construction"
 ];
 
 async function submitUrl(url) {
