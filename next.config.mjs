@@ -253,6 +253,34 @@ const nextConfig = {
         ],
       },
       {
+        // Edge CDN Cache Shield for 6,150 pSEO routes (cached at Cloudflare/Vercel Edge for 30 days)
+        source: '/grants/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=2592000, stale-while-revalidate=86400' },
+        ],
+      },
+      {
+        // Edge CDN Cache Shield for blog guides (cached at Edge for 30 days)
+        source: '/blog/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=2592000, stale-while-revalidate=86400' },
+        ],
+      },
+      {
+        // Edge CDN Cache Shield for USA state & city hubs
+        source: '/usa/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=2592000, stale-while-revalidate=86400' },
+        ],
+      },
+      {
+        // Edge CDN Cache Shield for Canada hubs
+        source: '/canada/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=3600, s-maxage=2592000, stale-while-revalidate=86400' },
+        ],
+      },
+      {
         // Prevent indexing of all thank-you/success routes
         source: '/download/:guide/thank-you',
         headers: [

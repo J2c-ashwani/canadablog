@@ -24,6 +24,7 @@ import {
 import { PARTNER_PACKAGES } from "@/lib/partners/packages"
 
 export const revalidate = false // Persistent static cache
+export const dynamicParams = false
 
 // Map of all programmatic partner slugs and their customized content
 interface SlugContent {

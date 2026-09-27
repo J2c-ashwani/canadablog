@@ -1,4 +1,5 @@
 export const revalidate = false; // Persistent static cache — prevents daily 24h ISR eviction and fast origin transfer across 6,150 pages
+export const dynamicParams = false; // Prevents on-demand SSR function execution for invalid routes
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage, type PseoPage } from '@/lib/pseo-data';

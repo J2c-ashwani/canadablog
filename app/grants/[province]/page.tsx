@@ -14,6 +14,7 @@ import {
 import { getStateDetailBySlugOrAbbreviation } from '@/lib/data/stateDetails';
 
 export const revalidate = false; // Persistent static cache
+export const dynamicParams = false;
 
 type ProvincePageProps = {
   params: Promise<{
