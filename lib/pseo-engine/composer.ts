@@ -40,6 +40,49 @@ export interface ComposeRequest {
 
 const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
 
+const CANADIAN_PROVINCE_TOP_PROGRAMS: Record<string, Array<{ name: string; fundingAmount: string }>> = {
+  on: [
+    { name: 'Ontario Skills Development Fund (SDF)', fundingAmount: '$150,000–$500,000 workforce grants' },
+    { name: 'Ontario Centre of Innovation (OCI) Voucher Program', fundingAmount: '$50,000–$150,000 tech commercialization' },
+  ],
+  bc: [
+    { name: 'Innovate BC Ignite Program', fundingAmount: '$300,000 commercialization grants' },
+    { name: 'BC Employer Training Grant', fundingAmount: 'Up to $10,000 per employee ($300K cap)' },
+  ],
+  ab: [
+    { name: 'Alberta Innovates Digital Traction & Voucher Program', fundingAmount: '$50,000–$100,000 non-dilutive grants' },
+    { name: 'Alberta Job Creation Tax Credit & CARES Program', fundingAmount: 'Up to $250,000 per project' },
+  ],
+  qc: [
+    { name: 'Quebec R&D Tax Credit & Investissement Québec (IQ)', fundingAmount: 'Up to 30% refundable tax credit + $500K scale-up loans' },
+    { name: 'Programme Innovation du Québec (MEIE)', fundingAmount: 'Up to $350,000 non-repayable grants' },
+  ],
+  mb: [
+    { name: 'Manitoba Innovation Growth Program (IGP)', fundingAmount: 'Up to $100,000 cost-shared development grants' },
+    { name: 'Manitoba Industry Expansion Program', fundingAmount: 'Up to 50% direct wage training reimbursement' },
+  ],
+  sk: [
+    { name: 'Saskatchewan Technology Startup Incentive (STSI)', fundingAmount: '45% non-refundable angel tax credit' },
+    { name: 'Saskatchewan Product Commercialization Program', fundingAmount: 'Up to $50,000 non-repayable grants' },
+  ],
+  ns: [
+    { name: 'Nova Scotia Business Growth & Innovation Fund', fundingAmount: 'Up to $100,000 non-repayable funding' },
+    { name: 'Nova Scotia WIPSI Training Incentive', fundingAmount: 'Up to $100,000 in 50% wage subsidies' },
+  ],
+  nb: [
+    { name: 'Opportunities NB Business Growth Initiative', fundingAmount: 'Up to $200,000 non-repayable payroll & capital grants' },
+    { name: 'NBIF Research & Voucher Fund', fundingAmount: 'Up to $80,000 project grants' },
+  ],
+  nl: [
+    { name: 'Newfoundland & Labrador Business Development Support', fundingAmount: 'Up to $100,000 in 50% non-repayable grants' },
+    { name: 'InnovateNL R&D Voucher Program', fundingAmount: 'Up to $75,000 technical validation grants' },
+  ],
+  pe: [
+    { name: 'Innovation PEI Pilot Commercialization Fund', fundingAmount: 'Up to $100,000 non-repayable grants' },
+    { name: 'PEI Capital Acquisition Grant', fundingAmount: 'Up to $25,000 non-repayable assistance' },
+  ],
+};
+
 /**
  * Deterministically generates an array of 4-6 blocks based on Tier, Industry, and Intent.
  * Also injects "Named Entities" (Program Proof Layer) directly from the region's top programs.
@@ -48,14 +91,21 @@ export function composePseoBlocks(req: ComposeRequest): PseoBlock[] {
   const blocks: PseoBlock[] = [];
   const stateData = getStateDetailBySlugOrAbbreviation(req.stateSlug);
   const regionType = CANADIAN_REGION_SLUGS.has(req.stateSlug) ? 'province' : 'state';
+  const canProvData = CANADIAN_PROVINCE_TOP_PROGRAMS[req.stateSlug.toLowerCase()];
   
   // Entity Proof Layer (Pull Top 2 Programs to inject hyper-local proof - HARD REQUIREMENT)
   const program1 = stateData?.topPrograms?.[0]?.name ||
-    (regionType === 'province' ? 'Provincial Business Growth Fund' : 'State Growth Fund');
-  const amount1 = stateData?.topPrograms?.[0]?.fundingAmount || '$50,000+ grants';
+    canProvData?.[0]?.name ||
+    (regionType === 'province' ? 'NRC-IRAP Project Grant' : 'State Growth Fund');
+  const amount1 = stateData?.topPrograms?.[0]?.fundingAmount ||
+    canProvData?.[0]?.fundingAmount ||
+    (regionType === 'province' ? '$50,000–$500,000 grants' : '$50,000+ grants');
   const program2 = stateData?.topPrograms?.[1]?.name ||
-    (regionType === 'province' ? 'Regional Job Creation Grant' : 'Regional Job Creation Incentive');
-  const amount2 = stateData?.topPrograms?.[1]?.fundingAmount || 'Variable grants and tax credits';
+    canProvData?.[1]?.name ||
+    (regionType === 'province' ? 'SR&ED Tax Credit Program' : 'Regional Job Creation Incentive');
+  const amount2 = stateData?.topPrograms?.[1]?.fundingAmount ||
+    canProvData?.[1]?.fundingAmount ||
+    (regionType === 'province' ? 'Up to 64% refundable tax credit' : 'Variable grants and tax credits');
 
   // Internal Linking Anchor Text Variation Logic
   const anchorVariations = [

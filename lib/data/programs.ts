@@ -701,6 +701,161 @@ export const programsDatabase: ProgramDetails[] = [
     recentChanges: [
       'Updated April 2026: Job creation thresholds lowered to 5 new hires for startups with under 100 staff.'
     ]
+  },
+  {
+    id: 'csbfp',
+    slug: 'csbfp',
+    name: 'Canada Small Business Financing Program (CSBFP)',
+    agency: 'Innovation, Science and Economic Development Canada (ISED)',
+    fundingAmount: 'Up to $1,150,000 ($1M for property, $500K for equipment, $150K working capital)',
+    fundingType: 'Loan Support',
+    fundingDifficulty: 'Moderate',
+    deadlineType: 'Rolling Intake',
+    region: 'Federal',
+    country: 'Canada',
+    description: 'Federal government loan-loss guarantee program that makes it easier for small businesses to obtain commercial loans from banks by sharing the credit risk with the federal government (up to 85% guaranteed).',
+    eligibility: [
+      'For-profit small businesses or startups operating in Canada',
+      'Gross annual revenue of $10 million or less',
+      'Farming businesses are excluded (eligible instead for the Canadian Agricultural Loans Act)'
+    ],
+    applicationProcess: [
+      'Prepare a business plan and financing proposal.',
+      'Apply directly through a participating financial institution (RBC, TD, Scotiabank, BMO, CIBC, or credit union).',
+      'The bank reviews the credit request and registers the approved loan under the CSBFP.'
+    ],
+    officialWebsite: 'https://ised-isde.canada.ca/site/canada-small-business-financing-program/en',
+    insiderTips: [
+      'The federal government guarantees 85% of the loan, drastically reducing the bank\'s risk. If your primary bank turns you down for standard credit, explicitly request a CSBFP-registered loan.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Maximum loan amount increased to $1.15 million, with up to $150,000 for intangible assets and working capital costs.'
+    ]
+  },
+  {
+    id: 'bdc-growth-loan',
+    slug: 'bdc-growth-loan',
+    name: 'BDC Small Business & Growth Financing',
+    agency: 'Business Development Bank of Canada (BDC)',
+    fundingAmount: 'Up to $100,000 online within 48h, up to $35M customized growth capital',
+    fundingType: 'Loan',
+    fundingDifficulty: 'Moderate',
+    deadlineType: 'Rolling Intake',
+    region: 'Federal',
+    country: 'Canada',
+    description: 'Direct financing from Canada\'s development bank, providing flexible terms, interest-only grace periods, and non-dilutive capital without taking personal primary residence collateral for smaller loans.',
+    eligibility: [
+      'Canadian-based commercial enterprise with commercial track record',
+      'Minimum 12 to 24 months of operating history for standard online business loans',
+      'Good commercial credit history and viable cash flow'
+    ],
+    applicationProcess: [
+      'Complete the secure online loan application on the BDC portal for loans up to $100,000.',
+      'Submit financial statements and cash flow projections for loans exceeding $100,000.',
+      'Receive funds within 48 to 72 hours upon final electronic agreement signing.'
+    ],
+    officialWebsite: 'https://www.bdc.ca/en/financing',
+    insiderTips: [
+      'BDC complement chartered banks rather than compete with them. You can stack a CSBFP bank loan for heavy machinery with a BDC working capital loan for marketing and inventory.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Online digital loan limits streamlined with automated adjudication up to $100,000.'
+    ]
+  },
+  {
+    id: 'etp-california',
+    slug: 'etp-california',
+    name: 'California Employment Training Panel (ETP)',
+    agency: 'California Labor and Workforce Development Agency',
+    fundingAmount: 'Up to $750,000 in cash training reimbursements ($15–$26/hr per employee)',
+    fundingType: 'Rebate',
+    fundingDifficulty: 'Moderate',
+    deadlineType: 'Multiple Windows',
+    region: 'California',
+    country: 'USA',
+    description: 'Performance-based cash reimbursement program for California businesses that retrain front-line workers in advanced manufacturing, technology, continuous improvement, and clean tech skills.',
+    eligibility: [
+      'For-profit businesses in California paying the Employment Training Tax (ETT)',
+      'Employees must be retrained and retained on payroll for at least 90 days following training',
+      'Priority given to manufacturing, biotechnology, green technology, and goods movement'
+    ],
+    applicationProcess: [
+      'Submit an online pre-application to determine ETP eligibility.',
+      'Draft a detailed Training Plan outlining curriculum, hours, and employee wage tiers.',
+      'Conduct training and submit monthly reimbursement rosters to receive cash payments.'
+    ],
+    officialWebsite: 'https://etp.ca.gov/',
+    insiderTips: [
+      'ETP is NOT a tax credit—it is direct cash reimbursement. Startups that train workers on proprietary technical software or ISO/SOC2 protocols can recoup tens of thousands of dollars in payroll costs.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Special allocation stream launched for clean energy manufacturing and AI workforce transition.'
+    ]
+  },
+  {
+    id: 'sba-504',
+    slug: 'sba-504',
+    name: 'SBA 504 Commercial Real Estate & Equipment Loan',
+    agency: 'U.S. Small Business Administration (SBA)',
+    fundingAmount: 'Up to $5,000,000 ($5.5M for manufacturers and clean energy projects)',
+    fundingType: 'Loan',
+    fundingDifficulty: 'Moderate',
+    deadlineType: 'Rolling Intake',
+    region: 'Federal',
+    country: 'USA',
+    description: 'Long-term, below-market fixed-rate financing program providing up to 90% financing (only 10% down) for purchasing commercial real estate, constructing new facilities, or acquiring heavy capital machinery.',
+    eligibility: [
+      'For-profit businesses operating in the United States',
+      'Tangible net worth of under $15 million and average net income under $5 million after taxes',
+      'Owner-occupied commercial real estate (must occupy at least 51% of existing building or 60% of new construction)'
+    ],
+    applicationProcess: [
+      'Partner with a Certified Development Company (CDC) and a third-party commercial lender.',
+      'Lender finances 50%, CDC/SBA finances up to 40%, business contributes 10% equity down.',
+      'Close on the property with guaranteed 10-, 20-, or 25-year fixed interest rates.'
+    ],
+    officialWebsite: 'https://www.sba.gov/funding-programs/loans/504-loans',
+    insiderTips: [
+      'The 504 structure preserves cash: instead of a 20-30% commercial bank down payment, you only put down 10%, keeping liquidity intact for operations.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Energy efficiency public policy goal enables up to $5.5 million per project with no aggregate limit on multiple green facilities.'
+    ]
+  },
+  {
+    id: 'us-step-grant',
+    slug: 'us-step-grant',
+    name: 'State Trade Expansion Program (STEP)',
+    agency: 'U.S. Small Business Administration (SBA) / State Trade Offices',
+    fundingAmount: 'Up to $10,000 to $20,000 in non-repayable grant reimbursements',
+    fundingType: 'Grant',
+    fundingDifficulty: 'Low',
+    deadlineType: 'Rolling Intake',
+    region: 'Federal',
+    country: 'USA',
+    description: 'Federal-state partnership grant that reimburses U.S. small businesses for costs associated with international trade missions, foreign market translations, international digital marketing, and overseas compliance certifications.',
+    eligibility: [
+      'For-profit small businesses registered and operating in an eligible U.S. state',
+      'Goods must have at least 51% U.S. content',
+      'Product or service must be export-ready with demonstrable international market potential'
+    ],
+    applicationProcess: [
+      'Apply through your state\'s trade development office (e.g. California STEP, Texas STEP).',
+      'Submit proposed export activities (trade shows, international website localization, foreign IP filings).',
+      'Complete export activities and submit paid invoices for 50% to 100% grant reimbursement.'
+    ],
+    officialWebsite: 'https://www.sba.gov/funding-programs/grants/state-trade-expansion-program-step',
+    insiderTips: [
+      'STEP grants are often underutilized at the state level. Apply early in the state\'s fiscal year (typically October or July) before the annual grant allocation is exhausted.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Digital export expenses—including international SEO and translated ecommerce storefronts—are now fully reimbursable.'
+    ]
   }
 ];
 

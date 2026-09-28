@@ -76,9 +76,9 @@ function getTopProgramNames(stateDetail?: StateDetailedGrant) {
 const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: string) => string> = {
     technology: (city, province) =>
         `Technology startups in ${city} can access $15,000 to $500,000+ in non-repayable government funding. ` +
-        `The most accessible programs are the CDAP Digital Adoption Grant ($15,000 cash, no equity), ` +
+        `The most accessible programs are NRC-IRAP project grants (up to $500K for commercialization-ready companies), ` +
         `SR&ED tax credits (35–70% of your R&D spend returned as cash within 6 months of filing), ` +
-        `and IRAP project grants (up to $500K for commercialization-ready companies). ` +
+        `and Regional Development Agency business scale-up funds ($250K to $1M+ non-dilutive capital). ` +
         `${province}-based tech startups benefit from both federal and provincial stacks — meaning you can claim from multiple programs simultaneously.`,
     agriculture: (city, province) =>
         `Agriculture and farming businesses in ${city} can access $10,000 to $1,000,000+ in government funding. ` +
@@ -91,7 +91,7 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
         `The most impactful programs are the Strategic Innovation Fund (SIF) for large-scale upgrades, ` +
         `NRC-IRAP for process R&D funding (up to $500K), and the ${province} Skills Development Fund ` +
         `which reimburses 50–80% of eligible employee training costs — no cap on total claims. ` +
-        `Manufacturers investing in automation can also stack the CDAP grant ($15,000) on top of federal R&D credits.`,
+        `Manufacturers investing in automation can also stack NGen advanced manufacturing capital and regional agency funding on top of federal R&D credits.`,
     healthcare: (city, province) =>
         `Healthcare and medical businesses in ${city} can access $20,000 to $500,000+ in non-dilutive funding. ` +
         `Top programs include CIHR Project Grants (up to $500K for clinical research over 5 years), ` +
@@ -112,12 +112,12 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
         `The ${province} also offers its own provincial women entrepreneurship grants — most decisions made within 45–60 days of application.`,
     'restaurants-hospitality': (city, province) =>
         `Restaurants, cafes, and hospitality businesses in ${city} can access $5,000 to $75,000+ in government grants and hiring subsidies. ` +
-        `Key programs include the Canada Digital Adoption Program (CDAP) Grow Your Business Online stream ($2,400 microgrant for online ordering systems), ` +
+        `Key programs include the Canada Small Business Financing Program (CSBFP up to $1.15M for leaseholds and equipment), ` +
         `provincial hiring vouchers (offsetting up to 50% of seasonal wages), and energy-efficiency retrofitting grants (covering up to $15,000 for kitchen upgrades). ` +
         `${province}-based dining and tourism operators receive priority review for youth hiring subsidies during seasonal peaks.`,
     retail: (city, province) =>
         `Retailers and e-commerce brands in ${city} can secure $5,000 to $100,000+ in non-dilutive capital. ` +
-        `Top routes include the CDAP Digital Adoption Grant ($15,000 for ERP or POS integration), ` +
+        `Top routes include the Canada Small Business Financing Program (CSBFP up to $1.15M with $150K for POS and software systems), ` +
         `CanExport SMEs (covering up to $50,000 in foreign ad spend, translations, and trademark filings for global expansion), ` +
         `and local storefront enhancement grants. Retailers in ${province} can stack federal digital grants with provincial retail job training credits.`,
     'non-profits': (city, province) =>
@@ -142,12 +142,12 @@ const CANADA_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, province: str
     education: (city, province) =>
         `Education providers and EdTech startups in ${city} can access $20,000 to $350,000+ in educational development grants. ` +
         `Primary paths include Mitacs Accelerate (co-funding 50% of research intern stipends), ` +
-        `provincial curriculum development vouchers, and CDAP digital grants ($15,000 for server/LMS infrastructure). ` +
+        `provincial curriculum development vouchers, and regional innovation agency funds for digital infrastructure. ` +
         `EdTech developers in ${province} regularly stack R&D tax credits with youth employment wage subsidies.`,
     logistics: (city, province) =>
         `Supply chain, logistics, and transportation firms in ${city} qualify for $20,000 to $500,000+ in government subsidies. ` +
         `Top opportunities include green commercial vehicle rebates (up to $50,000 per electric truck), ` +
-        `provincial transport worker safety training grants, and CDAP technology grants for warehouse ERP migrations. ` +
+        `provincial transport worker safety training grants, and zero-emission fleet infrastructure subsidies for warehouse and depot conversions. ` +
         `Logistics operations in ${province} can also claim year-end R&D tax credits for developing proprietary routing or inventory automation algorithms.`,
     construction: (city, province) =>
         `Local trades, contractors, and construction businesses in ${city} can secure $10,000 to $250,000+ in workforce grants. ` +
@@ -298,7 +298,7 @@ const PROVINCE_RESOURCES: Record<string, { name: string; description: string; ur
 const DEFAULT_CANADA_SHORT_ANSWER = (industryName: string, city: string, province: string) =>
     `${industryName} businesses in ${city} can access $15,000 to $500,000+ in non-repayable government grants and subsidies. ` +
     `Key programs include federal wage subsidies (50–70% of new hire salaries), IRAP innovation funding (up to $500K), ` +
-    `and CDAP digital adoption grants ($15,000 cash). ${province}-based businesses can stack federal and provincial programs simultaneously. ` +
+    `and Regional Development Agency business scale-up funding. ${province}-based businesses can stack federal and provincial programs simultaneously. ` +
     `Most hiring grants are approved within 2–4 weeks; innovation grants take 3–6 months.`;
 
 const DEFAULT_US_SHORT_ANSWER = (
@@ -1295,6 +1295,48 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                     </div>
                 </section>
             )}
+            {/* Semantic FAQ Section matching FAQPage Schema */}
+            <section id="faq" className="bg-slate-50 py-12 px-4 border-t border-gray-200">
+                <div className="max-w-4xl mx-auto space-y-6">
+                    <div className="text-center space-y-2 mb-8">
+                        <h3 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
+                            Frequently Asked Questions: {page.industryName} Funding in {page.cityName}
+                        </h3>
+                        <p className="text-sm text-slate-600">
+                            Clear answers to the most common questions regarding {page.industryName.toLowerCase()} grants, equity, and stacking in {page.cityName}, {page.provinceName}.
+                        </p>
+                    </div>
+
+                    <div className="space-y-4">
+                        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                            <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                How much funding can a {page.industryName.toLowerCase()} business get in {page.cityName}?
+                            </h4>
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                                Eligible {page.industryName.toLowerCase()} companies in {page.cityName}, {page.provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, {page.provinceName} regional, and local economic development programs.
+                            </p>
+                        </div>
+
+                        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                            <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                Do businesses in {page.cityName} have to give up equity for government grants?
+                            </h4>
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                                No. Official government business grants and R&D wage subsidies in {page.provinceName} are non-dilutive. Founders retain 100% of their equity and board control.
+                            </p>
+                        </div>
+
+                        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                            <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                Can companies in {page.cityName} stack federal and {page.provinceName} funding?
+                            </h4>
+                            <p className="text-sm text-slate-600 leading-relaxed">
+                                Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with {page.provinceName} state/provincial hiring and commercialization grants.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
             {/* Internal Linking / SEO Silo */}
             <section className="bg-white py-12 px-4 border-t border-gray-200">

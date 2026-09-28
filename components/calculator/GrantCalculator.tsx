@@ -2239,6 +2239,9 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         );
     }
 
+    const activeRegionName = REGION_NAMES[data.province?.toLowerCase()] || data.province || 'Regional';
+    const activeIndustryName = INDUSTRY_NAMES[data.industry?.toLowerCase()] || data.industry || 'Business';
+
     return (
         <Card className={`shadow-xl border-green-100 mx-auto transition-all duration-300 ${step === 6 && !isSuccess ? 'max-w-6xl' : 'max-w-2xl'}`}>
             {/* Exclude header on analysis, payment, and report steps */}
@@ -2526,6 +2529,18 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         </div>
                                     </div>
 
+                                    <div className="space-y-1.5 text-left">
+                                        <Label htmlFor="calc-phone-input" className="text-xs font-extrabold text-slate-600">Mobile Phone Number (Optional)</Label>
+                                        <Input
+                                            id="calc-phone-input"
+                                            type="tel"
+                                            placeholder="(555) 000-0000"
+                                            className="h-11 bg-white text-sm"
+                                            value={data.phone}
+                                            onChange={(e) => updateData("phone", e.target.value)}
+                                        />
+                                    </div>
+
                                     <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-left">
                                         <input
                                             type="checkbox"
@@ -2697,23 +2712,25 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 >
                                     <div>
                                         <div className="flex items-center justify-between">
-                                            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base">Find My Funding</h4>
+                                            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
+                                                {activeRegionName} Funding Matches
+                                            </h4>
                                             {selectedProductId === 'funding-match-report' && <CheckCircle className="w-4 h-4 text-indigo-600 shrink-0" />}
                                         </div>
-                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Funding Matches Only</p>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">{activeIndustryName} Match Report</p>
                                         
                                         <ul className="mt-4 space-y-2.5 text-xs text-slate-600 font-medium">
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                                                <span>See every funding program that matches your business</span>
+                                                <span>Active {activeRegionName} & federal grant matches</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                                                <span>Custom Funding Potential Score</span>
+                                                <span>Custom {activeIndustryName} Funding Score</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-600 font-bold shrink-0">✓</span>
-                                                <span>Know exactly when to apply</span>
+                                                <span>Intake deadlines & application readiness</span>
                                             </li>
                                         </ul>
 
@@ -2756,7 +2773,9 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     </div>
                                     <div>
                                         <div className="flex items-center justify-between">
-                                            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base">Build My Funding Plan</h4>
+                                            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
+                                                {activeRegionName} Stacking Roadmap
+                                            </h4>
                                             {selectedProductId === 'funding-roadmap' && <CheckCircle className="w-4 h-4 text-indigo-600 shrink-0" />}
                                         </div>
                                         <p className="text-[10px] text-indigo-600 font-bold uppercase tracking-wider mt-0.5 font-semibold">Recommended Pathway</p>
@@ -2764,11 +2783,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         <ul className="mt-4 space-y-2.5 text-xs text-slate-650 font-medium">
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-indigo-650 font-bold shrink-0">✓</span>
-                                                <span>Everything in Find My Funding</span>
+                                                <span>Everything in {activeRegionName} Funding Matches</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-indigo-650 font-bold shrink-0">✓</span>
-                                                <span>Step-by-Step Stacking Roadmap</span>
+                                                <span>Step-by-Step {activeRegionName} Stacking Roadmap</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-indigo-650 font-bold shrink-0">✓</span>
@@ -2776,7 +2795,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-indigo-650 font-bold shrink-0">✓</span>
-                                                <span>Custom Document Checklist</span>
+                                                <span>Custom {activeIndustryName} Document Checklist</span>
                                             </li>
                                         </ul>
 
@@ -2816,27 +2835,29 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 >
                                     <div>
                                         <div className="flex items-center justify-between">
-                                            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base">Maximize My Funding</h4>
+                                            <h4 className="font-extrabold text-slate-900 text-sm sm:text-base leading-tight">
+                                                Complete {activeIndustryName} Toolkit
+                                            </h4>
                                             {selectedProductId === 'funding-bundle' && <CheckCircle className="w-4 h-4 text-indigo-600 shrink-0" />}
                                         </div>
-                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Maximum Funding Access</p>
+                                        <p className="text-[10px] text-slate-400 font-bold uppercase tracking-wider mt-0.5">Maximum {activeRegionName} Funding Access</p>
                                         
                                         <ul className="mt-4 space-y-2.5 text-xs text-slate-600 font-medium">
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-605 font-bold shrink-0">✓</span>
-                                                <span>Everything in Build My Plan</span>
+                                                <span>Everything in {activeRegionName} Stacking Roadmap</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-605 font-bold shrink-0">✓</span>
-                                                <span>Increase your approval chances (Templates)</span>
+                                                <span>Winning {activeIndustryName} Narrative Templates</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-605 font-bold shrink-0">✓</span>
-                                                <span>Successful Narratives Template Library</span>
+                                                <span>Audit-Proof Budget & Cost-Share Worksheets</span>
                                             </li>
                                             <li className="flex items-start gap-1.5">
                                                 <span className="text-emerald-605 font-bold shrink-0">✓</span>
-                                                <span>Priority Analyst Email Support</span>
+                                                <span>Priority Funding Advisor Email Review</span>
                                             </li>
                                         </ul>
 
@@ -2894,6 +2915,16 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         required 
                                     />
                                     <p className="text-xs text-red-500 mt-1 hidden" id="email-error">Please enter a valid email to proceed.</p>
+                                </div>
+                                <div>
+                                    <Input 
+                                        id="calc-phone-for-report" 
+                                        type="tel" 
+                                        placeholder="Phone Number (for SMS & AI advisor update)" 
+                                        className="h-11 bg-white text-sm" 
+                                        value={data.phone} 
+                                        onChange={(e) => updateData("phone", e.target.value)} 
+                                    />
                                 </div>
                             </div>
 

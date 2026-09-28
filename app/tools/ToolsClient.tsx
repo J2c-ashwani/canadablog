@@ -12,7 +12,7 @@ export default function ToolsClient() {
 
   // Unlock State
   const [isUnlocked, setIsUnlocked] = useState<boolean>(false)
-  const [formState, setFormState] = useState({ email: "", name: "", company: "" })
+  const [formState, setFormState] = useState({ email: "", name: "", company: "", phone: "" })
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState("")
 
@@ -114,6 +114,13 @@ export default function ToolsClient() {
           style={inputStyle}
           value={formState.company}
           onChange={(e) => setFormState(prev => ({ ...prev, company: e.target.value }))}
+        />
+        <input
+          type="tel"
+          placeholder="Phone Number (optional)"
+          style={inputStyle}
+          value={formState.phone}
+          onChange={(e) => setFormState(prev => ({ ...prev, phone: e.target.value }))}
         />
         <input
           type="email"

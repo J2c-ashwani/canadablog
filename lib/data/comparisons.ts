@@ -1007,6 +1007,181 @@ export const comparisonsDatabase: ProgramComparison[] = [
       }
     ],
     "stackingRecommendation": "<p>Conduct core software engineering in a Canadian subsidiary to claim 64% cash refunds under SR&ED, and claim US R&D credits in your parent entity.</p>\n        <p><strong>Stacking Playbook:</strong></p>\n        <ul class=\"list-disc pl-6 space-y-2 text-sm text-slate-600\">\n          <li>Ensure separate tracking logs are maintained for each program.</li>\n          <li>Submit project schedules before committing matching capital.</li>\n        </ul>\n      "
+  },
+  {
+    "slug": "csbfp-vs-bdc",
+    "title": "CSBFP vs. BDC: Comparing Canadian Small Business Loans & Financing",
+    "description": "Compare the Canada Small Business Financing Program (CSBFP up to $1.15M) against direct BDC Business Loans. Learn interest rates, collateral rules, and stacking tactics.",
+    "prog1Id": "csbfp",
+    "prog2Id": "bdc-growth-loan",
+    "points": [
+      {
+        "dimension": "Funding Type",
+        "prog1Value": "Government-backed commercial bank loan (85% federal loss-sharing)",
+        "prog2Value": "Direct development bank financing (BDC balance sheet)"
+      },
+      {
+        "dimension": "Maximum Financing Amount",
+        "prog1Value": "Up to $1,150,000 ($1M for property, $500K equipment, $150K working capital)",
+        "prog2Value": "Up to $100,000 online; up to $35 Million custom growth loans"
+      },
+      {
+        "dimension": "Eligible Uses of Funds",
+        "prog1Value": "Commercial real estate, leasehold improvements, heavy equipment, intangible assets",
+        "prog2Value": "Working capital, inventory, international market expansion, M&A acquisitions"
+      },
+      {
+        "dimension": "Collateral & Personal Guarantees",
+        "prog1Value": "Bank takes charge on purchased asset; personal guarantee legally capped at 25%",
+        "prog2Value": "No personal primary residence lien required for standard online loans"
+      },
+      {
+        "dimension": "Approval & Disbursement Speed",
+        "prog1Value": "2 to 6 weeks (adjudicated through chartered banks like RBC, TD, Scotiabank)",
+        "prog2Value": "48 to 72 hours for digital loans under $100K; 3–4 weeks for large loans"
+      }
+    ],
+    "stackingRecommendation": "<p><strong>Yes! CSBFP and BDC are complementary, not mutually exclusive.</strong></p><p>Savvy Canadian founders use this exact stacking workflow:</p><ol class=\"list-decimal pl-6 space-y-2 text-sm text-slate-600\"><li><strong>Asset Acquisition:</strong> Use a CSBFP-registered loan through your primary commercial bank to finance up to $1,000,000 in physical real estate or $500,000 in heavy production equipment with only a 10–20% equity contribution.</li><li><strong>Working Capital Bridge:</strong> Secure a $100,000 BDC digital expansion loan to cover immediate operational payroll, inventory buildup, and digital marketing that traditional bank covenants exclude.</li><li><strong>Cash Flow Preservation:</strong> Negotiate an interest-only grace period with BDC (up to 6 months) while your CSBFP-financed machinery comes online and generates revenue.</li></ol>"
+  },
+  {
+    "slug": "calcompetes-vs-etp",
+    "title": "California Competes Tax Credit vs. ETP: California Growth Incentives Compared",
+    "description": "Compare the California Competes Tax Credit (CCTC up to $5M) with the Employment Training Panel (ETP up to $750K cash). Learn which program yields faster ROI.",
+    "prog1Id": "california-competes-tax-credit",
+    "prog2Id": "etp-california",
+    "points": [
+      {
+        "dimension": "Incentive Type",
+        "prog1Value": "Non-refundable corporate income tax credit (offsets CA state franchise tax)",
+        "prog2Value": "Performance-based direct cash reimbursement ($15–$26/hr per trainee)"
+      },
+      {
+        "dimension": "Typical Award Size",
+        "prog1Value": "$100,000 to $5,000,000+ (competitive allocation across 3 annual windows)",
+        "prog2Value": "$50,000 to $750,000 (reimburses actual verified training hours)"
+      },
+      {
+        "dimension": "Core Qualifying Metric",
+        "prog1Value": "Net full-time job creation and aggregate capital investment in California",
+        "prog2Value": "Retraining frontline workers in advanced tech, manufacturing, or green systems"
+      },
+      {
+        "dimension": "Carryforward & Liquidity",
+        "prog1Value": "6-year carryforward period to offset future high corporate income tax years",
+        "prog2Value": "Direct cash payments deposited into business bank account as milestones complete"
+      },
+      {
+        "dimension": "Audit & Compliance Burden",
+        "prog1Value": "High: Annual Franchise Tax Board (FTB) compliance verification audits",
+        "prog2Value": "Moderate: Monthly digital training roster submissions and wage verifications"
+      }
+    ],
+    "stackingRecommendation": "<p><strong>CCTC and ETP represent California's ultimate expansion stack!</strong> Because one is an income tax credit and the other is a workforce training grant, they can be stacked on the exact same project without any conflict.</p><p><strong>Execution Strategy:</strong></p><ol class=\"list-decimal pl-6 space-y-2 text-sm text-slate-600\"><li><strong>Apply for CCTC first:</strong> Commit to hiring 10–50 full-time technical or operational personnel over a 5-year window during one of GO-Biz's three annual allocation rounds (January, March, or August).</li><li><strong>Layer ETP alongside hiring:</strong> As new hires are onboarded and existing staff are retrained on new technical systems or production lines, submit their training hours to ETP for $15–$26/hour cash reimbursements.</li><li><strong>Tax Mitigation:</strong> Apply CCTC credits against your California corporate income tax at year-end, while utilizing ETP cash payments to offset ongoing monthly engineering payroll.</li></ol>"
+  },
+  {
+    "slug": "sba-7a-vs-504",
+    "title": "SBA 7(a) vs. SBA 504: Which U.S. Small Business Loan Is Best?",
+    "description": "Compare the SBA 7(a) working capital loan ($5M cap) against the SBA 504 commercial real estate loan ($5.5M cap). Learn interest rates, down payments, and qualification rules.",
+    "prog1Id": "sba-7a-loans",
+    "prog2Id": "sba-504",
+    "points": [
+      {
+        "dimension": "Maximum Loan Amount",
+        "prog1Value": "Up to $5,000,000 (standard 7a program)",
+        "prog2Value": "Up to $5,000,000 ($5.5M for manufacturers and clean energy projects)"
+      },
+      {
+        "dimension": "Permitted Uses of Funds",
+        "prog1Value": "Working capital, payroll, debt refinance, inventory, business acquisition, equipment",
+        "prog2Value": "Owner-occupied commercial real estate, land acquisition, ground-up construction, heavy machinery"
+      },
+      {
+        "dimension": "Equity Down Payment",
+        "prog1Value": "Typically 10% to 20% (flexible depending on lender and collateral)",
+        "prog2Value": "Strictly 10% for standard facilities (15% for startups or single-purpose buildings)"
+      },
+      {
+        "dimension": "Interest Rate Structure",
+        "prog1Value": "Variable (pegged to Wall Street Journal Prime + 2.25% to 4.75%) or fixed",
+        "prog2Value": "Below-market fixed interest rate (pegged to 10-year US Treasury bond yields)"
+      },
+      {
+        "dimension": "Loan Maturity Terms",
+        "prog1Value": "Up to 10 years for working capital and equipment; up to 25 years for real estate",
+        "prog2Value": "10, 20, or 25-year fully amortized fixed terms with zero balloon payments"
+      }
+    ],
+    "stackingRecommendation": "<p><strong>Stacking 7(a) and 504 loans for commercial expansion:</strong> While you cannot use both programs for the exact same real estate purchase, you can use them concurrently for a complete business scale-up.</p><p><strong>Recommended Blueprint:</strong></p><ul class=\"list-disc pl-6 space-y-2 text-sm text-slate-600\"><li><strong>Real Estate & Heavy Assets:</strong> Use the SBA 504 loan structure (50% lender / 40% CDC / 10% down) to lock in low 25-year fixed interest rates for purchasing your warehouse, clinic, or corporate facility.</li><li><strong>Operating Liquidity:</strong> Apply for a smaller SBA 7(a) Express or standard loan ($150K–$500K) to fund initial leasehold improvements, tenant fixtures, and working capital to ensure liquidity remains strong during the move.</li></ul>"
+  },
+  {
+    "slug": "irap-vs-sif",
+    "title": "NRC IRAP vs. Strategic Innovation Fund (SIF): Canadian Tech Grants Compared",
+    "description": "Compare NRC-IRAP ($500K–$1M non-repayable tech grant) against Canada's Strategic Innovation Fund (SIF $10M–$50M+ scale-up funding). Learn which program fits your company size.",
+    "prog1Id": "irap-grant",
+    "prog2Id": "sif",
+    "points": [
+      {
+        "dimension": "Target Company Stage",
+        "prog1Value": "Early-stage to growth SMEs (1 to 500 employees) undertaking technology R&D",
+        "prog2Value": "Mid-market to large industrial anchors and scaleups with major capital expenditure"
+      },
+      {
+        "dimension": "Funding Amount & Structure",
+        "prog1Value": "Up to $500,000 (standard) to $1M+ non-repayable grant reimbursing 50–80% internal wages",
+        "prog2Value": "$10 Million to $50 Million+ in mixed non-repayable and conditionally repayable contributions"
+      },
+      {
+        "dimension": "Application & Review Timeline",
+        "prog1Value": "Fast: 6 to 12 weeks from ITA initial meeting to first project disbursement",
+        "prog2Value": "Long: 6 to 18 months involving formal Statement of Intent and full business case due diligence"
+      },
+      {
+        "dimension": "Job Creation & Economic Commitments",
+        "prog1Value": "Focus on building technical capability and domestic IP retention within Canadian payroll",
+        "prog2Value": "Legally binding commitments to hundreds of long-term jobs, university research, and clean transition"
+      },
+      {
+        "dimension": "Intellectual Property Ownership",
+        "prog1Value": "100% retained by the applicant company; zero government equity or warrants",
+        "prog2Value": "Applicant retains IP, but must commit to keeping economic benefits and production in Canada"
+      }
+    ],
+    "stackingRecommendation": "<p><strong>The Canadian Scale-Up Progression:</strong> IRAP and SIF are designed for sequential growth phases rather than simultaneous same-project stacking.</p><p><strong>Strategic Growth Blueprint:</strong></p><ol class=\"list-decimal pl-6 space-y-2 text-sm text-slate-600\"><li><strong>Technology Feasibility (IRAP Phase):</strong> Utilize NRC-IRAP during TRL 4–7 to fund senior engineering wages, develop software architectures, and prove core algorithmic or hardware prototypes with zero dilution.</li><li><strong>Pilot Production & Provincial Match:</strong> Layer provincial matching grants (e.g. Ontario SDF or Alberta Innovates) alongside IRAP to construct demonstration facilities.</li><li><strong>Commercial Manufacturing (SIF Scale-Up):</strong> Once the core technology is validated, revenue reaches $10M+, and you prepare to build a $30M+ commercial manufacturing or data processing facility, assemble a consortium application for SIF Stream 1 or Stream 2 funding.</li></ol>"
+  },
+  {
+    "slug": "usda-reap-vs-doe-clean-energy",
+    "title": "USDA REAP vs. DOE Clean Energy Grants: U.S. Clean Tech Incentives Compared",
+    "description": "Compare USDA Rural Energy for America Program (REAP up to $1M grant) against Department of Energy (DOE) Clean Energy Grants ($500K–$10M+). Compare eligibility, match requirements, and timelines.",
+    "prog1Id": "usda-reap",
+    "prog2Id": "doe-clean-energy",
+    "points": [
+      {
+        "dimension": "Geographic Eligibility",
+        "prog1Value": "Strictly rural areas (populations under 50,000) or agricultural producers anywhere",
+        "prog2Value": "Nationwide across all 50 states (urban, suburban, and rural facilities eligible)"
+      },
+      {
+        "dimension": "Grant Funding Limits",
+        "prog1Value": "Up to $1,000,000 for renewable systems; up to $500,000 for energy efficiency upgrades",
+        "prog2Value": "Up to $500,000 for early research; $5 Million to $50 Million+ for pilot demonstrations"
+      },
+      {
+        "dimension": "Federal Cost-Share Percentage",
+        "prog1Value": "Covers up to 50% of total eligible project costs (backed by IRA funding)",
+        "prog2Value": "Typically 50% to 80% cost share depending on specific topic solicitation and TRL stage"
+      },
+      {
+        "dimension": "Technology Focus",
+        "prog1Value": "Proven, commercially available technologies (solar arrays, biomass, HVAC, geothermal)",
+        "prog2Value": "Novel, cutting-edge clean tech innovations (hydrogen, carbon capture, advanced grid battery)"
+      },
+      {
+        "dimension": "Audit & Reporting Requirements",
+        "prog1Value": "Straightforward energy audit documentation (3-year simple payback calculation)",
+        "prog2Value": "Extensive federal quarterly milestone tracking, Community Benefits Plan (CBP), Davis-Bacon compliance"
+      }
+    ],
+    "stackingRecommendation": "<p><strong>Stacking REAP and DOE for Industrial Decarbonization:</strong> While you cannot double-count costs for the exact same equipment invoice, you can deploy both across facility modernization.</p><p><strong>Execution Strategy:</strong></p><ul class=\"list-disc pl-6 space-y-2 text-sm text-slate-600\"><li><strong>On-Site Power (USDA REAP):</strong> Install a rooftop or ground-mount commercial solar array and high-efficiency heat pumps at your rural manufacturing facility, claiming 50% cash grant reimbursement via REAP plus the 30% Section 48 ITC tax credit.</li><li><strong>Novel Process Engineering (DOE Grants):</strong> Simultaneously apply for DOE industrial decarbonization or SBIR grants to fund R&D into your proprietary low-emission manufacturing machinery and software optimization algorithms.</li></ul>"
   }
 ];
 

@@ -7,6 +7,7 @@ import { validateEmail } from "@/lib/email-validator";
 import { validatePhone } from "@/lib/phone-validator";
 import { calculateLeadIntelligence } from "@/lib/leads/scoring";
 import { applyRateLimit } from "@/lib/rate-limit";
+import { triggerVoiceCallingAgent } from "@/lib/voice-agent/outbound-caller";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -293,6 +294,27 @@ export async function POST(request: NextRequest) {
     }).catch((error) => {
       console.error('❌ Failed to send contact confirmation email:', error);
     });
+
+    // Trigger AI Voice Calling Agent if a valid phone number was provided (fire-and-forget)
+    if (phone && phone !== "Not provided" && phone !== "N/A") {
+      triggerVoiceCallingAgent({
+        name: finalName,
+        phone,
+        email,
+        companyName: finalCompanyName,
+        state: state || leadData.state,
+        country: country || leadData.country,
+        industry: finalIndustry,
+        fundingAmount: finalFundingAmount,
+        fundingPurpose: finalFundingPurpose,
+        score,
+        tier,
+        source: leadData.source,
+        pagePath: leadData.pagePath,
+      }).catch((err) => {
+        console.error("❌ Failed to trigger voice calling agent:", err);
+      });
+    }
 
     return NextResponse.json({
       success: true,

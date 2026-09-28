@@ -129,9 +129,197 @@ export default function LocalResourceHub({
     }
   };
 
+  const TIER_A_CANADIAN_HUBS: Record<string, LocalResource[]> = {
+    toronto: [
+      {
+        name: 'MaRS Discovery District',
+        agency: 'North America’s Largest Urban Innovation Hub',
+        services: ['Venture scaling programs', 'R&D commercialization', 'Investor capital connections'],
+        url: 'https://www.marsdd.com/',
+      },
+      {
+        name: 'Ontario Centre of Innovation (OCI)',
+        agency: 'Provincial Commercialization Partner',
+        services: ['Voucher for Innovation & Productivity', 'TalentReady grants', 'Scaleup voucher support'],
+        url: 'https://www.oc-innovation.ca/',
+      },
+      {
+        name: 'FedDev Ontario',
+        agency: 'Federal Regional Development Agency',
+        services: ['Business scale-up funding', 'Regional innovation ecosystem', 'Zero-interest scale-up loans'],
+        url: 'https://ised-isde.canada.ca/site/feddev-ontario/en',
+      },
+    ],
+    ottawa: [
+      {
+        name: 'Invest Ottawa (Bayview Yards)',
+        agency: 'Regional Innovation Centre',
+        services: ['Scaleup platform', 'Venture capital facilitation', 'Global market expansion'],
+        url: 'https://www.investottawa.ca/',
+      },
+      {
+        name: 'L-Spark Accelerator',
+        agency: 'Enterprise SaaS & MedTech Accelerator',
+        services: ['B2B SaaS scaling mentorship', 'Corporate partnership access', 'Pre-seed to Series A funding prep'],
+        url: 'https://www.l-spark.com/',
+      },
+      {
+        name: 'FedDev Ontario (Eastern Ontario)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Regional innovation scaling', 'Advanced manufacturing streams', 'Technology adoption'],
+        url: 'https://ised-isde.canada.ca/site/feddev-ontario/en',
+      },
+    ],
+    vancouver: [
+      {
+        name: 'Innovate BC',
+        agency: 'Crown Innovation Agency',
+        services: ['Ignite commercialization grants ($300K)', 'BC hiring subsidies', 'Tech market expansion'],
+        url: 'https://www.innovatebc.ca/',
+      },
+      {
+        name: 'BC Tech Association',
+        agency: 'Provincial Tech Ecosystem Anchor',
+        services: ['Scaleup advisory', 'Hypergrowth accelerator', 'Government funding navigation'],
+        url: 'https://wearebctech.com/',
+      },
+      {
+        name: 'PacifiCan (Pacific Economic Development Canada)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Business Scale-up & Productivity', 'Regional innovation grants', 'Export market launch'],
+        url: 'https://www.canada.ca/en/pacific-economic-development.html',
+      },
+    ],
+    calgary: [
+      {
+        name: 'Platform Calgary',
+        agency: 'Calgary Innovation Centre Anchor',
+        services: ['Junction & Scale Programs', 'Founder funding advisory', 'Investor pitch access'],
+        url: 'https://www.platformcalgary.com/',
+      },
+      {
+        name: 'Opportunity Calgary Investment Fund (OCIF)',
+        agency: 'City of Calgary Strategic Investment Fund',
+        services: ['Multi-million dollar anchor grants', 'Tech ecosystem expansion', 'Talent acceleration'],
+        url: 'https://www.calgaryeconomicdevelopment.com/ocif/',
+      },
+      {
+        name: 'PrairiesCan (Alberta Office)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Business Scale-up & Productivity (BSP)', 'Community Economic Development', 'Clean tech capital'],
+        url: 'https://www.canada.ca/en/prairies-economic-development.html',
+      },
+    ],
+    montreal: [
+      {
+        name: 'Mila - Quebec Artificial Intelligence Institute',
+        agency: 'Global AI Research Hub',
+        services: ['AI tech transfer', 'Collaborative R&D partnerships', 'Deep-tech commercialization'],
+        url: 'https://mila.quebec/en/',
+      },
+      {
+        name: 'District 3 Innovation Centre',
+        agency: 'Concordia University Tech Incubator',
+        services: ['Biohub & deep-tech incubation', 'Pre-seed funding navigation', 'Patent & IP strategy'],
+        url: 'https://www.district3.co/',
+      },
+      {
+        name: 'Canada Economic Development for Quebec Regions (CED)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Regional economic growth through innovation', 'Commercialization loans', 'Export market funding'],
+        url: 'https://dec.canada.ca/en/',
+      },
+    ],
+    mississauga: [
+      {
+        name: 'IDEA Mississauga & Altitude Accelerator',
+        agency: 'Municipal Innovation Network & Regional Innovation Centre',
+        services: ['Tech & life sciences incubation', 'Investor Readiness Program', 'Federal grant advisory'],
+        url: 'https://www.ideamississauga.ca/',
+      },
+      {
+        name: 'Ontario Centre of Innovation (OCI)',
+        agency: 'Provincial Commercialization Partner',
+        services: ['Collaborative R&D grants', 'Commercialization vouchers', 'TalentReady subsidies'],
+        url: 'https://www.oc-innovation.ca/',
+      },
+      {
+        name: 'FedDev Ontario (GTA West)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Automotive & manufacturing innovation', 'Life sciences scaling', 'Export capital'],
+        url: 'https://ised-isde.canada.ca/site/feddev-ontario/en',
+      },
+    ],
+    waterloo: [
+      {
+        name: 'Communitech',
+        agency: 'Waterloo Region Tech Association',
+        services: ['Scaleup advisory', 'Fast Track corporate matching', 'Capital and grant roadmapping'],
+        url: 'https://www.communitech.ca/',
+      },
+      {
+        name: 'Accelerator Centre (Waterloo)',
+        agency: 'Ranked #1 Global Tech Incubator',
+        services: ['Four-phase structured milestone funding', 'Seed grants & angel network', 'IP protection roadmap'],
+        url: 'https://www.acceleratorcentre.com/',
+      },
+      {
+        name: 'FedDev Ontario (Kitchener-Waterloo)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Tech scaleup productivity funding', 'Hardware commercialization', 'Advanced computing grants'],
+        url: 'https://ised-isde.canada.ca/site/feddev-ontario/en',
+      },
+    ],
+    kitchener: [
+      {
+        name: 'Communitech (Kitchener Hub)',
+        agency: 'Waterloo Region Tech Association',
+        services: ['Scaleup advisory', 'Fast Track corporate matching', 'Capital and grant roadmapping'],
+        url: 'https://www.communitech.ca/',
+      },
+      {
+        name: 'Accelerator Centre',
+        agency: 'World-Leading University Tech Incubator',
+        services: ['Four-phase venture scaleup', 'Seed grants & angel network', 'IP protection roadmap'],
+        url: 'https://www.acceleratorcentre.com/',
+      },
+      {
+        name: 'FedDev Ontario',
+        agency: 'Federal Regional Development Agency',
+        services: ['Tech scaleup productivity funding', 'Hardware commercialization', 'Advanced computing grants'],
+        url: 'https://ised-isde.canada.ca/site/feddev-ontario/en',
+      },
+    ],
+    edmonton: [
+      {
+        name: 'Edmonton Unlimited',
+        agency: 'Municipal Innovation & Tech Authority',
+        services: ['Alberta Catalyst Program', 'Propel pre-accelerator', 'Non-dilutive grant strategy'],
+        url: 'https://edmontonunlimited.com/',
+      },
+      {
+        name: 'Alberta Innovates (Edmonton)',
+        agency: 'Provincial Research & Innovation Agency',
+        services: ['Digital Traction Voucher ($50K)', 'Continuous R&D grants', 'Commercialization associates'],
+        url: 'https://albertainnovates.ca/',
+      },
+      {
+        name: 'PrairiesCan (Alberta North)',
+        agency: 'Federal Regional Development Agency',
+        services: ['Clean tech demonstration grants', 'Regional industrial growth', 'Export expansion funding'],
+        url: 'https://www.canada.ca/en/prairies-economic-development.html',
+      },
+    ],
+  };
+
   // 2. Resolve Regional Business Support Agencies
   const getSupportAgencies = (): LocalResource[] => {
     if (isCanada) {
+      const cityKey = cityName.toLowerCase().trim();
+      if (TIER_A_CANADIAN_HUBS[cityKey]) {
+        return TIER_A_CANADIAN_HUBS[cityKey];
+      }
+
       const fedDevName = normSlug === 'on' ? 'FedDev Ontario'
         : normSlug === 'bc' ? 'PacifiCan'
         : ['ab', 'sk', 'mb'].includes(normSlug) ? 'PrairiesCan'

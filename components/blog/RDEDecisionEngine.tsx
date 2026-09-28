@@ -25,6 +25,7 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
   const [answers, setAnswers] = useState<Record<string, string>>({});
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
+  const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -73,6 +74,7 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
     setCurrentQuestionIdx(0);
     setEmail('');
     setName('');
+    setPhone('');
     setSubmitted(false);
     setError('');
   };
@@ -104,6 +106,7 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
+          phone: phone.trim() ? phone.trim() : 'N/A',
           name: name || 'Founder',
           province: answers.province || 'on',
           industry: answers.industry || 'Technology',
@@ -283,14 +286,23 @@ export default function RDEDecisionEngine({ configId }: RDEDecisionEngineProps) 
                     </p>
                   </div>
                   <form onSubmit={handleLeadSubmit} className="space-y-3">
-                    <div className="flex flex-col sm:flex-row gap-3">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                       <input
                         type="text"
                         placeholder="Your Name (Optional)"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="flex-1 h-11 px-4 bg-slate-900 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                        className="h-11 px-4 bg-slate-900 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors"
                       />
+                      <input
+                        type="tel"
+                        placeholder="Phone Number (Optional)"
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        className="h-11 px-4 bg-slate-900 border border-white/10 rounded-xl text-xs text-white focus:outline-none focus:border-indigo-500 transition-colors"
+                      />
+                    </div>
+                    <div className="flex flex-col sm:flex-row gap-3">
                       <input
                         type="email"
                         required

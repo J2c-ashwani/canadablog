@@ -20,6 +20,7 @@ export function FundingEstimator({ defaultRegion = 'on', defaultIndustry = 'tech
   const [revenue, setRevenue] = useState('$500K-$2M');
   const [companyName, setCompanyName] = useState('');
   const [email, setEmail] = useState('');
+  const [phone, setPhone] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [result, setResult] = useState<{ min: string; max: string; matches: string[] } | null>(null);
   const [error, setError] = useState('');
@@ -87,7 +88,7 @@ export function FundingEstimator({ defaultRegion = 'on', defaultIndustry = 'tech
       const payload = {
         name: `Founder (${companyName})`,
         email,
-        phone: 'N/A',
+        phone: phone.trim() ? phone.trim() : 'N/A',
         category: 'Funding Estimator Tool',
         message: `Estimator Match: ${calculated.min} - ${calculated.max} for ${companyName}. Profile: Size: ${employees}, Revenue: ${revenue}, Industry: ${industry}, Region: ${region}.`,
         companyName,
@@ -287,6 +288,17 @@ export function FundingEstimator({ defaultRegion = 'on', defaultIndustry = 'tech
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="e.g. founder@acme.com"
+                className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-neutral-800 dark:bg-neutral-900"
+              />
+            </div>
+
+            <div>
+              <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Phone Number (Optional)</label>
+              <input
+                type="tel"
+                value={phone}
+                onChange={(e) => setPhone(e.target.value)}
+                placeholder="e.g. (555) 000-0000"
                 className="w-full rounded-lg border border-slate-200 bg-white px-3 py-2 text-sm dark:border-neutral-800 dark:bg-neutral-900"
               />
             </div>

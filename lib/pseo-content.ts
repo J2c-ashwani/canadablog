@@ -69,14 +69,14 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
                     insiderTip: "When pitching an ITA, emphasize the 'commercialization' aspect as much as the technology. IRAP wants to fund R&D that directly translates into aggressive domestic job hiring and export revenue within 24 months of project completion."
                 },
                 {
-                    name: "Canada Digital Adoption Program (CDAP)",
-                    description: "CDAP is designed to help small to medium-sized enterprises (SMEs) adopt digital technologies. The 'Boost Your Business Technology' stream provides a $15,000 non-repayable grant to hire a digital advisor who develops a comprehensive digital adoption plan. Once the plan is approved, the business unlocks access to a $100,000 interest-free loan from the Business Development Bank of Canada (BDC) to actually implement the technology (e.g., buying software, upgrading servers, implementing AI tools), plus an additional $7,300 wage subsidy to hire a youth to help with the digital transition.",
+                    name: "Regional Innovation & Scale-Up Programs (Regional Development Agencies)",
+                    description: "Canada's Regional Development Agencies (FedDev Ontario, PacifiCan, PrairiesCan, CED Quebec, ACOA) provide substantial non-dilutive capital and conditionally repayable contributions—often between $250,000 and $5,000,000—for technology companies scaling commercial operations. Funding covers industrial demonstration, advanced software and hardware deployment, technical talent onboarding, and global market expansion with 0% interest and structured multi-year repayment terms.",
                     disqualifiers: [
-                        "The business earned less than $500,000 in gross revenue in the previous tax year.",
-                        "The funds are strictly for maintaining existing legacy systems rather than adopting a transformative digital strategy.",
-                        "Operating as a non-profit or a business with passive income (like real estate holding companies)."
+                        "Pre-revenue early conceptual prototypes with no commercial customer traction or market validation.",
+                        "Companies unable to provide 50% private co-investment or matching operating capital.",
+                        "Projects that do not generate measurable regional economic benefits, domestic supply-chain growth, or technical full-time jobs."
                     ],
-                    insiderTip: "Tech startups often ignore CDAP thinking it is only for brick-and-mortar stores. This is a mistake. If your tech company needs to adopt advanced CRM systems (Salesforce), cybersecurity infrastructure (SOC2 compliance readiness), or ERP systems to scale your operations, CDAP will effectively give you an interest-free $100K to do so."
+                    insiderTip: "RDA programs evaluate regional economic multiplier effects, domestic talent retention, and export potential. Align your project narrative with regional industrial priorities (clean tech, advanced software, AI, life sciences) to drastically improve approval probability."
                 }
             ]
         },
@@ -598,14 +598,14 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
             introduction: "Hospitality funding requires navigating highly localized tourism boards, strict provincial employment protocols, and massive federal digitalization mandates.",
             programs: [
                 {
-                    name: "Canada Digital Adoption Program (CDAP) - Grow Your Business Online",
-                    description: "For main street hospitality (cafes, independent restaurants, boutique motels), the CDAP 'Grow Your Business Online' micro-grant is the definitive starting point. It provides a highly accessible $2,400 non-repayable grant specifically designed to help customer-facing businesses build e-commerce capabilities. Beyond the cash, it pairs the restaurateur with a network of e-commerce advisors. This grant completely subsidizes the cost of integrating a direct online ordering system (bypassing the ruinous 30% commissions charged by UberEats or DoorDash), launching targeted SEO marketing campaigns, or implementing robust reservation software. It is the fastest path to government capital for a traditional brick-and-mortar hospitality operation.",
+                    name: "Canada Small Business Financing Program (CSBFP) & Main Street Digital Grants",
+                    description: "For independent hospitality operators (restaurants, cafes, bistros, boutique hotels), government-backed commercial equipment and leasehold financing through CSBFP provides up to $1,150,000 in financing (up to $500,000 for specialized kitchen equipment and POS installations, and $150,000 in working capital/intangible digital costs) with an 85% federal loss-sharing guarantee. Combined with provincial Digital Main Street incentives, hospitality operators can fund commercial renovations, digital booking engines, and point-of-sale architectures with only 10% equity down.",
                     disqualifiers: [
-                        "Applying as a massive corporate franchise or a multi-national chain (this is strictly for independent SMEs).",
-                        "Attempting to use the funds to simply redesign an existing, static website without adding actual direct-to-consumer e-commerce capabilities.",
-                        "Using the funds to pay standard recurring operational costs like monthly POS subscription fees or general web hosting."
+                        "Applying as a corporate franchise or multinational chain with gross annual revenue exceeding $10 million.",
+                        "Attempting to use the funds to simply pay standard recurring operational costs rather than capital equipment or digital improvements.",
+                        "Using the funds exclusively to refinance existing defaulted commercial debt."
                     ],
-                    insiderTip: "Do not view the $2,400 as a mere website update. View it as a margin-recovery tool. Calculate exactly how much you paid in third-party delivery fees last year; use this grant to build your own localized delivery interface and market it aggressively to your existing database, permanently recovering your 30% margin."
+                    insiderTip: "Chartered banks adjudicate CSBFP loans. If your bank hesitates on an uncollateralized restaurant leasehold loan, explicitly request registration under the CSBFP. The 85% government guarantee removes the primary credit risk barrier."
                 },
                 {
                     name: "Tourism Relief & Destination Development Funds",
@@ -632,8 +632,8 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
             title: "The 'Capital Stacking' Playbook for Hospitality",
             content: [
                 "A hospitality operator scaling from one location to three locations cannot survive on organic cash flow; they must stack digital grants, regional debt, and aggressive wage subsidies.",
-                "First, they utilize the $2,400 CDAP micro-grant to build a centralized, proprietary online-ordering app, instantly bypassing third-party delivery commissions to boost top-line revenue margins across all locations.",
-                "Second, they approach the Business Development Bank of Canada (BDC) or Futurpreneur for an unsecured expansion loan, utilizing the improved margins from the CDAP tech upgrade to easily service the multi-year debt.",
+                "First, they utilize the CSBFP equipment stream to finance their commercial kitchen build-out and localized online-ordering terminals with only 10% cash equity down, bypassing high-interest commercial leasing rates.",
+                "Second, they approach the Business Development Bank of Canada (BDC) or Futurpreneur for an unsecured expansion loan, utilizing the preserved liquidity from CSBFP financing to service operational cash flow.",
                 "Third, to staff the two new locations, they do not list traditional 'Line Cook' jobs. They formally register as an apprenticeship sponsor, hiring 4 apprentice chefs and claiming the AJCTC tax credits at the end of the year, while simultaneously hiring two university business students through SWPP to run the localized marketing campaigns for the new locations at a 75% subsidized rate. This dramatically lowers the highest cost in hospitality: the opening labor run-rate."
             ]
         },
@@ -688,14 +688,14 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
             introduction: "Retail funding is a strict progression: micro-grants for initial e-commerce setup, massive loans for deep tech integration, and heavy wage subsidies for back-office scaling.",
             programs: [
                 {
-                    name: "Canada Digital Adoption Program (CDAP) - Boost Your Business Tech",
-                    description: "This is the flagship program for scaling retail operations earning over $500,000 in gross revenue. While small shops use the $2,400 micro-grant, larger retailers utilize the 'Boost Your Business Tech' stream. It provides a $15,000 grant to hire an approved Digital Advisor to construct a massive digital roadmap. Crucially, once the roadmap is approved, the retailer gains exclusive access to a $100,000, absolutely zero-interest loan from the Business Development Bank of Canada (BDC). Retailers use this $100,000 to completely overhaul their architecture: implementing massive ERP systems (like NetSuite) to synchronize inventory across multiple warehouses, integrating AI-driven demand forecasting, or overhauling their cybersecurity infrastructure to handle high-volume transactions.",
+                    name: "Canada Small Business Financing Program (CSBFP) — Digital & Intangible Assets",
+                    description: "Under modernized CSBFP guidelines, Canadian retail and e-commerce businesses can finance up to $1,150,000, with up to $150,000 specifically allocated for intangible digital assets, software licenses, and ERP architectures. The federal government guarantees 85% of the loan through your primary chartered bank (RBC, TD, Scotiabank, BMO, CIBC). Retailers use this low-cost capital to deploy enterprise ERP systems (like NetSuite), automate warehouse fulfillment robotics, and build headless e-commerce architectures to synchronize multichannel inventory.",
                     disqualifiers: [
-                        "Generating less than $500,000 in gross annual revenue in the previous tax year.",
-                        "Attempting to use the $100K loan to simply buy regular inventory or pay commercial rent.",
-                        "Hiring a 'web designer' rather than a formally CDAP-certified Digital Advisor to construct the initial strategic roadmap."
+                        "Generating more than $10 million in gross annual revenue across associated corporate entities.",
+                        "Attempting to use the loan to simply buy regular inventory or pay commercial rent.",
+                        "Operating as a non-profit, charitable, or religious organization."
                     ],
-                    insiderTip: "The true value is the $100,000 interest-free loan. In a high-interest rate environment, a $100K BDC loan with a 5-year term at 0% interest represents massive financial arbitrage. Sophisticated retailers use the loan to fund their tech upgrades, freeing up their operational cash flow to aggressively buy inventory for the Q4 holiday rush."
+                    insiderTip: "CSBFP financing requires only a 10% equity down payment from the business. By leveraging government-guaranteed bank credit for technology and warehouse infrastructure, retailers conserve cash flow for Q4 seasonal inventory buildup."
                 },
                 {
                     name: "CanExport SMEs Program",
@@ -724,7 +724,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
             content: [
                 "Dominant retailers don't choose between brick-and-mortar and digital; they stack funds to execute both simultaneously.",
                 "First, they utilize the municipal Facade Improvement Grant ($15k) to aggressively beautify their physical storefront, increasing foot traffic and driving massive brand prestige in their local market.",
-                "Second, knowing their physical capacity is maxed out, they utilize the CDAP $15k grant and the subsequent $100,000 interest-free BDC loan to completely rebuild their backend architecture. They transition from a basic Shopify store to a massive, custom ERP-integrated headless commerce platform capable of handling intense international volumes.",
+                "Second, knowing their physical capacity is maxed out, they utilize the CSBFP intangible technology stream to secure up to $150,000 through their commercial bank to overhaul backend operations—transitioning to custom ERP-integrated inventory architectures capable of handling international volumes.",
                 "Third, now possessing a world-class digital platform, they secure a $50,000 CanExport SME grant. They deploy this $50K entirely into highly targeted Google and Meta Ads targeting specific new markets (e.g., the United Kingdom or California). They have effectively secured $165,000 in combined subsidized capital to radically transform a local store into an international e-commerce machine."
             ]
         },
@@ -816,7 +816,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
                 "The most resilient non-profits stack capacity-building grants sequentially until they reach commercial independence via social enterprise.",
                 "First, they utilize massive federal wage subsidies (CSJ and SWPP) to entirely fund their junior operational and marketing teams for the year, preserving their highly restricted donor dollars exclusively for core mission delivery.",
                 "Second, they aggressively win a $100K Investment Readiness Program (IRP) grant. They deploy this to hire a tier-one consulting firm to design the exact business model, legal structuring, and marketing plan for a new, profitable commercial venture (e.g., a commercial catering service operating out of their community kitchen).",
-                "Third, with the flawless business plan built by the IRP grant, they execute. Because they have a validated, revenue-generating model, they bypass traditional charity grants and apply directly to standard commercial SME funding, utilizing the Canada Digital Adoption Program (CDAP) to fund the $100K tech stack required to run the massive catering operation, establishing permanent financial autonomy."
+                "Third, with the flawless business plan built by the IRP grant, they execute. Because they have a validated, revenue-generating model, they bypass traditional charity grants and apply directly to standard commercial SME funding, utilizing the Canada Small Business Financing Program (CSBFP) to fund the equipment and digital infrastructure required to run the massive catering operation, establishing permanent financial autonomy."
             ]
         },
         taxImplications: {
@@ -1023,7 +1023,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
                 },
                 {
                     phase: "Phase 4: Aggressive Multi-Agency Stacking",
-                    details: "Do not view the localized BELF as your only localized option. Stack it. Request the localized FACE loan for your localized working capital, but simultaneously apply to the localized CanExport program to fund your localized international marketing, and utilize localized CDAP grants to fund your localized AI integration."
+                    details: "Do not view the localized BELF as your only localized option. Stack it. Request the localized FACE loan for your localized working capital, but simultaneously apply to the localized CanExport program to fund your localized international marketing, and utilize localized regional development scale-up streams to fund your localized AI integration."
                 }
             ]
         },
@@ -1197,7 +1197,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
                 },
                 {
                     phase: "Phase 3: Security & Privacy Compliance Funding",
-                    details: "Selling to deeply localized schools requires military-grade data privacy compliance (FERPA in the US, PIPEDA in Canada). Explicitly allocate massive portions of your localized CDAP or localized specialized tech grants specifically to executing localized third-party cybersecurity audits. This proves to the localized reviewer that you understand localized B2G enterprise risk."
+                    details: "Selling to deeply localized schools requires military-grade data privacy compliance (FERPA in the US, PIPEDA in Canada). Explicitly allocate massive portions of your localized NRC-IRAP or localized specialized tech grants specifically to executing localized third-party cybersecurity audits. This proves to the localized reviewer that you understand localized B2G enterprise risk."
                 },
                 {
                     phase: "Phase 4: The 'Inclusion' Mandate",
@@ -1327,13 +1327,13 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
                     insiderTip: "If you are a mid-market general contractor, do not apply for these massive grants alone. Form a localized Joint Venture (JV) with an innovative localized architectural firm and a specialized localized massive timber manufacturer. The government massively prefers awarding $5M grants to a heavily integrated localized structural consortium rather than a localized highly fragmented single contractor."
                 },
                 {
-                    name: "Digital PropTech Adoption for Trades (CDAP & NGen)",
-                    description: "Most construction firms still operate on localized whiteboards and extreme paper invoices. The Canada Digital Adoption Program (CDAP) and specialized regional advanced manufacturing localized clusters massively subsidize the digitization of trades. Contractors utilize the $15,000 CDAP grant and the massive subsequent $100K 0%-interest BDC loan to completely fundamentally overhaul their estimating infrastructure, implementing massive localized Enterprise Resource Planning (ERP) systems like Procore or heavy specialized localized Building Information Modeling (BIM) architectures, radically eliminating the localized structural 10% material waste variance on localized massive job sites.",
+                    name: "Digital PropTech Adoption for Trades (NGen & CSBFP)",
+                    description: "Most construction firms still operate on localized whiteboards and analog workflows. The Next Generation Manufacturing Canada (NGen) supercluster and the Canada Small Business Financing Program (CSBFP) intangible assets stream heavily subsidize the digitization of trades. Contractors utilize CSBFP guaranteed bank loans (up to $150K for software and digital systems) and regional innovation grants to completely overhaul their estimating infrastructure, implementing localized Enterprise Resource Planning (ERP) systems like Procore or specialized localized Building Information Modeling (BIM) architectures, radically eliminating the localized structural 10% material waste variance on job sites.",
                     disqualifiers: [
-                        "Utilizing the massive $100K BDC digital loan simply to purchase standard new localized pickup trucks or heavy specialized localized excavators (it is strictly localized for extreme digital software and localized associated hardware).",
-                        "Generating less than $500K in localized heavily gross revenue in the previous localized commercial tax year."
+                        "Utilizing specialized digital capital simply to purchase standard new localized pickup trucks or heavy diesel excavators without software integrations.",
+                        "Generating more than $10M in annual commercial revenue across associated corporate entities."
                     ],
-                    insiderTip: "The most massive margin leak in construction is highly inaccurate initial estimating. Utilize the localized government capital specifically to implement advanced AI-driven localized estimating software that directly ties the initial complex localized bid directly to live, localized localized commodity pricing APIs (lumber/copper). This eliminates your risk of massive localized material cost spikes bankrupting a fixed-price localized contract."
+                    insiderTip: "The most massive margin leak in construction is highly inaccurate initial estimating. Utilize localized government capital specifically to implement advanced AI-driven localized estimating software that directly ties the initial complex localized bid directly to live, localized commodity pricing APIs (lumber/copper). This eliminates your risk of massive localized material cost spikes bankrupting a fixed-price localized contract."
                 }
             ]
         },
@@ -1341,7 +1341,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
             title: "The 'Capital Stacking' Playbook for Construction",
             content: [
                 "The most profitable localized heavy commercial contractors utilize localized massive government capital to entirely subsidize their backend logistics and their frontline localized labor pipeline.",
-                "First, they heavily utilize CDAP to secure a localized massive $100,000 zero-interest BDC loan, deploying the massive localized capital to entirely implement Procore across their entire site management architecture, instantly increasing localized overall project margin by strictly eliminating massive localized schedule delays.",
+                "First, they heavily utilize CSBFP guaranteed financing to secure an equipment and digital technology loan, deploying the capital to entirely implement Procore across their entire site management architecture, instantly increasing localized overall project margin by strictly eliminating massive localized schedule delays.",
                 "Second, to staff the new massive localized commercial condo contract they just won utilizing that accurate localized software, they do not massively hire off the street. They heavily recruit from specialized localized trade schools, registering 15 new specific apprentices. They heavily lock in the AJCTC tax credits and specific provincial localized wage subsides, essentially forcing the localized government to heavily subsidize 20% of their actual localized commercial framing labor over the next specific four years.",
                 "Third, possessing a highly sophisticated digital estimating backend and a massively localized subsidized skilled labor pipeline, they aggressively bid on massive localized federal government infrastructure projects, utilizing their new extreme localized cost efficiencies to highly consistently outbid archaic localized legacy competitors."
             ]
@@ -1366,7 +1366,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
                 },
                 {
                     phase: "Phase 3: The 'PropTech' ROI Calculation",
-                    details: "When applying for massive localized digital adoption loans, give the BDC loan officer absolute localized financial certainty. 'This localized heavy $100K 0% loan will fund localized Procore implementation. Historically, localized massive manual scheduling errors cost us $80K annually in extreme localized overtime. The software heavily eliminates this, guaranteeing our localized cash flow to easily massively service the $1,600 monthly localized loan repayment.'"
+                    details: "When applying for commercial digital adoption loans, give the bank loan officer absolute financial certainty. 'This $100K loan will fund localized Procore implementation. Historically, manual scheduling errors cost us $80K annually in extreme overtime. The software eliminates this, guaranteeing cash flow to easily service the loan repayment.'"
                 }
             ]
         },
@@ -1374,7 +1374,7 @@ export const INDUSTRY_DEEP_DIVES: Record<string, PseoDeepDive> = {
             title: "The 'Silent Killers': Common Disqualifiers",
             list: [
                 "Applying for localized massive specific provincial trade integration grants without formally holding the highly localized required master-licenses (e.g., Master Electrician, Master Plumber) in that specific specialized jurisdiction.",
-                "Attempting to utilize massive specialized digital transformation funds (like CDAP) to construct a localized standard marketing website rather than fundamentally implementing deep localized Enterprise Resource Planning (ERP) construction operations software.",
+                "Attempting to utilize specialized innovation funds to construct a standard generic marketing website rather than fundamentally implementing deep localized Enterprise Resource Planning (ERP) construction operations software.",
                 "Utilizing extremely hyper-fragmented, massive cash-based localized underground sub-contractors on a highly localized specific government-funded innovation project, instantly triggering massive localized brutal CRA compliance audits."
             ]
         }

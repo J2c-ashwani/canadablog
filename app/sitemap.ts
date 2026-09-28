@@ -191,7 +191,10 @@ export default function sitemap(): MetadataRoute.Sitemap {
   ]
 
   // 12. Add Dynamic Comparison Pages
-  const compareRoutes = getAllComparisons().map(c => `/compare/${c.slug}`)
+  const compareRoutes = [
+    '/compare',
+    ...getAllComparisons().map(c => `/compare/${c.slug}`)
+  ]
 
   // Combine all routes
   const allRoutes = Array.from(new Set([
@@ -215,6 +218,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
 const RECENTLY_OPTIMIZED_ROUTES = new Set([
   '/',
   '/calculator',
+  '/compare',
+  '/compare/csbfp-vs-bdc',
+  '/compare/calcompetes-vs-etp',
+  '/compare/sba-7a-vs-504',
+  '/compare/irap-vs-sif',
+  '/compare/usda-reap-vs-doe-clean-energy',
   '/canada/small-business-grants',
   '/canada/government-grants',
   '/canada/women-business-grants',

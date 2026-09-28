@@ -72,6 +72,7 @@ export default function TRLDiagnostic() {
   const [email, setEmail] = useState('');
   const [name, setName] = useState('');
   const [companyName, setCompanyName] = useState('');
+  const [phone, setPhone] = useState('');
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -89,6 +90,7 @@ export default function TRLDiagnostic() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           email,
+          phone: phone.trim() ? phone.trim() : 'N/A',
           name: name || 'Founder',
           companyName: companyName || 'Not provided',
           source: 'TRL Selector',
@@ -216,6 +218,16 @@ export default function TRLDiagnostic() {
                         className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"
                       />
                     </div>
+                  </div>
+                  <div className="space-y-1 text-left">
+                    <label className="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Phone Number (Optional)</label>
+                    <input
+                      type="tel"
+                      value={phone}
+                      onChange={(e) => setPhone(e.target.value)}
+                      placeholder="(555) 000-0000"
+                      className="w-full h-11 px-4 bg-slate-900 border border-white/10 text-white rounded-xl text-xs focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    />
                   </div>
                   <div className="flex flex-col sm:flex-row gap-3">
                     <div className="flex-1 space-y-1 text-left">
