@@ -165,7 +165,8 @@ const nextConfig = {
       { source: '/blog/energy-efficiency-grants-canada', destination: '/blog/canada-clean-technology-environment-grants-guide', permanent: true },
 
       // Old simplified slugs → full current slugs
-      { source: '/blog/agricultural-grants-canada', destination: '/blog/agriculture-agri-food-canada-government-grants', permanent: true },
+      { source: '/blog/agricultural-grants-canada', destination: '/blog/agriculture-grants-2026', permanent: true },
+      { source: '/blog/agriculture-agri-food-canada-government-grants', destination: '/blog/agriculture-grants-2026', permanent: true },
       { source: '/blog/small-business-grants-ontario', destination: '/blog/ontario-government-business-grants', permanent: true },
       { source: '/blog/quebec-business-grants-loans-guide', destination: '/blog/quebec-business-grants-2026', permanent: true },
       { source: '/blog/women-business-grants-canada', destination: '/blog/women-business-grants-2026', permanent: true },

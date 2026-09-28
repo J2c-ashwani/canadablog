@@ -8,7 +8,10 @@ User-agent: *
 Allow: /
 Disallow: /download/*/thank-you
 Disallow: /api/
+Disallow: /admin/
 Disallow: /search
+Disallow: /contact?*
+Disallow: /grant-finder?*
 Disallow: /_next/
 
 # ---- Commercial AI Search Engines (Allowed for SERP Citations) ----
@@ -97,6 +100,7 @@ Disallow: /
 
 # =============================================
 Sitemap: https://www.fsidigital.ca/sitemap.xml
+Sitemap: https://www.fsidigital.ca/discovered-recovery-sitemap.xml
 Sitemap: https://www.fsidigital.ca/priority-sitemap.xml
 Sitemap: https://www.fsidigital.ca/indexing-recovery-sitemap.xml
 Sitemap: https://www.fsidigital.ca/partners-sitemap.xml
