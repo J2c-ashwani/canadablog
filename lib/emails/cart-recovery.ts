@@ -52,21 +52,51 @@ function wrapCartRecoveryTemplate(contentHtml: string, unsubscribeToken: string,
   `;
 }
 
-type RecoveryProductId = 'funding-match-report' | 'funding-roadmap' | 'funding-bundle' | 'funding-toolkit' | 'funding-approval-library';
+type RecoveryProductId =
+  | 'funding-match-report'
+  | 'funding-roadmap'
+  | 'funding-bundle'
+  | 'funding-toolkit'
+  | 'funding-approval-library'
+  | 'guide-companion-kit'
+  | 'strategy-audit'
+  | 'strategy-vip'
+  | 'portfolio-assessment'
+  | 'funding-membership'
+  | 'consultation'
+  | 'strategy-session'
+  | 'report_19'
+  | 'premium_strategy_79';
 
 function recoveryProduct(productId?: string, priceShown?: string) {
-  const products: Record<RecoveryProductId, { name: string; path: string; price: string }> = {
+  const products: Record<string, { name: string; path: string; price: string }> = {
     'funding-match-report': { name: 'Funding Match Report', path: '/products/funding-match-report', price: '$19' },
+    'report_19': { name: 'Funding Match Report', path: '/products/funding-match-report', price: '$19' },
     'funding-roadmap': { name: 'Funding Strategy & Action Plan', path: '/products/action-plan', price: '$49' },
     'funding-bundle': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
+    'premium_strategy_79': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
     'funding-toolkit': { name: 'Funding Application Toolkit', path: '/products/toolkit', price: '$29' },
     'funding-approval-library': { name: 'Funding Approval Library', path: '/products/approval-library', price: '$9' },
+    'guide-companion-kit': { name: 'Application Companion Kit', path: '/products/companion-kit', price: '$9' },
+    'strategy-audit': { name: 'Funding Strategy Audit & 1-on-1 Consultation', path: '/contact?service=strategy-audit', price: '$199' },
+    'consultation': { name: 'Funding Strategy Audit & 1-on-1 Consultation', path: '/contact?service=strategy-audit', price: '$199' },
+    'strategy-session': { name: 'Funding Strategy Audit & 1-on-1 Consultation', path: '/contact?service=strategy-audit', price: '$199' },
+    'portfolio-assessment': { name: 'Executive Funding Assessment', path: '/products/portfolio-assessment', price: '$199' },
+    'strategy-vip': { name: 'VIP Funding Blueprint', path: '/contact?service=strategy-vip', price: '$499' },
+    'funding-membership': { name: 'Funding Watch Membership', path: '/products/membership', price: '$29' },
   };
-  if (productId && productId in products) return products[productId as RecoveryProductId];
-  if (priceShown === '79' || priceShown === '108') return products['funding-bundle'];
-  if (priceShown === '49') return products['funding-roadmap'];
-  if (priceShown === '29') return products['funding-toolkit'];
-  if (priceShown === '9') return products['funding-approval-library'];
+
+  const normalized = (productId || '').toLowerCase().trim();
+  if (normalized && normalized in products) return products[normalized];
+
+  const priceClean = String(priceShown || '').replace(/[^0-9.]/g, '');
+  if (priceClean === '499') return products['strategy-vip'];
+  if (priceClean === '199') return products['strategy-audit'];
+  if (priceClean === '79' || priceClean === '108') return products['funding-bundle'];
+  if (priceClean === '49') return products['funding-roadmap'];
+  if (priceClean === '29') return products['funding-toolkit'];
+  if (priceClean === '9') return products['funding-approval-library'];
+
   return products['funding-match-report'];
 }
 
@@ -108,8 +138,11 @@ export async function sendCartRecoveryEmail1({
       I noticed you started checking out for your <strong>${product.name}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't finish.
     </p>
     <p style="margin: 0 0 16px 0;">
-      The product compares your saved profile with programs in the current FSI database. If you still want the report, you can resume the checkout you started.
+      Your profile data and matching programs have been preserved. You can resume and complete your order anytime with the direct link below:
     </p>
+    <div style="margin:20px 0;padding:12px 16px;background-color:#f8fafc;border-left:4px solid #059669;border-radius:4px;font-size:13px;color:#475569;line-height:1.5;">
+      <strong>📱 Mobile / Browser Notice:</strong> If you encountered popup blocking or an interrupted redirect on mobile, our checkout now supports direct one-click redirect.
+    </div>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
         Complete My Checkout (${product.price}) &rarr;
@@ -117,7 +150,7 @@ export async function sendCartRecoveryEmail1({
     </div>
   `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name} but did not complete it. If you still want the self-serve product, resume here:\n${checkoutUrl}\n\nProgram status and full eligibility should always be confirmed with the official funding body.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name} but did not complete it. If you still want to complete your order, resume here:\n${checkoutUrl}\n\nMobile Note: If your previous checkout was interrupted by a popup blocker or browser error, the direct link above will let you complete seamlessly.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `You were one step away from unlocking your matches`, html, text, tagType: 'cart-recovery-1', companyName: cleanCompany });
 }
@@ -147,10 +180,10 @@ export async function sendCartRecoveryEmail2({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      You started checkout for the ${product.name} ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}, but no provider-verified purchase is recorded.
+      You started checkout for the ${product.name} ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}, but no completed order is recorded.
     </p>
     <p style="margin: 0 0 20px 0;">
-      If you still want the self-serve report, resume the secure checkout below. No purchase is required to continue using the free site resources.
+      If you still want the customized funding intelligence package, you can resume the secure checkout below. If you prefer a direct PayPal invoice or experienced mobile friction, you can simply reply to this email:
     </p>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
@@ -159,7 +192,7 @@ export async function sendCartRecoveryEmail2({
     </div>
   `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name}, but no provider-verified purchase is recorded. If you still want the self-serve product, resume here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name}, but no verified purchase is recorded. If you still want the product, resume here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject: `Your matches are still waiting`, html, text, tagType: 'cart-recovery-2', companyName: cleanCompany });
 }
@@ -189,14 +222,14 @@ export async function sendCartRecoveryEmail3({
 
   const html = wrapCartRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
-      This is the final automated reminder about the ${product.name} checkout you started ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
+      This is the final automated reminder regarding your ${product.name} checkout ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
     </p>
     <p style="margin: 0 0 20px 0;">
       If you are still actively looking for non-dilutive capital (grants, tax credits, and subsidies) to fund hiring, exporting, or product development, you can resume your checkout below:
     </p>
     <div style="text-align:center;margin:28px 0;">
       <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-        Complete Checkout &amp; Access Dashboard &rarr;
+        Complete Checkout &amp; Access Dashboard (${product.price}) &rarr;
       </a>
     </div>
   `, unsubscribeToken, firstName);

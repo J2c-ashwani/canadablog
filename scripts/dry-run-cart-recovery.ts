@@ -15,6 +15,15 @@ const RECOVERABLE_PRODUCTS = new Set([
   'funding-bundle',
   'funding-toolkit',
   'funding-approval-library',
+  'guide-companion-kit',
+  'strategy-audit',
+  'strategy-vip',
+  'portfolio-assessment',
+  'funding-membership',
+  'consultation',
+  'strategy-session',
+  'report_19',
+  'premium_strategy_79',
 ]);
 
 function acceptedAt(value: unknown) {
@@ -104,6 +113,10 @@ async function main() {
   let eligiblePotentialRevenue = 0;
 
   for (const [email, intent] of latestIntentByEmail.entries()) {
+    if (isTestOrInternalContact({ email, name: intent.name })) {
+      exclusionReasons.testOrInternal++;
+      continue;
+    }
     const lead = leadByEmail.get(email);
     if (!lead) {
       exclusionReasons.missingLead++;
@@ -111,10 +124,6 @@ async function main() {
     }
     if (lead.isSubscribed !== true) {
       exclusionReasons.notOptedIn++;
-      continue;
-    }
-    if (isTestOrInternalContact(lead)) {
-      exclusionReasons.testOrInternal++;
       continue;
     }
     const activity = parseCommercialActivity(lead.leadActivity);

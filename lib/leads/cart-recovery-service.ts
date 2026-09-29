@@ -1,4 +1,4 @@
-import { getLeadsFromSheet, updateLeadInSheet } from '@/lib/google-sheets'
+import { appendLeadToSheet, getLeadsFromSheet, updateLeadInSheet } from '@/lib/google-sheets'
 import { getAllPurchases } from '@/lib/products/purchase-store'
 import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics'
 import { getAllProductPaymentIntents, type ProductPaymentIntent } from '@/lib/payments/product-payment-intents'
@@ -75,6 +75,15 @@ export class CartRecoveryService {
       'funding-bundle',
       'funding-toolkit',
       'funding-approval-library',
+      'guide-companion-kit',
+      'strategy-audit',
+      'strategy-vip',
+      'portfolio-assessment',
+      'funding-membership',
+      'consultation',
+      'strategy-session',
+      'report_19',
+      'premium_strategy_79',
     ])
     const intentCutoff = now - 30 * 24 * 60 * 60 * 1000
     const latestOpenIntentByEmail = new Map<string, ProductPaymentIntent>()
@@ -203,8 +212,17 @@ export class CartRecoveryService {
 
         const updated = await updateLeadInSheet(email, { leadActivity: JSON.stringify(activity) })
         if (!updated.success) {
-          summary.errors.push(`${email} ${stage}: provider accepted, but CRM receipt persistence failed`)
-          continue
+          const appendRes = await appendLeadToSheet({
+            email,
+            name: emailInput.name || lead.name || 'Founder',
+            source: `Checkout Abandonment (${emailInput.productId})`,
+            leadActivity: JSON.stringify(activity),
+            isSubscribed: true,
+          })
+          if (!appendRes.success) {
+            summary.errors.push(`${email} ${stage}: provider accepted, but CRM receipt persistence failed`)
+            continue
+          }
         }
         summary.processedCount++
         summary.recoveredCandidates.push(`${email} (${stage})`)
@@ -216,6 +234,96 @@ export class CartRecoveryService {
         })
       } catch (error: any) {
         summary.errors.push(`${email} ${stage || 'eligibility'}: ${error.message || String(error)}`)
+      }
+    }
+
+    // Process any open payment intents whose email does not yet exist in the Leads sheet
+    for (const [intentEmail, intent] of latestOpenIntentByEmail.entries()) {
+      if (summary.attemptedCount >= maxEmailsPerRun) break
+      if (seenEmails.has(intentEmail)) continue
+      seenEmails.add(intentEmail)
+
+      if (!intentEmail.includes('@') || isTestOrInternalContact({ email: intentEmail, name: intent.name })) continue
+      if (verifiedBuyerEmails.has(intentEmail)) {
+        summary.skippedPurchasedCount++
+        continue
+      }
+      if (recentlyAcceptedRecipientIds.has(buildEmailActionContext('cart-recovery-1', intentEmail).recipientId)) continue
+
+      const intentCheckoutMs = new Date(intent.createdAt).getTime()
+      if (!Number.isFinite(intentCheckoutMs) || intentCheckoutMs > now) continue
+      const elapsedMs = now - intentCheckoutMs
+      if (elapsedMs > 30 * 24 * 60 * 60 * 1000) continue
+      if (elapsedMs < 45 * 60 * 1000 && !force) continue
+
+      summary.eligibleCheckoutCount++
+      summary.paymentIntentEvidenceCount++
+
+      const checkoutEvidenceId = `intent:${intent.intentId}`
+      let stage = ''
+      let result: Awaited<ReturnType<typeof sendCartRecoveryEmail1>> | null = null
+
+      try {
+        const credentials = await ensureScopedSubscriberTokens(intentEmail)
+        if (!credentials) {
+          summary.errors.push(`${intentEmail} eligibility: secure login/unsubscribe credentials could not be issued`)
+          continue
+        }
+        let profileData: Record<string, any> = {}
+        try { profileData = JSON.parse(intent.profileData || '{}') } catch {}
+
+        const emailInput = {
+          to: intentEmail,
+          name: intent.name || 'Founder',
+          loginToken: credentials.loginToken,
+          unsubscribeToken: credentials.unsubscribeToken,
+          companyName: profileData.company || '',
+          priceShown: String(intent.expectedAmount || '19').replace(/[^0-9.]/g, ''),
+          productId: intent.productId || 'funding-match-report',
+        }
+
+        stage = 'Email #1 (45m)'
+        result = await sendCartRecoveryEmail1(emailInput)
+
+        if (!result) continue
+        summary.attemptedCount++
+        if (!result.success || !result.providerMessageId) {
+          summary.errors.push(`${intentEmail} ${stage}: ${result.error || 'provider message ID missing'}`)
+          continue
+        }
+
+        const sentAt = new Date().toISOString()
+        const activity: Record<string, any> = {
+          cartRecoveryEvidenceId: checkoutEvidenceId,
+          checkoutStartedAt: new Date(intentCheckoutMs).toISOString(),
+          checkoutProductId: emailInput.productId,
+          priceShown: emailInput.priceShown,
+          cartRecoveryEmail1AcceptedAt: sentAt,
+          cartRecoveryEmail1ProviderMessageId: result.providerMessageId,
+          cartRecoveryLastProvider: result.provider || '',
+          cartRecoveryLastProviderMessageId: result.providerMessageId,
+        }
+
+        const updated = await updateLeadInSheet(intentEmail, { leadActivity: JSON.stringify(activity) })
+        if (!updated.success) {
+          await appendLeadToSheet({
+            email: intentEmail,
+            name: emailInput.name,
+            source: `Checkout Abandonment (${emailInput.productId})`,
+            leadActivity: JSON.stringify(activity),
+            isSubscribed: true,
+          })
+        }
+        summary.processedCount++
+        summary.recoveredCandidates.push(`${intentEmail} (${stage})`)
+        summary.receipts.push({
+          email: intentEmail,
+          stage,
+          provider: result.provider || '',
+          providerMessageId: result.providerMessageId,
+        })
+      } catch (error: any) {
+        summary.errors.push(`${intentEmail} ${stage || 'eligibility'}: ${error.message || String(error)}`)
       }
     }
     return summary
