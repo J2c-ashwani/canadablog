@@ -270,8 +270,12 @@ export class CartRecoveryService {
           summary.errors.push(`${intentEmail} eligibility: secure login/unsubscribe credentials could not be issued`)
           continue
         }
-        let profileData: Record<string, any> = {}
-        try { profileData = JSON.parse(intent.profileData || '{}') } catch {}
+        const rawProfile = intent.profileData as unknown
+        const profileData: Record<string, any> = typeof rawProfile === 'object' && rawProfile !== null
+          ? (rawProfile as Record<string, any>)
+          : typeof rawProfile === 'string'
+            ? (() => { try { return JSON.parse(rawProfile) } catch { return {} } })()
+            : {}
 
         const emailInput = {
           to: intentEmail,
