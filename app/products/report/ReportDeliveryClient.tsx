@@ -12,6 +12,7 @@ import type { FundingMatchReport } from "@/lib/products/report-generator"
 import type { FundingRecommendationResult } from "@/lib/engine/types"
 import { EnterpriseReportRenderer } from "./EnterpriseReportRenderer"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { trackPurchaseConversion } from "@/lib/analytics/conversion-tracker"
 
 function ReportContent() {
   const searchParams = useSearchParams();
@@ -127,6 +128,18 @@ function ReportContent() {
         // GA4 event
         if (typeof window !== 'undefined' && (window as any).gtag) {
           (window as any).gtag('event', 'report_opened', { method: 'standalone_page' });
+        }
+
+        // Guaranteed conversion capture fallback: fires if checkout redirected before tracking completed
+        if (json.purchase?.orderId) {
+          trackPurchaseConversion({
+            transactionId: json.purchase.orderId,
+            value: parseFloat(json.purchase.amount || '19') || 19,
+            productId: json.purchase.productId || 'funding-match-report',
+            productName: json.report?.title || 'Funding Match Report',
+            currency: json.purchase.currency || 'USD',
+            email: json.purchase.email,
+          });
         }
 
         // Fire report_viewed telemetry
@@ -248,7 +261,15 @@ function ReportContent() {
             const orderId = _data?.orderID || '';
             if (!orderId) throw new Error('PayPal did not return an order ID.');
             
-            await finalizeServerPayPalProductOrder(orderId);
+            const upsellRes = await finalizeServerPayPalProductOrder(orderId);
+            trackPurchaseConversion({
+              transactionId: orderId,
+              value: typeof upsellRes.amountPaid === 'number' ? upsellRes.amountPaid : 49,
+              productId: upsellRes.productId || 'funding-action-plan',
+              productName: upsellRes.productName || 'Funding Action Plan Upgrade',
+              currency: 'USD',
+              email: purchaseInfo?.email || '',
+            });
             window.location.reload();
           } catch (err) {
             console.error("Payment capture error:", err);

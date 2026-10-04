@@ -2,6 +2,7 @@
 
 import { Suspense, useEffect, useRef, useState } from 'react';
 import { useSearchParams } from 'next/navigation';
+import { trackPurchaseConversion } from '@/lib/analytics/conversion-tracker';
 
 /**
  * Checkout Return Page — handles PayPal full-page redirect flow.
@@ -93,6 +94,15 @@ function CheckoutReturnContent() {
 
         setDeliveryUrl(result.deliveryUrl || '');
         setStatus('success');
+
+        // Fire verified purchase conversion for GA4, Google Ads, and Meta Pixel
+        trackPurchaseConversion({
+          transactionId: paypalOrderId,
+          value: typeof result.amountPaid === 'number' ? result.amountPaid : 19,
+          productId: result.productId || 'funding-match-report',
+          productName: result.productName || 'Funding Match Report',
+          currency: result.currency || 'USD',
+        });
 
         // Fire purchase-completed telemetry
         fetch('/api/telemetry', {

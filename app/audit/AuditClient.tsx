@@ -13,6 +13,7 @@ import {
   CalendarClock, ShieldCheck, CircleDollarSign, Award, Users, Sparkles, Loader2
 } from 'lucide-react';
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
+import { trackPurchaseConversion } from '@/lib/analytics/conversion-tracker';
 
 /* ─── Architecture: PAY FIRST → CALENDLY UNLOCKS ────────────────────────────
    This page enforces the revenue ladder rule:
@@ -375,6 +376,13 @@ export default function AuditClient() {
             const orderId = data.orderID || '';
             
             const resData = await finalizeServerPayPalProductOrder(orderId);
+            trackPurchaseConversion({
+              transactionId: orderId,
+              value: typeof resData.amountPaid === 'number' ? resData.amountPaid : 199,
+              productId: resData.productId || 'strategy-audit',
+              productName: resData.productName || 'Funding Strategy Audit',
+              email: params.email.trim(),
+            });
             let redirectUrl = resData.deliveryUrl;
             
             // Deactivate exit-intent and update states

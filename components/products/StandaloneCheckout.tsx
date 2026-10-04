@@ -3,6 +3,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Loader2, ShieldCheck, CheckCircle, AlertCircle } from 'lucide-react';
 import { createServerPayPalProductCheckout, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
+import { trackPurchaseConversion } from '@/lib/analytics/conversion-tracker';
 import { calculateTrafficQuality } from '@/lib/telemetry/traffic-quality';
 
 const PAYPAL_PRODUCT_NAMESPACE = 'paypalProductCheckout';
@@ -440,6 +441,13 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             });
             const json = await finalizeServerPayPalProductOrder(data.orderID || '');
             if (json.deliveryUrl) {
+              trackPurchaseConversion({
+                transactionId: data.orderID || json.paypalOrderId || '',
+                value: json.amountPaid ?? finalPrice,
+                productId: json.productId ?? finalProductId,
+                productName: json.productName ?? finalProductName,
+                email: emailRef.current.trim(),
+              });
               // Redirect to delivery page
               window.location.href = json.deliveryUrl;
             } else {

@@ -8,6 +8,7 @@ import { Input } from "@/components/ui/input"
 import { ShieldCheck, Check, DollarSign, Loader2, Sparkles } from "lucide-react"
 import Link from "next/link"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client'
+import { trackPurchaseConversion } from '@/lib/analytics/conversion-tracker'
 
 interface OTOUpsellCardProps {
   guideName: string
@@ -108,10 +109,17 @@ export function OTOUpsellCard({ guideName }: OTOUpsellCardProps) {
         },
         onApprove: async (data: any) => {
           try {
-            await finalizeServerPayPalProductOrder(data.orderID || '')
+            const res = await finalizeServerPayPalProductOrder(data.orderID || '')
+            const targetEmail = checkoutEmailRef.current || checkoutEmail
+            trackPurchaseConversion({
+              transactionId: data.orderID || '',
+              value: typeof res.amountPaid === 'number' ? res.amountPaid : 29,
+              productId: res.productId || 'guide-oto-upgrade',
+              productName: res.productName || `${guideName} Toolkit`,
+              email: targetEmail,
+            })
             setIsPurchased(true)
             
-            const targetEmail = checkoutEmailRef.current || checkoutEmail
             fetch("/api/subscriber/track-activity", {
               method: "POST",
               headers: { "Content-Type": "application/json" },

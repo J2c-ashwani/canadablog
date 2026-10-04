@@ -10,6 +10,7 @@ import Link from "next/link"
 
 import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { trackPurchaseConversion } from "@/lib/analytics/conversion-tracker"
 
 interface PDFPaywallWidgetProps {
   guideName: string
@@ -283,7 +284,14 @@ export function PDFPaywallWidget({ guideName, guideSlug }: PDFPaywallWidgetProps
           try {
             const orderId = _data?.orderID || ''
             if (!orderId) throw new Error('PayPal did not return an order ID.')
-            await finalizeServerPayPalProductOrder(orderId)
+            const res = await finalizeServerPayPalProductOrder(orderId)
+            trackPurchaseConversion({
+              transactionId: orderId,
+              value: typeof res.amountPaid === 'number' ? res.amountPaid : 19,
+              productId: res.productId || 'companion-guide-pdf',
+              productName: res.productName || `${guideName} Guide & Toolkit`,
+              email,
+            })
             setIsPurchased(true)
 
             // Telemetry

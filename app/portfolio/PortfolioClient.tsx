@@ -33,6 +33,7 @@ import { Label } from "@/components/ui/label"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 import { trackGAEvent } from "@/components/LeadConversionUpsellWatcher"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { trackPurchaseConversion } from "@/lib/analytics/conversion-tracker"
 
 export default function PortfolioClient() {
   const router = useRouter()
@@ -586,6 +587,12 @@ export default function PortfolioClient() {
                   transaction_id: orderId,
                   value: currentPrice,
                   currency: "USD"
+                })
+                trackPurchaseConversion({
+                  transactionId: orderId,
+                  value: typeof result.amountPaid === 'number' ? result.amountPaid : currentPrice,
+                  productId: result.productId || 'portfolio-assessment',
+                  productName: result.productName || 'Portfolio Assessment',
                 })
                 
                 // Redirect to thank-you page instead of directly to report

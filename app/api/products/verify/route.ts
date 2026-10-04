@@ -103,6 +103,9 @@ export async function GET(req: NextRequest) {
         email: purchase.email,
         createdAt: purchase.createdAt,
         productId: purchase.productId,
+        orderId: purchase.paypalOrderId,
+        amount: purchase.amount,
+        currency: purchase.currency || 'USD',
       },
     });
   } catch (error) {

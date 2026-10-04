@@ -19,6 +19,7 @@ import { caseStudiesDatabase } from "@/lib/data/case-studies"
 import { DiyComparisonTable } from "@/components/DiyComparisonTable"
 import { getExperimentVariant, getExperiment } from "@/lib/leads/experiment-helper"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { trackPurchaseConversion } from "@/lib/analytics/conversion-tracker"
 import { EnterpriseReportRenderer } from "@/app/products/report/EnterpriseReportRenderer"
 
 type CalculatorData = {
@@ -1393,14 +1394,15 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               const orderId = _data?.orderID || '';
               if (!orderId) throw new Error('PayPal did not return an order ID.');
 
-              // GA4 event: purchase complete
-              if (typeof window !== 'undefined' && (window as any).gtag) {
-                (window as any).gtag('event', 'purchase', {
-                  transaction_id: orderId,
-                  value: price, currency: 'USD',
-                  items: [{ item_name: desc, price: price }]
-                });
-              }
+              // Universal conversion tracking: GA4, Google Ads, Meta Pixel
+              trackPurchaseConversion({
+                transactionId: orderId,
+                value: price,
+                currency: 'USD',
+                productId: 'funding-match-report',
+                productName: desc,
+                email: currentEmail,
+              });
 
               // Telemetry: payment_capture_success
               if (currentEmail) {
@@ -1695,13 +1697,15 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               const currentCredit = upgradeCreditRef.current || 0;
               const price = Math.max(0.50, 49 - currentCredit);
 
-              if (typeof window !== 'undefined' && (window as any).gtag) {
-                (window as any).gtag('event', 'purchase', {
-                  transaction_id: orderId,
-                  value: price, currency: 'USD',
-                  items: [{ item_name: 'Funding Action Plan Upgrade', price: price }]
-                });
-              }
+              // Universal conversion tracking: GA4, Google Ads, Meta Pixel
+              trackPurchaseConversion({
+                transactionId: orderId,
+                value: price,
+                currency: 'USD',
+                productId: 'funding-action-plan',
+                productName: 'Funding Action Plan Upgrade',
+                email: currentEmail,
+              });
 
               const result = await finalizeServerPayPalProductOrder(orderId);
               if (result.success) {

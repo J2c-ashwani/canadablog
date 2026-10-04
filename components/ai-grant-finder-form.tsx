@@ -16,6 +16,7 @@ import Link from "next/link"
 import { LEAD_CONSENT_TEXT } from "@/lib/leads/scoring"
 import { getOrCreateJourneyId, getOrCreateFunnelId, decorateTelemetryPayload } from "@/lib/analytics/journey"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { trackPurchaseConversion } from "@/lib/analytics/conversion-tracker"
 
 export function AIGrantFinderForm() {
   const [formData, setFormData] = useState<Partial<GrantFinderRequest>>({})
@@ -384,7 +385,14 @@ export function AIGrantFinderForm() {
           try {
             const orderId = _data?.orderID || ''
             if (!orderId) throw new Error('PayPal did not return an order ID.')
-            await finalizeServerPayPalProductOrder(orderId)
+            const res = await finalizeServerPayPalProductOrder(orderId)
+            trackPurchaseConversion({
+              transactionId: orderId,
+              value: typeof res.amountPaid === 'number' ? res.amountPaid : 19,
+              productId: res.productId || 'ai-grant-match-report',
+              productName: res.productName || 'Funding Match Report',
+              email: formData.email,
+            })
             setIsPurchased(true);
               
               // Telemetry

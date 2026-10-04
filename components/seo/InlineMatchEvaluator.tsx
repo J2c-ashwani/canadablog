@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client'
+import { trackPurchaseConversion } from '@/lib/analytics/conversion-tracker'
 
 interface InlineMatchEvaluatorProps {
   program: ProgramDetails
@@ -181,7 +182,14 @@ export function InlineMatchEvaluator({ program, onUnlock }: InlineMatchEvaluator
         },
         onApprove: async (data: any) => {
           try {
-            await finalizeServerPayPalProductOrder(data.orderID || '')
+            const res = await finalizeServerPayPalProductOrder(data.orderID || '')
+            trackPurchaseConversion({
+              transactionId: data.orderID || '',
+              value: typeof res.amountPaid === 'number' ? res.amountPaid : 19,
+              productId: res.productId || 'program-match-evaluator',
+              productName: res.productName || `${program.name} Intelligence Report`,
+              email,
+            })
 
             {
               const finalProfile: Partial<SubscriberProfile> = {

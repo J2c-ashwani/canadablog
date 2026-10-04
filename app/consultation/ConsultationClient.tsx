@@ -7,6 +7,7 @@ import { trackGAEvent } from '@/components/LeadConversionUpsellWatcher';
 import { safeSessionStorage } from '@/lib/storage';
 import { getPreviewConfidenceLevel, getPreviewOpportunities } from '@/lib/leads/preview-engine';
 import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from '@/lib/payments/product-checkout-client';
+import { trackPurchaseConversion } from '@/lib/analytics/conversion-tracker';
 
 import {
   CheckCircle,
@@ -313,6 +314,12 @@ export default function ConsultationClient() {
             const orderId = _data?.orderID || '';
             if (!orderId) throw new Error('PayPal did not return an order ID.');
             const result = await finalizeServerPayPalProductOrder(orderId);
+            trackPurchaseConversion({
+              transactionId: orderId,
+              value: typeof result.amountPaid === 'number' ? result.amountPaid : 199,
+              productId: result.productId || 'strategy-audit',
+              productName: result.productName || 'Funding Strategy Consultation',
+            });
             if (typeof window !== 'undefined' && (window as any).clarity) {
               (window as any).clarity("event", "strategy_session_paid");
             }

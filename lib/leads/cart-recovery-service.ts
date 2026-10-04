@@ -213,6 +213,7 @@ export class CartRecoveryService {
         const updated = await updateLeadInSheet(email, { leadActivity: JSON.stringify(activity) })
         if (!updated.success) {
           const appendRes = await appendLeadToSheet({
+            timestamp: sentAt,
             email,
             name: emailInput.name || lead.name || 'Founder',
             source: `Checkout Abandonment (${emailInput.productId})`,
@@ -307,8 +308,9 @@ export class CartRecoveryService {
         const updated = await updateLeadInSheet(intentEmail, { leadActivity: JSON.stringify(activity) })
         if (!updated.success) {
           await appendLeadToSheet({
+            timestamp: sentAt,
             email: intentEmail,
-            name: emailInput.name,
+            name: emailInput.name || 'Founder',
             source: `Checkout Abandonment (${emailInput.productId})`,
             leadActivity: JSON.stringify(activity),
             isSubscribed: true,

@@ -725,6 +725,11 @@ export async function POST(request: NextRequest) {
       accessToken: purchase.accessToken,
       deliveryUrl,
       loginToken: credentials?.loginToken || null,
+      amountPaid: expectedPrice,
+      productId,
+      productName: product.name,
+      paypalOrderId,
+      currency: paymentIntent.currency || 'USD',
     });
   } catch (error: any) {
     console.error('❌ Product purchase error:', error);

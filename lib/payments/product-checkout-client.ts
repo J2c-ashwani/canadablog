@@ -51,7 +51,18 @@ export async function createServerPayPalProductOrder(input: ProductCheckoutInput
   return checkout.orderId;
 }
 
-export async function finalizeServerPayPalProductOrder(orderId: string) {
+export interface FinalizedProductOrder {
+  success: true;
+  accessToken: string;
+  deliveryUrl: string;
+  loginToken?: string;
+  amountPaid?: number;
+  productId?: string;
+  productName?: string;
+  paypalOrderId?: string;
+}
+
+export async function finalizeServerPayPalProductOrder(orderId: string): Promise<FinalizedProductOrder> {
   const paymentIntentId = sessionStorage.getItem(intentKey(orderId)) || '';
 
   const response = await fetch('/api/products/purchase', {
@@ -62,5 +73,5 @@ export async function finalizeServerPayPalProductOrder(orderId: string) {
   const data = await response.json();
   if (!response.ok || !data.success) throw new Error(data.error || 'Payment verification failed.');
   sessionStorage.removeItem(intentKey(orderId));
-  return data as { success: true; accessToken: string; deliveryUrl: string; loginToken?: string };
+  return data as FinalizedProductOrder;
 }
