@@ -1704,7 +1704,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 currency: 'USD',
                 productId: 'funding-action-plan',
                 productName: 'Funding Action Plan Upgrade',
-                email: currentEmail,
+                email: data.email || dataRef.current?.email || '',
               });
 
               const result = await finalizeServerPayPalProductOrder(orderId);
