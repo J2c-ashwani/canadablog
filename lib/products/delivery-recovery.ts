@@ -9,6 +9,8 @@ import { sendMCAReadinessReportDelivery } from '@/lib/emails/mca-readiness-deliv
 export interface DeliveryRecoveryOutcome {
   purchaseId: string;
   orderId: string;
+  email?: string;
+  productId?: string;
   providerAccepted: boolean;
   provider?: string;
   providerMessageId?: string;
@@ -47,6 +49,8 @@ export async function recoverProductDeliveries(options?: { limit?: number; order
         outcomes.push({
           purchaseId: purchase.purchaseId,
           orderId: purchase.paypalOrderId,
+          email: purchase.email,
+          productId: purchase.productId,
           providerAccepted: accepted,
           provider: result.provider,
           providerMessageId: result.providerMessageId,
@@ -86,6 +90,8 @@ export async function recoverProductDeliveries(options?: { limit?: number; order
       outcomes.push({
         purchaseId: purchase.purchaseId,
         orderId: purchase.paypalOrderId,
+        email: purchase.email,
+        productId: purchase.productId,
         providerAccepted: accepted,
         provider: result.provider,
         providerMessageId: result.providerMessageId,
@@ -95,6 +101,8 @@ export async function recoverProductDeliveries(options?: { limit?: number; order
       outcomes.push({
         purchaseId: purchase.purchaseId,
         orderId: purchase.paypalOrderId,
+        email: purchase.email,
+        productId: purchase.productId,
         providerAccepted: false,
         error: error?.message || String(error),
       });

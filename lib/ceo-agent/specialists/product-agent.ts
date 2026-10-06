@@ -66,14 +66,16 @@ export class ProductAgent {
         if (outcome.providerAccepted) {
           replayedCount++
           const actionId = generateActionId('Product')
+          const email = outcome.email || 'customer@fsidigital.ca'
+          const productId = outcome.productId || 'product-fulfillment'
           await CommercialActionTracker.recordAction({
             actionId,
             agent: 'Product',
-            trigger: `Fulfillment replay for ${outcome.email}`,
-            leadId: outcome.email,
-            leadEmail: outcome.email,
-            action: `Product PDF Delivery Replay (${outcome.productId})`,
-            product: outcome.productId,
+            trigger: `Fulfillment replay for ${email}`,
+            leadId: email,
+            leadEmail: email,
+            action: `Product PDF Delivery Replay (${productId})`,
+            product: productId,
             channel: 'Email',
             consent: 'Transactional',
             status: 'DISPATCHED',
@@ -83,7 +85,7 @@ export class ProductAgent {
             timestamp: new Date().toISOString(),
             providerMessageId: outcome.providerMessageId,
           })
-          actions.push({ actionId, email: outcome.email, productId: outcome.productId })
+          actions.push({ actionId, email, productId })
         }
       }
     } catch (err: any) {

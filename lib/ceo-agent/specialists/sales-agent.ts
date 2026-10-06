@@ -162,6 +162,7 @@ export class SalesAgent {
       fundingScore: number;
       sectorScore: number;
       readinessScore: number;
+      behavioralScore: number;
     };
     isHighIntent: boolean;
     recommendedOffer: {
