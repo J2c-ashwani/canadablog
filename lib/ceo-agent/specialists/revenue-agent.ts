@@ -1,5 +1,6 @@
 import { RevenueTools } from '../tools/revenue-tools'
 import { getActionPerformanceScorecard, type ActionPerformanceScorecard } from '@/lib/growth-os/action-scorecard'
+import { CartRecoveryService, type CartRecoveryRunSummary } from '@/lib/leads/cart-recovery-service'
 
 export interface HistoricalTransactionRecord {
   orderId: string
@@ -37,6 +38,9 @@ export interface RevenueAgentAudit {
 }
 
 export class RevenueAgent {
+  /**
+   * Level 1: Read-only financial audit of provider-verified ledger.
+   */
   public static async auditRevenue(): Promise<RevenueAgentAudit> {
     const [ledger, actionPerformance] = await Promise.all([
       RevenueTools.getRevenueLedger(),
@@ -87,8 +91,37 @@ export class RevenueAgent {
       primaryLeakageSource: ledger.activeMemberships === 0
         ? 'No provider-verified $29 membership subscriptions'
         : 'Insufficient provider-verified product distribution volume',
-      recommendation: 'Measure each consented cohort from provider acceptance through delivery, click, checkout, capture, and revenue.',
+      recommendation: 'Execute bounded CASL-compliant recovery on all open commercial checkout intents.',
       actionPerformance,
+    }
+  }
+
+  /**
+   * Level 3: Autonomous Revenue Recovery Machine
+   * Dispatches bounded, CASL-compliant checkout recovery actions to reclaim open commercial intent.
+   */
+  public static async executeRevenueRecovery(maxEmails = 5): Promise<{
+    executedCount: number;
+    receipts: CartRecoveryRunSummary['receipts'];
+    errors: string[];
+    recoveredCandidates: string[];
+  }> {
+    try {
+      const summary = await CartRecoveryService.processCartRecoveryBatch(maxEmails);
+      return {
+        executedCount: summary.attemptedCount,
+        receipts: summary.receipts,
+        errors: summary.errors,
+        recoveredCandidates: summary.recoveredCandidates,
+      };
+    } catch (err: any) {
+      console.error('[RevenueAgent] Revenue recovery execution error:', err);
+      return {
+        executedCount: 0,
+        receipts: [],
+        errors: [err.message || String(err)],
+        recoveredCandidates: [],
+      };
     }
   }
 }

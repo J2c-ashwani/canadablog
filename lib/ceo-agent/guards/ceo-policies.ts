@@ -21,6 +21,9 @@ export const TOOL_PERMISSIONS: Record<string, ToolPermission> = {
   retry_failed_delivery: { level: 'level_3', needsApproval: false, description: 'Retries PDF compilation and email dispatch for verified purchase' },
   create_followup_task: { level: 'level_3', needsApproval: false, description: 'Logs internal action ticket in CEO task queue' },
   update_lead_qualification: { level: 'level_3', needsApproval: false, description: 'Updates lead qualification status in CRM ledger' },
+  execute_cart_recovery: { level: 'level_3', needsApproval: false, description: 'Executes CASL-compliant checkout intent recovery for open carts' },
+  execute_intent_outreach: { level: 'level_3', needsApproval: false, description: 'Executes intent-matched email and founder hotline alert for high-value leads' },
+  execute_social_sprint: { level: 'level_3', needsApproval: false, description: 'Publishes approved educational social posts to company pages' },
 
   // Level 4: Human Approval Required
   pause_campaign: { level: 'level_4', needsApproval: true, description: 'Pauses active marketing or distribution campaign' },

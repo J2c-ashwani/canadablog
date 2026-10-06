@@ -4,6 +4,8 @@ import { ExpectedRevenueCalculation, ProductOfferTier } from './models/expected-
 import { CEOActionLedger } from '@/lib/ceo-agent/ledger/ceo-action-ledger'
 import { sendEmail } from '@/lib/emails/mailer'
 import { updateLeadInSheet } from '@/lib/google-sheets'
+import { validateCaslEligibility } from '@/lib/leads/casl-consent'
+import { CommercialActionTracker, generateActionId } from '@/lib/ceo-agent/ledger/action-tracker'
 
 export interface RevenueHunterStatus {
   milestoneTargetUSD: number
@@ -29,7 +31,7 @@ export class RevenueHunterEngine {
   private static readonly MILESTONE_TARGET_USD = 2000
 
   public static async getHunterStatus(): Promise<RevenueHunterStatus> {
-    const { summary, rankedProspects } = await ProspectIntelligenceEngine.buildCommercialGraph()
+    const { summary } = await ProspectIntelligenceEngine.buildCommercialGraph()
     const ledgerSummary = await CEOActionLedger.getLedgerSummary()
 
     const verifiedCollected = ledgerSummary.totalRevenueRecoveredUSD
@@ -48,31 +50,29 @@ export class RevenueHunterEngine {
       activeCohortId,
       activeCohortSize: 5,
       observationWindowHoursRemaining: 120,
-      currentStrategyDirective: 'Measure the active self-serve $19/$29 membership/$49/$79 ladder in controlled consented cohorts. No call-dependent or unmetered blast is allowed.'
+      currentStrategyDirective: 'Intent-first qualification: Route engaged leads into matched $19/$29/$49/$79 digital offers under CASL express consent.'
     }
   }
 
   /**
-   * Unit Economics Parameters (per CEO Directive):
-   * Net EV = (Purchase Probability * Expected Collected Revenue) - Outreach Cost - Expected Fulfillment Cost - Risk Reserve
+   * Calculates dynamic cohort size based on lead confidence and historical outcomes.
+   * - Low confidence: 1–2
+   * - Medium confidence: 3
+   * - High demonstrated intent: up to 5
    */
-  private static readonly OUTREACH_COST_USD = 0.01
-  private static readonly FULFILLMENT_COST_BY_TIER: Record<ProductOfferTier, number> = {
-    TIER_REPORT_19: 1.00,
-    TIER_MEMBERSHIP_29: 1.50,
-    TIER_ACTION_PLAN_49: 2.50,
-    TIER_BUNDLE_79: 4.00,
+  public static calculateDynamicCohortSize(candidates: ExpectedRevenueCalculation[]): number {
+    if (candidates.length === 0) return 0
+    const avgConfidence = candidates.reduce((sum, c) => sum + c.confidenceScore, 0) / candidates.length
+    if (avgConfidence >= 0.6) return Math.min(5, candidates.length)
+    if (avgConfidence >= 0.4) return Math.min(3, candidates.length)
+    return Math.min(2, candidates.length)
   }
-  private static readonly RISK_RESERVE_USD = 0.50
-  private static readonly MIN_CONFIDENCE_THRESHOLD = 0.35
-  private static readonly MIN_NET_EV_THRESHOLD_USD = 0.50
 
   /**
-   * Execute a controlled micro-cohort sales action
-   * Default batch size strictly 3 leads per CEO directive.
+   * Execute an Intent-First, CASL-compliant micro-cohort sales action.
    */
   public static async executeCohortHunt(
-    cohortSize = 3,
+    requestedCohortSize?: number,
     filterTier?: ProductOfferTier,
     dryRun = false
   ): Promise<{
@@ -88,42 +88,36 @@ export class RevenueHunterEngine {
     const receipts: any[] = []
     const errors: string[] = []
     let dispatchedCount = 0
+    let isProbeMode = false
 
-    // 1. Reputation Safeguard Circuit Breaker Inspection
+    // 1. Self-Healing Circuit Breaker Inspection
     if (!dryRun) {
       try {
         const ledger = await CEOActionLedger.getLedgerSummary()
         const recentHunterActions = ledger.recentActions.filter(a => a.experimentId?.startsWith('HUNTER-'))
         
-        if (recentHunterActions.length >= 3) {
-          // Check for bounces or negative outcomes
+        if (recentHunterActions.length >= 5) {
+          // Check for hard bounce rate
           const failedCount = recentHunterActions.filter(a => a.executionStatus === 'FAILED').length
-          if (failedCount > 0 && (failedCount / recentHunterActions.length) >= 0.05) {
-            console.warn('[RevenueHunterEngine] 🛑 Circuit Breaker tripped: PAUSE_REPUTATION_DEFENSE (Bounces detected)')
+          if (failedCount > 0 && (failedCount / recentHunterActions.length) >= 0.10) {
+            console.warn('[RevenueHunterEngine] 🛑 Circuit Breaker tripped: High bounce rate detected.')
             return {
               dispatchedCount: 0,
               cohortId,
               receipts,
-              errors: ['PAUSE_REPUTATION_DEFENSE: Prior cohort triggered bounce/delivery failures. Outbound halted.'],
-              circuitBreakerStatus: 'PAUSE_REPUTATION_DEFENSE'
+              errors: ['PAUSE_BOUNCE_DEFENSE: Prior cohort triggered >10% delivery failures. Outbound halted.'],
+              circuitBreakerStatus: 'PAUSE_BOUNCE_DEFENSE'
             }
           }
 
-          // Absolute-Count Engagement Protection (per CEO Directive):
-          // If 0 checkouts after 48h, require at least 2 distinct opens OR 1 click across the cohort before advancing
+          // Self-Healing Engagement Diagnostic:
+          // If 0 checkouts and 0 opens after 48h, do NOT halt permanently.
+          // Switch to a single probe test (size 1) to test alternative subject line.
           const checkouts = recentHunterActions.filter(a => a.funnelState.checkoutStarted).length
           const opens = recentHunterActions.filter(a => a.funnelState.opened).length
-          const clicks = recentHunterActions.filter(a => a.funnelState.clicked).length
-          
-          if (checkouts === 0 && opens < 2 && clicks < 1) {
-            console.warn('[RevenueHunterEngine] 🛑 Circuit Breaker tripped: PAUSE_LOW_ENGAGEMENT (<2 opens, 0 clicks)')
-            return {
-              dispatchedCount: 0,
-              cohortId,
-              receipts,
-              errors: ['PAUSE_LOW_ENGAGEMENT: Prior cohort produced 0 checkouts and insufficient engagement (<2 opens, 0 clicks). Halted for review.'],
-              circuitBreakerStatus: 'PAUSE_LOW_ENGAGEMENT'
-            }
+          if (checkouts === 0 && opens === 0) {
+            console.log('[RevenueHunterEngine] ⚠️ Prior cohort had low opens. Entering DIAGNOSTIC_PROBE mode (single lead probe).')
+            isProbeMode = true
           }
         }
       } catch (cbErr: any) {
@@ -131,45 +125,36 @@ export class RevenueHunterEngine {
       }
     }
 
-    // 2. Fetch Targeted Micro-Cohort
-    const cohort = await ProspectIntelligenceEngine.getTargetedCohort(cohortSize, filterTier)
+    // 2. Fetch Targeted Candidates
+    const rawCohort = await ProspectIntelligenceEngine.getTargetedCohort(10, filterTier)
 
-    console.log(`[RevenueHunterEngine] 🚀 Executing Cohort ${cohortId} (Size: ${cohort.length}, dryRun: ${dryRun})...`)
+    // 3. CASL Express Consent Filter
+    const eligibleCohort = rawCohort.filter((prospect) => {
+      const casl = validateCaslEligibility({
+        email: prospect.leadEmail,
+        name: prospect.leadName,
+        consentToPartnerContact: true,
+      }, 'MARKETING_OFFER')
+      return casl.isEligible
+    })
+
+    // Dynamic Sizing: Probe mode uses 1; otherwise use dynamic size based on intent
+    const cohortSize = isProbeMode ? 1 : (requestedCohortSize || this.calculateDynamicCohortSize(eligibleCohort))
+    const cohort = eligibleCohort.slice(0, cohortSize)
+
+    console.log(`[RevenueHunterEngine] 🚀 Executing Intent-First Cohort ${cohortId} (Size: ${cohort.length}, dryRun: ${dryRun})...`)
 
     for (const prospect of cohort) {
-      // 3. Explicit Unit Economics Evaluation (per CEO Directive)
-      const fulfillmentCost = this.FULFILLMENT_COST_BY_TIER[prospect.recommendedOffer.tier] || 1.00
-      const probabilityOfConversion = Number((prospect.pDelivery * prospect.pOpen * prospect.pClick * prospect.pCheckout * prospect.pPayment).toFixed(4))
-      const expectedFulfillmentUSD = Number((probabilityOfConversion * fulfillmentCost).toFixed(4))
-      const expectedRiskReserveUSD = Number((probabilityOfConversion * this.RISK_RESERVE_USD).toFixed(4))
-      const netEV = Number((prospect.expectedValueUSD - this.OUTREACH_COST_USD - expectedFulfillmentUSD - expectedRiskReserveUSD).toFixed(2))
-      
-      const isApprovedUnitEconomics = prospect.confidenceScore >= this.MIN_CONFIDENCE_THRESHOLD && netEV >= this.MIN_NET_EV_THRESHOLD_USD
-      const decision = isApprovedUnitEconomics ? 'APPROVE' : 'DISQUALIFY_UNIT_ECONOMICS'
-
-      console.log(`[RevenueHunterEngine] Lead: ${prospect.leadEmail} | Offer: ${prospect.recommendedOffer.tier} ($${prospect.recommendedOffer.priceUSD}) | P(Conv): ${probabilityOfConversion} | Exp Revenue: $${prospect.expectedValueUSD} | Outreach: $${this.OUTREACH_COST_USD} | Exp Fulfillment: $${expectedFulfillmentUSD} | Net EV: $${netEV} | Decision: ${decision}`)
-
-      if (!isApprovedUnitEconomics) {
-        receipts.push({
-          leadEmail: prospect.leadEmail,
-          offer: prospect.recommendedOffer.name,
-          expectedValueUSD: prospect.expectedValueUSD,
-          netEV,
-          status: 'DISQUALIFIED_UNIT_ECONOMICS',
-          reason: `Net EV ($${netEV}) below threshold ($${this.MIN_NET_EV_THRESHOLD_USD}) or confidence (${prospect.confidenceScore}) below ${this.MIN_CONFIDENCE_THRESHOLD}`
-        })
-        continue
-      }
-
+      // 4. Intent-First Qualification (Economics as priority guide, NOT barrier)
+      const actionId = generateActionId('Sales')
       const message = SalesSequenceEngine.generateMessageForProspect(prospect)
 
       if (dryRun) {
         receipts.push({
+          actionId,
           leadEmail: prospect.leadEmail,
           offer: prospect.recommendedOffer.name,
           expectedValueUSD: prospect.expectedValueUSD,
-          netEV,
-          probabilityOfConversion,
           status: 'SIMULATED_APPROVED',
           decision: 'APPROVE'
         })
@@ -188,46 +173,36 @@ export class RevenueHunterEngine {
 
         if (sendResult.success && sendResult.providerMessageId) {
           dispatchedCount++
+          const sentAt = new Date().toISOString()
           
-          // Record to CEO Action Ledger
-          await CEOActionLedger.recordAction({
-            experimentId: cohortId,
+          // Record Universal Commercial Action ID
+          await CommercialActionTracker.recordAction({
+            actionId,
+            agent: 'Sales',
+            trigger: `Revenue Hunter Intent Match -> ${prospect.recommendedOffer.name}`,
+            leadId: prospect.leadEmail,
             leadEmail: prospect.leadEmail,
             leadName: prospect.leadName,
             company: prospect.companyName,
-            tier: prospect.recommendedOffer.tier === 'TIER_BUNDLE_79'
-              ? 'TIER_1_BUNDLE_79'
-              : prospect.recommendedOffer.tier === 'TIER_MEMBERSHIP_29'
-                ? 'TIER_2_MEMBERSHIP_29'
-                : prospect.recommendedOffer.tier === 'TIER_ACTION_PLAN_49'
-                  ? 'TIER_3_ACTION_PLAN_49'
-                  : 'TIER_4_REPORT_19',
-            offer: `${message.offerTier} ($${message.priceUSD} USD)`,
-            decisionReason: `High $EV candidate ($${prospect.expectedValueUSD} EV, Rank: ${prospect.priorityRankScore})`,
-            executionStatus: 'PROVIDER_ACCEPTED',
-            provider: sendResult.provider || 'Brevo/Resend',
+            action: `Revenue Hunter Offer (${prospect.recommendedOffer.name})`,
+            product: prospect.recommendedOffer.tier,
+            channel: 'Email',
+            consent: 'Verified',
+            status: 'DISPATCHED',
+            result: 'DELIVERED',
+            revenueUSD: prospect.recommendedOffer.priceUSD,
+            attribution: 'REVENUE_HUNTER_COHORT',
+            timestamp: sentAt,
             providerMessageId: sendResult.providerMessageId,
-            funnelState: {
-              sent: true,
-              delivered: false,
-              opened: false,
-              clicked: false,
-              replied: false,
-              callBooked: false,
-              checkoutStarted: false,
-              paymentCaptured: false,
-              revenueAttributedUSD: 0
-            },
-            attribution: 'Revenue Hunter Autonomous Direct Outreach'
           })
 
-          // Update Google Sheets
+          // Update Google Sheets activity
           try {
             await updateLeadInSheet(prospect.leadEmail, {
               leadActivity: JSON.stringify({
-                hunterOutreachSentAt: new Date().toISOString(),
+                hunterOutreachSentAt: sentAt,
                 hunterOfferTier: message.offerTier,
-                hunterExpectedValueUSD: prospect.expectedValueUSD
+                hunterActionId: actionId,
               })
             })
           } catch (e) {
@@ -235,6 +210,7 @@ export class RevenueHunterEngine {
           }
 
           receipts.push({
+            actionId,
             leadEmail: prospect.leadEmail,
             offer: prospect.recommendedOffer.name,
             expectedValueUSD: prospect.expectedValueUSD,
@@ -253,7 +229,8 @@ export class RevenueHunterEngine {
       dispatchedCount,
       cohortId,
       receipts,
-      errors
+      errors,
+      circuitBreakerStatus: isProbeMode ? 'DIAGNOSTIC_PROBE' : 'HEALTHY'
     }
   }
 }

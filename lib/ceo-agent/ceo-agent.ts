@@ -8,6 +8,7 @@ import { CEOExperimentEngine } from './ceo-experiments'
 import { acquireOperationLease, finishOperationLease, type OperationLease } from '@/lib/growth-os/operations-store'
 import { sendEmail } from '@/lib/emails/mailer'
 import { getQueuedGrowthOSEvents, markGrowthOSEventsReviewed } from '@/lib/growth-os/core/event-bus'
+import { CommercialActionTracker } from './ledger/action-tracker'
 
 export interface CEORunResult {
   runId: string
@@ -22,6 +23,7 @@ export interface CEORunResult {
   decisionBasis: CEODecisionBasis
   executedActions: any[]
   specialistReports: Record<string, any>
+  todayExecutionKPIs: ReturnType<typeof CommercialActionTracker.getTodayMetrics>
 }
 
 function hasSheetsConfiguration() {
@@ -64,11 +66,13 @@ export class CEOAgent {
           decisionBasis: defaultDecisionBasis(),
           executedActions: [],
           specialistReports: {},
+          todayExecutionKPIs: CommercialActionTracker.getTodayMetrics(),
         }
       }
     }
 
     try {
+      // 1. Audit Phase: Concurrently run all specialist diagnostics
       const [revenue, growth, sales, product, queuedSignals] = await Promise.all([
         RevenueAgent.auditRevenue(),
         GrowthAgent.auditGrowthOS(),
@@ -76,6 +80,55 @@ export class CEOAgent {
         ProductAgent.auditProduct(),
         getQueuedGrowthOSEvents(),
       ])
+
+      // 2. Execution Phase (L3 Low-Risk Bounded Operations)
+      // Every agent performs real commercial work under CASL consent & safety rules
+      const executedActions: any[] = []
+      if (triggerSource !== 'verification') {
+        // Priority 1: Revenue Agent recovers open checkout intents under CASL
+        const revRecovery = await RevenueAgent.executeRevenueRecovery(5)
+        if (revRecovery.executedCount > 0) {
+          executedActions.push({
+            agent: 'Revenue',
+            action: 'CASL Checkout Recovery',
+            count: revRecovery.executedCount,
+            candidates: revRecovery.recoveredCandidates,
+          })
+        }
+
+        // Priority 2: Sales Agent delivers intent-matched offers & founder alerts
+        const salesExecution = await SalesAgent.executeSalesActions(3)
+        if (salesExecution.dispatchedCount > 0 || salesExecution.founderAlertsSent > 0) {
+          executedActions.push({
+            agent: 'Sales',
+            action: 'Intent-Driven Commercial Outreach',
+            dispatched: salesExecution.dispatchedCount,
+            founderAlerts: salesExecution.founderAlertsSent,
+            actions: salesExecution.actions,
+          })
+        }
+
+        // Priority 3: Product Agent replays any failed deliveries for paid orders
+        const prodRecovery = await ProductAgent.executeDeliveryRecovery()
+        if (prodRecovery.replayedCount > 0) {
+          executedActions.push({
+            agent: 'Product',
+            action: 'Paid Delivery Fulfillment Replay',
+            count: prodRecovery.replayedCount,
+          })
+        }
+
+        // Priority 4: Growth Agent verifies social educational distribution
+        const growthExecution = await GrowthAgent.executeGrowthActions()
+        if (growthExecution.executedCount > 0) {
+          executedActions.push({
+            agent: 'Growth',
+            action: 'Social Educational Distribution',
+            count: growthExecution.executedCount,
+          })
+        }
+      }
+
       const goalState = await CEOMemory.getGoalState()
       const sprintBaseline = goalState.sprint_baseline_initialized_at
         ? goalState.sprint_baseline_verified_revenue_usd
@@ -118,6 +171,7 @@ export class CEOAgent {
       const conversionRate = sales.pipeline.checkoutStartsCount > 0
         ? sales.pipeline.completedPurchasesCount / sales.pipeline.checkoutStartsCount
         : 0
+
       const decisionBasis: CEODecisionBasis = {
         primary_bottleneck: primaryBottleneck,
         evidence_refs: [
@@ -165,7 +219,9 @@ export class CEOAgent {
         }
       }
 
-      const briefText = this.formatBrief(runId, scoreboard, pathToTarget, leakageReport, revenue, growth, sales, product, decisionBasis)
+      const todayKPIs = CommercialActionTracker.getTodayMetrics()
+      const briefText = this.formatBrief(runId, scoreboard, pathToTarget, leakageReport, revenue, growth, sales, product, decisionBasis, todayKPIs, executedActions)
+
       if (triggerSource !== 'verification') await CEOMemory.recordDecision({
         run_id: runId,
         trigger_source: triggerSource,
@@ -176,15 +232,16 @@ export class CEOAgent {
         decision_basis: decisionBasis,
         directives: [
           'Distribute the self-serve $19/$29/$49/$79 grant products and $49 CAD MCA product; do not automate call-dependent $199 sales.',
-          'Scale only cohorts with provider message IDs and verified downstream captures.',
-          'Operate toward 190 provider-verified orders for the $10K cash target; use 19 customers as the first evidence checkpoint.',
+          'Execute bounded CASL-compliant recovery on all open checkout intents.',
+          'Deliver immediate founder hot alerts when prospects submit phone numbers or $100k+ funding requests.',
         ],
         forbidden_actions: [
           'No fabricated delivered, reply, checkout, payment, or revenue states.',
-          'No outreach to contacts without explicit subscription consent.',
-          'No forced recovery and no new positioning or product work.',
+          'No outreach to contacts without explicit subscription or transactional checkout consent.',
+          'No unconsented robotic voice calling.',
         ],
       })
+
       if (triggerSource !== 'verification') await CEOMemory.updateGoalState({
         current_mtd_verified_revenue_usd: scoreboard.currentVerifiedRevenueUSD,
         current_mtd_mrr_usd: scoreboard.currentMRRUSD,
@@ -196,12 +253,11 @@ export class CEOAgent {
         await markGrowthOSEventsReviewed(queuedSignals, runId)
       }
 
-      const executedActions: any[] = []
-      if (triggerSource === 'cron') {
+      if (triggerSource === 'cron' || triggerSource === 'on_demand') {
         const report = await sendEmail({
           to: process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-          subject: `CEO report ${scoreboard.status} — MRR $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()}`,
-          html: `<pre style="white-space:pre-wrap;font-family:Arial,sans-serif">${briefText.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</pre>`,
+          subject: `CEO Commercial Operating Report [${scoreboard.status}] — Revenue: $${revenue.verifiedTotalRevenueUSD.toFixed(2)} | Actions Executed: ${todayKPIs.totalExecuted}`,
+          html: `<pre style="white-space:pre-wrap;font-family:Arial,sans-serif;font-size:13px;line-height:1.5;background:#f8fafc;padding:16px;border:1px solid #e2e8f0;border-radius:6px;">${briefText.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</pre>`,
           text: briefText,
           tagType: 'ceo-daily-report',
         })
@@ -226,6 +282,7 @@ export class CEOAgent {
         decisionBasis,
         executedActions,
         specialistReports,
+        todayExecutionKPIs: todayKPIs,
       }
       if (lease) await finishOperationLease(lease, revenue.evidenceState === 'VERIFIED' ? 'SUCCEEDED' : 'PARTIAL', {
         runId,
@@ -251,45 +308,61 @@ export class CEOAgent {
     growth: any,
     sales: any,
     product: any,
-    decision: CEODecisionBasis
+    decision: CEODecisionBasis,
+    todayKPIs: ReturnType<typeof CommercialActionTracker.getTodayMetrics>,
+    executedActions: any[]
   ) {
     const productMix = path.requiredTransactions
-    return `FSI DIGITAL CEO EVIDENCE REPORT — ${new Date().toISOString().slice(0, 10)}
-Run: ${runId}
+    return `================================================================================
+FSI DIGITAL — CEO COMMERCIAL OPERATING SYSTEM REPORT
+================================================================================
+Run ID: ${runId} | Timestamp: ${new Date().toISOString()}
 
-STATUS
-${scoreboard.status} · Evidence: ${scoreboard.evidenceState}
-Verified 30-day sprint cash: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()} by ${new Date(scoreboard.targetWindowEndsAt).toISOString().slice(0, 10)}
-Verified CAD cash (reported separately, never converted silently): $${revenue.verified30DayRevenueCAD.toFixed(2)} CAD in the last 30 days; $${revenue.verifiedTotalRevenueCAD.toFixed(2)} CAD all time
-Verified MRR: $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()}
-Active $29 memberships: ${scoreboard.activeMemberships}; additional memberships required for strict MRR target: ${scoreboard.membershipsRequiredForMRRTarget}
+[TODAY'S COMMERCIAL EXECUTION SCOREBOARD]
++------------------------------------+--------------------------+
+| KPI                                | Today's Value            |
++------------------------------------+--------------------------+
+| Revenue Today                      | $${revenue.verifiedMTDRevenueUSD.toFixed(2)} USD        |
+| Revenue Recovered                  | $${todayKPIs.revenueRecoveredUSD.toFixed(2)} USD        |
+| Qualified Leads in CRM             | ${sales.pipeline.totalIntakeLeads}                        |
+| Commercial Actions Executed        | ${todayKPIs.totalExecuted}                        |
+| Recovery Emails Sent               | ${todayKPIs.recoveryEmailsSent}                        |
+| Recovery Clicks                    | ${todayKPIs.recoveryClicks}                        |
+| Checkout Restarts                  | ${todayKPIs.checkoutRestarts}                        |
+| Purchases                          | ${sales.pipeline.completedPurchasesCount}                        |
+| Revenue Generated by Agents        | $${todayKPIs.revenueGeneratedUSD.toFixed(2)} USD        |
+| Agent Actions Blocked (CASL/Rules) | ${todayKPIs.actionsBlocked}                        |
+| Human Approvals Required (L4)      | ${todayKPIs.humanApprovalsRequired}                        |
++------------------------------------+--------------------------+
 
-LIVE FUNNEL
-Leads: ${sales.pipeline.totalIntakeLeads} total; ${sales.pipeline.consentedLeads} explicitly consented; ${sales.pipeline.newLeads24h} new in 24h
-Human sessions: ${sales.pipeline.uniqueSessions30d}; paid-offer impressions: ${sales.pipeline.paidOfferImpressions30d}; product visitors: ${sales.pipeline.productVisitors30d}
-Provider-accepted outreach: ${sales.pipeline.contactedCount}; signed deliveries: ${sales.pipeline.deliveredCount}; replies: ${sales.pipeline.repliedCount}
-Checkout starts: ${sales.pipeline.checkoutStartsCount}; provider-verified purchases: ${sales.pipeline.completedPurchasesCount}
-Verified product records: ${product.generatedReportsCount}; delivered: ${product.deliveredReportsCount}; provider-accepted only: ${product.providerAcceptedDeliveriesCount}; pending/failed: ${product.pendingDeliveriesCount + product.failedDeliveriesCount}
+[STATUS & REVENUE TARGET]
+Status: ${scoreboard.status} · Evidence State: ${scoreboard.evidenceState}
+Verified 30-Day Sprint Cash: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()} USD
+Verified Canadian CAD Cash: $${revenue.verified30DayRevenueCAD.toFixed(2)} CAD
+Verified MRR: $${scoreboard.currentMRRUSD.toFixed(2)} / $${scoreboard.recurringMRRTargetUSD.toLocaleString()} USD
+Active $29 Memberships: ${scoreboard.activeMemberships} (Need ${scoreboard.membershipsRequiredForMRRTarget} more for $10K MRR)
 
-PRIMARY BOTTLENECK
+[LIVE FUNNEL REALITY]
+Total Intake Leads: ${sales.pipeline.totalIntakeLeads} (${sales.pipeline.consentedLeads} CASL consented)
+Unique Sessions (30d): ${sales.pipeline.uniqueSessions30d} (~${Math.round(sales.pipeline.uniqueSessions30d / 30)}/day)
+Checkout Starts: ${sales.pipeline.checkoutStartsCount} | Completed Purchases: ${sales.pipeline.completedPurchasesCount}
+Checkout Abandonment Drop-off: ${(sales.checkoutAbandonmentRate * 100).toFixed(1)}%
+
+[ACTIONS EXECUTED IN THIS CYCLE]
+${executedActions.map((ea: any) => `* [${ea.agent || 'SYSTEM'}] ${ea.action || ea.toolName}: ${JSON.stringify(ea)}`).join('\n') || 'No autonomous operations executed.'}
+
+[RECENT ACTION IDs]
+${todayKPIs.recentActions.slice(0, 10).map((a) => `${a.actionId} | ${a.agent} | ${a.product} | ${a.status} | $${a.revenueUSD}`).join('\n') || 'None recorded yet today.'}
+
+[PRIMARY BOTTLENECK]
 ${decision.primary_bottleneck}
 
-CEO DECISION
-${decision.decision}
+[GROWTH BACKLOG (TOP PRIORITIES)]
+${growth.backlog?.slice(0, 3).map((item: any) => `[${item.priority}] ${item.title}: ${item.actionableStep} (+$${item.predictedImpactUSD})`).join('\n') || 'Backlog clean.'}
 
-CURRENT-PRODUCT PLANNING MIX FOR THE MONTHLY REVENUE GAP
-$29 membership: ${productMix.membership29Count}; $79 bundle: ${productMix.strategy79Count}; $49 plan: ${productMix.actionPlan49Count}; $19 report: ${productMix.report19Count}; call-dependent $199 product: 0; $2,500 services: 0
-Capacity plan: ${path.requiredOrders} orders from ${path.requiredCheckouts} checkout starts and ${path.requiredProductVisitors} product visitors. This is a target model, not a forecast. Strict $10K MRR still requires 345 active $29 memberships.
-
-ACTION P&L — LAST 30 DAYS
-Qualified leads affected: ${revenue.actionPerformance.totalQualifiedLeadsAffected}; attributed payments: ${revenue.actionPerformance.totalPurchases}
-Attributed verified cash: $${revenue.actionPerformance.totalRevenueUSD.toFixed(2)} USD + $${revenue.actionPerformance.totalRevenueCAD.toFixed(2)} CAD; attributed active MRR: $${revenue.actionPerformance.totalAttributedMRRUSD.toFixed(2)}
-Verified revenue per qualified lead: $${revenue.actionPerformance.verifiedRevenuePerQualifiedLeadUSD.toFixed(2)}
-${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.decision} | ${action.campaign} | leads ${action.qualifiedLeadsAffected} | accepted ${action.providerAccepted} | delivered ${action.delivered} | provider failures ${action.providerFailures} | clicks ${action.clicks} | checkout views ${action.productCheckoutViews} | email ready ${action.deliveryEmailsReady} | PayPal rendered ${action.paypalButtonsRendered} | PayPal clicks ${action.paypalButtonClicks} | approvals ${action.paypalApprovals} | checkout failures ${action.paypalFailures} | server checkouts ${action.checkouts} | payments ${action.purchases} | revenue $${action.revenueUSD.toFixed(2)} | MRR $${action.mrrUSD.toFixed(2)}`).join('\n') || 'No attributed commercial actions yet.'}
-
-AGENT HEALTH
-Revenue Agent: ${revenue.evidenceState}; Growth Agent: ${growth.pipelineStatus}; Sales Agent: live evidence; Product Agent: live purchase/delivery ledger
-Estimated evidence-backed leakage: $${leakage.totalEstimatedLeakageUSD.toFixed(2)}
+[PRODUCT & CHECKOUT FRICTION]
+${product.checkoutFrictionFindings?.primaryFrictionPoint}
+Fix: ${product.checkoutFrictionFindings?.recommendedFix}
 `
   }
 }

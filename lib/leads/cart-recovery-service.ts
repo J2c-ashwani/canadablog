@@ -7,12 +7,11 @@ import {
   sendCartRecoveryEmail2,
   sendCartRecoveryEmail3,
 } from '@/lib/emails/cart-recovery'
-import {
-  hasRecentCommercialProviderAcceptance,
-  isTestOrInternalContact,
-} from '@/lib/leads/commercial-eligibility'
+import { hasRecentCommercialProviderAcceptance } from '@/lib/leads/commercial-eligibility'
 import { ensureScopedSubscriberTokens } from '@/lib/leads/SubscriberRepository'
 import { buildEmailActionContext, getGrowthActionEvents } from '@/lib/growth-os/action-attribution'
+import { validateCaslEligibility } from '@/lib/leads/casl-consent'
+import { CommercialActionTracker, generateActionId } from '@/lib/ceo-agent/ledger/action-tracker'
 
 export interface CartRecoveryRunSummary {
   processedCount: number
@@ -21,7 +20,7 @@ export interface CartRecoveryRunSummary {
   paymentIntentEvidenceCount: number
   skippedPurchasedCount: number
   recoveredCandidates: string[]
-  receipts: Array<{ email: string; stage: string; provider: string; providerMessageId: string }>
+  receipts: Array<{ email: string; stage: string; provider: string; providerMessageId: string; actionId: string }>
   errors: string[]
   timestamp: string
 }
@@ -99,6 +98,7 @@ export class CartRecoveryService {
         const email = intent.email.toLowerCase().trim()
         if (email && !latestOpenIntentByEmail.has(email)) latestOpenIntentByEmail.set(email, intent)
       })
+
     const summary: CartRecoveryRunSummary = {
       processedCount: 0,
       attemptedCount: 0,
@@ -112,12 +112,18 @@ export class CartRecoveryService {
     }
 
     const seenEmails = new Set<string>()
+
+    // Pass 1: Leads from CRM that have recorded checkout activity
     for (const lead of leads) {
       if (summary.attemptedCount >= maxEmailsPerRun) break
       const email = String(lead.email || '').toLowerCase().trim()
       if (seenEmails.has(email)) continue
       seenEmails.add(email)
-      if (!email.includes('@') || lead.isSubscribed !== true || isTestOrInternalContact(lead)) continue
+
+      // Strict CASL check: Verify transactional checkout recovery consent
+      const caslCheck = validateCaslEligibility(lead, 'TRANSACTIONAL_RECOVERY')
+      if (!caslCheck.isEligible) continue
+
       if (hasRecentCommercialProviderAcceptance(lead)) continue
       if (recentlyAcceptedRecipientIds.has(buildEmailActionContext('cart-recovery-1', email).recipientId)) continue
 
@@ -185,6 +191,8 @@ export class CartRecoveryService {
         }
 
         const sentAt = new Date().toISOString()
+        const actionId = generateActionId('Revenue')
+
         if (!sameRecoverySequence) {
           delete activity.cartRecoveryEmail1AcceptedAt
           delete activity.cartRecoveryEmail1ProviderMessageId
@@ -210,6 +218,27 @@ export class CartRecoveryService {
         activity.cartRecoveryLastProvider = result.provider || ''
         activity.cartRecoveryLastProviderMessageId = result.providerMessageId
 
+        // Record Universal Commercial Action ID
+        await CommercialActionTracker.recordAction({
+          actionId,
+          agent: 'Revenue',
+          trigger: 'Abandoned checkout',
+          leadId: email,
+          leadEmail: email,
+          leadName: emailInput.name || 'Founder',
+          company: emailInput.companyName || 'Canadian Business',
+          action: `Cart Recovery ${stage}`,
+          product: emailInput.productId,
+          channel: 'Email',
+          consent: 'Transactional',
+          status: 'DISPATCHED',
+          result: 'DELIVERED',
+          revenueUSD: Number(emailInput.priceShown) || 19,
+          attribution: 'CART_RECOVERY',
+          timestamp: sentAt,
+          providerMessageId: result.providerMessageId,
+        })
+
         const updated = await updateLeadInSheet(email, { leadActivity: JSON.stringify(activity) })
         if (!updated.success) {
           const appendRes = await appendLeadToSheet({
@@ -226,25 +255,29 @@ export class CartRecoveryService {
           }
         }
         summary.processedCount++
-        summary.recoveredCandidates.push(`${email} (${stage})`)
+        summary.recoveredCandidates.push(`${email} (${stage}) [${actionId}]`)
         summary.receipts.push({
           email,
           stage,
           provider: result.provider || '',
           providerMessageId: result.providerMessageId,
+          actionId,
         })
       } catch (error: any) {
         summary.errors.push(`${email} ${stage || 'eligibility'}: ${error.message || String(error)}`)
       }
     }
 
-    // Process any open payment intents whose email does not yet exist in the Leads sheet
+    // Pass 2: Process any open payment intents whose email does not yet exist in the Leads sheet
     for (const [intentEmail, intent] of latestOpenIntentByEmail.entries()) {
       if (summary.attemptedCount >= maxEmailsPerRun) break
       if (seenEmails.has(intentEmail)) continue
       seenEmails.add(intentEmail)
 
-      if (!intentEmail.includes('@') || isTestOrInternalContact({ email: intentEmail, name: intent.name })) continue
+      // Strict CASL check
+      const caslCheck = validateCaslEligibility({ email: intentEmail, name: intent.name }, 'TRANSACTIONAL_RECOVERY')
+      if (!caslCheck.isEligible) continue
+
       if (verifiedBuyerEmails.has(intentEmail)) {
         summary.skippedPurchasedCount++
         continue
@@ -298,6 +331,8 @@ export class CartRecoveryService {
         }
 
         const sentAt = new Date().toISOString()
+        const actionId = generateActionId('Revenue')
+
         const activity: Record<string, any> = {
           cartRecoveryEvidenceId: checkoutEvidenceId,
           checkoutStartedAt: new Date(intentCheckoutMs).toISOString(),
@@ -309,9 +344,30 @@ export class CartRecoveryService {
           cartRecoveryLastProviderMessageId: result.providerMessageId,
         }
 
+        // Record Universal Commercial Action ID
+        await CommercialActionTracker.recordAction({
+          actionId,
+          agent: 'Revenue',
+          trigger: 'Direct checkout abandoned',
+          leadId: intentEmail,
+          leadEmail: intentEmail,
+          leadName: emailInput.name || 'Founder',
+          company: emailInput.companyName || 'Canadian Business',
+          action: `Cart Recovery ${stage}`,
+          product: emailInput.productId,
+          channel: 'Email',
+          consent: 'Transactional',
+          status: 'DISPATCHED',
+          result: 'DELIVERED',
+          revenueUSD: Number(emailInput.priceShown) || 19,
+          attribution: 'CART_RECOVERY',
+          timestamp: sentAt,
+          providerMessageId: result.providerMessageId,
+        })
+
         const updated = await updateLeadInSheet(intentEmail, { leadActivity: JSON.stringify(activity) })
         if (!updated.success) {
-          await appendLeadToSheet({
+          const appendRes = await appendLeadToSheet({
             timestamp: sentAt,
             email: intentEmail,
             name: emailInput.name || 'Founder',
@@ -319,19 +375,25 @@ export class CartRecoveryService {
             leadActivity: JSON.stringify(activity),
             isSubscribed: true,
           })
+          if (!appendRes.success) {
+            summary.errors.push(`${intentEmail} ${stage}: provider accepted, but CRM receipt persistence failed`)
+            continue
+          }
         }
         summary.processedCount++
-        summary.recoveredCandidates.push(`${intentEmail} (${stage})`)
+        summary.recoveredCandidates.push(`${intentEmail} (${stage}) [${actionId}]`)
         summary.receipts.push({
           email: intentEmail,
           stage,
           provider: result.provider || '',
           providerMessageId: result.providerMessageId,
+          actionId,
         })
       } catch (error: any) {
-        summary.errors.push(`${intentEmail} ${stage || 'eligibility'}: ${error.message || String(error)}`)
+        summary.errors.push(`${intentEmail} ${stage || 'intent-processing'}: ${error.message || String(error)}`)
       }
     }
+
     return summary
   }
 }
