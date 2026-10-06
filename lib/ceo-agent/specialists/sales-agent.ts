@@ -145,6 +145,155 @@ export class SalesAgent {
   }
 
   /**
+   * Multi-variable qualification score (0-100) combining:
+   * 1. Incorporation status (25%)
+   * 2. Canadian province jurisdiction (15%)
+   * 3. Business stage (20%)
+   * 4. Funding amount requested (15%)
+   * 5. Industry / sector grant alignment (15%)
+   * 6. Readiness score (10%)
+   */
+  public static calculateMultiVariableQualificationScore(lead: SubscriberProfile): {
+    totalScore: number;
+    breakdown: {
+      incorporationScore: number;
+      jurisdictionScore: number;
+      stageScore: number;
+      fundingScore: number;
+      sectorScore: number;
+      readinessScore: number;
+    };
+    isHighIntent: boolean;
+    recommendedOffer: {
+      id: string;
+      name: string;
+      price: number;
+      url: string;
+    };
+    summaryReason: string;
+  } {
+    // 1. Incorporation Status (25 pts max)
+    const stageStr = (lead.businessStage || '').toLowerCase();
+    const hasCorpSize = lead.companySize && ['10-49', '50-99', '100-499', '500+'].includes(lead.companySize);
+    const isExplicitlyCorp = /incorporated|operating|scale|series|established/i.test(stageStr) || hasCorpSize;
+    const hasCompany = Boolean(lead.companyName && lead.companyName.trim().length > 1 && !/^(n\/a|none|idea|concept|tbd)$/i.test(lead.companyName));
+    const isIdea = /idea|concept|pre-incorporation|unincorporated/i.test(stageStr);
+
+    let incorporationScore = 12;
+    if (isExplicitlyCorp) {
+      incorporationScore = 25;
+    } else if (isIdea) {
+      incorporationScore = 5;
+    } else if (hasCompany) {
+      incorporationScore = 18;
+    }
+
+    // 2. Canadian Province Jurisdiction (15 pts max)
+    const canadianProvinces = new Set([
+      'on', 'ontario', 'bc', 'british columbia', 'ab', 'alberta', 'qc', 'quebec',
+      'sk', 'saskatchewan', 'mb', 'manitoba', 'ns', 'nova scotia', 'nb', 'new brunswick',
+      'nl', 'newfoundland', 'pe', 'prince edward island', 'yt', 'nt', 'nu'
+    ]);
+    const region = (lead.region || '').toLowerCase().trim();
+    const country = (lead.country || '').toLowerCase().trim();
+
+    let jurisdictionScore = 8;
+    if (canadianProvinces.has(region)) {
+      jurisdictionScore = 15;
+    } else if (country === 'canada') {
+      jurisdictionScore = 12;
+    } else if (country === 'usa') {
+      jurisdictionScore = 5;
+    }
+
+    // 3. Business Stage (20 pts max)
+    let stageScore = 10;
+    if (/operating|scaling|commercial|growth|established|active/i.test(stageStr)) {
+      stageScore = 20;
+    } else if (/revenue|post-launch|market-ready/i.test(stageStr)) {
+      stageScore = 17;
+    } else if (/mvp|prototype|seed|beta|development/i.test(stageStr)) {
+      stageScore = 12;
+    } else if (/pre-revenue|early/i.test(stageStr)) {
+      stageScore = 8;
+    } else if (isIdea) {
+      stageScore = 4;
+    }
+
+    // 4. Funding Amount Requested / Capital Appetite (15 pts max)
+    const fundingStr = (lead.fundingAmount || '').toLowerCase();
+    let fundingScore = 5;
+    if (/50k|100k|150k|200k|250k|300k|400k|500k/i.test(fundingStr)) {
+      fundingScore = 15; // Optimal sweet spot for Canadian non-dilutive programs (IRAP, CanExport, SDTC)
+    } else if (/750k|1m|2m|multi-million/i.test(fundingStr)) {
+      fundingScore = 12; // High appetite, requires established financial track record
+    } else if (/10k|20k|25k|30k|40k/i.test(fundingStr)) {
+      fundingScore = 10;
+    } else if (fundingStr.length > 0) {
+      fundingScore = 8;
+    }
+
+    // 5. Industry / Sector Grant Alignment (15 pts max)
+    const indStr = (lead.industry || '').toLowerCase();
+    let sectorScore = 6;
+    if (/tech|software|ai|clean|green|energy|agri|farm|food|bio|health|medical|manufactur|aerospace|robot/i.test(indStr)) {
+      sectorScore = 15; // Highest priority sectors under Canadian federal and provincial initiatives
+    } else if (/service|consult|retail|construc|media|educat/i.test(indStr)) {
+      sectorScore = 10;
+    } else if (indStr.length > 0) {
+      sectorScore = 8;
+    }
+
+    // 6. Readiness Score (10 pts max)
+    const readinessScore = typeof lead.readinessScore === 'number' && lead.readinessScore > 0
+      ? Math.min(10, Math.round((lead.readinessScore / 100) * 10))
+      : 5;
+
+    const totalScore = Math.min(100, Math.max(0,
+      incorporationScore + jurisdictionScore + stageScore + fundingScore + sectorScore + readinessScore
+    ));
+
+    const isHighIntent = totalScore >= 70;
+    let recommendedOffer = {
+      id: 'funding-match-report',
+      name: '$19 Custom Funding Match Report',
+      price: 19,
+      url: 'https://www.fsidigital.ca/products/funding-match-report',
+    };
+
+    if (totalScore >= 70) {
+      recommendedOffer = {
+        id: 'funding-bundle',
+        name: '$79 Complete Funding Blueprint',
+        price: 79,
+        url: 'https://www.fsidigital.ca/products/bundle',
+      };
+    } else if (totalScore >= 45) {
+      recommendedOffer = {
+        id: 'funding-roadmap',
+        name: '$49 Funding Strategy & Action Plan',
+        price: 49,
+        url: 'https://www.fsidigital.ca/products/action-plan',
+      };
+    }
+
+    return {
+      totalScore,
+      breakdown: {
+        incorporationScore,
+        jurisdictionScore,
+        stageScore,
+        fundingScore,
+        sectorScore,
+        readinessScore,
+      },
+      isHighIntent,
+      recommendedOffer,
+      summaryReason: `Multi-variable score: ${totalScore}/100 (Corp: ${incorporationScore}/25, Region: ${jurisdictionScore}/15, Stage: ${stageScore}/20, Funding: ${fundingScore}/15, Sector: ${sectorScore}/15, Readiness: ${readinessScore}/10)`,
+    };
+  }
+
+  /**
    * Level 3: Intent-Driven Commercial Sales Action Machine
    * Turns qualified leads into actual personalized commercial actions under CASL express consent.
    */
@@ -166,39 +315,46 @@ export class SalesAgent {
         return casl.isEligible && !hasRecentCommercialProviderAcceptance(sub);
       });
 
-      // Sort by intent: leads with higher readiness scores and explicit funding amounts first
-      candidates.sort((a, b) => {
-        const scoreA = (a.readinessScore || 0) + (a.fundingAmount ? 30 : 0);
-        const scoreB = (b.readinessScore || 0) + (b.fundingAmount ? 30 : 0);
-        return scoreB - scoreA;
-      });
+      // Record candidate evaluation stats into CommercialActionTracker
+      CommercialActionTracker.recordFunnelCandidateStats(subscribers.length, candidates.length);
 
-      const batch = candidates.slice(0, maxLeads);
+      // Rank by multi-variable commercial qualification score
+      const scoredCandidates = candidates.map((lead) => ({
+        lead,
+        qualification: this.calculateMultiVariableQualificationScore(lead),
+      }));
 
-      for (const lead of batch) {
-        const fundingStr = (lead.fundingAmount || '').toLowerCase();
-        const isHighFunding = fundingStr.includes('100') || fundingStr.includes('250') || fundingStr.includes('500') || fundingStr.includes('1m');
-        const isHighIntent = (lead.readinessScore || 0) >= 60 || isHighFunding;
+      scoredCandidates.sort((a, b) => b.qualification.totalScore - a.qualification.totalScore);
 
-        // 1. If Very High Intent, trigger immediate Founder Alert Email to CEO Ashwani
-        if (isHighIntent) {
+      const batch = scoredCandidates.slice(0, maxLeads);
+
+      for (const item of batch) {
+        const { lead, qualification } = item;
+        const offerTier = qualification.recommendedOffer;
+
+        // 1. If Multi-Variable Score >= 70, trigger immediate Founder Alert Email to CEO Ashwani
+        if (qualification.isHighIntent) {
           const alertActionId = generateActionId('Sales');
           const founderEmail = process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca';
-          const alertSubject = `🚨 HIGH-INTENT FOUNDER ALERT: ${lead.name || 'Founder'} (${lead.companyName || 'Business'}) requested ${lead.fundingAmount || '$100k+'}`;
+          const alertSubject = `🚨 HIGH-INTENT FOUNDER ALERT [Score: ${qualification.totalScore}/100]: ${lead.name || 'Founder'} (${lead.companyName || 'Business'}) requested ${lead.fundingAmount || '$100k+'}`;
           const alertHtml = `
             <div style="font-family:Arial,sans-serif;padding:16px;border:1px solid #e2e8f0;border-radius:8px;max-width:600px;">
               <h2 style="color:#0f172a;margin-top:0;">🔥 High-Intent Prospect Intake</h2>
-              <p>A Canadian founder with significant funding requirements just submitted an inquiry:</p>
+              <p>A Canadian founder with verified business maturity submitted a high-value funding inquiry:</p>
               <table style="width:100%;border-collapse:collapse;margin:16px 0;">
+                <tr><td style="padding:6px;font-weight:bold;color:#475569;">Qualification Score:</td><td><strong>${qualification.totalScore}/100</strong> (High Intent)</td></tr>
                 <tr><td style="padding:6px;font-weight:bold;color:#475569;">Name:</td><td>${lead.name || 'Founder'}</td></tr>
                 <tr><td style="padding:6px;font-weight:bold;color:#475569;">Company:</td><td>${lead.companyName || 'N/A'}</td></tr>
                 <tr><td style="padding:6px;font-weight:bold;color:#475569;">Email:</td><td><a href="mailto:${lead.email}">${lead.email}</a></td></tr>
                 <tr><td style="padding:6px;font-weight:bold;color:#475569;">Phone:</td><td>${lead.phone || 'Not provided'}</td></tr>
                 <tr><td style="padding:6px;font-weight:bold;color:#475569;">Funding Goal:</td><td>${lead.fundingAmount || 'Unspecified'}</td></tr>
                 <tr><td style="padding:6px;font-weight:bold;color:#475569;">Province / Stage:</td><td>${lead.region || 'Canada'} / ${lead.businessStage || 'Active'}</td></tr>
-                <tr><td style="padding:6px;font-weight:bold;color:#475569;">Readiness Score:</td><td>${lead.readinessScore || 'N/A'}/100</td></tr>
+                <tr><td style="padding:6px;font-weight:bold;color:#475569;">Sector / Readiness:</td><td>${lead.industry || 'Tech'} / ${lead.readinessScore || 'N/A'}/100</td></tr>
               </table>
-              <div style="background:#f8fafc;padding:12px;border-radius:6px;border-left:4px solid #2563eb;">
+              <div style="background:#f8fafc;padding:12px;border-radius:6px;border-left:4px solid #2563eb;margin-bottom:12px;">
+                <strong>Score Breakdown:</strong> Corp: ${qualification.breakdown.incorporationScore}/25 | Region: ${qualification.breakdown.jurisdictionScore}/15 | Stage: ${qualification.breakdown.stageScore}/20 | Funding: ${qualification.breakdown.fundingScore}/15 | Sector: ${qualification.breakdown.sectorScore}/15 | Readiness: ${qualification.breakdown.readinessScore}/10
+              </div>
+              <div style="background:#eff6ff;padding:12px;border-radius:6px;border-left:4px solid #3b82f6;">
                 <strong>Recommended Next Action:</strong> Offer the $79 Complete Capital Stacking Toolkit or schedule a $199 Strategy Session.
               </div>
               <p style="font-size:12px;color:#94a3b8;margin-top:16px;">Action ID: ${alertActionId} | Generated by FSI Sales Agent</p>
@@ -209,7 +365,7 @@ export class SalesAgent {
             to: founderEmail,
             subject: alertSubject,
             html: alertHtml,
-            text: `High-Intent Founder Alert: ${lead.name || 'Founder'} (${lead.email}) requested ${lead.fundingAmount || 'funding'}.`,
+            text: `High-Intent Founder Alert [Score: ${qualification.totalScore}/100]: ${lead.name || 'Founder'} (${lead.email}) requested ${lead.fundingAmount || 'funding'}.`,
             tagType: 'founder-high-intent-alert',
           });
 
@@ -218,7 +374,7 @@ export class SalesAgent {
             await CommercialActionTracker.recordAction({
               actionId: alertActionId,
               agent: 'Sales',
-              trigger: `High-intent intake (${lead.fundingAmount || 'High-score'})`,
+              trigger: `Multi-variable qualification (${qualification.totalScore}/100)`,
               leadId: lead.email,
               leadEmail: lead.email,
               leadName: lead.name,
@@ -237,13 +393,7 @@ export class SalesAgent {
           }
         }
 
-        // 2. Select Product Fit based on Intent
-        const offerTier = isHighIntent
-          ? { id: 'funding-bundle', name: '$79 Complete Funding Blueprint', price: 79, url: 'https://www.fsidigital.ca/products/bundle' }
-          : lead.fundingInterests?.length
-          ? { id: 'funding-roadmap', name: '$49 Funding Strategy & Action Plan', price: 49, url: 'https://www.fsidigital.ca/products/action-plan' }
-          : { id: 'funding-match-report', name: '$19 Custom Funding Match Report', price: 19, url: 'https://www.fsidigital.ca/products/funding-match-report' };
-
+        // 2. Send Intent-Matched Self-Serve Offer Email
         const emailActionId = generateActionId('Sales');
         const token = lead.unsubscribeToken || `unsub_${Buffer.from(lead.email).toString('hex').substring(0, 16)}`;
         const unsubUrl = `https://www.fsidigital.ca/api/subscribe/unsubscribe?email=${encodeURIComponent(lead.email)}&token=${encodeURIComponent(token)}`;

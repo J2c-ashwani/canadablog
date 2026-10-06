@@ -10,7 +10,10 @@ export interface GeneratedSalesMessage {
 }
 
 export class SalesSequenceEngine {
-  public static generateMessageForProspect(prospect: ExpectedRevenueCalculation): GeneratedSalesMessage {
+  public static generateMessageForProspect(
+    prospect: ExpectedRevenueCalculation,
+    variant: 'standard' | 'curiosity' | 'direct' = 'standard'
+  ): GeneratedSalesMessage {
     const offer = prospect.recommendedOffer
     const firstName = prospect.leadName.split(' ')[0] || 'Founder'
     const company = prospect.companyName || 'your enterprise'
@@ -22,10 +25,18 @@ export class SalesSequenceEngine {
     let offerSection = ''
     let ctaButtonText = ''
 
+    if (variant === 'curiosity') {
+      subject = `Your Canadian funding eligibility matches (${company})`
+      bodyIntro = `We identified verified non-dilutive grant and tax credit programs currently open in ${province} that match businesses in ${industry}.`
+    } else if (variant === 'direct') {
+      subject = `Active Grant Deadlines: Matched programs for ${company} (${province})`
+      bodyIntro = `Several federal and provincial funding allocations in ${province} have upcoming intake windows. Here is your priority action roadmap.`
+    }
+
     switch (offer.tier) {
       case 'TIER_BUNDLE_79':
-        subject = `Capital Stacking Toolkit for ${company} (${province})`
-        bodyIntro = `Canadian funding programs yield the highest return when federal non-dilutive grants and provincial tax incentives are combined without exceeding stacking caps.`
+        if (!subject) subject = `Capital Stacking Toolkit for ${company} (${province})`
+        if (!bodyIntro) bodyIntro = `Canadian funding programs yield the highest return when federal non-dilutive grants and provincial tax incentives are combined without exceeding stacking caps.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #059669; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Complete Capital Stacking Toolkit ($79 USD)</p>
@@ -38,8 +49,8 @@ export class SalesSequenceEngine {
         break
 
       case 'TIER_REPORT_19':
-        subject = `Funding Match Report for ${company}`
-        bodyIntro = `Use your current business profile in ${province} to narrow the grant and funding programs worth reviewing first.`
+        if (!subject) subject = `Funding Match Report for ${company}`
+        if (!bodyIntro) bodyIntro = `Use your current business profile in ${province} to narrow the grant and funding programs worth reviewing first.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Personalized Funding Match Report ($19 USD)</p>
@@ -52,8 +63,8 @@ export class SalesSequenceEngine {
         break
 
       case 'TIER_MEMBERSHIP_29':
-        subject = `Funding Watch for ${company} (${province})`
-        bodyIntro = `Funding windows and deadlines change throughout the year. Funding Watch keeps ${company}'s self-serve funding shortlist current without requiring a call or live session.`
+        if (!subject) subject = `Funding Watch for ${company} (${province})`
+        if (!bodyIntro) bodyIntro = `Funding windows and deadlines change throughout the year. Funding Watch keeps ${company}'s self-serve funding shortlist current without requiring a call or live session.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #7c3aed; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Funding Watch Membership ($29 USD/month)</p>
@@ -67,8 +78,8 @@ export class SalesSequenceEngine {
 
       case 'TIER_ACTION_PLAN_49':
       default:
-        subject = `Funding Action Plan & Checklist for ${company}`
-        bodyIntro = `We identified active Canadian non-dilutive funding programs suitable for ${company}'s current stage in ${province}.`
+        if (!subject) subject = `Funding Action Plan & Checklist for ${company}`
+        if (!bodyIntro) bodyIntro = `We identified active Canadian non-dilutive funding programs suitable for ${company}'s current stage in ${province}.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #d97706; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Step-by-Step Funding Action Plan ($49 USD)</p>

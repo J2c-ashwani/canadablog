@@ -147,7 +147,10 @@ export class RevenueHunterEngine {
     for (const prospect of cohort) {
       // 4. Intent-First Qualification (Economics as priority guide, NOT barrier)
       const actionId = generateActionId('Sales')
-      const message = SalesSequenceEngine.generateMessageForProspect(prospect)
+      const message = SalesSequenceEngine.generateMessageForProspect(
+        prospect,
+        isProbeMode ? 'curiosity' : 'standard'
+      )
 
       if (dryRun) {
         receipts.push({
@@ -156,7 +159,8 @@ export class RevenueHunterEngine {
           offer: prospect.recommendedOffer.name,
           expectedValueUSD: prospect.expectedValueUSD,
           status: 'SIMULATED_APPROVED',
-          decision: 'APPROVE'
+          decision: 'APPROVE',
+          variant: isProbeMode ? 'curiosity' : 'standard',
         })
         continue
       }
@@ -179,19 +183,21 @@ export class RevenueHunterEngine {
           await CommercialActionTracker.recordAction({
             actionId,
             agent: 'Sales',
-            trigger: `Revenue Hunter Intent Match -> ${prospect.recommendedOffer.name}`,
+            trigger: isProbeMode
+              ? `Revenue Hunter Experiment (Curiosity Subject)`
+              : `Revenue Hunter Intent Match -> ${prospect.recommendedOffer.name}`,
             leadId: prospect.leadEmail,
             leadEmail: prospect.leadEmail,
             leadName: prospect.leadName,
             company: prospect.companyName,
-            action: `Revenue Hunter Offer (${prospect.recommendedOffer.name})`,
+            action: `Revenue Hunter Offer (${prospect.recommendedOffer.name})${isProbeMode ? ' [EXP: Curiosity Subject]' : ''}`,
             product: prospect.recommendedOffer.tier,
             channel: 'Email',
             consent: 'Verified',
             status: 'DISPATCHED',
             result: 'DELIVERED',
             revenueUSD: prospect.recommendedOffer.priceUSD,
-            attribution: 'REVENUE_HUNTER_COHORT',
+            attribution: isProbeMode ? 'REVENUE_HUNTER_PROBE_CURIOSITY' : 'REVENUE_HUNTER_COHORT',
             timestamp: sentAt,
             providerMessageId: sendResult.providerMessageId,
           })

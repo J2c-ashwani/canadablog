@@ -65,9 +65,18 @@ export class CartRecoveryService {
       .filter((event) => new Date(event.occurredAt).getTime() >= recentAcceptanceCutoff)
       .map((event) => event.recipientId)
       .filter(Boolean))
-    const verifiedBuyerEmails = new Set(
-      purchases.filter(isProviderVerifiedPurchase).map((purchase) => purchase.email.toLowerCase().trim())
-    )
+    // Build per-product purchased set to allow multi-tier upselling (e.g., $19 buyer can still receive $79 recovery)
+    const buyerPurchasedProductsByEmail = new Map<string, Set<string>>()
+    purchases.filter(isProviderVerifiedPurchase).forEach((purchase) => {
+      const email = purchase.email.toLowerCase().trim()
+      if (!email) return
+      if (!buyerPurchasedProductsByEmail.has(email)) {
+        buyerPurchasedProductsByEmail.set(email, new Set<string>())
+      }
+      if (purchase.productId) {
+        buyerPurchasedProductsByEmail.get(email)!.add(purchase.productId.toLowerCase().trim())
+      }
+    })
     const recoverableProductIds = new Set([
       'funding-match-report',
       'funding-roadmap',
@@ -139,7 +148,19 @@ export class CartRecoveryService {
       summary.eligibleCheckoutCount++
       if (openIntent) summary.paymentIntentEvidenceCount++
 
-      if (verifiedBuyerEmails.has(email) || hasPaymentEvidence(activity)) {
+      // Product-specific suppression check (allows multi-tier upselling across different products)
+      const targetProductId = (openIntent?.productId || activity.checkoutProductId || '').toLowerCase().trim()
+      const purchasedProducts = buyerPurchasedProductsByEmail.get(email)
+      const hasPurchasedSpecificProduct = targetProductId
+        ? (purchasedProducts?.has(targetProductId) ?? false)
+        : (purchasedProducts !== undefined && purchasedProducts.size > 0)
+
+      const hasActivityPaymentForProduct = Boolean(
+        (activity.purchasedProductId && targetProductId && String(activity.purchasedProductId).toLowerCase().trim() === targetProductId) ||
+        (hasPaymentEvidence(activity) && (!activity.checkoutProductId || String(activity.checkoutProductId).toLowerCase().trim() === targetProductId))
+      )
+
+      if (hasPurchasedSpecificProduct || hasActivityPaymentForProduct) {
         summary.skippedPurchasedCount++
         continue
       }
@@ -278,7 +299,14 @@ export class CartRecoveryService {
       const caslCheck = validateCaslEligibility({ email: intentEmail, name: intent.name }, 'TRANSACTIONAL_RECOVERY')
       if (!caslCheck.isEligible) continue
 
-      if (verifiedBuyerEmails.has(intentEmail)) {
+      // Product-specific suppression check (allows multi-tier upselling across different products)
+      const targetProductId = (intent.productId || '').toLowerCase().trim()
+      const purchasedProducts = buyerPurchasedProductsByEmail.get(intentEmail)
+      const hasPurchasedSpecificProduct = targetProductId
+        ? (purchasedProducts?.has(targetProductId) ?? false)
+        : (purchasedProducts !== undefined && purchasedProducts.size > 0)
+
+      if (hasPurchasedSpecificProduct) {
         summary.skippedPurchasedCount++
         continue
       }
@@ -393,6 +421,12 @@ export class CartRecoveryService {
         summary.errors.push(`${intentEmail} ${stage || 'intent-processing'}: ${error.message || String(error)}`)
       }
     }
+
+    // Sync funnel candidates and eligible counts into CommercialActionTracker
+    CommercialActionTracker.recordFunnelCandidateStats(
+      leads.length + latestOpenIntentByEmail.size,
+      summary.eligibleCheckoutCount
+    )
 
     return summary
   }

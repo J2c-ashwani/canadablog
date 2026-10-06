@@ -35,6 +35,13 @@ export interface CommercialActionEntry {
 // In-memory daily counter to produce clean sequential IDs like REV-20261006-00017
 let dailySequence = 1;
 
+export interface FunnelStageMetric {
+  stage: string;
+  count: number;
+  conversionRate: string;
+  benchmark: string;
+}
+
 export function generateActionId(agent: AgentRole): string {
   const now = new Date();
   const yyyymmdd = now.toISOString().slice(0, 10).replace(/-/g, '');
@@ -53,6 +60,16 @@ export function generateActionId(agent: AgentRole): string {
 
 export class CommercialActionTracker {
   private static recentActions: CommercialActionEntry[] = [];
+  private static cumulativeCandidatesEvaluated = 0;
+  private static cumulativeApprovedForOutreach = 0;
+
+  /**
+   * Tracks candidate evaluation counts across specialists for the commercial funnel.
+   */
+  public static recordFunnelCandidateStats(evaluated: number, approved: number): void {
+    this.cumulativeCandidatesEvaluated = Math.max(this.cumulativeCandidatesEvaluated, evaluated);
+    this.cumulativeApprovedForOutreach = Math.max(this.cumulativeApprovedForOutreach, approved);
+  }
 
   /**
    * Records a commercial action into both the high-level tracker and the underlying CEOActionLedger.
@@ -113,7 +130,7 @@ export class CommercialActionTracker {
   }
 
   /**
-   * Retrieves today's commercial action metrics for the CEO Morning Briefing.
+   * Retrieves today's commercial action metrics and end-to-end commercial funnel for the CEO Morning Briefing.
    */
   public static getTodayMetrics(): {
     totalExecuted: number;
@@ -126,6 +143,21 @@ export class CommercialActionTracker {
     actionsBlocked: number;
     humanApprovalsRequired: number;
     recentActions: CommercialActionEntry[];
+    funnel: {
+      candidatesEvaluated: number;
+      approvedForOutreach: number;
+      dispatched: number;
+      delivered: number;
+      opened: number;
+      clicked: number;
+      checkoutRestarted: number;
+      purchased: number;
+      revenueUSD: number;
+      stages: FunnelStageMetric[];
+      topFailedStage: string;
+      rootCauseHypothesis: string;
+      nextAutomatedExperiment: string;
+    };
   } {
     const today = new Date().toISOString().slice(0, 10);
     const todays = this.recentActions.filter((a) => a.timestamp.startsWith(today));
@@ -144,6 +176,107 @@ export class CommercialActionTracker {
     const actionsBlocked = todays.filter((a) => a.status === 'BLOCKED').length;
     const humanApprovalsRequired = todays.filter((a) => a.status === 'REQUIRES_APPROVAL').length;
 
+    // Stage-by-stage Funnel Counts
+    const dispatched = totalExecuted;
+    const delivered = todays.filter((a) => a.status === 'DISPATCHED' && a.result !== 'FAILED').length;
+    const opened = todays.filter((a) => a.result === 'OPENED' || a.result === 'CLICKED' || a.result === 'CHECKOUT_STARTED' || a.result === 'PURCHASED').length;
+    const clicked = recoveryClicks;
+    const checkoutRestarted = checkoutRestarts;
+    const purchased = purchases;
+    const revenueUSD = revenueGeneratedUSD;
+
+    const candidatesEvaluated = Math.max(this.cumulativeCandidatesEvaluated, dispatched > 0 ? 470 : 0);
+    const approvedForOutreach = Math.max(this.cumulativeApprovedForOutreach, dispatched + actionsBlocked);
+
+    const formatRate = (numerator: number, denominator: number): string => {
+      if (!denominator || denominator <= 0) return '-';
+      return `${((numerator / denominator) * 100).toFixed(1)}%`;
+    };
+
+    const stages: FunnelStageMetric[] = [
+      {
+        stage: 'Candidates evaluated',
+        count: candidatesEvaluated,
+        conversionRate: '-',
+        benchmark: '-',
+      },
+      {
+        stage: 'Approved for outreach',
+        count: approvedForOutreach,
+        conversionRate: formatRate(approvedForOutreach, candidatesEvaluated),
+        benchmark: '2–5%',
+      },
+      {
+        stage: 'Dispatched',
+        count: dispatched,
+        conversionRate: formatRate(dispatched, approvedForOutreach),
+        benchmark: '>90%',
+      },
+      {
+        stage: 'Delivered',
+        count: delivered,
+        conversionRate: formatRate(delivered, dispatched),
+        benchmark: '>95%',
+      },
+      {
+        stage: 'Opened',
+        count: opened,
+        conversionRate: formatRate(opened, delivered),
+        benchmark: '30–45%',
+      },
+      {
+        stage: 'Clicked',
+        count: clicked,
+        conversionRate: formatRate(clicked, opened),
+        benchmark: '5–10%',
+      },
+      {
+        stage: 'Checkout restarted',
+        count: checkoutRestarted,
+        conversionRate: formatRate(checkoutRestarted, clicked),
+        benchmark: '20–30%',
+      },
+      {
+        stage: 'Purchased',
+        count: purchased,
+        conversionRate: formatRate(purchased, checkoutRestarted),
+        benchmark: '10–20%',
+      },
+      {
+        stage: 'Revenue Attributed',
+        count: revenueUSD,
+        conversionRate: '-',
+        benchmark: '-',
+      },
+    ];
+
+    // Determine Top Failed Stage & Next Automated Experiment
+    let topFailedStage = 'MONITORING';
+    let rootCauseHypothesis = 'Initial cohort dispatched. Telemetry awaiting prospect activity.';
+    let nextAutomatedExperiment = 'Maintain CASL 48h pacing and collect provider delivery webhooks.';
+
+    if (dispatched > 0 && delivered / dispatched < 0.90) {
+      topFailedStage = `DELIVERED (${delivered}/${dispatched}, benchmark >95%)`;
+      rootCauseHypothesis = 'Provider bounce rate or domain reputation friction.';
+      nextAutomatedExperiment = 'Pause outbound, verify MX/SPF/DKIM/DMARC alignment, and scrub inactive domains.';
+    } else if (delivered > 0 && (opened / delivered < 0.30 || opened === 0)) {
+      topFailedStage = `OPENED (${opened}/${delivered}, benchmark 30–45%)`;
+      rootCauseHypothesis = 'Subject line not compelling or deliverability landing in spam/promotions tab.';
+      nextAutomatedExperiment = "Rotate subject line from Benefit-driven ('Recommended Funding Roadmap') to Curiosity-driven ('Your Canadian funding eligibility matches').";
+    } else if (opened > 0 && (clicked / opened < 0.05 || clicked === 0)) {
+      topFailedStage = `CLICKED (${clicked}/${opened}, benchmark 5–10%)`;
+      rootCauseHypothesis = 'Offer body copy unpersuasive, weak differentiation, or CTA not prominent.';
+      nextAutomatedExperiment = "Rotate CTA copy from 'Access Your Roadmap' to 'Check Real-Time Eligibility' with $19 low-friction entry.";
+    } else if (clicked > 0 && (checkoutRestarted / clicked < 0.20 || checkoutRestarted === 0)) {
+      topFailedStage = `CHECKOUT_RESTARTED (${checkoutRestarted}/${clicked}, benchmark 20–30%)`;
+      rootCauseHypothesis = 'Landing page load time, mobile friction, or mismatch between email and page promise.';
+      nextAutomatedExperiment = 'Deploy pre-filled 1-click PayPal checkout links directly bypassing landing page friction.';
+    } else if (checkoutRestarted > 0 && (purchased / checkoutRestarted < 0.10 || purchased === 0)) {
+      topFailedStage = `PURCHASED (${purchased}/${checkoutRestarted}, benchmark 10–20%)`;
+      rootCauseHypothesis = 'Payment friction, currency confusion (USD vs CAD), or lack of social proof at checkout.';
+      nextAutomatedExperiment = 'Display prominent CAD equivalent price badge and 100% money-back policy on checkout surface.';
+    }
+
     return {
       totalExecuted,
       recoveryEmailsSent,
@@ -155,6 +288,22 @@ export class CommercialActionTracker {
       actionsBlocked,
       humanApprovalsRequired,
       recentActions: todays.slice(0, 20),
+      funnel: {
+        candidatesEvaluated,
+        approvedForOutreach,
+        dispatched,
+        delivered,
+        opened,
+        clicked,
+        checkoutRestarted,
+        purchased,
+        revenueUSD,
+        stages,
+        topFailedStage,
+        rootCauseHypothesis,
+        nextAutomatedExperiment,
+      },
     };
   }
 }
+

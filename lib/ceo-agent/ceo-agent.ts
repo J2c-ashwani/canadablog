@@ -335,6 +335,23 @@ Run ID: ${runId} | Timestamp: ${new Date().toISOString()}
 | Human Approvals Required (L4)      | ${todayKPIs.humanApprovalsRequired}                        |
 +------------------------------------+--------------------------+
 
+[STAGE-BY-STAGE COMMERCIAL FUNNEL]
++-------------------------+--------+-----------------+------------+
+| Stage                   |  Count | Conversion Rate |  Benchmark |
++-------------------------+--------+-----------------+------------+
+${todayKPIs.funnel.stages.map((s) => {
+  const name = s.stage.padEnd(23, ' ');
+  const countVal = s.stage === 'Revenue Attributed' ? `$${s.count.toFixed(2)}` : String(s.count);
+  const count = countVal.padStart(6, ' ');
+  const rate = s.conversionRate.padStart(15, ' ');
+  const bench = s.benchmark.padStart(10, ' ');
+  return `| ${name} | ${count} | ${rate} | ${bench} |`;
+}).join('\n')}
++-------------------------+--------+-----------------+------------+
+Top Failed Stage: ${todayKPIs.funnel.topFailedStage}
+Root Cause Hypothesis: ${todayKPIs.funnel.rootCauseHypothesis}
+Next Automated Experiment: ${todayKPIs.funnel.nextAutomatedExperiment}
+
 [STATUS & REVENUE TARGET]
 Status: ${scoreboard.status} · Evidence State: ${scoreboard.evidenceState}
 Verified 30-Day Sprint Cash: $${scoreboard.currentVerifiedRevenueUSD.toFixed(2)} / $${scoreboard.monthlyRevenueTargetUSD.toLocaleString()} USD
