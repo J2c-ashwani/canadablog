@@ -124,17 +124,25 @@ export class CartRecoveryService {
 
     // Pass 1: Leads from CRM that have recorded checkout activity
     for (const lead of leads) {
-      if (summary.attemptedCount >= maxEmailsPerRun) break
       const email = String(lead.email || '').toLowerCase().trim()
+      if (summary.attemptedCount >= maxEmailsPerRun) {
+        CommercialActionTracker.recordBlockedAction('Revenue', 'BATCH_CAP_PACING', email, 'Daily batch cap pacing reached');
+        break;
+      }
       if (seenEmails.has(email)) continue
       seenEmails.add(email)
 
       // Strict CASL check: Verify transactional checkout recovery consent
       const caslCheck = validateCaslEligibility(lead, 'TRANSACTIONAL_RECOVERY')
-      if (!caslCheck.isEligible) continue
+      if (!caslCheck.isEligible) {
+        CommercialActionTracker.recordBlockedAction('Revenue', 'CONSENT', email, caslCheck.reason || 'CASL transactional consent missing');
+        continue;
+      }
 
-      if (hasRecentCommercialProviderAcceptance(lead)) continue
-      if (recentlyAcceptedRecipientIds.has(buildEmailActionContext('cart-recovery-1', email).recipientId)) continue
+      if (hasRecentCommercialProviderAcceptance(lead) || recentlyAcceptedRecipientIds.has(buildEmailActionContext('cart-recovery-1', email).recipientId)) {
+        CommercialActionTracker.recordBlockedAction('Revenue', 'COOLDOWN', email, '48h commercial cooldown active');
+        continue;
+      }
 
       const activity = parseActivity(lead.leadActivity)
       const openIntent = latestOpenIntentByEmail.get(email)
@@ -162,6 +170,7 @@ export class CartRecoveryService {
 
       if (hasPurchasedSpecificProduct || hasActivityPaymentForProduct) {
         summary.skippedPurchasedCount++
+        CommercialActionTracker.recordBlockedAction('Revenue', 'RISK_RULE', email, `Already purchased ${targetProductId}`);
         continue
       }
 
@@ -181,6 +190,7 @@ export class CartRecoveryService {
         const credentials = await ensureScopedSubscriberTokens(email)
         if (!credentials) {
           summary.errors.push(`${email} eligibility: secure login/unsubscribe credentials could not be issued`)
+          CommercialActionTracker.recordBlockedAction('Revenue', 'MISSING_DATA', email, 'Unsubscribe/subscriber token generation failed');
           continue
         }
         const emailInput = {
@@ -195,12 +205,29 @@ export class CartRecoveryService {
 
         if (hasEmail2 && (force || now - acceptedAt(activity.cartRecoveryEmail2AcceptedAt) >= 48 * 60 * 60 * 1000) && !hasEmail3) {
           stage = 'Email #3 (72h)'
-          result = await sendCartRecoveryEmail3(emailInput)
         } else if (hasEmail1 && (force || now - acceptedAt(activity.cartRecoveryEmail1AcceptedAt) >= 24 * 60 * 60 * 1000) && !hasEmail2) {
           stage = 'Email #2 (24h)'
-          result = await sendCartRecoveryEmail2(emailInput)
         } else if ((elapsedMs >= 45 * 60 * 1000 || force) && !hasEmail1) {
           stage = 'Email #1 (45m)'
+        }
+
+        if (!stage) {
+          CommercialActionTracker.recordBlockedAction('Revenue', 'COOLDOWN', email, 'Sequence interval waiting window not met');
+          continue
+        }
+
+        // Hard production idempotency lock
+        const idempotencyKey = `RECOVERY:${email}:${stage}:${emailInput.productId}:${new Date().toISOString().slice(0, 10)}`;
+        if (!CommercialActionTracker.acquireIdempotencyLock(idempotencyKey)) {
+          CommercialActionTracker.recordBlockedAction('Revenue', 'DUPLICATE', email, `Idempotency lock active for ${stage}`);
+          continue
+        }
+
+        if (stage.startsWith('Email #3')) {
+          result = await sendCartRecoveryEmail3(emailInput)
+        } else if (stage.startsWith('Email #2')) {
+          result = await sendCartRecoveryEmail2(emailInput)
+        } else {
           result = await sendCartRecoveryEmail1(emailInput)
         }
 

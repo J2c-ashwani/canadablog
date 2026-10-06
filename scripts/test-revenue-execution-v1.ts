@@ -180,22 +180,28 @@ async function runRevenueExecutionTest() {
   console.log('\n[Test 6/6] Testing CEO Agent Orchestrator & Morning KPI Brief...');
   try {
     const ceoResult = await CEOAgent.runCEOLoop('verification');
-    if (!ceoResult.briefText || !ceoResult.briefText.includes('[TODAY\'S COMMERCIAL EXECUTION SCOREBOARD]')) {
-      throw new Error('CEO brief text missing mandatory Commercial Execution Scoreboard.');
+    if (!ceoResult.briefText || !ceoResult.briefText.includes('[1. COMMERCIAL EXECUTION]')) {
+      throw new Error('CEO brief text missing mandatory Commercial Execution table.');
     }
-    if (!ceoResult.briefText.includes('[STAGE-BY-STAGE COMMERCIAL FUNNEL]')) {
+    if (!ceoResult.briefText.includes('[2. BLOCKED ACTIONS BREAKDOWN]')) {
+      throw new Error('CEO brief text missing mandatory Blocked Actions Breakdown.');
+    }
+    if (!ceoResult.briefText.includes('[3. LEAD EVALUATION BREAKDOWN (Pipeline Second Layer)]')) {
+      throw new Error('CEO brief text missing mandatory Lead Evaluation Breakdown.');
+    }
+    if (!ceoResult.briefText.includes('[4. AGENT ATTRIBUTION]')) {
+      throw new Error('CEO brief text missing mandatory Agent Attribution table.');
+    }
+    if (!ceoResult.briefText.includes('[5. STAGE-BY-STAGE COMMERCIAL FUNNEL]')) {
       throw new Error('CEO brief text missing mandatory Stage-by-Stage Commercial Funnel.');
     }
     if (!ceoResult.briefText.includes('Top Failed Stage:')) {
       throw new Error('CEO brief text missing Top Failed Stage analysis.');
     }
-    console.log('--- CEO BRIEFING FUNNEL PREVIEW ---');
+    console.log('--- CEO BRIEFING PREVIEW ---');
     const briefLines = ceoResult.briefText.split('\n');
-    const funnelStart = briefLines.findIndex(l => l.includes('[STAGE-BY-STAGE COMMERCIAL FUNNEL]'));
-    if (funnelStart !== -1) {
-      console.log(briefLines.slice(funnelStart, funnelStart + 18).join('\n'));
-    }
-    console.log('-----------------------------------');
+    console.log(briefLines.slice(0, 52).join('\n'));
+    console.log('----------------------------');
   } catch (err: any) {
     if (err.message?.includes('ENOTFOUND') || err.code === 'ENOTFOUND') {
       console.log('   (Sandbox offline environment: Verified execution fallback without external network)');

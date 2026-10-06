@@ -249,8 +249,22 @@ export class SalesAgent {
       ? Math.min(10, Math.round((lead.readinessScore / 100) * 10))
       : 5;
 
+    // 7. Behavioral Intent Modifier (up to +15 pts)
+    // Measures active commercial urgency (abandoned checkout, report viewed, high engagement)
+    let behavioralScore = 0;
+    try {
+      const activity = typeof lead.leadActivity === 'string'
+        ? JSON.parse(lead.leadActivity && lead.leadActivity !== 'N/A' ? lead.leadActivity : '{}')
+        : (lead.leadActivity || {});
+      if (activity.checkoutStartedAt || activity.cartRecoveryEvidenceId) {
+        behavioralScore = 15; // Abandoned checkout = highest commercial purchase intent
+      } else if (activity.firstReportViewedAt || (lead.engagementScore && lead.engagementScore > 60)) {
+        behavioralScore = 8;
+      }
+    } catch {}
+
     const totalScore = Math.min(100, Math.max(0,
-      incorporationScore + jurisdictionScore + stageScore + fundingScore + sectorScore + readinessScore
+      incorporationScore + jurisdictionScore + stageScore + fundingScore + sectorScore + readinessScore + behavioralScore
     ));
 
     const isHighIntent = totalScore >= 70;
@@ -286,10 +300,11 @@ export class SalesAgent {
         fundingScore,
         sectorScore,
         readinessScore,
+        behavioralScore,
       },
       isHighIntent,
       recommendedOffer,
-      summaryReason: `Multi-variable score: ${totalScore}/100 (Corp: ${incorporationScore}/25, Region: ${jurisdictionScore}/15, Stage: ${stageScore}/20, Funding: ${fundingScore}/15, Sector: ${sectorScore}/15, Readiness: ${readinessScore}/10)`,
+      summaryReason: `Multi-variable score: ${totalScore}/100 (Corp: ${incorporationScore}/25, Region: ${jurisdictionScore}/15, Stage: ${stageScore}/20, Funding: ${fundingScore}/15, Sector: ${sectorScore}/15, Readiness: ${readinessScore}/10, Behavioral: ${behavioralScore}/15)`,
     };
   }
 
@@ -309,17 +324,66 @@ export class SalesAgent {
     let founderAlertsSent = 0;
 
     try {
-      const subscribers = await SubscriberRepository.getAllSubscribers(false);
-      const candidates = subscribers.filter((sub) => {
+      const allSubscribers = await SubscriberRepository.getAllSubscribers(true);
+      const canadianProvincesSet = new Set([
+        'on', 'ontario', 'bc', 'british columbia', 'ab', 'alberta', 'qc', 'quebec',
+        'sk', 'saskatchewan', 'mb', 'manitoba', 'ns', 'nova scotia', 'nb', 'new brunswick',
+        'nl', 'newfoundland', 'pe', 'prince edward island', 'yt', 'nt', 'nu'
+      ]);
+
+      // Calculate 7-layer funnel breakdown across lead database
+      let noConsentCount = 0;
+      let outsideGeographyCount = 0;
+      let insufficientReadinessCount = 0;
+      let duplicateOrRecentCount = 0;
+      let lowCommercialFitCount = 0;
+      let commerciallyEligibleCount = 0;
+
+      for (const sub of allSubscribers) {
+        const casl = validateCaslEligibility(sub, 'MARKETING_OFFER');
+        if (!casl.isEligible) {
+          noConsentCount++;
+          continue;
+        }
+        const reg = (sub.region || '').toLowerCase().trim();
+        const country = (sub.country || '').toLowerCase().trim();
+        if (country !== 'canada' && !canadianProvincesSet.has(reg)) {
+          outsideGeographyCount++;
+          continue;
+        }
+        if ((sub.readinessScore || 0) < 30 || /idea|concept/i.test(sub.businessStage || '')) {
+          insufficientReadinessCount++;
+          continue;
+        }
+        if (hasRecentCommercialProviderAcceptance(sub)) {
+          duplicateOrRecentCount++;
+          continue;
+        }
+        const qual = this.calculateMultiVariableQualificationScore(sub);
+        if (qual.totalScore < 40) {
+          lowCommercialFitCount++;
+          continue;
+        }
+        commerciallyEligibleCount++;
+      }
+
+      CommercialActionTracker.recordEvaluationBreakdown({
+        totalLeads: allSubscribers.length,
+        noConsent: noConsentCount,
+        outsideGeography: outsideGeographyCount,
+        insufficientReadiness: insufficientReadinessCount,
+        duplicateOrRecent: duplicateOrRecentCount,
+        lowCommercialFit: lowCommercialFitCount,
+        commerciallyEligible: commerciallyEligibleCount,
+      });
+
+      const consentedSubscribers = allSubscribers.filter((sub) => {
         const casl = validateCaslEligibility(sub, 'MARKETING_OFFER');
         return casl.isEligible && !hasRecentCommercialProviderAcceptance(sub);
       });
 
-      // Record candidate evaluation stats into CommercialActionTracker
-      CommercialActionTracker.recordFunnelCandidateStats(subscribers.length, candidates.length);
-
       // Rank by multi-variable commercial qualification score
-      const scoredCandidates = candidates.map((lead) => ({
+      const scoredCandidates = consentedSubscribers.map((lead) => ({
         lead,
         qualification: this.calculateMultiVariableQualificationScore(lead),
       }));
@@ -327,10 +391,23 @@ export class SalesAgent {
       scoredCandidates.sort((a, b) => b.qualification.totalScore - a.qualification.totalScore);
 
       const batch = scoredCandidates.slice(0, maxLeads);
+      const deferredCandidates = scoredCandidates.slice(maxLeads);
+
+      // Record pacing deferrals so CEO report accounts for every approved lead
+      for (const deferred of deferredCandidates) {
+        CommercialActionTracker.recordBlockedAction('Sales', 'BATCH_CAP_PACING', deferred.lead.email, 'Batch cap pacing (queued for subsequent cycle)');
+      }
 
       for (const item of batch) {
         const { lead, qualification } = item;
         const offerTier = qualification.recommendedOffer;
+
+        // Hard production idempotency lock
+        const idempotencyKey = `SALES:${lead.email}:${offerTier.id}:${new Date().toISOString().slice(0, 10)}`;
+        if (!CommercialActionTracker.acquireIdempotencyLock(idempotencyKey)) {
+          CommercialActionTracker.recordBlockedAction('Sales', 'DUPLICATE', lead.email, `Idempotency lock active for ${offerTier.id}`);
+          continue;
+        }
 
         // 1. If Multi-Variable Score >= 70, trigger immediate Founder Alert Email to CEO Ashwani
         if (qualification.isHighIntent) {
