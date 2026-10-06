@@ -13,10 +13,11 @@
 import { sendEmail } from '@/lib/emails/mailer';
 import { CommercialActionTracker, generateActionId } from '@/lib/ceo-agent/ledger/action-tracker';
 import { normalizeToE164 } from '@/lib/phone-validator';
+import { checkCallEligibility } from '@/lib/voice-agent/compliance-guard';
 
 export interface VoiceLeadPayload {
   name?: string;
-  phone: string;
+  phone?: string;
   email: string;
   companyName?: string;
   state?: string;
@@ -30,6 +31,12 @@ export interface VoiceLeadPayload {
   pagePath?: string;
   wantsAdvisorContact?: boolean;
   consentToAiCall?: boolean;
+  consentTextVersion?: string;
+  consentTimestamp?: string;
+  consentSource?: string;
+  doNotCall?: boolean;
+  attemptCount?: number;
+  lastAttemptAt?: string;
 }
 
 export async function triggerVoiceCallingAgent(lead: VoiceLeadPayload): Promise<{
@@ -38,13 +45,10 @@ export async function triggerVoiceCallingAgent(lead: VoiceLeadPayload): Promise<
   callId?: string;
   reason?: string;
 }> {
-  // If phone is missing or marked "Not provided" or "N/A", skip
-  if (!lead.phone || lead.phone === 'Not provided' || lead.phone === 'N/A' || lead.phone.trim().length < 7) {
-    return { success: false, reason: 'No valid phone number provided' };
-  }
-
-  // Normalize phone to E.164 format
-  const e164Phone = normalizeToE164(lead.phone, lead.country || 'Canada') || lead.phone.trim();
+  // Normalize phone if provided
+  const rawPhone = (lead.phone || '').trim();
+  const hasPhone = rawPhone && rawPhone !== 'Not provided' && rawPhone !== 'N/A' && rawPhone.length >= 7;
+  const e164Phone = hasPhone ? (normalizeToE164(rawPhone, lead.country || 'Canada') || rawPhone) : null;
 
   // Hard production kill switch: default dormant unless explicitly set to 'true'
   const isVoiceAgentEnabled = process.env.VOICE_AGENT_ENABLED === 'true';
@@ -58,9 +62,20 @@ export async function triggerVoiceCallingAgent(lead: VoiceLeadPayload): Promise<
   let telephonyDispatched = false;
   let callId: string | undefined;
 
-  // ── 1. Telephony Dispatch (Strictly Guarded by Kill Switch and Explicit AI Call Consent) ──
-  if (isVoiceAgentEnabled && hasAiCallConsent) {
-    const selectedProvider = (process.env.VOICE_PROVIDER || 'vapi').toLowerCase();
+  // ── 1. Telephony Dispatch Guarded by Kill Switch, Standalone Consent, & Compliance Guard ──
+  if (isVoiceAgentEnabled && hasPhone && e164Phone) {
+    const eligibility = checkCallEligibility({
+      consentToAiCall: hasAiCallConsent,
+      doNotCall: lead.doNotCall,
+      attemptCount: lead.attemptCount,
+      lastAttemptAt: lead.lastAttemptAt,
+      state: lead.state,
+    });
+
+    if (!eligibility.eligible) {
+      console.log(`ℹ️ [Voice Calling Agent] Call blocked by compliance guard: ${eligibility.reason}`);
+    } else {
+      const selectedProvider = (process.env.VOICE_PROVIDER || 'vapi').toLowerCase();
 
     if (selectedProvider === 'vapi') {
       const vapiApiKey = process.env.VAPI_API_KEY;
@@ -183,42 +198,55 @@ export async function triggerVoiceCallingAgent(lead: VoiceLeadPayload): Promise<
         }
       }
     }
-  } else if (!isVoiceAgentEnabled) {
-    console.log(`ℹ️ [Voice Calling Agent] Voice agent is DORMANT (VOICE_AGENT_ENABLED is not 'true'). No automated outbound calls initiated.`);
-  } else if (!hasAiCallConsent) {
-    console.log(`ℹ️ [Voice Calling Agent] Lead did not grant explicit AI call consent. Automated call skipped.`);
   }
+} else if (!isVoiceAgentEnabled) {
+  console.log(`ℹ️ [Voice Calling Agent] Voice agent is DORMANT (VOICE_AGENT_ENABLED is not 'true'). No automated outbound calls initiated.`);
+} else if (!hasAiCallConsent) {
+  console.log(`ℹ️ [Voice Calling Agent] Lead did not grant explicit AI call consent. Automated call skipped.`);
+}
 
-  // ── 2. Founder Hotline Email Alert (Triggered when prospect requests contact or high-intent phone provided) ──
+  // ── 2. Founder Hotline Email Alert (Tightened: click-to-call strictly requires valid phone) ──
   const founderEmail = process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca';
   try {
-    const shouldAlertFounder = wantsContact || hasAiCallConsent || (lead.score && lead.score >= 70);
+    const isHighIntent = Boolean((lead.score && lead.score >= 70) || lead.tier === 'A' || wantsContact);
+    const shouldAlertFounder = isHighIntent;
     let alertSent = false;
 
     if (shouldAlertFounder) {
-      const subject = `🚨 HOT LEAD PHONE INTAKE: ${lead.name || 'Founder'} (${lead.companyName || 'Business'}) — Phone: ${e164Phone}`;
+      const subject = hasPhone && e164Phone
+        ? `🚨 HOT LEAD PHONE INTAKE: ${lead.name || 'Founder'} (${lead.companyName || 'Business'}) — Phone: ${e164Phone}`
+        : `🚨 HIGH INTENT INTAKE (NO PHONE): ${lead.name || 'Founder'} (${lead.companyName || 'Business'}) — Email Follow-up`;
+
+      const phoneCellHtml = hasPhone && e164Phone
+        ? `<a href="tel:${e164Phone}" style="font-size:18px;font-weight:bold;color:#2563eb;">${e164Phone}</a> <span style="font-size:12px;color:#16a34a;margin-left:8px;">[One-Tap Dialing Available]</span>`
+        : `<span style="font-size:14px;color:#64748b;font-style:italic;">No phone provided (Email follow-up only — no click-to-call available)</span>`;
+
+      const suggestedActionHtml = hasPhone && e164Phone
+        ? `<strong>Suggested Action:</strong> Founder provided a verified direct phone number. One-tap dialing available above. The user is in the self-serve funnel; manual outreach is at founder discretion.`
+        : `<strong>Suggested Action:</strong> High-intent founder submitted assessment without a phone number. Follow up via email: <a href="mailto:${lead.email}">${lead.email}</a>.`;
+
       const html = `
         <div style="font-family:Arial,sans-serif;padding:20px;border:1px solid #e2e8f0;border-radius:8px;max-width:600px;background:#ffffff;">
-          <div style="background:#dc2626;color:#ffffff;padding:8px 16px;border-radius:4px;font-weight:bold;margin-bottom:16px;">
-            FOUNDER LEAD ALERT — ${telephonyDispatched ? 'AI CALL TRIGGERED' : 'DIRECT FOUNDER FOLLOW-UP OPTION'}
+          <div style="background:${hasPhone ? '#dc2626' : '#2563eb'};color:#ffffff;padding:8px 16px;border-radius:4px;font-weight:bold;margin-bottom:16px;">
+            FOUNDER LEAD ALERT — ${telephonyDispatched ? 'AI CALL TRIGGERED' : (hasPhone ? 'DIRECT FOUNDER FOLLOW-UP OPTION' : 'HIGH INTENT EMAIL CANDIDATE')}
           </div>
-          <h2 style="color:#0f172a;margin-top:0;">Founder Intake with Phone Number</h2>
-          <p>A Canadian founder provided their direct phone number while completing a funding assessment:</p>
+          <h2 style="color:#0f172a;margin-top:0;">Founder Intake Details</h2>
+          <p>A Canadian founder completed a funding assessment with high qualification scores:</p>
           
           <table style="width:100%;border-collapse:collapse;margin:16px 0;background:#f8fafc;border-radius:6px;overflow:hidden;">
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Founder Name:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;font-weight:bold;">${lead.name || 'Founder'}</td></tr>
-            <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Phone Number:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;"><a href="tel:${e164Phone}" style="font-size:18px;font-weight:bold;color:#2563eb;">${e164Phone}</a></td></tr>
+            <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Phone Number:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;">${phoneCellHtml}</td></tr>
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Email:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;"><a href="mailto:${lead.email}">${lead.email}</a></td></tr>
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Company:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;">${lead.companyName || 'N/A'}</td></tr>
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Funding Goal:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;font-weight:bold;color:#16a34a;">${lead.fundingAmount || 'Unspecified'}</td></tr>
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Funding Purpose:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;">${lead.fundingPurpose || 'General Expansion'}</td></tr>
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Province / Industry:</td><td style="padding:10px;border-bottom:1px solid #e2e8f0;">${lead.state || 'Canada'} / ${lead.industry || 'General'}</td></tr>
             <tr><td style="padding:10px;font-weight:bold;color:#475569;border-bottom:1px solid #e2e8f0;">Readiness Score:</td><td style="padding:10px;">${lead.score || 'N/A'}/100</td></tr>
-            <tr><td style="padding:10px;font-weight:bold;color:#475569;">Contact Consent:</td><td style="padding:10px;">Advisor Contact: ${wantsContact ? 'Yes' : 'No'} | AI Call: ${hasAiCallConsent ? 'Yes' : 'No'}</td></tr>
+            <tr><td style="padding:10px;font-weight:bold;color:#475569;">Contact Consent:</td><td style="padding:10px;">Advisor Contact: ${wantsContact ? 'Yes' : 'No'} | AI Call: ${hasAiCallConsent ? 'Yes' : 'No'} (v: ${lead.consentTextVersion || 'N/A'})</td></tr>
           </table>
 
           <div style="background:#eff6ff;padding:12px;border-radius:6px;border-left:4px solid #2563eb;margin-top:16px;">
-            <strong>Suggested Action:</strong> Review file. The user is in the self-serve funnel; manual outreach is at founder discretion.
+            ${suggestedActionHtml}
           </div>
 
           <p style="font-size:12px;color:#94a3b8;margin-top:20px;">
@@ -231,23 +259,26 @@ export async function triggerVoiceCallingAgent(lead: VoiceLeadPayload): Promise<
         to: founderEmail,
         subject,
         html,
-        text: `Hot Phone Lead: ${lead.name || 'Founder'} (${e164Phone}) from ${lead.companyName || 'Business'} requested ${lead.fundingAmount || 'funding'}. Call directly at ${e164Phone}.`,
+        text: hasPhone && e164Phone
+          ? `Hot Phone Lead: ${lead.name || 'Founder'} (${e164Phone}) from ${lead.companyName || 'Business'} requested ${lead.fundingAmount || 'funding'}. One-tap call: ${e164Phone}.`
+          : `High Intent Lead (No Phone): ${lead.name || 'Founder'} from ${lead.companyName || 'Business'} scored ${lead.score || 'N/A'}/100. Contact via email: ${lead.email}.`,
         tagType: 'founder-hot-lead-alert',
       });
       alertSent = alertResult.success;
     }
 
+    // Persist full consent audit record in Commercial Action Tracker
     await CommercialActionTracker.recordAction({
       actionId,
       agent: 'Sales',
-      trigger: `Phone number intake (${e164Phone})`,
+      trigger: hasPhone ? `Phone number intake (${e164Phone})` : `High intent intake (${lead.email})`,
       leadId: lead.email,
       leadEmail: lead.email,
       leadName: lead.name,
       company: lead.companyName,
       action: telephonyDispatched
         ? `AI Voice Call Queued (${e164Phone})`
-        : `Founder Hotline Alert Processed (${e164Phone})`,
+        : (hasPhone ? `Founder Hotline Alert Processed (${e164Phone})` : `High Intent Alert (Email Follow-up)`),
       product: 'Complete Funding Blueprint ($79)',
       channel: 'Internal Alert',
       consent: 'Transactional',
@@ -257,10 +288,16 @@ export async function triggerVoiceCallingAgent(lead: VoiceLeadPayload): Promise<
       attribution: telephonyDispatched ? 'AI_VOICE_OUTBOUND' : 'FOUNDER_PHONE_HOTLINE',
       timestamp: new Date().toISOString(),
       details: {
-        phone: e164Phone,
+        phone: e164Phone || 'None',
+        hasPhone: Boolean(hasPhone),
         telephonyDispatched,
         voiceAgentEnabled: isVoiceAgentEnabled,
-        hasAiCallConsent,
+        // Complete Persistent Consent Audit Trail
+        consentToAiCall: hasAiCallConsent,
+        consentTextVersion: lead.consentTextVersion || (hasAiCallConsent ? 'v1.0-2026-10-06' : 'None'),
+        consentTimestamp: lead.consentTimestamp || (hasAiCallConsent ? new Date().toISOString() : 'None'),
+        consentSource: lead.consentSource || (hasAiCallConsent ? 'grant_calculator_step5' : 'None'),
+        doNotCall: Boolean(lead.doNotCall),
         wantsContact,
         callId,
       },

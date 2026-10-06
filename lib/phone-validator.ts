@@ -29,7 +29,17 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
 
   // Handle US/Canada (+1) numbers
   const isExplicitInternational = phone.startsWith('+') && !phone.startsWith('+1');
-  const isUSOrCanada = !isExplicitInternational && (
+  const isExplicitNonNANPCountry = Boolean(
+    countryLower &&
+    !countryLower.includes('canada') &&
+    !countryLower.includes('ca') &&
+    !countryLower.includes('united states') &&
+    !countryLower.includes('usa') &&
+    !countryLower.includes('us') &&
+    !countryLower.includes('north america')
+  );
+
+  const isUSOrCanada = !isExplicitInternational && !isExplicitNonNANPCountry && (
     countryLower.includes('canada') || 
     countryLower.includes('united states') || 
     countryLower.includes('us') || 

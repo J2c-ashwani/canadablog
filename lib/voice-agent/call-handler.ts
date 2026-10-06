@@ -20,31 +20,29 @@ export interface CallConclusionPayload {
   recordingUrl?: string;
 }
 
+import { isCallEventProcessed, markCallEventProcessed } from '@/lib/voice-agent/idempotency';
+
 export interface CallProductDetails {
   id: string;
   name: string;
   priceUSD: number;
   path: string;
   description: string;
+  deliverables: string[];
 }
 
-// In-memory idempotency cache: prevents duplicate email sends on webhook retries
-const processedCallEvents = new Set<string>();
-
-const PRODUCTS_MAP: Record<string, CallProductDetails> = {
-  'funding-bundle': {
-    id: 'funding-bundle',
-    name: 'Complete Funding Strategy Bundle',
-    priceUSD: 79,
-    path: '/calculator?package=complete-bundle',
-    description: 'Full Grant Recommendation Report, 4-Month Action Plan, Capital Stacking Blueprint, and Document Checklists.',
-  },
+export const PRODUCTS_MAP: Record<string, CallProductDetails> = {
   'funding-match-report': {
     id: 'funding-match-report',
     name: 'Funding Recommendation Report',
     priceUSD: 19,
     path: '/products/funding-match-report',
     description: 'Personalized government grant, tax credit, and non-dilutive loan recommendation report.',
+    deliverables: [
+      'Top ranked government grants and wage subsidies matching your criteria',
+      'Direct guidelines on matching funds, project timelines, and TRL requirements',
+      'Intake deadline monitoring and official program portal access',
+    ],
   },
   'funding-roadmap': {
     id: 'funding-roadmap',
@@ -52,6 +50,23 @@ const PRODUCTS_MAP: Record<string, CallProductDetails> = {
     priceUSD: 49,
     path: '/products/action-plan',
     description: 'Prioritized milestone sequence, risk mitigation guidelines, and application preparation roadmap.',
+    deliverables: [
+      'Step-by-step milestone execution roadmap mapped to upcoming funding cycles',
+      'Disqualification risk analysis and project positioning guidelines',
+      'Detailed document preparation checklists for financial and technical exhibits',
+    ],
+  },
+  'funding-bundle': {
+    id: 'funding-bundle',
+    name: 'Complete Funding Strategy Bundle',
+    priceUSD: 79,
+    path: '/calculator?package=complete-bundle',
+    description: 'Full Grant Recommendation Report, 4-Month Action Plan, Capital Stacking Blueprint, and Document Checklists.',
+    deliverables: [
+      'Target Program Alignment: Prioritized matching grants, tax credits, and subsidies',
+      'Capital Stacking Roadmap: Legal stacking guidelines for combining federal and provincial funding',
+      'Document Preparation Checklists: Exhaustive exhibit templates before application windows close',
+    ],
   },
   'strategy-audit': {
     id: 'strategy-audit',
@@ -59,8 +74,64 @@ const PRODUCTS_MAP: Record<string, CallProductDetails> = {
     priceUSD: 199,
     path: '/services',
     description: 'Live 30-minute funding strategist audit and file review.',
+    deliverables: [
+      'Live 30-minute private video session with an FSI Digital funding strategist',
+      'Comprehensive audit of project eligibility, cash-flow matching, and corporate structure',
+      'Customized funding acquisition strategy and grant stack roadmap',
+    ],
   },
 };
+
+/**
+ * Resolves requested product from voice disposition.
+ * Strictly returns null if unrecognized, preventing inappropriate payment links.
+ */
+export function resolveRequestedProduct(requested?: string): CallProductDetails | null {
+  if (!requested) return null;
+  const key = requested.trim().toLowerCase();
+
+  // Exact ID hit
+  if (PRODUCTS_MAP[key]) return PRODUCTS_MAP[key];
+
+  // $19 Match Report
+  if (
+    key === '19' || key === '$19' ||
+    key === 'funding-match-report' || key === 'match-report' ||
+    key.includes('19') || key.includes('report')
+  ) {
+    return PRODUCTS_MAP['funding-match-report'];
+  }
+
+  // $49 Action Plan / Roadmap
+  if (
+    key === '49' || key === '$49' ||
+    key === 'funding-roadmap' || key === 'action-plan' ||
+    key.includes('49') || key.includes('action plan') || key.includes('roadmap')
+  ) {
+    return PRODUCTS_MAP['funding-roadmap'];
+  }
+
+  // $79 Complete Strategy Bundle
+  if (
+    key === '79' || key === '$79' ||
+    key === 'funding-bundle' || key === 'complete-bundle' ||
+    key.includes('79') || key.includes('bundle')
+  ) {
+    return PRODUCTS_MAP['funding-bundle'];
+  }
+
+  // $199 Strategy Consultation / Live Audit
+  if (
+    key === '199' || key === '$199' ||
+    key === 'strategy-audit' || key === 'consultation' ||
+    key.includes('199') || key.includes('consultation') || key.includes('audit')
+  ) {
+    return PRODUCTS_MAP['strategy-audit'];
+  }
+
+  // Unknown product -> strictly null
+  return null;
+}
 
 export async function handleCallConclusion(payload: CallConclusionPayload): Promise<{
   success: boolean;
@@ -83,10 +154,11 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
     return { success: false, callId, sheetUpdated: false, emailSent: false, error: 'Email or phone required' };
   }
 
-  // ── Call-Event Idempotency Check ──
+  // ── Persistent Call-Event Idempotency Check (Memory + Disk + Redis) ──
   const idempotencyKey = `${provider}:${callId}:${disposition}`.toLowerCase();
-  if (processedCallEvents.has(idempotencyKey)) {
-    console.log(`ℹ️ [Voice Call Handler] Duplicate call event ignored (Idempotency key: ${idempotencyKey})`);
+  const alreadyProcessed = await isCallEventProcessed(idempotencyKey);
+  if (alreadyProcessed) {
+    console.log(`ℹ️ [Voice Call Handler] Duplicate call event ignored via persistent store (Idempotency key: ${idempotencyKey})`);
     return {
       success: true,
       callId,
@@ -95,15 +167,12 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
       duplicate: true,
     };
   }
-  processedCallEvents.add(idempotencyKey);
+  await markCallEventProcessed(idempotencyKey);
 
   const e164Phone = normalizeToE164(phone) || phone;
 
-  // Resolve product tier
-  const productKey = payload.productRequested && PRODUCTS_MAP[payload.productRequested]
-    ? payload.productRequested
-    : 'funding-bundle';
-  const product = PRODUCTS_MAP[productKey];
+  // Resolve requested product (STRICTLY product-specific, never default to $79)
+  const product = resolveRequestedProduct(payload.productRequested);
 
   let emailSent = false;
   let sheetUpdated = false;
@@ -120,8 +189,8 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
       durationSeconds: payload.durationSeconds || 0,
       callDisposition: disposition,
       summary: payload.summary || 'AI call completed.',
-      productRequested: product.name,
-      paymentLinkDispatched: disposition === 'READY_TO_PAY' ? 'Yes' : 'No',
+      productRequested: product ? product.name : (payload.productRequested || 'Unspecified'),
+      paymentLinkDispatched: (disposition === 'READY_TO_PAY' && Boolean(product)) ? 'Yes' : 'No',
       recordingOrTranscriptUrl: payload.recordingUrl || 'N/A',
     });
 
@@ -166,6 +235,17 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
 
     // ── 3A. Customer is READY_TO_PAY: Send Exact Requested Payment Link ──
     if (email && disposition === 'READY_TO_PAY') {
+      if (!product) {
+        console.warn(`⚠️ [Voice Call Handler] READY_TO_PAY disposition received with unknown product: "${payload.productRequested}". Payment link withheld per CEO policy.`);
+        return {
+          success: true,
+          callId,
+          sheetUpdated,
+          emailSent: false,
+          error: `Unknown or unspecified product requested ("${payload.productRequested || 'none'}"). Payment link withheld per product governance.`,
+        };
+      }
+
       const glue = product.path.includes('?') ? '&' : '?';
       const checkoutUrl = `${baseUrl}${product.path}${glue}email=${encodeURIComponent(email)}&name=${encodeURIComponent(name)}&utm_source=ai_calling_agent&utm_medium=phone_close&utm_campaign=${encodeURIComponent(callId)}`;
 
@@ -221,9 +301,7 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
                   What Your Package Delivers:
                 </p>
                 <ul style="margin:0;padding-left:20px;font-size:13px;color:#475569;line-height:1.7;">
-                  <li><strong>Target Program Alignment:</strong> Prioritized matching grants, tax credits, and subsidies.</li>
-                  <li><strong>Capital Stacking Roadmap:</strong> Guidelines for combining federal, provincial, and wage funding.</li>
-                  <li><strong>Document Preparation Checklists:</strong> Key exhibits to prepare before intake windows close.</li>
+                  ${product.deliverables.map((d) => `<li>${d}</li>`).join('\n                  ')}
                 </ul>
               </div>
 
@@ -265,7 +343,7 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
           leadEmail: email,
           leadName: name,
           company,
-          action: `AI Voice Call -> Instant Payment Link Email (${product.name})`,
+          action: `AI Voice Call -> Instant Payment Link Email (${product.name} - $${product.priceUSD})`,
           product: product.id,
           channel: 'Email',
           consent: 'Transactional',
@@ -280,6 +358,8 @@ export async function handleCallConclusion(payload: CallConclusionPayload): Prom
             disposition,
             durationSeconds: payload.durationSeconds,
             summary: payload.summary,
+            requestedProduct: product.id,
+            productPrice: product.priceUSD,
             checkoutUrl,
           },
         });

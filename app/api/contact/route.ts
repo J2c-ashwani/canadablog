@@ -62,6 +62,10 @@ export async function POST(request: NextRequest) {
       source,
       wantsAdvisorContact,
       consentToAiCall,
+      consentTextVersion,
+      consentTimestamp,
+      consentSource,
+      doNotCall,
     } = body;
 
 
@@ -128,6 +132,16 @@ export async function POST(request: NextRequest) {
 
     const nowIso = new Date().toISOString();
     const initialActivity: Record<string, any> = { contactFormSubmitted: true };
+    if (wantsAdvisorContact) {
+      initialActivity.wantsAdvisorContact = true;
+    }
+    if (consentToAiCall) {
+      initialActivity.consentToAiCall = true;
+      initialActivity.consentTextVersion = consentTextVersion || 'v1.0-2026-10-06';
+      initialActivity.consentTimestamp = consentTimestamp || nowIso;
+      initialActivity.consentSource = consentSource || 'grant_calculator_step5';
+      initialActivity.doNotCall = Boolean(doNotCall);
+    }
     if (isCalculatorLead) {
       initialActivity.calculatorCompletedAt = nowIso;
       initialActivity.source = "Grant Calculator Intake";
@@ -315,6 +329,10 @@ export async function POST(request: NextRequest) {
         pagePath: leadData.pagePath,
         wantsAdvisorContact: Boolean(wantsAdvisorContact),
         consentToAiCall: Boolean(consentToAiCall),
+        consentTextVersion: consentTextVersion || (consentToAiCall ? 'v1.0-2026-10-06' : undefined),
+        consentTimestamp: consentTimestamp || (consentToAiCall ? nowIso : undefined),
+        consentSource: consentSource || (consentToAiCall ? 'grant_calculator_step5' : undefined),
+        doNotCall: Boolean(doNotCall),
       }).catch((err) => {
         console.error("❌ Failed to trigger voice calling agent:", err);
       });
