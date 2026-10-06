@@ -140,12 +140,17 @@ function parseAction(row: string[]): CEOActionRecord | null {
   }
 }
 
+export type CEOActionInput = Omit<CEOActionRecord, 'actionId' | 'timestamp'> & {
+  actionId?: string;
+  timestamp?: string;
+};
+
 export class CEOActionLedger {
-  public static async recordAction(action: Omit<CEOActionRecord, 'actionId' | 'timestamp'>): Promise<CEOActionRecord> {
+  public static async recordAction(action: CEOActionInput): Promise<CEOActionRecord> {
     const record: CEOActionRecord = {
       ...action,
-      actionId: `ceo_act_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
-      timestamp: new Date().toISOString(),
+      actionId: action.actionId || `ceo_act_${Date.now()}_${Math.random().toString(36).substring(2, 6)}`,
+      timestamp: action.timestamp || new Date().toISOString(),
     };
     if (hasSheetsConfiguration()) {
       await appendOperationalRow('CEO Actions', ACTION_HEADERS, [
