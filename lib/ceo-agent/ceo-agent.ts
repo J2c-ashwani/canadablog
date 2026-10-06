@@ -322,6 +322,8 @@ FSI DIGITAL — CEO COMMERCIAL OPERATING SYSTEM REPORT
 ================================================================================
 Run ID: ${runId} | Timestamp: ${new Date().toISOString()}
 Data Integrity: Authenticated GA4, GSC, PayPal API, and CRM backend telemetry.
+System Status: The system is instrumented, idempotency-protected, compliance-aware, and observable; commercial effectiveness and legal compliance remain unproven.
+Operating Directive: SHIP IT, FREEZE IT, MEASURE IT.
 Note: Automated test status is a software correctness indicator, not a commercial outcome indicator.
 
 [1. COMMERCIAL EXECUTION]
@@ -357,11 +359,12 @@ Note: Automated test status is a software correctness indicator, not a commercia
 [3. LEAD EVALUATION BREAKDOWN (Pipeline Second Layer)]
 Total Leads Evaluated: ${evalBreakdown.totalLeads}
   → No CASL Express/Transactional Consent: ${evalBreakdown.noConsent} (${((evalBreakdown.noConsent / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
-  → Outside Target Geography (Non-Canada): ${evalBreakdown.outsideGeography} (${((evalBreakdown.outsideGeography / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
+  → Outside Current Canadian-Target Market: ${evalBreakdown.outsideGeography} (${((evalBreakdown.outsideGeography / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
   → Insufficient Business Readiness (<30): ${evalBreakdown.insufficientReadiness} (${((evalBreakdown.insufficientReadiness / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
   → Cooldown / Contacted within 48 Hours:  ${evalBreakdown.duplicateOrRecent} (${((evalBreakdown.duplicateOrRecent / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
   → Low Commercial Fit (Score < 40):       ${evalBreakdown.lowCommercialFit} (${((evalBreakdown.lowCommercialFit / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
-  → Commercially Eligible Leads:           ${evalBreakdown.commerciallyEligible} (${((evalBreakdown.commerciallyEligible / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
+  → Current Commercially Eligible Pool:    ${evalBreakdown.commerciallyEligible} in this cycle (${((evalBreakdown.commerciallyEligible / evalBreakdown.totalLeads) * 100).toFixed(1)}%)
+    ↳ (Future cycle volume will be measured empirically)
     ↳ Approved for Outreach:               ${todayKPIs.funnel.approvedForOutreach}
     ↳ Dispatched in this Cycle:            ${todayKPIs.totalExecuted}
     ↳ Blocked / Paced for Next Cycle:      ${todayKPIs.actionsBlocked}

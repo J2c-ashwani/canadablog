@@ -115,7 +115,7 @@ export class GrowthAgent {
 
     try {
       const result = await SocialRevenueSprintService.run()
-      if (result.decision === 'ACCEPTED') {
+      if (result.decision === 'ACCEPTED' || result.decision === 'PUBLISHED') {
         executedCount++
         const actionId = generateActionId('Growth')
         await CommercialActionTracker.recordAction({
@@ -126,8 +126,8 @@ export class GrowthAgent {
           leadEmail: 'audience@fsidigital.ca',
           leadName: 'Audience',
           company: 'Canadian Founders',
-          action: `Published Social Educational Sprint (${result.variantId})`,
-          product: result.offerId,
+          action: `Published Social Educational Sprint (${result.variantId || 'sprint'})`,
+          product: result.offerId || 'funding-membership-29',
           channel: 'Social',
           consent: 'Exempt_Internal',
           status: 'DISPATCHED',
@@ -135,9 +135,9 @@ export class GrowthAgent {
           revenueUSD: 0,
           attribution: 'ORGANIC_SOCIAL_SPRINT',
           timestamp: new Date().toISOString(),
-          details: { variantId: result.variantId, receipts: result.receipts },
+          details: { variantId: result.variantId || 'unknown', results: (result as any).results },
         })
-        actions.push({ actionId, variantId: result.variantId, receipts: result.receipts })
+        actions.push({ actionId, variantId: result.variantId || 'unknown', results: (result as any).results })
       }
     } catch (err: any) {
       console.warn('[GrowthAgent] Non-blocking distribution error:', err.message)
