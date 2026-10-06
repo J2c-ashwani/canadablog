@@ -60,6 +60,8 @@ export async function POST(request: NextRequest) {
       readinessScore,
       readinessBand,
       source,
+      wantsAdvisorContact,
+      consentToAiCall,
     } = body;
 
 
@@ -311,6 +313,8 @@ export async function POST(request: NextRequest) {
         tier,
         source: leadData.source,
         pagePath: leadData.pagePath,
+        wantsAdvisorContact: Boolean(wantsAdvisorContact),
+        consentToAiCall: Boolean(consentToAiCall),
       }).catch((err) => {
         console.error("❌ Failed to trigger voice calling agent:", err);
       });

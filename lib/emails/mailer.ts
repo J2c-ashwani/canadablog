@@ -348,6 +348,7 @@ export async function sendEmail({
   // inactive third-party credential into a false delivery attempt.
   return {
     success: false,
+    skipped: Boolean(resendResult.skipped),
     error: resendResult.error || 'Resend and Brevo could not accept the message.',
   };
 }

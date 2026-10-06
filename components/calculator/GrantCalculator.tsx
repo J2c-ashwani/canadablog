@@ -122,6 +122,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
     const [consentToPartnerContact, setConsentToPartnerContact] = useState(false);
+    const [wantsAdvisorContact, setWantsAdvisorContact] = useState(false);
+    const [consentToAiCall, setConsentToAiCall] = useState(false);
     const [leadSaved, setLeadSaved] = useState(false);
     const [isPaypalButtonVisible, setIsPaypalButtonVisible] = useState(false);
     const [upgradeCredit, setUpgradeCredit] = useState(0);
@@ -493,6 +495,12 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             setLeadSaved(true);
         }
 
+        const packageParam = params.get('package');
+        if (packageParam === 'complete-bundle' || packageParam === 'funding-bundle') {
+            setSelectedProductId('funding-bundle');
+            setStep(6);
+        }
+
         if (stepParam === '6') {
             const restoredProfile = {
                 province: provinceParam || '',
@@ -769,6 +777,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     fundingPurpose: data.goal,
                     businessDescription: messageInfo,
                     consentToPartnerContact,
+                    wantsAdvisorContact,
+                    consentToAiCall,
                     pagePath: trackingData.landingPage || window.location.pathname,
                     referrer: trackingData.referrer,
                     utmSource: trackingData.utmSource,
@@ -833,9 +843,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             return;
         }
 
+        // Phone is optional: if provided, validate that it has at least 10 digits
         const phone = data.phone?.trim() || "";
         const cleanPhone = phone.replace(/\D/g, "");
-        if (!phone || cleanPhone.length < 10) {
+        if (phone && cleanPhone.length < 10) {
             const err = document.getElementById('gate-phone-error');
             if (err) err.classList.remove('hidden');
             const inputEl = document.getElementById('calc-phone-input');
@@ -2543,29 +2554,58 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                         </div>
                                     </div>
 
-                                    <div className="space-y-1.5 text-left">
-                                        <div className="flex items-center justify-between">
-                                            <Label htmlFor="calc-phone-input" className="text-xs font-extrabold text-slate-600">
-                                                Direct Phone Number *
-                                            </Label>
-                                            <span className="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
-                                                For AI Eligibility Call
+                                    <div className="space-y-3 pt-1 text-left">
+                                        <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-left hover:bg-slate-100/70 transition-colors">
+                                            <input
+                                                type="checkbox"
+                                                checked={wantsAdvisorContact}
+                                                onChange={(event) => {
+                                                    setWantsAdvisorContact(event.target.checked);
+                                                    if (!event.target.checked) {
+                                                        setConsentToAiCall(false);
+                                                    }
+                                                }}
+                                                className="mt-0.5 h-4 w-4 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                                            />
+                                            <span className="text-xs leading-relaxed text-slate-700 font-semibold">
+                                                I'd like FSI Digital to contact me about my funding options.
                                             </span>
-                                        </div>
-                                        <Input
-                                            id="calc-phone-input"
-                                            type="tel"
-                                            placeholder="(e.g., 416-555-0199)"
-                                            className="h-11 bg-white text-sm"
-                                            value={data.phone}
-                                            onChange={(e) => {
-                                                updateData("phone", e.target.value);
-                                                const err = document.getElementById('gate-phone-error');
-                                                if (err) err.classList.add('hidden');
-                                            }}
-                                            required
-                                        />
-                                        <p className="text-xs text-red-500 mt-1 hidden" id="gate-phone-error">Please enter a valid Canadian phone number (at least 10 digits).</p>
+                                        </label>
+
+                                        {wantsAdvisorContact && (
+                                            <div className="space-y-3 pl-3 pt-1 border-l-2 border-emerald-500/40">
+                                                <div className="space-y-1.5 text-left">
+                                                    <Label htmlFor="calc-phone-input" className="text-xs font-extrabold text-slate-600">
+                                                        Phone Number (Optional)
+                                                    </Label>
+                                                    <Input
+                                                        id="calc-phone-input"
+                                                        type="tel"
+                                                        placeholder="(e.g., 416-555-0199)"
+                                                        className="h-11 bg-white text-sm"
+                                                        value={data.phone}
+                                                        onChange={(e) => {
+                                                            updateData("phone", e.target.value);
+                                                            const err = document.getElementById('gate-phone-error');
+                                                            if (err) err.classList.add('hidden');
+                                                        }}
+                                                    />
+                                                    <p className="text-xs text-red-500 mt-1 hidden" id="gate-phone-error">Please enter a valid phone number (at least 10 digits).</p>
+                                                </div>
+
+                                                <label className="flex cursor-pointer items-start gap-2.5 rounded-lg border border-slate-200/80 bg-white p-2.5 text-left">
+                                                    <input
+                                                        type="checkbox"
+                                                        checked={consentToAiCall}
+                                                        onChange={(event) => setConsentToAiCall(event.target.checked)}
+                                                        className="mt-0.5 h-3.5 w-3.5 rounded border-slate-300 text-emerald-600 focus:ring-emerald-500"
+                                                    />
+                                                    <span className="text-[11px] leading-relaxed text-slate-600">
+                                                        I agree to receive an automated/AI call regarding my funding assessment.
+                                                    </span>
+                                                </label>
+                                            </div>
+                                        )}
                                     </div>
 
                                     <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-left">

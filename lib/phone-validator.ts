@@ -1,9 +1,15 @@
 export interface PhoneValidationResult {
   isValid: boolean;
   formatted: string;
+  e164: string;
   type: 'mobile' | 'landline' | 'voip' | 'toll-free' | 'unknown';
   isVoipOrTollFree: boolean;
   carrier: string;
+}
+
+export function normalizeToE164(phone: string, country?: string): string | null {
+  const res = validatePhone(phone, country);
+  return res.isValid ? res.e164 : null;
 }
 
 export function validatePhone(phone: string, country?: string): PhoneValidationResult {
@@ -14,6 +20,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
     return {
       isValid: false,
       formatted: phone,
+      e164: phone,
       type: 'unknown',
       isVoipOrTollFree: false,
       carrier: 'Invalid length'
@@ -41,6 +48,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
       return {
         isValid: false,
         formatted: phone,
+        e164: phone,
         type: 'unknown',
         isVoipOrTollFree: false,
         carrier: 'Invalid North American length'
@@ -55,6 +63,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
       return {
         isValid: false,
         formatted: phone,
+        e164: phone,
         type: 'unknown',
         isVoipOrTollFree: false,
         carrier: 'Invalid NANP area/exchange code'
@@ -62,6 +71,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
     }
 
     const formatted = `(${areaCode}) ${exchangeCode}-${digits.slice(6)}`;
+    const e164 = `+1${digits}`;
     
     // Detect toll-free numbers
     const tollFreeAreaCodes = ['800', '888', '877', '866', '855', '844', '833'];
@@ -69,6 +79,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
       return {
         isValid: true,
         formatted,
+        e164,
         type: 'toll-free',
         isVoipOrTollFree: true,
         carrier: 'Toll-Free Service'
@@ -81,6 +92,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
       return {
         isValid: true,
         formatted,
+        e164,
         type: 'voip',
         isVoipOrTollFree: true,
         carrier: 'Virtual/VOIP Carrier'
@@ -91,6 +103,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
     return {
       isValid: true,
       formatted,
+      e164,
       type: 'mobile', // Assumed standard B2B line
       isVoipOrTollFree: false,
       carrier: 'Standard NANP Line'
@@ -102,6 +115,7 @@ export function validatePhone(phone: string, country?: string): PhoneValidationR
   return {
     isValid: true,
     formatted,
+    e164: `+${cleanPhone}`,
     type: 'unknown',
     isVoipOrTollFree: false,
     carrier: 'International Line'

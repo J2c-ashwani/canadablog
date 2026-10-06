@@ -6,6 +6,19 @@ export const dynamic = 'force-dynamic';
 
 export async function POST(request: NextRequest) {
   try {
+    // Webhook authentication guard
+    const configuredSecret = process.env.VOICE_WEBHOOK_SECRET;
+    if (configuredSecret) {
+      const authHeader = request.headers.get('authorization');
+      const secretHeader = request.headers.get('x-voice-webhook-secret') || request.headers.get('x-vapi-secret');
+      const urlSecret = request.nextUrl.searchParams.get('secret');
+
+      const token = authHeader?.replace(/^Bearer\s+/i, '') || secretHeader || urlSecret;
+      if (!token || token !== configuredSecret) {
+        return NextResponse.json({ error: 'Unauthorized webhook request.' }, { status: 401 });
+      }
+    }
+
     const rawBody = await request.json();
 
     // 1. Support Vapi.ai Webhook Format
