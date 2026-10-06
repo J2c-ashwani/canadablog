@@ -358,9 +358,11 @@ export async function getLeadsFromSheet(limit = 500) {
 export async function updateLeadInSheet(email: string, updates: Partial<LeadCaptureData>) {
   try {
     const sheets = await getGoogleSheetsClient()
-    const spreadsheetId = process.env.GOOGLE_SHEET_ID
-    
-    // Fetch all rows to locate index
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID
+    if (!spreadsheetId) {
+      console.warn("⚠️ [updateLeadInSheet] GOOGLE_SHEET_ID is missing; skipping sheet update.")
+      return { success: false, error: "GOOGLE_SHEET_ID missing" }
+    }
     const response = await sheets.spreadsheets.values.get({
       spreadsheetId,
       range: "Leads!A:BW",
@@ -1879,3 +1881,117 @@ export async function updateAuthorityException(
     return { success: false, error };
   }
 }
+
+export interface CallLogEntry {
+  timestamp: string;
+  callId: string;
+  customerName: string;
+  customerEmail: string;
+  phone: string;
+  companyName: string;
+  durationSeconds: number;
+  callDisposition: string;
+  summary: string;
+  productRequested: string;
+  paymentLinkDispatched: string;
+  recordingOrTranscriptUrl?: string;
+}
+
+export async function ensureCallLogsSheet(sheets: any, spreadsheetId: string) {
+  const SHEET_TITLE = "Call Logs";
+  const spreadsheet = await sheets.spreadsheets.get({
+    spreadsheetId,
+    fields: "sheets.properties.title",
+  });
+
+  const exists = spreadsheet.data.sheets?.some((sheet: any) => sheet.properties?.title === SHEET_TITLE);
+
+  if (!exists) {
+    await sheets.spreadsheets.batchUpdate({
+      spreadsheetId,
+      requestBody: {
+        requests: [
+          {
+            addSheet: {
+              properties: {
+                title: SHEET_TITLE,
+              },
+            },
+          },
+        ],
+      },
+    });
+  }
+
+  const headerResponse = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `${SHEET_TITLE}!A1:L1`,
+  });
+
+  if (!headerResponse.data.values || headerResponse.data.values.length === 0) {
+    const headers = [
+      "Timestamp",
+      "Call ID",
+      "Customer Name",
+      "Customer Email",
+      "Phone Number",
+      "Company Name",
+      "Duration (Sec)",
+      "Disposition",
+      "Call Summary / Conclusion",
+      "Product Tier",
+      "Payment Link Dispatched",
+      "Recording / Transcript Link",
+    ];
+    await sheets.spreadsheets.values.update({
+      spreadsheetId,
+      range: `${SHEET_TITLE}!A1:L1`,
+      valueInputOption: "RAW",
+      requestBody: { values: [headers] },
+    });
+  }
+}
+
+export async function appendCallLogToSheet(data: CallLogEntry): Promise<{ success: boolean; error?: any }> {
+  try {
+    const sheets = await getGoogleSheetsClient();
+    const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID;
+    if (!spreadsheetId) {
+      console.warn("⚠️ [appendCallLogToSheet] GOOGLE_SHEET_ID is missing; skipping call log append.");
+      return { success: false, error: "GOOGLE_SHEET_ID missing" };
+    }
+
+    await ensureCallLogsSheet(sheets, spreadsheetId);
+
+    const values = [
+      [
+        data.timestamp,
+        data.callId,
+        data.customerName,
+        data.customerEmail,
+        data.phone,
+        data.companyName,
+        String(data.durationSeconds || 0),
+        data.callDisposition,
+        data.summary,
+        data.productRequested,
+        data.paymentLinkDispatched,
+        data.recordingOrTranscriptUrl || "N/A",
+      ],
+    ];
+
+    await sheets.spreadsheets.values.append({
+      spreadsheetId,
+      range: "'Call Logs'!A:L",
+      valueInputOption: "RAW",
+      insertDataOption: "INSERT_ROWS",
+      requestBody: { values },
+    });
+
+    return { success: true };
+  } catch (error) {
+    console.error("❌ Failed to append call log to sheet:", error);
+    return { success: false, error };
+  }
+}
+

@@ -833,6 +833,16 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             return;
         }
 
+        const phone = data.phone?.trim() || "";
+        const cleanPhone = phone.replace(/\D/g, "");
+        if (!phone || cleanPhone.length < 10) {
+            const err = document.getElementById('gate-phone-error');
+            if (err) err.classList.remove('hidden');
+            const inputEl = document.getElementById('calc-phone-input');
+            if (inputEl) inputEl.focus();
+            return;
+        }
+
         setIsAnalyzing(true);
         await saveCalculatorLead(email, data.name || "Founder", false);
 
@@ -2534,15 +2544,28 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     </div>
 
                                     <div className="space-y-1.5 text-left">
-                                        <Label htmlFor="calc-phone-input" className="text-xs font-extrabold text-slate-600">Mobile Phone Number (Optional)</Label>
+                                        <div className="flex items-center justify-between">
+                                            <Label htmlFor="calc-phone-input" className="text-xs font-extrabold text-slate-600">
+                                                Direct Phone Number *
+                                            </Label>
+                                            <span className="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded">
+                                                For AI Eligibility Call
+                                            </span>
+                                        </div>
                                         <Input
                                             id="calc-phone-input"
                                             type="tel"
-                                            placeholder="(555) 000-0000"
+                                            placeholder="(e.g., 416-555-0199)"
                                             className="h-11 bg-white text-sm"
                                             value={data.phone}
-                                            onChange={(e) => updateData("phone", e.target.value)}
+                                            onChange={(e) => {
+                                                updateData("phone", e.target.value);
+                                                const err = document.getElementById('gate-phone-error');
+                                                if (err) err.classList.add('hidden');
+                                            }}
+                                            required
                                         />
+                                        <p className="text-xs text-red-500 mt-1 hidden" id="gate-phone-error">Please enter a valid Canadian phone number (at least 10 digits).</p>
                                     </div>
 
                                     <label className="flex cursor-pointer items-start gap-3 rounded-xl border border-slate-200 bg-slate-50 p-3 text-left">
