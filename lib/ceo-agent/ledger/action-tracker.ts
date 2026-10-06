@@ -75,6 +75,45 @@ export interface FunnelStageMetric {
   benchmark: string;
 }
 
+export interface TodayCommercialMetrics {
+  totalExecuted: number;
+  recoveryEmailsSent: number;
+  recoveryClicks: number;
+  checkoutRestarts: number;
+  purchases: number;
+  revenueRecoveredUSD: number;
+  revenueGeneratedUSD: number;
+  actionsBlocked: number;
+  humanApprovalsRequired: number;
+  recentActions: CommercialActionEntry[];
+  blockedByReason: {
+    consent: number;
+    cooldown: number;
+    duplicate: number;
+    missingData: number;
+    batchCapPacing: number;
+    riskRule: number;
+    total: number;
+  };
+  agentAttribution: Record<AgentRole, AgentAttributionSummary>;
+  evaluationBreakdown: EvaluationBreakdown;
+  funnel: {
+    candidatesEvaluated: number;
+    approvedForOutreach: number;
+    dispatched: number;
+    delivered: number;
+    opened: number;
+    clicked: number;
+    checkoutRestarted: number;
+    purchased: number;
+    revenueUSD: number;
+    stages: FunnelStageMetric[];
+    topFailedStage: string;
+    rootCauseHypothesis: string;
+    nextAutomatedExperiment: string;
+  };
+}
+
 // In-memory daily counter to produce clean sequential IDs like REV-20261006-00017
 let dailySequence = 1;
 
@@ -215,33 +254,7 @@ export class CommercialActionTracker {
   /**
    * Retrieves today's commercial action metrics and end-to-end commercial funnel for the CEO Morning Briefing.
    */
-  public static getTodayMetrics(): {
-    totalExecuted: number;
-    recoveryEmailsSent: number;
-    recoveryClicks: number;
-    checkoutRestarts: number;
-    purchases: number;
-    revenueRecoveredUSD: number;
-    revenueGeneratedUSD: number;
-    actionsBlocked: number;
-    humanApprovalsRequired: number;
-    recentActions: CommercialActionEntry[];
-    funnel: {
-      candidatesEvaluated: number;
-      approvedForOutreach: number;
-      dispatched: number;
-      delivered: number;
-      opened: number;
-      clicked: number;
-      checkoutRestarted: number;
-      purchased: number;
-      revenueUSD: number;
-      stages: FunnelStageMetric[];
-      topFailedStage: string;
-      rootCauseHypothesis: string;
-      nextAutomatedExperiment: string;
-    };
-  } {
+  public static getTodayMetrics(): TodayCommercialMetrics {
     const today = new Date().toISOString().slice(0, 10);
     const todays = this.recentActions.filter((a) => a.timestamp.startsWith(today));
 
