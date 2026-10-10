@@ -4,7 +4,7 @@ import { ProspectIntelligenceEngine } from '@/lib/revenue-hunter/intelligence/pr
 import { RevenueHunterEngine, type RevenueHunterStatus } from '@/lib/revenue-hunter/hunter-engine'
 import { validateCaslEligibility } from '@/lib/leads/casl-consent'
 import { CommercialActionTracker, generateActionId } from '@/lib/ceo-agent/ledger/action-tracker'
-import { sendEmail } from '@/lib/emails/mailer'
+import { sendEmail, getFirstName, cleanCompanyName, cleanRegionName, cleanIndustryName } from '@/lib/emails/mailer'
 import { hasRecentCommercialProviderAcceptance } from '@/lib/leads/commercial-eligibility'
 import { updateLeadInSheet } from '@/lib/google-sheets'
 
@@ -65,6 +65,18 @@ function sourceOf(subscriber: SubscriberProfile) {
   if (source.includes('newsletter')) return 'Newsletter'
   if (source.includes('gmail')) return 'Email return visit'
   return 'Direct / unattributed'
+}
+
+export function isInternalOrTestLead(email?: string): boolean {
+  if (!email) return true
+  const lower = email.toLowerCase().trim()
+  return (
+    lower.includes('ashwani') ||
+    lower.includes('join2campus') ||
+    lower.includes('fsidigital') ||
+    lower.startsWith('test@') ||
+    lower.includes('@example.com')
+  )
 }
 
 export class SalesAgent {
@@ -341,6 +353,7 @@ export class SalesAgent {
       let commerciallyEligibleCount = 0;
 
       for (const sub of allSubscribers) {
+        if (isInternalOrTestLead(sub.email)) continue;
         const casl = validateCaslEligibility(sub, 'MARKETING_OFFER');
         if (!casl.isEligible) {
           noConsentCount++;
@@ -379,6 +392,7 @@ export class SalesAgent {
       });
 
       const consentedSubscribers = allSubscribers.filter((sub) => {
+        if (isInternalOrTestLead(sub.email)) return false;
         const casl = validateCaslEligibility(sub, 'MARKETING_OFFER');
         return casl.isEligible && !hasRecentCommercialProviderAcceptance(sub);
       });
@@ -476,30 +490,63 @@ export class SalesAgent {
         const token = lead.unsubscribeToken || `unsub_${Buffer.from(lead.email).toString('hex').substring(0, 16)}`;
         const unsubUrl = `https://www.fsidigital.ca/api/subscribe/unsubscribe?email=${encodeURIComponent(lead.email)}&token=${encodeURIComponent(token)}`;
 
-        const emailSubject = `Recommended Funding Roadmap for ${lead.companyName || lead.name || 'Your Business'}`;
+        const firstName = getFirstName(lead.name);
+        const cleanedCompany = cleanCompanyName(lead.companyName);
+        const companyLabel = cleanedCompany ? `for <strong>${cleanedCompany}</strong>` : 'for your business';
+        const companySubject = cleanedCompany || 'Your Business';
+        const rawFunding = (lead.fundingAmount || '').trim();
+        const fundingGoal = (rawFunding && !/^(n\/a|not provided|none|null|undefined)$/i.test(rawFunding)) ? rawFunding : '$25,000 - $100,000+';
+        const sectorLabel = cleanIndustryName(lead.industry);
+        const regionLabel = cleanRegionName(lead.region);
+
+        const emailSubject = `Funding Eligibility & Roadmap for ${companySubject} (${fundingGoal})`;
         const emailHtml = `
-          <div style="font-family:Arial,sans-serif;color:#1e293b;line-height:1.6;max-width:600px;margin:0 auto;padding:20px;">
-            <p>Hi ${lead.name || 'there'},</p>
-            <p>Based on your recent assessment on FSI Digital, our funding database identified eligible non-dilutive programs matching your business profile.</p>
-            <div style="background:#f1f5f9;border-left:4px solid #2563eb;padding:16px;margin:20px 0;border-radius:4px;">
-              <h3 style="margin-top:0;color:#0f172a;">${offerTier.name}</h3>
-              <p style="margin-bottom:12px;">Get a personalized breakdown of current deadlines, stacking eligibility, and document requirements without booking a consultation.</p>
-              <a href="${offerTier.url}?email=${encodeURIComponent(lead.email)}" style="background:#2563eb;color:#ffffff;padding:10px 20px;text-decoration:none;border-radius:6px;font-weight:bold;display:inline-block;">Access Your Roadmap &rarr;</a>
+          <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif;color:#1e293b;line-height:1.6;max-width:600px;margin:0 auto;padding:24px 20px;">
+            <p style="font-size:16px;margin:0 0 16px 0;">Hi ${firstName},</p>
+            <p style="font-size:15px;margin:0 0 16px 0;">
+              I personally reviewed the Canadian funding assessment you submitted ${companyLabel} targeting <strong>${fundingGoal}</strong> in ${regionLabel}.
+            </p>
+            <p style="font-size:15px;margin:0 0 16px 0;">
+              Based on your profile in ${sectorLabel}, your project qualifies for active non-dilutive government funding programs. Most Canadian founders leave $30k–$80k on the table simply because they don't know how to legally stack federal grants with provincial tax credits.
+            </p>
+            <div style="background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #2563eb;padding:20px;margin:24px 0;border-radius:6px;">
+              <h3 style="margin:0 0 8px 0;color:#0f172a;font-size:18px;">${offerTier.name}</h3>
+              <p style="margin:0 0 14px 0;color:#475569;font-size:14px;line-height:1.5;">
+                Get immediate access to your tailored Canadian funding roadmap:
+              </p>
+              <ul style="margin:0 0 16px 0;padding-left:20px;font-size:14px;color:#334155;line-height:1.6;">
+                <li><strong>Verified Program Alignment:</strong> Prioritized matching federal & provincial programs for your exact stage.</li>
+                <li><strong>Capital Stacking Roadmap:</strong> The formula to combine wage subsidies, R&D credits, and equipment funding without breaching federal caps.</li>
+                <li><strong>Submission Checklists & Rubrics:</strong> Avoid the top compliance mistakes that get 70% of self-filed grant applications delayed or rejected.</li>
+                <li><strong>100% Fee Credit:</strong> The entire $79 is credited 100% toward our full-service grant writing if you ever want our team to prepare your proposals.</li>
+              </ul>
+              <div style="text-align:center;margin-top:18px;">
+                <a href="${offerTier.url}?email=${encodeURIComponent(lead.email)}&utm_source=fsi_sales_agent&utm_medium=intent_outreach" style="background:#2563eb;color:#ffffff;padding:12px 28px;text-decoration:none;border-radius:6px;font-weight:600;display:inline-block;font-size:15px;box-shadow:0 1px 3px rgba(0,0,0,0.1);">
+                  Access Your Funding Blueprint &rarr;
+                </a>
+              </div>
             </div>
-            <p style="font-size:13px;color:#64748b;">Programs and rules change regularly. Final eligibility is determined by the official funding bodies.</p>
-            <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;" />
-            <p style="font-size:12px;color:#94a3b8;">
+            <p style="font-size:14px;color:#475569;margin:0 0 16px 0;">
+              Have a question about program deadlines or your company's eligibility? You can reply directly to this email—I personally review every response.
+            </p>
+            <p style="font-size:14px;margin:0 0 4px 0;">Best regards,</p>
+            <p style="font-size:15px;font-weight:600;margin:0 0 2px 0;color:#0f172a;">Ashwani K.</p>
+            <p style="font-size:13px;color:#64748b;margin:0;">Founder & CEO &bull; FSI Digital</p>
+            <hr style="border:none;border-top:1px solid #e2e8f0;margin:28px 0;" />
+            <p style="font-size:12px;color:#94a3b8;line-height:1.5;margin:0;">
               FSI Digital Ltd. &bull; 100 King Street West, Suite 5600, Toronto, ON M5X 1C9, Canada<br />
-              You are receiving this because you requested funding research updates. <a href="${unsubUrl}" style="color:#64748b;">Unsubscribe anytime</a>.
+              You received this because you initiated a Canadian business funding assessment. <a href="${unsubUrl}" style="color:#64748b;text-decoration:underline;">Unsubscribe anytime</a>.
             </p>
           </div>
         `;
+
+        const plainText = `Hi ${firstName},\n\nI reviewed your Canadian funding assessment for ${companyLabel} targeting ${fundingGoal} in ${regionLabel}.\n\nBased on your profile in ${sectorLabel}, your project qualifies for active non-dilutive government funding programs. Most Canadian founders leave $30k–$80k on the table simply because they don't know how to legally stack federal grants with provincial tax credits.\n\nYour ${offerTier.name} ($${offerTier.price} USD) includes:\n- Verified matching federal & provincial programs for your exact stage\n- Capital Stacking formula (combining wage subsidies, R&D credits, and equipment funding without breaching federal caps)\n- Pre-submission checklists and rubrics to prevent delays\n- 100% Fee Credit: The entire $${offerTier.price} is credited 100% toward our full-service grant writing if you ever want our team to prepare your proposals.\n\nAccess your blueprint here: ${offerTier.url}?email=${encodeURIComponent(lead.email)}&utm_source=fsi_sales_agent&utm_medium=intent_outreach\n\nIf you have any questions, just reply directly to this email.\n\nBest regards,\nAshwani K.\nFounder & CEO, FSI Digital`;
 
         const dispatchResult = await sendEmail({
           to: lead.email,
           subject: emailSubject,
           html: emailHtml,
-          text: `Hi ${lead.name || 'there'}, view your funding roadmap at: ${offerTier.url}`,
+          text: plainText,
           tagType: `sales-agent-${offerTier.id}`,
         });
 

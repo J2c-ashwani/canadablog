@@ -1,4 +1,4 @@
-import { escapeHtml, getFirstName } from './mailer';
+import { escapeHtml, getFirstName, cleanRegionName, cleanIndustryName } from './mailer';
 
 export type B2BOutreachStage = 'b2b_day1' | 'b2b_day4' | 'b2b_day7';
 
@@ -42,8 +42,8 @@ export function getB2BEmailContent(
   const unsubscribeUrl = unsubscribeToken
     ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(unsubscribeToken)}`
     : 'https://www.fsidigital.ca/subscribe/unsubscribe';
-  const region = escapeHtml(state?.trim() || 'your region');
-  const industryLabel = escapeHtml(industry?.trim() || 'your industry');
+  const region = cleanRegionName(state);
+  const industryLabel = cleanIndustryName(industry);
   const context = telemetrySignal === 'calculator'
     ? `You recently used the FSI Digital funding calculator for ${region}.`
     : telemetrySignal === 'pdf'

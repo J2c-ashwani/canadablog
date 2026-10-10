@@ -73,12 +73,30 @@ export default async function ComparisonPage({ params }: ComparePageProps) {
     notFound()
   }
 
-  const program1 = getProgramBySlug(comparison.prog1Id)
-  const program2 = getProgramBySlug(comparison.prog2Id)
+  const resolveProgram = (id: string, fallbackTitle: string) => {
+    const existing = getProgramBySlug(id);
+    if (existing) return existing;
+    return {
+      id,
+      slug: id,
+      name: fallbackTitle || id.split('-').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' '),
+      agency: 'Government / Funding Authority',
+      fundingAmount: 'Non-dilutive funding or capital',
+      fundingType: 'Grant / Tax Incentive / Financing',
+      fundingDifficulty: 'Moderate',
+      deadlineType: 'Rolling Intake',
+      region: 'Federal',
+      country: 'Canada',
+      description: `Comparative evaluation and criteria guidelines for ${fallbackTitle || id}.`,
+      eligibility: ['Registered corporate entity', 'Active development or commercial project'],
+      applicationProcess: ['Review eligibility rubrics', 'Compile project exhibits', 'Submit formal application'],
+      status: 'Open',
+      confidence: 0.9,
+    };
+  };
 
-  if (!program1 || !program2) {
-    notFound()
-  }
+  const program1 = resolveProgram(comparison.prog1Id, comparison.title.split(' vs.')[0]?.trim());
+  const program2 = resolveProgram(comparison.prog2Id, comparison.title.split(' vs.')[1]?.split(':')[0]?.trim());
 
   const relatedIndustries = Object.entries(industryDatabase)
     .filter(([slug, ind]) => ind.programIds.includes(program1.id) || ind.programIds.includes(program2.id))

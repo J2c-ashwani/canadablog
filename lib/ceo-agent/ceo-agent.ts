@@ -97,7 +97,8 @@ export class CEOAgent {
         }
 
         // Priority 2: Sales Agent delivers intent-matched offers & founder alerts
-        const salesExecution = await SalesAgent.executeSalesActions(3)
+        const salesBatchLimit = Math.min(25, parseInt(process.env.SALES_ACTION_BATCH_SIZE || '10', 10))
+        const salesExecution = await SalesAgent.executeSalesActions(salesBatchLimit)
         if (salesExecution.dispatchedCount > 0 || salesExecution.founderAlertsSent > 0) {
           executedActions.push({
             agent: 'Sales',
@@ -256,7 +257,7 @@ export class CEOAgent {
       if (triggerSource === 'cron' || triggerSource === 'on_demand') {
         const report = await sendEmail({
           to: process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-          subject: `CEO Commercial Operating Report [${scoreboard.status}] — Revenue: $${revenue.verifiedTotalRevenueUSD.toFixed(2)} | Actions Executed: ${todayKPIs.totalExecuted}`,
+          subject: `CEO Commercial Operating Report [${scoreboard.status}] — Sprint Rev: $${revenue.verified30DayRevenueUSD.toFixed(2)} (All-Time: $${revenue.verifiedTotalRevenueUSD.toFixed(2)}) | Actions: ${todayKPIs.totalExecuted}`,
           html: `<pre style="white-space:pre-wrap;font-family:Arial,sans-serif;font-size:13px;line-height:1.5;background:#f8fafc;padding:16px;border:1px solid #e2e8f0;border-radius:6px;">${briefText.replace(/&/g, '&amp;').replace(/</g, '&lt;')}</pre>`,
           text: briefText,
           tagType: 'ceo-daily-report',
