@@ -219,6 +219,7 @@ export function generateStaticParams() {
     slug,
   }));
 }
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: LocationPageProps): Promise<Metadata> {
   const resolvedParams = await params;

@@ -16,19 +16,19 @@ const post: BlogPost = {
   "type": "grant-news",
   "relatedLinks": [
     {
-      "title": "Focus on Economic Impact",
-      "href": "/guides/apply-csbfp-loans",
-      "description": "How to access government-backed small business loans through CSBFP...."
+      "title": "Federal SBIR/STTR Guide",
+      "href": "/usa/technology-startup-grants",
+      "description": "Comprehensive guide to U.S. SBIR/STTR solicitations, agency selection, and defense innovation pathways."
     },
     {
-      "title": "Answer the ",
-      "href": "/guides/apply-irap-grants",
-      "description": "Complete guide to applying for Industrial Research Assistance Program funding in Canada...."
+      "title": "NASA SBIR Space Tech",
+      "href": "/blog/nasa-sbir-space-tech-grants",
+      "description": "Explore NASA SBIR Phase I and Phase II awards for aerospace and dual-use defense technologies."
     },
     {
-      "title": "Programs",
-      "href": "/blog/bmo-celebrating-women-grant",
-      "description": "Complete guide to BMO Celebrating Women Grant with $10,000 funding, BMO business advisor support, workshops, and resourc..."
+      "title": "Hardware & IoT Startup Grants",
+      "href": "/blog/hardware-iot-startup-grants",
+      "description": "Complete guide to federal hardware, microelectronics, and dual-use defense tech funding opportunities."
     }
   ],
   "content": "",

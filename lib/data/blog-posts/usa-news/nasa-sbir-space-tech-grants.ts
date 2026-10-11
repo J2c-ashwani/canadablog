@@ -16,9 +16,9 @@ const post: BlogPost = {
   "type": "grant-news",
   "relatedLinks": [
     {
-      "title": "Industry Partnerships Boost Success",
-      "href": "/guides/sred-application-guide",
-      "description": "How to claim Scientific Research & Experimental Development tax credits in Canada...."
+      "title": "Federal SBIR/STTR Agency Fit",
+      "href": "/usa/technology-startup-grants",
+      "description": "Compare participating federal SBIR and STTR agencies to evaluate R&D risk, mission fit, and commercialization requirements."
     },
     {
       "title": "Regional Advantage",

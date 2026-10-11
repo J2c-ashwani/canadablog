@@ -165,6 +165,8 @@ const ALL_TOPICS: Record<string, TopicItem> = {
 export function RelatedTopics() {
   const pathname = usePathname();
 
+  if (!pathname) return null;
+
   // Only show on guides, download, grants, or specific blog articles to build internal mesh
   const isMatchRoute =
     pathname.startsWith('/guides') ||

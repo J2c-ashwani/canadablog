@@ -1,6 +1,6 @@
 import { getAllBlogPosts } from '@/lib/data/blogPosts';
 
-export const revalidate = 86400;
+export const revalidate = 604800; // 7 days
 
 const SITE_URL = 'https://www.fsidigital.ca';
 
@@ -22,6 +22,8 @@ export async function GET() {
   const posts = getAllBlogPosts()
     .filter((post) => !post.slug.endsWith('-archive'))
     .slice(0, 75);
+
+  const latestPostDate = posts[0]?.date ? new Date(posts[0].date).toUTCString() : 'Sat, 10 Oct 2026 00:00:00 GMT';
 
   const items = posts.map((post) => {
     const url = `${SITE_URL}/blog/${post.slug}`;
@@ -48,7 +50,7 @@ export async function GET() {
     `    <link>${SITE_URL}</link>`,
     '    <description>Government grant guides, funding alerts, and application updates for USA and Canada businesses.</description>',
     '    <language>en-us</language>',
-    `    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>`,
+    `    <lastBuildDate>${latestPostDate}</lastBuildDate>`,
     `    <atom:link href="${SITE_URL}/feed.xml" rel="self" type="application/rss+xml" />`,
     ...items,
     '  </channel>',
@@ -59,7 +61,7 @@ export async function GET() {
   return new Response(xml, {
     headers: {
       'Content-Type': 'application/rss+xml; charset=utf-8',
-      'Cache-Control': 'public, max-age=3600, s-maxage=86400',
+      'Cache-Control': 'public, max-age=86400, s-maxage=604800',
     },
   });
 }

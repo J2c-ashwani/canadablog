@@ -62,6 +62,7 @@ export async function generateStaticParams() {
 
     return params;
 }
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ state: string; city: string }> }): Promise<Metadata> {
     const { state: stateParam, city: cityParam } = await params;

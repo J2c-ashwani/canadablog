@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-export const revalidate = 3600; // Cache the RSS feed for 1 hour
+export const revalidate = 86400; // Cache the RSS feed for 24 hours
 
 export async function GET() {
   try {
@@ -18,13 +18,14 @@ export async function GET() {
       .slice(0, 30);
 
     const siteUrl = 'https://www.fsidigital.ca';
+    const latestPostDate = posts[0]?.date ? new Date(posts[0].date).toUTCString() : 'Sat, 10 Oct 2026 00:00:00 GMT';
 
     // RSS Feed XML template
     let rssItems = '';
 
     for (const post of posts) {
       const url = `${siteUrl}/blog/${post.slug}`;
-      const pubDate = new Date(post.date || Date.now()).toUTCString();
+      const pubDate = new Date(post.date || '2026-10-10').toUTCString();
       
       // Clean special characters for XML safely using simple replacements
       const safeTitle = (post.title || '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -48,7 +49,7 @@ export async function GET() {
     <link>${siteUrl}</link>
     <description>Daily updates on business grants, government funding, and non-dilutive capital in USA &amp; Canada.</description>
     <language>en-us</language>
-    <lastBuildDate>${new Date().toUTCString()}</lastBuildDate>
+    <lastBuildDate>${latestPostDate}</lastBuildDate>
     <atom:link href="${siteUrl}/api/rss" rel="self" type="application/rss+xml" />
     ${rssItems}
   </channel>
@@ -57,7 +58,7 @@ export async function GET() {
     return new NextResponse(xmlData, {
       headers: {
         'Content-Type': 'application/xml',
-        'Cache-Control': 's-maxage=3600, stale-while-revalidate',
+        'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=86400',
       },
     });
 

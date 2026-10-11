@@ -1,5 +1,6 @@
 export const revalidate = false; // Persistent static cache — prevents daily 24h ISR eviction and fast origin transfer across 6,150 pages
 export const dynamicParams = false; // Prevents on-demand SSR function execution for invalid routes
+import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { getAllPseoPages, getPseoPage, type PseoPage } from '@/lib/pseo-data';
@@ -939,7 +940,26 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                     
                     {/* PHASE 4: Dynamic Composed Blocks Render Output */}
                     <div className="mt-12 mb-8">
-                        {verifiedCohort ? (
+                        {blocksData.map((block, idx) => {
+                            switch (block.type) {
+                                case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
+                                case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
+                                case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
+                                case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
+                                case 'WhoWinsMatrix': return <WhoWinsMatrix key={idx} />;
+                                case 'FundingDensitySnapshot': return <FundingDensitySnapshot key={idx} />;
+                                case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
+                                case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
+                                case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
+                                case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
+                                case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
+                                case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
+                                case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
+                                case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
+                                default: return null;
+                            }
+                        })}
+                        {verifiedCohort && (
                             <CohortTrustBlocks
                                 cityName={page.cityName}
                                 provinceName={page.provinceName}
@@ -947,25 +967,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                 regionType={regionType}
                                 isCanada={isCanada}
                             />
-                        ) : blocksData.map((block, idx) => {
-                                switch (block.type) {
-                                    case 'AnchorBlock': return <AnchorBlock key={idx} {...block.props} />;
-                                    case 'FundingRealityCheck': return <FundingRealityCheck key={idx} {...block.props} />;
-                                    case 'BestEntryStrategy': return <BestEntryStrategy key={idx} {...block.props} />;
-                                    case 'DisqualifiersList': return <DisqualifiersList key={idx} {...block.props} />;
-                                    case 'WhoWinsMatrix': return <WhoWinsMatrix key={idx} />;
-                                    case 'FundingDensitySnapshot': return <FundingDensitySnapshot key={idx} />;
-                                    case 'LocalBrokerStrategy': return <LocalBrokerStrategy key={idx} />;
-                                    case 'NearbyAlternatives': return <NearbyAlternatives key={idx} {...block.props} />;
-                                    case 'FundingDecisionTree': return <FundingDecisionTree key={idx} />;
-                                    case 'LocalAdvantageHack': return <LocalAdvantageHack key={idx} />;
-                                    case 'WhoShouldLeave': return <WhoShouldLeave key={idx} />;
-                                    case 'KeyLocalInstitutions': return <KeyLocalInstitutions key={idx} />;
-                                    case 'InsiderInsightQuotes': return <InsiderInsightQuotes key={idx} />;
-                                    case 'MicroFAQ': return <MicroFAQ key={idx} {...block.props} />;
-                                    default: return null;
-                                }
-                            })}
+                        )}
                     </div>
                 </div>
             </section>

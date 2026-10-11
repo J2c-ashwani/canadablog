@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server';
 
-export const revalidate = 86400; // 24 hours
+export const revalidate = 604800; // 7 days
+
+const PARTNERS_VERIFIED_DATE = '2026-10-10T00:00:00.000Z';
 
 const PARTNER_ROUTES = [
   '/partners',
@@ -38,13 +40,12 @@ const PARTNER_ROUTES = [
 
 export async function GET() {
   const baseUrl = 'https://www.fsidigital.ca';
-  const now = new Date().toISOString();
 
   const urlElements = PARTNER_ROUTES.map(route => `
     <url>
       <loc>${baseUrl}${route}</loc>
-      <lastmod>${now}</lastmod>
-      <changefreq>daily</changefreq>
+      <lastmod>${PARTNERS_VERIFIED_DATE}</lastmod>
+      <changefreq>weekly</changefreq>
       <priority>0.9</priority>
     </url>`).join('');
 
@@ -56,7 +57,7 @@ export async function GET() {
   return new NextResponse(xml, {
     headers: {
       'Content-Type': 'application/xml',
-      'Cache-Control': 'public, max-age=86400, s-maxage=86400',
+      'Cache-Control': 'public, max-age=86400, s-maxage=604800',
     },
   });
 }

@@ -7,9 +7,8 @@ interface Props {
 }
 
 export default function FundingRealityCheck({ program1, amount1 }: Props) {
-  // Rotate phrasing automatically based on month to keep Google crawler engaged with a freshness hook
-  const currentMonth = new Date().getMonth();
-  const dynamicsText = currentMonth % 2 === 0 
+  // Program-deterministic phrasing variation — preserves dynamic diversity without temporal cache invalidation
+  const dynamicsText = (program1?.length || 0) % 2 === 0 
     ? "approval odds heavily skew toward companies demonstrating out-of-state competition"
     : "statutory funds frequently dry up before Q4, requiring early-year filings";
 

@@ -2,7 +2,7 @@ import React from 'react';
 import { BarChart3 } from 'lucide-react';
 
 export default function FundingDensitySnapshot() {
-  const currentYear = new Date().getFullYear();
+  const currentYear = 2026;
 
   return (
     <div className="bg-indigo-50 border border-indigo-200 p-6 rounded-xl mb-8">

@@ -17,7 +17,7 @@ export default function Disclaimer() {
         <div className="max-w-4xl mx-auto px-6">
           <h1 className="text-4xl font-bold text-gray-900 mb-8">Disclaimer</h1>
           <div className="bg-white rounded-lg shadow-sm p-8 prose max-w-none">
-            <p className="text-gray-600 mb-6">Last updated: {new Date().toLocaleDateString()}</p>
+            <p className="text-gray-600 mb-6">Last updated: October 2026</p>
 
             <h2>Information Accuracy</h2>
             <p>While we strive to provide accurate and up-to-date information about government grants and funding opportunities, program details, eligibility requirements, and funding amounts may change without notice. Government agencies frequently update their programs, deadlines, and criteria.</p>

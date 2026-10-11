@@ -30,7 +30,7 @@ export function CohortResourceHub({
     >
       <div className="flex flex-col justify-between gap-4 border-b border-slate-200 pb-5 sm:flex-row sm:items-center">
         <div>
-          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-indigo-700">Controlled search cohort</p>
+          <p className="text-[10px] font-black uppercase tracking-[0.18em] text-indigo-700">Verified Local Program Guide</p>
           <h2 className="mt-2 text-2xl font-black text-slate-950">Verify {cityName} funding before applying</h2>
           <p className="mt-2 text-sm leading-6 text-slate-600">
             Directory presence is a research lead—not proof of an open intake, eligibility, or award.

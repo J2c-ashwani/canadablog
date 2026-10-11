@@ -1,7 +1,8 @@
 "use client";
 
-import { useState } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 interface Question {
     id: string;
@@ -12,20 +13,37 @@ interface EligibleCheckProps {
     questions?: Question[];
     title?: string;
     description?: string;
+    jurisdiction?: 'US' | 'CA';
+    fallbackText?: string;
 }
 
-const DEFAULT_QUESTIONS: Question[] = [
+const DEFAULT_CA_QUESTIONS: Question[] = [
     { id: 'q1', text: 'Are you incorporated in Canada?' },
     { id: 'q2', text: 'Does your business generate over $500k in annual revenue?' },
 ];
 
+const DEFAULT_US_QUESTIONS: Question[] = [
+    { id: 'q1', text: 'Is your business registered or planning to operate in the United States?' },
+    { id: 'q2', text: 'Are you seeking non-dilutive federal or state grants and awards?' },
+];
+
 export default function EligibleCheck({ 
-    questions = DEFAULT_QUESTIONS,
+    questions,
     title = '"Am I Eligible?" Micro-Quiz',
-    description = 'Take 10 seconds to answer these questions and instantly see if you meet the baseline criteria for this funding.'
+    description = 'Take 10 seconds to answer these questions and instantly see if you meet the baseline criteria for this funding.',
+    jurisdiction,
+    fallbackText
 }: EligibleCheckProps) {
+    const pathname = usePathname();
+    const isUS = jurisdiction === 'US' || (pathname ? (pathname.startsWith('/usa') || pathname.includes('sbir') || pathname.includes('sba')) : false);
+
+    const defaultQuestions = isUS ? DEFAULT_US_QUESTIONS : DEFAULT_CA_QUESTIONS;
+    const activeQuestions = questions && questions.length > 0 ? questions : defaultQuestions;
+    const resolvedFallbackText = fallbackText || (isUS 
+        ? 'However, there are numerous federal and state funding programs across the United States. A grant specialist can help identify other programs you qualify for.'
+        : 'However, there are over 4,500 grant programs in Canada. A grant specialist can help identify other programs you qualify for.');
+
     const [answers, setAnswers] = useState<Record<string, boolean>>({});
-    const activeQuestions = questions && questions.length > 0 ? questions : DEFAULT_QUESTIONS;
 
     const handleAnswer = (id: string, answer: boolean) => {
         setAnswers(prev => ({ ...prev, [id]: answer }));
@@ -110,7 +128,7 @@ export default function EligibleCheck({
                                     You might not meet the standard criteria for this specific program.
                                 </p>
                                 <p className="text-sm text-amber-700 dark:text-amber-400 mb-4">
-                                    However, there are over 4,500 grant programs in Canada. A grant specialist can help identify other programs you qualify for.
+                                    {resolvedFallbackText}
                                 </p>
                                 <Link href="/calculator" className="inline-flex px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
                                     Explore Alternative Grants

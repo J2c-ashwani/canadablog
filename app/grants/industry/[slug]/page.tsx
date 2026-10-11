@@ -35,6 +35,7 @@ export function generateStaticParams() {
     slug,
   }));
 }
+export const dynamicParams = false;
 
 // ─── Metadata ────────────────────────────────────────────────────────────────
 

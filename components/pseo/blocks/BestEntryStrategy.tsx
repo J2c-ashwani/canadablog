@@ -6,8 +6,8 @@ interface Props {
 }
 
 export default function BestEntryStrategy({ program1 }: Props) {
-  // Freshness Hook Example
-  const currentQtr = Math.floor((new Date().getMonth() + 3) / 3);
+  // Deterministic Q4 cycle — prevents cache variance across regenerations
+  const currentQtr = 4;
 
   return (
     <div className="bg-blue-50/50 border border-blue-200 p-8 rounded-xl mb-8 relative overflow-hidden">

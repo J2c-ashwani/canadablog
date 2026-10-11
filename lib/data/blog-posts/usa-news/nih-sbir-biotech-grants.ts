@@ -4,8 +4,8 @@ import type { BlogPost } from '../../blogPosts';
 const post: BlogPost = {
   "id": 62,
   "slug": "nih-sbir-biotech-grants",
-  "title": "2 NIH SBIR Grants for Biotech (Up to $2M) — 2026 Guide",
-  "excerpt": "Get up to $2M in non-dilutive funding via NIH SBIR Phase 1 & 2 for digital health & medical devices. Check eligibility in 2 minutes!",
+  "title": "NIH SBIR & STTR for Biotech Startups: Funding, Deadlines & Eligibility",
+  "excerpt": "Understand NIH SBIR and STTR funding paths, eligibility requirements, standard application dates and phase-specific budget guidelines. Check the relevant funding opportunity for applicable limits and exceptions.",
   "category": "USA News",
   "categoryColor": "bg-blue-100 text-blue-800",
   "author": "Ashwani K.",
@@ -16,31 +16,31 @@ const post: BlogPost = {
   "type": "grant-news",
   "relatedLinks": [
     {
-      "title": "Banking Relationship Value",
-      "href": "/blog/small-business-grants-complete-guide",
-      "description": "Complete guide to small business grants. Learn about SBA loans, federal grants, microloans, state programs, and how to s..."
+      "title": "Federal SBIR/STTR Guide",
+      "href": "/usa/technology-startup-grants",
+      "description": "Compare all participating federal SBIR and STTR agencies by mission, risk profile, and commercialization requirements."
     },
     {
-      "title": "Programs",
-      "href": "/blog/canada-employment-workforce-training-grants-guide",
-      "description": "Complete guide to Canada..."
+      "title": "USDA SBIR AgTech Guide",
+      "href": "/blog/usda-sbir-agtech-grants",
+      "description": "Complete guide to USDA NIFA SBIR Phase I and II funding for biological, agricultural, and food innovations."
     },
     {
-      "title": "Programs",
-      "href": "/blog/amber-grant-women-canada",
-      "description": "Complete guide to Amber Grant for Women with monthly $10,000 grants and $25,000 year-end award. Simple application, roll..."
+      "title": "Colorado Tech Programs",
+      "href": "/blog/colorado-tech-programs",
+      "description": "Explore state matching and early-stage capital grants up to $250K for advanced bioscience and health tech companies."
     }
   ],
   "content": "",
   "seo": {
-    "metaTitle": "2 NIH SBIR Grants for Biotech (Up to $2M) — 2026 Guide",
-    "metaDescription": "Get up to $2M in non-dilutive funding via NIH SBIR Phase 1 & 2 for digital health & medical devices. Check eligibility in 2 minutes!",
+    "metaTitle": "NIH SBIR & STTR for Biotech Startups: Funding, Deadlines & Eligibility",
+    "metaDescription": "Understand NIH SBIR and STTR funding paths, eligibility requirements, standard application dates and phase-specific budget guidelines. Check the relevant funding opportunity for applicable limits and exceptions.",
     "intent": "grant",
-    "seoVersion": 2,
-    "seoUpdatedAt": "2026-07-03T02:41:20.000Z"
+    "seoVersion": 3,
+    "seoUpdatedAt": "2026-10-11T00:00:00.000Z"
   },
-  "shortAnswer": "NIH SBIR Phase I awards up to $314,363 and Phase II up to $2M for biotech startups. Learn how to qualify, prepare documents, avoid common rejection reasons, and how state/federal funding stacks to maximize non-dilutive capital.",
-  "shortAnswerQuestion": "NIH SBIR 2026: Who Actually Qualifies (With Stacking & Funding Examples)",
+  "shortAnswer": "Under NIH SEED general budget guidelines, Phase I awards are generally up to $323,090 for feasibility studies, and Phase II awards are up to $2,153,927 for full R&D, with standard application deadlines of September 5, January 5, and April 5. Qualifying businesses must be for-profit U.S. small businesses under 500 employees.",
+  "shortAnswerQuestion": "How Much Funding Can a Biotech Startup Receive from NIH SBIR in 2026?",
   "faq": [
     {
       "question": "Does the NIH only fund medical devices?",
@@ -48,7 +48,7 @@ const post: BlogPost = {
     },
     {
       "question": "What is the difference between NIH Phase I and Phase II?",
-      "answer": "Phase I (up to $295,000) is strictly for proving the scientific feasibility of your concept. Phase II (up to $1.97M) is for continued R&D, prototype development, and clinical evaluation."
+      "answer": "Phase I (guideline up to $323,090) is strictly for proving the scientific or technical feasibility of your concept. Phase II (guideline up to $2,153,927) is for continued research, prototype development, and clinical evaluation."
     },
     {
       "question": "Can academic researchers apply?",

@@ -118,7 +118,16 @@ export default function ColoradoTechProgramsPage() {
         <section className="py-4">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <EligibleCheck />
+              <EligibleCheck 
+                title="Colorado Tech Eligibility Screener"
+                description="Check in 10 seconds if your technology business meets baseline criteria for Colorado Advanced Industries grants."
+                jurisdiction="US"
+                questions={[
+                  { id: 'co1', text: 'Is your business registered in Colorado with an operating facility in the state?' },
+                  { id: 'co2', text: 'Does your technology fit one of Colorado\'s 7 designated Advanced Industries?' }
+                ]}
+                fallbackText="However, there are numerous federal SBIR/STTR and Colorado economic development programs. A funding specialist can help identify other programs you qualify for."
+              />
             </div>
           </div>
         </section>

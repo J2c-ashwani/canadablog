@@ -47,6 +47,7 @@ export async function generateStaticParams() {
     const states = getAllStateDetails();
     return states.map((state) => ({ state: state.slug }));
 }
+export const dynamicParams = false;
 
 export async function generateMetadata({ params }: { params: Promise<{ state: string }> }): Promise<Metadata> {
     const { state: stateSlug } = await params;
@@ -239,7 +240,16 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                     {/* Eligible Check */}
                     {state.eligibleCheck && (
                         <div className="mb-12">
-                            <EligibleCheck />
+                            <EligibleCheck 
+                                title={`"${state.name} Eligibility Screener"`}
+                                description={`Take 10 seconds to answer these questions and instantly see if you meet baseline criteria for ${state.name} funding.`}
+                                jurisdiction="US"
+                                questions={[
+                                    { id: 'q1', text: `Is your business registered or planning to operate in ${state.name}?` },
+                                    { id: 'q2', text: `Are you seeking non-dilutive state grants, tax credits, or federal awards?` },
+                                ]}
+                                fallbackText={`However, there are numerous federal and state funding programs across the United States. A grant specialist can help identify other programs you qualify for.`}
+                            />
                         </div>
                     )}
 
@@ -743,7 +753,7 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
 
                     {/* Last Updated */}
                     <div className="mt-8 text-center text-gray-500 text-sm">
-                        Last updated: {new Date().toLocaleDateString('en-US', { month: 'long', year: 'numeric' })}
+                        Last updated: October 2026
                     </div>
                         </article>
 
@@ -876,12 +886,12 @@ export default async function StatePage({ params }: { params: Promise<{ state: s
                                 <h4 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇺🇸 All USA Grants</h4>
                                 <p className="text-xs text-gray-600">50 states, 5,000+ programs</p>
                             </Link>
-                            <Link href="/canada" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-green-500 hover:shadow-md transition-all">
-                                <h4 className="font-semibold text-gray-900 group-hover:text-green-600 mb-1 text-sm">🇨🇦 Canada Grants</h4>
-                                <p className="text-xs text-gray-600">300+ federal & provincial</p>
+                            <Link href="/usa/technology-startup-grants" className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-blue-500 hover:shadow-md transition-all">
+                                <h4 className="font-semibold text-gray-900 group-hover:text-blue-600 mb-1 text-sm">🇺🇸 Federal SBIR/STTR</h4>
+                                <p className="text-xs text-gray-600">All federal R&D agencies</p>
                             </Link>
                             {state.industryFocus.primary.slice(0, 2).map((ind, i) => (
-                                <Link key={i} href={`/blog/${ind.name.toLowerCase().includes('tech') ? 'ai-machine-learning-grants' : ind.name.toLowerCase().includes('clean') ? 'clean-tech-energy-grants' : ind.name.toLowerCase().includes('bio') || ind.name.toLowerCase().includes('health') ? 'biotech-life-sciences-grants' : ind.name.toLowerCase().includes('agri') ? 'agriculture-agri-food-canada-government-grants' : 'small-business-grants-complete-guide'}`} className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-md transition-all">
+                                <Link key={i} href={`/blog/${ind.name.toLowerCase().includes('tech') ? 'ai-machine-learning-grants' : ind.name.toLowerCase().includes('clean') ? 'clean-tech-energy-grants' : ind.name.toLowerCase().includes('bio') || ind.name.toLowerCase().includes('health') ? 'biotech-life-sciences-grants' : ind.name.toLowerCase().includes('agri') ? 'usda-sbir-agtech-grants' : 'small-business-grants-complete-guide'}`} className="group block p-4 bg-white rounded-xl border border-gray-200 hover:border-purple-500 hover:shadow-md transition-all">
                                     <h4 className="font-semibold text-gray-900 group-hover:text-purple-600 mb-1 text-sm">💡 {ind.name} Grants</h4>
                                     <p className="text-xs text-gray-600">{ind.funding} available</p>
                                 </Link>

@@ -21,7 +21,7 @@ export default function AuthorPage() {
         "@context": "https://schema.org",
         "@type": "ProfilePage",
         "dateCreated": "2026-03-01T00:00:00.000Z",
-        "dateModified": new Date().toISOString(),
+        "dateModified": "2026-10-10T00:00:00.000Z",
         "mainEntity": {
             "@type": "Person",
             "@id": "https://www.fsidigital.ca/about/author/#person",

@@ -1,4 +1,4 @@
-export const revalidate = 86400; // Revalidate every 24 hours
+export const revalidate = 604800; // Revalidate every 7 days (reduces background ISR invocations)
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'
@@ -127,10 +127,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       const guideWithDates = guide as typeof guide & { updatedAt?: string; date?: string; publishedAt?: string }
       return [`/guides/${guide.slug}`, guideWithDates.updatedAt || guideWithDates.date || guideWithDates.publishedAt]
     })
-  )
-  const pseoRouteDates = new Map(
-    publishedPseoPages
-      .map(page => [`/grants/${page.provinceSlug}/${page.citySlug}/${page.industrySlug}`, new Date().toISOString()])
   )
 
   const partnerRoutes = [
@@ -286,21 +282,26 @@ function getPriorityAndFrequency(route: string): { priority: number; changeFrequ
   return { priority: 0.7, changeFrequency: 'monthly' }
 }
 
-  // Convert to sitemap format
+  // Convert to sitemap format (Google Search Central compliant: omit lastmod if reliable date is unavailable)
   const sitemapEntries = allRoutes.map(route => {
-    const isRecentlyOptimized = RECENTLY_OPTIMIZED_ROUTES.has(route) || route.startsWith('/grants/')
-    const routeDate = isRecentlyOptimized
-      ? new Date().toISOString()
-      : (blogRouteDates.get(route) || guideRouteDates.get(route) || pseoRouteDates.get(route))
+    const isRecentlyOptimized = RECENTLY_OPTIMIZED_ROUTES.has(route)
+    const genuineDate = isRecentlyOptimized
+      ? '2026-10-10'
+      : (blogRouteDates.get(route) || guideRouteDates.get(route))
 
     const { priority, changeFrequency } = getPriorityAndFrequency(route)
 
-    return {
+    const entry: MetadataRoute.Sitemap[number] = {
       url: `${baseUrl}${route}`,
-      lastModified: routeDate ? new Date(routeDate) : new Date(),
       changeFrequency,
       priority,
     }
+
+    if (genuineDate) {
+      entry.lastModified = new Date(genuineDate)
+    }
+
+    return entry
   })
 
   // Logging for verification
