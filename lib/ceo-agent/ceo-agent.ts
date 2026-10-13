@@ -425,6 +425,9 @@ ${growth.backlog?.slice(0, 3).map((item: any) => `[${item.priority}] ${item.titl
 [PRODUCT & CHECKOUT FRICTION]
 ${product.checkoutFrictionFindings?.primaryFrictionPoint}
 Fix: ${product.checkoutFrictionFindings?.recommendedFix}
+
+[ACTION P&L DETAILS]
+${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.decision} | ${action.campaign} | leads ${action.qualifiedLeadsAffected} | accepted ${action.providerAccepted} | delivered ${action.delivered} | provider failures ${action.providerFailures} | clicks ${action.clicks} | checkout views ${action.productCheckoutViews} | email ready ${action.deliveryEmailsReady} | PayPal rendered ${action.paypalButtonsRendered} | PayPal clicks ${action.paypalButtonClicks} | approvals ${action.paypalApprovals} | checkout failures ${action.paypalFailures} | server checkouts ${action.checkouts} | payments ${action.purchases} | revenue $${action.revenueUSD.toFixed(2)} | MRR $${action.mrrUSD.toFixed(2)}`).join('\n') || 'No attributed commercial actions yet.'}
 `
   }
 }

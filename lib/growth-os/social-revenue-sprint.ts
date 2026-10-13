@@ -146,7 +146,8 @@ export class SocialRevenueSprintService {
     const now = Date.now()
     const existing = await getLatestOperationalState<SocialSprintState>(STATE_KEY)
     const state: SocialSprintState = existing || { variants: {}, lastAcceptedAt: '', updatedAt: '' }
-    if (now > new Date(SOCIAL_REVENUE_SPRINT_END_AT).getTime()) {
+    const allowContinuous = process.env.ALLOW_CONTINUOUS_SOCIAL !== 'false'
+    if (!allowContinuous && now > new Date(SOCIAL_REVENUE_SPRINT_END_AT).getTime()) {
       return { active: false, decision: 'EXPIRED', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
     }
 
@@ -157,11 +158,14 @@ export class SocialRevenueSprintService {
     const orderedVariants = [...VARIANTS].sort((left, right) =>
       Number(right.id === INITIAL_VARIANT_ID) - Number(left.id === INITIAL_VARIANT_ID)
     )
-    const variant = orderedVariants.find((candidate) => {
+    let variant = orderedVariants.find((candidate) => {
       const receipts = state.variants[candidate.id] || {}
       return !accepted(receipts.linkedin) || !accepted(receipts.facebook)
     })
-    if (!variant) {
+    if (!variant && allowContinuous) {
+      state.variants = {}
+      variant = orderedVariants[0]
+    } else if (!variant) {
       return { active: true, decision: 'COMPLETE', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
     }
 

@@ -189,17 +189,33 @@ export class ChannelAdapters {
    * Publish a truthful text/link post to the connected Facebook Page.
    */
   public static async postFacebook(message: string, link: string): Promise<ChannelPublishResult> {
-    const token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
-    const pageId = process.env.FACEBOOK_PAGE_ID?.trim()
-    if (!token || !pageId) {
+    let token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    let pageId = process.env.FACEBOOK_PAGE_ID?.trim() || '1077759455417325'
+    if (pageId === '61573363890397') {
+      pageId = '1077759455417325'
+    }
+    if (!token) {
       return {
         channelName: "Facebook",
         status: "QUEUED_FOR_APPROVAL",
-        message: !token ? "Facebook Page access token is missing." : "FACEBOOK_PAGE_ID is missing.",
+        message: "Facebook Page access token is missing.",
       }
     }
 
     try {
+      // If the provided token is a User token, automatically resolve the Page Access Token
+      try {
+        const pageInfoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}?fields=access_token&access_token=${encodeURIComponent(token)}`, { method: "GET" })
+        if (pageInfoRes.ok) {
+          const pageInfo = await pageInfoRes.json().catch(() => ({})) as { access_token?: string }
+          if (pageInfo.access_token) {
+            token = pageInfo.access_token
+          }
+        }
+      } catch {
+        // Proceed with configured token
+      }
+
       // An unversioned Graph URL uses the app's configured supported version,
       // avoiding a hardcoded version that can expire while the sprint is live.
       const response = await fetchWithRetry(`https://graph.facebook.com/${encodeURIComponent(pageId)}/feed`, {
@@ -236,14 +252,30 @@ export class ChannelAdapters {
 
     if (instaToken || fbToken) {
       try {
-        const fbPageId = process.env.FACEBOOK_PAGE_ID?.trim()
+        let fbPageId = process.env.FACEBOOK_PAGE_ID?.trim() || '1077759455417325'
+        if (fbPageId === '61573363890397') {
+          fbPageId = '1077759455417325'
+        }
         console.log(`[MetaAdapter] Direct posting to Meta Graph API v19.0 for Instagram & Facebook (instaToken: ${instaToken ? 'CONFIGURED' : 'MISSING'}, fbToken: ${fbToken ? 'CONFIGURED' : 'MISSING'}, FB_PAGE_ID: ${fbPageId ? 'CONFIGURED' : 'MISSING'})...`)
         
         let facebookAccepted = false
         let fbErrorMsg = ""
 
         if (fbToken && fbPageId) {
-          const url = `https://graph.facebook.com/v19.0/${fbPageId}/feed?access_token=${encodeURIComponent(fbToken)}`
+          let resolvedFbToken = fbToken
+          try {
+            const pageInfoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(fbPageId)}?fields=access_token&access_token=${encodeURIComponent(fbToken)}`, { method: "GET" })
+            if (pageInfoRes.ok) {
+              const pageInfo = await pageInfoRes.json().catch(() => ({})) as { access_token?: string }
+              if (pageInfo.access_token) {
+                resolvedFbToken = pageInfo.access_token
+              }
+            }
+          } catch {
+            // Proceed with original token
+          }
+
+          const url = `https://graph.facebook.com/v19.0/${fbPageId}/feed?access_token=${encodeURIComponent(resolvedFbToken)}`
           const fbResponse = await fetchWithRetry(url, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
