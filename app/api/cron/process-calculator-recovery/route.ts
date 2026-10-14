@@ -5,6 +5,7 @@ import {
   sendCalculatorRecoveryEmail2,
   sendCalculatorRecoveryEmail3,
 } from '@/lib/emails/calculator-recovery';
+import { sendFundingLeakReceiptEmail } from '@/lib/emails/funding-leak-receipt';
 import { generateFundingRecommendationPlatform } from '@/lib/products/report-generator';
 import { isValidCronRequest } from '@/lib/admin/auth';
 import { acquireOperationLease, finishOperationLease } from '@/lib/growth-os/operations-store';
@@ -93,11 +94,40 @@ export async function GET(request: NextRequest) {
         });
       } else if ((elapsedMs >= 4 * 60 * 60 * 1000 || force) && !activity.calcRecoveryEmail1AcceptedAt) {
         stage = 1;
-        result = await sendCalculatorRecoveryEmail1({
-          to: email,
-          name: subscriber.name,
-          loginToken: subscriber.loginToken || '',
-        });
+        // Deterministic 50/50 A/B Experiment: "The Funding Leak Receipt" vs Control Pattern Interrupt
+        const charSum = email.split('').reduce((acc, c) => acc + c.charCodeAt(0), 0);
+        const isReceiptVariant = charSum % 2 === 1;
+
+        if (isReceiptVariant) {
+          const recommendation = generateFundingRecommendationPlatform({
+            province: subscriber.region || 'on',
+            industry: subscriber.industry || 'technology',
+            revenue: subscriber.businessStage || 'pre-revenue',
+            goal: subscriber.fundingPurpose || 'hiring',
+          });
+          const genuineMatchCount = recommendation.primaryRecommendations.length;
+
+          result = await sendFundingLeakReceiptEmail({
+            to: email,
+            name: subscriber.name,
+            companyName: subscriber.company,
+            province: subscriber.region || 'on',
+            industry: subscriber.industry || 'technology',
+            verifiedMatchCount: genuineMatchCount > 0 ? genuineMatchCount : null,
+            loginToken: subscriber.loginToken || '',
+            sourceCampaign: 'calc_recovery_day0_4h_receipt',
+          });
+          activity.calcRecoveryExperimentCohort = 'funding_leak_receipt';
+        } else {
+          result = await sendCalculatorRecoveryEmail1({
+            to: email,
+            name: subscriber.name,
+            loginToken: subscriber.loginToken || '',
+            province: subscriber.region || 'on',
+            industry: subscriber.industry || 'technology',
+          });
+          activity.calcRecoveryExperimentCohort = 'control_pattern_interrupt';
+        }
       }
 
       if (!stage || !result) continue;

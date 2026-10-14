@@ -16,33 +16,34 @@ function wrapCartRecoveryTemplate(contentHtml: string, unsubscribeToken: string,
     : 'https://www.fsidigital.ca/subscribe/unsubscribe';
 
   return `
-    <div style="background-color:#f8fafc;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;">
-      <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border:1px solid #e2e8f0;border-radius:12px;padding:32px;box-shadow:0 4px 6px -1px rgba(0,0,0,0.05);">
+    <div style="background-color:#0f172a;padding:40px 16px;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;margin:0;">
+      <div style="max-width:580px;margin:0 auto;background-color:#ffffff;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px -5px rgba(0,0,0,0.3);">
         
         <!-- Header -->
-        <div style="padding-bottom:18px;border-bottom:1px solid #f1f5f9;margin-bottom:24px;text-align:left;">
-          <span style="font-size:18px;font-weight:800;color:#0f172a;letter-spacing:-0.5px;">FSI <span style="color:#059669;">Digital</span></span>
-          <span style="float:right;font-size:11px;font-weight:700;color:#059669;text-transform:uppercase;padding:2px 8px;background-color:#ecfdf5;border-radius:4px;margin-top:2px;">
-            Secure Checkout
+        <div style="background-color:#020617;padding:24px 32px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #1e293b;">
+          <span style="font-size:20px;font-weight:900;color:#ffffff;letter-spacing:-0.5px;">FSI <span style="color:#10b981;">DIGITAL</span></span>
+          <span style="float:right;font-size:11px;font-weight:700;color:#10b981;text-transform:uppercase;letter-spacing:1px;padding:4px 10px;background-color:rgba(16,185,129,0.12);border:1px solid rgba(16,185,129,0.3);border-radius:6px;margin-top:2px;">
+            Secure Reservation
           </span>
         </div>
 
         <!-- Body Content -->
-        <div style="font-size:15px;color:#334155;line-height:1.6;text-align:left;">
-          <p style="font-weight:600;margin-top:0;margin-bottom:16px;">Hi ${firstName},</p>
+        <div style="padding:32px 32px 24px 32px;font-size:15px;color:#1e293b;line-height:1.65;text-align:left;">
+          <p style="font-size:16px;font-weight:700;margin-top:0;margin-bottom:18px;color:#0f172a;">Hi ${firstName},</p>
           
           ${contentHtml}
 
         </div>
 
         <!-- Footer -->
-        <div style="padding-top:24px;border-top:1px solid #f1f5f9;margin-top:32px;font-size:13px;color:#475569;text-align:left;line-height:1.5;">
-          Best regards,<br/>
-          <strong>Ashwani K</strong><br/>
-          <span style="color:#64748b;font-size:12px;">Founder, FSI Digital</span>
+        <div style="padding:24px 32px;background-color:#f8fafc;border-top:1px solid #e2e8f0;font-size:13px;color:#475569;text-align:left;line-height:1.5;">
+          <div style="margin-bottom:12px;">
+            <strong>Ashwani K</strong><br/>
+            <span style="color:#64748b;font-size:12px;">Growth &amp; Funding Intelligence · FSI Digital</span>
+          </div>
           
-          <div style="margin-top:24px;padding-top:16px;border-top:1px dashed #e2e8f0;font-size:11px;color:#94a3b8;text-align:center;">
-            This email was sent because you started checkout for our funding analysis products.<br>
+          <div style="margin-top:20px;padding-top:16px;border-top:1px dashed #cbd5e1;font-size:11px;color:#94a3b8;text-align:center;">
+            This reservation memo was sent regarding your active checkout session.<br>
             <a href="${unsubscribeUrl}" style="color:#64748b;text-decoration:underline;margin-top:8px;display:inline-block;">Unsubscribe from these emails</a>
           </div>
         </div>
@@ -133,25 +134,28 @@ export async function sendCartRecoveryEmail1({
   const checkoutUrl = recoveryCheckoutUrl(product.path, loginToken, 'cart_day1');
 
   const html = wrapCartRecoveryTemplate(`
-    <p style="margin: 0 0 16px 0;">
-      I noticed you started checking out for your <strong>${product.name}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't finish.
+    <p style="margin: 0 0 16px 0; font-size:16px; color:#0f172a; font-weight:600;">
+      I saw you started checkout for your <strong>${product.name}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''} but didn't reach the confirmation page.
     </p>
     <p style="margin: 0 0 16px 0;">
-      Your profile data and matching programs have been preserved. You can resume and complete your order anytime with the direct link below:
+      Sometimes mobile browser popup blockers or interrupted payment gateways freeze the redirect.
     </p>
-    <div style="margin:20px 0;padding:12px 16px;background-color:#f8fafc;border-left:4px solid #059669;border-radius:4px;font-size:13px;color:#475569;line-height:1.5;">
-      <strong>📱 Mobile / Browser Notice:</strong> If you encountered popup blocking or an interrupted redirect on mobile, our checkout now supports direct one-click redirect.
-    </div>
+    <p style="margin: 0 0 18px 0; background-color:#ecfdf5; border-left:4px solid #10b981; padding:12px 16px; color:#065f46; border-radius:4px; font-weight:500;">
+      Your matched programs, intake deadlines, and assessment data are securely held in our database for the next 12 hours.
+    </p>
+    <p style="margin: 0 0 20px 0;">
+      You can resume and complete your order seamlessly with the direct one-click link below:
+    </p>
     <div style="text-align:center;margin:28px 0;">
-      <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-        Complete My Checkout (${product.price}) &rarr;
+      <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:15px 32px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:15px;box-shadow:0 4px 10px rgba(5,150,105,0.25);">
+        Resume Instant Access (${product.price}) &rarr;
       </a>
     </div>
   `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name} but did not complete it. If you still want to complete your order, resume here:\n${checkoutUrl}\n\nMobile Note: If your previous checkout was interrupted by a popup blocker or browser error, the direct link above will let you complete seamlessly.\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nI saw you started checkout for the ${product.name} but didn't reach confirmation. If browser popup blockers interrupted your session, your matches are saved.\n\nResume with one click here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFSI Digital`;
 
-  return sendEmail({ to, subject: `You were one step away from unlocking your matches`, html, text, tagType: 'cart-recovery-1', companyName: cleanCompany });
+  return sendEmail({ to, subject: `Did your checkout freeze? (Holding your ${product.name})`, html, text, tagType: 'cart-recovery-1', companyName: cleanCompany });
 }
 
 // ── CART RECOVERY EMAIL 2 (24 hours) ──
@@ -178,22 +182,25 @@ export async function sendCartRecoveryEmail2({
   const checkoutUrl = recoveryCheckoutUrl(product.path, loginToken, 'cart_day3');
 
   const html = wrapCartRecoveryTemplate(`
-    <p style="margin: 0 0 16px 0;">
-      You started checkout for the ${product.name} ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}, but no completed order is recorded.
+    <p style="margin: 0 0 16px 0; font-size:16px; color:#0f172a; font-weight:600;">
+      Most tech founders don't have a revenue problem. They have a capital leakage problem.
     </p>
-    <p style="margin: 0 0 20px 0;">
-      If you still want the customized funding intelligence package, you can resume the secure checkout below. If you prefer a direct PayPal invoice or experienced mobile friction, you can simply reply to this email:
+    <p style="margin: 0 0 16px 0;">
+      Paying 100% full retail for software developers, research, and expansion while leaving non-dilutive government subsidies on the table is the fastest way to burn runway.
+    </p>
+    <p style="margin: 0 0 16px 0;">
+      You reserved the <strong>${product.name}</strong> ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}. It provides the exact program codes, allowable expense worksheets, and intake dates to reclaim this capital.
     </p>
     <div style="text-align:center;margin:28px 0;">
-      <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
-        Resume Secure Checkout (${product.price}) &rarr;
+      <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:15px 32px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:15px;box-shadow:0 4px 10px rgba(5,150,105,0.25);">
+        Complete Your Order (${product.price}) &rarr;
       </a>
     </div>
   `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nYou started checkout for the ${product.name}, but no verified purchase is recorded. If you still want the product, resume here:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nMost founders have a capital leakage problem—paying full retail for dev payroll while leaving subsidies on the table. Your ${product.name} gives you the exact formula to reclaim it:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFSI Digital`;
 
-  return sendEmail({ to, subject: `Your matches are still waiting`, html, text, tagType: 'cart-recovery-2', companyName: cleanCompany });
+  return sendEmail({ to, subject: `The $100K mistake: why 84% of founders unknowingly pay retail`, html, text, tagType: 'cart-recovery-2', companyName: cleanCompany });
 }
 
 // ── CART RECOVERY EMAIL 3 (72 hours) ──
@@ -220,22 +227,22 @@ export async function sendCartRecoveryEmail3({
   const checkoutUrl = recoveryCheckoutUrl(product.path, loginToken, 'cart_day5');
 
   const html = wrapCartRecoveryTemplate(`
-    <p style="margin: 0 0 16px 0;">
-      This is the final automated reminder regarding your ${product.name} checkout ${cleanCompany ? `for <strong>${escapeHtml(cleanCompany)}</strong>` : ''}.
+    <p style="margin: 0 0 16px 0; font-size:16px; color:#0f172a; font-weight:600;">
+      This is my final note before our system archives your pending assessment session.
     </p>
-    <p style="margin: 0 0 20px 0;">
-      If you are still actively looking for non-dilutive capital (grants, tax credits, and subsidies) to fund hiring, exporting, or product development, you can resume your checkout below:
+    <p style="margin: 0 0 16px 0;">
+      If you are still looking to extend runway with non-dilutive government capital (wage subsidies, R&amp;D tax credits, and market expansion grants), your reserved checkout link expires tonight:
     </p>
     <div style="text-align:center;margin:28px 0;">
-      <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 4px 6px -1px rgba(5,150,105,0.2);">
+      <a href="${checkoutUrl}" style="background-color:#059669;color:white;padding:15px 32px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:15px;box-shadow:0 4px 10px rgba(5,150,105,0.25);">
         Complete Checkout &amp; Access Dashboard (${product.price}) &rarr;
       </a>
     </div>
   `, unsubscribeToken, firstName);
 
-  const text = `Hi ${firstName},\n\nThis is the final automated reminder about the ${product.name} checkout you started. You can resume here if you still want it:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nFinal note before your pending session is archived. Resume your ${product.name} order here before the link expires tonight:\n${checkoutUrl}\n\nBest regards,\nAshwani K\nFSI Digital`;
 
-  return sendEmail({ to, subject: `Still interested in funding opportunities?`, html, text, tagType: 'cart-recovery-3', companyName: cleanCompany });
+  return sendEmail({ to, subject: `Archiving your application data (final link for ${cleanCompany || firstName})`, html, text, tagType: 'cart-recovery-3', companyName: cleanCompany });
 }
 
 // ── REPORT NOT VIEWED RECOVERY EMAIL (24 hours after purchase) ──

@@ -51,6 +51,92 @@ export function cleanCompanyName(companyName?: string): string {
   return escapeHtml(cleaned);
 }
 
+const US_STATE_MAP: Record<string, string> = {
+  'al': 'Alabama', 'alabama': 'Alabama',
+  'ak': 'Alaska', 'alaska': 'Alaska',
+  'az': 'Arizona', 'arizona': 'Arizona',
+  'ar': 'Arkansas', 'arkansas': 'Arkansas',
+  'ca': 'California', 'california': 'California',
+  'co': 'Colorado', 'colorado': 'Colorado',
+  'ct': 'Connecticut', 'connecticut': 'Connecticut',
+  'de': 'Delaware', 'delaware': 'Delaware',
+  'fl': 'Florida', 'florida': 'Florida',
+  'ga': 'Georgia', 'georgia': 'Georgia',
+  'hi': 'Hawaii', 'hawaii': 'Hawaii',
+  'id': 'Idaho', 'idaho': 'Idaho',
+  'il': 'Illinois', 'illinois': 'Illinois',
+  'in': 'Indiana', 'indiana': 'Indiana',
+  'ia': 'Iowa', 'iowa': 'Iowa',
+  'ks': 'Kansas', 'kansas': 'Kansas',
+  'ky': 'Kentucky', 'kentucky': 'Kentucky',
+  'la': 'Louisiana', 'louisiana': 'Louisiana',
+  'me': 'Maine', 'maine': 'Maine',
+  'md': 'Maryland', 'maryland': 'Maryland',
+  'ma': 'Massachusetts', 'massachusetts': 'Massachusetts',
+  'mi': 'Michigan', 'michigan': 'Michigan',
+  'mn': 'Minnesota', 'minnesota': 'Minnesota',
+  'ms': 'Mississippi', 'mississippi': 'Mississippi',
+  'mo': 'Missouri', 'missouri': 'Missouri',
+  'mt': 'Montana', 'montana': 'Montana',
+  'ne': 'Nebraska', 'nebraska': 'Nebraska',
+  'nv': 'Nevada', 'nevada': 'Nevada',
+  'nh': 'New Hampshire', 'new hampshire': 'New Hampshire',
+  'nj': 'New Jersey', 'new jersey': 'New Jersey',
+  'nm': 'New Mexico', 'new mexico': 'New Mexico',
+  'ny': 'New York', 'new york': 'New York',
+  'nc': 'North Carolina', 'north carolina': 'North Carolina',
+  'nd': 'North Dakota', 'north dakota': 'North Dakota',
+  'oh': 'Ohio', 'ohio': 'Ohio',
+  'ok': 'Oklahoma', 'oklahoma': 'Oklahoma',
+  'or': 'Oregon', 'oregon': 'Oregon',
+  'pa': 'Pennsylvania', 'pennsylvania': 'Pennsylvania',
+  'ri': 'Rhode Island', 'rhode island': 'Rhode Island',
+  'sc': 'South Carolina', 'south carolina': 'South Carolina',
+  'sd': 'South Dakota', 'south dakota': 'South Dakota',
+  'tn': 'Tennessee', 'tennessee': 'Tennessee',
+  'tx': 'Texas', 'texas': 'Texas',
+  'ut': 'Utah', 'utah': 'Utah',
+  'vt': 'Vermont', 'vermont': 'Vermont',
+  'va': 'Virginia', 'virginia': 'Virginia',
+  'wa': 'Washington', 'washington': 'Washington',
+  'wv': 'West Virginia', 'west virginia': 'West Virginia',
+  'wi': 'Wisconsin', 'wisconsin': 'Wisconsin',
+  'wy': 'Wyoming', 'wyoming': 'Wyoming',
+  'dc': 'Washington, D.C.', 'district of columbia': 'Washington, D.C.',
+  'us': 'United States', 'usa': 'United States', 'united states': 'United States'
+};
+
+const CA_PROVINCE_MAP: Record<string, string> = {
+  'on': 'Ontario', 'ontario': 'Ontario',
+  'ab': 'Alberta', 'alberta': 'Alberta',
+  'bc': 'British Columbia', 'british columbia': 'British Columbia',
+  'qc': 'Quebec', 'quebec': 'Quebec',
+  'mb': 'Manitoba', 'manitoba': 'Manitoba',
+  'sk': 'Saskatchewan', 'saskatchewan': 'Saskatchewan',
+  'ns': 'Nova Scotia', 'nova scotia': 'Nova Scotia',
+  'nb': 'New Brunswick', 'new brunswick': 'New Brunswick',
+  'nl': 'Newfoundland and Labrador', 'newfoundland': 'Newfoundland and Labrador',
+  'pe': 'Prince Edward Island', 'prince edward island': 'Prince Edward Island',
+  'yt': 'Yukon', 'yukon': 'Yukon',
+  'nt': 'Northwest Territories', 'northwest territories': 'Northwest Territories',
+  'nu': 'Nunavut', 'nunavut': 'Nunavut',
+  'canada': 'Canada', 'federal': 'Canada'
+};
+
+export function isUSMarket(region?: string): boolean {
+  if (!region) return false;
+  const lower = region.trim().toLowerCase();
+  // Direct country indicator
+  if (lower === 'us' || lower === 'usa' || lower === 'united states' || lower === 'united states of america') {
+    return true;
+  }
+  // Check if it's explicitly Canadian
+  if (lower === 'ca' || lower === 'canada' || CA_PROVINCE_MAP[lower]) {
+    return false;
+  }
+  return Boolean(US_STATE_MAP[lower]);
+}
+
 export function cleanRegionName(region?: string): string {
   if (!region) return 'Canada';
   const cleaned = region.trim();
@@ -59,37 +145,10 @@ export function cleanRegionName(region?: string): string {
     return 'Canada';
   }
 
-  const provinceMap: Record<string, string> = {
-    'on': 'Ontario',
-    'ontario': 'Ontario',
-    'ab': 'Alberta',
-    'alberta': 'Alberta',
-    'bc': 'British Columbia',
-    'british columbia': 'British Columbia',
-    'qc': 'Quebec',
-    'quebec': 'Quebec',
-    'mb': 'Manitoba',
-    'manitoba': 'Manitoba',
-    'sk': 'Saskatchewan',
-    'saskatchewan': 'Saskatchewan',
-    'ns': 'Nova Scotia',
-    'nova scotia': 'Nova Scotia',
-    'nb': 'New Brunswick',
-    'new brunswick': 'New Brunswick',
-    'nl': 'Newfoundland and Labrador',
-    'newfoundland': 'Newfoundland and Labrador',
-    'pe': 'Prince Edward Island',
-    'prince edward island': 'Prince Edward Island',
-    'yt': 'Yukon',
-    'nt': 'Northwest Territories',
-    'nu': 'Nunavut',
-    'ca': 'Canada',
-    'canada': 'Canada',
-    'us': 'US',
-    'usa': 'US'
-  };
+  if (CA_PROVINCE_MAP[lower]) return CA_PROVINCE_MAP[lower];
+  if (US_STATE_MAP[lower]) return US_STATE_MAP[lower];
 
-  return provinceMap[lower] || escapeHtml(cleaned);
+  return escapeHtml(cleaned);
 }
 
 export function cleanIndustryName(industry?: string): string {

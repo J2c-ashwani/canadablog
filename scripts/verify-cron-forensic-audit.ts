@@ -168,13 +168,25 @@ async function runCronForensicAudit() {
     process.exit(1)
   }
 
-  // Test request with valid query param
+  // Test request with query param (must be rejected per CEO security directive)
   const dummyReqQuery = new Request(`http://localhost:3000/api/ceo/run?secret=${sampleSecret}`)
   const resQuery = validateCronAuth(dummyReqQuery)
-  if (resQuery.authorized && resQuery.authMethod === 'QUERY_PARAM') {
-    console.log('✅ PASS: cron-job.org query parameter authentication validated.')
+  if (!resQuery.authorized) {
+    console.log('✅ PASS: Query parameter authentication strictly rejected in production.')
   } else {
-    console.error('❌ FAIL: Query parameter authentication failed.')
+    console.error('❌ FAIL: Query parameter was unexpectedly accepted.')
+    process.exit(1)
+  }
+
+  // Test request with x-cron-secret header
+  const dummyReqXCron = new Request('http://localhost:3000/api/ceo/run', {
+    headers: { 'x-cron-secret': sampleSecret }
+  })
+  const resXCron = validateCronAuth(dummyReqXCron)
+  if (resXCron.authorized && resXCron.authMethod === 'X_CRON_HEADER') {
+    console.log('✅ PASS: x-cron-secret header authentication validated.')
+  } else {
+    console.error('❌ FAIL: x-cron-secret header authentication failed.')
     process.exit(1)
   }
 
