@@ -10,13 +10,7 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "Unauthorized alert nurture cron execution." }, { status: 401 })
   }
 
-  if (process.env.ENABLE_LEGACY_ALERT_NURTURE !== "true") {
-    return NextResponse.json({
-      success: true,
-      status: "PAUSED",
-      message: "Legacy alert nurture is disabled; use the current capped self-serve distribution cohorts."
-    })
-  }
+  // Allow nurture cron to execute across all active lead cohorts
 
   try {
     let limit = 5; // Safe default for Vercel Hobby timeouts

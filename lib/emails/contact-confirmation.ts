@@ -280,7 +280,7 @@ function buildCalculatorHtml({
           <tr>
             <td style="vertical-align:top;width:20px;padding-bottom:8px;font-size:14px;color:#059669;font-weight:bold;">3.</td>
             <td style="vertical-align:top;font-size:14px;color:#475569;line-height:1.5;">
-              Secure a 1-on-1 strategy session to review matching programs with an expert.
+              Access your self-serve Funding Match Report & Action Plan to view application guides and compliance rules.
             </td>
           </tr>
         </table>
@@ -324,7 +324,7 @@ ${restoreUrl}
 Next steps to lock in your funding:
 1. Open your Funding Matches to check matching deadlines.
 2. Download template files and application guides to prepare your filing.
-3. Secure a 1-on-1 strategy session to review matching programs with an expert.
+3. Access your self-serve Funding Match Report & Action Plan to view application guides and compliance rules.
 
 Best regards,
 Ashwani K

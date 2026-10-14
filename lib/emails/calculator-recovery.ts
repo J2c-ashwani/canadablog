@@ -341,7 +341,7 @@ export async function sendCustomerSuccessFollowup({
   const subject = `Have you started your government funding applications yet?`;
   
   const yesUrl = `https://www.fsidigital.ca/products/toolkit?token=${loginToken}&utm_source=customer_success&utm_medium=email&utm_campaign=success_started_yes`;
-  const noUrl = `https://www.fsidigital.ca/booking?token=${loginToken}&utm_source=customer_success&utm_medium=email&utm_campaign=success_started_no`;
+  const noUrl = `https://www.fsidigital.ca/products/bundle?token=${loginToken}&utm_source=customer_success&utm_medium=email&utm_campaign=success_started_no`;
 
   const html = wrapCalculatorRecoveryTemplate(`
     <p style="margin: 0 0 16px 0;">
@@ -362,9 +362,9 @@ export async function sendCustomerSuccessFollowup({
         </td>
         <td style="width: 50%; text-align: center; background-color: #eff6ff; border: 1px solid #bfdbfe; border-radius: 8px; padding: 16px;">
           <h4 style="margin: 0 0 8px 0; color: #1e40af; font-size: 14px;"><strong>No, not yet</strong></h4>
-          <p style="margin: 0 0 14px 0; font-size: 11px; color: #1e40af;">I need professional guidance to set up compliance rules.</p>
+          <p style="margin: 0 0 14px 0; font-size: 11px; color: #1e40af;">I need stacking templates and CRA compliance rules.</p>
           <a href="${noUrl}" style="background-color: #1e40af; color: white; padding: 8px 16px; text-decoration: none; border-radius: 6px; font-weight: bold; font-size: 11px; display: inline-block;">
-            Book Strategy Session &rarr;
+            Get Stacking Bundle ($79) &rarr;
           </a>
         </td>
       </tr>
@@ -375,7 +375,7 @@ export async function sendCustomerSuccessFollowup({
     </p>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nIt's been a week since you retrieved your funding matches. Have you started your applications yet?\n\n- YES (Get our Writing Toolkit package to accelerate): ${yesUrl}\n- NO (Let's schedule a Strategy session to review stacking compliance): ${noUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nIt's been a week since you retrieved your funding matches. Have you started your applications yet?\n\n- YES (Get our Writing Toolkit package to accelerate): ${yesUrl}\n- NO (Get our Complete Stacking Toolkit with compliance templates): ${noUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'customer-success-followup' });
 }

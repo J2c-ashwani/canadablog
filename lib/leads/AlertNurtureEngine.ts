@@ -55,17 +55,23 @@ export class AlertNurtureEngine {
         // ignore
       }
       
-      // Only process alert subscribers
-      if (!activity.alertSubscribed) continue;
+      // Process leads who consented to updates or completed calculator / diagnostic tools
+      const isEligibleLead = Boolean(
+        activity.alertSubscribed ||
+        activity.calculatorCompletedAt ||
+        activity.contactFormSubmitted ||
+        sub.isSubscribed
+      );
+      if (!isEligibleLead) continue;
       
       const currentStage = activity.alertNurtureStage || null;
-      const lastSentStr = activity.alertNurtureSentAt || activity.alertDate;
+      const lastSentStr = activity.alertNurtureSentAt || activity.alertDate || activity.calculatorCompletedAt || sub.timestamp;
       
       if (currentStage === "completed") {
         continue;
       }
       
-      // If no nurture stage is set but alertDate exists, they need the welcome email first
+      // If no nurture stage is set, they need the welcome email first
       if (!currentStage) {
         candidates.push({ lead: sub, nextStage: "welcome", currentStage: "none" });
         continue;
@@ -114,9 +120,9 @@ export class AlertNurtureEngine {
         }
       } else if (currentStage === "plan" && elapsedDays >= 7) {
         candidates.push({ lead: sub, nextStage: "success", currentStage });
-      } else if (currentStage === "success" && elapsedDays >= 9) {
+      } else if (currentStage === "success" && elapsedDays >= 7) {
         candidates.push({ lead: sub, nextStage: "audit", currentStage });
-      } else if (currentStage === "audit" && elapsedDays >= 15) {
+      } else if (currentStage === "audit" && elapsedDays >= 7) {
         candidates.push({ lead: sub, nextStage: "audit_followup", currentStage });
       } else if (currentStage === "audit_followup" && elapsedDays >= 7) {
         candidates.push({ lead: sub, nextStage: "referral", currentStage });

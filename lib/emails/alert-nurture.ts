@@ -224,21 +224,24 @@ export async function sendAlertAuditEmail({
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
 
-  const auditUrl = `https://www.fsidigital.ca/booking?token=${loginToken}&source=alert_nurture_audit`;
-  const subject = `Upcoming funding intake windows for ${cleanInd} firms in ${cleanProv}`;
+  const bundleUrl = `https://www.fsidigital.ca/products/bundle?token=${loginToken}&source=alert_nurture_bundle`;
+  const subject = `Complete Capital Stacking Toolkit for ${cleanInd} in ${cleanProv} ($79 USD)`;
 
   const html = wrapAlertNurtureTemplate(`
     <p style="margin: 0 0 16px 0;">
       Several key provincial and federal intakes for <strong>${escapeHtml(cleanInd)}</strong> companies in <strong>${escapeHtml(cleanProv)}</strong> are opening their application portals this coming quarter.
     </p>
+    <p style="margin: 0 0 16px 0;">
+      To maximize your grant awards without triggering clawbacks, get our comprehensive <strong>Complete Capital Stacking Toolkit</strong>. It includes step-by-step application templates, narrative guides, stacking calculators, and CRA compliance checklists.
+    </p>
     <div style="text-align:center;margin:24px 0;">
-      <a href="${auditUrl}" style="background-color:#4f46e5;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
-        Book a Funding Strategy Audit &rarr;
+      <a href="${bundleUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 2px 4px rgba(5,150,105,0.2);">
+        Get Complete Funding Bundle ($79 USD) &rarr;
       </a>
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nKey portals are opening next quarter for ${cleanInd} companies in ${cleanProv}. Book a 30-minute Funding Strategy Audit:\n${auditUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nKey portals are opening next quarter for ${cleanInd} companies in ${cleanProv}. Get our Complete Capital Stacking Toolkit ($79 USD):\n${bundleUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'alert-nurture-audit' });
 }
@@ -293,21 +296,24 @@ export async function sendAlertAuditFollowupEmail({
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
 
-  const auditUrl = `https://www.fsidigital.ca/booking?token=${loginToken}&source=alert_nurture_audit_followup`;
-  const subject = `Follow-up regarding your funding strategy session in ${cleanProv}`;
+  const bundleUrl = `https://www.fsidigital.ca/products/bundle?token=${loginToken}&source=alert_nurture_bundle_followup`;
+  const subject = `Stacking grant compliance templates for ${cleanProv} (${cleanInd})`;
 
   const html = wrapAlertNurtureTemplate(`
     <p style="margin: 0 0 16px 0;">
-      Following up regarding your funding roadmap in <strong>${escapeHtml(cleanProv)}</strong> (${escapeHtml(cleanInd)}).
+      Following up regarding your non-dilutive capital roadmap in <strong>${escapeHtml(cleanProv)}</strong> (${escapeHtml(cleanInd)}).
+    </p>
+    <p style="margin: 0 0 16px 0;">
+      Our <strong>Complete Funding Bundle ($79 USD)</strong> provides the exact cost-allocation spreadsheets, application narrative guidelines, and SR&amp;ED / IRAP stacking rules you need to secure government funds without clawbacks.
     </p>
     <div style="text-align:center;margin:24px 0;">
-      <a href="${auditUrl}" style="background-color:#4f46e5;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;">
-        Claim Strategy Session &rarr;
+      <a href="${bundleUrl}" style="background-color:#059669;color:white;padding:14px 28px;text-decoration:none;border-radius:8px;font-weight:bold;display:inline-block;font-size:14px;box-shadow:0 2px 4px rgba(5,150,105,0.2);">
+        Get Complete Funding Bundle ($79 USD) &rarr;
       </a>
     </div>
   `, loginToken, firstName);
 
-  const text = `Hi ${firstName},\n\nFollowing up regarding your funding roadmap in ${cleanProv}:\n${auditUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
+  const text = `Hi ${firstName},\n\nFollowing up regarding your funding roadmap in ${cleanProv}:\n${bundleUrl}\n\nGet our Complete Funding Bundle with all stacking templates:\n${bundleUrl}\n\nBest,\nAshwani K\nFounder, FSI Digital`;
 
   return sendEmail({ to, subject, html, text, tagType: 'alert-nurture-audit-followup' });
 }

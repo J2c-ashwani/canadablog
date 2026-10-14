@@ -78,26 +78,30 @@ export async function POST(request: NextRequest) {
                      source === "Funding Stacking Decision Engine" ||
                      category === "Funding Estimator Tool" || 
                      body.category === "Funding Estimator Tool" ||
-                     !!source ||
-                     !!category;
+                     Boolean(body.diagnosticType) ||
+                     Boolean(body.toolUsed) ||
+                     Boolean(body.productRecommended) ||
+                     Boolean(source) ||
+                     Boolean(category);
     
-    const isShortFormLead = isCalculator || isConsultation || isFinder || isWidget;
-    const isPhoneOptional = isShortFormLead;
-    const finalName = name || (isShortFormLead ? "Founder" : "");
-    const finalCompanyName = companyName || (isShortFormLead ? "Not provided" : "");
-    const finalIndustry = industry || (isShortFormLead ? "General Business" : "");
-    const finalBusinessStage = businessStage || (isShortFormLead ? "N/A" : "");
-    const finalFundingAmount = fundingAmount || (isShortFormLead ? "N/A" : "");
-    const finalFundingPurpose = (Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : fundingPurpose) || (isShortFormLead ? "Funding Eligibility Assessment" : "");
-    const finalBusinessDescription = businessDescription || (isShortFormLead ? `Lead submission from ${source || category || pagePath || "Interactive Tool"}` : "");
+    const isShortFormLead = true; // Any interactive tool or contact capture form with an email should safely capture
+    const isPhoneOptional = true;
+    const finalName = (name && name.trim()) || (body.fullName && body.fullName.trim()) || "Founder";
+    const finalCompanyName = (companyName && companyName.trim()) || (body.company && body.company.trim()) || "Not provided";
+    const finalIndustry = (industry && industry.trim()) || "General Business";
+    const finalBusinessStage = (businessStage && businessStage.trim()) || (body.companyRevenue && String(body.companyRevenue).trim()) || "N/A";
+    const finalFundingAmount = (fundingAmount && fundingAmount.trim()) || (body.fundingEstimate && String(body.fundingEstimate).trim()) || "N/A";
+    const finalFundingPurpose = (Array.isArray(fundingPurpose) ? fundingPurpose.join(", ") : fundingPurpose) || (body.diagnosticType ? `Diagnostic: ${body.diagnosticType}` : "Funding Eligibility Assessment");
+    const finalBusinessDescription = businessDescription || body.additionalNotes || (body.diagnosticType ? `Diagnostic Tool: ${body.diagnosticType}. Estimated: ${body.fundingEstimate || "Assessed"}. Recommended: ${body.productRecommended || "Report"}` : `Lead submission from ${source || category || pagePath || "Interactive Tool"}`);
+    const finalState = state || body.province || "ON";
 
-    // Validate required fields (phone and detailed firmographics are optional for short-form/tool leads)
-    if (!email || !finalName || !finalCompanyName || (!isPhoneOptional && !rawPhone) || !finalIndustry || !finalBusinessStage || !finalFundingAmount || !finalFundingPurpose || !finalBusinessDescription) {
-      return NextResponse.json({ error: "Missing required qualification fields" }, { status: 400 });
+    // Validate required email
+    if (!email || !email.trim()) {
+      return NextResponse.json({ error: "Email address is required" }, { status: 400 });
     }
 
     // Validate email pattern
-    const emailCheck = validateEmail(email);
+    const emailCheck = validateEmail(email.trim());
     if (!emailCheck.isValid) {
       return NextResponse.json({ error: emailCheck.error }, { status: 400 });
     }
@@ -105,9 +109,13 @@ export async function POST(request: NextRequest) {
     let phone = "Not provided";
     let phoneValidationNotes = "Phone not provided";
 
-    if (rawPhone && rawPhone.trim() !== "" && rawPhone.trim().toLowerCase() !== "not provided") {
+    const cleanRawPhone = (rawPhone || "").trim();
+    const isPlaceholderPhone = !cleanRawPhone || 
+      ["not provided", "n/a", "none", "null", "undefined"].includes(cleanRawPhone.toLowerCase());
+
+    if (!isPlaceholderPhone) {
       // Perform phone validation
-      const phoneValResult = validatePhone(rawPhone, country);
+      const phoneValResult = validatePhone(cleanRawPhone, country);
 
       // Hard reject: number is structurally invalid (wrong length, bad NANP area/exchange code)
       if (!phoneValResult.isValid) {
@@ -121,14 +129,13 @@ export async function POST(request: NextRequest) {
         ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
         : '';
       phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
-    } else if (!isPhoneOptional) {
-      return NextResponse.json({ error: "Phone number is required" }, { status: 400 });
     }
 
     const isCalculatorLead = isCalculator
       || String(body.category || "").includes("Calculator")
       || String(body.toolUsed || "").includes("Calculator")
-      || String(body.source || "").includes("Calculator");
+      || String(body.source || "").includes("Calculator")
+      || Boolean(body.diagnosticType);
 
     const nowIso = new Date().toISOString();
     const initialActivity: Record<string, any> = { contactFormSubmitted: true };
@@ -158,8 +165,8 @@ export async function POST(request: NextRequest) {
       name: finalName,
       companyName: finalCompanyName,
       country: country || request.headers.get("x-vercel-ip-country") || "N/A",
-      region: state || request.headers.get("x-vercel-ip-country-region") || "N/A",
-      state: state || "N/A",
+      region: finalState || request.headers.get("x-vercel-ip-country-region") || "N/A",
+      state: finalState || "N/A",
       city: city || "N/A",
       industry: finalIndustry,
       businessStage: finalBusinessStage,
@@ -304,15 +311,15 @@ export async function POST(request: NextRequest) {
     // Send confirmation receipt email to the user (fire-and-forget)
     sendContactConfirmation({
       to: email,
-      name: name || '',
-      category: category || requestType || 'General',
-      messageSnippet: businessDescription || '',
+      name: finalName || name || '',
+      category: category || requestType || (body.diagnosticType ? 'Grant Calculator' : 'General'),
+      messageSnippet: finalBusinessDescription || businessDescription || '',
     }).catch((error) => {
       console.error('❌ Failed to send contact confirmation email:', error);
     });
 
-    // Trigger AI Voice Calling Agent if a valid phone number was provided (fire-and-forget)
-    if (phone && phone !== "Not provided" && phone !== "N/A") {
+    // Trigger AI Voice Calling Agent ONLY if explicit consent was given and not marked do-not-call (fire-and-forget)
+    if (phone && phone !== "Not provided" && phone !== "N/A" && consentToAiCall && !doNotCall) {
       triggerVoiceCallingAgent({
         name: finalName,
         phone,

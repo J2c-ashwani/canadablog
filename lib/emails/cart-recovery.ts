@@ -78,11 +78,11 @@ function recoveryProduct(productId?: string, priceShown?: string) {
     'funding-toolkit': { name: 'Funding Application Toolkit', path: '/products/toolkit', price: '$29' },
     'funding-approval-library': { name: 'Funding Approval Library', path: '/products/approval-library', price: '$9' },
     'guide-companion-kit': { name: 'Application Companion Kit', path: '/products/companion-kit', price: '$9' },
-    'strategy-audit': { name: 'Funding Strategy Audit & 1-on-1 Consultation', path: '/contact?service=strategy-audit', price: '$199' },
-    'consultation': { name: 'Funding Strategy Audit & 1-on-1 Consultation', path: '/contact?service=strategy-audit', price: '$199' },
-    'strategy-session': { name: 'Funding Strategy Audit & 1-on-1 Consultation', path: '/contact?service=strategy-audit', price: '$199' },
-    'portfolio-assessment': { name: 'Executive Funding Assessment', path: '/products/portfolio-assessment', price: '$199' },
-    'strategy-vip': { name: 'VIP Funding Blueprint', path: '/contact?service=strategy-vip', price: '$499' },
+    'strategy-audit': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
+    'consultation': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
+    'strategy-session': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
+    'portfolio-assessment': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
+    'strategy-vip': { name: 'Complete Funding Bundle', path: '/products/bundle', price: '$79' },
     'funding-membership': { name: 'Funding Watch Membership', path: '/products/membership', price: '$29' },
   };
 
@@ -90,8 +90,7 @@ function recoveryProduct(productId?: string, priceShown?: string) {
   if (normalized && normalized in products) return products[normalized];
 
   const priceClean = String(priceShown || '').replace(/[^0-9.]/g, '');
-  if (priceClean === '499') return products['strategy-vip'];
-  if (priceClean === '199') return products['strategy-audit'];
+  if (priceClean === '499' || priceClean === '199') return products['funding-bundle'];
   if (priceClean === '79' || priceClean === '108') return products['funding-bundle'];
   if (priceClean === '49') return products['funding-roadmap'];
   if (priceClean === '29') return products['funding-toolkit'];
