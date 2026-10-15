@@ -275,7 +275,7 @@ function parseSheetLead(row: string[]): SheetLead {
     utmCampaign: row[29] || "N/A",
     offlineStatus: row[31] || "Lead",
     actualSignedValue: row[32] || "N/A",
-    isSubscribed: String(row[33] || "").toLowerCase() === "yes",
+    isSubscribed: row[33] !== undefined && row[33] !== "" ? String(row[33]).trim().toLowerCase() === "yes" : true,
     unsubscribeToken: row[34] || "",
     engagementScore: row[35] ? Number(row[35]) : 100,
     lastOpenedAt: row[36] || "",

@@ -49,6 +49,8 @@ import {
     isSearchDistributionCohortPath,
     SEARCH_DISTRIBUTION_ROLLOUT_ID,
 } from '@/lib/seo/searchDistributionRollout';
+import { getUnindexedRevivalProfile } from '@/lib/pseo-engine/unindexedRevivalCohort';
+import LocalFundingIntelligence from '@/components/pseo/LocalFundingIntelligence';
 
 const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
 
@@ -720,6 +722,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     const stateDetail = isCanada ? undefined : getStateDetailBySlugOrAbbreviation(page.provinceSlug);
     const rolloutPath = getPseoSearchDistributionPath(page.provinceSlug, page.citySlug, page.industrySlug);
     const verifiedCohort = isSearchDistributionCohortPath(rolloutPath);
+    const unindexedRevivalProfile = getUnindexedRevivalProfile(rolloutPath);
 
     const schema = generatePseoSchema(
         page.cityName,
@@ -735,13 +738,20 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
         ? (COHORT_CANADA_SHORT_ANSWERS[page.industrySlug] || CANADA_INDUSTRY_SHORT_ANSWERS[page.industrySlug])
         : CANADA_INDUSTRY_SHORT_ANSWERS[page.industrySlug];
     const usShortAnswerFn = US_INDUSTRY_SHORT_ANSWERS[page.industrySlug];
-    const shortAnswerContent = isCanada
+
+    const revivalShortAnswer = unindexedRevivalProfile
+        ? `Businesses in ${page.cityName} operating in ${page.industryName.toLowerCase()} have access to dedicated ${unindexedRevivalProfile.regionalAgency} regional funding and ${page.provinceName} provincial envelopes in addition to federal programs. ` +
+          `Key verified opportunities include ${unindexedRevivalProfile.programs.slice(0, 2).map(p => `${p.name} (${p.maxAmount})`).join(' and ')}. ` +
+          `Regional capital stacking permits combining federal and provincial support up to 75%–85% of eligible project and payroll expenses.`
+        : null;
+
+    const shortAnswerContent = revivalShortAnswer || (isCanada
         ? (canadaShortAnswerFn
             ? canadaShortAnswerFn(page.cityName, page.provinceName)
             : DEFAULT_CANADA_SHORT_ANSWER(page.industryName, page.cityName, page.provinceName))
         : (usShortAnswerFn
             ? usShortAnswerFn(page.cityName, page.provinceName, stateDetail)
-            : DEFAULT_US_SHORT_ANSWER(page.industryName, page.cityName, page.provinceName, stateDetail));
+            : DEFAULT_US_SHORT_ANSWER(page.industryName, page.cityName, page.provinceName, stateDetail)));
 
     // --- PHASE 4 COMPOSER LOGIC ---
     const intents: BlockIntent[] = ['informational', 'transactional', 'comparative'];
@@ -806,7 +816,9 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
     const activeProgramsCount = matchedPrograms.length > 0 ? matchedPrograms.length : actualMatches.length;
 
-    const shortAnswerQuestion = verifiedCohort
+    const shortAnswerQuestion = unindexedRevivalProfile
+        ? `What government grants and regional funding are available for ${page.industryName.toLowerCase()} in ${page.cityName}, ${page.provinceName}?`
+        : verifiedCohort
         ? `Which funding routes should a ${page.industryName} business in ${page.cityName}, ${page.provinceName} check first?`
         : `How much funding can a ${page.industryName} business in ${page.cityName}, ${page.provinceName} get?`;
 
@@ -867,12 +879,16 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                     Interactive Eligibility Engine
                                 </span>
                                 <h2 className="text-xl md:text-2xl font-extrabold text-white leading-tight">
-                                    {verifiedCohort
+                                    {unindexedRevivalProfile
+                                        ? `There are ${unindexedRevivalProfile.programs.length} verified regional programs for ${page.industryName} in ${page.cityName}.`
+                                        : verifiedCohort
                                         ? `Compare funding routes for ${page.industryName} in ${page.cityName}.`
                                         : `There are ${activeProgramsCount} active funding programs for ${page.industryName} in ${page.provinceName}.`}
                                 </h2>
                                 <p className="text-sm text-slate-300 leading-relaxed">
-                                    {verifiedCohort
+                                    {unindexedRevivalProfile
+                                        ? `Calculate your funding readiness score and see exactly which ${unindexedRevivalProfile.regionalAgency}, provincial, and federal programs your business qualifies for. Takes 60 seconds.`
+                                        : verifiedCohort
                                         ? `Use the assessment to organize likely federal and ${regionType} paths. Final eligibility comes from each program's current official rules.`
                                         : 'Calculate your funding readiness score and see exactly which federal and provincial programs your business qualifies for. Takes 60 seconds.'}
                                 </p>
@@ -904,7 +920,9 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">
                         <Shield className="w-4 h-4" />
-                        {verifiedCohort ? `Funding Research — ${page.provinceName}` : `Verified Local Programs — ${page.provinceName}`}
+                        {unindexedRevivalProfile
+                            ? `Verified Regional Intelligence — ${unindexedRevivalProfile.regionalAgency} & ${page.provinceName}`
+                            : verifiedCohort ? `Funding Research — ${page.provinceName}` : `Verified Local Programs — ${page.provinceName}`}
                     </div>
 
                     {/* SHORT ANSWER — Hero placement, Direct Question as H1 per EEAT Guidelines */}
@@ -1019,6 +1037,11 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
 
                             return (
                                 <>
+                                    {/* If Unindexed Revival Cohort, Inject Local Funding Intelligence Module First */}
+                                    {unindexedRevivalProfile && (
+                                        <LocalFundingIntelligence profile={unindexedRevivalProfile} />
+                                    )}
+
                                     {/* Landscape */}
                                     <div id="landscape" className="prose prose-lg text-gray-700 max-w-none">
                                         <h2 className="text-3xl font-bold text-gray-900 mb-6">{deepDive.landscape.title}</h2>
@@ -1310,32 +1333,47 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                     </div>
 
                     <div className="space-y-4">
-                        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
-                            <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
-                                How much funding can a {page.industryName.toLowerCase()} business get in {page.cityName}?
-                            </h4>
-                            <p className="text-sm text-slate-600 leading-relaxed">
-                                Eligible {page.industryName.toLowerCase()} companies in {page.cityName}, {page.provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, {page.provinceName} regional, and local economic development programs.
-                            </p>
-                        </div>
+                        {unindexedRevivalProfile ? (
+                            unindexedRevivalProfile.faqs.map((faq, fIdx) => (
+                                <div key={fIdx} className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                                    <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                        {faq.question}
+                                    </h4>
+                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                        {faq.answer}
+                                    </p>
+                                </div>
+                            ))
+                        ) : (
+                            <>
+                                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                                    <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                        How much funding can a {page.industryName.toLowerCase()} business get in {page.cityName}?
+                                    </h4>
+                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                        Eligible {page.industryName.toLowerCase()} companies in {page.cityName}, {page.provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, {page.provinceName} regional, and local economic development programs.
+                                    </p>
+                                </div>
 
-                        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
-                            <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
-                                Do businesses in {page.cityName} have to give up equity for government grants?
-                            </h4>
-                            <p className="text-sm text-slate-600 leading-relaxed">
-                                No. Official government business grants and R&D wage subsidies in {page.provinceName} are non-dilutive. Founders retain 100% of their equity and board control.
-                            </p>
-                        </div>
+                                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                                    <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                        Do businesses in {page.cityName} have to give up equity for government grants?
+                                    </h4>
+                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                        No. Official government business grants and R&D wage subsidies in {page.provinceName} are non-dilutive. Founders retain 100% of their equity and board control.
+                                    </p>
+                                </div>
 
-                        <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
-                            <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
-                                Can companies in {page.cityName} stack federal and {page.provinceName} funding?
-                            </h4>
-                            <p className="text-sm text-slate-600 leading-relaxed">
-                                Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with {page.provinceName} state/provincial hiring and commercialization grants.
-                            </p>
-                        </div>
+                                <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
+                                    <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
+                                        Can companies in {page.cityName} stack federal and {page.provinceName} funding?
+                                    </h4>
+                                    <p className="text-sm text-slate-600 leading-relaxed">
+                                        Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with {page.provinceName} state/provincial hiring and commercialization grants.
+                                    </p>
+                                </div>
+                            </>
+                        )}
                     </div>
                 </div>
             </section>

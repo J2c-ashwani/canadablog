@@ -368,103 +368,148 @@ export function generatePseoSchema(
   const parentHubUrl = isUS ? "https://www.fsidigital.ca/usa" : "https://www.fsidigital.ca/canada";
   const parentHubName = isUS ? "U.S. Grants" : "Canadian Grants";
 
-  return {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "WebPage",
-        "@id": url,
-        "url": url,
-        "name": `${industryName} Grants in ${cityName}, ${provinceName} (2026)`,
-        "description": `Discover active ${industryName} government grants, loans, and non-dilutive financial assistance for businesses in ${cityName}, ${provinceName}.`,
-        "datePublished": publishedAt,
-        "dateModified": publishedAt,
-        "publisher": {
-          "@type": "Organization",
-          "name": "FSI Digital",
-          "url": "https://www.fsidigital.ca",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://www.fsidigital.ca/logo.png"
+  // Check if this route has a dedicated Unindexed Revival Profile
+  let revivalProfile: import('@/lib/pseo-engine/unindexedRevivalCohort').LocalRevivalProfile | undefined;
+  try {
+    const urlObj = new URL(url);
+    const { getUnindexedRevivalProfile } = require('@/lib/pseo-engine/unindexedRevivalCohort');
+    revivalProfile = getUnindexedRevivalProfile(urlObj.pathname);
+  } catch {
+    // Fall back to default schema if URL parsing fails
+  }
+
+  const faqItems = revivalProfile && revivalProfile.faqs?.length > 0
+    ? revivalProfile.faqs.map(faq => ({
+        "@type": "Question",
+        "name": faq.question,
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": faq.answer
+        }
+      }))
+    : [
+        {
+          "@type": "Question",
+          "name": `How much funding can a ${industryName.toLowerCase()} business get in ${cityName}?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Eligible ${industryName.toLowerCase()} companies in ${cityName}, ${provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, ${provinceName} regional, and local economic development programs.`
           }
         },
-        "about": {
-          "@type": "Thing",
-          "name": `${industryName} Grants`
+        {
+          "@type": "Question",
+          "name": `Do businesses in ${cityName} have to give up equity for government grants?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `No. Official government business grants and R&D wage subsidies in ${provinceName} are non-dilutive. Founders retain 100% of their equity and board control.`
+          }
         },
-        "spatialCoverage": {
-          "@type": "City",
-          "name": cityName,
-          "containedInPlace": {
-            "@type": "State",
-            "name": provinceName,
-            "containedInPlace": {
-              "@type": "Country",
-              "name": countryName || "Canada"
-            }
+        {
+          "@type": "Question",
+          "name": `Can companies in ${cityName} stack federal and ${provinceName} funding?`,
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": `Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with ${provinceName} state/provincial hiring and commercialization grants.`
           }
         }
+      ];
+
+  const graphItems: any[] = [
+    {
+      "@type": "WebPage",
+      "@id": url,
+      "url": url,
+      "name": `${industryName} Grants in ${cityName}, ${provinceName} (2026)`,
+      "description": revivalProfile
+        ? `Verified 2026 ${industryName} funding guides for ${cityName}, ${provinceName}. Access ${revivalProfile.regionalAgency} capital, provincial envelopes, and non-dilutive grant stacking.`
+        : `Discover active ${industryName} government grants, loans, and non-dilutive financial assistance for businesses in ${cityName}, ${provinceName}.`,
+      "datePublished": publishedAt,
+      "dateModified": publishedAt,
+      "publisher": {
+        "@type": "Organization",
+        "name": "FSI Digital",
+        "url": "https://www.fsidigital.ca",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.fsidigital.ca/logo.png"
+        }
       },
-      {
-        "@type": "FAQPage",
-        "@id": `${url}#faq`,
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": `How much funding can a ${industryName.toLowerCase()} business get in ${cityName}?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Eligible ${industryName.toLowerCase()} companies in ${cityName}, ${provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, ${provinceName} regional, and local economic development programs.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Do businesses in ${cityName} have to give up equity for government grants?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `No. Official government business grants and R&D wage subsidies in ${provinceName} are non-dilutive. Founders retain 100% of their equity and board control.`
-            }
-          },
-          {
-            "@type": "Question",
-            "name": `Can companies in ${cityName} stack federal and ${provinceName} funding?`,
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": `Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with ${provinceName} state/provincial hiring and commercialization grants.`
-            }
-          }
-        ]
+      "about": {
+        "@type": "Thing",
+        "name": `${industryName} Grants`
       },
-      {
-        "@type": "BreadcrumbList",
-        "@id": `${url}#breadcrumbs`,
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://www.fsidigital.ca"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": parentHubName,
-            "item": parentHubUrl
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": provinceName,
-            "item": `${parentHubUrl}/${provinceName.toLowerCase().replace(/\s+/g, '-')}`
-          },
-          {
-            "@type": "ListItem",
-            "position": 4,
-            "name": `${cityName} ${industryName}`,
-            "item": url
+      "spatialCoverage": {
+        "@type": "City",
+        "name": cityName,
+        "containedInPlace": {
+          "@type": "State",
+          "name": provinceName,
+          "containedInPlace": {
+            "@type": "Country",
+            "name": countryName || "Canada"
           }
-        ]
+        }
       }
-    ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": `${url}#faq`,
+      "mainEntity": faqItems
+    },
+    {
+      "@type": "BreadcrumbList",
+      "@id": `${url}#breadcrumbs`,
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://www.fsidigital.ca"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": parentHubName,
+          "item": parentHubUrl
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": provinceName,
+          "item": `${parentHubUrl}/${provinceName.toLowerCase().replace(/\s+/g, '-')}`
+        },
+        {
+          "@type": "ListItem",
+          "position": 4,
+          "name": `${cityName} ${industryName}`,
+          "item": url
+        }
+      ]
+    }
+  ];
+
+  // If revival profile exists, inject GovernmentService entities for authentic local authority
+  if (revivalProfile?.programs) {
+    for (const prog of revivalProfile.programs) {
+      graphItems.push({
+        "@type": "GovernmentService",
+        "name": prog.name,
+        "serviceType": "Financial Assistance / Business Grant",
+        "provider": {
+          "@type": "GovernmentOrganization",
+          "name": prog.agency
+        },
+        "areaServed": {
+          "@type": "City",
+          "name": cityName
+        },
+        "description": `${prog.name} provides ${prog.maxAmount} for ${prog.eligibleCosts.join(', ')} to eligible companies in ${cityName}, ${provinceName}.`
+      });
+    }
+  }
+
+  return {
+    "@context": "https://schema.org",
+    "@graph": graphItems
   };
 }
