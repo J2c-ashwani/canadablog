@@ -51,12 +51,6 @@ export const SEARCH_DISTRIBUTION_COHORT_PATHS = [
   '/blog/nih-sbir-biotech-grants',
   '/blog/dod-sbir-defense-tech-grants',
   '/blog/nsf-sbir-grants-technology-startups',
-  '/grants/on/toronto/restaurants-hospitality',
-  '/grants/qc/montreal/women-entrepreneurs',
-  '/grants/bc/vancouver/women-entrepreneurs',
-  '/grants/va/norfolk-virginia-beach/arts-entertainment',
-  '/grants/nc/raleigh/logistics',
-  '/grants/pa/erie/veterans',
 ] as const;
 
 const COHORT_PATHS = new Set<string>(SEARCH_DISTRIBUTION_COHORT_PATHS);
