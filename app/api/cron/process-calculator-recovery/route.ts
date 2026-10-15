@@ -110,7 +110,7 @@ export async function GET(request: NextRequest) {
           result = await sendFundingLeakReceiptEmail({
             to: email,
             name: subscriber.name,
-            companyName: subscriber.company,
+            companyName: subscriber.companyName,
             province: subscriber.region || 'on',
             industry: subscriber.industry || 'technology',
             verifiedMatchCount: genuineMatchCount > 0 ? genuineMatchCount : null,

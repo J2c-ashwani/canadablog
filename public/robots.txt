@@ -101,6 +101,9 @@ Disallow: /
 # =============================================
 Sitemap: https://www.fsidigital.ca/sitemap.xml
 Sitemap: https://www.fsidigital.ca/priority-sitemap.xml
+Sitemap: https://www.fsidigital.ca/discovered-recovery-sitemap.xml
+Sitemap: https://www.fsidigital.ca/indexing-recovery-sitemap.xml
 Sitemap: https://www.fsidigital.ca/partners-sitemap.xml
 Sitemap: https://www.fsidigital.ca/mca-sitemap.xml
+
 

@@ -121,7 +121,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [grantCount, setGrantCount] = useState(0);
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
-    const [consentToPartnerContact, setConsentToPartnerContact] = useState(false);
+    const [consentToPartnerContact, setConsentToPartnerContact] = useState(true);
     const [leadSaved, setLeadSaved] = useState(false);
     const [isPaypalButtonVisible, setIsPaypalButtonVisible] = useState(false);
     const [upgradeCredit, setUpgradeCredit] = useState(0);
@@ -774,6 +774,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     fundingAmount: `$${estimate.toLocaleString()} - $${estimateMax.toLocaleString()}`,
                     fundingPurpose: data.goal,
                     businessDescription: messageInfo,
+                    consentToPartnerContact: Boolean(consentToPartnerContact),
+                    isSubscribed: Boolean(consentToPartnerContact),
                     wantsAdvisorContact: false,
                     consentToAiCall: false,
                     doNotCall: true,
