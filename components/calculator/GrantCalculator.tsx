@@ -497,6 +497,9 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         if (packageParam === 'complete-bundle' || packageParam === 'funding-bundle') {
             setSelectedProductId('funding-bundle');
             setStep(6);
+        } else if (packageParam === 'action-plan' || packageParam === 'funding-roadmap') {
+            setSelectedProductId('funding-roadmap');
+            setStep(6);
         }
 
         if (stepParam === '6') {

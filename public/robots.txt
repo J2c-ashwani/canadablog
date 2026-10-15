@@ -12,7 +12,7 @@ Disallow: /admin/
 Disallow: /search
 Disallow: /contact?*
 Disallow: /grant-finder?*
-Disallow: /_next/
+Disallow: /_next/data/
 
 # ---- Commercial AI Search Engines (Allowed for SERP Citations) ----
 User-agent: OAI-SearchBot

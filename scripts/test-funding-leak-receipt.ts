@@ -68,4 +68,52 @@ assert(textOutput.includes('Potential funding programs        3 to investigate')
 assert(textOutput.includes('That question mark is the entire point.'), 'Plaintext narrative present');
 console.log('✅ Test 3 Passed: Plaintext format verified.');
 
-console.log('\n🎉 ALL 3 "THE FUNDING LEAK RECEIPT" TESTS PASSED SUCCESSFULLY!\n');
+// Test 4: Dynamic $79 Complete Bundle offer for Tier A enterprise lead
+const htmlTierA = renderFundingLeakReceiptHtml({
+  firstName: 'Marcus',
+  companyName: 'Vanguard Aerospace',
+  province: 'Ontario',
+  industry: 'Aerospace & Defense',
+  verifiedMatchCount: 5,
+  checkoutUrl: 'https://www.fsidigital.ca/checkout?test=4',
+  unsubscribeUrl: 'https://www.fsidigital.ca/unsubscribe?test=4',
+  referenceId: 'FLR-TEST04',
+  dateFormatted: 'OCT 15, 2026',
+  productOffer: {
+    productId: 'funding-bundle',
+    productName: 'Complete Funding Blueprint',
+    price: '$79',
+    priceAmount: 79,
+    ctaText: 'See the Complete Funding Blueprint ($79) →',
+  }
+});
+
+assert(htmlTierA.includes('Complete Funding Blueprint'), 'Tier A Complete Funding Blueprint product name rendered');
+assert(htmlTierA.includes('$79'), 'Tier A $79 price rendered');
+console.log('✅ Test 4 Passed: Dynamic $79 Complete Funding Blueprint offer verified.');
+
+// Test 5: Dynamic $49 Action Plan offer for Tier B lead
+const htmlTierB = renderFundingLeakReceiptHtml({
+  firstName: 'Elena',
+  companyName: 'BioHealth Tech',
+  province: 'Quebec',
+  industry: 'Healthcare',
+  verifiedMatchCount: 3,
+  checkoutUrl: 'https://www.fsidigital.ca/checkout?test=5',
+  unsubscribeUrl: 'https://www.fsidigital.ca/unsubscribe?test=5',
+  referenceId: 'FLR-TEST05',
+  dateFormatted: 'OCT 15, 2026',
+  productOffer: {
+    productId: 'funding-roadmap',
+    productName: 'Funding Strategy Action Plan',
+    price: '$49',
+    priceAmount: 49,
+    ctaText: 'See the Funding Action Plan ($49) →',
+  }
+});
+
+assert(htmlTierB.includes('Funding Strategy Action Plan'), 'Tier B Action Plan product name rendered');
+assert(htmlTierB.includes('$49'), 'Tier B $49 price rendered');
+console.log('✅ Test 5 Passed: Dynamic $49 Funding Action Plan offer verified.');
+
+console.log('\n🎉 ALL 5 "THE FUNDING LEAK RECEIPT" TESTS PASSED SUCCESSFULLY!\n');

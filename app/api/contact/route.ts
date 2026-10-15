@@ -117,18 +117,19 @@ export async function POST(request: NextRequest) {
       // Perform phone validation
       const phoneValResult = validatePhone(cleanRawPhone, country);
 
-      // Hard reject: number is structurally invalid (wrong length, bad NANP area/exchange code)
       if (!phoneValResult.isValid) {
-        return NextResponse.json({
-          error: `The phone number provided appears to be invalid (${phoneValResult.carrier}). Please enter a valid business phone number.`
-        }, { status: 400 });
+        // Phone is optional — never reject the entire lead for an invalid phone.
+        // Log the issue and save the lead without a phone number.
+        console.warn(`⚠️ [Phone Validation Soft-Fail] Email: ${email}, Raw Phone: "${cleanRawPhone}", Reason: ${phoneValResult.carrier}. Lead will be saved without phone.`);
+        phone = "Not provided";
+        phoneValidationNotes = `Phone provided but invalid (${phoneValResult.carrier}). Saved lead without phone.`;
+      } else {
+        phone = phoneValResult.formatted;
+        const phoneTypeFlag = phoneValResult.isVoipOrTollFree
+          ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
+          : '';
+        phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
       }
-
-      phone = phoneValResult.formatted;
-      const phoneTypeFlag = phoneValResult.isVoipOrTollFree
-        ? ` ⚠️ ${phoneValResult.type === 'toll-free' ? 'Toll-Free' : 'VoIP'} number detected — verify business legitimacy.`
-        : '';
-      phoneValidationNotes = `Phone Format: Valid, Type: ${phoneValResult.type}, Carrier: ${phoneValResult.carrier}${phoneTypeFlag}`;
     }
 
     const isCalculatorLead = isCalculator

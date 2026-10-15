@@ -20,7 +20,11 @@ config({ path: '.env.production.local' });
 
 import { getGoogleSheetsClient } from '../lib/google-sheets';
 import { generateFundingRecommendationPlatform } from '../lib/products/report-generator';
-import { sendFundingLeakReceiptEmail } from '../lib/emails/funding-leak-receipt';
+import {
+  sendFundingLeakReceiptEmail,
+  resolveRecommendedProduct,
+  type ProductOfferRecommendation
+} from '../lib/emails/funding-leak-receipt';
 import { isTestOrInternalContact } from '../lib/leads/commercial-eligibility';
 import crypto from 'crypto';
 
@@ -36,6 +40,7 @@ interface LeadCandidate {
   loginToken: string;
   verifiedMatchCount: number;
   leadActivity: any;
+  recommendedOffer: ProductOfferRecommendation;
 }
 
 async function run() {
@@ -78,7 +83,10 @@ async function run() {
     const regionIndex = 5;         // Column F
     const industryIndex = 6;       // Column G
     const businessStageIndex = 7;  // Column H
+    const fundingAmountIndex = 8;  // Column I
     const fundingPurposeIndex = 9; // Column J
+    const scoreIndex = 13;         // Column N
+    const tierIndex = 14;          // Column O
     const isSubscribedIndex = 33;  // Column AH
     const loginTokenIndex = 42;    // Column AQ
     const companyNameIndex = 47;   // Column AV
@@ -154,6 +162,9 @@ async function run() {
       const industry = row[industryIndex] || 'technology';
       const businessStage = row[businessStageIndex] || 'pre-revenue';
       const fundingPurpose = row[fundingPurposeIndex] || 'hiring';
+      const fundingAmount = String(row[fundingAmountIndex] || '');
+      const score = Number(row[scoreIndex] || 0);
+      const tier = String(row[tierIndex] || 'C').toUpperCase();
 
       let genuineMatchCount = 0;
       try {
@@ -167,6 +178,15 @@ async function run() {
       } catch {
         genuineMatchCount = 0;
       }
+
+      // 8. Resolve smart product recommendation ($19, $49, or $79)
+      const recommendedOffer = resolveRecommendedProduct({
+        score,
+        tier,
+        annualRevenue: businessStage,
+        fundingAmount,
+        industry,
+      });
 
       const loginToken = row[loginTokenIndex] || crypto.randomBytes(16).toString('hex');
       const name = row[nameIndex] || 'Founder';
@@ -184,6 +204,7 @@ async function run() {
         loginToken,
         verifiedMatchCount: genuineMatchCount,
         leadActivity: activity,
+        recommendedOffer,
       });
 
       if (candidates.length >= limit) {
@@ -207,12 +228,12 @@ async function run() {
     console.log('---------------------------------------------------------------');
     console.log('TARGET RECIPIENT COHORT:');
     candidates.forEach((c, idx) => {
-      console.log(`  [${idx + 1}] ${c.email} | Name: ${c.name} | Co: ${c.companyName || 'N/A'} | Region: ${c.province.toUpperCase()} | Sector: ${c.industry} | Genuine Matches: ${c.verifiedMatchCount}`);
+      console.log(`  [${idx + 1}] ${c.email} | Offer: ${c.recommendedOffer.productName} (${c.recommendedOffer.price}) | Co: ${c.companyName || 'N/A'} | Region: ${c.province.toUpperCase()} | Matches: ${c.verifiedMatchCount}`);
     });
     console.log('---------------------------------------------------------------\n');
 
     if (dryRun) {
-      console.log('🔒 DRY RUN COMPLETE: Zero emails sent. All candidate eligibility & genuine match counts verified.');
+      console.log('🔒 DRY RUN COMPLETE: Zero emails sent. All candidate eligibility, smart product offers, & genuine match counts verified.');
       console.log('👉 To dispatch live to this cohort, run:');
       console.log(`   npx tsx scripts/dispatch-historical-leak-receipt.ts --execute --limit=${limit}\n`);
       return;
@@ -225,7 +246,7 @@ async function run() {
 
     for (const c of candidates) {
       try {
-        console.log(`  📤 Sending to ${c.email} (Genuine matches: ${c.verifiedMatchCount})...`);
+        console.log(`  📤 Sending to ${c.email} (Offer: ${c.recommendedOffer.productName} ${c.recommendedOffer.price}, Matches: ${c.verifiedMatchCount})...`);
         const sendResult = await sendFundingLeakReceiptEmail({
           to: c.email,
           name: c.name,
@@ -235,6 +256,7 @@ async function run() {
           verifiedMatchCount: c.verifiedMatchCount > 0 ? c.verifiedMatchCount : null,
           loginToken: c.loginToken,
           sourceCampaign: 'historical_reactivation_receipt_v1',
+          productOffer: c.recommendedOffer,
         });
 
         if (sendResult.success) {

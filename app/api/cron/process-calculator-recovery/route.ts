@@ -116,6 +116,14 @@ export async function GET(request: NextRequest) {
             verifiedMatchCount: genuineMatchCount > 0 ? genuineMatchCount : null,
             loginToken: subscriber.loginToken || '',
             sourceCampaign: 'calc_recovery_day0_4h_receipt',
+            leadProfile: {
+              score: subscriber.engagementScore || subscriber.readinessScore || 0,
+              readinessScore: subscriber.readinessScore,
+              fundingAmount: subscriber.fundingAmount || '',
+              annualRevenue: subscriber.businessStage || '',
+              industry: subscriber.industry || 'technology',
+              tier: subscriber.leadTier || '',
+            },
           });
           activity.calcRecoveryExperimentCohort = 'funding_leak_receipt';
         } else {

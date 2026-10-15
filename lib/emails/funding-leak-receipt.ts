@@ -11,6 +11,68 @@
 
 import { sendEmail, getFirstName, cleanRegionName, cleanIndustryName, cleanCompanyName, escapeHtml } from './mailer';
 
+export interface ProductOfferRecommendation {
+  productId: 'funding-match-report' | 'funding-roadmap' | 'funding-bundle';
+  productName: string;
+  price: string;
+  priceAmount: number;
+  ctaText: string;
+}
+
+export function resolveRecommendedProduct(lead?: {
+  score?: number;
+  readinessScore?: number;
+  fundingAmount?: string;
+  annualRevenue?: string;
+  industry?: string;
+  tier?: string;
+}): ProductOfferRecommendation {
+  if (!lead) {
+    return {
+      productId: 'funding-match-report',
+      productName: 'Funding Match Report',
+      price: '$19',
+      priceAmount: 19,
+      ctaText: 'See the Funding Match Report ($19) →',
+    };
+  }
+
+  const score = Number(lead.score || lead.readinessScore || 0);
+  const revenue = String(lead.annualRevenue || '').toLowerCase();
+  const amount = String(lead.fundingAmount || '').toLowerCase();
+  const isHighValue = revenue.includes('500k') || revenue.includes('1m') || amount.includes('250k') || amount.includes('500k') || amount.includes('over-1m') || amount.includes('1,000,000');
+  const isTierA = lead.tier === 'A' || score >= 65 || isHighValue;
+  const isTierB = lead.tier === 'B' || score >= 40 || amount.includes('50k') || amount.includes('100k');
+
+  if (isTierA) {
+    return {
+      productId: 'funding-bundle',
+      productName: 'Complete Funding Blueprint',
+      price: '$79',
+      priceAmount: 79,
+      ctaText: 'See the Complete Funding Blueprint ($79) →',
+    };
+  }
+
+  if (isTierB) {
+    return {
+      productId: 'funding-roadmap',
+      productName: 'Funding Strategy Action Plan',
+      price: '$49',
+      priceAmount: 49,
+      ctaText: 'See the Funding Action Plan ($49) →',
+    };
+  }
+
+  return {
+    productId: 'funding-match-report',
+    productName: 'Funding Match Report',
+    price: '$19',
+    priceAmount: 19,
+    ctaText: 'See the Funding Match Report ($19) →',
+  };
+}
+
 export interface FundingLeakReceiptInput {
   to: string;
   name?: string;
@@ -21,6 +83,15 @@ export interface FundingLeakReceiptInput {
   loginToken?: string;
   checkoutUrl?: string;
   sourceCampaign?: string;
+  productOffer?: ProductOfferRecommendation;
+  leadProfile?: {
+    score?: number;
+    readinessScore?: number;
+    fundingAmount?: string;
+    annualRevenue?: string;
+    industry?: string;
+    tier?: string;
+  };
 }
 
 export function renderFundingLeakReceiptHtml({
@@ -33,6 +104,7 @@ export function renderFundingLeakReceiptHtml({
   unsubscribeUrl,
   referenceId,
   dateFormatted,
+  productOffer,
 }: {
   firstName: string;
   companyName?: string;
@@ -43,10 +115,18 @@ export function renderFundingLeakReceiptHtml({
   unsubscribeUrl: string;
   referenceId: string;
   dateFormatted: string;
+  productOffer?: ProductOfferRecommendation;
 }): string {
   const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
+  const offer = productOffer || {
+    productId: 'funding-match-report' as const,
+    productName: 'Funding Match Report',
+    price: '$19',
+    priceAmount: 19,
+    ctaText: 'See the Funding Match Report →',
+  };
 
   // Strict Rule: verifiedMatchCount MUST come from genuine matching data.
   // If not provided or <= 0, the row is completely removed.
@@ -169,12 +249,12 @@ export function renderFundingLeakReceiptHtml({
               FSI Digital helps businesses identify potentially relevant funding programs, understand their requirements and find the next application steps.
             </p>
             <p style="margin: 0 0 20px 0; font-size: 16px; font-weight: 700; color: #0f172a;">
-              Your Funding Match Report is $19.
+              Your ${escapeHtml(offer.productName)} is ${escapeHtml(offer.price)}.
             </p>
 
             <div style="text-align: left; margin: 24px 0;">
               <a href="${checkoutUrl}" style="background-color: #059669; color: #ffffff; padding: 14px 28px; text-decoration: none; border-radius: 8px; font-weight: 700; display: inline-block; font-size: 15px; box-shadow: 0 4px 6px -1px rgba(5,150,105,0.25);">
-                See the Funding Match Report &rarr;
+                ${escapeHtml(offer.ctaText)}
               </a>
             </div>
 
@@ -205,16 +285,25 @@ export function renderFundingLeakReceiptText({
   industry,
   verifiedMatchCount,
   checkoutUrl,
+  productOffer,
 }: {
   companyName?: string;
   province?: string;
   industry?: string;
   verifiedMatchCount?: number | null;
   checkoutUrl: string;
+  productOffer?: ProductOfferRecommendation;
 }): string {
   const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
+  const offer = productOffer || {
+    productId: 'funding-match-report' as const,
+    productName: 'Funding Match Report',
+    price: '$19',
+    priceAmount: 19,
+    ctaText: 'See the Funding Match Report →',
+  };
 
   const hasGenuineMatches = typeof verifiedMatchCount === 'number' && verifiedMatchCount > 0;
   const matchRowText = hasGenuineMatches
@@ -246,9 +335,9 @@ So we leave the number blank until there's evidence worth investigating.
 
 FSI Digital helps businesses identify potentially relevant funding programs, understand their requirements and find the next application steps.
 
-Your Funding Match Report is $19.
+Your ${offer.productName} is ${offer.price}.
 
-See the Funding Match Report →
+${offer.ctaText}
 ${checkoutUrl}
 
 Ashwani K
@@ -268,13 +357,29 @@ export async function sendFundingLeakReceiptEmail({
   loginToken,
   checkoutUrl,
   sourceCampaign = 'funding_leak_receipt',
+  productOffer,
+  leadProfile,
 }: FundingLeakReceiptInput) {
   const firstName = getFirstName(name);
   const cleanCompany = cleanCompanyName(companyName);
   const tokenParam = loginToken && loginToken !== 'N/A' ? `token=${loginToken}&` : '';
 
+  const resolvedOffer = productOffer || (leadProfile ? resolveRecommendedProduct(leadProfile) : {
+    productId: 'funding-match-report' as const,
+    productName: 'Funding Match Report',
+    price: '$19',
+    priceAmount: 19,
+    ctaText: 'See the Funding Match Report →',
+  });
+
+  const packageParam = resolvedOffer.productId === 'funding-bundle'
+    ? 'package=complete-bundle&'
+    : resolvedOffer.productId === 'funding-roadmap'
+      ? 'package=action-plan&'
+      : '';
+
   const finalCheckoutUrl = checkoutUrl ||
-    `https://www.fsidigital.ca/calculator?${tokenParam}step=6&email=${encodeURIComponent(to)}&utm_source=email&utm_medium=receipt&utm_campaign=${encodeURIComponent(sourceCampaign)}`;
+    `https://www.fsidigital.ca/calculator?${tokenParam}${packageParam}step=6&email=${encodeURIComponent(to)}&utm_source=email&utm_medium=receipt&utm_campaign=${encodeURIComponent(sourceCampaign)}`;
 
   const unsubscribeUrl = loginToken && loginToken !== 'N/A'
     ? `https://www.fsidigital.ca/subscribe/unsubscribe?token=${encodeURIComponent(loginToken)}`
@@ -306,6 +411,7 @@ export async function sendFundingLeakReceiptEmail({
     unsubscribeUrl,
     referenceId,
     dateFormatted,
+    productOffer: resolvedOffer,
   });
 
   const text = renderFundingLeakReceiptText({
@@ -314,6 +420,7 @@ export async function sendFundingLeakReceiptEmail({
     industry,
     verifiedMatchCount,
     checkoutUrl: finalCheckoutUrl,
+    productOffer: resolvedOffer,
   });
 
   return sendEmail({
