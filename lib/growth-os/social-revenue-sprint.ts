@@ -4,10 +4,10 @@ import { getLatestOperationalState, setOperationalState } from '@/lib/growth-os/
 
 export const SOCIAL_REVENUE_SPRINT_END_AT = '2026-09-25T18:29:59.000Z'
 const STATE_KEY = 'social-revenue-sprint-september-v1'
-const MIN_VARIANT_GAP_MS = 36 * 60 * 60 * 1000
+const MIN_VARIANT_GAP_MS = process.env.SOCIAL_VARIANT_GAP_MS ? Number(process.env.SOCIAL_VARIANT_GAP_MS) : (20 * 60 * 60 * 1000) // 36 * 60 * 60 * 1000
 const INITIAL_VARIANT_ID = 'sep-match-fit-v1'
 
-type ChannelId = 'linkedin' | 'facebook'
+type ChannelId = 'linkedin' | 'facebook' | 'instagram'
 
 type ChannelReceipt = {
   status: ChannelPublishResult['status']
@@ -160,7 +160,7 @@ export class SocialRevenueSprintService {
     )
     let variant = orderedVariants.find((candidate) => {
       const receipts = state.variants[candidate.id] || {}
-      return !accepted(receipts.linkedin) || !accepted(receipts.facebook)
+      return !accepted(receipts.facebook)
     })
     if (!variant && allowContinuous) {
       state.variants = {}
@@ -197,8 +197,10 @@ export class SocialRevenueSprintService {
 
     const linkedInUrl = createTrackedGrowthUrl(variant.target, actionContext('linkedin', variant))
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
-    await dispatch('linkedin', () => ChannelAdapters.postLinkedIn(`${variant.linkedin}\n${linkedInUrl}`, variant.hashtags))
+    const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
     await dispatch('facebook', () => ChannelAdapters.postFacebook(variant.facebook, facebookUrl))
+    await dispatch('instagram', () => ChannelAdapters.postInstagram(variant.facebook, instagramUrl, variant.hashtags))
+    await dispatch('linkedin', () => ChannelAdapters.postLinkedIn(`${variant.linkedin}\n${linkedInUrl}`, variant.hashtags))
 
     return {
       active: true,

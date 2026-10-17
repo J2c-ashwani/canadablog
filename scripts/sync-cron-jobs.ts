@@ -95,6 +95,13 @@ const DESIRED_JOBS: DesiredCronJob[] = [
     schedule: { hours: [0, 6, 12, 18], minutes: [15], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
     humanSchedule: 'Every 6 hours at :15',
     purpose: 'Re-processes captured PayPal intents that missed instant webhook delivery'
+  },
+  {
+    title: 'FSI - Process Social Revenue Sprint',
+    url: `${PRODUCTION_BASE_URL}/api/cron/process-social-revenue-sprint`,
+    schedule: { hours: [13], minutes: [30], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
+    humanSchedule: 'Daily at 13:30 UTC',
+    purpose: 'Autonomous daily multi-channel social posting across Facebook, Instagram, and LinkedIn'
   }
 ];
 

@@ -1,3 +1,8 @@
 {
-  "crons": []
+  "crons": [
+    {
+      "path": "/api/cron/process-social-revenue-sprint",
+      "schedule": "30 13 * * *"
+    }
+  ]
 }

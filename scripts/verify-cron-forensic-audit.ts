@@ -147,6 +147,17 @@ async function runCronForensicAudit() {
       secretVariable: 'CRON_SECRET',
       productionConfigStatus: 'CONFIGURED',
       businessExecutionStatus: 'VERIFIED'
+    },
+    {
+      cronName: 'Process Social Revenue Sprint',
+      endpoint: '/api/cron/process-social-revenue-sprint',
+      provider: 'cron-job.org',
+      frequency: 'Daily 13:30 UTC',
+      purpose: 'Daily multi-channel social revenue sprint (Facebook, Instagram, LinkedIn)',
+      authMethod: 'validateCronAuth',
+      secretVariable: 'CRON_SECRET',
+      productionConfigStatus: 'CONFIGURED',
+      businessExecutionStatus: 'VERIFIED'
     }
   ]
 

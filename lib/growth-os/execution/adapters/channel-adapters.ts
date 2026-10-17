@@ -244,6 +244,77 @@ export class ChannelAdapters {
   }
 
   /**
+   * Publish an image post with caption to connected Instagram Business / Creator Account.
+   * Meta Graph API v19.0 requires a 2-step media container creation + media_publish flow.
+   */
+  public static async postInstagram(caption: string, link: string, hashtags: string[] = []): Promise<ChannelPublishResult> {
+    const token = process.env.INSTAGRAM_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    const igAccountId = process.env.INSTAGRAM_ACCOUNT_ID?.trim() || '17841438995224317'
+    const imageUrl = process.env.INSTAGRAM_DEFAULT_IMAGE_URL?.trim() || 'https://www.fsidigital.ca/og-image.png'
+
+    if (!token || !igAccountId) {
+      return {
+        channelName: "Instagram",
+        status: "QUEUED_FOR_APPROVAL",
+        message: !token ? "Instagram access token missing." : "INSTAGRAM_ACCOUNT_ID missing.",
+      }
+    }
+
+    try {
+      const fullCaption = `${caption}\n\n🔗 ${link}\n\n${hashtags.join(' ')}`.trim()
+      
+      // Step 1: Create media container
+      const containerRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          image_url: imageUrl,
+          caption: fullCaption,
+          access_token: token,
+        }),
+      })
+
+      const containerData = await containerRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!containerRes.ok || !containerData.id) {
+        throw new Error(`Instagram container error ${containerRes.status}: ${containerData.error?.message || 'container ID missing'}`)
+      }
+
+      // Allow 2 seconds for Meta container processing
+      await new Promise((resolve) => setTimeout(resolve, 2000))
+
+      // Step 2: Publish media container
+      const publishRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media_publish`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creation_id: containerData.id,
+          access_token: token,
+        }),
+      })
+
+      const publishData = await publishRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!publishRes.ok || !publishData.id) {
+        throw new Error(`Instagram publish error ${publishRes.status}: ${publishData.error?.message || 'publish ID missing'}`)
+      }
+
+      return {
+        channelName: "Instagram",
+        status: "API_ACCEPTED",
+        externalId: publishData.id,
+        message: "Instagram accepted and published the media post via Meta Graph API.",
+      }
+    } catch (err: any) {
+      console.error(`[InstagramAdapter] Error:`, err)
+      return {
+        channelName: "Instagram",
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Instagram API error: ${err.message || String(err)}`,
+      }
+    }
+  }
+
+
+  /**
    * 4. Instagram & Facebook Direct API Adapter (Meta Graph API v19.0)
    */
   public static async queueCarousel(title: string, slideCount: number): Promise<ChannelPublishResult> {
