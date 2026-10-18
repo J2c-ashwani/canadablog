@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import {
   Linkedin,
@@ -18,6 +18,7 @@ import {
   Repeat2,
   MoreHorizontal,
   CheckCircle2,
+  AlertCircle,
   Clock,
   Eye,
   Globe2,
@@ -26,9 +27,9 @@ import {
   ShieldCheck,
   TrendingUp,
   Lock,
-  KeyRound,
-  ArrowRight,
-  Mail,
+  Copy,
+  Check,
+  ExternalLink,
 } from "lucide-react"
 
 interface PublicationItem {
@@ -40,6 +41,24 @@ interface PublicationItem {
   engagement: string
 }
 
+interface LinkedInStatusData {
+  status: {
+    connected: boolean
+    status: "ACTIVE" | "EXPIRED" | "NOT_CONFIGURED"
+    source: "dynamic_oauth" | "env_variable" | "none"
+    name?: string
+    email?: string
+    personUrn?: string
+    orgUrn?: string
+    expiresAt?: string
+    hasRefreshToken: boolean
+  }
+  callbackUrl: string
+  clientId: string
+  orgUrn: string
+  authUrl: string
+}
+
 export default function LinkedInPublisherPage() {
   // Authentication Gate State
   const [isAuthenticated, setIsAuthenticated] = useState<boolean>(false)
@@ -47,9 +66,14 @@ export default function LinkedInPublisherPage() {
   const [passwordInput, setPasswordInput] = useState<string>("")
   const [authError, setAuthError] = useState<string | null>(null)
 
+  // LinkedIn Dynamic OAuth Status
+  const [statusData, setStatusData] = useState<LinkedInStatusData | null>(null)
+  const [copiedCallback, setCopiedCallback] = useState(false)
+  const [isPublishing, setIsPublishing] = useState(false)
+
   // Content State
   const [postContent, setPostContent] = useState(
-    `🚀 Canadian SMEs can accelerate digital transformation through the Canada Digital Adoption Program.\n\nEligible businesses may receive funding and advisory support to modernise operations and improve competitiveness.\n\nLearn more about eligibility and available funding opportunities.\n\n#CanadaBusiness #GovernmentFunding #DigitalTransformation`
+    `🚀 Canadian SMEs can accelerate digital transformation through the Canada Digital Adoption Program.\n\nEligible businesses may receive funding and advisory support to modernise operations and improve competitiveness.\n\nLearn more about eligibility and available funding opportunities.\n\n🔗 https://www.fsidigital.ca/calculator\n\n#CanadaBusiness #GovernmentFunding #DigitalTransformation`
   )
 
   const [activeStatusMessage, setActiveStatusMessage] = useState<string | null>(null)
@@ -58,29 +82,29 @@ export default function LinkedInPublisherPage() {
   const [publications, setPublications] = useState<PublicationItem[]>([
     {
       id: "pub_1",
-      date: "July 24, 2026",
-      title: "Digital Adoption Program",
+      date: "Oct 15, 2026",
+      title: "Funding Match Fit Diagnostic",
       status: "Published",
       impressions: "1,245 impressions",
       engagement: "8.4% engagement",
     },
-    {
-      id: "pub_2",
-      date: "July 26, 2026",
-      title: "AgriFood Funding Intake",
-      status: "Scheduled",
-      impressions: "—",
-      engagement: "—",
-    },
-    {
-      id: "pub_3",
-      date: "July 25, 2026",
-      title: "AI Commercialization Round",
-      status: "Draft",
-      impressions: "—",
-      engagement: "—",
-    },
   ])
+
+  const loadStatus = async () => {
+    try {
+      const res = await fetch('/api/admin/auth/linkedin/status')
+      if (res.ok) {
+        const data = await res.json()
+        setStatusData(data)
+      }
+    } catch (err) {
+      console.error('Error fetching LinkedIn status:', err)
+    }
+  }
+
+  useEffect(() => {
+    loadStatus()
+  }, [isAuthenticated])
 
   const handleLoginSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -91,8 +115,8 @@ export default function LinkedInPublisherPage() {
         body: JSON.stringify({ key: passwordInput.trim() }),
       })
       if (response.ok) {
-      setIsAuthenticated(true)
-      setAuthError(null)
+        setIsAuthenticated(true)
+        setAuthError(null)
       } else {
         setAuthError("Incorrect password or access code. Please try again.")
       }
@@ -101,37 +125,64 @@ export default function LinkedInPublisherPage() {
     }
   }
 
+  const copyRedirectUri = () => {
+    const uri = statusData?.callbackUrl || 'https://www.fsidigital.ca/api/admin/auth/linkedin/callback'
+    navigator.clipboard.writeText(uri)
+    setCopiedCallback(true)
+    setTimeout(() => setCopiedCallback(false), 3000)
+    showNotification("📋 Copied LinkedIn Redirect URI to clipboard!")
+  }
+
   // Live Metrics
   const characterCount = postContent.length
   const hashtagCount = (postContent.match(/#[a-zA-Z0-9_]+/g) || []).length
   const estimatedReadTimeSeconds = Math.max(5, Math.ceil(postContent.split(/\s+/).filter(Boolean).length / 3.5))
 
-  // Extract Title from Post Content
   const extractTitle = (text: string) => {
     const firstLine = text.split("\n").filter(Boolean)[0] || "Canada Funding Update"
     return firstLine.replace(/^[🚀🍁\s]+/, "").slice(0, 32)
   }
 
-  // Actions
   const handleGeneratePost = () => {
     setPostContent(
-      `🍁 Urgent Funding Alert for Canadian Business Owners:\n\nThe Canada Digital Adoption Program has officially expanded digital transformation intakes for 2026.\n\nKey Highlights:\n• Up to $150,000 non-repayable tech funding\n• Comprehensive digital roadmap advisory support\n• Applicable for software, automation & infrastructure\n\nVerify your business eligibility and stacking options today.\n\n#CanadaBusiness #DigitalTransformation #GovernmentFunding #SMEGrowth`
+      `🍁 Urgent Funding Alert for Canadian Business Owners:\n\nThe Canada Digital Adoption Program has officially expanded digital transformation intakes for 2026.\n\nKey Highlights:\n• Up to $150,000 non-repayable tech funding\n• Comprehensive digital roadmap advisory support\n• Applicable for software, automation & infrastructure\n\nVerify your business eligibility and stacking options today.\n\n🔗 https://www.fsidigital.ca/calculator\n\n#CanadaBusiness #DigitalTransformation #GovernmentFunding #SMEGrowth`
     )
     showNotification("✨ Generated fresh educational LinkedIn post!")
   }
 
-  const handlePublish = () => {
-    const newTitle = extractTitle(postContent)
-    const newPub: PublicationItem = {
-      id: `pub_${Date.now()}`,
-      date: "Just now",
-      title: newTitle,
-      status: "Published",
-      impressions: "0 impressions",
-      engagement: "0.0% engagement",
+  const handlePublish = async () => {
+    setIsPublishing(true)
+    try {
+      const hashtags = (postContent.match(/#[a-zA-Z0-9_]+/g) || ['#CanadaBusiness', '#FundingStrategy'])
+      const cleanText = postContent.replace(/#[a-zA-Z0-9_]+/g, '').trim()
+
+      const res = await fetch('/api/admin/auth/linkedin/publish', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ text: cleanText, hashtags }),
+      })
+
+      const data = await res.json()
+      if (res.ok && data.success) {
+        const newTitle = extractTitle(postContent)
+        const newPub: PublicationItem = {
+          id: `pub_${Date.now()}`,
+          date: "Just now",
+          title: newTitle,
+          status: "Published",
+          impressions: "Live",
+          engagement: "New",
+        }
+        setPublications((prev) => [newPub, ...prev])
+        showNotification("🎉 Successfully published live post to LinkedIn!")
+      } else {
+        showNotification(`⚠️ Publish error: ${data.result?.message || data.error || 'Failed to post'}`)
+      }
+    } catch (err: any) {
+      showNotification(`💥 Network error: ${err.message}`)
+    } finally {
+      setIsPublishing(false)
     }
-    setPublications((prev) => [newPub, ...prev])
-    showNotification("🚀 Successfully published post to FSI Digital LinkedIn Company Page!")
   }
 
   const handleSchedule = () => {
@@ -164,7 +215,7 @@ export default function LinkedInPublisherPage() {
 
   const showNotification = (msg: string) => {
     setActiveStatusMessage(msg)
-    setTimeout(() => setActiveStatusMessage(null), 4000)
+    setTimeout(() => setActiveStatusMessage(null), 5000)
   }
 
   // ---------------------------------------------------
@@ -198,46 +249,45 @@ export default function LinkedInPublisherPage() {
                   placeholder="reviewer@fsidigital.ca"
                   className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                 />
-                <Mail className="w-4 h-4 text-slate-500 absolute right-3.5 top-3.5" />
               </div>
             </div>
 
             <div>
               <label className="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1.5">
-                Password / Access Code
+                Security Password
               </label>
               <div className="relative">
                 <input
                   type="password"
                   value={passwordInput}
                   onChange={(e) => setPasswordInput(e.target.value)}
-                  placeholder="Enter password..."
+                  placeholder="••••••••••••"
                   className="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white placeholder-slate-500 focus:outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all"
                 />
-                <KeyRound className="w-4 h-4 text-slate-500 absolute right-3.5 top-3.5" />
               </div>
-              {authError && <p className="text-xs text-rose-400 mt-2 font-medium">{authError}</p>}
             </div>
+
+            {authError && (
+              <p className="text-xs text-rose-400 bg-rose-950/40 border border-rose-800/40 p-3 rounded-lg">
+                {authError}
+              </p>
+            )}
 
             <button
               type="submit"
-              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-xs py-3 px-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2"
+              className="w-full bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm py-3 px-4 rounded-xl shadow-lg shadow-blue-900/30 transition-all"
             >
-              Sign In to LinkedIn Publisher <ArrowRight className="w-4 h-4" />
+              Sign In to Publisher
             </button>
           </form>
-
-          <div className="pt-4 border-t border-slate-700/60 text-center">
-            <span className="text-[11px] text-slate-500">FSI Digital Admin OS • Reviewer Test Portal</span>
-          </div>
         </div>
       </div>
     )
   }
 
-  // ---------------------------------------------------
-  // MAIN DASHBOARD (WHEN AUTHENTICATED)
-  // ---------------------------------------------------
+  const isConnected = statusData?.status.connected ?? false
+  const callbackUrl = statusData?.callbackUrl || "https://www.fsidigital.ca/api/admin/auth/linkedin/callback"
+
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900 flex font-sans antialiased">
       {/* SIDEBAR */}
@@ -338,30 +388,122 @@ export default function LinkedInPublisherPage() {
               <div className="flex items-center gap-2 text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">
                 <Building2 className="w-3.5 h-3.5" /> FSI Digital Internal Admin
               </div>
-              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">LinkedIn Publisher</h1>
+              <h1 className="text-2xl md:text-3xl font-bold text-slate-900 tracking-tight">LinkedIn Publisher & OAuth Gate</h1>
               <p className="text-sm text-slate-500 mt-1">
-                Create, review and publish educational LinkedIn posts for the FSI Digital Company Page.
+                Autonomous daily multi-channel posting, live previews, and automated OAuth token lifecycle management.
               </p>
             </div>
 
             <div className="bg-white border border-slate-200 rounded-xl p-4 shadow-sm flex items-center gap-4">
               <div className="flex items-center gap-2">
-                <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span className="text-xs font-bold text-slate-800">LinkedIn Connected</span>
+                <span className={`w-2.5 h-2.5 rounded-full ${isConnected ? 'bg-emerald-500 animate-pulse' : 'bg-rose-500'}`}></span>
+                <span className="text-xs font-bold text-slate-800">
+                  {isConnected ? 'LinkedIn Connected' : 'LinkedIn Expired / Unlinked'}
+                </span>
               </div>
 
               <div className="h-6 w-[1px] bg-slate-200"></div>
 
               <div className="text-xs">
                 <span className="text-slate-400 block text-[10px] uppercase font-bold">Organisation</span>
-                <span className="font-semibold text-slate-800">FSI Digital</span>
+                <span className="font-semibold text-slate-800">{statusData?.orgUrn || 'FSI Digital'}</span>
               </div>
 
               <div className="h-6 w-[1px] bg-slate-200"></div>
 
               <div className="text-xs">
-                <span className="text-slate-400 block text-[10px] uppercase font-bold">Last Synced</span>
-                <span className="font-medium text-slate-600">Today 10:45 AM</span>
+                <span className="text-slate-400 block text-[10px] uppercase font-bold">Token Source</span>
+                <span className="font-medium text-slate-600">{statusData?.status.source || 'env'}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* OAUTH CONNECTION & AUTO-RENEWAL BANNER */}
+          <div className={`p-6 rounded-2xl border shadow-sm ${isConnected ? 'bg-emerald-50/70 border-emerald-200' : 'bg-gradient-to-r from-amber-50 to-orange-50 border-amber-200'}`}>
+            <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+              <div className="space-y-2">
+                <div className="flex items-center gap-2">
+                  {isConnected ? (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-emerald-100 text-emerald-800 border border-emerald-300">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" /> OAuth Active & Self-Healing
+                    </span>
+                  ) : (
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold bg-amber-100 text-amber-900 border border-amber-300">
+                      <AlertCircle className="w-3.5 h-3.5 text-amber-600" /> Action Required: Authorize LinkedIn
+                    </span>
+                  )}
+                  {statusData?.status.hasRefreshToken && (
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-blue-100 text-blue-800">
+                      365-Day Auto-Refresh
+                    </span>
+                  )}
+                </div>
+
+                <h3 className="text-lg font-bold text-slate-900">
+                  {isConnected
+                    ? `Linked Account: ${statusData?.status.name || 'FSI Digital Team'} (${statusData?.status.email || 'Verified'})`
+                    : 'Connect LinkedIn via 1-Click OAuth Flow'}
+                </h3>
+
+                <p className="text-xs text-slate-600 max-w-2xl leading-relaxed">
+                  {isConnected
+                    ? `Your account is authenticated with posting rights. Token expires on ${statusData?.status.expiresAt ? new Date(statusData.status.expiresAt).toLocaleDateString() : '60 days'}. Growth OS will automatically refresh your credentials before expiry.`
+                    : 'LinkedIn tokens expire every 60 days. Follow the two quick steps below to grant official OAuth permissions with automated renewal:'}
+                </p>
+
+                {!isConnected && (
+                  <div className="bg-white/90 border border-amber-200 rounded-xl p-4 mt-3 space-y-3">
+                    <div className="text-xs font-semibold text-slate-800 flex items-center gap-1.5">
+                      <span className="w-5 h-5 rounded-full bg-blue-600 text-white flex items-center justify-center text-[10px] font-bold">1</span>
+                      Ensure Redirect URI is registered in LinkedIn Developer Portal:
+                    </div>
+                    <div className="flex items-center gap-2">
+                      <input
+                        type="text"
+                        readOnly
+                        value={callbackUrl}
+                        className="flex-1 bg-slate-50 border border-slate-300 rounded-lg px-3 py-1.5 text-xs font-mono text-slate-700 select-all"
+                      />
+                      <button
+                        onClick={copyRedirectUri}
+                        className="bg-slate-200 hover:bg-slate-300 text-slate-800 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1.5 transition-colors"
+                      >
+                        {copiedCallback ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
+                        {copiedCallback ? 'Copied!' : 'Copy URI'}
+                      </button>
+                      <a
+                        href="https://www.linkedin.com/developers/apps/865h55fzfczxtm/auth"
+                        target="_blank"
+                        rel="noreferrer"
+                        className="bg-blue-50 text-blue-700 border border-blue-200 hover:bg-blue-100 px-3 py-1.5 rounded-lg text-xs font-semibold flex items-center gap-1 transition-colors"
+                      >
+                        Open App Settings <ExternalLink className="w-3 h-3" />
+                      </a>
+                    </div>
+                    <p className="text-[11px] text-slate-500">
+                      Under <strong>Auth</strong> &rarr; <strong>Authorized redirect URLs for your app</strong>, click ➕ and paste the URI above.
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center gap-3">
+                <a
+                  href="/api/admin/auth/linkedin"
+                  className="bg-[#0077b5] hover:bg-[#006097] text-white font-bold text-xs py-3 px-5 rounded-xl shadow-md flex items-center gap-2 transition-all hover:scale-105"
+                >
+                  <Linkedin className="w-4 h-4 fill-white" />
+                  {isConnected ? 'Re-authorize Account' : 'Step 2: Connect LinkedIn Account'}
+                </a>
+
+                <a
+                  href="/api/admin/auth/linkedin/test"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="bg-white border border-slate-300 hover:bg-slate-100 text-slate-700 font-semibold text-xs py-3 px-4 rounded-xl shadow-xs flex items-center gap-1.5 transition-colors"
+                >
+                  <Sparkles className="w-3.5 h-3.5 text-blue-600" /> Test Dispatch Probe
+                </a>
               </div>
             </div>
           </div>
@@ -556,9 +698,10 @@ export default function LinkedInPublisherPage() {
                 <div className="space-y-2 mt-6">
                   <button
                     onClick={handlePublish}
-                    className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold text-xs py-3 px-4 rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2"
+                    disabled={isPublishing}
+                    className="w-full bg-blue-600 hover:bg-blue-700 disabled:opacity-50 text-white font-semibold text-xs py-3 px-4 rounded-lg shadow-sm transition-colors flex items-center justify-center gap-2"
                   >
-                    <Linkedin className="w-4 h-4" /> Publish to LinkedIn
+                    <Linkedin className="w-4 h-4" /> {isPublishing ? 'Publishing Live...' : 'Publish to LinkedIn'}
                   </button>
 
                   <button

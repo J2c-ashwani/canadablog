@@ -109,14 +109,20 @@ export class ChannelAdapters {
     const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()
     const linkedInUrn = process.env.LINKEDIN_PERSON_URN?.trim() || process.env.LINKEDIN_ORG_URN?.trim()
 
-    if (!token || !linkedInUrn) {
+    // Dynamically resolve auto-refreshing OAuth token if connected
+    const { getValidLinkedInToken } = await import('@/lib/growth-os/auth/linkedin-token').catch(() => ({ getValidLinkedInToken: async () => null }))
+    const dynamicAuth = await getValidLinkedInToken().catch(() => null)
+    const activeToken = dynamicAuth?.token || token
+    const activeUrn = dynamicAuth?.authorUrn || linkedInUrn
+
+    if (!activeToken || !activeUrn) {
       console.warn(`[LinkedInAdapter] LINKEDIN_ACCESS_TOKEN or LINKEDIN_PERSON_URN missing. Queuing LinkedIn draft safely into Exception Queue.`)
       return {
         channelName: "LinkedIn",
         status: "QUEUED_FOR_APPROVAL",
-        message: !token
-          ? "LINKEDIN_ACCESS_TOKEN missing. Queued in /admin/exceptions."
-          : "LINKEDIN_PERSON_URN missing in Vercel env vars. Queued in /admin/exceptions.",
+        message: !activeToken
+          ? "LINKEDIN_ACCESS_TOKEN missing or expired. Connect LinkedIn in /admin/linkedin."
+          : "LINKEDIN_PERSON_URN / LINKEDIN_ORG_URN missing. Queued in /admin/exceptions.",
       }
     }
 
@@ -127,7 +133,7 @@ export class ChannelAdapters {
       const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1)
       const versionDate = `${prevMonth.getFullYear()}${String(prevMonth.getMonth() + 1).padStart(2, '0')}`
       const postBody = {
-        author: linkedInUrn,
+        author: activeUrn,
         commentary: `${text}\n\n${hashtags.join(" ")}`,
         visibility: "PUBLIC",
         distribution: {
@@ -138,12 +144,12 @@ export class ChannelAdapters {
         lifecycleState: "PUBLISHED",
       }
 
-      console.log(`[LinkedInAdapter] Posting via /rest/posts API (version ${versionDate}) to ${linkedInUrn}...`)
+      console.log(`[LinkedInAdapter] Posting via /rest/posts API (version ${versionDate}) to ${activeUrn}...`)
 
       const response = await fetchWithRetry("https://api.linkedin.com/rest/posts", {
         method: "POST",
         headers: {
-          "Authorization": `Bearer ${token}`,
+          "Authorization": `Bearer ${activeToken}`,
           "Content-Type": "application/json",
           "X-Restli-Protocol-Version": "2.0.0",
           "LinkedIn-Version": versionDate,
