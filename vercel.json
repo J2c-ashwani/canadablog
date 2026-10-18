@@ -3,6 +3,34 @@
     {
       "path": "/api/cron/process-social-revenue-sprint",
       "schedule": "30 13 * * *"
+    },
+    {
+      "path": "/api/cron/process-cart-recovery",
+      "schedule": "5 * * * *"
+    },
+    {
+      "path": "/api/cron/process-revenue-sprint",
+      "schedule": "35 */2 * * *"
+    },
+    {
+      "path": "/api/cron/process-newsletter",
+      "schedule": "10 15 * * 1-5"
+    },
+    {
+      "path": "/api/cron/authority-pipeline",
+      "schedule": "40 15 * * 1-5"
+    },
+    {
+      "path": "/api/cron/process-product-delivery-recovery",
+      "schedule": "10 17 * * *"
+    },
+    {
+      "path": "/api/cron/process-membership-briefings",
+      "schedule": "40 13,17 * * 1-5"
+    },
+    {
+      "path": "/api/cron/process-mca-priority-recovery",
+      "schedule": "30 16 * * *"
     }
   ]
 }

@@ -192,9 +192,21 @@ export class ChannelAdapters {
   }
 
   /**
-   * Publish a truthful text/link post to the connected Facebook Page.
+   * Helper to ensure media paths are resolved to absolute HTTPS URLs
+   */
+  private static toPublicHttpsUrl(pathOrUrl: string): string {
+    if (pathOrUrl.startsWith('http://') || pathOrUrl.startsWith('https://')) {
+      return pathOrUrl
+    }
+    const base = process.env.NEXT_PUBLIC_APP_URL?.trim() || 'https://www.fsidigital.ca'
+    return `${base.replace(/\/$/, '')}/${pathOrUrl.replace(/^\//, '')}`
+  }
+
+  /**
+   * Publish a truthful post to the connected Facebook Page.
    */
   public static async postFacebook(message: string, link: string): Promise<ChannelPublishResult> {
+
     let token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
     let pageId = process.env.FACEBOOK_PAGE_ID?.trim() || '1077759455417325'
     if (pageId === '61573363890397') {
@@ -250,13 +262,150 @@ export class ChannelAdapters {
   }
 
   /**
+   * Publish an informational Multi-Photo post (Swipeable Gallery) to Facebook Page.
+   */
+  public static async postFacebookMultiPhoto(imageUrls: string[], message: string, link?: string): Promise<ChannelPublishResult> {
+    let token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    let pageId = process.env.FACEBOOK_PAGE_ID?.trim() || '1077759455417325'
+    if (pageId === '61573363890397') pageId = '1077759455417325'
+
+    if (!token) {
+      return {
+        channelName: "Facebook",
+        status: "QUEUED_FOR_APPROVAL",
+        message: "Facebook Page access token is missing.",
+      }
+    }
+
+    try {
+      // Resolve page token if needed
+      try {
+        const pageInfoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}?fields=access_token&access_token=${encodeURIComponent(token)}`, { method: "GET" })
+        if (pageInfoRes.ok) {
+          const pageInfo = await pageInfoRes.json().catch(() => ({})) as { access_token?: string }
+          if (pageInfo.access_token) token = pageInfo.access_token
+        }
+      } catch {
+        // Proceed with configured token
+      }
+
+      console.log(`[FacebookAdapter] Uploading ${imageUrls.length} photos as unpublished album items...`)
+      const photoIds: string[] = []
+
+      for (const imgUrl of imageUrls) {
+        const absUrl = this.toPublicHttpsUrl(imgUrl)
+        const photoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/photos`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            url: absUrl,
+            published: false,
+            access_token: token,
+          }),
+        })
+        const photoData = await photoRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+        if (photoRes.ok && photoData.id) {
+          photoIds.push(photoData.id)
+        } else {
+          console.warn(`[FacebookAdapter] Failed to upload slide photo ${absUrl}:`, photoData.error?.message)
+        }
+      }
+
+      if (photoIds.length === 0) {
+        throw new Error("Failed to upload any photo slides to Facebook.")
+      }
+
+      const fullMessage = link ? `${message}\n\n🔗 ${link}` : message
+      const response = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/feed`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          message: fullMessage,
+          attached_media: photoIds.map((id) => ({ media_fbid: id })),
+          access_token: token,
+        }),
+      })
+
+      const payload = await response.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!response.ok || !payload.id) {
+        throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider post ID missing'}`)
+      }
+
+      return {
+        channelName: "Facebook",
+        status: "API_ACCEPTED",
+        externalId: payload.id,
+        message: "Facebook accepted the Page post and returned a provider post ID.",
+      }
+    } catch (err: any) {
+      console.error(`[FacebookAdapter] MultiPhoto Error:`, err)
+      return {
+        channelName: "Facebook",
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Facebook API error: ${err.message || String(err)}`,
+      }
+    }
+  }
+
+  /**
+   * Publish a Vertical Video Reel to Facebook Page.
+   */
+  public static async postFacebookReel(videoUrl: string, title: string, description: string): Promise<ChannelPublishResult> {
+    let token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    let pageId = process.env.FACEBOOK_PAGE_ID?.trim() || '1077759455417325'
+    if (pageId === '61573363890397') pageId = '1077759455417325'
+
+    if (!token) {
+      return {
+        channelName: "Facebook",
+        status: "QUEUED_FOR_APPROVAL",
+        message: "Facebook Page access token is missing.",
+      }
+    }
+
+    try {
+      const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
+      console.log(`[FacebookAdapter] Publishing Reel video from ${absVideoUrl}...`)
+      const response = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          file_url: absVideoUrl,
+          title,
+          description,
+          access_token: token,
+        }),
+      })
+
+      const payload = await response.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!response.ok || !payload.id) {
+        throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider post ID missing'}`)
+      }
+
+      return {
+        channelName: "Facebook",
+        status: "API_ACCEPTED",
+        externalId: payload.id,
+        message: "Facebook accepted the Page post and returned a provider post ID.",
+      }
+    } catch (err: any) {
+      console.error(`[FacebookAdapter] Reel Error:`, err)
+      return {
+        channelName: "Facebook",
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Facebook Reel API error: ${err.message || String(err)}`,
+      }
+    }
+  }
+
+  /**
    * Publish an image post with caption to connected Instagram Business / Creator Account.
    * Meta Graph API v19.0 requires a 2-step media container creation + media_publish flow.
    */
-  public static async postInstagram(caption: string, link: string, hashtags: string[] = []): Promise<ChannelPublishResult> {
+  public static async postInstagram(caption: string, link: string, hashtags: string[] = [], customImageUrl?: string): Promise<ChannelPublishResult> {
     const token = process.env.INSTAGRAM_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
     const igAccountId = process.env.INSTAGRAM_ACCOUNT_ID?.trim() || '17841438995224317'
-    const imageUrl = process.env.INSTAGRAM_DEFAULT_IMAGE_URL?.trim() || 'https://www.fsidigital.ca/og-image.png'
+    const imageUrl = this.toPublicHttpsUrl(customImageUrl || process.env.INSTAGRAM_DEFAULT_IMAGE_URL?.trim() || 'https://www.fsidigital.ca/og-image.png')
 
     if (!token || !igAccountId) {
       return {
@@ -315,6 +464,192 @@ export class ChannelAdapters {
         channelName: "Instagram",
         status: "QUEUED_FOR_APPROVAL",
         message: `Instagram API error: ${err.message || String(err)}`,
+      }
+    }
+  }
+
+  /**
+   * Publish a Multi-Slide Carousel to Instagram Business Account.
+   * Creates child containers with is_carousel_item: true, then wraps into CAROUSEL container and publishes.
+   */
+  public static async postInstagramCarousel(imageUrls: string[], caption: string, hashtags: string[] = []): Promise<ChannelPublishResult> {
+    const token = process.env.INSTAGRAM_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    const igAccountId = process.env.INSTAGRAM_ACCOUNT_ID?.trim() || '17841438995224317'
+
+    if (!token || !igAccountId) {
+      return {
+        channelName: "Instagram",
+        status: "QUEUED_FOR_APPROVAL",
+        message: !token ? "Instagram access token missing." : "INSTAGRAM_ACCOUNT_ID missing.",
+      }
+    }
+
+    try {
+      console.log(`[InstagramAdapter] Creating carousel container for ${imageUrls.length} slides on IG Account ${igAccountId}...`)
+      const childItemIds: string[] = []
+
+      // Step 1: Create each carousel child item (up to 10 slides max for Instagram)
+      const maxSlides = imageUrls.slice(0, 10)
+      for (const imgUrl of maxSlides) {
+        const absUrl = this.toPublicHttpsUrl(imgUrl)
+        const childRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            image_url: absUrl,
+            is_carousel_item: true,
+            access_token: token,
+          }),
+        })
+
+        const childData = await childRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+        if (childRes.ok && childData.id) {
+          childItemIds.push(childData.id)
+        } else {
+          console.warn(`[InstagramAdapter] Failed slide item ${absUrl}:`, childData.error?.message)
+        }
+      }
+
+      if (childItemIds.length < 2) {
+        throw new Error(`Instagram Carousel requires at least 2 valid slide images. Uploaded: ${childItemIds.length}`)
+      }
+
+      // Step 2: Create parent CAROUSEL container
+      const fullCaption = `${caption}\n\n${hashtags.join(' ')}`.trim()
+      const carouselRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          media_type: "CAROUSEL",
+          children: childItemIds,
+          caption: fullCaption,
+          access_token: token,
+        }),
+      })
+
+      const carouselData = await carouselRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!carouselRes.ok || !carouselData.id) {
+        throw new Error(`Instagram carousel container error: ${carouselData.error?.message || 'container ID missing'}`)
+      }
+
+      // Wait 3 seconds for Meta container processing
+      await new Promise((resolve) => setTimeout(resolve, 3000))
+
+      // Step 3: Publish Carousel
+      const publishRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media_publish`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creation_id: carouselData.id,
+          access_token: token,
+        }),
+      })
+
+      const publishData = await publishRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!publishRes.ok || !publishData.id) {
+        throw new Error(`Instagram carousel publish error: ${publishData.error?.message || 'publish ID missing'}`)
+      }
+
+      return {
+        channelName: "Instagram",
+        status: "API_ACCEPTED",
+        externalId: publishData.id,
+        message: "Instagram accepted and published the carousel post via Meta Graph API.",
+      }
+    } catch (err: any) {
+      console.error(`[InstagramAdapter] Carousel Error:`, err)
+      return {
+        channelName: "Instagram",
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Instagram Carousel API error: ${err.message || String(err)}`,
+      }
+    }
+  }
+
+  /**
+   * Publish a Vertical Video Reel to Instagram Business Account.
+   */
+  public static async postInstagramReel(videoUrl: string, caption: string, hashtags: string[] = []): Promise<ChannelPublishResult> {
+    const token = process.env.INSTAGRAM_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim()
+    const igAccountId = process.env.INSTAGRAM_ACCOUNT_ID?.trim() || '17841438995224317'
+
+    if (!token || !igAccountId) {
+      return {
+        channelName: "Instagram",
+        status: "QUEUED_FOR_APPROVAL",
+        message: !token ? "Instagram access token missing." : "INSTAGRAM_ACCOUNT_ID missing.",
+      }
+    }
+
+    try {
+      const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
+      const fullCaption = `${caption}\n\n${hashtags.join(' ')}`.trim()
+      console.log(`[InstagramAdapter] Creating Reel container from ${absVideoUrl} on IG ${igAccountId}...`)
+
+      // Step 1: Create REELS media container
+      const containerRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          media_type: "REELS",
+          video_url: absVideoUrl,
+          caption: fullCaption,
+          share_to_feed: true,
+          access_token: token,
+        }),
+      })
+
+      const containerData = await containerRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!containerRes.ok || !containerData.id) {
+        throw new Error(`Instagram Reel container error: ${containerData.error?.message || 'container ID missing'}`)
+      }
+
+      // Step 2: Poll container status until FINISHED (up to 45 seconds)
+      const containerId = containerData.id
+      let ready = false
+      for (let attempt = 0; attempt < 15; attempt++) {
+        await new Promise((resolve) => setTimeout(resolve, 3000))
+        const statusRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(containerId)}?fields=status_code&access_token=${encodeURIComponent(token)}`, { method: "GET" })
+        const statusData = await statusRes.json().catch(() => ({})) as { status_code?: string }
+        if (statusData.status_code === 'FINISHED') {
+          ready = true
+          break
+        } else if (statusData.status_code === 'ERROR') {
+          throw new Error("Instagram Reel processing encountered an error in Meta Graph API.")
+        }
+      }
+
+      if (!ready) {
+        console.warn(`[InstagramAdapter] Reel processing took longer than 45s. Proceeding to publish attempt...`)
+      }
+
+      // Step 3: Publish container
+      const publishRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media_publish`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          creation_id: containerId,
+          access_token: token,
+        }),
+      })
+
+      const publishData = await publishRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+      if (!publishRes.ok || !publishData.id) {
+        throw new Error(`Instagram Reel publish error: ${publishData.error?.message || 'publish ID missing'}`)
+      }
+
+      return {
+        channelName: "Instagram",
+        status: "API_ACCEPTED",
+        externalId: publishData.id,
+        message: "Instagram accepted and published the Reel via Meta Graph API.",
+      }
+    } catch (err: any) {
+      console.error(`[InstagramAdapter] Reel Error:`, err)
+      return {
+        channelName: "Instagram",
+        status: "QUEUED_FOR_APPROVAL",
+        message: `Instagram Reel API error: ${err.message || String(err)}`,
       }
     }
   }

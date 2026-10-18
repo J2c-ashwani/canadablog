@@ -198,9 +198,58 @@ export class SocialRevenueSprintService {
     const linkedInUrl = createTrackedGrowthUrl(variant.target, actionContext('linkedin', variant))
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
-    await dispatch('facebook', () => ChannelAdapters.postFacebook(variant.facebook, facebookUrl))
-    await dispatch('instagram', () => ChannelAdapters.postInstagram(variant.facebook, instagramUrl, variant.hashtags))
-    await dispatch('linkedin', () => ChannelAdapters.postLinkedIn(`${variant.linkedin}\n${linkedInUrl}`, variant.hashtags))
+
+    // Dynamically pair with high-retention informational carousels, vertical reels, and infographics
+    const { INFORMATIONAL_SOCIAL_LIBRARY } = await import('@/lib/growth-os/distribution/informational-social-library')
+    const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
+      'sep-product-ladder-v1': 'post-canada-grants',
+      'sep-match-fit-v1': 'post-grant-checklist',
+      'sep-action-plan-v1': 'post-stat-shock',
+      'sep-toolkit-v1': 'post-sbir-howto',
+      'sep-membership-radar-v1': 'post-women-grants',
+      'sep-bundle-stacking-v1': 'post-reel-digital-adoption',
+      'sep-match-costs-v1': 'post-reel-sred-tax-credits',
+      'sep-action-documents-v1': 'post-grant-checklist',
+      'sep-toolkit-budget-v1': 'post-reel-women-grants',
+      'sep-membership-changes-v1': 'post-reel-cleantech',
+      'sep-choose-next-step-v1': 'post-infographic-sred-vs-cdap',
+    }
+    const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
+    const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)
+
+    // 1. Facebook Dispatch (Multi-Photo Album, Vertical Reel, or Photo Post)
+    await dispatch('facebook', async () => {
+      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+        return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, infoPost.captions.facebook, facebookUrl)
+      }
+      if (infoPost?.format === 'REEL' && infoPost.media.videoUrl) {
+        return ChannelAdapters.postFacebookReel(infoPost.media.videoUrl, infoPost.title, `${infoPost.captions.facebook}\n\n🔗 ${facebookUrl}`)
+      }
+      if (infoPost?.media.singleImageUrl) {
+        return ChannelAdapters.postFacebookMultiPhoto([infoPost.media.singleImageUrl], infoPost.captions.facebook, facebookUrl)
+      }
+      return ChannelAdapters.postFacebook(variant.facebook, facebookUrl)
+    })
+
+    // 2. Instagram Dispatch (Multi-Slide Swipeable Carousel, Vertical 9:16 Reel, or Single Infographic)
+    await dispatch('instagram', async () => {
+      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+        return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, variant.hashtags)
+      }
+      if (infoPost?.format === 'REEL' && infoPost.media.videoUrl) {
+        return ChannelAdapters.postInstagramReel(infoPost.media.videoUrl, infoPost.captions.instagram, variant.hashtags)
+      }
+      if (infoPost?.media.singleImageUrl) {
+        return ChannelAdapters.postInstagram(infoPost.captions.instagram, instagramUrl, variant.hashtags, infoPost.media.singleImageUrl)
+      }
+      return ChannelAdapters.postInstagram(variant.facebook, instagramUrl, variant.hashtags)
+    })
+
+    // 3. LinkedIn Dispatch (In-depth Value-First Executive Commentary + Link)
+    await dispatch('linkedin', async () => {
+      const commentary = infoPost ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}` : `${variant.linkedin}\n${linkedInUrl}`
+      return ChannelAdapters.postLinkedIn(commentary, variant.hashtags)
+    })
 
     return {
       active: true,
