@@ -511,6 +511,48 @@ https://fsidigital.ca/calculator`,
     targetUrl: 'https://www.fsidigital.ca/calculator',
   },
   {
+    id: 'post-reel-irap-innovation',
+    title: 'NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable',
+    format: 'REEL',
+    hook: 'NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable',
+    captions: {
+      instagram: `🇨🇦 NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable
+
+The National Research Council's IRAP program is Canada's premier funding stream for technology companies.
+
+Key features:
+• Up to $500,000 non-repayable cash funding
+• Zero equity dilution for founders
+• Covers up to 80% of internal developer wages
+• Dedicated Industrial Technology Advisor (ITA) guidance
+• Legally stackable with SR&ED tax credits
+
+Watch the breakdown above 👆
+🔗 Check your company's eligibility in 60 seconds: fsidigital.ca/calculator (link in bio)!`,
+      facebook: `🇨🇦 NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable
+
+The National Research Council's IRAP program is Canada's premier funding stream for tech businesses.
+
+Watch the breakdown above to see how to qualify, how to get paired with an Industrial Technology Advisor (ITA), and how to stack IRAP with SR&ED.
+
+Check your company's grant match:
+👉 https://fsidigital.ca/calculator`,
+      linkedin: `The National Research Council's Industrial Research Assistance Program (NRC IRAP) represents Canada's most powerful non-dilutive innovation vehicle, allocating hundreds of millions annually to high-potential Canadian SMEs.
+
+Beyond covering up to 80% of technical salaries and 50% of subcontractor fees, IRAP provides each selected company with a dedicated Industrial Technology Advisor (ITA) to guide commercial strategy.
+
+Watch the video breakdown above.
+
+Check your company's IRAP readiness:
+https://fsidigital.ca/calculator`,
+    },
+    media: {
+      videoUrl: '/videos/reels/nrc-irap-innovation-grants.mp4',
+    },
+    hashtags: ['#NRCIRAP', '#IRAP', '#InnovationGrants', '#CanadianTech', '#TechFounders', '#NonDilutiveFunding'],
+    targetUrl: 'https://www.fsidigital.ca/calculator',
+  },
+  {
     id: 'post-infographic-sred-vs-cdap',
     title: 'SR&ED vs CDAP: Which Funding Path is Right for You?',
     format: 'INFOGRAPHIC',
