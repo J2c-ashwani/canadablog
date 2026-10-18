@@ -17,8 +17,8 @@ export async function GET(request: NextRequest) {
   const defaultRedirect = `${proto}://${host}/api/admin/auth/linkedin/callback`;
   const redirectUri = searchParams.get('redirect_uri') || defaultRedirect;
 
-  // Scopes: OpenID for identity + w_member_social for personal posting + optional w_organization_social
-  const requestedScope = searchParams.get('scope') || 'openid profile email w_member_social w_organization_social';
+  // Scopes: OpenID for identity + w_member_social for posting (Share on LinkedIn)
+  const requestedScope = searchParams.get('scope') || 'openid profile email w_member_social';
 
   // State nonce to prevent CSRF and carry redirect target
   const statePayload = {
