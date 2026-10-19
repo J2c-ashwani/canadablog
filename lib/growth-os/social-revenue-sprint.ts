@@ -200,25 +200,28 @@ export class SocialRevenueSprintService {
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
-    // Dynamically pair with high-retention informational vertical reels, carousels, and infographics
+    // Alternating Cadence: Day 1 Reel, Day 2 Carousel, Day 3 Reel, Day 4 Carousel...
     const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
-      'sep-product-ladder-v1': 'post-reel-irap-innovation',
-      'sep-match-fit-v1': 'post-reel-digital-adoption',
-      'sep-action-plan-v1': 'post-reel-export-development',
-      'sep-toolkit-v1': 'post-reel-sred-tax-credits',
-      'sep-membership-radar-v1': 'post-reel-women-grants',
-      'sep-bundle-stacking-v1': 'post-reel-cleantech',
-      'sep-match-costs-v1': 'post-reel-ontario-innovation',
-      'sep-action-documents-v1': 'post-reel-irap-innovation',
-      'sep-toolkit-budget-v1': 'post-reel-digital-adoption',
-      'sep-membership-changes-v1': 'post-reel-sred-tax-credits',
-      'sep-choose-next-step-v1': 'post-reel-cleantech',
+      'sep-product-ladder-v1': 'post-reel-irap-innovation',      // Day 1: 🎬 REEL (IRAP $500K)
+      'sep-match-fit-v1': 'post-grant-checklist',                // Day 2: 📑 CAROUSEL (Grant Readiness 8-Pt Checklist)
+      'sep-action-plan-v1': 'post-reel-digital-adoption',        // Day 3: 🎬 REEL (Digital Adoption & CDAP)
+      'sep-toolkit-v1': 'post-canada-grants',                    // Day 4: 📑 CAROUSEL (Top 5 Canadian Grants $15K-$10M)
+      'sep-membership-radar-v1': 'post-reel-sred-tax-credits',   // Day 5: 🎬 REEL (SR&ED 35% Cash Back Secrets)
+      'sep-bundle-stacking-v1': 'post-sbir-howto',               // Day 6: 📑 CAROUSEL (5-Step Non-Dilutive Playbook)
+      'sep-match-costs-v1': 'post-reel-women-grants',            // Day 7: 🎬 REEL (Women Entrepreneur Grants $250K)
+      'sep-action-documents-v1': 'post-stat-shock',              // Day 8: 📑 CAROUSEL (How to Legally Stack IRAP & SR&ED)
+      'sep-toolkit-budget-v1': 'post-reel-cleantech',            // Day 9: 🎬 REEL (CleanTech & Sustainability Millions)
+      'sep-membership-changes-v1': 'post-women-grants',          // Day 10: 📑 CAROUSEL (Women Entrepreneur Funding Roadmap)
+      'sep-choose-next-step-v1': 'post-reel-export-development', // Day 11: 🎬 REEL (CanExport Global Expansion $50K)
     }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)
 
-    // 1. Facebook Dispatch (Vertical 9:16 Video Reel — Zero Plain-Text Fallback)
+    // 1. Facebook Dispatch (Alternating 9:16 Video Reel vs Multi-Photo Carousel Album — Zero Plain-Text Fallback)
     await dispatch('facebook', async () => {
+      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+        return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, infoPost.captions.facebook, facebookUrl)
+      }
       const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
       const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
       const caption = infoPost?.captions?.facebook || variant.facebook
@@ -227,8 +230,11 @@ export class SocialRevenueSprintService {
       return ChannelAdapters.postFacebookReel(reelVideoUrl, reelTitle, fullDescription)
     })
 
-    // 2. Instagram Dispatch (Vertical 9:16 Video Reel — Zero Plain-Text Fallback)
+    // 2. Instagram Dispatch (Alternating 9:16 Video Reel vs Multi-Slide Carousel — Zero Plain-Text Fallback)
     await dispatch('instagram', async () => {
+      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+        return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, variant.hashtags)
+      }
       const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
       const caption = infoPost?.captions?.instagram || `${variant.facebook}\n\n🔗 ${instagramUrl}`
 

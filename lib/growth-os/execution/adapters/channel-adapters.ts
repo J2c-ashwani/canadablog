@@ -670,7 +670,8 @@ export class ChannelAdapters {
       // Step 1: Create each carousel child item (up to 10 slides max for Instagram)
       const maxSlides = imageUrls.slice(0, 10)
       for (const imgUrl of maxSlides) {
-        const absUrl = this.toPublicHttpsUrl(imgUrl)
+        const jpgUrl = imgUrl.endsWith('.png') ? imgUrl.replace(/\.png$/, '.jpg') : imgUrl
+        const absUrl = this.toPublicHttpsUrl(jpgUrl)
         const childRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
