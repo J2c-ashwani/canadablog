@@ -427,25 +427,44 @@ export class ChannelAdapters {
         // Proceed with configured token
       }
 
-      console.log(`[FacebookAdapter] Uploading ${imageUrls.length} photos as unpublished album items...`)
+      const fs = await import('fs')
+      const path = await import('path')
       const photoIds: string[] = []
 
       for (const imgUrl of imageUrls) {
-        const absUrl = this.toPublicHttpsUrl(imgUrl)
-        const photoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/photos`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            url: absUrl,
-            published: false,
-            access_token: token,
-          }),
-        })
+        let photoRes: Response
+        const cleanPath = imgUrl.startsWith('/') ? imgUrl.slice(1) : imgUrl
+        const localPath = path.join(process.cwd(), 'public', cleanPath)
+
+        if (fs.existsSync(localPath)) {
+          const buffer = fs.readFileSync(localPath)
+          const blob = new Blob([buffer], { type: 'image/png' })
+          const formData = new FormData()
+          formData.append('source', blob, path.basename(localPath))
+          formData.append('published', 'false')
+          formData.append('access_token', token)
+          photoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/photos`, {
+            method: "POST",
+            body: formData,
+          })
+        } else {
+          const absUrl = this.toPublicHttpsUrl(imgUrl)
+          photoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/photos`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              url: absUrl,
+              published: false,
+              access_token: token,
+            }),
+          })
+        }
+
         const photoData = await photoRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
         if (photoRes.ok && photoData.id) {
           photoIds.push(photoData.id)
         } else {
-          console.warn(`[FacebookAdapter] Failed to upload slide photo ${absUrl}:`, photoData.error?.message)
+          console.warn(`[FacebookAdapter] Failed to upload slide photo ${imgUrl}:`, photoData.error?.message)
         }
       }
 
