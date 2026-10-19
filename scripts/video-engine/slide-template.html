@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;900&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap');
   * { box-sizing: border-box; margin: 0; padding: 0; }
   
   html, body {
@@ -12,9 +12,10 @@
     margin: 0;
     padding: 0;
     background: transparent !important;
-    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
   }
 
   .slide-container {
@@ -24,41 +25,41 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    padding: 220px 60px 280px 60px; /* Respecting Reels/Shorts safe zones */
+    padding: 200px 36px 260px 36px; /* Respecting Reels/Shorts safe zones with wider card */
     box-sizing: border-box;
   }
 
-  /* Glassmorphism HUD Card */
+  /* High-Contrast Glassmorphism HUD Card */
   .glass-card {
-    background: linear-gradient(155deg, rgba(15, 23, 42, 0.90) 0%, rgba(2, 6, 23, 0.95) 100%);
-    backdrop-filter: blur(28px);
-    -webkit-backdrop-filter: blur(28px);
-    border: 2px solid rgba(255, 255, 255, 0.18);
+    background: linear-gradient(155deg, rgba(10, 15, 30, 0.96) 0%, rgba(2, 6, 23, 0.98) 100%);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 3px solid rgba(255, 255, 255, 0.22);
     border-radius: 44px;
-    padding: 64px 56px;
-    box-shadow: 0 30px 80px -15px rgba(0, 0, 0, 0.85),
-                0 0 50px rgba(220, 38, 38, 0.20),
-                inset 0 1px 1px rgba(255, 255, 255, 0.25);
+    padding: 56px 48px;
+    box-shadow: 0 35px 90px -15px rgba(0, 0, 0, 0.95),
+                0 0 60px rgba(220, 38, 38, 0.25),
+                inset 0 1px 1px rgba(255, 255, 255, 0.35);
     display: flex;
     flex-direction: column;
-    gap: 36px;
+    gap: 32px;
     position: relative;
     overflow: hidden;
   }
 
-  /* Subtle ambient glow inside card */
+  /* Ambient card glow */
   .card-glow {
     position: absolute;
-    width: 400px;
-    height: 400px;
+    width: 450px;
+    height: 450px;
     border-radius: 50%;
-    background: radial-gradient(circle, rgba(220, 38, 38, 0.25) 0%, transparent 70%);
+    background: radial-gradient(circle, rgba(220, 38, 38, 0.30) 0%, transparent 70%);
     top: -150px;
     right: -150px;
     pointer-events: none;
   }
 
-  /* Top Badge */
+  /* Top Badge Row */
   .badge-row {
     display: flex;
     align-items: center;
@@ -72,146 +73,147 @@
     gap: 12px;
     background: linear-gradient(135deg, #DC2626 0%, #991B1B 100%);
     color: #ffffff;
-    font-size: 28px;
-    font-weight: 800;
+    font-size: 32px;
+    font-weight: 900;
     text-transform: uppercase;
     letter-spacing: 0.08em;
-    padding: 12px 28px;
+    padding: 14px 32px;
     border-radius: 9999px;
-    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.35);
+    box-shadow: 0 8px 24px rgba(220, 38, 38, 0.45);
   }
 
   .counter-badge {
-    font-size: 32px;
-    font-weight: 800;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 36px;
+    font-weight: 900;
+    color: #FFFFFF;
     letter-spacing: 0.05em;
   }
 
-  /* Titles */
+  /* Headlines */
   .title-intro {
-    font-family: 'Playfair Display', serif;
-    font-size: 96px;
+    font-size: 92px;
     font-weight: 900;
     color: #FFFFFF;
-    line-height: 1.1;
+    line-height: 1.12;
     letter-spacing: -0.02em;
-    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    text-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
   }
 
   .title-stat {
-    font-size: 72px;
+    font-size: 82px;
     font-weight: 900;
     color: #FFFFFF;
     line-height: 1.15;
     letter-spacing: -0.02em;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
   }
 
   .subtitle {
-    font-size: 42px;
-    font-weight: 600;
-    color: #94A3B8;
+    font-size: 46px;
+    font-weight: 700;
+    color: #CBD5E1;
     line-height: 1.35;
   }
 
-  /* Highlight Amount Box */
+  /* Highlight Amount Box (Ultra-Crisp Solid Colors) */
   .amount-box {
-    background: rgba(255, 255, 255, 0.06);
-    border: 1.5px solid rgba(255, 255, 255, 0.14);
-    border-radius: 32px;
-    padding: 36px 40px;
+    background: rgba(255, 255, 255, 0.08);
+    border: 2px solid rgba(255, 255, 255, 0.18);
+    border-radius: 36px;
+    padding: 34px 44px;
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
 
   .amount-label {
-    font-size: 26px;
-    font-weight: 800;
+    font-size: 28px;
+    font-weight: 900;
     text-transform: uppercase;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.12em;
     color: #94A3B8;
   }
 
   .amount-value {
-    font-family: 'Playfair Display', serif;
-    font-size: 105px;
+    font-size: 118px;
     font-weight: 900;
     line-height: 1;
-    background: linear-gradient(135deg, #FDE047 0%, #F59E0B 50%, #D97706 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    letter-spacing: -0.03em;
+    color: #FBBF24; /* Solid Bright Gold */
+    text-shadow: 0 6px 30px rgba(251, 191, 36, 0.45);
   }
 
-  /* Emerald variant for tax credits */
   .amount-emerald {
-    background: linear-gradient(135deg, #6EE7B7 0%, #10B981 50%, #059669 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #34D399; /* Solid Bright Emerald */
+    text-shadow: 0 6px 30px rgba(52, 211, 153, 0.45);
   }
 
-  /* Description & Checkpoints */
+  /* Features Grid (Large 46px Pure White Text) */
   .desc-text {
-    font-size: 40px;
-    font-weight: 500;
-    color: #E2E8F0;
+    font-size: 46px;
+    font-weight: 700;
+    color: #F8FAFC;
     line-height: 1.45;
   }
 
   .features-grid {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 22px;
+    margin-top: 6px;
   }
 
   .feature-item {
     display: flex;
     align-items: center;
-    gap: 16px;
-    font-size: 34px;
-    font-weight: 600;
-    color: #CBD5E1;
+    gap: 20px;
+    font-size: 44px;
+    font-weight: 800;
+    color: #FFFFFF; /* Pure White */
+    line-height: 1.3;
   }
 
   .feature-icon {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 44px;
-    height: 44px;
+    width: 52px;
+    height: 52px;
+    min-width: 52px;
     border-radius: 50%;
-    background: rgba(16, 185, 129, 0.2);
-    color: #10B981;
-    font-size: 26px;
-    font-weight: 800;
+    background: #10B981; /* Solid Bright Emerald */
+    color: #FFFFFF;
+    font-size: 32px;
+    font-weight: 900;
+    box-shadow: 0 4px 16px rgba(16, 185, 129, 0.45);
   }
 
-  /* Footer inside card */
+  /* Footer Inside Card */
   .card-footer {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-top: 32px;
-    border-top: 1px solid rgba(255, 255, 255, 0.12);
-    margin-top: 10px;
+    border-top: 2px solid rgba(255, 255, 255, 0.16);
+    margin-top: 8px;
   }
 
   .footer-brand {
-    font-size: 32px;
-    font-weight: 800;
+    font-size: 36px;
+    font-weight: 900;
     color: #FFFFFF;
-    letter-spacing: 0.05em;
+    letter-spacing: 0.06em;
   }
 
   .footer-cta {
     background: #DC2626;
     color: #FFFFFF;
-    font-size: 30px;
-    font-weight: 800;
-    padding: 14px 32px;
-    border-radius: 18px;
+    font-size: 32px;
+    font-weight: 900;
+    padding: 16px 36px;
+    border-radius: 20px;
     letter-spacing: 0.03em;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.4);
+    box-shadow: 0 6px 22px rgba(220, 38, 38, 0.5);
   }
 
   /* CTA Slide Special */
@@ -224,13 +226,13 @@
   }
 
   .cta-big-url {
-    font-size: 64px;
+    font-size: 68px;
     font-weight: 900;
     color: #FFFFFF;
-    background: rgba(255, 255, 255, 0.08);
-    border: 2px dashed rgba(220, 38, 38, 0.6);
-    border-radius: 28px;
-    padding: 24px 48px;
+    background: rgba(255, 255, 255, 0.10);
+    border: 3px dashed rgba(220, 38, 38, 0.7);
+    border-radius: 32px;
+    padding: 28px 52px;
     letter-spacing: 0.04em;
     margin-top: 10px;
   }

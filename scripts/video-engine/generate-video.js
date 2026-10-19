@@ -343,9 +343,9 @@ const TOPIC_PRESETS = {
         amountLabel: 'MAXIMUM CASH ALLOCATION',
         amount: '$500,000',
         features: [
-          'Non-Repayable Grant (Zero Equity Dilution)',
-          'For Canadian Incorporated SMEs (<500 FTEs)',
-          'Covers Technical Salaries (up to 80%) & Subcontractors (up to 50%)',
+          'Up to 80% Tech Salaries Covered',
+          '100% Non-Repayable Grant (0% Equity)',
+          'For Canadian SMEs (<500 Employees)',
         ],
       },
       {
@@ -356,9 +356,9 @@ const TOPIC_PRESETS = {
         amountLabel: 'DEDICATED TECHNICAL ADVISOR',
         amount: 'Free Advisory',
         features: [
-          'Assigned seasoned tech executive to guide your application',
-          'Direct mentorship on commercial strategy and market entry',
-          'Pre-qualifies your business before full proposal submission',
+          'Dedicated Executive Tech Advisor Assigned',
+          'Direct Application & Commercial Mentorship',
+          'Pre-Qualifies Business Before Submission',
         ],
       },
       {
@@ -369,9 +369,9 @@ const TOPIC_PRESETS = {
         amountLabel: 'LEGAL FUNDING STACK',
         amount: '60%+ Total Costs',
         features: [
-          'IRAP pays your engineering wages upfront throughout the year',
-          'SR&ED refunds remaining non-subsidized expenditures at year end',
-          'Maximizes cash flow without raising venture debt',
+          'IRAP Funds Tech Salaries Upfront',
+          'SR&ED Refunds Remaining Costs at Year-End',
+          'Recovers Over 60% of Total R&D Spend',
         ],
       },
       {
@@ -575,7 +575,7 @@ async function screenshotSlides(slides) {
 
   const browser = await puppeteer.launch(launchOptions);
   const page = await browser.newPage();
-  await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 1 });
+  await page.setViewport({ width: 1080, height: 1920, deviceScaleFactor: 2 });
 
   const paths = [];
   for (let i = 0; i < slides.length; i++) {
@@ -700,11 +700,15 @@ function assembleVideo(slidePaths, mixedAudioPath, brollFilename, outputPath, to
       `-stream_loop -1 -i "${activeBroll}"`,
       `-f concat -safe 0 -i "${inputListPath}"`,
       `-i "${mixedAudioPath}"`,
-      '-filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,eq=brightness=-0.12:contrast=1.12[bg];[bg][1:v]overlay=0:0:shortest=1[v]"',
+      '-filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,eq=brightness=-0.12:contrast=1.12[bg];[1:v]scale=1080:1920:flags=lanczos[fg];[bg][fg]overlay=0:0:shortest=1[v]"',
       '-map "[v]"',
       '-map 2:a',
-      '-c:v libx264 -profile:v high -preset fast -crf 20 -pix_fmt yuv420p',
-      '-c:a aac -b:a 192k',
+      '-c:v libx264 -profile:v high -level:v 4.2 -preset fast -crf 17',
+      '-b:v 14M -maxrate 18M -bufsize 28M',
+      '-g 30 -keyint_min 30 -sc_threshold 0',
+      '-pix_fmt yuv420p',
+      '-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv',
+      '-c:a aac -b:a 256k -ar 44100',
       `-t ${totalDuration.toFixed(2)}`,
       '-movflags +faststart',
       `"${outputPath}"`,
