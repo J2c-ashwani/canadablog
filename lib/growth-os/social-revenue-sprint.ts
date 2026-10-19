@@ -200,19 +200,19 @@ export class SocialRevenueSprintService {
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
-    // Alternating Cadence: Day 1 Reel, Day 2 Carousel, Day 3 Reel, Day 4 Carousel...
+    // Alternating Cadence: Perfectly balanced Carousel and Reel rotation
     const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
-      'sep-product-ladder-v1': 'post-reel-irap-innovation',      // Day 1: 🎬 REEL (IRAP $500K)
-      'sep-match-fit-v1': 'post-grant-checklist',                // Day 2: 📑 CAROUSEL (Grant Readiness 8-Pt Checklist)
-      'sep-action-plan-v1': 'post-reel-digital-adoption',        // Day 3: 🎬 REEL (Digital Adoption & CDAP)
-      'sep-toolkit-v1': 'post-canada-grants',                    // Day 4: 📑 CAROUSEL (Top 5 Canadian Grants $15K-$10M)
-      'sep-membership-radar-v1': 'post-reel-sred-tax-credits',   // Day 5: 🎬 REEL (SR&ED 35% Cash Back Secrets)
-      'sep-bundle-stacking-v1': 'post-sbir-howto',               // Day 6: 📑 CAROUSEL (5-Step Non-Dilutive Playbook)
-      'sep-match-costs-v1': 'post-reel-women-grants',            // Day 7: 🎬 REEL (Women Entrepreneur Grants $250K)
-      'sep-action-documents-v1': 'post-stat-shock',              // Day 8: 📑 CAROUSEL (How to Legally Stack IRAP & SR&ED)
-      'sep-toolkit-budget-v1': 'post-reel-cleantech',            // Day 9: 🎬 REEL (CleanTech & Sustainability Millions)
-      'sep-membership-changes-v1': 'post-women-grants',          // Day 10: 📑 CAROUSEL (Women Entrepreneur Funding Roadmap)
-      'sep-choose-next-step-v1': 'post-reel-export-development', // Day 11: 🎬 REEL (CanExport Global Expansion $50K)
+      'sep-product-ladder-v1': 'post-reel-irap-innovation',      // 🎬 REEL (IRAP $500K)
+      'sep-match-fit-v1': 'post-grant-checklist',                // 📑 CAROUSEL (Grant Readiness 8-Pt Checklist)
+      'sep-action-plan-v1': 'post-reel-digital-adoption',        // 🎬 REEL (Digital Adoption & CDAP)
+      'sep-toolkit-v1': 'post-reel-sred-tax-credits',            // 🎬 REEL (SR&ED 35% Cash Back Secrets - published today)
+      'sep-membership-radar-v1': 'post-canada-grants',           // 📑 CAROUSEL (Tomorrow: Top 5 Canadian Grants $15K-$10M)
+      'sep-bundle-stacking-v1': 'post-reel-women-grants',        // 🎬 REEL (Women Entrepreneur Grants $250K)
+      'sep-match-costs-v1': 'post-sbir-howto',                   // 📑 CAROUSEL (The 5-Step Non-Dilutive Playbook)
+      'sep-action-documents-v1': 'post-reel-cleantech',          // 🎬 REEL (CleanTech & Sustainability Millions)
+      'sep-toolkit-budget-v1': 'post-stat-shock',                // 📑 CAROUSEL (How to Legally Stack IRAP & SR&ED)
+      'sep-membership-changes-v1': 'post-reel-export-development', // 🎬 REEL (CanExport Global Expansion $50K)
+      'sep-choose-next-step-v1': 'post-women-grants',            // 📑 CAROUSEL (Women Entrepreneur Funding Guide)
     }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)
@@ -241,11 +241,18 @@ export class SocialRevenueSprintService {
       return ChannelAdapters.postInstagramReel(reelVideoUrl, caption, variant.hashtags)
     })
 
-    // 3. LinkedIn Dispatch (Multi-Slide Carousel or In-depth Executive Commentary)
+    // 3. LinkedIn Dispatch (Always Multi-Slide Carousel with Proper Captions & Hashtags — Zero Plain-Text Fallback)
     await dispatch('linkedin', async () => {
-      const commentary = infoPost ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}` : `${variant.linkedin}\n${linkedInUrl}`
-      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-        return ChannelAdapters.postLinkedInCarousel(infoPost.media.carouselSlides, commentary, variant.hashtags)
+      const slides = (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length)
+        ? infoPost.media.carouselSlides
+        : (INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.format === 'CAROUSEL' && p.media.carouselSlides?.length)?.media.carouselSlides || [])
+
+      const commentary = infoPost?.captions?.linkedin
+        ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}`
+        : `${variant.linkedin}\n\n🔗 ${linkedInUrl}`
+
+      if (slides.length > 0) {
+        return ChannelAdapters.postLinkedInCarousel(slides, commentary, variant.hashtags)
       }
       return ChannelAdapters.postLinkedIn(commentary, variant.hashtags)
     })
