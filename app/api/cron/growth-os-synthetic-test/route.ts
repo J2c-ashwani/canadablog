@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { isValidCronRequest } from "@/lib/admin/auth"
 import { sendEmail } from "@/lib/emails/mailer"
+import { getValidLinkedInToken } from "@/lib/growth-os/auth/linkedin-token"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -26,7 +27,8 @@ export async function GET(request: NextRequest) {
     // 1. LinkedIn Test
     const runLinkedInTest = async () => {
       const start = Date.now()
-      const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim() || process.env.LINKEDIN_CLIENT_ID?.trim()
+      const dynamicAuth = await getValidLinkedInToken().catch(() => null)
+      const token = dynamicAuth?.token || process.env.LINKEDIN_ACCESS_TOKEN?.trim() || process.env.LINKEDIN_CLIENT_ID?.trim()
       if (!token) {
         results.push({ channel: "LinkedIn", status: "SKIP", message: "No credentials configured" })
         return
@@ -234,13 +236,16 @@ export async function GET(request: NextRequest) {
 
     const subject = `[Growth OS Test] Synthetic Channel Test — ${passed}/${total} Passed`
     
-    await sendEmail({
-      to: "ashwani@fsidigital.ca",
-      subject,
-      html: emailHtml,
-      text: `Synthetic Channel Test Report: ${passed}/${total} Passed\n\nChannels:\n${results.map(r => `${r.channel}: ${r.status} (${r.message})`).join('\n')}`,
-      tagType: "growth-os-synthetic-test"
-    })
+    // Only send notification if a channel failed, preventing confusing morning emails when healthy
+    if (results.some(r => r.status === 'FAIL')) {
+      await sendEmail({
+        to: "ashwani@fsidigital.ca",
+        subject: `⚠️ [Growth OS Alert] Channel Pre-Flight Issue — ${passed}/${total} Ready`,
+        html: emailHtml,
+        text: `Synthetic Channel Test Report: ${passed}/${total} Passed\n\nChannels:\n${results.map(r => `${r.channel}: ${r.status} (${r.message})`).join('\n')}`,
+        tagType: "growth-os-synthetic-test"
+      })
+    }
 
     return NextResponse.json({
       success: true,

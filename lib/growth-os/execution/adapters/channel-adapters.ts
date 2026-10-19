@@ -192,6 +192,144 @@ export class ChannelAdapters {
   }
 
   /**
+   * 3b. LinkedIn Carousel / Multi-Image API Adapter
+   * Uploads multiple carousel slide images via LinkedIn's /rest/images API
+   * and creates a native multi-image swipeable post on the author's feed.
+   */
+  public static async postLinkedInCarousel(imageUrls: string[], text: string, hashtags: string[]): Promise<ChannelPublishResult> {
+    const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()
+    const linkedInUrn = process.env.LINKEDIN_PERSON_URN?.trim() || process.env.LINKEDIN_ORG_URN?.trim()
+
+    // Dynamically resolve auto-refreshing OAuth token if connected
+    const { getValidLinkedInToken } = await import('@/lib/growth-os/auth/linkedin-token').catch(() => ({ getValidLinkedInToken: async () => null }))
+    const dynamicAuth = await getValidLinkedInToken().catch(() => null)
+    const activeToken = dynamicAuth?.token || token
+    const activeUrn = dynamicAuth?.authorUrn || linkedInUrn
+
+    if (!activeToken || !activeUrn) {
+      return this.postLinkedIn(text, hashtags)
+    }
+
+    try {
+      const now = new Date()
+      const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1)
+      const versionDate = `${prevMonth.getFullYear()}${String(prevMonth.getMonth() + 1).padStart(2, '0')}`
+
+      // Upload each slide image to LinkedIn /rest/images
+      const fs = await import('fs')
+      const path = await import('path')
+      const imageUrns: string[] = []
+
+      for (const slideUrl of imageUrls) {
+        try {
+          let buffer: Buffer
+          if (slideUrl.startsWith('http://') || slideUrl.startsWith('https://')) {
+            const imgRes = await fetch(slideUrl)
+            if (!imgRes.ok) continue
+            buffer = Buffer.from(await imgRes.arrayBuffer())
+          } else {
+            const cleanPath = slideUrl.startsWith('/') ? slideUrl.slice(1) : slideUrl
+            const localPath = path.join(process.cwd(), 'public', cleanPath)
+            if (!fs.existsSync(localPath)) continue
+            buffer = fs.readFileSync(localPath)
+          }
+
+          // Step 1: Initialize upload
+          const initRes = await fetchWithRetry("https://api.linkedin.com/rest/images?action=initializeUpload", {
+            method: "POST",
+            headers: {
+              "Authorization": `Bearer ${activeToken}`,
+              "Content-Type": "application/json",
+              "X-Restli-Protocol-Version": "2.0.0",
+              "LinkedIn-Version": versionDate,
+            },
+            body: JSON.stringify({
+              initializeUploadRequest: { owner: activeUrn }
+            }),
+          })
+          if (!initRes.ok) continue
+          const initData = await initRes.json().catch(() => ({})) as any
+          const uploadUrl = initData.value?.uploadUrl
+          const imageUrn = initData.value?.image
+          if (!uploadUrl || !imageUrn) continue
+
+          // Step 2: Upload image binary
+          const uploadRes = await fetchWithRetry(uploadUrl, {
+            method: "PUT",
+            headers: {
+              "Authorization": `Bearer ${activeToken}`,
+              "Content-Type": "image/png",
+            },
+            body: buffer,
+          })
+          if (uploadRes.ok || uploadRes.status === 201) {
+            imageUrns.push(imageUrn)
+          }
+        } catch (uploadErr) {
+          console.warn('[LinkedInAdapter] Failed to upload slide image:', uploadErr)
+        }
+      }
+
+      if (imageUrns.length === 0) {
+        console.warn('[LinkedInAdapter] No slide images uploaded; falling back to standard text post.')
+        return this.postLinkedIn(text, hashtags)
+      }
+
+      // Step 3: Create post with multiImage content
+      const contentPayload = imageUrns.length > 1
+        ? { multiImage: { images: imageUrns.map(id => ({ id })) } }
+        : { media: { id: imageUrns[0] } }
+
+      const postBody = {
+        author: activeUrn,
+        commentary: `${text}\n\n${hashtags.join(" ")}`,
+        visibility: "PUBLIC",
+        distribution: {
+          feedDistribution: "MAIN_FEED",
+          targetEntities: [],
+          thirdPartyDistributionChannels: [],
+        },
+        content: contentPayload,
+        lifecycleState: "PUBLISHED",
+      }
+
+      console.log(`[LinkedInAdapter] Posting multi-image carousel (${imageUrns.length} slides, version ${versionDate}) to ${activeUrn}...`)
+
+      const response = await fetchWithRetry("https://api.linkedin.com/rest/posts", {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${activeToken}`,
+          "Content-Type": "application/json",
+          "X-Restli-Protocol-Version": "2.0.0",
+          "LinkedIn-Version": versionDate,
+        },
+        body: JSON.stringify(postBody),
+      })
+
+      if (!response.ok) {
+        const errBody = await response.text().catch(() => "")
+        console.error(`[LinkedInAdapter] Carousel API error ${response.status}: ${errBody}`)
+        throw new Error(`LinkedIn Carousel API error: ${response.status} ${response.statusText} — ${errBody.slice(0, 200)}`)
+      }
+
+      const externalId = response.headers.get('x-linkedin-id')
+        || response.headers.get('x-restli-id')
+        || response.headers.get('location')
+        || ''
+
+      return {
+        channelName: "LinkedIn",
+        status: "API_ACCEPTED",
+        externalId: externalId || 'urn:li:share:carousel',
+        message: `LinkedIn accepted the multi-slide carousel (${imageUrns.length} slides) via /rest/posts API.`,
+      }
+    } catch (err: any) {
+      console.error(`[LinkedInAdapter] Carousel post error, falling back to text:`, err)
+      return this.postLinkedIn(text, hashtags)
+    }
+  }
+
+  /**
    * Helper to ensure media paths are resolved to absolute HTTPS URLs
    */
   private static toPublicHttpsUrl(pathOrUrl: string): string {

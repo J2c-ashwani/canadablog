@@ -35,89 +35,89 @@ const VARIANTS: Variant[] = [
   {
     id: 'sep-product-ladder-v1',
     offerId: 'funding-bundle',
-    target: 'https://www.fsidigital.ca/products/bundle?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_bundle',
-    linkedin: `Grant research gets expensive when a founder chases every program without a preparation order.\n\nFSI Digital's self-serve funding ladder is live:\n• $19 USD Funding Match Report\n• $49 USD Funding Strategy & Action Plan\n• $79 USD Complete Funding Blueprint\n• $29 USD/month Funding Watch\n\nNo sales call or live session is required. These are research and planning tools—not a grant approval or a substitute for confirming current rules with the official funding body.\n\nStart with the complete blueprint:`,
-    facebook: `Looking for a structured way to research business grants without booking a call?\n\nFSI Digital's self-serve products start at $19 USD. The $79 USD Complete Funding Blueprint combines a personalized match report, action plan, and multi-year funding-stack simulation.\n\nProgram details change, so final eligibility must always be confirmed with the official funding body.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_bundle',
+    linkedin: `Grant research gets expensive when a founder chases every program without a clear preparation order.\n\nBefore spending 40+ hours writing an application, test your business profile across active federal and provincial programs with FSI Digital's free Grant Calculator.\n\n• Instant estimated non-repayable funding cap\n• Personalized program matches (IRAP, SR&ED, CDAP, Regional)\n• No sales call required\n\nCalculate your funding match in 60 seconds:`,
+    facebook: `Looking for a structured way to find Canadian business grants without booking a sales call?\n\nUse FSI Digital's free interactive grant calculator to estimate your funding match, discover active non-repayable programs, and get an instant readiness evaluation in under 60 seconds.`,
     hashtags: ['#SmallBusinessGrants', '#GovernmentFunding', '#NonDilutiveFunding', '#CanadianBusiness', '#StartupFunding'],
   },
   {
     id: 'sep-match-fit-v1',
     offerId: 'funding-match-report',
-    target: 'https://www.fsidigital.ca/products/funding-match-report?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_report',
-    linkedin: `Before spending hours on a grant application, answer four questions:\n\n1. Does the program fit the business profile?\n2. Are the planned costs eligible?\n3. Is the timing realistic?\n4. Can the program be stacked with other support?\n\nFSI Digital's $19 USD Funding Match Report is a self-serve first step for narrowing the current database to programs worth reviewing. No call is required. Final eligibility still belongs to the official funding body.\n\nReview the match report:`,
-    facebook: `A grant list is not an application plan. Start by narrowing the options to programs that fit your business profile, planned costs, and timing.\n\nThe FSI Digital Funding Match Report is $19 USD, self-serve, and requires no call. Always confirm current program rules and final eligibility with the official funding body.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_report',
+    linkedin: `Before spending hours on a grant application, answer four questions:\n\n1. Does the program fit the business profile?\n2. Are the planned costs eligible?\n3. Is the timing realistic?\n4. Can the program be stacked with other support?\n\nFSI Digital's free Grant Calculator evaluates your company's sector, stage, and payroll in 60 seconds to identify active non-repayable programs. No call required.\n\nCheck your company's grant matches:`,
+    facebook: `A grant list is not an application plan. Start by narrowing the options to programs that fit your business profile, planned costs, and timing.\n\nUse FSI Digital's free Grant Calculator to evaluate your funding eligibility in 60 seconds. Self-serve and requires no call.`,
     hashtags: ['#BusinessGrants', '#FundingStrategy', '#SmallBusiness', '#FounderResources', '#NonDilutiveCapital'],
   },
   {
     id: 'sep-action-plan-v1',
     offerId: 'funding-roadmap',
-    target: 'https://www.fsidigital.ca/products/action-plan?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_action_plan',
-    linkedin: `Finding a possible grant is only the beginning. The harder questions are what to prepare first, which documents create risk, and how to sequence multiple applications.\n\nFSI Digital's $49 USD Funding Strategy & Action Plan turns a saved business profile into a self-serve milestone sequence, document checklist, risk warnings, and next-actions plan. No call or live session is required.\n\nProgram rules change. Confirm final eligibility and deadlines with the official funding body.\n\nBuild your action plan:`,
-    facebook: `A list of grants does not tell you what to prepare first.\n\nThe $49 USD Funding Strategy & Action Plan provides a self-serve milestone sequence, document checklist, risk warnings, and next-actions plan based on your saved profile. No call is required. Confirm final program rules with the official funding body.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_action_plan',
+    linkedin: `Finding a possible grant is only the beginning. The harder questions are what to prepare first, which documents create risk, and how to sequence multiple applications.\n\nStart by calculating your baseline eligibility and estimated funding allocation across 100+ active Canadian government programs.\n\nFree, self-serve, and takes under 60 seconds. No sales call required.\n\nBuild your funding baseline:`,
+    facebook: `A list of grants does not tell you what to prepare first.\n\nStart with FSI Digital's free interactive grant calculator to estimate your eligible funding amount and identify matching programs for your business stage. No call required.`,
     hashtags: ['#GrantApplications', '#FundingStrategy', '#SmallBusiness', '#BusinessPlanning', '#GovernmentFunding'],
   },
   {
     id: 'sep-toolkit-v1',
     offerId: 'funding-toolkit',
-    target: 'https://www.fsidigital.ca/products/toolkit?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_toolkit',
-    linkedin: `Grant preparation often stalls on the same practical work: building a project budget, forecasting cash flow, describing the project, and tracking each application.\n\nFSI Digital's $29 USD Funding Application Toolkit is a self-serve download with budget, cash-flow, hiring-plan, proposal-outline, readiness-checklist, and tracking templates. No call or live session is required.\n\nTemplates support preparation; they do not guarantee approval.\n\nReview the toolkit:`,
-    facebook: `Need the working documents behind a grant application?\n\nThe $29 USD Funding Application Toolkit includes downloadable budget, cash-flow, hiring-plan, project-outline, readiness-checklist, and application-tracking templates. It is self-serve, and no call is required. Templates do not guarantee funding approval.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_toolkit',
+    linkedin: `Grant preparation often stalls on the same practical work: knowing which grants your business qualifies for, building an eligible budget, and sequencing applications.\n\nCheck your company's grant eligibility and non-repayable funding matches in 60 seconds with our free interactive calculator.\n\nNo sales call or live session required. Get your instant readiness assessment:`,
+    facebook: `Need the working documents and eligibility roadmap behind a Canadian grant application?\n\nFirst, check your non-repayable funding eligibility in 60 seconds using our free Grant Calculator. Fast, self-serve, and requires no call.`,
     hashtags: ['#GrantWriting', '#BusinessTemplates', '#SmallBusiness', '#CashFlowPlanning', '#FundingReadiness'],
   },
   {
     id: 'sep-membership-radar-v1',
     offerId: 'funding-membership',
-    target: 'https://www.fsidigital.ca/membership?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_membership_radar',
-    linkedin: `Government funding programs change: intake windows open, deadlines move, and program details are updated. Repeating the same research every week is difficult for a small team.\n\nFunding Watch is $29 USD/month. It compares a saved business profile with FSI Digital's funding database and sends an automated weekly email radar, with dashboard and template access. It is self-serve and can be cancelled through PayPal. No call or live session is required.\n\nFinal eligibility must still be confirmed with the official funding body.\n\nStart Funding Watch:`,
-    facebook: `Funding programs and deadlines change. Funding Watch compares your saved business profile with FSI Digital's database and sends an automated weekly email radar.\n\nIt is $29 USD/month, self-serve, includes dashboard and template access, and can be cancelled through PayPal. Final eligibility must be confirmed with the official funding body.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_membership_radar',
+    linkedin: `Government funding programs change: intake windows open, deadlines move, and program details are updated. Repeating the same research every week is difficult for a small team.\n\nStart by testing your company profile against active Canadian grants in 60 seconds with our free calculator, and see which programs match your sector right now.\n\nNo call required. Check your active matches:`,
+    facebook: `Funding programs and deadlines change constantly. Start by finding out which non-repayable grants match your business profile right now with our free 60-second Grant Calculator.`,
     hashtags: ['#FundingAlerts', '#GovernmentGrants', '#SmallBusiness', '#FundingDeadlines', '#BusinessFunding'],
   },
   {
     id: 'sep-bundle-stacking-v1',
     offerId: 'funding-bundle',
-    target: 'https://www.fsidigital.ca/products/bundle?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_stacking',
-    linkedin: `One funding program may support hiring while another supports research, equipment, exporting, or training. The planning risk is treating every program as isolated.\n\nThe $79 USD Complete Funding Blueprint combines personalized matches, an application sequence, document checklist, and a multi-year funding-stack simulation in one self-serve package. No call or live session is required.\n\nStacking rules and eligibility vary by program, so confirm the current terms with each official funding body.\n\nReview the complete blueprint:`,
-    facebook: `Funding planning is more useful when matches, timing, documents, and possible program stacking are reviewed together.\n\nThe $79 USD Complete Funding Blueprint combines those steps in one self-serve package. No call is required. Always confirm current stacking and eligibility rules with each official funding body.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_stacking',
+    linkedin: `One funding program may support hiring while another supports research, equipment, exporting, or training. The planning risk is treating every program as isolated.\n\nDiscover how IRAP, SR&ED, and provincial incentives stack for your company. Test your eligibility across all three in 60 seconds with our free interactive calculator.\n\nNo call or live session required. Review your stack simulation:`,
+    facebook: `Funding planning is more useful when matches, timing, documents, and program stacking are reviewed together.\n\nCalculate your non-dilutive grant matches and stacking opportunities in 60 seconds with FSI Digital's free calculator. No call required.`,
     hashtags: ['#FundingStack', '#NonDilutiveFunding', '#BusinessGrants', '#GrowthCapital', '#FundingStrategy'],
   },
   {
     id: 'sep-match-costs-v1',
     offerId: 'funding-match-report',
-    target: 'https://www.fsidigital.ca/products/funding-match-report?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_eligible_costs',
-    linkedin: `A business can fit a funding program while its planned expense does not. That distinction matters before application work begins.\n\nThe $19 USD Funding Match Report helps narrow current programs by business profile, planned costs, timing, and preparation needs. It is a self-serve research tool, not an approval decision. No call is required.\n\nConfirm eligible costs and final eligibility with the official program source.\n\nNarrow your shortlist:`,
-    facebook: `A business may fit a grant while the planned expense does not.\n\nThe $19 USD Funding Match Report helps narrow programs by business profile, planned costs, timing, and preparation needs. It is self-serve and requires no call. Confirm eligible costs with the official program source.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_eligible_costs',
+    linkedin: `A business can fit a funding program while its planned expense does not. That distinction matters before application work begins.\n\nUse FSI Digital's free Grant Calculator to evaluate your eligible payroll, subcontractor, and R&D costs against current federal program rules.\n\nTakes under 60 seconds, self-serve, and requires no sales call.\n\nEvaluate your eligible costs:`,
+    facebook: `A business may fit a grant while the planned expense does not. Find out which programs match your business profile, payroll, and technical expenses in 60 seconds with our free Grant Calculator.`,
     hashtags: ['#EligibleCosts', '#BusinessFunding', '#GrantResearch', '#SmallBusiness', '#FundingMatch'],
   },
   {
     id: 'sep-action-documents-v1',
     offerId: 'funding-roadmap',
-    target: 'https://www.fsidigital.ca/products/action-plan?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_documents',
-    linkedin: `Application deadlines are visible. Document readiness is often the hidden constraint. Financial statements, project budgets, hiring plans, quotes, and corporate records can determine whether the timeline is realistic.\n\nThe $49 USD Funding Strategy & Action Plan provides a profile-based document checklist, risk indicators, milestone sequence, and immediate next actions. It is self-serve and requires no call.\n\nRequirements vary; verify the current checklist on the official program page.\n\nCreate your preparation sequence:`,
-    facebook: `The deadline is only one part of grant readiness. The document checklist determines whether the application timeline is realistic.\n\nThe $49 USD Funding Strategy & Action Plan provides a self-serve checklist, risk indicators, milestone sequence, and next actions. Verify current requirements with the official funding body.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_documents',
+    linkedin: `Application deadlines are visible. Document readiness is often the hidden constraint. Financial statements, project budgets, hiring plans, quotes, and corporate records determine whether your timeline is realistic.\n\nCheck your company's grant eligibility and document readiness in 60 seconds with our free interactive calculator.\n\nNo call required. Start your readiness check:`,
+    facebook: `The deadline is only one part of grant readiness. The document checklist determines whether the application timeline is realistic.\n\nCheck your non-repayable grant matches and application readiness in 60 seconds with FSI Digital's free calculator.`,
     hashtags: ['#GrantReadiness', '#DocumentChecklist', '#BusinessPlanning', '#GovernmentFunding', '#ApplicationStrategy'],
   },
   {
     id: 'sep-toolkit-budget-v1',
     offerId: 'funding-toolkit',
-    target: 'https://www.fsidigital.ca/products/toolkit?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_budget_templates',
-    linkedin: `A project budget should connect the work, timeline, eligible costs, and funding request. Starting from a blank spreadsheet makes that harder than it needs to be.\n\nThe $29 USD Funding Application Toolkit includes downloadable project-budget and cash-flow models plus preparation and tracking templates. It is self-serve, with no call or live session required.\n\nAdapt every template to the official program's current instructions.\n\nGet the working templates:`,
-    facebook: `Building a project budget from a blank spreadsheet?\n\nThe $29 USD Funding Application Toolkit includes downloadable project-budget and cash-flow models plus proposal, readiness, and tracking templates. It is self-serve. Adapt every template to the official program's current instructions.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_budget_templates',
+    linkedin: `A project budget should connect the work, timeline, eligible costs, and funding request. Starting from a blank spreadsheet makes that harder than it needs to be.\n\nFind out how much non-repayable grant capital your project is eligible to request before drafting your budget. Test your company in 60 seconds with our free Grant Calculator.\n\nNo call required. Calculate your project allocation:`,
+    facebook: `Building a project budget from a blank spreadsheet? First, calculate your eligible non-repayable grant allocation with our free 60-second Grant Calculator. No call required.`,
     hashtags: ['#ProjectBudget', '#CashFlow', '#GrantTemplates', '#SmallBusinessTools', '#FundingApplication'],
   },
   {
     id: 'sep-membership-changes-v1',
     offerId: 'funding-membership',
-    target: 'https://www.fsidigital.ca/membership?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_program_changes',
-    linkedin: `A funding search is a snapshot. Monitoring is the ongoing job: new matches, recorded program changes, and deadlines relevant to the same business profile.\n\nFunding Watch automates that recurring check for $29 USD/month through a weekly email radar and self-serve dashboard. It does not include individual analyst review or a live session, and it can be cancelled through PayPal.\n\nOfficial program sources remain the final authority.\n\nMonitor your profile:`,
-    facebook: `A one-time funding search becomes outdated. Funding Watch provides an automated weekly email radar and dashboard based on your saved business profile for $29 USD/month.\n\nIt is self-serve, has no individual analyst review or live session, and can be cancelled through PayPal. Official program sources remain the final authority.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_program_changes',
+    linkedin: `A funding search is a snapshot. Monitoring is the ongoing job: new matches, recorded program changes, and deadlines relevant to the same business profile.\n\nBegin by benchmarking your business against Canada's current grant landscape with our free interactive calculator. Takes 60 seconds, no call required.\n\nBenchmark your profile:`,
+    facebook: `A one-time funding search becomes outdated quickly. Benchmark your business against 100+ active Canadian grant programs in 60 seconds with our free calculator.`,
     hashtags: ['#GrantMonitoring', '#FundingWatch', '#SmallBusiness', '#FundingPrograms', '#FounderTools'],
   },
   {
     id: 'sep-choose-next-step-v1',
     offerId: 'funding-match-report',
-    target: 'https://www.fsidigital.ca/products/funding-match-report?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_choose_next_step',
-    linkedin: `Choose the smallest funding tool that answers the next question:\n\n• Which programs fit? — $19 USD Funding Match Report\n• Which documents and steps come first? — $49 USD Action Plan\n• How could several programs fit over time? — $79 USD Complete Blueprint\n• What changed this week? — $29 USD/month Funding Watch\n\nEvery option is self-serve. No call or live session is required. These tools support research and planning; the official funding body determines eligibility.\n\nStart with the $19 match report:`,
-    facebook: `Choose the next funding step by the question you need answered: matches ($19 USD), preparation sequence ($49 USD), multi-year blueprint ($79 USD), or automated weekly monitoring ($29 USD/month).\n\nAll options are self-serve and require no call. Official funding bodies determine final eligibility. Start with the $19 match report.`,
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_choose_next_step',
+    linkedin: `Choose the smallest funding step that answers your immediate question:\n\n• Which programs fit? — Instant free calculator assessment\n• How much non-repayable capital is available? — Real-time allocation formula\n• What documents come first? — Complete milestone checklist\n\nAll tools start with our free 60-second grant calculator. No call or live session required.\n\nCalculate your grant eligibility now:`,
+    facebook: `Choose the next funding step by the question you need answered: matches, preparation sequence, or stacking opportunities.\n\nStart with FSI Digital's free 60-second Grant Calculator. Self-serve and requires no call.`,
     hashtags: ['#BusinessFunding', '#GrantResearch', '#FundingPlan', '#SmallBusiness', '#FounderResources'],
   },
 ]
@@ -245,9 +245,12 @@ export class SocialRevenueSprintService {
       return ChannelAdapters.postInstagram(variant.facebook, instagramUrl, variant.hashtags)
     })
 
-    // 3. LinkedIn Dispatch (In-depth Value-First Executive Commentary + Link)
+    // 3. LinkedIn Dispatch (Multi-Slide Carousel or In-depth Commentary)
     await dispatch('linkedin', async () => {
       const commentary = infoPost ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}` : `${variant.linkedin}\n${linkedInUrl}`
+      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+        return ChannelAdapters.postLinkedInCarousel(infoPost.media.carouselSlides, commentary, variant.hashtags)
+      }
       return ChannelAdapters.postLinkedIn(commentary, variant.hashtags)
     })
 
