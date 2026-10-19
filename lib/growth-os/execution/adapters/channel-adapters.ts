@@ -260,7 +260,7 @@ export class ChannelAdapters {
               "Authorization": `Bearer ${activeToken}`,
               "Content-Type": "image/png",
             },
-            body: buffer,
+            body: new Uint8Array(buffer),
           })
           if (uploadRes.ok || uploadRes.status === 201) {
             imageUrns.push(imageUrn)
@@ -502,29 +502,51 @@ export class ChannelAdapters {
     }
 
     try {
-      const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
-      console.log(`[FacebookAdapter] Publishing Reel video from ${absVideoUrl}...`)
-      const response = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          file_url: absVideoUrl,
-          title,
-          description,
-          access_token: token,
-        }),
-      })
+      const fs = await import('fs')
+      const path = await import('path')
+      const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
+      const localPath = path.join(process.cwd(), 'public', cleanPath)
+
+      let response: Response
+      if (fs.existsSync(localPath)) {
+        console.log(`[FacebookAdapter] Uploading local Reel binary (${(fs.statSync(localPath).size / 1024 / 1024).toFixed(2)} MB) to graph-video.facebook.com...`)
+        const videoBuffer = fs.readFileSync(localPath)
+        const blob = new Blob([videoBuffer], { type: 'video/mp4' })
+        const formData = new FormData()
+        formData.append('source', blob, path.basename(localPath))
+        formData.append('title', title)
+        formData.append('description', description)
+        formData.append('access_token', token)
+
+        response = await fetchWithRetry(`https://graph-video.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
+          method: "POST",
+          body: formData,
+        })
+      } else {
+        const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
+        console.log(`[FacebookAdapter] Publishing Reel video from remote URL ${absVideoUrl}...`)
+        response = await fetchWithRetry(`https://graph-video.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            file_url: absVideoUrl,
+            title,
+            description,
+            access_token: token,
+          }),
+        })
+      }
 
       const payload = await response.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
       if (!response.ok || !payload.id) {
-        throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider post ID missing'}`)
+        throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider video ID missing'}`)
       }
 
       return {
         channelName: "Facebook",
         status: "API_ACCEPTED",
         externalId: payload.id,
-        message: "Facebook accepted the Page post and returned a provider post ID.",
+        message: "Facebook accepted and published the Reel video via graph-video API.",
       }
     } catch (err: any) {
       console.error(`[FacebookAdapter] Reel Error:`, err)

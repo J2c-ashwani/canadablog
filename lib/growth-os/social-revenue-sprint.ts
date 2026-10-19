@@ -1,6 +1,7 @@
 import { createTrackedGrowthUrl, type GrowthActionContext } from '@/lib/growth-os/action-attribution'
 import { ChannelAdapters, type ChannelPublishResult } from '@/lib/growth-os/execution/adapters/channel-adapters'
 import { getLatestOperationalState, setOperationalState } from '@/lib/growth-os/operations-store'
+import { INFORMATIONAL_SOCIAL_LIBRARY } from '@/lib/growth-os/distribution/informational-social-library'
 
 export const SOCIAL_REVENUE_SPRINT_END_AT = '2026-09-25T18:29:59.000Z'
 const STATE_KEY = 'social-revenue-sprint-september-v1'
@@ -199,53 +200,42 @@ export class SocialRevenueSprintService {
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
-    // Dynamically pair with high-retention informational carousels, vertical reels, and infographics
-    const { INFORMATIONAL_SOCIAL_LIBRARY } = await import('@/lib/growth-os/distribution/informational-social-library')
+    // Dynamically pair with high-retention informational vertical reels, carousels, and infographics
     const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
-      'sep-product-ladder-v1': 'post-canada-grants',
-      'sep-match-fit-v1': 'post-grant-checklist',
-      'sep-action-plan-v1': 'post-stat-shock',
-      'sep-toolkit-v1': 'post-sbir-howto',
-      'sep-membership-radar-v1': 'post-women-grants',
-      'sep-bundle-stacking-v1': 'post-reel-digital-adoption',
-      'sep-match-costs-v1': 'post-reel-sred-tax-credits',
-      'sep-action-documents-v1': 'post-grant-checklist',
-      'sep-toolkit-budget-v1': 'post-reel-women-grants',
-      'sep-membership-changes-v1': 'post-reel-cleantech',
-      'sep-choose-next-step-v1': 'post-infographic-sred-vs-cdap',
+      'sep-product-ladder-v1': 'post-reel-irap-innovation',
+      'sep-match-fit-v1': 'post-reel-digital-adoption',
+      'sep-action-plan-v1': 'post-reel-export-development',
+      'sep-toolkit-v1': 'post-reel-sred-tax-credits',
+      'sep-membership-radar-v1': 'post-reel-women-grants',
+      'sep-bundle-stacking-v1': 'post-reel-cleantech',
+      'sep-match-costs-v1': 'post-reel-ontario-innovation',
+      'sep-action-documents-v1': 'post-reel-irap-innovation',
+      'sep-toolkit-budget-v1': 'post-reel-digital-adoption',
+      'sep-membership-changes-v1': 'post-reel-sred-tax-credits',
+      'sep-choose-next-step-v1': 'post-reel-cleantech',
     }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)
 
-    // 1. Facebook Dispatch (Multi-Photo Album, Vertical Reel, or Photo Post)
+    // 1. Facebook Dispatch (Vertical 9:16 Video Reel — Zero Plain-Text Fallback)
     await dispatch('facebook', async () => {
-      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-        return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, infoPost.captions.facebook, facebookUrl)
-      }
-      if (infoPost?.format === 'REEL' && infoPost.media.videoUrl) {
-        return ChannelAdapters.postFacebookReel(infoPost.media.videoUrl, infoPost.title, `${infoPost.captions.facebook}\n\n🔗 ${facebookUrl}`)
-      }
-      if (infoPost?.media.singleImageUrl) {
-        return ChannelAdapters.postFacebookMultiPhoto([infoPost.media.singleImageUrl], infoPost.captions.facebook, facebookUrl)
-      }
-      return ChannelAdapters.postFacebook(variant.facebook, facebookUrl)
+      const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+      const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
+      const caption = infoPost?.captions?.facebook || variant.facebook
+      const fullDescription = `${caption}\n\n🔗 Calculate your eligibility:\n👉 ${facebookUrl}`
+
+      return ChannelAdapters.postFacebookReel(reelVideoUrl, reelTitle, fullDescription)
     })
 
-    // 2. Instagram Dispatch (Multi-Slide Swipeable Carousel, Vertical 9:16 Reel, or Single Infographic)
+    // 2. Instagram Dispatch (Vertical 9:16 Video Reel — Zero Plain-Text Fallback)
     await dispatch('instagram', async () => {
-      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-        return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, variant.hashtags)
-      }
-      if (infoPost?.format === 'REEL' && infoPost.media.videoUrl) {
-        return ChannelAdapters.postInstagramReel(infoPost.media.videoUrl, infoPost.captions.instagram, variant.hashtags)
-      }
-      if (infoPost?.media.singleImageUrl) {
-        return ChannelAdapters.postInstagram(infoPost.captions.instagram, instagramUrl, variant.hashtags, infoPost.media.singleImageUrl)
-      }
-      return ChannelAdapters.postInstagram(variant.facebook, instagramUrl, variant.hashtags)
+      const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+      const caption = infoPost?.captions?.instagram || `${variant.facebook}\n\n🔗 ${instagramUrl}`
+
+      return ChannelAdapters.postInstagramReel(reelVideoUrl, caption, variant.hashtags)
     })
 
-    // 3. LinkedIn Dispatch (Multi-Slide Carousel or In-depth Commentary)
+    // 3. LinkedIn Dispatch (Multi-Slide Carousel or In-depth Executive Commentary)
     await dispatch('linkedin', async () => {
       const commentary = infoPost ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}` : `${variant.linkedin}\n${linkedInUrl}`
       if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {

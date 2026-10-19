@@ -598,4 +598,36 @@ https://fsidigital.ca/calculator`,
     hashtags: ['#SRED', '#CDAP', '#TechFunding', '#CanadianBusiness', '#GrantStrategy'],
     targetUrl: 'https://www.fsidigital.ca/calculator',
   },
+  {
+    id: 'post-reel-export-development',
+    title: 'CanExport & Global Growth Grants: Up to $50,000 Non-Repayable',
+    format: 'REEL',
+    hook: 'CanExport & Global Growth Grants: Up to $50,000 Non-Repayable',
+    captions: {
+      instagram: `🌎 CanExport & Global Expansion Grants in 2026\n\nExpanding your Canadian business into the US, Europe, or global markets? The federal government reimburses up to $50,000 in international business development costs.\n\nCovered expenses:\n• International trade shows & travel\n• Foreign market IP protection\n• Digital marketing & translation\n• Expert legal & regulatory consulting\n\nWatch the breakdown above 👆\n🔗 Check your eligibility: fsidigital.ca/calculator (link in bio)!`,
+      facebook: `🌎 CanExport & Global Expansion Grants in 2026\n\nExpanding your Canadian business into international markets? The federal government reimburses up to $50,000 in non-repayable international growth capital.\n\nCovered expenses:\n• Trade shows & travel\n• IP & patent filing abroad\n• Target market digital advertising\n• Regulatory compliance\n\nCheck your company's grant match:\n👉 https://fsidigital.ca/calculator`,
+      linkedin: `CanExport SMEs remains one of the fastest, highest-ROI non-dilutive programs for Canadian businesses expanding internationally.\n\nCovering 50% of eligible costs up to $50,000, it enables founders to de-risk international trade shows, target-market digital advertising, foreign IP protection, and local market compliance audits.\n\nWatch our video overview above.\n\nAssess your export grant eligibility:\nhttps://fsidigital.ca/calculator`,
+    },
+    media: {
+      videoUrl: '/videos/reels/export-development-grants.mp4',
+    },
+    hashtags: ['#CanExport', '#ExportGrants', '#GlobalExpansion', '#CanadianBusiness', '#SmallBusinessGrants'],
+    targetUrl: 'https://www.fsidigital.ca/calculator',
+  },
+  {
+    id: 'post-reel-ontario-innovation',
+    title: 'Regional Innovation Grants: $50,000 to $5,000,000',
+    format: 'REEL',
+    hook: 'Regional & Provincial Innovation Grants in 2026',
+    captions: {
+      instagram: `🏛️ Regional & Provincial Innovation Grants in 2026\n\nBeyond federal programs, Canada's Regional Development Agencies (FedDev Ontario, PrairiesCan, PacifiCan, ACOA) distribute over $1 Billion annually in non-dilutive scaling capital.\n\nHighlights:\n• Up to $5M in non-dilutive or 0% interest financing\n• Commercial scale-up and equipment acquisition\n• Advanced manufacturing and clean technology streams\n\nWatch the full breakdown above 👆\n🔗 Calculate your regional funding match: fsidigital.ca/calculator (link in bio)!`,
+      facebook: `🏛️ Regional & Provincial Innovation Grants in 2026\n\nBeyond federal IRAP and SR&ED, regional agencies like FedDev, PrairiesCan, and PacifiCan provide $500K to $5M in non-dilutive and low-interest scaling capital.\n\nWatch the video breakdown above.\n\nCheck your company's regional grant match:\n👉 https://fsidigital.ca/calculator`,
+      linkedin: `Regional Development Agencies (RDAs) such as FedDev Ontario, PrairiesCan, PacifiCan, and ACOA manage substantial non-dilutive and 0%-interest scaling facilities for Canadian enterprises.\n\nUnlike early-stage R&D funding, RDA capital focuses on commercial scale-up, facility expansion, advanced equipment acquisition, and domestic job creation.\n\nWatch our strategic overview above.\n\nEvaluate your company's regional grant readiness:\nhttps://fsidigital.ca/calculator`,
+    },
+    media: {
+      videoUrl: '/videos/reels/ontario-innovation-grants.mp4',
+    },
+    hashtags: ['#RegionalGrants', '#FedDev', '#PrairiesCan', '#PacifiCan', '#InnovationCanada', '#ScaleUpFunding'],
+    targetUrl: 'https://www.fsidigital.ca/calculator',
+  },
 ]
