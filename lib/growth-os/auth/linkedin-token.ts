@@ -44,7 +44,7 @@ export async function getValidLinkedInToken(): Promise<{
       if (refreshed) {
         return {
           token: refreshed.accessToken,
-          authorUrn: refreshed.personUrn || dynamicState.personUrn || process.env.LINKEDIN_ORG_URN?.trim() || '',
+          authorUrn: process.env.LINKEDIN_ORG_URN?.trim() || refreshed.personUrn || dynamicState.personUrn || '',
           source: 'dynamic_oauth',
           expiresAt: new Date(refreshed.expiresAt).toISOString(),
           personUrn: refreshed.personUrn || dynamicState.personUrn,
@@ -56,7 +56,7 @@ export async function getValidLinkedInToken(): Promise<{
     if (!dynamicState.expiresAt || now < dynamicState.expiresAt) {
       return {
         token: dynamicState.accessToken,
-        authorUrn: dynamicState.personUrn || process.env.LINKEDIN_ORG_URN?.trim() || '',
+        authorUrn: process.env.LINKEDIN_ORG_URN?.trim() || dynamicState.personUrn || '',
         source: 'dynamic_oauth',
         expiresAt: dynamicState.expiresAt ? new Date(dynamicState.expiresAt).toISOString() : undefined,
         personUrn: dynamicState.personUrn,
@@ -67,7 +67,7 @@ export async function getValidLinkedInToken(): Promise<{
   // Fallback to static environment variable
   const envToken = process.env.LINKEDIN_ACCESS_TOKEN?.trim();
   if (envToken) {
-    const urn = process.env.LINKEDIN_PERSON_URN?.trim() || process.env.LINKEDIN_ORG_URN?.trim() || '';
+    const urn = process.env.LINKEDIN_ORG_URN?.trim() || process.env.LINKEDIN_PERSON_URN?.trim() || '';
     return {
       token: envToken,
       authorUrn: urn,

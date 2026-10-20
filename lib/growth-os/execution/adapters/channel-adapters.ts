@@ -107,13 +107,15 @@ export class ChannelAdapters {
    */
   public static async postLinkedIn(text: string, hashtags: string[]): Promise<ChannelPublishResult> {
     const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()
-    const linkedInUrn = process.env.LINKEDIN_PERSON_URN?.trim() || process.env.LINKEDIN_ORG_URN?.trim()
+    const orgUrn = process.env.LINKEDIN_ORG_URN?.trim()
+    const personUrn = process.env.LINKEDIN_PERSON_URN?.trim()
+    const linkedInUrn = orgUrn || personUrn
 
     // Dynamically resolve auto-refreshing OAuth token if connected
     const { getValidLinkedInToken } = await import('@/lib/growth-os/auth/linkedin-token').catch(() => ({ getValidLinkedInToken: async () => null }))
     const dynamicAuth = await getValidLinkedInToken().catch(() => null)
     const activeToken = dynamicAuth?.token || token
-    const activeUrn = dynamicAuth?.authorUrn || linkedInUrn
+    const activeUrn = orgUrn || dynamicAuth?.authorUrn || linkedInUrn
 
     if (!activeToken || !activeUrn) {
       console.warn(`[LinkedInAdapter] LINKEDIN_ACCESS_TOKEN or LINKEDIN_PERSON_URN missing. Queuing LinkedIn draft safely into Exception Queue.`)
@@ -198,13 +200,15 @@ export class ChannelAdapters {
    */
   public static async postLinkedInCarousel(imageUrls: string[], text: string, hashtags: string[]): Promise<ChannelPublishResult> {
     const token = process.env.LINKEDIN_ACCESS_TOKEN?.trim()
-    const linkedInUrn = process.env.LINKEDIN_PERSON_URN?.trim() || process.env.LINKEDIN_ORG_URN?.trim()
+    const orgUrn = process.env.LINKEDIN_ORG_URN?.trim()
+    const personUrn = process.env.LINKEDIN_PERSON_URN?.trim()
+    const linkedInUrn = orgUrn || personUrn
 
     // Dynamically resolve auto-refreshing OAuth token if connected
     const { getValidLinkedInToken } = await import('@/lib/growth-os/auth/linkedin-token').catch(() => ({ getValidLinkedInToken: async () => null }))
     const dynamicAuth = await getValidLinkedInToken().catch(() => null)
     const activeToken = dynamicAuth?.token || token
-    const activeUrn = dynamicAuth?.authorUrn || linkedInUrn
+    const activeUrn = orgUrn || dynamicAuth?.authorUrn || linkedInUrn
 
     if (!activeToken || !activeUrn) {
       return this.postLinkedIn(text, hashtags)
