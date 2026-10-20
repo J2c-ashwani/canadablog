@@ -67,12 +67,26 @@ export class NativeYouTubeAdapter {
     }
 
     try {
-      console.log(`[YouTubeAdapter] Downloading rendered MP4 video from Shotstack: ${videoUrl}...`)
-      const videoRes = await fetch(videoUrl)
-      if (!videoRes.ok) {
-        throw new Error(`Failed to fetch video binary from ${videoUrl}`)
+      let videoBuffer: ArrayBuffer
+      if (videoUrl.startsWith('http://') || videoUrl.startsWith('https://')) {
+        console.log(`[YouTubeAdapter] Downloading MP4 video from remote URL: ${videoUrl}...`)
+        const videoRes = await fetch(videoUrl)
+        if (!videoRes.ok) {
+          throw new Error(`Failed to fetch video binary from ${videoUrl}`)
+        }
+        videoBuffer = await videoRes.arrayBuffer()
+      } else {
+        const fs = await import('fs')
+        const path = await import('path')
+        const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
+        const localPath = path.join(process.cwd(), 'public', cleanPath)
+        console.log(`[YouTubeAdapter] Loading local MP4 video file: ${localPath}...`)
+        if (!fs.existsSync(localPath)) {
+          throw new Error(`Local video file not found at ${localPath}`)
+        }
+        const fileData = fs.readFileSync(localPath)
+        videoBuffer = fileData.buffer.slice(fileData.byteOffset, fileData.byteOffset + fileData.byteLength)
       }
-      const videoBuffer = await videoRes.arrayBuffer()
 
       console.log(`[YouTubeAdapter] Initiating YouTube Resumable Upload for: '${title}'...`)
 
