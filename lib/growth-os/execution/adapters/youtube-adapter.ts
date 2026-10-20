@@ -80,12 +80,23 @@ export class NativeYouTubeAdapter {
         const path = await import('path')
         const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
         const localPath = path.join(process.cwd(), 'public', cleanPath)
-        console.log(`[YouTubeAdapter] Loading local MP4 video file: ${localPath}...`)
-        if (!fs.existsSync(localPath)) {
-          throw new Error(`Local video file not found at ${localPath}`)
+
+        if (fs.existsSync(localPath)) {
+          console.log(`[YouTubeAdapter] Loading local MP4 video file: ${localPath}...`)
+          const fileData = fs.readFileSync(localPath)
+          videoBuffer = fileData.buffer.slice(fileData.byteOffset, fileData.byteOffset + fileData.byteLength)
+        } else {
+          // Vercel serverless: public/ files are static assets, not bundled in the lambda.
+          // Fall back to fetching via HTTPS from production domain.
+          const base = process.env.NEXT_PUBLIC_APP_URL?.trim() || 'https://www.fsidigital.ca'
+          const httpsUrl = `${base.replace(/\/$/, '')}/${cleanPath}`
+          console.log(`[YouTubeAdapter] Local file not found. Fetching from HTTPS: ${httpsUrl}...`)
+          const videoRes = await fetch(httpsUrl)
+          if (!videoRes.ok) {
+            throw new Error(`Failed to fetch video from ${httpsUrl} (HTTP ${videoRes.status})`)
+          }
+          videoBuffer = await videoRes.arrayBuffer()
         }
-        const fileData = fs.readFileSync(localPath)
-        videoBuffer = fileData.buffer.slice(fileData.byteOffset, fileData.byteOffset + fileData.byteLength)
       }
 
       console.log(`[YouTubeAdapter] Initiating YouTube Resumable Upload for: '${title}'...`)

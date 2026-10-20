@@ -6,7 +6,7 @@ import { sendEmail } from '@/lib/emails/mailer'
 
 export const runtime = 'nodejs'
 export const dynamic = 'force-dynamic'
-export const maxDuration = 90
+export const maxDuration = 240
 
 export async function GET(request: NextRequest) {
   if (!isValidCronRequest(request)) {
