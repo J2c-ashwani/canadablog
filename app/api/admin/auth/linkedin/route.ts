@@ -18,10 +18,11 @@ export async function GET(request: NextRequest) {
   const redirectUri = searchParams.get('redirect_uri') || defaultRedirect;
 
   // Scopes: OpenID for identity + w_member_social for personal posting
-  // If org=true or company=true, also request organization posting permissions (requires Community Management API product)
+  // If org=true or company=true, request organization posting permissions (Community Management API)
+  // Note: Dedicated Org apps do not have openid/email, so request purely organizational scopes
   const isOrg = searchParams.get('org') === 'true' || searchParams.get('company') === 'true';
   const defaultScope = isOrg
-    ? 'openid profile email w_member_social w_organization_social r_organization_social'
+    ? 'w_organization_social r_organization_social rw_organization_admin'
     : 'openid profile email w_member_social';
   const requestedScope = searchParams.get('scope') || defaultScope;
 
