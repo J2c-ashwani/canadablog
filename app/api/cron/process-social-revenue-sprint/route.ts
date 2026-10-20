@@ -31,6 +31,7 @@ export async function GET(request: NextRequest) {
         const fbResult = result.results.find((r: any) => r.channelName === 'Facebook')
         const igResult = result.results.find((r: any) => r.channelName === 'Instagram')
         const liResult = result.results.find((r: any) => r.channelName === 'LinkedIn')
+        const ytResult = result.results.find((r: any) => r.channelName === 'YouTube')
 
         const fbUrl = fbResult?.externalId
           ? (fbResult.externalId.includes('_') ? `https://www.facebook.com/${fbResult.externalId.split('_')[0]}/posts/${fbResult.externalId.split('_')[1]}` : `https://www.facebook.com/${fbResult.externalId}`)
@@ -39,6 +40,9 @@ export async function GET(request: NextRequest) {
         const liUrl = liResult?.externalId
           ? `https://www.linkedin.com/feed/update/${liResult.externalId}`
           : 'https://www.linkedin.com/in/sukashwanikumar/recent-activity/all/'
+        const ytUrl = ytResult?.externalId
+          ? `https://www.youtube.com/shorts/${ytResult.externalId}`
+          : 'https://www.youtube.com/@fsidigital'
 
         const html = `
           <div style="font-family: Arial, sans-serif; background: #0f172a; color: #f8fafc; padding: 32px; border-radius: 12px; max-width: 640px; margin: 0 auto;">
@@ -64,10 +68,15 @@ export async function GET(request: NextRequest) {
                   <td style="padding: 12px 8px; color: #10B981;">${igResult?.status === 'API_ACCEPTED' || igResult?.status === 'LIVE_PUBLISHED' ? '✅ Published' : '⚠️ Queued'}</td>
                   <td style="padding: 12px 8px; text-align: right;"><a href="${igUrl}" style="background: #e11d48; color: #fff; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: bold;">View Post →</a></td>
                 </tr>
-                <tr>
+                <tr style="border-bottom: 1px solid #1e293b;">
                   <td style="padding: 12px 8px; font-weight: bold; color: #0284c7;">💼 LinkedIn</td>
                   <td style="padding: 12px 8px; color: #10B981;">${liResult?.status === 'API_ACCEPTED' || liResult?.status === 'LIVE_PUBLISHED' ? '✅ Published' : '⚠️ Queued'}</td>
                   <td style="padding: 12px 8px; text-align: right;"><a href="${liUrl}" style="background: #0284c7; color: #fff; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: bold;">View Post →</a></td>
+                </tr>
+                <tr>
+                  <td style="padding: 12px 8px; font-weight: bold; color: #ef4444;">🎬 YouTube Shorts</td>
+                  <td style="padding: 12px 8px; color: #10B981;">${ytResult?.status === 'API_ACCEPTED' || ytResult?.status === 'LIVE_PUBLISHED' ? '✅ Published' : '⚠️ Queued'}</td>
+                  <td style="padding: 12px 8px; text-align: right;"><a href="${ytUrl}" style="background: #dc2626; color: #fff; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: bold;">View Shorts →</a></td>
                 </tr>
               </tbody>
             </table>
@@ -81,7 +90,7 @@ export async function GET(request: NextRequest) {
 
         await sendEmail({
           to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-          subject: `🚀 [Growth OS] Daily Social Posts Live — Facebook, Instagram & LinkedIn`,
+          subject: `🚀 [Growth OS] Daily Social Posts Live — Facebook, Instagram, LinkedIn & YouTube Shorts`,
           html,
           text: `Daily Social Posts Published at ${nowIST}.\nFacebook: ${fbUrl}\nInstagram: ${igUrl}\nLinkedIn: ${liUrl}\n\nFunnel target: https://fsidigital.ca/calculator`,
           tagType: 'social-revenue-sprint'

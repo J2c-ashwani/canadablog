@@ -8,7 +8,7 @@ const STATE_KEY = 'social-revenue-sprint-september-v1'
 const MIN_VARIANT_GAP_MS = process.env.SOCIAL_VARIANT_GAP_MS ? Number(process.env.SOCIAL_VARIANT_GAP_MS) : (20 * 60 * 60 * 1000) // 36 * 60 * 60 * 1000
 const INITIAL_VARIANT_ID = 'sep-match-fit-v1'
 
-type ChannelId = 'linkedin' | 'facebook' | 'instagram'
+type ChannelId = 'linkedin' | 'facebook' | 'instagram' | 'youtube'
 
 type ChannelReceipt = {
   status: ChannelPublishResult['status']
@@ -255,6 +255,32 @@ export class SocialRevenueSprintService {
         return ChannelAdapters.postLinkedInCarousel(slides, commentary, variant.hashtags)
       }
       return ChannelAdapters.postLinkedIn(commentary, variant.hashtags)
+    })
+
+    // 4. YouTube Shorts Dispatch (Automatic Shorts Upload for Vertical Video Reels)
+    await dispatch('youtube', async () => {
+      const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+      const title = infoPost?.title || '🇨🇦 Canadian Business Grants & Funding'
+      const description = `${infoPost?.captions?.facebook || variant.facebook}\n\n🔗 Calculate your non-dilutive funding match in 60 seconds:\n👉 https://www.fsidigital.ca/calculator\n\n#Shorts #Grants #BusinessFunding #StartupFunding #CanadaBusiness #FSI`
+
+      try {
+        const { NativeYouTubeAdapter } = await import('@/lib/growth-os/execution/adapters/youtube-adapter')
+        const result = await NativeYouTubeAdapter.uploadShortsFromUrl(reelVideoUrl, title, description)
+        return {
+          channelName: 'YouTube',
+          status: result.success ? 'LIVE_PUBLISHED' : 'QUEUED_FOR_APPROVAL',
+          externalId: result.videoId || '',
+          message: result.success
+            ? `YouTube Short published live: ${result.videoUrl}`
+            : `YouTube upload: ${result.error || 'Pending credentials or processing'}`,
+        }
+      } catch (ytErr: any) {
+        return {
+          channelName: 'YouTube',
+          status: 'QUEUED_FOR_APPROVAL',
+          message: `YouTube error: ${ytErr.message}`,
+        }
+      }
     })
 
     return {

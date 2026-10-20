@@ -142,13 +142,11 @@ export async function GET(request: NextRequest) {
     // 4. YouTube Test (Tests actual Video Rendering & OAuth Upload prerequisites)
     const runYouTubeTest = async () => {
       const start = Date.now()
-      const shotstackKey = process.env.SHOTSTACK_API_KEY?.trim()
       const refreshToken = process.env.YOUTUBE_REFRESH_TOKEN?.trim()
       const clientId = process.env.YOUTUBE_CLIENT_ID?.trim()
       const clientSecret = process.env.YOUTUBE_CLIENT_SECRET?.trim()
 
       const missing: string[] = []
-      if (!shotstackKey) missing.push("SHOTSTACK_API_KEY")
       if (!clientId) missing.push("YOUTUBE_CLIENT_ID")
       if (!clientSecret) missing.push("YOUTUBE_CLIENT_SECRET")
       if (!refreshToken) missing.push("YOUTUBE_REFRESH_TOKEN")
