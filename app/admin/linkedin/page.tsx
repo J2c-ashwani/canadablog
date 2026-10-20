@@ -489,11 +489,21 @@ export default function LinkedInPublisherPage() {
 
               <div className="flex flex-col sm:flex-row items-center gap-3">
                 <a
-                  href="/api/admin/auth/linkedin"
+                  href="/api/admin/auth/linkedin?org=true"
                   className="bg-[#0077b5] hover:bg-[#006097] text-white font-bold text-xs py-3 px-5 rounded-xl shadow-md flex items-center gap-2 transition-all hover:scale-105"
+                  title="Requests w_organization_social permission to post as FSI Digital Company Page (requires Community Management API product)"
+                >
+                  <Building2 className="w-4 h-4" />
+                  Connect Company Page (FSI Digital)
+                </a>
+
+                <a
+                  href="/api/admin/auth/linkedin"
+                  className="bg-slate-700 hover:bg-slate-800 text-white font-semibold text-xs py-3 px-4 rounded-xl shadow-sm flex items-center gap-2 transition-colors"
+                  title="Requests standard w_member_social permission (works immediately via Share on LinkedIn)"
                 >
                   <Linkedin className="w-4 h-4 fill-white" />
-                  {isConnected ? 'Re-authorize Account' : 'Step 2: Connect LinkedIn Account'}
+                  Connect Personal Profile
                 </a>
 
                 <a
