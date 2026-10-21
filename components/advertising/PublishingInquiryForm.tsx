@@ -22,7 +22,7 @@ function FormInner() {
   if (preselectedPackage === 'client-supplied') {
     defaultPackage = 'Client-Supplied Sponsored Article (Starting at $125 USD)';
   } else if (preselectedPackage === 'resource-insertion') {
-    defaultPackage = 'Resource Insertion / Article Sponsorship ($100–$150 USD)';
+    defaultPackage = 'Sponsored Resource Mention ($100–$150 USD)';
   } else if (preselectedPackage === 'agency-bulk') {
     defaultPackage = 'Agency & Multi-Article Publishing (Custom Quote)';
   }
@@ -213,8 +213,8 @@ function FormInner() {
             <option value="Client-Supplied Sponsored Article (Starting at $125 USD)">
               Client-Supplied Sponsored Article (Starting at $125 USD)
             </option>
-            <option value="Resource Insertion / Article Sponsorship ($100–$150 USD)">
-              Resource Insertion / Article Sponsorship ($100–$150 USD)
+            <option value="Sponsored Resource Mention ($100–$150 USD)">
+              Sponsored Resource Mention ($100–$150 USD)
             </option>
             <option value="Agency & Multi-Article Publishing (Custom Quote)">
               Agency &amp; Multi-Article Publishing (Custom Quote)

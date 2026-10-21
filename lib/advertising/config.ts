@@ -64,8 +64,8 @@ export const ADVERTISING_PACKAGES: Record<string, AdvertisingPackage> = {
   },
   'resource-insertion': {
     id: 'resource-insertion',
-    name: 'Resource Insertion / Article Sponsorship',
-    tagline: 'Contextual citation or product spotlight inside existing high-ranking articles.',
+    name: 'Sponsored Resource Mention',
+    tagline: 'Contextually relevant product spotlight or research citation inside existing guides.',
     priceUsd: 100,
     priceDisplay: '$100 – $150 USD (Starting from $100)',
     wordCount: '50 – 150 words contextual update',
@@ -73,10 +73,10 @@ export const ADVERTISING_PACKAGES: Record<string, AdvertisingPackage> = {
     revisionRounds: 1,
     maxLinks: 1,
     directCheckout: false,
-    description: 'Place your SaaS tool, professional service, or research resource inside an existing, topically aligned article covering business funding and growth.',
+    description: 'Feature your relevant software tool, professional service, or research resource inside an existing, topically aligned guide covering business funding and growth.',
     inclusions: [
       'Editorial integration into an established, contextually relevant guide',
-      '1 contextual outbound link (marked rel="sponsored")',
+      '1 contextual outbound link (strictly qualified with rel="sponsored")',
       'Editorial review to ensure topical fit and reader value',
       'Rapid turnaround within 48 hours of editorial sign-off',
       'Active placement guaranteed for at least 12 months',

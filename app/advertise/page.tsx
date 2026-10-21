@@ -36,7 +36,7 @@ export const metadata: Metadata = {
 const FAQS = [
   {
     q: "What does sponsored article publishing cost?",
-    a: "We offer transparent, fixed pricing across three formats: Done-for-You Sponsored Articles cost $225 USD (covering full research, writing, revisions, and publication); Client-Supplied Sponsored Articles start at $125 USD (covering editorial review, fact-checking, and publication of your draft); and Resource Insertions in established articles range from $100 to $150 USD. Agency volume pricing is available upon inquiry.",
+    a: "We offer transparent, fixed pricing across three formats: Done-for-You Sponsored Articles cost $225 USD (covering full research, writing, revisions, and publication); Client-Supplied Sponsored Articles start at $125 USD (covering editorial review, fact-checking, and publication of your draft); and Sponsored Resource Mentions in established guides range from $100 to $150 USD. Agency volume pricing is available upon inquiry.",
   },
   {
     q: "Can I submit my own pre-written article?",
@@ -133,7 +133,7 @@ const jsonLd = {
           },
           {
             "@type": "Offer",
-            "name": "Resource Insertion / Article Sponsorship",
+            "name": "Sponsored Resource Mention",
             "price": "100.00",
             "priceCurrency": "USD",
             "description": "Contextual resource mention in an existing topically aligned guide (from $100 USD, up to $150 USD depending on article placement context)."
@@ -321,11 +321,11 @@ export default function AdvertisePage() {
                 </div>
               </div>
 
-              {/* Card 3: Resource Insertion */}
+              {/* Card 3: Sponsored Resource Mention */}
               <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm flex flex-col justify-between hover:border-slate-300 transition-colors">
                 <div>
                   <div className="text-sm font-semibold uppercase tracking-wider text-slate-500">
-                    Existing Article Spotlight
+                    Existing Guide Spotlight
                   </div>
                   <h3 className="mt-1 text-2xl font-bold text-slate-900">
                     {ADVERTISING_PACKAGES['resource-insertion'].name}
