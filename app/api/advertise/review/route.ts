@@ -50,11 +50,12 @@ export async function POST(request: NextRequest) {
             <div style="background: #f8fafc; border: 1px solid #cbd5e1; border-radius: 6px; padding: 14px; font-size: 13px; color: #334155;">
               <h4 style="margin: 0 0 8px 0; color: #0f172a; text-transform: uppercase; font-size: 11px; letter-spacing: 0.5px;">Mandatory Editorial Checklist Prior to Live Publication:</h4>
               <ul style="margin: 0; padding-left: 20px; line-height: 1.6;">
+                <li>Verify canonical URL is strictly set to <code>https://www.fsidigital.ca/blog/[slug]</code> (with www).</li>
                 <li>Verify all outbound links are strictly qualified with <code>rel="sponsored"</code> or <code>rel="nofollow"</code> (NO dofollow links).</li>
                 <li>Verify destination URLs are legitimate, secure HTTPS, and comply with anti-malware standards.</li>
                 <li>Verify header disclosure badge ("Sponsored Article" or "Paid Partnership") is prominent.</li>
                 <li>Verify content does not contain prohibited categories (gambling, payday loans, fraudulent finance, unverified health claims).</li>
-                <li>Stage article in CMS and update order record with live URL once confirmed.</li>
+                <li>Stage article in CMS under <code>https://www.fsidigital.ca/blog/[slug]</code> and update order record with live URL once confirmed.</li>
               </ul>
             </div>
           </div>

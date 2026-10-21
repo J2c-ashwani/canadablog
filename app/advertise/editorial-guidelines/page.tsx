@@ -249,7 +249,7 @@ export default function EditorialGuidelinesPage() {
                       <strong>Cancellation After Drafting Commences:</strong> Because professional research and editorial labor have been expended once drafting begins, orders canceled after initial draft delivery are eligible for a <strong>50% partial refund</strong>, provided live publication has not been authorized.
                     </li>
                     <li>
-                      <strong>Post-Publication:</strong> Once customer approval and final staff release authorization are completed and the article is published live to fsidigital.ca, active hosting is guaranteed for at least 12 months, and sales are final.
+                      <strong>Post-Publication:</strong> Once customer approval and final staff release authorization are completed and the article is published live to www.fsidigital.ca, active hosting is guaranteed for at least 12 months, and sales are final.
                     </li>
                   </ul>
                 </div>
