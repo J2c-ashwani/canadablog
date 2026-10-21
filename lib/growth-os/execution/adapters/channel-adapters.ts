@@ -525,6 +525,17 @@ export class ChannelAdapters {
     }
 
     try {
+      // Resolve page token if needed (convert user token to page token)
+      try {
+        const pageInfoRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}?fields=access_token&access_token=${encodeURIComponent(token)}`, { method: "GET" })
+        if (pageInfoRes.ok) {
+          const pageInfo = await pageInfoRes.json().catch(() => ({})) as { access_token?: string }
+          if (pageInfo.access_token) token = pageInfo.access_token
+        }
+      } catch {
+        // Proceed with configured token
+      }
+
       const fs = await import('fs')
       const path = await import('path')
       const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
@@ -548,16 +559,38 @@ export class ChannelAdapters {
       } else {
         const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
         console.log(`[FacebookAdapter] Publishing Reel video from remote URL ${absVideoUrl}...`)
-        response = await fetchWithRetry(`https://graph-video.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            file_url: absVideoUrl,
-            title,
-            description,
-            access_token: token,
-          }),
-        })
+        try {
+          response = await fetchWithRetry(`https://graph-video.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              file_url: absVideoUrl,
+              title,
+              description,
+              access_token: token,
+            }),
+          })
+          const testPayload = await response.clone().json().catch(() => ({})) as { id?: string }
+          if (!response.ok || !testPayload.id) {
+            throw new Error(`file_url rejected: HTTP ${response.status}`)
+          }
+        } catch (urlErr) {
+          console.warn(`[FacebookAdapter] file_url upload failed (${urlErr}), downloading buffer for direct multipart upload...`)
+          const videoRes = await fetch(absVideoUrl)
+          if (!videoRes.ok) throw new Error(`Failed to fetch video binary from ${absVideoUrl}`)
+          const videoBuffer = await videoRes.arrayBuffer()
+          const blob = new Blob([videoBuffer], { type: 'video/mp4' })
+          const formData = new FormData()
+          formData.append('source', blob, path.basename(cleanPath))
+          formData.append('title', title)
+          formData.append('description', description)
+          formData.append('access_token', token)
+
+          response = await fetchWithRetry(`https://graph-video.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
+            method: "POST",
+            body: formData,
+          })
+        }
       }
 
       const payload = await response.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
