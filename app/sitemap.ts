@@ -32,6 +32,7 @@ function isIndexableRoute(route: string): boolean {
   if (route === '/booking') return false
   if (route === '/consultation') return false
   if (route.startsWith('/partners/checkout')) return false
+  if (route.startsWith('/advertise/order')) return false
 
   const blogSlug = route.startsWith('/blog/') ? route.replace('/blog/', '') : null
   if (blogSlug?.endsWith('-archive')) return false

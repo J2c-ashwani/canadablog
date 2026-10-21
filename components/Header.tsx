@@ -354,6 +354,13 @@ export function Header() {
                         Expert Insights
                       </Link>
                       <Link
+                        href="/advertise"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 font-medium"
+                        onClick={closeDropdowns}
+                      >
+                        Advertise &amp; Publish
+                      </Link>
+                      <Link
                         href="/founder-ai"
                         className="block px-4 py-2 text-sm text-indigo-600 hover:bg-indigo-50 rounded-b-lg font-semibold flex items-center justify-between"
                         onClick={closeDropdowns}
@@ -691,6 +698,16 @@ export function Header() {
                         }}
                       >
                         Expert Insights
+                      </Link>
+                      <Link
+                        href="/advertise"
+                        className="block text-sm text-gray-600 hover:text-primary py-2 font-medium"
+                        onClick={() => {
+                          setIsMenuOpen(false)
+                          setResourcesDropdownOpen(false)
+                        }}
+                      >
+                        Advertise &amp; Publish
                       </Link>
                       <Link
                         href="/founder-ai"

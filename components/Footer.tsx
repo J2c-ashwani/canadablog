@@ -17,7 +17,7 @@ export function Footer() {
   const isExistingLadderRoute = pathname === '/'
     || /^\/blog\/[^/]+\/?$/.test(pathname)
     || /^\/grants\/[^/]+\/[^/]+\/[^/]+\/?$/.test(pathname);
-  const isTransactionalRoute = /^\/(?:admin|affiliates|api|apply|audit|booking|calculator|download|funding-calculator|mca|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname);
+  const isTransactionalRoute = /^\/(?:admin|affiliates|api|apply|audit|booking|calculator|download|funding-calculator|mca|membership|priority-processing|products|thank-you)(?:\/|$)/.test(pathname) || /^\/advertise\/order(?:\/|$)/.test(pathname);
   const showOrganicProductLadder = !isExistingLadderRoute && !isTransactionalRoute;
   const footerOfferHref = (offer: 'match-report' | 'toolkit' | 'action-plan' | 'bundle' | 'membership') => {
     const params = new URLSearchParams({ surface: 'footer', context: pathname, offer });
@@ -123,6 +123,9 @@ export function Footer() {
                 </Link>
                 <Link href="/partners" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Funding Partners
+                </Link>
+                <Link href="/advertise" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
+                  Advertise &amp; Publish
                 </Link>
                 <Link href="/affiliates" data-google-vignette="false" className="text-gray-400 hover:text-white text-sm">
                   Affiliate Program
