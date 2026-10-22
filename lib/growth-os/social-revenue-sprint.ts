@@ -178,22 +178,45 @@ export class SocialRevenueSprintService {
 
     const receipts = state.variants[variant.id] || {}
     const results: ChannelPublishResult[] = []
-    const dispatch = async (channel: ChannelId, send: () => Promise<ChannelPublishResult>) => {
-      if (accepted(receipts[channel])) return
-      const result = await send()
-      results.push(result)
-      if (!providerAccepted(result)) return
-      const acceptedAt = new Date().toISOString()
-      receipts[channel] = {
-        status: result.status,
-        externalId: result.externalId || '',
-        acceptedAt,
-        message: result.message,
+
+    const formatChannelName = (channel: ChannelId) => {
+      switch (channel) {
+        case 'facebook': return 'Facebook'
+        case 'instagram': return 'Instagram'
+        case 'linkedin': return 'LinkedIn'
+        case 'youtube': return 'YouTube'
       }
-      state.variants[variant.id] = receipts
-      state.lastAcceptedAt = acceptedAt
-      state.updatedAt = acceptedAt
-      await setOperationalState(STATE_KEY, state)
+    }
+
+    const dispatch = async (channel: ChannelId, send: () => Promise<ChannelPublishResult>) => {
+      if (accepted(receipts[channel])) {
+        results.push({
+          channelName: formatChannelName(channel),
+          status: receipts[channel]!.status,
+          externalId: receipts[channel]!.externalId,
+          message: receipts[channel]!.message,
+        })
+        return
+      }
+      try {
+        const result = await send()
+        results.push(result)
+        if (providerAccepted(result)) {
+          const acceptedAt = new Date().toISOString()
+          receipts[channel] = {
+            status: result.status,
+            externalId: result.externalId || '',
+            acceptedAt,
+            message: result.message,
+          }
+        }
+      } catch (err: any) {
+        results.push({
+          channelName: formatChannelName(channel),
+          status: 'QUEUED_FOR_APPROVAL',
+          message: `Dispatch exception: ${err?.message || err}`,
+        })
+      }
     }
 
     const linkedInUrl = createTrackedGrowthUrl(variant.target, actionContext('linkedin', variant))
@@ -217,84 +240,101 @@ export class SocialRevenueSprintService {
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)
 
-    // 1. Facebook Dispatch (Alternating 9:16 Video Reel vs Multi-Photo Carousel Album — Zero Plain-Text Fallback)
-    await dispatch('facebook', async () => {
-      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-        return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, infoPost.captions.facebook, facebookUrl)
-      }
-      const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
-      const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
-      const caption = infoPost?.captions?.facebook || variant.facebook
-      const fullDescription = `${caption}\n\n🔗 Calculate your eligibility:\n👉 ${facebookUrl}`
+    // Execute all 4 independent channels concurrently to stay well below the 60s Vercel timeout
+    await Promise.allSettled([
+      // 1. Facebook Dispatch (Alternating 9:16 Video Reel vs Multi-Photo Carousel Album — Zero Plain-Text Fallback)
+      dispatch('facebook', async () => {
+        if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+          return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, infoPost.captions.facebook, facebookUrl)
+        }
+        const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+        const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
+        const caption = infoPost?.captions?.facebook || variant.facebook
+        const fullDescription = `${caption}\n\n🔗 Calculate your eligibility:\n👉 ${facebookUrl}`
 
-      const reelResult = await ChannelAdapters.postFacebookReel(reelVideoUrl, reelTitle, fullDescription)
-      if (providerAccepted(reelResult)) return reelResult
+        const reelResult = await ChannelAdapters.postFacebookReel(reelVideoUrl, reelTitle, fullDescription)
+        if (providerAccepted(reelResult)) return reelResult
 
-      // Resilience Fallback: If Reel video upload fails, fallback to Multi-Photo Carousel
-      const fallbackSlides = infoPost?.media.carouselSlides?.length
-        ? infoPost.media.carouselSlides
-        : INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.format === 'CAROUSEL' && p.media.carouselSlides?.length)?.media.carouselSlides
+        // Resilience Fallback: If Reel video upload fails, fallback to Multi-Photo Carousel
+        const fallbackSlides = infoPost?.media.carouselSlides?.length
+          ? infoPost.media.carouselSlides
+          : INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.format === 'CAROUSEL' && p.media.carouselSlides?.length)?.media.carouselSlides
 
-      if (fallbackSlides && fallbackSlides.length > 0) {
-        console.warn(`[SocialRevenueSprint] Facebook Reel upload failed; falling back to Multi-Photo Carousel...`)
-        return ChannelAdapters.postFacebookMultiPhoto(fallbackSlides, caption, facebookUrl)
-      }
+        if (fallbackSlides && fallbackSlides.length > 0) {
+          console.warn(`[SocialRevenueSprint] Facebook Reel upload failed; falling back to Multi-Photo Carousel...`)
+          return ChannelAdapters.postFacebookMultiPhoto(fallbackSlides, caption, facebookUrl)
+        }
 
-      return reelResult
-    })
+        return reelResult
+      }),
 
-    // 2. Instagram Dispatch (Alternating 9:16 Video Reel vs Multi-Slide Carousel — Zero Plain-Text Fallback)
-    await dispatch('instagram', async () => {
-      if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-        return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, variant.hashtags)
-      }
-      const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
-      const caption = infoPost?.captions?.instagram || `${variant.facebook}\n\n🔗 ${instagramUrl}`
+      // 2. Instagram Dispatch (Alternating 9:16 Video Reel vs Multi-Slide Carousel — Zero Plain-Text Fallback)
+      dispatch('instagram', async () => {
+        if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
+          return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, variant.hashtags)
+        }
+        const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+        const caption = infoPost?.captions?.instagram || `${variant.facebook}\n\n🔗 ${instagramUrl}`
 
-      return ChannelAdapters.postInstagramReel(reelVideoUrl, caption, variant.hashtags)
-    })
+        return ChannelAdapters.postInstagramReel(reelVideoUrl, caption, variant.hashtags)
+      }),
 
-    // 3. LinkedIn Dispatch (Always Multi-Slide Carousel with Proper Captions & Hashtags — Zero Plain-Text Fallback)
-    await dispatch('linkedin', async () => {
-      const slides = (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length)
-        ? infoPost.media.carouselSlides
-        : (INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.format === 'CAROUSEL' && p.media.carouselSlides?.length)?.media.carouselSlides || [])
+      // 3. LinkedIn Dispatch (Always Multi-Slide Carousel with Proper Captions & Hashtags — Zero Plain-Text Fallback)
+      dispatch('linkedin', async () => {
+        const slides = (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length)
+          ? infoPost.media.carouselSlides
+          : (INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.format === 'CAROUSEL' && p.media.carouselSlides?.length)?.media.carouselSlides || [])
 
-      const commentary = infoPost?.captions?.linkedin
-        ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}`
-        : `${variant.linkedin}\n\n🔗 ${linkedInUrl}`
+        const commentary = infoPost?.captions?.linkedin
+          ? `${infoPost.captions.linkedin}\n\n🔗 ${linkedInUrl}`
+          : `${variant.linkedin}\n\n🔗 ${linkedInUrl}`
 
-      if (slides.length > 0) {
-        return ChannelAdapters.postLinkedInCarousel(slides, commentary, variant.hashtags)
-      }
-      return ChannelAdapters.postLinkedIn(commentary, variant.hashtags)
-    })
+        if (slides.length > 0) {
+          return ChannelAdapters.postLinkedInCarousel(slides, commentary, variant.hashtags)
+        }
+        return ChannelAdapters.postLinkedIn(commentary, variant.hashtags)
+      }),
 
-    // 4. YouTube Shorts Dispatch (Automatic Shorts Upload for Vertical Video Reels)
-    await dispatch('youtube', async () => {
-      const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
-      const title = infoPost?.title || '🇨🇦 Canadian Business Grants & Funding'
-      const description = `${infoPost?.captions?.facebook || variant.facebook}\n\n🔗 Calculate your non-dilutive funding match in 60 seconds:\n👉 https://www.fsidigital.ca/calculator\n\n#Shorts #Grants #BusinessFunding #StartupFunding #CanadaBusiness #FSI`
+      // 4. YouTube Shorts Dispatch (Automatic Shorts Upload for Vertical Video Reels)
+      dispatch('youtube', async () => {
+        const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+        const title = infoPost?.title || '🇨🇦 Canadian Business Grants & Funding'
+        const description = `${infoPost?.captions?.facebook || variant.facebook}\n\n🔗 Calculate your non-dilutive funding match in 60 seconds:\n👉 https://www.fsidigital.ca/calculator\n\n#Shorts #Grants #BusinessFunding #StartupFunding #CanadaBusiness #FSI`
 
+        try {
+          const { NativeYouTubeAdapter } = await import('@/lib/growth-os/execution/adapters/youtube-adapter')
+          const result = await NativeYouTubeAdapter.uploadShortsFromUrl(reelVideoUrl, title, description)
+          return {
+            channelName: 'YouTube',
+            status: result.success ? 'LIVE_PUBLISHED' : 'QUEUED_FOR_APPROVAL',
+            externalId: result.videoId || '',
+            message: result.success
+              ? `YouTube Short published live: ${result.videoUrl}`
+              : `YouTube upload: ${result.error || 'Pending credentials or processing'}`,
+          }
+        } catch (ytErr: any) {
+          return {
+            channelName: 'YouTube',
+            status: 'QUEUED_FOR_APPROVAL',
+            message: `YouTube error: ${ytErr.message}`,
+          }
+        }
+      }),
+    ])
+
+    // Save consolidated state once after all 4 parallel dispatches complete
+    const anyAccepted = results.some(providerAccepted)
+    if (anyAccepted) {
+      const acceptedAt = new Date().toISOString()
+      state.variants[variant.id] = receipts
+      state.lastAcceptedAt = acceptedAt
+      state.updatedAt = acceptedAt
       try {
-        const { NativeYouTubeAdapter } = await import('@/lib/growth-os/execution/adapters/youtube-adapter')
-        const result = await NativeYouTubeAdapter.uploadShortsFromUrl(reelVideoUrl, title, description)
-        return {
-          channelName: 'YouTube',
-          status: result.success ? 'LIVE_PUBLISHED' : 'QUEUED_FOR_APPROVAL',
-          externalId: result.videoId || '',
-          message: result.success
-            ? `YouTube Short published live: ${result.videoUrl}`
-            : `YouTube upload: ${result.error || 'Pending credentials or processing'}`,
-        }
-      } catch (ytErr: any) {
-        return {
-          channelName: 'YouTube',
-          status: 'QUEUED_FOR_APPROVAL',
-          message: `YouTube error: ${ytErr.message}`,
-        }
+        await setOperationalState(STATE_KEY, state)
+      } catch (stateErr: any) {
+        console.error('[SocialRevenueSprint] Failed to save operational state:', stateErr)
       }
-    })
+    }
 
     return {
       active: true,

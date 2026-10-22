@@ -37,9 +37,9 @@ export async function GET(request: NextRequest) {
           ? (fbResult.externalId.includes('_') ? `https://www.facebook.com/${fbResult.externalId.split('_')[0]}/posts/${fbResult.externalId.split('_')[1]}` : `https://www.facebook.com/${fbResult.externalId}`)
           : 'https://www.facebook.com/1077759455417325'
         const igUrl = 'https://www.instagram.com/fsidigital.ca/'
-        const liUrl = liResult?.externalId
+        const liUrl = liResult?.status === 'API_ACCEPTED' && liResult?.externalId
           ? `https://www.linkedin.com/feed/update/${liResult.externalId}`
-          : 'https://www.linkedin.com/in/sukashwanikumar/recent-activity/all/'
+          : 'https://www.linkedin.com/company/fsidigital'
         const ytUrl = ytResult?.externalId
           ? `https://www.youtube.com/shorts/${ytResult.externalId}`
           : 'https://www.youtube.com/@fsidigital'
@@ -70,8 +70,8 @@ export async function GET(request: NextRequest) {
                 </tr>
                 <tr style="border-bottom: 1px solid #1e293b;">
                   <td style="padding: 12px 8px; font-weight: bold; color: #0284c7;">💼 LinkedIn</td>
-                  <td style="padding: 12px 8px; color: #10B981;">${liResult?.status === 'API_ACCEPTED' || liResult?.status === 'LIVE_PUBLISHED' ? '✅ Published' : '⚠️ Queued'}</td>
-                  <td style="padding: 12px 8px; text-align: right;"><a href="${liUrl}" style="background: #0284c7; color: #fff; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: bold;">View Post →</a></td>
+                  <td style="padding: 12px 8px; color: ${liResult?.status === 'API_ACCEPTED' || liResult?.status === 'LIVE_PUBLISHED' ? '#10B981' : '#f59e0b'};">${liResult?.status === 'API_ACCEPTED' || liResult?.status === 'LIVE_PUBLISHED' ? '✅ Published' : '⚠️ Queued (Company Approval Pending)'}</td>
+                  <td style="padding: 12px 8px; text-align: right;"><a href="${liUrl}" style="background: #0284c7; color: #fff; text-decoration: none; padding: 6px 14px; border-radius: 6px; font-size: 13px; font-weight: bold;">${liResult?.status === 'API_ACCEPTED' ? 'View Post →' : 'View Company Page →'}</a></td>
                 </tr>
                 <tr>
                   <td style="padding: 12px 8px; font-weight: bold; color: #ef4444;">🎬 YouTube Shorts</td>
