@@ -1,9 +1,9 @@
 name: Daily Social Revenue Sprint
 
 on:
-  schedule:
-    # 13:30 UTC = 19:00 IST (7:00 PM IST) daily
-    - cron: '30 13 * * *'
+  # Standby runner: schedule paused while testing optimized Vercel pipeline
+  # schedule:
+  #   - cron: '30 13 * * *'
   workflow_dispatch:
     # Allows manual 1-click trigger from GitHub Actions tab
 
