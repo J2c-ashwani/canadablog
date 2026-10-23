@@ -429,7 +429,44 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="border-t border-gray-800 mt-12 pt-8">
+        {/* Sprint 9: High-Authority Internal Crawl Bridge for Discovered Hubs & Comparisons */}
+        <div className="border-t border-gray-800 mt-10 pt-8 grid grid-cols-1 md:grid-cols-3 gap-8 text-xs">
+          <div>
+            <h4 className="font-bold text-gray-200 text-sm mb-3">Compare Grants &amp; Financing</h4>
+            <ul className="space-y-1.5 text-gray-400">
+              <li><Link href="/compare" className="hover:text-emerald-400 font-semibold">All 30+ Side-by-Side Comparisons →</Link></li>
+              <li><Link href="/compare/csbfp-vs-bdc" className="hover:text-white">CSBFP vs BDC Small Business Financing</Link></li>
+              <li><Link href="/compare/irap-vs-sif" className="hover:text-white">NRC-IRAP vs Strategic Innovation Fund (SIF)</Link></li>
+              <li><Link href="/compare/nsf-vs-nih-sbir" className="hover:text-white">NSF vs NIH SBIR Biotech Grants</Link></li>
+              <li><Link href="/compare/usda-reap-vs-doe-clean-energy" className="hover:text-white">USDA REAP vs DOE Clean Energy Grants</Link></li>
+              <li><Link href="/compare/calcompetes-vs-etp" className="hover:text-white">California Competes Tax Credit vs ETP</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-gray-200 text-sm mb-3">Flagship Provincial &amp; State Grids</h4>
+            <ul className="space-y-1.5 text-gray-400">
+              <li><Link href="/grants" className="hover:text-emerald-400 font-semibold">Complete 800+ Grants Database →</Link></li>
+              <li><Link href="/canada/ontario" className="hover:text-white">Ontario Small Business Grants &amp; Subsidies</Link></li>
+              <li><Link href="/canada/british-columbia" className="hover:text-white">British Columbia Tech &amp; Innovation Grants</Link></li>
+              <li><Link href="/canada/alberta" className="hover:text-white">Alberta Business &amp; Agri-Food Funding</Link></li>
+              <li><Link href="/canada/quebec" className="hover:text-white">Quebec Innovation &amp; Export Subsidies</Link></li>
+              <li><Link href="/usa/florida" className="hover:text-white">Florida Business Grants &amp; Loans</Link></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-bold text-gray-200 text-sm mb-3">Priority Sector Guides (2026)</h4>
+            <ul className="space-y-1.5 text-gray-400">
+              <li><Link href="/blog/biotech-life-sciences-grants" className="hover:text-white">Biotech &amp; Life Sciences Funding Guide</Link></li>
+              <li><Link href="/blog/california-tech-programs" className="hover:text-white">California Tech &amp; Accelerator Incentives</Link></li>
+              <li><Link href="/blog/british-columbia-innovation-grants" className="hover:text-white">BC Innovation &amp; Clean Energy Grants</Link></li>
+              <li><Link href="/blog/atlantic-canada-innovation-grants" className="hover:text-white">Atlantic Canada (ACOA) Innovation Funding</Link></li>
+              <li><Link href="/blog/agriculture-grants-2026" className="hover:text-white">Agriculture &amp; Agri-Food Canada Grants</Link></li>
+              <li><Link href="/calculator" className="hover:text-emerald-400 font-semibold">Interactive Grant Eligibility Calculator →</Link></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="text-gray-500 text-xs mb-6 max-w-4xl leading-relaxed">
             Disclaimer: FSI Digital is an independent private consultancy. We are not affiliated with, endorsed by, or associated with the Government of Canada, the Government of the United States, or any official federal, provincial, or state funding agency.
           </div>

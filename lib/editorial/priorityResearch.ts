@@ -232,8 +232,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/nih-sbir-biotech-grants': {
     route: '/blog/nih-sbir-biotech-grants',
-    seoTitle: 'NIH SBIR & STTR for Biotech Startups: Funding, Deadlines & Eligibility',
-    seoDescription: 'Understand NIH SBIR and STTR funding paths, eligibility requirements, standard application dates and phase-specific budget guidelines. Check the relevant funding opportunity for applicable limits and exceptions.',
+    seoTitle: 'NIH SBIR Biotech Grants (Up to $2M) — Fast-Track Application Guide [2026]',
+    seoDescription: 'Get up to $2M non-dilutive biotech funding via NIH SBIR Phase I & II. Check eligibility, clinical validation pathways, and application deadlines in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -519,8 +519,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/dod-sbir-defense-tech-grants': {
     route: '/blog/dod-sbir-defense-tech-grants',
-    seoTitle: '$1.8M DoD SBIR Grants for Defense Tech — Open Now (2026)',
-    seoDescription: 'Access up to $1.8M Phase I & II DoD SBIR/STTR funding for dual-use tech & software. Check DARPA & Air Force eligibility in 2 minutes.',
+    seoTitle: 'DoD SBIR Defense Tech Grants (Up to $1.7M) — 2026 Application Guide',
+    seoDescription: 'Access up to $1.7M Phase I & II DoD SBIR/STTR funding for dual-use tech & software. Check DARPA & Air Force eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
@@ -785,7 +785,7 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/usda-sbir-agtech-grants': {
     route: '/blog/usda-sbir-agtech-grants',
-    seoTitle: '$650K USDA SBIR Grants for AgTech Startups (2026 Guide)',
+    seoTitle: 'USDA SBIR AgTech Grants ($650K Non-Dilutive) — 2026 Open Intakes',
     seoDescription: 'Secure up to $650,000 Phase I & II USDA SBIR grants for agriculture technology, robotics & food R&D. Check eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
@@ -1065,8 +1065,8 @@ const profiles: Record<string, PriorityResearchProfile> = {
   },
   '/blog/healthcare-grants-2026': {
     route: '/blog/healthcare-grants-2026',
-    seoTitle: '$500K Healthcare & MedTech Grants in Canada — 2026 Guide',
-    seoDescription: 'Access up to $500K via CIHR, NRC-IRAP & SR&ED tax credits for Canadian health startups. Check eligibility in 2 minutes.',
+    seoTitle: 'Healthcare & Life Sciences Grants in Canada (Up to $10M) — 2026 Funding Guide',
+    seoDescription: 'Access up to $10M in non-dilutive healthcare funding via CIHR, NRC-IRAP, SIF & SR&ED tax credits. Check eligibility in 2 minutes.',
     expectedIntent: 'high',
     reviewedBy: REVIEWED_BY,
     reviewerRole: REVIEWER_ROLE,
