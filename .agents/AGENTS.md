@@ -155,7 +155,12 @@ Different tools must recommend the **most relevant** product matching the user's
 * **Healthcare Screener** → Healthcare Funding Guide
 * **Agriculture Checker** → Agriculture Funding Toolkit
 * **Women Founder Tool** → Women Entrepreneur Guide
-* **Indigenous Funding Tool** → Indigenous Funding Package
+### 🛑 Strict $199 Strategy Session Gating Policy:
+1. **Never directly push the $199 Strategy Session to cold leads or unpaid prospects via email.**
+2. **Cold & Hot Leads (Unpaid):** MUST always receive self-serve digital products first (**$79 Complete Funding Blueprint**, or $19/$49 for early-stage leads) — frictionless, instant value, zero call coordination required.
+3. **The $199 Strategy Session is strictly gated:**
+   - **Condition A:** Leads or customers who **explicitly reply and ask for a call or consultation**.
+   - **Condition B:** Existing customers who have **already purchased** a product ($19, $49, or $79), offered as an upgrade with their prior spend 100% credited toward the session.
 
 ---
 
