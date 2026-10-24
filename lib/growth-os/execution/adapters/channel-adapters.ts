@@ -133,9 +133,10 @@ export class ChannelAdapters {
       const now = new Date()
       const prevMonth = new Date(now.getFullYear(), now.getMonth() - 1, 1)
       const versionDate = `${prevMonth.getFullYear()}${String(prevMonth.getMonth() + 1).padStart(2, '0')}`
+      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
       const postBody = {
         author: activeUrn,
-        commentary: `${text}\n\n${hashtags.join(" ")}`,
+        commentary: `${text}\n\n${brandedTags.join(" ")}`,
         visibility: "PUBLIC",
         distribution: {
           feedDistribution: "MAIN_FEED",
@@ -285,9 +286,10 @@ export class ChannelAdapters {
         ? { multiImage: { images: imageUrns.map(id => ({ id })) } }
         : { media: { id: imageUrns[0] } }
 
+      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
       const postBody = {
         author: activeUrn,
-        commentary: `${text}\n\n${hashtags.join(" ")}`,
+        commentary: `${text}\n\n${brandedTags.join(" ")}`,
         visibility: "PUBLIC",
         distribution: {
           feedDistribution: "MAIN_FEED",
@@ -477,7 +479,10 @@ export class ChannelAdapters {
         throw new Error("Failed to upload any photo slides to Facebook.")
       }
 
-      const fullMessage = link ? `${message}\n\n🔗 ${link}` : message
+      let fullMessage = link ? `${message}\n\n🔗 ${link}` : message
+      if (!fullMessage.toLowerCase().includes('#fsidigital')) {
+        fullMessage += '\n\n#FSIDigital'
+      }
       const response = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/feed`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -541,6 +546,9 @@ export class ChannelAdapters {
       const path = await import('path')
       const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
       const localPath = path.join(process.cwd(), 'public', cleanPath)
+      const fullDescription = description.toLowerCase().includes('#fsidigital')
+        ? description
+        : `${description}\n\n#FSIDigital`
 
       let response: Response
       if (fs.existsSync(localPath)) {
@@ -550,7 +558,7 @@ export class ChannelAdapters {
         const formData = new FormData()
         formData.append('source', blob, path.basename(localPath))
         formData.append('title', title)
-        formData.append('description', description)
+        formData.append('description', fullDescription)
         formData.append('access_token', token)
 
         response = await fetchWithRetry(`https://graph-video.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos`, {
@@ -567,7 +575,7 @@ export class ChannelAdapters {
             body: JSON.stringify({
               file_url: absVideoUrl,
               title,
-              description,
+              description: fullDescription,
               access_token: token,
             }),
           })
@@ -633,7 +641,8 @@ export class ChannelAdapters {
     }
 
     try {
-      const fullCaption = `${caption}\n\n🔗 ${link}\n\n${hashtags.join(' ')}`.trim()
+      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
+      const fullCaption = `${caption}\n\n🔗 ${link}\n\n${brandedTags.join(' ')}`.trim()
       
       // Step 1: Create media container
       const containerRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
@@ -740,7 +749,8 @@ export class ChannelAdapters {
       }
 
       // Step 2: Create parent CAROUSEL container
-      const fullCaption = `${caption}\n\n${hashtags.join(' ')}`.trim()
+      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
+      const fullCaption = `${caption}\n\n${brandedTags.join(' ')}`.trim()
       const carouselRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -816,7 +826,8 @@ export class ChannelAdapters {
 
     try {
       const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
-      const fullCaption = `${caption}\n\n${hashtags.join(' ')}`.trim()
+      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
+      const fullCaption = `${caption}\n\n${brandedTags.join(' ')}`.trim()
       console.log(`[InstagramAdapter] Creating Reel container from ${absVideoUrl} on IG ${igAccountId}...`)
 
       // Step 1: Create REELS media container

@@ -57,8 +57,8 @@ export class ContentFactory {
     const isUS = opportunity.targetLandingPage.includes("/usa") || opportunity.trigger.toLowerCase().includes("sbir") || opportunity.trigger.toLowerCase().includes("usda") || opportunity.trigger.toLowerCase().includes("nih") || opportunity.trigger.toLowerCase().includes("nsf") || opportunity.trigger.toLowerCase().includes("sba");
     
     const northAmericanHashtags = isUS
-      ? ["#SmallBusinessGrants", "#SBIR", "#STTR", "#SBA", "#USBusinessGrants", "#TechStartups", "#NonDilutiveCapital", "#FounderFunding"]
-      : ["#CanadianBusiness", "#IRAP", "#SRED", "#CanExport", "#SmallBusinessGrants", "#GovernmentGrants", "#NorthAmericanBusiness", "#FounderFunding"];
+      ? ["#FSIDigital", "#SmallBusinessGrants", "#SBIR", "#STTR", "#SBA", "#USBusinessGrants", "#TechStartups", "#NonDilutiveCapital", "#FounderFunding"]
+      : ["#FSIDigital", "#CanadianBusiness", "#IRAP", "#SRED", "#CanExport", "#SmallBusinessGrants", "#GovernmentGrants", "#NorthAmericanBusiness", "#FounderFunding"];
 
     return {
       opportunityId: opportunity.id,
