@@ -210,7 +210,7 @@ export default function AuditClient() {
       company: companyVal,
       industry: industryVal,
       region: regionVal,
-      discount: Number(sp.get('discount')) || 0,
+      discount: Number(sp.get('discount')) || Number(sp.get('credit')) || 0,
       source: sourceVal,
       focus: focusVal,
     });
@@ -359,6 +359,7 @@ export default function AuditClient() {
             profileData: {
               province: params.region || 'ON', industry: params.industry || 'other',
               revenue: 'N/A', goal: 'Funding Strategy Audit', company: params.company || '',
+              credit: params.discount,
             },
             attribution: {
               landingPage: window.location.pathname, referrer: document.referrer || 'direct',
@@ -416,7 +417,7 @@ export default function AuditClient() {
     }
   }, [sdkReady, params]);
 
-  const finalPrice = 199;
+  const finalPrice = Math.max(0, 199 - params.discount);
   const isDiscounted = params.discount > 0;
 
   return (
@@ -683,7 +684,7 @@ export default function AuditClient() {
                             $199
                           </span>
                           <span className="text-[9px] font-bold text-emerald-700 bg-emerald-50 border border-emerald-100 px-1.5 py-0.5 rounded-sm">
-                            Report Credit Applied
+                            ${params.discount} Fee Credit Applied
                           </span>
                         </>
                       ) : (

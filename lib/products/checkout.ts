@@ -46,20 +46,63 @@ export async function buildServerCheckout(input: ProductCheckoutRequest): Promis
     approvalLibrary: input.addons?.approvalLibrary === true,
   };
 
-  // A report buyer may apply exactly one $19 credit to an approved upgrade.
-  const priorPurchases = await getPurchasesByEmail(email);
-  const hasActiveReport = priorPurchases.some((purchase) =>
-    purchase.productId === 'funding-match-report' &&
-    ['completed', 'processing'].includes(String(purchase.status || '').toLowerCase())
+  // Calculate verified customer prior purchase credit toward upgrades
+  const [priorPurchases, subscriber] = await Promise.all([
+    getPurchasesByEmail(email).catch(() => []),
+    SubscriberRepository.getSubscriberByEmail(email).catch(() => null),
+  ]);
+
+  let priorCredit = 0;
+
+  // Check direct purchases under this email
+  const completedPurchases = priorPurchases.filter((p) =>
+    ['completed', 'processing'].includes(String(p.status || '').toLowerCase())
   );
-  const canApplyReportCredit = hasActiveReport && ['funding-roadmap', 'strategy-audit'].includes(product.id);
-  const subscriber = product.id === 'portfolio-assessment'
-    ? await SubscriberRepository.getSubscriberByEmail(email)
-    : null;
-  const portfolioDiscount = subscriber && ['active', 'trial'].includes(String(subscriber.subscriptionStatus).toLowerCase())
+  const hasReportPurchase = completedPurchases.some((p) => p.productId === 'funding-match-report');
+  const hasBundlePurchase = completedPurchases.some((p) =>
+    ['funding-bundle', 'funding-toolkit'].includes(p.productId)
+  );
+  const hasRoadmapPurchase = completedPurchases.some((p) =>
+    ['funding-roadmap', 'funding-action-plan'].includes(p.productId)
+  );
+
+  // Cross-reference subscriber repository flags (handles linked PayPal emails)
+  const hasReportSub = subscriber?.reportPurchased === true;
+  const hasBundleSub = subscriber?.strategyReportPurchased === true;
+
+  const ownsReport = hasReportPurchase || hasReportSub;
+  const ownsBundle = hasBundlePurchase || hasBundleSub;
+  const ownsRoadmap = hasRoadmapPurchase;
+
+  if (['strategy-audit', 'strategy-session'].includes(product.id)) {
+    // 100% Fee Credit policy for Strategy Audit ($199)
+    if (ownsReport && ownsBundle) {
+      priorCredit = 98; // $19 Report + $79 Bundle = $98 credited (Net: $101)
+    } else if (ownsBundle) {
+      priorCredit = 79; // $79 Bundle credited (Net: $120)
+    } else if (ownsRoadmap) {
+      priorCredit = 49; // $49 Action plan credited (Net: $150)
+    } else if (ownsReport) {
+      priorCredit = 19; // $19 Report credited (Net: $180)
+    }
+
+    // Allow explicitly requested credit from client if verified by prior investment
+    const requestedCredit = Number(input.profileData?.credit || input.attribution?.credit) || 0;
+    if (requestedCredit > 0 && requestedCredit <= 98 && (ownsReport || ownsBundle || ownsRoadmap)) {
+      priorCredit = Math.max(priorCredit, requestedCredit);
+    }
+  } else if (['funding-roadmap', 'funding-bundle'].includes(product.id)) {
+    if (ownsReport) {
+      priorCredit = 19; // $19 Report credited toward bundle or roadmap
+    }
+  }
+
+  const portfolioDiscount = product.id === 'portfolio-assessment' &&
+    subscriber && ['active', 'trial'].includes(String(subscriber.subscriptionStatus).toLowerCase())
     ? 100
     : 0;
-  const baseAmount = Math.max(0.5, product.priceUsd - (canApplyReportCredit ? 19 : 0) - portfolioDiscount);
+
+  const baseAmount = Math.max(0.5, product.priceUsd - priorCredit - portfolioDiscount);
 
   let expectedAmount = baseAmount;
   if (addons.toolkit) expectedAmount += 29;
