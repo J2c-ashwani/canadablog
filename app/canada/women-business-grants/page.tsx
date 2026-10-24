@@ -10,6 +10,7 @@ import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import RDEDecisionEngine from "@/components/blog/RDEDecisionEngine"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
   title: "$10K–$150K Grants for Women Entrepreneurs in Canada — 2026 Guide",
@@ -131,6 +132,21 @@ export default function WomenBusinessGrantsCanadaPage() {
             <EligibleCheck 
               title="Check which women entrepreneur funding programs you qualify for." 
               description="Answering these 2 baseline questions will show if you meet the requirements for female-led business programs in Canada." 
+            />
+            <VideoBriefingEmbed
+              videoId="JwVATCLcN6w"
+              title="Women Entrepreneur Grants: $25K to $250K Non-Repayable"
+              duration="0:58"
+              topic="Women Entrepreneur Grants"
+              keyTakeaways={[
+                "Active federal streams: WELF microloans ($50K), Amber Grants, and BDC Women in Tech",
+                "Eligibility requires 51%+ female equity ownership or executive operational control",
+                "Programs can be stacked with wage subsidies and provincial market-entry vouchers"
+              ]}
+              ctaText="Check Women Grant Eligibility in 60s →"
+              ctaHref="/calculator"
+              guideAnchorText="Explore Application Toolkit ($29)"
+              guideAnchorHref="/products/toolkit"
             />
           </div>
         </div>

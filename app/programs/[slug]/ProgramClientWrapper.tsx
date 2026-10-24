@@ -12,6 +12,7 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ProgramTabs } from "@/components/seo/ProgramTabs"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 import EEATBadge from "@/components/blog/EEATBadge"
 import { DynamicInternalLinkEngine } from "@/components/seo/DynamicInternalLinkEngine"
 import { MatchScoreCard } from "@/components/seo/MatchScoreCard"
@@ -401,6 +402,46 @@ export function ProgramClientWrapper({ program, initialSearch }: ProgramClientWr
                     ))}
                   </ul>
                 </Card>
+              )}
+
+              {/* Video Briefing Embed (Contextual Quick Breakdown) */}
+              {program.slug === 'irap-grant' && (
+                <div className="mb-6">
+                  <VideoBriefingEmbed
+                    videoId="QHLIQTh-MUk"
+                    title="NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable"
+                    duration="0:58"
+                    topic="NRC IRAP"
+                    keyTakeaways={[
+                      "Covers 50% to 80% of internal developer wages and 50% of subcontractor fees",
+                      "100% non-repayable cash grant with zero equity dilution",
+                      "Legally stackable with SR&ED tax credits on eligible remaining payroll",
+                    ]}
+                    ctaText="Calculate Your IRAP Wage Match in 60s →"
+                    ctaHref="/calculator"
+                    guideAnchorText="Read in-depth IRAP application guide"
+                    guideAnchorHref="/guides/apply-irap-grants"
+                  />
+                </div>
+              )}
+              {program.slug === 'sred-tax-credit' && (
+                <div className="mb-6">
+                  <VideoBriefingEmbed
+                    videoId="pRAuIDJ7_AQ"
+                    title="SR&ED Tax Credit Guide: CRA Cash Refunds for Tech & R&D"
+                    duration="0:58"
+                    topic="SR&ED Tax Credit"
+                    keyTakeaways={[
+                      "Up to 35% refundable cash refund from CRA on qualifying developer and R&D salaries",
+                      "100% refundable for Canadian CCPCs even with $0 in revenue or profit",
+                      "Deduct IRAP assistance first, then claim remaining 20% + Prescribed Proxy overhead",
+                    ]}
+                    ctaText="Estimate Your SR&ED Refund in 60s →"
+                    ctaHref="/calculator"
+                    guideAnchorText="Read in-depth SR&ED claim guide"
+                    guideAnchorHref="/guides/sred-application-guide"
+                  />
+                </div>
               )}
 
               {/* Interactive Tabs Cluster */}

@@ -14,6 +14,7 @@ import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
+import { VideoBriefingEmbed } from '@/components/videos/VideoBriefingEmbed';
 
 export const metadata: Metadata = {
   title: "Small Business Grants 2026 – Funding up to $250K Available",
@@ -74,7 +75,22 @@ export default function ApplySmallBusinessGrantsGuide() {
             </div>
           </div>
         </section>
-        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+        <div className="container mx-auto px-4 max-w-4xl my-8">
+          <EligibleCheck />
+          <VideoBriefingEmbed
+            videoId="BdcuMyeGcQ8"
+            title="Digital Adoption & Technology Funding in 2026"
+            duration="0:58"
+            topic="Digital Adoption Funding"
+            keyTakeaways={[
+              "Up to $15,000 in non-repayable advisory funding for modernizing digital workflows",
+              "Access to 0% interest technology loans up to $100,000 for ERP, software, and equipment",
+              "Can be paired with provincial wage subsidies for technical new hires"
+            ]}
+            ctaText="Check Your Small Business Grant Match →"
+            ctaHref="/calculator"
+          />
+        </div>
 
         <StickyTOC links={[
       { title: 'Find Grants', id: 'find-grants' },

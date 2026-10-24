@@ -11,6 +11,7 @@ import AutoLink from "@/components/seo/AutoLink"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
     title: "Green Energy Grants Canada 2026: $1.5B+ in Cleantech Funding",
@@ -108,6 +109,19 @@ export default function GreenEnergyGrantsPage() {
                       />
                       <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                       <EligibleCheck />
+                      <VideoBriefingEmbed
+                        videoId="asKUM2u36hs"
+                        title="CleanTech & Green Economy Funding in 2026"
+                        duration="0:58"
+                        topic="CleanTech & Green Economy"
+                        keyTakeaways={[
+                          "SDTC & Net Zero Accelerator allocate non-repayable capital for carbon reduction",
+                          "Clean Investment Tax Credits provide up to 30% refundable cash back on equipment",
+                          "Technical eligibility requires quantified emissions reduction models & verification"
+                        ]}
+                        ctaText="Check CleanTech Grant Eligibility in 60s →"
+                        ctaHref="/calculator?industry=clean-energy"
+                      />
                     </div>
 
                     {/* Stats Grid */}

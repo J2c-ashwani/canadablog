@@ -14,6 +14,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 import ProvincialCityMesh from "@/components/pseo/ProvincialCityMesh"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
   title: "$10K–$2.5M Ontario Business Grants (2026) — 12 Programs Open Now",
@@ -233,8 +234,21 @@ export default function OntarioGrantsPage() {
             <div className="mt-4 mb-8 flex justify-center">
               
             </div>
-            <div className="mt-8 mb-8">
+            <div className="mt-8 mb-8 text-left">
               <EligibleCheck />
+              <VideoBriefingEmbed
+                videoId="HJewCndZ3jc"
+                title="Ontario Innovation Grants: $100K - $1M Non-Repayable"
+                duration="0:58"
+                topic="Ontario Innovation Grants"
+                keyTakeaways={[
+                  "Ontario Together Fund & OVIN deliver non-dilutive scaling capital for manufacturing & tech",
+                  "Ontario Innovation Tax Credit (OITC) refunds 10% on top of federal SR&ED credits",
+                  "Early-stage Ontario startups qualify for Starter Company Plus ($5K-$10K) non-repayable grants"
+                ]}
+                ctaText="Check Your Ontario Grant Eligibility →"
+                ctaHref="/calculator?region=ontario"
+              />
             </div>
           </div>
 

@@ -14,6 +14,7 @@ import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
+import { VideoBriefingEmbed } from '@/components/videos/VideoBriefingEmbed';
 
 export const metadata: Metadata = {
   title: "Federal Grants Application Tips 2026 | Expert Acceptance Strategies",
@@ -74,7 +75,22 @@ export default function FederalGrantsApplicationTipsGuide() {
             </div>
           </div>
         </section>
-        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+        <div className="container mx-auto px-4 max-w-4xl my-8">
+          <EligibleCheck />
+          <VideoBriefingEmbed
+            videoId="dP8Gtfh_qsk"
+            title="How to Win Government Grants: The 5-Step Playbook"
+            duration="0:58"
+            topic="Grant Application Playbook"
+            keyTakeaways={[
+              "Determine your Technology Readiness Level (TRL 1-9) before selecting a grant solicitation",
+              "Reviewers treat applications like risk audits — quantify jobs, revenue, and economic impact",
+              "Verify your matching co-financing (20% to 50%) before starting portal paperwork"
+            ]}
+            ctaText="Run the 60-Second Grant Screener →"
+            ctaHref="/calculator"
+          />
+        </div>
 
         <StickyTOC links={[
       { title: 'Overview', id: 'overview' }, { title: 'Eligibility', id: 'eligibility' }, { title: 'How to Apply', id: 'how-to-apply' }, { title: 'Tips', id: 'tips' }

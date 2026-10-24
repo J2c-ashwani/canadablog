@@ -14,6 +14,7 @@ import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
+import { VideoBriefingEmbed } from '@/components/videos/VideoBriefingEmbed';
 
 export const metadata: Metadata = {
   title: "How to Get IRAP Grants (2026) – Step-by-Step Guide",
@@ -73,7 +74,24 @@ export default function IRAPApplicationGuide() {
             </div>
           </div>
         </section>
-        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+        <div className="container mx-auto px-4 max-w-4xl my-8">
+          <EligibleCheck />
+          <VideoBriefingEmbed
+            videoId="QHLIQTh-MUk"
+            title="NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable"
+            duration="0:58"
+            topic="NRC IRAP"
+            keyTakeaways={[
+              "Covers 50% to 80% of internal developer wages and 50% of subcontractor fees",
+              "100% non-repayable cash grant with zero equity dilution",
+              "Legally stackable with SR&ED tax credits on eligible remaining payroll"
+            ]}
+            ctaText="Calculate Your IRAP Wage Match in 60s →"
+            ctaHref="/calculator"
+            guideAnchorText="View full program specifications"
+            guideAnchorHref="/programs/irap-grant"
+          />
+        </div>
 
         <StickyTOC links={[
       { title: 'Eligibility', id: 'eligibility' },

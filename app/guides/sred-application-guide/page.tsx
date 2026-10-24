@@ -14,6 +14,7 @@ import StickyTOC from '@/components/blog/StickyTOC';
 import InlineCTA from '@/components/blog/InlineCTA';
 import AutoLink from '@/components/seo/AutoLink';
 import AdSlot from '@/components/blog/AdSlot';
+import { VideoBriefingEmbed } from '@/components/videos/VideoBriefingEmbed';
 
 export const metadata: Metadata = {
   title: "SR&ED Tax Credits 2026 – Funding Options & Eligibility",
@@ -64,7 +65,24 @@ export default function SREDApplicationGuide() {
             </div>
           </div>
         </section>
-        <div className="container mx-auto px-4 max-w-4xl my-8"><EligibleCheck /></div>
+        <div className="container mx-auto px-4 max-w-4xl my-8">
+          <EligibleCheck />
+          <VideoBriefingEmbed
+            videoId="pRAuIDJ7_AQ"
+            title="SR&ED Tax Credits Explained: 35% Cash Refund"
+            duration="0:58"
+            topic="SR&ED Tax Credit"
+            keyTakeaways={[
+              "Up to 35% refundable cash refund from CRA on qualifying developer and R&D salaries",
+              "100% refundable for Canadian CCPCs even with $0 in revenue or profit",
+              "Deduct IRAP assistance first, then claim remaining 20% + Prescribed Proxy overhead"
+            ]}
+            ctaText="Estimate Your SR&ED Refund in 60s →"
+            ctaHref="/calculator"
+            guideAnchorText="View full program specifications"
+            guideAnchorHref="/programs/sred-tax-credit"
+          />
+        </div>
 
         <StickyTOC links={[
       { title: 'Eligible Work', id: 'eligible-activities' },
