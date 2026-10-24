@@ -128,7 +128,7 @@ export default function RootLayout({
                   "sameAs": [
                     "https://www.youtube.com/@fsidigital",
                     "https://www.linkedin.com/company/fsidigital",
-                    "https://www.instagram.com/fsidigital.ca/",
+                    "https://www.instagram.com/fsidigital/",
                     "https://www.facebook.com/1077759455417325",
                     "https://twitter.com/fsidigital"
                   ],

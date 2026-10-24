@@ -14,6 +14,7 @@ export interface ChannelPublishResult {
   channelName: string
   status: "LIVE_PUBLISHED" | "API_ACCEPTED" | "GENERATED" | "QUEUED_FOR_APPROVAL" | "MOCK_DEVELOPMENT"
   externalId?: string
+  permalink?: string
   message: string
 }
 
@@ -774,10 +775,18 @@ export class ChannelAdapters {
         throw new Error(`Instagram carousel publish error: ${publishData.error?.message || 'publish ID missing'}`)
       }
 
+      let permalink: string | undefined
+      try {
+        const mediaMetaRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(publishData.id)}?fields=permalink&access_token=${token}`, { method: "GET" })
+        const mediaMeta = await mediaMetaRes.json().catch(() => ({})) as { permalink?: string }
+        permalink = mediaMeta.permalink
+      } catch (e) {}
+
       return {
         channelName: "Instagram",
         status: "API_ACCEPTED",
         externalId: publishData.id,
+        permalink: permalink || 'https://www.instagram.com/fsidigital/',
         message: "Instagram accepted and published the carousel post via Meta Graph API.",
       }
     } catch (err: any) {
@@ -862,10 +871,18 @@ export class ChannelAdapters {
         throw new Error(`Instagram Reel publish error: ${publishData.error?.message || 'publish ID missing'}`)
       }
 
+      let permalink: string | undefined
+      try {
+        const mediaMetaRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(publishData.id)}?fields=permalink&access_token=${token}`, { method: "GET" })
+        const mediaMeta = await mediaMetaRes.json().catch(() => ({})) as { permalink?: string }
+        permalink = mediaMeta.permalink
+      } catch (e) {}
+
       return {
         channelName: "Instagram",
         status: "API_ACCEPTED",
         externalId: publishData.id,
+        permalink: permalink || 'https://www.instagram.com/fsidigital/',
         message: "Instagram accepted and published the Reel via Meta Graph API.",
       }
     } catch (err: any) {

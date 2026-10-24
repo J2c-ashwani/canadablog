@@ -40,7 +40,7 @@ async function main() {
       const fbUrl = fbResult?.externalId
         ? (fbResult.externalId.includes('_') ? `https://www.facebook.com/${fbResult.externalId.split('_')[0]}/posts/${fbResult.externalId.split('_')[1]}` : `https://www.facebook.com/${fbResult.externalId}`)
         : 'https://www.facebook.com/1077759455417325'
-      const igUrl = 'https://www.instagram.com/fsidigital.ca/'
+      const igUrl = (igResult as any)?.permalink || 'https://www.instagram.com/fsidigital/'
       const liUrl = liResult?.status === 'API_ACCEPTED' && liResult?.externalId
         ? `https://www.linkedin.com/feed/update/${liResult.externalId}`
         : 'https://www.linkedin.com/company/fsidigital'
