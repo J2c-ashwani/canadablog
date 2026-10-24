@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { Card, CardContent } from '@/components/ui/card';
-import { ShieldCheck, Mail, Linkedin, ArrowRight, CheckCircle2, Clock } from 'lucide-react';
+import { ShieldCheck, Mail, Linkedin, Youtube, Instagram, ArrowRight, CheckCircle2, Clock } from 'lucide-react';
 
 export function FounderCard() {
   return (
@@ -34,20 +34,42 @@ export function FounderCard() {
             <h4 className="font-extrabold text-sm text-slate-900 leading-tight">Ashwani Kumar</h4>
             <p className="text-[10px] text-slate-500 font-bold uppercase tracking-wider mt-1">Founder, FSI Digital</p>
           </div>
-          <div className="flex gap-2.5 pt-1">
+          <div className="flex gap-2 pt-1">
             <a
               href="https://www.linkedin.com/company/fsidigital"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-all"
+              className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-blue-50 hover:text-[#0A66C2] transition-all"
               aria-label="LinkedIn"
+              title="LinkedIn"
             >
               <Linkedin className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://www.youtube.com/@fsidigital"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-red-50 hover:text-red-600 transition-all"
+              aria-label="YouTube"
+              title="YouTube"
+            >
+              <Youtube className="w-3.5 h-3.5" />
+            </a>
+            <a
+              href="https://www.instagram.com/fsidigital.ca/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-pink-50 hover:text-[#E4405F] transition-all"
+              aria-label="Instagram"
+              title="Instagram"
+            >
+              <Instagram className="w-3.5 h-3.5" />
             </a>
             <a
               href="mailto:ashwani@fsidigital.ca"
               className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-slate-200 hover:text-slate-800 transition-all"
               aria-label="Email"
+              title="Email Founder"
             >
               <Mail className="w-3.5 h-3.5" />
             </a>

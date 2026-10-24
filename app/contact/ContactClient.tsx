@@ -631,6 +631,51 @@ export default function ContactClient() {
             <p className="mx-auto mt-4 max-w-xl text-md sm:text-lg leading-relaxed text-slate-650 contact-animate-in contact-animate-delay-1">
               Complete our B2B qualification screener to calculate your Funding Readiness Score. Verify your business profile to view your matched categories immediately.
             </p>
+
+            {/* Direct Social Channels Strip */}
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-2 contact-animate-in contact-animate-delay-2">
+              <span className="text-xs text-slate-500 font-medium mr-1">Follow Our Channels:</span>
+              <a
+                href="https://www.youtube.com/@fsidigital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-red-300 hover:text-red-600 transition-colors shadow-2xs"
+                aria-label="YouTube Channel"
+              >
+                <span className="w-2 h-2 rounded-full bg-red-600"></span>
+                YouTube
+              </a>
+              <a
+                href="https://www.linkedin.com/company/fsidigital"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors shadow-2xs"
+                aria-label="LinkedIn Page"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#0A66C2]"></span>
+                LinkedIn
+              </a>
+              <a
+                href="https://www.instagram.com/fsidigital.ca/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-pink-300 hover:text-pink-600 transition-colors shadow-2xs"
+                aria-label="Instagram Profile"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#E4405F]"></span>
+                Instagram
+              </a>
+              <a
+                href="https://www.facebook.com/1077759455417325"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-blue-300 hover:text-blue-600 transition-colors shadow-2xs"
+                aria-label="Facebook Page"
+              >
+                <span className="w-2 h-2 rounded-full bg-[#1877F2]"></span>
+                Facebook
+              </a>
+            </div>
           </div>
         </section>
 

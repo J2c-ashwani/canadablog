@@ -15,6 +15,7 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 import { Input } from "@/components/ui/input"
+import { SOCIAL_CHANNELS } from "@/components/SocialLinks"
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
@@ -766,6 +767,32 @@ export function Header() {
                       Check My Eligibility →
                     </Link>
                   </Button>
+                </div>
+
+                {/* Mobile Drawer Official Social Channels */}
+                <div className="pt-4 px-4 border-t border-gray-100 mt-2">
+                  <p className="text-[11px] font-bold text-gray-500 uppercase tracking-wider mb-2.5">
+                    Official Social Channels
+                  </p>
+                  <div className="grid grid-cols-2 gap-2">
+                    {SOCIAL_CHANNELS.map((ch) => {
+                      const Icon = ch.icon
+                      return (
+                        <a
+                          key={ch.name}
+                          href={ch.url}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="flex items-center gap-2 p-2.5 rounded-lg bg-gray-50 hover:bg-gray-100 text-gray-700 text-xs font-semibold border border-gray-200 transition-colors"
+                          aria-label={`Follow FSI Digital on ${ch.name}`}
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          <Icon className="w-4 h-4 text-gray-700 shrink-0" />
+                          <span className="truncate">{ch.name}</span>
+                        </a>
+                      )
+                    })}
+                  </div>
                 </div>
               </nav>
             </div>

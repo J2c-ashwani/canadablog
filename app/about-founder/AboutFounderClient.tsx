@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
-import { Mail, Linkedin, ShieldCheck, Compass, CheckCircle, FileText, ArrowRight } from 'lucide-react';
+import { Mail, Linkedin, Youtube, ShieldCheck, Compass, CheckCircle, FileText, ArrowRight } from 'lucide-react';
 
 export default function AboutFounderClient() {
   return (
@@ -36,13 +36,25 @@ export default function AboutFounderClient() {
                         rel="noopener noreferrer"
                         className="p-2 bg-slate-850 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition-colors"
                         title="LinkedIn Profile"
+                        aria-label="LinkedIn Profile"
                       >
                         <Linkedin className="w-4 h-4" />
+                      </a>
+                      <a
+                        href="https://www.youtube.com/@fsidigital"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="p-2 bg-slate-850 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-red-400 transition-colors"
+                        title="YouTube Channel"
+                        aria-label="YouTube Channel"
+                      >
+                        <Youtube className="w-4 h-4" />
                       </a>
                       <a
                         href="mailto:ashwani@fsidigital.ca"
                         className="p-2 bg-slate-850 hover:bg-slate-800 rounded-lg text-slate-300 hover:text-white transition-colors"
                         title="Email Address"
+                        aria-label="Email Address"
                       >
                         <Mail className="w-4 h-4" />
                       </a>

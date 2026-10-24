@@ -126,8 +126,11 @@ export default function RootLayout({
                   "logo": "https://www.fsidigital.ca/logo.png",
                   "description": "Find government grants for startups and small businesses in USA and Canada",
                   "sameAs": [
-                    "https://twitter.com/fsidigital",
-                    "https://linkedin.com/company/fsidigital"
+                    "https://www.youtube.com/@fsidigital",
+                    "https://www.linkedin.com/company/fsidigital",
+                    "https://www.instagram.com/fsidigital.ca/",
+                    "https://www.facebook.com/1077759455417325",
+                    "https://twitter.com/fsidigital"
                   ],
                   "contactPoint": {
                     "@type": "ContactPoint",
