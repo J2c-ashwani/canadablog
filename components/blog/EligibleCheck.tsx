@@ -35,7 +35,7 @@ export default function EligibleCheck({
     fallbackText
 }: EligibleCheckProps) {
     const pathname = usePathname();
-    const isUS = jurisdiction === 'US' || (pathname ? (pathname.startsWith('/usa') || pathname.includes('sbir') || pathname.includes('sba')) : false);
+    const isUS = jurisdiction === 'US' || (jurisdiction !== 'CA' && (pathname ? (pathname.startsWith('/usa') || pathname.includes('sbir') || pathname.includes('sba')) : false));
 
     const defaultQuestions = isUS ? DEFAULT_US_QUESTIONS : DEFAULT_CA_QUESTIONS;
     const activeQuestions = questions && questions.length > 0 ? questions : defaultQuestions;

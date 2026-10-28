@@ -49,7 +49,7 @@ import {
     isSearchDistributionCohortPath,
     SEARCH_DISTRIBUTION_ROLLOUT_ID,
 } from '@/lib/seo/searchDistributionRollout';
-import { getUnindexedRevivalProfile } from '@/lib/pseo-engine/unindexedRevivalCohort';
+import { getUnindexedRevivalProfile, type LocalRevivalProfile } from '@/lib/pseo-engine/unindexedRevivalCohort';
 import LocalFundingIntelligence from '@/components/pseo/LocalFundingIntelligence';
 
 const CANADIAN_REGION_SLUGS = new Set(['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nl', 'nb', 'pe']);
@@ -233,9 +233,9 @@ const US_INDUSTRY_SHORT_ANSWERS: Record<string, (city: string, state: string, st
     },
     'minority-owned': (city, state, stateDetail) => {
         const { first, second } = getTopProgramNames(stateDetail);
-        return `Minority and BIPOC-owned businesses in ${city} can secure funding through SBA 8(a) certification, Community Development Financial Institutions (CDFIs), and corporate diversity grants. ` +
-            `Pursue MBE supplier diversity verification, SBDC technical assistance programs, and state-level diverse business grants like ${first} or ${second}. ` +
-            `SBA 8(a) applications require demonstrating social and economic disadvantage along with business operational history.`;
+        return `Minority and BIPOC-owned businesses in ${city} can access growth capital and commercial opportunities through Community Development Financial Institutions (CDFIs), corporate supplier diversity programs, and SBA 8(a) federal contracting preferences. ` +
+            `Pursue MBE supplier diversity verification, SBDC technical assistance programs, and state-level diverse business incentives like ${first} or ${second}. ` +
+            `SBA 8(a) certification enables access to federal set-aside and sole-source contracts rather than direct cash grants, and requires demonstrating social and economic disadvantage along with business operational history.`;
     },
     'arts-entertainment': (city, state, stateDetail) => {
         const { first, second } = getTopProgramNames(stateDetail);
@@ -323,13 +323,21 @@ function UsPseoGrantContent({
     regionType,
     countryName,
     verifiedCohort,
+    cohortProfile,
 }: {
     page: PseoPage;
     stateDetail?: StateDetailedGrant;
     regionType: 'state' | 'province';
     countryName: 'United States' | 'Canada';
     verifiedCohort: boolean;
+    cohortProfile?: LocalRevivalProfile;
 }) {
+    const isCohort = Boolean(cohortProfile);
+    const renderUsParagraph = (text: string, blockId: string) => {
+        if (isCohort) return text;
+        return spinParagraph(text, page.cityName, page.provinceName, page.industryName, blockId);
+    };
+
     const topPrograms = stateDetail?.topPrograms?.slice(0, 3) || [
         {
             name: 'SBIR/STTR Federal Research Awards',
@@ -372,32 +380,27 @@ function UsPseoGrantContent({
 
     return (
         <>
+            {cohortProfile && (
+                <LocalFundingIntelligence profile={cohortProfile} />
+            )}
+
             <div id="landscape" className="prose prose-lg text-gray-700 max-w-none">
                 <h2 className="text-3xl font-bold text-gray-900 mb-6">{page.cityName} {page.industryName} Funding Landscape</h2>
                 <p className="lead text-xl text-gray-800">
-                    {spinParagraph(
+                    {renderUsParagraph(
                         `Funding for ${page.industryName} businesses in ${page.cityName} usually comes from a stack of federal programs, ${page.provinceName} incentives, local economic-development support, and tax credits. The strongest opportunity is rarely a single grant; it is a documented project that matches a public goal such as job creation, workforce training, commercialization, rural development, export growth, or energy efficiency.`,
-                        page.cityName,
-                        page.provinceName,
-                        page.industryName,
                         'us-landscape-1'
                     )}
                 </p>
                 <p>
-                    {spinParagraph(
+                    {renderUsParagraph(
                         `For a ${page.provinceName} applicant, the first filter is fit. A company buying routine supplies, covering payroll gaps, or asking after expenses have already been incurred will struggle. A company that can show a project budget, matching funds, hiring impact, and a realistic implementation timeline has a much better chance of moving from research to approval.`,
-                        page.cityName,
-                        page.provinceName,
-                        page.industryName,
                         'us-landscape-2'
                     )}
                 </p>
                 <p>
-                    {spinParagraph(
+                    {renderUsParagraph(
                         `Start with ${primaryProgram.name} and ${secondaryProgram.name}, then layer in SBA/SBDC support, industry-specific federal programs, and city or county incentives. This approach gives Google and users a clearer local funding map than a generic national grant list.`,
-                        page.cityName,
-                        page.provinceName,
-                        page.industryName,
                         'us-landscape-3'
                     )}
                 </p>
@@ -522,41 +525,29 @@ function UsPseoGrantContent({
                     {[
                         {
                             phase: 'Step 1: Define the funded project',
-                            details: spinParagraph(
+                            details: renderUsParagraph(
                                 `Write a one-page project brief for your ${page.cityName} operation: the problem, budget, timeline, expected jobs, measurable outcome, and why outside funding changes the speed or scope.`,
-                                page.cityName,
-                                page.provinceName,
-                                page.industryName,
                                 'us-step-1'
                             ),
                         },
                         {
                             phase: 'Step 2: Match the right program lane',
-                            details: spinParagraph(
+                            details: renderUsParagraph(
                                 `Compare ${primaryProgram.name}, ${secondaryProgram.name}, SBA/SBDC support, and federal programs tied to your industry. Eliminate programs that require a larger hiring commitment, different location, or expenses you have already incurred.`,
-                                page.cityName,
-                                page.provinceName,
-                                page.industryName,
                                 'us-step-2'
                             ),
                         },
                         {
                             phase: 'Step 3: Build the evidence file',
-                            details: spinParagraph(
+                            details: renderUsParagraph(
                                 'Prepare quotes, payroll records, tax documents, incorporation records, project milestones, and proof of matching funds. Reviewers need to see that the project is ready, not just interesting.',
-                                page.cityName,
-                                page.provinceName,
-                                page.industryName,
                                 'us-step-3'
                             ),
                         },
                         {
                             phase: 'Step 4: Apply before spending',
-                            details: spinParagraph(
+                            details: renderUsParagraph(
                                 'For reimbursement programs, submit and wait for approval before committing funds. If you need to move quickly, ask the agency whether a formal notice to proceed is required.',
-                                page.cityName,
-                                page.provinceName,
-                                page.industryName,
                                 'us-step-4'
                             ),
                         },
@@ -628,7 +619,7 @@ function UsPseoGrantContent({
             )}
 
             <div className="mt-16">
-                <EligibleCheck />
+                <EligibleCheck jurisdiction="US" />
             </div>
         </>
     );
@@ -740,9 +731,13 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
     const usShortAnswerFn = US_INDUSTRY_SHORT_ANSWERS[page.industrySlug];
 
     const revivalShortAnswer = unindexedRevivalProfile
-        ? `Businesses in ${page.cityName} operating in ${page.industryName.toLowerCase()} have access to dedicated ${unindexedRevivalProfile.regionalAgency} regional funding and ${page.provinceName} provincial envelopes in addition to federal programs. ` +
-          `Key verified opportunities include ${unindexedRevivalProfile.programs.slice(0, 2).map(p => `${p.name} (${p.maxAmount})`).join(' and ')}. ` +
-          `Regional capital stacking permits combining federal and provincial support up to 75%–85% of eligible project and payroll expenses.`
+        ? (isCanada
+            ? `Businesses in ${page.cityName} operating in ${page.industryName.toLowerCase()} have access to dedicated ${unindexedRevivalProfile.regionalAgency} regional funding and ${page.provinceName} provincial envelopes in addition to federal programs. ` +
+              `Key verified opportunities include ${unindexedRevivalProfile.programs.slice(0, 2).map(p => `${p.name} (${p.maxAmount})`).join(' and ')}. ` +
+              `Regional capital stacking permits combining federal and provincial support up to 75%–85% of eligible project and payroll expenses.`
+            : `Businesses in ${page.cityName} operating in ${page.industryName.toLowerCase()} have access to dedicated ${unindexedRevivalProfile.regionalAgency} funding and ${page.provinceName} state envelopes in addition to federal awards. ` +
+              `Key verified opportunities include ${unindexedRevivalProfile.programs.slice(0, 2).map(p => `${p.name} (${p.maxAmount})`).join(' and ')}. ` +
+              `Multi-tier capital stacking permits combining federal, state, and local support up to 70%–85% of eligible operational and expansion expenses.`)
         : null;
 
     const shortAnswerContent = revivalShortAnswer || (isCanada
@@ -1025,9 +1020,16 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                         regionType={regionType}
                                         countryName={countryName}
                                         verifiedCohort={verifiedCohort}
+                                        cohortProfile={unindexedRevivalProfile}
                                     />
                                 );
                             }
+
+                            const isCohortPage = Boolean(unindexedRevivalProfile);
+                            const renderCaParagraph = (text: string, blockId: string) => {
+                                if (isCohortPage) return text;
+                                return spinParagraph(text, page.cityName, page.provinceName, page.industryName, blockId);
+                            };
 
                             const deepDive = verifiedCohort
                                 ? (CURATED_CANADA_DEEP_DIVES[page.industrySlug] || INDUSTRY_DEEP_DIVES[page.industrySlug])
@@ -1046,7 +1048,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                     <div id="landscape" className="prose prose-lg text-gray-700 max-w-none">
                                         <h2 className="text-3xl font-bold text-gray-900 mb-6">{deepDive.landscape.title}</h2>
                                         {deepDive.landscape.content.map((p, i) => {
-                                            const spunP = spinParagraph(p, page.cityName, page.provinceName, page.industryName, `landscape-${i}`);
+                                            const spunP = renderCaParagraph(p, `landscape-${i}`);
                                             return <p key={i} className={i === 0 ? "lead text-xl text-gray-800" : ""}>{spunP}</p>;
                                         })}
                                     </div>
@@ -1054,7 +1056,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                     {/* Anatomy of Top Programs */}
                                     <div id="top-programs" className="mt-12">
                                         <h2 className="text-3xl font-bold text-gray-900 mb-4">{deepDive.anatomy.title}</h2>
-                                        <p className="text-xl text-gray-700 mb-8">{spinParagraph(deepDive.anatomy.introduction, page.cityName, page.provinceName, page.industryName, 'anatomy-intro')}</p>
+                                        <p className="text-xl text-gray-700 mb-8">{renderCaParagraph(deepDive.anatomy.introduction, 'anatomy-intro')}</p>
                                         <div className="space-y-6">
                                             {shuffleArray(deepDive.anatomy.programs, `programs-${page.cityName}`).map((prog, idx) => (
                                                 <div key={idx} className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm hover:shadow-md transition-shadow">
@@ -1064,7 +1066,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                                         </div>
                                                         <div>
                                                             <h3 className="text-2xl font-bold text-gray-900 mb-3">{prog.name}</h3>
-                                                            <p className="text-gray-700 leading-relaxed text-lg mb-6">{spinParagraph(prog.description, page.cityName, page.provinceName, page.industryName, `prog-desc-${idx}`)}</p>
+                                                            <p className="text-gray-700 leading-relaxed text-lg mb-6">{renderCaParagraph(prog.description, `prog-desc-${idx}`)}</p>
                                                             
                                                             <div className="bg-red-50 border-l-4 border-red-500 p-5 mb-5 rounded-r-md">
                                                                 <h4 className="font-bold text-red-900 mb-3 flex items-center gap-2">
@@ -1077,7 +1079,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                                                 </ul>
                                                             </div>
                                                             <div className="bg-yellow-50 border border-yellow-300 p-5 rounded-md shadow-sm">
-                                                                <p className="text-yellow-900"><strong>💡 Insider Tip:</strong> {spinParagraph(prog.insiderTip, page.cityName, page.provinceName, page.industryName, `tip-${idx}`)}</p>
+                                                                <p className="text-yellow-900"><strong>💡 Insider Tip:</strong> {renderCaParagraph(prog.insiderTip, `tip-${idx}`)}</p>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -1113,7 +1115,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                         </h2>
                                         <div className="space-y-4 text-gray-800 text-lg leading-relaxed">
                                             {deepDive.stackingPlaybook.content.map((p, i) => (
-                                                <p key={i}>{spinParagraph(p, page.cityName, page.provinceName, page.industryName, `stack-${i}`)}</p>
+                                                <p key={i}>{renderCaParagraph(p, `stack-${i}`)}</p>
                                             ))}
                                         </div>
                                     </div>
@@ -1123,7 +1125,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                         <h2 className="text-3xl font-bold text-gray-900 mb-6 border-b pb-4">{deepDive.taxImplications.title}</h2>
                                         <div className="space-y-4">
                                             {deepDive.taxImplications.content.map((p, i) => (
-                                                <p key={i} className="leading-relaxed">{spinParagraph(p, page.cityName, page.provinceName, page.industryName, `tax-${i}`)}</p>
+                                                <p key={i} className="leading-relaxed">{renderCaParagraph(p, `tax-${i}`)}</p>
                                             ))}
                                         </div>
                                     </div>
@@ -1138,7 +1140,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                                         {idx + 1}
                                                     </div>
                                                     <h3 className="text-2xl font-bold text-gray-900 mb-3 mt-1">{step.phase}</h3>
-                                                    <p className="text-gray-700 text-lg leading-relaxed">{spinParagraph(step.details, page.cityName, page.provinceName, page.industryName, `framework-${idx}`)}</p>
+                                                    <p className="text-gray-700 text-lg leading-relaxed">{renderCaParagraph(step.details, `framework-${idx}`)}</p>
                                                 </div>
                                             ))}
                                         </div>
@@ -1199,7 +1201,7 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                                     
                                     {/* Eligibility Check Widget */}
                                     <div className="mt-16">
-                                        <EligibleCheck />
+                                        <EligibleCheck jurisdiction="CA" />
                                     </div>
                                 </>
                             );

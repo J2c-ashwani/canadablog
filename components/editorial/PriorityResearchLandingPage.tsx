@@ -1,4 +1,5 @@
-import { ArrowDown, CalendarCheck2 } from 'lucide-react';
+import Link from 'next/link';
+import { ArrowDown, CalendarCheck2, ShieldCheck, ArrowRight } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import AdSlot from '@/components/blog/AdSlot';
@@ -117,6 +118,115 @@ export function PriorityResearchLandingPage({ profile, eyebrow, title }: Priorit
                 nextStepDescription={profile.relatedPath.nextStepDescription}
                 stepType={profile.relatedPath.stepType}
               />
+            )}
+
+            {/* Contextual Regional Municipal Intelligence (Controlled Cohort) */}
+            {profile.route === '/usa/california' && (
+              <div className="my-10 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50/60 via-white to-slate-50 p-6 sm:p-8 shadow-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b border-emerald-100 pb-4">
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-600 text-white shadow-2xs">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      Verified Regional Intelligence
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-black text-slate-900 mt-2">
+                      Featured California Municipal & Sector Directives
+                    </h3>
+                  </div>
+                  <span className="text-xs font-bold text-slate-500">
+                    2026 Active Envelopes
+                  </span>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <Link
+                    href="/grants/ca/san-francisco/women-entrepreneurs"
+                    className="bg-white rounded-xl border border-slate-200/90 p-5 hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between text-xs font-bold text-emerald-700 mb-2">
+                        <span>San Francisco</span>
+                        <span className="bg-emerald-50 px-2 py-0.5 rounded text-[11px] border border-emerald-200/60">Women Founders</span>
+                      </div>
+                      <h4 className="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 leading-snug mb-2">
+                        San Francisco Women-Owned Business Grants
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                        SF OEWD Women’s Entrepreneurship Fund, CalOSBA technical assistance, and California IBank credit enhancement guarantees.
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black text-emerald-700">
+                      <span>View Roadmap & Programs</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+
+                  <Link
+                    href="/grants/ca/san-francisco/minority-owned"
+                    className="bg-white rounded-xl border border-slate-200/90 p-5 hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between text-xs font-bold text-emerald-700 mb-2">
+                        <span>San Francisco</span>
+                        <span className="bg-emerald-50 px-2 py-0.5 rounded text-[11px] border border-emerald-200/60">Minority & BIPOC</span>
+                      </div>
+                      <h4 className="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 leading-snug mb-2">
+                        San Francisco Minority & BIPOC Founders Grants
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                        SF African American Arts & Cultural District grants, commercial corridor tenant improvements, and SBA 8(a) certifications.
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black text-emerald-700">
+                      <span>View Roadmap & Programs</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
+            )}
+
+            {profile.route === '/usa/new-york' && (
+              <div className="my-10 rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50/60 via-white to-slate-50 p-6 sm:p-8 shadow-xs">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b border-emerald-100 pb-4">
+                  <div>
+                    <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-600 text-white shadow-2xs">
+                      <ShieldCheck className="w-3.5 h-3.5" />
+                      Verified Regional Intelligence
+                    </span>
+                    <h3 className="text-xl md:text-2xl font-black text-slate-900 mt-2">
+                      Featured New York Municipal & Sector Directives
+                    </h3>
+                  </div>
+                  <span className="text-xs font-bold text-slate-500">
+                    2026 Active Envelopes
+                  </span>
+                </div>
+
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <Link
+                    href="/grants/ny/new-york-city/education"
+                    className="bg-white rounded-xl border border-slate-200/90 p-5 hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"
+                  >
+                    <div>
+                      <div className="flex items-center justify-between text-xs font-bold text-emerald-700 mb-2">
+                        <span>New York City</span>
+                        <span className="bg-emerald-50 px-2 py-0.5 rounded text-[11px] border border-emerald-200/60">Education & EdTech</span>
+                      </div>
+                      <h4 className="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 leading-snug mb-2">
+                        NYC Education & EdTech Business Grants
+                      </h4>
+                      <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                        START-UP NY 10-year tax exemptions, NYS Digital Game Development tax credits, and NYC SBS Futureworks technology grants.
+                      </p>
+                    </div>
+                    <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black text-emerald-700">
+                      <span>View Roadmap & Programs</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </Link>
+                </div>
+              </div>
             )}
 
             {/* Visual FAQ Accordion here */}

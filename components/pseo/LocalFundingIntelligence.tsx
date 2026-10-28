@@ -20,6 +20,75 @@ interface LocalFundingIntelligenceProps {
 }
 
 export default function LocalFundingIntelligence({ profile }: LocalFundingIntelligenceProps) {
+  const isCanada = ['on', 'bc', 'ab', 'qc', 'mb', 'sk', 'ns', 'nb', 'nl', 'pe'].includes(profile.provinceSlug.toLowerCase());
+
+  const defaultStackingTiers = isCanada ? [
+    {
+      tierName: 'Tier 1: Federal Foundation',
+      title: 'NRC-IRAP & SR&ED',
+      description: 'Covers technical R&D payroll (35–64% refundable cash) or direct technical innovation grants up to $500,000.',
+      stackCap: 'Stack Cap: 35%–50% base',
+      colorClass: 'text-slate-400',
+      bgClass: 'bg-slate-50 border-slate-200',
+      accentClass: 'text-indigo-700',
+    },
+    {
+      tierName: 'Tier 2: Regional Agency',
+      title: `${profile.regionalAgency} & Provincial Funds`,
+      description: `Delivers capital expansion, commercialization, and productivity grants specifically earmarked for ${profile.provinceName} operators.`,
+      stackCap: 'Stack Cap: Up to 75% combined',
+      colorClass: 'text-indigo-600',
+      bgClass: 'bg-slate-50 border-slate-200',
+      accentClass: 'text-indigo-700',
+    },
+    {
+      tierName: 'Tier 3: Municipal & Workforce',
+      title: `${profile.cityName} Local Support`,
+      description: 'Direct municipal hiring subsidies, training vouchers, and local development commission incentives to bridge remaining overhead.',
+      stackCap: 'Final Stack: 75%–85% Net Funded',
+      colorClass: 'text-emerald-700',
+      bgClass: 'bg-emerald-50/60 border-emerald-200',
+      accentClass: 'text-emerald-800',
+    },
+  ] : [
+    {
+      tierName: 'Tier 1: Federal Foundation',
+      title: 'SBA, SBIR/STTR & Federal Awards',
+      description: 'Non-dilutive federal R&D grants, EDA regional investments, or SBA 7(a)/microloan credit guarantees providing baseline working capital.',
+      stackCap: 'Stack Cap: 40%–60% base',
+      colorClass: 'text-slate-400',
+      bgClass: 'bg-slate-50 border-slate-200',
+      accentClass: 'text-indigo-700',
+    },
+    {
+      tierName: 'Tier 2: State Programs & Tax Credits',
+      title: `${profile.regionalAgency} & State Incentives`,
+      description: `State-level small business loan guarantees, innovation vouchers, and job creation tax credits administered by ${profile.provinceName}.`,
+      stackCap: 'Stack Cap: Up to 75% combined',
+      colorClass: 'text-indigo-600',
+      bgClass: 'bg-slate-50 border-slate-200',
+      accentClass: 'text-indigo-700',
+    },
+    {
+      tierName: 'Tier 3: Municipal & Local Commercial Support',
+      title: `${profile.cityName} Local Support`,
+      description: `Direct municipal storefront grants, commercial tenant improvements, and local development authority micro-capital in ${profile.cityName}.`,
+      stackCap: 'Final Stack: 70%–85% Net Funded',
+      colorClass: 'text-emerald-700',
+      bgClass: 'bg-emerald-50/60 border-emerald-200',
+      accentClass: 'text-emerald-800',
+    },
+  ];
+
+  const stackingTiers = profile.stackingTiers
+    ? profile.stackingTiers.map((tier, idx) => ({
+        ...tier,
+        colorClass: idx === 0 ? 'text-slate-400' : idx === 1 ? 'text-indigo-600' : 'text-emerald-700',
+        bgClass: idx === 2 ? 'bg-emerald-50/60 border-emerald-200' : 'bg-slate-50 border-slate-200',
+        accentClass: idx === 2 ? 'text-emerald-800' : 'text-indigo-700',
+      }))
+    : defaultStackingTiers;
+
   return (
     <section 
       id="local-funding-intelligence" 
@@ -88,11 +157,26 @@ export default function LocalFundingIntelligence({ profile }: LocalFundingIntell
               className="bg-white rounded-2xl border border-slate-200/80 p-6 shadow-xs hover:shadow-md hover:border-emerald-400 transition-all flex flex-col justify-between"
             >
               <div>
+                {prog.intakeStatus === 'Closed' && (
+                  <div className="mb-3 px-3 py-1.5 rounded-lg bg-amber-50 border border-amber-200 text-amber-900 text-xs font-semibold flex items-center gap-1.5">
+                    <AlertCircle className="w-4 h-4 text-amber-600 shrink-0" />
+                    <span>Intake currently closed. Reference data retained for benchmarking.</span>
+                  </div>
+                )}
+
                 <div className="flex items-start justify-between gap-3 mb-2">
                   <span className="text-[11px] font-bold uppercase tracking-wider text-slate-500 bg-slate-100 px-2.5 py-0.5 rounded-full">
                     {prog.agency}
                   </span>
-                  <span className="text-[11px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-50 border border-emerald-200 px-2.5 py-0.5 rounded-full">
+                  <span className={`text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+                    prog.type === 'Grant'
+                      ? 'text-emerald-800 bg-emerald-50 border-emerald-200'
+                      : prog.type === 'Loan' || prog.type === 'Loan Guarantee'
+                      ? 'text-blue-800 bg-blue-50 border-blue-200'
+                      : prog.type === 'Repayable Contribution'
+                      ? 'text-purple-800 bg-purple-50 border-purple-200'
+                      : 'text-indigo-800 bg-indigo-50 border-indigo-200'
+                  }`}>
                     {prog.type}
                   </span>
                 </div>
@@ -102,7 +186,15 @@ export default function LocalFundingIntelligence({ profile }: LocalFundingIntell
                 </h4>
 
                 <div className="flex flex-wrap items-center gap-3 my-3">
-                  <div className="bg-emerald-50/80 text-emerald-900 font-black text-sm px-3 py-1 rounded-xl border border-emerald-200/80">
+                  <div className={`font-black text-sm px-3 py-1 rounded-xl border ${
+                    prog.intakeStatus === 'Closed'
+                      ? 'bg-amber-50/90 text-amber-950 border-amber-300'
+                      : prog.type === 'Loan' || prog.type === 'Loan Guarantee'
+                      ? 'bg-blue-50/80 text-blue-950 border-blue-200'
+                      : prog.type === 'Repayable Contribution'
+                      ? 'bg-purple-50/80 text-purple-950 border-purple-200'
+                      : 'bg-emerald-50/80 text-emerald-950 border-emerald-200/80'
+                  }`}>
                     {prog.maxAmount}
                   </div>
                   <div className="text-xs font-semibold text-slate-600">
@@ -132,8 +224,19 @@ export default function LocalFundingIntelligence({ profile }: LocalFundingIntell
               </div>
 
               <div className="mt-5 pt-3 border-t border-slate-100 flex items-center justify-between text-xs">
-                <span className="font-semibold text-slate-500">
-                  Status: <span className="text-emerald-700 font-bold">{prog.intakeStatus}</span>
+                <span className="font-semibold text-slate-500 flex items-center gap-1.5">
+                  Status:
+                  <span
+                    className={`inline-flex items-center px-2 py-0.5 rounded-md font-bold text-[11px] ${
+                      prog.intakeStatus === 'Closed'
+                        ? 'bg-amber-100 text-amber-900 border border-amber-300'
+                        : prog.intakeStatus === 'Periodic'
+                        ? 'bg-blue-100 text-blue-900 border border-blue-200'
+                        : 'bg-emerald-100 text-emerald-900 border border-emerald-200'
+                    }`}
+                  >
+                    {prog.intakeStatus === 'Closed' ? 'Closed (Archived Benchmark)' : prog.intakeStatus === 'Periodic' ? 'Periodic (Scheduled Intakes)' : 'Continuous (Open)'}
+                  </span>
                 </span>
                 <a 
                   href="#calculator" 
@@ -142,6 +245,20 @@ export default function LocalFundingIntelligence({ profile }: LocalFundingIntell
                   Check Qualification <ArrowRight className="w-3 h-3 group-hover:translate-x-0.5 transition-transform" />
                 </a>
               </div>
+
+              {prog.sourceUrl && (
+                <div className="mt-2.5 pt-2 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+                  <span>Verified: {prog.verifiedDate || '2026-10'}</span>
+                  <a
+                    href={prog.sourceUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-slate-600 hover:text-indigo-600 font-medium underline decoration-slate-300 underline-offset-2"
+                  >
+                    Official Source <ExternalLink className="w-3 h-3" />
+                  </a>
+                </div>
+              )}
             </div>
           ))}
         </div>
@@ -158,49 +275,29 @@ export default function LocalFundingIntelligence({ profile }: LocalFundingIntell
             The {profile.cityName} 3-Tier Capital Stacking Architecture
           </h3>
           <p className="text-sm text-slate-600 leading-relaxed">
-            Canadian public funding rules strictly regulate capital stacking limits (typically 75% to 85% of total eligible expenses). For businesses in <strong>{profile.cityName}</strong>, this standard three-layer stack maximizes non-dilutive capital without triggering federal clawbacks:
+            {isCanada
+              ? `Canadian public funding rules strictly regulate capital stacking limits (typically 75% to 85% of total eligible expenses). For businesses in ${profile.cityName}, this standard three-layer stack maximizes non-dilutive capital without triggering federal clawbacks:`
+              : `U.S. non-dilutive funding strategies coordinate federal awards, state economic incentives, and municipal enterprise support. For businesses in ${profile.cityName}, this standard three-layer stack maximizes non-dilutive capital without triggering compliance issues:`}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-black uppercase tracking-wider text-slate-400 mb-1">Tier 1: Federal Foundation</div>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">NRC-IRAP & SR&ED</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Covers technical R&D payroll (35–64% refundable cash) or direct technical innovation grants up to $500,000.
-              </p>
+          {stackingTiers.map((tier, tIdx) => (
+            <div key={tIdx} className={`${tier.bgClass} rounded-xl p-5 border flex flex-col justify-between`}>
+              <div>
+                <div className={`text-xs font-black uppercase tracking-wider ${tier.colorClass} mb-1`}>
+                  {tier.tierName}
+                </div>
+                <h4 className="font-bold text-slate-900 text-sm mb-2">{tier.title}</h4>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  {tier.description}
+                </p>
+              </div>
+              <div className={`mt-4 pt-2 border-t border-slate-200/60 text-[11px] font-bold ${tier.accentClass}`}>
+                {tier.stackCap}
+              </div>
             </div>
-            <div className="mt-4 pt-2 border-t border-slate-200/60 text-[11px] font-bold text-indigo-700">
-              Stack Cap: 35%–50% base
-            </div>
-          </div>
-
-          <div className="bg-slate-50 rounded-xl p-5 border border-slate-200 flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-black uppercase tracking-wider text-indigo-600 mb-1">Tier 2: Regional Agency</div>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">{profile.regionalAgency} & Provincial Funds</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Delivers capital expansion, commercialization, and productivity grants specifically earmarked for {profile.provinceName} operators.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-slate-200/60 text-[11px] font-bold text-indigo-700">
-              Stack Cap: Up to 75% combined
-            </div>
-          </div>
-
-          <div className="bg-emerald-50/60 rounded-xl p-5 border border-emerald-200 flex flex-col justify-between">
-            <div>
-              <div className="text-xs font-black uppercase tracking-wider text-emerald-700 mb-1">Tier 3: Municipal & Workforce</div>
-              <h4 className="font-bold text-slate-900 text-sm mb-2">{profile.cityName} Local Support</h4>
-              <p className="text-xs text-slate-600 leading-relaxed">
-                Direct municipal hiring subsidies, training vouchers, and local development commission incentives to bridge remaining overhead.
-              </p>
-            </div>
-            <div className="mt-4 pt-2 border-t border-emerald-200 text-[11px] font-bold text-emerald-800">
-              Final Stack: 75%–85% Net Funded
-            </div>
-          </div>
+          ))}
         </div>
       </div>
 

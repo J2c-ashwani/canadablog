@@ -54,27 +54,40 @@ const INITIAL_DATA: CalculatorData = {
 
 /** Map province/state codes to readable names */
 const REGION_NAMES: Record<string, string> = {
+  // Canadian Provinces & Territories
   on: 'Ontario', bc: 'British Columbia', ab: 'Alberta', qc: 'Quebec',
   ns: 'Nova Scotia', mb: 'Manitoba', sk: 'Saskatchewan', nb: 'New Brunswick',
   nl: 'Newfoundland & Labrador', pe: 'Prince Edward Island',
   territories: 'Territories', national: 'Federal/Nationwide',
-  az: 'Arizona', ca: 'California', co: 'Colorado', fl: 'Florida', ga: 'Georgia',
-  hi: 'Hawaii', id: 'Idaho', il: 'Illinois', in: 'Indiana', ky: 'Kentucky',
-  la: 'Louisiana', ma: 'Massachusetts', md: 'Maryland', mi: 'Michigan', mn: 'Minnesota',
-  nc: 'North Carolina', ne: 'Nebraska', nj: 'New Jersey', nm: 'New Mexico', nv: 'Nevada',
-  ny: 'New York', oh: 'Ohio', ok: 'Oklahoma', pa: 'Pennsylvania', tn: 'Tennessee',
-  tx: 'Texas', va: 'Virginia', wa: 'Washington', wi: 'Wisconsin'
-}
+  // US States & Territories
+  al: 'Alabama', ak: 'Alaska', az: 'Arizona', ar: 'Arkansas', ca: 'California',
+  co: 'Colorado', ct: 'Connecticut', de: 'Delaware', dc: 'District of Columbia',
+  fl: 'Florida', ga: 'Georgia', hi: 'Hawaii', id: 'Idaho', il: 'Illinois',
+  in: 'Indiana', ia: 'Iowa', ks: 'Kansas', ky: 'Kentucky', la: 'Louisiana',
+  me: 'Maine', md: 'Maryland', ma: 'Massachusetts', mi: 'Michigan', mn: 'Minnesota',
+  ms: 'Mississippi', mo: 'Missouri', mt: 'Montana', ne: 'Nebraska', nv: 'Nevada',
+  nh: 'New Hampshire', nj: 'New Jersey', nm: 'New Mexico', ny: 'New York',
+  nc: 'North Carolina', nd: 'North Dakota', oh: 'Ohio', ok: 'Oklahoma', or: 'Oregon',
+  pa: 'Pennsylvania', ri: 'Rhode Island', sc: 'South Carolina', sd: 'South Dakota',
+  tn: 'Tennessee', tx: 'Texas', ut: 'Utah', vt: 'Vermont', va: 'Virginia',
+  wa: 'Washington', wv: 'West Virginia', wi: 'Wisconsin', wy: 'Wyoming'
+};
 
 const CANADIAN_PROVS = ['on', 'bc', 'ab', 'qc', 'ns', 'mb', 'sk', 'nb', 'nl', 'pe', 'territories', 'national'];
 
 const US_STATES: Record<string, string> = {
-  az: 'Arizona', ca: 'California', co: 'Colorado', fl: 'Florida', ga: 'Georgia',
-  hi: 'Hawaii', id: 'Idaho', il: 'Illinois', in: 'Indiana', ky: 'Kentucky',
-  la: 'Louisiana', ma: 'Massachusetts', md: 'Maryland', mi: 'Michigan', mn: 'Minnesota',
-  nc: 'North Carolina', ne: 'Nebraska', nj: 'New Jersey', nm: 'New Mexico', nv: 'Nevada',
-  ny: 'New York', oh: 'Ohio', ok: 'Oklahoma', pa: 'Pennsylvania', tn: 'Tennessee',
-  tx: 'Texas', va: 'Virginia', wa: 'Washington', wi: 'Wisconsin', national: 'Federal/Nationwide'
+  al: 'Alabama', ak: 'Alaska', az: 'Arizona', ar: 'Arkansas', ca: 'California',
+  co: 'Colorado', ct: 'Connecticut', de: 'Delaware', dc: 'District of Columbia',
+  fl: 'Florida', ga: 'Georgia', hi: 'Hawaii', id: 'Idaho', il: 'Illinois',
+  in: 'Indiana', ia: 'Iowa', ks: 'Kansas', ky: 'Kentucky', la: 'Louisiana',
+  me: 'Maine', md: 'Maryland', ma: 'Massachusetts', mi: 'Michigan', mn: 'Minnesota',
+  ms: 'Mississippi', mo: 'Missouri', mt: 'Montana', ne: 'Nebraska', nv: 'Nevada',
+  nh: 'New Hampshire', nj: 'New Jersey', nm: 'New Mexico', ny: 'New York',
+  nc: 'North Carolina', nd: 'North Dakota', oh: 'Ohio', ok: 'Oklahoma', or: 'Oregon',
+  pa: 'Pennsylvania', ri: 'Rhode Island', sc: 'South Carolina', sd: 'South Dakota',
+  tn: 'Tennessee', tx: 'Texas', ut: 'Utah', vt: 'Vermont', va: 'Virginia',
+  wa: 'Washington', wv: 'West Virginia', wi: 'Wisconsin', wy: 'Wyoming',
+  national: 'Federal/Nationwide'
 };
 
 const INDUSTRY_NAMES: Record<string, string> = {

@@ -19,14 +19,121 @@ const ALL_PROVINCES: { slug: string; name: string; path: string }[] = [
   { slug: 'nb', name: 'New Brunswick', path: '/canada/new-brunswick' },
 ];
 
+const PROVINCE_COHORT_LINKS: Record<string, Array<{ title: string; href: string; city: string; sector: string; description: string }>> = {
+  on: [
+    {
+      title: 'Toronto Technology Startup Grants',
+      href: '/grants/on/toronto/technology',
+      city: 'Toronto',
+      sector: 'Technology & Startups',
+      description: 'FedDev Ontario BSP scale-up funding, OCI VIP vouchers, and NRC-IRAP engineering wage subsidies.',
+    },
+    {
+      title: 'Toronto Hospitality & Restaurant Grants',
+      href: '/grants/on/toronto/restaurants-hospitality',
+      city: 'Toronto',
+      sector: 'Restaurants & Hospitality',
+      description: 'City of Toronto commercial patio & façade grants, Destination Ontario tourism relief, and CSBFP equipment guarantees.',
+    },
+    {
+      title: 'Thunder Bay Main Street & Retail Grants',
+      href: '/grants/on/thunder-bay/retail',
+      city: 'Thunder Bay',
+      sector: 'Retail & Main Street',
+      description: 'FedNor Northern Ontario development grants, NOHFC small business funds, and Thunder Bay CEDC vouchers.',
+    },
+  ],
+  bc: [
+    {
+      title: 'Vancouver Women-Owned Business Grants',
+      href: '/grants/bc/vancouver/women-entrepreneurs',
+      city: 'Vancouver',
+      sector: 'Women Founders',
+      description: 'PacifiCan scale-up envelopes, WeBC low-barrier capital, and WorkBC leadership training vouchers.',
+    },
+    {
+      title: 'Coquitlam Technology Innovation Grants',
+      href: '/grants/bc/coquitlam/technology',
+      city: 'Coquitlam',
+      sector: 'Technology Startups',
+      description: 'PacifiCan BSP commercialization funds, Innovate BC Ignite R&D vouchers, and Tri-Cities regional tax credits.',
+    },
+  ],
+  ab: [
+    {
+      title: 'Calgary Restaurant & Hospitality Grants',
+      href: '/grants/ab/calgary/restaurants-hospitality',
+      city: 'Calgary',
+      sector: 'Hospitality & Dining',
+      description: 'City of Calgary BRZ patio improvements, Travel Alberta culinary investment, and PrairiesCan tourism relief.',
+    },
+  ],
+  mb: [
+    {
+      title: 'Winnipeg Women Entrepreneur Grants',
+      href: '/grants/mb/winnipeg/women-entrepreneurs',
+      city: 'Winnipeg',
+      sector: 'Women Founders',
+      description: 'PrairiesCan REGI commercialization, WECM growth financing, and Manitoba Innovation Growth Program cost-shares.',
+    },
+  ],
+};
+
 export default function ProvincialCityMesh({ provinceSlug, provinceName }: ProvincialCityMeshProps) {
   // Query all cities for this province from pSEO data
   const cities = getPseoCitySummaries(provinceSlug);
   const displayCities = cities.slice(0, 8);
   const otherProvinces = ALL_PROVINCES.filter((p) => p.slug !== provinceSlug);
+  const featuredCohort = PROVINCE_COHORT_LINKS[provinceSlug.toLowerCase()];
 
   return (
     <section className="my-16 space-y-12">
+      {/* 0. Featured Regional Directives (Controlled Cohort) */}
+      {featuredCohort && featuredCohort.length > 0 && (
+        <div className="rounded-2xl border border-emerald-200 bg-gradient-to-br from-emerald-50/60 via-white to-slate-50 p-6 md:p-8 shadow-xs">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-6 border-b border-emerald-100 pb-4">
+            <div>
+              <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black uppercase tracking-wider bg-emerald-600 text-white shadow-2xs">
+                <ShieldCheck className="w-3.5 h-3.5" />
+                Verified Regional Intelligence
+              </span>
+              <h3 className="text-xl md:text-2xl font-black text-slate-900 mt-2">
+                Featured {provinceName} Municipal & Sector Directives
+              </h3>
+            </div>
+            <span className="text-xs font-bold text-slate-500">
+              2026 Active Envelopes
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+            {featuredCohort.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="bg-white rounded-xl border border-slate-200/90 p-5 hover:border-emerald-500 hover:shadow-md transition-all group flex flex-col justify-between"
+              >
+                <div>
+                  <div className="flex items-center justify-between text-xs font-bold text-emerald-700 mb-2">
+                    <span>{item.city}</span>
+                    <span className="bg-emerald-50 px-2 py-0.5 rounded text-[11px] border border-emerald-200/60">{item.sector}</span>
+                  </div>
+                  <h4 className="font-extrabold text-slate-900 text-base group-hover:text-emerald-700 leading-snug mb-2">
+                    {item.title}
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed mb-4">
+                    {item.description}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-black text-emerald-700">
+                  <span>View Roadmap & Programs</span>
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      )}
       {/* 1. Metro Cities Grid */}
       <div>
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
