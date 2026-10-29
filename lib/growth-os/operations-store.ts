@@ -8,7 +8,9 @@ import {
   acquireRedisOperationLease,
   finishRedisOperationLease,
   getRedisOperationRunRows,
+  getRedisOperationalState,
   hasOperationalRedis,
+  persistRedisOperationalState,
 } from '@/lib/growth-os/redis-operations';
 
 type SheetContext = {
@@ -156,6 +158,14 @@ export async function updateOperationalRow(
 const STATE_HEADERS = ['Key', 'JSON Value', 'Updated At'];
 
 export async function getLatestOperationalState<T>(key: string): Promise<T | null> {
+  if (hasOperationalRedis()) {
+    try {
+      const fromRedis = await getRedisOperationalState<T>(key);
+      if (fromRedis !== null) return fromRedis;
+    } catch (err) {
+      console.warn(`⚠️ Operational Redis state read failed for ${key}, falling back to Sheets.`);
+    }
+  }
   const rows = await readOperationalRows('GrowthOS State', STATE_HEADERS);
   for (let index = rows.length - 1; index >= 0; index--) {
     if (rows[index][0] !== key) continue;
@@ -169,6 +179,13 @@ export async function getLatestOperationalState<T>(key: string): Promise<T | nul
 }
 
 export async function setOperationalState(key: string, value: unknown) {
+  if (hasOperationalRedis()) {
+    try {
+      await persistRedisOperationalState(key, value);
+    } catch (err) {
+      console.warn(`⚠️ Operational Redis state write failed for ${key}:`, err);
+    }
+  }
   return appendOperationalRow('GrowthOS State', STATE_HEADERS, [
     key,
     JSON.stringify(value),

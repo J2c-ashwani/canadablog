@@ -542,6 +542,39 @@ export class ChannelAdapters {
         // Proceed with configured token
       }
 
+      // Pre-upload deduplication: Query Facebook Page videos to prevent duplicate reel uploads
+      try {
+        const recentVideosRes = await fetchWithRetry(
+          `https://graph.facebook.com/v19.0/${encodeURIComponent(pageId)}/videos?fields=id,title,created_time&limit=25&access_token=${encodeURIComponent(token)}`,
+          { method: "GET" }
+        )
+        if (recentVideosRes.ok) {
+          const recentData = await recentVideosRes.json().catch(() => ({})) as {
+            data?: Array<{ id: string; title?: string; created_time?: string }>
+          }
+          const cleanTarget = title.toLowerCase().replace(/[^a-z0-9]/g, '')
+          const duplicate = recentData.data?.find((v) => {
+            if (!v.title) return false
+            const cleanExisting = v.title.toLowerCase().replace(/[^a-z0-9]/g, '')
+            if (cleanExisting === cleanTarget) return true
+            if (cleanTarget.length >= 12 && cleanExisting.includes(cleanTarget)) return true
+            if (cleanExisting.length >= 12 && cleanTarget.includes(cleanExisting)) return true
+            return false
+          })
+          if (duplicate) {
+            console.warn(`[FacebookAdapter] Reel with title "${title}" already exists on Facebook Page (ID: ${duplicate.id}). Skipping duplicate upload.`)
+            return {
+              channelName: "Facebook",
+              status: "API_ACCEPTED",
+              externalId: duplicate.id,
+              message: `Facebook Reel already exists (ID: ${duplicate.id}); duplicate upload prevented.`,
+            }
+          }
+        }
+      } catch (dedupeErr) {
+        console.warn(`[FacebookAdapter] Facebook duplicate check warning (proceeding):`, dedupeErr)
+      }
+
       const fs = await import('fs')
       const path = await import('path')
       const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl

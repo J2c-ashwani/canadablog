@@ -278,3 +278,41 @@ export async function getRedisTelemetryEvents<T>(): Promise<T[]> {
   const events = await chunkedMget<T>(client, eventIds.map((eventId) => telemetryKey(String(eventId))));
   return events.filter((event): event is T => Boolean(event));
 }
+
+const STATE_PREFIX = `${PREFIX}:state`;
+
+function stateKey(key: string) {
+  return `${STATE_PREFIX}:${key}`;
+}
+
+export async function persistRedisOperationalState(key: string, value: unknown) {
+  const client = redis();
+  if (!client) return false;
+  try {
+    await client.set(stateKey(key), JSON.stringify(value), { ex: RETENTION_SECONDS });
+    return true;
+  } catch (err) {
+    console.warn(`⚠️ Failed to persist operational state to Redis for ${key}:`, err);
+    return false;
+  }
+}
+
+export async function getRedisOperationalState<T>(key: string): Promise<T | null> {
+  const client = redis();
+  if (!client) return null;
+  try {
+    const raw = await client.get<string | T>(stateKey(key));
+    if (!raw) return null;
+    if (typeof raw === 'string') {
+      try {
+        return JSON.parse(raw) as T;
+      } catch {
+        return raw as unknown as T;
+      }
+    }
+    return raw as T;
+  } catch (err) {
+    console.warn(`⚠️ Failed to read operational state from Redis for ${key}:`, err);
+    return null;
+  }
+}

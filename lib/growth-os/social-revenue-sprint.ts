@@ -159,18 +159,33 @@ export class SocialRevenueSprintService {
     const orderedVariants = [...VARIANTS].sort((left, right) =>
       Number(right.id === INITIAL_VARIANT_ID) - Number(left.id === INITIAL_VARIANT_ID)
     )
+    // Safeguard: Ensure the NRC IRAP Innovation Grants reel (sep-product-ladder-v1)
+    // is permanently recorded as accepted so it is NEVER selected or posted again.
+    if (!state.variants['sep-product-ladder-v1']?.facebook) {
+      state.variants['sep-product-ladder-v1'] = {
+        ...state.variants['sep-product-ladder-v1'],
+        facebook: {
+          status: 'LIVE_PUBLISHED',
+          externalId: 'historical-dispatch-completed',
+          acceptedAt: state.lastAcceptedAt || new Date().toISOString(),
+          message: 'Historical dispatch verified: NRC IRAP Innovation Grants reel already published.',
+        },
+      }
+    }
+
     let variant = orderedVariants.find((candidate) => {
       const receipts = state.variants[candidate.id] || {}
       return !accepted(receipts.facebook)
     })
-    if (!variant && allowContinuous) {
-      state.variants = {}
-      variant = orderedVariants[0]
-    } else if (!variant) {
+    // When every variant has been posted to Facebook, the cycle is COMPLETE.
+    // Previously `allowContinuous` wiped state and re-posted all variants from scratch,
+    // causing duplicate reels on Facebook (e.g. the IRAP reel appearing 3+ times).
+    // Now we stop cleanly — no more automatic reset loops.
+    if (!variant) {
       return { active: true, decision: 'COMPLETE', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
     }
 
-    const isFirstVariant = variant.id === INITIAL_VARIANT_ID
+    const isFirstVariant = variant.id === INITIAL_VARIANT_ID && Object.keys(state.variants).length <= 1
     const lastAcceptedMs = new Date(state.lastAcceptedAt || '').getTime()
     if (!isFirstVariant && Number.isFinite(lastAcceptedMs) && now - lastAcceptedMs < MIN_VARIANT_GAP_MS) {
       return { active: true, decision: 'WAITING_FOR_NEXT_VARIANT', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
@@ -208,6 +223,17 @@ export class SocialRevenueSprintService {
             externalId: result.externalId || '',
             acceptedAt,
             message: result.message,
+          }
+          // Incremental per-channel persistence: Immediately save state to Redis and Google Sheets.
+          // Do not wait for all 4 channels to finish, preventing duplicate posts if a later channel
+          // times out or hits Vercel's 60-second limit.
+          state.variants[variant.id] = { ...receipts }
+          state.lastAcceptedAt = acceptedAt
+          state.updatedAt = acceptedAt
+          try {
+            await setOperationalState(STATE_KEY, state)
+          } catch (stateErr: any) {
+            console.error(`[SocialRevenueSprint] Failed to save incremental operational state for ${channel}:`, stateErr)
           }
         }
       } catch (err: any) {
@@ -253,7 +279,17 @@ export class SocialRevenueSprintService {
         if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
           return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, fullCaptionWithTags, facebookUrl)
         }
-        const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+        const reelVideoUrl = infoPost?.media.videoUrl
+        if (!reelVideoUrl) {
+          if (infoPost?.media.carouselSlides?.length) {
+            return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, fullCaptionWithTags, facebookUrl)
+          }
+          return {
+            channelName: 'Facebook',
+            status: 'QUEUED_FOR_APPROVAL',
+            message: `Variant ${variant.id} has no valid videoUrl or carouselSlides. Skipped to prevent duplicate/unintended reel uploads.`,
+          }
+        }
         const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
         const fullDescription = `${caption}\n\n🔗 Calculate your eligibility:\n👉 ${facebookUrl}\n\n${hashtagLine}`
 
@@ -278,7 +314,17 @@ export class SocialRevenueSprintService {
         if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
           return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, brandedHashtags)
         }
-        const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+        const reelVideoUrl = infoPost?.media.videoUrl
+        if (!reelVideoUrl) {
+          if (infoPost?.media.carouselSlides?.length) {
+            return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, brandedHashtags)
+          }
+          return {
+            channelName: 'Instagram',
+            status: 'QUEUED_FOR_APPROVAL',
+            message: `Variant ${variant.id} has no valid videoUrl or carouselSlides. Skipped.`,
+          }
+        }
         const caption = infoPost?.captions?.instagram || `${variant.facebook}\n\n🔗 ${instagramUrl}`
 
         return ChannelAdapters.postInstagramReel(reelVideoUrl, caption, brandedHashtags)
@@ -302,7 +348,14 @@ export class SocialRevenueSprintService {
 
       // 4. YouTube Shorts Dispatch (Automatic Shorts Upload for Vertical Video Reels)
       dispatch('youtube', async () => {
-        const reelVideoUrl = infoPost?.media.videoUrl || '/videos/reels/nrc-irap-innovation-grants.mp4'
+        const reelVideoUrl = infoPost?.media.videoUrl
+        if (!reelVideoUrl) {
+          return {
+            channelName: 'YouTube',
+            status: 'QUEUED_FOR_APPROVAL',
+            message: `Variant ${variant.id} is a carousel or static asset; YouTube Shorts skipped.`,
+          }
+        }
         const title = infoPost?.title || '🇨🇦 Canadian Business Grants & Funding'
         const description = `${infoPost?.captions?.facebook || variant.facebook}\n\n🔗 Calculate your non-dilutive funding match in 60 seconds:\n👉 https://www.fsidigital.ca/calculator\n\n#FSIDigital #Shorts #Grants #BusinessFunding #StartupFunding #CanadaBusiness #NonDilutiveFunding`
 
