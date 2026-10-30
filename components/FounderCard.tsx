@@ -56,7 +56,7 @@ export function FounderCard() {
               <Youtube className="w-3.5 h-3.5" />
             </a>
             <a
-              href="https://www.instagram.com/fsidigital/"
+              href="https://www.instagram.com/fsidigital.ca/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-pink-50 hover:text-[#E4405F] transition-all"

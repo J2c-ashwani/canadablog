@@ -656,7 +656,7 @@ export default function ContactClient() {
                 LinkedIn
               </a>
               <a
-                href="https://www.instagram.com/fsidigital/"
+                href="https://www.instagram.com/fsidigital.ca/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-pink-300 hover:text-pink-600 transition-colors shadow-2xs"

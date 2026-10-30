@@ -42,8 +42,8 @@ export const SOCIAL_CHANNELS: SocialChannel[] = [
   },
   {
     name: 'Instagram',
-    handle: '@fsidigital',
-    url: 'https://www.instagram.com/fsidigital/',
+    handle: '@fsidigital.ca',
+    url: 'https://www.instagram.com/fsidigital.ca/',
     description: 'Visual guides, reels & carousels',
     color: '#E4405F',
     hoverBg: 'hover:bg-pink-500/10 hover:border-pink-500/40 hover:text-pink-400',

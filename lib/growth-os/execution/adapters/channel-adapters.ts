@@ -390,10 +390,25 @@ export class ChannelAdapters {
       if (!response.ok || !payload.id) {
         throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider post ID missing'}`)
       }
+
+      let permalink: string | undefined
+      try {
+        const metaRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(payload.id)}?fields=permalink_url&access_token=${token}`, { method: "GET" })
+        const meta = await metaRes.json().catch(() => ({})) as { permalink_url?: string }
+        if (meta.permalink_url) permalink = meta.permalink_url
+      } catch (e) {}
+
+      if (!permalink) {
+        permalink = payload.id.includes('_')
+          ? `https://www.facebook.com/${payload.id.split('_')[0]}/posts/${payload.id.split('_')[1]}`
+          : `https://www.facebook.com/${pageId}/posts/${payload.id}`
+      }
+
       return {
         channelName: "Facebook",
         status: "API_ACCEPTED",
         externalId: payload.id,
+        permalink,
         message: "Facebook accepted the Page post and returned a provider post ID.",
       }
     } catch (err: any) {
@@ -498,10 +513,24 @@ export class ChannelAdapters {
         throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider post ID missing'}`)
       }
 
+      let permalink: string | undefined
+      try {
+        const metaRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(payload.id)}?fields=permalink_url&access_token=${token}`, { method: "GET" })
+        const meta = await metaRes.json().catch(() => ({})) as { permalink_url?: string }
+        if (meta.permalink_url) permalink = meta.permalink_url
+      } catch (e) {}
+
+      if (!permalink) {
+        permalink = payload.id.includes('_')
+          ? `https://www.facebook.com/${payload.id.split('_')[0]}/posts/${payload.id.split('_')[1]}`
+          : `https://www.facebook.com/${pageId}/posts/${payload.id}`
+      }
+
       return {
         channelName: "Facebook",
         status: "API_ACCEPTED",
         externalId: payload.id,
+        permalink,
         message: "Facebook accepted the Page post and returned a provider post ID.",
       }
     } catch (err: any) {
@@ -567,6 +596,7 @@ export class ChannelAdapters {
               channelName: "Facebook",
               status: "API_ACCEPTED",
               externalId: duplicate.id,
+              permalink: `https://www.facebook.com/reel/${duplicate.id}/`,
               message: `Facebook Reel already exists (ID: ${duplicate.id}); duplicate upload prevented.`,
             }
           }
@@ -640,10 +670,26 @@ export class ChannelAdapters {
         throw new Error(`Facebook API error ${response.status}: ${payload.error?.message || 'provider video ID missing'}`)
       }
 
+      let permalink: string | undefined
+      try {
+        const metaRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(payload.id)}?fields=permalink_url&access_token=${token}`, { method: "GET" })
+        const meta = await metaRes.json().catch(() => ({})) as { permalink_url?: string }
+        if (meta.permalink_url) {
+          permalink = meta.permalink_url.startsWith('http')
+            ? meta.permalink_url
+            : `https://www.facebook.com${meta.permalink_url.startsWith('/') ? '' : '/'}${meta.permalink_url}`
+        }
+      } catch (e) {}
+
+      if (!permalink) {
+        permalink = `https://www.facebook.com/reel/${payload.id}/`
+      }
+
       return {
         channelName: "Facebook",
         status: "API_ACCEPTED",
         externalId: payload.id,
+        permalink,
         message: "Facebook accepted and published the Reel video via graph-video API.",
       }
     } catch (err: any) {
@@ -829,7 +875,7 @@ export class ChannelAdapters {
         channelName: "Instagram",
         status: "API_ACCEPTED",
         externalId: publishData.id,
-        permalink: permalink || 'https://www.instagram.com/fsidigital/',
+        permalink: permalink || 'https://www.instagram.com/fsidigital.ca/',
         message: "Instagram accepted and published the carousel post via Meta Graph API.",
       }
     } catch (err: any) {
@@ -926,7 +972,7 @@ export class ChannelAdapters {
         channelName: "Instagram",
         status: "API_ACCEPTED",
         externalId: publishData.id,
-        permalink: permalink || 'https://www.instagram.com/fsidigital/',
+        permalink: permalink || 'https://www.instagram.com/fsidigital.ca/',
         message: "Instagram accepted and published the Reel via Meta Graph API.",
       }
     } catch (err: any) {
