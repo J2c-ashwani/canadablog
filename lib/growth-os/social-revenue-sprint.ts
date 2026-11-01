@@ -205,16 +205,36 @@ export class SocialRevenueSprintService {
       }
     }
 
+    // 1. Prioritize completely fresh variants that have never been posted to Facebook
+    let isEvergreen = false
     let variant = orderedVariants.find((candidate) => {
       const receipts = state.variants[candidate.id] || {}
       return !accepted(receipts.facebook)
     })
-    // When every variant has been posted to Facebook, the cycle is COMPLETE.
-    // Previously `allowContinuous` wiped state and re-posted all variants from scratch,
-    // causing duplicate reels on Facebook (e.g. the IRAP reel appearing 3+ times).
-    // Now we stop cleanly — no more automatic reset loops.
+
+    // 2. ENDLESS ENGINE: When every variant in the active library has been posted once,
+    // do NOT stop or return COMPLETE. Instead, activate the 60-Day Evergreen Rotation:
+    // Select the variant whose last publication was longest ago (and >= 60 days in the past).
+    // This ensures continuous, non-stop daily posting 7 days a week forever without duplicate spam.
     if (!variant) {
-      return { active: true, decision: 'COMPLETE', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
+      const SIXTY_DAYS_MS = 60 * 24 * 60 * 60 * 1000
+      const evergreenCandidates = orderedVariants
+        .map((candidate) => {
+          const receipts = state.variants[candidate.id] || {}
+          const acceptedTime = new Date(receipts.facebook?.acceptedAt || 0).getTime()
+          return { candidate, acceptedTime }
+        })
+        .filter((item) => item.candidate.id !== 'sep-product-ladder-v1' && (now - item.acceptedTime >= SIXTY_DAYS_MS))
+        .sort((a, b) => a.acceptedTime - b.acceptedTime)
+
+      if (evergreenCandidates.length > 0) {
+        variant = evergreenCandidates[0].candidate
+        isEvergreen = true
+        console.log(`[SocialRevenueSprint] Endless Engine: Selected evergreen variant "${variant.id}" (last published ${((now - evergreenCandidates[0].acceptedTime) / (24 * 60 * 60 * 1000)).toFixed(1)} days ago).`)
+      } else {
+        console.log('[SocialRevenueSprint] All catalog variants published within last 60 days. Waiting for next seasonal refresh or new video render.')
+        return { active: true, decision: 'WAITING_FOR_EXPANDED_CATALOG', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
+      }
     }
 
     const isFirstVariant = variant.id === INITIAL_VARIANT_ID && Object.keys(state.variants).length <= 1
@@ -236,12 +256,17 @@ export class SocialRevenueSprintService {
     }
 
     const dispatch = async (channel: ChannelId, send: () => Promise<ChannelPublishResult>) => {
-      if (accepted(receipts[channel])) {
+      const SIXTY_DAYS_MS = 60 * 24 * 60 * 60 * 1000
+      const currentReceipt = receipts[channel]
+      const receiptAgeMs = now - new Date(currentReceipt?.acceptedAt || 0).getTime()
+      const isAlreadyAccepted = accepted(currentReceipt) && (!isEvergreen || receiptAgeMs < SIXTY_DAYS_MS)
+
+      if (isAlreadyAccepted) {
         results.push({
           channelName: formatChannelName(channel),
-          status: receipts[channel]!.status,
-          externalId: receipts[channel]!.externalId,
-          message: receipts[channel]!.message,
+          status: currentReceipt!.status,
+          externalId: currentReceipt!.externalId,
+          message: currentReceipt!.message,
         })
         return
       }
