@@ -8,7 +8,7 @@ dotenv.config();
 async function main() {
   const token = process.env.FACEBOOK_PAGE_ACCESS_TOKEN?.trim() || process.env.FACEBOOK_ACCESS_TOKEN?.trim();
   const pageId = process.env.FACEBOOK_PAGE_ID?.trim() || '1077759455417325';
-  const videoPath = path.resolve('public/videos/reels/nrc-irap-innovation-grants.mp4');
+  const videoPath = path.resolve('public/videos/reels/grant-rejection-traps.mp4');
 
   if (!token) {
     throw new Error('FACEBOOK_PAGE_ACCESS_TOKEN is missing');
@@ -20,29 +20,27 @@ async function main() {
 
   console.log(`🚀 Uploading Reel binary (${(fs.statSync(videoPath).size / 1024 / 1024).toFixed(2)} MB) to Facebook Page ${pageId}...`);
 
-  const title = '🇨🇦 NRC IRAP Innovation Grants 2026 (Up to $500,000 Non-Repayable)';
+  const title = '⚠️ Top 3 Canadian Grant Application Traps to Avoid in 2026';
   const description = 
-`🇨🇦 NRC IRAP Innovation Grants: Up to $500,000 Non-Repayable
+`⚠️ Top 3 Grant Application Traps: Why 70% of Canadian Grant Applications Get Rejected
 
-The National Research Council's IRAP program is Canada's premier funding stream for technology companies.
+Over 70% of Canadian small business grant applications get disqualified before an advisor even reviews them.
 
-Key features:
-• Up to $500,000 non-repayable cash funding
-• Zero equity dilution for founders
-• Covers up to 80% of internal developer wages
-• Dedicated Industrial Technology Advisor (ITA) guidance
-• Legally stackable with SR&ED tax credits
+Here are the 3 biggest traps to avoid:
+1. Retroactive spending: Zero Canadian government grants reimburse past expenses. Apply before you commit capital!
+2. Ineligible business structure: Sole proprietorships are disqualified from 85%+ of federal grants. You must be an incorporated CCPC.
+3. Missing payroll records: Wage subsidies require formal T4 CRA remittances, not informal cash payouts.
 
-Check your company's grant eligibility in 60 seconds:
+Pre-screen your business eligibility in under 60 seconds with our free Grant Calculator:
 👉 https://fsidigital.ca/calculator
 
-#NRCIRAP #IRAP #InnovationGrants #CanadianTech #TechFounders #NonDilutiveFunding #BusinessGrants`;
+#CanadianGrants #BusinessFunding #GrantTraps #StartupFunding #SmallBusinessCanada #FSIDigital #NonDilutiveFunding`;
 
   const videoBuffer = fs.readFileSync(videoPath);
   const blob = new Blob([videoBuffer], { type: 'video/mp4' });
 
   const formData = new FormData();
-  formData.append('source', blob, 'nrc-irap-innovation-grants.mp4');
+  formData.append('source', blob, 'grant-rejection-traps.mp4');
   formData.append('title', title);
   formData.append('description', description);
   formData.append('access_token', token);
