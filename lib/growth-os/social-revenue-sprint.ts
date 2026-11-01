@@ -121,6 +121,38 @@ const VARIANTS: Variant[] = [
     facebook: `Choose the next funding step by the question you need answered: matches, preparation sequence, or stacking opportunities.\n\nStart with FSI Digital's free 60-second Grant Calculator. Self-serve and requires no call.`,
     hashtags: ['#FSIDigital', '#BusinessFunding', '#GrantResearch', '#FundingPlan', '#SmallBusiness', '#FounderResources'],
   },
+  {
+    id: 'sep-agri-food-v1',
+    offerId: 'funding-toolkit',
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_agri_food',
+    linkedin: `Over $3.5 Billion is allocated under the Sustainable Canadian Agricultural Partnership for farmers, food processors, and ag-tech innovators.\n\nTest your company against active agri-food funding streams in 60 seconds with FSI Digital's free interactive calculator.\n\nNo call required. Check your agricultural funding match:`,
+    facebook: `Canadian food processors and agri-businesses qualify for major non-repayable grants up to $250,000+ under the Sustainable CAP program.\n\nCalculate your funding match in under 60 seconds with our free Grant Calculator.`,
+    hashtags: ['#FSIDigital', '#AgriFood', '#AgTech', '#FarmingGrants', '#SCAP', '#CanadianAgriculture'],
+  },
+  {
+    id: 'sep-alberta-v1',
+    offerId: 'funding-bundle',
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_alberta',
+    linkedin: `Alberta companies have access to provincial innovation vouchers from Alberta Innovates and multi-million dollar 0%-interest scaling facilities from PrairiesCan.\n\nCheck your company profile against active Alberta funding streams in 60 seconds with our free calculator.\n\nNo call required. Check your Alberta eligibility:`,
+    facebook: `Operating in Alberta? Discover active provincial vouchers and PrairiesCan growth facilities in 60 seconds with our free interactive Grant Calculator.`,
+    hashtags: ['#FSIDigital', '#AlbertaBusiness', '#AlbertaInnovates', '#PrairiesCan', '#CalgaryTech', '#EdmontonTech'],
+  },
+  {
+    id: 'sep-ontario-v1',
+    offerId: 'funding-roadmap',
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_ontario',
+    linkedin: `Beyond federal IRAP and SR&ED, regional agencies like FedDev Ontario provide substantial non-dilutive and 0%-interest scaling facilities for commercial scale-up.\n\nEvaluate your company's regional grant readiness in 60 seconds with our free calculator.\n\nNo call required. Evaluate your regional match:`,
+    facebook: `Discover active Ontario and FedDev regional grant facilities in 60 seconds with FSI Digital's free interactive Grant Calculator.`,
+    hashtags: ['#FSIDigital', '#RegionalGrants', '#FedDev', '#OntarioBusiness', '#InnovationCanada', '#ScaleUpFunding'],
+  },
+  {
+    id: 'sep-deadlines-v1',
+    offerId: 'funding-membership',
+    target: 'https://www.fsidigital.ca/calculator?utm_source=organic_social&utm_medium=social&utm_campaign=revenue_sprint_deadlines',
+    linkedin: `Key federal funding programs operate on strict quarterly deadlines, and pools close once budgets are exhausted.\n\nCheck which grant intake windows are currently open for your company profile in 60 seconds with our free Grant Calculator.\n\nNo call required. Check active deadlines:`,
+    facebook: `Don't miss upcoming Canadian grant deadlines. Check open intake windows for your business in 60 seconds with our free Grant Calculator.`,
+    hashtags: ['#FSIDigital', '#GrantDeadlines', '#GovernmentFunding', '#SmallBusinessCanada', '#NonDilutiveFunding', '#CashFlow'],
+  },
 ]
 
 function actionContext(channel: ChannelId, variant: Variant): GrowthActionContext {
@@ -249,19 +281,23 @@ export class SocialRevenueSprintService {
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
-    // Alternating Cadence: Perfectly balanced Carousel and Reel rotation
+    // 100% REELS: Structured 7-Day Content Rotation across all social channels
     const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
-      'sep-product-ladder-v1': 'post-reel-irap-innovation',      // 🎬 REEL (IRAP $500K)
-      'sep-match-fit-v1': 'post-grant-checklist',                // 📑 CAROUSEL (Grant Readiness 8-Pt Checklist)
-      'sep-action-plan-v1': 'post-reel-digital-adoption',        // 🎬 REEL (Digital Adoption & CDAP)
-      'sep-toolkit-v1': 'post-reel-sred-tax-credits',            // 🎬 REEL (SR&ED 35% Cash Back Secrets - published today)
-      'sep-membership-radar-v1': 'post-canada-grants',           // 📑 CAROUSEL (Tomorrow: Top 5 Canadian Grants $15K-$10M)
-      'sep-bundle-stacking-v1': 'post-reel-women-grants',        // 🎬 REEL (Women Entrepreneur Grants $250K)
-      'sep-match-costs-v1': 'post-sbir-howto',                   // 📑 CAROUSEL (The 5-Step Non-Dilutive Playbook)
-      'sep-action-documents-v1': 'post-reel-cleantech',          // 🎬 REEL (CleanTech & Sustainability Millions)
-      'sep-toolkit-budget-v1': 'post-stat-shock',                // 📑 CAROUSEL (How to Legally Stack IRAP & SR&ED)
-      'sep-membership-changes-v1': 'post-reel-export-development', // 🎬 REEL (CanExport Global Expansion $50K)
-      'sep-choose-next-step-v1': 'post-women-grants',            // 📑 CAROUSEL (Women Entrepreneur Funding Guide)
+      'sep-product-ladder-v1': 'post-reel-irap-innovation',               // 🎬 REEL: IRAP $500K
+      'sep-match-fit-v1': 'post-reel-grant-rejection-traps',              // 🎬 REEL: Top 3 Rejection Traps
+      'sep-action-plan-v1': 'post-reel-digital-adoption',                 // 🎬 REEL: Digital Adoption & CDAP
+      'sep-toolkit-v1': 'post-reel-sred-tax-credits',                     // 🎬 REEL: SR&ED 35% Cash Back
+      'sep-membership-radar-v1': 'post-reel-grant-stacking-secrets',      // 🎬 REEL: The Triple Stacking Playbook
+      'sep-bundle-stacking-v1': 'post-reel-women-grants',                 // 🎬 REEL: Women Entrepreneur Grants $250K
+      'sep-match-costs-v1': 'post-reel-grant-rejection-traps',             // 🎬 REEL: Top 3 Rejection Traps
+      'sep-action-documents-v1': 'post-reel-cleantech',                   // 🎬 REEL: CleanTech & Sustainability Millions
+      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 REEL: How to Legally Stack IRAP & SR&ED
+      'sep-membership-changes-v1': 'post-reel-export-development',        // 🎬 REEL: CanExport Global Expansion $50K
+      'sep-choose-next-step-v1': 'post-reel-grant-application-checklist', // 🎬 REEL: 4-Point Document Checklist
+      'sep-agri-food-v1': 'post-reel-agri-food-canada-grants',            // 🎬 REEL: Agri-Food & Farming Grants $250K+
+      'sep-alberta-v1': 'post-reel-alberta-business-grants',              // 🎬 REEL: Alberta Innovates & PrairiesCan $5M
+      'sep-ontario-v1': 'post-reel-ontario-innovation',                   // 🎬 REEL: Ontario Skills & Regional Streams
+      'sep-deadlines-v1': 'post-reel-quarterly-grant-deadlines',           // 🎬 REEL: Quarterly Grant Deadlines Countdown
     }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)

@@ -594,10 +594,10 @@ export class ChannelAdapters {
             console.warn(`[FacebookAdapter] Reel with title "${title}" already exists on Facebook Page (ID: ${duplicate.id}). Skipping duplicate upload.`)
             return {
               channelName: "Facebook",
-              status: "API_ACCEPTED",
+              status: "QUEUED_FOR_APPROVAL",
               externalId: duplicate.id,
               permalink: `https://www.facebook.com/reel/${duplicate.id}/`,
-              message: `Facebook Reel already exists (ID: ${duplicate.id}); duplicate upload prevented.`,
+              message: `Facebook Reel with title "${title}" already exists (ID: ${duplicate.id}); skipped duplicate upload.`,
             }
           }
         }

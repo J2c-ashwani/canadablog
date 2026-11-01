@@ -390,6 +390,415 @@ const TOPIC_PRESETS = {
       'Third: You can legally stack Eye-rap with S R and E D tax credits, recovering over 60 percent of your total technical development costs. ' +
       'Check your company\'s Eye-rap eligibility at f s i digital dot c a slash calculator.',
   },
+
+  'grant-rejection-traps': {
+    slug: 'grant-rejection-traps',
+    title: 'Top 3 Grant Application Traps',
+    broll: 'city-morning.mp4',
+    bgm: 'bgm-02.mp3',
+    slides: [
+      {
+        type: 'intro',
+        pill: '⚠️ AVOID INSTANT REJECTION',
+        title: 'Top 3 Grant Traps to Avoid',
+        subtitle: 'Why 70% of Canadian grant applications get rejected before an advisor even reads them.',
+      },
+      {
+        type: 'stat',
+        counter: '01 / 03',
+        pill: 'TRAP #1: TIMING ERROR',
+        title: 'Retroactive Spending',
+        amountLabel: 'INSTANT DISQUALIFICATION',
+        amount: '$0 Reimbursed',
+        features: [
+          'Zero Canadian grants reimburse past project expenses',
+          'Work started before formal approval is 100% ineligible',
+          'Always submit your application before issuing purchase orders',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '02 / 03',
+        pill: 'TRAP #2: ENTITY STRUCTURE',
+        title: 'Ineligible Business Entity',
+        amountLabel: 'LEGAL REQUIREMENT',
+        amount: 'CCPC Required',
+        features: [
+          'Sole proprietorships are disqualified from 85% of grants',
+          'Must be an incorporated Canadian-Controlled Private Corp',
+          'Must hold a dedicated corporate bank account and business number',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '03 / 03',
+        pill: 'TRAP #3: PAYROLL PROOF',
+        title: 'Missing T4 Payroll Proof',
+        amountLabel: 'COMPLIANCE AUDIT',
+        amount: 'Arm\'s-Length Only',
+        features: [
+          'Wage grants require verified T4 payroll remittances to CRA',
+          'Informal cash payouts or unrecorded labor are rejected',
+          'Non-arm\'s length family contracts face strict CRA caps',
+        ],
+      },
+      {
+        type: 'cta',
+        pill: 'FREE READINESS SCREENER',
+        title: 'Pre-Screen Your Business',
+        subtitle: 'Check your eligibility and avoid rejection traps before applying.',
+        url: 'fsidigital.ca/calculator',
+      },
+    ],
+    voiceover:
+      'Top three grant application traps to avoid in 2026. ' +
+      'Over 70 percent of Canadian government grant applications get rejected due to avoidable administrative mistakes. ' +
+      'Trap number one: Retroactive spending. Zero government programs reimburse past expenses. You must apply before beginning project work. ' +
+      'Trap number two: Ineligible business structure. Sole proprietorships are disqualified from 85 percent of grants. You must be an incorporated C C P C. ' +
+      'Trap number three: Missing payroll records. Wage subsidies require official T4 remittances to C R A. ' +
+      'Pre-screen your business in 60 seconds at f s i digital dot c a slash calculator.',
+  },
+
+  'grant-stacking-secrets': {
+    slug: 'grant-stacking-secrets',
+    title: 'How to Legally Stack Grants',
+    broll: 'tech-network.mp4',
+    bgm: 'bgm-01.mp3',
+    slides: [
+      {
+        type: 'intro',
+        pill: '🥞 THE TRIPLE FUNDING STACK',
+        title: 'How to Legally Stack Grants',
+        subtitle: 'How Canadian businesses combine 3 funding streams to recover up to 80% of project costs.',
+      },
+      {
+        type: 'stat',
+        counter: '01 / 03',
+        pill: 'LAYER 1: SALARY SUBSIDY',
+        title: 'NRC IRAP Wage Subsidies',
+        amountLabel: 'UPFRONT CASH COVERAGE',
+        amount: 'Up to 80%',
+        features: [
+          'Funds up to 80% of internal technical salaries',
+          'Covers up to 50% of approved third-party subcontractor fees',
+          'Disbursed monthly as project milestones are completed',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '02 / 03',
+        pill: 'LAYER 2: TAX CREDITS',
+        title: 'SR&ED Tax Credit Refund',
+        amountLabel: 'DIRECT CRA CASH BACK',
+        amount: '35% Cash Refund',
+        amountVariant: 'emerald',
+        features: [
+          'Claimed on the remaining unreimbursed developer payroll',
+          'Legally stacks with IRAP without double-dipping penalties',
+          'Delivered as an unconditional cash cheque from CRA',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '03 / 03',
+        pill: 'LAYER 3: EXPORT CAPITAL',
+        title: 'CanExport SME Matching',
+        amountLabel: 'GLOBAL EXPANSION CASH',
+        amount: '$50,000 Grant',
+        features: [
+          'Covers 50% of foreign marketing and trade expansion',
+          'Funds international IP patents, digital marketing, and travel',
+          'Completely stackable alongside technical R&D incentives',
+        ],
+      },
+      {
+        type: 'cta',
+        pill: 'STACKING CALCULATOR',
+        title: 'Calculate Your Grant Stack',
+        subtitle: 'Discover which federal and provincial programs legally combine for your business.',
+        url: 'fsidigital.ca/calculator',
+      },
+    ],
+    voiceover:
+      'How to legally stack government grants in 2026. ' +
+      'Smart Canadian businesses never apply for just one grant. Here is the legal three-stream stack that recovers up to 80 percent of project costs. ' +
+      'Layer one: NRC Eye-rap funds up to 80 percent of your internal technical wages upfront. ' +
+      'Layer two: S R and E D tax credits refund 35 percent of your remaining unreimbursed developer payroll in cash from C R A. ' +
+      'Layer three: CanExport S M E adds up to fifty thousand dollars in matching capital for international sales and marketing. ' +
+      'Calculate your company\'s grant stack formula at f s i digital dot c a slash calculator.',
+  },
+
+  'grant-application-checklist': {
+    slug: 'grant-application-checklist',
+    title: 'Grant Pre-Flight Checklist',
+    broll: 'office-team.mp4',
+    bgm: 'bgm-03.mp3',
+    slides: [
+      {
+        type: 'intro',
+        pill: '✅ 4-POINT READINESS AUDIT',
+        title: 'Grant Pre-Flight Checklist',
+        subtitle: 'The 4 mandatory items you must prepare before submitting any Canadian grant application.',
+      },
+      {
+        type: 'stat',
+        counter: '01 / 04',
+        pill: 'ITEM 1: FINANCIAL AUDIT',
+        title: '2-Year Balance Sheets',
+        amountLabel: 'MANDATORY DOCUMENTATION',
+        amount: 'Notice to Reader',
+        features: [
+          'Accountant-prepared financial statements for last 2 fiscal years',
+          'Demonstrates commercial viability and matching capital ability',
+          'Interim balance sheets required for high-growth startups',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '02 / 04',
+        pill: 'ITEM 2: COST MATRIX',
+        title: '12-Month Project Budget',
+        amountLabel: 'ELIGIBLE COST SCHEDULE',
+        amount: 'Itemized Schedule',
+        features: [
+          'Breakdown of developer hours, hourly wage, and milestone dates',
+          'Written quotes for all third-party software and contractors',
+          'Clean separation of capital assets vs operating expenses',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '03 / 04',
+        pill: 'ITEM 3: INCORPORATION',
+        title: 'Federal / Provincial CCPC',
+        amountLabel: 'CORPORATE COMPLIANCE',
+        amount: 'Minute Book Ready',
+        features: [
+          'Articles of Incorporation with active CRA Business Number',
+          'Clean cap table and register of shareholders (51%+ Canadian)',
+          'Dedicated Canadian corporate chequing account',
+        ],
+      },
+      {
+        type: 'cta',
+        pill: 'INSTANT READINESS SCORE',
+        title: 'Download Free Checklist',
+        subtitle: 'Test your business against 500+ active grant programs in 60 seconds.',
+        url: 'fsidigital.ca/calculator',
+      },
+    ],
+    voiceover:
+      'Grant pre-flight checklist for Canadian founders in 2026. ' +
+      'Before applying for government funding, ensure you have these four critical documents ready. ' +
+      'Number one: Two years of accountant-prepared financial statements to prove matching capital. ' +
+      'Number two: An itemized 12-month project budget separating payroll from third-party quotes. ' +
+      'Number three: Active Canadian incorporation with an official C R A business number. ' +
+      'Calculate your funding readiness score in 60 seconds at f s i digital dot c a slash calculator.',
+  },
+
+  'agri-food-canada-grants': {
+    slug: 'agri-food-canada-grants',
+    title: 'Agri-Food & Farming Grants',
+    broll: 'city-morning.mp4',
+    bgm: 'bgm-02.mp3',
+    slides: [
+      {
+        type: 'intro',
+        pill: '🌾 AGRICULTURE & AG-TECH',
+        title: 'Agri-Food Grants 2026',
+        subtitle: 'Over $3.5 Billion committed to Canadian farmers, food processors, and ag-tech innovators.',
+      },
+      {
+        type: 'stat',
+        counter: '01 / 03',
+        pill: 'FEDERAL AG-FUNDING',
+        title: 'Sustainable CAP Grants',
+        amountLabel: 'NON-REPAYABLE CAPITAL',
+        amount: '$250,000+',
+        features: [
+          'Covers food packaging, robotic automation, and cold storage',
+          'Open to primary producers, processors, and bio-product makers',
+          'Joint federal-provincial funding across all 10 provinces',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '02 / 03',
+        pill: 'AG-INNOVATION SCALE',
+        title: 'AgriInnovate Program',
+        amountLabel: 'ZERO-INTEREST CAPITAL',
+        amount: 'Up to $5,000,000',
+        features: [
+          '0% interest funding for first-in-Canada agricultural tech',
+          'Covers commercial demonstration and automated processing',
+          'Up to 50% of total project costs funded',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '03 / 03',
+        pill: 'REGIONAL AG-STREAMS',
+        title: 'Provincial Agri-Grants',
+        amountLabel: 'LOCAL MATCHING STREAMS',
+        amount: 'Up to $100,000',
+        features: [
+          'Ontario Agri-Food Innovation & Alberta Ag-Tech initiatives',
+          'Energy efficiency and productivity equipment matching',
+          'Stackable with federal export and training subsidies',
+        ],
+      },
+      {
+        type: 'cta',
+        pill: 'FREE AGRI-CHECK',
+        title: 'Check Agri-Food Funding',
+        subtitle: 'Find non-repayable grants matching your farming or processing operations.',
+        url: 'fsidigital.ca/calculator',
+      },
+    ],
+    voiceover:
+      'Agri-Food and farming grants in Canada in 2026. ' +
+      'The federal and provincial governments have committed over 3.5 billion dollars through the Sustainable Canadian Agricultural Partnership. ' +
+      'First: Sustainable C A P grants provide up to two hundred fifty thousand dollars for equipment automation and food processing. ' +
+      'Second: AgriInnovate offers up to five million dollars in zero percent financing for first-in-Canada agricultural technology. ' +
+      'Third: Provincial streams offer up to one hundred thousand dollars in matching equipment funds. ' +
+      'Check your farm or processing facility at f s i digital dot c a slash calculator.',
+  },
+
+  'alberta-business-grants': {
+    slug: 'alberta-business-grants',
+    title: 'Alberta Business & Tech Grants',
+    broll: 'tech-network.mp4',
+    bgm: 'bgm-01.mp3',
+    slides: [
+      {
+        type: 'intro',
+        pill: '🏔️ ALBERTA CAPITAL FACILITIES',
+        title: 'Alberta Business Grants 2026',
+        subtitle: 'Access provincial innovation vouchers and federal PrairiesCan growth facilities.',
+      },
+      {
+        type: 'stat',
+        counter: '01 / 03',
+        pill: 'ALBERTA INNOVATES',
+        title: 'Innovation Vouchers',
+        amountLabel: 'PROVINCIAL VOUCHER POOL',
+        amount: 'Up to $100,000',
+        features: [
+          'Direct funding for technical prototyping, engineering, and testing',
+          'Fast-track approval for Alberta technology businesses',
+          'Zero equity dilution taken from founders',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '02 / 03',
+        pill: 'PRAIRIESCAN CAPITAL',
+        title: 'Business Scale-up & Productivity',
+        amountLabel: 'REGIONAL ZERO-INTEREST CAPITAL',
+        amount: 'Up to $5,000,000',
+        features: [
+          'Interest-free repayable capital for manufacturing and tech scaling',
+          'Designed to commercialize Alberta innovations globally',
+          'Covers facility expansion, tooling, and market rollout',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '03 / 03',
+        pill: 'ERA CLEAN GROWTH',
+        title: 'Emissions Reduction Alberta',
+        amountLabel: 'DECARBONIZATION GRANTS',
+        amount: '$250,000 to $5M',
+        features: [
+          'Matching grants for industrial energy efficiency and ag-tech',
+          'Funded by Alberta\'s Technology Innovation and Emissions fund',
+          'Open to startups, mid-caps, and industrial operators',
+        ],
+      },
+      {
+        type: 'cta',
+        pill: 'ALBERTA ELIGIBILITY',
+        title: 'Check Alberta Grants',
+        subtitle: 'See what provincial and federal grants your Alberta business qualifies for today.',
+        url: 'fsidigital.ca/calculator',
+      },
+    ],
+    voiceover:
+      'Alberta business and technology grants in 2026. ' +
+      'Alberta companies have access to some of the most aggressive funding programs in North America. ' +
+      'First: Alberta Innovates provides up to one hundred thousand dollars in non-repayable vouchers for prototyping and technical engineering. ' +
+      'Second: PrairiesCan provides up to five million dollars in zero percent interest scaling capital for commercial expansion. ' +
+      'Third: Emissions Reduction Alberta offers matching grants up to five million dollars for energy and industrial efficiency. ' +
+      'Check your Alberta business match at f s i digital dot c a slash calculator.',
+  },
+
+  'quarterly-grant-deadlines': {
+    slug: 'quarterly-grant-deadlines',
+    title: 'Upcoming Grant Deadlines 2026',
+    broll: 'office-team.mp4',
+    bgm: 'bgm-03.mp3',
+    slides: [
+      {
+        type: 'intro',
+        pill: '⏱️ ACTIVE INTAKE CYCLES',
+        title: 'Grant Deadlines Countdown',
+        subtitle: 'Key federal and provincial grant intakes closing this quarter. Secure your spot before pools close.',
+      },
+      {
+        type: 'stat',
+        counter: '01 / 03',
+        pill: 'EXPORT INTAKE',
+        title: 'CanExport SME Deadline',
+        amountLabel: 'COMPETITIVE MATCHING POOL',
+        amount: '$50,000 Grant',
+        features: [
+          'Limited quarterly intake window for global trade expansion',
+          'Applications accepted on a first-come, first-served basis',
+          'Covers 50% of foreign marketing, exhibitions, and IP protection',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '02 / 03',
+        pill: 'REGIONAL INITIATIVE',
+        title: 'Regional Development Calls',
+        amountLabel: 'FIXED BUDGET INTAKE',
+        amount: 'Up to $500,000',
+        features: [
+          'FedDev, PacifiCan, and PrairiesCan regional intakes close quarterly',
+          'Unallocated capital returned to treasury if not claimed',
+          'Requires 2 to 3 weeks of advance document preparation',
+        ],
+      },
+      {
+        type: 'stat',
+        counter: '03 / 03',
+        pill: 'WAGE INCENTIVES',
+        title: 'Student & Co-Op Subsidies',
+        amountLabel: 'ANNUAL QUOTA ALLOCATION',
+        amount: 'Up to $10,000 / Hire',
+        features: [
+          'Subsidizes 50% to 70% of tech, engineering, and sales interns',
+          'Employer portals close once seasonal placement quotas fill',
+          'Fast 10-day application approval timeline',
+        ],
+      },
+      {
+        type: 'cta',
+        pill: 'DEADLINE RADAR',
+        title: 'Check Active Deadlines',
+        subtitle: 'Verify which grant intake windows are currently open for your company profile.',
+        url: 'fsidigital.ca/calculator',
+      },
+    ],
+    voiceover:
+      'Upcoming Canadian grant deadlines in 2026. ' +
+      'Several major federal funding programs operate on strict quarterly deadlines, and pools close once budgets are exhausted. ' +
+      'First: CanExport S M E is accepting applications for its fifty thousand dollar international trade grant on a first-come basis. ' +
+      'Second: Regional development agencies in Ontario, B C, and the Prairies have competitive intake calls closing this quarter. ' +
+      'Third: Wage subsidies covering up to ten thousand dollars per hire close once seasonal quotas fill. ' +
+      'Check active grant deadlines for your business at f s i digital dot c a slash calculator.',
+  },
 };
 
 // ─── Generate Slide Content Helper ──────────────────────────
@@ -628,15 +1037,28 @@ function formatTextForTTS(text) {
 
 // ─── Edge-TTS Voiceover Generator ───────────────────────────
 function generateVoiceover(text, outputPath, voice = 'en-US-GuyNeural') {
-  const edgeTTS = path.join(VENV_BIN, 'edge-tts');
+  const edgeTTS = fs.existsSync(path.join(VENV_BIN, 'edge-tts'))
+    ? path.join(VENV_BIN, 'edge-tts')
+    : 'edge-tts';
   const formattedText = formatTextForTTS(text);
 
   console.log(`   🎙️ Generating Edge-TTS voiceover (${voice})...`);
-  execSync(
-    `"${edgeTTS}" --voice "${voice}" --rate "+4%" --text "${formattedText.replace(/"/g, '\\"')}" --write-media "${outputPath}"`,
-    { stdio: 'pipe' }
-  );
-  console.log('   ✅ Voiceover generated');
+  let lastErr = null;
+  for (let attempt = 1; attempt <= 3; attempt++) {
+    try {
+      execSync(
+        `"${edgeTTS}" --voice "${voice}" --rate "+4%" --text "${formattedText.replace(/"/g, '\\"')}" --write-media "${outputPath}"`,
+        { stdio: 'pipe' }
+      );
+      console.log('   ✅ Voiceover generated');
+      return;
+    } catch (err) {
+      lastErr = err;
+      console.warn(`   ⚠️ Edge-TTS attempt ${attempt}/3 failed. Retrying in ${attempt * 2}s...`);
+      try { execSync(`sleep ${attempt * 2}`); } catch {}
+    }
+  }
+  throw lastErr;
 }
 
 // ─── Audio Mixer & BGM Ducking ──────────────────────────────
@@ -703,8 +1125,8 @@ function assembleVideo(slidePaths, mixedAudioPath, brollFilename, outputPath, to
       '-filter_complex "[0:v]scale=1080:1920:force_original_aspect_ratio=increase,crop=1080:1920,eq=brightness=-0.12:contrast=1.12[bg];[1:v]scale=1080:1920:flags=lanczos[fg];[bg][fg]overlay=0:0:shortest=1[v]"',
       '-map "[v]"',
       '-map 2:a',
-      '-c:v libx264 -profile:v high -level:v 4.2 -preset fast -crf 17',
-      '-b:v 14M -maxrate 18M -bufsize 28M',
+      '-c:v libx264 -profile:v high -level:v 4.2 -preset fast -crf 22',
+      '-b:v 4500k -maxrate 6000k -bufsize 8000k',
       '-g 30 -keyint_min 30 -sc_threshold 0',
       '-pix_fmt yuv420p',
       '-colorspace bt709 -color_primaries bt709 -color_trc bt709 -color_range tv',
