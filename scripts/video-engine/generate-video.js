@@ -1201,7 +1201,7 @@ function generateSocialMetadata(topic, slug) {
 
 // ─── Single Video Pipeline ─────────────────────────────────
 async function generateSingleVideo(topicName) {
-  const content = resolveTopicContent(topicName);
+  const content = typeof topicName === 'object' ? topicName : resolveTopicContent(topicName);
   const slug = content.slug;
 
   console.log('═══════════════════════════════════════════════════════');
@@ -1271,10 +1271,15 @@ async function main() {
     ? args[args.indexOf('--topic') + 1]
     : 'NRC IRAP Innovation Grants';
 
-  await generateSingleVideo(topicArg);
+if (require.main === module) {
+  main().catch((err) => {
+    console.error('❌ Video generation failed:', err);
+    process.exit(1);
+  });
 }
 
-main().catch((err) => {
-  console.error('❌ Video generation failed:', err);
-  process.exit(1);
-});
+module.exports = {
+  generateSingleVideo,
+  resolveTopicContent,
+  TOPIC_PRESETS,
+};
