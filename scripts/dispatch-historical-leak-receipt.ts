@@ -19,6 +19,7 @@ config({ path: '.env.local' });
 config({ path: '.env.production.local' });
 
 import { getGoogleSheetsClient } from '../lib/google-sheets';
+import { getAllPurchases } from '../lib/products/purchase-store';
 import { generateFundingRecommendationPlatform } from '../lib/products/report-generator';
 import {
   sendFundingLeakReceiptEmail,
@@ -41,6 +42,8 @@ interface LeadCandidate {
   verifiedMatchCount: number;
   leadActivity: any;
   recommendedOffer: ProductOfferRecommendation;
+  timestampMs: number;
+  score: number;
 }
 
 async function run() {
@@ -77,6 +80,15 @@ async function run() {
 
     console.log(`✅ Loaded ${rows.length} total rows (including header). Analyzing candidate cohort...\n`);
 
+    let buyerEmails = new Set<string>();
+    try {
+      const allPurchases = await getAllPurchases({ strict: false });
+      buyerEmails = new Set(allPurchases.map(p => (p.email || '').toLowerCase().trim()).filter(Boolean));
+      console.log(`🛡️ Loaded ${buyerEmails.size} verified buyer profiles for cross-table suppression.\n`);
+    } catch (e: any) {
+      console.warn('⚠️ Could not load purchases store, falling back to sheet flags:', e?.message || e);
+    }
+
     const emailIndex = 2;          // Column C
     const nameIndex = 3;           // Column D
     const countryIndex = 4;        // Column E
@@ -93,7 +105,7 @@ async function run() {
     const reportPurchasedIndex = 48;// Column AW
     const leadActivityIndex = 51;  // Column AZ
 
-    const candidates: LeadCandidate[] = [];
+    const candidatesByEmail = new Map<string, LeadCandidate>();
     const now = Date.now();
     const COOLDOWN_MS = 48 * 60 * 60 * 1000; // 48-hour cooldown
 
@@ -103,20 +115,22 @@ async function run() {
     let skippedCooldown = 0;
     let skippedUnsubscribed = 0;
 
+    const DISPOSABLE_DOMAINS = ['mailinator.com', 'yopmail.com', 'trashmail', 'tempmail', 'guerrillamail', 'yguygiuy.com', 'example.com', 'test.com'];
+
     for (let i = 1; i < rows.length; i++) {
       const row = rows[i];
       const email = (row[emailIndex] || '').toLowerCase().trim();
       if (!email || !email.includes('@')) continue;
 
-      // 1. Check internal / test emails
-      if (isTestOrInternalContact({ email })) {
+      // 1. Check internal / test / disposable emails
+      if (isTestOrInternalContact({ email }) || DISPOSABLE_DOMAINS.some(d => email.includes(d))) {
         skippedInternal++;
         continue;
       }
 
-      // 2. Check buyer exclusion
+      // 2. Check buyer exclusion (both sheet flag and Purchases store)
       const reportPurchased = String(row[reportPurchasedIndex] || '').toLowerCase() === 'yes';
-      if (reportPurchased) {
+      if (reportPurchased || buyerEmails.has(email)) {
         skippedBuyers++;
         continue;
       }
@@ -165,6 +179,7 @@ async function run() {
       const fundingAmount = String(row[fundingAmountIndex] || '');
       const score = Number(row[scoreIndex] || 0);
       const tier = String(row[tierIndex] || 'C').toUpperCase();
+      const timestampMs = new Date(row[0] || '').getTime() || 0;
 
       let genuineMatchCount = 0;
       try {
@@ -192,7 +207,7 @@ async function run() {
       const name = row[nameIndex] || 'Founder';
       const companyName = row[companyNameIndex] || '';
 
-      candidates.push({
+      const candidate: LeadCandidate = {
         rowIndex: i + 1, // 1-based sheet row number
         email,
         name,
@@ -205,30 +220,52 @@ async function run() {
         verifiedMatchCount: genuineMatchCount,
         leadActivity: activity,
         recommendedOffer,
-      });
+        timestampMs,
+        score,
+      };
 
-      if (candidates.length >= limit) {
-        break;
+      // Keep only the most recent submission if the lead submitted multiple times
+      const existing = candidatesByEmail.get(email);
+      if (!existing || timestampMs > existing.timestampMs) {
+        candidatesByEmail.set(email, candidate);
       }
     }
 
+    const candidates = Array.from(candidatesByEmail.values());
+
+    // 🎯 CEO Prioritization Sort:
+    // 1. Recency first (October, September, August leads prioritized ahead of stale summer leads)
+    // 2. Lead score / Tier A second (High-value $79 Blueprint candidates prioritized)
+    candidates.sort((a, b) => {
+      const recencyDiff = b.timestampMs - a.timestampMs;
+      // If leads are within 14 days of each other, prioritize by lead score
+      if (Math.abs(recencyDiff) < 14 * 24 * 60 * 60 * 1000) {
+        return b.score - a.score;
+      }
+      return recencyDiff;
+    });
+
+    const finalCohort = candidates.slice(0, limit);
+
     console.log(`📋 Candidate Filtering Summary:`);
-    console.log(`   - Eligible Candidates Selected: ${candidates.length} (Capped at limit: ${limit})`);
+    console.log(`   - Total Qualified Candidates Found: ${candidates.length}`);
+    console.log(`   - Selected for This Batch: ${finalCohort.length} (Capped at limit: ${limit})`);
     console.log(`   - Skipped (Existing Buyers): ${skippedBuyers}`);
-    console.log(`   - Skipped (Internal / Test Accounts): ${skippedInternal}`);
+    console.log(`   - Skipped (Internal / Test / Disposable Accounts): ${skippedInternal}`);
     console.log(`   - Skipped (Already Received Receipt): ${skippedAlreadySent}`);
     console.log(`   - Skipped (Within 48h Cooldown): ${skippedCooldown}`);
     console.log(`   - Skipped (Unsubscribed Contacts): ${skippedUnsubscribed}\n`);
 
-    if (candidates.length === 0) {
+    if (finalCohort.length === 0) {
       console.log('ℹ️ No eligible uncontacted leads meet the dispatch criteria right now.');
       return;
     }
 
     console.log('---------------------------------------------------------------');
-    console.log('TARGET RECIPIENT COHORT:');
-    candidates.forEach((c, idx) => {
-      console.log(`  [${idx + 1}] ${c.email} | Offer: ${c.recommendedOffer.productName} (${c.recommendedOffer.price}) | Co: ${c.companyName || 'N/A'} | Region: ${c.province.toUpperCase()} | Matches: ${c.verifiedMatchCount}`);
+    console.log('TARGET RECIPIENT COHORT (PRIORITIZED BY RECENCY & SCORE):');
+    finalCohort.forEach((c, idx) => {
+      const dateStr = c.timestampMs ? new Date(c.timestampMs).toISOString().slice(0, 10) : 'N/A';
+      console.log(`  [${idx + 1}] [${dateStr}] ${c.email} | Offer: ${c.recommendedOffer.productName} (${c.recommendedOffer.price}) | Score: ${c.score} | Co: ${c.companyName || 'N/A'} | Region: ${c.province.toUpperCase()} | Matches: ${c.verifiedMatchCount}`);
     });
     console.log('---------------------------------------------------------------\n');
 
@@ -240,11 +277,11 @@ async function run() {
     }
 
     // Live Execution
-    console.log(`🚀 DISPATCHING LIVE EMAILS TO ${candidates.length} RECIPIENTS...`);
+    console.log(`🚀 DISPATCHING LIVE EMAILS TO ${finalCohort.length} RECIPIENTS...`);
     let sentCount = 0;
     let failCount = 0;
 
-    for (const c of candidates) {
+    for (const c of finalCohort) {
       try {
         console.log(`  📤 Sending to ${c.email} (Offer: ${c.recommendedOffer.productName} ${c.recommendedOffer.price}, Matches: ${c.verifiedMatchCount})...`);
         const sendResult = await sendFundingLeakReceiptEmail({

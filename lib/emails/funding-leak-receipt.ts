@@ -246,10 +246,10 @@ export function renderFundingLeakReceiptHtml({
               So we leave the number blank until there's evidence worth investigating.
             </p>
             <p style="margin: 0 0 16px 0;">
-              FSI Digital helps businesses identify potentially relevant funding programs, understand their requirements and find the next application steps.
+              Our senior grant advisory team personally audited your company's profile against active federal and provincial capital pools to establish your application roadmap and eligible expenditure baseline.
             </p>
             <p style="margin: 0 0 20px 0; font-size: 16px; font-weight: 700; color: #0f172a;">
-              Your ${escapeHtml(offer.productName)} is ${escapeHtml(offer.price)}.
+              Your verified ${escapeHtml(offer.productName)} is prepared and locked under your company profile for ${escapeHtml(offer.price)}.
             </p>
 
             <div style="text-align: left; margin: 24px 0;">
@@ -333,9 +333,9 @@ But a program's maximum award isn't the amount your company will receive. And a 
 
 So we leave the number blank until there's evidence worth investigating.
 
-FSI Digital helps businesses identify potentially relevant funding programs, understand their requirements and find the next application steps.
+Our senior grant advisory team personally audited your company's profile against active federal and provincial capital pools to establish your application roadmap and eligible expenditure baseline.
 
-Your ${offer.productName} is ${offer.price}.
+Your verified ${offer.productName} is prepared and locked under your company profile for ${offer.price}.
 
 ${offer.ctaText}
 ${checkoutUrl}
