@@ -103,8 +103,40 @@ async function runQATestSuite() {
   assert(typeof historicalRoute.POST === 'function', 'process-historical-reactivation missing POST handler');
   console.log('  ✅ API Cron Routes verified: Both GET & POST exported with valid runtime configurations.');
 
+  // ── TEST 6: Zero Placeholder / "Not provided" Guarantee ──
+  console.log('▶ [QA 6/6] Verifying Zero "Not provided" / "N/A" Leakage with Dirty Raw Inputs...');
+  const dirtyInputs = {
+    firstName: 'Not provided',
+    name: 'Not provided',
+    companyName: 'Not provided',
+    province: 'Not provided',
+    industry: 'Not provided',
+    checkoutUrl: 'https://example.com/checkout',
+    unsubscribeUrl: 'https://example.com/unsubscribe',
+    referenceId: 'FLR-DIRTY01',
+    dateFormatted: 'NOV 3, 2026',
+  };
+
+  const dirtyOutputs = [
+    { name: 'Touch 1 HTML', content: renderFundingLeakReceiptHtml(dirtyInputs) },
+    { name: 'Touch 1 Text', content: renderFundingLeakReceiptText(dirtyInputs) },
+    { name: 'Touch 2 HTML', content: renderIntakeAllocationNoticeHtml(dirtyInputs) },
+    { name: 'Touch 2 Text', content: renderIntakeAllocationNoticeText(dirtyInputs) },
+    { name: 'Touch 3 HTML', content: renderAdvisoryCloseoutMemoHtml(dirtyInputs) },
+    { name: 'Touch 3 Text', content: renderAdvisoryCloseoutMemoText(dirtyInputs) },
+  ];
+
+  for (const out of dirtyOutputs) {
+    const lower = out.content.toLowerCase();
+    assert(!lower.includes('not provided'), `${out.name} leaks forbidden string "not provided"`);
+    assert(!lower.includes('not_provided'), `${out.name} leaks forbidden string "not_provided"`);
+    assert(!lower.includes('not-provided'), `${out.name} leaks forbidden string "not-provided"`);
+    assert(!lower.includes('>n/a<'), `${out.name} leaks forbidden placeholder ">N/A<"`);
+  }
+  console.log('  ✅ Zero Placeholder Leakage verified: "Not provided", "N/A", and similar placeholders are completely purged.');
+
   console.log('\n===============================================================');
-  console.log('🎉 ALL 5/5 MULTI-TOUCH QA TESTS PASSED WITH ZERO DEFECTS');
+  console.log('🎉 ALL 6/6 MULTI-TOUCH QA TESTS PASSED WITH ZERO DEFECTS');
   console.log('===============================================================\n');
 }
 

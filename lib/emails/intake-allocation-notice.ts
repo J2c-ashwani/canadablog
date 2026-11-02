@@ -59,9 +59,14 @@ export function renderIntakeAllocationNoticeHtml({
   dateFormatted: string;
   productOffer?: ProductOfferRecommendation;
 }): string {
+  const cleanFirst = getFirstName(firstName);
   const cleanCompany = cleanCompanyName(companyName) || 'Your Enterprise';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
+  const displayContact = cleanFirst && cleanFirst !== 'Founder' ? cleanFirst : 'Executive Leadership';
+  const greeting = cleanFirst && cleanFirst !== 'Founder'
+    ? `To ${escapeHtml(cleanFirst)} and the Executive Team at ${escapeHtml(cleanCompany)}:`
+    : `To the Executive Leadership Team at ${escapeHtml(cleanCompany)}:`;
   const offer = productOffer || {
     productId: 'funding-match-report' as const,
     productName: 'Funding Match Report',
@@ -118,7 +123,7 @@ export function renderIntakeAllocationNoticeHtml({
               </tr>
               <tr style="border-bottom: 1px dashed #cbd5e1;">
                 <td style="padding: 8px 0; color: #64748b; text-transform: uppercase;">DESIGNATED CONTACT</td>
-                <td style="padding: 8px 0; text-align: right; font-weight: 600; color: #0f172a;">${escapeHtml(firstName)}</td>
+                <td style="padding: 8px 0; text-align: right; font-weight: 600; color: #0f172a;">${escapeHtml(displayContact)}</td>
               </tr>
               <tr style="border-bottom: 1px dashed #cbd5e1;">
                 <td style="padding: 8px 0; color: #64748b; text-transform: uppercase;">JURISDICTION</td>
@@ -140,7 +145,7 @@ export function renderIntakeAllocationNoticeHtml({
           <!-- Official Advisory Notice Body -->
           <div style="font-size: 13px; line-height: 1.6; color: #334155; margin-top: 16px;">
             <p style="margin: 0 0 14px 0; font-weight: 600; color: #0f172a;">
-              To ${escapeHtml(firstName)} and the Executive Team at ${escapeHtml(cleanCompany)}:
+              ${greeting}
             </p>
             <p style="margin: 0 0 14px 0;">
               Our senior grant advisory team personally audited your company's profile against active federal and provincial capital pools to establish your application roadmap and eligible expenditure baseline.
@@ -211,9 +216,14 @@ export function renderIntakeAllocationNoticeText({
   dateFormatted: string;
   productOffer?: ProductOfferRecommendation;
 }): string {
+  const cleanFirst = getFirstName(firstName);
   const cleanCompany = cleanCompanyName(companyName) || 'Your Enterprise';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
+  const displayContact = cleanFirst && cleanFirst !== 'Founder' ? cleanFirst : 'Executive Leadership';
+  const greeting = cleanFirst && cleanFirst !== 'Founder'
+    ? `To ${cleanFirst} and the Executive Team at ${cleanCompany}:`
+    : `To the Executive Leadership Team at ${cleanCompany}:`;
   const offer = productOffer || {
     productId: 'funding-match-report' as const,
     productName: 'Funding Match Report',
@@ -228,13 +238,13 @@ STATUS: TEMPORARY CUSTODY HOLD — PENDING CLAIM
 DATE: ${dateFormatted}
 ---------------------------------------------------------------
 RECIPIENT ENTERPRISE:    ${cleanCompany}
-DESIGNATED CONTACT:      ${firstName}
+DESIGNATED CONTACT:      ${displayContact}
 JURISDICTION:            ${cleanProv}
 INDUSTRY CLASSIFICATION: ${cleanInd}
 ${verifiedMatchCount ? `ACTIVE INTAKE MATCHES:   ${verifiedMatchCount} Verified Programs\n` : ''}VERIFIED ADVISORY PRODUCT: ${offer.productName} (${offer.price})
 ---------------------------------------------------------------
 
-To ${firstName} and the Executive Team at ${cleanCompany}:
+${greeting}
 
 Our senior grant advisory team personally audited your company's profile against active federal and provincial capital pools to establish your application roadmap and eligible expenditure baseline.
 

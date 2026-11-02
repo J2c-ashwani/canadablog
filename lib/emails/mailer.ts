@@ -24,7 +24,8 @@ function extractEmailAddress(value?: string): string {
 const PLACEHOLDERS = new Set([
   'n/a', 'n/a.', 'not provided', 'not_provided', 'not-provided',
   'unknown', 'none', 'null', 'undefined', 'n/a province', 'na',
-  'other', 'blank', 'not_specified', 'not specified'
+  'other', 'blank', 'not_specified', 'not specified',
+  'tbd', 'tba', 'pending', 'your company', 'your enterprise'
 ]);
 
 export function getFirstName(name?: string): string {

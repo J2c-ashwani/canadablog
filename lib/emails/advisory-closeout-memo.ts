@@ -58,9 +58,11 @@ export function renderAdvisoryCloseoutMemoHtml({
   dateFormatted: string;
   productOffer?: ProductOfferRecommendation;
 }): string {
+  const cleanFirst = getFirstName(firstName);
   const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
+  const greeting = cleanFirst && cleanFirst !== 'Founder' ? `Hi ${escapeHtml(cleanFirst)},` : `Hello,`;
   const offer = productOffer || {
     productId: 'funding-match-report' as const,
     productName: 'Funding Match Report',
@@ -90,7 +92,7 @@ export function renderAdvisoryCloseoutMemoHtml({
         <div style="font-size: 14px; line-height: 1.6; color: #334155;">
           
           <p style="margin: 0 0 16px 0;">
-            Hi ${escapeHtml(firstName)},
+            ${greeting}
           </p>
 
           <p style="margin: 0 0 16px 0;">
@@ -172,8 +174,10 @@ export function renderAdvisoryCloseoutMemoText({
   dateFormatted: string;
   productOffer?: ProductOfferRecommendation;
 }): string {
+  const cleanFirst = getFirstName(firstName);
   const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
   const cleanProv = cleanRegionName(province);
+  const greeting = cleanFirst && cleanFirst !== 'Founder' ? `Hi ${cleanFirst},` : `Hello,`;
   const offer = productOffer || {
     productId: 'funding-match-report' as const,
     productName: 'Funding Match Report',
@@ -187,7 +191,7 @@ FSI Digital Senior Advisory Desk
 FILE REF: AUD-${referenceId} · ${dateFormatted}
 ---------------------------------------------------------------
 
-Hi ${firstName},
+${greeting}
 
 I am personally reviewing our senior advisory team's open file queue before our weekly intake cycle closes.
 
