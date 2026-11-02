@@ -1,5 +1,5 @@
 export const revalidate = false; // Persistent static cache — prevents daily 24h ISR eviction and fast origin transfer across 6,150 pages
-export const dynamicParams = false; // Prevents on-demand SSR function execution for invalid routes
+export const dynamicParams = true; // Allows on-demand generation for long-tail hubs while pre-rendering Tier A/B hubs
 import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
@@ -626,9 +626,10 @@ function UsPseoGrantContent({
 }
 
 
-// Generate static params for all possible PSEO pages
+// Pre-render high-priority Tier A & Tier B hubs at build time (protects Vercel container RAM & eliminates OOM SIGKILL)
+// Remaining programmatic combinations render on demand via ISR and are cached at the Edge CDN for 30 days
 export async function generateStaticParams() {
-    const pages = getAllPseoPages();
+    const pages = getAllPseoPages().filter((page) => page.tier === 'A' || page.tier === 'B');
     return pages.map((page) => ({
         province: page.provinceSlug,
         city: page.citySlug,
