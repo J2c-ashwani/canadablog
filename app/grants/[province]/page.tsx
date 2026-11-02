@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ArrowRight, Building, MapPin, Search } from 'lucide-react';
+import { ArrowRight, Building, MapPin, Search, ShieldCheck } from 'lucide-react';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { Badge } from '@/components/ui/badge';
@@ -55,6 +55,66 @@ export async function generateMetadata({ params }: ProvincePageProps): Promise<M
   };
 }
 
+const PROVINCIAL_FOCUS_HUBS: Record<string, Array<{ title: string; href: string; city: string; sector: string; description: string }>> = {
+  on: [
+    {
+      title: 'Toronto Technology Startup Grants',
+      href: '/grants/on/toronto/technology',
+      city: 'Toronto',
+      sector: 'Technology & Startups',
+      description: 'FedDev Ontario BSP scale-up funding, OCI VIP vouchers, and NRC-IRAP engineering wage subsidies.',
+    },
+    {
+      title: 'Toronto Hospitality & Restaurant Grants',
+      href: '/grants/on/toronto/restaurants-hospitality',
+      city: 'Toronto',
+      sector: 'Restaurants & Hospitality',
+      description: 'City of Toronto commercial patio & façade grants, Destination Ontario tourism relief, and CSBFP equipment guarantees.',
+    },
+    {
+      title: 'Thunder Bay Main Street & Retail Grants',
+      href: '/grants/on/thunder-bay/retail',
+      city: 'Thunder Bay',
+      sector: 'Retail & Main Street',
+      description: 'FedNor Northern Ontario development grants, NOHFC small business funds, and Thunder Bay CEDC vouchers.',
+    },
+  ],
+  bc: [
+    {
+      title: 'Vancouver Women-Owned Business Grants',
+      href: '/grants/bc/vancouver/women-entrepreneurs',
+      city: 'Vancouver',
+      sector: 'Women Founders',
+      description: 'PacifiCan scale-up envelopes, WeBC low-barrier capital, and WorkBC leadership training vouchers.',
+    },
+    {
+      title: 'Coquitlam Technology Innovation Grants',
+      href: '/grants/bc/coquitlam/technology',
+      city: 'Coquitlam',
+      sector: 'Technology Startups',
+      description: 'PacifiCan BSP commercialization funds, Innovate BC Ignite R&D vouchers, and Tri-Cities regional tax credits.',
+    },
+  ],
+  ab: [
+    {
+      title: 'Calgary Restaurant & Hospitality Grants',
+      href: '/grants/ab/calgary/restaurants-hospitality',
+      city: 'Calgary',
+      sector: 'Hospitality & Dining',
+      description: 'City of Calgary BRZ patio improvements, Travel Alberta culinary investment, and PrairiesCan tourism relief.',
+    },
+  ],
+  mb: [
+    {
+      title: 'Winnipeg Women Entrepreneur Grants',
+      href: '/grants/mb/winnipeg/women-entrepreneurs',
+      city: 'Winnipeg',
+      sector: 'Women Founders',
+      description: 'PrairiesCan REGI commercialization, WECM growth financing, and Manitoba Innovation Growth Program cost-shares.',
+    },
+  ],
+};
+
 export default async function ProvinceGrantHubPage({ params }: ProvincePageProps) {
   const resolvedParams = await params;
   const province = getPseoProvinceSummary(resolvedParams.province);
@@ -66,6 +126,7 @@ export default async function ProvinceGrantHubPage({ params }: ProvincePageProps
   const cities = getPseoCitySummaries(resolvedParams.province);
   const samplePages = getPseoProvincePages(resolvedParams.province).slice(0, 12);
   const topCityNames = cities.slice(0, 4).map((city) => city.cityName).join(', ');
+  const focusHubs = PROVINCIAL_FOCUS_HUBS[resolvedParams.province.toLowerCase()];
 
   // Fetch unique local programs for authority
   const stateData = getStateDetailBySlugOrAbbreviation(resolvedParams.province);
@@ -235,6 +296,53 @@ export default async function ProvinceGrantHubPage({ params }: ProvincePageProps
             </div>
           </div>
         </section>
+
+        {/* Controlled Regional Directives & Statutory Intelligence Hubs */}
+        {focusHubs && focusHubs.length > 0 && (
+          <section className="border-t border-emerald-200 bg-gradient-to-b from-emerald-50/50 via-white to-gray-50 py-14">
+            <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="mx-auto max-w-5xl">
+                <div className="mb-8">
+                  <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-600 text-white mb-3">
+                    <ShieldCheck className="w-3.5 h-3.5" />
+                    Verified Regional Intelligence Hubs
+                  </div>
+                  <h2 className="text-2xl font-bold text-gray-950">
+                    High-Priority {province.provinceName} Commercial & Municipal Guides
+                  </h2>
+                  <p className="mt-2 max-w-3xl text-sm text-gray-700">
+                    Statutory local funding roadmaps, authorized regional agencies, and verified stacking caps for key regional business hubs.
+                  </p>
+                </div>
+
+                <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+                  {focusHubs.map((hub) => (
+                    <Link
+                      key={hub.href}
+                      href={hub.href}
+                      className="group rounded-xl border border-emerald-200 bg-white p-5 transition hover:border-emerald-400 hover:shadow-md"
+                    >
+                      <div className="flex items-start justify-between gap-3">
+                        <div>
+                          <span className="text-[11px] font-bold uppercase tracking-wider text-emerald-700">
+                            {hub.city} • {hub.sector}
+                          </span>
+                          <h3 className="font-bold text-gray-950 group-hover:text-emerald-800 mt-1 text-base">
+                            {hub.title}
+                          </h3>
+                          <p className="mt-2 text-xs text-gray-600 leading-relaxed">
+                            {hub.description}
+                          </p>
+                        </div>
+                        <ArrowRight className="mt-1 h-4 w-4 shrink-0 text-emerald-600 group-hover:translate-x-1 transition-transform" />
+                      </div>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        )}
 
         <section className="border-t border-gray-200 bg-gray-50 py-14">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
