@@ -11,6 +11,8 @@
     "test:negative": "npx tsx scripts/verify-negative-scenarios.ts",
     "test:pdf-qa": "npx tsx scripts/verify-pdf-qa-stress-suite.ts",
     "test:smoke": "npx tsx scripts/smoke-test-production-pipeline.ts",
+    "test:campaign": "npx tsx scripts/test-multi-touch-campaign.ts",
+    "campaign:run": "npx tsx scripts/run-reactivation-campaign.ts",
     "test:ceo-commercial": "npx tsx scripts/verify-ceo-commercial-suite.ts",
     "test:commercial-recovery": "npx tsx scripts/test-commercial-recovery-e2e.ts",
     "test:ceo-autonomous": "npx tsx scripts/verify-autonomous-event-detection.ts",

@@ -121,6 +121,18 @@ fi
 echo "━━━ REVENUE HUNTER ━━━"
 fire_cron "Revenue Hunter" "/api/cron/process-revenue-hunter"
 
+# ═══════════════════════════════════════════════════
+# Stage 5: Multi-Touch Reactivation Campaign
+# Schedule: Daily at 15:00 UTC
+# Touch 1: Receipt | Touch 2: Courier Slip | Touch 3: Closeout Memo
+# ═══════════════════════════════════════════════════
+echo "━━━ MULTI-TOUCH REACTIVATION CAMPAIGN ━━━"
+if [ "${MODE}" = "dry" ]; then
+  fire_cron "Reactivation Campaign (DRY RUN)" "/api/cron/process-reactivation-campaign" "limit=25&dry=true"
+else
+  fire_cron "Reactivation Campaign (LIVE)" "/api/cron/process-reactivation-campaign" "limit=25"
+fi
+
 echo "═══════════════════════════════════════════════════"
 echo " Recovery trigger complete."
 echo " Review responses above for candidate counts."

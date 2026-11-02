@@ -76,6 +76,13 @@ const DESIRED_JOBS: DesiredCronJob[] = [
     purpose: 'Dispatches 7/21-day direct-response capital leakage emails'
   },
   {
+    title: 'FSI - Multi-Touch Reactivation Campaign',
+    url: `${PRODUCTION_BASE_URL}/api/cron/process-reactivation-campaign`,
+    schedule: { hours: [15], minutes: [0], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
+    humanSchedule: 'Daily at 15:00 UTC',
+    purpose: 'Dispatches 3-touch direct-response campaigns (Receipt -> Allocation Notice -> Closeout Memo) capped at 25/day'
+  },
+  {
     title: 'FSI - Process Revenue Hunter B2B Outbound',
     url: `${PRODUCTION_BASE_URL}/api/cron/process-revenue-hunter`,
     schedule: { hours: [14], minutes: [0], mdays: [-1], months: [-1], wdays: [1, 2, 3, 4, 5], timezone: TZ },
