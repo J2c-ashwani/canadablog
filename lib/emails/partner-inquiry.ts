@@ -244,7 +244,7 @@ function buildInternalAlertHtml(data: PartnerApprovalInput) {
 // Function 1: Send Instant Receipt confirmation (Email 1)
 export async function sendPartnerReceiptEmail(data: PartnerReceiptInput) {
   const apiKey = process.env.RESEND_API_KEY
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "FSI Digital <hello@fsidigital.ca>"
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Ashwani K <ashwani@funding.fsidigital.ca>"
   const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || "ashwani@fsidigital.ca"
 
   if (!apiKey) {
@@ -297,7 +297,7 @@ export async function sendPartnerReceiptEmail(data: PartnerReceiptInput) {
 // Function 2: Send Delayed Approval & Offer Checkout (Email 2) and Send Founder alert
 export async function sendPartnerApprovalEmailAndAlert(data: PartnerApprovalInput) {
   const apiKey = process.env.RESEND_API_KEY
-  const fromEmail = process.env.RESEND_FROM_EMAIL || "FSI Digital <hello@fsidigital.ca>"
+  const fromEmail = process.env.RESEND_FROM_EMAIL || "Ashwani K <ashwani@funding.fsidigital.ca>"
   const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || "ashwani@fsidigital.ca"
 
   if (!apiKey) {

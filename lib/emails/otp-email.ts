@@ -38,7 +38,7 @@ function buildHtml(code: string) {
 
 export async function sendOtpEmail({ to, code }: OtpEmailInput) {
   const apiKey = process.env.RESEND_API_KEY;
-  const fromEmail = process.env.RESEND_FROM_EMAIL || 'FSI Digital <hello@fsidigital.ca>';
+  const fromEmail = process.env.RESEND_FROM_EMAIL || 'Ashwani K <ashwani@funding.fsidigital.ca>';
   const replyToEmail = process.env.RESEND_REPLY_TO_EMAIL || 'ashwani@fsidigital.ca';
 
   if (!apiKey) {
