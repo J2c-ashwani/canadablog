@@ -304,7 +304,6 @@ export class CEOAgent {
           html: emailHtml,
           text: briefText,
           tagType: 'ceo-daily-report',
-          preferProvider: 'brevo',
         })
         executedActions.push({
           toolName: 'ceo_daily_report',

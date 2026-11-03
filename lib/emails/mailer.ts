@@ -375,8 +375,8 @@ export async function sendEmail({
     }).catch((error) => console.error('Commercial email acceptance attribution could not be persisted:', error));
   };
 
-  // 1. OPTIONAL: Prioritize Brevo for internal operations/briefings to conserve Resend client quota
-  const shouldPreferBrevo = preferProvider === 'brevo' || tagType === 'ceo-daily-report';
+  // 1. OPTIONAL: Only use Brevo if explicitly requested (Resend remains the verified default)
+  const shouldPreferBrevo = preferProvider === 'brevo';
   if (shouldPreferBrevo && process.env.BREVO_API_KEY && !forceResend) {
     const brevoResult = await sendViaBrevo({
       to,
