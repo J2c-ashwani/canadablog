@@ -332,23 +332,16 @@ export class SocialRevenueSprintService {
 
     // Execute all 4 independent channels concurrently to stay well below the 60s Vercel timeout
     await Promise.allSettled([
-      // 1. Facebook Dispatch (Alternating 9:16 Video Reel vs Multi-Photo Carousel Album — Zero Plain-Text Fallback)
+      // 1. Facebook Dispatch (Option A: 100% Daily 9:16 Video Reels)
       dispatch('facebook', async () => {
         const caption = infoPost?.captions?.facebook || variant.facebook
         const fullCaptionWithTags = `${caption}\n\n${hashtagLine}`
-
-        if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-          return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, fullCaptionWithTags, facebookUrl)
-        }
         const reelVideoUrl = infoPost?.media.videoUrl
         if (!reelVideoUrl) {
-          if (infoPost?.media.carouselSlides?.length) {
-            return ChannelAdapters.postFacebookMultiPhoto(infoPost.media.carouselSlides, fullCaptionWithTags, facebookUrl)
-          }
           return {
             channelName: 'Facebook',
             status: 'QUEUED_FOR_APPROVAL',
-            message: `Variant ${variant.id} has no valid videoUrl or carouselSlides. Skipped to prevent duplicate/unintended reel uploads.`,
+            message: `Variant ${variant.id} has no valid videoUrl. Option A strictly requires 9:16 Video Reels.`,
           }
         }
         const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
@@ -359,20 +352,14 @@ export class SocialRevenueSprintService {
         return reelResult
       }),
 
-      // 2. Instagram Dispatch (Alternating 9:16 Video Reel vs Multi-Slide Carousel — Zero Plain-Text Fallback)
+      // 2. Instagram Dispatch (Option A: 100% Daily 9:16 Video Reels)
       dispatch('instagram', async () => {
-        if (infoPost?.format === 'CAROUSEL' && infoPost.media.carouselSlides?.length) {
-          return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, brandedHashtags)
-        }
         const reelVideoUrl = infoPost?.media.videoUrl
         if (!reelVideoUrl) {
-          if (infoPost?.media.carouselSlides?.length) {
-            return ChannelAdapters.postInstagramCarousel(infoPost.media.carouselSlides, infoPost.captions.instagram, brandedHashtags)
-          }
           return {
             channelName: 'Instagram',
             status: 'QUEUED_FOR_APPROVAL',
-            message: `Variant ${variant.id} has no valid videoUrl or carouselSlides. Skipped.`,
+            message: `Variant ${variant.id} has no valid videoUrl. Option A strictly requires 9:16 Video Reels.`,
           }
         }
         const caption = infoPost?.captions?.instagram || `${variant.facebook}\n\n🔗 ${instagramUrl}`
