@@ -90,13 +90,21 @@ export async function GET(request: NextRequest) {
           </div>
         `
 
-        await sendEmail({
-          to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-          subject: `🚀 [Growth OS] Daily Social Posts Live — Facebook, Instagram, LinkedIn & YouTube Shorts`,
-          html,
-          text: `Daily Social Posts Published at ${nowIST}.\nFacebook: ${fbUrl}\nInstagram: ${igUrl}\nLinkedIn: ${liUrl}\n\nFunnel target: https://fsidigital.ca/calculator`,
-          tagType: 'social-revenue-sprint'
-        })
+        // Suppress standalone daily email on success to maintain strict 1 email/day founder policy
+        if (failed || process.env.SEND_STANDALONE_SOCIAL_EMAIL === 'true') {
+          await sendEmail({
+            to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
+            subject: failed
+              ? `⚠️ [Growth OS] Social Sprint Posting Degradation Alert`
+              : `🚀 [Growth OS] Daily Social Posts Live — Facebook, Instagram, LinkedIn & YouTube Shorts`,
+            html,
+            text: `Daily Social Posts Published at ${nowIST}.\nFacebook: ${fbUrl}\nInstagram: ${igUrl}\nLinkedIn: ${liUrl}\n\nFunnel target: https://fsidigital.ca/calculator`,
+            tagType: 'social-revenue-sprint',
+            preferProvider: 'brevo',
+          })
+        } else {
+          console.log(`ℹ️ [SocialRevenueSprint] Daily social posts published. Standalone receipt email suppressed per consolidated founder policy.`);
+        }
       } catch (emailErr) {
         console.error('[SocialRevenueSprint] Failed to send execution receipt email:', emailErr)
       }

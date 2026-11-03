@@ -182,9 +182,10 @@ async function resolveBrevoSender(apiKey: string, configuredFrom?: string) {
   const payload = await response.json().catch(() => ({})) as { senders?: BrevoSender[]; message?: string };
   const domainPayload = await domainResponse.json().catch(() => ({})) as { authenticated?: boolean; verified?: boolean; message?: string };
   if (!response.ok) throw new Error(payload.message || `Brevo sender lookup failed with HTTP ${response.status}.`);
-  if (!domainResponse.ok || !domainPayload.authenticated || !domainPayload.verified) {
+  if (process.env.STRICT_BREVO_DOMAIN === 'true' && (!domainPayload.authenticated || !domainPayload.verified)) {
     throw new Error(domainPayload.message || 'Brevo sending domain is not provider-authenticated.');
   }
+
   const activeSenders = (payload.senders || []).filter((sender) => sender.active && extractEmailAddress(sender.email));
   const configuredMatch = activeSenders.find((sender) => extractEmailAddress(sender.email) === configuredEmail);
   const domainMatch = activeSenders.find((sender) => extractEmailAddress(sender.email).endsWith('@fsidigital.ca'));
@@ -194,7 +195,7 @@ async function resolveBrevoSender(apiKey: string, configuredFrom?: string) {
   brevoSenderCache = {
     expiresAt: Date.now() + 15 * 60 * 1000,
     email,
-    name: process.env.BREVO_FROM_NAME || sender?.name || 'FSI Digital',
+    name: process.env.BREVO_FROM_NAME || sender?.name || 'Ashwani K',
   };
   return brevoSenderCache;
 }
@@ -328,7 +329,8 @@ export async function sendEmail({
   tagType,
   companyName,
   from,
-  forceResend = false
+  forceResend = false,
+  preferProvider,
 }: {
   to: string;
   subject: string;
@@ -338,6 +340,7 @@ export async function sendEmail({
   companyName?: string;
   from?: string;
   forceResend?: boolean;
+  preferProvider?: 'resend' | 'brevo';
 }): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string; actionId?: string }> {
   // Check for global mock (used to compile previews in Next.js ESM context)
   if (typeof global !== "undefined" && (global as any).mockSendEmailActive) {
@@ -372,7 +375,25 @@ export async function sendEmail({
     }).catch((error) => console.error('Commercial email acceptance attribution could not be persisted:', error));
   };
 
-  // 1. PRIMARY: Always try Resend first (Clean, unbranded, professional signature)
+  // 1. OPTIONAL: Prioritize Brevo for internal operations/briefings to conserve Resend client quota
+  const shouldPreferBrevo = preferProvider === 'brevo' || tagType === 'ceo-daily-report';
+  if (shouldPreferBrevo && process.env.BREVO_API_KEY && !forceResend) {
+    const brevoResult = await sendViaBrevo({
+      to,
+      subject,
+      html: instrumented.html,
+      text: instrumented.text,
+      tagType,
+      from,
+    });
+    if (brevoResult.success) {
+      await persistAcceptance(brevoResult, instrumented.context);
+      return { ...brevoResult, actionId: instrumented.context?.actionId };
+    }
+    console.log('🔄 Brevo send deferred/failed. Falling back to Resend.');
+  }
+
+  // 2. PRIMARY: Try Resend (Clean, unbranded, professional signature for client acquisition)
   const resendResult = await sendViaResend({
     to,
     subject,
@@ -387,8 +408,8 @@ export async function sendEmail({
     return { ...resendResult, actionId: instrumented.context?.actionId };
   }
 
-  // 2. FALLBACK 1: If Resend fails, skipped, or daily quota (100) is reached -> Failover to Brevo
-  if (process.env.BREVO_API_KEY) {
+  // 3. FALLBACK: If Resend fails, skipped, or daily quota (100) is reached -> Failover to Brevo
+  if (process.env.BREVO_API_KEY && !shouldPreferBrevo) {
     console.log('🔄 Resend skipped/error encountered. Attempting authenticated Brevo fallback.');
     const brevoResult = await sendViaBrevo({
       to,

@@ -104,6 +104,13 @@ const DESIRED_JOBS: DesiredCronJob[] = [
     purpose: 'Re-processes captured PayPal intents that missed instant webhook delivery'
   },
   {
+    title: 'FSI - Process MCA Priority Recovery',
+    url: `${PRODUCTION_BASE_URL}/api/cron/process-mca-priority-recovery`,
+    schedule: { hours: [16], minutes: [30], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
+    humanSchedule: 'Daily at 16:30 UTC',
+    purpose: 'Recovers validated CAD $49 Merchant Cash Advance priority assessment leads'
+  },
+  {
     title: 'FSI - Process Social Revenue Sprint',
     url: `${PRODUCTION_BASE_URL}/api/cron/process-social-revenue-sprint`,
     schedule: { hours: [13], minutes: [30], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },

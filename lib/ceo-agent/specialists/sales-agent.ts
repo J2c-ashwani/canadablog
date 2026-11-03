@@ -606,10 +606,30 @@ export class SalesAgent {
     dispatchedCount: number;
     actions: any[];
     founderAlertsSent: number;
+    highIntentLeads: Array<{
+      name: string;
+      company: string;
+      email: string;
+      phone: string;
+      fundingGoal: string;
+      score: number;
+      status: string;
+      recommendedAction: string;
+    }>;
     errors: string[];
   }> {
     const errors: string[] = [];
     const actions: any[] = [];
+    const highIntentLeads: Array<{
+      name: string;
+      company: string;
+      email: string;
+      phone: string;
+      fundingGoal: string;
+      score: number;
+      status: string;
+      recommendedAction: string;
+    }> = [];
     let dispatchedCount = 0;
     let founderAlertsSent = 0;
 
@@ -755,13 +775,12 @@ export class SalesAgent {
         const isVipCustomer = purchaseProfile.hasBundleOrToolkit;
         const isReportBuyer = purchaseProfile.hasReport && !purchaseProfile.hasBundleOrToolkit;
 
-        // Hard production idempotency lock
-        // For existing buyers, lock monthly to avoid recurring pitches
+        // Hard permanent idempotency lock — prevents duplicate recurring alerts
         const idempotencyKey = isVipCustomer
-          ? `SALES_VIP:${lead.email}:${new Date().toISOString().slice(0, 7)}`
+          ? `SALES_VIP:${lead.email}`
           : isReportBuyer
-            ? `SALES_UPGRADE:${lead.email}:${new Date().toISOString().slice(0, 7)}`
-            : `SALES:${lead.email}:${offerTier.id}:${new Date().toISOString().slice(0, 10)}`;
+            ? `SALES_UPGRADE:${lead.email}`
+            : `SALES:${lead.email}:${offerTier.id}`;
 
         if (!CommercialActionTracker.acquireIdempotencyLock(idempotencyKey)) {
           CommercialActionTracker.recordBlockedAction('Sales', 'DUPLICATE', lead.email, `Idempotency lock active for ${offerTier.id}`);
@@ -779,114 +798,49 @@ export class SalesAgent {
         const tokenParam = purchaseProfile.latestToken ? `?token=${encodeURIComponent(purchaseProfile.latestToken)}` : '';
         const dashboardUrl = `https://www.fsidigital.ca/products/report${tokenParam}`;
 
-        // 1. Trigger Founder Alert Email to CEO Ashwani
+        // 1. High-Intent Founder Rollup (Compiled into single Daily CEO Briefing — Zero Individual Spam)
         if (qualification.isHighIntent) {
-          const alertActionId = generateActionId('Sales');
-          const founderEmail = process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca';
+          highIntentLeads.push({
+            name: lead.name || 'Founder',
+            company: companySubject,
+            email: lead.email,
+            phone: lead.phone || 'Not provided',
+            fundingGoal,
+            score: qualification.totalScore,
+            status: isVipCustomer ? 'VIP PAID' : isReportBuyer ? 'REPORT BUYER' : 'FREE INTAKE',
+            recommendedAction: isVipCustomer ? '1-on-1 Strategy Session ($199)' : 'Complete Funding Blueprint ($79)',
+          });
 
-          let alertSubject = `🚨 HIGH-INTENT FOUNDER ALERT [Score: ${qualification.totalScore}/100]: ${lead.name || 'Founder'} (${companySubject}) requested ${fundingGoal}`;
-          let alertHtml = '';
-
+          // Only send immediate individual alert for VIP PAID BUYERS.
+          // Standard free leads are compiled into the single Daily CEO Executive Briefing to protect Resend quota.
           if (isVipCustomer) {
-            alertSubject = `💎 VIP PAID CUSTOMER ALERT [$${purchaseProfile.totalSpentUSD} Invested]: ${lead.name || 'Founder'} (${companySubject}) - High-Ticket Closing Opportunity`;
-            alertHtml = `
+            const alertActionId = generateActionId('Sales');
+            const founderEmail = process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca';
+            const alertSubject = `💎 VIP PAID CUSTOMER ALERT [$${purchaseProfile.totalSpentUSD} Invested]: ${lead.name || 'Founder'} (${companySubject}) - High-Ticket Closing Opportunity`;
+            const alertHtml = `
               <div style="font-family:Arial,sans-serif;padding:16px;border:1px solid #e2e8f0;border-radius:8px;max-width:600px;">
                 <h2 style="color:#0f172a;margin-top:0;">💎 VIP Paid Customer Follow-up</h2>
                 <p>A Canadian founder who already invested <strong>$${purchaseProfile.totalSpentUSD} USD</strong> in our platform is active and ready for high-ticket closing:</p>
                 <table style="width:100%;border-collapse:collapse;margin:16px 0;">
                   <tr><td style="padding:6px;font-weight:bold;color:#475569;">Customer Status:</td><td><strong style="color:#059669;">ACTIVE PAID BUYER ($${purchaseProfile.totalSpentUSD} USD Invested)</strong></td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Products Owned:</td><td>Complete Funding Blueprint & Stacking Toolkit</td></tr>
                   <tr><td style="padding:6px;font-weight:bold;color:#475569;">Name:</td><td>${lead.name || 'Founder'}</td></tr>
                   <tr><td style="padding:6px;font-weight:bold;color:#475569;">Company:</td><td>${companySubject}</td></tr>
                   <tr><td style="padding:6px;font-weight:bold;color:#475569;">Email:</td><td><a href="mailto:${lead.email}">${lead.email}</a></td></tr>
                   <tr><td style="padding:6px;font-weight:bold;color:#475569;">Phone:</td><td><strong>${lead.phone || 'Not provided'}</strong></td></tr>
                   <tr><td style="padding:6px;font-weight:bold;color:#475569;">Funding Goal:</td><td>${fundingGoal}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Province / Stage:</td><td>${regionLabel} / ${lead.businessStage || 'Active'}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Sector:</td><td>${sectorLabel}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Active Blueprint:</td><td><a href="${dashboardUrl}">Open Customer Blueprint</a></td></tr>
                 </table>
-                <div style="background:#eff6ff;padding:12px;border-radius:6px;border-left:4px solid #2563eb;margin-bottom:12px;">
-                  <strong>Recommended Advisory Next Step:</strong> Connect with founder to invite them to a private <strong>1-on-1 Strategy Video Session</strong> (net $${offerTier.netPrice ?? 101} with 100% credit) or <strong>Full-Service Grant Preparation</strong>.
-                </div>
-                <p style="font-size:12px;color:#94a3b8;margin-top:16px;">Action ID: ${alertActionId} | Generated by FSI Sales Agent (VIP Routing)</p>
               </div>
             `;
-          } else if (isReportBuyer) {
-            alertSubject = `💎 REPORT BUYER ALERT [$${purchaseProfile.totalSpentUSD} Invested]: ${lead.name || 'Founder'} (${companySubject}) - Blueprint Upgrade Opportunity`;
-            alertHtml = `
-              <div style="font-family:Arial,sans-serif;padding:16px;border:1px solid #e2e8f0;border-radius:8px;max-width:600px;">
-                <h2 style="color:#0f172a;margin-top:0;">💎 Report Buyer Upgrade Opportunity</h2>
-                <p>An existing customer ($${purchaseProfile.totalSpentUSD} spent) qualifies to upgrade to the Complete Funding Blueprint:</p>
-                <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Customer Status:</td><td><strong>Report Buyer ($${purchaseProfile.totalSpentUSD} USD Invested)</strong></td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Name:</td><td>${lead.name || 'Founder'}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Company:</td><td>${companySubject}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Email:</td><td><a href="mailto:${lead.email}">${lead.email}</a></td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Phone:</td><td>${lead.phone || 'Not provided'}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Funding Goal:</td><td>${fundingGoal}</td></tr>
-                </table>
-                <div style="background:#eff6ff;padding:12px;border-radius:6px;border-left:4px solid #2563eb;">
-                  <strong>Recommended Next Action:</strong> Offer the $79 Complete Blueprint with 100% of their $19 credited (net $60 balance).
-                </div>
-                <p style="font-size:12px;color:#94a3b8;margin-top:16px;">Action ID: ${alertActionId} | Generated by FSI Sales Agent</p>
-              </div>
-            `;
-          } else {
-            alertHtml = `
-              <div style="font-family:Arial,sans-serif;padding:16px;border:1px solid #e2e8f0;border-radius:8px;max-width:600px;">
-                <h2 style="color:#0f172a;margin-top:0;">🔥 High-Intent Prospect Intake</h2>
-                <p>A Canadian founder with verified business maturity submitted a high-value funding inquiry:</p>
-                <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Qualification Score:</td><td><strong>${qualification.totalScore}/100</strong> (High Intent)</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Customer Status:</td><td>Free Assessment Lead (Unpaid)</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Name:</td><td>${lead.name || 'Founder'}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Company:</td><td>${companySubject}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Email:</td><td><a href="mailto:${lead.email}">${lead.email}</a></td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Phone:</td><td>${lead.phone || 'Not provided'}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Funding Goal:</td><td>${fundingGoal}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Province / Stage:</td><td>${regionLabel} / ${lead.businessStage || 'Active'}</td></tr>
-                  <tr><td style="padding:6px;font-weight:bold;color:#475569;">Sector / Readiness:</td><td>${sectorLabel} / ${lead.readinessScore || 'N/A'}/100</td></tr>
-                </table>
-                <div style="background:#f8fafc;padding:12px;border-radius:6px;border-left:4px solid #2563eb;margin-bottom:12px;">
-                  <strong>Score Breakdown:</strong> Corp: ${qualification.breakdown.incorporationScore}/25 | Region: ${qualification.breakdown.jurisdictionScore}/15 | Stage: ${qualification.breakdown.stageScore}/20 | Funding: ${qualification.breakdown.fundingScore}/15 | Sector: ${qualification.breakdown.sectorScore}/15 | Readiness: ${qualification.breakdown.readinessScore}/10
-                </div>
-                <div style="background:#eff6ff;padding:12px;border-radius:6px;border-left:4px solid #3b82f6;">
-                  <strong>Recommended Next Action:</strong> Offer the $79 Complete Capital Stacking Toolkit or schedule a $199 Strategy Session.
-                </div>
-                <p style="font-size:12px;color:#94a3b8;margin-top:16px;">Action ID: ${alertActionId} | Generated by FSI Sales Agent</p>
-              </div>
-            `;
-          }
-
-          const alertResult = await sendEmail({
-            to: founderEmail,
-            subject: alertSubject,
-            html: alertHtml,
-            text: `Sales Alert: ${lead.name || 'Founder'} (${lead.email}) requested ${fundingGoal}. Status: ${isVipCustomer ? 'PAID VIP' : 'UNPAID'}.`,
-            tagType: isVipCustomer ? 'founder-vip-customer-alert' : 'founder-high-intent-alert',
-          });
-
-          if (alertResult.success) {
-            founderAlertsSent++;
-            await CommercialActionTracker.recordAction({
-              actionId: alertActionId,
-              agent: 'Sales',
-              trigger: isVipCustomer ? 'VIP Customer Intelligence' : `Multi-variable qualification (${qualification.totalScore}/100)`,
-              leadId: lead.email,
-              leadEmail: lead.email,
-              leadName: lead.name,
-              company: lead.companyName,
-              action: isVipCustomer ? 'Internal VIP Customer Alert' : 'Internal Founder Hot Lead Alert',
-              product: isVipCustomer ? 'Strategy Advisory (VIP)' : 'Strategy Advisory ($199 / $79 Bundle)',
-              channel: 'Internal Alert',
-              consent: 'Transactional',
-              status: 'DISPATCHED',
-              result: 'DELIVERED',
-              revenueUSD: offerTier.price,
-              attribution: isVipCustomer ? 'VIP_CUSTOMER_ALERT' : 'HIGH_INTENT_SALES_ALERT',
-              timestamp: new Date().toISOString(),
-              providerMessageId: alertResult.providerMessageId,
+            const alertResult = await sendEmail({
+              to: founderEmail,
+              subject: alertSubject,
+              html: alertHtml,
+              text: `VIP Sales Alert: ${lead.name || 'Founder'} (${lead.email}) requested ${fundingGoal}. Status: PAID VIP.`,
+              tagType: 'founder-vip-customer-alert',
             });
+            if (alertResult.success) {
+              founderAlertsSent++;
+            }
           }
         }
 
@@ -1118,6 +1072,7 @@ export class SalesAgent {
       dispatchedCount,
       actions,
       founderAlertsSent,
+      highIntentLeads,
       errors,
     };
   }

@@ -87,17 +87,25 @@ export async function GET(request: NextRequest) {
         </ul>
         <h3>Failures and evidence gaps</h3><ul>${issues}</ul>
       </div>`
-    const report = await sendEmail({
-      to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-      subject: `GrowthOS ${status} — verified MRR $${evidence.revenue.verifiedMRRUSD.toFixed(2)}`,
-      html,
-      text: `GrowthOS ${status}. Evidence ${evidence.evidenceState}. MTD revenue $${evidence.revenue.mtdVerifiedUSD} USD + $${evidence.revenue.mtdVerifiedCAD} CAD. MRR $${evidence.revenue.verifiedMRRUSD} USD.`,
-      tagType: 'growth-os-health',
-    })
-    const reportAccepted = Boolean(report.success && report.providerMessageId)
-    const finalStatus = status === 'HEALTHY' && reportAccepted ? 'SUCCEEDED' : status === 'FAILED' ? 'FAILED' : 'PARTIAL'
-    await finishOperationLease(lease, finalStatus, { status, evidence, resendReconciliation, brevoReconciliation, reportAccepted, reportProviderMessageId: report.providerMessageId || '' })
-    const success = status !== 'FAILED' && reportAccepted
+    // Only send standalone email if there is an active FAILURE to prevent inbox spam.
+    // Healthy metrics are rolled up into the single Daily Morning CEO Briefing.
+    let reportAccepted = true
+    let reportProviderMessageId = ''
+    if (status === 'FAILED') {
+      const report = await sendEmail({
+        to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
+        subject: `🚨 [CRITICAL ALERT] GrowthOS ${status} — verified MRR $${evidence.revenue.verifiedMRRUSD.toFixed(2)}`,
+        html,
+        text: `GrowthOS ${status}. Evidence ${evidence.evidenceState}. MTD revenue $${evidence.revenue.mtdVerifiedUSD} USD + $${evidence.revenue.mtdVerifiedCAD} CAD. MRR $${evidence.revenue.verifiedMRRUSD} USD.`,
+        tagType: 'growth-os-health-failure',
+      })
+      reportAccepted = Boolean(report.success && report.providerMessageId)
+      reportProviderMessageId = report.providerMessageId || ''
+    }
+
+    const finalStatus = status === 'HEALTHY' ? 'SUCCEEDED' : status === 'FAILED' ? 'FAILED' : 'PARTIAL'
+    await finishOperationLease(lease, finalStatus, { status, evidence, resendReconciliation, brevoReconciliation, reportAccepted, reportProviderMessageId })
+    const success = status !== 'FAILED'
     return NextResponse.json({ success, status, evidence, pipeline, resendReconciliation, brevoReconciliation, reportAccepted }, { status: success ? 200 : 502 })
   } catch (error: any) {
     await finishOperationLease(lease, 'FAILED', { error: error.message || String(error) })
