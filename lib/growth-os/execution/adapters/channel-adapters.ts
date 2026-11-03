@@ -582,22 +582,23 @@ export class ChannelAdapters {
             data?: Array<{ id: string; title?: string; created_time?: string }>
           }
           const cleanTarget = title.toLowerCase().replace(/[^a-z0-9]/g, '')
+          const TWO_DAYS_MS = 48 * 60 * 60 * 1000
+          const nowMs = Date.now()
           const duplicate = recentData.data?.find((v) => {
             if (!v.title) return false
+            const videoTime = v.created_time ? new Date(v.created_time).getTime() : 0
+            if (nowMs - videoTime > TWO_DAYS_MS) return false // Ignore videos older than 48 hours
             const cleanExisting = v.title.toLowerCase().replace(/[^a-z0-9]/g, '')
-            if (cleanExisting === cleanTarget) return true
-            if (cleanTarget.length >= 12 && cleanExisting.includes(cleanTarget)) return true
-            if (cleanExisting.length >= 12 && cleanTarget.includes(cleanExisting)) return true
-            return false
+            return cleanExisting === cleanTarget
           })
           if (duplicate) {
-            console.warn(`[FacebookAdapter] Reel with title "${title}" already exists on Facebook Page (ID: ${duplicate.id}). Skipping duplicate upload.`)
+            console.warn(`[FacebookAdapter] Exact Reel with title "${title}" already posted in last 48 hours (ID: ${duplicate.id}). Preserving accepted state.`)
             return {
               channelName: "Facebook",
-              status: "QUEUED_FOR_APPROVAL",
+              status: "API_ACCEPTED",
               externalId: duplicate.id,
               permalink: `https://www.facebook.com/reel/${duplicate.id}/`,
-              message: `Facebook Reel with title "${title}" already exists (ID: ${duplicate.id}); skipped duplicate upload.`,
+              message: `Facebook Reel with title "${title}" already published recently (ID: ${duplicate.id}).`,
             }
           }
         }

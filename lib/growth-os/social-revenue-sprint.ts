@@ -354,19 +354,8 @@ export class SocialRevenueSprintService {
         const reelTitle = infoPost?.title || '🇨🇦 Canadian Business Grants & Non-Dilutive Funding'
         const fullDescription = `${caption}\n\n🔗 Calculate your eligibility:\n👉 ${facebookUrl}\n\n${hashtagLine}`
 
+        // Strict Reel Dispatch: Zero silent fallback to carousels
         const reelResult = await ChannelAdapters.postFacebookReel(reelVideoUrl, reelTitle, fullDescription)
-        if (providerAccepted(reelResult)) return reelResult
-
-        // Resilience Fallback: If Reel video upload fails, fallback to Multi-Photo Carousel
-        const fallbackSlides = infoPost?.media.carouselSlides?.length
-          ? infoPost.media.carouselSlides
-          : INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.format === 'CAROUSEL' && p.media.carouselSlides?.length)?.media.carouselSlides
-
-        if (fallbackSlides && fallbackSlides.length > 0) {
-          console.warn(`[SocialRevenueSprint] Facebook Reel upload failed; falling back to Multi-Photo Carousel...`)
-          return ChannelAdapters.postFacebookMultiPhoto(fallbackSlides, fullCaptionWithTags, facebookUrl)
-        }
-
         return reelResult
       }),
 
