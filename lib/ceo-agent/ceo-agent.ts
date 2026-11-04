@@ -267,122 +267,141 @@ export class CEOAgent {
       }
 
       if (triggerSource === 'cron' || triggerSource === 'on_demand') {
-        let socialSprintInfo: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string } = {}
-        try {
-          const sprintState = await getLatestOperationalState<any>('social-revenue-sprint-september-v1')
-          if (sprintState && sprintState.variants) {
-            // Find the variant that was accepted/published most recently by timestamp
-            let latestVariantId = ''
-            let latestAcceptedTime = 0
-            for (const [vId, receipts] of Object.entries<any>(sprintState.variants)) {
-              if (!receipts || typeof receipts !== 'object') continue
-              for (const ch of Object.values<any>(receipts)) {
-                if (ch?.acceptedAt) {
-                  const t = new Date(ch.acceptedAt).getTime()
-                  if (t > latestAcceptedTime) {
-                    latestAcceptedTime = t
-                    latestVariantId = vId
+        const currentUtcHour = new Date().getUTCHours()
+        // Strict Time-Window Gate: Daily executive briefing must only dispatch
+        // between 13:30 and 15:00 UTC (7:00 PM – 8:30 PM IST), immediately after the 13:30 UTC social sprint finishes.
+        // If an outdated external cron (such as a legacy 08:10 UTC cron-job.org trigger) pings this route,
+        // we audit state cleanly but suppress the email dispatch so the founder NEVER receives premature morning emails.
+        const isScheduledBriefingWindow = currentUtcHour >= 13 && currentUtcHour <= 15
+        const allowEmailDispatch = triggerSource === 'on_demand' || isScheduledBriefingWindow
+
+        if (!allowEmailDispatch) {
+          console.log(`[CEOAgent] Suppressed premature cron briefing email: Current time is ${currentUtcHour}:00 UTC. Daily executive briefing is strictly locked to 13:35 UTC (7:05 PM IST).`)
+          executedActions.push({
+            toolName: 'ceo_daily_report',
+            status: 'SKIPPED_WINDOW',
+            provider: 'time_gate',
+            providerMessageId: '',
+            error: `Current time (${currentUtcHour}:00 UTC) is outside the 13:35 UTC (7:05 PM IST) briefing window. Email suppressed.`,
+          })
+        } else {
+          let socialSprintInfo: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string } = {}
+          try {
+            const sprintState = await getLatestOperationalState<any>('social-revenue-sprint-september-v1')
+            if (sprintState && sprintState.variants) {
+              // Find the variant that was accepted/published most recently by timestamp
+              let latestVariantId = ''
+              let latestAcceptedTime = 0
+              for (const [vId, receipts] of Object.entries<any>(sprintState.variants)) {
+                if (!receipts || typeof receipts !== 'object') continue
+                for (const ch of Object.values<any>(receipts)) {
+                  if (ch?.acceptedAt) {
+                    const t = new Date(ch.acceptedAt).getTime()
+                    if (t > latestAcceptedTime) {
+                      latestAcceptedTime = t
+                      latestVariantId = vId
+                    }
                   }
                 }
               }
-            }
-            if (!latestVariantId) {
-              const keys = Object.keys(sprintState.variants)
-              latestVariantId = keys[keys.length - 1] || ''
-            }
+              if (!latestVariantId) {
+                const keys = Object.keys(sprintState.variants)
+                latestVariantId = keys[keys.length - 1] || ''
+              }
 
-            if (latestVariantId) {
-              const v = sprintState.variants[latestVariantId]
+              if (latestVariantId) {
+                const v = sprintState.variants[latestVariantId]
 
-              // 1. Facebook Link
-              let fbUrl: string | undefined = v?.facebook?.permalink
-              if (!fbUrl && v?.facebook?.externalId) {
-                const eid = String(v.facebook.externalId)
-                if (eid.includes('_')) {
-                  const [page, post] = eid.split('_')
-                  fbUrl = `https://www.facebook.com/${page}/posts/${post}`
-                } else {
-                  fbUrl = `https://www.facebook.com/reel/${eid}/`
+                // 1. Facebook Link
+                let fbUrl: string | undefined = v?.facebook?.permalink
+                if (!fbUrl && v?.facebook?.externalId) {
+                  const eid = String(v.facebook.externalId)
+                  if (eid.includes('_')) {
+                    const [page, post] = eid.split('_')
+                    fbUrl = `https://www.facebook.com/${page}/posts/${post}`
+                  } else {
+                    fbUrl = `https://www.facebook.com/reel/${eid}/`
+                  }
                 }
-              }
-              if (!fbUrl && (v?.facebook?.status === 'API_ACCEPTED' || v?.facebook?.status === 'LIVE_PUBLISHED')) {
-                fbUrl = 'https://www.facebook.com/1077759455417325'
-              }
+                if (!fbUrl && (v?.facebook?.status === 'API_ACCEPTED' || v?.facebook?.status === 'LIVE_PUBLISHED')) {
+                  fbUrl = 'https://www.facebook.com/1077759455417325'
+                }
 
-              // 2. Instagram Link (Never format numeric Graph API media ID as /p/numericId which causes 404)
-              let igUrl: string | undefined = v?.instagram?.permalink
-              if (!igUrl && v?.instagram?.externalId) {
-                const eid = String(v.instagram.externalId)
-                if (/^\d+$/.test(eid)) {
+                // 2. Instagram Link (Never format numeric Graph API media ID as /p/numericId which causes 404)
+                let igUrl: string | undefined = v?.instagram?.permalink
+                if (!igUrl && v?.instagram?.externalId) {
+                  const eid = String(v.instagram.externalId)
+                  if (/^\d+$/.test(eid)) {
+                    igUrl = 'https://www.instagram.com/fsidigital.ca/'
+                  } else {
+                    igUrl = `https://www.instagram.com/p/${eid}/`
+                  }
+                }
+                if (!igUrl && (v?.instagram?.status === 'API_ACCEPTED' || v?.instagram?.status === 'LIVE_PUBLISHED')) {
                   igUrl = 'https://www.instagram.com/fsidigital.ca/'
-                } else {
-                  igUrl = `https://www.instagram.com/p/${eid}/`
                 }
-              }
-              if (!igUrl && (v?.instagram?.status === 'API_ACCEPTED' || v?.instagram?.status === 'LIVE_PUBLISHED')) {
-                igUrl = 'https://www.instagram.com/fsidigital.ca/'
-              }
 
-              // 3. LinkedIn Link
-              let liUrl: string | undefined = v?.linkedin?.permalink
-              if (!liUrl && v?.linkedin?.externalId) {
-                const eid = String(v.linkedin.externalId)
-                if (eid.startsWith('urn:li:') && !eid.includes('carousel')) {
-                  liUrl = `https://www.linkedin.com/feed/update/${eid}/`
-                } else {
+                // 3. LinkedIn Link
+                let liUrl: string | undefined = v?.linkedin?.permalink
+                if (!liUrl && v?.linkedin?.externalId) {
+                  const eid = String(v.linkedin.externalId)
+                  if (eid.startsWith('urn:li:') && !eid.includes('carousel')) {
+                    liUrl = `https://www.linkedin.com/feed/update/${eid}/`
+                  } else {
+                    liUrl = 'https://www.linkedin.com/company/fsidigital/'
+                  }
+                }
+                if (!liUrl) {
                   liUrl = 'https://www.linkedin.com/company/fsidigital/'
                 }
-              }
-              if (!liUrl) {
-                liUrl = 'https://www.linkedin.com/company/fsidigital/'
-              }
 
-              // 4. YouTube Link
-              let ytUrl: string | undefined = v?.youtube?.permalink
-              if (!ytUrl && v?.youtube?.externalId) {
-                ytUrl = `https://youtube.com/shorts/${v.youtube.externalId}`
-              }
-              if (!ytUrl && (v?.youtube?.status === 'API_ACCEPTED' || v?.youtube?.status === 'LIVE_PUBLISHED')) {
-                ytUrl = 'https://www.youtube.com/@fsidigital'
-              }
+                // 4. YouTube Link
+                let ytUrl: string | undefined = v?.youtube?.permalink
+                if (!ytUrl && v?.youtube?.externalId) {
+                  ytUrl = `https://youtube.com/shorts/${v.youtube.externalId}`
+                }
+                if (!ytUrl && (v?.youtube?.status === 'API_ACCEPTED' || v?.youtube?.status === 'LIVE_PUBLISHED')) {
+                  ytUrl = 'https://www.youtube.com/@fsidigital'
+                }
 
-              socialSprintInfo = {
-                variantId: latestVariantId,
-                fbUrl,
-                igUrl,
-                liUrl,
-                ytUrl,
+                socialSprintInfo = {
+                  variantId: latestVariantId,
+                  fbUrl,
+                  igUrl,
+                  liUrl,
+                  ytUrl,
+                }
               }
             }
+          } catch {
+            // Graceful fallback
           }
-        } catch {
-          // Graceful fallback
+
+          const emailHtml = this.formatExecutiveHtml({
+            runId,
+            scoreboard,
+            revenue,
+            todayKPIs,
+            highIntentLeads: todaysHighIntentLeads,
+            socialSprint: socialSprintInfo,
+            briefText,
+          })
+
+          const report = await sendEmail({
+            to: process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca',
+            subject: `👑 FSI Digital — Daily Executive Briefing (7:05 PM IST): $${revenue.verified30DayRevenueUSD.toFixed(2)} Sprint Rev | ${todaysHighIntentLeads.length} High-Intent Leads | Operations Healthy`,
+            html: emailHtml,
+            text: briefText,
+            tagType: 'ceo-daily-report',
+          })
+          executedActions.push({
+            toolName: 'ceo_daily_report',
+            status: report.success && report.providerMessageId ? 'PROVIDER_ACCEPTED' : 'FAILED',
+            provider: report.provider || '',
+            providerMessageId: report.providerMessageId || '',
+            error: report.error || '',
+          })
         }
-
-        const emailHtml = this.formatExecutiveHtml({
-          runId,
-          scoreboard,
-          revenue,
-          todayKPIs,
-          highIntentLeads: todaysHighIntentLeads,
-          socialSprint: socialSprintInfo,
-          briefText,
-        })
-
-        const report = await sendEmail({
-          to: process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-          subject: `👑 FSI Digital — Daily Executive Briefing (7:05 PM IST): $${revenue.verified30DayRevenueUSD.toFixed(2)} Sprint Rev | ${todaysHighIntentLeads.length} High-Intent Leads | Operations Healthy`,
-          html: emailHtml,
-          text: briefText,
-          tagType: 'ceo-daily-report',
-        })
-        executedActions.push({
-          toolName: 'ceo_daily_report',
-          status: report.success && report.providerMessageId ? 'PROVIDER_ACCEPTED' : 'FAILED',
-          provider: report.provider || '',
-          providerMessageId: report.providerMessageId || '',
-          error: report.error || '',
-        })
       }
 
       const specialistReports = { revenue, growth, sales, product, queuedSignals }
