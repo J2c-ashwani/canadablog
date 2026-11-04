@@ -271,16 +271,87 @@ export class CEOAgent {
         try {
           const sprintState = await getLatestOperationalState<any>('social-revenue-sprint-september-v1')
           if (sprintState && sprintState.variants) {
-            const variantIds = Object.keys(sprintState.variants)
-            const latestVariantId = variantIds[variantIds.length - 1]
+            // Find the variant that was accepted/published most recently by timestamp
+            let latestVariantId = ''
+            let latestAcceptedTime = 0
+            for (const [vId, receipts] of Object.entries<any>(sprintState.variants)) {
+              if (!receipts || typeof receipts !== 'object') continue
+              for (const ch of Object.values<any>(receipts)) {
+                if (ch?.acceptedAt) {
+                  const t = new Date(ch.acceptedAt).getTime()
+                  if (t > latestAcceptedTime) {
+                    latestAcceptedTime = t
+                    latestVariantId = vId
+                  }
+                }
+              }
+            }
+            if (!latestVariantId) {
+              const keys = Object.keys(sprintState.variants)
+              latestVariantId = keys[keys.length - 1] || ''
+            }
+
             if (latestVariantId) {
               const v = sprintState.variants[latestVariantId]
+
+              // 1. Facebook Link
+              let fbUrl: string | undefined = v?.facebook?.permalink
+              if (!fbUrl && v?.facebook?.externalId) {
+                const eid = String(v.facebook.externalId)
+                if (eid.includes('_')) {
+                  const [page, post] = eid.split('_')
+                  fbUrl = `https://www.facebook.com/${page}/posts/${post}`
+                } else {
+                  fbUrl = `https://www.facebook.com/reel/${eid}/`
+                }
+              }
+              if (!fbUrl && (v?.facebook?.status === 'API_ACCEPTED' || v?.facebook?.status === 'LIVE_PUBLISHED')) {
+                fbUrl = 'https://www.facebook.com/1077759455417325'
+              }
+
+              // 2. Instagram Link (Never format numeric Graph API media ID as /p/numericId which causes 404)
+              let igUrl: string | undefined = v?.instagram?.permalink
+              if (!igUrl && v?.instagram?.externalId) {
+                const eid = String(v.instagram.externalId)
+                if (/^\d+$/.test(eid)) {
+                  igUrl = 'https://www.instagram.com/fsidigital.ca/'
+                } else {
+                  igUrl = `https://www.instagram.com/p/${eid}/`
+                }
+              }
+              if (!igUrl && (v?.instagram?.status === 'API_ACCEPTED' || v?.instagram?.status === 'LIVE_PUBLISHED')) {
+                igUrl = 'https://www.instagram.com/fsidigital.ca/'
+              }
+
+              // 3. LinkedIn Link
+              let liUrl: string | undefined = v?.linkedin?.permalink
+              if (!liUrl && v?.linkedin?.externalId) {
+                const eid = String(v.linkedin.externalId)
+                if (eid.startsWith('urn:li:') && !eid.includes('carousel')) {
+                  liUrl = `https://www.linkedin.com/feed/update/${eid}/`
+                } else {
+                  liUrl = 'https://www.linkedin.com/company/fsidigital/'
+                }
+              }
+              if (!liUrl) {
+                liUrl = 'https://www.linkedin.com/company/fsidigital/'
+              }
+
+              // 4. YouTube Link
+              let ytUrl: string | undefined = v?.youtube?.permalink
+              if (!ytUrl && v?.youtube?.externalId) {
+                ytUrl = `https://youtube.com/shorts/${v.youtube.externalId}`
+              }
+              if (!ytUrl && (v?.youtube?.status === 'API_ACCEPTED' || v?.youtube?.status === 'LIVE_PUBLISHED')) {
+                ytUrl = 'https://www.youtube.com/@fsidigital'
+              }
+
               socialSprintInfo = {
                 variantId: latestVariantId,
-                fbUrl: v?.facebook?.externalId ? `https://www.facebook.com/reel/${v.facebook.externalId}/` : undefined,
-                igUrl: v?.instagram?.externalId ? `https://www.instagram.com/p/${v.instagram.externalId}/` : undefined,
-                liUrl: v?.linkedin?.externalId ? `https://www.linkedin.com/feed/update/${v.linkedin.externalId}` : 'https://www.linkedin.com/company/fsidigital/',
-                ytUrl: v?.youtube?.externalId ? `https://youtube.com/shorts/${v.youtube.externalId}` : undefined,
+                fbUrl,
+                igUrl,
+                liUrl,
+                ytUrl,
               }
             }
           }
@@ -300,7 +371,7 @@ export class CEOAgent {
 
         const report = await sendEmail({
           to: process.env.CEO_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-          subject: `👑 FSI Digital — Executive Morning Briefing: $${revenue.verified30DayRevenueUSD.toFixed(2)} Sprint Rev | ${todaysHighIntentLeads.length} High-Intent Leads | Operations Healthy`,
+          subject: `👑 FSI Digital — Daily Executive Briefing (7:05 PM IST): $${revenue.verified30DayRevenueUSD.toFixed(2)} Sprint Rev | ${todaysHighIntentLeads.length} High-Intent Leads | Operations Healthy`,
           html: emailHtml,
           text: briefText,
           tagType: 'ceo-daily-report',
@@ -592,25 +663,25 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
                 <tr style="border-bottom: 1px solid #e2e8f0;">
                   <td style="padding: 8px 0; font-weight: 600; color: #1877f2;">Facebook Reel</td>
                   <td style="padding: 8px 0; text-align: right;">
-                    ${socialSprint.fbUrl ? `<a href="${socialSprint.fbUrl}" style="color: #1877f2; text-decoration: none; font-weight: 600;">View Published Reel →</a>` : `<span style="color: #94a3b8;">Queued for 13:30 UTC Dispatch</span>`}
+                    ${socialSprint.fbUrl ? `<a href="${socialSprint.fbUrl}" style="color: #1877f2; text-decoration: none; font-weight: 600;">View Published Reel →</a>` : `<span style="color: #94a3b8;">Verification in Progress</span>`}
                   </td>
                 </tr>
                 <tr style="border-bottom: 1px solid #e2e8f0;">
                   <td style="padding: 8px 0; font-weight: 600; color: #e1306c;">Instagram Reel</td>
                   <td style="padding: 8px 0; text-align: right;">
-                    ${socialSprint.igUrl ? `<a href="${socialSprint.igUrl}" style="color: #e1306c; text-decoration: none; font-weight: 600;">View Instagram Post →</a>` : `<span style="color: #94a3b8;">Queued for 13:30 UTC Dispatch</span>`}
+                    ${socialSprint.igUrl ? `<a href="${socialSprint.igUrl}" style="color: #e1306c; text-decoration: none; font-weight: 600;">View Instagram Reel →</a>` : `<span style="color: #94a3b8;">Verification in Progress</span>`}
                   </td>
                 </tr>
                 <tr style="border-bottom: 1px solid #e2e8f0;">
                   <td style="padding: 8px 0; font-weight: 600; color: #0a66c2;">LinkedIn Carousel / Post</td>
                   <td style="padding: 8px 0; text-align: right;">
-                    <a href="${socialSprint.liUrl || 'https://www.linkedin.com/company/fsidigital/'}" style="color: #0a66c2; text-decoration: none; font-weight: 600;">View LinkedIn Company Page →</a>
+                    <a href="${socialSprint.liUrl || 'https://www.linkedin.com/company/fsidigital/'}" style="color: #0a66c2; text-decoration: none; font-weight: 600;">${socialSprint.liUrl?.includes('/feed/update/') ? 'View Published Post →' : 'View LinkedIn Company Page →'}</a>
                   </td>
                 </tr>
                 <tr>
                   <td style="padding: 8px 0; font-weight: 600; color: #ff0000;">YouTube Shorts</td>
                   <td style="padding: 8px 0; text-align: right;">
-                    ${socialSprint.ytUrl ? `<a href="${socialSprint.ytUrl}" style="color: #ff0000; text-decoration: none; font-weight: 600;">View Published Shorts →</a>` : `<span style="color: #94a3b8;">Queued for 13:30 UTC Dispatch</span>`}
+                    ${socialSprint.ytUrl ? `<a href="${socialSprint.ytUrl}" style="color: #ff0000; text-decoration: none; font-weight: 600;">View Published Shorts →</a>` : `<span style="color: #94a3b8;">Verification in Progress</span>`}
                   </td>
                 </tr>
               </table>

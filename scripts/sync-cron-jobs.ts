@@ -36,9 +36,9 @@ const DESIRED_JOBS: DesiredCronJob[] = [
   {
     title: 'FSI - CEO OS Executive Run',
     url: `${PRODUCTION_BASE_URL}/api/ceo/run`,
-    schedule: { hours: [8], minutes: [10], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
-    humanSchedule: 'Daily at 08:10 UTC',
-    purpose: 'Executive revenue audit, leakage detection, & outcome verification'
+    schedule: { hours: [13], minutes: [35], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
+    humanSchedule: 'Daily at 13:35 UTC (7:05 PM IST)',
+    purpose: 'Executive revenue audit, leakage detection, social verification, & daily founder brief'
   },
   {
     title: 'FSI - Growth OS Health Check',

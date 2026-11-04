@@ -13,6 +13,7 @@ type ChannelId = 'linkedin' | 'facebook' | 'instagram' | 'youtube'
 type ChannelReceipt = {
   status: ChannelPublishResult['status']
   externalId: string
+  permalink?: string
   acceptedAt: string
   message: string
 }
@@ -278,6 +279,7 @@ export class SocialRevenueSprintService {
           receipts[channel] = {
             status: result.status,
             externalId: result.externalId || '',
+            permalink: result.permalink || '',
             acceptedAt,
             message: result.message,
           }
@@ -403,6 +405,7 @@ export class SocialRevenueSprintService {
             channelName: 'YouTube',
             status: result.success ? 'LIVE_PUBLISHED' : 'QUEUED_FOR_APPROVAL',
             externalId: result.videoId || '',
+            permalink: result.videoUrl || '',
             message: result.success
               ? `YouTube Short published live: ${result.videoUrl}`
               : `YouTube upload: ${result.error || 'Pending credentials or processing'}`,

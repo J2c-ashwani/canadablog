@@ -181,10 +181,15 @@ export class ChannelAdapters {
         }
       }
 
+      const permalink = externalId && externalId.startsWith('urn:li:') && !externalId.includes('carousel')
+        ? `https://www.linkedin.com/feed/update/${externalId}/`
+        : 'https://www.linkedin.com/company/fsidigital/'
+
       return {
         channelName: "LinkedIn",
         status: "API_ACCEPTED",
         externalId,
+        permalink,
         message: `LinkedIn accepted the post via /rest/posts API; public publication has not been independently verified.`,
       }
     } catch (err: any) {
@@ -324,10 +329,15 @@ export class ChannelAdapters {
         || response.headers.get('location')
         || ''
 
+      const permalink = externalId && externalId.startsWith('urn:li:') && !externalId.includes('carousel')
+        ? `https://www.linkedin.com/feed/update/${externalId}/`
+        : 'https://www.linkedin.com/company/fsidigital/'
+
       return {
         channelName: "LinkedIn",
         status: "API_ACCEPTED",
         externalId: externalId || 'urn:li:share:carousel',
+        permalink,
         message: `LinkedIn accepted the multi-slide carousel (${imageUrns.length} slides) via /rest/posts API.`,
       }
     } catch (err: any) {

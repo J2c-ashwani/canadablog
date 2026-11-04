@@ -5,6 +5,10 @@
       "schedule": "30 13 * * *"
     },
     {
+      "path": "/api/ceo/run",
+      "schedule": "35 13 * * *"
+    },
+    {
       "path": "/api/cron/process-reactivation-campaign",
       "schedule": "0 15 * * *"
     }

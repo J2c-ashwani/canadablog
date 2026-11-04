@@ -64,7 +64,7 @@ async function runCronForensicAudit() {
       cronName: 'CEO OS Executive Run',
       endpoint: '/api/ceo/run',
       provider: 'cron-job.org',
-      frequency: 'Daily 08:00 UTC + 24x7 Events',
+      frequency: 'Daily 13:35 UTC (7:05 PM IST) + 24x7 Events',
       purpose: 'Executive revenue audit, leakage detection, & outcome verification',
       authMethod: 'validateCronAuth (Bearer / Header / ?secret)',
       secretVariable: 'CRON_SECRET',
