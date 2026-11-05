@@ -21,7 +21,9 @@ export function isTestOrInternalContact(contact: CommercialContact) {
     || identity.includes('audit test')
     || identity.includes('alert-nurture-test')
     || identity.includes('sukashwanikumar')
-    || identity.includes('ashwani kumar');
+    || identity.includes('ashwani kumar')
+    || identity.includes('artit@egoblockchain.com')
+    || identity.includes('@egoblockchain.com');
 }
 
 /** Keep automated commercial contact to one provider-accepted message per 48h. */

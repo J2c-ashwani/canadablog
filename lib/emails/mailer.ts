@@ -21,6 +21,24 @@ function extractEmailAddress(value?: string): string {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(candidate) ? candidate : '';
 }
 
+/**
+ * Permanent transport-level suppression list (Zero emails under any circumstance)
+ */
+export const GLOBAL_SUPPRESSED_EMAILS = new Set([
+  'artit@egoblockchain.com',
+]);
+
+export const GLOBAL_SUPPRESSED_DOMAINS = [
+  '@egoblockchain.com',
+];
+
+export function isPermanentlySuppressed(email?: string): boolean {
+  if (!email) return false;
+  const lower = email.toLowerCase().trim();
+  if (GLOBAL_SUPPRESSED_EMAILS.has(lower)) return true;
+  return GLOBAL_SUPPRESSED_DOMAINS.some(domain => lower.endsWith(domain));
+}
+
 const PLACEHOLDERS = new Set([
   'n/a', 'n/a.', 'not provided', 'not_provided', 'not-provided',
   'unknown', 'none', 'null', 'undefined', 'n/a province', 'na',
@@ -342,6 +360,13 @@ export async function sendEmail({
   forceResend?: boolean;
   preferProvider?: 'resend' | 'brevo';
 }): Promise<{ success: boolean; error?: string; skipped?: boolean; provider?: string; providerMessageId?: string; actionId?: string }> {
+  // Transport-level permanent suppression guard
+  const targetEmail = extractEmailAddress(to) || to.toLowerCase().trim();
+  if (isPermanentlySuppressed(targetEmail)) {
+    console.warn(`🛑 [SUPPRESSION] Permanently blocked outbound email to ${targetEmail} [tag:${tagType}]`);
+    return { success: false, skipped: true, error: 'Recipient is permanently suppressed (DO NOT CONTACT).' };
+  }
+
   // Check for global mock (used to compile previews in Next.js ESM context)
   if (typeof global !== "undefined" && (global as any).mockSendEmailActive) {
     if ((global as any).mockSendEmailCallback) {

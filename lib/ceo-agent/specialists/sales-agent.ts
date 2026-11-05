@@ -283,7 +283,9 @@ export function isInternalOrTestLead(email?: string): boolean {
     lower.includes('join2campus') ||
     lower.includes('fsidigital') ||
     lower.startsWith('test@') ||
-    lower.includes('@example.com')
+    lower.includes('@example.com') ||
+    lower.includes('artit@egoblockchain.com') ||
+    lower.endsWith('@egoblockchain.com')
   )
 }
 
@@ -845,6 +847,18 @@ export class SalesAgent {
         }
 
         // 2. Dispatch Customer Email
+        // Cold intake leads are managed exclusively by MultiTouchReactivationEngine
+        // ("The Funding Leak Receipt" 3-touch sequence) to prevent duplicate outreach and guarantee template integrity.
+        if (!isVipCustomer && !isReportBuyer) {
+          CommercialActionTracker.recordBlockedAction(
+            'Sales',
+            'DEFERRED_TO_REACTIVATION_ENGINE',
+            lead.email,
+            'Cold lead outreach deferred exclusively to MultiTouchReactivationEngine'
+          );
+          continue;
+        }
+
         const emailActionId = generateActionId('Sales');
         const token = lead.unsubscribeToken || `unsub_${Buffer.from(lead.email).toString('hex').substring(0, 16)}`;
         const unsubUrl = `https://www.fsidigital.ca/api/subscribe/unsubscribe?email=${encodeURIComponent(lead.email)}&token=${encodeURIComponent(token)}`;
