@@ -852,7 +852,7 @@ export class SalesAgent {
         if (!isVipCustomer && !isReportBuyer) {
           CommercialActionTracker.recordBlockedAction(
             'Sales',
-            'DEFERRED_TO_REACTIVATION_ENGINE',
+            'RISK_RULE',
             lead.email,
             'Cold lead outreach deferred exclusively to MultiTouchReactivationEngine'
           );
