@@ -1,5 +1,5 @@
 export const revalidate = false; // Persistent static cache — prevents daily 24h ISR eviction and fast origin transfer across 6,150 pages
-export const dynamicParams = true; // Allows on-demand generation for long-tail hubs while pre-rendering Tier A/B hubs
+export const dynamicParams = false; // Restrict to statically pre-rendered Tier A/B hubs — prevents on-demand Lambda invocations from bot crawls
 import React from 'react';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
