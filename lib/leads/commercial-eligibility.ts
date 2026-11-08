@@ -22,6 +22,8 @@ export function isTestOrInternalContact(contact: CommercialContact) {
     || identity.includes('alert-nurture-test')
     || identity.includes('sukashwanikumar')
     || identity.includes('ashwani kumar')
+    || identity.includes('sona2015harsh@gmail.com')
+    || identity.includes('sona2015harsh')
     || identity.includes('artit@egoblockchain.com')
     || identity.includes('@egoblockchain.com');
 }

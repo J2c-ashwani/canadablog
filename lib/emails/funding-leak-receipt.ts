@@ -117,7 +117,12 @@ export function renderFundingLeakReceiptHtml({
   dateFormatted: string;
   productOffer?: ProductOfferRecommendation;
 }): string {
-  const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && firstName && (
+    rawCompany.toLowerCase() === firstName.toLowerCase() ||
+    rawCompany.toLowerCase().startsWith(firstName.toLowerCase() + ' ')
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : 'Your Company';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
   const offer = productOffer || {
@@ -361,7 +366,13 @@ export async function sendFundingLeakReceiptEmail({
   leadProfile,
 }: FundingLeakReceiptInput) {
   const firstName = getFirstName(name);
-  const cleanCompany = cleanCompanyName(companyName);
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && (
+    (firstName && rawCompany.toLowerCase() === firstName.toLowerCase()) ||
+    (firstName && rawCompany.toLowerCase().startsWith(firstName.toLowerCase() + ' ')) ||
+    (name && rawCompany.toLowerCase() === name.toLowerCase())
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : '';
   const tokenParam = loginToken && loginToken !== 'N/A' ? `token=${loginToken}&` : '';
 
   const resolvedOffer = productOffer || (leadProfile ? resolveRecommendedProduct(leadProfile) : {

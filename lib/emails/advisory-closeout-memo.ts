@@ -59,7 +59,12 @@ export function renderAdvisoryCloseoutMemoHtml({
   productOffer?: ProductOfferRecommendation;
 }): string {
   const cleanFirst = getFirstName(firstName);
-  const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && cleanFirst && (
+    rawCompany.toLowerCase() === cleanFirst.toLowerCase() ||
+    rawCompany.toLowerCase().startsWith(cleanFirst.toLowerCase() + ' ')
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : 'Your Company';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
   const greeting = cleanFirst && cleanFirst !== 'Founder' ? `Hi ${escapeHtml(cleanFirst)},` : `Hello,`;
@@ -175,7 +180,12 @@ export function renderAdvisoryCloseoutMemoText({
   productOffer?: ProductOfferRecommendation;
 }): string {
   const cleanFirst = getFirstName(firstName);
-  const cleanCompany = cleanCompanyName(companyName) || 'Your Company';
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && cleanFirst && (
+    rawCompany.toLowerCase() === cleanFirst.toLowerCase() ||
+    rawCompany.toLowerCase().startsWith(cleanFirst.toLowerCase() + ' ')
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : 'Your Company';
   const cleanProv = cleanRegionName(province);
   const greeting = cleanFirst && cleanFirst !== 'Founder' ? `Hi ${cleanFirst},` : `Hello,`;
   const offer = productOffer || {
@@ -230,7 +240,13 @@ export async function sendAdvisoryCloseoutMemoEmail({
   leadProfile,
 }: AdvisoryCloseoutMemoInput) {
   const firstName = getFirstName(name);
-  const cleanCompany = cleanCompanyName(companyName);
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && (
+    (firstName && rawCompany.toLowerCase() === firstName.toLowerCase()) ||
+    (firstName && rawCompany.toLowerCase().startsWith(firstName.toLowerCase() + ' ')) ||
+    (name && rawCompany.toLowerCase() === name.toLowerCase())
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : '';
   const tokenParam = loginToken && loginToken !== 'N/A' ? `token=${loginToken}&` : '';
 
   const resolvedOffer = productOffer || (leadProfile ? resolveRecommendedProduct(leadProfile) : {

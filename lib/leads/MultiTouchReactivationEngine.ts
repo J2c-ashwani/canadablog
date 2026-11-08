@@ -161,38 +161,69 @@ export class MultiTouchReactivationEngine {
 
     const INVALID_COMPANY_NAMES = new Set([
       'not provided', 'not_provided', 'not-provided', 'n/a', 'na', 'unknown',
-      'none', 'null', 'undefined', 'founder', 'blank', 'n/a province'
+      'none', 'null', 'undefined', 'founder', 'blank', 'n/a province', 'your company', 'your enterprise'
     ]);
 
-    function resolveCompanyName(companyRaw?: string, nameRaw?: string, email?: string): string {
-      const cleanComp = (companyRaw || '').trim();
-      if (cleanComp && !INVALID_COMPANY_NAMES.has(cleanComp.toLowerCase())) {
-        return cleanComp;
-      }
-      const cleanName = (nameRaw || '').trim();
-      if (cleanName && !INVALID_COMPANY_NAMES.has(cleanName.toLowerCase()) && (
-        cleanName.includes(' ') ||
-        cleanName.toLowerCase().includes('inc') ||
-        cleanName.toLowerCase().includes('llc') ||
-        cleanName.toLowerCase().includes('ltd') ||
-        cleanName.toLowerCase().includes('farms') ||
-        cleanName.toLowerCase().includes('pharmacy') ||
-        cleanName.toLowerCase().includes('foundation')
-      )) {
-        return cleanName;
-      }
+    const BUSINESS_INDICATORS = [
+      'inc', 'llc', 'ltd', 'corp', 'co', 'farms', 'farm', 'pharmacy',
+      'foundation', 'studios', 'studio', 'group', 'holdings', 'technologies',
+      'technology', 'tech', 'services', 'solutions', 'consulting', 'enterprises',
+      'enterprise', 'capital', 'ventures', 'venture', 'systems', 'system',
+      'labs', 'lab', 'media', 'agency', 'logistics', 'energy', 'health',
+      'care', 'foods', 'food', 'robotics', 'software', 'app', 'apps',
+      'security', 'digital', 'industries', 'manufacturing', 'consultancy'
+    ];
+
+    const COMMON_MAILERS = new Set([
+      'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
+      'icloud.com', 'aol.com', 'pm.me', 'proton.me', 'protonmail.com',
+      'live.com', 'msn.com', 'comcast.net', 'sbcglobal.net', 'verizon.net',
+      'mail.com', 'zoho.com', 'gmx.com', 'yandex.com'
+    ]);
+
+    function hasBusinessKeyword(text: string): boolean {
+      const words = text.toLowerCase().split(/[\s,.-]+/);
+      return words.some(w => BUSINESS_INDICATORS.includes(w.replace(/[^a-z]/g, '')));
+    }
+
+    function extractDomainBrand(email?: string): string {
       if (email && email.includes('@')) {
-        const domain = email.split('@')[1].toLowerCase();
-        const commonMailers = new Set([
-          'gmail.com', 'yahoo.com', 'hotmail.com', 'outlook.com',
-          'icloud.com', 'aol.com', 'pm.me', 'proton.me', 'live.com'
-        ]);
-        if (!commonMailers.has(domain)) {
+        const domain = email.split('@')[1].toLowerCase().trim();
+        if (!COMMON_MAILERS.has(domain)) {
           const brand = domain.split('.')[0].replace(/[-_]/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-          return brand;
+          if (brand && !INVALID_COMPANY_NAMES.has(brand.toLowerCase()) && brand.length >= 3) {
+            return brand;
+          }
         }
       }
       return '';
+    }
+
+    function resolveCompanyName(companyRaw?: string, nameRaw?: string, email?: string): string {
+      const cleanComp = (companyRaw || '').trim();
+      const cleanName = (nameRaw || '').trim();
+
+      // If company was explicitly provided and valid
+      if (cleanComp && !INVALID_COMPANY_NAMES.has(cleanComp.toLowerCase())) {
+        // If the company name matches the individual's personal name, only keep it if it contains an actual business indicator
+        if (cleanName && cleanComp.toLowerCase() === cleanName.toLowerCase()) {
+          if (!hasBusinessKeyword(cleanComp)) {
+            return extractDomainBrand(email);
+          }
+        }
+        return cleanComp;
+      }
+
+      // If companyRaw is empty, NEVER use nameRaw unless it explicitly contains a business indicator!
+      // (Normal human names like "Ashwani Kumar" or "Natalie Clyke" must NEVER be used as company names)
+      if (cleanName && !INVALID_COMPANY_NAMES.has(cleanName.toLowerCase())) {
+        if (hasBusinessKeyword(cleanName)) {
+          return cleanName;
+        }
+      }
+
+      // Fall back to corporate email domain if available
+      return extractDomainBrand(email);
     }
 
     for (let i = 1; i < rows.length; i++) {
@@ -200,8 +231,10 @@ export class MultiTouchReactivationEngine {
       const email = (row[emailIndex] || '').toLowerCase().trim();
       if (!email || !email.includes('@')) continue;
 
+      const rawName = (row[nameIndex] || '').trim();
+
       // 1. Purge internal, test, and disposable accounts
-      if (isTestOrInternalContact({ email }) || this.DISPOSABLE_DOMAINS.some(d => email.includes(d))) {
+      if (isTestOrInternalContact({ email, name: rawName }) || this.DISPOSABLE_DOMAINS.some(d => email.includes(d))) {
         skippedInternal++;
         continue;
       }

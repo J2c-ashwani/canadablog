@@ -60,7 +60,12 @@ export function renderIntakeAllocationNoticeHtml({
   productOffer?: ProductOfferRecommendation;
 }): string {
   const cleanFirst = getFirstName(firstName);
-  const cleanCompany = cleanCompanyName(companyName) || 'Your Enterprise';
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && cleanFirst && (
+    rawCompany.toLowerCase() === cleanFirst.toLowerCase() ||
+    rawCompany.toLowerCase().startsWith(cleanFirst.toLowerCase() + ' ')
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : 'Your Enterprise';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
   const displayContact = cleanFirst && cleanFirst !== 'Founder' ? cleanFirst : 'Executive Leadership';
@@ -217,7 +222,12 @@ export function renderIntakeAllocationNoticeText({
   productOffer?: ProductOfferRecommendation;
 }): string {
   const cleanFirst = getFirstName(firstName);
-  const cleanCompany = cleanCompanyName(companyName) || 'Your Enterprise';
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && cleanFirst && (
+    rawCompany.toLowerCase() === cleanFirst.toLowerCase() ||
+    rawCompany.toLowerCase().startsWith(cleanFirst.toLowerCase() + ' ')
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : 'Your Enterprise';
   const cleanProv = cleanRegionName(province);
   const cleanInd = cleanIndustryName(industry);
   const displayContact = cleanFirst && cleanFirst !== 'Founder' ? cleanFirst : 'Executive Leadership';
@@ -281,7 +291,13 @@ export async function sendIntakeAllocationNoticeEmail({
   leadProfile,
 }: IntakeAllocationNoticeInput) {
   const firstName = getFirstName(name);
-  const cleanCompany = cleanCompanyName(companyName);
+  const rawCompany = cleanCompanyName(companyName);
+  const isIndividual = Boolean(rawCompany && (
+    (firstName && rawCompany.toLowerCase() === firstName.toLowerCase()) ||
+    (firstName && rawCompany.toLowerCase().startsWith(firstName.toLowerCase() + ' ')) ||
+    (name && rawCompany.toLowerCase() === name.toLowerCase())
+  ));
+  const cleanCompany = (rawCompany && !isIndividual) ? rawCompany : '';
   const tokenParam = loginToken && loginToken !== 'N/A' ? `token=${loginToken}&` : '';
 
   const resolvedOffer = productOffer || (leadProfile ? resolveRecommendedProduct(leadProfile) : {
