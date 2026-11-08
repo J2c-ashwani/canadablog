@@ -74,6 +74,27 @@ export class MultiTouchReactivationEngine {
     maxTotalLimit?: number;
   }): Promise<CampaignExecutionResult> {
     const dryRun = Boolean(options?.dryRun);
+
+    // 🛑 EMERGENCY CAMPAIGN KILL SWITCH (CEO DIRECTIVE)
+    // All automated outbound reactivation campaigns are strictly LOCKED and PAUSED.
+    // Zero outbound emails can be dispatched unless ENABLE_REACTIVATION_CAMPAIGN is explicitly set to 'true'.
+    const isExplicitlyEnabled = process.env.ENABLE_REACTIVATION_CAMPAIGN === 'true';
+    if (!isExplicitlyEnabled && !dryRun) {
+      console.warn('🛑 [MultiTouchReactivationEngine] CAMPAIGN EXECUTION IS LOCKED & PAUSED BY CEO DIRECTIVE. Zero emails dispatched.');
+      return {
+        success: true,
+        dryRun: false,
+        totalLoadedRows: 0,
+        totalQualifiedPool: 0,
+        dispatchedTouch1: 0,
+        dispatchedTouch2: 0,
+        dispatchedTouch3: 0,
+        totalDispatched: 0,
+        dailyQuotaRemaining: 100,
+        receipts: [],
+        errors: ['CAMPAIGN EXECUTION LOCKED BY CEO DIRECTIVE: ENABLE_REACTIVATION_CAMPAIGN is not true.'],
+      };
+    }
     const touch1Limit = options?.touch1Limit ? Math.min(options.touch1Limit, 35) : this.MAX_TOUCH1_DAILY;
     const maxTotalLimit = options?.maxTotalLimit ? Math.min(options.maxTotalLimit, 70) : this.MAX_TOTAL_DAILY;
 
