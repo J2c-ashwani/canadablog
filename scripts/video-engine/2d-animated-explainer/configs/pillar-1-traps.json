@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "pillarId": 1,
+    "title": "The 3 IRAP Grant Traps That Trigger Instant Rejection",
+    "slug": "grant-rejection-traps",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920
+  },
+  "audio": {
+    "script": "Can you pay foreign developers with Canadian government grants? No. The C R A and Eye-rap reject overseas invoices immediately. To qualify, your engineers must be full-time Canadian T4 employees working on domestic soil. Once approved, up to 80 percent of technical salaries flow directly into your company account. Keep your core code in Canada, and check your funding match in 60 seconds at f s i digital dot c a slash calculator.",
+    "voice": "en-CA-LiamNeural",
+    "rate": "+6%",
+    "bgm": "bgm-01.mp3",
+    "bgmVolume": 0.08
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "id": "question-and-reaction",
+      "startTime": 0.0,
+      "endTime": 4.2,
+      "topBadge": "🇨🇦 CANADIAN FOUNDER ALERT",
+      "curiosityCue": "❓",
+      "reactionTime": 1.8
+    },
+    {
+      "index": 2,
+      "id": "correct-misconception",
+      "startTime": 4.2,
+      "endTime": 8.5,
+      "cardHeader": "COMMON STARTUP ASSUMPTION",
+      "cardIcon": "💻 📄",
+      "conceptTitle": "OVERSEAS CONTRACTORS",
+      "conceptSubtitle": "US • India • Europe Dev Invoices",
+      "badgeText": "⚠️ $0.00 REIMBURSEMENT",
+      "crossTime": 5.6
+    },
+    {
+      "index": 3,
+      "id": "explain-mechanism",
+      "startTime": 8.5,
+      "endTime": 14.5,
+      "diagramTitle": "🏛️ THE CANADIAN SOIL MECHANISM",
+      "nodes": [
+        { "icon": "🇨🇦", "title": "Canadian T4 Payroll", "sub": "Developers physically resident in Canada", "color": "#38BDF8" },
+        { "icon": "⚙️", "title": "NRC IRAP & SR&ED Engine", "sub": "Non-dilutive federal capital review", "color": "#818CF8" },
+        { "icon": "💰", "title": "Up to 80% Non-Repayable Cash", "sub": "Direct bank wire reimbursement", "color": "#34D399" }
+      ],
+      "footnote": "Federal Law: Non-Canadian payroll receives 0% subsidy."
+    },
+    {
+      "index": 4,
+      "id": "follow-movement",
+      "startTime": 14.5,
+      "endTime": 20.5,
+      "pathTitle": "💸 VERIFIED CAPITAL ALLOCATION FLOW",
+      "sourceLabel": "NRC Treasury",
+      "sourceIcon": "🏛️",
+      "destLabel": "Company Account",
+      "destIcon": "🏢",
+      "tokenLabel": "+80% REBATE",
+      "tokenSymbol": "$"
+    },
+    {
+      "index": 5,
+      "id": "reassuring-finish",
+      "startTime": 20.5,
+      "endTime": 27.24,
+      "ctaHeader": "🛡️ FSI DIGITAL · CAPITAL INTELLIGENCE",
+      "ctaUrl": "fsidigital.ca/calculator",
+      "ctaSub": "Check Your Active Canadian Grants in 60s →"
+    }
+  ],
+  "captions": [
+    { "startTime": 0.0, "endTime": 2.1, "text": "Can you pay foreign developers...", "highlight": "foreign developers" },
+    { "startTime": 2.1, "endTime": 4.2, "text": "...with Canadian government grants?", "highlight": "government grants?" },
+    { "startTime": 4.2, "endTime": 6.2, "text": "NO. The CRA and IRAP...", "highlight": "NO." },
+    { "startTime": 6.2, "endTime": 8.5, "text": "...reject overseas invoices immediately.", "highlight": "reject overseas" },
+    { "startTime": 8.5, "endTime": 11.2, "text": "Engineers must be full-time...", "highlight": "full-time" },
+    { "startTime": 11.2, "endTime": 14.5, "text": "...Canadian T4 employees on domestic soil.", "highlight": "Canadian T4 employees" },
+    { "startTime": 14.5, "endTime": 17.2, "text": "Up to 80% of technical salaries...", "highlight": "80% of technical salaries" },
+    { "startTime": 17.2, "endTime": 20.5, "text": "...flow directly into your company account.", "highlight": "directly into your account." },
+    { "startTime": 20.5, "endTime": 23.5, "text": "Keep your core code in Canada...", "highlight": "core code in Canada" },
+    { "startTime": 23.5, "endTime": 27.24, "text": "...and claim your full government grant.", "highlight": "claim your full government grant." }
+  ]
+}

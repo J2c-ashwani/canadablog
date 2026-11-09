@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "pillarId": 2,
+    "title": "Grant Stacking Secrets: Legally Combine IRAP and SR&ED",
+    "slug": "grant-stacking-secrets",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920
+  },
+  "audio": {
+    "script": "Can you stack Eye-rap and S R and E D on the same developer? No, you cannot double-dip the exact same dollar twice. The C R A claws back duplicate claims immediately. Here is the legal formula: Eye-rap funds up to 80 percent of wages upfront. Then, S R and E D refunds 35 percent on remaining unpaid salary. Stacked correctly, Canadian tech companies legally recover over 87 percent of engineering payroll. Check your funding match in 60 seconds at f s i digital dot c a slash calculator.",
+    "voice": "en-CA-LiamNeural",
+    "rate": "+14%",
+    "bgm": "bgm-02.mp3",
+    "bgmVolume": 0.08
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "id": "question-and-reaction",
+      "startTime": 0.0,
+      "endTime": 4.5,
+      "topBadge": "🇨🇦 TAX & GRANT STACKING QUERY",
+      "curiosityCue": "⚡",
+      "reactionTime": 2.0
+    },
+    {
+      "index": 2,
+      "id": "correct-misconception",
+      "startTime": 4.5,
+      "endTime": 9.0,
+      "cardHeader": "FATAL AUDIT TRAP",
+      "cardIcon": "⚠️ 💸",
+      "conceptTitle": "DOUBLE-DIPPING CLAIMS",
+      "conceptSubtitle": "Claiming 100% Wage Under Both",
+      "badgeText": "🚨 100% GRANT CLAWBACK",
+      "crossTime": 6.2
+    },
+    {
+      "index": 3,
+      "id": "explain-mechanism",
+      "startTime": 9.0,
+      "endTime": 15.0,
+      "diagramTitle": "📐 THE LEGAL 2-TIER FORMULA",
+      "nodes": [
+        { "icon": "1️⃣", "title": "Tier 1: NRC IRAP Wage Grant", "sub": "80% direct non-repayable cash upfront", "color": "#38BDF8" },
+        { "icon": "2️⃣", "title": "Tier 2: SR&ED Tax Credits", "sub": "35% refundable cash on remaining 20%", "color": "#818CF8" },
+        { "icon": "🎯", "title": "Total Net Recovery: 87%", "sub": "Over $87,000 cash back per $100K salary", "color": "#34D399" }
+      ],
+      "footnote": "CRA Verified: Stack sequentially to eliminate audit penalty."
+    },
+    {
+      "index": 4,
+      "id": "follow-movement",
+      "startTime": 15.0,
+      "endTime": 21.0,
+      "pathTitle": "📈 DUAL-STREAM CASH RECOVERY",
+      "sourceLabel": "Federal Stack",
+      "sourceIcon": "🏛️",
+      "destLabel": "Company Treasury",
+      "destIcon": "🏢",
+      "tokenLabel": "87% CASH YIELD",
+      "tokenSymbol": "%"
+    },
+    {
+      "index": 5,
+      "id": "reassuring-finish",
+      "startTime": 21.0,
+      "endTime": 27.5,
+      "ctaHeader": "🛡️ FSI DIGITAL · STACKING SIMULATOR",
+      "ctaUrl": "fsidigital.ca/calculator",
+      "ctaSub": "Simulate Your Stacking Formula in 60s →"
+    }
+  ],
+  "captions": [
+    { "startTime": 0.0, "endTime": 2.2, "text": "Can you stack IRAP and SR&ED...", "highlight": "stack IRAP and SR&ED" },
+    { "startTime": 2.2, "endTime": 4.5, "text": "...on the exact same developer?", "highlight": "exact same developer?" },
+    { "startTime": 4.5, "endTime": 6.8, "text": "NO. You cannot double-dip...", "highlight": "cannot double-dip" },
+    { "startTime": 6.8, "endTime": 9.0, "text": "...the exact same dollar twice.", "highlight": "same dollar twice." },
+    { "startTime": 9.0, "endTime": 12.0, "text": "IRAP funds 80% upfront...", "highlight": "IRAP funds 80%" },
+    { "startTime": 12.0, "endTime": 15.0, "text": "...SR&ED refunds 35% on the rest.", "highlight": "SR&ED refunds 35%" },
+    { "startTime": 15.0, "endTime": 18.0, "text": "Top Canadian tech firms...", "highlight": "Canadian tech firms" },
+    { "startTime": 18.0, "endTime": 21.0, "text": "...legally recover over 87% of wages.", "highlight": "recover over 87% of wages." },
+    { "startTime": 21.0, "endTime": 24.2, "text": "Simulate your funding stack...", "highlight": "Simulate your funding stack" },
+    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+  ]
+}

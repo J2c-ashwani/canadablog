@@ -214,27 +214,27 @@ export class SocialRevenueSprintService {
     })
 
     // 2. ENDLESS ENGINE: When every variant in the active library has been posted once,
-    // do NOT stop or return COMPLETE. Instead, activate the 60-Day Evergreen Rotation:
-    // Select the variant whose last publication was longest ago (and >= 60 days in the past).
-    // This ensures continuous, non-stop daily posting 7 days a week forever without duplicate spam.
+    // do NOT stop or return COMPLETE. Instead, activate the 2D Explainer Evergreen Rotation:
+    // Select the variant whose last publication was longest ago (and >= MIN_VARIANT_GAP_MS).
+    // This ensures continuous, non-stop daily posting 7 days a week forever without breaking the chain.
     if (!variant) {
-      const SIXTY_DAYS_MS = 60 * 24 * 60 * 60 * 1000
+      const minGap = MIN_VARIANT_GAP_MS
       const evergreenCandidates = orderedVariants
         .map((candidate) => {
           const receipts = state.variants[candidate.id] || {}
           const acceptedTime = new Date(receipts.facebook?.acceptedAt || 0).getTime()
           return { candidate, acceptedTime }
         })
-        .filter((item) => item.candidate.id !== 'sep-product-ladder-v1' && (now - item.acceptedTime >= SIXTY_DAYS_MS))
+        .filter((item) => (now - item.acceptedTime >= minGap))
         .sort((a, b) => a.acceptedTime - b.acceptedTime)
 
       if (evergreenCandidates.length > 0) {
         variant = evergreenCandidates[0].candidate
         isEvergreen = true
-        console.log(`[SocialRevenueSprint] Endless Engine: Selected evergreen variant "${variant.id}" (last published ${((now - evergreenCandidates[0].acceptedTime) / (24 * 60 * 60 * 1000)).toFixed(1)} days ago).`)
+        console.log(`[SocialRevenueSprint] Endless Engine: Selected evergreen 2D explainer variant "${variant.id}" (last published ${((now - evergreenCandidates[0].acceptedTime) / (24 * 60 * 60 * 1000)).toFixed(1)} days ago).`)
       } else {
-        console.log('[SocialRevenueSprint] All catalog variants published within last 60 days. Waiting for next seasonal refresh or new video render.')
-        return { active: true, decision: 'WAITING_FOR_EXPANDED_CATALOG', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
+        console.log('[SocialRevenueSprint] Waiting for minimum variant gap to elapse before next daily dispatch.')
+        return { active: true, decision: 'WAITING_FOR_NEXT_VARIANT', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
       }
     }
 
@@ -308,23 +308,23 @@ export class SocialRevenueSprintService {
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
-    // 100% REELS: Structured 7-Day Content Rotation across all social channels
+    // 100% REELS: Structured 7-Day Master 2D Animated Explainer Rotation across all social channels
     const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
-      'sep-product-ladder-v1': 'post-reel-irap-innovation',               // 🎬 REEL: IRAP $500K
-      'sep-match-fit-v1': 'post-reel-grant-rejection-traps',              // 🎬 REEL: Top 3 Rejection Traps
-      'sep-action-plan-v1': 'post-reel-digital-adoption',                 // 🎬 REEL: Digital Adoption & CDAP
-      'sep-toolkit-v1': 'post-reel-sred-tax-credits',                     // 🎬 REEL: SR&ED 35% Cash Back
-      'sep-membership-radar-v1': 'post-reel-grant-stacking-secrets',      // 🎬 REEL: The Triple Stacking Playbook
-      'sep-bundle-stacking-v1': 'post-reel-women-grants',                 // 🎬 REEL: Women Entrepreneur Grants $250K
-      'sep-match-costs-v1': 'post-reel-grant-rejection-traps',             // 🎬 REEL: Top 3 Rejection Traps
-      'sep-action-documents-v1': 'post-reel-cleantech',                   // 🎬 REEL: CleanTech & Sustainability Millions
-      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 REEL: How to Legally Stack IRAP & SR&ED
-      'sep-membership-changes-v1': 'post-reel-export-development',        // 🎬 REEL: CanExport Global Expansion $50K
-      'sep-choose-next-step-v1': 'post-reel-grant-application-checklist', // 🎬 REEL: 4-Point Document Checklist
-      'sep-agri-food-v1': 'post-reel-agri-food-canada-grants',            // 🎬 REEL: Agri-Food & Farming Grants $250K+
-      'sep-alberta-v1': 'post-reel-alberta-business-grants',              // 🎬 REEL: Alberta Innovates & PrairiesCan $5M
-      'sep-ontario-v1': 'post-reel-ontario-innovation',                   // 🎬 REEL: Ontario Skills & Regional Streams
-      'sep-deadlines-v1': 'post-reel-quarterly-grant-deadlines',           // 🎬 REEL: Quarterly Grant Deadlines Countdown
+      'sep-product-ladder-v1': 'post-reel-irap-innovation',               // 🎬 2D REEL: IRAP $500K Innovation Grants
+      'sep-match-fit-v1': 'post-reel-grant-rejection-traps',              // 🎬 2D REEL: Top 3 Rejection Traps
+      'sep-action-plan-v1': 'post-reel-digital-adoption',                 // 🎬 2D REEL: Digital Adoption & CDAP
+      'sep-toolkit-v1': 'post-reel-grant-stacking-secrets',               // 🎬 2D REEL: Legal Grant Stacking Formula
+      'sep-membership-radar-v1': 'post-reel-grant-stacking-secrets',      // 🎬 2D REEL: The Triple Stacking Playbook
+      'sep-bundle-stacking-v1': 'post-reel-women-grants',                 // 🎬 2D REEL: Women Entrepreneur Grants
+      'sep-match-costs-v1': 'post-reel-grant-rejection-traps',             // 🎬 2D REEL: Top 3 Rejection Traps
+      'sep-action-documents-v1': 'post-reel-irap-innovation',             // 🎬 2D REEL: CleanTech & Innovation Grants
+      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 2D REEL: How to Legally Stack IRAP & SR&ED
+      'sep-membership-changes-v1': 'post-reel-agri-food-canada-grants',   // 🎬 2D REEL: Regional & Agri-Food Scale-Up
+      'sep-choose-next-step-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
+      'sep-agri-food-v1': 'post-reel-agri-food-canada-grants',            // 🎬 2D REEL: Agri-Food & Farming Grants
+      'sep-alberta-v1': 'post-reel-agri-food-canada-grants',              // 🎬 2D REEL: Regional Scale-Up Facilities
+      'sep-ontario-v1': 'post-reel-irap-innovation',                      // 🎬 2D REEL: Federal & Provincial Innovation
+      'sep-deadlines-v1': 'post-reel-grant-application-checklist',        // 🎬 2D REEL: 12-Point Compliance Checklist & Deadlines
     }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)

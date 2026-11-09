@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap');
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    width: 1080px;
+    height: 1920px;
+    margin: 0;
+    padding: 0;
+    background: #000000;
+    overflow: hidden;
+  }
+  canvas {
+    width: 1080px;
+    height: 1920px;
+    display: block;
+  }
+</style>
+</head>
+<body>
+<canvas id="stage" width="1080" height="1920"></canvas>
+<script>
+  const canvas = document.getElementById('stage');
+  const ctx = canvas.getContext('2d');
+
+  let config = null;
+  const images = {};
+
+  // Load image helper
+  function loadImage(src) {
+    return new Promise((resolve, reject) => {
+      const img = new Image();
+      img.onload = () => resolve(img);
+      img.onerror = reject;
+      img.src = src;
+    });
+  }
+
+  // Bezier point helper
+  function getBezierPoint(p0, p1, p2, p3, t) {
+    const cx = 3 * (p1.x - p0.x);
+    const bx = 3 * (p2.x - p1.x) - cx;
+    const ax = p3.x - p0.x - cx - bx;
+
+    const cy = 3 * (p1.y - p0.y);
+    const by = 3 * (p2.y - p1.y) - cy;
+    const ay = p3.y - p0.y - cy - by;
+
+    const xt = ax * Math.pow(t, 3) + bx * Math.pow(t, 2) + cx * t + p0.x;
+    const yt = ay * Math.pow(t, 3) + by * Math.pow(t, 2) + cy * t + p0.y;
+
+    return { x: xt, y: yt };
+  }
+
+  window.initEngine = async function(configData, characterAssets) {
+    config = configData;
+    images['pose1-confused'] = await loadImage(characterAssets.pose1);
+    images['pose2-warning'] = await loadImage(characterAssets.pose2);
+    images['pose3-solution'] = await loadImage(characterAssets.pose3);
+    console.log('Engine initialized with config and character assets.');
+  };
+
+  // ─── SCENE 1 & 5: The Founder's Room Background ───
+  function drawRoomBackground(t) {
+    // Wall (soft clean pale grey-cream)
+    ctx.fillStyle = '#E8ECEF';
+    ctx.fillRect(0, 0, 1080, 1420);
+
+    // Modern wood floor
+    ctx.fillStyle = '#C8B9A6';
+    ctx.fillRect(0, 1420, 1080, 500);
+
+    // Floor baseboard trim
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(0, 1400, 1080, 20);
+
+    // Left Window with view outside
+    ctx.save();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(80, 240, 280, 420);
+    ctx.fillStyle = '#BAE6FD'; // Pale blue sky
+    ctx.fillRect(96, 256, 248, 388);
+
+    // Cloud in window (drifts slowly)
+    const cloudOffset = (t * 15) % 300;
+    ctx.fillStyle = '#FFFFFF';
+    ctx.beginPath();
+    ctx.arc(160 + cloudOffset, 380, 40, 0, Math.PI * 2);
+    ctx.arc(200 + cloudOffset, 360, 50, 0, Math.PI * 2);
+    ctx.arc(240 + cloudOffset, 380, 40, 0, Math.PI * 2);
+    ctx.fill();
+
+    // Window frame dividers
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(216, 256, 8, 388);
+    ctx.fillRect(96, 446, 248, 8);
+    ctx.restore();
+
+    // Right Wall Art (Minimalist Canadian Maple Leaf print)
+    ctx.save();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillRect(720, 260, 240, 300);
+    ctx.fillStyle = '#0F172A';
+    ctx.fillRect(730, 270, 220, 280);
+
+    ctx.fillStyle = '#EF4444';
+    ctx.font = '900 80px sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('🍁', 840, 430);
+    ctx.font = '700 24px Plus Jakarta Sans, sans-serif';
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillText('FSI DIGITAL', 840, 500);
+    ctx.restore();
+
+    // Small Wall Shelf with Potted Plant
+    ctx.fillStyle = '#94A3B8';
+    ctx.fillRect(720, 680, 240, 14);
+
+    // Pot
+    ctx.fillStyle = '#EA580C';
+    ctx.beginPath();
+    ctx.moveTo(800, 680);
+    ctx.lineTo(880, 680);
+    ctx.lineTo(865, 630);
+    ctx.lineTo(815, 630);
+    ctx.closePath();
+    ctx.fill();
+
+    // Plant leaves
+    ctx.fillStyle = '#10B981';
+    ctx.beginPath();
+    ctx.arc(840, 600, 35, 0, Math.PI * 2);
+    ctx.arc(820, 615, 25, 0, Math.PI * 2);
+    ctx.arc(860, 615, 25, 0, Math.PI * 2);
+    ctx.fill();
+  }
+
+  // ─── SCENE 1: Question and Reaction (0.0s – 4.2s) ───
+  function drawScene1(t) {
+    drawRoomBackground(t);
+    const s = config.scenes[0] || {};
+    const rxTime = s.reactionTime || 1.8;
+
+    const isReacted = t >= rxTime;
+    const charImg = images['pose1-confused'];
+
+    // Subtle breathing bob
+    const bob = Math.sin(t * 4) * 8;
+    const charY = 750 + bob;
+
+    // Curiosity Cue popup above character
+    if (t >= (rxTime - 0.3)) {
+      const cueAge = t - (rxTime - 0.3);
+      const scale = Math.min(1.0, cueAge * 4);
+      ctx.save();
+      ctx.translate(540, 620);
+      ctx.scale(scale, scale);
+
+      // Yellow glow badge
+      ctx.fillStyle = '#FFE600';
+      ctx.shadowColor = 'rgba(255, 230, 0, 0.6)';
+      ctx.shadowBlur = 30;
+      ctx.beginPath();
+      ctx.arc(0, 0, 65, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.fillStyle = '#0F172A';
+      ctx.font = '900 64px Plus Jakarta Sans, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(s.curiosityCue || '❓', 0, 5);
+      ctx.restore();
+    }
+
+    // Top Category Pill
+    ctx.save();
+    ctx.fillStyle = '#DC2626';
+    ctx.beginPath();
+    ctx.roundRect(140, 100, 800, 70, 35);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 28px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.topBadge || '🇨🇦 CANADIAN FOUNDER FINANCIAL QUERY', 540, 135);
+    ctx.restore();
+
+    // Draw Character in Room
+    if (charImg) {
+      ctx.save();
+      const charWidth = 750;
+      const charHeight = 750;
+      ctx.drawImage(charImg, (1080 - charWidth) / 2, charY, charWidth, charHeight);
+      ctx.restore();
+    }
+  }
+
+  // ─── SCENE 2: Correct Misconception with Red Cross (4.2s – 8.5s) ───
+  function drawScene2(t) {
+    const s = config.scenes[1] || {};
+    const startTime = s.startTime || 4.2;
+    const crossTime = s.crossTime || 5.6;
+
+    // Pale grey background
+    ctx.fillStyle = s.bg || '#F8FAFC';
+    ctx.fillRect(0, 0, 1080, 1920);
+
+    // Subtle background grid
+    ctx.strokeStyle = 'rgba(0, 0, 0, 0.04)';
+    ctx.lineWidth = 2;
+    for (let x = 0; x < 1080; x += 80) {
+      ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 1920); ctx.stroke();
+    }
+
+    // Central Misconception Card (Scale bounce entrance)
+    const age = t - startTime;
+    const cardScale = Math.min(1.0, age * 3.5);
+
+    ctx.save();
+    ctx.translate(540, 750);
+    ctx.scale(cardScale, cardScale);
+
+    // White Card Box
+    ctx.fillStyle = '#FFFFFF';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.12)';
+    ctx.shadowBlur = 50;
+    ctx.shadowOffsetY = 20;
+    ctx.beginPath();
+    ctx.roundRect(-420, -320, 840, 640, 40);
+    ctx.fill();
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+
+    ctx.strokeStyle = '#E2E8F0';
+    ctx.lineWidth = 4;
+    ctx.stroke();
+
+    // Header Inside Card
+    ctx.fillStyle = '#64748B';
+    ctx.font = '900 26px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(s.cardHeader || 'COMMON STARTUP ASSUMPTION', 0, -230);
+
+    // Graphic icon
+    ctx.font = '80px sans-serif';
+    ctx.fillText(s.cardIcon || '💻 📄', 0, -120);
+
+    ctx.fillStyle = '#0F172A';
+    ctx.font = '900 48px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.conceptTitle || 'OVERSEAS CONTRACTORS', 0, -20);
+
+    ctx.fillStyle = '#64748B';
+    ctx.font = '700 30px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.conceptSubtitle || 'US • India • Europe Dev Invoices', 0, 45);
+
+    // Warning / Disqualification Badge
+    ctx.fillStyle = '#FEE2E2';
+    ctx.beginPath();
+    ctx.roundRect(-300, 110, 600, 80, 40);
+    ctx.fill();
+
+    ctx.fillStyle = '#DC2626';
+    ctx.font = '900 30px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.badgeText || '⚠️ $0.00 REIMBURSEMENT', 0, 160);
+
+    // Large Red Cross Overlay
+    if (t >= crossTime) {
+      const crossAge = Math.min(1.0, (t - crossTime) * 5.0);
+      ctx.strokeStyle = '#DC2626';
+      ctx.lineWidth = 36;
+      ctx.lineCap = 'round';
+      ctx.shadowColor = 'rgba(220, 38, 38, 0.5)';
+      ctx.shadowBlur = 40;
+
+      // First slash
+      ctx.beginPath();
+      ctx.moveTo(-360 * crossAge, -260 * crossAge);
+      ctx.lineTo(360 * crossAge, 260 * crossAge);
+      ctx.stroke();
+
+      // Second slash
+      ctx.beginPath();
+      ctx.moveTo(360 * crossAge, -260 * crossAge);
+      ctx.lineTo(-360 * crossAge, 260 * crossAge);
+      ctx.stroke();
+
+      ctx.shadowBlur = 0;
+    }
+
+    ctx.restore();
+  }
+
+  // ─── SCENE 3: Explain the Mechanism Diagram (8.5s – 14.5s) ───
+  function drawScene3(t) {
+    const s = config.scenes[2] || {};
+    // Contrasting deep tech background
+    ctx.fillStyle = s.bg || '#0B1528';
+    ctx.fillRect(0, 0, 1080, 1920);
+
+    // Subtle radial glow
+    const grad = ctx.createRadialGradient(540, 700, 100, 540, 700, 600);
+    grad.addColorStop(0, 'rgba(56, 189, 248, 0.15)');
+    grad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = grad;
+    ctx.fillRect(0, 0, 1080, 1920);
+
+    // Top Title Badge
+    ctx.save();
+    ctx.fillStyle = '#1E293B';
+    ctx.strokeStyle = '#38BDF8';
+    ctx.lineWidth = 3;
+    ctx.beginPath();
+    ctx.roundRect(140, 100, 800, 80, 40);
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.fillStyle = '#38BDF8';
+    ctx.font = '900 32px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.diagramTitle || '🏛️ THE CANADIAN SOIL MECHANISM', 540, 140);
+    ctx.restore();
+
+    // Vertically Stacked Connected Mechanism Nodes
+    const defaultNodes = [
+      { icon: '🇨🇦', title: 'Canadian T4 Payroll', sub: 'Developers physically resident in Canada', color: '#38BDF8' },
+      { icon: '⚙️', title: 'NRC IRAP & SR&ED Engine', sub: 'Non-dilutive federal capital review', color: '#818CF8' },
+      { icon: '💰', title: 'Up to 80% Non-Repayable Cash', sub: 'Direct bank wire reimbursement', color: '#34D399' },
+    ];
+    const rawNodes = s.nodes || defaultNodes;
+    const yOffsets = [380, 660, 940];
+    const nodes = rawNodes.map((rn, idx) => ({ ...rn, y: yOffsets[idx] || (380 + idx * 280) }));
+
+    // Animated connecting lines between nodes with glowing energy pulses
+    const pulseOffset = (t * 200) % 280;
+
+    // Line 1 to 2
+    ctx.strokeStyle = 'rgba(56, 189, 248, 0.4)';
+    ctx.lineWidth = 8;
+    ctx.beginPath(); ctx.moveTo(540, 490); ctx.lineTo(540, 570); ctx.stroke();
+
+    // Pulse 1
+    ctx.fillStyle = '#38BDF8';
+    ctx.beginPath(); ctx.arc(540, 490 + (pulseOffset % 80), 12, 0, Math.PI * 2); ctx.fill();
+
+    // Line 2 to 3
+    ctx.strokeStyle = 'rgba(52, 211, 153, 0.4)';
+    ctx.beginPath(); ctx.moveTo(540, 770); ctx.lineTo(540, 850); ctx.stroke();
+
+    // Pulse 2
+    ctx.fillStyle = '#34D399';
+    ctx.beginPath(); ctx.arc(540, 770 + (pulseOffset % 80), 12, 0, Math.PI * 2); ctx.fill();
+
+    // Draw Nodes
+    nodes.forEach(n => {
+      ctx.save();
+      ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
+      ctx.strokeStyle = n.color || '#38BDF8';
+      ctx.lineWidth = 4;
+      ctx.shadowColor = n.color || '#38BDF8';
+      ctx.shadowBlur = 25;
+
+      ctx.beginPath();
+      ctx.roundRect(100, n.y - 80, 880, 160, 32);
+      ctx.fill();
+      ctx.stroke();
+      ctx.shadowBlur = 0;
+
+      // Icon circle
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.1)';
+      ctx.beginPath(); ctx.arc(190, n.y, 50, 0, Math.PI * 2); ctx.fill();
+      ctx.font = '50px sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(n.icon || '🇨🇦', 190, n.y + 4);
+
+      // Title & sub
+      ctx.fillStyle = '#FFFFFF';
+      ctx.font = '900 36px Plus Jakarta Sans, sans-serif';
+      ctx.textAlign = 'left';
+      ctx.fillText(n.title, 270, n.y - 12);
+
+      ctx.fillStyle = '#94A3B8';
+      ctx.font = '700 26px Plus Jakarta Sans, sans-serif';
+      ctx.fillText(n.sub, 270, n.y + 32);
+
+      ctx.restore();
+    });
+
+    // Subtitle Note
+    ctx.fillStyle = '#CBD5E1';
+    ctx.font = '700 30px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(s.footnote || 'Federal Law: 100% compliance pass required before capital release.', 540, 1180);
+  }
+
+  // ─── SCENE 4: Follow the Movement / Winding Path (14.5s – 20.5s) ───
+  function drawScene4(t) {
+    const s = config.scenes[3] || {};
+    const startTime = s.startTime || 14.5;
+    const duration = (s.endTime || 20.5) - startTime;
+
+    // Deep dark blue background
+    ctx.fillStyle = s.bg || '#070E1E';
+    ctx.fillRect(0, 0, 1080, 1920);
+
+    // Top Title Badge
+    ctx.save();
+    ctx.fillStyle = '#059669';
+    ctx.beginPath();
+    ctx.roundRect(140, 100, 800, 80, 40);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 32px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.pathTitle || '💸 VERIFIED CAPITAL ALLOCATION FLOW', 540, 140);
+    ctx.restore();
+
+    // Winding S-Curve Path Points
+    const p0 = { x: 200, y: 380 };
+    const p1 = { x: 920, y: 550 };
+    const p2 = { x: 160, y: 880 };
+    const p3 = { x: 880, y: 1100 };
+
+    // Draw glowing path line
+    ctx.save();
+    ctx.strokeStyle = '#1E3A8A';
+    ctx.lineWidth = 48;
+    ctx.lineCap = 'round';
+    ctx.beginPath();
+    ctx.moveTo(p0.x, p0.y);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#38BDF8';
+    ctx.lineWidth = 14;
+    ctx.shadowColor = '#38BDF8';
+    ctx.shadowBlur = 30;
+    ctx.beginPath();
+    ctx.moveTo(p0.x, p0.y);
+    ctx.bezierCurveTo(p1.x, p1.y, p2.x, p2.y, p3.x, p3.y);
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    ctx.restore();
+
+    // Milestone 1 (Start): Source
+    ctx.save();
+    ctx.fillStyle = '#1E293B';
+    ctx.strokeStyle = '#38BDF8';
+    ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.arc(p0.x, p0.y, 70, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.font = '50px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(s.sourceIcon || '🏛️', p0.x, p0.y);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 28px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.sourceLabel || 'Federal Treasury', p0.x, p0.y + 110);
+    ctx.restore();
+
+    // Milestone 2 (End): Destination
+    ctx.save();
+    ctx.fillStyle = '#064E3B';
+    ctx.strokeStyle = '#34D399';
+    ctx.lineWidth = 4;
+    ctx.beginPath(); ctx.arc(p3.x, p3.y, 70, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    ctx.font = '50px sans-serif';
+    ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+    ctx.fillText(s.destIcon || '🏢', p3.x, p3.y);
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 28px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.destLabel || 'Company Account', p3.x, p3.y + 110);
+    ctx.restore();
+
+    // Object Journey: The Gold Capital Coin traveling along the curve
+    const pathAge = (t - startTime) / duration;
+    const progress = Math.max(0.0, Math.min(1.0, pathAge));
+    const tokenPos = getBezierPoint(p0, p1, p2, p3, progress);
+
+    // Glowing Gold Grant Coin
+    ctx.save();
+    ctx.fillStyle = '#F59E0B';
+    ctx.strokeStyle = '#FCD34D';
+    ctx.lineWidth = 8;
+    ctx.shadowColor = '#F59E0B';
+    ctx.shadowBlur = 40;
+    ctx.beginPath();
+    ctx.arc(tokenPos.x, tokenPos.y, 50, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 44px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.tokenSymbol || '$', tokenPos.x, tokenPos.y + 4);
+
+    // Floating amount tag above token
+    ctx.fillStyle = '#0F172A';
+    ctx.beginPath();
+    ctx.roundRect(tokenPos.x - 120, tokenPos.y - 105, 240, 50, 25);
+    ctx.fill();
+    ctx.fillStyle = '#FFE600';
+    ctx.font = '900 26px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.tokenLabel || '+80% REBATE', tokenPos.x, tokenPos.y - 78);
+
+    ctx.restore();
+  }
+
+  // ─── SCENE 5: Reassuring Return & Takeaway (20.5s – 27.24s) ───
+  function drawScene5(t) {
+    drawRoomBackground(t);
+    const s = config.scenes[4] || {};
+
+    const charImg = images['pose3-solution'];
+    const charY = 750 + Math.sin(t * 4) * 8;
+
+    // Draw Character smiling in room
+    if (charImg) {
+      ctx.save();
+      const charWidth = 750;
+      const charHeight = 750;
+      ctx.drawImage(charImg, (1080 - charWidth) / 2, charY, charWidth, charHeight);
+      ctx.restore();
+    }
+
+    // Floating Solution Badge
+    ctx.save();
+    ctx.fillStyle = '#059669';
+    ctx.beginPath();
+    ctx.roundRect(140, 100, 800, 80, 40);
+    ctx.fill();
+    ctx.fillStyle = '#FFFFFF';
+    ctx.font = '900 32px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.ctaHeader || '🛡️ FSI DIGITAL · CAPITAL INTELLIGENCE', 540, 140);
+    ctx.restore();
+
+    // CTA Box above captions
+    ctx.save();
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
+    ctx.strokeStyle = '#10B981';
+    ctx.lineWidth = 4;
+    ctx.shadowColor = 'rgba(16, 185, 129, 0.5)';
+    ctx.shadowBlur = 35;
+    ctx.beginPath();
+    ctx.roundRect(120, 1240, 840, 160, 32);
+    ctx.fill();
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    ctx.fillStyle = '#FFE600';
+    ctx.font = '900 52px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(s.ctaUrl || 'fsidigital.ca/calculator', 540, 1310);
+
+    ctx.fillStyle = '#94A3B8';
+    ctx.font = '800 28px Plus Jakarta Sans, sans-serif';
+    ctx.fillText(s.ctaSub || 'Check Your Active Canadian Grants in 60s →', 540, 1365);
+    ctx.restore();
+  }
+
+  // ─── KINETIC CAPTIONS WITH YELLOW KEYWORD HIGHLIGHTS ───
+  function drawCaptions(t) {
+    if (!config || !config.captions) return;
+    const active = config.captions.find(c => t >= c.startTime && t < c.endTime);
+    if (!active) return;
+
+    const y = 1550;
+    ctx.save();
+
+    // Caption Background Ribbon for extreme legibility
+    ctx.fillStyle = 'rgba(2, 6, 23, 0.92)';
+    ctx.beginPath();
+    ctx.roundRect(80, y - 60, 920, 120, 28);
+    ctx.fill();
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.2)';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Render Text with Yellow Emphasis
+    let fontSize = 48;
+    ctx.font = `900 ${fontSize}px Plus Jakarta Sans, sans-serif`;
+    const fullText = active.text;
+    const highlight = active.highlight;
+
+    const fullWidth = ctx.measureText(fullText).width;
+    if (fullWidth > 840) {
+      fontSize = Math.max(34, Math.floor(48 * (840 / fullWidth)));
+      ctx.font = `900 ${fontSize}px Plus Jakarta Sans, sans-serif`;
+    }
+
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    if (highlight && fullText.includes(highlight)) {
+      const parts = fullText.split(highlight);
+      const pre = parts[0] || '';
+      const post = parts[1] || '';
+
+      const preWidth = ctx.measureText(pre).width;
+      const hlWidth = ctx.measureText(highlight).width;
+      const postWidth = ctx.measureText(post).width;
+      const totalWidth = preWidth + hlWidth + postWidth;
+
+      let startX = 540 - totalWidth / 2;
+
+      // Pre text (white)
+      ctx.fillStyle = '#FFFFFF';
+      ctx.textAlign = 'left';
+      if (pre) {
+        ctx.fillText(pre, startX, y);
+        startX += preWidth;
+      }
+
+      // Highlight text (electric yellow)
+      ctx.fillStyle = '#FFE600';
+      ctx.shadowColor = 'rgba(255, 230, 0, 0.7)';
+      ctx.shadowBlur = 20;
+      ctx.fillText(highlight, startX, y);
+      ctx.shadowBlur = 0;
+      startX += hlWidth;
+
+      // Post text (white)
+      ctx.fillStyle = '#FFFFFF';
+      if (post) {
+        ctx.fillText(post, startX, y);
+      }
+    } else {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(fullText, 540, y);
+    }
+
+    ctx.restore();
+  }
+
+  // ─── MASTER FRAME RENDERER ───
+  window.renderFrame = function(t) {
+    ctx.clearRect(0, 0, 1080, 1920);
+
+    const s1End = config?.scenes?.[0]?.endTime || 4.2;
+    const s2End = config?.scenes?.[1]?.endTime || 8.5;
+    const s3End = config?.scenes?.[2]?.endTime || 14.5;
+    const s4End = config?.scenes?.[3]?.endTime || 20.5;
+
+    if (t < s1End) {
+      drawScene1(t);
+    } else if (t < s2End) {
+      drawScene2(t);
+    } else if (t < s3End) {
+      drawScene3(t);
+    } else if (t < s4End) {
+      drawScene4(t);
+    } else {
+      drawScene5(t);
+    }
+
+    // Always draw kinetic captions on top
+    drawCaptions(t);
+  };
+</script>
+</body>
+</html>

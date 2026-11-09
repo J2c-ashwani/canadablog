@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "pillarId": 7,
+    "title": "Grant Application Checklist: The 12 Pre-Submission Rules",
+    "slug": "grant-application-checklist",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920
+  },
+  "audio": {
+    "script": "Why do 65 percent of Canadian grant applications get rejected before human review? Founders obsess over pitch narrative, but that is not why files get killed. Automated intake filters instantly disqualify applications missing one mandatory compliance record. To pass first screening, you must have your C C P C registry, T4 payroll summaries, and vendor quotes in exact sequence. Never submit without a pre-filing compliance audit. Get the official 12-point readiness checklist in 60 seconds at f s i digital dot c a slash calculator.",
+    "voice": "en-CA-LiamNeural",
+    "rate": "+15%",
+    "bgm": "bgm-01.mp3",
+    "bgmVolume": 0.08
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "id": "question-and-reaction",
+      "startTime": 0.0,
+      "endTime": 4.5,
+      "topBadge": "🇨🇦 GRANT COMPLIANCE AUDIT",
+      "curiosityCue": "📋",
+      "reactionTime": 2.0
+    },
+    {
+      "index": 2,
+      "id": "correct-misconception",
+      "startTime": 4.5,
+      "endTime": 9.0,
+      "cardHeader": "THE ESSAY OBSESSION",
+      "cardIcon": "✍️ ❌",
+      "conceptTitle": "POLISHING THE WRITTEN PITCH",
+      "conceptSubtitle": "Spending 40 hours drafting prose",
+      "badgeText": "❌ KILLED BY MISSING ATTACHMENT",
+      "crossTime": 6.2
+    },
+    {
+      "index": 3,
+      "id": "explain-mechanism",
+      "startTime": 9.0,
+      "endTime": 15.0,
+      "diagramTitle": "🛡️ THE 3 GATEKEEPER CHECKS",
+      "nodes": [
+        { "icon": "1️⃣", "title": "Federal CCPC Corporate Proof", "sub": "Active status with Canadian resident control", "color": "#38BDF8" },
+        { "icon": "2️⃣", "title": "Verified T4 Payroll Slips", "sub": "Domestic employees with confirmed SINs", "color": "#818CF8" },
+        { "icon": "3️⃣", "title": "Itemized Supplier Quotes", "sub": "Arms-length third-party formal estimates", "color": "#34D399" }
+      ],
+      "footnote": "Intake Rule: 100% compliance pass required before committee review."
+    },
+    {
+      "index": 4,
+      "id": "follow-movement",
+      "startTime": 15.0,
+      "endTime": 21.0,
+      "pathTitle": "✅ AUTOMATED INTAKE CLEARANCE",
+      "sourceLabel": "Intake Filter",
+      "sourceIcon": "📋",
+      "destLabel": "Approval Committee",
+      "destIcon": "🏛️",
+      "tokenLabel": "100% PASSED",
+      "tokenSymbol": "✓"
+    },
+    {
+      "index": 5,
+      "id": "reassuring-finish",
+      "startTime": 21.0,
+      "endTime": 27.5,
+      "ctaHeader": "🛡️ FSI DIGITAL · READINESS CHECKLIST",
+      "ctaUrl": "fsidigital.ca/calculator",
+      "ctaSub": "Get the 12-Point Checklist in 60s →"
+    }
+  ],
+  "captions": [
+    { "startTime": 0.0, "endTime": 2.2, "text": "Why do 65% of grant applications...", "highlight": "65% of grant applications" },
+    { "startTime": 2.2, "endTime": 4.5, "text": "...get rejected before human review?", "highlight": "rejected before human review?" },
+    { "startTime": 4.5, "endTime": 6.8, "text": "Founders obsess over writing essays...", "highlight": "writing essays" },
+    { "startTime": 6.8, "endTime": 9.0, "text": "...but that is NOT why files get killed.", "highlight": "NOT why files get killed." },
+    { "startTime": 9.0, "endTime": 12.0, "text": "Automated filters disqualify files...", "highlight": "Automated filters" },
+    { "startTime": 12.0, "endTime": 15.0, "text": "...missing one compliance record.", "highlight": "compliance record." },
+    { "startTime": 15.0, "endTime": 18.0, "text": "CCPC proof, T4 payroll slips...", "highlight": "CCPC proof, T4 payroll" },
+    { "startTime": 18.0, "endTime": 21.0, "text": "...and itemized quotes pass the screen.", "highlight": "pass the screen." },
+    { "startTime": 21.0, "endTime": 24.2, "text": "Get the 12-point readiness check...", "highlight": "readiness check" },
+    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+  ]
+}

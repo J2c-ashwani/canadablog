@@ -91,7 +91,12 @@ export class NativeYouTubeAdapter {
           const base = process.env.NEXT_PUBLIC_APP_URL?.trim() || 'https://www.fsidigital.ca'
           const httpsUrl = `${base.replace(/\/$/, '')}/${cleanPath}`
           console.log(`[YouTubeAdapter] Local file not found. Fetching from HTTPS: ${httpsUrl}...`)
-          const videoRes = await fetch(httpsUrl)
+          const videoRes = await fetch(httpsUrl, {
+            headers: {
+              'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
+              'Accept': '*/*',
+            },
+          })
           if (!videoRes.ok) {
             throw new Error(`Failed to fetch video from ${httpsUrl} (HTTP ${videoRes.status})`)
           }

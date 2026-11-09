@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "pillarId": 6,
+    "title": "Agri-Food & Regional Grants: $250,000+ Non-Repayable Scale-Up",
+    "slug": "agri-food-canada-grants",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920
+  },
+  "audio": {
+    "script": "Did you know Canadian food processors and ag-tech businesses qualify for 250 thousand dollars in grants? Most founders believe subsidies are only for software startups in Toronto. That is completely wrong. Under the Sustainable Agricultural Partnership, billions are earmarked for food manufacturing, automation, and commercial scale-up. Regional agencies match capital up to 50 percent for facility equipment. Expand your production without giving up equity. Check your agricultural grant allocation in 60 seconds at f s i digital dot c a slash calculator.",
+    "voice": "en-CA-LiamNeural",
+    "rate": "+15%",
+    "bgm": "bgm-03.mp3",
+    "bgmVolume": 0.08
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "id": "question-and-reaction",
+      "startTime": 0.0,
+      "endTime": 4.5,
+      "topBadge": "🇨🇦 AGRI-FOOD & REGIONAL CAPITAL",
+      "curiosityCue": "🌾",
+      "reactionTime": 2.0
+    },
+    {
+      "index": 2,
+      "id": "correct-misconception",
+      "startTime": 4.5,
+      "endTime": 9.0,
+      "cardHeader": "GEOGRAPHIC BIAS MYTH",
+      "cardIcon": "🏙️ ❌",
+      "conceptTitle": "ONLY FOR TORONTO AI APPS",
+      "conceptSubtitle": "Software apps in downtown skyscrapers",
+      "badgeText": "❌ FALSE: MANUFACTURING QUALIFIES",
+      "crossTime": 6.2
+    },
+    {
+      "index": 3,
+      "id": "explain-mechanism",
+      "startTime": 9.0,
+      "endTime": 15.0,
+      "diagramTitle": "🚜 THE SUSTAINABLE CAP ENGINE",
+      "nodes": [
+        { "icon": "🌾", "title": "Agri-Business & Food Processing", "sub": "Producers, packaging, bio-tech, food scale", "color": "#10B981" },
+        { "icon": "🏛️", "title": "$3.5 Billion Federal-Provincial Pool", "sub": "SCAP + FedDev + PrairiesCan facilities", "color": "#818CF8" },
+        { "icon": "🏭", "title": "50% Equipment Matching Grant", "sub": "Direct subsidy for high-capacity machinery", "color": "#FBBF24" }
+      ],
+      "footnote": "SCAP Mandate: Domestic food security, processing automation & yield."
+    },
+    {
+      "index": 4,
+      "id": "follow-movement",
+      "startTime": 15.0,
+      "endTime": 21.0,
+      "pathTitle": "🚜 FACILITY EXPANSION INJECTION",
+      "sourceLabel": "Sustainable CAP",
+      "sourceIcon": "🏛️",
+      "destLabel": "Processing Plant",
+      "destIcon": "🏭",
+      "tokenLabel": "$250,000 FACILITY",
+      "tokenSymbol": "$"
+    },
+    {
+      "index": 5,
+      "id": "reassuring-finish",
+      "startTime": 21.0,
+      "endTime": 27.5,
+      "ctaHeader": "🛡️ FSI DIGITAL · AGRI-FOOD AUDIT",
+      "ctaUrl": "fsidigital.ca/calculator",
+      "ctaSub": "Check Your Agri-Food Match in 60s →"
+    }
+  ],
+  "captions": [
+    { "startTime": 0.0, "endTime": 2.2, "text": "Do Canadian food processors...", "highlight": "food processors" },
+    { "startTime": 2.2, "endTime": 4.5, "text": "...qualify for $250,000+ in grants?", "highlight": "$250,000+ in grants?" },
+    { "startTime": 4.5, "endTime": 6.8, "text": "Grants are NOT just for AI apps...", "highlight": "NOT just for AI apps" },
+    { "startTime": 6.8, "endTime": 9.0, "text": "...in downtown Toronto skyscrapers.", "highlight": "Toronto skyscrapers." },
+    { "startTime": 9.0, "endTime": 12.0, "text": "The Sustainable CAP program...", "highlight": "Sustainable CAP" },
+    { "startTime": 12.0, "endTime": 15.0, "text": "...earmarks billions for automation.", "highlight": "billions for automation." },
+    { "startTime": 15.0, "endTime": 18.0, "text": "FedDev and PrairiesCan match 50%...", "highlight": "match 50%" },
+    { "startTime": 18.0, "endTime": 21.0, "text": "...for commercial facility equipment.", "highlight": "facility equipment." },
+    { "startTime": 21.0, "endTime": 24.2, "text": "Calculate your regional grant match...", "highlight": "regional grant match" },
+    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+  ]
+}

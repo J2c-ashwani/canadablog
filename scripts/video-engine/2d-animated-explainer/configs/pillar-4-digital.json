@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "pillarId": 4,
+    "title": "Digital Adoption Funding: $15,000 Grant + $100,000 0% Loan",
+    "slug": "digital-adoption-funding",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920
+  },
+  "audio": {
+    "script": "Looking for 15 thousand dollars in cash plus 100 thousand dollars at zero percent interest? Most owners assume government tech grants have hidden traps. That is false. The Canadian Digital Adoption Program covers up to 90 percent of advisor fees in non-repayable cash. Qualified businesses also unlock a 5-year, zero percent loan from B D C. Modernize your software, CRM, and automation on the government's balance sheet. Check your digital funding match in 60 seconds at f s i digital dot c a slash calculator.",
+    "voice": "en-CA-LiamNeural",
+    "rate": "+15%",
+    "bgm": "bgm-01.mp3",
+    "bgmVolume": 0.08
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "id": "question-and-reaction",
+      "startTime": 0.0,
+      "endTime": 4.5,
+      "topBadge": "🇨🇦 DIGITAL TRANSFORMATION GRANTS",
+      "curiosityCue": "💻",
+      "reactionTime": 2.0
+    },
+    {
+      "index": 2,
+      "id": "correct-misconception",
+      "startTime": 4.5,
+      "endTime": 9.0,
+      "cardHeader": "HIGH-INTEREST FEAR",
+      "cardIcon": "🏦 ❌",
+      "conceptTitle": "PREDATOR BANK LOANS",
+      "conceptSubtitle": "8% to 14% commercial bank interest",
+      "badgeText": "❌ FALSE: 0% BDC FACILITY",
+      "crossTime": 6.2
+    },
+    {
+      "index": 3,
+      "id": "explain-mechanism",
+      "startTime": 9.0,
+      "endTime": 15.0,
+      "diagramTitle": "🚀 THE DUAL DIGITAL PACKAGE",
+      "nodes": [
+        { "icon": "💵", "title": "CDAP Boost Grant: $15,000", "sub": "Covers 90% of expert software advisory", "color": "#38BDF8" },
+        { "icon": "🏛️", "title": "BDC 0% Financing: $100,000", "sub": "5-year term with zero interest penalty", "color": "#818CF8" },
+        { "icon": "⚡", "title": "Complete Software Upgrade", "sub": "ERP, CRM, e-commerce, and automation", "color": "#34D399" }
+      ],
+      "footnote": "Innovation Canada: Combine non-repayable grant with 0% capital."
+    },
+    {
+      "index": 4,
+      "id": "follow-movement",
+      "startTime": 15.0,
+      "endTime": 21.0,
+      "pathTitle": "⚙️ AUTOMATION UPGRADE FLOW",
+      "sourceLabel": "CDAP + BDC",
+      "sourceIcon": "🏛️",
+      "destLabel": "Modern Software",
+      "destIcon": "💻",
+      "tokenLabel": "$115K TECH STACK",
+      "tokenSymbol": "$"
+    },
+    {
+      "index": 5,
+      "id": "reassuring-finish",
+      "startTime": 21.0,
+      "endTime": 27.5,
+      "ctaHeader": "🛡️ FSI DIGITAL · TECH GRANT AUDIT",
+      "ctaUrl": "fsidigital.ca/calculator",
+      "ctaSub": "Check Your Digital Tech Match in 60s →"
+    }
+  ],
+  "captions": [
+    { "startTime": 0.0, "endTime": 2.2, "text": "Looking for $15,000 free cash...", "highlight": "$15,000 free cash" },
+    { "startTime": 2.2, "endTime": 4.5, "text": "...plus $100,000 at zero percent?", "highlight": "zero percent?" },
+    { "startTime": 4.5, "endTime": 6.8, "text": "Most founders assume high interest...", "highlight": "assume high interest" },
+    { "startTime": 6.8, "endTime": 9.0, "text": "...or predatory bank catches.", "highlight": "predatory bank catches." },
+    { "startTime": 9.0, "endTime": 12.0, "text": "CDAP gives $15,000 in cash grants...", "highlight": "CDAP gives $15,000" },
+    { "startTime": 12.0, "endTime": 15.0, "text": "...and BDC unlocks 0% interest.", "highlight": "BDC unlocks 0% interest." },
+    { "startTime": 15.0, "endTime": 18.0, "text": "Upgrade your ERP, CRM, and cloud...", "highlight": "ERP, CRM, and cloud" },
+    { "startTime": 18.0, "endTime": 21.0, "text": "...on the government's balance sheet.", "highlight": "government's balance sheet." },
+    { "startTime": 21.0, "endTime": 24.2, "text": "Check your digital eligibility...", "highlight": "digital eligibility" },
+    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+  ]
+}

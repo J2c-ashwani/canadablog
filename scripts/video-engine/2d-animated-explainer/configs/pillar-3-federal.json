@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "pillarId": 3,
+    "title": "NRC IRAP Innovation Grants: Up to $500,000 Non-Dilutive Capital",
+    "slug": "nrc-irap-innovation-grants",
+    "fps": 30,
+    "width": 1080,
+    "height": 1920
+  },
+  "audio": {
+    "script": "Did you know the Canadian government awards up to 500 thousand dollars in cash grants for novel tech? You do not need millions in revenue or venture capital to qualify. The N R C Eye-rap program funds early-stage innovation with zero equity taken. To win, you must prove technical uncertainty, not sales growth. Once approved, the federal government covers up to 80 percent of internal developer salaries. Calculate your non-dilutive innovation grant match in 60 seconds at f s i digital dot c a slash calculator.",
+    "voice": "en-CA-LiamNeural",
+    "rate": "+8%",
+    "bgm": "bgm-01.mp3",
+    "bgmVolume": 0.08
+  },
+  "scenes": [
+    {
+      "index": 1,
+      "id": "question-and-reaction",
+      "startTime": 0.0,
+      "endTime": 4.5,
+      "topBadge": "🇨🇦 FEDERAL INNOVATION CAPITAL",
+      "curiosityCue": "💡",
+      "reactionTime": 2.0
+    },
+    {
+      "index": 2,
+      "id": "correct-misconception",
+      "startTime": 4.5,
+      "endTime": 9.0,
+      "cardHeader": "COMMON FOUNDER MYTH",
+      "cardIcon": "💼 ❌",
+      "conceptTitle": "MUST BE A PROFITABLE GIANT",
+      "conceptSubtitle": "Or backed by Silicon Valley VCs",
+      "badgeText": "❌ FALSE: PRE-REVENUE QUALIFIES",
+      "crossTime": 6.2
+    },
+    {
+      "index": 3,
+      "id": "explain-mechanism",
+      "startTime": 9.0,
+      "endTime": 15.0,
+      "diagramTitle": "🏛️ THE NRC IRAP ENGINE",
+      "nodes": [
+        { "icon": "🇨🇦", "title": "Canadian Incorporated CCPC", "sub": "1 to 500 full-time employees", "color": "#38BDF8" },
+        { "icon": "🔬", "title": "Technical Uncertainty", "sub": "Novel software, AI, or engineering", "color": "#818CF8" },
+        { "icon": "💎", "title": "Zero Equity Taken", "sub": "100% non-dilutive, non-repayable cash", "color": "#34D399" }
+      ],
+      "footnote": "NRC Mandate: Fund engineering risk, never commercial marketing."
+    },
+    {
+      "index": 4,
+      "id": "follow-movement",
+      "startTime": 15.0,
+      "endTime": 21.0,
+      "pathTitle": "🚀 NON-DILUTIVE INJECTION",
+      "sourceLabel": "NRC IRAP",
+      "sourceIcon": "🏛️",
+      "destLabel": "Founder Equity Safe",
+      "destIcon": "🛡️",
+      "tokenLabel": "$500,000 GRANT",
+      "tokenSymbol": "$"
+    },
+    {
+      "index": 5,
+      "id": "reassuring-finish",
+      "startTime": 21.0,
+      "endTime": 27.5,
+      "ctaHeader": "🛡️ FSI DIGITAL · GRANT EVALUATION",
+      "ctaUrl": "fsidigital.ca/calculator",
+      "ctaSub": "Calculate Your IRAP Grant Match in 60s →"
+    }
+  ],
+  "captions": [
+    { "startTime": 0.0, "endTime": 2.2, "text": "Did you know Canada awards...", "highlight": "Canada awards" },
+    { "startTime": 2.2, "endTime": 4.5, "text": "...up to $500,000 in cash grants?", "highlight": "$500,000 in cash grants?" },
+    { "startTime": 4.5, "endTime": 6.8, "text": "You do NOT need millions in revenue...", "highlight": "NOT need millions" },
+    { "startTime": 6.8, "endTime": 9.0, "text": "...or venture capital to qualify.", "highlight": "venture capital to qualify." },
+    { "startTime": 9.0, "endTime": 12.0, "text": "IRAP funds novel tech...", "highlight": "novel tech" },
+    { "startTime": 12.0, "endTime": 15.0, "text": "...with ZERO equity taken from founders.", "highlight": "ZERO equity taken" },
+    { "startTime": 15.0, "endTime": 18.0, "text": "Get up to 80% of developer wages...", "highlight": "80% of developer wages" },
+    { "startTime": 18.0, "endTime": 21.0, "text": "...reimbursed by direct wire transfer.", "highlight": "direct wire transfer." },
+    { "startTime": 21.0, "endTime": 24.2, "text": "Check your non-dilutive match...", "highlight": "non-dilutive match" },
+    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+  ]
+}
