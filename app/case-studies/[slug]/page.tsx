@@ -17,8 +17,6 @@ type CaseStudyPageProps = {
   }>;
 };
 
-export const dynamicParams = false;
-
 export function generateStaticParams() {
   return getAllCaseStudies().map((study) => ({
     slug: study.slug,

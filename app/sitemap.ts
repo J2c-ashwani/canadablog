@@ -111,10 +111,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   })
 
   // 6. Add Daily Drip Programmatic SEO Pages
-  // Bandwidth & Zero-ISR Containment:
-  // ONLY include statically pre-rendered Tier A & B pages (675 high-value commercial hubs).
-  // Unbuilt Tier C pages are excluded to prevent crawlers from triggering on-demand Serverless Lambdas and ISR Writes.
-  const publishedPseoPages = getPublishedPseoPages().filter(page => page.tier === 'A' || page.tier === 'B')
+  const publishedPseoPages = getPublishedPseoPages()
   const pseoProvinceRoutes = getPseoProvinceSummaries()
     .map(province => `/grants/${province.provinceSlug}`)
   const pseoCityHubRoutes = getPseoProvinceSummaries()

@@ -113,8 +113,6 @@ const comparisons: ComparisonDetails[] = [
   }
 ];
 
-export const dynamicParams = false;
-
 export async function generateStaticParams() {
   return comparisons.map(c => ({ slug: c.slug }));
 }
