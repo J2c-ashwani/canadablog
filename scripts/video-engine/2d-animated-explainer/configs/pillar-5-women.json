@@ -18,17 +18,28 @@
     {
       "index": 1,
       "id": "question-and-reaction",
-      "startTime": 0.0,
+      "startTime": 0,
       "endTime": 4.5,
-      "topBadge": "🇨🇦 WOMEN ENTREPRENEURSHIP STRATEGY",
+      "topBadge": "✨ WOMEN ENTREPRENEURSHIP STRATEGY",
       "curiosityCue": "✨",
-      "reactionTime": 2.0
+      "reactionTime": 2,
+      "badgeBg": "#DB2777",
+      "cardBorder": "rgba(244, 114, 182, 0.5)",
+      "cardShadow": "rgba(244, 114, 182, 0.25)",
+      "hookCategory": "🌟 FEDERAL FOUNDER INITIATIVE",
+      "hookCategoryColor": "#F472B6",
+      "hookLine1": ",000 TO ,000 FOR",
+      "hookLine2": "WOMEN-OWNED BUSINESSES ✨",
+      "hookHighlight": ",000 TO ,000",
+      "hookSub": "Non-Dilutive Growth, Export & Tech Funding",
+      "hookSubColor": "#FFE600",
+      "alertBubble": "🌟 51%+ OWNERSHIP • EXPANSION CAPITAL"
     },
     {
       "index": 2,
       "id": "correct-misconception",
       "startTime": 4.5,
-      "endTime": 9.0,
+      "endTime": 9,
       "cardHeader": "EQUITY DILUTION TRAP",
       "cardIcon": "📉 ❌",
       "conceptTitle": "SURRENDERING EQUITY TO VCS",
@@ -39,21 +50,36 @@
     {
       "index": 3,
       "id": "explain-mechanism",
-      "startTime": 9.0,
-      "endTime": 15.0,
+      "startTime": 9,
+      "endTime": 15,
       "diagramTitle": "🌸 THE WES FUNDING FRAMEWORK",
       "nodes": [
-        { "icon": "👑", "title": "51%+ Women-Owned CCPC", "sub": "Majority Canadian female ownership & control", "color": "#F472B6" },
-        { "icon": "🏛️", "title": "$2 Billion Federal Capital Pool", "sub": "Non-dilutive grants & ecosystem lending", "color": "#818CF8" },
-        { "icon": "🚀", "title": "Scale-up & Commercialization", "sub": "Up to $100K+ non-repayable grants & loans", "color": "#34D399" }
+        {
+          "icon": "👑",
+          "title": "51%+ Women-Owned CCPC",
+          "sub": "Majority Canadian female ownership & control",
+          "color": "#F472B6"
+        },
+        {
+          "icon": "🏛️",
+          "title": "$2 Billion Federal Capital Pool",
+          "sub": "Non-dilutive grants & ecosystem lending",
+          "color": "#818CF8"
+        },
+        {
+          "icon": "🚀",
+          "title": "Scale-up & Commercialization",
+          "sub": "Up to $100K+ non-repayable grants & loans",
+          "color": "#34D399"
+        }
       ],
       "footnote": "WES Standard: Dedicated capital reserved exclusively for women founders."
     },
     {
       "index": 4,
       "id": "follow-movement",
-      "startTime": 15.0,
-      "endTime": 21.0,
+      "startTime": 15,
+      "endTime": 21,
       "pathTitle": "💫 DIRECT FOUNDER ALLOCATION",
       "sourceLabel": "WES Fund",
       "sourceIcon": "🏛️",
@@ -65,7 +91,7 @@
     {
       "index": 5,
       "id": "reassuring-finish",
-      "startTime": 21.0,
+      "startTime": 21,
       "endTime": 27.5,
       "ctaHeader": "🛡️ FSI DIGITAL · WES READINESS",
       "ctaUrl": "fsidigital.ca/calculator",
@@ -73,15 +99,65 @@
     }
   ],
   "captions": [
-    { "startTime": 0.0, "endTime": 2.2, "text": "Are you a female founder...", "highlight": "female founder" },
-    { "startTime": 2.2, "endTime": 4.5, "text": "...looking for grants in Canada?", "highlight": "grants in Canada?" },
-    { "startTime": 4.5, "endTime": 6.8, "text": "You do NOT need to surrender equity...", "highlight": "surrender equity" },
-    { "startTime": 6.8, "endTime": 9.0, "text": "...to aggressive VC investors.", "highlight": "aggressive VC investors." },
-    { "startTime": 9.0, "endTime": 12.0, "text": "WES provides over $2 Billion...", "highlight": "$2 Billion" },
-    { "startTime": 12.0, "endTime": 15.0, "text": "...in non-dilutive capital and loans.", "highlight": "non-dilutive capital" },
-    { "startTime": 15.0, "endTime": 18.0, "text": "Canadian companies 51% women-owned...", "highlight": "51% women-owned" },
-    { "startTime": 18.0, "endTime": 21.0, "text": "...unlock scale-up and export funds.", "highlight": "scale-up and export funds." },
-    { "startTime": 21.0, "endTime": 24.2, "text": "Calculate your female founder match...", "highlight": "female founder match" },
-    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+    {
+      "startTime": 0,
+      "endTime": 2.2,
+      "text": "Are you a female founder...",
+      "highlight": "female founder"
+    },
+    {
+      "startTime": 2.2,
+      "endTime": 4.5,
+      "text": "...looking for grants in Canada?",
+      "highlight": "grants in Canada?"
+    },
+    {
+      "startTime": 4.5,
+      "endTime": 6.8,
+      "text": "You do NOT need to surrender equity...",
+      "highlight": "surrender equity"
+    },
+    {
+      "startTime": 6.8,
+      "endTime": 9,
+      "text": "...to aggressive VC investors.",
+      "highlight": "aggressive VC investors."
+    },
+    {
+      "startTime": 9,
+      "endTime": 12,
+      "text": "WES provides over $2 Billion...",
+      "highlight": "$2 Billion"
+    },
+    {
+      "startTime": 12,
+      "endTime": 15,
+      "text": "...in non-dilutive capital and loans.",
+      "highlight": "non-dilutive capital"
+    },
+    {
+      "startTime": 15,
+      "endTime": 18,
+      "text": "Canadian companies 51% women-owned...",
+      "highlight": "51% women-owned"
+    },
+    {
+      "startTime": 18,
+      "endTime": 21,
+      "text": "...unlock scale-up and export funds.",
+      "highlight": "scale-up and export funds."
+    },
+    {
+      "startTime": 21,
+      "endTime": 24.2,
+      "text": "Calculate your female founder match...",
+      "highlight": "female founder match"
+    },
+    {
+      "startTime": 24.2,
+      "endTime": 27.5,
+      "text": "...in 60 seconds at fsidigital.ca.",
+      "highlight": "fsidigital.ca."
+    }
   ]
 }

@@ -18,17 +18,28 @@
     {
       "index": 1,
       "id": "question-and-reaction",
-      "startTime": 0.0,
+      "startTime": 0,
       "endTime": 4.5,
-      "topBadge": "🇨🇦 AGRI-FOOD & REGIONAL CAPITAL",
+      "topBadge": "🌾 AGRI-FOOD & REGIONAL CAPITAL",
       "curiosityCue": "🌾",
-      "reactionTime": 2.0
+      "reactionTime": 2,
+      "badgeBg": "#059669",
+      "cardBorder": "rgba(52, 211, 153, 0.5)",
+      "cardShadow": "rgba(52, 211, 153, 0.25)",
+      "hookCategory": "🚜 AGRICULTURAL INNOVATION",
+      "hookCategoryColor": "#34D399",
+      "hookLine1": "UP TO ,000,000 IN",
+      "hookLine2": "NON-REPAYABLE GRANTS 🚜",
+      "hookHighlight": ",000,000",
+      "hookSub": "50% Cost-Share for Farming Tech & Facilities",
+      "hookSubColor": "#38BDF8",
+      "alertBubble": "💰 AGRI-INNOVATE • EQUIPMENT & EXPANSION"
     },
     {
       "index": 2,
       "id": "correct-misconception",
       "startTime": 4.5,
-      "endTime": 9.0,
+      "endTime": 9,
       "cardHeader": "GEOGRAPHIC BIAS MYTH",
       "cardIcon": "🏙️ ❌",
       "conceptTitle": "ONLY FOR TORONTO AI APPS",
@@ -39,21 +50,36 @@
     {
       "index": 3,
       "id": "explain-mechanism",
-      "startTime": 9.0,
-      "endTime": 15.0,
+      "startTime": 9,
+      "endTime": 15,
       "diagramTitle": "🚜 THE SUSTAINABLE CAP ENGINE",
       "nodes": [
-        { "icon": "🌾", "title": "Agri-Business & Food Processing", "sub": "Producers, packaging, bio-tech, food scale", "color": "#10B981" },
-        { "icon": "🏛️", "title": "$3.5 Billion Federal-Provincial Pool", "sub": "SCAP + FedDev + PrairiesCan facilities", "color": "#818CF8" },
-        { "icon": "🏭", "title": "50% Equipment Matching Grant", "sub": "Direct subsidy for high-capacity machinery", "color": "#FBBF24" }
+        {
+          "icon": "🌾",
+          "title": "Agri-Business & Food Processing",
+          "sub": "Producers, packaging, bio-tech, food scale",
+          "color": "#10B981"
+        },
+        {
+          "icon": "🏛️",
+          "title": "$3.5 Billion Federal-Provincial Pool",
+          "sub": "SCAP + FedDev + PrairiesCan facilities",
+          "color": "#818CF8"
+        },
+        {
+          "icon": "🏭",
+          "title": "50% Equipment Matching Grant",
+          "sub": "Direct subsidy for high-capacity machinery",
+          "color": "#FBBF24"
+        }
       ],
       "footnote": "SCAP Mandate: Domestic food security, processing automation & yield."
     },
     {
       "index": 4,
       "id": "follow-movement",
-      "startTime": 15.0,
-      "endTime": 21.0,
+      "startTime": 15,
+      "endTime": 21,
       "pathTitle": "🚜 FACILITY EXPANSION INJECTION",
       "sourceLabel": "Sustainable CAP",
       "sourceIcon": "🏛️",
@@ -65,7 +91,7 @@
     {
       "index": 5,
       "id": "reassuring-finish",
-      "startTime": 21.0,
+      "startTime": 21,
       "endTime": 27.5,
       "ctaHeader": "🛡️ FSI DIGITAL · AGRI-FOOD AUDIT",
       "ctaUrl": "fsidigital.ca/calculator",
@@ -73,15 +99,65 @@
     }
   ],
   "captions": [
-    { "startTime": 0.0, "endTime": 2.2, "text": "Do Canadian food processors...", "highlight": "food processors" },
-    { "startTime": 2.2, "endTime": 4.5, "text": "...qualify for $250,000+ in grants?", "highlight": "$250,000+ in grants?" },
-    { "startTime": 4.5, "endTime": 6.8, "text": "Grants are NOT just for AI apps...", "highlight": "NOT just for AI apps" },
-    { "startTime": 6.8, "endTime": 9.0, "text": "...in downtown Toronto skyscrapers.", "highlight": "Toronto skyscrapers." },
-    { "startTime": 9.0, "endTime": 12.0, "text": "The Sustainable CAP program...", "highlight": "Sustainable CAP" },
-    { "startTime": 12.0, "endTime": 15.0, "text": "...earmarks billions for automation.", "highlight": "billions for automation." },
-    { "startTime": 15.0, "endTime": 18.0, "text": "FedDev and PrairiesCan match 50%...", "highlight": "match 50%" },
-    { "startTime": 18.0, "endTime": 21.0, "text": "...for commercial facility equipment.", "highlight": "facility equipment." },
-    { "startTime": 21.0, "endTime": 24.2, "text": "Calculate your regional grant match...", "highlight": "regional grant match" },
-    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+    {
+      "startTime": 0,
+      "endTime": 2.2,
+      "text": "Do Canadian food processors...",
+      "highlight": "food processors"
+    },
+    {
+      "startTime": 2.2,
+      "endTime": 4.5,
+      "text": "...qualify for $250,000+ in grants?",
+      "highlight": "$250,000+ in grants?"
+    },
+    {
+      "startTime": 4.5,
+      "endTime": 6.8,
+      "text": "Grants are NOT just for AI apps...",
+      "highlight": "NOT just for AI apps"
+    },
+    {
+      "startTime": 6.8,
+      "endTime": 9,
+      "text": "...in downtown Toronto skyscrapers.",
+      "highlight": "Toronto skyscrapers."
+    },
+    {
+      "startTime": 9,
+      "endTime": 12,
+      "text": "The Sustainable CAP program...",
+      "highlight": "Sustainable CAP"
+    },
+    {
+      "startTime": 12,
+      "endTime": 15,
+      "text": "...earmarks billions for automation.",
+      "highlight": "billions for automation."
+    },
+    {
+      "startTime": 15,
+      "endTime": 18,
+      "text": "FedDev and PrairiesCan match 50%...",
+      "highlight": "match 50%"
+    },
+    {
+      "startTime": 18,
+      "endTime": 21,
+      "text": "...for commercial facility equipment.",
+      "highlight": "facility equipment."
+    },
+    {
+      "startTime": 21,
+      "endTime": 24.2,
+      "text": "Calculate your regional grant match...",
+      "highlight": "regional grant match"
+    },
+    {
+      "startTime": 24.2,
+      "endTime": 27.5,
+      "text": "...in 60 seconds at fsidigital.ca.",
+      "highlight": "fsidigital.ca."
+    }
   ]
 }

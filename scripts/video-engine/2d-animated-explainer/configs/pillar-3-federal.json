@@ -18,17 +18,28 @@
     {
       "index": 1,
       "id": "question-and-reaction",
-      "startTime": 0.0,
+      "startTime": 0,
       "endTime": 4.5,
-      "topBadge": "🇨🇦 FEDERAL INNOVATION CAPITAL",
+      "topBadge": "🏛️ FEDERAL INNOVATION CAPITAL",
       "curiosityCue": "💡",
-      "reactionTime": 2.0
+      "reactionTime": 2,
+      "badgeBg": "#2563EB",
+      "cardBorder": "rgba(56, 189, 248, 0.5)",
+      "cardShadow": "rgba(56, 189, 248, 0.25)",
+      "hookCategory": "🚀 NON-DILUTIVE TECH CAPITAL",
+      "hookCategoryColor": "#38BDF8",
+      "hookLine1": "GET UP TO ,000 IN",
+      "hookLine2": "NON-REPAYABLE GRANTS 🇨🇦",
+      "hookHighlight": ",000",
+      "hookSub": "NRC IRAP Pays 80% of Domestic Developer Salaries",
+      "hookSubColor": "#34D399",
+      "alertBubble": "✅ 0% EQUITY TAKEN • 100% NON-REPAYABLE"
     },
     {
       "index": 2,
       "id": "correct-misconception",
       "startTime": 4.5,
-      "endTime": 9.0,
+      "endTime": 9,
       "cardHeader": "COMMON FOUNDER MYTH",
       "cardIcon": "💼 ❌",
       "conceptTitle": "MUST BE A PROFITABLE GIANT",
@@ -39,21 +50,36 @@
     {
       "index": 3,
       "id": "explain-mechanism",
-      "startTime": 9.0,
-      "endTime": 15.0,
+      "startTime": 9,
+      "endTime": 15,
       "diagramTitle": "🏛️ THE NRC IRAP ENGINE",
       "nodes": [
-        { "icon": "🇨🇦", "title": "Canadian Incorporated CCPC", "sub": "1 to 500 full-time employees", "color": "#38BDF8" },
-        { "icon": "🔬", "title": "Technical Uncertainty", "sub": "Novel software, AI, or engineering", "color": "#818CF8" },
-        { "icon": "💎", "title": "Zero Equity Taken", "sub": "100% non-dilutive, non-repayable cash", "color": "#34D399" }
+        {
+          "icon": "🇨🇦",
+          "title": "Canadian Incorporated CCPC",
+          "sub": "1 to 500 full-time employees",
+          "color": "#38BDF8"
+        },
+        {
+          "icon": "🔬",
+          "title": "Technical Uncertainty",
+          "sub": "Novel software, AI, or engineering",
+          "color": "#818CF8"
+        },
+        {
+          "icon": "💎",
+          "title": "Zero Equity Taken",
+          "sub": "100% non-dilutive, non-repayable cash",
+          "color": "#34D399"
+        }
       ],
       "footnote": "NRC Mandate: Fund engineering risk, never commercial marketing."
     },
     {
       "index": 4,
       "id": "follow-movement",
-      "startTime": 15.0,
-      "endTime": 21.0,
+      "startTime": 15,
+      "endTime": 21,
       "pathTitle": "🚀 NON-DILUTIVE INJECTION",
       "sourceLabel": "NRC IRAP",
       "sourceIcon": "🏛️",
@@ -65,7 +91,7 @@
     {
       "index": 5,
       "id": "reassuring-finish",
-      "startTime": 21.0,
+      "startTime": 21,
       "endTime": 27.5,
       "ctaHeader": "🛡️ FSI DIGITAL · GRANT EVALUATION",
       "ctaUrl": "fsidigital.ca/calculator",
@@ -73,15 +99,65 @@
     }
   ],
   "captions": [
-    { "startTime": 0.0, "endTime": 2.2, "text": "Did you know Canada awards...", "highlight": "Canada awards" },
-    { "startTime": 2.2, "endTime": 4.5, "text": "...up to $500,000 in cash grants?", "highlight": "$500,000 in cash grants?" },
-    { "startTime": 4.5, "endTime": 6.8, "text": "You do NOT need millions in revenue...", "highlight": "NOT need millions" },
-    { "startTime": 6.8, "endTime": 9.0, "text": "...or venture capital to qualify.", "highlight": "venture capital to qualify." },
-    { "startTime": 9.0, "endTime": 12.0, "text": "IRAP funds novel tech...", "highlight": "novel tech" },
-    { "startTime": 12.0, "endTime": 15.0, "text": "...with ZERO equity taken from founders.", "highlight": "ZERO equity taken" },
-    { "startTime": 15.0, "endTime": 18.0, "text": "Get up to 80% of developer wages...", "highlight": "80% of developer wages" },
-    { "startTime": 18.0, "endTime": 21.0, "text": "...reimbursed by direct wire transfer.", "highlight": "direct wire transfer." },
-    { "startTime": 21.0, "endTime": 24.2, "text": "Check your non-dilutive match...", "highlight": "non-dilutive match" },
-    { "startTime": 24.2, "endTime": 27.5, "text": "...in 60 seconds at fsidigital.ca.", "highlight": "fsidigital.ca." }
+    {
+      "startTime": 0,
+      "endTime": 2.2,
+      "text": "Did you know Canada awards...",
+      "highlight": "Canada awards"
+    },
+    {
+      "startTime": 2.2,
+      "endTime": 4.5,
+      "text": "...up to $500,000 in cash grants?",
+      "highlight": "$500,000 in cash grants?"
+    },
+    {
+      "startTime": 4.5,
+      "endTime": 6.8,
+      "text": "You do NOT need millions in revenue...",
+      "highlight": "NOT need millions"
+    },
+    {
+      "startTime": 6.8,
+      "endTime": 9,
+      "text": "...or venture capital to qualify.",
+      "highlight": "venture capital to qualify."
+    },
+    {
+      "startTime": 9,
+      "endTime": 12,
+      "text": "IRAP funds novel tech...",
+      "highlight": "novel tech"
+    },
+    {
+      "startTime": 12,
+      "endTime": 15,
+      "text": "...with ZERO equity taken from founders.",
+      "highlight": "ZERO equity taken"
+    },
+    {
+      "startTime": 15,
+      "endTime": 18,
+      "text": "Get up to 80% of developer wages...",
+      "highlight": "80% of developer wages"
+    },
+    {
+      "startTime": 18,
+      "endTime": 21,
+      "text": "...reimbursed by direct wire transfer.",
+      "highlight": "direct wire transfer."
+    },
+    {
+      "startTime": 21,
+      "endTime": 24.2,
+      "text": "Check your non-dilutive match...",
+      "highlight": "non-dilutive match"
+    },
+    {
+      "startTime": 24.2,
+      "endTime": 27.5,
+      "text": "...in 60 seconds at fsidigital.ca.",
+      "highlight": "fsidigital.ca."
+    }
   ]
 }

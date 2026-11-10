@@ -63,82 +63,51 @@
     console.log('Engine initialized with config and character assets.');
   };
 
-  // ─── SCENE 1 & 5: The Founder's Room Background ───
+  // ─── SCENE 1 & 5: Executive Modern Studio Backdrop ───
   function drawRoomBackground(t) {
-    // Wall (soft clean pale grey-cream)
-    ctx.fillStyle = '#E8ECEF';
-    ctx.fillRect(0, 0, 1080, 1420);
+    // Deep Midnight Obsidian gradient
+    const bgGrad = ctx.createLinearGradient(0, 0, 0, 1920);
+    bgGrad.addColorStop(0, '#070D18');
+    bgGrad.addColorStop(0.5, '#0B1528');
+    bgGrad.addColorStop(1, '#050A14');
+    ctx.fillStyle = bgGrad;
+    ctx.fillRect(0, 0, 1080, 1920);
 
-    // Modern wood floor
-    ctx.fillStyle = '#C8B9A6';
-    ctx.fillRect(0, 1420, 1080, 500);
+    // Subtle Radial Ambient Spotlight behind character (soft rim-lighting)
+    const spotGrad = ctx.createRadialGradient(540, 980, 80, 540, 980, 720);
+    spotGrad.addColorStop(0, 'rgba(56, 189, 248, 0.12)');
+    spotGrad.addColorStop(0.6, 'rgba(30, 58, 138, 0.05)');
+    spotGrad.addColorStop(1, 'rgba(0, 0, 0, 0)');
+    ctx.fillStyle = spotGrad;
+    ctx.fillRect(0, 0, 1080, 1920);
 
-    // Floor baseboard trim
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(0, 1400, 1080, 20);
+    // High-tech subtle dot matrix / grid
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+    for (let x = 60; x < 1080; x += 60) {
+      for (let y = 60; y < 1920; y += 60) {
+        ctx.beginPath();
+        ctx.arc(x, y, 1.5, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
 
-    // Left Window with view outside
-    ctx.save();
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(80, 240, 280, 420);
-    ctx.fillStyle = '#BAE6FD'; // Pale blue sky
-    ctx.fillRect(96, 256, 248, 388);
-
-    // Cloud in window (drifts slowly)
-    const cloudOffset = (t * 15) % 300;
-    ctx.fillStyle = '#FFFFFF';
+    // Modern studio floor line at y = 1440
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.arc(160 + cloudOffset, 380, 40, 0, Math.PI * 2);
-    ctx.arc(200 + cloudOffset, 360, 50, 0, Math.PI * 2);
-    ctx.arc(240 + cloudOffset, 380, 40, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.moveTo(80, 1440);
+    ctx.lineTo(1000, 1440);
+    ctx.stroke();
 
-    // Window frame dividers
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(216, 256, 8, 388);
-    ctx.fillRect(96, 446, 248, 8);
-    ctx.restore();
-
-    // Right Wall Art (Minimalist Canadian Maple Leaf print)
-    ctx.save();
-    ctx.fillStyle = '#FFFFFF';
-    ctx.fillRect(720, 260, 240, 300);
-    ctx.fillStyle = '#0F172A';
-    ctx.fillRect(730, 270, 220, 280);
-
-    ctx.fillStyle = '#EF4444';
-    ctx.font = '900 80px sans-serif';
-    ctx.textAlign = 'center';
-    ctx.fillText('🍁', 840, 430);
-    ctx.font = '700 24px Plus Jakarta Sans, sans-serif';
-    ctx.fillStyle = '#94A3B8';
-    ctx.fillText('FSI DIGITAL', 840, 500);
-    ctx.restore();
-
-    // Small Wall Shelf with Potted Plant
-    ctx.fillStyle = '#94A3B8';
-    ctx.fillRect(720, 680, 240, 14);
-
-    // Pot
-    ctx.fillStyle = '#EA580C';
-    ctx.beginPath();
-    ctx.moveTo(800, 680);
-    ctx.lineTo(880, 680);
-    ctx.lineTo(865, 630);
-    ctx.lineTo(815, 630);
-    ctx.closePath();
-    ctx.fill();
-
-    // Plant leaves
-    ctx.fillStyle = '#10B981';
-    ctx.beginPath();
-    ctx.arc(840, 600, 35, 0, Math.PI * 2);
-    ctx.arc(820, 615, 25, 0, Math.PI * 2);
-    ctx.arc(860, 615, 25, 0, Math.PI * 2);
-    ctx.fill();
+    // Subtle glowing floor reflection
+    const floorGrad = ctx.createLinearGradient(0, 1440, 0, 1920);
+    floorGrad.addColorStop(0, 'rgba(15, 23, 42, 0.6)');
+    floorGrad.addColorStop(1, 'rgba(2, 6, 23, 0.95)');
+    ctx.fillStyle = floorGrad;
+    ctx.fillRect(0, 1440, 1080, 480);
   }
 
-  // ─── SCENE 1: Question and Reaction (0.0s – 4.2s) ───
+  // ─── SCENE 1: High-Retention Pattern-Interrupt Hook (0.0s – 4.2s) ───
   function drawScene1(t) {
     drawRoomBackground(t);
     const s = config.scenes[0] || {};
@@ -149,52 +118,170 @@
 
     // Subtle breathing bob
     const bob = Math.sin(t * 4) * 8;
-    const charY = 750 + bob;
+    const charY = 720 + bob;
 
-    // Curiosity Cue popup above character
-    if (t >= (rxTime - 0.3)) {
-      const cueAge = t - (rxTime - 0.3);
-      const scale = Math.min(1.0, cueAge * 4);
-      ctx.save();
-      ctx.translate(540, 620);
-      ctx.scale(scale, scale);
-
-      // Yellow glow badge
-      ctx.fillStyle = '#FFE600';
-      ctx.shadowColor = 'rgba(255, 230, 0, 0.6)';
-      ctx.shadowBlur = 30;
-      ctx.beginPath();
-      ctx.arc(0, 0, 65, 0, Math.PI * 2);
-      ctx.fill();
-      ctx.shadowBlur = 0;
-
-      ctx.fillStyle = '#0F172A';
-      ctx.font = '900 64px Plus Jakarta Sans, sans-serif';
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.fillText(s.curiosityCue || '❓', 0, 5);
-      ctx.restore();
-    }
-
-    // Top Category Pill
+    // 1. Top Category Pill (y = 80 to 150)
     ctx.save();
-    ctx.fillStyle = '#DC2626';
+    ctx.fillStyle = s.badgeBg || '#DC2626';
+    ctx.shadowColor = s.badgeBg || 'rgba(220, 38, 38, 0.6)';
+    ctx.shadowBlur = 25;
     ctx.beginPath();
-    ctx.roundRect(140, 100, 800, 70, 35);
+    ctx.roundRect(140, 80, 800, 70, 35);
     ctx.fill();
+    ctx.shadowBlur = 0;
+
     ctx.fillStyle = '#FFFFFF';
     ctx.font = '900 28px Plus Jakarta Sans, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(s.topBadge || '🇨🇦 CANADIAN FOUNDER FINANCIAL QUERY', 540, 135);
+    ctx.fillText(s.topBadge || '🚨 CANADIAN FOUNDER FINANCIAL AUDIT', 540, 115);
     ctx.restore();
 
-    // Draw Character in Room
+    // 2. THE HOOK HEADLINE CARD (y = 175 to 520) — High Contrast & Thumb-Stopping
+    ctx.save();
+    const cardX = 70;
+    const cardY = 175;
+    const cardW = 940;
+    const cardH = 345;
+
+    // Glassmorphism Container
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.94)';
+    ctx.strokeStyle = s.cardBorder || 'rgba(239, 68, 68, 0.45)';
+    ctx.lineWidth = 3;
+    ctx.shadowColor = s.cardShadow || 'rgba(0, 0, 0, 0.6)';
+    ctx.shadowBlur = 40;
+    ctx.shadowOffsetY = 15;
+
+    ctx.beginPath();
+    ctx.roundRect(cardX, cardY, cardW, cardH, 32);
+    ctx.fill();
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+    ctx.shadowOffsetY = 0;
+
+    // Top Alert Label inside Card
+    ctx.fillStyle = s.hookCategoryColor || '#F87171';
+    ctx.font = '900 24px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(s.hookCategory || '⚠️ PRE-SCREENING COMPLIANCE WARNING', 540, cardY + 50);
+
+    // Headline Text (2 Lines with Electric Yellow Keyword Highlight)
+    const hl1 = s.hookLine1 || 'WHY 65% OF CANADIAN GRANTS';
+    const hl2 = s.hookLine2 || 'GET REJECTED INSTANTLY ❌';
+    const hlWord = s.hookHighlight || '65% OF CANADIAN GRANTS';
+
+    ctx.font = '900 50px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+
+    // Draw Line 1 (with Electric Yellow highlight if present)
+    if (hlWord && hl1.includes(hlWord)) {
+      const parts = hl1.split(hlWord);
+      const pre = parts[0] || '';
+      const post = parts[1] || '';
+      const preW = ctx.measureText(pre).width;
+      const hlW = ctx.measureText(hlWord).width;
+      const postW = ctx.measureText(post).width;
+      let startX = 540 - (preW + hlW + postW) / 2;
+
+      ctx.textAlign = 'left';
+      if (pre) {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(pre, startX, cardY + 128);
+        startX += preW;
+      }
+      ctx.fillStyle = '#FFE600';
+      ctx.shadowColor = 'rgba(255, 230, 0, 0.6)';
+      ctx.shadowBlur = 20;
+      ctx.fillText(hlWord, startX, cardY + 128);
+      ctx.shadowBlur = 0;
+      startX += hlW;
+      if (post) {
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText(post, startX, cardY + 128);
+      }
+    } else {
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText(hl1, 540, cardY + 128);
+    }
+
+    // Draw Line 2
+    ctx.textAlign = 'center';
+    ctx.fillStyle = '#FFFFFF';
+    ctx.fillText(hl2, 540, cardY + 195);
+
+    // Subtitle Pill / Rule inside Card
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.08)';
+    ctx.beginPath();
+    ctx.roundRect(cardX + 40, cardY + 245, cardW - 80, 65, 20);
+    ctx.fill();
+
+    ctx.fillStyle = s.hookSubColor || '#38BDF8';
+    ctx.font = '800 26px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText(s.hookSub || '1 Missing Document Disqualifies Your Entire Application', 540, cardY + 288);
+
+    ctx.restore();
+
+    // 3. Draw Character in Studio
     if (charImg) {
       ctx.save();
-      const charWidth = 750;
-      const charHeight = 750;
+      const charWidth = 740;
+      const charHeight = 740;
       ctx.drawImage(charImg, (1080 - charWidth) / 2, charY, charWidth, charHeight);
+      ctx.restore();
+    }
+
+    // 4. Floating Alert Badge above/beside character (Contextual Anchor)
+    ctx.save();
+    const alertText = s.alertBubble || '🔴 AUTOMATED FILTER: REJECTED';
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
+    ctx.strokeStyle = '#EF4444';
+    ctx.lineWidth = 3;
+    ctx.shadowColor = 'rgba(239, 68, 68, 0.5)';
+    ctx.shadowBlur = 25;
+    ctx.beginPath();
+    ctx.roundRect(190, 640, 700, 70, 35);
+    ctx.fill();
+    ctx.stroke();
+    ctx.shadowBlur = 0;
+
+    // Red pulsating dot
+    const pulseAlpha = 0.5 + Math.sin(t * 8) * 0.5;
+    ctx.fillStyle = `rgba(239, 68, 68, ${pulseAlpha})`;
+    ctx.beginPath();
+    ctx.arc(235, 675, 12, 0, Math.PI * 2);
+    ctx.fill();
+
+    ctx.fillStyle = '#F8FAFC';
+    ctx.font = '900 26px Plus Jakarta Sans, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText(alertText, 560, 675);
+    ctx.restore();
+
+    // 5. Curiosity / Reaction Cue popup above character at rxTime
+    if (t >= (rxTime - 0.3)) {
+      const cueAge = t - (rxTime - 0.3);
+      const scale = Math.min(1.0, cueAge * 4);
+      ctx.save();
+      ctx.translate(540, 580);
+      ctx.scale(scale, scale);
+
+      // Yellow glow badge
+      ctx.fillStyle = '#FFE600';
+      ctx.shadowColor = 'rgba(255, 230, 0, 0.7)';
+      ctx.shadowBlur = 25;
+      ctx.beginPath();
+      ctx.arc(0, 0, 45, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.shadowBlur = 0;
+
+      ctx.fillStyle = '#0F172A';
+      ctx.font = '900 44px Plus Jakarta Sans, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(s.curiosityCue || '❓', 0, 4);
       ctx.restore();
     }
   }
@@ -205,12 +292,12 @@
     const startTime = s.startTime || 4.2;
     const crossTime = s.crossTime || 5.6;
 
-    // Pale grey background
-    ctx.fillStyle = s.bg || '#F8FAFC';
+    // Dark sleek backdrop matching the studio theme
+    ctx.fillStyle = s.bg || '#0B1528';
     ctx.fillRect(0, 0, 1080, 1920);
 
     // Subtle background grid
-    ctx.strokeStyle = 'rgba(0, 0, 0, 0.04)';
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
     ctx.lineWidth = 2;
     for (let x = 0; x < 1080; x += 80) {
       ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, 1920); ctx.stroke();
@@ -224,9 +311,9 @@
     ctx.translate(540, 750);
     ctx.scale(cardScale, cardScale);
 
-    // White Card Box
-    ctx.fillStyle = '#FFFFFF';
-    ctx.shadowColor = 'rgba(0, 0, 0, 0.12)';
+    // Dark Glass Card Box
+    ctx.fillStyle = 'rgba(15, 23, 42, 0.95)';
+    ctx.shadowColor = 'rgba(0, 0, 0, 0.6)';
     ctx.shadowBlur = 50;
     ctx.shadowOffsetY = 20;
     ctx.beginPath();
@@ -235,12 +322,12 @@
     ctx.shadowBlur = 0;
     ctx.shadowOffsetY = 0;
 
-    ctx.strokeStyle = '#E2E8F0';
-    ctx.lineWidth = 4;
+    ctx.strokeStyle = 'rgba(255, 255, 255, 0.15)';
+    ctx.lineWidth = 3;
     ctx.stroke();
 
     // Header Inside Card
-    ctx.fillStyle = '#64748B';
+    ctx.fillStyle = '#94A3B8';
     ctx.font = '900 26px Plus Jakarta Sans, sans-serif';
     ctx.textAlign = 'center';
     ctx.fillText(s.cardHeader || 'COMMON STARTUP ASSUMPTION', 0, -230);
@@ -249,21 +336,24 @@
     ctx.font = '80px sans-serif';
     ctx.fillText(s.cardIcon || '💻 📄', 0, -120);
 
-    ctx.fillStyle = '#0F172A';
+    ctx.fillStyle = '#FFFFFF';
     ctx.font = '900 48px Plus Jakarta Sans, sans-serif';
     ctx.fillText(s.conceptTitle || 'OVERSEAS CONTRACTORS', 0, -20);
 
-    ctx.fillStyle = '#64748B';
+    ctx.fillStyle = '#94A3B8';
     ctx.font = '700 30px Plus Jakarta Sans, sans-serif';
     ctx.fillText(s.conceptSubtitle || 'US • India • Europe Dev Invoices', 0, 45);
 
     // Warning / Disqualification Badge
-    ctx.fillStyle = '#FEE2E2';
+    ctx.fillStyle = 'rgba(239, 68, 68, 0.2)';
+    ctx.strokeStyle = '#EF4444';
+    ctx.lineWidth = 2;
     ctx.beginPath();
-    ctx.roundRect(-300, 110, 600, 80, 40);
+    ctx.roundRect(-320, 110, 640, 80, 40);
     ctx.fill();
+    ctx.stroke();
 
-    ctx.fillStyle = '#DC2626';
+    ctx.fillStyle = '#F87171';
     ctx.font = '900 30px Plus Jakarta Sans, sans-serif';
     ctx.fillText(s.badgeText || '⚠️ $0.00 REIMBURSEMENT', 0, 160);
 
@@ -518,13 +608,13 @@
     const s = config.scenes[4] || {};
 
     const charImg = images['pose3-solution'];
-    const charY = 750 + Math.sin(t * 4) * 8;
+    const charY = 720 + Math.sin(t * 4) * 8;
 
-    // Draw Character smiling in room
+    // Draw Character smiling in studio
     if (charImg) {
       ctx.save();
-      const charWidth = 750;
-      const charHeight = 750;
+      const charWidth = 740;
+      const charHeight = 740;
       ctx.drawImage(charImg, (1080 - charWidth) / 2, charY, charWidth, charHeight);
       ctx.restore();
     }
@@ -532,14 +622,18 @@
     // Floating Solution Badge
     ctx.save();
     ctx.fillStyle = '#059669';
+    ctx.shadowColor = 'rgba(16, 185, 129, 0.6)';
+    ctx.shadowBlur = 25;
     ctx.beginPath();
-    ctx.roundRect(140, 100, 800, 80, 40);
+    ctx.roundRect(140, 80, 800, 70, 35);
     ctx.fill();
+    ctx.shadowBlur = 0;
+
     ctx.fillStyle = '#FFFFFF';
-    ctx.font = '900 32px Plus Jakarta Sans, sans-serif';
+    ctx.font = '900 28px Plus Jakarta Sans, sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText(s.ctaHeader || '🛡️ FSI DIGITAL · CAPITAL INTELLIGENCE', 540, 140);
+    ctx.fillText(s.ctaHeader || '🛡️ FSI DIGITAL · CAPITAL INTELLIGENCE', 540, 115);
     ctx.restore();
 
     // CTA Box above captions

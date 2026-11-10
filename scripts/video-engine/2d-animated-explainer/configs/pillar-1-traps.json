@@ -18,11 +18,22 @@
     {
       "index": 1,
       "id": "question-and-reaction",
-      "startTime": 0.0,
+      "startTime": 0,
       "endTime": 4.2,
-      "topBadge": "🇨🇦 CANADIAN FOUNDER ALERT",
-      "curiosityCue": "❓",
-      "reactionTime": 1.8
+      "topBadge": "🚨 CANADIAN TECH GRANT AUDIT",
+      "curiosityCue": "⚠️",
+      "reactionTime": 1.8,
+      "badgeBg": "#DC2626",
+      "cardBorder": "rgba(239, 68, 68, 0.5)",
+      "cardShadow": "rgba(239, 68, 68, 0.25)",
+      "hookCategory": "⚠️ FATAL AUDIT DISQUALIFICATION",
+      "hookCategoryColor": "#F87171",
+      "hookLine1": "THE 3 IRAP GRANT TRAPS",
+      "hookLine2": "THAT KILL TECH CLAIMS ❌",
+      "hookHighlight": "3 IRAP GRANT TRAPS",
+      "hookSub": "Why 80% of Offshore Contractor Claims Get Denied",
+      "hookSubColor": "#F87171",
+      "alertBubble": "🔴 /bin/zsh REIMBURSEMENT FOR OVERSEAS DEVS"
     },
     {
       "index": 2,
@@ -43,9 +54,24 @@
       "endTime": 14.5,
       "diagramTitle": "🏛️ THE CANADIAN SOIL MECHANISM",
       "nodes": [
-        { "icon": "🇨🇦", "title": "Canadian T4 Payroll", "sub": "Developers physically resident in Canada", "color": "#38BDF8" },
-        { "icon": "⚙️", "title": "NRC IRAP & SR&ED Engine", "sub": "Non-dilutive federal capital review", "color": "#818CF8" },
-        { "icon": "💰", "title": "Up to 80% Non-Repayable Cash", "sub": "Direct bank wire reimbursement", "color": "#34D399" }
+        {
+          "icon": "🇨🇦",
+          "title": "Canadian T4 Payroll",
+          "sub": "Developers physically resident in Canada",
+          "color": "#38BDF8"
+        },
+        {
+          "icon": "⚙️",
+          "title": "NRC IRAP & SR&ED Engine",
+          "sub": "Non-dilutive federal capital review",
+          "color": "#818CF8"
+        },
+        {
+          "icon": "💰",
+          "title": "Up to 80% Non-Repayable Cash",
+          "sub": "Direct bank wire reimbursement",
+          "color": "#34D399"
+        }
       ],
       "footnote": "Federal Law: Non-Canadian payroll receives 0% subsidy."
     },
@@ -73,15 +99,65 @@
     }
   ],
   "captions": [
-    { "startTime": 0.0, "endTime": 2.1, "text": "Can you pay foreign developers...", "highlight": "foreign developers" },
-    { "startTime": 2.1, "endTime": 4.2, "text": "...with Canadian government grants?", "highlight": "government grants?" },
-    { "startTime": 4.2, "endTime": 6.2, "text": "NO. The CRA and IRAP...", "highlight": "NO." },
-    { "startTime": 6.2, "endTime": 8.5, "text": "...reject overseas invoices immediately.", "highlight": "reject overseas" },
-    { "startTime": 8.5, "endTime": 11.2, "text": "Engineers must be full-time...", "highlight": "full-time" },
-    { "startTime": 11.2, "endTime": 14.5, "text": "...Canadian T4 employees on domestic soil.", "highlight": "Canadian T4 employees" },
-    { "startTime": 14.5, "endTime": 17.2, "text": "Up to 80% of technical salaries...", "highlight": "80% of technical salaries" },
-    { "startTime": 17.2, "endTime": 20.5, "text": "...flow directly into your company account.", "highlight": "directly into your account." },
-    { "startTime": 20.5, "endTime": 23.5, "text": "Keep your core code in Canada...", "highlight": "core code in Canada" },
-    { "startTime": 23.5, "endTime": 27.24, "text": "...and claim your full government grant.", "highlight": "claim your full government grant." }
+    {
+      "startTime": 0,
+      "endTime": 2.1,
+      "text": "Can you pay foreign developers...",
+      "highlight": "foreign developers"
+    },
+    {
+      "startTime": 2.1,
+      "endTime": 4.2,
+      "text": "...with Canadian government grants?",
+      "highlight": "government grants?"
+    },
+    {
+      "startTime": 4.2,
+      "endTime": 6.2,
+      "text": "NO. The CRA and IRAP...",
+      "highlight": "NO."
+    },
+    {
+      "startTime": 6.2,
+      "endTime": 8.5,
+      "text": "...reject overseas invoices immediately.",
+      "highlight": "reject overseas"
+    },
+    {
+      "startTime": 8.5,
+      "endTime": 11.2,
+      "text": "Engineers must be full-time...",
+      "highlight": "full-time"
+    },
+    {
+      "startTime": 11.2,
+      "endTime": 14.5,
+      "text": "...Canadian T4 employees on domestic soil.",
+      "highlight": "Canadian T4 employees"
+    },
+    {
+      "startTime": 14.5,
+      "endTime": 17.2,
+      "text": "Up to 80% of technical salaries...",
+      "highlight": "80% of technical salaries"
+    },
+    {
+      "startTime": 17.2,
+      "endTime": 20.5,
+      "text": "...flow directly into your company account.",
+      "highlight": "directly into your account."
+    },
+    {
+      "startTime": 20.5,
+      "endTime": 23.5,
+      "text": "Keep your core code in Canada...",
+      "highlight": "core code in Canada"
+    },
+    {
+      "startTime": 23.5,
+      "endTime": 27.24,
+      "text": "...and claim your full government grant.",
+      "highlight": "claim your full government grant."
+    }
   ]
 }
