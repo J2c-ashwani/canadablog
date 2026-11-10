@@ -17,6 +17,8 @@ type ProgramPageProps = {
   }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllPrograms().map((program) => ({
     slug: program.slug,

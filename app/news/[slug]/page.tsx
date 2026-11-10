@@ -16,6 +16,8 @@ type NewsPageProps = {
   }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllNews().map((article) => ({
     slug: article.slug,

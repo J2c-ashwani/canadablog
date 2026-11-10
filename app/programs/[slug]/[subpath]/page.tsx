@@ -20,6 +20,8 @@ type SubpathPageProps = {
 
 const SUBPATHS = ['eligibility', 'application', 'mistakes', 'faq'];
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   const params: { slug: string; subpath: string }[] = [];
   const programs = getAllPrograms();

@@ -21,6 +21,8 @@ type ComparePageProps = {
   }>;
 };
 
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getAllComparisons().map((comp) => ({
     slug: comp.slug,
