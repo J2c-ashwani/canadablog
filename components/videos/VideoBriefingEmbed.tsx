@@ -6,7 +6,9 @@ import { safeSessionStorage } from "@/lib/storage"
 import { usePathname } from "next/navigation"
 
 export interface VideoBriefingProps {
-  videoId: string
+  videoId?: string
+  videoSrc?: string
+  poster?: string
   title: string
   duration?: string
   topic: string
@@ -20,6 +22,8 @@ export interface VideoBriefingProps {
 
 export function VideoBriefingEmbed({
   videoId,
+  videoSrc,
+  poster,
   title,
   duration = "0:58",
   topic,
@@ -33,11 +37,13 @@ export function VideoBriefingEmbed({
   const [isPlaying, setIsPlaying] = useState(false)
   const pathname = usePathname() || ""
 
+  const activeId = videoId || videoSrc || topic
+
   const handlePlay = () => {
     setIsPlaying(true)
     try {
       safeSessionStorage.setItem("fsi_video_touch", topic)
-      safeSessionStorage.setItem("fsi_video_touch_id", videoId)
+      safeSessionStorage.setItem("fsi_video_touch_id", activeId)
 
       // Universal internal telemetry
       const email = safeSessionStorage.getItem("fsi_checkout_email") || ""
@@ -49,7 +55,7 @@ export function VideoBriefingEmbed({
           event: "video_briefing_play",
           journeyId: safeSessionStorage.getItem("fsi_journey_id") || "",
           metadata: {
-            videoId,
+            videoId: activeId,
             topic,
             title,
             pathname,
@@ -60,7 +66,7 @@ export function VideoBriefingEmbed({
       // Standard Google Analytics 4 event
       if (typeof window !== "undefined" && (window as any).gtag) {
         ;(window as any).gtag("event", "video_briefing_play", {
-          video_id: videoId,
+          video_id: activeId,
           video_title: title,
           video_topic: topic,
           page_location: window.location.href,
@@ -82,7 +88,7 @@ export function VideoBriefingEmbed({
           event: "video_briefing_cta_click",
           journeyId: safeSessionStorage.getItem("fsi_journey_id") || "",
           metadata: {
-            videoId,
+            videoId: activeId,
             topic,
             ctaHref,
             pathname,
@@ -92,7 +98,7 @@ export function VideoBriefingEmbed({
 
       if (typeof window !== "undefined" && (window as any).gtag) {
         ;(window as any).gtag("event", "video_briefing_cta_click", {
-          video_id: videoId,
+          video_id: activeId,
           video_topic: topic,
           cta_destination: ctaHref,
         })
@@ -105,7 +111,7 @@ export function VideoBriefingEmbed({
     ? `${ctaHref}&utm_source=in_article_video&utm_medium=video_embed&utm_campaign=${encodeURIComponent(topic.toLowerCase().replace(/[^a-z0-9]/g, "_"))}`
     : `${ctaHref}?utm_source=in_article_video&utm_medium=video_embed&utm_campaign=${encodeURIComponent(topic.toLowerCase().replace(/[^a-z0-9]/g, "_"))}`
 
-  const thumbnailUrl = `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`
+  const thumbnailUrl = poster || (videoId ? `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg` : '/videos/posters/canadian-grants-2d-explainer.jpg')
 
   return (
     <section
@@ -117,14 +123,24 @@ export function VideoBriefingEmbed({
         <div className="md:col-span-5 flex justify-center">
           <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[9/16] rounded-xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl">
             {isPlaying ? (
-              <iframe
-                src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-                title={title}
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerPolicy="strict-origin-when-cross-origin"
-                allowFullScreen
-                className="w-full h-full border-0 rounded-xl"
-              />
+              videoSrc ? (
+                <video
+                  src={videoSrc}
+                  controls
+                  autoPlay
+                  playsInline
+                  className="w-full h-full object-cover rounded-xl"
+                />
+              ) : (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                  title={title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="w-full h-full border-0 rounded-xl"
+                />
+              )
             ) : (
               <button
                 type="button"

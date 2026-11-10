@@ -10,6 +10,7 @@ import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import FundingStrategyBox from "@/components/blog/FundingStrategyBox"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
   title: "$50K–$2M Innovation & R&D Grants in Canada — 2026 Directory",
@@ -132,6 +133,22 @@ export default function CanadaInnovationGrantsPage() {
               ]}
               expectedStack="$250,000–$1,500,000"
               focusArea="Recommended R&D Stacking Sequence"
+            />
+            <VideoBriefingEmbed
+              videoSrc="/videos/reels/digital-adoption-funding.mp4"
+              poster="/videos/posters/digital-adoption-funding.jpg"
+              title="Digital Adoption & Technology Modernization Grants in 2026"
+              duration="0:58"
+              topic="Digital Adoption Funding"
+              keyTakeaways={[
+                "Access $15,000 to $100,000+ for enterprise software, ERP, and AI workflow integration",
+                "Scale AI & Regional Innovation streams fund up to 50% of advanced commercialization costs",
+                "Stack digital adoption capital with SR&ED for custom technical architecture development"
+              ]}
+              ctaText="Check Tech & Innovation Eligibility in 60s →"
+              ctaHref="/calculator?industry=technology"
+              guideAnchorText="Explore Canadian Innovation & R&D Grant Programs"
+              guideAnchorHref="/canada/innovation-grants"
             />
           </div>
         </div>

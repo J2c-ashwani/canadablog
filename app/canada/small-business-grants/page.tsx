@@ -9,6 +9,7 @@ import type { Metadata } from "next"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
   title: "$10K–$500K Small Business Grants in Canada — 18 Programs Open (2026)",
@@ -141,6 +142,22 @@ export default function CanadianSmallBusinessGrants() {
             <EligibleCheck 
               title="Check if your business qualifies for Canadian funding in under 60 seconds." 
               description="Answering these 2 baseline questions will show if you meet baseline incorporation and revenue requirements for Canada SME grants." 
+            />
+            <VideoBriefingEmbed
+              videoSrc="/videos/reels/grant-stacking-secrets.mp4"
+              poster="/videos/posters/grant-stacking-secrets.jpg"
+              title="How to Legally Stack Canadian Grants: Recover Up to 87% of Costs"
+              duration="0:58"
+              topic="Grant Stacking Secrets"
+              keyTakeaways={[
+                "Stack NRC-IRAP upfront wage grants (up to 80%) with CRA SR&ED tax refunds (35% on remaining)",
+                "Zero duplicate claims: Deduct direct assistance first to stay 100% CRA audit compliant",
+                "Eligible Canadian tech CCPCs recover $87,000+ in non-dilutive capital per $100K salary"
+              ]}
+              ctaText="Calculate Your Grant Stack in 60s →"
+              ctaHref="/calculator"
+              guideAnchorText="View Canadian Small Business Grant Programs"
+              guideAnchorHref="/canada/small-business-grants"
             />
           </div>
         </div>

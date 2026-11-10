@@ -11,6 +11,7 @@ import AutoLink from "@/components/seo/AutoLink"
 import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
     title: "Agriculture Grants Canada 2026: AAFC & Agritech Programs",
@@ -111,6 +112,22 @@ export default function AgricultureGrantsPage() {
                       />
                       <EEATBadge authorName="Ashwani K." authorImage="/author-ashwani.jpg" date="2026-03-01" />
                       <EligibleCheck />
+                      <VideoBriefingEmbed
+                        videoSrc="/videos/reels/agri-food-canada-grants.mp4"
+                        poster="/videos/posters/agri-food-canada-grants.jpg"
+                        title="Agri-Food, Agriculture & Processing Grants: Up to $5,000,000"
+                        duration="0:58"
+                        topic="Agri-Food Canada Grants"
+                        keyTakeaways={[
+                          "AgriInnovate delivers up to $5M in non-repayable capital for commercial agritech deployment",
+                          "Sustainable CAP cost-shares 50% of automated equipment, irrigation, and cold chain upgrades",
+                          "Primary producers and value-added food processors qualify for annual intake windows"
+                        ]}
+                        ctaText="Check Agri-Food Funding Eligibility in 60s →"
+                        ctaHref="/calculator?industry=agriculture"
+                        guideAnchorText="Explore Agriculture Startup Funding Guide"
+                        guideAnchorHref="/canada/agriculture-startup-funding"
+                      />
                     </div>
 
                     {/* Stats Grid */}

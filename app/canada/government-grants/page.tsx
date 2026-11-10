@@ -10,6 +10,7 @@ import ShortAnswerBox from "@/components/blog/ShortAnswerBox"
 import EEATBadge from "@/components/blog/EEATBadge"
 import EligibleCheck from "@/components/blog/EligibleCheck"
 import FundingStrategyBox from "@/components/blog/FundingStrategyBox"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
   title: "$5K–$5M Canadian Government Grants for Business — Open Intakes (2026)",
@@ -147,6 +148,22 @@ export default function CanadaGovernmentGrantsPage() {
               ]}
               expectedStack="$150,000–$2,000,000"
               focusArea="Recommended SME Capital Stacking Sequence"
+            />
+            <VideoBriefingEmbed
+              videoSrc="/videos/reels/quarterly-grant-deadlines.mp4"
+              poster="/videos/posters/quarterly-grant-deadlines.jpg"
+              title="Upcoming Canadian Grant Deadlines (2026): Act Before Pools Close"
+              duration="0:58"
+              topic="Grant Deadlines & Budget Timing"
+              keyTakeaways={[
+                "Government fiscal allocations operate on strict quarterly cutoffs and fiscal year-end (March 31)",
+                "First-come, first-reviewed funding streams exhaust annual budgets within 30 to 45 days of opening",
+                "Early submission gives your company priority assessor review and higher acceptance rates"
+              ]}
+              ctaText="Check Open Grant Deadlines for Your Business →"
+              ctaHref="/calculator"
+              guideAnchorText="Explore Canadian Government Grants Directory"
+              guideAnchorHref="/canada/government-grants"
             />
           </div>
         </div>

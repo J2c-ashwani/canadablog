@@ -6,6 +6,7 @@ import { Shield, Users, Clock, ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { OrganicProductLadderImpression } from '@/components/products/OrganicProductLadderImpression';
+import { VideoBriefingEmbed } from '@/components/videos/VideoBriefingEmbed';
 
 export const metadata: Metadata = {
     title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
@@ -62,8 +63,28 @@ export default function CalculatorPage() {
                     </p>
                 </div>
 
+                {/* Master 2D Animated Explainer */}
+                <div className="max-w-4xl mx-auto mb-12">
+                    <VideoBriefingEmbed
+                        videoSrc="/videos/reels/canadian-grants-2d-explainer.mp4"
+                        poster="/videos/posters/canadian-grants-2d-explainer.jpg"
+                        title="How Canadian Business Funding Works in 60 Seconds"
+                        duration="0:58"
+                        topic="Canadian Grants 2D Explainer"
+                        keyTakeaways={[
+                            "Non-dilutive capital: Government grants do not take equity or require personal collateral",
+                            "Two primary tiers: Upfront wage/project subsidies (IRAP/Agri) and retroactive tax credits (SR&ED)",
+                            "Self-serve assessment: Complete the 4 questions below to calculate your active program match"
+                        ]}
+                        ctaText="Start Free Assessment Below ↓"
+                        ctaHref="#calculator"
+                        guideAnchorText="Read Canada Grant Stacking Blueprint"
+                        guideAnchorHref="/canada/small-business-grants"
+                    />
+                </div>
+
                 {/* Dynamic Calculator Component */}
-                <div className="mb-20">
+                <div id="calculator" className="mb-20">
                     <GrantCalculator />
                 </div>
 

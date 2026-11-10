@@ -14,6 +14,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 import ProvincialCityMesh from "@/components/pseo/ProvincialCityMesh"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
     title: "$10K–$100K+ Alberta Innovates & Small Business Grants (2026 Guide)",
@@ -225,8 +226,24 @@ export default function AlbertaGrantsPage() {
                         <div className="mt-4 mb-8 flex justify-center">
                             
                         </div>
-                        <div className="mt-8 mb-8">
+                        <div className="mt-8 mb-8 text-left">
                             <EligibleCheck />
+                            <VideoBriefingEmbed
+                              videoSrc="/videos/reels/alberta-business-grants.mp4"
+                              poster="/videos/posters/alberta-business-grants.jpg"
+                              title="Alberta Business Grants & Tech Innovation Funds (2026)"
+                              duration="0:58"
+                              topic="Alberta Business Grants"
+                              keyTakeaways={[
+                                "Alberta Innovates Vouchers provide up to $100,000 for product prototyping and R&D",
+                                "Digital Traction delivers $50,000 non-dilutive scaling cash for early-stage software",
+                                "Calgary and Edmonton startups qualify for PrairiesCan Regional Innovation allocations"
+                              ]}
+                              ctaText="Check Your Alberta Grant Eligibility →"
+                              ctaHref="/calculator?region=alberta"
+                              guideAnchorText="Explore Alberta Small Business Grants Guide"
+                              guideAnchorHref="/canada/alberta"
+                            />
                         </div>
                     </div>
 

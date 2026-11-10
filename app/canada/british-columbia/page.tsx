@@ -14,6 +14,7 @@ import type { Metadata } from "next"
 import type { Grant } from "@/lib/grants-data"
 import AutoLink from "@/components/seo/AutoLink"
 import ProvincialCityMesh from "@/components/pseo/ProvincialCityMesh"
+import { VideoBriefingEmbed } from "@/components/videos/VideoBriefingEmbed"
 
 export const metadata: Metadata = {
     title: "$10K–$300K British Columbia Business Grants — 2026 Open Intakes",
@@ -225,8 +226,24 @@ export default function BritishColumbiaGrantsPage() {
                         <div className="mt-4 mb-8 flex justify-center">
                             
                         </div>
-                        <div className="mt-8 mb-8">
+                        <div className="mt-8 mb-8 text-left">
                             <EligibleCheck />
+                            <VideoBriefingEmbed
+                              videoSrc="/videos/reels/export-development-grants.mp4"
+                              poster="/videos/posters/export-development-grants.jpg"
+                              title="CanExport & Global Growth Grants: Up to $50,000 Non-Repayable"
+                              duration="0:58"
+                              topic="CanExport & Global Growth"
+                              keyTakeaways={[
+                                "CanExport SMEs covers 50% of eligible international expansion expenses up to $50,000",
+                                "Eligible for international trade shows, travel, marketing translation, and foreign IP protection",
+                                "Target markets must be outside Canada; non-repayable grant with rolling intake review"
+                              ]}
+                              ctaText="Check Your Export Grant Eligibility in 60s →"
+                              ctaHref="/calculator?goal=expansion"
+                              guideAnchorText="Explore British Columbia Business Grants"
+                              guideAnchorHref="/canada/british-columbia"
+                            />
                         </div>
                     </div>
 
