@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { getAllPseoPages } from '@/lib/pseo-data';
+import { getPublishedPseoPages, getPseoCityPages, getPseoProvincePages } from '@/lib/pseo-data';
 import { MapPin, Building2, Link2, BookOpen } from 'lucide-react';
 
 interface Props {
@@ -16,26 +16,21 @@ const PRIMARY_AUTHORITY_CITIES = new Set([
 ]);
 
 export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug, currentIndustrySlug }: Props) {
-  // Get all published pages
-  const allPages = getAllPseoPages().filter(p => p.isPublished);
+  const cityAllPages = getPseoCityPages(currentProvinceSlug, currentCitySlug);
+  const provAllPages = getPseoProvincePages(currentProvinceSlug);
   
-  if (allPages.length === 0) return null;
+  if (cityAllPages.length === 0 && provAllPages.length === 0) return null;
 
-  const samplePage = allPages.find(p => p.provinceSlug === currentProvinceSlug);
+  const samplePage = cityAllPages[0] || provAllPages[0];
   const provinceName = samplePage ? samplePage.provinceName : '';
-  const cityName = allPages.find(p => p.provinceSlug === currentProvinceSlug && p.citySlug === currentCitySlug)?.cityName || '';
-  const industryName = allPages.find(p => p.provinceSlug === currentProvinceSlug && p.industrySlug === currentIndustrySlug)?.industryName || '';
+  const cityName = cityAllPages[0]?.cityName || '';
+  const industryName = provAllPages.find(p => p.industrySlug === currentIndustrySlug)?.industryName || '';
 
-  // 1. SILO 1: Other Industries in the SAME City (City topical cluster)
-  const sameCityPages = allPages.filter(p => 
-    p.provinceSlug === currentProvinceSlug && 
-    p.citySlug === currentCitySlug && 
-    p.industrySlug !== currentIndustrySlug
-  );
+  // 1. SILO 1: Other Industries in the SAME City (City topical cluster) - fast 15-item filter
+  const sameCityPages = cityAllPages.filter(p => p.industrySlug !== currentIndustrySlug);
 
   // 2. SILO 2: Same Industry in OTHER Cities of the same Province (Industry topical cluster)
-  const sameIndustryPages = allPages.filter(p => 
-    p.provinceSlug === currentProvinceSlug && 
+  const sameIndustryPages = provAllPages.filter(p => 
     p.industrySlug === currentIndustrySlug && 
     p.citySlug !== currentCitySlug
   );

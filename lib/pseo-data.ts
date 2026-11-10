@@ -2562,16 +2562,22 @@ export function getAllPseoPages(): PseoPage[] {
     return pages;
 }
 
+let cachedPagesMap: Map<string, PseoPage> | null = null;
+let cachedPublishedPages: PseoPage[] | null = null;
+const cachedProvincePages = new Map<string, PseoPage[]>();
+const cachedCityPages = new Map<string, PseoPage[]>();
+
 /**
  * Fetches a specific pSEO page configuration. Returns null if invalid path.
  */
 export function getPseoPage(provinceSlug: string, citySlug: string, industrySlug: string): PseoPage | null {
-    const allPages = getAllPseoPages();
-    return allPages.find(p =>
-        p.provinceSlug === provinceSlug &&
-        p.citySlug === citySlug &&
-        p.industrySlug === industrySlug
-    ) || null;
+    if (!cachedPagesMap) {
+        cachedPagesMap = new Map();
+        for (const p of getAllPseoPages()) {
+            cachedPagesMap.set(`${p.provinceSlug}/${p.citySlug}/${p.industrySlug}`, p);
+        }
+    }
+    return cachedPagesMap.get(`${provinceSlug}/${citySlug}/${industrySlug}`) || null;
 }
 
 export type PseoProvinceSummary = {
@@ -2604,17 +2610,26 @@ function uniquePseoPages(pages: PseoPage[]): PseoPage[] {
 }
 
 export function getPublishedPseoPages(): PseoPage[] {
-    return uniquePseoPages(getAllPseoPages().filter((page) => page.isPublished));
+    if (cachedPublishedPages) return cachedPublishedPages;
+    cachedPublishedPages = uniquePseoPages(getAllPseoPages().filter((page) => page.isPublished));
+    return cachedPublishedPages;
 }
 
 export function getPseoProvincePages(provinceSlug: string): PseoPage[] {
-    return getPublishedPseoPages().filter((page) => page.provinceSlug === provinceSlug);
+    if (!cachedProvincePages.has(provinceSlug)) {
+        cachedProvincePages.set(provinceSlug, getPublishedPseoPages().filter((page) => page.provinceSlug === provinceSlug));
+    }
+    return cachedProvincePages.get(provinceSlug)!;
 }
 
 export function getPseoCityPages(provinceSlug: string, citySlug: string): PseoPage[] {
-    return getPublishedPseoPages().filter(
-        (page) => page.provinceSlug === provinceSlug && page.citySlug === citySlug
-    );
+    const key = `${provinceSlug}/${citySlug}`;
+    if (!cachedCityPages.has(key)) {
+        cachedCityPages.set(key, getPublishedPseoPages().filter(
+            (page) => page.provinceSlug === provinceSlug && page.citySlug === citySlug
+        ));
+    }
+    return cachedCityPages.get(key)!;
 }
 
 export function getPseoProvinceSummaries(): PseoProvinceSummary[] {
