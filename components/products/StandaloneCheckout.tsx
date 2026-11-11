@@ -211,14 +211,14 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     if (emailVal) setEmail(emailVal);
     if (nameVal) setName(nameVal);
 
-    // Parse outcomes
+    // Parse outcomes & profile context from URL params before falling back to localStorage
     const m = sp.get('matches') || (!isExpired ? localStorage.getItem('fsi:lead_matches') : null);
     const est = sp.get('estimate') || (!isExpired ? localStorage.getItem('fsi:lead_estimate') : null);
     const ind = sp.get('industry') || (!isExpired ? localStorage.getItem('fsi:lead_industry') : null);
-    const reg = sp.get('region') || (!isExpired ? localStorage.getItem('fsi:lead_region') : null);
-    const rev = !isExpired ? localStorage.getItem('fsi:lead_revenue') : null;
-    const goal = !isExpired ? localStorage.getItem('fsi:lead_goal') : null;
-    const company = !isExpired ? localStorage.getItem('fsi:lead_company') : null;
+    const reg = sp.get('region') || sp.get('province') || (!isExpired ? localStorage.getItem('fsi:lead_region') : null);
+    const rev = sp.get('revenue') || (!isExpired ? localStorage.getItem('fsi:lead_revenue') : null);
+    const goal = sp.get('goal') || (!isExpired ? localStorage.getItem('fsi:lead_goal') : null);
+    const company = sp.get('company') || (!isExpired ? localStorage.getItem('fsi:lead_company') : null);
 
     if (m) setPersonalizedMatches(m);
     if (est) setPersonalizedEstimate(est);
