@@ -285,7 +285,7 @@ export class CEOAgent {
             error: `Current time (${currentUtcHour}:00 UTC) is outside the 13:35 UTC (7:05 PM IST) briefing window. Email suppressed.`,
           })
         } else {
-          let socialSprintInfo: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string } = {}
+          let socialSprintInfo: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string; isFreshToday?: boolean; lastAcceptedAt?: string } = {}
           try {
             const sprintState = await getLatestOperationalState<any>('social-revenue-sprint-september-v1')
             if (sprintState && sprintState.variants) {
@@ -311,6 +311,7 @@ export class CEOAgent {
 
               if (latestVariantId) {
                 const v = sprintState.variants[latestVariantId]
+                const isFreshToday = latestAcceptedTime > 0 && (Date.now() - latestAcceptedTime < 18 * 60 * 60 * 1000)
 
                 // 1. Facebook Link
                 let fbUrl: string | undefined = v?.facebook?.permalink
@@ -370,6 +371,8 @@ export class CEOAgent {
                   igUrl,
                   liUrl,
                   ytUrl,
+                  isFreshToday,
+                  lastAcceptedAt: latestAcceptedTime ? new Date(latestAcceptedTime).toISOString() : undefined,
                 }
               }
             }
@@ -587,7 +590,7 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
       status: string
       recommendedAction: string
     }>
-    socialSprint: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string }
+    socialSprint: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string; isFreshToday?: boolean; lastAcceptedAt?: string }
     briefText: string
   }): string {
     const leadsRows = highIntentLeads.length > 0
@@ -675,8 +678,8 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
             <h2 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin: 0 0 12px 0;">3. Social Revenue Engine (Daily Distribution)</h2>
             <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px;">
               <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-                <span style="font-size: 13px; font-weight: 600; color: #0f172a;">Active Format: 100% Daily Vertical Video Reels</span>
-                <span style="background: #dcfce7; color: #15803d; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 9999px;">Operational</span>
+                <span style="font-size: 13px; font-weight: 600; color: #0f172a;">Active Format: 100% Daily Vertical Video Reels ${socialSprint.variantId ? `(${socialSprint.variantId})` : ''}</span>
+                <span style="background: ${socialSprint.isFreshToday === false ? '#fef3c7' : '#dcfce7'}; color: ${socialSprint.isFreshToday === false ? '#b45309' : '#15803d'}; font-size: 11px; font-weight: 700; padding: 3px 8px; border-radius: 9999px;">${socialSprint.isFreshToday === false ? `Stale (${socialSprint.lastAcceptedAt ? socialSprint.lastAcceptedAt.slice(0, 10) : 'No Post Today'})` : 'Published Today'}</span>
               </div>
               <table style="width: 100%; border-collapse: collapse; font-size: 13px;">
                 <tr style="border-bottom: 1px solid #e2e8f0;">

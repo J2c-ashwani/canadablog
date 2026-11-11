@@ -215,14 +215,22 @@ export class SocialRevenueSprintService {
 
     // 2. ENDLESS ENGINE: When every variant in the active library has been posted once,
     // do NOT stop or return COMPLETE. Instead, activate the 2D Explainer Evergreen Rotation:
-    // Select the variant whose last publication was longest ago (and >= MIN_VARIANT_GAP_MS).
+    // Select the variant whose last publication was longest ago (and >= EVERGREEN_RECYCLE_COOLDOWN_MS).
     // This ensures continuous, non-stop daily posting 7 days a week forever without breaking the chain.
+    const EVERGREEN_RECYCLE_COOLDOWN_MS = process.env.SOCIAL_EVERGREEN_COOLDOWN_MS
+      ? Number(process.env.SOCIAL_EVERGREEN_COOLDOWN_MS)
+      : (7 * 24 * 60 * 60 * 1000)
+
     if (!variant) {
-      const minGap = MIN_VARIANT_GAP_MS
+      const minGap = Math.max(MIN_VARIANT_GAP_MS, EVERGREEN_RECYCLE_COOLDOWN_MS)
       const evergreenCandidates = orderedVariants
         .map((candidate) => {
           const receipts = state.variants[candidate.id] || {}
-          const acceptedTime = new Date(receipts.facebook?.acceptedAt || 0).getTime()
+          const acceptedTime = Math.max(
+            new Date(receipts.facebook?.acceptedAt || 0).getTime(),
+            new Date(receipts.instagram?.acceptedAt || 0).getTime(),
+            new Date(receipts.youtube?.acceptedAt || 0).getTime()
+          )
           return { candidate, acceptedTime }
         })
         .filter((item) => (now - item.acceptedTime >= minGap))
@@ -246,6 +254,7 @@ export class SocialRevenueSprintService {
 
     const receipts = state.variants[variant.id] || {}
     const results: ChannelPublishResult[] = []
+    let freshlyAcceptedCount = 0
 
     const formatChannelName = (channel: ChannelId) => {
       switch (channel) {
@@ -257,16 +266,16 @@ export class SocialRevenueSprintService {
     }
 
     const dispatch = async (channel: ChannelId, send: () => Promise<ChannelPublishResult>) => {
-      const SIXTY_DAYS_MS = 60 * 24 * 60 * 60 * 1000
       const currentReceipt = receipts[channel]
       const receiptAgeMs = now - new Date(currentReceipt?.acceptedAt || 0).getTime()
-      const isAlreadyAccepted = accepted(currentReceipt) && (!isEvergreen || receiptAgeMs < SIXTY_DAYS_MS)
+      const isAlreadyAccepted = accepted(currentReceipt) && (!isEvergreen || receiptAgeMs < EVERGREEN_RECYCLE_COOLDOWN_MS)
 
       if (isAlreadyAccepted) {
         results.push({
           channelName: formatChannelName(channel),
           status: currentReceipt!.status,
           externalId: currentReceipt!.externalId,
+          permalink: currentReceipt!.permalink,
           message: currentReceipt!.message,
         })
         return
@@ -275,6 +284,7 @@ export class SocialRevenueSprintService {
         const result = await send()
         results.push(result)
         if (providerAccepted(result)) {
+          freshlyAcceptedCount++
           const acceptedAt = new Date().toISOString()
           receipts[channel] = {
             status: result.status,
@@ -309,21 +319,22 @@ export class SocialRevenueSprintService {
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
     // 100% REELS: Structured 7-Day Master 2D Animated Explainer Rotation across all social channels
+    // Spaced so consecutive days NEVER repeat the same reel within Facebook's 48h dedupe window.
     const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
       'sep-product-ladder-v1': 'post-reel-irap-innovation',               // 🎬 2D REEL: IRAP $500K Innovation Grants
       'sep-match-fit-v1': 'post-reel-grant-rejection-traps',              // 🎬 2D REEL: Top 3 Rejection Traps
       'sep-action-plan-v1': 'post-reel-digital-adoption',                 // 🎬 2D REEL: Digital Adoption & CDAP
       'sep-toolkit-v1': 'post-reel-grant-stacking-secrets',               // 🎬 2D REEL: Legal Grant Stacking Formula
-      'sep-membership-radar-v1': 'post-reel-grant-stacking-secrets',      // 🎬 2D REEL: The Triple Stacking Playbook
+      'sep-membership-radar-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
       'sep-bundle-stacking-v1': 'post-reel-women-grants',                 // 🎬 2D REEL: Women Entrepreneur Grants
       'sep-match-costs-v1': 'post-reel-grant-rejection-traps',             // 🎬 2D REEL: Top 3 Rejection Traps
-      'sep-action-documents-v1': 'post-reel-irap-innovation',             // 🎬 2D REEL: CleanTech & Innovation Grants
-      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 2D REEL: How to Legally Stack IRAP & SR&ED
-      'sep-membership-changes-v1': 'post-reel-agri-food-canada-grants',   // 🎬 2D REEL: Regional & Agri-Food Scale-Up
+      'sep-action-documents-v1': 'post-reel-irap-innovation',             // 🎬 2D REEL: IRAP $500K Innovation Grants
+      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 2D REEL: Legal Grant Stacking Formula
+      'sep-membership-changes-v1': 'post-reel-women-grants',              // 🎬 2D REEL: Women Entrepreneur Grants
       'sep-choose-next-step-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
       'sep-agri-food-v1': 'post-reel-agri-food-canada-grants',            // 🎬 2D REEL: Agri-Food & Farming Grants
-      'sep-alberta-v1': 'post-reel-agri-food-canada-grants',              // 🎬 2D REEL: Regional Scale-Up Facilities
-      'sep-ontario-v1': 'post-reel-irap-innovation',                      // 🎬 2D REEL: Federal & Provincial Innovation
+      'sep-alberta-v1': 'post-reel-digital-adoption',                     // 🎬 2D REEL: Digital Adoption & CDAP
+      'sep-ontario-v1': 'post-reel-irap-innovation',                      // 🎬 2D REEL: IRAP $500K Innovation Grants
       'sep-deadlines-v1': 'post-reel-grant-application-checklist',        // 🎬 2D REEL: 12-Point Compliance Checklist & Deadlines
     }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
@@ -420,9 +431,9 @@ export class SocialRevenueSprintService {
       }),
     ])
 
-    // Save consolidated state once after all 4 parallel dispatches complete
-    const anyAccepted = results.some(providerAccepted)
-    if (anyAccepted) {
+    // Save consolidated state only if at least one channel actually published fresh in this run.
+    // Never overwrite lastAcceptedAt when every channel merely returned a cached cooldown receipt.
+    if (freshlyAcceptedCount > 0) {
       const acceptedAt = new Date().toISOString()
       state.variants[variant.id] = receipts
       state.lastAcceptedAt = acceptedAt
@@ -436,13 +447,13 @@ export class SocialRevenueSprintService {
 
     return {
       active: true,
-      decision: results.some(providerAccepted)
+      decision: freshlyAcceptedCount > 0
         ? 'PUBLISHED'
         : 'PROVIDER_REJECTED',
       variantId: variant.id,
       offerId: variant.offerId,
       attempted: results.length,
-      accepted: results.filter(providerAccepted).length,
+      accepted: freshlyAcceptedCount,
       results,
     }
   }
