@@ -2,11 +2,7 @@ import { Metadata } from 'next';
 import { Header } from '@/components/Header';
 import { Footer } from '@/components/Footer';
 import { GrantCalculator } from '@/components/calculator/GrantCalculator';
-import { Shield, Users, Clock, ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
-import Link from 'next/link';
-import { OrganicProductLadderImpression } from '@/components/products/OrganicProductLadderImpression';
-import { VideoBriefingEmbed } from '@/components/videos/VideoBriefingEmbed';
+import { Shield, Users, Clock } from 'lucide-react';
 
 export const metadata: Metadata = {
     title: 'Canada Grant Eligibility Calculator | Estimate Your Funding',
@@ -46,98 +42,52 @@ export default function CalculatorPage() {
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
             />
             <Header />
-            <div className="bg-gray-50/50 py-12 lg:py-24">
+            <div className="bg-gray-50/50 py-8 lg:py-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Header Section */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-green-100 text-green-700 text-sm font-semibold mb-6">
-                        <Shield className="w-4 h-4" />
-                        100% Free & Secure
+                <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-12">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 border border-emerald-200/60 text-xs sm:text-sm font-semibold mb-4 sm:mb-6">
+                        <Shield className="w-4 h-4 text-emerald-600" />
+                        Free Assessment · Private & Secure
                     </div>
-                    <h1 className="text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-6">
+                    <h1 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-gray-900 tracking-tight mb-4 sm:mb-6">
                         Canada Grant Eligibility Calculator
                     </h1>
-                    <p className="text-xl text-gray-600">
+                    <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto">
                         Over $3.2 Billion in government funding is available for Canadian businesses this year. Take our 60-second assessment to see how much you qualify for.
                     </p>
                 </div>
 
-                {/* Master 2D Animated Explainer */}
-                <div className="max-w-4xl mx-auto mb-12">
-                    <VideoBriefingEmbed
-                        videoSrc="/videos/reels/canadian-grants-2d-explainer.mp4"
-                        poster="/videos/posters/canadian-grants-2d-explainer.jpg"
-                        title="How Canadian Business Funding Works in 60 Seconds"
-                        duration="0:58"
-                        topic="Canadian Grants 2D Explainer"
-                        keyTakeaways={[
-                            "Non-dilutive capital: Government grants do not take equity or require personal collateral",
-                            "Two primary tiers: Upfront wage/project subsidies (IRAP/Agri) and retroactive tax credits (SR&ED)",
-                            "Self-serve assessment: Complete the 4 questions below to calculate your active program match"
-                        ]}
-                        ctaText="Start Free Assessment Below ↓"
-                        ctaHref="#calculator"
-                        guideAnchorText="Read Canada Grant Stacking Blueprint"
-                        guideAnchorHref="/canada/small-business-grants"
-                    />
-                </div>
 
                 {/* Dynamic Calculator Component */}
-                <div id="calculator" className="mb-20">
+                <div id="calculator" className="mb-16">
                     <GrantCalculator />
                 </div>
 
-                {/* Trust Badges */}
-                <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center border-t border-gray-200 pt-16">
-                    <div className="space-y-4">
+                {/* Substantiated Factual Trust Badges */}
+                <div className="grid md:grid-cols-3 gap-8 max-w-4xl mx-auto text-center border-t border-gray-200 pt-12 sm:pt-16">
+                    <div className="space-y-3">
                         <div className="w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mx-auto">
                             <Clock className="w-6 h-6" />
                         </div>
-                        <h4 className="font-semibold text-lg">Instant Results</h4>
-                        <p className="text-gray-500 text-sm">Get an immediate estimate based on live federal & provincial grant data.</p>
+                        <h4 className="font-semibold text-base sm:text-lg text-slate-900">Instant Results</h4>
+                        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">Get an immediate preliminary estimate based on active federal and provincial program criteria.</p>
                     </div>
-                    <div className="space-y-4">
+                    <div className="space-y-3">
                         <div className="w-12 h-12 bg-purple-100 text-purple-600 rounded-full flex items-center justify-center mx-auto">
                             <Users className="w-6 h-6" />
                         </div>
-                        <h4 className="font-semibold text-lg">Self-Serve Guidance</h4>
-                        <p className="text-gray-500 text-sm">Choose an instant match report, action plan, blueprint, or automated funding radar without booking a call.</p>
+                        <h4 className="font-semibold text-base sm:text-lg text-slate-900">Self-Serve Funding Guidance</h4>
+                        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">Access self-serve match reports, action plans, and application blueprints without mandatory sales calls.</p>
                     </div>
-                    <div className="space-y-4">
-                        <div className="w-12 h-12 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto">
+                    <div className="space-y-3">
+                        <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
                             <Shield className="w-6 h-6" />
                         </div>
-                        <h4 className="font-semibold text-lg">Completely Private</h4>
-                        <p className="text-gray-500 text-sm">We never share your business mechanics or financial data with third parties.</p>
+                        <h4 className="font-semibold text-base sm:text-lg text-slate-900">Private Information Handling</h4>
+                        <p className="text-gray-500 text-xs sm:text-sm leading-relaxed">We do not sell, rent, or share your business data or questionnaire responses with third parties.</p>
                     </div>
-                </div>
-
-                {/* Self-serve revenue handoff */}
-                <div className="mt-24 rounded-2xl border border-slate-200 bg-slate-950 px-6 py-8 text-center text-white shadow-xl sm:px-10">
-                    <OrganicProductLadderImpression
-                        surface="calculator-result"
-                        context="calculator-page-exit"
-                        offerId="match-report"
-                    />
-                    <p className="text-xs font-black uppercase tracking-[0.18em] text-emerald-400">Continue without a call</p>
-                    <h2 className="mt-3 text-2xl font-extrabold">Turn the estimate into a practical next step</h2>
-                    <p className="mx-auto mt-3 max-w-2xl text-sm leading-6 text-slate-300">
-                        Get the one-time $19 Funding Match Report now, or use the $29/month Funding Watch for automated matching and deadline monitoring.
-                    </p>
-                    <div className="mt-6 flex flex-col justify-center gap-3 sm:flex-row">
-                        <Button size="lg" asChild className="rounded-full bg-emerald-500 font-extrabold text-slate-950 hover:bg-emerald-400">
-                            <Link href="/api/growth-os/onsite-click?surface=calculator-result&context=calculator-page-exit&offer=match-report&experiment=focused-v2">
-                                Get the $19 Match Report <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                        </Button>
-                        <Button variant="outline" size="lg" asChild className="rounded-full border-slate-600 bg-transparent font-extrabold text-white hover:bg-slate-800 hover:text-white">
-                            <Link href="/api/growth-os/onsite-click?surface=calculator-result&context=calculator-page-exit&offer=membership&experiment=focused-v2">
-                                Start Funding Watch — $29/month <ArrowRight className="ml-2 h-4 w-4" />
-                            </Link>
-                        </Button>
-                    </div>
-                    <p className="mt-4 text-xs text-slate-400">Instant or automated digital delivery · no consultation or live session included</p>
                 </div>
 
             </div>
