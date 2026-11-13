@@ -253,6 +253,13 @@ const nextConfig = {
         ],
       },
       {
+        // Cache video assets and posters aggressively at CDN and edge to prevent Fast Origin Transfer exhaustion
+        source: '/videos/:path*',
+        headers: [
+          { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
+        ],
+      },
+      {
         // Edge CDN Cache Shield for 6,150 pSEO routes (cached at Cloudflare/Vercel Edge for 30 days)
         source: '/grants/:path*',
         headers: [

@@ -129,6 +129,7 @@ export function VideoBriefingEmbed({
                   controls
                   autoPlay
                   playsInline
+                  preload="metadata"
                   className="w-full h-full object-cover rounded-xl"
                 />
               ) : (
