@@ -123,7 +123,16 @@ export function VideoBriefingEmbed({
         <div className="md:col-span-5 flex justify-center">
           <div className="relative w-full max-w-[280px] sm:max-w-[320px] aspect-[9/16] rounded-xl overflow-hidden bg-slate-950 border border-slate-800 shadow-2xl">
             {isPlaying ? (
-              videoSrc ? (
+              videoId ? (
+                <iframe
+                  src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
+                  title={title}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                  referrerPolicy="strict-origin-when-cross-origin"
+                  allowFullScreen
+                  className="w-full h-full border-0 rounded-xl"
+                />
+              ) : videoSrc && !videoSrc.startsWith('/videos/reels/') ? (
                 <video
                   src={videoSrc}
                   controls
@@ -133,14 +142,21 @@ export function VideoBriefingEmbed({
                   className="w-full h-full object-cover rounded-xl"
                 />
               ) : (
-                <iframe
-                  src={`https://www.youtube-nocookie.com/embed/${videoId}?autoplay=1&rel=0&modestbranding=1&playsinline=1`}
-                  title={title}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                  referrerPolicy="strict-origin-when-cross-origin"
-                  allowFullScreen
-                  className="w-full h-full border-0 rounded-xl"
-                />
+                <div className="w-full h-full flex flex-col items-center justify-center p-6 text-center bg-slate-950 rounded-xl border border-slate-800">
+                  <Sparkles className="w-8 h-8 text-emerald-400 mb-3 animate-pulse" />
+                  <p className="text-sm font-semibold text-white mb-1">Executive Briefing</p>
+                  <p className="text-xs text-slate-400 mb-4 leading-relaxed">
+                    Check active grant allocations and deadlines for your business with the real-time screener.
+                  </p>
+                  <a
+                    href={resolvedCtaHref}
+                    onClick={handleCtaClick}
+                    className="inline-flex items-center gap-1.5 px-4 py-2.5 text-xs font-semibold rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 transition-colors shadow-lg shadow-emerald-500/20"
+                  >
+                    <span>{ctaText}</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </a>
+                </div>
               )
             ) : (
               <button

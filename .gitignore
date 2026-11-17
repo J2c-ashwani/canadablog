@@ -41,3 +41,8 @@ scratch/
 reports/*.json
 cr28/
 gscmarch/
+
+# video assets (prevent vercel origin transfer exhaustion)
+public/videos/reels/*.mp4
+*.mp4
+
