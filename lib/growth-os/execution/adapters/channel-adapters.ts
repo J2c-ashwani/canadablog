@@ -963,14 +963,13 @@ export class ChannelAdapters {
 
         containerId = initData.id
 
-        // Step 2: Stream video bytes to rupload endpoint
+        // Step 2: Stream video bytes to rupload endpoint (rupload requires raw headers without application/octet-stream)
         const uploadRes = await fetchWithRetry(initData.uri, {
           method: "POST",
           headers: {
             "Authorization": `OAuth ${token}`,
             "offset": "0",
-            "file_size": `${videoBuffer.length}`,
-            "Content-Type": "application/octet-stream",
+            "file_size": String(videoBuffer.length),
           },
           body: videoBuffer,
         })
