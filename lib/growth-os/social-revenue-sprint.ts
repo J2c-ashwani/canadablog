@@ -268,7 +268,9 @@ export class SocialRevenueSprintService {
     const dispatch = async (channel: ChannelId, send: () => Promise<ChannelPublishResult>) => {
       const currentReceipt = receipts[channel]
       const receiptAgeMs = now - new Date(currentReceipt?.acceptedAt || 0).getTime()
-      const isAlreadyAccepted = accepted(currentReceipt) && (!isEvergreen || receiptAgeMs < EVERGREEN_RECYCLE_COOLDOWN_MS)
+      // A channel is only considered already accepted if it was successfully published within the cooldown period (7 days).
+      // Old receipts from weeks ago should NEVER permanently silence a channel when other channels are active.
+      const isAlreadyAccepted = accepted(currentReceipt) && (receiptAgeMs < EVERGREEN_RECYCLE_COOLDOWN_MS)
 
       if (isAlreadyAccepted) {
         results.push({
