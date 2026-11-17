@@ -624,13 +624,21 @@ export class ChannelAdapters {
         ? description
         : `${description}\n\n#FSIDigital`
 
+      let resolvedLocalPath: string | null = fs.existsSync(localPath) ? localPath : null
+      if (!resolvedLocalPath) {
+        const outPath = path.join(process.cwd(), 'out', 'videos', path.basename(videoUrl))
+        if (fs.existsSync(outPath)) {
+          resolvedLocalPath = outPath
+        }
+      }
+
       let response: Response
-      if (fs.existsSync(localPath)) {
-        console.log(`[FacebookAdapter] Uploading local Reel binary (${(fs.statSync(localPath).size / 1024 / 1024).toFixed(2)} MB) to graph-video.facebook.com...`)
-        const videoBuffer = fs.readFileSync(localPath)
+      if (resolvedLocalPath) {
+        console.log(`[FacebookAdapter] Uploading local Reel binary (${(fs.statSync(resolvedLocalPath).size / 1024 / 1024).toFixed(2)} MB) to graph-video.facebook.com...`)
+        const videoBuffer = fs.readFileSync(resolvedLocalPath)
         const blob = new Blob([videoBuffer], { type: 'video/mp4' })
         const formData = new FormData()
-        formData.append('source', blob, path.basename(localPath))
+        formData.append('source', blob, path.basename(resolvedLocalPath))
         formData.append('title', title)
         formData.append('description', fullDescription)
         formData.append('access_token', token)
@@ -915,31 +923,86 @@ export class ChannelAdapters {
     }
 
     try {
-      const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
-      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
-      const fullCaption = `${caption}\n\n${brandedTags.join(' ')}`.trim()
-      console.log(`[InstagramAdapter] Creating Reel container from ${absVideoUrl} on IG ${igAccountId}...`)
-
-      // Step 1: Create REELS media container
-      const containerRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          media_type: "REELS",
-          video_url: absVideoUrl,
-          caption: fullCaption,
-          share_to_feed: true,
-          access_token: token,
-        }),
-      })
-
-      const containerData = await containerRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
-      if (!containerRes.ok || !containerData.id) {
-        throw new Error(`Instagram Reel container error: ${containerData.error?.message || 'container ID missing'}`)
+      const fs = await import('fs')
+      const path = await import('path')
+      const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
+      const localPath = path.join(process.cwd(), 'public', cleanPath)
+      let resolvedLocalPath: string | null = fs.existsSync(localPath) ? localPath : null
+      if (!resolvedLocalPath) {
+        const outPath = path.join(process.cwd(), 'out', 'videos', path.basename(videoUrl))
+        if (fs.existsSync(outPath)) {
+          resolvedLocalPath = outPath
+        }
       }
 
-      // Step 2: Poll container status until FINISHED (up to 45 seconds)
-      const containerId = containerData.id
+      const brandedTags = hashtags.some(t => t.toLowerCase() === '#fsidigital') ? hashtags : ['#FSIDigital', ...hashtags]
+      const fullCaption = `${caption}\n\n${brandedTags.join(' ')}`.trim()
+      let containerId: string
+
+      if (resolvedLocalPath) {
+        console.log(`[InstagramAdapter] Uploading local Reel binary (${(fs.statSync(resolvedLocalPath).size / 1024 / 1024).toFixed(2)} MB) to IG ${igAccountId} via resumable upload...`)
+        const videoBuffer = fs.readFileSync(resolvedLocalPath)
+
+        // Step 1: Create Resumable container
+        const initRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            upload_type: "resumable",
+            media_type: "REELS",
+            caption: fullCaption,
+            share_to_feed: true,
+            access_token: token,
+          }),
+        })
+
+        const initData = await initRes.json().catch(() => ({})) as { id?: string; uri?: string; error?: { message?: string } }
+        if (!initRes.ok || !initData.id || !initData.uri) {
+          throw new Error(`Instagram Reel resumable init error: ${initData.error?.message || 'container ID / uri missing'}`)
+        }
+
+        containerId = initData.id
+
+        // Step 2: Stream video bytes to rupload endpoint
+        const uploadRes = await fetchWithRetry(initData.uri, {
+          method: "POST",
+          headers: {
+            "Authorization": `OAuth ${token}`,
+            "offset": "0",
+            "file_size": `${videoBuffer.length}`,
+            "Content-Type": "application/octet-stream",
+          },
+          body: videoBuffer,
+        })
+
+        if (!uploadRes.ok) {
+          const uploadErr = await uploadRes.text().catch(() => '')
+          throw new Error(`Instagram Reel binary upload failed: HTTP ${uploadRes.status} ${uploadErr}`)
+        }
+      } else {
+        const absVideoUrl = this.toPublicHttpsUrl(videoUrl)
+        console.log(`[InstagramAdapter] Creating Reel container from ${absVideoUrl} on IG ${igAccountId}...`)
+
+        // Step 1: Create REELS media container
+        const containerRes = await fetchWithRetry(`https://graph.facebook.com/v19.0/${encodeURIComponent(igAccountId)}/media`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            media_type: "REELS",
+            video_url: absVideoUrl,
+            caption: fullCaption,
+            share_to_feed: true,
+            access_token: token,
+          }),
+        })
+
+        const containerData = await containerRes.json().catch(() => ({})) as { id?: string; error?: { message?: string } }
+        if (!containerRes.ok || !containerData.id) {
+          throw new Error(`Instagram Reel container error: ${containerData.error?.message || 'container ID missing'}`)
+        }
+
+        containerId = containerData.id
+      }
       let ready = false
       for (let attempt = 0; attempt < 15; attempt++) {
         await new Promise((resolve) => setTimeout(resolve, 3000))

@@ -81,9 +81,17 @@ export class NativeYouTubeAdapter {
         const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
         const localPath = path.join(process.cwd(), 'public', cleanPath)
 
-        if (fs.existsSync(localPath)) {
-          console.log(`[YouTubeAdapter] Loading local MP4 video file: ${localPath}...`)
-          const fileData = fs.readFileSync(localPath)
+        let resolvedPath: string | null = fs.existsSync(localPath) ? localPath : null
+        if (!resolvedPath) {
+          const outPath = path.join(process.cwd(), 'out', 'videos', path.basename(videoUrl))
+          if (fs.existsSync(outPath)) {
+            resolvedPath = outPath
+          }
+        }
+
+        if (resolvedPath) {
+          console.log(`[YouTubeAdapter] Loading local MP4 video file: ${resolvedPath}...`)
+          const fileData = fs.readFileSync(resolvedPath)
           videoBuffer = fileData.buffer.slice(fileData.byteOffset, fileData.byteOffset + fileData.byteLength)
         } else {
           // Vercel serverless: public/ files are static assets, not bundled in the lambda.
