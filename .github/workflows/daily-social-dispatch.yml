@@ -1,11 +1,14 @@
 name: Daily Social Revenue Sprint
 
 on:
-  # Standby runner: schedule paused while testing optimized Vercel pipeline
-  # schedule:
-  #   - cron: '30 13 * * *'
+  schedule:
+    # Runs daily at 13:20 UTC (6:50 PM IST) — completes before the 7:05 PM IST CEO Daily Briefing
+    - cron: '20 13 * * *'
   workflow_dispatch:
     # Allows manual 1-click trigger from GitHub Actions tab
+
+permissions:
+  contents: read
 
 jobs:
   dispatch:
@@ -26,6 +29,14 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
+      - name: Download Reels from GitHub Release (0 Vercel Bandwidth)
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          mkdir -p out/videos
+          gh release download social-reels-v1 --pattern '*.mp4' --dir out/videos --clobber
+          ls -lh out/videos/*.mp4
+
       - name: Execute Daily Social Sprint
         env:
           FACEBOOK_ACCESS_TOKEN: ${{ secrets.FACEBOOK_ACCESS_TOKEN }}
@@ -38,10 +49,13 @@ jobs:
           YOUTUBE_CLIENT_ID: ${{ secrets.YOUTUBE_CLIENT_ID }}
           YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
           YOUTUBE_REFRESH_TOKEN: ${{ secrets.YOUTUBE_REFRESH_TOKEN }}
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
           GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
           GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEETS_SPREADSHEET_ID }}
-          GOOGLE_SERVICE_ACCOUNT_EMAIL: ${{ secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
-          GOOGLE_PRIVATE_KEY: ${{ secrets.GOOGLE_PRIVATE_KEY }}
+          GOOGLE_SHEETS_CLIENT_EMAIL: ${{ secrets.GOOGLE_SHEETS_CLIENT_EMAIL || secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
+          GOOGLE_SHEETS_PRIVATE_KEY: ${{ secrets.GOOGLE_SHEETS_PRIVATE_KEY || secrets.GOOGLE_PRIVATE_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
           RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
           RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
           GROWTH_OS_REPORT_EMAIL: ${{ secrets.GROWTH_OS_REPORT_EMAIL }}
