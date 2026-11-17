@@ -333,13 +333,13 @@ export class CEOAgent {
                 if (!igUrl && v?.instagram?.externalId) {
                   const eid = String(v.instagram.externalId)
                   if (/^\d+$/.test(eid)) {
-                    igUrl = 'https://www.instagram.com/fsidigital.ca/'
+                    igUrl = 'https://www.instagram.com/fsidigital/'
                   } else {
                     igUrl = `https://www.instagram.com/p/${eid}/`
                   }
                 }
                 if (!igUrl && (v?.instagram?.status === 'API_ACCEPTED' || v?.instagram?.status === 'LIVE_PUBLISHED')) {
-                  igUrl = 'https://www.instagram.com/fsidigital.ca/'
+                  igUrl = 'https://www.instagram.com/fsidigital/'
                 }
 
                 // 3. LinkedIn Link
@@ -349,11 +349,11 @@ export class CEOAgent {
                   if (eid.startsWith('urn:li:') && !eid.includes('carousel')) {
                     liUrl = `https://www.linkedin.com/feed/update/${eid}/`
                   } else {
-                    liUrl = 'https://www.linkedin.com/company/fsidigital/'
+                    liUrl = 'https://www.linkedin.com/company/113016297/'
                   }
                 }
                 if (!liUrl) {
-                  liUrl = 'https://www.linkedin.com/company/fsidigital/'
+                  liUrl = 'https://www.linkedin.com/company/113016297/'
                 }
 
                 // 4. YouTube Link
@@ -697,7 +697,7 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
                 <tr style="border-bottom: 1px solid #e2e8f0;">
                   <td style="padding: 8px 0; font-weight: 600; color: #0a66c2;">LinkedIn Carousel / Post</td>
                   <td style="padding: 8px 0; text-align: right;">
-                    <a href="${socialSprint.liUrl || 'https://www.linkedin.com/company/fsidigital/'}" style="color: #0a66c2; text-decoration: none; font-weight: 600;">${socialSprint.liUrl?.includes('/feed/update/') ? 'View Published Post →' : 'View LinkedIn Company Page →'}</a>
+                    <a href="${socialSprint.liUrl || 'https://www.linkedin.com/company/113016297/'}" style="color: #0a66c2; text-decoration: none; font-weight: 600;">${socialSprint.liUrl?.includes('/feed/update/') ? 'View Published Post →' : 'View LinkedIn Company Page →'}</a>
                   </td>
                 </tr>
                 <tr>

@@ -221,25 +221,63 @@ export class SocialRevenueSprintService {
       ? Number(process.env.SOCIAL_EVERGREEN_COOLDOWN_MS)
       : (7 * 24 * 60 * 60 * 1000)
 
+    // 100% REELS: Structured 7-Day Master 2D Animated Explainer Rotation across all social channels
+    // Spaced so consecutive days NEVER repeat the same reel within Facebook's 48h dedupe window.
+    const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
+      'sep-product-ladder-v1': 'post-reel-irap-innovation',               // 🎬 2D REEL: IRAP $500K Innovation Grants
+      'sep-match-fit-v1': 'post-reel-grant-rejection-traps',              // 🎬 2D REEL: Top 3 Rejection Traps
+      'sep-action-plan-v1': 'post-reel-digital-adoption',                 // 🎬 2D REEL: Digital Adoption & CDAP
+      'sep-toolkit-v1': 'post-reel-grant-stacking-secrets',               // 🎬 2D REEL: Legal Grant Stacking Formula
+      'sep-membership-radar-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
+      'sep-bundle-stacking-v1': 'post-reel-women-grants',                 // 🎬 2D REEL: Women Entrepreneur Grants
+      'sep-match-costs-v1': 'post-reel-grant-rejection-traps',             // 🎬 2D REEL: Top 3 Rejection Traps
+      'sep-action-documents-v1': 'post-reel-irap-innovation',             // 🎬 2D REEL: IRAP $500K Innovation Grants
+      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 2D REEL: Legal Grant Stacking Formula
+      'sep-membership-changes-v1': 'post-reel-women-grants',              // 🎬 2D REEL: Women Entrepreneur Grants
+      'sep-choose-next-step-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
+      'sep-agri-food-v1': 'post-reel-agri-food-canada-grants',            // 🎬 2D REEL: Agri-Food & Farming Grants
+      'sep-alberta-v1': 'post-reel-digital-adoption',                     // 🎬 2D REEL: Digital Adoption & CDAP
+      'sep-ontario-v1': 'post-reel-irap-innovation',                      // 🎬 2D REEL: IRAP $500K Innovation Grants
+      'sep-deadlines-v1': 'post-reel-grant-application-checklist',        // 🎬 2D REEL: 12-Point Compliance Checklist & Deadlines
+    }
+
     if (!variant) {
       const minGap = Math.max(MIN_VARIANT_GAP_MS, EVERGREEN_RECYCLE_COOLDOWN_MS)
+      // Track the most recent publication time per underlying video reel asset across all variants
+      // so two different variants sharing the same MP4 NEVER post back-to-back.
+      const lastPublishedByVideo = new Map<string, number>()
+      for (const candidate of orderedVariants) {
+        const receipts = state.variants[candidate.id] || {}
+        const t = Math.max(
+          new Date(receipts.facebook?.acceptedAt || 0).getTime(),
+          new Date(receipts.instagram?.acceptedAt || 0).getTime(),
+          new Date(receipts.youtube?.acceptedAt || 0).getTime()
+        )
+        const videoKey = VARIANT_TO_INFORMATIONAL_MAP[candidate.id] || candidate.id
+        const prev = lastPublishedByVideo.get(videoKey) || 0
+        if (t > prev) lastPublishedByVideo.set(videoKey, t)
+      }
+
       const evergreenCandidates = orderedVariants
         .map((candidate) => {
           const receipts = state.variants[candidate.id] || {}
-          const acceptedTime = Math.max(
+          const variantAcceptedTime = Math.max(
             new Date(receipts.facebook?.acceptedAt || 0).getTime(),
             new Date(receipts.instagram?.acceptedAt || 0).getTime(),
             new Date(receipts.youtube?.acceptedAt || 0).getTime()
           )
-          return { candidate, acceptedTime }
+          const videoKey = VARIANT_TO_INFORMATIONAL_MAP[candidate.id] || candidate.id
+          const videoAcceptedTime = lastPublishedByVideo.get(videoKey) || variantAcceptedTime
+          return { candidate, variantAcceptedTime, videoAcceptedTime }
         })
-        .filter((item) => (now - item.acceptedTime >= minGap))
-        .sort((a, b) => a.acceptedTime - b.acceptedTime)
+        .filter((item) => (now - item.variantAcceptedTime >= minGap))
+        // Sort by least-recently-posted underlying video first, then oldest variant
+        .sort((a, b) => (a.videoAcceptedTime - b.videoAcceptedTime) || (a.variantAcceptedTime - b.variantAcceptedTime))
 
       if (evergreenCandidates.length > 0) {
         variant = evergreenCandidates[0].candidate
         isEvergreen = true
-        console.log(`[SocialRevenueSprint] Endless Engine: Selected evergreen 2D explainer variant "${variant.id}" (last published ${((now - evergreenCandidates[0].acceptedTime) / (24 * 60 * 60 * 1000)).toFixed(1)} days ago).`)
+        console.log(`[SocialRevenueSprint] Endless Engine: Selected evergreen 2D explainer variant "${variant.id}" (video last published ${((now - evergreenCandidates[0].videoAcceptedTime) / (24 * 60 * 60 * 1000)).toFixed(1)} days ago).`)
       } else {
         console.log('[SocialRevenueSprint] Waiting for minimum variant gap to elapse before next daily dispatch.')
         return { active: true, decision: 'WAITING_FOR_NEXT_VARIANT', attempted: 0, accepted: 0, results: [] as ChannelPublishResult[] }
@@ -320,25 +358,6 @@ export class SocialRevenueSprintService {
     const facebookUrl = createTrackedGrowthUrl(variant.target, actionContext('facebook', variant))
     const instagramUrl = createTrackedGrowthUrl(variant.target, actionContext('instagram', variant))
 
-    // 100% REELS: Structured 7-Day Master 2D Animated Explainer Rotation across all social channels
-    // Spaced so consecutive days NEVER repeat the same reel within Facebook's 48h dedupe window.
-    const VARIANT_TO_INFORMATIONAL_MAP: Record<string, string> = {
-      'sep-product-ladder-v1': 'post-reel-irap-innovation',               // 🎬 2D REEL: IRAP $500K Innovation Grants
-      'sep-match-fit-v1': 'post-reel-grant-rejection-traps',              // 🎬 2D REEL: Top 3 Rejection Traps
-      'sep-action-plan-v1': 'post-reel-digital-adoption',                 // 🎬 2D REEL: Digital Adoption & CDAP
-      'sep-toolkit-v1': 'post-reel-grant-stacking-secrets',               // 🎬 2D REEL: Legal Grant Stacking Formula
-      'sep-membership-radar-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
-      'sep-bundle-stacking-v1': 'post-reel-women-grants',                 // 🎬 2D REEL: Women Entrepreneur Grants
-      'sep-match-costs-v1': 'post-reel-grant-rejection-traps',             // 🎬 2D REEL: Top 3 Rejection Traps
-      'sep-action-documents-v1': 'post-reel-irap-innovation',             // 🎬 2D REEL: IRAP $500K Innovation Grants
-      'sep-toolkit-budget-v1': 'post-reel-grant-stacking-secrets',        // 🎬 2D REEL: Legal Grant Stacking Formula
-      'sep-membership-changes-v1': 'post-reel-women-grants',              // 🎬 2D REEL: Women Entrepreneur Grants
-      'sep-choose-next-step-v1': 'post-reel-grant-application-checklist', // 🎬 2D REEL: 12-Point Pre-Filing Checklist
-      'sep-agri-food-v1': 'post-reel-agri-food-canada-grants',            // 🎬 2D REEL: Agri-Food & Farming Grants
-      'sep-alberta-v1': 'post-reel-digital-adoption',                     // 🎬 2D REEL: Digital Adoption & CDAP
-      'sep-ontario-v1': 'post-reel-irap-innovation',                      // 🎬 2D REEL: IRAP $500K Innovation Grants
-      'sep-deadlines-v1': 'post-reel-grant-application-checklist',        // 🎬 2D REEL: 12-Point Compliance Checklist & Deadlines
-    }
     const infoPostId = VARIANT_TO_INFORMATIONAL_MAP[variant.id]
     const infoPost = INFORMATIONAL_SOCIAL_LIBRARY.find((p) => p.id === infoPostId)
 

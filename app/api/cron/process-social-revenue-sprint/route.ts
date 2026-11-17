@@ -38,10 +38,10 @@ export async function GET(request: NextRequest) {
               ? `https://www.facebook.com/${fbResult.externalId.split('_')[0]}/posts/${fbResult.externalId.split('_')[1]}`
               : `https://www.facebook.com/reel/${fbResult.externalId}/`)
           : 'https://www.facebook.com/1077759455417325')
-        const igUrl = (igResult as any)?.permalink || 'https://www.instagram.com/fsidigital.ca/'
+        const igUrl = (igResult as any)?.permalink || 'https://www.instagram.com/fsidigital/'
         const liUrl = liResult?.status === 'API_ACCEPTED' && liResult?.externalId
           ? `https://www.linkedin.com/feed/update/${liResult.externalId}`
-          : 'https://www.linkedin.com/company/fsidigital'
+          : 'https://www.linkedin.com/company/113016297/'
         const ytUrl = ytResult?.externalId
           ? `https://www.youtube.com/shorts/${ytResult.externalId}`
           : 'https://www.youtube.com/@fsidigital'

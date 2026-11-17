@@ -302,8 +302,8 @@ async function run() {
   assert(
     actionAttribution.includes('persistRedisGrowthActionEvent(event)')
       && actionAttribution.includes('getRedisGrowthActionEvents<GrowthActionEvent>()')
-      && redisOperations.includes('EVENT_RETENTION_MS = 120'),
-    'High-frequency commercial events use durable Redis with 120-day evidence retention instead of exhausting Sheets writes',
+      && redisOperations.includes('EVENT_RETENTION_MS = 14'),
+    'High-frequency commercial events use durable Redis with 14-day evidence retention (capped for Upstash 250MB free-tier safety) instead of exhausting Sheets writes',
   );
   assert(
     actionAttribution.includes('new Map<string, GrowthActionEvent>()')
@@ -313,8 +313,8 @@ async function run() {
   assert(
     telemetryStore.includes('await persistRedisTelemetryEvent(randomUUID(), event)')
       && telemetryStore.indexOf('persistRedisTelemetryEvent(randomUUID(), event)') < telemetryStore.indexOf('spreadsheets.values.append')
-      && redisOperations.includes('TELEMETRY_RETENTION_MS = 120'),
-    'High-frequency funnel telemetry uses the 120-day Redis ledger before the Sheets fallback path',
+      && redisOperations.includes('TELEMETRY_RETENTION_MS = 14'),
+    'High-frequency funnel telemetry uses the 14-day Redis ledger (capped for Upstash 250MB free-tier safety) before the Sheets fallback path',
   );
   assert(
     telemetryStore.includes('getRedisTelemetryEvents<TelemetryEvent>()')

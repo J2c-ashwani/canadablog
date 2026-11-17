@@ -183,7 +183,7 @@ export class ChannelAdapters {
 
       const permalink = externalId && externalId.startsWith('urn:li:') && !externalId.includes('carousel')
         ? `https://www.linkedin.com/feed/update/${externalId}/`
-        : 'https://www.linkedin.com/company/fsidigital/'
+        : 'https://www.linkedin.com/company/113016297/'
 
       return {
         channelName: "LinkedIn",
@@ -331,7 +331,7 @@ export class ChannelAdapters {
 
       const permalink = externalId && externalId.startsWith('urn:li:') && !externalId.includes('carousel')
         ? `https://www.linkedin.com/feed/update/${externalId}/`
-        : 'https://www.linkedin.com/company/fsidigital/'
+        : 'https://www.linkedin.com/company/113016297/'
 
       return {
         channelName: "LinkedIn",
@@ -894,7 +894,7 @@ export class ChannelAdapters {
         channelName: "Instagram",
         status: "API_ACCEPTED",
         externalId: publishData.id,
-        permalink: permalink || 'https://www.instagram.com/fsidigital.ca/',
+        permalink: permalink || 'https://www.instagram.com/fsidigital/',
         message: "Instagram accepted and published the carousel post via Meta Graph API.",
       }
     } catch (err: any) {
@@ -1045,7 +1045,7 @@ export class ChannelAdapters {
         channelName: "Instagram",
         status: "API_ACCEPTED",
         externalId: publishData.id,
-        permalink: permalink || 'https://www.instagram.com/fsidigital.ca/',
+        permalink: permalink || 'https://www.instagram.com/fsidigital/',
         message: "Instagram accepted and published the Reel via Meta Graph API.",
       }
     } catch (err: any) {

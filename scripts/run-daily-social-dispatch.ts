@@ -42,10 +42,10 @@ async function main() {
             ? `https://www.facebook.com/${fbResult.externalId.split('_')[0]}/posts/${fbResult.externalId.split('_')[1]}`
             : `https://www.facebook.com/reel/${fbResult.externalId}/`)
         : 'https://www.facebook.com/1077759455417325')
-      const igUrl = (igResult as any)?.permalink || 'https://www.instagram.com/fsidigital.ca/'
+      const igUrl = (igResult as any)?.permalink || 'https://www.instagram.com/fsidigital/'
       const liUrl = liResult?.status === 'API_ACCEPTED' && liResult?.externalId
         ? `https://www.linkedin.com/feed/update/${liResult.externalId}`
-        : 'https://www.linkedin.com/company/fsidigital'
+        : 'https://www.linkedin.com/company/113016297/'
       const ytUrl = ytResult?.externalId
         ? `https://www.youtube.com/shorts/${ytResult.externalId}`
         : 'https://www.youtube.com/@fsidigital'
@@ -96,14 +96,21 @@ async function main() {
         </div>
       `
 
-      await sendEmail({
-        to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
-        subject: `🚀 [Growth OS] Daily Social Posts Live — Facebook, Instagram, LinkedIn & YouTube Shorts`,
-        html,
-        text: `Daily Social Posts Published at ${nowIST}.\nFacebook: ${fbUrl}\nInstagram: ${igUrl}\nLinkedIn: ${liUrl}\nYouTube: ${ytUrl}\n\nFunnel target: https://fsidigital.ca/calculator`,
-        tagType: 'social-revenue-sprint'
-      })
-      console.log('✉️ Daily social sprint receipt email delivered to ashwani@fsidigital.ca')
+      // Obey strict 1 email/day consolidated CEO Daily Briefing policy
+      if (failed || process.env.SEND_STANDALONE_SOCIAL_EMAIL === 'true') {
+        await sendEmail({
+          to: process.env.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca',
+          subject: failed
+            ? `⚠️ [Growth OS] Social Sprint Posting Degradation Alert`
+            : `🚀 [Growth OS] Daily Social Posts Live — Facebook, Instagram, LinkedIn & YouTube Shorts`,
+          html,
+          text: `Daily Social Posts Published at ${nowIST}.\nFacebook: ${fbUrl}\nInstagram: ${igUrl}\nLinkedIn: ${liUrl}\nYouTube: ${ytUrl}\n\nFunnel target: https://fsidigital.ca/calculator`,
+          tagType: 'social-revenue-sprint'
+        })
+        console.log('✉️ Daily social sprint receipt email delivered to ashwani@fsidigital.ca')
+      } else {
+        console.log('ℹ️ Standalone social email suppressed (included in unified 7:05 PM IST CEO Daily Briefing).')
+      }
     }
 
     process.exit(failed ? 1 : 0)
