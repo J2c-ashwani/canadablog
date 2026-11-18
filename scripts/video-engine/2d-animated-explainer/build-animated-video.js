@@ -17,7 +17,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { spawn, execSync } = require('child_process');
+const { spawn, execSync, execFileSync } = require('child_process');
 const puppeteer = require('puppeteer');
 
 const DIR = __dirname;
@@ -30,11 +30,9 @@ const BGM_DIR = path.join(ASSETS_DIR, 'bgm');
 const VENV_BIN = path.join(REPO_ROOT, '.venv/bin');
 const OUT_DIR = path.join(REPO_ROOT, 'out/videos/2d-animated-explainer');
 const OUT_VIDEOS_DIR = path.join(REPO_ROOT, 'out/videos');
-const PUBLIC_REELS_DIR = path.join(REPO_ROOT, 'public/videos/reels');
 
 fs.mkdirSync(OUT_DIR, { recursive: true });
 fs.mkdirSync(OUT_VIDEOS_DIR, { recursive: true });
-fs.mkdirSync(PUBLIC_REELS_DIR, { recursive: true });
 
 function getChromeExecutablePath() {
   const possiblePaths = [
@@ -87,15 +85,24 @@ async function renderSingleConfig(configPath, browserInstance = null) {
   const mixedAudioPath = path.join(OUT_DIR, `${slug}-mixed.mp3`);
   const rawVideoPath = path.join(OUT_DIR, `${slug}-raw.mp4`);
   const outFolderVideoPath = path.join(OUT_VIDEOS_DIR, `${slug}.mp4`);
-  const finalMasterPath = path.join(PUBLIC_REELS_DIR, `${slug}.mp4`);
+  const finalMasterPath = outFolderVideoPath;
   const metadataPath = path.join(OUT_VIDEOS_DIR, `${slug}-metadata.json`);
 
-  // Step 1: Synthesize Neural Canadian Voiceover
-  if (!fs.existsSync(voiceoverPath)) {
+  // Step 1: Synthesize Neural Canadian Voiceover (guard against empty/corrupt 0-byte cached files)
+  if (!fs.existsSync(voiceoverPath) || fs.statSync(voiceoverPath).size < 1024) {
+    if (fs.existsSync(voiceoverPath)) fs.unlinkSync(voiceoverPath);
     console.log(`🎙️ Synthesizing Neural Canadian Voiceover (${config.audio.voice})...`);
-    const edgeTTS = path.join(VENV_BIN, 'edge-tts');
-    execSync(
-      `"${edgeTTS}" --voice "${config.audio.voice}" --rate "${config.audio.rate}" --text "${config.audio.script.replace(/"/g, '\\"')}" --write-media "${voiceoverPath}" --write-subtitles "${subtitlesPath}"`,
+    const venvEdgeTTS = path.join(VENV_BIN, 'edge-tts');
+    const edgeTTS = fs.existsSync(venvEdgeTTS) ? venvEdgeTTS : 'edge-tts';
+    execFileSync(
+      edgeTTS,
+      [
+        '--voice', config.audio.voice,
+        '--rate', config.audio.rate,
+        '--text', config.audio.script,
+        '--write-media', voiceoverPath,
+        '--write-subtitles', subtitlesPath,
+      ],
       { stdio: 'inherit' }
     );
   } else {
@@ -112,12 +119,24 @@ async function renderSingleConfig(configPath, browserInstance = null) {
   const fadeOutStart = Math.max(0, totalDuration - 2.0);
   console.log(`⏱️ Voiceover Duration: ${totalDuration.toFixed(2)}s (${totalFrames} frames @ 30fps)`);
 
-  // Dynamically synchronize the last scene and caption endTimes to audio duration
+  // Dynamically synchronize all scene and caption timings proportionally to actual audio duration
   if (config.scenes && config.scenes.length >= 5) {
-    config.scenes[4].endTime = totalDuration;
-  }
-  if (config.captions && config.captions.length > 0) {
-    config.captions[config.captions.length - 1].endTime = totalDuration;
+    const origEnd = config.scenes[config.scenes.length - 1].endTime || totalDuration;
+    const scale = origEnd > 0 ? totalDuration / origEnd : 1;
+    for (const s of config.scenes) {
+      s.startTime = Number((s.startTime * scale).toFixed(2));
+      s.endTime = Number((s.endTime * scale).toFixed(2));
+      if (typeof s.reactionTime === 'number') s.reactionTime = Number((s.reactionTime * scale).toFixed(2));
+      if (typeof s.crossTime === 'number') s.crossTime = Number((s.crossTime * scale).toFixed(2));
+    }
+    config.scenes[config.scenes.length - 1].endTime = totalDuration;
+    if (config.captions && config.captions.length > 0) {
+      for (const c of config.captions) {
+        c.startTime = Number((c.startTime * scale).toFixed(2));
+        c.endTime = Number((c.endTime * scale).toFixed(2));
+      }
+      config.captions[config.captions.length - 1].endTime = totalDuration;
+    }
   }
 
   // Step 2: Mix BGM Ducking
@@ -234,9 +253,7 @@ async function renderSingleConfig(configPath, browserInstance = null) {
     { stdio: 'pipe' }
   );
 
-  // Copy to out/videos/ for n8n/legacy compatibility
-  fs.copyFileSync(finalMasterPath, outFolderVideoPath);
-
+  // Final MP4 is written directly to out/videos/${slug}.mp4 (0 Vercel bandwidth / gitignored)
   // Step 6: Generate Social Metadata for Distribution
   const metadata = {
     title: config.meta.title,
@@ -263,7 +280,7 @@ async function renderSingleConfig(configPath, browserInstance = null) {
   fs.writeFileSync(metadataPath, JSON.stringify(metadata, null, 2));
 
   console.log(`🎉 2D ANIMATED REEL READY: ${slug}.mp4`);
-  console.log(`📍 Public Reel: /videos/reels/${slug}.mp4`);
+  console.log(`📍 Local Reel Path: ${finalMasterPath}`);
   console.log(`📍 Metadata Saved: ${metadataPath}`);
 
   return { slug, finalMasterPath, metadataPath, totalDuration };

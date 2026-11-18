@@ -311,7 +311,7 @@ export class CEOAgent {
 
               if (latestVariantId) {
                 const v = sprintState.variants[latestVariantId]
-                const isFreshToday = latestAcceptedTime > 0 && (Date.now() - latestAcceptedTime < 18 * 60 * 60 * 1000)
+                const isFreshToday = latestAcceptedTime > 0 && (Date.now() - latestAcceptedTime < 22 * 60 * 60 * 1000)
 
                 // 1. Facebook Link
                 let fbUrl: string | undefined = v?.facebook?.permalink

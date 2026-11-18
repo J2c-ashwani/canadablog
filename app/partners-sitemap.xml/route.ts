@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 
-export const revalidate = 604800; // 7 days
+export const dynamic = 'force-static'; // Pure build-time static sitemap — 0 Vercel ISR Reads
 
 const PARTNERS_VERIFIED_DATE = '2026-10-10T00:00:00.000Z';
 

@@ -12,6 +12,41 @@ export async function GET(request: NextRequest) {
   if (!isValidCronRequest(request)) {
     return NextResponse.json({ success: false, error: 'Unauthorized social revenue sprint.' }, { status: 401 })
   }
+
+  // Exact-minute zero-delay bridge: when cron-job.org hits this endpoint and GITHUB_WORKFLOW_TOKEN is set,
+  // immediately dispatch the GitHub Actions Infinite Daily 2D Video Factory (0 Vercel bandwidth, 15-min timeout).
+  const ghToken = process.env.GITHUB_WORKFLOW_TOKEN?.trim()
+  if (ghToken) {
+    const repo = process.env.GITHUB_WORKFLOW_REPO?.trim() || 'J2c-ashwani/canadablog'
+    const workflowFile = 'daily-social-dispatch.yml'
+    const dispatchRes = await fetch(
+      `https://api.github.com/repos/${repo}/actions/workflows/${workflowFile}/dispatches`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${ghToken}`,
+          Accept: 'application/vnd.github+json',
+          'Content-Type': 'application/json',
+          'X-GitHub-Api-Version': '2022-11-28',
+        },
+        body: JSON.stringify({ ref: 'main' }),
+      }
+    )
+    if (dispatchRes.ok) {
+      return NextResponse.json({
+        success: true,
+        mode: 'github-actions-infinite-video-factory',
+        workflow: workflowFile,
+        dispatchedAt: new Date().toISOString(),
+      })
+    }
+    const errText = await dispatchRes.text().catch(() => '')
+    return NextResponse.json(
+      { success: false, error: `GitHub workflow dispatch failed (${dispatchRes.status}): ${errText.slice(0, 200)}` },
+      { status: 502 }
+    )
+  }
+
   const lease = await acquireOperationLease('social-revenue-sprint', 60 * 60 * 1000)
   if (!lease.acquired) return NextResponse.json({ success: true, skipped: true, reason: lease.reason })
   try {

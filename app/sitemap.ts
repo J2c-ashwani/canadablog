@@ -1,4 +1,4 @@
-export const revalidate = 604800; // Revalidate every 7 days (reduces background ISR invocations)
+export const dynamic = 'force-static'; // Pure build-time static sitemap — 0 Vercel ISR Reads
 import { MetadataRoute } from 'next'
 import fs from 'fs'
 import path from 'path'

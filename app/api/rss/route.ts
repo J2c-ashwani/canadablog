@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 import fs from 'fs';
 import path from 'path';
 
-export const revalidate = 86400; // Cache the RSS feed for 24 hours
+export const dynamic = 'force-static'; // Pure build-time static RSS — 0 Vercel ISR Reads
 
 export async function GET() {
   try {

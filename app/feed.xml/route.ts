@@ -1,6 +1,6 @@
 import { getAllBlogPosts } from '@/lib/data/blogPosts';
 
-export const revalidate = 604800; // 7 days
+export const dynamic = 'force-static'; // Pure build-time static feed — 0 Vercel ISR Reads
 
 const SITE_URL = 'https://www.fsidigital.ca';
 

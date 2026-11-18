@@ -113,9 +113,9 @@ const DESIRED_JOBS: DesiredCronJob[] = [
   {
     title: 'FSI - Process Social Revenue Sprint',
     url: `${PRODUCTION_BASE_URL}/api/cron/process-social-revenue-sprint`,
-    schedule: { hours: [13], minutes: [30], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
-    humanSchedule: 'Daily at 13:30 UTC',
-    purpose: 'Autonomous daily multi-channel social posting across Facebook, Instagram, and LinkedIn'
+    schedule: { hours: [13], minutes: [20], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
+    humanSchedule: 'Daily at 13:20 UTC (6:50 PM IST)',
+    purpose: 'Exact-minute trigger for daily infinite 2D animated Reel rendering & posting (Facebook, Instagram, YouTube Shorts, LinkedIn)'
   }
 ];
 

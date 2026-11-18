@@ -47,7 +47,6 @@ const nextConfig = {
   outputFileTracingIncludes: {
     '/blog/[slug]': ['./lib/data/blog-content/**/*'],
     '/api/products/download-asset': ['./private-assets/templates/**/*'],
-    '/api/cron/process-social-revenue-sprint': ['./public/videos/reels/**/*'],
   },
   eslint: {
     ignoreDuringBuilds: false,
