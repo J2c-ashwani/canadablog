@@ -36,7 +36,7 @@ export function FounderCard() {
           </div>
           <div className="flex gap-2 pt-1">
             <a
-              href="https://www.linkedin.com/company/fsidigital"
+              href="https://www.linkedin.com/company/113016297/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-blue-50 hover:text-[#0A66C2] transition-all"
@@ -56,7 +56,7 @@ export function FounderCard() {
               <Youtube className="w-3.5 h-3.5" />
             </a>
             <a
-              href="https://www.instagram.com/fsidigital.ca/"
+              href="https://www.instagram.com/fsidigital/"
               target="_blank"
               rel="noopener noreferrer"
               className="w-7 h-7 rounded-lg bg-slate-100 flex items-center justify-center text-slate-500 hover:bg-pink-50 hover:text-[#E4405F] transition-all"

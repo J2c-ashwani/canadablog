@@ -127,8 +127,8 @@ export default function RootLayout({
                   "description": "Find government grants for startups and small businesses in USA and Canada",
                   "sameAs": [
                     "https://www.youtube.com/@fsidigital",
-                    "https://www.linkedin.com/company/fsidigital",
-                    "https://www.instagram.com/fsidigital.ca/",
+                    "https://www.linkedin.com/company/113016297/",
+                    "https://www.instagram.com/fsidigital/",
                     "https://www.facebook.com/1077759455417325",
                     "https://twitter.com/fsidigital"
                   ],

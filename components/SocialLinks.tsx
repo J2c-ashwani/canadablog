@@ -29,7 +29,7 @@ export const SOCIAL_CHANNELS: SocialChannel[] = [
   {
     name: 'LinkedIn',
     handle: 'FSI Digital',
-    url: 'https://www.linkedin.com/company/fsidigital',
+    url: 'https://www.linkedin.com/company/113016297/',
     description: 'Funding intelligence & policy updates',
     color: '#0A66C2',
     hoverBg: 'hover:bg-blue-500/10 hover:border-blue-500/40 hover:text-blue-400',
@@ -42,8 +42,8 @@ export const SOCIAL_CHANNELS: SocialChannel[] = [
   },
   {
     name: 'Instagram',
-    handle: '@fsidigital.ca',
-    url: 'https://www.instagram.com/fsidigital.ca/',
+    handle: '@fsidigital',
+    url: 'https://www.instagram.com/fsidigital/',
     description: 'Visual guides, reels & carousels',
     color: '#E4405F',
     hoverBg: 'hover:bg-pink-500/10 hover:border-pink-500/40 hover:text-pink-400',
