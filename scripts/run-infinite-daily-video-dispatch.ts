@@ -779,18 +779,24 @@ async function main() {
     const [fbRes, igRes, ytRes, liRes] = await Promise.all([
       ChannelAdapters.postFacebookReel(mp4Path, topic.title, topic.fbCaption),
       (async (): Promise<ChannelPublishResult> => {
-        // Meta placed a temporary video sharing restriction on @fsidigital until December 23, 2026.
-        // Pausing active Instagram video API calls protects the account from further penalties while restriction is active.
+        // Meta placed a temporary video/Reels sharing restriction on @fsidigital until December 23, 2026.
+        // During the restriction period, publish high-retention multi-slide educational Carousels to keep
+        // Instagram active every day. Automatically resumes full 2D Video Reels on December 24, 2026.
         const igRestrictedUntil = process.env.INSTAGRAM_RESTRICTED_UNTIL || '2026-12-23T23:59:59Z'
         if (Date.now() < new Date(igRestrictedUntil).getTime()) {
-          console.log(`ℹ️ [Instagram] Video posting paused until ${igRestrictedUntil} per Meta account restriction. Protecting account health.`)
-          return {
-            channelName: 'Instagram',
-            status: 'QUEUED_FOR_APPROVAL',
-            externalId: '',
-            permalink: 'https://www.instagram.com/fsidigital/',
-            message: `Instagram video sharing paused per Meta restriction until Dec 23, 2026. Resumes automatically on Dec 24, 2026.`,
+          console.log(`ℹ️ [Instagram] Video Reels restricted by Meta until ${igRestrictedUntil}. Publishing educational Carousel...`)
+          try {
+            const carouselFolders = ['canada-grants', 'grant-checklist', 'women-grants', 'sbir-howto', 'stat-shock']
+            const selectedFolder = carouselFolders[dayIdx % carouselFolders.length]
+            const slideUrls = [1, 2, 3, 4, 5].map(n => `https://www.fsidigital.ca/images/social/carousels/${selectedFolder}/slide-${n}.jpg`)
+            const carouselRes = await ChannelAdapters.postInstagramCarousel(slideUrls, topic.igCaption, topic.hashtags)
+            if (carouselRes.status === 'API_ACCEPTED' || carouselRes.status === 'LIVE_PUBLISHED') {
+              return carouselRes
+            }
+          } catch (carouselErr: any) {
+            console.warn(`[Instagram] Carousel failed, falling back to photo post:`, carouselErr?.message)
           }
+          return ChannelAdapters.postInstagram(topic.igCaption, 'https://www.fsidigital.ca/calculator', topic.hashtags)
         }
         return ChannelAdapters.postInstagramReel(mp4Path, topic.igCaption, topic.hashtags)
       })(),
