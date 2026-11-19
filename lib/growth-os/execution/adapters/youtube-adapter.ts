@@ -81,7 +81,7 @@ export class NativeYouTubeAdapter {
         const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
         const localPath = path.join(process.cwd(), 'public', cleanPath)
 
-        let resolvedPath: string | null = fs.existsSync(localPath) ? localPath : null
+        let resolvedPath: string | null = fs.existsSync(videoUrl) ? videoUrl : (fs.existsSync(localPath) ? localPath : null)
         if (!resolvedPath) {
           const outPath = path.join(process.cwd(), 'out', 'videos', path.basename(videoUrl))
           if (fs.existsSync(outPath)) {

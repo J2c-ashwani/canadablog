@@ -624,7 +624,7 @@ export class ChannelAdapters {
         ? description
         : `${description}\n\n#FSIDigital`
 
-      let resolvedLocalPath: string | null = fs.existsSync(localPath) ? localPath : null
+      let resolvedLocalPath: string | null = fs.existsSync(videoUrl) ? videoUrl : (fs.existsSync(localPath) ? localPath : null)
       if (!resolvedLocalPath) {
         const outPath = path.join(process.cwd(), 'out', 'videos', path.basename(videoUrl))
         if (fs.existsSync(outPath)) {
@@ -927,7 +927,7 @@ export class ChannelAdapters {
       const path = await import('path')
       const cleanPath = videoUrl.startsWith('/') ? videoUrl.slice(1) : videoUrl
       const localPath = path.join(process.cwd(), 'public', cleanPath)
-      let resolvedLocalPath: string | null = fs.existsSync(localPath) ? localPath : null
+      let resolvedLocalPath: string | null = fs.existsSync(videoUrl) ? videoUrl : (fs.existsSync(localPath) ? localPath : null)
       if (!resolvedLocalPath) {
         const outPath = path.join(process.cwd(), 'out', 'videos', path.basename(videoUrl))
         if (fs.existsSync(outPath)) {

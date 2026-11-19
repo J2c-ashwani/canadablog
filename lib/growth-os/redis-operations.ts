@@ -149,6 +149,10 @@ export async function finishRedisOperationLease(input: {
     completedAt: new Date().toISOString(),
     summary: input.summary,
   });
+  if (input.status === 'FAILED') {
+    const leaseKey = operationKey(input.operation);
+    await client.del(leaseKey).catch(() => {});
+  }
 }
 
 export async function getRedisOperationRunRows(): Promise<string[][]> {

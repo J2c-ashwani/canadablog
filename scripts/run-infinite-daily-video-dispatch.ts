@@ -676,8 +676,17 @@ async function main() {
   if (!dryRun) {
     lease = await acquireOperationLease('social-revenue-sprint', 60 * 60 * 1000)
     if (!lease.acquired && !force) {
-      console.log(`ℹ️ Skipped: ${lease.reason || 'social-revenue-sprint lease already owned'}`)
-      process.exit(0)
+      // Check if an actual successful post was recorded within MIN_GAP_MS
+      const existingState: any = await getLatestOperationalState<any>(SPRINT_STATE_KEY).catch(() => null)
+      const lastAcceptedMs = new Date(existingState?.lastAcceptedAt || '').getTime()
+      const now = Date.now()
+      if (Number.isFinite(lastAcceptedMs) && now - lastAcceptedMs < MIN_GAP_MS) {
+        const hrs = ((now - lastAcceptedMs) / (60 * 60 * 1000)).toFixed(1)
+        console.log(`ℹ️ Already published ${hrs}h ago (< ${MIN_GAP_MS / 3600000}h guard). Skipping duplicate daily dispatch.`)
+        process.exit(0)
+      } else {
+        console.warn(`⚠️ Lease was held by another attempt (${lease.reason}), but no successful post was recorded today (last accepted ${Number.isFinite(lastAcceptedMs) ? ((now - lastAcceptedMs) / 3600000).toFixed(1) + 'h ago' : 'never'}). Bypassing unconfirmed/failed lease lock to ensure daily social dispatch!`)
+      }
     }
   }
 
@@ -769,7 +778,22 @@ async function main() {
 
     const [fbRes, igRes, ytRes, liRes] = await Promise.all([
       ChannelAdapters.postFacebookReel(mp4Path, topic.title, topic.fbCaption),
-      ChannelAdapters.postInstagramReel(mp4Path, topic.igCaption, topic.hashtags),
+      (async (): Promise<ChannelPublishResult> => {
+        // Meta placed a temporary video sharing restriction on @fsidigital until December 23, 2026.
+        // Pausing active Instagram video API calls protects the account from further penalties while restriction is active.
+        const igRestrictedUntil = process.env.INSTAGRAM_RESTRICTED_UNTIL || '2026-12-23T23:59:59Z'
+        if (Date.now() < new Date(igRestrictedUntil).getTime()) {
+          console.log(`ℹ️ [Instagram] Video posting paused until ${igRestrictedUntil} per Meta account restriction. Protecting account health.`)
+          return {
+            channelName: 'Instagram',
+            status: 'QUEUED_FOR_APPROVAL',
+            externalId: '',
+            permalink: 'https://www.instagram.com/fsidigital/',
+            message: `Instagram video sharing paused per Meta restriction until Dec 23, 2026. Resumes automatically on Dec 24, 2026.`,
+          }
+        }
+        return ChannelAdapters.postInstagramReel(mp4Path, topic.igCaption, topic.hashtags)
+      })(),
       (async (): Promise<ChannelPublishResult> => {
         const up = await NativeYouTubeAdapter.uploadShortsFromUrl(mp4Path, topic.ytTitle, topic.ytDescription)
         if (up.success && up.videoId) {
