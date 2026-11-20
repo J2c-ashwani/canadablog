@@ -109,12 +109,28 @@ async function renderSingleConfig(configPath, browserInstance = null) {
     console.log(`🎙️ Voiceover track cached: ${path.basename(voiceoverPath)}`);
   }
 
-  // Get total duration from audio
-  const durStr = execSync(
-    `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${voiceoverPath}"`,
-    { encoding: 'utf8' }
-  ).trim();
-  const totalDuration = parseFloat(durStr);
+  // Get total duration from audio (supports ffprobe with ffmpeg -i fallback)
+  let totalDuration = 0;
+  try {
+    const durStr = execSync(
+      `ffprobe -v error -show_entries format=duration -of default=noprint_wrappers=1:nokey=1 "${voiceoverPath}"`,
+      { encoding: 'utf8' }
+    ).trim();
+    totalDuration = parseFloat(durStr);
+  } catch (probeErr) {
+    try {
+      execSync(`ffmpeg -i "${voiceoverPath}" 2>&1`, { encoding: 'utf8' });
+    } catch (ffmpegErr) {
+      const errOut = (ffmpegErr?.stdout || ffmpegErr?.stderr || ffmpegErr?.message || '').toString();
+      const match = errOut.match(/Duration:\s*(\d+):(\d+):(\d+\.?\d*)/);
+      if (match) {
+        totalDuration = parseInt(match[1]) * 3600 + parseInt(match[2]) * 60 + parseFloat(match[3]);
+      }
+    }
+  }
+  if (!totalDuration || isNaN(totalDuration)) {
+    totalDuration = 30.0;
+  }
   const totalFrames = Math.ceil(totalDuration * config.meta.fps);
   const fadeOutStart = Math.max(0, totalDuration - 2.0);
   console.log(`⏱️ Voiceover Duration: ${totalDuration.toFixed(2)}s (${totalFrames} frames @ 30fps)`);

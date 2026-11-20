@@ -2,9 +2,8 @@ name: Daily Social Revenue Sprint
 
 on:
   schedule:
-    # Runs at 12:00 UTC (5:30 PM IST) to guarantee completion before the 7:05 PM IST CEO Daily Briefing
-    # (even with up to 60-minute GitHub Actions runner queue jitter)
-    - cron: '0 12 * * *'
+    # Runs at off-peak 11:37 UTC (5:07 PM IST) to avoid top-of-the-hour queue drops and guarantee completion before the 7:05 PM IST CEO Briefing
+    - cron: '37 11 * * *'
   workflow_dispatch:
     # Triggered on exact minute by cron-job.org / Vercel cron bridge or manual 1-click run
     inputs:
@@ -35,11 +34,13 @@ jobs:
       - name: Install Dependencies
         run: npm ci
 
-      - name: Install Edge-TTS & Verify FFmpeg + Chrome
+      - name: Install System Binaries & Python Tools (FFmpeg, FFprobe, Edge-TTS)
         run: |
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
           python3 -m pip install --quiet --upgrade --break-system-packages edge-tts || python3 -m pip install --quiet --upgrade edge-tts
-          which edge-tts ffmpeg google-chrome || true
+          which edge-tts ffmpeg ffprobe google-chrome || true
           ffmpeg -version | head -n 1
+          ffprobe -version | head -n 1
 
       - name: Generate Fresh 2D Reel & Publish to Social Channels
         env:
