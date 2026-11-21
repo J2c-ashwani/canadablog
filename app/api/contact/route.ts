@@ -8,6 +8,7 @@ import { validatePhone } from "@/lib/phone-validator";
 import { calculateLeadIntelligence } from "@/lib/leads/scoring";
 import { applyRateLimit } from "@/lib/rate-limit";
 import { triggerVoiceCallingAgent } from "@/lib/voice-agent/outbound-caller";
+import { evaluateLeadForBotSignatures } from "@/lib/leads/bot-detector";
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -22,9 +23,21 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
     
-    // Honeypot check for bots
-    if (body.confirmEmail) {
-      console.warn("🤖 [Spam Bot Trapped] Contact form submission honeypot triggered.");
+    // Bot signature & honeypot check
+    const botCheck = evaluateLeadForBotSignatures({
+      email: body.email,
+      name: body.name || body.fullName,
+      companyName: body.companyName || body.company,
+      state: body.state || body.province,
+      province: body.province || body.state,
+      industry: body.industry,
+      businessDescription: body.businessDescription || body.message || body.additionalNotes,
+      confirmEmail: body.confirmEmail,
+      website_url: body.website_url,
+    });
+
+    if (botCheck.isBot) {
+      console.warn(`🤖 [Spam Bot Trapped] Filtered incoming bot submission: ${body.email || "no-email"} (${botCheck.reason})`);
       return NextResponse.json({
         success: true,
         message: "Thank you for contacting us! We'll respond within 24 hours."

@@ -28,6 +28,7 @@ import {
 import { sendIntakeAllocationNoticeEmail } from '../emails/intake-allocation-notice';
 import { sendAdvisoryCloseoutMemoEmail } from '../emails/advisory-closeout-memo';
 import { isTestOrInternalContact } from './commercial-eligibility';
+import { evaluateLeadForBotSignatures } from './bot-detector';
 
 export interface CampaignExecutionResult {
   success: boolean;
@@ -156,6 +157,7 @@ export class MultiTouchReactivationEngine {
 
     let skippedBuyers = 0;
     let skippedInternal = 0;
+    let skippedBots = 0;
     let skippedUnsubscribed = 0;
     let skippedCooldown = 0;
 
@@ -248,6 +250,19 @@ export class MultiTouchReactivationEngine {
       // 1. Purge internal, test, and disposable accounts
       if (isTestOrInternalContact({ email, name: rawName }) || this.DISPOSABLE_DOMAINS.some(d => email.includes(d))) {
         skippedInternal++;
+        continue;
+      }
+
+      // 1b. Purge confirmed synthetic scraper bots
+      const botCheck = evaluateLeadForBotSignatures({
+        email,
+        name: rawName,
+        province: row[regionIndex] || '',
+        industry: row[industryIndex] || '',
+        businessDescription: row[fundingPurposeIndex] || '',
+      });
+      if (botCheck.isBot) {
+        skippedBots++;
         continue;
       }
 
@@ -398,6 +413,7 @@ export class MultiTouchReactivationEngine {
     console.log(`   - Stage 3 Candidates (Due for Touch 3 Closeout Memo): ${touch3Candidates.length}`);
     console.log(`   - Skipped (Buyers Suppressed): ${skippedBuyers}`);
     console.log(`   - Skipped (Internal / Disposable Purged): ${skippedInternal}`);
+    console.log(`   - Skipped (Synthetic Bots Quarantined): ${skippedBots}`);
     console.log(`   - Skipped (Unsubscribed Suppressed): ${skippedUnsubscribed}`);
     console.log(`   - Skipped (In 48h Cooldown): ${skippedCooldown}\n`);
 
