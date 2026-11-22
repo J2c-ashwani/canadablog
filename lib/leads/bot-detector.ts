@@ -66,6 +66,12 @@ export const KNOWN_SYNTHETIC_BOT_EMAILS = new Set([
 
   // McGill synthetic accounts
   "jfael.ubhdx@mcgill.ca",
+
+  // UQTR synthetic accounts
+  "avdbybf.ffaf@uqtr.ca",
+
+  // BioLargo synthetic accounts
+  "evccbyvgb@biolargo.com",
 ]);
 
 export const DISPOSABLE_TEST_DOMAINS = new Set([
@@ -118,6 +124,8 @@ export function evaluateLeadForBotSignatures(lead: {
   businessDescription?: string;
   confirmEmail?: string;
   website_url?: string;
+  utmSource?: string;
+  utmMedium?: string;
 }): BotCheckResult {
   // 1. Trap hidden honeypot fields
   if (lead.confirmEmail && lead.confirmEmail.trim().length > 0) {
@@ -127,11 +135,22 @@ export function evaluateLeadForBotSignatures(lead: {
     return { isBot: true, reason: "Honeypot website_url triggered" };
   }
 
+  // 1b. Trap corporate email security link scanners with scrambled tracking tokens
+  const utmText = `${lead.utmSource || ""} ${lead.utmMedium || ""}`.toLowerCase();
+  if (utmText.includes("dbhevfe") || utmText.includes("byybdbgvba") || utmText.includes("efbdgvibgvba") || utmText.includes("gbhdu")) {
+    return { isBot: true, reason: "Automated anti-phishing link detonation scanner" };
+  }
+
   const email = (lead.email || "").trim().toLowerCase();
   const name = (lead.name || "").trim().toLowerCase();
   const province = (lead.province || lead.state || "").trim().toLowerCase();
   const industry = (lead.industry || "").trim().toLowerCase();
   const desc = (lead.businessDescription || "").toLowerCase();
+
+  // 1c. Trap empty calculator forms submitted via direct HTTP POST bypassing the frontend UI
+  if (desc.includes("province: \nindustry: \nrevenue: \ngoal: ") && (name === "founder" || !name)) {
+    return { isBot: true, reason: "Bypassed frontend UI with blank calculation fields" };
+  }
 
   if (!email || !email.includes("@")) {
     return { isBot: false };

@@ -34,6 +34,8 @@ export async function POST(request: NextRequest) {
       businessDescription: body.businessDescription || body.message || body.additionalNotes,
       confirmEmail: body.confirmEmail,
       website_url: body.website_url,
+      utmSource: body.utmSource,
+      utmMedium: body.utmMedium,
     });
 
     if (botCheck.isBot) {
