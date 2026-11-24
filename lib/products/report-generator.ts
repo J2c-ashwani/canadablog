@@ -137,7 +137,12 @@ export function generateFundingRecommendationPlatform(input: ReportInput): Fundi
   const advisoryText = `After evaluating ${totalEvaluated} funding opportunities across ${profile.provinceName}, I recommend focusing on ${recommendedCount} primary opportunities that best match your current ${profile.revenueName.toLowerCase()} business stage. Pursuing every available grant risks diluting execution quality. Excluded: ${excludedCount} programs; Conditional: ${conditionalCount} programs.`;
 
   // Derived Monday Morning Action Items (Next 30 Days)
-  const next30DaysTasks: string[] = [
+  const isUSA = profile.country === 'USA';
+  const next30DaysTasks: string[] = isUSA ? [
+    `Retrieve state formation documents, good standing certificate, and Federal EIN (FEIN) confirmation.`,
+    `Establish contemporaneous project expense and W-2 payroll/contractor activity tracking ledger.`,
+    `Review matching capital and bank credit authorization before formal grant portal submission.`,
+  ] : [
     `Retrieve corporate incorporation certificates and tax returns (T2 Schedule 31 / payroll logs).`,
     `Establish contemporaneous project expense and developer activity tracking system.`,
     `Book an initial advisor consultation to review matching funds authorization before formal submission.`,
@@ -153,7 +158,7 @@ export function generateFundingRecommendationPlatform(input: ReportInput): Fundi
   const approvalKillers = evaluateApprovalProbabilityKillers(primary, profile);
   const documentReadinessMatrix = buildDocumentReadinessMatrix(primary, profile);
   const fundingTimeline = buildFundingTimeline(primary, conditional);
-  const milestoneRoadmap = buildMilestoneRoadmap(primary);
+  const milestoneRoadmap = buildMilestoneRoadmap(primary, profile);
   const knowledgeGraph = buildFundingKnowledgeGraph(primary, profile);
   const snapshot = buildRecommendationSnapshot(primary, profile);
 
@@ -162,6 +167,7 @@ export function generateFundingRecommendationPlatform(input: ReportInput): Fundi
     profile: {
       province: profile.province,
       provinceName: profile.provinceName,
+      country: profile.country,
       industry: profile.industry,
       industryName: profile.industryName,
       revenue: profile.revenue,

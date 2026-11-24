@@ -18,6 +18,7 @@ const INDUSTRY_KEYWORDS: Record<string, string[]> = {
   energy: ['energy', 'clean', 'solar', 'wind', 'carbon', 'climate', 'eco', 'green'],
   retail: ['retail', 'ecommerce', 'e-commerce', 'consumer', 'sales'],
   services: ['service', 'consulting', 'professional', 'advisory'],
+  other: ['business', 'commercial', 'small business', 'enterprise', 'growth', 'operations', 'expansion', 'equipment', 'facility'],
 };
 
 const OBJECTIVE_KEYWORDS: Record<string, string[]> = {
@@ -28,7 +29,7 @@ const OBJECTIVE_KEYWORDS: Record<string, string[]> = {
   'Enter USA': ['export', 'international', 'trade', 'global', 'market'],
   Export: ['export', 'international', 'trade', 'global', 'market'],
   'Commercialize IP': ['research', 'r&d', 'innovation', 'technology', 'patent', 'commercial'],
-  'Automate Operations': ['digital', 'software', 'adoption', 'crm', 'erp', 'automation'],
+  'Automate Operations': ['digital', 'software', 'adoption', 'crm', 'erp', 'automation', 'operations', 'equipment', 'capital', 'expansion', 'growth'],
 };
 
 import { executeStrategyEngine, ScoredProgramInput } from './strategy-engine';
@@ -93,8 +94,16 @@ export function scoreAndRankPrograms(
   });
 
   // Partition into Primary (Immediate/Near-Term) and Conditional (Future)
-  const primaryRaw = eligibleScored.filter((s) => s.commercialScore >= 60);
-  const conditionalRaw = eligibleScored.filter((s) => s.commercialScore < 60);
+  let primaryRaw = eligibleScored.filter((s) => s.commercialScore >= 60);
+  let conditionalRaw = eligibleScored.filter((s) => s.commercialScore < 60);
+
+  // Fallback: If no eligible program scored >= 60 but eligible programs exist,
+  // promote top eligible candidates (>= 40) into primary so customers always receive actionable matches
+  if (primaryRaw.length === 0 && eligibleScored.length > 0) {
+    const minThreshold = Math.max(40, eligibleScored[0].commercialScore - 15);
+    primaryRaw = eligibleScored.filter((s) => s.commercialScore >= minThreshold);
+    conditionalRaw = eligibleScored.filter((s) => s.commercialScore < minThreshold);
+  }
 
   // Apply REPORT_CONFIG limits (Quality Over Quantity)
   const primarySlice = primaryRaw.slice(0, REPORT_CONFIG.primaryRecommendations);

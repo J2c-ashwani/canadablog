@@ -312,7 +312,7 @@ export function generateFundingMatchReportPDF(
 
   displayPrograms.forEach((prog: any, idx: number) => {
     const programTitle = sanitizePdfText(prog.programName || prog.name);
-    const agencyName = sanitizePdfText(prog.agency || 'Government of Canada');
+    const agencyName = sanitizePdfText(prog.agency || 'Government Economic Agency');
     const fundingAmt = sanitizePdfText(prog.fundingAmount || prog.estimatedRange || '$100,000');
     const confidenceStr = sanitizePdfText(prog.recommendationConfidence || `${prog.commercialScore || 90}% Profile Fit`);
     const starStr = formatStarsForPdf(prog.readinessStars);
@@ -535,11 +535,18 @@ export function generateFundingMatchReportPDF(
 
   currentY += 6;
 
-  const tasks = platform?.next30DaysTasks || [
+  const isUS = platform?.profile?.province && !['on','bc','ab','qc','ns','mb','sk','nb','nl','pe','territories','national'].includes(String(platform.profile.province).toLowerCase());
+  const defaultTasks = isUS ? [
+    'Retrieve state formation documents, good standing certificate, and Federal EIN documentation.',
+    'Establish contemporaneous project expense and W-2 payroll/contractor ledger.',
+    'Review matching capital and bank credit authorization before formal grant portal submission.',
+  ] : [
     'Retrieve corporate incorporation certificates and tax returns (T2 Schedule 31 / payroll logs).',
     'Establish contemporaneous project expense and developer activity tracking system.',
     'Book an initial advisor consultation to review matching funds authorization before formal submission.',
   ];
+
+  const tasks = platform?.next30DaysTasks || defaultTasks;
 
   tasks.forEach((task: any) => {
     const taskStr = sanitizePdfText(typeof task === 'string' ? task : (task.requiredAction || task.taskTitle || ''));

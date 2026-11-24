@@ -33,7 +33,26 @@ async function runProductionSmokeTest() {
     if (!platformResult || !platformResult.primaryRecommendations || platformResult.primaryRecommendations.length === 0) {
       throw new Error('Stage 1 Failed: Core engine produced empty or null recommendations.');
     }
-    console.log(`  ✅ Stage 1 Passed: Evaluated ${platformResult.executiveRecommendation.evaluatedCount} programs → Recommended ${platformResult.primaryRecommendations.length}.`);
+
+    // Validate US Cross-Border Execution Guard (Zero Canada Contamination for US Profiles)
+    const usTestInput = {
+      province: 'nj',
+      industry: 'other',
+      revenue: '100k-500k',
+      goal: 'expansion',
+    };
+    const usResult = generateFundingRecommendationPlatform(usTestInput);
+    if (usResult.profile.country !== 'USA' || usResult.profile.provinceName !== 'New Jersey') {
+      throw new Error(`Stage 1 Failed: US Profile country/province mismatch: ${usResult.profile.country}/${usResult.profile.provinceName}`);
+    }
+    if (usResult.primaryRecommendations.length === 0) {
+      throw new Error('Stage 1 Failed: US Profile produced 0 recommendations.');
+    }
+    if (usResult.primaryRecommendations.some(p => p.programName.includes('Ontario') || p.agency.includes('CRA'))) {
+      throw new Error('Stage 1 Failed: US Profile received Canadian recommendations.');
+    }
+
+    console.log(`  ✅ Stage 1 Passed: Evaluated ${platformResult.executiveRecommendation.evaluatedCount} programs → Recommended ${platformResult.primaryRecommendations.length} (Canada) & ${usResult.primaryRecommendations.length} (USA).`);
     stagesPassed++;
 
     // ── STAGE 2: Contract Integrity & Assertion Audit ──

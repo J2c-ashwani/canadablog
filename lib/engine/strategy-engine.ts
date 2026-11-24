@@ -140,25 +140,43 @@ export function buildExecutiveDashboard(
   const fastestWinProg = primary.slice().sort((a, b) => parseInt(a.preparationTime) - parseInt(b.preparationTime))[0] || primary[0];
   const fastestWin = fastestWinProg
     ? { programName: fastestWinProg.programName, prepTime: fastestWinProg.preparationTime, decisionWindow: fastestWinProg.reviewTime }
+    : profile.country === 'USA'
+    ? { programName: `${profile.provinceName} Small Business Digital Growth Program`, prepTime: '2–3 weeks', decisionWindow: '4–8 weeks' }
     : { programName: 'Ontario Hiring Subsidy', prepTime: '3 days', decisionWindow: '2–4 weeks' };
 
   // Identify Highest ROI
   const highestRoiProg = primary.find((p) => p.fundingType === 'Tax Credit' || p.fundingType === 'Grant') || primary[0];
   const highestROI = highestRoiProg
     ? { programName: highestRoiProg.programName, reason: `Provides direct ${highestRoiProg.fundingType.toLowerCase()} funding with ${highestRoiProg.recommendationConfidence}` }
+    : profile.country === 'USA'
+    ? { programName: 'SBA 7(a) / State Working Capital Grant', reason: 'Provides non-dilutive capital and commercial expansion financing' }
     : { programName: 'Scientific Research and Experimental Development (SR&ED)', reason: 'Recovers up to 64% of technical salary expenses as a refundable tax credit' };
 
   // Opportunity Cost Calculations
   let missedRecoveryEstimate = '$35,000 – $65,000';
-  let missedRecoveryReason = 'Developer payroll hours and software R&D expenditures not contemporaneously tracked.';
-  let unlockedBySingleAction = 'Hiring 1 full-time T4 software developer unlocks IRAP matching + Mitacs co-op subsidies.';
+  let missedRecoveryReason = profile.country === 'USA'
+    ? 'Commercial expansion and project expenditures not contemporaneously tracked.'
+    : 'Developer payroll hours and software R&D expenditures not contemporaneously tracked.';
+  let unlockedBySingleAction = profile.country === 'USA'
+    ? 'Transitioning 1 full-time technical or operational employee onto formal W-2 payroll unlocks state workforce training grants + Federal R&D credit matching.'
+    : 'Hiring 1 full-time T4 software developer unlocks IRAP matching + Mitacs co-op subsidies.';
 
-  if (profile.industry === 'technology') {
-    missedRecoveryEstimate = '$42,000 per year';
-    missedRecoveryReason = 'Calculated: Assumes 1 T4 software developer @ $120,000 salary × 35% federal SR&ED tax credit recovery';
-  } else if (profile.industry === 'manufacturing') {
-    missedRecoveryEstimate = '$75,000 per year';
-    missedRecoveryReason = 'Calculated: Assumes $150,000 equipment capex × 50% regional automation grant matching';
+  if (profile.country === 'USA') {
+    if (profile.industry === 'technology') {
+      missedRecoveryEstimate = '$36,000 per year';
+      missedRecoveryReason = 'Calculated: Assumes 1 W-2 software developer @ $120,000 salary × 20% Federal R&D tax credit (IRS Section 41) recovery';
+    } else if (profile.industry === 'manufacturing' || profile.industry === 'other') {
+      missedRecoveryEstimate = '$50,000 per year';
+      missedRecoveryReason = 'Calculated: Assumes $100,000 commercial equipment/facility investment × 50% state small business matching grant';
+    }
+  } else {
+    if (profile.industry === 'technology') {
+      missedRecoveryEstimate = '$42,000 per year';
+      missedRecoveryReason = 'Calculated: Assumes 1 T4 software developer @ $120,000 salary × 35% federal SR&ED tax credit recovery';
+    } else if (profile.industry === 'manufacturing') {
+      missedRecoveryEstimate = '$75,000 per year';
+      missedRecoveryReason = 'Calculated: Assumes $150,000 equipment capex × 50% regional automation grant matching';
+    }
   }
 
   return {
@@ -258,23 +276,31 @@ export function buildFundingDependencyGraph(
   primary: EvaluatedRecommendation[],
   profile: IntelligentlyMappedProfile
 ): DependencyDAG[] {
+  const isUSA = profile.country === 'USA';
+
   return primary.map((rec) => {
     const nodes: DependencyNode[] = [
       {
         id: 'node-inc',
-        label: 'Canadian Corporate Incorporation & CRA Business Number',
+        label: isUSA
+          ? 'US State Corporate Formation & Federal EIN (FEIN) Registration'
+          : 'Canadian Corporate Incorporation & CRA Business Number',
         status: 'Met',
         prerequisiteIds: [],
       },
       {
         id: 'node-payroll',
-        label: 'Full-Time T4 Employee Payroll Setup',
+        label: isUSA
+          ? 'W-2 Employee Payroll Setup & State Unemployment Insurance'
+          : 'Full-Time T4 Employee Payroll Setup',
         status: profile.revenue === 'pre-revenue' ? 'Missing' : 'Met',
         prerequisiteIds: ['node-inc'],
       },
       {
         id: 'node-scope',
-        label: 'Technical Uncertainty Project Scope & JIRA Hour Logs',
+        label: isUSA
+          ? 'Project Scope, Equipment Quotes & Operational Activity Logs'
+          : 'Technical Uncertainty Project Scope & JIRA Hour Logs',
         status: 'Pending',
         prerequisiteIds: ['node-payroll'],
       },
@@ -303,23 +329,36 @@ export function evaluateApprovalProbabilityKillers(
   profile: IntelligentlyMappedProfile
 ): ApprovalKiller[] {
   const killers: ApprovalKiller[] = [];
+  const isUSA = profile.country === 'USA';
 
   if (profile.revenue === 'pre-revenue') {
     killers.push({
       id: 'killer-payroll',
-      riskTitle: 'Dividend-Only Founder Compensation (No T4 Payroll)',
+      riskTitle: isUSA
+        ? 'Owner-Draw / 1099-Only Compensation (No W-2 Payroll)'
+        : 'Dividend-Only Founder Compensation (No T4 Payroll)',
       severity: 'HIGH RISK',
-      description: 'Founders compensated purely via dividends or shareholder loans are ineligible for wage subsidy reimbursements and IRAP grant allocations.',
-      mitigationAction: 'Transition key technical founders onto formal T4 payroll prior to program submission.',
+      description: isUSA
+        ? 'Founders compensated purely via owner draws or 1099 contractor distributions are ineligible for wage subsidy reimbursements and federal/state workforce allocations.'
+        : 'Founders compensated purely via dividends or shareholder loans are ineligible for wage subsidy reimbursements and IRAP grant allocations.',
+      mitigationAction: isUSA
+        ? 'Transition key operational or technical personnel onto formal W-2 payroll prior to program submission.'
+        : 'Transition key technical founders onto formal T4 payroll prior to program submission.',
     });
   }
 
   killers.push({
     id: 'killer-contemporaneous',
-    riskTitle: 'Non-Contemporaneous R&D Activity Documentation',
+    riskTitle: isUSA
+      ? 'Non-Contemporaneous Project Expenditure & Activity Tracking'
+      : 'Non-Contemporaneous R&D Activity Documentation',
     severity: 'HIGH RISK',
-    description: 'CRA and ISED technical auditors routinely disallow claims where developer hours are reconstructed after project completion without real-time logs.',
-    mitigationAction: 'Implement automated JIRA/GitHub time-tracking tagged to specific technical challenges.',
+    description: isUSA
+      ? 'IRS and government grant auditors routinely disallow expenditure claims where project hours and vendor costs are reconstructed after year-end without real-time records.'
+      : 'CRA and ISED technical auditors routinely disallow claims where developer hours are reconstructed after project completion without real-time logs.',
+    mitigationAction: isUSA
+      ? 'Implement automated project time-tracking and maintain contemporaneous vendor invoice logs.'
+      : 'Implement automated JIRA/GitHub time-tracking tagged to specific technical challenges.',
   });
 
   killers.push({
@@ -346,6 +385,24 @@ export function buildDocumentReadinessMatrix(
   primary: EvaluatedRecommendation[],
   profile: IntelligentlyMappedProfile
 ): DocumentReadinessMatrix {
+  if (profile.country === 'USA') {
+    return {
+      alreadyReady: [
+        'Certificate of Incorporation / Formation (State Registered)',
+        'Federal Employer Identification Number (EIN / FEIN)',
+      ],
+      needsPreparation: [
+        'Federal Tax Returns (IRS Form 1120 / 1120-S / Schedule C)',
+        'Contemporaneous Project Expense & W-2 Payroll Ledger',
+        'Detailed Commercial Expansion Plan & Budget Narrative',
+      ],
+      missingCritical: [
+        'Matching Working Capital Bank Statements or Line of Credit Verification',
+        'Formal Vendor / Subcontractor Scope of Work & Price Quotes',
+      ],
+    };
+  }
+
   return {
     alreadyReady: [
       'Articles of Incorporation (Federal / Provincial)',
@@ -376,27 +433,110 @@ export function buildFundingTimeline(
 }
 
 /** Generates Milestone-Based Execution Roadmap for $49 and $79 products */
-export function buildMilestoneRoadmap(primary: EvaluatedRecommendation[]): MilestoneStage[] {
+export function buildMilestoneRoadmap(
+  primary: EvaluatedRecommendation[],
+  profile?: IntelligentlyMappedProfile
+): MilestoneStage[] {
+  const isUSA = profile?.country === 'USA';
+  const ind = profile?.industry || 'technology';
+  const rev = profile?.revenue || '100k-500k';
+  const topProg = primary[0]?.programName || (isUSA ? 'Small Business Expansion Grant' : 'Regional Business Grant');
+  const secProg = primary[1]?.programName || (isUSA ? 'State Workforce Training Subsidy' : 'Wage Training Subsidy');
+
+  // Stage 1: Compliance, Governance & Prerequisite Gates
+  let stage1Action = isUSA
+    ? 'Verify State Certificate of Good Standing, corporate bank resolutions, and Federal EIN (FEIN) registration.'
+    : 'Verify Articles of Incorporation, active CRA 9-digit Business Number (BN), and corporate bank accounts.';
+
+  if (rev === 'pre-revenue' || rev === 'under-100k') {
+    stage1Action += isUSA
+      ? ' Transition technical founders onto formal W-2 payroll to establish wage subsidy baseline eligibility.'
+      : ' Transition key technical founders onto formal T4 payroll to establish wage subsidy baseline eligibility.';
+  } else {
+    stage1Action += ' Authorize dedicated commercial project expense sub-ledger to isolate grant-eligible capital from general SG&A.';
+  }
+
+  const stage1Unlock = isUSA
+    ? 'Establishes statutory corporate eligibility across all U.S. Federal (SBA) and State economic development funding portals.'
+    : 'Establishes statutory corporate eligibility across all Canadian Federal (ISED/NRC) and Provincial funding portals.';
+
+  // Stage 2: Technical / Operational Scoping & SOW Preparation
+  let stage2Action = '';
+  let stage2Unlock = '';
+
+  if (ind === 'technology') {
+    stage2Action = 'Draft technical uncertainty hypothesis, state-of-the-art baseline documentation, and deploy automated JIRA/GitHub developer time tracking.';
+    stage2Unlock = isUSA
+      ? 'Unlocks eligibility for Federal R&D tax credit recovery (IRS Form 6765) and agency technology grants.'
+      : 'Unlocks eligibility for SR&ED refundable tax credits (up to 64% recovery) and IRAP technology co-funding.';
+  } else if (ind === 'manufacturing') {
+    stage2Action = 'Obtain arm’s-length vendor machinery quotes, facility layout engineering plans, and municipal installation permit verifications.';
+    stage2Unlock = 'Unlocks up to 50% non-repayable capital equipment reimbursement and advanced manufacturing tax credits.';
+  } else if (ind === 'healthcare') {
+    stage2Action = 'Formalize clinical investigation protocol, patient privacy/HIPAA compliance frameworks, and certified third-party laboratory testing agreements.';
+    stage2Unlock = 'Unlocks eligibility for specialized life-sciences innovation vouchers, NIH/CIHR funding, and clinical development grants.';
+  } else if (ind === 'agriculture') {
+    stage2Action = 'Complete baseline agronomic yield assessment, sustainable resource management quotes, and food safety quality assurance specs.';
+    stage2Unlock = 'Unlocks agricultural modernization rebates, sustainable water/energy incentives, and agri-food scale-up grants.';
+  } else if (ind === 'energy') {
+    stage2Action = 'Perform certified commercial facility energy audit, calculate projected carbon offset metrics, and secure utility interconnection quotes.';
+    stage2Unlock = 'Unlocks clean energy demonstration grants, eco-efficiency subsidies, and federal green infrastructure rebates.';
+  } else {
+    // general operations / retail / services / logistics / other
+    const indLabel = ind === 'other' ? 'Commercial' : ind.charAt(0).toUpperCase() + ind.slice(1);
+    stage2Action = `Formalize ${indLabel.toLowerCase()} expansion scope of work, vendor equipment & software quotes, and operational workflow architecture.`;
+    stage2Unlock = isUSA
+      ? `Unlocks immediate application eligibility for ${topProg} and regional small business capital funds.`
+      : `Unlocks immediate application eligibility for ${topProg} and provincial small business growth programs.`;
+  }
+
+  // Stage 3: Primary Application Filing & Intake Window Submission
+  const stage3Action = `Submit formal application package for ${topProg}, including comprehensive project budget builder, commercialization plan, and matching capital verification.`;
+  const stage3Unlock = `Secures capital reservation in current intake window before quarterly grant budget pool reaches allocation exhaustion.`;
+
+  // Stage 4: Multi-Program Stacking, Workforce Integration & Post-Approval Drawdown
+  let stage4Action = '';
+  let stage4Unlock = '';
+
+  if (primary.length > 1) {
+    stage4Action = `Execute primary grant agreement, submit initial expenditure verification claims, and sequence secondary application for ${secProg}.`;
+    stage4Unlock = isUSA
+      ? 'Maximizes non-dilutive recovery (50–75% of total project costs) while adhering to 2 CFR 200 non-duplication rules.'
+      : 'Maximizes non-dilutive recovery (50–75% of total project costs) while adhering to federal stacking cap provisions.';
+  } else {
+    stage4Action = isUSA
+      ? 'Submit interim payroll and vendor expense vouchers for cash reimbursement, and pair with SBA low-rate term facilities.'
+      : 'Submit interim payroll and capital expenditure vouchers for cash reimbursement, and file year-end R&D tax offset schedules.';
+    stage4Unlock = 'Recovers 50–70% of qualified capital expenditures into cash reserves within 60–90 days of claim approval.';
+  }
+
+  const stage2Name = ind === 'technology' ? 'Technical Uncertainty & Architecture' :
+                     ind === 'manufacturing' ? 'Machinery Specs & Facility Engineering' :
+                     ind === 'healthcare' ? 'Clinical Protocol & Regulatory Compliance' :
+                     ind === 'agriculture' ? 'Agronomic Pilot & Sustainable SOW' :
+                     ind === 'energy' ? 'Energy Audit & Facility Engineering' :
+                     'Commercial Project Scope & Vendor Quotes';
+
   return [
     {
-      stageName: 'Stage 1: Prerequisite Corporate Setup',
-      action: 'Articles of Incorporation, corporate bank account setup, and CRA payroll registration.',
-      milestoneToUnlock: 'Establishes baseline corporate eligibility for all government funding programs.',
+      stageName: 'Stage 1 (Months 1–3): Corporate Governance & Prerequisite Gates',
+      action: stage1Action,
+      milestoneToUnlock: stage1Unlock,
     },
     {
-      stageName: 'Stage 2: Technical Project Scope & Developer Logs',
-      action: 'Formalize project description, technical uncertainty narrative, and developer JIRA hours tracking.',
-      milestoneToUnlock: 'Unlocks immediate SR&ED tax credit recovery and IRAP matching eligibility.',
+      stageName: `Stage 2 (Months 4–6): ${stage2Name}`,
+      action: stage2Action,
+      milestoneToUnlock: stage2Unlock,
     },
     {
-      stageName: 'Stage 3: Immediate Grant Application Submission',
-      action: primary.length > 0 ? `Submit initial application for ${primary[0].programName}.` : 'Submit high-priority wage subsidy applications.',
-      milestoneToUnlock: 'Secures grant capital allocation before quarterly intake pool exhaustion.',
+      stageName: 'Stage 3 (Months 7–12): Primary Grant Submission & Capital Allocation',
+      action: stage3Action,
+      milestoneToUnlock: stage3Unlock,
     },
     {
-      stageName: 'Stage 4: Post-Approval Claim & Grant Stacking',
-      action: 'Submit payroll reimbursements and stack federal SR&ED credits with provincial R&D offsets.',
-      milestoneToUnlock: 'Recovers 50–70% of total ongoing technical development expenses.',
+      stageName: 'Stage 4 (Months 13–24): Multi-Grant Stacking & Post-Award Reimbursements',
+      action: stage4Action,
+      milestoneToUnlock: stage4Unlock,
     },
   ];
 }
@@ -407,6 +547,39 @@ export function buildFundingKnowledgeGraph(
   profile: IntelligentlyMappedProfile
 ): FundingKnowledgeGraph {
   const nodes = primary.map((p) => p.programId);
+
+  if (profile.country === 'USA') {
+    const edges: KnowledgeGraphEdge[] = [
+      {
+        sourceProgramId: 'sba-7a-loans',
+        targetProgramId: 'us-step-grant',
+        relationshipType: 'stacksWith',
+        stackingCapPct: 80,
+        interactionSummary: 'RULE-021: Working capital under SBA 7(a) can be paired with STEP export grant reimbursements without duplicate cost disallowance.',
+      },
+      {
+        sourceProgramId: 'sba-504',
+        targetProgramId: 'njeda-small-business-grant',
+        relationshipType: 'stacksWith',
+        stackingCapPct: 80,
+        interactionSummary: 'RULE-021: Fixed-asset financing under SBA 504 can be stacked with state small business improvement grants for qualifying facility upgrades.',
+      },
+      {
+        sourceProgramId: 'nsf-sbir',
+        targetProgramId: 'doe-clean-energy',
+        relationshipType: 'coFundingRule',
+        stackingCapPct: 80,
+        interactionSummary: 'RULE-021: Federal SBIR/STTR phase awards can be sequenced with agency R&D contracts provided distinct scopes of work are maintained.',
+      },
+    ];
+
+    return {
+      nodes,
+      edges,
+      netCoFundingSummary: 'Maximum combined federal and state assistance must comply with federal grant cost principles (2 CFR 200 Subpart E), preventing duplicate billing for identical labor and equipment.',
+    };
+  }
+
   const edges: KnowledgeGraphEdge[] = [
     {
       sourceProgramId: 'irap-grant',

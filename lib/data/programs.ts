@@ -856,6 +856,38 @@ export const programsDatabase: ProgramDetails[] = [
     recentChanges: [
       'Digital export expenses—including international SEO and translated ecommerce storefronts—are now fully reimbursable.'
     ]
+  },
+  {
+    id: 'njeda-small-business-grant',
+    slug: 'njeda-small-business-grant',
+    name: 'NJEDA Small Business Improvement Grant (SBIG)',
+    agency: 'New Jersey Economic Development Authority (NJEDA)',
+    fundingAmount: 'Up to $50,000 (reimburses 50% of project costs)',
+    fundingType: 'Grant',
+    fundingDifficulty: 'Moderate',
+    deadlineType: 'Rolling Intake',
+    region: 'New Jersey',
+    country: 'USA',
+    description: 'Reimburses New Jersey commercial small businesses up to $50,000 for facility renovations, logistics and operational improvements, and commercial equipment purchases.',
+    eligibility: [
+      'Commercial business operating in a physical facility in New Jersey',
+      'Minimum $5,000 in eligible capital improvements or equipment purchases',
+      'In good standing with the NJ Department of Labor and NJ Division of Taxation'
+    ],
+    applicationProcess: [
+      'Execute qualifying capital improvements or equipment installations at your NJ facility.',
+      'Submit proof of payment, contractor invoices, and documentation to the NJEDA online portal.',
+      'Receive direct non-repayable grant reimbursement upon NJEDA compliance verification.'
+    ],
+    officialWebsite: 'https://www.njeda.gov/small-business-improvement-grant/',
+    insiderTips: [
+      'Commercial equipment and facility modernization qualify for 50% reimbursement up to $50,000.',
+      'Ensure all contractor/equipment invoices show a zero-balance paid status before filing.'
+    ],
+    status: 'Open',
+    recentChanges: [
+      'Updated 2026: Capital allocation replenished to support commercial facility upgrades and small business modernization across New Jersey.'
+    ]
   }
 ];
 
@@ -888,7 +920,8 @@ function generateProgrammaticPrograms(): ProgramDetails[] {
     { name: "Michigan", code: "mi", country: "USA" as const },
     { name: "Virginia", code: "va", country: "USA" as const },
     { name: "Georgia", code: "ga", country: "USA" as const },
-    { name: "Pennsylvania", code: "pa", country: "USA" as const }
+    { name: "Pennsylvania", code: "pa", country: "USA" as const },
+    { name: "New Jersey", code: "nj", country: "USA" as const }
   ]
 
   const templates = [

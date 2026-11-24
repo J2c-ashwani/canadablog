@@ -326,6 +326,7 @@ export interface FundingRecommendationResult {
   profile: {
     province: string;
     provinceName: string;
+    country?: 'Canada' | 'USA';
     industry: string;
     industryName: string;
     revenue: string;

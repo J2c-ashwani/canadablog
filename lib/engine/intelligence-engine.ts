@@ -24,6 +24,7 @@ export interface IntelligentlyMappedProfile {
 }
 
 const PROVINCE_MAP: Record<string, { name: string; country: 'Canada' | 'USA' }> = {
+  // Canadian Provinces & Territories
   on: { name: 'Ontario', country: 'Canada' },
   bc: { name: 'British Columbia', country: 'Canada' },
   ab: { name: 'Alberta', country: 'Canada' },
@@ -36,20 +37,60 @@ const PROVINCE_MAP: Record<string, { name: string; country: 'Canada' | 'USA' }> 
   pe: { name: 'Prince Edward Island', country: 'Canada' },
   territories: { name: 'Territories', country: 'Canada' },
   national: { name: 'Federal', country: 'Canada' },
+
+  // US States & Territories
+  al: { name: 'Alabama', country: 'USA' },
+  ak: { name: 'Alaska', country: 'USA' },
+  az: { name: 'Arizona', country: 'USA' },
+  ar: { name: 'Arkansas', country: 'USA' },
   ca: { name: 'California', country: 'USA' },
-  tx: { name: 'Texas', country: 'USA' },
-  ny: { name: 'New York', country: 'USA' },
-  fl: { name: 'Florida', country: 'USA' },
-  il: { name: 'Illinois', country: 'USA' },
-  oh: { name: 'Ohio', country: 'USA' },
-  wa: { name: 'Washington', country: 'USA' },
-  ma: { name: 'Massachusetts', country: 'USA' },
   co: { name: 'Colorado', country: 'USA' },
-  nc: { name: 'North Carolina', country: 'USA' },
-  mi: { name: 'Michigan', country: 'USA' },
-  va: { name: 'Virginia', country: 'USA' },
+  ct: { name: 'Connecticut', country: 'USA' },
+  de: { name: 'Delaware', country: 'USA' },
+  fl: { name: 'Florida', country: 'USA' },
   ga: { name: 'Georgia', country: 'USA' },
+  hi: { name: 'Hawaii', country: 'USA' },
+  id: { name: 'Idaho', country: 'USA' },
+  il: { name: 'Illinois', country: 'USA' },
+  in: { name: 'Indiana', country: 'USA' },
+  ia: { name: 'Iowa', country: 'USA' },
+  ks: { name: 'Kansas', country: 'USA' },
+  ky: { name: 'Kentucky', country: 'USA' },
+  la: { name: 'Louisiana', country: 'USA' },
+  me: { name: 'Maine', country: 'USA' },
+  md: { name: 'Maryland', country: 'USA' },
+  ma: { name: 'Massachusetts', country: 'USA' },
+  mi: { name: 'Michigan', country: 'USA' },
+  mn: { name: 'Minnesota', country: 'USA' },
+  ms: { name: 'Mississippi', country: 'USA' },
+  mo: { name: 'Missouri', country: 'USA' },
+  mt: { name: 'Montana', country: 'USA' },
+  ne: { name: 'Nebraska', country: 'USA' },
+  nv: { name: 'Nevada', country: 'USA' },
+  nh: { name: 'New Hampshire', country: 'USA' },
+  nj: { name: 'New Jersey', country: 'USA' },
+  nm: { name: 'New Mexico', country: 'USA' },
+  ny: { name: 'New York', country: 'USA' },
+  nc: { name: 'North Carolina', country: 'USA' },
+  nd: { name: 'North Dakota', country: 'USA' },
+  oh: { name: 'Ohio', country: 'USA' },
+  ok: { name: 'Oklahoma', country: 'USA' },
+  or: { name: 'Oregon', country: 'USA' },
   pa: { name: 'Pennsylvania', country: 'USA' },
+  ri: { name: 'Rhode Island', country: 'USA' },
+  sc: { name: 'South Carolina', country: 'USA' },
+  sd: { name: 'South Dakota', country: 'USA' },
+  tn: { name: 'Tennessee', country: 'USA' },
+  tx: { name: 'Texas', country: 'USA' },
+  ut: { name: 'Utah', country: 'USA' },
+  vt: { name: 'Vermont', country: 'USA' },
+  va: { name: 'Virginia', country: 'USA' },
+  wa: { name: 'Washington', country: 'USA' },
+  wv: { name: 'West Virginia', country: 'USA' },
+  wi: { name: 'Wisconsin', country: 'USA' },
+  wy: { name: 'Wyoming', country: 'USA' },
+  dc: { name: 'District of Columbia', country: 'USA' },
+  national_us: { name: 'Federal', country: 'USA' },
 };
 
 const INDUSTRY_NAMES: Record<string, string> = {
@@ -80,20 +121,38 @@ const GOAL_NAMES: Record<string, string> = {
 
 export function normalizeProvinceInput(raw: string): string {
   const s = String(raw || '').toLowerCase().trim();
-  if (s.includes('ontario') || s === 'on') return 'on';
-  if (s.includes('british columbia') || s === 'bc') return 'bc';
-  if (s.includes('alberta') || s === 'ab') return 'ab';
-  if (s.includes('quebec') || s === 'qc') return 'qc';
-  if (s.includes('nova scotia') || s === 'ns') return 'ns';
-  if (s.includes('manitoba') || s === 'mb') return 'mb';
-  if (s.includes('saskatchewan') || s === 'sk') return 'sk';
-  if (s.includes('new brunswick') || s === 'nb') return 'nb';
-  if (s.includes('newfoundland') || s === 'nl') return 'nl';
-  if (s.includes('prince edward') || s === 'pe' || s === 'pei' || s.includes('p.e.i')) return 'pe';
-  if (s.includes('territor')) return 'territories';
-  if (s.includes('california') || s === 'ca') return 'ca';
-  if (s.includes('texas') || s === 'tx') return 'tx';
-  if (s.includes('new york') || s === 'ny') return 'ny';
+  if (!s) return 'on';
+
+  // 1. Direct code lookup in PROVINCE_MAP
+  if (PROVINCE_MAP[s]) return s;
+
+  // 2. Canadian matches by name / keyword
+  if (s.includes('ontario')) return 'on';
+  if (s.includes('british columbia')) return 'bc';
+  if (s.includes('alberta')) return 'ab';
+  if (s.includes('quebec')) return 'qc';
+  if (s.includes('nova scotia')) return 'ns';
+  if (s.includes('manitoba')) return 'mb';
+  if (s.includes('saskatchewan')) return 'sk';
+  if (s.includes('new brunswick')) return 'nb';
+  if (s.includes('newfoundland') || s.includes('labrador')) return 'nl';
+  if (s.includes('prince edward') || s === 'pei' || s.includes('p.e.i')) return 'pe';
+  if (s.includes('territor') || s.includes('yukon') || s.includes('nunavut') || s.includes('northwest')) return 'territories';
+  if (s === 'canada' || s === 'federal' || s === 'national') return 'national';
+
+  // 3. Match US states by name
+  for (const [code, info] of Object.entries(PROVINCE_MAP)) {
+    if (info.country === 'USA' && code !== 'national_us') {
+      const stateNameLower = info.name.toLowerCase();
+      if (s === stateNameLower || s.includes(stateNameLower)) {
+        return code;
+      }
+    }
+  }
+
+  // 4. US National / Federal fallback
+  if (s === 'usa' || s === 'us' || s === 'united states') return 'national_us';
+
   return 'on';
 }
 
