@@ -116,6 +116,34 @@ const DESIRED_JOBS: DesiredCronJob[] = [
     schedule: { hours: [13], minutes: [20], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
     humanSchedule: 'Daily at 13:20 UTC (6:50 PM IST)',
     purpose: 'Exact-minute trigger for daily infinite 2D animated Reel rendering & posting (Facebook, Instagram, YouTube Shorts, LinkedIn)'
+  },
+  {
+    title: 'FSI - Post-Purchase Upsell Sequence',
+    url: `${PRODUCTION_BASE_URL}/api/cron/process-purchase-upsell`,
+    schedule: { hours: [15], minutes: [40], mdays: [-1], months: [-1], wdays: [-1], timezone: TZ },
+    humanSchedule: 'Daily at 15:40 UTC',
+    purpose: 'Paced post-purchase upgrade & Day-14 feedback sequence for verified entry-tier buyers'
+  },
+  {
+    title: 'FSI - Weekly Newsletter Match Update',
+    url: `${PRODUCTION_BASE_URL}/api/cron/process-newsletter`,
+    schedule: { hours: [0], minutes: [15], mdays: [-1], months: [-1], wdays: [0], timezone: TZ },
+    humanSchedule: 'Weekly Sundays at 00:15 UTC',
+    purpose: 'Controlled 20-contact weekly funding program update cohort'
+  },
+  {
+    title: 'FSI - Process B2B Outreach',
+    url: `${PRODUCTION_BASE_URL}/api/cron/process-b2b-outreach`,
+    schedule: { hours: [14], minutes: [20], mdays: [-1], months: [-1], wdays: [1, 2, 3, 4, 5], timezone: TZ },
+    humanSchedule: 'Mon-Fri at 14:20 UTC (9:20 AM EST)',
+    purpose: 'Deduplicated 3-step B2B outreach sequence with durable Outreach Leads history guard'
+  },
+  {
+    title: 'FSI - CEO Daily Revenue Agents',
+    url: `${PRODUCTION_BASE_URL}/api/cron/run-daily-agents?live=true&confirm=EXECUTE_REVENUE_AGENTS`,
+    schedule: { hours: [16], minutes: [0], mdays: [-1], months: [-1], wdays: [1, 2, 3, 4, 5], timezone: TZ },
+    humanSchedule: 'Mon-Fri at 16:00 UTC (11:00 AM EST)',
+    purpose: 'Executes 5-agent CEO revenue workforce (PartnerBroker, CustomerUpgrade, SponsoredMedia, FundingWatch, InfraHygiene) capped at 25/day'
   }
 ];
 

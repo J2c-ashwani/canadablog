@@ -617,6 +617,7 @@ export class SalesAgent {
       score: number;
       status: string;
       recommendedAction: string;
+      actionTaken: string;
     }>;
     errors: string[];
   }> {
@@ -631,6 +632,7 @@ export class SalesAgent {
       score: number;
       status: string;
       recommendedAction: string;
+      actionTaken: string;
     }> = [];
     let dispatchedCount = 0;
     let founderAlertsSent = 0;
@@ -801,8 +803,9 @@ export class SalesAgent {
         const dashboardUrl = `https://www.fsidigital.ca/products/report${tokenParam}`;
 
         // 1. High-Intent Founder Rollup (Compiled into single Daily CEO Briefing — Zero Individual Spam)
+        let currentHighIntentEntry: (typeof highIntentLeads)[number] | null = null;
         if (qualification.isHighIntent) {
-          highIntentLeads.push({
+          currentHighIntentEntry = {
             name: lead.name || 'Founder',
             company: companySubject,
             email: lead.email,
@@ -811,7 +814,9 @@ export class SalesAgent {
             score: qualification.totalScore,
             status: isVipCustomer ? 'VIP PAID' : isReportBuyer ? 'REPORT BUYER' : 'FREE INTAKE',
             recommendedAction: isVipCustomer ? '1-on-1 Strategy Session ($199)' : 'Complete Funding Blueprint ($79)',
-          });
+            actionTaken: 'Evaluating lead eligibility...',
+          };
+          highIntentLeads.push(currentHighIntentEntry);
 
           // Only send immediate individual alert for VIP PAID BUYERS.
           // Standard free leads are compiled into the single Daily CEO Executive Briefing to protect Resend quota.
@@ -842,6 +847,9 @@ export class SalesAgent {
             });
             if (alertResult.success) {
               founderAlertsSent++;
+              if (currentHighIntentEntry) {
+                currentHighIntentEntry.actionTaken = 'Founder VIP Alert Emailed';
+              }
             }
           }
         }
@@ -856,6 +864,9 @@ export class SalesAgent {
             lead.email,
             'Cold lead outreach deferred exclusively to MultiTouchReactivationEngine'
           );
+          if (currentHighIntentEntry) {
+            currentHighIntentEntry.actionTaken = 'Routed to MultiTouchReactivationEngine (3-touch drip sequence)';
+          }
           continue;
         }
 
@@ -1065,6 +1076,13 @@ export class SalesAgent {
           }
           await updateLeadInSheet(lead.email, { leadActivity: JSON.stringify(activity) }).catch(() => {});
 
+          if (currentHighIntentEntry) {
+            const actionSummary = `Emailed ${offerTier.name} via ${dispatchResult.provider || 'email'} (${dispatchResult.providerMessageId})`;
+            currentHighIntentEntry.actionTaken = currentHighIntentEntry.actionTaken && currentHighIntentEntry.actionTaken.includes('Founder VIP Alert')
+              ? `${currentHighIntentEntry.actionTaken} + ${actionSummary}`
+              : actionSummary;
+          }
+
           actions.push({
             actionId: emailActionId,
             lead: lead.email,
@@ -1074,6 +1092,9 @@ export class SalesAgent {
             providerMessageId: dispatchResult.providerMessageId,
           });
         } else {
+          if (currentHighIntentEntry) {
+            currentHighIntentEntry.actionTaken = `Email dispatch failed (${dispatchResult.error || 'Provider rejected'})`;
+          }
           errors.push(`${lead.email}: ${dispatchResult.error || 'Provider rejected email'}`);
         }
       }

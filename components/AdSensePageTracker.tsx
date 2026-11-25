@@ -134,13 +134,25 @@ export function AdSensePageTracker() {
         }
       }
 
-      // Also clean up any auto-inserted AdSense anchor container divs at the top of the body
-      const googlePlacedAds = document.querySelectorAll('.google-auto-placed, .adsbygoogle-noablate, #google_vignette');
-      googlePlacedAds.forEach(el => {
-        if (el) {
-          (el as HTMLElement).style.setProperty('display', 'none', 'important');
-        }
-      });
+      // Only hide auto-placed AdSense containers on transactional/funnel routes where Auto Ads
+      // must never obscure forms or checkout. Keep Auto Ads intact on content/blog/pSEO pages.
+      const suppressedAutoAdRoutes = [
+        '/', '/contact', '/apply', '/consultation', '/booking', '/calculator',
+        '/funding-calculator', '/priority-processing', '/thank-you', '/mca',
+        '/grant-finder', '/audit', '/sample-report', '/checkout', '/partners',
+        '/products', '/portfolio', '/membership', '/admin', '/advertise', '/services'
+      ];
+      const isSuppressedRoute = suppressedAutoAdRoutes.some(route =>
+        route === '/' ? pathname === '/' : pathname === route || pathname.startsWith(route + '/')
+      );
+      if (isSuppressedRoute) {
+        const googlePlacedAds = document.querySelectorAll('.google-auto-placed, .adsbygoogle-noablate, #google_vignette');
+        googlePlacedAds.forEach(el => {
+          if (el) {
+            (el as HTMLElement).style.setProperty('display', 'none', 'important');
+          }
+        });
+      }
     };
 
     // Run clean up immediately and then again after 100ms and 500ms (to capture late-injects)

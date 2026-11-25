@@ -7,7 +7,6 @@ import {
   sendCartRecoveryEmail2,
   sendCartRecoveryEmail3,
 } from '@/lib/emails/cart-recovery'
-import { hasRecentCommercialProviderAcceptance } from '@/lib/leads/commercial-eligibility'
 import { ensureScopedSubscriberTokens } from '@/lib/leads/SubscriberRepository'
 import { buildEmailActionContext, getGrowthActionEvents } from '@/lib/growth-os/action-attribution'
 import { validateCaslEligibility } from '@/lib/leads/casl-consent'
@@ -48,7 +47,7 @@ function acceptedAt(value: unknown) {
 }
 
 export class CartRecoveryService {
-  public static async processCartRecoveryBatch(maxEmailsPerRun = 5, force = false): Promise<CartRecoveryRunSummary> {
+  public static async processCartRecoveryBatch(maxEmailsPerRun = 5, force = false, dryRun = false): Promise<CartRecoveryRunSummary> {
     if (force && process.env.NODE_ENV === 'production') {
       throw new Error('Force cart recovery is disabled in production.')
     }
@@ -59,10 +58,14 @@ export class CartRecoveryService {
       getAllProductPaymentIntents(),
       getGrowthActionEvents(),
     ])
-    const recentAcceptanceCutoff = now - 48 * 60 * 60 * 1000
+    const recentCartAcceptanceCutoff = now - 24 * 60 * 60 * 1000
     const recentlyAcceptedRecipientIds = new Set(actionEvents
       .filter((event) => event.eventType === 'provider_accepted')
-      .filter((event) => new Date(event.occurredAt).getTime() >= recentAcceptanceCutoff)
+      .filter((event) => {
+        const campaign = String(event.campaign || '').toLowerCase()
+        return campaign.startsWith('cart-recovery') || campaign.startsWith('calc-recovery')
+      })
+      .filter((event) => new Date(event.occurredAt).getTime() >= recentCartAcceptanceCutoff)
       .map((event) => event.recipientId)
       .filter(Boolean))
     // Build per-product purchased set to allow multi-tier upselling (e.g., $19 buyer can still receive $79 recovery)
@@ -121,28 +124,34 @@ export class CartRecoveryService {
     }
 
     const seenEmails = new Set<string>()
+    const mergedLeadsMap = new Map<string, any>()
 
-    // Pass 1: Leads from CRM that have recorded checkout activity
-    for (const lead of leads) {
-      const email = String(lead.email || '').toLowerCase().trim()
-      if (summary.attemptedCount >= maxEmailsPerRun) {
-        CommercialActionTracker.recordBlockedAction('Revenue', 'BATCH_CAP_PACING', email, 'Daily batch cap pacing reached');
-        break;
+    // Merge duplicate CRM rows newest-first so explicit opt-outs, activity telemetry,
+    // and profile data remain complete without stale row shadowing.
+    for (const row of leads) {
+      const em = String(row.email || '').toLowerCase().trim()
+      if (!em) continue
+      if (!mergedLeadsMap.has(em)) {
+        mergedLeadsMap.set(em, { ...row })
+      } else {
+        const existing = mergedLeadsMap.get(em)!
+        const existingAct = parseActivity(existing.leadActivity)
+        const olderAct = parseActivity(row.leadActivity)
+        existing.leadActivity = JSON.stringify({ ...olderAct, ...existingAct })
+        if (!existing.name && row.name) existing.name = row.name
+        if (!existing.companyName && row.companyName) existing.companyName = row.companyName
+        if (row.reportPurchased) existing.reportPurchased = true
+        if (existing.isSubscribed !== false && row.isSubscribed === false && olderAct.unsubscribedAt) {
+          existing.isSubscribed = false
+        }
       }
+    }
+
+    // Pass 1: Leads from CRM that have recorded checkout activity or open Payment Intents
+    for (const lead of mergedLeadsMap.values()) {
+      const email = String(lead.email || '').toLowerCase().trim()
       if (seenEmails.has(email)) continue
       seenEmails.add(email)
-
-      // Strict CASL check: Verify transactional checkout recovery consent
-      const caslCheck = validateCaslEligibility(lead, 'TRANSACTIONAL_RECOVERY')
-      if (!caslCheck.isEligible) {
-        CommercialActionTracker.recordBlockedAction('Revenue', 'CONSENT', email, caslCheck.reason || 'CASL transactional consent missing');
-        continue;
-      }
-
-      if (hasRecentCommercialProviderAcceptance(lead) || recentlyAcceptedRecipientIds.has(buildEmailActionContext('cart-recovery-1', email).recipientId)) {
-        CommercialActionTracker.recordBlockedAction('Revenue', 'COOLDOWN', email, '48h commercial cooldown active');
-        continue;
-      }
 
       const activity = parseActivity(lead.leadActivity)
       const openIntent = latestOpenIntentByEmail.get(email)
@@ -153,8 +162,27 @@ export class CartRecoveryService {
         Number.isFinite(intentCheckoutMs) ? intentCheckoutMs : 0,
       )
       if (!checkoutStartMs) continue
-      summary.eligibleCheckoutCount++
-      if (openIntent) summary.paymentIntentEvidenceCount++
+      if (!Number.isFinite(checkoutStartMs) || checkoutStartMs > now) continue
+      const elapsedMs = now - checkoutStartMs
+      if (elapsedMs > 30 * 24 * 60 * 60 * 1000) continue
+
+      // Explicit checkout intents are evaluated for transactional recovery independently from
+      // generic newsletter/reactivation marketing cooldowns, while strictly enforcing opt-outs,
+      // internal exclusions, and the 30-day CASL transaction window.
+      const transactionalCaslLead = {
+        ...lead,
+        leadActivity: JSON.stringify({
+          ...activity,
+          checkoutStartedAt: new Date(checkoutStartMs).toISOString(),
+          lastContactedAt: undefined,
+          lastEmailSentAt: undefined,
+        }),
+      }
+      const caslCheck = validateCaslEligibility(transactionalCaslLead, 'TRANSACTIONAL_RECOVERY')
+      if (!caslCheck.isEligible) {
+        CommercialActionTracker.recordBlockedAction('Revenue', 'CONSENT', email, caslCheck.reason || 'CASL transactional consent missing');
+        continue;
+      }
 
       // Product-specific suppression check (allows multi-tier upselling across different products)
       const targetProductId = (openIntent?.productId || activity.checkoutProductId || '').toLowerCase().trim()
@@ -174,9 +202,13 @@ export class CartRecoveryService {
         continue
       }
 
-      if (!Number.isFinite(checkoutStartMs) || checkoutStartMs > now) continue
-      const elapsedMs = now - checkoutStartMs
-      if (elapsedMs > 30 * 24 * 60 * 60 * 1000) continue
+      summary.eligibleCheckoutCount++
+      if (openIntent) summary.paymentIntentEvidenceCount++
+
+      if (recentlyAcceptedRecipientIds.has(buildEmailActionContext('cart-recovery-1', email).recipientId)) {
+        CommercialActionTracker.recordBlockedAction('Revenue', 'COOLDOWN', email, '24h transactional cart-recovery cooldown active');
+        continue;
+      }
 
       const checkoutEvidenceId = openIntent ? `intent:${openIntent.intentId}` : `activity:${activity.checkoutStartedAt}`
       const sameRecoverySequence = activity.cartRecoveryEvidenceId === checkoutEvidenceId
@@ -187,6 +219,31 @@ export class CartRecoveryService {
       let result: Awaited<ReturnType<typeof sendCartRecoveryEmail1>> | null = null
 
       try {
+        if (hasEmail2 && (force || now - acceptedAt(activity.cartRecoveryEmail2AcceptedAt) >= 48 * 60 * 60 * 1000) && !hasEmail3) {
+          stage = 'Email #3 (72h)'
+        } else if (hasEmail1 && (force || now - acceptedAt(activity.cartRecoveryEmail1AcceptedAt) >= 24 * 60 * 60 * 1000) && !hasEmail2) {
+          stage = 'Email #2 (24h)'
+        } else if ((elapsedMs >= 45 * 60 * 1000 || force) && !hasEmail1) {
+          stage = 'Email #1 (45m)'
+        }
+
+        if (!stage) {
+          CommercialActionTracker.recordBlockedAction('Revenue', 'COOLDOWN', email, 'Sequence interval waiting window not met');
+          continue
+        }
+
+        if (summary.attemptedCount >= maxEmailsPerRun) {
+          CommercialActionTracker.recordBlockedAction('Revenue', 'BATCH_CAP_PACING', email, 'Daily batch cap pacing reached');
+          continue
+        }
+
+        if (dryRun) {
+          summary.attemptedCount++
+          summary.processedCount++
+          summary.recoveredCandidates.push(`${email} (${stage}) [DRY_RUN:${openIntent?.productId || activity.checkoutProductId || 'funding-match-report'}]`)
+          continue
+        }
+
         const credentials = await ensureScopedSubscriberTokens(email)
         if (!credentials) {
           summary.errors.push(`${email} eligibility: secure login/unsubscribe credentials could not be issued`)
@@ -201,19 +258,6 @@ export class CartRecoveryService {
           companyName: lead.companyName,
           priceShown: String(openIntent?.expectedAmount || activity.priceShown || '19').replace(/[^0-9.]/g, ''),
           productId: openIntent?.productId || activity.checkoutProductId || '',
-        }
-
-        if (hasEmail2 && (force || now - acceptedAt(activity.cartRecoveryEmail2AcceptedAt) >= 48 * 60 * 60 * 1000) && !hasEmail3) {
-          stage = 'Email #3 (72h)'
-        } else if (hasEmail1 && (force || now - acceptedAt(activity.cartRecoveryEmail1AcceptedAt) >= 24 * 60 * 60 * 1000) && !hasEmail2) {
-          stage = 'Email #2 (24h)'
-        } else if ((elapsedMs >= 45 * 60 * 1000 || force) && !hasEmail1) {
-          stage = 'Email #1 (45m)'
-        }
-
-        if (!stage) {
-          CommercialActionTracker.recordBlockedAction('Revenue', 'COOLDOWN', email, 'Sequence interval waiting window not met');
-          continue
         }
 
         // Hard production idempotency lock
@@ -348,9 +392,18 @@ export class CartRecoveryService {
       summary.eligibleCheckoutCount++
       summary.paymentIntentEvidenceCount++
 
+      if (summary.attemptedCount >= maxEmailsPerRun) continue
+
       const checkoutEvidenceId = `intent:${intent.intentId}`
-      let stage = ''
+      let stage = 'Email #1 (45m)'
       let result: Awaited<ReturnType<typeof sendCartRecoveryEmail1>> | null = null
+
+      if (dryRun) {
+        summary.attemptedCount++
+        summary.processedCount++
+        summary.recoveredCandidates.push(`${intentEmail} (${stage}) [DRY_RUN:${intent.productId || 'funding-match-report'}]`)
+        continue
+      }
 
       try {
         const credentials = await ensureScopedSubscriberTokens(intentEmail)
@@ -375,7 +428,6 @@ export class CartRecoveryService {
           productId: intent.productId || 'funding-match-report',
         }
 
-        stage = 'Email #1 (45m)'
         result = await sendCartRecoveryEmail1(emailInput)
 
         if (!result) continue

@@ -18,7 +18,7 @@ import { SampleReportPreview } from "@/components/products/SampleReportPreview"
 import { caseStudiesDatabase } from "@/lib/data/case-studies"
 import { DiyComparisonTable } from "@/components/DiyComparisonTable"
 import { getExperimentVariant, getExperiment } from "@/lib/leads/experiment-helper"
-import { createServerPayPalProductOrder, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
+import { createServerPayPalProductCheckout, finalizeServerPayPalProductOrder } from "@/lib/payments/product-checkout-client"
 import { trackPurchaseConversion } from "@/lib/analytics/conversion-tracker"
 import { EnterpriseReportRenderer } from "@/app/products/report/EnterpriseReportRenderer"
 
@@ -281,7 +281,9 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     const [isLoadingReport, setIsLoadingReport] = useState(false);
     const [reportLoadStep, setReportLoadStep] = useState(0);
     const [isDownloading, setIsDownloading] = useState(false);
-    const [isStripeLoading, setIsStripeLoading] = useState(false);
+    const [isMobile, setIsMobile] = useState(false);
+    const [isMobileRedirecting, setIsMobileRedirecting] = useState(false);
+    const [mobileCheckoutLoading, setMobileCheckoutLoading] = useState(false);
     const [selectedProductId, setSelectedProductId] = useState<'funding-match-report' | 'funding-bundle' | 'funding-roadmap'>('funding-match-report');
     const selectProductAndScroll = (productId: 'funding-match-report' | 'funding-bundle' | 'funding-roadmap') => {
         setSelectedProductId(productId);
@@ -349,6 +351,13 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     }, [addonToolkit]);
 
     const buttonsRenderedRef = useRef(false);
+    const approveUrlRef = useRef('');
+
+    useEffect(() => {
+        if (typeof window === 'undefined') return;
+        const ua = navigator.userAgent || '';
+        setIsMobile(/iPhone|iPad|iPod|Android|Mobile/i.test(ua) || window.innerWidth < 768);
+    }, []);
 
     // Parse pre-populated widget parameters from URL on client mount
     useEffect(() => {
@@ -1055,80 +1064,90 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         }
     }, [step, isEmailValid]);
 
-    const handleStripeCheckout = async () => {
-      if (!isEmailValid || isStripeLoading) return;
-      setIsStripeLoading(true);
+    const PAYPAL_CALCULATOR_NAMESPACE = 'paypalProductCheckout';
+    const getPayPalCalculatorSdk = (): any =>
+      typeof window !== 'undefined' ? (window as any)[PAYPAL_CALCULATOR_NAMESPACE] : undefined;
+
+    const handleMobileDirectCheckout = async (productIdOverride?: 'funding-match-report' | 'funding-bundle' | 'funding-roadmap') => {
+      const currentEmail = dataRef.current.email;
+      const targetProductId = productIdOverride || selectedProductIdRef.current;
+      const includeToolkit = !productIdOverride && addonToolkitRef.current;
+      if (!currentEmail || !isEmailValid || mobileCheckoutLoading || isMobileRedirecting) return;
+
+      setMobileCheckoutLoading(true);
+      setIsMobileRedirecting(true);
       setPaymentError(null);
       try {
-        const currentEmail = dataRef.current.email;
-        if (currentEmail) {
-          fetch("/api/subscriber/track-activity", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              email: currentEmail,
-              event: "stripe_checkout_clicked",
-              ...getDeviceMetadata()
-            })
-          }).catch(() => {});
-        }
-
-        const res = await fetch('/api/stripe/create-checkout-session', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
+        fetch("/api/subscriber/track-activity", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          keepalive: true,
           body: JSON.stringify({
-            productId: selectedProductId,
-            email: data.email,
-            name: data.name,
-            profileData: {
-              province: data.province,
-              industry: data.industry,
-              revenue: data.revenue,
-              goal: data.goal,
-              company: data.company,
-              phone: data.phone,
-            },
-            addons: {
-              toolkit: addonToolkit,
-              approvalLibrary: false,
-              strategySession: false,
-            },
-            attribution: {
-              landingPage: typeof window !== 'undefined' ? window.location.pathname : '',
-              referrer: typeof document !== 'undefined' ? document.referrer : '',
-              utmSource: data.utmSource || '',
-              utmMedium: data.utmMedium || '',
-              utmCampaign: data.utmCampaign || '',
-            }
+            email: currentEmail,
+            event: "checkout_started",
+            productId: targetProductId,
+            flow: "mobile_direct_redirect",
+            ...getDeviceMetadata()
           })
+        }).catch(() => {});
+
+        const checkout = await createServerPayPalProductCheckout({
+          productId: targetProductId,
+          email: currentEmail,
+          name: dataRef.current.name,
+          addons: productIdOverride ? undefined : {
+            toolkit: includeToolkit,
+            approvalLibrary: false,
+            strategySession: false,
+          },
+          profileData: {
+            province: dataRef.current.province,
+            industry: dataRef.current.industry,
+            revenue: dataRef.current.revenue,
+            goal: dataRef.current.goal,
+            company: dataRef.current.company,
+            phone: dataRef.current.phone,
+          },
+          attribution: trackingDataRef.current,
+          sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
         });
-        const sessionData = await res.json();
-        if (sessionData.checkoutUrl) {
-          window.location.href = sessionData.checkoutUrl;
-        } else {
-          throw new Error(sessionData.error || 'Failed to start Stripe checkout');
+        if (checkout.approveUrl) {
+          approveUrlRef.current = checkout.approveUrl;
+          window.location.href = checkout.approveUrl;
+          return;
         }
+        throw new Error('Could not generate a secure PayPal checkout link.');
       } catch (err: any) {
-        console.error('Stripe error:', err);
-        setPaymentError(err.message || 'Card payment initiation failed. Please try again or use PayPal.');
-      } finally {
-        setIsStripeLoading(false);
+        console.error('Mobile direct checkout error:', err);
+        setPaymentError(err?.message || 'Could not start secure checkout. Please try again or use the PayPal button below.');
+        setIsMobileRedirecting(false);
+        setMobileCheckoutLoading(false);
       }
     };
 
     // --- PayPal SDK Load ---
     useEffect(() => {
       if (step < 6) return; // Only load when needed
-      if ((window as any).paypal) { setSdkReady(true); return; }
+      if (getPayPalCalculatorSdk()?.Buttons) { setSdkReady(true); return; }
+
+      const existingScript = document.querySelector(
+        `script[data-namespace="${PAYPAL_CALCULATOR_NAMESPACE}"][src*="paypal.com/sdk/js"]`
+      ) as HTMLScriptElement | null;
+      if (existingScript) {
+        const onLoad = () => setSdkReady(true);
+        existingScript.addEventListener('load', onLoad);
+        return () => existingScript.removeEventListener('load', onLoad);
+      }
 
       const script = document.createElement("script");
-      script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`;
+      script.setAttribute("data-namespace", PAYPAL_CALCULATOR_NAMESPACE);
+      script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons&enable-funding=card`;
       script.type = "text/javascript";
       script.async = true;
       script.onload = () => setSdkReady(true);
       script.onerror = () => {
         console.error("PayPal SDK failed to load.");
-        setPaymentError("Could not load secure checkout. Please refresh the page.");
+        setPaymentError("Could not load embedded checkout. Please refresh the page or use instant card/PayPal redirect.");
         
         const currentEmail = dataRef.current.email;
         if (currentEmail) {
@@ -1174,7 +1193,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         return;
       }
 
-      if (!sdkReady || !(window as any).paypal || step !== 6) return;
+      const paypalSdk = getPayPalCalculatorSdk();
+      if (!sdkReady || !paypalSdk || step !== 6) return;
       
       const jId = getOrCreateJourneyId();
       const fnId = getOrCreateFunnelId("grant_calculator");
@@ -1190,7 +1210,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
       buttonsRenderedRef.current = true;
       container.innerHTML = "";
 
-      if (typeof (window as any).paypal.Buttons !== 'function') {
+      if (typeof paypalSdk.Buttons !== 'function') {
         setPaymentError("Could not load secure checkout. Please refresh.");
         buttonsRenderedRef.current = false;
         
@@ -1252,7 +1272,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
       }
 
       try {
-        (window as any).paypal.Buttons({
+        paypalSdk.Buttons({
           style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 45 },
           onClick: () => {
             popupOpenedAtRef.current = Date.now();
@@ -1375,7 +1395,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               }).catch(() => {});
             }
 
-            return createServerPayPalProductOrder({
+            const checkout = await createServerPayPalProductCheckout({
               productId: currentProductId,
               email: currentEmail,
               name: dataRef.current.name,
@@ -1395,6 +1415,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               attribution: trackingDataRef.current,
               sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
             });
+            if (checkout.approveUrl) {
+              approveUrlRef.current = checkout.approveUrl;
+            }
+            return checkout.orderId;
           },
           onApprove: async (_data: any) => {
             const currentEmail = dataRef.current.email;
@@ -1567,7 +1591,11 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
           },
           onError: (err: any) => {
             console.error("PayPal error:", err);
-            setPaymentError("Payment failed. Please try again or use a different payment method.");
+            setPaymentError(
+              approveUrlRef.current
+                ? "The checkout popup was interrupted or blocked. Use the direct Card & PayPal link below to complete payment."
+                : "Payment failed. Please try again or use a different payment method."
+            );
             
             const currentEmail = dataRef.current.email;
             if (currentEmail) {
@@ -1624,7 +1652,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
     // --- PayPal SDK Upgrade Button Render ---
     useEffect(() => {
-      if (!sdkReady || !(window as any).paypal || step !== 8 || hasStrategyUnlocked) return;
+      const paypalSdk = getPayPalCalculatorSdk();
+      if (!sdkReady || !paypalSdk || step !== 8 || hasStrategyUnlocked) return;
 
       const containerId = showUpsellScreen ? "calc-upgrade-paypal-button" : "calc-dashboard-upgrade-paypal-button";
       const container = document.getElementById(containerId);
@@ -1632,12 +1661,12 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
       
       container.innerHTML = "";
 
-      if (typeof (window as any).paypal.Buttons !== 'function') {
+      if (typeof paypalSdk.Buttons !== 'function') {
         return;
       }
 
       try {
-        (window as any).paypal.Buttons({
+        paypalSdk.Buttons({
           style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'checkout', height: 45 },
           onClick: () => {
             trackEvent('preview_cta_clicked');
@@ -1700,7 +1729,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 }).catch(() => {});
               }
             } catch (tErr) {}
-            return createServerPayPalProductOrder({
+            const checkout = await createServerPayPalProductCheckout({
               productId: 'funding-roadmap',
               email: data.email,
               name: data.name,
@@ -1715,6 +1744,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
               attribution: trackingData,
               sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
             });
+            if (checkout.approveUrl) {
+              approveUrlRef.current = checkout.approveUrl;
+            }
+            return checkout.orderId;
           },
           onApprove: async (_data: any) => {
             try {
@@ -3005,9 +3038,24 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                             {renderB2BMetadataBlock()}
 
                             <div className="min-h-[150px] space-y-3.5 pt-3">
-                                {!sdkReady ? (
-                                    <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
-                                    <Loader2 className="w-4 h-4 animate-spin" /> Loading secure checkout...
+                                {paymentError && (
+                                  <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded-xl p-3 space-y-2">
+                                    <p className="font-medium">{paymentError}</p>
+                                    {approveUrlRef.current && (
+                                      <a
+                                        href={approveUrlRef.current}
+                                        className="block w-full text-center rounded-lg bg-[#0070ba] hover:bg-[#003087] px-4 py-2.5 text-xs font-bold text-white transition-colors"
+                                      >
+                                        Continue to Secure PayPal &amp; Card Checkout &rarr;
+                                      </a>
+                                    )}
+                                  </div>
+                                )}
+
+                                {isMobileRedirecting ? (
+                                    <div className="flex items-center justify-center py-6 gap-2 text-sm text-slate-600 font-semibold">
+                                      <Loader2 className="w-5 h-5 animate-spin text-[#0070ba]" />
+                                      <span>Opening secure PayPal &amp; Card checkout...</span>
                                     </div>
                                 ) : !isEmailValid ? (
                                     <div className="text-center p-6 bg-slate-50 border border-slate-200 border-dashed rounded-xl text-xs font-semibold text-slate-500 animate-pulse">
@@ -3015,7 +3063,33 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     </div>
                                 ) : (
                                     <>
-                                        {/* Secure PayPal Checkout Container */}
+                                        {isMobile && (
+                                          <div className="space-y-2">
+                                            <button
+                                              type="button"
+                                              disabled={mobileCheckoutLoading}
+                                              onClick={() => handleMobileDirectCheckout()}
+                                              className="w-full rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-sm py-3.5 px-5 transition-colors disabled:opacity-50 flex items-center justify-center gap-2 shadow-sm"
+                                            >
+                                              {mobileCheckoutLoading ? (
+                                                <Loader2 className="w-4 h-4 animate-spin" />
+                                              ) : (
+                                                <>Pay with Card or PayPal &rarr;</>
+                                              )}
+                                            </button>
+                                            <p className="text-[10px] text-center text-slate-400">
+                                              Instant zero-popup checkout (supports debit, credit card &amp; PayPal).
+                                            </p>
+                                          </div>
+                                        )}
+
+                                        {!sdkReady && !isMobile ? (
+                                          <div className="flex items-center justify-center py-4 gap-2 text-sm text-slate-500">
+                                            <Loader2 className="w-4 h-4 animate-spin" /> Loading secure checkout...
+                                          </div>
+                                        ) : null}
+
+                                        {/* Secure PayPal & Debit/Credit Card Smart Buttons Container */}
                                         <div id="calc-paypal-button" className="w-full"></div>
 
                                         <div className="relative flex py-2 items-center">
@@ -3167,6 +3241,23 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                        </div>
                                      </div>
 
+                                     {/* Upgrade 3: Recurring Funding Watch Fallback ($29/mo) */}
+                                     <a
+                                       href="/membership?source=calculator-fallback"
+                                       className="block border border-slate-200 bg-slate-50/70 hover:bg-indigo-50/40 hover:border-indigo-300 rounded-xl p-4 transition-all text-left"
+                                     >
+                                       <div className="flex items-center justify-between gap-2">
+                                         <h6 className="font-extrabold text-slate-900 text-xs flex items-center gap-1.5">
+                                           <span>Or Join Funding Watch Weekly Radar ($29/mo)</span>
+                                           <span className="bg-emerald-100 text-emerald-800 text-[8px] font-bold px-1.5 py-0.5 rounded-full uppercase">MRR Pass</span>
+                                         </h6>
+                                         <span className="text-[11px] font-bold text-indigo-700 shrink-0">View &rarr;</span>
+                                       </div>
+                                       <p className="text-[11px] text-slate-505 leading-relaxed mt-1">
+                                         Weekly email alerts matching open grants &amp; deadlines plus full Grant Template Library access. Cancel anytime.
+                                       </p>
+                                     </a>
+
                                  </div>
                     </div>
                     </div>
@@ -3244,12 +3335,31 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                           </div>
 
                           {paymentError && (
-                            <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded p-2.5">
-                              {paymentError}
+                            <div className="bg-red-50 border border-red-200 text-red-700 text-xs rounded p-2.5 space-y-2">
+                              <p>{paymentError}</p>
+                              {approveUrlRef.current && (
+                                <a
+                                  href={approveUrlRef.current}
+                                  className="block w-full text-center rounded bg-[#0070ba] hover:bg-[#003087] px-3 py-2 text-xs font-bold text-white transition-colors"
+                                >
+                                  Continue to PayPal &amp; Card Checkout &rarr;
+                                </a>
+                              )}
                             </div>
                           )}
 
                           {renderB2BMetadataBlock()}
+
+                          {isMobile && isEmailValid && (
+                            <button
+                              type="button"
+                              disabled={mobileCheckoutLoading}
+                              onClick={() => handleMobileDirectCheckout('funding-roadmap')}
+                              className="w-full rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-xs py-3 px-4 transition-colors disabled:opacity-50"
+                            >
+                              {mobileCheckoutLoading ? 'Redirecting to checkout...' : 'Upgrade with Card or PayPal (Instant Redirect) →'}
+                            </button>
+                          )}
 
                           <div id="calc-upgrade-paypal-button" className="min-h-[50px]"></div>
                         </div>
@@ -3749,10 +3859,31 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                       <div className="text-xl font-extrabold text-slate-800">$49.00 <span className="text-xs text-slate-400 font-normal">USD one-time</span></div>
                                       
                                       {paymentError && (
-                                        <p className="text-[11px] text-red-600 font-semibold bg-red-50 p-2 rounded border border-red-155">{paymentError}</p>
+                                        <div className="text-[11px] text-red-600 font-semibold bg-red-50 p-2 rounded border border-red-155 space-y-1.5">
+                                          <p>{paymentError}</p>
+                                          {approveUrlRef.current && (
+                                            <a
+                                              href={approveUrlRef.current}
+                                              className="block w-full text-center rounded bg-[#0070ba] hover:bg-[#003087] px-3 py-1.5 text-[11px] font-bold text-white transition-colors"
+                                            >
+                                              Continue to PayPal &amp; Card Checkout &rarr;
+                                            </a>
+                                          )}
+                                        </div>
                                       )}
                                       
                                       {renderB2BMetadataBlock()}
+
+                                      {isMobile && isEmailValid && (
+                                        <button
+                                          type="button"
+                                          disabled={mobileCheckoutLoading}
+                                          onClick={() => handleMobileDirectCheckout('funding-roadmap')}
+                                          className="w-full max-w-xs mx-auto block rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-bold text-xs py-2.5 px-4 transition-colors disabled:opacity-50"
+                                        >
+                                          {mobileCheckoutLoading ? 'Redirecting...' : 'Upgrade with Card or PayPal →'}
+                                        </button>
+                                      )}
                                       
                                       <div id="calc-dashboard-upgrade-paypal-button" className="min-h-[50px] w-full max-w-xs mx-auto"></div>
                                       

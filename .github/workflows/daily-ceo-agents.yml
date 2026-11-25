@@ -1,0 +1,91 @@
+name: Daily CEO Revenue Workforce
+
+on:
+  schedule:
+    # Off-peak UTC cloud crons (run even when owner laptop is shut down):
+    # - 13:21 UTC (~6:51 PM IST / 8:21 AM EST): Window A NA Morning Opener Push + Cart Recovery + Wave
+    # - 13:41 UTC (~7:11 PM IST / 8:41 AM EST): Window A catch-up & Consolidated 7:05+ PM IST Brief backup
+    # - 18:11 UTC (~11:41 PM IST / 1:11 PM EST): Window C Afternoon Second-Look Opener & Cart Catch-Up
+    - cron: '21 13 * * *'
+    - cron: '41 13 * * *'
+    - cron: '11 18 * * *'
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Execution mode (live or dry-run)'
+        required: false
+        default: 'live'
+      window:
+        description: 'Window (auto, na-morning, or na-afternoon)'
+        required: false
+        default: 'auto'
+      max_emails:
+        description: 'Max daily unique outbound emails (<=25)'
+        required: false
+        default: '25'
+
+permissions:
+  contents: read
+
+jobs:
+  run-workforce:
+    name: Execute 5-Agent CEO Revenue Plan & Campaign Monitor
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+
+      - name: Install Dependencies
+        run: npm ci
+
+      - name: Run CEO Action Workforce & Monitor
+        env:
+          UPSTASH_REDIS_REST_URL: ${{ secrets.UPSTASH_REDIS_REST_URL }}
+          UPSTASH_REDIS_REST_TOKEN: ${{ secrets.UPSTASH_REDIS_REST_TOKEN }}
+          DISABLE_REDIS: 'true'
+          GOOGLE_SHEET_ID: ${{ secrets.GOOGLE_SHEET_ID }}
+          GOOGLE_SHEETS_SPREADSHEET_ID: ${{ secrets.GOOGLE_SHEETS_SPREADSHEET_ID }}
+          GOOGLE_SHEETS_CLIENT_EMAIL: ${{ secrets.GOOGLE_SHEETS_CLIENT_EMAIL || secrets.GOOGLE_SERVICE_ACCOUNT_EMAIL }}
+          GOOGLE_SHEETS_PRIVATE_KEY: ${{ secrets.GOOGLE_SHEETS_PRIVATE_KEY || secrets.GOOGLE_PRIVATE_KEY }}
+          BREVO_API_KEY: ${{ secrets.BREVO_API_KEY }}
+          RESEND_API_KEY: ${{ secrets.RESEND_API_KEY }}
+          RESEND_FROM_EMAIL: ${{ secrets.RESEND_FROM_EMAIL }}
+          SERPER_API_KEY: ${{ secrets.SERPER_API_KEY }}
+          CEO_REPORT_EMAIL: ${{ secrets.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca' }}
+          GROWTH_OS_REPORT_EMAIL: ${{ secrets.GROWTH_OS_REPORT_EMAIL || 'ashwani@fsidigital.ca' }}
+          NEXT_PUBLIC_SITE_URL: https://www.fsidigital.ca
+          NEXT_PUBLIC_APP_URL: https://www.fsidigital.ca
+        run: |
+          UTC_HOUR=$(date -u +%H)
+          UTC_MIN=$(date -u +%M)
+          REQ_WINDOW="${{ github.event.inputs.window }}"
+          if [ -z "$REQ_WINDOW" ] || [ "$REQ_WINDOW" = "auto" ]; then
+            if [ "$UTC_HOUR" -ge 18 ]; then
+              TARGET_WINDOW="na-afternoon"
+            else
+              TARGET_WINDOW="na-morning"
+            fi
+          else
+            TARGET_WINDOW="$REQ_WINDOW"
+          fi
+
+          BRIEF_FLAG=""
+          if [ "$UTC_HOUR" -eq 13 ] && [ "$UTC_MIN" -ge 35 ]; then
+            BRIEF_FLAG="--with-brief"
+          elif [ "$UTC_HOUR" -ge 14 ] && [ "$UTC_HOUR" -le 18 ]; then
+            BRIEF_FLAG="--with-brief"
+          fi
+
+          if [ "${{ github.event.inputs.mode }}" = "dry-run" ]; then
+            npx tsx scripts/run-ceo-agents.ts --window=$TARGET_WINDOW --opener-push --max=${{ github.event.inputs.max_emails || '25' }}
+          else
+            npx tsx scripts/run-ceo-agents.ts --live --confirm=EXECUTE_REVENUE_AGENTS --window=$TARGET_WINDOW --opener-push $BRIEF_FLAG --max=${{ github.event.inputs.max_emails || '25' }}
+          fi

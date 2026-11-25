@@ -369,5 +369,6 @@ export async function sendIntakeAllocationNoticeEmail({
     text,
     tagType: 'intake-allocation-notice',
     companyName: cleanCompany,
+    preferProvider: 'brevo',
   });
 }

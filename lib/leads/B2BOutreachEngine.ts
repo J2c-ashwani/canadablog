@@ -1,7 +1,7 @@
 import { SubscriberRepository, type SubscriberProfile } from "./SubscriberRepository";
 import { sendEmail } from "../emails/mailer";
 import { getB2BEmailContent, type B2BOutreachStage } from "../emails/b2b-outreach-templates";
-import { appendOutreachSentLeadToSheet } from "../google-sheets";
+import { appendOutreachSentLeadToSheet, getOutreachSentLeadHistory } from "../google-sheets";
 import { getAllPurchases } from '@/lib/products/purchase-store';
 import { isProviderVerifiedPurchase } from '@/lib/growth-os/evidence-metrics';
 import {
@@ -104,24 +104,33 @@ export class B2BOutreachEngine {
       return { processed: 0, sentCount: 0, completedCount: 0, errors: [], receipts: [], dryRun, skippedReason: reason };
     }
 
-    const allSubs = await SubscriberRepository.getAllSubscribers();
+    const [allSubs, purchases, outreachHistory] = await Promise.all([
+      SubscriberRepository.getAllSubscribers(),
+      getAllPurchases(),
+      getOutreachSentLeadHistory(),
+    ]);
     const verifiedBuyerEmails = new Set(
-      (await getAllPurchases())
+      purchases
         .filter(isProviderVerifiedPurchase)
         .map((purchase) => purchase.email.toLowerCase().trim())
     );
     const now = new Date();
     const candidates: B2BOutreachCandidate[] = [];
+    const seenEmails = new Set<string>();
     let completedCount = 0;
+    const TWO_DAYS_MS = 48 * 60 * 60 * 1000;
 
     const sleep = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
     for (const sub of allSubs) {
+      const normalizedEmail = (sub.email || "").toLowerCase().trim();
       if (!sub.isSubscribed
-        || !sub.email
+        || !normalizedEmail
+        || seenEmails.has(normalizedEmail)
         || isTestOrInternalContact(sub)
-        || verifiedBuyerEmails.has(sub.email.toLowerCase().trim())
+        || verifiedBuyerEmails.has(normalizedEmail)
         || hasRecentCommercialProviderAcceptance(sub)) continue;
+      seenEmails.add(normalizedEmail);
 
       // Calculate Priority Score
       const { score } = this.calculatePriorityScore(sub);
@@ -136,37 +145,75 @@ export class B2BOutreachEngine {
         // ignore
       }
 
-      const currentStage = activity.b2bOutreachStage || null;
-      const lastSentStr = activity.b2bOutreachAcceptedAt;
+      // Cross-engine cooldown protection (hunter, reactivation, etc.)
+      const latestCrossEngineContactMs = Math.max(
+        new Date(activity.hunterOutreachSentAt || 0).getTime() || 0,
+        new Date(activity.touch1SentAt || 0).getTime() || 0,
+        new Date(activity.lastContactedAt || 0).getTime() || 0,
+      );
+      if (latestCrossEngineContactMs > 0 && now.getTime() - latestCrossEngineContactMs < TWO_DAYS_MS) {
+        continue;
+      }
 
-      // Legacy stages without a provider receipt are not reliable enough to
-      // advance or restart automatically; leave them untouched for audit.
-      if (currentStage && !activity.b2bOutreachProviderMessageId) continue;
+      const hist = outreachHistory.get(normalizedEmail);
+      const histStages = hist?.stages || new Set<string>();
+
+      // Reconcile stage across BOTH leadActivity AND durable Outreach Leads history
+      let currentStage: string | null = activity.b2bOutreachStage || null;
+      if (histStages.has("b2b_day7") && currentStage !== "completed") currentStage = "b2b_day7";
+      else if (histStages.has("b2b_day4") && (!currentStage || currentStage === "b2b_day1")) currentStage = "b2b_day4";
+      else if (histStages.has("b2b_day1") && !currentStage) currentStage = "b2b_day1";
+
+      // Guard: if all 3 stages were already dispatched in Outreach Leads, mark completed without re-sending
+      if ((hist?.count || 0) >= 3 && currentStage !== "completed") {
+        activity.b2bOutreachStage = "completed";
+        activity.b2bOutreachAcceptedAt = activity.b2bOutreachAcceptedAt || now.toISOString();
+        if (!dryRun) {
+          await SubscriberRepository.updateSubscriberPreferences(sub.email, {
+            leadActivity: JSON.stringify(activity)
+          }).catch(() => {});
+        }
+        completedCount++;
+        continue;
+      }
+
+      const lastSentStr = activity.b2bOutreachAcceptedAt;
+      const parsedActivityLastMs = lastSentStr ? new Date(lastSentStr).getTime() : 0;
+      const lastSentMs = Math.max(
+        Number.isFinite(parsedActivityLastMs) ? parsedActivityLastMs : 0,
+        hist?.latestSentMs || 0
+      );
+
+      // Legacy stages without a provider receipt AND without durable Outreach Leads history
+      if (currentStage && !activity.b2bOutreachProviderMessageId && histStages.size === 0) continue;
 
       if (currentStage === "completed") continue;
 
       if (!currentStage) {
-        // Ready for Day 1 outreach
-        candidates.push({ lead: sub, nextStage: "b2b_day1", currentStage, priorityScore: score });
+        if (!histStages.has("b2b_day1")) {
+          // Ready for Day 1 outreach
+          candidates.push({ lead: sub, nextStage: "b2b_day1", currentStage, priorityScore: score });
+        }
       } else {
-        if (!lastSentStr) {
-          candidates.push({ lead: sub, nextStage: this.getNextStage(currentStage) as any, currentStage, priorityScore: score });
+        if (!lastSentMs) {
+          continue;
+        }
+        if (now.getTime() - lastSentMs < TWO_DAYS_MS) {
           continue;
         }
 
-        const lastSent = new Date(lastSentStr);
-        if (isNaN(lastSent.getTime())) {
-          candidates.push({ lead: sub, nextStage: this.getNextStage(currentStage) as any, currentStage, priorityScore: score });
-          continue;
-        }
+        const elapsedDays = (now.getTime() - lastSentMs) / (1000 * 60 * 60 * 24);
+        if (elapsedDays < 3) continue;
 
-        const elapsedDays = (now.getTime() - lastSent.getTime()) / (1000 * 60 * 60 * 24);
-
-        if (currentStage === "b2b_day1" && elapsedDays >= 3) {
+        if (currentStage === "b2b_day1" && !histStages.has("b2b_day4")) {
           candidates.push({ lead: sub, nextStage: "b2b_day4", currentStage, priorityScore: score });
-        } else if (currentStage === "b2b_day4" && elapsedDays >= 3) {
+        } else if (currentStage === "b2b_day4" && !histStages.has("b2b_day7")) {
           candidates.push({ lead: sub, nextStage: "b2b_day7", currentStage, priorityScore: score });
-        } else if (currentStage === "b2b_day7" && elapsedDays >= 3) {
+        } else if (
+          currentStage === "b2b_day7" ||
+          (currentStage === "b2b_day1" && histStages.has("b2b_day4") && histStages.has("b2b_day7")) ||
+          (currentStage === "b2b_day4" && histStages.has("b2b_day7"))
+        ) {
           // Complete campaign stage
           activity.b2bOutreachStage = "completed";
           activity.b2bOutreachAcceptedAt = now.toISOString();
@@ -245,6 +292,7 @@ export class B2BOutreachEngine {
 
           activity.b2bOutreachStage = nextStage;
           activity.b2bOutreachAcceptedAt = now.toISOString();
+          activity.lastContactedAt = now.toISOString();
           activity.b2bOutreachProvider = provider;
           activity.b2bOutreachProviderMessageId = providerMessageId;
 

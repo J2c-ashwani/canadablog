@@ -73,12 +73,15 @@ export class CEOAgent {
 
     try {
       // 1. Audit Phase: Concurrently run all specialist diagnostics
-      const [revenue, growth, sales, product, queuedSignals] = await Promise.all([
+      const [revenue, growth, sales, product, queuedSignals, workforceMonitor, workforceClosedLoop, workforceWave] = await Promise.all([
         RevenueAgent.auditRevenue(),
         GrowthAgent.auditGrowthOS(),
         SalesAgent.auditSales(),
         ProductAgent.auditProduct(),
         getQueuedGrowthOSEvents(),
+        getLatestOperationalState<any>('ceo_campaign_monitor_latest').catch(() => null),
+        getLatestOperationalState<any>('ceo_closed_loop_latest').catch(() => null),
+        getLatestOperationalState<any>('ceo_workforce_last_wave').catch(() => null),
       ])
 
       // 2. Execution Phase (L3 Low-Risk Bounded Operations)
@@ -93,6 +96,7 @@ export class CEOAgent {
         score: number;
         status: string;
         recommendedAction: string;
+        actionTaken?: string;
       }> = []
 
       if (triggerSource !== 'verification') {
@@ -233,7 +237,7 @@ export class CEOAgent {
       }
 
       const todayKPIs = CommercialActionTracker.getTodayMetrics()
-      const briefText = this.formatBrief(runId, scoreboard, pathToTarget, leakageReport, revenue, growth, sales, product, decisionBasis, todayKPIs, executedActions)
+      const briefText = this.formatBrief(runId, scoreboard, pathToTarget, leakageReport, revenue, growth, sales, product, decisionBasis, todayKPIs, executedActions, { workforceMonitor, workforceClosedLoop, workforceWave })
 
       if (triggerSource !== 'verification') await CEOMemory.recordDecision({
         run_id: runId,
@@ -268,11 +272,10 @@ export class CEOAgent {
 
       if (triggerSource === 'cron' || triggerSource === 'on_demand') {
         const currentUtcHour = new Date().getUTCHours()
-        // Strict Time-Window Gate: Daily executive briefing must only dispatch
-        // between 13:30 and 15:00 UTC (7:00 PM – 8:30 PM IST), immediately after the 13:30 UTC social sprint finishes.
-        // If an outdated external cron (such as a legacy 08:10 UTC cron-job.org trigger) pings this route,
-        // we audit state cleanly but suppress the email dispatch so the founder NEVER receives premature morning emails.
-        const isScheduledBriefingWindow = currentUtcHour >= 13 && currentUtcHour <= 15
+        // Strict Time-Window Gate: Daily executive briefing dispatches only in the evening window
+        // (13:35–18:59 UTC / 7:05 PM – 12:29 AM IST), preventing premature morning sends while
+        // still recovering cleanly if laptop sleep delays execution past 9:30 PM IST.
+        const isScheduledBriefingWindow = currentUtcHour >= 13 && currentUtcHour <= 18
         const allowEmailDispatch = triggerSource === 'on_demand' || isScheduledBriefingWindow
 
         if (!allowEmailDispatch) {
@@ -386,8 +389,12 @@ export class CEOAgent {
             revenue,
             todayKPIs,
             highIntentLeads: todaysHighIntentLeads,
+            executedActions,
             socialSprint: socialSprintInfo,
             briefText,
+            workforceMonitor,
+            workforceClosedLoop,
+            workforceWave,
           })
 
           const report = await sendEmail({
@@ -447,7 +454,8 @@ export class CEOAgent {
     product: any,
     decision: CEODecisionBasis,
     todayKPIs: ReturnType<typeof CommercialActionTracker.getTodayMetrics>,
-    executedActions: any[]
+    executedActions: any[],
+    workforce?: { workforceMonitor?: any; workforceClosedLoop?: any; workforceWave?: any }
   ) {
     const productMix = path.requiredTransactions
     const blocked = todayKPIs.blockedByReason
@@ -564,6 +572,22 @@ Fix: ${product.checkoutFrictionFindings?.recommendedFix}
 
 [ACTION P&L DETAILS]
 ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.decision} | ${action.campaign} | leads ${action.qualifiedLeadsAffected} | accepted ${action.providerAccepted} | delivered ${action.delivered} | provider failures ${action.providerFailures} | clicks ${action.clicks} | checkout views ${action.productCheckoutViews} | email ready ${action.deliveryEmailsReady} | PayPal rendered ${action.paypalButtonsRendered} | PayPal clicks ${action.paypalButtonClicks} | approvals ${action.paypalApprovals} | checkout failures ${action.paypalFailures} | server checkouts ${action.checkouts} | payments ${action.purchases} | revenue $${action.revenueUSD.toFixed(2)} | MRR $${action.mrrUSD.toFixed(2)}`).join('\n') || 'No attributed commercial actions yet.'}
+
+[5-AGENT WORKFORCE & CLOSED-LOOP REVIEW (DAY-WISE BRIEF)]
+Last Wave Dispatched: ${workforce?.workforceWave?.executedAt || 'Pending first wave'} | Emails Executed: ${workforce?.workforceWave?.totals?.executedEmails ?? 0} | Pipeline: $${workforce?.workforceWave?.totals?.estimatedPipelineUSD ?? 0} USD
+Sponsor Campaign: Total ${workforce?.workforceMonitor?.sponsorCampaign?.totalProspects ?? 0} | T1 Active: ${workforce?.workforceMonitor?.sponsorCampaign?.touch1Active ?? 0} | T2: ${workforce?.workforceMonitor?.sponsorCampaign?.touch2Active ?? 0} | T3: ${workforce?.workforceMonitor?.sponsorCampaign?.touch3Complete ?? 0} | Pub Orders: ${workforce?.workforceMonitor?.sponsorCampaign?.publishingOrdersCount ?? 0}
+Partner Pilots: Follow-Up Active: ${workforce?.workforceMonitor?.partnerCampaign?.inFollowUp ?? 0} | Won: ${workforce?.workforceMonitor?.partnerCampaign?.wonOrActive ?? 0}
+Combined Email Events (Resend + Brevo): Delivered ${workforce?.workforceMonitor?.emailTelemetry?.delivered ?? 0} | Opened ${workforce?.workforceMonitor?.emailTelemetry?.opened ?? 0} (${workforce?.workforceMonitor?.emailTelemetry?.openRatePct ?? 0}%) | Clicked ${workforce?.workforceMonitor?.emailTelemetry?.clicked ?? 0} | Bounced ${workforce?.workforceMonitor?.emailTelemetry?.bounced ?? 0}
+Closed-Loop Replies & Adaptive Actions: Replies Detected ${workforce?.workforceClosedLoop?.repliesDetected ?? 0} | Handled ${workforce?.workforceClosedLoop?.repliesHandledCount ?? 0} | Adaptive Follow-Ups ${workforce?.workforceClosedLoop?.adaptiveFollowUpsSent ?? 0}
+
+[PER-LEAD ACTION TAKEN LEDGER]
+${(() => {
+  const waveRows: any[] = Array.isArray(workforce?.workforceWave?.perLeadActions) ? workforce.workforceWave.perLeadActions : [];
+  const loopRows: any[] = Array.isArray(workforce?.workforceClosedLoop?.actions) ? workforce.workforceClosedLoop.actions : [];
+  const combined = [...loopRows, ...waveRows].slice(0, 35);
+  if (combined.length === 0) return 'No workforce per-lead actions recorded yet in this window.';
+  return combined.map((a: any) => `- [${a.status}] ${a.recipientEmail || a.email} | ${a.agent} -> ${a.actionType}: ${a.targetOffer} ($${a.expectedValueUSD ?? 0})${a.providerMessageId ? ` [id:${a.providerMessageId}]` : ''}`).join('\n');
+})()}
 `
   }
 
@@ -573,8 +597,12 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
     revenue,
     todayKPIs,
     highIntentLeads,
+    executedActions,
     socialSprint,
     briefText,
+    workforceMonitor,
+    workforceClosedLoop,
+    workforceWave,
   }: {
     runId: string
     scoreboard: any
@@ -589,12 +617,74 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
       score: number
       status: string
       recommendedAction: string
+      actionTaken?: string
     }>
+    executedActions?: any[]
     socialSprint: { fbUrl?: string; igUrl?: string; liUrl?: string; ytUrl?: string; variantId?: string; isFreshToday?: boolean; lastAcceptedAt?: string }
     briefText: string
+    workforceMonitor?: any
+    workforceClosedLoop?: any
+    workforceWave?: any
   }): string {
+    const workforceActionMap = new Map<string, string>();
+    const combinedWorkforceActions: Array<{
+      email: string;
+      agent: string;
+      actionType: string;
+      targetOffer: string;
+      expectedValueUSD: number;
+      status: string;
+      provider?: string;
+      providerMessageId?: string;
+      reason?: string;
+    }> = [];
+
+    const pushActionRow = (raw: any) => {
+      const email = String(raw?.email || raw?.recipientEmail || raw?.lead || '').toLowerCase().trim();
+      if (!email) return;
+      const status = String(raw?.status || 'EXECUTED');
+      const agent = String(raw?.agent || 'Workforce');
+      const actionType = String(raw?.actionType || raw?.action || 'OUTREACH');
+      const targetOffer = String(raw?.targetOffer || raw?.offer || '');
+      const expectedValueUSD = Number(raw?.expectedValueUSD ?? raw?.price ?? 0) || 0;
+      const provider = String(raw?.provider || '');
+      const providerMessageId = String(raw?.providerMessageId || '');
+      const reason = String(raw?.reason || '');
+      combinedWorkforceActions.push({
+        email,
+        agent,
+        actionType,
+        targetOffer,
+        expectedValueUSD,
+        status,
+        provider,
+        providerMessageId,
+        reason,
+      });
+      if (!workforceActionMap.has(email)) {
+        workforceActionMap.set(
+          email,
+          `${status}: ${agent} -> ${actionType} (${targetOffer})${providerMessageId ? ` [${provider || 'sent'}]` : ''}`
+        );
+      }
+    };
+
+    for (const a of (Array.isArray(workforceClosedLoop?.actions) ? workforceClosedLoop.actions : [])) pushActionRow(a);
+    for (const a of (Array.isArray(workforceWave?.perLeadActions) ? workforceWave.perLeadActions : [])) pushActionRow(a);
+    for (const ea of (Array.isArray(executedActions) ? executedActions : [])) {
+      if (Array.isArray(ea?.actions)) {
+        for (const a of ea.actions) pushActionRow({ ...a, agent: ea.agent || 'Sales', actionType: 'SALES_OUTREACH', status: 'EXECUTED' });
+      }
+      if (Array.isArray(ea?.candidates)) {
+        for (const c of ea.candidates) pushActionRow({ email: c, agent: ea.agent || 'Revenue', actionType: 'CART_RECOVERY', targetOffer: 'Checkout Recovery', status: 'EXECUTED' });
+      }
+    }
+
     const leadsRows = highIntentLeads.length > 0
-      ? highIntentLeads.map((l) => `
+      ? highIntentLeads.map((l) => {
+        const emailKey = String(l.email || '').toLowerCase().trim();
+        const resolvedAction = l.actionTaken || workforceActionMap.get(emailKey) || `Queued: ${l.recommendedAction}`;
+        return `
         <tr style="border-bottom: 1px solid #e2e8f0;">
           <td style="padding: 10px; font-weight: 600; color: #0f172a;">${l.name}</td>
           <td style="padding: 10px; color: #334155;">${l.company}</td>
@@ -602,13 +692,35 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
           <td style="padding: 10px; color: #475569;">${l.phone}</td>
           <td style="padding: 10px; font-weight: 600; color: #16a34a;">${l.fundingGoal}</td>
           <td style="padding: 10px; text-align: center;"><span style="background: #e0f2fe; color: #0369a1; padding: 3px 8px; border-radius: 9999px; font-weight: 700; font-size: 12px;">${l.score}/100</span></td>
-          <td style="padding: 10px; font-size: 12px; color: #64748b;">${l.recommendedAction}</td>
+          <td style="padding: 10px; font-size: 12px; color: #0f172a; font-weight: 600;">${resolvedAction}</td>
         </tr>
-      `).join('')
+      `;
+      }).join('')
       : `
         <tr>
           <td colspan="7" style="padding: 16px; text-align: center; color: #64748b; font-style: italic;">
             Zero new unnotified leads in this cycle (all existing leads permanently deduplicated).
+          </td>
+        </tr>
+      `;
+
+    const actionLedgerRows = combinedWorkforceActions.length > 0
+      ? combinedWorkforceActions.slice(0, 35).map((a) => `
+        <tr style="border-bottom: 1px solid #e2e8f0;">
+          <td style="padding: 8px 10px; color: #0f172a;"><a href="mailto:${a.email}" style="color: #2563eb; text-decoration: none;">${a.email}</a></td>
+          <td style="padding: 8px 10px; color: #475569; font-weight: 600;">${a.agent}</td>
+          <td style="padding: 8px 10px; color: #0f172a;">${a.actionType}</td>
+          <td style="padding: 8px 10px; color: #334155;">${a.targetOffer || '-'} ${a.expectedValueUSD > 0 ? `($${a.expectedValueUSD})` : ''}</td>
+          <td style="padding: 8px 10px;">
+            <span style="background: ${a.status === 'EXECUTED' ? '#dcfce7' : '#fef3c7'}; color: ${a.status === 'EXECUTED' ? '#15803d' : '#b45309'}; font-size: 11px; font-weight: 700; padding: 2px 7px; border-radius: 9999px;">${a.status}</span>
+            ${a.providerMessageId ? `<span style="font-size: 10px; color: #64748b; margin-left: 4px;">${a.provider || ''}</span>` : ''}
+          </td>
+        </tr>
+      `).join('')
+      : `
+        <tr>
+          <td colspan="5" style="padding: 14px; text-align: center; color: #64748b; font-style: italic;">
+            No outbound per-lead actions executed yet in this window.
           </td>
         </tr>
       `;
@@ -621,7 +733,7 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
             <span style="color: #94a3b8; font-size: 12px;">${new Date().toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric', year: 'numeric' })}</span>
           </div>
           <h1 style="margin: 14px 0 6px 0; font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: -0.02em;">Daily Executive Operating Briefing</h1>
-          <p style="margin: 0; color: #cbd5e1; font-size: 13px;">Single Consolidated Morning Briefing: Revenue, High-Intent Leads, Social Engine, & Health.</p>
+          <p style="margin: 0; color: #cbd5e1; font-size: 13px;">Single Consolidated 7:05 PM IST Briefing: Revenue, Leads Found, Exact Actions Taken &amp; Health.</p>
         </div>
 
         <div style="padding: 24px;">
@@ -663,11 +775,35 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
                     <th style="padding: 8px 10px;">Phone</th>
                     <th style="padding: 8px 10px;">Funding Goal</th>
                     <th style="padding: 8px 10px; text-align: center;">Score</th>
-                    <th style="padding: 8px 10px;">Recommended Next Step</th>
+                    <th style="padding: 8px 10px;">Action Taken by Agent</th>
                   </tr>
                 </thead>
                 <tbody>
                   ${leadsRows}
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- 2B. Per-Lead Action Taken Ledger -->
+          <div style="margin-bottom: 24px;">
+            <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 8px;">
+              <h2 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin: 0;">2B. Leads Actioned Today — Exact Agent Ledger (${Math.min(35, combinedWorkforceActions.length)})</h2>
+              <span style="font-size: 12px; color: #64748b;">Every lead + exact action taken</span>
+            </div>
+            <div style="border: 1px solid #e2e8f0; border-radius: 8px; overflow-x: auto;">
+              <table style="width: 100%; border-collapse: collapse; font-size: 12px; text-align: left;">
+                <thead>
+                  <tr style="background: #f1f5f9; color: #475569; font-size: 11px; text-transform: uppercase; letter-spacing: 0.05em;">
+                    <th style="padding: 8px 10px;">Lead / Email</th>
+                    <th style="padding: 8px 10px;">Agent</th>
+                    <th style="padding: 8px 10px;">Action Taken</th>
+                    <th style="padding: 8px 10px;">Offer / Value</th>
+                    <th style="padding: 8px 10px;">Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  ${actionLedgerRows}
                 </tbody>
               </table>
             </div>
@@ -712,7 +848,13 @@ ${revenue.actionPerformance.actions.slice(0, 8).map((action: any) => `${action.d
 
           <!-- 4. Deliverability & System Health -->
           <div style="margin-bottom: 24px;">
-            <h2 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin: 0 0 12px 0;">4. Deliverability & Campaign Operations</h2>
+            <h2 style="font-size: 13px; text-transform: uppercase; letter-spacing: 0.05em; color: #64748b; margin: 0 0 12px 0;">4. Deliverability &amp; Autonomous 5-Agent Workforce (Day-Wise)</h2>
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 16px; margin-bottom: 12px; font-size: 12px; color: #334155; line-height: 1.6;">
+              <div><strong>Last Live Wave:</strong> ${workforceWave?.totals?.executedEmails ?? 0} actions executed ($${workforceWave?.totals?.estimatedPipelineUSD ?? 0} USD gross pipeline) · <strong>Partner Pilots:</strong> ${workforceMonitor?.partnerCampaign?.inFollowUp ?? 0} in follow-up / ${workforceMonitor?.partnerCampaign?.wonOrActive ?? 0} won</div>
+              <div><strong>Sponsored Media Campaign:</strong> ${workforceMonitor?.sponsorCampaign?.touch1Active ?? 0} Touch-1 · ${workforceMonitor?.sponsorCampaign?.touch2Active ?? 0} Touch-2 · ${workforceMonitor?.sponsorCampaign?.touch3Complete ?? 0} Touch-3 · ${workforceMonitor?.sponsorCampaign?.publishingOrdersCount ?? 0} Paid Orders</div>
+              <div><strong>Combined Telemetry (Resend + Brevo):</strong> ${workforceMonitor?.emailTelemetry?.delivered ?? 0} delivered · ${workforceMonitor?.emailTelemetry?.opened ?? 0} opened (${workforceMonitor?.emailTelemetry?.openRatePct ?? 0}%) · ${workforceMonitor?.emailTelemetry?.clicked ?? 0} clicked · ${workforceMonitor?.emailTelemetry?.bounced ?? 0} bounced</div>
+              <div><strong>Closed-Loop Review:</strong> ${workforceClosedLoop?.repliesDetected ?? 0} inbound replies detected (${workforceClosedLoop?.repliesHandledCount ?? 0} handled) · ${workforceClosedLoop?.adaptiveFollowUpsSent ?? 0} adaptive follow-ups dispatched · ${workforceClosedLoop?.engagedOpenersEvaluated ?? 0} engaged openers monitored</div>
+            </div>
             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px;">
               <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 14px;">
                 <div style="font-size: 12px; font-weight: 700; color: #0f172a;">Brevo Delivery Engine (300/day)</div>

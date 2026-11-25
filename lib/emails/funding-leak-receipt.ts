@@ -440,6 +440,7 @@ export async function sendFundingLeakReceiptEmail({
     html,
     text,
     tagType: 'funding-leak-receipt',
-    companyName: cleanCompany
+    companyName: cleanCompany,
+    preferProvider: 'brevo'
   });
 }

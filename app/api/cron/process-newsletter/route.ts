@@ -42,7 +42,7 @@ export async function GET(request: NextRequest) {
     const requestedCampaignId = request.nextUrl.searchParams.get('campaign');
     const preserveApprovedCampaign = requestedCampaignId === APPROVED_PRODUCT_COHORT_ID
       && config.campaignId === APPROVED_PRODUCT_COHORT_ID;
-    if (!preserveApprovedCampaign && config.campaignId !== targetCampaignId) {
+    if (!preserveApprovedCampaign && (config.campaignId !== targetCampaignId || config.status === 'idle')) {
       config = await NewsletterEngine.autoInitializeWeeklyCampaign(weekId);
     }
   } catch (error: any) {
@@ -57,7 +57,10 @@ export async function GET(request: NextRequest) {
 
   try {
     if (config.status !== 'running') {
-      const summary = { campaignId: config.campaignId, providerAccepted: 0, reason: 'No verified open programs were available for a weekly update.' };
+      const reason = config.status === 'completed'
+        ? `Weekly cohort already completed (${config.sentCount || 0} sent) for ${config.campaignId}.`
+        : 'No verified open programs were available for a weekly update.';
+      const summary = { campaignId: config.campaignId, status: config.status, providerAccepted: 0, reason };
       await finishOperationLease(lease, 'SUCCEEDED', summary);
       return NextResponse.json({ success: true, ...summary });
     }

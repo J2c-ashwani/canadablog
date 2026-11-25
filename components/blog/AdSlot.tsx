@@ -24,7 +24,7 @@ export default function AdSlot({
   // Use provided adSlot or fall back to environment variables based on format
   let finalAdSlot = adSlot || (
     adFormat === 'horizontal' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL :
-    adFormat === 'vertical' ? process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR :
+    adFormat === 'vertical' ? (process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR_AD || process.env.NEXT_PUBLIC_ADSENSE_SIDEBAR) :
     adFormat === 'rectangle' ? process.env.NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE :
     process.env.NEXT_PUBLIC_ADSENSE_HEADER_AD
   );

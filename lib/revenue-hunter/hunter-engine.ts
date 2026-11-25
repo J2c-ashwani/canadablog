@@ -5,6 +5,8 @@ import { CEOActionLedger } from '@/lib/ceo-agent/ledger/ceo-action-ledger'
 import { sendEmail } from '@/lib/emails/mailer'
 import { updateLeadInSheet } from '@/lib/google-sheets'
 import { validateCaslEligibility } from '@/lib/leads/casl-consent'
+import { hasRecentCommercialProviderAcceptance } from '@/lib/leads/commercial-eligibility'
+import { SubscriberRepository } from '@/lib/leads/SubscriberRepository'
 import { CommercialActionTracker, generateActionId } from '@/lib/ceo-agent/ledger/action-tracker'
 
 export interface RevenueHunterStatus {
@@ -125,15 +127,45 @@ export class RevenueHunterEngine {
       }
     }
 
-    // 2. Fetch Targeted Candidates
-    const rawCohort = await ProspectIntelligenceEngine.getTargetedCohort(10, filterTier)
+    // 2. Fetch Targeted Candidates (oversample before cooldown filtering so eligible leads aren't starved)
+    const [rawCohort, activeSubscribers] = await Promise.all([
+      ProspectIntelligenceEngine.getTargetedCohort(50, filterTier),
+      SubscriberRepository.getAllSubscribers(false),
+    ])
+    const subByEmail = new Map(
+      activeSubscribers
+        .filter((sub) => Boolean(sub.email))
+        .map((sub) => [sub.email.toLowerCase().trim(), sub])
+    )
 
-    // 3. CASL Express Consent Filter
+    // 3. CASL Express Consent & Multi-Engine Cooldown Filter
+    const HUNTER_COOLDOWN_MS = 7 * 24 * 60 * 60 * 1000
     const eligibleCohort = rawCohort.filter((prospect) => {
+      const sub = subByEmail.get(prospect.leadEmail.toLowerCase().trim())
+      if (!sub || !sub.isSubscribed) return false
+
+      let activity: Record<string, any> = {}
+      try {
+        if (sub.leadActivity && sub.leadActivity !== 'N/A' && sub.leadActivity !== '{}') {
+          activity = JSON.parse(sub.leadActivity)
+        }
+      } catch {}
+
+      if (hasRecentCommercialProviderAcceptance({ email: prospect.leadEmail, leadActivity: sub.leadActivity })) {
+        return false
+      }
+      const hunterSentMs = new Date(activity.hunterOutreachSentAt || 0).getTime()
+      if (Number.isFinite(hunterSentMs) && hunterSentMs > 0 && Date.now() - hunterSentMs < HUNTER_COOLDOWN_MS) {
+        return false
+      }
+
       const casl = validateCaslEligibility({
         email: prospect.leadEmail,
         name: prospect.leadName,
-        consentToPartnerContact: true,
+        isSubscribed: sub.isSubscribed,
+        unsubscribeToken: sub.unsubscribeToken,
+        consentToPartnerContact: sub.consentToPartnerContact ?? true,
+        leadActivity: sub.leadActivity,
       }, 'MARKETING_OFFER')
       return casl.isEligible
     })
@@ -202,13 +234,24 @@ export class RevenueHunterEngine {
             providerMessageId: sendResult.providerMessageId,
           })
 
-          // Update Google Sheets activity
+          // Merge existing Google Sheets activity so other engines (B2B, Reactivation, Cart Recovery) are never wiped
           try {
+            let existingActivity: Record<string, any> = {}
+            const latestSub = await SubscriberRepository.getSubscriberByEmail(prospect.leadEmail).catch(() => null)
+            const fallbackSub = subByEmail.get(prospect.leadEmail.toLowerCase().trim())
+            const rawExisting = latestSub?.leadActivity || fallbackSub?.leadActivity
+            if (rawExisting && rawExisting !== 'N/A' && rawExisting !== '{}') {
+              try {
+                existingActivity = JSON.parse(rawExisting)
+              } catch {}
+            }
             await updateLeadInSheet(prospect.leadEmail, {
               leadActivity: JSON.stringify({
+                ...existingActivity,
                 hunterOutreachSentAt: sentAt,
                 hunterOfferTier: message.offerTier,
                 hunterActionId: actionId,
+                lastContactedAt: sentAt,
               })
             })
           } catch (e) {

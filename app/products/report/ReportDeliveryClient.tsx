@@ -181,13 +181,26 @@ function ReportContent() {
   const paypalClientId = process.env.NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID
     || process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID
     || "ATiNArUnyarxHv-FRUJ7pVi14uHjafO8fEGrRVGBSUBRIrS-Rpx-w8LNEcHyGsF5sExfJjT03aYo_0xq";
+  const PAYPAL_PRODUCT_NAMESPACE = 'paypalProductCheckout';
+  const getPayPalProductSdk = (): any =>
+    typeof window !== 'undefined' ? (window as any)[PAYPAL_PRODUCT_NAMESPACE] : undefined;
 
   useEffect(() => {
     if (loading || hasStrategyUnlocked || !report) return;
-    if ((window as any).paypal) { setSdkReady(true); return; }
+    if (getPayPalProductSdk()?.Buttons) { setSdkReady(true); return; }
+
+    const existingScript = document.querySelector(
+      `script[data-namespace="${PAYPAL_PRODUCT_NAMESPACE}"][src*="paypal.com/sdk/js"]`
+    ) as HTMLScriptElement | null;
+    if (existingScript) {
+      const onLoad = () => setSdkReady(true);
+      existingScript.addEventListener('load', onLoad);
+      return () => existingScript.removeEventListener('load', onLoad);
+    }
 
     const script = document.createElement("script");
-    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons`;
+    script.setAttribute("data-namespace", PAYPAL_PRODUCT_NAMESPACE);
+    script.src = `https://www.paypal.com/sdk/js?client-id=${encodeURIComponent(paypalClientId)}&currency=USD&intent=capture&components=buttons&enable-funding=card`;
     script.type = "text/javascript";
     script.async = true;
     script.onload = () => setSdkReady(true);
@@ -200,12 +213,13 @@ function ReportContent() {
 
   // Render PayPal buttons when SDK is ready
   useEffect(() => {
-    if (!sdkReady || !(window as any).paypal || hasStrategyUnlocked || !report) return;
+    const paypalSdk = getPayPalProductSdk();
+    if (!sdkReady || !paypalSdk || hasStrategyUnlocked || !report) return;
 
     const container = document.getElementById("roadmap-paypal-button");
     if (container) container.innerHTML = "";
 
-    if (typeof (window as any).paypal.Buttons !== 'function') {
+    if (typeof paypalSdk.Buttons !== 'function') {
       setPaymentError("Could not load secure checkout. Please refresh.");
       return;
     }
@@ -214,7 +228,7 @@ function ReportContent() {
       const isMatchReportBuyer = purchaseInfo?.productId === 'funding-match-report';
       const upgradePrice = isMatchReportBuyer ? 30 : 49;
 
-      (window as any).paypal.Buttons({
+      paypalSdk.Buttons({
         style: { layout: 'vertical', color: 'gold', shape: 'rect', label: 'pay', height: 40 },
         createOrder: async () => {
           setPaymentError(null);

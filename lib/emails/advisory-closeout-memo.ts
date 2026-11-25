@@ -318,5 +318,6 @@ export async function sendAdvisoryCloseoutMemoEmail({
     text,
     tagType: 'advisory-closeout-memo',
     companyName: cleanCompany,
+    preferProvider: 'brevo',
   });
 }

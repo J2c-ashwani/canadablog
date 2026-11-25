@@ -134,3 +134,97 @@ export async function persistDeliveryEvents(events: DeliveryEvent[]): Promise<nu
   }
   return pending.length;
 }
+
+function mapBrevoEventType(raw: string): string | null {
+  const ev = raw.toLowerCase().trim();
+  if (ev === 'delivered') return 'email.delivered';
+  if (ev === 'opened' || ev === 'unique_opened' || ev === 'uniqueopened') return 'email.opened';
+  if (ev === 'click' || ev === 'clicks' || ev === 'unique_click') return 'email.clicked';
+  if (ev === 'hard_bounce' || ev === 'hardbounce' || ev === 'soft_bounce' || ev === 'softbounce' || ev === 'blocked' || ev === 'invalid_email') {
+    return 'email.bounced';
+  }
+  if (ev === 'spam' || ev === 'complaint') return 'email.complained';
+  if (ev === 'unsubscribed') return 'email.unsubscribed';
+  return null;
+}
+
+export interface BrevoEventDetail {
+  email: string;
+  messageId: string;
+  eventType: string;
+  occurredAt: string;
+  subject: string;
+  tag: string;
+}
+
+export function normalizeBrevoEvent(payload: any): DeliveryEvent | null {
+  const rawEvent = String(payload?.event || '');
+  const eventType = mapBrevoEventType(rawEvent);
+  const recipient = String(payload?.email || '').toLowerCase().trim();
+  const messageId = String(payload?.messageId || payload?.['message-id'] || payload?.id || '');
+  const dateRaw = payload?.date || (payload?.ts_event ? new Date(Number(payload.ts_event) * 1000).toISOString() : new Date().toISOString());
+  if (!eventType || !recipient) return null;
+
+  const normalizedId = `brevo:${recipient}:${messageId || 'nomsgid'}:${eventType}:${dateRaw}`;
+  return {
+    eventId: normalizedId,
+    provider: 'brevo',
+    providerMessageId: messageId,
+    eventType,
+    recipient,
+    occurredAt: String(dateRaw),
+  };
+}
+
+/**
+ * Fetches rich Brevo event metadata (subject, tag, messageId, open/click count context)
+ * directly from Brevo's SMTP statistics API so follow-up agents stay strictly relative
+ * to the exact email thread each recipient opened or clicked.
+ */
+export async function fetchRecentBrevoEventDetails(limit = 100): Promise<BrevoEventDetail[]> {
+  const apiKey = process.env.BREVO_API_KEY?.trim();
+  if (!apiKey) return [];
+  try {
+    const safeLimit = Math.min(200, Math.max(10, Math.floor(limit)));
+    const res = await fetch(
+      `https://api.brevo.com/v3/smtp/statistics/events?limit=${safeLimit}&sort=desc`,
+      { headers: { 'api-key': apiKey, accept: 'application/json' } }
+    );
+    if (!res.ok) return [];
+    const data: any = await res.json();
+    const events = Array.isArray(data?.events) ? data.events : [];
+    const details: BrevoEventDetail[] = [];
+    for (const ev of events) {
+      const normalized = normalizeBrevoEvent(ev);
+      if (!normalized) continue;
+      details.push({
+        email: normalized.recipient,
+        messageId: normalized.providerMessageId,
+        eventType: normalized.eventType,
+        occurredAt: normalized.occurredAt,
+        subject: String(ev?.subject || '').trim(),
+        tag: String(ev?.tag || '').trim(),
+      });
+    }
+    return details;
+  } catch {
+    return [];
+  }
+}
+
+export async function fetchRecentBrevoEvents(limit = 100): Promise<DeliveryEvent[]> {
+  const apiKey = process.env.BREVO_API_KEY?.trim();
+  if (!apiKey) return [];
+  try {
+    const res = await fetch(`https://api.brevo.com/v3/smtp/statistics/events?limit=${Math.min(100, Math.max(10, limit))}`, {
+      headers: { 'api-key': apiKey },
+    });
+    if (!res.ok) return [];
+    const data = await res.json().catch(() => ({}));
+    const rawEvents: any[] = Array.isArray(data?.events) ? data.events : [];
+    return rawEvents.map(normalizeBrevoEvent).filter((e): e is DeliveryEvent => Boolean(e));
+  } catch (err: any) {
+    console.warn('Could not poll Brevo SMTP statistics events:', err?.message || err);
+    return [];
+  }
+}

@@ -12,6 +12,7 @@ export interface NewFundingAlertData {
   maxFundingAmount: string;
   region: string;
   industry: string;
+  forceResend?: boolean;
 }
 
 export interface FundingMatchUpdateData {
@@ -143,7 +144,9 @@ export async function sendNewFundingAlertEmail(data: NewFundingAlertData) {
     html: wrapNewsletterTemplate(contentHtml, data.unsubscribeToken, firstName),
     text,
     tagType: "newsletter-new-funding",
-    companyName: data.companyName
+    companyName: data.companyName,
+    forceResend: data.forceResend,
+    preferProvider: data.forceResend ? undefined : "brevo"
   });
 }
 
@@ -197,7 +200,8 @@ export async function sendFundingMatchUpdateEmail(data: FundingMatchUpdateData) 
     text,
     tagType: "newsletter-match-update",
     companyName: data.companyName,
-    forceResend: data.forceResend
+    forceResend: data.forceResend,
+    preferProvider: data.forceResend ? undefined : "brevo"
   });
 }
 
@@ -381,7 +385,8 @@ export async function sendMissingFundingAlertEmail(data: MissingFundingAlertData
     text,
     tagType: "newsletter-missing-funding",
     companyName: data.companyName,
-    forceResend: data.forceResend
+    forceResend: data.forceResend,
+    preferProvider: data.forceResend ? undefined : "brevo"
   });
 }
 

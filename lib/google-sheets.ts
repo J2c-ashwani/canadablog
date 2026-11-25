@@ -873,6 +873,98 @@ export async function appendPartnerInquiryToSheet(data: PartnerInquirySheetData,
   }
 }
 
+export interface PartnerInquiryRecord {
+  sheetRow: number;
+  timestamp: string;
+  name: string;
+  email: string;
+  phone: string;
+  companyName: string;
+  website: string;
+  leadType: string;
+  geography: string;
+  existingVolume: string;
+  budget: string;
+  purchaseModel: string;
+  decisionMakerRole: string;
+  preferences: string;
+  score: number;
+  status: string;
+  assignedManager: string;
+  lastFollowup: string;
+  notes: string;
+  receiptSent: string;
+  approvalSent: string;
+}
+
+export async function getPartnerInquiriesFromSheet(): Promise<PartnerInquiryRecord[]> {
+  const sheets = await getGoogleSheetsClient()
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID
+  if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+
+  await ensurePartnerInquirySheet(sheets, spreadsheetId)
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: "'Partner Inquiries'!A2:Z",
+  })
+  const rows = response.data.values || []
+  return rows.map((row, idx) => ({
+    sheetRow: idx + 2,
+    timestamp: String(row[0] || ''),
+    name: String(row[1] || ''),
+    email: String(row[2] || '').trim(),
+    phone: String(row[3] || ''),
+    companyName: String(row[4] || ''),
+    website: String(row[5] || ''),
+    leadType: String(row[6] || ''),
+    geography: String(row[7] || ''),
+    existingVolume: String(row[8] || ''),
+    budget: String(row[9] || ''),
+    purchaseModel: String(row[10] || ''),
+    decisionMakerRole: String(row[11] || ''),
+    preferences: String(row[12] || ''),
+    score: Number(row[13] || 0) || 0,
+    status: String(row[14] || 'New'),
+    assignedManager: String(row[15] || 'Unassigned'),
+    lastFollowup: String(row[16] || ''),
+    notes: String(row[17] || ''),
+    receiptSent: String(row[18] || ''),
+    approvalSent: String(row[19] || ''),
+  })).filter((rec) => Boolean(rec.email))
+}
+
+export async function updatePartnerInquiryStatusInSheet(
+  sheetRow: number,
+  updates: { status?: string; assignedManager?: string; lastFollowup?: string; notes?: string; approvalSent?: string }
+) {
+  if (sheetRow < 2) throw new Error('Invalid Partner Inquiries row number.')
+  const sheets = await getGoogleSheetsClient()
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID
+  if (!spreadsheetId) throw new Error("GOOGLE_SHEET_ID environment variable is missing")
+
+  const existing = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: `'Partner Inquiries'!O${sheetRow}:T${sheetRow}`,
+  })
+  const current = existing.data.values?.[0] || []
+  const rowValues = [
+    updates.status !== undefined ? updates.status : (current[0] || 'New'),
+    updates.assignedManager !== undefined ? updates.assignedManager : (current[1] || 'Unassigned'),
+    updates.lastFollowup !== undefined ? updates.lastFollowup : (current[2] || 'N/A'),
+    updates.notes !== undefined ? updates.notes : (current[3] || 'N/A'),
+    current[4] || 'Yes',
+    updates.approvalSent !== undefined ? updates.approvalSent : (current[5] || 'No'),
+  ]
+  await sheets.spreadsheets.values.update({
+    spreadsheetId,
+    range: `'Partner Inquiries'!O${sheetRow}:T${sheetRow}`,
+    valueInputOption: 'RAW',
+    requestBody: { values: [rowValues] },
+  })
+  invalidateCachedSheetValues('Partner Inquiries')
+  return { success: true }
+}
+
 export interface MatchEvaluationLog {
   timestamp: string
   email: string
@@ -1355,6 +1447,41 @@ export async function updateOutreachSentLeadFromDeliveryEvent(
   return { updated: true }
 }
 
+export async function getOutreachSentLeadHistory(): Promise<
+  Map<string, { count: number; stages: Set<string>; latestSentMs: number }>
+> {
+  const sheets = await getGoogleSheetsClient()
+  const spreadsheetId = process.env.GOOGLE_SHEET_ID || process.env.GOOGLE_SHEETS_SPREADSHEET_ID
+  if (!spreadsheetId) {
+    throw new Error('GOOGLE_SHEET_ID environment variable is missing')
+  }
+  await ensureOutreachSentLeadsSheet(sheets, spreadsheetId)
+  const response = await sheets.spreadsheets.values.get({
+    spreadsheetId,
+    range: "'Outreach Leads'!A2:N",
+  })
+  const rows = response.data.values || []
+  const history = new Map<string, { count: number; stages: Set<string>; latestSentMs: number }>()
+
+  for (const row of rows) {
+    const email = String(row[3] || '').toLowerCase().trim()
+    if (!email || !email.includes('@')) continue
+    const stage = String(row[7] || '').trim()
+    const sentMs = new Date(String(row[0] || '')).getTime()
+    let entry = history.get(email)
+    if (!entry) {
+      entry = { count: 0, stages: new Set<string>(), latestSentMs: 0 }
+      history.set(email, entry)
+    }
+    entry.count++
+    if (stage) entry.stages.add(stage)
+    if (Number.isFinite(sentMs) && sentMs > entry.latestSentMs) {
+      entry.latestSentMs = sentMs
+    }
+  }
+  return history
+}
+
 // ── Outreach Prospects Database Tab for Backlinks Campaign ──
 
 export interface OutreachProspect {
@@ -1671,9 +1798,11 @@ export async function updateOutreachProspectFromDeliveryEvent(
   if (!prospect) return { updated: false };
 
   if (eventType === 'email.delivered') {
+    const existingStage = String(prospect.deliveryStatus || '').trim();
+    const preservedDeliveryStatus = /^media_/i.test(existingStage) ? existingStage : 'delivered';
     return updateOutreachProspectInSheet(prospect.rowIndex, {
       status: 'delivered',
-      deliveryStatus: 'delivered',
+      deliveryStatus: preservedDeliveryStatus,
       deliveredAt: occurredAt,
     });
   }

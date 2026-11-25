@@ -6,7 +6,12 @@ import {
   persistDeliveryEvent,
   verifyResendWebhook,
 } from '@/lib/emails/delivery-events';
-import { updateOutreachProspectFromDeliveryEvent, updateOutreachSentLeadFromDeliveryEvent } from '@/lib/google-sheets';
+import {
+  getOutreachProspectsFromSheet,
+  updateOutreachProspectFromDeliveryEvent,
+  updateOutreachProspectInSheet,
+  updateOutreachSentLeadFromDeliveryEvent,
+} from '@/lib/google-sheets';
 import { updatePurchaseDeliveryFromProviderEvent } from '@/lib/products/purchase-store';
 
 export const runtime = 'nodejs';
@@ -49,6 +54,20 @@ export async function POST(request: Request) {
       await globalEventBus.publish(AUTHORITY_EVENTS.KILL_SWITCH_TRIGGERED, {
         reason: 'Spam complaint received', event,
       });
+    } else if (event.eventType === 'email.received') {
+      const fromAddr = String(payload?.data?.from || '').match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i)?.[0]?.toLowerCase() || '';
+      if (fromAddr) {
+        const prospects = await getOutreachProspectsFromSheet().catch(() => []);
+        const match = prospects.find((p) => p.email.toLowerCase().trim() === fromAddr);
+        if (match) {
+          await updateOutreachProspectInSheet(match.rowIndex, {
+            replied: true,
+            repliedAt: event.occurredAt,
+            deliveryStatus: 'reply_pending_review',
+          }).catch(() => {});
+        }
+      }
+      await globalEventBus.publish(AUTHORITY_EVENTS.OUTREACH_OPENED, { event, inboundReply: true });
     }
 
     return NextResponse.json({ received: true, persisted: true });
