@@ -11,6 +11,7 @@ import { SubscriberRepository, ensureScopedSubscriberTokens, type SubscriberProf
 import { isLoginToken, isUnsubscribeToken } from '@/lib/auth/subscriber-tokens';
 import { getLatestOperationalState, readOperationalRows, setOperationalState } from '@/lib/growth-os/operations-store';
 import { sendEmail, escapeHtml } from '@/lib/emails/mailer';
+import { forwardInboundRepliesToFounder } from '@/lib/emails/inbound-forwarder';
 import {
   hasRecentCommercialProviderAcceptance,
   isTestOrInternalContact,
@@ -227,6 +228,25 @@ export class ClosedLoopReplyAgent {
     let repliesHandledCount = 0;
     let adaptiveFollowUpsSent = 0;
     let unsubscribesProcessed = 0;
+
+    // 0. Guarantee every inbound reply received on the Resend subdomain forwards to ashwani@fsidigital.ca
+    if (monitor.inboundReplies.length > 0) {
+      const forwardRes = await forwardInboundRepliesToFounder(
+        monitor.inboundReplies.map((r) => ({
+          id: r.id,
+          fromEmail: r.fromEmail,
+          subject: r.subject,
+          receivedAt: r.receivedAt,
+          snippet: r.snippet,
+        })),
+        ctx.mode === 'live' ? 'live' : 'dry-run'
+      ).catch(() => ({ forwardedCount: 0, skippedCount: 0, failedCount: 0, forwardedIds: [] }));
+      if (forwardRes.forwardedCount > 0) {
+        notes.push(
+          `${ctx.mode === 'live' ? 'Forwarded' : 'Planned forwarding'} ${forwardRes.forwardedCount} inbound reply email(s) to founder inbox.`
+        );
+      }
+    }
 
     // 1. Review Inbound Email Replies (from Resend Receiving API or Webhook-stamped OutreachProspects)
     const pendingReplyEmails = new Map<string, { id?: string; subject: string; snippet: string; receivedAt: string; source: string }>();

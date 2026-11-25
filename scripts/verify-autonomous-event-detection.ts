@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { classifyInboundText } from '../lib/agents/closed-loop-reply-agent';
 import { normalizeBrevoEvent } from '../lib/emails/delivery-events';
+import { isLoopOrBounceSender } from '../lib/emails/inbound-forwarder';
 
 function assert(condition: unknown, message: string) {
   if (!condition) throw new Error(message);
@@ -41,6 +42,14 @@ function run() {
     normalizeBrevoEvent({ event: 'softBounces', email: 'soft@example.com', messageId: 'm2' })?.eventType === 'email.bounced',
     'Brevo polling normalizes hardBounces and softBounces into email.bounced suppression events'
   );
+
+  // Inbound replies landing on *@funding.fsidigital.ca forward to ashwani@fsidigital.ca cleanly with loop guards
+  const resendWebhook = fs.readFileSync(path.join(root, 'app/api/webhooks/resend/route.ts'), 'utf8');
+  const forwarder = fs.readFileSync(path.join(root, 'lib/emails/inbound-forwarder.ts'), 'utf8');
+  assert(isLoopOrBounceSender('ashwani@funding.fsidigital.ca') && isLoopOrBounceSender('mailer-daemon@google.com'), 'Inbound forwarder blocks internal/bounce loop addresses');
+  assert(!isLoopOrBounceSender('info@canadacapital.ca', 'Re: Starter Pilot'), 'Inbound forwarder allows real external prospect replies');
+  assert(forwarder.includes('reply_to: fromEmail') && forwarder.includes('inbound_forwarded_to_founder_ledger'), 'Inbound forwarder preserves prospect reply_to and deduplicates forwards');
+  assert(resendWebhook.includes('forwardInboundRepliesToFounder') && closedLoop.includes('forwardInboundRepliesToFounder'), 'Both Resend webhook and ClosedLoop polling forward inbound replies to ashwani@fsidigital.ca');
 
   console.log('All GrowthOS event reliability checks passed.');
 }

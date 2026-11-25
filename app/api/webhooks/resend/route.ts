@@ -12,6 +12,7 @@ import {
   updateOutreachProspectInSheet,
   updateOutreachSentLeadFromDeliveryEvent,
 } from '@/lib/google-sheets';
+import { forwardInboundRepliesToFounder } from '@/lib/emails/inbound-forwarder';
 import { updatePurchaseDeliveryFromProviderEvent } from '@/lib/products/purchase-store';
 
 export const runtime = 'nodejs';
@@ -57,6 +58,23 @@ export async function POST(request: Request) {
     } else if (event.eventType === 'email.received') {
       const fromAddr = String(payload?.data?.from || '').match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i)?.[0]?.toLowerCase() || '';
       if (fromAddr) {
+        const inboundId = String(payload?.data?.email_id || payload?.data?.id || '');
+        const toAddrs = Array.isArray(payload?.data?.to) ? payload.data.to.map(String) : [];
+        await forwardInboundRepliesToFounder(
+          [
+            {
+              id: inboundId,
+              fromEmail: fromAddr,
+              toEmails: toAddrs,
+              subject: String(payload?.data?.subject || ''),
+              receivedAt: event.occurredAt,
+              text: String(payload?.data?.text || ''),
+              html: String(payload?.data?.html || ''),
+            },
+          ],
+          'live'
+        ).catch((err) => console.error('Inbound reply webhook forward error:', err));
+
         const prospects = await getOutreachProspectsFromSheet().catch(() => []);
         const match = prospects.find((p) => p.email.toLowerCase().trim() === fromAddr);
         if (match) {
