@@ -39,10 +39,20 @@ export interface ClosedLoopReviewReport {
   notes: string[];
 }
 
-function classifyInboundText(text: string): 'UNSUBSCRIBE' | 'SPONSOR_INTEREST' | 'PARTNER_INTEREST' | 'CALL_OR_QUESTION' {
+export function classifyInboundText(
+  text: string
+): 'UNSUBSCRIBE' | 'COUNTER_OR_OBJECTION' | 'SPONSOR_INTEREST' | 'PARTNER_INTEREST' | 'CALL_OR_QUESTION' {
   const lower = text.toLowerCase();
   if (/(unsubscribe|remove me|stop emailing|take me off|opt out|not interested|do not contact)/i.test(lower)) {
     return 'UNSUBSCRIBE';
+  }
+  if (
+    /(not happening|told you what i need|no thanks|not for us|too expensive|too much|can'?t afford|won'?t work|pass on this|pass for now|stop pushing|quit emailing)/i.test(lower) ||
+    /\$\s*\d+(?:\.\d+)?\s*(?:usd|cad)?\s*(?:each|per\s*lead|\/lead|apiece)/i.test(lower) ||
+    /\b\d+\b[^.\n]{0,50}(?:aged\s*leads|leads)\b[^.\n]{0,50}\$\s*\d+/i.test(lower) ||
+    /\bi(?:'ll| will)\s+(?:buy|but|pay|take|do|offer)\b[^.\n]{0,60}\$\s*\d+/i.test(lower)
+  ) {
+    return 'COUNTER_OR_OBJECTION';
   }
   if (/(sponsor|advertise|article|guest post|editorial|resource insertion|media kit|backlink|placement)/i.test(lower)) {
     return 'SPONSOR_INTEREST';
@@ -69,7 +79,14 @@ export class ClosedLoopReplyAgent {
     allowProactiveOpenerFollowUps = true,
     openerOptions: ClosedLoopOpenerOptions = {}
   ): Promise<ClosedLoopReviewReport> {
-    const [prospects, partnerInquiries, allSubs, purchases, pubInquiries, paymentIntents, rawOpenerLedger] = await Promise.all([
+    type HandledInboundLedgerEntry = {
+      handledReplyIds: string[];
+      lastReplyReceivedAt: string;
+      lastHandledAt: string;
+      lastOutcome: string;
+    };
+
+    const [prospects, partnerInquiries, allSubs, purchases, pubInquiries, paymentIntents, rawOpenerLedger, rawInboundLedger] = await Promise.all([
       getOutreachProspectsFromSheet({ strict: false }),
       getPartnerInquiriesFromSheet().catch(() => []),
       SubscriberRepository.getAllSubscribers(true),
@@ -77,10 +94,14 @@ export class ClosedLoopReplyAgent {
       readOperationalRows('Publishing Inquiries', ['Inquiry ID']).catch(() => []),
       getAllProductPaymentIntents().catch(() => [] as ProductPaymentIntent[]),
       getLatestOperationalState<Record<string, { sentAt: string; recentTimestamps?: string[]; offer: string; subject: string; openedSubject?: string }>>('engaged_opener_followup_ledger').catch(() => null),
+      getLatestOperationalState<Record<string, HandledInboundLedgerEntry>>('inbound_reply_handled_ledger').catch(() => null),
     ]);
 
     const openerLedger: Record<string, { sentAt: string; recentTimestamps?: string[]; offer: string; subject: string; openedSubject?: string }> =
       rawOpenerLedger && typeof rawOpenerLedger === 'object' ? { ...rawOpenerLedger } : {};
+    const inboundReplyLedger: Record<string, HandledInboundLedgerEntry> =
+      rawInboundLedger && typeof rawInboundLedger === 'object' ? { ...rawInboundLedger } : {};
+    let inboundReplyLedgerChanged = false;
 
     // Merge duplicate Leads rows cleanly so companyName, stage, subscription status, and activity remain complete
     const subMap = new Map<string, SubscriberProfile>();
@@ -208,22 +229,31 @@ export class ClosedLoopReplyAgent {
     let unsubscribesProcessed = 0;
 
     // 1. Review Inbound Email Replies (from Resend Receiving API or Webhook-stamped OutreachProspects)
-    const pendingReplyEmails = new Map<string, { subject: string; snippet: string; receivedAt: string; source: string }>();
+    const pendingReplyEmails = new Map<string, { id?: string; subject: string; snippet: string; receivedAt: string; source: string }>();
+
+    const toEpochMs = (iso: string): number => {
+      const ms = new Date(iso || 0).getTime();
+      return Number.isFinite(ms) ? ms : 0;
+    };
 
     for (const r of monitor.inboundReplies) {
       if (!r.fromEmail || isTestOrInternalContact({ email: r.fromEmail })) continue;
-      pendingReplyEmails.set(r.fromEmail, {
-        subject: r.subject,
-        snippet: r.snippet,
-        receivedAt: r.receivedAt,
-        source: 'resend_receiving_api',
-      });
+      const prev = pendingReplyEmails.get(r.fromEmail);
+      if (!prev || toEpochMs(r.receivedAt) >= toEpochMs(prev.receivedAt)) {
+        pendingReplyEmails.set(r.fromEmail, {
+          id: r.id,
+          subject: r.subject,
+          snippet: r.snippet,
+          receivedAt: r.receivedAt,
+          source: 'resend_receiving_api',
+        });
+      }
     }
 
     for (const p of prospects) {
       const email = String(p.email || '').toLowerCase().trim();
       const dl = String(p.deliveryStatus || '').toLowerCase();
-      if (!email || !p.replied || dl.includes('reply_handled') || dl.includes('reply_opted_out')) continue;
+      if (!email || !p.replied || dl.includes('reply_handled') || dl.includes('reply_opted_out') || dl.includes('reply_escalated')) continue;
       if (!pendingReplyEmails.has(email)) {
         pendingReplyEmails.set(email, {
           subject: `Prospect Reply (${p.prospectName || email})`,
@@ -239,9 +269,58 @@ export class ClosedLoopReplyAgent {
       const matchedPartner = partnerInquiries.find((i) => i.email.toLowerCase().trim() === email);
       const matchedSub = subMap.get(email);
       const existingActivity = matchedSub ? parseCommercialActivity(matchedSub.leadActivity) : {};
-      if (existingActivity.handledInboundReplyIds?.includes(reply.receivedAt)) continue;
+      const replyId = reply.id || reply.receivedAt;
+      const replyMs = toEpochMs(reply.receivedAt);
+      const ledgerEntry = inboundReplyLedger[email];
 
-      let intent = classifyInboundText(`${reply.subject} ${reply.snippet}`);
+      if (
+        existingActivity.handledInboundReplyIds?.includes(reply.receivedAt) ||
+        ledgerEntry?.handledReplyIds?.includes(replyId) ||
+        ledgerEntry?.handledReplyIds?.includes(reply.receivedAt) ||
+        (ledgerEntry?.lastReplyReceivedAt && toEpochMs(ledgerEntry.lastReplyReceivedAt) >= replyMs) ||
+        (matchedPartner?.lastFollowup && toEpochMs(matchedPartner.lastFollowup) >= replyMs) ||
+        (matchedProspect?.repliedAt &&
+          toEpochMs(matchedProspect.repliedAt) >= replyMs &&
+          /reply_(handled|opted_out|escalated)/i.test(String(matchedProspect.deliveryStatus || '')))
+      ) {
+        continue;
+      }
+
+      const recordHandledReply = async (outcome: string, customNotes?: string) => {
+        const prevEntry = inboundReplyLedger[email];
+        inboundReplyLedger[email] = {
+          handledReplyIds: Array.from(new Set([...(prevEntry?.handledReplyIds || []), replyId, reply.receivedAt])).slice(-20),
+          lastReplyReceivedAt:
+            prevEntry?.lastReplyReceivedAt && toEpochMs(prevEntry.lastReplyReceivedAt) > replyMs
+              ? prevEntry.lastReplyReceivedAt
+              : reply.receivedAt,
+          lastHandledAt: new Date().toISOString(),
+          lastOutcome: outcome,
+        };
+        inboundReplyLedgerChanged = true;
+
+        if (ctx.mode !== 'live') return;
+        if (matchedSub) {
+          const ids = Array.isArray(existingActivity.handledInboundReplyIds)
+            ? existingActivity.handledInboundReplyIds
+            : [];
+          ids.push(reply.receivedAt);
+          existingActivity.handledInboundReplyIds = ids.slice(-10);
+          existingActivity.lastReplyHandledAt = new Date().toISOString();
+          await SubscriberRepository.updateSubscriberPreferences(email, {
+            leadActivity: JSON.stringify(existingActivity),
+          }).catch(() => {});
+        }
+        if (matchedPartner) {
+          await updatePartnerInquiryStatusInSheet(matchedPartner.sheetRow, {
+            lastFollowup: new Date().toISOString(),
+            notes: customNotes || `Handled inbound reply (${outcome}).`,
+          }).catch(() => {});
+        }
+      };
+
+      const bodyFirstText = reply.snippet?.trim() ? `${reply.snippet}\n${reply.subject}` : reply.subject;
+      let intent = classifyInboundText(bodyFirstText);
       if (matchedPartner && intent === 'CALL_OR_QUESTION') intent = 'PARTNER_INTEREST';
       if (matchedProspect && intent === 'CALL_OR_QUESTION') intent = 'SPONSOR_INTEREST';
 
@@ -260,6 +339,7 @@ export class ClosedLoopReplyAgent {
             }).catch(() => {});
           }
         }
+        await recordHandledReply('UNSUBSCRIBE', 'Opted out via inbound reply.');
         actions.push({
           agent: this.AGENT_NAME,
           recipientKey: email,
@@ -274,6 +354,31 @@ export class ClosedLoopReplyAgent {
         continue;
       }
 
+      if (intent === 'COUNTER_OR_OBJECTION') {
+        const excerpt = (reply.snippet || reply.subject).slice(0, 140);
+        founderHotAlerts.push(`Inbound counter-offer/objection from ${email} (paused auto-replies): "${excerpt}"`);
+        await recordHandledReply('COUNTER_OR_OBJECTION', `ESCALATED TO FOUNDER: ${excerpt}`);
+        if (ctx.mode === 'live' && matchedProspect) {
+          await updateOutreachProspectInSheet(matchedProspect.rowIndex, {
+            replied: true,
+            repliedAt: reply.receivedAt,
+            deliveryStatus: 'reply_escalated',
+          }).catch(() => {});
+        }
+        actions.push({
+          agent: this.AGENT_NAME,
+          recipientKey: email,
+          recipientEmail: email,
+          actionType: 'REPLY_COUNTER_OR_OBJECTION_ESCALATED',
+          targetOffer: 'Founder Manual Follow-Up (Auto-Reply Paused)',
+          expectedValueUSD: 0,
+          status: ctx.mode === 'live' ? 'EXECUTED' : 'PLANNED',
+          consentProof: `Counter-offer/objection detected in inbound body: "${excerpt}"`,
+        });
+        repliesHandledCount++;
+        continue;
+      }
+
       if (ctx.sameDayClaimedEmails.has(email) || ctx.remainingGlobalEmails <= 0 || adaptiveFollowUpsSent >= maxAdaptiveEmails) {
         founderHotAlerts.push(`Reply awaiting follow-up from ${email}: "${reply.subject}"`);
         continue;
@@ -283,7 +388,7 @@ export class ClosedLoopReplyAgent {
         intent === 'PARTNER_INTEREST'
           ? 'https://www.fsidigital.ca/partners/checkout?package=exclusive-pilot&utm_source=reply_agent'
           : intent === 'SPONSOR_INTEREST'
-            ? 'https://www.fsidigital.ca/advertise/order?package=done-for-you&utm_source=reply_agent'
+            ? 'https://www.fsidigital.ca/advertise/order/done-for-you?utm_source=reply_agent'
             : 'https://www.fsidigital.ca/products/bundle?source=reply-followup';
 
       const targetOffer =
@@ -332,23 +437,7 @@ export class ClosedLoopReplyAgent {
               deliveryStatus: 'reply_handled',
             }).catch(() => {});
           }
-          if (matchedPartner) {
-            await updatePartnerInquiryStatusInSheet(matchedPartner.sheetRow, {
-              lastFollowup: new Date().toISOString(),
-              notes: `Replied & auto-sent direct ${targetOffer} checkout.`,
-            }).catch(() => {});
-          }
-          if (matchedSub) {
-            const ids = Array.isArray(existingActivity.handledInboundReplyIds)
-              ? existingActivity.handledInboundReplyIds
-              : [];
-            ids.push(reply.receivedAt);
-            existingActivity.handledInboundReplyIds = ids.slice(-10);
-            existingActivity.lastReplyHandledAt = new Date().toISOString();
-            await SubscriberRepository.updateSubscriberPreferences(email, {
-              leadActivity: JSON.stringify(existingActivity),
-            }).catch(() => {});
-          }
+          await recordHandledReply(intent, `Replied & auto-sent direct ${targetOffer} checkout.`);
 
           actions.push({
             agent: this.AGENT_NAME,
@@ -615,6 +704,9 @@ export class ClosedLoopReplyAgent {
       if (ledgerChanged) {
         await setOperationalState('engaged_opener_followup_ledger', openerLedger).catch(() => {});
       }
+      if (inboundReplyLedgerChanged) {
+        await setOperationalState('inbound_reply_handled_ledger', inboundReplyLedger).catch(() => {});
+      }
       await setOperationalState('ceo_closed_loop_latest', report).catch(() => {});
     }
 
@@ -677,8 +769,8 @@ function buildContextualOpenerFollowUp(params: {
   // 1. B2B SPONSORED MEDIA THREAD (strictly relative to sponsor placement open)
   if (openedTag.includes('sponsored-media') || openedSubLower.includes('sponsored placement') || (prospect && String(prospect.deliveryStatus || '').includes('media_'))) {
     const sponsorName = company || prospect?.prospectName || 'your team';
-    const doneForYouUrl = `https://www.fsidigital.ca/advertise/order?package=done-for-you&utm_source=opener_followup&company=${encodeURIComponent(sponsorName)}`;
-    const resourceUrl = `https://www.fsidigital.ca/advertise/order?package=resource-insertion&utm_source=opener_followup&company=${encodeURIComponent(sponsorName)}`;
+    const doneForYouUrl = `https://www.fsidigital.ca/advertise/order/done-for-you?utm_source=opener_followup&company=${encodeURIComponent(sponsorName)}`;
+    const resourceUrl = `https://www.fsidigital.ca/advertise/contact?package=resource-insertion&utm_source=opener_followup&company=${encodeURIComponent(sponsorName)}`;
     const subject = cleanReSubject || `Re: Sponsored placement on FSI Digital for ${sponsorName}`;
     const html = `
       <div style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;max-width:600px;margin:0 auto;color:#1e293b;line-height:1.6;">

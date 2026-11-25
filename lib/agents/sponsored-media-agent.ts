@@ -226,7 +226,9 @@ export class SponsoredMediaAgent {
         ? c.prospect.name
         : c.subscriber?.name || `${c.companyName} Team`;
     const advertiseUrl = `https://www.fsidigital.ca/advertise?pkg=${pkg.id}&utm_source=sponsor_campaign&utm_campaign=${c.touchStage.toLowerCase()}`;
-    const orderUrl = `https://www.fsidigital.ca/advertise/order?package=${pkg.id}&utm_source=sponsor_campaign`;
+    const orderUrl = pkg.id === 'done-for-you'
+      ? `https://www.fsidigital.ca/advertise/order/done-for-you?utm_source=sponsor_campaign`
+      : `https://www.fsidigital.ca/advertise/contact?package=${encodeURIComponent(pkg.id)}&utm_source=sponsor_campaign`;
 
     if (c.touchStage === 'SPONSOR_TOUCH_2') {
       const subject = `Re: FSI Digital Q4 sponsor calendar for ${c.companyName} (Canada/US grant audience)`;
@@ -253,7 +255,7 @@ export class SponsoredMediaAgent {
     if (c.touchStage === 'SPONSOR_TOUCH_3') {
       const resourcePkg = ADVERTISING_PACKAGES['resource-insertion'];
       const resourcePrice = resourcePkg.priceUsd || 100;
-      const resourceUrl = `https://www.fsidigital.ca/advertise/order?package=resource-insertion&utm_source=sponsor_campaign_t3`;
+      const resourceUrl = `https://www.fsidigital.ca/advertise/contact?package=resource-insertion&utm_source=sponsor_campaign_t3`;
       const subject = `Final Q4 check-in: $100 contextual guide slot for ${c.companyName}`;
       const html = `
         <div style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; max-width: 620px; margin: 0 auto; color: #1e293b; line-height: 1.6;">

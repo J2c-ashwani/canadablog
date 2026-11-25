@@ -139,8 +139,18 @@ function mapBrevoEventType(raw: string): string | null {
   const ev = raw.toLowerCase().trim();
   if (ev === 'delivered') return 'email.delivered';
   if (ev === 'opened' || ev === 'unique_opened' || ev === 'uniqueopened') return 'email.opened';
-  if (ev === 'click' || ev === 'clicks' || ev === 'unique_click') return 'email.clicked';
-  if (ev === 'hard_bounce' || ev === 'hardbounce' || ev === 'soft_bounce' || ev === 'softbounce' || ev === 'blocked' || ev === 'invalid_email') {
+  if (ev === 'click' || ev === 'clicks' || ev === 'unique_click' || ev === 'unique clicks') return 'email.clicked';
+  if (
+    ev === 'hard_bounce' ||
+    ev === 'hardbounce' ||
+    ev === 'hardbounces' ||
+    ev === 'soft_bounce' ||
+    ev === 'softbounce' ||
+    ev === 'softbounces' ||
+    ev === 'blocked' ||
+    ev === 'invalid' ||
+    ev === 'invalid_email'
+  ) {
     return 'email.bounced';
   }
   if (ev === 'spam' || ev === 'complaint') return 'email.complained';

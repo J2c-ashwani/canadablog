@@ -92,6 +92,17 @@ export class CampaignMonitorAgent {
       brevoSyncedNewEvents = await persistDeliveryEvents(brevoEvents).catch(() => 0);
     }
 
+    const stripQuotedReplyBody = (rawText: string, rawHtml: string): string => {
+      const plain = (rawText || rawHtml.replace(/<[^>]+>/g, ' '))
+        .replace(/\u00a0/g, ' ')
+        .replace(/\r\n/g, '\n');
+      const unquoted = plain
+        .split(/\n_{4,}|\nFrom:\s|\nOn .{5,120}\bwrote:/i)[0]
+        .replace(/\s+/g, ' ')
+        .trim();
+      return unquoted.slice(0, 400);
+    };
+
     const fetchResendInboundReplies = async (): Promise<InboundReplySummary[]> => {
       const apiKey = process.env.RESEND_API_KEY?.trim();
       if (!apiKey) return [];
@@ -102,17 +113,47 @@ export class CampaignMonitorAgent {
         if (!res.ok) return [];
         const json = await res.json().catch(() => ({}));
         const list: any[] = Array.isArray(json?.data) ? json.data : [];
-        return list.map((item) => {
-          const fromRaw = String(item?.from || '');
-          const fromEmail = fromRaw.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i)?.[0]?.toLowerCase() || '';
-          return {
-            id: String(item?.id || ''),
-            fromEmail,
-            subject: String(item?.subject || ''),
-            receivedAt: String(item?.created_at || new Date().toISOString()),
-            snippet: String(item?.text || item?.html || '').replace(/<[^>]+>/g, ' ').trim().slice(0, 300),
-          };
-        }).filter((r) => Boolean(r.fromEmail));
+        const candidates = list
+          .map((item) => {
+            const fromRaw = String(item?.from || '');
+            const fromEmail = fromRaw.match(/[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}/i)?.[0]?.toLowerCase() || '';
+            return {
+              id: String(item?.id || ''),
+              fromEmail,
+              subject: String(item?.subject || ''),
+              receivedAt: String(item?.created_at || new Date().toISOString()),
+              inlineText: String(item?.text || ''),
+              inlineHtml: String(item?.html || ''),
+            };
+          })
+          .filter((r) => Boolean(r.fromEmail));
+
+        // Resend's list endpoint omits message bodies; hydrate the latest 10 so reply classification reads actual text.
+        return await Promise.all(
+          candidates.slice(0, 10).map(async (item) => {
+            let text = item.inlineText;
+            let html = item.inlineHtml;
+            if (!text && !html && item.id) {
+              try {
+                const detailRes = await fetch(`https://api.resend.com/emails/receiving/${encodeURIComponent(item.id)}`, {
+                  headers: { Authorization: `Bearer ${apiKey}` },
+                });
+                if (detailRes.ok) {
+                  const detail = await detailRes.json().catch(() => ({}));
+                  text = String(detail?.text || '');
+                  html = String(detail?.html || '');
+                }
+              } catch {}
+            }
+            return {
+              id: item.id,
+              fromEmail: item.fromEmail,
+              subject: item.subject,
+              receivedAt: item.receivedAt,
+              snippet: stripQuotedReplyBody(text, html),
+            };
+          })
+        );
       } catch {
         return [];
       }

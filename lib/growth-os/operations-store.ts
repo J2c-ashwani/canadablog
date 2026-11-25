@@ -10,6 +10,7 @@ import {
   getRedisOperationRunRows,
   getRedisOperationalState,
   hasOperationalRedis,
+  markRedisQuotaExhaustedIfApplicable,
   persistRedisOperationalState,
 } from '@/lib/growth-os/redis-operations';
 
@@ -126,6 +127,7 @@ export async function readOperationalRows(title: string, headers: string[]): Pro
   const sheetRows = await getCachedSheetValues(`${quoteSheetTitle(title)}!A2:${columnName(headers.length)}`);
   if (title !== 'GrowthOS Runs' || !hasOperationalRedis()) return sheetRows;
   const redisRows = await getRedisOperationRunRows().catch((err) => {
+    markRedisQuotaExhaustedIfApplicable(err);
     console.warn('⚠️ Operational Redis runs read failed:', err?.message || err);
     return [];
   });
@@ -231,6 +233,7 @@ export async function acquireOperationLease(
         reason: result.acquired ? undefined : 'A recent execution already owns this operation lease.',
       };
     } catch (redisErr: any) {
+      markRedisQuotaExhaustedIfApplicable(redisErr);
       console.warn(`⚠️ Operational Redis lease failed for ${operation} (${redisErr?.message || redisErr}), falling back to Sheets coordination.`);
     }
   }

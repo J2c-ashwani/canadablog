@@ -29,9 +29,20 @@ export type RedisOperationRun = {
 };
 
 let redisClient: Redis | null | undefined;
+let redisQuotaBlockedUntilMs = 0;
+
+export function markRedisQuotaExhaustedIfApplicable(err: unknown): boolean {
+  const msg = String((err as any)?.message || err || '');
+  if (/Fixed plan limits|max daily request|ERR max requests|rate limit/i.test(msg)) {
+    redisQuotaBlockedUntilMs = Date.now() + 30 * 60 * 1000;
+    return true;
+  }
+  return false;
+}
 
 function configured() {
   if (process.env.DISABLE_REDIS === 'true') return false;
+  if (Date.now() < redisQuotaBlockedUntilMs) return false;
   return Boolean(
     process.env.UPSTASH_REDIS_REST_URL
     && process.env.UPSTASH_REDIS_REST_TOKEN
@@ -296,6 +307,7 @@ export async function persistRedisOperationalState(key: string, value: unknown) 
     await client.set(stateKey(key), JSON.stringify(value), { ex: RETENTION_SECONDS });
     return true;
   } catch (err) {
+    markRedisQuotaExhaustedIfApplicable(err);
     console.warn(`⚠️ Failed to persist operational state to Redis for ${key}:`, err);
     return false;
   }
@@ -316,6 +328,7 @@ export async function getRedisOperationalState<T>(key: string): Promise<T | null
     }
     return raw as T;
   } catch (err) {
+    markRedisQuotaExhaustedIfApplicable(err);
     console.warn(`⚠️ Failed to read operational state from Redis for ${key}:`, err);
     return null;
   }
