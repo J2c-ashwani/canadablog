@@ -68,10 +68,13 @@ jobs:
           UTC_MIN=$(date -u +%M)
           REQ_WINDOW="${{ github.event.inputs.window }}"
           if [ -z "$REQ_WINDOW" ] || [ "$REQ_WINDOW" = "auto" ]; then
-            if [ "$UTC_HOUR" -ge 18 ]; then
+            if [ "$UTC_HOUR" -ge 18 ] && [ "$UTC_HOUR" -le 22 ]; then
               TARGET_WINDOW="na-afternoon"
-            else
+            elif [ "$UTC_HOUR" -ge 13 ] && [ "$UTC_HOUR" -le 17 ]; then
               TARGET_WINDOW="na-morning"
+            else
+              echo "Scheduled auto run landed outside active NA conversion windows (UTC_HOUR=$UTC_HOUR); exiting cleanly to protect 7 PM IST budget."
+              exit 0
             fi
           else
             TARGET_WINDOW="$REQ_WINDOW"
