@@ -5,6 +5,7 @@ import {
   isLikelyAutomatedUserAgent,
   type GrowthActionContext,
 } from '@/lib/growth-os/action-attribution';
+import { resolvePublicOrigin } from '@/lib/http/public-origin';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -74,8 +75,10 @@ export async function GET(request: NextRequest) {
   const targetPath = OFFERS[offer as keyof typeof OFFERS];
   const surface = SURFACES.has(surfaceInput) ? surfaceInput : '';
 
+  const origin = resolvePublicOrigin(request);
+
   if (!targetPath || !surface) {
-    return NextResponse.redirect(new URL('/products/funding-match-report', request.url));
+    return NextResponse.redirect(new URL('/products/funding-match-report', origin));
   }
 
   const contentContext = safeSlug(request.nextUrl.searchParams.get('context') || '', 'unknown');
@@ -108,7 +111,7 @@ export async function GET(request: NextRequest) {
     recipientId: `web_${visitorId}`,
   };
 
-  const destination = new URL(targetPath, request.nextUrl.origin);
+  const destination = new URL(targetPath, origin);
   destination.searchParams.set('utm_source', socialSource || 'organic_content');
   destination.searchParams.set('utm_medium', socialSource ? 'organic_social' : 'onsite');
   destination.searchParams.set('utm_campaign', campaign);

@@ -1,5 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import { SubscriberRepository } from "@/lib/leads/SubscriberRepository"
+import { resolvePublicOrigin } from "@/lib/http/public-origin"
 
 export async function GET(request: NextRequest) {
   try {
@@ -17,7 +18,7 @@ export async function GET(request: NextRequest) {
     }
 
     // Redirect to the frontend unsubscribe page showing confirmation
-    return NextResponse.redirect(new URL(`/subscribe/unsubscribe?success=true&token=${token}`, request.url))
+    return NextResponse.redirect(new URL(`/subscribe/unsubscribe?success=true&token=${encodeURIComponent(token)}`, resolvePublicOrigin(request)))
   } catch (error) {
     console.error("Unsubscribe API error:", error)
     return NextResponse.json({ error: "Internal server error" }, { status: 500 })

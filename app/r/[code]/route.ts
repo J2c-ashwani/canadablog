@@ -6,13 +6,10 @@ import {
   createTrackedGrowthUrl,
   isLikelyAutomatedUserAgent,
 } from '@/lib/growth-os/action-attribution';
+import { resolvePublicOrigin } from '@/lib/http/public-origin';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
-
-function publicOrigin() {
-  return (process.env.NEXT_PUBLIC_SITE_URL || 'https://www.fsidigital.ca').replace(/\/$/, '');
-}
 
 export async function GET(
   request: NextRequest,
@@ -23,12 +20,13 @@ export async function GET(
     console.error('Affiliate referral lookup failed closed:', error);
     return null;
   });
+  const origin = resolvePublicOrigin(request);
   if (!partner || partner.status !== 'approved') {
-    return NextResponse.redirect(new URL('/affiliates?ref=unavailable', publicOrigin()));
+    return NextResponse.redirect(new URL('/affiliates?ref=unavailable', origin));
   }
 
   const offer = getAffiliateOffer(request.nextUrl.searchParams.get('offer'));
-  const destination = new URL(offer.path, publicOrigin());
+  const destination = new URL(offer.path, origin);
   destination.searchParams.set('utm_source', 'affiliate');
   destination.searchParams.set('utm_medium', 'referral');
   destination.searchParams.set('utm_campaign', partner.referralCode);

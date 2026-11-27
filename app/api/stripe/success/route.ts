@@ -9,6 +9,7 @@ import { recordTelemetryEvent } from '@/lib/telemetry/telemetry-store';
 import { grantEntitlements } from '@/lib/products/entitlements';
 import { actionContextFromAttribution, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
 import { recordAffiliateCommissionForVerifiedCheckout } from '@/lib/affiliates/payment-integration';
+import { resolvePublicOrigin } from '@/lib/http/public-origin';
 
 const STAGE_HIERARCHY = [
   'Lead',
@@ -311,7 +312,7 @@ export async function GET(request: NextRequest) {
       ? `/booking?token=${encodeURIComponent(credentials.loginToken)}`
       : `/products/report?token=${accessToken}`;
 
-    const origin = new URL(request.url).origin;
+    const origin = resolvePublicOrigin(request);
     return NextResponse.redirect(`${origin}${deliveryUrl}`);
   } catch (error: any) {
     console.error('❌ Success redirect processing failed:', error);

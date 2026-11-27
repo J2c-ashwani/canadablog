@@ -4,6 +4,7 @@ import {
   parseTrackedGrowthToken,
   recordGrowthActionEvent,
 } from '@/lib/growth-os/action-attribution';
+import { normalizeExternalRedirectUrl, resolvePublicOrigin } from '@/lib/http/public-origin';
 
 export const runtime = 'nodejs';
 export const dynamic = 'force-dynamic';
@@ -11,7 +12,7 @@ export const dynamic = 'force-dynamic';
 export async function GET(request: NextRequest) {
   const requestedToken = request.nextUrl.searchParams.get('t') || '';
   const payload = parseTrackedGrowthToken(requestedToken);
-  if (!payload) return NextResponse.redirect(new URL('/', request.url));
+  if (!payload) return NextResponse.redirect(new URL('/', resolvePublicOrigin(request)));
   const existingToken = request.cookies.get('fsi_growth_action_token')?.value || '';
   const existingPayload = parseTrackedGrowthToken(existingToken);
   // Internal navigation and house campaigns must not steal a still-current
@@ -20,7 +21,7 @@ export async function GET(request: NextRequest) {
   const cookiePayload = preserveAffiliate ? existingPayload : payload;
   const cookieToken = preserveAffiliate ? existingToken : requestedToken;
 
-  const destination = new URL(payload.target);
+  const destination = normalizeExternalRedirectUrl(payload.target, request);
   destination.searchParams.set('go_action', payload.actionId);
   destination.searchParams.set('go_channel', payload.channel);
   destination.searchParams.set('go_campaign', payload.campaign);

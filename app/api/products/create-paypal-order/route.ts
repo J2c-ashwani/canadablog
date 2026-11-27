@@ -7,6 +7,7 @@ import {
 } from '@/lib/payments/product-payment-intents';
 import { createProductPayPalOrder } from '@/lib/payments/paypal';
 import { actionContextFromAttribution, parseTrackedGrowthToken, recordGrowthActionEvent } from '@/lib/growth-os/action-attribution';
+import { resolvePublicOrigin } from '@/lib/http/public-origin';
 
 export const runtime = 'nodejs';
 
@@ -58,12 +59,7 @@ export async function POST(request: NextRequest) {
 
     // Build return/cancel URLs for the full-page redirect flow (iOS Safari, in-app browsers).
     // Follows the proven pattern in app/api/mca/priority-order/route.ts.
-    const origin = (
-      request.headers.get('origin') ||
-      request.headers.get('referer')?.replace(/\/[^/]*$/, '') ||
-      process.env.NEXT_PUBLIC_SITE_URL ||
-      'https://www.fsidigital.ca'
-    ).replace(/\/$/, '');
+    const origin = resolvePublicOrigin(request);
     const returnUrl = `${origin}/products/checkout-return?intent=${encodeURIComponent(intent.intentId)}`;
     const cancelUrl = `${origin}/products/${details.productId === 'funding-match-report' ? 'funding-match-report' : details.productId === 'funding-roadmap' ? 'action-plan' : details.productId === 'funding-bundle' ? 'bundle' : details.productId === 'funding-toolkit' ? 'toolkit' : 'funding-match-report'}?cancelled=true`;
 
