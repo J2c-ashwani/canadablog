@@ -383,23 +383,24 @@ export function Header() {
               </Link>
             </nav>
 
-            {/* Search Button */}
+            {/* Search & Primary Lead Capture CTAs */}
             <div className="hidden xl:flex items-center flex-shrink-0 gap-1.5 2xl:gap-2">
-              <Button
-                className="whitespace-nowrap bg-blue-600 hover:bg-blue-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"
-                size="sm"
-                asChild
-              >
-                <a href={productHref('match-report')}>Match Report ($19)</a>
-              </Button>
               <Button
                 className="whitespace-nowrap bg-emerald-600 hover:bg-emerald-700 text-white font-bold shadow-xs text-xs 2xl:text-sm"
                 size="sm"
                 asChild
               >
                 <Link href="/calculator">
-                  Check Eligibility
+                  Free Eligibility Check
                 </Link>
+              </Button>
+              <Button
+                variant="outline"
+                className="whitespace-nowrap border-blue-200 text-blue-700 hover:bg-blue-50 font-semibold text-xs 2xl:text-sm"
+                size="sm"
+                asChild
+              >
+                <a href={productHref('match-report')}>Match Report ($19)</a>
               </Button>
               <Button
                 variant="outline"

@@ -12,53 +12,87 @@ export function ExitIntentCapture() {
   const [isOpen, setIsOpen] = useState(false)
   const [email, setEmail] = useState("")
   const [name, setName] = useState("")
+  const [phone, setPhone] = useState("")
   const [location, setLocation] = useState("")
   const [industry, setIndustry] = useState("")
   const [isSubmitted, setIsSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
 
   useEffect(() => {
+    const canShowExitIntent = () =>
+      !localStorage.getItem("exit-intent-shown") &&
+      !localStorage.getItem("newsletter-popup-shown") &&
+      !localStorage.getItem("fsi:lead_email")
+
+    const triggerExit = () => {
+      if (!canShowExitIntent()) return
+      setIsOpen(true)
+      localStorage.setItem("exit-intent-shown", "true")
+    }
+
     const handleMouseLeave = (e: MouseEvent) => {
-      // clientY < 20 triggers when cursor moves up towards the address/tab bar
-      if (
-        e.clientY < 20 &&
-        !localStorage.getItem("exit-intent-shown") &&
-        !localStorage.getItem("newsletter-popup-shown")
-      ) {
-        setIsOpen(true)
-        localStorage.setItem("exit-intent-shown", "true")
+      if (e.clientY < 20) triggerExit()
+    }
+
+    // Mobile/tablet fallback: capture exit intent after 45s or rapid upward scroll after reading
+    let maxScroll = 0
+    const timer = window.setTimeout(() => {
+      if (window.innerWidth < 768) triggerExit()
+    }, 45000)
+
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - window.innerHeight
+      if (scrollHeight <= 0) return
+      const depth = window.scrollY / scrollHeight
+      if (depth > maxScroll) maxScroll = depth
+      if (maxScroll >= 0.45 && depth < maxScroll - 0.12 && window.innerWidth < 1024) {
+        triggerExit()
       }
     }
 
     document.addEventListener("mouseleave", handleMouseLeave)
+    window.addEventListener("scroll", handleScroll, { passive: true })
     return () => {
+      window.clearTimeout(timer)
       document.removeEventListener("mouseleave", handleMouseLeave)
+      window.removeEventListener("scroll", handleScroll)
     }
   }, [])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (!email) return
+    const trimmedEmail = email.trim()
+    if (!trimmedEmail) return
 
     setIsLoading(true)
 
     try {
-      const response = await fetch("/api/subscribe", {
+      const isUS = location === "USA"
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-          email,
-          name,
-          location,
-          industry,
+          email: trimmedEmail,
+          name: name.trim() || undefined,
+          phone: phone.trim() || undefined,
+          category: "Exit Intent Capture",
           source: "Exit Intent Capture",
-          country: location === "USA" ? "USA" : "Canada",
+          state: isUS ? "national" : (location || "national"),
+          industry: industry || "general",
+          country: isUS ? "USA" : "Canada",
+          pagePath: typeof window !== "undefined" ? window.location.pathname : "/",
+          consentToPartnerContact: true,
+          isSubscribed: true,
+          wantsAdvisorContact: Boolean(phone.trim()),
+          doNotCall: !phone.trim(),
         }),
       })
 
       if (response.ok) {
+        localStorage.setItem("fsi:lead_email", trimmedEmail)
+        localStorage.setItem("fsi:lead_saved_at", String(Date.now()))
         setIsSubmitted(true)
         localStorage.setItem("newsletter-popup-shown", "true")
       }
@@ -250,6 +284,20 @@ export function ExitIntentCapture() {
                 ))}
               </select>
             </div>
+          </div>
+
+          <div className="space-y-1.5">
+            <label htmlFor="exit-phone" className="text-xs font-semibold text-slate-400 uppercase tracking-wider">
+              Phone (Optional — SMS Deadline Alerts)
+            </label>
+            <Input
+              id="exit-phone"
+              type="tel"
+              placeholder="(e.g., 416-555-0199)"
+              value={phone}
+              onChange={(e) => setPhone(e.target.value)}
+              className="bg-slate-900 border-slate-800 text-white placeholder-slate-500 focus-visible:ring-blue-500 focus-visible:border-blue-500"
+            />
           </div>
 
           <Button

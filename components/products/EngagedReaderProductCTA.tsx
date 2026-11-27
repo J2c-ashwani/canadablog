@@ -120,14 +120,20 @@ export function EngagedReaderProductCTA() {
         <p className="mt-1.5 text-xs leading-relaxed text-slate-300">{offer.description}</p>
       </div>
 
-      <div className="mt-4 flex items-center gap-3">
+      <div className="mt-4 flex flex-col gap-2">
         <a
           href={`/api/growth-os/onsite-click?${params.toString()}`}
           data-organic-offer={offer.id}
           onClick={() => sessionStorage.setItem(CLICK_KEY, '1')}
-          className="inline-flex flex-1 items-center justify-center rounded-xl bg-emerald-500 px-4 py-3 text-center text-xs font-black text-slate-950 transition hover:bg-emerald-400"
+          className="inline-flex w-full items-center justify-center rounded-xl bg-emerald-500 px-4 py-3 text-center text-xs font-black text-slate-950 transition hover:bg-emerald-400"
         >
           {offer.action} — {offer.priceLabel} <ArrowRight className="ml-1.5 h-4 w-4" />
+        </a>
+        <a
+          href="/calculator?utm_source=engaged_reader&utm_medium=popup"
+          className="inline-flex w-full items-center justify-center rounded-lg border border-slate-700 px-3 py-2 text-center text-[11px] font-bold text-slate-200 transition hover:border-emerald-500/50 hover:text-emerald-300"
+        >
+          Or check free grant eligibility first (60s) &rarr;
         </a>
       </div>
       <p className="mt-3 flex items-center gap-1.5 text-[10px] font-semibold text-slate-400">

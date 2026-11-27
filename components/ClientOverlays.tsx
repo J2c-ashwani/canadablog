@@ -178,10 +178,10 @@ export function ClientOverlays() {
             <LeadConversionUpsellWatcher />
             <EngagedReaderProductCTA />
             {!shouldSuppressPopup && !shouldPrioritizePaidDistribution && (
-                <>
-                    <LeadMagnetPopup />
-                    <ExitIntentCapture />
-                </>
+                <LeadMagnetPopup />
+            )}
+            {!shouldSuppressPopup && (
+                <ExitIntentCapture />
             )}
         </>
     )

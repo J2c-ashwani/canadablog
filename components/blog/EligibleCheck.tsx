@@ -44,6 +44,10 @@ export default function EligibleCheck({
         : 'However, there are over 4,500 grant programs in Canada. A grant specialist can help identify other programs you qualify for.');
 
     const [answers, setAnswers] = useState<Record<string, boolean>>({});
+    const [leadEmail, setLeadEmail] = useState('');
+    const [leadPhone, setLeadPhone] = useState('');
+    const [savingLead, setSavingLead] = useState(false);
+    const [leadSaved, setLeadSaved] = useState(false);
 
     const handleAnswer = (id: string, answer: boolean) => {
         setAnswers(prev => ({ ...prev, [id]: answer }));
@@ -51,6 +55,39 @@ export default function EligibleCheck({
 
     const isComplete = activeQuestions.every(q => answers[q.id] !== undefined);
     const isEligible = activeQuestions.every(q => answers[q.id] === true);
+
+    const handleQuizLeadSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        const email = leadEmail.trim();
+        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+        setSavingLead(true);
+        try {
+            localStorage.setItem('fsi:lead_email', email);
+            localStorage.setItem('fsi:lead_saved_at', String(Date.now()));
+            await fetch('/api/contact', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                    email,
+                    phone: leadPhone.trim() || undefined,
+                    category: 'Grant Eligibility Quiz',
+                    source: isEligible ? 'EligibleCheck Quiz - Qualified' : 'EligibleCheck Quiz - Alternative',
+                    country: isUS ? 'USA' : 'Canada',
+                    state: 'national',
+                    pagePath: pathname || '/',
+                    consentToPartnerContact: true,
+                    isSubscribed: true,
+                    wantsAdvisorContact: Boolean(leadPhone.trim()),
+                    doNotCall: !leadPhone.trim(),
+                }),
+            });
+            setLeadSaved(true);
+        } catch {
+            // Leave retry enabled on transient failure
+        } finally {
+            setSavingLead(false);
+        }
+    };
 
     return (
         <div className="my-8 bg-white dark:bg-neutral-900 border border-indigo-100 dark:border-indigo-900/30 rounded-xl p-6 shadow-sm relative overflow-hidden">
@@ -113,11 +150,8 @@ export default function EligibleCheck({
                                     Great news! You appear to meet the baseline criteria.
                                 </p>
                                 <p className="text-sm text-green-700 dark:text-green-400 mb-4">
-                                    Based on your answers, you should strongly consider applying. Speak with a grant expert to confirm your eligibility and maximize your funding potential.
+                                    Based on your answers, you should strongly consider applying. Enter your email below for matched programs &amp; deadlines, or run the full eligibility calculator.
                                 </p>
-                                <Link href="/calculator" className="inline-flex px-5 py-2.5 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-green-500">
-                                    Speak with an Expert
-                                </Link>
                             </div>
                         ) : (
                             <div>
@@ -130,11 +164,58 @@ export default function EligibleCheck({
                                 <p className="text-sm text-amber-700 dark:text-amber-400 mb-4">
                                     {resolvedFallbackText}
                                 </p>
-                                <Link href="/calculator" className="inline-flex px-5 py-2.5 bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900 text-white font-medium rounded-lg text-sm transition-colors shadow-sm focus:ring-2 focus:ring-offset-2 focus:ring-gray-900">
-                                    Explore Alternative Grants
-                                </Link>
                             </div>
                         )}
+                        <div className="mt-4 pt-4 border-t border-black/10">
+                            {leadSaved ? (
+                                <div className="space-y-3">
+                                    <p className="text-sm font-bold text-emerald-800 dark:text-emerald-300">
+                                        ✓ Sent! Check your inbox for your matched funding list, or run the 60-second calculator for your exact funding estimate:
+                                    </p>
+                                    <Link
+                                        href={`/calculator?email=${encodeURIComponent(leadEmail.trim())}&utm_source=eligible_check_quiz`}
+                                        className="inline-flex px-5 py-2.5 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-sm transition-colors shadow-sm"
+                                    >
+                                        See Full Matched Program Breakdown →
+                                    </Link>
+                                </div>
+                            ) : (
+                                <form onSubmit={handleQuizLeadSubmit} className="space-y-2.5">
+                                    <p className="text-xs font-bold text-gray-800 dark:text-gray-200 uppercase tracking-wide">
+                                        Get Your Free Matched Grants &amp; Deadlines List by Email:
+                                    </p>
+                                    <div className="flex flex-col sm:flex-row gap-2">
+                                        <input
+                                            type="email"
+                                            required
+                                            placeholder="founder@company.com"
+                                            value={leadEmail}
+                                            onChange={(e) => setLeadEmail(e.target.value)}
+                                            className="flex-1 h-10 px-3 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm text-gray-900 dark:text-white"
+                                        />
+                                        <input
+                                            type="tel"
+                                            placeholder="Phone (Optional — SMS alerts)"
+                                            value={leadPhone}
+                                            onChange={(e) => setLeadPhone(e.target.value)}
+                                            className="sm:w-44 h-10 px-3 rounded-lg border border-gray-300 dark:border-neutral-700 bg-white dark:bg-neutral-900 text-sm text-gray-900 dark:text-white"
+                                        />
+                                        <button
+                                            type="submit"
+                                            disabled={savingLead}
+                                            className="px-4 h-10 bg-emerald-600 hover:bg-emerald-700 text-white font-bold rounded-lg text-sm whitespace-nowrap transition-colors disabled:opacity-60"
+                                        >
+                                            {savingLead ? 'Sending...' : 'Send Matches →'}
+                                        </button>
+                                    </div>
+                                    <div>
+                                        <Link href="/calculator" className="text-xs font-semibold text-indigo-700 dark:text-indigo-400 hover:underline">
+                                            Or run the 60-second Funding Calculator directly →
+                                        </Link>
+                                    </div>
+                                </form>
+                            )}
+                        </div>
                     </div>
                 )}
             </div>

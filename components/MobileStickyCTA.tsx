@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { usePathname } from "next/navigation";
+import Link from "next/link";
 import { X, Sparkles } from "lucide-react";
 
 export function MobileStickyCTA() {
@@ -71,19 +72,19 @@ export function MobileStickyCTA() {
 
                 <div className="pr-6">
                     <div className="flex items-center gap-2 mb-1.5">
-                        <Sparkles className="w-4 h-4 text-primary" />
-                        <h4 className="text-sm font-bold text-gray-900">Your Funding Match Report</h4>
+                        <Sparkles className="w-4 h-4 text-emerald-600" />
+                        <h4 className="text-sm font-bold text-gray-900">Free 60s Grant Eligibility Check</h4>
                     </div>
                     <p className="text-xs text-gray-600 mb-3 leading-tight">
-                        See matched programs, requirements, and next steps for $19 USD.
+                        See which Canada &amp; US grants match your business — zero credit impact.
                     </p>
 
-                    <a
-                        href={`/api/growth-os/onsite-click?surface=mobile-sticky&context=${encodeURIComponent(pathname || 'blog')}&offer=match-report`}
-                        className="block w-full bg-primary hover:bg-primary/90 text-white font-semibold py-2.5 px-4 rounded-xl shadow-sm text-sm text-center transition-all active:scale-[0.98]"
+                    <Link
+                        href={`/calculator?utm_source=mobile_sticky&utm_medium=onsite&utm_campaign=${encodeURIComponent(pathname || 'blog')}`}
+                        className="block w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-2.5 px-4 rounded-xl shadow-sm text-sm text-center transition-all active:scale-[0.98]"
                     >
-                        Get My Report — $19 ➔
-                    </a>
+                        Check My Eligibility Free ➔
+                    </Link>
                 </div>
             </div>
         </div>

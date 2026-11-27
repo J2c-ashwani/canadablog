@@ -117,6 +117,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
     }
     
     const isUSMode = normProvince ? !CANADIAN_PROVS.includes(normProvince) : false;
+    const [selectedCountry, setSelectedCountry] = useState<'Canada' | 'USA'>(isUSMode ? 'USA' : 'Canada');
 
     const [data, setData] = useState<CalculatorData>({
         province: normProvince,
@@ -364,18 +365,38 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         if (typeof window === 'undefined') return;
         const params = new URLSearchParams(window.location.search);
         const urlProvince = params.get('province');
+        const urlCountry = params.get('country');
         const urlGoal = params.get('goal');
+        const urlEmail = params.get('email');
+        const urlPhone = params.get('phone');
+        const urlName = params.get('name');
+        const urlIndustry = params.get('industry');
 
-        if (urlProvince || urlGoal) {
+        const normUrlProv = urlProvince ? urlProvince.toLowerCase().trim() : '';
+        const isUrlUs = urlCountry?.toUpperCase() === 'USA'
+            || normUrlProv === 'usa'
+            || (Boolean(normUrlProv) && Boolean(US_STATES[normUrlProv]) && !CANADIAN_PROVS.includes(normUrlProv));
+
+        if (isUrlUs) {
+            setSelectedCountry('USA');
+        }
+
+        const resolvedProv = normUrlProv === 'usa' ? '' : (urlProvince || '');
+
+        if (resolvedProv || urlGoal || urlEmail || urlPhone || urlName || urlIndustry) {
             setData(prev => ({
                 ...prev,
-                province: urlProvince || prev.province,
-                goal: urlGoal || prev.goal
+                province: resolvedProv || prev.province,
+                goal: urlGoal || prev.goal,
+                email: urlEmail || prev.email,
+                phone: urlPhone || prev.phone,
+                name: urlName || prev.name,
+                industry: urlIndustry || prev.industry,
             }));
-            if (urlProvince && urlGoal) {
-                setStep(3); // Both filled: go straight to Step 3 (Industry)
+            if (resolvedProv && urlGoal) {
+                setStep(urlIndustry ? 4 : 3);
             } else if (urlGoal) {
-                setStep(2); // Goal filled: go to Step 2 (Location)
+                setStep(2);
             }
         }
     }, []);
@@ -783,7 +804,8 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
             const messageInfo = `Calculator Lead (${isFreeFallback ? 'Free Summary' : 'Checkout Initiated'})\nProvince: ${data.province}\nIndustry: ${data.industry}\nRevenue: ${data.revenue}\nGoal: ${data.goal}\nEstimated Funding Range: $${estimate.toLocaleString()} - $${estimateMax.toLocaleString()}\nMatched Grants Count: ${grantCount}\nCompany: ${data.company || "Not provided"}`;
 
             const provLower = (data.province || "").toLowerCase().trim();
-            const isDetectedUS = (provLower && Boolean(US_STATES[provLower]) && !CANADIAN_PROVS.includes(provLower))
+            const isDetectedUS = selectedCountry === 'USA'
+                || (provLower && Boolean(US_STATES[provLower]) && !CANADIAN_PROVS.includes(provLower))
                 || (isUSMode && (!provLower || provLower === "national"));
 
             const res = await fetch("/api/contact", {
@@ -2371,7 +2393,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 updateData("goal", val);
                                 setTimeout(() => {
                                     setStep(2);
-                                }, 300);
+                                }, 120);
                             }} 
                             className="gap-3"
                         >
@@ -2399,23 +2421,53 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                 {/* Step 2: Location */}
                 {step === 2 && (
                     <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-                        <h3 className="text-xl font-semibold text-center mb-6">Where is your business located?</h3>
+                        <h3 className="text-xl font-semibold text-center mb-4">Where is your business located?</h3>
+                        <div className="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-xl">
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setSelectedCountry('Canada');
+                                    updateData("province", "");
+                                }}
+                                className={`py-2.5 rounded-lg text-sm font-bold transition-all cursor-pointer ${
+                                    selectedCountry === 'Canada'
+                                        ? 'bg-white text-slate-900 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                🇨🇦 Canada
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => {
+                                    setSelectedCountry('USA');
+                                    updateData("province", "");
+                                }}
+                                className={`py-2.5 rounded-lg text-sm font-bold transition-all cursor-pointer ${
+                                    selectedCountry === 'USA'
+                                        ? 'bg-white text-slate-900 shadow-xs'
+                                        : 'text-slate-600 hover:text-slate-900'
+                                }`}
+                            >
+                                🇺🇸 United States
+                            </button>
+                        </div>
                         <div className="space-y-3">
-                            <Label>{isUSMode ? "State / Territory" : "Province / Territory"}</Label>
+                            <Label>{selectedCountry === 'USA' ? "State / Territory" : "Province / Territory"}</Label>
                             <Select 
                                 value={data.province} 
                                 onValueChange={(val) => {
                                     updateData("province", val);
                                     setTimeout(() => {
                                         setStep(3);
-                                    }, 300);
+                                    }, 120);
                                 }}
                             >
                                 <SelectTrigger className="h-14 text-lg">
-                                    <SelectValue placeholder={isUSMode ? "Select a state..." : "Select a region..."} />
+                                    <SelectValue placeholder={selectedCountry === 'USA' ? "Select a US state..." : "Select a Canadian province..."} />
                                 </SelectTrigger>
                                 <SelectContent>
-                                    {Object.entries(isUSMode ? US_STATES : {
+                                    {Object.entries(selectedCountry === 'USA' ? US_STATES : {
                                         on: 'Ontario', bc: 'British Columbia', ab: 'Alberta', qc: 'Quebec',
                                         ns: 'Nova Scotia', mb: 'Manitoba', sk: 'Saskatchewan', nb: 'New Brunswick',
                                         nl: 'Newfoundland & Labrador', pe: 'Prince Edward Island',
@@ -2441,7 +2493,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                     updateData("industry", val);
                                     setTimeout(() => {
                                         setStep(4);
-                                    }, 300);
+                                    }, 120);
                                 }}
                             >
                                 <SelectTrigger className="h-14 text-lg">
@@ -2473,7 +2525,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                                 setTimeout(() => {
                                     calculateEstimate();
                                     setStep(5);
-                                }, 300);
+                                }, 120);
                             }} 
                             className="gap-4"
                         >
@@ -2609,7 +2661,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
 
                                     <div className="space-y-1.5 text-left">
                                         <Label htmlFor="calc-phone-input" className="text-xs font-extrabold text-slate-600">
-                                            Phone Number (Optional)
+                                            Phone Number (Recommended — SMS Deadlines &amp; Priority Matching)
                                         </Label>
                                         <Input
                                             id="calc-phone-input"

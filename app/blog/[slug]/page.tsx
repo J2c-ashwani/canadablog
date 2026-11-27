@@ -735,22 +735,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
               )}
 
-              {(researchProfile || WAVE3_RDE_SLUGS.has(slug) || ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug)) && (
-                <div className="not-prose my-8">
-                  {WAVE3_RDE_SLUGS.has(slug) ? (
-                    <RDEDecisionEngine configId={slug} />
-                  ) : ['dod-sbir-defense-tech-grants', 'healthcare-grants-2026', 'new-york-business-grants-2026', '7-startup-accelerators-california-free-money'].includes(slug) ? (
-                    <InlineGrantChecker />
-                  ) : researchProfile ? (
-                    <>
-                      {researchProfile.interactiveTool === 'trl' && <TRLDiagnostic />}
-                      {researchProfile.interactiveTool === 'stacking' && <StackingDiagnostic />}
-                      {researchProfile.interactiveTool === 'checklist' && <ChecklistDiagnostic />}
-                      <IntentStrategyCTA cta={researchProfile.cta} />
-                    </>
-                  ) : null}
-                </div>
-              )}
+              <div className="not-prose my-8">
+                {WAVE3_RDE_SLUGS.has(slug) ? (
+                  <RDEDecisionEngine configId={slug} />
+                ) : researchProfile ? (
+                  <>
+                    {researchProfile.interactiveTool === 'trl' && <TRLDiagnostic />}
+                    {researchProfile.interactiveTool === 'stacking' && <StackingDiagnostic />}
+                    {researchProfile.interactiveTool === 'checklist' && <ChecklistDiagnostic />}
+                    <IntentStrategyCTA cta={researchProfile.cta} />
+                  </>
+                ) : (
+                  <InlineGrantChecker />
+                )}
+              </div>
 
               <OrganicProductLadder surface="blog"
                 context={verifiedSearchCohort ? `${SEARCH_DISTRIBUTION_ROLLOUT_ID}-${slug}` : slug}
