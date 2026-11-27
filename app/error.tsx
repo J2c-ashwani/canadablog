@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect } from 'react';
+import { attemptChunkAutoReload, recoverOrReset } from '@/lib/client/chunk-recovery';
 
 export default function Error({
   error,
@@ -10,8 +11,8 @@ export default function Error({
   reset: () => void;
 }) {
   useEffect(() => {
-    // Log the error to an error reporting service
     console.error(error);
+    attemptChunkAutoReload(error);
   }, [error]);
 
   return (
@@ -37,7 +38,7 @@ export default function Error({
           We apologize for the inconvenience. An unexpected error has occurred in our systems.
         </p>
         <button
-          onClick={() => reset()}
+          onClick={() => recoverOrReset(error, reset)}
           style={{ 
             padding: '0.75rem 1.5rem', 
             backgroundColor: '#0ea5e9', 

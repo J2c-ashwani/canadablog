@@ -1,5 +1,8 @@
 'use client';
 
+import { useEffect } from 'react';
+import { attemptChunkAutoReload, recoverOrReset } from '@/lib/client/chunk-recovery';
+
 export default function GlobalError({
   error,
   reset,
@@ -7,6 +10,10 @@ export default function GlobalError({
   error: Error & { digest?: string };
   reset: () => void;
 }) {
+  useEffect(() => {
+    console.error(error);
+    attemptChunkAutoReload(error);
+  }, [error]);
   return (
     <html lang="en">
       <body style={{ 
@@ -34,7 +41,7 @@ export default function GlobalError({
               A fatal error occurred at the application root level.
             </p>
             <button
-              onClick={() => reset()}
+              onClick={() => recoverOrReset(error, reset)}
               style={{ 
                 padding: '0.75rem 1.5rem', 
                 backgroundColor: '#0ea5e9', 
