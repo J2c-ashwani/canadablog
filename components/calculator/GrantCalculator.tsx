@@ -782,6 +782,10 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
         try {
             const messageInfo = `Calculator Lead (${isFreeFallback ? 'Free Summary' : 'Checkout Initiated'})\nProvince: ${data.province}\nIndustry: ${data.industry}\nRevenue: ${data.revenue}\nGoal: ${data.goal}\nEstimated Funding Range: $${estimate.toLocaleString()} - $${estimateMax.toLocaleString()}\nMatched Grants Count: ${grantCount}\nCompany: ${data.company || "Not provided"}`;
 
+            const provLower = (data.province || "").toLowerCase().trim();
+            const isDetectedUS = (provLower && Boolean(US_STATES[provLower]) && !CANADIAN_PROVS.includes(provLower))
+                || (isUSMode && (!provLower || provLower === "national"));
+
             const res = await fetch("/api/contact", {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
@@ -792,7 +796,7 @@ export function GrantCalculator({ defaultProvince = "", defaultIndustry = "" }: 
                     category: "Grant Calculator",
                     message: messageInfo,
                     companyName: data.company,
-                    country: "Canada",
+                    country: isDetectedUS ? "USA" : "Canada",
                     state: data.province,
                     industry: data.industry,
                     businessStage: data.revenue,

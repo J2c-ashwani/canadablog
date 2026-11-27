@@ -279,10 +279,94 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
 
   const nameRef = useRef(name);
   const emailRef = useRef(email);
+  const emailInputRef = useRef<HTMLInputElement>(null);
+  const [sdkTimedOut, setSdkTimedOut] = useState(false);
+  const [emailPromptHighlight, setEmailPromptHighlight] = useState(false);
+
   useEffect(() => {
     nameRef.current = name;
     emailRef.current = email;
-  }, [name, email]);
+    if (isEmailValid) setEmailPromptHighlight(false);
+  }, [name, email, isEmailValid]);
+
+  const handleDirectPayPalCheckout = async (flow: 'mobile_redirect' | 'desktop_redirect_fallback') => {
+    setPaymentError(null);
+    const targetEmail = emailRef.current.trim();
+    const targetName = nameRef.current.trim() || 'Premium Member';
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(targetEmail)) {
+      setEmailPromptHighlight(true);
+      emailInputRef.current?.focus();
+      setPaymentError('Enter a valid business email above before opening PayPal.');
+      return;
+    }
+    setCheckoutStarted(true);
+    setIsMobileRedirecting(true);
+    trackCheckoutStage({
+      eventName: flow === 'mobile_redirect' ? 'paypal_mobile_redirect_clicked' : 'paypal_redirect_fallback_clicked',
+      productId: finalProductId,
+      revenue: finalPrice,
+      metadata: {
+        checkoutVersion: 'focused-v2',
+        flow,
+        device: getDeviceMetadata().device || 'Desktop',
+        browser: getDeviceMetadata().browser || 'Unknown',
+        os: getDeviceMetadata().os || 'Unknown',
+      },
+    });
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'begin_checkout', {
+        value: finalPrice,
+        currency: 'USD',
+        items: [{ item_name: finalProductName, price: finalPrice }],
+      });
+    }
+    fetch("/api/subscriber/track-activity", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      keepalive: true,
+      body: JSON.stringify({
+        email: targetEmail,
+        event: "standalone_checkout_started",
+        productId: finalProductId,
+        priceShown: finalPrice.toString(),
+        token: new URLSearchParams(window.location.search).get('token') || '',
+      }),
+    }).catch(() => {});
+    try {
+      const result = await createServerPayPalProductCheckout({
+        productId: finalProductId,
+        email: targetEmail,
+        name: targetName,
+        addons,
+        profileData: {
+          province: personalizedRegion || localStorage.getItem('fsi:lead_region') || '',
+          industry: personalizedIndustry || localStorage.getItem('fsi:lead_industry') || '',
+          revenue: personalizedRevenue || '',
+          goal: personalizedGoal || '',
+          company: personalizedCompany || '',
+        },
+        sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
+        attribution: attributionData,
+      });
+      if (result.approveUrl) {
+        window.location.href = result.approveUrl;
+      } else {
+        setPaymentError('Could not generate a secure PayPal checkout link. Please try again.');
+        setIsMobileRedirecting(false);
+        setCheckoutStarted(false);
+      }
+    } catch (err: any) {
+      trackCheckoutStage({
+        eventName: flow === 'mobile_redirect' ? 'paypal_mobile_order_create_failed' : 'paypal_order_create_failed',
+        productId: finalProductId,
+        revenue: finalPrice,
+        metadata: { checkoutVersion: 'focused-v2', flow },
+      });
+      setPaymentError(err.message || 'Could not start secure checkout. Please try again.');
+      setIsMobileRedirecting(false);
+      setCheckoutStarted(false);
+    }
+  };
 
   // Load PayPal SDK on mount
   useEffect(() => {
@@ -291,8 +375,17 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
       return;
     }
 
+    // Fallback to server-side PayPal redirect if third-party SDK JS is blocked/slow
+    const sdkTimer = window.setTimeout(() => {
+      if (!(window as any)[PAYPAL_PRODUCT_NAMESPACE]?.Buttons) {
+        setSdkTimedOut(true);
+      }
+    }, 4000);
+
     const markReady = () => {
       if ((window as any)[PAYPAL_PRODUCT_NAMESPACE]?.Buttons) {
+        window.clearTimeout(sdkTimer);
+        setSdkTimedOut(false);
         setSdkReady(true);
         trackCheckoutStage({
           eventName: 'paypal_sdk_ready',
@@ -301,12 +394,13 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
           metadata: { checkoutVersion: 'focused-v2', namespace: PAYPAL_PRODUCT_NAMESPACE },
         });
       } else {
-        setPaymentError('Could not initialize secure checkout. Please refresh the page.');
+        setSdkTimedOut(true);
       }
     };
 
     const markFailed = () => {
-      setPaymentError('Could not load secure checkout. Please refresh the page.');
+      window.clearTimeout(sdkTimer);
+      setSdkTimedOut(true);
       trackCheckoutStage({
         eventName: 'paypal_sdk_load_failed',
         productId,
@@ -320,6 +414,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
       existing.addEventListener('load', markReady, { once: true });
       existing.addEventListener('error', markFailed, { once: true });
       return () => {
+        window.clearTimeout(sdkTimer);
         existing.removeEventListener('load', markReady);
         existing.removeEventListener('error', markFailed);
       };
@@ -335,6 +430,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
     script.onerror = markFailed;
     document.head.appendChild(script);
     return () => {
+      window.clearTimeout(sdkTimer);
       script.onload = null;
       script.onerror = null;
     };
@@ -579,6 +675,8 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
         <div className="border-b border-slate-700/40 pb-4">
           <h3 className="font-bold text-sm text-slate-100 mt-1">{finalProductName}</h3>
           <p className="text-[11px] text-slate-450 mt-1 leading-relaxed">
+            {productId === 'funding-match-report' && 'Personalized list of government grants, tax credits, and loans matched to your industry, stage, and region with priority rankings and estimated ranges.'}
+            {productId === 'funding-bundle' && 'Complete Funding Blueprint combining your personalized Funding Match Report, 4-Month Action Plan Roadmap, and Multi-Year Stacking Simulation.'}
             {productId === 'funding-toolkit' && 'Full digital package of 6 pre-formatted Excel grant budgets, cash flow models, hiring wage subsidy planners, and pre-submission audit checklists.'}
             {productId === 'funding-approval-library' && 'Curated directory of successfully funded project proposal narratives, CRA SR&ED technical descriptions, and regional ITA checklist criteria.'}
             {productId === 'funding-roadmap' && 'Step-by-step strategic funding timeline matching your business profile to active Canadian/US grants and tax credits.'}
@@ -600,6 +698,7 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
                 Delivery Email · Required
               </label>
               <input
+                ref={emailInputRef}
                 type="email"
                 inputMode="email"
                 autoComplete="email"
@@ -607,11 +706,20 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
                 placeholder="you@company.com"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className="w-full h-11 bg-slate-900 border border-slate-700 rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50"
+                className={`w-full h-11 bg-slate-900 border rounded-lg px-3.5 text-slate-100 text-sm font-semibold focus:outline-none focus:border-indigo-500 transition-colors disabled:opacity-50 ${
+                  emailPromptHighlight && !isEmailValid
+                    ? 'border-amber-400 ring-2 ring-amber-400/25'
+                    : 'border-slate-700'
+                }`}
               />
               {email.trim().length > 0 && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim()) && (
                 <span className="text-[10px] text-red-400 mt-1.5 block">
                   Please enter a valid email format.
+                </span>
+              )}
+              {emailPromptHighlight && email.trim().length === 0 && (
+                <span className="text-[10px] text-amber-300 mt-1.5 block">
+                  Enter your email above to receive instant download access &amp; receipt.
                 </span>
               )}
             </div>
@@ -733,96 +841,33 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
               <span>{isMobileRedirecting ? 'Redirecting to secure PayPal checkout...' : 'Verifying and capturing payment...'}</span>
             </div>
           ) : !isEmailValid ? (
-            <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-center text-xs font-semibold text-amber-200">
-              Enter your delivery email above to unlock secure PayPal checkout.
+            <div className="space-y-2.5">
+              <button
+                type="button"
+                onClick={() => {
+                  setEmailPromptHighlight(true);
+                  emailInputRef.current?.focus();
+                  emailInputRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }}
+                className="w-full rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-black text-sm py-4 px-6 transition-colors shadow-lg shadow-emerald-500/15 flex items-center justify-center gap-2 cursor-pointer"
+              >
+                Continue to Pay ${finalPrice} (PayPal / Card) &rarr;
+              </button>
+              <p className="text-[10.5px] text-center text-slate-400">
+                Enter your email above to unlock instant PayPal &amp; Debit/Credit Card checkout.
+              </p>
             </div>
-          ) : isMobile ? (
-            /* ═══════ MOBILE: Direct PayPal Redirect Flow ═══════ */
+          ) : isMobile || (!sdkReady && sdkTimedOut) ? (
+            /* ═══════ DIRECT SERVER PAYPAL REDIRECT FLOW (MOBILE OR DESKTOP SDK BLOCKED) ═══════ */
             <div className="space-y-3 animate-in fade-in duration-200">
               <button
                 type="button"
                 disabled={checkoutStarted}
-                className="w-full rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-black text-sm py-4 px-6 transition-colors disabled:opacity-50 flex items-center justify-center gap-2"
-                onClick={async () => {
-                  setPaymentError(null);
-                  const targetEmail = emailRef.current.trim();
-                  const targetName = nameRef.current.trim() || 'Premium Member';
-                  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(targetEmail)) {
-                    setPaymentError('Enter a valid business email before opening PayPal.');
-                    return;
-                  }
-                  setCheckoutStarted(true);
-                  setIsMobileRedirecting(true);
-                  trackCheckoutStage({
-                    eventName: 'paypal_mobile_redirect_clicked',
-                    productId: finalProductId,
-                    revenue: finalPrice,
-                    metadata: {
-                      checkoutVersion: 'focused-v2',
-                      flow: 'mobile_redirect',
-                      device: getDeviceMetadata().device || 'Mobile',
-                      browser: getDeviceMetadata().browser || 'Unknown',
-                      os: getDeviceMetadata().os || 'Unknown',
-                    },
-                  });
-                  if (typeof window !== 'undefined' && (window as any).gtag) {
-                    (window as any).gtag('event', 'begin_checkout', {
-                      value: finalPrice,
-                      currency: 'USD',
-                      items: [{ item_name: finalProductName, price: finalPrice }],
-                    });
-                  }
-                  fetch("/api/subscriber/track-activity", {
-                    method: "POST",
-                    headers: { "Content-Type": "application/json" },
-                    keepalive: true,
-                    body: JSON.stringify({
-                      email: targetEmail,
-                      event: "standalone_checkout_started",
-                      productId: finalProductId,
-                      priceShown: finalPrice.toString(),
-                      token: new URLSearchParams(window.location.search).get('token') || '',
-                    }),
-                  }).catch(() => {});
-                  try {
-                    const result = await createServerPayPalProductCheckout({
-                      productId: finalProductId,
-                      email: targetEmail,
-                      name: targetName,
-                      addons,
-                      profileData: {
-                        province: personalizedRegion || localStorage.getItem('fsi:lead_region') || '',
-                        industry: personalizedIndustry || localStorage.getItem('fsi:lead_industry') || '',
-                        revenue: personalizedRevenue || '',
-                        goal: personalizedGoal || '',
-                        company: personalizedCompany || '',
-                      },
-                      sessionId: sessionStorage.getItem('fsi_session_id') || 'sess_anonymous',
-                      attribution: attributionData,
-                    });
-                    if (result.approveUrl) {
-                      // Full-page redirect to PayPal — never blocked by popup blockers
-                      window.location.href = result.approveUrl;
-                    } else {
-                      setPaymentError('Could not generate a secure PayPal checkout link. Please try again.');
-                      setIsMobileRedirecting(false);
-                      setCheckoutStarted(false);
-                    }
-                  } catch (err: any) {
-                    trackCheckoutStage({
-                      eventName: 'paypal_mobile_order_create_failed',
-                      productId: finalProductId,
-                      revenue: finalPrice,
-                      metadata: { checkoutVersion: 'focused-v2', flow: 'mobile_redirect' },
-                    });
-                    setPaymentError(err.message || 'Could not start secure checkout. Please try again.');
-                    setIsMobileRedirecting(false);
-                    setCheckoutStarted(false);
-                  }
-                }}
+                className="w-full rounded-xl bg-[#0070ba] hover:bg-[#003087] text-white font-black text-sm py-4 px-6 transition-colors disabled:opacity-50 flex items-center justify-center gap-2 cursor-pointer"
+                onClick={() => handleDirectPayPalCheckout(isMobile ? 'mobile_redirect' : 'desktop_redirect_fallback')}
               >
                 <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M7.076 21.337H2.47a.641.641 0 0 1-.633-.74L4.944.901C5.026.382 5.474 0 5.998 0h7.46c2.57 0 4.578.543 5.69 1.81 1.01 1.15 1.304 2.42 1.012 4.287-.023.143-.047.288-.077.437-.983 5.05-4.349 6.797-8.647 6.797H9.603c-.564 0-1.04.41-1.128.964L7.076 21.337z"/></svg>
-                Pay ${finalPrice} with PayPal
+                Pay ${finalPrice} with PayPal / Card
               </button>
               <p className="text-[10px] text-slate-500 text-center">
                 You&apos;ll be securely redirected to PayPal to complete your payment.
@@ -836,6 +881,17 @@ export function StandaloneCheckout({ productId, price, productName }: Standalone
             /* ═══════ DESKTOP: Standard PayPal SDK Popup Flow ═══════ */
             <div className="space-y-3.5 animate-in fade-in duration-200">
               <div id="standalone-paypal-button" className="w-full"></div>
+            </div>
+          )}
+
+          {!isProcessing && !isMobileRedirecting && (
+            <div className="pt-1 text-center">
+              <a
+                href={`/calculator?utm_source=product_fallback&utm_medium=checkout_card&utm_campaign=${encodeURIComponent(finalProductId)}`}
+                className="text-[11px] font-semibold text-indigo-300 hover:text-indigo-200 underline underline-offset-4 transition-colors"
+              >
+                Not sure which programs apply? Run the free 60-sec Grant Calculator first &rarr;
+              </a>
             </div>
           )}
         </div>

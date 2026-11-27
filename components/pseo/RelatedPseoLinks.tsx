@@ -15,6 +15,31 @@ const PRIMARY_AUTHORITY_CITIES = new Set([
   'san-diego', 'dallas', 'austin', 'san-jose', 'seattle', 'boston', 'miami', 'denver', 'atlanta'
 ]);
 
+const CANADIAN_REGION_HUB_ROUTES: Record<string, string> = {
+  on: '/canada/ontario',
+  bc: '/canada/british-columbia',
+  ab: '/canada/alberta',
+  qc: '/canada/quebec',
+  mb: '/canada/manitoba',
+  sk: '/canada/saskatchewan',
+  ns: '/canada/nova-scotia',
+  nb: '/canada/new-brunswick',
+};
+
+const US_STATE_HUB_ROUTES: Record<string, string> = {
+  al: 'alabama', ak: 'alaska', az: 'arizona', ar: 'arkansas', ca: 'california',
+  co: 'colorado', ct: 'connecticut', de: 'delaware', dc: 'district-of-columbia',
+  fl: 'florida', ga: 'georgia', hi: 'hawaii', id: 'idaho', il: 'illinois',
+  in: 'indiana', ia: 'iowa', ks: 'kansas', ky: 'kentucky', la: 'louisiana',
+  me: 'maine', md: 'maryland', ma: 'massachusetts', mi: 'michigan', mn: 'minnesota',
+  ms: 'mississippi', mo: 'missouri', mt: 'montana', ne: 'nebraska', nv: 'nevada',
+  nh: 'new-hampshire', nj: 'new-jersey', nm: 'new-mexico', ny: 'new-york',
+  nc: 'north-carolina', nd: 'north-dakota', oh: 'ohio', ok: 'oklahoma', or: 'oregon',
+  pa: 'pennsylvania', ri: 'rhode-island', sc: 'south-carolina', sd: 'south-dakota',
+  tn: 'tennessee', tx: 'texas', ut: 'utah', vt: 'vermont', va: 'virginia',
+  wa: 'washington', wv: 'west-virginia', wi: 'wisconsin', wy: 'wyoming',
+};
+
 export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug, currentIndustrySlug }: Props) {
   const cityAllPages = getPseoCityPages(currentProvinceSlug, currentCitySlug);
   const provAllPages = getPseoProvincePages(currentProvinceSlug);
@@ -86,7 +111,7 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
                   <span className="text-emerald-600 font-extrabold">&rarr;</span>
                 </Link>
                 <Link
-                  href={`/canada/${currentProvinceSlug.toLowerCase()}`}
+                  href={CANADIAN_REGION_HUB_ROUTES[currentProvinceSlug.toLowerCase()] || `/grants/${currentProvinceSlug.toLowerCase()}`}
                   className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
                 >
                   <span>{provinceName} Business Grants Hub</span>
@@ -121,14 +146,14 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
                   <span className="text-emerald-600 font-extrabold">&rarr;</span>
                 </Link>
                 <Link
-                  href={`/usa/${currentProvinceSlug.toLowerCase()}`}
+                  href={US_STATE_HUB_ROUTES[currentProvinceSlug.toLowerCase()] ? `/usa/${US_STATE_HUB_ROUTES[currentProvinceSlug.toLowerCase()]}` : `/grants/${currentProvinceSlug.toLowerCase()}`}
                   className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
                 >
-                  <span>{provinceName} State Grants & Incentives</span>
+                  <span>{provinceName} State Grants &amp; Incentives</span>
                   <span className="text-emerald-600 font-extrabold">&rarr;</span>
                 </Link>
                 <Link
-                  href={`/usa/${currentProvinceSlug.toLowerCase()}/${currentCitySlug.toLowerCase()}`}
+                  href={`/grants/${currentProvinceSlug.toLowerCase()}/${currentCitySlug.toLowerCase()}`}
                   className="p-3 rounded-xl border border-slate-100 bg-slate-50/60 hover:bg-emerald-50 hover:border-emerald-200 transition-all text-xs font-bold text-slate-800 hover:text-emerald-800 flex items-center justify-between"
                 >
                   <span>{cityName} City Grants Hub</span>
