@@ -82,12 +82,6 @@ const SCHEDULER_JOBS = [
     description: 'Daily paid report delivery verification & recovery',
   },
   {
-    id: 'fsi-replay-failed-purchases',
-    schedule: '15 0,6,12,18 * * *',
-    path: '/api/cron/replay-failed-purchases',
-    description: 'Six-hourly failed purchase webhook replay',
-  },
-  {
     id: 'fsi-mca-priority-recovery',
     schedule: '30 16 * * *',
     path: '/api/cron/process-mca-priority-recovery',
