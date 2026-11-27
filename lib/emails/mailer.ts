@@ -43,31 +43,43 @@ const PLACEHOLDERS = new Set([
   'n/a', 'n/a.', 'not provided', 'not_provided', 'not-provided',
   'unknown', 'none', 'null', 'undefined', 'n/a province', 'na',
   'other', 'blank', 'not_specified', 'not specified',
-  'tbd', 'tba', 'pending', 'your company', 'your enterprise'
+  'tbd', 'tba', 'pending', 'your company', 'your enterprise',
+  'your business',
 ]);
 
-export function getFirstName(name?: string): string {
-  if (!name) return 'Founder';
-  const cleaned = name.trim();
+/** Returns true when a lead profile value is empty or placeholder text such as "Not provided". */
+export function isPlaceholderText(value?: string): boolean {
+  if (!value) return true;
+  const cleaned = value.trim();
+  if (!cleaned) return true;
   const lower = cleaned.toLowerCase();
-  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
-    return 'Founder';
-  }
+  return (
+    PLACEHOLDERS.has(lower) ||
+    lower.startsWith('n/a') ||
+    lower.startsWith('not provided') ||
+    lower.startsWith('not ')
+  );
+}
+
+/** Returns trimmed plain text or an empty string when the input is missing or a placeholder. */
+export function stripPlaceholderText(value?: string): string {
+  if (isPlaceholderText(value)) return '';
+  return String(value).trim();
+}
+
+export function getFirstName(name?: string): string {
+  const cleaned = stripPlaceholderText(name);
+  if (!cleaned) return 'Founder';
   const firstWord = cleaned.split(/\s+/)[0];
-  if (PLACEHOLDERS.has(firstWord.toLowerCase())) {
+  if (isPlaceholderText(firstWord)) {
     return 'Founder';
   }
   return escapeHtml(firstWord);
 }
 
 export function cleanCompanyName(companyName?: string): string {
-  if (!companyName) return '';
-  const cleaned = companyName.trim();
-  const lower = cleaned.toLowerCase();
-  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
-    return '';
-  }
-  return escapeHtml(cleaned);
+  const cleaned = stripPlaceholderText(companyName);
+  return cleaned ? escapeHtml(cleaned) : '';
 }
 
 const US_STATE_MAP: Record<string, string> = {
@@ -157,12 +169,11 @@ export function isUSMarket(region?: string): boolean {
 }
 
 export function cleanRegionName(region?: string): string {
-  if (!region) return 'Canada';
-  const cleaned = region.trim();
-  const lower = cleaned.toLowerCase();
-  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
+  if (isPlaceholderText(region)) {
     return 'Canada';
   }
+  const cleaned = String(region).trim();
+  const lower = cleaned.toLowerCase();
 
   if (CA_PROVINCE_MAP[lower]) return CA_PROVINCE_MAP[lower];
   if (US_STATE_MAP[lower]) return US_STATE_MAP[lower];
@@ -171,13 +182,10 @@ export function cleanRegionName(region?: string): string {
 }
 
 export function cleanIndustryName(industry?: string): string {
-  if (!industry) return 'business';
-  const cleaned = industry.trim();
-  const lower = cleaned.toLowerCase();
-  if (PLACEHOLDERS.has(lower) || lower.startsWith('n/a') || lower.startsWith('not ')) {
+  if (isPlaceholderText(industry)) {
     return 'business';
   }
-  return escapeHtml(cleaned);
+  return escapeHtml(String(industry).trim());
 }
 
 type BrevoSender = { email?: string; name?: string; active?: boolean };

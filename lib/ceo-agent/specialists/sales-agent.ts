@@ -404,7 +404,8 @@ export class SalesAgent {
     const stageStr = (lead.businessStage || '').toLowerCase();
     const hasCorpSize = lead.companySize && ['10-49', '50-99', '100-499', '500+'].includes(lead.companySize);
     const isExplicitlyCorp = /incorporated|operating|scale|series|established/i.test(stageStr) || hasCorpSize;
-    const hasCompany = Boolean(lead.companyName && lead.companyName.trim().length > 1 && !/^(n\/a|none|idea|concept|tbd)$/i.test(lead.companyName));
+    const cleanedCompany = cleanCompanyName(lead.companyName);
+    const hasCompany = Boolean(cleanedCompany.length > 1 && !/^(idea|concept)$/i.test(cleanedCompany));
     const isIdea = /idea|concept|pre-incorporation|unincorporated/i.test(stageStr);
 
     let incorporationScore = 12;

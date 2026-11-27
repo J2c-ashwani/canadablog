@@ -310,6 +310,22 @@ async function verifyPayPalWebhookSignature(request: NextRequest, body: string):
     console.error("[PayPal Webhook] PAYPAL_WEBHOOK_ID not configured")
     return false
   }
+
+  const authAlgo = request.headers.get("paypal-auth-algo")
+  const certUrl = request.headers.get("paypal-cert-url")
+  const transmissionId = request.headers.get("paypal-transmission-id")
+  const transmissionSig = request.headers.get("paypal-transmission-sig")
+  const transmissionTime = request.headers.get("paypal-transmission-time")
+  if (!authAlgo || !certUrl || !transmissionId || !transmissionSig || !transmissionTime) {
+    return false
+  }
+
+  let parsedBody: unknown
+  try {
+    parsedBody = JSON.parse(body)
+  } catch {
+    return false
+  }
   
   const baseUrl = process.env.PAYPAL_ENV === "live" 
     ? "https://api-m.paypal.com" 
@@ -336,18 +352,20 @@ async function verifyPayPalWebhookSignature(request: NextRequest, body: string):
       "Content-Type": "application/json",
     },
     body: JSON.stringify({
-      auth_algo: request.headers.get("paypal-auth-algo"),
-      cert_url: request.headers.get("paypal-cert-url"),
-      transmission_id: request.headers.get("paypal-transmission-id"),
-      transmission_sig: request.headers.get("paypal-transmission-sig"),
-      transmission_time: request.headers.get("paypal-transmission-time"),
+      auth_algo: authAlgo,
+      cert_url: certUrl,
+      transmission_id: transmissionId,
+      transmission_sig: transmissionSig,
+      transmission_time: transmissionTime,
       webhook_id: webhookId,
-      webhook_event: JSON.parse(body),
+      webhook_event: parsedBody,
     }),
   })
   
+  if (!verifyResponse.ok) {
+    return false
+  }
   const verifyResult = await verifyResponse.json()
-  if (!verifyResponse.ok) throw new Error('PayPal webhook signature verification request failed.')
   return verifyResult.verification_status === "SUCCESS"
 }
 

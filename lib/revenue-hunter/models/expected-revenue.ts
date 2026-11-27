@@ -1,3 +1,5 @@
+import { cleanRegionName, stripPlaceholderText } from '@/lib/emails/mailer'
+
 export type ProductOfferTier = 
   | 'TIER_REPORT_19' 
   | 'TIER_MEMBERSHIP_29'
@@ -178,12 +180,20 @@ export class ExpectedRevenueModel {
     
     const priorityRankScore = Number((expectedValueUSD * confidenceScore * recencyWeight * 100).toFixed(1))
 
+    const cleanName = stripPlaceholderText(lead.name)
+    const cleanCompany = stripPlaceholderText(lead.companyName)
+    const cleanIndustry = stripPlaceholderText(lead.industry)
+    const resolvedCompany =
+      cleanCompany && !/^not provided's enterprise$/i.test(cleanCompany)
+        ? cleanCompany
+        : ''
+
     return {
       leadEmail: lead.email,
-      leadName: lead.name && lead.name !== 'N/A' ? lead.name : 'Founder',
-      companyName: lead.companyName && lead.companyName !== 'N/A' ? lead.companyName : (lead.name ? `${lead.name}'s Enterprise` : 'Canadian SME'),
-      industry: lead.industry && lead.industry !== 'N/A' ? lead.industry : 'Innovation / General',
-      province: lead.region && lead.region !== 'N/A' ? lead.region : 'Canada',
+      leadName: cleanName || 'Founder',
+      companyName: resolvedCompany,
+      industry: cleanIndustry || 'Innovation / General',
+      province: cleanRegionName(lead.region),
       pDelivery,
       pOpen: Number(pOpen.toFixed(2)),
       pClick: Number(pClick.toFixed(2)),

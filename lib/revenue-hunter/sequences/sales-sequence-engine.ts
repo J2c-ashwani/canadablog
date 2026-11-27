@@ -1,4 +1,5 @@
 import { ExpectedRevenueCalculation, ProductOfferTier } from '../models/expected-revenue'
+import { cleanRegionName, escapeHtml, getFirstName, stripPlaceholderText } from '@/lib/emails/mailer'
 
 export interface GeneratedSalesMessage {
   subject: string
@@ -15,10 +16,17 @@ export class SalesSequenceEngine {
     variant: 'standard' | 'curiosity' | 'direct' = 'standard'
   ): GeneratedSalesMessage {
     const offer = prospect.recommendedOffer
-    const firstName = prospect.leadName.split(' ')[0] || 'Founder'
-    const company = prospect.companyName || 'your enterprise'
-    const industry = prospect.industry || 'technology'
-    const province = prospect.province || 'Canada'
+    const firstName = getFirstName(prospect.leadName)
+    const rawCompany = stripPlaceholderText(prospect.companyName)
+    const company =
+      rawCompany && !/^(founder|canadian sme|not provided's enterprise)$/i.test(rawCompany)
+        ? rawCompany
+        : ''
+    const companyHtml = company ? escapeHtml(company) : 'your business'
+    const industry = stripPlaceholderText(prospect.industry) || 'technology'
+    const industryHtml = escapeHtml(industry)
+    const province = cleanRegionName(prospect.province)
+    const provinceHtml = escapeHtml(province)
 
     let subject = ''
     let bodyIntro = ''
@@ -26,22 +34,26 @@ export class SalesSequenceEngine {
     let ctaButtonText = ''
 
     if (variant === 'curiosity') {
-      subject = `Your Canadian funding eligibility matches (${company})`
-      bodyIntro = `We identified verified non-dilutive grant and tax credit programs currently open in ${province} that match businesses in ${industry}.`
+      subject = company
+        ? `Your Canadian funding eligibility matches (${company})`
+        : `Your Canadian funding eligibility matches (${province})`
+      bodyIntro = `We identified verified non-dilutive grant and tax credit programs currently open in ${provinceHtml} that match businesses in ${industryHtml}.`
     } else if (variant === 'direct') {
-      subject = `Active Grant Deadlines: Matched programs for ${company} (${province})`
-      bodyIntro = `Several federal and provincial funding allocations in ${province} have upcoming intake windows. Here is your priority action roadmap.`
+      subject = company
+        ? `Active Grant Deadlines: Matched programs for ${company} (${province})`
+        : `Active Grant Deadlines: Matched programs in ${province}`
+      bodyIntro = `Several federal and provincial funding allocations in ${provinceHtml} have upcoming intake windows. Here is your priority action roadmap.`
     }
 
     switch (offer.tier) {
       case 'TIER_BUNDLE_79':
-        if (!subject) subject = `Capital Stacking Toolkit for ${company} (${province})`
+        if (!subject) subject = company ? `Capital Stacking Toolkit for ${company} (${province})` : `Capital Stacking Toolkit (${province})`
         if (!bodyIntro) bodyIntro = `Canadian funding programs yield the highest return when federal non-dilutive grants and provincial tax incentives are combined without exceeding stacking caps.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #059669; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Complete Capital Stacking Toolkit ($79 USD)</p>
             <p style="margin: 0 0 12px; font-size: 14px; color: #334155;">
-              Get complete application templates, compliance checklists, stacking calculators, and narrative guidelines tailored to ${industry} in ${province}.
+              Get complete application templates, compliance checklists, stacking calculators, and narrative guidelines tailored to ${industryHtml} in ${provinceHtml}.
             </p>
           </div>
         `
@@ -49,8 +61,8 @@ export class SalesSequenceEngine {
         break
 
       case 'TIER_REPORT_19':
-        if (!subject) subject = `Funding Match Report for ${company}`
-        if (!bodyIntro) bodyIntro = `Use your current business profile in ${province} to narrow the grant and funding programs worth reviewing first.`
+        if (!subject) subject = company ? `Funding Match Report for ${company}` : `Personalized Funding Match Report (${province})`
+        if (!bodyIntro) bodyIntro = `Use your current business profile in ${provinceHtml} to narrow the grant and funding programs worth reviewing first.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #2563eb; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Personalized Funding Match Report ($19 USD)</p>
@@ -63,8 +75,8 @@ export class SalesSequenceEngine {
         break
 
       case 'TIER_MEMBERSHIP_29':
-        if (!subject) subject = `Funding Watch for ${company} (${province})`
-        if (!bodyIntro) bodyIntro = `Funding windows and deadlines change throughout the year. Funding Watch keeps ${company}'s self-serve funding shortlist current without requiring a call or live session.`
+        if (!subject) subject = company ? `Funding Watch for ${company} (${province})` : `Funding Watch for ${province}`
+        if (!bodyIntro) bodyIntro = `Funding windows and deadlines change throughout the year. Funding Watch keeps ${company ? `${companyHtml}'s` : 'your'} self-serve funding shortlist current without requiring a call or live session.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #7c3aed; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Funding Watch Membership ($29 USD/month)</p>
@@ -78,8 +90,8 @@ export class SalesSequenceEngine {
 
       case 'TIER_ACTION_PLAN_49':
       default:
-        if (!subject) subject = `Funding Action Plan & Checklist for ${company}`
-        if (!bodyIntro) bodyIntro = `We identified active Canadian non-dilutive funding programs suitable for ${company}'s current stage in ${province}.`
+        if (!subject) subject = company ? `Funding Action Plan & Checklist for ${company}` : `Funding Action Plan & Checklist (${province})`
+        if (!bodyIntro) bodyIntro = `We identified active Canadian non-dilutive funding programs suitable for ${company ? `${companyHtml}'s` : 'your business at its'} current stage in ${provinceHtml}.`
         offerSection = `
           <div style="background-color: #f8fafc; border-left: 4px solid #d97706; padding: 16px; margin: 20px 0; border-radius: 4px;">
             <p style="margin: 0 0 8px; font-weight: bold; color: #0f172a;">Step-by-Step Funding Action Plan ($49 USD)</p>
