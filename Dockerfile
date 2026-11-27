@@ -1,0 +1,92 @@
+# syntax=docker/dockerfile:1
+
+FROM node:20-slim AS base
+WORKDIR /app
+
+# 1. Install dependencies (skip heavy Chromium download; runtime PDFs use jspdf/pdf-lib)
+FROM base AS deps
+ENV PUPPETEER_SKIP_DOWNLOAD=true
+COPY package.json package-lock.json ./
+RUN npm ci --legacy-peer-deps
+
+# 2. Build Next.js standalone bundle with full heap limit
+FROM base AS builder
+WORKDIR /app
+COPY --from=deps /app/node_modules ./node_modules
+COPY . .
+
+ARG NEXT_PUBLIC_APP_URL=https://www.fsidigital.ca
+ARG NEXT_PUBLIC_SITE_URL=https://www.fsidigital.ca
+ARG NEXT_PUBLIC_PAYPAL_CLIENT_ID=""
+ARG NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID=""
+ARG NEXT_PUBLIC_PAYPAL_PLAN_ID=""
+ARG NEXT_PUBLIC_PAYPAL_CURRENCY=USD
+ARG NEXT_PUBLIC_GA_MEASUREMENT_ID=""
+ARG NEXT_PUBLIC_GOOGLE_ADS_ID=""
+ARG NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL=""
+ARG NEXT_PUBLIC_ADSENSE_PUBLISHER_ID=""
+ARG NEXT_PUBLIC_ADSENSE_AUTO_ADS=""
+ARG NEXT_PUBLIC_ADSENSE_HEADER_AD=""
+ARG NEXT_PUBLIC_ADSENSE_SIDEBAR=""
+ARG NEXT_PUBLIC_ADSENSE_SIDEBAR_AD=""
+ARG NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL=""
+ARG NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE=""
+ARG NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_2=""
+ARG NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_7=""
+ARG NEXT_PUBLIC_META_PIXEL_ID=""
+ARG NEXT_PUBLIC_LINKEDIN_INSIGHT_ID=""
+ARG NEXT_PUBLIC_CLARITY_ID=""
+
+ENV NEXT_PUBLIC_APP_URL=$NEXT_PUBLIC_APP_URL \
+    NEXT_PUBLIC_SITE_URL=$NEXT_PUBLIC_SITE_URL \
+    NEXT_PUBLIC_PAYPAL_CLIENT_ID=$NEXT_PUBLIC_PAYPAL_CLIENT_ID \
+    NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID=$NEXT_PUBLIC_CONSULTATION_PAYPAL_CLIENT_ID \
+    NEXT_PUBLIC_PAYPAL_PLAN_ID=$NEXT_PUBLIC_PAYPAL_PLAN_ID \
+    NEXT_PUBLIC_PAYPAL_CURRENCY=$NEXT_PUBLIC_PAYPAL_CURRENCY \
+    NEXT_PUBLIC_GA_MEASUREMENT_ID=$NEXT_PUBLIC_GA_MEASUREMENT_ID \
+    NEXT_PUBLIC_GOOGLE_ADS_ID=$NEXT_PUBLIC_GOOGLE_ADS_ID \
+    NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL=$NEXT_PUBLIC_GOOGLE_ADS_PURCHASE_LABEL \
+    NEXT_PUBLIC_ADSENSE_PUBLISHER_ID=$NEXT_PUBLIC_ADSENSE_PUBLISHER_ID \
+    NEXT_PUBLIC_ADSENSE_AUTO_ADS=$NEXT_PUBLIC_ADSENSE_AUTO_ADS \
+    NEXT_PUBLIC_ADSENSE_HEADER_AD=$NEXT_PUBLIC_ADSENSE_HEADER_AD \
+    NEXT_PUBLIC_ADSENSE_SIDEBAR=$NEXT_PUBLIC_ADSENSE_SIDEBAR \
+    NEXT_PUBLIC_ADSENSE_SIDEBAR_AD=$NEXT_PUBLIC_ADSENSE_SIDEBAR_AD \
+    NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL=$NEXT_PUBLIC_ADSENSE_IN_CONTENT_HORIZONTAL \
+    NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE=$NEXT_PUBLIC_ADSENSE_IN_CONTENT_RECTANGLE \
+    NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_2=$NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_2 \
+    NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_7=$NEXT_PUBLIC_ADSENSE_BLOG_PARAGRAPH_7 \
+    NEXT_PUBLIC_META_PIXEL_ID=$NEXT_PUBLIC_META_PIXEL_ID \
+    NEXT_PUBLIC_LINKEDIN_INSIGHT_ID=$NEXT_PUBLIC_LINKEDIN_INSIGHT_ID \
+    NEXT_PUBLIC_CLARITY_ID=$NEXT_PUBLIC_CLARITY_ID \
+    NEXT_TELEMETRY_DISABLED=1 \
+    NODE_OPTIONS="--max-old-space-size=4096"
+
+RUN npm run build
+
+# 3. Production Cloud Run runner
+FROM node:20-slim AS runner
+WORKDIR /app
+
+ENV NODE_ENV=production \
+    NEXT_TELEMETRY_DISABLED=1 \
+    PORT=8080 \
+    HOSTNAME="0.0.0.0"
+
+RUN groupadd --system --gid 1001 nodejs \
+    && useradd --system --uid 1001 --gid nodejs nextjs \
+    && mkdir -p /app/scripts /app/reports /app/logs \
+    && chown -R nextjs:nodejs /app
+
+COPY --from=builder --chown=nextjs:nodejs /app/.next/standalone ./
+COPY --from=builder --chown=nextjs:nodejs /app/.next/static ./.next/static
+COPY --from=builder --chown=nextjs:nodejs /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/lib/data ./lib/data
+COPY --from=builder --chown=nextjs:nodejs /app/private-assets ./private-assets
+COPY --from=builder --chown=nextjs:nodejs /app/app ./app
+COPY --from=builder --chown=nextjs:nodejs /app/scripts/indexing-history.json ./scripts/indexing-history.json
+COPY --from=builder --chown=nextjs:nodejs /app/scripts/seo-recommendations.json ./scripts/seo-recommendations.json
+
+USER nextjs
+EXPOSE 8080
+
+CMD ["node", "server.js"]

@@ -43,6 +43,7 @@ const archiveBlogRedirects = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: 'standalone',
   outputFileTracingRoot: projectRoot,
   outputFileTracingIncludes: {
     '/blog/[slug]': ['./lib/data/blog-content/**/*'],

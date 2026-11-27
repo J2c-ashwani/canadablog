@@ -1,0 +1,17 @@
+.git
+.next
+out
+node_modules
+.vercel
+.env
+.env.*
+google-credentials.json
+scratch
+reports
+cr28
+gscmarch
+3monthGSCdata
+fsidigital.ca-Performance-*
+*.mp4
+*.log
+*.tsbuildinfo
