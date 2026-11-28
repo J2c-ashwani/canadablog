@@ -67,16 +67,30 @@ export default function RelatedPseoLinks({ currentProvinceSlug, currentCitySlug,
     return (tierWeight[a.tier] || 3) - (tierWeight[b.tier] || 3);
   });
 
-  // Prioritize high-authority hubs first to distribute link equity downwards rather than randomly sideways
-  const sortedIndustryPages = [...sameIndustryPages].sort((a, b) => {
-    const aIsPrimary = PRIMARY_AUTHORITY_CITIES.has(a.citySlug) ? 0 : 1;
-    const bIsPrimary = PRIMARY_AUTHORITY_CITIES.has(b.citySlug) ? 0 : 1;
-    if (aIsPrimary !== bIsPrimary) return aIsPrimary - bIsPrimary;
-    return (tierWeight[a.tier] || 3) - (tierWeight[b.tier] || 3);
-  });
+  // Mix 3 anchor hubs with deterministic rotating Tier B/C peer cities so long-tail pages receive cross-links
+  const primaryHubs = sameIndustryPages
+    .filter((p) => PRIMARY_AUTHORITY_CITIES.has(p.citySlug) || p.tier === 'A')
+    .sort((a, b) => (tierWeight[a.tier] || 3) - (tierWeight[b.tier] || 3))
+    .slice(0, 3);
+  const primarySlugs = new Set(primaryHubs.map((p) => p.citySlug));
+  const peerCities = sameIndustryPages
+    .filter((p) => !primarySlugs.has(p.citySlug))
+    .sort((a, b) => a.citySlug.localeCompare(b.citySlug));
+  let cityHash = 0;
+  for (let i = 0; i < currentCitySlug.length; i++) {
+    cityHash = (cityHash * 31 + currentCitySlug.charCodeAt(i)) >>> 0;
+  }
+  const rotatedPeers: typeof peerCities = [];
+  if (peerCities.length > 0) {
+    const startIdx = cityHash % peerCities.length;
+    for (let i = 0; i < Math.min(7, peerCities.length); i++) {
+      rotatedPeers.push(peerCities[(startIdx + i) % peerCities.length]);
+    }
+  }
+  const sortedIndustryPages = [...primaryHubs, ...rotatedPeers];
 
-  const limit = 8;
-  const displayCityPages = sortedCityPages.slice(0, limit);
+  const limit = 10;
+  const displayCityPages = sortedCityPages.slice(0, 8);
   const displayIndustryPages = sortedIndustryPages.slice(0, limit);
 
 

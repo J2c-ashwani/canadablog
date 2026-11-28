@@ -150,7 +150,7 @@ export default function RegionalFundingShowcase({
             <div className="bg-slate-50 rounded-xl p-3 border border-slate-100 text-[11px] text-slate-600 flex items-center justify-between">
               <span>Local Application Advice ({cityName}):</span>
               <a
-                href="#assessment"
+                href="#calculator"
                 className="font-bold text-emerald-700 hover:text-emerald-800 flex items-center gap-1"
               >
                 Check Eligibility &rarr;

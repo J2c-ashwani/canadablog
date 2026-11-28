@@ -400,7 +400,7 @@ function UsPseoGrantContent({
                 </p>
                 <p>
                     {renderUsParagraph(
-                        `Start with ${primaryProgram.name} and ${secondaryProgram.name}, then layer in SBA/SBDC support, industry-specific federal programs, and city or county incentives. This approach gives Google and users a clearer local funding map than a generic national grant list.`,
+                        `Start with ${primaryProgram.name} and ${secondaryProgram.name}, then layer in SBA/SBDC technical assistance, federal agency incentives, and local economic development rebates so ${page.cityName} ${page.industryName.toLowerCase()} businesses can offset both capital equipment and payroll expansion costs.`,
                         'us-landscape-3'
                     )}
                 </p>
@@ -600,6 +600,15 @@ function UsPseoGrantContent({
                 </div>
             </div>
 
+            <RegionalFundingShowcase
+                cityName={page.cityName}
+                provinceName={page.provinceName}
+                provinceSlug={page.provinceSlug}
+                industryName={page.industryName}
+                isCanada={false}
+                stateDetail={stateDetail}
+            />
+
             {verifiedCohort ? (
                 <CohortApplicationPlaybook
                     industryName={page.industryName}
@@ -771,30 +780,11 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
         
         const regLower = p.region.toLowerCase().trim();
         const slugLower = page.provinceSlug.toLowerCase().trim();
-        
-        if (regLower === slugLower) return true;
-        if (slugLower === 'on' && regLower.includes('ontario')) return true;
-        if (slugLower === 'bc' && regLower.includes('british columbia')) return true;
-        if (slugLower === 'ab' && regLower.includes('alberta')) return true;
-        if (slugLower === 'qc' && regLower.includes('quebec')) return true;
-        if (slugLower === 'ns' && regLower.includes('nova scotia')) return true;
-        if (slugLower === 'nb' && regLower.includes('new brunswick')) return true;
+        const provLower = page.provinceName.toLowerCase().trim();
+
+        if (regLower === slugLower || regLower === provLower || regLower.includes(provLower)) return true;
         if (slugLower === 'nl' && regLower.includes('newfoundland')) return true;
-        if (slugLower === 'pe' && regLower.includes('prince edward island')) return true;
-        if (slugLower === 'mb' && regLower.includes('manitoba')) return true;
-        if (slugLower === 'sk' && regLower.includes('saskatchewan')) return true;
-        
-        if (slugLower === 'ca' && regLower.includes('california')) return true;
-        if (slugLower === 'tx' && regLower.includes('texas')) return true;
-        if (slugLower === 'ny' && regLower.includes('new york')) return true;
-        if (slugLower === 'fl' && regLower.includes('florida')) return true;
-        if (slugLower === 'il' && regLower.includes('illinois')) return true;
-        if (slugLower === 'oh' && regLower.includes('ohio')) return true;
-        if (slugLower === 'co' && regLower.includes('colorado')) return true;
-        if (slugLower === 'ma' && regLower.includes('massachusetts')) return true;
-        if (slugLower === 'nc' && regLower.includes('north carolina')) return true;
-        if (slugLower === 'wa' && regLower.includes('washington')) return true;
-        
+
         return false;
     });
 
@@ -1351,28 +1341,35 @@ export default async function PseoLandingPage({ params }: { params: Promise<{ pr
                             <>
                                 <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
                                     <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
-                                        How much funding can a {page.industryName.toLowerCase()} business get in {page.cityName}?
+                                        Which {page.provinceName} programs fund {page.industryName.toLowerCase()} businesses in {page.cityName}?
                                     </h4>
                                     <p className="text-sm text-slate-600 leading-relaxed">
-                                        Eligible {page.industryName.toLowerCase()} companies in {page.cityName}, {page.provinceName} can typically access between $15,000 and $500,000+ in non-repayable government funding through combined federal, {page.provinceName} regional, and local economic development programs.
+                                        {matchedPrograms.length > 0
+                                            ? `Active tracks for ${page.cityName} ${page.industryName.toLowerCase()} firms include ${matchedPrograms.slice(0, 3).map(p => `${p.name} (${p.fundingAmount})`).join(', ')}, alongside ${page.provinceName} regional incentives (${activeProgramsCount} database programs matched).`
+                                            : `${page.cityName} ${page.industryName.toLowerCase()} companies typically combine federal ${isCanada ? 'IRAP, SR&ED, and CanExport' : 'SBIR/STTR, SBA, and USDA'} programs with ${stateDetail?.topPrograms?.[0]?.name || `${page.provinceName} economic development`} grants (${activeProgramsCount} active regional matches).`}
                                     </p>
                                 </div>
 
                                 <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
                                     <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
-                                        Do businesses in {page.cityName} have to give up equity for government grants?
+                                        What expenses qualify for {page.industryName.toLowerCase()} grants in {page.cityName}, {page.provinceName}?
                                     </h4>
                                     <p className="text-sm text-slate-600 leading-relaxed">
-                                        No. Official government business grants and R&D wage subsidies in {page.provinceName} are non-dilutive. Founders retain 100% of their equity and board control.
+                                        {page.industrySlug === 'technology' || page.industrySlug === 'healthcare'
+                                            ? `Priority reimbursement in ${page.cityName} covers R&D engineering payroll, IP validation, clinical/regulatory milestones, and prototype commercialization.`
+                                            : page.industrySlug === 'manufacturing' || page.industrySlug === 'agriculture' || page.industrySlug === 'clean-energy'
+                                                ? `Most ${page.provinceName} industrial grants fund productivity equipment, facility retrofits, automation capex, and clean-energy upgrades approved prior to purchase orders.`
+                                                : `Typical eligible budgets in ${page.cityName} cover workforce upskilling wages, digital adoption software/equipment, export market entry, and commercial facility upgrades.`}{' '}
+                                        Non-dilutive awards require no equity surrender.
                                     </p>
                                 </div>
 
                                 <div className="bg-white rounded-2xl p-6 border border-gray-200 shadow-xs">
                                     <h4 className="font-bold text-base sm:text-lg text-slate-900 mb-2">
-                                        Can companies in {page.cityName} stack federal and {page.provinceName} funding?
+                                        Can {page.cityName} {page.industryName.toLowerCase()} companies stack federal and {page.provinceName} incentives?
                                     </h4>
                                     <p className="text-sm text-slate-600 leading-relaxed">
-                                        Yes. Most programs allow capital stacking up to 75% to 100% of eligible project and payroll expenses, allowing you to combine federal R&D tax incentives with {page.provinceName} state/provincial hiring and commercialization grants.
+                                        Yes — {page.provinceName} stacking rules generally cap combined public assistance at 50%–75% of project costs (higher for non-profits and training subsidies).{stateDetail?.topPrograms?.[0] ? ` For example, ${stateDetail.topPrograms[0].name} (${stateDetail.topPrograms[0].fundingAmount}) can often pair with federal R&D or SBA/export awards when distinct expense lines are documented.` : ` Documenting separate payroll, equipment, and contractor line items keeps multi-program stacks compliant.`}
                                     </p>
                                 </div>
                             </>

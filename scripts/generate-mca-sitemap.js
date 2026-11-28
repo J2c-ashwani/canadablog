@@ -9,7 +9,6 @@ const MCA_ROUTES = [
   '/apply',
   '/why-businesses-get-declined',
   '/funding-calculator',
-  '/priority-processing',
   '/merchant-cash-advance-canada',
   '/business-cash-advance-canada',
   '/working-capital-canada',

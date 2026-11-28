@@ -116,9 +116,21 @@ function getStaticRoutes(redirectSources) {
       const route = fullPath
         .replace(appDir, '')
         .replace(/\/page\.tsx?$/, '')
-        .replace(/\\/g, '/') || '/'
+        .replace(/\\/g, '/')
+        .replace(/\/\([^)]+\)/g, '') || '/'
 
-      if (isRecoveryRoute(route, redirectSources)) {
+      if (
+        !route.startsWith('/admin') &&
+        !route.startsWith('/partners/checkout') &&
+        !route.startsWith('/products/checkout-return') &&
+        !route.startsWith('/products/report') &&
+        !route.startsWith('/priority-processing') &&
+        !route.startsWith('/booking') &&
+        !route.startsWith('/consultation') &&
+        !route.startsWith('/affiliates/status') &&
+        !route.startsWith('/advertise/order/done-for-you') &&
+        isRecoveryRoute(route, redirectSources)
+      ) {
         routes.push(route)
       }
     }
@@ -275,7 +287,57 @@ function buildSitemapIndexXml(chunkFiles, lastmod) {
   ].join('\n')
 }
 
-const routes = buildRecoveryRoutes()
+const EXCLUDED_RECOVERY_PATHS = new Set([
+  '/admin',
+  '/booking',
+  '/consultation',
+  '/partners/checkout',
+  '/products/checkout-return',
+  '/products/report',
+  '/priority-processing',
+  '/affiliates/status',
+  '/advertise/order/done-for-you',
+  '/blog/how-to-stack-government-grants-canada',
+])
+
+function getCanonicalAppSitemapRoutes() {
+  try {
+    const { execFileSync } = require('child_process')
+    const raw = execFileSync(
+      'npx',
+      [
+        'tsx',
+        '-e',
+        'import s from "./app/sitemap"; console.log(JSON.stringify(s().map(e => new URL(e.url).pathname)));',
+      ],
+      { cwd: path.join(__dirname, '..'), encoding: 'utf8', maxBuffer: 20 * 1024 * 1024, stdio: ['ignore', 'pipe', 'ignore'] }
+    )
+    const jsonLine = raw.trim().split(/\r?\n/).reverse().find((line) => line.startsWith('['))
+    if (jsonLine) {
+      const parsed = JSON.parse(jsonLine)
+      if (Array.isArray(parsed) && parsed.length > 6000) return parsed
+    }
+  } catch {}
+  return null
+}
+
+// Clean up any stale chunk XMLs before writing fresh chunks
+for (const existing of fs.readdirSync(PUBLIC_DIR)) {
+  if (existing.startsWith(`${CHUNK_PREFIX}-`) && existing.endsWith('.xml')) {
+    fs.unlinkSync(path.join(PUBLIC_DIR, existing))
+  }
+}
+
+const canonicalRoutes = getCanonicalAppSitemapRoutes()
+const routes = (canonicalRoutes || buildRecoveryRoutes()).filter((route) => {
+  if (!route || route.includes('(') || route.includes('?') || route.includes('-archive') || route.endsWith('-2025')) {
+    return false
+  }
+  if (route.startsWith('/admin/') || EXCLUDED_RECOVERY_PATHS.has(route)) {
+    return false
+  }
+  return true
+})
 const lastmod = new Date().toISOString()
 const staleChunkPattern = new RegExp(`^${CHUNK_PREFIX}-\\d+\\.xml$`)
 

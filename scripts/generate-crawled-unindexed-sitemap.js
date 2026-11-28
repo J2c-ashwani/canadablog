@@ -125,7 +125,6 @@ const newUrls = [
     "https://www.fsidigital.ca/grants/tx/fort-worth/non-profits",
     "https://www.fsidigital.ca/grants/fl/st-petersburg/veterans",
     "https://www.fsidigital.ca/grants/qc/longueuil/construction",
-    "https://www.fsidigital.ca/grants/dc/washington/technology",
     "https://www.fsidigital.ca/grants/qc/levis/manufacturing",
     "https://www.fsidigital.ca/grants/tx/fort-worth/technology",
     "https://www.fsidigital.ca/grants/md/baltimore/retail",
@@ -273,12 +272,18 @@ function processCsv(csvPath, urlSet) {
         
         const url = line.split(',')[0].trim();
         if (url && url.startsWith('https://www.fsidigital.ca')) {
-            // Filter out non-HTML static assets, admin routes, checkouts, and preferences
+            // Filter out non-HTML static assets, query strings, archives, admin routes, checkouts, and utility pages
             if (
+                url.includes('?') ||
+                url.includes('-archive') ||
+                url.endsWith('-2025') ||
+                url.endsWith('/contact') ||
                 url.includes('/_next/') || 
                 url.includes('/static/') || 
                 url.includes('/admin/') || 
                 url.includes('/checkout') || 
+                url.includes('/products/report') ||
+                url.includes('/priority-processing') ||
                 url.includes('/success') || 
                 url.includes('/preferences') ||
                 url.endsWith('.woff2') || 

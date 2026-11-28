@@ -31,6 +31,9 @@ function isIndexableRoute(route: string): boolean {
   if (route === '/search') return false
   if (route === '/booking') return false
   if (route === '/consultation') return false
+  if (route === '/products/checkout-return') return false
+  if (route === '/products/report') return false
+  if (route === '/priority-processing') return false
   if (route.startsWith('/partners/checkout')) return false
   if (route.startsWith('/advertise/order')) return false
 
@@ -283,12 +286,15 @@ function getPriorityAndFrequency(route: string): { priority: number; changeFrequ
   return { priority: 0.7, changeFrequency: 'monthly' }
 }
 
-  // Convert to sitemap format (Google Search Central compliant: omit lastmod if reliable date is unavailable)
+  // Convert to sitemap format (emit authentic update dates for updated pSEO & core routes)
   const sitemapEntries = allRoutes.map(route => {
     const isRecentlyOptimized = RECENTLY_OPTIMIZED_ROUTES.has(route)
+    const isPseoOrRegionalRoute = route.startsWith('/grants/') || route.startsWith('/usa/')
     const genuineDate = isRecentlyOptimized
-      ? '2026-10-10'
-      : (blogRouteDates.get(route) || guideRouteDates.get(route))
+      ? '2026-11-28'
+      : isPseoOrRegionalRoute
+        ? '2026-11-28'
+        : (blogRouteDates.get(route) || guideRouteDates.get(route))
 
     const { priority, changeFrequency } = getPriorityAndFrequency(route)
 

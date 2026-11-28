@@ -222,11 +222,23 @@ const baseRoutes = Array.from(new Set([
 // 2. Fetch all sorted blog routes
 const sortedBlogs = getPriorityBlogRoutes()
 
-// 3. Accumulate up to exactly 176 unique routes
-const finalRoutesSet = new Set(baseRoutes)
+const EXCLUDED_PRIORITY_ROUTES = new Set([
+  '/priority-processing',
+  '/products/checkout-return',
+  '/products/report',
+  '/booking',
+  '/consultation',
+  '/partners/checkout',
+  '/affiliates/status',
+])
+
+// 3. Accumulate up to exactly 176 unique canonical routes
+const finalRoutesSet = new Set(baseRoutes.filter((route) => !EXCLUDED_PRIORITY_ROUTES.has(route)))
 for (const route of sortedBlogs) {
   if (finalRoutesSet.size >= 176) break
-  finalRoutesSet.add(route)
+  if (!EXCLUDED_PRIORITY_ROUTES.has(route)) {
+    finalRoutesSet.add(route)
+  }
 }
 
 const routes = Array.from(finalRoutesSet)
